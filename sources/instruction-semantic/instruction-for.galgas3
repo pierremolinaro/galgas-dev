@@ -539,7 +539,7 @@ override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
       for (mOptionalTypeName mDeclaredAsUnused mOptionalConstantName) in self.mElementList, (mEnumeratedType mEnumerationName) in enumerationDescriptorList do
         if mOptionalConstantName.string != "" then // Empty string if joker
           if mOptionalTypeName.string != "" then
-            let foundType = [ioTypeMap§typeMapEntryForLKey (!mOptionalTypeName)]
+            let foundType = [ioTypeMap§typeMapEntryForLKey (!mOptionalTypeName)
             if foundType != mEnumeratedType then
               error (mOptionalTypeName : "incorrect '@" + foundType.definition.typeName.string + "' type: '@" + mEnumeratedType.definition.typeName.string + "' type required here")
             end
@@ -584,7 +584,7 @@ override proc @enumeratedCollectionVarInExpAST.analyzeEnumeration (?let @lstring
   end
 //--- Check enumeration type
   if self.mEnumerationOptionalTypeName.string != "" then
-    let explicitType = [ioTypeMap§typeMapEntryForLKey (!self.mEnumerationOptionalTypeName)]
+    let explicitType = [ioTypeMap§typeMapEntryForLKey (!self.mEnumerationOptionalTypeName)
     if enumeratedElementType.definition.typeName.string != explicitType.definition.typeName.string then
       error (self.mEnumerationOptionalTypeName: "the '@" + enumeratedElementType.definition.typeName.string + "' type is expected here")
     end

@@ -153,7 +153,7 @@ override proc @overridingAbstractExtensionMethodAST.enterDeclarationInGraph (
   ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
   ioExtensionOverrideDefinitionList += !self
 //---
-  if not [ioExtensionMethodMapForBuildingContext§hasKey (!self.mTypeName.string)] then
+  if not [ioExtensionMethodMapForBuildingContext§hasKey (!self.mTypeName.string) then
     !?ioExtensionMethodMapForBuildingContext.insertKey
       (! self.mTypeName,
       !@()
@@ -195,7 +195,7 @@ override proc @overridingAbstractExtensionMethodAST.semanticAnalysis (
   ?let @predefinedTypes unused inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration) {
 //--- Self type
-  let @unifiedTypeMapEntry selfType = [ioTypeMap§typeMapEntryForLKey (!self.mTypeName)]
+  let @unifiedTypeMapEntry selfType = [ioTypeMap§typeMapEntryForLKey (!self.mTypeName)
 //--- Check type is an abstract class
   if not selfType.definition.typeKind.isClassType then
     error (self.mOverridingExtensionMethodName: "cannot declare a extension proc: '@" + selfType.definition.typeName.string + "' is not a class")
@@ -209,7 +209,7 @@ override proc @overridingAbstractExtensionMethodAST.semanticAnalysis (
   var @location inheritedDeclarationLocation = @location.here
   loop (ioTypeMap.count + 1)
   while (not superType.isNull) & (baseTypeName == "") do
-    if [superType.definition.instanceMethodMap§hasKey (!self.mOverridingExtensionMethodName.string)] then
+    if [superType.definition.instanceMethodMap§hasKey (!self.mOverridingExtensionMethodName.string) then
        superType.definition.instanceMethodMap.searchKey
         (!self.mOverridingExtensionMethodName,
         ?*,

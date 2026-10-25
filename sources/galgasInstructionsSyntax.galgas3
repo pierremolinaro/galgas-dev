@@ -64,7 +64,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
           $;$
         or
           let separator = @string.separatorString
-          if not [separator§containsCharacter (!'\n')] then
+          if not [separator§containsCharacter (!'\n') then
             error (.separator : "instructions on same line should be separated by ';'")
           end
         end
@@ -353,7 +353,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           $;$
         or
           let separator = @string.separatorString
-          if not [separator§containsCharacter (!'\n')] then
+          if not [separator§containsCharacter (!'\n') then
             error (.separator : "instructions on same line should be separated by ';'")
           end
         end

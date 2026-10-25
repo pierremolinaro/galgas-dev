@@ -34,9 +34,9 @@ abstract func @lexicalExpressionAST generateConditionCode
 override func @lexicalOrExpressionAST.generateConditionCode
   (?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
   ) -> @string {
-  result = [self.mLeftOperand§generateConditionCode (!context:inLexiqueAnalysisContext)]
+  result = [self.mLeftOperand§generateConditionCode (!context:inLexiqueAnalysisContext)
   result += " || "
-  result += [self.mRightOperand§generateConditionCode (!context:inLexiqueAnalysisContext)]
+  result += [self.mRightOperand§generateConditionCode (!context:inLexiqueAnalysisContext)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -219,11 +219,11 @@ override func @lexicalExplicitRuleAST.generateLexicalRuleCode
                                               ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
                                               ) -> @string {
   result = "if ("
-  result += [self.mLexicalRuleExpression§generateConditionCode (!context:inLexiqueAnalysisContext)]
+  result += [self.mLexicalRuleExpression§generateConditionCode (!context:inLexiqueAnalysisContext)
   result += ") {\n"
   !?result.incIndentation (!2)
   for (instruction) in self.mInstructionList do
-    result += [instruction§generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)]
+    result += [instruction§generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
   end
   !?result.decIndentation (!2)
   result += "}else "

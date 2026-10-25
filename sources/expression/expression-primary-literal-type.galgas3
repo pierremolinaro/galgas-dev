@@ -83,9 +83,9 @@ override proc @literalTypeInExpressionAST.analyzeSemanticExpression
   let usefulnessName = typeNameForUsefulEntitiesGraph (!self.mLiteralTypeName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
 //---
-  let type = [ioTypeMap§typeMapEntryForLKey (!self.mLiteralTypeName)]
+  let type = [ioTypeMap§typeMapEntryForLKey (!self.mLiteralTypeName)
   outExpression = @literalTypeInExpressionForGeneration (
-    ![ioTypeMap§typeMapEntryForLKey (!@(!"type", .here))],
+    ![ioTypeMap§typeMapEntryForLKey (!@(!"type", .here)),
     self.mLiteralTypeName.location,
     type
   )

@@ -95,7 +95,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in initializer do
         formalParameterList ++= @(
           mFormalSelector,
-          [ioTypeMap§typeMapEntryForLKey (!mFormalArgumentTypeName)],
+          [ioTypeMap§typeMapEntryForLKey (!mFormalArgumentTypeName),
           mFormalArgumentName.string,
           mIsConstant
         )
@@ -158,7 +158,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       ?!@unifiedTypeMap ioTypeMap,
       ?let @predefinedTypes unused inPredefinedTypes,
       ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
-   let selfType = [ioTypeMap§typeMapEntryForLKey (!@(!self.mPredefinedTypeName, .here))]
+   let selfType = [ioTypeMap§typeMapEntryForLKey (!@(!self.mPredefinedTypeName, .here))
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!@(!self.mPredefinedTypeName, .here))
     !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)

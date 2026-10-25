@@ -246,7 +246,7 @@ list @propertyInCollectionListAST {
           !selfAvailability: .none,
           !selfObjectCppPrefixForAccessingProperty: ""
         )
-        let propertyType = [ioTypeMap§typeMapEntryForLKey (!propertyTypeName)]
+        let propertyType = [ioTypeMap§typeMapEntryForLKey (!propertyTypeName)
         expressionAST.analyzeSemanticExpression
           (!usefulnessCallerEntityName: inTypeNameForUsefulness,
           !?ioUsefulEntitiesGraph,

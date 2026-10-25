@@ -261,8 +261,8 @@ final class @switchInstructionAST : @semanticInstructionAST {
         !?ioVariableMap.openBranch ()
         var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = @()
         for constantName in branch.mSwitchConstantList do
-          if [enumType.constantMap§hasKey (!constantName.string)] then
-            if [constantsNamedInSwitchInstruction§hasKey (!constantName.string)] then
+          if [enumType.constantMap§hasKey (!constantName.string) then
+            if [constantsNamedInSwitchInstruction§hasKey (!constantName.string) then
               error (constantName
               :"the '" + constantName + "' constant is already named in this switch instruction"
               )

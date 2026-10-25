@@ -43,7 +43,7 @@ struct @genericExtensionMethodListMap {
 
   mutating proc insertKey  (?let @string inKey,
                     ?let @lstring inValue ) {
-    if [self.dictionary§hasKey (!inKey)] then
+    if [self.dictionary§hasKey (!inKey) then
       self.dictionary.searchKey (!inKey, ?var aList)
       !?aList.append (!inValue)
       self.dictionary += !inKey !aList
@@ -55,7 +55,7 @@ struct @genericExtensionMethodListMap {
   //·····························································································
 
   func listForKey (?let @string inKey ) -> @lstringlist {
-    if [self.dictionary§hasKey (!inKey)] then
+    if [self.dictionary§hasKey (!inKey) then
       self.dictionary.searchKey (!inKey, ?result)
    else
       result = @()
@@ -112,7 +112,7 @@ struct @descendantClassListMap {
 
   mutating proc insertKey  (?let @string inKey,
                     ?let @unifiedTypeMapEntry inType ) {
-    if [self.dictionary§hasKey (!inKey)] then
+    if [self.dictionary§hasKey (!inKey) then
       self.dictionary.searchKey (!inKey, ?var aList)
       !?aList.append (!inType)
       self.dictionary += !inKey !aList
@@ -124,7 +124,7 @@ struct @descendantClassListMap {
   //·····························································································
 
   func listForKey (?let @string inKey ) -> @unifiedTypeMapEntryList {
-    if [self.dictionary§hasKey (!inKey)] then
+    if [self.dictionary§hasKey (!inKey) then
       self.dictionary.searchKey (!inKey, ?result)
    else
       result = @()
@@ -178,10 +178,10 @@ proc checkextensionSetterDefinitionForClass
   ?let @genericExtensionMethodListMap inOverridingExtensionMethodListMap,
   ?let @unifiedTypeMap inUnifiedTypeMap
 ) {
-  let @unifiedTypeMapEntryList descendantClasses = [inDescendantClassListMap§listForKey (!inClassName)]
+  let @unifiedTypeMapEntryList descendantClasses = [inDescendantClassListMap§listForKey (!inClassName)
   for (mType) in descendantClasses do
     let @lstring descendantClassName = mType.definition.typeName
-    let @lstringlist overridingMethods = [inOverridingExtensionMethodListMap§listForKey (!descendantClassName.string)]
+    let @lstringlist overridingMethods = [inOverridingExtensionMethodListMap§listForKey (!descendantClassName.string)
     var @bool found = false
     for (mValue) in overridingMethods while not found do
       found = inAbstractExtensionSetterName.string == mValue.string
@@ -215,10 +215,10 @@ proc checkExtensionMethodDefinitionForClass
   ?let @genericExtensionMethodListMap inOverridingExtensionMethodListMap,
   ?let @unifiedTypeMap inUnifiedTypeMap
 ) {
-  let @unifiedTypeMapEntryList descendantClasses = [inDescendantClassListMap§listForKey (!inClassName)]
+  let @unifiedTypeMapEntryList descendantClasses = [inDescendantClassListMap§listForKey (!inClassName)
   for (mType) in descendantClasses do
     let @lstring descendantClassName = mType.definition.typeName
-    let @lstringlist overridingMethods = [inOverridingExtensionMethodListMap§listForKey (!descendantClassName.string)]
+    let @lstringlist overridingMethods = [inOverridingExtensionMethodListMap§listForKey (!descendantClassName.string)
     var @bool found = false
     for (mValue) in overridingMethods while not found do
       found = inAbstractExtensionMethodName.string == mValue.string
@@ -252,10 +252,10 @@ proc checkExtensionGetterDefinitionForClass
   ?let @genericExtensionMethodListMap inOverridingExtensionGetterListMap,
   ?let @unifiedTypeMap inUnifiedTypeMap
 ) {
-  let @unifiedTypeMapEntryList descendantClasses = [inDescendantClassListMap§listForKey (!inClassName)]
+  let @unifiedTypeMapEntryList descendantClasses = [inDescendantClassListMap§listForKey (!inClassName)
   for (mType) in descendantClasses do
     let @lstring descendantClassName = mType.definition.typeName
-    let @lstringlist overridingReaders = [inOverridingExtensionGetterListMap§listForKey (!descendantClassName.string)]
+    let @lstringlist overridingReaders = [inOverridingExtensionGetterListMap§listForKey (!descendantClassName.string)
     var @bool found = false
     for (mValue) in overridingReaders while not found do
       found = inAbstractExtensionGetterName.string == mValue.string
@@ -296,7 +296,7 @@ proc performGalgas3ProjectGlobalCheckings
      if not superType.isNull then
        !?descendantClassListMap.insertKey
          (!superType.definition.typeName.string,
-         ![ioTypeMap§typeMapEntryForLKey (!lkey)]
+         ![ioTypeMap§typeMapEntryForLKey (!lkey)
        )
      end
   end

@@ -202,7 +202,7 @@ proc checkAssignmentTypeWithImplicitGetterCall (?let @unifiedTypeMapEntry inTarg
       )
       ioExpression = conversionExpression
       ok = prop.mPropertyType == inTargetType
-    elsif (not ok) && [inSourceType.definition.getterMap§hasKey (!targetTypeDef.typeName.string)] then
+    elsif (not ok) && [inSourceType.definition.getterMap§hasKey (!targetTypeDef.typeName.string) then
       inSourceType.definition.getterMap.searchKey
         (!targetTypeDef.typeName,
         ?let kind,
@@ -335,7 +335,7 @@ proc checkDiadicOperator (?operatorIsHandled: let @bool inOperandIsHandled,
       )
       ioRightExpression = conversionExpression
       ok = prop.mPropertyType == leftResultType
-    elsif (not ok) && [rightType.definition.getterMap§hasKey (!leftResultType.definition.typeName.string)] then
+    elsif (not ok) && [rightType.definition.getterMap§hasKey (!leftResultType.definition.typeName.string) then
       rightType.definition.getterMap.searchKey
         (!leftResultType.definition.typeName,
         ?let kind,

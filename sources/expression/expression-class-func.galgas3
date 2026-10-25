@@ -56,7 +56,7 @@ syntax extension galgas3ExpressionSyntax {
       !typeName,
       classFuncName,
       expressionList,
-      [startOfExpression§union (!endOfExpression)]
+      [startOfExpression§union (!endOfExpression)
     )
   }
 
@@ -89,7 +89,7 @@ syntax extension galgas4ExpressionSyntax {
       !@("", startOfExpression),
       classFuncName,
       expressionList,
-      [startOfExpression§union (!endOfExpression)]
+      [startOfExpression§union (!endOfExpression)
     )
   }
 
@@ -114,7 +114,7 @@ syntax extension galgas4ExpressionSyntax {
       !inTypeName,
       inClassFunctionName,
       expressionList,
-      [startOfExpression§union (!endOfExpression)]
+      [startOfExpression§union (!endOfExpression)
     )
   }
 
@@ -206,7 +206,7 @@ private proc analyzeConstructorInvocation (?let @lstring inUsefulnessCallerEntit
   outConstructorType = inType
   outRequiredTypes = @()
   if inTypeName.string != "" then
-    outConstructorType = [ioTypeMap§typeMapEntryForLKey (!inTypeName)]
+    outConstructorType = [ioTypeMap§typeMapEntryForLKey (!inTypeName)
   end
   if outConstructorType.isNull then
     error (inTypeName

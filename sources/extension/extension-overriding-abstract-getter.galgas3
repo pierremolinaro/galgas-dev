@@ -168,7 +168,7 @@ override proc @overridingAbstractExtensionGetterAST.enterDeclarationInGraph (
       ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
   ioExtensionOverrideDefinitionList += !self
 //---
-  if not [ioExtensionGetterMapForBuildingContext§hasKey (!self.mTypeName.string)] then
+  if not [ioExtensionGetterMapForBuildingContext§hasKey (!self.mTypeName.string) then
     !?ioExtensionGetterMapForBuildingContext.insertKey
       (!self.mTypeName,
       !@()
@@ -211,9 +211,9 @@ override proc @overridingAbstractExtensionGetterAST.semanticAnalysis (
   ?let @predefinedTypes unused inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration) {
 //--- Self type
-  let @unifiedTypeMapEntry selfType = [ioTypeMap§typeMapEntryForLKey (!self.mTypeName)]
+  let @unifiedTypeMapEntry selfType = [ioTypeMap§typeMapEntryForLKey (!self.mTypeName)
 //--- Return type
-  let returnType = [ioTypeMap§typeMapEntryForLKey (!self.mAbstractExtensionGetterReturnedTypeName)]
+  let returnType = [ioTypeMap§typeMapEntryForLKey (!self.mAbstractExtensionGetterReturnedTypeName)
 //--- Check type is an abstract class
   if not selfType.definition.typeKind.isClassType then
     error (self.mAbstractExtensionGetterName: "cannot declare a extension func: '@" + selfType.definition.typeName.string + "' is not a class")
@@ -228,7 +228,7 @@ override proc @overridingAbstractExtensionGetterAST.semanticAnalysis (
   var @location inheritedDeclarationLocation = @location.here
   loop (ioTypeMap.count + 1)
   while (not superType.isNull) & (baseTypeName == "") do
-    if [superType.definition.getterMap§hasKey (!self.mAbstractExtensionGetterName.string)] then
+    if [superType.definition.getterMap§hasKey (!self.mAbstractExtensionGetterName.string) then
        superType.definition.getterMap.searchKey
         (!self.mAbstractExtensionGetterName,
         ?*,
@@ -254,7 +254,7 @@ override proc @overridingAbstractExtensionGetterAST.semanticAnalysis (
     for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
       formalParameterListForGeneration +=
         !mFormalSelector
-        ![ioTypeMap§typeMapEntryForLKey (!mFormalArgumentTypeName)]
+        ![ioTypeMap§typeMapEntryForLKey (!mFormalArgumentTypeName)
         !mFormalArgumentName.string
         !mFormalArgumentName
         !mIsConstant

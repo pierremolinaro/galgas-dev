@@ -128,7 +128,7 @@ final class @collectionValueAST : @semanticExpressionAST {
     if self.mTypeName.string == "" then
       targetType = inType
     else
-      targetType = [ioTypeMap§typeMapEntryForLKey (!self.mTypeName)]
+      targetType = [ioTypeMap§typeMapEntryForLKey (!self.mTypeName)
     end
   //---
     if targetType == .null then
@@ -140,7 +140,7 @@ final class @collectionValueAST : @semanticExpressionAST {
     else
       let initializerMap = targetType.definition.initializerMap
       let @functionSignature emptyArgumentList = @()
-      if not [initializerMap§hasKey (!emptyArgumentList.initializerSignature)] then
+      if not [initializerMap§hasKey (!emptyArgumentList.initializerSignature) then
         error (self.mTypeName : "the @" + self.mTypeName + " has no @() initializer")
       end
     //--- Usefull entity graph

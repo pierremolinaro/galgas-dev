@@ -196,7 +196,7 @@ override proc @orExpressionAST.analyzeSemanticExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.infixOrOperator)],
+    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.infixOrOperator),
     !"|",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -252,7 +252,7 @@ override proc @orShortExpressionAST.analyzeSemanticExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.infixOrOperator)],
+    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.infixOrOperator),
     !"|",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -307,7 +307,7 @@ override proc @xorExpressionAST.analyzeSemanticExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.infixXorOperator)],
+    !operatorIsHandled: [leftExpression.mResultType.definition.features§contains (!.infixXorOperator),
     !"^",
     !self.mOperatorLocation,
     !?leftExpression,
@@ -374,7 +374,7 @@ override proc @closedSliceExpressionAST.analyzeSemanticExpression
   end
 //--- Generate expression
   outExpression = @closedSliceExpressionForGeneration (
-    ![ioTypeMap§typeMapEntryForLKey (!@(!"range", leftExpression.mLocation))],
+    ![ioTypeMap§typeMapEntryForLKey (!@(!"range", leftExpression.mLocation)),
     self.mOperatorLocation,
     leftExpression,
     rightExpression
@@ -435,7 +435,7 @@ override proc @openedSliceExpressionAST.analyzeSemanticExpression
   )
 //--- Generate expression
   outExpression = @openedSliceExpressionForGeneration (
-    ![ioTypeMap§typeMapEntryForLKey (!@(!"range", leftExpression.mLocation))],
+    ![ioTypeMap§typeMapEntryForLKey (!@(!"range", leftExpression.mLocation)),
     self.mOperatorLocation,
     leftExpression,
     rightExpression

@@ -94,7 +94,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
     !?ioTypeMap.makeEntry (!self.unwrappedTypeName, ?let unwrappedType)
   //--- features
     var features = @typeFeatures ()
-    if [unwrappedType.definition.features§contains (!(.equatable | .comparable | .referenceEquatable))] then
+    if [unwrappedType.definition.features§contains (!(.equatable | .comparable | .referenceEquatable)) then
       features |= .equatable
     end
     handleEquatableComparableExtension (
@@ -160,10 +160,10 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
       ioUsefulnessRootEntities += !nameForUsefulness
     end
   //---
-    let optionalType = [ioTypeMap§typeMapEntryForLKey (!self.optionalTypeName)]
-    let unwrappedType = [ioTypeMap§typeMapEntryForLKey (!self.unwrappedTypeName)]
+    let optionalType = [ioTypeMap§typeMapEntryForLKey (!self.optionalTypeName)
+    let unwrappedType = [ioTypeMap§typeMapEntryForLKey (!self.unwrappedTypeName)
     let correspondingWeakTypeName = makeWeakTypeLName (!unwrappedType.definition.typeName)
-    let correspondingWeakTypeOrNull = [ioTypeMap§typeMapEntryOrNullForLKey (!correspondingWeakTypeName)]
+    let correspondingWeakTypeOrNull = [ioTypeMap§typeMapEntryOrNullForLKey (!correspondingWeakTypeName)
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "optional type " + self.optionalTypeName
       !@optionalTypeForGeneration (optionalType, unwrappedType, correspondingWeakTypeOrNull)

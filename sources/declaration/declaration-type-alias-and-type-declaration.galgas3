@@ -22,7 +22,7 @@
 func makeEmbeddedTypeLName (?outer: let @lstring inOuterTypeName,
                           ?inner: let @lstring inInnerTypeName ) -> @lstring {
   result = @(makeEmbeddedTypeName (!outer: inOuterTypeName !inner: inInnerTypeName),
-                  [inOuterTypeName.location§union (!inInnerTypeName)])
+                  [inOuterTypeName.location§union (!inInnerTypeName))
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -228,7 +228,7 @@ syntax extension galgas4DeclarationsSyntax {
     select
       let elementTypeName = outTypeName
       outTypeName = makeArrayTypeLName (!elementTypeName)
-      if not [ioDeclarations.implicitTypeDeclarationSet§hasKey (!outTypeName.string)] then
+      if not [ioDeclarations.implicitTypeDeclarationSet§hasKey (!outTypeName.string) then
         ioDeclarations.implicitTypeDeclarationSet ++= outTypeName.string
         ioDeclarations.mDeclarationList += !@arrayTypeDeclarationAST (
           !isPredefined: false,

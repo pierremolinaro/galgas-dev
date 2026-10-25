@@ -392,7 +392,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     for (* propertyTypeName mPropertyName 2* initExpression) in self.mPropertyList do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
       !?ioUsefulEntitiesGraph.addEdge (!from: sortedListNameForUsefulness, !to: propertyTypeNameForUsefulness)
-      let t = [ioTypeMap§typeMapEntryForLKey (!propertyTypeName)]
+      let t = [ioTypeMap§typeMapEntryForLKey (!propertyTypeName)
       let hasSelector = true
       typedAttributeList +=
         !t
@@ -408,11 +408,11 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     for (mSortedAttributeName mAscending) in self.mSortDescriptorList do
       attributeMap.searchKey (!mSortedAttributeName, ?let @unifiedTypeMapEntry type)
       sortDescriptorList += !type !mSortedAttributeName.string !mAscending
-      if [attributesUsedForSorting§hasKey (!mSortedAttributeName.string)] then
+      if [attributesUsedForSorting§hasKey (!mSortedAttributeName.string) then
         error (mSortedAttributeName : "the '" + mSortedAttributeName + "' is already used for sorting")
       end
       attributesUsedForSorting ++= mSortedAttributeName.string
-      if not [type.definition.features§contains (!.comparable)] then
+      if not [type.definition.features§contains (!.comparable) then
         error (mSortedAttributeName : "the @" + type.definition.typeName + " type is not comparable")
       end
     end
@@ -420,8 +420,8 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "sorted list " + self.mSortedListTypeName
       !@sortedListTypeForGeneration (
-        ![ioTypeMap§typeMapEntryForLKey (!self.mSortedListTypeName)],
-        [ioTypeMap§typeMapEntryForLKey (!makeEmbeddedElementTypeLName (!self.mSortedListTypeName))],
+        ![ioTypeMap§typeMapEntryForLKey (!self.mSortedListTypeName),
+        [ioTypeMap§typeMapEntryForLKey (!makeEmbeddedElementTypeLName (!self.mSortedListTypeName)),
         typedAttributeList,
         sortDescriptorList
       )

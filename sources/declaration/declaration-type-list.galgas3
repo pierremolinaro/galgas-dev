@@ -484,7 +484,7 @@ override proc @listDeclarationAST.semanticAnalysis
     end
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
     !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: propertyTypeNameForUsefulness)
-    let t = [ioTypeMap§typeMapEntryForLKey (!propertyTypeName)]
+    let t = [ioTypeMap§typeMapEntryForLKey (!propertyTypeName)
     typedAttributeList +=
       !t
       !propertyName
@@ -494,12 +494,12 @@ override proc @listDeclarationAST.semanticAnalysis
     !?attributeMap.insertKey (!propertyName, !t)
   end
 //---
-  let selfType = [ioTypeMap§typeMapEntryForLKey (!self.mListTypeName)]
+  let selfType = [ioTypeMap§typeMapEntryForLKey (!self.mListTypeName)
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "list type " + self.mListTypeName
     !@listTypeForGeneration (
       !selfType,
-      [ioTypeMap§typeMapEntryForLKey (!makeEmbeddedElementTypeLName (!self.mListTypeName))],
+      [ioTypeMap§typeMapEntryForLKey (!makeEmbeddedElementTypeLName (!self.mListTypeName)),
       typedAttributeList
     )
 }

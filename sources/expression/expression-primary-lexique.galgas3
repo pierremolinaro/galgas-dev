@@ -101,7 +101,7 @@ override proc @lexiqueIntrospectionExpressionAST.analyzeSemanticExpression
   end
 //---
   outExpression = @lexiqueIntrospectionForGeneration (
-    ![ioTypeMap§typeMapEntryForLKey (!"stringlist".nowhere)],
+    ![ioTypeMap§typeMapEntryForLKey (!"stringlist".nowhere),
     self.mLexiqueComponentName.location,
     self.mLexiqueComponentName.string,
     self.mLexiqueGetterName.string)

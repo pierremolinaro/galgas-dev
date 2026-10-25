@@ -130,7 +130,7 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
     )
   //--- Check internal
     if isInternal then
-      let procDeclarationLocation = [inAnalysisContext.semanticContext.mFunctionMap§locationForKey (!self.mFunctionName.string)]
+      let procDeclarationLocation = [inAnalysisContext.semanticContext.mFunctionMap§locationForKey (!self.mFunctionName.string)
       if self.mFunctionName.location.file != procDeclarationLocation.file then
         error (self.mFunctionName : "this proc is internal to '" + procDeclarationLocation.file + "' file")
       end

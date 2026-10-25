@@ -209,7 +209,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
   //---
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
-      let parameterType = [ioTypeMap§typeMapEntryForLKey (!argument.mFormalArgumentTypeName)]
+      let parameterType = [ioTypeMap§typeMapEntryForLKey (!argument.mFormalArgumentTypeName)
       routineSignature +=
         !argument.mFormalSelector
         !parameterType
