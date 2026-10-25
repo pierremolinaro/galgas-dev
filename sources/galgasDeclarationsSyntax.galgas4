@@ -136,7 +136,7 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <filewrapper_templates> (?!@galgasDeclarationAST ioDeclarations,
-                               !@filewrapperTemplateListAST outFilewrapperTemplateList ) {
+                                !@filewrapperTemplateListAST outFilewrapperTemplateList ) {
     ${$
     outFilewrapperTemplateList = @()
     repeat

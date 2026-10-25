@@ -213,7 +213,6 @@ struct @semanticContext {
   public var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis = @()
   public var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis = @()
   public var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis = @()
-//  public var @bool galgas4 %initArgLabel
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -676,8 +675,8 @@ override proc @filewrapperDeclarationAST.enterDeclarationInSemanticContext
    )
   end
 //--- Insert filewrapper
-  !?ioSemanticContext.mFilewrapperMap.insertKey
-    (!self.mFilewrapperName,
+  !?ioSemanticContext.mFilewrapperMap.insertKey (
+    !self.mFilewrapperName,
     !self.mFilewrapperPath,
     !self.mFilewrapperTextFileExtensionList,
     !regularRootFileMap,

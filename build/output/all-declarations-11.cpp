@@ -10331,7 +10331,7 @@ GGS_classTypeForGeneration_2E_weak GGS_classTypeForGeneration_2E_weak::extractOb
 GGS_typeKindEnum cPtr_predefinedTypeAST::getter_typeKind (Compiler */* inCompiler */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_typeKindEnum result_result ; // Returned variable
-  result_result = GGS_typeKindEnum::class_func_otherType (SOURCE_FILE ("declaration-predefined-type.galgas3", 35)) ;
+  result_result = GGS_typeKindEnum::class_func_otherType (SOURCE_FILE ("declaration-predefined-type.galgas4", 35)) ;
 //---
   return result_result ;
 }
@@ -10527,10 +10527,10 @@ void callExtensionMethod_getClassMethodMap (cPtr_predefinedTypeAST * inObject,
 
 GGS_typeFeatures cPtr_predefinedTypeAST::getter_getSupportedOperatorFlags (Compiler * inCompiler
                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_typeFeatures result_outFlags ; // Returned variable
-  result_outFlags = GGS_typeFeatures::init (inCompiler COMMA_HERE) ;
+  GGS_typeFeatures result_result ; // Returned variable
+  result_result = GGS_typeFeatures::init (inCompiler COMMA_HERE) ;
 //---
-  return result_outFlags ;
+  return result_result ;
 }
 
 

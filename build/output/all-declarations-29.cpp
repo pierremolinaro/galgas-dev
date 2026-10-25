@@ -8,6 +8,33 @@
 #include "all-declarations-29.h"
 
 //--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@sortedListDeclarationAST addAssociatedElement'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_sortedListDeclarationAST::method_addAssociatedElement (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_propertyInCollectionListAST var_structAttributeList_6538 = GGS_propertyInCollectionListAST::init (inCompiler COMMA_HERE) ;
+  const GGS_sortedListDeclarationAST temp_0 = this ;
+  UpEnumerator_propertyInCollectionListAST enumerator_6629 (temp_0.readProperty_mPropertyList ()) ;
+  while (enumerator_6629.hasCurrentObject ()) {
+    var_structAttributeList_6538.addAssignOperation (enumerator_6629.current_mutability (HERE), enumerator_6629.current_typeName (HERE), enumerator_6629.current_name (HERE), GGS_AccessControlAST::class_func_publicAccess (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 181)), enumerator_6629.current_hasSelector (HERE), enumerator_6629.current_initialization (HERE)  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 177)) ;
+    enumerator_6629.gotoNextObject () ;
+  }
+  const GGS_sortedListDeclarationAST temp_1 = this ;
+  const GGS_sortedListDeclarationAST temp_2 = this ;
+  const GGS_sortedListDeclarationAST temp_3 = this ;
+  GGS_structComparison temp_4 ;
+  const GalgasBool test_5 = temp_3.readProperty_equatable ().boolEnum () ;
+  if (GalgasBool::boolTrue == test_5) {
+    temp_4 = GGS_structComparison::class_func_equatable (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 190)) ;
+  }else if (GalgasBool::boolFalse == test_5) {
+    temp_4 = GGS_structComparison::class_func_none (SOURCE_FILE ("declaration-type-sorted-list.galgas3", 190)) ;
+  }
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.addAssignOperation (GGS_structDeclarationAST::init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (temp_1.readProperty_isPredefined (), function_makeEmbeddedElementTypeLName (temp_2.readProperty_mSortedListTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 187)), var_structAttributeList_6538, GGS_string::makeEmptyString (), temp_4, GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-sorted-list.galgas3", 185)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@sortedListDeclarationAST enterDeclarationInSemanticContext'
 //--------------------------------------------------------------------------------------------------
 

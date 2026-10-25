@@ -233,14 +233,15 @@ final class @classDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterDeclarationInSemanticContext
-    (?!@equatableExtensionMap ioEquatableExtensionMap,
+  override proc enterDeclarationInSemanticContext (
+    ?!@equatableExtensionMap ioEquatableExtensionMap,
     ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
     ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
     ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
     ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
-    ?!@semanticContext ioSemanticContext ) {
+    ?!@semanticContext ioSemanticContext
+  ) {
     var @getterMap getterMap
     var @setterMap setterMap
     var @instanceMethodMap instanceMethodMap
