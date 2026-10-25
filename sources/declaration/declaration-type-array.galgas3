@@ -28,7 +28,7 @@ syntax extension galgas3DeclarationsSyntax {
     $[$
     <type_definition_ggs3> (!?ioDeclarations, ?let elementTypeName)
     outTypeName = makeArrayTypeLName (!elementTypeName)
-    if not [ioDeclarations.implicitTypeDeclarationSet hasKey (!outTypeName.string)] then
+    if not [ioDeclarations.implicitTypeDeclarationSet§hasKey (!outTypeName.string)] then
       ioDeclarations.implicitTypeDeclarationSet ++= outTypeName.string
       ioDeclarations.mDeclarationList += !@arrayTypeDeclarationAST (
         !isPredefined: false,
@@ -322,12 +322,12 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       ioUsefulnessRootEntities += !initializerNameForUsefulness
     end
   //---
-    let selfType = [ioTypeMap typeMapEntryForLKey (!self.arrayTypeName)]
+    let selfType = [ioTypeMap§typeMapEntryForLKey (!self.arrayTypeName)]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "array type " + self.arrayTypeName
       !@arrayTypeForGeneration (
         !selfType,
-        [ioTypeMap typeMapEntryForLKey (!self.elementTypeName)]
+        [ioTypeMap§typeMapEntryForLKey (!self.elementTypeName)]
       )
   }
 

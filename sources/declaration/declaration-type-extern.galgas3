@@ -542,7 +542,7 @@ override proc @externTypeDeclarationAST.semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !infoMessage: "extern type " + self.mExternTypeName
     !@externTypeDeclarationForGeneration (
-      ![ioTypeMap typeMapEntryForLKey (!self.mExternTypeName)],
+      ![ioTypeMap§typeMapEntryForLKey (!self.mExternTypeName)],
       self.mExternTypeName.string,
       self.mCppPreDeclarationCode,
       self.mCppClassCode

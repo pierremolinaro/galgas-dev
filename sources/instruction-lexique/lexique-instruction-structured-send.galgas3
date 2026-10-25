@@ -129,7 +129,7 @@ override func @lexicalStructuredSendInstructionAST.generateSwiftCocoaInstruction
     outGeneratedCode += "}\n"
   end
   outGeneratedCode += "if tokenCode == 0 {\n"
-  outGeneratedCode += "  " + [self.mLexicalSendDefaultAction generateSwiftCocoaDefaultSendCode (!inScannerClassName)]
+  outGeneratedCode += "  " + [self.mLexicalSendDefaultAction§generateSwiftCocoaDefaultSendCode (!inScannerClassName)]
   outGeneratedCode += "}\n"
 }
 
@@ -154,7 +154,7 @@ override func @lexicalStructuredSendInstructionAST.generateLexicalInstructionCod
     result += "}\n"
   end
   result += "if (token.mTokenCode == -1) {\n"
-  result += "  " + [self.mLexicalSendDefaultAction generateDefaultSendCode (!inScannerClassName)]
+  result += "  " + [self.mLexicalSendDefaultAction§generateDefaultSendCode (!inScannerClassName)]
   result += "}\n"
   result += "enterToken (token) ;\n"
 }

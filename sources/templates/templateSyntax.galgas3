@@ -419,7 +419,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
       !receiverExpression,
       getterName,
       expressionList,
-      [startLocation union (!endLocation)]
+      [startLocation§union (!endLocation)]
     )
   or
     $option$

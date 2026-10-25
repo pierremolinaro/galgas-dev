@@ -12692,13 +12692,13 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [187] = {
   false /* == */,
   false /* = */,
   false /* && */,
+  false /* § */,
   false /* [ */,
   false /* ] */,
   false /* ++= */,
   false /* . */,
   false /* ... */,
   false /* ..< */,
-  false /* @{ */,
   false /* @( */,
   false /* @[ */,
   false /* += */,
@@ -12942,13 +12942,13 @@ GGS_stringlist Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssignOperation (GGS_string ("==") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("=") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("&&") COMMA_HERE) ;
+  result.addAssignOperation (GGS_string ("§") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("[") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("]") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("++=") COMMA_HERE) ;
   result.addAssignOperation (GGS_string (".") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("...") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("..<") COMMA_HERE) ;
-  result.addAssignOperation (GGS_string ("@{") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("@(") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("@[") COMMA_HERE) ;
   result.addAssignOperation (GGS_string ("+=") COMMA_HERE) ;

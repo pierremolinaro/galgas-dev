@@ -151,8 +151,8 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
       var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = @()
       var analysisContext = inAnalysisContext
       for constantName in mConstantList do
-        if [enumType.constantMap hasKey (!constantName.string)] then
-          if [constantsNamedInSwitchInstruction hasKey (!constantName.string)] then
+        if [enumType.constantMap§hasKey (!constantName.string)] then
+          if [constantsNamedInSwitchInstruction§hasKey (!constantName.string)] then
             error (constantName
             :"the '" + constantName + "' constant is already named in this switch instruction")
           end

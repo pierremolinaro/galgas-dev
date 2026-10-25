@@ -37,7 +37,7 @@ filewrapper grammarRulesInTexDocumentTemplate in "+generation-templates/grammar_
 private func escapeForTex (let @string inString) -> @string {
   result = ""
   for @uint idx in 0 ..< inString.count do
-    let c = [inString characterAtIndex (!idx)]
+    let c = [inString§characterAtIndex (!idx)]
     if c == '_' then
       result += "\\_"
     elsif c == '{' then
@@ -285,7 +285,7 @@ mutating proc @rowList.appendRow
     end
   end
 //--- Get row
-  var cols = [self columnsAtIndex (!inRow)]
+  var cols = [self§columnsAtIndex (!inRow)]
 //--- add column pads in row
   if cols.count <= inColumn then
     for * in cols.count ... inColumn do

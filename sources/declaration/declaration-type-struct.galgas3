@@ -179,7 +179,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
         !hasSelector: property.hasSelector
       !?propertyMap.insertKey
         (!property.name,
-        ![property.accessControl accessControl (!forDeclaringType: structTypeIndex)],
+        ![property.accessControl§accessControl (!forDeclaringType: structTypeIndex)],
         !property.mutability.isConstantProperty,
         !propertyTypeEntry
       )
@@ -277,7 +277,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
               ?!@unifiedTypeMap ioTypeMap,
               ?let @predefinedTypes inPredefinedTypes,
               ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
-    let structType = [ioTypeMap typeMapEntryForLKey (!self.structTypeName)]
+    let structType = [ioTypeMap§typeMapEntryForLKey (!self.structTypeName)]
     let structNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.structTypeName)
   //---
     if self.mStructurePropertyListAST.count == 0 then
@@ -289,8 +289,8 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     for property in self.mStructurePropertyListAST do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!property.typeName)
       !?ioUsefulEntitiesGraph.addEdge (!from: structNameForUsefulness, !to: propertyTypeNameForUsefulness)
-      let t = [ioTypeMap typeMapEntryForLKey (!property.typeName)]
-      if [forbiddenKeysForStruct () hasKey (!property.name.string)] then
+      let t = [ioTypeMap§typeMapEntryForLKey (!property.typeName)]
+      if [forbiddenKeysForStruct ()§hasKey (!property.name.string)] then
         var @string m = "an property cannot be named:"
         for s in forbiddenKeysForStruct () do
           m += " " + s
@@ -331,14 +331,14 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       case none :
       case equatable :
         let propertyFeatures = t.definition.features
-        if (not [propertyFeatures contains (!.equatable)])
-           & not [propertyFeatures contains (!.comparable)]
-           & not [propertyFeatures contains (!.referenceEquatable)] then
+        if (not [propertyFeatures§contains (!.equatable)])
+           & not [propertyFeatures§contains (!.comparable)]
+           & not [propertyFeatures§contains (!.referenceEquatable)] then
           error (property.name
           : "the structure is not equatable, because '" + property.name + "' is not")
         end
       case comparable :
-        if not [t.definition.features contains (!.comparable)] then
+        if not [t.definition.features§contains (!.comparable)] then
           error (property.name
           : "the structure is not comparable, because '" + property.name + "' is not")
         end
@@ -355,7 +355,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       ?let initializationCode
     )
   //---
-    let constructorNeedsCompilerVar = not [unusedVariableCppNameSet hasKey (!compilerCppName ())]
+    let constructorNeedsCompilerVar = not [unusedVariableCppNameSet§hasKey (!compilerCppName ())]
     ioSemanticDeclarationListForGeneration +=
       !infoMessage: "struct " + self.structTypeName
       !@structTypeForGeneration (
@@ -364,7 +364,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
         constructorArgumentList,
         initializationCode,
         constructorNeedsCompilerVar,
-        [structType.definition.features contains (!.generateSynthetizedInitializer)]
+        [structType.definition.features§contains (!.generateSynthetizedInitializer)]
       )
   //--- Useful entities graph
     !?ioUsefulEntitiesGraph.addNode (!structNameForUsefulness, !structNameForUsefulness)
@@ -372,7 +372,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       ioUsefulnessRootEntities += !structNameForUsefulness
     end
   //--- Add synthetized initializer ?
-    if [structType.definition.features contains (!.generateSynthetizedInitializer)] then
+    if [structType.definition.features§contains (!.generateSynthetizedInitializer)] then
       let initializerForUsefulness = initializerNameForUsefulEntitiesGraph (
         !self.structTypeName
         !constructorArgumentList.initializerSignature

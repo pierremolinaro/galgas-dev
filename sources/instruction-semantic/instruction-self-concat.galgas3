@@ -187,7 +187,7 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
         error (self.mInstructionLocation : "'self' not mutable in this context")
       end
     //--- Check target variable type support '/= exp' operator
-      if [selfAvailable.type.definition.features contains (!.divAssignOperatorWithExpression)] then
+      if selfAvailable.type.definition.features.contains (!.divAssignOperatorWithExpression) then
         error (self.mInstructionLocation
         :"the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '/=' operator"
@@ -257,7 +257,7 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
         error (self.mInstructionLocation : "'self' not mutable in this context")
       end
     //--- Check target variable type support '+= exp' operator
-      if not [selfAvailable.type.definition.features contains (!.plusAssignOperatorWithExpression)] then
+      if not [selfAvailable.type.definition.features§contains (!.plusAssignOperatorWithExpression)] then
         error (self.mInstructionLocation
         : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '+=' operator"
@@ -327,7 +327,7 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
         error (self.mInstructionLocation : "'self' not mutable in this context")
       end
     //--- Check target variable type support '-= exp' operator
-      if not [selfAvailable.type.definition.features contains (!.minusAssignOperatorWithExpression)] then
+      if not [selfAvailable.type.definition.features§contains (!.minusAssignOperatorWithExpression)] then
         error (self.mInstructionLocation
         : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '-=' operator"
@@ -397,7 +397,7 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
         error (self.mInstructionLocation : "'self' not mutable in this context")
       end
     //--- Check target variable type support '*= exp' operator
-      if [selfAvailable.type.definition.features contains (!.mulAssignOperatorWithExpression)] then
+      if [selfAvailable.type.definition.features§contains (!.mulAssignOperatorWithExpression)] then
         error (self.mInstructionLocation
         : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '*=' operator"

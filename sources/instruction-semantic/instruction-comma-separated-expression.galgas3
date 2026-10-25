@@ -253,7 +253,7 @@ list @CommaSeparatedExpressionList {
           if typeName.string == "" then
             error (typeName.location : "on a class object, the 'as' clause is required" spoil castType, testType)
           else
-            castType = [ioTypeMap typeMapEntryForLKey (!typeName)]
+            castType = [ioTypeMap§typeMapEntryForLKey (!typeName)]
             testType = castType
           //--- Check expression type is a descendant of named type
             var @unifiedTypeMapEntry t = castType
@@ -303,7 +303,7 @@ list @CommaSeparatedExpressionList {
           if typeName.string == "" then
             castType = weakRefType.referenceType
           else
-            castType = [ioTypeMap typeMapEntryForLKey (!typeName)]
+            castType = [ioTypeMap§typeMapEntryForLKey (!typeName)]
           end
           testType = castType
           var @unifiedTypeMapEntry t = castType

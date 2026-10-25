@@ -521,13 +521,13 @@ class ScannerFor_galgasScanner3 : AbstractScanner {
       2, // 153 : galgasScanner3_1__3D__3D_
       2, // 154 : galgasScanner3_1__3D_
       2, // 155 : galgasScanner3_1__26__26_
-      2, // 156 : galgasScanner3_1__5B_
-      2, // 157 : galgasScanner3_1__5D_
-      2, // 158 : galgasScanner3_1__2B__2B__3D_
-      2, // 159 : galgasScanner3_1__2E_
-      2, // 160 : galgasScanner3_1__2E__2E__2E_
-      2, // 161 : galgasScanner3_1__2E__2E__3C_
-      2, // 162 : galgasScanner3_1__40__7B_
+      2, // 156 : galgasScanner3_1__A7_
+      2, // 157 : galgasScanner3_1__5B_
+      2, // 158 : galgasScanner3_1__5D_
+      2, // 159 : galgasScanner3_1__2B__2B__3D_
+      2, // 160 : galgasScanner3_1__2E_
+      2, // 161 : galgasScanner3_1__2E__2E__2E_
+      2, // 162 : galgasScanner3_1__2E__2E__3C_
       2, // 163 : galgasScanner3_1__40__28_
       2, // 164 : galgasScanner3_1__40__5B_
       2, // 165 : galgasScanner3_1__2B__3D_
@@ -719,13 +719,13 @@ class ScannerFor_galgasScanner3 : AbstractScanner {
       true, // 153 : galgasScanner3_1__3D__3D_
       true, // 154 : galgasScanner3_1__3D_
       true, // 155 : galgasScanner3_1__26__26_
-      true, // 156 : galgasScanner3_1__5B_
-      true, // 157 : galgasScanner3_1__5D_
-      true, // 158 : galgasScanner3_1__2B__2B__3D_
-      true, // 159 : galgasScanner3_1__2E_
-      true, // 160 : galgasScanner3_1__2E__2E__2E_
-      true, // 161 : galgasScanner3_1__2E__2E__3C_
-      true, // 162 : galgasScanner3_1__40__7B_
+      true, // 156 : galgasScanner3_1__A7_
+      true, // 157 : galgasScanner3_1__5B_
+      true, // 158 : galgasScanner3_1__5D_
+      true, // 159 : galgasScanner3_1__2B__2B__3D_
+      true, // 160 : galgasScanner3_1__2E_
+      true, // 161 : galgasScanner3_1__2E__2E__2E_
+      true, // 162 : galgasScanner3_1__2E__2E__3C_
       true, // 163 : galgasScanner3_1__40__28_
       true, // 164 : galgasScanner3_1__40__5B_
       true, // 165 : galgasScanner3_1__2B__3D_
@@ -1834,8 +1834,6 @@ class ScannerFor_galgasScanner3 : AbstractScanner {
       tokenCode = galgasScanner3_1__7C__3D_
     }else if scanningOk && self.testForInputString ("^=", advance: true) {
       tokenCode = galgasScanner3_1__5E__3D_
-    }else if scanningOk && self.testForInputString ("@{", advance: true) {
-      tokenCode = galgasScanner3_1__40__7B_
     }else if scanningOk && self.testForInputString ("@[", advance: true) {
       tokenCode = galgasScanner3_1__40__5B_
     }else if scanningOk && self.testForInputString ("@(", advance: true) {
@@ -1876,6 +1874,8 @@ class ScannerFor_galgasScanner3 : AbstractScanner {
       tokenCode = galgasScanner3_1__21__5E_
     }else if scanningOk && self.testForInputString ("!=", advance: true) {
       tokenCode = galgasScanner3_1__21__3D_
+    }else if scanningOk && self.testForInputString ("§", advance: true) {
+      tokenCode = galgasScanner3_1__A7_
     }else if scanningOk && self.testForInputString ("~", advance: true) {
       tokenCode = galgasScanner3_1__7E_
     }else if scanningOk && self.testForInputString ("}", advance: true) {
@@ -2524,13 +2524,13 @@ let galgasScanner3_1__2D__3E_ : UInt16 = 152
 let galgasScanner3_1__3D__3D_ : UInt16 = 153
 let galgasScanner3_1__3D_ : UInt16 = 154
 let galgasScanner3_1__26__26_ : UInt16 = 155
-let galgasScanner3_1__5B_ : UInt16 = 156
-let galgasScanner3_1__5D_ : UInt16 = 157
-let galgasScanner3_1__2B__2B__3D_ : UInt16 = 158
-let galgasScanner3_1__2E_ : UInt16 = 159
-let galgasScanner3_1__2E__2E__2E_ : UInt16 = 160
-let galgasScanner3_1__2E__2E__3C_ : UInt16 = 161
-let galgasScanner3_1__40__7B_ : UInt16 = 162
+let galgasScanner3_1__A7_ : UInt16 = 156
+let galgasScanner3_1__5B_ : UInt16 = 157
+let galgasScanner3_1__5D_ : UInt16 = 158
+let galgasScanner3_1__2B__2B__3D_ : UInt16 = 159
+let galgasScanner3_1__2E_ : UInt16 = 160
+let galgasScanner3_1__2E__2E__2E_ : UInt16 = 161
+let galgasScanner3_1__2E__2E__3C_ : UInt16 = 162
 let galgasScanner3_1__40__28_ : UInt16 = 163
 let galgasScanner3_1__40__5B_ : UInt16 = 164
 let galgasScanner3_1__2B__3D_ : UInt16 = 165

@@ -390,7 +390,7 @@ proc addExtensions
      ?!@instanceMethodMap ioInstanceMethodMap,
      ?acceptSetters: let @bool inAcceptSetters ) {
 //-----------------------  Extension getters
-  if [inExtensionGetterMapForBuildingContext hasKey (!inTypeName.string)] then
+  if [inExtensionGetterMapForBuildingContext§hasKey (!inTypeName.string)] then
     inExtensionGetterMapForBuildingContext.searchKey (!inTypeName, ?let extensionGetterMapForType)
     for (lkey mResultTypeName mInputFormalParameterList qualifier) in extensionGetterMapForType do
       var @functionSignature formalArgumentList = @()
@@ -404,11 +404,11 @@ proc addExtensions
       end
       !?ioTypeMap.makeEntry (!mResultTypeName, ?let returnedType)
       if qualifier == .isVirtualOverriding then
-        if [ioGetterMap hasKey (!lkey)] then
+        if [ioGetterMap§hasKey (!lkey)] then
           !?ioGetterMap.setMQualifierForKey (!.isVirtualOverriding, !lkey)
         end
       elsif qualifier == .isVirtualOverridingAbstract then
-        if [ioGetterMap hasKey (!lkey)] then
+        if [ioGetterMap§hasKey (!lkey)] then
           !?ioGetterMap.setMQualifierForKey (!.isVirtualOverridingAbstract, !lkey)
         end
       elsif inIsClass & (qualifier == .isBasic) then
@@ -437,7 +437,7 @@ proc addExtensions
     end
   end
 //-----------------------  Extension methods
-  if [inExtensionMethodMapForBuildingContext hasKey (!inTypeName.string)] then
+  if [inExtensionMethodMapForBuildingContext§hasKey (!inTypeName.string)] then
     inExtensionMethodMapForBuildingContext.searchKey (!inTypeName, ?let extensionMethodMapForType)
     for (lkey mFormalParameterList qualifier) in extensionMethodMapForType do
       var formalArgumentList = @formalParameterSignature ()
@@ -453,11 +453,11 @@ proc addExtensions
           !parameter.mFormalArgumentName.string
       end
       if qualifier == .isVirtualOverriding then
-        if [ioInstanceMethodMap hasKey (!lkey)] then
+        if [ioInstanceMethodMap§hasKey (!lkey)] then
           !?ioInstanceMethodMap.setMQualifierForKey (!.isVirtualOverriding, !lkey)
         end
       elsif qualifier == .isVirtualOverridingAbstract then
-        if [ioInstanceMethodMap hasKey (!lkey)] then
+        if [ioInstanceMethodMap§hasKey (!lkey)] then
           !?ioInstanceMethodMap.setMQualifierForKey (!.isVirtualOverridingAbstract, !lkey)
         end
       elsif inIsClass & (qualifier == .isBasic) then
@@ -484,7 +484,7 @@ proc addExtensions
     end
   end
 //-----------------------  Extension setters
-  if [inExtensionSetterMapForBuildingContext hasKey (!inTypeName.string)] then
+  if [inExtensionSetterMapForBuildingContext§hasKey (!inTypeName.string)] then
     inExtensionSetterMapForBuildingContext.searchKey (!inTypeName, ?let extensionSetterMapForType)
     for (lkey mFormalParameterList) in extensionSetterMapForType do
       var @formalParameterSignature formalArgumentList = @()
@@ -510,7 +510,7 @@ proc addExtensions
     end
   end
 //-----------------------  Extension initializers
-  if [inExtensionInitializerMapForBuildingContext hasKey (!inTypeName.string)] then
+  if [inExtensionInitializerMapForBuildingContext§hasKey (!inTypeName.string)] then
     inExtensionInitializerMapForBuildingContext.searchKey (!inTypeName, ?let initializerMapForType)
     for (lkey mFormalParameterList) in initializerMapForType do
       var @functionSignature formalArgumentList = @()
@@ -556,10 +556,10 @@ proc recursivelyEnumerateDirectories
   let @uint currentDirectoryIndex = ioWrapperDirectoryIndex
   ioWrapperDirectoryIndex += 1
 //--- Enumerates regular files
-  let @stringlist files = [inAbsoluteSourcePath regularFiles (!false)]
+  let @stringlist files = [inAbsoluteSourcePath§regularFiles (!false)]
   outWrapperFileMap = @()
   for (mValue) in files do
-    if [inTextFileExtensionMap hasKey (!mValue.pathExtension)] then
+    if [inTextFileExtensionMap§hasKey (!mValue.pathExtension)] then
       let @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       !?outWrapperFileMap.insertKey
         (!@lstring (!mValue, @location.here),
@@ -569,7 +569,7 @@ proc recursivelyEnumerateDirectories
         !ioWrapperFileIndex
       )
       ioWrapperFileIndex += 1
-    elsif [inBinaryFileExtensionMap hasKey (!mValue.pathExtension)] then
+    elsif [inBinaryFileExtensionMap§hasKey (!mValue.pathExtension)] then
       let @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       !?outWrapperFileMap.insertKey
         (!@lstring (!mValue, @location.here),
@@ -582,7 +582,7 @@ proc recursivelyEnumerateDirectories
     end
   end
 //--- Enumerates regular directories
-  let @stringlist directories = [inAbsoluteSourcePath directories (!false)]
+  let @stringlist directories = [inAbsoluteSourcePath§directories (!false)]
   outWrapperDirectoryMap = @()
   for (mValue) in directories do
     let @uint theDirectoryIndex = ioWrapperDirectoryIndex
@@ -642,7 +642,7 @@ override proc @filewrapperDeclarationAST.enterDeclarationInSemanticContext
 //--- Build binary file extension map
   var @wrapperExtensionMap binaryFileExtensionMap = @()
   for (mValue) in self.mFilewrapperBinaryFileExtensionList do
-    if [textExtensionMap hasKey (!mValue.string)] then
+    if [textExtensionMap§hasKey (!mValue.string)] then
       error (mValue:"the '" + mValue + "' extension is already used for text files")
     else
     !?binaryFileExtensionMap.insertKey (!mValue)

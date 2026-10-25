@@ -63,7 +63,7 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
         for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in mFormalParametersList do
           switch mFormalArgumentPassingModeForGrammarAnalysis
           case argumentConstantIn, argumentVarIn :
-            let t = [inUnifiedTypeMap typeMapEntryForLKey (!mGalgasTypeNameForGrammarAnalysis)]
+            let t = [inUnifiedTypeMap§typeMapEntryForLKey (!mGalgasTypeNameForGrammarAnalysis)]
             t.addHeaderFileName (!?ioInclusionSet)
           case argumentInOut, argumentOut :
           end
@@ -292,7 +292,7 @@ proc generateProcedure
     case argumentVarIn :
       outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation + " "
     end
-    if [unusedVariableCppNameSet hasKey (!mFormalArgumentCppName)] then
+    if [unusedVariableCppNameSet§hasKey (!mFormalArgumentCppName)] then
       outGeneratedCode += "/* " + mFormalArgumentCppName + " */"
     else
       outGeneratedCode += mFormalArgumentCppName
@@ -302,7 +302,7 @@ proc generateProcedure
   end
 //--- Syntax directed argument ?
   if inGenerateSyntaxDirectedTranslationString then
-    if [unusedVariableCppNameSet hasKey (!syntaxDirectedTranslationResultVarName ())] then
+    if [unusedVariableCppNameSet§hasKey (!syntaxDirectedTranslationResultVarName ())] then
       outGeneratedCode += "String & /* " + syntaxDirectedTranslationResultVarName () + " */,\n"
     else
       outGeneratedCode += "String & " + syntaxDirectedTranslationResultVarName () + ",\n"
@@ -311,7 +311,7 @@ proc generateProcedure
   end
 //--- Compiler argument
   outGeneratedCode += inCompilerTypeName + " * "
-  if [unusedVariableCppNameSet hasKey (!compilerCppName ())] then
+  if [unusedVariableCppNameSet§hasKey (!compilerCppName ())] then
     outGeneratedCode += "/* " + compilerCppName () + " */"
   else
     outGeneratedCode += compilerCppName ()
@@ -398,7 +398,7 @@ proc generateFunction (?let @string inFunctionCppRepresentationName,
     else
       outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation
     end
-    if [unusedVariableCppNameSet hasKey (!mFormalArgumentCppName)] then
+    if [unusedVariableCppNameSet§hasKey (!mFormalArgumentCppName)] then
 
     else
       outGeneratedCode += " " + mFormalArgumentCppName
@@ -408,7 +408,7 @@ proc generateFunction (?let @string inFunctionCppRepresentationName,
   end
 //--- Compiler argument
   outGeneratedCode += inCompilerTypeName + " *"
-  if [unusedVariableCppNameSet hasKey (!compilerCppName ())] then
+  if [unusedVariableCppNameSet§hasKey (!compilerCppName ())] then
 //    outGeneratedCode += "/* " + compilerCppName () + " */"
   else
     outGeneratedCode += " " + compilerCppName ()
@@ -477,7 +477,7 @@ proc generateExtensionGetter (?let @string inFunctionCppRepresentationName,
     else
       outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation
     end
-    if [unusedVariableCppNameSet hasKey (!mFormalArgumentCppName)] then
+    if [unusedVariableCppNameSet§hasKey (!mFormalArgumentCppName)] then
       outGeneratedCode += " /* " + mFormalArgumentCppName + " */"
     else
       outGeneratedCode += " " + mFormalArgumentCppName
@@ -487,7 +487,7 @@ proc generateExtensionGetter (?let @string inFunctionCppRepresentationName,
   end
 //--- Compiler argument
   outGeneratedCode += inCompilerTypeName + " *"
-  if [unusedVariableCppNameSet hasKey (!compilerCppName ())] then
+  if [unusedVariableCppNameSet§hasKey (!compilerCppName ())] then
     outGeneratedCode += "/* " + compilerCppName () + " */"
   else
     outGeneratedCode += " " + compilerCppName ()
@@ -550,7 +550,7 @@ proc generateExtensionSetter
   else
     outGeneratedCode += "cPtr_" + inBaseClassName.identifierRepresentation + " * "
   end
-  let @bool currentObjectIsUnused = [unusedVariableCppNameSet hasKey (!"object")]
+  let @bool currentObjectIsUnused = [unusedVariableCppNameSet§hasKey (!"object")]
   if currentObjectIsUnused then
     outGeneratedCode += "/* inObject */"
   else
@@ -570,7 +570,7 @@ proc generateExtensionSetter
     case argumentVarIn :
       outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation + " "
     end
-    if [unusedVariableCppNameSet hasKey (!mFormalArgumentCppName)] then
+    if [unusedVariableCppNameSet§hasKey (!mFormalArgumentCppName)] then
       outGeneratedCode += "/* " + mFormalArgumentCppName + " */"
     else
       outGeneratedCode += mFormalArgumentCppName
@@ -580,7 +580,7 @@ proc generateExtensionSetter
   outGeneratedCode += ",\n"
   !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
   outGeneratedCode += "Compiler * "
-  if [unusedVariableCppNameSet hasKey (!compilerCppName ())] then
+  if [unusedVariableCppNameSet§hasKey (!compilerCppName ())] then
     outGeneratedCode += "/* " + compilerCppName () + " */"
   else
     outGeneratedCode += compilerCppName ()
@@ -640,7 +640,7 @@ proc generateExtensionMethodNew (?let @unifiedTypeMapEntry inReceiverType,
   var @bool searching = true
   loop (@uint. max) while searching do
     if not baseType.definition.superType.isNull then
-      if [baseType.definition.superType.definition.instanceMethodMap hasKey (!inMethodName)] then
+      if [baseType.definition.superType.definition.instanceMethodMap§hasKey (!inMethodName)] then
         baseType = baseType.definition.superType
       else
         searching = false
@@ -669,7 +669,7 @@ proc generateExtensionMethodNew (?let @unifiedTypeMapEntry inReceiverType,
     case argumentVarIn :
       outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation + " "
     end
-    if [unusedVariableCppNameSet hasKey (!mFormalArgumentCppName)] then
+    if [unusedVariableCppNameSet§hasKey (!mFormalArgumentCppName)] then
       outGeneratedCode += "/* " + mFormalArgumentCppName + " */"
     else
       outGeneratedCode += mFormalArgumentCppName
@@ -679,7 +679,7 @@ proc generateExtensionMethodNew (?let @unifiedTypeMapEntry inReceiverType,
   end
 //--- Compiler argument
   outGeneratedCode += "Compiler * "
-  if [unusedVariableCppNameSet hasKey (!compilerCppName ())] then
+  if [unusedVariableCppNameSet§hasKey (!compilerCppName ())] then
     outGeneratedCode += "/* " + compilerCppName () + " */"
   else
     outGeneratedCode += compilerCppName ()
@@ -1223,7 +1223,7 @@ proc generateWrapperContents
       ioImplementation += inFilewrapperName.identifierRepresentation
       ioImplementation += " = "
       if contents.count > 100 then
-        var components = [contents componentsSeparatedByString (!"\n")]
+        var components = [contents§componentsSeparatedByString (!"\n")]
         !?components.popLast (?let lastLine)
         for (str) in components
         before

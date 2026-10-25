@@ -530,9 +530,9 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       ioUsefulnessRootEntities += !initializerNameForUsefulness
     end
   //---
-    let graphTypeEntry = [ioTypeMap typeMapEntryForLKey (!self.mGraphTypeName)]
-    let associatedListTypeEntry = [ioTypeMap typeMapEntryForLKey (!self.mAssociatedListTypeName)]
-    let associatedListElementTypeEntry = [ioTypeMap typeMapEntryForLKey (
+    let graphTypeEntry = [ioTypeMap§typeMapEntryForLKey (!self.mGraphTypeName)]
+    let associatedListTypeEntry = [ioTypeMap§typeMapEntryForLKey (!self.mAssociatedListTypeName)]
+    let associatedListElementTypeEntry = [ioTypeMap§typeMapEntryForLKey (
       !makeEmbeddedElementTypeLName (!self.mAssociatedListTypeName)
     )]
     if associatedListTypeEntry.definition.typeKind != .listType then
@@ -542,7 +542,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   //--- Analyze insert methods
     let @stringset reservedModifierNames = @["noteNode", "addArc"]
     for (mInsertModifierName mInsertErrorMessage) in self.mInsertModifierList do
-      if [reservedModifierNames hasKey (!mInsertModifierName.string)] then
+      if [reservedModifierNames§hasKey (!mInsertModifierName.string)] then
         error (mInsertModifierName
         : "the '" + mInsertModifierName + "' mutating proc name is reserved for a graph type")
       end

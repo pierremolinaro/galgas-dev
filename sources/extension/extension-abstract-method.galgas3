@@ -142,7 +142,7 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"@" + self.mTypeName, self.mTypeName.location))
   //---
-    if not [ioExtensionMethodMapForBuildingContext hasKey (!self.mTypeName.string)] then
+    if not [ioExtensionMethodMapForBuildingContext§hasKey (!self.mTypeName.string)] then
       !?ioExtensionMethodMapForBuildingContext.insertKey
         (!self.mTypeName,
         !@()
@@ -193,7 +193,7 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
     ?let @predefinedTypes unused inPredefinedTypes,
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
   //--- Self type
-    let @unifiedTypeMapEntry selfType = [ioTypeMap typeMapEntryForLKey (!self.mTypeName)]
+    let @unifiedTypeMapEntry selfType = [ioTypeMap§typeMapEntryForLKey (!self.mTypeName)]
   //--- Check self type is an abstract class
     if not selfType.definition.typeKind.isClassType then
       error (self.mAbstractExtensionMethodName: "cannot declare a extension proc: '@" + selfType.definition.typeName.string + "' is not a class")
@@ -206,7 +206,7 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
       formalParameterListForGeneration +=
         !mFormalSelector
         !mFormalArgumentPassingMode
-        ![ioTypeMap typeMapEntryForLKey (!mFormalArgumentTypeName)]
+        ![ioTypeMap§typeMapEntryForLKey (!mFormalArgumentTypeName)]
         !mFormalArgumentName
         !mFormalArgumentName.string
     end

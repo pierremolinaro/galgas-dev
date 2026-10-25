@@ -453,7 +453,7 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
         runOptionDefined = true
       end
     elsif mKey.string == "nibAndMainClass" then
-      for component in [mValue.string componentsSeparatedByString (!".")] do
+      for component in [mValue.string§componentsSeparatedByString (!".")] do
         context.mNibAndClassList += !component.mValue
       end
     else
@@ -476,7 +476,7 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
   //--- Check labels
     for (* mTerminalList *) in labels do
       for (mTerminal *) in mTerminalList do
-        if not [terminalSymbolSet hasKey (!mTerminal.string)] then
+        if not [terminalSymbolSet§hasKey (!mTerminal.string)] then
           error (mTerminal: "the '$"
             + mTerminal
             + "$' terminal symbol is not declared by the '"

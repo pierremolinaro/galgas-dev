@@ -233,7 +233,7 @@ private proc analyzeInitializerInvocation (?let @lstring inUsefulnessCallerEntit
                       !@semanticExpressionListForGeneration outConstructorEffectiveParameterList ) {
   outInstanciedType = inType
   if inTypeName.string != "" then
-    outInstanciedType = [ioTypeMap typeMapEntryForLKey (!inTypeName)]
+    outInstanciedType = [ioTypeMap§typeMapEntryForLKey (!inTypeName)]
   end
   if outInstanciedType.isNull then
     error (inTypeName
@@ -256,7 +256,7 @@ private proc analyzeInitializerInvocation (?let @lstring inUsefulnessCallerEntit
       outInitializerName = @(!inInvocationArguments.initializerSignature, inEndOfExpressions)
       let initializerMap = instanciedTypeDefinition.initializerMap
       let @functionSignature formalSignature
-      if [initializerMap hasKey (!outInitializerName)] then
+      if [initializerMap§hasKey (!outInitializerName)] then
         initializerMap.searchKey (!outInitializerName, ?formalSignature)
       else
         var s = "@" + instanciedTypeDefinition.typeName + "init ("
