@@ -216,7 +216,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
         !argument.mFormalArgumentPassingMode
         !argument.mFormalArgumentName.string
     end
-    let mangledName = routineMangledName (!self.mRoutineName !routineSignature)
+    let mangledName = routineMangledName (!self.mRoutineName, !routineSignature)
   //--- Useful entities graph
     let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!mangledName)
     !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)

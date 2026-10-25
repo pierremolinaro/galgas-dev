@@ -233,11 +233,11 @@ override proc @repeatInstructionForGeneration.appendSyntaxSignature
   (?let @string inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 ) {
-  let repeated_instructionList = syntaxSignatureOfInstructionList (!inPosfix !self.m_repeated_instructionList)
+  let repeated_instructionList = syntaxSignatureOfInstructionList (!inPosfix, !self.m_repeated_instructionList)
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
   for (mInstructionList mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=
-      !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
+      !syntaxSignatureOfInstructionList (!inPosfix, !mInstructionList)
       !mEndOfInstructionList
   end
 //---
@@ -258,7 +258,7 @@ override proc @repeatInstructionForGeneration.appendSyntaxSignature
 override func @repeatInstructionForGeneration.compareInstructionSyntaxSignature
   (?let @semanticInstructionForGeneration inTestedInstruction ) ->@bool {
   if let si = inTestedInstruction as @repeatInstructionForGeneration then
-    result = compareSyntaxSignature (!self.m_repeated_instructionList !si.m_repeated_instructionList !si.mEndOfRepeatedInstructions)
+    result = compareSyntaxSignature (!self.m_repeated_instructionList, !si.m_repeated_instructionList, !si.mEndOfRepeatedInstructions)
     if result & (self.mListOfSemanticInstructionListForGeneration.count != si.mListOfSemanticInstructionListForGeneration.count) then
       error (si.mInstructionLocation
         :"syntax signature error; the reference 'repeat' instruction has "
@@ -268,7 +268,7 @@ override func @repeatInstructionForGeneration.compareInstructionSyntaxSignature
       result = false
     end
     for (ref_mInstructionList *) in self.mListOfSemanticInstructionListForGeneration, (test_mInstructionList test_mEndOfInstructionList) in si.mListOfSemanticInstructionListForGeneration while result do
-      result = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)
+      result = compareSyntaxSignature (!ref_mInstructionList, !test_mInstructionList, !test_mEndOfInstructionList)
     end
   elsif let si = inTestedInstruction as @syntaxInstructionForGeneration then
 //  case >= @syntaxInstructionForGeneration si :

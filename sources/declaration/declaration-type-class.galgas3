@@ -557,7 +557,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
   //--- Add synthetized initializer ?
     if selfType.definition.features.contains (!.generateSynthetizedInitializer) then
       let initializerForUsefulness = initializerNameForUsefulEntitiesGraph (
-        !self.mClassTypeName
+        !self.mClassTypeName,
         !synthetizedInitialzerArgumentList.initializerSignature
       )
       !?ioUsefulEntitiesGraph.addNode (!initializerForUsefulness, !initializerForUsefulness)

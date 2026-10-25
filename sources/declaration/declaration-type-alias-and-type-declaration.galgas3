@@ -21,7 +21,7 @@
 
 func makeEmbeddedTypeLName (?outer: let @lstring inOuterTypeName,
                           ?inner: let @lstring inInnerTypeName ) -> @lstring {
-  result = @(makeEmbeddedTypeName (!outer: inOuterTypeName !inner: inInnerTypeName),
+  result = @(makeEmbeddedTypeName (!outer: inOuterTypeName, !inner: inInnerTypeName),
                   inOuterTypeName.location.union (!inInnerTypeName))
 }
 
@@ -52,7 +52,7 @@ func makeOptionalTypeLName (?forTypeNamed: let @lstring inTypeName ) -> @lstring
 //--------------------------------------------------------------------------------------------------
 
 func makeEmbeddedElementTypeName (?let @string inTypeName ) -> @string {
-  result = makeEmbeddedTypeName (!outer: inTypeName !inner: "element")
+  result = makeEmbeddedTypeName (!outer: inTypeName, !inner: "element")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ func makeArrayTypeLName (?let @lstring inTypeName ) -> @lstring {
 //--------------------------------------------------------------------------------------------------
 
 func makeWeakTypeName (?let @string inTypeName ) -> @string {
-  result = makeEmbeddedTypeName (!outer: inTypeName !inner: "weak")
+  result = makeEmbeddedTypeName (!outer: inTypeName, !inner: "weak")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -106,7 +106,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       $.$
       $@type$ (?let typeName)
-      outTypeName = makeEmbeddedTypeLName (!outer: outTypeName !inner: typeName)
+      outTypeName = makeEmbeddedTypeLName (!outer: outTypeName, !inner: typeName)
     end
   }
 
@@ -192,7 +192,7 @@ syntax extension galgas4DeclarationsSyntax {
     while
       $.$
       <simple_type_definition> (!?ioDeclarations, ?let typeName)
-      outTypeName = makeEmbeddedTypeLName (!outer: outTypeName !inner: typeName)
+      outTypeName = makeEmbeddedTypeLName (!outer: outTypeName, !inner: typeName)
     while
       $<$
       repeat

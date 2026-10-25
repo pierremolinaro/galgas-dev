@@ -196,7 +196,7 @@ override proc @selectInstructionForGeneration.appendSyntaxSignature
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
   for (mInstructionList mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=
-      !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
+      !syntaxSignatureOfInstructionList (!inPosfix, !mInstructionList)
       !mEndOfInstructionList
   end
   ioInstructionListForGeneration += !@selectInstructionForGeneration (
@@ -227,7 +227,7 @@ override func @selectInstructionForGeneration.compareInstructionSyntaxSignature
     end
     for (ref_mInstructionList *) in self.mListOfSemanticInstructionListForGeneration,
         (test_mInstructionList test_mEndOfInstructionList) in si.mListOfSemanticInstructionListForGeneration while result do
-      result = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)
+      result = compareSyntaxSignature (!ref_mInstructionList, !test_mInstructionList, !test_mEndOfInstructionList)
     end
   elsif let si = inTestedInstruction as @syntaxInstructionForGeneration then
     error (si.mInstructionLocation

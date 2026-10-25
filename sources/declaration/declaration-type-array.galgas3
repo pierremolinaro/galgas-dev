@@ -314,7 +314,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     end
   //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
-      !self.arrayTypeName
+      !self.arrayTypeName,
       !@formalInputParameterListAST ().initializerSignature
     )
     !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness, !initializerNameForUsefulness)

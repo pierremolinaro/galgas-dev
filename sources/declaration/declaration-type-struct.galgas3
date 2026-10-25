@@ -374,7 +374,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
   //--- Add synthetized initializer ?
     if structType.definition.features.contains (!.generateSynthetizedInitializer) then
       let initializerForUsefulness = initializerNameForUsefulEntitiesGraph (
-        !self.structTypeName
+        !self.structTypeName,
         !constructorArgumentList.initializerSignature
       )
       !?ioUsefulEntitiesGraph.addNode (!initializerForUsefulness, !initializerForUsefulness)

@@ -209,7 +209,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
     for constant in self.mConstantList do
       if constant.associatedValueTypeList.count > 0 then
         let associatedTypeName = @lstring (
-          makeEmbeddedTypeName (!outer: self.enumTypeName !inner: constant.name),
+          makeEmbeddedTypeName (!outer: self.enumTypeName, !inner: constant.name),
           constant.name
         )
         var @propertyInCollectionListAST propertyListAST = @()
@@ -345,7 +345,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
     commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap)
     for constant in self.mConstantList do
       if constant.associatedValueTypeList.count > 0 then
-        let associatedTypeName = makeEmbeddedTypeName (!outer: self.enumTypeName !inner: constant.name)
+        let associatedTypeName = makeEmbeddedTypeName (!outer: self.enumTypeName, !inner: constant.name)
         let optionalTypeName = makeOptionalTypeName (!forTypeNamed: associatedTypeName)
         enterBaseGetterWithoutArgument (
           !?getterMap,
@@ -456,7 +456,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
     var constantMap = @constantIndexMap ()
     for constant in self.mConstantList do
       if constant.associatedValueTypeList.count > 0 then
-        let associatedTypeName = makeEmbeddedTypeName (!outer: self.enumTypeName !inner: constant.name)
+        let associatedTypeName = makeEmbeddedTypeName (!outer: self.enumTypeName, !inner: constant.name)
         let optionalTypeName = makeOptionalTypeName (!forTypeNamed: associatedTypeName)
         let associatedType = ioTypeMap.typeMapEntryForLKey (!@(optionalTypeName, constant.name))
         !?associatedValuesTypes.append (!associatedType)

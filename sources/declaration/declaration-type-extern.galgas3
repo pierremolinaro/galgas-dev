@@ -532,7 +532,7 @@ override proc @externTypeDeclarationAST.semanticAnalysis
 //--- Initializers
   for initializer in self.externTypeInitializerList do
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
-      !self.mExternTypeName
+      !self.mExternTypeName,
       !initializer.mParameterList.initializerSignature
     )
     !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness, !initializerNameForUsefulness)

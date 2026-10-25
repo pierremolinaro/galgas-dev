@@ -515,7 +515,7 @@ override proc @filewrapperDeclarationAST.semanticAnalysis
     var @filewrapperTemplateListForGeneration filewrapperTemplateListForGeneration = @()
     for filewrapperTemplate in self.mFilewrapperTemplateList do
       let filewrapperTemplateNameForUsefulness = filewrapperTemplateNameForUsefulEntitiesGraph (
-        !self.mFilewrapperName
+        !self.mFilewrapperName,
         !filewrapperTemplate.mFilewrapperTemplateName
       )
       !?ioUsefulEntitiesGraph.addNode (!filewrapperTemplateNameForUsefulness, !filewrapperTemplateNameForUsefulness)

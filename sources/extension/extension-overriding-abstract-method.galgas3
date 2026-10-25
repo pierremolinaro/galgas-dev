@@ -42,7 +42,7 @@ syntax extension galgas3DeclarationsSyntax {
     repeat
     while
       $@type$ (?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
       $.$
     end
     $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
@@ -90,7 +90,7 @@ syntax extension galgas4DeclarationsSyntax {
     repeat
     while
       <simple_type_definition> (!?ioDeclarations, ?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
       $.$
     end
     $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
@@ -114,7 +114,7 @@ syntax extension galgas4DeclarationsSyntax {
     repeat
     while
       <simple_type_definition> (!?ioDeclarations, ?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
       $.$
     end
     $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)

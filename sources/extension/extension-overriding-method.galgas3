@@ -31,7 +31,7 @@ syntax extension galgas3DeclarationsSyntax {
     repeat
     while
       $@type$ (?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
       $.$
     end
     $identifier$ (?let @lstring methodName) indexing (overrideExtensionMethodDefinition)
@@ -59,7 +59,7 @@ syntax extension galgas3DeclarationsSyntax {
     repeat
     while
       $@type$ (?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
       $.$
     end
     $identifier$ (?let @lstring methodName) indexing (overrideExtensionMethodDefinition)
@@ -96,7 +96,7 @@ syntax extension galgas4DeclarationsSyntax {
     repeat
     while
       <simple_type_definition> (!?ioDeclarations, ?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
       $.$
     end
     $identifier$ (?let @lstring methodName) indexing (overrideExtensionMethodDefinition)
@@ -224,7 +224,7 @@ override proc @overridingExtensionMethodAST.semanticAnalysis (
   ?let @predefinedTypes inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
 //--- Useful entities graph
-  let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !self.mOverridingExtensionMethodName)
+  let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName, !self.mOverridingExtensionMethodName)
   !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
   let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness, !to: nameForUsefulness)

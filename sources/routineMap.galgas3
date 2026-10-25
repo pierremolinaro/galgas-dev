@@ -116,7 +116,7 @@ struct @routineMap {
       end
       if acceptableParameterList.count == 1 then
         acceptableParameterList.first (?outRoutineSignature, ?outIsFilePrivate)
-        outRoutineMangledName = routineMangledName (!inRoutineName !outRoutineSignature)
+        outRoutineMangledName = routineMangledName (!inRoutineName, !outRoutineSignature)
       elsif acceptableParameterList.count == 0 then
         error (inRoutineName
         : "cannot find any procedure with compatible formal argument list"

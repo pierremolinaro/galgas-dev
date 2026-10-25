@@ -33,7 +33,7 @@ syntax extension galgas3DeclarationsSyntax {
     repeat
     while
       $@type$ (?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
       $.$
     end
     $identifier$ (?let @lstring setterName) indexing (overrideabstractExtensionSetterDefinition)
@@ -57,7 +57,7 @@ syntax extension galgas3DeclarationsSyntax {
     repeat
     while
       $@type$ (?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
       $.$
     end
     $identifier$ (?let @lstring setterName) indexing (overrideabstractExtensionSetterDefinition)

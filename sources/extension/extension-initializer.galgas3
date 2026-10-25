@@ -28,7 +28,7 @@ syntax extension galgas3DeclarationsSyntax {
     repeat
     while
       $@type$ (?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
       $.$
     end
     $init$
@@ -82,7 +82,7 @@ syntax extension galgas4DeclarationsSyntax {
     repeat
     while
       <simple_type_definition> (!?ioDeclarations, ?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName !inner: t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
       $.$
     end
     $init$
@@ -196,7 +196,7 @@ final class @initializerAST : @semanticDeclarationAST {
                 ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
   //--- Useful entities graph
     let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
-      !self.mTypeName
+      !self.mTypeName,
       !self.mFormalParameterList.initializerSignature
     )
     !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)

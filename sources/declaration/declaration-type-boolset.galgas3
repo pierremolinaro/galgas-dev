@@ -278,7 +278,7 @@ override proc @boolsetDeclarationAST.semanticAnalysis
   end
 //--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
-    !self.mBoolsetTypeName
+    !self.mBoolsetTypeName,
     !@formalInputParameterListAST ().initializerSignature
   )
   !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness, !initializerNameForUsefulness)

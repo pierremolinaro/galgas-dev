@@ -206,7 +206,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
           !ruleName,
           !?ioInclusionSet,
           !@formalParameterListForGeneration (),
-          !syntaxSignatureOfInstructionList (!"indexing" !instructionList),
+          !syntaxSignatureOfInstructionList ("indexing", instructionList),
           !false,
           !lexiqueCppName,
           !false, // Do not generate location Argument
