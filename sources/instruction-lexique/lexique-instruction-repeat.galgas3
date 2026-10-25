@@ -158,7 +158,7 @@ override func @lexicalRepeatInstructionAST.generateSwiftCocoaInstructionCode
   !?outGeneratedCode.incIndentation (!2)
 //--- Repeated instruction
   for (mInstruction) in self.mRepeatedInstructionList do
-    outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode (!inScannerClassName !inLexiqueAnalysisContext)]
+    outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)]
   end
 //---
   for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
@@ -168,7 +168,7 @@ override func @lexicalRepeatInstructionAST.generateSwiftCocoaInstructionCode
     outGeneratedCode += ") {\n"
     !?outGeneratedCode.incIndentation (!2)
     for (mInstruction) in mWhileInstructionList do
-      outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode (!inScannerClassName !inLexiqueAnalysisContext)]
+      outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)]
     end
     !?outGeneratedCode.decIndentation (!2)
   between
@@ -200,7 +200,7 @@ override func @lexicalRepeatInstructionAST.generateLexicalInstructionCode
   !?result.incIndentation (!2)
 //--- Repeated instruction
   for (mInstruction) in self.mRepeatedInstructionList do
-    result += [mInstruction generateLexicalInstructionCode (!inScannerClassName !inLexiqueAnalysisContext)]
+    result += [mInstruction generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)]
   end
 //---
   for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
@@ -210,7 +210,7 @@ override func @lexicalRepeatInstructionAST.generateLexicalInstructionCode
     result += ") {\n"
     !?result.incIndentation (!2)
     for (mInstruction) in mWhileInstructionList do
-      result += [mInstruction generateLexicalInstructionCode (!inScannerClassName !inLexiqueAnalysisContext)]
+      result += [mInstruction generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)]
     end
     !?result.decIndentation (!2)
   between

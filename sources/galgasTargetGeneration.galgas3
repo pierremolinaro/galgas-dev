@@ -571,7 +571,7 @@ proc updateGalgasTargets
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
     userResourceDir.makeDirectory ()
     let @stringlist extensionList = @[@("icns")]
-    let resourceFiles = [userResourceDir regularFilesWithExtensions (!false !extensionList)]
+    let resourceFiles = [userResourceDir regularFilesWithExtensions (!false, !extensionList)]
   //--- Build paths
     let newIntermediateFilePath = inAbsoluteBuildDirectory + "/output/file-list-for-xcode-project.txt"
     ioAllProductFileSet ++= "file-list-for-xcode-project.txt"

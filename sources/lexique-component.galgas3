@@ -432,7 +432,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     if [styleIdentifier.string containsCharacter (!'_')] then
       error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character")
     end
-    if [styleIdentifier.string containsCharacterInRange (!'0' !'9')] then
+    if [styleIdentifier.string containsCharacterInRange (!'0', !'9')] then
       error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit")
     end
     $->$
@@ -793,7 +793,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     if [styleIdentifier.string containsCharacter (!'_')] then
       error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character")
     end
-    if [styleIdentifier.string containsCharacterInRange (!'0' !'9')] then
+    if [styleIdentifier.string containsCharacterInRange (!'0', !'9')] then
       error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit")
     end
     $->$
@@ -958,7 +958,7 @@ override proc @lexiqueComponentAST.semanticAnalysis
     var @lexicalExplicitTokenListMap lexicalTokenListMap = @()
     var tokenSortedlist = @tokenSortedlist ()
     for (mEntrySpelling mTerminalSpelling nonAtomicSelection isTemplateEndMark) in mEntryList do
-      let syntaxErrorMessage = [mSyntaxErrorMessage.string replacing (!"%K" !by: mTerminalSpelling.string)]
+      let syntaxErrorMessage = [mSyntaxErrorMessage.string replacing (!"%K", !by: mTerminalSpelling.string)]
       lexiqueAnalysisContext.mTerminalList +=
         !mTerminalSpelling
         !argumentTypeList

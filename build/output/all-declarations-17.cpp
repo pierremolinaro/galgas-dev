@@ -6763,14 +6763,14 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
           }
         }
         if (GalgasBool::boolFalse == test_5) {
-          GGS_string var_s_5477 = GGS_string ("ambiguity, several procedures with compatible formal argument list:") ;
-          UpEnumerator_acceptableParameterList enumerator_5574 (var_acceptableParameterList_4424) ;
-          while (enumerator_5574.hasCurrentObject ()) {
-            var_s_5477.plusAssignOperation(GGS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5574.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 127)) ;
-            enumerator_5574.gotoNextObject () ;
+          GGS_string var_s_5478 = GGS_string ("ambiguity, several procedures with compatible formal argument list:") ;
+          UpEnumerator_acceptableParameterList enumerator_5575 (var_acceptableParameterList_4424) ;
+          while (enumerator_5575.hasCurrentObject ()) {
+            var_s_5478.plusAssignOperation(GGS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5575.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas3", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas3", 127)) ;
+            enumerator_5575.gotoNextObject () ;
           }
           GenericArray <FixItDescription> fixItArray7 ;
-          inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5477, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas3", 129)) ;
+          inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5478, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas3", 129)) ;
           outArgument_outRoutineSignature.drop () ; // Release error dropped variable
           outArgument_outIsFilePrivate.drop () ; // Release error dropped variable
           outArgument_outRoutineMangledName.drop () ; // Release error dropped variable

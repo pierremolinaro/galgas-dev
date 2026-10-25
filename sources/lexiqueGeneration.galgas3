@@ -223,7 +223,7 @@ override func @lexicalExplicitRuleAST.generateLexicalRuleCode
   result += ") {\n"
   !?result.incIndentation (!2)
   for (instruction) in self.mInstructionList do
-    result += [instruction generateLexicalInstructionCode (!inScannerClassName !inLexiqueAnalysisContext)]
+    result += [instruction generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)]
   end
   !?result.decIndentation (!2)
   result += "}else "

@@ -33,7 +33,7 @@ syntax extension galgas3ExpressionSyntax {
     $identifier$ (?let @lstring getterName)
   //--- Actual parameters §§
     $($
-    <output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
+    <output_expression_list_ggs34> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
     $)$
     $]$
     let endLocation = @location.here

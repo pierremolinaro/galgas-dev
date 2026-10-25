@@ -138,7 +138,7 @@ override func @lexicalSelectInstructionAST.generateSwiftCocoaInstructionCode
     outGeneratedCode += ") {\n"
     !?outGeneratedCode.incIndentation (!2)
     for (mInstruction) in mSelectInstructionList do
-      outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode (!inScannerClassName !inLexiqueAnalysisContext)]
+      outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)]
     end
     !?outGeneratedCode.decIndentation (!2)
   between
@@ -149,7 +149,7 @@ override func @lexicalSelectInstructionAST.generateSwiftCocoaInstructionCode
     outGeneratedCode += "}else{\n"
     !?outGeneratedCode.incIndentation (!2)
     for (mInstruction) in self.mDefaultInstructionList do
-      outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode (!inScannerClassName !inLexiqueAnalysisContext)]
+      outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)]
     end
     !?outGeneratedCode.decIndentation (!2)
   end
@@ -187,7 +187,7 @@ override func @lexicalSelectInstructionAST.generateLexicalInstructionCode
     result += ") {\n"
     !?result.incIndentation (!2)
     for (mInstruction) in mSelectInstructionList do
-      result += [mInstruction generateLexicalInstructionCode (!inScannerClassName !inLexiqueAnalysisContext)]
+      result += [mInstruction generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)]
     end
     !?result.decIndentation (!2)
   between
@@ -198,7 +198,7 @@ override func @lexicalSelectInstructionAST.generateLexicalInstructionCode
     result += "}else{\n"
     !?result.incIndentation (!2)
     for (instruction) in self.mDefaultInstructionList do
-      result += [instruction generateLexicalInstructionCode (!inScannerClassName !inLexiqueAnalysisContext)]
+      result += [instruction generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)]
     end
     !?result.decIndentation (!2)
   end

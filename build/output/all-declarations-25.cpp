@@ -4362,13 +4362,13 @@ GGS_bool cPtr_lexicalExplicitRuleAST::getter_lexicalRuleUsesLoopLocalVar (Compil
   GGS_bool result_result ; // Returned variable
   result_result = GGS_bool (false) ;
   const GGS_lexicalExplicitRuleAST temp_0 = this ;
-  UpEnumerator_lexicalInstructionListAST enumerator_10634 (temp_0.readProperty_mInstructionList ()) ;
+  UpEnumerator_lexicalInstructionListAST enumerator_10635 (temp_0.readProperty_mInstructionList ()) ;
   bool bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueGeneration.galgas3", 236)).isValidAndTrue () ;
-  if (enumerator_10634.hasCurrentObject () && bool_1) {
-    while (enumerator_10634.hasCurrentObject () && bool_1) {
-      result_result = callExtensionGetter_lexicalInstructionUsesLoopLocalVariable ((const cPtr_lexicalInstructionAST *) enumerator_10634.current_mInstruction (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 237)) ;
-      enumerator_10634.gotoNextObject () ;
-      if (enumerator_10634.hasCurrentObject ()) {
+  if (enumerator_10635.hasCurrentObject () && bool_1) {
+    while (enumerator_10635.hasCurrentObject () && bool_1) {
+      result_result = callExtensionGetter_lexicalInstructionUsesLoopLocalVariable ((const cPtr_lexicalInstructionAST *) enumerator_10635.current_mInstruction (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas3", 237)) ;
+      enumerator_10635.gotoNextObject () ;
+      if (enumerator_10635.hasCurrentObject ()) {
         bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueGeneration.galgas3", 236)).isValidAndTrue () ;
       }
     }

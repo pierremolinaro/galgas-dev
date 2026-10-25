@@ -8480,9 +8480,9 @@ void cParser_galgas_33_LexiqueComponentSyntax::rule_galgas_33_LexiqueComponentSy
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__2D__3E_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 438)) ;
-  GGS_lstring var_comment_16404 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_comment_16405 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_33_::kToken__22_string_22_ COMMA_SOURCE_FILE ("lexique-component.galgas3", 439)) ;
-  ioArgument_ioLexicalStyleList.addAssignOperation (var_styleIdentifier_15958, var_comment_16404  COMMA_SOURCE_FILE ("lexique-component.galgas3", 440)) ;
+  ioArgument_ioLexicalStyleList.addAssignOperation (var_styleIdentifier_15958, var_comment_16405  COMMA_SOURCE_FILE ("lexique-component.galgas3", 440)) ;
 }
 
 //------------------------------------------------------------------------------------------------

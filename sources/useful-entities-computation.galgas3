@@ -50,7 +50,7 @@ proc checkUsefulEntities (?let @usefulEntitiesGraph inUsefulEntitiesGraph,
       error (.nowhere : s)
     else
     //--- No undefined node, compute usefull entities
-      let usefullEntityList = [inUsefulEntitiesGraph accessibleNodesFrom (!inRootEntities !@())]
+      let usefullEntityList = [inUsefulEntitiesGraph accessibleNodesFrom (!inRootEntities, !@())]
       let usefullEntitySet = @stringset.setWithLStringList (!usefullEntityList)
       let allEntitySet = @stringset.setWithStringList (!inUsefulEntitiesGraph.keyList)
       let unusedEntities = allEntitySet - usefullEntitySet

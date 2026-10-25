@@ -198,7 +198,7 @@ override func @lexicalExplicitRuleAST.generateSwiftCocoaCode
   outGeneratedCode += ") {\n"
   !?outGeneratedCode.incIndentation (!2)
   for (mInstruction) in self.mInstructionList do
-    outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode (!inScannerClassName !inLexiqueAnalysisContext)]
+    outGeneratedCode += [mInstruction generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)]
   end
   !?outGeneratedCode.decIndentation (!2)
   outGeneratedCode += "}else "

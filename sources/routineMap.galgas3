@@ -106,7 +106,7 @@ struct @routineMap {
         var accept = inActualParameterList.count == entry.mRoutineSignature.count
         for formalParameter in entry.mRoutineSignature, (actualParameter) in inActualParameterList while accept do
           accept = [actualParameter isCompatibleWith (
-            !formalParameter.mFormalArgumentPassingMode
+            !formalParameter.mFormalArgumentPassingMode,
             !formalParameter.mFormalSelector
           )]
         end
