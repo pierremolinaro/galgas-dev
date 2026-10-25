@@ -71,10 +71,10 @@ final class @procCallInstructionAST : @semanticInstructionAST {
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     )
   //--- Generate instruction
-    ioInstructionListForGeneration += !@procCallInstructionForGeneration (
+    ioInstructionListForGeneration +=§(!@procCallInstructionForGeneration (
       !routineMangledName: routineMangledName,
       actualParameterListForGeneration
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -112,7 +112,7 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
         !?ioUnusedVariableCppNameSet,
         ?let parameterCppName
       )
-      parameterCppNameList += !parameterCppName
+      parameterCppNameList +=§(!parameterCppName)
     end
   //--- Generate proc call
     ioGeneratedCode += "routine_" + self.routineMangledName.string.identifierRepresentation + " ("

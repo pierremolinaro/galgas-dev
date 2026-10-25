@@ -35,11 +35,11 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
       <option_declaration_ggs3> (!?options)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST (
+    ioDeclarations.mDeclarationList +=§(!@optionComponentDeclarationAST (
       !isPredefined: false,
       optionComponentName,
       options
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -68,14 +68,14 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
         optionDefaultValueKind = .unsignedDefaultValue
       end
     end
-    ioCommandLineOptionList +=
+    ioCommandLineOptionList +=§(
       !mOptionTypeName
       !mOptionInternalName
       !mOptionInvocationLetter
       !mOptionInvocationString
       !mOptionComment
       !defaultValue
-      !optionDefaultValueKind
+      !optionDefaultValueKind)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -99,11 +99,11 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
       <option_declaration_ggs3> (!?options)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST (
+    ioDeclarations.mDeclarationList +=§(!@optionComponentDeclarationAST (
       !isPredefined: false,
       optionComponentName,
       options
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -132,14 +132,14 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
         optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
       end
     end
-    ioCommandLineOptionList +=
+    ioCommandLineOptionList +=§(
       !mOptionTypeName
       !mOptionInternalName
       !mOptionInvocationLetter
       !mOptionInvocationString
       !mOptionComment
       !defaultValue
-      !optionDefaultValueKind
+      !optionDefaultValueKind)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -184,7 +184,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
   ) {
-    ioExtensionOverrideDefinitionList += !self
+    ioExtensionOverrideDefinitionList +=§(!self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -305,42 +305,42 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
   //--- Sort options
     var @commandLineOptionSortedList boolOptionSortedList = @()
     for anOption in boolOptionMap do
-      boolOptionSortedList +=
+      boolOptionSortedList +=§(
         !anOption.lkey.string
         !anOption.mOptionChar
         !anOption.mOptionString
         !anOption.mComment
-        !anOption.mDefaultValue
+        !anOption.mDefaultValue)
     end
     var @commandLineOptionSortedList uintOptionSortedList = @()
     for anOption in uintOptionMap do
-      uintOptionSortedList +=
+      uintOptionSortedList +=§(
         !anOption.lkey.string
         !anOption.mOptionChar
         !anOption.mOptionString
         !anOption.mComment
-        !anOption.mDefaultValue
+        !anOption.mDefaultValue)
     end
     var @commandLineOptionSortedList stringOptionSortedList = @()
     for anOption in stringOptionMap do
-      stringOptionSortedList +=
+      stringOptionSortedList +=§(
         !anOption.lkey.string
         !anOption.mOptionChar
         !anOption.mOptionString
         !anOption.mComment
-        !anOption.mDefaultValue
+        !anOption.mDefaultValue)
     end
     var @commandLineOptionSortedList stringListOptionSortedList = @()
     for anOption in stringListOptionMap do
-      stringListOptionSortedList +=
+      stringListOptionSortedList +=§(
         !anOption.lkey.string
         !anOption.mOptionChar
         !anOption.mOptionString
         !anOption.mComment
-        !anOption.mDefaultValue
+        !anOption.mDefaultValue)
     end
   //--- Enter filewrapper in generated list
-    ioSemanticDeclarationListForGeneration +=
+    ioSemanticDeclarationListForGeneration +=§(
       !infoMessage: "option " + self.mOptionComponentName
       !@optionComponentForGeneration (
         !generateHeader: true,
@@ -351,7 +351,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         uintOptionSortedList,
         stringOptionSortedList,
         stringListOptionSortedList
-      )
+      ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -431,7 +431,7 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
     if @uint.errorCount == 0 && not self.mIsPredefined then
     //--- Generate Swift Cocoa Implementation
       ioAllProductFileSet ++= "option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift"
-      ioSwiftAppProductFileList += !"option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift"
+      ioSwiftAppProductFileList +=§(!"option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift")
       @string.generateFileWithPattern (
         !startPath:inProductDirectory,
         !fileName:"option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift",

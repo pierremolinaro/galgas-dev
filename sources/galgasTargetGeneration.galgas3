@@ -364,9 +364,9 @@ proc updateGalgasTargets
 //---------------------------------------------------------- %quietOutputByDefault
   var toolCppFileList = inToolCppFileList
   if inQuietOutputByDefault then
-    toolCppFileList += !"C_galgas_verbose_option.cpp"
+    toolCppFileList +=§(!"C_galgas_verbose_option.cpp")
   else
-    toolCppFileList += !"C_galgas_quiet_option.cpp"
+    toolCppFileList +=§(!"C_galgas_quiet_option.cpp")
   end
 //---------------------------------------------------------- macCodeSign
   let @lstring macCodeSign
@@ -428,7 +428,7 @@ proc updateGalgasTargets
     else
       var @stringlist s = @()
       for (key) in availableGenerationFeatures do
-        s += !"%" + key
+        s +=§(!"%" + key)
       end
       error (value: "unknown '" + value + "' feature" fixit replace s )
     end
@@ -500,14 +500,14 @@ proc updateGalgasTargets
 //--- Frameworks to link with tool
   var @stringlist linkOptionForLinkingFrameworkWithTool = @()
   for (s) in inFrameworkToolFileList do
-    linkOptionForLinkingFrameworkWithTool += !"-framework"
-    linkOptionForLinkingFrameworkWithTool += !s.deletingPathExtension
+    linkOptionForLinkingFrameworkWithTool +=§(!"-framework")
+    linkOptionForLinkingFrameworkWithTool +=§(!s.deletingPathExtension)
   end
 //--- Update json file list
   var @stringlist handCodedSourceToolFileList = @()
   for (f) in inHandCodedSourceToolFileList do
     if f.pathExtension != "h" then
-      handCodedSourceToolFileList += !f.lastPathComponent
+      handCodedSourceToolFileList +=§(!f.lastPathComponent)
     end
   end
   var handCodedSourceDirectorySet = @stringset ()
@@ -663,7 +663,7 @@ proc updateGalgasTargets
       @("SWIFT_VERSION = 6.0")
     ]
     if MACOSX_DEPLOYMENT_TARGET != "" then
-      xcodeSettingList += !"MACOSX_DEPLOYMENT_TARGET = \"" + MACOSX_DEPLOYMENT_TARGET + "\""
+      xcodeSettingList +=§(!"MACOSX_DEPLOYMENT_TARGET = \"" + MACOSX_DEPLOYMENT_TARGET + "\"")
     end
     !?xcodeProject.addSettingsToDefaultConfiguration (!settingList: xcodeSettingList)
   //--- Add "Frameworks for App" group
@@ -757,7 +757,7 @@ proc updateGalgasTargets
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList += !groupRef
+    libpmReferenceGroupList +=§(!groupRef)
   //--- Add "Big Integers" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Big Integers",
@@ -808,7 +808,7 @@ proc updateGalgasTargets
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList += !groupRef
+    libpmReferenceGroupList +=§(!groupRef)
  //--- Add "SwiftUI app" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Swift App",
@@ -863,7 +863,7 @@ proc updateGalgasTargets
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList += !groupRef
+    libpmReferenceGroupList +=§(!groupRef)
   //--- Add "collection" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Generic Arraies",
@@ -880,7 +880,7 @@ proc updateGalgasTargets
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList += !groupRef
+    libpmReferenceGroupList +=§(!groupRef)
   //--- Add "Command line Interface" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Command line Interface",
@@ -910,7 +910,7 @@ proc updateGalgasTargets
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList += !groupRef
+    libpmReferenceGroupList +=§(!groupRef)
   //--- Add "File" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"File",
@@ -934,7 +934,7 @@ proc updateGalgasTargets
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList += !groupRef
+    libpmReferenceGroupList +=§(!groupRef)
   //--- Add "Galgas 2" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Galgas",
@@ -1039,7 +1039,7 @@ proc updateGalgasTargets
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList += !groupRef
+    libpmReferenceGroupList +=§(!groupRef)
   //--- Add "Streams" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Streams",
@@ -1059,7 +1059,7 @@ proc updateGalgasTargets
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList += !groupRef
+    libpmReferenceGroupList +=§(!groupRef)
   //--- Add "String" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Strings",
@@ -1082,7 +1082,7 @@ proc updateGalgasTargets
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList += !groupRef
+    libpmReferenceGroupList +=§(!groupRef)
   //--- Add "Time" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Time",
@@ -1100,7 +1100,7 @@ proc updateGalgasTargets
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList += !groupRef
+    libpmReferenceGroupList +=§(!groupRef)
   //--- Add "Utilities" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Utilities",
@@ -1144,7 +1144,7 @@ proc updateGalgasTargets
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList += !groupRef
+    libpmReferenceGroupList +=§(!groupRef)
   //--- Add "LIBPM" group
     !?xcodeProject.addGroup (!groupName:"libpm", !groupPath:"../" + inBuildDirectoryName + "/libpm", !childrenRefs:libpmReferenceGroupList, ?groupRef:let @string libpmGroupRef)
     !?xcodeProject.placeGroupAsMainGroup (!groupRef:libpmGroupRef)

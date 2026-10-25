@@ -44,7 +44,7 @@ syntax extension galgas3InstructionsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList += !@procDeclarationAST (
+    ioDeclarations.mDeclarationList +=§(!@procDeclarationAST (
       !isPredefined: false,
       !isFilePrivate: false,
       mRoutineName,
@@ -52,7 +52,7 @@ syntax extension galgas3InstructionsSyntax {
       !usefullProcedure: isUsefull,
       mRoutineInstructionList,
       endOfInstructionList
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -75,7 +75,7 @@ syntax extension galgas3InstructionsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList += !@procDeclarationAST (
+    ioDeclarations.mDeclarationList +=§(!@procDeclarationAST (
       !isPredefined: false,
       !isFilePrivate: true,
       !mRoutineName,
@@ -83,7 +83,7 @@ syntax extension galgas3InstructionsSyntax {
       !usefullProcedure: isUsefull,
       mRoutineInstructionList,
       endOfInstructionList
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -115,7 +115,7 @@ syntax extension galgas4InstructionsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList += !@procDeclarationAST (
+    ioDeclarations.mDeclarationList +=§(!@procDeclarationAST (
       !isPredefined: false,
       !isFilePrivate: false,
       mRoutineName,
@@ -123,7 +123,7 @@ syntax extension galgas4InstructionsSyntax {
       !usefullProcedure: isUsefull,
       mRoutineInstructionList,
       endOfInstructionList
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -146,7 +146,7 @@ syntax extension galgas4InstructionsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList += !@procDeclarationAST (
+    ioDeclarations.mDeclarationList +=§(!@procDeclarationAST (
       !isPredefined: false,
       !isFilePrivate: true,
       mRoutineName,
@@ -154,7 +154,7 @@ syntax extension galgas4InstructionsSyntax {
       !usefullProcedure: isUsefull,
       mRoutineInstructionList,
       endOfInstructionList
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -181,11 +181,11 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
       !?ioTypeMap.makeEntry (!argument.mFormalArgumentTypeName, ?let parameterTypeIndex)
-      routineSignature +=
+      routineSignature +=§(
         !argument.mFormalSelector
         !parameterTypeIndex
         !argument.mFormalArgumentPassingMode
-        !argument.mFormalArgumentName.string
+        !argument.mFormalArgumentName.string)
     end
   //--- Enter types for instruction list
     self.mRoutineInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
@@ -210,18 +210,18 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
       let parameterType = ioTypeMap.typeMapEntryForLKey (!argument.mFormalArgumentTypeName)
-      routineSignature +=
+      routineSignature +=§(
         !argument.mFormalSelector
         !parameterType
         !argument.mFormalArgumentPassingMode
-        !argument.mFormalArgumentName.string
+        !argument.mFormalArgumentName.string)
     end
     let mangledName = routineMangledName (!self.mRoutineName, !routineSignature)
   //--- Useful entities graph
     let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!mangledName)
     !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
     if self.usefullProcedure then
-      ioUsefulnessRootEntities += !nameForUsefulness
+      ioUsefulnessRootEntities +=§(!nameForUsefulness)
     end
   //--- Instruction list
     let analysisContext = @analysisContext (
@@ -242,7 +242,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
       ?let instructionList,
       ?let formalArgumentList
     )
-    ioSemanticDeclarationListForGeneration +=
+    ioSemanticDeclarationListForGeneration +=§(
       !infoMessage: "proc " + mangledName
       !@routineImplementationForGeneration (
         !generateHeader: true,
@@ -251,7 +251,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
         formalArgumentList,
         false,
         instructionList
-      )
+      ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

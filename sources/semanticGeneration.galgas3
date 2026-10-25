@@ -145,7 +145,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
     var @uint idx = 0
     loop (self.mSelectMethodCount + 1)
     while idx < self.mSelectMethodCount do
-      selectMethodList += !idx
+      selectMethodList +=§(!idx)
       idx += 1
     end
     outHeader = [filewrapper syntaxFileGenerationTemplate.syntaxAnalyserClassDeclaration
@@ -1093,7 +1093,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
     ?!swift: @stringlist ioSwiftAppProductFileList ) {
   //--- Generate SwiftUI implementation file
     ioAllProductFileSet ++= "lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift"
-    ioSwiftAppProductFileList += !"lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift"
+    ioSwiftAppProductFileList +=§(!"lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift")
     @string.generateFileWithPattern (
       !startPath:inProductDirectory,
       !fileName:"lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift",
@@ -1148,13 +1148,13 @@ proc recursivlyEnumerateRegularFile
   ?!@stringlist ioDirectoryIndexStringList,
   ?!@stringlist ioRegularTextContentIndexStringList,
   ?!@stringlist ioRegularBinaryContentIndexStringList ) {
-  ioDirectoryIndexStringList += !ioDirectoryIndexStringList.count.string
+  ioDirectoryIndexStringList +=§(!ioDirectoryIndexStringList.count.string)
   for (* * mIsTextFile * mWrapperFileIndex) in inFilewrapperFileMap do
-    ioRegularFileIndexStringList += !ioRegularFileIndexStringList.count.string
+    ioRegularFileIndexStringList +=§(!ioRegularFileIndexStringList.count.string)
     if mIsTextFile then
-      ioRegularTextContentIndexStringList += !mWrapperFileIndex.string
+      ioRegularTextContentIndexStringList +=§(!mWrapperFileIndex.string)
     else
-      ioRegularBinaryContentIndexStringList += !mWrapperFileIndex.string
+      ioRegularBinaryContentIndexStringList +=§(!mWrapperFileIndex.string)
     end
   end
   for (* mRegularFileMap mDirectoryMap *) in inFilewrapperDirectoryMap do
@@ -1454,7 +1454,7 @@ proc generatePredefinedTypeFiles
     end
   end
   if @uint.errorCount == 0 then
-    ioToolHeaderFileList += !"all-predefined-types.h"
+    ioToolHeaderFileList +=§(!"all-predefined-types.h")
     ioAllProductFileSet ++= "all-predefined-types.h"
     @string.generateFileWithPattern (
       !startPath:inDirectory,
@@ -1478,7 +1478,7 @@ proc generatePredefinedTypeFiles
     end
   end
   if @uint.errorCount == 0 then
-    ioToolCppFileList += !"all-predefined-types.cpp"
+    ioToolCppFileList +=§(!"all-predefined-types.cpp")
     ioAllProductFileSet ++= "all-predefined-types.cpp"
     @string.generateFileWithPattern (
       !startPath:inDirectory,

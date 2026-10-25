@@ -65,13 +65,13 @@ syntax extension galgas3DeclarationsSyntax {
       error (.here : "a list declaration must declare at least one property")
     end
     $}$
-    ioDeclarations.mDeclarationList += !@listDeclarationAST (
+    ioDeclarations.mDeclarationList +=§(!@listDeclarationAST (
       !isPredefined: false,
       listTypeName,
       propertyList,
       !usefullList: isUsefull,
       !equatable: isEquatable
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -112,13 +112,13 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> (!listTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@listDeclarationAST (
+    ioDeclarations.mDeclarationList +=§(!@listDeclarationAST (
       !isPredefined: false,
       listTypeName,
       propertyList,
       !usefullList: isUsefull,
       !equatable: isEquatable
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -171,7 +171,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
       error (mPropertyName : "property initialization is not handled for a list")
     end
     !?ioTypeMap.makeEntry (!propertyTypeName, ?let attributeTypeIndex)
-    typedAttributeList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector
+    typedAttributeList +=§(!attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector)
   end
 //--- uint type index
   !?ioTypeMap.makeEntryFromString (!"uint", ?let uintType)
@@ -189,22 +189,22 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
   var @formalParameterSignature setterInputFormalArgumentList = @()
   for (mPropertyTypeEntry mPropertyName * * mHasSelector) in typedAttributeList do
     let selector = if mHasSelector then mPropertyName.string else "" end
-    enumerationDescriptor += !mPropertyTypeEntry !mPropertyName.string
-    constructorAttributeTypeList +=
+    enumerationDescriptor +=§(!mPropertyTypeEntry !mPropertyName.string)
+    constructorAttributeTypeList +=§(
       !selector.nowhere
       !mPropertyTypeEntry
       !mPropertyName.string
-      !true
-    setterOutputFormalArgumentList +=
+      !true)
+    setterOutputFormalArgumentList +=§(
       !selector.nowhere
       !mPropertyTypeEntry
       !.argumentOut
-      !mPropertyName.string
-    setterInputFormalArgumentList +=
+      !mPropertyName.string)
+    setterInputFormalArgumentList +=§(
       !selector.nowhere
       !mPropertyTypeEntry
       !.argumentConstantIn
-      !mPropertyName.string
+      !mPropertyName.string)
   end
 //--- Class functions
   var @classFunctionMap classFunctionMap = @()
@@ -314,7 +314,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
     !@methodQualifier.isBasic,
     !""
   )
-  setterOutputFormalArgumentList += !"".nowhere !uintType !.argumentConstantIn !"inIndex"
+  setterOutputFormalArgumentList +=§(!"".nowhere !uintType !.argumentConstantIn !"inIndex")
   !?setterMap.insertOrReplace
     (!@lstring (!"removeAtIndex", @location.here),
     !@methodKind.definedAsMember,
@@ -326,8 +326,8 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
   for (mPropertyTypeEntry mPropertyName * mHasSetter *) in typedAttributeList do
     if mHasSetter then
       var setterFormalArgumentList = @formalParameterSignature ()
-      setterFormalArgumentList += !"".nowhere !mPropertyTypeEntry !.argumentConstantIn !mPropertyName.string
-      setterFormalArgumentList += !"".nowhere !uintType !.argumentConstantIn !mPropertyName.string
+      setterFormalArgumentList +=§(!"".nowhere !mPropertyTypeEntry !.argumentConstantIn !mPropertyName.string)
+      setterFormalArgumentList +=§(!"".nowhere !uintType !.argumentConstantIn !mPropertyName.string)
       !?setterMap.insertOrReplace
         (!@lstring (!"set" + mPropertyName.string.capitalizingFirstCharacter + "AtIndex", mPropertyName.location),
         !@methodKind.definedAsMember,
@@ -339,7 +339,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
     end
   end
 //--- mutating proc 'insertAtIndex'
-  setterInputFormalArgumentList += !"".nowhere !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inInsertionIndex"
+  setterInputFormalArgumentList +=§(!"".nowhere !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inInsertionIndex")
   !?setterMap.insertOrReplace
     (!@lstring (!"insertAtIndex", @location.here),
     !@methodKind.definedAsMember,
@@ -420,22 +420,22 @@ override proc @listDeclarationAST.addAssociatedElement
   (?!@galgasDeclarationAST ioDeclarations ) {
   var @propertyInCollectionListAST structAttributeList = @()
   for (mutability qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
-    structAttributeList +=
+    structAttributeList +=§(
       !mutability: mutability
       !qualifiedTypeAST
       !mPropertyName
       !.publicAccess
       !hasSelector: hasSelector
-      !initialization: initExpression
+      !initialization: initExpression)
   end
-  ioDeclarations.mDeclarationList += !@structDeclarationAST (
+  ioDeclarations.mDeclarationList +=§(!@structDeclarationAST (
     !isPredefined: self.isPredefined,
     makeEmbeddedElementTypeLName (!self.mListTypeName),
     structAttributeList,
     !enumeratedElementTypeName: "",
     !comparison: if self.equatable then .equatable else .none end,
     !isUsefullStruct: true
-  )
+  ))
 }
 
 
@@ -456,14 +456,14 @@ override proc @listDeclarationAST.semanticAnalysis
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mListTypeName)
   !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
   if self.usefullList || self.isPredefined  then
-    ioUsefulnessRootEntities += !nameForUsefulness
+    ioUsefulnessRootEntities +=§(!nameForUsefulness)
   end
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (
     !makeEmbeddedElementTypeLName (!self.mListTypeName)
   )
   !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: elementTypeNameForUsefulness)
   if self.usefullList || self.isPredefined  then
-    ioUsefulnessRootEntities += !elementTypeNameForUsefulness
+    ioUsefulnessRootEntities +=§(!elementTypeNameForUsefulness)
   end
 //--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
@@ -473,7 +473,7 @@ override proc @listDeclarationAST.semanticAnalysis
   !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness, !initializerNameForUsefulness)
   !?ioUsefulEntitiesGraph.addEdge (!from: initializerNameForUsefulness, !to: nameForUsefulness)
   if self.usefullList || self.isPredefined then
-    ioUsefulnessRootEntities += !initializerNameForUsefulness
+    ioUsefulnessRootEntities +=§(!initializerNameForUsefulness)
   end
 //---
   var @typedPropertyList typedAttributeList = @()
@@ -485,23 +485,23 @@ override proc @listDeclarationAST.semanticAnalysis
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
     !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: propertyTypeNameForUsefulness)
     let t = ioTypeMap.typeMapEntryForLKey (!propertyTypeName)
-    typedAttributeList +=
+    typedAttributeList +=§(
       !t
       !propertyName
       !initExpression
       !hasSetter: true // not isConstant
-      !hasSelector: hasSelector
+      !hasSelector: hasSelector)
     !?attributeMap.insertKey (!propertyName, !t)
   end
 //---
   let selfType = ioTypeMap.typeMapEntryForLKey (!self.mListTypeName)
-  ioSemanticDeclarationListForGeneration +=
+  ioSemanticDeclarationListForGeneration +=§(
     !infoMessage: "list type " + self.mListTypeName
     !@listTypeForGeneration (
       !selfType,
       ioTypeMap.typeMapEntryForLKey (!makeEmbeddedElementTypeLName (!self.mListTypeName)),
       typedAttributeList
-    )
+    ))
 }
 
 //--------------------------------------------------------------------------------------------------

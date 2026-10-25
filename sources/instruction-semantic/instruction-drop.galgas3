@@ -38,7 +38,7 @@ syntax extension galgas3InstructionsSyntax {
     var @lstringlist dropList = @()
     repeat
       $identifier$ (?let variableName)
-      dropList += !variableName
+      dropList +=§(!variableName)
     while
       $,$
     end
@@ -62,7 +62,7 @@ syntax extension galgas4InstructionsSyntax {
     var @lstringlist dropList = @()
     repeat
       $identifier$ (?let variableName)
-      dropList += !variableName
+      dropList +=§(!variableName)
     while
       $,$
     end

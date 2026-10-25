@@ -38,7 +38,7 @@ syntax extension galgas3LexiqueComponentSyntax {
     $identifier$ (?let tagName)
     $send$
     $\$terminal\$$ (?let terminalName)
-    ioInstructionList += !@lexicalRewindInstructionAST (!tagName, terminalName)
+    ioInstructionList +=§(!@lexicalRewindInstructionAST (!tagName, terminalName))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -56,7 +56,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     $identifier$ (?let tagName)
     $send$
     $\$terminal\$$ (?let terminalName)
-    ioInstructionList += !@lexicalRewindInstructionAST (!tagName, terminalName)
+    ioInstructionList +=§(!@lexicalRewindInstructionAST (!tagName, terminalName))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

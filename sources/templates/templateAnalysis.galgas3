@@ -129,7 +129,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
             if entry.mGetterNameThatObsoletesInvokationName != "" then
               actualGetterName = entry.mGetterNameThatObsoletesInvokationName
             end
-            fieldList += !mPropertyName.string
+            fieldList +=§(!mPropertyName.string)
           end
         end
         if matchingReaderCount == 0 then
@@ -180,7 +180,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
           ?@semanticExpressionForGeneration exp
         )
         checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType, !exp.mResultType, !mEndOfExpressionLocation, !?exp)
-        constructorEffectiveParameterList += !exp
+        constructorEffectiveParameterList +=§(!exp)
       end
       if actualGetterName != self.mGetterName.string then
         error (self.mGetterName : "obsolete func" fixit replace actualGetterName)
@@ -258,7 +258,7 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
         ?@semanticExpressionForGeneration exp
       )
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType, !exp.mResultType, !mEndOfExpressionLocation, !?exp)
-      classFunctionEffectiveParameterList += !exp
+      classFunctionEffectiveParameterList +=§(!exp)
     end
   end
 //---
@@ -747,7 +747,7 @@ override proc @templateFunctionCallAST.templateExpressionAnalysis
         ?@semanticExpressionForGeneration expression
       )
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType, !expression.mResultType, !mEndOfExpressionLocation, !?expression)
-      semanticExpressionListForGeneration += !expression
+      semanticExpressionListForGeneration +=§(!expression)
       if mFormalSelector.string != mActualSelector.string then
         let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
         error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
@@ -1490,7 +1490,7 @@ override proc @templateInstructionStringAST.templateInstructionAnalysis
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
-  ioInstructionList += !@templateInstructionStringForGeneration (!self.mTemplateString)
+  ioInstructionList +=§(!@templateInstructionStringForGeneration (!self.mTemplateString))
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1512,7 +1512,7 @@ override proc @templateInstructionExpressionAST.templateInstructionAnalysis
   if expression.mResultType.definition.typeName.string != "string" then
     error (self.mLocation:"expression type should be '@string' (it is '@" + expression.mResultType.definition.typeName.string + "')")
   end
-  ioInstructionList += !@templateInstructionExpressionForGeneration (!expression)
+  ioInstructionList +=§(!@templateInstructionExpressionForGeneration (!expression))
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1555,7 +1555,7 @@ override proc @templateBlockInstructionAST.templateInstructionAnalysis
     !self.mBlockInstructionList,
     !?blockInstructionList
   )
-  ioInstructionList += !@templateBlockInstructionForGeneration (!expression, self.mLocation, blockInstructionList)
+  ioInstructionList +=§(!@templateBlockInstructionForGeneration (!expression, self.mLocation, blockInstructionList))
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1567,7 +1567,7 @@ override proc @templateInstructionGetColumnLocationAST.templateInstructionAnalys
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
-  ioInstructionList += !@templateInstructionGetColumnLocationForGeneration ()
+  ioInstructionList +=§(!@templateInstructionGetColumnLocationForGeneration ())
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1579,7 +1579,7 @@ override proc @templateInstructionGotoColumnLocationAST.templateInstructionAnaly
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
-  ioInstructionList += !@templateInstructionGotoColumnLocationForGeneration ()
+  ioInstructionList +=§(!@templateInstructionGotoColumnLocationForGeneration ())
 }
 
 
@@ -1613,7 +1613,7 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
       !mInstructionList,
       !?instructionList
     )
-    templateInstructionIfBranchList += !expression !instructionList
+    templateInstructionIfBranchList +=§(!expression !instructionList)
   end
 //---
   var elseInstructionList = @templateInstructionListForGeneration ()
@@ -1626,9 +1626,9 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
     !?elseInstructionList
   )
 //---
-  ioInstructionList += !@templateInstructionIfForGeneration (
+  ioInstructionList +=§(!@templateInstructionIfForGeneration (
     !templateInstructionIfBranchList,
-    elseInstructionList)
+    elseInstructionList))
 }
 
 //--------------------------------------------------------------------------------------------------

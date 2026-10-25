@@ -182,10 +182,10 @@ override proc @undefinedLocalConstantDeclarationAST.analyzeSemanticInstruction (
     !targetVariableCppName
   )
 //--- Generate instruction
-  ioInstructionListForGeneration += !@undefinedLocalConstantDeclarationForGeneration (
+  ioInstructionListForGeneration +=§(!@undefinedLocalConstantDeclarationForGeneration (
     !targetType,
     targetVariableCppName
-  )
+  ))
 }
 
 //·································································································
@@ -217,11 +217,11 @@ override proc @localConstantDeclarationWithAssignmentAST.analyzeSemanticInstruct
     !targetVariableCppName
   )
 //--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
+  ioInstructionListForGeneration +=§(!@localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
     !expression.mResultType,
     true,
     targetVariableCppName,
-    expression)
+    expression))
 }
 
 //·································································································
@@ -266,12 +266,12 @@ override proc @localVariableOrConstantDeclarationWithAssignmentAST.analyzeSemant
 //--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (!targetType, !expression.mResultType, !self.mInstructionLocation, !?expression)
 //--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
+  ioInstructionListForGeneration +=§(!@localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
     !targetType,
     self.mIsConstant,
     targetVariableCppName,
     expression
-  )
+  ))
 }
 
 //--------------------------------------------------------------------------------------------------

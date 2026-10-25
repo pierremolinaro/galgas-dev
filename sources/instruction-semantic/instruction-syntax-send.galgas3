@@ -108,10 +108,10 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
       error (self.mInstructionLocation: "'send' expresion should be an @string expression")
     end
   //---
-    ioInstructionListForGeneration += !@syntaxSendInstructionForGeneration (
+    ioInstructionListForGeneration +=§(!@syntaxSendInstructionForGeneration (
       !self.mInstructionLocation,
       expression
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

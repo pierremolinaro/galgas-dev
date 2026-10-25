@@ -117,12 +117,12 @@ override proc @warningInstructionAST.analyzeSemanticInstruction (
     ?let fixitListForGeneration
   )
 //--- Generate instruction
-  ioInstructionListForGeneration += !@warningInstructionForGeneration (
+  ioInstructionListForGeneration +=§(!@warningInstructionForGeneration (
     !self.mInstructionLocation,
     locationExpression,
     messageExpression,
     fixitListForGeneration
-  )
+  ))
 }
 
 //--------------------------------------------------------------------------------------------------

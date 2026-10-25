@@ -355,7 +355,7 @@ override proc @grammarInFileInstructionAST.analyzeSemanticInstruction (
     !?ioVariableMap
   )
 //--- Generate instructions
-  ioInstructionListForGeneration += !@grammarInstructionWithSourceFileForGeneration (
+  ioInstructionListForGeneration +=§(!@grammarInstructionWithSourceFileForGeneration (
     !self.mInstructionLocation,
     self.mGrammarComponentName.string,
     self.mLabelName.string,
@@ -364,7 +364,7 @@ override proc @grammarInFileInstructionAST.analyzeSemanticInstruction (
     hasTranslateFeature,
     assignementList,
     syntaxDirectedTranslationResultVarName
-  )
+  ))
 }
 
 //·································································································
@@ -449,7 +449,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
     !?ioVariableMap
   )
 //--- Generate instructions
-  ioInstructionListForGeneration += !@grammarInstructionWithSourceExpressionForGeneration (
+  ioInstructionListForGeneration +=§(!@grammarInstructionWithSourceExpressionForGeneration (
     !self.mInstructionLocation,
     self.mGrammarComponentName.string,
     self.mLabelName.string,
@@ -459,7 +459,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
     hasTranslateFeature,
     assignementList,
     syntaxDirectedTranslationResultVarName
-  )
+  ))
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -507,7 +507,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
         !?ioUnusedVariableCppNameSet,
         ?let @string parameterCppName
       )
-      parameterCppNameList += !parameterCppName
+      parameterCppNameList +=§(!parameterCppName)
       if mActualParameter is @inputActualParameterForGeneration then
         ioGeneratedCode += parameterCppName + ".drop () ;\n"
       end
@@ -585,7 +585,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
          !?ioUnusedVariableCppNameSet,
          ?let @string parameterCppName
       )
-      parameterCppNameList += !parameterCppName
+      parameterCppNameList +=§(!parameterCppName)
       if mActualParameter is @inputActualParameterForGeneration then
         ioGeneratedCode += parameterCppName + ".drop () ;\n"
       end

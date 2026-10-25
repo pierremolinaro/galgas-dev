@@ -143,13 +143,13 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
       end
     end
   //--- Generate instructions
-    ioInstructionListForGeneration += !@superMethodCallInstructionForGeneration (
+    ioInstructionListForGeneration +=§(!@superMethodCallInstructionForGeneration (
       self.mInstructionLocation,
       !self.mMethodName.string,
       actualParameterListForGeneration,
       hasCompilerArgument,
       baseType
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -181,7 +181,7 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
     var inputVariableList = @stringlist ()
     for (mActualParameter) in self.mActualParameterList do
       mActualParameter.generateActualParameter (!?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioGeneratedCode, !?jokerParametersToReleaseList, !?inputVariableList, !?ioUnusedVariableCppNameSet, ?let parameterCppName)
-      parameterCppNameList += !parameterCppName
+      parameterCppNameList +=§(!parameterCppName)
     end
   //--- Generate proc call
     ioInclusionSet ++= "proc-" + self.mBaseType.definition.typeName.string.fileNameRepresentation + "-" + self.mMethodName.fileNameRepresentation

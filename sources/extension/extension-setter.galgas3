@@ -52,14 +52,14 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionSetterAST (
+    ioDeclarations.mDeclarationList +=§(!@extensionSetterAST (
       !isPredefined: false,
       typeName,
       setterName,
       formalParameterList,
       routineInstructionList,
       endOfSetterLocation
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -80,14 +80,14 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionSetterAST (
+    ioDeclarations.mDeclarationList +=§(!@extensionSetterAST (
       !isPredefined: false,
       typeName,
       setterName,
       formalParameterList,
       routineInstructionList,
       endOfSetterLocation
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -117,14 +117,14 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionSetterAST (
+    ioDeclarations.mDeclarationList +=§(!@extensionSetterAST (
       !isPredefined: false,
       typeName,
       setterName,
       formalParameterList,
       routineInstructionList,
       endOfSetterLocation
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -139,14 +139,14 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionSetterAST (
+    ioDeclarations.mDeclarationList +=§(!@extensionSetterAST (
       !isPredefined: false,
       inTypeName,
       setterName,
       formalParameterList,
       routineInstructionList,
       endOfSetterLocation
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -266,7 +266,7 @@ override proc @extensionSetterAST.semanticAnalysis (
     ?let formalParameterListForGeneration
   )
 //---
-  ioSemanticDeclarationListForGeneration +=
+  ioSemanticDeclarationListForGeneration +=§(
     !infoMessage:"extension mutating proc " + self.mExtensionSetterName
     !@extensionSetterForGeneration (
       !generateHeader: true,
@@ -276,7 +276,7 @@ override proc @extensionSetterAST.semanticAnalysis (
       implementedAsFunction,
       formalParameterListForGeneration,
       selfType.definition.allTypedPropertyList,
-      semanticInstructionListForGeneration)
+      semanticInstructionListForGeneration))
 }
 
 //--------------------------------------------------------------------------------------------------

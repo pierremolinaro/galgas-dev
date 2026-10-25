@@ -48,13 +48,13 @@ syntax extension galgas3DeclarationsSyntax {
       $,$
     end
     $}$
-    ioDeclarations.mDeclarationList += !@sortedListDeclarationAST (
+    ioDeclarations.mDeclarationList +=§(!@sortedListDeclarationAST (
       !isPredefined: false,
       sortedListTypeName,
       attributeList,
       sortDescriptorList,
       !equatable: isEquatable
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -69,7 +69,7 @@ syntax extension galgas3DeclarationsSyntax {
       $>$
       mAscending = false
     end
-    ioSortedListSortDescriptorList += !mSortedAttributeName !mAscending
+    ioSortedListSortDescriptorList +=§(!mSortedAttributeName !mAscending)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -107,13 +107,13 @@ syntax extension galgas4DeclarationsSyntax {
       $,$
     end
     $}$
-    ioDeclarations.mDeclarationList += !@sortedListDeclarationAST (
+    ioDeclarations.mDeclarationList +=§(!@sortedListDeclarationAST (
       !isPredefined: false,
       sortedListTypeName,
       attributeList,
       sortDescriptorList,
       !equatable: isEquatable
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -128,7 +128,7 @@ syntax extension galgas4DeclarationsSyntax {
       $>$
       mAscending = false
     end
-    ioSortedListSortDescriptorList += !mSortedAttributeName !mAscending
+    ioSortedListSortDescriptorList +=§(!mSortedAttributeName !mAscending)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -174,22 +174,22 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     (?!@galgasDeclarationAST ioDeclarations ) {
     var @propertyInCollectionListAST structAttributeList = @()
     for (mutability qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
-      structAttributeList +=
+      structAttributeList +=§(
         !mutability: mutability
         !qualifiedTypeAST
         !mPropertyName
         !.publicAccess
         !hasSelector: hasSelector
-        !initialization: initExpression
+        !initialization: initExpression)
     end
-    ioDeclarations.mDeclarationList += !@structDeclarationAST (
+    ioDeclarations.mDeclarationList +=§(!@structDeclarationAST (
       !isPredefined: self.isPredefined,
       makeEmbeddedElementTypeLName (!self.mSortedListTypeName),
       structAttributeList,
       !enumeratedElementTypeName: "",
       !comparison: if self.equatable then .equatable else .none end,
       !isUsefullStruct: true
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -219,11 +219,11 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     for (* propertyTypeName mPropertyName 2* initExpression) in self.mPropertyList do
       !?ioTypeMap.makeEntry (!propertyTypeName, ?let attributeTypeIndex)
       let hasSelector = false
-      typedAttributeList += !attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector
-      enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
-      constructorAttributeTypeList += !"".nowhere !attributeTypeIndex !mPropertyName.string !true
-      setterFormalOutputArgumentList += !"".nowhere !attributeTypeIndex !.argumentOut !mPropertyName.string
-      setterFormalInputArgumentList += !"".nowhere !attributeTypeIndex !.argumentVarIn !mPropertyName.string
+      typedAttributeList +=§(!attributeTypeIndex !mPropertyName !initExpression !hasSetter: true !hasSelector: hasSelector)
+      enumerationDescriptor +=§(!attributeTypeIndex !mPropertyName.string)
+      constructorAttributeTypeList +=§(!"".nowhere !attributeTypeIndex !mPropertyName.string !true)
+      setterFormalOutputArgumentList +=§(!"".nowhere !attributeTypeIndex !.argumentOut !mPropertyName.string)
+      setterFormalInputArgumentList +=§(!"".nowhere !attributeTypeIndex !.argumentVarIn !mPropertyName.string)
     end
   //--- Class functions
     var @classFunctionMap classFunctionMap = @()
@@ -374,7 +374,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     )
     !?ioUsefulEntitiesGraph.addEdge (!from: sortedListNameForUsefulness, !to: elementTypeNameForUsefulness)
     if self.isPredefined then
-      ioUsefulnessRootEntities += !sortedListNameForUsefulness
+      ioUsefulnessRootEntities +=§(!sortedListNameForUsefulness)
     end
   //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
@@ -384,7 +384,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness, !initializerNameForUsefulness)
     !?ioUsefulEntitiesGraph.addEdge (!from: initializerNameForUsefulness, !to: sortedListNameForUsefulness)
     if self.isPredefined then
-      ioUsefulnessRootEntities += !initializerNameForUsefulness
+      ioUsefulnessRootEntities +=§(!initializerNameForUsefulness)
     end
   //--- Attribute
     var typedAttributeList = @typedPropertyList ()
@@ -394,12 +394,12 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       !?ioUsefulEntitiesGraph.addEdge (!from: sortedListNameForUsefulness, !to: propertyTypeNameForUsefulness)
       let t = ioTypeMap.typeMapEntryForLKey (!propertyTypeName)
       let hasSelector = true
-      typedAttributeList +=
+      typedAttributeList +=§(
         !t
         !mPropertyName
         !initExpression
         !hasSetter: true
-        !hasSelector: hasSelector
+        !hasSelector: hasSelector)
       !?attributeMap.insertKey (!mPropertyName, !t)
     end
   //--- Sort descriptor
@@ -407,7 +407,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     var @sortDescriptorListForGeneration sortDescriptorList = @()
     for (mSortedAttributeName mAscending) in self.mSortDescriptorList do
       attributeMap.searchKey (!mSortedAttributeName, ?let @unifiedTypeMapEntry type)
-      sortDescriptorList += !type !mSortedAttributeName.string !mAscending
+      sortDescriptorList +=§(!type !mSortedAttributeName.string !mAscending)
       if attributesUsedForSorting.hasKey (!mSortedAttributeName.string) then
         error (mSortedAttributeName : "the '" + mSortedAttributeName + "' is already used for sorting")
       end
@@ -417,14 +417,14 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       end
     end
   //--- Generate type
-    ioSemanticDeclarationListForGeneration +=
+    ioSemanticDeclarationListForGeneration +=§(
       !infoMessage: "sorted list " + self.mSortedListTypeName
       !@sortedListTypeForGeneration (
         !ioTypeMap.typeMapEntryForLKey (!self.mSortedListTypeName),
         ioTypeMap.typeMapEntryForLKey (!makeEmbeddedElementTypeLName (!self.mSortedListTypeName)),
         typedAttributeList,
         sortDescriptorList
-      )
+      ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

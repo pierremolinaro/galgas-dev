@@ -171,9 +171,9 @@ proc @productionRuleListForGrammarAnalysis.@element displayRuleVertically
   var @string currentNode = "P0start"
   var @rowList rowArray = @()
   for * in 1 ..< self.mInstructionList.count do
-    rowArray += !@[@("", "")]
+    rowArray +=§(!@[@("", "")])
   end
-  rowArray += !@[@(currentNode, "[firstPoint] ()")]
+  rowArray +=§(!@[@(currentNode, "[firstPoint] ()")])
   var @string arrows = ""
   var @string arrowStyle = "--"
   var @uint unusedMaxUsedRowIndex = 0 // Unused
@@ -289,12 +289,12 @@ mutating proc @rowList.appendRow
 //--- add column pads in row
   if cols.count <= inColumn then
     for * in cols.count ... inColumn do
-      cols += !"" !""
+      cols +=§(!"" !"")
     end
   end
 //--- Add node
   outNodeName = "p" + inRow + "-" + cols.count
-  cols += !outNodeName !inNodeDefinition
+  cols +=§(!outNodeName !inNodeDefinition)
 //--- Set new row
   !?self.setColumnsAtIndex (!cols, !inRow)
 }
@@ -398,7 +398,7 @@ override proc @selectInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
       !?maxUsedRowIndex,
       !debug:inDebug
     )
-    endingNodes += !currentNode
+    endingNodes +=§(!currentNode)
     if endColumn < branchColumn then
       endColumn = branchColumn
     end
@@ -486,7 +486,7 @@ override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
 //--- Enter branches
   var @stringlist endingNodes = @()
   if oneEmptyBranch then
-    endingNodes += !startNodeName
+    endingNodes +=§(!startNodeName)
   else
     var nextBranchUsedRowIndex = inRow
     for branch in branches do
@@ -504,7 +504,7 @@ override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
         !?nextBranchUsedRowIndex,
         !debug:inDebug
       )
-      endingNodes += !currentNode
+      endingNodes +=§(!currentNode)
       if endColumn < branchColumn then
         endColumn = branchColumn
       end

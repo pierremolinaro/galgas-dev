@@ -217,12 +217,12 @@ final class @ifInstructionAST : @semanticInstructionAST {
     )
     !?ioVariableMap.closeOverride (!self.mEndOf_if_instruction)
   //--- Generate instruction
-    ioInstructionListForGeneration += !@ifInstructionForGeneration (
+    ioInstructionListForGeneration +=§(!@ifInstructionForGeneration (
       !self.mEndOf_then_branch,
       testListForGeneration,
       then_instructionList,
       else_instructionList
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

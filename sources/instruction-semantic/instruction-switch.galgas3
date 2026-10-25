@@ -39,7 +39,7 @@ syntax extension galgas3InstructionsSyntax {
       )
       $:$
       <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let instructions)
-      switchBranches += !constantNameList !associatedValuesExtraction !instructions !@location.here
+      switchBranches +=§(!constantNameList !associatedValuesExtraction !instructions !@location.here)
     while
     end
     $end$
@@ -74,11 +74,11 @@ syntax extension galgas3InstructionsSyntax {
           $literalInt$ (?let n)
           $*$
           for * in 0 ..< n.bigint do
-            outAssociatedValuesExtraction += !"".here !"".here !false
+            outAssociatedValuesExtraction +=§(!"".here !"".here !false)
           end
          or
           $*$
-          outAssociatedValuesExtraction += !"".here !"".here !false
+          outAssociatedValuesExtraction +=§(!"".here !"".here !false)
          or
           let @lstring typeName
           select
@@ -94,7 +94,7 @@ syntax extension galgas3InstructionsSyntax {
             constantMarkedAsUnused = true
           end
           $identifier$ (?let @lstring constantName)
-          outAssociatedValuesExtraction += !typeName !constantName !constantMarkedAsUnused
+          outAssociatedValuesExtraction +=§(!typeName !constantName !constantMarkedAsUnused)
         end
       while
         $,$
@@ -128,7 +128,7 @@ syntax extension galgas4InstructionsSyntax {
         ?let @switchExtractedValuesListAST associatedValuesExtraction)
       $:$
       <semantic_instruction_list> (!?ioDeclarations, ?let instructions)
-      switchBranches += !constantNameList !associatedValuesExtraction !instructions !@location.here
+      switchBranches +=§(!constantNameList !associatedValuesExtraction !instructions !@location.here)
     while
     end
     $end$
@@ -163,11 +163,11 @@ syntax extension galgas4InstructionsSyntax {
           $literalInt$ (?let n)
           $*$
           for * in 0 ..< n.bigint do
-            outAssociatedValuesExtraction += !"".here !"".here !false
+            outAssociatedValuesExtraction +=§(!"".here !"".here !false)
           end
          or
           $*$
-          outAssociatedValuesExtraction += !"".here !"".here !false
+          outAssociatedValuesExtraction +=§(!"".here !"".here !false)
          or
           let @lstring typeName
           select
@@ -183,7 +183,7 @@ syntax extension galgas4InstructionsSyntax {
             constantMarkedAsUnused = true
           end
           $identifier$ (?let @lstring constantName)
-          outAssociatedValuesExtraction += !typeName !constantName !constantMarkedAsUnused
+          outAssociatedValuesExtraction +=§(!typeName !constantName !constantMarkedAsUnused)
         end
       while
         $,$
@@ -296,10 +296,10 @@ final class @switchInstructionAST : @semanticInstructionAST {
                 let cppName = "extractedValue_"
                   + associatedValue.mExtractedValueName.location.startLocationIndex
                   + "_" + associatedValue.mExtractedValueName + "_" + IDX
-                extractedAssociatedValuesForGeneration +=
+                extractedAssociatedValuesForGeneration +=§(
                   !descriptor.type
                   !cppName
-                  !descriptor.name
+                  !descriptor.name)
                 if associatedValue.mExtractedValueName.string != "" then
                   if associatedValue.mMarkedAsUnused then
                     !?ioVariableMap.insertUsedLocalConstant
@@ -339,11 +339,11 @@ final class @switchInstructionAST : @semanticInstructionAST {
           ?let @semanticInstructionListForGeneration instructionList
         )
         !?ioVariableMap.closeBranch (!branch.mEndOfBranch)
-        switchBranchesForGeneration +=
+        switchBranchesForGeneration +=§(
           !branch.mSwitchConstantList
           !extractedAssociatedValuesForGeneration
           !branch.mEndOfBranch.startLocationIndex
-          !instructionList
+          !instructionList)
       end
       !?ioVariableMap.closeOverride (!self.mEndOf_switch_instruction)
     //--- Check all constants have been named
@@ -358,11 +358,11 @@ final class @switchInstructionAST : @semanticInstructionAST {
         )
       end
     //--- Generate instruction
-      ioInstructionListForGeneration += !@switchInstructionForGeneration (
+      ioInstructionListForGeneration +=§(!@switchInstructionForGeneration (
         !switchExpression.mResultType,
         switchExpression,
         switchBranchesForGeneration
-      )
+      ))
     else
       error (self.mEndOfSwitchExpression
       : "the switch expression type should be an instance of an enumeration type (the '@"

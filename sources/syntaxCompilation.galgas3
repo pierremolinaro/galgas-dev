@@ -37,13 +37,13 @@ proc groupSyntaxComponentsGalgas3
       nonterminalDeclarationList += mNonterminalDeclarationList
       ruleList += mRuleList
     end
-    ioDeclarationList += !@galgas3SyntaxComponentAST (
+    ioDeclarationList +=§(!@galgas3SyntaxComponentAST (
       !isPredefined: false,
       component.mSyntaxComponentName,
       component.mImportedLexiqueFilePath,
       nonterminalDeclarationList,
       ruleList,
-      component.mHasTranslateFeature)
+      component.mHasTranslateFeature))
   end
 //--- Check all extensions are handled
   for (key theLists) in inSyntaxExtensions.dictionary do

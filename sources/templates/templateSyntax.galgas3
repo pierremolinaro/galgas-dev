@@ -353,7 +353,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   var @stringlist literalStringList = @()
   repeat
     $"string"$ (?let @lstring literalString)
-    literalStringList += !literalString.string
+    literalStringList +=§(!literalString.string)
   while
   end
   outExpression = @templateLiteralStringExpressionAST (!literalStringList, @location.here)
@@ -480,12 +480,12 @@ rule <output_expression_list_tpl> (!@templateExpressionListAST outExpressionList
   while
     $!selector:$ (?let selector)
     <expression_tpl> (?let @templateExpressionAST expression)
-    outExpressionList += !selector !expression !@location.here
+    outExpressionList +=§(!selector !expression !@location.here)
   while
     $!$
     let selector = "".here
     <expression_tpl> (?let @templateExpressionAST expression)
-    outExpressionList += !selector !expression !@location.here
+    outExpressionList +=§(!selector !expression !@location.here)
   end
 }
 
@@ -498,21 +498,21 @@ rule <output_expression_list_tpl> (!@templateExpressionListAST outExpressionList
 rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
   $!$
   <expression_tpl> (?let @templateExpressionAST expression)
-  ioResultingInstructionList += !@templateInstructionExpressionAST (!expression, @location.here)
+  ioResultingInstructionList +=§(!@templateInstructionExpressionAST (!expression, @location.here))
 }
 
 //--------------------------------------------------------------------------------------------------
 
 rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
   $?^$
-  ioResultingInstructionList += !@templateInstructionGetColumnLocationAST ()
+  ioResultingInstructionList +=§(!@templateInstructionGetColumnLocationAST ())
 }
 
 //--------------------------------------------------------------------------------------------------
 
 rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
   $!^$
-  ioResultingInstructionList += !@templateInstructionGotoColumnLocationAST ()
+  ioResultingInstructionList +=§(!@templateInstructionGotoColumnLocationAST ())
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -530,10 +530,10 @@ rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructio
   end
 //---
   $end$
-  ioResultingInstructionList += !@templateBlockInstructionAST (
+  ioResultingInstructionList +=§(!@templateBlockInstructionAST (
    !expression,
    @location.here,
-   blockInstructionList)
+   blockInstructionList))
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -550,7 +550,7 @@ rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructio
     while
       <template_instruction> (!?instructionList)
     end
-    templateInstructionIfBranchList += !expression !instructionList
+    templateInstructionIfBranchList +=§(!expression !instructionList)
   while
     $elsif$
   end
@@ -567,9 +567,9 @@ rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructio
   end
 //---
   $end$
-  ioResultingInstructionList += !@templateInstructionIfAST (
+  ioResultingInstructionList +=§(!@templateInstructionIfAST (
     !templateInstructionIfBranchList,
-    elseInstructionList)
+    elseInstructionList))
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -592,7 +592,7 @@ rule <template_parser_start_symbol> (!@templateInstructionListAST outResultingIn
 proc enterTemplateString (?!@templateInstructionListAST outResultingInstructionList ) {
   let @string s = @string.retrieveAndResetTemplateString
   if s.count > 0 then
-    outResultingInstructionList += !@templateInstructionStringAST (!s)
+    outResultingInstructionList +=§(!@templateInstructionStringAST (!s))
   end
 }
 

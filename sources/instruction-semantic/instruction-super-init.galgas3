@@ -139,15 +139,15 @@ final class @superInitInstructionAST : @semanticInstructionAST {
             fixit replace s
             )
           end
-          actualParameterListForGeneration += !expression
+          actualParameterListForGeneration +=§(!expression)
         end
       //--- Generate instructions
-        ioInstructionListForGeneration += !@superInitInstructionForGeneration (
+        ioInstructionListForGeneration +=§(!@superInitInstructionForGeneration (
           !self.mInstructionLocation,
           formalSignature.initializerSignature,
           actualParameterListForGeneration,
           superTypeDefinition.typeName
-        )
+        ))
      case null :
        error (self.mInstructionLocation : "superinit  is not available, current class has no super class")
      end
@@ -186,7 +186,7 @@ final class @superInitInstructionForGeneration : @semanticInstructionForGenerati
         !?ioUnusedVariableCppNameSet,
         ?let argumentCppName
       )
-      getterArgumentCppNameList += !argumentCppName
+      getterArgumentCppNameList +=§(!argumentCppName)
     end
     ioGeneratedCode += self.mSuperTypeName.identifierRepresentation + "_"
     ioGeneratedCode += self.mSuperInitializerSignature.identifierRepresentation

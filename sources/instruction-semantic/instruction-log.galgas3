@@ -47,19 +47,20 @@ syntax extension galgas3InstructionsSyntax {
     repeat
       select
         $identifier$ (?let loggedVariableName)
-        logList += !loggedVariableName !@varInExpressionAST (!loggedVariableName)
+        logList +=§(!loggedVariableName !@varInExpressionAST (!loggedVariableName))
       or
         $self$
         $.$
         $identifier$ (?let propertyName)
-        logList +=
-         !propertyName
-         !@structPropertyAccessExpressionAST (!propertyName.location, @selfInExpressionAST (!propertyName.location), propertyName)
+        logList +=§(
+          !propertyName
+          !@structPropertyAccessExpressionAST (!propertyName.location, @selfInExpressionAST (!propertyName.location), propertyName)
+        )
       or
         $"string"$ (?let logMessage)
         $:$
         <expression_ggs3> (!?ioDeclarations, ?let logExpression)
-        logList += !logMessage !logExpression
+        logList +=§(!logMessage !logExpression)
       end
     while
       $,$
@@ -88,19 +89,19 @@ syntax extension galgas4InstructionsSyntax {
     repeat
       select
         $identifier$ (?let loggedVariableName)
-        logList += !loggedVariableName !@varInExpressionAST (!loggedVariableName)
+        logList +=§(!loggedVariableName !@varInExpressionAST (!loggedVariableName))
       or
         $self$
         $.$
         $identifier$ (?let propertyName)
-        logList +=
+        logList +=§(
          !propertyName
-         !@structPropertyAccessExpressionAST (!propertyName.location, @selfInExpressionAST (!propertyName.location), propertyName)
+         !@structPropertyAccessExpressionAST (!propertyName.location, @selfInExpressionAST (!propertyName.location), propertyName))
       or
         $"string"$ (?let logMessage)
         $:$
         <expression> (!?ioDeclarations, ?let logExpression)
-        logList += !logMessage !logExpression
+        logList +=§(!logMessage !logExpression)
       end
     while
       $,$
@@ -148,10 +149,10 @@ override proc @logInstructionAST.analyzeSemanticInstruction (
       ?let expression
     )
   //--- Generate instruction
-    ioInstructionListForGeneration += !@logInstructionForGeneration (
+    ioInstructionListForGeneration +=§(!@logInstructionForGeneration (
       !mLogMessage,
       expression
-    )
+    ))
   end
 }
 

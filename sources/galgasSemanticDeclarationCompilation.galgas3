@@ -37,42 +37,42 @@ proc compileSemanticDeclarationsGalgas (?!@lstringlist ioUsefulnessRootEntities,
 //--- Add predefined option component
   var @commandLineOptionListAST options = @()
   for name in @application.boolOptionNameList do
-    options +=
+    options +=§(
       !"bool".nowhere
       !@(!name.mValue1, .here)
       !@(!@application.boolOptionInvocationCharacter (!name.mValue0, name.mValue1), .nowhere)
       !@application.boolOptionInvocationString (!name.mValue0, name.mValue1).nowhere
       !@application.boolOptionCommentString (!name.mValue0, name.mValue1).nowhere
       !"".nowhere
-      !.noDefaultValue
+      !.noDefaultValue)
   end
   for name in @application.uintOptionNameList do
-    options +=
+    options +=§(
       !"uint".nowhere
       !@(!name.mValue1, .here)
       !@lchar (!@application.uintOptionInvocationCharacter (!name.mValue0, name.mValue1), .nowhere)
       !@application.uintOptionInvocationString (!name.mValue0, name.mValue1).nowhere
       !@application.uintOptionCommentString (!name.mValue0, name.mValue1).nowhere
       !"".nowhere
-      !.noDefaultValue
+      !.noDefaultValue)
   end
   for name in @application.stringOptionNameList do
-    options +=
+    options +=§(
       !"string".nowhere
       !@(!name.mValue1, .here)
       !@lchar (!@application.stringOptionInvocationCharacter (!name.mValue0, name.mValue1), .nowhere)
       !@application.stringOptionInvocationString (!name.mValue0, name.mValue1).nowhere
       !@application.stringOptionCommentString (!name.mValue0, name.mValue1).nowhere
       !"".nowhere
-      !.noDefaultValue
+      !.noDefaultValue)
   end
-  semanticDeclarations.mDeclarationList += !@optionComponentDeclarationAST (
+  semanticDeclarations.mDeclarationList +=§(!@optionComponentDeclarationAST (
     !isPredefined: true,
     "galgas_builtin_options".nowhere,
     options
-  )
+  ))
   let galgas_builtin_optionsUsefulnessName = optionNameForUsefulEntitiesGraph (!"galgas_builtin_options".nowhere)
-  ioUsefulnessRootEntities += !galgas_builtin_optionsUsefulnessName
+  ioUsefulnessRootEntities +=§(!galgas_builtin_optionsUsefulnessName)
 //----- Build semantic context
   buildGalgasSemanticContext (
     !semanticDeclarations,
@@ -360,9 +360,9 @@ private proc generateManyHeaders
         headerString += "//" + @string.stringByRepeatingString (!"-", 118) + "\n\n"
         let headerFileName = declaration.mDeclaration.getImplementationCppFileName
            + if declaration.mDeclaration.headerKind == @headerKind.twoHeaders then "-1" else "" end
-        headerInclusionList1 += !headerFileName
+        headerInclusionList1 +=§(!headerFileName)
         ioAllProductFileSet ++= headerFileName + ".h"
-        ioToolHeaderFileList += !headerFileName + ".h"
+        ioToolHeaderFileList +=§(!headerFileName + ".h")
         @string.generateFile (
           !inProductDirectory,
           !headerFileName + ".h",
@@ -380,9 +380,9 @@ private proc generateManyHeaders
         headerString += "\n"
         headerString += "//" + @string.stringByRepeatingString (!"-", 118) + "\n\n"
         headerString += "#endif\n\n"
-        headerInclusionList2 += !declaration.mDeclaration.getImplementationCppFileName
+        headerInclusionList2 +=§(!declaration.mDeclaration.getImplementationCppFileName)
         ioAllProductFileSet ++= declaration.mDeclaration.getImplementationCppFileName + ".h"
-        ioToolHeaderFileList += !declaration.mDeclaration.getImplementationCppFileName + ".h"
+        ioToolHeaderFileList +=§(!declaration.mDeclaration.getImplementationCppFileName + ".h")
         @string.generateFile (
           !inProductDirectory,
           !declaration.mDeclaration.getImplementationCppFileName + ".h",
@@ -397,7 +397,7 @@ private proc generateManyHeaders
     !headerInclusionList1 + headerInclusionList2
   ]
   ioAllProductFileSet ++= "all-declarations.h"
-  ioToolHeaderFileList += !"all-declarations.h"
+  ioToolHeaderFileList +=§(!"all-declarations.h")
   @string.generateFile (
     !inProductDirectory,
     !"all-declarations.h",
@@ -431,7 +431,7 @@ private proc generateOneBigHeader
     end
   end
   ioAllProductFileSet ++= "all-declarations.h"
-  ioToolHeaderFileList += !"all-declarations.h"
+  ioToolHeaderFileList +=§(!"all-declarations.h")
   @string.generateFile (
     !inProductDirectory,
     !"all-declarations.h",
@@ -631,7 +631,7 @@ private proc generateFewImplementationFilesWithFewHeaders
         )
       //---
         ioAllProductFileSet ++= headerFileName + ".h"
-        ioToolHeaderFileList += !headerFileName + ".h"
+        ioToolHeaderFileList +=§(!headerFileName + ".h")
         let startOfHeader = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
           !headerFileName
           !if fileIdx == 0 then @() else @[@("all-declarations-" + (fileIdx-1))] end
@@ -667,7 +667,7 @@ private proc generateFewImplementationFilesWithFewHeaders
     )
   //---
     ioAllProductFileSet ++= headerFileName + ".h"
-    ioToolHeaderFileList += !headerFileName + ".h"
+    ioToolHeaderFileList +=§(!headerFileName + ".h")
     let startOfHeader = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
       !headerFileName
       !if fileIdx == 0 then @() else @[@("all-declarations-" + (fileIdx-1))] end
@@ -680,7 +680,7 @@ private proc generateFewImplementationFilesWithFewHeaders
   end
 //--- all declarations header
   ioAllProductFileSet ++= "all-declarations.h"
-  ioToolHeaderFileList += !"all-declarations.h"
+  ioToolHeaderFileList +=§(!"all-declarations.h")
   let startOfAllDeclarationsHeader = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
     !"all-declarations"
     !@[@("all-declarations-" + fileIdx)]
@@ -724,7 +724,7 @@ private proc generateManyImplementationFiles
         !fileName,
         !header + implementationString
       )
-      ioToolProductFileList += !fileName
+      ioToolProductFileList +=§(!fileName)
     end
   end
 }

@@ -211,12 +211,12 @@ override proc @loopInstructionWithVariantAST.analyzeSemanticInstruction (
 //--- End override
   !?ioVariableMap.closeOverride (!self.mEndOfLoopInstruction)
 //--- Generate instruction
-  ioInstructionListForGeneration += ! @loopInstructionWithVariantForGeneration (
+  ioInstructionListForGeneration +=§(! @loopInstructionWithVariantForGeneration (
     !self.mInstructionLocation,
     variantExpression,
     first_instructionList,
     loopExpression,
-    second_instructionList)
+    second_instructionList))
 }
 
 //--------------------------------------------------------------------------------------------------

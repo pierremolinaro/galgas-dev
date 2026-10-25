@@ -259,7 +259,7 @@ private proc analyzeInitializerInvocation (?let @lstring inUsefulnessCallerEntit
       if initializerMap.hasKey (!outInitializerName) then
         initializerMap.searchKey (!outInitializerName, ?formalSignature)
       else
-        var s = "@" + instanciedTypeDefinition.typeName + "init ("
+        var s = "@" + instanciedTypeDefinition.typeName + " ("
         for formalArg in inInvocationArguments
         do
           s += "?"
@@ -278,8 +278,8 @@ private proc analyzeInitializerInvocation (?let @lstring inUsefulnessCallerEntit
       outConstructorEffectiveParameterList = @()
       for effectiveParameter in inInvocationArguments,
           formalArg in formalSignature do
-        effectiveParameter.mExpression.analyzeSemanticExpression
-          (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+        effectiveParameter.mExpression.analyzeSemanticExpression (
+          !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
           !?ioUsefulEntitiesGraph,
           !inferenceType: formalArg.mFormalArgumentType,
           !inAnalysisContext,

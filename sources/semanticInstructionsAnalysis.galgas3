@@ -265,7 +265,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInVar.analyzeGra
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
     + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
-  ioAssignementList += !cppName + " = GGS_string (" + inSyntaxDirectedTranslationResultVarName + ") ;"
+  ioAssignementList +=§(!cppName + " = GGS_string (" + inSyntaxDirectedTranslationResultVarName + ") ;")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -289,7 +289,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.an
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
     + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
-  ioAssignementList += !"GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;"
+  ioAssignementList +=§(!"GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -313,7 +313,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
     + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
-  ioAssignementList += !"const GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;"
+  ioAssignementList +=§(!"const GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;")
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -35,7 +35,7 @@ syntax extension galgas3LexiqueComponentSyntax {
   rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $tag$
     $identifier$ (?let tagName)
-    ioInstructionList += !@lexicalTagInstructionAST (!tagName)
+    ioInstructionList +=§(!@lexicalTagInstructionAST (!tagName))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -51,7 +51,7 @@ syntax extension galgas4LexiqueComponentSyntax {
   rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $tag$
     $identifier$ (?let tagName)
-    ioInstructionList += !@lexicalTagInstructionAST (!tagName)
+    ioInstructionList +=§(!@lexicalTagInstructionAST (!tagName))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -93,8 +93,8 @@ rule <element>
       @(),
       @()
     )
-    ioNodes += !node
-  end
+    ioNodes +=§(!node
+  )end
   if inPrintDuringParsing then
     let @string discartedMessage
     if inIncludeComments then
@@ -180,8 +180,8 @@ rule <element>
     attributeMap,
     nodeList
   )
-  ioNodes += !node
-}
+  ioNodes +=§(!node
+)}
 
 //---------------------------------------------------------------------------*
 
@@ -209,7 +209,7 @@ proc addText
       @(),
       @()
     )
-    ioNodes += !node
+    ioNodes +=§(!node)
     if inPrintDuringParsing then
       let @string s = inIndendation + "TEXT " + "'" + ls + "'\n"
       print (!s)

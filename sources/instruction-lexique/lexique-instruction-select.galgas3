@@ -45,7 +45,7 @@ syntax extension galgas3LexiqueComponentSyntax {
       while
         <lexical_instruction> (!?selectInstructionList)
       end
-      lexicalWhileBranchList += !selectExpression !selectInstructionList
+      lexicalWhileBranchList +=§(!selectExpression !selectInstructionList)
     while
     end
     $default$
@@ -55,10 +55,10 @@ syntax extension galgas3LexiqueComponentSyntax {
       <lexical_instruction> (!?defaultInstructionList)
     end
     $end$
-    ioInstructionList += !@lexicalSelectInstructionAST (
+    ioInstructionList +=§(!@lexicalSelectInstructionAST (
       !lexicalWhileBranchList,
       defaultInstructionList
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -83,7 +83,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       while
         <lexical_instruction> (!?selectInstructionList)
       end
-      lexicalWhileBranchList += !selectExpression !selectInstructionList
+      lexicalWhileBranchList +=§(!selectExpression !selectInstructionList)
     while
     end
     $default$
@@ -93,10 +93,10 @@ syntax extension galgas4LexiqueComponentSyntax {
       <lexical_instruction> (!?defaultInstructionList)
     end
     $end$
-    ioInstructionList += !@lexicalSelectInstructionAST (
+    ioInstructionList +=§(!@lexicalSelectInstructionAST (
       !lexicalWhileBranchList,
       defaultInstructionList
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

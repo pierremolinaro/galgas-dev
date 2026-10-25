@@ -163,12 +163,12 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
   //--- End override
     !?ioVariableMap.closeOverride (!self.mEndOfLoopInstruction)
   //--- Generate instruction
-    ioInstructionListForGeneration += !@loopInstructionWithoutVariantForGeneration (
+    ioInstructionListForGeneration +=§(!@loopInstructionWithoutVariantForGeneration (
       !self.mInstructionLocation,
       first_instructionList,
       testListForGeneration,
       second_instructionList
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

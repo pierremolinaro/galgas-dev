@@ -37,13 +37,13 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
     $}$
     let endOfMethodLocation = @location.here
-    ioDeclarations.mDeclarationList += !@initializerAST (
+    ioDeclarations.mDeclarationList +=§(!@initializerAST (
       !isPredefined: false,
       typeName,
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -56,13 +56,13 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
     $}$
     let endOfMethodLocation = @location.here
-    ioDeclarations.mDeclarationList += !@initializerAST (
+    ioDeclarations.mDeclarationList +=§(!@initializerAST (
       !isPredefined: false,
       inClassName,
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -92,13 +92,13 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let routineInstructionList)
     $}$
     let endOfMethodLocation = @location.here
-    ioDeclarations.mDeclarationList += !@initializerAST (
+    ioDeclarations.mDeclarationList +=§(!@initializerAST (
       !isPredefined: false,
       @lstring (!typeName, initLocation),
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -112,13 +112,13 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let routineInstructionList)
     $}$
     let endOfMethodLocation = @location.here
-    ioDeclarations.mDeclarationList += !@initializerAST (
+    ioDeclarations.mDeclarationList +=§(!@initializerAST (
       !isPredefined: false,
       @lstring (!inTypeName, initLocation),
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -234,7 +234,7 @@ final class @initializerAST : @semanticDeclarationAST {
     )
   //---
     let initializerName = self.mFormalParameterList.initializerSignature
-    ioSemanticDeclarationListForGeneration +=
+    ioSemanticDeclarationListForGeneration +=§(
       !infoMessage: "initializer @" + self.mTypeName + "." + initializerName
       !@extensionInitializerForGeneration (
         !generateHeader: false,
@@ -244,7 +244,7 @@ final class @initializerAST : @semanticDeclarationAST {
         formalParameterListForGeneration,
         selfType.definition.allTypedPropertyList,
         semanticInstructionListForGeneration
-      )
+      ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -286,12 +286,12 @@ private proc analyzeInitializerBody (?let @lstring inUsefulnessCallerEntityName,
     let parameterType = ioTypeMap.typeMapEntryForLKey (!formalArg.mFormalArgumentTypeName)
     if formalArg.mIsConstant then
       let @string cppName = "constinArgument_" + formalArg.mFormalArgumentName.string.identifierRepresentation
-      outSignatureForGeneration +=
+      outSignatureForGeneration +=§(
         !formalArg.mFormalSelector
         !parameterType
         !cppName
         !formalArg.mFormalArgumentName
-        !formalArg.mIsConstant
+        !formalArg.mIsConstant)
       if formalArg.mIsUnused then
         !?variableMap.insertConstantInputFormalArgumentDeclaredAsUnused (!formalArg.mFormalArgumentName, !parameterType, !cppName, !cppName)
       else
@@ -299,12 +299,12 @@ private proc analyzeInitializerBody (?let @lstring inUsefulnessCallerEntityName,
       end
     else
       let @string cppName = "inArgument_" + formalArg.mFormalArgumentName.string.identifierRepresentation
-      outSignatureForGeneration +=
+      outSignatureForGeneration +=§(
         !formalArg.mFormalSelector
         !parameterType
         !cppName
         !formalArg.mFormalArgumentName
-        !formalArg.mIsConstant
+        !formalArg.mIsConstant)
       if formalArg.mIsUnused then
         !?variableMap.insertInputFormalArgumentDeclaredAsUnused (!formalArg.mFormalArgumentName, !parameterType, !cppName, !cppName)
       else

@@ -89,7 +89,7 @@ syntax extension galgas3InstructionsSyntax {
       error (count: "this value should be > 0")
     end
     loop (n) while n > 0 do
-      ioElementList += !"".nowhere !true !"".nowhere
+      ioElementList +=§(!"".nowhere !true !"".nowhere)
       n -= 1
     end
   }
@@ -106,7 +106,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     select
       $*$
-      ioElementList += !typeName !true !"".here
+      ioElementList +=§(!typeName !true !"".here)
     or
       let @bool isUnused
       select
@@ -116,7 +116,7 @@ syntax extension galgas3InstructionsSyntax {
         isUnused = true
       end
       $identifier$ (?let @lstring constantName)
-      ioElementList += !typeName !isUnused !constantName
+      ioElementList +=§(!typeName !isUnused !constantName)
     end
   }
 
@@ -184,7 +184,7 @@ syntax extension galgas3InstructionsSyntax {
         ascending = false
       end
       <for_instruction_enumerated_object> (!?ioDeclarations, ?let @abstractEnumeratedCollectionAST enumeratedObject)
-      mEnumeratedObjectList += !ascending !enumeratedObject
+      mEnumeratedObjectList +=§(!ascending !enumeratedObject)
     while
       $,$
     end
@@ -270,7 +270,7 @@ syntax extension galgas4InstructionsSyntax {
       error (count: "this value should be > 0")
     end
     loop (n) while n > 0 do
-      ioElementList += !"".nowhere !true !"".nowhere
+      ioElementList +=§(!"".nowhere !true !"".nowhere)
       n -= 1
     end
   }
@@ -287,7 +287,7 @@ syntax extension galgas4InstructionsSyntax {
     end
     select
       $*$
-      ioElementList += !typeName !true !"".here
+      ioElementList +=§(!typeName !true !"".here)
     or
       let @bool isUnused
       select
@@ -297,7 +297,7 @@ syntax extension galgas4InstructionsSyntax {
         isUnused = true
       end
       $identifier$ (?let @lstring constantName)
-      ioElementList += !typeName !isUnused !constantName
+      ioElementList +=§(!typeName !isUnused !constantName)
     end
   }
 
@@ -366,7 +366,7 @@ syntax extension galgas4InstructionsSyntax {
         ascending = false
       end
       <for_instruction_enumerated_object> (!?ioDeclarations, ?let @abstractEnumeratedCollectionAST enumeratedObject)
-      mEnumeratedObjectList += !ascending !enumeratedObject
+      mEnumeratedObjectList +=§(!ascending !enumeratedObject)
     while
       $,$
     end
@@ -544,11 +544,11 @@ override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
               error (mOptionalTypeName : "incorrect '@" + foundType.definition.typeName.string + "' type: '@" + mEnumeratedType.definition.typeName.string + "' type required here")
             end
           end
-          ioLocalConstantListForDoBranch +=
+          ioLocalConstantListForDoBranch +=§(
             !mEnumeratedType
             !mOptionalConstantName
             !mDeclaredAsUnused // No warning if unused
-            !outEnumeratorCppName + ".current_" + mEnumerationName.identifierRepresentation + " (HERE)"
+            !outEnumeratorCppName + ".current_" + mEnumerationName.identifierRepresentation + " (HERE)")
         end
       end
     end
@@ -580,7 +580,7 @@ override proc @enumeratedCollectionVarInExpAST.analyzeEnumeration (?let @lstring
   if enumeratedElementType.isNull then
     error (self.mEndOfEnumerationExpression : "an '@" + outEnumerationExpression.mResultType.definition.typeName.string + "' object cannot be enumerated")
   elsif self.mEnumerationVariable.string != "" then
-    ioLocalConstantListForDoBranch += !enumeratedElementType !self.mEnumerationVariable !false !outEnumeratorCppName + ".current (HERE)"
+    ioLocalConstantListForDoBranch +=§(!enumeratedElementType !self.mEnumerationVariable !false !outEnumeratorCppName + ".current (HERE)")
   end
 //--- Check enumeration type
   if self.mEnumerationOptionalTypeName.string != "" then
@@ -667,10 +667,10 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
       ?let @semanticExpressionForGeneration enumerationExpression
     )
   //---
-    enumerationList +=
+    enumerationList +=§(
       !if mAscending then "Up" else "Down" end
       !enumerationExpression
-      !enumeratorCppName
+      !enumeratorCppName)
   end
 //--- While expression
   !?ioVariableMap.openOverrideForRepeatBlock ()
@@ -708,11 +708,11 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
   var @string indexCppName = ""
   if self.mIndexVariableName.string != "" then
     indexCppName = "index_" + self.mInstructionLocation.startLocationIndex
-    localConstantListForDoBranch +=
+    localConstantListForDoBranch +=§(
       !inAnalysisContext.predefinedTypes.mUIntType
       !self.mIndexVariableName
       !false // Warns if unused
-      !indexCppName
+      !indexCppName)
   end
 //--- 'do' branch
   analyzeSemanticInstructionList (
@@ -734,7 +734,7 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
   !?ioVariableMap.closeBranch (!self.mEndOf_foreach_instruction)
   !?ioVariableMap.closeOverride (!self.mEndOf_foreach_instruction)
 //--- Generate instruction
-  ioInstructionListForGeneration += !@forInstructionForGeneration (
+  ioInstructionListForGeneration +=§(!@forInstructionForGeneration (
     !self.mInstructionLocation,
     enumerationList,
     indexCppName,
@@ -743,7 +743,7 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
     between_instructionList,
     do_instructionList,
     after_instructionList
-  )
+  ))
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -787,7 +787,7 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
       !?ioUnusedVariableCppNameSet,
       ?let enumerationVar
     )
-    enumerationVarCppNameList += !enumerationVar
+    enumerationVarCppNameList +=§(!enumerationVar)
   end
   for enumerated in self.mEnumeratedObjectList, (mValue) in enumerationVarCppNameList do
     ioGeneratedCode += enumerated.mEnumerationOrder + "Enumerator_" + enumerated.mEnumeratedExpression.mResultType.identifierRepresentation

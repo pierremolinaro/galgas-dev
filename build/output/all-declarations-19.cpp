@@ -370,13 +370,13 @@ void extensionSetter_insertKey (GGS_descendantClassListMap & ioObject,
     const GGS_descendantClassListMap temp_1 = ioObject ;
     test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 115)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      GGS_unifiedTypeMapEntryList var_aList_5106 ;
+      GGS_unifiedTypeMapEntryList var_aList_5110 ;
       const GGS_descendantClassListMap temp_2 = ioObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_5106, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 116)) ;
+      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_5110, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 116)) ;
       {
-      var_aList_5106.setter_append (constinArgument_inType, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 117)) ;
+      var_aList_5110.setter_append (constinArgument_inType, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 117)) ;
       }
-      ioObject.mProperty_dictionary.addAssignOperation (constinArgument_inKey, var_aList_5106, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 118)) ;
+      ioObject.mProperty_dictionary.addAssignOperation (constinArgument_inKey, var_aList_5110, inCompiler  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas3", 118)) ;
     }
   }
   if (GalgasBool::boolFalse == test_0) {
@@ -4263,10 +4263,10 @@ GGS_string extensionGetter_initializerSignature (const GGS_typeNameFormalParamet
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_typeNameFormalParameterNameList temp_0 = inObject ;
-  UpEnumerator_typeNameFormalParameterNameList enumerator_11990 (temp_0) ;
-  while (enumerator_11990.hasCurrentObject ()) {
-    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_11990.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 314)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 314)) ;
-    enumerator_11990.gotoNextObject () ;
+  UpEnumerator_typeNameFormalParameterNameList enumerator_12026 (temp_0) ;
+  while (enumerator_12026.hasCurrentObject ()) {
+    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_12026.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 314)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-extern.galgas3", 314)) ;
+    enumerator_12026.gotoNextObject () ;
   }
 //---
   return result_result ;

@@ -166,12 +166,12 @@ override proc @localVariableDeclarationWithAssignmentAST.analyzeSemanticInstruct
     !targetVariableCppName
   )
 //--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
+  ioInstructionListForGeneration +=§(!@localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
     !expression.mResultType,
     false,
     targetVariableCppName,
     expression
-  )
+  ))
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -202,10 +202,10 @@ override proc @localVariableDeclarationNoAssignmentAST.analyzeSemanticInstructio
     !targetVariableCppName
   )
 //--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableDeclarationForGeneration (
+  ioInstructionListForGeneration +=§(!@localVariableDeclarationForGeneration (
     !targetType,
     targetVariableCppName
-  )
+  ))
 }
 
 //--------------------------------------------------------------------------------------------------

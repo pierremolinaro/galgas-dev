@@ -36,14 +36,14 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
     let endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionMethodAST (
+    ioDeclarations.mDeclarationList +=§(!@extensionMethodAST (
       !isPredefined: false,
       typeName,
       methodName,
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -64,14 +64,14 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionMethodAST (
+    ioDeclarations.mDeclarationList +=§(!@extensionMethodAST (
       !isPredefined: false,
       typeName,
       methodName,
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -100,14 +100,14 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionMethodAST (
+    ioDeclarations.mDeclarationList +=§(!@extensionMethodAST (
       !isPredefined: false,
       typeName,
       methodName,
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -121,14 +121,14 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList += !@extensionMethodAST (
+    ioDeclarations.mDeclarationList +=§(!@extensionMethodAST (
       !isPredefined: false,
       inTypeName,
       methodName,
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -255,7 +255,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
       ?let formalParameterListForGeneration
     )
   //---
-    ioSemanticDeclarationListForGeneration +=
+    ioSemanticDeclarationListForGeneration +=§(
       !infoMessage:"extension proc " + self.mExtensionMethodName
       !@extensionMethodForGeneration (
         !generateHeader: true,
@@ -266,7 +266,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
         formalParameterListForGeneration,
         selfType.definition.allTypedPropertyList,
         semanticInstructionListForGeneration
-      )
+      ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

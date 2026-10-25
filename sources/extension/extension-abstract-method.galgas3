@@ -35,12 +35,12 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $identifier$ (?let @lstring methodName) indexing (abstractExtensionMethodDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST (
+    ioDeclarations.mDeclarationList +=§(!@abstractExtensionMethodAST (
       !isPredefined: false,
       typeName,
       methodName,
       formalParameterList
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -57,12 +57,12 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $identifier$ (?let @lstring methodName) indexing (abstractExtensionMethodDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST (
+    ioDeclarations.mDeclarationList +=§(!@abstractExtensionMethodAST (
       !isPredefined: false,
       typeName,
       methodName,
       formalParameterList
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -88,12 +88,12 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $identifier$ (?let @lstring mMethodName) indexing (abstractExtensionMethodDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
-    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST (
+    ioDeclarations.mDeclarationList +=§(!@abstractExtensionMethodAST (
       !isPredefined: false,
       typeName,
       mMethodName,
       formalParameterList
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -104,12 +104,12 @@ syntax extension galgas4DeclarationsSyntax {
     $proc$
     $identifier$ (?let @lstring methodName) indexing (abstractExtensionMethodDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
-    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST (
+    ioDeclarations.mDeclarationList +=§(!@abstractExtensionMethodAST (
       !isPredefined: false,
       inTypeName,
       methodName,
       formalParameterList
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -203,15 +203,15 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
   //--- Compute proc signature
     var formalParameterListForGeneration = @formalParameterListForGeneration ()
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mAbstractExtensionMethodFormalParameterList do
-      formalParameterListForGeneration +=
+      formalParameterListForGeneration +=§(
         !mFormalSelector
         !mFormalArgumentPassingMode
         !ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName)
         !mFormalArgumentName
-        !mFormalArgumentName.string
+        !mFormalArgumentName.string)
     end
   //---
-    ioSemanticDeclarationListForGeneration +=
+    ioSemanticDeclarationListForGeneration +=§(
       !infoMessage: "abstract extension proc " + self.mAbstractExtensionMethodName
       !@abstractExtensionMethodForGeneration (
         !generateHeader: true,
@@ -219,7 +219,7 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
         selfType,
         self.mAbstractExtensionMethodName.string,
         formalParameterListForGeneration
-      )
+      ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -43,14 +43,14 @@ syntax extension galgas3DeclarationsSyntax {
       <method_declaration_ggs3> (!structTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@structDeclarationAST (
+    ioDeclarations.mDeclarationList +=§(!@structDeclarationAST (
       !isPredefined: false,
       structTypeName,
       propertyList,
       !enumeratedElementTypeName: "",
       !comparison: comparison,
       !isUsefullStruct: false
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -85,14 +85,14 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> (!structTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@structDeclarationAST (
+    ioDeclarations.mDeclarationList +=§(!@structDeclarationAST (
       !isPredefined: false,
       structTypeName,
       propertyList,
       !enumeratedElementTypeName: "",
       !comparison: comparison,
       !isUsefullStruct: false
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -168,15 +168,15 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       !?ioTypeMap.makeEntry (!property.typeName, ?let propertyTypeEntry)
       let selector = (if property.hasSelector then property.name.string else "" end).nowhere
       if property.initialization.isNone then
-        constructorPropertyTypeList += !selector !propertyTypeEntry !property.name.string !true
+        constructorPropertyTypeList +=§(!selector !propertyTypeEntry !property.name.string !true)
       end
-      typesToIncludeInHeaderCompilation += !propertyTypeEntry
-      typedPropertyList +=
+      typesToIncludeInHeaderCompilation +=§(!propertyTypeEntry)
+      typedPropertyList +=§(
         !propertyTypeEntry
         !property.name
         !property.initialization
         !hasSetter: not property.mutability.isConstantProperty
-        !hasSelector: property.hasSelector
+        !hasSelector: property.hasSelector)
       !?propertyMap.insertKey
         (!property.name,
         !property.accessControl.accessControl (!forDeclaringType: structTypeIndex),
@@ -312,20 +312,21 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       !?propertyMap.insertKey (!property.name, !t)
       switch property.initialization
       case none :
-        constructorArgumentList +=
+        constructorArgumentList +=§(
           !t
           !property.name
           !property.initialization
           !hasSetter: not property.mutability.isConstantProperty
-          !hasSelector: property.hasSelector
+          !hasSelector: property.hasSelector)
       case some (*) :
       end
-      typedPropertyList +=
+      typedPropertyList +=§(
         !t
         !property.name
         !property.initialization
         !hasSetter: not property.mutability.isConstantProperty
         !hasSelector: property.hasSelector
+      )
     //--- Check comparison
       switch self.comparison
       case none :
@@ -356,7 +357,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     )
   //---
     let constructorNeedsCompilerVar = not unusedVariableCppNameSet.hasKey (!compilerCppName ())
-    ioSemanticDeclarationListForGeneration +=
+    ioSemanticDeclarationListForGeneration +=§(
       !infoMessage: "struct " + self.structTypeName
       !@structTypeForGeneration (
         !structType,
@@ -366,10 +367,11 @@ final class @structDeclarationAST : @semanticDeclarationAST {
         constructorNeedsCompilerVar,
         structType.definition.features.contains (!.generateSynthetizedInitializer)
       )
+    )
   //--- Useful entities graph
     !?ioUsefulEntitiesGraph.addNode (!structNameForUsefulness, !structNameForUsefulness)
     if self.isUsefullStruct || self.isPredefined then
-      ioUsefulnessRootEntities += !structNameForUsefulness
+      ioUsefulnessRootEntities +=§(!structNameForUsefulness)
     end
   //--- Add synthetized initializer ?
     if structType.definition.features.contains (!.generateSynthetizedInitializer) then
@@ -380,7 +382,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       !?ioUsefulEntitiesGraph.addNode (!initializerForUsefulness, !initializerForUsefulness)
       !?ioUsefulEntitiesGraph.addEdge (!from: initializerForUsefulness, !to: structNameForUsefulness)
       if self.isUsefullStruct || self.isPredefined then
-        ioUsefulnessRootEntities += !initializerForUsefulness
+        ioUsefulnessRootEntities +=§(!initializerForUsefulness)
       end
     end
   }

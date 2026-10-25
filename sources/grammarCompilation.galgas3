@@ -30,7 +30,7 @@ func transformLabelMap
   for (mLabelName mFormalArgumentList *) in inLabels do
     var @signatureForGrammarAnalysis formalParametersList = @()
     for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArgumentList do
-      formalParametersList += !mFormalArgumentPassingMode !mFormalArgumentTypeName
+      formalParametersList +=§(!mFormalArgumentPassingMode !mFormalArgumentTypeName)
     end
     !?result.insertKey
       (!mLabelName,
@@ -126,10 +126,10 @@ proc handleNonTerminalDeclarationsFromRuleList
   for (mNonterminalName mLabelList) in inRuleList do
     var nonTerminalLabelListAST = @nonTerminalLabelListAST ()
     for (mLabelName mFormalArguments mEndOfArgumentLocation * *) in mLabelList do
-      nonTerminalLabelListAST +=
+      nonTerminalLabelListAST +=§(
         !mLabelName
         !mFormalArguments
-        !mEndOfArgumentLocation
+        !mEndOfArgumentLocation)
     end
     if let entry = ioNonTerminalMapForGrammarAnalysis [mNonterminalName.string] then
       checkLabelMap (
@@ -210,15 +210,15 @@ proc buildRuleList
       !?instructionList
     )
   //---
-    productionRulesList +=
+    productionRulesList +=§(
       !mNonterminalName
       !nonTerminalIndex
       !instructionList
-      !productionRulesList.count
+      !productionRulesList.count)
   end
-  ioSyntaxComponentListForGrammarAnalysis +=
+  ioSyntaxComponentListForGrammarAnalysis +=§(
     !productionRulesList
-    !inSyntaxComponentName
+    !inSyntaxComponentName)
 }
 
 //--------------------------------------------------------------------------------------------------

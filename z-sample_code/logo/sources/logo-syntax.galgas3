@@ -6,11 +6,11 @@ syntax logo_syntax (logo_lexique) {
     select
       $UP$
       let @instruction ins = @penUp ()
-      il += !ins
+      il +=§(!ins)
     or
       $DOWN$
       let @instruction ins = @penDown ()
-      il += !ins
+      il +=§(!ins)
     end
   }
 
@@ -21,14 +21,14 @@ syntax logo_syntax (logo_lexique) {
       $FORWARD$
       $integer$ (?let @luint param)
       let @instruction ins = @forward (!param)
-      il += !ins
+      il +=§(!ins)
       $;$
     or
       $ROTATE$
       $integer$ (?let @luint param)
       $;$
       let @instruction ins = @rotate (!param)
-      il += !ins
+      il +=§(!ins)
     or
       $PEN$
       <pen_direction> (!? il)
@@ -38,7 +38,7 @@ syntax logo_syntax (logo_lexique) {
       $identifier$ (?let @lstring routineName )indexing (routineCall)
       ioTableRoutines.searchKey (!routineName, ?let routineContent)
       for i in routineContent do
-        il += !i.mInstruction
+        il +=§(!i.mInstruction)
       end
       $;$
     end

@@ -62,24 +62,24 @@ syntax extension galgas3InstructionsSyntax {
         if hasFixItRemove then
           warning .here : "duplicated action" fixit remove
         else
-          outFixitListAST += !.fixItRemove
+          outFixitListAST +=§(!.fixItRemove)
           hasFixItRemove = true
         end
       while
         $replace$
         let errorLocation = @location.here
         <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        outFixitListAST += !.fixItReplace (!exp:expression, !errorLocation:errorLocation)
+        outFixitListAST +=§(!.fixItReplace (!exp:expression, !errorLocation:errorLocation))
       while
         $insert$ ; $after$
         let errorLocation = @location.here
         <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        outFixitListAST += !.fixItInsertAfter (!exp:expression, !errorLocation:errorLocation)
+        outFixitListAST +=§(!.fixItInsertAfter (!exp:expression, !errorLocation:errorLocation))
       while
         $insert$ ; $before$
         let errorLocation = @location.here
         <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        outFixitListAST += !.fixItInsertBefore (!exp:expression, !errorLocation:errorLocation)
+        outFixitListAST +=§(!.fixItInsertBefore (!exp:expression, !errorLocation:errorLocation))
       end
     end
   }
@@ -100,7 +100,7 @@ syntax extension galgas3InstructionsSyntax {
       $spoil$
       repeat
        $identifier$ (?let builtVariableName)
-       mBuiltVariableList += !builtVariableName
+       mBuiltVariableList +=§(!builtVariableName)
       while
         $,$
       end
@@ -139,24 +139,24 @@ syntax extension galgas4InstructionsSyntax {
           if hasFixItRemove then
             warning .here : "duplicated action" fixit remove
           else
-            outFixitListAST += !.fixItRemove
+            outFixitListAST +=§(!.fixItRemove)
             hasFixItRemove = true
           end
         or
           $%replaceBy$
           let errorLocation = @location.here
           <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-          outFixitListAST += !.fixItReplace (!exp:expression, !errorLocation:errorLocation)
+          outFixitListAST +=§(!.fixItReplace (!exp:expression, !errorLocation:errorLocation))
         or
           $%insertAfter$
           let errorLocation = @location.here
           <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-          outFixitListAST += !.fixItInsertAfter (!exp:expression, !errorLocation:errorLocation)
+          outFixitListAST +=§(!.fixItInsertAfter (!exp:expression, !errorLocation:errorLocation))
         or
           $%insertBefore$
           let errorLocation = @location.here
           <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-          outFixitListAST += !.fixItInsertBefore (!exp:expression, !errorLocation:errorLocation)
+          outFixitListAST +=§(!.fixItInsertBefore (!exp:expression, !errorLocation:errorLocation))
         end
       while
         $,$
@@ -180,7 +180,7 @@ syntax extension galgas4InstructionsSyntax {
       $spoil$
       repeat
        $identifier$ (?let builtVariableName)
-       builtVariableList += !builtVariableName
+       builtVariableList +=§(!builtVariableName)
       while
         $,$
       end
@@ -290,7 +290,7 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
   for (element) in inFixitListAST do
     switch element
     case fixItRemove :
-      outFixitListForGeneration += !.fixItRemove
+      outFixitListForGeneration +=§(!.fixItRemove)
     case fixItReplace (exp, errorLocation) :
       exp.analyzeSemanticExpression
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
@@ -309,7 +309,7 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
          + ", it should be an @string, @stringset, @stringlist or @lstringlist"
         )
       end
-      outFixitListForGeneration += !.fixItReplace (!exp:expression)
+      outFixitListForGeneration +=§(!.fixItReplace (!exp:expression))
     case fixItInsertBefore (exp, errorLocation) :
       exp.analyzeSemanticExpression
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
@@ -328,7 +328,7 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
          + ", it should be an @string, @stringset, @stringlist or @lstringlist"
         )
       end
-      outFixitListForGeneration += !.fixItInsertBefore (!exp:expression)
+      outFixitListForGeneration +=§(!.fixItInsertBefore (!exp:expression))
     case fixItInsertAfter (exp, errorLocation) :
       exp.analyzeSemanticExpression
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
@@ -347,7 +347,7 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
          + ", it should be an @string, @stringset, @stringlist or @lstringlist"
         )
       end
-      outFixitListForGeneration += !.fixItInsertAfter (!exp:expression)
+      outFixitListForGeneration +=§(!.fixItInsertAfter (!exp:expression))
     end
   end
 //--- Check message expression type is @string
@@ -388,16 +388,16 @@ override proc @errorInstructionAST.analyzeSemanticInstruction (
   var builtVariableCppNameList = @stringlist ()
   for (mValue) in self.mBuiltVariableList do
     !?ioVariableMap.searchForWriteAccess (!mValue, ?*, ?let varCppName, ?*)
-    builtVariableCppNameList += !varCppName
+    builtVariableCppNameList +=§(!varCppName)
   end
 //--- Generate instruction
-  ioInstructionListForGeneration += !@errorInstructionForGeneration (
+  ioInstructionListForGeneration +=§(!@errorInstructionForGeneration (
     !self.mInstructionLocation,
     locationExpression,
     messageExpression,
     builtVariableCppNameList,
     fixitListForGeneration
-  )
+  ))
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -1,0 +1,1269 @@
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//--------------------------------------------------------------------------------------------------
+
+private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates/target_generation" {
+ "bat", "rtf", "py"
+}{
+}{
+  template clean_macosx "makefile-macosx/clean.py.galgasTemplate" ?@string PROJECT_NAME
+  template build_macosx "makefile-macosx/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
+  template build_verbose_macosx "makefile-macosx/verbose-build.py.galgasTemplate"
+  template build_debug_macosx "makefile-macosx/build+debug.py.galgasTemplate"
+  template build_release_macosx "makefile-macosx/build+release.py.galgasTemplate"
+  template build_lto_macosx "makefile-macosx/build+lto.py.galgasTemplate"
+
+  template clean_unix "makefile-unix/clean.py.galgasTemplate" ?@string PROJECT_NAME
+  template build_unix "makefile-unix/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
+  template build_verbose_unix "makefile-unix/verbose-build.py.galgasTemplate"
+  template build_debug_unix "makefile-unix/build+debug.py.galgasTemplate"
+  template build_release_unix "makefile-unix/build+release.py.galgasTemplate"
+  template build_lto_unix "makefile-unix/build+lto.py.galgasTemplate"
+  template install_unix "makefile-unix/install.py.galgasTemplate"
+
+  template clean_x86linux32_on_mac "makefile-x86linux32-on-macosx/clean.py.galgasTemplate" ?@string PROJECT_NAME
+  template build_x86linux32_on_mac "makefile-x86linux32-on-macosx/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
+  template build_verbose_x86linux32_on_mac "makefile-x86linux32-on-macosx/verbose-build.py.galgasTemplate"
+  template build_debug_x86linux32_on_mac "makefile-x86linux32-on-macosx/build+debug.py.galgasTemplate"
+  template build_release_x86linux32_on_mac "makefile-x86linux32-on-macosx/build+release.py.galgasTemplate"
+  template build_lto_x86linux32_on_mac "makefile-x86linux32-on-macosx/build+lto.py.galgasTemplate"
+
+  template clean_x86linux64_on_mac "makefile-x86linux64-on-macosx/clean.py.galgasTemplate" ?@string PROJECT_NAME
+  template build_x86linux64_on_mac "makefile-x86linux64-on-macosx/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
+  template build_verbose_x86linux64_on_mac "makefile-x86linux64-on-macosx/verbose-build.py.galgasTemplate"
+  template build_debug_x86linux64_on_mac "makefile-x86linux64-on-macosx/build+debug.py.galgasTemplate"
+  template build_release_x86linux64_on_mac "makefile-x86linux64-on-macosx/build+release.py.galgasTemplate"
+  template build_lto_x86linux64_on_mac "makefile-x86linux64-on-macosx/build+lto.py.galgasTemplate"
+
+  template clean_win32_on_mac "makefile-win32-on-macosx/clean.py.galgasTemplate" ?@string PROJECT_NAME
+  template build_win32_on_mac "makefile-win32-on-macosx/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
+  template build_verbose_win32_on_mac "makefile-win32-on-macosx/verbose-build.py.galgasTemplate"
+  template build_debug_win32_on_mac "makefile-win32-on-macosx/build+debug.py.galgasTemplate"
+//  template build_release_win32_on_mac "makefile-win32-on-macosx/build+release.py.galgasTemplate"
+  template build_lto_win32_on_mac "makefile-win32-on-macosx/build+lto.py.galgasTemplate"
+
+  template clean_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/clean.py.galgasTemplate" ?@string PROJECT_NAME
+  template build_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
+  template build_verbose_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/verbose-build.py.galgasTemplate"
+  template build_debug_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/build+debug.py.galgasTemplate"
+  template build_release_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/build+release.py.galgasTemplate"
+  template build_lto_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/build+lto.py.galgasTemplate"
+
+  template codeblocks_project "project-codeblocks.cbp.galgasTemplate"
+    ?@string PROJECT_NAME
+    ?@stringlist TOOL_CPP_FILE_LIST
+    ?@string LIBPM_PATH
+    ?@stringlist HAND_CODED_SOURCE_TOOL_FILE_LIST
+    ?@string HAND_CODED_SOURCE_TOOL_DIRECTORY
+    ?windows:@bool GENERATE_FOR_WINDOWS
+    ?platform:@string PLATFORM
+    ?verboseOption:@bool VERBOSE_OPTION
+    ?buildDirName: @string BUILD_DIR_NAME
+
+  template makefile_info_plist "project-xcode-swiftui/Info.plist.galgasTemplate"
+    ?@string PROJECT_NAME
+    ?@string APPLICATION_BUNDLE_BASE
+    ?@string VERSION_STRING
+    ?@stringset HANDLED_EXTENSION_SET
+    ?@string MACOSX_DEPLOYMENT_TARGET
+    ?@string DOCUMENT_CLASS
+
+  template makefile_build_xcode "project-xcode-swiftui/build.command"
+
+  template makefile_info_plist_strings "project-xcode-swiftui/Base.lproj/InfoPlist.strings" ?@string PROJECT_NAME
+
+  template json_file_list "json-file-list.galgasTemplate"
+    ?@stringset HAND_CODED_SOURCE_DIR_SET
+    ?@stringlist HAND_CODED_SOURCE_FILE_LIST
+    ?@stringlist MAKEFILE_FILE_LIST
+    ?@stringlist TOOL_LINK_LIST
+    ?@string LIBPM_DIRECTORY_PATH
+    ?@string RELATIVE_BUILD_DIR
+
+  template project_header "project.h.galgasTemplate"
+    ?@string VERSION_STRING
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private proc generateGalgasCodeBlocksWindowsTarget
+  (?let @string inProjectDirectory,
+  ?buildDirName: let @string inBuildDirectoryName,
+  ?let @string inProjectName,
+  ?let @stringlist inToolCppFileList,
+  ?libpmPath: let @string inLIBPMpath,
+  ?let @stringlist inHandCodedSourceToolFileList,
+  ?let @string inHandCodedSourceDirectory,
+  ?let @bool inVerboseOption
+) {
+  let @string dir = inProjectDirectory + "/project-codeblocks-windows"
+  dir.makeDirectory ()
+  let @string s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
+    !inProjectName
+    !inToolCppFileList
+    !inLIBPMpath
+    !inHandCodedSourceToolFileList
+    !inHandCodedSourceDirectory
+    !windows:true
+    !platform:"Windows"
+    !verboseOption:inVerboseOption
+    !buildDirName: inBuildDirectoryName
+  ]
+  s.writeToFileWhenDifferentContents (!dir + "/" + inProjectName + ".cbp", ?*)
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private proc generateGalgasCodeBlocksLinuxI686Target
+  (?let @string inProjectDirectory,
+  ?buildDirName: let @string inBuildDirectoryName,
+  ?let @string inProjectName,
+  ?let @stringlist inToolCppFileList,
+  ?let @string inLIBPMpath,
+  ?let @stringlist inHandCodedSourceToolFileList,
+  ?let @string inHandCodedSourceDirectory,
+  ?let @bool inVerboseOption
+ ) {
+  let @string dir = inProjectDirectory + "/project-codeblocks-linux32"
+  dir.makeDirectory ()
+  let @string s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
+    !inProjectName
+    !inToolCppFileList
+    !inLIBPMpath
+    !inHandCodedSourceToolFileList
+    !inHandCodedSourceDirectory
+    !windows:false
+    !platform:"Unix"
+    !verboseOption:inVerboseOption
+    !buildDirName: inBuildDirectoryName
+  ]
+  s.writeToFileWhenDifferentContents (!dir + "/" + inProjectName + ".cbp", ?*)
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private proc generateGalgasCodeBlocksLinuxX86_64Target
+  (?let @string inProjectDirectory,
+  ?buildDirName: let @string inBuildDirectoryName,
+  ?let @string inProjectName,
+  ?let @stringlist inToolCppFileList,
+  ?let @string inLIBPMpath,
+  ?let @stringlist inHandCodedSourceToolFileList,
+  ?let @string inHandCodedSourceDirectory,
+  ?let @bool inVerboseOption
+) {
+  let @string dir = inProjectDirectory + "/project-codeblocks-linux64"
+  dir.makeDirectory ()
+  let @string s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
+    !inProjectName
+    !inToolCppFileList
+    !inLIBPMpath
+    !inHandCodedSourceToolFileList
+    !inHandCodedSourceDirectory
+    !windows:false
+    !platform:"Unix"
+    !verboseOption:inVerboseOption
+    !buildDirName: inBuildDirectoryName
+  ]
+  s.writeToFileWhenDifferentContents (!dir + "/" + inProjectName + ".cbp", ?*)
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private proc generateMakefileMinGWOnMacOSXTarget
+  (?let @string inProjectDirectory,
+  ?buildDirName: let @string inBuildDirectoryName,
+  ?let @string inProjectName ) {
+  let @string dir = inProjectDirectory + "/makefile-win32-on-macosx"
+  dir.makeDirectory ()
+  let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_win32_on_mac !inProjectName !inBuildDirectoryName]
+  s1.writeToExecutableFileWhenDifferentContents (!dir + "/build.py", ?*)
+  let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_win32_on_mac]
+  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
+  let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_win32_on_mac]
+  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
+  let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_win32_on_mac]
+  s4.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
+  let s5 = [filewrapper targetGalgas3GenerationFileWrapper.clean_win32_on_mac !inProjectName]
+  s5.writeToExecutableFileWhenDifferentContents (
+    !dir +"/clean.py",
+    ?*
+  )
+  @string.deleteFileIfExists (!dir + "/makefile")
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private proc generateMakefileUnixTarget
+  (?let @string inProjectDirectory,
+  ?buildDirName: let @string inBuildDirectoryName,
+  ?let @string inProjectName ) {
+  let @string dir = inProjectDirectory + "/makefile-unix"
+  dir.makeDirectory ()
+  let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_unix !inProjectName !inBuildDirectoryName]
+  s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py", ?*)
+  let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_release_unix]
+  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py", ?*)
+  let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_unix]
+  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
+  let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_unix]
+  s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
+  let s5 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_unix]
+  s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
+  let s6 = [filewrapper targetGalgas3GenerationFileWrapper.install_unix]
+  s6.writeToExecutableFileWhenDifferentContents (!dir +"/install.py", ?*)
+  let s7 = [filewrapper targetGalgas3GenerationFileWrapper.clean_unix !inProjectName]
+  s7.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py", ?*)
+  @string.deleteFileIfExists (!dir + "/makefile")
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private proc generateMakefileMacTarget
+  (?let @string inProjectDirectory,
+  ?buildDirName: let @string inBuildDirectoryName,
+  ?let @string inProjectName ) {
+  let @string dir = inProjectDirectory + "/makefile-macosx"
+  dir.makeDirectory ()
+  let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_macosx !inProjectName !inBuildDirectoryName]
+  s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py", ?*)
+  let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_release_macosx]
+  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py", ?*)
+  let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_macosx]
+  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
+  let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_macosx]
+  s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
+  let s5 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_macosx]
+  s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
+  let s6 = [filewrapper targetGalgas3GenerationFileWrapper.clean_macosx !inProjectName]
+  s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py", ?*)
+  @string.deleteFileIfExists (!dir + "/makefile")
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private proc generateMakefileLinux32OnMacOSXTarget
+  (?let @string inProjectDirectory,
+  ?buildDirName: let @string inBuildDirectoryName,
+  ?let @string inProjectName ) {
+  let @string dir = inProjectDirectory + "/makefile-x86linux32-on-macosx"
+  dir.makeDirectory ()
+  let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_x86linux32_on_mac !inProjectName !inBuildDirectoryName]
+  s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py", ?*)
+  let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_release_x86linux32_on_mac]
+  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py", ?*)
+  let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_x86linux32_on_mac]
+  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
+  let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_x86linux32_on_mac]
+  s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
+  let s5 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_x86linux32_on_mac]
+  s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
+  let s6 = [filewrapper targetGalgas3GenerationFileWrapper.clean_x86linux32_on_mac !inProjectName]
+  s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py", ?*)
+  @string.deleteFileIfExists (!dir + "/makefile")
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private proc generateMakefileLinux64OnMacOSXTarget
+  (?let @string inProjectDirectory,
+  ?buildDirName: let @string inBuildDirectoryName,
+  ?let @string inProjectName ) {
+  let @string dir = inProjectDirectory + "/makefile-x86linux64-on-macosx"
+  dir.makeDirectory ()
+  let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_x86linux64_on_mac !inProjectName !inBuildDirectoryName]
+  s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py", ?*)
+  let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_release_x86linux64_on_mac]
+  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py", ?*)
+  let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_x86linux64_on_mac]
+  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
+  let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_x86linux64_on_mac]
+  s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
+  let s5 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_x86linux64_on_mac]
+  s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
+  let s6 = [filewrapper targetGalgas3GenerationFileWrapper.clean_x86linux64_on_mac !inProjectName]
+  s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py", ?*)
+  @string.deleteFileIfExists (!dir + "/makefile")
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private proc generateArm64LinuxMakefileTarget (?let @string inProjectDirectory,
+                                              ?buildDirName: let @string inBuildDirectoryName,
+                                              ?let @string inProjectName ) {
+  let @string dir = inProjectDirectory + "/makefile-arm64-linux-on-macosx"
+  dir.makeDirectory ()
+  let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_arm64_linux_on_mac !inProjectName !inBuildDirectoryName]
+  s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py", ?*)
+  let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_release_arm64_linux_on_mac]
+  s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py", ?*)
+  let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_arm64_linux_on_mac]
+  s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
+  let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_arm64_linux_on_mac]
+  s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
+  let s5 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_arm64_linux_on_mac]
+  s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
+  let s6 = [filewrapper targetGalgas3GenerationFileWrapper.clean_arm64_linux_on_mac !inProjectName]
+  s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py", ?*)
+  @string.deleteFileIfExists (!dir + "/makefile")
+}
+
+//--------------------------------------------------------------------------------------------------
+
+enum @xcodeProject %comparable {
+  case none
+  case swiftApp
+}
+
+//--------------------------------------------------------------------------------------------------
+
+proc updateGalgasTargets
+  (?absoluteBuildDir: let @string inAbsoluteBuildDirectory,
+  ?buildDirName: let @string inBuildDirectoryName,
+  ?let @string inProjectSourceFilePath,
+  ?let @string inTargetName,
+  ?let @location unused inEndOfProjectSourceFile,
+  ?let @string inProjectVersionString,
+  ?let @projectQualifiedFeatureMap inProjectQualifiedFeatureMap,
+  ?let @lstringlist inTargetFeatureList,
+  ?let @bool inQuietOutputByDefault,
+  ?let @stringlist inToolCppFileList,
+  ?let @stringlist inToolHeaderFileList,
+  ?appProductFileList: let @stringlist inAppProductFileList,
+  ?swiftAppProductFileList: let @stringlist inSwiftAppProductFileList,
+  ?let @stringlist inHandCodedSourceToolFileList,
+  ?let @stringlist inFrameworkToolFileList,
+  ?let @string inHandCodedSourceDirectory,
+  ?let @stringset inHandledExtensionSet,
+  ?!@stringset ioAllProductFileSet,
+  ?let @stringlist inHandCodedLinkAppFileList ) {
+  ioAllProductFileSet += .setWithStringList (!inSwiftAppProductFileList)
+  let projectDirectory = inProjectSourceFilePath.deletingLastPathComponent
+//--- Update project header
+  let s1 = [filewrapper targetGalgas3GenerationFileWrapper.project_header !inProjectVersionString]
+  s1.writeToFileWhenDifferentContents
+    (!inAbsoluteBuildDirectory + "/output/project_header.h",
+    ?*
+  )
+  ioAllProductFileSet ++= "project_header.h"
+//---------------------------------------------------------- %quietOutputByDefault
+  var toolCppFileList = inToolCppFileList
+  if inQuietOutputByDefault then
+    toolCppFileList +=§(!"C_galgas_verbose_option.cpp")
+  else
+    toolCppFileList +=§(!"C_galgas_quiet_option.cpp")
+  end
+//---------------------------------------------------------- macCodeSign
+  let @lstring macCodeSign
+  if let entry = inProjectQualifiedFeatureMap ["macCodeSign"] then
+    if entry.mFeatureValue.string == "" then
+      error (entry.mFeatureValue:"the %macCodeSign attribute should not be empty" spoil macCodeSign)
+    else
+      macCodeSign = entry.mFeatureValue
+    end
+  else
+    macCodeSign = "".nowhere
+  end
+//---------------------------------------------------------- MacOSDeployment
+  let MACOSX_DEPLOYMENT_TARGET = "14.6"
+//---------------------------------------------------------- LIBPM path
+  let @string libpmPath
+  if let entry = inProjectQualifiedFeatureMap ["libpmAtPath"] then
+    if entry.mFeatureValue.string == "" then
+      error (entry.mFeatureValue:"the libpm path should not be empty" spoil libpmPath)
+    else
+      libpmPath = entry.mFeatureValue.string
+    end
+  else
+    updateLIBPMatPath (!inAbsoluteBuildDirectory + "/libpm" )
+    libpmPath = "../" + inBuildDirectoryName + "/libpm"
+  end
+//--------------------------------------- Check target names, file base name uniqueness, and build target file list
+//--- Parse features
+  var @stringset availableGenerationFeatures = @()
+  availableGenerationFeatures ++= "quietOutputByDefault"
+  availableGenerationFeatures ++= "codeblocks-windows"
+  availableGenerationFeatures ++= "codeblocks-linux32"
+  availableGenerationFeatures ++= "codeblocks-linux64"
+  availableGenerationFeatures ++= "makefile-macosx"
+  availableGenerationFeatures ++= "makefile-unix"
+  availableGenerationFeatures ++= "makefile-x86linux32-on-macosx"
+  availableGenerationFeatures ++= "makefile-x86linux64-on-macosx"
+  availableGenerationFeatures ++= "makefile-arm64-linux-on-macosx"
+  availableGenerationFeatures ++= "makefile-win32-on-macosx"
+  availableGenerationFeatures ++= "MacOS"
+  availableGenerationFeatures ++= "MacSwiftApp"
+  var @stringset generationFeatures = @()
+//--- Check xcode target architectures
+  var xcodeProject = @xcodeProject.none
+  for (value) in inTargetFeatureList do
+    if availableGenerationFeatures.hasKey (!value.string) then
+      if generationFeatures.hasKey (!value.string) then
+        error (value: "duplicate '" + value + "' feature")
+      end
+   //--- MacOS
+      if value.string == "MacSwiftApp" then
+        if xcodeProject != .none then
+          error (value: "duplicated XCode setting")
+        end
+        xcodeProject = .swiftApp
+      else
+        generationFeatures ++= value.string
+      end
+    else
+      var @stringlist s = @()
+      for (key) in availableGenerationFeatures do
+        s +=§(!"%" + key)
+      end
+      error (value: "unknown '" + value + "' feature" fixit replace s )
+    end
+  end
+//--- Codesign without selecting OSX ?
+  if (macCodeSign.string != "") && (xcodeProject == .none) then
+    error (macCodeSign
+    : "the %macCodeSign attribute implies the definition of an OS X target system: \"%MacSwiftApp\"")
+  end
+//--- Check Cocoa features
+  if xcodeProject != .none, not inProjectQualifiedFeatureMap.hasKey (!"applicationBundleBase") then
+    warning @location.here: "For a MacOS target, the \"applicationBundleBase\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"
+  end
+//--- Generation
+  if generationFeatures.hasKey (!"makefile-macosx") then
+    generateMakefileMacTarget (!projectDirectory, !buildDirName: inBuildDirectoryName, !inTargetName )
+  end
+  if generationFeatures.hasKey (!"makefile-unix") then
+    generateMakefileUnixTarget (!projectDirectory, !buildDirName: inBuildDirectoryName, !inTargetName )
+  end
+  if generationFeatures.hasKey (!"makefile-x86linux32-on-macosx") then
+    generateMakefileLinux32OnMacOSXTarget (!projectDirectory, !buildDirName: inBuildDirectoryName, !inTargetName )
+  end
+  if generationFeatures.hasKey (!"makefile-x86linux64-on-macosx") then
+    generateMakefileLinux64OnMacOSXTarget (!projectDirectory, !buildDirName: inBuildDirectoryName, !inTargetName )
+  end
+  if generationFeatures.hasKey (!"makefile-arm64-linux-on-macosx") then
+    generateArm64LinuxMakefileTarget (!projectDirectory, !buildDirName: inBuildDirectoryName, !inTargetName )
+  end
+  if generationFeatures.hasKey (!"makefile-win32-on-macosx") then
+    generateMakefileMinGWOnMacOSXTarget (!projectDirectory, !buildDirName: inBuildDirectoryName, !inTargetName )
+  end
+  if generationFeatures.hasKey (!"codeblocks-windows") then
+    generateGalgasCodeBlocksWindowsTarget (
+      !projectDirectory,
+      !buildDirName: inBuildDirectoryName,
+      !inTargetName,
+      !inToolCppFileList,
+      !libpmPath: libpmPath,
+      !inHandCodedSourceToolFileList,
+      !inHandCodedSourceDirectory,
+      !inQuietOutputByDefault
+    )
+  end
+  if generationFeatures.hasKey (!"codeblocks-linux32") then
+    generateGalgasCodeBlocksLinuxI686Target (
+      !projectDirectory,
+      !buildDirName: inBuildDirectoryName,
+      !inTargetName,
+      !inToolCppFileList,
+      !libpmPath,
+      !inHandCodedSourceToolFileList,
+      !inHandCodedSourceDirectory,
+      !inQuietOutputByDefault
+    )
+  end
+  if generationFeatures.hasKey (!"codeblocks-linux64") then
+    generateGalgasCodeBlocksLinuxX86_64Target (
+      !projectDirectory,
+      !buildDirName: inBuildDirectoryName,
+      !inTargetName,
+      !inToolCppFileList,
+      !libpmPath,
+      !inHandCodedSourceToolFileList,
+      !inHandCodedSourceDirectory,
+      !inQuietOutputByDefault
+    )
+  end
+//--- Frameworks to link with tool
+  var @stringlist linkOptionForLinkingFrameworkWithTool = @()
+  for (s) in inFrameworkToolFileList do
+    linkOptionForLinkingFrameworkWithTool +=§(!"-framework")
+    linkOptionForLinkingFrameworkWithTool +=§(!s.deletingPathExtension)
+  end
+//--- Update json file list
+  var @stringlist handCodedSourceToolFileList = @()
+  for (f) in inHandCodedSourceToolFileList do
+    if f.pathExtension != "h" then
+      handCodedSourceToolFileList +=§(!f.lastPathComponent)
+    end
+  end
+  var handCodedSourceDirectorySet = @stringset ()
+  for sourcePath in inHandCodedSourceToolFileList do
+    let subDir = sourcePath.mValue.deletingLastPathComponent
+    if subDir == "" then
+      handCodedSourceDirectorySet ++= "../sources/tool-sources"
+    else
+      handCodedSourceDirectorySet ++= "../sources/tool-sources/" + subDir
+    end
+  end
+  let jsonFileListContents = [filewrapper targetGalgas3GenerationFileWrapper.json_file_list
+    !handCodedSourceDirectorySet
+    !handCodedSourceToolFileList
+    !toolCppFileList
+    !linkOptionForLinkingFrameworkWithTool
+    !libpmPath
+    !inBuildDirectoryName
+  ]
+  let jsonFileListPath = inAbsoluteBuildDirectory + "/output/file-list.json"
+  jsonFileListContents.writeToFileWhenDifferentContents (!jsonFileListPath, ?*)
+  ioAllProductFileSet ++= "file-list.json"
+//--------------------- update Xcode project
+  switch xcodeProject
+  case none :
+  case swiftApp :
+    let dir = projectDirectory + "/xcode-project"
+    dir.makeDirectory ()
+  //--- Info.plist
+    let @string applicationBundleBase
+    if let entry = inProjectQualifiedFeatureMap ["applicationBundleBase"] then
+      applicationBundleBase = entry.mFeatureValue.string
+    else
+      applicationBundleBase = "unknown.unknown"
+    end
+    let InfoPlistContents = [filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist
+      !inTargetName
+      !applicationBundleBase
+      !inProjectVersionString
+      !inHandledExtensionSet
+      !MACOSX_DEPLOYMENT_TARGET
+      !"$(PRODUCT_MODULE_NAME).ProjectDocument"
+    ]
+    InfoPlistContents.writeToFileWhenDifferentContents (!dir +"/Info.plist", ?*)
+  //--- Build.command
+    if not (dir + "/build.command").fileExists then
+      let s = [filewrapper targetGalgas3GenerationFileWrapper.makefile_build_xcode]
+      s.writeToExecutableFile (!dir +"/build.command")
+    end
+
+    let d = dir + "/Base.lproj" ; d.makeDirectory ()
+    let InfoPlist_strings_path = dir + "/Base.lproj/InfoPlist.strings"
+    let s2 = [filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist_strings !inTargetName]
+    s2.writeToFileWhenDifferentContents (!InfoPlist_strings_path, ?*)
+    let Credits_rtf_path = dir + "/Base.lproj/Credits.rtf"
+    if not Credits_rtf_path.fileExists then
+      let s = [filewrapper targetGalgas3GenerationFileWrapper."project-xcode-swiftui/Base.lproj/Credits.rtf"]
+      s.writeToFile (!Credits_rtf_path)
+    end
+  //--- Enumerate icons files in "userResources" directory
+    let userResourceDir = projectDirectory + "/xcode-project/userResources"
+    userResourceDir.makeDirectory ()
+    let @stringlist extensionList = @[@("icns")]
+    let resourceFiles = userResourceDir.regularFilesWithExtensions (!false, !extensionList)
+  //--- Build paths
+    let newIntermediateFilePath = inAbsoluteBuildDirectory + "/output/file-list-for-xcode-project.txt"
+    ioAllProductFileSet ++= "file-list-for-xcode-project.txt"
+  //------------------------------------------------------- Xcode project generation
+    var xcodeProject = @XcodeProjectDescriptor ()
+    xcodeProject.mApplicationBundleName = applicationBundleBase
+    xcodeProject.mProjectName = inTargetName
+    var headerSearchPaths = "HEADER_SEARCH_PATHS = (\"../"
+      + inBuildDirectoryName + "/output\", \"../" + inBuildDirectoryName
+      + "/libpm\", \"../"
+      + inBuildDirectoryName + "/user-headers\""
+    headerSearchPaths += ", \"" + inHandCodedSourceDirectory + "\""
+    headerSearchPaths += ")"
+  //--- Default build configuration
+    var @stringlist xcodeSettingList = @[
+      @("ALWAYS_SEARCH_USER_PATHS = NO"),
+      @("CLANG_CXX_LANGUAGE_STANDARD = \"c++17\""),
+      @("CLANG_ENABLE_OBJC_ARC = YES"),
+      @("CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES"),
+      @("CLANG_WARN_COMMA = YES"),
+      @("CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES"),
+      @("CLANG_WARN_EMPTY_BODY = YES"),
+      @("CLANG_WARN_INFINITE_RECURSION = YES"),
+      @("CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES"),
+      @("CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES"),
+      @("CLANG_WARN_RANGE_LOOP_ANALYSIS = YES"),
+      @("CLANG_WARN_STRICT_PROTOTYPES = YES"),
+      @("CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES"),
+      @("CLANG_WARN_SUSPICIOUS_MOVE = YES"),
+      @("CLANG_WARN_UNREACHABLE_CODE = YES"),
+      @("CLANG_WARN__DUPLICATE_METHOD_MATCH = YES"),
+      @("GCC_GENERATE_DEBUGGING_SYMBOLS = NO"),
+      @("GCC_NO_COMMON_BLOCKS = YES"),
+      @("ENABLE_STRICT_OBJC_MSGSEND = YES"),
+      @("GCC_PRECOMPILE_PREFIX_HEADER = YES"),
+      @("GCC_THREADSAFE_STATICS = NO"),
+      @("GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES"),
+      @("GCC_TREAT_WARNINGS_AS_ERRORS = YES"),
+      @("GCC_WARN_64_TO_32_BIT_CONVERSION = YES"),
+      @("GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO"),
+      @("GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES"),
+      @("CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES"),
+      @("GCC_WARN_ABOUT_MISSING_NEWLINE = YES"),
+      @("GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO"),
+      @("GCC_WARN_ABOUT_RETURN_TYPE = YES"),
+      @("GCC_WARN_CHECK_SWITCH_STATEMENTS = YES"),
+      @("GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES"),
+      @("GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES"),
+      @("GCC_WARN_INHIBIT_ALL_WARNINGS = NO"),
+      @("GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES"),
+      @("GCC_WARN_MISSING_PARENTHESES = YES"),
+      @("GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES"),
+      @("GCC_WARN_PEDANTIC = NO"),
+      @("GCC_WARN_SHADOW = YES"),
+      @("GCC_WARN_SIGN_COMPARE = YES"),
+      @("GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES"),
+      @("GCC_WARN_UNDECLARED_SELECTOR = YES"),
+      @("GCC_WARN_UNINITIALIZED_AUTOS = YES"),
+      @("GCC_WARN_UNKNOWN_PRAGMAS = YES"),
+      @("GCC_WARN_UNUSED_FUNCTION = YES"),
+      @("GCC_WARN_UNUSED_LABEL = YES"),
+      @("GCC_WARN_UNUSED_VALUE = YES"),
+      @("GCC_WARN_UNUSED_VARIABLE = YES"),
+      @(headerSearchPaths),
+      @("SDKROOT = macosx"),
+      @("COPY_PHASE_STRIP = NO"),
+      @("CLANG_ENABLE_OBJC_ARC = YES"),
+      @("SWIFT_DISABLE_SAFETY_CHECKS = NO"),
+      @("SWIFT_ENABLE_BARE_SLASH_REGEX = NO"),
+      @("SWIFT_ENABLE_EMIT_CONST_VALUES = NO"),
+      @("SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off"),
+      @("SWIFT_INSTALL_MODULE = YES"),
+      @("SWIFT_INSTALL_OBJC_HEADER = NO"),
+      @("SWIFT_PRECOMPILE_BRIDGING_HEADER = NO"),
+      @("SWIFT_REFLECTION_METADATA_LEVEL = all"),
+      @("SWIFT_STRICT_CONCURRENCY = complete"),
+      @("SWIFT_TREAT_WARNINGS_AS_ERRORS = NO"),
+      @("SWIFT_UPCOMING_FEATURE_CONCISE_MAGIC_FILE = NO"),
+      @("SWIFT_UPCOMING_FEATURE_DEPRECATE_APPLICATION_MAIN = NO"),
+      @("SWIFT_UPCOMING_FEATURE_DISABLE_OUTWARD_ACTOR_ISOLATION = NO"),
+      @("SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY = NO"),
+      @("SWIFT_UPCOMING_FEATURE_FORWARD_TRAILING_CLOSURES = NO"),
+      @("SWIFT_UPCOMING_FEATURE_GLOBAL_CONCURRENCY = NO"),
+      @("SWIFT_UPCOMING_FEATURE_IMPLICIT_OPEN_EXISTENTIALS = NO"),
+      @("SWIFT_UPCOMING_FEATURE_IMPORT_OBJC_FORWARD_DECLS = NO"),
+      @("SWIFT_UPCOMING_FEATURE_INFER_SENDABLE_FROM_CAPTURES = NO"),
+      @("SWIFT_UPCOMING_FEATURE_ISOLATED_DEFAULT_VALUES = NO"),
+      @("SWIFT_UPCOMING_FEATURE_REGION_BASED_ISOLATION = NO"),
+      @("SWIFT_VERSION = 6.0")
+    ]
+    if MACOSX_DEPLOYMENT_TARGET != "" then
+      xcodeSettingList +=§(!"MACOSX_DEPLOYMENT_TARGET = \"" + MACOSX_DEPLOYMENT_TARGET + "\"")
+    end
+    !?xcodeProject.addSettingsToDefaultConfiguration (!settingList: xcodeSettingList)
+  //--- Add "Frameworks for App" group
+    var @stringlist appFrameworksFileRefList = @()
+    if inHandCodedLinkAppFileList.count > 0 then
+      !?xcodeProject.addGroupWithFiles
+        (!groupName: "Frameworks (App)",
+        !groupPath: "/System/Library/Frameworks",
+        !fileNames: .setWithStringList (!inHandCodedLinkAppFileList),
+        !?cFileRefs: %from @(),
+        !?cppFileRefs: %from @(),
+        !?swiftFileRefs: %from @(),
+        !?frameworkFileRefs: appFrameworksFileRefList,
+        !?resourceFileRefs: %from @(),
+        ?groupRef: let @string frameworkGroupRef
+      )
+      !?xcodeProject.placeGroupAsMainGroup (!groupRef:frameworkGroupRef)
+    end
+  //--- Mach O target
+    var @stringlist buildCFileRefListForTool = @()
+    var @stringlist buildCppFileRefListForTool = @()
+    var @stringlist swift_FileRefList = @()
+    var @stringlist frameworksFileRefList = @()
+    var @stringlist resourceFileBuildRefs = @()
+  //--- Add "Hand coded sources (Tool)" group
+    if inHandCodedSourceToolFileList.count > 0 then
+      !?xcodeProject.addGroupWithFiles
+        (!groupName:"Hand Coded Sources (Tool)",
+        !groupPath:"../sources/tool-sources/",
+        !fileNames:@stringset.setWithStringList (!inHandCodedSourceToolFileList),
+        !?cFileRefs:buildCFileRefListForTool,
+        !?cppFileRefs:buildCppFileRefListForTool,
+        !?swiftFileRefs: swift_FileRefList,
+        !?frameworkFileRefs:frameworksFileRefList,
+        !?resourceFileRefs:resourceFileBuildRefs,
+        ?groupRef:let @string groupRef
+      )
+      !?xcodeProject.placeGroupAsMainGroup (!groupRef:groupRef)
+    end
+  //--- Add "Frameworks for tool" group
+    var @stringlist toolFrameworksFileRefList = @()
+    if inFrameworkToolFileList.count > 0 then
+      !?xcodeProject.addGroupWithFiles
+        (!groupName:"Frameworks (Tool)",
+        !groupPath:"/System/Library/Frameworks",
+        !fileNames:@stringset.setWithStringList (!inFrameworkToolFileList),
+        !?cFileRefs: %from @(),
+        !?cppFileRefs: %from @(),
+        !?swiftFileRefs: %from @(),
+        !?frameworkFileRefs:toolFrameworksFileRefList,
+        !?resourceFileRefs: %from @(),
+        ?groupRef:let @string frameworkGroupRef
+      )
+      !?xcodeProject.placeGroupAsMainGroup (!groupRef:frameworkGroupRef)
+    end
+  //--- Add "Generated by GALGAS" group
+    var outputGroupFileList = inToolCppFileList + inToolHeaderFileList + inAppProductFileList
+    outputGroupFileList += inSwiftAppProductFileList
+    !?xcodeProject.addGroupWithFiles
+      (!groupName:"Generated by GALGAS",
+      !groupPath:"../" + inBuildDirectoryName + "/output",
+      !fileNames: .setWithStringList (!outputGroupFileList),
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
+      ?groupRef:var @string groupRef
+    )
+    !?xcodeProject.placeGroupAsMainGroup (!groupRef:groupRef)
+    var @stringlist libpmReferenceGroupList = @()
+  //--- Add "BDD" group
+    !?xcodeProject.addGroupWithFiles
+      (!groupName:"Binary Decision Diagrams",
+      !groupPath:"bdd",
+      !fileNames: @[
+        "BinaryDecisionDiagramRelationConfiguration.cpp",
+        "BinaryDecisionDiagramRelationConfiguration.h",
+        "BinaryDecisionDiagramRelation.cpp",
+        "BinaryDecisionDiagramRelation.h",
+        "BinaryDecisionDiagramRelationSingleType.cpp",
+        "BinaryDecisionDiagramRelationSingleType.h",
+        "BinaryDecisionDiagram-node.h",
+        "BinaryDecisionDiagram.cpp",
+        "BinaryDecisionDiagram.h"
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
+      ?groupRef:groupRef
+    )
+    libpmReferenceGroupList +=§(!groupRef
+  //--- Add "Big Integers" group)))))))))))))))
+    !?xcodeProject.addGroupWithFiles
+      (!groupName:"Big Integers",
+      !groupPath:"big-integers",
+      !fileNames: @[
+        "BigSigned-add.cpp",
+        "BigSigned-bit.cpp",
+        "BigSigned-chunk-operations.cpp",
+        "BigSigned-constructors.cpp",
+        "BigSigned-conversions.cpp",
+        "BigSigned-divide.cpp",
+        "BigSigned-logic-operations.cpp",
+        "BigSigned-multiply.cpp",
+        "BigSigned-print.cpp",
+        "BigSigned-shifts.cpp",
+        "BigSigned-subtract.cpp",
+        "BigSigned-utilities.cpp",
+        "BigSigned.cpp",
+        "BigSigned.h",
+        "BigUnsigned-add.cpp",
+        "BigUnsigned-bit.cpp",
+        "BigUnsigned-chunk-operations.cpp",
+        "BigUnsigned-constructors.cpp",
+        "BigUnsigned-conversions.cpp",
+        "BigUnsigned-divide-naive.cpp",
+        "BigUnsigned-divide.cpp",
+        "BigUnsigned-logic-operations.cpp",
+        "BigUnsigned-multiply.cpp",
+        "BigUnsigned-print.cpp",
+        "BigUnsigned-shifts.cpp",
+        "BigUnsigned-subtract.cpp",
+        "BigUnsigned-utilities.cpp",
+        "BigUnsigned.h",
+        "ChunkSelectSize.h",
+        "ChunkSharedArray.cpp",
+        "ChunkSharedArray.h",
+        "UInt128.cpp",
+        "UInt128.h",
+        "chunk-U16.h",
+        "chunk-U32.h",
+        "chunk-U64.h",
+        "chunk-U8.h"
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
+      ?groupRef:groupRef
+    )
+    libpmReferenceGroupList += !groupRef
+ //--- Add "SwiftUI app" group
+    !?xcodeProject.addGroupWithFiles
+      (!groupName:"Swift App",
+      !groupPath:"swiftui-app",
+      !fileNames: @[
+        "AbstractScanner.swift",
+        "AllocationDebugView.swift",
+        "Application.swift",
+        "ASCII.swift",
+        "Color+RawRepresentable.swift",
+        "CommandLineOption.swift",
+        "common-command-line-options.swift",
+        "CompilationIssue.swift",
+        "CompileLogView.swift",
+        "CustomFont.swift",
+        "CustomFontPicker.swift",
+        "FocusedValues+extension.swift",
+        "IdentifiableAttributedString.swift",
+        "IndexingOperation.swift",
+        "lexical-functions.swift",
+        "LexicalToken.swift",
+        "Notification+names.swift",
+        "ProjectCompiler.swift",
+        "ProjectDocument.swift",
+        "ProjectDocumentView.swift",
+        "ProjectDocumentView+compile.swift",
+        "ProjectDocumentView+populateContextualMenu.swift",
+        "ProjectDocumentView+search.swift",
+        "ProjectWindowManagerView.swift",
+        "RootDirectoryNode.swift",
+        "ScrollSourceToLineNotification.swift",
+        "SearchResultItem.swift",
+        "SearchResultItemView.swift",
+        "SearchResultNode.swift",
+        "SearchResultNodeView.swift",
+        "SharedTextModel.swift",
+        "SourceFileNode.swift",
+        "SourceFileNodeID.swift",
+        "SourceFileNodeView.swift",
+        "String+LineAndColumn.swift",
+        "String+LineRangeForLineNumber.swift",
+        "String+LineStartAndEndLocations.swift",
+        "TemplateDelimiter.swift",
+        "TextSyntaxColoringView.swift",
+        "UInt64+displayString.swift",
+        "UserInterfaceSetting.swift"
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
+      ?groupRef:groupRef
+    )
+    libpmReferenceGroupList += !groupRef
+  //--- Add "collection" group
+    !?xcodeProject.addGroupWithFiles
+      (!groupName:"Generic Arraies",
+      !groupPath:"generic-arraies",
+      !fileNames: @[
+        "GenericArray.h",
+        "GenericUniqueArray.h",
+        "GenericUniqueMatrix.h"
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
+      ?groupRef:groupRef
+    )
+    libpmReferenceGroupList += !groupRef
+  //--- Add "Command line Interface" group
+    !?xcodeProject.addGroupWithFiles
+      (!groupName:"Command line Interface",
+      !groupPath:"command_line_interface",
+      !fileNames: @[
+        "F_mainForLIBPM.cpp",
+        "F_mainForLIBPM.h",
+        "builtin-command-line-options.cpp",
+        "builtin-command-line-options.h",
+        "analyzeCommandLineOptions.cpp",
+        "analyzeCommandLineOptions.h",
+        "AbstractCommandLineOption.cpp",
+        "AbstractCommandLineOption.h",
+        "BoolCommandLineOption.cpp",
+        "BoolCommandLineOption.h",
+        "UIntCommandLineOption.cpp",
+        "UIntCommandLineOption.h",
+        "StringCommandLineOption.cpp",
+        "StringCommandLineOption.h",
+        "StringListCommandLineOption.cpp",
+        "StringListCommandLineOption.h"
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
+      ?groupRef:groupRef
+    )
+    libpmReferenceGroupList += !groupRef
+  //--- Add "File" group
+    !?xcodeProject.addGroupWithFiles
+      (!groupName:"File",
+      !groupPath:"files",
+      !fileNames: @[
+        "FileManager.cpp",
+        "FileManager.h",
+        "AbstractFileHandle.cpp",
+        "AbstractFileHandle.h",
+        "BinaryFileWrite.cpp",
+        "BinaryFileWrite.h",
+        "TextFileWrite.cpp",
+        "TextFileWrite.h",
+        "HTMLFileWrite.cpp",
+        "HTMLFileWrite.h"
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
+      ?groupRef:groupRef
+    )
+    libpmReferenceGroupList += !groupRef
+  //--- Add "Galgas 2" group
+    !?xcodeProject.addGroupWithFiles
+      (!groupName:"Galgas",
+      !groupPath:"galgas",
+      !fileNames: @[
+        "AC_GALGAS_reference_class.cpp",
+        "AC_GALGAS_reference_class.h",
+        "AC_GALGAS_value_class.cpp",
+        "AC_GALGAS_value_class.h",
+        "AC_GALGAS_enumAssociatedValues.cpp",
+        "AC_GALGAS_enumAssociatedValues.h",
+        "AC_GALGAS_graph.cpp",
+        "AC_GALGAS_graph.h",
+        "AC_GALGAS_root.cpp",
+        "AC_GALGAS_root.h",
+        "AC_GALGAS_weak_reference.cpp",
+        "AC_GALGAS_weak_reference.h",
+        "AbstractPtrClass.cpp",
+        "AbstractPtrClass.h",
+        "AbstractStrongPtrClass.cpp",
+        "AbstractStrongPtrClass.h",
+        "PtrWeakReferenceProxy.cpp",
+        "PtrWeakReferenceProxy.h",
+        "Compiler.cpp",
+        "Compiler.h",
+        "C_galgas_class_inspector.cpp",
+        "C_galgas_class_inspector.h",
+        "C_galgas_CLI_Options.cpp",
+        "C_galgas_CLI_Options.h",
+        if inQuietOutputByDefault then "C_galgas_verbose_option.cpp" else "C_galgas_quiet_option.cpp" end,
+        if inQuietOutputByDefault then "C_galgas_verbose_option.h" else "C_galgas_quiet_option.h" end,
+        "F_verbose_output.h",
+        "C_galgas_function_descriptor.cpp",
+        "C_galgas_function_descriptor.h",
+        "galgas-input-output.cpp",
+        "galgas-input-output.h",
+        "GALGAS_TypeDescriptor.cpp",
+        "GALGAS_TypeDescriptor.h",
+        "IssueWithFixIt.cpp",
+        "IssueWithFixIt.h",
+        "Lexique-parsing.cpp",
+        "Lexique.cpp",
+        "Lexique.h",
+        "LocationInSource.cpp",
+        "LocationInSource.h",
+        "SourceTextInString.cpp",
+        "SourceTextInString.h",
+        "CollectionElement.cpp",
+        "CollectionElement.h",
+        "CollectionElementArray.cpp",
+        "CollectionElementArray.h",
+        "CollectionElementPtr.cpp",
+        "CollectionElementPtr.h",
+        "Enumerator_range.cpp",
+        "Enumerator_range.h",
+        "IndexingDictionary.cpp",
+        "IndexingDictionary.h",
+        "IssueDescriptor.cpp",
+        "IssueDescriptor.h",
+        "LexiqueIntrospection.cpp",
+        "LexiqueIntrospection.h",
+        "GALGAS_ObjectArray.cpp",
+        "GALGAS_ObjectArray.h",
+        "PtrObject.cpp",
+        "PtrObject.h",
+        "TemplateDelimiter.h",
+        "GGS_application.cpp",
+        "GGS_binaryset.cpp",
+        "GGS_bigint.cpp",
+        "GGS_bool.cpp",
+        "GGS_char.cpp",
+        "GGS_data.cpp",
+        "GGS_double.cpp",
+        "GGS_filewrapper.cpp",
+        "GGS_function.cpp",
+        "GGS_location.cpp",
+        "GGS_object.cpp",
+        "GGS_sint64.cpp",
+        "GGS_sint.cpp",
+        "GGS_string.cpp",
+        "GGS_string-getters.cpp",
+        "GGS_stringset.cpp",
+        "GGS_timer.cpp",
+        "GGS_type.cpp",
+        "GGS_uint64.cpp",
+        "GGS_uint.cpp",
+        "scanner_actions.cpp",
+        "scanner_actions.h",
+        "ComparisonResult.h",
+        "ComparisonKind.h",
+        "EnumerationOrder.h",
+        "GALGAS_GenericDictionary.h",
+        "GALGAS_GenericMapRoot.h",
+        "SharedGenericPtrWithValueSemantics.h",
+        "SharedObject.cpp",
+        "SharedObject.h"
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
+      ?groupRef:groupRef
+    )
+    libpmReferenceGroupList += !groupRef
+  //--- Add "Streams" group
+    !?xcodeProject.addGroupWithFiles
+      (!groupName:"Streams",
+      !groupPath:"streams",
+      !fileNames: @[
+        "AbstractOutputStream.cpp",
+        "AbstractOutputStream.h",
+        "ConsoleOut.cpp",
+        "ConsoleOut.h",
+        "ColoredConsole.cpp",
+        "ColoredConsole.h"
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
+      ?groupRef:groupRef
+    )
+    libpmReferenceGroupList += !groupRef
+  //--- Add "String" group
+    !?xcodeProject.addGroupWithFiles
+      (!groupName:"Strings",
+      !groupPath:"strings",
+      !fileNames: @[
+        "String-class-getters.cpp",
+        "String-class.cpp",
+        "String-class.h",
+        "string_encodings.h",
+        "unicode-data.h",
+        "utf32.cpp",
+        "utf32.h",
+        "print.cpp",
+        "print.h"
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
+      ?groupRef:groupRef
+    )
+    libpmReferenceGroupList += !groupRef
+  //--- Add "Time" group
+    !?xcodeProject.addGroupWithFiles
+      (!groupName:"Time",
+      !groupPath:"time",
+      !fileNames: @[
+        "DateTime.cpp",
+        "DateTime.h",
+        "Timer.cpp",
+        "Timer.h"
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
+      ?groupRef:groupRef
+    )
+    libpmReferenceGroupList += !groupRef
+  //--- Add "Utilities" group
+    !?xcodeProject.addGroupWithFiles
+      (!groupName:"Utilities",
+      !groupPath:"utilities",
+      !fileNames: @[
+        "basic-allocation.cpp",
+        "basic-allocation.h",
+        "U8Data.cpp",
+        "U8Data.h",
+        "DirectedGraph.cpp",
+        "DirectedGraph.h",
+        "PrologueEpilogue.cpp",
+        "PrologueEpilogue.h",
+        "UInt32Set.cpp",
+        "UInt32Set.h",
+        "cpp-allocation.cpp",
+        "cpp-allocation.h",
+        "F_DisplayException.cpp",
+        "F_DisplayException.h",
+        "F_GetPrime.cpp",
+        "F_GetPrime.h",
+        "M_machine.h",
+        "M_SourceLocation.h",
+        "md5.cpp",
+        "md5.h",
+        "SHA256.cpp",
+        "SHA256.h",
+        "macroAssert.cpp",
+        "macroAssert.h",
+        "MF_MemoryControl.cpp",
+        "MF_MemoryControl.h",
+        "switch-fallthrough.h",
+        "TF_Swap.h",
+        "galgas-random.cpp",
+        "galgas-random.h"
+      ],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
+      ?groupRef:groupRef
+    )
+    libpmReferenceGroupList += !groupRef
+  //--- Add "LIBPM" group
+    !?xcodeProject.addGroup (!groupName:"libpm", !groupPath:"../" + inBuildDirectoryName + "/libpm", !childrenRefs:libpmReferenceGroupList, ?groupRef:let @string libpmGroupRef)
+    !?xcodeProject.placeGroupAsMainGroup (!groupRef:libpmGroupRef)
+  //--- Add "Resources" group
+    !?xcodeProject.addGroupWithFiles
+      (!groupName:"Resources",
+      !groupPath:".",
+      !fileNames: @["Info.plist"],
+      !?cFileRefs:buildCFileRefListForTool,
+      !?cppFileRefs:buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs:frameworksFileRefList,
+      !?resourceFileRefs:resourceFileBuildRefs,
+      ?groupRef:let @string resourcesGroupRef
+    )
+    !?xcodeProject.placeGroupAsMainGroup (!groupRef:resourcesGroupRef)
+  //--- Add "User Resources" group
+    !?xcodeProject.addGroupWithFiles
+      (!groupName: "User Resources",
+      !groupPath: "userResources",
+      !fileNames: .setWithStringList (!resourceFiles),
+      !?cFileRefs: buildCFileRefListForTool,
+      !?cppFileRefs: buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs: frameworksFileRefList,
+      !?resourceFileRefs: resourceFileBuildRefs,
+      ?groupRef:let @string userResourcesGroupRef
+    )
+    !?xcodeProject.placeGroupAsMainGroup (!groupRef:userResourcesGroupRef)
+  //--- Add "Frameworks for App" group
+    !?xcodeProject.addGroupWithFiles
+      (!groupName:"Frameworks for App",
+      !groupPath:"/System/Library/Frameworks",
+      !fileNames: @[
+        "AppKit.framework",
+        "Cocoa.framework"
+      ],
+      !?cFileRefs: buildCFileRefListForTool,
+      !?cppFileRefs: buildCppFileRefListForTool,
+      !?swiftFileRefs: swift_FileRefList,
+      !?frameworkFileRefs: frameworksFileRefList,
+      !?resourceFileRefs: resourceFileBuildRefs,
+      ?groupRef:let @string frameworkGroupRef
+    )
+    !?xcodeProject.placeGroupAsMainGroup (!groupRef:frameworkGroupRef)
+  //--- Code signing identity
+    let @stringlist codeSigningSettingList
+    if macCodeSign.string == "" then
+      codeSigningSettingList = @[@("CODE_SIGN_IDENTITY = \"-\"")]
+    else
+      let components = macCodeSign.string.componentsSeparatedByString (!":")
+      if components.count != 2 then
+        error (macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\"" spoil codeSigningSettingList)
+      elsif components.mValueAtIndex (!0) == "MacDeveloper" then
+        codeSigningSettingList = @[
+          @("CODE_SIGN_IDENTITY = \"Mac Developer\""),
+          @("DEVELOPMENT_TEAM = \"" + components.mValueAtIndex (!1) + "\"")
+        ]
+      elsif components.mValueAtIndex (!0) == "Certificate" then
+        codeSigningSettingList = @[@("CODE_SIGN_IDENTITY = \"" + components.mValueAtIndex (!1) + "\"")]
+      else
+        error (macCodeSign : "the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'" spoil codeSigningSettingList)
+      end
+    end
+  //--- Add Mach O release target
+    var @stringlist settingList = @[
+      @("GCC_OPTIMIZATION_LEVEL = 2"),
+      @("GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)"),
+      @("GCC_WARN_UNUSED_PARAMETER = YES"),
+      @("PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tool\"")
+    ] + codeSigningSettingList
+    !?xcodeProject.addToolTarget
+      (!targetName:inTargetName + " tool",
+      !productFileName:inTargetName,
+      !sources:buildCFileRefListForTool + buildCppFileRefListForTool,
+      !frameworkRefs:toolFrameworksFileRefList,
+      !buildConfigurationSettingList: settingList,
+      ?targetRef:let releaseTargetRef,
+      ?productFileRef:let releaseProductFileRef
+    )
+  //--- Add Mach O debug target
+    settingList = @[
+      @("GCC_OPTIMIZATION_LEVEL = 0"),
+      @("GCC_GENERATE_DEBUGGING_SYMBOLS = YES"),
+      @("GCC_PREPROCESSOR_DEFINITIONS = ()"),
+      @("GCC_WARN_UNUSED_PARAMETER = YES"),
+      @("PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tooldebug\"")
+    ] + codeSigningSettingList
+    !?xcodeProject.addToolTarget
+      (!targetName:inTargetName + " tool debug",
+      !productFileName:inTargetName+"-debug",
+      !sources:buildCFileRefListForTool + buildCppFileRefListForTool,
+      !frameworkRefs:toolFrameworksFileRefList,
+      !buildConfigurationSettingList: settingList,
+      ?targetRef:let debugTargetRef,
+      ?productFileRef:let debugProductFileRef
+    )
+  //--- Add Cocoa target
+    let @stringlist cocoaConfigurationSettingList = @[
+      @("GCC_OPTIMIZATION_LEVEL = 0"),
+      @(!"GCC_PREPROCESSOR_DEFINITIONS = ()")
+    ] + codeSigningSettingList
+    !?xcodeProject.addAppTarget
+      (!targetName: inTargetName + " IDE",
+      !productFileName: inTargetName.capitalizingFirstCharacter + " IDE",
+      !sources: swift_FileRefList,
+      !frameworkFileRefs: frameworksFileRefList + appFrameworksFileRefList,
+      !resourceFileRefs: resourceFileBuildRefs,
+      !buildConfigurationSettingList: cocoaConfigurationSettingList,
+      !dependantTargetList: @[@(releaseTargetRef), @(debugTargetRef)],
+      !productCopyList: @[@(releaseProductFileRef, inTargetName), @(debugProductFileRef, inTargetName + "-debug")],
+      ?productFileRef:*
+    )
+  //--- Generate project
+    xcodeProject.generateAtPath
+      (!xcodeprojPath: dir + "/" + inTargetName + ".xcodeproj",
+      !cacheFilePath: newIntermediateFilePath
+    )
+  end
+}
+
+//--------------------------------------------------------------------------------------------------

@@ -79,7 +79,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       <lexical_indexing_declaration_ggs3> (!?indexingListAST)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@lexiqueComponentAST (
+    ioDeclarations.mDeclarationList +=§(!@lexiqueComponentAST (
       !isPredefined: false, // Is not predefined
       lexiqueComponentName,
       false, // isTemplate
@@ -92,7 +92,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       lexicalListDeclarationList,
       lexicalRuleList,
       indexingListAST
-    )
+    ))
   }
 
  //································································································
@@ -136,7 +136,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       <lexical_indexing_declaration_ggs3> (!?indexingListAST)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@lexiqueComponentAST (
+    ioDeclarations.mDeclarationList +=§(!@lexiqueComponentAST (
       !isPredefined: false, // Is not predefined
       lexiqueComponentName,
       true, // isTemplate
@@ -149,7 +149,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       lexicalListDeclarationList,
       lexicalRuleList,
       indexingListAST
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -159,7 +159,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     $identifier$ (?let @lstring indexName) indexing (indexingNameDefinition)
     $:$
     $"string"$ (?let @lstring indexComment)
-    ioIndexingListAST += !indexName !indexComment
+    ioIndexingListAST +=§(!indexName !indexComment)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -170,7 +170,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     $identifier$ (?let @lstring messageName)
     $:$
     $"string"$ (?let @lstring messageValue)
-    ioLexicalMessageDeclarationList += !messageName !messageValue
+    ioLexicalMessageDeclarationList +=§(!messageName !messageValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -179,7 +179,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     $rule$
     $list$
     $identifier$ (?let @lstring listName)
-    ioLexicalImplicitRuleList += !@lexicalImplicitRuleAST (!listName)
+    ioLexicalImplicitRuleList +=§(!@lexicalImplicitRuleAST (!listName))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -194,7 +194,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       <lexical_instruction> (!?instructionList)
     end
     $}$
-    ioLexicalExplicitRuleList += !@lexicalExplicitRuleAST (!lexicalRuleExpression, instructionList)
+    ioLexicalExplicitRuleList +=§(!@lexicalExplicitRuleAST (!lexicalRuleExpression, instructionList))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -202,7 +202,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
   rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList ) {
     $send$
     <lexical_send_instruction> (?let @lexicalInstructionAST instruction)
-    ioInstructionList += !instruction
+    ioInstructionList +=§(!instruction)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -216,7 +216,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     while
       <lexical_instruction> (!?whileInstructionList)
     end
-    ioLexicalWhileBranchList += !whileExpression !whileInstructionList
+    ioLexicalWhileBranchList +=§(!whileExpression !whileInstructionList)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -254,7 +254,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       while
         $!$
         <lexical_output_effective_argument> (?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg)
-        functionActualArgumentList += !arg
+        functionActualArgumentList +=§(!arg)
       end
       $)$
       outEffectiveArgument = @lexicalFunctionInputArgumentAST (!idf, functionActualArgumentList)
@@ -326,7 +326,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     while
       $!selector:$ (?let selector)
       $identifier$ (?let sentAttribute)
-      sentAttributeList += !selector !sentAttribute
+      sentAttributeList +=§(!selector !sentAttribute)
     end
     let @lstring theStyle // Empty string if no style
     select
@@ -345,7 +345,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       $,$
     end
     $}$
-    ioLexicalListDeclarationList += !name !theStyle !errorMessage !sentAttributeList !entryList
+    ioLexicalListDeclarationList +=§(!name !theStyle !errorMessage !sentAttributeList !entryList)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -369,11 +369,11 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     or
       terminalSpelling = entrySpelling
     end
-    ioLexicalListEntryList +=
+    ioLexicalListEntryList +=§(
       !entrySpelling
       !terminalSpelling
       !nonAtomicSelection: nonAtomicSelection
-      !isEndOfTemplateMark: isTemplateEndMark
+      !isEndOfTemplateMark: isTemplateEndMark)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -381,7 +381,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
   rule <lexical_attribute_declaration_ggs3> (?!@lexicalAttributeListAST ioLexicalAttributeList ) {
     $@type$ (?let @lstring typeName)
     $identifier$ (?let @lstring name)
-    ioLexicalAttributeList += !typeName !name
+    ioLexicalAttributeList +=§(!typeName !name)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -394,7 +394,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
       $!$
       let selector = "".here
       $identifier$ (?let sentAttribute)
-      sentAttributeList += !selector !sentAttribute
+      sentAttributeList +=§(!selector !sentAttribute)
     end
     var @lstring theStyle = "".nowhere // Empty string if no style
     var nonAtomicSelection = false
@@ -415,13 +415,13 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     end
     $error$ ; $message$
     $"string"$ (?let @lstring errorMessage)
-    ioTerminalDeclarationList +=
+    ioTerminalDeclarationList +=§(
       !name
       !sentAttributeList
       !errorMessage
       !theStyle
       !nonAtomicSelection: nonAtomicSelection
-      !isEndOfTemplateMark: templateEndMark
+      !isEndOfTemplateMark: templateEndMark)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -437,7 +437,7 @@ syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
     end
     $->$
     $"string"$ (?let @lstring comment)
-    ioLexicalStyleList += !styleIdentifier !comment
+    ioLexicalStyleList +=§(!styleIdentifier !comment)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -488,7 +488,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       <lexical_indexing_declaration> (!?indexingListAST)
     end
     $}$
-    ioDeclarations.mDeclarationList += !@lexiqueComponentAST (
+    ioDeclarations.mDeclarationList +=§(!@lexiqueComponentAST (
       !isPredefined: false, // Is not predefined
       lexiqueComponentName,
       false, // isTemplate
@@ -501,7 +501,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       lexicalListDeclarationList,
       lexicalRuleList,
       indexingListAST
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -511,7 +511,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     $identifier$ (?let @lstring indexName) indexing (indexingNameDefinition)
     $:$
     $"string"$ (?let @lstring indexComment)
-    ioIndexingListAST += !indexName !indexComment
+    ioIndexingListAST +=§(!indexName !indexComment)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -522,7 +522,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     $identifier$ (?let @lstring messageName)
     $:$
     $"string"$ (?let @lstring messageValue)
-    ioLexicalMessageDeclarationList += !messageName !messageValue
+    ioLexicalMessageDeclarationList +=§(!messageName !messageValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -531,7 +531,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     $rule$
     $list$
     $identifier$ (?let @lstring listName)
-    ioLexicalImplicitRuleList += !@lexicalImplicitRuleAST (!listName)
+    ioLexicalImplicitRuleList +=§(!@lexicalImplicitRuleAST (!listName))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -546,7 +546,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       <lexical_instruction> (!?instructionList)
     end
     $}$
-    ioLexicalExplicitRuleList += !@lexicalExplicitRuleAST (!lexicalRuleExpression, instructionList)
+    ioLexicalExplicitRuleList +=§(!@lexicalExplicitRuleAST (!lexicalRuleExpression, instructionList))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -554,7 +554,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList ) {
     $send$
     <lexical_send_instruction> (?let @lexicalInstructionAST instruction)
-    ioInstructionList += !instruction
+    ioInstructionList +=§(!instruction)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -568,7 +568,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     while
       <lexical_instruction> (!?whileInstructionList)
     end
-    ioLexicalWhileBranchList += !whileExpression !whileInstructionList
+    ioLexicalWhileBranchList +=§(!whileExpression !whileInstructionList)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -606,7 +606,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       while
         $!$
         <lexical_output_effective_argument> (?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg)
-        functionActualArgumentList += !arg
+        functionActualArgumentList +=§(!arg)
       end
       $)$
       outEffectiveArgument = @lexicalFunctionInputArgumentAST (!idf, functionActualArgumentList)
@@ -678,12 +678,12 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     while
       $!selector:$ (?let selector)
       $identifier$ (?let sentAttribute)
-      sentAttributeList += !selector !sentAttribute
+      sentAttributeList +=§(!selector !sentAttribute)
     while
       $!$
       let selector = "".here
       $identifier$ (?let sentAttribute)
-      sentAttributeList += !selector !sentAttribute
+      sentAttributeList +=§(!selector !sentAttribute)
     end
     let @lstring theStyle // Empty string if no style
     select
@@ -702,7 +702,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       $,$
     end
     $}$
-    ioLexicalListDeclarationList += !name !theStyle !errorMessage !sentAttributeList !entryList
+    ioLexicalListDeclarationList +=§(!name !theStyle !errorMessage !sentAttributeList !entryList)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -726,11 +726,11 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     or
       terminalSpelling = entrySpelling
     end
-    ioLexicalListEntryList +=
+    ioLexicalListEntryList +=§(
       !entrySpelling
       !terminalSpelling
       !nonAtomicSelection: nonAtomicSelection
-      !isEndOfTemplateMark: isTemplateEndMark
+      !isEndOfTemplateMark: isTemplateEndMark)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -738,7 +738,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   rule <lexical_attribute_declaration> (?!@lexicalAttributeListAST ioLexicalAttributeList ) {
     $@type$ (?let @lstring typeName)
     $identifier$ (?let @lstring name)
-    ioLexicalAttributeList += !typeName !name
+    ioLexicalAttributeList +=§(!typeName !name)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -750,12 +750,12 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     while
       $!selector:$ (?let selector)
       $identifier$ (?let sentAttribute)
-      sentAttributeList += !selector !sentAttribute
+      sentAttributeList +=§(!selector !sentAttribute)
     while
       $!$
       let selector = "".here
       $identifier$ (?let sentAttribute)
-      sentAttributeList += !selector !sentAttribute
+      sentAttributeList +=§(!selector !sentAttribute)
     end
     var @lstring theStyle = "".nowhere // Empty string if no style
     var nonAtomicSelection = false
@@ -776,13 +776,13 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     end
     $%errorMessage$
     $"string"$ (?let @lstring errorMessage)
-    ioTerminalDeclarationList +=
+    ioTerminalDeclarationList +=§(
       !name
       !sentAttributeList
       !errorMessage
       !theStyle
       !nonAtomicSelection: nonAtomicSelection
-      !isEndOfTemplateMark: templateEndMark
+      !isEndOfTemplateMark: templateEndMark)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -798,7 +798,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     end
     $->$
     $"string"$ (?let @lstring comment)
-    ioLexicalStyleList += !styleIdentifier !comment
+    ioLexicalStyleList +=§(!styleIdentifier !comment)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -849,7 +849,7 @@ override proc @lexiqueComponentAST.enterDeclarationInSemanticContext
     var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in sentAttributeList do
       lexicalAttributeMap.searchKey (!mAttributeName, ?let attributeLexicalType)
-      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
+      argumentTypeList +=§(!mFormalSelector !mAttributeName.string !attributeLexicalType)
     end
     !?terminalMap.insertKey (!name, !argumentTypeList)
   end
@@ -858,7 +858,7 @@ override proc @lexiqueComponentAST.enterDeclarationInSemanticContext
     var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in mSentAttributeList do
       lexicalAttributeMap.searchKey (!mAttributeName, ?let attributeLexicalType)
-      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
+      argumentTypeList +=§(!mFormalSelector !mAttributeName.string !attributeLexicalType)
     end
     for (* mTerminalSpelling 2*) in mEntryList do
       !?terminalMap.insertKey (!mTerminalSpelling, !argumentTypeList)
@@ -934,16 +934,16 @@ override proc @lexiqueComponentAST.semanticAnalysis
     var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in mSentAttributeList do
       lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (!mAttributeName, ?let attributeLexicalType)
-      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
+      argumentTypeList +=§(!mFormalSelector !mAttributeName.string !attributeLexicalType)
     end
     !?lexiqueAnalysisContext.mTerminalMap.insertKey (!mName, !argumentTypeList)
-    lexiqueAnalysisContext.mTerminalList +=
+    lexiqueAnalysisContext.mTerminalList +=§(
       !mName
       !argumentTypeList
       !mSyntaxErrorMessage.string
       !isEndOfTemplateMark: isEndOfTemplateMark
       !atomicSelection: not nonAtomicSelection
-      !terminalStyleIndex
+      !terminalStyleIndex)
   end
   for (mName mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in self.mLexicalListDeclarationListAST do
     var @uint terminalStyleIndex = 0
@@ -953,19 +953,19 @@ override proc @lexiqueComponentAST.semanticAnalysis
     var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in mSentAttributeList do
       lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (!mAttributeName, ?let attributeLexicalType)
-      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
+      argumentTypeList +=§(!mFormalSelector !mAttributeName.string !attributeLexicalType)
     end
     var @lexicalExplicitTokenListMap lexicalTokenListMap = @()
     var tokenSortedlist = @tokenSortedlist ()
     for (mEntrySpelling mTerminalSpelling nonAtomicSelection isTemplateEndMark) in mEntryList do
       let syntaxErrorMessage = mSyntaxErrorMessage.string.replacing (!"%K", !by: mTerminalSpelling.string)
-      lexiqueAnalysisContext.mTerminalList +=
+      lexiqueAnalysisContext.mTerminalList +=§(
         !mTerminalSpelling
         !argumentTypeList
         !syntaxErrorMessage
         !isEndOfTemplateMark: isTemplateEndMark
         !atomicSelection: not nonAtomicSelection
-        !terminalStyleIndex
+        !terminalStyleIndex)
       !?lexiqueAnalysisContext.mTerminalMap.insertKey (!mTerminalSpelling, !argumentTypeList)
       !?lexicalTokenListMap.insertKey
         (!mEntrySpelling,
@@ -973,7 +973,7 @@ override proc @lexiqueComponentAST.semanticAnalysis
         !atomicSelection: nonAtomicSelection,
         !isEndOfTemplateMark: isTemplateEndMark
       )
-      tokenSortedlist += !mEntrySpelling.string.count !mEntrySpelling.string !mTerminalSpelling.string
+      tokenSortedlist +=§(!mEntrySpelling.string.count !mEntrySpelling.string !mTerminalSpelling.string)
       lexiqueAnalysisContext.mUnicodeStringToGenerate ++= mEntrySpelling.string
     end
     !?lexiqueAnalysisContext.mLexicalTokenListMap.insertKey (!mName, !lexicalTokenListMap, !tokenSortedlist, !false)
@@ -996,7 +996,7 @@ override proc @lexiqueComponentAST.semanticAnalysis
   for (mStartString * * preservesStartDelimiter mEndString) in self.mTemplateDelimitorListAST do
    lexiqueAnalysisContext.mUnicodeStringToGenerate ++= mStartString.string
    lexiqueAnalysisContext.mUnicodeStringToGenerate ++= mEndString.string
-   lexiqueAnalysisContext.mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter
+   lexiqueAnalysisContext.mTemplateDelimitorList +=§(!mStartString !mEndString !preservesStartDelimiter)
   end
   var @stringset indexNameSet = @()
   for (mIndexName *) in self.mIndexingListAST do
@@ -1053,7 +1053,7 @@ override proc @lexiqueComponentAST.semanticAnalysis
       !self.mTemplateDelimitorListAST
     ]
   //---
-    ioSemanticDeclarationListForGeneration +=
+    ioSemanticDeclarationListForGeneration +=§(
       !infoMessage: ""
       !@lexiqueDeclarationForGeneration (
         !generateHeader: true,
@@ -1063,7 +1063,7 @@ override proc @lexiqueComponentAST.semanticAnalysis
         headerContents,
         cppContents,
         swiftUIImplementation
-      )
+      ))
   end
 }
 

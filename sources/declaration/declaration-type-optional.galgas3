@@ -157,16 +157,16 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
     let unwrappedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.unwrappedTypeName)
     !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: unwrappedTypeNameForUsefulness)
     if self.isUsefull then
-      ioUsefulnessRootEntities += !nameForUsefulness
+      ioUsefulnessRootEntities +=§(!nameForUsefulness)
     end
   //---
     let optionalType = ioTypeMap.typeMapEntryForLKey (!self.optionalTypeName)
     let unwrappedType = ioTypeMap.typeMapEntryForLKey (!self.unwrappedTypeName)
     let correspondingWeakTypeName = makeWeakTypeLName (!unwrappedType.definition.typeName)
     let correspondingWeakTypeOrNull = ioTypeMap.typeMapEntryOrNullForLKey (!correspondingWeakTypeName)
-    ioSemanticDeclarationListForGeneration +=
+    ioSemanticDeclarationListForGeneration +=§(
       !infoMessage: "optional type " + self.optionalTypeName
-      !@optionalTypeForGeneration (optionalType, unwrappedType, correspondingWeakTypeOrNull)
+      !@optionalTypeForGeneration (optionalType, unwrappedType, correspondingWeakTypeOrNull))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

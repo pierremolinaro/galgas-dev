@@ -211,7 +211,7 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration += !@opAssignInstructionForGeneration (
+      ioInstructionListForGeneration +=§(!@opAssignInstructionForGeneration (
         !self.mInstructionLocation,
         selfAvailable.type,
         inAnalysisContext.selfObjectCppName,
@@ -219,7 +219,7 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
         @(),
         expression,
         "divAssignOperation"
-      )
+      ))
     else
       error (self.mInstructionLocation : "'self' not available in this context")
     end
@@ -281,7 +281,7 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration += !@opAssignInstructionForGeneration (
+      ioInstructionListForGeneration +=§(!@opAssignInstructionForGeneration (
         !self.mInstructionLocation,
         selfAvailable.type,
         inAnalysisContext.selfObjectCppName,
@@ -289,7 +289,7 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
         @(),
         expression,
         "plusAssignOperation"
-      )
+      ))
     else
       error (self.mInstructionLocation : "'self' not available in this context")
     end
@@ -351,7 +351,7 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration += !@opAssignInstructionForGeneration (
+      ioInstructionListForGeneration +=§(!@opAssignInstructionForGeneration (
         !self.mInstructionLocation,
         selfAvailable.type,
         inAnalysisContext.selfObjectCppName,
@@ -359,7 +359,7 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
         @(),
         expression,
         "minusAssignOperation"
-      )
+      ))
     else
       error (self.mInstructionLocation : "'self' not available in this context")
     end
@@ -421,7 +421,7 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration += !@opAssignInstructionForGeneration (
+      ioInstructionListForGeneration +=§(!@opAssignInstructionForGeneration (
         !self.mInstructionLocation,
         selfAvailable.type,
         inAnalysisContext.selfObjectCppName,
@@ -429,7 +429,7 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
         @(),
         expression,
         "mulAssignOperation"
-      )
+      ))
     else
       error (self.mInstructionLocation : "'self' not available in this context")
     end
@@ -506,17 +506,17 @@ final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
             !expressionAST.mEndOfExpressionLocation,
             !?expression
           )
-          effectiveParameterList += !expression
+          effectiveParameterList +=§(!expression)
         end
       //--- Generate instruction
-        ioInstructionListForGeneration += !@plusEqualnstructionForGeneration (
+        ioInstructionListForGeneration +=§(!@plusEqualnstructionForGeneration (
           !inAnalysisContext.selfObjectCppName,
           selfAvailable.type,
           "",
           self.mInstructionLocation,
           @(),
           effectiveParameterList
-        )
+        ))
       end
     else
       error (self.mInstructionLocation : "'self' not available in this context")

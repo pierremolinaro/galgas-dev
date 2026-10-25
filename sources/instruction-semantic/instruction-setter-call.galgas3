@@ -71,7 +71,7 @@ syntax extension galgas3InstructionsSyntax {
       repeat
         $.$
         $identifier$ (?let structProperty)
-        receiverStructProperties += !structProperty
+        receiverStructProperties +=§(!structProperty)
       while
       end
       !?receiverStructProperties.popLast (?let setterName)
@@ -126,7 +126,7 @@ syntax extension galgas4InstructionsSyntax {
       repeat
         $.$
         $identifier$ (?let structProperty)
-        receiverStructProperties += !structProperty
+        receiverStructProperties +=§(!structProperty)
       while
       end
       !?receiverStructProperties.popLast (?let setterName)
@@ -265,7 +265,7 @@ override proc @setterCallInstructionAST.analyzeSemanticInstruction (
     end
   end
 //--- Generate instructions
-  ioInstructionListForGeneration += !@setterCallInstructionForGeneration (
+  ioInstructionListForGeneration +=§(!@setterCallInstructionForGeneration (
     !self.mReceiverName.location,
     targetVariableCppName,
     nameForCheckingFormalParameterUsing,
@@ -276,7 +276,7 @@ override proc @setterCallInstructionAST.analyzeSemanticInstruction (
     actualParameterListForGeneration,
     hasCompilerArgument,
     baseType
-  )
+  ))
 }
 
 //································································································*
@@ -311,14 +311,14 @@ override proc @selfSetterCallInstructionAST.analyzeSemanticInstruction (
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     )
   //--- Generate instructions
-    ioInstructionListForGeneration += !@selfSetterCallInstructionForGeneration (
+    ioInstructionListForGeneration +=§(!@selfSetterCallInstructionForGeneration (
       !inAnalysisContext.selfObjectCppName,
       selfAvailable.type,
       self.mSetterName,
       kind,
       actualParameterListForGeneration,
       hasCompilerArgument
-    )
+    ))
   else
     error (self.mSetterName : "'self' not available in this context")
   end
@@ -379,7 +379,7 @@ override proc @setterCallInstructionForGeneration.generateInstruction (?!@string
       !?ioUnusedVariableCppNameSet,
       ?let parameterCppName
     )
-    parameterCppNameList += !parameterCppName
+    parameterCppNameList +=§(!parameterCppName)
   end
 //--- Generate proc call
   switch self.mKind
@@ -442,7 +442,7 @@ override proc @selfSetterCallInstructionForGeneration.generateInstruction (?!@st
       !?inputVariableList,
       !?ioUnusedVariableCppNameSet,
       ?let @string parameterCppName)
-    parameterCppNameList += !parameterCppName
+    parameterCppNameList +=§(!parameterCppName)
   end
 //--- Generate mutating proc call
   switch self.mKind

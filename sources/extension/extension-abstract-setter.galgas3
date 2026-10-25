@@ -31,12 +31,12 @@ syntax extension galgas3DeclarationsSyntax {
     $.$
     $identifier$ (?let @lstring setterName) indexing (abstractExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST (
+    ioDeclarations.mDeclarationList +=§(!@abstractExtensionSetterAST (
       !isPredefined: false,
       className,
       setterName,
       formalParameterList
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -48,12 +48,12 @@ syntax extension galgas3DeclarationsSyntax {
     $.$
     $identifier$ (?let @lstring setterName) indexing (abstractExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST (
+    ioDeclarations.mDeclarationList +=§(!@abstractExtensionSetterAST (
       !isPredefined: false,
       inClassName,
       setterName,
       formalParameterList
-    )
+    ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -134,15 +134,15 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
   //--- Compute mutating proc signature
     var formalParameterListForGeneration = @formalParameterListForGeneration ()
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mAbstractExtensionSetterFormalParameterList do
-      formalParameterListForGeneration +=
+      formalParameterListForGeneration +=§(
         !mFormalSelector
         !mFormalArgumentPassingMode
         !ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName)
         !mFormalArgumentName
-        !mFormalArgumentName.string
+        !mFormalArgumentName.string)
     end
   //---
-    ioSemanticDeclarationListForGeneration +=
+    ioSemanticDeclarationListForGeneration +=§(
       !infoMessage: " abstract extension mutating proc " + self.mAbstractExtensionSetterName
       !@abstractExtensionSetterForGeneration (
         !generateHeader: true,
@@ -150,7 +150,7 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
         selfType,
         self.mAbstractExtensionSetterName.string,
         formalParameterListForGeneration
-      )
+      ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -168,7 +168,6 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
     ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
-//    ioAbstractExtensionSetterListMap += !self.mTypeName.string !self.mAbstractExtensionSetterName
     !?ioAbstractExtensionSetterListMap.insertKey (!self.mTypeName.string, !self.mAbstractExtensionSetterName)
   }
 

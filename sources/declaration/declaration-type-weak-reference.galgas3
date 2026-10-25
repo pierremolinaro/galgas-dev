@@ -195,7 +195,7 @@ override proc @weakReferenceDeclarationAST.semanticAnalysis
   let @unifiedTypeMapEntry optionalClassTypeOrNull = ioTypeMap.typeMapEntryOrNullForLKey (
     !makeOptionalTypeLName (!forTypeNamed: self.mClassTypeName)
   )
-  ioSemanticDeclarationListForGeneration +=
+  ioSemanticDeclarationListForGeneration +=§(
     !infoMessage: "weak reference " + self.mWeakReferenceTypeName
     !@weakReferenceTypeForGeneration (
       !selfType,
@@ -203,7 +203,7 @@ override proc @weakReferenceDeclarationAST.semanticAnalysis
       superClassEntry,
       selfType.definition.generateHeaderInSeparateFile,
       optionalClassTypeOrNull
-    )
+    ))
 }
 
 //--------------------------------------------------------------------------------------------------
