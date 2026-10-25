@@ -62,11 +62,11 @@ syntax extension templateSyntax {
       while
         <template_instruction> (!?instructionList)
       end
-      templateInstructionSwitchBranchList +=§(!constantNameList, !associatedValuesExtraction, !instructionList, !.here)
+      templateInstructionSwitchBranchList ++= @(!constantNameList, !associatedValuesExtraction, !instructionList, !.here)
     end
     $end$
   //---
-    ioResultingInstructionList +=§(!@templateInstructionSwitchAST (
+    ioResultingInstructionList ++= @(!@templateInstructionSwitchAST (
       !switchExpression,
       endOfSwitchExpression,
       templateInstructionSwitchBranchList
@@ -93,11 +93,11 @@ syntax extension templateSyntax {
           $literalInt$ (?let n)
           $*$
           for * in 0 ..< n.bigint do
-            outAssociatedValuesExtraction +=§(!"".here, !"".here, !false)
+            outAssociatedValuesExtraction ++= @(!"".here, !"".here, !false)
           end
          or
           $*$
-          outAssociatedValuesExtraction +=§(!"".here, !"".here, !false)
+          outAssociatedValuesExtraction ++= @(!"".here, !"".here, !false)
          or
           let @lstring typeName
           select
@@ -113,7 +113,7 @@ syntax extension templateSyntax {
             constantMarkedAsUnused = true
           end
           $identifier$ (?let @lstring constantName)
-          outAssociatedValuesExtraction +=§(!typeName, !constantName, !constantMarkedAsUnused)
+          outAssociatedValuesExtraction ++= @(!typeName, !constantName, !constantMarkedAsUnused)
         end
       while
       end
@@ -177,7 +177,7 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
               end
               let cppName = "extractedValue_" + mExtractedValueName.location.startLocationIndex
                 + "_" + mExtractedValueName + "_" + IDX
-              extractedAssociatedValuesForGeneration +=§(
+              extractedAssociatedValuesForGeneration ++= @(
                 !descriptor.type,
                 !cppName,
                 !descriptor.name)
@@ -205,7 +205,7 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
         !mInstructionList,
         !?instructionList
       )
-      templateInstructionSwitchBranchList +=§(
+      templateInstructionSwitchBranchList ++= @(
         !mConstantList,
         !extractedAssociatedValuesForGeneration,
         !mEndOfBranch.startLocationIndex,
@@ -222,7 +222,7 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
       : "the switch instruction should name all enumeration constants; missing constants are:" + s)
     end
   //---
-    ioInstructionList +=§(!@templateInstructionSwitchForGeneration (
+    ioInstructionList ++= @(!@templateInstructionSwitchForGeneration (
       !switchExpression.mResultType,
       switchExpression,
       templateInstructionSwitchBranchList

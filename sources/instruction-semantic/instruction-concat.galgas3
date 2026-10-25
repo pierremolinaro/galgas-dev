@@ -49,7 +49,7 @@ syntax extension galgas3InstructionsSyntax {
     while
       $.$
       $identifier$ (?let attributeName)
-      propertyList +=§(!attributeName)
+      propertyList ++= @(!attributeName)
     end
     select
       $-=$
@@ -234,7 +234,7 @@ syntax extension galgas3InstructionsSyntax {
         selector = "".here
       end
       <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outExpressionList +=§(!selector, !expression, !@location.here)
+      outExpressionList ++= @(!selector, !expression, !@location.here)
     while
     end
   }
@@ -273,7 +273,7 @@ syntax extension galgas4InstructionsSyntax {
     while
       $.$
       $identifier$ (?let attributeName)
-      propertyList +=§(!attributeName)
+      propertyList ++= @(!attributeName)
     end
   //---
     select
@@ -555,7 +555,7 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
   //--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!targetType, !expression.mResultType, !self.mInstructionLocation, !?expression)
   //--- Generate instruction
-    ioInstructionListForGeneration +=§(!@opAssignInstructionForGeneration (
+    ioInstructionListForGeneration ++= @(!@opAssignInstructionForGeneration (
       !self.mInstructionLocation,
       targetType,
       targetVariableCppName,
@@ -662,10 +662,10 @@ final class @plusEqualElementsInstructionAST : @semanticInstructionAST {
           error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
         end
         checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType, !expression.mResultType, !mEndOfExpressionLocation, !?expression)
-        effectiveParameterList +=§(!expression)
+        effectiveParameterList ++= @(!expression)
       end
     //--- Generate instruction
-      ioInstructionListForGeneration +=§(!@plusEqualnstructionForGeneration (
+      ioInstructionListForGeneration ++= @(!@plusEqualnstructionForGeneration (
         !targetVariableCppName,
         targetType,
         nameForCheckingFormalParameterUsing,
@@ -766,7 +766,7 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
       !?expression
     )
   //--- Generate instruction
-    ioInstructionListForGeneration +=§(!@plusPlusAssignInstructionForGeneration (
+    ioInstructionListForGeneration ++= @(!@plusPlusAssignInstructionForGeneration (
       !self.mInstructionLocation,
       targetType,
       targetVariableCppName,
@@ -810,7 +810,7 @@ final class @plusEqualnstructionForGeneration : @semanticInstructionForGeneratio
         !?ioUnusedVariableCppNameSet,
         ?let @string parameter
       )
-      parameterList +=§(!parameter)
+      parameterList ++= @(!parameter)
     end
   //--- Receiver
     !?ioUnusedVariableCppNameSet.removeKey (!self.mNameForCheckingFormalParameterUsing)

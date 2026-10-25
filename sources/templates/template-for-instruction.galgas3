@@ -56,7 +56,7 @@ syntax extension templateSyntax {
       error (count: "this value should be > 0")
     end
     loop (n) while n > 0 do
-      ioElementList +=§(!"".nowhere)
+      ioElementList ++= @(!"".nowhere)
       n -= 1
     end
   }
@@ -65,14 +65,14 @@ syntax extension templateSyntax {
 
   rule <for_instruction_element> (?!@lstringlist ioElementList ) {
     $*$
-    ioElementList +=§(!"".nowhere)
+    ioElementList ++= @(!"".nowhere)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_element> (?!@lstringlist ioElementList ) {
     $identifier$ (?let constantName)
-    ioElementList +=§(!constantName)
+    ioElementList ++= @(!constantName)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -187,7 +187,7 @@ syntax extension templateSyntax {
     end
   //---
     $end$
-    ioResultingInstructionList +=§(!@templateInstructionForeachAST (
+    ioResultingInstructionList ++= @(!@templateInstructionForeachAST (
       !ascending,
       expression,
       enumeration,
@@ -296,7 +296,7 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
     !?afterInstructionList
   )
 //---
-  ioInstructionList +=§(!@templateInstructionForeachForGeneration (
+  ioInstructionList ++= @(!@templateInstructionForeachForGeneration (
     !self.mIsAscending,
     expression,
     enumeratorCppName,

@@ -36,7 +36,7 @@ syntax extension galgas3DeclarationsSyntax {
     <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
     <type_definition_ggs3> (!?ioDeclarations, ?let @lstring returnedTypeName)
-    ioDeclarations.mDeclarationList +=§(!@abstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -63,7 +63,7 @@ syntax extension galgas3DeclarationsSyntax {
     <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
     <type_definition_ggs3> (!?ioDeclarations, ?let @lstring returnedTypeName)
-    ioDeclarations.mDeclarationList +=§(!@abstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionGetterAST (
       !isPredefined: false,
       typeName,
       mGetterName,
@@ -97,7 +97,7 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST mFormalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList +=§(!@abstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionGetterAST (
       !isPredefined: false,
       typeName,
       mGetterName,
@@ -116,7 +116,7 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST mFormalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList +=§(!@abstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionGetterAST (
       !isPredefined: false,
       inTypeName,
       mGetterName,
@@ -223,7 +223,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
   //--- Compute proc signature
     var @formalInputParameterListForGeneration formalParameterListForGeneration = @()
     for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
-      formalParameterListForGeneration +=§(
+      formalParameterListForGeneration ++= @(
         !mFormalSelector,
         !ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName),
         !mFormalArgumentName.string,
@@ -231,7 +231,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
         !mIsConstant)
     end
   //---
-    ioSemanticDeclarationListForGeneration +=§(
+    ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "abstract extension func " + self.mAbstractExtensionGetterName,
       !@abstractExtensionGetterForGeneration (
         !generateHeader: true,

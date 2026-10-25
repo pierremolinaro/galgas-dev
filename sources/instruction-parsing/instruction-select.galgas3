@@ -38,11 +38,11 @@ syntax extension galgas3SyntaxComponentSyntax {
     let mSelectInstructionLocation = @location.here
     var mSelectBranchList = @listOfSyntaxInstructionList ()
     <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList il)
-    mSelectBranchList +=§(!il, !@location.here)
+    mSelectBranchList ++= @(!il, !@location.here)
     repeat
       $or$
       <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList instructionList)
-      mSelectBranchList +=§(!instructionList, !@location.here)
+      mSelectBranchList ++= @(!instructionList, !@location.here)
     while
     end
     $end$
@@ -70,11 +70,11 @@ syntax extension galgas4SyntaxComponentSyntax {
     let mSelectInstructionLocation = @location.here
     var mSelectBranchList = @listOfSyntaxInstructionList ()
     <syntax_instruction_list> (!?ioDeclarations, ?let @syntaxInstructionList il)
-    mSelectBranchList +=§(!il, !@location.here)
+    mSelectBranchList ++= @(!il, !@location.here)
     repeat
       $or$
       <syntax_instruction_list> (!?ioDeclarations, ?let @syntaxInstructionList instructionList)
-      mSelectBranchList +=§(!instructionList, !@location.here)
+      mSelectBranchList ++= @(!instructionList, !@location.here)
     while
     end
     $end$
@@ -112,10 +112,10 @@ override proc @selectInstruction.transformInstructionForGrammarAnalysis
       !?addedTerminalIndex:ioAddedNonTerminalIndex,
       !?syntaxInstructionList
     )
-    selectBranchList +=§(!syntaxInstructionList)
+    selectBranchList ++= @(!syntaxInstructionList)
   end
 
-  ioSyntaxInstructionList +=§(!@selectInstructionForGrammarAnalysis (
+  ioSyntaxInstructionList ++= @(!@selectInstructionForGrammarAnalysis (
     !self.mInstructionLocation,
     selectBranchList,
     addedNonTerminalIndex
@@ -164,11 +164,11 @@ override proc @selectInstruction.analyzeSyntaxInstruction
       !?ioSelectMethodCount,
       ?let instructionList
     )
-    listOfSemanticInstructionListForGeneration +=§(!instructionList, !mEndOf_instructions)
+    listOfSemanticInstructionListForGeneration ++= @(!instructionList, !mEndOf_instructions)
   end
 //--- End block
   !?ioVariableMap.closeOverride (!self.mEndOf_select_instruction)
-  ioInstructionListForGeneration +=§(!@selectInstructionForGeneration (
+  ioInstructionListForGeneration ++= @(!@selectInstructionForGeneration (
     !self.mInstructionLocation,
     inComponentName,
     choiceIndex,
@@ -195,11 +195,11 @@ override proc @selectInstructionForGeneration.appendSyntaxSignature
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration ) {
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
   for (mInstructionList mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration do
-    listOfSemanticInstructionListForGeneration +=§(
+    listOfSemanticInstructionListForGeneration ++= @(
       !syntaxSignatureOfInstructionList (!inPosfix, !mInstructionList),
       !mEndOfInstructionList)
   end
-  ioInstructionListForGeneration +=§(!@selectInstructionForGeneration (
+  ioInstructionListForGeneration ++= @(!@selectInstructionForGeneration (
     !self.mInstructionLocation,
     self.mSyntaxComponentName,
     self.mChoiceIndex,

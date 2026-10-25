@@ -63,7 +63,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList +=§(!@overridingExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@overridingExtensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -102,7 +102,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList +=§(!@overridingExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@overridingExtensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -149,7 +149,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfInstructionList = .here
     $}$
-    ioDeclarations.mDeclarationList +=§(!@overridingExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@overridingExtensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -181,7 +181,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfInstructionList = .here
     $}$
-    ioDeclarations.mDeclarationList +=§(!@overridingExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@overridingExtensionGetterAST (
       !isPredefined: false,
       inTypeName,
       getterName,
@@ -209,7 +209,7 @@ override proc @overridingExtensionGetterAST.enterDeclarationInGraph (
   ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
-  ioExtensionOverrideDefinitionList +=§(!self)
+  ioExtensionOverrideDefinitionList ++= @(!self)
 //---
   if not ioExtensionGetterMapForBuildingContext.hasKey (!self.mTypeName.string) then
     !?ioExtensionGetterMapForBuildingContext.insertKey
@@ -335,7 +335,7 @@ override proc @overridingExtensionGetterAST.semanticAnalysis (
     )
   end
 //---
-  ioSemanticDeclarationListForGeneration +=§(
+  ioSemanticDeclarationListForGeneration ++= @(
     !infoMessage: "override extension func " + self.mOverridingExtensionGetterName,
     !@overrideExtensionGetterForGeneration (
       !generateHeader: false,

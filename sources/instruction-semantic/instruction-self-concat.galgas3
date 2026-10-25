@@ -211,7 +211,7 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration +=§(!@opAssignInstructionForGeneration (
+      ioInstructionListForGeneration ++= @(!@opAssignInstructionForGeneration (
         !self.mInstructionLocation,
         selfAvailable.type,
         inAnalysisContext.selfObjectCppName,
@@ -281,7 +281,7 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration +=§(!@opAssignInstructionForGeneration (
+      ioInstructionListForGeneration ++= @(!@opAssignInstructionForGeneration (
         !self.mInstructionLocation,
         selfAvailable.type,
         inAnalysisContext.selfObjectCppName,
@@ -351,7 +351,7 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration +=§(!@opAssignInstructionForGeneration (
+      ioInstructionListForGeneration ++= @(!@opAssignInstructionForGeneration (
         !self.mInstructionLocation,
         selfAvailable.type,
         inAnalysisContext.selfObjectCppName,
@@ -421,7 +421,7 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration +=§(!@opAssignInstructionForGeneration (
+      ioInstructionListForGeneration ++= @(!@opAssignInstructionForGeneration (
         !self.mInstructionLocation,
         selfAvailable.type,
         inAnalysisContext.selfObjectCppName,
@@ -506,10 +506,10 @@ final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
             !expressionAST.mEndOfExpressionLocation,
             !?expression
           )
-          effectiveParameterList +=§(!expression)
+          effectiveParameterList ++= @(!expression)
         end
       //--- Generate instruction
-        ioInstructionListForGeneration +=§(!@plusEqualnstructionForGeneration (
+        ioInstructionListForGeneration ++= @(!@plusEqualnstructionForGeneration (
           !inAnalysisContext.selfObjectCppName,
           selfAvailable.type,
           "",

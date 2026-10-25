@@ -30,7 +30,7 @@ syntax extension galgas3DeclarationsSyntax {
     outTypeName = makeArrayTypeLName (!elementTypeName)
     if not ioDeclarations.implicitTypeDeclarationSet.hasKey (!outTypeName.string) then
       ioDeclarations.implicitTypeDeclarationSet ++= outTypeName.string
-      ioDeclarations.mDeclarationList +=§(!@arrayTypeDeclarationAST (
+      ioDeclarations.mDeclarationList ++= @(!@arrayTypeDeclarationAST (
         !isPredefined: false,
         outTypeName,
         elementTypeName,
@@ -192,7 +192,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !@methodQualifier.isBasic,
       !""
     )
-    setterOutputFormalArgumentList +=§(!"".nowhere, !uintType, !.argumentConstantIn, !"inIndex")
+    setterOutputFormalArgumentList ++= @(!"".nowhere, !uintType, !.argumentConstantIn, !"inIndex")
     !?setterMap.insertKey
       (!@lstring (!"removeAtIndex", @location.here),
       !@methodKind.definedAsMember,
@@ -202,7 +202,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !""
     )
   //--- mutating proc 'insertAtIndex'
-    setterInputFormalArgumentList +=§(!"".nowhere, !uintType, !.argumentConstantIn, !"inInsertionIndex")
+    setterInputFormalArgumentList ++= @(!"".nowhere, !uintType, !.argumentConstantIn, !"inInsertionIndex")
     !?setterMap.insertKey
       (!@lstring (!"insertAtIndex", @location.here),
       !@methodKind.definedAsMember,
@@ -305,12 +305,12 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.arrayTypeName)
     !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
     if self.isUsefull || self.isPredefined then
-      ioUsefulnessRootEntities +=§(!nameForUsefulness)
+      ioUsefulnessRootEntities ++= @(!nameForUsefulness)
     end
     let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.elementTypeName)
     !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: elementTypeNameForUsefulness)
     if self.isUsefull || self.isPredefined then
-      ioUsefulnessRootEntities +=§(!elementTypeNameForUsefulness)
+      ioUsefulnessRootEntities ++= @(!elementTypeNameForUsefulness)
     end
   //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
@@ -319,11 +319,11 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     )
     !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness, !initializerNameForUsefulness)
     if self.isUsefull || self.isPredefined then
-      ioUsefulnessRootEntities +=§(!initializerNameForUsefulness)
+      ioUsefulnessRootEntities ++= @(!initializerNameForUsefulness)
     end
   //---
     let selfType = ioTypeMap.typeMapEntryForLKey (!self.arrayTypeName)
-    ioSemanticDeclarationListForGeneration +=§(
+    ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "array type " + self.arrayTypeName,
       !@arrayTypeForGeneration (
         !selfType,

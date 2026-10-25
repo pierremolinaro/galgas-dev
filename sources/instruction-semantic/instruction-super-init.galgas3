@@ -139,10 +139,10 @@ final class @superInitInstructionAST : @semanticInstructionAST {
             fixit replace s
             )
           end
-          actualParameterListForGeneration +=§(!expression)
+          actualParameterListForGeneration ++= @(!expression)
         end
       //--- Generate instructions
-        ioInstructionListForGeneration +=§(!@superInitInstructionForGeneration (
+        ioInstructionListForGeneration ++= @(!@superInitInstructionForGeneration (
           !self.mInstructionLocation,
           formalSignature.initializerSignature,
           actualParameterListForGeneration,
@@ -186,7 +186,7 @@ final class @superInitInstructionForGeneration : @semanticInstructionForGenerati
         !?ioUnusedVariableCppNameSet,
         ?let argumentCppName
       )
-      getterArgumentCppNameList +=§(!argumentCppName)
+      getterArgumentCppNameList ++= @(!argumentCppName)
     end
     ioGeneratedCode += self.mSuperTypeName.identifierRepresentation + "_"
     ioGeneratedCode += self.mSuperInitializerSignature.identifierRepresentation

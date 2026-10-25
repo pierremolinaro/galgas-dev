@@ -222,7 +222,7 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
       )
     end
   //--- Generate instruction
-    ioInstructionListForGeneration +=§(!@assignmentInstructionForGeneration (
+    ioInstructionListForGeneration ++= @(!@assignmentInstructionForGeneration (
       !receiverType,
       targetType,
       targetVariableCppName,
@@ -298,7 +298,7 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
     //--- Check assignment type compatibility
       checkAssignmentTypeWithImplicitGetterCall (!targetType, !expression.mResultType, !self.mInstructionLocation, !?expression)
     //--- Generate instruction
-      ioInstructionListForGeneration +=§(!@assignmentInstructionForGeneration (
+      ioInstructionListForGeneration ++= @(!@assignmentInstructionForGeneration (
         !selfAvailable.type,
         targetType,
         targetVariableCppName,

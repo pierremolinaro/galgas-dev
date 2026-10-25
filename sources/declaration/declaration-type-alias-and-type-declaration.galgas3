@@ -230,7 +230,7 @@ syntax extension galgas4DeclarationsSyntax {
       outTypeName = makeArrayTypeLName (!elementTypeName)
       if not ioDeclarations.implicitTypeDeclarationSet.hasKey (!outTypeName.string) then
         ioDeclarations.implicitTypeDeclarationSet ++= outTypeName.string
-        ioDeclarations.mDeclarationList +=§(!@arrayTypeDeclarationAST (
+        ioDeclarations.mDeclarationList ++= @(!@arrayTypeDeclarationAST (
           !isPredefined: false,
           outTypeName,
           elementTypeName,

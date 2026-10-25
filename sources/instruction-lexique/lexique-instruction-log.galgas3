@@ -33,7 +33,7 @@ syntax extension galgas3LexiqueComponentSyntax {
 
   rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $log$
-    ioInstructionList +=§(!@lexicalLogInstructionAST ())
+    ioInstructionList ++= @(!@lexicalLogInstructionAST ())
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -48,7 +48,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $log$
-    ioInstructionList +=§(!@lexicalLogInstructionAST ())
+    ioInstructionList ++= @(!@lexicalLogInstructionAST ())
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

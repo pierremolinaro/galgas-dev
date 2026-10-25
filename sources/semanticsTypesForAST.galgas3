@@ -44,9 +44,9 @@ struct @syntaxExtensions {
     if self.dictionary.hasKey (!inKey) then
       self.dictionary.searchKey (!inKey, ?var aList)
       !?aList.append (!inSyntaxComponentName, !inNonterminalDeclarationList, !inRuleList)
-      self.dictionary +=§(!inKey, !aList)
+      self.dictionary ++= @(!inKey, !aList)
     else
-      self.dictionary +=§(!inKey, !@[@(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)])
+      self.dictionary ++= @(!inKey, !@[@(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)])
     end
   }
 
@@ -435,7 +435,7 @@ struct @galgasDeclarationAST {
     outOptionalTypeName = makeOptionalTypeLName (!forTypeNamed: inTypeName)
     if not self.implicitTypeDeclarationSet.hasKey (!outOptionalTypeName.string) then
       self.implicitTypeDeclarationSet ++= outOptionalTypeName.string
-      self.mDeclarationList +=§(!@optionalTypeDeclarationAST (
+      self.mDeclarationList ++= @(!@optionalTypeDeclarationAST (
         !isPredefined: inPredefined,
         !optionalTypeName: outOptionalTypeName,
         !unwrappedTypeName: inTypeName,

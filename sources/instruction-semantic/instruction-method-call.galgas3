@@ -97,7 +97,7 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
       end
     end
   //--- Generate instructions
-    ioInstructionListForGeneration +=§(!@methodCallInstructionForGeneration (
+    ioInstructionListForGeneration ++= @(!@methodCallInstructionForGeneration (
       !self.mInstructionLocation,
       receiverExpression.mResultType,
       receiverExpression,
@@ -144,7 +144,7 @@ override proc @methodCallInstructionForGeneration.generateInstruction (?!@string
   var inputVariableList = @stringlist ()
   for (mActualParameter) in self.mActualParameterList do
     mActualParameter.generateActualParameter (!?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioGeneratedCode, !?jokerParametersToReleaseList, !?inputVariableList, !?ioUnusedVariableCppNameSet, ?let parameterCppName)
-    parameterCppNameList +=§(!parameterCppName)
+    parameterCppNameList ++= @(!parameterCppName)
   end
 //--- Generate proc call
   switch self.mKind

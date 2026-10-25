@@ -63,7 +63,7 @@ syntax extension galgas3DeclarationsSyntax {
       <method_declaration_ggs3> (!mDictTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList +=§(!@dictDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(!@dictDeclarationAST (
       !isPredefined: false,
       mDictTypeName,
       keyTypeName,
@@ -105,7 +105,7 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> (!mDictTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList +=§(!@dictDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(!@dictDeclarationAST (
       !isPredefined: false,
       mDictTypeName,
       keyTypeName,
@@ -125,7 +125,7 @@ syntax extension galgas4DeclarationsSyntax {
 override proc @dictDeclarationAST.addAssociatedElement (?!@galgasDeclarationAST ioDeclarations ) {
 //--- Add element
   var @propertyInCollectionListAST structAttributeList = @()
-  structAttributeList +=§(
+  structAttributeList ++= @(
     !mutability: .constantProperty,
     !self.mKeyTypeName,
     !"key".nowhere,
@@ -133,7 +133,7 @@ override proc @dictDeclarationAST.addAssociatedElement (?!@galgasDeclarationAST 
     !hasSelector: false,
     !initialization: .none)
   for (* qualifiedTypeAST mPropertyName * hasSelector *) in self.mPropertyList do
-    structAttributeList +=§(
+    structAttributeList ++= @(
       !mutability: .constantProperty,
       !qualifiedTypeAST,
       !mPropertyName,
@@ -142,7 +142,7 @@ override proc @dictDeclarationAST.addAssociatedElement (?!@galgasDeclarationAST 
       !initialization: .none)
   end
   let elementTypeName = makeEmbeddedElementTypeLName (!self.mDictTypeName)
-  ioDeclarations.mDeclarationList +=§(!@structDeclarationAST (
+  ioDeclarations.mDeclarationList ++= @(!@structDeclarationAST (
     !isPredefined: self.isPredefined,
     elementTypeName,
     structAttributeList,
@@ -216,20 +216,20 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
   var @formalParameterSignature insertSetterFormalArgumentList = @()
   var @typedPropertyList typedPropertyList = @()
   var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = @()
-  argumentTypeListForAddAssignWithFieldExpressionList +=§(!"".nowhere, !keyTypeIndex, !"key", !true)
-  insertSetterFormalArgumentList +=§(
+  argumentTypeListForAddAssignWithFieldExpressionList ++= @(!"".nowhere, !keyTypeIndex, !"key", !true)
+  insertSetterFormalArgumentList ++= @(
     !"".nowhere,
     !keyTypeIndex,
     !.argumentConstantIn,
     !"inKey")
   var @formalParameterSignature removeMethodFormalArgumentList = @()
-  removeMethodFormalArgumentList +=§(
+  removeMethodFormalArgumentList ++= @(
     !"".nowhere,
     !keyTypeIndex,
     !.argumentConstantIn,
     !"inKey")
   var @optionalMethodSignature optionalMethodSignature = @()
-  optionalMethodSignature +=§(
+  optionalMethodSignature ++= @(
     !true,
     !"".nowhere,
     !keyTypeIndex,
@@ -239,21 +239,21 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
     !?ioTypeMap.makeEntry (!typeName, ?let attributeTypeIndex)
     let hasSetter = true
     let hasSelector = false
-    argumentTypeListForAddAssignWithFieldExpressionList +=§(!"".nowhere, !attributeTypeIndex, !mPropertyName.string, !true)
-    typedPropertyList +=§(!attributeTypeIndex, !mPropertyName, !initExpression, !hasSetter: hasSetter, !hasSelector: hasSelector)
-    typesToIncludeInHeaderCompilation +=§(!attributeTypeIndex)
-    enumerationDescriptor +=§(!attributeTypeIndex, !mPropertyName.string)
-    insertSetterFormalArgumentList +=§(
+    argumentTypeListForAddAssignWithFieldExpressionList ++= @(!"".nowhere, !attributeTypeIndex, !mPropertyName.string, !true)
+    typedPropertyList ++= @(!attributeTypeIndex, !mPropertyName, !initExpression, !hasSetter: hasSetter, !hasSelector: hasSelector)
+    typesToIncludeInHeaderCompilation ++= @(!attributeTypeIndex)
+    enumerationDescriptor ++= @(!attributeTypeIndex, !mPropertyName.string)
+    insertSetterFormalArgumentList ++= @(
       !"".nowhere,
       !attributeTypeIndex,
       !@formalArgumentPassingModeAST.argumentConstantIn,
       !mPropertyName.string)
-    removeMethodFormalArgumentList +=§(
+    removeMethodFormalArgumentList ++= @(
       !"".nowhere,
       !attributeTypeIndex,
       !@formalArgumentPassingModeAST.argumentOut,
       !mPropertyName.string)
-    optionalMethodSignature +=§(
+    optionalMethodSignature ++= @(
       !false,
       !"".nowhere,
       !attributeTypeIndex,
@@ -313,8 +313,8 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
       ?let @unifiedTypeMapEntry attributeTypeIndex
     )
     var accessorFormalArgumentList = @formalParameterSignature ()
-    accessorFormalArgumentList +=§(!"".nowhere, !attributeTypeIndex, !.argumentConstantIn, !mPropertyName.string)
-    accessorFormalArgumentList +=§(!"".nowhere, !keyTypeIndex, !.argumentConstantIn, !"key")
+    accessorFormalArgumentList ++= @(!"".nowhere, !attributeTypeIndex, !.argumentConstantIn, !mPropertyName.string)
+    accessorFormalArgumentList ++= @(!"".nowhere, !keyTypeIndex, !.argumentConstantIn, !"key")
     !?setterMap.insertOrReplace
       (!accessorName,
       !@methodKind.definedAsMember,
@@ -472,14 +472,14 @@ override proc @dictDeclarationAST.semanticAnalysis
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mDictTypeName)
   !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
   if self.isPredefined then
-    ioUsefulnessRootEntities +=§(!nameForUsefulness)
+    ioUsefulnessRootEntities ++= @(!nameForUsefulness)
   end
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (
     !makeEmbeddedElementTypeLName (!self.mDictTypeName)
   )
   !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: elementTypeNameForUsefulness)
   if self.isPredefined then
-    ioUsefulnessRootEntities +=§(!elementTypeNameForUsefulness)
+    ioUsefulnessRootEntities ++= @(!elementTypeNameForUsefulness)
   end
 //--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
@@ -488,7 +488,7 @@ override proc @dictDeclarationAST.semanticAnalysis
   )
   !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness, !initializerNameForUsefulness)
   if self.isPredefined then
-    ioUsefulnessRootEntities +=§(!initializerNameForUsefulness)
+    ioUsefulnessRootEntities ++= @(!initializerNameForUsefulness)
   end
 //----- Enter attributes
   var @typedPropertyList typedAttributeList = @()
@@ -498,7 +498,7 @@ override proc @dictDeclarationAST.semanticAnalysis
     !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: propertyTypeNameForUsefulness)
     let @unifiedTypeMapEntry t = ioTypeMap.typeMapEntryForLKey (!typeName)
     let hasSetter = true
-    typedAttributeList +=§(
+    typedAttributeList ++= @(
       !t,
       !mPropertyName,
       !initExpression,
@@ -519,7 +519,7 @@ override proc @dictDeclarationAST.semanticAnalysis
   let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: elementTypeName)
   let optionalElementTypeEntry = ioTypeMap.typeMapEntryForLKey (!optionalElementTypeName)
 //--- Enter map declaration
-  ioSemanticDeclarationListForGeneration +=§(
+  ioSemanticDeclarationListForGeneration ++= @(
     !infoMessage: "dict " + self.mDictTypeName,
     !@dictTypeForGeneration (
       !ioTypeMap.typeMapEntryForLKey (!self.mDictTypeName),

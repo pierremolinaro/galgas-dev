@@ -92,7 +92,7 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
                     ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex,
                     ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList ) {
     inNonTerminalSymbolMap.searchKey (!self.mNonterminalName, ?let nonTerminalSymbolIndex, ?*)
-    ioSyntaxInstructionList +=§(!@nonTerminalInstructionForGrammarAnalysis (
+    ioSyntaxInstructionList ++= @(!@nonTerminalInstructionForGrammarAnalysis (
       !self.mInstructionLocation,
       self.mNonterminalName,
       nonTerminalSymbolIndex
@@ -138,7 +138,7 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
       !?ioVariableMap
     )
   //--- Generate instructions
-    ioInstructionListForGeneration +=§(!@nonterminalInstructionForGeneration (
+    ioInstructionListForGeneration ++= @(!@nonterminalInstructionForGeneration (
       !self.mInstructionLocation,
       self.mNonterminalName.string,
       "",
@@ -170,7 +170,7 @@ override proc @nonterminalInstructionForGeneration.appendSyntaxSignature
   (?let @string inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 ) {
-  ioInstructionListForGeneration +=§(!@nonterminalInstructionForGeneration (
+  ioInstructionListForGeneration ++= @(!@nonterminalInstructionForGeneration (
     !self.mInstructionLocation,
     self.mNonterminalName,
     inPosfix,
@@ -229,7 +229,7 @@ override proc @nonterminalInstructionForGeneration.generateInstruction (?!@strin
       !?ioUnusedVariableCppNameSet,
       ?let @string parameterCppName
     )
-    parameterCppNameList +=§(!parameterCppName)
+    parameterCppNameList ++= @(!parameterCppName)
   end
 //--- Generate proc call
   let sdtResultVarName = "syntaxDirectedTranslationResult_" + self.mInstructionLocation.startLocationIndex

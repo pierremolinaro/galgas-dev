@@ -51,7 +51,7 @@ syntax extension galgas3DeclarationsSyntax {
     <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
     <type_definition_ggs3> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList +=§(!@overridingAbstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -78,7 +78,7 @@ syntax extension galgas3DeclarationsSyntax {
     <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
     $->$
     <type_definition_ggs3> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList +=§(!@overridingAbstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -113,7 +113,7 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList +=§(!@overridingAbstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -133,7 +133,7 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList +=§(!@overridingAbstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionGetterAST (
       !isPredefined: false,
       inTypeName,
       getterName,
@@ -166,7 +166,7 @@ override proc @overridingAbstractExtensionGetterAST.enterDeclarationInGraph (
       ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext,
       ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
       ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
-  ioExtensionOverrideDefinitionList +=§(!self)
+  ioExtensionOverrideDefinitionList ++= @(!self)
 //---
   if not ioExtensionGetterMapForBuildingContext.hasKey (!self.mTypeName.string) then
     !?ioExtensionGetterMapForBuildingContext.insertKey
@@ -252,7 +252,7 @@ override proc @overridingAbstractExtensionGetterAST.semanticAnalysis (
   if baseTypeName != "" then
     var formalParameterListForGeneration = @formalInputParameterListForGeneration ()
     for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
-      formalParameterListForGeneration +=§(
+      formalParameterListForGeneration ++= @(
         !mFormalSelector,
         !ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName),
         !mFormalArgumentName.string,

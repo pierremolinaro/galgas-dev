@@ -33,7 +33,7 @@ syntax extension galgas3DeclarationsSyntax {
       $%comparable$
       theExtension = .comparable
     end
-    ioDeclarations.mDeclarationList +=§(!@equatableExtensionAST (
+    ioDeclarations.mDeclarationList ++= @(!@equatableExtensionAST (
       !isPredefined: false,
       typeName,
       theExtension
@@ -62,7 +62,7 @@ syntax extension galgas4DeclarationsSyntax {
       $%comparable$
       theExtension = .comparable
     end
-    ioDeclarations.mDeclarationList +=§(!@equatableExtensionAST (
+    ioDeclarations.mDeclarationList ++= @(!@equatableExtensionAST (
       !isPredefined: false,
       typeName,
       theExtension

@@ -48,7 +48,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList +=§(!@extensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@extensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -79,7 +79,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList +=§(!@extensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@extensionGetterAST (
       !isPredefined: false,
       inTypeName,
       getterName,
@@ -125,7 +125,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList +=§(!@extensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@extensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -158,7 +158,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList +=§(!@extensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@extensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -303,7 +303,7 @@ override proc @extensionGetterAST.semanticAnalysis (
     ?let semanticInstructionListForGeneration
   )
 //---
-  ioSemanticDeclarationListForGeneration +=§(
+  ioSemanticDeclarationListForGeneration ++= @(
     !infoMessage:"extension func " + self.mExtensionGetterName,
     !@extensionGetterForGeneration (
       !generateHeader: true,

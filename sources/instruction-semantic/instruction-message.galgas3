@@ -98,7 +98,7 @@ override proc @messageInstructionAST.analyzeSemanticInstruction (
     )
   end
 //--- Generate instruction
-  ioInstructionListForGeneration +=§(!@messageInstructionForGeneration (
+  ioInstructionListForGeneration ++= @(!@messageInstructionForGeneration (
     !expression,
     self.mInstructionLocation))
 }

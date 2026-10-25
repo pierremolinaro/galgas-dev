@@ -87,7 +87,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
           isUnused = true
         end
         $identifier$ (?let @lstring formalParameterName)
-        outFormalParameterList +=§(
+        outFormalParameterList ++= @(
           !selector,
           !formalParameterPassingMode,
           !formalParameterTypeName,
@@ -135,7 +135,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
     select
       $*$
       <poisoned_var_list_ggs3> (?let poisonedVarNameList)
-      ioActualParameterList +=§(!@inputSingleJokerActualParameterAST (!selector, poisonedVarNameList))
+      ioActualParameterList ++= @(!@inputSingleJokerActualParameterAST (!selector, poisonedVarNameList))
     or
       $literalInt$ (?let count)
       $*$
@@ -148,14 +148,14 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
       else
         loop (n)
         while n > 0 do
-          ioActualParameterList +=§(!@inputJokerActualParameterAST (!selector.location, n))
+          ioActualParameterList ++= @(!@inputJokerActualParameterAST (!selector.location, n))
           n -= 1
         end
       end
     or
       $identifier$ (?let inputActualParameterName)
       <poisoned_var_list_ggs3> (?let poisonedVarNameList)
-      ioActualParameterList +=§(!@inputActualExistingVariableParameterAST (
+      ioActualParameterList ++= @(!@inputActualExistingVariableParameterAST (
         !selector,
         inputActualParameterName,
         poisonedVarNameList
@@ -165,7 +165,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
       $.$
       $identifier$ (?let inputActualParameterName)
       <poisoned_var_list_ggs3> (?let poisonedVarNameList)
-      ioActualParameterList +=§(!@inputActualSelfPropertyParameterAST (
+      ioActualParameterList ++= @(!@inputActualSelfPropertyParameterAST (
         !selector,
         inputActualParameterName,
         poisonedVarNameList
@@ -173,7 +173,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
     or // input parameter, self
       $self$
       <poisoned_var_list_ggs3> (?let poisonedVarNameList)
-      ioActualParameterList +=§(!@inputActualSelfParameterAST (
+      ioActualParameterList ++= @(!@inputActualSelfParameterAST (
         !selector,
         .here,
         poisonedVarNameList
@@ -188,7 +188,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
       end
       $identifier$ (?let inputActualParameterName)
       <poisoned_var_list_ggs3> (?let poisonedVarNameList)
-      ioActualParameterList +=§(!@inputActualNewVariableParameterAST (
+      ioActualParameterList ++= @(!@inputActualNewVariableParameterAST (
         !selector,
         declarationTypeName,
         inputActualParameterName,
@@ -198,7 +198,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
       <type_definition_ggs3> (!?ioDeclarations, ?let declarationTypeName)
       $identifier$ (?let inputActualParameterName)
       <poisoned_var_list_ggs3> (?let poisonedVarNameList)
-      ioActualParameterList +=§(!@inputActualNewVariableParameterAST (
+      ioActualParameterList ++= @(!@inputActualNewVariableParameterAST (
         !selector,
         declarationTypeName,
         inputActualParameterName,
@@ -221,7 +221,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
       end
       $identifier$ (?let inputActualParameterName)
       <poisoned_var_list_ggs3> (?let poisonedVarNameList)
-      ioActualParameterList +=§(!@inputActualNewConstantParameterAST (
+      ioActualParameterList ++= @(!@inputActualNewConstantParameterAST (
         !selector,
         declarationTypeName,
         inputActualParameterName,
@@ -251,9 +251,9 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
       while
         $.$
         $identifier$ (?let structAttributeName)
-        structAttributeList +=§(!structAttributeName)
+        structAttributeList ++= @(!structAttributeName)
       end
-      ioActualParameterList +=§(!@outputInputActualParameterAST (
+      ioActualParameterList ++= @(!@outputInputActualParameterAST (
         !selector,
         outputInputActualParameterName,
         structAttributeList
@@ -261,10 +261,10 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
     or
       $%from$
       <expression_ggs3> (!?ioDeclarations, ?let initializerCall)
-      ioActualParameterList +=§(!@outputInputJokerParameterAST (selector, initializerCall))
+      ioActualParameterList ++= @(!@outputInputJokerParameterAST (selector, initializerCall))
     or
       $self$
-      ioActualParameterList +=§(!@outputInputSelfParameterAST (!selector))
+      ioActualParameterList ++= @(!@outputInputSelfParameterAST (!selector))
     end
   }
 
@@ -283,7 +283,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
     end
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST e)
     let @location endOfExpressionLocation = @location.here
-    ioActualParameterList +=§(!@outputActualParameterAST (
+    ioActualParameterList ++= @(!@outputActualParameterAST (
       !selector,
       e,
       endOfExpressionLocation
@@ -297,7 +297,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
     let selector = "".here
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST e)
     let @location endOfExpressionLocation = @location.here
-    ioActualParameterList +=§(!@outputActualParameterAST (
+    ioActualParameterList ++= @(!@outputActualParameterAST (
       !selector,
       e,
       endOfExpressionLocation
@@ -343,7 +343,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
           isUnused = true
         end
         $identifier$ (?let @lstring formalParameterName)
-        outFormalInputParameterList +=§(
+        outFormalInputParameterList ++= @(
           !selector,
           !formalParameterTypeName,
           !formalParameterName,
@@ -370,7 +370,7 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
     $($
     repeat
        $identifier$ (?let varName)
-       outPoisonedVarNameList +=§(!varName)
+       outPoisonedVarNameList ++= @(!varName)
     while
       $,$
     end
@@ -467,7 +467,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
           isUnused = true
         end
         $identifier$ (?let @lstring formalParameterName)
-        outFormalParameterList +=§(
+        outFormalParameterList ++= @(
           !selector,
           !formalParameterPassingMode,
           !formalParameterTypeName,
@@ -515,7 +515,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     select
       $*$
       <poisoned_var_list> (?let poisonedVarNameList)
-      ioActualParameterList +=§(!@inputSingleJokerActualParameterAST (!selector, poisonedVarNameList))
+      ioActualParameterList ++= @(!@inputSingleJokerActualParameterAST (!selector, poisonedVarNameList))
     or
       $literalInt$ (?let count)
       $*$
@@ -528,14 +528,14 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       else
         loop (n)
         while n > 0 do
-          ioActualParameterList +=§(!@inputJokerActualParameterAST (!selector.location, n))
+          ioActualParameterList ++= @(!@inputJokerActualParameterAST (!selector.location, n))
           n -= 1
         end
       end
     or
       $identifier$ (?let inputActualParameterName)
       <poisoned_var_list> (?let poisonedVarNameList)
-      ioActualParameterList +=§(!@inputActualExistingVariableParameterAST (
+      ioActualParameterList ++= @(!@inputActualExistingVariableParameterAST (
         !selector,
         inputActualParameterName,
         poisonedVarNameList
@@ -545,7 +545,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       $.$
       $identifier$ (?let inputActualParameterName)
       <poisoned_var_list> (?let poisonedVarNameList)
-      ioActualParameterList +=§(!@inputActualSelfPropertyParameterAST (
+      ioActualParameterList ++= @(!@inputActualSelfPropertyParameterAST (
         !selector,
         inputActualParameterName,
         poisonedVarNameList
@@ -553,7 +553,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     or // input parameter, self
       $self$
       <poisoned_var_list> (?let poisonedVarNameList)
-      ioActualParameterList +=§(!@inputActualSelfParameterAST (
+      ioActualParameterList ++= @(!@inputActualSelfParameterAST (
         !selector,
         .here,
         poisonedVarNameList
@@ -568,7 +568,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       end
       $identifier$ (?let inputActualParameterName)
       <poisoned_var_list> (?let poisonedVarNameList)
-      ioActualParameterList +=§(!@inputActualNewVariableParameterAST (
+      ioActualParameterList ++= @(!@inputActualNewVariableParameterAST (
         !selector,
         declarationTypeName,
         inputActualParameterName,
@@ -578,7 +578,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       <type_definition> (!?ioDeclarations, ?let declarationTypeName)
       $identifier$ (?let inputActualParameterName)
       <poisoned_var_list> (?let poisonedVarNameList)
-      ioActualParameterList +=§(!@inputActualNewVariableParameterAST (
+      ioActualParameterList ++= @(!@inputActualNewVariableParameterAST (
         !selector,
         declarationTypeName,
         inputActualParameterName,
@@ -601,7 +601,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       end
       $identifier$ (?let inputActualParameterName)
       <poisoned_var_list> (?let poisonedVarNameList)
-      ioActualParameterList +=§(!@inputActualNewConstantParameterAST (
+      ioActualParameterList ++= @(!@inputActualNewConstantParameterAST (
         !selector,
         declarationTypeName,
         inputActualParameterName,
@@ -631,9 +631,9 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       while
         $.$
         $identifier$ (?let structAttributeName)
-        structAttributeList +=§(!structAttributeName)
+        structAttributeList ++= @(!structAttributeName)
       end
-      ioActualParameterList +=§(!@outputInputActualParameterAST (
+      ioActualParameterList ++= @(!@outputInputActualParameterAST (
         !selector,
         outputInputActualParameterName,
         structAttributeList
@@ -641,10 +641,10 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     or
       $%from$
       <expression> (!?ioDeclarations, ?let initializerCall)
-      ioActualParameterList +=§(!@outputInputJokerParameterAST (selector, initializerCall))
+      ioActualParameterList ++= @(!@outputInputJokerParameterAST (selector, initializerCall))
     or
       $self$
-      ioActualParameterList +=§(!@outputInputSelfParameterAST (!selector))
+      ioActualParameterList ++= @(!@outputInputSelfParameterAST (!selector))
     end
   }
 
@@ -663,7 +663,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     end
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST e)
     let @location endOfExpressionLocation = @location.here
-    ioActualParameterList +=§(!@outputActualParameterAST (
+    ioActualParameterList ++= @(!@outputActualParameterAST (
       !selector,
       e,
       endOfExpressionLocation
@@ -677,7 +677,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     let selector = "".here
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST e)
     let @location endOfExpressionLocation = @location.here
-    ioActualParameterList +=§(!@outputActualParameterAST (
+    ioActualParameterList ++= @(!@outputActualParameterAST (
       !selector,
       e,
       endOfExpressionLocation
@@ -723,7 +723,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
           isUnused = true
         end
         $identifier$ (?let @lstring formalParameterName)
-        outFormalInputParameterList +=§(
+        outFormalInputParameterList ++= @(
           !selector,
           !formalParameterTypeName,
           !formalParameterName,
@@ -750,7 +750,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     $($
     repeat
        $identifier$ (?let varName)
-       outPoisonedVarNameList +=§(!varName)
+       outPoisonedVarNameList ++= @(!varName)
     while
       $,$
     end

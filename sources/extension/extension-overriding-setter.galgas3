@@ -53,7 +53,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList +=§(!@overridingExtensionSetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@overridingExtensionSetterAST (
       !isPredefined: false,
       typeName,
       setterName,
@@ -83,7 +83,7 @@ syntax extension galgas3DeclarationsSyntax {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList +=§(!@overridingExtensionSetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@overridingExtensionSetterAST (
       !isPredefined: false,
       typeName,
       setterName,
@@ -109,7 +109,7 @@ override proc @overridingExtensionSetterAST.enterDeclarationInGraph (
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
-  ioExtensionOverrideDefinitionList +=§(!self)
+  ioExtensionOverrideDefinitionList ++= @(!self)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -204,7 +204,7 @@ override proc @overridingExtensionSetterAST.semanticAnalysis (
     )
   end
 //---
-  ioSemanticDeclarationListForGeneration +=§(
+  ioSemanticDeclarationListForGeneration ++= @(
     !infoMessage: " overriding extension mutating proc " + self.mOverridingExtensionSetterName,
     !@overridingExtensionSetterForGeneration (
       !generateHeader: false,

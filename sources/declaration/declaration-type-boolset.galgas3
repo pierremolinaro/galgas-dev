@@ -39,7 +39,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       $case$
       $identifier$ (?let slotName)
-      slotList +=§(!slotName)
+      slotList ++= @(!slotName)
     while
       <method_declaration_ggs3> (!boolsetTypeName, !?ioDeclarations)
     end
@@ -47,7 +47,7 @@ syntax extension galgas3DeclarationsSyntax {
     if slotList.count == 0 then
       error (boolsetTypeName : "a boolset type must define at least one case constant")
     end
-    ioDeclarations.mDeclarationList +=§(!@boolsetDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(!@boolsetDeclarationAST (
       !isPredefined: false,
       boolsetTypeName,
       slotList,
@@ -81,7 +81,7 @@ syntax extension galgas4DeclarationsSyntax {
     while
       $case$
       $identifier$ (?let slotName)
-      slotList +=§(!slotName)
+      slotList ++= @(!slotName)
     while
       <method_declaration> (!boolsetTypeName, !?ioDeclarations)
     end
@@ -89,7 +89,7 @@ syntax extension galgas4DeclarationsSyntax {
     if slotList.count == 0 then
       error (boolsetTypeName : "a boolset type must define at least one case constant")
     end
-    ioDeclarations.mDeclarationList +=§(!@boolsetDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(!@boolsetDeclarationAST (
       !isPredefined: false,
       boolsetTypeName,
       slotList,
@@ -274,7 +274,7 @@ override proc @boolsetDeclarationAST.semanticAnalysis
   let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mBoolsetTypeName)
   !?ioUsefulEntitiesGraph.addNode (!boolsetNameForUsefulness, !boolsetNameForUsefulness)
   if self.isPredefined  then
-    ioUsefulnessRootEntities +=§(!boolsetNameForUsefulness)
+    ioUsefulnessRootEntities ++= @(!boolsetNameForUsefulness)
   end
 //--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
@@ -283,10 +283,10 @@ override proc @boolsetDeclarationAST.semanticAnalysis
   )
   !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness, !initializerNameForUsefulness)
   if self.isPredefined  then
-    ioUsefulnessRootEntities +=§(!initializerNameForUsefulness)
+    ioUsefulnessRootEntities ++= @(!initializerNameForUsefulness)
   end
 //---
-  ioSemanticDeclarationListForGeneration +=§(
+  ioSemanticDeclarationListForGeneration ++= @(
     !infoMessage: "boolset " + self.mBoolsetTypeName,
     !@boolsetTypeForGeneration (
       !ioTypeMap.typeMapEntryForLKey (!self.mBoolsetTypeName),

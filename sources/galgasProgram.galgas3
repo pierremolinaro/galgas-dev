@@ -209,9 +209,9 @@ private proc compileProject (?let @lstring inProjectSourceFile,
     if feature.featureName.string == "tool-include" then
       handCodedSourceDirectorySet ++= feature.featureValue
     elsif feature.featureName.string == "tool-framework" then
-      frameworkToolFileList +=§(!feature.featureValue.string.lastPathComponent)
+      frameworkToolFileList ++= @(!feature.featureValue.string.lastPathComponent)
     elsif feature.featureName.string == "tool-link" then
-      handCodedLinkToolFileList +=§(!feature.featureValue.string)
+      handCodedLinkToolFileList ++= @(!feature.featureValue.string)
     elsif feature.featureName.string == "libpmAtPath" then
     elsif feature.featureName.string == "applicationBundleBase" then
     elsif feature.featureName.string == "macCodeSign" then
@@ -287,7 +287,7 @@ private proc compileProject (?let @lstring inProjectSourceFile,
       !projectVersionString,
       ?let @programComponentForGeneration programComponentForGeneration
     )
-    semanticDeclarationSortedListForGeneration +=§(!infoMessage: "zprogram", !programComponentForGeneration)
+    semanticDeclarationSortedListForGeneration ++= @(!infoMessage: "zprogram", !programComponentForGeneration)
   end
 //----------------------------------- Check entity usefulness
   checkUsefulEntities (!usefulEntitiesGraph, !usefulnessRootEntities, !productDirectory)

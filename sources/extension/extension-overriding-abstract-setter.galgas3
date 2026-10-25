@@ -38,7 +38,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $identifier$ (?let @lstring setterName) indexing (overrideabstractExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList +=§(!@overridingAbstractExtensionSetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionSetterAST (
       !isPredefined: false,
       typeName,
       setterName,
@@ -62,7 +62,7 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $identifier$ (?let @lstring setterName) indexing (overrideabstractExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList +=§(!@overridingAbstractExtensionSetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionSetterAST (
       !isPredefined: false,
       typeName,
       setterName,
@@ -98,7 +98,7 @@ final class @overridingAbstractExtensionSetterAST : @semanticDeclarationAST {
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
-    ioExtensionOverrideDefinitionList +=§(!self)
+    ioExtensionOverrideDefinitionList ++= @(!self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -10064,7 +10064,7 @@ void cParser_templateSyntax::rule_templateSyntax_primary_5F_tpl_i16_ (GGS_templa
   while (repeatFlag_0) {
     GGS_lstring var_literalString_13584 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 355)) ;
-    var_literalStringList_13521.addAssignOperation (var_literalString_13584.readProperty_string ()  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 356)) ;
+    var_literalStringList_13521.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (var_literalString_13584.readProperty_string (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 356)) ;
     if (select_templateSyntax_6 (inCompiler) == 2) {
     }else{
       repeatFlag_0 = false ;
@@ -10095,69 +10095,69 @@ void cParser_templateSyntax::rule_templateSyntax_primary_5F_tpl_i17_ (GGS_templa
   switch (select_templateSyntax_7 (inCompiler)) {
   case 1: {
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_template COMMA_SOURCE_FILE ("templateSyntax.galgas3", 378)) ;
-    GGS_templateExpressionAST var_receiverExpression_14549 ;
-    nt_expression_5F_tpl_ (var_receiverExpression_14549, inCompiler) ;
-    GGS_lstring var_templateName_14643 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_templateExpressionAST var_receiverExpression_14551 ;
+    nt_expression_5F_tpl_ (var_receiverExpression_14551, inCompiler) ;
+    GGS_lstring var_templateName_14645 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas3", 381)) ;
-    GGS_templateExpressionListAST var_expressionList_14692 ;
-    nt_output_5F_expression_5F_list_5F_tpl_ (var_expressionList_14692, inCompiler) ;
-    outArgument_outExpression = GGS_templateExtensionTemplateCallAST::init_21__21__21_ (var_receiverExpression_14549, var_templateName_14643, var_expressionList_14692, inCompiler COMMA_HERE) ;
+    GGS_templateExpressionListAST var_expressionList_14694 ;
+    nt_output_5F_expression_5F_list_5F_tpl_ (var_expressionList_14694, inCompiler) ;
+    outArgument_outExpression = GGS_templateExtensionTemplateCallAST::init_21__21__21_ (var_receiverExpression_14551, var_templateName_14645, var_expressionList_14694, inCompiler COMMA_HERE) ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__5D_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 389)) ;
   } break ;
   case 2: {
-    GGS_lstring var_typeName_14959 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_lstring var_typeName_14961 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__40_type COMMA_SOURCE_FILE ("templateSyntax.galgas3", 391)) ;
-    GGS_lstring var_constructorName_15001 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_lstring var_constructorName_15003 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas3", 392)) ;
-    GGS_templateExpressionListAST var_expressionList_15084 ;
-    nt_output_5F_expression_5F_list_5F_tpl_ (var_expressionList_15084, inCompiler) ;
-    outArgument_outExpression = GGS_templateClassFunctionAST::init_21__21__21_ (var_typeName_14959, var_constructorName_15001, var_expressionList_15084, inCompiler COMMA_HERE) ;
+    GGS_templateExpressionListAST var_expressionList_15086 ;
+    nt_output_5F_expression_5F_list_5F_tpl_ (var_expressionList_15086, inCompiler) ;
+    outArgument_outExpression = GGS_templateClassFunctionAST::init_21__21__21_ (var_typeName_14961, var_constructorName_15003, var_expressionList_15086, inCompiler COMMA_HERE) ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__5D_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 399)) ;
   } break ;
   case 3: {
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_filewrapper COMMA_SOURCE_FILE ("templateSyntax.galgas3", 401)) ;
-    GGS_lstring var_filewrapperName_15325 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_lstring var_filewrapperName_15327 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas3", 402)) ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 403)) ;
-    GGS_lstring var_templateName_15382 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_lstring var_templateName_15384 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas3", 404)) ;
-    GGS_templateExpressionListAST var_expressionList_15431 ;
-    nt_output_5F_expression_5F_list_5F_tpl_ (var_expressionList_15431, inCompiler) ;
+    GGS_templateExpressionListAST var_expressionList_15433 ;
+    nt_output_5F_expression_5F_list_5F_tpl_ (var_expressionList_15433, inCompiler) ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__5D_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 407)) ;
-    outArgument_outExpression = GGS_templateFileWrapperTemplateCallAST::init_21__21__21_ (var_filewrapperName_15325, var_templateName_15382, var_expressionList_15431, inCompiler COMMA_HERE) ;
+    outArgument_outExpression = GGS_templateFileWrapperTemplateCallAST::init_21__21__21_ (var_filewrapperName_15327, var_templateName_15384, var_expressionList_15433, inCompiler COMMA_HERE) ;
   } break ;
   case 4: {
-    GGS_location var_startLocation_15668 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 410)) ;
-    GGS_templateExpressionAST var_receiverExpression_15730 ;
-    nt_expression_5F_tpl_ (var_receiverExpression_15730, inCompiler) ;
-    GGS_lstring var_getterName_15824 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_location var_startLocation_15670 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 410)) ;
+    GGS_templateExpressionAST var_receiverExpression_15732 ;
+    nt_expression_5F_tpl_ (var_receiverExpression_15732, inCompiler) ;
+    GGS_lstring var_getterName_15826 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas3", 413)) ;
-    GGS_templateExpressionListAST var_expressionList_15871 ;
-    nt_output_5F_expression_5F_list_5F_tpl_ (var_expressionList_15871, inCompiler) ;
+    GGS_templateExpressionListAST var_expressionList_15873 ;
+    nt_output_5F_expression_5F_list_5F_tpl_ (var_expressionList_15873, inCompiler) ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__5D_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 416)) ;
-    GGS_location var_endLocation_15953 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 417)) ;
-    outArgument_outExpression = GGS_templateGetterCallInExpressionAST::init_21__21__21__21_ (var_receiverExpression_15730, var_getterName_15824, var_expressionList_15871, var_startLocation_15668.getter_union (var_endLocation_15953, inCompiler COMMA_SOURCE_FILE ("templateSyntax.galgas3", 422)), inCompiler COMMA_HERE) ;
+    GGS_location var_endLocation_15955 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 417)) ;
+    outArgument_outExpression = GGS_templateGetterCallInExpressionAST::init_21__21__21__21_ (var_receiverExpression_15732, var_getterName_15826, var_expressionList_15873, var_startLocation_15670.getter_union (var_endLocation_15955, inCompiler COMMA_SOURCE_FILE ("templateSyntax.galgas3", 422)), inCompiler COMMA_HERE) ;
   } break ;
   case 5: {
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_option COMMA_SOURCE_FILE ("templateSyntax.galgas3", 425)) ;
     switch (select_templateSyntax_8 (inCompiler)) {
     case 1: {
       inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 427)) ;
-      GGS_lstring var_optionName_16226 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_optionName_16228 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas3", 428)) ;
-      GGS_lstring var_getterName_16272 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_getterName_16274 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas3", 429)) ;
-      outArgument_outExpression = GGS_templateOptionAccessAST::init_21__21__21_ (GGS_lstring::init_21__21_ (GGS_string ("galgas_builtin_options"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 430)), inCompiler COMMA_HERE), var_optionName_16226, var_getterName_16272, inCompiler COMMA_HERE) ;
+      outArgument_outExpression = GGS_templateOptionAccessAST::init_21__21__21_ (GGS_lstring::init_21__21_ (GGS_string ("galgas_builtin_options"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 430)), inCompiler COMMA_HERE), var_optionName_16228, var_getterName_16274, inCompiler COMMA_HERE) ;
     } break ;
     case 2: {
-      GGS_lstring var_optionComponentName_16452 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_optionComponentName_16454 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas3", 432)) ;
       inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__2E_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 433)) ;
-      GGS_lstring var_optionName_16517 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_optionName_16519 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas3", 434)) ;
-      GGS_lstring var_getterName_16563 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_getterName_16565 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas3", 435)) ;
-      outArgument_outExpression = GGS_templateOptionAccessAST::init_21__21__21_ (var_optionComponentName_16452, var_optionName_16517, var_getterName_16563, inCompiler COMMA_HERE) ;
+      outArgument_outExpression = GGS_templateOptionAccessAST::init_21__21__21_ (var_optionComponentName_16454, var_optionName_16519, var_getterName_16565, inCompiler COMMA_HERE) ;
     } break ;
     default:
       break ;
@@ -10230,13 +10230,13 @@ void cParser_templateSyntax::rule_templateSyntax_primary_5F_tpl_i17_indexing (Le
 void cParser_templateSyntax::rule_templateSyntax_primary_5F_tpl_i18_ (GGS_templateExpressionAST & outArgument_outExpression,
                                                                       Lexique_galgasTemplateScanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  GGS_lstring var_functionName_17086 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_functionName_17088 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("templateSyntax.galgas3", 450)) ;
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__28_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 451)) ;
-  GGS_templateExpressionListAST var_expressionList_17170 ;
-  nt_output_5F_expression_5F_list_5F_tpl_ (var_expressionList_17170, inCompiler) ;
+  GGS_templateExpressionListAST var_expressionList_17172 ;
+  nt_output_5F_expression_5F_list_5F_tpl_ (var_expressionList_17172, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 453)) ;
-  outArgument_outExpression = GGS_templateFunctionCallAST::init_21__21_ (var_functionName_17086, var_expressionList_17170, inCompiler COMMA_HERE) ;
+  outArgument_outExpression = GGS_templateFunctionCallAST::init_21__21_ (var_functionName_17088, var_expressionList_17172, inCompiler COMMA_HERE) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -10254,11 +10254,11 @@ void cParser_templateSyntax::rule_templateSyntax_primary_5F_tpl_i19_ (GGS_templa
                                                                       Lexique_galgasTemplateScanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   nt_primary_5F_tpl_ (outArgument_outExpression, inCompiler) ;
-  GGS_location var_endOfReceiverExpression_17483 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 461)) ;
+  GGS_location var_endOfReceiverExpression_17485 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 461)) ;
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_is COMMA_SOURCE_FILE ("templateSyntax.galgas3", 462)) ;
-  GGS_lstring var_typeName_17556 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_typeName_17558 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__40_type COMMA_SOURCE_FILE ("templateSyntax.galgas3", 463)) ;
-  outArgument_outExpression = GGS_templateTestDynamicClassAST::init_21__21__21_ (outArgument_outExpression, var_endOfReceiverExpression_17483, var_typeName_17556, inCompiler COMMA_HERE) ;
+  outArgument_outExpression = GGS_templateTestDynamicClassAST::init_21__21__21_ (outArgument_outExpression, var_endOfReceiverExpression_17485, var_typeName_17558, inCompiler COMMA_HERE) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -10279,18 +10279,18 @@ void cParser_templateSyntax::rule_templateSyntax_output_5F_expression_5F_list_5F
   while (repeatFlag_0) {
     switch (select_templateSyntax_9 (inCompiler)) {
     case 2: {
-      GGS_lstring var_selector_18095 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_selector_18097 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 481)) ;
-      GGS_templateExpressionAST var_expression_18155 ;
-      nt_expression_5F_tpl_ (var_expression_18155, inCompiler) ;
-      outArgument_outExpressionList.addAssignOperation (var_selector_18095, var_expression_18155, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 483))  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 483)) ;
+      GGS_templateExpressionAST var_expression_18157 ;
+      nt_expression_5F_tpl_ (var_expression_18157, inCompiler) ;
+      outArgument_outExpressionList.plusPlusAssignOperation (GGS_templateExpressionListAST_2E_element::init_21__21__21_ (var_selector_18097, var_expression_18157, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 483)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 483)) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__21_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 485)) ;
-      GGS_lstring var_selector_18258 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("templateSyntax.galgas3", 486)) ;
-      GGS_templateExpressionAST var_expression_18327 ;
-      nt_expression_5F_tpl_ (var_expression_18327, inCompiler) ;
-      outArgument_outExpressionList.addAssignOperation (var_selector_18258, var_expression_18327, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 488))  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 488)) ;
+      GGS_lstring var_selector_18262 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("templateSyntax.galgas3", 486)) ;
+      GGS_templateExpressionAST var_expression_18331 ;
+      nt_expression_5F_tpl_ (var_expression_18331, inCompiler) ;
+      outArgument_outExpressionList.plusPlusAssignOperation (GGS_templateExpressionListAST_2E_element::init_21__21__21_ (var_selector_18262, var_expression_18331, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 488)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 488)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -10325,9 +10325,9 @@ void cParser_templateSyntax::rule_templateSyntax_output_5F_expression_5F_list_5F
 void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i21_ (GGS_templateInstructionListAST & ioArgument_ioResultingInstructionList,
                                                                                Lexique_galgasTemplateScanner * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__21_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 499)) ;
-  GGS_templateExpressionAST var_expression_18798 ;
-  nt_expression_5F_tpl_ (var_expression_18798, inCompiler) ;
-  ioArgument_ioResultingInstructionList.addAssignOperation (GGS_templateInstructionExpressionAST::init_21__21_ (var_expression_18798, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 501)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 501)) ;
+  GGS_templateExpressionAST var_expression_18804 ;
+  nt_expression_5F_tpl_ (var_expression_18804, inCompiler) ;
+  ioArgument_ioResultingInstructionList.plusPlusAssignOperation (GGS_templateInstructionListAST_2E_element::init_21_ (GGS_templateInstructionExpressionAST::init_21__21_ (var_expression_18804, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 501)), inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 501)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -10342,7 +10342,7 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i21_ind
 void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i22_ (GGS_templateInstructionListAST & ioArgument_ioResultingInstructionList,
                                                                                Lexique_galgasTemplateScanner * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__3F__5E_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 507)) ;
-  ioArgument_ioResultingInstructionList.addAssignOperation (GGS_templateInstructionGetColumnLocationAST::init (inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 508)) ;
+  ioArgument_ioResultingInstructionList.plusPlusAssignOperation (GGS_templateInstructionListAST_2E_element::init_21_ (GGS_templateInstructionGetColumnLocationAST::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 508)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -10356,7 +10356,7 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i22_ind
 void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i23_ (GGS_templateInstructionListAST & ioArgument_ioResultingInstructionList,
                                                                                Lexique_galgasTemplateScanner * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__21__5E_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 514)) ;
-  ioArgument_ioResultingInstructionList.addAssignOperation (GGS_templateInstructionGotoColumnLocationAST::init (inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 515)) ;
+  ioArgument_ioResultingInstructionList.plusPlusAssignOperation (GGS_templateInstructionListAST_2E_element::init_21_ (GGS_templateInstructionGotoColumnLocationAST::init (inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 515)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -10370,23 +10370,23 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i23_ind
 void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i24_ (GGS_templateInstructionListAST & ioArgument_ioResultingInstructionList,
                                                                                Lexique_galgasTemplateScanner * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_block COMMA_SOURCE_FILE ("templateSyntax.galgas3", 521)) ;
-  GGS_templateExpressionAST var_expression_19725 ;
-  nt_expression_5F_tpl_ (var_expression_19725, inCompiler) ;
+  GGS_templateExpressionAST var_expression_19737 ;
+  nt_expression_5F_tpl_ (var_expression_19737, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("templateSyntax.galgas3", 523)) ;
-  GGS_templateInstructionListAST var_blockInstructionList_19772 = GGS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
+  GGS_templateInstructionListAST var_blockInstructionList_19784 = GGS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     {
-    routine_enterTemplateString_26_ (var_blockInstructionList_19772, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 527)) ;
+    routine_enterTemplateString_26_ (var_blockInstructionList_19784, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 527)) ;
     }
     if (select_templateSyntax_10 (inCompiler) == 2) {
-      nt_template_5F_instruction_ (var_blockInstructionList_19772, inCompiler) ;
+      nt_template_5F_instruction_ (var_blockInstructionList_19784, inCompiler) ;
     }else{
       repeatFlag_0 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("templateSyntax.galgas3", 532)) ;
-  ioArgument_ioResultingInstructionList.addAssignOperation (GGS_templateBlockInstructionAST::init_21__21__21_ (var_expression_19725, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 535)), var_blockInstructionList_19772, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 533)) ;
+  ioArgument_ioResultingInstructionList.plusPlusAssignOperation (GGS_templateInstructionListAST_2E_element::init_21_ (GGS_templateBlockInstructionAST::init_21__21__21_ (var_expression_19737, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 535)), var_blockInstructionList_19784, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 533)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -10411,32 +10411,32 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i24_ind
 void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_ (GGS_templateInstructionListAST & ioArgument_ioResultingInstructionList,
                                                                                Lexique_galgasTemplateScanner * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_if COMMA_SOURCE_FILE ("templateSyntax.galgas3", 542)) ;
-  GGS_templateInstructionIfBranchListAST var_templateInstructionIfBranchList_20298 = GGS_templateInstructionIfBranchListAST::init (inCompiler COMMA_HERE) ;
+  GGS_templateInstructionIfBranchListAST var_templateInstructionIfBranchList_20312 = GGS_templateInstructionIfBranchListAST::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    GGS_templateExpressionAST var_expression_20407 ;
-    nt_expression_5F_tpl_ (var_expression_20407, inCompiler) ;
+    GGS_templateExpressionAST var_expression_20421 ;
+    nt_expression_5F_tpl_ (var_expression_20421, inCompiler) ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_then COMMA_SOURCE_FILE ("templateSyntax.galgas3", 546)) ;
-    GGS_templateInstructionListAST var_instructionList_20466 = GGS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
+    GGS_templateInstructionListAST var_instructionList_20480 = GGS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
     bool repeatFlag_1 = true ;
     while (repeatFlag_1) {
       {
-      routine_enterTemplateString_26_ (var_instructionList_20466, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 549)) ;
+      routine_enterTemplateString_26_ (var_instructionList_20480, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 549)) ;
       }
       if (select_templateSyntax_12 (inCompiler) == 2) {
-        nt_template_5F_instruction_ (var_instructionList_20466, inCompiler) ;
+        nt_template_5F_instruction_ (var_instructionList_20480, inCompiler) ;
       }else{
         repeatFlag_1 = false ;
       }
     }
-    var_templateInstructionIfBranchList_20298.addAssignOperation (var_expression_20407, var_instructionList_20466  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 553)) ;
+    var_templateInstructionIfBranchList_20312.plusPlusAssignOperation (GGS_templateInstructionIfBranchListAST_2E_element::init_21__21_ (var_expression_20421, var_instructionList_20480, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 553)) ;
     if (select_templateSyntax_11 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_elsif COMMA_SOURCE_FILE ("templateSyntax.galgas3", 555)) ;
     }else{
       repeatFlag_0 = false ;
     }
   }
-  GGS_templateInstructionListAST var_elseInstructionList_20754 = GGS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
+  GGS_templateInstructionListAST var_elseInstructionList_20770 = GGS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
   switch (select_templateSyntax_13 (inCompiler)) {
   case 1: {
   } break ;
@@ -10445,10 +10445,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_ (G
     bool repeatFlag_2 = true ;
     while (repeatFlag_2) {
       {
-      routine_enterTemplateString_26_ (var_elseInstructionList_20754, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 563)) ;
+      routine_enterTemplateString_26_ (var_elseInstructionList_20770, inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 563)) ;
       }
       if (select_templateSyntax_14 (inCompiler) == 2) {
-        nt_template_5F_instruction_ (var_elseInstructionList_20754, inCompiler) ;
+        nt_template_5F_instruction_ (var_elseInstructionList_20770, inCompiler) ;
       }else{
         repeatFlag_2 = false ;
       }
@@ -10458,7 +10458,7 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i25_ (G
     break ;
   }
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("templateSyntax.galgas3", 569)) ;
-  ioArgument_ioResultingInstructionList.addAssignOperation (GGS_templateInstructionIfAST::init_21__21_ (var_templateInstructionIfBranchList_20298, var_elseInstructionList_20754, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 570)) ;
+  ioArgument_ioResultingInstructionList.plusPlusAssignOperation (GGS_templateInstructionListAST_2E_element::init_21_ (GGS_templateInstructionIfAST::init_21__21_ (var_templateInstructionIfBranchList_20312, var_elseInstructionList_20770, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("templateSyntax.galgas3", 570)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -10565,7 +10565,7 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i
       }
       if (loop_2765) {
         variant_2765 -= 1 ;
-        ioArgument_ioElementList.addAssignOperation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-for-instruction.galgas3", 59))  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 59)) ;
+        ioArgument_ioElementList.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-for-instruction.galgas3", 59)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 59)) ;
         var_n_2664.minusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 60)) ;
       }
     }
@@ -10584,7 +10584,7 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i
 void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i28_ (GGS_lstringlist & ioArgument_ioElementList,
                                                                                      Lexique_galgasTemplateScanner * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 67)) ;
-  ioArgument_ioElementList.addAssignOperation (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-for-instruction.galgas3", 68))  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 68)) ;
+  ioArgument_ioElementList.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("template-for-instruction.galgas3", 68)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 68)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -10597,9 +10597,9 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i
 
 void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_element_i29_ (GGS_lstringlist & ioArgument_ioElementList,
                                                                                      Lexique_galgasTemplateScanner * inCompiler) {
-  GGS_lstring var_constantName_3261 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_constantName_3265 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 74)) ;
-  ioArgument_ioElementList.addAssignOperation (var_constantName_3261  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 75)) ;
+  ioArgument_ioElementList.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (var_constantName_3265, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 75)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -10636,12 +10636,12 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerate
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__3A_ COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 116)) ;
-    GGS_location var_startLocation_4654 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 117)) ;
-    GGS_lstring var_prefixString_4719 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_location var_startLocation_4660 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 117)) ;
+    GGS_lstring var_prefixString_4725 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 118)) ;
     GenericArray <FixItDescription> fixItArray1 ;
     appendFixItActions (fixItArray1, EnumFixItKind::fixItReplace, GGS_string::makeEmptyString ()) ;
-    inCompiler->emitSemanticError (var_prefixString_4719.readProperty_location ().getter_union (var_startLocation_4654, inCompiler COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 119)), GGS_string ("useless prefix"), fixItArray1  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 119)) ;
+    inCompiler->emitSemanticError (var_prefixString_4725.readProperty_location ().getter_union (var_startLocation_4660, inCompiler COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 119)), GGS_string ("useless prefix"), fixItArray1  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 119)) ;
   } break ;
   default:
     break ;
@@ -10680,27 +10680,27 @@ void cParser_templateSyntax::rule_templateSyntax_for_5F_instruction_5F_enumerate
 void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i31_ (GGS_templateInstructionListAST & ioArgument_ioResultingInstructionList,
                                                                                Lexique_galgasTemplateScanner * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_for COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 127)) ;
-  GGS_bool var_ascending_5065 ;
+  GGS_bool var_ascending_5071 ;
   switch (select_templateSyntax_18 (inCompiler)) {
   case 1: {
-    var_ascending_5065 = GGS_bool (true) ;
+    var_ascending_5071 = GGS_bool (true) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__3C_ COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 132)) ;
-    var_ascending_5065 = GGS_bool (true) ;
+    var_ascending_5071 = GGS_bool (true) ;
   } break ;
   case 3: {
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__3E_ COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 135)) ;
-    var_ascending_5065 = GGS_bool (false) ;
+    var_ascending_5071 = GGS_bool (false) ;
   } break ;
   default:
     break ;
   }
-  GGS_lstringlist var_enumeration_5244 ;
-  GGS_location var_endOfProperties_5262 ;
-  GGS_templateExpressionAST var_expression_5284 ;
-  nt_for_5F_instruction_5F_enumerated_5F_object_ (var_enumeration_5244, var_endOfProperties_5262, var_expression_5284, inCompiler) ;
-  GGS_templateInstructionListAST var_beforeInstructionList_5353 = GGS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
+  GGS_lstringlist var_enumeration_5250 ;
+  GGS_location var_endOfProperties_5268 ;
+  GGS_templateExpressionAST var_expression_5290 ;
+  nt_for_5F_instruction_5F_enumerated_5F_object_ (var_enumeration_5250, var_endOfProperties_5268, var_expression_5290, inCompiler) ;
+  GGS_templateInstructionListAST var_beforeInstructionList_5359 = GGS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
   switch (select_templateSyntax_19 (inCompiler)) {
   case 1: {
   } break ;
@@ -10709,10 +10709,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i31_ (G
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
       {
-      routine_enterTemplateString_26_ (var_beforeInstructionList_5353, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 145)) ;
+      routine_enterTemplateString_26_ (var_beforeInstructionList_5359, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 145)) ;
       }
       if (select_templateSyntax_20 (inCompiler) == 2) {
-        nt_template_5F_instruction_ (var_beforeInstructionList_5353, inCompiler) ;
+        nt_template_5F_instruction_ (var_beforeInstructionList_5359, inCompiler) ;
       }else{
         repeatFlag_0 = false ;
       }
@@ -10722,33 +10722,33 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i31_ (G
     break ;
   }
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_do COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 151)) ;
-  GGS_lstring var_indexIdentifier_5611 ;
+  GGS_lstring var_indexIdentifier_5617 ;
   switch (select_templateSyntax_21 (inCompiler)) {
   case 1: {
-    var_indexIdentifier_5611 = GGS_lstring::init_21__21_ (GGS_string::makeEmptyString (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 154)), inCompiler COMMA_HERE) ;
+    var_indexIdentifier_5617 = GGS_lstring::init_21__21_ (GGS_string::makeEmptyString (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 154)), inCompiler COMMA_HERE) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__28_ COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 156)) ;
-    var_indexIdentifier_5611 = inCompiler->synthetizedAttribute_tokenString () ;
+    var_indexIdentifier_5617 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 157)) ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__29_ COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 158)) ;
   } break ;
   default:
     break ;
   }
-  GGS_templateInstructionListAST var_doInstructionList_5803 = GGS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
+  GGS_templateInstructionListAST var_doInstructionList_5809 = GGS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
     {
-    routine_enterTemplateString_26_ (var_doInstructionList_5803, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 162)) ;
+    routine_enterTemplateString_26_ (var_doInstructionList_5809, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 162)) ;
     }
     if (select_templateSyntax_22 (inCompiler) == 2) {
-      nt_template_5F_instruction_ (var_doInstructionList_5803, inCompiler) ;
+      nt_template_5F_instruction_ (var_doInstructionList_5809, inCompiler) ;
     }else{
       repeatFlag_1 = false ;
     }
   }
-  GGS_templateInstructionListAST var_betweenInstructionList_6013 = GGS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
+  GGS_templateInstructionListAST var_betweenInstructionList_6019 = GGS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
   switch (select_templateSyntax_23 (inCompiler)) {
   case 1: {
   } break ;
@@ -10757,10 +10757,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i31_ (G
     bool repeatFlag_2 = true ;
     while (repeatFlag_2) {
       {
-      routine_enterTemplateString_26_ (var_betweenInstructionList_6013, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 172)) ;
+      routine_enterTemplateString_26_ (var_betweenInstructionList_6019, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 172)) ;
       }
       if (select_templateSyntax_24 (inCompiler) == 2) {
-        nt_template_5F_instruction_ (var_betweenInstructionList_6013, inCompiler) ;
+        nt_template_5F_instruction_ (var_betweenInstructionList_6019, inCompiler) ;
       }else{
         repeatFlag_2 = false ;
       }
@@ -10769,7 +10769,7 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i31_ (G
   default:
     break ;
   }
-  GGS_templateInstructionListAST var_afterInstructionList_6288 = GGS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
+  GGS_templateInstructionListAST var_afterInstructionList_6294 = GGS_templateInstructionListAST::init (inCompiler COMMA_HERE) ;
   switch (select_templateSyntax_25 (inCompiler)) {
   case 1: {
   } break ;
@@ -10778,10 +10778,10 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i31_ (G
     bool repeatFlag_3 = true ;
     while (repeatFlag_3) {
       {
-      routine_enterTemplateString_26_ (var_afterInstructionList_6288, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 183)) ;
+      routine_enterTemplateString_26_ (var_afterInstructionList_6294, inCompiler  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 183)) ;
       }
       if (select_templateSyntax_26 (inCompiler) == 2) {
-        nt_template_5F_instruction_ (var_beforeInstructionList_5353, inCompiler) ;
+        nt_template_5F_instruction_ (var_beforeInstructionList_5359, inCompiler) ;
       }else{
         repeatFlag_3 = false ;
       }
@@ -10791,7 +10791,7 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i31_ (G
     break ;
   }
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 189)) ;
-  ioArgument_ioResultingInstructionList.addAssignOperation (GGS_templateInstructionForeachAST::init_21__21__21__21__21__21__21__21__21_ (var_ascending_5065, var_expression_5284, var_enumeration_5244, var_endOfProperties_5262, var_beforeInstructionList_5353, var_doInstructionList_5803, var_indexIdentifier_5611, var_betweenInstructionList_6013, var_afterInstructionList_6288, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 190)) ;
+  ioArgument_ioResultingInstructionList.plusPlusAssignOperation (GGS_templateInstructionListAST_2E_element::init_21_ (GGS_templateInstructionForeachAST::init_21__21__21__21__21__21__21__21__21_ (var_ascending_5071, var_expression_5290, var_enumeration_5250, var_endOfProperties_5268, var_beforeInstructionList_5359, var_doInstructionList_5809, var_indexIdentifier_5617, var_betweenInstructionList_6019, var_afterInstructionList_6294, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("template-for-instruction.galgas3", 190)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -10914,13 +10914,13 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i32_ (G
           repeatFlag_1 = false ;
         }
       }
-      var_templateInstructionSwitchBranchList_2569.addAssignOperation (var_constantNameList_2690, var_associatedValuesExtraction_2751, var_instructionList_2827, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 65))  COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 65)) ;
+      var_templateInstructionSwitchBranchList_2569.plusPlusAssignOperation (GGS_templateInstructionSwitchBranchListAST_2E_element::init_21__21__21__21_ (var_constantNameList_2690, var_associatedValuesExtraction_2751, var_instructionList_2827, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 65)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 65)) ;
     }else{
       repeatFlag_0 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_end COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 67)) ;
-  ioArgument_ioResultingInstructionList.addAssignOperation (GGS_templateInstructionSwitchAST::init_21__21__21_ (var_switchExpression_2424, var_endOfSwitchExpression_2460, var_templateInstructionSwitchBranchList_2569, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 69)) ;
+  ioArgument_ioResultingInstructionList.plusPlusAssignOperation (GGS_templateInstructionListAST_2E_element::init_21_ (GGS_templateInstructionSwitchAST::init_21__21__21_ (var_switchExpression_2424, var_endOfSwitchExpression_2460, var_templateInstructionSwitchBranchList_2569, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 69)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -10959,10 +10959,10 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i33_ (GGS__5B_ls
   outArgument_outConstantNameList = GGS__5B_lstring_5D_::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    GGS_lstring var_constantName_3623 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_lstring var_constantName_3627 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 82)) ;
     {
-    outArgument_outConstantNameList.setter_append (var_constantName_3623, inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 83)) ;
+    outArgument_outConstantNameList.setter_append (var_constantName_3627, inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 83)) ;
     }
     if (select_templateSyntax_29 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__2C_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 85)) ;
@@ -10980,47 +10980,47 @@ void cParser_templateSyntax::rule_templateSyntax_switch_5F_case_i33_ (GGS__5B_ls
     while (repeatFlag_1) {
       switch (select_templateSyntax_32 (inCompiler)) {
       case 1: {
-        GGS_lbigint var_n_3841 = inCompiler->synthetizedAttribute_bigintValue () ;
+        GGS_lbigint var_n_3845 = inCompiler->synthetizedAttribute_bigintValue () ;
         inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_literalInt COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 93)) ;
         inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 94)) ;
-        UpEnumerator_range enumerator_3885 (GGS_range (GGS_uint (uint32_t (0U)), var_n_3841.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 95)).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 95)))) ;
-        while (enumerator_3885.hasCurrentObject ()) {
-          outArgument_outAssociatedValuesExtraction.addAssignOperation (GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 96)), GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 96)), GGS_bool (false)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 96)) ;
-          enumerator_3885.gotoNextObject () ;
+        UpEnumerator_range enumerator_3889 (GGS_range (GGS_uint (uint32_t (0U)), var_n_3845.readProperty_bigint ().getter_uint (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 95)).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 95)))) ;
+        while (enumerator_3889.hasCurrentObject ()) {
+          outArgument_outAssociatedValuesExtraction.plusPlusAssignOperation (GGS_switchExtractedValuesListAST_2E_element::init_21__21__21_ (GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 96)), GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 96)), GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 96)) ;
+          enumerator_3889.gotoNextObject () ;
         }
       } break ;
       case 2: {
         inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__2A_ COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 99)) ;
-        outArgument_outAssociatedValuesExtraction.addAssignOperation (GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 100)), GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 100)), GGS_bool (false)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 100)) ;
+        outArgument_outAssociatedValuesExtraction.plusPlusAssignOperation (GGS_switchExtractedValuesListAST_2E_element::init_21__21__21_ (GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 100)), GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 100)), GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 100)) ;
       } break ;
       case 3: {
-        GGS_lstring var_typeName_4116 ;
+        GGS_lstring var_typeName_4124 ;
         switch (select_templateSyntax_33 (inCompiler)) {
         case 1: {
-          var_typeName_4116 = inCompiler->synthetizedAttribute_tokenString () ;
+          var_typeName_4124 = inCompiler->synthetizedAttribute_tokenString () ;
           inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken__40_type COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 104)) ;
         } break ;
         case 2: {
-          var_typeName_4116 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 106)) ;
+          var_typeName_4124 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 106)) ;
         } break ;
         default:
           break ;
         }
-        GGS_bool var_constantMarkedAsUnused_4252 ;
+        GGS_bool var_constantMarkedAsUnused_4260 ;
         switch (select_templateSyntax_34 (inCompiler)) {
         case 1: {
-          var_constantMarkedAsUnused_4252 = GGS_bool (false) ;
+          var_constantMarkedAsUnused_4260 = GGS_bool (false) ;
         } break ;
         case 2: {
           inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_unused COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 112)) ;
-          var_constantMarkedAsUnused_4252 = GGS_bool (true) ;
+          var_constantMarkedAsUnused_4260 = GGS_bool (true) ;
         } break ;
         default:
           break ;
         }
-        GGS_lstring var_constantName_4463 = inCompiler->synthetizedAttribute_tokenString () ;
+        GGS_lstring var_constantName_4471 = inCompiler->synthetizedAttribute_tokenString () ;
         inCompiler->acceptTerminal (Lexique_galgasTemplateScanner::kToken_identifier COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 115)) ;
-        outArgument_outAssociatedValuesExtraction.addAssignOperation (var_typeName_4116, var_constantName_4463, var_constantMarkedAsUnused_4252  COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 116)) ;
+        outArgument_outAssociatedValuesExtraction.plusPlusAssignOperation (GGS_switchExtractedValuesListAST_2E_element::init_21__21__21_ (var_typeName_4124, var_constantName_4471, var_constantMarkedAsUnused_4260, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("template-switch-instruction.galgas3", 116)) ;
       } break ;
       default:
         break ;

@@ -124,7 +124,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
                                      !@string outEnumeratedType ) {
     !?ioUnifiedTypeMap.makeEntryFromString (!"string", ?let stringTypeIndex)
     outEnumerationList = @()
-    outEnumerationList +=§(!stringTypeIndex, !"key")
+    outEnumerationList ++= @(!stringTypeIndex, !"key")
     outEnumeratedType = "string"
   }
 

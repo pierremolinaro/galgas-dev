@@ -60,7 +60,7 @@ syntax extension galgas3DeclarationsSyntax {
       <method_declaration_ggs3> (!mapTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList +=§(!@mapDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(!@mapDeclarationAST (
       !isPredefined: false,
       mapTypeName,
       propertyList,
@@ -81,7 +81,7 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ (?let @lstring methodName)
     $error$ ; $message$
     $"string"$ (?let @lstring errorMessage)
-    ioMapSearchMethodListAST +=§(!methodName, !errorMessage)
+    ioMapSearchMethodListAST ++= @(!methodName, !errorMessage)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -91,7 +91,7 @@ syntax extension galgas3DeclarationsSyntax {
     $identifier$ (?let @lstring methodName)
     $error$ ; $message$
     $"string"$ (?let @lstring errorMessage)
-    ioMapSearchSubscriptListAST +=§(!methodName, !errorMessage)
+    ioMapSearchSubscriptListAST ++= @(!methodName, !errorMessage)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -102,7 +102,7 @@ syntax extension galgas3DeclarationsSyntax {
     $error$
     $message$
     $"string"$ (?let @lstring mErrorMessage)
-    ioMapRemoveMethodListAST +=§(!mMethodName, !mErrorMessage)
+    ioMapRemoveMethodListAST ++= @(!mMethodName, !mErrorMessage)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -113,7 +113,7 @@ syntax extension galgas3DeclarationsSyntax {
     $error$
     $message$
     $"string"$ (?let @lstring mErrorMessage)
-    ioMapReplaceMethodListAST +=§(!mMethodName, !mErrorMessage)
+    ioMapReplaceMethodListAST ++= @(!mMethodName, !mErrorMessage)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -122,7 +122,7 @@ syntax extension galgas3DeclarationsSyntax {
     $insert$
     $or$
     $replace$
-    ioInsertOrReplaceDeclarationListAST +=§(!@location.here)
+    ioInsertOrReplaceDeclarationListAST ++= @(!@location.here)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -140,7 +140,7 @@ syntax extension galgas3DeclarationsSyntax {
       $,$
       $"string"$ (? mShadowErrorMessage)
     end
-    ioMapMethodList +=§(
+    ioMapMethodList ++= @(
       !mMethodName,
       !mErrorMessage,
       !mShadowErrorMessage)
@@ -193,7 +193,7 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> (!mapTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList +=§(!@mapDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(!@mapDeclarationAST (
       !isPredefined: false,
       mapTypeName,
       propertyList,
@@ -214,7 +214,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ (?let @lstring methodName)
     $%errorMessage$
     $"string"$ (?let @lstring errorMessage)
-    ioMapSearchMethodListAST +=§(!methodName, !errorMessage)
+    ioMapSearchMethodListAST ++= @(!methodName, !errorMessage)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -224,7 +224,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ (?let @lstring methodName)
     $%errorMessage$
     $"string"$ (?let @lstring errorMessage)
-    ioMapSearchSubscriptListAST +=§(!methodName, !errorMessage)
+    ioMapSearchSubscriptListAST ++= @(!methodName, !errorMessage)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -234,7 +234,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ (?let @lstring mMethodName)
     $%errorMessage$
     $"string"$ (?let @lstring mErrorMessage)
-    ioMapRemoveMethodListAST +=§(!mMethodName, !mErrorMessage)
+    ioMapRemoveMethodListAST ++= @(!mMethodName, !mErrorMessage)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -244,14 +244,14 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ (?let @lstring mMethodName)
     $%errorMessage$
     $"string"$ (?let @lstring mErrorMessage)
-    ioMapReplaceMethodListAST +=§(!mMethodName, !mErrorMessage)
+    ioMapReplaceMethodListAST ++= @(!mMethodName, !mErrorMessage)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <insert_or_replace_declaration> (?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST ) {
     $%insertOrReplaceSetter$
-    ioInsertOrReplaceDeclarationListAST +=§(!@location.here)
+    ioInsertOrReplaceDeclarationListAST ++= @(!@location.here)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -268,7 +268,7 @@ syntax extension galgas4DeclarationsSyntax {
       $,$
       $"string"$ (? mShadowErrorMessage)
     end
-    ioMapMethodList +=§(
+    ioMapMethodList ++= @(
       !mMethodName,
       !mErrorMessage,
       !mShadowErrorMessage)
@@ -335,7 +335,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
 
   override proc addAssociatedElement (?!@galgasDeclarationAST ioDeclarations ) {
     var structAttributeList = @propertyInCollectionListAST ()
-    structAttributeList +=§(
+    structAttributeList ++= @(
       !mutability: .constantProperty,
       !"lstring".nowhere,
       !"lkey".nowhere,
@@ -343,7 +343,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !hasSelector: false,
       !initialization: .none)
     for (* qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
-      structAttributeList +=§(
+      structAttributeList ++= @(
         !mutability: .mutableProperty,
         !qualifiedTypeAST,
         !mPropertyName,
@@ -352,7 +352,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
         !initialization: initExpression)
     end
     let elementTypeName = makeEmbeddedElementTypeLName (!self.mMapTypeName)
-    ioDeclarations.mDeclarationList +=§(!@structDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(!@structDeclarationAST (
       !isPredefined: self.isPredefined,
       elementTypeName,
       structAttributeList,
@@ -487,24 +487,24 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     var insertMethodFormalArgumentList = @formalParameterSignature ()
     var typedPropertyList = @typedPropertyList ()
     var @optionalMethodSignature optionalMethodSignature = @()
-    optionalMethodSignature +=§(
+    optionalMethodSignature ++= @(
       !true,
       !"".nowhere,
       !stringTypeIndex,
       !"inKey")
     var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = @()
-    argumentTypeListForAddAssignWithFieldExpressionList +=§(
+    argumentTypeListForAddAssignWithFieldExpressionList ++= @(
       !"".nowhere,
       !lstringTypeIndex,
       !"lkey",
       !true)
-    insertMethodFormalArgumentList +=§(
+    insertMethodFormalArgumentList ++= @(
       !"".nowhere,
       !lstringTypeIndex,
       !@formalArgumentPassingModeAST.argumentConstantIn,
       !"inLKey")
     var @formalParameterSignature removeMethodFormalArgumentList = @()
-    removeMethodFormalArgumentList +=§(
+    removeMethodFormalArgumentList ++= @(
       !"".nowhere,
       !lstringTypeIndex,
       !@formalArgumentPassingModeAST.argumentConstantIn,
@@ -515,21 +515,21 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
         error (mPropertyName : "property initialization is not handled for a map")
       end
       !?ioTypeMap.makeEntry (!propertyTypeName, ?let attributeTypeIndex)
-      argumentTypeListForAddAssignWithFieldExpressionList +=§(!"".nowhere, !attributeTypeIndex, !mPropertyName.string, !true)
-      typedPropertyList +=§(!attributeTypeIndex, !mPropertyName, !initExpression, !hasSetter: true, !hasSelector: hasSelector)
-      typesToIncludeInHeaderCompilation +=§(!attributeTypeIndex)
-      enumerationDescriptor +=§(!attributeTypeIndex, !mPropertyName.string)
-      insertMethodFormalArgumentList +=§(
+      argumentTypeListForAddAssignWithFieldExpressionList ++= @(!"".nowhere, !attributeTypeIndex, !mPropertyName.string, !true)
+      typedPropertyList ++= @(!attributeTypeIndex, !mPropertyName, !initExpression, !hasSetter: true, !hasSelector: hasSelector)
+      typesToIncludeInHeaderCompilation ++= @(!attributeTypeIndex)
+      enumerationDescriptor ++= @(!attributeTypeIndex, !mPropertyName.string)
+      insertMethodFormalArgumentList ++= @(
         !if hasSelector then mPropertyName else "".nowhere end,
         !attributeTypeIndex,
         !.argumentConstantIn,
         !mPropertyName.string)
-      removeMethodFormalArgumentList +=§(
+      removeMethodFormalArgumentList ++= @(
         !if hasSelector then mPropertyName else "".nowhere end,
         !attributeTypeIndex,
         !.argumentOut,
         !mPropertyName.string)
-      optionalMethodSignature +=§(
+      optionalMethodSignature ++= @(
         !false,
         !if hasSelector then mPropertyName else "".nowhere end,
         !attributeTypeIndex,
@@ -637,8 +637,8 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
         ?let @unifiedTypeMapEntry attributeTypeIndex
       )
       var @formalParameterSignature accessorFormalArgumentList = @()
-      accessorFormalArgumentList +=§(!"".nowhere, !attributeTypeIndex, !.argumentConstantIn, !property.name.string)
-      accessorFormalArgumentList +=§(!"".nowhere, !stringTypeIndex, !.argumentConstantIn, !"key")
+      accessorFormalArgumentList ++= @(!"".nowhere, !attributeTypeIndex, !.argumentConstantIn, !property.name.string)
+      accessorFormalArgumentList ++= @(!"".nowhere, !stringTypeIndex, !.argumentConstantIn, !"key")
       !?setterMap.insertOrReplace
         (!accessorName,
         !@methodKind.definedAsMember,
@@ -756,7 +756,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     )
     !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: elementTypeNameForUsefulness)
     if self.isPredefined then
-      ioUsefulnessRootEntities +=§(!nameForUsefulness)
+      ioUsefulnessRootEntities ++= @(!nameForUsefulness)
     end
   //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
@@ -766,7 +766,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness, !initializerNameForUsefulness)
     !?ioUsefulEntitiesGraph.addEdge (!from: initializerNameForUsefulness, !to: nameForUsefulness)
     if self.isPredefined then
-      ioUsefulnessRootEntities +=§(!initializerNameForUsefulness)
+      ioUsefulnessRootEntities ++= @(!initializerNameForUsefulness)
     end
   //----- Enter property
     var @typedPropertyList typedAttributeList = @()
@@ -776,7 +776,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: propertyTypeNameForUsefulness)
       let @unifiedTypeMapEntry t = ioTypeMap.typeMapEntryForLKey (!propertyTypeName)
       let hasSelector = false
-      typedAttributeList +=§(
+      typedAttributeList ++= @(
         !t,
         !mPropertyName,
         !initExpression,
@@ -828,7 +828,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: elementTypeName)
     let optionalElementTypeEntry = ioTypeMap.typeMapEntryForLKey (!optionalElementTypeName)
   //--- Enter map declaration
-    ioSemanticDeclarationListForGeneration +=§(
+    ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "map " + self.mMapTypeName,
       !@mapTypeForGeneration (
         !ioTypeMap.typeMapEntryForLKey (!self.mMapTypeName),

@@ -39,7 +39,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
       <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST prologueInstructionList)
       let endOfPrologue = @location.here
     $}$
-    ioDeclarations.mPrologueDeclarationList +=§(
+    ioDeclarations.mPrologueDeclarationList ++= @(
       !prologueInstructionList,
       !endOfPrologue)
   }
@@ -54,7 +54,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST prologueInstructionList)
     let endOfPrologue = @location.here
     $}$
-    ioDeclarations.mEpilogueDeclarationList +=§(
+    ioDeclarations.mEpilogueDeclarationList ++= @(
       !prologueInstructionList,
       !endOfPrologue)
   }
@@ -102,7 +102,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
     <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST mInstructionList)
     let endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mSourceRuleList +=§(
+    ioDeclarations.mSourceRuleList ++= @(
       !mSourceFileExtension,
       !mSourceFileHelp,
       !mSourceFileVariableName,
@@ -135,7 +135,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST prologueInstructionList)
     let endOfPrologue = @location.here
     $}$
-    ioDeclarations.mPrologueDeclarationList +=§(
+    ioDeclarations.mPrologueDeclarationList ++= @(
       !prologueInstructionList,
       !endOfPrologue)
   }
@@ -150,7 +150,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST prologueInstructionList)
     let endOfPrologue = @location.here
     $}$
-    ioDeclarations.mEpilogueDeclarationList +=§(
+    ioDeclarations.mEpilogueDeclarationList ++= @(
       !prologueInstructionList,
       !endOfPrologue)
   }
@@ -198,7 +198,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST mInstructionList)
     let endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mSourceRuleList +=§(
+    ioDeclarations.mSourceRuleList ++= @(
       !mSourceFileExtension,
       !mSourceFileHelp,
       !mSourceFileVariableName,

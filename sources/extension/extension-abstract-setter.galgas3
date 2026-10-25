@@ -31,7 +31,7 @@ syntax extension galgas3DeclarationsSyntax {
     $.$
     $identifier$ (?let @lstring setterName) indexing (abstractExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList +=§(!@abstractExtensionSetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionSetterAST (
       !isPredefined: false,
       className,
       setterName,
@@ -48,7 +48,7 @@ syntax extension galgas3DeclarationsSyntax {
     $.$
     $identifier$ (?let @lstring setterName) indexing (abstractExtensionSetterDefinition)
     <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList +=§(!@abstractExtensionSetterAST (
+    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionSetterAST (
       !isPredefined: false,
       inClassName,
       setterName,
@@ -134,7 +134,7 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
   //--- Compute mutating proc signature
     var formalParameterListForGeneration = @formalParameterListForGeneration ()
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mAbstractExtensionSetterFormalParameterList do
-      formalParameterListForGeneration +=§(
+      formalParameterListForGeneration ++= @(
         !mFormalSelector,
         !mFormalArgumentPassingMode,
         !ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName),
@@ -142,7 +142,7 @@ final class @abstractExtensionSetterAST : @semanticDeclarationAST {
         !mFormalArgumentName.string)
     end
   //---
-    ioSemanticDeclarationListForGeneration +=§(
+    ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: " abstract extension mutating proc " + self.mAbstractExtensionSetterName,
       !@abstractExtensionSetterForGeneration (
         !generateHeader: true,

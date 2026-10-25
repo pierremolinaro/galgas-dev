@@ -40,7 +40,7 @@ syntax extension galgas3LexiqueComponentSyntax {
       $identifier$ (?let @lstring attributeName)
       $in$
       $identifier$ (?let @lstring searchListName)
-      lexicalSendSearchList +=§(!attributeName, !searchListName)
+      lexicalSendSearchList ++= @(!attributeName, !searchListName)
       $default$
     while
       $search$
@@ -77,7 +77,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       $identifier$ (?let @lstring attributeName)
       $in$
       $identifier$ (?let @lstring searchListName)
-      lexicalSendSearchList +=§(!attributeName, !searchListName)
+      lexicalSendSearchList ++= @(!attributeName, !searchListName)
       $default$
     while
       $%searchString$

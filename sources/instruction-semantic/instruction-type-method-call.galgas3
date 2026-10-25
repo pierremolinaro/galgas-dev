@@ -116,7 +116,7 @@ override proc @typeMethodCallInstructionAST.analyzeSemanticInstruction (
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   )
 //--- Generate instructions
-  ioInstructionListForGeneration +=§(!@typeMethodCallInstructionForGeneration (
+  ioInstructionListForGeneration ++= @(!@typeMethodCallInstructionForGeneration (
     !self.mTypeName,
     self.mMethodName,
     actualParameterListForGeneration,
@@ -155,7 +155,7 @@ override proc @typeMethodCallInstructionForGeneration.generateInstruction (?!@st
       !?inputVariableList,
       !?ioUnusedVariableCppNameSet,
       ?let @string parameterCppName)
-    parameterCppNameList +=§(!parameterCppName)
+    parameterCppNameList ++= @(!parameterCppName)
   end
 //--- Generate proc call
   ioGeneratedCode += "GGS_" + self.mTypeName.string.identifierRepresentation

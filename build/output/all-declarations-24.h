@@ -10,6 +10,33 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'buildLocalVariableMapAndSignature?&?&!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (const class GGS_semanticContext constinArgument0,
+                                                                    class GGS_unifiedTypeMap & ioArgument1,
+                                                                    const class GGS_formalParameterListAST constinArgument2,
+                                                                    class GGS_localVarManager & ioArgument3,
+                                                                    class GGS_formalParameterListForGeneration & outArgument4,
+                                                                    class Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'checkMethodSignatures????'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkMethodSignatures_3F__3F__3F__3F_ (const class GGS_formalParameterListForGeneration constinArgument0,
+                                                    const class GGS_location constinArgument1,
+                                                    const class GGS_formalParameterSignature constinArgument2,
+                                                    const class GGS_location constinArgument3,
+                                                    class Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'setterNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------

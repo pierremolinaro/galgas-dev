@@ -105,7 +105,7 @@ override proc @selfAssignmentInstructionAST.analyzeSemanticInstruction (
   //--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (!selfAvailable.type, !expression.mResultType, !self.mInstructionLocation, !?expression)
   //--- Generate instruction
-    ioInstructionListForGeneration +=§(!@assignmentInstructionForGeneration (
+    ioInstructionListForGeneration ++= @(!@assignmentInstructionForGeneration (
       !selfAvailable.type,
       selfAvailable.type,
       inAnalysisContext.selfObjectCppName,

@@ -59,7 +59,7 @@ proc compileBeforeClauseGalgas3
 ) {
   let usefulnessName = beforeNameForUsefulEntitiesGraph (!.here)
   !?ioUsefulEntitiesGraph.addNode (!usefulnessName, !usefulnessName)
-  ioUsefulnessRootEntities +=§(!usefulnessName)
+  ioUsefulnessRootEntities ++= @(!usefulnessName)
 //--- Compile 'before' routines
   var semanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
   for (mInstructionList mEndOfInstructionList) in inPrologueList do
@@ -74,12 +74,12 @@ proc compileBeforeClauseGalgas3
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration,
       ?*
     )
-    semanticInstructionListForGeneration +=§(!@semanticBlockInstructionForGeneration (
+    semanticInstructionListForGeneration ++= @(!@semanticBlockInstructionForGeneration (
       !blockSemanticInstructionListForGeneration
     ))
   end
 //---
-  ioDecoratedDeclarationListForGeneration +=§(
+  ioDecoratedDeclarationListForGeneration ++= @(
     !@routineImplementationForGeneration (
       !generateHeader: false,
       !implementationCppFileName: "proc-before",
@@ -108,7 +108,7 @@ private proc compileProgramRulesGalgas3
   for (mSourceFileExtension * mSourceFileVariableName mSourceFileVariableNameIsUnused * mInstructionList mEndOfInstructionList) in inProgramRules do
     let usefulnessName = rootRuleNameForUsefulEntitiesGraph (!mSourceFileExtension)
     !?ioUsefulEntitiesGraph.addNode (!usefulnessName, !usefulnessName)
-    ioUsefulnessRootEntities +=§(!usefulnessName)
+    ioUsefulnessRootEntities ++= @(!usefulnessName)
     let @formalParameterListAST argumentList = @[
       @("".nowhere, .argumentConstantIn, @lstring (!"lstring", @location.here), mSourceFileVariableName, mSourceFileVariableNameIsUnused)
     ]
@@ -123,7 +123,7 @@ private proc compileProgramRulesGalgas3
       ?let semanticInstructionListForGeneration,
       ?let routineSignature
     )
-    ioDecoratedDeclarationListForGeneration +=§(
+    ioDecoratedDeclarationListForGeneration ++= @(
       !@routineImplementationForGeneration (
         !generateHeader: false,
         !implementationCppFileName: "proc-programrule",
@@ -152,7 +152,7 @@ proc compileAfterClauseGalgas3
 ) {
   let usefulnessName = afterNameForUsefulEntitiesGraph (!.here)
   !?ioUsefulEntitiesGraph.addNode (!usefulnessName, !usefulnessName)
-  ioUsefulnessRootEntities +=§(!usefulnessName)
+  ioUsefulnessRootEntities ++= @(!usefulnessName)
 //--- Compile 'after' routines
   var @semanticInstructionListForGeneration semanticInstructionListForGeneration = @()
   for (mInstructionList mEndOfInstructionList) in inEpilogueList do
@@ -167,10 +167,10 @@ proc compileAfterClauseGalgas3
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration,
       ?*
     )
-    semanticInstructionListForGeneration +=§(!@semanticBlockInstructionForGeneration (!blockSemanticInstructionListForGeneration))
+    semanticInstructionListForGeneration ++= @(!@semanticBlockInstructionForGeneration (!blockSemanticInstructionListForGeneration))
   end
 //---
-  ioDecoratedDeclarationListForGeneration +=§(!@routineImplementationForGeneration (
+  ioDecoratedDeclarationListForGeneration ++= @(!@routineImplementationForGeneration (
     !generateHeader: false,
     !implementationCppFileName: "proc-after",
     !routineMangledName: "after",

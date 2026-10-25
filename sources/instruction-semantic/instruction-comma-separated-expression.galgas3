@@ -48,7 +48,7 @@ syntax extension galgas3InstructionsSyntax {
         <expression_or_ggs3> (!?ioDeclarations, ?let expression)
         let endOfReceiverExpression = @location.here
         select
-          outExpressionList +=§(!.letVarExp (
+          outExpressionList ++= @(!.letVarExp (
             !varName: varName,
             !isConstant: isConstant,
             !exp: expression,
@@ -58,7 +58,7 @@ syntax extension galgas3InstructionsSyntax {
         or
           $as$
           <type_definition_ggs3> (!?ioDeclarations, ?let typeName)
-          outExpressionList +=§(!.letVarExp (
+          outExpressionList ++= @(!.letVarExp (
             !varName: varName,
             !isConstant: isConstant,
             !exp: expression,
@@ -68,7 +68,7 @@ syntax extension galgas3InstructionsSyntax {
         end
       or
         <expression_ggs3> (!?ioDeclarations, ?let expression)
-        outExpressionList +=§(!.regularExp (!exp: expression, !endOfExp: .here))
+        outExpressionList ++= @(!.regularExp (!exp: expression, !endOfExp: .here))
       end
     while
       $,$
@@ -110,7 +110,7 @@ syntax extension galgas4InstructionsSyntax {
         <expression_or> (!?ioDeclarations, ?let expression)
         let endOfReceiverExpression = @location.here
         select
-          outExpressionList +=§(!.letVarExp (
+          outExpressionList ++= @(!.letVarExp (
             !varName: varName,
             !isConstant: isConstant,
             !exp: expression,
@@ -120,7 +120,7 @@ syntax extension galgas4InstructionsSyntax {
         or
           $as$
           <type_definition> (!?ioDeclarations, ?let typeName)
-          outExpressionList +=§(!.letVarExp (
+          outExpressionList ++= @(!.letVarExp (
             !varName: varName,
             !isConstant: isConstant,
             !exp: expression,
@@ -130,7 +130,7 @@ syntax extension galgas4InstructionsSyntax {
         end
       or
         <expression> (!?ioDeclarations, ?let expression)
-        outExpressionList +=§(!.regularExp (!exp: expression, !endOfExp: .here))
+        outExpressionList ++= @(!.regularExp (!exp: expression, !endOfExp: .here))
       end
     while
       $,$
@@ -200,7 +200,7 @@ list @CommaSeparatedExpressionList {
           !analyzed_if_expression,
           ?let if_expression
         )
-        outTestListForGeneration +=§(!.regular (!exp: if_expression))
+        outTestListForGeneration ++= @(!.regular (!exp: if_expression))
         !?ioVariableMap.openOverrideForSelectBlock ()
         !?ioVariableMap.openBranch ()
       case letVarExp (varName, isConstant, exp, *, @lstring typeName) :
@@ -242,7 +242,7 @@ list @CommaSeparatedExpressionList {
           end
           castType = unwrappedType
           testType = analyzedExpression.mResultType
-          outTestListForGeneration +=§(!.optionalExp (
+          outTestListForGeneration ++= @(!.optionalExp (
             !targetVarCppName: targetVariableCppName,
             !isConstant: isConstant,
             !exp: analyzedExpression,
@@ -293,7 +293,7 @@ list @CommaSeparatedExpressionList {
               )
             end
           end
-          outTestListForGeneration +=§(!.letVarExp (
+          outTestListForGeneration ++= @(!.letVarExp (
             !targetVarCppName: targetVariableCppName,
             !exp: analyzedExpression,
             !targetType: castType,
@@ -352,7 +352,7 @@ list @CommaSeparatedExpressionList {
               )
             end
           end
-          outTestListForGeneration +=§(!.letVarExp (
+          outTestListForGeneration ++= @(!.letVarExp (
             !targetVarCppName: targetVariableCppName,
             !exp: analyzedExpression,
             !targetType: castType,

@@ -73,7 +73,7 @@ syntax extension galgas3DeclarationsSyntax {
       <method_declaration_ggs3> (!className, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList +=§(!@classDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(!@classDeclarationAST (
       !isPredefined: false,
       isAbstract,
       finalClass,
@@ -83,7 +83,7 @@ syntax extension galgas3DeclarationsSyntax {
       propertyList,
       clonable
     ))
-    ioDeclarations.mDeclarationList +=§(!@weakReferenceDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(!@weakReferenceDeclarationAST (
       !isPredefined: false,
       className,
       makeWeakTypeLName (!className),
@@ -155,7 +155,7 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> (!className, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList +=§(!@classDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(!@classDeclarationAST (
       !isPredefined: false,
       isAbstract,
       finalClass,
@@ -166,7 +166,7 @@ syntax extension galgas4DeclarationsSyntax {
       clonable
     ))
   //--- Associated Weak Type
-    ioDeclarations.mDeclarationList +=§(!@weakReferenceDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(!@weakReferenceDeclarationAST (
       !isPredefined: false,
       className,
       makeWeakTypeLName (!className),
@@ -317,7 +317,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     var @functionSignature synthetizedInitializerArgumentList = @()
     for property in inheritedTypedPropertyList do
       if property.initialization == .none then
-        synthetizedInitializerArgumentList +=§(
+        synthetizedInitializerArgumentList ++= @(
           !if property.hasSelector then property.name else "".nowhere end,
           !property.typeEntry,
           !property.name.string,
@@ -327,7 +327,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     for property in self.mPropertyList do
       !?ioTypeMap.makeEntry (!property.typeName, ?let attributeTypeIndex)
       if property.initialization == .none then
-        synthetizedInitializerArgumentList +=§(
+        synthetizedInitializerArgumentList ++= @(
           !if property.hasSelector then property.name else "".nowhere end,
           !attributeTypeIndex,
           !property.name.string,
@@ -349,13 +349,13 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
     for property in self.mPropertyList do
       !?ioTypeMap.makeEntry (!property.typeName, ?let attributeTypeIndex)
-      currentClassTypedPropertyList +=§(
+      currentClassTypedPropertyList ++= @(
         !attributeTypeIndex,
         !property.name,
         !property.initialization,
         !hasSetter: not property.mutability.isConstantProperty,
         !hasSelector: property.hasSelector)
-      allTypedAttributeList +=§(
+      allTypedAttributeList ++= @(
         !attributeTypeIndex,
         !property.name,
         !property.initialization,
@@ -368,7 +368,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     if self.clonable then
       features |= .clonable
       var @functionSignature cloneInitializerArgumentList = @()
-      cloneInitializerArgumentList +=§(
+      cloneInitializerArgumentList ++= @(
         !"cloned".nowhere,
         !classIndex,
         !"inObject",
@@ -453,7 +453,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mClassTypeName)
     !?ioUsefulEntitiesGraph.addNode (!classTypeNameForUsefulness, !classTypeNameForUsefulness)
     if self.isPredefined  then
-      ioUsefulnessRootEntities +=§(!classTypeNameForUsefulness)
+      ioUsefulnessRootEntities ++= @(!classTypeNameForUsefulness)
     end
     if self.mSuperClassName.string != "" then
       let superClassNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSuperClassName)
@@ -462,7 +462,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeWeakTypeLName (!self.mClassTypeName))
     !?ioUsefulEntitiesGraph.addEdge (!from: classTypeNameForUsefulness, !to: weakRefTypeNameForUsefulness)
     if self.isPredefined  then
-      ioUsefulnessRootEntities +=§(!weakRefTypeNameForUsefulness)
+      ioUsefulnessRootEntities ++= @(!weakRefTypeNameForUsefulness)
     end
   //----- Self type
     let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (!self.mClassTypeName)
@@ -486,7 +486,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     var @typedPropertyList synthetizedInheritedInitializerArgumentList = @()
     for property in allAttributeList do
       if property.initialization == .none then
-        synthetizedInheritedInitializerArgumentList +=§(
+        synthetizedInheritedInitializerArgumentList ++= @(
           !property.typeEntry,
           !property.name,
           !property.initialization,
@@ -501,13 +501,13 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!property.typeName)
       !?ioUsefulEntitiesGraph.addEdge (!from: classTypeNameForUsefulness, !to: propertyTypeNameForUsefulness)
       let t = ioTypeMap.typeMapEntryForLKey (!property.typeName)
-      typedAttributeList +=§(
+      typedAttributeList ++= @(
         !t,
         !property.name,
         !property.initialization,
         !hasSetter: not property.mutability.isConstantProperty,
         !hasSelector: property.hasSelector)
-      allAttributeList +=§(
+      allAttributeList ++= @(
         !t,
         !property.name,
         !property.initialization,
@@ -519,7 +519,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     var @typedPropertyList synthetizedInitialzerArgumentList = @()
     for property in selfType.definition.allTypedPropertyList do
     if property.initialization == .none then
-      synthetizedInitialzerArgumentList +=§(
+      synthetizedInitialzerArgumentList ++= @(
         !property.typeEntry,
         !property.name,
         !property.initialization,
@@ -538,7 +538,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     )
   //-----
     let constructorNeedsCompilerVar = not unusedVariableCppNameSet.hasKey (!compilerCppName ())
-    ioSemanticDeclarationListForGeneration +=§(
+    ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "class " + self.mClassTypeName,
       !@classTypeForGeneration (
         !selfType,
@@ -562,10 +562,10 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       )
       !?ioUsefulEntitiesGraph.addNode (!initializerForUsefulness, !initializerForUsefulness)
       if self.isPredefined then
-        ioUsefulnessRootEntities +=§(!initializerForUsefulness)
+        ioUsefulnessRootEntities ++= @(!initializerForUsefulness)
         !?ioUsefulEntitiesGraph.addEdge (!from: initializerForUsefulness, !to: classTypeNameForUsefulness)
       elsif self.mIsAbstract then
-        ioUsefulnessRootEntities +=§(!initializerForUsefulness)
+        ioUsefulnessRootEntities ++= @(!initializerForUsefulness)
       else
         !?ioUsefulEntitiesGraph.addEdge (!from: initializerForUsefulness, !to: classTypeNameForUsefulness)
       end
