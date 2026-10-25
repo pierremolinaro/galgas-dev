@@ -256,7 +256,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
     )
   //---
     ioSemanticDeclarationListForGeneration +=§(
-      !infoMessage:"extension proc " + self.mExtensionMethodName
+      !infoMessage:"extension proc " + self.mExtensionMethodName,
       !@extensionMethodForGeneration (
         !generateHeader: true,
         !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionMethodName.string.fileNameRepresentation,

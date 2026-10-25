@@ -56,11 +56,11 @@ syntax extension galgas3DeclarationsSyntax {
       selectorAttribute = false
     end
     ioAttributeInCollectionList +=§(
-      !mutability: mutability
-      !propertyTypeName
-      !propertyName
-      !accessControl
-      !hasSelector: selectorAttribute
+      !mutability: mutability,
+      !propertyTypeName,
+      !propertyName,
+      !accessControl,
+      !hasSelector: selectorAttribute,
       !initialization: initialization)
   }
 
@@ -95,11 +95,11 @@ syntax extension galgas3DeclarationsSyntax {
     end
     let propertyWeakTypeName = makeWeakTypeLName (!propertyTypeName)
     ioAttributeInCollectionList +=§(
-      !mutability: .weakProperty
-      !propertyWeakTypeName
-      !propertyName
-      !accessControl
-      !hasSelector: selectorAttribute
+      !mutability: .weakProperty,
+      !propertyWeakTypeName,
+      !propertyName,
+      !accessControl,
+      !hasSelector: selectorAttribute,
       !initialization: initialization)
   }
 
@@ -159,11 +159,11 @@ syntax extension galgas4DeclarationsSyntax {
       initialization = .some (!expression: expression)
     end
     ioAttributeInCollectionList +=§(
-      !mutability: mutability
-      !propertyTypeName
-      !propertyName
-      !accessControl
-      !hasSelector: selectorAttribute
+      !mutability: mutability,
+      !propertyTypeName,
+      !propertyName,
+      !accessControl,
+      !hasSelector: selectorAttribute,
       !initialization: initialization)
   }
 
@@ -201,11 +201,11 @@ syntax extension galgas4DeclarationsSyntax {
 //
 //    end
     ioAttributeInCollectionList +=§(
-      !mutability: .weakProperty
-      !propertyWeakTypeName
-      !propertyName
-      !accessControl
-      !hasSelector: selectorAttribute
+      !mutability: .weakProperty,
+      !propertyWeakTypeName,
+      !propertyName,
+      !accessControl,
+      !hasSelector: selectorAttribute,
       !initialization: initialization)
   }
 

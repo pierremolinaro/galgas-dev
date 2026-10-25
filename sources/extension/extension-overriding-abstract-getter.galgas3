@@ -253,10 +253,10 @@ override proc @overridingAbstractExtensionGetterAST.semanticAnalysis (
     var formalParameterListForGeneration = @formalInputParameterListForGeneration ()
     for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mAbstractExtensionGetterFormalInputParameterList do
       formalParameterListForGeneration +=§(
-        !mFormalSelector
-        !ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName)
-        !mFormalArgumentName.string
-        !mFormalArgumentName
+        !mFormalSelector,
+        !ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName),
+        !mFormalArgumentName.string,
+        !mFormalArgumentName,
         !mIsConstant)
     end
     checkGetterSignatures (

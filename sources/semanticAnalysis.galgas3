@@ -191,7 +191,7 @@ proc buildLocalVariableMapAndSignature (?let @semanticContext unused inSemanticC
         )
       end
     end
-    outRoutineSignature +=§(!formalArgument.mFormalSelector !formalArgument.mFormalArgumentPassingMode !type !formalArgument.mFormalArgumentName !formalArgumentCppName)
+    outRoutineSignature +=§(!formalArgument.mFormalSelector, !formalArgument.mFormalArgumentPassingMode, !type, !formalArgument.mFormalArgumentName, !formalArgumentCppName)
   end
 }
 
@@ -269,14 +269,14 @@ override proc @externFunctionDeclarationAST.semanticAnalysis
   var formalArgumentList = @formalInputParameterListForGeneration ()
   for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mFormalArgumentList do
     formalArgumentList +=§(
-      !mFormalSelector
-      !ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName)
-      !mFormalArgumentName.string
-      !mFormalArgumentName
+      !mFormalSelector,
+      !ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName),
+      !mFormalArgumentName.string,
+      !mFormalArgumentName,
       !mIsConstant)
   end
   ioSemanticDeclarationListForGeneration +=§(
-    !infoMessage: "extern func " + self.mFunctionName
+    !infoMessage: "extern func " + self.mFunctionName,
     !@functionPrototypeDeclarationForGeneration (
       !generateHeader: true,
       !implementationCppFileName: "func-" + self.mFunctionName.string.fileNameRepresentation,
@@ -311,10 +311,10 @@ proc analyzeFunctionBody
     if formalArg.mIsConstant then
       let @string cppName = "constinArgument_" + formalArg.mFormalArgumentName.string.identifierRepresentation
       outSignatureForGeneration +=§(
-        !formalArg.mFormalSelector
-        !parameterType
-        !cppName
-        !formalArg.mFormalArgumentName
+        !formalArg.mFormalSelector,
+        !parameterType,
+        !cppName,
+        !formalArg.mFormalArgumentName,
         !formalArg.mIsConstant)
       if formalArg.mIsUnused then
         !?variableMap.insertConstantInputFormalArgumentDeclaredAsUnused (!formalArg.mFormalArgumentName, !parameterType, !cppName, !cppName)
@@ -324,10 +324,10 @@ proc analyzeFunctionBody
     else
       let @string cppName = "inArgument_" + formalArg.mFormalArgumentName.string.identifierRepresentation
       outSignatureForGeneration +=§(
-        !formalArg.mFormalSelector
-        !parameterType
-        !cppName
-        !formalArg.mFormalArgumentName
+        !formalArg.mFormalSelector,
+        !parameterType,
+        !cppName,
+        !formalArg.mFormalArgumentName,
         !formalArg.mIsConstant)
       if formalArg.mIsUnused then
         !?variableMap.insertInputFormalArgumentDeclaredAsUnused (!formalArg.mFormalArgumentName, !parameterType, !cppName, !cppName)
@@ -411,7 +411,7 @@ override proc @functionDeclarationAST.semanticAnalysis
   )
 //---
   ioSemanticDeclarationListForGeneration +=§(
-    !infoMessage: "function " + self.mFunctionName
+    !infoMessage: "function " + self.mFunctionName,
     !@functionImplementationForGeneration (
       !generateHeader: true,
       !implementationCppFileName: "func-" + self.mFunctionName.string.fileNameRepresentation,
@@ -464,7 +464,7 @@ override proc @onceFunctionDeclarationAST.semanticAnalysis
   )
 //---
   ioSemanticDeclarationListForGeneration +=§(
-    !infoMessage: "once function " + self.mFunctionName
+    !infoMessage: "once function " + self.mFunctionName,
     !@onceFunctionDeclarationForGeneration (
       !generateHeader: true,
       !implementationCppFileName: "func-" + self.mFunctionName.string.fileNameRepresentation,
@@ -535,7 +535,7 @@ override proc @filewrapperDeclarationAST.semanticAnalysis
         let type = ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName)
         let @string cppVarName = "in_" + mFormalArgumentName.string.identifierRepresentation
         !?templateVariableMap.insertKey (!mFormalArgumentName, !type, !cppVarName)
-        filewrapperTemplateFormalInputParameters +=§(!mFormalTemplateSelector !type !cppVarName !mFormalArgumentName !true)
+        filewrapperTemplateFormalInputParameters +=§(!mFormalTemplateSelector, !type, !cppVarName, !mFormalArgumentName, !true)
       end
     //--- Analyze template
       var templateInstructionListForGeneration = @templateInstructionListForGeneration ()
@@ -554,13 +554,13 @@ override proc @filewrapperDeclarationAST.semanticAnalysis
       )
     //--- Enter in generation list
       filewrapperTemplateListForGeneration +=§(
-        !filewrapperTemplate.mFilewrapperTemplateName.string
-        !filewrapperTemplateFormalInputParameters
+        !filewrapperTemplate.mFilewrapperTemplateName.string,
+        !filewrapperTemplateFormalInputParameters,
         !templateInstructionListForGeneration)
     end
   //--- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration +=§(
-      !infoMessage: "filewrapper " + self.mFilewrapperName
+      !infoMessage: "filewrapper " + self.mFilewrapperName,
       !@filewrapperDeclarationForGeneration (
         !generateHeader: true,
         !implementationCppFileName: "filewrapper-" + self.mFilewrapperName,
@@ -621,7 +621,7 @@ override proc @galgas3SyntaxComponentAST.semanticAnalysis
       ?let @syntaxDeclarationForGeneration syntaxDeclarationForGeneration
     )
     ioSemanticDeclarationListForGeneration +=§(
-      !infoMessage: ""
+      !infoMessage: "",
       !syntaxDeclarationForGeneration)
   end
 }
@@ -697,7 +697,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
     )
     var @uint i = 0
     loop (addedNonTerminalCount) while i < (addedNonTerminalCount - addedNonTerminalCountRef) do
-      nonTerminalToAddList +=§(!syntaxComponentName !i)
+      nonTerminalToAddList +=§(!syntaxComponentName, !i)
       i += 1
     end
   end
@@ -724,7 +724,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
 //--------------------------------------------------------- Non terminal symbols, sorted by index
   var @nonTerminalSymbolSortedListForGrammarAnalysis nonTerminalSymbolSortedListForGrammarAnalysis = @()
   for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in nonTerminalMapForGrammarAnalysis do
-    nonTerminalSymbolSortedListForGrammarAnalysis +=§(!lkey !mNonTerminalIndex !mNonterminalSymbolParametersMap)
+    nonTerminalSymbolSortedListForGrammarAnalysis +=§(!lkey, !mNonTerminalIndex, !mNonterminalSymbolParametersMap)
   end
 //--------------------------------------------------------- Print an tex file for grammar rule list
   if [option galgas_cli_options.emitSyntaxDiagrams value] then
@@ -801,7 +801,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
 
 //---
   ioSemanticDeclarationListForGeneration +=§(
-    !infoMessage: ""
+    !infoMessage: "",
     !@grammarForGeneration (
       !generateHeader: true,
       !implementationCppFileName: "grammar-" + self.mGrammarComponentName.string.fileNameRepresentation,
@@ -947,7 +947,7 @@ proc enterNonterminalNonTerminalInMapAndCheck
       for aLabel in entry.mLabelMap, (* * new_mSignature new_mEndOfArgumentLocation) in inNonterminalLabelMap do
         var @formalParameterSignature newSignature = @()
         for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in new_mSignature do
-          newSignature +=§(!mFormalSelector !mFormalArgumentType !mFormalArgumentPassingMode !mFormalArgumentName)
+          newSignature +=§(!mFormalSelector, !mFormalArgumentType, !mFormalArgumentPassingMode, !mFormalArgumentName)
         end
         checkMethodSignatures (
           !aLabel.mSignatureForGeneration,
@@ -978,8 +978,8 @@ proc buildNonterminalDeclarationsMap
       var signature = @formalParameterSignature ()
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalArgumentList do
         let t = ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName)
-        signatureForGeneration +=§(!mFormalSelector !mFormalArgumentPassingMode !t !mFormalArgumentName !mFormalArgumentName.string)
-        signature +=§(!mFormalSelector !t !mFormalArgumentPassingMode !mFormalArgumentName.string)
+        signatureForGeneration +=§(!mFormalSelector, !mFormalArgumentPassingMode, !t, !mFormalArgumentName, !mFormalArgumentName.string)
+        signature +=§(!mFormalSelector, !t, !mFormalArgumentPassingMode, !mFormalArgumentName.string)
       end
       !?nonterminalLabelMap.insertKey (!mLabelName, !signatureForGeneration, !signature, !mEndOfArgumentLocation)
     end
@@ -1083,8 +1083,8 @@ override proc @inputParameterVariable.analyzeInputParameter
     + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
   ioTerminalCheckAssignementList +=§(
-    !"" // Do not declare variable
-    !cppName
+    !"", // Do not declare variable
+    !cppName,
     !inLexicalAttributeName)
 }
 
@@ -1128,8 +1128,8 @@ override proc @inputParameterDeclaredVariable.analyzeInputParameter
     !cppName
   )
   ioTerminalCheckAssignementList +=§(
-    !expectedType.definition.typeName.string
-    !cppName
+    !expectedType.definition.typeName.string,
+    !cppName,
     !inLexicalAttributeName)
 }
 
@@ -1168,8 +1168,8 @@ override proc @inputParameterDeclaredConstant.analyzeInputParameter
   !?ioVariableMap.insertInitializedLocalConstant (!self.mActualParameterName, !expectedType, !cppName, !cppName)
 //---
   ioTerminalCheckAssignementList +=§(
-    !expectedType.definition.typeName.string
-    !cppName
+    !expectedType.definition.typeName.string,
+    !cppName,
     !inLexicalAttributeName)
 }
 
@@ -1411,7 +1411,7 @@ proc semanticAnalysisOfRuleLabel
 //---
   outSignature = @formalParameterSignature ()
   for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName *) in outSignatureForGeneration do
-    outSignature +=§(!mFormalSelector !mFormalArgumentType !mFormalArgumentPassingMode !mFormalArgumentName.string)
+    outSignature +=§(!mFormalSelector, !mFormalArgumentType, !mFormalArgumentPassingMode, !mFormalArgumentName.string)
   end
 //--- Semantic analysis of instruction list
   outInstructionListForGeneration = @semanticInstructionListForGeneration ()
@@ -1475,12 +1475,12 @@ private proc semanticAnalysisOfSyntaxComponent
       for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalArguments do
         let type = ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName)
         signatureForGeneration +=§(
-          !mFormalSelector
-          !mFormalArgumentPassingMode
-          !type
-          !mFormalArgumentName
+          !mFormalSelector,
+          !mFormalArgumentPassingMode,
+          !type,
+          !mFormalArgumentName,
           !"argument_" + mFormalArgumentName)
-        signature +=§(!mFormalSelector !type !mFormalArgumentPassingMode !mFormalArgumentName.string)
+        signature +=§(!mFormalSelector, !type, !mFormalArgumentPassingMode, !mFormalArgumentName.string)
       end
       !?nonterminalLabelMap.insertKey (!mLabelName, !signatureForGeneration, !signature, !mEndOfArgumentLocation)
     end
@@ -1525,17 +1525,17 @@ private proc semanticAnalysisOfSyntaxComponent
         ?let instructionListForGeneration
       )
       ruleLabelImplementationList +=§(
-        !mLabelName
-        !signatureForGeneration
-        !signature
-        !mEndOfArgumentLocation
+        !mLabelName,
+        !signatureForGeneration,
+        !signature,
+        !mEndOfArgumentLocation,
         !instructionListForGeneration)
     end
     selectMethodCount = localSelectMethodCount
     nonterminalMap.searchKey (!mNonterminalName, ?*)
     ruleDeclarationList +=§(
-      !mNonterminalName.string
-      !newRuleIndex
+      !mNonterminalName.string,
+      !newRuleIndex,
       !ruleLabelImplementationList)
     newRuleIndex += 1
   end

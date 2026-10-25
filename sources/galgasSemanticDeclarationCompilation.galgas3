@@ -38,32 +38,32 @@ proc compileSemanticDeclarationsGalgas (?!@lstringlist ioUsefulnessRootEntities,
   var @commandLineOptionListAST options = @()
   for name in @application.boolOptionNameList do
     options +=§(
-      !"bool".nowhere
-      !@(!name.mValue1, .here)
-      !@(!@application.boolOptionInvocationCharacter (!name.mValue0, name.mValue1), .nowhere)
-      !@application.boolOptionInvocationString (!name.mValue0, name.mValue1).nowhere
-      !@application.boolOptionCommentString (!name.mValue0, name.mValue1).nowhere
-      !"".nowhere
+      !"bool".nowhere,
+      !@(!name.mValue1, .here),
+      !@(!@application.boolOptionInvocationCharacter (!name.mValue0, name.mValue1), .nowhere),
+      !@application.boolOptionInvocationString (!name.mValue0, name.mValue1).nowhere,
+      !@application.boolOptionCommentString (!name.mValue0, name.mValue1).nowhere,
+      !"".nowhere,
       !.noDefaultValue)
   end
   for name in @application.uintOptionNameList do
     options +=§(
-      !"uint".nowhere
-      !@(!name.mValue1, .here)
-      !@lchar (!@application.uintOptionInvocationCharacter (!name.mValue0, name.mValue1), .nowhere)
-      !@application.uintOptionInvocationString (!name.mValue0, name.mValue1).nowhere
-      !@application.uintOptionCommentString (!name.mValue0, name.mValue1).nowhere
-      !"".nowhere
+      !"uint".nowhere,
+      !@(!name.mValue1, .here),
+      !@lchar (!@application.uintOptionInvocationCharacter (!name.mValue0, name.mValue1), .nowhere),
+      !@application.uintOptionInvocationString (!name.mValue0, name.mValue1).nowhere,
+      !@application.uintOptionCommentString (!name.mValue0, name.mValue1).nowhere,
+      !"".nowhere,
       !.noDefaultValue)
   end
   for name in @application.stringOptionNameList do
     options +=§(
-      !"string".nowhere
-      !@(!name.mValue1, .here)
-      !@lchar (!@application.stringOptionInvocationCharacter (!name.mValue0, name.mValue1), .nowhere)
-      !@application.stringOptionInvocationString (!name.mValue0, name.mValue1).nowhere
-      !@application.stringOptionCommentString (!name.mValue0, name.mValue1).nowhere
-      !"".nowhere
+      !"string".nowhere,
+      !@(!name.mValue1, .here),
+      !@lchar (!@application.stringOptionInvocationCharacter (!name.mValue0, name.mValue1), .nowhere),
+      !@application.stringOptionInvocationString (!name.mValue0, name.mValue1).nowhere,
+      !@application.stringOptionCommentString (!name.mValue0, name.mValue1).nowhere,
+      !"".nowhere,
       !.noDefaultValue)
   end
   semanticDeclarations.mDeclarationList +=§(!@optionComponentDeclarationAST (

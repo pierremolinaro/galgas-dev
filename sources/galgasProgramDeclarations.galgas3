@@ -40,7 +40,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
       let endOfPrologue = @location.here
     $}$
     ioDeclarations.mPrologueDeclarationList +=§(
-      !prologueInstructionList
+      !prologueInstructionList,
       !endOfPrologue)
   }
 
@@ -55,7 +55,7 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
     let endOfPrologue = @location.here
     $}$
     ioDeclarations.mEpilogueDeclarationList +=§(
-      !prologueInstructionList
+      !prologueInstructionList,
       !endOfPrologue)
   }
 
@@ -103,12 +103,12 @@ syntax galgas3ProgramDeclarations (galgasScanner3) {
     let endOfInstructionList = @location.here
     $}$
     ioDeclarations.mSourceRuleList +=§(
-      !mSourceFileExtension
-      !mSourceFileHelp
-      !mSourceFileVariableName
-      !isUnused
-      !referenceGrammar
-      !mInstructionList
+      !mSourceFileExtension,
+      !mSourceFileHelp,
+      !mSourceFileVariableName,
+      !isUnused,
+      !referenceGrammar,
+      !mInstructionList,
       !endOfInstructionList)
   }
 
@@ -136,7 +136,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
     let endOfPrologue = @location.here
     $}$
     ioDeclarations.mPrologueDeclarationList +=§(
-      !prologueInstructionList
+      !prologueInstructionList,
       !endOfPrologue)
   }
 
@@ -151,7 +151,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
     let endOfPrologue = @location.here
     $}$
     ioDeclarations.mEpilogueDeclarationList +=§(
-      !prologueInstructionList
+      !prologueInstructionList,
       !endOfPrologue)
   }
 
@@ -199,12 +199,12 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
     let endOfInstructionList = @location.here
     $}$
     ioDeclarations.mSourceRuleList +=§(
-      !mSourceFileExtension
-      !mSourceFileHelp
-      !mSourceFileVariableName
-      !isUnused
-      !referenceGrammar
-      !mInstructionList
+      !mSourceFileExtension,
+      !mSourceFileHelp,
+      !mSourceFileVariableName,
+      !isUnused,
+      !referenceGrammar,
+      !mInstructionList,
       !endOfInstructionList)
   }
 

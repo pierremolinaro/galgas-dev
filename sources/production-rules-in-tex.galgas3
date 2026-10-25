@@ -289,12 +289,12 @@ mutating proc @rowList.appendRow
 //--- add column pads in row
   if cols.count <= inColumn then
     for * in cols.count ... inColumn do
-      cols +=§(!"" !"")
+      cols +=§(!"", !"")
     end
   end
 //--- Add node
   outNodeName = "p" + inRow + "-" + cols.count
-  cols +=§(!outNodeName !inNodeDefinition)
+  cols +=§(!outNodeName, !inNodeDefinition)
 //--- Set new row
   !?self.setColumnsAtIndex (!cols, !inRow)
 }

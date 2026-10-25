@@ -46,9 +46,9 @@ struct @genericExtensionMethodListMap {
     if self.dictionary.hasKey (!inKey) then
       self.dictionary.searchKey (!inKey, ?var aList)
       !?aList.append (!inValue)
-      self.dictionary +=§(!inKey !aList)
+      self.dictionary +=§(!inKey, !aList)
     else
-      self.dictionary +=§(!inKey !@[@(inValue)])
+      self.dictionary +=§(!inKey, !@[@(inValue)])
     end
   }
 
@@ -115,9 +115,9 @@ struct @descendantClassListMap {
     if self.dictionary.hasKey (!inKey) then
       self.dictionary.searchKey (!inKey, ?var aList)
       !?aList.append (!inType)
-      self.dictionary +=§(!inKey !aList)
+      self.dictionary +=§(!inKey, !aList)
     else
-      self.dictionary +=§(!inKey !@[@(inType)])
+      self.dictionary +=§(!inKey, !@[@(inType)])
     end
   }
 

@@ -396,9 +396,9 @@ proc addExtensions
       for formalInputArgument in mInputFormalParameterList do
         !?ioTypeMap.makeEntry (!formalInputArgument.mFormalArgumentTypeName, ?let typeIndex)
         formalArgumentList +=§(
-          !formalInputArgument.mFormalSelector
-          !typeIndex
-          !formalInputArgument.mFormalArgumentName.string
+          !formalInputArgument.mFormalSelector,
+          !typeIndex,
+          !formalInputArgument.mFormalArgumentName.string,
           !formalInputArgument.mIsConstant)
       end
       !?ioTypeMap.makeEntry (!mResultTypeName, ?let returnedType)
@@ -446,9 +446,9 @@ proc addExtensions
           ?let @unifiedTypeMapEntry typeIndex
         )
         formalArgumentList +=§(
-          !parameter.mFormalSelector
-          !typeIndex
-          !parameter.mFormalArgumentPassingMode
+          !parameter.mFormalSelector,
+          !typeIndex,
+          !parameter.mFormalArgumentPassingMode,
           !parameter.mFormalArgumentName.string)
       end
       if qualifier == .isVirtualOverriding then
@@ -490,9 +490,9 @@ proc addExtensions
       for parameter in mFormalParameterList do
         !?ioTypeMap.makeEntry  (!parameter.mFormalArgumentTypeName, ?let typeIndex)
         formalArgumentList +=§(
-          !parameter.mFormalSelector
-          !typeIndex
-          !parameter.mFormalArgumentPassingMode
+          !parameter.mFormalSelector,
+          !typeIndex,
+          !parameter.mFormalArgumentPassingMode,
           !parameter.mFormalArgumentName.string)
       end
       !?ioSetterMap.insertKey
@@ -515,7 +515,7 @@ proc addExtensions
       var @functionSignature formalArgumentList = @()
      for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * isConstant) in mFormalParameterList do
         !?ioTypeMap.makeEntry (!mFormalArgumentTypeName, ?let typeIndex)
-        formalArgumentList +=§(!mFormalSelector !typeIndex !mFormalArgumentName.string !isConstant)
+        formalArgumentList +=§(!mFormalSelector, !typeIndex, !mFormalArgumentName.string, !isConstant)
       end
 //      for parameter in mFormalParameterList do
 //        !?ioTypeMap makeEntry !parameter.mFormalArgumentTypeName ?let typeIndex]
@@ -622,9 +622,9 @@ override proc @filewrapperDeclarationAST.enterDeclarationInSemanticContext
     for parameter in mFilewrapperTemplateFormalInputParameters do
       !?ioTypeMap.makeEntry (!parameter.mFormalArgumentTypeName, ?let parameterTypeIndex)
       templateSignature +=§(
-        !parameter.mFormalTemplateSelector
-        !parameterTypeIndex
-        !parameter.mFormalArgumentName.string
+        !parameter.mFormalTemplateSelector,
+        !parameterTypeIndex,
+        !parameter.mFormalArgumentName.string,
         !parameter.mIsUnused)
     end
     !?filewrapperTemplateMap.insertKey
@@ -700,7 +700,7 @@ override proc @externFunctionDeclarationAST.enterDeclarationInSemanticContext //
   var functionSignature = @functionSignature ()
   for (mFormalSelector mFormalArgumentTypeName * * isConstant) in self.mFormalArgumentList do
     !?ioTypeMap.makeEntry  (!mFormalArgumentTypeName, ?let parameterTypeIndex)
-    functionSignature +=§(!mFormalSelector !parameterTypeIndex !mFormalArgumentTypeName.string !isConstant)
+    functionSignature +=§(!mFormalSelector, !parameterTypeIndex, !mFormalArgumentTypeName.string, !isConstant)
   end
 //--- Result type
   !?ioTypeMap.makeEntry  (!self.mResultTypeName, ?let resultTypeIndex)
@@ -768,9 +768,9 @@ override proc @galgas3GrammarComponentAST.enterDeclarationInSemanticContext
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalArgumentList do
       !?ioTypeMap.makeEntry  (!mFormalArgumentTypeName, ?let argumentType)
       formalArgumentList +=§(
-        !mFormalSelector
-        !argumentType
-        !mFormalArgumentPassingMode
+        !mFormalSelector,
+        !argumentType,
+        !mFormalArgumentPassingMode,
         !mFormalArgumentName.string)
     end
     !?grammarLabelMap.insertKey

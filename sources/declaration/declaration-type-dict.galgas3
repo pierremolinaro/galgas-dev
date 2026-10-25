@@ -126,19 +126,19 @@ override proc @dictDeclarationAST.addAssociatedElement (?!@galgasDeclarationAST 
 //--- Add element
   var @propertyInCollectionListAST structAttributeList = @()
   structAttributeList +=§(
-    !mutability: .constantProperty
-    !self.mKeyTypeName
-    !"key".nowhere
-    !.publicAccess
-    !hasSelector: false
+    !mutability: .constantProperty,
+    !self.mKeyTypeName,
+    !"key".nowhere,
+    !.publicAccess,
+    !hasSelector: false,
     !initialization: .none)
   for (* qualifiedTypeAST mPropertyName * hasSelector *) in self.mPropertyList do
     structAttributeList +=§(
-      !mutability: .constantProperty
-      !qualifiedTypeAST
-      !mPropertyName
-      !.publicAccess
-      !hasSelector: hasSelector
+      !mutability: .constantProperty,
+      !qualifiedTypeAST,
+      !mPropertyName,
+      !.publicAccess,
+      !hasSelector: hasSelector,
       !initialization: .none)
   end
   let elementTypeName = makeEmbeddedElementTypeLName (!self.mDictTypeName)
@@ -216,47 +216,47 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
   var @formalParameterSignature insertSetterFormalArgumentList = @()
   var @typedPropertyList typedPropertyList = @()
   var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = @()
-  argumentTypeListForAddAssignWithFieldExpressionList +=§(!"".nowhere !keyTypeIndex !"key" !true)
+  argumentTypeListForAddAssignWithFieldExpressionList +=§(!"".nowhere, !keyTypeIndex, !"key", !true)
   insertSetterFormalArgumentList +=§(
-    !"".nowhere
-    !keyTypeIndex
-    !.argumentConstantIn
+    !"".nowhere,
+    !keyTypeIndex,
+    !.argumentConstantIn,
     !"inKey")
   var @formalParameterSignature removeMethodFormalArgumentList = @()
   removeMethodFormalArgumentList +=§(
-    !"".nowhere
-    !keyTypeIndex
-    !.argumentConstantIn
+    !"".nowhere,
+    !keyTypeIndex,
+    !.argumentConstantIn,
     !"inKey")
   var @optionalMethodSignature optionalMethodSignature = @()
   optionalMethodSignature +=§(
-    !true
-    !"".nowhere
-    !keyTypeIndex
+    !true,
+    !"".nowhere,
+    !keyTypeIndex,
     !"inKey")
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList ()
   for (* typeName mPropertyName 2* initExpression) in self.mPropertyList do
     !?ioTypeMap.makeEntry (!typeName, ?let attributeTypeIndex)
     let hasSetter = true
     let hasSelector = false
-    argumentTypeListForAddAssignWithFieldExpressionList +=§(!"".nowhere !attributeTypeIndex !mPropertyName.string !true)
-    typedPropertyList +=§(!attributeTypeIndex !mPropertyName !initExpression !hasSetter: hasSetter !hasSelector: hasSelector)
+    argumentTypeListForAddAssignWithFieldExpressionList +=§(!"".nowhere, !attributeTypeIndex, !mPropertyName.string, !true)
+    typedPropertyList +=§(!attributeTypeIndex, !mPropertyName, !initExpression, !hasSetter: hasSetter, !hasSelector: hasSelector)
     typesToIncludeInHeaderCompilation +=§(!attributeTypeIndex)
-    enumerationDescriptor +=§(!attributeTypeIndex !mPropertyName.string)
+    enumerationDescriptor +=§(!attributeTypeIndex, !mPropertyName.string)
     insertSetterFormalArgumentList +=§(
-      !"".nowhere
-      !attributeTypeIndex
-      !@formalArgumentPassingModeAST.argumentConstantIn
+      !"".nowhere,
+      !attributeTypeIndex,
+      !@formalArgumentPassingModeAST.argumentConstantIn,
       !mPropertyName.string)
     removeMethodFormalArgumentList +=§(
-      !"".nowhere
-      !attributeTypeIndex
-      !@formalArgumentPassingModeAST.argumentOut
+      !"".nowhere,
+      !attributeTypeIndex,
+      !@formalArgumentPassingModeAST.argumentOut,
       !mPropertyName.string)
     optionalMethodSignature +=§(
-      !false
-      !"".nowhere
-      !attributeTypeIndex
+      !false,
+      !"".nowhere,
+      !attributeTypeIndex,
       !mPropertyName.string)
   end
 //--- Handle insert mutating proc
@@ -313,8 +313,8 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
       ?let @unifiedTypeMapEntry attributeTypeIndex
     )
     var accessorFormalArgumentList = @formalParameterSignature ()
-    accessorFormalArgumentList +=§(!"".nowhere !attributeTypeIndex !.argumentConstantIn !mPropertyName.string)
-    accessorFormalArgumentList +=§(!"".nowhere !keyTypeIndex !.argumentConstantIn !"key")
+    accessorFormalArgumentList +=§(!"".nowhere, !attributeTypeIndex, !.argumentConstantIn, !mPropertyName.string)
+    accessorFormalArgumentList +=§(!"".nowhere, !keyTypeIndex, !.argumentConstantIn, !"key")
     !?setterMap.insertOrReplace
       (!accessorName,
       !@methodKind.definedAsMember,
@@ -499,10 +499,10 @@ override proc @dictDeclarationAST.semanticAnalysis
     let @unifiedTypeMapEntry t = ioTypeMap.typeMapEntryForLKey (!typeName)
     let hasSetter = true
     typedAttributeList +=§(
-      !t
-      !mPropertyName
-      !initExpression
-      !hasSetter: hasSetter
+      !t,
+      !mPropertyName,
+      !initExpression,
+      !hasSetter: hasSetter,
       !hasSelector: hasSelector)
     if forbiddenKeysForMapAndDict ().hasKey (!mPropertyName.string) then
       var @string m = "a property cannot be named:"
@@ -520,7 +520,7 @@ override proc @dictDeclarationAST.semanticAnalysis
   let optionalElementTypeEntry = ioTypeMap.typeMapEntryForLKey (!optionalElementTypeName)
 //--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=§(
-    !infoMessage: "dict " + self.mDictTypeName
+    !infoMessage: "dict " + self.mDictTypeName,
     !@dictTypeForGeneration (
       !ioTypeMap.typeMapEntryForLKey (!self.mDictTypeName),
       ioTypeMap.typeMapEntryForLKey (!elementTypeName),

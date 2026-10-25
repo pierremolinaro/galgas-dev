@@ -39,7 +39,7 @@ mutating proc @XcodeProjectDescriptor.addTIFF_file
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
-  self.mTIFF_fileList +=§(!outFileRef !inFileName)
+  self.mTIFF_fileList +=§(!outFileRef, !inFileName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ mutating proc @XcodeProjectDescriptor.addInfoPlistFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
-  self.mInfoPlistFileList +=§(!outFileRef !inFileName)
+  self.mInfoPlistFileList +=§(!outFileRef, !inFileName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ mutating proc @XcodeProjectDescriptor.addXIBFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
-  self.mXIB_fileList +=§(!outFileRef !inFileName)
+  self.mXIB_fileList +=§(!outFileRef, !inFileName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -66,7 +66,7 @@ mutating proc @XcodeProjectDescriptor.addFrameworkFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
-  self.mFrameworkFileList +=§(!outFileRef !inFileName)
+  self.mFrameworkFileList +=§(!outFileRef, !inFileName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -75,7 +75,7 @@ mutating proc @XcodeProjectDescriptor.addSwiftFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
-  self.m_Swift_FileList +=§(!outFileRef !inFileName)
+  self.m_Swift_FileList +=§(!outFileRef, !inFileName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -84,7 +84,7 @@ mutating proc @XcodeProjectDescriptor.addMFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
-  self.m_M_FileList +=§(!outFileRef !inFileName)
+  self.m_M_FileList +=§(!outFileRef, !inFileName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ mutating proc @XcodeProjectDescriptor.addMMFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
-  self.m_MM_FileList +=§(!outFileRef !inFileName)
+  self.m_MM_FileList +=§(!outFileRef, !inFileName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -102,7 +102,7 @@ mutating proc @XcodeProjectDescriptor.addCppFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
-  self.mCppFileList +=§(!outFileRef !inFileName)
+  self.mCppFileList +=§(!outFileRef, !inFileName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ mutating proc @XcodeProjectDescriptor.addCFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref:outFileRef)
-  self.mCFileList +=§(!outFileRef !inFileName)
+  self.mCFileList +=§(!outFileRef, !inFileName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ mutating proc @XcodeProjectDescriptor.addHeaderFile
   (?fileName:let @string inFileName,
   !fileRef:@string outFileRef ) {
   !?self.getReferenceKey (?ref: outFileRef)
-  self.mHeaderFileList +=§(!outFileRef !inFileName)
+  self.mHeaderFileList +=§(!outFileRef, !inFileName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -130,7 +130,7 @@ mutating proc @XcodeProjectDescriptor.addBuildFile
   ?fileName:let @string inFileName,
   !buildRef:@string outBuildRef ) {
   !?self.getReferenceKey (?ref: outBuildRef)
-  self.mBuildFileList +=§(!inFileReference !inFileName !outBuildRef)
+  self.mBuildFileList +=§(!inFileReference, !inFileName, !outBuildRef)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -150,16 +150,16 @@ mutating proc @XcodeProjectDescriptor.addToolTarget
   !?self.getReferenceKey (?ref: let buildConfigurationRef)
   !?self.getReferenceKey (?ref: let frameworkBuildRef)
   self.mToolTargetList +=§(
-    !outTargetRef
-    !inTargetName
-    !outProductFileRef
-    !inProductFileName
-    !inSourceList
-    !buildPhaseRef
-    !buildConfigurationListRef
-    !inBuildConfigurationSettingList
-    !buildConfigurationRef
-    !inToolFrameworksFileRefList
+    !outTargetRef,
+    !inTargetName,
+    !outProductFileRef,
+    !inProductFileName,
+    !inSourceList,
+    !buildPhaseRef,
+    !buildConfigurationListRef,
+    !inBuildConfigurationSettingList,
+    !buildConfigurationRef,
+    !inToolFrameworksFileRefList,
     !frameworkBuildRef)
 }
 
@@ -185,7 +185,7 @@ mutating proc @XcodeProjectDescriptor.addAppTarget
   var @2stringlist dependentTargets = @()
   for (ref) in inDependentTargetRefList do
     !?self.getReferenceKey (?ref: let dependencyBuildRef)
-    dependentTargets +=§(!dependencyBuildRef !ref)
+    dependentTargets +=§(!dependencyBuildRef, !ref)
   end
   var @stringlist resourceFileBuildRefs = inResourceFileBuildRefs
   for (ref name) in inProductCopyList do
@@ -193,19 +193,19 @@ mutating proc @XcodeProjectDescriptor.addAppTarget
     resourceFileBuildRefs +=§(!buildRef)
   end
   self.mAppTargetList +=§(
-    !targetRef
-    !inTargetName
-    !outProductFileRef
-    !inProductFileName
-    !inSourceList
-    !buildPhaseRef
-    !buildConfigurationListRef
-    !inBuildConfigurationSettingList
-    !buildConfigurationRef
-    !inFrameworksFileRefList
-    !frameworkBuildRef
-    !dependentTargets
-    !resourceBuildRef
+    !targetRef,
+    !inTargetName,
+    !outProductFileRef,
+    !inProductFileName,
+    !inSourceList,
+    !buildPhaseRef,
+    !buildConfigurationListRef,
+    !inBuildConfigurationSettingList,
+    !buildConfigurationRef,
+    !inFrameworksFileRefList,
+    !frameworkBuildRef,
+    !dependentTargets,
+    !resourceBuildRef,
     !resourceFileBuildRefs)
 }
 
@@ -227,7 +227,7 @@ mutating proc @XcodeProjectDescriptor.addGroup
     !?self.getReferenceKey (?ref: self.mMainGroupReference)
   end
   !?self.getReferenceKey (?ref: outGroupRef)
-  self.mGroupList +=§(!outGroupRef !inGroupName !inGroupPath !inChildrenRefs)
+  self.mGroupList +=§(!outGroupRef, !inGroupName, !inGroupPath, !inChildrenRefs)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -300,7 +300,7 @@ mutating proc @XcodeProjectDescriptor.addGroupWithFiles
       error (@location.nowhere : "unhandled extension for file '" + f + "'")
     end
   end
-  self.mGroupList +=§(!outGroupRef !inGroupName !inGroupPath !childrenRefs)
+  self.mGroupList +=§(!outGroupRef, !inGroupName, !inGroupPath, !childrenRefs)
 }
 
 //--------------------------------------------------------------------------------------------------

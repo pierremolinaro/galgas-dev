@@ -69,12 +69,12 @@ syntax galgas3OptionComponentSyntax (galgasScanner3) {
       end
     end
     ioCommandLineOptionList +=§(
-      !mOptionTypeName
-      !mOptionInternalName
-      !mOptionInvocationLetter
-      !mOptionInvocationString
-      !mOptionComment
-      !defaultValue
+      !mOptionTypeName,
+      !mOptionInternalName,
+      !mOptionInvocationLetter,
+      !mOptionInvocationString,
+      !mOptionComment,
+      !defaultValue,
       !optionDefaultValueKind)
   }
 
@@ -133,12 +133,12 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
       end
     end
     ioCommandLineOptionList +=§(
-      !mOptionTypeName
-      !mOptionInternalName
-      !mOptionInvocationLetter
-      !mOptionInvocationString
-      !mOptionComment
-      !defaultValue
+      !mOptionTypeName,
+      !mOptionInternalName,
+      !mOptionInvocationLetter,
+      !mOptionInvocationString,
+      !mOptionComment,
+      !defaultValue,
       !optionDefaultValueKind)
   }
 
@@ -306,42 +306,42 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
     var @commandLineOptionSortedList boolOptionSortedList = @()
     for anOption in boolOptionMap do
       boolOptionSortedList +=§(
-        !anOption.lkey.string
-        !anOption.mOptionChar
-        !anOption.mOptionString
-        !anOption.mComment
+        !anOption.lkey.string,
+        !anOption.mOptionChar,
+        !anOption.mOptionString,
+        !anOption.mComment,
         !anOption.mDefaultValue)
     end
     var @commandLineOptionSortedList uintOptionSortedList = @()
     for anOption in uintOptionMap do
       uintOptionSortedList +=§(
-        !anOption.lkey.string
-        !anOption.mOptionChar
-        !anOption.mOptionString
-        !anOption.mComment
+        !anOption.lkey.string,
+        !anOption.mOptionChar,
+        !anOption.mOptionString,
+        !anOption.mComment,
         !anOption.mDefaultValue)
     end
     var @commandLineOptionSortedList stringOptionSortedList = @()
     for anOption in stringOptionMap do
       stringOptionSortedList +=§(
-        !anOption.lkey.string
-        !anOption.mOptionChar
-        !anOption.mOptionString
-        !anOption.mComment
+        !anOption.lkey.string,
+        !anOption.mOptionChar,
+        !anOption.mOptionString,
+        !anOption.mComment,
         !anOption.mDefaultValue)
     end
     var @commandLineOptionSortedList stringListOptionSortedList = @()
     for anOption in stringListOptionMap do
       stringListOptionSortedList +=§(
-        !anOption.lkey.string
-        !anOption.mOptionChar
-        !anOption.mOptionString
-        !anOption.mComment
+        !anOption.lkey.string,
+        !anOption.mOptionChar,
+        !anOption.mOptionString,
+        !anOption.mComment,
         !anOption.mDefaultValue)
     end
   //--- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration +=§(
-      !infoMessage: "option " + self.mOptionComponentName
+      !infoMessage: "option " + self.mOptionComponentName,
       !@optionComponentForGeneration (
         !generateHeader: true,
         !implementationCppFileName: "option-" + self.mOptionComponentName.string.fileNameRepresentation,

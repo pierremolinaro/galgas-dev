@@ -111,7 +111,7 @@ struct @routineMap {
           )
         end
         if accept then
-          acceptableParameterList +=§(!entry.mRoutineSignature !entry.mIsFilePrivate)
+          acceptableParameterList +=§(!entry.mRoutineSignature, !entry.mIsFilePrivate)
         end
       end
       if acceptableParameterList.count == 1 then

@@ -267,7 +267,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
         end
         select
           $*$
-          outActualInputParameterList +=§(!selector !@inputParameterAnonymousVariable ())
+          outActualInputParameterList +=§(!selector, !@inputParameterAnonymousVariable ())
         or
           $var$
           let @lstring actualParameterTypeName
@@ -278,7 +278,7 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
           end
           $identifier$ (?let actualParameterName)
           outActualInputParameterList +=§(
-            !selector
+            !selector,
             !@inputParameterDeclaredVariable (!actualParameterTypeName, actualParameterName))
         or
           $let$
@@ -290,11 +290,11 @@ syntax galgas3InstructionsSyntax (galgasScanner3) {
           end
           $identifier$ (?let actualParameterName)
           outActualInputParameterList +=§(
-            !selector
+            !selector,
             !@inputParameterDeclaredConstant (!actualParameterTypeName, actualParameterName))
         or
           $identifier$ (?let actualParameterName)
-          outActualInputParameterList +=§(!selector !@inputParameterVariable (!actualParameterName))
+          outActualInputParameterList +=§(!selector, !@inputParameterVariable (!actualParameterName))
         end
       while
         $,$
@@ -585,11 +585,11 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           $?$
           let selector = "".here
           $*$
-          outActualInputParameterList +=§(!selector !@inputParameterAnonymousVariable ())
+          outActualInputParameterList +=§(!selector, !@inputParameterAnonymousVariable ())
         or
           $?selector:$ (?let selector)
           $*$
-          outActualInputParameterList +=§(!selector !@inputParameterAnonymousVariable ())
+          outActualInputParameterList +=§(!selector, !@inputParameterAnonymousVariable ())
         or
           $?selector:$ (?let selector)
           $var$
@@ -601,7 +601,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           end
           $identifier$ (?let actualParameterName)
           outActualInputParameterList +=§(
-            !selector
+            !selector,
             !@inputParameterDeclaredVariable (!actualParameterTypeName, actualParameterName))
         or
           $?$
@@ -615,7 +615,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           end
           $identifier$ (?let actualParameterName)
           outActualInputParameterList +=§(
-            !selector
+            !selector,
             !@inputParameterDeclaredVariable (!actualParameterTypeName, actualParameterName))
         or
           $?selector:$ (?let selector)
@@ -628,7 +628,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           end
           $identifier$ (?let actualParameterName)
           outActualInputParameterList +=§(
-            !selector
+            !selector,
             !@inputParameterDeclaredConstant (!actualParameterTypeName, actualParameterName))
         or
           $?$
@@ -642,17 +642,17 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           end
           $identifier$ (?let actualParameterName)
           outActualInputParameterList +=§(
-            !selector
+            !selector,
             !@inputParameterDeclaredConstant (!actualParameterTypeName, actualParameterName))
         or
           $?selector:$ (?let selector)
           $identifier$ (?let actualParameterName)
-          outActualInputParameterList +=§(!selector !@inputParameterVariable (!actualParameterName))
+          outActualInputParameterList +=§(!selector, !@inputParameterVariable (!actualParameterName))
         or
           $?$
           let selector = "".here
           $identifier$ (?let actualParameterName)
-          outActualInputParameterList +=§(!selector !@inputParameterVariable (!actualParameterName))
+          outActualInputParameterList +=§(!selector, !@inputParameterVariable (!actualParameterName))
         end
       while
         $,$

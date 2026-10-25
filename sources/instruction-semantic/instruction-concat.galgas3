@@ -77,29 +77,29 @@ syntax extension galgas3InstructionsSyntax {
       select
         $§$
         $($
-        <non_empty_output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
-//        var @actualOutputArgumentList expressionList = @()
-//        select
-//        or
-//          repeat
-//            select
-//              $!selector:$ (?let selector)
-//              <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//              expressionList ++= @(selector, expression, .here)
-//            or
-//              $!$
-//              let selector = "".here
-//              <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//              expressionList ++= @(selector, expression, .here)
-//            or
-//              let selector = "".here
-//              <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//              expressionList ++= @(selector, expression, .here)
-//            end
-//          while
-//            $,$
-//          end 
-//        end 
+ //       <non_empty_output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
+        var @actualOutputArgumentList expressionList = @()
+        select
+        or
+          repeat
+            select
+              $!selector:$ (?let selector)
+              <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+              expressionList ++= @(selector, expression, .here)
+            or
+              $!$
+              let selector = "".here
+              <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+              expressionList ++= @(selector, expression, .here)
+            or
+              let selector = "".here
+              <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+              expressionList ++= @(selector, expression, .here)
+            end
+          while
+            $,$
+          end 
+        end 
         $)$
         outInstruction = @plusEqualElementsInstructionAST (
           !instructionLocation,
@@ -234,7 +234,7 @@ syntax extension galgas3InstructionsSyntax {
         selector = "".here
       end
       <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outExpressionList +=§(!selector !expression !@location.here)
+      outExpressionList +=§(!selector, !expression, !@location.here)
     while
     end
   }

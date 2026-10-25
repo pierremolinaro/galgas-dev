@@ -92,10 +92,10 @@ syntax extension galgas3LexiqueComponentSyntax {
     $...$
     $"string"$ (?let @lstring endString)
     ioTemplateDelimitorList +=§(
-      !startString
-      !nonAtomicSelection: nonAtomicSelection
-      !templateEndMark
-      !preserved
+      !startString,
+      !nonAtomicSelection: nonAtomicSelection,
+      !templateEndMark,
+      !preserved,
       !endString)
   }
 
@@ -116,7 +116,7 @@ syntax extension galgas3LexiqueComponentSyntax {
       $"string"$ (?replacementString)
       replacementFunction = @lstring (!"", @location.here)
     end
-    ioTemplateReplacement +=§(!matchString !replacementString !replacementFunction)
+    ioTemplateReplacement +=§(!matchString, !replacementString, !replacementFunction)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -187,10 +187,10 @@ syntax extension galgas4LexiqueComponentSyntax {
     $...$
     $"string"$ (?let @lstring endString)
     ioTemplateDelimitorList +=§(
-      !startString
-      !nonAtomicSelection: nonAtomicSelection
-      !templateEndMark
-      !preserved
+      !startString,
+      !nonAtomicSelection: nonAtomicSelection,
+      !templateEndMark,
+      !preserved,
       !endString)
   }
 
@@ -211,7 +211,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       $"string"$ (?replacementString)
       replacementFunction = @lstring (!"", @location.here)
     end
-    ioTemplateReplacement +=§(!matchString !replacementString !replacementFunction)
+    ioTemplateReplacement +=§(!matchString, !replacementString, !replacementFunction)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -346,15 +346,15 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
     var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in mSentAttributeList do
       lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (!mAttributeName, ?let attributeLexicalType)
-      argumentTypeList +=§(!mFormalSelector !mAttributeName.string !attributeLexicalType)
+      argumentTypeList +=§(!mFormalSelector, !mAttributeName.string, !attributeLexicalType)
     end
     !?lexiqueAnalysisContext.mTerminalMap.insertKey (!mName, !argumentTypeList)
     terminalList +=§(
-      !mName
-      !argumentTypeList
-      !mSyntaxErrorMessage.string
-      !isEndOfTemplateMark: isEndOfTemplateMark
-      !atomicSelection: not nonAtomicSelection
+      !mName,
+      !argumentTypeList,
+      !mSyntaxErrorMessage.string,
+      !isEndOfTemplateMark: isEndOfTemplateMark,
+      !atomicSelection: not nonAtomicSelection,
       !terminalStyleIndex)
   end
   for (* mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in lexicalListDeclarationListAST do
@@ -365,16 +365,16 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
     var argumentTypeList = @lexicalSentValueList ()
     for (mFormalSelector mAttributeName) in mSentAttributeList do
       lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (!mAttributeName, ?let attributeLexicalType)
-      argumentTypeList +=§(!mFormalSelector !mAttributeName.string !attributeLexicalType)
+      argumentTypeList +=§(!mFormalSelector, !mAttributeName.string, !attributeLexicalType)
     end
     for (* mTerminalSpelling nonAtomicSelection isTemplateEndMark) in mEntryList do
       let syntaxErrorMessage = mSyntaxErrorMessage.string.replacing (!"%K", !by: mTerminalSpelling.string)
       terminalList +=§(
-        !mTerminalSpelling
-        !argumentTypeList
-        !syntaxErrorMessage
-        !isEndOfTemplateMark: isTemplateEndMark
-        !atomicSelection: not nonAtomicSelection
+        !mTerminalSpelling,
+        !argumentTypeList,
+        !syntaxErrorMessage,
+        !isEndOfTemplateMark: isTemplateEndMark,
+        !atomicSelection: not nonAtomicSelection,
         !terminalStyleIndex)
     end
   end
@@ -384,7 +384,7 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
   for (mStartString * * preservesStartDelimiter mEndString) in self.mTemplateDelimitorList do
    unicodeStringToGenerate ++= mStartString.string
    unicodeStringToGenerate ++= mEndString.string
-   templateDelimitorList +=§(!mStartString !mEndString !preservesStartDelimiter)
+   templateDelimitorList +=§(!mStartString, !mEndString, !preservesStartDelimiter)
   end
 //-------------------------------------- Template replacements
   for (mMatchString mReplacementString *) in self.mTemplateReplacementList do
@@ -422,7 +422,7 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
     ]
   //---
     ioSemanticDeclarationListForGeneration +=§(
-      !infoMessage: ""
+      !infoMessage: "",
       !@lexiqueDeclarationForGeneration (
         !generateHeader: true,
         !implementationCppFileName: "lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation,

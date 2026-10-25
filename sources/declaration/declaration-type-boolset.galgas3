@@ -287,7 +287,7 @@ override proc @boolsetDeclarationAST.semanticAnalysis
   end
 //---
   ioSemanticDeclarationListForGeneration +=§(
-    !infoMessage: "boolset " + self.mBoolsetTypeName
+    !infoMessage: "boolset " + self.mBoolsetTypeName,
     !@boolsetTypeForGeneration (
       !ioTypeMap.typeMapEntryForLKey (!self.mBoolsetTypeName),
       self.mFlagList,

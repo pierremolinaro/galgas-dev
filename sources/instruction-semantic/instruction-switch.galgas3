@@ -39,7 +39,7 @@ syntax extension galgas3InstructionsSyntax {
       )
       $:$
       <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let instructions)
-      switchBranches +=§(!constantNameList !associatedValuesExtraction !instructions !@location.here)
+      switchBranches +=§(!constantNameList, !associatedValuesExtraction, !instructions, !@location.here)
     while
     end
     $end$
@@ -74,11 +74,11 @@ syntax extension galgas3InstructionsSyntax {
           $literalInt$ (?let n)
           $*$
           for * in 0 ..< n.bigint do
-            outAssociatedValuesExtraction +=§(!"".here !"".here !false)
+            outAssociatedValuesExtraction +=§(!"".here, !"".here, !false)
           end
          or
           $*$
-          outAssociatedValuesExtraction +=§(!"".here !"".here !false)
+          outAssociatedValuesExtraction +=§(!"".here, !"".here, !false)
          or
           let @lstring typeName
           select
@@ -94,7 +94,7 @@ syntax extension galgas3InstructionsSyntax {
             constantMarkedAsUnused = true
           end
           $identifier$ (?let @lstring constantName)
-          outAssociatedValuesExtraction +=§(!typeName !constantName !constantMarkedAsUnused)
+          outAssociatedValuesExtraction +=§(!typeName, !constantName, !constantMarkedAsUnused)
         end
       while
         $,$
@@ -128,7 +128,7 @@ syntax extension galgas4InstructionsSyntax {
         ?let @switchExtractedValuesListAST associatedValuesExtraction)
       $:$
       <semantic_instruction_list> (!?ioDeclarations, ?let instructions)
-      switchBranches +=§(!constantNameList !associatedValuesExtraction !instructions !@location.here)
+      switchBranches +=§(!constantNameList, !associatedValuesExtraction, !instructions, !@location.here)
     while
     end
     $end$
@@ -163,11 +163,11 @@ syntax extension galgas4InstructionsSyntax {
           $literalInt$ (?let n)
           $*$
           for * in 0 ..< n.bigint do
-            outAssociatedValuesExtraction +=§(!"".here !"".here !false)
+            outAssociatedValuesExtraction +=§(!"".here, !"".here, !false)
           end
          or
           $*$
-          outAssociatedValuesExtraction +=§(!"".here !"".here !false)
+          outAssociatedValuesExtraction +=§(!"".here, !"".here, !false)
          or
           let @lstring typeName
           select
@@ -183,7 +183,7 @@ syntax extension galgas4InstructionsSyntax {
             constantMarkedAsUnused = true
           end
           $identifier$ (?let @lstring constantName)
-          outAssociatedValuesExtraction +=§(!typeName !constantName !constantMarkedAsUnused)
+          outAssociatedValuesExtraction +=§(!typeName, !constantName, !constantMarkedAsUnused)
         end
       while
         $,$
@@ -297,8 +297,8 @@ final class @switchInstructionAST : @semanticInstructionAST {
                   + associatedValue.mExtractedValueName.location.startLocationIndex
                   + "_" + associatedValue.mExtractedValueName + "_" + IDX
                 extractedAssociatedValuesForGeneration +=§(
-                  !descriptor.type
-                  !cppName
+                  !descriptor.type,
+                  !cppName,
                   !descriptor.name)
                 if associatedValue.mExtractedValueName.string != "" then
                   if associatedValue.mMarkedAsUnused then
@@ -340,9 +340,9 @@ final class @switchInstructionAST : @semanticInstructionAST {
         )
         !?ioVariableMap.closeBranch (!branch.mEndOfBranch)
         switchBranchesForGeneration +=§(
-          !branch.mSwitchConstantList
-          !extractedAssociatedValuesForGeneration
-          !branch.mEndOfBranch.startLocationIndex
+          !branch.mSwitchConstantList,
+          !extractedAssociatedValuesForGeneration,
+          !branch.mEndOfBranch.startLocationIndex,
           !instructionList)
       end
       !?ioVariableMap.closeOverride (!self.mEndOf_switch_instruction)

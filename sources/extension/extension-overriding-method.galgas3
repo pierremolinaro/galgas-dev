@@ -287,7 +287,7 @@ override proc @overridingExtensionMethodAST.semanticAnalysis (
   end
 //---
   ioSemanticDeclarationListForGeneration +=§(
-    !infoMessage: "override extension proc " + self.mOverridingExtensionMethodName
+    !infoMessage: "override extension proc " + self.mOverridingExtensionMethodName,
     !@overridingExtensionMethodForGeneration (
       !generateHeader: false,
       !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mOverridingExtensionMethodName.string.fileNameRepresentation,

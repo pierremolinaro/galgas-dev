@@ -336,7 +336,7 @@ override proc @overridingExtensionGetterAST.semanticAnalysis (
   end
 //---
   ioSemanticDeclarationListForGeneration +=§(
-    !infoMessage: "override extension func " + self.mOverridingExtensionGetterName
+    !infoMessage: "override extension func " + self.mOverridingExtensionGetterName,
     !@overrideExtensionGetterForGeneration (
       !generateHeader: false,
       !implementationCppFileName: "func-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mOverridingExtensionGetterName.string.fileNameRepresentation,

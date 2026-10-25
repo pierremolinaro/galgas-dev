@@ -235,7 +235,7 @@ final class @initializerAST : @semanticDeclarationAST {
   //---
     let initializerName = self.mFormalParameterList.initializerSignature
     ioSemanticDeclarationListForGeneration +=§(
-      !infoMessage: "initializer @" + self.mTypeName + "." + initializerName
+      !infoMessage: "initializer @" + self.mTypeName + "." + initializerName,
       !@extensionInitializerForGeneration (
         !generateHeader: false,
         !implementationCppFileName: "initializer-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + initializerName.fileNameRepresentation,
@@ -287,10 +287,10 @@ private proc analyzeInitializerBody (?let @lstring inUsefulnessCallerEntityName,
     if formalArg.mIsConstant then
       let @string cppName = "constinArgument_" + formalArg.mFormalArgumentName.string.identifierRepresentation
       outSignatureForGeneration +=§(
-        !formalArg.mFormalSelector
-        !parameterType
-        !cppName
-        !formalArg.mFormalArgumentName
+        !formalArg.mFormalSelector,
+        !parameterType,
+        !cppName,
+        !formalArg.mFormalArgumentName,
         !formalArg.mIsConstant)
       if formalArg.mIsUnused then
         !?variableMap.insertConstantInputFormalArgumentDeclaredAsUnused (!formalArg.mFormalArgumentName, !parameterType, !cppName, !cppName)
@@ -300,10 +300,10 @@ private proc analyzeInitializerBody (?let @lstring inUsefulnessCallerEntityName,
     else
       let @string cppName = "inArgument_" + formalArg.mFormalArgumentName.string.identifierRepresentation
       outSignatureForGeneration +=§(
-        !formalArg.mFormalSelector
-        !parameterType
-        !cppName
-        !formalArg.mFormalArgumentName
+        !formalArg.mFormalSelector,
+        !parameterType,
+        !cppName,
+        !formalArg.mFormalArgumentName,
         !formalArg.mIsConstant)
       if formalArg.mIsUnused then
         !?variableMap.insertInputFormalArgumentDeclaredAsUnused (!formalArg.mFormalArgumentName, !parameterType, !cppName, !cppName)

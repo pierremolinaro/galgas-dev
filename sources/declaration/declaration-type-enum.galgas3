@@ -75,7 +75,7 @@ syntax extension galgas3DeclarationsSyntax {
         end
         $)$
       end
-      constantList +=§(!constantName !associatedValueTypeList)
+      constantList +=§(!constantName, !associatedValueTypeList)
     while
       <method_declaration_ggs3> (!enumTypeName, !?ioDeclarations)
     end
@@ -153,7 +153,7 @@ syntax extension galgas4DeclarationsSyntax {
         end
         $)$
       end
-      constantList +=§(!constantName !associatedValueTypeList)
+      constantList +=§(!constantName, !associatedValueTypeList)
     while
       <method_declaration> (!enumTypeName, !?ioDeclarations)
     end
@@ -219,11 +219,11 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
             else associatedValue.typeName
           end
           propertyListAST +=§(
-            !mutability: .constantProperty
-            !associatedValueTypeName
-            !associatedValue.valueName
-            !.publicAccess
-            !hasSelector: false
+            !mutability: .constantProperty,
+            !associatedValueTypeName,
+            !associatedValue.valueName,
+            !.publicAccess,
+            !hasSelector: false,
             !initialization: .none)
         end
         let s = @structDeclarationAST (
@@ -306,8 +306,8 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
       var @functionSignature argumentTypeList = @()
       for associatedValue in constant.associatedValueTypeList do
         !?ioTypeMap.makeEntry (!associatedValue.typeName, ?let associatedTypeEntry)
-        argumentTypeList +=§(!associatedValue.valueName !associatedTypeEntry !associatedValue.typeName.string !true)
-        associatedTypeList +=§(!associatedTypeEntry !associatedValue.valueName)
+        argumentTypeList +=§(!associatedValue.valueName, !associatedTypeEntry, !associatedValue.typeName.string, !true)
+        associatedTypeList +=§(!associatedTypeEntry, !associatedValue.valueName)
         hasAssociatedValues = true
       end
       !?constantMap.insertKey (!constant.name, !constantMap.count, !associatedTypeList)
@@ -326,7 +326,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         var @formalParameterSignature argumentTypeList = @()
         for associatedValue in constant.associatedValueTypeList do
           !?ioTypeMap.makeEntry (!associatedValue.typeName, ?let associatedTypeEntry)
-          argumentTypeList +=§(!associatedValue.valueName !associatedTypeEntry !.argumentOut !associatedValue.typeName.string)
+          argumentTypeList +=§(!associatedValue.valueName, !associatedTypeEntry, !.argumentOut, !associatedValue.typeName.string)
           associatedTypeList +=§(!associatedTypeEntry)
           hasAssociatedValues = true
         end
@@ -468,7 +468,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!associatedValue.typeName)
         !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: propertyTypeNameForUsefulness)
         let associatedTypeEntry = ioTypeMap.typeMapEntryForLKey (!associatedValue.typeName)
-        associatedTypeList +=§(!associatedTypeEntry !associatedValue.valueName)
+        associatedTypeList +=§(!associatedTypeEntry, !associatedValue.valueName)
         if associatedValueNameSet.hasKey (!associatedValue.valueName.string) then
           error (associatedValue.valueName : "duplicated name")
         end
@@ -491,12 +491,12 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         end
       end
       !?constantMap.insertKey (!constant.name, !constantMap.count, !associatedTypeList)
-      enumConstantListForGeneration +=§(!constant.name.string !associatedTypeList)
+      enumConstantListForGeneration +=§(!constant.name.string, !associatedTypeList)
     end
   //---
     let selfType = ioTypeMap.typeMapEntryForLKey (!self.enumTypeName)
     ioSemanticDeclarationListForGeneration +=§(
-      !infoMessage: "enum " + self.enumTypeName
+      !infoMessage: "enum " + self.enumTypeName,
       !@enumTypeForGeneration (
         !selfType,
         enumConstantListForGeneration,

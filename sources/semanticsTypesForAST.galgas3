@@ -44,9 +44,9 @@ struct @syntaxExtensions {
     if self.dictionary.hasKey (!inKey) then
       self.dictionary.searchKey (!inKey, ?var aList)
       !?aList.append (!inSyntaxComponentName, !inNonterminalDeclarationList, !inRuleList)
-      self.dictionary +=§(!inKey !aList)
+      self.dictionary +=§(!inKey, !aList)
     else
-      self.dictionary +=§(!inKey !@[@(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)])
+      self.dictionary +=§(!inKey, !@[@(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)])
     end
   }
 

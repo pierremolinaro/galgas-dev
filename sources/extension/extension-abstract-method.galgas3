@@ -204,15 +204,15 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
     var formalParameterListForGeneration = @formalParameterListForGeneration ()
     for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in self.mAbstractExtensionMethodFormalParameterList do
       formalParameterListForGeneration +=§(
-        !mFormalSelector
-        !mFormalArgumentPassingMode
-        !ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName)
-        !mFormalArgumentName
+        !mFormalSelector,
+        !mFormalArgumentPassingMode,
+        !ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName),
+        !mFormalArgumentName,
         !mFormalArgumentName.string)
     end
   //---
     ioSemanticDeclarationListForGeneration +=§(
-      !infoMessage: "abstract extension proc " + self.mAbstractExtensionMethodName
+      !infoMessage: "abstract extension proc " + self.mAbstractExtensionMethodName,
       !@abstractExtensionMethodForGeneration (
         !generateHeader: true,
         !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionMethodName.string.fileNameRepresentation,

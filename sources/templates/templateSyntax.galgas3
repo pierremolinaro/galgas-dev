@@ -480,12 +480,12 @@ rule <output_expression_list_tpl> (!@templateExpressionListAST outExpressionList
   while
     $!selector:$ (?let selector)
     <expression_tpl> (?let @templateExpressionAST expression)
-    outExpressionList +=§(!selector !expression !@location.here)
+    outExpressionList +=§(!selector, !expression, !@location.here)
   while
     $!$
     let selector = "".here
     <expression_tpl> (?let @templateExpressionAST expression)
-    outExpressionList +=§(!selector !expression !@location.here)
+    outExpressionList +=§(!selector, !expression, !@location.here)
   end
 }
 
@@ -550,7 +550,7 @@ rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructio
     while
       <template_instruction> (!?instructionList)
     end
-    templateInstructionIfBranchList +=§(!expression !instructionList)
+    templateInstructionIfBranchList +=§(!expression, !instructionList)
   while
     $elsif$
   end

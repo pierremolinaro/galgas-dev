@@ -318,9 +318,9 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     for property in inheritedTypedPropertyList do
       if property.initialization == .none then
         synthetizedInitializerArgumentList +=§(
-          !if property.hasSelector then property.name else "".nowhere end
-          !property.typeEntry
-          !property.name.string
+          !if property.hasSelector then property.name else "".nowhere end,
+          !property.typeEntry,
+          !property.name.string,
           !true)
       end
     end
@@ -328,9 +328,9 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       !?ioTypeMap.makeEntry (!property.typeName, ?let attributeTypeIndex)
       if property.initialization == .none then
         synthetizedInitializerArgumentList +=§(
-          !if property.hasSelector then property.name else "".nowhere end
-          !attributeTypeIndex
-          !property.name.string
+          !if property.hasSelector then property.name else "".nowhere end,
+          !attributeTypeIndex,
+          !property.name.string,
           !true)
       end
       !?attributeMap.insertKey
@@ -350,16 +350,16 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     for property in self.mPropertyList do
       !?ioTypeMap.makeEntry (!property.typeName, ?let attributeTypeIndex)
       currentClassTypedPropertyList +=§(
-        !attributeTypeIndex
-        !property.name
-        !property.initialization
-        !hasSetter: not property.mutability.isConstantProperty
+        !attributeTypeIndex,
+        !property.name,
+        !property.initialization,
+        !hasSetter: not property.mutability.isConstantProperty,
         !hasSelector: property.hasSelector)
       allTypedAttributeList +=§(
-        !attributeTypeIndex
-        !property.name
-        !property.initialization
-        !hasSetter: not property.mutability.isConstantProperty
+        !attributeTypeIndex,
+        !property.name,
+        !property.initialization,
+        !hasSetter: not property.mutability.isConstantProperty,
         !hasSelector: property.hasSelector)
     end
   //--- Clonable ?
@@ -369,9 +369,9 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       features |= .clonable
       var @functionSignature cloneInitializerArgumentList = @()
       cloneInitializerArgumentList +=§(
-        !"cloned".nowhere
-        !classIndex
-        !"inObject"
+        !"cloned".nowhere,
+        !classIndex,
+        !"inObject",
         !true)
       !?initializerMap.insertKey
         (!@(!cloneInitializerArgumentList.initializerSignature, self.mClassTypeName),
@@ -487,10 +487,10 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     for property in allAttributeList do
       if property.initialization == .none then
         synthetizedInheritedInitializerArgumentList +=§(
-          !property.typeEntry
-          !property.name
-          !property.initialization
-          !hasSetter: property.hasSetter
+          !property.typeEntry,
+          !property.name,
+          !property.initialization,
+          !hasSetter: property.hasSetter,
           !hasSelector: property.hasSelector)
       end
     end
@@ -502,16 +502,16 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       !?ioUsefulEntitiesGraph.addEdge (!from: classTypeNameForUsefulness, !to: propertyTypeNameForUsefulness)
       let t = ioTypeMap.typeMapEntryForLKey (!property.typeName)
       typedAttributeList +=§(
-        !t
-        !property.name
-        !property.initialization
-        !hasSetter: not property.mutability.isConstantProperty
+        !t,
+        !property.name,
+        !property.initialization,
+        !hasSetter: not property.mutability.isConstantProperty,
         !hasSelector: property.hasSelector)
       allAttributeList +=§(
-        !t
-        !property.name
-        !property.initialization
-        !hasSetter: not property.mutability.isConstantProperty
+        !t,
+        !property.name,
+        !property.initialization,
+        !hasSetter: not property.mutability.isConstantProperty,
         !hasSelector: property.hasSelector)
       !?attributeMap.insertKey (!property.name, !t)
     end
@@ -520,10 +520,10 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     for property in selfType.definition.allTypedPropertyList do
     if property.initialization == .none then
       synthetizedInitialzerArgumentList +=§(
-        !property.typeEntry
-        !property.name
-        !property.initialization
-        !hasSetter: property.hasSetter
+        !property.typeEntry,
+        !property.name,
+        !property.initialization,
+        !hasSetter: property.hasSetter,
         !hasSelector: property.hasSelector)
      end
    end
@@ -539,7 +539,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
   //-----
     let constructorNeedsCompilerVar = not unusedVariableCppNameSet.hasKey (!compilerCppName ())
     ioSemanticDeclarationListForGeneration +=§(
-      !infoMessage: "class " + self.mClassTypeName
+      !infoMessage: "class " + self.mClassTypeName,
       !@classTypeForGeneration (
         !selfType,
         self.mIsAbstract,

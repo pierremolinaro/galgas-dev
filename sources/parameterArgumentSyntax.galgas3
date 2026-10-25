@@ -88,10 +88,10 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         end
         $identifier$ (?let @lstring formalParameterName)
         outFormalParameterList +=§(
-          !selector
-          !formalParameterPassingMode
-          !formalParameterTypeName
-          !formalParameterName
+          !selector,
+          !formalParameterPassingMode,
+          !formalParameterTypeName,
+          !formalParameterName,
           !isUnused)
       while
         $,$
@@ -344,10 +344,10 @@ syntax galgas3ParameterArgumentSyntax (galgasScanner3) {
         end
         $identifier$ (?let @lstring formalParameterName)
         outFormalInputParameterList +=§(
-          !selector
-          !formalParameterTypeName
-          !formalParameterName
-          !isUnused
+          !selector,
+          !formalParameterTypeName,
+          !formalParameterName,
+          !isUnused,
           !isConstant)
       while
         $,$
@@ -468,10 +468,10 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         end
         $identifier$ (?let @lstring formalParameterName)
         outFormalParameterList +=§(
-          !selector
-          !formalParameterPassingMode
-          !formalParameterTypeName
-          !formalParameterName
+          !selector,
+          !formalParameterPassingMode,
+          !formalParameterTypeName,
+          !formalParameterName,
           !isUnused)
       while
         $,$
@@ -724,10 +724,10 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
         end
         $identifier$ (?let @lstring formalParameterName)
         outFormalInputParameterList +=§(
-          !selector
-          !formalParameterTypeName
-          !formalParameterName
-          !isUnused
+          !selector,
+          !formalParameterTypeName,
+          !formalParameterName,
+          !isUnused,
           !isConstant)
       while
         $,$

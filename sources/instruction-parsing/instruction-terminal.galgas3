@@ -63,7 +63,7 @@ syntax extension galgas3SyntaxComponentSyntax {
         or
           $"string"$ (?postfixName)
         end
-        outIndexNameList +=§(!indexName !postfixName)
+        outIndexNameList +=§(!indexName, !postfixName)
       while
         $,$
       end
@@ -123,7 +123,7 @@ syntax extension galgas4SyntaxComponentSyntax {
         or
           $"string"$ (?postfixName)
         end
-        outIndexNameList +=§(!indexName !postfixName)
+        outIndexNameList +=§(!indexName, !postfixName)
       while
         $,$
       end

@@ -182,9 +182,9 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
     for argument in self.mFormalArgumentListAST do
       !?ioTypeMap.makeEntry (!argument.mFormalArgumentTypeName, ?let parameterTypeIndex)
       routineSignature +=§(
-        !argument.mFormalSelector
-        !parameterTypeIndex
-        !argument.mFormalArgumentPassingMode
+        !argument.mFormalSelector,
+        !parameterTypeIndex,
+        !argument.mFormalArgumentPassingMode,
         !argument.mFormalArgumentName.string)
     end
   //--- Enter types for instruction list
@@ -211,9 +211,9 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
     for argument in self.mFormalArgumentListAST do
       let parameterType = ioTypeMap.typeMapEntryForLKey (!argument.mFormalArgumentTypeName)
       routineSignature +=§(
-        !argument.mFormalSelector
-        !parameterType
-        !argument.mFormalArgumentPassingMode
+        !argument.mFormalSelector,
+        !parameterType,
+        !argument.mFormalArgumentPassingMode,
         !argument.mFormalArgumentName.string)
     end
     let mangledName = routineMangledName (!self.mRoutineName, !routineSignature)
@@ -243,7 +243,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
       ?let formalArgumentList
     )
     ioSemanticDeclarationListForGeneration +=§(
-      !infoMessage: "proc " + mangledName
+      !infoMessage: "proc " + mangledName,
       !@routineImplementationForGeneration (
         !generateHeader: true,
         !implementationCppFileName: "proc-" + mangledName.string.fileNameRepresentation,

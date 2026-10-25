@@ -267,7 +267,7 @@ override proc @extensionSetterAST.semanticAnalysis (
   )
 //---
   ioSemanticDeclarationListForGeneration +=§(
-    !infoMessage:"extension mutating proc " + self.mExtensionSetterName
+    !infoMessage:"extension mutating proc " + self.mExtensionSetterName,
     !@extensionSetterForGeneration (
       !generateHeader: true,
       !implementationCppFileName: "mutating proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.string.fileNameRepresentation,

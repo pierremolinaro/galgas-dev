@@ -44,7 +44,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     repeat
       $while$
       <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList mInstructionList)
-      mRepeatBranchList +=§(! mInstructionList !@location.here)
+      mRepeatBranchList +=§(! mInstructionList, !@location.here)
     while
     end
     $end$
@@ -78,7 +78,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     repeat
       $while$
       <syntax_instruction_list> (!?ioDeclarations, ?let @syntaxInstructionList mInstructionList)
-      mRepeatBranchList +=§(! mInstructionList !@location.here)
+      mRepeatBranchList +=§(! mInstructionList, !@location.here)
     while
     end
     $end$
@@ -198,7 +198,7 @@ override proc @repeatInstruction.analyzeSyntaxInstruction
       !?ioSelectMethodCount,
       ?let instructionList
     )
-    listOfSemanticInstructionListForGeneration +=§(!instructionList !mEndOf_instructions)
+    listOfSemanticInstructionListForGeneration +=§(!instructionList, !mEndOf_instructions)
   end
 //--- End block
   !?ioVariableMap.closeOverride (!self.mEndOf_repeat_instruction)
@@ -237,7 +237,7 @@ override proc @repeatInstructionForGeneration.appendSyntaxSignature
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
   for (mInstructionList mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=§(
-      !syntaxSignatureOfInstructionList (!inPosfix, !mInstructionList)
+      !syntaxSignatureOfInstructionList (!inPosfix, !mInstructionList),
       !mEndOfInstructionList)
   end
 //---

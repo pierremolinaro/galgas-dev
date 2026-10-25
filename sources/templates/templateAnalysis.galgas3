@@ -1613,7 +1613,7 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
       !mInstructionList,
       !?instructionList
     )
-    templateInstructionIfBranchList +=§(!expression !instructionList)
+    templateInstructionIfBranchList +=§(!expression, !instructionList)
   end
 //---
   var elseInstructionList = @templateInstructionListForGeneration ()
