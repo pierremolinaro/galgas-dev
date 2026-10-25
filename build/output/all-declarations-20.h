@@ -389,17 +389,17 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
                                                            GGS_actualParameterListAST & ioArgument1,
                                                            Lexique_galgasScanner_33_ * inCompiler) ;
 
-//------------------------------------- 'actual_parameter_list_ggs3' non terminal
+//------------------------------------- 'actual_parameter_list_ggs34' non terminal
 //--- 'parse' label
- /*  public: virtual void nt_actual_5F_parameter_5F_list_5F_ggs_33__parse (Lexique_galgasScanner_33_ * inCompiler) ; */
+ /*  public: virtual void nt_actual_5F_parameter_5F_list_5F_ggs_33__34__parse (Lexique_galgasScanner_33_ * inCompiler) ; */
 
 //--- indexing
-  public: virtual void nt_actual_5F_parameter_5F_list_5F_ggs_33__indexing (Lexique_galgasScanner_33_ * inCompiler) ;
+  public: virtual void nt_actual_5F_parameter_5F_list_5F_ggs_33__34__indexing (Lexique_galgasScanner_33_ * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_actual_5F_parameter_5F_list_5F_ggs_33__ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                   GGS_actualParameterListAST & outArgument1,
-                                                                   Lexique_galgasScanner_33_ * inCompiler) ;
+  public: virtual void nt_actual_5F_parameter_5F_list_5F_ggs_33__34__ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                       GGS_actualParameterListAST & outArgument1,
+                                                                       Lexique_galgasScanner_33_ * inCompiler) ;
 
 //------------------------------------- 'comma_separated_expression_ggs3' non terminal
 //--- 'parse' label

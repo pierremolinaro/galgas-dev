@@ -232,7 +232,7 @@ private proc analyzeConstructorInvocation (?let @lstring inUsefulnessCallerEntit
         : "the '@"+ outConstructorType.definition.typeName.string
         + "' type does not define the '" + inConstructorName + "' constructor"
         spoil constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
-        fixit replace classFunctionMap.keyList)
+        fixit %replaceBy classFunctionMap.keyList)
       end
     end
   //--- Analysis arguments
@@ -262,14 +262,14 @@ private proc analyzeConstructorInvocation (?let @lstring inUsefulnessCallerEntit
         !effectiveParameter.mEndOfExpressionLocation,
         !?exp
       )
-      outConstructorEffectiveParameterList += !exp
+      outConstructorEffectiveParameterList ++= @(exp)
       if formalArg.mFormalSelector.string != effectiveParameter.mActualSelector.string then
         let @string s = "!" + if formalArg.mFormalSelector.string != ""
           then formalArg.mFormalSelector.string + ":"
           else ""
         end
         error (effectiveParameter.mActualSelector
-        : "the selector should be '" + s + "'" fixit replace s)
+        : "the selector should be '" + s + "'" fixit %replaceBy s)
       end
     end
   end
@@ -306,7 +306,7 @@ final class @classFuncExpressionForGeneration : @semanticExpressionForGeneration
         !?ioUnusedVariableCppNameSet,
         ?let @string parameter
       )
-      parameterList += !parameter
+      parameterList ++= @(parameter)
     end
     outCppExpression =  "GGS_"  + self.classFuncType.identifierRepresentation
     outCppExpression += "::class_func_" + self.classFuncName.identifierRepresentation

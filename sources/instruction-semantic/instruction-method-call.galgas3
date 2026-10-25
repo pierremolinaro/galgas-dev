@@ -45,8 +45,8 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
       ioVariableMap.checkSelfObjectIsFullyInitialized (!self.mMethodName.location)
     end
   //--- Analyze receiver expression
-    self.mReceiverExpression.analyzeSemanticExpression
-      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    self.mReceiverExpression.analyzeSemanticExpression (
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inferenceType: .null,
       !inAnalysisContext,

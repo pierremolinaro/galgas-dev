@@ -37,7 +37,7 @@ syntax extension galgas3ExpressionSyntax {
     var @stringlist literalStringList = @()
     repeat
       $"string"$ (?let literalString)
-      literalStringList += !literalString.string
+      literalStringList ++= @(literalString.string)
     while
     end
     outExpression = @literalStringExpressionAST (!@location.here, literalStringList)
@@ -58,7 +58,7 @@ syntax extension galgas4ExpressionSyntax {
     var @stringlist literalStringList = @()
     repeat
       $"string"$ (?let literalString)
-      literalStringList += !literalString.string
+      literalStringList ++= @(literalString.string)
     while
     end
     outExpression = @literalStringExpressionAST (!@location.here, literalStringList)

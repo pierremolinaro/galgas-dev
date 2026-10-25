@@ -94,9 +94,9 @@ override proc @notExpressionAST.analyzeSemanticExpression
   )
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if expression is == @trueExpressionForGeneration then
+  if expression is @trueExpressionForGeneration then
     outExpression = @falseExpressionForGeneration (!inAnalysisContext.predefinedTypes.mBoolType, self.mOperatorLocation)
-  elsif expression is == @falseExpressionForGeneration then
+  elsif expression is @falseExpressionForGeneration then
     outExpression = @trueExpressionForGeneration (!inAnalysisContext.predefinedTypes.mBoolType, self.mOperatorLocation)
   elsif not type.definition.features.contains (!.prefixNotOperator) then
     error (self.mOperatorLocation

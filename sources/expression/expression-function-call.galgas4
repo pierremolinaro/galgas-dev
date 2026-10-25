@@ -31,18 +31,18 @@ syntax extension galgas3ExpressionSyntax {
     select
       let selector = "".here
       <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      expressionList += !selector !expression !.here
+      expressionList ++= @(selector, expression, .here)
     or
       repeat
       while
         $!selector:$ (?let selector)
         <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        expressionList += !selector !expression !.here
+        expressionList ++= @(selector, expression, .here)
       while
         $!$
         let selector = "".here
         <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        expressionList += !selector !expression !.here
+        expressionList ++= @(selector, expression, .here)
       end
     end
     repeat
@@ -51,16 +51,16 @@ syntax extension galgas3ExpressionSyntax {
       select
         $!selector:$ (?let selector)
         <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        expressionList += !selector !expression !.here
+        expressionList ++= @(selector, expression, .here)
       or
         $!$
         let selector = "".here
         <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        expressionList += !selector !expression !.here
+        expressionList ++= @(selector, expression, .here)
       or
         let selector = "".here
         <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        expressionList += !selector !expression !.here
+        expressionList ++= @(selector, expression, .here)
       end
     end
     outExpression = @functionCallExpressionAST (functionName, expressionList)
@@ -166,9 +166,9 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
             else ""
           end
           error (actualArg.mActualSelector : "the selector should be '" + s + "'"
-          fixit replace s)
+          fixit %replaceBy s)
         end
-        semanticExpressionListForGeneration += !expression
+        semanticExpressionListForGeneration ++= @(expression)
       end
       outExpression = @functionCallExpressionForGeneration (
         !resultType,
@@ -204,13 +204,13 @@ final class @functionCallExpressionForGeneration : @semanticExpressionForGenerat
     ioInclusionSet ++= "func-" + self.mFunctionName.fileNameRepresentation
   //---
     var parameterList = @stringlist ()
-    for (mExpression) in self.mExpressions do
-      mExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let parameter)
-      parameterList += !parameter
+    for exp in self.mExpressions do
+      exp.mExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let parameter)
+      parameterList ++= @(parameter)
     end
     outCppExpression = "function_" + self.mFunctionName.identifierRepresentation + " ("
-    for (mValue) in parameterList
-      do outCppExpression += mValue + ", "
+    for (mValue) in parameterList do
+      outCppExpression += mValue + ", "
     end
     !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
     outCppExpression += compilerCppName ()

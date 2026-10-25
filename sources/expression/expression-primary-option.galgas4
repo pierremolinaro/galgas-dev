@@ -177,19 +177,19 @@ override proc @optionExpressionAST.analyzeSemanticExpression
     end
   else
     var @stringlist s = @()
-    for (lkey * * * *) in boolOptionMap do
-      s += !lkey
+    for entry in boolOptionMap do
+      s ++= @(entry.lkey)
     end
-    for (lkey * * * *) in uintOptionMap do
-      s += !lkey
+    for entry in uintOptionMap do
+      s ++= @(entry.lkey)
     end
-    for (lkey * * * *) in stringOptionMap do
-      s += !lkey
+    for entry in stringOptionMap do
+      s ++= @(entry.lkey)
     end
     error (self.mOptionEntryName
     : "the '" + self.mOptionComponentName + "' option component does not define the '" + self.mOptionEntryName + "' option"
     spoil outExpression
-    fixit replace s)
+    fixit %replaceBy s)
   end
 }
 

@@ -45,8 +45,8 @@ list @actualOutputArgumentList {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   proc enterInSemanticContext (?!@unifiedTypeMap ioTypeMap ) {
-    for (* mExpression *) in self do
-      mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+    for exp in self do
+      exp.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
     end
   }
 
@@ -69,12 +69,12 @@ syntax extension galgas3ExpressionSyntax {
     while
       $!selector:$ (?let selector)
       <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outExpressionList += !selector !expression !.here
+      outExpressionList ++= @(selector, expression, .here)
     while
       $!$
       let selector = "".here
       <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outExpressionList += !selector !expression !.here
+      outExpressionList ++= @(selector, expression, .here)
     end
   }
 
@@ -89,16 +89,16 @@ syntax extension galgas3ExpressionSyntax {
         select
           $!selector:$ (?let selector)
           <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-          outExpressionList += !selector !expression !.here
+          outExpressionList ++= @(selector, expression, .here)
         or
           $!$
           let selector = "".here
           <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-          outExpressionList += !selector !expression !.here
+          outExpressionList ++= @(selector, expression, .here)
         or
           let selector = "".here
           <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-          outExpressionList += !selector !expression !.here
+          outExpressionList ++= @(selector, expression, .here)
         end
       while
         $,$
@@ -131,7 +131,7 @@ syntax extension galgas4ExpressionSyntax {
           selector = "".here
         end
         <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        outExpressionList += !selector !expression !.here
+        outExpressionList ++= @(selector, expression, .here)
       while
         $,$
       end
@@ -155,7 +155,7 @@ syntax extension galgas4ExpressionSyntax {
         selector = "".here
       end
       <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outExpressionList += !selector !expression !.here
+      outExpressionList ++= @(selector, expression, .here)
     while
       $,$
     end

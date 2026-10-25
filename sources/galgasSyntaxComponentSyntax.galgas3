@@ -35,8 +35,8 @@ syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
   rule <formal_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
                                     !@formalParameterListAST outFormalParameterList)
 
-  rule <actual_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@actualParameterListAST outActualParameterList)
+  rule <actual_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
+                                      !@actualParameterListAST outActualParameterList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //      S Y N T A X    C O M P O N E N T

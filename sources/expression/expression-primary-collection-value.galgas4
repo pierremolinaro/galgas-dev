@@ -22,7 +22,7 @@ syntax extension galgas3ExpressionSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                      !@semanticExpressionAST outExpression ) {
+                       !@semanticExpressionAST outExpression ) {
     <optional_type_ggs3> (?let @lstring typeName)
     $@[$
     var @collectionValueElementList expressionList = @()
@@ -30,7 +30,7 @@ syntax extension galgas3ExpressionSyntax {
     or
       repeat
         <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        expressionList += !expression !.here
+        expressionList ++= @(expression, .here)
       while
         $,$
       end
@@ -58,7 +58,7 @@ syntax extension galgas4ExpressionSyntax {
     or
       repeat
         <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        expressionList += !expression !.here
+        expressionList ++= @(expression, .here)
       while
         $,$
       end
@@ -78,7 +78,7 @@ syntax extension galgas4ExpressionSyntax {
     or
       repeat
         <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        expressionList += !expression !.here
+        expressionList ++= @(expression, .here)
       while
         $,$
       end
@@ -108,8 +108,8 @@ final class @collectionValueAST : @semanticExpressionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    for (expression *) in self.mExpressionList do
-      expression.enterExpressionInSemanticContext (!?ioTypeMap)
+    for expression in self.mExpressionList do
+      expression.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
     end
   }
 
@@ -145,15 +145,15 @@ final class @collectionValueAST : @semanticExpressionAST {
       end
     //--- Usefull entity graph
       let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
-        !targetType.definition.typeName
+        !targetType.definition.typeName,
         !emptyArgumentList.initializerSignature
       )
       !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: nameForUsefulness)
     //---
       let elementType = targetType.definition.typeForEnumeratedElement
       var @collectionValueElementListForGeneration expressionListForGeneration = @()
-      for (expression location) in self.mExpressionList do
-        expression.analyzeSemanticExpression
+      for exp in self.mExpressionList do
+        exp.mExpression.analyzeSemanticExpression
           (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
           !?ioUsefulEntitiesGraph,
           !inferenceType: elementType,
@@ -166,10 +166,10 @@ final class @collectionValueAST : @semanticExpressionAST {
         checkAssignmentTypeWithImplicitGetterCall (
           !elementType,
           !expressionForGeneration.mResultType,
-          !location,
+          !exp.location,
           !?expressionForGeneration
         )
-        expressionListForGeneration += !expressionForGeneration !location
+        expressionListForGeneration ++= @(expressionForGeneration, exp.location)
       end
       outExpression = @expressionCollectionForGeneration (
         !targetType,
@@ -216,8 +216,8 @@ final class @expressionCollectionForGeneration : @semanticExpressionForGeneratio
     ioGeneratedCode += "::init (" + compilerCppName () + self.mLocation.commaSourceFile + ") ;\n"
     !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   //--- Add Elements
-    for (expression location) in self.expressionList do
-      expression.generateExpression
+    for exp in self.expressionList do
+      exp.expression.generateExpression
         (!?ioGeneratedCode,
         !?ioInclusionSet,
         !?ioTemporaryVariableIndex,
@@ -226,7 +226,7 @@ final class @expressionCollectionForGeneration : @semanticExpressionForGeneratio
       )
       ioGeneratedCode += outCppExpression + ".plusPlusAssignOperation ("
       ioGeneratedCode += argumentCppName + " "
-      ioGeneratedCode += location.commaSourceFile + ") ;\n"
+      ioGeneratedCode += exp.location.commaSourceFile + ") ;\n"
     end
   }
 

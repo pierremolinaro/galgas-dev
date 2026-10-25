@@ -85,7 +85,7 @@ syntax extension galgas4ExpressionSyntax {
                                           !@semanticExpressionAST outExpression ) {
   //--- Type name
     <simple_type_definition> (!?ioDeclarations, ?let t)
-    let typeName = makeEmbeddedTypeLName (!outer: inTypeName !inner: t)
+    let typeName = makeEmbeddedTypeLName (!outer: inTypeName, !inner: t)
     select
       <primary_beginning_by_type> (!typeName, !?ioDeclarations, ?outExpression)
     or
@@ -248,7 +248,7 @@ private proc analyzeInitializerInvocation (?let @lstring inUsefulnessCallerEntit
     else
     //--- Usefull entity graph
       let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
-        !instanciedTypeDefinition.typeName
+        !instanciedTypeDefinition.typeName,
         !inInvocationArguments.initializerSignature
       )
       !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: nameForUsefulness)
@@ -293,14 +293,14 @@ private proc analyzeInitializerInvocation (?let @lstring inUsefulnessCallerEntit
           !effectiveParameter.mEndOfExpressionLocation,
           !?exp
         )
-        outConstructorEffectiveParameterList += !exp
+        outConstructorEffectiveParameterList ++= @(exp)
         if formalArg.mFormalSelector.string != effectiveParameter.mActualSelector.string then
           let @string s = "!" + if formalArg.mFormalSelector.string != ""
             then formalArg.mFormalSelector.string + ":"
             else ""
           end
           error (effectiveParameter.mActualSelector
-          : "the selector should be '" + s + "'" fixit replace s )
+          : "the selector should be '" + s + "'" fixit %replaceBy s )
         end
       end
     end
@@ -332,7 +332,7 @@ final class @initializerCallForGeneration : @semanticExpressionForGeneration {
         !?ioUnusedVariableCppNameSet,
         ?let @string parameter
       )
-      parameterList += !parameter
+      parameterList ++= @(parameter)
     end
     outCppExpression = "GGS_"  + self.mResultType.identifierRepresentation
                      + "::" + self.initializerName.identifierRepresentation

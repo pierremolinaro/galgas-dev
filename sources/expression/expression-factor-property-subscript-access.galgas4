@@ -34,22 +34,22 @@ syntax extension galgas3ExpressionSyntax {
         select
           $!selector:$ (?let selector)
           <expression_ggs3> (!?ioDeclarations, ?let expression)
-          expressionList += !selector !expression !.here
+          expressionList ++= @(selector, expression, .here)
         or
           $!$
           let selector = "".here
           <expression_ggs3> (!?ioDeclarations, ?let expression)
-          expressionList += !selector !expression !.here
+          expressionList ++= @(selector, expression, .here)
         or
           let selector = "".here
           <expression_ggs3> (!?ioDeclarations, ?let expression)
-          expressionList += !selector !expression !.here
+          expressionList ++= @(selector, expression, .here)
         end
       while
         $,$
       end
       outExpression = @subscriptReadAccessExpressionAST (
-        !outExpression,
+        outExpression,
         expressionList,
         .here
       )
@@ -328,9 +328,9 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
             else ""
           end
           error (actualArg.mActualSelector : "the selector should be '" + s + "'"
-          fixit replace s)
+          fixit %replaceBy s)
         end
-        semanticExpressionListForGeneration += !expression
+        semanticExpressionListForGeneration ++= @(expression)
       end
     //--- Generate expression
       outExpression = @subscriptReadAccessExpressionForGeneration (
