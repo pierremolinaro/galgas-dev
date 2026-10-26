@@ -13043,7 +13043,7 @@ GGS_templateVarInExpressionAST GGS_templateVarInExpressionAST::extractObject (co
 //--------------------------------------------------------------------------------------------------
 
 static const char * gNonTerminalNames_templateGrammar [49] = {
-  "<expression_tpl>",// Index 0
+  "<expression_template>",// Index 0
   "<relation_term_tpl>",// Index 1
   "<relation_factor_tpl>",// Index 2
   "<simple_expression_tpl>",// Index 3
@@ -17302,22 +17302,22 @@ static const int32_t gProductionsTable_templateGrammar [122 * 2] = {
 
 //--------------------------------------------------------------------------------------------------
 //
-//                          'expression_tpl' non terminal implementation                            
+//                       'expression_template' non terminal implementation                          
 //
 //--------------------------------------------------------------------------------------------------
 
-void cGrammar_templateGrammar::nt_expression_5F_tpl_indexing (Lexique_galgasTemplateScanner * inLexique) {
+void cGrammar_templateGrammar::nt_expression_5F_template_indexing (Lexique_galgasTemplateScanner * inLexique) {
   if (inLexique->nextProductionIndex () == 0) {
-  rule_templateSyntax_expression_5F_tpl_i0_indexing(inLexique) ;
+  rule_templateSyntax_expression_5F_template_i0_indexing(inLexique) ;
   }else{
     inLexique->internalBottomUpParserError (HERE) ;
   }
 }
 
-void cGrammar_templateGrammar::nt_expression_5F_tpl_ (GGS_templateExpressionAST &  parameter_1,
+void cGrammar_templateGrammar::nt_expression_5F_template_ (GGS_templateExpressionAST &  parameter_1,
                                 Lexique_galgasTemplateScanner * inLexique) {
   if (inLexique->nextProductionIndex () == 0) {
-  rule_templateSyntax_expression_5F_tpl_i0_(parameter_1, inLexique) ;
+  rule_templateSyntax_expression_5F_template_i0_(parameter_1, inLexique) ;
   }else{
     inLexique->internalBottomUpParserError (HERE) ;
   }

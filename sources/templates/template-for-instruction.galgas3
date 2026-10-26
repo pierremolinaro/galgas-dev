@@ -77,27 +77,6 @@ syntax extension templateSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  rule <for_instruction_enumerated_object> !@templateInstructionForEnumerationAST outEnumeratedObject
-//                                           !@templateExpressionAST outExpression {
-//    $($
-//    let start = @location.here
-//    $)$
-//    let endLocation = @location.here
-//    $in$
-//    <expression_tpl> ?outExpression
-//    let @string foreachPrefix
-//    select
-//      foreachPrefix = ""
-//    or
-//      $:$
-//      $identifier$ ?let @lstring prefixString
-//      foreachPrefix = prefixString.string
-//    end
-//    outEnumeratedObject = .implicit {!prefix: foreachPrefix !remplacementRange: [start union !endLocation]}
-//  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   rule <for_instruction_enumerated_object> (!@lstringlist outEnumeration,
                                            !@location outEndOfProperties,
                                            !@templateExpressionAST outExpression ) {
@@ -110,7 +89,7 @@ syntax extension templateSyntax {
     outEndOfProperties = @location.here
     $)$
     $in$
-    <expression_tpl> (?outExpression)
+    <expression_template> (?outExpression)
     select
     or
       $:$

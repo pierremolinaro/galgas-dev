@@ -31,7 +31,7 @@ syntax templateSyntax (galgasTemplateScanner) {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <expression_tpl>
+rule <expression_template>
   (!@templateExpressionAST outExpression ) {
   <relation_term_tpl> (?outExpression)
   repeat
@@ -283,7 +283,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
 
 rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   $($
-  <expression_tpl> (?outExpression)
+  <expression_template> (?outExpression)
   $)$
 }
 
@@ -377,7 +377,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   //-------------------------------- Template
     $template$
     let @templateExpressionAST receiverExpression
-    <expression_tpl> (?receiverExpression)
+    <expression_template> (?receiverExpression)
     $identifier$ (?let @lstring templateName)
     let @templateExpressionListAST expressionList
     <output_expression_list_tpl> (?expressionList)
@@ -409,7 +409,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   or //-------------------------------- Func call
     let startLocation = @location.here
     let @templateExpressionAST receiverExpression
-    <expression_tpl> (?receiverExpression)
+    <expression_template> (?receiverExpression)
     $identifier$ (?let @lstring getterName)
     let @templateExpressionListAST expressionList
     <output_expression_list_tpl> (?expressionList)
@@ -479,12 +479,12 @@ rule <output_expression_list_tpl> (!@templateExpressionListAST outExpressionList
   repeat
   while
     $!selector:$ (?let selector)
-    <expression_tpl> (?let @templateExpressionAST expression)
+    <expression_template> (?let @templateExpressionAST expression)
     outExpressionList ++= @(!selector, !expression, !@location.here)
   while
     $!$
     let selector = "".here
-    <expression_tpl> (?let @templateExpressionAST expression)
+    <expression_template> (?let @templateExpressionAST expression)
     outExpressionList ++= @(!selector, !expression, !@location.here)
   end
 }
@@ -497,7 +497,7 @@ rule <output_expression_list_tpl> (!@templateExpressionListAST outExpressionList
 
 rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
   $!$
-  <expression_tpl> (?let @templateExpressionAST expression)
+  <expression_template> (?let @templateExpressionAST expression)
   ioResultingInstructionList ++= @(!@templateInstructionExpressionAST (!expression, @location.here))
 }
 
@@ -519,7 +519,7 @@ rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructio
 
 rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
   $block$
-  <expression_tpl> (?let @templateExpressionAST expression)
+  <expression_template> (?let @templateExpressionAST expression)
   $:$
 //--- Instruction list
   var blockInstructionList = @templateInstructionListAST ()
@@ -542,7 +542,7 @@ rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructio
   $if$
   var templateInstructionIfBranchList = @templateInstructionIfBranchListAST ()
   repeat
-    <expression_tpl> (?let expression)
+    <expression_template> (?let expression)
     $then$
     var @templateInstructionListAST instructionList = @()
     repeat

@@ -21,82 +21,84 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
  "bat", "rtf", "py"
 }{
 }{
-  template clean_macosx "makefile-macosx/clean.py.galgasTemplate" ?@string PROJECT_NAME
-  template build_macosx "makefile-macosx/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
-  template build_verbose_macosx "makefile-macosx/verbose-build.py.galgasTemplate"
-  template build_debug_macosx "makefile-macosx/build+debug.py.galgasTemplate"
-  template build_release_macosx "makefile-macosx/build+release.py.galgasTemplate"
-  template build_lto_macosx "makefile-macosx/build+lto.py.galgasTemplate"
+  template clean_macosx : "makefile-macosx/clean.py.galgasTemplate" (?@string PROJECT_NAME)
+  template build_macosx : "makefile-macosx/build.py.galgasTemplate" (?@string PROJECT_NAME, ?@string BUILD_DIR_NAME)
+  template build_verbose_macosx : "makefile-macosx/verbose-build.py.galgasTemplate" ()
+  template build_debug_macosx : "makefile-macosx/build+debug.py.galgasTemplate" ()
+  template build_release_macosx : "makefile-macosx/build+release.py.galgasTemplate" ()
+  template build_lto_macosx : "makefile-macosx/build+lto.py.galgasTemplate" ()
 
-  template clean_unix "makefile-unix/clean.py.galgasTemplate" ?@string PROJECT_NAME
-  template build_unix "makefile-unix/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
-  template build_verbose_unix "makefile-unix/verbose-build.py.galgasTemplate"
-  template build_debug_unix "makefile-unix/build+debug.py.galgasTemplate"
-  template build_release_unix "makefile-unix/build+release.py.galgasTemplate"
-  template build_lto_unix "makefile-unix/build+lto.py.galgasTemplate"
-  template install_unix "makefile-unix/install.py.galgasTemplate"
+  template clean_unix : "makefile-unix/clean.py.galgasTemplate" (?@string PROJECT_NAME)
+  template build_unix : "makefile-unix/build.py.galgasTemplate" (?@string PROJECT_NAME, ?@string BUILD_DIR_NAME)
+  template build_verbose_unix : "makefile-unix/verbose-build.py.galgasTemplate" ()
+  template build_debug_unix : "makefile-unix/build+debug.py.galgasTemplate" ()
+  template build_release_unix : "makefile-unix/build+release.py.galgasTemplate" ()
+  template build_lto_unix : "makefile-unix/build+lto.py.galgasTemplate" ()
+  template install_unix : "makefile-unix/install.py.galgasTemplate" ()
 
-  template clean_x86linux32_on_mac "makefile-x86linux32-on-macosx/clean.py.galgasTemplate" ?@string PROJECT_NAME
-  template build_x86linux32_on_mac "makefile-x86linux32-on-macosx/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
-  template build_verbose_x86linux32_on_mac "makefile-x86linux32-on-macosx/verbose-build.py.galgasTemplate"
-  template build_debug_x86linux32_on_mac "makefile-x86linux32-on-macosx/build+debug.py.galgasTemplate"
-  template build_release_x86linux32_on_mac "makefile-x86linux32-on-macosx/build+release.py.galgasTemplate"
-  template build_lto_x86linux32_on_mac "makefile-x86linux32-on-macosx/build+lto.py.galgasTemplate"
+  template clean_x86linux32_on_mac : "makefile-x86linux32-on-macosx/clean.py.galgasTemplate" (?@string PROJECT_NAME)
+  template build_x86linux32_on_mac : "makefile-x86linux32-on-macosx/build.py.galgasTemplate" (?@string PROJECT_NAME, ?@string BUILD_DIR_NAME)
+  template build_verbose_x86linux32_on_mac : "makefile-x86linux32-on-macosx/verbose-build.py.galgasTemplate" ()
+  template build_debug_x86linux32_on_mac : "makefile-x86linux32-on-macosx/build+debug.py.galgasTemplate" ()
+  template build_release_x86linux32_on_mac : "makefile-x86linux32-on-macosx/build+release.py.galgasTemplate" ()
+  template build_lto_x86linux32_on_mac : "makefile-x86linux32-on-macosx/build+lto.py.galgasTemplate" ()
 
-  template clean_x86linux64_on_mac "makefile-x86linux64-on-macosx/clean.py.galgasTemplate" ?@string PROJECT_NAME
-  template build_x86linux64_on_mac "makefile-x86linux64-on-macosx/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
-  template build_verbose_x86linux64_on_mac "makefile-x86linux64-on-macosx/verbose-build.py.galgasTemplate"
-  template build_debug_x86linux64_on_mac "makefile-x86linux64-on-macosx/build+debug.py.galgasTemplate"
-  template build_release_x86linux64_on_mac "makefile-x86linux64-on-macosx/build+release.py.galgasTemplate"
-  template build_lto_x86linux64_on_mac "makefile-x86linux64-on-macosx/build+lto.py.galgasTemplate"
+  template clean_x86linux64_on_mac : "makefile-x86linux64-on-macosx/clean.py.galgasTemplate" (?@string PROJECT_NAME)
+  template build_x86linux64_on_mac : "makefile-x86linux64-on-macosx/build.py.galgasTemplate" (?@string PROJECT_NAME, ?@string BUILD_DIR_NAME)
+  template build_verbose_x86linux64_on_mac : "makefile-x86linux64-on-macosx/verbose-build.py.galgasTemplate" ()
+  template build_debug_x86linux64_on_mac : "makefile-x86linux64-on-macosx/build+debug.py.galgasTemplate" ()
+  template build_release_x86linux64_on_mac : "makefile-x86linux64-on-macosx/build+release.py.galgasTemplate" ()
+  template build_lto_x86linux64_on_mac : "makefile-x86linux64-on-macosx/build+lto.py.galgasTemplate" ()
 
-  template clean_win32_on_mac "makefile-win32-on-macosx/clean.py.galgasTemplate" ?@string PROJECT_NAME
-  template build_win32_on_mac "makefile-win32-on-macosx/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
-  template build_verbose_win32_on_mac "makefile-win32-on-macosx/verbose-build.py.galgasTemplate"
-  template build_debug_win32_on_mac "makefile-win32-on-macosx/build+debug.py.galgasTemplate"
-//  template build_release_win32_on_mac "makefile-win32-on-macosx/build+release.py.galgasTemplate"
-  template build_lto_win32_on_mac "makefile-win32-on-macosx/build+lto.py.galgasTemplate"
+  template clean_win32_on_mac : "makefile-win32-on-macosx/clean.py.galgasTemplate" (?@string PROJECT_NAME)
+  template build_win32_on_mac : "makefile-win32-on-macosx/build.py.galgasTemplate" (?@string PROJECT_NAME, ?@string BUILD_DIR_NAME)
+  template build_verbose_win32_on_mac : "makefile-win32-on-macosx/verbose-build.py.galgasTemplate" ()
+  template build_debug_win32_on_mac : "makefile-win32-on-macosx/build+debug.py.galgasTemplate" ()
+//  template build_release_win32_on_mac : "makefile-win32-on-macosx/build+release.py.galgasTemplate"
+  template build_lto_win32_on_mac : "makefile-win32-on-macosx/build+lto.py.galgasTemplate" ()
 
-  template clean_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/clean.py.galgasTemplate" ?@string PROJECT_NAME
-  template build_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/build.py.galgasTemplate" ?@string PROJECT_NAME ?@string BUILD_DIR_NAME
-  template build_verbose_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/verbose-build.py.galgasTemplate"
-  template build_debug_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/build+debug.py.galgasTemplate"
-  template build_release_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/build+release.py.galgasTemplate"
-  template build_lto_arm64_linux_on_mac "makefile-arm64-linux-on-macosx/build+lto.py.galgasTemplate"
+  template clean_arm64_linux_on_mac : "makefile-arm64-linux-on-macosx/clean.py.galgasTemplate" (?@string PROJECT_NAME)
+  template build_arm64_linux_on_mac : "makefile-arm64-linux-on-macosx/build.py.galgasTemplate" (?@string PROJECT_NAME, ?@string BUILD_DIR_NAME)
+  template build_verbose_arm64_linux_on_mac : "makefile-arm64-linux-on-macosx/verbose-build.py.galgasTemplate" ()
+  template build_debug_arm64_linux_on_mac : "makefile-arm64-linux-on-macosx/build+debug.py.galgasTemplate" ()
+  template build_release_arm64_linux_on_mac : "makefile-arm64-linux-on-macosx/build+release.py.galgasTemplate" ()
+  template build_lto_arm64_linux_on_mac : "makefile-arm64-linux-on-macosx/build+lto.py.galgasTemplate" ()
 
-  template codeblocks_project "project-codeblocks.cbp.galgasTemplate"
-    ?@string PROJECT_NAME
-    ?@stringlist TOOL_CPP_FILE_LIST
-    ?@string LIBPM_PATH
-    ?@stringlist HAND_CODED_SOURCE_TOOL_FILE_LIST
-    ?@string HAND_CODED_SOURCE_TOOL_DIRECTORY
-    ?windows:@bool GENERATE_FOR_WINDOWS
-    ?platform:@string PLATFORM
-    ?verboseOption:@bool VERBOSE_OPTION
+  template codeblocks_project : "project-codeblocks.cbp.galgasTemplate" (
+    ?@string PROJECT_NAME,
+    ?@stringlist TOOL_CPP_FILE_LIST,
+    ?@string LIBPM_PATH,
+    ?@stringlist HAND_CODED_SOURCE_TOOL_FILE_LIST,
+    ?@string HAND_CODED_SOURCE_TOOL_DIRECTORY,
+    ?windows:@bool GENERATE_FOR_WINDOWS,
+    ?platform:@string PLATFORM,
+    ?verboseOption:@bool VERBOSE_OPTION,
     ?buildDirName: @string BUILD_DIR_NAME
+  )
 
-  template makefile_info_plist "project-xcode-swiftui/Info.plist.galgasTemplate"
-    ?@string PROJECT_NAME
-    ?@string APPLICATION_BUNDLE_BASE
-    ?@string VERSION_STRING
-    ?@stringset HANDLED_EXTENSION_SET
-    ?@string MACOSX_DEPLOYMENT_TARGET
+  template makefile_info_plist : "project-xcode-swiftui/Info.plist.galgasTemplate" (
+    ?@string PROJECT_NAME,
+    ?@string APPLICATION_BUNDLE_BASE,
+    ?@string VERSION_STRING,
+    ?@stringset HANDLED_EXTENSION_SET,
+    ?@string MACOSX_DEPLOYMENT_TARGET,
     ?@string DOCUMENT_CLASS
+  )
 
-  template makefile_build_xcode "project-xcode-swiftui/build.command"
+  template makefile_build_xcode : "project-xcode-swiftui/build.command" ()
 
-  template makefile_info_plist_strings "project-xcode-swiftui/Base.lproj/InfoPlist.strings" ?@string PROJECT_NAME
+  template makefile_info_plist_strings : "project-xcode-swiftui/Base.lproj/InfoPlist.strings" (?@string PROJECT_NAME)
 
-  template json_file_list "json-file-list.galgasTemplate"
-    ?@stringset HAND_CODED_SOURCE_DIR_SET
-    ?@stringlist HAND_CODED_SOURCE_FILE_LIST
-    ?@stringlist MAKEFILE_FILE_LIST
-    ?@stringlist TOOL_LINK_LIST
-    ?@string LIBPM_DIRECTORY_PATH
+  template json_file_list : "json-file-list.galgasTemplate" (
+    ?@stringset HAND_CODED_SOURCE_DIR_SET,
+    ?@stringlist HAND_CODED_SOURCE_FILE_LIST,
+    ?@stringlist MAKEFILE_FILE_LIST,
+    ?@stringlist TOOL_LINK_LIST,
+    ?@string LIBPM_DIRECTORY_PATH,
     ?@string RELATIVE_BUILD_DIR
+  )
 
-  template project_header "project.h.galgasTemplate"
-    ?@string VERSION_STRING
+  template project_header : "project.h.galgasTemplate" (?@string VERSION_STRING)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -113,15 +115,15 @@ private proc generateGalgasCodeBlocksWindowsTarget
 ) {
   let @string dir = inProjectDirectory + "/project-codeblocks-windows"
   dir.makeDirectory ()
-  let @string s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
-    !inProjectName
-    !inToolCppFileList
-    !inLIBPMpath
-    !inHandCodedSourceToolFileList
-    !inHandCodedSourceDirectory
-    !windows:true
-    !platform:"Windows"
-    !verboseOption:inVerboseOption
+  let @string s = filewrapper [targetGalgas3GenerationFileWrapper.codeblocks_project :
+    !inProjectName,
+    !inToolCppFileList,
+    !inLIBPMpath,
+    !inHandCodedSourceToolFileList,
+    !inHandCodedSourceDirectory,
+    !windows:true,
+    !platform:"Windows",
+    !verboseOption:inVerboseOption,
     !buildDirName: inBuildDirectoryName
   ]
   s.writeToFileWhenDifferentContents (!dir + "/" + inProjectName + ".cbp", ?*)
@@ -141,15 +143,15 @@ private proc generateGalgasCodeBlocksLinuxI686Target
  ) {
   let @string dir = inProjectDirectory + "/project-codeblocks-linux32"
   dir.makeDirectory ()
-  let @string s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
-    !inProjectName
-    !inToolCppFileList
-    !inLIBPMpath
-    !inHandCodedSourceToolFileList
-    !inHandCodedSourceDirectory
-    !windows:false
-    !platform:"Unix"
-    !verboseOption:inVerboseOption
+  let @string s = filewrapper [targetGalgas3GenerationFileWrapper.codeblocks_project :
+    !inProjectName,
+    !inToolCppFileList,
+    !inLIBPMpath,
+    !inHandCodedSourceToolFileList,
+    !inHandCodedSourceDirectory,
+    !windows:false,
+    !platform:"Unix",
+    !verboseOption:inVerboseOption,
     !buildDirName: inBuildDirectoryName
   ]
   s.writeToFileWhenDifferentContents (!dir + "/" + inProjectName + ".cbp", ?*)
@@ -169,15 +171,15 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target
 ) {
   let @string dir = inProjectDirectory + "/project-codeblocks-linux64"
   dir.makeDirectory ()
-  let @string s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
-    !inProjectName
-    !inToolCppFileList
-    !inLIBPMpath
-    !inHandCodedSourceToolFileList
-    !inHandCodedSourceDirectory
-    !windows:false
-    !platform:"Unix"
-    !verboseOption:inVerboseOption
+  let @string s = filewrapper [targetGalgas3GenerationFileWrapper.codeblocks_project :
+    !inProjectName,
+    !inToolCppFileList,
+    !inLIBPMpath,
+    !inHandCodedSourceToolFileList,
+    !inHandCodedSourceDirectory,
+    !windows:false,
+    !platform:"Unix",
+    !verboseOption:inVerboseOption,
     !buildDirName: inBuildDirectoryName
   ]
   s.writeToFileWhenDifferentContents (!dir + "/" + inProjectName + ".cbp", ?*)
@@ -191,15 +193,15 @@ private proc generateMakefileMinGWOnMacOSXTarget
   ?let @string inProjectName ) {
   let @string dir = inProjectDirectory + "/makefile-win32-on-macosx"
   dir.makeDirectory ()
-  let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_win32_on_mac !inProjectName !inBuildDirectoryName]
+  let s1 = filewrapper [targetGalgas3GenerationFileWrapper.build_win32_on_mac : !inProjectName, !inBuildDirectoryName]
   s1.writeToExecutableFileWhenDifferentContents (!dir + "/build.py", ?*)
-  let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_win32_on_mac]
+  let s2 = filewrapper [targetGalgas3GenerationFileWrapper.build_lto_win32_on_mac : ]
   s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
-  let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_win32_on_mac]
+  let s3 = filewrapper [targetGalgas3GenerationFileWrapper.build_debug_win32_on_mac : ]
   s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
-  let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_win32_on_mac]
+  let s4 = filewrapper [targetGalgas3GenerationFileWrapper.build_verbose_win32_on_mac : ]
   s4.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
-  let s5 = [filewrapper targetGalgas3GenerationFileWrapper.clean_win32_on_mac !inProjectName]
+  let s5 = filewrapper [targetGalgas3GenerationFileWrapper.clean_win32_on_mac : !inProjectName]
   s5.writeToExecutableFileWhenDifferentContents (
     !dir +"/clean.py",
     ?*
@@ -215,19 +217,19 @@ private proc generateMakefileUnixTarget
   ?let @string inProjectName ) {
   let @string dir = inProjectDirectory + "/makefile-unix"
   dir.makeDirectory ()
-  let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_unix !inProjectName !inBuildDirectoryName]
+  let s1 = filewrapper [targetGalgas3GenerationFileWrapper.build_unix : !inProjectName, !inBuildDirectoryName]
   s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py", ?*)
-  let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_release_unix]
+  let s2 = filewrapper [targetGalgas3GenerationFileWrapper.build_release_unix : ]
   s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py", ?*)
-  let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_unix]
+  let s3 = filewrapper [targetGalgas3GenerationFileWrapper.build_lto_unix : ]
   s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
-  let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_unix]
+  let s4 = filewrapper [targetGalgas3GenerationFileWrapper.build_debug_unix : ]
   s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
-  let s5 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_unix]
+  let s5 = filewrapper [targetGalgas3GenerationFileWrapper.build_verbose_unix : ]
   s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
-  let s6 = [filewrapper targetGalgas3GenerationFileWrapper.install_unix]
+  let s6 = filewrapper [targetGalgas3GenerationFileWrapper.install_unix : ]
   s6.writeToExecutableFileWhenDifferentContents (!dir +"/install.py", ?*)
-  let s7 = [filewrapper targetGalgas3GenerationFileWrapper.clean_unix !inProjectName]
+  let s7 = filewrapper [targetGalgas3GenerationFileWrapper.clean_unix : !inProjectName]
   s7.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py", ?*)
   @string.deleteFileIfExists (!dir + "/makefile")
 }
@@ -240,17 +242,17 @@ private proc generateMakefileMacTarget
   ?let @string inProjectName ) {
   let @string dir = inProjectDirectory + "/makefile-macosx"
   dir.makeDirectory ()
-  let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_macosx !inProjectName !inBuildDirectoryName]
+  let s1 = filewrapper [targetGalgas3GenerationFileWrapper.build_macosx : !inProjectName, !inBuildDirectoryName]
   s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py", ?*)
-  let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_release_macosx]
+  let s2 = filewrapper [targetGalgas3GenerationFileWrapper.build_release_macosx : ]
   s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py", ?*)
-  let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_macosx]
+  let s3 = filewrapper [targetGalgas3GenerationFileWrapper.build_lto_macosx : ]
   s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
-  let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_macosx]
+  let s4 = filewrapper [targetGalgas3GenerationFileWrapper.build_debug_macosx : ]
   s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
-  let s5 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_macosx]
+  let s5 = filewrapper [targetGalgas3GenerationFileWrapper.build_verbose_macosx : ]
   s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
-  let s6 = [filewrapper targetGalgas3GenerationFileWrapper.clean_macosx !inProjectName]
+  let s6 = filewrapper [targetGalgas3GenerationFileWrapper.clean_macosx : !inProjectName]
   s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py", ?*)
   @string.deleteFileIfExists (!dir + "/makefile")
 }
@@ -263,17 +265,17 @@ private proc generateMakefileLinux32OnMacOSXTarget
   ?let @string inProjectName ) {
   let @string dir = inProjectDirectory + "/makefile-x86linux32-on-macosx"
   dir.makeDirectory ()
-  let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_x86linux32_on_mac !inProjectName !inBuildDirectoryName]
+  let s1 = filewrapper [targetGalgas3GenerationFileWrapper.build_x86linux32_on_mac : !inProjectName, !inBuildDirectoryName]
   s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py", ?*)
-  let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_release_x86linux32_on_mac]
+  let s2 = filewrapper [targetGalgas3GenerationFileWrapper.build_release_x86linux32_on_mac : ]
   s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py", ?*)
-  let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_x86linux32_on_mac]
+  let s3 = filewrapper [targetGalgas3GenerationFileWrapper.build_lto_x86linux32_on_mac : ]
   s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
-  let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_x86linux32_on_mac]
+  let s4 = filewrapper [targetGalgas3GenerationFileWrapper.build_debug_x86linux32_on_mac : ]
   s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
-  let s5 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_x86linux32_on_mac]
+  let s5 = filewrapper [targetGalgas3GenerationFileWrapper.build_verbose_x86linux32_on_mac : ]
   s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
-  let s6 = [filewrapper targetGalgas3GenerationFileWrapper.clean_x86linux32_on_mac !inProjectName]
+  let s6 = filewrapper [targetGalgas3GenerationFileWrapper.clean_x86linux32_on_mac : !inProjectName]
   s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py", ?*)
   @string.deleteFileIfExists (!dir + "/makefile")
 }
@@ -286,17 +288,17 @@ private proc generateMakefileLinux64OnMacOSXTarget
   ?let @string inProjectName ) {
   let @string dir = inProjectDirectory + "/makefile-x86linux64-on-macosx"
   dir.makeDirectory ()
-  let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_x86linux64_on_mac !inProjectName !inBuildDirectoryName]
+  let s1 = filewrapper [targetGalgas3GenerationFileWrapper.build_x86linux64_on_mac : !inProjectName, !inBuildDirectoryName]
   s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py", ?*)
-  let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_release_x86linux64_on_mac]
+  let s2 = filewrapper [targetGalgas3GenerationFileWrapper.build_release_x86linux64_on_mac : ]
   s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py", ?*)
-  let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_x86linux64_on_mac]
+  let s3 = filewrapper [targetGalgas3GenerationFileWrapper.build_lto_x86linux64_on_mac : ]
   s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
-  let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_x86linux64_on_mac]
+  let s4 = filewrapper [targetGalgas3GenerationFileWrapper.build_debug_x86linux64_on_mac : ]
   s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
-  let s5 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_x86linux64_on_mac]
+  let s5 = filewrapper [targetGalgas3GenerationFileWrapper.build_verbose_x86linux64_on_mac : ]
   s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
-  let s6 = [filewrapper targetGalgas3GenerationFileWrapper.clean_x86linux64_on_mac !inProjectName]
+  let s6 = filewrapper [targetGalgas3GenerationFileWrapper.clean_x86linux64_on_mac : !inProjectName]
   s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py", ?*)
   @string.deleteFileIfExists (!dir + "/makefile")
 }
@@ -308,17 +310,17 @@ private proc generateArm64LinuxMakefileTarget (?let @string inProjectDirectory,
                                               ?let @string inProjectName ) {
   let @string dir = inProjectDirectory + "/makefile-arm64-linux-on-macosx"
   dir.makeDirectory ()
-  let s1 = [filewrapper targetGalgas3GenerationFileWrapper.build_arm64_linux_on_mac !inProjectName !inBuildDirectoryName]
+  let s1 = filewrapper [targetGalgas3GenerationFileWrapper.build_arm64_linux_on_mac : !inProjectName, !inBuildDirectoryName]
   s1.writeToExecutableFileWhenDifferentContents (!dir +"/build.py", ?*)
-  let s2 = [filewrapper targetGalgas3GenerationFileWrapper.build_release_arm64_linux_on_mac]
+  let s2 = filewrapper [targetGalgas3GenerationFileWrapper.build_release_arm64_linux_on_mac : ]
   s2.writeToExecutableFileWhenDifferentContents (!dir +"/build+release.py", ?*)
-  let s3 = [filewrapper targetGalgas3GenerationFileWrapper.build_lto_arm64_linux_on_mac]
+  let s3 = filewrapper [targetGalgas3GenerationFileWrapper.build_lto_arm64_linux_on_mac : ]
   s3.writeToExecutableFileWhenDifferentContents (!dir +"/build+lto.py", ?*)
-  let s4 = [filewrapper targetGalgas3GenerationFileWrapper.build_debug_arm64_linux_on_mac]
+  let s4 = filewrapper [targetGalgas3GenerationFileWrapper.build_debug_arm64_linux_on_mac : ]
   s4.writeToExecutableFileWhenDifferentContents (!dir +"/build+debug.py", ?*)
-  let s5 = [filewrapper targetGalgas3GenerationFileWrapper.build_verbose_arm64_linux_on_mac]
+  let s5 = filewrapper [targetGalgas3GenerationFileWrapper.build_verbose_arm64_linux_on_mac : ]
   s5.writeToExecutableFileWhenDifferentContents (!dir +"/verbose-build.py", ?*)
-  let s6 = [filewrapper targetGalgas3GenerationFileWrapper.clean_arm64_linux_on_mac !inProjectName]
+  let s6 = filewrapper [targetGalgas3GenerationFileWrapper.clean_arm64_linux_on_mac : !inProjectName]
   s6.writeToExecutableFileWhenDifferentContents (!dir +"/clean.py", ?*)
   @string.deleteFileIfExists (!dir + "/makefile")
 }
@@ -355,7 +357,7 @@ proc updateGalgasTargets
   ioAllProductFileSet += .setWithStringList (!inSwiftAppProductFileList)
   let projectDirectory = inProjectSourceFilePath.deletingLastPathComponent
 //--- Update project header
-  let s1 = [filewrapper targetGalgas3GenerationFileWrapper.project_header !inProjectVersionString]
+  let s1 = filewrapper [targetGalgas3GenerationFileWrapper.project_header : !inProjectVersionString]
   s1.writeToFileWhenDifferentContents
     (!inAbsoluteBuildDirectory + "/output/project_header.h",
     ?*
@@ -430,7 +432,7 @@ proc updateGalgasTargets
       for (key) in availableGenerationFeatures do
         s ++= @(!"%" + key)
       end
-      error (value: "unknown '" + value + "' feature" fixit replace s )
+      error (value: "unknown '" + value + "' feature" fixit %replaceBy s )
     end
   end
 //--- Codesign without selecting OSX ?
@@ -519,12 +521,12 @@ proc updateGalgasTargets
       handCodedSourceDirectorySet ++= "../sources/tool-sources/" + subDir
     end
   end
-  let jsonFileListContents = [filewrapper targetGalgas3GenerationFileWrapper.json_file_list
-    !handCodedSourceDirectorySet
-    !handCodedSourceToolFileList
-    !toolCppFileList
-    !linkOptionForLinkingFrameworkWithTool
-    !libpmPath
+  let jsonFileListContents = filewrapper [targetGalgas3GenerationFileWrapper.json_file_list :
+    !handCodedSourceDirectorySet,
+    !handCodedSourceToolFileList,
+    !toolCppFileList,
+    !linkOptionForLinkingFrameworkWithTool,
+    !libpmPath,
     !inBuildDirectoryName
   ]
   let jsonFileListPath = inAbsoluteBuildDirectory + "/output/file-list.json"
@@ -543,34 +545,34 @@ proc updateGalgasTargets
     else
       applicationBundleBase = "unknown.unknown"
     end
-    let InfoPlistContents = [filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist
-      !inTargetName
-      !applicationBundleBase
-      !inProjectVersionString
-      !inHandledExtensionSet
-      !MACOSX_DEPLOYMENT_TARGET
+    let InfoPlistContents = filewrapper [targetGalgas3GenerationFileWrapper.makefile_info_plist :
+      !inTargetName,
+      !applicationBundleBase,
+      !inProjectVersionString,
+      !inHandledExtensionSet,
+      !MACOSX_DEPLOYMENT_TARGET,
       !"$(PRODUCT_MODULE_NAME).ProjectDocument"
     ]
     InfoPlistContents.writeToFileWhenDifferentContents (!dir +"/Info.plist", ?*)
   //--- Build.command
     if not (dir + "/build.command").fileExists then
-      let s = [filewrapper targetGalgas3GenerationFileWrapper.makefile_build_xcode]
+      let s = filewrapper [targetGalgas3GenerationFileWrapper.makefile_build_xcode : ]
       s.writeToExecutableFile (!dir +"/build.command")
     end
 
     let d = dir + "/Base.lproj" ; d.makeDirectory ()
     let InfoPlist_strings_path = dir + "/Base.lproj/InfoPlist.strings"
-    let s2 = [filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist_strings !inTargetName]
+    let s2 = filewrapper [targetGalgas3GenerationFileWrapper.makefile_info_plist_strings : !inTargetName]
     s2.writeToFileWhenDifferentContents (!InfoPlist_strings_path, ?*)
     let Credits_rtf_path = dir + "/Base.lproj/Credits.rtf"
     if not Credits_rtf_path.fileExists then
-      let s = [filewrapper targetGalgas3GenerationFileWrapper."project-xcode-swiftui/Base.lproj/Credits.rtf"]
+      let s = filewrapper [targetGalgas3GenerationFileWrapper."project-xcode-swiftui/Base.lproj/Credits.rtf"]
       s.writeToFile (!Credits_rtf_path)
     end
   //--- Enumerate icons files in "userResources" directory
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
     userResourceDir.makeDirectory ()
-    let @stringlist extensionList = @[@("icns")]
+    let @stringlist extensionList = [@("icns")]
     let resourceFiles = userResourceDir.regularFilesWithExtensions (!false, !extensionList)
   //--- Build paths
     let newIntermediateFilePath = inAbsoluteBuildDirectory + "/output/file-list-for-xcode-project.txt"
@@ -586,7 +588,7 @@ proc updateGalgasTargets
     headerSearchPaths += ", \"" + inHandCodedSourceDirectory + "\""
     headerSearchPaths += ")"
   //--- Default build configuration
-    var @stringlist xcodeSettingList = @[
+    var @stringlist xcodeSettingList = [
       @("ALWAYS_SEARCH_USER_PATHS = NO"),
       @("CLANG_CXX_LANGUAGE_STANDARD = \"c++17\""),
       @("CLANG_ENABLE_OBJC_ARC = YES"),
@@ -739,7 +741,7 @@ proc updateGalgasTargets
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Binary Decision Diagrams",
       !groupPath:"bdd",
-      !fileNames: @[
+      !fileNames: [
         "BinaryDecisionDiagramRelationConfiguration.cpp",
         "BinaryDecisionDiagramRelationConfiguration.h",
         "BinaryDecisionDiagramRelation.cpp",
@@ -762,7 +764,7 @@ proc updateGalgasTargets
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Big Integers",
       !groupPath:"big-integers",
-      !fileNames: @[
+      !fileNames: [
         "BigSigned-add.cpp",
         "BigSigned-bit.cpp",
         "BigSigned-chunk-operations.cpp",
@@ -813,7 +815,7 @@ proc updateGalgasTargets
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Swift App",
       !groupPath:"swiftui-app",
-      !fileNames: @[
+      !fileNames: [
         "AbstractScanner.swift",
         "AllocationDebugView.swift",
         "Application.swift",
@@ -868,7 +870,7 @@ proc updateGalgasTargets
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Generic Arraies",
       !groupPath:"generic-arraies",
-      !fileNames: @[
+      !fileNames: [
         "GenericArray.h",
         "GenericUniqueArray.h",
         "GenericUniqueMatrix.h"
@@ -885,7 +887,7 @@ proc updateGalgasTargets
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Command line Interface",
       !groupPath:"command_line_interface",
-      !fileNames: @[
+      !fileNames: [
         "F_mainForLIBPM.cpp",
         "F_mainForLIBPM.h",
         "builtin-command-line-options.cpp",
@@ -915,7 +917,7 @@ proc updateGalgasTargets
     !?xcodeProject.addGroupWithFiles
       (!groupName:"File",
       !groupPath:"files",
-      !fileNames: @[
+      !fileNames: [
         "FileManager.cpp",
         "FileManager.h",
         "AbstractFileHandle.cpp",
@@ -939,7 +941,7 @@ proc updateGalgasTargets
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Galgas",
       !groupPath:"galgas",
-      !fileNames: @[
+      !fileNames: [
         "AC_GALGAS_reference_class.cpp",
         "AC_GALGAS_reference_class.h",
         "AC_GALGAS_value_class.cpp",
@@ -1044,7 +1046,7 @@ proc updateGalgasTargets
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Streams",
       !groupPath:"streams",
-      !fileNames: @[
+      !fileNames: [
         "AbstractOutputStream.cpp",
         "AbstractOutputStream.h",
         "ConsoleOut.cpp",
@@ -1064,7 +1066,7 @@ proc updateGalgasTargets
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Strings",
       !groupPath:"strings",
-      !fileNames: @[
+      !fileNames: [
         "String-class-getters.cpp",
         "String-class.cpp",
         "String-class.h",
@@ -1087,7 +1089,7 @@ proc updateGalgasTargets
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Time",
       !groupPath:"time",
-      !fileNames: @[
+      !fileNames: [
         "DateTime.cpp",
         "DateTime.h",
         "Timer.cpp",
@@ -1105,7 +1107,7 @@ proc updateGalgasTargets
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Utilities",
       !groupPath:"utilities",
-      !fileNames: @[
+      !fileNames: [
         "basic-allocation.cpp",
         "basic-allocation.h",
         "U8Data.cpp",
@@ -1152,7 +1154,7 @@ proc updateGalgasTargets
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Resources",
       !groupPath:".",
-      !fileNames: @["Info.plist"],
+      !fileNames: ["Info.plist"],
       !?cFileRefs:buildCFileRefListForTool,
       !?cppFileRefs:buildCppFileRefListForTool,
       !?swiftFileRefs: swift_FileRefList,
@@ -1178,7 +1180,7 @@ proc updateGalgasTargets
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Frameworks for App",
       !groupPath:"/System/Library/Frameworks",
-      !fileNames: @[
+      !fileNames: [
         "AppKit.framework",
         "Cocoa.framework"
       ],
@@ -1193,24 +1195,24 @@ proc updateGalgasTargets
   //--- Code signing identity
     let @stringlist codeSigningSettingList
     if macCodeSign.string == "" then
-      codeSigningSettingList = @[@("CODE_SIGN_IDENTITY = \"-\"")]
+      codeSigningSettingList = [@("CODE_SIGN_IDENTITY = \"-\"")]
     else
       let components = macCodeSign.string.componentsSeparatedByString (!":")
       if components.count != 2 then
         error (macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\"" spoil codeSigningSettingList)
       elsif components.mValueAtIndex (!0) == "MacDeveloper" then
-        codeSigningSettingList = @[
+        codeSigningSettingList = [
           @("CODE_SIGN_IDENTITY = \"Mac Developer\""),
           @("DEVELOPMENT_TEAM = \"" + components.mValueAtIndex (!1) + "\"")
         ]
       elsif components.mValueAtIndex (!0) == "Certificate" then
-        codeSigningSettingList = @[@("CODE_SIGN_IDENTITY = \"" + components.mValueAtIndex (!1) + "\"")]
+        codeSigningSettingList = [@("CODE_SIGN_IDENTITY = \"" + components.mValueAtIndex (!1) + "\"")]
       else
         error (macCodeSign : "the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'" spoil codeSigningSettingList)
       end
     end
   //--- Add Mach O release target
-    var @stringlist settingList = @[
+    var @stringlist settingList = [
       @("GCC_OPTIMIZATION_LEVEL = 2"),
       @("GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)"),
       @("GCC_WARN_UNUSED_PARAMETER = YES"),
@@ -1226,7 +1228,7 @@ proc updateGalgasTargets
       ?productFileRef:let releaseProductFileRef
     )
   //--- Add Mach O debug target
-    settingList = @[
+    settingList = [
       @("GCC_OPTIMIZATION_LEVEL = 0"),
       @("GCC_GENERATE_DEBUGGING_SYMBOLS = YES"),
       @("GCC_PREPROCESSOR_DEFINITIONS = ()"),
@@ -1243,7 +1245,7 @@ proc updateGalgasTargets
       ?productFileRef:let debugProductFileRef
     )
   //--- Add Cocoa target
-    let @stringlist cocoaConfigurationSettingList = @[
+    let @stringlist cocoaConfigurationSettingList = [
       @("GCC_OPTIMIZATION_LEVEL = 0"),
       @(!"GCC_PREPROCESSOR_DEFINITIONS = ()")
     ] + codeSigningSettingList
@@ -1254,8 +1256,8 @@ proc updateGalgasTargets
       !frameworkFileRefs: frameworksFileRefList + appFrameworksFileRefList,
       !resourceFileRefs: resourceFileBuildRefs,
       !buildConfigurationSettingList: cocoaConfigurationSettingList,
-      !dependantTargetList: @[@(releaseTargetRef), @(debugTargetRef)],
-      !productCopyList: @[@(releaseProductFileRef, inTargetName), @(debugProductFileRef, inTargetName + "-debug")],
+      !dependantTargetList: [@(releaseTargetRef), @(debugTargetRef)],
+      !productCopyList: [@(releaseProductFileRef, inTargetName), @(debugProductFileRef, inTargetName + "-debug")],
       ?productFileRef:*
     )
   //--- Generate project

@@ -26,7 +26,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @semanticInstructionAST analyzeSemanticInstruction (
+abstract proc @semanticInstructionAST.analyzeSemanticInstruction (
                         ?let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         ?let @analysisContext inAnalysisContext,
@@ -213,7 +213,7 @@ proc checkExpressionIsBoolean
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
+abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult.analyzeGrammarInstructionSDT
   (?let @analysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   ?let @bool inHasTranslateFeature,

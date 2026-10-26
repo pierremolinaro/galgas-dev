@@ -27,15 +27,12 @@ func transformLabelMap
   ) -> @nonterminalSymbolLabelMapForGrammarAnalysis
 {
   result = @()
-  for (mLabelName mFormalArgumentList *) in inLabels do
+  for aLabel in inLabels do
     var @signatureForGrammarAnalysis formalParametersList = @()
-    for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArgumentList do
-      formalParametersList ++= @(!mFormalArgumentPassingMode, !mFormalArgumentTypeName)
+    for formalArg in aLabel.mFormalArgumentList do
+      formalParametersList ++= @(formalArg.mFormalArgumentPassingMode, formalArg.mFormalArgumentTypeName)
     end
-    !?result.insertKey
-      (!mLabelName,
-      !formalParametersList
-    )
+    !?result.insertKey (aLabel.mLabelName, formalParametersList)
   end
 }
 
@@ -48,46 +45,46 @@ proc checkLabelMap
   ?let @nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis
 ) {
   var @stringset labelStringSet = @()
-  for (mLabelName mFormalArgumentList *) in inLabels do
-    labelStringSet ++= mLabelName.string
-    inNonterminalSymbolLabelMapForGrammarAnalysis.searchKey (!mLabelName, ?let formalParametersList)
-    if mFormalArgumentList.count != formalParametersList.count then
-      error (mLabelName: mFormalArgumentList.count.string
+  for aLabel in inLabels do
+    labelStringSet ++= aLabel.mLabelName.string
+    inNonterminalSymbolLabelMapForGrammarAnalysis.searchKey (!aLabel.mLabelName, ?let formalParametersList)
+    if aLabel.mFormalArgumentList.count != formalParametersList.count then
+      error (aLabel.mLabelName: aLabel.mFormalArgumentList.count.string
         + " formal parameter"
-        + if mFormalArgumentList.count > 1 then "s" else "" end
+        + if aLabel.mFormalArgumentList.count > 1 then "s" else "" end
         + " declared here, but declaration at "
-        + inNonterminalSymbolLabelMapForGrammarAnalysis.locationForKey (!mLabelName.string).startLocationString
+        + inNonterminalSymbolLabelMapForGrammarAnalysis.locationForKey (aLabel.mLabelName.string).startLocationString
         + " names " + formalParametersList.count.string + " parameter"
         + if formalParametersList.count > 1 then "s" else "" end
       )
     else
-      for (* mFormalArgumentPassingMode mFormalArgumentTypeName * *) in mFormalArgumentList, (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in formalParametersList do
-        if mFormalArgumentPassingModeForGrammarAnalysis != mFormalArgumentPassingMode then
-          error (mGalgasTypeNameForGrammarAnalysis :
+      for labelFormalArg in aLabel.mFormalArgumentList, formalArgForGrammarAnalysis in formalParametersList do
+        if formalArgForGrammarAnalysis.mFormalArgumentPassingModeForGrammarAnalysis != labelFormalArg.mFormalArgumentPassingMode then
+          error (formalArgForGrammarAnalysis.mGalgasTypeNameForGrammarAnalysis :
             " this formal parameter is declared with '"
-          + mFormalArgumentPassingModeForGrammarAnalysis
+          + formalArgForGrammarAnalysis.mFormalArgumentPassingModeForGrammarAnalysis
           + "' passing mode, but declaration at "
-          + inNonterminalSymbolLabelMapForGrammarAnalysis.locationForKey (!mLabelName.string).startLocationString
-          + " is declared with '" + mFormalArgumentPassingMode + "' passing mode"
+          + inNonterminalSymbolLabelMapForGrammarAnalysis.locationForKey (aLabel.mLabelName.string).startLocationString
+          + " is declared with '" + labelFormalArg.mFormalArgumentPassingMode + "' passing mode"
           )
         end
-        if mGalgasTypeNameForGrammarAnalysis.string != mFormalArgumentTypeName.string then
-          error (mGalgasTypeNameForGrammarAnalysis :
+        if formalArgForGrammarAnalysis.mGalgasTypeNameForGrammarAnalysis.string != labelFormalArg.mFormalArgumentTypeName.string then
+          error (formalArgForGrammarAnalysis.mGalgasTypeNameForGrammarAnalysis :
             " this formal parameter is declared of '@"
-          + mGalgasTypeNameForGrammarAnalysis
+          + formalArgForGrammarAnalysis.mGalgasTypeNameForGrammarAnalysis
           + "' type, but declaration at "
-          + inNonterminalSymbolLabelMapForGrammarAnalysis.locationForKey (!mLabelName.string).startLocationString
-          + " is declared with '@" + mFormalArgumentTypeName + "' type"
+          + inNonterminalSymbolLabelMapForGrammarAnalysis.locationForKey (aLabel.mLabelName.string).startLocationString
+          + " is declared with '@" + labelFormalArg.mFormalArgumentTypeName + "' type"
           )
         end
       end
     end
   end
 //---
-  for (lkey *) in inNonterminalSymbolLabelMapForGrammarAnalysis do
-    if not labelStringSet.hasKey (!lkey.string) then
+  for entry in inNonterminalSymbolLabelMapForGrammarAnalysis do
+    if not labelStringSet.hasKey (entry.lkey.string) then
       error (inNonTerminalLocation :
-        "this non terminal does not declare the '" + lkey + "' label, but declaration at "
+        "this non terminal does not declare the '" + entry.lkey + "' label, but declaration at "
           + inOriginalNonTerminalLocation.startLocationString
           + " does"
       )
@@ -100,19 +97,19 @@ proc checkLabelMap
 proc handleNonTerminalDeclarations
   (?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis,
   ?let @nonterminalDeclarationListAST inNonterminalDeclarationList ) {
-  for (mNonterminalName mLabels) in inNonterminalDeclarationList do
-    if let entry = ioNonTerminalMapForGrammarAnalysis [mNonterminalName.string] then
+  for nonTerminal in inNonterminalDeclarationList do
+    if let entry = ioNonTerminalMapForGrammarAnalysis [nonTerminal.mNonterminalName.string] then
       checkLabelMap (
-        !mNonterminalName.location,
-        !mLabels,
-        !ioNonTerminalMapForGrammarAnalysis.locationForKey (!mNonterminalName.string),
+        !nonTerminal.mNonterminalName.location,
+        !nonTerminal.mLabels,
+        !ioNonTerminalMapForGrammarAnalysis.locationForKey (!nonTerminal.mNonterminalName.string),
         !entry.mNonterminalSymbolParametersMap
       )
     else
-      !?ioNonTerminalMapForGrammarAnalysis.insertKey
-        (!mNonterminalName,
-        !ioNonTerminalMapForGrammarAnalysis.count,
-        !transformLabelMap (!mLabels)
+      !?ioNonTerminalMapForGrammarAnalysis.insertKey (
+        nonTerminal.mNonterminalName,
+        ioNonTerminalMapForGrammarAnalysis.count,
+        transformLabelMap (nonTerminal.mLabels)
       )
     end
   end
@@ -120,27 +117,29 @@ proc handleNonTerminalDeclarations
 
 //--------------------------------------------------------------------------------------------------
 
-proc handleNonTerminalDeclarationsFromRuleList
-  (?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis,
-  ?let @syntaxRuleListAST inRuleList ) {
-  for (mNonterminalName mLabelList) in inRuleList do
+proc handleNonTerminalDeclarationsFromRuleList (
+  ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis,
+  ?let @syntaxRuleListAST inRuleList
+) {
+  for aRule in inRuleList do
     var nonTerminalLabelListAST = @nonTerminalLabelListAST ()
-    for (mLabelName mFormalArguments mEndOfArgumentLocation * *) in mLabelList do
+    for aLabel in aRule.mLabelList do
       nonTerminalLabelListAST ++= @(
-        !mLabelName,
-        !mFormalArguments,
-        !mEndOfArgumentLocation)
+        !aLabel.mLabelName,
+        !aLabel.mFormalArguments,
+        !aLabel.mEndOfArgumentLocation
+      )
     end
-    if let entry = ioNonTerminalMapForGrammarAnalysis [mNonterminalName.string] then
+    if let entry = ioNonTerminalMapForGrammarAnalysis [aRule.mNonterminalName.string] then
       checkLabelMap (
-        !mNonterminalName.location,
+        !aRule.mNonterminalName.location,
         !nonTerminalLabelListAST,
-        !ioNonTerminalMapForGrammarAnalysis.locationForKey (!mNonterminalName.string),
+        !ioNonTerminalMapForGrammarAnalysis.locationForKey (aRule.mNonterminalName.string),
         !entry.mNonterminalSymbolParametersMap
       )
     else
-      !?ioNonTerminalMapForGrammarAnalysis.insertKey
-        (!mNonterminalName,
+      !?ioNonTerminalMapForGrammarAnalysis.insertKey (
+        aRule.mNonterminalName,
         !ioNonTerminalMapForGrammarAnalysis.count,
         !transformLabelMap (!nonTerminalLabelListAST)
       )
@@ -152,7 +151,7 @@ proc handleNonTerminalDeclarationsFromRuleList
 //                     transformInstructionList
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @syntaxInstructionAST transformInstructionForGrammarAnalysis
+abstract proc @syntaxInstructionAST.transformInstructionForGrammarAnalysis
   (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
@@ -175,9 +174,9 @@ proc transformInstructionListForGrammarAnalysis
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList ) {
-  for (mInstruction) in inInstructionList do
-    mInstruction.transformInstructionForGrammarAnalysis
-      (!?usedTerminalMap:ioActuallyUsedTerminalSymbolMap,
+  for instr in inInstructionList do
+    instr.mInstruction.transformInstructionForGrammarAnalysis (
+      !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap,
       !nonTerminalSymbolMap:inNonTerminalSymbolMap,
       !?addedTerminalIndex:ioAddedNonTerminalIndex,
       !?ioSyntaxInstructionList
@@ -187,19 +186,20 @@ proc transformInstructionListForGrammarAnalysis
 
 //--------------------------------------------------------------------------------------------------
 
-proc buildRuleList
-  (?let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis,
+proc buildRuleList (
+  ?let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis,
   ?let @lstring inSyntaxComponentName,
   ?let @syntaxRuleListAST inRuleList,
   ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
   ?!@syntaxComponentListForGrammarAnalysis ioSyntaxComponentListForGrammarAnalysis,
-  ?!@uint ioAddedNonTerminalCount ) {
+  ?!@uint ioAddedNonTerminalCount
+) {
   var productionRulesList = @productionRuleListForGrammarAnalysis ()
-  for (mNonterminalName mLabelList) in inRuleList do
-    inNonTerminalMapForGrammarAnalysis.searchKey (!mNonterminalName, ?let nonTerminalIndex, ?*)
+  for aRule in inRuleList do
+    inNonTerminalMapForGrammarAnalysis.searchKey (aRule.mNonterminalName, ?let nonTerminalIndex, ?*)
   //--- Retrieve instruction list from first label
     let @syntaxInstructionList parsedSyntaxInstructionList
-    mLabelList.first (?*, ?*, ?*, ?parsedSyntaxInstructionList, ?*)
+    aRule.mLabelList.first (?*, ?*, ?*, ?parsedSyntaxInstructionList, ?*)
   //--- Transform instruction list
     var instructionList = @syntaxInstructionListForGrammarAnalysis ()
     transformInstructionListForGrammarAnalysis (
@@ -211,10 +211,11 @@ proc buildRuleList
     )
   //---
     productionRulesList ++= @(
-      !mNonterminalName,
+      !aRule.mNonterminalName,
       !nonTerminalIndex,
       !instructionList,
-      !productionRulesList.count)
+      !productionRulesList.count
+    )
   end
   ioSyntaxComponentListForGrammarAnalysis ++= @(
     !productionRulesList,
@@ -230,15 +231,15 @@ proc buildRuleList
 filewrapper grammarGenerationTemplate in "+generation-templates/grammar_generation" {
 }{
 }{
-  template grammarZone3HeaderGalgas3 "grammar-zone3-galgas3.h.galgasTemplate"
-    ?@string LEXIQUE_IDENTIFIER
-    ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP
-    ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST
-//    ?@bool HAS_INDEXING
-    ?@string START_SYMBOL_NAME
-    ?@bool HAS_TRANSLATE_FEATURE
-    ?@string GRAMMAR_NAME
+  template grammarZone3HeaderGalgas3 : "grammar-zone3-galgas3.h.galgasTemplate" (
+    ?@string LEXIQUE_IDENTIFIER,
+    ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP,
+    ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST,
+    ?@string START_SYMBOL_NAME,
+    ?@bool HAS_TRANSLATE_FEATURE,
+    ?@string GRAMMAR_NAME,
     ?@lstringlist SYNTAX_COMPONENTS
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -247,8 +248,8 @@ filewrapper grammarGenerationTemplate in "+generation-templates/grammar_generati
 //
 //--------------------------------------------------------------------------------------------------
 
-extern proc grammarAnalysisAndGeneration
-  (?let @lstring inGrammarName,
+extern proc grammarAnalysisAndGeneration (
+  ?let @lstring inGrammarName,
   ?let @lstring inGrammarClass,
   ?let @uint startSymbolIndex,
   ?let @string inLexiqueName,
@@ -260,7 +261,8 @@ extern proc grammarAnalysisAndGeneration
   ?let @string inSyntaxDirectedTranslationVarName, // Empty if not syntax directed translation
   !@string outGrammarCppFile,
   !@string outGrammarHTMLHelperContents,
-  !@string outSwiftGrammarDescription)
+  !@string outSwiftGrammarDescription
+)
 
 //--------------------------------------------------------------------------------------------------
 

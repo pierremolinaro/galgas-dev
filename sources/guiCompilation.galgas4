@@ -71,7 +71,7 @@ list @guiCommandLineOptionList {
 map @extensionMap {
   public let @string mLexiqueName
   public let @uint mIndex
-  insert insertKey error message "the '%K' extension is already declared in %L"
+  %insertSetter insertKey %errorMessage "the '%K' extension is already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -402,7 +402,7 @@ struct @guiAnalysisContext {
 
 map @optionComponentMapForGeneration {
   public let @guiAnalysisContext mGuiComponentContext
-  insert insertKey error message "redefinition of the '%K' option component: it has been already declared in %L"
+  %insertSetter insertKey %errorMessage "redefinition of the '%K' option component: it has been already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -442,29 +442,30 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
   end
 //--- Nib and main classes
   var runOptionDefined = false
-  for (mKey mValue) in inGUIComponentAST.mGlobalSimpleAttributeList do
-    if mKey.string == "run" then
+  for entry in inGUIComponentAST.mGlobalSimpleAttributeList do
+    if entry.mKey.string == "run" then
       if runOptionDefined then
-        error (mKey : "option already defined")
-      elsif mValue.string == "" then
-        error (mValue : "run option string should not be empty")
+        error (entry.mKey : "option already defined")
+      elsif entry.mValue.string == "" then
+        error (entry.mValue : "run option string should not be empty")
       else
-        context.mBuildRunOption = mValue.string
+        context.mBuildRunOption = entry.mValue.string
         runOptionDefined = true
       end
-    elsif mKey.string == "nibAndMainClass" then
-      for component in mValue.string.componentsSeparatedByString (!".") do
+    elsif entry.mKey.string == "nibAndMainClass" then
+      for component in entry.mValue.string.componentsSeparatedByString (!".") do
         context.mNibAndClassList ++= @(!component.mValue)
       end
     else
-      warning mKey:"the '" + mKey + "' key is invalid and has no effect"
+      warning entry.mKey : "the '" + entry.mKey + "' key is invalid and has no effect"
     end
   end
 //--- 'with lexique' construct analysis
-  for (lexiqueFileName labels simpleAttributes compoundAttributes) in inGUIComponentAST.mWithLexiqueList do (idx)
+  for withLexiqueEntry in inGUIComponentAST.mWithLexiqueList do (idx)
+//  for (lexiqueFileName labels simpleAttributes compoundAttributes) in inGUIComponentAST.mWithLexiqueList do (idx)
   //--- Check lexique
-    inSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey
-      (!lexiqueFileName,
+    inSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey (
+      withLexiqueEntry.mLexiqueFileName,
       ?*,
       ?let @terminalMap terminalMap,
       ?3*,
@@ -474,13 +475,13 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
   //--- Build terminal symbol set
     let terminalSymbolSet = terminalMap.keySet
   //--- Check labels
-    for (* mTerminalList *) in labels do
-      for (mTerminal *) in mTerminalList do
-        if not terminalSymbolSet.hasKey (!mTerminal.string) then
-          error (mTerminal: "the '$"
-            + mTerminal
+    for aLabel in withLexiqueEntry.mLabels do
+      for aTerminal in aLabel.mTerminalList do
+        if not terminalSymbolSet.hasKey (aTerminal.mTerminal.string) then
+          error (aTerminal.mTerminal: "the '$"
+            + aTerminal.mTerminal
             + "$' terminal symbol is not declared by the '"
-            + lexiqueFileName
+            + withLexiqueEntry.mLexiqueFileName
             + "' lexique"
           )
         end
@@ -488,11 +489,11 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
     end
   //--- Compound attributes
     var @textMacroList textMacroList = @()
-    for (mKey mAttributeName mValue) in compoundAttributes do
-      if mKey.string != "textMacro" then
-        error (mKey: "for a compound attribute, only the 'textMacro' key is valid")
+    for compoundAttribute in withLexiqueEntry.mCompoundAttributes do
+      if compoundAttribute.mKey.string != "textMacro" then
+        error (compoundAttribute.mKey: "for a compound attribute, only the 'textMacro' key is valid")
       else
-        textMacroList ++= @(!mAttributeName.string, !mValue.string)
+        textMacroList ++= @(compoundAttribute.mAttributeName.string, compoundAttribute.mValue.string)
       end
     end
   //--- Simple attributes
@@ -501,42 +502,42 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
     var @bool hasBlockComment = false
     var @string tabViewTitle = ""
     var @string blockComment = ""
-    for (mKey mValue) in simpleAttributes do
-      if mKey.string == "fileExtension" then
-        !?context.mExtensionMap.insertKey (!mValue, !lexiqueFileName.string, !idx)
+    for simpleAttr in withLexiqueEntry.mSimpleAttributes do
+      if simpleAttr.mKey.string == "fileExtension" then
+        !?context.mExtensionMap.insertKey (!simpleAttr.mValue, !withLexiqueEntry.mLexiqueFileName.string, !idx)
         hasAssociatedExtension = true
-      elsif mKey.string == "title" then
+      elsif simpleAttr.mKey.string == "title" then
         if hasTabViewTitle then
-          error (mKey: "the '" + mKey + "' key should be defined once")
+          error (simpleAttr.mKey: "the '" + simpleAttr.mKey + "' key should be defined once")
         end
         hasTabViewTitle = true
-        tabViewTitle = mValue.string
-      elsif mKey.string == "blockComment" then
+        tabViewTitle = simpleAttr.mValue.string
+      elsif simpleAttr.mKey.string == "blockComment" then
         if hasBlockComment then
-          error (mKey: "the '" + mKey + "' key should be defined once")
+          error (simpleAttr.mKey: "the '" + simpleAttr.mKey + "' key should be defined once")
         end
         hasBlockComment = true
-        blockComment = mValue.string
+        blockComment = simpleAttr.mValue.string
       else
-        error (mKey: "the '" + mKey + "' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')")
+        error (simpleAttr.mKey: "the '" + simpleAttr.mKey + "' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')")
       end
     end
   //--- has an extension ?
     if not hasAssociatedExtension then
-      error (lexiqueFileName:"one or more file extensions should be associated with a lexique (fileExtension : \"...\")")
+      error (withLexiqueEntry.mLexiqueFileName:"one or more file extensions should be associated with a lexique (fileExtension : \"...\")")
     end
   //--- has title ?
     if not hasTabViewTitle then
-      error (lexiqueFileName:"the 'title' key should be defined once (it is not defined)")
+      error (withLexiqueEntry.mLexiqueFileName:"the 'title' key should be defined once (it is not defined)")
     end
   //---
     context.mWithLexiqueList ++= @(
-      !lexiqueFileName.string,
+      !withLexiqueEntry.mLexiqueFileName.string,
       !idx,
       !blockComment,
       !tabViewTitle,
       !textMacroList,
-      !labels,
+      !withLexiqueEntry.mLabels,
       !lexicalStyleListAST)
   end
 //--- Generation
@@ -554,11 +555,12 @@ proc generateAllGuiComponentsGalgas3 (?let @optionComponentMapForGeneration inOp
                                       ?let @string inOutputDirectory,
                                       ?let @bool inQuietOutputByDefault,
                                       ?!swift: @stringlist ioSwiftAllProductFileList ) {
-  for (lkey guiComponentContext) in inOptionComponentMapForGeneration do
-    let swiftuiFileName = "gui-swiftui-" + lkey + ".swift"
+  for anOption in inOptionComponentMapForGeneration do
+//  for (lkey guiComponentContext) in inOptionComponentMapForGeneration do
+    let swiftuiFileName = "gui-swiftui-" + anOption.lkey + ".swift"
     ioSwiftAllProductFileList ++= @(!swiftuiFileName)
-    let @string swiftui_string = [filewrapper guiGenerationTemplates.swiftui_gui_implementation
-      !guiComponentContext
+    let @string swiftui_string = filewrapper [guiGenerationTemplates.swiftui_gui_implementation :
+      !anOption.mGuiComponentContext,
       !inQuietOutputByDefault
     ]
     @string.generateFileWithPattern (
@@ -582,9 +584,10 @@ proc generateAllGuiComponentsGalgas3 (?let @optionComponentMapForGeneration inOp
 filewrapper guiGenerationTemplates in "+generation-templates/gui_generation" {
 }{
 }{
-  template swiftui_gui_implementation "gui-implementation-swiftui.swift.galgasTemplate"
-    ?@guiAnalysisContext GUI_CONTEXT
+  template swiftui_gui_implementation : "gui-implementation-swiftui.swift.galgasTemplate" (
+    ?@guiAnalysisContext GUI_CONTEXT,
     ?@bool QUIET_OUTPUT_BY_DEFAULT
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -1291,16 +1291,16 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateGetterCallInEx
 //--------------------------------------------------------------------------------------------------
 
 class cGrammar_templateGrammar : public cParser_templateSyntax {
-//------------------------------------- 'expression_tpl' non terminal
+//------------------------------------- 'expression_template' non terminal
 //--- 'parse' label
- /*  public: virtual void nt_expression_5F_tpl_parse (Lexique_galgasTemplateScanner * inCompiler) ; */
+ /*  public: virtual void nt_expression_5F_template_parse (Lexique_galgasTemplateScanner * inCompiler) ; */
 
 //--- indexing
-  public: virtual void nt_expression_5F_tpl_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_expression_5F_template_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_expression_5F_tpl_ (GGS_templateExpressionAST & outArgument0,
-                                              Lexique_galgasTemplateScanner * inCompiler) ;
+  public: virtual void nt_expression_5F_template_ (GGS_templateExpressionAST & outArgument0,
+                                                   Lexique_galgasTemplateScanner * inCompiler) ;
 
 //------------------------------------- 'factor_tpl' non terminal
 //--- 'parse' label

@@ -23,7 +23,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @templateInstructionForGeneration templateCodeGeneration
+abstract proc @templateInstructionForGeneration.templateCodeGeneration
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
   ?!@uint unused ioTemporaryVariableIndex,

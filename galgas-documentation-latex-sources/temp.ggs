@@ -1,0 +1,4 @@
+struct @maStructure {
+  public var @uint propriété1
+  public var @bool propriété2
+}

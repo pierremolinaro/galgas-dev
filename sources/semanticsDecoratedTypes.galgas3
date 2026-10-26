@@ -65,7 +65,7 @@ abstract class @semanticExpressionForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @semanticExpressionForGeneration generateExpression
+abstract proc @semanticExpressionForGeneration.generateExpression
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
@@ -126,7 +126,7 @@ abstract class @actualParameterForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @actualParameterForGeneration generateActualParameter
+abstract proc @actualParameterForGeneration.generateActualParameter
   (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@string ioImplementation,
@@ -137,7 +137,7 @@ abstract proc @actualParameterForGeneration generateActualParameter
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @actualParameterForGeneration generatePoisonedVariables
+abstract proc @actualParameterForGeneration.generatePoisonedVariables
   (?!@string ioImplementation,
   ?!@stringset ioUnusedVariableCppNameSet)
 
@@ -182,7 +182,7 @@ abstract class @semanticInstructionForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @semanticInstructionForGeneration generateInstruction
+abstract proc @semanticInstructionForGeneration.generateInstruction
   (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,

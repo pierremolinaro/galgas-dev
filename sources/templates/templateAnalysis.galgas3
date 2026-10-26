@@ -44,7 +44,7 @@ struct @templateAnalysisContext {
 //   E X P R E S S I O N
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @templateExpressionAST templateExpressionAnalysis
+abstract proc @templateExpressionAST.templateExpressionAnalysis
   (?let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @templateAnalysisContext inAnalysisContext,
@@ -1453,7 +1453,7 @@ override proc @templateRightShiftOperationAST.templateExpressionAnalysis
 //
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @templateInstructionAST templateInstructionAnalysis
+abstract proc @templateInstructionAST.templateInstructionAnalysis
   (?let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @templateAnalysisContext inAnalysisContext,

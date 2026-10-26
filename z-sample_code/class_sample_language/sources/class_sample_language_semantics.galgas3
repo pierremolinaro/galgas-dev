@@ -21,7 +21,7 @@ graph @inheritanceGraph (@declarationListAST) {
   insert addNode error message "the '%K' class is already declared"
 }
 
-abstract proc @declarationAST buildGraph
+abstract proc @declarationAST.buildGraph
   (?!@inheritanceGraph ioGraph)
 
 override proc @classWithoutSuperClassAST.buildGraph
@@ -36,7 +36,7 @@ override proc @classWithSuperClassAST.buildGraph
 }
 
 
-abstract proc @declarationAST generateCode
+abstract proc @declarationAST.generateCode
   (?!@string ioCodeToGenerate)
 
 override proc @classWithoutSuperClassAST.generateCode

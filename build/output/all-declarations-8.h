@@ -6525,10 +6525,10 @@ class cParser_templateSyntax {
   public: virtual ~ cParser_templateSyntax (void) { }
 
 //--- Non terminal declarations
-  protected: virtual void nt_expression_5F_tpl_ (class GGS_templateExpressionAST & outArgument0,
-                                                 class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+  protected: virtual void nt_expression_5F_template_ (class GGS_templateExpressionAST & outArgument0,
+                                                      class Lexique_galgasTemplateScanner * inLexique) = 0 ;
 
-  protected: virtual void nt_expression_5F_tpl_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
+  protected: virtual void nt_expression_5F_template_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
 
   protected: virtual void nt_factor_5F_tpl_ (class GGS_templateExpressionAST & outArgument0,
                                              class Lexique_galgasTemplateScanner * inLexique) = 0 ;
@@ -6595,12 +6595,12 @@ class cParser_templateSyntax {
 
 
 //--- Rule declarations
-  protected: void rule_templateSyntax_expression_5F_tpl_i0_ (GGS_templateExpressionAST & outArgument0,
-                                                             Lexique_galgasTemplateScanner * inLexique) ;
+  protected: void rule_templateSyntax_expression_5F_template_i0_ (GGS_templateExpressionAST & outArgument0,
+                                                                  Lexique_galgasTemplateScanner * inLexique) ;
 
-/*  protected: void rule_templateSyntax_expression_5F_tpl_i0_parse (Lexique_galgasTemplateScanner * inLexique) ; */
+/*  protected: void rule_templateSyntax_expression_5F_template_i0_parse (Lexique_galgasTemplateScanner * inLexique) ; */
 
-  protected: void rule_templateSyntax_expression_5F_tpl_i0_indexing (Lexique_galgasTemplateScanner * inLexique) ;
+  protected: void rule_templateSyntax_expression_5F_template_i0_indexing (Lexique_galgasTemplateScanner * inLexique) ;
 
   protected: void rule_templateSyntax_relation_5F_term_5F_tpl_i1_ (GGS_templateExpressionAST & outArgument0,
                                                                    Lexique_galgasTemplateScanner * inLexique) ;

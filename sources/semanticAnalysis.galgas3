@@ -993,7 +993,7 @@ proc buildNonterminalDeclarationsMap
 //
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @syntaxInstructionAST analyzeSyntaxInstruction
+abstract proc @syntaxInstructionAST.analyzeSyntaxInstruction
   (?let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @analysisContext inAnalysisContext,
@@ -1037,7 +1037,7 @@ override proc @semanticInstructionAST.analyzeSyntaxInstruction
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @abstractInputParameter analyzeInputParameter
+abstract proc @abstractInputParameter.analyzeInputParameter
   (?let @analysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   ?let @lexicalTypeEnum inRequiredLexicalType,
@@ -1175,7 +1175,7 @@ override proc @inputParameterDeclaredConstant.analyzeInputParameter
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
+abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult.analyzeSDT
   (?let @analysisContext inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   ?let @bool inHasTranslateFeature,
@@ -1271,7 +1271,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode
+abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult.generateCode
   (?let @bool inGenerateSyntaxDirectedTranslationString,
   ?let @string inAccessMethodName,
   ?!@stringset ioUnusedVariableCppNameSet,

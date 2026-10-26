@@ -301,7 +301,7 @@ mutating proc @rowList.appendRow
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+abstract proc @abstractSyntaxInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   (?!@rowList ioRowList,
   ?fromRow:let @uint inRow,
   ?!column:@uint ioColumn,

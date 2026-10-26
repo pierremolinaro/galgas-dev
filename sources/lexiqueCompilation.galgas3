@@ -190,7 +190,7 @@ func @lexicalTypeEnum.cocoaReset () -> @string {
 //                     checkLexicalDefaultAction
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @lexicalSendDefaultActionAST checkLexicalDefaultAction
+abstract proc @lexicalSendDefaultActionAST.checkLexicalDefaultAction
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext)
 
 //--------------------------------------------------------------------------------------------------
@@ -212,7 +212,7 @@ override proc @lexicalErrorByDefaultAST.checkLexicalDefaultAction
 //                       checkLexicalExpression
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @lexicalExpressionAST checkLexicalExpression
+abstract proc @lexicalExpressionAST.checkLexicalExpression
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext)
 
 //--------------------------------------------------------------------------------------------------
@@ -264,7 +264,7 @@ override proc @lexicalStringNotMatchAST.checkLexicalExpression
 //                       checkLexicalFunctionCallArgument
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalFunctionCallArgument
+abstract proc @lexicalRoutineOrFunctionFormalInputArgumentAST.checkLexicalFunctionCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType)
 
@@ -381,7 +381,7 @@ override proc @lexicalFunctionInputArgumentAST.checkLexicalFunctionCallArgument
 //                       checkLexicalRoutineCallArgument
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalRoutineCallArgument
+abstract proc @lexicalRoutineOrFunctionFormalInputArgumentAST.checkLexicalRoutineCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
   ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType)
 
@@ -498,7 +498,7 @@ override proc @lexicalFunctionInputArgumentAST.checkLexicalRoutineCallArgument
 //                       checkLexicalInstruction
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @lexicalInstructionAST checkLexicalInstruction (
+abstract proc @lexicalInstructionAST.checkLexicalInstruction (
                          ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
                          ?!@lexicalTagMap unused ioTagMap)
 
@@ -506,7 +506,7 @@ abstract proc @lexicalInstructionAST checkLexicalInstruction (
 //                         compileLexiqueComponent
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @abstractLexicalRuleAST checkLexicalRule
+abstract proc @abstractLexicalRuleAST.checkLexicalRule
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext)
 
 //--------------------------------------------------------------------------------------------------

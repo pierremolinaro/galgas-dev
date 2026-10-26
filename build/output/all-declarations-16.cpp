@@ -3902,19 +3902,19 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_sta
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_declaration_i1_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
                                                                                               Lexique_galgasScanner_34_ * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_filewrapper COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 227)) ;
-  GGS_lstring var_mFilewrapperName_9191 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_filewrapperName_9183 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_filewrapperDefinition, "") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 228)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_in COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 229)) ;
-  GGS_lstring var_mFilewrapperPath_9281 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_filewrapperPath_9272 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 230)) ;
-  GGS_lstringlist var_filewrapperTextFileExtensionList_9334 ;
-  nt_filewrapper_5F_text_5F_files_ (var_filewrapperTextFileExtensionList_9334, inCompiler) ;
-  GGS_lstringlist var_filewrapperBinaryFileExtensionList_9405 ;
-  nt_filewrapper_5F_binary_5F_files_ (var_filewrapperBinaryFileExtensionList_9405, inCompiler) ;
-  GGS_filewrapperTemplateListAST var_filewrapperTemplateList_9493 ;
-  nt_filewrapper_5F_templates_ (ioArgument_ioDeclarations, var_filewrapperTemplateList_9493, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_semanticDeclarationListAST_2E_element::init_21_ (GGS_filewrapperDeclarationAST::init_21_isPredefined_21__21__21__21__21__21__21_ (GGS_bool (false), GGS_bool (false), GGS_string::class_func_stringWithSourceFilePath (inCompiler  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 237)), var_mFilewrapperName_9191, var_mFilewrapperPath_9281, var_filewrapperTextFileExtensionList_9334, var_filewrapperBinaryFileExtensionList_9405, var_filewrapperTemplateList_9493, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 234)) ;
+  GGS_lstringlist var_filewrapperTextFileExtensionList_9324 ;
+  nt_filewrapper_5F_text_5F_files_ (var_filewrapperTextFileExtensionList_9324, inCompiler) ;
+  GGS_lstringlist var_filewrapperBinaryFileExtensionList_9395 ;
+  nt_filewrapper_5F_binary_5F_files_ (var_filewrapperBinaryFileExtensionList_9395, inCompiler) ;
+  GGS_filewrapperTemplateListAST var_filewrapperTemplateList_9483 ;
+  nt_filewrapper_5F_templates_ (ioArgument_ioDeclarations, var_filewrapperTemplateList_9483, inCompiler) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_semanticDeclarationListAST_2E_element::init_21_ (GGS_filewrapperDeclarationAST::init_21_isPredefined_21__21__21__21__21__21__21_ (GGS_bool (false), GGS_bool (false), GGS_string::class_func_stringWithSourceFilePath (inCompiler  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 237)), var_filewrapperName_9183, var_filewrapperPath_9272, var_filewrapperTextFileExtensionList_9324, var_filewrapperBinaryFileExtensionList_9395, var_filewrapperTemplateList_9483, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 234)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -3936,19 +3936,19 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
                                                                                               Lexique_galgasScanner_34_ * inCompiler) {
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_private COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 249)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_filewrapper COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 250)) ;
-  GGS_lstring var_mFilewrapperName_10112 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_filewrapperName_10100 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_filewrapperDefinition, "") ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 251)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_in COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 252)) ;
-  GGS_lstring var_mFilewrapperPath_10202 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_filewrapperPath_10189 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 253)) ;
-  GGS_lstringlist var_filewrapperTextFileExtensionList_10255 ;
-  nt_filewrapper_5F_text_5F_files_ (var_filewrapperTextFileExtensionList_10255, inCompiler) ;
-  GGS_lstringlist var_filewrapperBinaryFileExtensionList_10326 ;
-  nt_filewrapper_5F_binary_5F_files_ (var_filewrapperBinaryFileExtensionList_10326, inCompiler) ;
-  GGS_filewrapperTemplateListAST var_filewrapperTemplateList_10414 ;
-  nt_filewrapper_5F_templates_ (ioArgument_ioDeclarations, var_filewrapperTemplateList_10414, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_semanticDeclarationListAST_2E_element::init_21_ (GGS_filewrapperDeclarationAST::init_21_isPredefined_21__21__21__21__21__21__21_ (GGS_bool (false), GGS_bool (true), GGS_string::class_func_stringWithSourceFilePath (inCompiler  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 260)), var_mFilewrapperName_10112, var_mFilewrapperPath_10202, var_filewrapperTextFileExtensionList_10255, var_filewrapperBinaryFileExtensionList_10326, var_filewrapperTemplateList_10414, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 257)) ;
+  GGS_lstringlist var_filewrapperTextFileExtensionList_10241 ;
+  nt_filewrapper_5F_text_5F_files_ (var_filewrapperTextFileExtensionList_10241, inCompiler) ;
+  GGS_lstringlist var_filewrapperBinaryFileExtensionList_10312 ;
+  nt_filewrapper_5F_binary_5F_files_ (var_filewrapperBinaryFileExtensionList_10312, inCompiler) ;
+  GGS_filewrapperTemplateListAST var_filewrapperTemplateList_10400 ;
+  nt_filewrapper_5F_templates_ (ioArgument_ioDeclarations, var_filewrapperTemplateList_10400, inCompiler) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_semanticDeclarationListAST_2E_element::init_21_ (GGS_filewrapperDeclarationAST::init_21_isPredefined_21__21__21__21__21__21__21_ (GGS_bool (false), GGS_bool (true), GGS_string::class_func_stringWithSourceFilePath (inCompiler  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 260)), var_filewrapperName_10100, var_filewrapperPath_10189, var_filewrapperTextFileExtensionList_10241, var_filewrapperBinaryFileExtensionList_10312, var_filewrapperTemplateList_10400, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 257)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -3978,9 +3978,9 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_fil
   case 2: {
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
-      GGS_lstring var_pathExtension_11109 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_pathExtension_11093 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 277)) ;
-      outArgument_outFilewrapperTextFileExtensionList.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (var_pathExtension_11109, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 278)) ;
+      outArgument_outFilewrapperTextFileExtensionList.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (var_pathExtension_11093, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 278)) ;
       if (select_galgas_34_DeclarationsSyntax_2 (inCompiler) == 2) {
         inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 280)) ;
       }else{
@@ -4031,9 +4031,9 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_fil
   case 2: {
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
-      GGS_lstring var_pathExtension_11558 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_pathExtension_11542 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 294)) ;
-      outArgument_outFilewrapperBinaryFileExtensionList.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (var_pathExtension_11558, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 295)) ;
+      outArgument_outFilewrapperBinaryFileExtensionList.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (var_pathExtension_11542, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 295)) ;
       if (select_galgas_34_DeclarationsSyntax_4 (inCompiler) == 2) {
         inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 297)) ;
       }else{
@@ -4083,12 +4083,12 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_fil
   while (repeatFlag_0) {
     if (select_galgas_34_DeclarationsSyntax_5 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_template COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 311)) ;
-      GGS_lstring var_mFilewrapperTemplateName_12068 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_mFilewrapperTemplateName_12052 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 312)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 313)) ;
-      GGS_lstring var_mFilewrapperTemplatePath_12127 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_mFilewrapperTemplatePath_12111 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 314)) ;
-      GGS_formalTemplateInputParameterListAST var_filewrapperTemplateFormalInputParameters_12200 = GGS_formalTemplateInputParameterListAST::init (inCompiler COMMA_HERE) ;
+      GGS_formalTemplateInputParameterListAST var_filewrapperTemplateFormalInputParameters_12184 = GGS_formalTemplateInputParameterListAST::init (inCompiler COMMA_HERE) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 316)) ;
       switch (select_galgas_34_DeclarationsSyntax_6 (inCompiler)) {
       case 1: {
@@ -4096,39 +4096,39 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_fil
       case 2: {
         bool repeatFlag_1 = true ;
         while (repeatFlag_1) {
-          GGS_lstring var_selector_12317 ;
+          GGS_lstring var_selector_12301 ;
           switch (select_galgas_34_DeclarationsSyntax_8 (inCompiler)) {
           case 1: {
-            var_selector_12317 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 322)) ;
+            var_selector_12301 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 322)) ;
           } break ;
           case 2: {
             inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 324)) ;
-            var_selector_12317 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 325)) ;
+            var_selector_12301 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 325)) ;
           } break ;
           case 3: {
-            var_selector_12317 = inCompiler->synthetizedAttribute_tokenString () ;
+            var_selector_12301 = inCompiler->synthetizedAttribute_tokenString () ;
             inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_selector_3A_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 327)) ;
           } break ;
           default:
             break ;
           }
-          GGS_lstring var_typeName_12556 ;
-          nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_12556, inCompiler) ;
-          GGS_bool var_isUnused_12586 ;
+          GGS_lstring var_typeName_12540 ;
+          nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_12540, inCompiler) ;
+          GGS_bool var_isUnused_12570 ;
           switch (select_galgas_34_DeclarationsSyntax_9 (inCompiler)) {
           case 1: {
-            var_isUnused_12586 = GGS_bool (false) ;
+            var_isUnused_12570 = GGS_bool (false) ;
           } break ;
           case 2: {
             inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_unused COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 334)) ;
-            var_isUnused_12586 = GGS_bool (true) ;
+            var_isUnused_12570 = GGS_bool (true) ;
           } break ;
           default:
             break ;
           }
-          GGS_lstring var_argumentName_12746 = inCompiler->synthetizedAttribute_tokenString () ;
+          GGS_lstring var_argumentName_12730 = inCompiler->synthetizedAttribute_tokenString () ;
           inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 337)) ;
-          var_filewrapperTemplateFormalInputParameters_12200.plusPlusAssignOperation (GGS_formalTemplateInputParameterListAST_2E_element::init_21__21__21__21_ (var_selector_12317, var_typeName_12556, var_argumentName_12746, var_isUnused_12586, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 338)) ;
+          var_filewrapperTemplateFormalInputParameters_12184.plusPlusAssignOperation (GGS_formalTemplateInputParameterListAST_2E_element::init_21__21__21__21_ (var_selector_12301, var_typeName_12540, var_argumentName_12730, var_isUnused_12570, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 338)) ;
           if (select_galgas_34_DeclarationsSyntax_7 (inCompiler) == 2) {
             inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 340)) ;
           }else{
@@ -4140,7 +4140,7 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_fil
         break ;
       }
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 343)) ;
-      outArgument_outFilewrapperTemplateList.plusPlusAssignOperation (GGS_filewrapperTemplateListAST_2E_element::init_21__21__21_ (var_mFilewrapperTemplateName_12068, var_mFilewrapperTemplatePath_12127, var_filewrapperTemplateFormalInputParameters_12200, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 344)) ;
+      outArgument_outFilewrapperTemplateList.plusPlusAssignOperation (GGS_filewrapperTemplateListAST_2E_element::init_21__21__21_ (var_mFilewrapperTemplateName_12052, var_mFilewrapperTemplatePath_12111, var_filewrapperTemplateFormalInputParameters_12184, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasDeclarationsSyntax.galgas4", 344)) ;
     }else{
       repeatFlag_0 = false ;
     }
@@ -5065,48 +5065,48 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
 
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_declaration_i23_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
                                                                                                Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_abstract COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 79)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_proc COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 80)) ;
-  GGS_lstring var_typeName_3330 ;
-  nt_simple_5F_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_3330, inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E_ COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 82)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_abstract COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 80)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_proc COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 81)) ;
+  GGS_lstring var_typeName_3338 ;
+  nt_simple_5F_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_3338, inCompiler) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E_ COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 83)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_34_DeclarationsSyntax_24 (inCompiler) == 2) {
-      GGS_lstring var_t_3424 ;
-      nt_simple_5F_type_5F_definition_ (ioArgument_ioDeclarations, var_t_3424, inCompiler) ;
-      var_typeName_3330 = function_makeEmbeddedTypeLName (var_typeName_3330, var_t_3424, inCompiler COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 86)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E_ COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 87)) ;
+      GGS_lstring var_t_3432 ;
+      nt_simple_5F_type_5F_definition_ (ioArgument_ioDeclarations, var_t_3432, inCompiler) ;
+      var_typeName_3338 = function_makeEmbeddedTypeLName (var_typeName_3338, var_t_3432, inCompiler COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 87)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E_ COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 88)) ;
     }else{
       repeatFlag_0 = false ;
     }
   }
-  GGS_lstring var_mMethodName_3546 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_mMethodName_3554 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_abstractExtensionMethodDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 89)) ;
-  GGS_formalParameterListAST var_formalParameterList_3680 ;
-  nt_formal_5F_parameter_5F_list_ (ioArgument_ioDeclarations, var_formalParameterList_3680, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_semanticDeclarationListAST_2E_element::init_21_ (GGS_abstractExtensionMethodAST::init_21_isPredefined_21__21__21_ (GGS_bool (false), var_typeName_3330, var_mMethodName_3546, var_formalParameterList_3680, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 91)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 90)) ;
+  GGS_formalParameterListAST var_formalParameterList_3688 ;
+  nt_formal_5F_parameter_5F_list_ (ioArgument_ioDeclarations, var_formalParameterList_3688, inCompiler) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_semanticDeclarationListAST_2E_element::init_21_ (GGS_abstractExtensionMethodAST::init_21_isPredefined_21__21__21_ (GGS_bool (false), var_typeName_3338, var_mMethodName_3554, var_formalParameterList_3688, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 92)) ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_declaration_i23_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_abstract COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 79)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_proc COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 80)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_abstract COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 80)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_proc COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 81)) ;
   nt_simple_5F_type_5F_definition_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E_ COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 82)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E_ COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 83)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     if (select_galgas_34_DeclarationsSyntax_24 (inCompiler) == 2) {
       nt_simple_5F_type_5F_definition_indexing (inCompiler) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E_ COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 87)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E_ COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 88)) ;
     }else{
       repeatFlag_0 = false ;
     }
   }
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_abstractExtensionMethodDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 89)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 90)) ;
   nt_formal_5F_parameter_5F_list_indexing (inCompiler) ;
 }
 
@@ -5115,23 +5115,23 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_method_5F_declaration_i24_ (const GGS_lstring constinArgument_inTypeName,
                                                                                                          GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
                                                                                                          Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_abstract COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 103)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_proc COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 104)) ;
-  GGS_lstring var_methodName_4161 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_abstract COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 104)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_proc COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 105)) ;
+  GGS_lstring var_methodName_4169 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_abstractExtensionMethodDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 105)) ;
-  GGS_formalParameterListAST var_formalParameterList_4294 ;
-  nt_formal_5F_parameter_5F_list_ (ioArgument_ioDeclarations, var_formalParameterList_4294, inCompiler) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_semanticDeclarationListAST_2E_element::init_21_ (GGS_abstractExtensionMethodAST::init_21_isPredefined_21__21__21_ (GGS_bool (false), constinArgument_inTypeName, var_methodName_4161, var_formalParameterList_4294, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 107)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 106)) ;
+  GGS_formalParameterListAST var_formalParameterList_4302 ;
+  nt_formal_5F_parameter_5F_list_ (ioArgument_ioDeclarations, var_formalParameterList_4302, inCompiler) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_semanticDeclarationListAST_2E_element::init_21_ (GGS_abstractExtensionMethodAST::init_21_isPredefined_21__21__21_ (GGS_bool (false), constinArgument_inTypeName, var_methodName_4169, var_formalParameterList_4302, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 108)) ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_method_5F_declaration_i24_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_abstract COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 103)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_proc COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 104)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_abstract COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 104)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_proc COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 105)) ;
   inCompiler->enterIndexing (Lexique_galgasScanner_34_::kIndexing_abstractExtensionMethodDefinition, "") ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 105)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("extension-abstract-method.galgas3", 106)) ;
   nt_formal_5F_parameter_5F_list_indexing (inCompiler) ;
 }
 
@@ -8823,60 +8823,60 @@ void cParser_galgas_34_OptionComponentSyntax::rule_galgas_34_OptionComponentSynt
 
 void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_declaration_i0_ (GGS_galgasDeclarationAST & ioArgument_ioDeclarations,
                                                                                               Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_gui COMMA_SOURCE_FILE ("guiCompilation.galgas3", 257)) ;
-  GGS_lstring var_mGUIName_8829 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 258)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 259)) ;
-  GGS_lstringlist var_importedOptionList_8868 = GGS_lstringlist::init (inCompiler COMMA_HERE) ;
-  GGS_guiSimpleAttributeListAST var_simpleGlobalAttributes_8928 = GGS_guiSimpleAttributeListAST::init (inCompiler COMMA_HERE) ;
-  GGS_withLexiqueListAST var_withLexiqueList_8985 = GGS_withLexiqueListAST::init (inCompiler COMMA_HERE) ;
-  GGS_projectIndexingDescriptorList var_projectExtensionList_9046 = GGS_projectIndexingDescriptorList::init (inCompiler COMMA_HERE) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_gui COMMA_SOURCE_FILE ("guiCompilation.galgas4", 257)) ;
+  GGS_lstring var_mGUIName_8836 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas4", 258)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 259)) ;
+  GGS_lstringlist var_importedOptionList_8875 = GGS_lstringlist::init (inCompiler COMMA_HERE) ;
+  GGS_guiSimpleAttributeListAST var_simpleGlobalAttributes_8935 = GGS_guiSimpleAttributeListAST::init (inCompiler COMMA_HERE) ;
+  GGS_withLexiqueListAST var_withLexiqueList_8992 = GGS_withLexiqueListAST::init (inCompiler COMMA_HERE) ;
+  GGS_projectIndexingDescriptorList var_projectExtensionList_9053 = GGS_projectIndexingDescriptorList::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_34_GuiComponentSyntax_0 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_project COMMA_SOURCE_FILE ("guiCompilation.galgas3", 266)) ;
-      GGS_lstring var_fileExtension_9133 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 267)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_indexing COMMA_SOURCE_FILE ("guiCompilation.galgas3", 268)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_in COMMA_SOURCE_FILE ("guiCompilation.galgas3", 269)) ;
-      GGS_lstring var_indexingPathSuffix_9199 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 270)) ;
-      var_projectExtensionList_9046.plusPlusAssignOperation (GGS_projectIndexingDescriptorList_2E_element::init_21__21_ (var_fileExtension_9133, var_indexingPathSuffix_9199, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 271)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_project COMMA_SOURCE_FILE ("guiCompilation.galgas4", 266)) ;
+      GGS_lstring var_fileExtension_9140 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 267)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_indexing COMMA_SOURCE_FILE ("guiCompilation.galgas4", 268)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_in COMMA_SOURCE_FILE ("guiCompilation.galgas4", 269)) ;
+      GGS_lstring var_indexingPathSuffix_9206 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 270)) ;
+      var_projectExtensionList_9053.plusPlusAssignOperation (GGS_projectIndexingDescriptorList_2E_element::init_21__21_ (var_fileExtension_9140, var_indexingPathSuffix_9206, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 271)) ;
     } break ;
     case 3: {
-      nt_gui_5F_attributes_ (var_simpleGlobalAttributes_8928, inCompiler) ;
+      nt_gui_5F_attributes_ (var_simpleGlobalAttributes_8935, inCompiler) ;
     } break ;
     case 4: {
-      nt_gui_5F_with_5F_option_5F_declaration_ (var_importedOptionList_8868, inCompiler) ;
+      nt_gui_5F_with_5F_option_5F_declaration_ (var_importedOptionList_8875, inCompiler) ;
     } break ;
     case 5: {
-      nt_gui_5F_with_5F_lexique_5F_declaration_ (var_withLexiqueList_8985, inCompiler) ;
+      nt_gui_5F_with_5F_lexique_5F_declaration_ (var_withLexiqueList_8992, inCompiler) ;
     } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 280)) ;
-  ioArgument_ioDeclarations.mProperty_mGUIComponentList.plusPlusAssignOperation (GGS_galgasGUIComponentListAST_2E_element::init_21__21__21__21__21_ (var_mGUIName_8829, var_importedOptionList_8868, var_simpleGlobalAttributes_8928, var_withLexiqueList_8985, var_projectExtensionList_9046, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 281)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 280)) ;
+  ioArgument_ioDeclarations.mProperty_mGUIComponentList.plusPlusAssignOperation (GGS_galgasGUIComponentListAST_2E_element::init_21__21__21__21__21_ (var_mGUIName_8836, var_importedOptionList_8875, var_simpleGlobalAttributes_8935, var_withLexiqueList_8992, var_projectExtensionList_9053, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 281)) ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_declaration_i0_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_gui COMMA_SOURCE_FILE ("guiCompilation.galgas3", 257)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 258)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 259)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_gui COMMA_SOURCE_FILE ("guiCompilation.galgas4", 257)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas4", 258)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 259)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_34_GuiComponentSyntax_0 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_project COMMA_SOURCE_FILE ("guiCompilation.galgas3", 266)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 267)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_indexing COMMA_SOURCE_FILE ("guiCompilation.galgas3", 268)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_in COMMA_SOURCE_FILE ("guiCompilation.galgas3", 269)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 270)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_project COMMA_SOURCE_FILE ("guiCompilation.galgas4", 266)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 267)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_indexing COMMA_SOURCE_FILE ("guiCompilation.galgas4", 268)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_in COMMA_SOURCE_FILE ("guiCompilation.galgas4", 269)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 270)) ;
     } break ;
     case 3: {
       nt_gui_5F_attributes_indexing (inCompiler) ;
@@ -8892,180 +8892,180 @@ void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_dec
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 280)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 280)) ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui_5F_with_5F_lexique_5F_declaration_i1_ (GGS_withLexiqueListAST & ioArgument_ioWithLexiqueList,
                                                                                                                         Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_with COMMA_SOURCE_FILE ("guiCompilation.galgas3", 292)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_lexique COMMA_SOURCE_FILE ("guiCompilation.galgas3", 293)) ;
-  GGS_lstring var_lexiqueReference_9928 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 294)) ;
-  GGS_guiLabelListAST var_labels_9971 = GGS_guiLabelListAST::init (inCompiler COMMA_HERE) ;
-  GGS_guiSimpleAttributeListAST var_simpleAttributes_10019 = GGS_guiSimpleAttributeListAST::init (inCompiler COMMA_HERE) ;
-  GGS_guiCompoundAttributeListAST var_compoundAttributes_10079 = GGS_guiCompoundAttributeListAST::init (inCompiler COMMA_HERE) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 298)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_with COMMA_SOURCE_FILE ("guiCompilation.galgas4", 292)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_lexique COMMA_SOURCE_FILE ("guiCompilation.galgas4", 293)) ;
+  GGS_lstring var_lexiqueReference_9935 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas4", 294)) ;
+  GGS_guiLabelListAST var_labels_9978 = GGS_guiLabelListAST::init (inCompiler COMMA_HERE) ;
+  GGS_guiSimpleAttributeListAST var_simpleAttributes_10026 = GGS_guiSimpleAttributeListAST::init (inCompiler COMMA_HERE) ;
+  GGS_guiCompoundAttributeListAST var_compoundAttributes_10086 = GGS_guiCompoundAttributeListAST::init (inCompiler COMMA_HERE) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 298)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_34_GuiComponentSyntax_1 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_label COMMA_SOURCE_FILE ("guiCompilation.galgas3", 301)) ;
-      GGS_uint var_displayStyle_10163 ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_label COMMA_SOURCE_FILE ("guiCompilation.galgas4", 301)) ;
+      GGS_uint var_displayStyle_10170 ;
       switch (select_galgas_34_GuiComponentSyntax_2 (inCompiler)) {
       case 1: {
-        var_displayStyle_10163 = GGS_uint (uint32_t (0U)) ;
+        var_displayStyle_10170 = GGS_uint (uint32_t (0U)) ;
       } break ;
       case 2: {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 306)) ;
-        var_displayStyle_10163 = GGS_uint (uint32_t (1U)) ;
+        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2A_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 306)) ;
+        var_displayStyle_10170 = GGS_uint (uint32_t (1U)) ;
       } break ;
       default:
         break ;
       }
-      GGS_terminalLabelListAST var_terminalList_10302 = GGS_terminalLabelListAST::init (inCompiler COMMA_HERE) ;
+      GGS_terminalLabelListAST var_terminalList_10309 = GGS_terminalLabelListAST::init (inCompiler COMMA_HERE) ;
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
-        GGS_lstring var_terminal_10373 = inCompiler->synthetizedAttribute_tokenString () ;
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 311)) ;
-        GGS_uint var_displayFlags_10401 ;
+        GGS_lstring var_terminal_10380 = inCompiler->synthetizedAttribute_tokenString () ;
+        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 311)) ;
+        GGS_uint var_displayFlags_10408 ;
         switch (select_galgas_34_GuiComponentSyntax_4 (inCompiler)) {
         case 1: {
-          var_displayFlags_10401 = GGS_uint (uint32_t (0U)) ;
+          var_displayFlags_10408 = GGS_uint (uint32_t (0U)) ;
         } break ;
         case 2: {
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 316)) ;
-          var_displayFlags_10401 = GGS_uint (uint32_t (65535U)) ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 316)) ;
+          var_displayFlags_10408 = GGS_uint (uint32_t (65535U)) ;
         } break ;
         case 3: {
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 319)) ;
-          GGS_lbigint var_leadingStrip_10595 = inCompiler->synthetizedAttribute_bigintValue () ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("guiCompilation.galgas3", 320)) ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 319)) ;
+          GGS_lbigint var_leadingStrip_10602 = inCompiler->synthetizedAttribute_bigintValue () ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("guiCompilation.galgas4", 320)) ;
           GalgasBool test_2 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_2) {
-            test_2 = GGS_bool (ComparisonKind::greaterOrEqual, var_leadingStrip_10595.readProperty_bigint ().objectCompare (GGS_bigint ("15", inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 321)))).boolEnum () ;
+            test_2 = GGS_bool (ComparisonKind::greaterOrEqual, var_leadingStrip_10602.readProperty_bigint ().objectCompare (GGS_bigint ("15", inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 321)))).boolEnum () ;
             if (GalgasBool::boolTrue == test_2) {
               GenericArray <FixItDescription> fixItArray3 ;
-              inCompiler->emitSemanticError (var_leadingStrip_10595.readProperty_location (), GGS_string ("leading strip should be < 15"), fixItArray3  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 322)) ;
+              inCompiler->emitSemanticError (var_leadingStrip_10602.readProperty_location (), GGS_string ("leading strip should be < 15"), fixItArray3  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 322)) ;
             }
           }
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 324)) ;
-          GGS_lbigint var_endingStrip_10774 = inCompiler->synthetizedAttribute_bigintValue () ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("guiCompilation.galgas3", 325)) ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 324)) ;
+          GGS_lbigint var_endingStrip_10781 = inCompiler->synthetizedAttribute_bigintValue () ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("guiCompilation.galgas4", 325)) ;
           GalgasBool test_4 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_4) {
-            test_4 = GGS_bool (ComparisonKind::greaterOrEqual, var_endingStrip_10774.readProperty_bigint ().objectCompare (GGS_bigint ("15", inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 326)))).boolEnum () ;
+            test_4 = GGS_bool (ComparisonKind::greaterOrEqual, var_endingStrip_10781.readProperty_bigint ().objectCompare (GGS_bigint ("15", inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 326)))).boolEnum () ;
             if (GalgasBool::boolTrue == test_4) {
               GenericArray <FixItDescription> fixItArray5 ;
-              inCompiler->emitSemanticError (var_endingStrip_10774.readProperty_location (), GGS_string ("tail strip should be < 15"), fixItArray5  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 327)) ;
+              inCompiler->emitSemanticError (var_endingStrip_10781.readProperty_location (), GGS_string ("tail strip should be < 15"), fixItArray5  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 327)) ;
             }
           }
-          var_displayFlags_10401 = var_leadingStrip_10595.readProperty_bigint ().left_shift_operation (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 329)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas3", 329)).operator_or (var_endingStrip_10774.readProperty_bigint () COMMA_SOURCE_FILE ("guiCompilation.galgas3", 329)).getter_uint (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas3", 329)) ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 330)) ;
+          var_displayFlags_10408 = var_leadingStrip_10602.readProperty_bigint ().left_shift_operation (GGS_bigint ("4", inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 329)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas4", 329)).operator_or (var_endingStrip_10781.readProperty_bigint () COMMA_SOURCE_FILE ("guiCompilation.galgas4", 329)).getter_uint (inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas4", 329)) ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 330)) ;
         } break ;
         default:
           break ;
         }
-        var_terminalList_10302.plusPlusAssignOperation (GGS_terminalLabelListAST_2E_element::init_21__21_ (var_terminal_10373, var_displayFlags_10401, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 332)) ;
+        var_terminalList_10309.plusPlusAssignOperation (GGS_terminalLabelListAST_2E_element::init_21__21_ (var_terminal_10380, var_displayFlags_10408, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 332)) ;
         if (select_galgas_34_GuiComponentSyntax_3 (inCompiler) == 2) {
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 334)) ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 334)) ;
         }else{
           repeatFlag_1 = false ;
         }
       }
-      var_labels_9971.plusPlusAssignOperation (GGS_guiLabelListAST_2E_element::init_21__21__21_ (var_displayStyle_10163, var_terminalList_10302, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 336)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 336)) ;
+      var_labels_9978.plusPlusAssignOperation (GGS_guiLabelListAST_2E_element::init_21__21__21_ (var_displayStyle_10170, var_terminalList_10309, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 336)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 336)) ;
     } break ;
     case 3: {
-      GGS_lstring var_key_11192 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 338)) ;
-      GGS_lstring var_name_11229 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 339)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 340)) ;
-      GGS_lstring var_value_11255 = GGS_lstring::init_21__21_ (GGS_string::makeEmptyString (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 341)), inCompiler COMMA_HERE) ;
+      GGS_lstring var_key_11199 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas4", 338)) ;
+      GGS_lstring var_name_11236 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 339)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 340)) ;
+      GGS_lstring var_value_11262 = GGS_lstring::init_21__21_ (GGS_string::makeEmptyString (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 341)), inCompiler COMMA_HERE) ;
       bool repeatFlag_6 = true ;
       while (repeatFlag_6) {
-        GGS_lstring var_v_11341 = inCompiler->synthetizedAttribute_tokenString () ;
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 343)) ;
-        var_value_11255 = GGS_lstring::init_21__21_ (var_value_11255.readProperty_string ().add_operation (var_v_11341.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas3", 344)), var_v_11341.readProperty_location (), inCompiler COMMA_HERE) ;
+        GGS_lstring var_v_11348 = inCompiler->synthetizedAttribute_tokenString () ;
+        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 343)) ;
+        var_value_11262 = GGS_lstring::init_21__21_ (var_value_11262.readProperty_string ().add_operation (var_v_11348.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas4", 344)), var_v_11348.readProperty_location (), inCompiler COMMA_HERE) ;
         if (select_galgas_34_GuiComponentSyntax_5 (inCompiler) == 2) {
         }else{
           repeatFlag_6 = false ;
         }
       }
-      var_compoundAttributes_10079.plusPlusAssignOperation (GGS_guiCompoundAttributeListAST_2E_element::init_21__21__21_ (var_key_11192, var_name_11229, var_value_11255, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 347)) ;
+      var_compoundAttributes_10086.plusPlusAssignOperation (GGS_guiCompoundAttributeListAST_2E_element::init_21__21__21_ (var_key_11199, var_name_11236, var_value_11262, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 347)) ;
     } break ;
     case 4: {
-      GGS_lstring var_name_11526 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 349)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 350)) ;
-      GGS_lstring var_value_11574 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 351)) ;
-      var_simpleAttributes_10019.plusPlusAssignOperation (GGS_guiSimpleAttributeListAST_2E_element::init_21__21_ (var_name_11526, var_value_11574, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 352)) ;
+      GGS_lstring var_name_11533 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas4", 349)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 350)) ;
+      GGS_lstring var_value_11581 = inCompiler->synthetizedAttribute_tokenString () ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 351)) ;
+      var_simpleAttributes_10026.plusPlusAssignOperation (GGS_guiSimpleAttributeListAST_2E_element::init_21__21_ (var_name_11533, var_value_11581, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 352)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 354)) ;
-  ioArgument_ioWithLexiqueList.plusPlusAssignOperation (GGS_withLexiqueListAST_2E_element::init_21__21__21__21_ (var_lexiqueReference_9928, var_labels_9971, var_simpleAttributes_10019, var_compoundAttributes_10079, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 355)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 354)) ;
+  ioArgument_ioWithLexiqueList.plusPlusAssignOperation (GGS_withLexiqueListAST_2E_element::init_21__21__21__21_ (var_lexiqueReference_9935, var_labels_9978, var_simpleAttributes_10026, var_compoundAttributes_10086, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 355)) ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui_5F_with_5F_lexique_5F_declaration_i1_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_with COMMA_SOURCE_FILE ("guiCompilation.galgas3", 292)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_lexique COMMA_SOURCE_FILE ("guiCompilation.galgas3", 293)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 294)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 298)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_with COMMA_SOURCE_FILE ("guiCompilation.galgas4", 292)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_lexique COMMA_SOURCE_FILE ("guiCompilation.galgas4", 293)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas4", 294)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 298)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_34_GuiComponentSyntax_1 (inCompiler)) {
     case 2: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_label COMMA_SOURCE_FILE ("guiCompilation.galgas3", 301)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_label COMMA_SOURCE_FILE ("guiCompilation.galgas4", 301)) ;
       switch (select_galgas_34_GuiComponentSyntax_2 (inCompiler)) {
       case 1: {
       } break ;
       case 2: {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 306)) ;
+        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2A_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 306)) ;
       } break ;
       default:
         break ;
       }
       bool repeatFlag_1 = true ;
       while (repeatFlag_1) {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 311)) ;
+        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__24_terminal_24_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 311)) ;
         switch (select_galgas_34_GuiComponentSyntax_4 (inCompiler)) {
         case 1: {
         } break ;
         case 2: {
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 316)) ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2D_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 316)) ;
         } break ;
         case 3: {
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 319)) ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("guiCompilation.galgas3", 320)) ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 324)) ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("guiCompilation.galgas3", 325)) ;
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 330)) ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 319)) ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("guiCompilation.galgas4", 320)) ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 324)) ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_literalInt COMMA_SOURCE_FILE ("guiCompilation.galgas4", 325)) ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 330)) ;
         } break ;
         default:
           break ;
         }
         if (select_galgas_34_GuiComponentSyntax_3 (inCompiler) == 2) {
-          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 334)) ;
+          inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 334)) ;
         }else{
           repeatFlag_1 = false ;
         }
       }
     } break ;
     case 3: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 338)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 339)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 340)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas4", 338)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 339)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 340)) ;
       bool repeatFlag_2 = true ;
       while (repeatFlag_2) {
-        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 343)) ;
+        inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 343)) ;
         if (select_galgas_34_GuiComponentSyntax_5 (inCompiler) == 2) {
         }else{
           repeatFlag_2 = false ;
@@ -9073,66 +9073,66 @@ void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui
       }
     } break ;
     case 4: {
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 349)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 350)) ;
-      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 351)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas4", 349)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 350)) ;
+      inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 351)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
       break ;
     }
   }
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 354)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 354)) ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui_5F_with_5F_option_5F_declaration_i2_ (GGS_lstringlist & ioArgument_ioImportedOptionList,
                                                                                                                        Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_with COMMA_SOURCE_FILE ("guiCompilation.galgas3", 361)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_option COMMA_SOURCE_FILE ("guiCompilation.galgas3", 362)) ;
-  GGS_lstring var_optionReference_11978 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 363)) ;
-  ioArgument_ioImportedOptionList.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (var_optionReference_11978, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 364)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_with COMMA_SOURCE_FILE ("guiCompilation.galgas4", 361)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_option COMMA_SOURCE_FILE ("guiCompilation.galgas4", 362)) ;
+  GGS_lstring var_optionReference_11985 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas4", 363)) ;
+  ioArgument_ioImportedOptionList.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (var_optionReference_11985, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 364)) ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui_5F_with_5F_option_5F_declaration_i2_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_with COMMA_SOURCE_FILE ("guiCompilation.galgas3", 361)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_option COMMA_SOURCE_FILE ("guiCompilation.galgas3", 362)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 363)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_with COMMA_SOURCE_FILE ("guiCompilation.galgas4", 361)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_option COMMA_SOURCE_FILE ("guiCompilation.galgas4", 362)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas4", 363)) ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui_5F_attributes_i3_ (GGS_guiSimpleAttributeListAST & ioArgument_ioSimpleGlobalAttributes,
                                                                                                     Lexique_galgasScanner_34_ * inCompiler) {
-  GGS_lstring var_mKey_12266 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 370)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 371)) ;
-  GGS_lstring var_mValue_12288 = GGS_lstring::init_21__21_ (GGS_string::makeEmptyString (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 372)), inCompiler COMMA_HERE) ;
+  GGS_lstring var_mKey_12273 = inCompiler->synthetizedAttribute_tokenString () ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas4", 370)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 371)) ;
+  GGS_lstring var_mValue_12295 = GGS_lstring::init_21__21_ (GGS_string::makeEmptyString (), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 372)), inCompiler COMMA_HERE) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    GGS_lstring var_value_12362 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 374)) ;
-    var_mValue_12288 = GGS_lstring::init_21__21_ (var_mValue_12288.readProperty_string ().add_operation (var_value_12362.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas3", 375)), var_value_12362.readProperty_location (), inCompiler COMMA_HERE) ;
+    GGS_lstring var_value_12369 = inCompiler->synthetizedAttribute_tokenString () ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 374)) ;
+    var_mValue_12295 = GGS_lstring::init_21__21_ (var_mValue_12295.readProperty_string ().add_operation (var_value_12369.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas4", 375)), var_value_12369.readProperty_location (), inCompiler COMMA_HERE) ;
     if (select_galgas_34_GuiComponentSyntax_6 (inCompiler) == 2) {
     }else{
       repeatFlag_0 = false ;
     }
   }
-  ioArgument_ioSimpleGlobalAttributes.plusPlusAssignOperation (GGS_guiSimpleAttributeListAST_2E_element::init_21__21_ (var_mKey_12266, var_mValue_12288, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas3", 378)) ;
+  ioArgument_ioSimpleGlobalAttributes.plusPlusAssignOperation (GGS_guiSimpleAttributeListAST_2E_element::init_21__21_ (var_mKey_12273, var_mValue_12295, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 378)) ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_34_GuiComponentSyntax::rule_galgas_34_GuiComponentSyntax_gui_5F_attributes_i3_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas3", 370)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 371)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("guiCompilation.galgas4", 370)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 371)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas3", 374)) ;
+    inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("guiCompilation.galgas4", 374)) ;
     if (select_galgas_34_GuiComponentSyntax_6 (inCompiler) == 2) {
     }else{
       repeatFlag_0 = false ;

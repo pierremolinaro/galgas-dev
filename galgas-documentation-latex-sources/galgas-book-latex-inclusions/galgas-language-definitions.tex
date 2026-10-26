@@ -77,7 +77,7 @@
 \newenvironment{galgas3}{
   \begingroup
   \@bsphack
-  \immediate\openout\tempfile=temp.galgas%
+  \immediate\openout\tempfile=temp.galgas3%
   \let\do\@makeother\dospecials
   \catcode`\^^M\active
   \verbatim@startline
@@ -89,8 +89,8 @@
   \immediate\closeout\tempfile
   \@esphack
   \endgroup
-  \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}
-  {\medskip\begin{siderules3}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas.tex}}}\end{siderules3}}
+  \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas3}
+  {\medskip\begin{siderules3}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas3.tex}}}\end{siderules3}}
 }
 \makeatother
 
@@ -117,7 +117,7 @@
 \newenvironment{galgas3box}{%
   \begingroup
   \@bsphack
-  \immediate\openout\tempfile=temp.galgas%
+  \immediate\openout\tempfile=temp.galgas3%
   \let\do\@makeother\dospecials
   \catcode`\^^M\active
   \verbatim@startline
@@ -129,8 +129,8 @@
   \immediate\closeout\tempfile
   \@esphack
   \endgroup
-  \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}
-  {\singlespacing\begin{boxrules3}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas.tex}}}\end{boxrules3}}
+  \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas3}
+  {\singlespacing\begin{boxrules3}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas3.tex}}}\end{boxrules3}}
 }
 \makeatother
 
@@ -167,11 +167,11 @@
       \expandafter#1%
       \expandafter{\@tempa}%
       \@esphack%
-      \immediate\openout\tempfile=temp.galgas%
+      \immediate\openout\tempfile=temp.galgas3%
       \immediate\write\tempfile{##1}%
       \immediate\closeout\tempfile%
-      \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}%
-      \colorbox{gray!6}{\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas.tex}}}\unskip}%
+      \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas3}%
+      \colorbox{gray!6}{\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas3.tex}}}\unskip}%
     }%
   }%
   \ifnum`#2=`\~\else\@makeother\~\fi%
@@ -205,7 +205,7 @@
 \newenvironment{galgas4}{%
   \begingroup
   \@bsphack
-  \immediate\openout\tempfile=temp.ggs%
+  \immediate\openout\tempfile=temp.galgas4%
   \let\do\@makeother\dospecials
   \catcode`\^^M\active
   \verbatim@startline
@@ -217,8 +217,8 @@
   \immediate\closeout\tempfile
   \@esphack
   \endgroup
-  \immediate\write18{galgas -q --mode=latex:Galgas temp.ggs}
-  {\medskip\begin{siderules4}\zeroEspaceAvantPonctuation{\tt{\input{temp.ggs.tex}}}\end{siderules4}}
+  \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas4}
+  {\medskip\begin{siderules4}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas4.tex}}}\end{siderules4}}
 }
 \makeatother
 
@@ -247,7 +247,7 @@
 \newenvironment{galgas34}{%
   \begingroup
   \@bsphack
-  \immediate\openout\tempfile=temp.ggs%
+  \immediate\openout\tempfile=temp.galgas4%
   \let\do\@makeother\dospecials
   \catcode`\^^M\active
   \verbatim@startline
@@ -259,8 +259,8 @@
   \immediate\closeout\tempfile
   \@esphack
   \endgroup
-  \immediate\write18{galgas -q --mode=latex:Galgas temp.ggs}
-  {\medskip\begin{siderules34}\zeroEspaceAvantPonctuation{\tt{\input{temp.ggs.tex}}}\end{siderules34}}
+  \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas4}
+  {\medskip\begin{siderules34}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas4.tex}}}\end{siderules34}}
 }
 \makeatother
 
@@ -287,7 +287,7 @@
 \newenvironment{galgas34box}{%
   \begingroup
   \@bsphack
-  \immediate\openout\tempfile=temp.galgas%
+  \immediate\openout\tempfile=temp.galgas4%
   \let\do\@makeother\dospecials
   \catcode`\^^M\active
   \verbatim@startline
@@ -299,8 +299,8 @@
   \immediate\closeout\tempfile
   \@esphack
   \endgroup
-  \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}
-  {\singlespacing\begin{boxrules34}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas.tex}}}\end{boxrules34}}
+  \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas4}
+  {\singlespacing\begin{boxrules34}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas4.tex}}}\end{boxrules34}}
 }
 \makeatother
 
@@ -327,7 +327,7 @@
 \newenvironment{galgas4box}{%
   \begingroup
   \@bsphack
-  \immediate\openout\tempfile=temp.ggs%
+  \immediate\openout\tempfile=temp.galgas4%
   \let\do\@makeother\dospecials
   \catcode`\^^M\active
   \verbatim@startline
@@ -339,8 +339,8 @@
   \immediate\closeout\tempfile
   \@esphack
   \endgroup
-  \immediate\write18{galgas -q --mode=latex:Galgas temp.ggs}
-  {\singlespacing\begin{boxrules4}\zeroEspaceAvantPonctuation{\tt{\input{temp.ggs.tex}}}\end{boxrules4}}
+  \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas4}
+  {\singlespacing\begin{boxrules4}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas4.tex}}}\end{boxrules4}}
 }
 \makeatother
 
@@ -377,11 +377,11 @@
       \expandafter#1%
       \expandafter{\@tempa}%
       \@esphack%
-      \immediate\openout\tempfile=temp.ggs%
+      \immediate\openout\tempfile=temp.galgas4%
       \immediate\write\tempfile{##1}%
       \immediate\closeout\tempfile%
-      \immediate\write18{galgas -q --mode=latex:Galgas temp.ggs}%
-      \colorbox{gray!6}{\zeroEspaceAvantPonctuation{\tt{\input{temp.ggs.tex}}}\unskip}%
+      \immediate\write18{galgas4 -q --mode=latex:Galgas temp.galgas4}%
+      \colorbox{gray!6}{\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas4.tex}}}\unskip}%
     }%
   }%
   \ifnum`#2=`\~\else\@makeother\~\fi%

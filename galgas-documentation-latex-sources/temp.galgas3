@@ -1,0 +1,5 @@
+rule <T> { I1 I0 <T> }
+
+rule <T> { I2 I0 <T> }
+
+rule <T> {  }

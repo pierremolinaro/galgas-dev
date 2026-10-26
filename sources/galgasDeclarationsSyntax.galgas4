@@ -58,9 +58,9 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
 
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $filewrapper$
-    $identifier$ (?let @lstring mFilewrapperName) indexing (filewrapperDefinition)
+    $identifier$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
     $in$
-    $"string"$ (?let @lstring mFilewrapperPath)
+    $"string"$ (?let @lstring filewrapperPath)
     <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
     <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
     <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
@@ -68,8 +68,8 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       !isPredefined: false, // Is not predefined
       !false, // private
       !@string.stringWithSourceFilePath,
-      !mFilewrapperName,
-      !mFilewrapperPath,
+      !filewrapperName,
+      !filewrapperPath,
       !filewrapperTextFileExtensionList,
       !filewrapperBinaryFileExtensionList,
       !filewrapperTemplateList
@@ -81,9 +81,9 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
   rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
     $private$
     $filewrapper$
-    $identifier$ (?let @lstring mFilewrapperName) indexing (filewrapperDefinition)
+    $identifier$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
     $in$
-    $"string"$ (?let @lstring mFilewrapperPath)
+    $"string"$ (?let @lstring filewrapperPath)
     <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
     <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
     <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
@@ -91,8 +91,8 @@ syntax galgas3DeclarationsSyntax (galgasScanner3) {
       !isPredefined: false, // Is not predefined
       !true, // private
       !@string.stringWithSourceFilePath,
-      !mFilewrapperName,
-      !mFilewrapperPath,
+      !filewrapperName,
+      !filewrapperPath,
       !filewrapperTextFileExtensionList,
       !filewrapperBinaryFileExtensionList,
       !filewrapperTemplateList
@@ -225,9 +225,9 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $filewrapper$
-    $identifier$ (?let @lstring mFilewrapperName) indexing (filewrapperDefinition)
+    $identifier$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
     $in$
-    $"string"$ (?let @lstring mFilewrapperPath)
+    $"string"$ (?let @lstring filewrapperPath)
     <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
     <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
     <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
@@ -235,8 +235,8 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       !isPredefined: false, // Is not predefined
       !false, // private
       !@string.stringWithSourceFilePath,
-      !mFilewrapperName,
-      !mFilewrapperPath,
+      !filewrapperName,
+      !filewrapperPath,
       !filewrapperTextFileExtensionList,
       !filewrapperBinaryFileExtensionList,
       !filewrapperTemplateList
@@ -248,9 +248,9 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $private$
     $filewrapper$
-    $identifier$ (?let @lstring mFilewrapperName) indexing (filewrapperDefinition)
+    $identifier$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
     $in$
-    $"string"$ (?let @lstring mFilewrapperPath)
+    $"string"$ (?let @lstring filewrapperPath)
     <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
     <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
     <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
@@ -258,8 +258,8 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       !isPredefined: false, // Is not predefined
       !true, // private
       !@string.stringWithSourceFilePath,
-      !mFilewrapperName,
-      !mFilewrapperPath,
+      !filewrapperName,
+      !filewrapperPath,
       !filewrapperTextFileExtensionList,
       !filewrapperBinaryFileExtensionList,
       !filewrapperTemplateList

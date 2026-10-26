@@ -454,7 +454,7 @@ override proc @forInstructionAST.enterInstructionInSemanticContext (?!@unifiedTy
 
 //································································································*
 
-abstract proc @abstractEnumeratedCollectionAST enterInSemanticContext (?!@unifiedTypeMap ioTypeMap)
+abstract proc @abstractEnumeratedCollectionAST.enterInSemanticContext (?!@unifiedTypeMap ioTypeMap)
 
 //································································································*
 
@@ -473,7 +473,7 @@ override proc @enumeratedCollectionVarInExpAST.enterInSemanticContext (?!@unifie
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @abstractEnumeratedCollectionAST analyzeEnumeration (
+abstract proc @abstractEnumeratedCollectionAST.analyzeEnumeration (
   ?let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @analysisContext inAnalysisContext,

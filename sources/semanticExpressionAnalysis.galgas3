@@ -407,7 +407,7 @@ struct @predefinedTypes {
 //
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @semanticExpressionAST analyzeSemanticExpression
+abstract proc @semanticExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?inferenceType: let @unifiedTypeMapEntry inType,

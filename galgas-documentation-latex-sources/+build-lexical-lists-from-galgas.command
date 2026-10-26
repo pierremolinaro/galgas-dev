@@ -10,10 +10,10 @@ cd $DIR &&
 # cp ../build/tex/galgas3ProjectGrammar.tex $DIR/chapitre-grammaires/galgas3ProjectGrammar.tex &&
 # cp ../build/tex/templateGrammar.tex $DIR/chapitre-grammaires/templateGrammar.tex &&
 #--- Reconstruire la table des mots réservés et celle des délimiteurs (galgas 3)
-../makefile-unix/galgas --output-keyword-list-file=galgasScanner3:galgasKeyWordList:5:\\ggst!:!:partie-utilisation/included-keyword-list-3.tex &&
-../makefile-unix/galgas --output-keyword-list-file=galgasScanner3:galgasDelimitorsList:10:\\ggst0:0:partie-utilisation/included-delimiter-list-3.tex &&
-../makefile-unix/galgas --output-keyword-list-file=galgasScanner3:attributeKeyWordList:3:\\ggst!%:!:partie-utilisation/included-attribute-list-3.tex &&
+../makefile-unix/galgas4 --output-keyword-list-file=galgasScanner3:galgasKeyWordList:5:\\ggst!:!:partie-utilisation/included-keyword-list-3.tex &&
+../makefile-unix/galgas4 --output-keyword-list-file=galgasScanner3:galgasDelimitorsList:10:\\ggst0:0:partie-utilisation/included-delimiter-list-3.tex &&
+../makefile-unix/galgas4 --output-keyword-list-file=galgasScanner3:attributeKeyWordList:3:\\ggst!%:!:partie-utilisation/included-attribute-list-3.tex &&
 #--- Reconstruire la table des mots réservés et celle des délimiteurs (galgas 4)
-../makefile-unix/galgas --output-keyword-list-file=galgasScanner4:galgasKeyWordList:5:\\ggsq!:!:partie-utilisation/included-keyword-list-4.tex &&
-../makefile-unix/galgas --output-keyword-list-file=galgasScanner4:galgasDelimitorsList:10:\\ggsq0:0:partie-utilisation/included-delimiter-list-4.tex &&
-../makefile-unix/galgas --output-keyword-list-file=galgasScanner4:attributeKeyWordList:2:\\ggsq!%:!:partie-utilisation/included-attribute-list-4.tex
+../makefile-unix/galgas4 --output-keyword-list-file=galgasScanner4:galgasKeyWordList:5:\\ggsq!:!:partie-utilisation/included-keyword-list-4.tex &&
+../makefile-unix/galgas4 --output-keyword-list-file=galgasScanner4:galgasDelimitorsList:10:\\ggsq0:0:partie-utilisation/included-delimiter-list-4.tex &&
+../makefile-unix/galgas4 --output-keyword-list-file=galgasScanner4:attributeKeyWordList:2:\\ggsq!%:!:partie-utilisation/included-attribute-list-4.tex

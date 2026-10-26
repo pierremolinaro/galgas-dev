@@ -45,16 +45,17 @@ syntax extension templateSyntax {
   rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
     $switch$
   //--- Switch expression
-    <expression_tpl> (?let switchExpression)
+    <expression_template> (?let switchExpression)
     let @location endOfSwitchExpression = .here
   //--- Loop on "case" clauses
     var @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList = @()
     repeat
     while
       $case$
-      <switch_case>(
+      <switch_case> (
         ?let [@lstring] constantNameList,
-        ?let @switchExtractedValuesListAST associatedValuesExtraction)
+        ?let @switchExtractedValuesListAST associatedValuesExtraction
+      )
       $:$
       var @templateInstructionListAST instructionList = @()
       repeat

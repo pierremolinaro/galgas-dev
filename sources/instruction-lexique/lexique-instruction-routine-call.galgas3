@@ -169,7 +169,7 @@ override func @lexicalFormalInputArgumentAST.generateSwiftCocoaRoutineArgument
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument (
+abstract proc @abstractLexicalRoutineActualArgumentAST.checkLexicalRoutineCallArgument (
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
   ?@lexicalArgumentModeAST unused inLexicalRoutineFormalArgumentMode,
   ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType)

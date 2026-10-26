@@ -102,7 +102,7 @@ protocol Correcteur : AnyObject {
 
 //----------------------------------------------------------------------------------------
 
-class InsérerVirgule : Correcteur {
+class InsérerPoint : Correcteur {
   var suggestionMessageErreur : String { "-  the '.' delimitor" }
 
   func corriger (_ lignesDuFichier : inout [String],
@@ -140,7 +140,7 @@ class InsérerVirgule : Correcteur {
 
   func traduire (projetGALGAS inCheminFichierGALGAS : String) -> (Bool, Int) {
     let correcteurs : [Correcteur] = [
-      InsérerVirgule (),
+      InsérerPoint (),
     ]
     let débutConstruction = Date ()
   //-------------------- Chemin absolu vers projet galgas

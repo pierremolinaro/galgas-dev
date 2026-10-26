@@ -22,7 +22,7 @@ abstract class @instruction {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @instruction codeDisplay
+abstract proc @instruction.codeDisplay
   (?!@bool ioPenDown,
   ?!@double unused ioX,
   ?!@double unused ioY,
