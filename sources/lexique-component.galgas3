@@ -845,28 +845,28 @@ override proc @lexiqueComponentAST.enterDeclarationInSemanticContext
   )
 //--------------------------------------
   var @terminalMap terminalMap = @()
-  for (mName mSentAttributeList 4*) in self.mTerminalDeclarationListAST do
+  for terminal in self.mTerminalDeclarationListAST do
     var argumentTypeList = @lexicalSentValueList ()
-    for (mFormalSelector mAttributeName) in mSentAttributeList do
-      lexicalAttributeMap.searchKey (!mAttributeName, ?let attributeLexicalType)
-      argumentTypeList ++= @(!mFormalSelector, !mAttributeName.string, !attributeLexicalType)
+    for entry in terminal.mSentAttributeList do
+      lexicalAttributeMap.searchKey (entry.mAttributeName, ?let attributeLexicalType)
+      argumentTypeList ++= @(!entry.mFormalSelector, !entry.mAttributeName.string, !attributeLexicalType)
     end
-    !?terminalMap.insertKey (!mName, !argumentTypeList)
+    !?terminalMap.insertKey (!terminal.mName, !argumentTypeList)
   end
 //---
-  for (* * * mSentAttributeList mEntryList) in self.mLexicalListDeclarationListAST do
+  for lexicalList in self.mLexicalListDeclarationListAST do
     var argumentTypeList = @lexicalSentValueList ()
-    for (mFormalSelector mAttributeName) in mSentAttributeList do
-      lexicalAttributeMap.searchKey (!mAttributeName, ?let attributeLexicalType)
-      argumentTypeList ++= @(!mFormalSelector, !mAttributeName.string, !attributeLexicalType)
+    for entry in lexicalList.mSentAttributeList do
+      lexicalAttributeMap.searchKey (entry.mAttributeName, ?let attributeLexicalType)
+      argumentTypeList ++= @(entry.mFormalSelector, entry.mAttributeName.string, !attributeLexicalType)
     end
-    for (* mTerminalSpelling 2*) in mEntryList do
-      !?terminalMap.insertKey (!mTerminalSpelling, !argumentTypeList)
+    for entry in lexicalList.mEntryList do
+      !?terminalMap.insertKey (entry.mTerminalSpelling, !argumentTypeList)
     end
   end
 //---
-  !?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis.insertKey
-     (!self.mLexiqueComponentName,
+  !?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis.insertKey (
+     !self.mLexiqueComponentName,
      !self.mIsTemplate,
      !terminalMap,
      !self.mIndexingListAST,
@@ -983,13 +983,13 @@ override proc @lexiqueComponentAST.semanticAnalysis
     !?lexiqueAnalysisContext.mLexicalMessageMap.insertKey (!mMessageName, !mMessageValue, !false)
   end
 //-------------------------------------- Check rules
-  for (mLexicalRule) in self.mLexicalRuleListAST do
-    mLexicalRule.checkLexicalRule (!?lexiqueAnalysisContext)
+  for entry in self.mLexicalRuleListAST do
+    entry.mLexicalRule.checkLexicalRule (!?lexiqueAnalysisContext)
   end
 //-------------------------------------- Warn for unused messages
-  for (lkey * mMessageIsUsed) in lexiqueAnalysisContext.mLexicalMessageMap do
-    if not mMessageIsUsed then
-      warning lkey:"unused message"
+  for entry in lexiqueAnalysisContext.mLexicalMessageMap do
+    if not entry.mMessageIsUsed then
+      warning entry.lkey:"unused message"
     end
   end
 //-------------------------------------- Template delimiters
@@ -999,16 +999,16 @@ override proc @lexiqueComponentAST.semanticAnalysis
    lexiqueAnalysisContext.mTemplateDelimitorList ++= @(!mStartString, !mEndString, !mPreserved)
   end
   var @stringset indexNameSet = @()
-  for (mIndexName *) in self.mIndexingListAST do
-    if indexNameSet.hasKey (!mIndexName.string) then
-      error (mIndexName : "the '" + mIndexName + "' index is already declared")
+  for entry in self.mIndexingListAST do
+    if indexNameSet.hasKey (entry.mIndexName.string) then
+      error (entry.mIndexName : "the '" + entry.mIndexName + "' index is already declared")
     end
-    indexNameSet ++= mIndexName.string
+    indexNameSet ++= entry.mIndexName.string
   end
 //-------------------------------------- Template replacements
-  for (mMatchString mReplacementString *) in self.mTemplateReplacementListAST do
-   lexiqueAnalysisContext.mUnicodeStringToGenerate ++= mMatchString.string
-   lexiqueAnalysisContext.mUnicodeStringToGenerate ++= mReplacementString.string
+  for entry in self.mTemplateReplacementListAST do
+   lexiqueAnalysisContext.mUnicodeStringToGenerate ++= entry.mMatchString.string
+   lexiqueAnalysisContext.mUnicodeStringToGenerate ++= entry.mReplacementString.string
    // § TODO Check replacement function
   end
 //-------------------------------------- Build header and Cpp contents

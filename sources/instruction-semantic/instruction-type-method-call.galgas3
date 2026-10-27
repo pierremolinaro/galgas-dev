@@ -82,8 +82,8 @@ syntax extension galgas4InstructionsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @typeMethodCallInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  for (mActualParameter) in self.mActualParameterList do
-    mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
+  for entry in self.mActualParameterList do
+    entry.mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
   end
 }
 
@@ -146,8 +146,8 @@ override proc @typeMethodCallInstructionForGeneration.generateInstruction (?!@st
   var parameterCppNameList = @stringlist ()
   var jokerParametersToReleaseList = @stringlist ()
   var inputVariableList = @stringlist ()
-  for (mActualParameter) in self.mActualParameterList do
-    mActualParameter.generateActualParameter
+  for entry in self.mActualParameterList do
+    entry.mActualParameter.generateActualParameter
       (!?ioInclusionSet,
       !?ioTemporaryVariableIndex,
       !?ioGeneratedCode,
@@ -160,8 +160,8 @@ override proc @typeMethodCallInstructionForGeneration.generateInstruction (?!@st
 //--- Generate proc call
   ioGeneratedCode += "GGS_" + self.mTypeName.string.identifierRepresentation
                   + "::class_method_" + self.mMethodName.string.identifierRepresentation + " ("
-  for (mValue) in parameterCppNameList
-    do ioGeneratedCode += mValue
+  for entry in parameterCppNameList
+    do ioGeneratedCode += entry.mValue
     between ioGeneratedCode += ", "
   end
   if self.mHasCompilerArgument then

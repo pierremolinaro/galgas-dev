@@ -274,8 +274,8 @@ syntax extension galgas4InstructionsSyntax {
 
   override proc @grammarInFileInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     self.mSourceExpression.enterExpressionInSemanticContext (!?ioTypeMap)
-    for (mActualParameter) in self.mActualParameterList do
-      mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
+    for entry in self.mActualParameterList do
+      entry.mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
     end
   }
 
@@ -283,8 +283,8 @@ syntax extension galgas4InstructionsSyntax {
 
   override proc @grammarInStringInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     self.mSourceExpression.enterExpressionInSemanticContext (!?ioTypeMap)
-    for (mActualParameter) in self.mActualParameterList do
-      mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
+    for entry in self.mActualParameterList do
+      entry.mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
     end
   }
 
@@ -497,8 +497,8 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
     var parameterCppNameList = @stringlist ()
     var jokerParametersToReleaseList = @stringlist ()
     var inputVariableList = @stringlist ()
-    for (mActualParameter) in self.mActualParameterList do
-      mActualParameter.generateActualParameter
+    for entry in self.mActualParameterList do
+      entry.mActualParameter.generateActualParameter
         (!?ioInclusionSet,
         !?ioTemporaryVariableIndex,
         !?ioGeneratedCode,
@@ -508,7 +508,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
         ?let @string parameterCppName
       )
       parameterCppNameList ++= @(!parameterCppName)
-      if mActualParameter is @inputActualParameterForGeneration then
+      if entry.mActualParameter is @inputActualParameterForGeneration then
         ioGeneratedCode += parameterCppName + ".drop () ;\n"
       end
     end
@@ -521,8 +521,8 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
                     + compilerCppName () + ", "
                     + if self.mGrammarHasTranslateFeature then self.mSyntaxDirectedTranslationResultVarName + ", " else "" end
                     + sourceVar
-    for (mValue) in parameterCppNameList do
-      ioGeneratedCode += ", " + mValue
+    for entry in parameterCppNameList do
+      ioGeneratedCode += ", " + entry.mValue
     end
     ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
     !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
@@ -575,8 +575,8 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
     var parameterCppNameList = @stringlist ()
     var jokerParametersToReleaseList = @stringlist ()
     var inputVariableList = @stringlist ()
-    for (mActualParameter) in self.mActualParameterList do
-      mActualParameter.generateActualParameter
+    for entry in self.mActualParameterList do
+      entry.mActualParameter.generateActualParameter
          (!?ioInclusionSet,
          !?ioTemporaryVariableIndex,
          !?ioGeneratedCode,
@@ -586,7 +586,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
          ?let @string parameterCppName
       )
       parameterCppNameList ++= @(!parameterCppName)
-      if mActualParameter is @inputActualParameterForGeneration then
+      if entry.mActualParameter is @inputActualParameterForGeneration then
         ioGeneratedCode += parameterCppName + ".drop () ;\n"
       end
     end
@@ -599,8 +599,8 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
                     + if self.mGrammarHasTranslateFeature then self.mSyntaxDirectedTranslationResultVarName + ", " else "" end
                     + sourceVar
                     + ", " + nameVar
-    for (mValue) in parameterCppNameList do
-      ioGeneratedCode += ", " + mValue
+    for entry in parameterCppNameList do
+      ioGeneratedCode += ", " + entry.mValue
     end
     ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
     !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())

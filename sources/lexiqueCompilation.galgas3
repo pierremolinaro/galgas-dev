@@ -369,10 +369,10 @@ override proc @lexicalFunctionInputArgumentAST.checkLexicalFunctionCallArgument
     )
   end
 //--- Check actual argument against formal parameters
-  for (mLexicalType *) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
-    mLexicalActualInputArgument.checkLexicalFunctionCallArgument
-      (!?ioLexiqueAnalysisContext,
-      !mLexicalType
+  for fomal in lexicalFormalTypeList, actual in self.mFunctionActualArgumentList do
+    actual.mLexicalActualInputArgument.checkLexicalFunctionCallArgument (
+      !?ioLexiqueAnalysisContext,
+      fomal.mLexicalType
     )
   end
 }
@@ -479,17 +479,17 @@ override proc @lexicalFunctionInputArgumentAST.checkLexicalRoutineCallArgument
   end
 //--- Check actual argument count
   if lexicalFormalTypeList.count != self.mFunctionActualArgumentList.count then
-    error (self.mFunctionName: "this lexical function names "
+    error (self.mFunctionName : "this lexical function names "
     + self.mFunctionActualArgumentList.count.string
     + " actual argument(s), but the prototype requires "
     + lexicalFormalTypeList.count.string + " actual argument(s)"
     )
   end
 //--- Check actual argument against formal parameters
-  for (mLexicalType *) in lexicalFormalTypeList, (mLexicalActualInputArgument) in self.mFunctionActualArgumentList do
-    mLexicalActualInputArgument.checkLexicalFunctionCallArgument
-      (!?ioLexiqueAnalysisContext,
-      !mLexicalType
+  for formal in lexicalFormalTypeList, actual in self.mFunctionActualArgumentList do
+    actual.mLexicalActualInputArgument.checkLexicalFunctionCallArgument (
+      !?ioLexiqueAnalysisContext,
+      formal.mLexicalType
     )
   end
 }

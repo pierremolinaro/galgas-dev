@@ -74,8 +74,8 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    for (mActualParameter) in self.mActualParameterList do
-      mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
+    for actual in self.mActualParameterList do
+      actual.mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
     end
   }
 
@@ -179,16 +179,16 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
     var parameterCppNameList = @stringlist ()
     var jokerParametersToReleaseList = @stringlist ()
     var inputVariableList = @stringlist ()
-    for (mActualParameter) in self.mActualParameterList do
-      mActualParameter.generateActualParameter (!?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioGeneratedCode, !?jokerParametersToReleaseList, !?inputVariableList, !?ioUnusedVariableCppNameSet, ?let parameterCppName)
+    for actual in self.mActualParameterList do
+      actual.mActualParameter.generateActualParameter (!?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioGeneratedCode, !?jokerParametersToReleaseList, !?inputVariableList, !?ioUnusedVariableCppNameSet, ?let parameterCppName)
       parameterCppNameList ++= @(!parameterCppName)
     end
   //--- Generate proc call
     ioInclusionSet ++= "proc-" + self.mBaseType.definition.typeName.string.fileNameRepresentation + "-" + self.mMethodName.fileNameRepresentation
     ioGeneratedCode += "cPtr_" + self.mBaseType.definition.typeName.string.identifierRepresentation
     ioGeneratedCode += "::method_" + self.mMethodName.identifierRepresentation + " ("
-    for (mValue) in parameterCppNameList
-      do ioGeneratedCode += mValue
+    for parameter in parameterCppNameList
+      do ioGeneratedCode += parameter.mValue
       between ioGeneratedCode += ", "
     end
     if parameterCppNameList.count == 0 then
@@ -206,8 +206,8 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
     end
     ioGeneratedCode += self.mInstructionLocation.sourceFile + ") ;\n"
   //--- Generate poisoned variables
-    for (mActualParameter) in self.mActualParameterList do
-      mActualParameter.generatePoisonedVariables
+    for actual in self.mActualParameterList do
+      actual.mActualParameter.generatePoisonedVariables
         (!?ioGeneratedCode,
         !?ioUnusedVariableCppNameSet
       )

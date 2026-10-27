@@ -7654,6 +7654,12 @@ BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ("gal
                                          "check-big-int",
                                          "Run bit integers checks") ;
 
+BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warnsOnEnumerationNameMismatch ("galgas_cli_options",
+                                         "warnsOnEnumerationNameMismatch",
+                                         0,
+                                         "warns-on-enumeration-name-mismatch",
+                                         "Warns on enumeration name mismatch") ;
+
 BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warnsOnOldStyleEnumeration ("galgas_cli_options",
                                          "warnsOnOldStyleEnumeration",
                                          0,

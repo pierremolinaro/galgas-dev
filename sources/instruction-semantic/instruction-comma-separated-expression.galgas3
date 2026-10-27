@@ -162,8 +162,8 @@ list @CommaSeparatedExpressionList {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   proc enterExpressionListInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    for (mExpression) in self do
-      switch mExpression
+    for entry in self do
+      switch entry.mExpression
       case regularExp (exp, *) :
         exp.enterExpressionInSemanticContext (!?ioTypeMap)
       case letVarExp (2*, exp, *, @lstring typeName) :
@@ -182,8 +182,8 @@ list @CommaSeparatedExpressionList {
                                        ?!@localVarManager ioVariableMap,
                                        !@ifTestListForGeneration outTestListForGeneration) {
     outTestListForGeneration = @()
-    for (mExpression) in self do
-      switch mExpression
+    for entry in self do
+      switch entry.mExpression
       case regularExp (exp, endOfExpression) :
         exp.analyzeSemanticExpression
           (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
@@ -407,10 +407,10 @@ list @ifTestListForGeneration {
     outTestVar = "test_" + ioTemporaryVariableIndex.string
     ioTemporaryVariableIndex += 1
     ioGeneratedCode += "GalgasBool " + outTestVar + " = GalgasBool::boolTrue ;\n"
-    for (mExpression) in self do
+    for entry in self do
       ioGeneratedCode += "if (GalgasBool::boolTrue == " + outTestVar + ") {\n"
       !?ioGeneratedCode.incIndentation (!2)
-      switch mExpression
+      switch entry.mExpression
       case regular (exp) :
         exp.generateExpression
           (!?ioGeneratedCode,

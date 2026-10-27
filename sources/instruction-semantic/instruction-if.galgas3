@@ -196,7 +196,7 @@ final class @ifInstructionAST : @semanticInstructionAST {
     )
     var expressions = self.mExpressions
     !?expressions.popLast (?*)
-    for (*) in expressions do
+    for * in expressions do
       !?ioVariableMap.closeBranch (!self.mEndOf_then_branch)
       !?ioVariableMap.closeOverride (!self.mEndOf_then_branch)
     end
@@ -282,7 +282,7 @@ final class @ifInstructionForGeneration : @semanticInstructionForGeneration {
       !?ioGeneratedCode
     )
     ioGeneratedCode += "}\n"
-    for (*) in self.mExpressions do
+    for * in self.mExpressions do
       !?ioGeneratedCode.decIndentation (!2)
       ioGeneratedCode += "}\n"
     end

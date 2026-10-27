@@ -26,8 +26,8 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     self.mReceiverExpression.enterExpressionInSemanticContext (!?ioTypeMap)
-    for (mActualParameter) in self.mActualParameterList do
-      mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
+    for entry in self.mActualParameterList do
+      entry.mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
     end
   }
 
@@ -142,9 +142,9 @@ override proc @methodCallInstructionForGeneration.generateInstruction (?!@string
   var parameterCppNameList = @stringlist ()
   var jokerParametersToReleaseList = @stringlist ()
   var inputVariableList = @stringlist ()
-  for (mActualParameter) in self.mActualParameterList do
-    mActualParameter.generateActualParameter (!?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioGeneratedCode, !?jokerParametersToReleaseList, !?inputVariableList, !?ioUnusedVariableCppNameSet, ?let parameterCppName)
-    parameterCppNameList ++= @(!parameterCppName)
+  for entry in self.mActualParameterList do
+    entry.mActualParameter.generateActualParameter (!?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioGeneratedCode, !?jokerParametersToReleaseList, !?inputVariableList, !?ioUnusedVariableCppNameSet, ?let parameterCppName)
+    parameterCppNameList ++= @(parameterCppName)
   end
 //--- Generate proc call
   switch self.mKind
@@ -161,8 +161,8 @@ override proc @methodCallInstructionForGeneration.generateInstruction (?!@string
   case definedAsMember :
     ioGeneratedCode += receiverCppName + ".method_" + self.mMethodName.identifierRepresentation + " ("
   end
-  for (mValue) in parameterCppNameList
-    do ioGeneratedCode += mValue
+  for entry in parameterCppNameList
+    do ioGeneratedCode += entry.mValue
     between ioGeneratedCode += ", "
   end
   if parameterCppNameList.count == 0 then
@@ -180,8 +180,8 @@ override proc @methodCallInstructionForGeneration.generateInstruction (?!@string
   end
   ioGeneratedCode += self.mInstructionLocation.sourceFile + ") ;\n"
 //--- Generate poisoned variables
-  for (mActualParameter) in self.mActualParameterList do
-    mActualParameter.generatePoisonedVariables
+  for entry in self.mActualParameterList do
+    entry.mActualParameter.generatePoisonedVariables
       (!?ioGeneratedCode,
       !?ioUnusedVariableCppNameSet
     )

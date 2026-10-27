@@ -113,13 +113,13 @@ override proc @lexicalSelectInstructionAST.checkLexicalInstruction (
   for (mSelectExpression mSelectInstructionList) in self.mLexicalSelectBranchList do
     mSelectExpression.checkLexicalExpression (!?ioLexiqueAnalysisContext)
     var tagMap = @lexicalTagMap.mapWithMapToOverride(!ioTagMap)
-    for (mInstruction) in mSelectInstructionList do
-      mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
+    for entry in mSelectInstructionList do
+      entry.mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
     end
   end
   var tagMap = @lexicalTagMap.mapWithMapToOverride(!ioTagMap)
-  for (mInstruction) in self.mDefaultInstructionList do
-    mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
+  for entry in self.mDefaultInstructionList do
+    entry.mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
   end
 }
 
@@ -162,13 +162,13 @@ override func @lexicalSelectInstructionAST.generateSwiftCocoaInstructionCode
 
 override func @lexicalSelectInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
   result = false
-  for (* mSelectInstructionList) in self.mLexicalSelectBranchList while not result do
-    for (mInstruction) in mSelectInstructionList while not result do
-      result = mInstruction.lexicalInstructionUsesLoopLocalVariable
+  for entry in self.mLexicalSelectBranchList while not result do
+    for inst in entry.mSelectInstructionList while not result do
+      result = inst.mInstruction.lexicalInstructionUsesLoopLocalVariable
     end
   end
-  for (mInstruction) in self.mDefaultInstructionList while not result do
-    result = mInstruction.lexicalInstructionUsesLoopLocalVariable
+  for instr in self.mDefaultInstructionList while not result do
+    result = instr.mInstruction.lexicalInstructionUsesLoopLocalVariable
   end
 }
 
@@ -186,8 +186,8 @@ override func @lexicalSelectInstructionAST.generateLexicalInstructionCode
     result += mSelectExpression.generateConditionCode (!context:inLexiqueAnalysisContext)
     result += ") {\n"
     !?result.incIndentation (!2)
-    for (mInstruction) in mSelectInstructionList do
-      result += mInstruction.generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+    for instr in mSelectInstructionList do
+      result += instr.mInstruction.generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
     end
     !?result.decIndentation (!2)
   between
@@ -197,8 +197,8 @@ override func @lexicalSelectInstructionAST.generateLexicalInstructionCode
   if self.mDefaultInstructionList.count > 0 then
     result += "}else{\n"
     !?result.incIndentation (!2)
-    for (mInstruction) in self.mDefaultInstructionList do
-      result += mInstruction.generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+    for instr in self.mDefaultInstructionList do
+      result += instr.mInstruction.generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
     end
     !?result.decIndentation (!2)
   end

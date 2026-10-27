@@ -65,6 +65,9 @@ option galgas_cli_options {
   @bool checkEntityUsefulness : '\0', "check-usefulness"
     -> "Check Entity Usefulness"
 
+  @bool warnsOnEnumerationNameMismatch : '\0', "warns-on-enumeration-name-mismatch"
+    -> "Warns on enumeration name mismatch"
+
   @bool warnsOnOldStyleEnumeration : '\0', "warns-on-old-style-enumeration"
     -> "Warns on old style enumeration"
 }

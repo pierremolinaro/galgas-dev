@@ -38,8 +38,8 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
 
   override proc appendDeclaration1 (?!@stringset ioInclusionSet,
                                      !@string outHeader ) {
-    for (mValue) in self.mSyntaxComponents do
-      ioInclusionSet ++= "syntax-" + mValue.string.fileNameRepresentation
+    for entry in self.mSyntaxComponents do
+      ioInclusionSet ++= "syntax-" + entry.mValue.string.fileNameRepresentation
     end
     outHeader = [filewrapper grammarGenerationTemplate.grammarZone3HeaderGalgas3
       !self.mLexiqueName.identifierRepresentation
@@ -259,8 +259,8 @@ proc generateProcedure
   var @uint temporaryVariableIndex = 0
   var routineBody = ""
   !?routineBody.incIndentation (!2)
-  for (mInstruction) in inInstructionList do
-    mInstruction.generateInstruction
+  for entry in inInstructionList do
+    entry.mInstruction.generateInstruction
       (!?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
@@ -270,8 +270,8 @@ proc generateProcedure
   end
   !?routineBody.decIndentation (!2)
 //--- Generate inclusions
-  for (* * mFormalArgumentType * *) in inFormalArgumentList do
-    mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
+  for entry in inFormalArgumentList do
+    entry.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
   end
 //--- Generate header
   outGeneratedCode = ""
@@ -374,8 +374,8 @@ proc generateFunction (?let @string inFunctionCppRepresentationName,
   var @uint temporaryVariableIndex = 0
   var @string routineBody = ""
   !?routineBody.incIndentation (!2)
-  for (mInstruction) in inInstructionList do
-    mInstruction.generateInstruction
+  for entry in inInstructionList do
+    entry.mInstruction.generateInstruction
       (!?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
@@ -456,8 +456,8 @@ proc generateExtensionGetter (?let @string inFunctionCppRepresentationName,
   var @uint temporaryVariableIndex = 0
   var @string routineBody = ""
   !?routineBody.incIndentation (!2)
-  for (mInstruction) in inInstructionList do
-    mInstruction.generateInstruction
+  for entry in inInstructionList do
+    entry.mInstruction.generateInstruction
       (!?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
@@ -618,15 +618,15 @@ proc generateExtensionMethodNew (?let @unifiedTypeMapEntry inReceiverType,
   var @stringset unusedVariableCppNameSet = @()
   unusedVariableCppNameSet ++= compilerCppName ()
   unusedVariableCppNameSet ++= "object"
-  for (* * * * mFormalArgumentCppName) in inFormalArgumentList do
-    unusedVariableCppNameSet ++= mFormalArgumentCppName
+  for entry in inFormalArgumentList do
+    unusedVariableCppNameSet ++= entry.mFormalArgumentCppName
   end
 //--- Generate body
   var @uint temporaryVariableIndex = 0
   var @string routineBody = ""
   !?routineBody.incIndentation (!2)
-  for (mInstruction) in inInstructionList do
-    mInstruction.generateInstruction
+  for entry in inInstructionList do
+    entry.mInstruction.generateInstruction
       (!?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
@@ -651,8 +651,8 @@ proc generateExtensionMethodNew (?let @unifiedTypeMapEntry inReceiverType,
   end
   ioInclusionSet ++= "proc-" + baseType.definition.typeName.string.fileNameRepresentation + "-" + inMethodName.fileNameRepresentation
   inReceiverType.addHeaderFileName (!?ioInclusionSet)
-  for (* * mFormalArgumentType * *) in inFormalArgumentList do
-    mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
+  for entry in inFormalArgumentList do
+    entry.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
   end
 //--- Generate header
   outGeneratedCode = "void cPtr_" + className.identifierRepresentation + "::method_" + inMethodName.identifierRepresentation + " ("
@@ -1429,27 +1429,27 @@ proc generatePredefinedTypeFiles
 ) {
 //----------------------------------------------------------------- Generate header file
   var generatedCode = [filewrapper predefinedTypeGenerationTemplate.primitiveTypesHeaderPrologue]
-  for (* mDeclaration) in inSemanticDeclarationListForGeneration do
-    if mDeclaration.isPredefined then
-      mDeclaration.appendPrimitiveTypePreDeclaration (!?generatedCode)
+  for entry in inSemanticDeclarationListForGeneration do
+    if entry.mDeclaration.isPredefined then
+      entry.mDeclaration.appendPrimitiveTypePreDeclaration (!?generatedCode)
     end
   end
   generatedCode += "\n"
-  for (* mDeclaration) in inSemanticDeclarationListForGeneration do
-    if mDeclaration.isPredefined then
-      generatedCode += mDeclaration.appendPrimitiveTypeDeclaration
+  for entry in inSemanticDeclarationListForGeneration do
+    if entry.mDeclaration.isPredefined then
+      generatedCode += entry.mDeclaration.appendPrimitiveTypeDeclaration
     end
   end
-  for (* mDeclaration) in inSemanticDeclarationListForGeneration do
-    if mDeclaration.isPredefined then
-      mDeclaration.appendDeclaration1 (!? %from @(), ?let @string code)
+  for entry in inSemanticDeclarationListForGeneration do
+    if entry.mDeclaration.isPredefined then
+      entry.mDeclaration.appendDeclaration1 (!? %from @(), ?let @string code)
       generatedCode += code
     end
   end
   generatedCode += [filewrapper predefinedTypeGenerationTemplate.predefinedTypeSeparation]
-  for (* mDeclaration) in inSemanticDeclarationListForGeneration do
-    if mDeclaration.isPredefined then
-      mDeclaration.appendDeclaration2 (!inDirectory, !? %from @(), ?let @string headerString2)
+  for entry in inSemanticDeclarationListForGeneration do
+    if entry.mDeclaration.isPredefined then
+      entry.mDeclaration.appendDeclaration2 (!inDirectory, !? %from @(), ?let @string headerString2)
       generatedCode += headerString2
     end
   end
@@ -1470,10 +1470,10 @@ proc generatePredefinedTypeFiles
   end
 //----------------------------------------------------------------- Generate implementation file
   generatedCode = [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation]
-  for (* mDeclaration) in inSemanticDeclarationListForGeneration do
-    if mDeclaration.isPredefined then
-      generatedCode += mDeclaration.appendTypeGenericImplementation
-      mDeclaration.appendSpecificImplementation (! @(), !? %from @(), ?let @string code)
+  for entry in inSemanticDeclarationListForGeneration do
+    if entry.mDeclaration.isPredefined then
+      generatedCode += entry.mDeclaration.appendTypeGenericImplementation
+      entry.mDeclaration.appendSpecificImplementation (! @(), !? %from @(), ?let @string code)
       generatedCode += code
     end
   end

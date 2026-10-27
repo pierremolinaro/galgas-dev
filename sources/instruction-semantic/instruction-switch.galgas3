@@ -350,7 +350,7 @@ final class @switchInstructionAST : @semanticInstructionAST {
       let forgottenConstants = enumType.constantMap.keySet - constantsNamedInSwitchInstruction
       if forgottenConstants.count > 0 then
         var @string s = ""
-        for (key) in forgottenConstants do
+        for key in forgottenConstants do
           s += "\n  - " + key
         end
         error (self.mEndOf_switch_instruction

@@ -120,9 +120,9 @@ proc @productionRuleListForGrammarAnalysis.@element displayRule
   var @string arrowStyle = "--"
   var @uint column = 1
   var @uint unusedMaxUsedRowIndex = 0 // Unused
-  for (mInstruction) in self.mInstructionList do
-    mInstruction.tikzNodeForSyntaxInstruction
-      (!?rowArray,
+  for entry in self.mInstructionList do
+    entry.mInstruction.tikzNodeForSyntaxInstruction (
+      !?rowArray,
       !fromRow:0,
       !?column:column,
       !?node:currentNode,
@@ -145,9 +145,9 @@ proc @productionRuleListForGrammarAnalysis.@element displayRule
     + "}\n\n"
     + "\\begin{tikzpicture}\n"
     + "  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"
-  for > (columns) in rowArray do
+  for > entry in rowArray do
     ioGeneratedCode += "    "
-    for column in columns do
+    for column in entry.columns do
       if column.mValue0 == "" then
         ioGeneratedCode += "& "
       else
@@ -414,8 +414,8 @@ override proc @selectInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   ioArrows += "  \\draw (" + ioCurrentNode + ") " + ioArrowShape + " (" + endNodeName + ") ;\n"
   ioCurrentNode = endNodeName
 //--- Add ending nodes
-  for (mValue) in endingNodes do
-    ioArrows += "  \\draw[->] (" + mValue + ") -| (" + endNodeName + ") ;\n"
+  for entry in endingNodes do
+    ioArrows += "  \\draw[->] (" + entry.mValue + ") -| (" + endNodeName + ") ;\n"
   end
 //--- Trace ?
   if inDebug then

@@ -385,8 +385,8 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
   override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
                                                 ?!@stringset ioInclusionSet,
                                                 !@string outImplementation) {
-    for (* mFormalArgumentType * * *) in self.mExtensionGetterFormalParameterList do
-      mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
+    for entry in self.mExtensionGetterFormalParameterList do
+      entry.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
     end
     self.mResultType.addHeaderFileName (!?ioInclusionSet)
     var extensionReaderFormalParameterList = self.mExtensionGetterFormalParameterList

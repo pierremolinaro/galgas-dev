@@ -26,8 +26,8 @@ final class @procCallInstructionAST : @semanticInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-    for (mActualParameter) in self.mActualParameterList do
-      mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
+    for entry in self.mActualParameterList do
+      entry.mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
     end
   }
 
@@ -102,9 +102,9 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
     var @stringlist parameterCppNameList = @()
     var @stringlist jokerParametersToReleaseList = @()
     var @stringlist inputVariableList = @()
-    for (mActualParameter) in self.mActualParameterList do
-      mActualParameter.generateActualParameter
-        (!?ioInclusionSet,
+    for entry in self.mActualParameterList do
+      entry.mActualParameter.generateActualParameter (
+        !?ioInclusionSet,
         !?ioTemporaryVariableIndex,
         !?ioGeneratedCode,
         !?jokerParametersToReleaseList,
@@ -116,16 +116,16 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
     end
   //--- Generate proc call
     ioGeneratedCode += "routine_" + self.routineMangledName.string.identifierRepresentation + " ("
-    for (mValue) in parameterCppNameList do
-      ioGeneratedCode += mValue + ", "
+    for entry in parameterCppNameList do
+      ioGeneratedCode += entry.mValue + ", "
     end
     !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
     ioGeneratedCode += compilerCppName () + " " + self.routineMangledName.location.commaSourceFile + ") ;\n"
     ioGeneratedCode += "}\n"
   //--- Generate poisoned variables
-    for (mActualParameter) in self.mActualParameterList do
-      mActualParameter.generatePoisonedVariables
-        (!?ioGeneratedCode,
+    for entry in self.mActualParameterList do
+      entry.mActualParameter.generatePoisonedVariables (
+        !?ioGeneratedCode,
         !?ioUnusedVariableCppNameSet
       )
     end

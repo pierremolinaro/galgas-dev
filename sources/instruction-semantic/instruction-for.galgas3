@@ -125,6 +125,9 @@ syntax extension galgas3InstructionsSyntax {
   rule <for_instruction_enumerated_object> (?!@galgasDeclarationAST ioDeclarations,
                                             !@abstractEnumeratedCollectionAST outEnumeratedObject) {
     $($
+    if [option galgas_cli_options.warnsOnOldStyleEnumeration value] then
+      warning .here : "Old style enumeration, not compatible with GALGAS4"
+    end
     var elementList = @forInstructionEnumeratedObjectElementListAST ()
     repeat
       <for_instruction_element> (!?ioDeclarations, !?elementList)
@@ -447,8 +450,8 @@ override proc @forInstructionAST.enterInstructionInSemanticContext (?!@unifiedTy
   self.mBetweenInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
   self.mDoInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
   self.mAfterInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
-  for (* mEnumeratedCollection) in self.mEnumeratedObjectList do
-    mEnumeratedCollection.enterInSemanticContext (!?ioTypeMap)
+  for entry in self.mEnumeratedObjectList do
+    entry.mEnumeratedCollection.enterInSemanticContext (!?ioTypeMap)
   end
 }
 
@@ -512,12 +515,12 @@ override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
 //--- Arguments
     if self.mElementList.count == 0 then
       let currentTypedAttributeList = outEnumerationExpression.mResultType.definition.enumerationDescriptorList
-      for (mEnumeratedType mEnumerationName) in currentTypedAttributeList do
+      for property in currentTypedAttributeList do
        !?ioVariableMap.insertUsedLocalConstant (
-         !@lstring (!mEnumerationName, self.mEndOfEnumerationExpression),
-         !mEnumeratedType,
-         !outEnumeratorCppName +".current_" + mEnumerationName.identifierRepresentation + " (HERE)",
-         !outEnumeratorCppName +".current_" + mEnumerationName.identifierRepresentation + " (HERE)"
+         !@lstring (!property.mEnumerationName, self.mEndOfEnumerationExpression),
+         !property.mEnumeratedType,
+         !outEnumeratorCppName +".current_" + property.mEnumerationName.identifierRepresentation + " (HERE)",
+         !outEnumeratorCppName +".current_" + property.mEnumerationName.identifierRepresentation + " (HERE)"
        )
       end
     elsif self.mElementList.count != enumerationDescriptorList.count then
@@ -538,7 +541,7 @@ override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
       end
       for (mOptionalTypeName mDeclaredAsUnused mOptionalConstantName) in self.mElementList, (mEnumeratedType mEnumerationName) in enumerationDescriptorList do
         if mOptionalConstantName.string != "" then // Empty string if joker
-          if [option galgas_cli_options.warnsOnOldStyleEnumeration value], mOptionalConstantName.string != mEnumerationName then
+          if [option galgas_cli_options.warnsOnEnumerationNameMismatch value], mOptionalConstantName.string != mEnumerationName then
             warning mOptionalConstantName : "rename constant as '" + mEnumerationName + "'"
           end
           if mOptionalTypeName.string != "" then
@@ -782,8 +785,8 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
   ?let @bool inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {
   var @stringlist enumerationVarCppNameList = @()
-  for (* mEnumeratedExpression *) in self.mEnumeratedObjectList do
-    mEnumeratedExpression.generateExpression
+  for entry in self.mEnumeratedObjectList do
+    entry.mEnumeratedExpression.generateExpression
       (!?ioGeneratedCode,
       !?ioInclusionSet,
       !?ioTemporaryVariableIndex,
@@ -792,9 +795,9 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
     )
     enumerationVarCppNameList ++= @(!enumerationVar)
   end
-  for enumerated in self.mEnumeratedObjectList, (mValue) in enumerationVarCppNameList do
+  for enumerated in self.mEnumeratedObjectList, entry in enumerationVarCppNameList do
     ioGeneratedCode += enumerated.mEnumerationOrder + "Enumerator_" + enumerated.mEnumeratedExpression.mResultType.identifierRepresentation
-    ioGeneratedCode += " " + enumerated.mEnumeratorCppName + " (" + mValue + ") ;\n"
+    ioGeneratedCode += " " + enumerated.mEnumeratorCppName + " (" + entry.mValue + ") ;\n"
   end
 //--- Analyse 'while' expression
   let whileExpressionIsAllwaysTrue = self.mWhileExpression.isTrueExpression
@@ -813,8 +816,8 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
       ioGeneratedCode += "bool " + boolVarCppName + " = " + whileVar + ".isValidAndTrue () ;\n"
     end
     ioGeneratedCode += "if ("
-    for (* * mEnumeratorCppName) in self.mEnumeratedObjectList do
-      ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject () && "
+    for entry in self.mEnumeratedObjectList do
+      ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject () && "
     end
     ioGeneratedCode += boolVarCppName + ") {\n"
     generateInstructionList (
@@ -827,8 +830,8 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
     )
     !?ioGeneratedCode.incIndentation (!2)
     ioGeneratedCode += "while ("
-    for (* * mEnumeratorCppName) in self.mEnumeratedObjectList do
-      ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject () && "
+    for entry in self.mEnumeratedObjectList do
+      ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject () && "
     end
     ioGeneratedCode += boolVarCppName + ") {\n"
   //--- Generate 'do' instruction
@@ -841,8 +844,8 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
       !?ioGeneratedCode
     )
   //--- Goto next object
-    for (* * mEnumeratorCppName) in self.mEnumeratedObjectList do
-      ioGeneratedCode += "  " + mEnumeratorCppName + ".gotoNextObject () ;\n"
+    for entry in self.mEnumeratedObjectList do
+      ioGeneratedCode += "  " + entry.mEnumeratorCppName + ".gotoNextObject () ;\n"
     end
     if self.mIndexVariableCppName != "" then
       ioGeneratedCode += "  " + self.mIndexVariableCppName + ".increment () ;\n"
@@ -850,8 +853,8 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
   //--- Compute 'while' expression
     if not whileExpressionIsAllwaysTrue then
       ioGeneratedCode += "  if ("
-      for (* * mEnumeratorCppName) in self.mEnumeratedObjectList
-      do  ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject ()"
+      for entry in self.mEnumeratedObjectList
+      do  ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject ()"
       between ioGeneratedCode += " && "
       end
       ioGeneratedCode += ") {\n"
@@ -869,8 +872,8 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
     if self.mBetweenInstructionList.count > 0 then
       !?ioGeneratedCode.incIndentation (!2)
       ioGeneratedCode += "if ("
-      for (* * mEnumeratorCppName) in self.mEnumeratedObjectList do
-        ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject () && "
+      for entry in self.mEnumeratedObjectList do
+        ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject () && "
       end
       ioGeneratedCode += boolVarCppName + ") {\n"
       generateInstructionList (
@@ -902,8 +905,8 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
       ioGeneratedCode += "GGS_uint " + self.mIndexVariableCppName + " (uint32_t (0)) ;\n"
     end
     ioGeneratedCode += "while ("
-    for (* * mEnumeratorCppName) in self.mEnumeratedObjectList
-      do ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject ()"
+    for entry in self.mEnumeratedObjectList
+      do ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject ()"
       between ioGeneratedCode += " && "
     end
     ioGeneratedCode += ") {\n"
@@ -917,15 +920,15 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
       !?ioGeneratedCode
     )
   //--- Advance
-    for (* * mEnumeratorCppName) in self.mEnumeratedObjectList do
-      ioGeneratedCode += "  " + mEnumeratorCppName + ".gotoNextObject () ;\n"
+    for entry in self.mEnumeratedObjectList do
+      ioGeneratedCode += "  " + entry.mEnumeratorCppName + ".gotoNextObject () ;\n"
     end
   //--- Generate 'between' instruction
     if self.mBetweenInstructionList.count > 0 then
       !?ioGeneratedCode.incIndentation (!2)
       ioGeneratedCode += "if ("
-      for (* * mEnumeratorCppName) in self.mEnumeratedObjectList
-        do ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject ()"
+      for entry in self.mEnumeratedObjectList
+        do ioGeneratedCode += entry.mEnumeratorCppName + ".hasCurrentObject ()"
         between ioGeneratedCode += " && "
       end
       ioGeneratedCode += ") {\n"

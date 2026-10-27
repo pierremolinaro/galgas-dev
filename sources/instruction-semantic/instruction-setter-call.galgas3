@@ -151,16 +151,16 @@ syntax extension galgas4InstructionsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @setterCallInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  for (mActualParameter) in self.mActualParameterList do
-    mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
+  for entry in self.mActualParameterList do
+    entry.mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
   end
 }
 
 //································································································*
 
 override proc @selfSetterCallInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  for (mActualParameter) in self.mActualParameterList do
-    mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
+  for entry in self.mActualParameterList do
+    entry.mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
   end
 }
 
@@ -209,17 +209,17 @@ override proc @setterCallInstructionAST.analyzeSemanticInstruction (
 //--- Get target variable type
   var ok = true
   var errorLocation = self.mReceiverName.location
-  for (mValue) in self.mReceiverStructProperties while ok do
+  for entry in self.mReceiverStructProperties while ok do
     ok = receiverType.definition.typeKind.isStructType
     if not ok then
       error (errorLocation : "a structure is required for '.' access")
     else
       let propertyMap = receiverType.definition.propertyMap
-      propertyMap.searchKey (!mValue, ?let accessControl, ?let isConstant, ?receiverType)
-      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !mValue.location)
-      errorLocation = mValue.location
+      propertyMap.searchKey (entry.mValue, ?let accessControl, ?let isConstant, ?receiverType)
+      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, entry.mValue.location)
+      errorLocation = entry.mValue.location
       if isConstant then
-        error (mValue : "a constant property cannot be modified")
+        error (entry.mValue : "a constant property cannot be modified")
       end
     end
   end
@@ -361,16 +361,16 @@ override proc @setterCallInstructionForGeneration.generateInstruction (?!@string
   ?!@string ioGeneratedCode) {
   ioGeneratedCode += "{\n"
   var receiverCppName = self.mReceiverCppName
-  for (mValue) in self.mReceiverStructAttributes do
-    receiverCppName += ".mProperty_" + mValue.string.identifierRepresentation
+  for entry in self.mReceiverStructAttributes do
+    receiverCppName += ".mProperty_" + entry.mValue.string.identifierRepresentation
   end
   !?ioUnusedVariableCppNameSet.removeKey (!self.mReceiverBaseName)
 //--- Parameters
   var @stringlist parameterCppNameList = @()
   var @stringlist jokerParametersToReleaseList = @()
   var @stringlist inputVariableList = @()
-  for (mActualParameter) in self.mActualParameterList do
-    mActualParameter.generateActualParameter
+  for entry in self.mActualParameterList do
+    entry.mActualParameter.generateActualParameter
       (!?ioInclusionSet,
       !?ioTemporaryVariableIndex,
       !?ioGeneratedCode,
@@ -402,8 +402,8 @@ override proc @setterCallInstructionForGeneration.generateInstruction (?!@string
     self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
     ioGeneratedCode += receiverCppName + ".setter_" + self.mSetterName.string.identifierRepresentation + " ("
   end
-  for (mValue) in parameterCppNameList
-    do ioGeneratedCode += mValue
+  for entry in parameterCppNameList
+    do ioGeneratedCode += entry.mValue
     between ioGeneratedCode += ", "
   end
   if self.mHasCompilerArgument then
@@ -433,8 +433,8 @@ override proc @selfSetterCallInstructionForGeneration.generateInstruction (?!@st
   var parameterCppNameList = @stringlist ()
   var jokerParametersToReleaseList = @stringlist ()
   var inputVariableList = @stringlist ()
-  for (mActualParameter) in self.mActualParameterList do
-    mActualParameter.generateActualParameter
+  for entry in self.mActualParameterList do
+    entry.mActualParameter.generateActualParameter
       (!?ioInclusionSet,
       !?ioTemporaryVariableIndex,
       !?ioGeneratedCode,
@@ -460,8 +460,8 @@ override proc @selfSetterCallInstructionForGeneration.generateInstruction (?!@st
       ioGeneratedCode += self.mSelfCppName + ".setter_" + self.mSetterName.string.identifierRepresentation + " ("
     end
   end
-  for (mValue) in parameterCppNameList
-    do ioGeneratedCode += mValue
+  for entry in parameterCppNameList
+    do ioGeneratedCode += entry.mValue
     between ioGeneratedCode += ", "
   end
   if self.mHasCompilerArgument then

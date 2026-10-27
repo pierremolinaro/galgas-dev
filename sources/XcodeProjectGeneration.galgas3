@@ -183,13 +183,13 @@ mutating proc @XcodeProjectDescriptor.addAppTarget
   !?self.getReferenceKey (?ref: let frameworkBuildRef)
   !?self.getReferenceKey (?ref: let resourceBuildRef)
   var @2stringlist dependentTargets = @()
-  for (mValue) in inDependentTargetRefList do
+  for entry in inDependentTargetRefList do
     !?self.getReferenceKey (?ref: let dependencyBuildRef)
-    dependentTargets ++= @(!dependencyBuildRef, !mValue)
+    dependentTargets ++= @(!dependencyBuildRef, entry.mValue)
   end
   var @stringlist resourceFileBuildRefs = inResourceFileBuildRefs
-  for (mValue0 mValue1) in inProductCopyList do
-    !?self.addBuildFile (!fileRef:mValue0, !fileName:mValue1, ?buildRef:let @string buildRef)
+  for entry in inProductCopyList do
+    !?self.addBuildFile (!fileRef: entry.mValue0, !fileName: entry.mValue1, ?buildRef:let @string buildRef)
     resourceFileBuildRefs ++= @(!buildRef)
   end
   self.mAppTargetList ++= @(

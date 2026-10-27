@@ -225,7 +225,7 @@ final class @loopInstructionWithoutVariantForGeneration : @semanticInstructionFo
       !?ioGeneratedCode
     )
     var first = true
-    for (*) in self.mLoopExpression do
+    for * in self.mLoopExpression do
       if first then
         first = false
       else

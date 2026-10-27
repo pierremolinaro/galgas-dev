@@ -121,8 +121,8 @@ syntax extension galgas4InstructionsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @logInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  for (* mLogExpression) in self.mLogList do
-    mLogExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+  for entry in self.mLogList do
+    entry.mLogExpression.enterExpressionInSemanticContext (!?ioTypeMap)
   end
 }
 
@@ -137,10 +137,10 @@ override proc @logInstructionAST.analyzeSemanticInstruction (
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
-  for (mLogMessage mLogExpression) in self.mLogList do
+  for entry in self.mLogList do
   //--- Analyze source expression
-    mLogExpression.analyzeSemanticExpression
-      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    entry.mLogExpression.analyzeSemanticExpression (
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inferenceType: @unifiedTypeMapEntry.null,
       !inAnalysisContext,
@@ -150,7 +150,7 @@ override proc @logInstructionAST.analyzeSemanticInstruction (
     )
   //--- Generate instruction
     ioInstructionListForGeneration ++= @(!@logInstructionForGeneration (
-      !mLogMessage,
+      entry.mLogMessage,
       expression
     ))
   end

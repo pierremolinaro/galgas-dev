@@ -368,8 +368,8 @@ override proc @extensionMethodForGeneration.appendSpecificImplementation (?let @
     ]
   else
     self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
-    for (* * mFormalArgumentType * *) in self.mExtensionMethodFormalParameterList do
-      mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
+    for entry in self.mExtensionMethodFormalParameterList do
+      entry.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
     end
     var @unifiedTypeMapEntry baseType = self.mReceiverType
     var @bool searching = true
