@@ -206,8 +206,8 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
     end
     ioGeneratedCode += self.mInstructionLocation.sourceFile + ") ;\n"
   //--- Generate poisoned variables
-    for (actualParameter) in self.mActualParameterList do
-      actualParameter.generatePoisonedVariables
+    for (mActualParameter) in self.mActualParameterList do
+      mActualParameter.generatePoisonedVariables
         (!?ioGeneratedCode,
         !?ioUnusedVariableCppNameSet
       )

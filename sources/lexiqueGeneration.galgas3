@@ -222,8 +222,8 @@ override func @lexicalExplicitRuleAST.generateLexicalRuleCode
   result += self.mLexicalRuleExpression.generateConditionCode (!context:inLexiqueAnalysisContext)
   result += ") {\n"
   !?result.incIndentation (!2)
-  for (instruction) in self.mInstructionList do
-    result += instruction.generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+  for (mInstruction) in self.mInstructionList do
+    result += mInstruction.generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
   end
   !?result.decIndentation (!2)
   result += "}else "
@@ -233,8 +233,8 @@ override func @lexicalExplicitRuleAST.generateLexicalRuleCode
 
 override func @lexicalExplicitRuleAST.lexicalRuleUsesLoopLocalVar () -> @bool {
   result = false
-  for (instruction) in self.mInstructionList while not result do
-    result = instruction.lexicalInstructionUsesLoopLocalVariable
+  for (mInstruction) in self.mInstructionList while not result do
+    result = mInstruction.lexicalInstructionUsesLoopLocalVariable
   end
 }
 

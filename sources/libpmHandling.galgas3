@@ -29,33 +29,33 @@ filewrapper libpmFileWrapper in "../libpm" {
 proc updateLIBPMatPath (?let @string inLIBPMPath ) {
   let fw = [filewrapper libpmFileWrapper]
 //--- Create directories
-  for (path) in fw.allDirectoryPaths do
-    let @string actualDirectory = inLIBPMPath + path
+  for (mValue) in fw.allDirectoryPaths do
+    let @string actualDirectory = inLIBPMPath + mValue
     actualDirectory.makeDirectory ()
   end
 //--- Update text files
   var @stringset allNeededFileSet = @()
-  for (path) in fw.allTextFilePaths do
-    let contents = fw.textFileContentsAtPath (!path)
-    let actualFilePath = inLIBPMPath + path
+  for (mValue) in fw.allTextFilePaths do
+    let contents = fw.textFileContentsAtPath (!mValue)
+    let actualFilePath = inLIBPMPath + mValue
     if actualFilePath.pathExtension == "py" then
       contents.writeToExecutableFileWhenDifferentContents (!actualFilePath, ?*)
     else
       contents.writeToFileWhenDifferentContents (!actualFilePath, ?*)
     end
-    allNeededFileSet ++= path
+    allNeededFileSet ++= mValue
   end
 //--- Update binary files
-  for (value) in fw.allBinaryFilePaths do
-    let contents = fw.binaryFileContentsAtPath (!value)
-    let actualFilePath = inLIBPMPath + value
+  for (mValue) in fw.allBinaryFilePaths do
+    let contents = fw.binaryFileContentsAtPath (!mValue)
+    let actualFilePath = inLIBPMPath + mValue
     contents.writeToFileWhenDifferentContents (!actualFilePath, ?*)
-    allNeededFileSet ++= value
+    allNeededFileSet ++= mValue
   end
 //--- Remove useless files
   var @stringset allActualFileSet = @()
-  for (value) in inLIBPMPath.regularFiles (!true) do
-    allActualFileSet ++= "/" + value
+  for (mValue) in inLIBPMPath.regularFiles (!true) do
+    allActualFileSet ++= "/" + mValue
   end
   let uselessFileSet = allActualFileSet - allNeededFileSet
   for (key) in uselessFileSet do

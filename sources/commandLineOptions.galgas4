@@ -64,6 +64,9 @@ option galgas_cli_options {
 
   @bool checkEntityUsefulness : '\0', "check-usefulness"
     -> "Check Entity Usefulness"
+
+  @bool warnsOnOldStyleEnumeration : '\0', "warns-on-old-style-enumeration"
+    -> "Warns on old style enumeration"
 }
 
 //--------------------------------------------------------------------------------------------------

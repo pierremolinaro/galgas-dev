@@ -120,8 +120,8 @@ proc @productionRuleListForGrammarAnalysis.@element displayRule
   var @string arrowStyle = "--"
   var @uint column = 1
   var @uint unusedMaxUsedRowIndex = 0 // Unused
-  for (instruction) in self.mInstructionList do
-    instruction.tikzNodeForSyntaxInstruction
+  for (mInstruction) in self.mInstructionList do
+    mInstruction.tikzNodeForSyntaxInstruction
       (!?rowArray,
       !fromRow:0,
       !?column:column,
@@ -178,10 +178,10 @@ proc @productionRuleListForGrammarAnalysis.@element displayRuleVertically
   var @string arrowStyle = "--"
   var @uint unusedMaxUsedRowIndex = 0 // Unused
   var row = self.mInstructionList.count
-  for (instruction) in self.mInstructionList do
+  for (mInstruction) in self.mInstructionList do
     row -= 1
     var @uint column = 1
-    instruction.tikzNodeForSyntaxInstruction
+    mInstruction.tikzNodeForSyntaxInstruction
       (!?rowArray,
       !fromRow:row,
       !?column:column,
@@ -248,8 +248,8 @@ proc @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
     ioArrowShape = "--"
     ioColumn += 1
   else
-    for (instruction) in self do
-      instruction.tikzNodeForSyntaxInstruction
+    for (mInstruction) in self do
+      mInstruction.tikzNodeForSyntaxInstruction
         (!?ioRowList,
         !fromRow:inRow,
         !?column:ioColumn,
@@ -414,8 +414,8 @@ override proc @selectInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   ioArrows += "  \\draw (" + ioCurrentNode + ") " + ioArrowShape + " (" + endNodeName + ") ;\n"
   ioCurrentNode = endNodeName
 //--- Add ending nodes
-  for (node) in endingNodes do
-    ioArrows += "  \\draw[->] (" + node + ") -| (" + endNodeName + ") ;\n"
+  for (mValue) in endingNodes do
+    ioArrows += "  \\draw[->] (" + mValue + ") -| (" + endNodeName + ") ;\n"
   end
 //--- Trace ?
   if inDebug then
@@ -522,8 +522,8 @@ override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   ioColumn += 1
   ioArrows += "  \\draw[->] (" + returnUpperNodeName + ") -| (" + returnNodeName + ") ;\n"
 //--- Add ending arrows
-  for (node) in endingNodes do
-    ioArrows += "  \\draw[->] (" + node + ") -| (" + returnUpperNodeName + ") ;\n"
+  for (mValue) in endingNodes do
+    ioArrows += "  \\draw[->] (" + mValue + ") -| (" + returnUpperNodeName + ") ;\n"
   end
 //--- Trace ?
   if inDebug then
@@ -545,8 +545,8 @@ override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
 
 func @syntaxInstructionListForGrammarAnalysis.displayVertically () -> @bool {
   result = self.count > 4
-  for (instruction) in self while result do
-    result = instruction.isLinear
+  for (mInstruction) in self while result do
+    result = mInstruction.isLinear
   end
 }
 

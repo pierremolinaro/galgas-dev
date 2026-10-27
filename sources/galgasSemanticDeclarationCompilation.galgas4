@@ -305,8 +305,8 @@ private proc generateManyHeaders
       if inclusionSet1.hasKey (!"") then
         println (!"Empty inclusion in " + declaration.mDeclaration.getImplementationCppFileName + "headers 1")
       end
-      for (s) in inclusionSet1 do
-        headerIncludes1 += "#include \"" + s + ".h\"\n"
+      for (key) in inclusionSet1 do
+        headerIncludes1 += "#include \"" + key + ".h\"\n"
       end
       headerIncludes1 += headerDef1
       var @stringset inclusionSet2 = @()
@@ -315,8 +315,8 @@ private proc generateManyHeaders
       if inclusionSet2.hasKey (!"") then
         println (!"Empty inclusion in " + declaration.mDeclaration.getImplementationCppFileName + "headers 2")
       end
-      for (s) in inclusionSet2 do
-        headerIncludes2 += "#include \"" + s + ".h\"\n"
+      for (key) in inclusionSet2 do
+        headerIncludes2 += "#include \"" + key + ".h\"\n"
       end
       headerIncludes2 += headerDef2
     //---
@@ -473,11 +473,11 @@ private proc buildHeader
         ?let @stringset inclusionSet,
         ?let @string headerString
       )
-      for (s) in inclusionSet do
+      for (key) in inclusionSet do
         buildHeader (
           !inHeaderCompositionMap,
           !inHeaderFileName,
-          !s,
+          !key,
           !?ioHeaderRepartitionMap,
           !?ioHeaderString
         )
@@ -611,8 +611,8 @@ private proc generateFewImplementationFilesWithFewHeaders
         end
       end
       declaration.mDeclaration.appendSpecificImplementation (!inUnifiedTypeMap, !?inclusionSet, ?let @string code)
-      for (s) in inclusionSet do
-        buildHeader (!headerCompositionMap, !headerFileName, !s, !?headerRepartitionMap, !?headerString)
+      for (key) in inclusionSet do
+        buildHeader (!headerCompositionMap, !headerFileName, !key, !?headerRepartitionMap, !?headerString)
       end
       implementationString += code
       implementationString += declaration.mDeclaration.appendTypeGenericImplementation

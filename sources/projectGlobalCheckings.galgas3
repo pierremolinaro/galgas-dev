@@ -179,15 +179,15 @@ proc checkextensionSetterDefinitionForClass
   ?let @unifiedTypeMap inUnifiedTypeMap
 ) {
   let @unifiedTypeMapEntryList descendantClasses = inDescendantClassListMap.listForKey (!inClassName)
-  for (mType) in descendantClasses do
-    let @lstring descendantClassName = mType.definition.typeName
+  for (mEntry) in descendantClasses do
+    let @lstring descendantClassName = mEntry.definition.typeName
     let @lstringlist overridingMethods = inOverridingExtensionMethodListMap.listForKey (!descendantClassName.string)
     var @bool found = false
     for (mValue) in overridingMethods while not found do
       found = inAbstractExtensionSetterName.string == mValue.string
     end
     if not found then
-      if not mType.definition.isConcrete then
+      if not mEntry.definition.isConcrete then
         checkextensionSetterDefinitionForClass (
           !inClassNameForErrorSignaling,
           !descendantClassName.string,
@@ -216,15 +216,15 @@ proc checkExtensionMethodDefinitionForClass
   ?let @unifiedTypeMap inUnifiedTypeMap
 ) {
   let @unifiedTypeMapEntryList descendantClasses = inDescendantClassListMap.listForKey (!inClassName)
-  for (mType) in descendantClasses do
-    let @lstring descendantClassName = mType.definition.typeName
+  for (mEntry) in descendantClasses do
+    let @lstring descendantClassName = mEntry.definition.typeName
     let @lstringlist overridingMethods = inOverridingExtensionMethodListMap.listForKey (!descendantClassName.string)
     var @bool found = false
     for (mValue) in overridingMethods while not found do
       found = inAbstractExtensionMethodName.string == mValue.string
     end
     if not found then
-      if not mType.definition.isConcrete then
+      if not mEntry.definition.isConcrete then
         checkExtensionMethodDefinitionForClass (
           !inClassNameForErrorSignaling,
           !descendantClassName.string,
@@ -253,15 +253,15 @@ proc checkExtensionGetterDefinitionForClass
   ?let @unifiedTypeMap inUnifiedTypeMap
 ) {
   let @unifiedTypeMapEntryList descendantClasses = inDescendantClassListMap.listForKey (!inClassName)
-  for (mType) in descendantClasses do
-    let @lstring descendantClassName = mType.definition.typeName
+  for (mEntry) in descendantClasses do
+    let @lstring descendantClassName = mEntry.definition.typeName
     let @lstringlist overridingReaders = inOverridingExtensionGetterListMap.listForKey (!descendantClassName.string)
     var @bool found = false
     for (mValue) in overridingReaders while not found do
       found = inAbstractExtensionGetterName.string == mValue.string
     end
     if not found then
-      if not mType.definition.isConcrete then
+      if not mEntry.definition.isConcrete then
         checkExtensionGetterDefinitionForClass (
           !inClassNameForErrorSignaling,
           !descendantClassName.string,
@@ -291,8 +291,8 @@ proc performGalgas3ProjectGlobalCheckings
 //----- Build descendant type list map
 // For every type, a list of its directed descendants is associated
   var @descendantClassListMap descendantClassListMap = @()
-  for (lkey element) in ioTypeMap do
-     let superType = element.definition.superType
+  for (lkey mElement) in ioTypeMap do
+     let superType = mElement.definition.superType
      if not superType.isNull then
        !?descendantClassListMap.insertKey
          (!superType.definition.typeName.string,

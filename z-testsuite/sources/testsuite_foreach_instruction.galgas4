@@ -7,23 +7,23 @@ proc testsuite_foreach_instruction() {
   !?strList.append ("c")
   !?strList.append ("d")
   println ("*************************************** begin of foreach instruction test 1")
-  for (@string s) in strList
+  for s in strList
   before
     println ("  before")
   do
-    println ("  do '" + s + "'")
+    println ("  do '" + s.mValue + "'")
   between
     println ("  between")
   after
     println ("  after")
   end
   println ("--- begin of foreach instruction test 2")
-  for (@string s) in strList
+  for s in strList
   while false
   before
     println ("  before")
   do
-    println ("  do '" + s + "'")
+    println ("  do '" + s.mValue + "'")
   between
     println ("  between")
   after
@@ -31,12 +31,12 @@ proc testsuite_foreach_instruction() {
   end
   println ("--- begin of foreach instruction test 3")
   var @uint n = 0
-  for (@string s) in strList
+  for s in strList
   while n < 2
   before
     println ("  before")
   do
-    println ("  do '" + s + "', n: " + n.string)
+    println ("  do '" + s.mValue + "', n: " + n.string)
     n += 1
   between
     println ("  between")
@@ -55,20 +55,20 @@ proc testsuite_foreach_instruction() {
     println ("  after")
   end
   println ("--- begin of foreach instruction test 5")
-  for (@string s) in strList
+  for s in strList
   before
     println ("  before")
   do (idx)
-    println ("  do '" + s + "' (idx: " + idx.string + ")")
+    println ("  do '" + s.mValue + "' (idx: " + idx.string + ")")
   between
     println ("  between")
   after
     println ("  after")
   end
   println ("--- begin of foreach instruction test 6")
-  for (@string s) in strList
+  for s in strList
   do (idx)
-    println ("  do '" + s + "' (idx: " + idx.string + ")")
+    println ("  do '" + s.mValue + "' (idx: " + idx.string + ")")
   end
   println ("--- begin of foreach instruction test 7")
   var @stringset set = []

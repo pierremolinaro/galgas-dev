@@ -152,8 +152,8 @@ syntax extension galgas3InstructionsSyntax {
           !?propertyList.popLast (?let methodName)
           var @semanticExpressionAST receiverExpression = @selfInExpressionAST (!@location.here)
           receiverExpression = @structPropertyAccessExpressionAST (!receiverName.location, receiverExpression, receiverName)
-          for (propertyName) in propertyList do
-            receiverExpression = @structPropertyAccessExpressionAST (!propertyName.location, receiverExpression, propertyName)
+          for (mValue) in propertyList do
+            receiverExpression = @structPropertyAccessExpressionAST (!mValue.location, receiverExpression, mValue)
           end
           outInstruction = @methodCallInstructionAST (
             !instructionLocation,
@@ -171,8 +171,8 @@ syntax extension galgas3InstructionsSyntax {
       else
         !?propertyList.popLast (?let methodName)
         var @semanticExpressionAST receiverExpression = @varInExpressionAST (!receiverName)
-        for (propertyName) in propertyList do
-          receiverExpression = @structPropertyAccessExpressionAST (!propertyName.location, receiverExpression, propertyName)
+        for (mValue) in propertyList do
+          receiverExpression = @structPropertyAccessExpressionAST (!mValue.location, receiverExpression, mValue)
         end
         outInstruction = @methodCallInstructionAST (
           !instructionLocation,
@@ -341,8 +341,8 @@ syntax extension galgas4InstructionsSyntax {
           !?propertyList.popLast (?let methodName)
           var @semanticExpressionAST receiverExpression = @selfInExpressionAST (!@location.here)
           receiverExpression = @structPropertyAccessExpressionAST (!receiverName.location, receiverExpression, receiverName)
-          for (propertyName) in propertyList do
-            receiverExpression = @structPropertyAccessExpressionAST (!propertyName.location, receiverExpression, propertyName)
+          for (mValue) in propertyList do
+            receiverExpression = @structPropertyAccessExpressionAST (!mValue.location, receiverExpression, mValue)
           end
           outInstruction = @methodCallInstructionAST (
             !instructionLocation,
@@ -360,8 +360,8 @@ syntax extension galgas4InstructionsSyntax {
       else
         !?propertyList.popLast (?let methodName)
         var @semanticExpressionAST receiverExpression = @varInExpressionAST (!receiverName)
-        for (propertyName) in propertyList do
-          receiverExpression = @structPropertyAccessExpressionAST (!propertyName.location, receiverExpression, propertyName)
+        for (mValue) in propertyList do
+          receiverExpression = @structPropertyAccessExpressionAST (!mValue.location, receiverExpression, mValue)
         end
         outInstruction = @methodCallInstructionAST (
           !instructionLocation,
@@ -491,10 +491,10 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
       )
     end
   //--- Check target variable
-    for (value) in self.mStructAttributeList do
+    for (mValue) in self.mStructAttributeList do
       let propertyMap = targetType.definition.propertyMap
-      propertyMap.searchKey (!value, ?let accessControl, ?let isConstant, ?targetType)
-      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !value.location)
+      propertyMap.searchKey (!mValue, ?let accessControl, ?let isConstant, ?targetType)
+      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !mValue.location)
       if isConstant then
         error (self.mReceiverName : "a constant property cannot be modified")
       end
@@ -587,12 +587,12 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
       )
     end
   //--- Check target variable
-    for (value) in self.mStructAttributeList do
+    for (mValue) in self.mStructAttributeList do
       let propertyMap = targetType.definition.propertyMap
-      propertyMap.searchKey (!value, ?let accessControl, ?let isConstant, ?targetType)
-      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !value)
+      propertyMap.searchKey (!mValue, ?let accessControl, ?let isConstant, ?targetType)
+      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !mValue)
       if isConstant then
-        error (value : "a constant property cannot be modified")
+        error (mValue : "a constant property cannot be modified")
       end
     end
   //--- Check target variable type support '++=' operator

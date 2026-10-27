@@ -135,7 +135,7 @@ syntax extension galgas3InstructionsSyntax {
     $in$
     <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST enumeratedExpression)
     outEnumeratedObject = @enumeratedCollectionCstListInExpAST (
-      !elementList,
+      elementList,
       enumeratedExpression,
       location
     )
@@ -486,19 +486,19 @@ abstract proc @abstractEnumeratedCollectionAST.analyzeEnumeration (
 //································································································*
 
 override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
-  ?let @lstring inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @analysisContext inAnalysisContext,
+                                ?let @lstring inUsefulnessCallerEntityName,
+                                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                ?let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@localVarManager ioVariableMap,
   ?!@localConstantList ioLocalConstantListForDoBranch,
   !@string outEnumeratorCppName,
   !@semanticExpressionForGeneration outEnumerationExpression) {
-  self.mEnumeratedExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+  self.mEnumeratedExpression.analyzeSemanticExpression (
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: @unifiedTypeMapEntry.null,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?outEnumerationExpression
@@ -513,8 +513,8 @@ override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
     if self.mElementList.count == 0 then
       let currentTypedAttributeList = outEnumerationExpression.mResultType.definition.enumerationDescriptorList
       for (mEnumeratedType mEnumerationName) in currentTypedAttributeList do
-       !?ioVariableMap.insertUsedLocalConstant
-         (!@lstring (!mEnumerationName, self.mEndOfEnumerationExpression),
+       !?ioVariableMap.insertUsedLocalConstant (
+         !@lstring (!mEnumerationName, self.mEndOfEnumerationExpression),
          !mEnumeratedType,
          !outEnumeratorCppName +".current_" + mEnumerationName.identifierRepresentation + " (HERE)",
          !outEnumeratorCppName +".current_" + mEnumerationName.identifierRepresentation + " (HERE)"
@@ -538,6 +538,9 @@ override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
       end
       for (mOptionalTypeName mDeclaredAsUnused mOptionalConstantName) in self.mElementList, (mEnumeratedType mEnumerationName) in enumerationDescriptorList do
         if mOptionalConstantName.string != "" then // Empty string if joker
+          if [option galgas_cli_options.warnsOnOldStyleEnumeration value], mOptionalConstantName.string != mEnumerationName then
+            warning mOptionalConstantName : "rename constant as '" + mEnumerationName + "'"
+          end
           if mOptionalTypeName.string != "" then
             let foundType = ioTypeMap.typeMapEntryForLKey (!mOptionalTypeName)
             if foundType != mEnumeratedType then

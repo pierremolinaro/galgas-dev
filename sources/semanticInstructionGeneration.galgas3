@@ -45,8 +45,8 @@ override proc @outputInputActualParameterForGeneration.generateActualParameter
   ?!@stringlist unused ioOutputVariableList,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppName ) {
-  for (t) in self.mTypeList do
-    t.addHeaderFileName (!?ioInclusionSet)
+  for (mEntry) in self.mTypeList do
+    mEntry.addHeaderFileName (!?ioInclusionSet)
   end
   outCppName = self.mOutputInputVariableCppName
   for (mValue) in self.mStructAttributeList do
@@ -127,9 +127,9 @@ override proc @inputJokerParameterForGeneration.generatePoisonedVariables
   ?!@stringset ioUnusedVariableCppNameSet ) {
   if self.mPoisonedVarNameList.count > 0 then
     ioImplementation += "if (!" + self.mInputActualCppName + ".isValid ()) {\n"
-    for (cppVarName nameForCheckingFormalParameterUsing) in self.mPoisonedVarNameList do
-      !?ioUnusedVariableCppNameSet.removeKey (!nameForCheckingFormalParameterUsing)
-      ioImplementation += "  " + cppVarName + ".drop () ;\n"
+    for (mValue0 mValue1) in self.mPoisonedVarNameList do
+      !?ioUnusedVariableCppNameSet.removeKey (mValue1)
+      ioImplementation += "  " + mValue0 + ".drop () ;\n"
     end
     ioImplementation += "}\n"
   end
@@ -142,9 +142,9 @@ override proc @inputActualParameterForGeneration.generatePoisonedVariables
                         ?!@stringset ioUnusedVariableCppNameSet ) {
   if self.mPoisonedVarNameList.count > 0 then
     ioImplementation += "if (!" + self.mInputActualCppName + ".isValid ()) {\n"
-    for (cppVarName nameForCheckingFormalParameterUsing) in self.mPoisonedVarNameList do
-      !?ioUnusedVariableCppNameSet.removeKey (!nameForCheckingFormalParameterUsing)
-      ioImplementation += "  " + cppVarName + ".drop () ;\n"
+    for (mValue0 mValue1) in self.mPoisonedVarNameList do
+      !?ioUnusedVariableCppNameSet.removeKey (mValue1)
+      ioImplementation += "  " + mValue0 + ".drop () ;\n"
     end
     ioImplementation += "}\n"
   end

@@ -163,8 +163,8 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
     let key = @lstring (!"@" + self.mSortedListTypeName, self.mSortedListTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
-    for (* propertyTypeName 4*) in self.mPropertyList do
-      !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring (!"@" + propertyTypeName, propertyTypeName.location))
+    for (* typeName 4*) in self.mPropertyList do
+      !?ioSemanticTypePrecedenceGraph.noteNode (@lstring ("@" + typeName, typeName.location))
     end
   }
 
@@ -173,14 +173,15 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   override proc addAssociatedElement
     (?!@galgasDeclarationAST ioDeclarations ) {
     var @propertyInCollectionListAST structAttributeList = @()
-    for (mutability qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
+    for (mutability typeName name * hasSelector initialization) in self.mPropertyList do
       structAttributeList ++= @(
         !mutability: mutability,
-        !qualifiedTypeAST,
-        !mPropertyName,
+        !typeName,
+        !name,
         !.publicAccess,
         !hasSelector: hasSelector,
-        !initialization: initExpression)
+        !initialization: initialization
+      )
     end
     ioDeclarations.mDeclarationList ++= @(!@structDeclarationAST (
       !isPredefined: self.isPredefined,
@@ -216,14 +217,14 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     var @formalParameterSignature setterFormalOutputArgumentList = @()
     var @formalParameterSignature setterFormalInputArgumentList = @()
     var @typedPropertyList typedAttributeList = @()
-    for (* propertyTypeName mPropertyName 2* initExpression) in self.mPropertyList do
-      !?ioTypeMap.makeEntry (!propertyTypeName, ?let attributeTypeIndex)
+    for (* typeName name 2* initialization) in self.mPropertyList do
+      !?ioTypeMap.makeEntry (!typeName, ?let attributeTypeIndex)
       let hasSelector = false
-      typedAttributeList ++= @(!attributeTypeIndex, !mPropertyName, !initExpression, !hasSetter: true, !hasSelector: hasSelector)
-      enumerationDescriptor ++= @(!attributeTypeIndex, !mPropertyName.string)
-      constructorAttributeTypeList ++= @(!"".nowhere, !attributeTypeIndex, !mPropertyName.string, !true)
-      setterFormalOutputArgumentList ++= @(!"".nowhere, !attributeTypeIndex, !.argumentOut, !mPropertyName.string)
-      setterFormalInputArgumentList ++= @(!"".nowhere, !attributeTypeIndex, !.argumentVarIn, !mPropertyName.string)
+      typedAttributeList ++= @(!attributeTypeIndex, !name, !initialization, !hasSetter: true, !hasSelector: hasSelector)
+      enumerationDescriptor ++= @(!attributeTypeIndex, !name.string)
+      constructorAttributeTypeList ++= @(!"".nowhere, !attributeTypeIndex, !name.string, !true)
+      setterFormalOutputArgumentList ++= @(!"".nowhere, !attributeTypeIndex, !.argumentOut, !name.string)
+      setterFormalInputArgumentList ++= @(!"".nowhere, !attributeTypeIndex, !.argumentVarIn, !name.string)
     end
   //--- Class functions
     var @classFunctionMap classFunctionMap = @()
@@ -389,18 +390,18 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   //--- Attribute
     var typedAttributeList = @typedPropertyList ()
     var @propertyIndexMap attributeMap = @()
-    for (* propertyTypeName mPropertyName 2* initExpression) in self.mPropertyList do
-      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
+    for (* typeName name 2* initialization) in self.mPropertyList do
+      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!typeName)
       !?ioUsefulEntitiesGraph.addEdge (!from: sortedListNameForUsefulness, !to: propertyTypeNameForUsefulness)
-      let t = ioTypeMap.typeMapEntryForLKey (!propertyTypeName)
+      let t = ioTypeMap.typeMapEntryForLKey (typeName)
       let hasSelector = true
       typedAttributeList ++= @(
         !t,
-        !mPropertyName,
-        !initExpression,
+        !name,
+        !initialization,
         !hasSetter: true,
         !hasSelector: hasSelector)
-      !?attributeMap.insertKey (!mPropertyName, !t)
+      !?attributeMap.insertKey (name, t)
     end
   //--- Sort descriptor
     var @stringset attributesUsedForSorting = @()
@@ -489,8 +490,8 @@ override proc @sortedListTypeForGeneration.appendSpecificImplementation
   (?let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation ) {
-  for (t 4*) in self.mTypedAttributeList do
-    t.addHeaderFileName (!?ioInclusionSet)
+  for (typeEntry 4*) in self.mTypedAttributeList do
+    typeEntry.addHeaderFileName (!?ioInclusionSet)
   end
   self.mListElementTypeIndex.addHeaderFileName (!?ioInclusionSet)
   self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)

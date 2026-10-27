@@ -150,11 +150,11 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
   ?!@semanticContext ioSemanticContext ) {
 //--- Check unicity of slot names
   var @stringset slotNameSet = @()
-  for (slotName) in self.mFlagList do
-    if slotNameSet.hasKey (!slotName) then
-      error (slotName : "duplicated slot name")
+  for slotName in self.mFlagList do
+    if slotNameSet.hasKey (slotName.mValue) then
+      error (slotName.mValue : "duplicated slot name")
     end
-    slotNameSet ++= slotName
+    slotNameSet ++= slotName.mValue
   end
 //--- boolset type index
   !?ioTypeMap.makeEntry (!self.mBoolsetTypeName, ?let boolsetTypeIndex)
@@ -172,9 +172,9 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
   )
 //--- class functions
   var @classFunctionMap classFunctionMap = @()
-  for (slotName) in self.mFlagList do
-    if not classFunctionMap.hasKey (!slotName) then
-      !?classFunctionMap.insertKey (!slotName, !@(), !false, !boolsetTypeIndex)
+  for slotName in self.mFlagList do
+    if not classFunctionMap.hasKey (!slotName.mValue) then
+      !?classFunctionMap.insertKey (!slotName.mValue, @(), !false, !boolsetTypeIndex)
     end
   end
 //--- Add initializer without argument

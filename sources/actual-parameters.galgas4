@@ -250,17 +250,17 @@ final class @outputInputActualParameterAST : @actualParameterAST {
       ?*
     )
     var typeList = @unifiedTypeMapEntryList.listWithValue (!parameterType)
-    for (value) in self.mStructAttributeList do
+    for (mValue) in self.mStructAttributeList do
       let propertyMap = parameterType.definition.propertyMap
       propertyMap.searchKey (
-        !value,
+        !mValue,
         ?let accessControl,
         ?let isConstant,
         ?parameterType
       )
-      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !value)
+      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !mValue)
       if isConstant then
-        error (value : "a constant property cannot be modified")
+        error (mValue : "a constant property cannot be modified")
       end
       typeList ++= @(parameterType)
     end
@@ -532,9 +532,9 @@ final class @inputActualExistingVariableParameterAST : @actualParameterAST {
     ioExclusiveVariableSet ++= self.mInputActualParameterName.string
   //--- Generate actual parameter
     var @2stringlist poisonedVarCppNameList = @()
-    for (varName) in self.mPoisonedVarNameList do
+    for (mValue) in self.mPoisonedVarNameList do
       !?ioVariableMap.searchForWriteAccess (
-        !varName,
+        !mValue,
         ?*,
         ?let targetVariableCppName,
         ?let nameForCheckingFormalParameterUsing
@@ -622,9 +622,9 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
       end
     //--- Generate actual parameter
       var @2stringlist poisonedVarCppNameList = @()
-      for (varName) in self.mPoisonedVarNameList do
+      for (mValue) in self.mPoisonedVarNameList do
         !?ioVariableMap.searchForWriteAccess (
-          !varName,
+          !mValue,
           ?*,
           ?let targetVariableCppName,
           ?let nameForCheckingFormalParameterUsing
@@ -712,9 +712,9 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
       end
     //--- Generate actual parameter
       var @2stringlist poisonedVarCppNameList = @()
-      for (varName) in self.mPoisonedVarNameList do
+      for (mValue) in self.mPoisonedVarNameList do
         !?ioVariableMap.searchForWriteAccess (
-          !varName,
+          !mValue,
           ?*,
           ?let targetVariableCppName,
           ?let nameForCheckingFormalParameterUsing
@@ -824,9 +824,9 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
     ioExclusiveVariableSet ++= self.mInputActualParameterName.string
   //--- Generate actual parameter
     var @2stringlist poisonedVarCppNameList = @()
-    for (varName) in self.mPoisonedVarNameList do
+    for (mValue) in self.mPoisonedVarNameList do
       !?ioVariableMap.searchForWriteAccess (
-        !varName,
+        !mValue,
         ?*,
         ?let targetVariableCppName,
         ?let nameForCheckingFormalParameterUsing
@@ -941,9 +941,9 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
     ioExclusiveVariableSet ++= self.mInputActualParameterName.string
   //--- Generate actual parameter
     var @2stringlist poisonedVarCppNameList = @()
-    for (varName) in self.mPoisonedVarNameList do
+    for (mValue) in self.mPoisonedVarNameList do
       !?ioVariableMap.searchForWriteAccess (
-        !varName,
+        !mValue,
         ?*,
         ?let targetVariableCppName,
         ?let nameForCheckingFormalParameterUsing
@@ -1016,9 +1016,9 @@ final class @inputSingleJokerActualParameterAST : @actualParameterAST {
       let cppVarName = "joker_" + self.mActualSelector.location.startLocationIndex
     //--- Generate actual parameter
       var @2stringlist poisonedVarCppNameList = @()
-      for (varName) in self.mPoisonedVarNameList do
+      for (mValue) in self.mPoisonedVarNameList do
         !?ioVariableMap.searchForWriteAccess (
-          !varName,
+          !mValue,
           ?*,
           ?let targetVariableCppName,
           ?let nameForCheckingFormalParameterUsing

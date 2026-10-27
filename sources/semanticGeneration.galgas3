@@ -38,8 +38,8 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
 
   override proc appendDeclaration1 (?!@stringset ioInclusionSet,
                                      !@string outHeader ) {
-    for (s) in self.mSyntaxComponents do
-      ioInclusionSet ++= "syntax-" + s.string.fileNameRepresentation
+    for (mValue) in self.mSyntaxComponents do
+      ioInclusionSet ++= "syntax-" + mValue.string.fileNameRepresentation
     end
     outHeader = [filewrapper grammarGenerationTemplate.grammarZone3HeaderGalgas3
       !self.mLexiqueName.identifierRepresentation
@@ -1225,11 +1225,11 @@ proc generateWrapperContents
       if contents.count > 100 then
         var components = contents.componentsSeparatedByString (!"\n")
         !?components.popLast (?let lastLine)
-        for (str) in components
+        for (mValue) in components
         before
           ioImplementation += "\n  "
         do
-          let s = str + "\n"
+          let s = mValue + "\n"
           ioImplementation += s.utf8RepresentationEscapingQuestionMark + "\n  "
         end
         if lastLine.count > 0 then

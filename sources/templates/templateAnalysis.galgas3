@@ -118,8 +118,8 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
         hasCompilerArgument = true
         returnedType = @unifiedTypeMapEntry.null
         kind = @methodKind. definedAsMember
-        for (mPropertyTypeEntry mPropertyName 3*) in receiverType.definition.currentTypedPropertyList do
-          let @getterMap aMap = mPropertyTypeEntry.definition.getterMap
+        for (typeEntry name 3*) in receiverType.definition.currentTypedPropertyList do
+          let @getterMap aMap = typeEntry.definition.getterMap
           if let entry = aMap [self.mGetterName.string] then
             matchingReaderCount += 1
             getterFormalArgumentTypeList = entry.mArgumentTypeList
@@ -129,7 +129,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
             if entry.mGetterNameThatObsoletesInvokationName != "" then
               actualGetterName = entry.mGetterNameThatObsoletesInvokationName
             end
-            fieldList ++= @(!mPropertyName.string)
+            fieldList ++= @(name.string)
           end
         end
         if matchingReaderCount == 0 then

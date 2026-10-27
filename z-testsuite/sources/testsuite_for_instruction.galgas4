@@ -7,11 +7,11 @@ proc testsuite_for_instruction() {
   !?strList.append ("b")
   !?strList.append ("c")
   !?strList.append ("d")
-  for (s) in strList 
+  for s in strList 
   before
     println ("  before")
   do
-    println ("  do '" + s + "'")
+    println ("  do '" + s.mValue + "'")
   between
     println ("  between")
   after
@@ -33,12 +33,12 @@ proc testsuite_for_instruction() {
 
   println ("--- begin of for instruction test 3")
   var @uint n = 0
-  for (xyz_mValue) in strList
+  for xyz in strList
   while n < 2
   before
     println ("  before")
   do
-    println ("  do '" + xyz_mValue + "', n: " + n.string + "")
+    println ("  do '" + xyz.mValue + "', n: " + n.string + "")
     n += 1
   between
     println ("  between")

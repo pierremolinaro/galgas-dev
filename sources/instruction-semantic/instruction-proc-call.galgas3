@@ -102,8 +102,8 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
     var @stringlist parameterCppNameList = @()
     var @stringlist jokerParametersToReleaseList = @()
     var @stringlist inputVariableList = @()
-    for (actualParameter) in self.mActualParameterList do
-      actualParameter.generateActualParameter
+    for (mActualParameter) in self.mActualParameterList do
+      mActualParameter.generateActualParameter
         (!?ioInclusionSet,
         !?ioTemporaryVariableIndex,
         !?ioGeneratedCode,
@@ -123,8 +123,8 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
     ioGeneratedCode += compilerCppName () + " " + self.routineMangledName.location.commaSourceFile + ") ;\n"
     ioGeneratedCode += "}\n"
   //--- Generate poisoned variables
-    for (actualParameter) in self.mActualParameterList do
-      actualParameter.generatePoisonedVariables
+    for (mActualParameter) in self.mActualParameterList do
+      mActualParameter.generatePoisonedVariables
         (!?ioGeneratedCode,
         !?ioUnusedVariableCppNameSet
       )

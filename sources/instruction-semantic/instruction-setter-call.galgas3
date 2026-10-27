@@ -209,17 +209,17 @@ override proc @setterCallInstructionAST.analyzeSemanticInstruction (
 //--- Get target variable type
   var ok = true
   var errorLocation = self.mReceiverName.location
-  for (value) in self.mReceiverStructProperties while ok do
+  for (mValue) in self.mReceiverStructProperties while ok do
     ok = receiverType.definition.typeKind.isStructType
     if not ok then
       error (errorLocation : "a structure is required for '.' access")
     else
       let propertyMap = receiverType.definition.propertyMap
-      propertyMap.searchKey (!value, ?let accessControl, ?let isConstant, ?receiverType)
-      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !value.location)
-      errorLocation = value.location
+      propertyMap.searchKey (!mValue, ?let accessControl, ?let isConstant, ?receiverType)
+      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !mValue.location)
+      errorLocation = mValue.location
       if isConstant then
-        error (value : "a constant property cannot be modified")
+        error (mValue : "a constant property cannot be modified")
       end
     end
   end

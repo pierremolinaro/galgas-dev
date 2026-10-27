@@ -413,26 +413,26 @@ proc updateGalgasTargets
   var @stringset generationFeatures = @()
 //--- Check xcode target architectures
   var xcodeProject = @xcodeProject.none
-  for (value) in inTargetFeatureList do
-    if availableGenerationFeatures.hasKey (!value.string) then
-      if generationFeatures.hasKey (!value.string) then
-        error (value: "duplicate '" + value + "' feature")
+  for (mValue) in inTargetFeatureList do
+    if availableGenerationFeatures.hasKey (!mValue.string) then
+      if generationFeatures.hasKey (mValue.string) then
+        error (mValue: "duplicate '" + mValue + "' feature")
       end
    //--- MacOS
-      if value.string == "MacSwiftApp" then
+      if mValue.string == "MacSwiftApp" then
         if xcodeProject != .none then
-          error (value: "duplicated XCode setting")
+          error (mValue: "duplicated XCode setting")
         end
         xcodeProject = .swiftApp
       else
-        generationFeatures ++= value.string
+        generationFeatures ++= mValue.string
       end
     else
       var @stringlist s = @()
       for (key) in availableGenerationFeatures do
         s ++= @(!"%" + key)
       end
-      error (value: "unknown '" + value + "' feature" fixit %replaceBy s )
+      error (mValue: "unknown '" + mValue + "' feature" fixit %replaceBy s )
     end
   end
 //--- Codesign without selecting OSX ?
@@ -501,15 +501,15 @@ proc updateGalgasTargets
   end
 //--- Frameworks to link with tool
   var @stringlist linkOptionForLinkingFrameworkWithTool = @()
-  for (s) in inFrameworkToolFileList do
+  for (mValue) in inFrameworkToolFileList do
     linkOptionForLinkingFrameworkWithTool ++= @(!"-framework")
-    linkOptionForLinkingFrameworkWithTool ++= @(!s.deletingPathExtension)
+    linkOptionForLinkingFrameworkWithTool ++= @(mValue.deletingPathExtension)
   end
 //--- Update json file list
   var @stringlist handCodedSourceToolFileList = @()
-  for (f) in inHandCodedSourceToolFileList do
-    if f.pathExtension != "h" then
-      handCodedSourceToolFileList ++= @(!f.lastPathComponent)
+  for (mValue) in inHandCodedSourceToolFileList do
+    if mValue.pathExtension != "h" then
+      handCodedSourceToolFileList ++= @(mValue.lastPathComponent)
     end
   end
   var handCodedSourceDirectorySet = @stringset ()

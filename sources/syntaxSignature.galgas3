@@ -66,8 +66,8 @@ func compareSyntaxSignature (
   ->@bool
 {
   result = true
-  for (ref_mInstruction) in inReferenceSignature, (test_mInstruction) in inTestedSignature while result do
-     result = ref_mInstruction.compareInstructionSyntaxSignature (!test_mInstruction)
+  for ref in inReferenceSignature, test in inTestedSignature while result do
+     result = ref.mInstruction.compareInstructionSyntaxSignature (test.mInstruction)
   end
   if result & (inReferenceSignature.count < inTestedSignature.count) then
     let @semanticInstructionForGeneration instruction = inTestedSignature.mInstructionAtIndex (!inReferenceSignature.count)

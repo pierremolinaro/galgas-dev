@@ -70,8 +70,8 @@ list @lexicalRuleListAST {
 
 func @lexicalRuleListAST.useLoopLocalVar () -> @bool {
   result = false
-  for (lexicalRule) in self while not result do
-    result = lexicalRule.lexicalRuleUsesLoopLocalVar
+  for (mLexicalRule) in self while not result do
+    result = mLexicalRule.lexicalRuleUsesLoopLocalVar
   end
 }
 

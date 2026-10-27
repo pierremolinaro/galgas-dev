@@ -225,9 +225,8 @@ override func @selectInstructionForGeneration.compareInstructionSyntaxSignature
         + si.mListOfSemanticInstructionListForGeneration.count.string)
       result = false
     end
-    for (ref_mInstructionList *) in self.mListOfSemanticInstructionListForGeneration,
-        (test_mInstructionList test_mEndOfInstructionList) in si.mListOfSemanticInstructionListForGeneration while result do
-      result = compareSyntaxSignature (!ref_mInstructionList, !test_mInstructionList, !test_mEndOfInstructionList)
+    for ref in self.mListOfSemanticInstructionListForGeneration, test in si.mListOfSemanticInstructionListForGeneration while result do
+      result = compareSyntaxSignature (!ref.mInstructionList, !test.mInstructionList, !test.mEndOfInstructionList)
     end
   elsif let si = inTestedInstruction as @syntaxInstructionForGeneration then
     error (si.mInstructionLocation

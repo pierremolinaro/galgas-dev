@@ -632,8 +632,8 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
   override proc appendDeclaration2 (?let @string inOutputDirectory,
                                      ?!@stringset ioInclusionSet,
                                      !@string outHeader ) {
-    for (t 4*) in self.mCurrentTypedAttributeList do
-      t.addHeaderFileName (!?ioInclusionSet)
+    for (typeEntry 4*) in self.mCurrentTypedAttributeList do
+      typeEntry.addHeaderFileName (!?ioInclusionSet)
     end
     let selfTypeDefinition = self.mSelfTypeEntry.definition
       if self.generateHeaderInSeparateFile then

@@ -146,8 +146,8 @@ override proc @listDeclarationAST.enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
   let key = @lstring (!"@" + self.mListTypeName, self.mListTypeName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
-  for (* propertyTypeName 4*) in self.mPropertyList do
-    !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring (!"@" + propertyTypeName, propertyTypeName.location))
+  for (* typeName 4*) in self.mPropertyList do
+    !?ioSemanticTypePrecedenceGraph.noteNode (!@lstring (!"@" + typeName, typeName.location))
   end
 }
 
@@ -166,12 +166,12 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
 ) {
 //--- Handle attributes
   var @typedPropertyList typedAttributeList = @()
-  for (* propertyTypeName mPropertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
-    if initExpression.isSome then
-      error (mPropertyName : "property initialization is not handled for a list")
+  for (* typeName name unused accessControl hasSelector initialization) in self.mPropertyList do
+    if initialization.isSome then
+      error (name : "property initialization is not handled for a list")
     end
-    !?ioTypeMap.makeEntry (!propertyTypeName, ?let attributeTypeIndex)
-    typedAttributeList ++= @(!attributeTypeIndex, !mPropertyName, !initExpression, !hasSetter: true, !hasSelector: hasSelector)
+    !?ioTypeMap.makeEntry (!typeName, ?let attributeTypeIndex)
+    typedAttributeList ++= @(!attributeTypeIndex, !name, !initialization, !hasSetter: true, !hasSelector: hasSelector)
   end
 //--- uint type index
   !?ioTypeMap.makeEntryFromString (!"uint", ?let uintType)
@@ -187,24 +187,24 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
   var @functionSignature constructorAttributeTypeList = @()
   var @formalParameterSignature setterOutputFormalArgumentList = @()
   var @formalParameterSignature setterInputFormalArgumentList = @()
-  for (mPropertyTypeEntry mPropertyName * * mHasSelector) in typedAttributeList do
-    let selector = if mHasSelector then mPropertyName.string else "" end
-    enumerationDescriptor ++= @(!mPropertyTypeEntry, !mPropertyName.string)
+  for (typeEntry name * * hasSelector) in typedAttributeList do
+    let selector = if hasSelector then name.string else "" end
+    enumerationDescriptor ++= @(typeEntry, name.string)
     constructorAttributeTypeList ++= @(
       !selector.nowhere,
-      !mPropertyTypeEntry,
-      !mPropertyName.string,
+      !typeEntry,
+      !name.string,
       !true)
     setterOutputFormalArgumentList ++= @(
       !selector.nowhere,
-      !mPropertyTypeEntry,
+      !typeEntry,
       !.argumentOut,
-      !mPropertyName.string)
+      !name.string)
     setterInputFormalArgumentList ++= @(
       !selector.nowhere,
-      !mPropertyTypeEntry,
+      !typeEntry,
       !.argumentConstantIn,
-      !mPropertyName.string)
+      !name.string)
   end
 //--- Class functions
   var @classFunctionMap classFunctionMap = @()
@@ -256,14 +256,14 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
     !returnedTypeName:self.mListTypeName.string,
     !hasCompilerArgument:true
   )
-  for (mPropertyTypeEntry mPropertyName 3*) in typedAttributeList do
+  for (typeEntry name 3*) in typedAttributeList do
     !?getterMap.insertOrReplace
-      (!@lstring (!mPropertyName.string + "AtIndex", mPropertyName.location),
+      (!@lstring (!name.string + "AtIndex", name.location),
       !@methodKind.definedAsMember,
       !@functionSignature @[@("".nowhere, uintType, "inIndex", true)],
       !@location.here,
       !true,
-      !mPropertyTypeEntry,
+      !typeEntry,
       !@methodQualifier.isBasic,
       !"" // func name is not obsolete, no replacement func
     )
@@ -323,13 +323,13 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
     !@methodQualifier.isBasic,
     !""
   )
-  for (mPropertyTypeEntry mPropertyName * mHasSetter *) in typedAttributeList do
-    if mHasSetter then
+  for (typeEntry name * hasSetter *) in typedAttributeList do
+    if hasSetter then
       var setterFormalArgumentList = @formalParameterSignature ()
-      setterFormalArgumentList ++= @(!"".nowhere, !mPropertyTypeEntry, !.argumentConstantIn, !mPropertyName.string)
-      setterFormalArgumentList ++= @(!"".nowhere, !uintType, !.argumentConstantIn, !mPropertyName.string)
+      setterFormalArgumentList ++= @(!"".nowhere, !typeEntry, !.argumentConstantIn, !name.string)
+      setterFormalArgumentList ++= @(!"".nowhere, !uintType, !.argumentConstantIn, !name.string)
       !?setterMap.insertOrReplace
-        (!@lstring (!"set" + mPropertyName.string.capitalizingFirstCharacter + "AtIndex", mPropertyName.location),
+        (!@lstring (!"set" + name.string.capitalizingFirstCharacter + "AtIndex", name.location),
         !@methodKind.definedAsMember,
         !setterFormalArgumentList,
         !true,
@@ -419,14 +419,15 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
 override proc @listDeclarationAST.addAssociatedElement
   (?!@galgasDeclarationAST ioDeclarations ) {
   var @propertyInCollectionListAST structAttributeList = @()
-  for (mutability qualifiedTypeAST mPropertyName * hasSelector initExpression) in self.mPropertyList do
+  for (mutability typeName name * hasSelector initialization) in self.mPropertyList do
     structAttributeList ++= @(
       !mutability: mutability,
-      !qualifiedTypeAST,
-      !mPropertyName,
+      !typeName,
+      !name,
       !.publicAccess,
       !hasSelector: hasSelector,
-      !initialization: initExpression)
+      !initialization: initialization
+    )
   end
   ioDeclarations.mDeclarationList ++= @(!@structDeclarationAST (
     !isPredefined: self.isPredefined,
@@ -478,21 +479,21 @@ override proc @listDeclarationAST.semanticAnalysis
 //---
   var @typedPropertyList typedAttributeList = @()
   var @propertyIndexMap attributeMap = @()
-  for (* propertyTypeName propertyName unused accessControl hasSelector initExpression) in self.mPropertyList do
-    if initExpression.isSome then
-      error (propertyName : "property initialization is not handled for a list")
+  for (* typeName name unused accessControl hasSelector initialization) in self.mPropertyList do
+    if initialization.isSome then
+      error (name : "property initialization is not handled for a list")
     end
-    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!propertyTypeName)
+    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!typeName)
     !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: propertyTypeNameForUsefulness)
-    let t = ioTypeMap.typeMapEntryForLKey (!propertyTypeName)
+    let t = ioTypeMap.typeMapEntryForLKey (!typeName)
     typedAttributeList ++= @(
       !t,
-      !propertyName,
-      !initExpression,
+      !name,
+      !initialization,
       !hasSetter: true,
       !hasSelector: hasSelector
     )
-    !?attributeMap.insertKey (!propertyName, !t)
+    !?attributeMap.insertKey (name, !t)
   end
 //---
   let selfType = ioTypeMap.typeMapEntryForLKey (!self.mListTypeName)
@@ -555,8 +556,8 @@ override proc @listTypeForGeneration.appendSpecificImplementation
                                         (?let @unifiedTypeMap unused inTypeMap,
                                         ?!@stringset ioInclusionSet,
                                         !@string outImplementation ) {
-  for (t 4*) in self.mTypedAttributeList do
-    t.addHeaderFileName (!?ioInclusionSet)
+  for (typeEntry 4*) in self.mTypedAttributeList do
+    typeEntry.addHeaderFileName (!?ioInclusionSet)
   end
   self.mListElementTypeIndex.addHeaderFileName (!?ioInclusionSet)
   self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)

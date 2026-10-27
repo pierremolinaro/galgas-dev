@@ -131,10 +131,10 @@ override proc @templateInstructionIfForGeneration.templateCodeGeneration
                                                         ?!@uint ioTemporaryVariableIndex,
                                                         ?!@stringset ioUnusedVariableCppNameSet,
                                                         ?!@bool ioUseColumnMarker ) {
-  for (expression instructionList) in self.mTemplateInstructionIfBranchList do
+  for (mExpression mInstructionList) in self.mTemplateInstructionIfBranchList do
   //--- IF expression
-    expression.generateExpression
-      (!?ioGeneratedCode,
+    mExpression.generateExpression (
+      !?ioGeneratedCode,
       !?ioInclusionSet,
       !?ioTemporaryVariableIndex,
       !?ioUnusedVariableCppNameSet,
@@ -147,7 +147,7 @@ override proc @templateInstructionIfForGeneration.templateCodeGeneration
     ioGeneratedCode += "case GalgasBool::boolTrue : {\n"
     !?ioGeneratedCode.incIndentation (!2)
     templateCodeGenerationForListInstruction (
-      !instructionList,
+      !mInstructionList,
       !?ioGeneratedCode,
       !?ioInclusionSet,
       !?ioTemporaryVariableIndex,

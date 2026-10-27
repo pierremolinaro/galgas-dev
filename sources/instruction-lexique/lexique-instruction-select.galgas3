@@ -162,13 +162,13 @@ override func @lexicalSelectInstructionAST.generateSwiftCocoaInstructionCode
 
 override func @lexicalSelectInstructionAST.lexicalInstructionUsesLoopLocalVariable () -> @bool {
   result = false
-  for (* selectInstructionList) in self.mLexicalSelectBranchList while not result do
-    for (instruction) in selectInstructionList while not result do
-      result = instruction.lexicalInstructionUsesLoopLocalVariable
+  for (* mSelectInstructionList) in self.mLexicalSelectBranchList while not result do
+    for (mInstruction) in mSelectInstructionList while not result do
+      result = mInstruction.lexicalInstructionUsesLoopLocalVariable
     end
   end
-  for (instruction) in self.mDefaultInstructionList while not result do
-    result = instruction.lexicalInstructionUsesLoopLocalVariable
+  for (mInstruction) in self.mDefaultInstructionList while not result do
+    result = mInstruction.lexicalInstructionUsesLoopLocalVariable
   end
 }
 
@@ -197,8 +197,8 @@ override func @lexicalSelectInstructionAST.generateLexicalInstructionCode
   if self.mDefaultInstructionList.count > 0 then
     result += "}else{\n"
     !?result.incIndentation (!2)
-    for (instruction) in self.mDefaultInstructionList do
-      result += instruction.generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+    for (mInstruction) in self.mDefaultInstructionList do
+      result += mInstruction.generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
     end
     !?result.decIndentation (!2)
   end

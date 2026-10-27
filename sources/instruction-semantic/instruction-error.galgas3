@@ -213,8 +213,8 @@ override proc @errorInstructionAST.enterInstructionInSemanticContext (?!@unified
 //--------------------------------------------------------------------------------------------------
 
 proc @fixitListAST enterFixItListInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  for (element) in self do
-    switch element
+  for (mElement) in self do
+    switch mElement
     case fixItRemove :
     case fixItReplace (@semanticExpressionAST exp, *) :
       exp.enterExpressionInSemanticContext (!?ioTypeMap)
@@ -287,8 +287,8 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
   )
 //--- Analyze fixit expressions
   outFixitListForGeneration = @()
-  for (element) in inFixitListAST do
-    switch element
+  for (mElement) in inFixitListAST do
+    switch mElement
     case fixItRemove :
       outFixitListForGeneration ++= @(!.fixItRemove)
     case fixItReplace (exp, errorLocation) :
@@ -413,8 +413,8 @@ proc @fixitListForGeneration generateFixIt (?!@stringset ioInclusionSet,
   outFixItArrayCppName = "fixItArray" + ioTemporaryVariableIndex
   ioTemporaryVariableIndex += 1
   ioGeneratedCode += "GenericArray <FixItDescription> " + outFixItArrayCppName + " ;\n"
-  for (element) in self do
-    switch (element)
+  for (mElement) in self do
+    switch (mElement)
     case fixItRemove :
       ioGeneratedCode += outFixItArrayCppName + ".appendObject (FixItDescription (EnumFixItKind::fixItRemove, \"\")) ;\n"
     case fixItReplace (@semanticExpressionForGeneration exp) :

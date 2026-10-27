@@ -391,7 +391,7 @@ proc addExtensions
 //-----------------------  Extension getters
   if inExtensionGetterMapForBuildingContext.hasKey (!inTypeName.string) then
     inExtensionGetterMapForBuildingContext.searchKey (!inTypeName, ?let extensionGetterMapForType)
-    for (lkey mResultTypeName mInputFormalParameterList qualifier) in extensionGetterMapForType do
+    for (lkey mResultTypeName mInputFormalParameterList mQualifier) in extensionGetterMapForType do
       var @functionSignature formalArgumentList = @()
       for formalInputArgument in mInputFormalParameterList do
         !?ioTypeMap.makeEntry (!formalInputArgument.mFormalArgumentTypeName, ?let typeIndex)
@@ -402,15 +402,15 @@ proc addExtensions
           !formalInputArgument.mIsConstant)
       end
       !?ioTypeMap.makeEntry (!mResultTypeName, ?let returnedType)
-      if qualifier == .isVirtualOverriding then
+      if mQualifier == .isVirtualOverriding then
         if ioGetterMap.hasKey (!lkey) then
           !?ioGetterMap.setMQualifierForKey (!.isVirtualOverriding, !lkey)
         end
-      elsif qualifier == .isVirtualOverridingAbstract then
+      elsif mQualifier == .isVirtualOverridingAbstract then
         if ioGetterMap.hasKey (!lkey) then
           !?ioGetterMap.setMQualifierForKey (!.isVirtualOverridingAbstract, !lkey)
         end
-      elsif inIsClass & (qualifier == .isBasic) then
+      elsif inIsClass & (mQualifier == .isBasic) then
         !?ioGetterMap.insertKey
           (!lkey,
           !.definedAsExtension,
@@ -429,7 +429,7 @@ proc addExtensions
           !lkey.location,
           !true,
           !returnedType,
-          !qualifier,
+          !mQualifier,
           !"" // func name is not obsolete, no replacement func
         )
       end
@@ -438,7 +438,7 @@ proc addExtensions
 //-----------------------  Extension methods
   if inExtensionMethodMapForBuildingContext.hasKey (!inTypeName.string) then
     inExtensionMethodMapForBuildingContext.searchKey (!inTypeName, ?let extensionMethodMapForType)
-    for (lkey mFormalParameterList qualifier) in extensionMethodMapForType do
+    for (lkey mFormalParameterList mQualifier) in extensionMethodMapForType do
       var formalArgumentList = @formalParameterSignature ()
       for parameter in mFormalParameterList do
         !?ioTypeMap.makeEntry
@@ -451,15 +451,15 @@ proc addExtensions
           !parameter.mFormalArgumentPassingMode,
           !parameter.mFormalArgumentName.string)
       end
-      if qualifier == .isVirtualOverriding then
+      if mQualifier == .isVirtualOverriding then
         if ioInstanceMethodMap.hasKey (!lkey) then
           !?ioInstanceMethodMap.setMQualifierForKey (!.isVirtualOverriding, !lkey)
         end
-      elsif qualifier == .isVirtualOverridingAbstract then
+      elsif mQualifier == .isVirtualOverridingAbstract then
         if ioInstanceMethodMap.hasKey (!lkey) then
           !?ioInstanceMethodMap.setMQualifierForKey (!.isVirtualOverridingAbstract, !lkey)
         end
-      elsif inIsClass & (qualifier == .isBasic) then
+      elsif inIsClass & (mQualifier == .isBasic) then
         !?ioInstanceMethodMap.insertKey
           (!lkey,
           !.definedAsExtension,
@@ -476,7 +476,7 @@ proc addExtensions
           !formalArgumentList,
           !lkey.location,
           !true,
-          !qualifier,
+          !mQualifier,
           !"" // No error message
         )
       end
@@ -513,22 +513,11 @@ proc addExtensions
     inExtensionInitializerMapForBuildingContext.searchKey (!inTypeName, ?let initializerMapForType)
     for (lkey mFormalParameterList) in initializerMapForType do
       var @functionSignature formalArgumentList = @()
-     for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * isConstant) in mFormalParameterList do
+      for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in mFormalParameterList do
         !?ioTypeMap.makeEntry (!mFormalArgumentTypeName, ?let typeIndex)
-        formalArgumentList ++= @(!mFormalSelector, !typeIndex, !mFormalArgumentName.string, !isConstant)
+        formalArgumentList ++= @(!mFormalSelector, !typeIndex, !mFormalArgumentName.string, !mIsConstant)
       end
-//      for parameter in mFormalParameterList do
-//        !?ioTypeMap makeEntry !parameter.mFormalArgumentTypeName ?let typeIndex]
-//        formalArgumentList +=
-//          !parameter.mFormalSelector
-//          !typeIndex
-//          !parameter.mFormalArgumentPassingMode
-//          !parameter.mFormalArgumentName.string
-//      end
-      !?ioInitializerMap.insertKey
-        (!lkey,
-        !formalArgumentList
-      )
+      !?ioInitializerMap.insertKey (lkey, formalArgumentList)
     end
   end
 }
@@ -698,9 +687,9 @@ override proc @externFunctionDeclarationAST.enterDeclarationInSemanticContext //
   ?!@semanticContext ioSemanticContext ) {
 //--- Build signature
   var functionSignature = @functionSignature ()
-  for (mFormalSelector mFormalArgumentTypeName * * isConstant) in self.mFormalArgumentList do
+  for (mFormalSelector mFormalArgumentTypeName * * mIsConstant) in self.mFormalArgumentList do
     !?ioTypeMap.makeEntry  (!mFormalArgumentTypeName, ?let parameterTypeIndex)
-    functionSignature ++= @(!mFormalSelector, !parameterTypeIndex, !mFormalArgumentTypeName.string, !isConstant)
+    functionSignature ++= @(!mFormalSelector, !parameterTypeIndex, !mFormalArgumentTypeName.string, !mIsConstant)
   end
 //--- Result type
   !?ioTypeMap.makeEntry  (!self.mResultTypeName, ?let resultTypeIndex)
@@ -813,8 +802,8 @@ override proc @galgas3GrammarComponentAST.enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
   let key = @lstring (!"grammar " + self.mGrammarComponentName, self.mGrammarComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
-  for (s) in self.mSyntaxComponents do
-    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"syntax " + s, s.location))
+  for (mValue) in self.mSyntaxComponents do
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"syntax " + mValue, mValue.location))
   end
 }
 

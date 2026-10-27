@@ -367,13 +367,13 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
       lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (!mAttributeName, ?let attributeLexicalType)
       argumentTypeList ++= @(!mFormalSelector, !mAttributeName.string, !attributeLexicalType)
     end
-    for (* mTerminalSpelling nonAtomicSelection isTemplateEndMark) in mEntryList do
+    for (* mTerminalSpelling nonAtomicSelection isEndOfTemplateMark) in mEntryList do
       let syntaxErrorMessage = mSyntaxErrorMessage.string.replacing (!"%K", !by: mTerminalSpelling.string)
       terminalList ++= @(
         !mTerminalSpelling,
         !argumentTypeList,
         !syntaxErrorMessage,
-        !isEndOfTemplateMark: isTemplateEndMark,
+        !isEndOfTemplateMark: isEndOfTemplateMark,
         !atomicSelection: not nonAtomicSelection,
         !terminalStyleIndex)
     end
@@ -381,10 +381,10 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
 //-------------------------------------- Template delimiters
   var @stringset unicodeStringToGenerate = @()
   var @templateDelimitorList templateDelimitorList = @()
-  for (mStartString * * preservesStartDelimiter mEndString) in self.mTemplateDelimitorList do
+  for (mStartString * * mPreserved mEndString) in self.mTemplateDelimitorList do
    unicodeStringToGenerate ++= mStartString.string
    unicodeStringToGenerate ++= mEndString.string
-   templateDelimitorList ++= @(!mStartString, !mEndString, !preservesStartDelimiter)
+   templateDelimitorList ++= @(!mStartString, !mEndString, !mPreserved)
   end
 //-------------------------------------- Template replacements
   for (mMatchString mReplacementString *) in self.mTemplateReplacementList do

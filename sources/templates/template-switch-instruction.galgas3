@@ -148,10 +148,10 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
     var @stringset constantsNamedInSwitchInstruction = @()
   //--- Analyze branches
     var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = @()
-    for (mConstantList mAssociatedValuesExtraction mInstructionList mEndOfBranch) in self.templateInstructionSwitchBranchList do
+    for (constantList associatedValuesExtraction instructionList endOfBranch) in self.templateInstructionSwitchBranchList do
       var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = @()
       var analysisContext = inAnalysisContext
-      for constantName in mConstantList do
+      for constantName in constantList do
         if enumType.constantMap.hasKey (!constantName.string) then
           if constantsNamedInSwitchInstruction.hasKey (!constantName.string) then
             error (constantName
@@ -159,18 +159,18 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
           end
           constantsNamedInSwitchInstruction ++= constantName.string
           enumType.constantMap.searchKey (!constantName, ?*, ?let @associatedValueDescriptorList associatedTypeList)
-          if (associatedTypeList.count > 0) & (mAssociatedValuesExtraction.count == 0) then
+          if (associatedTypeList.count > 0) & (associatedValuesExtraction.count == 0) then
             error (constantName
               :"the associated values of '" + constantName + "' constant should be extracted")
-          elsif (associatedTypeList.count == 0) & (mAssociatedValuesExtraction.count > 0) then
+          elsif (associatedTypeList.count == 0) & (associatedValuesExtraction.count > 0) then
             error (constantName
               :"the '" + constantName + "' constant has no associated value")
-          elsif associatedTypeList.count  != mAssociatedValuesExtraction.count then
+          elsif associatedTypeList.count  != associatedValuesExtraction.count then
             error (constantName
               :"the '" + constantName + "' constant requires " + associatedTypeList.count + "  associated value"
               + if associatedTypeList.count > 1 then "s" else "" end)
           else
-            for descriptor in associatedTypeList, (mExtractedValueTypeName mExtractedValueName *) in mAssociatedValuesExtraction do (IDX)
+            for descriptor in associatedTypeList, (mExtractedValueTypeName mExtractedValueName *) in associatedValuesExtraction do (IDX)
               if mExtractedValueTypeName.string != "" then // Explicit type ?
                 if descriptor.type.definition.typeName.string != mExtractedValueTypeName.string then
                   error (mExtractedValueTypeName : "the required type is '@" + descriptor.type.definition.typeName.string + "'")
@@ -197,20 +197,21 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
           + switchExpression.mResultType.definition.typeName.string + "' enumeration type")
         end
       end
-      var @templateInstructionListForGeneration instructionList = @()
+      var @templateInstructionListForGeneration templateInstructionList = @()
       templateInstructionListAnalysis (
         !inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
         !analysisContext,
         !?ioTypeMap,
-        !mInstructionList,
-        !?instructionList
+        !instructionList,
+        !?templateInstructionList
       )
       templateInstructionSwitchBranchList ++= @(
-        !mConstantList,
+        !constantList,
         !extractedAssociatedValuesForGeneration,
-        !mEndOfBranch.startLocationIndex,
-        !instructionList)
+        !endOfBranch.startLocationIndex,
+        !templateInstructionList
+      )
     end
   //--- Check all constants have been named
     let forgottenConstants = enumType.constantMap.keySet - constantsNamedInSwitchInstruction

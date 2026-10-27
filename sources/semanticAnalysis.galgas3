@@ -35,17 +35,17 @@ proc checkMethodSignatures
     + " formal parameter(s), but overriden proc declares " + inReferenceSignature.count.string)
     error (inReferenceLocation:"overriden proc is declared here")
   else
-    for (ref_mFormalSelector ref_mFormalArgumentType ref_mFormalArgumentPassingMode *) in inReferenceSignature, (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName *) in inTestedSignature do
-      if ref_mFormalArgumentPassingMode != mFormalArgumentPassingMode then
-        error (mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter is declared as "
-        + mFormalArgumentPassingMode.formalArgumentMessage + ", but overriden proc declares it as "
-        + ref_mFormalArgumentPassingMode.formalArgumentMessage
+    for ref in inReferenceSignature, tested in inTestedSignature do
+      if ref.mFormalArgumentPassingMode != tested.mFormalArgumentPassingMode then
+        error (tested.mFormalArgumentName : "the '" + tested.mFormalArgumentName + "' formal parameter is declared as "
+        + tested.mFormalArgumentPassingMode.formalArgumentMessage + ", but overriden proc declares it as "
+        + ref.mFormalArgumentPassingMode.formalArgumentMessage
         )
         error (inReferenceLocation:"overriden proc is declared here")
       end
-      if mFormalSelector.string != ref_mFormalSelector.string then
+      if tested.mFormalSelector.string != ref.mFormalSelector.string then
         var @string s
-        switch ref_mFormalArgumentPassingMode
+        switch ref.mFormalArgumentPassingMode
         case argumentConstantIn, argumentVarIn :
           s = "?"
         case argumentInOut :
@@ -53,13 +53,13 @@ proc checkMethodSignatures
         case argumentOut :
           s = "!"
         end
-        s += if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
-        error (mFormalSelector : "the selector should be '" + s + "'" fixit replace s)
+        s += if ref.mFormalSelector.string != "" then ref.mFormalSelector.string + ":" else "" end
+        error (tested.mFormalSelector : "the selector should be '" + s + "'" fixit replace s)
       end
-      if mFormalArgumentType.definition.typeName.string != ref_mFormalArgumentType.definition.typeName.string then
-        error (mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter has the '@"
-        + mFormalArgumentType.definition.typeName.string + "' type, but overriden proc declares with the '@"
-        + ref_mFormalArgumentType.definition.typeName.string + "' type")
+      if tested.mFormalArgumentType.definition.typeName.string != ref.mFormalArgumentType.definition.typeName.string then
+        error (tested.mFormalArgumentName : "the '" + tested.mFormalArgumentName + "' formal parameter has the '@"
+        + tested.mFormalArgumentType.definition.typeName.string + "' type, but overriden proc declares with the '@"
+        + ref.mFormalArgumentType.definition.typeName.string + "' type")
         error (inReferenceLocation:"overriden proc is declared here")
       end
     end
@@ -90,15 +90,15 @@ proc checkGetterSignatures
     + " formal parameter(s), but overriden func declares " + inReferenceSignature.count.string)
     error (inReferenceLocation:"overriden func is declared here")
   else
-    for (ref_mFormalSelector ref_mFormalArgumentType 2*) in inReferenceSignature, (mFormalSelector mFormalArgumentType * mFormalArgumentName *) in inTestedSignature do
-      if mFormalSelector.string != ref_mFormalSelector.string then
-        let @string s = "?" + if ref_mFormalSelector.string != "" then ref_mFormalSelector.string + ":" else "" end
-        error (mFormalSelector : "the selector should be '" + s + "'" fixit replace s)
+    for ref in inReferenceSignature, tested in inTestedSignature do
+      if tested.mFormalSelector.string != ref.mFormalSelector.string then
+        let @string s = "?" + if ref.mFormalSelector.string != "" then ref.mFormalSelector.string + ":" else "" end
+        error (tested.mFormalSelector : "the selector should be '" + s + "'" fixit replace s)
       end
-      if mFormalArgumentType.definition.typeName.string != ref_mFormalArgumentType.definition.typeName.string then
-        error (mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter has the '@"
-        + mFormalArgumentType.definition.typeName.string + "' type, but overriden func declares with the '@"
-        + ref_mFormalArgumentType.definition.typeName.string + "' type")
+      if tested.mFormalArgumentType.definition.typeName.string != ref.mFormalArgumentType.definition.typeName.string then
+        error (tested.mFormalArgumentName : "the '" + tested.mFormalArgumentName + "' formal parameter has the '@"
+        + tested.mFormalArgumentType.definition.typeName.string + "' type, but overriden func declares with the '@"
+        + ref.mFormalArgumentType.definition.typeName.string + "' type")
         error (inReferenceLocation:"overriden func is declared here")
       end
     end
@@ -649,12 +649,12 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
   var @syntaxComponentListForGrammarAnalysis syntaxComponentListForGrammarAnalysis = @()
   var @nonTerminalToAddList nonTerminalToAddList = @()
   var @uint addedNonTerminalCount = 0
-  for (syntaxComponentName) in self.mSyntaxComponents do
-    let syntaxNameForUsefulness = syntaxNameForUsefulEntitiesGraph (!syntaxComponentName)
+  for syntaxComponentName in self.mSyntaxComponents do
+    let syntaxNameForUsefulness = syntaxNameForUsefulEntitiesGraph (!syntaxComponentName.mValue)
     !?ioUsefulEntitiesGraph.addEdge (!from: grammarNameForUsefulness, !to: syntaxNameForUsefulness)
     let @uint addedNonTerminalCountRef = addedNonTerminalCount
     inSemanticContext.mSyntaxComponentMapForSemanticAnalysis.searchKey
-      (!syntaxComponentName,
+      (!syntaxComponentName.mValue,
       ?let @lstring lexiqueName,
       ?let @nonterminalDeclarationListAST nonterminalDeclarationList,
       ?let @syntaxRuleListAST ruleList,
@@ -664,15 +664,15 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
     !?ioUsefulEntitiesGraph.addEdge (!from: grammarNameForUsefulness, !to: lexiqueNameForUsefulness)
   //--- Check translate feature
     if self.mHasTranslateFeature & not hasTranslateFeature then
-      error (syntaxComponentName : "as '" + self.mGrammarComponentName + "' grammar declares 'translate' feature, this syntax component should do so")
+      error (syntaxComponentName.mValue : "as '" + self.mGrammarComponentName + "' grammar declares 'translate' feature, this syntax component should do so")
     elsif hasTranslateFeature & not self.mHasTranslateFeature then
-      error (self.mGrammarComponentName : "as '" + syntaxComponentName + "' syntax component declares 'translate' feature, this grammar should do so")
+      error (self.mGrammarComponentName : "as '" + syntaxComponentName.mValue + "' syntax component declares 'translate' feature, this grammar should do so")
     end
   //--- Handle lexique component
     if lexiqueComponentName.string == "" then
       lexiqueComponentName = lexiqueName
     elsif lexiqueName.string != lexiqueComponentName.string then
-      error (syntaxComponentName : "this syntax component uses '"
+      error (syntaxComponentName.mValue : "this syntax component uses '"
         + lexiqueName + "' lexique component, but the first syntax component uses the '"
         + lexiqueComponentName + "' lexique component (they should be the same)")
     end
@@ -689,7 +689,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
   //--- Handle syntax rules
     buildRuleList (
       !nonTerminalMapForGrammarAnalysis,
-      !syntaxComponentName,
+      !syntaxComponentName.mValue,
       !ruleList,
       !?actuallyUsedTerminalSymbolMap,
       !?syntaxComponentListForGrammarAnalysis,
@@ -697,7 +697,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
     )
     var @uint i = 0
     loop (addedNonTerminalCount) while i < (addedNonTerminalCount - addedNonTerminalCountRef) do
-      nonTerminalToAddList ++= @(!syntaxComponentName, !i)
+      nonTerminalToAddList ++= @(!syntaxComponentName.mValue, !i)
       i += 1
     end
   end
@@ -944,16 +944,16 @@ proc enterNonterminalNonTerminalInMapAndCheck
       : "the '" + inNonTerminalName + "' nonterminal is redeclared with the new label(s):" + s)
     end
     if (missingLabelSet.count == 0) & (newLabelSet.count == 0) then
-      for aLabel in entry.mLabelMap, (* * new_mSignature new_mEndOfArgumentLocation) in inNonterminalLabelMap do
+      for aLabel in entry.mLabelMap, newLabel in inNonterminalLabelMap do
         var @formalParameterSignature newSignature = @()
-        for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in new_mSignature do
+        for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in newLabel.mSignature do
           newSignature ++= @(!mFormalSelector, !mFormalArgumentType, !mFormalArgumentPassingMode, !mFormalArgumentName)
         end
         checkMethodSignatures (
           !aLabel.mSignatureForGeneration,
           !aLabel.mEndOfArgumentLocation,
           !newSignature,
-          !new_mEndOfArgumentLocation
+          !newLabel.mEndOfArgumentLocation
         )
       end
     end
@@ -1558,8 +1558,8 @@ private proc emitClassGraphFile (?let @string inDotDocumentFilePath,
   var document = "digraph G {\n"
   document += "  rankdir=LR ;\n"
   document += "  node [shape=record fontname=helvetica style=rounded] ;\n"
-  for (* entry) in inTypeMap do
-    switch entry.mDefinition
+  for (* mElement) in inTypeMap do
+    switch mElement.mDefinition
     case unsolved :
     case solved (@unifiedTypeDefinition definition) :
       if definition.typeKind.isClassType then
