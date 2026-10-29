@@ -539,22 +539,22 @@ override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
         fixit replace if missingArgumentCount == 1 then "*" else " " + missingArgumentCount + "*" end
         )
       end
-      for (mOptionalTypeName mDeclaredAsUnused mOptionalConstantName) in self.mElementList, (mEnumeratedType mEnumerationName) in enumerationDescriptorList do
-        if mOptionalConstantName.string != "" then // Empty string if joker
-          if [option galgas_cli_options.warnsOnEnumerationNameMismatch value], mOptionalConstantName.string != mEnumerationName then
-            warning mOptionalConstantName : "rename constant as '" + mEnumerationName + "'"
+      for element in self.mElementList, descriptor in enumerationDescriptorList do
+        if element.mOptionalConstantName.string != "" then // Empty string if joker
+          if [option galgas_cli_options.warnsOnEnumerationNameMismatch value], element.mOptionalConstantName.string != descriptor.mEnumerationName then
+            warning element.mOptionalConstantName : "rename constant as '" + descriptor.mEnumerationName + "'"
           end
-          if mOptionalTypeName.string != "" then
-            let foundType = ioTypeMap.typeMapEntryForLKey (!mOptionalTypeName)
-            if foundType != mEnumeratedType then
-              error (mOptionalTypeName : "incorrect '@" + foundType.definition.typeName.string + "' type: '@" + mEnumeratedType.definition.typeName.string + "' type required here")
+          if element.mOptionalTypeName.string != "" then
+            let foundType = ioTypeMap.typeMapEntryForLKey (element.mOptionalTypeName)
+            if foundType != descriptor.mEnumeratedType then
+              error (element.mOptionalTypeName : "incorrect '@" + foundType.definition.typeName.string + "' type: '@" + descriptor.mEnumeratedType.definition.typeName.string + "' type required here")
             end
           end
           ioLocalConstantListForDoBranch ++= @(
-            !mEnumeratedType,
-            !mOptionalConstantName,
-            !mDeclaredAsUnused, // No warning if unused
-            !outEnumeratorCppName + ".current_" + mEnumerationName.identifierRepresentation + " (HERE)")
+            !descriptor.mEnumeratedType,
+            !element.mOptionalConstantName,
+            !element.mDeclaredAsUnused, // No warning if unused
+            !outEnumeratorCppName + ".current_" + descriptor.mEnumerationName.identifierRepresentation + " (HERE)")
         end
       end
     end
@@ -661,9 +661,9 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
 //--- Analyze enumerated objects
   var @localConstantList localConstantListForDoBranch = @()
   var @forInstructionEnumeratedObjectListForGeneration enumerationList = @()
-  for (mAscending mEnumeratedCollection) in self.mEnumeratedObjectList do
-    mEnumeratedCollection.analyzeEnumeration
-      (!inUsefulnessCallerEntityName,
+  for object in self.mEnumeratedObjectList do
+    object.mEnumeratedCollection.analyzeEnumeration (
+      inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inAnalysisContext,
       !?ioTypeMap,
@@ -674,7 +674,7 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
     )
   //---
     enumerationList ++= @(
-      !if mAscending then "Up" else "Down" end,
+      !if object.mAscending then "Up" else "Down" end,
       !enumerationExpression,
       !enumeratorCppName)
   end

@@ -25,7 +25,7 @@
 //   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N (SWIFT)
 //--------------------------------------------------------------------------------------------------
 
-abstract func @lexicalExpressionAST generateSwiftCocoaConditionCode
+abstract func @lexicalExpressionAST.generateSwiftCocoaConditionCode
   (?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   ) -> @string
 
@@ -90,7 +90,7 @@ override func @lexicalCharacterSetMatchAST.generateSwiftCocoaConditionCode
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @lexicalRoutineOrFunctionFormalInputArgumentAST generateSwiftCocoaRoutineOrFunctionArgument
+abstract func @lexicalRoutineOrFunctionFormalInputArgumentAST.generateSwiftCocoaRoutineOrFunctionArgument
   () -> @string
 
 //--------------------------------------------------------------------------------------------------
@@ -134,7 +134,7 @@ override func @lexicalFunctionInputArgumentAST.generateSwiftCocoaRoutineOrFuncti
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @lexicalSendDefaultActionAST generateSwiftCocoaDefaultSendCode
+abstract func @lexicalSendDefaultActionAST.generateSwiftCocoaDefaultSendCode
   (?let @string inScannerClassName
   ) -> @string
 
@@ -156,7 +156,7 @@ override func @lexicalErrorByDefaultAST.generateSwiftCocoaDefaultSendCode
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @lexicalInstructionAST generateSwiftCocoaInstructionCode
+abstract func @lexicalInstructionAST.generateSwiftCocoaInstructionCode
   (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   ) -> @string
@@ -165,7 +165,7 @@ abstract func @lexicalInstructionAST generateSwiftCocoaInstructionCode
 //        L E X I C A L    R U L E    C O D E    G E N E R A T I O N (SWIFT)
 //--------------------------------------------------------------------------------------------------
 
-abstract func @abstractLexicalRuleAST generateSwiftCocoaCode
+abstract func @abstractLexicalRuleAST.generateSwiftCocoaCode
   (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   ) -> @string

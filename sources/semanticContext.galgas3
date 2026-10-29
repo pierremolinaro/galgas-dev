@@ -304,7 +304,7 @@ map @extensionGetterMapForBuildingContext {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @semanticDeclarationAST keyRepresentation () -> @string
+abstract func @semanticDeclarationAST.keyRepresentation () -> @string
 
 //--------------------------------------------------------------------------------------------------
 

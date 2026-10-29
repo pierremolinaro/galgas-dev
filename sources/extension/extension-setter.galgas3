@@ -349,8 +349,8 @@ override proc @extensionSetterForGeneration.appendSpecificImplementation (
   ?let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation) {
-  for (* * mFormalArgumentType * *) in self.mExtensionSetterFormalParameterList do
-    mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
+  for entry in self.mExtensionSetterFormalParameterList do
+    entry.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
   end
   if self.mImplementedAsFunction then
     var extensionSetterFormalParameterList = self.mExtensionSetterFormalParameterList

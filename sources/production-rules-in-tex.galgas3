@@ -178,10 +178,10 @@ proc @productionRuleListForGrammarAnalysis.@element displayRuleVertically
   var @string arrowStyle = "--"
   var @uint unusedMaxUsedRowIndex = 0 // Unused
   var row = self.mInstructionList.count
-  for (mInstruction) in self.mInstructionList do
+  for entry in self.mInstructionList do
     row -= 1
     var @uint column = 1
-    mInstruction.tikzNodeForSyntaxInstruction
+    entry.mInstruction.tikzNodeForSyntaxInstruction
       (!?rowArray,
       !fromRow:row,
       !?column:column,
@@ -205,9 +205,9 @@ proc @productionRuleListForGrammarAnalysis.@element displayRuleVertically
     + "}\n\n"
     + "\\begin{tikzpicture}\n"
     + "  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"
-  for > (columns) in rowArray do
+  for > row in rowArray do
     ioGeneratedCode += "    "
-    for column in columns do
+    for column in row.columns do
       if column.mValue0 == "" then
         ioGeneratedCode += "& "
       else
@@ -248,8 +248,8 @@ proc @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
     ioArrowShape = "--"
     ioColumn += 1
   else
-    for (mInstruction) in self do
-      mInstruction.tikzNodeForSyntaxInstruction
+    for entry in self do
+      entry.mInstruction.tikzNodeForSyntaxInstruction
         (!?ioRowList,
         !fromRow:inRow,
         !?column:ioColumn,
@@ -522,8 +522,8 @@ override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   ioColumn += 1
   ioArrows += "  \\draw[->] (" + returnUpperNodeName + ") -| (" + returnNodeName + ") ;\n"
 //--- Add ending arrows
-  for (mValue) in endingNodes do
-    ioArrows += "  \\draw[->] (" + mValue + ") -| (" + returnUpperNodeName + ") ;\n"
+  for entry in endingNodes do
+    ioArrows += "  \\draw[->] (" + entry.mValue + ") -| (" + returnUpperNodeName + ") ;\n"
   end
 //--- Trace ?
   if inDebug then
@@ -545,14 +545,14 @@ override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
 
 func @syntaxInstructionListForGrammarAnalysis.displayVertically () -> @bool {
   result = self.count > 4
-  for (mInstruction) in self while result do
-    result = mInstruction.isLinear
+  for entry in self while result do
+    result = entry.mInstruction.isLinear
   end
 }
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @abstractSyntaxInstructionForGrammarAnalysis isLinear () -> @bool
+abstract func @abstractSyntaxInstructionForGrammarAnalysis.isLinear () -> @bool
 
 //--------------------------------------------------------------------------------------------------
 

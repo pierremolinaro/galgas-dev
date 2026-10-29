@@ -522,8 +522,8 @@ override proc @lexicalExplicitRuleAST.checkLexicalRule
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
   self.mLexicalRuleExpression.checkLexicalExpression (!?ioLexiqueAnalysisContext)
   var @lexicalTagMap tagMap = @()
-  for (mInstruction) in self.mInstructionList do
-    mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
+  for entry in self.mInstructionList do
+    entry.mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
   end
 }
 

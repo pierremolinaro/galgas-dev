@@ -525,16 +525,16 @@ proc generateExtensionSetter
   var @stringset unusedVariableCppNameSet = @()
   unusedVariableCppNameSet ++= compilerCppName ()
   unusedVariableCppNameSet ++= "object"
-  for (* * * * mFormalArgumentCppName) in inFormalArgumentList do
-    unusedVariableCppNameSet ++= mFormalArgumentCppName
+  for entry in inFormalArgumentList do
+    unusedVariableCppNameSet ++= entry.mFormalArgumentCppName
   end
 //--- Generate body
   var @uint temporaryVariableIndex = 0
   var routineBody = ""
   !?routineBody.incIndentation (!2)
-  for (mInstruction) in inInstructionList do
-    mInstruction.generateInstruction
-      (!?ioInclusionSet,
+  for entry in inInstructionList do
+    entry.mInstruction.generateInstruction (
+      !?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
       !false, // inGenerateSyntaxDirectedTranslationString
@@ -1296,8 +1296,8 @@ proc generateWrapperContents
   + "static const cDirectoryWrapper * gWrapperAllDirectories_"
   + inFilewrapperName.identifierRepresentation + "_" + inFilewrapperDirectoryIndex.string
   + " [" + (inFilewrapperDirectoryMap.count + 1).string + "] = {\n"
-  for (* * * mWrapperDirectoryIndex) in inFilewrapperDirectoryMap do
-    ioImplementation += "  & gWrapperDirectory_" + mWrapperDirectoryIndex.string + "_" + inFilewrapperName.identifierRepresentation + ",\n"
+  for entry in inFilewrapperDirectoryMap do
+    ioImplementation += "  & gWrapperDirectory_" + entry.mWrapperDirectoryIndex.string + "_" + inFilewrapperName.identifierRepresentation + ",\n"
   end
   ioImplementation += "  nullptr\n"
   + "} ;\n\n"
@@ -1340,8 +1340,8 @@ override proc @filewrapperDeclarationForGeneration.appendSpecificImplementation
     var @uint temporaryVariableIndex = 0
     var @stringset unusedVariableCppNameSet = @()
     unusedVariableCppNameSet ++= compilerCppName ()
-    for (* * mFormalArgumentCppName * *) in mFilewrapperTemplateFormalInputParameters do
-      unusedVariableCppNameSet ++= mFormalArgumentCppName
+    for entry in mFilewrapperTemplateFormalInputParameters do
+      unusedVariableCppNameSet ++= entry.mFormalArgumentCppName
     end
     var @bool useColumnMarker = false
     templateCodeGenerationForListInstruction (

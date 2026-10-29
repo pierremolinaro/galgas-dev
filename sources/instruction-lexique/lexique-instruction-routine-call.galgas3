@@ -146,7 +146,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-abstract func @abstractLexicalRoutineActualArgumentAST generateSwiftCocoaRoutineArgument
+abstract func @abstractLexicalRoutineActualArgumentAST.generateSwiftCocoaRoutineArgument
   (?let @lexiqueAnalysisContext inLexiqueAnalysisContext)
   -> @string
 
@@ -292,7 +292,7 @@ override func @lexicalRoutineCallInstructionAST.generateSwiftCocoaInstructionCod
 //! C++ CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-abstract func @abstractLexicalRoutineActualArgumentAST generateRoutineArgument ()
+abstract func @abstractLexicalRoutineActualArgumentAST.generateRoutineArgument ()
   -> @string
 
 //·································································································
@@ -325,8 +325,8 @@ override func @lexicalRoutineCallInstructionAST.generateLexicalInstructionCode (
   for (mLexicalRoutineActualArgument) in self.mActualArgumentList do
     result += ", " + mLexicalRoutineActualArgument.generateRoutineArgument
   end
-  for (mValue) in self.mErrorMessageList do
-    result += ", gLexicalMessage_" + inScannerClassName + "_" + mValue
+  for entry in self.mErrorMessageList do
+    result += ", gLexicalMessage_" + inScannerClassName + "_" + entry.mValue
   end
   result += ") ;\n"
 }

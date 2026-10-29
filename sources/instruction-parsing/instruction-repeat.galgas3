@@ -118,10 +118,10 @@ override proc @repeatInstruction.transformInstructionForGrammarAnalysis
   )
   var repeatBranchList = @branchListForGrammarAnalysis.listWithValue(!repeatedInstructionList)
 
-  for (mSyntaxInstructionList *) in self.mRepeatBranchList do
+  for entry in self.mRepeatBranchList do
     var syntaxInstructionList = @syntaxInstructionListForGrammarAnalysis ()
     transformInstructionListForGrammarAnalysis (
-      !mSyntaxInstructionList,
+      entry.mSyntaxInstructionList,
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap,
       !nonTerminalSymbolMap:inNonTerminalSymbolMap,
       !?addedTerminalIndex:ioAddedNonTerminalIndex,
@@ -325,11 +325,11 @@ override proc @repeatInstructionForGeneration.generateInstruction (?!@stringset 
   else
     ioGeneratedCode += "switch (select_" + self.mSyntaxComponentName.identifierRepresentation
     ioGeneratedCode += "_" + self.mChoiceIndex.string + " (" + compilerCppName () + ")) {\n"
-    for (mInstructionList *) in self.mListOfSemanticInstructionListForGeneration do(IDX)
+    for entry in self.mListOfSemanticInstructionListForGeneration do(IDX)
       ioGeneratedCode += "case " + (IDX + 2).string + ": {\n"
       generateInstructionList (
         !?ioInclusionSet,
-        !mInstructionList,
+        entry.mInstructionList,
         !?ioTemporaryVariableIndex,
         !?ioUnusedVariableCppNameSet,
         !inGenerateSyntaxDirectedTranslationString,

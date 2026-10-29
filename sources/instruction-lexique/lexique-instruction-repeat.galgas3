@@ -157,8 +157,8 @@ override func @lexicalRepeatInstructionAST.generateSwiftCocoaInstructionCode
   outGeneratedCode = "while (loop && scanningOk) {\n"
   !?outGeneratedCode.incIndentation (!2)
 //--- Repeated instruction
-  for (mInstruction) in self.mRepeatedInstructionList do
-    outGeneratedCode += mInstruction.generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+  for entry in self.mRepeatedInstructionList do
+    outGeneratedCode += entry.mInstruction.generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
   end
 //---
   for (mWhileExpression mWhileInstructionList) in self.mLexicalWhileBranchList
@@ -167,8 +167,8 @@ override func @lexicalRepeatInstructionAST.generateSwiftCocoaInstructionCode
     outGeneratedCode += mWhileExpression.generateSwiftCocoaConditionCode (!inLexiqueAnalysisContext)
     outGeneratedCode += ") {\n"
     !?outGeneratedCode.incIndentation (!2)
-    for (mInstruction) in mWhileInstructionList do
-      outGeneratedCode += mInstruction.generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+    for entry in mWhileInstructionList do
+      outGeneratedCode += entry.mInstruction.generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
     end
     !?outGeneratedCode.decIndentation (!2)
   between
@@ -209,8 +209,8 @@ override func @lexicalRepeatInstructionAST.generateLexicalInstructionCode
     result += mWhileExpression.generateConditionCode (!context:inLexiqueAnalysisContext)
     result += ") {\n"
     !?result.incIndentation (!2)
-    for (mInstruction) in mWhileInstructionList do
-      result += mInstruction.generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+    for entry in mWhileInstructionList do
+      result += entry.mInstruction.generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
     end
     !?result.decIndentation (!2)
   between

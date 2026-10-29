@@ -25,11 +25,12 @@ syntax extension galgas3DeclarationsSyntax {
     $abstract$
     $func$
     $@type$ (?var typeName) indexing (typeReferenceAbstractExtensionGetter)
+    $.$
     repeat
     while
-      $.$
       $@type$ (?let t)
       typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+      $.$
     end
     $identifier$ (?let getterName) indexing (abstractExtensionGetterDefinition)
     let @formalInputParameterListAST formalInputParameterList
@@ -53,7 +54,7 @@ syntax extension galgas3DeclarationsSyntax {
     $func$
     var typeName = inTypeName
     repeat
-    while
+    while // §
       $.$
       $@type$ (?let t)
       typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
@@ -303,8 +304,8 @@ final class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHead
       + "-" + self.mAbstractExtensionGetterName.fileNameRepresentation
     self.mResultType.addHeaderFileName (!?ioInclusionSet)
     self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
-    for (* mFormalArgumentType * * *) in self.mAbstractExtensionGetterFormalParameterList do
-      mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
+    for entry in self.mAbstractExtensionGetterFormalParameterList do
+      entry.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
     end
     outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionGetterImplementation
       !self.mReceiverType.definition.typeName.string

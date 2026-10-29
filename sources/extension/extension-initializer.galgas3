@@ -314,8 +314,8 @@ private proc analyzeInitializerBody (?let @lstring inUsefulnessCallerEntityName,
   end
 //---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
-  for (mInstruction) in inInstructionList do
-    mInstruction.analyzeSemanticInstruction
+  for entry in inInstructionList do
+    entry.mInstruction.analyzeSemanticInstruction
       (!inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inAnalysisContext,
@@ -394,9 +394,9 @@ private proc generateInitializer (?let @unifiedTypeMapEntry inReceiverType,
   var @uint temporaryVariableIndex = 0
   var @string routineBody = ""
   !?routineBody.incIndentation (!2)
-  for (mInstruction) in inInstructionList do
-    mInstruction.generateInstruction
-      (!?ioInclusionSet,
+  for entry in inInstructionList do
+    entry.mInstruction.generateInstruction (
+      !?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
       !false, // inGenerateSyntaxDirectedTranslationString

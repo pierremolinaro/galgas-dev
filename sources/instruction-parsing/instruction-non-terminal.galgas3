@@ -219,8 +219,8 @@ override proc @nonterminalInstructionForGeneration.generateInstruction (?!@strin
   var parameterCppNameList = @stringlist ()
   var jokerParametersToReleaseList = @stringlist ()
   var inputVariableList = @stringlist ()
-  for (mActualParameter) in self.mActualParameterList do
-    mActualParameter.generateActualParameter
+  for parameter in self.mActualParameterList do
+    parameter.mActualParameter.generateActualParameter
       (!?ioInclusionSet,
       !?ioTemporaryVariableIndex,
       !?ioGeneratedCode,
@@ -237,8 +237,8 @@ override proc @nonterminalInstructionForGeneration.generateInstruction (?!@strin
     ioGeneratedCode += "String " + sdtResultVarName + " ;\n"
   end
   ioGeneratedCode += "nt_" + self.mNonterminalName.identifierRepresentation + "_" + self.mLabelName.identifierRepresentation + " ("
-  for (mValue) in parameterCppNameList do
-    ioGeneratedCode += mValue + ", "
+  for entry in parameterCppNameList do
+    ioGeneratedCode += entry.mValue + ", "
   end
   if inGenerateSyntaxDirectedTranslationString then
     ioGeneratedCode += sdtResultVarName + ", "

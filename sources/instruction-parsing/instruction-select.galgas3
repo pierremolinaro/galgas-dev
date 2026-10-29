@@ -103,10 +103,10 @@ override proc @selectInstruction.transformInstructionForGrammarAnalysis
   ioAddedNonTerminalIndex += 1
 
   var selectBranchList = @branchListForGrammarAnalysis ()
-  for (mSyntaxInstructionList *) in self.mSelectBranchList do
+  for entry in self.mSelectBranchList do
     var syntaxInstructionList = @syntaxInstructionListForGrammarAnalysis ()
     transformInstructionListForGrammarAnalysis (
-      !mSyntaxInstructionList,
+      entry.mSyntaxInstructionList,
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap,
       !nonTerminalSymbolMap:inNonTerminalSymbolMap,
       !?addedTerminalIndex:ioAddedNonTerminalIndex,
@@ -254,11 +254,11 @@ override proc @selectInstructionForGeneration.generateInstruction (?!@stringset 
   !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
   ioGeneratedCode += "switch (select_" + self.mSyntaxComponentName.identifierRepresentation + "_"
   ioGeneratedCode += self.mChoiceIndex.string + " (" + compilerCppName () + ")) {\n"
-  for (mInstructionList *) in self.mListOfSemanticInstructionListForGeneration do(IDX)
+  for entry in self.mListOfSemanticInstructionListForGeneration do(IDX)
     ioGeneratedCode += "case " + (IDX + 1).string + ": {\n"
     generateInstructionList (
       !?ioInclusionSet,
-      !mInstructionList,
+      entry.mInstructionList,
       !?ioTemporaryVariableIndex,
       !?ioUnusedVariableCppNameSet,
       !inGenerateSyntaxDirectedTranslationString,

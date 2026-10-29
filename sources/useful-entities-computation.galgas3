@@ -55,8 +55,8 @@ proc checkUsefulEntities (?let @usefulEntitiesGraph inUsefulEntitiesGraph,
       let allEntitySet = @stringset.setWithStringList (!inUsefulEntitiesGraph.keyList)
       let unusedEntities = allEntitySet - usefullEntitySet
       var @uselessEntityLocationMap uselessEntityLocationMap = @()
-      for (key) in unusedEntities do
-        let l = inUsefulEntitiesGraph.locationForKey (!key)
+      for key in unusedEntities do
+        let l = inUsefulEntitiesGraph.locationForKey (key)
         if l == .nowhere then
           warning .nowhere : "unused entity, '" + key
             + "' (due to option --" + [option galgas_cli_options.checkEntityUsefulness string] + ")"
@@ -64,8 +64,8 @@ proc checkUsefulEntities (?let @usefulEntitiesGraph inUsefulEntitiesGraph,
           !?uselessEntityLocationMap.insertKey (!l.startLocationString.nowhere, !key, !l)
         end
       end
-      for (* mUnusedEntityName mLocation) in uselessEntityLocationMap do
-        warning mLocation : "unused '" + mUnusedEntityName + "' entity, due to option --"
+      for uselessEntity in uselessEntityLocationMap do
+        warning uselessEntity.mLocation : "unused '" + uselessEntity.mUnusedEntityName + "' entity, due to option --"
          + [option galgas_cli_options.checkEntityUsefulness string] + ")"
       end
     end

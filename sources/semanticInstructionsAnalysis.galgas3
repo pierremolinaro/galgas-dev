@@ -116,9 +116,9 @@ proc analyzeSemanticInstructionListWithoutBranch
     !?ioVariableMap.insertInitializedLocalVariable (!mName, !warnsIfNotMutated: false, !mType, !mCppName, !mCppName)
   end
 //--- Instruction list
-  for (mInstruction) in inSemanticInstructionListAST do
-    mInstruction.analyzeSemanticInstruction
-      (!inUsefulnessCallerEntityName,
+  for entry in inSemanticInstructionListAST do
+    entry.mInstruction.analyzeSemanticInstruction (
+      inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inAnalysisContext,
       !?ioTypeMap,

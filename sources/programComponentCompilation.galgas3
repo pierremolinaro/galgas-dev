@@ -236,14 +236,14 @@ proc compileProgramComponentGalgas3
 //----------- Build Implementation File
   var @stringset inclusionSet = @()
   var beforeAfterRulesString = ""
-  for (mDeclaration) in decoratedDeclarationListForGeneration do
-    beforeAfterRulesString += mDeclaration.appendTypeGenericImplementation
-    mDeclaration.appendSpecificImplementation (!ioTypeMap, !?inclusionSet, ?let @string code)
+  for entry in decoratedDeclarationListForGeneration do
+    beforeAfterRulesString += entry.mDeclaration.appendTypeGenericImplementation
+    entry.mDeclaration.appendSpecificImplementation (!ioTypeMap, !?inclusionSet, ?let @string code)
     beforeAfterRulesString += code
   end
-  for (* * * * mReferenceGrammar * *) in inProgramRules do
-    if mReferenceGrammar.string != "" then
-      inclusionSet ++= "grammar-" + mReferenceGrammar.string.fileNameRepresentation
+  for prgmRule in inProgramRules do
+    if prgmRule.mReferenceGrammar.string != "" then
+      inclusionSet ++= "grammar-" + prgmRule.mReferenceGrammar.string.fileNameRepresentation
     end
   end
   let cppContents = [filewrapper programFileGenerationTemplate.programFileImplementation

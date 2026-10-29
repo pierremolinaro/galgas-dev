@@ -226,19 +226,19 @@ proc @semanticDeclarationForGeneration appendPrimitiveTypePreDeclaration (?!@str
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @semanticDeclarationForGeneration getImplementationCppFileName () -> @string
+abstract func @semanticDeclarationForGeneration.getImplementationCppFileName () -> @string
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @semanticDeclarationForGeneration hasCppHeaderFile () -> @bool
+abstract func @semanticDeclarationForGeneration.hasCppHeaderFile () -> @bool
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @semanticDeclarationForGeneration isPredefined () -> @bool
+abstract func @semanticDeclarationForGeneration.isPredefined () -> @bool
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @semanticDeclarationForGeneration headerKind () -> @headerKind
+abstract func @semanticDeclarationForGeneration.headerKind () -> @headerKind
 
 //--------------------------------------------------------------------------------------------------
 

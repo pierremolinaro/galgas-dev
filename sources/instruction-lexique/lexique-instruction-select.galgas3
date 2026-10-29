@@ -137,8 +137,8 @@ override func @lexicalSelectInstructionAST.generateSwiftCocoaInstructionCode
     outGeneratedCode += mSelectExpression.generateSwiftCocoaConditionCode (!inLexiqueAnalysisContext)
     outGeneratedCode += ") {\n"
     !?outGeneratedCode.incIndentation (!2)
-    for (mInstruction) in mSelectInstructionList do
-      outGeneratedCode += mInstruction.generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+    for entry in mSelectInstructionList do
+      outGeneratedCode += entry.mInstruction.generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
     end
     !?outGeneratedCode.decIndentation (!2)
   between
@@ -148,8 +148,8 @@ override func @lexicalSelectInstructionAST.generateSwiftCocoaInstructionCode
   if self.mDefaultInstructionList.count > 0 then
     outGeneratedCode += "}else{\n"
     !?outGeneratedCode.incIndentation (!2)
-    for (mInstruction) in self.mDefaultInstructionList do
-      outGeneratedCode += mInstruction.generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+    for entry in self.mDefaultInstructionList do
+      outGeneratedCode += entry.mInstruction.generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
     end
     !?outGeneratedCode.decIndentation (!2)
   end

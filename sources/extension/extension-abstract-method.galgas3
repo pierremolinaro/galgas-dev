@@ -283,8 +283,8 @@ final class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHead
          + self.mReceiverType.definition.typeName.string.fileNameRepresentation
          + "-" + self.mAbstractExtensionMethodName.fileNameRepresentation
     self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
-    for (* * mFormalArgumentType * *) in self.mAbstractExtensionMethodFormalParameterList do
-      mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
+    for entry in self.mAbstractExtensionMethodFormalParameterList do
+      entry.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
     end
     outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodImplementation
       !self.mReceiverType

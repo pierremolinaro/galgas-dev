@@ -208,8 +208,8 @@ final class @abstractExtensionSetterForGeneration : @semanticDeclarationWithHead
     !@string outImplementation) {
     ioInclusionSet ++= "mutating proc-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionSetterName.fileNameRepresentation
     self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
-    for (* * mFormalArgumentType * *) in self.mAbstractExtensionSetterFormalParameterList do
-      mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
+    for entry in self.mAbstractExtensionSetterFormalParameterList do
+      entry.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
     end
     outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionSetterImplementation
       !self.mReceiverType.definition.typeName.string

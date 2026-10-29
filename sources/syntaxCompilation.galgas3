@@ -48,8 +48,8 @@ proc groupSyntaxComponentsGalgas3
 //--- Check all extensions are handled
   for (key extensionList) in inSyntaxExtensions.dictionary do
     if not componentNameSet.hasKey (!key) then
-      for (mSyntaxComponentName * *) in extensionList do
-        error (mSyntaxComponentName : "there is no '" + mSyntaxComponentName +"' syntax component")
+      for entry in extensionList do
+        error (entry.mSyntaxComponentName : "there is no '" + entry.mSyntaxComponentName +"' syntax component")
       end
     end
   end
