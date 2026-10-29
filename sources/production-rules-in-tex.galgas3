@@ -110,7 +110,7 @@ proc emitProductionRulesInTexFile
 
 //--------------------------------------------------------------------------------------------------
 
-proc @productionRuleListForGrammarAnalysis.@element displayRule
+proc @productionRuleListForGrammarAnalysis.@element.displayRule
   (?let @string inSyntaxComponentName,
   ?!@string ioGeneratedCode
 ) {
@@ -164,7 +164,7 @@ proc @productionRuleListForGrammarAnalysis.@element displayRule
 
 //--------------------------------------------------------------------------------------------------
 
-proc @productionRuleListForGrammarAnalysis.@element displayRuleVertically
+proc @productionRuleListForGrammarAnalysis.@element.displayRuleVertically
   (?let @string inSyntaxComponentName,
   ?!@string ioGeneratedCode
 ) {
@@ -226,7 +226,7 @@ proc @productionRuleListForGrammarAnalysis.@element displayRuleVertically
 //! tikzNodeForSyntaxInstruction
 //--------------------------------------------------------------------------------------------------
 
-proc @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
+proc @syntaxInstructionListForGrammarAnalysis.tikzNodeForSyntaxInstruction
   (?!@rowList ioRowList,
   ?fromRow:let @uint inRow,
   ?!column:@uint ioColumn,

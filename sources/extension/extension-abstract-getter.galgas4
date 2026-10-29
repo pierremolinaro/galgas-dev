@@ -52,13 +52,6 @@ syntax extension galgas3DeclarationsSyntax {
                                   ?!@galgasDeclarationAST ioDeclarations) {
     $abstract$
     $func$
-    var typeName = inTypeName
-    repeat
-    while // §
-      $.$
-      $@type$ (?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
-    end
     $identifier$ (?let mGetterName) indexing (abstractExtensionGetterDefinition)
     let @formalInputParameterListAST formalInputParameterList
     <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
@@ -66,7 +59,7 @@ syntax extension galgas3DeclarationsSyntax {
     <type_definition_ggs3> (!?ioDeclarations, ?let @lstring returnedTypeName)
     ioDeclarations.mDeclarationList ++= @(!@abstractExtensionGetterAST (
       !isPredefined: false,
-      typeName,
+      inTypeName,
       mGetterName,
       formalInputParameterList,
       returnedTypeName

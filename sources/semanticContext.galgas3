@@ -58,7 +58,7 @@ abstract proc @semanticExpressionAST.enterExpressionInSemanticContext (?!@unifie
 
 //--------------------------------------------------------------------------------------------------
 
-proc @semanticInstructionListAST enterInstructionListInSemanticContext
+proc @semanticInstructionListAST.enterInstructionListInSemanticContext
   (?!@unifiedTypeMap ioTypeMap
 ) {
   for (mInstruction) in self do
@@ -873,7 +873,7 @@ override proc @filewrapperDeclarationAST.enterDeclarationInGraph
 
 //--------------------------------------------------------------------------------------------------
 
-proc @semanticDeclarationAST addAssociatedElement
+proc @semanticDeclarationAST.addAssociatedElement
   (?!@galgasDeclarationAST unused ioDeclarations ) {
 }
 

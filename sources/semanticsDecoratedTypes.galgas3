@@ -221,7 +221,7 @@ func @semanticDeclarationForGeneration.appendPrimitiveTypeDeclaration () -> @str
 
 //--------------------------------------------------------------------------------------------------
 
-proc @semanticDeclarationForGeneration appendPrimitiveTypePreDeclaration (?!@string unused ioHeader ) {
+proc @semanticDeclarationForGeneration.appendPrimitiveTypePreDeclaration (?!@string unused ioHeader ) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -454,7 +454,7 @@ final class @programComponentForGeneration : @semanticDeclarationWithHeaderForGe
 //
 //--------------------------------------------------------------------------------------------------
 
-proc @semanticDeclarationForGeneration appendDeclaration1
+proc @semanticDeclarationForGeneration.appendDeclaration1
   (?!@stringset unused ioInclusionSet,
   !@string outHeader
 ) {
@@ -467,7 +467,7 @@ proc @semanticDeclarationForGeneration appendDeclaration1
 //
 //--------------------------------------------------------------------------------------------------
 
-proc @semanticDeclarationForGeneration appendDeclaration2
+proc @semanticDeclarationForGeneration.appendDeclaration2
   (?let @string unused inOutputDirectory,
   ?!@stringset unused ioInclusionSet,
   !@string outHeader
@@ -483,7 +483,7 @@ func @semanticDeclarationForGeneration.appendTypeGenericImplementation () ->@str
 
 //--------------------------------------------------------------------------------------------------
 
-proc @semanticDeclarationForGeneration appendSpecificImplementation
+proc @semanticDeclarationForGeneration.appendSpecificImplementation
   (?let @unifiedTypeMap unused inUnifiedTypeMap,
   ?!@stringset unused  ioInclusionSet,
   !@string outImplementation ) {
@@ -492,7 +492,7 @@ proc @semanticDeclarationForGeneration appendSpecificImplementation
 
 //--------------------------------------------------------------------------------------------------
 
-proc @semanticDeclarationForGeneration appendSpecificFiles
+proc @semanticDeclarationForGeneration.appendSpecificFiles
   (?let @string unused inProductDirectory,
   ?!@stringset unused ioAllProductFileSet,
   ?!swift: @stringlist unused ioSwiftAppProductFileList

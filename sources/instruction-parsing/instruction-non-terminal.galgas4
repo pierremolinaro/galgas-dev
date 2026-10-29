@@ -22,7 +22,7 @@ syntax extension galgas3SyntaxComponentSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                 !@syntaxInstructionAST outInstruction ) {
+                                  !@syntaxInstructionAST outInstruction ) {
     $<non_terminal>$ (?let @lstring mNonterminalName) indexing (ruleReference)
     <actual_parameter_list_ggs34> (!?ioDeclarations, ?let @actualParameterListAST mActualParameterList)
   //--- Get syntax directed translation result string

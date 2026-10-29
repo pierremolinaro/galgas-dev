@@ -196,24 +196,24 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
     end
   //---
     var terminalCheckAssignementList = @terminalCheckAssignementList ()
-    for (mActualSelector mInputParameter) in self.mActualInputParameterList, (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in sentAttributeList do
-      mInputParameter.analyzeInputParameter
+    for actual in self.mActualInputParameterList, formal in sentAttributeList do
+      actual.mInputParameter.analyzeInputParameter
         (!inAnalysisContext,
         !?ioTypeMap,
-        !mLexicalType,
-        !mLexicalAttributeName,
+        !formal.mLexicalType,
+        !formal.mLexicalAttributeName,
         !?terminalCheckAssignementList,
         !?ioVariableMap
       )
-      if mLexicalFormalSelector.string != mActualSelector.string then
-        error (mActualSelector : "the actual selector should be '?" + mLexicalFormalSelector + if mLexicalFormalSelector.string != "" then ":" else "" end + "'")
-        warning mLexicalFormalSelector : "the formal selector is declared here"
+      if formal.mLexicalFormalSelector.string != actual.mActualSelector.string then
+        error (actual.mActualSelector : "the actual selector should be '?" + formal.mLexicalFormalSelector + if formal.mLexicalFormalSelector.string != "" then ":" else "" end + "'")
+        warning formal.mLexicalFormalSelector : "the formal selector is declared here"
       end
     end
   //---
-    for (mValue0 *) in self.mIndexingKeyList do
-      if not inIndexNameSet.hasKey (!mValue0.string) then
-        error (mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique" fixit replace inIndexNameSet)
+    for indexingKey in self.mIndexingKeyList do
+      if not inIndexNameSet.hasKey (indexingKey.mValue0.string) then
+        error (indexingKey.mValue0 : "the '" + indexingKey.mValue0 + "' indexing name is not declared by the lexique" fixit %replaceBy inIndexNameSet)
       end
     end
   //--- Check syntax directed translation destination variable
@@ -352,21 +352,21 @@ override proc @terminalCheckInstructionForGeneration.generateInstruction (?!@str
                                        ?let @bool inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
 //--- Get synthetized attributes
-  for (mTypeName mTargetVarCppName mSourceLexicalAttributeName) in self.mTerminalCheckAssignementList do
-    if mTypeName != "" then
-      ioGeneratedCode += "GGS_" + mTypeName.identifierRepresentation + " "
+  for terminalCheckAssignement in self.mTerminalCheckAssignementList do
+    if terminalCheckAssignement.mTypeName != "" then
+      ioGeneratedCode += "GGS_" + terminalCheckAssignement.mTypeName.identifierRepresentation + " "
     else
     end
-    ioGeneratedCode += mTargetVarCppName + " = " + compilerCppName () + "->synthetizedAttribute_"
-    ioGeneratedCode += mSourceLexicalAttributeName.identifierRepresentation
+    ioGeneratedCode += terminalCheckAssignement.mTargetVarCppName + " = " + compilerCppName () + "->synthetizedAttribute_"
+    ioGeneratedCode += terminalCheckAssignement.mSourceLexicalAttributeName.identifierRepresentation
     ioGeneratedCode += " () ;\n"
   end
 //--- Indexing
-  for (mValue0 mValue1) in self.mIndexingKeyList do
+  for indexingKey in self.mIndexingKeyList do
     ioGeneratedCode += compilerCppName ()
     ioGeneratedCode += "->enterIndexing (Lexique_" + self.mLexiqueIdentifier + "::kIndexing_"
-    ioGeneratedCode += mValue0.string.identifierRepresentation
-    ioGeneratedCode += ", " + mValue1.string.utf8RepresentationEscapingQuestionMark + ") ;\n"
+    ioGeneratedCode += indexingKey.mValue0.string.identifierRepresentation
+    ioGeneratedCode += ", " + indexingKey.mValue1.string.utf8RepresentationEscapingQuestionMark + ") ;\n"
   end
 //--- Syntax directed translation
   self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor.generateCode

@@ -38,7 +38,7 @@ syntax extension galgas3DeclarationsSyntax {
     $abstract$
     $proc$
     $@type$ (?var typeName) indexing (typeReferenceOverrideAbstractExtensionMethod)
-     $.$
+    $.$
     repeat
     while
       $@type$ (?let t)

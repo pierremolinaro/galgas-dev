@@ -6472,132 +6472,6 @@ GGS_ifTestForGeneration_2E_optionalExp_3F_ GGS_ifTestForGeneration_2E_optionalEx
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_switchExtractedValuesListAST_2E_element::GGS_switchExtractedValuesListAST_2E_element (void) :
-mProperty_mExtractedValueTypeName (),
-mProperty_mExtractedValueName (),
-mProperty_mMarkedAsUnused () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_switchExtractedValuesListAST_2E_element::GGS_switchExtractedValuesListAST_2E_element (const GGS_switchExtractedValuesListAST_2E_element & inSource) :
-mProperty_mExtractedValueTypeName (inSource.mProperty_mExtractedValueTypeName),
-mProperty_mExtractedValueName (inSource.mProperty_mExtractedValueName),
-mProperty_mMarkedAsUnused (inSource.mProperty_mMarkedAsUnused) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_switchExtractedValuesListAST_2E_element & GGS_switchExtractedValuesListAST_2E_element::operator = (const GGS_switchExtractedValuesListAST_2E_element & inSource) {
-  mProperty_mExtractedValueTypeName = inSource.mProperty_mExtractedValueTypeName ;
-  mProperty_mExtractedValueName = inSource.mProperty_mExtractedValueName ;
-  mProperty_mMarkedAsUnused = inSource.mProperty_mMarkedAsUnused ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_switchExtractedValuesListAST_2E_element GGS_switchExtractedValuesListAST_2E_element::init_21__21__21_ (const GGS_lstring & in_mExtractedValueTypeName,
-                                                                                                           const GGS_lstring & in_mExtractedValueName,
-                                                                                                           const GGS_bool & in_mMarkedAsUnused,
-                                                                                                           Compiler * inCompiler
-                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_switchExtractedValuesListAST_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mExtractedValueTypeName = in_mExtractedValueTypeName ;
-  result.mProperty_mExtractedValueName = in_mExtractedValueName ;
-  result.mProperty_mMarkedAsUnused = in_mMarkedAsUnused ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_switchExtractedValuesListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_switchExtractedValuesListAST_2E_element::GGS_switchExtractedValuesListAST_2E_element (const GGS_lstring & inOperand0,
-                                                                                          const GGS_lstring & inOperand1,
-                                                                                          const GGS_bool & inOperand2) :
-mProperty_mExtractedValueTypeName (inOperand0),
-mProperty_mExtractedValueName (inOperand1),
-mProperty_mMarkedAsUnused (inOperand2) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_switchExtractedValuesListAST_2E_element::isValid (void) const {
-  return mProperty_mExtractedValueTypeName.isValid () && mProperty_mExtractedValueName.isValid () && mProperty_mMarkedAsUnused.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_switchExtractedValuesListAST_2E_element::drop (void) {
-  mProperty_mExtractedValueTypeName.drop () ;
-  mProperty_mExtractedValueName.drop () ;
-  mProperty_mMarkedAsUnused.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_switchExtractedValuesListAST_2E_element::description (String & ioString,
-                                                               const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @switchExtractedValuesListAST.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mExtractedValueTypeName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mExtractedValueName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mMarkedAsUnused.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @switchExtractedValuesListAST.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchExtractedValuesListAST_2E_element ("switchExtractedValuesListAST.element",
-                                                                                            nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_switchExtractedValuesListAST_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_switchExtractedValuesListAST_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_switchExtractedValuesListAST_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_switchExtractedValuesListAST_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_switchExtractedValuesListAST_2E_element GGS_switchExtractedValuesListAST_2E_element::extractObject (const GGS_object & inObject,
-                                                                                                        Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) {
-  GGS_switchExtractedValuesListAST_2E_element result ;
-  const GGS_switchExtractedValuesListAST_2E_element * p = (const GGS_switchExtractedValuesListAST_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_switchExtractedValuesListAST_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("switchExtractedValuesListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_forInstructionEnumeratedObjectElementListAST_2E_element::GGS_forInstructionEnumeratedObjectElementListAST_2E_element (void) :
 mProperty_mOptionalTypeName (),
 mProperty_mDeclaredAsUnused (),
@@ -6843,6 +6717,132 @@ GGS_forInstructionEnumeratedObjectListForGeneration_2E_element GGS_forInstructio
       result = *p ;
     }else{
       inCompiler->castError ("forInstructionEnumeratedObjectListForGeneration.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchExtractedValuesListAST_2E_element::GGS_switchExtractedValuesListAST_2E_element (void) :
+mProperty_mExtractedValueTypeName (),
+mProperty_mExtractedValueName (),
+mProperty_mMarkedAsUnused () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchExtractedValuesListAST_2E_element::GGS_switchExtractedValuesListAST_2E_element (const GGS_switchExtractedValuesListAST_2E_element & inSource) :
+mProperty_mExtractedValueTypeName (inSource.mProperty_mExtractedValueTypeName),
+mProperty_mExtractedValueName (inSource.mProperty_mExtractedValueName),
+mProperty_mMarkedAsUnused (inSource.mProperty_mMarkedAsUnused) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchExtractedValuesListAST_2E_element & GGS_switchExtractedValuesListAST_2E_element::operator = (const GGS_switchExtractedValuesListAST_2E_element & inSource) {
+  mProperty_mExtractedValueTypeName = inSource.mProperty_mExtractedValueTypeName ;
+  mProperty_mExtractedValueName = inSource.mProperty_mExtractedValueName ;
+  mProperty_mMarkedAsUnused = inSource.mProperty_mMarkedAsUnused ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_switchExtractedValuesListAST_2E_element GGS_switchExtractedValuesListAST_2E_element::init_21__21__21_ (const GGS_lstring & in_mExtractedValueTypeName,
+                                                                                                           const GGS_lstring & in_mExtractedValueName,
+                                                                                                           const GGS_bool & in_mMarkedAsUnused,
+                                                                                                           Compiler * inCompiler
+                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_switchExtractedValuesListAST_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mExtractedValueTypeName = in_mExtractedValueTypeName ;
+  result.mProperty_mExtractedValueName = in_mExtractedValueName ;
+  result.mProperty_mMarkedAsUnused = in_mMarkedAsUnused ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_switchExtractedValuesListAST_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchExtractedValuesListAST_2E_element::GGS_switchExtractedValuesListAST_2E_element (const GGS_lstring & inOperand0,
+                                                                                          const GGS_lstring & inOperand1,
+                                                                                          const GGS_bool & inOperand2) :
+mProperty_mExtractedValueTypeName (inOperand0),
+mProperty_mExtractedValueName (inOperand1),
+mProperty_mMarkedAsUnused (inOperand2) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_switchExtractedValuesListAST_2E_element::isValid (void) const {
+  return mProperty_mExtractedValueTypeName.isValid () && mProperty_mExtractedValueName.isValid () && mProperty_mMarkedAsUnused.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_switchExtractedValuesListAST_2E_element::drop (void) {
+  mProperty_mExtractedValueTypeName.drop () ;
+  mProperty_mExtractedValueName.drop () ;
+  mProperty_mMarkedAsUnused.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_switchExtractedValuesListAST_2E_element::description (String & ioString,
+                                                               const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @switchExtractedValuesListAST.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mExtractedValueTypeName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mExtractedValueName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mMarkedAsUnused.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @switchExtractedValuesListAST.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchExtractedValuesListAST_2E_element ("switchExtractedValuesListAST.element",
+                                                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_switchExtractedValuesListAST_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_switchExtractedValuesListAST_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_switchExtractedValuesListAST_2E_element::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_switchExtractedValuesListAST_2E_element (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_switchExtractedValuesListAST_2E_element GGS_switchExtractedValuesListAST_2E_element::extractObject (const GGS_object & inObject,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GGS_switchExtractedValuesListAST_2E_element result ;
+  const GGS_switchExtractedValuesListAST_2E_element * p = (const GGS_switchExtractedValuesListAST_2E_element *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_switchExtractedValuesListAST_2E_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("switchExtractedValuesListAST.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -95,7 +95,7 @@ final class @superInitInstructionAST : @semanticInstructionAST {
         selfAvailable.type.definition.typeKind.isClassType then
       switch selfAvailable.type.definition.superType
       case element (superType) :
-        let superTypeDefinition = superType.bang.definition
+        let superTypeDefinition = superType!.definition
       //--- Check super initializer is defined
         let superClassInitializerMap = superTypeDefinition.initializerMap
         let signature = @lstring (!self.mActualParameterList.initializerSignature, self.mInstructionLocation)
@@ -136,7 +136,7 @@ final class @superInitInstructionAST : @semanticInstructionAST {
               else ""
             end
             error (actualArg.mActualSelector : "the selector should be '" + s + "'"
-            fixit replace s
+            fixit %replaceBy s
             )
           end
           actualParameterListForGeneration ++= @(!expression)

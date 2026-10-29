@@ -60,7 +60,7 @@ syntax extension galgas3InstructionsSyntax {
       while
         $remove$
         if hasFixItRemove then
-          warning .here : "duplicated action" fixit remove
+          warning .here : "duplicated action" fixit %remove
         else
           outFixitListAST ++= @(!.fixItRemove)
           hasFixItRemove = true
@@ -137,7 +137,7 @@ syntax extension galgas4InstructionsSyntax {
         select
           $%remove$
           if hasFixItRemove then
-            warning .here : "duplicated action" fixit remove
+            warning .here : "duplicated action" fixit %remove
           else
             outFixitListAST ++= @(!.fixItRemove)
             hasFixItRemove = true
@@ -212,7 +212,7 @@ override proc @errorInstructionAST.enterInstructionInSemanticContext (?!@unified
 
 //--------------------------------------------------------------------------------------------------
 
-proc @fixitListAST enterFixItListInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+proc @fixitListAST.enterFixItListInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   for entry in self do
     switch entry.mElement
     case fixItRemove :
@@ -404,7 +404,7 @@ override proc @errorInstructionAST.analyzeSemanticInstruction (
 //! GENERATION
 //--------------------------------------------------------------------------------------------------
 
-proc @fixitListForGeneration generateFixIt (?!@stringset ioInclusionSet,
+proc @fixitListForGeneration.generateFixIt (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   ?let @bool unused inGenerateSyntaxDirectedTranslationString,

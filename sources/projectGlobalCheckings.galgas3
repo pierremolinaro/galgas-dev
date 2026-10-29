@@ -72,7 +72,7 @@ struct @genericExtensionMethodListMap {
 //
 //--------------------------------------------------------------------------------------------------
 
-proc @semanticDeclarationAST buildExtensionListMaps
+proc @semanticDeclarationAST.buildExtensionListMaps
   (?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,

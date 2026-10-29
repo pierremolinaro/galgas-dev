@@ -498,7 +498,7 @@ final class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
               then addAssignArgument.mFormalSelector.string + ":"
               else ""
             end
-            error (expressionAST.mActualSelector : "the selector should be '" + s + "'" fixit replace s)
+            error (expressionAST.mActualSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
           end
           checkAssignmentTypeWithImplicitGetterCall (
             !addAssignArgument.mFormalArgumentType,

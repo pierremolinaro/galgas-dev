@@ -19,9 +19,11 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-final class @selectInstruction : @syntaxInstructionAST {
-  public let @listOfSyntaxInstructionList mSelectBranchList
-  public let @location mEndOf_select_instruction
+final class @repeatInstruction : @syntaxInstructionAST {
+  private let @syntaxInstructionList mRepeatedInstructionList
+  private let @location mEndOf_repeated_instructions_branch
+  private let @listOfSyntaxInstructionList mRepeatBranchList
+  private let @location mEndOf_repeat_instruction
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -34,23 +36,25 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
                                  !@syntaxInstructionAST outInstruction ) {
-    $select$
-    let mSelectInstructionLocation = @location.here
-    var mSelectBranchList = @listOfSyntaxInstructionList ()
-    <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList il)
-    mSelectBranchList ++= @(!il, !@location.here)
+    $repeat$
+    let mRepeatInstructionLocation = @location.here
+    <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList mRepeatedInstructionList)
+    let endOf_repeated_instructions = @location.here
+    var mRepeatBranchList = @listOfSyntaxInstructionList ()
     repeat
-      $or$
-      <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList instructionList)
-      mSelectBranchList ++= @(!instructionList, !@location.here)
+      $while$
+      <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList mInstructionList)
+      mRepeatBranchList ++= @(! mInstructionList, !@location.here)
     while
     end
     $end$
-    let endOf_select_instruction = @location.here
-    outInstruction = @selectInstruction (
-      !mSelectInstructionLocation,
-      mSelectBranchList,
-      endOf_select_instruction
+    let endOf_repeat_instruction = @location.here
+    outInstruction = @repeatInstruction (
+      !mRepeatInstructionLocation,
+      mRepeatedInstructionList,
+      endOf_repeated_instructions,
+      mRepeatBranchList,
+      endOf_repeat_instruction
     )
   }
 
@@ -66,23 +70,25 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   rule <syntax_instruction> (?!@galgasDeclarationAST ioDeclarations,
                             !@syntaxInstructionAST outInstruction ) {
-    $select$
-    let mSelectInstructionLocation = @location.here
-    var mSelectBranchList = @listOfSyntaxInstructionList ()
-    <syntax_instruction_list> (!?ioDeclarations, ?let @syntaxInstructionList il)
-    mSelectBranchList ++= @(!il, !@location.here)
+    $repeat$
+    let mRepeatInstructionLocation = @location.here
+    <syntax_instruction_list>(!?ioDeclarations, ?let @syntaxInstructionList mRepeatedInstructionList)
+    let endOf_repeated_instructions = @location.here
+    var mRepeatBranchList = @listOfSyntaxInstructionList ()
     repeat
-      $or$
-      <syntax_instruction_list> (!?ioDeclarations, ?let @syntaxInstructionList instructionList)
-      mSelectBranchList ++= @(!instructionList, !@location.here)
+      $while$
+      <syntax_instruction_list> (!?ioDeclarations, ?let @syntaxInstructionList mInstructionList)
+      mRepeatBranchList ++= @(! mInstructionList, !@location.here)
     while
     end
     $end$
-    let endOf_select_instruction = @location.here
-    outInstruction = @selectInstruction (
-      !mSelectInstructionLocation,
-      mSelectBranchList,
-      endOf_select_instruction
+    let endOf_repeat_instruction = @location.here
+    outInstruction = @repeatInstruction (
+      !mRepeatInstructionLocation,
+      mRepeatedInstructionList,
+      endOf_repeated_instructions,
+      mRepeatBranchList,
+      endOf_repeat_instruction
     )
   }
 
@@ -94,7 +100,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 //! TRANSFORM
 //--------------------------------------------------------------------------------------------------
 
-override proc @selectInstruction.transformInstructionForGrammarAnalysis
+override proc @repeatInstruction.transformInstructionForGrammarAnalysis
   (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
@@ -102,8 +108,17 @@ override proc @selectInstruction.transformInstructionForGrammarAnalysis
   let @uint addedNonTerminalIndex = ioAddedNonTerminalIndex
   ioAddedNonTerminalIndex += 1
 
-  var selectBranchList = @branchListForGrammarAnalysis ()
-  for entry in self.mSelectBranchList do
+  var repeatedInstructionList = @syntaxInstructionListForGrammarAnalysis ()
+  transformInstructionListForGrammarAnalysis (
+    !self.mRepeatedInstructionList,
+    !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap,
+    !nonTerminalSymbolMap:inNonTerminalSymbolMap,
+    !?addedTerminalIndex:ioAddedNonTerminalIndex,
+    !?repeatedInstructionList
+  )
+  var repeatBranchList = @branchListForGrammarAnalysis.listWithValue(!repeatedInstructionList)
+
+  for entry in self.mRepeatBranchList do
     var syntaxInstructionList = @syntaxInstructionListForGrammarAnalysis ()
     transformInstructionListForGrammarAnalysis (
       entry.mSyntaxInstructionList,
@@ -112,12 +127,12 @@ override proc @selectInstruction.transformInstructionForGrammarAnalysis
       !?addedTerminalIndex:ioAddedNonTerminalIndex,
       !?syntaxInstructionList
     )
-    selectBranchList ++= @(!syntaxInstructionList)
+    repeatBranchList ++= @(!syntaxInstructionList)
   end
 
-  ioSyntaxInstructionList ++= @(!@selectInstructionForGrammarAnalysis (
+  ioSyntaxInstructionList ++= @(!@repeatInstructionForGrammarAnalysis (
     !self.mInstructionLocation,
-    selectBranchList,
+    repeatBranchList,
     addedNonTerminalIndex
   ))
 }
@@ -126,7 +141,7 @@ override proc @selectInstruction.transformInstructionForGrammarAnalysis
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @selectInstruction.analyzeSyntaxInstruction
+override proc @repeatInstruction.analyzeSyntaxInstruction
   (?let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?let @analysisContext inAnalysisContext,
@@ -135,18 +150,37 @@ override proc @selectInstruction.analyzeSyntaxInstruction
   ?let @terminalMap inTerminalMap,
   ?let @string inLexiqueName,
   ?let @nonterminalMap inNonterminalMap,
-  ?let @string  inComponentName,
+  ?let @string inComponentName,
   ?let @stringset inIndexNameSet,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
   ?!@localVarManager ioVariableMap,
-  ?!@uint ioSelectMethodCount ) {
+  ?!@uint ioSelectMethodCount
+) {
   let @uint choiceIndex = ioSelectMethodCount
   ioSelectMethodCount += 1
 //--- Begin block
-  !?ioVariableMap.openOverrideForSelectBlock ()
-//--- 'or' blocks
-  var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
-  for (mSyntaxInstructionList mEndOf_instructions) in self.mSelectBranchList do
+  !?ioVariableMap.openOverrideForRepeatBlock ()
+//--- Repeated instructions
+  analyzeSyntaxInstructionList (
+    !inUsefulnessCallerEntityName,
+    !?ioUsefulEntitiesGraph,
+    !inAnalysisContext,
+    !?ioTypeMap,
+    !inHasTranslateFeature,
+    !inTerminalMap,
+    !inLexiqueName,
+    !inNonterminalMap,
+    !inComponentName,
+    !self.mRepeatedInstructionList,
+    !self.mEndOf_repeated_instructions_branch,
+    !inIndexNameSet,
+    !?ioVariableMap,
+    !?ioSelectMethodCount,
+    ?let repeated_instructionList
+  )
+//--- 'while' blocks
+  var @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration = @()
+  for repeatBranch in self.mRepeatBranchList do
     analyzeSyntaxInstructionList (
       !inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
@@ -157,21 +191,24 @@ override proc @selectInstruction.analyzeSyntaxInstruction
       !inLexiqueName,
       !inNonterminalMap,
       !inComponentName,
-      !mSyntaxInstructionList,
-      !mEndOf_instructions,
+      !repeatBranch.mSyntaxInstructionList,
+      !repeatBranch.mEndOf_instructions,
       !inIndexNameSet,
       !?ioVariableMap,
       !?ioSelectMethodCount,
       ?let instructionList
     )
-    listOfSemanticInstructionListForGeneration ++= @(!instructionList, !mEndOf_instructions)
+    listOfSemanticInstructionListForGeneration ++= @(!instructionList, repeatBranch.mEndOf_instructions)
   end
 //--- End block
-  !?ioVariableMap.closeOverride (!self.mEndOf_select_instruction)
-  ioInstructionListForGeneration ++= @(!@selectInstructionForGeneration (
+  !?ioVariableMap.closeOverride (!self.mEndOf_repeat_instruction)
+//---
+  ioInstructionListForGeneration ++= @(!@repeatInstructionForGeneration (
     !self.mInstructionLocation,
     inComponentName,
     choiceIndex,
+    repeated_instructionList,
+    self.mEndOf_repeat_instruction,
     listOfSemanticInstructionListForGeneration
   ))
 }
@@ -180,29 +217,36 @@ override proc @selectInstruction.analyzeSyntaxInstruction
 //! GENERATION TYPES
 //--------------------------------------------------------------------------------------------------
 
-final class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
-  public let @string mSyntaxComponentName
-  public let @uint mChoiceIndex
-  public let @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
+final class @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
+  private let @string mSyntaxComponentName
+  private let @uint mChoiceIndex
+  private let @semanticInstructionListForGeneration m_repeated_instructionList
+  private let @location mEndOfRepeatedInstructions
+  private let @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
 }
 
 //--------------------------------------------------------------------------------------------------
 //! SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override proc @selectInstructionForGeneration.appendSyntaxSignature
+override proc @repeatInstructionForGeneration.appendSyntaxSignature
   (?let @string inPosfix,
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration ) {
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+) {
+  let repeated_instructionList = syntaxSignatureOfInstructionList (!inPosfix, !self.m_repeated_instructionList)
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
-  for (mInstructionList mEndOfInstructionList) in self.mListOfSemanticInstructionListForGeneration do
+  for entry in self.mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration ++= @(
-      !syntaxSignatureOfInstructionList (!inPosfix, !mInstructionList),
-      !mEndOfInstructionList)
+      !syntaxSignatureOfInstructionList (!inPosfix, entry.mInstructionList),
+      entry.mEndOfInstructionList)
   end
-  ioInstructionListForGeneration ++= @(!@selectInstructionForGeneration (
+//---
+  ioInstructionListForGeneration ++= @(!@repeatInstructionForGeneration (
     !self.mInstructionLocation,
     self.mSyntaxComponentName,
     self.mChoiceIndex,
+    repeated_instructionList,
+    self.mEndOfRepeatedInstructions,
     listOfSemanticInstructionListForGeneration
   ))
 }
@@ -211,15 +255,13 @@ override proc @selectInstructionForGeneration.appendSyntaxSignature
 //! COMPARE SYNTAX SIGNATURE
 //--------------------------------------------------------------------------------------------------
 
-override func @selectInstructionForGeneration.compareInstructionSyntaxSignature
-  (?let @semanticInstructionForGeneration inTestedInstruction
-  ) ->@bool
-{
-  if let si = inTestedInstruction as @selectInstructionForGeneration then
-    result = true
+override func @repeatInstructionForGeneration.compareInstructionSyntaxSignature
+  (?let @semanticInstructionForGeneration inTestedInstruction ) ->@bool {
+  if let si = inTestedInstruction as @repeatInstructionForGeneration then
+    result = compareSyntaxSignature (!self.m_repeated_instructionList, !si.m_repeated_instructionList, !si.mEndOfRepeatedInstructions)
     if result & (self.mListOfSemanticInstructionListForGeneration.count != si.mListOfSemanticInstructionListForGeneration.count) then
       error (si.mInstructionLocation
-        :"syntax signature error; the reference 'select' instruction has "
+        :"syntax signature error; the reference 'repeat' instruction has "
         + self.mListOfSemanticInstructionListForGeneration.count.string
         + " 'while' branche(s), but this instruction has "
         + si.mListOfSemanticInstructionListForGeneration.count.string)
@@ -229,8 +271,9 @@ override func @selectInstructionForGeneration.compareInstructionSyntaxSignature
       result = compareSyntaxSignature (!ref.mInstructionList, !test.mInstructionList, !test.mEndOfInstructionList)
     end
   elsif let si = inTestedInstruction as @syntaxInstructionForGeneration then
+//  case >= @syntaxInstructionForGeneration si :
     error (si.mInstructionLocation
-      :"syntax signature error; the expected syntax instruction here is a 'select' instruction")
+      :"syntax signature error; the expected syntax instruction here is a 'repeat' instruction")
     result = false
   else
     error (self.mInstructionLocation : "internal error")
@@ -246,28 +289,60 @@ override func @selectInstructionForGeneration.compareInstructionSyntaxSignature
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override proc @selectInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
-                                       ?!@uint ioTemporaryVariableIndex,
-                                       ?!@stringset ioUnusedVariableCppNameSet,
-                                       ?let @bool inGenerateSyntaxDirectedTranslationString,
-                                       ?!@string ioGeneratedCode) {
-  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
-  ioGeneratedCode += "switch (select_" + self.mSyntaxComponentName.identifierRepresentation + "_"
-  ioGeneratedCode += self.mChoiceIndex.string + " (" + compilerCppName () + ")) {\n"
-  for entry in self.mListOfSemanticInstructionListForGeneration do(IDX)
-    ioGeneratedCode += "case " + (IDX + 1).string + ": {\n"
+override proc @repeatInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
+                            ?!@uint ioTemporaryVariableIndex,
+                            ?!@stringset ioUnusedVariableCppNameSet,
+                            ?let @bool inGenerateSyntaxDirectedTranslationString,
+                            ?!@string ioGeneratedCode) {
+  let @string repeatFlagCppName = "repeatFlag_" + ioTemporaryVariableIndex.string
+  ioTemporaryVariableIndex += 1
+  ioGeneratedCode += "bool " + repeatFlagCppName + " = true ;\n"
+  ioGeneratedCode += "while (" + repeatFlagCppName + ") {\n"
+  generateInstructionList (
+    !?ioInclusionSet,
+    !self.m_repeated_instructionList,
+    !?ioTemporaryVariableIndex,
+    !?ioUnusedVariableCppNameSet,
+    !inGenerateSyntaxDirectedTranslationString,
+    !?ioGeneratedCode
+  )
+  !?ioGeneratedCode.incIndentation (!2)
+  if self.mListOfSemanticInstructionListForGeneration.count == 1 then
+    ioGeneratedCode += "if (select_" + self.mSyntaxComponentName.identifierRepresentation
+    ioGeneratedCode += "_" + self.mChoiceIndex.string + " (" + compilerCppName () + ") == 2) {\n"
+    let instructionList = self.mListOfSemanticInstructionListForGeneration.mInstructionListAtIndex (!0)
     generateInstructionList (
       !?ioInclusionSet,
-      entry.mInstructionList,
+      !instructionList,
       !?ioTemporaryVariableIndex,
       !?ioUnusedVariableCppNameSet,
       !inGenerateSyntaxDirectedTranslationString,
       !?ioGeneratedCode
     )
-    ioGeneratedCode += "} break ;\n"
+    ioGeneratedCode += "}else{\n"
+    ioGeneratedCode += "  " + repeatFlagCppName + " = false ;\n"
+    ioGeneratedCode += "}\n"
+  else
+    ioGeneratedCode += "switch (select_" + self.mSyntaxComponentName.identifierRepresentation
+    ioGeneratedCode += "_" + self.mChoiceIndex.string + " (" + compilerCppName () + ")) {\n"
+    for entry in self.mListOfSemanticInstructionListForGeneration do(IDX)
+      ioGeneratedCode += "case " + (IDX + 2).string + ": {\n"
+      generateInstructionList (
+        !?ioInclusionSet,
+        entry.mInstructionList,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
+        !inGenerateSyntaxDirectedTranslationString,
+        !?ioGeneratedCode
+      )
+      ioGeneratedCode += "} break ;\n"
+    end
+    ioGeneratedCode += "default:\n"
+    ioGeneratedCode += "  " + repeatFlagCppName + " = false ;\n"
+    ioGeneratedCode += "  break ;\n"
+    ioGeneratedCode += "}\n"
   end
-  ioGeneratedCode += "default:\n"
-  ioGeneratedCode += "  break ;\n"
+  !?ioGeneratedCode.decIndentation (!2)
   ioGeneratedCode += "}\n"
 }
 
