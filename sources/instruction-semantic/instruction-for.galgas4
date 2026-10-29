@@ -125,7 +125,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <for_instruction_enumerated_object> (?!@galgasDeclarationAST ioDeclarations,
                                             !@abstractEnumeratedCollectionAST outEnumeratedObject) {
     $($
-    if [option galgas_cli_options.warnsOnOldStyleEnumeration value] then
+    if option galgas_cli_options [warnsOnOldStyleEnumeration.value] then
       warning .here : "Old style enumeration, not compatible with GALGAS4"
     end
     var elementList = @forInstructionEnumeratedObjectElementListAST ()
@@ -536,12 +536,12 @@ override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
         let missingArgumentCount = enumerationDescriptorList.count - self.mElementList.count
         error (self.mEndOfEnumerationExpression
         : "enumerated object has " + missingArgumentCount + "more properties"
-        fixit replace if missingArgumentCount == 1 then "*" else " " + missingArgumentCount + "*" end
+        fixit %replaceBy if missingArgumentCount == 1 then "*" else " " + missingArgumentCount + "*" end
         )
       end
       for element in self.mElementList, descriptor in enumerationDescriptorList do
         if element.mOptionalConstantName.string != "" then // Empty string if joker
-          if [option galgas_cli_options.warnsOnEnumerationNameMismatch value], element.mOptionalConstantName.string != descriptor.mEnumerationName then
+          if option galgas_cli_options[warnsOnEnumerationNameMismatch.value], element.mOptionalConstantName.string != descriptor.mEnumerationName then
             warning element.mOptionalConstantName : "rename constant as '" + descriptor.mEnumerationName + "'"
           end
           if element.mOptionalTypeName.string != "" then

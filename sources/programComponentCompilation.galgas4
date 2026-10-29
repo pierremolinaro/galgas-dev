@@ -35,12 +35,13 @@ list @programListForGeneration {
 private filewrapper programFileGenerationTemplate in "+generation-templates/program_generation" {
 }{
 }{
-  template programFileImplementation "program-file.cpp.galgasTemplate"
-    ?@string COMPONENT_NAME
-    ?@stringlist IMPORTED_COMPONENT_LIST
-    ?@string BEFORE_AFTER_RULE_IMPLEMENTATION_STRING
-    ?@programRuleList PROGRAM_RULE_LIST
+  template programFileImplementation : "program-file.cpp.galgasTemplate" (
+    ?@string COMPONENT_NAME,
+    ?@stringlist IMPORTED_COMPONENT_LIST,
+    ?@string BEFORE_AFTER_RULE_IMPLEMENTATION_STRING,
+    ?@programRuleList PROGRAM_RULE_LIST,
     ?@string PROJECT_VERSION_STRING
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -62,15 +63,15 @@ proc compileBeforeClauseGalgas3
   ioUsefulnessRootEntities ++= @(!usefulnessName)
 //--- Compile 'before' routines
   var semanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
-  for (mInstructionList mEndOfInstructionList) in inPrologueList do
+  for prologue in inPrologueList do
     analyzeRoutineBody (
       !usefulnessName,
       !?ioUsefulEntitiesGraph,
       !inAnalysisContext,
       !?ioTypeMap,
       !@formalParameterListAST (), // Routine signature : no argument
-      !mInstructionList,
-      !mEndOfInstructionList,
+      !prologue.mInstructionList,
+      !prologue.mEndOfInstructionList,
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration,
       ?*
     )
@@ -105,12 +106,12 @@ private proc compileProgramRulesGalgas3
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
 ) {
   var @uint ruleIndex = 0
-  for (mSourceFileExtension * mSourceFileVariableName mSourceFileVariableNameIsUnused * mInstructionList mEndOfInstructionList) in inProgramRules do
-    let usefulnessName = rootRuleNameForUsefulEntitiesGraph (!mSourceFileExtension)
+  for programRule in inProgramRules do
+    let usefulnessName = rootRuleNameForUsefulEntitiesGraph (programRule.mSourceFileExtension)
     !?ioUsefulEntitiesGraph.addNode (!usefulnessName, !usefulnessName)
     ioUsefulnessRootEntities ++= @(!usefulnessName)
-    let @formalParameterListAST argumentList = @[
-      @("".nowhere, .argumentConstantIn, @lstring (!"lstring", @location.here), mSourceFileVariableName, mSourceFileVariableNameIsUnused)
+    let @formalParameterListAST argumentList = [
+      @("".nowhere, .argumentConstantIn, @lstring (!"lstring", .here), programRule.mSourceFileVariableName, programRule.mSourceFileVariableNameIsUnused)
     ]
     analyzeRoutineBody (
       !usefulnessName,
@@ -118,8 +119,8 @@ private proc compileProgramRulesGalgas3
       !inAnalysisContext,
       !?ioTypeMap,
       !argumentList,
-      !mInstructionList,
-      !mEndOfInstructionList,
+      !programRule.mInstructionList,
+      !programRule.mEndOfInstructionList,
       ?let semanticInstructionListForGeneration,
       ?let routineSignature
     )
@@ -155,15 +156,15 @@ proc compileAfterClauseGalgas3
   ioUsefulnessRootEntities ++= @(!usefulnessName)
 //--- Compile 'after' routines
   var @semanticInstructionListForGeneration semanticInstructionListForGeneration = @()
-  for (mInstructionList mEndOfInstructionList) in inEpilogueList do
+  for epilogue in inEpilogueList do
     analyzeRoutineBody (
       !usefulnessName,
       !?ioUsefulEntitiesGraph,
       !inAnalysisContext,
       !?ioTypeMap,
       !@formalParameterListAST (), // Routine signature : no argument
-      !mInstructionList,
-      !mEndOfInstructionList,
+      !epilogue.mInstructionList,
+      !epilogue.mEndOfInstructionList,
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration,
       ?*
     )
@@ -246,11 +247,11 @@ proc compileProgramComponentGalgas3
       inclusionSet ++= "grammar-" + prgmRule.mReferenceGrammar.string.fileNameRepresentation
     end
   end
-  let cppContents = [filewrapper programFileGenerationTemplate.programFileImplementation
-    !"program"
-    !@()
-    !beforeAfterRulesString
-    !inProgramRules
+  let cppContents = filewrapper [programFileGenerationTemplate.programFileImplementation :
+    !"program",
+    !@(),
+    !beforeAfterRulesString,
+    !inProgramRules,
     !inProjectVersionString
   ]
 //---

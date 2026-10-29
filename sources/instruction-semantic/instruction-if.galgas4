@@ -44,7 +44,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $elsif$
       <if_instruction_core> (!?ioDeclarations, ?let instruction)
-      else_instructionList = @[@(instruction)]
+      else_instructionList = [@(instruction)]
     end
     outInstruction = @ifInstructionAST (
       !instructionLocation,
@@ -96,7 +96,7 @@ syntax extension galgas4InstructionsSyntax {
     or
       $elsif$
       <if_instruction_core> (!?ioDeclarations, ?let instruction)
-      else_instructionList = @[@(instruction)]
+      else_instructionList = [@(instruction)]
     end
     outInstruction = @ifInstructionAST (
       !instructionLocation,

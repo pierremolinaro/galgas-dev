@@ -91,7 +91,7 @@ proc buildLexicalRoutineMap (!@lexicalRoutineMap outLexicalRoutineMap ) {
 //--- resetString
   !?outLexicalRoutineMap.insertKey
     (!@lstring (!"resetString", .here),
-    !@[@(.lexicalInputOutputMode, .lexicalType_string, "ioString")],
+    ![@(.lexicalInputOutputMode, .lexicalType_string, "ioString")],
     !@(),
     !false // Is not extern
   )
@@ -197,7 +197,7 @@ proc buildLexicalRoutineMap (!@lexicalRoutineMap outLexicalRoutineMap ) {
   !?outLexicalRoutineMap.insertKey
     (!@(!"enterDecimalDigitIntoBigInt", .here),
     !lexicalRoutineFormalArgumentList,
-    !@[@("inCharacterIsNotDecimalDigitError")],
+    ![@("inCharacterIsNotDecimalDigitError")],
     !false // Is not extern
   )
 //--- enterBinaryDigitIntoBigInt
@@ -207,7 +207,7 @@ proc buildLexicalRoutineMap (!@lexicalRoutineMap outLexicalRoutineMap ) {
   !?outLexicalRoutineMap.insertKey
     (!@(!"enterBinaryDigitIntoBigInt", .here),
     !lexicalRoutineFormalArgumentList,
-    !@[@("inCharacterIsNotBinaryDigitError")],
+    ![@("inCharacterIsNotBinaryDigitError")],
     !false // Is not extern
   )
 //--- enterHexDigitIntoBigInt
@@ -217,7 +217,7 @@ proc buildLexicalRoutineMap (!@lexicalRoutineMap outLexicalRoutineMap ) {
   !?outLexicalRoutineMap.insertKey
     (!@(!"enterHexDigitIntoBigInt", .here),
     !lexicalRoutineFormalArgumentList,
-    !@[@("inCharacterIsNotHexDigitError")],
+    ![@("inCharacterIsNotHexDigitError")],
     !false // Is not extern
   )
 //--- convertDecimalStringIntoBigInt
@@ -227,7 +227,7 @@ proc buildLexicalRoutineMap (!@lexicalRoutineMap outLexicalRoutineMap ) {
   !?outLexicalRoutineMap.insertKey
     (!@(!"convertDecimalStringIntoBigInt", .here),
     !lexicalRoutineFormalArgumentList,
-    !@[@("inCharacterIsNotDecimalDigitError")],
+    ![@("inCharacterIsNotDecimalDigitError")],
     !false // Is not extern
   )
 //--- negateBigInt
@@ -246,7 +246,7 @@ proc buildLexicalRoutineMap (!@lexicalRoutineMap outLexicalRoutineMap ) {
   !?outLexicalRoutineMap.insertKey
     (!@(!"convertBinaryStringIntoBigInt", .here),
     !lexicalRoutineFormalArgumentList,
-    !@[@("inCharacterIsNotBinaryDigitError")],
+    ![@("inCharacterIsNotBinaryDigitError")],
     !false // Is not extern
   )
 //--- convertHexStringIntoBigInt
@@ -256,7 +256,7 @@ proc buildLexicalRoutineMap (!@lexicalRoutineMap outLexicalRoutineMap ) {
   !?outLexicalRoutineMap.insertKey
     (!@(!"convertHexStringIntoBigInt", .here),
     !lexicalRoutineFormalArgumentList,
-    !@[@("inCharacterIsNotHexDigitError")],
+    ![@("inCharacterIsNotHexDigitError")],
     !false // Is not extern
   )
 //--- enterHexDigitIntoUInt
@@ -318,7 +318,7 @@ proc buildLexicalRoutineMap (!@lexicalRoutineMap outLexicalRoutineMap ) {
   !?outLexicalRoutineMap.insertKey
     (!@(!"convertDecimalStringIntoUInt64", .here),
     !lexicalRoutineFormalArgumentList,
-    !@[@("inNumberTooLargeError"), @("inCharacterIsNotDecimalDigitError")],
+    ![@("inNumberTooLargeError"), @("inCharacterIsNotDecimalDigitError")],
     !false // Is not extern
   )
 //--- convertDecimalStringIntoSInt64
@@ -537,12 +537,12 @@ proc printPredefinedLexicalActions () {
 //-------------------------------------- Display lexical routines
   var @string s = ""
   s += "**************** Prefined lexical routines  ****************\n"
-  for (lkey mLexicalRoutineFormalArgumentList mErrorMessageList *) in lexicalRoutineMap do
-    s += lkey.string
-    for (mLexicalFormalArgumentMode mLexicalFormalArgumentType mArgumentNameForComment) in mLexicalRoutineFormalArgumentList do
-      s += " " + mLexicalFormalArgumentMode.lexicalFormalModeName + "@" + mLexicalFormalArgumentType.lexicalTypeBaseName + " " + mArgumentNameForComment
+  for lexicalRoutine in lexicalRoutineMap do
+    s += lexicalRoutine.lkey.string
+    for formalArg in lexicalRoutine.mLexicalRoutineFormalArgumentList do
+      s += " " + formalArg.mLexicalFormalArgumentMode.lexicalFormalModeName + "@" + formalArg.mLexicalFormalArgumentType.lexicalTypeBaseName + " " + formalArg.mArgumentNameForComment
     end
-    for (mValue) in mErrorMessageList
+    for (mValue) in lexicalRoutine.mErrorMessageList
     before s += " error"
     do s += " " + mValue
     between s += ","
@@ -553,14 +553,14 @@ proc printPredefinedLexicalActions () {
   buildLexicalFunctionMap (?let lexicalFunctionMap )
 //-------------------------------------- Display lexical functions
   s += "**************** Prefined lexical functions ****************\n"
-  for (lkey mLexicalTypeList mReturnedLexicalType mReplacementFunctionName *) in lexicalFunctionMap do
-    s += lkey.string
-    for (mLexicalType mArgumentNameForComment) in mLexicalTypeList do
-      s += " ?@" + mLexicalType.lexicalTypeBaseName + " " + mArgumentNameForComment
+  for lexicalFunction in lexicalFunctionMap do
+    s += lexicalFunction.lkey.string
+    for lexicalType in lexicalFunction.mLexicalTypeList do
+      s += " ?@" + lexicalType.mLexicalType.lexicalTypeBaseName + " " + lexicalType.mArgumentNameForComment
     end
-    s += " -> @" + mReturnedLexicalType.lexicalTypeBaseName + " ;\n"
-    if mReplacementFunctionName != "" then
-      s += "Note: the '" + lkey + "' function is obsolete: use '" + mReplacementFunctionName + "' function.\n"
+    s += " -> @" + lexicalFunction.mReturnedLexicalType.lexicalTypeBaseName + " ;\n"
+    if lexicalFunction.mReplacementFunctionName != "" then
+      s += "Note: the '" + lexicalFunction.lkey + "' function is obsolete: use '" + lexicalFunction.mReplacementFunctionName + "' function.\n"
     end
     s += "\n"
   end

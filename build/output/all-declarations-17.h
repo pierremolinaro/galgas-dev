@@ -805,6 +805,26 @@ void extensionMethod_checkAutomatonStates (const class GGS_localVarManager inObj
 
 //--------------------------------------------------------------------------------------------------
 //
+//Extension func '@unifiedTypeMap unsolvedEntryList' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstringlist extensionGetter_unsolvedEntryList (const class GGS_unifiedTypeMap & inObject,
+                                                         class Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@unifiedTypeMapElementClass definition'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_unifiedTypeDefinition callExtensionGetter_definition (const cPtr_unifiedTypeMapElementClass * inObject,
+                                                                class Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Extension mutating proc '@routineMap insertKey'
 //
 //--------------------------------------------------------------------------------------------------
@@ -862,26 +882,6 @@ class GGS_location extensionGetter_locationForKey (const class GGS_routineMap & 
                                                    const class GGS_string & constinArgument0,
                                                    class Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension func '@unifiedTypeMap unsolvedEntryList' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstringlist extensionGetter_unsolvedEntryList (const class GGS_unifiedTypeMap & inObject,
-                                                         class Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension func '@unifiedTypeMapElementClass definition'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_unifiedTypeDefinition callExtensionGetter_definition (const cPtr_unifiedTypeMapElementClass * inObject,
-                                                                class Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -127,9 +127,9 @@ override proc @inputJokerParameterForGeneration.generatePoisonedVariables
   ?!@stringset ioUnusedVariableCppNameSet ) {
   if self.mPoisonedVarNameList.count > 0 then
     ioImplementation += "if (!" + self.mInputActualCppName + ".isValid ()) {\n"
-    for (mValue0 mValue1) in self.mPoisonedVarNameList do
-      !?ioUnusedVariableCppNameSet.removeKey (mValue1)
-      ioImplementation += "  " + mValue0 + ".drop () ;\n"
+    for poisonedVarName in self.mPoisonedVarNameList do
+      !?ioUnusedVariableCppNameSet.removeKey (poisonedVarName.mValue1)
+      ioImplementation += "  " + poisonedVarName.mValue0 + ".drop () ;\n"
     end
     ioImplementation += "}\n"
   end
@@ -142,9 +142,9 @@ override proc @inputActualParameterForGeneration.generatePoisonedVariables
                         ?!@stringset ioUnusedVariableCppNameSet ) {
   if self.mPoisonedVarNameList.count > 0 then
     ioImplementation += "if (!" + self.mInputActualCppName + ".isValid ()) {\n"
-    for (mValue0 mValue1) in self.mPoisonedVarNameList do
-      !?ioUnusedVariableCppNameSet.removeKey (mValue1)
-      ioImplementation += "  " + mValue0 + ".drop () ;\n"
+    for poisonedVarName in self.mPoisonedVarNameList do
+      !?ioUnusedVariableCppNameSet.removeKey (poisonedVarName.mValue1)
+      ioImplementation += "  " + poisonedVarName.mValue0 + ".drop () ;\n"
     end
     ioImplementation += "}\n"
   end

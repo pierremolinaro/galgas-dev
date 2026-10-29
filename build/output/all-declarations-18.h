@@ -482,6 +482,30 @@ class cGrammar_galgas_34_ProjectGrammar : public cParser_galgas_34_ProjectSyntax
 
 //--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------
+//
+//Extension mutating proc '@genericExtensionMethodListMap insertKey'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertKey (class GGS_genericExtensionMethodListMap & ioObject,
+                                const class GGS_string constin_inKey,
+                                const class GGS_lstring constin_inValue,
+                                class Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension mutating proc '@descendantClassListMap insertKey'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertKey (class GGS_descendantClassListMap & ioObject,
+                                const class GGS_string constin_inKey,
+                                const class GGS_unifiedTypeMapEntry constin_inType,
+                                class Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @functionPrototypeDeclarationForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -1295,4 +1319,116 @@ class GGS_filewrapperDeclarationForGeneration_2E_weak : public GGS_semanticDecla
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperDeclarationForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @programComponentForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_programComponentForGeneration : public GGS_semanticDeclarationWithHeaderForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_programComponentForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_programComponentForGeneration (const class cPtr_programComponentForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_stringset readProperty_mInclusionSet (void) const ;
+
+  public: class GGS_string readProperty_mImplementationString (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_programComponentForGeneration init_21_generateHeader_21_implementationCppFileName_21__21_ (const class GGS_bool & inOperand0,
+                                                                                                                const class GGS_string & inOperand1,
+                                                                                                                const class GGS_stringset & inOperand2,
+                                                                                                                const class GGS_string & inOperand3,
+                                                                                                                Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_programComponentForGeneration extractObject (const GGS_object & inObject,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_programComponentForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_programComponentForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @programComponentForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_programComponentForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void programComponentForGeneration_init_21_generateHeader_21_implementationCppFileName_21__21_ (const class GGS_bool & inOperand0,
+                                                                                                          const class GGS_string & inOperand1,
+                                                                                                          const class GGS_stringset & inOperand2,
+                                                                                                          const class GGS_string & inOperand3,
+                                                                                                          Compiler * inCompiler) ;
+
+
+//--- Extension func headerKind
+  public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension proc appendSpecificImplementation
+  public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg_inUnifiedTypeMap,
+           class GGS_stringset & arg_ioInclusionSet,
+           class GGS_string & arg_outImplementation,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_stringset mProperty_mInclusionSet ;
+  public: GGS_string mProperty_mImplementationString ;
+
+
+//--- Default constructor
+  public: cPtr_programComponentForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_programComponentForGeneration (const GGS_bool & in_generateHeader,
+                                              const GGS_string & in_implementationCppFileName,
+                                              const GGS_stringset & in_mInclusionSet,
+                                              const GGS_string & in_mImplementationString,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
 

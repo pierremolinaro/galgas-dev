@@ -300,6 +300,54 @@ void routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F
 
 //--------------------------------------------------------------------------------------------------
 //
+//Routine 'enterClassMethodWithInputArgument&&?methodName?argType?argName?compilerArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterClassMethodWithInputArgument_26__26__3F_methodName_3F_argType_3F_argName_3F_compilerArgument (class GGS_classMethodMap & ioArgument0,
+                                                                                                                class GGS_unifiedTypeMap & ioArgument1,
+                                                                                                                const class GGS_string constinArgument2,
+                                                                                                                const class GGS_string constinArgument3,
+                                                                                                                const class GGS_string constinArgument4,
+                                                                                                                const class GGS_bool constinArgument5,
+                                                                                                                class Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterClassMethodWith3InputArguments&&?methodName?argType1?argName1?argType2?argName2?argType3?argName3?compilerArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterClassMethodWith_33_InputArguments_26__26__3F_methodName_3F_argType_31__3F_argName_31__3F_argType_32__3F_argName_32__3F_argType_33__3F_argName_33__3F_compilerArgument (class GGS_classMethodMap & ioArgument0,
+                                                                                                                                                                                         class GGS_unifiedTypeMap & ioArgument1,
+                                                                                                                                                                                         const class GGS_string constinArgument2,
+                                                                                                                                                                                         const class GGS_string constinArgument3,
+                                                                                                                                                                                         const class GGS_string constinArgument4,
+                                                                                                                                                                                         const class GGS_string constinArgument5,
+                                                                                                                                                                                         const class GGS_string constinArgument6,
+                                                                                                                                                                                         const class GGS_string constinArgument7,
+                                                                                                                                                                                         const class GGS_string constinArgument8,
+                                                                                                                                                                                         const class GGS_bool constinArgument9,
+                                                                                                                                                                                         class Compiler * inCompiler
+                                                                                                                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterClassMethodWithStringInputArgument&&?classMethod?argName?compilerArg'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterClassMethodWithStringInputArgument_26__26__3F_classMethod_3F_argName_3F_compilerArg (class GGS_classMethodMap & ioArgument0,
+                                                                                                       class GGS_unifiedTypeMap & ioArgument1,
+                                                                                                       const class GGS_string constinArgument2,
+                                                                                                       const class GGS_string constinArgument3,
+                                                                                                       const class GGS_bool constinArgument4,
+                                                                                                       class Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Filewrapper 'syntaxFileGenerationTemplate'
 //
 //--------------------------------------------------------------------------------------------------
@@ -1246,54 +1294,6 @@ GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader
 GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (class Compiler * inCompiler,
                                                                                           const class GGS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST
                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassMethodWithInputArgument&&?methodName?argType?argName?compilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassMethodWithInputArgument_26__26__3F_methodName_3F_argType_3F_argName_3F_compilerArgument (class GGS_classMethodMap & ioArgument0,
-                                                                                                                class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                const class GGS_string constinArgument2,
-                                                                                                                const class GGS_string constinArgument3,
-                                                                                                                const class GGS_string constinArgument4,
-                                                                                                                const class GGS_bool constinArgument5,
-                                                                                                                class Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassMethodWith3InputArguments&&?methodName?argType1?argName1?argType2?argName2?argType3?argName3?compilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassMethodWith_33_InputArguments_26__26__3F_methodName_3F_argType_31__3F_argName_31__3F_argType_32__3F_argName_32__3F_argType_33__3F_argName_33__3F_compilerArgument (class GGS_classMethodMap & ioArgument0,
-                                                                                                                                                                                         class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                                                                                         const class GGS_string constinArgument2,
-                                                                                                                                                                                         const class GGS_string constinArgument3,
-                                                                                                                                                                                         const class GGS_string constinArgument4,
-                                                                                                                                                                                         const class GGS_string constinArgument5,
-                                                                                                                                                                                         const class GGS_string constinArgument6,
-                                                                                                                                                                                         const class GGS_string constinArgument7,
-                                                                                                                                                                                         const class GGS_string constinArgument8,
-                                                                                                                                                                                         const class GGS_bool constinArgument9,
-                                                                                                                                                                                         class Compiler * inCompiler
-                                                                                                                                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassMethodWithStringInputArgument&&?classMethod?argName?compilerArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassMethodWithStringInputArgument_26__26__3F_classMethod_3F_argName_3F_compilerArg (class GGS_classMethodMap & ioArgument0,
-                                                                                                       class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                       const class GGS_string constinArgument2,
-                                                                                                       const class GGS_string constinArgument3,
-                                                                                                       const class GGS_bool constinArgument4,
-                                                                                                       class Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

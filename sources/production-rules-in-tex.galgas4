@@ -27,10 +27,11 @@
 filewrapper grammarRulesInTexDocumentTemplate in "+generation-templates/grammar_generation" {
 }{
 }{
-  template document "grammar-rules-document.tex.galgasTemplate"
-    ?@string DOCUMENT_NAME
+  template document : "grammar-rules-document.tex.galgasTemplate" (
+    ?@string DOCUMENT_NAME,
     ?@string TEX_ESCAPED_DOCUMENT_NAME
- }
+  )
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -76,8 +77,8 @@ proc emitProductionRulesInTexFile
 //--------------------------------------------------------- Print an tex file for grammar rule list
   let texDocumentFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".document.tex"
   texDocumentFilePath.deletingLastPathComponent.makeDirectory ()
-  let document = [filewrapper grammarRulesInTexDocumentTemplate.document
-    !inGrammarComponentName
+  let document = filewrapper [grammarRulesInTexDocumentTemplate.document :
+    !inGrammarComponentName,
     !escapeForTex (!inGrammarComponentName)
   ]
   document.writeToFileWhenDifferentContents (!texDocumentFilePath, ?*)
@@ -115,7 +116,7 @@ proc @productionRuleListForGrammarAnalysis.@element.displayRule
   ?!@string ioGeneratedCode
 ) {
   var @string currentNode = "P0start"
-  var @rowList rowArray = @[@(@[@(currentNode, "[firstPoint] ()")])]
+  var @rowList rowArray = [@([@(currentNode, "[firstPoint] ()")])]
   var @string arrows = ""
   var @string arrowStyle = "--"
   var @uint column = 1
@@ -171,9 +172,9 @@ proc @productionRuleListForGrammarAnalysis.@element.displayRuleVertically
   var @string currentNode = "P0start"
   var @rowList rowArray = @()
   for * in 1 ..< self.mInstructionList.count do
-    rowArray ++= @(!@[@("", "")])
+    rowArray ++= @([@("", "")])
   end
-  rowArray ++= @(!@[@(currentNode, "[firstPoint] ()")])
+  rowArray ++= @([@(currentNode, "[firstPoint] ()")])
   var @string arrows = ""
   var @string arrowStyle = "--"
   var @uint unusedMaxUsedRowIndex = 0 // Unused
@@ -281,7 +282,7 @@ mutating proc @rowList.appendRow
   let length = self.count
   if length <= inRow then
     for * in length ... inRow do
-      self += !@()
+      self += @()
     end
   end
 //--- Get row

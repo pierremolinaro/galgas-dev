@@ -41,13 +41,13 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
     for entry in self.mSyntaxComponents do
       ioInclusionSet ++= "syntax-" + entry.mValue.string.fileNameRepresentation
     end
-    outHeader = [filewrapper grammarGenerationTemplate.grammarZone3HeaderGalgas3
-      !self.mLexiqueName.identifierRepresentation
-      !self.mNonTerminalMapForGrammarAnalysis
-      !self.mNonTerminalToAddList
-      !self.mStartSymbolName
-      !self.mHasTranslateFeature
-      !self.mGrammarName
+    outHeader = filewrapper [grammarGenerationTemplate.grammarZone3HeaderGalgas3 :
+      !self.mLexiqueName.identifierRepresentation,
+      !self.mNonTerminalMapForGrammarAnalysis,
+      !self.mNonTerminalToAddList,
+      !self.mStartSymbolName,
+      !self.mHasTranslateFeature,
+      !self.mGrammarName,
       !self.mSyntaxComponents
      ]
   }
@@ -59,11 +59,11 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
                                                 !@string outImplementation ) {
     ioInclusionSet ++= "grammar-" + self.mGrammarName.fileNameRepresentation
     for nonTerminal in self.mNonTerminalMapForGrammarAnalysis do
-      for (* mFormalParametersList) in nonTerminal.mNonterminalSymbolParametersMap do
-        for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in mFormalParametersList do
-          switch mFormalArgumentPassingModeForGrammarAnalysis
+      for nonterminalSymbolParameter in nonTerminal.mNonterminalSymbolParametersMap do
+        for formal in nonterminalSymbolParameter.mFormalParametersList do
+          switch formal.mFormalArgumentPassingModeForGrammarAnalysis
           case argumentConstantIn, argumentVarIn :
-            let t = inUnifiedTypeMap.typeMapEntryForLKey (!mGalgasTypeNameForGrammarAnalysis)
+            let t = inUnifiedTypeMap.typeMapEntryForLKey (formal.mGalgasTypeNameForGrammarAnalysis)
             t.addHeaderFileName (!?ioInclusionSet)
           case argumentInOut, argumentOut :
           end
@@ -148,13 +148,13 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
       selectMethodList ++= @(!idx)
       idx += 1
     end
-    outHeader = [filewrapper syntaxFileGenerationTemplate.syntaxAnalyserClassDeclaration
-      !self.mSyntaxComponentName
-      !self.mLexiqueName.identifierRepresentation
-      !self.mNonterminalDeclarationMap
-      !self.mRuleDeclarationList
-      !selectMethodList
-      !self.mHasIndexing
+    outHeader = filewrapper [syntaxFileGenerationTemplate.syntaxAnalyserClassDeclaration :
+      !self.mSyntaxComponentName,
+      !self.mLexiqueName.identifierRepresentation,
+      !self.mNonterminalDeclarationMap,
+      !self.mRuleDeclarationList,
+      !selectMethodList,
+      !self.mHasIndexing,
       !self.mHasTranslateFeature
     ]
   }
@@ -165,25 +165,25 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
                                               ?!@stringset ioInclusionSet,
                                               !@string outImplementation ) {
     ioInclusionSet ++= "syntax-" + self.mSyntaxComponentName.fileNameRepresentation
-    outImplementation = [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3
+    outImplementation = filewrapper [syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3 :
       !@()
     ]
   //---
     let lexiqueCppName = "Lexique_" + self.mLexiqueName.identifierRepresentation
-    for (mNonterminalName mRuleIndex mLabelImplementationList) in self.mRuleDeclarationList do
+    for ruleDeclaration in self.mRuleDeclarationList do
     //--- Generate rule label implementation
-      for (mLabelName mSignatureForGeneration * * mInstructionListForGeneration) in mLabelImplementationList do
+      for labelImplementation in ruleDeclaration.mLabelImplementationList do
         let @string ruleName = "cParser_" + self.mSyntaxComponentName.identifierRepresentation
           + "::rule_" + self.mSyntaxComponentName.identifierRepresentation + "_"
-          + mNonterminalName.identifierRepresentation
-          + "_i" + mRuleIndex.string + "_" + mLabelName.string.identifierRepresentation
+          + ruleDeclaration.mNonterminalName.identifierRepresentation
+          + "_i" + ruleDeclaration.mRuleIndex.string + "_" + labelImplementation.mLabelName.string.identifierRepresentation
         outImplementation += "//------------------------------------------------------------------------------------------------\n\n"
         generateProcedure (
           !static:false,
           !ruleName,
           !?ioInclusionSet,
-          !mSignatureForGeneration,
-          !mInstructionListForGeneration,
+          !labelImplementation.mSignatureForGeneration,
+          !labelImplementation.mInstructionListForGeneration,
           !false,
           !lexiqueCppName,
           !false, // Do not generate location Argument
@@ -195,11 +195,11 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
       end
     //--- Generate indexing code
       if self.mHasIndexing then
-        mLabelImplementationList.first (?*, ?*, ?*, ?*, ?let instructionList)
+        ruleDeclaration.mLabelImplementationList.first (?*, ?*, ?*, ?*, ?let instructionList)
         let @string ruleName = "cParser_" + self.mSyntaxComponentName.identifierRepresentation
         + "::rule_" + self.mSyntaxComponentName.identifierRepresentation + "_"
-        + mNonterminalName.identifierRepresentation
-        + "_i" + mRuleIndex.string + "_indexing"
+        + ruleDeclaration.mNonterminalName.identifierRepresentation
+        + "_i" + ruleDeclaration.mRuleIndex.string + "_indexing"
         outImplementation += "//------------------------------------------------------------------------------------------------\n\n"
         generateProcedure (
           !static:false,
@@ -250,9 +250,9 @@ proc generateProcedure
   if not inGenerateResetTemplateString then
     unusedVariableCppNameSet ++= compilerCppName ()
   end
-  for (* mFormalArgumentPassingMode * * mFormalArgumentCppName) in inFormalArgumentList do
-    if mFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
-      unusedVariableCppNameSet ++= mFormalArgumentCppName
+  for formal in inFormalArgumentList do
+    if formal.mFormalArgumentPassingMode != .argumentOut then
+      unusedVariableCppNameSet ++= formal.mFormalArgumentCppName
     end
   end
 //--- Generate body
@@ -281,21 +281,21 @@ proc generateProcedure
   outGeneratedCode += "void " + inProcedureMangledName + " ("
   let @uint colRef = outGeneratedCode.currentColumn
 //---
-  for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
-    switch mFormalArgumentPassingMode
+  for formal in inFormalArgumentList do
+    switch formal.mFormalArgumentPassingMode
     case argumentConstantIn :
-      outGeneratedCode += "const GGS_" + mFormalArgumentType.identifierRepresentation + " "
+      outGeneratedCode += "const GGS_" + formal.mFormalArgumentType.identifierRepresentation + " "
     case argumentInOut :
-      outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation + " & "
+      outGeneratedCode += "GGS_" + formal.mFormalArgumentType.identifierRepresentation + " & "
     case argumentOut :
-      outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation + " & "
+      outGeneratedCode += "GGS_" + formal.mFormalArgumentType.identifierRepresentation + " & "
     case argumentVarIn :
-      outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation + " "
+      outGeneratedCode += "GGS_" + formal.mFormalArgumentType.identifierRepresentation + " "
     end
-    if unusedVariableCppNameSet.hasKey (!mFormalArgumentCppName) then
-      outGeneratedCode += "/* " + mFormalArgumentCppName + " */"
+    if unusedVariableCppNameSet.hasKey (formal.mFormalArgumentCppName) then
+      outGeneratedCode += "/* " + formal.mFormalArgumentCppName + " */"
     else
-      outGeneratedCode += mFormalArgumentCppName
+      outGeneratedCode += formal.mFormalArgumentCppName
     end
     outGeneratedCode += ",\n"
     !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
@@ -327,10 +327,10 @@ proc generateProcedure
   end
   outGeneratedCode += " {\n"
 //--- Release 'out' arguments
-  for (* mFormalArgumentPassingMode * * mFormalArgumentCppName) in inFormalArgumentList do
-    switch mFormalArgumentPassingMode
+  for formal in inFormalArgumentList do
+    switch formal.mFormalArgumentPassingMode
     case argumentOut :
-      outGeneratedCode += "  " + mFormalArgumentCppName + ".drop () ; // Release 'out' argument\n"
+      outGeneratedCode += "  " + formal.mFormalArgumentCppName + ".drop () ; // Release 'out' argument\n"
     case argumentConstantIn, argumentVarIn, argumentInOut :
     end
   end
@@ -366,9 +366,9 @@ proc generateFunction (?let @string inFunctionCppRepresentationName,
   var @stringset unusedVariableCppNameSet = @()
   unusedVariableCppNameSet ++= compilerCppName ()
 //--- Release 'in' and 'const in' arguments at the end of the routine
-  for (* mFormalArgumentType mFormalArgumentCppName * *) in inFormalArgumentList do
-    mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
-    unusedVariableCppNameSet ++= mFormalArgumentCppName
+  for formal in inFormalArgumentList do
+    formal.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
+    unusedVariableCppNameSet ++= formal.mFormalArgumentCppName
   end
 //--- Generate body
   var @uint temporaryVariableIndex = 0
@@ -392,16 +392,16 @@ proc generateFunction (?let @string inFunctionCppRepresentationName,
   outGeneratedCode += inFunctionCppRepresentationName + " ("
   let @uint colRef = outGeneratedCode.currentColumn
 //---
-  for (* mFormalArgumentType mFormalArgumentCppName * mIsConstant) in inFormalArgumentList do
-    if mIsConstant then
-      outGeneratedCode += "const GGS_" + mFormalArgumentType.identifierRepresentation + " &"
+  for formal in inFormalArgumentList do
+    if formal.mIsConstant then
+      outGeneratedCode += "const GGS_" + formal.mFormalArgumentType.identifierRepresentation + " &"
     else
-      outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation
+      outGeneratedCode += "GGS_" + formal.mFormalArgumentType.identifierRepresentation
     end
-    if unusedVariableCppNameSet.hasKey (!mFormalArgumentCppName) then
+    if unusedVariableCppNameSet.hasKey (formal.mFormalArgumentCppName) then
 
     else
-      outGeneratedCode += " " + mFormalArgumentCppName
+      outGeneratedCode += " " + formal.mFormalArgumentCppName
     end
     outGeneratedCode += ",\n"
     !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
@@ -409,7 +409,7 @@ proc generateFunction (?let @string inFunctionCppRepresentationName,
 //--- Compiler argument
   outGeneratedCode += inCompilerTypeName + " *"
   if unusedVariableCppNameSet.hasKey (!compilerCppName ()) then
-//    outGeneratedCode += "/* " + compilerCppName () + " */"
+    outGeneratedCode += " /* " + compilerCppName () + " */"
   else
     outGeneratedCode += " " + compilerCppName ()
   end
@@ -448,9 +448,9 @@ proc generateExtensionGetter (?let @string inFunctionCppRepresentationName,
   var @stringset unusedVariableCppNameSet = @()
   unusedVariableCppNameSet ++= compilerCppName ()
 //--- Release 'in' and 'const in' arguments at the end of the routine
-  for (* mFormalArgumentType mFormalArgumentCppName * *) in inFormalArgumentList do
-    mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
-    unusedVariableCppNameSet ++= mFormalArgumentCppName
+  for formal in inFormalArgumentList do
+    formal.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
+    unusedVariableCppNameSet ++= formal.mFormalArgumentCppName
   end
 //--- Generate body
   var @uint temporaryVariableIndex = 0
@@ -471,16 +471,16 @@ proc generateExtensionGetter (?let @string inFunctionCppRepresentationName,
   outGeneratedCode += inFunctionCppRepresentationName + " ("
   let @uint colRef = outGeneratedCode.currentColumn
 //---
-  for (* mFormalArgumentType mFormalArgumentCppName * mIsConstant) in inFormalArgumentList do
-    if mIsConstant then
-      outGeneratedCode += "const GGS_" + mFormalArgumentType.identifierRepresentation
+  for formal in inFormalArgumentList do
+    if formal.mIsConstant then
+      outGeneratedCode += "const GGS_" + formal.mFormalArgumentType.identifierRepresentation
     else
-      outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation
+      outGeneratedCode += "GGS_" + formal.mFormalArgumentType.identifierRepresentation
     end
-    if unusedVariableCppNameSet.hasKey (!mFormalArgumentCppName) then
-      outGeneratedCode += " /* " + mFormalArgumentCppName + " */"
+    if unusedVariableCppNameSet.hasKey (formal.mFormalArgumentCppName) then
+      outGeneratedCode += " /* " + formal.mFormalArgumentCppName + " */"
     else
-      outGeneratedCode += " " + mFormalArgumentCppName
+      outGeneratedCode += " " + formal.mFormalArgumentCppName
     end
     outGeneratedCode += ",\n"
     !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
@@ -557,23 +557,23 @@ proc generateExtensionSetter
     outGeneratedCode += "inObject"
   end
 //---
-  for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
+  for formal in inFormalArgumentList do
     outGeneratedCode += ",\n"
     !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
-    switch mFormalArgumentPassingMode
+    switch formal.mFormalArgumentPassingMode
     case argumentConstantIn :
-      outGeneratedCode += "const GGS_" + mFormalArgumentType.identifierRepresentation + " "
+      outGeneratedCode += "const GGS_" + formal.mFormalArgumentType.identifierRepresentation + " "
     case argumentInOut :
-      outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation + " & "
+      outGeneratedCode += "GGS_" + formal.mFormalArgumentType.identifierRepresentation + " & "
     case argumentOut :
-      outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation + " & "
+      outGeneratedCode += "GGS_" + formal.mFormalArgumentType.identifierRepresentation + " & "
     case argumentVarIn :
-      outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation + " "
+      outGeneratedCode += "GGS_" + formal.mFormalArgumentType.identifierRepresentation + " "
     end
-    if unusedVariableCppNameSet.hasKey (!mFormalArgumentCppName) then
-      outGeneratedCode += "/* " + mFormalArgumentCppName + " */"
+    if unusedVariableCppNameSet.hasKey (formal.mFormalArgumentCppName) then
+      outGeneratedCode += "/* " + formal.mFormalArgumentCppName + " */"
     else
-      outGeneratedCode += mFormalArgumentCppName
+      outGeneratedCode += formal.mFormalArgumentCppName
     end
   end
 //--- Compiler argument
@@ -658,21 +658,21 @@ proc generateExtensionMethodNew (?let @unifiedTypeMapEntry inReceiverType,
   outGeneratedCode = "void cPtr_" + className.identifierRepresentation + "::method_" + inMethodName.identifierRepresentation + " ("
   let @uint colRef = outGeneratedCode.currentColumn
 //---
-  for (* mFormalArgumentPassingMode mFormalArgumentType * mFormalArgumentCppName) in inFormalArgumentList do
-    switch mFormalArgumentPassingMode
+  for formal in inFormalArgumentList do
+    switch formal.mFormalArgumentPassingMode
     case argumentConstantIn :
-      outGeneratedCode += "const GGS_" + mFormalArgumentType.identifierRepresentation + " "
+      outGeneratedCode += "const GGS_" + formal.mFormalArgumentType.identifierRepresentation + " "
     case argumentInOut :
-      outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation + " & "
+      outGeneratedCode += "GGS_" + formal.mFormalArgumentType.identifierRepresentation + " & "
     case argumentOut :
-      outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation + " & "
+      outGeneratedCode += "GGS_" + formal.mFormalArgumentType.identifierRepresentation + " & "
     case argumentVarIn :
-      outGeneratedCode += "GGS_" + mFormalArgumentType.identifierRepresentation + " "
+      outGeneratedCode += "GGS_" + formal.mFormalArgumentType.identifierRepresentation + " "
     end
-    if unusedVariableCppNameSet.hasKey (!mFormalArgumentCppName) then
-      outGeneratedCode += "/* " + mFormalArgumentCppName + " */"
+    if unusedVariableCppNameSet.hasKey (formal.mFormalArgumentCppName) then
+      outGeneratedCode += "/* " + formal.mFormalArgumentCppName + " */"
     else
-      outGeneratedCode += mFormalArgumentCppName
+      outGeneratedCode += formal.mFormalArgumentCppName
     end
     outGeneratedCode += ",\n"
     !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
@@ -702,51 +702,57 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
   "txt"
 }{
 }{
-  template unifiedClassBodyForType "unified-class-body-for-type.h.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@bool IS_CONCRETE // false if abstract class
-    ?@initializerMap INITIALIZER_MAP
-    ?@classFunctionMap CLASS_FUNC_MAP
-    ?@getterMap GETTER_MAP
-    ?@setterMap MODIFIER_MAP
-    ?@instanceMethodMap INSTANCE_METHOD_MAP
-    ?@classMethodMap CLASS_METHOD_MAP
-    ?@subscriptMap READ_SUBSCRIPT_MAP
-    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST // Empty List if cannot be enumerated
-    ?@typeFeatures SUPPORTED_OPERATORS
-    ?@functionSignature ADD_ASSIGN_ARGUMENT_LIST // Empty list if operator is not supported
-    ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE
+  template unifiedClassBodyForType : "unified-class-body-for-type.h.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string TYPE_IDENTIFIER,
+    ?@bool IS_CONCRETE, // false if abstract class
+    ?@initializerMap INITIALIZER_MAP,
+    ?@classFunctionMap CLASS_FUNC_MAP,
+    ?@getterMap GETTER_MAP,
+    ?@setterMap MODIFIER_MAP,
+    ?@instanceMethodMap INSTANCE_METHOD_MAP,
+    ?@classMethodMap CLASS_METHOD_MAP,
+    ?@subscriptMap READ_SUBSCRIPT_MAP,
+    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST, // Empty List if cannot be enumerated
+    ?@typeFeatures SUPPORTED_OPERATORS,
+    ?@functionSignature ADD_ASSIGN_ARGUMENT_LIST, // Empty list if operator is not supported
+    ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE,
     ?@bool SUPPORT_COLLECTION_VALUE
+  )
 
-  template unifiedClassBodyForPackage "unified-class-body-for-package.h.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@classFunctionMap CLASS_FUNC_MAP
+  template unifiedClassBodyForPackage : "unified-class-body-for-package.h.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string TYPE_IDENTIFIER,
+    ?@classFunctionMap CLASS_FUNC_MAP,
     ?@classMethodMap CLASS_METHOD_MAP
+  )
 
-  template genericTypeImplementation "generic-type.cpp.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
+  template genericTypeImplementation : "generic-type.cpp.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string TYPE_IDENTIFIER,
     ?@unifiedTypeMapEntry SUPER_TYPE_INDEX
+  )
 
 //--------- Extern Type
-  template externTypeHeader1 "GALGAS_extern_type.h1.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string PRE_DECLARATION
+  template externTypeHeader1 : "GALGAS_extern_type.h1.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string TYPE_IDENTIFIER,
+    ?@string PRE_DECLARATION,
     ?@string CODE
+  )
 
 //--------- Graph
-  template graphTypeHeader1 "GALGAS_graph.h1.galgasTemplate"
-    ?@string TYPE_NAME
+  template graphTypeHeader1 : "GALGAS_graph.h1.galgasTemplate" (
+    ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER
+  )
 
-  template graphTypeSpecificImplementation "GALGAS_graph.cpp.galgasTemplate"
-    ?@unifiedTypeMapEntry TYPE
-    ?@string TYPE_IDENTIFIER
-    ?@unifiedTypeMapEntry ASSOCIATED_LIST_TYPE
+  template graphTypeSpecificImplementation : "GALGAS_graph.cpp.galgasTemplate" (
+    ?@unifiedTypeMapEntry TYPE,
+    ?@string TYPE_IDENTIFIER,
+    ?@unifiedTypeMapEntry ASSOCIATED_LIST_TYPE,
     ?@graphInsertModifierList INSERT_MODIFIER_LIST
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -759,180 +765,207 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
 }{
 }{
 //----------- initializer
-  template initializerImplementation "initializer.cpp.galgasTemplate"
-    ?@string CLASS_NAME
-    ?@string INITIALIZER_NAME
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+  template initializerImplementation : "initializer.cpp.galgasTemplate" (
+    ?@string CLASS_NAME,
+    ?@string INITIALIZER_NAME,
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
     ?@string INITIALIZER_IMPLEMENTATION
+  )
 
 //----------- Extension func
-  template abstractExtensionGetterDeclaration "abstract-extension-func.h.galgasTemplate"
-    ?@string CLASS_NAME
-    ?@string GETTER_NAME
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+  template abstractExtensionGetterDeclaration : "abstract-extension-func.h.galgasTemplate" (
+    ?@string CLASS_NAME,
+    ?@string GETTER_NAME,
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
     ?@unifiedTypeMapEntry RETURN_TYPE
+  )
 
-  template abstractExtensionGetterImplementation "abstract-extension-func.cpp.galgasTemplate"
-    ?@string CLASS_NAME
-    ?@string GETTER_NAME
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+  template abstractExtensionGetterImplementation : "abstract-extension-func.cpp.galgasTemplate" (
+    ?@string CLASS_NAME,
+    ?@string GETTER_NAME,
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
     ?@unifiedTypeMapEntry RETURN_TYPE
+  )
 
-  template extensionGetterDeclaration "extension-func.h.galgasTemplate"
-    ?@string CLASS_NAME
-    ?@string GETTER_NAME
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+  template extensionGetterDeclaration : "extension-func.h.galgasTemplate" (
+    ?@string CLASS_NAME,
+    ?@string GETTER_NAME,
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
     ?@unifiedTypeMapEntry RETURN_TYPE
+  )
 
-  template extensionGetterImplementation "extension-func.cpp.galgasTemplate"
-    ?@string CLASS_NAME
-    ?@string GETTER_NAME
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@string GETTER_IMPLEMENTATION
+  template extensionGetterImplementation : "extension-func.cpp.galgasTemplate" (
+    ?@string CLASS_NAME,
+    ?@string GETTER_NAME,
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
+    ?@string GETTER_IMPLEMENTATION,
     ?@unifiedTypeMapEntry RETURN_TYPE
+  )
 
-  template overridingExtensionGetterImplementation "overriding-extension-func.cpp.galgasTemplate"
-    ?@string CLASS_NAME
-    ?@string GETTER_NAME
-    ?@string GETTER_IMPLEMENTATION
+  template overridingExtensionGetterImplementation : "overriding-extension-func.cpp.galgasTemplate" (
+    ?@string CLASS_NAME,
+    ?@string GETTER_NAME,
+    ?@string GETTER_IMPLEMENTATION,
     ?@unifiedTypeMapEntry RETURN_TYPE
+  )
 
 //----------- Extension mutating proc
-  template abstractExtensionSetterDeclaration "abstract-extension-setter.h.galgasTemplate"
-    ?@string CLASS_NAME
-    ?@string MODIFIER_NAME
+  template abstractExtensionSetterDeclaration : "abstract-extension-setter.h.galgasTemplate" (
+    ?@string CLASS_NAME,
+    ?@string MODIFIER_NAME,
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  )
 
-  template abstractExtensionSetterImplementation "abstract-extension-setter.cpp.galgasTemplate"
-    ?@string CLASS_NAME
-    ?@string MODIFIER_NAME
+  template abstractExtensionSetterImplementation : "abstract-extension-setter.cpp.galgasTemplate" (
+    ?@string CLASS_NAME,
+    ?@string MODIFIER_NAME,
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  )
 
-  template extensionSetterDeclaration "extension-setter.h.galgasTemplate"
-    ?@string CLASS_NAME
-    ?@string MODIFIER_NAME
+  template extensionSetterDeclaration : "extension-setter.h.galgasTemplate" (
+    ?@string CLASS_NAME,
+    ?@string MODIFIER_NAME,
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  )  
 
-  template extensionsetterImplementation "extension-setter.cpp.galgasTemplate"
-    ?@string CLASS_NAME
-    ?@string MODIFIER_NAME
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  template extensionsetterImplementation : "extension-setter.cpp.galgasTemplate" (
+    ?@string CLASS_NAME,
+    ?@string MODIFIER_NAME,
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST,
     ?@string MODIFIER_IMPLEMENTATION
+  )
 
-  template overridingExtensionSetterImplementation "overriding-extension-setter.cpp.galgasTemplate"
-    ?@string CLASS_NAME
-    ?@string MODIFIER_NAME
+  template overridingExtensionSetterImplementation : "overriding-extension-setter.cpp.galgasTemplate" (
+    ?@string CLASS_NAME,
+    ?@string MODIFIER_NAME,
     ?@string MODIFIER_IMPLEMENTATION
-
+  )
 
 //----------- Extension proc
-  template abstractExtensionMethodDeclaration "abstract-extension-proc.h.galgasTemplate"
-    ?@string CLASS_NAME
-    ?@string METHOD_NAME
+  template abstractExtensionMethodDeclaration : "abstract-extension-proc.h.galgasTemplate" (
+    ?@string CLASS_NAME,
+    ?@string METHOD_NAME,
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  )
 
-  template abstractExtensionMethodImplementation "abstract-extension-proc.cpp.galgasTemplate"
-    ?@unifiedTypeMapEntry RECEIVER_TYPE
-    ?@string METHOD_NAME
+  template abstractExtensionMethodImplementation : "abstract-extension-proc.cpp.galgasTemplate" (
+    ?@unifiedTypeMapEntry RECEIVER_TYPE,
+    ?@string METHOD_NAME,
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  )
 
-  template extensionMethodDeclaration "extension-proc.h.galgasTemplate"
-    ?@string CLASS_NAME
-    ?@string METHOD_NAME
+  template extensionMethodDeclaration : "extension-proc.h.galgasTemplate" (
+    ?@string CLASS_NAME,
+    ?@string METHOD_NAME,
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  )
 
-  template extensionMethodImplementation "extension-proc.cpp.galgasTemplate"
-    ?@string CLASS_NAME
-    ?@string METHOD_NAME
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  template extensionMethodImplementation : "extension-proc.cpp.galgasTemplate" (
+    ?@string CLASS_NAME,
+    ?@string METHOD_NAME,
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST,
     ?@string METHOD_IMPLEMENTATION
+  )
 
-  template overridingExtensionMethodImplementation "overriding-extension-proc.cpp.galgasTemplate"
-    ?@string CLASS_NAME
-    ?@string METHOD_NAME
+  template overridingExtensionMethodImplementation : "overriding-extension-proc.cpp.galgasTemplate" (
+    ?@string CLASS_NAME,
+    ?@string METHOD_NAME,
     ?@string METHOD_IMPLEMENTATION
+  )
 
-  template filewrapperDeclaration "filewrapper-declaration.h.galgasTemplate"
-    ?@stringlist FILE_INDEX_STRING_LIST
-    ?@stringlist DIRECTORY_INDEX_STRING_LIST
-    ?@stringlist TEXT_CONTENT_INDEX_STRING_LIST
-    ?@stringlist BINARY_CONTENT_INDEX_STRING_LIST
+  template filewrapperDeclaration : "filewrapper-declaration.h.galgasTemplate" (
+    ?@stringlist FILE_INDEX_STRING_LIST,
+    ?@stringlist DIRECTORY_INDEX_STRING_LIST,
+    ?@stringlist TEXT_CONTENT_INDEX_STRING_LIST,
+    ?@stringlist BINARY_CONTENT_INDEX_STRING_LIST,
     ?@string FILEWRAPPER_NAME
+  )
 
-  template filewrapperImplementation "filewrapper-implementation.cpp.galgasTemplate"
-    ?@string FILEWRAPPER_NAME
+  template filewrapperImplementation : "filewrapper-implementation.cpp.galgasTemplate" (
+    ?@string FILEWRAPPER_NAME,
     ?@string FILEWRAPPER_IMPLEMENTATION
+  )
 
 //--- Extension func implemented as function
-  template extensionGetterAsFunctionDeclaration "extension-func-as-function-declaration.h.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string GETTER_NAME
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+  template extensionGetterAsFunctionDeclaration : "extension-func-as-function-declaration.h.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string GETTER_NAME,
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
     ?@string RETURN_TYPE_IDENTIFIER
+  )
 
-  template extensionGetterAsFunctionImplementation "extension-func-as-function-implementation.cpp.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string GETTER_NAME
+  template extensionGetterAsFunctionImplementation : "extension-func-as-function-implementation.cpp.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string GETTER_NAME,
     ?@string FUNCTION_IMPLEMENTATION
+  )
 
 //--- Extension proc implemented as function
-  template extensionMethodAsFunctionDeclaration "extension-proc-as-function.h.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string METHOD_NAME
+  template extensionMethodAsFunctionDeclaration : "extension-proc-as-function.h.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string METHOD_NAME,
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  )
 
-  template extensionMethodAsFunctionImplementation "extension-proc-as-function.cpp.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string METHOD_NAME
+  template extensionMethodAsFunctionImplementation : "extension-proc-as-function.cpp.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string METHOD_NAME,
     ?@string METHOD_IMPLEMENTATION
-
+  )
 
 //--- Extension mutating proc implemented as function
-  template extensionSetterAsFunctionDeclaration "extension-setter-as-function.h.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string MODIFIER_NAME
+  template extensionSetterAsFunctionDeclaration : "extension-setter-as-function.h.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string MODIFIER_NAME,
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  )
 
 //--- Function
-  template functionDeclaration "function-declaration.h.galgasTemplate"
-    ?@string FUNCTION_NAME
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+  template functionDeclaration : "function-declaration.h.galgasTemplate" (
+    ?@string FUNCTION_NAME,
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
     ?@string RETURN_TYPE_IDENTIFIER
+  )
 
-  template functionImplementation "function-implementation.cpp.galgasTemplate"
-    ?@string FUNCTION_NAME
-    ?@string FUNCTION_IMPLEMENTATION
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+  template functionImplementation : "function-implementation.cpp.galgasTemplate" (
+    ?@string FUNCTION_NAME,
+    ?@string FUNCTION_IMPLEMENTATION,
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
     ?@string RETURN_TYPE_IDENTIFIER
+  )
 
 //--- Routine
-  template routineDeclaration "routine-declaration.h.galgasTemplate"
-    ?@string ROUTINE_NAME
+  template routineDeclaration : "routine-declaration.h.galgasTemplate" (
+    ?@string ROUTINE_NAME,
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  )
 
-  template routineImplementation "routine-implementation.cpp.galgasTemplate"
-    ?@string ROUTINE_NAME
+  template routineImplementation : "routine-implementation.cpp.galgasTemplate" (
+    ?@string ROUTINE_NAME,
     ?@string ROUTINE_IMPLEMENTATION
+  )
 
-
-  template onceFunctionImplementation "once-function-implementation.cpp.galgasTemplate"
-    ?@string FUNCTION_NAME
-    ?@string FUNCTION_IMPLEMENTATION
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+  template onceFunctionImplementation : "once-function-implementation.cpp.galgasTemplate" (
+    ?@string FUNCTION_NAME,
+    ?@string FUNCTION_IMPLEMENTATION,
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
     ?@string RETURN_TYPE_IDENTIFIER
+  )
 
-  template filewrapperTemplateDeclaration "filewrapper-template.h.galgasTemplate"
-    ?@string FILEWRAPPER_NAME
-    ?@string TEMPLATE_NAME
+  template filewrapperTemplateDeclaration : "filewrapper-template.h.galgasTemplate" (
+    ?@string FILEWRAPPER_NAME,
+    ?@string TEMPLATE_NAME,
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+  )
 
-  template filewrapperTemplateImplementation "filewrapper-template.cpp.galgasTemplate"
-    ?@string FILEWRAPPER_NAME
-    ?@string TEMPLATE_NAME
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@stringset UNUSED_VAR_SET
-    ?@bool USES_COLUMN_MARKER
+  template filewrapperTemplateImplementation : "filewrapper-template.cpp.galgasTemplate" (
+    ?@string FILEWRAPPER_NAME,
+    ?@string TEMPLATE_NAME,
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
+    ?@stringset UNUSED_VAR_SET,
+    ?@bool USES_COLUMN_MARKER,
     ?@string GENERATED_INSTRUCTION_STRING
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -948,9 +981,9 @@ override func @functionPrototypeDeclarationForGeneration.headerKind () ->@header
 override proc @functionPrototypeDeclarationForGeneration.appendDeclaration1
   (?!@stringset unused ioInclusionSet,
   !@string outHeader ) {
-  outHeader = [filewrapper semanticComponentGenerationTemplate.functionDeclaration
-    !self.mFunctionName
-    !self.mFormalArgumentList
+  outHeader = filewrapper [semanticComponentGenerationTemplate.functionDeclaration :
+    !self.mFunctionName,
+    !self.mFormalArgumentList,
     !self.mReturnType.identifierRepresentation
   ]
 }
@@ -966,9 +999,9 @@ override func @onceFunctionDeclarationForGeneration.headerKind () ->@headerKind 
 override proc @onceFunctionDeclarationForGeneration.appendDeclaration1
   (?!@stringset unused ioInclusionSet,
   !@string outHeader ) {
-  outHeader = [filewrapper semanticComponentGenerationTemplate.functionDeclaration
-    !self.mFunctionName
-    !@formalInputParameterListForGeneration ()
+  outHeader = filewrapper [semanticComponentGenerationTemplate.functionDeclaration :
+    !self.mFunctionName,
+    !@formalInputParameterListForGeneration (),
     !self.mReturnType.identifierRepresentation
   ]
 }
@@ -982,9 +1015,9 @@ override func @semanticTypeForGeneration.appendTypeGenericImplementation () -> @
   if selfTypeDefinition.typeKind == .packageType then
     result = ""
   else
-    result = [filewrapper typeGenerationTemplate.genericTypeImplementation
-      !selfTypeDefinition.typeName.string
-      !self.mSelfTypeEntry.identifierRepresentation
+    result = filewrapper [typeGenerationTemplate.genericTypeImplementation :
+      !selfTypeDefinition.typeName.string,
+      !self.mSelfTypeEntry.identifierRepresentation,
       !selfTypeDefinition.superType
     ]
   end
@@ -1011,10 +1044,10 @@ override proc @functionImplementationForGeneration.appendSpecificImplementation
     !const: false,
     ?let @string code
   )
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.functionImplementation
-    !self.mFunctionName
-    !code
-    !self.mFormalArgumentList
+  outImplementation = filewrapper [semanticComponentGenerationTemplate.functionImplementation :
+    !self.mFunctionName,
+    !code,
+    !self.mFormalArgumentList,
     !self.mReturnType.identifierRepresentation
   ]
 }
@@ -1039,10 +1072,10 @@ override proc @onceFunctionDeclarationForGeneration.appendSpecificImplementation
     !const: false,
     ?let @string code
   )
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.onceFunctionImplementation
-    !self.mFunctionName
-    !code
-    !@formalInputParameterListForGeneration ()
+  outImplementation = filewrapper [semanticComponentGenerationTemplate.onceFunctionImplementation :
+    !self.mFunctionName,
+    !code,
+    !@formalInputParameterListForGeneration (),
     !self.mReturnType.identifierRepresentation
   ]
 }
@@ -1149,18 +1182,18 @@ proc recursivlyEnumerateRegularFile
   ?!@stringlist ioRegularTextContentIndexStringList,
   ?!@stringlist ioRegularBinaryContentIndexStringList ) {
   ioDirectoryIndexStringList ++= @(!ioDirectoryIndexStringList.count.string)
-  for (* * mIsTextFile * mWrapperFileIndex) in inFilewrapperFileMap do
+  for filewrapperFile in inFilewrapperFileMap do
     ioRegularFileIndexStringList ++= @(!ioRegularFileIndexStringList.count.string)
-    if mIsTextFile then
-      ioRegularTextContentIndexStringList ++= @(!mWrapperFileIndex.string)
+    if filewrapperFile.mIsTextFile then
+      ioRegularTextContentIndexStringList ++= @(filewrapperFile.mWrapperFileIndex.string)
     else
-      ioRegularBinaryContentIndexStringList ++= @(!mWrapperFileIndex.string)
+      ioRegularBinaryContentIndexStringList ++= @(filewrapperFile.mWrapperFileIndex.string)
     end
   end
-  for (* mRegularFileMap mDirectoryMap *) in inFilewrapperDirectoryMap do
+  for filewrapperDirectory in inFilewrapperDirectoryMap do
     recursivlyEnumerateRegularFile (
-      !mRegularFileMap,
-      !mDirectoryMap,
+      !filewrapperDirectory.mRegularFileMap,
+      !filewrapperDirectory.mDirectoryMap,
       !?ioRegularFileIndexStringList,
       !?ioDirectoryIndexStringList,
       !?ioRegularTextContentIndexStringList,
@@ -1173,7 +1206,7 @@ proc recursivlyEnumerateRegularFile
 
 override proc @filewrapperDeclarationForGeneration.appendDeclaration1
   (?!@stringset unused ioInclusionSet,
-  !@string outHeader ) {
+  !@string outHeader) {
   var regularFileIndexStringList = @stringlist ()
   var regularBinaryContentIndexStringList = @stringlist ()
   var regularTextContentIndexStringList = @stringlist ()
@@ -1186,19 +1219,19 @@ override proc @filewrapperDeclarationForGeneration.appendDeclaration1
     !?regularTextContentIndexStringList,
     !?regularBinaryContentIndexStringList
   )
-  outHeader = [filewrapper semanticComponentGenerationTemplate.filewrapperDeclaration
-    !regularFileIndexStringList
-    !directoryIndexStringList
-    !regularTextContentIndexStringList
-    !regularBinaryContentIndexStringList
+  outHeader = filewrapper [semanticComponentGenerationTemplate.filewrapperDeclaration :
+    !regularFileIndexStringList,
+    !directoryIndexStringList,
+    !regularTextContentIndexStringList,
+    !regularBinaryContentIndexStringList,
     !self.mFilewrapperName
   ]
 //--- template generation
-  for (mFilewrapperTemplateName mFilewrapperTemplateFormalInputParameters *) in self.mFilewrapperTemplateListForGeneration do
-    outHeader += [filewrapper semanticComponentGenerationTemplate.filewrapperTemplateDeclaration
-      !self.mFilewrapperName
-      !mFilewrapperTemplateName
-      !mFilewrapperTemplateFormalInputParameters
+  for filewrapperTemplate in self.mFilewrapperTemplateListForGeneration do
+    outHeader += filewrapper [semanticComponentGenerationTemplate.filewrapperTemplateDeclaration :
+      !self.mFilewrapperName,
+      !filewrapperTemplate.mFilewrapperTemplateName,
+      !filewrapperTemplate.mFilewrapperTemplateFormalInputParameters
     ]
   end
 }
@@ -1213,12 +1246,12 @@ proc generateWrapperContents
   ?let @wrapperDirectoryMap inFilewrapperDirectoryMap,
   ?!@string ioImplementation ) {
 //--- Generate regular files
-  for (lkey mAbsoluteFilePath mIsTextFile * mWrapperFileIndex) in inFilewrapperRegularFileMap do
-    if mIsTextFile then
-      let contents = @string.stringWithContentsOfFile (!mAbsoluteFilePath)
-      ioImplementation += "//--- File '" + inFilewrapperDirectory + "/" + lkey + "'\n\n"
+  for filewrapperRegularFile in inFilewrapperRegularFileMap do
+    if filewrapperRegularFile.mIsTextFile then
+      let contents = @string.stringWithContentsOfFile (filewrapperRegularFile.mAbsoluteFilePath)
+      ioImplementation += "//--- File '" + inFilewrapperDirectory + "/" + filewrapperRegularFile.lkey + "'\n\n"
       ioImplementation +=  "const char * gWrapperFileContent_"
-      ioImplementation += mWrapperFileIndex.string
+      ioImplementation += filewrapperRegularFile.mWrapperFileIndex.string
       ioImplementation += "_"
       ioImplementation += inFilewrapperName.identifierRepresentation
       ioImplementation += " = "
@@ -1239,45 +1272,45 @@ proc generateWrapperContents
         ioImplementation += contents.utf8RepresentationEscapingQuestionMark
       end
       ioImplementation += " ;\n\nconst cRegularFileWrapper gWrapperFile_"
-      ioImplementation += mWrapperFileIndex.string
+      ioImplementation += filewrapperRegularFile.mWrapperFileIndex.string
       ioImplementation += "_"
       ioImplementation += inFilewrapperName.identifierRepresentation
       ioImplementation += " (\n  "
-      ioImplementation += lkey.string.utf8RepresentationEscapingQuestionMark
+      ioImplementation += filewrapperRegularFile.lkey.string.utf8RepresentationEscapingQuestionMark
       ioImplementation += ",\n  "
-      ioImplementation += lkey.string.pathExtension.utf8RepresentationEscapingQuestionMark
+      ioImplementation += filewrapperRegularFile.lkey.string.pathExtension.utf8RepresentationEscapingQuestionMark
       ioImplementation += ",\n  true, // Text file\n "
       ioImplementation += contents.count
       ioImplementation += ", // Text length\n  gWrapperFileContent_"
-      ioImplementation += mWrapperFileIndex.string
+      ioImplementation += filewrapperRegularFile.mWrapperFileIndex.string
       ioImplementation += "_"
       ioImplementation += inFilewrapperName.identifierRepresentation
       ioImplementation += "\n) ;\n\n"
     else
-      let @data contents = @data. dataWithContentsOfFile (!mAbsoluteFilePath)
-      ioImplementation += "//--- File '" + inFilewrapperDirectory + "/" + lkey + "'\n\n"
+      let @data contents = @data.dataWithContentsOfFile (filewrapperRegularFile.mAbsoluteFilePath)
+      ioImplementation += "//--- File '" + inFilewrapperDirectory + "/" + filewrapperRegularFile.lkey + "'\n\n"
       +  "const uint8_t gWrapperFileContent_"
-      + mWrapperFileIndex.string + "_"
+      + filewrapperRegularFile.mWrapperFileIndex.string + "_"
       + inFilewrapperName.identifierRepresentation + " [" + contents.count + "] = {"
       + contents.cStringRepresentation + "} ;\n\n"
-      + "const cRegularFileWrapper gWrapperFile_" + mWrapperFileIndex.string+ "_"
+      + "const cRegularFileWrapper gWrapperFile_" + filewrapperRegularFile.mWrapperFileIndex.string+ "_"
       + inFilewrapperName.identifierRepresentation + " (\n"
-      + "  " + lkey.string.utf8RepresentationEscapingQuestionMark + ",\n"
-      + "  " + lkey.string.pathExtension.utf8RepresentationEscapingQuestionMark + ",\n"
+      + "  " + filewrapperRegularFile.lkey.string.utf8RepresentationEscapingQuestionMark + ",\n"
+      + "  " + filewrapperRegularFile.lkey.string.pathExtension.utf8RepresentationEscapingQuestionMark + ",\n"
       + "  false, // binary file\n"
       + "  " + contents.count + ", // Length\n"
-      + "  (const char *) gWrapperFileContent_" + mWrapperFileIndex.string + "_" + inFilewrapperName.identifierRepresentation +"\n"
+      + "  (const char *) gWrapperFileContent_" + filewrapperRegularFile.mWrapperFileIndex.string + "_" + inFilewrapperName.identifierRepresentation +"\n"
       + ") ;\n\n"
     end
   end
 //--- Generate sub-directories
-  for (lkey mRegularFileMap mDirectoryMap mWrapperDirectoryIndex) in inFilewrapperDirectoryMap do
+  for filewrapperDirectory in inFilewrapperDirectoryMap do
     generateWrapperContents (
       !inFilewrapperName,
-      !lkey.string,
-      !mWrapperDirectoryIndex,
-      !mRegularFileMap,
-      !mDirectoryMap,
+      !filewrapperDirectory.lkey.string,
+      !filewrapperDirectory.mWrapperDirectoryIndex,
+      !filewrapperDirectory.mRegularFileMap,
+      !filewrapperDirectory.mDirectoryMap,
       !?ioImplementation
     )
   end
@@ -1286,8 +1319,8 @@ proc generateWrapperContents
   + "static const cRegularFileWrapper * gWrapperAllFiles_"
   + inFilewrapperName.identifierRepresentation + "_" + inFilewrapperDirectoryIndex.string
   + " [" + (inFilewrapperRegularFileMap.count + 1).string + "] = {\n"
-  for (* * * * mWrapperFileIndex) in inFilewrapperRegularFileMap do
-    ioImplementation += "  & gWrapperFile_" + mWrapperFileIndex.string + "_" + inFilewrapperName.identifierRepresentation + ",\n"
+  for filewrapperRegularFile in inFilewrapperRegularFileMap do
+    ioImplementation += "  & gWrapperFile_" + filewrapperRegularFile.mWrapperFileIndex.string + "_" + inFilewrapperName.identifierRepresentation + ",\n"
   end
   ioImplementation += "  nullptr\n"
   +"} ;\n\n"
@@ -1329,23 +1362,23 @@ override proc @filewrapperDeclarationForGeneration.appendSpecificImplementation
     !self.mFilewrapperDirectoryMap,
     !?filewrapperImplementation
   )
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.filewrapperImplementation
-    !self.mFilewrapperName
+  outImplementation = filewrapper [semanticComponentGenerationTemplate.filewrapperImplementation :
+    !self.mFilewrapperName,
     !filewrapperImplementation
   ]
 //--- template generation
-  for (mFilewrapperTemplateName mFilewrapperTemplateFormalInputParameters mTemplateInstructionListForGeneration) in self.mFilewrapperTemplateListForGeneration do
+  for filewrapperTemplate in self.mFilewrapperTemplateListForGeneration do
   //--- Build generated code for instruction list
     var @string generatedCodeForInstructionList = ""
     var @uint temporaryVariableIndex = 0
     var @stringset unusedVariableCppNameSet = @()
     unusedVariableCppNameSet ++= compilerCppName ()
-    for entry in mFilewrapperTemplateFormalInputParameters do
+    for entry in filewrapperTemplate.mFilewrapperTemplateFormalInputParameters do
       unusedVariableCppNameSet ++= entry.mFormalArgumentCppName
     end
     var @bool useColumnMarker = false
     templateCodeGenerationForListInstruction (
-      !mTemplateInstructionListForGeneration,
+      !filewrapperTemplate.mTemplateInstructionListForGeneration,
       !?generatedCodeForInstructionList,
       !?ioInclusionSet,
       !?temporaryVariableIndex,
@@ -1353,12 +1386,12 @@ override proc @filewrapperDeclarationForGeneration.appendSpecificImplementation
       !?useColumnMarker
     )
   //---
-    outImplementation += [filewrapper semanticComponentGenerationTemplate.filewrapperTemplateImplementation
-      !self.mFilewrapperName
-      !mFilewrapperTemplateName
-      !mFilewrapperTemplateFormalInputParameters
-      !unusedVariableCppNameSet
-      !useColumnMarker
+    outImplementation += filewrapper [semanticComponentGenerationTemplate.filewrapperTemplateImplementation :
+      !self.mFilewrapperName,
+      !filewrapperTemplate.mFilewrapperTemplateName,
+      !filewrapperTemplate.mFilewrapperTemplateFormalInputParameters,
+      !unusedVariableCppNameSet,
+      !useColumnMarker,
       !generatedCodeForInstructionList
     ]
   end
@@ -1385,28 +1418,28 @@ final class @primitiveTypeForGeneration : @semanticTypeForGeneration {
     result = self.mCppDeclarationString
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     if self.isPackage then
-      result += [filewrapper typeGenerationTemplate.unifiedClassBodyForPackage
-        !selfTypeDefinition.typeName.string
-        !self.mSelfTypeEntry.identifierRepresentation
-        !selfTypeDefinition.classFunctionMap
+      result += filewrapper [typeGenerationTemplate.unifiedClassBodyForPackage :
+        !selfTypeDefinition.typeName.string,
+        !self.mSelfTypeEntry.identifierRepresentation,
+        !selfTypeDefinition.classFunctionMap,
         !selfTypeDefinition.classMethodMap
       ]
     else
-      result += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-        !selfTypeDefinition.typeName.string
-        !self.mSelfTypeEntry.identifierRepresentation
-        !selfTypeDefinition.isConcrete
-        !selfTypeDefinition.initializerMap
-        !selfTypeDefinition.classFunctionMap
-        !selfTypeDefinition.getterMap
-        !selfTypeDefinition.setterMap
-        !selfTypeDefinition.instanceMethodMap
-        !selfTypeDefinition.classMethodMap
-        !selfTypeDefinition.readSubscriptMap
-        !selfTypeDefinition.enumerationDescriptorList
-        !selfTypeDefinition.features
-        !selfTypeDefinition.addAssignOperatorArguments
-        !selfTypeDefinition.typeForEnumeratedElement
+      result += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+        !selfTypeDefinition.typeName.string,
+        !self.mSelfTypeEntry.identifierRepresentation,
+        !selfTypeDefinition.isConcrete,
+        !selfTypeDefinition.initializerMap,
+        !selfTypeDefinition.classFunctionMap,
+        !selfTypeDefinition.getterMap,
+        !selfTypeDefinition.setterMap,
+        !selfTypeDefinition.instanceMethodMap,
+        !selfTypeDefinition.classMethodMap,
+        !selfTypeDefinition.readSubscriptMap,
+        !selfTypeDefinition.enumerationDescriptorList,
+        !selfTypeDefinition.features,
+        !selfTypeDefinition.addAssignOperatorArguments,
+        !selfTypeDefinition.typeForEnumeratedElement,
         !selfTypeDefinition.supportCollectionValue
       ]
     end
@@ -1428,7 +1461,7 @@ proc generatePredefinedTypeFiles
   ?!@stringset ioAllProductFileSet
 ) {
 //----------------------------------------------------------------- Generate header file
-  var generatedCode = [filewrapper predefinedTypeGenerationTemplate.primitiveTypesHeaderPrologue]
+  var generatedCode = filewrapper [predefinedTypeGenerationTemplate.primitiveTypesHeaderPrologue : ]
   for entry in inSemanticDeclarationListForGeneration do
     if entry.mDeclaration.isPredefined then
       entry.mDeclaration.appendPrimitiveTypePreDeclaration (!?generatedCode)
@@ -1446,7 +1479,7 @@ proc generatePredefinedTypeFiles
       generatedCode += code
     end
   end
-  generatedCode += [filewrapper predefinedTypeGenerationTemplate.predefinedTypeSeparation]
+  generatedCode += filewrapper [predefinedTypeGenerationTemplate.predefinedTypeSeparation : ]
   for entry in inSemanticDeclarationListForGeneration do
     if entry.mDeclaration.isPredefined then
       entry.mDeclaration.appendDeclaration2 (!inDirectory, !? %from @(), ?let @string headerString2)
@@ -1469,7 +1502,7 @@ proc generatePredefinedTypeFiles
     )
   end
 //----------------------------------------------------------------- Generate implementation file
-  generatedCode = [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation]
+  generatedCode = filewrapper [predefinedTypeGenerationTemplate.predefinedTypesImplementation : ]
   for entry in inSemanticDeclarationListForGeneration do
     if entry.mDeclaration.isPredefined then
       generatedCode += entry.mDeclaration.appendTypeGenericImplementation
@@ -1503,12 +1536,14 @@ proc generatePredefinedTypeFiles
 filewrapper semanticFileGenerationTemplate in "+generation-templates/semantic_generation" {
 }{
 }{
-  template semanticFileHeader "semantic-file.h.galgasTemplate"
-    ?@string COMPONENT_NAME
+  template semanticFileHeader : "semantic-file.h.galgasTemplate" (
+    ?@string COMPONENT_NAME,
     ?@stringlist IMPORTED_COMPONENT_LIST
+  )
 
-  template semanticFileImplementation "semantic-file.cpp.galgasTemplate"
+  template semanticFileImplementation : "semantic-file.cpp.galgasTemplate" (
     ?@stringlist IMPORTED_COMPONENT_LIST
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -388,11 +388,11 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
     if self.mIsPredefined then
       outHeader = ""
     else
-      outHeader = [filewrapper optionGenerationTemplates.optionHeaderZone3
-        !self.mOptionComponentName
-        !self.mBoolOptionSortedList
-        !self.mUIntOptionSortedList
-        !self.mStringOptionSortedList
+      outHeader = filewrapper [optionGenerationTemplates.optionHeaderZone3 :
+        !self.mOptionComponentName,
+        !self.mBoolOptionSortedList,
+        !self.mUIntOptionSortedList,
+        !self.mStringOptionSortedList,
         !self.mStringListSortedList
       ]
     end
@@ -409,11 +409,11 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
       outImplementation = ""
     else
       ioInclusionSet ++= "option-" + self.mOptionComponentName.fileNameRepresentation
-      outImplementation = [filewrapper optionGenerationTemplates.optionImplementationGalgas3
-        !self.mOptionComponentName
-        !self.mBoolOptionSortedList
-        !self.mUIntOptionSortedList
-        !self.mStringOptionSortedList
+      outImplementation = filewrapper [optionGenerationTemplates.optionImplementationGalgas3 :
+        !self.mOptionComponentName,
+        !self.mBoolOptionSortedList,
+        !self.mUIntOptionSortedList,
+        !self.mStringOptionSortedList,
         !self.mStringListSortedList
       ]
     end
@@ -437,12 +437,12 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
         !lineComment:"//",
         !header:"",
         !defaultUserZone1:"\n\n",
-        !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationSwiftUI
-          !"option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui"
-          !self.mOptionComponentName
-          !self.mBoolOptionSortedList
-          !self.mUIntOptionSortedList
-          !self.mStringOptionSortedList
+        !generatedZone2: filewrapper [optionGenerationTemplates.optionImplementationSwiftUI :
+          !"option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui",
+          !self.mOptionComponentName,
+          !self.mBoolOptionSortedList,
+          !self.mUIntOptionSortedList,
+          !self.mStringOptionSortedList,
           !self.mStringListSortedList
         ],
         !defaultUserZone2:"\n\n",
@@ -463,8 +463,8 @@ map @commandLineOptionMap { // the key is the option identifier
   public let @string mOptionString
   public let @string mComment
   public let @string mDefaultValue
-  insert insertKey error message "the '%K' command line option has been already declared in %L"
-  search searchKey error message "the '%K' command line option is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' command line option has been already declared in %L"
+  %searchMethod searchKey %errorMessage "the '%K' command line option is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -486,19 +486,21 @@ sortedlist @commandLineOptionSortedList {
 filewrapper optionGenerationTemplates in "+generation-templates/option_generation" {
 }{
 }{
-  template optionHeaderZone3 "option-header-zone3.galgasTemplate"
-    ?@string OPTION_COMPONENT_NAME
-    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST
-    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST
-    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
+  template optionHeaderZone3 : "option-header-zone3.galgasTemplate" (
+    ?@string OPTION_COMPONENT_NAME,
+    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST,
+    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST,
+    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST,
     ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
+  )
 
-  template optionImplementationGalgas3 "option-implementation-galgas3.cpp.galgasTemplate"
-    ?@string OPTION_COMPONENT_NAME
-    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST
-    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST
-    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
+  template optionImplementationGalgas3 : "option-implementation-galgas3.cpp.galgasTemplate" (
+    ?@string OPTION_COMPONENT_NAME,
+    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST,
+    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST,
+    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST,
     ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
+  )
 
 //  template optionImplementationSwiftCocoa "option-implementation-swift-cocoa.galgasTemplate"
 //    ?@string OPTION_HEADER_FILE_NAME
@@ -508,13 +510,14 @@ filewrapper optionGenerationTemplates in "+generation-templates/option_generatio
 //    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
 //    ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
 
-  template optionImplementationSwiftUI "option-implementation-swiftui.galgasTemplate"
-    ?@string OPTION_HEADER_FILE_NAME
-    ?@string OPTION_COMPONENT_NAME
-    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST
-    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST
-    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
+  template optionImplementationSwiftUI : "option-implementation-swiftui.galgasTemplate" (
+    ?@string OPTION_HEADER_FILE_NAME,
+    ?@string OPTION_COMPONENT_NAME,
+    ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST,
+    ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST,
+    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST,
     ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

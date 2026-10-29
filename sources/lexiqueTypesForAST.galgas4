@@ -336,8 +336,8 @@ list @lexicalSentValueList {
 
 map @terminalMap {
   public let @lexicalSentValueList mSentAttributeList
-  insert insertKey error message "the '%K' terminal has been already declared in %L"
-  search searchKey error message "the '%K' terminal is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' terminal has been already declared in %L"
+  %searchMethod searchKey %errorMessage "the '%K' terminal is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -346,8 +346,8 @@ map @terminalMap {
 
 map @lexicalTypeMap {
   public let @lexicalTypeEnum mLexicalType
-  insert insertKey error message "the '@%K' lexical type is already declared in %L"
-  search searchKey error message "there is no '@%K' lexical type"
+  %insertSetter insertKey %errorMessage "the '@%K' lexical type is already declared in %L"
+  %searchMethod searchKey %errorMessage "there is no '@%K' lexical type"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -368,8 +368,8 @@ func %once buildLexicalTypeMap () -> @lexicalTypeMap {
 
 map @lexicalAttributeMap {
   public let @lexicalTypeEnum mLexicalType
-  insert insertKey error message "the '%K' lexical attribute has been already declared in %L"
-  search searchKey error message "the '%K' lexical attribute is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' lexical attribute has been already declared in %L"
+  %searchMethod searchKey %errorMessage "the '%K' lexical attribute is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -380,19 +380,19 @@ proc buildLexicalAttributeMap
   (?let @lexicalTypeMap inLexicalTypeMap,
   ?let @lexicalAttributeListAST inLexicalAttributeList,
   ?!@lexicalAttributeMap ioLexicalAttributeMap ) {
-  for (mTypeName mName) in inLexicalAttributeList do
-    if inLexicalTypeMap.hasKey (!mTypeName.string) then
-      inLexicalTypeMap.searchKey (!mTypeName, ?let @lexicalTypeEnum lexicalType)
-      !?ioLexicalAttributeMap.insertKey (!mName, !lexicalType)
+  for lexicalAttribute in inLexicalAttributeList do
+    if inLexicalTypeMap.hasKey (lexicalAttribute.mTypeName.string) then
+      inLexicalTypeMap.searchKey (lexicalAttribute.mTypeName, ?let @lexicalTypeEnum lexicalType)
+      !?ioLexicalAttributeMap.insertKey (lexicalAttribute.mName, !lexicalType)
     else
       var @string m = ""
-      m += "the @" + mTypeName + " type is not a valid lexical attribute type; are allowed:"
-      for (lkey *) in inLexicalTypeMap do
-        m += " @" + lkey
+      m += "the @" + lexicalAttribute.mTypeName + " type is not a valid lexical attribute type; are allowed:"
+      for entry in inLexicalTypeMap do
+        m += " @" + entry.lkey
       between
         m += ","
       end
-      error (mTypeName: m)
+      error (lexicalAttribute.mTypeName: m)
     end
   end
 }

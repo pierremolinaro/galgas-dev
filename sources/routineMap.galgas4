@@ -151,9 +151,9 @@ struct @routineMap {
 
 map @internalRoutineMap {
   public var @routineArgumentMap mArgumentMap
-  insert insertKey error message "the '%K' routine has been already declared in %L"
-  search searchKey error message "the '%K' routine is not declared"
-  insert or replace
+  %insertSetter insertKey %errorMessage "the '%K' routine has been already declared in %L"
+  %searchMethod searchKey %errorMessage "the '%K' routine is not declared"
+  %insertOrReplaceSetter
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -161,8 +161,8 @@ map @internalRoutineMap {
 map @routineArgumentMap {
   public let @formalParameterSignature mRoutineSignature
   public let @bool mIsFilePrivate
-  insert insertKey error message "-- internal error --"
-  search searchKey error message "-- internal error --"
+  %insertSetter insertKey %errorMessage "-- internal error --"
+  %searchMethod searchKey %errorMessage "-- internal error --"
 }
 
 //--------------------------------------------------------------------------------------------------

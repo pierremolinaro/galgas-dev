@@ -419,7 +419,7 @@ GGS_selfPlusEqualElementsInstructionAST_2E_weak GGS_selfPlusEqualElementsInstruc
 //--------------------------------------------------------------------------------------------------
 
 GGS_typeFeatures extensionGetter_features (const GGS_opAssignmentOperator & inObject,
-                                           Compiler *
+                                           Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
   GGS_typeFeatures result_result ; // Returned variable
   const GGS_opAssignmentOperator temp_0 = inObject ;
@@ -14876,7 +14876,7 @@ GGS_lexiqueComponentAST_2E_weak GGS_lexiqueComponentAST_2E_weak::extractObject (
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_cppTypeName (const GGS_lexicalTypeEnum & inObject,
-                                        Compiler *
+                                        Compiler * /* inCompiler */
                                         COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_lexicalTypeEnum temp_0 = inObject ;

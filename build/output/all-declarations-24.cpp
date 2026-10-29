@@ -8,6 +8,21 @@
 #include "all-declarations-24.h"
 
 //--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@overridingAbstractExtensionMethodAST enterDeclarationInSemanticContext'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_overridingAbstractExtensionMethodAST::method_enterDeclarationInSemanticContext (GGS_equatableExtensionMap & /* ioArgument_ioEquatableExtensionMap */,
+                                                                                          const GGS_extensionInitializerForBuildingContext /* constinArgument_inExtensionInitializerMapForBuildingContext */,
+                                                                                          const GGS_extensionMethodMapForBuildingContext /* constinArgument_inExtensionMethodMapForBuildingContext */,
+                                                                                          const GGS_extensionGetterMapForBuildingContext /* constinArgument_inExtensionGetterMapForBuildingContext */,
+                                                                                          const GGS_extensionSetterMapForBuildingContext /* constinArgument_inExtensionSetterMapForBuildingContext */,
+                                                                                          GGS_unifiedTypeMap & /* ioArgument_ioTypeMap */,
+                                                                                          GGS_semanticContext & /* ioArgument_ioSemanticContext */,
+                                                                                          Compiler * /* inCompiler */
+                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+}
+
+//--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@overridingAbstractExtensionMethodAST semanticAnalysis'
 //--------------------------------------------------------------------------------------------------
 
@@ -21,91 +36,91 @@ void cPtr_overridingAbstractExtensionMethodAST::method_semanticAnalysis (GGS_lst
                                                                          Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_overridingAbstractExtensionMethodAST temp_0 = this ;
-  GGS_unifiedTypeMapEntry var_selfType_8651 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_0.readProperty_mTypeName (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 198)) ;
+  GGS_unifiedTypeMapEntry var_selfType_8650 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_0.readProperty_mTypeName (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 198)) ;
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
-    test_1 = extensionGetter_definition (var_selfType_8651, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 200)).readProperty_typeKind ().getter_isClassType (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 200)).operator_not (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 200)).boolEnum () ;
+    test_1 = extensionGetter_definition (var_selfType_8650, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 200)).readProperty_typeKind ().getter_isClassType (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 200)).operator_not (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 200)).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
       const GGS_overridingAbstractExtensionMethodAST temp_2 = this ;
       GenericArray <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (temp_2.readProperty_mOverridingExtensionMethodName ().readProperty_location (), GGS_string ("cannot declare a extension proc: '@").add_operation (extensionGetter_definition (var_selfType_8651, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 201)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 201)).add_operation (GGS_string ("' is not a class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 201)), fixItArray3  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 201)) ;
+      inCompiler->emitSemanticError (temp_2.readProperty_mOverridingExtensionMethodName ().readProperty_location (), GGS_string ("cannot declare a extension proc: '@").add_operation (extensionGetter_definition (var_selfType_8650, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 201)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 201)).add_operation (GGS_string ("' is not a class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 201)), fixItArray3  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 201)) ;
     }
   }
   if (GalgasBool::boolFalse == test_1) {
     GalgasBool test_4 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_4) {
-      test_4 = extensionGetter_definition (var_selfType_8651, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 202)).readProperty_isConcrete ().boolEnum () ;
+      test_4 = extensionGetter_definition (var_selfType_8650, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 202)).readProperty_isConcrete ().boolEnum () ;
       if (GalgasBool::boolTrue == test_4) {
         const GGS_overridingAbstractExtensionMethodAST temp_5 = this ;
         GenericArray <FixItDescription> fixItArray6 ;
-        inCompiler->emitSemanticError (temp_5.readProperty_mOverridingExtensionMethodName ().readProperty_location (), GGS_string ("cannot declare an abstract extension proc: '@").add_operation (extensionGetter_definition (var_selfType_8651, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 203)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 203)).add_operation (GGS_string ("' is not an abstract class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 203)), fixItArray6  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 203)) ;
+        inCompiler->emitSemanticError (temp_5.readProperty_mOverridingExtensionMethodName ().readProperty_location (), GGS_string ("cannot declare an abstract extension proc: '@").add_operation (extensionGetter_definition (var_selfType_8650, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 203)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 203)).add_operation (GGS_string ("' is not an abstract class"), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 203)), fixItArray6  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 203)) ;
       }
     }
   }
-  GGS_string var_baseTypeName_9205 = GGS_string::makeEmptyString () ;
-  GGS_unifiedTypeMapEntry var_superType_9250 = extensionGetter_definition (var_selfType_8651, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 207)).readProperty_superType () ;
-  GGS_formalParameterSignature var_inheritedSignature_9298 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-  GGS_location var_inheritedDeclarationLocation_9364 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 209)) ;
+  GGS_string var_baseTypeName_9204 = GGS_string::makeEmptyString () ;
+  GGS_unifiedTypeMapEntry var_superType_9249 = extensionGetter_definition (var_selfType_8650, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 207)).readProperty_superType () ;
+  GGS_formalParameterSignature var_inheritedSignature_9297 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
+  GGS_location var_inheritedDeclarationLocation_9363 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 209)) ;
   if (ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 210)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 210)).isValid ()) {
-    uint32_t variant_9412 = ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 210)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 210)).uintValue () ;
-    bool loop_9412 = true ;
-    while (loop_9412) {
-      loop_9412 = var_superType_9250.getter_isNull (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 211)).operator_not (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 211)).operator_and (GGS_bool (ComparisonKind::equal, var_baseTypeName_9205.objectCompare (GGS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 211)).isValid () ;
-      if (loop_9412) {
-        loop_9412 = var_superType_9250.getter_isNull (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 211)).operator_not (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 211)).operator_and (GGS_bool (ComparisonKind::equal, var_baseTypeName_9205.objectCompare (GGS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 211)).boolValue () ;
+    uint32_t variant_9411 = ioArgument_ioTypeMap.getter_count (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 210)).add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 210)).uintValue () ;
+    bool loop_9411 = true ;
+    while (loop_9411) {
+      loop_9411 = var_superType_9249.getter_isNull (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 211)).operator_not (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 211)).operator_and (GGS_bool (ComparisonKind::equal, var_baseTypeName_9204.objectCompare (GGS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 211)).isValid () ;
+      if (loop_9411) {
+        loop_9411 = var_superType_9249.getter_isNull (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 211)).operator_not (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 211)).operator_and (GGS_bool (ComparisonKind::equal, var_baseTypeName_9204.objectCompare (GGS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 211)).boolValue () ;
       }
-      if (loop_9412 && (0 == variant_9412)) {
-        loop_9412 = false ;
+      if (loop_9411 && (0 == variant_9411)) {
+        loop_9411 = false ;
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 210)) ;
       }
-      if (loop_9412) {
-        variant_9412 -= 1 ;
+      if (loop_9411) {
+        variant_9411 -= 1 ;
         GalgasBool test_7 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_7) {
           const GGS_overridingAbstractExtensionMethodAST temp_8 = this ;
-          test_7 = extensionGetter_definition (var_superType_9250, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 212)).readProperty_instanceMethodMap ().getter_hasKey (temp_8.readProperty_mOverridingExtensionMethodName ().readProperty_string () COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 212)).boolEnum () ;
+          test_7 = extensionGetter_definition (var_superType_9249, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 212)).readProperty_instanceMethodMap ().getter_hasKey (temp_8.readProperty_mOverridingExtensionMethodName ().readProperty_string () COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 212)).boolEnum () ;
           if (GalgasBool::boolTrue == test_7) {
-            GGS_methodQualifier var_qualifier_9808 ;
+            GGS_methodQualifier var_qualifier_9807 ;
             const GGS_overridingAbstractExtensionMethodAST temp_9 = this ;
-            GGS_methodKind joker_9711 ; // Joker input parameter
-            GGS_bool joker_9791 ; // Joker input parameter
-            GGS_string joker_9827 ; // Joker input parameter
-            extensionGetter_definition (var_superType_9250, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 213)).readProperty_instanceMethodMap ().method_searchKey (temp_9.readProperty_mOverridingExtensionMethodName (), joker_9711, var_inheritedSignature_9298, var_inheritedDeclarationLocation_9364, joker_9791, var_qualifier_9808, joker_9827, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 213)) ;
+            GGS_methodKind joker_9710 ; // Joker input parameter
+            GGS_bool joker_9790 ; // Joker input parameter
+            GGS_string joker_9826 ; // Joker input parameter
+            extensionGetter_definition (var_superType_9249, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 213)).readProperty_instanceMethodMap ().method_searchKey (temp_9.readProperty_mOverridingExtensionMethodName (), joker_9710, var_inheritedSignature_9297, var_inheritedDeclarationLocation_9363, joker_9790, var_qualifier_9807, joker_9826, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 213)) ;
             GalgasBool test_10 = GalgasBool::boolTrue ;
             if (GalgasBool::boolTrue == test_10) {
-              test_10 = GGS_bool (ComparisonKind::lowerOrEqual, var_qualifier_9808.objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 222)))).boolEnum () ;
+              test_10 = GGS_bool (ComparisonKind::lowerOrEqual, var_qualifier_9807.objectCompare (GGS_methodQualifier::class_func_isBasicFinal (SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 222)))).boolEnum () ;
               if (GalgasBool::boolTrue == test_10) {
-                var_baseTypeName_9205 = extensionGetter_definition (var_superType_9250, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 223)).readProperty_typeName ().readProperty_string () ;
+                var_baseTypeName_9204 = extensionGetter_definition (var_superType_9249, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 223)).readProperty_typeName ().readProperty_string () ;
               }
             }
           }
         }
-        var_superType_9250 = extensionGetter_definition (var_superType_9250, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 226)).readProperty_superType () ;
+        var_superType_9249 = extensionGetter_definition (var_superType_9249, inCompiler COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 226)).readProperty_superType () ;
       }
     }
   }
   GalgasBool test_11 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_11) {
-    test_11 = GGS_bool (ComparisonKind::equal, var_baseTypeName_9205.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    test_11 = GGS_bool (ComparisonKind::equal, var_baseTypeName_9204.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
     if (GalgasBool::boolTrue == test_11) {
       const GGS_overridingAbstractExtensionMethodAST temp_12 = this ;
       GenericArray <FixItDescription> fixItArray13 ;
       inCompiler->emitSemanticError (temp_12.readProperty_mOverridingExtensionMethodName ().readProperty_location (), GGS_string ("this func is not declared by a super class"), fixItArray13  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 229)) ;
     }
   }
-  GGS_localVarManager var_variableMap_10195 = GGS_localVarManager::init (inCompiler COMMA_HERE) ;
-  GGS_formalParameterListForGeneration var_formalParameterListForGeneration_10393 ;
+  GGS_localVarManager var_variableMap_10194 = GGS_localVarManager::init (inCompiler COMMA_HERE) ;
+  GGS_formalParameterListForGeneration var_formalParameterListForGeneration_10392 ;
   {
   const GGS_overridingAbstractExtensionMethodAST temp_14 = this ;
-  routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (constinArgument_inSemanticContext, ioArgument_ioTypeMap, temp_14.readProperty_mOverridingExtensionMethodFormalParameterList (), var_variableMap_10195, var_formalParameterListForGeneration_10393, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 233)) ;
+  routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (constinArgument_inSemanticContext, ioArgument_ioTypeMap, temp_14.readProperty_mOverridingExtensionMethodFormalParameterList (), var_variableMap_10194, var_formalParameterListForGeneration_10392, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 233)) ;
   }
   GalgasBool test_15 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_15) {
-    test_15 = GGS_bool (ComparisonKind::notEqual, var_baseTypeName_9205.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    test_15 = GGS_bool (ComparisonKind::notEqual, var_baseTypeName_9204.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
     if (GalgasBool::boolTrue == test_15) {
       {
       const GGS_overridingAbstractExtensionMethodAST temp_16 = this ;
-      routine_checkMethodSignatures_3F__3F__3F__3F_ (var_formalParameterListForGeneration_10393, temp_16.readProperty_mOverridingExtensionMethodName ().readProperty_location (), var_inheritedSignature_9298, var_inheritedDeclarationLocation_9364, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 242)) ;
+      routine_checkMethodSignatures_3F__3F__3F__3F_ (var_formalParameterListForGeneration_10392, temp_16.readProperty_mOverridingExtensionMethodName ().readProperty_location (), var_inheritedSignature_9297, var_inheritedDeclarationLocation_9363, inCompiler  COMMA_SOURCE_FILE ("extension-overriding-abstract-method.galgas4", 242)) ;
       }
     }
   }
@@ -3358,90 +3373,90 @@ GGS_string function_escapeForTex (const GGS_string & constinArgument_inString,
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   result_result = GGS_string::makeEmptyString () ;
-  UpEnumerator_range enumerator_1965 (GGS_range (GGS_uint (uint32_t (0U)), constinArgument_inString.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 39)).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 39)))) ;
-  while (enumerator_1965.hasCurrentObject ()) {
-    GGS_char var_c_1982 = constinArgument_inString.getter_characterAtIndex (enumerator_1965.current (HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 40)) ;
+  UpEnumerator_range enumerator_1973 (GGS_range (GGS_uint (uint32_t (0U)), constinArgument_inString.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 40)).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 40)))) ;
+  while (enumerator_1973.hasCurrentObject ()) {
+    GGS_char var_c_1990 = constinArgument_inString.getter_characterAtIndex (enumerator_1973.current (HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 41)) ;
     GalgasBool test_0 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_0) {
-      test_0 = GGS_bool (ComparisonKind::equal, var_c_1982.objectCompare (GGS_char (utf32 (95)))).boolEnum () ;
+      test_0 = GGS_bool (ComparisonKind::equal, var_c_1990.objectCompare (GGS_char (utf32 (95)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_0) {
-        result_result.plusAssignOperation(GGS_string ("\\_"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 42)) ;
+        result_result.plusAssignOperation(GGS_string ("\\_"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 43)) ;
       }
     }
     if (GalgasBool::boolFalse == test_0) {
       GalgasBool test_1 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_1) {
-        test_1 = GGS_bool (ComparisonKind::equal, var_c_1982.objectCompare (GGS_char (utf32 (123)))).boolEnum () ;
+        test_1 = GGS_bool (ComparisonKind::equal, var_c_1990.objectCompare (GGS_char (utf32 (123)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_1) {
-          result_result.plusAssignOperation(GGS_string ("\\{"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 44)) ;
+          result_result.plusAssignOperation(GGS_string ("\\{"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 45)) ;
         }
       }
       if (GalgasBool::boolFalse == test_1) {
         GalgasBool test_2 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_2) {
-          test_2 = GGS_bool (ComparisonKind::equal, var_c_1982.objectCompare (GGS_char (utf32 (125)))).boolEnum () ;
+          test_2 = GGS_bool (ComparisonKind::equal, var_c_1990.objectCompare (GGS_char (utf32 (125)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_2) {
-            result_result.plusAssignOperation(GGS_string ("\\}"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 46)) ;
+            result_result.plusAssignOperation(GGS_string ("\\}"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 47)) ;
           }
         }
         if (GalgasBool::boolFalse == test_2) {
           GalgasBool test_3 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_3) {
-            test_3 = GGS_bool (ComparisonKind::equal, var_c_1982.objectCompare (GGS_char (utf32 (38)))).boolEnum () ;
+            test_3 = GGS_bool (ComparisonKind::equal, var_c_1990.objectCompare (GGS_char (utf32 (38)))).boolEnum () ;
             if (GalgasBool::boolTrue == test_3) {
-              result_result.plusAssignOperation(GGS_string ("\\&"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 48)) ;
+              result_result.plusAssignOperation(GGS_string ("\\&"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 49)) ;
             }
           }
           if (GalgasBool::boolFalse == test_3) {
             GalgasBool test_4 = GalgasBool::boolTrue ;
             if (GalgasBool::boolTrue == test_4) {
-              test_4 = GGS_bool (ComparisonKind::equal, var_c_1982.objectCompare (GGS_char (utf32 (35)))).boolEnum () ;
+              test_4 = GGS_bool (ComparisonKind::equal, var_c_1990.objectCompare (GGS_char (utf32 (35)))).boolEnum () ;
               if (GalgasBool::boolTrue == test_4) {
-                result_result.plusAssignOperation(GGS_string ("\\#"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 50)) ;
+                result_result.plusAssignOperation(GGS_string ("\\#"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 51)) ;
               }
             }
             if (GalgasBool::boolFalse == test_4) {
               GalgasBool test_5 = GalgasBool::boolTrue ;
               if (GalgasBool::boolTrue == test_5) {
-                test_5 = GGS_bool (ComparisonKind::equal, var_c_1982.objectCompare (GGS_char (utf32 (36)))).boolEnum () ;
+                test_5 = GGS_bool (ComparisonKind::equal, var_c_1990.objectCompare (GGS_char (utf32 (36)))).boolEnum () ;
                 if (GalgasBool::boolTrue == test_5) {
-                  result_result.plusAssignOperation(GGS_string ("\\$"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 52)) ;
+                  result_result.plusAssignOperation(GGS_string ("\\$"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 53)) ;
                 }
               }
               if (GalgasBool::boolFalse == test_5) {
                 GalgasBool test_6 = GalgasBool::boolTrue ;
                 if (GalgasBool::boolTrue == test_6) {
-                  test_6 = GGS_bool (ComparisonKind::equal, var_c_1982.objectCompare (GGS_char (utf32 (94)))).boolEnum () ;
+                  test_6 = GGS_bool (ComparisonKind::equal, var_c_1990.objectCompare (GGS_char (utf32 (94)))).boolEnum () ;
                   if (GalgasBool::boolTrue == test_6) {
-                    result_result.plusAssignOperation(GGS_string ("\\verb=^="), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 54)) ;
+                    result_result.plusAssignOperation(GGS_string ("\\verb=^="), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 55)) ;
                   }
                 }
                 if (GalgasBool::boolFalse == test_6) {
                   GalgasBool test_7 = GalgasBool::boolTrue ;
                   if (GalgasBool::boolTrue == test_7) {
-                    test_7 = GGS_bool (ComparisonKind::equal, var_c_1982.objectCompare (GGS_char (utf32 (37)))).boolEnum () ;
+                    test_7 = GGS_bool (ComparisonKind::equal, var_c_1990.objectCompare (GGS_char (utf32 (37)))).boolEnum () ;
                     if (GalgasBool::boolTrue == test_7) {
-                      result_result.plusAssignOperation(GGS_string ("\\verb=%="), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 56)) ;
+                      result_result.plusAssignOperation(GGS_string ("\\verb=%="), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 57)) ;
                     }
                   }
                   if (GalgasBool::boolFalse == test_7) {
                     GalgasBool test_8 = GalgasBool::boolTrue ;
                     if (GalgasBool::boolTrue == test_8) {
-                      test_8 = GGS_bool (ComparisonKind::equal, var_c_1982.objectCompare (GGS_char (utf32 (126)))).boolEnum () ;
+                      test_8 = GGS_bool (ComparisonKind::equal, var_c_1990.objectCompare (GGS_char (utf32 (126)))).boolEnum () ;
                       if (GalgasBool::boolTrue == test_8) {
-                        result_result.plusAssignOperation(GGS_string ("$\\sim$"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 58)) ;
+                        result_result.plusAssignOperation(GGS_string ("$\\sim$"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 59)) ;
                       }
                     }
                     if (GalgasBool::boolFalse == test_8) {
                       GalgasBool test_9 = GalgasBool::boolTrue ;
                       if (GalgasBool::boolTrue == test_9) {
-                        test_9 = GGS_bool (ComparisonKind::equal, var_c_1982.objectCompare (GGS_char (utf32 (94)))).boolEnum () ;
+                        test_9 = GGS_bool (ComparisonKind::equal, var_c_1990.objectCompare (GGS_char (utf32 (94)))).boolEnum () ;
                         if (GalgasBool::boolTrue == test_9) {
-                          result_result.plusAssignOperation(GGS_string ("$\\wedge$"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 60)) ;
+                          result_result.plusAssignOperation(GGS_string ("$\\wedge$"), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 61)) ;
                         }
                       }
                       if (GalgasBool::boolFalse == test_9) {
-                        result_result.plusAssignOperation(var_c_1982.getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 62)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 62)) ;
+                        result_result.plusAssignOperation(var_c_1990.getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 63)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 63)) ;
                       }
                     }
                   }
@@ -3452,7 +3467,7 @@ GGS_string function_escapeForTex (const GGS_string & constinArgument_inString,
         }
       }
     }
-    enumerator_1965.gotoNextObject () ;
+    enumerator_1973.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -3503,58 +3518,58 @@ void routine_emitProductionRulesInTexFile_3F__3F__3F__3F__3F_ (const GGS_string 
                                                                const GGS_lstring constinArgument_inStartSymbol,
                                                                Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string var_texDocumentFilePath_3064 = constinArgument_inProductDirectory.add_operation (GGS_string ("/../tex/"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 77)).add_operation (constinArgument_inGrammarComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 77)).add_operation (GGS_string (".document.tex"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 77)) ;
-  var_texDocumentFilePath_3064.getter_deletingLastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas3", 78)).method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 78)) ;
-  GGS_string var_document_3232 = GGS_string (filewrapperTemplate_grammarRulesInTexDocumentTemplate_document (inCompiler, constinArgument_inGrammarComponentName, function_escapeForTex (constinArgument_inGrammarComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 81)) COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 79))) ;
-  GGS_bool joker_3442 ; // Joker input parameter
-  var_document_3232.method_writeToFileWhenDifferentContents (var_texDocumentFilePath_3064, joker_3442, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 83)) ;
-  GGS_string var_texFilePath_3452 = constinArgument_inProductDirectory.add_operation (GGS_string ("/../tex/"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 84)).add_operation (constinArgument_inGrammarComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 84)).add_operation (GGS_string (".tex"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 84)) ;
-  GGS_string var_s_3538 = GGS_string::makeEmptyString () ;
-  GGS_uint var_startSymbolIndex_3614 ;
-  GGS_nonterminalSymbolLabelMapForGrammarAnalysis joker_3632 ; // Joker input parameter
-  constinArgument_inNonTerminalMapForGrammarAnalysis.method_searchKey (constinArgument_inStartSymbol, var_startSymbolIndex_3614, joker_3632, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 86)) ;
-  var_s_3538.plusAssignOperation(GGS_string ("\\startSymbol{").add_operation (function_escapeForTex (constinArgument_inStartSymbol.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 87)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 87)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 87)).add_operation (var_startSymbolIndex_3614.getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 87)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 87)).add_operation (GGS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 87)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 87)) ;
-  var_s_3538.plusAssignOperation(GGS_string ("\\nonTerminalSummaryStart "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 88)) ;
-  UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_3785 (constinArgument_inNonTerminalMapForGrammarAnalysis) ;
-  while (enumerator_3785.hasCurrentObject ()) {
-    var_s_3538.plusAssignOperation(GGS_string ("\\nonTerminalSummary{").add_operation (function_escapeForTex (enumerator_3785.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 90)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 90)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 90)).add_operation (enumerator_3785.current (HERE).readProperty_mNonTerminalIndex ().getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 90)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 90)).add_operation (GGS_string ("}"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 90)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 90)) ;
-    enumerator_3785.gotoNextObject () ;
-    if (enumerator_3785.hasCurrentObject ()) {
-      var_s_3538.plusAssignOperation(GGS_string ("\\nonTerminalSummarySeparator "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 91)) ;
+  GGS_string var_texDocumentFilePath_3072 = constinArgument_inProductDirectory.add_operation (GGS_string ("/../tex/"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 78)).add_operation (constinArgument_inGrammarComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 78)).add_operation (GGS_string (".document.tex"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 78)) ;
+  var_texDocumentFilePath_3072.getter_deletingLastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas4", 79)).method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 79)) ;
+  GGS_string var_document_3240 = GGS_string (filewrapperTemplate_grammarRulesInTexDocumentTemplate_document (inCompiler, constinArgument_inGrammarComponentName, function_escapeForTex (constinArgument_inGrammarComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 82)) COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 80))) ;
+  GGS_bool joker_3453 ; // Joker input parameter
+  var_document_3240.method_writeToFileWhenDifferentContents (var_texDocumentFilePath_3072, joker_3453, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 84)) ;
+  GGS_string var_texFilePath_3463 = constinArgument_inProductDirectory.add_operation (GGS_string ("/../tex/"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 85)).add_operation (constinArgument_inGrammarComponentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 85)).add_operation (GGS_string (".tex"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 85)) ;
+  GGS_string var_s_3549 = GGS_string::makeEmptyString () ;
+  GGS_uint var_startSymbolIndex_3625 ;
+  GGS_nonterminalSymbolLabelMapForGrammarAnalysis joker_3643 ; // Joker input parameter
+  constinArgument_inNonTerminalMapForGrammarAnalysis.method_searchKey (constinArgument_inStartSymbol, var_startSymbolIndex_3625, joker_3643, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 87)) ;
+  var_s_3549.plusAssignOperation(GGS_string ("\\startSymbol{").add_operation (function_escapeForTex (constinArgument_inStartSymbol.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 88)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 88)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 88)).add_operation (var_startSymbolIndex_3625.getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 88)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 88)).add_operation (GGS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 88)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 88)) ;
+  var_s_3549.plusAssignOperation(GGS_string ("\\nonTerminalSummaryStart "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 89)) ;
+  UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_3796 (constinArgument_inNonTerminalMapForGrammarAnalysis) ;
+  while (enumerator_3796.hasCurrentObject ()) {
+    var_s_3549.plusAssignOperation(GGS_string ("\\nonTerminalSummary{").add_operation (function_escapeForTex (enumerator_3796.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 91)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 91)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 91)).add_operation (enumerator_3796.current (HERE).readProperty_mNonTerminalIndex ().getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 91)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 91)).add_operation (GGS_string ("}"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 91)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 91)) ;
+    enumerator_3796.gotoNextObject () ;
+    if (enumerator_3796.hasCurrentObject ()) {
+      var_s_3549.plusAssignOperation(GGS_string ("\\nonTerminalSummarySeparator "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 92)) ;
     }
   }
-  var_s_3538.plusAssignOperation(GGS_string ("\\nonTerminalSummaryEnd "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 93)) ;
-  UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_4047 (constinArgument_inNonTerminalMapForGrammarAnalysis) ;
-  while (enumerator_4047.hasCurrentObject ()) {
-    var_s_3538.plusAssignOperation(GGS_string ("\\nonTerminalSection{").add_operation (function_escapeForTex (enumerator_4047.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 95)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 95)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 95)).add_operation (enumerator_4047.current (HERE).readProperty_mNonTerminalIndex ().getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 95)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 95)).add_operation (GGS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 95)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 95)) ;
-    UpEnumerator_syntaxComponentListForGrammarAnalysis enumerator_4229 (constinArgument_inSyntaxComponentListForGrammarAnalysis) ;
-    while (enumerator_4229.hasCurrentObject ()) {
-      UpEnumerator_productionRuleListForGrammarAnalysis enumerator_4316 (enumerator_4229.current (HERE).readProperty_mProductionRulesList ()) ;
-      while (enumerator_4316.hasCurrentObject ()) {
+  var_s_3549.plusAssignOperation(GGS_string ("\\nonTerminalSummaryEnd "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 94)) ;
+  UpEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_4058 (constinArgument_inNonTerminalMapForGrammarAnalysis) ;
+  while (enumerator_4058.hasCurrentObject ()) {
+    var_s_3549.plusAssignOperation(GGS_string ("\\nonTerminalSection{").add_operation (function_escapeForTex (enumerator_4058.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 96)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 96)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 96)).add_operation (enumerator_4058.current (HERE).readProperty_mNonTerminalIndex ().getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 96)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 96)).add_operation (GGS_string ("}\n\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 96)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 96)) ;
+    UpEnumerator_syntaxComponentListForGrammarAnalysis enumerator_4240 (constinArgument_inSyntaxComponentListForGrammarAnalysis) ;
+    while (enumerator_4240.hasCurrentObject ()) {
+      UpEnumerator_productionRuleListForGrammarAnalysis enumerator_4327 (enumerator_4240.current (HERE).readProperty_mProductionRulesList ()) ;
+      while (enumerator_4327.hasCurrentObject ()) {
         GalgasBool test_0 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_0) {
-          test_0 = GGS_bool (ComparisonKind::equal, enumerator_4316.current (HERE).readProperty_mLeftNonterminalSymbol ().readProperty_string ().objectCompare (enumerator_4047.current (HERE).readProperty_lkey ().readProperty_string ())).boolEnum () ;
+          test_0 = GGS_bool (ComparisonKind::equal, enumerator_4327.current (HERE).readProperty_mLeftNonterminalSymbol ().readProperty_string ().objectCompare (enumerator_4058.current (HERE).readProperty_lkey ().readProperty_string ())).boolEnum () ;
           if (GalgasBool::boolTrue == test_0) {
             GalgasBool test_1 = GalgasBool::boolTrue ;
             if (GalgasBool::boolTrue == test_1) {
-              test_1 = extensionGetter_displayVertically (enumerator_4316.current (HERE).readProperty_mInstructionList (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 99)).boolEnum () ;
+              test_1 = extensionGetter_displayVertically (enumerator_4327.current (HERE).readProperty_mInstructionList (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 100)).boolEnum () ;
               if (GalgasBool::boolTrue == test_1) {
-                extensionMethod_displayRuleVertically (enumerator_4316.current (HERE), enumerator_4229.current (HERE).readProperty_mSyntaxComponentName ().readProperty_string (), var_s_3538, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 100)) ;
+                extensionMethod_displayRuleVertically (enumerator_4327.current (HERE), enumerator_4240.current (HERE).readProperty_mSyntaxComponentName ().readProperty_string (), var_s_3549, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 101)) ;
               }
             }
             if (GalgasBool::boolFalse == test_1) {
-              extensionMethod_displayRule (enumerator_4316.current (HERE), enumerator_4229.current (HERE).readProperty_mSyntaxComponentName ().readProperty_string (), var_s_3538, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 102)) ;
+              extensionMethod_displayRule (enumerator_4327.current (HERE), enumerator_4240.current (HERE).readProperty_mSyntaxComponentName ().readProperty_string (), var_s_3549, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 103)) ;
             }
           }
         }
-        enumerator_4316.gotoNextObject () ;
+        enumerator_4327.gotoNextObject () ;
       }
-      enumerator_4229.gotoNextObject () ;
+      enumerator_4240.gotoNextObject () ;
     }
-    enumerator_4047.gotoNextObject () ;
+    enumerator_4058.gotoNextObject () ;
   }
-  GGS_bool joker_4798 ; // Joker input parameter
-  var_s_3538.method_writeToFileWhenDifferentContents (var_texFilePath_3452, joker_4798, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 108)) ;
+  GGS_bool joker_4809 ; // Joker input parameter
+  var_s_3549.method_writeToFileWhenDifferentContents (var_texFilePath_3463, joker_4809, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 109)) ;
 }
 
 
@@ -3574,15 +3589,15 @@ void cPtr_nonTerminalInstructionForGrammarAnalysis::method_tikzNodeForSyntaxInst
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_nonTerminalInstructionForGrammarAnalysis temp_0 = this ;
   const GGS_nonTerminalInstructionForGrammarAnalysis temp_1 = this ;
-  GGS_string var_nodeDefinition_11702 = GGS_string ("[nonterminal] {\\nonTerminalSymbol{").add_operation (function_escapeForTex (temp_0.readProperty_mNonterminalSymbolName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 326)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 326)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 326)).add_operation (temp_1.readProperty_mNonterminalSymbolIndex ().getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 327)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 327)).add_operation (GGS_string ("}}"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 327)) ;
-  GGS_string var_nodeName_11969 ;
+  GGS_string var_nodeDefinition_11706 = GGS_string ("[nonterminal] {\\nonTerminalSymbol{").add_operation (function_escapeForTex (temp_0.readProperty_mNonterminalSymbolName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 327)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 327)).add_operation (GGS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 327)).add_operation (temp_1.readProperty_mNonterminalSymbolIndex ().getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 328)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 328)).add_operation (GGS_string ("}}"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 328)) ;
+  GGS_string var_nodeName_11973 ;
   {
-  extensionSetter_appendRow (ioArgument_ioRowList, var_nodeDefinition_11702, constinArgument_inRow, ioArgument_ioColumn, var_nodeName_11969, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 328)) ;
+  extensionSetter_appendRow (ioArgument_ioRowList, var_nodeDefinition_11706, constinArgument_inRow, ioArgument_ioColumn, var_nodeName_11973, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 329)) ;
   }
-  ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (ioArgument_ioCurrentNode, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 334)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 334)).add_operation (ioArgument_ioArrowShape, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 334)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 334)).add_operation (var_nodeName_11969, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 334)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 334)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 334)) ;
-  ioArgument_ioCurrentNode = var_nodeName_11969 ;
+  ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (ioArgument_ioCurrentNode, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 335)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 335)).add_operation (ioArgument_ioArrowShape, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 335)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 335)).add_operation (var_nodeName_11973, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 335)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 335)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 335)) ;
+  ioArgument_ioCurrentNode = var_nodeName_11973 ;
   ioArgument_ioArrowShape = GGS_string ("--") ;
-  ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 337)) ;
+  ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 338)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3603,83 +3618,83 @@ void cPtr_selectInstructionForGrammarAnalysis::method_tikzNodeForSyntaxInstructi
   if (GalgasBool::boolTrue == test_0) {
     test_0 = constinArgument_inDebug.boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      GGS_string var_markerStartNodeName_12770 ;
+      GGS_string var_markerStartNodeName_12774 ;
       {
       const GGS_selectInstructionForGrammarAnalysis temp_1 = this ;
-      extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[nonterminal] {SS").add_operation (temp_1.readProperty_mSelectBranchList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 355)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 355)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 355)).add_operation (GGS_string ("}"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 355)), constinArgument_inRow, ioArgument_ioColumn, var_markerStartNodeName_12770, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 354)) ;
+      extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[nonterminal] {SS").add_operation (temp_1.readProperty_mSelectBranchList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 356)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 356)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 356)).add_operation (GGS_string ("}"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 356)), constinArgument_inRow, ioArgument_ioColumn, var_markerStartNodeName_12774, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 355)) ;
       }
-      ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (ioArgument_ioCurrentNode, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 360)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 360)).add_operation (ioArgument_ioArrowShape, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 360)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 360)).add_operation (var_markerStartNodeName_12770, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 360)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 360)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 360)) ;
-      ioArgument_ioCurrentNode = var_markerStartNodeName_12770 ;
+      ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (ioArgument_ioCurrentNode, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 361)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 361)).add_operation (ioArgument_ioArrowShape, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 361)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 361)).add_operation (var_markerStartNodeName_12774, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 361)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 361)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 361)) ;
+      ioArgument_ioCurrentNode = var_markerStartNodeName_12774 ;
       ioArgument_ioArrowShape = GGS_string ("--") ;
-      ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 363)) ;
+      ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 364)) ;
     }
   }
-  GGS_string var_startNodeName_13117 ;
+  GGS_string var_startNodeName_13121 ;
   {
-  extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[point] ()"), constinArgument_inRow, ioArgument_ioColumn, var_startNodeName_13117, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 366)) ;
+  extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[point] ()"), constinArgument_inRow, ioArgument_ioColumn, var_startNodeName_13121, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 367)) ;
   }
-  ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 367)) ;
+  ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 368)) ;
   const GGS_selectInstructionForGrammarAnalysis temp_2 = this ;
-  GGS_branchListForGrammarAnalysis var_branches_13178 = temp_2.readProperty_mSelectBranchList () ;
-  GGS_syntaxInstructionListForGrammarAnalysis var_brancheZero_13281 ;
+  GGS_branchListForGrammarAnalysis var_branches_13182 = temp_2.readProperty_mSelectBranchList () ;
+  GGS_syntaxInstructionListForGrammarAnalysis var_brancheZero_13285 ;
   {
-  var_branches_13178.setter_popFirst (var_brancheZero_13281, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 370)) ;
+  var_branches_13182.setter_popFirst (var_brancheZero_13285, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 371)) ;
   }
-  GGS_uint var_branchZeroColumn_13300 = ioArgument_ioColumn ;
-  GGS_uint var_maxUsedRowIndex_13334 = constinArgument_inRow ;
-  extensionMethod_tikzNodeForSyntaxInstruction (var_brancheZero_13281, ioArgument_ioRowList, constinArgument_inRow, var_branchZeroColumn_13300, ioArgument_ioCurrentNode, ioArgument_ioArrowShape, ioArgument_ioArrows, var_maxUsedRowIndex_13334, constinArgument_inDebug, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 373)) ;
-  GGS_uint var_endColumn_13602 = var_branchZeroColumn_13300 ;
-  GGS_stringlist var_endingNodes_13680 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  UpEnumerator_branchListForGrammarAnalysis enumerator_13714 (var_branches_13178) ;
-  while (enumerator_13714.hasCurrentObject ()) {
-    var_maxUsedRowIndex_13334.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 387)) ;
-    GGS_uint var_branchColumn_13759 = ioArgument_ioColumn ;
-    GGS_string var_currentNode_13791 = var_startNodeName_13117 ;
-    GGS_string var_arrowStyle_13827 = GGS_string ("|-") ;
-    extensionMethod_tikzNodeForSyntaxInstruction (enumerator_13714.current (HERE).readProperty_mSyntaxInstructionList (), ioArgument_ioRowList, var_maxUsedRowIndex_13334, var_branchColumn_13759, var_currentNode_13791, var_arrowStyle_13827, ioArgument_ioArrows, var_maxUsedRowIndex_13334, constinArgument_inDebug, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 391)) ;
-    var_endingNodes_13680.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (var_currentNode_13791, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 401)) ;
+  GGS_uint var_branchZeroColumn_13304 = ioArgument_ioColumn ;
+  GGS_uint var_maxUsedRowIndex_13338 = constinArgument_inRow ;
+  extensionMethod_tikzNodeForSyntaxInstruction (var_brancheZero_13285, ioArgument_ioRowList, constinArgument_inRow, var_branchZeroColumn_13304, ioArgument_ioCurrentNode, ioArgument_ioArrowShape, ioArgument_ioArrows, var_maxUsedRowIndex_13338, constinArgument_inDebug, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 374)) ;
+  GGS_uint var_endColumn_13606 = var_branchZeroColumn_13304 ;
+  GGS_stringlist var_endingNodes_13684 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  UpEnumerator_branchListForGrammarAnalysis enumerator_13718 (var_branches_13182) ;
+  while (enumerator_13718.hasCurrentObject ()) {
+    var_maxUsedRowIndex_13338.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 388)) ;
+    GGS_uint var_branchColumn_13763 = ioArgument_ioColumn ;
+    GGS_string var_currentNode_13795 = var_startNodeName_13121 ;
+    GGS_string var_arrowStyle_13831 = GGS_string ("|-") ;
+    extensionMethod_tikzNodeForSyntaxInstruction (enumerator_13718.current (HERE).readProperty_mSyntaxInstructionList (), ioArgument_ioRowList, var_maxUsedRowIndex_13338, var_branchColumn_13763, var_currentNode_13795, var_arrowStyle_13831, ioArgument_ioArrows, var_maxUsedRowIndex_13338, constinArgument_inDebug, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 392)) ;
+    var_endingNodes_13684.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (var_currentNode_13795, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 402)) ;
     GalgasBool test_3 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_3) {
-      test_3 = GGS_bool (ComparisonKind::lowerThan, var_endColumn_13602.objectCompare (var_branchColumn_13759)).boolEnum () ;
+      test_3 = GGS_bool (ComparisonKind::lowerThan, var_endColumn_13606.objectCompare (var_branchColumn_13763)).boolEnum () ;
       if (GalgasBool::boolTrue == test_3) {
-        var_endColumn_13602 = var_branchColumn_13759 ;
+        var_endColumn_13606 = var_branchColumn_13763 ;
       }
     }
-    enumerator_13714.gotoNextObject () ;
+    enumerator_13718.gotoNextObject () ;
   }
-  ioArgument_ioColumn = var_endColumn_13602 ;
+  ioArgument_ioColumn = var_endColumn_13606 ;
   GalgasBool test_4 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_4) {
-    test_4 = GGS_bool (ComparisonKind::lowerThan, ioArgument_ioMaxUsedRowIndex.objectCompare (var_maxUsedRowIndex_13334)).boolEnum () ;
+    test_4 = GGS_bool (ComparisonKind::lowerThan, ioArgument_ioMaxUsedRowIndex.objectCompare (var_maxUsedRowIndex_13338)).boolEnum () ;
     if (GalgasBool::boolTrue == test_4) {
-      ioArgument_ioMaxUsedRowIndex = var_maxUsedRowIndex_13334 ;
+      ioArgument_ioMaxUsedRowIndex = var_maxUsedRowIndex_13338 ;
     }
   }
-  GGS_string var_endNodeName_14477 ;
+  GGS_string var_endNodeName_14481 ;
   {
-  extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[point] ()"), constinArgument_inRow, ioArgument_ioColumn, var_endNodeName_14477, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 411)) ;
+  extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[point] ()"), constinArgument_inRow, ioArgument_ioColumn, var_endNodeName_14481, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 412)) ;
   }
-  ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 412)) ;
+  ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 413)) ;
   ioArgument_ioArrowShape = GGS_string ("--") ;
-  ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw (").add_operation (ioArgument_ioCurrentNode, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 414)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 414)).add_operation (ioArgument_ioArrowShape, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 414)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 414)).add_operation (var_endNodeName_14477, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 414)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 414)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 414)) ;
-  ioArgument_ioCurrentNode = var_endNodeName_14477 ;
-  UpEnumerator_stringlist enumerator_14692 (var_endingNodes_13680) ;
-  while (enumerator_14692.hasCurrentObject ()) {
-    ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (enumerator_14692.current (HERE).readProperty_mValue (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 418)).add_operation (GGS_string (") -| ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 418)).add_operation (var_endNodeName_14477, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 418)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 418)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 418)) ;
-    enumerator_14692.gotoNextObject () ;
+  ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw (").add_operation (ioArgument_ioCurrentNode, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 415)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 415)).add_operation (ioArgument_ioArrowShape, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 415)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 415)).add_operation (var_endNodeName_14481, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 415)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 415)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 415)) ;
+  ioArgument_ioCurrentNode = var_endNodeName_14481 ;
+  UpEnumerator_stringlist enumerator_14696 (var_endingNodes_13684) ;
+  while (enumerator_14696.hasCurrentObject ()) {
+    ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (enumerator_14696.current (HERE).readProperty_mValue (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 419)).add_operation (GGS_string (") -| ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 419)).add_operation (var_endNodeName_14481, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 419)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 419)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 419)) ;
+    enumerator_14696.gotoNextObject () ;
   }
   GalgasBool test_5 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_5) {
     test_5 = constinArgument_inDebug.boolEnum () ;
     if (GalgasBool::boolTrue == test_5) {
-      GGS_string var_markerEndNodeName_14997 ;
+      GGS_string var_markerEndNodeName_15001 ;
       {
       const GGS_selectInstructionForGrammarAnalysis temp_6 = this ;
-      extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[nonterminal] {SE").add_operation (temp_6.readProperty_mSelectBranchList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 423)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 423)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 423)).add_operation (GGS_string ("}"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 423)), constinArgument_inRow, ioArgument_ioColumn, var_markerEndNodeName_14997, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 422)) ;
+      extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[nonterminal] {SE").add_operation (temp_6.readProperty_mSelectBranchList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 424)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 424)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 424)).add_operation (GGS_string ("}"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 424)), constinArgument_inRow, ioArgument_ioColumn, var_markerEndNodeName_15001, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 423)) ;
       }
-      ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 428)) ;
-      ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (ioArgument_ioCurrentNode, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 429)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 429)).add_operation (ioArgument_ioArrowShape, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 429)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 429)).add_operation (var_markerEndNodeName_14997, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 429)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 429)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 429)) ;
-      ioArgument_ioCurrentNode = var_markerEndNodeName_14997 ;
+      ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 429)) ;
+      ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (ioArgument_ioCurrentNode, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 430)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 430)).add_operation (ioArgument_ioArrowShape, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 430)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 430)).add_operation (var_markerEndNodeName_15001, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 430)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 430)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 430)) ;
+      ioArgument_ioCurrentNode = var_markerEndNodeName_15001 ;
     }
   }
 }
@@ -3702,107 +3717,107 @@ void cPtr_repeatInstructionForGrammarAnalysis::method_tikzNodeForSyntaxInstructi
   if (GalgasBool::boolTrue == test_0) {
     test_0 = constinArgument_inDebug.boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      GGS_string var_markerStartNodeName_15817 ;
+      GGS_string var_markerStartNodeName_15821 ;
       {
       const GGS_repeatInstructionForGrammarAnalysis temp_1 = this ;
-      extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[nonterminal] {RS").add_operation (temp_1.readProperty_mRepeatBranchList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 449)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 449)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 449)).add_operation (GGS_string ("}"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 449)), constinArgument_inRow, ioArgument_ioColumn, var_markerStartNodeName_15817, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 448)) ;
+      extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[nonterminal] {RS").add_operation (temp_1.readProperty_mRepeatBranchList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 450)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 450)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 450)).add_operation (GGS_string ("}"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 450)), constinArgument_inRow, ioArgument_ioColumn, var_markerStartNodeName_15821, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 449)) ;
       }
-      ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (ioArgument_ioCurrentNode, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 454)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 454)).add_operation (ioArgument_ioArrowShape, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 454)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 454)).add_operation (var_markerStartNodeName_15817, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 454)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 454)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 454)) ;
-      ioArgument_ioCurrentNode = var_markerStartNodeName_15817 ;
+      ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (ioArgument_ioCurrentNode, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 455)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 455)).add_operation (ioArgument_ioArrowShape, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 455)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 455)).add_operation (var_markerStartNodeName_15821, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 455)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 455)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 455)) ;
+      ioArgument_ioCurrentNode = var_markerStartNodeName_15821 ;
       ioArgument_ioArrowShape = GGS_string ("--") ;
-      ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 457)) ;
+      ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 458)) ;
     }
   }
-  GGS_string var_returnNodeName_16165 ;
+  GGS_string var_returnNodeName_16169 ;
   {
-  extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[point] ()"), constinArgument_inRow, ioArgument_ioColumn, var_returnNodeName_16165, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 460)) ;
+  extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[point] ()"), constinArgument_inRow, ioArgument_ioColumn, var_returnNodeName_16169, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 461)) ;
   }
-  ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 461)) ;
+  ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 462)) ;
   const GGS_repeatInstructionForGrammarAnalysis temp_2 = this ;
-  GGS_branchListForGrammarAnalysis var_branches_16227 = temp_2.readProperty_mRepeatBranchList () ;
-  GGS_syntaxInstructionListForGrammarAnalysis var_brancheZero_16330 ;
+  GGS_branchListForGrammarAnalysis var_branches_16231 = temp_2.readProperty_mRepeatBranchList () ;
+  GGS_syntaxInstructionListForGrammarAnalysis var_brancheZero_16334 ;
   {
-  var_branches_16227.setter_popFirst (var_brancheZero_16330, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 464)) ;
+  var_branches_16231.setter_popFirst (var_brancheZero_16334, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 465)) ;
   }
-  GGS_uint var_maxUsedRowIndex_16349 = constinArgument_inRow ;
-  extensionMethod_tikzNodeForSyntaxInstruction (var_brancheZero_16330, ioArgument_ioRowList, constinArgument_inRow, ioArgument_ioColumn, ioArgument_ioCurrentNode, ioArgument_ioArrowShape, ioArgument_ioArrows, var_maxUsedRowIndex_16349, constinArgument_inDebug, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 466)) ;
-  GGS_uint var_endColumn_16609 = ioArgument_ioColumn ;
-  GGS_string var_startNodeName_16753 ;
+  GGS_uint var_maxUsedRowIndex_16353 = constinArgument_inRow ;
+  extensionMethod_tikzNodeForSyntaxInstruction (var_brancheZero_16334, ioArgument_ioRowList, constinArgument_inRow, ioArgument_ioColumn, ioArgument_ioCurrentNode, ioArgument_ioArrowShape, ioArgument_ioArrows, var_maxUsedRowIndex_16353, constinArgument_inDebug, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 467)) ;
+  GGS_uint var_endColumn_16613 = ioArgument_ioColumn ;
+  GGS_string var_startNodeName_16757 ;
   {
-  extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[point] ()"), constinArgument_inRow, ioArgument_ioColumn, var_startNodeName_16753, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 478)) ;
+  extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[point] ()"), constinArgument_inRow, ioArgument_ioColumn, var_startNodeName_16757, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 479)) ;
   }
-  ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 479)) ;
-  GGS_bool var_oneEmptyBranch_16856 = GGS_bool (ComparisonKind::equal, var_branches_16227.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 481)).objectCompare (GGS_uint (uint32_t (1U)))) ;
+  ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 480)) ;
+  GGS_bool var_oneEmptyBranch_16860 = GGS_bool (ComparisonKind::equal, var_branches_16231.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 482)).objectCompare (GGS_uint (uint32_t (1U)))) ;
   GalgasBool test_3 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_3) {
-    test_3 = var_oneEmptyBranch_16856.boolEnum () ;
+    test_3 = var_oneEmptyBranch_16860.boolEnum () ;
     if (GalgasBool::boolTrue == test_3) {
-      GGS_syntaxInstructionListForGrammarAnalysis var_firstBranch_16943 ;
-      var_branches_16227.method_first (var_firstBranch_16943, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 483)) ;
-      var_oneEmptyBranch_16856 = GGS_bool (ComparisonKind::equal, var_firstBranch_16943.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 484)).objectCompare (GGS_uint (uint32_t (0U)))) ;
+      GGS_syntaxInstructionListForGrammarAnalysis var_firstBranch_16947 ;
+      var_branches_16231.method_first (var_firstBranch_16947, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 484)) ;
+      var_oneEmptyBranch_16860 = GGS_bool (ComparisonKind::equal, var_firstBranch_16947.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 485)).objectCompare (GGS_uint (uint32_t (0U)))) ;
     }
   }
-  GGS_stringlist var_endingNodes_17045 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS_stringlist var_endingNodes_17049 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
   GalgasBool test_4 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_4) {
-    test_4 = var_oneEmptyBranch_16856.boolEnum () ;
+    test_4 = var_oneEmptyBranch_16860.boolEnum () ;
     if (GalgasBool::boolTrue == test_4) {
-      var_endingNodes_17045.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (var_startNodeName_16753, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 489)) ;
+      var_endingNodes_17049.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (var_startNodeName_16757, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 490)) ;
     }
   }
   if (GalgasBool::boolFalse == test_4) {
-    GGS_uint var_nextBranchUsedRowIndex_17141 = constinArgument_inRow ;
-    UpEnumerator_branchListForGrammarAnalysis enumerator_17190 (var_branches_16227) ;
-    while (enumerator_17190.hasCurrentObject ()) {
-      var_nextBranchUsedRowIndex_17141.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 493)) ;
-      GGS_uint var_branchColumn_17246 = ioArgument_ioColumn ;
-      GGS_string var_currentNode_17280 = var_startNodeName_16753 ;
-      GGS_string var_arrowStyle_17318 = GGS_string ("|-") ;
-      extensionMethod_tikzNodeForSyntaxInstruction (enumerator_17190.current (HERE).readProperty_mSyntaxInstructionList (), ioArgument_ioRowList, var_nextBranchUsedRowIndex_17141, var_branchColumn_17246, var_currentNode_17280, var_arrowStyle_17318, ioArgument_ioArrows, var_nextBranchUsedRowIndex_17141, constinArgument_inDebug, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 497)) ;
-      var_endingNodes_17045.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (var_currentNode_17280, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 507)) ;
+    GGS_uint var_nextBranchUsedRowIndex_17145 = constinArgument_inRow ;
+    UpEnumerator_branchListForGrammarAnalysis enumerator_17194 (var_branches_16231) ;
+    while (enumerator_17194.hasCurrentObject ()) {
+      var_nextBranchUsedRowIndex_17145.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 494)) ;
+      GGS_uint var_branchColumn_17250 = ioArgument_ioColumn ;
+      GGS_string var_currentNode_17284 = var_startNodeName_16757 ;
+      GGS_string var_arrowStyle_17322 = GGS_string ("|-") ;
+      extensionMethod_tikzNodeForSyntaxInstruction (enumerator_17194.current (HERE).readProperty_mSyntaxInstructionList (), ioArgument_ioRowList, var_nextBranchUsedRowIndex_17145, var_branchColumn_17250, var_currentNode_17284, var_arrowStyle_17322, ioArgument_ioArrows, var_nextBranchUsedRowIndex_17145, constinArgument_inDebug, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 498)) ;
+      var_endingNodes_17049.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (var_currentNode_17284, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 508)) ;
       GalgasBool test_5 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_5) {
-        test_5 = GGS_bool (ComparisonKind::lowerThan, var_endColumn_16609.objectCompare (var_branchColumn_17246)).boolEnum () ;
+        test_5 = GGS_bool (ComparisonKind::lowerThan, var_endColumn_16613.objectCompare (var_branchColumn_17250)).boolEnum () ;
         if (GalgasBool::boolTrue == test_5) {
-          var_endColumn_16609 = var_branchColumn_17246 ;
+          var_endColumn_16613 = var_branchColumn_17250 ;
         }
       }
-      enumerator_17190.gotoNextObject () ;
+      enumerator_17194.gotoNextObject () ;
     }
-    ioArgument_ioColumn = var_endColumn_16609 ;
-    ioArgument_ioMaxUsedRowIndex = var_nextBranchUsedRowIndex_17141 ;
+    ioArgument_ioColumn = var_endColumn_16613 ;
+    ioArgument_ioMaxUsedRowIndex = var_nextBranchUsedRowIndex_17145 ;
   }
   GalgasBool test_6 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_6) {
-    test_6 = GGS_bool (ComparisonKind::lowerThan, ioArgument_ioMaxUsedRowIndex.objectCompare (var_maxUsedRowIndex_16349)).boolEnum () ;
+    test_6 = GGS_bool (ComparisonKind::lowerThan, ioArgument_ioMaxUsedRowIndex.objectCompare (var_maxUsedRowIndex_16353)).boolEnum () ;
     if (GalgasBool::boolTrue == test_6) {
-      ioArgument_ioMaxUsedRowIndex = var_maxUsedRowIndex_16349 ;
+      ioArgument_ioMaxUsedRowIndex = var_maxUsedRowIndex_16353 ;
     }
   }
-  ioArgument_ioMaxUsedRowIndex.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 519)) ;
-  GGS_string var_returnUpperNodeName_18168 ;
+  ioArgument_ioMaxUsedRowIndex.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 520)) ;
+  GGS_string var_returnUpperNodeName_18172 ;
   {
-  extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[point] ()"), ioArgument_ioMaxUsedRowIndex, ioArgument_ioColumn, var_returnUpperNodeName_18168, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 521)) ;
+  extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[point] ()"), ioArgument_ioMaxUsedRowIndex, ioArgument_ioColumn, var_returnUpperNodeName_18172, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 522)) ;
   }
-  ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 522)) ;
-  ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (var_returnUpperNodeName_18168, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 523)).add_operation (GGS_string (") -| ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 523)).add_operation (var_returnNodeName_16165, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 523)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 523)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 523)) ;
-  UpEnumerator_stringlist enumerator_18335 (var_endingNodes_17045) ;
-  while (enumerator_18335.hasCurrentObject ()) {
-    ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (enumerator_18335.current (HERE).readProperty_mValue (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 526)).add_operation (GGS_string (") -| ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 526)).add_operation (var_returnUpperNodeName_18168, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 526)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 526)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 526)) ;
-    enumerator_18335.gotoNextObject () ;
+  ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 523)) ;
+  ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (var_returnUpperNodeName_18172, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 524)).add_operation (GGS_string (") -| ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 524)).add_operation (var_returnNodeName_16169, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 524)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 524)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 524)) ;
+  UpEnumerator_stringlist enumerator_18339 (var_endingNodes_17049) ;
+  while (enumerator_18339.hasCurrentObject ()) {
+    ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (enumerator_18339.current (HERE).readProperty_mValue (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 527)).add_operation (GGS_string (") -| ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 527)).add_operation (var_returnUpperNodeName_18172, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 527)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 527)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 527)) ;
+    enumerator_18339.gotoNextObject () ;
   }
   GalgasBool test_7 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_7) {
     test_7 = constinArgument_inDebug.boolEnum () ;
     if (GalgasBool::boolTrue == test_7) {
-      GGS_string var_markerEndNodeName_18648 ;
+      GGS_string var_markerEndNodeName_18652 ;
       {
       const GGS_repeatInstructionForGrammarAnalysis temp_8 = this ;
-      extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[nonterminal] {RE").add_operation (temp_8.readProperty_mRepeatBranchList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas3", 531)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas3", 531)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 531)).add_operation (GGS_string ("}"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 531)), constinArgument_inRow, ioArgument_ioColumn, var_markerEndNodeName_18648, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 530)) ;
+      extensionSetter_appendRow (ioArgument_ioRowList, GGS_string ("[nonterminal] {RE").add_operation (temp_8.readProperty_mRepeatBranchList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 532)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas4", 532)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 532)).add_operation (GGS_string ("}"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 532)), constinArgument_inRow, ioArgument_ioColumn, var_markerEndNodeName_18652, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 531)) ;
       }
-      ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 536)) ;
-      ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (ioArgument_ioCurrentNode, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 537)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 537)).add_operation (ioArgument_ioArrowShape, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 537)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 537)).add_operation (var_markerEndNodeName_18648, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 537)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 537)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas3", 537)) ;
-      ioArgument_ioCurrentNode = var_markerEndNodeName_18648 ;
+      ioArgument_ioColumn.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 537)) ;
+      ioArgument_ioArrows.plusAssignOperation(GGS_string ("  \\draw[->] (").add_operation (ioArgument_ioCurrentNode, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 538)).add_operation (GGS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 538)).add_operation (ioArgument_ioArrowShape, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 538)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 538)).add_operation (var_markerEndNodeName_18652, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 538)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 538)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 538)) ;
+      ioArgument_ioCurrentNode = var_markerEndNodeName_18652 ;
     }
   }
 }
@@ -5557,7 +5572,7 @@ void routine_buildHeader_3F__3F__3F__26__26_ (const GGS_headerCompositionMap con
 //
 //--------------------------------------------------------------------------------------------------
 
-static GGS_uint onceFunction_definitionGroupAmount (Compiler *
+static GGS_uint onceFunction_definitionGroupAmount (Compiler * /* inCompiler */
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint result_result ; // Returned variable
   result_result = GGS_uint (uint32_t (50U)) ;
@@ -8676,714 +8691,4 @@ C_galgas_function_descriptor functionDescriptor_linkForType ("linkForType",
                                                              & kTypeDescriptor_GALGAS_string,
                                                              1,
                                                              functionArgs_linkForType) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'xcodeProjectGenerationFilewrapper'
-//
-//--------------------------------------------------------------------------------------------------
-
-//--- All files of 'Base.lproj' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_xcodeProjectGenerationFilewrapper_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'Base.lproj' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_xcodeProjectGenerationFilewrapper_1 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'Base.lproj'
-
-const cDirectoryWrapper gWrapperDirectory_1_xcodeProjectGenerationFilewrapper (
-  "Base.lproj",
-  0,
-  gWrapperAllFiles_xcodeProjectGenerationFilewrapper_1,
-  0,
-  gWrapperAllDirectories_xcodeProjectGenerationFilewrapper_1
-) ;
-
-//--- All files of '' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_xcodeProjectGenerationFilewrapper_0 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of '' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_xcodeProjectGenerationFilewrapper_0 [2] = {
-  & gWrapperDirectory_1_xcodeProjectGenerationFilewrapper,
-  nullptr
-} ;
-
-//--- Directory ''
-
-const cDirectoryWrapper gWrapperDirectory_0_xcodeProjectGenerationFilewrapper (
-  "",
-  0,
-  gWrapperAllFiles_xcodeProjectGenerationFilewrapper_0,
-  1,
-  gWrapperAllDirectories_xcodeProjectGenerationFilewrapper_0
-) ;
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'xcodeProjectGenerationFilewrapper xcodeproj'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Compiler * /* inCompiler */,
-                                                                            const GGS_string & in_PROJECT_5F_REF,
-                                                                            const GGS_string & in_MAIN_5F_GROUP_5F_REF,
-                                                                            const GGS_XCodeGroupList & in_GROUPS,
-                                                                            const GGS_stringlist & in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS,
-                                                                            const GGS_XCodeToolTargetList & in_TOOL_5F_TARGET_5F_LIST,
-                                                                            const GGS_XCodeAppTargetList & in_APP_5F_TARGET_5F_LIST,
-                                                                            const GGS__32_stringlist & in_C_5F_FILE_5F_LIST,
-                                                                            const GGS__32_stringlist & in_CPP_5F_FILE_5F_LIST,
-                                                                            const GGS__32_stringlist & in_SWIFT_5F_FILE_5F_LIST,
-                                                                            const GGS__32_stringlist & in_M_5F_FILE_5F_LIST,
-                                                                            const GGS__32_stringlist & in_MM_5F_FILE_5F_LIST,
-                                                                            const GGS__32_stringlist & in_FRAMEWORK_5F_FILE_5F_LIST,
-                                                                            const GGS__32_stringlist & in_HEADER_5F_FILE_5F_LIST,
-                                                                            const GGS__32_stringlist & in_PLIST_5F_FILE_5F_LIST,
-                                                                            const GGS__32_stringlist & in_TIFF_5F_FILE_5F_LIST,
-                                                                            const GGS__32_stringlist & in_ICNS_5F_FILE_5F_LIST,
-                                                                            const GGS__32_stringlist & in_XIB_5F_FILE_5F_LIST,
-                                                                            const GGS_BuildFileList & in_BUILD_5F_FILE_5F_LIST,
-                                                                            const GGS_string & in_DEFAULT_5F_CONFIGURATION_5F_REF,
-                                                                            const GGS_stringlist & in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST,
-                                                                            const GGS_string & in_PROJECT_5F_BUILD_5F_DEFAULT_5F_CONFIGURATION_5F_REF,
-                                                                            const GGS_string & in_APPLICATION_5F_BUNDLE_5F_BASE,
-                                                                            const GGS_string & in_PROJECT_5F_NAME
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  String result ;
-  result.appendString ("// !$*UTF8*$!\n{\n  archiveVersion = 1;\n  classes = {\n  };\n  objectVersion = 42;\n  objects = {\n\n  /*------------------------------------------------------------------ PBXBuildFile */\n") ;
-  GGS_uint index_249_ (0) ;
-  if (in_BUILD_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator_BuildFileList enumerator_249 (in_BUILD_5F_FILE_5F_LIST) ;
-    while (enumerator_249.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_249.current_mBuildReference (HERE).stringValue ()) ;
-      result.appendString (" /* ") ;
-      result.appendString (enumerator_249.current_mFileName (HERE).stringValue ()) ;
-      result.appendString (" */ = {\n    isa = PBXBuildFile;\n    fileRef = ") ;
-      result.appendString (enumerator_249.current_mFileReference (HERE).stringValue ()) ;
-      result.appendString (" ;\n    settings = {ATTRIBUTES = (); };\n  };\n\n") ;
-      enumerator_249.gotoNextObject () ;
-      index_249_.increment () ;
-    }
-  }
-  result.appendString ("  /*------------------------------------------------------------------ PBXFileReference */\n") ;
-  GGS_uint index_552_ (0) ;
-  if (in_C_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator__32_stringlist enumerator_552 (in_C_5F_FILE_5F_LIST) ;
-    while (enumerator_552.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_552.current_mValue_30_ (HERE).stringValue ()) ;
-      result.appendString (" /* ") ;
-      result.appendString (enumerator_552.current_mValue_31_ (HERE).stringValue ()) ;
-      result.appendString (" */ = {\n    isa = PBXFileReference;\n    fileEncoding = 4;\n    lastKnownFileType = sourcecode.c.c;\n    name = ") ;
-      result.appendString (enumerator_552.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 25)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 25)).stringValue ()) ;
-      result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_552.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 26)).stringValue ()) ;
-      result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      enumerator_552.gotoNextObject () ;
-      index_552_.increment () ;
-    }
-  }
-  GGS_uint index_937_ (0) ;
-  if (in_CPP_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator__32_stringlist enumerator_937 (in_CPP_5F_FILE_5F_LIST) ;
-    while (enumerator_937.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_937.current_mValue_30_ (HERE).stringValue ()) ;
-      result.appendString (" /* ") ;
-      result.appendString (enumerator_937.current_mValue_31_ (HERE).stringValue ()) ;
-      result.appendString (" */ = {\n    isa = PBXFileReference;\n    fileEncoding = 4;\n    lastKnownFileType = sourcecode.cpp.cpp;\n    name = ") ;
-      result.appendString (enumerator_937.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 35)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 35)).stringValue ()) ;
-      result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_937.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 36)).stringValue ()) ;
-      result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      enumerator_937.gotoNextObject () ;
-      index_937_.increment () ;
-    }
-  }
-  GGS_uint index_1328_ (0) ;
-  if (in_SWIFT_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator__32_stringlist enumerator_1328 (in_SWIFT_5F_FILE_5F_LIST) ;
-    while (enumerator_1328.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_1328.current_mValue_30_ (HERE).stringValue ()) ;
-      result.appendString (" /* ") ;
-      result.appendString (enumerator_1328.current_mValue_31_ (HERE).stringValue ()) ;
-      result.appendString (" */ = {\n    isa = PBXFileReference;\n    fileEncoding = 4;\n    lastKnownFileType = sourcecode.swift;\n    name = ") ;
-      result.appendString (enumerator_1328.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 45)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 45)).stringValue ()) ;
-      result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_1328.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 46)).stringValue ()) ;
-      result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      enumerator_1328.gotoNextObject () ;
-      index_1328_.increment () ;
-    }
-  }
-  GGS_uint index_1713_ (0) ;
-  if (in_M_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator__32_stringlist enumerator_1713 (in_M_5F_FILE_5F_LIST) ;
-    while (enumerator_1713.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_1713.current_mValue_30_ (HERE).stringValue ()) ;
-      result.appendString (" /* ") ;
-      result.appendString (enumerator_1713.current_mValue_31_ (HERE).stringValue ()) ;
-      result.appendString (" */ = {\n    isa = PBXFileReference;\n    fileEncoding = 4;\n    lastKnownFileType = sourcecode.c.obj;\n    name = ") ;
-      result.appendString (enumerator_1713.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 55)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 55)).stringValue ()) ;
-      result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_1713.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 56)).stringValue ()) ;
-      result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      enumerator_1713.gotoNextObject () ;
-      index_1713_.increment () ;
-    }
-  }
-  GGS_uint index_2099_ (0) ;
-  if (in_MM_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator__32_stringlist enumerator_2099 (in_MM_5F_FILE_5F_LIST) ;
-    while (enumerator_2099.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_2099.current_mValue_30_ (HERE).stringValue ()) ;
-      result.appendString (" /* ") ;
-      result.appendString (enumerator_2099.current_mValue_31_ (HERE).stringValue ()) ;
-      result.appendString (" */ = {\n    isa = PBXFileReference;\n    fileEncoding = 4;\n    lastKnownFileType = sourcecode.cpp.objcpp;\n    name = ") ;
-      result.appendString (enumerator_2099.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 65)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 65)).stringValue ()) ;
-      result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_2099.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 66)).stringValue ()) ;
-      result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      enumerator_2099.gotoNextObject () ;
-      index_2099_.increment () ;
-    }
-  }
-  GGS_uint index_2494_ (0) ;
-  if (in_HEADER_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator__32_stringlist enumerator_2494 (in_HEADER_5F_FILE_5F_LIST) ;
-    while (enumerator_2494.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_2494.current_mValue_30_ (HERE).stringValue ()) ;
-      result.appendString (" /* ") ;
-      result.appendString (enumerator_2494.current_mValue_31_ (HERE).stringValue ()) ;
-      result.appendString (" */ = {\n    isa = PBXFileReference;\n    fileEncoding = 4;\n    lastKnownFileType = sourcecode.c.h;\n    name = ") ;
-      result.appendString (enumerator_2494.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 75)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 75)).stringValue ()) ;
-      result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_2494.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 76)).stringValue ()) ;
-      result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      enumerator_2494.gotoNextObject () ;
-      index_2494_.increment () ;
-    }
-  }
-  GGS_uint index_2885_ (0) ;
-  if (in_FRAMEWORK_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator__32_stringlist enumerator_2885 (in_FRAMEWORK_5F_FILE_5F_LIST) ;
-    while (enumerator_2885.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_2885.current_mValue_30_ (HERE).stringValue ()) ;
-      result.appendString (" /* ") ;
-      result.appendString (enumerator_2885.current_mValue_31_ (HERE).stringValue ()) ;
-      result.appendString (" */ = {\n    isa = PBXFileReference;\n    lastKnownFileType = wrapper.framework;\n    name = ") ;
-      result.appendString (enumerator_2885.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 84)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 84)).stringValue ()) ;
-      result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_2885.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 85)).stringValue ()) ;
-      result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      enumerator_2885.gotoNextObject () ;
-      index_2885_.increment () ;
-    }
-  }
-  GGS_uint index_3458_ (0) ;
-  if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeToolTargetList enumerator_3458 (in_TOOL_5F_TARGET_5F_LIST) ;
-    while (enumerator_3458.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_3458.current_mProductFileReference (HERE).stringValue ()) ;
-      result.appendString (" = {\n    isa = PBXFileReference;\n    explicitFileType = \"compiled.mach-o.executable\";\n    includeInIndex = 0;\n    path = ") ;
-      result.appendString (enumerator_3458.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 94)).stringValue ()) ;
-      result.appendString (";\n    sourceTree = BUILT_PRODUCTS_DIR;\n  };\n\n") ;
-      enumerator_3458.gotoNextObject () ;
-      index_3458_.increment () ;
-    }
-  }
-  GGS_uint index_4054_ (0) ;
-  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeAppTargetList enumerator_4054 (in_APP_5F_TARGET_5F_LIST) ;
-    while (enumerator_4054.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_4054.current_mProductFileReference (HERE).stringValue ()) ;
-      result.appendString (" = {\n    isa = PBXFileReference;\n    explicitFileType = \"compiled.mach-o.executable\";\n    includeInIndex = 0;\n    path = ") ;
-      result.appendString (enumerator_4054.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 103)).stringValue ()) ;
-      result.appendString (";\n    sourceTree = BUILT_PRODUCTS_DIR;\n  };\n\n") ;
-      enumerator_4054.gotoNextObject () ;
-      index_4054_.increment () ;
-    }
-  }
-  GGS_uint index_4383_ (0) ;
-  if (in_PLIST_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator__32_stringlist enumerator_4383 (in_PLIST_5F_FILE_5F_LIST) ;
-    while (enumerator_4383.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_4383.current_mValue_30_ (HERE).stringValue ()) ;
-      result.appendString (" = {\n    isa = PBXFileReference;\n    fileEncoding = 4;\n    lastKnownFileType = text.plist;\n    name = ") ;
-      result.appendString (enumerator_4383.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 112)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 112)).stringValue ()) ;
-      result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_4383.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 113)).stringValue ()) ;
-      result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      enumerator_4383.gotoNextObject () ;
-      index_4383_.increment () ;
-    }
-  }
-  GGS_uint index_4747_ (0) ;
-  if (in_XIB_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator__32_stringlist enumerator_4747 (in_XIB_5F_FILE_5F_LIST) ;
-    while (enumerator_4747.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_4747.current_mValue_30_ (HERE).stringValue ()) ;
-      result.appendString (" = {\n    isa = PBXFileReference;\n    fileEncoding = 4;\n    lastKnownFileType = wrapper.xib;\n    name = ") ;
-      result.appendString (enumerator_4747.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 122)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 122)).stringValue ()) ;
-      result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_4747.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 123)).stringValue ()) ;
-      result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      enumerator_4747.gotoNextObject () ;
-      index_4747_.increment () ;
-    }
-  }
-  GGS_uint index_5113_ (0) ;
-  if (in_TIFF_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator__32_stringlist enumerator_5113 (in_TIFF_5F_FILE_5F_LIST) ;
-    while (enumerator_5113.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_5113.current_mValue_30_ (HERE).stringValue ()) ;
-      result.appendString (" = {\n    isa = PBXFileReference;\n    lastKnownFileType = image.tiff;\n    name = ") ;
-      result.appendString (enumerator_5113.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 131)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 131)).stringValue ()) ;
-      result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_5113.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 132)).stringValue ()) ;
-      result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      enumerator_5113.gotoNextObject () ;
-      index_5113_.increment () ;
-    }
-  }
-  GGS_uint index_5452_ (0) ;
-  if (in_ICNS_5F_FILE_5F_LIST.isValid ()) {
-    UpEnumerator__32_stringlist enumerator_5452 (in_ICNS_5F_FILE_5F_LIST) ;
-    while (enumerator_5452.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_5452.current_mValue_30_ (HERE).stringValue ()) ;
-      result.appendString (" = {\n    isa = PBXFileReference;\n    lastKnownFileType = image.icns;\n    name = ") ;
-      result.appendString (enumerator_5452.current_mValue_31_ (HERE).getter_lastPathComponent (SOURCE_FILE ("project.pbxproj.galgasTemplate", 140)).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 140)).stringValue ()) ;
-      result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_5452.current_mValue_31_ (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 141)).stringValue ()) ;
-      result.appendString (";\n    sourceTree = \"<group>\";\n  };\n\n") ;
-      enumerator_5452.gotoNextObject () ;
-      index_5452_.increment () ;
-    }
-  }
-  result.appendString ("  /*------------------------------------------------------------------ PBXFrameworksBuildPhase */\n\n") ;
-  GGS_uint index_6103_ (0) ;
-  if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeToolTargetList enumerator_6103 (in_TOOL_5F_TARGET_5F_LIST) ;
-    while (enumerator_6103.hasCurrentObject ()) {
-      const GalgasBool test_0 = GGS_bool (ComparisonKind::greaterThan, enumerator_6103.current_mFrameworksFileRefList (HERE).getter_count (SOURCE_FILE ("project.pbxproj.galgasTemplate", 149)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-      switch (test_0) {
-      case GalgasBool::boolTrue : {
-        result.appendString ("  ") ;
-        result.appendString (enumerator_6103.current_mFrameworkBuildPhaseRef (HERE).stringValue ()) ;
-        result.appendString (" = {\n    isa = PBXFrameworksBuildPhase;\n    buildActionMask = 2147483647;\n    files = (\n") ;
-        GGS_uint index_6342_ (0) ;
-        if (enumerator_6103.current_mFrameworksFileRefList (HERE).isValid ()) {
-          UpEnumerator_stringlist enumerator_6342 (enumerator_6103.current_mFrameworksFileRefList (HERE)) ;
-          while (enumerator_6342.hasCurrentObject ()) {
-            result.appendString ("      ") ;
-            result.appendString (enumerator_6342.current_mValue (HERE).stringValue ()) ;
-            result.appendString (",\n") ;
-            enumerator_6342.gotoNextObject () ;
-            index_6342_.increment () ;
-          }
-        }
-        result.appendString ("    );\n    runOnlyForDeploymentPostprocessing = 0;\n  };\n\n") ;
-        } break ;
-      case GalgasBool::boolFalse : {
-        } break ;
-      case GalgasBool::boolNotValid :
-        break ;
-      }
-      enumerator_6103.gotoNextObject () ;
-      index_6103_.increment () ;
-    }
-  }
-  GGS_uint index_6780_ (0) ;
-  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeAppTargetList enumerator_6780 (in_APP_5F_TARGET_5F_LIST) ;
-    while (enumerator_6780.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_6780.current_mFrameworkBuildPhaseRef (HERE).stringValue ()) ;
-      result.appendString (" = {\n    isa = PBXFrameworksBuildPhase;\n    buildActionMask = 2147483647;\n    files = (\n") ;
-      GGS_uint index_6964_ (0) ;
-      if (enumerator_6780.current_mFrameworksFileRefList (HERE).isValid ()) {
-        UpEnumerator_stringlist enumerator_6964 (enumerator_6780.current_mFrameworksFileRefList (HERE)) ;
-        while (enumerator_6964.hasCurrentObject ()) {
-          result.appendString ("      ") ;
-          result.appendString (enumerator_6964.current_mValue (HERE).stringValue ()) ;
-          result.appendString (",\n") ;
-          enumerator_6964.gotoNextObject () ;
-          index_6964_.increment () ;
-        }
-      }
-      result.appendString ("    );\n    runOnlyForDeploymentPostprocessing = 0;\n  };\n\n") ;
-      enumerator_6780.gotoNextObject () ;
-      index_6780_.increment () ;
-    }
-  }
-  result.appendString ("  /*------------------------------------------------------------------ PBXGroup section */\n") ;
-  GGS_uint index_7240_ (0) ;
-  if (in_GROUPS.isValid ()) {
-    UpEnumerator_XCodeGroupList enumerator_7240 (in_GROUPS) ;
-    while (enumerator_7240.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_7240.current_mGroupReference (HERE).stringValue ()) ;
-      result.appendString (" /* ") ;
-      result.appendString (enumerator_7240.current_mGroupName (HERE).stringValue ()) ;
-      result.appendString (" */ = {\n    isa = PBXGroup;\n    children = (\n") ;
-      GGS_uint index_7367_ (0) ;
-      if (enumerator_7240.current_mChildrenRefs (HERE).isValid ()) {
-        UpEnumerator_stringlist enumerator_7367 (enumerator_7240.current_mChildrenRefs (HERE)) ;
-        while (enumerator_7367.hasCurrentObject ()) {
-          result.appendString ("      ") ;
-          result.appendString (enumerator_7367.current_mValue (HERE).stringValue ()) ;
-          result.appendString (", \n") ;
-          enumerator_7367.gotoNextObject () ;
-          index_7367_.increment () ;
-        }
-      }
-      result.appendString ("    );\n    name = ") ;
-      result.appendString (enumerator_7240.current_mGroupName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 184)).stringValue ()) ;
-      result.appendString (";\n    path = ") ;
-      result.appendString (enumerator_7240.current_mGroupPath (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 185)).stringValue ()) ;
-      result.appendString (";\n    sourceTree = \"<group>\";\n  };\n") ;
-      enumerator_7240.gotoNextObject () ;
-      index_7240_.increment () ;
-    }
-  }
-  result.appendString ("\n  ") ;
-  result.appendString (in_MAIN_5F_GROUP_5F_REF.stringValue ()) ;
-  result.appendString (" /* Main Group */ = {\n    isa = PBXGroup;\n    children = (\n") ;
-  GGS_uint index_7719_ (0) ;
-  if (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS.isValid ()) {
-    UpEnumerator_stringlist enumerator_7719 (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS) ;
-    while (enumerator_7719.hasCurrentObject ()) {
-      result.appendString ("      ") ;
-      result.appendString (enumerator_7719.current_mValue (HERE).stringValue ()) ;
-      result.appendString (",\n") ;
-      enumerator_7719.gotoNextObject () ;
-      index_7719_.increment () ;
-    }
-  }
-  result.appendString ("    );\n    sourceTree = \"<group>\";\n  };\n\n  /*------------------------------------------------------------------ PBXNativeTarget */\n") ;
-  GGS_uint index_8133_ (0) ;
-  if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeToolTargetList enumerator_8133 (in_TOOL_5F_TARGET_5F_LIST) ;
-    while (enumerator_8133.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_8133.current_mTargetRef (HERE).stringValue ()) ;
-      result.appendString (" /* ") ;
-      result.appendString (enumerator_8133.current_mTargetName (HERE).stringValue ()) ;
-      result.appendString (" */ = {\n    isa = PBXNativeTarget;\n    buildConfigurationList = ") ;
-      result.appendString (enumerator_8133.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
-      result.appendString (" ;\n    buildPhases = (\n      ") ;
-      result.appendString (enumerator_8133.current_mBuildPhaseRef (HERE).stringValue ()) ;
-      result.appendString (" ,\n") ;
-      const GalgasBool test_1 = GGS_bool (ComparisonKind::greaterThan, enumerator_8133.current_mFrameworksFileRefList (HERE).getter_count (SOURCE_FILE ("project.pbxproj.galgasTemplate", 210)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
-      switch (test_1) {
-      case GalgasBool::boolTrue : {
-        result.appendString ("      ") ;
-        result.appendString (enumerator_8133.current_mFrameworkBuildPhaseRef (HERE).stringValue ()) ;
-        result.appendString (", /* Frameworks */\n") ;
-        } break ;
-      case GalgasBool::boolFalse : {
-        } break ;
-      case GalgasBool::boolNotValid :
-        break ;
-      }
-      result.appendString ("    );\n    buildRules = (\n    );\n    dependencies = (\n    );\n    name = ") ;
-      result.appendString (enumerator_8133.current_mTargetName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 218)).stringValue ()) ;
-      result.appendString (";\n    productInstallPath = \"$(HOME)/bin\";\n    productName = ") ;
-      result.appendString (enumerator_8133.current_mTargetName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 220)).stringValue ()) ;
-      result.appendString (";\n    productReference = ") ;
-      result.appendString (enumerator_8133.current_mProductFileReference (HERE).stringValue ()) ;
-      result.appendString (" ;\n    productType = \"com.apple.product-type.tool\";\n  };\n \n") ;
-      enumerator_8133.gotoNextObject () ;
-      index_8133_.increment () ;
-    }
-  }
-  GGS_uint index_9089_ (0) ;
-  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeAppTargetList enumerator_9089 (in_APP_5F_TARGET_5F_LIST) ;
-    while (enumerator_9089.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_9089.current_mTargetRef (HERE).stringValue ()) ;
-      result.appendString (" /* ") ;
-      result.appendString (enumerator_9089.current_mTargetName (HERE).stringValue ()) ;
-      result.appendString (" */ = {\n    isa = PBXNativeTarget;\n    buildConfigurationList = ") ;
-      result.appendString (enumerator_9089.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
-      result.appendString (" ;\n    buildPhases = (\n      ") ;
-      result.appendString (enumerator_9089.current_mResourceBuildRef (HERE).stringValue ()) ;
-      result.appendString (" , /* Resources */\n      ") ;
-      result.appendString (enumerator_9089.current_mFrameworkBuildPhaseRef (HERE).stringValue ()) ;
-      result.appendString (" , /* Frameworks */\n      ") ;
-      result.appendString (enumerator_9089.current_mBuildPhaseRef (HERE).stringValue ()) ;
-      result.appendString (" , /* Sources */\n    );\n    buildRules = (\n    );\n    dependencies = (\n") ;
-      GGS_uint index_9478_ (0) ;
-      if (enumerator_9089.current_mDependentTargets (HERE).isValid ()) {
-        UpEnumerator__32_stringlist enumerator_9478 (enumerator_9089.current_mDependentTargets (HERE)) ;
-        while (enumerator_9478.hasCurrentObject ()) {
-          result.appendString ("      ") ;
-          result.appendString (enumerator_9478.current_mValue_30_ (HERE).stringValue ()) ;
-          result.appendString (" ,\n") ;
-          enumerator_9478.gotoNextObject () ;
-          index_9478_.increment () ;
-        }
-      }
-      result.appendString ("    );\n    name = ") ;
-      result.appendString (enumerator_9089.current_mTargetName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 244)).stringValue ()) ;
-      result.appendString (";\n    productInstallPath = \"$(HOME)/bin\";\n    productName = ") ;
-      result.appendString (enumerator_9089.current_mTargetName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 246)).stringValue ()) ;
-      result.appendString (";\n    productReference = ") ;
-      result.appendString (enumerator_9089.current_mProductFileReference (HERE).stringValue ()) ;
-      result.appendString (" ;\n    productType = \"com.apple.product-type.application\";\n  };\n\n") ;
-      enumerator_9089.gotoNextObject () ;
-      index_9089_.increment () ;
-    }
-  }
-  result.appendString ("  /*------------------------------------------------------------------ PBXProject */\n  ") ;
-  result.appendString (in_PROJECT_5F_REF.stringValue ()) ;
-  result.appendString (" /* Project object */ = {\n   isa = PBXProject;\n   buildConfigurationList = ") ;
-  result.appendString (in_PROJECT_5F_BUILD_5F_DEFAULT_5F_CONFIGURATION_5F_REF.stringValue ()) ;
-  result.appendString (" /* Build configuration list for PBXProject */;\n   compatibilityVersion = \"Xcode 2.4\";\n   hasScannedForEncodings = 1;\n   mainGroup = ") ;
-  result.appendString (in_MAIN_5F_GROUP_5F_REF.stringValue ()) ;
-  result.appendString (";\n   projectDirPath = \"\";\n   projectRoot = \"\";\n   targets = (\n") ;
-  GGS_uint index_10502_ (0) ;
-  if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeToolTargetList enumerator_10502 (in_TOOL_5F_TARGET_5F_LIST) ;
-    while (enumerator_10502.hasCurrentObject ()) {
-      result.appendString ("    ") ;
-      result.appendString (enumerator_10502.current_mTargetRef (HERE).stringValue ()) ;
-      result.appendString (", \n") ;
-      enumerator_10502.gotoNextObject () ;
-      index_10502_.increment () ;
-    }
-  }
-  GGS_uint index_10841_ (0) ;
-  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeAppTargetList enumerator_10841 (in_APP_5F_TARGET_5F_LIST) ;
-    while (enumerator_10841.hasCurrentObject ()) {
-      result.appendString ("    ") ;
-      result.appendString (enumerator_10841.current_mTargetRef (HERE).stringValue ()) ;
-      result.appendString (", \n") ;
-      enumerator_10841.gotoNextObject () ;
-      index_10841_.increment () ;
-    }
-  }
-  result.appendString ("   );\n  };\n\n  /*------------------------------------------------------------------ PBXResourcesBuildPhase */\n\n") ;
-  GGS_uint index_11293_ (0) ;
-  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeAppTargetList enumerator_11293 (in_APP_5F_TARGET_5F_LIST) ;
-    while (enumerator_11293.hasCurrentObject ()) {
-      result.appendString ("  ") ;
-      result.appendString (enumerator_11293.current_mResourceBuildRef (HERE).stringValue ()) ;
-      result.appendString (" /* Resources */ = {\n    isa = PBXResourcesBuildPhase;\n    buildActionMask = 2147483647;\n    files = (\n") ;
-      GGS_uint index_11476_ (0) ;
-      if (enumerator_11293.current_mResourceFileBuildRefs (HERE).isValid ()) {
-        UpEnumerator_stringlist enumerator_11476 (enumerator_11293.current_mResourceFileBuildRefs (HERE)) ;
-        while (enumerator_11476.hasCurrentObject ()) {
-          result.appendString ("      ") ;
-          result.appendString (enumerator_11476.current_mValue (HERE).stringValue ()) ;
-          result.appendString (",\n") ;
-          enumerator_11476.gotoNextObject () ;
-          index_11476_.increment () ;
-        }
-      }
-      result.appendString ("    );\n    runOnlyForDeploymentPostprocessing = 0;\n  };\n\n") ;
-      enumerator_11293.gotoNextObject () ;
-      index_11293_.increment () ;
-    }
-  }
-  result.appendString ("  /*------------------------------------------------------------------ PBXSourcesBuildPhase */\n") ;
-  GGS_uint index_11926_ (0) ;
-  if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeToolTargetList enumerator_11926 (in_TOOL_5F_TARGET_5F_LIST) ;
-    while (enumerator_11926.hasCurrentObject ()) {
-      result.appendString ("    ") ;
-      result.appendString (enumerator_11926.current_mBuildPhaseRef (HERE).stringValue ()) ;
-      result.appendString (" /* Sources */ = {\n      isa = PBXSourcesBuildPhase;\n      buildActionMask = 2147483647;\n      files = (\n") ;
-      GGS_uint index_12093_ (0) ;
-      if (enumerator_11926.current_mBuildPhaseRefList (HERE).isValid ()) {
-        UpEnumerator_stringlist enumerator_12093 (enumerator_11926.current_mBuildPhaseRefList (HERE)) ;
-        while (enumerator_12093.hasCurrentObject ()) {
-          result.appendString ("        ") ;
-          result.appendString (enumerator_12093.current_mValue (HERE).stringValue ()) ;
-          result.appendString (",\n") ;
-          enumerator_12093.gotoNextObject () ;
-          index_12093_.increment () ;
-        }
-      }
-      result.appendString ("      );\n      runOnlyForDeploymentPostprocessing = 0;\n    };\n") ;
-      enumerator_11926.gotoNextObject () ;
-      index_11926_.increment () ;
-    }
-  }
-  GGS_uint index_12499_ (0) ;
-  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeAppTargetList enumerator_12499 (in_APP_5F_TARGET_5F_LIST) ;
-    while (enumerator_12499.hasCurrentObject ()) {
-      result.appendString ("    ") ;
-      result.appendString (enumerator_12499.current_mBuildPhaseRef (HERE).stringValue ()) ;
-      result.appendString (" /* Sources */ = {\n      isa = PBXSourcesBuildPhase;\n      buildActionMask = 2147483647;\n      files = (\n") ;
-      GGS_uint index_12666_ (0) ;
-      if (enumerator_12499.current_mBuildPhaseRefList (HERE).isValid ()) {
-        UpEnumerator_stringlist enumerator_12666 (enumerator_12499.current_mBuildPhaseRefList (HERE)) ;
-        while (enumerator_12666.hasCurrentObject ()) {
-          result.appendString ("        ") ;
-          result.appendString (enumerator_12666.current_mValue (HERE).stringValue ()) ;
-          result.appendString (",\n") ;
-          enumerator_12666.gotoNextObject () ;
-          index_12666_.increment () ;
-        }
-      }
-      result.appendString ("      );\n      runOnlyForDeploymentPostprocessing = 0;\n    };\n") ;
-      enumerator_12499.gotoNextObject () ;
-      index_12499_.increment () ;
-    }
-  }
-  result.appendString ("\n\n  /*------------------------------------------------------------------ PBXTargetDependency */\n \n") ;
-  GGS_uint index_13173_ (0) ;
-  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeAppTargetList enumerator_13173 (in_APP_5F_TARGET_5F_LIST) ;
-    while (enumerator_13173.hasCurrentObject ()) {
-      GGS_uint index_13221_ (0) ;
-      if (enumerator_13173.current_mDependentTargets (HERE).isValid ()) {
-        UpEnumerator__32_stringlist enumerator_13221 (enumerator_13173.current_mDependentTargets (HERE)) ;
-        while (enumerator_13221.hasCurrentObject ()) {
-          result.appendString ("  ") ;
-          result.appendString (enumerator_13221.current_mValue_30_ (HERE).stringValue ()) ;
-          result.appendString (" = {\n    isa = PBXTargetDependency;\n    target = ") ;
-          result.appendString (enumerator_13221.current_mValue_31_ (HERE).stringValue ()) ;
-          result.appendString (";\n  };\n\n") ;
-          enumerator_13221.gotoNextObject () ;
-          index_13221_.increment () ;
-        }
-      }
-      enumerator_13173.gotoNextObject () ;
-      index_13173_.increment () ;
-    }
-  }
-  result.appendString ("  /*------------------------------------------------------------------ PBXVariantGroup */\n \n  /*------------------------------------------------------------------ XCBuildConfiguration */\n    ") ;
-  result.appendString (in_DEFAULT_5F_CONFIGURATION_5F_REF.stringValue ()) ;
-  result.appendString (" /* Default */ = {\n      isa = XCBuildConfiguration;\n      buildSettings = {\n        CLANG_CXX_LANGUAGE_STANDARD = \"c++17\";\n        SWIFT_APPROACHABLE_CONCURRENCY = YES;\n        SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;\n        SWIFT_OPTIMIZATION_LEVEL = \"-Onone\";\n        SWIFT_STRICT_CONCURRENCY = complete;\n        SWIFT_VERSION = 6.0;\n") ;
-  GGS_uint index_13961_ (0) ;
-  if (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST.isValid ()) {
-    UpEnumerator_stringlist enumerator_13961 (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST) ;
-    while (enumerator_13961.hasCurrentObject ()) {
-      result.appendString ("      ") ;
-      result.appendString (enumerator_13961.current_mValue (HERE).stringValue ()) ;
-      result.appendString (" ;\n") ;
-      enumerator_13961.gotoNextObject () ;
-      index_13961_.increment () ;
-    }
-  }
-  result.appendString ("    };\n    name = Default;\n  };\n\n") ;
-  GGS_uint index_14276_ (0) ;
-  if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeToolTargetList enumerator_14276 (in_TOOL_5F_TARGET_5F_LIST) ;
-    while (enumerator_14276.hasCurrentObject ()) {
-      result.appendString ("    ") ;
-      result.appendString (enumerator_14276.current_mBuildConfigurationRef (HERE).stringValue ()) ;
-      result.appendString (" /* Default */ = {\n      isa = XCBuildConfiguration;\n      buildSettings = {\n        ONLY_ACTIVE_ARCH = NO;\n") ;
-      GGS_uint index_14479_ (0) ;
-      if (enumerator_14276.current_mBuildConfigurationSettingList (HERE).isValid ()) {
-        UpEnumerator_stringlist enumerator_14479 (enumerator_14276.current_mBuildConfigurationSettingList (HERE)) ;
-        while (enumerator_14479.hasCurrentObject ()) {
-          result.appendString ("      ") ;
-          result.appendString (enumerator_14479.current_mValue (HERE).stringValue ()) ;
-          result.appendString (" ;\n") ;
-          enumerator_14479.gotoNextObject () ;
-          index_14479_.increment () ;
-        }
-      }
-      result.appendString ("      PRODUCT_NAME = ") ;
-      result.appendString (enumerator_14276.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 360)).stringValue ()) ;
-      result.appendString (" ;\n    };\n    name = Default;\n  };\n\n") ;
-      enumerator_14276.gotoNextObject () ;
-      index_14276_.increment () ;
-    }
-  }
-  GGS_uint index_14954_ (0) ;
-  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeAppTargetList enumerator_14954 (in_APP_5F_TARGET_5F_LIST) ;
-    while (enumerator_14954.hasCurrentObject ()) {
-      result.appendString ("    ") ;
-      result.appendString (enumerator_14954.current_mBuildConfigurationRef (HERE).stringValue ()) ;
-      result.appendString (" /* Default */ = {\n      isa = XCBuildConfiguration;\n      buildSettings = {\n") ;
-      GGS_uint index_15122_ (0) ;
-      if (enumerator_14954.current_mBuildConfigurationSettingList (HERE).isValid ()) {
-        UpEnumerator_stringlist enumerator_15122 (enumerator_14954.current_mBuildConfigurationSettingList (HERE)) ;
-        while (enumerator_15122.hasCurrentObject ()) {
-          result.appendString ("      ") ;
-          result.appendString (enumerator_15122.current_mValue (HERE).stringValue ()) ;
-          result.appendString (" ;\n") ;
-          enumerator_15122.gotoNextObject () ;
-          index_15122_.increment () ;
-        }
-      }
-      result.appendString ("      INFOPLIST_FILE = \"Info.plist\";\n      PRODUCT_NAME = ") ;
-      result.appendString (enumerator_14954.current_mProductFileName (HERE).getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("project.pbxproj.galgasTemplate", 373)).stringValue ()) ;
-      result.appendString (";\n      PRODUCT_BUNDLE_IDENTIFIER = \"") ;
-      result.appendString (in_APPLICATION_5F_BUNDLE_5F_BASE.stringValue ()) ;
-      result.appendString (".") ;
-      result.appendString (in_PROJECT_5F_NAME.stringValue ()) ;
-      result.appendString ("\";\n      SWIFT_ACTIVE_COMPILATION_CONDITIONS = \"CONFIGURATION_IS_DEBUG $(inherited)\";\n      SWIFT_VERSION = 6.0;\n    };\n    name = Default;\n  };\n\n") ;
-      enumerator_14954.gotoNextObject () ;
-      index_14954_.increment () ;
-    }
-  }
-  result.appendString ("  /*------------------------------------------------------------------ XCConfigurationList section */\n\n    ") ;
-  result.appendString (in_PROJECT_5F_BUILD_5F_DEFAULT_5F_CONFIGURATION_5F_REF.stringValue ()) ;
-  result.appendString (" /* Build configuration list for PBXProject */ = {\n      isa = XCConfigurationList;\n      buildConfigurations = (\n        ") ;
-  result.appendString (in_DEFAULT_5F_CONFIGURATION_5F_REF.stringValue ()) ;
-  result.appendString (" /* Default */,\n      );\n      defaultConfigurationIsVisible = 0;\n      defaultConfigurationName = Default;\n    };\n\n") ;
-  GGS_uint index_16199_ (0) ;
-  if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeToolTargetList enumerator_16199 (in_TOOL_5F_TARGET_5F_LIST) ;
-    while (enumerator_16199.hasCurrentObject ()) {
-      result.appendString ("    ") ;
-      result.appendString (enumerator_16199.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
-      result.appendString (" /* Default */ = {\n      isa = XCConfigurationList;\n      buildConfigurations = (\n        ") ;
-      result.appendString (enumerator_16199.current_mBuildConfigurationRef (HERE).stringValue ()) ;
-      result.appendString (" /* Default */,\n      );\n      defaultConfigurationIsVisible = 0;\n      defaultConfigurationName = Default;\n    };\n\n") ;
-      enumerator_16199.gotoNextObject () ;
-      index_16199_.increment () ;
-    }
-  }
-  GGS_uint index_16781_ (0) ;
-  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    UpEnumerator_XCodeAppTargetList enumerator_16781 (in_APP_5F_TARGET_5F_LIST) ;
-    while (enumerator_16781.hasCurrentObject ()) {
-      result.appendString ("    ") ;
-      result.appendString (enumerator_16781.current_mBuildConfigurationListRef (HERE).stringValue ()) ;
-      result.appendString (" /* Default */ = {\n      isa = XCConfigurationList;\n      buildConfigurations = (\n        ") ;
-      result.appendString (enumerator_16781.current_mBuildConfigurationRef (HERE).stringValue ()) ;
-      result.appendString (" /* Default */,\n      );\n      defaultConfigurationIsVisible = 0;\n      defaultConfigurationName = Default;\n    };\n\n") ;
-      enumerator_16781.gotoNextObject () ;
-      index_16781_.increment () ;
-    }
-  }
-  result.appendString ("/*------------------------------------------------------------------ End */\n  };\n\n  rootObject = ") ;
-  result.appendString (in_PROJECT_5F_REF.stringValue ()) ;
-  result.appendString (" /* Project object */;\n}\n") ;
-  return GGS_string (result) ;
-}
 

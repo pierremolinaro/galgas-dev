@@ -326,8 +326,8 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
   )
 //-------------------------------------- Build style map
   var styleIndex = 1
-  for (mName mComment) in lexicalStyleListAST do
-    !?lexiqueAnalysisContext.mStyleMap.insertKey (!mName, !mComment, !styleIndex)
+  for lexicalStyle in lexicalStyleListAST do
+    !?lexiqueAnalysisContext.mStyleMap.insertKey (lexicalStyle.mName, lexicalStyle.mComment, !styleIndex)
     styleIndex += 1
   end
 //-------------------------------------- Build lexical attribute map
@@ -338,86 +338,86 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
   )
 //-------------------------------------- Build terminal map
   var @terminalList terminalList = @()
-  for (mName mSentAttributeList mSyntaxErrorMessage mStyle nonAtomicSelection isEndOfTemplateMark) in terminalListAST do
+  for terminal in terminalListAST do
     var @uint terminalStyleIndex = 0
-    if mStyle.string.count > 0 then
-      lexiqueAnalysisContext.mStyleMap.searchKey (!mStyle, ?*, ?terminalStyleIndex)
+    if terminal.mStyle.string.count > 0 then
+      lexiqueAnalysisContext.mStyleMap.searchKey (terminal.mStyle, ?*, ?terminalStyleIndex)
     end
     var argumentTypeList = @lexicalSentValueList ()
-    for (mFormalSelector mAttributeName) in mSentAttributeList do
-      lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (!mAttributeName, ?let attributeLexicalType)
-      argumentTypeList ++= @(!mFormalSelector, !mAttributeName.string, !attributeLexicalType)
+    for attribute in terminal.mSentAttributeList do
+      lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (attribute.mAttributeName, ?let attributeLexicalType)
+      argumentTypeList ++= @(attribute.mFormalSelector, attribute.mAttributeName.string, !attributeLexicalType)
     end
-    !?lexiqueAnalysisContext.mTerminalMap.insertKey (!mName, !argumentTypeList)
+    !?lexiqueAnalysisContext.mTerminalMap.insertKey (terminal.mName, !argumentTypeList)
     terminalList ++= @(
-      !mName,
+      !terminal.mName,
       !argumentTypeList,
-      !mSyntaxErrorMessage.string,
-      !isEndOfTemplateMark: isEndOfTemplateMark,
-      !atomicSelection: not nonAtomicSelection,
+      !terminal.mSyntaxErrorMessage.string,
+      !isEndOfTemplateMark: terminal.isEndOfTemplateMark,
+      !atomicSelection: not terminal.nonAtomicSelection,
       !terminalStyleIndex)
   end
-  for (* mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in lexicalListDeclarationListAST do
+  for lexicalList in lexicalListDeclarationListAST do
     var @uint terminalStyleIndex = 0
-    if mStyle.string.count > 0 then
-      lexiqueAnalysisContext.mStyleMap.searchKey (!mStyle, ?*, ?terminalStyleIndex)
+    if lexicalList.mStyle.string.count > 0 then
+      lexiqueAnalysisContext.mStyleMap.searchKey (lexicalList.mStyle, ?*, ?terminalStyleIndex)
     end
     var argumentTypeList = @lexicalSentValueList ()
-    for (mFormalSelector mAttributeName) in mSentAttributeList do
-      lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (!mAttributeName, ?let attributeLexicalType)
-      argumentTypeList ++= @(!mFormalSelector, !mAttributeName.string, !attributeLexicalType)
+    for attribute in lexicalList.mSentAttributeList do
+      lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (attribute.mAttributeName, ?let attributeLexicalType)
+      argumentTypeList ++= @(attribute.mFormalSelector, attribute.mAttributeName.string, !attributeLexicalType)
     end
-    for (* mTerminalSpelling nonAtomicSelection isEndOfTemplateMark) in mEntryList do
-      let syntaxErrorMessage = mSyntaxErrorMessage.string.replacing (!"%K", !by: mTerminalSpelling.string)
+    for entry in lexicalList.mEntryList do
+      let syntaxErrorMessage = lexicalList.mSyntaxErrorMessage.string.replacing (!"%K", !by: entry.mTerminalSpelling.string)
       terminalList ++= @(
-        !mTerminalSpelling,
+        !entry.mTerminalSpelling,
         !argumentTypeList,
         !syntaxErrorMessage,
-        !isEndOfTemplateMark: isEndOfTemplateMark,
-        !atomicSelection: not nonAtomicSelection,
+        !isEndOfTemplateMark: entry.isEndOfTemplateMark,
+        !atomicSelection: not entry.nonAtomicSelection,
         !terminalStyleIndex)
     end
   end
 //-------------------------------------- Template delimiters
   var @stringset unicodeStringToGenerate = @()
   var @templateDelimitorList templateDelimitorList = @()
-  for (mStartString * * mPreserved mEndString) in self.mTemplateDelimitorList do
-   unicodeStringToGenerate ++= mStartString.string
-   unicodeStringToGenerate ++= mEndString.string
-   templateDelimitorList ++= @(!mStartString, !mEndString, !mPreserved)
+  for templateDelimitor in self.mTemplateDelimitorList do
+   unicodeStringToGenerate ++= templateDelimitor.mStartString.string
+   unicodeStringToGenerate ++= templateDelimitor.mEndString.string
+   templateDelimitorList ++= @(templateDelimitor.mStartString, templateDelimitor.mEndString, templateDelimitor.mPreserved)
   end
 //-------------------------------------- Template replacements
-  for (mMatchString mReplacementString *) in self.mTemplateReplacementList do
-    unicodeStringToGenerate ++= mMatchString.string
-    unicodeStringToGenerate ++= mReplacementString.string
+  for templateReplacement in self.mTemplateReplacementList do
+    unicodeStringToGenerate ++= templateReplacement.mMatchString.string
+    unicodeStringToGenerate ++= templateReplacement.mReplacementString.string
    // § TODO Check replacement function
   end
 //-------------------------------------- Build header and Cpp contents
   if @uint.errorCount == 0 then
   //--- Header
-    let headerContents = [filewrapper templateLexiqueGenerationTemplates.cppHeader
-       !self.mLexiqueComponentName.string.identifierRepresentation
+    let headerContents = filewrapper [templateLexiqueGenerationTemplates.cppHeader :
+       !self.mLexiqueComponentName.string.identifierRepresentation,
        !self.mLexiqueSuperComponentName.string.identifierRepresentation
     ]
   //--- Cpp
-    let cppContents =  [filewrapper templateLexiqueGenerationTemplates.cppImplementation
-      !self.mLexiqueComponentName.string.identifierRepresentation
-      !self.mLexiqueSuperComponentName.string.identifierRepresentation
-      !lexiqueAnalysisContext.mLexicalTokenListMap
-      !unicodeStringToGenerate
-      !templateDelimitorList
-      !terminalList
-      !self.mLexiqueComponentName.string
+    let cppContents = filewrapper [templateLexiqueGenerationTemplates.cppImplementation :
+      !self.mLexiqueComponentName.string.identifierRepresentation,
+      !self.mLexiqueSuperComponentName.string.identifierRepresentation,
+      !lexiqueAnalysisContext.mLexicalTokenListMap,
+      !unicodeStringToGenerate,
+      !templateDelimitorList,
+      !terminalList,
+      !self.mLexiqueComponentName.string,
       !self.mTemplateReplacementList
     ]
   //--- SwiftUI implementation
-    let swiftuiImplementation = [filewrapper templateLexiqueGenerationTemplates.swiftuiImplementationZone
-      !"lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation + "-swiftui"
-      !self.mLexiqueComponentName.string
-      !self.mLexiqueSuperComponentName.string
-      !terminalList
-      !templateDelimitorList
-      !self.mTemplateReplacementList
+    let swiftuiImplementation = filewrapper [templateLexiqueGenerationTemplates.swiftuiImplementationZone :
+      !"lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation + "-swiftui",
+      !self.mLexiqueComponentName.string,
+      !self.mLexiqueSuperComponentName.string,
+      !terminalList,
+      !templateDelimitorList,
+      !self.mTemplateReplacementList,
       !lexicalStyleListAST
     ]
   //---
@@ -442,19 +442,21 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
 private filewrapper templateLexiqueGenerationTemplates in "+generation-templates/lexique_generation" {
 }{
 }{
-  template cppHeader "template_lexique_header_template_zone_2.h.galgasTemplate"
-    ?@string LEXIQUE_IDENTIFIER
+  template cppHeader : "template_lexique_header_template_zone_2.h.galgasTemplate" (
+    ?@string LEXIQUE_IDENTIFIER,
     ?@string SUPER_LEXIQUE_IDENTIFIER
+  )
 
-  template cppImplementation "template_lexique_implementation-galgas3.cpp.galgasTemplate"
-    ?@string LEXIQUE_IDENTIFIER
-    ?@string SUPER_LEXIQUE_IDENTIFIER
-    ?@lexicalExplicitTokenListMapMap LEXICAL_TOKEN_LIST_MAP
-    ?@stringset STRINGS_IN_EXPLICIT_RULES
-    ?@templateDelimitorList TEMPLATE_DELIMITOR_LIST
-    ?@terminalList TERMINAL_LIST
-    ?@string LEXIQUE_COMPONENT_NAME
+  template cppImplementation : "template_lexique_implementation-galgas3.cpp.galgasTemplate" (
+    ?@string LEXIQUE_IDENTIFIER,
+    ?@string SUPER_LEXIQUE_IDENTIFIER,
+    ?@lexicalExplicitTokenListMapMap LEXICAL_TOKEN_LIST_MAP,
+    ?@stringset STRINGS_IN_EXPLICIT_RULES,
+    ?@templateDelimitorList TEMPLATE_DELIMITOR_LIST,
+    ?@terminalList TERMINAL_LIST,
+    ?@string LEXIQUE_COMPONENT_NAME,
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
+  )
 
 //  template swiftCocoaImplementationZone "template_lexique_cocoa_implementation.swift.galgasTemplate"
 //    ?@string LEXIQUE_HEADER_FILE_NAME
@@ -464,14 +466,15 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
 //    ?@templateDelimitorList TEMPLATE_DELIMITOR_LIST
 //    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
 
-  template swiftuiImplementationZone "template_lexique_swiftui_implementation.swift.galgasTemplate"
-    ?@string LEXIQUE_HEADER_FILE_NAME
-    ?@string LEXIQUE_CLASS_NAME
-    ?@string SUPER_LEXIQUE_CLASS_NAME
-    ?@terminalList TERMINAL_LIST
-    ?@templateDelimitorList TEMPLATE_DELIMITOR_LIST
-    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
+  template swiftuiImplementationZone : "template_lexique_swiftui_implementation.swift.galgasTemplate" (
+    ?@string LEXIQUE_HEADER_FILE_NAME,
+    ?@string LEXIQUE_CLASS_NAME,
+    ?@string SUPER_LEXIQUE_CLASS_NAME,
+    ?@terminalList TERMINAL_LIST,
+    ?@templateDelimitorList TEMPLATE_DELIMITOR_LIST,
+    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST,
     ?@lexicalStyleListAST LEXICAL_STYLE_LIST
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -12381,6 +12381,1179 @@ void extensionSetter_combineManagerWith (GGS_currentVarManager & ioObject,
 
 
 //--------------------------------------------------------------------------------------------------
+//  Map type @unifiedTypeMap
+//--------------------------------------------------------------------------------------------------
+
+#include "GALGAS_GenericMapRoot.h"
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMap::GGS_unifiedTypeMap (void) :
+mSharedRoot () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMap::~ GGS_unifiedTypeMap (void) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMap::GGS_unifiedTypeMap (const GGS_unifiedTypeMap & inSource) :
+mSharedRoot (inSource.mSharedRoot) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMap & GGS_unifiedTypeMap::operator = (const GGS_unifiedTypeMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMap GGS_unifiedTypeMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GGS_unifiedTypeMap result ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_unifiedTypeMap::getter_hasKey (const GGS_string & inKey
+                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_unifiedTypeMap::getter_hasKeyAtLevel (const GGS_string & inKey,
+                                                   const GGS_uint & inLevel
+                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_unifiedTypeMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_unifiedTypeMap::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (mSharedRoot->levels ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_unifiedTypeMap::getter_locationForKey (const GGS_string & inKey,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_unifiedTypeMap::getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeyList (result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_unifiedTypeMap::isValid (void) const {
+  return mSharedRoot.isNotNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_unifiedTypeMap::drop (void)  {
+  mSharedRoot.setToNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_unifiedTypeMap::build (LOCATION_ARGS) {
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_unifiedTypeMap_2E_element>>::make (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_unifiedTypeMap::performInsert (const GGS_unifiedTypeMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.mProperty_lkey.isValid ()) {
+    OptionalSharedRef <GenericMapNode <GGS_unifiedTypeMap_2E_element>> existingNode ;
+    const bool allowReplacing = false ;
+    mSharedRoot.insulate (THERE) ;
+    mSharedRoot->insertOrReplaceInfo (
+      inElement,
+      allowReplacing,
+      existingNode
+      COMMA_THERE
+    ) ;
+    const GGS_lstring lkey = inElement.mProperty_lkey ;
+    if (existingNode.isNotNil ()) {
+      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
+      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
+      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
+      if (existingInfo.isNotNil ()) {
+        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
+        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>
+GGS_unifiedTypeMap::infoForKey (const String & inKey) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->infoForKey (inKey) ;
+  }else{
+    return SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+int32_t GGS_unifiedTypeMap::count (void) const  {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->count () ;
+  }else{
+    return 0 ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>>
+GGS_unifiedTypeMap::sortedInfoArray (void) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->sortedInfoArray () ;
+  }else{
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringset GGS_unifiedTypeMap::getter_keySet (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  GGS_stringset result ;
+  if (isValid ()) {
+    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeySet (result, inCompiler) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_unifiedTypeMap::findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
+  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMap_2E_element_3F_ GGS_unifiedTypeMap
+::readSubscript__3F_ (const class GGS_string & inKey,
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_unifiedTypeMap_2E_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      result = GGS_unifiedTypeMap_2E_element_3F_::init_nil () ;
+    }else{
+      GGS_unifiedTypeMap_2E_element element ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_mElement = info->mProperty_mElement ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMap GGS_unifiedTypeMap::class_func_mapWithMapToOverride (const GGS_unifiedTypeMap & inMapToOverride
+                                                                        COMMA_LOCATION_ARGS) {
+  GGS_unifiedTypeMap result ;
+  if (inMapToOverride.isValid ()) {
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_unifiedTypeMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMap GGS_unifiedTypeMap::getter_overriddenMap (Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const {
+  GGS_unifiedTypeMap result ;
+  if (isValid ()) {
+    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
+    if (result.mSharedRoot.isNil ()) {
+      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_unifiedTypeMap::setter_internalInsertKey (GGS_lstring inLKey,
+                                                   GGS_unifiedTypeMapElementClass inArgument0,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  const GGS_unifiedTypeMap_2E_element element (inLKey, inArgument0) ;
+  const char * kInsertErrorMessage = "the '%K' key is already declared in %L" ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass GGS_unifiedTypeMap::getter_mElementForKey (const GGS_string & inKey,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const {
+  GGS_unifiedTypeMapElementClass result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_mElement ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_unifiedTypeMap::setter_setMElementForKey (GGS_unifiedTypeMapElementClass inValue,
+                                                   GGS_string inKey,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_unifiedTypeMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_mElement = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+static void GGS_unifiedTypeMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>> & inArray,
+                                                        String & ioString,
+                                                        const int32_t inIndentation) {
+  const int32_t n = inArray.count () ;
+  ioString.appendString (" (") ;
+  ioString.appendSigned (n) ;
+  ioString.appendString (" object") ;
+  if (n > 1) {
+    ioString.appendString ("s") ;
+  }
+  ioString.appendString ("):") ;
+  for (int32_t i = 0 ; i < n ; i++) {
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation) ;
+    ioString.appendString ("|-at ") ;
+    ioString.appendSigned (i) ;
+    ioString.appendString (": key '") ;
+    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
+    ioString.appendString ("'") ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("mElement:") ;
+    inArray (i COMMA_HERE)->mProperty_mElement.description (ioString, inIndentation + 1) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_unifiedTypeMap::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<map @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>> array = sortedInfoArray () ;
+    GGS_unifiedTypeMap_internalDescription (array, ioString, inIndentation) ;
+    OptionalSharedRef <GenericMapRoot <GGS_unifiedTypeMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    uint32_t idx = 0 ;
+    while (subRoot.isNotNil ()) {
+     idx += 1 ;
+     ioString.appendNewLine () ;
+     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+     ioString.appendString (" override #") ;
+     ioString.appendUnsigned (idx) ;
+     const auto subRootArray = subRoot->sortedInfoArray () ;
+     GGS_unifiedTypeMap_internalDescription (subRootArray, ioString, inIndentation) ;
+     subRoot = subRoot->overriddenRoot () ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Down Enumerator for @unifiedTypeMap
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_unifiedTypeMap::DownEnumerator_unifiedTypeMap (const GGS_unifiedTypeMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMap_2E_element DownEnumerator_unifiedTypeMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_unifiedTypeMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass DownEnumerator_unifiedTypeMap::current_mElement (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mElement ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Up Enumerator for @unifiedTypeMap
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_unifiedTypeMap::UpEnumerator_unifiedTypeMap (const GGS_unifiedTypeMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMap_2E_element UpEnumerator_unifiedTypeMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_unifiedTypeMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass UpEnumerator_unifiedTypeMap::current_mElement (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_mElement ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @unifiedTypeMap generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unifiedTypeMap ("unifiedTypeMap",
+                                                                   nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_unifiedTypeMap::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_unifiedTypeMap ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_unifiedTypeMap::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_unifiedTypeMap (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMap GGS_unifiedTypeMap::extractObject (const GGS_object & inObject,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  GGS_unifiedTypeMap result ;
+  const GGS_unifiedTypeMap * p = (const GGS_unifiedTypeMap *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_unifiedTypeMap *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("unifiedTypeMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension proc '@unifiedTypeMap makeEntry'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_makeEntry (GGS_unifiedTypeMap & ioObject,
+                                const GGS_lstring constinArgument_inLKey,
+                                GGS_unifiedTypeMapEntry & outArgument_outEntry,
+                                Compiler * inCompiler
+                                COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outEntry.drop () ; // Release 'out' argument
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
+    test_0 = GGS_bool (ComparisonKind::equal, constinArgument_inLKey.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    if (GalgasBool::boolTrue == test_0) {
+      outArgument_outEntry = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas4", 47)) ;
+    }
+  }
+  if (GalgasBool::boolFalse == test_0) {
+    GalgasBool test_1 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_1) {
+      const GGS_unifiedTypeMap temp_2 = ioObject ;
+      const GGS_unifiedTypeMap_2E_element var_node_2229 = temp_2.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+      if (!temp_2.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+        test_1 = GalgasBool::boolFalse ;
+      }
+      if (GalgasBool::boolTrue == test_1) {
+        outArgument_outEntry = GGS_unifiedTypeMapEntry::class_func_element (var_node_2229.readProperty_mElement ()  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 49)) ;
+      }
+    }
+    if (GalgasBool::boolFalse == test_1) {
+      GGS_unifiedTypeMapElementClass var_newElement_2330 = GGS_unifiedTypeMapElementClass::init_21_ (GGS_typeDefinition::class_func_unsolved (SOURCE_FILE ("unified-type-map.galgas4", 51)), inCompiler COMMA_HERE) ;
+      {
+      ioObject.setter_internalInsertKey (constinArgument_inLKey, var_newElement_2330, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 52)) ;
+      }
+      outArgument_outEntry = GGS_unifiedTypeMapEntry::class_func_element (var_newElement_2330  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 53)) ;
+    }
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension proc '@unifiedTypeMap makeEntryFromString'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_makeEntryFromString (GGS_unifiedTypeMap & ioObject,
+                                          const GGS_string constinArgument_inKey,
+                                          GGS_unifiedTypeMapEntry & outArgument_outEntry,
+                                          Compiler * inCompiler
+                                          COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outEntry.drop () ; // Release 'out' argument
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
+    test_0 = GGS_bool (ComparisonKind::equal, constinArgument_inKey.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    if (GalgasBool::boolTrue == test_0) {
+      outArgument_outEntry = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas4", 61)) ;
+    }
+  }
+  if (GalgasBool::boolFalse == test_0) {
+    GalgasBool test_1 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_1) {
+      const GGS_unifiedTypeMap temp_2 = ioObject ;
+      const GGS_unifiedTypeMap_2E_element var_node_2753 = temp_2.readSubscript__3F_ (constinArgument_inKey, inCompiler COMMA_HERE).unwrappedValue () ;
+      if (!temp_2.readSubscript__3F_ (constinArgument_inKey, inCompiler COMMA_HERE).isValuated ()) {
+        test_1 = GalgasBool::boolFalse ;
+      }
+      if (GalgasBool::boolTrue == test_1) {
+        outArgument_outEntry = GGS_unifiedTypeMapEntry::class_func_element (var_node_2753.readProperty_mElement ()  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 63)) ;
+      }
+    }
+    if (GalgasBool::boolFalse == test_1) {
+      GGS_unifiedTypeMapElementClass var_newElement_2853 = GGS_unifiedTypeMapElementClass::init_21_ (GGS_typeDefinition::class_func_unsolved (SOURCE_FILE ("unified-type-map.galgas4", 65)), inCompiler COMMA_HERE) ;
+      {
+      ioObject.setter_internalInsertKey (GGS_lstring::init_21__21_ (constinArgument_inKey, GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas4", 66)), inCompiler COMMA_HERE), var_newElement_2853, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 66)) ;
+      }
+      outArgument_outEntry = GGS_unifiedTypeMapEntry::class_func_element (var_newElement_2853  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 67)) ;
+    }
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@unifiedTypeMap typeMapEntryForLKey'
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryForLKey (const GGS_unifiedTypeMap & inObject,
+                                                             const GGS_lstring & constinArgument_inLKey,
+                                                             Compiler * inCompiler
+                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_unifiedTypeMapEntry result_result ; // Returned variable
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
+    test_0 = GGS_bool (ComparisonKind::equal, constinArgument_inLKey.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    if (GalgasBool::boolTrue == test_0) {
+      result_result = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas4", 75)) ;
+    }
+  }
+  if (GalgasBool::boolFalse == test_0) {
+    GalgasBool test_1 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_1) {
+      const GGS_unifiedTypeMap temp_2 = inObject ;
+      const GGS_unifiedTypeMap_2E_element var_node_3280 = temp_2.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+      if (!temp_2.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+        test_1 = GalgasBool::boolFalse ;
+      }
+      if (GalgasBool::boolTrue == test_1) {
+        result_result = GGS_unifiedTypeMapEntry::class_func_element (var_node_3280.readProperty_mElement ()  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 77)) ;
+      }
+    }
+    if (GalgasBool::boolFalse == test_1) {
+      GenericArray <FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GGS_string ("there is no '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 79)).add_operation (GGS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 79)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 79)) ;
+      result_result.drop () ; // Release error dropped variable
+    }
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@unifiedTypeMap typeMapEntryOrNullForLKey'
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryOrNullForLKey (const GGS_unifiedTypeMap & inObject,
+                                                                   const GGS_lstring & constinArgument_inLKey,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_unifiedTypeMapEntry result_result ; // Returned variable
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
+    test_0 = GGS_bool (ComparisonKind::equal, constinArgument_inLKey.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+    if (GalgasBool::boolTrue == test_0) {
+      result_result = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas4", 87)) ;
+    }
+  }
+  if (GalgasBool::boolFalse == test_0) {
+    GalgasBool test_1 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_1) {
+      const GGS_unifiedTypeMap temp_2 = inObject ;
+      const GGS_unifiedTypeMap_2E_element var_node_3704 = temp_2.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+      if (!temp_2.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+        test_1 = GalgasBool::boolFalse ;
+      }
+      if (GalgasBool::boolTrue == test_1) {
+        result_result = GGS_unifiedTypeMapEntry::class_func_element (var_node_3704.readProperty_mElement ()  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 89)) ;
+      }
+    }
+    if (GalgasBool::boolFalse == test_1) {
+      result_result = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas4", 91)) ;
+    }
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension proc '@unifiedTypeMap insertType'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertType (GGS_unifiedTypeMap & ioObject,
+                                 const GGS_lstring constinArgument_inTypeName,
+                                 const GGS_unifiedTypeDefinition constinArgument_inTypeDefinition,
+                                 Compiler * inCompiler
+                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
+    const GGS_unifiedTypeMap temp_1 = ioObject ;
+    const GGS_unifiedTypeMap_2E_element var_node_4040 = temp_1.readSubscript__3F_ (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+    if (!temp_1.readSubscript__3F_ (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+      test_0 = GalgasBool::boolFalse ;
+    }
+    if (GalgasBool::boolTrue == test_0) {
+      switch (var_node_4040.readProperty_mElement ().readProperty_mDefinition ().enumValue ()) {
+      case GGS_typeDefinition::Enumeration::invalid:
+        break ;
+      case GGS_typeDefinition::Enumeration::enum_solved:
+        {
+          GGS_unifiedTypeDefinition extractedValue_4128__0 ;
+          var_node_4040.readProperty_mElement ().readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_4128__0) ;
+          GenericArray <FixItDescription> fixItArray2 ;
+          inCompiler->emitSemanticError (constinArgument_inTypeName.readProperty_location (), GGS_string ("type already defined"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 101)) ;
+        }
+        break ;
+      case GGS_typeDefinition::Enumeration::enum_unsolved:
+        {
+          GGS_unifiedTypeMapElementClass var_e_4219 = var_node_4040.readProperty_mElement () ;
+          var_e_4219.setProperty_mDefinition (GGS_typeDefinition::class_func_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 104))) ;
+        }
+        break ;
+      }
+    }
+  }
+  if (GalgasBool::boolFalse == test_0) {
+    GGS_unifiedTypeMapElementClass var_newElement_4330 = GGS_unifiedTypeMapElementClass::init_21_ (GGS_typeDefinition::class_func_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 107)), inCompiler COMMA_HERE) ;
+    {
+    ioObject.setter_internalInsertKey (constinArgument_inTypeName, var_newElement_4330, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 108)) ;
+    }
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@unifiedTypeMap typeDefinition'
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeDefinition extensionGetter_typeDefinition (const GGS_unifiedTypeMap & inObject,
+                                                          const GGS_lstring & constinArgument_inLKey,
+                                                          Compiler * inCompiler
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_unifiedTypeDefinition result_result ; // Returned variable
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
+    const GGS_unifiedTypeMap temp_1 = inObject ;
+    const GGS_unifiedTypeMap_2E_element var_node_4667 = temp_1.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+    if (!temp_1.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+      test_0 = GalgasBool::boolFalse ;
+    }
+    if (GalgasBool::boolTrue == test_0) {
+      switch (var_node_4667.readProperty_mElement ().readProperty_mDefinition ().enumValue ()) {
+      case GGS_typeDefinition::Enumeration::invalid:
+        break ;
+      case GGS_typeDefinition::Enumeration::enum_solved:
+        {
+          GGS_unifiedTypeDefinition extractedValue_4751_definition_0 ;
+          var_node_4667.readProperty_mElement ().readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_4751_definition_0) ;
+          result_result = extractedValue_4751_definition_0 ;
+        }
+        break ;
+      case GGS_typeDefinition::Enumeration::enum_unsolved:
+        {
+          GenericArray <FixItDescription> fixItArray2 ;
+          inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GGS_string ("unsolved type"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 120)) ;
+          result_result.drop () ; // Release error dropped variable
+        }
+        break ;
+      }
+    }
+  }
+  if (GalgasBool::boolFalse == test_0) {
+    GenericArray <FixItDescription> fixItArray3 ;
+    inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GGS_string ("there is no '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 123)).add_operation (GGS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 123)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 123)) ;
+    result_result.drop () ; // Release error dropped variable
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Enum typeDefinition
+//--------------------------------------------------------------------------------------------------
+
+GGS_typeDefinition::GGS_typeDefinition (void) :
+mAssociatedValues (),
+mEnum (Enumeration::invalid) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typeDefinition GGS_typeDefinition::class_func_unsolved (UNUSED_LOCATION_ARGS) {
+  GGS_typeDefinition result ;
+  result.mEnum = Enumeration::enum_unsolved ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typeDefinition GGS_typeDefinition::class_func_solved (const GGS_unifiedTypeDefinition & inAssociatedValue0
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_typeDefinition result ;
+  result.mEnum = Enumeration::enum_solved ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_typeDefinition_2E_solved (inAssociatedValue0)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_typeDefinition::method_extractSolved (GGS_unifiedTypeDefinition & outAssociatedValue_definition,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_solved) {
+    outAssociatedValue_definition.drop () ;
+    String s ;
+    s.appendCString ("proc @typeDefinition.solved invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_typeDefinition_2E_solved *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_definition = ptr->mProperty_definition ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typeDefinition_2E_solved_3F_ GGS_typeDefinition::getter_getSolved (UNUSED_LOCATION_ARGS) const {
+  GGS_typeDefinition_2E_solved_3F_ result ;
+  if (mEnum == Enumeration::enum_solved) {
+    const auto ptr = (const GGS_typeDefinition_2E_solved *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_typeDefinition_2E_solved (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_typeDefinition::getAssociatedValuesFor_solved (GGS_unifiedTypeDefinition & out_definition) const {
+  const auto ptr = (const GGS_typeDefinition_2E_solved *) mAssociatedValues.associatedValuesPointer () ;
+  out_definition = ptr->mProperty_definition ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_typeDefinition [3] = {
+  "(not built)",
+  "unsolved",
+  "solved"
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_typeDefinition::getter_isUnsolved (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_unsolved == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_typeDefinition::getter_isSolved (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_solved == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_typeDefinition::description (String & ioString,
+                                      const int32_t inIndentation) const {
+  ioString.appendCString ("<enum @typeDefinition: ") ;
+  ioString.appendCString (gEnumNameArrayFor_typeDefinition [size_t (mEnum)]) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
+  ioString.appendCString (">") ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @typeDefinition generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeDefinition ("typeDefinition",
+                                                                   nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_typeDefinition::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_typeDefinition ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_typeDefinition::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_typeDefinition (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typeDefinition GGS_typeDefinition::extractObject (const GGS_object & inObject,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  GGS_typeDefinition result ;
+  const GGS_typeDefinition * p = (const GGS_typeDefinition *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_typeDefinition *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("typeDefinition", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_unifiedTypeMapElementClass_2E_weak::objectCompare (const GGS_unifiedTypeMapElementClass_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass_2E_weak::GGS_unifiedTypeMapElementClass_2E_weak (void) :
+AC_GALGAS_weak_reference () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass_2E_weak & GGS_unifiedTypeMapElementClass_2E_weak::operator = (const GGS_unifiedTypeMapElementClass & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass_2E_weak::GGS_unifiedTypeMapElementClass_2E_weak (const GGS_unifiedTypeMapElementClass & inSource) :
+AC_GALGAS_weak_reference (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass_2E_weak GGS_unifiedTypeMapElementClass_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_unifiedTypeMapElementClass_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass GGS_unifiedTypeMapElementClass_2E_weak::unwrappedValue (void) const {
+  GGS_unifiedTypeMapElementClass result ;
+  if (isValid ()) {
+    const cPtr_unifiedTypeMapElementClass * p = (cPtr_unifiedTypeMapElementClass *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_unifiedTypeMapElementClass (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass GGS_unifiedTypeMapElementClass_2E_weak::bang_unifiedTypeMapElementClass_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_unifiedTypeMapElementClass result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_unifiedTypeMapElementClass) ;
+      result = GGS_unifiedTypeMapElementClass ((cPtr_unifiedTypeMapElementClass *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @unifiedTypeMapElementClass.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unifiedTypeMapElementClass_2E_weak ("unifiedTypeMapElementClass.weak",
+                                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_unifiedTypeMapElementClass_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_unifiedTypeMapElementClass_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_unifiedTypeMapElementClass_2E_weak::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_unifiedTypeMapElementClass_2E_weak (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapElementClass_2E_weak GGS_unifiedTypeMapElementClass_2E_weak::extractObject (const GGS_object & inObject,
+                                                                                              Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GGS_unifiedTypeMapElementClass_2E_weak result ;
+  const GGS_unifiedTypeMapElementClass_2E_weak * p = (const GGS_unifiedTypeMapElementClass_2E_weak *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_unifiedTypeMapElementClass_2E_weak *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("unifiedTypeMapElementClass.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@unifiedTypeMapEntry definition'
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeDefinition extensionGetter_definition (const GGS_unifiedTypeMapEntry & inObject,
+                                                      Compiler * inCompiler
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_unifiedTypeDefinition result_result ; // Returned variable
+  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
+  switch (temp_0.enumValue ()) {
+  case GGS_unifiedTypeMapEntry::Enumeration::invalid:
+    break ;
+  case GGS_unifiedTypeMapEntry::Enumeration::enum_null:
+    {
+      GenericArray <FixItDescription> fixItArray1 ;
+      inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas4", 182)), GGS_string ("null type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 182)) ;
+      result_result.drop () ; // Release error dropped variable
+    }
+    break ;
+  case GGS_unifiedTypeMapEntry::Enumeration::enum_element:
+    {
+      GGS_unifiedTypeMapElementClass_2E_weak extractedValue_6967_weakElement_0 ;
+      temp_0.getAssociatedValuesFor_element (extractedValue_6967_weakElement_0) ;
+      GalgasBool test_2 = GalgasBool::boolTrue ;
+      if (GalgasBool::boolTrue == test_2) {
+        const GGS_unifiedTypeMapElementClass var_type_6995 = extractedValue_6967_weakElement_0.unwrappedValue () ;
+        if (!extractedValue_6967_weakElement_0.isValuated ()) {
+          test_2 = GalgasBool::boolFalse ;
+        }
+        if (GalgasBool::boolTrue == test_2) {
+          switch (var_type_6995.readProperty_mDefinition ().enumValue ()) {
+          case GGS_typeDefinition::Enumeration::invalid:
+            break ;
+          case GGS_typeDefinition::Enumeration::enum_unsolved:
+            {
+              GenericArray <FixItDescription> fixItArray3 ;
+              inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas4", 187)), GGS_string ("unsolved type"), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 187)) ;
+              result_result.drop () ; // Release error dropped variable
+            }
+            break ;
+          case GGS_typeDefinition::Enumeration::enum_solved:
+            {
+              GGS_unifiedTypeDefinition extractedValue_7154_definition_0 ;
+              var_type_6995.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_7154_definition_0) ;
+              result_result = extractedValue_7154_definition_0 ;
+            }
+            break ;
+          }
+        }
+      }
+      if (GalgasBool::boolFalse == test_2) {
+        GenericArray <FixItDescription> fixItArray4 ;
+        inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas4", 192)), GGS_string ("nil type"), fixItArray4  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 192)) ;
+        result_result.drop () ; // Release error dropped variable
+      }
+    }
+    break ;
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@unifiedTypeMapEntry identifierRepresentation'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_identifierRepresentation (const GGS_unifiedTypeMapEntry & inObject,
+                                                     Compiler * inCompiler
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
+  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 200)).readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-type-map.galgas4", 200)) ;
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@unifiedTypeMapEntry typeName'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_typeName (const GGS_unifiedTypeMapEntry & inObject,
+                                     Compiler * inCompiler
+                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
+  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 206)).readProperty_typeName ().readProperty_string () ;
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@unifiedTypeMapEntry baseType'
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapEntry extensionGetter_baseType (const GGS_unifiedTypeMapEntry & inObject,
+                                                  Compiler * inCompiler
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_unifiedTypeMapEntry result_result ; // Returned variable
+  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
+  result_result = temp_0 ;
+  bool loop_7867 = true ;
+  while (loop_7867) {
+    GalgasBool test_1 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_1) {
+      test_1 = extensionGetter_definition (result_result, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 213)).readProperty_superType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas4", 213)).operator_not (SOURCE_FILE ("unified-type-map.galgas4", 213)).boolEnum () ;
+      loop_7867 = test_1 == GalgasBool::boolTrue ;
+      if (loop_7867) {
+        result_result = extensionGetter_definition (result_result, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 214)).readProperty_superType () ;
+      }
+    }
+  }
+//---
+  return result_result ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension proc '@unifiedTypeMapEntry addHeaderFileName'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_addHeaderFileName (const GGS_unifiedTypeMapEntry inObject,
+                                        GGS_stringset & ioArgument_ioInclusions,
+                                        Compiler * inCompiler
+                                        COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
+  GGS_unifiedTypeDefinition var_typeDefinition_8139 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 221)) ;
+  GalgasBool test_1 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_1) {
+    test_1 = var_typeDefinition_8139.readProperty_isPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas4", 222)).operator_and (GGS_bool (ComparisonKind::notEqual, var_typeDefinition_8139.readProperty_headerKind ().objectCompare (GGS_headerKind::class_func_noHeader (SOURCE_FILE ("unified-type-map.galgas4", 222)))) COMMA_SOURCE_FILE ("unified-type-map.galgas4", 222)).boolEnum () ;
+    if (GalgasBool::boolTrue == test_1) {
+      ioArgument_ioInclusions.plusPlusAssignOperation (var_typeDefinition_8139.readProperty_headerFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 223)) ;
+    }
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension proc '@unifiedTypeMapEntry addHeaderFileName1'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_addHeaderFileName_31_ (const GGS_unifiedTypeMapEntry inObject,
+                                            GGS_stringset & ioArgument_ioInclusions,
+                                            Compiler * inCompiler
+                                            COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
+  GGS_unifiedTypeDefinition var_typeDefinition_8491 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 230)) ;
+  GalgasBool test_1 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_1) {
+    test_1 = var_typeDefinition_8491.readProperty_isPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas4", 231)).boolEnum () ;
+    if (GalgasBool::boolTrue == test_1) {
+      switch (var_typeDefinition_8491.readProperty_headerKind ().enumValue ()) {
+      case GGS_headerKind::Enumeration::invalid:
+        break ;
+      case GGS_headerKind::Enumeration::enum_noHeader:
+        break ;
+      case GGS_headerKind::Enumeration::enum_oneHeader:
+        {
+          ioArgument_ioInclusions.plusPlusAssignOperation (var_typeDefinition_8491.readProperty_headerFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 235)) ;
+        }
+        break ;
+      case GGS_headerKind::Enumeration::enum_twoHeaders:
+        {
+          ioArgument_ioInclusions.plusPlusAssignOperation (var_typeDefinition_8491.readProperty_headerFileName ().add_operation (GGS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 237))  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 237)) ;
+        }
+        break ;
+      }
+    }
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
 //  Map type @internalRoutineMap
 //--------------------------------------------------------------------------------------------------
 
@@ -14035,1179 +15208,6 @@ GGS_acceptableParameterList GGS_acceptableParameterList::extractObject (const GG
 }
 
 //--------------------------------------------------------------------------------------------------
-//  Map type @unifiedTypeMap
-//--------------------------------------------------------------------------------------------------
-
-#include "GALGAS_GenericMapRoot.h"
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMap::GGS_unifiedTypeMap (void) :
-mSharedRoot () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMap::~ GGS_unifiedTypeMap (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMap::GGS_unifiedTypeMap (const GGS_unifiedTypeMap & inSource) :
-mSharedRoot (inSource.mSharedRoot) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMap & GGS_unifiedTypeMap::operator = (const GGS_unifiedTypeMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMap GGS_unifiedTypeMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_unifiedTypeMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_unifiedTypeMap::getter_hasKey (const GGS_string & inKey
-                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_unifiedTypeMap::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                   const GGS_uint & inLevel
-                                                   COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_unifiedTypeMap::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_unifiedTypeMap::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (mSharedRoot->levels ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_unifiedTypeMap::getter_locationForKey (const GGS_string & inKey,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
-  GGS_location result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      String message = "'locationForKey' map reader run-time error: the '" ;
-      message.appendString (inKey.stringValue ()) ;
-      message.appendCString ("' does not exist in map") ;
-      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_lkey.mProperty_location ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_unifiedTypeMap::getter_keyList (Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
-  if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeyList (result) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_unifiedTypeMap::isValid (void) const {
-  return mSharedRoot.isNotNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_unifiedTypeMap::drop (void)  {
-  mSharedRoot.setToNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_unifiedTypeMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_unifiedTypeMap_2E_element>>::make (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_unifiedTypeMap::performInsert (const GGS_unifiedTypeMap_2E_element & inElement,
-                                 const char * inInsertErrorMessage,
-                                 const char * inShadowErrorMessage,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GenericMapNode <GGS_unifiedTypeMap_2E_element>> existingNode ;
-    const bool allowReplacing = false ;
-    mSharedRoot.insulate (THERE) ;
-    mSharedRoot->insertOrReplaceInfo (
-      inElement,
-      allowReplacing,
-      existingNode
-      COMMA_THERE
-    ) ;
-    const GGS_lstring lkey = inElement.mProperty_lkey ;
-    if (existingNode.isNotNil ()) {
-      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
-      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
-      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
-      if (existingInfo.isNotNil ()) {
-        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
-        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-      }
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>
-GGS_unifiedTypeMap::infoForKey (const String & inKey) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->infoForKey (inKey) ;
-  }else{
-    return SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-int32_t GGS_unifiedTypeMap::count (void) const  {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->count () ;
-  }else{
-    return 0 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GenericArray <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>>
-GGS_unifiedTypeMap::sortedInfoArray (void) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->sortedInfoArray () ;
-  }else{
-    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringset GGS_unifiedTypeMap::getter_keySet (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
-  GGS_stringset result ;
-  if (isValid ()) {
-    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeySet (result, inCompiler) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_unifiedTypeMap::findNearestKey (const String & inKey,
-                                  GenericUniqueArray <String> & outNearestKeyArray) const {
-  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMap_2E_element_3F_ GGS_unifiedTypeMap
-::readSubscript__3F_ (const class GGS_string & inKey,
-                      Compiler * /* inCompiler */
-                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_unifiedTypeMap_2E_element_3F_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      result = GGS_unifiedTypeMap_2E_element_3F_::init_nil () ;
-    }else{
-      GGS_unifiedTypeMap_2E_element element ;
-      element.mProperty_lkey = info->mProperty_lkey ;
-      element.mProperty_mElement = info->mProperty_mElement ;
-      result = element ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMap GGS_unifiedTypeMap::class_func_mapWithMapToOverride (const GGS_unifiedTypeMap & inMapToOverride
-                                                                        COMMA_LOCATION_ARGS) {
-  GGS_unifiedTypeMap result ;
-  if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_unifiedTypeMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMap GGS_unifiedTypeMap::getter_overriddenMap (Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const {
-  GGS_unifiedTypeMap result ;
-  if (isValid ()) {
-    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
-    if (result.mSharedRoot.isNil ()) {
-      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_unifiedTypeMap::setter_internalInsertKey (GGS_lstring inLKey,
-                                                   GGS_unifiedTypeMapElementClass inArgument0,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-  const GGS_unifiedTypeMap_2E_element element (inLKey, inArgument0) ;
-  const char * kInsertErrorMessage = "the '%K' key is already declared in %L" ;
-  const char * kShadowErrorMessage = nullptr ;
-  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass GGS_unifiedTypeMap::getter_mElementForKey (const GGS_string & inKey,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_unifiedTypeMapElementClass result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mElement ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_unifiedTypeMap::setter_setMElementForKey (GGS_unifiedTypeMapElementClass inValue,
-                                                   GGS_string inKey,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_unifiedTypeMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mElement = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-static void GGS_unifiedTypeMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>> & inArray,
-                                                        String & ioString,
-                                                        const int32_t inIndentation) {
-  const int32_t n = inArray.count () ;
-  ioString.appendString (" (") ;
-  ioString.appendSigned (n) ;
-  ioString.appendString (" object") ;
-  if (n > 1) {
-    ioString.appendString ("s") ;
-  }
-  ioString.appendString ("):") ;
-  for (int32_t i = 0 ; i < n ; i++) {
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation) ;
-    ioString.appendString ("|-at ") ;
-    ioString.appendSigned (i) ;
-    ioString.appendString (": key '") ;
-    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
-    ioString.appendString ("'") ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mElement:") ;
-    inArray (i COMMA_HERE)->mProperty_mElement.description (ioString, inIndentation + 1) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_unifiedTypeMap::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<map @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  if (isValid ()) {
-    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_unifiedTypeMap_2E_element>> array = sortedInfoArray () ;
-    GGS_unifiedTypeMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GenericMapRoot <GGS_unifiedTypeMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
-    uint32_t idx = 0 ;
-    while (subRoot.isNotNil ()) {
-     idx += 1 ;
-     ioString.appendNewLine () ;
-     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-     ioString.appendString (" override #") ;
-     ioString.appendUnsigned (idx) ;
-     const auto subRootArray = subRoot->sortedInfoArray () ;
-     GGS_unifiedTypeMap_internalDescription (subRootArray, ioString, inIndentation) ;
-     subRoot = subRoot->overriddenRoot () ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Down Enumerator for @unifiedTypeMap
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_unifiedTypeMap::DownEnumerator_unifiedTypeMap (const GGS_unifiedTypeMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-  mIndex = mInfoArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMap_2E_element DownEnumerator_unifiedTypeMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring DownEnumerator_unifiedTypeMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass DownEnumerator_unifiedTypeMap::current_mElement (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mElement ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Up Enumerator for @unifiedTypeMap
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_unifiedTypeMap::UpEnumerator_unifiedTypeMap (const GGS_unifiedTypeMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMap_2E_element UpEnumerator_unifiedTypeMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring UpEnumerator_unifiedTypeMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass UpEnumerator_unifiedTypeMap::current_mElement (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mElement ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//     @unifiedTypeMap generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unifiedTypeMap ("unifiedTypeMap",
-                                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_unifiedTypeMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_unifiedTypeMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_unifiedTypeMap::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_unifiedTypeMap (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMap GGS_unifiedTypeMap::extractObject (const GGS_object & inObject,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  GGS_unifiedTypeMap result ;
-  const GGS_unifiedTypeMap * p = (const GGS_unifiedTypeMap *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_unifiedTypeMap *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("unifiedTypeMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@unifiedTypeMap makeEntry'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_makeEntry (GGS_unifiedTypeMap & ioObject,
-                                const GGS_lstring constinArgument_inLKey,
-                                GGS_unifiedTypeMapEntry & outArgument_outEntry,
-                                Compiler * inCompiler
-                                COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outEntry.drop () ; // Release 'out' argument
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    test_0 = GGS_bool (ComparisonKind::equal, constinArgument_inLKey.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      outArgument_outEntry = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas4", 47)) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    GalgasBool test_1 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_1) {
-      const GGS_unifiedTypeMap temp_2 = ioObject ;
-      const GGS_unifiedTypeMap_2E_element var_node_2229 = temp_2.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-      if (!temp_2.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
-        test_1 = GalgasBool::boolFalse ;
-      }
-      if (GalgasBool::boolTrue == test_1) {
-        outArgument_outEntry = GGS_unifiedTypeMapEntry::class_func_element (var_node_2229.readProperty_mElement ()  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 49)) ;
-      }
-    }
-    if (GalgasBool::boolFalse == test_1) {
-      GGS_unifiedTypeMapElementClass var_newElement_2330 = GGS_unifiedTypeMapElementClass::init_21_ (GGS_typeDefinition::class_func_unsolved (SOURCE_FILE ("unified-type-map.galgas4", 51)), inCompiler COMMA_HERE) ;
-      {
-      ioObject.setter_internalInsertKey (constinArgument_inLKey, var_newElement_2330, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 52)) ;
-      }
-      outArgument_outEntry = GGS_unifiedTypeMapEntry::class_func_element (var_newElement_2330  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 53)) ;
-    }
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@unifiedTypeMap makeEntryFromString'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_makeEntryFromString (GGS_unifiedTypeMap & ioObject,
-                                          const GGS_string constinArgument_inKey,
-                                          GGS_unifiedTypeMapEntry & outArgument_outEntry,
-                                          Compiler * inCompiler
-                                          COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outEntry.drop () ; // Release 'out' argument
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    test_0 = GGS_bool (ComparisonKind::equal, constinArgument_inKey.objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      outArgument_outEntry = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas4", 61)) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    GalgasBool test_1 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_1) {
-      const GGS_unifiedTypeMap temp_2 = ioObject ;
-      const GGS_unifiedTypeMap_2E_element var_node_2753 = temp_2.readSubscript__3F_ (constinArgument_inKey, inCompiler COMMA_HERE).unwrappedValue () ;
-      if (!temp_2.readSubscript__3F_ (constinArgument_inKey, inCompiler COMMA_HERE).isValuated ()) {
-        test_1 = GalgasBool::boolFalse ;
-      }
-      if (GalgasBool::boolTrue == test_1) {
-        outArgument_outEntry = GGS_unifiedTypeMapEntry::class_func_element (var_node_2753.readProperty_mElement ()  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 63)) ;
-      }
-    }
-    if (GalgasBool::boolFalse == test_1) {
-      GGS_unifiedTypeMapElementClass var_newElement_2853 = GGS_unifiedTypeMapElementClass::init_21_ (GGS_typeDefinition::class_func_unsolved (SOURCE_FILE ("unified-type-map.galgas4", 65)), inCompiler COMMA_HERE) ;
-      {
-      ioObject.setter_internalInsertKey (GGS_lstring::init_21__21_ (constinArgument_inKey, GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas4", 66)), inCompiler COMMA_HERE), var_newElement_2853, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 66)) ;
-      }
-      outArgument_outEntry = GGS_unifiedTypeMapEntry::class_func_element (var_newElement_2853  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 67)) ;
-    }
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@unifiedTypeMap typeMapEntryForLKey'
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryForLKey (const GGS_unifiedTypeMap & inObject,
-                                                             const GGS_lstring & constinArgument_inLKey,
-                                                             Compiler * inCompiler
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry result_result ; // Returned variable
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    test_0 = GGS_bool (ComparisonKind::equal, constinArgument_inLKey.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      result_result = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas4", 75)) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    GalgasBool test_1 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_1) {
-      const GGS_unifiedTypeMap temp_2 = inObject ;
-      const GGS_unifiedTypeMap_2E_element var_node_3280 = temp_2.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-      if (!temp_2.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
-        test_1 = GalgasBool::boolFalse ;
-      }
-      if (GalgasBool::boolTrue == test_1) {
-        result_result = GGS_unifiedTypeMapEntry::class_func_element (var_node_3280.readProperty_mElement ()  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 77)) ;
-      }
-    }
-    if (GalgasBool::boolFalse == test_1) {
-      GenericArray <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GGS_string ("there is no '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 79)).add_operation (GGS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 79)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 79)) ;
-      result_result.drop () ; // Release error dropped variable
-    }
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@unifiedTypeMap typeMapEntryOrNullForLKey'
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntry extensionGetter_typeMapEntryOrNullForLKey (const GGS_unifiedTypeMap & inObject,
-                                                                   const GGS_lstring & constinArgument_inLKey,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry result_result ; // Returned variable
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    test_0 = GGS_bool (ComparisonKind::equal, constinArgument_inLKey.readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
-    if (GalgasBool::boolTrue == test_0) {
-      result_result = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas4", 87)) ;
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    GalgasBool test_1 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_1) {
-      const GGS_unifiedTypeMap temp_2 = inObject ;
-      const GGS_unifiedTypeMap_2E_element var_node_3704 = temp_2.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-      if (!temp_2.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
-        test_1 = GalgasBool::boolFalse ;
-      }
-      if (GalgasBool::boolTrue == test_1) {
-        result_result = GGS_unifiedTypeMapEntry::class_func_element (var_node_3704.readProperty_mElement ()  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 89)) ;
-      }
-    }
-    if (GalgasBool::boolFalse == test_1) {
-      result_result = GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("unified-type-map.galgas4", 91)) ;
-    }
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@unifiedTypeMap insertType'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertType (GGS_unifiedTypeMap & ioObject,
-                                 const GGS_lstring constinArgument_inTypeName,
-                                 const GGS_unifiedTypeDefinition constinArgument_inTypeDefinition,
-                                 Compiler * inCompiler
-                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_unifiedTypeMap temp_1 = ioObject ;
-    const GGS_unifiedTypeMap_2E_element var_node_4040 = temp_1.readSubscript__3F_ (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-    if (!temp_1.readSubscript__3F_ (constinArgument_inTypeName.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
-      test_0 = GalgasBool::boolFalse ;
-    }
-    if (GalgasBool::boolTrue == test_0) {
-      switch (var_node_4040.readProperty_mElement ().readProperty_mDefinition ().enumValue ()) {
-      case GGS_typeDefinition::Enumeration::invalid:
-        break ;
-      case GGS_typeDefinition::Enumeration::enum_solved:
-        {
-          GGS_unifiedTypeDefinition extractedValue_4128__0 ;
-          var_node_4040.readProperty_mElement ().readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_4128__0) ;
-          GenericArray <FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (constinArgument_inTypeName.readProperty_location (), GGS_string ("type already defined"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 101)) ;
-        }
-        break ;
-      case GGS_typeDefinition::Enumeration::enum_unsolved:
-        {
-          GGS_unifiedTypeMapElementClass var_e_4219 = var_node_4040.readProperty_mElement () ;
-          var_e_4219.setProperty_mDefinition (GGS_typeDefinition::class_func_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 104))) ;
-        }
-        break ;
-      }
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    GGS_unifiedTypeMapElementClass var_newElement_4330 = GGS_unifiedTypeMapElementClass::init_21_ (GGS_typeDefinition::class_func_solved (constinArgument_inTypeDefinition  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 107)), inCompiler COMMA_HERE) ;
-    {
-    ioObject.setter_internalInsertKey (constinArgument_inTypeName, var_newElement_4330, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 108)) ;
-    }
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@unifiedTypeMap typeDefinition'
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeDefinition extensionGetter_typeDefinition (const GGS_unifiedTypeMap & inObject,
-                                                          const GGS_lstring & constinArgument_inLKey,
-                                                          Compiler * inCompiler
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeDefinition result_result ; // Returned variable
-  GalgasBool test_0 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_0) {
-    const GGS_unifiedTypeMap temp_1 = inObject ;
-    const GGS_unifiedTypeMap_2E_element var_node_4667 = temp_1.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-    if (!temp_1.readSubscript__3F_ (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
-      test_0 = GalgasBool::boolFalse ;
-    }
-    if (GalgasBool::boolTrue == test_0) {
-      switch (var_node_4667.readProperty_mElement ().readProperty_mDefinition ().enumValue ()) {
-      case GGS_typeDefinition::Enumeration::invalid:
-        break ;
-      case GGS_typeDefinition::Enumeration::enum_solved:
-        {
-          GGS_unifiedTypeDefinition extractedValue_4751_definition_0 ;
-          var_node_4667.readProperty_mElement ().readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_4751_definition_0) ;
-          result_result = extractedValue_4751_definition_0 ;
-        }
-        break ;
-      case GGS_typeDefinition::Enumeration::enum_unsolved:
-        {
-          GenericArray <FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GGS_string ("unsolved type"), fixItArray2  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 120)) ;
-          result_result.drop () ; // Release error dropped variable
-        }
-        break ;
-      }
-    }
-  }
-  if (GalgasBool::boolFalse == test_0) {
-    GenericArray <FixItDescription> fixItArray3 ;
-    inCompiler->emitSemanticError (constinArgument_inLKey.readProperty_location (), GGS_string ("there is no '@").add_operation (constinArgument_inLKey.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 123)).add_operation (GGS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 123)), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 123)) ;
-    result_result.drop () ; // Release error dropped variable
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Enum typeDefinition
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeDefinition::GGS_typeDefinition (void) :
-mAssociatedValues (),
-mEnum (Enumeration::invalid) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeDefinition GGS_typeDefinition::class_func_unsolved (UNUSED_LOCATION_ARGS) {
-  GGS_typeDefinition result ;
-  result.mEnum = Enumeration::enum_unsolved ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeDefinition GGS_typeDefinition::class_func_solved (const GGS_unifiedTypeDefinition & inAssociatedValue0
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_typeDefinition result ;
-  result.mEnum = Enumeration::enum_solved ;
-  AC_GALGAS_root * p = nullptr ;
-  macroMyNew (p, GGS_typeDefinition_2E_solved (inAssociatedValue0)) ;
-  EnumerationAssociatedValues * eav = nullptr ;
-  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
-  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
-  macroDetachSharedObject (eav) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeDefinition::method_extractSolved (GGS_unifiedTypeDefinition & outAssociatedValue_definition,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const {
-  if (mEnum != Enumeration::enum_solved) {
-    outAssociatedValue_definition.drop () ;
-    String s ;
-    s.appendCString ("proc @typeDefinition.solved invoked with an invalid enum value") ;
-    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-  }else{
-    const auto ptr = (GGS_typeDefinition_2E_solved *) mAssociatedValues.associatedValuesPointer () ;
-    outAssociatedValue_definition = ptr->mProperty_definition ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeDefinition_2E_solved_3F_ GGS_typeDefinition::getter_getSolved (UNUSED_LOCATION_ARGS) const {
-  GGS_typeDefinition_2E_solved_3F_ result ;
-  if (mEnum == Enumeration::enum_solved) {
-    const auto ptr = (const GGS_typeDefinition_2E_solved *) mAssociatedValues.associatedValuesPointer () ;
-    result = GGS_typeDefinition_2E_solved (*ptr) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeDefinition::getAssociatedValuesFor_solved (GGS_unifiedTypeDefinition & out_definition) const {
-  const auto ptr = (const GGS_typeDefinition_2E_solved *) mAssociatedValues.associatedValuesPointer () ;
-  out_definition = ptr->mProperty_definition ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_typeDefinition [3] = {
-  "(not built)",
-  "unsolved",
-  "solved"
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_typeDefinition::getter_isUnsolved (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_unsolved == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_typeDefinition::getter_isSolved (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_solved == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeDefinition::description (String & ioString,
-                                      const int32_t inIndentation) const {
-  ioString.appendCString ("<enum @typeDefinition: ") ;
-  ioString.appendCString (gEnumNameArrayFor_typeDefinition [size_t (mEnum)]) ;
-  mAssociatedValues.description (ioString, inIndentation) ;
-  ioString.appendCString (">") ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//     @typeDefinition generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeDefinition ("typeDefinition",
-                                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_typeDefinition::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typeDefinition ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_typeDefinition::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_typeDefinition (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeDefinition GGS_typeDefinition::extractObject (const GGS_object & inObject,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  GGS_typeDefinition result ;
-  const GGS_typeDefinition * p = (const GGS_typeDefinition *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_typeDefinition *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("typeDefinition", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_unifiedTypeMapElementClass_2E_weak::objectCompare (const GGS_unifiedTypeMapElementClass_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass_2E_weak::GGS_unifiedTypeMapElementClass_2E_weak (void) :
-AC_GALGAS_weak_reference () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass_2E_weak & GGS_unifiedTypeMapElementClass_2E_weak::operator = (const GGS_unifiedTypeMapElementClass & inSource) {
-  PtrWeakReferenceProxy * proxyPtr = nullptr ;
-  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass_2E_weak::GGS_unifiedTypeMapElementClass_2E_weak (const GGS_unifiedTypeMapElementClass & inSource) :
-AC_GALGAS_weak_reference (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass_2E_weak GGS_unifiedTypeMapElementClass_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_unifiedTypeMapElementClass_2E_weak result ;
-  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass GGS_unifiedTypeMapElementClass_2E_weak::unwrappedValue (void) const {
-  GGS_unifiedTypeMapElementClass result ;
-  if (isValid ()) {
-    const cPtr_unifiedTypeMapElementClass * p = (cPtr_unifiedTypeMapElementClass *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_unifiedTypeMapElementClass (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass GGS_unifiedTypeMapElementClass_2E_weak::bang_unifiedTypeMapElementClass_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_unifiedTypeMapElementClass result ;
-  if (mProxyPtr != nullptr) {
-    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_unifiedTypeMapElementClass) ;
-      result = GGS_unifiedTypeMapElementClass ((cPtr_unifiedTypeMapElementClass *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @unifiedTypeMapElementClass.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_unifiedTypeMapElementClass_2E_weak ("unifiedTypeMapElementClass.weak",
-                                                                                       nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_unifiedTypeMapElementClass_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_unifiedTypeMapElementClass_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_unifiedTypeMapElementClass_2E_weak::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_unifiedTypeMapElementClass_2E_weak (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapElementClass_2E_weak GGS_unifiedTypeMapElementClass_2E_weak::extractObject (const GGS_object & inObject,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GGS_unifiedTypeMapElementClass_2E_weak result ;
-  const GGS_unifiedTypeMapElementClass_2E_weak * p = (const GGS_unifiedTypeMapElementClass_2E_weak *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_unifiedTypeMapElementClass_2E_weak *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("unifiedTypeMapElementClass.weak", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@unifiedTypeMapEntry definition'
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeDefinition extensionGetter_definition (const GGS_unifiedTypeMapEntry & inObject,
-                                                      Compiler * inCompiler
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeDefinition result_result ; // Returned variable
-  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  switch (temp_0.enumValue ()) {
-  case GGS_unifiedTypeMapEntry::Enumeration::invalid:
-    break ;
-  case GGS_unifiedTypeMapEntry::Enumeration::enum_null:
-    {
-      GenericArray <FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas4", 182)), GGS_string ("null type"), fixItArray1  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 182)) ;
-      result_result.drop () ; // Release error dropped variable
-    }
-    break ;
-  case GGS_unifiedTypeMapEntry::Enumeration::enum_element:
-    {
-      GGS_unifiedTypeMapElementClass_2E_weak extractedValue_6967_weakElement_0 ;
-      temp_0.getAssociatedValuesFor_element (extractedValue_6967_weakElement_0) ;
-      GalgasBool test_2 = GalgasBool::boolTrue ;
-      if (GalgasBool::boolTrue == test_2) {
-        const GGS_unifiedTypeMapElementClass var_type_6995 = extractedValue_6967_weakElement_0.unwrappedValue () ;
-        if (!extractedValue_6967_weakElement_0.isValuated ()) {
-          test_2 = GalgasBool::boolFalse ;
-        }
-        if (GalgasBool::boolTrue == test_2) {
-          switch (var_type_6995.readProperty_mDefinition ().enumValue ()) {
-          case GGS_typeDefinition::Enumeration::invalid:
-            break ;
-          case GGS_typeDefinition::Enumeration::enum_unsolved:
-            {
-              GenericArray <FixItDescription> fixItArray3 ;
-              inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas4", 187)), GGS_string ("unsolved type"), fixItArray3  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 187)) ;
-              result_result.drop () ; // Release error dropped variable
-            }
-            break ;
-          case GGS_typeDefinition::Enumeration::enum_solved:
-            {
-              GGS_unifiedTypeDefinition extractedValue_7154_definition_0 ;
-              var_type_6995.readProperty_mDefinition ().getAssociatedValuesFor_solved (extractedValue_7154_definition_0) ;
-              result_result = extractedValue_7154_definition_0 ;
-            }
-            break ;
-          }
-        }
-      }
-      if (GalgasBool::boolFalse == test_2) {
-        GenericArray <FixItDescription> fixItArray4 ;
-        inCompiler->emitSemanticError (GGS_location::class_func_nowhere (SOURCE_FILE ("unified-type-map.galgas4", 192)), GGS_string ("nil type"), fixItArray4  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 192)) ;
-        result_result.drop () ; // Release error dropped variable
-      }
-    }
-    break ;
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@unifiedTypeMapEntry identifierRepresentation'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_identifierRepresentation (const GGS_unifiedTypeMapEntry & inObject,
-                                                     Compiler * inCompiler
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result_result ; // Returned variable
-  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 200)).readProperty_typeName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("unified-type-map.galgas4", 200)) ;
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@unifiedTypeMapEntry typeName'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_typeName (const GGS_unifiedTypeMapEntry & inObject,
-                                     Compiler * inCompiler
-                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result_result ; // Returned variable
-  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  result_result = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 206)).readProperty_typeName ().readProperty_string () ;
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Extension Getter '@unifiedTypeMapEntry baseType'
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntry extensionGetter_baseType (const GGS_unifiedTypeMapEntry & inObject,
-                                                  Compiler * inCompiler
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry result_result ; // Returned variable
-  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  result_result = temp_0 ;
-  bool loop_7867 = true ;
-  while (loop_7867) {
-    GalgasBool test_1 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_1) {
-      test_1 = extensionGetter_definition (result_result, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 213)).readProperty_superType ().getter_isNull (SOURCE_FILE ("unified-type-map.galgas4", 213)).operator_not (SOURCE_FILE ("unified-type-map.galgas4", 213)).boolEnum () ;
-      loop_7867 = test_1 == GalgasBool::boolTrue ;
-      if (loop_7867) {
-        result_result = extensionGetter_definition (result_result, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 214)).readProperty_superType () ;
-      }
-    }
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@unifiedTypeMapEntry addHeaderFileName'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_addHeaderFileName (const GGS_unifiedTypeMapEntry inObject,
-                                        GGS_stringset & ioArgument_ioInclusions,
-                                        Compiler * inCompiler
-                                        COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  GGS_unifiedTypeDefinition var_typeDefinition_8139 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 221)) ;
-  GalgasBool test_1 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_1) {
-    test_1 = var_typeDefinition_8139.readProperty_isPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas4", 222)).operator_and (GGS_bool (ComparisonKind::notEqual, var_typeDefinition_8139.readProperty_headerKind ().objectCompare (GGS_headerKind::class_func_noHeader (SOURCE_FILE ("unified-type-map.galgas4", 222)))) COMMA_SOURCE_FILE ("unified-type-map.galgas4", 222)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_1) {
-      ioArgument_ioInclusions.plusPlusAssignOperation (var_typeDefinition_8139.readProperty_headerFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 223)) ;
-    }
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@unifiedTypeMapEntry addHeaderFileName1'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_addHeaderFileName_31_ (const GGS_unifiedTypeMapEntry inObject,
-                                            GGS_stringset & ioArgument_ioInclusions,
-                                            Compiler * inCompiler
-                                            COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_unifiedTypeMapEntry temp_0 = inObject ;
-  GGS_unifiedTypeDefinition var_typeDefinition_8491 = extensionGetter_definition (temp_0, inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 230)) ;
-  GalgasBool test_1 = GalgasBool::boolTrue ;
-  if (GalgasBool::boolTrue == test_1) {
-    test_1 = var_typeDefinition_8491.readProperty_isPredefined ().operator_not (SOURCE_FILE ("unified-type-map.galgas4", 231)).boolEnum () ;
-    if (GalgasBool::boolTrue == test_1) {
-      switch (var_typeDefinition_8491.readProperty_headerKind ().enumValue ()) {
-      case GGS_headerKind::Enumeration::invalid:
-        break ;
-      case GGS_headerKind::Enumeration::enum_noHeader:
-        break ;
-      case GGS_headerKind::Enumeration::enum_oneHeader:
-        {
-          ioArgument_ioInclusions.plusPlusAssignOperation (var_typeDefinition_8491.readProperty_headerFileName ()  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 235)) ;
-        }
-        break ;
-      case GGS_headerKind::Enumeration::enum_twoHeaders:
-        {
-          ioArgument_ioInclusions.plusPlusAssignOperation (var_typeDefinition_8491.readProperty_headerFileName ().add_operation (GGS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("unified-type-map.galgas4", 237))  COMMA_SOURCE_FILE ("unified-type-map.galgas4", 237)) ;
-        }
-        break ;
-      }
-    }
-  }
-}
-
-
-//--------------------------------------------------------------------------------------------------
 
 GGS_syntaxExtensionsDictionary GGS_syntaxExtensionsDictionary::builtDictionary (LOCATION_ARGS) {
   GGS_syntaxExtensionsDictionary result ;
@@ -16287,10 +16287,10 @@ GGS_galgas_33_SyntaxExtensionListAST extensionGetter_listForKey (const GGS_synta
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_syntaxExtensions temp_1 = inObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 56)).boolEnum () ;
+    test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 52)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       const GGS_syntaxExtensions temp_2 = inObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, result_result, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 57)) ;
+      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, result_result, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 53)) ;
     }
   }
   if (GalgasBool::boolFalse == test_0) {
@@ -16430,7 +16430,7 @@ GGS_semanticExpressionAST_2E_weak GGS_semanticExpressionAST_2E_weak::extractObje
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_string (const GGS_formalArgumentPassingModeAST & inObject,
-                                   Compiler *
+                                   Compiler * /* inCompiler */
                                    COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_formalArgumentPassingModeAST temp_0 = inObject ;
@@ -16470,7 +16470,7 @@ GGS_string extensionGetter_string (const GGS_formalArgumentPassingModeAST & inOb
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_formalArgumentMessage (const GGS_formalArgumentPassingModeAST & inObject,
-                                                  Compiler *
+                                                  Compiler * /* inCompiler */
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_formalArgumentPassingModeAST temp_0 = inObject ;
@@ -16515,35 +16515,35 @@ GGS_string extensionGetter_keyRepresentation (const GGS_formalParameterListAST &
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("(") ;
   const GGS_formalParameterListAST temp_0 = inObject ;
-  UpEnumerator_formalParameterListAST enumerator_4933 (temp_0) ;
-  while (enumerator_4933.hasCurrentObject ()) {
-    switch (enumerator_4933.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
+  UpEnumerator_formalParameterListAST enumerator_4768 (temp_0) ;
+  while (enumerator_4768.hasCurrentObject ()) {
+    switch (enumerator_4768.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
     case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
       break ;
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn:
       {
-        result_result.plusAssignOperation(GGS_string ("\?"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 126)) ;
+        result_result.plusAssignOperation(GGS_string ("\?"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 122)) ;
       }
       break ;
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut:
       {
-        result_result.plusAssignOperation(GGS_string ("\?!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 128)) ;
+        result_result.plusAssignOperation(GGS_string ("\?!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 124)) ;
       }
       break ;
     case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut:
       {
-        result_result.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 130)) ;
+        result_result.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 126)) ;
       }
       break ;
     }
-    result_result.plusAssignOperation(enumerator_4933.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 132)) ;
-    enumerator_4933.gotoNextObject () ;
-    if (enumerator_4933.hasCurrentObject ()) {
-      result_result.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 134)) ;
+    result_result.plusAssignOperation(enumerator_4768.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 128)) ;
+    enumerator_4768.gotoNextObject () ;
+    if (enumerator_4768.hasCurrentObject ()) {
+      result_result.plusAssignOperation(GGS_string (", "), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 130)) ;
     }
   }
-  result_result.plusAssignOperation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 136)) ;
+  result_result.plusAssignOperation(GGS_string (")"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 132)) ;
 //---
   return result_result ;
 }
@@ -16561,10 +16561,10 @@ GGS_string extensionGetter_initializerSignature (const GGS_formalInputParameterL
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS_formalInputParameterListAST temp_0 = inObject ;
-  UpEnumerator_formalInputParameterListAST enumerator_5855 (temp_0) ;
-  while (enumerator_5855.hasCurrentObject ()) {
-    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_5855.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 157)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas3", 157)) ;
-    enumerator_5855.gotoNextObject () ;
+  UpEnumerator_formalInputParameterListAST enumerator_5690 (temp_0) ;
+  while (enumerator_5690.hasCurrentObject ()) {
+    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_5690.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 153)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 153)) ;
+    enumerator_5690.gotoNextObject () ;
   }
 //---
   return result_result ;

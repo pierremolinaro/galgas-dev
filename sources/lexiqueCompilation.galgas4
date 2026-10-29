@@ -235,7 +235,7 @@ override proc @lexicalCharacterSetMatchAST.checkLexicalExpression
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 ) {
   if not ioLexiqueAnalysisContext.mUnicodeTestFunctions.hasKey (!self.mCharacterSetName.string) then
-    error (self.mCharacterSetName : "undefined test function" fixit replace ioLexiqueAnalysisContext.mUnicodeTestFunctions)
+    error (self.mCharacterSetName : "undefined test function" fixit %replaceBy ioLexiqueAnalysisContext.mUnicodeTestFunctions)
   end
 }
 

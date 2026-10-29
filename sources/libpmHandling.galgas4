@@ -27,7 +27,7 @@ filewrapper libpmFileWrapper in "../libpm" {
 //--------------------------------------------------------------------------------------------------
 
 proc updateLIBPMatPath (?let @string inLIBPMPath ) {
-  let fw = [filewrapper libpmFileWrapper]
+  let fw = filewrapper [libpmFileWrapper]
 //--- Create directories
   for (mValue) in fw.allDirectoryPaths do
     let @string actualDirectory = inLIBPMPath + mValue

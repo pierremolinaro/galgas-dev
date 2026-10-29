@@ -10929,7 +10929,7 @@ GGS_lexicalTypeEnum GGS_lexicalTypeEnum::extractObject (const GGS_object & inObj
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_appendMethodName (const GGS_lexicalTypeEnum & inObject,
-                                             Compiler *
+                                             Compiler * /* inCompiler */
                                              COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_lexicalTypeEnum temp_0 = inObject ;
@@ -10989,7 +10989,7 @@ GGS_string extensionGetter_appendMethodName (const GGS_lexicalTypeEnum & inObjec
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_appendArgumentOfMethod (const GGS_lexicalTypeEnum & inObject,
-                                                   Compiler *
+                                                   Compiler * /* inCompiler */
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_lexicalTypeEnum temp_0 = inObject ;
@@ -11049,7 +11049,7 @@ GGS_string extensionGetter_appendArgumentOfMethod (const GGS_lexicalTypeEnum & i
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_initialization (const GGS_lexicalTypeEnum & inObject,
-                                           Compiler *
+                                           Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_lexicalTypeEnum temp_0 = inObject ;
@@ -11109,7 +11109,7 @@ GGS_string extensionGetter_initialization (const GGS_lexicalTypeEnum & inObject,
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_cocoaTypeName (const GGS_lexicalTypeEnum & inObject,
-                                          Compiler *
+                                          Compiler * /* inCompiler */
                                           COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_lexicalTypeEnum temp_0 = inObject ;
@@ -11169,7 +11169,7 @@ GGS_string extensionGetter_cocoaTypeName (const GGS_lexicalTypeEnum & inObject,
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_swiftTypeName (const GGS_lexicalTypeEnum & inObject,
-                                          Compiler *
+                                          Compiler * /* inCompiler */
                                           COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_lexicalTypeEnum temp_0 = inObject ;
@@ -11229,7 +11229,7 @@ GGS_string extensionGetter_swiftTypeName (const GGS_lexicalTypeEnum & inObject,
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const GGS_lexicalTypeEnum & inObject,
-                                                             Compiler *
+                                                             Compiler * /* inCompiler */
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool result_result ; // Returned variable
   const GGS_lexicalTypeEnum temp_0 = inObject ;
@@ -11289,7 +11289,7 @@ GGS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const GGS_lexicalTy
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_cocoaInitializationCode (const GGS_lexicalTypeEnum & inObject,
-                                                    Compiler *
+                                                    Compiler * /* inCompiler */
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_lexicalTypeEnum temp_0 = inObject ;
@@ -11349,7 +11349,7 @@ GGS_string extensionGetter_cocoaInitializationCode (const GGS_lexicalTypeEnum & 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_swiftInitializationCode (const GGS_lexicalTypeEnum & inObject,
-                                                    Compiler *
+                                                    Compiler * /* inCompiler */
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_lexicalTypeEnum temp_0 = inObject ;
@@ -11409,7 +11409,7 @@ GGS_string extensionGetter_swiftInitializationCode (const GGS_lexicalTypeEnum & 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_cocoaResetPrefix (const GGS_lexicalTypeEnum & inObject,
-                                             Compiler *
+                                             Compiler * /* inCompiler */
                                              COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_lexicalTypeEnum temp_0 = inObject ;
@@ -11469,7 +11469,7 @@ GGS_string extensionGetter_cocoaResetPrefix (const GGS_lexicalTypeEnum & inObjec
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_cocoaReset (const GGS_lexicalTypeEnum & inObject,
-                                       Compiler *
+                                       Compiler * /* inCompiler */
                                        COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_lexicalTypeEnum temp_0 = inObject ;

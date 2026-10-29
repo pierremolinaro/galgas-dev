@@ -54,7 +54,7 @@ proc checkMethodSignatures
           s = "!"
         end
         s += if ref.mFormalSelector.string != "" then ref.mFormalSelector.string + ":" else "" end
-        error (tested.mFormalSelector : "the selector should be '" + s + "'" fixit replace s)
+        error (tested.mFormalSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
       end
       if tested.mFormalArgumentType.definition.typeName.string != ref.mFormalArgumentType.definition.typeName.string then
         error (tested.mFormalArgumentName : "the '" + tested.mFormalArgumentName + "' formal parameter has the '@"
@@ -93,7 +93,7 @@ proc checkGetterSignatures
     for ref in inReferenceSignature, tested in inTestedSignature do
       if tested.mFormalSelector.string != ref.mFormalSelector.string then
         let @string s = "?" + if ref.mFormalSelector.string != "" then ref.mFormalSelector.string + ":" else "" end
-        error (tested.mFormalSelector : "the selector should be '" + s + "'" fixit replace s)
+        error (tested.mFormalSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
       end
       if tested.mFormalArgumentType.definition.typeName.string != ref.mFormalArgumentType.definition.typeName.string then
         error (tested.mFormalArgumentName : "the '" + tested.mFormalArgumentName + "' formal parameter has the '@"
@@ -109,8 +109,8 @@ proc checkGetterSignatures
 
 map @propertyIndexMap {
   public let @unifiedTypeMapEntry mPropertyTypeIndex
-  insert insertKey error message "the '%K' attribute is already declared"
-  search searchKey error message "the '%K' attribute is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' attribute is already declared"
+  %searchMethod searchKey %errorMessage "the '%K' attribute is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -267,13 +267,13 @@ override proc @externFunctionDeclarationAST.semanticAnalysis
   end
 //---
   var formalArgumentList = @formalInputParameterListForGeneration ()
-  for (mFormalSelector mFormalArgumentTypeName mFormalArgumentName * mIsConstant) in self.mFormalArgumentList do
+  for formal in self.mFormalArgumentList do
     formalArgumentList ++= @(
-      !mFormalSelector,
-      !ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName),
-      !mFormalArgumentName.string,
-      !mFormalArgumentName,
-      !mIsConstant)
+      !formal.mFormalSelector,
+      !ioTypeMap.typeMapEntryForLKey (!formal.mFormalArgumentTypeName),
+      !formal.mFormalArgumentName.string,
+      !formal.mFormalArgumentName,
+      !formal.mIsConstant)
   end
   ioSemanticDeclarationListForGeneration ++= @(
     !infoMessage: "extern func " + self.mFunctionName,
@@ -531,11 +531,11 @@ override proc @filewrapperDeclarationAST.semanticAnalysis
     //--- Build template variable map
       var @templateVariableMap templateVariableMap = @()
       var @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters = @()
-      for (mFormalTemplateSelector mFormalArgumentTypeName mFormalArgumentName *) in filewrapperTemplate.mFilewrapperTemplateFormalInputParameters do
-        let type = ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName)
-        let @string cppVarName = "in_" + mFormalArgumentName.string.identifierRepresentation
-        !?templateVariableMap.insertKey (!mFormalArgumentName, !type, !cppVarName)
-        filewrapperTemplateFormalInputParameters ++= @(!mFormalTemplateSelector, !type, !cppVarName, !mFormalArgumentName, !true)
+      for formal in filewrapperTemplate.mFilewrapperTemplateFormalInputParameters do
+        let type = ioTypeMap.typeMapEntryForLKey (formal.mFormalArgumentTypeName)
+        let @string cppVarName = "in_" + formal.mFormalArgumentName.string.identifierRepresentation
+        !?templateVariableMap.insertKey (formal.mFormalArgumentName, !type, !cppVarName)
+        filewrapperTemplateFormalInputParameters ++= @(formal.mFormalTemplateSelector, !type, !cppVarName, formal.mFormalArgumentName, !true)
       end
     //--- Analyze template
       var templateInstructionListForGeneration = @templateInstructionListForGeneration ()
@@ -597,8 +597,8 @@ override proc @galgas3SyntaxComponentAST.semanticAnalysis
   )
 //-------------------------------------- Build "indexing" set
   var @stringset indexNameSet = @()
-  for (mIndexName *) in indexingListAST do
-    indexNameSet ++= mIndexName.string
+  for entry in indexingListAST do
+    indexNameSet ++= entry.mIndexName.string
   end
   let @bool hasIndexing = true // not [indexingDirectory isNowhere]
 //--- Build semantic context from rule headers and non terminal declaration
@@ -723,11 +723,11 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
   end
 //--------------------------------------------------------- Non terminal symbols, sorted by index
   var @nonTerminalSymbolSortedListForGrammarAnalysis nonTerminalSymbolSortedListForGrammarAnalysis = @()
-  for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in nonTerminalMapForGrammarAnalysis do
-    nonTerminalSymbolSortedListForGrammarAnalysis ++= @(!lkey, !mNonTerminalIndex, !mNonterminalSymbolParametersMap)
+  for nonTerminal in nonTerminalMapForGrammarAnalysis do
+    nonTerminalSymbolSortedListForGrammarAnalysis ++= @(nonTerminal.lkey, nonTerminal.mNonTerminalIndex, nonTerminal.mNonterminalSymbolParametersMap)
   end
 //--------------------------------------------------------- Print an tex file for grammar rule list
-  if [option galgas_cli_options.emitSyntaxDiagrams value] then
+  if option galgas_cli_options [emitSyntaxDiagrams.value] then
     emitProductionRulesInTexFile (
       !inProductDirectory,
       !self.mGrammarComponentName,
@@ -738,7 +738,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
   end
 //--------------------------------------------------------- Emit class graph
   let dotDocumentFilePath = inProductDirectory + "/../graph-class/graph-class.dot"
-  if [option galgas_cli_options.emitClassGraph value] then
+  if option galgas_cli_options [emitClassGraph.value] then
     emitClassGraphFile (
       !dotDocumentFilePath,
       !ioTypeMap
@@ -751,18 +751,18 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
 // for these arguments, we need to include the corresponding type declaration.
   var @stringset implementationFileHeader = @()
   for nonTerminal in nonTerminalMapForGrammarAnalysis do
-    for (* mFormalParametersList) in nonTerminal.mNonterminalSymbolParametersMap do
-      for (mFormalArgumentPassingModeForGrammarAnalysis mGalgasTypeNameForGrammarAnalysis) in mFormalParametersList do
-        switch mFormalArgumentPassingModeForGrammarAnalysis
+    for parameterList in nonTerminal.mNonterminalSymbolParametersMap do
+      for formal in parameterList.mFormalParametersList do
+        switch formal.mFormalArgumentPassingModeForGrammarAnalysis
         case argumentVarIn, argumentConstantIn :
-          let t = ioTypeMap.typeMapEntryForLKey (!mGalgasTypeNameForGrammarAnalysis)
+          let t = ioTypeMap.typeMapEntryForLKey (formal.mGalgasTypeNameForGrammarAnalysis)
           t.addHeaderFileName (!?implementationFileHeader)
         case argumentInOut, argumentOut :
         end
       end
     end
   end
-  if [option galgas_cli_options.generateOneHeader value] then
+  if option galgas_cli_options [generateOneHeader.value] then
     implementationFileHeader = @()
   end
 //--------------------------------------------------------- Analyze grammar
@@ -784,7 +784,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
 
   )
 //--------------------------------------------------------- Generate HTML grammar helper file
-  if [option galgas_cli_options.outputHTMLgrammarFile value] then
+  if option galgas_cli_options [outputHTMLgrammarFile.value] then
     HTMLFilePath.deletingLastPathComponent.makeDirectory ()
     grammarHTMLHelperContents.writeToFileWhenDifferentContents (!HTMLFilePath, ?*)
   else
@@ -792,7 +792,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
   end
 //--------------------------------------------------------- Generate Swift description file
   let swiftFilePath = inProductDirectory + "/../helpers/" + self.mGrammarComponentName + ".swift"
-  if [option galgas_cli_options.outputGrammarSwiftDescriptionFile value] then
+  if option galgas_cli_options [outputGrammarSwiftDescriptionFile.value] then
     swiftFilePath.deletingLastPathComponent.makeDirectory ()
     swiftGrammarDescription.writeToFileWhenDifferentContents (!swiftFilePath, ?*)
   else
@@ -860,16 +860,16 @@ map @nonterminalLabelMap {
   public let @formalParameterListForGeneration mSignatureForGeneration
   public let @formalParameterSignature mSignature
   public let @location mEndOfArgumentLocation
-  insert insertKey error message "the '%K' nonterminal label has been already declared in %L"
-  search searchKey error message "the '%K' nonterminal label is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' nonterminal label has been already declared in %L"
+  %searchMethod searchKey %errorMessage "the '%K' nonterminal label is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 map @nonterminalMap {
   public let @nonterminalLabelMap mLabelMap
-  insert insertKey error message "the '%K' nonterminal has been already declared in %L"
-  search searchKey error message "the '%K' nonterminal is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' nonterminal has been already declared in %L"
+  %searchMethod searchKey %errorMessage "the '%K' nonterminal is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -899,17 +899,19 @@ list @ruleDeclarationList {
 filewrapper syntaxFileGenerationTemplate in "+generation-templates/syntax_generation" {
 }{
 }{
-  template syntaxFileImplementationGalgas3 "syntax-file-galgas3.cpp.galgasTemplate"
+  template syntaxFileImplementationGalgas3 : "syntax-file-galgas3.cpp.galgasTemplate" (
     ?@stringset INCLUSION_SET
+  )
 
-  template syntaxAnalyserClassDeclaration "syntax-analyser-class.galgasTemplate"
-    ?@string COMPONENT_NAME
-    ?@string LEXIQUE_NAME
-    ?@nonterminalMap NONTERMINAL_MAP
-    ?@ruleDeclarationList RULE_DECLARATION_LIST
-    ?@uintlist SELECT_METHOD_LIST
-    ?@bool HAS_INDEXING
+  template syntaxAnalyserClassDeclaration : "syntax-analyser-class.galgasTemplate" (
+    ?@string COMPONENT_NAME,
+    ?@string LEXIQUE_NAME,
+    ?@nonterminalMap NONTERMINAL_MAP,
+    ?@ruleDeclarationList RULE_DECLARATION_LIST,
+    ?@uintlist SELECT_METHOD_LIST,
+    ?@bool HAS_INDEXING,
     ?@bool HAS_TRANSLATE_FEATURE
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -946,8 +948,8 @@ proc enterNonterminalNonTerminalInMapAndCheck
     if (missingLabelSet.count == 0) & (newLabelSet.count == 0) then
       for aLabel in entry.mLabelMap, newLabel in inNonterminalLabelMap do
         var @formalParameterSignature newSignature = @()
-        for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in newLabel.mSignature do
-          newSignature ++= @(!mFormalSelector, !mFormalArgumentType, !mFormalArgumentPassingMode, !mFormalArgumentName)
+        for formal in newLabel.mSignature do
+          newSignature ++= @(formal.mFormalSelector, formal.mFormalArgumentType, formal.mFormalArgumentPassingMode, formal.mFormalArgumentName)
         end
         checkMethodSignatures (
           !aLabel.mSignatureForGeneration,
@@ -971,19 +973,19 @@ proc buildNonterminalDeclarationsMap
   !@nonterminalMap outNonterminalDeclarationMap ) {
   outNonterminalDeclarationMap = @nonterminalMap ()
 //--- Nonterminal declaration list
-  for (mNonterminalName mLabels) in inNonterminalDeclarationList do
+  for nonterminal in inNonterminalDeclarationList do
     var nonterminalLabelMap = @nonterminalLabelMap ()
-    for (mLabelName mFormalArgumentList mEndOfArgumentLocation) in mLabels do
+    for aLabel in nonterminal.mLabels do
       var signatureForGeneration = @formalParameterListForGeneration ()
       var signature = @formalParameterSignature ()
-      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalArgumentList do
-        let t = ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName)
-        signatureForGeneration ++= @(!mFormalSelector, !mFormalArgumentPassingMode, !t, !mFormalArgumentName, !mFormalArgumentName.string)
-        signature ++= @(!mFormalSelector, !t, !mFormalArgumentPassingMode, !mFormalArgumentName.string)
+      for formal in aLabel.mFormalArgumentList do
+        let t = ioTypeMap.typeMapEntryForLKey (formal.mFormalArgumentTypeName)
+        signatureForGeneration ++= @(formal.mFormalSelector, formal.mFormalArgumentPassingMode, !t, formal.mFormalArgumentName, formal.mFormalArgumentName.string)
+        signature ++= @(formal.mFormalSelector, !t, formal.mFormalArgumentPassingMode, formal.mFormalArgumentName.string)
       end
-      !?nonterminalLabelMap.insertKey (!mLabelName, !signatureForGeneration, !signature, !mEndOfArgumentLocation)
+      !?nonterminalLabelMap.insertKey (aLabel.mLabelName, !signatureForGeneration, !signature, aLabel.mEndOfArgumentLocation)
     end
-    enterNonterminalNonTerminalInMapAndCheck (!mNonterminalName, !nonterminalLabelMap, !?outNonterminalDeclarationMap )
+    enterNonterminalNonTerminalInMapAndCheck (nonterminal.mNonterminalName, !nonterminalLabelMap, !?outNonterminalDeclarationMap )
   end
 }
 
@@ -1410,12 +1412,11 @@ proc semanticAnalysisOfRuleLabel
   )
 //---
   outSignature = @formalParameterSignature ()
-  for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentType mFormalArgumentName *) in outSignatureForGeneration do
-    outSignature ++= @(!mFormalSelector, !mFormalArgumentType, !mFormalArgumentPassingMode, !mFormalArgumentName.string)
+  for formal in outSignatureForGeneration do
+    outSignature ++= @(formal.mFormalSelector, formal.mFormalArgumentType, formal.mFormalArgumentPassingMode, formal.mFormalArgumentName.string)
   end
 //--- Semantic analysis of instruction list
   outInstructionListForGeneration = @semanticInstructionListForGeneration ()
-//  var localVariableCppNameList = @stringlist ()
   for (mInstruction) in inSyntaxInstructionList do
     mInstruction.analyzeSyntaxInstruction
       (!inUsefulnessCallerEntityName,
@@ -1467,24 +1468,24 @@ private proc semanticAnalysisOfSyntaxComponent
     ?var @nonterminalMap nonterminalMap
   )
 //----------- Build nonterminal map from rule headers
-  for (mNonterminalName mLabelList) in inRuleList do
+  for aRule in inRuleList do
     var @nonterminalLabelMap nonterminalLabelMap = @()
-    for (mLabelName mFormalArguments mEndOfArgumentLocation * *) in mLabelList do
+    for aLabel in aRule.mLabelList do
       var @formalParameterListForGeneration signatureForGeneration = @()
       var @formalParameterSignature signature = @()
-      for (mFormalSelector mFormalArgumentPassingMode mFormalArgumentTypeName mFormalArgumentName *) in mFormalArguments do
-        let type = ioTypeMap.typeMapEntryForLKey (!mFormalArgumentTypeName)
+      for formal in aLabel.mFormalArguments do
+        let type = ioTypeMap.typeMapEntryForLKey (formal.mFormalArgumentTypeName)
         signatureForGeneration ++= @(
-          !mFormalSelector,
-          !mFormalArgumentPassingMode,
+          formal.mFormalSelector,
+          formal.mFormalArgumentPassingMode,
           !type,
-          !mFormalArgumentName,
-          !"argument_" + mFormalArgumentName)
-        signature ++= @(!mFormalSelector, !type, !mFormalArgumentPassingMode, !mFormalArgumentName.string)
+          formal.mFormalArgumentName,
+          !"argument_" + formal.mFormalArgumentName)
+        signature ++= @(formal.mFormalSelector, !type, formal.mFormalArgumentPassingMode, formal.mFormalArgumentName.string)
       end
-      !?nonterminalLabelMap.insertKey (!mLabelName, !signatureForGeneration, !signature, !mEndOfArgumentLocation)
+      !?nonterminalLabelMap.insertKey (aLabel.mLabelName, !signatureForGeneration, !signature, aLabel.mEndOfArgumentLocation)
     end
-      enterNonterminalNonTerminalInMapAndCheck (!mNonterminalName, !nonterminalLabelMap, !?nonterminalMap )
+    enterNonterminalNonTerminalInMapAndCheck (aRule.mNonterminalName, !nonterminalLabelMap, !?nonterminalMap )
   end
 //--- Analysis context
   let analysisContext = @analysisContext (
@@ -1498,18 +1499,18 @@ private proc semanticAnalysisOfSyntaxComponent
   var @uint selectMethodCount = 0
   var @ruleDeclarationList ruleDeclarationList = @()
   var @uint newRuleIndex = 0
-  for (mNonterminalName mLabelList) in inRuleList do
+  for aRule in inRuleList do
   //---
     var @ruleLabelImplementationList ruleLabelImplementationList = @()
     var @uint localSelectMethodCount = selectMethodCount
-    nonterminalMap.searchKey (!mNonterminalName, ?*)
-    for (mLabelName mFormalArguments mEndOfArgumentLocation mSyntaxInstructionList mEndOfInstructionList) in mLabelList do
+    nonterminalMap.searchKey (aRule.mNonterminalName, ?*)
+    for aLabel in aRule.mLabelList do
       localSelectMethodCount = selectMethodCount
       semanticAnalysisOfRuleLabel (
         !inSyntaxComponentUsefulnessName,
         !?ioUsefulEntitiesGraph,
-        !mFormalArguments,
-        !mSyntaxInstructionList,
+        !aLabel.mFormalArguments,
+        !aLabel.mSyntaxInstructionList,
         !analysisContext,
         !?ioTypeMap,
         !inTerminalMap,
@@ -1517,7 +1518,7 @@ private proc semanticAnalysisOfSyntaxComponent
         !inLexiqueName.identifierRepresentation,
         !nonterminalMap,
         !inSyntaxComponentName,
-        !mEndOfInstructionList,
+        !aLabel.mEndOfInstructionList,
         !inIndexNameSet,
         !?localSelectMethodCount,
         ?let signatureForGeneration,
@@ -1525,16 +1526,16 @@ private proc semanticAnalysisOfSyntaxComponent
         ?let instructionListForGeneration
       )
       ruleLabelImplementationList ++= @(
-        !mLabelName,
+        !aLabel.mLabelName,
         !signatureForGeneration,
         !signature,
-        !mEndOfArgumentLocation,
+        !aLabel.mEndOfArgumentLocation,
         !instructionListForGeneration)
     end
     selectMethodCount = localSelectMethodCount
-    nonterminalMap.searchKey (!mNonterminalName, ?*)
+    nonterminalMap.searchKey (aRule.mNonterminalName, ?*)
     ruleDeclarationList ++= @(
-      !mNonterminalName.string,
+      !aRule.mNonterminalName.string,
       !newRuleIndex,
       !ruleLabelImplementationList)
     newRuleIndex += 1
@@ -1558,8 +1559,8 @@ private proc emitClassGraphFile (?let @string inDotDocumentFilePath,
   var document = "digraph G {\n"
   document += "  rankdir=LR ;\n"
   document += "  node [shape=record fontname=helvetica style=rounded] ;\n"
-  for (* mElement) in inTypeMap do
-    switch mElement.mDefinition
+  for type in inTypeMap do
+    switch type.mElement.mDefinition
     case unsolved :
     case solved (@unifiedTypeDefinition definition) :
       if definition.typeKind.isClassType then

@@ -310,20 +310,6 @@ void routine_commonGetterMapForAllTypes_26__21_ (class GGS_unifiedTypeMap & ioAr
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'checkDiadicOperator?operatorIsHandled??&&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (const class GGS_bool constinArgument0,
-                                                                       const class GGS_string constinArgument1,
-                                                                       const class GGS_location constinArgument2,
-                                                                       class GGS_semanticExpressionForGeneration & ioArgument3,
-                                                                       class GGS_semanticExpressionForGeneration & ioArgument4,
-                                                                       class Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'programFileGenerationTemplate'
 //
 //--------------------------------------------------------------------------------------------------
@@ -397,6 +383,20 @@ void routine_compileAfterClauseGalgas_33__26__26__3F__26__3F__26_ (class GGS_lst
                                                                    class GGS_programListForGeneration & ioArgument5,
                                                                    class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'checkDiadicOperator?operatorIsHandled??&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkDiadicOperator_3F_operatorIsHandled_3F__3F__26__26_ (const class GGS_bool constinArgument0,
+                                                                       const class GGS_string constinArgument1,
+                                                                       const class GGS_location constinArgument2,
+                                                                       class GGS_semanticExpressionForGeneration & ioArgument3,
+                                                                       class GGS_semanticExpressionForGeneration & ioArgument4,
+                                                                       class Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -744,19 +744,4 @@ void routine_enterModifierWithoutArgument_26__3F__3F_compilerArg (class GGS_sett
                                                                   const class GGS_bool constinArgument2,
                                                                   class Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'templateInstructionListAnalysis?&?&?&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_templateInstructionListAnalysis_3F__26__3F__26__3F__26_ (const class GGS_lstring constinArgument0,
-                                                                      class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                      const class GGS_templateAnalysisContext constinArgument2,
-                                                                      class GGS_unifiedTypeMap & ioArgument3,
-                                                                      const class GGS_templateInstructionListAST constinArgument4,
-                                                                      class GGS_templateInstructionListForGeneration & ioArgument5,
-                                                                      class Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
 

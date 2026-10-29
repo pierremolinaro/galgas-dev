@@ -101,19 +101,19 @@ proc analyzeSemanticInstructionListWithoutBranch
 ) {
   outInstructionListForGeneration = @()
 //--- Declare local constants
-  for (mType mName mNoWarningIfUnused mCppName) in inLocalConstantList do
-    if mNoWarningIfUnused then
-      !?ioVariableMap.insertUsedLocalConstant (!mName, !mType, !mCppName, !mCppName)
+  for localConstant in inLocalConstantList do
+    if localConstant.mNoWarningIfUnused then
+      !?ioVariableMap.insertUsedLocalConstant (localConstant.mName, localConstant.mType, localConstant.mCppName, localConstant.mCppName)
     else
-      !?ioVariableMap.insertInitializedLocalConstant (!mName, !mType, !mCppName, !mCppName)
+      !?ioVariableMap.insertInitializedLocalConstant (localConstant.mName, localConstant.mType, localConstant.mCppName, localConstant.mCppName)
     end
   end
 //--- Declare local variables
-  for (mType mName mCppName) in inLocalInitializedVariableList do
-    !?ioVariableMap.insertInitializedLocalVariable (!mName, !warnsIfNotMutated: true, !mType, !mCppName, !mCppName)
+  for localInitializedVariable in inLocalInitializedVariableList do
+    !?ioVariableMap.insertInitializedLocalVariable (localInitializedVariable.mName, !warnsIfNotMutated: true, localInitializedVariable.mType, localInitializedVariable.mCppName, localInitializedVariable.mCppName)
   end
-  for (mType mName mCppName) in inLocalInitializedVariableListNoWarns do
-    !?ioVariableMap.insertInitializedLocalVariable (!mName, !warnsIfNotMutated: false, !mType, !mCppName, !mCppName)
+  for localInitializedVariable in inLocalInitializedVariableListNoWarns do
+    !?ioVariableMap.insertInitializedLocalVariable (localInitializedVariable.mName, !warnsIfNotMutated: false, localInitializedVariable.mType, localInitializedVariable.mCppName, localInitializedVariable.mCppName)
   end
 //--- Instruction list
   for entry in inSemanticInstructionListAST do
@@ -205,7 +205,7 @@ proc checkExpressionIsBoolean
         error (inErrorLocation
         : "the expression type is not '@bool', but '@"+ expressionType.definition.typeName.string + "', and this type does not define the 'bool' func "
         spoil outExpression
-        fixit replace expressionType.definition.getterMap.keyList)
+        fixit %replaceBy expressionType.definition.getterMap.keyList)
       end
     end
   end

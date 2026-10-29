@@ -57,9 +57,9 @@ map @classFunctionMap {
   public let @functionSignature mArgumentTypeList
   public let @bool mHasCompilerArgument
   public let @unifiedTypeMapEntry mReturnedType
-  insert or replace
-  insert insertKey error message "the '%K' class function has been already defined"
-  search searchKey error message "the '%K' class function is not declared"
+  %insertOrReplaceSetter
+  %insertSetter insertKey %errorMessage "the '%K' class function has been already defined"
+  %searchMethod searchKey %errorMessage "the '%K' class function is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -68,8 +68,8 @@ map @classFunctionMap {
 
 map @initializerMap { // Key is argument signature
   public let @functionSignature mArgumentTypeList
-  insert insertKey error message "the '%K' initializer has been already defined"
-  search searchKey error message "the '%K' initializer is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' initializer has been already defined"
+  %searchMethod searchKey %errorMessage "the '%K' initializer is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -119,10 +119,10 @@ map @getterMap {
   public let @methodQualifier mQualifier
   public let @string mGetterNameThatObsoletesInvokationName // If not empty, this func is the one actually called
 
-  insert insertKey error message "the '%K' func is already declared"
-  search searchKey error message "the '%K' func is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' func is already declared"
+  %searchMethod searchKey %errorMessage "the '%K' func is not declared"
 
-  insert or replace
+  %insertOrReplaceSetter
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -146,9 +146,9 @@ map @setterMap {
   public let @bool mHasCompilerArgument
   public let @methodQualifier mQualifier
   public let @string mErrorMessage // If not empty, calling the mutating proc raises an error ith this message
-  insert or replace
-  insert insertKey error message "the '%K' mutating proc is already declared"
-  search searchKey error message "the '%K' mutating proc is not declared"
+  %insertOrReplaceSetter
+  %insertSetter insertKey %errorMessage "the '%K' mutating proc is already declared"
+  %searchMethod searchKey %errorMessage "the '%K' mutating proc is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -164,9 +164,9 @@ map @instanceMethodMap {
   public let @bool mHasCompilerArgument
   public let @methodQualifier mQualifier
   public let @string mErrorMessage // If not empty, calling the proc raises an error with this message
-  insert insertKey error message "the '%K' instance proc is already declared"
-  search searchKey error message "the '%K' instance proc is not declared"
-  search searchInheritedKey error message "as the '%K' proc is tagged as 'override', it should be declared in the super class"
+  %insertSetter insertKey %errorMessage "the '%K' instance proc is already declared"
+  %searchMethod searchKey %errorMessage "the '%K' instance proc is not declared"
+  %searchMethod searchInheritedKey %errorMessage "as the '%K' proc is tagged as 'override', it should be declared in the super class"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -178,9 +178,9 @@ map @instanceMethodMap {
 map @classMethodMap {
   public let @formalParameterSignature mParameterList
   public let @bool mHasCompilerArgument
-  insert or replace
-  insert insertKey error message "the '%K' type proc is already declared"
-  search searchKey error message "the '%K' type proc is not declared"
+  %insertOrReplaceSetter
+  %insertSetter insertKey %errorMessage "the '%K' type proc is already declared"
+  %searchMethod searchKey %errorMessage "the '%K' type proc is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -226,8 +226,8 @@ map @propertyMap {
   public let @AccessControl mAccessControl
   public let @bool mIsConstant
   public let @unifiedTypeMapEntry mPropertyType
-  insert insertKey error message "the '%K' property has been already declared in %L"
-  search searchKey error message "the '%K' property is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' property has been already declared in %L"
+  %searchMethod searchKey %errorMessage "the '%K' property is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -250,8 +250,8 @@ list @associatedValueDescriptorList %equatable {
 map @constantIndexMap %equatable {
   public let @uint mIndex
   public let @associatedValueDescriptorList mAssociatedTypeList
-  insert insertKey error message "the '%K' constant is already declared"
-  search searchKey error message "the '%K' constant is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' constant is already declared"
+  %searchMethod searchKey %errorMessage "the '%K' constant is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------

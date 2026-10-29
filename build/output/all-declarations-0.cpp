@@ -6179,7 +6179,7 @@ GGS_opAssignmentOperator GGS_opAssignmentOperator::extractObject (const GGS_obje
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_string (const GGS_opAssignmentOperator & inObject,
-                                   Compiler *
+                                   Compiler * /* inCompiler */
                                    COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_opAssignmentOperator temp_0 = inObject ;
@@ -6234,7 +6234,7 @@ GGS_string extensionGetter_string (const GGS_opAssignmentOperator & inObject,
 //--------------------------------------------------------------------------------------------------
 
 GGS_string extensionGetter_cppFunctionName (const GGS_opAssignmentOperator & inObject,
-                                            Compiler *
+                                            Compiler * /* inCompiler */
                                             COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   const GGS_opAssignmentOperator temp_0 = inObject ;

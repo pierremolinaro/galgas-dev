@@ -33,9 +33,9 @@ proc groupSyntaxComponentsGalgas3
     componentNameSet ++= component.mSyntaxComponentName.string
     var nonterminalDeclarationList = component.mNonterminalDeclarationList
     var ruleList = component.mRuleList
-    for (* mNonterminalDeclarationList mRuleList) in inSyntaxExtensions.listForKey (!component.mSyntaxComponentName.string) do
-      nonterminalDeclarationList += mNonterminalDeclarationList
-      ruleList += mRuleList
+    for syntaxExtension in inSyntaxExtensions.listForKey (!component.mSyntaxComponentName.string) do
+      nonterminalDeclarationList += syntaxExtension.mNonterminalDeclarationList
+      ruleList += syntaxExtension.mRuleList
     end
     ioDeclarationList ++= @(!@galgas3SyntaxComponentAST (
       !isPredefined: false,
@@ -46,9 +46,9 @@ proc groupSyntaxComponentsGalgas3
       component.mHasTranslateFeature))
   end
 //--- Check all extensions are handled
-  for (key extensionList) in inSyntaxExtensions.dictionary do
-    if not componentNameSet.hasKey (!key) then
-      for entry in extensionList do
+  for syntaxExtension in inSyntaxExtensions.dictionary do
+    if not componentNameSet.hasKey (syntaxExtension.key) then
+      for entry in syntaxExtension.extensionList do
         error (entry.mSyntaxComponentName : "there is no '" + entry.mSyntaxComponentName +"' syntax component")
       end
     end
