@@ -10858,162 +10858,6 @@ GGS_lexicalRepeatInstructionAST GGS_lexicalRepeatInstructionAST::extractObject (
 }
 
 //--------------------------------------------------------------------------------------------------
-// @lexicalDropInstructionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_lexicalDropInstructionAST::objectCompare (const GGS_lexicalDropInstructionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalDropInstructionAST::GGS_lexicalDropInstructionAST (void) :
-GGS_lexicalInstructionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_lexicalDropInstructionAST GGS_lexicalDropInstructionAST::
-init_21_ (const GGS_lstring & in_mTerminalName,
-          Compiler * inCompiler
-          COMMA_LOCATION_ARGS) {
-  cPtr_lexicalDropInstructionAST * object = nullptr ;
-  macroMyNew (object, cPtr_lexicalDropInstructionAST (inCompiler COMMA_THERE)) ;
-  object->lexicalDropInstructionAST_init_21_ (in_mTerminalName, inCompiler) ;
-  const GGS_lexicalDropInstructionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_lexicalDropInstructionAST::
-lexicalDropInstructionAST_init_21_ (const GGS_lstring & in_mTerminalName,
-                                    Compiler * /* inCompiler */) {
-  mProperty_mTerminalName = in_mTerminalName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalDropInstructionAST::GGS_lexicalDropInstructionAST (const cPtr_lexicalDropInstructionAST * inSourcePtr) :
-GGS_lexicalInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalDropInstructionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_lexicalDropInstructionAST::readProperty_mTerminalName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_lexicalDropInstructionAST * p = (cPtr_lexicalDropInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalDropInstructionAST) ;
-    return p->mProperty_mTerminalName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @lexicalDropInstructionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalDropInstructionAST::cPtr_lexicalDropInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
-mProperty_mTerminalName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_lexicalDropInstructionAST::cPtr_lexicalDropInstructionAST (const GGS_lstring & in_mTerminalName,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
-mProperty_mTerminalName () {
-  mProperty_mTerminalName = in_mTerminalName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_lexicalDropInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalDropInstructionAST ;
-}
-
-void cPtr_lexicalDropInstructionAST::description (String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString.appendCString ("[@lexicalDropInstructionAST:") ;
-  mProperty_mTerminalName.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_lexicalDropInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_lexicalDropInstructionAST (mProperty_mTerminalName, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_lexicalDropInstructionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTerminalName.printNonNullClassInstanceProperties ("mTerminalName") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalDropInstructionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalDropInstructionAST ("lexicalDropInstructionAST",
-                                                                              & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalDropInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalDropInstructionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lexicalDropInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lexicalDropInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalDropInstructionAST GGS_lexicalDropInstructionAST::extractObject (const GGS_object & inObject,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) {
-  GGS_lexicalDropInstructionAST result ;
-  const GGS_lexicalDropInstructionAST * p = (const GGS_lexicalDropInstructionAST *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lexicalDropInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalDropInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 // @lexicalWarningInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -11164,6 +11008,162 @@ GGS_lexicalWarningInstructionAST GGS_lexicalWarningInstructionAST::extractObject
       result = *p ;
     }else{
       inCompiler->castError ("lexicalWarningInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @lexicalDropInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lexicalDropInstructionAST::objectCompare (const GGS_lexicalDropInstructionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalDropInstructionAST::GGS_lexicalDropInstructionAST (void) :
+GGS_lexicalInstructionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_lexicalDropInstructionAST GGS_lexicalDropInstructionAST::
+init_21_ (const GGS_lstring & in_mTerminalName,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_lexicalDropInstructionAST * object = nullptr ;
+  macroMyNew (object, cPtr_lexicalDropInstructionAST (inCompiler COMMA_THERE)) ;
+  object->lexicalDropInstructionAST_init_21_ (in_mTerminalName, inCompiler) ;
+  const GGS_lexicalDropInstructionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_lexicalDropInstructionAST::
+lexicalDropInstructionAST_init_21_ (const GGS_lstring & in_mTerminalName,
+                                    Compiler * /* inCompiler */) {
+  mProperty_mTerminalName = in_mTerminalName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalDropInstructionAST::GGS_lexicalDropInstructionAST (const cPtr_lexicalDropInstructionAST * inSourcePtr) :
+GGS_lexicalInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalDropInstructionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_lexicalDropInstructionAST::readProperty_mTerminalName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_lexicalDropInstructionAST * p = (cPtr_lexicalDropInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalDropInstructionAST) ;
+    return p->mProperty_mTerminalName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @lexicalDropInstructionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalDropInstructionAST::cPtr_lexicalDropInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mTerminalName () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalDropInstructionAST::cPtr_lexicalDropInstructionAST (const GGS_lstring & in_mTerminalName,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mTerminalName () {
+  mProperty_mTerminalName = in_mTerminalName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_lexicalDropInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalDropInstructionAST ;
+}
+
+void cPtr_lexicalDropInstructionAST::description (String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("[@lexicalDropInstructionAST:") ;
+  mProperty_mTerminalName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_lexicalDropInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalDropInstructionAST (mProperty_mTerminalName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalDropInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTerminalName.printNonNullClassInstanceProperties ("mTerminalName") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @lexicalDropInstructionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalDropInstructionAST ("lexicalDropInstructionAST",
+                                                                              & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_lexicalDropInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalDropInstructionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GGS_lexicalDropInstructionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = nullptr ;
+  if (isValid ()) {
+    macroMyNew (result, GGS_lexicalDropInstructionAST (*this)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalDropInstructionAST GGS_lexicalDropInstructionAST::extractObject (const GGS_object & inObject,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
+  GGS_lexicalDropInstructionAST result ;
+  const GGS_lexicalDropInstructionAST * p = (const GGS_lexicalDropInstructionAST *) inObject.embeddedObject () ;
+  if (nullptr != p) {
+    if (nullptr != dynamic_cast <const GGS_lexicalDropInstructionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalDropInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

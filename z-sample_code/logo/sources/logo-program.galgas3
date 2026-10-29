@@ -1,6 +1,0 @@
-case . "logo"
-message "a source text file with the .logo extension"
-grammar logo_grammar
-?sourceFilePath:@lstring inSourceFile {
-  grammar logo_grammar () in inSourceFile
-}

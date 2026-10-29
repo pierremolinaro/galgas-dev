@@ -1,0 +1,408 @@
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//--------------------------------------------------------------------------------------------------
+
+syntax extension galgas3DeclarationsSyntax {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+    $proc$
+    $@type$ (?var typeName) indexing (typeReferenceExtensionMethod)
+    repeat
+    while
+      $.$
+      $@type$ (?let t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+    end
+    $identifier$ (?let @lstring methodName) indexing (extensionMethodDefinition)
+    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
+    ${$
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
+    let endOfMethodLocation = @location.here
+    $}$
+    ioDeclarations.mDeclarationList ++= @(!@extensionMethodAST (
+      !isPredefined: false,
+      typeName,
+      methodName,
+      formalParameterList,
+      routineInstructionList,
+      endOfMethodLocation
+    ))
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <method_declaration_ggs3> (?let @lstring inTypeName,
+                                  ?!@galgasDeclarationAST ioDeclarations) {
+    $proc$
+    var typeName = inTypeName
+    repeat
+    while
+      $@type$ (?let t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+      $.$
+    end
+    $identifier$ (?let @lstring methodName) indexing (extensionMethodDefinition)
+    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
+    ${$
+    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+    let endOfMethodLocation = @location.here
+    $}$
+    ioDeclarations.mDeclarationList ++= @(!@extensionMethodAST (
+      !isPredefined: false,
+      typeName,
+      methodName,
+      formalParameterList,
+      routineInstructionList,
+      endOfMethodLocation
+    ))
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+syntax extension galgas4DeclarationsSyntax {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
+    $proc$
+    <simple_type_definition> (!?ioDeclarations, ?var @lstring typeName)
+    $.$
+    repeat
+    while
+      <simple_type_definition> (!?ioDeclarations, ?let t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+      $.$
+    end
+    $identifier$ (?let @lstring methodName) indexing (extensionMethodDefinition)
+    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
+    ${$
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+    let endOfMethodLocation = @location.here
+    $}$
+    ioDeclarations.mDeclarationList ++= @(!@extensionMethodAST (
+      !isPredefined: false,
+      typeName,
+      methodName,
+      formalParameterList,
+      routineInstructionList,
+      endOfMethodLocation
+    ))
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <method_declaration> (?let @lstring inTypeName,
+                             ?!@galgasDeclarationAST ioDeclarations) {
+    $proc$
+    $identifier$ (?let @lstring methodName) indexing (extensionMethodDefinition)
+    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
+    ${$
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+    let endOfMethodLocation = @location.here
+    $}$
+    ioDeclarations.mDeclarationList ++= @(!@extensionMethodAST (
+      !isPredefined: false,
+      inTypeName,
+      methodName,
+      formalParameterList,
+      routineInstructionList,
+      endOfMethodLocation
+    ))
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+final class @extensionMethodAST : @semanticDeclarationAST {
+  private let @lstring mTypeName
+  private let @lstring mExtensionMethodName
+  private let @formalParameterListAST mExtensionMethodFormalParameterList
+  private let @semanticInstructionListAST mExtensionMethodInstructionList
+  private let @location mEndOfMethodLocation
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func keyRepresentation () -> @string {
+    result = "extension proc @" + self.mTypeName + " " + self.mExtensionMethodName
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc enterDeclarationInGraph (
+     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
+     ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext,
+     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
+     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
+     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
+    let key = @lstring (
+      !"extension proc @" + self.mTypeName + " " + self.mExtensionMethodName,
+      self.mExtensionMethodName.location
+    )
+    !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"@" + self.mTypeName, self.mTypeName.location))
+  //---
+    if not ioExtensionMethodMapForBuildingContext.hasKey (!self.mTypeName.string) then
+      !?ioExtensionMethodMapForBuildingContext.insertKey
+        (! self.mTypeName,
+        !@()
+      )
+    end
+    var entry = ioExtensionMethodMapForBuildingContext [!searchKey: self.mTypeName]
+    !?entry.mExtensionMethodMapForType.insertKey
+      (!self.mExtensionMethodName,
+      ! self.mExtensionMethodFormalParameterList,
+      !.isBasic
+    )
+    !?ioExtensionMethodMapForBuildingContext.replaceKey (!with: entry)
+//    with %aliasOf ioExtensionMethodMapForBuildingContext [!searchKey: self.mTypeName] do
+//      !?mExtensionMethodMapForType insertKey
+//        !self.mExtensionMethodName
+//        ! self.mExtensionMethodFormalParameterList
+//        !.isBasic
+//      ]
+//    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc enterDeclarationInSemanticContext (
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    ?!@unifiedTypeMap unused ioTypeMap,
+    ?!@semanticContext unused ioSemanticContext) {
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc semanticAnalysis (?!@lstringlist unused ioUsefulnessRootEntities,
+                                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                    ?let @string unused inProductDirectory,
+                                    ?let @semanticContext inSemanticContext,
+                                    ?!@unifiedTypeMap ioTypeMap,
+                                    ?let @predefinedTypes inPredefinedTypes,
+                 ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
+  //--- Useful entities graph
+    let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName, !self.mExtensionMethodName)
+    !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
+    let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (! self.mTypeName)
+    !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness, !to: nameForUsefulness)
+  //--- Self type
+    let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (! self.mTypeName)
+    let @string selfObjectNameString
+    let @string selfObjectPropertyAccessorString
+    let @bool implementedAsFunction
+  //--- Check self type is a class
+    let isClass = selfType.definition.typeKind == .classType
+    if isClass then
+      selfObjectNameString = "this"
+      selfObjectPropertyAccessorString = "this->"
+      implementedAsFunction = false
+    else
+      selfObjectNameString = "inObject"
+      selfObjectPropertyAccessorString = "inObject."
+      implementedAsFunction = true
+    end
+  //--- Analyze instruction list
+    let analysisContextNew = @analysisContext (
+      !inSemanticContext,
+      inPredefinedTypes,
+      !selfObjectCppName: selfObjectNameString,
+      !selfAvailability: .available (!type: selfType, !selfMutability: .propertiesAreMutableSelfIsNot),
+      !selfObjectCppPrefixForAccessingProperty: selfObjectPropertyAccessorString
+    )
+//    var isclass = false
+//    if let classType = selfType.definition.typeKind.getClassType then
+//      isclass = classType.isReference
+//    end
+    analyzeRoutineBody (
+      !nameForUsefulness,
+      !?ioUsefulEntitiesGraph,
+      !analysisContextNew,
+      !?ioTypeMap,
+      !self.mExtensionMethodFormalParameterList,
+      !self.mExtensionMethodInstructionList,
+      !self.mEndOfMethodLocation,
+      ?let semanticInstructionListForGeneration,
+      ?let formalParameterListForGeneration
+    )
+  //---
+    ioSemanticDeclarationListForGeneration ++= @(
+      !infoMessage:"extension proc " + self.mExtensionMethodName,
+      !@extensionMethodForGeneration (
+        !generateHeader: true,
+        !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionMethodName.string.fileNameRepresentation,
+        selfType,
+        self.mExtensionMethodName.string,
+        implementedAsFunction,
+        formalParameterListForGeneration,
+        selfType.definition.allTypedPropertyList,
+        semanticInstructionListForGeneration
+      ))
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//   EXTENSION LIST MAP
+//--------------------------------------------------------------------------------------------------
+
+override proc @extensionMethodAST.buildExtensionListMaps (
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST,
+  ?!@genericExtensionMethodListMap ioExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
+//  ioExtensionMethodListMap += !self.mTypeName.string !self.mExtensionMethodName
+  !?ioExtensionMethodListMap.insertKey (!self.mTypeName.string, !self.mExtensionMethodName)
+}
+
+//--------------------------------------------------------------------------------------------------
+//   CODE GENERATION
+//--------------------------------------------------------------------------------------------------
+
+final class @extensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  private let @unifiedTypeMapEntry mReceiverType
+  private let @string mExtensionMethodName
+  private let @bool mImplementedAsFunction
+  private let @formalParameterListForGeneration mExtensionMethodFormalParameterList
+  private let @typedPropertyList mTypedAttributeList
+  private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+}
+
+//································································································
+
+override func @extensionMethodForGeneration.headerKind () ->@headerKind {
+  result = @headerKind.oneHeader
+}
+
+//································································································
+
+override proc @extensionMethodForGeneration.appendDeclaration1 (?!@stringset unused ioInclusionSet,
+                                                                  !@string outHeader) {
+  if self.mImplementedAsFunction then
+    outHeader = filewrapper [semanticComponentGenerationTemplate.extensionMethodAsFunctionDeclaration :
+      !self.mReceiverType.definition.typeName.string,
+      !self.mExtensionMethodName,
+      !self.mExtensionMethodFormalParameterList
+    ]
+  else
+    outHeader = filewrapper [semanticComponentGenerationTemplate.extensionMethodDeclaration :
+      !self.mReceiverType.definition.typeName.string,
+      !self.mExtensionMethodName,
+      !self.mExtensionMethodFormalParameterList
+    ]
+  end
+}
+
+//································································································
+
+override proc @extensionMethodForGeneration.appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+                                                    ?!@stringset ioInclusionSet,
+                                                    !@string outImplementation) {
+  if self.mImplementedAsFunction then
+    var @formalParameterListForGeneration extensionMethodFormalParameterList = self.mExtensionMethodFormalParameterList
+    !?extensionMethodFormalParameterList.insertAtIndex
+      (!"".nowhere,
+      !@formalArgumentPassingModeAST.argumentConstantIn,
+      !self.mReceiverType,
+      !@lstring (!"self", @location.here),
+      !"inObject",
+      !0
+    )
+    ioInclusionSet ++= "proc-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionMethodName.fileNameRepresentation
+    generateProcedure (
+      !static:false,
+      !"extensionMethod_" + self.mExtensionMethodName.identifierRepresentation,
+      !?ioInclusionSet,
+      !extensionMethodFormalParameterList,
+      !self.mSemanticInstructionListForGeneration,
+      !false, // is not const
+      !"Compiler",
+      !true, // Generate location Argument
+      !false, // Do not generate 'resetTemplateString'
+      !false, // Do not generate syntaxDirectedTranslationString argument
+      ?let @string code
+    )
+    outImplementation = filewrapper [semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation :
+      !self.mReceiverType.definition.typeName.string,
+      !self.mExtensionMethodName,
+      !code
+    ]
+  else
+    self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
+    for entry in self.mExtensionMethodFormalParameterList do
+      entry.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
+    end
+    var @unifiedTypeMapEntry baseType = self.mReceiverType
+    var @bool searching = true
+    loop (@uint.max) while searching do
+      if not baseType.definition.superType.isNull then
+        if baseType.definition.superType.definition.instanceMethodMap.hasKey (!self.mExtensionMethodName) then
+          baseType = baseType.definition.superType
+        else
+          searching = false
+        end
+      else
+        searching = false
+      end
+    end
+    ioInclusionSet ++=
+      "proc-" + baseType.definition.typeName.string.fileNameRepresentation
+      + "-" + self.mExtensionMethodName.fileNameRepresentation
+    generateExtensionMethodNew (
+      !self.mReceiverType,
+      !?ioInclusionSet,
+      !self.mExtensionMethodName,
+      !self.mExtensionMethodFormalParameterList,
+      !self.mSemanticInstructionListForGeneration,
+      ?let @string methodImplementation
+    )
+    outImplementation = filewrapper [semanticComponentGenerationTemplate.extensionMethodImplementation :
+      !self.mReceiverType.definition.typeName.string,
+      !self.mExtensionMethodName,
+      !self.mExtensionMethodFormalParameterList,
+      !methodImplementation
+    ]
+  end
+}
+
+//--------------------------------------------------------------------------------------------------
+

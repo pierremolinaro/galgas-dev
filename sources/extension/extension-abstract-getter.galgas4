@@ -1,0 +1,324 @@
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//--------------------------------------------------------------------------------------------------
+
+syntax extension galgas3DeclarationsSyntax {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+    $abstract$
+    $func$
+    $@type$ (?var typeName) indexing (typeReferenceAbstractExtensionGetter)
+    $.$
+    repeat
+    while
+      $@type$ (?let t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+      $.$
+    end
+    $identifier$ (?let getterName) indexing (abstractExtensionGetterDefinition)
+    let @formalInputParameterListAST formalInputParameterList
+    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
+    $->$
+    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring returnedTypeName)
+    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionGetterAST (
+      !isPredefined: false,
+      typeName,
+      getterName,
+      formalInputParameterList,
+      returnedTypeName
+    ))
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <method_declaration_ggs3> (?let @lstring inTypeName,
+                                  ?!@galgasDeclarationAST ioDeclarations) {
+    $abstract$
+    $func$
+    var typeName = inTypeName
+    repeat
+    while // §
+      $.$
+      $@type$ (?let t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+    end
+    $identifier$ (?let mGetterName) indexing (abstractExtensionGetterDefinition)
+    let @formalInputParameterListAST formalInputParameterList
+    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
+    $->$
+    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring returnedTypeName)
+    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionGetterAST (
+      !isPredefined: false,
+      typeName,
+      mGetterName,
+      formalInputParameterList,
+      returnedTypeName
+    ))
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+
+syntax extension galgas4DeclarationsSyntax {
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
+    $abstract$
+    $func$
+    <simple_type_definition> (!?ioDeclarations, ?var typeName)
+    $.$
+    repeat
+    while
+      <simple_type_definition> (!?ioDeclarations, ?let t)
+      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+      $.$
+    end
+    $identifier$ (?let mGetterName) indexing (abstractExtensionGetterDefinition)
+    <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST mFormalInputParameterList)
+    $->$
+    <type_definition> (!?ioDeclarations, ?let returnedTypeName)
+    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionGetterAST (
+      !isPredefined: false,
+      typeName,
+      mGetterName,
+      mFormalInputParameterList,
+      returnedTypeName
+    ))
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  rule <method_declaration> (?let @lstring inTypeName,
+                             ?!@galgasDeclarationAST ioDeclarations) {
+    $abstract$
+    $func$
+    $identifier$ (?let mGetterName) indexing (abstractExtensionGetterDefinition)
+    <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST mFormalInputParameterList)
+    $->$
+    <type_definition> (!?ioDeclarations, ?let returnedTypeName)
+    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionGetterAST (
+      !isPredefined: false,
+      inTypeName,
+      mGetterName,
+      mFormalInputParameterList,
+      returnedTypeName
+    ))
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//   AST
+//--------------------------------------------------------------------------------------------------
+
+final class @abstractExtensionGetterAST : @semanticDeclarationAST {
+  private let @lstring mTypeName
+  private let @lstring mAbstractExtensionGetterName
+  private let @formalInputParameterListAST mAbstractExtensionGetterFormalInputParameterList
+  private let @lstring mAbstractExtensionGetterReturnedTypeName
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func keyRepresentation () -> @string {
+    result = "abstract extension func @" + self.mTypeName + " "
+           + self.mAbstractExtensionGetterName
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc enterDeclarationInGraph (
+              ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+              ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+              ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
+              ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
+              ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext,
+              ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
+              ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
+    let key = @lstring (
+      !"extension func @" + self.mTypeName + " " + self.mAbstractExtensionGetterName,
+      self.mAbstractExtensionGetterName.location
+    )
+    !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"@" + self.mTypeName, self.mTypeName.location))
+  //---
+    if not ioExtensionGetterMapForBuildingContext.hasKey (!self.mTypeName.string) then
+      !?ioExtensionGetterMapForBuildingContext.insertKey
+        (!self.mTypeName,
+        !@()
+      )
+    end
+    var entry = ioExtensionGetterMapForBuildingContext [!searchKey: self.mTypeName]
+    !?entry.mExtensionGetterMapForType.insertKey
+      (!self.mAbstractExtensionGetterName,
+      !self.mAbstractExtensionGetterReturnedTypeName,
+      !self.mAbstractExtensionGetterFormalInputParameterList,
+      !.isVirtualAbstract
+    )
+    !?ioExtensionGetterMapForBuildingContext.replaceKey (!with: entry)
+//   with %aliasOf ioExtensionGetterMapForBuildingContext [!searchKey: self.mTypeName] do
+//      !?mExtensionGetterMapForType insertKey
+//        !self.mAbstractExtensionGetterName
+//        !self.mAbstractExtensionGetterReturnedTypeName
+//        !self.mAbstractExtensionGetterFormalInputParameterList
+//        !.isVirtualAbstract
+//      ]
+//    end
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc enterDeclarationInSemanticContext (
+    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    ?!@unifiedTypeMap unused ioTypeMap,
+    ?!@semanticContext unused ioSemanticContext) {
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc semanticAnalysis (?!@lstringlist unused ioUsefulnessRootEntities,
+    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+    ?let @string unused inProductDirectory,
+    ?let @semanticContext unused inSemanticContext,
+                                  ?!@unifiedTypeMap ioTypeMap,
+    ?let @predefinedTypes unused inPredefinedTypes,
+    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
+  //--- Self type
+    let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
+  //--- Check self type is an abstract class
+    if not selfType.definition.typeKind.isClassType then
+      error (self.mAbstractExtensionGetterName
+        : "cannot declare an extension func: '@" + selfType.definition.typeName.string + "' is not a class"
+      )
+    elsif selfType.definition.isConcrete then
+      error (self.mAbstractExtensionGetterName
+        : "cannot declare an abstract extension func: '@" + selfType.definition.typeName.string + "' is not an abstract class"
+      )
+    end
+  //--- Compute proc signature
+    var @formalInputParameterListForGeneration formalParameterListForGeneration = @()
+    for formalParameter in self.mAbstractExtensionGetterFormalInputParameterList do
+      formalParameterListForGeneration ++= @(
+        !formalParameter.mFormalSelector,
+        !ioTypeMap.typeMapEntryForLKey (formalParameter.mFormalArgumentTypeName),
+        !formalParameter.mFormalArgumentName.string,
+        !formalParameter.mFormalArgumentName,
+        !formalParameter.mIsConstant
+      )
+    end
+  //---
+    ioSemanticDeclarationListForGeneration ++= @(
+      !infoMessage: "abstract extension func " + self.mAbstractExtensionGetterName,
+      !@abstractExtensionGetterForGeneration (
+        !generateHeader: true,
+        !implementationCppFileName: "func-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionGetterName.string.fileNameRepresentation,
+        selfType,
+        self.mAbstractExtensionGetterName.string,
+        ioTypeMap.typeMapEntryForLKey (!self.mAbstractExtensionGetterReturnedTypeName),
+        formalParameterListForGeneration
+      ))
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc buildExtensionListMaps (
+    ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
+    ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
+    ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
+    ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap,
+    ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST,
+    ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap,
+    ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap,
+    ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap,
+    ?!@genericExtensionMethodListMap ioAbstractExtensionGetterListMap,
+    ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
+    ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
+    ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
+    !?ioAbstractExtensionGetterListMap.insertKey (!self.mTypeName.string, !self.mAbstractExtensionGetterName)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//   CODE GENERATION
+//--------------------------------------------------------------------------------------------------
+
+final class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  private let @unifiedTypeMapEntry mReceiverType
+  private let @string mAbstractExtensionGetterName
+  private let @unifiedTypeMapEntry mResultType
+  private let @formalInputParameterListForGeneration mAbstractExtensionGetterFormalParameterList
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func headerKind () ->@headerKind {
+    result = @headerKind.oneHeader
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
+                                      !@string outHeader) {
+    outHeader = filewrapper [semanticComponentGenerationTemplate.abstractExtensionGetterDeclaration :
+      !self.mReceiverType.definition.typeName.string,
+      !self.mAbstractExtensionGetterName,
+      !self.mAbstractExtensionGetterFormalParameterList,
+      !self.mResultType
+    ]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+                                                ?!@stringset ioInclusionSet,
+                                                !@string outImplementation) {
+    ioInclusionSet ++= "func-"
+      + self.mReceiverType.definition.typeName.string.fileNameRepresentation
+      + "-" + self.mAbstractExtensionGetterName.fileNameRepresentation
+    self.mResultType.addHeaderFileName (!?ioInclusionSet)
+    self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
+    for entry in self.mAbstractExtensionGetterFormalParameterList do
+      entry.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
+    end
+    outImplementation = filewrapper [semanticComponentGenerationTemplate.abstractExtensionGetterImplementation :
+      !self.mReceiverType.definition.typeName.string,
+      !self.mAbstractExtensionGetterName,
+      !self.mAbstractExtensionGetterFormalParameterList,
+      !self.mResultType
+    ]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+

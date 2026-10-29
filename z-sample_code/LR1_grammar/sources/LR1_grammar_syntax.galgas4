@@ -1,0 +1,17 @@
+syntax LR1_grammar_syntax (LR1_grammar_lexique) {
+
+rule <S> ()
+
+rule <C> ()
+
+rule <S> () {
+  <C>()
+  <C>()
+}
+
+rule <C> () { $c$ ; <C>()
+}
+
+rule <C> () { $d$ }
+
+}
