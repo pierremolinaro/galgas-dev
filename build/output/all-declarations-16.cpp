@@ -11004,9 +11004,9 @@ void extensionSetter_addTIFF_5F_file (GGS_XcodeProjectDescriptor & ioObject,
                                       COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFileRef.drop () ; // Release 'out' argument
   {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 41)) ;
+  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 41)) ;
   }
-  ioObject.mProperty_mTIFF_5F_fileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 42)) ;
+  ioObject.mProperty_mTIFF_5F_fileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 42)) ;
 }
 
 
@@ -11023,9 +11023,9 @@ void extensionSetter_addInfoPlistFile (GGS_XcodeProjectDescriptor & ioObject,
                                        COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFileRef.drop () ; // Release 'out' argument
   {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 50)) ;
+  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 50)) ;
   }
-  ioObject.mProperty_mInfoPlistFileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 51)) ;
+  ioObject.mProperty_mInfoPlistFileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 51)) ;
 }
 
 
@@ -11042,9 +11042,9 @@ void extensionSetter_addXIBFile (GGS_XcodeProjectDescriptor & ioObject,
                                  COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFileRef.drop () ; // Release 'out' argument
   {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 59)) ;
+  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 59)) ;
   }
-  ioObject.mProperty_mXIB_5F_fileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 60)) ;
+  ioObject.mProperty_mXIB_5F_fileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 60)) ;
 }
 
 
@@ -11061,9 +11061,9 @@ void extensionSetter_addFrameworkFile (GGS_XcodeProjectDescriptor & ioObject,
                                        COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFileRef.drop () ; // Release 'out' argument
   {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 68)) ;
+  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 68)) ;
   }
-  ioObject.mProperty_mFrameworkFileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 69)) ;
+  ioObject.mProperty_mFrameworkFileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 69)) ;
 }
 
 
@@ -11080,9 +11080,9 @@ void extensionSetter_addSwiftFile (GGS_XcodeProjectDescriptor & ioObject,
                                    COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFileRef.drop () ; // Release 'out' argument
   {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 77)) ;
+  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 77)) ;
   }
-  ioObject.mProperty_m_5F_Swift_5F_FileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 78)) ;
+  ioObject.mProperty_m_5F_Swift_5F_FileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 78)) ;
 }
 
 
@@ -11099,9 +11099,9 @@ void extensionSetter_addMFile (GGS_XcodeProjectDescriptor & ioObject,
                                COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFileRef.drop () ; // Release 'out' argument
   {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 86)) ;
+  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 86)) ;
   }
-  ioObject.mProperty_m_5F_M_5F_FileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 87)) ;
+  ioObject.mProperty_m_5F_M_5F_FileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 87)) ;
 }
 
 
@@ -11118,9 +11118,9 @@ void extensionSetter_addMMFile (GGS_XcodeProjectDescriptor & ioObject,
                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFileRef.drop () ; // Release 'out' argument
   {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 95)) ;
+  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 95)) ;
   }
-  ioObject.mProperty_m_5F_MM_5F_FileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 96)) ;
+  ioObject.mProperty_m_5F_MM_5F_FileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 96)) ;
 }
 
 
@@ -11137,9 +11137,9 @@ void extensionSetter_addCppFile (GGS_XcodeProjectDescriptor & ioObject,
                                  COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFileRef.drop () ; // Release 'out' argument
   {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 104)) ;
+  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 104)) ;
   }
-  ioObject.mProperty_mCppFileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 105)) ;
+  ioObject.mProperty_mCppFileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 105)) ;
 }
 
 
@@ -11156,9 +11156,9 @@ void extensionSetter_addCFile (GGS_XcodeProjectDescriptor & ioObject,
                                COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFileRef.drop () ; // Release 'out' argument
   {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 113)) ;
+  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 113)) ;
   }
-  ioObject.mProperty_mCFileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 114)) ;
+  ioObject.mProperty_mCFileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 114)) ;
 }
 
 
@@ -11175,9 +11175,9 @@ void extensionSetter_addHeaderFile (GGS_XcodeProjectDescriptor & ioObject,
                                     COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFileRef.drop () ; // Release 'out' argument
   {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 122)) ;
+  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 122)) ;
   }
-  ioObject.mProperty_mHeaderFileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 123)) ;
+  ioObject.mProperty_mHeaderFileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 123)) ;
 }
 
 
@@ -11195,9 +11195,9 @@ void extensionSetter_addBuildFile (GGS_XcodeProjectDescriptor & ioObject,
                                    COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outBuildRef.drop () ; // Release 'out' argument
   {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outBuildRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 132)) ;
+  extensionSetter_getReferenceKey (ioObject, outArgument_outBuildRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 132)) ;
   }
-  ioObject.mProperty_mBuildFileList.plusPlusAssignOperation (GGS_BuildFileList_2E_element::init_21__21__21_ (constinArgument_inFileReference, constinArgument_inFileName, outArgument_outBuildRef, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 133)) ;
+  ioObject.mProperty_mBuildFileList.plusPlusAssignOperation (GGS_BuildFileList_2E_element::init_21__21__21_ (constinArgument_inFileReference, constinArgument_inFileName, outArgument_outBuildRef, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 133)) ;
 }
 
 
@@ -11220,28 +11220,28 @@ void extensionSetter_addToolTarget (GGS_XcodeProjectDescriptor & ioObject,
   outArgument_outTargetRef.drop () ; // Release 'out' argument
   outArgument_outProductFileRef.drop () ; // Release 'out' argument
   {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outProductFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 146)) ;
+  extensionSetter_getReferenceKey (ioObject, outArgument_outProductFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 146)) ;
   }
-  GGS_string var_buildPhaseRef_5951 ;
+  GGS_string var_buildPhaseRef_5965 ;
   {
-  extensionSetter_getReferenceKey (ioObject, var_buildPhaseRef_5951, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 147)) ;
+  extensionSetter_getReferenceKey (ioObject, var_buildPhaseRef_5965, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 147)) ;
   }
   {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outTargetRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 148)) ;
+  extensionSetter_getReferenceKey (ioObject, outArgument_outTargetRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 148)) ;
   }
-  GGS_string var_buildConfigurationListRef_6048 ;
+  GGS_string var_buildConfigurationListRef_6062 ;
   {
-  extensionSetter_getReferenceKey (ioObject, var_buildConfigurationListRef_6048, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 149)) ;
+  extensionSetter_getReferenceKey (ioObject, var_buildConfigurationListRef_6062, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 149)) ;
   }
-  GGS_string var_buildConfigurationRef_6111 ;
+  GGS_string var_buildConfigurationRef_6125 ;
   {
-  extensionSetter_getReferenceKey (ioObject, var_buildConfigurationRef_6111, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 150)) ;
+  extensionSetter_getReferenceKey (ioObject, var_buildConfigurationRef_6125, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 150)) ;
   }
-  GGS_string var_frameworkBuildRef_6170 ;
+  GGS_string var_frameworkBuildRef_6184 ;
   {
-  extensionSetter_getReferenceKey (ioObject, var_frameworkBuildRef_6170, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 151)) ;
+  extensionSetter_getReferenceKey (ioObject, var_frameworkBuildRef_6184, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 151)) ;
   }
-  ioObject.mProperty_mToolTargetList.plusPlusAssignOperation (GGS_XCodeToolTargetList_2E_element::init_21__21__21__21__21__21__21__21__21__21__21_ (outArgument_outTargetRef, constinArgument_inTargetName, outArgument_outProductFileRef, constinArgument_inProductFileName, constinArgument_inSourceList, var_buildPhaseRef_5951, var_buildConfigurationListRef_6048, constinArgument_inBuildConfigurationSettingList, var_buildConfigurationRef_6111, constinArgument_inToolFrameworksFileRefList, var_frameworkBuildRef_6170, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 152)) ;
+  ioObject.mProperty_mToolTargetList.plusPlusAssignOperation (GGS_XCodeToolTargetList_2E_element::init_21__21__21__21__21__21__21__21__21__21__21_ (outArgument_outTargetRef, constinArgument_inTargetName, outArgument_outProductFileRef, constinArgument_inProductFileName, constinArgument_inSourceList, var_buildPhaseRef_5965, var_buildConfigurationListRef_6062, constinArgument_inBuildConfigurationSettingList, var_buildConfigurationRef_6125, constinArgument_inToolFrameworksFileRefList, var_frameworkBuildRef_6184, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 152)) ;
 }
 
 
@@ -11265,53 +11265,53 @@ void extensionSetter_addAppTarget (GGS_XcodeProjectDescriptor & ioObject,
                                    COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outProductFileRef.drop () ; // Release 'out' argument
   {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outProductFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 178)) ;
+  extensionSetter_getReferenceKey (ioObject, outArgument_outProductFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 178)) ;
   }
-  GGS_string var_buildPhaseRef_7248 ;
+  GGS_string var_buildPhaseRef_7262 ;
   {
-  extensionSetter_getReferenceKey (ioObject, var_buildPhaseRef_7248, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 179)) ;
+  extensionSetter_getReferenceKey (ioObject, var_buildPhaseRef_7262, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 179)) ;
   }
-  GGS_string var_targetRef_7299 ;
+  GGS_string var_targetRef_7313 ;
   {
-  extensionSetter_getReferenceKey (ioObject, var_targetRef_7299, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 180)) ;
+  extensionSetter_getReferenceKey (ioObject, var_targetRef_7313, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 180)) ;
   }
-  GGS_string var_buildConfigurationListRef_7346 ;
+  GGS_string var_buildConfigurationListRef_7360 ;
   {
-  extensionSetter_getReferenceKey (ioObject, var_buildConfigurationListRef_7346, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 181)) ;
+  extensionSetter_getReferenceKey (ioObject, var_buildConfigurationListRef_7360, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 181)) ;
   }
-  GGS_string var_buildConfigurationRef_7409 ;
+  GGS_string var_buildConfigurationRef_7423 ;
   {
-  extensionSetter_getReferenceKey (ioObject, var_buildConfigurationRef_7409, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 182)) ;
+  extensionSetter_getReferenceKey (ioObject, var_buildConfigurationRef_7423, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 182)) ;
   }
-  GGS_string var_frameworkBuildRef_7468 ;
+  GGS_string var_frameworkBuildRef_7482 ;
   {
-  extensionSetter_getReferenceKey (ioObject, var_frameworkBuildRef_7468, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 183)) ;
+  extensionSetter_getReferenceKey (ioObject, var_frameworkBuildRef_7482, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 183)) ;
   }
-  GGS_string var_resourceBuildRef_7523 ;
+  GGS_string var_resourceBuildRef_7537 ;
   {
-  extensionSetter_getReferenceKey (ioObject, var_resourceBuildRef_7523, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 184)) ;
+  extensionSetter_getReferenceKey (ioObject, var_resourceBuildRef_7537, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 184)) ;
   }
-  GGS__32_stringlist var_dependentTargets_7560 = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
-  UpEnumerator_stringlist enumerator_7598 (constinArgument_inDependentTargetRefList) ;
-  while (enumerator_7598.hasCurrentObject ()) {
-    GGS_string var_dependencyBuildRef_7664 ;
+  GGS__32_stringlist var_dependentTargets_7574 = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
+  UpEnumerator_stringlist enumerator_7612 (constinArgument_inDependentTargetRefList) ;
+  while (enumerator_7612.hasCurrentObject ()) {
+    GGS_string var_dependencyBuildRef_7678 ;
     {
-    extensionSetter_getReferenceKey (ioObject, var_dependencyBuildRef_7664, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 187)) ;
+    extensionSetter_getReferenceKey (ioObject, var_dependencyBuildRef_7678, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 187)) ;
     }
-    var_dependentTargets_7560.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (var_dependencyBuildRef_7664, enumerator_7598.current (HERE).readProperty_mValue (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 188)) ;
-    enumerator_7598.gotoNextObject () ;
+    var_dependentTargets_7574.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (var_dependencyBuildRef_7678, enumerator_7612.current (HERE).readProperty_mValue (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 188)) ;
+    enumerator_7612.gotoNextObject () ;
   }
-  GGS_stringlist var_resourceFileBuildRefs_7770 = constinArgument_inResourceFileBuildRefs ;
-  UpEnumerator__32_stringlist enumerator_7833 (constinArgument_inProductCopyList) ;
-  while (enumerator_7833.hasCurrentObject ()) {
-    GGS_string var_buildRef_7952 ;
+  GGS_stringlist var_resourceFileBuildRefs_7784 = constinArgument_inResourceFileBuildRefs ;
+  UpEnumerator__32_stringlist enumerator_7847 (constinArgument_inProductCopyList) ;
+  while (enumerator_7847.hasCurrentObject ()) {
+    GGS_string var_buildRef_7966 ;
     {
-    extensionSetter_addBuildFile (ioObject, enumerator_7833.current (HERE).readProperty_mValue_30_ (), enumerator_7833.current (HERE).readProperty_mValue_31_ (), var_buildRef_7952, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 192)) ;
+    extensionSetter_addBuildFile (ioObject, enumerator_7847.current (HERE).readProperty_mValue_30_ (), enumerator_7847.current (HERE).readProperty_mValue_31_ (), var_buildRef_7966, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 192)) ;
     }
-    var_resourceFileBuildRefs_7770.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (var_buildRef_7952, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 193)) ;
-    enumerator_7833.gotoNextObject () ;
+    var_resourceFileBuildRefs_7784.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (var_buildRef_7966, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 193)) ;
+    enumerator_7847.gotoNextObject () ;
   }
-  ioObject.mProperty_mAppTargetList.plusPlusAssignOperation (GGS_XCodeAppTargetList_2E_element::init_21__21__21__21__21__21__21__21__21__21__21__21__21__21_ (var_targetRef_7299, constinArgument_inTargetName, outArgument_outProductFileRef, constinArgument_inProductFileName, constinArgument_inSourceList, var_buildPhaseRef_7248, var_buildConfigurationListRef_7346, constinArgument_inBuildConfigurationSettingList, var_buildConfigurationRef_7409, constinArgument_inFrameworksFileRefList, var_frameworkBuildRef_7468, var_dependentTargets_7560, var_resourceBuildRef_7523, var_resourceFileBuildRefs_7770, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 195)) ;
+  ioObject.mProperty_mAppTargetList.plusPlusAssignOperation (GGS_XCodeAppTargetList_2E_element::init_21__21__21__21__21__21__21__21__21__21__21__21__21__21_ (var_targetRef_7313, constinArgument_inTargetName, outArgument_outProductFileRef, constinArgument_inProductFileName, constinArgument_inSourceList, var_buildPhaseRef_7262, var_buildConfigurationListRef_7360, constinArgument_inBuildConfigurationSettingList, var_buildConfigurationRef_7423, constinArgument_inFrameworksFileRefList, var_frameworkBuildRef_7482, var_dependentTargets_7574, var_resourceBuildRef_7537, var_resourceFileBuildRefs_7784, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 195)) ;
 }
 
 

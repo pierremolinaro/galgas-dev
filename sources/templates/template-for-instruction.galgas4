@@ -96,7 +96,7 @@ syntax extension templateSyntax {
       let startLocation = @location.here
       $identifier$ (?let @lstring prefixString)
       error (prefixString.location.union (!startLocation)
-      : "useless prefix" fixit replace "")
+      : "useless prefix" fixit %replaceBy "")
     end
   }
 
@@ -230,13 +230,13 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
     : enumerationDescriptor.count.string + " variables are required here ("
     + self.mEnumeration.count + " provided)")
   else
-    for (mEnumeratedType mEnumerationName) in enumerationDescriptor,
+    for entry in enumerationDescriptor,
         (mValue) in self.mEnumeration do
       if mValue.string != "" then // Empty string for joker
         !?doVariableMap.insertKey (
           mValue,
-          !mEnumeratedType,
-          !enumeratorCppName +".current_" + mEnumerationName.identifierRepresentation + " (HERE)"
+          !entry.mEnumeratedType,
+          !enumeratorCppName +".current_" + entry.mEnumerationName.identifierRepresentation + " (HERE)"
         )
       end
     end

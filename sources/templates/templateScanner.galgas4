@@ -1,8 +1,8 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  Template SLR grammar
+//  GALGAS template scanner definition
 //
-//  Copyright (C) 2008, ..., 2008 Pierre Molinaro.
+//  Copyright (C) 2008, ..., 2022 Pierre Molinaro.
 //
 //  MIT License
 //
@@ -23,11 +23,15 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-indexing grammar templateGrammar "SLR" {
-  syntax templateSyntax
+template lexique galgasTemplateScanner : galgasScanner3 {
 
-   <template_parser_start_symbol>
-    !@templateInstructionListAST outResultingInstructionList
+  template "%" ... "%"
+
+  %templateReplacement "\\%" -> "%"
+
+  %templateReplacement "\\n" -> "\n"
+
+  %templateReplacement "\\\\" -> "\\"
 }
 
 //--------------------------------------------------------------------------------------------------

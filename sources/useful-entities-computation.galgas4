@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 graph @usefulEntitiesGraph (@lstringlist) {
-  insert addNode error message "the '%K' entity is already declared at %L"
+  %insertSetter addNode %errorMessage "the '%K' entity is already declared at %L"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ graph @usefulEntitiesGraph (@lstringlist) {
 map @uselessEntityLocationMap {
   public let @string mUnusedEntityName
   public let @location mLocation
-  insert insertKey error message "--- %K INTERNAL ERROR ---"
+  %insertSetter insertKey %errorMessage "--- %K INTERNAL ERROR ---"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ map @uselessEntityLocationMap {
 proc checkUsefulEntities (?let @usefulEntitiesGraph inUsefulEntitiesGraph,
                         ?let @lstringlist inRootEntities,
                         ?let @string unused inProductDirectory ) {
-  if [option galgas_cli_options.checkEntityUsefulness value], @uint.errorCount == 0 then
+  if option galgas_cli_options [checkEntityUsefulness.value], @uint.errorCount == 0 then
   //--- Undefined nodes
     let undefinedNodeList = inUsefulEntitiesGraph.undefinedNodeKeyList
     if undefinedNodeList.count > 0 then
@@ -59,14 +59,14 @@ proc checkUsefulEntities (?let @usefulEntitiesGraph inUsefulEntitiesGraph,
         let l = inUsefulEntitiesGraph.locationForKey (key)
         if l == .nowhere then
           warning .nowhere : "unused entity, '" + key
-            + "' (due to option --" + [option galgas_cli_options.checkEntityUsefulness string] + ")"
+            + "' (due to option --" + option galgas_cli_options[checkEntityUsefulness.string] + ")"
         elsif not uselessEntityLocationMap.hasKey (!l.startLocationString) then
           !?uselessEntityLocationMap.insertKey (!l.startLocationString.nowhere, !key, !l)
         end
       end
       for uselessEntity in uselessEntityLocationMap do
         warning uselessEntity.mLocation : "unused '" + uselessEntity.mUnusedEntityName + "' entity, due to option --"
-         + [option galgas_cli_options.checkEntityUsefulness string] + ")"
+         + option galgas_cli_options[checkEntityUsefulness.string] + ")"
       end
     end
   end

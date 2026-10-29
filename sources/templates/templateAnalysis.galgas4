@@ -28,8 +28,8 @@
 map @templateVariableMap {
   public let @unifiedTypeMapEntry mType
   public let @string mCppName
-  search searchKey error message "the '%K' variable is not declared"
-  insert insertKey error message "the '%K' variable is already declared in %L"
+  %searchMethod searchKey %errorMessage "the '%K' variable is not declared"
+  %insertSetter insertKey %errorMessage "the '%K' variable is already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -109,7 +109,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
         ?let actualGetterNameString
       )
       if actualGetterNameString != "" then
-        error (self.mGetterName : "obsolete func" fixit replace actualGetterName)
+        error (self.mGetterName : "obsolete func" fixit %replaceBy actualGetterName)
       end
     else
       var @uint matchingReaderCount = 0
@@ -118,8 +118,8 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
         hasCompilerArgument = true
         returnedType = @unifiedTypeMapEntry.null
         kind = @methodKind. definedAsMember
-        for (typeEntry name 3*) in receiverType.definition.currentTypedPropertyList do
-          let @getterMap aMap = typeEntry.definition.getterMap
+        for property in receiverType.definition.currentTypedPropertyList do
+          let @getterMap aMap = property.typeEntry.definition.getterMap
           if let entry = aMap [self.mGetterName.string] then
             matchingReaderCount += 1
             getterFormalArgumentTypeList = entry.mArgumentTypeList
@@ -129,7 +129,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
             if entry.mGetterNameThatObsoletesInvokationName != "" then
               actualGetterName = entry.mGetterNameThatObsoletesInvokationName
             end
-            fieldList ++= @(name.string)
+            fieldList ++= @(property.name.string)
           end
         end
         if matchingReaderCount == 0 then
@@ -156,7 +156,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
         error (self.mGetterName
         : "the '@"+ receiverTypeName + "' type does not define the '" + self.mGetterName + "' func"
         spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
-        fixit replace getterMap.keyList)
+        fixit %replaceBy getterMap.keyList)
       end
     end
   //--- Analysis arguments
@@ -166,24 +166,23 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
       + self.mExpressionList.count.string + " parameter(s)" spoil outExpression)
     else
       var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
-      for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList,
-          (mFormalSelector mFormalArgumentType 2*) in getterFormalArgumentTypeList do
-        if mFormalSelector.string != mActualSelector.string then
-          let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-          error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
+      for actual in self.mExpressionList, formal in getterFormalArgumentTypeList do
+        if formal.mFormalSelector.string != actual.mActualSelector.string then
+          let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
+          error (actual.mActualSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
         end
-        mExpression.templateExpressionAnalysis
-          (!inUsefulnessCallerEntityName,
+        actual.mExpression.templateExpressionAnalysis (
+          inUsefulnessCallerEntityName,
           !?ioUsefulEntitiesGraph,
           !inAnalysisContext,
           !?ioTypeMap,
           ?@semanticExpressionForGeneration exp
         )
-        checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType, !exp.mResultType, !mEndOfExpressionLocation, !?exp)
+        checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, !exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
         constructorEffectiveParameterList ++= @(!exp)
       end
       if actualGetterName != self.mGetterName.string then
-        error (self.mGetterName : "obsolete func" fixit replace actualGetterName)
+        error (self.mGetterName : "obsolete func" fixit %replaceBy actualGetterName)
       end
       outExpression = @getterCallExpressionForGeneration (
         !returnedType,
@@ -230,7 +229,7 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
       error (self.mClassFunctionName
       : "the '@"+ self.mTypeName + "' type does not define the '" + self.mClassFunctionName + "' constructor"
       spoil classFuncFormalArgumentTypeList, hasCompilerArgument, returnedType
-      fixit replace classFunctionMap.keyList)
+      fixit %replaceBy classFunctionMap.keyList)
     end
   end
 //--- Analysis arguments
@@ -244,20 +243,20 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
     spoil classFunctionEffectiveParameterList)
   else
     classFunctionEffectiveParameterList = @semanticExpressionListForGeneration ()
-    for (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList, (mFormalSelector mFormalArgumentType 2*) in classFuncFormalArgumentTypeList do
-      !?requiredTypes.append (!mFormalArgumentType)
-      if mFormalSelector.string != mActualSelector.string then
-        let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-        error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
+    for actual in self.mExpressionList, formal in classFuncFormalArgumentTypeList do
+      !?requiredTypes.append (formal.mFormalArgumentType)
+      if formal.mFormalSelector.string != actual.mActualSelector.string then
+        let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
+        error (actual.mActualSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
       end
-      mExpression.templateExpressionAnalysis
+      actual.mExpression.templateExpressionAnalysis
         (!inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
         !inAnalysisContext,
         !?ioTypeMap,
         ?@semanticExpressionForGeneration exp
       )
-      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType, !exp.mResultType, !mEndOfExpressionLocation, !?exp)
+      checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, !exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
       classFunctionEffectiveParameterList ++= @(!exp)
     end
   end
@@ -686,19 +685,19 @@ override proc @templateOptionAccessAST.templateExpressionAnalysis
     end
   else
     var @stringset s = @()
-    for (lkey * * * *) in boolOptionMap do
-      s ++= lkey
+    for entry in boolOptionMap do
+      s ++= entry.lkey
     end
-    for (lkey * * * *) in uintOptionMap do
-      s ++= lkey
+    for entry in uintOptionMap do
+      s ++= entry.lkey
     end
-    for (lkey * * * *) in stringOptionMap do
-      s ++= lkey
+    for entry in stringOptionMap do
+      s ++= entry.lkey
     end
     error (self.mOptionName
     : "the '" + self.mOptionComponentName + "' option component does not define the '" + self.mOptionName + "' option"
     spoil outExpression
-    fixit replace s)
+    fixit %replaceBy s)
   end
 }
 
@@ -738,23 +737,23 @@ override proc @templateFunctionCallAST.templateExpressionAnalysis
     spoil outExpression)
   else
     var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
-    for (mFormalSelector mFormalArgumentType 2*) in functionSignature, (mActualSelector mExpression mEndOfExpressionLocation) in self.mExpressionList do
-      mExpression.templateExpressionAnalysis
+    for formal in functionSignature, actual in self.mExpressionList do
+      actual.mExpression.templateExpressionAnalysis
         (!inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
         !inAnalysisContext,
         !?ioTypeMap,
         ?@semanticExpressionForGeneration expression
       )
-      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType, !expression.mResultType, !mEndOfExpressionLocation, !?expression)
+      checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, !expression.mResultType, actual.mEndOfExpressionLocation, !?expression)
       semanticExpressionListForGeneration ++= @(!expression)
-      if mFormalSelector.string != mActualSelector.string then
-        let @string s = "!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end
-        error (mActualSelector : "the selector should be '" + s + "'" fixit replace s)
+      if formal.mFormalSelector.string != actual.mActualSelector.string then
+        let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
+        error (actual.mActualSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
       end
     end
     outExpression = @functionCallExpressionForGeneration (
-      !resultType,
+      resultType,
       self.mFunctionName.location,
       self.mFunctionName.string,
       semanticExpressionListForGeneration)
@@ -1593,9 +1592,9 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
   var templateInstructionIfBranchList = @templateInstructionIfBranchListForGeneration ()
-  for (mExpression mInstructionList) in self.mTemplateInstructionIfBranchList do
-    mExpression.templateExpressionAnalysis
-      (!inUsefulnessCallerEntityName,
+  for templateInstructionIfBranch in self.mTemplateInstructionIfBranchList do
+    templateInstructionIfBranch.mExpression.templateExpressionAnalysis (
+      inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inAnalysisContext,
       !?ioTypeMap,
@@ -1610,7 +1609,7 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
       !?ioUsefulEntitiesGraph,
       !inAnalysisContext,
       !?ioTypeMap,
-      !mInstructionList,
+      templateInstructionIfBranch.mInstructionList,
       !?instructionList
     )
     templateInstructionIfBranchList ++= @(!expression, !instructionList)

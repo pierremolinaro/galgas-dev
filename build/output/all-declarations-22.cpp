@@ -20,9 +20,9 @@ void extensionSetter_addICNS_5F_file (GGS_XcodeProjectDescriptor & ioObject,
                                       COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFileRef.drop () ; // Release 'out' argument
   {
-  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 32)) ;
+  extensionSetter_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 32)) ;
   }
-  ioObject.mProperty_mICNS_5F_fileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas3", 33)) ;
+  ioObject.mProperty_mICNS_5F_fileList.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (outArgument_outFileRef, constinArgument_inFileName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("XcodeProjectGeneration.galgas4", 33)) ;
 }
 
 
