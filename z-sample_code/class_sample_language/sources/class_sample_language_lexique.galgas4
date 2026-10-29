@@ -1,0 +1,44 @@
+lexique class_sample_language_lexique {
+
+@string tokenString
+
+style keywordsStyle -> "Keywords:"
+
+$identifier$ ! tokenString %errorMessage "an identifier"
+
+list keyWordList style keywordsStyle %errorMessage "the '%K' keyword" {
+ "class"
+}
+
+rule 'a'->'z' | 'A'->'Z' {
+  repeat
+    enterCharacterIntoString (!?tokenString !* )
+  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+  end
+  send %searchString tokenString in keyWordList default $identifier$
+}
+
+// ---------------------------- Delimitors ---------------------------------------
+style delimitersStyle -> "Delimiters:"
+
+list delimitorsList style delimitersStyle %errorMessage "the '%K' delimitor"{
+  ";",      ":"  }
+
+rule list delimitorsList
+
+// ----------------------------------- Comment ----------------------------
+rule '#' {
+  repeat
+  while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :
+  end
+}
+
+// -------------------- separators -----------------------------------------
+rule '\u0001' -> ' ' {
+}
+
+// -------------------- Indexing
+indexing classDefinition : "Class definition"
+indexing superClassReference : "Superclass reference"
+
+}

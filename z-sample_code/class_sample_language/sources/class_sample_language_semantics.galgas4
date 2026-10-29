@@ -1,0 +1,51 @@
+
+
+abstract class @declarationAST {
+}
+
+list @declarationListAST {
+  public let @declarationAST mDeclaration
+}
+
+final class @classWithoutSuperClassAST : @declarationAST {
+  public let @lstring mClassName
+}
+
+final class @classWithSuperClassAST : @declarationAST {
+  public let @lstring mClassName
+  public let @lstring mSuperClassName
+}
+
+
+graph @inheritanceGraph (@declarationListAST) {
+  %insertSetter addNode %errorMessage "the '%K' class is already declared"
+}
+
+abstract proc @declarationAST.buildGraph
+  (?!@inheritanceGraph ioGraph)
+
+override proc @classWithoutSuperClassAST.buildGraph
+  (?!@inheritanceGraph ioGraph ) {
+  !?ioGraph.addNode (!self.mClassName, !self)
+}
+
+override proc @classWithSuperClassAST.buildGraph
+  (?!@inheritanceGraph ioGraph ) {
+  !?ioGraph.addNode (!self.mClassName, !self)
+  !?ioGraph.addEdge (!from: self.mClassName, !to: self.mSuperClassName)
+}
+
+
+abstract proc @declarationAST.generateCode
+  (?!@string ioCodeToGenerate)
+
+override proc @classWithoutSuperClassAST.generateCode
+  (?!@string ioCodeToGenerate ) {
+  ioCodeToGenerate += "class " + self.mClassName + " { } ;\n"
+}
+
+override proc @classWithSuperClassAST.generateCode
+  (?!@string ioCodeToGenerate ) {
+  ioCodeToGenerate += "class " + self.mClassName + " : " + self.mSuperClassName + " { } ;\n"
+}
+
