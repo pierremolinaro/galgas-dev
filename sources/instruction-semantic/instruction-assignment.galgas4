@@ -164,9 +164,9 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -255,9 +255,9 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -334,7 +334,7 @@ class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
   override proc generateInstruction (?!@stringset ioInclusionSet,
                                        ?!@uint ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
-                                       ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                       let @bool unused inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
     self.mSourceExpression.generateExpression
       (!?ioGeneratedCode,

@@ -163,7 +163,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <method_declaration> (?let @lstring inTypeName,
+  rule <method_declaration> (let @lstring inTypeName,
                              ?!@galgasDeclarationAST ioDeclarations) {
     $override$
     $func$
@@ -241,10 +241,10 @@ override func @overridingExtensionGetterAST.keyRepresentation () -> @string {
 
 override proc @overridingExtensionGetterAST.enterDeclarationInSemanticContext (
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+  let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+  let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+  let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+  let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
                                 ?!@unifiedTypeMap unused ioTypeMap,
   ?!@semanticContext unused ioSemanticContext) {
 }
@@ -256,11 +256,11 @@ override proc @overridingExtensionGetterAST.enterDeclarationInSemanticContext (
 override proc @overridingExtensionGetterAST.semanticAnalysis (
   ?!@lstringlist unused ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @string unused inProductDirectory,
-  ?let @semanticContext inSemanticContext,
+  let @string unused inProductDirectory,
+  let @semanticContext inSemanticContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  ?let @predefinedTypes inPredefinedTypes,
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
+  let @predefinedTypes inPredefinedTypes,
+  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
 //--- Useful entities graph
   let nameForUsefulness = getterNameForUsefulEntitiesGraph (self.mTypeName, self.mOverridingExtensionGetterName)
   !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
@@ -335,20 +335,19 @@ override proc @overridingExtensionGetterAST.semanticAnalysis (
     )
   end
 //---
-  ioSemanticDeclarationListForGeneration ++= @(
+  ioSemanticDeclarationListForGeneration ++= @overrideExtensionGetterForGeneration (
     !infoMessage: "override extension func " + self.mOverridingExtensionGetterName,
-    @overrideExtensionGetterForGeneration (
-      !generateHeader: false,
-      !implementationCppFileName: "func-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mOverridingExtensionGetterName.string.fileNameRepresentation,
-      selfType,
-      baseTypeName,
-      self.mOverridingExtensionGetterName.string,
-      returnType,
-      returnVariableCppName,
-      formalParameterListForGeneration,
-      selfType.definition.allTypedPropertyList,
-      semanticInstructionListForGeneration
-    ))
+    !generateHeader: false,
+    !implementationCppFileName: "func-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mOverridingExtensionGetterName.string.fileNameRepresentation,
+    selfType,
+    baseTypeName,
+    self.mOverridingExtensionGetterName.string,
+    returnType,
+    returnVariableCppName,
+    formalParameterListForGeneration,
+    selfType.definition.allTypedPropertyList,
+    semanticInstructionListForGeneration
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -398,7 +397,7 @@ override func @overrideExtensionGetterForGeneration.headerKind () ->@headerKind 
 //································································································
 
 override proc @overrideExtensionGetterForGeneration.appendSpecificImplementation (
-                                                              ?let @unifiedTypeMap unused inTypeMap,
+                                                              let @unifiedTypeMap unused inTypeMap,
                                                               ?!@stringset ioInclusionSet,
                                                               !@string outImplementation) {
   ioInclusionSet ++= "class-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation

@@ -188,7 +188,7 @@ override proc @comparisonExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?inferenceType: let @unifiedTypeMapEntry inInferenceType,
-  ?let @analysisContext inAnalysisContext,
+  let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outExpression

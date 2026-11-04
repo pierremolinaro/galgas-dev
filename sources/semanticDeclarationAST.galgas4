@@ -36,10 +36,10 @@ abstract class @semanticDeclarationAST {
 
   abstract proc enterDeclarationInSemanticContext (
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext unused ioSemanticContext)
 
@@ -48,11 +48,11 @@ abstract class @semanticDeclarationAST {
   abstract proc semanticAnalysis (
     ?!@lstringlist ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-    ?let @string inProductDirectory,
-    ?let @semanticContext unused inSemanticContext,
+    let @string inProductDirectory,
+    let @semanticContext unused inSemanticContext,
                                   ?!@unifiedTypeMap unused ioTypeMap,
-    ?let @predefinedTypes unused inPredefinedTypes,
-    ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration)
+    let @predefinedTypes unused inPredefinedTypes,
+    ?![@semanticDeclarationForGeneration] unused ioSemanticDeclarationListForGeneration)
 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -26,10 +26,10 @@
 
 proc generateInstructionList
   (?!@stringset ioInclusionSet,
-  ?let @semanticInstructionListForGeneration inInstructionList,
+  let @semanticInstructionListForGeneration inInstructionList,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
-  ?let @bool inGenerateSyntaxDirectedTranslationString,
+  let @bool inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode
 ) {
   !?ioGeneratedCode.incIndentation (2)
@@ -186,7 +186,7 @@ abstract proc @semanticInstructionForGeneration.generateInstruction
   (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
-  ?let @bool inGenerateSyntaxDirectedTranslationString,
+  let @bool inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode)
 
 //--------------------------------------------------------------------------------------------------
@@ -211,6 +211,7 @@ list @listOfSemanticInstructionListForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 abstract class @semanticDeclarationForGeneration {
+  public let @string infoMessage %initArgLabel
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -242,10 +243,10 @@ abstract func @semanticDeclarationForGeneration.headerKind () -> @headerKind
 
 //--------------------------------------------------------------------------------------------------
 
-list @semanticDeclarationListForGeneration {
-  public let @string infoMessage %initArgLabel
-  public let @semanticDeclarationForGeneration mDeclaration
-}
+//struct @semanticDeclarationForGeneration {
+//  public let @string infoMessage %initArgLabel
+//  public let @semanticDeclarationForGeneration mDeclaration
+//}
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -468,7 +469,7 @@ proc @semanticDeclarationForGeneration.appendDeclaration1
 //--------------------------------------------------------------------------------------------------
 
 proc @semanticDeclarationForGeneration.appendDeclaration2
-  (?let @string unused inOutputDirectory,
+  (let @string unused inOutputDirectory,
   ?!@stringset unused ioInclusionSet,
   !@string outHeader
 ) {
@@ -484,7 +485,7 @@ func @semanticDeclarationForGeneration.appendTypeGenericImplementation () ->@str
 //--------------------------------------------------------------------------------------------------
 
 proc @semanticDeclarationForGeneration.appendSpecificImplementation
-  (?let @unifiedTypeMap unused inUnifiedTypeMap,
+  (let @unifiedTypeMap unused inUnifiedTypeMap,
   ?!@stringset unused  ioInclusionSet,
   !@string outImplementation ) {
   outImplementation = ""
@@ -493,7 +494,7 @@ proc @semanticDeclarationForGeneration.appendSpecificImplementation
 //--------------------------------------------------------------------------------------------------
 
 proc @semanticDeclarationForGeneration.appendSpecificFiles
-  (?let @string unused inProductDirectory,
+  (let @string unused inProductDirectory,
   ?!@stringset unused ioAllProductFileSet,
   ?!swift: @stringlist unused ioSwiftAppProductFileList
 ) {

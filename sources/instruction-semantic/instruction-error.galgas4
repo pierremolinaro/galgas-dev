@@ -245,15 +245,15 @@ list @fixitListForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityName,
+proc analyzeErrorOrWarningInstruction (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @analysisContext inAnalysisContext,
+  let @analysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
-  ?let @semanticExpressionAST inLocationExpression,
-  ?let @semanticExpressionAST inMessageExpression,
-  ?let @fixitListAST inFixitListAST,
-  ?let @location inErrorLocation,
-  ?let @string inErrorOrWarningString,
+  let @semanticExpressionAST inLocationExpression,
+  let @semanticExpressionAST inMessageExpression,
+  let @fixitListAST inFixitListAST,
+  let @location inErrorLocation,
+  let @string inErrorOrWarningString,
   ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outLocationExpression,
   !@semanticExpressionForGeneration outMessageExpression,
@@ -362,9 +362,9 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
 //·································································································
 
 override proc @errorInstructionAST.analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -407,7 +407,7 @@ override proc @errorInstructionAST.analyzeSemanticInstruction (
 proc @fixitListForGeneration.generateFixIt (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+  let @bool unused inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode,
   !@string outFixItArrayCppName) {
   outFixItArrayCppName = "fixItArray" + ioTemporaryVariableIndex
@@ -463,7 +463,7 @@ final class @errorInstructionForGeneration : @semanticInstructionForGeneration {
 override proc @errorInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
-  ?let @bool inGenerateSyntaxDirectedTranslationString,
+  let @bool inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {
 //--- Receiver expression
   self.mReceiverExpression.generateExpression

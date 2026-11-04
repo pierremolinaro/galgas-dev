@@ -151,10 +151,10 @@ final class @structDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInSemanticContext
     (?!@equatableExtensionMap ioEquatableExtensionMap,
-    ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+    let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext ) {
   //--- Struct type index
@@ -272,11 +272,11 @@ final class @structDeclarationAST : @semanticDeclarationAST {
   override proc semanticAnalysis
               (?!@lstringlist ioUsefulnessRootEntities,
               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-              ?let @string unused inProductDirectory,
-              ?let @semanticContext inSemanticContext,
+              let @string unused inProductDirectory,
+              let @semanticContext inSemanticContext,
               ?!@unifiedTypeMap ioTypeMap,
-              ?let @predefinedTypes inPredefinedTypes,
-              ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
+              let @predefinedTypes inPredefinedTypes,
+              ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration ) {
     let structType = ioTypeMap.typeMapEntryForLKey (self.structTypeName)
     let structNameForUsefulness = typeNameForUsefulEntitiesGraph (self.structTypeName)
   //---
@@ -357,16 +357,14 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     )
   //---
     let constructorNeedsCompilerVar = not unusedVariableCppNameSet.hasKey (compilerCppName ())
-    ioSemanticDeclarationListForGeneration ++= @(
+    ioSemanticDeclarationListForGeneration ++= @structTypeForGeneration (
       !infoMessage: "struct " + self.structTypeName,
-      @structTypeForGeneration (
-        structType,
-        typedPropertyList,
-        constructorArgumentList,
-        initializationCode,
-        constructorNeedsCompilerVar,
-        structType.definition.features.contains (.generateSynthetizedInitializer)
-      )
+      structType,
+      typedPropertyList,
+      constructorArgumentList,
+      initializationCode,
+      constructorNeedsCompilerVar,
+      structType.definition.features.contains (.generateSynthetizedInitializer)
     )
   //--- Useful entities graph
     !?ioUsefulEntitiesGraph.addNode (structNameForUsefulness, structNameForUsefulness)
@@ -436,7 +434,7 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificImplementation
-    (?let @unifiedTypeMap unused inTypeMap,
+    (let @unifiedTypeMap unused inTypeMap,
     ?!@stringset ioInclusionSet,
     !@string outImplementation
   ) {

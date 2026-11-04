@@ -170,16 +170,16 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSyntaxInstruction (
-    ?let @lstring unused inUsefulnessCallerEntityName,
+    let @lstring unused inUsefulnessCallerEntityName,
     ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-    ?let @analysisContext inAnalysisContext,
+    let @analysisContext inAnalysisContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-    ?let @bool inHasTranslateFeature,
-    ?let @terminalMap inTerminalMap,
-    ?let @string inLexiqueName,
-    ?let @nonterminalMap unused inNonterminalMap,
-    ?let @string unused inComponentName,
-    ?let @stringset inIndexNameSet,
+    let @bool inHasTranslateFeature,
+    let @terminalMap inTerminalMap,
+    let @string inLexiqueName,
+    let @nonterminalMap unused inNonterminalMap,
+    let @string unused inComponentName,
+    let @stringset inIndexNameSet,
     ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
     ?!@localVarManager ioVariableMap,
     ?!@uint unused ioSelectMethodCount) {
@@ -303,7 +303,7 @@ final class @terminalCheckInstructionForGeneration : @syntaxInstructionForGenera
 //--------------------------------------------------------------------------------------------------
 
 override proc @terminalCheckInstructionForGeneration.appendSyntaxSignature (
-  ?let @string unused inPosfix,
+  let @string unused inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration) {
   ioInstructionListForGeneration ++= @(@terminalCheckInstructionForGeneration (
     self.mInstructionLocation,
@@ -349,7 +349,7 @@ override func @terminalCheckInstructionForGeneration.compareInstructionSyntaxSig
 override proc @terminalCheckInstructionForGeneration.generateInstruction (?!@stringset unused ioInclusionSet,
                                        ?!@uint unused ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
-                                       ?let @bool inGenerateSyntaxDirectedTranslationString,
+                                       let @bool inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
 //--- Get synthetized attributes
   for terminalCheckAssignement in self.mTerminalCheckAssignementList do

@@ -113,7 +113,7 @@ override proc @optionExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?inferenceType: let @unifiedTypeMapEntry unused inType,
-  ?let @analysisContext inAnalysisContext,
+  let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap unused ioTypeMap,
   ?!@localVarManager unused ioVariableMap,
   !@semanticExpressionForGeneration outExpression

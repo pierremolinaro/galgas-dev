@@ -102,7 +102,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <method_declaration> (?let @lstring inTypeName,
+  rule <method_declaration> (let @lstring inTypeName,
                              ?!@galgasDeclarationAST ioDeclarations) {
     $abstract$
     $func$
@@ -185,10 +185,10 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInSemanticContext (
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap unused ioTypeMap,
     ?!@semanticContext unused ioSemanticContext) {
   }
@@ -197,11 +197,11 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
 
   override proc semanticAnalysis (?!@lstringlist unused ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-    ?let @string unused inProductDirectory,
-    ?let @semanticContext unused inSemanticContext,
+    let @string unused inProductDirectory,
+    let @semanticContext unused inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-    ?let @predefinedTypes unused inPredefinedTypes,
-    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
+    let @predefinedTypes unused inPredefinedTypes,
+    ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
   //--- Self type
     let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
   //--- Check self type is an abstract class
@@ -226,16 +226,15 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
       )
     end
   //---
-    ioSemanticDeclarationListForGeneration ++= @(
+    ioSemanticDeclarationListForGeneration ++= @abstractExtensionGetterForGeneration (
       !infoMessage: "abstract extension func " + self.mAbstractExtensionGetterName,
-      @abstractExtensionGetterForGeneration (
-        !generateHeader: true,
-        !implementationCppFileName: "func-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionGetterName.string.fileNameRepresentation,
-        selfType,
-        self.mAbstractExtensionGetterName.string,
-        ioTypeMap.typeMapEntryForLKey (self.mAbstractExtensionGetterReturnedTypeName),
-        formalParameterListForGeneration
-      ))
+      !generateHeader: true,
+      !implementationCppFileName: "func-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionGetterName.string.fileNameRepresentation,
+      selfType,
+      self.mAbstractExtensionGetterName.string,
+      ioTypeMap.typeMapEntryForLKey (self.mAbstractExtensionGetterReturnedTypeName),
+      formalParameterListForGeneration
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -290,7 +289,7 @@ final class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHead
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
                                                 ?!@stringset ioInclusionSet,
                                                 !@string outImplementation) {
     ioInclusionSet ++= "func-"

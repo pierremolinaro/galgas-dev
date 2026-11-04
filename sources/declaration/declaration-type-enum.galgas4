@@ -287,10 +287,10 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInSemanticContext
         (?!@equatableExtensionMap ioEquatableExtensionMap,
-        ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-        ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-        ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-        ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+        let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+        let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+        let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+        let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
         ?!@unifiedTypeMap ioTypeMap,
         ?!@semanticContext ioSemanticContext ) {
   //---
@@ -438,11 +438,11 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
   override proc semanticAnalysis
                     (?!@lstringlist ioUsefulnessRootEntities,
                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                    ?let @string unused inProductDirectory,
-                    ?let @semanticContext unused inSemanticContext,
+                    let @string unused inProductDirectory,
+                    let @semanticContext unused inSemanticContext,
                     ?!@unifiedTypeMap ioTypeMap,
-                    ?let @predefinedTypes unused inPredefinedTypes,
-                    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
+                    let @predefinedTypes unused inPredefinedTypes,
+                    ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration ) {
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.enumTypeName)
     !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
@@ -495,13 +495,12 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
     end
   //---
     let selfType = ioTypeMap.typeMapEntryForLKey (self.enumTypeName)
-    ioSemanticDeclarationListForGeneration ++= @(
+    ioSemanticDeclarationListForGeneration ++= @enumTypeForGeneration (
       !infoMessage: "enum " + self.enumTypeName,
-      @enumTypeForGeneration (
-        selfType,
-        enumConstantListForGeneration,
-        associatedValuesTypes
-      ))
+      selfType,
+      enumConstantListForGeneration,
+      associatedValuesTypes
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -559,7 +558,7 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
                                                 ?!@stringset ioInclusionSet,
                                                 !@string outImplementation ) {
     for type in self.associatedValuesTypes do

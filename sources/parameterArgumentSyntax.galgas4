@@ -420,18 +420,18 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
             $let$
             formalParameterPassingMode = .argumentConstantIn
           end
-        or
-          $?$
-          selector = "".here
-          select
-            formalParameterPassingMode = .argumentConstantIn
-          or
-            $var$
-            formalParameterPassingMode = .argumentVarIn
-          or
-            $let$
-            formalParameterPassingMode = .argumentConstantIn
-          end
+//        or // §
+//          $?$
+//          selector = "".here
+//          select
+//            formalParameterPassingMode = .argumentConstantIn
+//          or
+//            $var$
+//            formalParameterPassingMode = .argumentVarIn
+//          or
+//            $let$
+//            formalParameterPassingMode = .argumentConstantIn
+//          end
         or
           $let$
           selector = "".here

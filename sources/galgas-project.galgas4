@@ -75,7 +75,7 @@ syntax galgas4ProjectSyntax (galgasScanner3) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <project_component_start_symbol> (?let @lstring inProjectSourceFilePath,
+  rule <project_component_start_symbol> (let @lstring inProjectSourceFilePath,
                                         !@galgas3ProjectComponentAST outProjectComponentAST) {
     <project_header> (
       ?let @lbigint majorVersion,

@@ -171,15 +171,15 @@ override func @lexicalFormalInputArgumentAST.generateSwiftCocoaRoutineArgument
 
 abstract proc @abstractLexicalRoutineActualArgumentAST.checkLexicalRoutineCallArgument (
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
-  ?@lexicalArgumentModeAST unused inLexicalRoutineFormalArgumentMode,
-  ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType)
+  @lexicalArgumentModeAST unused inLexicalRoutineFormalArgumentMode,
+  @lexicalTypeEnum unused inLexicalRoutineFormalArgumentType)
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @lexicalAttributeInputOutputArgumentAST.checkLexicalRoutineCallArgument (
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-  ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
-  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
+  @lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
+  @lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
 //--- Check attribute definition
   ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey
     (self.mAttributeName,
@@ -204,8 +204,8 @@ override proc @lexicalAttributeInputOutputArgumentAST.checkLexicalRoutineCallArg
 
 override proc @lexicalFormalInputArgumentAST.checkLexicalRoutineCallArgument (
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-  ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
-  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
+  @lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode,
+  @lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
 //--- Check attribute definition
   self.mRoutineOrFunctionFormalInputArgument.checkLexicalRoutineCallArgument
     (!?ioLexiqueAnalysisContext,

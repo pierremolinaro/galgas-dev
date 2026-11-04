@@ -33,9 +33,9 @@ final class @procCallInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc analyzeSemanticInstruction (?let @lstring inUsefulnessCallerEntityName,
+  override proc analyzeSemanticInstruction (let @lstring inUsefulnessCallerEntityName,
                                               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                              ?let @analysisContext inAnalysisContext,
+                                              let @analysisContext inAnalysisContext,
                                               ?!@unifiedTypeMap ioTypeMap,
                                               ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                                               ?!@localVarManager ioVariableMap) {
@@ -94,7 +94,7 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
   override proc generateInstruction (?!@stringset ioInclusionSet,
                                        ?!@uint ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
-                                       ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                       let @bool unused inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
     ioInclusionSet ++= "proc-" + self.routineMangledName.string.fileNameRepresentation
     ioGeneratedCode += "{\n"

@@ -87,10 +87,10 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInSemanticContext
     (?!@equatableExtensionMap ioEquatableExtensionMap,
-    ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+    let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext ) {
   //--- uint type index
@@ -295,11 +295,11 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   override proc semanticAnalysis
     (?!@lstringlist ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-    ?let @string unused inProductDirectory,
-    ?let @semanticContext unused inSemanticContext,
+    let @string unused inProductDirectory,
+    let @semanticContext unused inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-    ?let @predefinedTypes unused inPredefinedTypes,
-    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+    let @predefinedTypes unused inPredefinedTypes,
+    ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
   ) {
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.arrayTypeName)
@@ -323,12 +323,11 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     end
   //---
     let selfType = ioTypeMap.typeMapEntryForLKey (self.arrayTypeName)
-    ioSemanticDeclarationListForGeneration ++= @(
+    ioSemanticDeclarationListForGeneration ++= @arrayTypeForGeneration (
       !infoMessage: "array type " + self.arrayTypeName,
-      @arrayTypeForGeneration (
-        selfType,
-        ioTypeMap.typeMapEntryForLKey (self.elementTypeName)
-      ))
+      selfType,
+      ioTypeMap.typeMapEntryForLKey (self.elementTypeName)
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -373,7 +372,7 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation  (?let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation  (let @unifiedTypeMap unused inTypeMap,
                                           ?!@stringset ioInclusionSet,
                                           !@string outImplementation ) {
     self.elementType.addHeaderFileName (!?ioInclusionSet)

@@ -127,10 +127,10 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInSemanticContext
     (?!@equatableExtensionMap ioEquatableExtensionMap,
-    ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+    let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext ) {
   //--- string type Entry
@@ -503,11 +503,11 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
 
   override proc semanticAnalysis (?!@lstringlist ioUsefulnessRootEntities,
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                  ?let @string unused inProductDirectory,
-                                  ?let @semanticContext unused inSemanticContext,
+                                  let @string unused inProductDirectory,
+                                  let @semanticContext unused inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-                      ?let @predefinedTypes unused inPredefinedTypes,
-                      ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+                      let @predefinedTypes unused inPredefinedTypes,
+                      ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
                     ) {
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.mGraphTypeName)
@@ -549,14 +549,13 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       check_K_L_escapeCharacters (insertSetter.mInsertErrorMessage )
     end
   //---
-    ioSemanticDeclarationListForGeneration ++= @(
+    ioSemanticDeclarationListForGeneration ++= @graphDeclarationForGeneration (
       !infoMessage: "graph " + self.mGraphTypeName,
-      @graphDeclarationForGeneration (
-        graphTypeEntry,
-        associatedListTypeEntry,
-        associatedListElementTypeEntry,
-        self.mInsertModifierList
-      ))
+      graphTypeEntry,
+      associatedListTypeEntry,
+      associatedListElementTypeEntry,
+      self.mInsertModifierList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -602,7 +601,7 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
                                                ?!@stringset ioInclusionSet,
                                                !@string outImplementation ) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)

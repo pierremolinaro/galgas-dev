@@ -37,7 +37,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
                           (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                           ?inferenceType: let @unifiedTypeMapEntry unused inType,
-                          ?let @analysisContext inAnalysisContext,
+                          let @analysisContext inAnalysisContext,
                           ?!@unifiedTypeMap ioTypeMap,
                           ?!@localVarManager ioVariableMap,
                           !@semanticExpressionForGeneration outExpression ) {

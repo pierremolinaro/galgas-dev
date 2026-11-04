@@ -98,9 +98,9 @@ struct @analysisContext {
 
 //--------------------------------------------------------------------------------------------------
 
-proc checkAssignmentTypeWithImplicitGetterCall (?let @unifiedTypeMapEntry inTargetType,
-                                                ?let @unifiedTypeMapEntry inSourceType,
-                                                ?let @location inErrorLocation,
+proc checkAssignmentTypeWithImplicitGetterCall (let @unifiedTypeMapEntry inTargetType,
+                                                let @unifiedTypeMapEntry inSourceType,
+                                                let @location inErrorLocation,
                                                 ?!@semanticExpressionForGeneration ioExpression ) {
 //--- Target is optional ?
   let targetTypeDef = inTargetType.definition
@@ -242,8 +242,8 @@ proc checkAssignmentTypeWithImplicitGetterCall (?let @unifiedTypeMapEntry inTarg
 //--------------------------------------------------------------------------------------------------
 
 proc checkDiadicOperator (?operatorIsHandled: let @bool inOperandIsHandled,
-                          ?let @string inOperatorNameForErrorMessage,
-                          ?let @location inErrorLocation,
+                          let @string inOperatorNameForErrorMessage,
+                          let @location inErrorLocation,
                           ?!@semanticExpressionForGeneration ioLeftExpression,
                           ?!@semanticExpressionForGeneration ioRightExpression ) {
   let leftResultType  = ioLeftExpression.mResultType
@@ -411,7 +411,7 @@ abstract proc @semanticExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?inferenceType: let @unifiedTypeMapEntry inType,
-  ?let @analysisContext inAnalysisContext,
+  let @analysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outExpression)

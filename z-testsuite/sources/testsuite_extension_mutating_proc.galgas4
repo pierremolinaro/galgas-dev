@@ -11,19 +11,19 @@ proc testsuite_extension_mutating_proc () {
   println ("v = " + v + "")
 }
 
-mutating proc @uint.initialize (?let @uint inValue) {
+mutating proc @uint.initialize (let @uint inValue) {
   self = inValue
 }
 
-mutating proc @uint.autreInit (?let @uint inValue) {
+mutating proc @uint.autreInit (let @uint inValue) {
   !?self.initialize (inValue)
 }
 
-mutating proc @uint.init3 (?let @uint inValue) {
+mutating proc @uint.init3 (let @uint inValue) {
   myInitProc (?self, inValue)
 }
 
-proc myInitProc (!@uint outValue, ?let @uint inValue) {
+proc myInitProc (!@uint outValue, let @uint inValue) {
   outValue = inValue
 }
 

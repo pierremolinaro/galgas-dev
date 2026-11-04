@@ -45,9 +45,9 @@ struct @templateAnalysisContext {
 //--------------------------------------------------------------------------------------------------
 
 abstract proc @templateExpressionAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression)
 
@@ -67,9 +67,9 @@ final class @templateGetterCallInExpressionAST : @templateExpressionAST {
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -203,9 +203,9 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateClassFunctionAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -277,9 +277,9 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateFileWrapperTemplateCallAST.templateExpressionAnalysis
-  (?let @lstring unused inUsefulnessCallerEntityName,
+  (let @lstring unused inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext unused inAnalysisContext,
+  let @templateAnalysisContext unused inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -291,9 +291,9 @@ override proc @templateFileWrapperTemplateCallAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateAndOperationAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -334,9 +334,9 @@ override proc @templateAndOperationAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateOrOperationAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -377,9 +377,9 @@ override proc @templateOrOperationAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateXorOperationAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -420,9 +420,9 @@ override proc @templateXorOperationAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateTrueBoolAST.templateExpressionAnalysis
-  (?let @lstring unused inUsefulnessCallerEntityName,
+  (let @lstring unused inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -432,9 +432,9 @@ override proc @templateTrueBoolAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateFalseBoolAST.templateExpressionAnalysis
-  (?let @lstring unused inUsefulnessCallerEntityName,
+  (let @lstring unused inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -444,9 +444,9 @@ override proc @templateFalseBoolAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLiteralStringExpressionAST.templateExpressionAnalysis
-  (?let @lstring unused inUsefulnessCallerEntityName,
+  (let @lstring unused inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -460,9 +460,9 @@ override proc @templateLiteralStringExpressionAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLiteralUIntExpressionAST.templateExpressionAnalysis
-  (?let @lstring unused inUsefulnessCallerEntityName,
+  (let @lstring unused inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -476,9 +476,9 @@ override proc @templateLiteralUIntExpressionAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLiteralCharExpressionAST.templateExpressionAnalysis
-  (?let @lstring unused inUsefulnessCallerEntityName,
+  (let @lstring unused inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -491,9 +491,9 @@ override proc @templateLiteralCharExpressionAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLiteralDoubleExpressionAST.templateExpressionAnalysis
-  (?let @lstring unused inUsefulnessCallerEntityName,
+  (let @lstring unused inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression ) {
   outExpression = @literalDoubleExpressionForGeneration (
@@ -506,9 +506,9 @@ override proc @templateLiteralDoubleExpressionAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateNotOperatorAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -539,9 +539,9 @@ override proc @templateNotOperatorAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLogicalNegateAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -571,9 +571,9 @@ override proc @templateLogicalNegateAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateTestDynamicClassAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -617,9 +617,9 @@ override proc @templateTestDynamicClassAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateOptionAccessAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -706,9 +706,9 @@ override proc @templateOptionAccessAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateFunctionCallAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -765,9 +765,9 @@ override proc @templateFunctionCallAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateExtensionTemplateCallAST.templateExpressionAnalysis
-  (?let @lstring unused inUsefulnessCallerEntityName,
+  (let @lstring unused inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext unused inAnalysisContext,
+  let @templateAnalysisContext unused inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -781,9 +781,9 @@ override proc @templateExtensionTemplateCallAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateVarInExpressionAST.templateExpressionAnalysis
-  (?let @lstring unused inUsefulnessCallerEntityName,
+  (let @lstring unused inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -800,9 +800,9 @@ override proc @templateVarInExpressionAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateAddOperationAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -845,9 +845,9 @@ override proc @templateAddOperationAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateSubOperationAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -890,9 +890,9 @@ override proc @templateSubOperationAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateMultiplyOperationAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -935,9 +935,9 @@ override proc @templateMultiplyOperationAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateDivideOperationAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -980,9 +980,9 @@ override proc @templateDivideOperationAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateModuloOperationAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -1025,9 +1025,9 @@ override proc @templateModuloOperationAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateUnaryMinusOperationAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -1059,9 +1059,9 @@ override proc @templateUnaryMinusOperationAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @structFieldAccessTemplateExpressionAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -1095,9 +1095,9 @@ override proc @structFieldAccessTemplateExpressionAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateEqualTestAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -1138,9 +1138,9 @@ override proc @templateEqualTestAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateNonEqualTestAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -1181,9 +1181,9 @@ override proc @templateNonEqualTestAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateStrictInfTestAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -1224,9 +1224,9 @@ override proc @templateStrictInfTestAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInfOrEqualTestAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -1267,9 +1267,9 @@ override proc @templateInfOrEqualTestAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateStrictSupTestAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -1310,9 +1310,9 @@ override proc @templateStrictSupTestAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateSupOrEqualTestAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -1353,9 +1353,9 @@ override proc @templateSupOrEqualTestAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLeftShiftOperationAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -1401,9 +1401,9 @@ override proc @templateLeftShiftOperationAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateRightShiftOperationAST.templateExpressionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
@@ -1453,20 +1453,20 @@ override proc @templateRightShiftOperationAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 abstract proc @templateInstructionAST.templateInstructionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList)
 
 //--------------------------------------------------------------------------------------------------
 
 proc templateInstructionListAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
-  ?let @templateInstructionListAST inInstructionList,
+  let @templateInstructionListAST inInstructionList,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
   for (mInstruction) in inInstructionList do
@@ -1483,9 +1483,9 @@ proc templateInstructionListAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionStringAST.templateInstructionAnalysis
-  (?let @lstring unused inUsefulnessCallerEntityName,
+  (let @lstring unused inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext unused inAnalysisContext,
+  let @templateAnalysisContext unused inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
@@ -1495,9 +1495,9 @@ override proc @templateInstructionStringAST.templateInstructionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionExpressionAST.templateInstructionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
@@ -1517,9 +1517,9 @@ override proc @templateInstructionExpressionAST.templateInstructionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateBlockInstructionAST.templateInstructionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
@@ -1560,9 +1560,9 @@ override proc @templateBlockInstructionAST.templateInstructionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionGetColumnLocationAST.templateInstructionAnalysis
-  (?let @lstring unused inUsefulnessCallerEntityName,
+  (let @lstring unused inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext unused inAnalysisContext,
+  let @templateAnalysisContext unused inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
@@ -1572,9 +1572,9 @@ override proc @templateInstructionGetColumnLocationAST.templateInstructionAnalys
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionGotoColumnLocationAST.templateInstructionAnalysis
-  (?let @lstring unused inUsefulnessCallerEntityName,
+  (let @lstring unused inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext unused inAnalysisContext,
+  let @templateAnalysisContext unused inAnalysisContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
@@ -1585,9 +1585,9 @@ override proc @templateInstructionGotoColumnLocationAST.templateInstructionAnaly
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionIfAST.templateInstructionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {

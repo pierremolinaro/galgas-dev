@@ -48,10 +48,10 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInSemanticContext
     (?!@equatableExtensionMap ioEquatableExtensionMap,
-    ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+    let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext ) {
   //--- Getters
@@ -145,11 +145,11 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
   override proc semanticAnalysis
     (?!@lstringlist ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-    ?let @string unused inProductDirectory,
-    ?let @semanticContext unused inSemanticContext,
+    let @string unused inProductDirectory,
+    let @semanticContext unused inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-    ?let @predefinedTypes unused inPredefinedTypes,
-    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+    let @predefinedTypes unused inPredefinedTypes,
+    ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
   ) {
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.optionalTypeName)
@@ -164,9 +164,12 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
     let unwrappedType = ioTypeMap.typeMapEntryForLKey (self.unwrappedTypeName)
     let correspondingWeakTypeName = makeWeakTypeLName (unwrappedType.definition.typeName)
     let correspondingWeakTypeOrNull = ioTypeMap.typeMapEntryOrNullForLKey (correspondingWeakTypeName)
-    ioSemanticDeclarationListForGeneration ++= @(
+    ioSemanticDeclarationListForGeneration ++= @optionalTypeForGeneration (
       !infoMessage: "optional type " + self.optionalTypeName,
-      @optionalTypeForGeneration (optionalType, unwrappedType, correspondingWeakTypeOrNull))
+      optionalType,
+      unwrappedType,
+      correspondingWeakTypeOrNull
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

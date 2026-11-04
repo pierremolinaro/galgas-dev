@@ -131,9 +131,9 @@ override proc @logInstructionAST.enterInstructionInSemanticContext (?!@unifiedTy
 //--------------------------------------------------------------------------------------------------
 
 override proc @logInstructionAST.analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -170,7 +170,7 @@ final class @logInstructionForGeneration : @semanticInstructionForGeneration {
 override proc @logInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
                             ?!@uint ioTemporaryVariableIndex,
                             ?!@stringset ioUnusedVariableCppNameSet,
-                            ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+                            let @bool unused inGenerateSyntaxDirectedTranslationString,
                             ?!@string ioGeneratedCode) {
   self.mLogExpression.generateExpression
     (!?ioGeneratedCode,

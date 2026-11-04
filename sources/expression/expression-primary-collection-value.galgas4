@@ -69,7 +69,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_beginning_by_type> (?let @lstring inTypeName,
+  rule <primary_beginning_by_type> (let @lstring inTypeName,
                                    ?!@galgasDeclarationAST ioDeclarations,
                                    !@semanticExpressionAST outExpression ) {
     $[$
@@ -119,7 +119,7 @@ final class @collectionValueAST : @semanticExpressionAST {
         (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
         ?inferenceType: let @unifiedTypeMapEntry inType,
-        ?let @analysisContext inAnalysisContext,
+        let @analysisContext inAnalysisContext,
         ?!@unifiedTypeMap ioTypeMap,
         ?!@localVarManager ioVariableMap,
         !@semanticExpressionForGeneration outExpression ) {

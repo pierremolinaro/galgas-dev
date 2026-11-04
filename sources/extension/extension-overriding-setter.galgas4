@@ -145,7 +145,7 @@
 //  ?let @semanticContext inSemanticContext,
 //                                ?!@unifiedTypeMap ioTypeMap,
 //  ?let @predefinedTypes inPredefinedTypes,
-//  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
+//  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
 ////--- Useful entities graph
 //  let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName, !self.mOverridingExtensionSetterName)
 //  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)

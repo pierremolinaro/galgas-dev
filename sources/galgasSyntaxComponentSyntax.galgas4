@@ -333,7 +333,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <syntax_rule_label> (?!@galgasDeclarationAST ioDeclarations,
-                           ?let @lstring inLabelName ,?!@syntaxRuleLabelListAST ioLabelList ) {
+                           let @lstring inLabelName ,?!@syntaxRuleLabelListAST ioLabelList ) {
     <formal_parameter_list> (!?ioDeclarations, ?let mFormalParameters)
     let endOfArguments = @location.here
     ${$

@@ -129,7 +129,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <method_declaration> (?let @lstring inTypeName,
+  rule <method_declaration> (let @lstring inTypeName,
                              ?!@galgasDeclarationAST ioDeclarations) {
     $mutating$
     $proc$
@@ -206,10 +206,10 @@ override proc @extensionSetterAST.enterDeclarationInGraph (
 
 override proc @extensionSetterAST.enterDeclarationInSemanticContext (
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+  let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+  let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+  let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+  let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@semanticContext unused ioSemanticContext) {
 }
@@ -221,11 +221,11 @@ override proc @extensionSetterAST.enterDeclarationInSemanticContext (
 override proc @extensionSetterAST.semanticAnalysis (
   ?!@lstringlist unused ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @string unused inProductDirectory,
-  ?let @semanticContext inSemanticContext,
+  let @string unused inProductDirectory,
+  let @semanticContext inSemanticContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  ?let @predefinedTypes inPredefinedTypes,
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
+  let @predefinedTypes inPredefinedTypes,
+  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
 //--- Useful entities graph
   let nameForUsefulness = setterNameForUsefulEntitiesGraph (self.mTypeName, self.mExtensionSetterName)
   !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
@@ -266,17 +266,17 @@ override proc @extensionSetterAST.semanticAnalysis (
     ?let formalParameterListForGeneration
   )
 //---
-  ioSemanticDeclarationListForGeneration ++= @(
+  ioSemanticDeclarationListForGeneration ++= @extensionSetterForGeneration (
     !infoMessage:"extension mutating proc " + self.mExtensionSetterName,
-    @extensionSetterForGeneration (
-      !generateHeader: true,
-      !implementationCppFileName: "mutating proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.string.fileNameRepresentation,
-      selfType,
-      self.mExtensionSetterName.string,
-      implementedAsFunction,
-      formalParameterListForGeneration,
-      selfType.definition.allTypedPropertyList,
-      semanticInstructionListForGeneration))
+    !generateHeader: true,
+    !implementationCppFileName: "mutating proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.string.fileNameRepresentation,
+    selfType,
+    self.mExtensionSetterName.string,
+    implementedAsFunction,
+    formalParameterListForGeneration,
+    selfType.definition.allTypedPropertyList,
+    semanticInstructionListForGeneration
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -346,7 +346,7 @@ override proc @extensionSetterForGeneration.appendDeclaration1 (?!@stringset unu
 //································································································
 
 override proc @extensionSetterForGeneration.appendSpecificImplementation (
-  ?let @unifiedTypeMap unused inTypeMap,
+  let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation) {
   for entry in self.mExtensionSetterFormalParameterList do

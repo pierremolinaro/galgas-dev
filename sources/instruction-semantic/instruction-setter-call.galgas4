@@ -169,9 +169,9 @@ override proc @selfSetterCallInstructionAST.enterInstructionInSemanticContext (?
 //--------------------------------------------------------------------------------------------------
 
 override proc @setterCallInstructionAST.analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -282,9 +282,9 @@ override proc @setterCallInstructionAST.analyzeSemanticInstruction (
 //································································································*
 
 override proc @selfSetterCallInstructionAST.analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -357,7 +357,7 @@ final class @selfSetterCallInstructionForGeneration : @semanticInstructionForGen
 override proc @setterCallInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+  let @bool unused inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {
   ioGeneratedCode += "{\n"
   var receiverCppName = self.mReceiverCppName
@@ -425,7 +425,7 @@ override proc @setterCallInstructionForGeneration.generateInstruction (?!@string
 override proc @selfSetterCallInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+  let @bool unused inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {
   ioGeneratedCode += "{\n"
   !?ioUnusedVariableCppNameSet.removeKey (self.mSelfCppName)

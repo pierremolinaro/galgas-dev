@@ -147,7 +147,7 @@ enum @AccessControlAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  proc checkCompatibilityWithLet (?let @location inLocation) {
+  proc checkCompatibilityWithLet (let @location inLocation) {
     switch self
     case publicAccess :
     case protectedAccess :
@@ -200,8 +200,8 @@ enum @AccessControl {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  proc checkSetAccess (?let @selfAvailability inOptionalCurrentType,
-                       ?let @location inErrorLocation) {
+  proc checkSetAccess (let @selfAvailability inOptionalCurrentType,
+                       let @location inErrorLocation) {
     switch self
     case publicAccess :
     case protectedAccess (declaringType) :
@@ -265,8 +265,8 @@ enum @AccessControl {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  proc checkGetAccess (?let @selfAvailability inOptionalCurrentType,
-                       ?let @location inErrorLocation) {
+  proc checkGetAccess (let @selfAvailability inOptionalCurrentType,
+                       let @location inErrorLocation) {
     switch self
     case publicAccess :
     case protectedSetAccess (*) :

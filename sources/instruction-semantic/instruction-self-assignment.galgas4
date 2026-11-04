@@ -82,9 +82,9 @@ override proc @selfAssignmentInstructionAST.enterInstructionInSemanticContext (?
 //--------------------------------------------------------------------------------------------------
 
 override proc @selfAssignmentInstructionAST.analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {

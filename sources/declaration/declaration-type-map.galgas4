@@ -278,6 +278,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 }
 
+//--------------------------------------------------------------------------------------------------
 //   AST
 //--------------------------------------------------------------------------------------------------
 
@@ -341,7 +342,8 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       "lkey".nowhere,
       .publicAccess,
       !hasSelector: false,
-      !initialization: .none)
+      !initialization: .none
+    )
     for property in self.mPropertyList do
       structAttributeList ++= @(
         !mutability: .mutableProperty,
@@ -386,10 +388,10 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInSemanticContext
     (?!@equatableExtensionMap ioEquatableExtensionMap,
-    ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+    let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext
   ) {
@@ -746,11 +748,11 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
   override proc semanticAnalysis
     (?!@lstringlist ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-    ?let @string unused inProductDirectory,
-    ?let @semanticContext unused  inSemanticContext,
+    let @string unused inProductDirectory,
+    let @semanticContext unused  inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-    ?let @predefinedTypes unused inPredefinedTypes,
-    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+    let @predefinedTypes unused inPredefinedTypes,
+    ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
   ) {
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.mMapTypeName)
@@ -832,21 +834,20 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: elementTypeName)
     let optionalElementTypeEntry = ioTypeMap.typeMapEntryForLKey (optionalElementTypeName)
   //--- Enter map declaration
-    ioSemanticDeclarationListForGeneration ++= @(
+    ioSemanticDeclarationListForGeneration ++= @mapTypeForGeneration (
       !infoMessage: "map " + self.mMapTypeName,
-      @mapTypeForGeneration (
-        ioTypeMap.typeMapEntryForLKey (self.mMapTypeName),
-        elementTypeEntry,
-        self.mMapTypeName,
-        typedAttributeList,
-        self.mInsertSetterList,
-        self.mSearchMethodList,
-        self.mSearchSubscriptList,
-        self.mRemoveSetterList,
-        self.mReplaceSetterList,
-        hasInsertOrReplaceModifier,
-        optionalElementTypeEntry
-      ))
+      ioTypeMap.typeMapEntryForLKey (self.mMapTypeName),
+      elementTypeEntry,
+      self.mMapTypeName,
+      typedAttributeList,
+      self.mInsertSetterList,
+      self.mSearchMethodList,
+      self.mSearchSubscriptList,
+      self.mRemoveSetterList,
+      self.mReplaceSetterList,
+      hasInsertOrReplaceModifier,
+      optionalElementTypeEntry
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -905,7 +906,7 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
                                                ?!@stringset ioInclusionSet,
                                                !@string outImplementation ) {
     self.mElementTypeEntry.addHeaderFileName (!?ioInclusionSet)

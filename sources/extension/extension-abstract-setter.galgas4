@@ -122,7 +122,7 @@
 //    ?let @semanticContext unused inSemanticContext,
 //                                  ?!@unifiedTypeMap ioTypeMap,
 //    ?let @predefinedTypes unused inPredefinedTypes,
-//    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
+//    ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
 //  //--- Self type
 //    let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
 //  //--- Check self type is an abstract class

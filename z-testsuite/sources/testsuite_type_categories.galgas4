@@ -62,19 +62,19 @@ proc @lstring.op (!@string outResult) {
 }
 
 //----------- Extension setters
-mutating proc @lstring.appendInt (?let@uint inValue) {
+mutating proc @lstring.appendInt (let@uint inValue) {
   self.string += inValue.string
 }
 
-mutating proc @uintlist.appendSquare (?let@uint inValue) {
+mutating proc @uintlist.appendSquare (let@uint inValue) {
   !?self.append (inValue * inValue)
 }
 
-mutating proc @uint64list.prependSquare (?let@uint64 inValue) {
+mutating proc @uint64list.prependSquare (let@uint64 inValue) {
   !?self.insertAtIndex (inValue.square, 0)
 }
 
-mutating proc @string.concatList (?let@stringlist inList) {
+mutating proc @string.concatList (let@stringlist inList) {
   for (mValue) in inList do
     self += mValue
   end

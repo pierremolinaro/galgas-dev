@@ -175,9 +175,9 @@ list @CommaSeparatedExpressionList {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  proc analyzeSemanticExpressionList (?let @lstring inUsefulnessCallerEntityName,
+  proc analyzeSemanticExpressionList (let @lstring inUsefulnessCallerEntityName,
                                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                       ?let @analysisContext inAnalysisContext,
+                                       let @analysisContext inAnalysisContext,
                                        ?!@unifiedTypeMap ioTypeMap,
                                        ?!@localVarManager ioVariableMap,
                                        !@ifTestListForGeneration outTestListForGeneration) {

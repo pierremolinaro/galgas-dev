@@ -166,9 +166,9 @@ override proc @localVariableOrConstantDeclarationWithAssignmentAST.enterInstruct
 //--------------------------------------------------------------------------------------------------
 
 override proc @undefinedLocalConstantDeclarationAST.analyzeSemanticInstruction (
-                        ?let @lstring unused inUsefulnessCallerEntityName,
+                        let @lstring unused inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-                        ?let @analysisContext unused inAnalysisContext,
+                        let @analysisContext unused inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -191,9 +191,9 @@ override proc @undefinedLocalConstantDeclarationAST.analyzeSemanticInstruction (
 //·································································································
 
 override proc @localConstantDeclarationWithAssignmentAST.analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -227,9 +227,9 @@ override proc @localConstantDeclarationWithAssignmentAST.analyzeSemanticInstruct
 //·································································································
 
 override proc @localVariableOrConstantDeclarationWithAssignmentAST.analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -298,7 +298,7 @@ override proc @undefinedLocalConstantDeclarationForGeneration.generateInstructio
   ?!@stringset ioInclusionSet,
   ?!@uint unused ioTemporaryVariableIndex,
   ?!@stringset unused ioUnusedVariableCppNameSet,
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+  let @bool unused inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {
   self.mTargetType.addHeaderFileName (!?ioInclusionSet)
   ioGeneratedCode += "GGS_" + self.mTargetType.identifierRepresentation + " " + self.mCppVariableName + " ;\n"
@@ -310,7 +310,7 @@ override proc @localVariableOrConstantDeclarationWithSourceExpressionForGenerati
                                 ?!@stringset ioInclusionSet,
     								   ?!@uint ioTemporaryVariableIndex,
                        			?!@stringset ioUnusedVariableCppNameSet,
-                                ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                let @bool unused inGenerateSyntaxDirectedTranslationString,
                                 ?!@string ioGeneratedCode) {
   self.mTargetType.addHeaderFileName (!?ioInclusionSet)
   self.mSourceExpression.generateExpression

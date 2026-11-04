@@ -223,9 +223,9 @@ list @propertyInCollectionListAST {
   public let @bool hasSelector %initArgLabel
   public let @propertyInCollectionInitializationAST initialization %initArgLabel
 
-  proc buildPropertyInitializationCode (?let @lstring inTypeNameForUsefulness,
-                                          ?let @semanticContext inSemanticContext,
-                                          ?let @predefinedTypes inPredefinedTypes,
+  proc buildPropertyInitializationCode (let @lstring inTypeNameForUsefulness,
+                                          let @semanticContext inSemanticContext,
+                                          let @predefinedTypes inPredefinedTypes,
                                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                           ?!@unifiedTypeMap ioTypeMap,
                                           !@stringset outUnusedVariableCppNameSet,

@@ -202,10 +202,10 @@ syntax extension galgas4InstructionsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <grammar_instruction_core> (?!@galgasDeclarationAST ioDeclarations,
-                                   ?let @location inInstructionLocation,
-                                   ?let @actualParameterListAST actualParameterList,
-                                   ?let @lstring inGrammarComponentName,
-                                   ?let @lstring inLabelName,
+                                   let @location inInstructionLocation,
+                                   let @actualParameterListAST actualParameterList,
+                                   let @lstring inGrammarComponentName,
+                                   let @lstring inLabelName,
                                    !@semanticInstructionAST outInstruction) {
     $in$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
@@ -232,10 +232,10 @@ syntax extension galgas4InstructionsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <grammar_instruction_core> (?!@galgasDeclarationAST ioDeclarations,
-                                   ?let @location inInstructionLocation,
-                                   ?let @actualParameterListAST actualParameterList,
-                                   ?let @lstring inGrammarComponentName,
-                                   ?let @lstring inLabelName,
+                                   let @location inInstructionLocation,
+                                   let @actualParameterListAST actualParameterList,
+                                   let @lstring inGrammarComponentName,
+                                   let @lstring inLabelName,
                                    !@semanticInstructionAST outInstruction) {
     $on$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
@@ -293,9 +293,9 @@ syntax extension galgas4InstructionsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInFileInstructionAST.analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -370,9 +370,9 @@ override proc @grammarInFileInstructionAST.analyzeSemanticInstruction (
 //·································································································
 
 override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -482,7 +482,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
   override proc @grammarInstructionWithSourceFileForGeneration.generateInstruction (?!@stringset ioInclusionSet,
     ?!@uint ioTemporaryVariableIndex,
     ?!@stringset ioUnusedVariableCppNameSet,
-    ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+    let @bool unused inGenerateSyntaxDirectedTranslationString,
     ?!@string ioGeneratedCode) {
     ioInclusionSet ++= "grammar-" + self.mGrammarName.fileNameRepresentation
   //--- Source string
@@ -552,7 +552,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
   override proc @grammarInstructionWithSourceExpressionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
     ?!@uint ioTemporaryVariableIndex,
     ?!@stringset ioUnusedVariableCppNameSet,
-    ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+    let @bool unused inGenerateSyntaxDirectedTranslationString,
     ?!@string ioGeneratedCode) {
     ioInclusionSet ++= "grammar-" + self.mGrammarName.fileNameRepresentation
   //--- Source string

@@ -20,70 +20,6 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax galgas3OptionComponentSyntax (galgasScanner3) {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    $option$
-//    $identifier$ (?let @lstring optionComponentName)
-//    ${$
-//    var @commandLineOptionListAST options = @()
-//    repeat
-//    while
-//      <option_declaration_ggs3> (!?options)
-//    end
-//    $}$
-//    ioDeclarations.mDeclarationList ++= @(!@optionComponentDeclarationAST (
-//      !isPredefined: false,
-//      optionComponentName,
-//      options
-//    ))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <option_declaration_ggs3> (?!@commandLineOptionListAST ioCommandLineOptionList ) {
-//    $@type$ (?let @lstring mOptionTypeName)
-//    $identifier$ (?let @lstring mOptionInternalName)
-//    $:$
-//    $'char'$ (?let @lchar mOptionInvocationLetter)
-//    $,$
-//    $"string"$ (?let @lstring mOptionInvocationString)
-//    $->$
-//    $"string"$ (?let @lstring mOptionComment)
-//    var defaultValue = @lstring (!"", @location.here)
-//    let @optionDefaultValueEnumAST optionDefaultValueKind
-//    select
-//      optionDefaultValueKind = .noDefaultValue
-//    or
-//      $default$
-//      select
-//        $"string"$ (? defaultValue)
-//        optionDefaultValueKind = .stringDefaultValue
-//      or
-//        $literalInt$ (?let v)
-//        defaultValue = @(!v.bigint.string, v.location)
-//        optionDefaultValueKind = .unsignedDefaultValue
-//      end
-//    end
-//    ioCommandLineOptionList ++= @(
-//      !mOptionTypeName,
-//      !mOptionInternalName,
-//      !mOptionInvocationLetter,
-//      !mOptionInvocationString,
-//      !mOptionComment,
-//      !defaultValue,
-//      !optionDefaultValueKind)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-
 syntax galgas4OptionComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -92,10 +28,10 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
     $option$
     $identifier$ (?let @lstring optionComponentName)
     ${$
-    var @commandLineOptionListAST options = @()
+    var [@commandLineOptionAST] options = []
     repeat
     while
-      <option_declaration_ggs3> (!?options)
+      <option_declaration> (!?options)
     end
     $}$
     ioDeclarations.mDeclarationList ++= @(@optionComponentDeclarationAST (
@@ -107,7 +43,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <option_declaration_ggs3> (?!@commandLineOptionListAST ioCommandLineOptionList ) {
+  rule <option_declaration> (?![@commandLineOptionAST] ioCommandLineOptionList) {
     $@type$ (?let @lstring mOptionTypeName)
     $identifier$ (?let @lstring mOptionInternalName)
     $:$
@@ -119,16 +55,16 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
     var defaultValue = @lstring ("", @location.here)
     let @optionDefaultValueEnumAST optionDefaultValueKind
     select
-      optionDefaultValueKind = @optionDefaultValueEnumAST. noDefaultValue
+      optionDefaultValueKind = @optionDefaultValueEnumAST.noDefaultValue
     or
       $default$
       select
         $"string"$ (? defaultValue)
-        optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
+        optionDefaultValueKind = @optionDefaultValueEnumAST.stringDefaultValue
       or
         $literalInt$ (?let v)
         defaultValue = @lstring (v.bigint.string, v.location)
-        optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
+        optionDefaultValueKind = @optionDefaultValueEnumAST.unsignedDefaultValue
       end
     end
     ioCommandLineOptionList ++= @(
@@ -138,7 +74,8 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
       mOptionInvocationString,
       mOptionComment,
       defaultValue,
-      optionDefaultValueKind)
+      optionDefaultValueKind
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -156,7 +93,7 @@ enum @optionDefaultValueEnumAST %equatable {
 
 //--------------------------------------------------------------------------------------------------
 
-list @commandLineOptionListAST {
+struct @commandLineOptionAST {
   public let @lstring mOptionTypeName
   public let @lstring mOptionInternalName
   public let @lchar mOptionInvocationLetter
@@ -170,12 +107,12 @@ list @commandLineOptionListAST {
 
 final class @optionComponentDeclarationAST : @semanticDeclarationAST {
   public let @lstring mOptionComponentName
-  public let @commandLineOptionListAST mOptions
+  public let [@commandLineOptionAST] mOptions
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterDeclarationInGraph
-    (?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
+  override proc enterDeclarationInGraph (
+    ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
     ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
@@ -190,17 +127,17 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInSemanticContext (
              ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-             ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-             ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-             ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-             ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+             let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+             let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+             let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+             let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
              ?!@unifiedTypeMap unused ioTypeMap,
              ?!@semanticContext ioSemanticContext) {
     var @commandLineOptionMap boolOptionMap = @()
     var @commandLineOptionMap uintOptionMap = @()
     var @commandLineOptionMap stringOptionMap = @()
     var @commandLineOptionMap stringListOptionMap = @()
-    var optionNameSet = @stringset.emptySet
+    var optionNameSet = @stringset ()
     for anOption in self.mOptions do
       if optionNameSet.hasKey (anOption.mOptionInternalName.string) then
         error (anOption.mOptionInternalName
@@ -215,7 +152,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
           anOption.mOptionComment.string,
           "false"
         )
-        if anOption.mOptionDefaultValueKind != @optionDefaultValueEnumAST. noDefaultValue then
+        if anOption.mOptionDefaultValueKind != @optionDefaultValueEnumAST.noDefaultValue then
           error (anOption.mOptionDefaultValue
           : "an @bool option cannot have a default value (default value is always false)"
           )
@@ -228,7 +165,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
           anOption.mOptionComment.string,
           if anOption.mOptionDefaultValue.string == "" then "0" else anOption.mOptionDefaultValue.string end
         )
-        if anOption.mOptionDefaultValueKind == @optionDefaultValueEnumAST. stringDefaultValue then
+        if anOption.mOptionDefaultValueKind == @optionDefaultValueEnumAST.stringDefaultValue then
           error (anOption.mOptionDefaultValue
           :"an @uint option default value cannot be an @string value"
           )
@@ -241,7 +178,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
           anOption.mOptionComment.string,
           anOption.mOptionDefaultValue.string
         )
-        if anOption.mOptionDefaultValueKind == @optionDefaultValueEnumAST. unsignedDefaultValue then
+        if anOption.mOptionDefaultValueKind == @optionDefaultValueEnumAST.unsignedDefaultValue then
           error (anOption.mOptionDefaultValue
           :"an @string option default value cannot be an @uint value"
           )
@@ -261,7 +198,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         end
       else
         error (anOption.mOptionTypeName
-        : "only the @bool, @uint or @string types are allowed here"
+        : "only the @bool, @uint, @string or @stringlist types are allowed here"
         )
       end
       optionNameSet ++= anOption.mOptionInternalName.string
@@ -285,13 +222,13 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
                                   let @semanticContext inSemanticContext,
                                   ?!@unifiedTypeMap unused ioTypeMap,
                                   let @predefinedTypes unused inPredefinedTypes,
-                                  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
+                                  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
   //--- Useful entities graph
     let nameForUsefulness = optionNameForUsefulEntitiesGraph (self.mOptionComponentName)
     !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
   //---
-    inSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey
-      (self.mOptionComponentName,
+    inSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey (
+      self.mOptionComponentName,
       ?let @bool optionIsPredefined,
       ?let @commandLineOptionMap boolOptionMap,
       ?let @commandLineOptionMap uintOptionMap,
@@ -306,7 +243,8 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         anOption.mOptionChar,
         anOption.mOptionString,
         anOption.mComment,
-        anOption.mDefaultValue)
+        anOption.mDefaultValue
+      )
     end
     var @commandLineOptionSortedList uintOptionSortedList = @()
     for anOption in uintOptionMap do
@@ -315,7 +253,8 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         anOption.mOptionChar,
         anOption.mOptionString,
         anOption.mComment,
-        anOption.mDefaultValue)
+        anOption.mDefaultValue
+      )
     end
     var @commandLineOptionSortedList stringOptionSortedList = @()
     for anOption in stringOptionMap do
@@ -324,7 +263,8 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         anOption.mOptionChar,
         anOption.mOptionString,
         anOption.mComment,
-        anOption.mDefaultValue)
+        anOption.mDefaultValue
+      )
     end
     var @commandLineOptionSortedList stringListOptionSortedList = @()
     for anOption in stringListOptionMap do
@@ -333,21 +273,21 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         anOption.mOptionChar,
         anOption.mOptionString,
         anOption.mComment,
-        anOption.mDefaultValue)
+        anOption.mDefaultValue
+      )
     end
   //--- Enter filewrapper in generated list
-    ioSemanticDeclarationListForGeneration ++= @(
+    ioSemanticDeclarationListForGeneration ++= @optionComponentForGeneration (
       !infoMessage: "option " + self.mOptionComponentName,
-      @optionComponentForGeneration (
-        !generateHeader: true,
-        !implementationCppFileName: "option-" + self.mOptionComponentName.string.fileNameRepresentation,
-        optionIsPredefined,
-        self.mOptionComponentName.string,
-        boolOptionSortedList,
-        uintOptionSortedList,
-        stringOptionSortedList,
-        stringListOptionSortedList
-      ))
+      !generateHeader: true,
+      !implementationCppFileName: "option-" + self.mOptionComponentName.string.fileNameRepresentation,
+      optionIsPredefined,
+      self.mOptionComponentName.string,
+      boolOptionSortedList,
+      uintOptionSortedList,
+      stringOptionSortedList,
+      stringListOptionSortedList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -381,7 +321,7 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
-                                     !@string outHeader ) {
+                                    !@string outHeader) {
     if self.mIsPredefined then
       outHeader = ""
     else
@@ -397,11 +337,9 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation
-    (?let @unifiedTypeMap unused inTypeMap,
-    ?!@stringset ioInclusionSet,
-    !@string outImplementation
-  ) {
+  override proc appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
+                                              ?!@stringset ioInclusionSet,
+                                              !@string outImplementation) {
     if self.mIsPredefined then
       outImplementation = ""
     else
@@ -418,11 +356,9 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificFiles
-    (?let @string inProductDirectory,
-    ?!@stringset ioAllProductFileSet,
-    ?!swift: @stringlist ioSwiftAppProductFileList
-  ) {
+  override proc appendSpecificFiles (let @string inProductDirectory,
+                                     ?!@stringset ioAllProductFileSet,
+                                     ?!swift: @stringlist ioSwiftAppProductFileList) {
   //--- Generate Cocoa header
     if @uint.errorCount == 0 && not self.mIsPredefined then
     //--- Generate Swift Cocoa Implementation

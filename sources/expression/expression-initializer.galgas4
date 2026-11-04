@@ -80,7 +80,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <simple_type_followed_by_dot_type> (?let @lstring inTypeName,
+  rule <simple_type_followed_by_dot_type> (let @lstring inTypeName,
                                           ?!@galgasDeclarationAST ioDeclarations,
                                           !@semanticExpressionAST outExpression ) {
   //--- Type name
@@ -129,7 +129,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_beginning_by_type> (?let @lstring inTypeName,
+  rule <primary_beginning_by_type> (let @lstring inTypeName,
                                    ?!@galgasDeclarationAST ioDeclarations,
                                    !@semanticExpressionAST outExpression ) {
     $($
@@ -183,7 +183,7 @@ final class @initializerCallAST : @semanticExpressionAST {
             (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
             ?inferenceType: let @unifiedTypeMapEntry inType,
-            ?let @analysisContext inAnalysisContext,
+            let @analysisContext inAnalysisContext,
             ?!@unifiedTypeMap ioTypeMap,
             ?!@localVarManager ioVariableMap,
             !@semanticExpressionForGeneration outExpression ) {
@@ -219,15 +219,15 @@ final class @initializerCallAST : @semanticExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-private proc analyzeInitializerInvocation (?let @lstring inUsefulnessCallerEntityName,
+private proc analyzeInitializerInvocation (let @lstring inUsefulnessCallerEntityName,
                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                      ?let @unifiedTypeMapEntry inType,
-                      ?let @analysisContext inAnalysisContext,
+                      let @unifiedTypeMapEntry inType,
+                      let @analysisContext inAnalysisContext,
                       ?!@unifiedTypeMap ioTypeMap,
                       ?!@localVarManager ioVariableMap,
-                      ?let @lstring inTypeName,
-                      ?let @actualOutputArgumentList inInvocationArguments,
-                      ?let @location inEndOfExpressions,
+                      let @lstring inTypeName,
+                      let @actualOutputArgumentList inInvocationArguments,
+                      let @location inEndOfExpressions,
                       !@unifiedTypeMapEntry outInstanciedType,
                       !@lstring outInitializerName,
                       !@semanticExpressionListForGeneration outConstructorEffectiveParameterList ) {

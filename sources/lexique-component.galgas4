@@ -829,10 +829,10 @@ override proc @lexiqueComponentAST.enterDeclarationInGraph
 
 override proc @lexiqueComponentAST.enterDeclarationInSemanticContext
   (?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+  let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+  let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+  let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+  let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@semanticContext ioSemanticContext ) {
 //-------------------------------------- Build lexical attribute map
@@ -882,11 +882,11 @@ override proc @lexiqueComponentAST.enterDeclarationInSemanticContext
 override proc @lexiqueComponentAST.semanticAnalysis
                                       (?!@lstringlist unused ioUsefulnessRootEntities,
                                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                      ?let @string unused inProductDirectory,
-                                      ?let @semanticContext unused inSemanticContext,
+                                      let @string unused inProductDirectory,
+                                      let @semanticContext unused inSemanticContext,
                                       ?!@unifiedTypeMap unused ioTypeMap,
-                                      ?let @predefinedTypes unused inPredefinedTypes,
-                                      ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
+                                      let @predefinedTypes unused inPredefinedTypes,
+                                      ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration ) {
 //--- Useful entities graph
   let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (self.mLexiqueComponentName)
   !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
@@ -1055,17 +1055,16 @@ override proc @lexiqueComponentAST.semanticAnalysis
       self.mTemplateDelimitorListAST
     ]
   //---
-    ioSemanticDeclarationListForGeneration ++= @(
+    ioSemanticDeclarationListForGeneration ++= @lexiqueDeclarationForGeneration (
       !infoMessage: "",
-      @lexiqueDeclarationForGeneration (
-        !generateHeader: true,
-        !implementationCppFileName: "lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation,
-        self.mLexiqueComponentName.string,
-        "",
-        headerContents,
-        cppContents,
-        swiftUIImplementation
-      ))
+      !generateHeader: true,
+      !implementationCppFileName: "lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation,
+      self.mLexiqueComponentName.string,
+      "",
+      headerContents,
+      cppContents,
+      swiftUIImplementation
+    )
   end
 }
 

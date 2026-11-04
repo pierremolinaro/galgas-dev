@@ -123,7 +123,7 @@ override proc @ifExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   ?inferenceType: let @unifiedTypeMapEntry inType,
-  ?let @analysisContext inAnalysisContext,
+  let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outExpression

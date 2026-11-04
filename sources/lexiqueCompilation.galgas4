@@ -266,13 +266,13 @@ override proc @lexicalStringNotMatchAST.checkLexicalExpression
 
 abstract proc @lexicalRoutineOrFunctionFormalInputArgumentAST.checkLexicalFunctionCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
-  ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType)
+  @lexicalTypeEnum unused inLexicalRoutineFormalArgumentType)
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @lexicalAttributeInputArgumentAST.checkLexicalFunctionCallArgument
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
+  @lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
   ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey
     (self.mAttributeName,
@@ -293,7 +293,7 @@ override proc @lexicalAttributeInputArgumentAST.checkLexicalFunctionCallArgument
 
 override proc @lexicalCharacterInputArgumentAST.checkLexicalFunctionCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
-  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
+  @lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Type check
   if @lexicalTypeEnum. lexicalType_char != inLexicalRoutineFormalArgumentType then
     error (self.mCharacter:"type error, a literal character has @char"
@@ -308,7 +308,7 @@ override proc @lexicalCharacterInputArgumentAST.checkLexicalFunctionCallArgument
 
 override proc @lexicalUnsignedInputArgumentAST.checkLexicalFunctionCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
-  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
+  @lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Type check
   if @lexicalTypeEnum.lexicalType_uint != inLexicalRoutineFormalArgumentType then
     error (self.mUnsigned:"type error, a literal character has @uint"
@@ -323,7 +323,7 @@ override proc @lexicalUnsignedInputArgumentAST.checkLexicalFunctionCallArgument
 
 override proc @lexicalCurrentCharacterInputArgumentAST.checkLexicalFunctionCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
-  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
+  @lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Type check
   if @lexicalTypeEnum.lexicalType_char != inLexicalRoutineFormalArgumentType then
     error (self.mLocation:"type error, current character value has @char"
@@ -338,7 +338,7 @@ override proc @lexicalCurrentCharacterInputArgumentAST.checkLexicalFunctionCallA
 
 override proc @lexicalFunctionInputArgumentAST.checkLexicalFunctionCallArgument
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
+  @lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
   ioLexiqueAnalysisContext.mLexicalFunctionMap.searchKey
     (self.mFunctionName,
@@ -383,13 +383,13 @@ override proc @lexicalFunctionInputArgumentAST.checkLexicalFunctionCallArgument
 
 abstract proc @lexicalRoutineOrFunctionFormalInputArgumentAST.checkLexicalRoutineCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
-  ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType)
+  @lexicalTypeEnum unused inLexicalRoutineFormalArgumentType)
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @lexicalAttributeInputArgumentAST.checkLexicalRoutineCallArgument
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
+  @lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
   ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey
     (self.mAttributeName,
@@ -410,7 +410,7 @@ override proc @lexicalAttributeInputArgumentAST.checkLexicalRoutineCallArgument
 
 override proc @lexicalCharacterInputArgumentAST.checkLexicalRoutineCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
-  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
+  @lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Type check
   if @lexicalTypeEnum. lexicalType_char != inLexicalRoutineFormalArgumentType then
     error (self.mCharacter:"type error, a literal character has @char"
@@ -425,7 +425,7 @@ override proc @lexicalCharacterInputArgumentAST.checkLexicalRoutineCallArgument
 
 override proc @lexicalUnsignedInputArgumentAST.checkLexicalRoutineCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
-  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
+  @lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Type check
   if @lexicalTypeEnum. lexicalType_uint != inLexicalRoutineFormalArgumentType then
     error (self.mUnsigned:"type error, a literal unsigned value has @uint"
@@ -440,7 +440,7 @@ override proc @lexicalUnsignedInputArgumentAST.checkLexicalRoutineCallArgument
 
 override proc @lexicalCurrentCharacterInputArgumentAST.checkLexicalRoutineCallArgument
   (?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
-  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
+  @lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Type check
   if @lexicalTypeEnum. lexicalType_char != inLexicalRoutineFormalArgumentType then
     error (self.mLocation:"type error, current character value has @char"
@@ -455,7 +455,7 @@ override proc @lexicalCurrentCharacterInputArgumentAST.checkLexicalRoutineCallAr
 
 override proc @lexicalFunctionInputArgumentAST.checkLexicalRoutineCallArgument
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
+  @lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
   ioLexiqueAnalysisContext.mLexicalFunctionMap.searchKey
     (self.mFunctionName,

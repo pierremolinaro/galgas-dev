@@ -127,16 +127,16 @@ override proc @selectInstruction.transformInstructionForGrammarAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @selectInstruction.analyzeSyntaxInstruction
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @analysisContext inAnalysisContext,
+  let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  ?let @bool inHasTranslateFeature,
-  ?let @terminalMap inTerminalMap,
-  ?let @string inLexiqueName,
-  ?let @nonterminalMap inNonterminalMap,
-  ?let @string  inComponentName,
-  ?let @stringset inIndexNameSet,
+  let @bool inHasTranslateFeature,
+  let @terminalMap inTerminalMap,
+  let @string inLexiqueName,
+  let @nonterminalMap inNonterminalMap,
+  let @string  inComponentName,
+  let @stringset inIndexNameSet,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
   ?!@localVarManager ioVariableMap,
   ?!@uint ioSelectMethodCount ) {
@@ -191,7 +191,7 @@ final class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 override proc @selectInstructionForGeneration.appendSyntaxSignature
-  (?let @string inPosfix,
+  (let @string inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration ) {
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
   for entry in self.mListOfSemanticInstructionListForGeneration do
@@ -250,7 +250,7 @@ override func @selectInstructionForGeneration.compareInstructionSyntaxSignature
 override proc @selectInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
                                        ?!@uint ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
-                                       ?let @bool inGenerateSyntaxDirectedTranslationString,
+                                       let @bool inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
   !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
   ioGeneratedCode += "switch (select_" + self.mSyntaxComponentName.identifierRepresentation + "_"

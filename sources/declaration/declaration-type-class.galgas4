@@ -235,10 +235,10 @@ final class @classDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInSemanticContext (
     ?!@equatableExtensionMap ioEquatableExtensionMap,
-    ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+    let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext
   ) {
@@ -444,11 +444,11 @@ final class @classDeclarationAST : @semanticDeclarationAST {
 
   override proc semanticAnalysis (?!@lstringlist ioUsefulnessRootEntities,
                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                ?let @string unused inProductDirectory,
-                ?let @semanticContext inSemanticContext,
+                let @string unused inProductDirectory,
+                let @semanticContext inSemanticContext,
                 ?!@unifiedTypeMap ioTypeMap,
-                ?let @predefinedTypes inPredefinedTypes,
-                ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
+                let @predefinedTypes inPredefinedTypes,
+                ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration ) {
   //--- Useful entities graph
     let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mClassTypeName)
     !?ioUsefulEntitiesGraph.addNode (classTypeNameForUsefulness, classTypeNameForUsefulness)
@@ -538,22 +538,21 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     )
   //-----
     let constructorNeedsCompilerVar = not unusedVariableCppNameSet.hasKey (compilerCppName ())
-    ioSemanticDeclarationListForGeneration ++= @(
+    ioSemanticDeclarationListForGeneration ++= @classTypeForGeneration (
       !infoMessage: "class " + self.mClassTypeName,
-      @classTypeForGeneration (
-        selfType,
-        self.mIsAbstract,
-        superClassEntry,
-        allAttributeList,
-        typedAttributeList,
-        selfType.definition.generateHeaderInSeparateFile,
-        constructorNeedsCompilerVar,
-        initializationCode,
-        synthetizedInitialzerArgumentList,
-        synthetizedInheritedInitializerArgumentList,
-        selfType.definition.initializerMap,
-        self.clonable
-      ))
+      selfType,
+      self.mIsAbstract,
+      superClassEntry,
+      allAttributeList,
+      typedAttributeList,
+      selfType.definition.generateHeaderInSeparateFile,
+      constructorNeedsCompilerVar,
+      initializationCode,
+      synthetizedInitialzerArgumentList,
+      synthetizedInheritedInitializerArgumentList,
+      selfType.definition.initializerMap,
+      self.clonable
+    )
   //--- Add synthetized initializer ?
     if selfType.definition.features.contains (.generateSynthetizedInitializer) then
       let initializerForUsefulness = initializerNameForUsefulEntitiesGraph (
@@ -629,7 +628,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration2 (?let @string inOutputDirectory,
+  override proc appendDeclaration2 (let @string inOutputDirectory,
                                      ?!@stringset ioInclusionSet,
                                      !@string outHeader ) {
     for property in self.mCurrentTypedAttributeList do
@@ -696,7 +695,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
                                                ?!@stringset ioInclusionSet,
                                                !@string outImplementation ) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)

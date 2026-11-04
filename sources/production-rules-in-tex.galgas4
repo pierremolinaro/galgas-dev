@@ -68,11 +68,11 @@ private func escapeForTex (let @string inString) -> @string {
 //--------------------------------------------------------------------------------------------------
 
 proc emitProductionRulesInTexFile
-  (?let @string inProductDirectory,
-  ?let @string  inGrammarComponentName,
-  ?let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis,
-  ?let @syntaxComponentListForGrammarAnalysis inSyntaxComponentListForGrammarAnalysis,
-  ?let @lstring inStartSymbol
+  (let @string inProductDirectory,
+  let @string  inGrammarComponentName,
+  let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis,
+  let @syntaxComponentListForGrammarAnalysis inSyntaxComponentListForGrammarAnalysis,
+  let @lstring inStartSymbol
 ) {
 //--------------------------------------------------------- Print an tex file for grammar rule list
   let texDocumentFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".document.tex"
@@ -112,7 +112,7 @@ proc emitProductionRulesInTexFile
 //--------------------------------------------------------------------------------------------------
 
 proc @productionRuleListForGrammarAnalysis.@element.displayRule
-  (?let @string inSyntaxComponentName,
+  (let @string inSyntaxComponentName,
   ?!@string ioGeneratedCode
 ) {
   var @string currentNode = "P0start"
@@ -166,7 +166,7 @@ proc @productionRuleListForGrammarAnalysis.@element.displayRule
 //--------------------------------------------------------------------------------------------------
 
 proc @productionRuleListForGrammarAnalysis.@element.displayRuleVertically
-  (?let @string inSyntaxComponentName,
+  (let @string inSyntaxComponentName,
   ?!@string ioGeneratedCode
 ) {
   var @string currentNode = "P0start"

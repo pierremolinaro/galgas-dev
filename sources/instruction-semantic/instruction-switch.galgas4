@@ -234,9 +234,9 @@ final class @switchInstructionAST : @semanticInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc analyzeSemanticInstruction (?let @lstring inUsefulnessCallerEntityName,
+  override proc analyzeSemanticInstruction (let @lstring inUsefulnessCallerEntityName,
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                            ?let @analysisContext inAnalysisContext,
+                            let @analysisContext inAnalysisContext,
                             ?!@unifiedTypeMap ioTypeMap,
                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                             ?!@localVarManager ioVariableMap) {
@@ -408,7 +408,7 @@ final class @switchInstructionForGeneration : @semanticInstructionForGeneration 
   override proc generateInstruction (?!@stringset ioInclusionSet,
                                        ?!@uint ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
-                                       ?let @bool inGenerateSyntaxDirectedTranslationString,
+                                       let @bool inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
   //--- Switch expression
     self.mSwitchExpression.generateExpression

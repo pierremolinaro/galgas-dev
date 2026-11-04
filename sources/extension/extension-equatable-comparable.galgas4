@@ -76,7 +76,7 @@ syntax extension galgas4DeclarationsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 proc handleEquatableComparableExtension (?!@equatableExtensionMap ioEquatableExtensionMap,
-                                         ?let @lstring inTypeName,
+                                         let @lstring inTypeName,
                                          ?!@typeFeatures ioFeatures,
                                          ?acceptEquatable: let @bool inAcceptEquatable,
                                          ?acceptComparable: let @bool inAcceptComparable) {
@@ -181,10 +181,10 @@ final class @equatableExtensionAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInSemanticContext (
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap unused ioTypeMap,
     ?!@semanticContext unused ioSemanticContext) {
   }
@@ -194,11 +194,11 @@ final class @equatableExtensionAST : @semanticDeclarationAST {
   override proc semanticAnalysis (
                 ?!@lstringlist unused ioUsefulnessRootEntities,
                 ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-                ?let @string unused inProductDirectory,
-                ?let @semanticContext unused inSemanticContext,
+                let @string unused inProductDirectory,
+                let @semanticContext unused inSemanticContext,
                 ?!@unifiedTypeMap unused ioTypeMap,
-                ?let @predefinedTypes unused inPredefinedTypes,
-                ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration) {
+                let @predefinedTypes unused inPredefinedTypes,
+                ?![@semanticDeclarationForGeneration] unused ioSemanticDeclarationListForGeneration) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

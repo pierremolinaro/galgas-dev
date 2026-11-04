@@ -142,10 +142,10 @@ override func @boolsetDeclarationAST.keyRepresentation () -> @string {
 
 override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
   (?!@equatableExtensionMap ioEquatableExtensionMap,
-  ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+  let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+  let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+  let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+  let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
   ?!@unifiedTypeMap ioTypeMap,
   ?!@semanticContext ioSemanticContext ) {
 //--- Check unicity of slot names
@@ -259,11 +259,11 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
 override proc @boolsetDeclarationAST.semanticAnalysis
   (?!@lstringlist ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @string unused inProductDirectory,
-  ?let @semanticContext unused inSemanticContext,
+  let @string unused inProductDirectory,
+  let @semanticContext unused inSemanticContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  ?let @predefinedTypes unused inPredefinedTypes,
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  let @predefinedTypes unused inPredefinedTypes,
+  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
 ) {
 //--- Check flags count
   if self.mFlagList.count > 64 then
@@ -286,13 +286,12 @@ override proc @boolsetDeclarationAST.semanticAnalysis
     ioUsefulnessRootEntities ++= @(initializerNameForUsefulness)
   end
 //---
-  ioSemanticDeclarationListForGeneration ++= @(
+  ioSemanticDeclarationListForGeneration ++= @boolsetTypeForGeneration (
     !infoMessage: "boolset " + self.mBoolsetTypeName,
-    @boolsetTypeForGeneration (
-      ioTypeMap.typeMapEntryForLKey (self.mBoolsetTypeName),
-      self.mFlagList,
-      self.isEquatable
-    ))
+    ioTypeMap.typeMapEntryForLKey (self.mBoolsetTypeName),
+    self.mFlagList,
+    self.isEquatable
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -43,7 +43,7 @@ filewrapper projectCreationFileWrapper in "+generation-templates/project_creatio
 
 //--------------------------------------------------------------------------------------------------
 
-proc performProjectCreation (?let @string inProjectPath ) {
+proc performProjectCreation (let @string inProjectPath ) {
   let @string projectName = inProjectPath.lastPathComponent
   let s1 = filewrapper [projectCreationFileWrapper.PROJECT_project : projectName]
   s1.writeToFile (inProjectPath +"/+" +projectName +".galgas4project")
@@ -70,7 +70,7 @@ proc performProjectCreation (?let @string inProjectPath ) {
 
 //--------------------------------------------------------------------------------------------------
 
-proc projectCreation (?let @string inProjectPath ) {
+proc projectCreation (let @string inProjectPath ) {
   if inProjectPath.count > 0 then
     println ("*** PERFORM PROJECT CREATION (--create-project=" + inProjectPath +" option) ***")
   //--- First check the project name is correct (not empty, only letters, digits and '_')

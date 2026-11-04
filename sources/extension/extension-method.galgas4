@@ -113,7 +113,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <method_declaration> (?let @lstring inTypeName,
+  rule <method_declaration> (let @lstring inTypeName,
                              ?!@galgasDeclarationAST ioDeclarations) {
     $proc$
     $identifier$ (?let @lstring methodName) indexing (extensionMethodDefinition)
@@ -194,10 +194,10 @@ final class @extensionMethodAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInSemanticContext (
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap unused ioTypeMap,
     ?!@semanticContext unused ioSemanticContext) {
   }
@@ -206,11 +206,11 @@ final class @extensionMethodAST : @semanticDeclarationAST {
 
   override proc semanticAnalysis (?!@lstringlist unused ioUsefulnessRootEntities,
                                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                    ?let @string unused inProductDirectory,
-                                    ?let @semanticContext inSemanticContext,
+                                    let @string unused inProductDirectory,
+                                    let @semanticContext inSemanticContext,
                                     ?!@unifiedTypeMap ioTypeMap,
-                                    ?let @predefinedTypes inPredefinedTypes,
-                 ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
+                                    let @predefinedTypes inPredefinedTypes,
+                 ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
   //--- Useful entities graph
     let nameForUsefulness = methodNameForUsefulEntitiesGraph (self.mTypeName, self.mExtensionMethodName)
     !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
@@ -256,18 +256,17 @@ final class @extensionMethodAST : @semanticDeclarationAST {
       ?let formalParameterListForGeneration
     )
   //---
-    ioSemanticDeclarationListForGeneration ++= @(
+    ioSemanticDeclarationListForGeneration ++= @extensionMethodForGeneration (
       !infoMessage:"extension proc " + self.mExtensionMethodName,
-      @extensionMethodForGeneration (
-        !generateHeader: true,
-        !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionMethodName.string.fileNameRepresentation,
-        selfType,
-        self.mExtensionMethodName.string,
-        implementedAsFunction,
-        formalParameterListForGeneration,
-        selfType.definition.allTypedPropertyList,
-        semanticInstructionListForGeneration
-      ))
+      !generateHeader: true,
+      !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionMethodName.string.fileNameRepresentation,
+      selfType,
+      self.mExtensionMethodName.string,
+      implementedAsFunction,
+      formalParameterListForGeneration,
+      selfType.definition.allTypedPropertyList,
+      semanticInstructionListForGeneration
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -335,7 +334,7 @@ override proc @extensionMethodForGeneration.appendDeclaration1 (?!@stringset unu
 
 //································································································
 
-override proc @extensionMethodForGeneration.appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+override proc @extensionMethodForGeneration.appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
                                                     ?!@stringset ioInclusionSet,
                                                     !@string outImplementation) {
   if self.mImplementedAsFunction then

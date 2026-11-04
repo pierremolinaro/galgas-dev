@@ -55,7 +55,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc getClassFunctionMap (?!@unifiedTypeMap ioUnifiedTypeMap,
-                                      !@classFunctionMap outMap ) {
+                                     !@classFunctionMap outMap) {
     outMap = @()
     enterClassFunctionWithoutArgument (
       !?outMap,

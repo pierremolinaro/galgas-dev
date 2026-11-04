@@ -236,8 +236,13 @@ syntax extension galgas4DeclarationsSyntax {
           <type_definition> (!?ioDeclarations, ?let argumentTypeName)
           $identifier$ (?let argumentName)
           argumentTypeList ++= @(selector, argumentTypeName, argumentName)
+//        or // §
+//          $?$
+//          let selector = "".here
+//          <type_definition> (!?ioDeclarations, ?let argumentTypeName)
+//          $identifier$ (?let argumentName)
+//          argumentTypeList ++= @(selector, argumentTypeName, argumentName)
         or
-          $?$
           let selector = "".here
           <type_definition> (!?ioDeclarations, ?let argumentTypeName)
           $identifier$ (?let argumentName)
@@ -264,8 +269,13 @@ syntax extension galgas4DeclarationsSyntax {
       <type_definition> (!?ioDeclarations, ?let argumentTypeName)
       $identifier$ (?let @lstring argumentName)
       argumentTypeList ++= @(selector, argumentTypeName, argumentName)
+//    while // §
+//      $?$
+//      let selector = "".here
+//      <type_definition> (!?ioDeclarations, ?let argumentTypeName)
+//      $identifier$ (?let @lstring argumentName)
+//      argumentTypeList ++= @(selector, argumentTypeName, argumentName)
     while
-      $?$
       let selector = "".here
       <type_definition> (!?ioDeclarations, ?let argumentTypeName)
       $identifier$ (?let @lstring argumentName)
@@ -380,10 +390,10 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInSemanticContext
     (?!@equatableExtensionMap ioEquatableExtensionMap,
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext unused ioSemanticContext ) {
   //---
@@ -517,11 +527,11 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
 override proc @externTypeDeclarationAST.semanticAnalysis (
   ?!@lstringlist ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @string unused inProductDirectory,
-  ?let @semanticContext unused inSemanticContext,
+  let @string unused inProductDirectory,
+  let @semanticContext unused inSemanticContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  ?let @predefinedTypes unused inPredefinedTypes,
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  let @predefinedTypes unused inPredefinedTypes,
+  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
 ) {
 //--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.mExternTypeName)
@@ -539,14 +549,13 @@ override proc @externTypeDeclarationAST.semanticAnalysis (
     !?ioUsefulEntitiesGraph.addEdge (!from: initializerNameForUsefulness, !to: nameForUsefulness)
   end
 //---
-  ioSemanticDeclarationListForGeneration ++= @(
+  ioSemanticDeclarationListForGeneration ++= @externTypeDeclarationForGeneration (
     !infoMessage: "extern type " + self.mExternTypeName,
-    @externTypeDeclarationForGeneration (
-      ioTypeMap.typeMapEntryForLKey (self.mExternTypeName),
-      self.mExternTypeName.string,
-      self.mCppPreDeclarationCode,
-      self.mCppClassCode
-    ))
+    ioTypeMap.typeMapEntryForLKey (self.mExternTypeName),
+    self.mExternTypeName.string,
+    self.mCppPreDeclarationCode,
+    self.mCppClassCode
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

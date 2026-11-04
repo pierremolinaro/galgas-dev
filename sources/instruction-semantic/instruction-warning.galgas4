@@ -94,9 +94,9 @@ override proc @warningInstructionAST.enterInstructionInSemanticContext (?!@unifi
 //--------------------------------------------------------------------------------------------------
 
 override proc @warningInstructionAST.analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -141,7 +141,7 @@ final class @warningInstructionForGeneration : @semanticInstructionForGeneration
 override proc @warningInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
                                      ?!@uint ioTemporaryVariableIndex,
                                      ?!@stringset ioUnusedVariableCppNameSet,
-                                     ?let @bool inGenerateSyntaxDirectedTranslationString,
+                                     let @bool inGenerateSyntaxDirectedTranslationString,
                                      ?!@string ioGeneratedCode) {
 //--- Receiver expression
   self.mReceiverExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let receiverCppVarName)

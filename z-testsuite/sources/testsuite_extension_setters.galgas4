@@ -21,7 +21,7 @@ class @TestExtensionSetter : @abstractTestExtensionSetter {
   public var @string mString
 }
 
-proc @TestExtensionSetter.setter3 (?let @uint inArg) {
+proc @TestExtensionSetter.setter3 (let @uint inArg) {
   !?self.mString.appendSpacesUntilColumn (inArg)
 }
 
@@ -37,7 +37,7 @@ final class @overridingTestExtensionSetter : @abstractOverridingTestExtensionSet
 }
 
 
-proc @TestExtensionSetter.setter2 (?!@uint ioArg, ?let@string inS) {
+proc @TestExtensionSetter.setter2 (?!@uint ioArg, let@string inS) {
   self.setter1 (!?ioArg)
   self.mString += inS
 }

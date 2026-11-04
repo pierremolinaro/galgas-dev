@@ -176,11 +176,11 @@ proc enterBaseGetterWithArgument
 proc enterBaseGetterWith2Arguments
   (?!@getterMap ioGetterMap,
   ?!@unifiedTypeMap ioUnifiedTypeMap,
-  ?let @string inGetterName,
-  ?let @string inArgument1TypeName,
-  ?let @string inArgument1Name,
-  ?let @string inArgument2TypeName,
-  ?let @string inArgument2Name,
+  let @string inGetterName,
+  let @string inArgument1TypeName,
+  let @string inArgument1Name,
+  let @string inArgument2TypeName,
+  let @string inArgument2Name,
   ?returnedTypeName:let @string inReturnedTypeName,
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 ) {
@@ -269,8 +269,8 @@ proc enterBaseFinalGetterWithArgument
   (?!@getterMap ioGetterMap,
   ?!@unifiedTypeMap ioUnifiedTypeMap,
   ?getterName:let @string inGetterName,
-  ?let @string inArgument1TypeName,
-  ?let @string inArgument1Name,
+  let @string inArgument1TypeName,
+  let @string inArgument1Name,
   ?returnedTypeName:let @string inReturnedTypeName,
   ?hasCompilerArgument:let @bool inHasCompilerArgument
  ) {
@@ -329,10 +329,10 @@ proc enterBaseFinalGetterWith2Arguments
   (?!@getterMap ioGetterMap,
   ?!@unifiedTypeMap ioUnifiedTypeMap,
   ?getterName:let @string inGetterName,
-  ?let @string inArgument1TypeName,
-  ?let @string inArgument1Name,
-  ?let @string inArgument2TypeName,
-  ?let @string inArgument2Name,
+  let @string inArgument1TypeName,
+  let @string inArgument1Name,
+  let @string inArgument2TypeName,
+  let @string inArgument2Name,
   ?returnedTypeName:let @string inReturnedTypeName,
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 ) {
@@ -359,13 +359,13 @@ proc enterBaseFinalGetterWith2Arguments
 proc enterBaseFinalGetterWith3Arguments
   (?!@getterMap ioGetterMap,
   ?!@unifiedTypeMap ioUnifiedTypeMap,
-  ?let @string inGetterName,
-  ?let @string inArgument1TypeName,
-  ?let @string inArgument1Name,
-  ?let @string inArgument2TypeName,
-  ?let @string inArgument2Name,
-  ?let @string inArgument3TypeName,
-  ?let @string inArgument3Name,
+  let @string inGetterName,
+  let @string inArgument1TypeName,
+  let @string inArgument1Name,
+  let @string inArgument2TypeName,
+  let @string inArgument2Name,
+  let @string inArgument3TypeName,
+  let @string inArgument3Name,
   ?returnedTypeName:let @string inReturnedTypeName,
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 ) {

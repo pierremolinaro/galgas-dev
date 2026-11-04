@@ -42,7 +42,7 @@ map @unifiedTypeMap {
 
   //----------------------------------------------------------------------------------------------
 
-  mutating proc makeEntry (?let @lstring inLKey, !@unifiedTypeMapEntry outEntry) {
+  mutating proc makeEntry (let @lstring inLKey, !@unifiedTypeMapEntry outEntry) {
     if inLKey.string == "" then
       outEntry = .null
     elsif let node = self [inLKey] then
@@ -56,7 +56,7 @@ map @unifiedTypeMap {
 
   //----------------------------------------------------------------------------------------------
 
-  mutating proc makeEntryFromString (?let @string inKey, !@unifiedTypeMapEntry outEntry) {
+  mutating proc makeEntryFromString (let @string inKey, !@unifiedTypeMapEntry outEntry) {
     if inKey == "" then
       outEntry = .null
     elsif let node = self [inKey] then
@@ -94,7 +94,7 @@ map @unifiedTypeMap {
 
   //----------------------------------------------------------------------------------------------
 
-  mutating proc insertType (?let @lstring inTypeName, ?let @unifiedTypeDefinition inTypeDefinition) {
+  mutating proc insertType (let @lstring inTypeName, let @unifiedTypeDefinition inTypeDefinition) {
     if let node = self [inTypeName] then
       switch node.mElement.mDefinition
       case solved (*) :

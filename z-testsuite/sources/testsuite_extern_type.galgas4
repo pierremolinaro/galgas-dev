@@ -9,7 +9,7 @@ extern @complex {
   "  private : double mReal ;\n"
   "  private : double mImaginary ;\n"
 }{
-  init (?@double real, ?@double imaginary)
+  init (@double real, @double imaginary)
   func real -> @double
   func imaginary -> @double
 }

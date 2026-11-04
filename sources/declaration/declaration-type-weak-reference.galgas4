@@ -61,10 +61,10 @@ override proc @weakReferenceDeclarationAST.enterDeclarationInGraph
 
 override proc @weakReferenceDeclarationAST.enterDeclarationInSemanticContext
           (?!@equatableExtensionMap ioEquatableExtensionMap,
-          ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-          ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-          ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-          ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+          let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+          let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+          let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+          let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
           ?!@unifiedTypeMap ioTypeMap,
           ?!@semanticContext ioSemanticContext ) {
 //--- Handle super class
@@ -167,11 +167,11 @@ override proc @weakReferenceDeclarationAST.enterDeclarationInSemanticContext
 override proc @weakReferenceDeclarationAST.semanticAnalysis
   (?!@lstringlist unused ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @string unused inProductDirectory,
-  ?let @semanticContext unused inSemanticContext,
+  let @string unused inProductDirectory,
+  let @semanticContext unused inSemanticContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  ?let @predefinedTypes unused inPredefinedTypes,
-  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+  let @predefinedTypes unused inPredefinedTypes,
+  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
 ) {
 //--- Useful entities graph
   let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mWeakReferenceTypeName)
@@ -195,15 +195,14 @@ override proc @weakReferenceDeclarationAST.semanticAnalysis
   let @unifiedTypeMapEntry optionalClassTypeOrNull = ioTypeMap.typeMapEntryOrNullForLKey (
     makeOptionalTypeLName (!forTypeNamed: self.mClassTypeName)
   )
-  ioSemanticDeclarationListForGeneration ++= @(
+  ioSemanticDeclarationListForGeneration ++= @weakReferenceTypeForGeneration (
     !infoMessage: "weak reference " + self.mWeakReferenceTypeName,
-    @weakReferenceTypeForGeneration (
-      selfType,
-      referenceClassType,
-      superClassEntry,
-      selfType.definition.generateHeaderInSeparateFile,
-      optionalClassTypeOrNull
-    ))
+    selfType,
+    referenceClassType,
+    superClassEntry,
+    selfType.definition.generateHeaderInSeparateFile,
+    optionalClassTypeOrNull
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -261,7 +260,7 @@ override proc @weakReferenceTypeForGeneration.appendDeclaration1 (?!@stringset i
 //--------------------------------------------------------------------------------------------------
 
 override proc @weakReferenceTypeForGeneration.appendSpecificImplementation
-  (?let @unifiedTypeMap unused inTypeMap,
+  (let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation
 ) {

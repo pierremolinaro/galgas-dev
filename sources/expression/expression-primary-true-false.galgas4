@@ -94,7 +94,7 @@ override proc @trueExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
   ?inferenceType: let @unifiedTypeMapEntry unused inType,
-  ?let @analysisContext inAnalysisContext,
+  let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap unused ioTypeMap,
   ?!@localVarManager unused ioVariableMap,
   !@semanticExpressionForGeneration outExpression
@@ -115,7 +115,7 @@ override proc @falseExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
   ?inferenceType: let @unifiedTypeMapEntry unused inType,
-  ?let @analysisContext inAnalysisContext,
+  let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap unused ioTypeMap,
   ?!@localVarManager unused ioVariableMap,
   !@semanticExpressionForGeneration outExpression

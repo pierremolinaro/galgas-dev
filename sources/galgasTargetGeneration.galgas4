@@ -104,14 +104,14 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
 //--------------------------------------------------------------------------------------------------
 
 private proc generateGalgasCodeBlocksWindowsTarget
-  (?let @string inProjectDirectory,
+  (let @string inProjectDirectory,
   ?buildDirName: let @string inBuildDirectoryName,
-  ?let @string inProjectName,
-  ?let @stringlist inToolCppFileList,
+  let @string inProjectName,
+  let @stringlist inToolCppFileList,
   ?libpmPath: let @string inLIBPMpath,
-  ?let @stringlist inHandCodedSourceToolFileList,
-  ?let @string inHandCodedSourceDirectory,
-  ?let @bool inVerboseOption
+  let @stringlist inHandCodedSourceToolFileList,
+  let @string inHandCodedSourceDirectory,
+  let @bool inVerboseOption
 ) {
   let @string dir = inProjectDirectory + "/project-codeblocks-windows"
   dir.makeDirectory ()
@@ -132,14 +132,14 @@ private proc generateGalgasCodeBlocksWindowsTarget
 //--------------------------------------------------------------------------------------------------
 
 private proc generateGalgasCodeBlocksLinuxI686Target
-  (?let @string inProjectDirectory,
+  (let @string inProjectDirectory,
   ?buildDirName: let @string inBuildDirectoryName,
-  ?let @string inProjectName,
-  ?let @stringlist inToolCppFileList,
-  ?let @string inLIBPMpath,
-  ?let @stringlist inHandCodedSourceToolFileList,
-  ?let @string inHandCodedSourceDirectory,
-  ?let @bool inVerboseOption
+  let @string inProjectName,
+  let @stringlist inToolCppFileList,
+  let @string inLIBPMpath,
+  let @stringlist inHandCodedSourceToolFileList,
+  let @string inHandCodedSourceDirectory,
+  let @bool inVerboseOption
  ) {
   let @string dir = inProjectDirectory + "/project-codeblocks-linux32"
   dir.makeDirectory ()
@@ -160,14 +160,14 @@ private proc generateGalgasCodeBlocksLinuxI686Target
 //--------------------------------------------------------------------------------------------------
 
 private proc generateGalgasCodeBlocksLinuxX86_64Target
-  (?let @string inProjectDirectory,
+  (let @string inProjectDirectory,
   ?buildDirName: let @string inBuildDirectoryName,
-  ?let @string inProjectName,
-  ?let @stringlist inToolCppFileList,
-  ?let @string inLIBPMpath,
-  ?let @stringlist inHandCodedSourceToolFileList,
-  ?let @string inHandCodedSourceDirectory,
-  ?let @bool inVerboseOption
+  let @string inProjectName,
+  let @stringlist inToolCppFileList,
+  let @string inLIBPMpath,
+  let @stringlist inHandCodedSourceToolFileList,
+  let @string inHandCodedSourceDirectory,
+  let @bool inVerboseOption
 ) {
   let @string dir = inProjectDirectory + "/project-codeblocks-linux64"
   dir.makeDirectory ()
@@ -188,9 +188,9 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target
 //--------------------------------------------------------------------------------------------------
 
 private proc generateMakefileMinGWOnMacOSXTarget
-  (?let @string inProjectDirectory,
+  (let @string inProjectDirectory,
   ?buildDirName: let @string inBuildDirectoryName,
-  ?let @string inProjectName ) {
+  let @string inProjectName ) {
   let @string dir = inProjectDirectory + "/makefile-win32-on-macosx"
   dir.makeDirectory ()
   let s1 = filewrapper [targetGalgas3GenerationFileWrapper.build_win32_on_mac : inProjectName, inBuildDirectoryName]
@@ -212,9 +212,9 @@ private proc generateMakefileMinGWOnMacOSXTarget
 //--------------------------------------------------------------------------------------------------
 
 private proc generateMakefileUnixTarget
-  (?let @string inProjectDirectory,
+  (let @string inProjectDirectory,
   ?buildDirName: let @string inBuildDirectoryName,
-  ?let @string inProjectName ) {
+  let @string inProjectName ) {
   let @string dir = inProjectDirectory + "/makefile-unix"
   dir.makeDirectory ()
   let s1 = filewrapper [targetGalgas3GenerationFileWrapper.build_unix : inProjectName, inBuildDirectoryName]
@@ -237,9 +237,9 @@ private proc generateMakefileUnixTarget
 //--------------------------------------------------------------------------------------------------
 
 private proc generateMakefileMacTarget
-  (?let @string inProjectDirectory,
+  (let @string inProjectDirectory,
   ?buildDirName: let @string inBuildDirectoryName,
-  ?let @string inProjectName ) {
+  let @string inProjectName ) {
   let @string dir = inProjectDirectory + "/makefile-macosx"
   dir.makeDirectory ()
   let s1 = filewrapper [targetGalgas3GenerationFileWrapper.build_macosx : inProjectName, inBuildDirectoryName]
@@ -260,9 +260,9 @@ private proc generateMakefileMacTarget
 //--------------------------------------------------------------------------------------------------
 
 private proc generateMakefileLinux32OnMacOSXTarget
-  (?let @string inProjectDirectory,
+  (let @string inProjectDirectory,
   ?buildDirName: let @string inBuildDirectoryName,
-  ?let @string inProjectName ) {
+  let @string inProjectName ) {
   let @string dir = inProjectDirectory + "/makefile-x86linux32-on-macosx"
   dir.makeDirectory ()
   let s1 = filewrapper [targetGalgas3GenerationFileWrapper.build_x86linux32_on_mac : inProjectName, inBuildDirectoryName]
@@ -283,9 +283,9 @@ private proc generateMakefileLinux32OnMacOSXTarget
 //--------------------------------------------------------------------------------------------------
 
 private proc generateMakefileLinux64OnMacOSXTarget
-  (?let @string inProjectDirectory,
+  (let @string inProjectDirectory,
   ?buildDirName: let @string inBuildDirectoryName,
-  ?let @string inProjectName ) {
+  let @string inProjectName ) {
   let @string dir = inProjectDirectory + "/makefile-x86linux64-on-macosx"
   dir.makeDirectory ()
   let s1 = filewrapper [targetGalgas3GenerationFileWrapper.build_x86linux64_on_mac : inProjectName, inBuildDirectoryName]
@@ -305,9 +305,9 @@ private proc generateMakefileLinux64OnMacOSXTarget
 
 //--------------------------------------------------------------------------------------------------
 
-private proc generateArm64LinuxMakefileTarget (?let @string inProjectDirectory,
+private proc generateArm64LinuxMakefileTarget (let @string inProjectDirectory,
                                               ?buildDirName: let @string inBuildDirectoryName,
-                                              ?let @string inProjectName ) {
+                                              let @string inProjectName ) {
   let @string dir = inProjectDirectory + "/makefile-arm64-linux-on-macosx"
   dir.makeDirectory ()
   let s1 = filewrapper [targetGalgas3GenerationFileWrapper.build_arm64_linux_on_mac : inProjectName, inBuildDirectoryName]
@@ -337,23 +337,23 @@ enum @xcodeProject %comparable {
 proc updateGalgasTargets
   (?absoluteBuildDir: let @string inAbsoluteBuildDirectory,
   ?buildDirName: let @string inBuildDirectoryName,
-  ?let @string inProjectSourceFilePath,
-  ?let @string inTargetName,
-  ?let @location unused inEndOfProjectSourceFile,
-  ?let @string inProjectVersionString,
-  ?let @projectQualifiedFeatureMap inProjectQualifiedFeatureMap,
-  ?let @lstringlist inTargetFeatureList,
-  ?let @bool inQuietOutputByDefault,
-  ?let @stringlist inToolCppFileList,
-  ?let @stringlist inToolHeaderFileList,
+  let @string inProjectSourceFilePath,
+  let @string inTargetName,
+  let @location unused inEndOfProjectSourceFile,
+  let @string inProjectVersionString,
+  let @projectQualifiedFeatureMap inProjectQualifiedFeatureMap,
+  let @lstringlist inTargetFeatureList,
+  let @bool inQuietOutputByDefault,
+  let @stringlist inToolCppFileList,
+  let @stringlist inToolHeaderFileList,
   ?appProductFileList: let @stringlist inAppProductFileList,
   ?swiftAppProductFileList: let @stringlist inSwiftAppProductFileList,
-  ?let @stringlist inHandCodedSourceToolFileList,
-  ?let @stringlist inFrameworkToolFileList,
-  ?let @string inHandCodedSourceDirectory,
-  ?let @stringset inHandledExtensionSet,
+  let @stringlist inHandCodedSourceToolFileList,
+  let @stringlist inFrameworkToolFileList,
+  let @string inHandCodedSourceDirectory,
+  let @stringset inHandledExtensionSet,
   ?!@stringset ioAllProductFileSet,
-  ?let @stringlist inHandCodedLinkAppFileList ) {
+  let @stringlist inHandCodedLinkAppFileList ) {
   ioAllProductFileSet += .setWithStringList (inSwiftAppProductFileList)
   let projectDirectory = inProjectSourceFilePath.deletingLastPathComponent
 //--- Update project header

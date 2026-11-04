@@ -115,9 +115,9 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSemanticInstruction  (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -190,7 +190,7 @@ final class @loopInstructionWithoutVariantForGeneration : @semanticInstructionFo
   override proc generateInstruction (?!@stringset ioInclusionSet,
                                        ?!@uint ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
-                                       ?let @bool inGenerateSyntaxDirectedTranslationString,
+                                       let @bool inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
     let loopVar = "loop_" + self.mInstructionLocation.startLocationIndex
     ioGeneratedCode += "bool " + loopVar + " = true ;\n"

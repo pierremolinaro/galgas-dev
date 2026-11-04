@@ -120,10 +120,10 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInSemanticContext (
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext) {
   //--- Build signature
@@ -149,11 +149,11 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
 
   override proc semanticAnalysis (?!@lstringlist ioUsefulnessRootEntities,
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                  ?let @string unused inProductDirectory,
-                                  ?let @semanticContext unused inSemanticContext,
+                                  let @string unused inProductDirectory,
+                                  let @semanticContext unused inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-                                  ?let @predefinedTypes unused inPredefinedTypes,
-                                  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
+                                  let @predefinedTypes unused inPredefinedTypes,
+                                  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
   //---
     var formalArgumentList = @formalParameterListForGeneration ()
     var routineSignature = @formalParameterSignature ()
@@ -181,14 +181,12 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
       ioUsefulnessRootEntities ++= @(nameForUsefulness)
     end
   //---
-    ioSemanticDeclarationListForGeneration ++= @(
+    ioSemanticDeclarationListForGeneration ++= @routinePrototypeDeclarationForGeneration (
       !infoMessage: "proc " + mangledName,
-      @routinePrototypeDeclarationForGeneration (
-        !generateHeader: true,
-        !implementationCppFileName: "proc-" + mangledName.string.fileNameRepresentation,
-        !routineMangledName: mangledName.string, // self.mRoutineName.string
-        formalArgumentList
-      )
+      !generateHeader: true,
+      !implementationCppFileName: "proc-" + mangledName.string.fileNameRepresentation,
+      !routineMangledName: mangledName.string,
+      formalArgumentList
     )
   }
 

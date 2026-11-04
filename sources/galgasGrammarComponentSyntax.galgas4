@@ -301,7 +301,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <grammar_start_symbol_label> (?!@galgasDeclarationAST ioDeclarations,
-                                    ?let @lstring inLabelName,
+                                    let @lstring inLabelName,
                                     ?!@nonTerminalLabelListAST ioLabelList ) {
     var @stringset argumentNameSet = @()
     var @formalParameterListAST formalParameterList = @()

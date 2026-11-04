@@ -92,9 +92,9 @@ override proc @typeMethodCallInstructionAST.enterInstructionInSemanticContext (?
 //--------------------------------------------------------------------------------------------------
 
 override proc @typeMethodCallInstructionAST.analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -139,7 +139,7 @@ final class @typeMethodCallInstructionForGeneration : @semanticInstructionForGen
 override proc @typeMethodCallInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
                                     ?!@uint ioTemporaryVariableIndex,
                                     ?!@stringset ioUnusedVariableCppNameSet,
-                                    ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                    let @bool unused inGenerateSyntaxDirectedTranslationString,
                                     ?!@string ioGeneratedCode) {
   ioGeneratedCode += "{\n"
 //--- Parameters

@@ -477,9 +477,9 @@ override proc @enumeratedCollectionVarInExpAST.enterInSemanticContext (?!@unifie
 //--------------------------------------------------------------------------------------------------
 
 abstract proc @abstractEnumeratedCollectionAST.analyzeEnumeration (
-  ?let @lstring inUsefulnessCallerEntityName,
+  let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @analysisContext inAnalysisContext,
+  let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@localVarManager ioVariableMap,
   ?!@localConstantList ioLocalConstantListForDoBranch,
@@ -489,9 +489,9 @@ abstract proc @abstractEnumeratedCollectionAST.analyzeEnumeration (
 //································································································*
 
 override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
-                                ?let @lstring inUsefulnessCallerEntityName,
+                                let @lstring inUsefulnessCallerEntityName,
                                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                ?let @analysisContext inAnalysisContext,
+                                let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@localVarManager ioVariableMap,
   ?!@localConstantList ioLocalConstantListForDoBranch,
@@ -563,9 +563,9 @@ override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
 
 //································································································*
 
-override proc @enumeratedCollectionVarInExpAST.analyzeEnumeration (?let @lstring inUsefulnessCallerEntityName,
+override proc @enumeratedCollectionVarInExpAST.analyzeEnumeration (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @analysisContext inAnalysisContext,
+  let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@localVarManager ioVariableMap,
   ?!@localConstantList ioLocalConstantListForDoBranch,
@@ -601,9 +601,9 @@ override proc @enumeratedCollectionVarInExpAST.analyzeEnumeration (?let @lstring
 //································································································*
 
 override proc @forInstructionAST.analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -782,7 +782,7 @@ final class @forInstructionForGeneration : @semanticInstructionForGeneration {
 override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
-  ?let @bool inGenerateSyntaxDirectedTranslationString,
+  let @bool inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {
   var @stringlist enumerationVarCppNameList = @()
   for entry in self.mEnumeratedObjectList do

@@ -139,9 +139,9 @@ override proc @loopInstructionWithVariantAST.enterInstructionInSemanticContext (
 //--------------------------------------------------------------------------------------------------
 
 override proc @loopInstructionWithVariantAST.analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
+                        let @lstring inUsefulnessCallerEntityName,
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
+                        let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -236,7 +236,7 @@ final class @loopInstructionWithVariantForGeneration : @semanticInstructionForGe
 override proc @loopInstructionWithVariantForGeneration.generateInstruction (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
-  ?let @bool inGenerateSyntaxDirectedTranslationString,
+  let @bool inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {
 //--- Variant expression
   self.mVariantExpression.generateExpression

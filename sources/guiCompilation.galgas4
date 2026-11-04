@@ -408,8 +408,8 @@ map @optionComponentMapForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 proc compileAllGuiComponentFromASTGalgas3
-  (?let @galgasGUIComponentListAST inGuiComponentListAST,
-  ?let @semanticContext inSemanticContext,
+  (let @galgasGUIComponentListAST inGuiComponentListAST,
+  let @semanticContext inSemanticContext,
   !@optionComponentMapForGeneration outOptionComponentMapForGeneration ) {
   outOptionComponentMapForGeneration = @()
   for guiAST in inGuiComponentListAST do
@@ -423,8 +423,8 @@ proc compileAllGuiComponentFromASTGalgas3
 
 //--------------------------------------------------------------------------------------------------
 
-private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@element inGUIComponentAST,
-                                          ?let @semanticContext inSemanticContext,
+private proc guiComponentSemanticAnalysis (let @galgasGUIComponentListAST.@element inGUIComponentAST,
+                                          let @semanticContext inSemanticContext,
                                           ?!@optionComponentMapForGeneration ioOptionComponentMapForGeneration ) {
   if inGUIComponentAST.mGUIComponentName.string != "cocoa" then
     error (inGUIComponentAST.mGUIComponentName : "the gui name should be 'cocoa'")
@@ -551,9 +551,9 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-proc generateAllGuiComponentsGalgas3 (?let @optionComponentMapForGeneration inOptionComponentMapForGeneration,
-                                      ?let @string inOutputDirectory,
-                                      ?let @bool inQuietOutputByDefault,
+proc generateAllGuiComponentsGalgas3 (let @optionComponentMapForGeneration inOptionComponentMapForGeneration,
+                                      let @string inOutputDirectory,
+                                      let @bool inQuietOutputByDefault,
                                       ?!swift: @stringlist ioSwiftAllProductFileList ) {
   for anOption in inOptionComponentMapForGeneration do
 //  for (lkey guiComponentContext) in inOptionComponentMapForGeneration do

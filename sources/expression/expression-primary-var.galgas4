@@ -65,7 +65,7 @@ final class @varInExpressionAST : @semanticExpressionAST {
         (?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName,
         ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
         ?inferenceType: let @unifiedTypeMapEntry unused inType,
-        ?let @analysisContext unused inAnalysisContext,
+        let @analysisContext unused inAnalysisContext,
         ?!@unifiedTypeMap unused ioTypeMap,
         ?!@localVarManager ioVariableMap,
         !@semanticExpressionForGeneration outExpression ) {

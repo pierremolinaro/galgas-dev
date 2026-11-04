@@ -94,7 +94,7 @@ proc enterModifierWith2InputArguments (?!@setterMap ioSetterMap,
 //--------------------------------------------------------------------------------------------------
 
 proc enterModifierWithoutArgument (?!@setterMap ioSetterMap,
-                                   ?let @string inSetterName,
+                                   let @string inSetterName,
                                    ?compilerArg:let @bool inHasCompilerArgument) {
   !?ioSetterMap.insertOrReplace
     (@lstring (inSetterName, @location.here),

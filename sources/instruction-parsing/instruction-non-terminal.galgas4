@@ -101,16 +101,16 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc analyzeSyntaxInstruction (?let @lstring inUsefulnessCallerEntityName,
+  override proc analyzeSyntaxInstruction (let @lstring inUsefulnessCallerEntityName,
                                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                           ?let @analysisContext inAnalysisContext,
+                                           let @analysisContext inAnalysisContext,
                                            ?!@unifiedTypeMap ioTypeMap,
-                                            ?let @bool inHasTranslateFeature,
-                                            ?let @terminalMap unused inTerminalMap,
-                                            ?let @string unused inLexiqueName,
-                                            ?let @nonterminalMap inNonterminalMap,
-                                            ?let @string unused inComponentName,
-                                            ?let @stringset unused inIndexNameSet,
+                                            let @bool inHasTranslateFeature,
+                                            let @terminalMap unused inTerminalMap,
+                                            let @string unused inLexiqueName,
+                                            let @nonterminalMap inNonterminalMap,
+                                            let @string unused inComponentName,
+                                            let @stringset unused inIndexNameSet,
                                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                                             ?!@localVarManager ioVariableMap,
                                             ?!@uint unused ioSelectMethodCount ) {
@@ -167,7 +167,7 @@ final class @nonterminalInstructionForGeneration : @syntaxInstructionForGenerati
 //--------------------------------------------------------------------------------------------------
 
 override proc @nonterminalInstructionForGeneration.appendSyntaxSignature
-  (?let @string inPosfix,
+  (let @string inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 ) {
   ioInstructionListForGeneration ++= @(@nonterminalInstructionForGeneration (
@@ -213,7 +213,7 @@ override func @nonterminalInstructionForGeneration.compareInstructionSyntaxSigna
 override proc @nonterminalInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
                             ?!@uint ioTemporaryVariableIndex,
                             ?!@stringset ioUnusedVariableCppNameSet,
-                            ?let @bool inGenerateSyntaxDirectedTranslationString,
+                            let @bool inGenerateSyntaxDirectedTranslationString,
                             ?!@string ioGeneratedCode) {
 //--- Parameters
   var parameterCppNameList = @stringlist ()

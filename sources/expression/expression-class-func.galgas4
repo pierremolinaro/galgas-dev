@@ -95,8 +95,8 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary_beginning_by_type_dot_name> (?let @lstring inTypeName,
-                                       ?let @lstring inClassFunctionName,
+  rule <primary_beginning_by_type_dot_name> (let @lstring inTypeName,
+                                       let @lstring inClassFunctionName,
                                        ?!@galgasDeclarationAST ioDeclarations,
                                        !@semanticExpressionAST outExpression ) {
   //--- Actual arguments
@@ -145,7 +145,7 @@ final class @classFuncExpressionAST : @semanticExpressionAST {
                           (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                           ?inferenceType: let @unifiedTypeMapEntry inType,
-                          ?let @analysisContext inAnalysisContext,
+                          let @analysisContext inAnalysisContext,
                           ?!@unifiedTypeMap ioTypeMap,
                           ?!@localVarManager ioVariableMap,
                           !@semanticExpressionForGeneration outExpression ) {
@@ -188,16 +188,16 @@ final class @classFuncExpressionAST : @semanticExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-private proc analyzeConstructorInvocation (?let @lstring inUsefulnessCallerEntityName,
+private proc analyzeConstructorInvocation (let @lstring inUsefulnessCallerEntityName,
                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                      ?let @unifiedTypeMapEntry inType,
-                      ?let @analysisContext inAnalysisContext,
+                      let @unifiedTypeMapEntry inType,
+                      let @analysisContext inAnalysisContext,
                       ?!@unifiedTypeMap ioTypeMap,
                       ?!@localVarManager ioVariableMap,
-                      ?let @lstring inTypeName,
-                      ?let @lstring inConstructorName,
-                      ?let @actualOutputArgumentList inInitializerEffectiveParameterExpressions,
-                      ?let @location unused inLocationForOldStyleCollectionInitializerError,
+                      let @lstring inTypeName,
+                      let @lstring inConstructorName,
+                      let @actualOutputArgumentList inInitializerEffectiveParameterExpressions,
+                      let @location unused inLocationForOldStyleCollectionInitializerError,
                       !@unifiedTypeMapEntry outReturnedType,
                       !@unifiedTypeMapEntry outConstructorType,
                       !@semanticExpressionListForGeneration outConstructorEffectiveParameterList,

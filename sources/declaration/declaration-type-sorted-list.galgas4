@@ -197,10 +197,10 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInSemanticContext
     (?!@equatableExtensionMap ioEquatableExtensionMap,
-    ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-    ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-    ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-    ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+    let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext
   ) {
@@ -361,11 +361,11 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   override proc semanticAnalysis
     (?!@lstringlist ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-    ?let @string unused inProductDirectory,
-    ?let @semanticContext unused inSemanticContext,
+    let @string unused inProductDirectory,
+    let @semanticContext unused inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-    ?let @predefinedTypes unused inPredefinedTypes,
-    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+    let @predefinedTypes unused inPredefinedTypes,
+    ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
   ) {
   //--- Useful entities graph
     let sortedListNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mSortedListTypeName)
@@ -419,14 +419,13 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       end
     end
   //--- Generate type
-    ioSemanticDeclarationListForGeneration ++= @(
+    ioSemanticDeclarationListForGeneration ++= @sortedListTypeForGeneration (
       !infoMessage: "sorted list " + self.mSortedListTypeName,
-      @sortedListTypeForGeneration (
-        ioTypeMap.typeMapEntryForLKey (self.mSortedListTypeName),
-        ioTypeMap.typeMapEntryForLKey (makeEmbeddedElementTypeLName (self.mSortedListTypeName)),
-        typedAttributeList,
-        sortDescriptorList
-      ))
+      ioTypeMap.typeMapEntryForLKey (self.mSortedListTypeName),
+      ioTypeMap.typeMapEntryForLKey (makeEmbeddedElementTypeLName (self.mSortedListTypeName)),
+      typedAttributeList,
+      sortDescriptorList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -488,7 +487,7 @@ override proc @sortedListTypeForGeneration.appendDeclaration1
 //································································································
 
 override proc @sortedListTypeForGeneration.appendSpecificImplementation
-  (?let @unifiedTypeMap unused inTypeMap,
+  (let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation ) {
   for property in self.mTypedAttributeList do

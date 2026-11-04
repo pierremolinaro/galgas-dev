@@ -171,10 +171,10 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
 
   override proc enterDeclarationInSemanticContext
     (?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext ) {
   //--- Build signature
@@ -201,11 +201,11 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
 
   override proc semanticAnalysis(?!@lstringlist ioUsefulnessRootEntities,
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                  ?let @string unused inProductDirectory,
-                                  ?let @semanticContext inSemanticContext,
+                                  let @string unused inProductDirectory,
+                                  let @semanticContext inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-                                  ?let @predefinedTypes inPredefinedTypes,
-                                  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
+                                  let @predefinedTypes inPredefinedTypes,
+                                  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration ) {
   //---
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
@@ -242,16 +242,15 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
       ?let instructionList,
       ?let formalArgumentList
     )
-    ioSemanticDeclarationListForGeneration ++= @(
+    ioSemanticDeclarationListForGeneration ++= @routineImplementationForGeneration (
       !infoMessage: "proc " + mangledName,
-      @routineImplementationForGeneration (
-        !generateHeader: true,
-        !implementationCppFileName: "proc-" + mangledName.string.fileNameRepresentation,
-        !routineMangledName: mangledName.string,
-        formalArgumentList,
-        false,
-        instructionList
-      ))
+      !generateHeader: true,
+      !implementationCppFileName: "proc-" + mangledName.string.fileNameRepresentation,
+      !routineMangledName: mangledName.string,
+      formalArgumentList,
+      false,
+      instructionList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -271,7 +270,7 @@ final class @routineImplementationForGeneration : @routinePrototypeDeclarationFo
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificImplementation
-    (?let @unifiedTypeMap unused inTypeMap,
+    (let @unifiedTypeMap unused inTypeMap,
     ?!@stringset ioInclusionSet,
     !@string outImplementation
   ) {

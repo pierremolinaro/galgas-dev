@@ -105,7 +105,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <method_declaration> (?let @lstring inTypeName,
+  rule <method_declaration> (let @lstring inTypeName,
                              ?!@galgasDeclarationAST ioDeclarations) {
     $override$
     $abstract$
@@ -174,10 +174,10 @@ override proc @overridingAbstractExtensionMethodAST.enterDeclarationInGraph (
 
 override proc @overridingAbstractExtensionMethodAST.enterDeclarationInSemanticContext (
   ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+  let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+  let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+  let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+  let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@semanticContext unused ioSemanticContext) {
 }
@@ -189,11 +189,11 @@ override proc @overridingAbstractExtensionMethodAST.enterDeclarationInSemanticCo
 override proc @overridingAbstractExtensionMethodAST.semanticAnalysis (
   ?!@lstringlist unused ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  ?let @string unused inProductDirectory,
-  ?let @semanticContext inSemanticContext,
+  let @string unused inProductDirectory,
+  let @semanticContext inSemanticContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  ?let @predefinedTypes unused inPredefinedTypes,
-  ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration) {
+  let @predefinedTypes unused inPredefinedTypes,
+  ?![@semanticDeclarationForGeneration] unused ioSemanticDeclarationListForGeneration) {
 //--- Self type
   let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
 //--- Check type is an abstract class

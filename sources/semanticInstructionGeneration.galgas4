@@ -92,7 +92,7 @@ override proc @inputJokerParameterForGeneration.generateActualParameter
 override proc @semanticBlockInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
                                      ?!@uint ioTemporaryVariableIndex,
                                      ?!@stringset ioUnusedVariableCppNameSet,
-                                     ?let @bool inGenerateSyntaxDirectedTranslationString,
+                                     let @bool inGenerateSyntaxDirectedTranslationString,
                                      ?!@string ioGeneratedCode) {
   ioGeneratedCode += "{\n"
   generateInstructionList (

@@ -157,10 +157,10 @@ override proc @listDeclarationAST.enterDeclarationInGraph
 
 override proc @listDeclarationAST.enterDeclarationInSemanticContext
   (?!@equatableExtensionMap ioEquatableExtensionMap,
-  ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+  let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+  let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+  let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+  let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
   ?!@unifiedTypeMap ioTypeMap,
   ?!@semanticContext ioSemanticContext
 ) {
@@ -450,11 +450,11 @@ override proc @listDeclarationAST.addAssociatedElement
 override proc @listDeclarationAST.semanticAnalysis
           (?!@lstringlist ioUsefulnessRootEntities,
           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-          ?let @string unused inProductDirectory,
-          ?let @semanticContext unused inSemanticContext,
+          let @string unused inProductDirectory,
+          let @semanticContext unused inSemanticContext,
           ?!@unifiedTypeMap ioTypeMap,
-          ?let @predefinedTypes unused inPredefinedTypes,
-          ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+          let @predefinedTypes unused inPredefinedTypes,
+          ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
 ) {
 //--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.mListTypeName)
@@ -500,13 +500,12 @@ override proc @listDeclarationAST.semanticAnalysis
   end
 //---
   let selfType = ioTypeMap.typeMapEntryForLKey (self.mListTypeName)
-  ioSemanticDeclarationListForGeneration ++= @(
+  ioSemanticDeclarationListForGeneration ++= @listTypeForGeneration (
     !infoMessage: "list type " + self.mListTypeName,
-    @listTypeForGeneration (
-      selfType,
-      ioTypeMap.typeMapEntryForLKey (makeEmbeddedElementTypeLName (self.mListTypeName)),
-      typedAttributeList
-    ))
+    selfType,
+    ioTypeMap.typeMapEntryForLKey (makeEmbeddedElementTypeLName (self.mListTypeName)),
+    typedAttributeList
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -556,7 +555,7 @@ override proc @listTypeForGeneration.appendDeclaration1
 //--------------------------------------------------------------------------------------------------
 
 override proc @listTypeForGeneration.appendSpecificImplementation
-                                        (?let @unifiedTypeMap unused inTypeMap,
+                                        (let @unifiedTypeMap unused inTypeMap,
                                         ?!@stringset ioInclusionSet,
                                         !@string outImplementation ) {
   for property in self.mTypedAttributeList do

@@ -39,10 +39,10 @@ func transformLabelMap
 //--------------------------------------------------------------------------------------------------
 
 proc checkLabelMap
-  (?let @location inNonTerminalLocation,
-  ?let @nonTerminalLabelListAST inLabels,
-  ?let @location inOriginalNonTerminalLocation,
-  ?let @nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis
+  (let @location inNonTerminalLocation,
+  let @nonTerminalLabelListAST inLabels,
+  let @location inOriginalNonTerminalLocation,
+  let @nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis
 ) {
   var @stringset labelStringSet = @()
   for aLabel in inLabels do
@@ -96,7 +96,7 @@ proc checkLabelMap
 
 proc handleNonTerminalDeclarations
   (?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis,
-  ?let @nonterminalDeclarationListAST inNonterminalDeclarationList ) {
+  let @nonterminalDeclarationListAST inNonterminalDeclarationList ) {
   for nonTerminal in inNonterminalDeclarationList do
     if let entry = ioNonTerminalMapForGrammarAnalysis [nonTerminal.mNonterminalName.string] then
       checkLabelMap (
@@ -119,7 +119,7 @@ proc handleNonTerminalDeclarations
 
 proc handleNonTerminalDeclarationsFromRuleList (
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis,
-  ?let @syntaxRuleListAST inRuleList
+  let @syntaxRuleListAST inRuleList
 ) {
   for aRule in inRuleList do
     var nonTerminalLabelListAST = @nonTerminalLabelListAST ()
@@ -169,7 +169,7 @@ override proc @semanticInstructionAST.transformInstructionForGrammarAnalysis
 //--------------------------------------------------------------------------------------------------
 
 proc transformInstructionListForGrammarAnalysis
-  (?let @syntaxInstructionList inInstructionList,
+  (let @syntaxInstructionList inInstructionList,
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
@@ -187,9 +187,9 @@ proc transformInstructionListForGrammarAnalysis
 //--------------------------------------------------------------------------------------------------
 
 proc buildRuleList (
-  ?let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis,
-  ?let @lstring inSyntaxComponentName,
-  ?let @syntaxRuleListAST inRuleList,
+  let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis,
+  let @lstring inSyntaxComponentName,
+  let @syntaxRuleListAST inRuleList,
   ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
   ?!@syntaxComponentListForGrammarAnalysis ioSyntaxComponentListForGrammarAnalysis,
   ?!@uint ioAddedNonTerminalCount
@@ -249,16 +249,16 @@ filewrapper grammarGenerationTemplate in "+generation-templates/grammar_generati
 //--------------------------------------------------------------------------------------------------
 
 extern proc grammarAnalysisAndGeneration (
-  ?let @lstring inGrammarName,
-  ?let @lstring inGrammarClass,
-  ?let @uint startSymbolIndex,
-  ?let @string inLexiqueName,
-  ?let @terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
-  ?let @syntaxComponentListForGrammarAnalysis ioSyntaxComponentsList,
-  ?let @unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
-  ?let @string inHTMLfileName,
-  ?let @nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
-  ?let @string inSyntaxDirectedTranslationVarName, // Empty if not syntax directed translation
+  let @lstring inGrammarName,
+  let @lstring inGrammarClass,
+  let @uint startSymbolIndex,
+  let @string inLexiqueName,
+  let @terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
+  let @syntaxComponentListForGrammarAnalysis ioSyntaxComponentsList,
+  let @unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
+  let @string inHTMLfileName,
+  let @nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
+  let @string inSyntaxDirectedTranslationVarName, // Empty if not syntax directed translation
   !@string outGrammarCppFile,
   !@string outGrammarHTMLHelperContents,
   !@string outSwiftGrammarDescription

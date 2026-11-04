@@ -41,8 +41,8 @@ struct @genericExtensionMethodListMap {
 
   //·····························································································
 
-  mutating proc insertKey  (?let @string inKey,
-                    ?let @lstring inValue ) {
+  mutating proc insertKey  (let @string inKey,
+                    let @lstring inValue ) {
     if self.dictionary.hasKey (inKey) then
       self.dictionary.searchKey (inKey, ?var aList)
       !?aList.append (inValue)
@@ -110,8 +110,8 @@ struct @descendantClassListMap {
 
   //·····························································································
 
-  mutating proc insertKey  (?let @string inKey,
-                    ?let @unifiedTypeMapEntry inType ) {
+  mutating proc insertKey  (let @string inKey,
+                    let @unifiedTypeMapEntry inType ) {
     if self.dictionary.hasKey (inKey) then
       self.dictionary.searchKey (inKey, ?var aList)
       !?aList.append (inType)
@@ -171,12 +171,12 @@ map @extensionGetterMapForGlobalCheckings {
 //--------------------------------------------------------------------------------------------------
 
 proc checkextensionSetterDefinitionForClass
-  (?let @string inClassNameForErrorSignaling,
-  ?let @string inClassName,
-  ?let @lstring inAbstractExtensionSetterName,
-  ?let @descendantClassListMap inDescendantClassListMap,
-  ?let @genericExtensionMethodListMap inOverridingExtensionMethodListMap,
-  ?let @unifiedTypeMap inUnifiedTypeMap
+  (let @string inClassNameForErrorSignaling,
+  let @string inClassName,
+  let @lstring inAbstractExtensionSetterName,
+  let @descendantClassListMap inDescendantClassListMap,
+  let @genericExtensionMethodListMap inOverridingExtensionMethodListMap,
+  let @unifiedTypeMap inUnifiedTypeMap
 ) {
   let @unifiedTypeMapEntryList descendantClasses = inDescendantClassListMap.listForKey (inClassName)
   for (mEntry) in descendantClasses do
@@ -208,12 +208,12 @@ proc checkextensionSetterDefinitionForClass
 //--------------------------------------------------------------------------------------------------
 
 proc checkExtensionMethodDefinitionForClass
-  (?let @string inClassNameForErrorSignaling,
-  ?let @string inClassName,
-  ?let @lstring inAbstractExtensionMethodName,
-  ?let @descendantClassListMap inDescendantClassListMap,
-  ?let @genericExtensionMethodListMap inOverridingExtensionMethodListMap,
-  ?let @unifiedTypeMap inUnifiedTypeMap
+  (let @string inClassNameForErrorSignaling,
+  let @string inClassName,
+  let @lstring inAbstractExtensionMethodName,
+  let @descendantClassListMap inDescendantClassListMap,
+  let @genericExtensionMethodListMap inOverridingExtensionMethodListMap,
+  let @unifiedTypeMap inUnifiedTypeMap
 ) {
   let @unifiedTypeMapEntryList descendantClasses = inDescendantClassListMap.listForKey (inClassName)
   for (mEntry) in descendantClasses do
@@ -245,12 +245,12 @@ proc checkExtensionMethodDefinitionForClass
 //--------------------------------------------------------------------------------------------------
 
 proc checkExtensionGetterDefinitionForClass
-  (?let @string inClassNameForErrorSignaling,
-  ?let @string inClassName,
-  ?let @lstring inAbstractExtensionGetterName,
-  ?let @descendantClassListMap inDescendantClassListMap,
-  ?let @genericExtensionMethodListMap inOverridingExtensionGetterListMap,
-  ?let @unifiedTypeMap inUnifiedTypeMap
+  (let @string inClassNameForErrorSignaling,
+  let @string inClassName,
+  let @lstring inAbstractExtensionGetterName,
+  let @descendantClassListMap inDescendantClassListMap,
+  let @genericExtensionMethodListMap inOverridingExtensionGetterListMap,
+  let @unifiedTypeMap inUnifiedTypeMap
 ) {
   let @unifiedTypeMapEntryList descendantClasses = inDescendantClassListMap.listForKey (inClassName)
   for (mEntry) in descendantClasses do
@@ -283,7 +283,7 @@ proc checkExtensionGetterDefinitionForClass
 
 proc performGalgas3ProjectGlobalCheckings
   (?!@unifiedTypeMap ioTypeMap,
-  ?let @semanticDeclarationListAST inSemanticDeclarationList
+  let @semanticDeclarationListAST inSemanticDeclarationList
 ) {
   if @application.verboseOutput then
     println ("*** Perform global checkings")

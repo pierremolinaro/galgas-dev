@@ -24,10 +24,10 @@
 //! LOCAL VARIABLE
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.insertDeclaredLocalVariable (?let @lstring inVarName,
-                                                    ?let @unifiedTypeMapEntry inType,
-                                                    ?let @string inCppName,
-                                                    ?let @string inNameForCheckingFormalParameterUsing ) {
+mutating proc @localVarManager.insertDeclaredLocalVariable (let @lstring inVarName,
+                                                    let @unifiedTypeMapEntry inType,
+                                                    let @string inCppName,
+                                                    let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
     (inVarName,
     inType,
@@ -40,11 +40,11 @@ mutating proc @localVarManager.insertDeclaredLocalVariable (?let @lstring inVarN
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.insertInitializedLocalVariable (?let @lstring inVarName,
+mutating proc @localVarManager.insertInitializedLocalVariable (let @lstring inVarName,
                                                        ?warnsIfNotMutated: let @bool inWarnsIfNotMutated,
-                                                       ?let @unifiedTypeMapEntry inType,
-                                                       ?let @string inCppName,
-                                                       ?let @string inNameForCheckingFormalParameterUsing ) {
+                                                       let @unifiedTypeMapEntry inType,
+                                                       let @string inCppName,
+                                                       let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
     (inVarName,
     inType,
@@ -59,10 +59,10 @@ mutating proc @localVarManager.insertInitializedLocalVariable (?let @lstring inV
 //! LOCAL CONSTANT
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.insertUsedLocalConstant (?let @lstring inVarName,
-                                                ?let @unifiedTypeMapEntry inType,
-                                                ?let @string inCppName,
-                                                ?let @string inNameForCheckingFormalParameterUsing ) {
+mutating proc @localVarManager.insertUsedLocalConstant (let @lstring inVarName,
+                                                let @unifiedTypeMapEntry inType,
+                                                let @string inCppName,
+                                                let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
     (inVarName,
     inType,
@@ -75,10 +75,10 @@ mutating proc @localVarManager.insertUsedLocalConstant (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.insertInitializedLocalConstant (?let @lstring inVarName,
-                                                       ?let @unifiedTypeMapEntry inType,
-                                                       ?let @string inCppName,
-                                                       ?let @string inNameForCheckingFormalParameterUsing ) {
+mutating proc @localVarManager.insertInitializedLocalConstant (let @lstring inVarName,
+                                                       let @unifiedTypeMapEntry inType,
+                                                       let @string inCppName,
+                                                       let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
     (inVarName,
     inType,
@@ -91,10 +91,10 @@ mutating proc @localVarManager.insertInitializedLocalConstant (?let @lstring inV
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.insertDeclaredLocalConstant (?let @lstring inVarName,
-                                                    ?let @unifiedTypeMapEntry inType,
-                                                    ?let @string inCppName,
-                                                    ?let @string inNameForCheckingFormalParameterUsing ) {
+mutating proc @localVarManager.insertDeclaredLocalConstant (let @lstring inVarName,
+                                                    let @unifiedTypeMapEntry inType,
+                                                    let @string inCppName,
+                                                    let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
     (inVarName,
     inType,
@@ -109,10 +109,10 @@ mutating proc @localVarManager.insertDeclaredLocalConstant (?let @lstring inVarN
 //! INPUT FORMAL ARGUMENT
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.insertInputFormalArgumentDeclaredAsUnused (?let @lstring inVarName,
-                                                                  ?let @unifiedTypeMapEntry inType,
-                                                                  ?let @string inCppName,
-                                                                  ?let @string inNameForCheckingFormalParameterUsing ) {
+mutating proc @localVarManager.insertInputFormalArgumentDeclaredAsUnused (let @lstring inVarName,
+                                                                  let @unifiedTypeMapEntry inType,
+                                                                  let @string inCppName,
+                                                                  let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
     (inVarName,
     inType,
@@ -125,10 +125,10 @@ mutating proc @localVarManager.insertInputFormalArgumentDeclaredAsUnused (?let @
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.insertInputFormalArgument (?let @lstring inVarName,
-                                                  ?let @unifiedTypeMapEntry inType,
-                                                  ?let @string inCppName,
-                                                  ?let @string inNameForCheckingFormalParameterUsing ) {
+mutating proc @localVarManager.insertInputFormalArgument (let @lstring inVarName,
+                                                  let @unifiedTypeMapEntry inType,
+                                                  let @string inCppName,
+                                                  let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey (
     inVarName,
     inType,
@@ -141,10 +141,10 @@ mutating proc @localVarManager.insertInputFormalArgument (?let @lstring inVarNam
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.insertConstantInputFormalArgumentDeclaredAsUnused (?let @lstring inVarName,
-                                                                          ?let @unifiedTypeMapEntry inType,
-                                                                          ?let @string inCppName,
-                                                                          ?let @string inNameForCheckingFormalParameterUsing ) {
+mutating proc @localVarManager.insertConstantInputFormalArgumentDeclaredAsUnused (let @lstring inVarName,
+                                                                          let @unifiedTypeMapEntry inType,
+                                                                          let @string inCppName,
+                                                                          let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
     (inVarName,
     inType,
@@ -157,10 +157,10 @@ mutating proc @localVarManager.insertConstantInputFormalArgumentDeclaredAsUnused
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.insertConstantInputFormalArgument (?let @lstring inVarName,
-                                                          ?let @unifiedTypeMapEntry inType,
-                                                          ?let @string inCppName,
-                                                          ?let @string inNameForCheckingFormalParameterUsing ) {
+mutating proc @localVarManager.insertConstantInputFormalArgument (let @lstring inVarName,
+                                                          let @unifiedTypeMapEntry inType,
+                                                          let @string inCppName,
+                                                          let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
     (inVarName,
     inType,
@@ -175,10 +175,10 @@ mutating proc @localVarManager.insertConstantInputFormalArgument (?let @lstring 
 //! OUTPUT FORMAL ARGUMENT
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.insertOutputFormalArgument (?let @lstring inVarName,
-                                                   ?let @unifiedTypeMapEntry inType,
-                                                   ?let @string inCppName,
-                                                   ?let @string inNameForCheckingFormalParameterUsing ) {
+mutating proc @localVarManager.insertOutputFormalArgument (let @lstring inVarName,
+                                                   let @unifiedTypeMapEntry inType,
+                                                   let @string inCppName,
+                                                   let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
     (inVarName,
     inType,
@@ -193,10 +193,10 @@ mutating proc @localVarManager.insertOutputFormalArgument (?let @lstring inVarNa
 //! INPUT OUTPUT FORMAL ARGUMENT
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.insertInputOutputFormalArgumentDeclaredAsUnused (?let @lstring inVarName,
-                                                                        ?let @unifiedTypeMapEntry inType,
-                                                                        ?let @string inCppName,
-                                                                        ?let @string inNameForCheckingFormalParameterUsing ) {
+mutating proc @localVarManager.insertInputOutputFormalArgumentDeclaredAsUnused (let @lstring inVarName,
+                                                                        let @unifiedTypeMapEntry inType,
+                                                                        let @string inCppName,
+                                                                        let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
     (inVarName,
     inType,
@@ -209,10 +209,10 @@ mutating proc @localVarManager.insertInputOutputFormalArgumentDeclaredAsUnused (
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.insertInputOutputFormalArgument (?let @lstring inVarName,
-                                                        ?let @unifiedTypeMapEntry inType,
-                                                        ?let @string inCppName,
-                                                        ?let @string inNameForCheckingFormalParameterUsing ) {
+mutating proc @localVarManager.insertInputOutputFormalArgument (let @lstring inVarName,
+                                                        let @unifiedTypeMapEntry inType,
+                                                        let @string inCppName,
+                                                        let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
     (inVarName,
     inType,
@@ -228,10 +228,10 @@ mutating proc @localVarManager.insertInputOutputFormalArgument (?let @lstring in
 //! PROPERTY
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.insertNonMutableProperty (?let @lstring inVarName,
-                                                 ?let @unifiedTypeMapEntry inType,
-                                                 ?let @string inCppName,
-                                                 ?let @string inNameForCheckingFormalParameterUsing ) {
+mutating proc @localVarManager.insertNonMutableProperty (let @lstring inVarName,
+                                                 let @unifiedTypeMapEntry inType,
+                                                 let @string inCppName,
+                                                 let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
     (inVarName,
     inType,
@@ -245,10 +245,10 @@ mutating proc @localVarManager.insertNonMutableProperty (?let @lstring inVarName
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.insertMutableProperty (?let @lstring inVarName,
-                                              ?let @unifiedTypeMapEntry inType,
-                                              ?let @string inCppName,
-                                              ?let @string inNameForCheckingFormalParameterUsing ) {
+mutating proc @localVarManager.insertMutableProperty (let @lstring inVarName,
+                                              let @unifiedTypeMapEntry inType,
+                                              let @string inCppName,
+                                              let @string inNameForCheckingFormalParameterUsing ) {
   !?self.mCurrentManager.insertKey
     (inVarName,
     inType,
@@ -264,11 +264,11 @@ mutating proc @localVarManager.insertMutableProperty (?let @lstring inVarName,
 //--------------------------------------------------------------------------------------------------
 
 mutating proc @localVarManager.insertInitializerSelfProperty
-                              (?let @string inPropertyName,
-                              ?let @location inErrorLocation,
-                              ?let @unifiedTypeMapEntry inType,
-                              ?let @string inCppName,
-                              ?let @string inNameForCheckingFormalParameterUsing,
+                              (let @string inPropertyName,
+                              let @location inErrorLocation,
+                              let @unifiedTypeMapEntry inType,
+                              let @string inCppName,
+                              let @string inNameForCheckingFormalParameterUsing,
                               ?initialized: let @bool inInitialized ) {
   let varName = @lstring ("self." + inPropertyName, inErrorLocation)
   !?self.mCurrentManager.insertKey
@@ -298,7 +298,7 @@ mutating proc @localVarManager.openOverrideForRepeatBlock () {
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.closeOverride (?let @location unused inEndOfBranchLocation ) {
+mutating proc @localVarManager.closeOverride (let @location unused inEndOfBranchLocation ) {
   if self.mOverridenManagers.count > 0 then
     !?self.mOverridenManagers.popLast (?let savedManager)
     switch savedManager
@@ -318,7 +318,7 @@ mutating proc @localVarManager.openBranch () {
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.closeBranch (?let @location inEndOfBranchLocation ) {
+mutating proc @localVarManager.closeBranch (let @location inEndOfBranchLocation ) {
   !?self.mCurrentManager.closeScope (inEndOfBranchLocation)
 //---
   if self.mOverridenManagers.count > 0 then
@@ -412,13 +412,13 @@ struct @currentVarManager {
 //! checkSelfObjectIsFullyInitialized
 //--------------------------------------------------------------------------------------------------
 
-proc @localVarManager.checkSelfObjectIsFullyInitialized (?let @location inErrorLocation ) {
+proc @localVarManager.checkSelfObjectIsFullyInitialized (let @location inErrorLocation ) {
   self.mCurrentManager.checkSelfObjectIsFullyInitialized (inErrorLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
 
-proc @currentVarManager.checkSelfObjectIsFullyInitialized (?let @location inErrorLocation ) {
+proc @currentVarManager.checkSelfObjectIsFullyInitialized (let @location inErrorLocation ) {
   var fullyInitialized = true
   for entry in self.mLocalVarMap while fullyInitialized do
     let keyComponents = entry.lkey.string.componentsSeparatedByString (".")
@@ -435,7 +435,7 @@ proc @currentVarManager.checkSelfObjectIsFullyInitialized (?let @location inErro
 //! NEUTRAL ACCESS
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.neutralAccess (?let @lstring inVarName,
+mutating proc @localVarManager.neutralAccess (let @lstring inVarName,
                                       !@unifiedTypeMapEntry outType,
                                       !@string outCppName,
                                       !@string outNameForCheckingFormalParameterUsing ) {
@@ -449,7 +449,7 @@ mutating proc @localVarManager.neutralAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @currentVarManager.neutralAccess (?let @lstring inVarName,
+mutating proc @currentVarManager.neutralAccess (let @lstring inVarName,
                                         !@unifiedTypeMapEntry outType,
                                         !@string outCppName,
                                         !@string outNameForCheckingFormalParameterUsing ) {
@@ -471,8 +471,8 @@ mutating proc @currentVarManager.neutralAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarMapListForLLVM.neutralAccess (?let @lstring inVarName,
-                                             ?let @uint inIndex,
+mutating proc @localVarMapListForLLVM.neutralAccess (let @lstring inVarName,
+                                             let @uint inIndex,
                                              !@unifiedTypeMapEntry outType,
                                              !@string outCppName,
                                              !@string outNameForCheckingFormalParameterUsing ) {
@@ -495,13 +495,13 @@ mutating proc @localVarMapListForLLVM.neutralAccess (?let @lstring inVarName,
 //! DROP ACCESS
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.searchForDropAccess (?let @lstring inVarName ) {
+mutating proc @localVarManager.searchForDropAccess (let @lstring inVarName ) {
   !?self.mCurrentManager.searchForDropAccess (inVarName)
 }
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @currentVarManager.searchForDropAccess (?let @lstring inVarName ) {
+mutating proc @currentVarManager.searchForDropAccess (let @lstring inVarName ) {
   if let varDescriptor = self.mLocalVarMap [inVarName] then
     varDescriptor.mState.checkFinalState (inVarName, varDescriptor.mAttributes)
     !?self.mLocalVarMap.removeKey (inVarName, ?5*)
@@ -522,7 +522,7 @@ mutating proc @currentVarManager.searchForDropAccess (?let @lstring inVarName ) 
 //! WRITE ACCESS
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.searchForWriteAccess (?let @lstring inVarName,
+mutating proc @localVarManager.searchForWriteAccess (let @lstring inVarName,
                                              !@unifiedTypeMapEntry outType,
                                              !@string outCppName,
                                              !@string outNameForCheckingFormalParameterUsing ) {
@@ -536,7 +536,7 @@ mutating proc @localVarManager.searchForWriteAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @currentVarManager.searchForWriteAccess (?let @lstring inVarName,
+mutating proc @currentVarManager.searchForWriteAccess (let @lstring inVarName,
                                                !@unifiedTypeMapEntry outType,
                                                !@string outCppName,
                                                !@string outNameForCheckingFormalParameterUsing ) {
@@ -556,8 +556,8 @@ mutating proc @currentVarManager.searchForWriteAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarMapListForLLVM.writeAccessInSubMap (?let @lstring inVarName,
-                                                   ?let @uint inIndex,
+mutating proc @localVarMapListForLLVM.writeAccessInSubMap (let @lstring inVarName,
+                                                   let @uint inIndex,
                                                    !@unifiedTypeMapEntry outType,
                                                    !@string outCppName,
                                                    !@string outNameForCheckingFormalParameterUsing ) {
@@ -584,9 +584,9 @@ mutating proc @localVarMapListForLLVM.writeAccessInSubMap (?let @lstring inVarNa
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarValuation.writeTransition (?let @lstring inVarName,
+mutating proc @localVarValuation.writeTransition (let @lstring inVarName,
                                           ?inOverridenMap: let @bool inOverridenMap,
-                                          ?let @localVariableAttributes inAttributes ) {
+                                          let @localVariableAttributes inAttributes ) {
   switch self
   case invalid : //--- Error state, for disabled further error messages
   case declared (*) : // The variable has no value
@@ -619,7 +619,7 @@ mutating proc @localVarValuation.writeTransition (?let @lstring inVarName,
 //! READ ACCESS
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.searchForReadAccess (?let @lstring inVarName,
+mutating proc @localVarManager.searchForReadAccess (let @lstring inVarName,
                                             !@unifiedTypeMapEntry outType,
                                             !@string outCppName,
                                             !@string outNameForCheckingFormalParameterUsing ) {
@@ -628,7 +628,7 @@ mutating proc @localVarManager.searchForReadAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @currentVarManager.searchForReadAccess (?let @lstring inVarName,
+mutating proc @currentVarManager.searchForReadAccess (let @lstring inVarName,
                                               !@unifiedTypeMapEntry outType,
                                               !@string outCppName,
                                               !@string outNameForCheckingFormalParameterUsing ) {
@@ -648,8 +648,8 @@ mutating proc @currentVarManager.searchForReadAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarMapListForLLVM.readAccess (?let @lstring inVarName,
-                                          ?let @uint inIndex,
+mutating proc @localVarMapListForLLVM.readAccess (let @lstring inVarName,
+                                          let @uint inIndex,
                                           !@unifiedTypeMapEntry outType,
                                           !@string outCppName,
                                           !@string outNameForCheckingFormalParameterUsing ) {
@@ -676,8 +676,8 @@ mutating proc @localVarMapListForLLVM.readAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarValuation.readTransition (?let @lstring inVarName,
-                                         ?let @localVariableAttributes inAttributes ) {
+mutating proc @localVarValuation.readTransition (let @lstring inVarName,
+                                         let @localVariableAttributes inAttributes ) {
   switch self
   case invalid :
   case declared (*) : // The variable has no value
@@ -703,7 +703,7 @@ mutating proc @localVarValuation.readTransition (?let @lstring inVarName,
 //! READ WRITE ACCESS
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.searchForReadWriteAccess (?let @lstring inVarName,
+mutating proc @localVarManager.searchForReadWriteAccess (let @lstring inVarName,
                                                  !@unifiedTypeMapEntry outType,
                                                  !@string outCppName,
                                                  !@string outNameForCheckingFormalParameterUsing ) {
@@ -712,7 +712,7 @@ mutating proc @localVarManager.searchForReadWriteAccess (?let @lstring inVarName
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @currentVarManager.searchForReadWriteAccess (?let @lstring inVarName,
+mutating proc @currentVarManager.searchForReadWriteAccess (let @lstring inVarName,
                                                    !@unifiedTypeMapEntry outType,
                                                    !@string outCppName,
                                                    !@string outNameForCheckingFormalParameterUsing ) {
@@ -739,8 +739,8 @@ mutating proc @currentVarManager.searchForReadWriteAccess (?let @lstring inVarNa
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarMapListForLLVM.readWriteAccess (?let @lstring inVarName,
-                                               ?let @uint inIndex,
+mutating proc @localVarMapListForLLVM.readWriteAccess (let @lstring inVarName,
+                                               let @uint inIndex,
                                                !@unifiedTypeMapEntry outType,
                                                !@string outCppName,
                                                !@string outNameForCheckingFormalParameterUsing ) {
@@ -767,9 +767,9 @@ mutating proc @localVarMapListForLLVM.readWriteAccess (?let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarValuation.readWriteTransition (?let @lstring inVarName,
+mutating proc @localVarValuation.readWriteTransition (let @lstring inVarName,
                                               ?inOverridenMap: let @bool inOverridenMap,
-                                              ?let @localVariableAttributes inAttributes ) {
+                                              let @localVariableAttributes inAttributes ) {
   !?self.readTransition (inVarName, inAttributes)
   !?self.writeTransition (inVarName, !inOverridenMap: inOverridenMap, inAttributes)
 }
@@ -785,7 +785,7 @@ mutating proc @currentVarManager.openScope () {
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @currentVarManager.closeScope (?let @location inErrorLocation ) {
+mutating proc @currentVarManager.closeScope (let @location inErrorLocation ) {
   self.mLocalVarMap.checkFinalStates (inErrorLocation)
   if self.mSubMaps.count == 0 then
     error (inErrorLocation : "EMPTY SUBMAPS")
@@ -799,12 +799,12 @@ mutating proc @currentVarManager.closeScope (?let @location inErrorLocation ) {
 //! INSERT KEY
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @currentVarManager.insertKey (?let @lstring inVarName,
-                                    ?let @unifiedTypeMapEntry inType,
-                                    ?let @string inCppName,
-                                    ?let @string inNameForCheckingFormalParameterUsing,
-                                    ?let @localVariableAttributes inAttributes,
-                                    ?let @localVarValuation inState ) {
+mutating proc @currentVarManager.insertKey (let @lstring inVarName,
+                                    let @unifiedTypeMapEntry inType,
+                                    let @string inCppName,
+                                    let @string inNameForCheckingFormalParameterUsing,
+                                    let @localVariableAttributes inAttributes,
+                                    let @localVarValuation inState ) {
   !?self.mLocalVarMap.insertKey
     (inVarName,
     inType,
@@ -819,7 +819,7 @@ mutating proc @currentVarManager.insertKey (?let @lstring inVarName,
 //! CHECK FINAL STATE
 //--------------------------------------------------------------------------------------------------
 
-proc @localVarValuation.checkFinalState (?let @lstring inVarName ,?let @localVariableAttributes inAttributes ) {
+proc @localVarValuation.checkFinalState (let @lstring inVarName ,let @localVariableAttributes inAttributes ) {
   switch self
   case invalid :
   case declared (usedInOtherBlock) : // The variable has no value
@@ -847,7 +847,7 @@ proc @localVarValuation.checkFinalState (?let @lstring inVarName ,?let @localVar
 
 //--------------------------------------------------------------------------------------------------
 
-proc @scopeLocalVarMap.checkFinalStates (?let @location unused inErrorLocation ) {
+proc @scopeLocalVarMap.checkFinalStates (let @location unused inErrorLocation ) {
   for entry in self do
     entry.mState.checkFinalState (entry.lkey, entry.mAttributes)
   end
@@ -855,13 +855,13 @@ proc @scopeLocalVarMap.checkFinalStates (?let @location unused inErrorLocation )
 
 //--------------------------------------------------------------------------------------------------
 
-proc @localVarManager.checkAutomatonStates (?let @location inErrorLocation ) {
+proc @localVarManager.checkAutomatonStates (let @location inErrorLocation ) {
   self.mCurrentManager.checkAutomatonStates (inErrorLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
 
-proc @currentVarManager.checkAutomatonStates (?let @location inErrorLocation ) {
+proc @currentVarManager.checkAutomatonStates (let @location inErrorLocation ) {
   self.mLocalVarMap.checkFinalStates (inErrorLocation)
 }
 
@@ -869,7 +869,7 @@ proc @currentVarManager.checkAutomatonStates (?let @location inErrorLocation ) {
 //! COMBINE MANAGERS
 //--------------------------------------------------------------------------------------------------
 
-proc @localVarValuation.combineValuationWith (?let @localVarValuation inOther,
+proc @localVarValuation.combineValuationWith (let @localVarValuation inOther,
                                                !@localVarValuation outResult,
                                                ?!@string unused ioErrorMessage ) {
   switch self

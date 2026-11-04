@@ -65,8 +65,8 @@ struct @routineMap {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  mutating proc insertKey (?let @lstring inRoutineName,
-                    ?let @formalParameterSignature inRoutineSignature,
+  mutating proc insertKey (let @lstring inRoutineName,
+                    let @formalParameterSignature inRoutineSignature,
                     ?isFilePrivate: let @bool inIsFilePrivate) {
     var @routineArgumentMap routineArgumentMap
     if self.mInternalRoutineMap.hasKey (inRoutineName) then
@@ -89,7 +89,7 @@ struct @routineMap {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  proc searchKey (?let @lstring inRoutineName,
+  proc searchKey (let @lstring inRoutineName,
                     ?actualParameters: @actualParameterListAST inActualParameterList,
                     !@formalParameterSignature outRoutineSignature,
                     !isFilePrivate: @bool outIsFilePrivate,

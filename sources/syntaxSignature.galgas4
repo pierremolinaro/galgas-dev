@@ -27,7 +27,7 @@
 //--------------------------------------------------------------------------------------------------
 
 proc @semanticInstructionForGeneration.appendSyntaxSignature ( // Capture all semantic instructions
-  ?let @string unused inPosfix,
+  let @string unused inPosfix,
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
 }
 

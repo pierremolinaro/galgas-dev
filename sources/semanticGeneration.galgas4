@@ -54,7 +54,7 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation (?let @unifiedTypeMap inUnifiedTypeMap,
+  override proc appendSpecificImplementation (let @unifiedTypeMap inUnifiedTypeMap,
                                                 ?!@stringset ioInclusionSet,
                                                 !@string outImplementation ) {
     ioInclusionSet ++= "grammar-" + self.mGrammarName.fileNameRepresentation
@@ -161,7 +161,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation (?let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
                                               ?!@stringset ioInclusionSet,
                                               !@string outImplementation ) {
     ioInclusionSet ++= "syntax-" + self.mSyntaxComponentName.fileNameRepresentation
@@ -231,15 +231,15 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
 
 proc generateProcedure
   (?static:let @bool inGenerateStatic,
-  ?let @string inProcedureMangledName,
+  let @string inProcedureMangledName,
   ?!@stringset ioInclusionSet,
-  ?let @formalParameterListForGeneration inFormalArgumentList,
-  ?let @semanticInstructionListForGeneration inInstructionList,
-  ?let @bool inProcedureIsConst,
-  ?let @string inCompilerTypeName,
-  ?let @bool inGenerateLocationArgs,
-  ?let @bool inGenerateResetTemplateString,
-  ?let @bool inGenerateSyntaxDirectedTranslationString,
+  let @formalParameterListForGeneration inFormalArgumentList,
+  let @semanticInstructionListForGeneration inInstructionList,
+  let @bool inProcedureIsConst,
+  let @string inCompilerTypeName,
+  let @bool inGenerateLocationArgs,
+  let @bool inGenerateResetTemplateString,
+  let @bool inGenerateSyntaxDirectedTranslationString,
   !@string outGeneratedCode
 ) {
 //--- Build unused variable set
@@ -350,13 +350,13 @@ proc generateProcedure
 //
 //--------------------------------------------------------------------------------------------------
 
-proc generateFunction (?let @string inFunctionCppRepresentationName,
+proc generateFunction (let @string inFunctionCppRepresentationName,
                       ?!@stringset ioInclusionSet,
-                      ?let @formalInputParameterListForGeneration inFormalArgumentList,
-                      ?let @semanticInstructionListForGeneration inInstructionList,
-                      ?let @string inCompilerTypeName,
-                      ?let @unifiedTypeMapEntry inResultType,
-                      ?let @string inResultVariableCppName,
+                      let @formalInputParameterListForGeneration inFormalArgumentList,
+                      let @semanticInstructionListForGeneration inInstructionList,
+                      let @string inCompilerTypeName,
+                      let @unifiedTypeMapEntry inResultType,
+                      let @string inResultVariableCppName,
                       ?static: let @bool inIsStatic,
                       ?const: let @bool inIsConst,
                       !@string outGeneratedCode ) {
@@ -434,13 +434,13 @@ proc generateFunction (?let @string inFunctionCppRepresentationName,
 
 //--------------------------------------------------------------------------------------------------
 
-proc generateExtensionGetter (?let @string inFunctionCppRepresentationName,
+proc generateExtensionGetter (let @string inFunctionCppRepresentationName,
                                 ?!@stringset ioInclusionSet,
-                                ?let @formalInputParameterListForGeneration inFormalArgumentList,
-                                ?let @semanticInstructionListForGeneration inInstructionList,
-                                ?let @string inCompilerTypeName,
-                                ?let @unifiedTypeMapEntry inResultType,
-                                ?let @string inResultVariableCppName,
+                                let @formalInputParameterListForGeneration inFormalArgumentList,
+                                let @semanticInstructionListForGeneration inInstructionList,
+                                let @string inCompilerTypeName,
+                                let @unifiedTypeMapEntry inResultType,
+                                let @string inResultVariableCppName,
                                 !@string outGeneratedCode ) {
   outGeneratedCode = ""
   inResultType.addHeaderFileName (!?ioInclusionSet)
@@ -514,12 +514,12 @@ proc generateExtensionGetter (?let @string inFunctionCppRepresentationName,
 //--------------------------------------------------------------------------------------------------
 
 proc generateExtensionSetter
-  (?let @string inClassName,
-  ?let @string inBaseClassName,
-  ?let @string inMethodName,
+  (let @string inClassName,
+  let @string inBaseClassName,
+  let @string inMethodName,
   ?!@stringset ioInclusionSet,
-  ?let @formalParameterListForGeneration inFormalArgumentList,
-  ?let @semanticInstructionListForGeneration inInstructionList,
+  let @formalParameterListForGeneration inFormalArgumentList,
+  let @semanticInstructionListForGeneration inInstructionList,
   !@string outGeneratedCode ) {
 //--- Build unused variable set
   var @stringset unusedVariableCppNameSet = @()
@@ -607,11 +607,11 @@ proc generateExtensionSetter
 // E X T E N S I O N    M E T H O D    I M P L E M E N T A T I O N
 //--------------------------------------------------------------------------------------------------
 
-proc generateExtensionMethodNew (?let @unifiedTypeMapEntry inReceiverType,
+proc generateExtensionMethodNew (let @unifiedTypeMapEntry inReceiverType,
                                 ?!@stringset ioInclusionSet,
-                                ?let @string inMethodName,
-                                ?let @formalParameterListForGeneration inFormalArgumentList,
-                                ?let @semanticInstructionListForGeneration inInstructionList,
+                                let @string inMethodName,
+                                let @formalParameterListForGeneration inFormalArgumentList,
+                                let @semanticInstructionListForGeneration inInstructionList,
                                 !@string outGeneratedCode ) {
   let className = inReceiverType.definition.typeName.string
 //--- Build unused variable set
@@ -1028,7 +1028,7 @@ override func @semanticTypeForGeneration.appendTypeGenericImplementation () -> @
 //--------------------------------------------------------------------------------------------------
 
 override proc @functionImplementationForGeneration.appendSpecificImplementation
-  (?let @unifiedTypeMap unused inTypeMap,
+  (let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation ) {
   ioInclusionSet ++= "func-" + self.mFunctionName.fileNameRepresentation
@@ -1055,7 +1055,7 @@ override proc @functionImplementationForGeneration.appendSpecificImplementation
 //--------------------------------------------------------------------------------------------------
 
 override proc @onceFunctionDeclarationForGeneration.appendSpecificImplementation
-  (?let @unifiedTypeMap unused inTypeMap,
+  (let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation
 ) {
@@ -1111,7 +1111,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificImplementation
-    (?let @unifiedTypeMap unused inTypeMap,
+    (let @unifiedTypeMap unused inTypeMap,
     ?!@stringset ioInclusionSet,
     !@string outHeader ) {
     ioInclusionSet ++= "lexique-" + self.mLexiqueName.fileNameRepresentation
@@ -1121,7 +1121,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificFiles
-    (?let @string inProductDirectory,
+    (let @string inProductDirectory,
     ?!@stringset ioAllProductFileSet,
     ?!swift: @stringlist ioSwiftAppProductFileList ) {
   //--- Generate SwiftUI implementation file
@@ -1155,7 +1155,7 @@ override func @programComponentForGeneration.headerKind () ->@headerKind {
 //--------------------------------------------------------------------------------------------------
 
 override proc @programComponentForGeneration.appendSpecificImplementation
-  (?let @unifiedTypeMap unused inTypeMap,
+  (let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation ) {
   ioInclusionSet +=self. mInclusionSet
@@ -1175,8 +1175,8 @@ override func @filewrapperDeclarationForGeneration.headerKind () ->@headerKind {
 //--------------------------------------------------------------------------------------------------
 
 proc recursivlyEnumerateRegularFile
-  (?let @wrapperFileMap inFilewrapperFileMap,
-  ?let @wrapperDirectoryMap inFilewrapperDirectoryMap,
+  (let @wrapperFileMap inFilewrapperFileMap,
+  let @wrapperDirectoryMap inFilewrapperDirectoryMap,
   ?!@stringlist ioRegularFileIndexStringList,
   ?!@stringlist ioDirectoryIndexStringList,
   ?!@stringlist ioRegularTextContentIndexStringList,
@@ -1239,11 +1239,11 @@ override proc @filewrapperDeclarationForGeneration.appendDeclaration1
 //--------------------------------------------------------------------------------------------------
 
 proc generateWrapperContents
-  (?let @string inFilewrapperName,
-  ?let @string inFilewrapperDirectory,
-  ?let @uint inFilewrapperDirectoryIndex,
-  ?let @wrapperFileMap inFilewrapperRegularFileMap,
-  ?let @wrapperDirectoryMap inFilewrapperDirectoryMap,
+  (let @string inFilewrapperName,
+  let @string inFilewrapperDirectory,
+  let @uint inFilewrapperDirectoryIndex,
+  let @wrapperFileMap inFilewrapperRegularFileMap,
+  let @wrapperDirectoryMap inFilewrapperDirectoryMap,
   ?!@string ioImplementation ) {
 //--- Generate regular files
   for filewrapperRegularFile in inFilewrapperRegularFileMap do
@@ -1349,7 +1349,7 @@ proc generateWrapperContents
 //--------------------------------------------------------------------------------------------------
 
 override proc @filewrapperDeclarationForGeneration.appendSpecificImplementation
-  (?let @unifiedTypeMap unused inTypeMap,
+  (let @unifiedTypeMap unused inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation ) {
   ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
@@ -1454,35 +1454,35 @@ final class @primitiveTypeForGeneration : @semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 proc generatePredefinedTypeFiles
-  (?let @string inDirectory,
-  ?let @semanticDeclarationListForGeneration inSemanticDeclarationListForGeneration,
+  (let @string inDirectory,
+  let [@semanticDeclarationForGeneration] inSemanticDeclarationListForGeneration,
   ?!@stringlist ioToolHeaderFileList,
   ?!@stringlist ioToolCppFileList,
   ?!@stringset ioAllProductFileSet
 ) {
 //----------------------------------------------------------------- Generate header file
   var generatedCode = filewrapper [predefinedTypeGenerationTemplate.primitiveTypesHeaderPrologue : ]
-  for entry in inSemanticDeclarationListForGeneration do
-    if entry.mDeclaration.isPredefined then
-      entry.mDeclaration.appendPrimitiveTypePreDeclaration (!?generatedCode)
+  for declaration in inSemanticDeclarationListForGeneration do
+    if declaration.isPredefined then
+      declaration.appendPrimitiveTypePreDeclaration (!?generatedCode)
     end
   end
   generatedCode += "\n"
-  for entry in inSemanticDeclarationListForGeneration do
-    if entry.mDeclaration.isPredefined then
-      generatedCode += entry.mDeclaration.appendPrimitiveTypeDeclaration
+  for declaration in inSemanticDeclarationListForGeneration do
+    if declaration.isPredefined then
+      generatedCode += declaration.appendPrimitiveTypeDeclaration
     end
   end
-  for entry in inSemanticDeclarationListForGeneration do
-    if entry.mDeclaration.isPredefined then
-      entry.mDeclaration.appendDeclaration1 (!? %from @(), ?let @string code)
+  for declaration in inSemanticDeclarationListForGeneration do
+    if declaration.isPredefined then
+      declaration.appendDeclaration1 (!? %from @(), ?let @string code)
       generatedCode += code
     end
   end
   generatedCode += filewrapper [predefinedTypeGenerationTemplate.predefinedTypeSeparation : ]
-  for entry in inSemanticDeclarationListForGeneration do
-    if entry.mDeclaration.isPredefined then
-      entry.mDeclaration.appendDeclaration2 (inDirectory, !? %from @(), ?let @string headerString2)
+  for declaration in inSemanticDeclarationListForGeneration do
+    if declaration.isPredefined then
+      declaration.appendDeclaration2 (inDirectory, !? %from @(), ?let @string headerString2)
       generatedCode += headerString2
     end
   end
@@ -1503,10 +1503,10 @@ proc generatePredefinedTypeFiles
   end
 //----------------------------------------------------------------- Generate implementation file
   generatedCode = filewrapper [predefinedTypeGenerationTemplate.predefinedTypesImplementation : ]
-  for entry in inSemanticDeclarationListForGeneration do
-    if entry.mDeclaration.isPredefined then
-      generatedCode += entry.mDeclaration.appendTypeGenericImplementation
-      entry.mDeclaration.appendSpecificImplementation ( @(), !? %from @(), ?let @string code)
+  for declaration in inSemanticDeclarationListForGeneration do
+    if declaration.isPredefined then
+      generatedCode += declaration.appendTypeGenericImplementation
+      declaration.appendSpecificImplementation ( @(), !? %from @(), ?let @string code)
       generatedCode += code
     end
   end

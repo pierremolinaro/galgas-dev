@@ -33,10 +33,10 @@ struct @syntaxExtensions {
 
   //·····························································································
 
-  mutating proc insertKey (?let @string inKey,
-                    ?let @lstring inSyntaxComponentName,
-                    ?let @nonterminalDeclarationListAST inNonterminalDeclarationList,
-                    ?let @syntaxRuleListAST inRuleList) {
+  mutating proc insertKey (let @string inKey,
+                    let @lstring inSyntaxComponentName,
+                    let @nonterminalDeclarationListAST inNonterminalDeclarationList,
+                    let @syntaxRuleListAST inRuleList) {
     if self.dictionary.hasKey (inKey) then
       self.dictionary.searchKey (inKey, ?var aList)
       !?aList.append (inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)

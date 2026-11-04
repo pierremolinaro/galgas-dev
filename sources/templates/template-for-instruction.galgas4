@@ -188,9 +188,9 @@ syntax extension templateSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionForeachAST.templateInstructionAnalysis
-  (?let @lstring inUsefulnessCallerEntityName,
+  (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?let @templateAnalysisContext inAnalysisContext,
+  let @templateAnalysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {

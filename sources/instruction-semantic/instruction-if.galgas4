@@ -166,9 +166,9 @@ final class @ifInstructionAST : @semanticInstructionAST {
   //
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc analyzeSemanticInstruction (?let @lstring inUsefulnessCallerEntityName,
+  override proc analyzeSemanticInstruction (let @lstring inUsefulnessCallerEntityName,
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                            ?let @analysisContext inAnalysisContext,
+                            let @analysisContext inAnalysisContext,
                             ?!@unifiedTypeMap ioTypeMap,
                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                             ?!@localVarManager ioVariableMap ) {
@@ -261,7 +261,7 @@ final class @ifInstructionForGeneration : @semanticInstructionForGeneration {
   override proc generateInstruction (?!@stringset ioInclusionSet,
                                       ?!@uint ioTemporaryVariableIndex,
                                       ?!@stringset ioUnusedVariableCppNameSet,
-                                      ?let @bool inGenerateSyntaxDirectedTranslationString,
+                                      let @bool inGenerateSyntaxDirectedTranslationString,
                                       ?!@string ioGeneratedCode ) {
   //--- Generate test expression
     self.mExpressions.generateInstruction

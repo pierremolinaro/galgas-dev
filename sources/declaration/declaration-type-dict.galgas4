@@ -182,10 +182,10 @@ override proc @dictDeclarationAST.enterDeclarationInGraph
 
 override proc @dictDeclarationAST.enterDeclarationInSemanticContext
   (?!@equatableExtensionMap ioEquatableExtensionMap,
-  ?let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+  let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+  let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+  let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+  let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
   ?!@unifiedTypeMap ioTypeMap,
   ?!@semanticContext ioSemanticContext ) {
 //--- key type index
@@ -418,7 +418,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
 //   SEMANTIC ANALYSIS
 //--------------------------------------------------------------------------------------------------
 
-proc check_K_escapeCharacters (?let @lstring inString ) {  //--- Check escape sequences : only %K or %%
+proc check_K_escapeCharacters (let @lstring inString ) {  //--- Check escape sequences : only %K or %%
   for components in inString.string.componentsSeparatedByString ("%%") do
     var @stringlist explodedArray = components.mValue.componentsSeparatedByString ("%")
     !?explodedArray.popFirst (?*)
@@ -435,7 +435,7 @@ proc check_K_escapeCharacters (?let @lstring inString ) {  //--- Check escape se
 
 //--------------------------------------------------------------------------------------------------
 
-proc check_K_L_escapeCharacters (?let @lstring inString ) {  //--- Check escape sequences : only %K, %L or %%
+proc check_K_L_escapeCharacters (let @lstring inString ) {  //--- Check escape sequences : only %K, %L or %%
   for components in inString.string.componentsSeparatedByString ("%%") do
     var @stringlist explodedArray = components.mValue.componentsSeparatedByString ("%")
     !?explodedArray.popFirst (?*)
@@ -461,11 +461,11 @@ func %once forbiddenKeysForMapAndDict () -> @stringset {
 override proc @dictDeclarationAST.semanticAnalysis
                 (?!@lstringlist ioUsefulnessRootEntities,
                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                ?let @string unused inProductDirectory,
-                ?let @semanticContext unused inSemanticContext,
+                let @string unused inProductDirectory,
+                let @semanticContext unused inSemanticContext,
                 ?!@unifiedTypeMap ioTypeMap,
-                ?let @predefinedTypes unused inPredefinedTypes,
-                ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+                let @predefinedTypes unused inPredefinedTypes,
+                ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
 ) {
 //--- Check key is comparable
   let keyType = ioTypeMap.typeMapEntryForLKey (self.mKeyTypeName)
@@ -524,16 +524,15 @@ override proc @dictDeclarationAST.semanticAnalysis
   let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: elementTypeName)
   let optionalElementTypeEntry = ioTypeMap.typeMapEntryForLKey (optionalElementTypeName)
 //--- Enter map declaration
-  ioSemanticDeclarationListForGeneration ++= @(
+  ioSemanticDeclarationListForGeneration ++= @dictTypeForGeneration (
     !infoMessage: "dict " + self.mDictTypeName,
-    @dictTypeForGeneration (
-      ioTypeMap.typeMapEntryForLKey (self.mDictTypeName),
-      ioTypeMap.typeMapEntryForLKey (elementTypeName),
-      self.mDictTypeName,
-      typedAttributeList,
-      self.mKeyTypeName,
-      optionalElementTypeEntry
-    ))
+    ioTypeMap.typeMapEntryForLKey (self.mDictTypeName),
+    ioTypeMap.typeMapEntryForLKey (elementTypeName),
+    self.mDictTypeName,
+    typedAttributeList,
+    self.mKeyTypeName,
+    optionalElementTypeEntry
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -585,7 +584,7 @@ final class @dictTypeForGeneration : @semanticTypeForGeneration {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificImplementation
-                                          (?let @unifiedTypeMap unused inTypeMap,
+                                          (let @unifiedTypeMap unused inTypeMap,
                                           ?!@stringset ioInclusionSet,
                                           !@string outImplementation ) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
