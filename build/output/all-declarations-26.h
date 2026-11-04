@@ -215,6 +215,8 @@ void routine_checkExtensionGetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (con
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_arrayTypeGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_arrayTypeGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_arrayTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -266,6 +268,8 @@ class GGS_stringset function_forbiddenKeysForStruct (class Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_structureGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_structureGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_structureGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -322,6 +326,8 @@ class GGS_lstring function_makeEmbeddedElementTypeLName (const class GGS_lstring
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_listGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_listGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_listGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -369,6 +375,8 @@ GGS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementa
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_weakClassGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_weakClassGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_weakClassGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //

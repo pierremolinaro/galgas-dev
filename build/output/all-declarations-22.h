@@ -505,6 +505,8 @@ extern const cRegularFileWrapper gWrapperFile_0_typeGenerationTemplate ;
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_typeGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_typeGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_typeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -1022,6 +1024,8 @@ void routine_generatePredefinedTypeFiles_3F__3F__26__26__26_ (const class GGS_st
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_predefinedTypeGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_predefinedTypeGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_predefinedTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //

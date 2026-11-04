@@ -316,6 +316,51 @@ void cPtr_sortedListTypeForGeneration::method_appendSpecificImplementation (cons
 //
 //--------------------------------------------------------------------------------------------------
 
+//--- All files of 'helpers' directory
+
+static const cRegularFileWrapper * gWrapperAllFiles_sortedListGenerationTemplate_2 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of 'helpers' directory
+
+static const cDirectoryWrapper * gWrapperAllDirectories_sortedListGenerationTemplate_2 [1] = {
+  nullptr
+} ;
+
+//--- Directory 'helpers'
+
+const cDirectoryWrapper gWrapperDirectory_2_sortedListGenerationTemplate (
+  "helpers",
+  0,
+  gWrapperAllFiles_sortedListGenerationTemplate_2,
+  0,
+  gWrapperAllDirectories_sortedListGenerationTemplate_2
+) ;
+
+//--- All files of 'build' directory
+
+static const cRegularFileWrapper * gWrapperAllFiles_sortedListGenerationTemplate_1 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of 'build' directory
+
+static const cDirectoryWrapper * gWrapperAllDirectories_sortedListGenerationTemplate_1 [2] = {
+  & gWrapperDirectory_2_sortedListGenerationTemplate,
+  nullptr
+} ;
+
+//--- Directory 'build'
+
+const cDirectoryWrapper gWrapperDirectory_1_sortedListGenerationTemplate (
+  "build",
+  0,
+  gWrapperAllFiles_sortedListGenerationTemplate_1,
+  1,
+  gWrapperAllDirectories_sortedListGenerationTemplate_1
+) ;
+
 //--- All files of '' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_sortedListGenerationTemplate_0 [1] = {
@@ -324,7 +369,8 @@ static const cRegularFileWrapper * gWrapperAllFiles_sortedListGenerationTemplate
 
 //--- All sub-directories of '' directory
 
-static const cDirectoryWrapper * gWrapperAllDirectories_sortedListGenerationTemplate_0 [1] = {
+static const cDirectoryWrapper * gWrapperAllDirectories_sortedListGenerationTemplate_0 [2] = {
+  & gWrapperDirectory_1_sortedListGenerationTemplate,
   nullptr
 } ;
 
@@ -334,7 +380,7 @@ const cDirectoryWrapper gWrapperDirectory_0_sortedListGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_sortedListGenerationTemplate_0,
-  0,
+  1,
   gWrapperAllDirectories_sortedListGenerationTemplate_0
 ) ;
 

@@ -24,6 +24,8 @@
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_sortedListGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_sortedListGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_sortedListGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
