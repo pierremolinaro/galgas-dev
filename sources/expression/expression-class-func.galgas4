@@ -20,49 +20,49 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3ExpressionSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <optional_type_ggs3> (!@lstring outTypeName ) {
-    select
-      outTypeName = @(!"", .here)
-    or
-      $@type$ (?outTypeName) indexing (typeReferenceInConstructor)
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                      !@semanticExpressionAST outExpression ) {
-  //--- Type name
-    <optional_type_ggs3> (?let @lstring typeName)
-    $.$
-    let startOfExpression = @location.here
-  //--- Constructor name
-    $identifier$ (?let classFuncName)
-  //--- Actual arguments
-    let @actualOutputArgumentList expressionList
-    select
-      expressionList = @()
-    or
-      $($
-      <output_expression_list_ggs34> (!?ioDeclarations, ?expressionList)
-      $)$
-    end
-    let endOfExpression = @location.here
-    outExpression = @classFuncExpressionAST (
-      !typeName,
-      classFuncName,
-      expressionList,
-      startOfExpression.union (!endOfExpression)
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3ExpressionSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <optional_type_ggs3> (!@lstring outTypeName ) {
+//    select
+//      outTypeName = @(!"", .here)
+//    or
+//      $@type$ (?outTypeName) indexing (typeReferenceInConstructor)
+//    end
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                      !@semanticExpressionAST outExpression ) {
+//  //--- Type name
+//    <optional_type_ggs3> (?let @lstring typeName)
+//    $.$
+//    let startOfExpression = @location.here
+//  //--- Constructor name
+//    $identifier$ (?let classFuncName)
+//  //--- Actual arguments
+//    let @actualOutputArgumentList expressionList
+//    select
+//      expressionList = @()
+//    or
+//      $($
+//      <output_expression_list_ggs34> (!?ioDeclarations, ?expressionList)
+//      $)$
+//    end
+//    let endOfExpression = @location.here
+//    outExpression = @classFuncExpressionAST (
+//      !typeName,
+//      classFuncName,
+//      expressionList,
+//      startOfExpression.union (!endOfExpression)
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

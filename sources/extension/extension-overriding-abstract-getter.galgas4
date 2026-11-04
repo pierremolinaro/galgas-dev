@@ -30,66 +30,66 @@ final class @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $override$
-    $abstract$
-    $func$
-    $@type$ (?var typeName) indexing (typeReferenceOverrideAbstractExtensionGetter)
-    $.$
-    repeat
-    while
-      $@type$ (?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
-      $.$
-    end
-    $identifier$ (?let getterName) indexing (overrideAbstractExtensionGetterDefinition)
-    let @formalInputParameterListAST formalInputParameterList
-    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
-    $->$
-    <type_definition_ggs3> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionGetterAST (
-      !isPredefined: false,
-      typeName,
-      getterName,
-      formalInputParameterList,
-      returnedTypeName
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <method_declaration_ggs3> (?let @lstring inTypeName, ?!@galgasDeclarationAST ioDeclarations) {
-    $override$
-    $abstract$
-    $func$
-    var typeName = inTypeName
-    repeat
-    while
-      $@type$ (?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
-      $.$
-    end
-    $identifier$ (?let getterName) indexing (overrideAbstractExtensionGetterDefinition)
-    let @formalInputParameterListAST formalInputParameterList
-    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
-    $->$
-    <type_definition_ggs3> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionGetterAST (
-      !isPredefined: false,
-      typeName,
-      getterName,
-      formalInputParameterList,
-      returnedTypeName
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $override$
+//    $abstract$
+//    $func$
+//    $@type$ (?var typeName) indexing (typeReferenceOverrideAbstractExtensionGetter)
+//    $.$
+//    repeat
+//    while
+//      $@type$ (?let t)
+//      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+//      $.$
+//    end
+//    $identifier$ (?let getterName) indexing (overrideAbstractExtensionGetterDefinition)
+//    let @formalInputParameterListAST formalInputParameterList
+//    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
+//    $->$
+//    <type_definition_ggs3> (!?ioDeclarations, ?let returnedTypeName)
+//    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionGetterAST (
+//      !isPredefined: false,
+//      typeName,
+//      getterName,
+//      formalInputParameterList,
+//      returnedTypeName
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <method_declaration_ggs3> (?let @lstring inTypeName, ?!@galgasDeclarationAST ioDeclarations) {
+//    $override$
+//    $abstract$
+//    $func$
+//    var typeName = inTypeName
+//    repeat
+//    while
+//      $@type$ (?let t)
+//      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+//      $.$
+//    end
+//    $identifier$ (?let getterName) indexing (overrideAbstractExtensionGetterDefinition)
+//    let @formalInputParameterListAST formalInputParameterList
+//    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
+//    $->$
+//    <type_definition_ggs3> (!?ioDeclarations, ?let returnedTypeName)
+//    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionGetterAST (
+//      !isPredefined: false,
+//      typeName,
+//      getterName,
+//      formalInputParameterList,
+//      returnedTypeName
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

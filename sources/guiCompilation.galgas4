@@ -114,138 +114,138 @@ list @galgasGUIComponentListAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax galgas3GuiComponentSyntax (galgasScanner3) {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $gui$
-    $identifier$ (?let @lstring mGUIName)
-    ${$
-    var @lstringlist importedOptionList = @()
-    var @guiSimpleAttributeListAST simpleGlobalAttributes = @()
-    var @withLexiqueListAST withLexiqueList = @()
-    var @projectIndexingDescriptorList projectExtensionList = @()
-    repeat
-    while
-      $project$
-      $"string"$ (?let fileExtension)
-      $indexing$
-      $in$
-      $"string"$ (?let indexingPathSuffix)
-      projectExtensionList ++= @(!fileExtension, !indexingPathSuffix)
-    while
-      <gui_attributes> (!?simpleGlobalAttributes)
-    while
-      <gui_with_option_declaration> (!?importedOptionList)
-    while
-      <gui_with_lexique_declaration> (!?withLexiqueList)
-    end
-  //---
-    $}$
-    ioDeclarations.mGUIComponentList ++= @(
-      !mGUIName,
-      !importedOptionList,
-      !simpleGlobalAttributes,
-      !withLexiqueList,
-      !projectExtensionList)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <gui_with_lexique_declaration> (?!@withLexiqueListAST ioWithLexiqueList) {
-    $with$
-    $lexique$
-    $identifier$ (?let @lstring lexiqueReference)
-    var @guiLabelListAST labels = @()
-    var @guiSimpleAttributeListAST simpleAttributes = @()
-    var @guiCompoundAttributeListAST compoundAttributes = @()
-    ${$
-    repeat
-    while
-      $label$
-      let @uint displayStyle
-      select
-        displayStyle = 0
-      or
-        $*$
-        displayStyle = 1
-      end
-      var @terminalLabelListAST terminalList = @()
-      repeat
-        $\$terminal\$$ (?let  @lstring terminal)
-        let @uint displayFlags
-        select
-          displayFlags = 0 // Default
-        or
-          $-$
-          displayFlags = 0xFFFF // Do not diplay
-        or
-          $($
-          $literalInt$ (?let leadingStrip)
-          if leadingStrip.bigint >= 15 then
-            error (leadingStrip:"leading strip should be < 15")
-          end
-          $,$
-          $literalInt$ (?let endingStrip)
-          if endingStrip.bigint >= 15 then
-            error (endingStrip:"tail strip should be < 15")
-          end
-          displayFlags = (leadingStrip.bigint << 4) | endingStrip
-         $)$
-        end
-        terminalList ++= @(!terminal, !displayFlags)
-      while
-        $,$
-      end
-      labels ++= @(!displayStyle, !terminalList, !@location.here)
-    while
-      $identifier$ (?let @lstring key)
-      $"string"$ (?let @lstring name)
-      $:$
-      var value = @lstring (!"", @location.here)
-      repeat
-        $"string"$ (?let @lstring v)
-        value = @lstring (!value.string + v.string, v.location)
-      while
-      end
-      compoundAttributes ++= @(!key, !name, !value)
-    while
-      $identifier$ (?let @lstring name)
-      $:$
-      $"string"$ (?let @lstring value)
-      simpleAttributes ++= @(!name, !value)
-    end
-    $}$
-    ioWithLexiqueList ++= @(!lexiqueReference, !labels, !simpleAttributes, !compoundAttributes)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <gui_with_option_declaration> (?!@lstringlist ioImportedOptionList) {
-    $with$
-    $option$
-    $identifier$ (?let @lstring optionReference)
-    ioImportedOptionList ++= @(!optionReference)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <gui_attributes> (?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes) {
-    $identifier$ (?let @lstring mKey)
-    $:$
-    var mValue = @lstring (!"", .here)
-    repeat
-      $"string"$ (?let @lstring value)
-      mValue = @lstring (!mValue.string + value.string, value.location)
-    while
-    end
-    ioSimpleGlobalAttributes ++= @(!mKey, !mValue)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax galgas3GuiComponentSyntax (galgasScanner3) {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $gui$
+//    $identifier$ (?let @lstring mGUIName)
+//    ${$
+//    var @lstringlist importedOptionList = @()
+//    var @guiSimpleAttributeListAST simpleGlobalAttributes = @()
+//    var @withLexiqueListAST withLexiqueList = @()
+//    var @projectIndexingDescriptorList projectExtensionList = @()
+//    repeat
+//    while
+//      $project$
+//      $"string"$ (?let fileExtension)
+//      $indexing$
+//      $in$
+//      $"string"$ (?let indexingPathSuffix)
+//      projectExtensionList ++= @(!fileExtension, !indexingPathSuffix)
+//    while
+//      <gui_attributes> (!?simpleGlobalAttributes)
+//    while
+//      <gui_with_option_declaration> (!?importedOptionList)
+//    while
+//      <gui_with_lexique_declaration> (!?withLexiqueList)
+//    end
+//  //---
+//    $}$
+//    ioDeclarations.mGUIComponentList ++= @(
+//      !mGUIName,
+//      !importedOptionList,
+//      !simpleGlobalAttributes,
+//      !withLexiqueList,
+//      !projectExtensionList)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <gui_with_lexique_declaration> (?!@withLexiqueListAST ioWithLexiqueList) {
+//    $with$
+//    $lexique$
+//    $identifier$ (?let @lstring lexiqueReference)
+//    var @guiLabelListAST labels = @()
+//    var @guiSimpleAttributeListAST simpleAttributes = @()
+//    var @guiCompoundAttributeListAST compoundAttributes = @()
+//    ${$
+//    repeat
+//    while
+//      $label$
+//      let @uint displayStyle
+//      select
+//        displayStyle = 0
+//      or
+//        $*$
+//        displayStyle = 1
+//      end
+//      var @terminalLabelListAST terminalList = @()
+//      repeat
+//        $\$terminal\$$ (?let  @lstring terminal)
+//        let @uint displayFlags
+//        select
+//          displayFlags = 0 // Default
+//        or
+//          $-$
+//          displayFlags = 0xFFFF // Do not diplay
+//        or
+//          $($
+//          $literalInt$ (?let leadingStrip)
+//          if leadingStrip.bigint >= 15 then
+//            error (leadingStrip:"leading strip should be < 15")
+//          end
+//          $,$
+//          $literalInt$ (?let endingStrip)
+//          if endingStrip.bigint >= 15 then
+//            error (endingStrip:"tail strip should be < 15")
+//          end
+//          displayFlags = (leadingStrip.bigint << 4) | endingStrip
+//         $)$
+//        end
+//        terminalList ++= @(!terminal, !displayFlags)
+//      while
+//        $,$
+//      end
+//      labels ++= @(!displayStyle, !terminalList, !@location.here)
+//    while
+//      $identifier$ (?let @lstring key)
+//      $"string"$ (?let @lstring name)
+//      $:$
+//      var value = @lstring (!"", @location.here)
+//      repeat
+//        $"string"$ (?let @lstring v)
+//        value = @lstring (!value.string + v.string, v.location)
+//      while
+//      end
+//      compoundAttributes ++= @(!key, !name, !value)
+//    while
+//      $identifier$ (?let @lstring name)
+//      $:$
+//      $"string"$ (?let @lstring value)
+//      simpleAttributes ++= @(!name, !value)
+//    end
+//    $}$
+//    ioWithLexiqueList ++= @(!lexiqueReference, !labels, !simpleAttributes, !compoundAttributes)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <gui_with_option_declaration> (?!@lstringlist ioImportedOptionList) {
+//    $with$
+//    $option$
+//    $identifier$ (?let @lstring optionReference)
+//    ioImportedOptionList ++= @(!optionReference)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <gui_attributes> (?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes) {
+//    $identifier$ (?let @lstring mKey)
+//    $:$
+//    var mValue = @lstring (!"", .here)
+//    repeat
+//      $"string"$ (?let @lstring value)
+//      mValue = @lstring (!mValue.string + value.string, value.location)
+//    while
+//    end
+//    ioSimpleGlobalAttributes ++= @(!mKey, !mValue)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

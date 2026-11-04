@@ -42,43 +42,43 @@ final class @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3ExpressionSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                      !@semanticExpressionAST outExpression ) {
-    $[$
-    $filewrapper$
-    $identifier$ (?let filewrapperName) indexing (filewrapperReference)
-    select
-      outExpression = @filewrapperObjectInstanciationInExpressionAST (
-        !filewrapperName
-      )
-    or
-      $.$
-      select
-        $"string"$ (?let @lstring filePath)
-        outExpression = @filewrapperInExpressionAST (
-          !filewrapperName,
-          filePath
-        )
-      or
-        $identifier$ (?let @lstring filewrapperTemplateName) // §§
-        <output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
-        outExpression = @filewrapperTemplateInExpressionAST (
-          !filewrapperName,
-          filewrapperTemplateName,
-          expressionList
-        )
-      end
-    end
-    $]$
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3ExpressionSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                      !@semanticExpressionAST outExpression ) {
+//    $[$
+//    $filewrapper$
+//    $identifier$ (?let filewrapperName) indexing (filewrapperReference)
+//    select
+//      outExpression = @filewrapperObjectInstanciationInExpressionAST (
+//        !filewrapperName
+//      )
+//    or
+//      $.$
+//      select
+//        $"string"$ (?let @lstring filePath)
+//        outExpression = @filewrapperInExpressionAST (
+//          !filewrapperName,
+//          filePath
+//        )
+//      or
+//        $identifier$ (?let @lstring filewrapperTemplateName) // §§
+//        <output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
+//        outExpression = @filewrapperTemplateInExpressionAST (
+//          !filewrapperName,
+//          filewrapperTemplateName,
+//          expressionList
+//        )
+//      end
+//    end
+//    $]$
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

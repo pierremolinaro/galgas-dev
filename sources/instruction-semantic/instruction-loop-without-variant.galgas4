@@ -19,40 +19,40 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3InstructionsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    $loop$
-    let instructionLocation = @location.here
-    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST firstInstructions)
-  //---
-    let endOfFirstInstructions = @location.here
-    $while$
-    <comma_separated_expression_ggs3> (!?ioDeclarations, ?let loopExpression)
-    let endOfLoopExpression = @location.here
-    $do$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST secondInstructions)
-    let endOfSecondInstructions = @location.here
-    $end$
-    let endOfLoopInstruction = @location.here
-    outInstruction = @loopInstructionWithoutVariantAST (
-      !instructionLocation,
-      firstInstructions,
-      endOfFirstInstructions,
-      loopExpression,
-      endOfLoopExpression,
-      secondInstructions,
-      endOfSecondInstructions,
-      endOfLoopInstruction
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3InstructionsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $loop$
+//    let instructionLocation = @location.here
+//    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST firstInstructions)
+//  //---
+//    let endOfFirstInstructions = @location.here
+//    $while$
+//    <comma_separated_expression_ggs3> (!?ioDeclarations, ?let loopExpression)
+//    let endOfLoopExpression = @location.here
+//    $do$
+//    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST secondInstructions)
+//    let endOfSecondInstructions = @location.here
+//    $end$
+//    let endOfLoopInstruction = @location.here
+//    outInstruction = @loopInstructionWithoutVariantAST (
+//      !instructionLocation,
+//      firstInstructions,
+//      endOfFirstInstructions,
+//      loopExpression,
+//      endOfLoopExpression,
+//      secondInstructions,
+//      endOfSecondInstructions,
+//      endOfLoopInstruction
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

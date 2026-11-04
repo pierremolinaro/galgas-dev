@@ -19,93 +19,93 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3InstructionsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    $switch$
-    let instructionLocation = @location.here
-    <expression_ggs3> (!?ioDeclarations, ?let switchExpression)
-    let endOfSwitchExpression = @location.here
-    var @switchBranchesAST switchBranches = @()
-    repeat
-      $case$
-      <switch_case> (
-        !?ioDeclarations,
-        ?let [@lstring] constantNameList,
-        ?let @switchExtractedValuesListAST associatedValuesExtraction
-      )
-      $:$
-      <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let instructions)
-      switchBranches ++= @(!constantNameList, !associatedValuesExtraction, !instructions, !@location.here)
-    while
-    end
-    $end$
-    let endOfSwitchInstruction = @location.here
-    outInstruction = @switchInstructionAST (
-      !instructionLocation,
-      switchExpression,
-      endOfSwitchExpression,
-      switchBranches,
-      endOfSwitchInstruction
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <switch_case> (?!@galgasDeclarationAST ioDeclarations,
-                      ![@lstring] outConstantNameList,
-                      !@switchExtractedValuesListAST outAssociatedValuesExtraction) {
-    outConstantNameList = @()
-    repeat
-      $identifier$ (?let @lstring constantName)
-      !?outConstantNameList.append (!constantName)
-    while
-      $,$
-    end
-    outAssociatedValuesExtraction = @()
-    select
-    or
-      $($
-      repeat
-        select
-          $literalInt$ (?let n)
-          $*$
-          for * in 0 ..< n.bigint do
-            outAssociatedValuesExtraction ++= @(!"".here, !"".here, !false)
-          end
-         or
-          $*$
-          outAssociatedValuesExtraction ++= @(!"".here, !"".here, !false)
-         or
-          let @lstring typeName
-          select
-            <type_definition_ggs3> (!?ioDeclarations, ?typeName)
-          or
-            typeName = "".here
-          end
-          let @bool constantMarkedAsUnused
-          select
-            constantMarkedAsUnused = false
-          or
-            $unused$
-            constantMarkedAsUnused = true
-          end
-          $identifier$ (?let @lstring constantName)
-          outAssociatedValuesExtraction ++= @(!typeName, !constantName, !constantMarkedAsUnused)
-        end
-      while
-        $,$
-      end
-      $)$
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3InstructionsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $switch$
+//    let instructionLocation = @location.here
+//    <expression_ggs3> (!?ioDeclarations, ?let switchExpression)
+//    let endOfSwitchExpression = @location.here
+//    var @switchBranchesAST switchBranches = @()
+//    repeat
+//      $case$
+//      <switch_case> (
+//        !?ioDeclarations,
+//        ?let [@lstring] constantNameList,
+//        ?let @switchExtractedValuesListAST associatedValuesExtraction
+//      )
+//      $:$
+//      <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let instructions)
+//      switchBranches ++= @(!constantNameList, !associatedValuesExtraction, !instructions, !@location.here)
+//    while
+//    end
+//    $end$
+//    let endOfSwitchInstruction = @location.here
+//    outInstruction = @switchInstructionAST (
+//      !instructionLocation,
+//      switchExpression,
+//      endOfSwitchExpression,
+//      switchBranches,
+//      endOfSwitchInstruction
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <switch_case> (?!@galgasDeclarationAST ioDeclarations,
+//                      ![@lstring] outConstantNameList,
+//                      !@switchExtractedValuesListAST outAssociatedValuesExtraction) {
+//    outConstantNameList = @()
+//    repeat
+//      $identifier$ (?let @lstring constantName)
+//      !?outConstantNameList.append (!constantName)
+//    while
+//      $,$
+//    end
+//    outAssociatedValuesExtraction = @()
+//    select
+//    or
+//      $($
+//      repeat
+//        select
+//          $literalInt$ (?let n)
+//          $*$
+//          for * in 0 ..< n.bigint do
+//            outAssociatedValuesExtraction ++= @(!"".here, !"".here, !false)
+//          end
+//         or
+//          $*$
+//          outAssociatedValuesExtraction ++= @(!"".here, !"".here, !false)
+//         or
+//          let @lstring typeName
+//          select
+//            <type_definition_ggs3> (!?ioDeclarations, ?typeName)
+//          or
+//            typeName = "".here
+//          end
+//          let @bool constantMarkedAsUnused
+//          select
+//            constantMarkedAsUnused = false
+//          or
+//            $unused$
+//            constantMarkedAsUnused = true
+//          end
+//          $identifier$ (?let @lstring constantName)
+//          outAssociatedValuesExtraction ++= @(!typeName, !constantName, !constantMarkedAsUnused)
+//        end
+//      while
+//        $,$
+//      end
+//      $)$
+//    end
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

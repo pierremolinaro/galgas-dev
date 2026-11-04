@@ -33,90 +33,90 @@ final class @overridingExtensionGetterAST : @semanticDeclarationAST {
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $override$
-    $func$
-    $@type$ (?var typeName) indexing (typeReferenceOverrideExtensionGetter)
-    $.$
-    repeat
-    while
-      $@type$ (?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
-      $.$
-    end
-    $identifier$ (?let @lstring getterName) indexing (overrideExtensionGetterDefinition)
-    let @formalInputParameterListAST formalInputParameterList
-    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
-    $->$
-    <type_definition_ggs3> (!?ioDeclarations, ?let mReturnedTypeName)
-    let @lstring resultVariableName
-    select
-      $identifier$ (?resultVariableName)
-    or
-      resultVariableName = @(!"result", .here)
-    end
-    ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
-    let @location endOfInstructionList = @location.here
-    $}$
-    ioDeclarations.mDeclarationList ++= @(!@overridingExtensionGetterAST (
-      !isPredefined: false,
-      typeName,
-      getterName,
-      formalInputParameterList,
-      mReturnedTypeName,
-      resultVariableName,
-      routineInstructionList,
-      endOfInstructionList
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <method_declaration_ggs3> (?let @lstring inTypeName, ?!@galgasDeclarationAST ioDeclarations) {
-    $override$
-    $func$
-    var typeName = inTypeName
-    repeat
-    while
-      $@type$ (?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
-      $.$
-    end
-    $identifier$ (?let @lstring getterName) indexing (overrideExtensionGetterDefinition)
-    let @formalInputParameterListAST formalInputParameterList
-    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
-    $->$
-    <type_definition_ggs3> (!?ioDeclarations, ?let mReturnedTypeName)
-    let @lstring resultVariableName
-    select
-      $identifier$ (?resultVariableName)
-    or
-      resultVariableName = @(!"result", .here)
-    end
-    ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
-    let @location endOfInstructionList = @location.here
-    $}$
-    ioDeclarations.mDeclarationList ++= @(!@overridingExtensionGetterAST (
-      !isPredefined: false,
-      typeName,
-      getterName,
-      formalInputParameterList,
-      mReturnedTypeName,
-      resultVariableName,
-      routineInstructionList,
-      endOfInstructionList
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $override$
+//    $func$
+//    $@type$ (?var typeName) indexing (typeReferenceOverrideExtensionGetter)
+//    $.$
+//    repeat
+//    while
+//      $@type$ (?let t)
+//      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+//      $.$
+//    end
+//    $identifier$ (?let @lstring getterName) indexing (overrideExtensionGetterDefinition)
+//    let @formalInputParameterListAST formalInputParameterList
+//    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
+//    $->$
+//    <type_definition_ggs3> (!?ioDeclarations, ?let mReturnedTypeName)
+//    let @lstring resultVariableName
+//    select
+//      $identifier$ (?resultVariableName)
+//    or
+//      resultVariableName = @(!"result", .here)
+//    end
+//    ${$
+//    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
+//    let @location endOfInstructionList = @location.here
+//    $}$
+//    ioDeclarations.mDeclarationList ++= @(!@overridingExtensionGetterAST (
+//      !isPredefined: false,
+//      typeName,
+//      getterName,
+//      formalInputParameterList,
+//      mReturnedTypeName,
+//      resultVariableName,
+//      routineInstructionList,
+//      endOfInstructionList
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <method_declaration_ggs3> (?let @lstring inTypeName, ?!@galgasDeclarationAST ioDeclarations) {
+//    $override$
+//    $func$
+//    var typeName = inTypeName
+//    repeat
+//    while
+//      $@type$ (?let t)
+//      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+//      $.$
+//    end
+//    $identifier$ (?let @lstring getterName) indexing (overrideExtensionGetterDefinition)
+//    let @formalInputParameterListAST formalInputParameterList
+//    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
+//    $->$
+//    <type_definition_ggs3> (!?ioDeclarations, ?let mReturnedTypeName)
+//    let @lstring resultVariableName
+//    select
+//      $identifier$ (?resultVariableName)
+//    or
+//      resultVariableName = @(!"result", .here)
+//    end
+//    ${$
+//    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+//    let @location endOfInstructionList = @location.here
+//    $}$
+//    ioDeclarations.mDeclarationList ++= @(!@overridingExtensionGetterAST (
+//      !isPredefined: false,
+//      typeName,
+//      getterName,
+//      formalInputParameterList,
+//      mReturnedTypeName,
+//      resultVariableName,
+//      routineInstructionList,
+//      endOfInstructionList
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

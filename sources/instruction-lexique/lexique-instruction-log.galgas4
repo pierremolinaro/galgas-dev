@@ -27,18 +27,18 @@ final class @lexicalLogInstructionAST : @lexicalInstructionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3LexiqueComponentSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
-    $log$
-    ioInstructionList ++= @(!@lexicalLogInstructionAST ())
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3LexiqueComponentSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
+//    $log$
+//    ioInstructionList ++= @(!@lexicalLogInstructionAST ())
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

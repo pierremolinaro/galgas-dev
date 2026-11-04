@@ -30,37 +30,37 @@ final class @repeatInstruction : @syntaxInstructionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3SyntaxComponentSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                 !@syntaxInstructionAST outInstruction ) {
-    $repeat$
-    let mRepeatInstructionLocation = @location.here
-    <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList mRepeatedInstructionList)
-    let endOf_repeated_instructions = @location.here
-    var mRepeatBranchList = @listOfSyntaxInstructionList ()
-    repeat
-      $while$
-      <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList mInstructionList)
-      mRepeatBranchList ++= @(! mInstructionList, !@location.here)
-    while
-    end
-    $end$
-    let endOf_repeat_instruction = @location.here
-    outInstruction = @repeatInstruction (
-      !mRepeatInstructionLocation,
-      mRepeatedInstructionList,
-      endOf_repeated_instructions,
-      mRepeatBranchList,
-      endOf_repeat_instruction
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3SyntaxComponentSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                 !@syntaxInstructionAST outInstruction ) {
+//    $repeat$
+//    let mRepeatInstructionLocation = @location.here
+//    <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList mRepeatedInstructionList)
+//    let endOf_repeated_instructions = @location.here
+//    var mRepeatBranchList = @listOfSyntaxInstructionList ()
+//    repeat
+//      $while$
+//      <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList mInstructionList)
+//      mRepeatBranchList ++= @(! mInstructionList, !@location.here)
+//    while
+//    end
+//    $end$
+//    let endOf_repeat_instruction = @location.here
+//    outInstruction = @repeatInstruction (
+//      !mRepeatInstructionLocation,
+//      mRepeatedInstructionList,
+//      endOf_repeated_instructions,
+//      mRepeatBranchList,
+//      endOf_repeat_instruction
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

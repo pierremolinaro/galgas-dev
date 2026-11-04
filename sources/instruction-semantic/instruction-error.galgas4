@@ -45,80 +45,80 @@ final class @errorInstructionAST : @semanticInstructionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3InstructionsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <issue_fixit> (?!@galgasDeclarationAST ioDeclarations,
-                      !@fixitListAST outFixitListAST) {
-    outFixitListAST = @()
-    select
-    or
-      $fixit$
-      var hasFixItRemove = false
-      repeat
-      while
-        $remove$
-        if hasFixItRemove then
-          warning .here : "duplicated action" fixit %remove
-        else
-          outFixitListAST ++= @(!.fixItRemove)
-          hasFixItRemove = true
-        end
-      while
-        $replace$
-        let errorLocation = @location.here
-        <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        outFixitListAST ++= @(!.fixItReplace (!exp:expression, !errorLocation:errorLocation))
-      while
-        $insert$ ; $after$
-        let errorLocation = @location.here
-        <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        outFixitListAST ++= @(!.fixItInsertAfter (!exp:expression, !errorLocation:errorLocation))
-      while
-        $insert$ ; $before$
-        let errorLocation = @location.here
-        <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-        outFixitListAST ++= @(!.fixItInsertBefore (!exp:expression, !errorLocation:errorLocation))
-      end
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    $error$
-    let instructionLocation = @location.here
-    $($
-    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mReceiverExpression)
-    $:$
-    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mErrorExpression)
-    var mBuiltVariableList = @lstringlist ()
-    select
-    or
-      $spoil$
-      repeat
-       $identifier$ (?let builtVariableName)
-       mBuiltVariableList ++= @(!builtVariableName)
-      while
-        $,$
-      end
-    end
-    <issue_fixit> (!?ioDeclarations, ?let @fixitListAST fixitListAST)
-    $)$
-    outInstruction = @errorInstructionAST (
-      !instructionLocation,
-      mReceiverExpression,
-      mErrorExpression,
-      mBuiltVariableList,
-      fixitListAST
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3InstructionsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <issue_fixit> (?!@galgasDeclarationAST ioDeclarations,
+//                      !@fixitListAST outFixitListAST) {
+//    outFixitListAST = @()
+//    select
+//    or
+//      $fixit$
+//      var hasFixItRemove = false
+//      repeat
+//      while
+//        $remove$
+//        if hasFixItRemove then
+//          warning .here : "duplicated action" fixit %remove
+//        else
+//          outFixitListAST ++= @(!.fixItRemove)
+//          hasFixItRemove = true
+//        end
+//      while
+//        $replace$
+//        let errorLocation = @location.here
+//        <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+//        outFixitListAST ++= @(!.fixItReplace (!exp:expression, !errorLocation:errorLocation))
+//      while
+//        $insert$ ; $after$
+//        let errorLocation = @location.here
+//        <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+//        outFixitListAST ++= @(!.fixItInsertAfter (!exp:expression, !errorLocation:errorLocation))
+//      while
+//        $insert$ ; $before$
+//        let errorLocation = @location.here
+//        <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+//        outFixitListAST ++= @(!.fixItInsertBefore (!exp:expression, !errorLocation:errorLocation))
+//      end
+//    end
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $error$
+//    let instructionLocation = @location.here
+//    $($
+//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mReceiverExpression)
+//    $:$
+//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mErrorExpression)
+//    var mBuiltVariableList = @lstringlist ()
+//    select
+//    or
+//      $spoil$
+//      repeat
+//       $identifier$ (?let builtVariableName)
+//       mBuiltVariableList ++= @(!builtVariableName)
+//      while
+//        $,$
+//      end
+//    end
+//    <issue_fixit> (!?ioDeclarations, ?let @fixitListAST fixitListAST)
+//    $)$
+//    outInstruction = @errorInstructionAST (
+//      !instructionLocation,
+//      mReceiverExpression,
+//      mErrorExpression,
+//      mBuiltVariableList,
+//      fixitListAST
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

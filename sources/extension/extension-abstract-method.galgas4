@@ -19,56 +19,56 @@
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $abstract$
-    $proc$
-    $@type$ (?var typeName) indexing (typeReferenceAbstractExtensionMethod)
-    $.$
-    repeat
-    while
-      $@type$ (?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
-      $.$
-    end
-    $identifier$ (?let @lstring methodName) indexing (abstractExtensionMethodDefinition)
-    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionMethodAST (
-      !isPredefined: false,
-      typeName,
-      methodName,
-      formalParameterList
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <method_declaration_ggs3> (?let @lstring inTypeName, ?!@galgasDeclarationAST ioDeclarations) {
-    $abstract$
-    $proc$
-    var typeName = inTypeName
-    repeat
-    while
-      $@type$ (?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
-      $.$
-    end
-    $identifier$ (?let @lstring methodName) indexing (abstractExtensionMethodDefinition)
-    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionMethodAST (
-      !isPredefined: false,
-      typeName,
-      methodName,
-      formalParameterList
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $abstract$
+//    $proc$
+//    $@type$ (?var typeName) indexing (typeReferenceAbstractExtensionMethod)
+//    $.$
+//    repeat
+//    while
+//      $@type$ (?let t)
+//      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+//      $.$
+//    end
+//    $identifier$ (?let @lstring methodName) indexing (abstractExtensionMethodDefinition)
+//    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
+//    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionMethodAST (
+//      !isPredefined: false,
+//      typeName,
+//      methodName,
+//      formalParameterList
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <method_declaration_ggs3> (?let @lstring inTypeName, ?!@galgasDeclarationAST ioDeclarations) {
+//    $abstract$
+//    $proc$
+//    var typeName = inTypeName
+//    repeat
+//    while
+//      $@type$ (?let t)
+//      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+//      $.$
+//    end
+//    $identifier$ (?let @lstring methodName) indexing (abstractExtensionMethodDefinition)
+//    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
+//    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionMethodAST (
+//      !isPredefined: false,
+//      typeName,
+//      methodName,
+//      formalParameterList
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

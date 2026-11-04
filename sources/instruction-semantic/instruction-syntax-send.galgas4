@@ -17,24 +17,24 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3SyntaxComponentSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                  !@syntaxInstructionAST outInstruction) {
-    $send$
-    let instructionLocation = @location.here
-    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sentExpression)
-    outInstruction = @syntaxSendInstructionAST (
-      !instructionLocation,
-      sentExpression
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3SyntaxComponentSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                  !@syntaxInstructionAST outInstruction) {
+//    $send$
+//    let instructionLocation = @location.here
+//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sentExpression)
+//    outInstruction = @syntaxSendInstructionAST (
+//      !instructionLocation,
+//      sentExpression
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

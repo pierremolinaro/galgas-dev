@@ -37,412 +37,412 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
 
 //--------------------------------------------------------------------------------------------------
 
-syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $lexique$
-  //--- Lexique Component Name
-    $identifier$ (?let @lstring lexiqueComponentName)
-    ${$
-  //--- Parse lexique body
-    var @templateDelimitorListAST templateDelimitorList = @()
-    var @templateReplacementListAST templateReplacementList = @()
-    var @lexicalAttributeListAST lexicalAttributeList = @()
-    var @lexicalStyleListAST lexicalStyleList = @()
-    var @terminalDeclarationListAST terminalDeclarationList = @()
-    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = @()
-    var @lexicalListDeclarationListAST lexicalListDeclarationList = @()
-    var @lexicalRuleListAST lexicalRuleList = @()
-    var @indexingListAST indexingListAST = @()
-    repeat
-    while
-      <template_delimitor_ggs3> (!? templateDelimitorList)
-    while
-      <template_replacement_ggs3> (!? templateReplacementList)
-    while
-      <lexical_attribute_declaration_ggs3> (!? lexicalAttributeList)
-    while
-      <style_declaration_ggs3> (!? lexicalStyleList)
-    while
-      <terminal_declaration_ggs3> (!? terminalDeclarationList)
-    while
-      <lexical_list_declaration_ggs3> (!? lexicalListDeclarationList)
-    while
-      <lexical_explicit_rule_ggs3> (!? lexicalRuleList)
-    while
-      <lexical_implicit_rule_ggs3> (!? lexicalRuleList)
-    while
-      <lexical_message_declaration_ggs3> (!?lexicalMessageDeclarationList)
-    while
-      <lexical_indexing_declaration_ggs3> (!?indexingListAST)
-    end
-    $}$
-    ioDeclarations.mDeclarationList ++= @(!@lexiqueComponentAST (
-      !isPredefined: false, // Is not predefined
-      lexiqueComponentName,
-      false, // isTemplate
-      !templateDelimitorList,
-      templateReplacementList,
-      lexicalAttributeList,
-      lexicalStyleList,
-      terminalDeclarationList,
-      lexicalMessageDeclarationList,
-      lexicalListDeclarationList,
-      lexicalRuleList,
-      indexingListAST
-    ))
-  }
-
- //································································································
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $template$
-    $lexique$
-  //--- Lexique Component Name
-    $identifier$ (?let @lstring lexiqueComponentName)
-    ${$
-  //--- Parse lexique body
-    var @templateDelimitorListAST templateDelimitorList = @()
-    var @templateReplacementListAST templateReplacementList = @()
-    var @lexicalAttributeListAST lexicalAttributeList = @()
-    var @lexicalStyleListAST lexicalStyleList = @()
-    var @terminalDeclarationListAST terminalDeclarationList = @()
-    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = @()
-    var @lexicalListDeclarationListAST lexicalListDeclarationList = @()
-    var @lexicalRuleListAST lexicalRuleList = @()
-    var @indexingListAST indexingListAST = @()
-    repeat
-    while
-      <template_delimitor_ggs3> (!? templateDelimitorList)
-    while
-      <template_replacement_ggs3> (!? templateReplacementList)
-    while
-      <lexical_attribute_declaration_ggs3> (!? lexicalAttributeList)
-    while
-      <style_declaration_ggs3> (!? lexicalStyleList)
-    while
-      <terminal_declaration_ggs3> (!? terminalDeclarationList)
-    while
-      <lexical_list_declaration_ggs3> (!? lexicalListDeclarationList)
-    while
-      <lexical_explicit_rule_ggs3> (!? lexicalRuleList)
-    while
-      <lexical_implicit_rule_ggs3> (!? lexicalRuleList)
-    while
-      <lexical_message_declaration_ggs3> (!?lexicalMessageDeclarationList)
-    while
-      <lexical_indexing_declaration_ggs3> (!?indexingListAST)
-    end
-    $}$
-    ioDeclarations.mDeclarationList ++= @(!@lexiqueComponentAST (
-      !isPredefined: false, // Is not predefined
-      lexiqueComponentName,
-      true, // isTemplate
-      templateDelimitorList,
-      templateReplacementList,
-      lexicalAttributeList,
-      lexicalStyleList,
-      terminalDeclarationList,
-      lexicalMessageDeclarationList,
-      lexicalListDeclarationList,
-      lexicalRuleList,
-      indexingListAST
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_indexing_declaration_ggs3> (?!@indexingListAST ioIndexingListAST ) {
-    $indexing$
-    $identifier$ (?let @lstring indexName) indexing (indexingNameDefinition)
-    $:$
-    $"string"$ (?let @lstring indexComment)
-    ioIndexingListAST ++= @(!indexName, !indexComment)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_message_declaration_ggs3>
-    (?!@lexicalMessageDeclarationListAST ioLexicalMessageDeclarationList ) {
-    $message$
-    $identifier$ (?let @lstring messageName)
-    $:$
-    $"string"$ (?let @lstring messageValue)
-    ioLexicalMessageDeclarationList ++= @(!messageName, !messageValue)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_implicit_rule_ggs3> (?!@lexicalRuleListAST ioLexicalImplicitRuleList ) {
-    $rule$
-    $list$
-    $identifier$ (?let @lstring listName)
-    ioLexicalImplicitRuleList ++= @(!@lexicalImplicitRuleAST (!listName))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_explicit_rule_ggs3> (?!@lexicalRuleListAST ioLexicalExplicitRuleList ) {
-    $rule$
-    <lexical_expression> (?let @lexicalExpressionAST lexicalRuleExpression)
-    ${$
-    var @lexicalInstructionListAST instructionList = @()
-    repeat
-    while
-      <lexical_instruction> (!?instructionList)
-    end
-    $}$
-    ioLexicalExplicitRuleList ++= @(!@lexicalExplicitRuleAST (!lexicalRuleExpression, instructionList))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList ) {
-    $send$
-    <lexical_send_instruction> (?let @lexicalInstructionAST instruction)
-    ioInstructionList ++= @(!instruction)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <repeat_while_branch> (?!@lexicalWhileBranchListAST ioLexicalWhileBranchList ) {
-    $while$
-    <lexical_expression> (?let @lexicalExpressionAST whileExpression)
-    $:$
-    var @lexicalInstructionListAST whileInstructionList = @()
-    repeat
-    while
-      <lexical_instruction> (!?whileInstructionList)
-    end
-    ioLexicalWhileBranchList ++= @(!whileExpression, !whileInstructionList)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
-    $'char'$ (?let @lchar character)
-    outEffectiveArgument = @lexicalCharacterInputArgumentAST (!character)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
-    $literalInt$ (?let unsignedValue)
-    outEffectiveArgument = @lexicalUnsignedInputArgumentAST (!unsignedValue)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
-    let currentLocation = @location.here
-    $*$
-    outEffectiveArgument = @lexicalCurrentCharacterInputArgumentAST (!currentLocation)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
-    $identifier$ (?let idf)
-    select
-      outEffectiveArgument = @lexicalAttributeInputArgumentAST (!idf)
-    or
-      $($
-      var @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = @()
-      repeat
-      while
-        $!$
-        <lexical_output_effective_argument> (?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg)
-        functionActualArgumentList ++= @(!arg)
-      end
-      $)$
-      outEffectiveArgument = @lexicalFunctionInputArgumentAST (!idf, functionActualArgumentList)
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_expression> (!@lexicalExpressionAST outExpression ) {
-    <lexical_term> (?outExpression)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_term> (!@lexicalExpressionAST outExpression ) {
-    <lexical_factor> (?outExpression)
-    repeat
-    while
-      $|$
-      <lexical_factor> (?let rightExpression)
-      outExpression = @lexicalOrExpressionAST (!outExpression, rightExpression)
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_factor>(!@lexicalExpressionAST outExpression ) {
-    $"string"$ (?let string)
-    outExpression = @lexicalStringMatchAST (!string)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_factor> (!@lexicalExpressionAST outExpression ) {
-    $~$
-    $"string"$ (?let string)
-    $error$
-    $identifier$ (?let errorMessage)
-    outExpression = @lexicalStringNotMatchAST (!string, errorMessage)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_factor> (!@lexicalExpressionAST outExpression ) {
-    $'char'$ (?let @lchar character)
-    select
-      outExpression = @lexicalCharacterMatchAST (!character)
-    or
-      $->$
-      $'char'$ (?let @lchar upperBound)
-      outExpression = @lexicalCharacterIntervalMatchAST (!character, upperBound)
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_factor> (!@lexicalExpressionAST outExpression ) {
-    $identifier$ (?let @lstring characterSet)
-    outExpression = @lexicalCharacterSetMatchAST (!characterSet)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_list_declaration_ggs3> (?!@lexicalListDeclarationListAST ioLexicalListDeclarationList ) {
-    $list$
-    $identifier$ (?let name)
-    var @sentLexicalAttributeListAST sentAttributeList = @()
-    repeat
-    while
-      $!selector:$ (?let selector)
-      $identifier$ (?let sentAttribute)
-      sentAttributeList ++= @(!selector, !sentAttribute)
-    end
-    let @lstring theStyle // Empty string if no style
-    select
-      $style$
-      $identifier$ (? theStyle)
-    or
-      theStyle = @lstring (!"", @location.here)
-    end
-    $error$ ; $message$
-    $"string"$ (?let @lstring errorMessage)
-    ${$
-    var entryList = @lexicalListEntryListAST ()
-    repeat
-      <lexical_list_entry> (!?entryList)
-    while
-      $,$
-    end
-    $}$
-    ioLexicalListDeclarationList ++= @(!name, !theStyle, !errorMessage, !sentAttributeList, !entryList)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_list_entry> (?!@lexicalListEntryListAST ioLexicalListEntryList ) {
-    $"string"$ (?let @lstring entrySpelling)
-    var isTemplateEndMark = false
-    var nonAtomicSelection = false
-    repeat
-    while
-      $%templateEndMark$
-      isTemplateEndMark = true
-    while
-      $%nonAtomicSelection$
-      nonAtomicSelection = true
-    end
-    let @lstring terminalSpelling
-    select
-      $->$
-      $\$terminal\$$ (? terminalSpelling)
-    or
-      terminalSpelling = entrySpelling
-    end
-    ioLexicalListEntryList ++= @(
-      !entrySpelling,
-      !terminalSpelling,
-      !nonAtomicSelection: nonAtomicSelection,
-      !isEndOfTemplateMark: isTemplateEndMark)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_attribute_declaration_ggs3> (?!@lexicalAttributeListAST ioLexicalAttributeList ) {
-    $@type$ (?let @lstring typeName)
-    $identifier$ (?let @lstring name)
-    ioLexicalAttributeList ++= @(!typeName, !name)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <terminal_declaration_ggs3> (?!@terminalDeclarationListAST ioTerminalDeclarationList ) {
-    $\$terminal\$$ (?let @lstring name) indexing (terminalDeclaration)
-    var sentAttributeList = @sentLexicalAttributeListAST ()
-    repeat
-    while
-      $!$
-      let selector = "".here
-      $identifier$ (?let sentAttribute)
-      sentAttributeList ++= @(!selector, !sentAttribute)
-    end
-    var @lstring theStyle = "".nowhere // Empty string if no style
-    var nonAtomicSelection = false
-    var templateEndMark = false
-    repeat
-    while
-      $style$
-      if theStyle.string != "" then
-        error (@location.here : "duplicated style reference")
-      end
-      $identifier$ (? theStyle)
-    while
-      $%nonAtomicSelection$
-      nonAtomicSelection = true
-    while
-      $%templateEndMark$
-      templateEndMark = true
-    end
-    $error$ ; $message$
-    $"string"$ (?let @lstring errorMessage)
-    ioTerminalDeclarationList ++= @(
-      !name,
-      !sentAttributeList,
-      !errorMessage,
-      !theStyle,
-      !nonAtomicSelection: nonAtomicSelection,
-      !isEndOfTemplateMark: templateEndMark)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <style_declaration_ggs3> (?!@lexicalStyleListAST ioLexicalStyleList ) {
-    $style$
-    $identifier$ (?let @lstring styleIdentifier)
-    if styleIdentifier.string.containsCharacter (!'_') then
-      error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character")
-    end
-    if styleIdentifier.string.containsCharacterInRange (!'0', !'9') then
-      error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit")
-    end
-    $->$
-    $"string"$ (?let @lstring comment)
-    ioLexicalStyleList ++= @(!styleIdentifier, !comment)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax galgas3LexiqueComponentSyntax (galgasScanner3) {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $lexique$
+//  //--- Lexique Component Name
+//    $identifier$ (?let @lstring lexiqueComponentName)
+//    ${$
+//  //--- Parse lexique body
+//    var @templateDelimitorListAST templateDelimitorList = @()
+//    var @templateReplacementListAST templateReplacementList = @()
+//    var @lexicalAttributeListAST lexicalAttributeList = @()
+//    var @lexicalStyleListAST lexicalStyleList = @()
+//    var @terminalDeclarationListAST terminalDeclarationList = @()
+//    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = @()
+//    var @lexicalListDeclarationListAST lexicalListDeclarationList = @()
+//    var @lexicalRuleListAST lexicalRuleList = @()
+//    var @indexingListAST indexingListAST = @()
+//    repeat
+//    while
+//      <template_delimitor_ggs3> (!? templateDelimitorList)
+//    while
+//      <template_replacement_ggs3> (!? templateReplacementList)
+//    while
+//      <lexical_attribute_declaration_ggs3> (!? lexicalAttributeList)
+//    while
+//      <style_declaration_ggs3> (!? lexicalStyleList)
+//    while
+//      <terminal_declaration_ggs3> (!? terminalDeclarationList)
+//    while
+//      <lexical_list_declaration_ggs3> (!? lexicalListDeclarationList)
+//    while
+//      <lexical_explicit_rule_ggs3> (!? lexicalRuleList)
+//    while
+//      <lexical_implicit_rule_ggs3> (!? lexicalRuleList)
+//    while
+//      <lexical_message_declaration_ggs3> (!?lexicalMessageDeclarationList)
+//    while
+//      <lexical_indexing_declaration_ggs3> (!?indexingListAST)
+//    end
+//    $}$
+//    ioDeclarations.mDeclarationList ++= @(!@lexiqueComponentAST (
+//      !isPredefined: false, // Is not predefined
+//      lexiqueComponentName,
+//      false, // isTemplate
+//      !templateDelimitorList,
+//      templateReplacementList,
+//      lexicalAttributeList,
+//      lexicalStyleList,
+//      terminalDeclarationList,
+//      lexicalMessageDeclarationList,
+//      lexicalListDeclarationList,
+//      lexicalRuleList,
+//      indexingListAST
+//    ))
+//  }
+//
+// //································································································
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $template$
+//    $lexique$
+//  //--- Lexique Component Name
+//    $identifier$ (?let @lstring lexiqueComponentName)
+//    ${$
+//  //--- Parse lexique body
+//    var @templateDelimitorListAST templateDelimitorList = @()
+//    var @templateReplacementListAST templateReplacementList = @()
+//    var @lexicalAttributeListAST lexicalAttributeList = @()
+//    var @lexicalStyleListAST lexicalStyleList = @()
+//    var @terminalDeclarationListAST terminalDeclarationList = @()
+//    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = @()
+//    var @lexicalListDeclarationListAST lexicalListDeclarationList = @()
+//    var @lexicalRuleListAST lexicalRuleList = @()
+//    var @indexingListAST indexingListAST = @()
+//    repeat
+//    while
+//      <template_delimitor_ggs3> (!? templateDelimitorList)
+//    while
+//      <template_replacement_ggs3> (!? templateReplacementList)
+//    while
+//      <lexical_attribute_declaration_ggs3> (!? lexicalAttributeList)
+//    while
+//      <style_declaration_ggs3> (!? lexicalStyleList)
+//    while
+//      <terminal_declaration_ggs3> (!? terminalDeclarationList)
+//    while
+//      <lexical_list_declaration_ggs3> (!? lexicalListDeclarationList)
+//    while
+//      <lexical_explicit_rule_ggs3> (!? lexicalRuleList)
+//    while
+//      <lexical_implicit_rule_ggs3> (!? lexicalRuleList)
+//    while
+//      <lexical_message_declaration_ggs3> (!?lexicalMessageDeclarationList)
+//    while
+//      <lexical_indexing_declaration_ggs3> (!?indexingListAST)
+//    end
+//    $}$
+//    ioDeclarations.mDeclarationList ++= @(!@lexiqueComponentAST (
+//      !isPredefined: false, // Is not predefined
+//      lexiqueComponentName,
+//      true, // isTemplate
+//      templateDelimitorList,
+//      templateReplacementList,
+//      lexicalAttributeList,
+//      lexicalStyleList,
+//      terminalDeclarationList,
+//      lexicalMessageDeclarationList,
+//      lexicalListDeclarationList,
+//      lexicalRuleList,
+//      indexingListAST
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_indexing_declaration_ggs3> (?!@indexingListAST ioIndexingListAST ) {
+//    $indexing$
+//    $identifier$ (?let @lstring indexName) indexing (indexingNameDefinition)
+//    $:$
+//    $"string"$ (?let @lstring indexComment)
+//    ioIndexingListAST ++= @(!indexName, !indexComment)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_message_declaration_ggs3>
+//    (?!@lexicalMessageDeclarationListAST ioLexicalMessageDeclarationList ) {
+//    $message$
+//    $identifier$ (?let @lstring messageName)
+//    $:$
+//    $"string"$ (?let @lstring messageValue)
+//    ioLexicalMessageDeclarationList ++= @(!messageName, !messageValue)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_implicit_rule_ggs3> (?!@lexicalRuleListAST ioLexicalImplicitRuleList ) {
+//    $rule$
+//    $list$
+//    $identifier$ (?let @lstring listName)
+//    ioLexicalImplicitRuleList ++= @(!@lexicalImplicitRuleAST (!listName))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_explicit_rule_ggs3> (?!@lexicalRuleListAST ioLexicalExplicitRuleList ) {
+//    $rule$
+//    <lexical_expression> (?let @lexicalExpressionAST lexicalRuleExpression)
+//    ${$
+//    var @lexicalInstructionListAST instructionList = @()
+//    repeat
+//    while
+//      <lexical_instruction> (!?instructionList)
+//    end
+//    $}$
+//    ioLexicalExplicitRuleList ++= @(!@lexicalExplicitRuleAST (!lexicalRuleExpression, instructionList))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList ) {
+//    $send$
+//    <lexical_send_instruction> (?let @lexicalInstructionAST instruction)
+//    ioInstructionList ++= @(!instruction)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <repeat_while_branch> (?!@lexicalWhileBranchListAST ioLexicalWhileBranchList ) {
+//    $while$
+//    <lexical_expression> (?let @lexicalExpressionAST whileExpression)
+//    $:$
+//    var @lexicalInstructionListAST whileInstructionList = @()
+//    repeat
+//    while
+//      <lexical_instruction> (!?whileInstructionList)
+//    end
+//    ioLexicalWhileBranchList ++= @(!whileExpression, !whileInstructionList)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
+//    $'char'$ (?let @lchar character)
+//    outEffectiveArgument = @lexicalCharacterInputArgumentAST (!character)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
+//    $literalInt$ (?let unsignedValue)
+//    outEffectiveArgument = @lexicalUnsignedInputArgumentAST (!unsignedValue)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
+//    let currentLocation = @location.here
+//    $*$
+//    outEffectiveArgument = @lexicalCurrentCharacterInputArgumentAST (!currentLocation)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
+//    $identifier$ (?let idf)
+//    select
+//      outEffectiveArgument = @lexicalAttributeInputArgumentAST (!idf)
+//    or
+//      $($
+//      var @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = @()
+//      repeat
+//      while
+//        $!$
+//        <lexical_output_effective_argument> (?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg)
+//        functionActualArgumentList ++= @(!arg)
+//      end
+//      $)$
+//      outEffectiveArgument = @lexicalFunctionInputArgumentAST (!idf, functionActualArgumentList)
+//    end
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_expression> (!@lexicalExpressionAST outExpression ) {
+//    <lexical_term> (?outExpression)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_term> (!@lexicalExpressionAST outExpression ) {
+//    <lexical_factor> (?outExpression)
+//    repeat
+//    while
+//      $|$
+//      <lexical_factor> (?let rightExpression)
+//      outExpression = @lexicalOrExpressionAST (!outExpression, rightExpression)
+//    end
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_factor>(!@lexicalExpressionAST outExpression ) {
+//    $"string"$ (?let string)
+//    outExpression = @lexicalStringMatchAST (!string)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_factor> (!@lexicalExpressionAST outExpression ) {
+//    $~$
+//    $"string"$ (?let string)
+//    $error$
+//    $identifier$ (?let errorMessage)
+//    outExpression = @lexicalStringNotMatchAST (!string, errorMessage)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_factor> (!@lexicalExpressionAST outExpression ) {
+//    $'char'$ (?let @lchar character)
+//    select
+//      outExpression = @lexicalCharacterMatchAST (!character)
+//    or
+//      $->$
+//      $'char'$ (?let @lchar upperBound)
+//      outExpression = @lexicalCharacterIntervalMatchAST (!character, upperBound)
+//    end
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_factor> (!@lexicalExpressionAST outExpression ) {
+//    $identifier$ (?let @lstring characterSet)
+//    outExpression = @lexicalCharacterSetMatchAST (!characterSet)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_list_declaration_ggs3> (?!@lexicalListDeclarationListAST ioLexicalListDeclarationList ) {
+//    $list$
+//    $identifier$ (?let name)
+//    var @sentLexicalAttributeListAST sentAttributeList = @()
+//    repeat
+//    while
+//      $!selector:$ (?let selector)
+//      $identifier$ (?let sentAttribute)
+//      sentAttributeList ++= @(!selector, !sentAttribute)
+//    end
+//    let @lstring theStyle // Empty string if no style
+//    select
+//      $style$
+//      $identifier$ (? theStyle)
+//    or
+//      theStyle = @lstring (!"", @location.here)
+//    end
+//    $error$ ; $message$
+//    $"string"$ (?let @lstring errorMessage)
+//    ${$
+//    var entryList = @lexicalListEntryListAST ()
+//    repeat
+//      <lexical_list_entry> (!?entryList)
+//    while
+//      $,$
+//    end
+//    $}$
+//    ioLexicalListDeclarationList ++= @(!name, !theStyle, !errorMessage, !sentAttributeList, !entryList)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_list_entry> (?!@lexicalListEntryListAST ioLexicalListEntryList ) {
+//    $"string"$ (?let @lstring entrySpelling)
+//    var isTemplateEndMark = false
+//    var nonAtomicSelection = false
+//    repeat
+//    while
+//      $%templateEndMark$
+//      isTemplateEndMark = true
+//    while
+//      $%nonAtomicSelection$
+//      nonAtomicSelection = true
+//    end
+//    let @lstring terminalSpelling
+//    select
+//      $->$
+//      $\$terminal\$$ (? terminalSpelling)
+//    or
+//      terminalSpelling = entrySpelling
+//    end
+//    ioLexicalListEntryList ++= @(
+//      !entrySpelling,
+//      !terminalSpelling,
+//      !nonAtomicSelection: nonAtomicSelection,
+//      !isEndOfTemplateMark: isTemplateEndMark)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_attribute_declaration_ggs3> (?!@lexicalAttributeListAST ioLexicalAttributeList ) {
+//    $@type$ (?let @lstring typeName)
+//    $identifier$ (?let @lstring name)
+//    ioLexicalAttributeList ++= @(!typeName, !name)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <terminal_declaration_ggs3> (?!@terminalDeclarationListAST ioTerminalDeclarationList ) {
+//    $\$terminal\$$ (?let @lstring name) indexing (terminalDeclaration)
+//    var sentAttributeList = @sentLexicalAttributeListAST ()
+//    repeat
+//    while
+//      $!$
+//      let selector = "".here
+//      $identifier$ (?let sentAttribute)
+//      sentAttributeList ++= @(!selector, !sentAttribute)
+//    end
+//    var @lstring theStyle = "".nowhere // Empty string if no style
+//    var nonAtomicSelection = false
+//    var templateEndMark = false
+//    repeat
+//    while
+//      $style$
+//      if theStyle.string != "" then
+//        error (@location.here : "duplicated style reference")
+//      end
+//      $identifier$ (? theStyle)
+//    while
+//      $%nonAtomicSelection$
+//      nonAtomicSelection = true
+//    while
+//      $%templateEndMark$
+//      templateEndMark = true
+//    end
+//    $error$ ; $message$
+//    $"string"$ (?let @lstring errorMessage)
+//    ioTerminalDeclarationList ++= @(
+//      !name,
+//      !sentAttributeList,
+//      !errorMessage,
+//      !theStyle,
+//      !nonAtomicSelection: nonAtomicSelection,
+//      !isEndOfTemplateMark: templateEndMark)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <style_declaration_ggs3> (?!@lexicalStyleListAST ioLexicalStyleList ) {
+//    $style$
+//    $identifier$ (?let @lstring styleIdentifier)
+//    if styleIdentifier.string.containsCharacter (!'_') then
+//      error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character")
+//    end
+//    if styleIdentifier.string.containsCharacterInRange (!'0', !'9') then
+//      error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit")
+//    end
+//    $->$
+//    $"string"$ (?let @lstring comment)
+//    ioLexicalStyleList ++= @(!styleIdentifier, !comment)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

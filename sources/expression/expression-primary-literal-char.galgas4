@@ -27,19 +27,19 @@ final class @literalCharExpressionAST : @semanticExpressionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3ExpressionSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
-                      !@semanticExpressionAST outExpression ) {
-    $'char'$ (?let @lchar literalChar)
-    outExpression = @literalCharExpressionAST (!literalChar)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3ExpressionSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
+//                      !@semanticExpressionAST outExpression ) {
+//    $'char'$ (?let @lchar literalChar)
+//    outExpression = @literalCharExpressionAST (!literalChar)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

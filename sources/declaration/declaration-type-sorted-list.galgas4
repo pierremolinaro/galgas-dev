@@ -19,62 +19,62 @@
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $sortedlist$
-    $@type$ (?let sortedListTypeName) indexing (sortedListDefinition, structDefinition ".element")
-    let @bool isEquatable
-    select
-      isEquatable = false
-    or
-      $%equatable$
-      isEquatable = true
-    end
-    ${$
-    var @propertyInCollectionListAST attributeList = @()
-    repeat
-    while
-      <property_declaration_ggs3> (!?ioDeclarations, !?attributeList)
-    end
-    $}$
-    ${$
-    var @sortedListSortDescriptorListAST sortDescriptorList = @()
-    repeat
-      <sortedlist_sort_descriptor> (!? sortDescriptorList)
-    while
-      $,$
-    end
-    $}$
-    ioDeclarations.mDeclarationList ++= @(!@sortedListDeclarationAST (
-      !isPredefined: false,
-      sortedListTypeName,
-      attributeList,
-      sortDescriptorList,
-      !equatable: isEquatable
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <sortedlist_sort_descriptor> (?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList ) {
-    $identifier$ (?let @lstring mSortedAttributeName)
-    let @bool mAscending
-    select
-      $<$
-      mAscending = true
-    or
-      $>$
-      mAscending = false
-    end
-    ioSortedListSortDescriptorList ++= @(!mSortedAttributeName, !mAscending)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $sortedlist$
+//    $@type$ (?let sortedListTypeName) indexing (sortedListDefinition, structDefinition ".element")
+//    let @bool isEquatable
+//    select
+//      isEquatable = false
+//    or
+//      $%equatable$
+//      isEquatable = true
+//    end
+//    ${$
+//    var @propertyInCollectionListAST attributeList = @()
+//    repeat
+//    while
+//      <property_declaration_ggs3> (!?ioDeclarations, !?attributeList)
+//    end
+//    $}$
+//    ${$
+//    var @sortedListSortDescriptorListAST sortDescriptorList = @()
+//    repeat
+//      <sortedlist_sort_descriptor> (!? sortDescriptorList)
+//    while
+//      $,$
+//    end
+//    $}$
+//    ioDeclarations.mDeclarationList ++= @(!@sortedListDeclarationAST (
+//      !isPredefined: false,
+//      sortedListTypeName,
+//      attributeList,
+//      sortDescriptorList,
+//      !equatable: isEquatable
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <sortedlist_sort_descriptor> (?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList ) {
+//    $identifier$ (?let @lstring mSortedAttributeName)
+//    let @bool mAscending
+//    select
+//      $<$
+//      mAscending = true
+//    or
+//      $>$
+//      mAscending = false
+//    end
+//    ioSortedListSortDescriptorList ++= @(!mSortedAttributeName, !mAscending)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

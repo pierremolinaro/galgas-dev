@@ -19,19 +19,19 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3ExpressionSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
-                      !@semanticExpressionAST outExpression ) {
-    $nil$
-    outExpression = @nilExpressionAST (.here)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3ExpressionSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
+//                      !@semanticExpressionAST outExpression ) {
+//    $nil$
+//    outExpression = @nilExpressionAST (.here)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

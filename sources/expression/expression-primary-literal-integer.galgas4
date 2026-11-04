@@ -27,19 +27,19 @@ final class @literalBigIntExpressionAST : @semanticExpressionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3ExpressionSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
-                      !@semanticExpressionAST outExpression ) {
-    $literalInt$ (?let @lbigint literalInt)
-    outExpression = @literalBigIntExpressionAST (!literalInt)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3ExpressionSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
+//                      !@semanticExpressionAST outExpression ) {
+//    $literalInt$ (?let @lbigint literalInt)
+//    outExpression = @literalBigIntExpressionAST (!literalInt)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

@@ -30,34 +30,34 @@ final class @lexicalRepeatInstructionAST : @lexicalInstructionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3LexiqueComponentSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
-    $repeat$
-    var @lexicalInstructionListAST repeatedInstructionList = @()
-    let location = @location.here
-    repeat
-    while
-      <lexical_instruction> (!?repeatedInstructionList)
-    end
-    var @lexicalWhileBranchListAST lexicalWhileBranchList = @()
-    repeat
-      <repeat_while_branch> (!?lexicalWhileBranchList)
-    while
-    end
-    $end$
-    ioInstructionList ++= @(!@lexicalRepeatInstructionAST (
-      !repeatedInstructionList,
-      lexicalWhileBranchList,
-      location
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3LexiqueComponentSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
+//    $repeat$
+//    var @lexicalInstructionListAST repeatedInstructionList = @()
+//    let location = @location.here
+//    repeat
+//    while
+//      <lexical_instruction> (!?repeatedInstructionList)
+//    end
+//    var @lexicalWhileBranchListAST lexicalWhileBranchList = @()
+//    repeat
+//      <repeat_while_branch> (!?lexicalWhileBranchList)
+//    while
+//    end
+//    $end$
+//    ioInstructionList ++= @(!@lexicalRepeatInstructionAST (
+//      !repeatedInstructionList,
+//      lexicalWhileBranchList,
+//      location
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

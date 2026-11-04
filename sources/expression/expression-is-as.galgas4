@@ -37,38 +37,38 @@ final class @castInExpressionAST : @semanticExpressionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3ExpressionSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                         !@semanticExpressionAST outExpression ) {
-    <expression_or_ggs3> (!?ioDeclarations, ?outExpression)
-    select
-    or
-      let endOfReceiverExpression = @location.here
-      $is$
-      $@type$ (?let typeName)
-      outExpression = @testDynamicClassInExpressionAST (
-        !outExpression,
-        endOfReceiverExpression,
-        typeName
-      )
-    or
-      let endOfReceiverExpression = @location.here
-      $as$
-      $@type$ (?let typeName)
-      outExpression = @castInExpressionAST (
-        !outExpression,
-        endOfReceiverExpression,
-        typeName
-      )
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3ExpressionSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                         !@semanticExpressionAST outExpression ) {
+//    <expression_or_ggs3> (!?ioDeclarations, ?outExpression)
+//    select
+//    or
+//      let endOfReceiverExpression = @location.here
+//      $is$
+//      $@type$ (?let typeName)
+//      outExpression = @testDynamicClassInExpressionAST (
+//        !outExpression,
+//        endOfReceiverExpression,
+//        typeName
+//      )
+//    or
+//      let endOfReceiverExpression = @location.here
+//      $as$
+//      $@type$ (?let typeName)
+//      outExpression = @castInExpressionAST (
+//        !outExpression,
+//        endOfReceiverExpression,
+//        typeName
+//      )
+//    end
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

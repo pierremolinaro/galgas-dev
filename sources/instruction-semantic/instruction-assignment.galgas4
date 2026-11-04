@@ -20,59 +20,59 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3InstructionsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    $identifier$ (?let mTargetVariableName)
-    let @lstring optionalProperty
-    select
-      optionalProperty = "".nowhere
-    or
-      $.$
-      $identifier$ (?let attributeName)
-      optionalProperty = attributeName
-    end
-    $=$
-    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mSourceExpression)
-    outInstruction = @assignmentInstructionAST (
-      !mTargetVariableName.location,
-      mTargetVariableName,
-      optionalProperty,
-      mSourceExpression
-     )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    $self$
-    $.$
-    $identifier$ (?let mTargetVariableName)
-    let @lstring optionalProperty
-    select
-      optionalProperty = "".nowhere
-    or
-      $.$
-      $identifier$ (?let attributeName)
-      optionalProperty = attributeName
-    end
-    $=$
-    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mSourceExpression)
-    outInstruction = @selfPropertyAssignmentInstructionAST (
-      !mTargetVariableName.location,
-      mTargetVariableName,
-      optionalProperty,
-      mSourceExpression
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3InstructionsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $identifier$ (?let mTargetVariableName)
+//    let @lstring optionalProperty
+//    select
+//      optionalProperty = "".nowhere
+//    or
+//      $.$
+//      $identifier$ (?let attributeName)
+//      optionalProperty = attributeName
+//    end
+//    $=$
+//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mSourceExpression)
+//    outInstruction = @assignmentInstructionAST (
+//      !mTargetVariableName.location,
+//      mTargetVariableName,
+//      optionalProperty,
+//      mSourceExpression
+//     )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $self$
+//    $.$
+//    $identifier$ (?let mTargetVariableName)
+//    let @lstring optionalProperty
+//    select
+//      optionalProperty = "".nowhere
+//    or
+//      $.$
+//      $identifier$ (?let attributeName)
+//      optionalProperty = attributeName
+//    end
+//    $=$
+//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mSourceExpression)
+//    outInstruction = @selfPropertyAssignmentInstructionAST (
+//      !mTargetVariableName.location,
+//      mTargetVariableName,
+//      optionalProperty,
+//      mSourceExpression
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

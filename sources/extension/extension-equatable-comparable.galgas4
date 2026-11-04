@@ -17,32 +17,32 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $extension$
-    $@type$ (?let @lstring typeName) indexing (typeReferenceExtensionMethod)
-    $:$
-    let @equatableComparableExtension theExtension
-    select
-      $%equatable$
-      theExtension = .equatable
-    or
-      $%comparable$
-      theExtension = .comparable
-    end
-    ioDeclarations.mDeclarationList ++= @(!@equatableExtensionAST (
-      !isPredefined: false,
-      typeName,
-      theExtension
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $extension$
+//    $@type$ (?let @lstring typeName) indexing (typeReferenceExtensionMethod)
+//    $:$
+//    let @equatableComparableExtension theExtension
+//    select
+//      $%equatable$
+//      theExtension = .equatable
+//    or
+//      $%comparable$
+//      theExtension = .comparable
+//    end
+//    ioDeclarations.mDeclarationList ++= @(!@equatableExtensionAST (
+//      !isPredefined: false,
+//      typeName,
+//      theExtension
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

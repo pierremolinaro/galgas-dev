@@ -19,65 +19,65 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3InstructionsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <comma_separated_expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                          !@CommaSeparatedExpressionList outExpressionList) {
-    outExpressionList = @()
-    repeat
-      select
-        let @lstring varName
-        let @bool isConstant
-        select
-          $var$
-          $identifier$ (?varName)
-          isConstant = false
-        or
-          $let$
-          isConstant = true
-          select
-            $identifier$ (?varName)
-           or
-             $*$
-             varName = "".here
-          end
-        end
-        $=$
-        <expression_or_ggs3> (!?ioDeclarations, ?let expression)
-        let endOfReceiverExpression = @location.here
-        select
-          outExpressionList ++= @(!.letVarExp (
-            !varName: varName,
-            !isConstant: isConstant,
-            !exp: expression,
-            !endOfExp: endOfReceiverExpression,
-            !typeName: "".here
-          ))
-        or
-          $as$
-          <type_definition_ggs3> (!?ioDeclarations, ?let typeName)
-          outExpressionList ++= @(!.letVarExp (
-            !varName: varName,
-            !isConstant: isConstant,
-            !exp: expression,
-            !endOfExp: endOfReceiverExpression,
-            !typeName: typeName
-          ))
-        end
-      or
-        <expression_ggs3> (!?ioDeclarations, ?let expression)
-        outExpressionList ++= @(!.regularExp (!exp: expression, !endOfExp: .here))
-      end
-    while
-      $,$
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3InstructionsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <comma_separated_expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                          !@CommaSeparatedExpressionList outExpressionList) {
+//    outExpressionList = @()
+//    repeat
+//      select
+//        let @lstring varName
+//        let @bool isConstant
+//        select
+//          $var$
+//          $identifier$ (?varName)
+//          isConstant = false
+//        or
+//          $let$
+//          isConstant = true
+//          select
+//            $identifier$ (?varName)
+//           or
+//             $*$
+//             varName = "".here
+//          end
+//        end
+//        $=$
+//        <expression_or_ggs3> (!?ioDeclarations, ?let expression)
+//        let endOfReceiverExpression = @location.here
+//        select
+//          outExpressionList ++= @(!.letVarExp (
+//            !varName: varName,
+//            !isConstant: isConstant,
+//            !exp: expression,
+//            !endOfExp: endOfReceiverExpression,
+//            !typeName: "".here
+//          ))
+//        or
+//          $as$
+//          <type_definition_ggs3> (!?ioDeclarations, ?let typeName)
+//          outExpressionList ++= @(!.letVarExp (
+//            !varName: varName,
+//            !isConstant: isConstant,
+//            !exp: expression,
+//            !endOfExp: endOfReceiverExpression,
+//            !typeName: typeName
+//          ))
+//        end
+//      or
+//        <expression_ggs3> (!?ioDeclarations, ?let expression)
+//        outExpressionList ++= @(!.regularExp (!exp: expression, !endOfExp: .here))
+//      end
+//    while
+//      $,$
+//    end
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

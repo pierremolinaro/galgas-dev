@@ -17,58 +17,58 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $abstract$
-    $func$
-    $@type$ (?var typeName) indexing (typeReferenceAbstractExtensionGetter)
-    $.$
-    repeat
-    while
-      $@type$ (?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
-      $.$
-    end
-    $identifier$ (?let getterName) indexing (abstractExtensionGetterDefinition)
-    let @formalInputParameterListAST formalInputParameterList
-    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
-    $->$
-    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring returnedTypeName)
-    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionGetterAST (
-      !isPredefined: false,
-      typeName,
-      getterName,
-      formalInputParameterList,
-      returnedTypeName
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <method_declaration_ggs3> (?let @lstring inTypeName,
-                                  ?!@galgasDeclarationAST ioDeclarations) {
-    $abstract$
-    $func$
-    $identifier$ (?let mGetterName) indexing (abstractExtensionGetterDefinition)
-    let @formalInputParameterListAST formalInputParameterList
-    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
-    $->$
-    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring returnedTypeName)
-    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionGetterAST (
-      !isPredefined: false,
-      inTypeName,
-      mGetterName,
-      formalInputParameterList,
-      returnedTypeName
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $abstract$
+//    $func$
+//    $@type$ (?var typeName) indexing (typeReferenceAbstractExtensionGetter)
+//    $.$
+//    repeat
+//    while
+//      $@type$ (?let t)
+//      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+//      $.$
+//    end
+//    $identifier$ (?let getterName) indexing (abstractExtensionGetterDefinition)
+//    let @formalInputParameterListAST formalInputParameterList
+//    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
+//    $->$
+//    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring returnedTypeName)
+//    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionGetterAST (
+//      !isPredefined: false,
+//      typeName,
+//      getterName,
+//      formalInputParameterList,
+//      returnedTypeName
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <method_declaration_ggs3> (?let @lstring inTypeName,
+//                                  ?!@galgasDeclarationAST ioDeclarations) {
+//    $abstract$
+//    $func$
+//    $identifier$ (?let mGetterName) indexing (abstractExtensionGetterDefinition)
+//    let @formalInputParameterListAST formalInputParameterList
+//    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?formalInputParameterList)
+//    $->$
+//    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring returnedTypeName)
+//    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionGetterAST (
+//      !isPredefined: false,
+//      inTypeName,
+//      mGetterName,
+//      formalInputParameterList,
+//      returnedTypeName
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

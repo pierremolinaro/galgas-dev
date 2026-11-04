@@ -28,19 +28,19 @@ final class @literalDoubleExpressionAST : @semanticExpressionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3ExpressionSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
-                      !@semanticExpressionAST outExpression ) {
-    $double.xxx$ (?let @ldouble literalDouble, ?*)
-    outExpression = @literalDoubleExpressionAST (!literalDouble)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3ExpressionSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
+//                      !@semanticExpressionAST outExpression ) {
+//    $double.xxx$ (?let @ldouble literalDouble, ?*)
+//    outExpression = @literalDoubleExpressionAST (!literalDouble)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

@@ -29,40 +29,40 @@ final class @lexicalStructuredSendInstructionAST : @lexicalInstructionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3LexiqueComponentSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_send_instruction> (!@lexicalInstructionAST outInstruction) {
-    var @lexicalSendSearchListAST lexicalSendSearchList = @()
-    $search$
-    repeat
-      $identifier$ (?let @lstring attributeName)
-      $in$
-      $identifier$ (?let @lstring searchListName)
-      lexicalSendSearchList ++= @(!attributeName, !searchListName)
-      $default$
-    while
-      $search$
-    end
-    let @lexicalSendDefaultActionAST lexicalSendDefaultAction
-    select
-      $\$terminal\$$ (?let @lstring defaultSentTerminal)
-      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST (!defaultSentTerminal)
-    or
-      $error$
-      $identifier$ (?let @lstring defaultErrorMessageName)
-      lexicalSendDefaultAction = @lexicalErrorByDefaultAST (!defaultErrorMessageName)
-    end
-    outInstruction = @lexicalStructuredSendInstructionAST (
-      !lexicalSendSearchList,
-      lexicalSendDefaultAction
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3LexiqueComponentSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_send_instruction> (!@lexicalInstructionAST outInstruction) {
+//    var @lexicalSendSearchListAST lexicalSendSearchList = @()
+//    $search$
+//    repeat
+//      $identifier$ (?let @lstring attributeName)
+//      $in$
+//      $identifier$ (?let @lstring searchListName)
+//      lexicalSendSearchList ++= @(!attributeName, !searchListName)
+//      $default$
+//    while
+//      $search$
+//    end
+//    let @lexicalSendDefaultActionAST lexicalSendDefaultAction
+//    select
+//      $\$terminal\$$ (?let @lstring defaultSentTerminal)
+//      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST (!defaultSentTerminal)
+//    or
+//      $error$
+//      $identifier$ (?let @lstring defaultErrorMessageName)
+//      lexicalSendDefaultAction = @lexicalErrorByDefaultAST (!defaultErrorMessageName)
+//    end
+//    outInstruction = @lexicalStructuredSendInstructionAST (
+//      !lexicalSendSearchList,
+//      lexicalSendDefaultAction
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

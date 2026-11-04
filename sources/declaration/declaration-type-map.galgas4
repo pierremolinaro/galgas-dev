@@ -19,136 +19,136 @@
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $map$
-    $@type$ (?let @lstring mapTypeName) indexing (mapDefinition, structDefinition ".element")
-    let @bool isEquatable
-    select
-      isEquatable = false
-    or
-      $%equatable$
-      isEquatable = true
-    end
-    ${$
-    var propertyList = @propertyInCollectionListAST ()
-    var mInsertSetterList = @insertSetterListAST ()
-    var @mapAccessorListAST mSearchMethodList = @()
-    var @mapAccessorListAST mRemoveSetterList = @()
-    var @mapAccessorListAST replaceMethodList = @()
-    var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = @()
-    var @mapAccessorListAST searchSubscriptListAST = @()
-    repeat
-    while
-      <property_declaration_ggs3> (!?ioDeclarations, !? propertyList)
-    while
-      <map_insert_setter_declaration> (!? mInsertSetterList)
-    while
-      <search_method_declaration> (!?mSearchMethodList)
-    while
-      <search_subscript_declaration> (!?searchSubscriptListAST)
-    while
-      <remove_setter_declaration> (!?mRemoveSetterList)
-    while
-      <replace_setter_declaration> (!?replaceMethodList)
-    while
-      <insert_or_replace_declaration> (!?insertOrReplaceDeclarationListAST)
-    while
-      <method_declaration_ggs3> (!mapTypeName, !?ioDeclarations)
-    end
-    $}$
-    ioDeclarations.mDeclarationList ++= @(!@mapDeclarationAST (
-      !isPredefined: false,
-      mapTypeName,
-      propertyList,
-      mInsertSetterList,
-      mSearchMethodList,
-      searchSubscriptListAST,
-      mRemoveSetterList,
-      replaceMethodList,
-      insertOrReplaceDeclarationListAST,
-      !equatable: isEquatable
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <search_method_declaration> (?!@mapAccessorListAST ioMapSearchMethodListAST ) {
-    $search$
-    $identifier$ (?let @lstring methodName)
-    $error$ ; $message$
-    $"string"$ (?let @lstring errorMessage)
-    ioMapSearchMethodListAST ++= @(!methodName, !errorMessage)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <search_subscript_declaration> (?!@mapAccessorListAST ioMapSearchSubscriptListAST ) {
-    $%searchSubscript$
-    $identifier$ (?let @lstring methodName)
-    $error$ ; $message$
-    $"string"$ (?let @lstring errorMessage)
-    ioMapSearchSubscriptListAST ++= @(!methodName, !errorMessage)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <remove_setter_declaration> (?!@mapAccessorListAST ioMapRemoveMethodListAST ) {
-    $remove$
-    $identifier$ (?let @lstring mMethodName)
-    $error$
-    $message$
-    $"string"$ (?let @lstring mErrorMessage)
-    ioMapRemoveMethodListAST ++= @(!mMethodName, !mErrorMessage)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <replace_setter_declaration> (?!@mapAccessorListAST ioMapReplaceMethodListAST ) {
-    $replace$
-    $identifier$ (?let @lstring mMethodName)
-    $error$
-    $message$
-    $"string"$ (?let @lstring mErrorMessage)
-    ioMapReplaceMethodListAST ++= @(!mMethodName, !mErrorMessage)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <insert_or_replace_declaration> (?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST ) {
-    $insert$
-    $or$
-    $replace$
-    ioInsertOrReplaceDeclarationListAST ++= @(!@location.here)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <map_insert_setter_declaration> (?!@insertSetterListAST ioMapMethodList ) {
-    $insert$
-    $identifier$ (?let @lstring mMethodName)
-    $error$
-    $message$
-    $"string"$ (?let @lstring mErrorMessage)
-    let @lstring mShadowErrorMessage
-    select
-      mShadowErrorMessage = @lstring (!"", @location.here)
-    or
-      $,$
-      $"string"$ (? mShadowErrorMessage)
-    end
-    ioMapMethodList ++= @(
-      !mMethodName,
-      !mErrorMessage,
-      !mShadowErrorMessage)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $map$
+//    $@type$ (?let @lstring mapTypeName) indexing (mapDefinition, structDefinition ".element")
+//    let @bool isEquatable
+//    select
+//      isEquatable = false
+//    or
+//      $%equatable$
+//      isEquatable = true
+//    end
+//    ${$
+//    var propertyList = @propertyInCollectionListAST ()
+//    var mInsertSetterList = @insertSetterListAST ()
+//    var @mapAccessorListAST mSearchMethodList = @()
+//    var @mapAccessorListAST mRemoveSetterList = @()
+//    var @mapAccessorListAST replaceMethodList = @()
+//    var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = @()
+//    var @mapAccessorListAST searchSubscriptListAST = @()
+//    repeat
+//    while
+//      <property_declaration_ggs3> (!?ioDeclarations, !? propertyList)
+//    while
+//      <map_insert_setter_declaration> (!? mInsertSetterList)
+//    while
+//      <search_method_declaration> (!?mSearchMethodList)
+//    while
+//      <search_subscript_declaration> (!?searchSubscriptListAST)
+//    while
+//      <remove_setter_declaration> (!?mRemoveSetterList)
+//    while
+//      <replace_setter_declaration> (!?replaceMethodList)
+//    while
+//      <insert_or_replace_declaration> (!?insertOrReplaceDeclarationListAST)
+//    while
+//      <method_declaration_ggs3> (!mapTypeName, !?ioDeclarations)
+//    end
+//    $}$
+//    ioDeclarations.mDeclarationList ++= @(!@mapDeclarationAST (
+//      !isPredefined: false,
+//      mapTypeName,
+//      propertyList,
+//      mInsertSetterList,
+//      mSearchMethodList,
+//      searchSubscriptListAST,
+//      mRemoveSetterList,
+//      replaceMethodList,
+//      insertOrReplaceDeclarationListAST,
+//      !equatable: isEquatable
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <search_method_declaration> (?!@mapAccessorListAST ioMapSearchMethodListAST ) {
+//    $search$
+//    $identifier$ (?let @lstring methodName)
+//    $error$ ; $message$
+//    $"string"$ (?let @lstring errorMessage)
+//    ioMapSearchMethodListAST ++= @(!methodName, !errorMessage)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <search_subscript_declaration> (?!@mapAccessorListAST ioMapSearchSubscriptListAST ) {
+//    $%searchSubscript$
+//    $identifier$ (?let @lstring methodName)
+//    $error$ ; $message$
+//    $"string"$ (?let @lstring errorMessage)
+//    ioMapSearchSubscriptListAST ++= @(!methodName, !errorMessage)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <remove_setter_declaration> (?!@mapAccessorListAST ioMapRemoveMethodListAST ) {
+//    $remove$
+//    $identifier$ (?let @lstring mMethodName)
+//    $error$
+//    $message$
+//    $"string"$ (?let @lstring mErrorMessage)
+//    ioMapRemoveMethodListAST ++= @(!mMethodName, !mErrorMessage)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <replace_setter_declaration> (?!@mapAccessorListAST ioMapReplaceMethodListAST ) {
+//    $replace$
+//    $identifier$ (?let @lstring mMethodName)
+//    $error$
+//    $message$
+//    $"string"$ (?let @lstring mErrorMessage)
+//    ioMapReplaceMethodListAST ++= @(!mMethodName, !mErrorMessage)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <insert_or_replace_declaration> (?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST ) {
+//    $insert$
+//    $or$
+//    $replace$
+//    ioInsertOrReplaceDeclarationListAST ++= @(!@location.here)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <map_insert_setter_declaration> (?!@insertSetterListAST ioMapMethodList ) {
+//    $insert$
+//    $identifier$ (?let @lstring mMethodName)
+//    $error$
+//    $message$
+//    $"string"$ (?let @lstring mErrorMessage)
+//    let @lstring mShadowErrorMessage
+//    select
+//      mShadowErrorMessage = @lstring (!"", @location.here)
+//    or
+//      $,$
+//      $"string"$ (? mShadowErrorMessage)
+//    end
+//    ioMapMethodList ++= @(
+//      !mMethodName,
+//      !mErrorMessage,
+//      !mShadowErrorMessage)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

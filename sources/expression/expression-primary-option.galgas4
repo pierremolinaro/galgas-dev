@@ -30,38 +30,38 @@ final class @optionExpressionAST : @semanticExpressionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3ExpressionSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
-                      !@semanticExpressionAST outExpression ) {
-    $[$
-    $option$
-    $identifier$ (?let optionComponentName) indexing (optionComponentReference)
-    $.$
-    $identifier$ (?let optionName)
-    $identifier$ (?let getterName)
-    outExpression = @optionExpressionAST (!optionComponentName, optionName, getterName)
-    $]$
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
-                      !@semanticExpressionAST outExpression ) {
-    $[$
-    $option$
-    $.$
-    $identifier$ (?let optionName)
-    $identifier$ (?let getterName)
-    outExpression = @optionExpressionAST (!@(!"galgas_builtin_options", .here), optionName, getterName)
-    $]$
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3ExpressionSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
+//                      !@semanticExpressionAST outExpression ) {
+//    $[$
+//    $option$
+//    $identifier$ (?let optionComponentName) indexing (optionComponentReference)
+//    $.$
+//    $identifier$ (?let optionName)
+//    $identifier$ (?let getterName)
+//    outExpression = @optionExpressionAST (!optionComponentName, optionName, getterName)
+//    $]$
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
+//                      !@semanticExpressionAST outExpression ) {
+//    $[$
+//    $option$
+//    $.$
+//    $identifier$ (?let optionName)
+//    $identifier$ (?let getterName)
+//    outExpression = @optionExpressionAST (!@(!"galgas_builtin_options", .here), optionName, getterName)
+//    $]$
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

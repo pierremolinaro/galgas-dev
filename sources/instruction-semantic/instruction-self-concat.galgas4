@@ -19,81 +19,81 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3InstructionsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    $self$
-    let instructionLocation = @location.here
-    $+=$
-    <non_empty_output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
-    outInstruction = @selfPlusEqualElementsInstructionAST (
-      !instructionLocation,
-      expressionList
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    $self$
-    let instructionLocation = @location.here
-    $+=$
-    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-    outInstruction = @selfPlusEqualExpressionInstructionAST (
-      !instructionLocation,
-      expression
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    $self$
-    let instructionLocation = @location.here
-    $-=$
-    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-    outInstruction = @selfMinusEqualExpressionInstructionAST (
-      !instructionLocation,
-      expression
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    $self$
-    let instructionLocation = @location.here
-    $*=$
-    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-    outInstruction = @selfMulEqualExpressionInstructionAST (
-      !instructionLocation,
-      expression
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    $self$
-    let instructionLocation = @location.here
-    $/=$
-    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-    outInstruction = @selfDivEqualExpressionInstructionAST (
-      !instructionLocation,
-      expression
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3InstructionsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $self$
+//    let instructionLocation = @location.here
+//    $+=$
+//    <non_empty_output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
+//    outInstruction = @selfPlusEqualElementsInstructionAST (
+//      !instructionLocation,
+//      expressionList
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $self$
+//    let instructionLocation = @location.here
+//    $+=$
+//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+//    outInstruction = @selfPlusEqualExpressionInstructionAST (
+//      !instructionLocation,
+//      expression
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $self$
+//    let instructionLocation = @location.here
+//    $-=$
+//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+//    outInstruction = @selfMinusEqualExpressionInstructionAST (
+//      !instructionLocation,
+//      expression
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $self$
+//    let instructionLocation = @location.here
+//    $*=$
+//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+//    outInstruction = @selfMulEqualExpressionInstructionAST (
+//      !instructionLocation,
+//      expression
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $self$
+//    let instructionLocation = @location.here
+//    $/=$
+//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+//    outInstruction = @selfDivEqualExpressionInstructionAST (
+//      !instructionLocation,
+//      expression
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

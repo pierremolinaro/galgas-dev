@@ -19,46 +19,46 @@
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $abstract$
-    $mutating$
-    $proc$
-    $@type$ (?let @lstring className) indexing (typeReferenceAbstractExtensionSetter)
-    $.$
-    $identifier$ (?let @lstring setterName) indexing (abstractExtensionSetterDefinition)
-    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionSetterAST (
-      !isPredefined: false,
-      className,
-      setterName,
-      formalParameterList
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <method_declaration_ggs3> (?let @lstring inClassName, ?!@galgasDeclarationAST ioDeclarations) {
-    $abstract$
-    $mutating$
-    $proc$
-    $.$
-    $identifier$ (?let @lstring setterName) indexing (abstractExtensionSetterDefinition)
-    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionSetterAST (
-      !isPredefined: false,
-      inClassName,
-      setterName,
-      formalParameterList
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $abstract$
+//    $mutating$
+//    $proc$
+//    $@type$ (?let @lstring className) indexing (typeReferenceAbstractExtensionSetter)
+//    $.$
+//    $identifier$ (?let @lstring setterName) indexing (abstractExtensionSetterDefinition)
+//    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
+//    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionSetterAST (
+//      !isPredefined: false,
+//      className,
+//      setterName,
+//      formalParameterList
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <method_declaration_ggs3> (?let @lstring inClassName, ?!@galgasDeclarationAST ioDeclarations) {
+//    $abstract$
+//    $mutating$
+//    $proc$
+//    $.$
+//    $identifier$ (?let @lstring setterName) indexing (abstractExtensionSetterDefinition)
+//    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
+//    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionSetterAST (
+//      !isPredefined: false,
+//      inClassName,
+//      setterName,
+//      formalParameterList
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

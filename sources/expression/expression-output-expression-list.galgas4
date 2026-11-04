@@ -58,61 +58,57 @@ list @actualOutputArgumentList {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3ExpressionSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <output_expression_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                     !@actualOutputArgumentList outExpressionList) {
-    outExpressionList = @()
-    repeat
-    while
-      $!selector:$ (?let selector)
-      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outExpressionList ++= @(selector, expression, .here)
-    while
-      $!$
-      let selector = "".here
-      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-      outExpressionList ++= @(selector, expression, .here)
+//syntax extension galgas3ExpressionSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <output_expression_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                     !@actualOutputArgumentList outExpressionList) {
+//    outExpressionList = @()
+//    repeat
 //    while
+//      $!selector:$ (?let selector)
+//      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+//      outExpressionList ++= @(selector, expression, .here)
+//    while
+//      $!$
 //      let selector = "".here
 //      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
 //      outExpressionList ++= @(selector, expression, .here)
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <output_expression_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
-                                      !@actualOutputArgumentList outExpressionList ) {
-    outExpressionList = @()
-    select
-    or
-      repeat
-        select
-          $!selector:$ (?let selector)
-          <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-          outExpressionList ++= @(selector, expression, .here)
-        or
-          $!$
-          let selector = "".here
-          <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-          outExpressionList ++= @(selector, expression, .here)
-        or
-          let selector = "".here
-          <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-          outExpressionList ++= @(selector, expression, .here)
-        end
-      while
-        $,$
-      end
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//    end
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <output_expression_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
+//                                      !@actualOutputArgumentList outExpressionList ) {
+//    outExpressionList = @()
+//    select
+//    or
+//      repeat
+//        select
+//          $!selector:$ (?let selector)
+//          <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+//          outExpressionList ++= @(selector, expression, .here)
+//        or
+//          $!$
+//          let selector = "".here
+//          <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+//          outExpressionList ++= @(selector, expression, .here)
+//        or
+//          let selector = "".here
+//          <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
+//          outExpressionList ++= @(selector, expression, .here)
+//        end
+//      while
+//        $,$
+//      end
+//    end
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

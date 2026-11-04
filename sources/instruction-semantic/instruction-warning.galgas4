@@ -29,29 +29,29 @@ final class @warningInstructionAST : @semanticInstructionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3InstructionsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    $warning$
-    let instructionLocation = @location.here
-    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mReceiverExpression)
-    $:$
-    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mWarningExpression)
-    <issue_fixit> (!?ioDeclarations, ?let @fixitListAST fixitListAST)
-    outInstruction = @warningInstructionAST (
-      !instructionLocation,
-      mReceiverExpression,
-      mWarningExpression,
-      fixitListAST
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3InstructionsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $warning$
+//    let instructionLocation = @location.here
+//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mReceiverExpression)
+//    $:$
+//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mWarningExpression)
+//    <issue_fixit> (!?ioDeclarations, ?let @fixitListAST fixitListAST)
+//    outInstruction = @warningInstructionAST (
+//      !instructionLocation,
+//      mReceiverExpression,
+//      mWarningExpression,
+//      fixitListAST
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

@@ -28,21 +28,21 @@ final class @notExpressionAST : @semanticExpressionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3ExpressionSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <factor_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                     !@semanticExpressionAST outExpression ) {
-    let operatorLocation = @location.here
-    $not$
-    <factor_ggs3> (!?ioDeclarations, ?outExpression)
-    outExpression = @notExpressionAST (!operatorLocation, outExpression)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3ExpressionSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <factor_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                     !@semanticExpressionAST outExpression ) {
+//    let operatorLocation = @location.here
+//    $not$
+//    <factor_ggs3> (!?ioDeclarations, ?outExpression)
+//    outExpression = @notExpressionAST (!operatorLocation, outExpression)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

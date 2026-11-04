@@ -29,21 +29,21 @@ final class @lexicalRewindInstructionAST : @lexicalInstructionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3LexiqueComponentSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
-    $rewind$
-    $identifier$ (?let tagName)
-    $send$
-    $\$terminal\$$ (?let terminalName)
-    ioInstructionList ++= @(!@lexicalRewindInstructionAST (!tagName, terminalName))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3LexiqueComponentSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
+//    $rewind$
+//    $identifier$ (?let tagName)
+//    $send$
+//    $\$terminal\$$ (?let terminalName)
+//    ioInstructionList ++= @(!@lexicalRewindInstructionAST (!tagName, terminalName))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

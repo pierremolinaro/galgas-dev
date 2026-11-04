@@ -19,45 +19,45 @@
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $boolset$
-    $@type$ (?let @lstring boolsetTypeName) indexing (structDefinition)
-    let @bool isEquatable
-    select
-      isEquatable = false
-    or
-      $%equatable$
-      isEquatable = true
-    end
-    ${$
-    var @lstringlist slotList = @()
-    repeat
-    while
-      $case$
-      $identifier$ (?let slotName)
-      slotList ++= @(!slotName)
-    while
-      <method_declaration_ggs3> (!boolsetTypeName, !?ioDeclarations)
-    end
-    $}$
-    if slotList.count == 0 then
-      error (boolsetTypeName : "a boolset type must define at least one case constant")
-    end
-    ioDeclarations.mDeclarationList ++= @(!@boolsetDeclarationAST (
-      !isPredefined: false,
-      boolsetTypeName,
-      slotList,
-      !isEquatable: isEquatable
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $boolset$
+//    $@type$ (?let @lstring boolsetTypeName) indexing (structDefinition)
+//    let @bool isEquatable
+//    select
+//      isEquatable = false
+//    or
+//      $%equatable$
+//      isEquatable = true
+//    end
+//    ${$
+//    var @lstringlist slotList = @()
+//    repeat
+//    while
+//      $case$
+//      $identifier$ (?let slotName)
+//      slotList ++= @(!slotName)
+//    while
+//      <method_declaration_ggs3> (!boolsetTypeName, !?ioDeclarations)
+//    end
+//    $}$
+//    if slotList.count == 0 then
+//      error (boolsetTypeName : "a boolset type must define at least one case constant")
+//    end
+//    ioDeclarations.mDeclarationList ++= @(!@boolsetDeclarationAST (
+//      !isPredefined: false,
+//      boolsetTypeName,
+//      slotList,
+//      !isEquatable: isEquatable
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

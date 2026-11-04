@@ -93,77 +93,77 @@ func makeWeakTypeLName (?let @lstring inTypeName ) -> @lstring {
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // SIMPLE ALIAS
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <type_definition_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
-                              !@lstring outTypeName ) {
-    $@type$ (?outTypeName)
-    repeat
-    while
-      $.$
-      $@type$ (?let typeName)
-      outTypeName = makeEmbeddedTypeLName (!outer: outTypeName, !inner: typeName)
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                              !@lstring outTypeName ) {
-    $[$
-    <type_definition_ggs3> (!?ioDeclarations, ?outTypeName)
-    $:$
-    <type_definition_ggs3> (!?ioDeclarations, ?*)
-    error (.here : "Not handled yet")
-    $]$
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                              !@lstring outTypeName ) {
-    <type_definition_ggs3> (!?ioDeclarations, ?outTypeName)
-    $<$
-    repeat
-      <type_definition_ggs3> (!?ioDeclarations, ?let t)
-      error (t : "not handled yet")
-    while
-      $,$
-    end
-    $>$
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                              !@lstring outTypeName ) {
-    <type_definition_ggs3> (!?ioDeclarations, ?outTypeName)
-    $?$
-    let unwrappedTypeName = outTypeName
-    !?ioDeclarations.getOptionalTypeName (?outTypeName, !forTypeNamed: unwrappedTypeName, !isPredefined: false)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                              !@lstring outTypeName ) {
-    $($
-    repeat
-      <type_definition_ggs3> (!?ioDeclarations, ?outTypeName)
-    while
-      $,$
-    end
-    error (.here : "Not handled yet")
-    $)$
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  // SIMPLE ALIAS
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <type_definition_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
+//                              !@lstring outTypeName ) {
+//    $@type$ (?outTypeName)
+//    repeat
+//    while
+//      $.$
+//      $@type$ (?let typeName)
+//      outTypeName = makeEmbeddedTypeLName (!outer: outTypeName, !inner: typeName)
+//    end
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                              !@lstring outTypeName ) {
+//    $[$
+//    <type_definition_ggs3> (!?ioDeclarations, ?outTypeName)
+//    $:$
+//    <type_definition_ggs3> (!?ioDeclarations, ?*)
+//    error (.here : "Not handled yet")
+//    $]$
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                              !@lstring outTypeName ) {
+//    <type_definition_ggs3> (!?ioDeclarations, ?outTypeName)
+//    $<$
+//    repeat
+//      <type_definition_ggs3> (!?ioDeclarations, ?let t)
+//      error (t : "not handled yet")
+//    while
+//      $,$
+//    end
+//    $>$
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                              !@lstring outTypeName ) {
+//    <type_definition_ggs3> (!?ioDeclarations, ?outTypeName)
+//    $?$
+//    let unwrappedTypeName = outTypeName
+//    !?ioDeclarations.getOptionalTypeName (?outTypeName, !forTypeNamed: unwrappedTypeName, !isPredefined: false)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                              !@lstring outTypeName ) {
+//    $($
+//    repeat
+//      <type_definition_ggs3> (!?ioDeclarations, ?outTypeName)
+//    while
+//      $,$
+//    end
+//    error (.here : "Not handled yet")
+//    $)$
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

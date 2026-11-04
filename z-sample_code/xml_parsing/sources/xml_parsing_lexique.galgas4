@@ -1,13 +1,37 @@
-template lexique xml_parsing_lexique {
+//--------------------------------------------------------------------------------------------------
 
-template "<"  %preserved ... ""
+template lexique xml_parsing_lexique : xml_parsing_base_lexique {
 
-replace "&amp;" -> "&"
-replace "&lt;" -> "<"
-replace "&gt;" -> ">"
-replace "&quot;" -> "\""
-replace "&apos;" -> "'"
-replace "&#" ... ";" : codePointToUnicode
+//  template "%" ... "%"
+//
+//  %templateReplacement "\\%" -> "%"
+//
+//  %templateReplacement "\\n" -> "\n"
+//
+//  %templateReplacement "\\\\" -> "\\"
+
+  template "<"  %preserved ... ""
+
+  %templateReplacement "&amp;" -> "&"
+  %templateReplacement "&lt;" -> "<"
+  %templateReplacement "&gt;" -> ">"
+  %templateReplacement "&quot;" -> "\""
+  %templateReplacement "&apos;" -> "'"
+  %templateReplacement "&#" ... ";" : codePointToUnicode
+}
+
+//--------------------------------------------------------------------------------------------------
+
+lexique xml_parsing_base_lexique {
+
+//template "<"  %preserved ... ""
+//
+//replace "&amp;" -> "&"
+//replace "&lt;" -> "<"
+//replace "&gt;" -> ">"
+//replace "&quot;" -> "\""
+//replace "&apos;" -> "'"
+//replace "&#" ... ";" : codePointToUnicode
 
 style delimitersStyle -> "Delimiter"
 style nameStyle -> "Name"
@@ -19,9 +43,9 @@ style textStyle -> "Text"
 
 //------------------------- comment  --------------------
 
-$comment$ ! tokenString  style commentStyle %templateEndMark error message "a comment"
+$comment$ ! tokenString  style commentStyle %templateEndMark %errorMessage "a comment"
 
-message incorrectCommentError : "incorrect XML comment"
+%errorMessage incorrectCommentError : "incorrect XML comment"
 
 rule "<!--" {
   repeat
@@ -44,7 +68,7 @@ rule "<!--" {
 }
 
 // ---------------------------- Delimiters ---------------------------------------
-list xmlDelimitorsList style delimitersStyle error message "the '%K' delimitor"{
+list xmlDelimitorsList style delimitersStyle %errorMessage "the '%K' delimitor"{
   "<",
   "<?",
   ">" %templateEndMark,
@@ -57,7 +81,7 @@ rule list xmlDelimitorsList
 
 //------------------------- name  --------------------
 
-$name$ ! tokenString  style nameStyle error message "a name"
+$name$ ! tokenString  style nameStyle %errorMessage "a name"
 
 rule isUnicodeLetter {
   repeat
@@ -69,9 +93,9 @@ rule isUnicodeLetter {
 
 //------------------------- Attribute value  --------------------
 
-$value$ ! tokenString  style attributeValue error message "an attribute value"
+$value$ ! tokenString  style attributeValue %errorMessage "an attribute value"
 
-message incorrectAttributeEnd : "attribute value should be enclosed between apostrophes (') or quotation marks (\")"
+%errorMessage incorrectAttributeEnd : "attribute value should be enclosed between apostrophes (') or quotation marks (\")"
 
 rule '"' {
   repeat

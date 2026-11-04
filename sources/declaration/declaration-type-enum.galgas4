@@ -19,81 +19,81 @@
 //!  SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $enum$
-    $@type$ (?let enumTypeName) indexing (enumDefinition)
-    var @structComparison comparison = .none
-    repeat
-    while
-      $%comparable$
-      switch comparison
-      case none :
-        comparison = .comparable
-      case comparable :
-        error (.here : "duplicated attribute")
-      case equatable :
-        error (.here : "%comparable and %equatable are mutually exclusive")
-      end
-    while
-      $%equatable$
-      switch comparison
-      case none :
-        comparison = .equatable
-      case equatable :
-        error (.here : "duplicated attribute")
-      case comparable :
-        error (.here : "%comparable and %equatable are mutually exclusive")
-      end
-    end
-    ${$
-    var @enumConstantList constantList = @()
-    repeat
-    while
-      $case$
-      $identifier$ (?let constantName)
-      var [@associatedValue] associatedValueTypeList = @()
-      select
-      or
-        $($
-        repeat
-          let @bool weakQualifier
-          select
-            weakQualifier = false
-          or
-            $weak$
-            weakQualifier = true
-          end
-          <type_definition_ggs3> (!?ioDeclarations, ?let associatedValueType)
-          $identifier$ (?let associatedValueName)
-          !?associatedValueTypeList.append (!@(weakQualifier, associatedValueType, associatedValueName))
-        while
-          $,$
-        end
-        $)$
-      end
-      constantList ++= @(!constantName, !associatedValueTypeList)
-    while
-      <method_declaration_ggs3> (!enumTypeName, !?ioDeclarations)
-    end
-    $}$
-    if constantList.count == 0 then
-      error (enumTypeName : "an enumerated type must define at least one case constant")
-    end
-    ioDeclarations.mDeclarationList ++= @(!@enumDeclarationAST (
-      !isPredefined: false,
-      enumTypeName,
-      constantList,
-      !comparison: comparison
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $enum$
+//    $@type$ (?let enumTypeName) indexing (enumDefinition)
+//    var @structComparison comparison = .none
+//    repeat
+//    while
+//      $%comparable$
+//      switch comparison
+//      case none :
+//        comparison = .comparable
+//      case comparable :
+//        error (.here : "duplicated attribute")
+//      case equatable :
+//        error (.here : "%comparable and %equatable are mutually exclusive")
+//      end
+//    while
+//      $%equatable$
+//      switch comparison
+//      case none :
+//        comparison = .equatable
+//      case equatable :
+//        error (.here : "duplicated attribute")
+//      case comparable :
+//        error (.here : "%comparable and %equatable are mutually exclusive")
+//      end
+//    end
+//    ${$
+//    var @enumConstantList constantList = @()
+//    repeat
+//    while
+//      $case$
+//      $identifier$ (?let constantName)
+//      var [@associatedValue] associatedValueTypeList = @()
+//      select
+//      or
+//        $($
+//        repeat
+//          let @bool weakQualifier
+//          select
+//            weakQualifier = false
+//          or
+//            $weak$
+//            weakQualifier = true
+//          end
+//          <type_definition_ggs3> (!?ioDeclarations, ?let associatedValueType)
+//          $identifier$ (?let associatedValueName)
+//          !?associatedValueTypeList.append (!@(weakQualifier, associatedValueType, associatedValueName))
+//        while
+//          $,$
+//        end
+//        $)$
+//      end
+//      constantList ++= @(!constantName, !associatedValueTypeList)
+//    while
+//      <method_declaration_ggs3> (!enumTypeName, !?ioDeclarations)
+//    end
+//    $}$
+//    if constantList.count == 0 then
+//      error (enumTypeName : "an enumerated type must define at least one case constant")
+//    end
+//    ioDeclarations.mDeclarationList ++= @(!@enumDeclarationAST (
+//      !isPredefined: false,
+//      enumTypeName,
+//      constantList,
+//      !comparison: comparison
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

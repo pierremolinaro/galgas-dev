@@ -22,20 +22,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-indexing grammar galgas3Grammar "SLR" {
-  syntax galgas3ExpressionSyntax
-  syntax galgas3ParameterArgumentSyntax
-  syntax galgas3InstructionsSyntax
-  syntax galgas3DeclarationsSyntax
-  syntax galgas3LexiqueComponentSyntax
-  syntax galgas3OptionComponentSyntax
-  syntax galgas3GuiComponentSyntax
-  syntax galgas3SyntaxComponentSyntax
-  syntax galgas3GrammarComponentSyntax
-  syntax galgas3ProgramDeclarations
-
-  <start_symbol_ggs3> (?!@galgasDeclarationAST ioDeclarations)
-}
+//indexing grammar galgas3Grammar "SLR" {
+//  syntax galgas3ExpressionSyntax
+//  syntax galgas3ParameterArgumentSyntax
+//  syntax galgas3InstructionsSyntax
+//  syntax galgas3DeclarationsSyntax
+//  syntax galgas3LexiqueComponentSyntax
+//  syntax galgas3OptionComponentSyntax
+//  syntax galgas3GuiComponentSyntax
+//  syntax galgas3SyntaxComponentSyntax
+//  syntax galgas3GrammarComponentSyntax
+//  syntax galgas3ProgramDeclarations
+//
+//  <start_symbol_ggs3> (?!@galgasDeclarationAST ioDeclarations)
+//}
 
 //--------------------------------------------------------------------------------------------------
 

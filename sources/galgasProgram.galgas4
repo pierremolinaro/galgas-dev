@@ -69,26 +69,26 @@ before {
 //
 //--------------------------------------------------------------------------------------------------
 
-case . "galgas3"
-%errorMessage "a GALGAS 3 source file"
-grammar galgas3Grammar
-?sourceFilePath: @lstring inSourceFile {
-//--- Search for a project file in parent directory
-  let parentDirectory = inSourceFile.string.deletingLastPathComponent.deletingLastPathComponent
-  let candidateProjectFiles = parentDirectory.regularFilesWithExtensions (!false, ![@("galgas4project")])
-  if candidateProjectFiles.count == 0 then
-    error (inSourceFile : "no project file in parent directory of source file")
-  elsif candidateProjectFiles.count > 1 then
-    var s = "several project files in source file parent directory:"
-    for (mValue) in candidateProjectFiles do
-      s += "\n  - " + mValue
-    end
-    error (inSourceFile : s)
-  else
-    let projectFilePath = parentDirectory + "/" + candidateProjectFiles.mValueAtIndex (!0)
-    parseAndAnalyzeProject (!@(!projectFilePath, inSourceFile.location), !inSourceFile.string)
-  end
-}
+//case . "galgas3"
+//%errorMessage "a GALGAS 3 source file"
+//grammar galgas3Grammar
+//?sourceFilePath: @lstring inSourceFile {
+////--- Search for a project file in parent directory
+//  let parentDirectory = inSourceFile.string.deletingLastPathComponent.deletingLastPathComponent
+//  let candidateProjectFiles = parentDirectory.regularFilesWithExtensions (!false, ![@("galgas4project")])
+//  if candidateProjectFiles.count == 0 then
+//    error (inSourceFile : "no project file in parent directory of source file")
+//  elsif candidateProjectFiles.count > 1 then
+//    var s = "several project files in source file parent directory:"
+//    for (mValue) in candidateProjectFiles do
+//      s += "\n  - " + mValue
+//    end
+//    error (inSourceFile : s)
+//  else
+//    let projectFilePath = parentDirectory + "/" + candidateProjectFiles.mValueAtIndex (!0)
+//    parseAndAnalyzeProject (!@(!projectFilePath, inSourceFile.location), !inSourceFile.string)
+//  end
+//}
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -191,15 +191,15 @@ private proc compileProject (?let @lstring inProjectSourceFile,
  //--- Parse source file
   let sourcesDir = inProjectSourceFile.string.deletingLastPathComponent + "/sources"
   for (mValue) in inProjectComponentAST.mProjectSourceList do
-    if mValue.pathExtension == "galgas3" then
-      let absoluteSourcePath = mValue.absolutePathFromPath (!sourcesDir)
-      grammar galgas3Grammar (!?declarationAST) in @lstring (!absoluteSourcePath, .nowhere)
-    elsif mValue.pathExtension == "galgas4" then
+//    if mValue.pathExtension == "galgas3" then
+//      let absoluteSourcePath = mValue.absolutePathFromPath (!sourcesDir)
+//      galgas3Grammar (!?declarationAST) in @lstring (!absoluteSourcePath, .nowhere)
+//    elsif mValue.pathExtension == "galgas4" then
       let absoluteSourcePath = mValue.absolutePathFromPath (!sourcesDir)
       grammar galgas4Grammar (!?declarationAST) in @lstring (!absoluteSourcePath, .nowhere)
-    end
+//    end
   end
-//--------------------------------- Hand coded source files
+//-------------------------------- Hand coded source files
   var @stringlist handCodedLinkToolFileList = @()
   let @stringlist handCodedSourceToolFileList = inProjectComponentAST.mToolCppSourceList
   var @stringlist frameworkToolFileList = @()

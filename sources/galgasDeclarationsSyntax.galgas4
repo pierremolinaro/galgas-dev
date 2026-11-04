@@ -20,167 +20,167 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-syntax galgas3DeclarationsSyntax (galgasScanner3) {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //          Start symbol
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <start_symbol_ggs3> (?!@galgasDeclarationAST ioDeclarations ) {
-    repeat
-    while
-      <declaration_ggs3> (!?ioDeclarations)
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //          Rules prototypes
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <formal_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@formalParameterListAST outFormalParameterList)
-
-  rule <semantic_instruction_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                        !@semanticInstructionListAST outInstructionsList)
-
-  rule <formal_input_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
-                                           !@formalInputParameterListAST outFormalInputParameterList)
-
-  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                         !@semanticExpressionAST outExpression)
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //! Filewrapper Declaration
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $filewrapper$
-    $identifier$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
-    $in$
-    $"string"$ (?let @lstring filewrapperPath)
-    <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
-    <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
-    <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
-    ioDeclarations.mDeclarationList ++= @(@filewrapperDeclarationAST (
-      !isPredefined: false, // Is not predefined
-      !false, // private
-      !@string.stringWithSourceFilePath,
-      !filewrapperName,
-      !filewrapperPath,
-      !filewrapperTextFileExtensionList,
-      !filewrapperBinaryFileExtensionList,
-      !filewrapperTemplateList
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $private$
-    $filewrapper$
-    $identifier$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
-    $in$
-    $"string"$ (?let @lstring filewrapperPath)
-    <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
-    <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
-    <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
-    ioDeclarations.mDeclarationList ++= @(@filewrapperDeclarationAST (
-      !isPredefined: false, // Is not predefined
-      !true, // private
-      !@string.stringWithSourceFilePath,
-      !filewrapperName,
-      !filewrapperPath,
-      !filewrapperTextFileExtensionList,
-      !filewrapperBinaryFileExtensionList,
-      !filewrapperTemplateList
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <filewrapper_text_files> (!@lstringlist outFilewrapperTextFileExtensionList ) {
-    outFilewrapperTextFileExtensionList = @()
-    ${$
-    select
-    or
-      repeat
-        $"string"$ (?let @lstring pathExtension)
-        outFilewrapperTextFileExtensionList ++= @(pathExtension)
-      while
-        $,$
-      end
-    end
-    $}$
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <filewrapper_binary_files> (!@lstringlist outFilewrapperBinaryFileExtensionList ) {
-    outFilewrapperBinaryFileExtensionList = @()
-    ${$
-    select
-    or
-      repeat
-        $"string"$ (?let @lstring pathExtension)
-        outFilewrapperBinaryFileExtensionList ++= @(pathExtension)
-      while
-        $,$
-      end
-    end
-    $}$
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <filewrapper_templates> (?!@galgasDeclarationAST ioDeclarations,
-                                !@filewrapperTemplateListAST outFilewrapperTemplateList ) {
-    ${$
-    outFilewrapperTemplateList = @()
-    repeat
-    while
-      $template$
-      $identifier$ (?let mFilewrapperTemplateName)
-      $"string"$ (?let mFilewrapperTemplatePath)
-      var @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = @()
-      repeat
-      while
-        $?selector:$ (?let selector)
-        <type_definition_ggs3> (!?ioDeclarations, ?let typeName)
-        let @bool isUnused
-        select
-          isUnused = false
-        or
-          $unused$
-          isUnused = true
-        end
-        $identifier$ (?let argumentName)
-        filewrapperTemplateFormalInputParameters ++= @(selector, typeName, argumentName, isUnused)
-      while
-        $?$
-        let selector = "".here
-        <type_definition_ggs3> (!?ioDeclarations, ?let typeName)
-        let @bool isUnused
-        select
-          isUnused = false
-        or
-          $unused$
-          isUnused = true
-        end
-        $identifier$ (?let argumentName)
-        filewrapperTemplateFormalInputParameters ++= @(selector, typeName, argumentName, isUnused)
-      end
-      outFilewrapperTemplateList ++= @(
-        !mFilewrapperTemplateName,
-        !mFilewrapperTemplatePath,
-        !filewrapperTemplateFormalInputParameters
-      )
-    end
-    $}$
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax galgas3DeclarationsSyntax (galgasScanner3) {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //          Start symbol
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <start_symbol_ggs3> (?!@galgasDeclarationAST ioDeclarations ) {
+//    repeat
+//    while
+//      <declaration_ggs3> (!?ioDeclarations)
+//    end
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //          Rules prototypes
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <formal_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@formalParameterListAST outFormalParameterList)
+//
+//  rule <semantic_instruction_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                        !@semanticInstructionListAST outInstructionsList)
+//
+//  rule <formal_input_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
+//                                           !@formalInputParameterListAST outFormalInputParameterList)
+//
+//  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                         !@semanticExpressionAST outExpression)
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //! Filewrapper Declaration
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $filewrapper$
+//    $identifier$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
+//    $in$
+//    $"string"$ (?let @lstring filewrapperPath)
+//    <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
+//    <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
+//    <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
+//    ioDeclarations.mDeclarationList ++= @(@filewrapperDeclarationAST (
+//      !isPredefined: false, // Is not predefined
+//      !false, // private
+//      !@string.stringWithSourceFilePath,
+//      !filewrapperName,
+//      !filewrapperPath,
+//      !filewrapperTextFileExtensionList,
+//      !filewrapperBinaryFileExtensionList,
+//      !filewrapperTemplateList
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $private$
+//    $filewrapper$
+//    $identifier$ (?let @lstring filewrapperName) indexing (filewrapperDefinition)
+//    $in$
+//    $"string"$ (?let @lstring filewrapperPath)
+//    <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
+//    <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
+//    <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
+//    ioDeclarations.mDeclarationList ++= @(@filewrapperDeclarationAST (
+//      !isPredefined: false, // Is not predefined
+//      !true, // private
+//      !@string.stringWithSourceFilePath,
+//      !filewrapperName,
+//      !filewrapperPath,
+//      !filewrapperTextFileExtensionList,
+//      !filewrapperBinaryFileExtensionList,
+//      !filewrapperTemplateList
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <filewrapper_text_files> (!@lstringlist outFilewrapperTextFileExtensionList ) {
+//    outFilewrapperTextFileExtensionList = @()
+//    ${$
+//    select
+//    or
+//      repeat
+//        $"string"$ (?let @lstring pathExtension)
+//        outFilewrapperTextFileExtensionList ++= @(pathExtension)
+//      while
+//        $,$
+//      end
+//    end
+//    $}$
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <filewrapper_binary_files> (!@lstringlist outFilewrapperBinaryFileExtensionList ) {
+//    outFilewrapperBinaryFileExtensionList = @()
+//    ${$
+//    select
+//    or
+//      repeat
+//        $"string"$ (?let @lstring pathExtension)
+//        outFilewrapperBinaryFileExtensionList ++= @(pathExtension)
+//      while
+//        $,$
+//      end
+//    end
+//    $}$
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <filewrapper_templates> (?!@galgasDeclarationAST ioDeclarations,
+//                                !@filewrapperTemplateListAST outFilewrapperTemplateList ) {
+//    ${$
+//    outFilewrapperTemplateList = @()
+//    repeat
+//    while
+//      $template$
+//      $identifier$ (?let mFilewrapperTemplateName)
+//      $"string"$ (?let mFilewrapperTemplatePath)
+//      var @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = @()
+//      repeat
+//      while
+//        $?selector:$ (?let selector)
+//        <type_definition_ggs3> (!?ioDeclarations, ?let typeName)
+//        let @bool isUnused
+//        select
+//          isUnused = false
+//        or
+//          $unused$
+//          isUnused = true
+//        end
+//        $identifier$ (?let argumentName)
+//        filewrapperTemplateFormalInputParameters ++= @(selector, typeName, argumentName, isUnused)
+//      while
+//        $?$
+//        let selector = "".here
+//        <type_definition_ggs3> (!?ioDeclarations, ?let typeName)
+//        let @bool isUnused
+//        select
+//          isUnused = false
+//        or
+//          $unused$
+//          isUnused = true
+//        end
+//        $identifier$ (?let argumentName)
+//        filewrapperTemplateFormalInputParameters ++= @(selector, typeName, argumentName, isUnused)
+//      end
+//      outFilewrapperTemplateList ++= @(
+//        !mFilewrapperTemplateName,
+//        !mFilewrapperTemplatePath,
+//        !filewrapperTemplateFormalInputParameters
+//      )
+//    end
+//    $}$
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

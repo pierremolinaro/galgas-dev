@@ -19,28 +19,28 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3InstructionsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    $super$
-    let instructionLocation = @location.here
-    $.$
-    $init$
-    $($
-    <output_expression_list_ggs34> (!?ioDeclarations, ?let actualParameterList)
-    $)$
-    outInstruction = @superInitInstructionAST (
-      !instructionLocation,
-      actualParameterList
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3InstructionsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $super$
+//    let instructionLocation = @location.here
+//    $.$
+//    $init$
+//    $($
+//    <output_expression_list_ggs34> (!?ioDeclarations, ?let actualParameterList)
+//    $)$
+//    outInstruction = @superInitInstructionAST (
+//      !instructionLocation,
+//      actualParameterList
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

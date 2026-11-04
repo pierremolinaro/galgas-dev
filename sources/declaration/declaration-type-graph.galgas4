@@ -19,39 +19,39 @@
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $graph$
-    $@type$ (?let @lstring graphTypeName) indexing (graphDefinition)
-    $($
-    <type_definition_ggs3> (!?ioDeclarations, ?let associatedListTypeName)
-    $)$
-    ${$
-    var graphInsertModifierList = @graphInsertModifierList ()
-    repeat
-    while
-      $insert$
-      $identifier$ (?let @lstring insertName)
-      $error$
-      $message$
-      $"string"$ (?let @lstring errorMessage)
-      graphInsertModifierList ++= @(!insertName, !errorMessage)
-    end
-    $}$
-    ioDeclarations.mDeclarationList ++= @(!@graphDeclarationAST (
-      !isPredefined: false,
-      graphTypeName,
-      associatedListTypeName,
-      graphInsertModifierList
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $graph$
+//    $@type$ (?let @lstring graphTypeName) indexing (graphDefinition)
+//    $($
+//    <type_definition_ggs3> (!?ioDeclarations, ?let associatedListTypeName)
+//    $)$
+//    ${$
+//    var graphInsertModifierList = @graphInsertModifierList ()
+//    repeat
+//    while
+//      $insert$
+//      $identifier$ (?let @lstring insertName)
+//      $error$
+//      $message$
+//      $"string"$ (?let @lstring errorMessage)
+//      graphInsertModifierList ++= @(!insertName, !errorMessage)
+//    end
+//    $}$
+//    ioDeclarations.mDeclarationList ++= @(!@graphDeclarationAST (
+//      !isPredefined: false,
+//      graphTypeName,
+//      associatedListTypeName,
+//      graphInsertModifierList
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

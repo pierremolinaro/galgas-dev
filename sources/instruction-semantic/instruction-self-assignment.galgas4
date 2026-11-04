@@ -27,25 +27,25 @@ final class @selfAssignmentInstructionAST : @semanticInstructionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3InstructionsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3>  (?!@galgasDeclarationAST ioDeclarations,
-                                     !@semanticInstructionAST outInstruction) {
-    $self$
-    let instructionLocation = @location.here
-    $=$
-    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
-    outInstruction = @selfAssignmentInstructionAST (
-      !instructionLocation,
-      sourceExpression
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3InstructionsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <semantic_instruction_ggs3>  (?!@galgasDeclarationAST ioDeclarations,
+//                                     !@semanticInstructionAST outInstruction) {
+//    $self$
+//    let instructionLocation = @location.here
+//    $=$
+//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
+//    outInstruction = @selfAssignmentInstructionAST (
+//      !instructionLocation,
+//      sourceExpression
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

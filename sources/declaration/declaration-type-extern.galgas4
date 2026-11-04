@@ -19,142 +19,142 @@
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $extern$
-    $@type$ (?let @lstring externTypeName) indexing (externTypeDefinition)
-    <externtype_cpp_predeclaration> (?let cppPredeclarationCode)
-    <externtype_cpp_classdeclaration> (?let cppClassCode)
-    ${$
-    var @externTypeConstructorList externTypeConstructorList = @()
-    var @externTypeGetterList externTypeGetterList = @()
-    var @externTypeSetterList externTypeSetterList = @()
-    var @externTypeMethodList externTypeMethodList = @()
-    repeat
-    while
-      <externtype_constructor_ggs3> (!?ioDeclarations, !?externTypeConstructorList)
-    while
-      <externtype_getter_ggs3> (!?ioDeclarations, !?externTypeGetterList)
-    while
-      <externtype_setter_ggs3> (!?ioDeclarations, !?externTypeSetterList)
-    while
-      <externtype_method_ggs3> (!?ioDeclarations, !?externTypeMethodList)
-    end
-    $}$
-    ioDeclarations.mDeclarationList ++= @(!@externTypeDeclarationAST (
-      !isPredefined: false,
-      externTypeName,
-      cppPredeclarationCode,
-      cppClassCode,
-      externTypeConstructorList,
-      externTypeGetterList,
-      externTypeSetterList,
-      externTypeMethodList
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <externtype_cpp_predeclaration> (!@string outCppPredeclarationCode ) {
-    ${$
-    outCppPredeclarationCode = ""
-    repeat
-    while
-      $"string"$ (?let @lstring cppPredeclarationCodeElement)
-      outCppPredeclarationCode += cppPredeclarationCodeElement.string
-    end
-    $}$
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <externtype_cpp_classdeclaration> (!@string outCppClassCode ) {
-    ${$
-    outCppClassCode = ""
-    repeat
-    while
-      $"string"$ (?let @lstring cppPredeclarationCodeElement)
-      outCppClassCode += cppPredeclarationCodeElement.string
-    end
-    $}$
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <externtype_constructor_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                     ?!@externTypeConstructorList ioExternTypeConstructorList ) {
-    $init$
-    $($
-    var @typeNameFormalParameterNameList argumentTypeList = @()
-    repeat
-    while
-      $?selector:$ (?let selector)
-      <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
-      $identifier$ (?let @lstring argumentName)
-      argumentTypeList ++= @(!selector, !argumentTypeName, !argumentName)
-    while
-      $?$
-      let selector = "".here
-      <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
-      $identifier$ (?let @lstring argumentName)
-      argumentTypeList ++= @(!selector, !argumentTypeName, !argumentName)
-    end
-    $)$
-    ioExternTypeConstructorList ++= @(!argumentTypeList)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <externtype_getter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                ?!@externTypeGetterList ioExternTypeGetterList ) {
-    $func$
-    $identifier$ (?let @lstring getterName)
-    var @typeNameFormalParameterNameList argumentTypeList = @()
-    repeat
-    while
-      $?selector:$ (?let selector)
-      <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
-      $identifier$ (?let @lstring argumentName)
-      argumentTypeList ++= @(!selector, !argumentTypeName, !argumentName)
-    while
-      $?$
-      let selector = "".here
-      <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
-      $identifier$ (?let @lstring argumentName)
-      argumentTypeList ++= @(!selector, !argumentTypeName, !argumentName)
-    end
-    $->$
-    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring resultTypeName)
-    ioExternTypeGetterList ++= @(!getterName, !resultTypeName, !argumentTypeList)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <externtype_setter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                ?!@externTypeSetterList ioExternTypeSetterList ) {
-    $mutating$
-    $proc$
-    $identifier$ (?let @lstring setterName)
-    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioExternTypeSetterList ++= @(!setterName, !formalParameterList)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <externtype_method_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                ?!@externTypeMethodList ioExternTypeMethodList ) {
-    $proc$
-    $identifier$ (?let @lstring methodName)
-    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioExternTypeMethodList ++= @(!methodName, !formalParameterList, !.here)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $extern$
+//    $@type$ (?let @lstring externTypeName) indexing (externTypeDefinition)
+//    <externtype_cpp_predeclaration> (?let cppPredeclarationCode)
+//    <externtype_cpp_classdeclaration> (?let cppClassCode)
+//    ${$
+//    var @externTypeConstructorList externTypeConstructorList = @()
+//    var @externTypeGetterList externTypeGetterList = @()
+//    var @externTypeSetterList externTypeSetterList = @()
+//    var @externTypeMethodList externTypeMethodList = @()
+//    repeat
+//    while
+//      <externtype_constructor_ggs3> (!?ioDeclarations, !?externTypeConstructorList)
+//    while
+//      <externtype_getter_ggs3> (!?ioDeclarations, !?externTypeGetterList)
+//    while
+//      <externtype_setter_ggs3> (!?ioDeclarations, !?externTypeSetterList)
+//    while
+//      <externtype_method_ggs3> (!?ioDeclarations, !?externTypeMethodList)
+//    end
+//    $}$
+//    ioDeclarations.mDeclarationList ++= @(!@externTypeDeclarationAST (
+//      !isPredefined: false,
+//      externTypeName,
+//      cppPredeclarationCode,
+//      cppClassCode,
+//      externTypeConstructorList,
+//      externTypeGetterList,
+//      externTypeSetterList,
+//      externTypeMethodList
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <externtype_cpp_predeclaration> (!@string outCppPredeclarationCode ) {
+//    ${$
+//    outCppPredeclarationCode = ""
+//    repeat
+//    while
+//      $"string"$ (?let @lstring cppPredeclarationCodeElement)
+//      outCppPredeclarationCode += cppPredeclarationCodeElement.string
+//    end
+//    $}$
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <externtype_cpp_classdeclaration> (!@string outCppClassCode ) {
+//    ${$
+//    outCppClassCode = ""
+//    repeat
+//    while
+//      $"string"$ (?let @lstring cppPredeclarationCodeElement)
+//      outCppClassCode += cppPredeclarationCodeElement.string
+//    end
+//    $}$
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <externtype_constructor_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                     ?!@externTypeConstructorList ioExternTypeConstructorList ) {
+//    $init$
+//    $($
+//    var @typeNameFormalParameterNameList argumentTypeList = @()
+//    repeat
+//    while
+//      $?selector:$ (?let selector)
+//      <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
+//      $identifier$ (?let @lstring argumentName)
+//      argumentTypeList ++= @(!selector, !argumentTypeName, !argumentName)
+//    while
+//      $?$
+//      let selector = "".here
+//      <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
+//      $identifier$ (?let @lstring argumentName)
+//      argumentTypeList ++= @(!selector, !argumentTypeName, !argumentName)
+//    end
+//    $)$
+//    ioExternTypeConstructorList ++= @(!argumentTypeList)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <externtype_getter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                ?!@externTypeGetterList ioExternTypeGetterList ) {
+//    $func$
+//    $identifier$ (?let @lstring getterName)
+//    var @typeNameFormalParameterNameList argumentTypeList = @()
+//    repeat
+//    while
+//      $?selector:$ (?let selector)
+//      <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
+//      $identifier$ (?let @lstring argumentName)
+//      argumentTypeList ++= @(!selector, !argumentTypeName, !argumentName)
+//    while
+//      $?$
+//      let selector = "".here
+//      <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
+//      $identifier$ (?let @lstring argumentName)
+//      argumentTypeList ++= @(!selector, !argumentTypeName, !argumentName)
+//    end
+//    $->$
+//    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring resultTypeName)
+//    ioExternTypeGetterList ++= @(!getterName, !resultTypeName, !argumentTypeList)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <externtype_setter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                ?!@externTypeSetterList ioExternTypeSetterList ) {
+//    $mutating$
+//    $proc$
+//    $identifier$ (?let @lstring setterName)
+//    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
+//    ioExternTypeSetterList ++= @(!setterName, !formalParameterList)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <externtype_method_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                ?!@externTypeMethodList ioExternTypeMethodList ) {
+//    $proc$
+//    $identifier$ (?let @lstring methodName)
+//    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
+//    ioExternTypeMethodList ++= @(!methodName, !formalParameterList, !.here)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

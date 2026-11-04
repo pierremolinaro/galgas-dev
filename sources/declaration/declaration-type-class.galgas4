@@ -19,85 +19,85 @@
 //!   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    let @bool isAbstract
-    let @bool clonable
-    let @bool finalClass
-    select
-      isAbstract = false
-      clonable = false
-      finalClass = false
-    or
-      $abstract$
-      isAbstract = true
-      clonable = false
-      finalClass = false
-    or
-      $final$
-      isAbstract = false
-      clonable = false
-      finalClass = true
-    or
-      $%clonable$
-      isAbstract = false
-      clonable = true
-      finalClass = false
-    end
-    $class$
-    $@type$ (?let @lstring className) indexing (classDefinition)
-    let @lstring superClassName // Empty if no super class
-    select
-      superClassName = "".nowhere
-    or
-      $:$
-      $@type$ (? superClassName) indexing (classReferencedAsSuperClass)
-    end
-    let @bool generateInSeparateFile
-    select
-      generateInSeparateFile = false
-    or
-      $%generatedInSeparateFile$
-      generateInSeparateFile = true
-    end
-    ${$
-  //--- Class properties
-    var @propertyInCollectionListAST propertyList = @()
-    repeat
-    while
-      <property_declaration_ggs3> (!?ioDeclarations, !? propertyList)
-    while
-      <method_declaration_ggs3> (!className, !?ioDeclarations)
-    end
-    $}$
-    ioDeclarations.mDeclarationList ++= @(!@classDeclarationAST (
-      !isPredefined: false,
-      isAbstract,
-      finalClass,
-      className,
-      superClassName,
-      generateInSeparateFile,
-      propertyList,
-      clonable
-    ))
-    ioDeclarations.mDeclarationList ++= @(!@weakReferenceDeclarationAST (
-      !isPredefined: false,
-      className,
-      makeWeakTypeLName (!className),
-      if superClassName.string == ""
-         then superClassName
-         else makeWeakTypeLName (!superClassName)
-       end,
-      generateInSeparateFile
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    let @bool isAbstract
+//    let @bool clonable
+//    let @bool finalClass
+//    select
+//      isAbstract = false
+//      clonable = false
+//      finalClass = false
+//    or
+//      $abstract$
+//      isAbstract = true
+//      clonable = false
+//      finalClass = false
+//    or
+//      $final$
+//      isAbstract = false
+//      clonable = false
+//      finalClass = true
+//    or
+//      $%clonable$
+//      isAbstract = false
+//      clonable = true
+//      finalClass = false
+//    end
+//    $class$
+//    $@type$ (?let @lstring className) indexing (classDefinition)
+//    let @lstring superClassName // Empty if no super class
+//    select
+//      superClassName = "".nowhere
+//    or
+//      $:$
+//      $@type$ (? superClassName) indexing (classReferencedAsSuperClass)
+//    end
+//    let @bool generateInSeparateFile
+//    select
+//      generateInSeparateFile = false
+//    or
+//      $%generatedInSeparateFile$
+//      generateInSeparateFile = true
+//    end
+//    ${$
+//  //--- Class properties
+//    var @propertyInCollectionListAST propertyList = @()
+//    repeat
+//    while
+//      <property_declaration_ggs3> (!?ioDeclarations, !? propertyList)
+//    while
+//      <method_declaration_ggs3> (!className, !?ioDeclarations)
+//    end
+//    $}$
+//    ioDeclarations.mDeclarationList ++= @(!@classDeclarationAST (
+//      !isPredefined: false,
+//      isAbstract,
+//      finalClass,
+//      className,
+//      superClassName,
+//      generateInSeparateFile,
+//      propertyList,
+//      clonable
+//    ))
+//    ioDeclarations.mDeclarationList ++= @(!@weakReferenceDeclarationAST (
+//      !isPredefined: false,
+//      className,
+//      makeWeakTypeLName (!className),
+//      if superClassName.string == ""
+//         then superClassName
+//         else makeWeakTypeLName (!superClassName)
+//       end,
+//      generateInSeparateFile
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

@@ -28,24 +28,24 @@ final class @lexiqueIntrospectionExpressionAST : @semanticExpressionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3ExpressionSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
-                      !@semanticExpressionAST outExpression ) {
-    $[$
-    $lexique$
-    $identifier$ (?let lexiqueName)
-    $:$
-    $identifier$ (?let getterName)
-    outExpression = @lexiqueIntrospectionExpressionAST (!lexiqueName, getterName)
-    $]$
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3ExpressionSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <primary_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
+//                      !@semanticExpressionAST outExpression ) {
+//    $[$
+//    $lexique$
+//    $identifier$ (?let lexiqueName)
+//    $:$
+//    $identifier$ (?let getterName)
+//    outExpression = @lexiqueIntrospectionExpressionAST (!lexiqueName, getterName)
+//    $]$
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

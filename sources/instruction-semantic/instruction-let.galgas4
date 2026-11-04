@@ -44,51 +44,51 @@ final class @localConstantDeclarationWithAssignmentAST : @semanticInstructionAST
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3InstructionsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    $let$
-    <type_definition_ggs3> (!?ioDeclarations, ?let typeName)
-    $identifier$ (?let constantName)
-    select
-      outInstruction = @undefinedLocalConstantDeclarationAST (
-        !typeName.location,
-        typeName,
-        constantName
-      )
-    or
-      $=$
-      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
-      outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST (
-        !typeName.location,
-        true,
-        typeName,
-        constantName,
-        sourceExpression
-      )
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@semanticInstructionAST outInstruction) {
-    $let$
-    $identifier$ (?let variableName)
-    $=$
-    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
-    outInstruction = @localConstantDeclarationWithAssignmentAST (
-      !variableName.location,
-      variableName,
-      sourceExpression)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3InstructionsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $let$
+//    <type_definition_ggs3> (!?ioDeclarations, ?let typeName)
+//    $identifier$ (?let constantName)
+//    select
+//      outInstruction = @undefinedLocalConstantDeclarationAST (
+//        !typeName.location,
+//        typeName,
+//        constantName
+//      )
+//    or
+//      $=$
+//      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
+//      outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST (
+//        !typeName.location,
+//        true,
+//        typeName,
+//        constantName,
+//        sourceExpression
+//      )
+//    end
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                    !@semanticInstructionAST outInstruction) {
+//    $let$
+//    $identifier$ (?let variableName)
+//    $=$
+//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
+//    outInstruction = @localConstantDeclarationWithAssignmentAST (
+//      !variableName.location,
+//      variableName,
+//      sourceExpression)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

@@ -308,22 +308,19 @@ abstract func @semanticDeclarationAST.keyRepresentation () -> @string
 
 //--------------------------------------------------------------------------------------------------
 
-override func @galgas3GrammarComponentAST.keyRepresentation
-  () ->@string {
+override func @galgas3GrammarComponentAST.keyRepresentation () -> @string {
   result = "grammar " + self.mGrammarComponentName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override func @galgas3SyntaxComponentAST.keyRepresentation
-  () ->@string {
+override func @galgas3SyntaxComponentAST.keyRepresentation () -> @string {
   result = "syntax " + self.mSyntaxComponentName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override func @predefinedTypeAST.keyRepresentation
-  () ->@string {
+override func @predefinedTypeAST.keyRepresentation () -> @string {
   result = "predefined type @" + self.mPredefinedTypeName
 }
 

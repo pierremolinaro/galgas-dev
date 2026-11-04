@@ -20,92 +20,92 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    PROPERTY IN COLLECTION
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <property_declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                   ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
-    <acces_control> (?let accessControl)
-    let @propertyMutability mutability
-    select
-      $var$
-      mutability = .mutableProperty
-    or
-      $let$
-      accessControl.checkCompatibilityWithLet (!.here)
-      mutability = .constantProperty
-    end
-    <type_definition_ggs3> (!?ioDeclarations, ?let propertyTypeName)
-    $identifier$ (?let propertyName)
-    let @bool selectorAttribute
-    let @propertyInCollectionInitializationAST initialization
-    select
-      initialization = .none
-      selectorAttribute = false
-    or
-      $%initArgLabel$
-      initialization = .none
-      selectorAttribute = true
-    or
-      $=$
-      <expression_ggs3> (!?ioDeclarations, ?let expression)
-      initialization = .some (!expression: expression)
-      selectorAttribute = false
-    end
-    ioAttributeInCollectionList ++= @(
-      !mutability: mutability,
-      !propertyTypeName,
-      !propertyName,
-      !accessControl,
-      !hasSelector: selectorAttribute,
-      !initialization: initialization)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <property_declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                   ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
-    <acces_control> (?let accessControl)
-    $weak$
-    select
-      $var$
-    or
-      $let$
-      error (.here : "a weak property is mutable, and should be declared with 'var'")
-    end
-    <type_definition_ggs3> (!?ioDeclarations, ?let propertyTypeName)
-    $identifier$ (?let propertyName)
-    let @bool selectorAttribute
-    let @propertyInCollectionInitializationAST initialization
-    select
-      initialization = .none
-      selectorAttribute = false
-    or
-      $%initArgLabel$
-      initialization = .none
-      selectorAttribute = true
-    or
-      $=$
-      <expression_ggs3> (!?ioDeclarations, ?let expression)
-      initialization = .some (!expression: expression)
-      selectorAttribute = false
-    end
-    let propertyWeakTypeName = makeWeakTypeLName (!propertyTypeName)
-    ioAttributeInCollectionList ++= @(
-      !mutability: .weakProperty,
-      !propertyWeakTypeName,
-      !propertyName,
-      !accessControl,
-      !hasSelector: selectorAttribute,
-      !initialization: initialization)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //    PROPERTY IN COLLECTION
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <property_declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                   ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
+//    <acces_control> (?let accessControl)
+//    let @propertyMutability mutability
+//    select
+//      $var$
+//      mutability = .mutableProperty
+//    or
+//      $let$
+//      accessControl.checkCompatibilityWithLet (!.here)
+//      mutability = .constantProperty
+//    end
+//    <type_definition_ggs3> (!?ioDeclarations, ?let propertyTypeName)
+//    $identifier$ (?let propertyName)
+//    let @bool selectorAttribute
+//    let @propertyInCollectionInitializationAST initialization
+//    select
+//      initialization = .none
+//      selectorAttribute = false
+//    or
+//      $%initArgLabel$
+//      initialization = .none
+//      selectorAttribute = true
+//    or
+//      $=$
+//      <expression_ggs3> (!?ioDeclarations, ?let expression)
+//      initialization = .some (!expression: expression)
+//      selectorAttribute = false
+//    end
+//    ioAttributeInCollectionList ++= @(
+//      !mutability: mutability,
+//      !propertyTypeName,
+//      !propertyName,
+//      !accessControl,
+//      !hasSelector: selectorAttribute,
+//      !initialization: initialization)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <property_declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                   ?!@propertyInCollectionListAST ioAttributeInCollectionList ) {
+//    <acces_control> (?let accessControl)
+//    $weak$
+//    select
+//      $var$
+//    or
+//      $let$
+//      error (.here : "a weak property is mutable, and should be declared with 'var'")
+//    end
+//    <type_definition_ggs3> (!?ioDeclarations, ?let propertyTypeName)
+//    $identifier$ (?let propertyName)
+//    let @bool selectorAttribute
+//    let @propertyInCollectionInitializationAST initialization
+//    select
+//      initialization = .none
+//      selectorAttribute = false
+//    or
+//      $%initArgLabel$
+//      initialization = .none
+//      selectorAttribute = true
+//    or
+//      $=$
+//      <expression_ggs3> (!?ioDeclarations, ?let expression)
+//      initialization = .some (!expression: expression)
+//      selectorAttribute = false
+//    end
+//    let propertyWeakTypeName = makeWeakTypeLName (!propertyTypeName)
+//    ioAttributeInCollectionList ++= @(
+//      !mutability: .weakProperty,
+//      !propertyWeakTypeName,
+//      !propertyName,
+//      !accessControl,
+//      !hasSelector: selectorAttribute,
+//      !initialization: initialization)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

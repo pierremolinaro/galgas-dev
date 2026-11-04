@@ -28,22 +28,22 @@ final class @bangExpressionAST : @semanticExpressionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3ExpressionSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                      !@semanticExpressionAST outExpression ) {
-    let operatorLocation = @location.here
-    <primary_ggs3> (!?ioDeclarations, ?outExpression)
-    $.$
-    $bang$
-    outExpression = @bangExpressionAST (!operatorLocation, outExpression)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3ExpressionSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                      !@semanticExpressionAST outExpression ) {
+//    let operatorLocation = @location.here
+//    <primary_ggs3> (!?ioDeclarations, ?outExpression)
+//    $.$
+//    $bang$
+//    outExpression = @bangExpressionAST (!operatorLocation, outExpression)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

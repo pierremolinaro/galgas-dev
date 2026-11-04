@@ -20,61 +20,61 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <acces_control> (!@AccessControlAST outAccessControl) {
-    select
-      outAccessControl = .publicAccess
-    or
-      $public$
-      outAccessControl = .publicAccess
-    or
-      $protected$
-      select
-        outAccessControl = .protectedAccess
-      or
-        $($
-        $identifier$ (?let value)
-        if value.string != "set" then
-          error (value.location : "only 'set' is allowed here")
-        end
-        $)$
-        outAccessControl = .protectedSetAccess
-      end
-    or
-      $private$
-      select
-        outAccessControl = .privateAccess
-      or
-        $($
-        $identifier$ (?let value)
-        if value.string != "set" then
-          error (value.location : "only 'set' is allowed here")
-        end
-        $)$
-        outAccessControl = .privateSetAccess
-      end
-    or
-      $fileprivate$
-      select
-        outAccessControl = .fileprivateAccess (!declarationLocation: .here)
-      or
-        $($
-        outAccessControl = .fileprivateSetAccess (!declarationLocation: .here)
-        $identifier$ (?let value)
-        if value.string != "set" then
-          error (value.location : "only 'set' is allowed here")
-        end
-        $)$
-      end
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <acces_control> (!@AccessControlAST outAccessControl) {
+//    select
+//      outAccessControl = .publicAccess
+//    or
+//      $public$
+//      outAccessControl = .publicAccess
+//    or
+//      $protected$
+//      select
+//        outAccessControl = .protectedAccess
+//      or
+//        $($
+//        $identifier$ (?let value)
+//        if value.string != "set" then
+//          error (value.location : "only 'set' is allowed here")
+//        end
+//        $)$
+//        outAccessControl = .protectedSetAccess
+//      end
+//    or
+//      $private$
+//      select
+//        outAccessControl = .privateAccess
+//      or
+//        $($
+//        $identifier$ (?let value)
+//        if value.string != "set" then
+//          error (value.location : "only 'set' is allowed here")
+//        end
+//        $)$
+//        outAccessControl = .privateSetAccess
+//      end
+//    or
+//      $fileprivate$
+//      select
+//        outAccessControl = .fileprivateAccess (!declarationLocation: .here)
+//      or
+//        $($
+//        outAccessControl = .fileprivateSetAccess (!declarationLocation: .here)
+//        $identifier$ (?let value)
+//        if value.string != "set" then
+//          error (value.location : "only 'set' is allowed here")
+//        end
+//        $)$
+//      end
+//    end
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

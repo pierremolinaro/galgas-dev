@@ -17,33 +17,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3SyntaxComponentSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                                  !@syntaxInstructionAST outInstruction ) {
-    $<non_terminal>$ (?let @lstring mNonterminalName) indexing (ruleReference)
-    <actual_parameter_list_ggs34> (!?ioDeclarations, ?let @actualParameterListAST mActualParameterList)
-  //--- Get syntax directed translation result string
-    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
-    select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone ()
-    or
-      $:>$
-      <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationResult)
-    end
-    outInstruction = @nonterminalCallInstruction (
-      !mNonterminalName.location,
-      mNonterminalName,
-      mActualParameterList,
-      grammarInstructionSyntaxDirectedTranslationResult
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3SyntaxComponentSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                                  !@syntaxInstructionAST outInstruction ) {
+//    $<non_terminal>$ (?let @lstring mNonterminalName) indexing (ruleReference)
+//    <actual_parameter_list_ggs34> (!?ioDeclarations, ?let @actualParameterListAST mActualParameterList)
+//  //--- Get syntax directed translation result string
+//    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+//    select
+//      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone ()
+//    or
+//      $:>$
+//      <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationResult)
+//    end
+//    outInstruction = @nonterminalCallInstruction (
+//      !mNonterminalName.location,
+//      mNonterminalName,
+//      mActualParameterList,
+//      grammarInstructionSyntaxDirectedTranslationResult
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

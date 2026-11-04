@@ -30,31 +30,31 @@ final class @ifExpressionAST : @semanticExpressionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3ExpressionSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                      !@semanticExpressionAST outExpression ) {
-    $if$
-    <expression_ggs3> (!?ioDeclarations, ?let ifExpression)
-    let operatorLocation = @location.here
-    $then$
-    <expression_ggs3> (!?ioDeclarations, ?let thenExpression)
-    $else$
-    <expression_ggs3> (!?ioDeclarations, ?let elseExpression)
-    $end$
-    outExpression = @ifExpressionAST (
-      !operatorLocation,
-      ifExpression,
-      thenExpression,
-      elseExpression
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3ExpressionSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                      !@semanticExpressionAST outExpression ) {
+//    $if$
+//    <expression_ggs3> (!?ioDeclarations, ?let ifExpression)
+//    let operatorLocation = @location.here
+//    $then$
+//    <expression_ggs3> (!?ioDeclarations, ?let thenExpression)
+//    $else$
+//    <expression_ggs3> (!?ioDeclarations, ?let elseExpression)
+//    $end$
+//    outExpression = @ifExpressionAST (
+//      !operatorLocation,
+//      ifExpression,
+//      thenExpression,
+//      elseExpression
+//    )
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

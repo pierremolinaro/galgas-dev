@@ -21,74 +21,74 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3InstructionsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  //    R O U T I N E    D E C L A R A T I O N
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $proc$
-    var isUsefull = false
-    repeat
-    while
-      $%usefull$
-      if isUsefull then
-        error (.here : "duplicate attribute" fixit %remove)
-      end
-      isUsefull = true
-    end
-    $identifier$ (?let mRoutineName) indexing (routineDefinition)
-    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
-    $}$
-    let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList ++= @(!@procDeclarationAST (
-      !isPredefined: false,
-      !isFilePrivate: false,
-      mRoutineName,
-      formalParameterList,
-      !usefullProcedure: isUsefull,
-      mRoutineInstructionList,
-      endOfInstructionList
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $private$
-    $proc$
-    var isUsefull = false
-    repeat
-    while
-      $%usefull$
-      if isUsefull then
-        error (.here : "duplicate attribute" fixit %remove)
-      end
-      isUsefull = true
-    end
-    $identifier$ (?let mRoutineName) indexing (routineDefinition)
-    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ${$
-    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
-    $}$
-    let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList ++= @(!@procDeclarationAST (
-      !isPredefined: false,
-      !isFilePrivate: true,
-      !mRoutineName,
-      formalParameterList,
-      !usefullProcedure: isUsefull,
-      mRoutineInstructionList,
-      endOfInstructionList
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3InstructionsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  //    R O U T I N E    D E C L A R A T I O N
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $proc$
+//    var isUsefull = false
+//    repeat
+//    while
+//      $%usefull$
+//      if isUsefull then
+//        error (.here : "duplicate attribute" fixit %remove)
+//      end
+//      isUsefull = true
+//    end
+//    $identifier$ (?let mRoutineName) indexing (routineDefinition)
+//    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
+//    ${$
+//    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
+//    $}$
+//    let endOfInstructionList = @location.here
+//    ioDeclarations.mDeclarationList ++= @(!@procDeclarationAST (
+//      !isPredefined: false,
+//      !isFilePrivate: false,
+//      mRoutineName,
+//      formalParameterList,
+//      !usefullProcedure: isUsefull,
+//      mRoutineInstructionList,
+//      endOfInstructionList
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $private$
+//    $proc$
+//    var isUsefull = false
+//    repeat
+//    while
+//      $%usefull$
+//      if isUsefull then
+//        error (.here : "duplicate attribute" fixit %remove)
+//      end
+//      isUsefull = true
+//    end
+//    $identifier$ (?let mRoutineName) indexing (routineDefinition)
+//    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
+//    ${$
+//    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
+//    $}$
+//    let endOfInstructionList = @location.here
+//    ioDeclarations.mDeclarationList ++= @(!@procDeclarationAST (
+//      !isPredefined: false,
+//      !isFilePrivate: true,
+//      !mRoutineName,
+//      formalParameterList,
+//      !usefullProcedure: isUsefull,
+//      mRoutineInstructionList,
+//      endOfInstructionList
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

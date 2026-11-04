@@ -28,18 +28,18 @@ final class @lexicalSimpleSendInstructionAST : @lexicalInstructionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3LexiqueComponentSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <lexical_send_instruction> (!@lexicalInstructionAST outInstruction) {
-    $\$terminal\$$ (?let @lstring sentTerminal)
-    outInstruction = @lexicalSimpleSendInstructionAST (!sentTerminal)
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3LexiqueComponentSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <lexical_send_instruction> (!@lexicalInstructionAST outInstruction) {
+//    $\$terminal\$$ (?let @lstring sentTerminal)
+//    outInstruction = @lexicalSimpleSendInstructionAST (!sentTerminal)
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

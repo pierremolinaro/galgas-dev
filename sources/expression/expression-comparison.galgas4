@@ -43,68 +43,68 @@ final class @comparisonExpressionAST : @semanticExpressionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3ExpressionSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <relation_factor_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-                              !@semanticExpressionAST outExpression ) {
-    <simple_expression_ggs3> (!?ioDeclarations, ? outExpression)
-    repeat
-    while
-      let operatorLocation = @location.here
-      $==$
-      let leftOperand = outExpression
-      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .equal, rightOperand)
-    while
-      let operatorLocation = @location.here
-      $!=$
-      let leftOperand = outExpression
-      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .notEqual, rightOperand)
-    while
-      let operatorLocation = @location.here
-      $<=$
-      let leftOperand = outExpression
-      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .lowerOrEqual, rightOperand)
-    while
-      let operatorLocation = @location.here
-      $>=$
-      let leftOperand = outExpression
-      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .greaterOrEqual, rightOperand)
-    while
-      let operatorLocation = @location.here
-      $>$
-      let leftOperand = outExpression
-      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .greaterThan, rightOperand)
-    while
-      let operatorLocation = @location.here
-      $<$
-      let leftOperand = outExpression
-      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .lowerThan, rightOperand)
-    while
-      let operatorLocation = @location.here
-      $===$
-      let leftOperand = outExpression
-      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .sameInstance, rightOperand)
-    while
-      let operatorLocation = @location.here
-      $!==$
-      let leftOperand = outExpression
-      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .differentInstances, rightOperand)
-    end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3ExpressionSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <relation_factor_ggs3> (?!@galgasDeclarationAST ioDeclarations,
+//                              !@semanticExpressionAST outExpression ) {
+//    <simple_expression_ggs3> (!?ioDeclarations, ? outExpression)
+//    repeat
+//    while
+//      let operatorLocation = @location.here
+//      $==$
+//      let leftOperand = outExpression
+//      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
+//      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .equal, rightOperand)
+//    while
+//      let operatorLocation = @location.here
+//      $!=$
+//      let leftOperand = outExpression
+//      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
+//      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .notEqual, rightOperand)
+//    while
+//      let operatorLocation = @location.here
+//      $<=$
+//      let leftOperand = outExpression
+//      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
+//      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .lowerOrEqual, rightOperand)
+//    while
+//      let operatorLocation = @location.here
+//      $>=$
+//      let leftOperand = outExpression
+//      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
+//      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .greaterOrEqual, rightOperand)
+//    while
+//      let operatorLocation = @location.here
+//      $>$
+//      let leftOperand = outExpression
+//      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
+//      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .greaterThan, rightOperand)
+//    while
+//      let operatorLocation = @location.here
+//      $<$
+//      let leftOperand = outExpression
+//      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
+//      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .lowerThan, rightOperand)
+//    while
+//      let operatorLocation = @location.here
+//      $===$
+//      let leftOperand = outExpression
+//      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
+//      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .sameInstance, rightOperand)
+//    while
+//      let operatorLocation = @location.here
+//      $!==$
+//      let leftOperand = outExpression
+//      <simple_expression_ggs3> (!?ioDeclarations, ?let rightOperand)
+//      outExpression = @comparisonExpressionAST (!operatorLocation, leftOperand, .differentInstances, rightOperand)
+//    end
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 

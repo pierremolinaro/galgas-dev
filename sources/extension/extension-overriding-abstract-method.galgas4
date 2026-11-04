@@ -29,51 +29,51 @@ final class @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas3DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-    $override$
-    $abstract$
-    $proc$
-    $@type$ (?var typeName) indexing (typeReferenceOverrideAbstractExtensionMethod)
-    $.$
-    repeat
-    while
-      $@type$ (?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
-      $.$
-    end
-    $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
-    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionMethodAST (
-      !isPredefined: false,
-      typeName,
-      methodName,
-      formalParameterList
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  rule <method_declaration_ggs3> (?let @lstring inTypeName, ?!@galgasDeclarationAST ioDeclarations) {
-    $override$
-    $abstract$
-    $proc$
-    $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
-    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionMethodAST (
-      !isPredefined: false,
-      inTypeName,
-      methodName,
-      formalParameterList
-    ))
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//syntax extension galgas3DeclarationsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
+//    $override$
+//    $abstract$
+//    $proc$
+//    $@type$ (?var typeName) indexing (typeReferenceOverrideAbstractExtensionMethod)
+//    $.$
+//    repeat
+//    while
+//      $@type$ (?let t)
+//      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+//      $.$
+//    end
+//    $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
+//    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
+//    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionMethodAST (
+//      !isPredefined: false,
+//      typeName,
+//      methodName,
+//      formalParameterList
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  rule <method_declaration_ggs3> (?let @lstring inTypeName, ?!@galgasDeclarationAST ioDeclarations) {
+//    $override$
+//    $abstract$
+//    $proc$
+//    $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
+//    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
+//    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionMethodAST (
+//      !isPredefined: false,
+//      inTypeName,
+//      methodName,
+//      formalParameterList
+//    ))
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 
