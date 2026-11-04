@@ -117,7 +117,7 @@ syntax extension galgas4ExpressionSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <output_expression_list> (?!@galgasDeclarationAST ioDeclarations,
-                                !@actualOutputArgumentList outExpressionList ) {
+                                 !@actualOutputArgumentList outExpressionList ) {
     outExpressionList = @()
     select
       repeat
@@ -142,7 +142,7 @@ syntax extension galgas4ExpressionSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <non_empty_output_expression_list> (?!@galgasDeclarationAST ioDeclarations,
-                                          !@actualOutputArgumentList outExpressionList ) {
+                                           !@actualOutputArgumentList outExpressionList) {
     outExpressionList = @()
     repeat
       let @lstring selector

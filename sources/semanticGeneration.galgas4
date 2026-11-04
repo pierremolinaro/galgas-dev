@@ -810,17 +810,17 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
   )
 
 //----------- Extension mutating proc
-  template abstractExtensionSetterDeclaration : "abstract-extension-setter.h.galgasTemplate" (
-    ?@string CLASS_NAME,
-    ?@string MODIFIER_NAME,
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
-  )
+//  template abstractExtensionSetterDeclaration : "abstract-extension-setter.h.galgasTemplate" (
+//    ?@string CLASS_NAME,
+//    ?@string MODIFIER_NAME,
+//    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+//  )
 
-  template abstractExtensionSetterImplementation : "abstract-extension-setter.cpp.galgasTemplate" (
-    ?@string CLASS_NAME,
-    ?@string MODIFIER_NAME,
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
-  )
+//  template abstractExtensionSetterImplementation : "abstract-extension-setter.cpp.galgasTemplate" (
+//    ?@string CLASS_NAME,
+//    ?@string MODIFIER_NAME,
+//    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+//  )
 
   template extensionSetterDeclaration : "extension-setter.h.galgasTemplate" (
     ?@string CLASS_NAME,
@@ -835,11 +835,11 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@string MODIFIER_IMPLEMENTATION
   )
 
-  template overridingExtensionSetterImplementation : "overriding-extension-setter.cpp.galgasTemplate" (
-    ?@string CLASS_NAME,
-    ?@string MODIFIER_NAME,
-    ?@string MODIFIER_IMPLEMENTATION
-  )
+//  template overridingExtensionSetterImplementation : "overriding-extension-setter.cpp.galgasTemplate" (
+//    ?@string CLASS_NAME,
+//    ?@string MODIFIER_NAME,
+//    ?@string MODIFIER_IMPLEMENTATION
+//  )
 
 //----------- Extension proc
   template abstractExtensionMethodDeclaration : "abstract-extension-proc.h.galgasTemplate" (

@@ -188,15 +188,14 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterDeclarationInSemanticContext
-    (?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-    ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-    ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-    ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
-    ?!@unifiedTypeMap unused ioTypeMap,
-    ?!@semanticContext ioSemanticContext
-  ) {
+  override proc enterDeclarationInSemanticContext (
+             ?!@equatableExtensionMap unused ioEquatableExtensionMap,
+             ?let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
+             ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
+             ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
+             ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+             ?!@unifiedTypeMap unused ioTypeMap,
+             ?!@semanticContext ioSemanticContext) {
     var @commandLineOptionMap boolOptionMap = @()
     var @commandLineOptionMap uintOptionMap = @()
     var @commandLineOptionMap stringOptionMap = @()
@@ -209,8 +208,8 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         + "' command line option has been already declared"
         )
       elsif anOption.mOptionTypeName.string == "bool" then
-        !?boolOptionMap.insertKey
-          (!anOption.mOptionInternalName,
+        !?boolOptionMap.insertKey (
+          !anOption.mOptionInternalName,
           !anOption.mOptionInvocationLetter.char,
           !anOption.mOptionInvocationString.string,
           !anOption.mOptionComment.string,
@@ -218,12 +217,12 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         )
         if anOption.mOptionDefaultValueKind != @optionDefaultValueEnumAST. noDefaultValue then
           error (anOption.mOptionDefaultValue
-          :"an @bool option cannot have a default value (default value is always false)"
+          : "an @bool option cannot have a default value (default value is always false)"
           )
         end
       elsif anOption.mOptionTypeName.string == "uint" then
-        !?uintOptionMap.insertKey
-          (!anOption.mOptionInternalName,
+        !?uintOptionMap.insertKey (
+          !anOption.mOptionInternalName,
           !anOption.mOptionInvocationLetter.char,
           !anOption.mOptionInvocationString.string,
           !anOption.mOptionComment.string,
@@ -235,8 +234,8 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
           )
         end
       elsif anOption.mOptionTypeName.string == "string" then
-        !?stringOptionMap.insertKey
-          (!anOption.mOptionInternalName,
+        !?stringOptionMap.insertKey (
+          !anOption.mOptionInternalName,
           !anOption.mOptionInvocationLetter.char,
           !anOption.mOptionInvocationString.string,
           !anOption.mOptionComment.string,
@@ -248,8 +247,8 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
           )
         end
       elsif anOption.mOptionTypeName.string == "stringlist" then
-        !?stringListOptionMap.insertKey
-          (!anOption.mOptionInternalName,
+        !?stringListOptionMap.insertKey (
+          !anOption.mOptionInternalName,
           !anOption.mOptionInvocationLetter.char,
           !anOption.mOptionInvocationString.string,
           !anOption.mOptionComment.string,
@@ -268,8 +267,8 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
       optionNameSet ++= anOption.mOptionInternalName.string
     end
   //--- Insert option
-    !?ioSemanticContext.mOptionComponentMapForSemanticAnalysis.insertKey
-      (!self.mOptionComponentName,
+    !?ioSemanticContext.mOptionComponentMapForSemanticAnalysis.insertKey (
+      !self.mOptionComponentName,
       !self.isPredefined,
       !boolOptionMap,
       !uintOptionMap,
@@ -280,15 +279,13 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc semanticAnalysis
-    (?!@lstringlist unused ioUsefulnessRootEntities,
-    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-    ?let @string unused inProductDirectory,
-    ?let @semanticContext inSemanticContext,
+  override proc semanticAnalysis (?!@lstringlist unused ioUsefulnessRootEntities,
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                  let @string unused inProductDirectory,
+                                  let @semanticContext inSemanticContext,
                                   ?!@unifiedTypeMap unused ioTypeMap,
-    ?let @predefinedTypes unused inPredefinedTypes,
-    ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
-  ) {
+                                  let @predefinedTypes unused inPredefinedTypes,
+                                  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
   //--- Useful entities graph
     let nameForUsefulness = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
     !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)

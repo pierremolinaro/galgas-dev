@@ -10,62 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'buildLocalVariableMapAndSignature?&?&!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (const class GGS_semanticContext constinArgument0,
-                                                                    class GGS_unifiedTypeMap & ioArgument1,
-                                                                    const class GGS_formalParameterListAST constinArgument2,
-                                                                    class GGS_localVarManager & ioArgument3,
-                                                                    class GGS_formalParameterListForGeneration & outArgument4,
-                                                                    class Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'checkMethodSignatures????'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_checkMethodSignatures_3F__3F__3F__3F_ (const class GGS_formalParameterListForGeneration constinArgument0,
-                                                    const class GGS_location constinArgument1,
-                                                    const class GGS_formalParameterSignature constinArgument2,
-                                                    const class GGS_location constinArgument3,
-                                                    class Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'setterNameForUsefulEntitiesGraph'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_setterNameForUsefulEntitiesGraph (const class GGS_string & constinArgument0,
-                                                             const class GGS_lstring & constinArgument1,
-                                                             class Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'analyzeRoutineBody?&?&???!!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_analyzeRoutineBody_3F__26__3F__26__3F__3F__3F__21__21_ (const class GGS_lstring constinArgument0,
-                                                                     class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                     const class GGS_analysisContext constinArgument2,
-                                                                     class GGS_unifiedTypeMap & ioArgument3,
-                                                                     const class GGS_formalParameterListAST constinArgument4,
-                                                                     const class GGS_semanticInstructionListAST constinArgument5,
-                                                                     const class GGS_location constinArgument6,
-                                                                     class GGS_semanticInstructionListForGeneration & outArgument7,
-                                                                     class GGS_formalParameterListForGeneration & outArgument8,
-                                                                     class Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Function 'initializerNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------

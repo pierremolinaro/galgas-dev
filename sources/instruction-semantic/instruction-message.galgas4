@@ -19,9 +19,9 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-final class @messageInstructionAST : @semanticInstructionAST {
-  private let @semanticExpressionAST mExpression
-}
+//final class @messageInstructionAST : @semanticInstructionAST {
+//  private let @semanticExpressionAST mExpression
+//}
 
 //--------------------------------------------------------------------------------------------------
 //! SYNTAX
@@ -45,92 +45,92 @@ final class @messageInstructionAST : @semanticInstructionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-syntax extension galgas4InstructionsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Replaced by print (...)
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+//syntax extension galgas4InstructionsSyntax {
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//  // Replaced by print (...)
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
 //  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 //    $message$
 //    let instructionLocation = @location.here
 //    <expression> ?let @semanticExpressionAST expression
 //    outInstruction = @messageInstructionAST {!instructionLocation !expression}
 //  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override proc @messageInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  self.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
-}
+//override proc @messageInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+//  self.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
+//}
 
 //--------------------------------------------------------------------------------------------------
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @messageInstructionAST.analyzeSemanticInstruction (
-                        ?let @lstring inUsefulnessCallerEntityName,
-                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        ?let @analysisContext inAnalysisContext,
-                        ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
-                        ?!@localVarManager ioVariableMap) {
-//--- Analyze source expression
-  self.mExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
-    !?ioUsefulEntitiesGraph,
-    !inferenceType: @unifiedTypeMapEntry.null,
-    !inAnalysisContext,
-    !?ioTypeMap,
-    !?ioVariableMap,
-    ?let expression
-  )
-//--- Check message type is @string
-  if expression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
-    error (self.mInstructionLocation
-    :"the expression has the '@" + expression.mResultType.definition.typeName.string + "' type, but the 'message' instruction requires an '@string' expression"
-    )
-  end
-//--- Generate instruction
-  ioInstructionListForGeneration ++= @(!@messageInstructionForGeneration (
-    !expression,
-    self.mInstructionLocation))
-}
+//override proc @messageInstructionAST.analyzeSemanticInstruction (
+//                        ?let @lstring inUsefulnessCallerEntityName,
+//                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+//                        ?let @analysisContext inAnalysisContext,
+//                        ?!@unifiedTypeMap ioTypeMap,
+//                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+//                        ?!@localVarManager ioVariableMap) {
+////--- Analyze source expression
+//  self.mExpression.analyzeSemanticExpression
+//    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+//    !?ioUsefulEntitiesGraph,
+//    !inferenceType: @unifiedTypeMapEntry.null,
+//    !inAnalysisContext,
+//    !?ioTypeMap,
+//    !?ioVariableMap,
+//    ?let expression
+//  )
+////--- Check message type is @string
+//  if expression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
+//    error (self.mInstructionLocation
+//    :"the expression has the '@" + expression.mResultType.definition.typeName.string + "' type, but the 'message' instruction requires an '@string' expression"
+//    )
+//  end
+////--- Generate instruction
+//  ioInstructionListForGeneration ++= @(!@messageInstructionForGeneration (
+//    !expression,
+//    self.mInstructionLocation))
+//}
 
 //--------------------------------------------------------------------------------------------------
 //! GENERATION
 //--------------------------------------------------------------------------------------------------
 
-final class @messageInstructionForGeneration : @semanticInstructionForGeneration {
-  private let @semanticExpressionForGeneration mExpression
-  private let @location mInstructionLocation
-}
+//final class @messageInstructionForGeneration : @semanticInstructionForGeneration {
+//  private let @semanticExpressionForGeneration mExpression
+//  private let @location mInstructionLocation
+//}
 
 //································································································*
 
-override proc @messageInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
-  ?!@stringset ioUnusedVariableCppNameSet,
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString,
-  ?!@string ioGeneratedCode) {
-//--- Message expression
-  self.mExpression.generateExpression
-    (!?ioGeneratedCode,
-    !?ioInclusionSet,
-    !?ioTemporaryVariableIndex,
-    !?ioUnusedVariableCppNameSet,
-    ?let @string messageCppVarName
-  )
-//--- Invoke 'printMessage' proc of Compiler
-  ioGeneratedCode += compilerCppName () + "->printMessage (" + messageCppVarName
-  ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
-  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
-}
+//override proc @messageInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
+//  ?!@uint ioTemporaryVariableIndex,
+//  ?!@stringset ioUnusedVariableCppNameSet,
+//  ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+//  ?!@string ioGeneratedCode) {
+////--- Message expression
+//  self.mExpression.generateExpression
+//    (!?ioGeneratedCode,
+//    !?ioInclusionSet,
+//    !?ioTemporaryVariableIndex,
+//    !?ioUnusedVariableCppNameSet,
+//    ?let @string messageCppVarName
+//  )
+////--- Invoke 'printMessage' proc of Compiler
+//  ioGeneratedCode += compilerCppName () + "->printMessage (" + messageCppVarName
+//  ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
+//  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+//}
 
 //--------------------------------------------------------------------------------------------------

@@ -639,57 +639,57 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
 //! GENERATION
 //--------------------------------------------------------------------------------------------------
 
-final class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
-  private let @string mReceiverCppName
-  private let @unifiedTypeMapEntry mTargetType
-  private let @string mNameForCheckingFormalParameterUsing
-  private let @location mInstructionLocation
-  private let @lstringlist mStructAttributeList
-  private let @semanticExpressionListForGeneration mExpressionList
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  override proc generateInstruction (?!@stringset ioInclusionSet,
-    ?!@uint ioTemporaryVariableIndex,
-    ?!@stringset ioUnusedVariableCppNameSet,
-    ?let @bool unused inGenerateSyntaxDirectedTranslationString,
-    ?!@string ioGeneratedCode) {
-  //--- Parameters
-    self.mTargetType.addHeaderFileName (!?ioInclusionSet)
-    var parameterList = @stringlist ()
-    for entry in self.mExpressionList do
-      entry.mExpression.generateExpression (
-        !?ioGeneratedCode,
-        !?ioInclusionSet,
-        !?ioTemporaryVariableIndex,
-        !?ioUnusedVariableCppNameSet,
-        ?let @string parameter
-      )
-      parameterList ++= @(!parameter)
-    end
-  //--- Receiver
-    !?ioUnusedVariableCppNameSet.removeKey (!self.mNameForCheckingFormalParameterUsing)
-    ioGeneratedCode += self.mReceiverCppName
-    for entry in self.mStructAttributeList do
-      ioGeneratedCode += ".mProperty_" + entry.mValue.string.identifierRepresentation
-    end
-  //--- Call add assign (+=) operator
-    ioGeneratedCode += ".addAssignOperation ("
-    !?ioUnusedVariableCppNameSet.removeKey (!self.mReceiverCppName)
-    for entry in parameterList
-      do ioGeneratedCode += entry.mValue
-      between ioGeneratedCode += ", "
-    end
-    if self.mTargetType.definition.features.contains (!.plusEqualOperatorWithFieldListNeedsCompilerArg) then
-      ioGeneratedCode  += ", " + compilerCppName ()
-      !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
-    end
-    ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
+//final class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
+//  private let @string mReceiverCppName
+//  private let @unifiedTypeMapEntry mTargetType
+//  private let @string mNameForCheckingFormalParameterUsing
+//  private let @location mInstructionLocation
+//  private let @lstringlist mStructAttributeList
+//  private let @semanticExpressionListForGeneration mExpressionList
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//  override proc generateInstruction (?!@stringset ioInclusionSet,
+//    ?!@uint ioTemporaryVariableIndex,
+//    ?!@stringset ioUnusedVariableCppNameSet,
+//    ?let @bool unused inGenerateSyntaxDirectedTranslationString,
+//    ?!@string ioGeneratedCode) {
+//  //--- Parameters
+//    self.mTargetType.addHeaderFileName (!?ioInclusionSet)
+//    var parameterList = @stringlist ()
+//    for entry in self.mExpressionList do
+//      entry.mExpression.generateExpression (
+//        !?ioGeneratedCode,
+//        !?ioInclusionSet,
+//        !?ioTemporaryVariableIndex,
+//        !?ioUnusedVariableCppNameSet,
+//        ?let @string parameter
+//      )
+//      parameterList ++= @(!parameter)
+//    end
+//  //--- Receiver
+//    !?ioUnusedVariableCppNameSet.removeKey (!self.mNameForCheckingFormalParameterUsing)
+//    ioGeneratedCode += self.mReceiverCppName
+//    for entry in self.mStructAttributeList do
+//      ioGeneratedCode += ".mProperty_" + entry.mValue.string.identifierRepresentation
+//    end
+//  //--- Call add assign (+=) operator
+//    ioGeneratedCode += ".addAssignOperation ("
+//    !?ioUnusedVariableCppNameSet.removeKey (!self.mReceiverCppName)
+//    for entry in parameterList
+//      do ioGeneratedCode += entry.mValue
+//      between ioGeneratedCode += ", "
+//    end
+//    if self.mTargetType.definition.features.contains (!.plusEqualOperatorWithFieldListNeedsCompilerArg) then
+//      ioGeneratedCode  += ", " + compilerCppName ()
+//      !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+//    end
+//    ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
+//  }
+//
+//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+//}
 
 //--------------------------------------------------------------------------------------------------
 
