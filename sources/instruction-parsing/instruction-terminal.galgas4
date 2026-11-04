@@ -98,7 +98,7 @@ syntax extension galgas4SyntaxComponentSyntax {
       <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationPreceedingToken)
     end
     outInstruction = @terminalCheckInstructionAST (
-      !terminalName.location,
+      terminalName.location,
       terminalName,
       actualInputParameterList,
       indexNameList,
@@ -123,7 +123,7 @@ syntax extension galgas4SyntaxComponentSyntax {
         or
           $"string"$ (?postfixName)
         end
-        outIndexNameList ++= @(!indexName, !postfixName)
+        outIndexNameList ++= @(indexName, postfixName)
       while
         $,$
       end
@@ -158,10 +158,10 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
       terminalSymbolIndex = entry.mTerminalIndex
     else
       terminalSymbolIndex = ioActuallyUsedTerminalSymbolMap.count
-      !?ioActuallyUsedTerminalSymbolMap.insertKey (!self.mTerminalName, !terminalSymbolIndex)
+      !?ioActuallyUsedTerminalSymbolMap.insertKey (self.mTerminalName, terminalSymbolIndex)
     end
-    ioSyntaxInstructionList ++= @(!@terminalInstructionForGrammarAnalysis (
-      !self.mInstructionLocation,
+    ioSyntaxInstructionList ++= @(@terminalInstructionForGrammarAnalysis (
+      self.mInstructionLocation,
       self.mTerminalName,
       terminalSymbolIndex
     ))
@@ -183,7 +183,7 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
     ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
     ?!@localVarManager ioVariableMap,
     ?!@uint unused ioSelectMethodCount) {
-    inTerminalMap.searchKey (!self.mTerminalName, ?let @lexicalSentValueList sentAttributeList)
+    inTerminalMap.searchKey (self.mTerminalName, ?let @lexicalSentValueList sentAttributeList)
   //---
     if self.mActualInputParameterList.count != sentAttributeList.count then
       error (self.mTerminalName
@@ -198,10 +198,10 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
     var terminalCheckAssignementList = @terminalCheckAssignementList ()
     for actual in self.mActualInputParameterList, formal in sentAttributeList do
       actual.mInputParameter.analyzeInputParameter
-        (!inAnalysisContext,
+        (inAnalysisContext,
         !?ioTypeMap,
-        !formal.mLexicalType,
-        !formal.mLexicalAttributeName,
+        formal.mLexicalType,
+        formal.mLexicalAttributeName,
         !?terminalCheckAssignementList,
         !?ioVariableMap
       )
@@ -218,20 +218,20 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
     end
   //--- Check syntax directed translation destination variable
     self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor.analyzeSDT
-      (!inAnalysisContext,
+      (inAnalysisContext,
       !?ioTypeMap,
-      !inHasTranslateFeature,
+      inHasTranslateFeature,
       !?ioVariableMap
     )
     self.mGrammarInstructionSyntaxDirectedTranslationToken.analyzeSDT
-      (!inAnalysisContext,
+      (inAnalysisContext,
       !?ioTypeMap,
-      !inHasTranslateFeature,
+      inHasTranslateFeature,
       !?ioVariableMap
     )
   //---
-    ioInstructionListForGeneration ++= @(!@terminalCheckInstructionForGeneration (
-      !self.mInstructionLocation,
+    ioInstructionListForGeneration ++= @(@terminalCheckInstructionForGeneration (
+      self.mInstructionLocation,
       self.mTerminalName,
       inLexiqueName,
       terminalCheckAssignementList,
@@ -264,7 +264,7 @@ final class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionF
                                                 ?!@uint unused ioMaxUsedRowIndex,
                                                 ?debug:let @bool unused inDebug) {
     !?ioRowList.appendRow
-      (!nodeDefinition:"[terminal] {" + escapeForTex (!self.mTerminalSymbolName) + "}",
+      (!nodeDefinition:"[terminal] {" + escapeForTex (self.mTerminalSymbolName) + "}",
       !row:inRow,
       !column:ioColumn,
       ?nodeName:let nodeName
@@ -305,8 +305,8 @@ final class @terminalCheckInstructionForGeneration : @syntaxInstructionForGenera
 override proc @terminalCheckInstructionForGeneration.appendSyntaxSignature (
   ?let @string unused inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration) {
-  ioInstructionListForGeneration ++= @(!@terminalCheckInstructionForGeneration (
-    !self.mInstructionLocation,
+  ioInstructionListForGeneration ++= @(@terminalCheckInstructionForGeneration (
+    self.mInstructionLocation,
     self.mTerminalName,
     self.mLexiqueIdentifier,
     @terminalCheckAssignementList (),
@@ -370,19 +370,19 @@ override proc @terminalCheckInstructionForGeneration.generateInstruction (?!@str
   end
 //--- Syntax directed translation
   self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor.generateCode
-    (!inGenerateSyntaxDirectedTranslationString,
-    !"inCompiler->separatorString ()",
+    (inGenerateSyntaxDirectedTranslationString,
+    "inCompiler->separatorString ()",
     !?ioUnusedVariableCppNameSet,
     !?ioGeneratedCode
   )
   self.mGrammarInstructionSyntaxDirectedTranslationToken.generateCode
-    (!inGenerateSyntaxDirectedTranslationString,
-    !"inCompiler->tokenString ()",
+    (inGenerateSyntaxDirectedTranslationString,
+    "inCompiler->tokenString ()",
     !?ioUnusedVariableCppNameSet,
     !?ioGeneratedCode
   )
 //--- Check terminal symbol
-  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
   ioGeneratedCode += compilerCppName () + "->acceptTerminal (Lexique_"
   ioGeneratedCode += self.mLexiqueIdentifier + "::kToken_" + self.mTerminalName.string.identifierRepresentation
   ioGeneratedCode += self.mInstructionLocation.commaSourceFile + ") ;\n"

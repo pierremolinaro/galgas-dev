@@ -105,7 +105,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@overridingExtensionMethodAST (
+    ioDeclarations.mDeclarationList ++= @(@overridingExtensionMethodAST (
       !isPredefined: false,
       typeName,
       methodName,
@@ -127,7 +127,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@overridingExtensionMethodAST (
+    ioDeclarations.mDeclarationList ++= @(@overridingExtensionMethodAST (
       !isPredefined: false,
       inTypeName,
       methodName,
@@ -173,19 +173,19 @@ override proc @overridingExtensionMethodAST.enterDeclarationInGraph (
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
-  ioExtensionOverrideDefinitionList ++= @(!self)
+  ioExtensionOverrideDefinitionList ++= @(self)
 //---
-  if not ioExtensionMethodMapForBuildingContext.hasKey (!self.mTypeName.string) then
+  if not ioExtensionMethodMapForBuildingContext.hasKey (self.mTypeName.string) then
     !?ioExtensionMethodMapForBuildingContext.insertKey
-      (! self.mTypeName,
-      !@()
+      ( self.mTypeName,
+      @()
     )
   end
   var entry = ioExtensionMethodMapForBuildingContext [!searchKey: self.mTypeName]
   !?entry.mExtensionMethodMapForType.insertKey
-    (!self.mOverridingExtensionMethodName,
-    ! self.mOverridingExtensionMethodFormalParameterList,
-    !.isVirtualOverriding
+    (self.mOverridingExtensionMethodName,
+     self.mOverridingExtensionMethodFormalParameterList,
+    .isVirtualOverriding
   )
   !?ioExtensionMethodMapForBuildingContext.replaceKey (!with: entry)
 }
@@ -217,12 +217,12 @@ override proc @overridingExtensionMethodAST.semanticAnalysis (
   ?let @predefinedTypes inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
 //--- Useful entities graph
-  let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName, !self.mOverridingExtensionMethodName)
-  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
-  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
+  let nameForUsefulness = methodNameForUsefulEntitiesGraph (self.mTypeName, self.mOverridingExtensionMethodName)
+  !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
+  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mTypeName)
   !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness, !to: nameForUsefulness)
 //--- Self type
-  let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
+  let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
 //--- Check self type is a class
   if not selfType.definition.typeKind.isClassType then
     error (self.mOverridingExtensionMethodName: "cannot declare a extension proc: '@" + selfType.definition.typeName.string + "' is not a class")
@@ -234,9 +234,9 @@ override proc @overridingExtensionMethodAST.semanticAnalysis (
   var @location inheritedDeclarationLocation = @location.here
   loop (ioTypeMap.count + 1)
   while (not superType.isNull) & (baseTypeName == "") do
-    if superType.definition.instanceMethodMap.hasKey (!self.mOverridingExtensionMethodName.string) then
+    if superType.definition.instanceMethodMap.hasKey (self.mOverridingExtensionMethodName.string) then
       superType.definition.instanceMethodMap.searchKey
-        (!self.mOverridingExtensionMethodName,
+        (self.mOverridingExtensionMethodName,
         ?*,
         ?inheritedSignature,
         ?inheritedDeclarationLocation,
@@ -255,7 +255,7 @@ override proc @overridingExtensionMethodAST.semanticAnalysis (
   end
 //--- Analyze instruction list
   let analysisContext = @analysisContext (
-    !inSemanticContext,
+    inSemanticContext,
     inPredefinedTypes,
     !selfObjectCppName: "this",
     !selfAvailability: .available (!type: selfType, !selfMutability: .propertiesAreMutableSelfIsNot),
@@ -266,29 +266,29 @@ override proc @overridingExtensionMethodAST.semanticAnalysis (
 //    isclass = classType.isReference
 //  end
   analyzeRoutineBody (
-    !nameForUsefulness,
+    nameForUsefulness,
     !?ioUsefulEntitiesGraph,
-    !analysisContext,
+    analysisContext,
     !?ioTypeMap,
-    !self.mOverridingExtensionMethodFormalParameterList,
-    !self.mOverridingExtensionMethodInstructionList,
-    !self.mEndOfMethodLocation,
+    self.mOverridingExtensionMethodFormalParameterList,
+    self.mOverridingExtensionMethodInstructionList,
+    self.mEndOfMethodLocation,
     ?let semanticInstructionListForGeneration,
     ?let formalParameterListForGeneration
   )
 //--- Check Signature
   if baseTypeName != "" then
     checkMethodSignatures (
-      !formalParameterListForGeneration,
-      !self.mOverridingExtensionMethodName.location,
-      !inheritedSignature,
-      !inheritedDeclarationLocation
+      formalParameterListForGeneration,
+      self.mOverridingExtensionMethodName.location,
+      inheritedSignature,
+      inheritedDeclarationLocation
     )
   end
 //---
   ioSemanticDeclarationListForGeneration ++= @(
     !infoMessage: "override extension proc " + self.mOverridingExtensionMethodName,
-    !@overridingExtensionMethodForGeneration (
+    @overridingExtensionMethodForGeneration (
       !generateHeader: false,
       !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mOverridingExtensionMethodName.string.fileNameRepresentation,
       selfType,
@@ -321,8 +321,8 @@ override proc @overridingExtensionMethodAST.buildExtensionListMaps (
 //    !self.mTypeName.string
 //    !self.mOverridingExtensionMethodName
   !?ioOverridingExtensionMethodListMap.insertKey
-    (!self.mTypeName.string,
-    !self.mOverridingExtensionMethodName
+    (self.mTypeName.string,
+    self.mOverridingExtensionMethodName
   )
 }
 
@@ -352,17 +352,17 @@ override proc @overridingExtensionMethodForGeneration.appendSpecificImplementati
                                                             ?!@stringset ioInclusionSet,
                                                             !@string outImplementation) {
   generateExtensionMethodNew (
-    !self.mReceiverType,
+    self.mReceiverType,
     !?ioInclusionSet,
-    !self.mExtensionMethodName,
-    !self.mExtensionMethodFormalParameterList,
-    !self.mSemanticInstructionListForGeneration,
+    self.mExtensionMethodName,
+    self.mExtensionMethodFormalParameterList,
+    self.mSemanticInstructionListForGeneration,
     ?let @string methodImplementation
   )
   outImplementation = filewrapper [semanticComponentGenerationTemplate.overridingExtensionMethodImplementation :
-    !self.mReceiverType.definition.typeName.string,
-    !self.mExtensionMethodName,
-    !methodImplementation
+    self.mReceiverType.definition.typeName.string,
+    self.mExtensionMethodName,
+    methodImplementation
   ]
 }
 

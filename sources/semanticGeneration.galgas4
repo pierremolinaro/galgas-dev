@@ -42,13 +42,13 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
       ioInclusionSet ++= "syntax-" + entry.mValue.string.fileNameRepresentation
     end
     outHeader = filewrapper [grammarGenerationTemplate.grammarZone3HeaderGalgas3 :
-      !self.mLexiqueName.identifierRepresentation,
-      !self.mNonTerminalMapForGrammarAnalysis,
-      !self.mNonTerminalToAddList,
-      !self.mStartSymbolName,
-      !self.mHasTranslateFeature,
-      !self.mGrammarName,
-      !self.mSyntaxComponents
+      self.mLexiqueName.identifierRepresentation,
+      self.mNonTerminalMapForGrammarAnalysis,
+      self.mNonTerminalToAddList,
+      self.mStartSymbolName,
+      self.mHasTranslateFeature,
+      self.mGrammarName,
+      self.mSyntaxComponents
      ]
   }
 
@@ -145,17 +145,17 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
     var @uint idx = 0
     loop (self.mSelectMethodCount + 1)
     while idx < self.mSelectMethodCount do
-      selectMethodList ++= @(!idx)
+      selectMethodList ++= @(idx)
       idx += 1
     end
     outHeader = filewrapper [syntaxFileGenerationTemplate.syntaxAnalyserClassDeclaration :
-      !self.mSyntaxComponentName,
-      !self.mLexiqueName.identifierRepresentation,
-      !self.mNonterminalDeclarationMap,
-      !self.mRuleDeclarationList,
-      !selectMethodList,
-      !self.mHasIndexing,
-      !self.mHasTranslateFeature
+      self.mSyntaxComponentName,
+      self.mLexiqueName.identifierRepresentation,
+      self.mNonterminalDeclarationMap,
+      self.mRuleDeclarationList,
+      selectMethodList,
+      self.mHasIndexing,
+      self.mHasTranslateFeature
     ]
   }
 
@@ -166,7 +166,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
                                               !@string outImplementation ) {
     ioInclusionSet ++= "syntax-" + self.mSyntaxComponentName.fileNameRepresentation
     outImplementation = filewrapper [syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3 :
-      !@()
+      @()
     ]
   //---
     let lexiqueCppName = "Lexique_" + self.mLexiqueName.identifierRepresentation
@@ -180,15 +180,15 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
         outImplementation += "//------------------------------------------------------------------------------------------------\n\n"
         generateProcedure (
           !static:false,
-          !ruleName,
+          ruleName,
           !?ioInclusionSet,
-          !labelImplementation.mSignatureForGeneration,
-          !labelImplementation.mInstructionListForGeneration,
-          !false,
-          !lexiqueCppName,
-          !false, // Do not generate location Argument
-          !false, // Do not generate 'resetTemplateString'
-          !self.mHasTranslateFeature,
+          labelImplementation.mSignatureForGeneration,
+          labelImplementation.mInstructionListForGeneration,
+          false,
+          lexiqueCppName,
+          false, // Do not generate location Argument
+          false, // Do not generate 'resetTemplateString'
+          self.mHasTranslateFeature,
           ?let @string code
         )
         outImplementation += code
@@ -203,15 +203,15 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
         outImplementation += "//------------------------------------------------------------------------------------------------\n\n"
         generateProcedure (
           !static:false,
-          !ruleName,
+          ruleName,
           !?ioInclusionSet,
-          !@formalParameterListForGeneration (),
-          !syntaxSignatureOfInstructionList ("indexing", instructionList),
-          !false,
-          !lexiqueCppName,
-          !false, // Do not generate location Argument
-          !false, // Do not generate 'resetTemplateString'
-          !false, // Do not generate syntaxDirectedTranslationString argument
+          @formalParameterListForGeneration (),
+          syntaxSignatureOfInstructionList ("indexing", instructionList),
+          false,
+          lexiqueCppName,
+          false, // Do not generate location Argument
+          false, // Do not generate 'resetTemplateString'
+          false, // Do not generate syntaxDirectedTranslationString argument
           ?let @string code
         )
         outImplementation += code
@@ -258,17 +258,17 @@ proc generateProcedure
 //--- Generate body
   var @uint temporaryVariableIndex = 0
   var routineBody = ""
-  !?routineBody.incIndentation (!2)
+  !?routineBody.incIndentation (2)
   for entry in inInstructionList do
     entry.mInstruction.generateInstruction
       (!?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
-      !inGenerateSyntaxDirectedTranslationString,
+      inGenerateSyntaxDirectedTranslationString,
       !?routineBody
     )
   end
-  !?routineBody.decIndentation (!2)
+  !?routineBody.decIndentation (2)
 //--- Generate inclusions
   for entry in inFormalArgumentList do
     entry.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
@@ -298,27 +298,27 @@ proc generateProcedure
       outGeneratedCode += formal.mFormalArgumentCppName
     end
     outGeneratedCode += ",\n"
-    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+    !?outGeneratedCode.appendSpacesUntilColumn (colRef)
   end
 //--- Syntax directed argument ?
   if inGenerateSyntaxDirectedTranslationString then
-    if unusedVariableCppNameSet.hasKey (!syntaxDirectedTranslationResultVarName ()) then
+    if unusedVariableCppNameSet.hasKey (syntaxDirectedTranslationResultVarName ()) then
       outGeneratedCode += "String & /* " + syntaxDirectedTranslationResultVarName () + " */,\n"
     else
       outGeneratedCode += "String & " + syntaxDirectedTranslationResultVarName () + ",\n"
     end
-    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+    !?outGeneratedCode.appendSpacesUntilColumn (colRef)
   end
 //--- Compiler argument
   outGeneratedCode += inCompilerTypeName + " * "
-  if unusedVariableCppNameSet.hasKey (!compilerCppName ()) then
+  if unusedVariableCppNameSet.hasKey (compilerCppName ()) then
     outGeneratedCode += "/* " + compilerCppName () + " */"
   else
     outGeneratedCode += compilerCppName ()
   end
   if inGenerateLocationArgs then
     outGeneratedCode += "\n"
-    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+    !?outGeneratedCode.appendSpacesUntilColumn (colRef)
     outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
   end
   outGeneratedCode += ")"
@@ -373,17 +373,17 @@ proc generateFunction (?let @string inFunctionCppRepresentationName,
 //--- Generate body
   var @uint temporaryVariableIndex = 0
   var @string routineBody = ""
-  !?routineBody.incIndentation (!2)
+  !?routineBody.incIndentation (2)
   for entry in inInstructionList do
     entry.mInstruction.generateInstruction
       (!?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
-      !false, // inGenerateSyntaxDirectedTranslationString
+      false, // inGenerateSyntaxDirectedTranslationString
       !?routineBody
     )
   end
-  !?routineBody.decIndentation (!2)
+  !?routineBody.decIndentation (2)
 //--- Generate header
   if inIsStatic then
     outGeneratedCode += "static "
@@ -404,17 +404,17 @@ proc generateFunction (?let @string inFunctionCppRepresentationName,
       outGeneratedCode += " " + formal.mFormalArgumentCppName
     end
     outGeneratedCode += ",\n"
-    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+    !?outGeneratedCode.appendSpacesUntilColumn (colRef)
   end
 //--- Compiler argument
   outGeneratedCode += inCompilerTypeName + " *"
-  if unusedVariableCppNameSet.hasKey (!compilerCppName ()) then
+  if unusedVariableCppNameSet.hasKey (compilerCppName ()) then
     outGeneratedCode += " /* " + compilerCppName () + " */"
   else
     outGeneratedCode += " " + compilerCppName ()
   end
   outGeneratedCode += "\n"
-  !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+  !?outGeneratedCode.appendSpacesUntilColumn (colRef)
   outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS)"
   if inIsConst then
     outGeneratedCode += " const"
@@ -455,17 +455,17 @@ proc generateExtensionGetter (?let @string inFunctionCppRepresentationName,
 //--- Generate body
   var @uint temporaryVariableIndex = 0
   var @string routineBody = ""
-  !?routineBody.incIndentation (!2)
+  !?routineBody.incIndentation (2)
   for entry in inInstructionList do
     entry.mInstruction.generateInstruction
       (!?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
-      !false, // inGenerateSyntaxDirectedTranslationString
+      false, // inGenerateSyntaxDirectedTranslationString
       !?routineBody
     )
   end
-  !?routineBody.decIndentation (!2)
+  !?routineBody.decIndentation (2)
 //--- Generate header
   outGeneratedCode += "GGS_" + inResultType.identifierRepresentation + " "
   outGeneratedCode += inFunctionCppRepresentationName + " ("
@@ -483,17 +483,17 @@ proc generateExtensionGetter (?let @string inFunctionCppRepresentationName,
       outGeneratedCode += " " + formal.mFormalArgumentCppName
     end
     outGeneratedCode += ",\n"
-    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+    !?outGeneratedCode.appendSpacesUntilColumn (colRef)
   end
 //--- Compiler argument
   outGeneratedCode += inCompilerTypeName + " *"
-  if unusedVariableCppNameSet.hasKey (!compilerCppName ()) then
+  if unusedVariableCppNameSet.hasKey (compilerCppName ()) then
     outGeneratedCode += "/* " + compilerCppName () + " */"
   else
     outGeneratedCode += " " + compilerCppName ()
   end
   outGeneratedCode += "\n"
-  !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+  !?outGeneratedCode.appendSpacesUntilColumn (colRef)
   outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS) const {\n"
 //--- Declare returned variable
   outGeneratedCode += "  GGS_" + inResultType.identifierRepresentation
@@ -531,17 +531,17 @@ proc generateExtensionSetter
 //--- Generate body
   var @uint temporaryVariableIndex = 0
   var routineBody = ""
-  !?routineBody.incIndentation (!2)
+  !?routineBody.incIndentation (2)
   for entry in inInstructionList do
     entry.mInstruction.generateInstruction (
       !?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
-      !false, // inGenerateSyntaxDirectedTranslationString
+      false, // inGenerateSyntaxDirectedTranslationString
       !?routineBody
     )
   end
-  !?routineBody.decIndentation (!2)
+  !?routineBody.decIndentation (2)
 //--- Generate header
   outGeneratedCode = "static void extensionSetter_" + inClassName.identifierRepresentation + "_" + inMethodName.identifierRepresentation + " ("
   let @uint colRef = outGeneratedCode.currentColumn
@@ -550,7 +550,7 @@ proc generateExtensionSetter
   else
     outGeneratedCode += "cPtr_" + inBaseClassName.identifierRepresentation + " * "
   end
-  let @bool currentObjectIsUnused = unusedVariableCppNameSet.hasKey (!"object")
+  let @bool currentObjectIsUnused = unusedVariableCppNameSet.hasKey ("object")
   if currentObjectIsUnused then
     outGeneratedCode += "/* inObject */"
   else
@@ -559,7 +559,7 @@ proc generateExtensionSetter
 //---
   for formal in inFormalArgumentList do
     outGeneratedCode += ",\n"
-    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+    !?outGeneratedCode.appendSpacesUntilColumn (colRef)
     switch formal.mFormalArgumentPassingMode
     case argumentConstantIn :
       outGeneratedCode += "const GGS_" + formal.mFormalArgumentType.identifierRepresentation + " "
@@ -578,15 +578,15 @@ proc generateExtensionSetter
   end
 //--- Compiler argument
   outGeneratedCode += ",\n"
-  !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+  !?outGeneratedCode.appendSpacesUntilColumn (colRef)
   outGeneratedCode += "Compiler * "
-  if unusedVariableCppNameSet.hasKey (!compilerCppName ()) then
+  if unusedVariableCppNameSet.hasKey (compilerCppName ()) then
     outGeneratedCode += "/* " + compilerCppName () + " */"
   else
     outGeneratedCode += compilerCppName ()
   end
   outGeneratedCode += "\n"
-  !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+  !?outGeneratedCode.appendSpacesUntilColumn (colRef)
   outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
   outGeneratedCode += ") {\n"
 //--- Generate routine body
@@ -624,23 +624,23 @@ proc generateExtensionMethodNew (?let @unifiedTypeMapEntry inReceiverType,
 //--- Generate body
   var @uint temporaryVariableIndex = 0
   var @string routineBody = ""
-  !?routineBody.incIndentation (!2)
+  !?routineBody.incIndentation (2)
   for entry in inInstructionList do
     entry.mInstruction.generateInstruction
       (!?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
-      !false, // inGenerateSyntaxDirectedTranslationString
+      false, // inGenerateSyntaxDirectedTranslationString
       !?routineBody
     )
   end
-  !?routineBody.decIndentation (!2)
+  !?routineBody.decIndentation (2)
 //--- Generate inclusions
   var @unifiedTypeMapEntry baseType = inReceiverType
   var @bool searching = true
   loop (@uint. max) while searching do
     if not baseType.definition.superType.isNull then
-      if baseType.definition.superType.definition.instanceMethodMap.hasKey (!inMethodName) then
+      if baseType.definition.superType.definition.instanceMethodMap.hasKey (inMethodName) then
         baseType = baseType.definition.superType
       else
         searching = false
@@ -675,17 +675,17 @@ proc generateExtensionMethodNew (?let @unifiedTypeMapEntry inReceiverType,
       outGeneratedCode += formal.mFormalArgumentCppName
     end
     outGeneratedCode += ",\n"
-    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+    !?outGeneratedCode.appendSpacesUntilColumn (colRef)
   end
 //--- Compiler argument
   outGeneratedCode += "Compiler * "
-  if unusedVariableCppNameSet.hasKey (!compilerCppName ()) then
+  if unusedVariableCppNameSet.hasKey (compilerCppName ()) then
     outGeneratedCode += "/* " + compilerCppName () + " */"
   else
     outGeneratedCode += compilerCppName ()
   end
   outGeneratedCode += "\n"
-  !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+  !?outGeneratedCode.appendSpacesUntilColumn (colRef)
   outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
   outGeneratedCode += ") {\n"
 //--- Generate routine body
@@ -982,9 +982,9 @@ override proc @functionPrototypeDeclarationForGeneration.appendDeclaration1
   (?!@stringset unused ioInclusionSet,
   !@string outHeader ) {
   outHeader = filewrapper [semanticComponentGenerationTemplate.functionDeclaration :
-    !self.mFunctionName,
-    !self.mFormalArgumentList,
-    !self.mReturnType.identifierRepresentation
+    self.mFunctionName,
+    self.mFormalArgumentList,
+    self.mReturnType.identifierRepresentation
   ]
 }
 
@@ -1000,9 +1000,9 @@ override proc @onceFunctionDeclarationForGeneration.appendDeclaration1
   (?!@stringset unused ioInclusionSet,
   !@string outHeader ) {
   outHeader = filewrapper [semanticComponentGenerationTemplate.functionDeclaration :
-    !self.mFunctionName,
-    !@formalInputParameterListForGeneration (),
-    !self.mReturnType.identifierRepresentation
+    self.mFunctionName,
+    @formalInputParameterListForGeneration (),
+    self.mReturnType.identifierRepresentation
   ]
 }
 
@@ -1016,9 +1016,9 @@ override func @semanticTypeForGeneration.appendTypeGenericImplementation () -> @
     result = ""
   else
     result = filewrapper [typeGenerationTemplate.genericTypeImplementation :
-      !selfTypeDefinition.typeName.string,
-      !self.mSelfTypeEntry.identifierRepresentation,
-      !selfTypeDefinition.superType
+      selfTypeDefinition.typeName.string,
+      self.mSelfTypeEntry.identifierRepresentation,
+      selfTypeDefinition.superType
     ]
   end
 }
@@ -1033,22 +1033,22 @@ override proc @functionImplementationForGeneration.appendSpecificImplementation
   !@string outImplementation ) {
   ioInclusionSet ++= "func-" + self.mFunctionName.fileNameRepresentation
   generateFunction (
-    !"function_" + self.mFunctionName.identifierRepresentation,
+    "function_" + self.mFunctionName.identifierRepresentation,
     !?ioInclusionSet,
-    !self.mFormalArgumentList,
-    !self.mFunctionInstructionList,
-    !"Compiler",
-    !self.mReturnType,
-    !self.mResultVariableCppName,
+    self.mFormalArgumentList,
+    self.mFunctionInstructionList,
+    "Compiler",
+    self.mReturnType,
+    self.mResultVariableCppName,
     !static: false,
     !const: false,
     ?let @string code
   )
   outImplementation = filewrapper [semanticComponentGenerationTemplate.functionImplementation :
-    !self.mFunctionName,
-    !code,
-    !self.mFormalArgumentList,
-    !self.mReturnType.identifierRepresentation
+    self.mFunctionName,
+    code,
+    self.mFormalArgumentList,
+    self.mReturnType.identifierRepresentation
   ]
 }
 
@@ -1061,22 +1061,22 @@ override proc @onceFunctionDeclarationForGeneration.appendSpecificImplementation
 ) {
   ioInclusionSet ++= "func-" + self.mFunctionName.fileNameRepresentation
   generateFunction (
-    !"onceFunction_" + self.mFunctionName.identifierRepresentation,
+    "onceFunction_" + self.mFunctionName.identifierRepresentation,
     !?ioInclusionSet,
-    !@formalInputParameterListForGeneration (),
-    !self.mFunctionInstructionList,
-    !"Compiler",
-    !self.mReturnType,
-    !self.mResultVariableCppName,
+    @formalInputParameterListForGeneration (),
+    self.mFunctionInstructionList,
+    "Compiler",
+    self.mReturnType,
+    self.mResultVariableCppName,
     !static: true,
     !const: false,
     ?let @string code
   )
   outImplementation = filewrapper [semanticComponentGenerationTemplate.onceFunctionImplementation :
-    !self.mFunctionName,
-    !code,
-    !@formalInputParameterListForGeneration (),
-    !self.mReturnType.identifierRepresentation
+    self.mFunctionName,
+    code,
+    @formalInputParameterListForGeneration (),
+    self.mReturnType.identifierRepresentation
   ]
 }
 
@@ -1126,7 +1126,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
     ?!swift: @stringlist ioSwiftAppProductFileList ) {
   //--- Generate SwiftUI implementation file
     ioAllProductFileSet ++= "lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift"
-    ioSwiftAppProductFileList ++= @(!"lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift")
+    ioSwiftAppProductFileList ++= @("lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift")
     @string.generateFileWithPattern (
       !startPath:inProductDirectory,
       !fileName:"lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift",
@@ -1181,9 +1181,9 @@ proc recursivlyEnumerateRegularFile
   ?!@stringlist ioDirectoryIndexStringList,
   ?!@stringlist ioRegularTextContentIndexStringList,
   ?!@stringlist ioRegularBinaryContentIndexStringList ) {
-  ioDirectoryIndexStringList ++= @(!ioDirectoryIndexStringList.count.string)
+  ioDirectoryIndexStringList ++= @(ioDirectoryIndexStringList.count.string)
   for filewrapperFile in inFilewrapperFileMap do
-    ioRegularFileIndexStringList ++= @(!ioRegularFileIndexStringList.count.string)
+    ioRegularFileIndexStringList ++= @(ioRegularFileIndexStringList.count.string)
     if filewrapperFile.mIsTextFile then
       ioRegularTextContentIndexStringList ++= @(filewrapperFile.mWrapperFileIndex.string)
     else
@@ -1192,8 +1192,8 @@ proc recursivlyEnumerateRegularFile
   end
   for filewrapperDirectory in inFilewrapperDirectoryMap do
     recursivlyEnumerateRegularFile (
-      !filewrapperDirectory.mRegularFileMap,
-      !filewrapperDirectory.mDirectoryMap,
+      filewrapperDirectory.mRegularFileMap,
+      filewrapperDirectory.mDirectoryMap,
       !?ioRegularFileIndexStringList,
       !?ioDirectoryIndexStringList,
       !?ioRegularTextContentIndexStringList,
@@ -1212,26 +1212,26 @@ override proc @filewrapperDeclarationForGeneration.appendDeclaration1
   var regularTextContentIndexStringList = @stringlist ()
   var directoryIndexStringList = @stringlist ()
   recursivlyEnumerateRegularFile (
-    !self.mFilewrapperFileMap,
-    !self.mFilewrapperDirectoryMap,
+    self.mFilewrapperFileMap,
+    self.mFilewrapperDirectoryMap,
     !?regularFileIndexStringList,
     !?directoryIndexStringList,
     !?regularTextContentIndexStringList,
     !?regularBinaryContentIndexStringList
   )
   outHeader = filewrapper [semanticComponentGenerationTemplate.filewrapperDeclaration :
-    !regularFileIndexStringList,
-    !directoryIndexStringList,
-    !regularTextContentIndexStringList,
-    !regularBinaryContentIndexStringList,
-    !self.mFilewrapperName
+    regularFileIndexStringList,
+    directoryIndexStringList,
+    regularTextContentIndexStringList,
+    regularBinaryContentIndexStringList,
+    self.mFilewrapperName
   ]
 //--- template generation
   for filewrapperTemplate in self.mFilewrapperTemplateListForGeneration do
     outHeader += filewrapper [semanticComponentGenerationTemplate.filewrapperTemplateDeclaration :
-      !self.mFilewrapperName,
-      !filewrapperTemplate.mFilewrapperTemplateName,
-      !filewrapperTemplate.mFilewrapperTemplateFormalInputParameters
+      self.mFilewrapperName,
+      filewrapperTemplate.mFilewrapperTemplateName,
+      filewrapperTemplate.mFilewrapperTemplateFormalInputParameters
     ]
   end
 }
@@ -1256,7 +1256,7 @@ proc generateWrapperContents
       ioImplementation += inFilewrapperName.identifierRepresentation
       ioImplementation += " = "
       if contents.count > 100 then
-        var components = contents.componentsSeparatedByString (!"\n")
+        var components = contents.componentsSeparatedByString ("\n")
         !?components.popLast (?let lastLine)
         for (mValue) in components
         before
@@ -1306,11 +1306,11 @@ proc generateWrapperContents
 //--- Generate sub-directories
   for filewrapperDirectory in inFilewrapperDirectoryMap do
     generateWrapperContents (
-      !inFilewrapperName,
-      !filewrapperDirectory.lkey.string,
-      !filewrapperDirectory.mWrapperDirectoryIndex,
-      !filewrapperDirectory.mRegularFileMap,
-      !filewrapperDirectory.mDirectoryMap,
+      inFilewrapperName,
+      filewrapperDirectory.lkey.string,
+      filewrapperDirectory.mWrapperDirectoryIndex,
+      filewrapperDirectory.mRegularFileMap,
+      filewrapperDirectory.mDirectoryMap,
       !?ioImplementation
     )
   end
@@ -1355,16 +1355,16 @@ override proc @filewrapperDeclarationForGeneration.appendSpecificImplementation
   ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
   var @string filewrapperImplementation = ""
   generateWrapperContents (
-    !self.mFilewrapperName,
-    !"",
-    !0,
-    !self.mFilewrapperFileMap,
-    !self.mFilewrapperDirectoryMap,
+    self.mFilewrapperName,
+    "",
+    0,
+    self.mFilewrapperFileMap,
+    self.mFilewrapperDirectoryMap,
     !?filewrapperImplementation
   )
   outImplementation = filewrapper [semanticComponentGenerationTemplate.filewrapperImplementation :
-    !self.mFilewrapperName,
-    !filewrapperImplementation
+    self.mFilewrapperName,
+    filewrapperImplementation
   ]
 //--- template generation
   for filewrapperTemplate in self.mFilewrapperTemplateListForGeneration do
@@ -1378,7 +1378,7 @@ override proc @filewrapperDeclarationForGeneration.appendSpecificImplementation
     end
     var @bool useColumnMarker = false
     templateCodeGenerationForListInstruction (
-      !filewrapperTemplate.mTemplateInstructionListForGeneration,
+      filewrapperTemplate.mTemplateInstructionListForGeneration,
       !?generatedCodeForInstructionList,
       !?ioInclusionSet,
       !?temporaryVariableIndex,
@@ -1387,12 +1387,12 @@ override proc @filewrapperDeclarationForGeneration.appendSpecificImplementation
     )
   //---
     outImplementation += filewrapper [semanticComponentGenerationTemplate.filewrapperTemplateImplementation :
-      !self.mFilewrapperName,
-      !filewrapperTemplate.mFilewrapperTemplateName,
-      !filewrapperTemplate.mFilewrapperTemplateFormalInputParameters,
-      !unusedVariableCppNameSet,
-      !useColumnMarker,
-      !generatedCodeForInstructionList
+      self.mFilewrapperName,
+      filewrapperTemplate.mFilewrapperTemplateName,
+      filewrapperTemplate.mFilewrapperTemplateFormalInputParameters,
+      unusedVariableCppNameSet,
+      useColumnMarker,
+      generatedCodeForInstructionList
     ]
   end
 }
@@ -1419,28 +1419,28 @@ final class @primitiveTypeForGeneration : @semanticTypeForGeneration {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     if self.isPackage then
       result += filewrapper [typeGenerationTemplate.unifiedClassBodyForPackage :
-        !selfTypeDefinition.typeName.string,
-        !self.mSelfTypeEntry.identifierRepresentation,
-        !selfTypeDefinition.classFunctionMap,
-        !selfTypeDefinition.classMethodMap
+        selfTypeDefinition.typeName.string,
+        self.mSelfTypeEntry.identifierRepresentation,
+        selfTypeDefinition.classFunctionMap,
+        selfTypeDefinition.classMethodMap
       ]
     else
       result += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
-        !selfTypeDefinition.typeName.string,
-        !self.mSelfTypeEntry.identifierRepresentation,
-        !selfTypeDefinition.isConcrete,
-        !selfTypeDefinition.initializerMap,
-        !selfTypeDefinition.classFunctionMap,
-        !selfTypeDefinition.getterMap,
-        !selfTypeDefinition.setterMap,
-        !selfTypeDefinition.instanceMethodMap,
-        !selfTypeDefinition.classMethodMap,
-        !selfTypeDefinition.readSubscriptMap,
-        !selfTypeDefinition.enumerationDescriptorList,
-        !selfTypeDefinition.features,
-        !selfTypeDefinition.addAssignOperatorArguments,
-        !selfTypeDefinition.typeForEnumeratedElement,
-        !selfTypeDefinition.supportCollectionValue
+        selfTypeDefinition.typeName.string,
+        self.mSelfTypeEntry.identifierRepresentation,
+        selfTypeDefinition.isConcrete,
+        selfTypeDefinition.initializerMap,
+        selfTypeDefinition.classFunctionMap,
+        selfTypeDefinition.getterMap,
+        selfTypeDefinition.setterMap,
+        selfTypeDefinition.instanceMethodMap,
+        selfTypeDefinition.classMethodMap,
+        selfTypeDefinition.readSubscriptMap,
+        selfTypeDefinition.enumerationDescriptorList,
+        selfTypeDefinition.features,
+        selfTypeDefinition.addAssignOperatorArguments,
+        selfTypeDefinition.typeForEnumeratedElement,
+        selfTypeDefinition.supportCollectionValue
       ]
     end
   }
@@ -1482,12 +1482,12 @@ proc generatePredefinedTypeFiles
   generatedCode += filewrapper [predefinedTypeGenerationTemplate.predefinedTypeSeparation : ]
   for entry in inSemanticDeclarationListForGeneration do
     if entry.mDeclaration.isPredefined then
-      entry.mDeclaration.appendDeclaration2 (!inDirectory, !? %from @(), ?let @string headerString2)
+      entry.mDeclaration.appendDeclaration2 (inDirectory, !? %from @(), ?let @string headerString2)
       generatedCode += headerString2
     end
   end
   if @uint.errorCount == 0 then
-    ioToolHeaderFileList ++= @(!"all-predefined-types.h")
+    ioToolHeaderFileList ++= @("all-predefined-types.h")
     ioAllProductFileSet ++= "all-predefined-types.h"
     @string.generateFileWithPattern (
       !startPath:inDirectory,
@@ -1506,12 +1506,12 @@ proc generatePredefinedTypeFiles
   for entry in inSemanticDeclarationListForGeneration do
     if entry.mDeclaration.isPredefined then
       generatedCode += entry.mDeclaration.appendTypeGenericImplementation
-      entry.mDeclaration.appendSpecificImplementation (! @(), !? %from @(), ?let @string code)
+      entry.mDeclaration.appendSpecificImplementation ( @(), !? %from @(), ?let @string code)
       generatedCode += code
     end
   end
   if @uint.errorCount == 0 then
-    ioToolCppFileList ++= @(!"all-predefined-types.cpp")
+    ioToolCppFileList ++= @("all-predefined-types.cpp")
     ioAllProductFileSet ++= "all-predefined-types.cpp"
     @string.generateFileWithPattern (
       !startPath:inDirectory,

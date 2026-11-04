@@ -77,7 +77,7 @@ syntax extension galgas4ExpressionSyntax {
     $identifier$ (?let optionName)
     $.$
     $identifier$ (?let getterName)
-    outExpression = @optionExpressionAST (!optionComponentName, optionName, getterName)
+    outExpression = @optionExpressionAST (optionComponentName, optionName, getterName)
     $]$
   }
 
@@ -90,7 +90,7 @@ syntax extension galgas4ExpressionSyntax {
     $identifier$ (?let optionName)
     $.$
     $identifier$ (?let getterName)
-    outExpression = @optionExpressionAST (!@(!"galgas_builtin_options", .here), optionName, getterName)
+    outExpression = @optionExpressionAST (@("galgas_builtin_options", .here), optionName, getterName)
     $]$
   }
 
@@ -118,56 +118,56 @@ override proc @optionExpressionAST.analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  let usefulnessName = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
+  let usefulnessName = optionNameForUsefulEntitiesGraph (self.mOptionComponentName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
 //---
   inAnalysisContext.semanticContext.mOptionComponentMapForSemanticAnalysis.searchKey
-    (!self.mOptionComponentName,
+    (self.mOptionComponentName,
     ?let @bool optionComponentIsPredefined,
     ?let @commandLineOptionMap boolOptionMap,
     ?let @commandLineOptionMap uintOptionMap,
     ?let @commandLineOptionMap stringOptionMap,
     ?let @commandLineOptionMap stringListOptionMap
   )
-  var @bool found = boolOptionMap.hasKey (!self.mOptionEntryName.string)
+  var @bool found = boolOptionMap.hasKey (self.mOptionEntryName.string)
   var @unifiedTypeMapEntry returnedType = inAnalysisContext.predefinedTypes.mBoolType
   if not found then
-    found = uintOptionMap.hasKey (!self.mOptionEntryName.string)
+    found = uintOptionMap.hasKey (self.mOptionEntryName.string)
     returnedType = inAnalysisContext.predefinedTypes.mUIntType
   end
   if not found then
-    found = stringOptionMap.hasKey (!self.mOptionEntryName.string)
+    found = stringOptionMap.hasKey (self.mOptionEntryName.string)
     returnedType = inAnalysisContext.predefinedTypes.mStringType
   end
   if not found then
-    found = stringListOptionMap.hasKey (!self.mOptionEntryName.string)
+    found = stringListOptionMap.hasKey (self.mOptionEntryName.string)
     returnedType = inAnalysisContext.predefinedTypes.mStringListType
   end
   if found then
     if self.mOptionGetterName.string == "value" then
       outExpression = @optionValueExpressionForGeneration (
-        !returnedType,
+        returnedType,
         self.mOptionComponentName.location,
         optionComponentIsPredefined,
         self.mOptionComponentName.string,
         self.mOptionEntryName.string)
     elsif self.mOptionGetterName.string == "char" then
       outExpression = @optionCharExpressionForGeneration (
-        !inAnalysisContext.predefinedTypes.mCharType,
+        inAnalysisContext.predefinedTypes.mCharType,
         self.mOptionComponentName.location,
         optionComponentIsPredefined,
         self.mOptionComponentName.string,
         self.mOptionEntryName.string)
     elsif self.mOptionGetterName.string == "string" then
       outExpression = @optionStringExpressionForGeneration (
-        !inAnalysisContext.predefinedTypes.mStringType,
+        inAnalysisContext.predefinedTypes.mStringType,
         self.mOptionComponentName.location,
         optionComponentIsPredefined,
         self.mOptionComponentName.string,
         self.mOptionEntryName.string)
     elsif self.mOptionGetterName.string == "comment" then
       outExpression = @optionCommentExpressionForGeneration (
-        !inAnalysisContext.predefinedTypes.mStringType,
+        inAnalysisContext.predefinedTypes.mStringType,
         self.mOptionComponentName.location,
         optionComponentIsPredefined,
         self.mOptionComponentName.string,

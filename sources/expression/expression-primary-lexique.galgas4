@@ -60,7 +60,7 @@ syntax extension galgas4ExpressionSyntax {
     $identifier$ (?let lexiqueName)
     $:$
     $identifier$ (?let getterName)
-    outExpression = @lexiqueIntrospectionExpressionAST (!lexiqueName, getterName)
+    outExpression = @lexiqueIntrospectionExpressionAST (lexiqueName, getterName)
     $]$
   }
 
@@ -88,11 +88,11 @@ override proc @lexiqueIntrospectionExpressionAST.analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
- let usefulnessName = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
+ let usefulnessName = lexiqueNameForUsefulEntitiesGraph (self.mLexiqueComponentName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
 //--- Check  lexique is declared
   inAnalysisContext.semanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey
-    (!self.mLexiqueComponentName,
+    (self.mLexiqueComponentName,
     ?7*
   )
 //--- Check func name
@@ -101,7 +101,7 @@ override proc @lexiqueIntrospectionExpressionAST.analyzeSemanticExpression
   end
 //---
   outExpression = @lexiqueIntrospectionForGeneration (
-    !ioTypeMap.typeMapEntryForLKey (!"stringlist".nowhere),
+    ioTypeMap.typeMapEntryForLKey ("stringlist".nowhere),
     self.mLexiqueComponentName.location,
     self.mLexiqueComponentName.string,
     self.mLexiqueGetterName.string)

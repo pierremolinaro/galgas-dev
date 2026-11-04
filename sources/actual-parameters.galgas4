@@ -47,13 +47,13 @@ list @actualParameterListAST {
       var @stringset exclusiveVariableSet = @()
       for formalArgument in inRoutineSignature, (mActualParameter) in self do
         mActualParameter.checkAgainstFormalArgument (
-          !inUsefulnessCallerEntityName,
+          inUsefulnessCallerEntityName,
           !?ioUsefulEntitiesGraph,
-          !inAnalysisContext,
+          inAnalysisContext,
           !?ioTypeMap,
-          !formalArgument.mFormalSelector,
-          !formalArgument.mFormalArgumentType,
-          !formalArgument.mFormalArgumentPassingMode,
+          formalArgument.mFormalSelector,
+          formalArgument.mFormalArgumentType,
+          formalArgument.mFormalArgumentPassingMode,
           !?ioVariableMap,
           !?outActualParameterListForGeneration,
           !?exclusiveVariableSet,
@@ -165,23 +165,23 @@ final class @outputActualParameterAST : @actualParameterAST {
         !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
         !inferenceType: inFormalArgumentType,
-        !inAnalysisContext,
+        inAnalysisContext,
         !?ioTypeMap,
         !?ioVariableMap,
         ?@semanticExpressionForGeneration expression
       )
     //--- Check effective expression type against formal argument type
       checkAssignmentTypeWithImplicitGetterCall (
-        !inFormalArgumentType,
-        !expression.mResultType,
-        !self.mEndOfExpressionLocation,
+        inFormalArgumentType,
+        expression.mResultType,
+        self.mEndOfExpressionLocation,
         !?expression
       )
     //--- Generate actual parameter
       ioActualParameterListForGeneration ++= @(
         @outputActualParameterForGeneration (
-          !inFormalArgumentType,
-          !expression
+          inFormalArgumentType,
+          expression
         )
       )
     end
@@ -244,21 +244,21 @@ final class @outputInputActualParameterAST : @actualParameterAST {
     end
   //--- Analyze input/output variable
     !?ioVariableMap.searchForReadWriteAccess (
-      !self.mOutputInputActualParameterName,
+      self.mOutputInputActualParameterName,
       ?var @unifiedTypeMapEntry parameterType,
       ?let variableCppName,
       ?*
     )
-    var typeList = @unifiedTypeMapEntryList.listWithValue (!parameterType)
+    var typeList = @unifiedTypeMapEntryList.listWithValue (parameterType)
     for (mValue) in self.mStructAttributeList do
       let propertyMap = parameterType.definition.propertyMap
       propertyMap.searchKey (
-        !mValue,
+        mValue,
         ?let accessControl,
         ?let isConstant,
         ?parameterType
       )
-      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !mValue)
+      accessControl.checkSetAccess (inAnalysisContext.selfAvailability, mValue)
       if isConstant then
         error (mValue : "a constant property cannot be modified")
       end
@@ -280,10 +280,10 @@ final class @outputInputActualParameterAST : @actualParameterAST {
   //--- Generate actual parameter
     ioActualParameterListForGeneration ++= @(
       @outputInputActualParameterForGeneration (
-        !parameterType,
-        !variableCppName,
-        !self.mStructAttributeList,
-        !typeList
+        parameterType,
+        variableCppName,
+        self.mStructAttributeList,
+        typeList
       )
     )
   }
@@ -348,34 +348,34 @@ final class @outputInputJokerParameterAST : @actualParameterAST {
      !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
      !?ioUsefulEntitiesGraph,
      !inferenceType: inFormalArgumentType,
-     !inAnalysisContext,
+     inAnalysisContext,
      !?ioTypeMap,
      !?ioVariableMap,
      ?var @semanticExpressionForGeneration expressionGeneration
    )
 //--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (
-    !inFormalArgumentType,
-    !expressionGeneration.mResultType,
-    !self.mActualSelector.location,
+    inFormalArgumentType,
+    expressionGeneration.mResultType,
+    self.mActualSelector.location,
     !?expressionGeneration
   )
   //--- Generate actual parameter
     let cppVarName = "joker_" + self.mActualSelector.location.startLocationIndex
     ioInstructionListForGeneration ++= @(
-      !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
-        !inFormalArgumentType,
-        !false, // Is not constant
-        !cppVarName,
-        !expressionGeneration
+      @localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
+        inFormalArgumentType,
+        false, // Is not constant
+        cppVarName,
+        expressionGeneration
       )
     )
     ioActualParameterListForGeneration ++= @(
-      !@outputInputActualParameterForGeneration (
-        !inFormalArgumentType,
-        !cppVarName,
-        !@(),
-        !@unifiedTypeMapEntryList.listWithValue (inFormalArgumentType)
+      @outputInputActualParameterForGeneration (
+        inFormalArgumentType,
+        cppVarName,
+        @(),
+        @unifiedTypeMapEntryList.listWithValue (inFormalArgumentType)
       )
     )
   }
@@ -447,10 +447,10 @@ final class @outputInputSelfParameterAST : @actualParameterAST {
     end
       ioActualParameterListForGeneration ++= @(
         @outputInputActualParameterForGeneration (
-          !inFormalArgumentType,
-          !"ioObject",
-          !@(),
-          !@unifiedTypeMapEntryList.listWithValue (inFormalArgumentType)
+          inFormalArgumentType,
+          "ioObject",
+          @(),
+          @unifiedTypeMapEntryList.listWithValue (inFormalArgumentType)
         )
       )
     else
@@ -513,7 +513,7 @@ final class @inputActualExistingVariableParameterAST : @actualParameterAST {
       error (self.mActualSelector : "the selector should be '" + s + "'"  fixit %replaceBy s)
     end
     !?ioVariableMap.searchForWriteAccess (
-      !self.mInputActualParameterName,
+      self.mInputActualParameterName,
       ?let parameterType,
       ?let targetVariableCppName,
       ?*
@@ -534,7 +534,7 @@ final class @inputActualExistingVariableParameterAST : @actualParameterAST {
     var @2stringlist poisonedVarCppNameList = @()
     for (mValue) in self.mPoisonedVarNameList do
       !?ioVariableMap.searchForWriteAccess (
-        !mValue,
+        mValue,
         ?*,
         ?let targetVariableCppName,
         ?let nameForCheckingFormalParameterUsing
@@ -543,9 +543,9 @@ final class @inputActualExistingVariableParameterAST : @actualParameterAST {
     end
     ioActualParameterListForGeneration ++= @(
       @inputActualParameterForGeneration (
-        !parameterType,
-        !targetVariableCppName,
-        !poisonedVarCppNameList
+        parameterType,
+        targetVariableCppName,
+        poisonedVarCppNameList
       )      
     )
   }
@@ -624,7 +624,7 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
       var @2stringlist poisonedVarCppNameList = @()
       for (mValue) in self.mPoisonedVarNameList do
         !?ioVariableMap.searchForWriteAccess (
-          !mValue,
+          mValue,
           ?*,
           ?let targetVariableCppName,
           ?let nameForCheckingFormalParameterUsing
@@ -633,9 +633,9 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
       end
       ioActualParameterListForGeneration ++= @(
         @inputActualParameterForGeneration (
-          !parameterType,
-          !targetVariableCppName,
-          !poisonedVarCppNameList
+          parameterType,
+          targetVariableCppName,
+          poisonedVarCppNameList
         )     
       )
     else
@@ -714,7 +714,7 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
       var @2stringlist poisonedVarCppNameList = @()
       for (mValue) in self.mPoisonedVarNameList do
         !?ioVariableMap.searchForWriteAccess (
-          !mValue,
+          mValue,
           ?*,
           ?let targetVariableCppName,
           ?let nameForCheckingFormalParameterUsing
@@ -723,9 +723,9 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
       end
       ioActualParameterListForGeneration ++= @(
         @inputActualParameterForGeneration (
-          !selfAvailable.type,
-          !targetVariableCppName,
-          !poisonedVarCppNameList
+          selfAvailable.type,
+          targetVariableCppName,
+          poisonedVarCppNameList
           )
         )
     else
@@ -803,17 +803,17 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
   //--- Declare local variable
     let targetVariableCppName = "var_" + self.mInputActualParameterName.string.identifierRepresentation + "_" + self.mInputActualParameterName.location.startLocationIndex
     !?ioVariableMap.insertInitializedLocalVariable (
-      !self.mInputActualParameterName,
+      self.mInputActualParameterName,
       !warnsIfNotMutated: true,
-      !inFormalArgumentType,
-      !targetVariableCppName,
-      !targetVariableCppName
+      inFormalArgumentType,
+      targetVariableCppName,
+      targetVariableCppName
     )
   //--- Generate local variable declaration
     ioInstructionListForGeneration ++= @(
       @localVariableDeclarationForGeneration (
-        !inFormalArgumentType,
-        !targetVariableCppName
+        inFormalArgumentType,
+        targetVariableCppName
       )     
     )
   //--- Check for exclusive access
@@ -826,7 +826,7 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
     var @2stringlist poisonedVarCppNameList = @()
     for (mValue) in self.mPoisonedVarNameList do
       !?ioVariableMap.searchForWriteAccess (
-        !mValue,
+        mValue,
         ?*,
         ?let targetVariableCppName,
         ?let nameForCheckingFormalParameterUsing
@@ -835,9 +835,9 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
     end
     ioActualParameterListForGeneration ++= @(
       @inputActualParameterForGeneration (
-        !inFormalArgumentType,
-        !targetVariableCppName,
-        !poisonedVarCppNameList
+        inFormalArgumentType,
+        targetVariableCppName,
+        poisonedVarCppNameList
       )
     )
   }
@@ -913,24 +913,24 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
     let targetVariableCppName = "var_" + self.mInputActualParameterName.string.identifierRepresentation + "_" + self.mInputActualParameterName.location.startLocationIndex
     if self.mMarkedAsUnused then
       !?ioVariableMap.insertUsedLocalConstant (
-        !self.mInputActualParameterName,
-        !inFormalArgumentType,
-        !targetVariableCppName,
-        !targetVariableCppName
+        self.mInputActualParameterName,
+        inFormalArgumentType,
+        targetVariableCppName,
+        targetVariableCppName
       )
     else
       !?ioVariableMap.insertInitializedLocalConstant (
-        !self.mInputActualParameterName,
-        !inFormalArgumentType,
-        !targetVariableCppName,
-        !targetVariableCppName
+        self.mInputActualParameterName,
+        inFormalArgumentType,
+        targetVariableCppName,
+        targetVariableCppName
       )
     end
   //--- Generate local variable declaration
     ioInstructionListForGeneration ++= @(
       @localVariableDeclarationForGeneration (
-        !inFormalArgumentType,
-        !targetVariableCppName
+        inFormalArgumentType,
+        targetVariableCppName
       )
     )
   //--- Check for exclusive access
@@ -943,7 +943,7 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
     var @2stringlist poisonedVarCppNameList = @()
     for (mValue) in self.mPoisonedVarNameList do
       !?ioVariableMap.searchForWriteAccess (
-        !mValue,
+        mValue,
         ?*,
         ?let targetVariableCppName,
         ?let nameForCheckingFormalParameterUsing
@@ -952,9 +952,9 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
     end
     ioActualParameterListForGeneration ++= @(
       @inputActualParameterForGeneration (
-        !inFormalArgumentType,
-        !targetVariableCppName,
-        !poisonedVarCppNameList
+        inFormalArgumentType,
+        targetVariableCppName,
+        poisonedVarCppNameList
       )
     )
   }
@@ -1018,7 +1018,7 @@ final class @inputSingleJokerActualParameterAST : @actualParameterAST {
       var @2stringlist poisonedVarCppNameList = @()
       for (mValue) in self.mPoisonedVarNameList do
         !?ioVariableMap.searchForWriteAccess (
-          !mValue,
+          mValue,
           ?*,
           ?let targetVariableCppName,
           ?let nameForCheckingFormalParameterUsing
@@ -1027,9 +1027,9 @@ final class @inputSingleJokerActualParameterAST : @actualParameterAST {
       end
       ioActualParameterListForGeneration ++= @(
         @inputJokerParameterForGeneration (
-          !inFormalArgumentType,
-          !cppVarName,
-          !poisonedVarCppNameList
+          inFormalArgumentType,
+          cppVarName,
+          poisonedVarCppNameList
         )
       )
     end
@@ -1085,9 +1085,9 @@ final class @inputJokerActualParameterAST : @actualParameterAST {
     //--- Generate actual parameter
       ioActualParameterListForGeneration ++= @(
         @inputJokerParameterForGeneration (
-          !inFormalArgumentType,
-          !cppVarName,
-          !@()
+          inFormalArgumentType,
+          cppVarName,
+          @()
         )
       )
     end

@@ -99,7 +99,7 @@ syntax extension galgas4InstructionsSyntax {
       else_instructionList = [@(instruction)]
     end
     outInstruction = @ifInstructionAST (
-      !instructionLocation,
+      instructionLocation,
       testExpression,
       then_instructionList,
       endOf_then_branchLocation,
@@ -174,51 +174,51 @@ final class @ifInstructionAST : @semanticInstructionAST {
                             ?!@localVarManager ioVariableMap ) {
   //--- Test expression
    self.mExpressions.analyzeSemanticExpressionList
-     (!inUsefulnessCallerEntityName,
+     (inUsefulnessCallerEntityName,
      !?ioUsefulEntitiesGraph,
-     !inAnalysisContext,
+     inAnalysisContext,
      !?ioTypeMap,
      !?ioVariableMap,
      ?let @ifTestListForGeneration testListForGeneration
    )
   //--- Then branch
     analyzeSemanticInstructionListWithoutBranch (
-      !inUsefulnessCallerEntityName,
+      inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !localConstantList: @(),
       !localInitializedVariableListWarnsIfNotMutated: @(),
       !localInitializedVariableListNoWarnsIfNotMutated: @(),
-      !self.m_then_instructionList,
+      self.m_then_instructionList,
       !?ioVariableMap,
       ?let then_instructionList
     )
     var expressions = self.mExpressions
     !?expressions.popLast (?*)
     for * in expressions do
-      !?ioVariableMap.closeBranch (!self.mEndOf_then_branch)
-      !?ioVariableMap.closeOverride (!self.mEndOf_then_branch)
+      !?ioVariableMap.closeBranch (self.mEndOf_then_branch)
+      !?ioVariableMap.closeOverride (self.mEndOf_then_branch)
     end
-    !?ioVariableMap.closeBranch (!self.mEndOf_then_branch)
+    !?ioVariableMap.closeBranch (self.mEndOf_then_branch)
   //--- else branch
     analyzeSemanticInstructionList (
-      !inUsefulnessCallerEntityName,
+      inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !localConstantList: @(),
       !localInitializedVariableListWarnsIfNotMutated: @(),
       !localInitializedVariableListNoWarnsIfNotMutated: @(),
-      !self.m_else_instructionList,
-      !self.mEndOf_if_instruction,
+      self.m_else_instructionList,
+      self.mEndOf_if_instruction,
       !?ioVariableMap,
       ?let else_instructionList
     )
-    !?ioVariableMap.closeOverride (!self.mEndOf_if_instruction)
+    !?ioVariableMap.closeOverride (self.mEndOf_if_instruction)
   //--- Generate instruction
-    ioInstructionListForGeneration ++= @(!@ifInstructionForGeneration (
-      !self.mEndOf_then_branch,
+    ioInstructionListForGeneration ++= @(@ifInstructionForGeneration (
+      self.mEndOf_then_branch,
       testListForGeneration,
       then_instructionList,
       else_instructionList
@@ -275,15 +275,15 @@ final class @ifInstructionForGeneration : @semanticInstructionForGeneration {
     ioGeneratedCode += "if (GalgasBool::boolTrue == " + testVar + ") {\n"
     generateInstructionList (
       !?ioInclusionSet,
-      !self.m_then_instructionList,
+      self.m_then_instructionList,
       !?ioTemporaryVariableIndex,
       !?ioUnusedVariableCppNameSet,
-      !inGenerateSyntaxDirectedTranslationString,
+      inGenerateSyntaxDirectedTranslationString,
       !?ioGeneratedCode
     )
     ioGeneratedCode += "}\n"
     for * in self.mExpressions do
-      !?ioGeneratedCode.decIndentation (!2)
+      !?ioGeneratedCode.decIndentation (2)
       ioGeneratedCode += "}\n"
     end
   //--- else branch
@@ -291,10 +291,10 @@ final class @ifInstructionForGeneration : @semanticInstructionForGeneration {
       ioGeneratedCode += "if (GalgasBool::boolFalse == " + testVar + ") {\n"
       generateInstructionList (
         !?ioInclusionSet,
-        !self.m_else_instructionList,
+        self.m_else_instructionList,
         !?ioTemporaryVariableIndex,
         !?ioUnusedVariableCppNameSet,
-        !inGenerateSyntaxDirectedTranslationString,
+        inGenerateSyntaxDirectedTranslationString,
         !?ioGeneratedCode
       )
       ioGeneratedCode += "}\n"

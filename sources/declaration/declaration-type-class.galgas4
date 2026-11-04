@@ -152,10 +152,10 @@ syntax extension galgas4DeclarationsSyntax {
     while
       <property_declaration> (!?ioDeclarations, !?propertyList)
     while
-      <method_declaration> (!className, !?ioDeclarations)
+      <method_declaration> (className, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@classDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(@classDeclarationAST (
       !isPredefined: false,
       isAbstract,
       finalClass,
@@ -166,13 +166,13 @@ syntax extension galgas4DeclarationsSyntax {
       clonable
     ))
   //--- Associated Weak Type
-    ioDeclarations.mDeclarationList ++= @(!@weakReferenceDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(@weakReferenceDeclarationAST (
       !isPredefined: false,
       className,
-      makeWeakTypeLName (!className),
+      makeWeakTypeLName (className),
       if superClassName.string == ""
          then superClassName
-         else makeWeakTypeLName (!superClassName)
+         else makeWeakTypeLName (superClassName)
        end,
       generateInSeparateFile
     ))
@@ -211,20 +211,20 @@ final class @classDeclarationAST : @semanticDeclarationAST {
             ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
             ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
             ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
-    let key = @lstring (!"@" + self.mClassTypeName, self.mClassTypeName.location)
-    !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
+    let key = @lstring ("@" + self.mClassTypeName, self.mClassTypeName.location)
+    !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   //--- Add edge from super class
     if self.mSuperClassName.string != "" then
       !?ioSemanticTypePrecedenceGraph.addEdge
         (!from: key,
-        !to: @(!"@" + self.mSuperClassName, self.mSuperClassName.location)
+        !to: @("@" + self.mSuperClassName, self.mSuperClassName.location)
       )
     end
   //--- Add edge from property types, note type if optional type
     for property in self.mPropertyList do
-      let propertyKey = @lstring (!"@" + property.typeName, self.mSuperClassName.location)
+      let propertyKey = @lstring ("@" + property.typeName, self.mSuperClassName.location)
       if property.typeName.lastCharacter() == '?' then
-        !?ioSemanticTypePrecedenceGraph.noteNode (!propertyKey)
+        !?ioSemanticTypePrecedenceGraph.noteNode (propertyKey)
       else
         !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: propertyKey)
       end
@@ -259,8 +259,8 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       attributeMap = @()
       generateHeaderInSeparateFile = self.mGenerateInSeparateFile
     else
-      !?ioTypeMap.makeEntry (!self.mSuperClassName, ?superClassIndex)
-      let superTypeDefinition = ioTypeMap.typeDefinition (!self.mSuperClassName)
+      !?ioTypeMap.makeEntry (self.mSuperClassName, ?superClassIndex)
+      let superTypeDefinition = ioTypeMap.typeDefinition (self.mSuperClassName)
       inheritedTypedPropertyList = superTypeDefinition.allTypedPropertyList
       attributeMap = superTypeDefinition.propertyMap
       generateHeaderInSeparateFile = superTypeDefinition.generateHeaderInSeparateFile
@@ -279,67 +279,67 @@ final class @classDeclarationAST : @semanticDeclarationAST {
           superSetter.mKind,
           superSetter.mParameterList,
           superSetter.mHasCompilerArgument,
-          !.isInherited,
-          !"" // No error message
+          .isInherited,
+          "" // No error message
         )
       end
     //--- Mark all getters as inherited
       getterMap = @()
       for theGetter in superTypeDefinition.getterMap do
         !?getterMap.insertKey
-          (!theGetter.lkey,
-          !theGetter.mKind,
-          !theGetter.mArgumentTypeList,
-          !theGetter.mDeclarationLocation,
-          !theGetter.mHasCompilerArgument,
-          !theGetter.mReturnedType,
-          !.isInherited,
-          !theGetter.mGetterNameThatObsoletesInvokationName
+          (theGetter.lkey,
+          theGetter.mKind,
+          theGetter.mArgumentTypeList,
+          theGetter.mDeclarationLocation,
+          theGetter.mHasCompilerArgument,
+          theGetter.mReturnedType,
+          .isInherited,
+          theGetter.mGetterNameThatObsoletesInvokationName
         )
       end
     //--- Mark all methods as inherited
       instanceMethodMap = @()
       for instanceMethod in superTypeDefinition.instanceMethodMap do
         !?instanceMethodMap.insertKey
-          (!instanceMethod.lkey,
-          !instanceMethod.mKind,
-          !instanceMethod.mParameterList,
-          !instanceMethod.mDeclarationLocation,
-          !instanceMethod.mHasCompilerArgument,
-          !.isInherited,
-          !instanceMethod.mErrorMessage
+          (instanceMethod.lkey,
+          instanceMethod.mKind,
+          instanceMethod.mParameterList,
+          instanceMethod.mDeclarationLocation,
+          instanceMethod.mHasCompilerArgument,
+          .isInherited,
+          instanceMethod.mErrorMessage
         )
       end
     end
   //--- Current class Index
-    !?ioTypeMap.makeEntry (!self.mClassTypeName, ?let @unifiedTypeMapEntry classIndex)
+    !?ioTypeMap.makeEntry (self.mClassTypeName, ?let @unifiedTypeMapEntry classIndex)
   //--- Build attribute Map and constructor argument list
     var @functionSignature synthetizedInitializerArgumentList = @()
     for property in inheritedTypedPropertyList do
       if property.initialization == .none then
         synthetizedInitializerArgumentList ++= @(
-          !if property.hasSelector then property.name else "".nowhere end,
-          !property.typeEntry,
-          !property.name.string,
-          !true)
+          if property.hasSelector then property.name else "".nowhere end,
+          property.typeEntry,
+          property.name.string,
+          true)
       end
     end
     for property in self.mPropertyList do
-      !?ioTypeMap.makeEntry (!property.typeName, ?let attributeTypeIndex)
+      !?ioTypeMap.makeEntry (property.typeName, ?let attributeTypeIndex)
       if property.initialization == .none then
         synthetizedInitializerArgumentList ++= @(
-          !if property.hasSelector then property.name else "".nowhere end,
-          !attributeTypeIndex,
-          !property.name.string,
-          !true)
+          if property.hasSelector then property.name else "".nowhere end,
+          attributeTypeIndex,
+          property.name.string,
+          true)
       end
       !?attributeMap.insertKey
-        (!property.name,
-        !property.accessControl.accessControl (!forDeclaringType: classIndex),
-        !property.mutability.isConstantProperty,
-        !attributeTypeIndex
+        (property.name,
+        property.accessControl.accessControl (!forDeclaringType: classIndex),
+        property.mutability.isConstantProperty,
+        attributeTypeIndex
       )
-      if getterMap.hasKey (!property.name.string) then
+      if getterMap.hasKey (property.name.string) then
         error (property.name
         : "'" + property.name + "' is the name of a prefefined or a user defined func")
       end
@@ -348,17 +348,17 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     var @typedPropertyList currentClassTypedPropertyList = @()
     var @typedPropertyList allTypedAttributeList = inheritedTypedPropertyList
     for property in self.mPropertyList do
-      !?ioTypeMap.makeEntry (!property.typeName, ?let attributeTypeIndex)
+      !?ioTypeMap.makeEntry (property.typeName, ?let attributeTypeIndex)
       currentClassTypedPropertyList ++= @(
-        !attributeTypeIndex,
-        !property.name,
-        !property.initialization,
+        attributeTypeIndex,
+        property.name,
+        property.initialization,
         !hasSetter: not property.mutability.isConstantProperty,
         !hasSelector: property.hasSelector)
       allTypedAttributeList ++= @(
-        !attributeTypeIndex,
-        !property.name,
-        !property.initialization,
+        attributeTypeIndex,
+        property.name,
+        property.initialization,
         !hasSetter: not property.mutability.isConstantProperty,
         !hasSelector: property.hasSelector)
     end
@@ -369,24 +369,24 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       features |= .clonable
       var @functionSignature cloneInitializerArgumentList = @()
       cloneInitializerArgumentList ++= @(
-        !"cloned".nowhere,
-        !classIndex,
-        !"inObject",
-        !true)
+        "cloned".nowhere,
+        classIndex,
+        "inObject",
+        true)
       !?initializerMap.insertKey
-        (!@(!cloneInitializerArgumentList.initializerSignature, self.mClassTypeName),
-        !cloneInitializerArgumentList
+        (@(cloneInitializerArgumentList.initializerSignature, self.mClassTypeName),
+        cloneInitializerArgumentList
       )
     end
   //--- Add Extensions
     addExtensions (
-      !inExtensionInitializerMapForBuildingContext,
-      !inExtensionMethodMapForBuildingContext,
-      !inExtensionGetterMapForBuildingContext,
-      !inExtensionSetterMapForBuildingContext,
+      inExtensionInitializerMapForBuildingContext,
+      inExtensionMethodMapForBuildingContext,
+      inExtensionGetterMapForBuildingContext,
+      inExtensionSetterMapForBuildingContext,
       !?ioSemanticContext,
       !?ioTypeMap,
-      !self.mClassTypeName,
+      self.mClassTypeName,
       !isClass: true,
       !?initializerMap,
       !?getterMap,
@@ -398,13 +398,13 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     if initializerMap.count == if self.clonable then 1 else 0 end then
       features |= .generateSynthetizedInitializer
       !?initializerMap.insertKey
-        (!@(!synthetizedInitializerArgumentList.initializerSignature, self.mClassTypeName),
-        !synthetizedInitializerArgumentList
+        (@(synthetizedInitializerArgumentList.initializerSignature, self.mClassTypeName),
+        synthetizedInitializerArgumentList
       )
     end
     handleEquatableComparableExtension (
       !?ioEquatableExtensionMap,
-      !self.mClassTypeName,
+      self.mClassTypeName,
       !?features,
       !acceptEquatable: false,
       !acceptComparable: false
@@ -437,7 +437,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       !headerFileName: "class-" + self.mClassTypeName.string.fileNameRepresentation,
       !headerKind: .twoHeaders
     )
-    !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
+    !?ioTypeMap.insertType (typeDefinition.typeName, typeDefinition)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -450,26 +450,26 @@ final class @classDeclarationAST : @semanticDeclarationAST {
                 ?let @predefinedTypes inPredefinedTypes,
                 ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
   //--- Useful entities graph
-    let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mClassTypeName)
-    !?ioUsefulEntitiesGraph.addNode (!classTypeNameForUsefulness, !classTypeNameForUsefulness)
+    let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mClassTypeName)
+    !?ioUsefulEntitiesGraph.addNode (classTypeNameForUsefulness, classTypeNameForUsefulness)
     if self.isPredefined  then
-      ioUsefulnessRootEntities ++= @(!classTypeNameForUsefulness)
+      ioUsefulnessRootEntities ++= @(classTypeNameForUsefulness)
     end
     if self.mSuperClassName.string != "" then
-      let superClassNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSuperClassName)
+      let superClassNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mSuperClassName)
       !?ioUsefulEntitiesGraph.addEdge (!from: classTypeNameForUsefulness, !to: superClassNameForUsefulness)
     end
-    let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!makeWeakTypeLName (!self.mClassTypeName))
+    let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (makeWeakTypeLName (self.mClassTypeName))
     !?ioUsefulEntitiesGraph.addEdge (!from: classTypeNameForUsefulness, !to: weakRefTypeNameForUsefulness)
     if self.isPredefined  then
-      ioUsefulnessRootEntities ++= @(!weakRefTypeNameForUsefulness)
+      ioUsefulnessRootEntities ++= @(weakRefTypeNameForUsefulness)
     end
   //----- Self type
-    let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (!self.mClassTypeName)
+    let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mClassTypeName)
   //--- Super class type
     let @unifiedTypeMapEntry superClassEntry = if self.mSuperClassName.string == ""
       then @unifiedTypeMapEntry.null
-      else ioTypeMap.typeMapEntryForLKey (!self.mSuperClassName)
+      else ioTypeMap.typeMapEntryForLKey (self.mSuperClassName)
     end
   //----- Super type, and class features
   // A class that has a super may not have any feature
@@ -487,9 +487,9 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     for property in allAttributeList do
       if property.initialization == .none then
         synthetizedInheritedInitializerArgumentList ++= @(
-          !property.typeEntry,
-          !property.name,
-          !property.initialization,
+          property.typeEntry,
+          property.name,
+          property.initialization,
           !hasSetter: property.hasSetter,
           !hasSelector: property.hasSelector)
       end
@@ -498,50 +498,50 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     var @typedPropertyList typedAttributeList = @()
     var @propertyIndexMap attributeMap = @()
     for property in self.mPropertyList do
-      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!property.typeName)
+      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (property.typeName)
       !?ioUsefulEntitiesGraph.addEdge (!from: classTypeNameForUsefulness, !to: propertyTypeNameForUsefulness)
-      let t = ioTypeMap.typeMapEntryForLKey (!property.typeName)
+      let t = ioTypeMap.typeMapEntryForLKey (property.typeName)
       typedAttributeList ++= @(
-        !t,
-        !property.name,
-        !property.initialization,
+        t,
+        property.name,
+        property.initialization,
         !hasSetter: not property.mutability.isConstantProperty,
         !hasSelector: property.hasSelector)
       allAttributeList ++= @(
-        !t,
-        !property.name,
-        !property.initialization,
+        t,
+        property.name,
+        property.initialization,
         !hasSetter: not property.mutability.isConstantProperty,
         !hasSelector: property.hasSelector)
-      !?attributeMap.insertKey (!property.name, !t)
+      !?attributeMap.insertKey (property.name, t)
     end
   //--- Build property initialization code
     var @typedPropertyList synthetizedInitialzerArgumentList = @()
     for property in selfType.definition.allTypedPropertyList do
     if property.initialization == .none then
       synthetizedInitialzerArgumentList ++= @(
-        !property.typeEntry,
-        !property.name,
-        !property.initialization,
+        property.typeEntry,
+        property.name,
+        property.initialization,
         !hasSetter: property.hasSetter,
         !hasSelector: property.hasSelector)
      end
    end
    self.mPropertyList.buildPropertyInitializationCode
-      (!classTypeNameForUsefulness,
-      !inSemanticContext,
-      !inPredefinedTypes,
+      (classTypeNameForUsefulness,
+      inSemanticContext,
+      inPredefinedTypes,
       !?ioUsefulEntitiesGraph,
       !?ioTypeMap,
       ?let unusedVariableCppNameSet,
       ?let initializationCode
     )
   //-----
-    let constructorNeedsCompilerVar = not unusedVariableCppNameSet.hasKey (!compilerCppName ())
+    let constructorNeedsCompilerVar = not unusedVariableCppNameSet.hasKey (compilerCppName ())
     ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "class " + self.mClassTypeName,
-      !@classTypeForGeneration (
-        !selfType,
+      @classTypeForGeneration (
+        selfType,
         self.mIsAbstract,
         superClassEntry,
         allAttributeList,
@@ -555,17 +555,17 @@ final class @classDeclarationAST : @semanticDeclarationAST {
         self.clonable
       ))
   //--- Add synthetized initializer ?
-    if selfType.definition.features.contains (!.generateSynthetizedInitializer) then
+    if selfType.definition.features.contains (.generateSynthetizedInitializer) then
       let initializerForUsefulness = initializerNameForUsefulEntitiesGraph (
-        !self.mClassTypeName,
-        !synthetizedInitialzerArgumentList.initializerSignature
+        self.mClassTypeName,
+        synthetizedInitialzerArgumentList.initializerSignature
       )
-      !?ioUsefulEntitiesGraph.addNode (!initializerForUsefulness, !initializerForUsefulness)
+      !?ioUsefulEntitiesGraph.addNode (initializerForUsefulness, initializerForUsefulness)
       if self.isPredefined then
-        ioUsefulnessRootEntities ++= @(!initializerForUsefulness)
+        ioUsefulnessRootEntities ++= @(initializerForUsefulness)
         !?ioUsefulEntitiesGraph.addEdge (!from: initializerForUsefulness, !to: classTypeNameForUsefulness)
       elsif self.mIsAbstract then
-        ioUsefulnessRootEntities ++= @(!initializerForUsefulness)
+        ioUsefulnessRootEntities ++= @(initializerForUsefulness)
       else
         !?ioUsefulEntitiesGraph.addEdge (!from: initializerForUsefulness, !to: classTypeNameForUsefulness)
       end
@@ -702,7 +702,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     let at = self.mAllTypedAttributeList.subListWithRange (
-      !@(!0, self.mAllTypedAttributeList.count - self.mCurrentTypedAttributeList.count)
+      @(0, self.mAllTypedAttributeList.count - self.mCurrentTypedAttributeList.count)
     )
       outImplementation = filewrapper [classGenerationTemplate.referenceClassTypeSpecificImplementation :
         selfTypeDefinition.typeName.string,

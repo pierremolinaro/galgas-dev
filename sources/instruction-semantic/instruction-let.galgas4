@@ -103,7 +103,7 @@ syntax extension galgas4InstructionsSyntax {
     $identifier$ (?let constantName)
     select
       outInstruction = @undefinedLocalConstantDeclarationAST (
-        !typeName.location,
+        typeName.location,
         typeName,
         constantName
      )
@@ -111,7 +111,7 @@ syntax extension galgas4InstructionsSyntax {
       $=$
       <expression> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
       outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST (
-        !typeName.location,
+        typeName.location,
         true, // Is Constant
         typeName,
         constantName,
@@ -129,7 +129,7 @@ syntax extension galgas4InstructionsSyntax {
     $=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
     outInstruction = @localConstantDeclarationWithAssignmentAST (
-      !variableName.location,
+      variableName.location,
       variableName,
       sourceExpression)
   }
@@ -156,7 +156,7 @@ override proc @localConstantDeclarationWithAssignmentAST.enterInstructionInSeman
 
 override proc @localVariableOrConstantDeclarationWithAssignmentAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   if self.mOptionalTypeName.string != "" then
-    !?ioTypeMap.makeEntry (!self.mOptionalTypeName, ?*)
+    !?ioTypeMap.makeEntry (self.mOptionalTypeName, ?*)
   end
   self.mSourceExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
@@ -172,18 +172,18 @@ override proc @undefinedLocalConstantDeclarationAST.analyzeSemanticInstruction (
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
-  let targetType = ioTypeMap.typeMapEntryForLKey (!self.mConstantTypeName)
+  let targetType = ioTypeMap.typeMapEntryForLKey (self.mConstantTypeName)
   let targetVariableCppName = "var_" + self.mConstantName.string.identifierRepresentation
                             + "_" + self.mConstantName.location.startLocationIndex
   !?ioVariableMap.insertDeclaredLocalConstant
-    (!self.mConstantName,
-    !targetType,
-    !targetVariableCppName,
-    !targetVariableCppName
+    (self.mConstantName,
+    targetType,
+    targetVariableCppName,
+    targetVariableCppName
   )
 //--- Generate instruction
-  ioInstructionListForGeneration ++= @(!@undefinedLocalConstantDeclarationForGeneration (
-    !targetType,
+  ioInstructionListForGeneration ++= @(@undefinedLocalConstantDeclarationForGeneration (
+    targetType,
     targetVariableCppName
   ))
 }
@@ -202,7 +202,7 @@ override proc @localConstantDeclarationWithAssignmentAST.analyzeSemanticInstruct
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: .null,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?let @semanticExpressionForGeneration expression
@@ -211,14 +211,14 @@ override proc @localConstantDeclarationWithAssignmentAST.analyzeSemanticInstruct
   let targetVariableCppName = "var_" + self.mVariableName.string.identifierRepresentation
                                      + "_" + self.mVariableName.location.startLocationIndex
   !?ioVariableMap.insertInitializedLocalConstant
-    (!self.mVariableName,
-    !expression.mResultType,
-    !targetVariableCppName,
-    !targetVariableCppName
+    (self.mVariableName,
+    expression.mResultType,
+    targetVariableCppName,
+    targetVariableCppName
   )
 //--- Generate instruction
-  ioInstructionListForGeneration ++= @(!@localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
-    !expression.mResultType,
+  ioInstructionListForGeneration ++= @(@localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
+    expression.mResultType,
     true,
     targetVariableCppName,
     expression))
@@ -233,13 +233,13 @@ override proc @localVariableOrConstantDeclarationWithAssignmentAST.analyzeSemant
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
-  let targetType = ioTypeMap.typeMapEntryForLKey (!self.mOptionalTypeName)
+  let targetType = ioTypeMap.typeMapEntryForLKey (self.mOptionalTypeName)
 //--- Analyze source expression
   self.mSourceExpression.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: targetType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?@semanticExpressionForGeneration expression
@@ -249,25 +249,25 @@ override proc @localVariableOrConstantDeclarationWithAssignmentAST.analyzeSemant
                             + "_" + self.mVariableName.location.startLocationIndex
   if self.mIsConstant then
     !?ioVariableMap.insertInitializedLocalConstant
-      (!self.mVariableName,
-      !targetType,
-      !targetVariableCppName,
-      !targetVariableCppName
+      (self.mVariableName,
+      targetType,
+      targetVariableCppName,
+      targetVariableCppName
     )
   else
     !?ioVariableMap.insertInitializedLocalVariable
-      (!self.mVariableName,
+      (self.mVariableName,
       !warnsIfNotMutated: true,
-      !targetType,
-      !targetVariableCppName,
-      !targetVariableCppName
+      targetType,
+      targetVariableCppName,
+      targetVariableCppName
     )
   end
 //--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType, !expression.mResultType, !self.mInstructionLocation, !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (targetType, expression.mResultType, self.mInstructionLocation, !?expression)
 //--- Generate instruction
-  ioInstructionListForGeneration ++= @(!@localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
-    !targetType,
+  ioInstructionListForGeneration ++= @(@localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
+    targetType,
     self.mIsConstant,
     targetVariableCppName,
     expression

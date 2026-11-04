@@ -101,7 +101,7 @@ syntax extension galgas4ExpressionSyntax {
         ?let @actualOutputArgumentList expressionList
       )
       outExpression = @subscriptReadAccessExpressionAST (
-        !outExpression,
+        outExpression,
         expressionList,
         .here
       )
@@ -126,7 +126,7 @@ syntax extension galgas4ExpressionSyntax {
           outExpression,
           getterName,
           expressionList,
-          startLocation.union (!endLocation)
+          startLocation.union (endLocation)
         )
       end
     end
@@ -165,7 +165,7 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
       (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inferenceType: .null,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !?ioVariableMap,
       ?let @semanticExpressionForGeneration exprGeneration
@@ -176,14 +176,14 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
     if let prop = propertyMap [self.propertyName] then
       if exprGeneration is @selfInExpressionForGeneration then
         !?ioVariableMap.searchForReadAccess
-          (!@("self." + self.propertyName, self.propertyName),
+          (@("self." + self.propertyName, self.propertyName),
           ?3*
         )
       end
-      prop.mAccessControl.checkGetAccess (!inAnalysisContext.selfAvailability, !self.propertyName)
+      prop.mAccessControl.checkGetAccess (inAnalysisContext.selfAvailability, self.propertyName)
     //--- Generate expression
       outExpressionGeneration = @propertyAccessExpressionForGeneration (
-        !prop.mPropertyType,
+        prop.mPropertyType,
         self.operatorLocation,
         exprGeneration,
         self.propertyName.string
@@ -198,7 +198,7 @@ final class @structPropertyAccessExpressionAST : @semanticExpressionAST {
           spoil outExpressionGeneration)
         else
           outExpressionGeneration = @getterCallExpressionForGeneration (
-            !theGetter.mReturnedType,
+            theGetter.mReturnedType,
             self.propertyName.location,
             theGetter.mKind,
             exprGeneration,
@@ -293,7 +293,7 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
       (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inferenceType: .null,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !?ioVariableMap,
       ?let @semanticExpressionForGeneration expression
@@ -311,15 +311,15 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
           (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
           !?ioUsefulEntitiesGraph,
           !inferenceType: formalArg.mFormalArgumentType,
-          !inAnalysisContext,
+          inAnalysisContext,
           !?ioTypeMap,
           !?ioVariableMap,
           ?@semanticExpressionForGeneration expression
         )
         checkAssignmentTypeWithImplicitGetterCall (
-          !formalArg.mFormalArgumentType,
-          !expression.mResultType,
-          !actualArg.mEndOfExpressionLocation,
+          formalArg.mFormalArgumentType,
+          expression.mResultType,
+          actualArg.mEndOfExpressionLocation,
           !?expression
         )
         if formalArg.mFormalSelector.string != actualArg.mActualSelector.string then
@@ -382,7 +382,7 @@ final class @subscriptReadAccessExpressionForGeneration : @semanticExpressionFor
         !?ioUnusedVariableCppNameSet,
         ?let @string actualArgOperand
       )
-      !?subscriptArgumentList.append (!actualArgOperand)
+      !?subscriptArgumentList.append (actualArgOperand)
     end
   //--- Generate
     outCppExpression = operand + ".readSubscript_"
@@ -391,7 +391,7 @@ final class @subscriptReadAccessExpressionForGeneration : @semanticExpressionFor
     for operand in subscriptArgumentList do
       outCppExpression += operand + ", "
     end
-    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
     outCppExpression += compilerCppName () + " COMMA_HERE)"
   }
 

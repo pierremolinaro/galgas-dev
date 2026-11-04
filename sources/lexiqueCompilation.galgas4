@@ -197,7 +197,7 @@ abstract proc @lexicalSendDefaultActionAST.checkLexicalDefaultAction
 
 override proc @lexicalSendTerminalByDefaultAST.checkLexicalDefaultAction
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
-  ioLexiqueAnalysisContext.mTerminalMap.searchKey (!self.mDefaultSentTerminal, ?*)
+  ioLexiqueAnalysisContext.mTerminalMap.searchKey (self.mDefaultSentTerminal, ?*)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -205,7 +205,7 @@ override proc @lexicalSendTerminalByDefaultAST.checkLexicalDefaultAction
 override proc @lexicalErrorByDefaultAST.checkLexicalDefaultAction
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 ) {
-  !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (!true, !self.mDefaultErrorMessageName.string)
+  !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (true, self.mDefaultErrorMessageName.string)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -234,7 +234,7 @@ override proc @lexicalCharacterMatchAST.checkLexicalExpression
 override proc @lexicalCharacterSetMatchAST.checkLexicalExpression
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 ) {
-  if not ioLexiqueAnalysisContext.mUnicodeTestFunctions.hasKey (!self.mCharacterSetName.string) then
+  if not ioLexiqueAnalysisContext.mUnicodeTestFunctions.hasKey (self.mCharacterSetName.string) then
     error (self.mCharacterSetName : "undefined test function" fixit %replaceBy ioLexiqueAnalysisContext.mUnicodeTestFunctions)
   end
 }
@@ -257,7 +257,7 @@ override proc @lexicalStringMatchAST.checkLexicalExpression
 override proc @lexicalStringNotMatchAST.checkLexicalExpression
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
   ioLexiqueAnalysisContext.mUnicodeStringToGenerate ++= self.mString.string
-  !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (!true, !self.mErrorMessage.string)
+  !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (true, self.mErrorMessage.string)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -275,7 +275,7 @@ override proc @lexicalAttributeInputArgumentAST.checkLexicalFunctionCallArgument
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
   ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey
-    (!self.mAttributeName,
+    (self.mAttributeName,
     ?let attributeLexicalType
   )
 //--- Type check
@@ -341,7 +341,7 @@ override proc @lexicalFunctionInputArgumentAST.checkLexicalFunctionCallArgument
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
   ioLexiqueAnalysisContext.mLexicalFunctionMap.searchKey
-    (!self.mFunctionName,
+    (self.mFunctionName,
     ?let lexicalFormalTypeList,
     ?let returnedLexicalFormalType,
     ?let replacementFunctionName,
@@ -392,7 +392,7 @@ override proc @lexicalAttributeInputArgumentAST.checkLexicalRoutineCallArgument
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
   ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey
-    (!self.mAttributeName,
+    (self.mAttributeName,
     ?let attributeLexicalType
   )
 //--- Type check
@@ -458,7 +458,7 @@ override proc @lexicalFunctionInputArgumentAST.checkLexicalRoutineCallArgument
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
 //--- Check attribute definition
   ioLexiqueAnalysisContext.mLexicalFunctionMap.searchKey
-    (!self.mFunctionName,
+    (self.mFunctionName,
     ?let lexicalFormalTypeList,
     ?let returnedLexicalFormalType,
     ?let replacementFunctionName,
@@ -513,7 +513,7 @@ abstract proc @abstractLexicalRuleAST.checkLexicalRule
 
 override proc @lexicalImplicitRuleAST.checkLexicalRule
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
-  ioLexiqueAnalysisContext.mLexicalTokenListMap.searchKey (!self.mListName, ?*, ?*, ?*)
+  ioLexiqueAnalysisContext.mLexicalTokenListMap.searchKey (self.mListName, ?*, ?*, ?*)
 }
 
 //--------------------------------------------------------------------------------------------------

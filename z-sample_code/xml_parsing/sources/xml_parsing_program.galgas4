@@ -14,12 +14,12 @@ case . "XMLParsing"
 ?sourceFilePath:@lstring inSourceFile {
   grammar xml_parsing_grammar (
     ?let rootNodes,
-    !true, // Include comments
-    !false, // Condense White spaces
-    !true
+    true, // Include comments
+    false, // Condense White spaces
+    true
   ) in inSourceFile
   log rootNodes
-  logXMLNodes (!rootNodes )
+  logXMLNodes (rootNodes )
 }
 
 //--- Epilogue routine

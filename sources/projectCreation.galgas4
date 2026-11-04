@@ -45,57 +45,57 @@ filewrapper projectCreationFileWrapper in "+generation-templates/project_creatio
 
 proc performProjectCreation (?let @string inProjectPath ) {
   let @string projectName = inProjectPath.lastPathComponent
-  let s1 = filewrapper [projectCreationFileWrapper.PROJECT_project : !projectName]
-  s1.writeToFile (!inProjectPath +"/+" +projectName +".galgas4project")
+  let s1 = filewrapper [projectCreationFileWrapper.PROJECT_project : projectName]
+  s1.writeToFile (inProjectPath +"/+" +projectName +".galgas4project")
 //--- galgas_sources
   let @string galgas_sources_DIR = inProjectPath + "/sources"
   galgas_sources_DIR.makeDirectory ()
-  let s2 = filewrapper [projectCreationFileWrapper.PROJECT_cocoa : !projectName]
-  s2.writeToFile (!galgas_sources_DIR +"/" +projectName +"-cocoa.galgas4")
-  let s3 = filewrapper [projectCreationFileWrapper.PROJECT_grammar : !projectName]
-  s3.writeToFile (!galgas_sources_DIR +"/" +projectName +"-grammar.galgas4")
-  let s4 = filewrapper [projectCreationFileWrapper.PROJECT_lexique : !projectName]
-  s4.writeToFile (!galgas_sources_DIR +"/" +projectName +"-lexique.galgas4")
-  let s5 = filewrapper [projectCreationFileWrapper.PROJECT_options : !projectName]
-  s5.writeToFile (!galgas_sources_DIR +"/" +projectName +"-options.galgas4")
-  let s6 = filewrapper [projectCreationFileWrapper.PROJECT_program : !projectName]
-  s6.writeToFile (!galgas_sources_DIR +"/" +projectName +"-program.galgas")
-  let s7 = filewrapper [projectCreationFileWrapper.PROJECT_semantics : !projectName]
-  s7.writeToFile (!galgas_sources_DIR +"/" +projectName +"-semantics.galgas4")
-  let s8 = filewrapper [projectCreationFileWrapper.PROJECT_syntax : !projectName]
-  s8.writeToFile (!galgas_sources_DIR +"/" +projectName +"-syntax.galgas4")
+  let s2 = filewrapper [projectCreationFileWrapper.PROJECT_cocoa : projectName]
+  s2.writeToFile (galgas_sources_DIR +"/" +projectName +"-cocoa.galgas4")
+  let s3 = filewrapper [projectCreationFileWrapper.PROJECT_grammar : projectName]
+  s3.writeToFile (galgas_sources_DIR +"/" +projectName +"-grammar.galgas4")
+  let s4 = filewrapper [projectCreationFileWrapper.PROJECT_lexique : projectName]
+  s4.writeToFile (galgas_sources_DIR +"/" +projectName +"-lexique.galgas4")
+  let s5 = filewrapper [projectCreationFileWrapper.PROJECT_options : projectName]
+  s5.writeToFile (galgas_sources_DIR +"/" +projectName +"-options.galgas4")
+  let s6 = filewrapper [projectCreationFileWrapper.PROJECT_program : projectName]
+  s6.writeToFile (galgas_sources_DIR +"/" +projectName +"-program.galgas")
+  let s7 = filewrapper [projectCreationFileWrapper.PROJECT_semantics : projectName]
+  s7.writeToFile (galgas_sources_DIR +"/" +projectName +"-semantics.galgas4")
+  let s8 = filewrapper [projectCreationFileWrapper.PROJECT_syntax : projectName]
+  s8.writeToFile (galgas_sources_DIR +"/" +projectName +"-syntax.galgas4")
 //---
-   println (!"*** DONE ***")
+   println ("*** DONE ***")
 }
 
 //--------------------------------------------------------------------------------------------------
 
 proc projectCreation (?let @string inProjectPath ) {
   if inProjectPath.count > 0 then
-    println (!"*** PERFORM PROJECT CREATION (--create-project=" + inProjectPath +" option) ***")
+    println ("*** PERFORM PROJECT CREATION (--create-project=" + inProjectPath +" option) ***")
   //--- First check the project name is correct (not empty, only letters, digits and '_')
     let @string projectName = inProjectPath.lastPathComponent
-    var @bool ok = projectName.characterAtIndex (!0).isalpha
+    var @bool ok = projectName.characterAtIndex (0).isalpha
     var @uint idx = 1
     loop (projectName.count)
     while (idx < projectName.count) & ok do
-      let @char c = projectName.characterAtIndex (!idx)
+      let @char c = projectName.characterAtIndex (idx)
       ok = c.isalnum | (c == '_')
       idx += 1
     end
     if not ok then
-      println (!"** Cannot create GALGAS project: the project name '"
+      println ("** Cannot create GALGAS project: the project name '"
         + projectName
         + "' should begin by a letter followed by zero, one or more letters, digits and underscore character.")
     end
     if ok then
       ok = not inProjectPath.directoryExists
       if not ok then
-        println (!"*** Cannot create GALGAS project: '" + inProjectPath +"' directory already exists.***")
+        println ("*** Cannot create GALGAS project: '" + inProjectPath +"' directory already exists.***")
       end
     end
     if ok then
-      performProjectCreation (!inProjectPath )
+      performProjectCreation (inProjectPath )
     end
   end
 }

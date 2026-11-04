@@ -60,7 +60,7 @@ syntax extension galgas4InstructionsSyntax {
     $=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
     outInstruction = @selfAssignmentInstructionAST (
-      !instructionLocation,
+      instructionLocation,
       sourceExpression
     )
   }
@@ -97,16 +97,16 @@ override proc @selfAssignmentInstructionAST.analyzeSemanticInstruction (
       (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inferenceType: selfAvailable.type,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !?ioVariableMap,
       ?@semanticExpressionForGeneration expression
     )
   //--- Check assignment type compatibility
-    checkAssignmentTypeWithImplicitGetterCall (!selfAvailable.type, !expression.mResultType, !self.mInstructionLocation, !?expression)
+    checkAssignmentTypeWithImplicitGetterCall (selfAvailable.type, expression.mResultType, self.mInstructionLocation, !?expression)
   //--- Generate instruction
-    ioInstructionListForGeneration ++= @(!@assignmentInstructionForGeneration (
-      !selfAvailable.type,
+    ioInstructionListForGeneration ++= @(@assignmentInstructionForGeneration (
+      selfAvailable.type,
       selfAvailable.type,
       inAnalysisContext.selfObjectCppName,
       inAnalysisContext.selfObjectCppName,

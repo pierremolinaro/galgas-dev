@@ -82,10 +82,10 @@ syntax extension galgas4DeclarationsSyntax {
     while
       <property_declaration> (!?ioDeclarations, !?propertyList)
     while
-      <method_declaration> (!structTypeName, !?ioDeclarations)
+      <method_declaration> (structTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@structDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(@structDeclarationAST (
       !isPredefined: false,
       structTypeName,
       propertyList,
@@ -133,10 +133,10 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
   ) {
-    let key = @lstring (!"@" + self.structTypeName, self.structTypeName.location)
-    !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
+    let key = @lstring ("@" + self.structTypeName, self.structTypeName.location)
+    !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     for property in self.mStructurePropertyListAST do
-      let propertyKey = @lstring (!"@" + property.typeName, property.typeName.location)
+      let propertyKey = @lstring ("@" + property.typeName, property.typeName.location)
       !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: propertyKey)
     end
   }
@@ -158,30 +158,30 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext ) {
   //--- Struct type index
-    !?ioTypeMap.makeEntry (!self.structTypeName, ?let structTypeIndex)
+    !?ioTypeMap.makeEntry (self.structTypeName, ?let structTypeIndex)
   //--- Class functions and property map
     var @propertyMap propertyMap = @()
     var @functionSignature constructorPropertyTypeList = @()
     var @typedPropertyList typedPropertyList = @()
     var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = @()
     for property in self.mStructurePropertyListAST do
-      !?ioTypeMap.makeEntry (!property.typeName, ?let propertyTypeEntry)
+      !?ioTypeMap.makeEntry (property.typeName, ?let propertyTypeEntry)
       let selector = (if property.hasSelector then property.name.string else "" end).nowhere
       if property.initialization.isNone then
-        constructorPropertyTypeList ++= @(!selector, !propertyTypeEntry, !property.name.string, !true)
+        constructorPropertyTypeList ++= @(selector, propertyTypeEntry, property.name.string, true)
       end
-      typesToIncludeInHeaderCompilation ++= @(!propertyTypeEntry)
+      typesToIncludeInHeaderCompilation ++= @(propertyTypeEntry)
       typedPropertyList ++= @(
-        !propertyTypeEntry,
-        !property.name,
-        !property.initialization,
+        propertyTypeEntry,
+        property.name,
+        property.initialization,
         !hasSetter: not property.mutability.isConstantProperty,
         !hasSelector: property.hasSelector)
       !?propertyMap.insertKey
-        (!property.name,
-        !property.accessControl.accessControl (!forDeclaringType: structTypeIndex),
-        !property.mutability.isConstantProperty,
-        !propertyTypeEntry
+        (property.name,
+        property.accessControl.accessControl (!forDeclaringType: structTypeIndex),
+        property.mutability.isConstantProperty,
+        propertyTypeEntry
       )
     end
   //--- Getters
@@ -191,13 +191,13 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     var @initializerMap initializerMap = @()
     var @instanceMethodMap instanceMethodMap = @()
     addExtensions (
-      !inExtensionInitializerMapForBuildingContext,
-      !inExtensionMethodMapForBuildingContext,
-      !inExtensionGetterMapForBuildingContext,
-      !inExtensionSetterMapForBuildingContext,
+      inExtensionInitializerMapForBuildingContext,
+      inExtensionMethodMapForBuildingContext,
+      inExtensionGetterMapForBuildingContext,
+      inExtensionSetterMapForBuildingContext,
       !?ioSemanticContext,
       !?ioTypeMap,
-      !self.structTypeName,
+      self.structTypeName,
       !isClass: false,
       !?initializerMap,
       !?getterMap,
@@ -210,8 +210,8 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     if initializerMap.count == 0 then
       features |= .generateSynthetizedInitializer
       !?initializerMap.insertKey
-        (!@(!constructorPropertyTypeList.initializerSignature, self.structTypeName),
-        !constructorPropertyTypeList
+        (@(constructorPropertyTypeList.initializerSignature, self.structTypeName),
+        constructorPropertyTypeList
       )
     end
   //--- Comparison
@@ -224,7 +224,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     end
     handleEquatableComparableExtension (
       !?ioEquatableExtensionMap,
-      !self.structTypeName,
+      self.structTypeName,
       !?features,
       !acceptEquatable: true,
       !acceptComparable: true
@@ -234,7 +234,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     if self.enumeratedElementTypeName == "" then
       enumeratedType = .null
     else
-     !?ioTypeMap.makeEntryFromString (!self.enumeratedElementTypeName, ?enumeratedType)
+     !?ioTypeMap.makeEntryFromString (self.enumeratedElementTypeName, ?enumeratedType)
     end
   //--- Enter in type map
     let typeDefinition = @unifiedTypeDefinition (
@@ -264,7 +264,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       !headerFileName: "struct-" + self.structTypeName.string.fileNameRepresentation,
       !headerKind: .oneHeader
     )
-    !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
+    !?ioTypeMap.insertType (typeDefinition.typeName, typeDefinition)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -277,8 +277,8 @@ final class @structDeclarationAST : @semanticDeclarationAST {
               ?!@unifiedTypeMap ioTypeMap,
               ?let @predefinedTypes inPredefinedTypes,
               ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
-    let structType = ioTypeMap.typeMapEntryForLKey (!self.structTypeName)
-    let structNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.structTypeName)
+    let structType = ioTypeMap.typeMapEntryForLKey (self.structTypeName)
+    let structNameForUsefulness = typeNameForUsefulEntitiesGraph (self.structTypeName)
   //---
     if self.mStructurePropertyListAST.count == 0 then
       error (self.structTypeName: "a structure cannot be empty: it must have at least one property")
@@ -287,10 +287,10 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     var @typedPropertyList constructorArgumentList = @()
     var @propertyIndexMap propertyMap = @()
     for property in self.mStructurePropertyListAST do
-      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!property.typeName)
+      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (property.typeName)
       !?ioUsefulEntitiesGraph.addEdge (!from: structNameForUsefulness, !to: propertyTypeNameForUsefulness)
-      let t = ioTypeMap.typeMapEntryForLKey (!property.typeName)
-      if forbiddenKeysForStruct ().hasKey (!property.name.string) then
+      let t = ioTypeMap.typeMapEntryForLKey (property.typeName)
+      if forbiddenKeysForStruct ().hasKey (property.name.string) then
         var @string m = "an property cannot be named:"
         for s in forbiddenKeysForStruct () do
           m += " " + s
@@ -309,21 +309,21 @@ final class @structDeclarationAST : @semanticDeclarationAST {
           end
         end
       end
-      !?propertyMap.insertKey (!property.name, !t)
+      !?propertyMap.insertKey (property.name, t)
       switch property.initialization
       case none :
         constructorArgumentList ++= @(
-          !t,
-          !property.name,
-          !property.initialization,
+          t,
+          property.name,
+          property.initialization,
           !hasSetter: not property.mutability.isConstantProperty,
           !hasSelector: property.hasSelector)
       case some (*) :
       end
       typedPropertyList ++= @(
-        !t,
-        !property.name,
-        !property.initialization,
+        t,
+        property.name,
+        property.initialization,
         !hasSetter: not property.mutability.isConstantProperty,
         !hasSelector: property.hasSelector
       )
@@ -332,14 +332,14 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       case none :
       case equatable :
         let propertyFeatures = t.definition.features
-        if (not propertyFeatures.contains (!.equatable))
-           & not propertyFeatures.contains (!.comparable)
-           & not propertyFeatures.contains (!.referenceEquatable) then
+        if (not propertyFeatures.contains (.equatable))
+           & not propertyFeatures.contains (.comparable)
+           & not propertyFeatures.contains (.referenceEquatable) then
           error (property.name
           : "the structure is not equatable, because '" + property.name + "' is not")
         end
       case comparable :
-        if not t.definition.features.contains (!.comparable) then
+        if not t.definition.features.contains (.comparable) then
           error (property.name
           : "the structure is not comparable, because '" + property.name + "' is not")
         end
@@ -347,42 +347,42 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     end
   //--- Build property initialization code
     self.mStructurePropertyListAST.buildPropertyInitializationCode
-      (!structNameForUsefulness,
-      !inSemanticContext,
-      !inPredefinedTypes,
+      (structNameForUsefulness,
+      inSemanticContext,
+      inPredefinedTypes,
       !?ioUsefulEntitiesGraph,
       !?ioTypeMap,
       ?let unusedVariableCppNameSet,
       ?let initializationCode
     )
   //---
-    let constructorNeedsCompilerVar = not unusedVariableCppNameSet.hasKey (!compilerCppName ())
+    let constructorNeedsCompilerVar = not unusedVariableCppNameSet.hasKey (compilerCppName ())
     ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "struct " + self.structTypeName,
-      !@structTypeForGeneration (
-        !structType,
+      @structTypeForGeneration (
+        structType,
         typedPropertyList,
         constructorArgumentList,
         initializationCode,
         constructorNeedsCompilerVar,
-        structType.definition.features.contains (!.generateSynthetizedInitializer)
+        structType.definition.features.contains (.generateSynthetizedInitializer)
       )
     )
   //--- Useful entities graph
-    !?ioUsefulEntitiesGraph.addNode (!structNameForUsefulness, !structNameForUsefulness)
+    !?ioUsefulEntitiesGraph.addNode (structNameForUsefulness, structNameForUsefulness)
     if self.isUsefullStruct || self.isPredefined then
-      ioUsefulnessRootEntities ++= @(!structNameForUsefulness)
+      ioUsefulnessRootEntities ++= @(structNameForUsefulness)
     end
   //--- Add synthetized initializer ?
-    if structType.definition.features.contains (!.generateSynthetizedInitializer) then
+    if structType.definition.features.contains (.generateSynthetizedInitializer) then
       let initializerForUsefulness = initializerNameForUsefulEntitiesGraph (
-        !self.structTypeName,
-        !constructorArgumentList.initializerSignature
+        self.structTypeName,
+        constructorArgumentList.initializerSignature
       )
-      !?ioUsefulEntitiesGraph.addNode (!initializerForUsefulness, !initializerForUsefulness)
+      !?ioUsefulEntitiesGraph.addNode (initializerForUsefulness, initializerForUsefulness)
       !?ioUsefulEntitiesGraph.addEdge (!from: initializerForUsefulness, !to: structNameForUsefulness)
       if self.isUsefullStruct || self.isPredefined then
-        ioUsefulnessRootEntities ++= @(!initializerForUsefulness)
+        ioUsefulnessRootEntities ++= @(initializerForUsefulness)
       end
     end
   }

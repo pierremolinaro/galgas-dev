@@ -268,7 +268,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
       $indexing$
       $in$
       $"string"$ (?let indexingPathSuffix)
-      projectExtensionList ++= @(!fileExtension, !indexingPathSuffix)
+      projectExtensionList ++= @(fileExtension, indexingPathSuffix)
     while
       <gui_attributes> (!?simpleGlobalAttributes)
     while
@@ -279,11 +279,11 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
   //---
     $}$
     ioDeclarations.mGUIComponentList ++= @(
-      !mGUIName,
-      !importedOptionList,
-      !simpleGlobalAttributes,
-      !withLexiqueList,
-      !projectExtensionList)
+      mGUIName,
+      importedOptionList,
+      simpleGlobalAttributes,
+      withLexiqueList,
+      projectExtensionList)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -329,30 +329,30 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
           displayFlags = (leadingStrip.bigint << 4) | endingStrip
          $)$
         end
-        terminalList ++= @(!terminal, !displayFlags)
+        terminalList ++= @(terminal, displayFlags)
       while
         $,$
       end
-      labels ++= @(!displayStyle, !terminalList, !@location.here)
+      labels ++= @(displayStyle, terminalList, @location.here)
     while
       $identifier$ (?let @lstring key)
       $"string"$ (?let @lstring name)
       $:$
-      var value = @lstring (!"", @location.here)
+      var value = @lstring ("", @location.here)
       repeat
         $"string"$ (?let @lstring v)
-        value = @lstring (!value.string + v.string, v.location)
+        value = @lstring (value.string + v.string, v.location)
       while
       end
-      compoundAttributes ++= @(!key, !name, !value)
+      compoundAttributes ++= @(key, name, value)
     while
       $identifier$ (?let @lstring name)
       $:$
       $"string"$ (?let @lstring value)
-      simpleAttributes ++= @(!name, !value)
+      simpleAttributes ++= @(name, value)
     end
     $}$
-    ioWithLexiqueList ++= @(!lexiqueReference, !labels, !simpleAttributes, !compoundAttributes)
+    ioWithLexiqueList ++= @(lexiqueReference, labels, simpleAttributes, compoundAttributes)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -361,7 +361,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
     $with$
     $option$
     $identifier$ (?let @lstring optionReference)
-    ioImportedOptionList ++= @(!optionReference)
+    ioImportedOptionList ++= @(optionReference)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -369,13 +369,13 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
   rule <gui_attributes> (?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes ) {
     $identifier$ (?let @lstring mKey)
     $:$
-    var mValue = @lstring (!"", .here)
+    var mValue = @lstring ("", .here)
     repeat
       $"string"$ (?let @lstring value)
-      mValue = @lstring (!mValue.string + value.string, value.location)
+      mValue = @lstring (mValue.string + value.string, value.location)
     while
     end
-    ioSimpleGlobalAttributes ++= @(!mKey, !mValue)
+    ioSimpleGlobalAttributes ++= @(mKey, mValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -414,8 +414,8 @@ proc compileAllGuiComponentFromASTGalgas3
   outOptionComponentMapForGeneration = @()
   for guiAST in inGuiComponentListAST do
     guiComponentSemanticAnalysis (
-      !guiAST,
-      !inSemanticContext,
+      guiAST,
+      inSemanticContext,
       !?outOptionComponentMapForGeneration
     )
   end
@@ -435,10 +435,10 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
 //--- Check imported options components
   for (mValue) in inGUIComponentAST.mImportedOptionList do
     inSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey
-      (!mValue,
+      (mValue,
       ?5*
     )
-    context.mImportedOptionComponentList ++= @(!mValue.string)
+    context.mImportedOptionComponentList ++= @(mValue.string)
   end
 //--- Nib and main classes
   var runOptionDefined = false
@@ -453,8 +453,8 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
         runOptionDefined = true
       end
     elsif entry.mKey.string == "nibAndMainClass" then
-      for component in entry.mValue.string.componentsSeparatedByString (!".") do
-        context.mNibAndClassList ++= @(!component.mValue)
+      for component in entry.mValue.string.componentsSeparatedByString (".") do
+        context.mNibAndClassList ++= @(component.mValue)
       end
     else
       warning entry.mKey : "the '" + entry.mKey + "' key is invalid and has no effect"
@@ -504,7 +504,7 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
     var @string blockComment = ""
     for simpleAttr in withLexiqueEntry.mSimpleAttributes do
       if simpleAttr.mKey.string == "fileExtension" then
-        !?context.mExtensionMap.insertKey (!simpleAttr.mValue, !withLexiqueEntry.mLexiqueFileName.string, !idx)
+        !?context.mExtensionMap.insertKey (simpleAttr.mValue, withLexiqueEntry.mLexiqueFileName.string, idx)
         hasAssociatedExtension = true
       elsif simpleAttr.mKey.string == "title" then
         if hasTabViewTitle then
@@ -532,18 +532,18 @@ private proc guiComponentSemanticAnalysis (?let @galgasGUIComponentListAST.@elem
     end
   //---
     context.mWithLexiqueList ++= @(
-      !withLexiqueEntry.mLexiqueFileName.string,
-      !idx,
-      !blockComment,
-      !tabViewTitle,
-      !textMacroList,
-      !withLexiqueEntry.mLabels,
-      !lexicalStyleListAST)
+      withLexiqueEntry.mLexiqueFileName.string,
+      idx,
+      blockComment,
+      tabViewTitle,
+      textMacroList,
+      withLexiqueEntry.mLabels,
+      lexicalStyleListAST)
   end
 //--- Generation
   !?ioOptionComponentMapForGeneration.insertKey
-    (!inGUIComponentAST.mGUIComponentName,
-    !context
+    (inGUIComponentAST.mGUIComponentName,
+    context
   )
 }
 
@@ -558,10 +558,10 @@ proc generateAllGuiComponentsGalgas3 (?let @optionComponentMapForGeneration inOp
   for anOption in inOptionComponentMapForGeneration do
 //  for (lkey guiComponentContext) in inOptionComponentMapForGeneration do
     let swiftuiFileName = "gui-swiftui-" + anOption.lkey + ".swift"
-    ioSwiftAllProductFileList ++= @(!swiftuiFileName)
+    ioSwiftAllProductFileList ++= @(swiftuiFileName)
     let @string swiftui_string = filewrapper [guiGenerationTemplates.swiftui_gui_implementation :
-      !anOption.mGuiComponentContext,
-      !inQuietOutputByDefault
+      anOption.mGuiComponentContext,
+      inQuietOutputByDefault
     ]
     @string.generateFileWithPattern (
       !startPath:inOutputDirectory,

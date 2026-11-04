@@ -108,7 +108,7 @@ syntax extension galgas4InstructionsSyntax {
     $+=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
     outInstruction = @selfPlusEqualExpressionInstructionAST (
-      !instructionLocation,
+      instructionLocation,
       expression
     )
   }
@@ -122,7 +122,7 @@ syntax extension galgas4InstructionsSyntax {
     $-=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
     outInstruction = @selfMinusEqualExpressionInstructionAST (
-      !instructionLocation,
+      instructionLocation,
       expression
     )
   }
@@ -136,7 +136,7 @@ syntax extension galgas4InstructionsSyntax {
     $*=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
     outInstruction = @selfMulEqualExpressionInstructionAST (
-      !instructionLocation,
+      instructionLocation,
       expression
     )
   }
@@ -150,7 +150,7 @@ syntax extension galgas4InstructionsSyntax {
     $/=$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
     outInstruction = @selfDivEqualExpressionInstructionAST (
-      !instructionLocation,
+      instructionLocation,
       expression
     )
   }
@@ -187,7 +187,7 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
         error (self.mInstructionLocation : "'self' not mutable in this context")
       end
     //--- Check target variable type support '/= exp' operator
-      if selfAvailable.type.definition.features.contains (!.divAssignOperatorWithExpression) then
+      if selfAvailable.type.definition.features.contains (.divAssignOperatorWithExpression) then
         error (self.mInstructionLocation
         :"the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '/=' operator"
@@ -198,21 +198,21 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
         !inferenceType: selfAvailable.type,
-        !inAnalysisContext,
+        inAnalysisContext,
         !?ioTypeMap,
         !?ioVariableMap,
         ?@semanticExpressionForGeneration expression
       )
     //--- Check assignment type compatibility
       checkAssignmentTypeWithImplicitGetterCall (
-        !selfAvailable.type,
-        !expression.mResultType,
-        !self.mInstructionLocation,
+        selfAvailable.type,
+        expression.mResultType,
+        self.mInstructionLocation,
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration ++= @(!@opAssignInstructionForGeneration (
-        !self.mInstructionLocation,
+      ioInstructionListForGeneration ++= @(@opAssignInstructionForGeneration (
+        self.mInstructionLocation,
         selfAvailable.type,
         inAnalysisContext.selfObjectCppName,
         "",
@@ -257,7 +257,7 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
         error (self.mInstructionLocation : "'self' not mutable in this context")
       end
     //--- Check target variable type support '+= exp' operator
-      if not selfAvailable.type.definition.features.contains (!.plusAssignOperatorWithExpression) then
+      if not selfAvailable.type.definition.features.contains (.plusAssignOperatorWithExpression) then
         error (self.mInstructionLocation
         : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '+=' operator"
@@ -268,21 +268,21 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
         !inferenceType: selfAvailable.type,
-        !inAnalysisContext,
+        inAnalysisContext,
         !?ioTypeMap,
         !?ioVariableMap,
         ?@semanticExpressionForGeneration expression
       )
     //--- Check assignment type compatibility
       checkAssignmentTypeWithImplicitGetterCall (
-        !selfAvailable.type,
-        !expression.mResultType,
-        !self.mInstructionLocation,
+        selfAvailable.type,
+        expression.mResultType,
+        self.mInstructionLocation,
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration ++= @(!@opAssignInstructionForGeneration (
-        !self.mInstructionLocation,
+      ioInstructionListForGeneration ++= @(@opAssignInstructionForGeneration (
+        self.mInstructionLocation,
         selfAvailable.type,
         inAnalysisContext.selfObjectCppName,
         "",
@@ -327,7 +327,7 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
         error (self.mInstructionLocation : "'self' not mutable in this context")
       end
     //--- Check target variable type support '-= exp' operator
-      if not selfAvailable.type.definition.features.contains (!.minusAssignOperatorWithExpression) then
+      if not selfAvailable.type.definition.features.contains (.minusAssignOperatorWithExpression) then
         error (self.mInstructionLocation
         : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '-=' operator"
@@ -338,21 +338,21 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
         !inferenceType: selfAvailable.type,
-        !inAnalysisContext,
+        inAnalysisContext,
         !?ioTypeMap,
         !?ioVariableMap,
         ?@semanticExpressionForGeneration expression
       )
     //--- Check assignment type compatibility
       checkAssignmentTypeWithImplicitGetterCall (
-        !selfAvailable.type,
-        !expression.mResultType,
-        !self.mInstructionLocation,
+        selfAvailable.type,
+        expression.mResultType,
+        self.mInstructionLocation,
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration ++= @(!@opAssignInstructionForGeneration (
-        !self.mInstructionLocation,
+      ioInstructionListForGeneration ++= @(@opAssignInstructionForGeneration (
+        self.mInstructionLocation,
         selfAvailable.type,
         inAnalysisContext.selfObjectCppName,
         "",
@@ -397,7 +397,7 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
         error (self.mInstructionLocation : "'self' not mutable in this context")
       end
     //--- Check target variable type support '*= exp' operator
-      if selfAvailable.type.definition.features.contains (!.mulAssignOperatorWithExpression) then
+      if selfAvailable.type.definition.features.contains (.mulAssignOperatorWithExpression) then
         error (self.mInstructionLocation
         : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '*=' operator"
@@ -408,21 +408,21 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
         !inferenceType: selfAvailable.type,
-        !inAnalysisContext,
+        inAnalysisContext,
         !?ioTypeMap,
         !?ioVariableMap,
         ?@semanticExpressionForGeneration expression
       )
     //--- Check assignment type compatibility
       checkAssignmentTypeWithImplicitGetterCall (
-        !selfAvailable.type,
-        !expression.mResultType,
-        !self.mInstructionLocation,
+        selfAvailable.type,
+        expression.mResultType,
+        self.mInstructionLocation,
         !?expression
       )
     //--- Generate instruction
-      ioInstructionListForGeneration ++= @(!@opAssignInstructionForGeneration (
-        !self.mInstructionLocation,
+      ioInstructionListForGeneration ++= @(@opAssignInstructionForGeneration (
+        self.mInstructionLocation,
         selfAvailable.type,
         inAnalysisContext.selfObjectCppName,
         "",

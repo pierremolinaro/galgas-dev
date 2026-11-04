@@ -92,9 +92,9 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let routineInstructionList)
     $}$
     let endOfMethodLocation = @location.here
-    ioDeclarations.mDeclarationList ++= @(!@initializerAST (
+    ioDeclarations.mDeclarationList ++= @(@initializerAST (
       !isPredefined: false,
-      @lstring (!typeName, initLocation),
+      @lstring (typeName, initLocation),
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
@@ -112,9 +112,9 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let routineInstructionList)
     $}$
     let endOfMethodLocation = @location.here
-    ioDeclarations.mDeclarationList ++= @(!@initializerAST (
+    ioDeclarations.mDeclarationList ++= @(@initializerAST (
       !isPredefined: false,
-      @lstring (!inTypeName, initLocation),
+      @lstring (inTypeName, initLocation),
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
@@ -154,20 +154,20 @@ final class @initializerAST : @semanticDeclarationAST {
           ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
           ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
           ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
-    let key = @lstring (!self.keyRepresentation, self.mTypeName.location)
-    !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
+    let key = @lstring (self.keyRepresentation, self.mTypeName.location)
+    !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName))
   //---
-    if not ioExtensionInitializerForBuildingContext.hasKey (!self.mTypeName.string) then
+    if not ioExtensionInitializerForBuildingContext.hasKey (self.mTypeName.string) then
       !?ioExtensionInitializerForBuildingContext.insertKey
-        (!self.mTypeName,
-        !@()
+        (self.mTypeName,
+        @()
       )
     end
     var entry = ioExtensionInitializerForBuildingContext [!searchKey: self.mTypeName]
     !?entry.mExtensionInitializerMapForType.insertKey
-      (!@lstring (!self.mFormalParameterList.initializerSignature, self.mTypeName.location),
-      !self.mFormalParameterList
+      (@lstring (self.mFormalParameterList.initializerSignature, self.mTypeName.location),
+      self.mFormalParameterList
     )
     !?ioExtensionInitializerForBuildingContext.replaceKey (!with: entry)
   }
@@ -196,12 +196,12 @@ final class @initializerAST : @semanticDeclarationAST {
                 ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
   //--- Useful entities graph
     let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
-      !self.mTypeName,
-      !self.mFormalParameterList.initializerSignature
+      self.mTypeName,
+      self.mFormalParameterList.initializerSignature
     )
-    !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
+    !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
   //--- Self type
-    let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
+    let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
     let @string selfObjectNameString
     let @string selfObjectAccessorString
   //--- Check self type is a class
@@ -215,20 +215,20 @@ final class @initializerAST : @semanticDeclarationAST {
     end
   //--- Analyze instruction list
     let analysisContextNew = @analysisContext (
-      !inSemanticContext,
+      inSemanticContext,
       inPredefinedTypes,
       !selfObjectCppName: selfObjectNameString,
       !selfAvailability: .available (!type: selfType, !selfMutability: .initializer),
       !selfObjectCppPrefixForAccessingProperty: selfObjectAccessorString
     )
     analyzeInitializerBody (
-      !nameForUsefulness,
+      nameForUsefulness,
       !?ioUsefulEntitiesGraph,
-      !analysisContextNew,
+      analysisContextNew,
       !?ioTypeMap,
-      !self.mFormalParameterList,
-      !self.mInstructionList,
-      !self.mEndOfInitializerLocation,
+      self.mFormalParameterList,
+      self.mInstructionList,
+      self.mEndOfInitializerLocation,
       ?let semanticInstructionListForGeneration,
       ?let formalParameterListForGeneration
     )
@@ -236,7 +236,7 @@ final class @initializerAST : @semanticDeclarationAST {
     let initializerName = self.mFormalParameterList.initializerSignature
     ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "initializer @" + self.mTypeName + "." + initializerName,
-      !@extensionInitializerForGeneration (
+      @extensionInitializerForGeneration (
         !generateHeader: false,
         !implementationCppFileName: "initializer-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + initializerName.fileNameRepresentation,
         selfType,
@@ -271,11 +271,11 @@ private proc analyzeInitializerBody (?let @lstring inUsefulnessCallerEntityName,
         else true
       end
       !?variableMap.insertInitializerSelfProperty
-        (!property.name.string,
-        !inEndOfMethodLocation,
-        !property.typeEntry,
-        !"<< unused >>",
-        !"self." + property.name,
+        (property.name.string,
+        inEndOfMethodLocation,
+        property.typeEntry,
+        "<< unused >>",
+        "self." + property.name,
         !initialized: initialized
       )
     end
@@ -283,32 +283,32 @@ private proc analyzeInitializerBody (?let @lstring inUsefulnessCallerEntityName,
 //--- Enter formal parameters
   outSignatureForGeneration = @formalInputParameterListForGeneration ()
   for formalArg in inFormalArgumentListAST do
-    let parameterType = ioTypeMap.typeMapEntryForLKey (!formalArg.mFormalArgumentTypeName)
+    let parameterType = ioTypeMap.typeMapEntryForLKey (formalArg.mFormalArgumentTypeName)
     if formalArg.mIsConstant then
       let @string cppName = "constinArgument_" + formalArg.mFormalArgumentName.string.identifierRepresentation
       outSignatureForGeneration ++= @(
-        !formalArg.mFormalSelector,
-        !parameterType,
-        !cppName,
-        !formalArg.mFormalArgumentName,
-        !formalArg.mIsConstant)
+        formalArg.mFormalSelector,
+        parameterType,
+        cppName,
+        formalArg.mFormalArgumentName,
+        formalArg.mIsConstant)
       if formalArg.mIsUnused then
-        !?variableMap.insertConstantInputFormalArgumentDeclaredAsUnused (!formalArg.mFormalArgumentName, !parameterType, !cppName, !cppName)
+        !?variableMap.insertConstantInputFormalArgumentDeclaredAsUnused (formalArg.mFormalArgumentName, parameterType, cppName, cppName)
       else
-        !?variableMap.insertConstantInputFormalArgument (!formalArg.mFormalArgumentName, !parameterType, !cppName, !cppName)
+        !?variableMap.insertConstantInputFormalArgument (formalArg.mFormalArgumentName, parameterType, cppName, cppName)
       end
     else
       let @string cppName = "inArgument_" + formalArg.mFormalArgumentName.string.identifierRepresentation
       outSignatureForGeneration ++= @(
-        !formalArg.mFormalSelector,
-        !parameterType,
-        !cppName,
-        !formalArg.mFormalArgumentName,
-        !formalArg.mIsConstant)
+        formalArg.mFormalSelector,
+        parameterType,
+        cppName,
+        formalArg.mFormalArgumentName,
+        formalArg.mIsConstant)
       if formalArg.mIsUnused then
-        !?variableMap.insertInputFormalArgumentDeclaredAsUnused (!formalArg.mFormalArgumentName, !parameterType, !cppName, !cppName)
+        !?variableMap.insertInputFormalArgumentDeclaredAsUnused (formalArg.mFormalArgumentName, parameterType, cppName, cppName)
       else
-        !?variableMap.insertInputFormalArgument (!formalArg.mFormalArgumentName, !parameterType, !cppName, !cppName)
+        !?variableMap.insertInputFormalArgument (formalArg.mFormalArgumentName, parameterType, cppName, cppName)
       end
     end
   end
@@ -316,16 +316,16 @@ private proc analyzeInitializerBody (?let @lstring inUsefulnessCallerEntityName,
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
   for entry in inInstructionList do
     entry.mInstruction.analyzeSemanticInstruction
-      (!inUsefulnessCallerEntityName,
+      (inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !?outSemanticInstructionListForGeneration,
       !?variableMap
     )
    end
 //---
-  variableMap.checkAutomatonStates (!inEndOfMethodLocation)
+  variableMap.checkAutomatonStates (inEndOfMethodLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -354,18 +354,18 @@ final class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderF
       formalArg.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
     end
     generateInitializer (
-      !self.mReceiverType,
-      !self.initializerName,
+      self.mReceiverType,
+      self.initializerName,
       !?ioInclusionSet,
-      !self.formalParameterList,
-      !self.semanticInstructionListForGeneration,
+      self.formalParameterList,
+      self.semanticInstructionListForGeneration,
       ?let @string methodImplementation
     )
     outImplementation = filewrapper [semanticComponentGenerationTemplate.initializerImplementation :
-      !self.mReceiverType.definition.typeName.string,
-      !self.initializerName,
-      !self.formalParameterList,
-      !methodImplementation
+      self.mReceiverType.definition.typeName.string,
+      self.initializerName,
+      self.formalParameterList,
+      methodImplementation
     ]
   }
 
@@ -393,17 +393,17 @@ private proc generateInitializer (?let @unifiedTypeMapEntry inReceiverType,
 //--- Generate body
   var @uint temporaryVariableIndex = 0
   var @string routineBody = ""
-  !?routineBody.incIndentation (!2)
+  !?routineBody.incIndentation (2)
   for entry in inInstructionList do
     entry.mInstruction.generateInstruction (
       !?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
-      !false, // inGenerateSyntaxDirectedTranslationString
+      false, // inGenerateSyntaxDirectedTranslationString
       !?routineBody
     )
   end
-  !?routineBody.decIndentation (!2)
+  !?routineBody.decIndentation (2)
 //--- Generate inclusions
   inReceiverType.addHeaderFileName (!?ioInclusionSet)
   for formalArg in inFormalArgumentList do
@@ -424,17 +424,17 @@ private proc generateInitializer (?let @unifiedTypeMapEntry inReceiverType,
       else
         outGeneratedCode += "GGS_" + formalArg.mFormalArgumentType.identifierRepresentation + " "
       end
-      if unusedVariableCppNameSet.hasKey (!formalArg.mFormalArgumentCppName) then
+      if unusedVariableCppNameSet.hasKey (formalArg.mFormalArgumentCppName) then
         outGeneratedCode += "/* " + formalArg.mFormalArgumentCppName + " */"
       else
         outGeneratedCode +=  formalArg.mFormalArgumentCppName
       end
       outGeneratedCode += ",\n"
-      !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+      !?outGeneratedCode.appendSpacesUntilColumn (colRef)
     end
   //--- Compiler argument
     outGeneratedCode += "Compiler * " + compilerCppName () + "\n"
-    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+    !?outGeneratedCode.appendSpacesUntilColumn (colRef)
     outGeneratedCode += "COMMA_UNUSED_LOCATION_ARGS"
     outGeneratedCode += ") {\n"
     outGeneratedCode += "  GGS_" + className.identifierRepresentation + " result ;\n"
@@ -456,11 +456,11 @@ private proc generateInitializer (?let @unifiedTypeMapEntry inReceiverType,
       end
       outGeneratedCode +=  formalArg.mFormalArgumentCppName
       outGeneratedCode += ",\n"
-      !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+      !?outGeneratedCode.appendSpacesUntilColumn (colRef)
     end
   //--- Compiler argument
     outGeneratedCode += "Compiler * " + compilerCppName () + "\n"
-    !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+    !?outGeneratedCode.appendSpacesUntilColumn (colRef)
     outGeneratedCode += "COMMA_LOCATION_ARGS) {\n"
     outGeneratedCode += "  cPtr_" + className.identifierRepresentation + " * object = nullptr ;\n"
     outGeneratedCode += "  macroMyNew (object, cPtr_" + className.identifierRepresentation
@@ -484,17 +484,17 @@ private proc generateInitializer (?let @unifiedTypeMapEntry inReceiverType,
         outGeneratedCode += "const "
       end
       outGeneratedCode += "GGS_" + formalArg.mFormalArgumentType.identifierRepresentation + " & "
-      if unusedVariableCppNameSet.hasKey (!formalArg.mFormalArgumentCppName) then
+      if unusedVariableCppNameSet.hasKey (formalArg.mFormalArgumentCppName) then
         outGeneratedCode += "/* " + formalArg.mFormalArgumentCppName + " */"
       else
         outGeneratedCode +=  formalArg.mFormalArgumentCppName
       end
       outGeneratedCode += ",\n"
-      !?outGeneratedCode.appendSpacesUntilColumn (!colRef)
+      !?outGeneratedCode.appendSpacesUntilColumn (colRef)
     end
   //--- Compiler argument
     outGeneratedCode += "Compiler * "
-    if unusedVariableCppNameSet.hasKey (!compilerCppName ()) then
+    if unusedVariableCppNameSet.hasKey (compilerCppName ()) then
       outGeneratedCode += "/* " + compilerCppName () + " */"
     else
       outGeneratedCode += compilerCppName ()

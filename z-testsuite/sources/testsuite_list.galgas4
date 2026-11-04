@@ -21,7 +21,7 @@ proc testsuite_list() {
   log s
   s = strList.mValueAtIndex (3)
   log s
-  !?strList.setMValueAtIndex ("z", !3)
+  !?strList.setMValueAtIndex ("z", 3)
   log strList
   println ("--- test .= operator on list")
   strList += strList

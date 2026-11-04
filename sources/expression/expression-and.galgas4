@@ -79,13 +79,13 @@ syntax extension galgas4ExpressionSyntax {
       $&$
       let leftOperand = outExpression
       <relation_factor> (!?ioDeclarations, ?let @semanticExpressionAST rightOperand)
-      outExpression = @andExpressionAST (!operatorLocation, leftOperand, rightOperand)
+      outExpression = @andExpressionAST (operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $&&$
       let leftOperand = outExpression
       <relation_factor> (!?ioDeclarations, ?let @semanticExpressionAST rightOperand)
-      outExpression = @andShortExpressionAST (!operatorLocation, leftOperand, rightOperand)
+      outExpression = @andShortExpressionAST (operatorLocation, leftOperand, rightOperand)
     end
   }
 
@@ -119,7 +119,7 @@ override proc @andExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: inInferenceType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
@@ -129,22 +129,22 @@ override proc @andExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: leftExpression.mResultType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixAndOperator),
-    !"&",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.infixAndOperator),
+    "&",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration (
-    !leftExpression.mResultType,
+    leftExpression.mResultType,
     self.mOperatorLocation,
     leftExpression,
     .operator_and,
@@ -176,7 +176,7 @@ override proc @andShortExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: inInferenceType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
@@ -186,22 +186,22 @@ override proc @andShortExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: leftExpression.mResultType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixAndOperator),
-    !"&",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.infixAndOperator),
+    "&",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @andShortExpressionForGeneration (
-    !leftExpression.mResultType,
+    leftExpression.mResultType,
     self.mOperatorLocation,
     leftExpression,
     rightExpression)
@@ -238,7 +238,7 @@ override proc @andShortExpressionForGeneration.generateExpression
   ioGeneratedCode += "GGS_bool " + testVar + " = " + leftTemporaryOperand + " ;\n"
   ioGeneratedCode += "if (GalgasBool::boolTrue == " + testVar + ".boolEnum ()) {\n"
 //--- Right operand
-  !?ioGeneratedCode.incIndentation (!2)
+  !?ioGeneratedCode.incIndentation (2)
   self.mRightExpression.generateExpression
     (!?ioGeneratedCode,
     !?ioInclusionSet,
@@ -247,7 +247,7 @@ override proc @andShortExpressionForGeneration.generateExpression
     ?let @string rightTemporaryOperand
   )
   ioGeneratedCode += testVar + " = " + rightTemporaryOperand + " ;\n"
-  !?ioGeneratedCode.decIndentation (!2)
+  !?ioGeneratedCode.decIndentation (2)
   ioGeneratedCode += "}\n"
   outCppExpression = testVar
 }

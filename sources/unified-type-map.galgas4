@@ -62,7 +62,7 @@ map @unifiedTypeMap {
     elsif let node = self [inKey] then
       outEntry = .element (!weakElement: node.mElement)
     else
-      let newElement = @unifiedTypeMapElementClass (!.unsolved)
+      let newElement = @unifiedTypeMapElementClass (.unsolved)
       !?self.internalInsertKey (@(inKey, .nowhere), newElement)
       outEntry = .element (!weakElement: newElement)
     end
@@ -104,7 +104,7 @@ map @unifiedTypeMap {
         e.mDefinition = .solved (!definition: inTypeDefinition)
       end
     else
-      let newElement = @unifiedTypeMapElementClass (!.solved (!definition: inTypeDefinition))
+      let newElement = @unifiedTypeMapElementClass (.solved (!definition: inTypeDefinition))
       !?self.internalInsertKey (inTypeName, newElement)
     end
   }

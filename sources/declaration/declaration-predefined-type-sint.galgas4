@@ -130,10 +130,10 @@ final class @sintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"hexStringSeparatedBy",
-      !"char",
-      !"inSeparator",
-      !"uint",
-      !"inGroupCount",
+      "char",
+      "inSeparator",
+      "uint",
+      "inGroupCount",
       !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
@@ -149,28 +149,28 @@ final class @sintPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canAdd", !"sint", !"inOperand",
+      !getterName:"canAdd", "sint", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canSubstract", !"sint", !"inOperand",
+      !getterName:"canSubstract", "sint", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canMultiply", !"sint", !"inOperand",
+      !getterName:"canMultiply", "sint", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canDivide", !"sint", !"inOperand",
+      !getterName:"canDivide", "sint", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )

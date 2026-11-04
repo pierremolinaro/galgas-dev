@@ -55,8 +55,8 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
        ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
        ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
        ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
-    let key = @lstring (!"@" + self.mPredefinedTypeName, .nowhere)
-    !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
+    let key = @lstring ("@" + self.mPredefinedTypeName, .nowhere)
+    !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -80,13 +80,13 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       ?let @enumerationDescriptorList enumerationList,
       ?let @string enumeratedTypeName
     )
-    !?ioTypeMap.makeEntryFromString (!self.mPredefinedTypeName, ?*)
+    !?ioTypeMap.makeEntryFromString (self.mPredefinedTypeName, ?*)
   //--- Enumeration
     let @unifiedTypeMapEntry enumeratedTypeEntry
     if enumeratedTypeName == "" then
       enumeratedTypeEntry = @unifiedTypeMapEntry.null
     else
-      !?ioTypeMap.makeEntryFromString (!enumeratedTypeName, ?enumeratedTypeEntry)
+      !?ioTypeMap.makeEntryFromString (enumeratedTypeName, ?enumeratedTypeEntry)
     end
   //--- Add Extensions
     var @initializerMap initializerMap = @()
@@ -100,16 +100,16 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
           argument.mIsConstant
         )
       end
-      !?initializerMap.insertKey (!@(initializer.initializerSignature, .nowhere), !formalParameterList)
+      !?initializerMap.insertKey (@(initializer.initializerSignature, .nowhere), formalParameterList)
     end
     addExtensions (
-      !inExtensionInitializerMapForBuildingContext,
-      !inExtensionMethodMapForBuildingContext,
-      !inExtensionGetterMapForBuildingContext,
-      !inExtensionSetterMapForBuildingContext,
+      inExtensionInitializerMapForBuildingContext,
+      inExtensionMethodMapForBuildingContext,
+      inExtensionGetterMapForBuildingContext,
+      inExtensionSetterMapForBuildingContext,
       !?ioSemanticContext,
       !?ioTypeMap,
-      !@lstring (!self.mPredefinedTypeName, .nowhere),
+      @lstring (self.mPredefinedTypeName, .nowhere),
       !isClass: false,
       !?initializerMap,
       !?getterMap,
@@ -119,7 +119,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
     )
   //---
     let typeDefinition = @unifiedTypeDefinition (
-      !typeName: @lstring (!self.mPredefinedTypeName, .nowhere),
+      !typeName: @lstring (self.mPredefinedTypeName, .nowhere),
       !isPredefined: self.isPredefined,
       !isConcrete: true,
       !isFinal: true,
@@ -145,7 +145,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       !headerFileName: "predefined-types",
       !headerKind: .twoHeaders
     )
-    !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
+    !?ioTypeMap.insertType (typeDefinition.typeName, typeDefinition)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -158,25 +158,25 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
       ?!@unifiedTypeMap ioTypeMap,
       ?let @predefinedTypes unused inPredefinedTypes,
       ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
-   let selfType = ioTypeMap.typeMapEntryForLKey (!@(!self.mPredefinedTypeName, .here))
+   let selfType = ioTypeMap.typeMapEntryForLKey (@(self.mPredefinedTypeName, .here))
   //--- Useful entities graph
-    let nameForUsefulness = typeNameForUsefulEntitiesGraph (!@(!self.mPredefinedTypeName, .here))
-    !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
+    let nameForUsefulness = typeNameForUsefulEntitiesGraph (@(self.mPredefinedTypeName, .here))
+    !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
     ioUsefulnessRootEntities ++= @(nameForUsefulness)
   //--- Useful entities graph for initializer without any argument
     for initializer in selfType.definition.initializerMap do
       let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
-        !@(!self.mPredefinedTypeName, .here),
-        !initializer.mArgumentTypeList.initializerSignature
+        @(self.mPredefinedTypeName, .here),
+        initializer.mArgumentTypeList.initializerSignature
       )
-      !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness, !initializerNameForUsefulness)
+      !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
       ioUsefulnessRootEntities ++= @(initializerNameForUsefulness)
     end
   //---
     ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "Predefined type " + self.mPredefinedTypeName,
-      !@primitiveTypeForGeneration (
-        !selfType,
+      @primitiveTypeForGeneration (
+        selfType,
         self.mPredefinedTypeName,
         self.cppDeclarationString,
         !isPackage: self.typeKind == .packageType
@@ -259,20 +259,20 @@ private proc appendPredefinedListTypeAST (?!@semanticDeclarationListAST ioDeclar
   var @propertyInCollectionListAST attributeList = @()
   attributeList ++= @(
     !mutability: .mutableProperty,
-    !@lstring (!inElementTypeName, @location.here),
-    !@lstring (!"mValue", @location.here),
-    !.publicAccess,
+    @lstring (inElementTypeName, @location.here),
+    @lstring ("mValue", @location.here),
+    .publicAccess,
     !hasSelector: false,
     !initialization: .none
   )
   ioDeclarationListASTs ++= @(@listDeclarationAST (
     !isPredefined: true,
-    @lstring (!inElementTypeName + "list", @location.here),
+    @lstring (inElementTypeName + "list", @location.here),
     attributeList,
     !usefullList: true,
     !equatable: true
   ))
-  insertInUsefulnessEntities (!?ioUsefulnessRootEntities, !inElementTypeName + "list")
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities, inElementTypeName + "list")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -282,29 +282,29 @@ private proc appendPredefined2StringListTypeAST (?!@semanticDeclarationListAST i
   var attributeList = @propertyInCollectionListAST ()
   attributeList ++= @(
     !mutability: .mutableProperty,
-    !@lstring (!"string", @location.here),
-    !@lstring (!"mValue0", @location.here),
-    !.publicAccess,
+    @lstring ("string", @location.here),
+    @lstring ("mValue0", @location.here),
+    .publicAccess,
     !hasSelector: false,
     !initialization: .none
   )
   attributeList ++= @(
     !mutability: .mutableProperty,
-    !@lstring (!"string", @location.here),
-    !@lstring (!"mValue1", @location.here),
-    !.publicAccess,
+    @lstring ("string", @location.here),
+    @lstring ("mValue1", @location.here),
+    .publicAccess,
     !hasSelector: false,
     !initialization: .none
   )
 
   ioDeclarationListASTs ++= @(@listDeclarationAST (
     !isPredefined: true,
-    @lstring (!"2stringlist", @location.here),
+    @lstring ("2stringlist", @location.here),
     attributeList,
     !usefullList: true,
     !equatable: true
   ))
-  insertInUsefulnessEntities (!?ioUsefulnessRootEntities, !"2stringlist")
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities, "2stringlist")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -315,23 +315,23 @@ private proc appendStructASTForTypeWithLocation (?!@semanticDeclarationListAST i
   var attributeList = @propertyInCollectionListAST ()
   attributeList ++= @(
     !mutability: .mutableProperty,
-    !@lstring (!inElementTypeName, @location.here),
-    !@lstring (!inElementTypeName, @location.here),
-    !.publicAccess,
+    @lstring (inElementTypeName, @location.here),
+    @lstring (inElementTypeName, @location.here),
+    .publicAccess,
     !hasSelector: false,
     !initialization: .none
   )
   attributeList ++= @(
     !mutability: .mutableProperty,
-    !@lstring (!"location", @location.here),
-    !@lstring (!"location", @location.here),
-    !.publicAccess,
+    @lstring ("location", @location.here),
+    @lstring ("location", @location.here),
+    .publicAccess,
     !hasSelector: false,
     !initialization: .none
   )
   let type = @structDeclarationAST (
     !isPredefined: true,
-    @lstring (!"l" + inElementTypeName, @location.here),
+    @lstring ("l" + inElementTypeName, @location.here),
     attributeList,
     !enumeratedElementTypeName: "",
     !comparison: .equatable,
@@ -339,7 +339,7 @@ private proc appendStructASTForTypeWithLocation (?!@semanticDeclarationListAST i
   )
   ioDeclarationListASTs ++= @(type)
 //--- Mark it as usefull
-  let typeUsefulnessName = typeNameForUsefulEntitiesGraph (!type.structTypeName)
+  let typeUsefulnessName = typeNameForUsefulEntitiesGraph (type.structTypeName)
   ioUsefulnessRootEntities ++= @(typeUsefulnessName)
 }
 
@@ -350,23 +350,23 @@ private proc appendStructASTForRangeType (?!@semanticDeclarationListAST ioDeclar
   var @propertyInCollectionListAST attributeList = @()
   attributeList ++= @(
     !mutability: .mutableProperty,
-    !@lstring (!"uint", @location.here),
-    !@lstring (!"start", @location.here),
-    !.publicAccess,
+    @lstring ("uint", @location.here),
+    @lstring ("start", @location.here),
+    .publicAccess,
     !hasSelector: false,
     !initialization: .none
   )
   attributeList ++= @(
     !mutability: .mutableProperty,
-    !@lstring (!"uint", @location.here),
-    !@lstring (!"length", @location.here),
-    !.publicAccess,
+    @lstring ("uint", @location.here),
+    @lstring ("length", @location.here),
+    .publicAccess,
     !hasSelector: false,
     !initialization: .none
   )
   ioDeclarationListASTs ++= @(@structDeclarationAST (
     !isPredefined: true,
-    @lstring (!"range", @location.here),
+    @lstring ("range", @location.here),
     attributeList,
     !enumeratedElementTypeName: "uint",
     !comparison: .equatable,
@@ -379,7 +379,7 @@ private proc appendStructASTForRangeType (?!@semanticDeclarationListAST ioDeclar
 private proc insertInUsefulnessEntities
          (?!@lstringlist ioUsefulnessRootEntities,
          ?let @string inTypeName ) {
-  let typeUsefulnessName = typeNameForUsefulEntitiesGraph (!@(!inTypeName, .nowhere))
+  let typeUsefulnessName = typeNameForUsefulEntitiesGraph (@(inTypeName, .nowhere))
   ioUsefulnessRootEntities++= @(typeUsefulnessName)
 }
 
@@ -392,15 +392,15 @@ private proc insertPredefinedType
 //--- Declare type
   ioDeclarationListASTs++= @(inPredefinedTypeAST)
   let typeUsefulnessName = typeNameForUsefulEntitiesGraph (
-    !@(!inPredefinedTypeAST.mPredefinedTypeName, .nowhere)
+    @(inPredefinedTypeAST.mPredefinedTypeName, .nowhere)
   )
 //--- Mark it as usefull
   ioUsefulnessRootEntities++= @(typeUsefulnessName)
 //--- Mark its initializers as usefull
   for initializer in inPredefinedTypeAST.initializers do
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
-      !@(!inPredefinedTypeAST.mPredefinedTypeName, .nowhere),
-      !initializer.initializerSignature
+      @(inPredefinedTypeAST.mPredefinedTypeName, .nowhere),
+      initializer.initializerSignature
     )
     ioUsefulnessRootEntities ++= @(initializerNameForUsefulness)
   end
@@ -413,119 +413,119 @@ proc appendPredefinedTypesASTs (?!@semanticDeclarationListAST ioDeclarationListA
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@applicationPredefinedTypeAST (!isPredefined: true, "application")
+    @applicationPredefinedTypeAST (!isPredefined: true, "application")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@bigintPredefinedTypeAST (!isPredefined: true, "bigint")
+    @bigintPredefinedTypeAST (!isPredefined: true, "bigint")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@binarysetPredefinedTypeAST (!isPredefined: true, "binaryset")
+    @binarysetPredefinedTypeAST (!isPredefined: true, "binaryset")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@boolPredefinedTypeAST (!isPredefined: true, "bool")
+    @boolPredefinedTypeAST (!isPredefined: true, "bool")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@charPredefinedTypeAST (!isPredefined: true, "char")
+    @charPredefinedTypeAST (!isPredefined: true, "char")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@dataPredefinedTypeAST (!isPredefined: true, "data")
+    @dataPredefinedTypeAST (!isPredefined: true, "data")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@doublePredefinedTypeAST (!isPredefined: true, "double")
+    @doublePredefinedTypeAST (!isPredefined: true, "double")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@filewrapperPredefinedTypeAST (!isPredefined: true, "filewrapper")
+    @filewrapperPredefinedTypeAST (!isPredefined: true, "filewrapper")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@functionPredefinedTypeAST (!isPredefined: true, "function")
+    @functionPredefinedTypeAST (!isPredefined: true, "function")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@locationPredefinedTypeAST (!isPredefined: true, "location")
+    @locationPredefinedTypeAST (!isPredefined: true, "location")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@objectPredefinedTypeAST (!isPredefined: true, "object")
+    @objectPredefinedTypeAST (!isPredefined: true, "object")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@sintPredefinedTypeAST (!isPredefined: true, "sint")
+    @sintPredefinedTypeAST (!isPredefined: true, "sint")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@sint64PredefinedTypeAST (!isPredefined: true, "sint64")
+    @sint64PredefinedTypeAST (!isPredefined: true, "sint64")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@stringPredefinedTypeAST (!isPredefined: true, "string")
+    @stringPredefinedTypeAST (!isPredefined: true, "string")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@stringsetPredefinedTypeAST (!isPredefined: true, "stringset")
+    @stringsetPredefinedTypeAST (!isPredefined: true, "stringset")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@timerPredefinedTypeAST (!isPredefined: true, "timer")
+    @timerPredefinedTypeAST (!isPredefined: true, "timer")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@typePredefinedTypeAST (!isPredefined: true, "type")
+    @typePredefinedTypeAST (!isPredefined: true, "type")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@uintPredefinedTypeAST (!isPredefined: true, "uint")
+    @uintPredefinedTypeAST (!isPredefined: true, "uint")
   )
   insertPredefinedType (
     !?ioDeclarationListASTs,
     !?ioUsefulnessRootEntities,
-    !@uint64PredefinedTypeAST (!isPredefined: true, "uint64")
+    @uint64PredefinedTypeAST (!isPredefined: true, "uint64")
   )
 
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs, !"function", !?ioUsefulnessRootEntities)
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs, !"luint", !?ioUsefulnessRootEntities)
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs, !"lstring", !?ioUsefulnessRootEntities)
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs, !"object", !?ioUsefulnessRootEntities)
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs, !"string", !?ioUsefulnessRootEntities)
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs, !"type", !?ioUsefulnessRootEntities)
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs, !"uint", !?ioUsefulnessRootEntities)
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs, !"uint64", !?ioUsefulnessRootEntities)
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs, !"bigint", !?ioUsefulnessRootEntities)
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs, !"lbigint", !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs, "function", !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs, "luint", !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs, "lstring", !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs, "object", !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs, "string", !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs, "type", !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs, "uint", !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs, "uint64", !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs, "bigint", !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs, "lbigint", !?ioUsefulnessRootEntities)
 
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, !"bool", !?ioUsefulnessRootEntities)
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, !"bigint", !?ioUsefulnessRootEntities)
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, !"char", !?ioUsefulnessRootEntities)
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, !"double", !?ioUsefulnessRootEntities)
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, !"sint", !?ioUsefulnessRootEntities)
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, !"sint64", !?ioUsefulnessRootEntities)
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, !"string", !?ioUsefulnessRootEntities)
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, !"uint", !?ioUsefulnessRootEntities)
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, !"uint64", !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, "bool", !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, "bigint", !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, "char", !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, "double", !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, "sint", !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, "sint64", !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, "string", !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, "uint", !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs, "uint64", !?ioUsefulnessRootEntities)
 
   appendPredefined2StringListTypeAST (!?ioDeclarationListASTs, !?ioUsefulnessRootEntities)
 

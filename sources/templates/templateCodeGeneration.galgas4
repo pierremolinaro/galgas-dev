@@ -87,7 +87,7 @@ override proc @templateBlockInstructionForGeneration.templateCodeGeneration
   ioGeneratedCode += "  result.incIndentation (int32_t (" + indendationVarCppName + ".uintValue ())) ;\n"
   ioGeneratedCode += "}\n"
   templateCodeGenerationForListInstruction (
-    !self.mBlockInstructionList,
+    self.mBlockInstructionList,
     !?ioGeneratedCode,
     !?ioInclusionSet,
     !?ioTemporaryVariableIndex,
@@ -145,7 +145,7 @@ override proc @templateInstructionIfForGeneration.templateCodeGeneration
     ioGeneratedCode += "const GalgasBool " + testVar + " = " + ifVarCppName + ".boolEnum () ;\n"
     ioGeneratedCode += "switch (" + testVar + ") {\n"
     ioGeneratedCode += "case GalgasBool::boolTrue : {\n"
-    !?ioGeneratedCode.incIndentation (!2)
+    !?ioGeneratedCode.incIndentation (2)
     templateCodeGenerationForListInstruction (
       templateInstructionIfBranch.mInstructionList,
       !?ioGeneratedCode,
@@ -155,13 +155,13 @@ override proc @templateInstructionIfForGeneration.templateCodeGeneration
       !?ioUseColumnMarker
     )
     ioGeneratedCode += "} break ;\n"
-    !?ioGeneratedCode.decIndentation (!2)
+    !?ioGeneratedCode.decIndentation (2)
     ioGeneratedCode += "case GalgasBool::boolFalse : {\n"
-    !?ioGeneratedCode.incIndentation (!2)
+    !?ioGeneratedCode.incIndentation (2)
   end
 //--- else instructions
   templateCodeGenerationForListInstruction (
-    !self.mElseInstructionList,
+    self.mElseInstructionList,
     !?ioGeneratedCode,
     !?ioInclusionSet,
     !?ioTemporaryVariableIndex,
@@ -169,7 +169,7 @@ override proc @templateInstructionIfForGeneration.templateCodeGeneration
     !?ioUseColumnMarker
   )
   for * in self.mTemplateInstructionIfBranchList do
-    !?ioGeneratedCode.decIndentation (!2)
+    !?ioGeneratedCode.decIndentation (2)
     ioGeneratedCode += "  } break ;\n"
     ioGeneratedCode += "case GalgasBool::boolNotValid :\n"
     ioGeneratedCode += "  break ;\n"

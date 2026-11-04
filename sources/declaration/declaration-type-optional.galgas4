@@ -38,9 +38,9 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
-    let selfKey = @lstring (!"@" + self.optionalTypeName, self.optionalTypeName.location)
-    !?ioSemanticTypePrecedenceGraph.addNode (!selfKey, !self)
-    let unwrappedKey = @lstring (!"@" + self.unwrappedTypeName, self.unwrappedTypeName.location)
+    let selfKey = @lstring ("@" + self.optionalTypeName, self.optionalTypeName.location)
+    !?ioSemanticTypePrecedenceGraph.addNode (selfKey, self)
+    let unwrappedKey = @lstring ("@" + self.unwrappedTypeName, self.unwrappedTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: selfKey, !to: unwrappedKey)
   }
 
@@ -57,32 +57,32 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
   //--- Getters
     commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap)
   //--- Properties
-    !?ioTypeMap.makeEntry (!"bool".nowhere, ?let boolTypeEntry)
+    !?ioTypeMap.makeEntry ("bool".nowhere, ?let boolTypeEntry)
     var @propertyMap propertyMap = @()
     !?propertyMap.insertKey
-      (!@("isSome", self.optionalTypeName),
-      !.publicAccess,
-      !true,
-      !boolTypeEntry
+      (@("isSome", self.optionalTypeName),
+      .publicAccess,
+      true,
+      boolTypeEntry
     )
     !?propertyMap.insertKey
-      (!@("isNil", self.optionalTypeName),
-      !.publicAccess,
-      !true,
-      !boolTypeEntry
+      (@("isNil", self.optionalTypeName),
+      .publicAccess,
+      true,
+      boolTypeEntry
     )
   //--- Add extensions
     var @instanceMethodMap instanceMethodMap = @()
     var @setterMap setterMap = @()
     var @initializerMap initializerMap = @()
     addExtensions (
-      !inExtensionInitializerMapForBuildingContext,
-      !inExtensionMethodMapForBuildingContext,
-      !inExtensionGetterMapForBuildingContext,
-      !inExtensionSetterMapForBuildingContext,
+      inExtensionInitializerMapForBuildingContext,
+      inExtensionMethodMapForBuildingContext,
+      inExtensionGetterMapForBuildingContext,
+      inExtensionSetterMapForBuildingContext,
       !?ioSemanticContext,
       !?ioTypeMap,
-      !self.optionalTypeName,
+      self.optionalTypeName,
       !isClass: false,
       !?initializerMap,
       !?getterMap,
@@ -91,15 +91,15 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
       !acceptSetters: true
     )
   //--- unwrapped type index
-    !?ioTypeMap.makeEntry (!self.unwrappedTypeName, ?let unwrappedType)
+    !?ioTypeMap.makeEntry (self.unwrappedTypeName, ?let unwrappedType)
   //--- features
     var features = @typeFeatures ()
-    if unwrappedType.definition.features.contains (!(.equatable | .comparable | .referenceEquatable)) then
+    if unwrappedType.definition.features.contains ((.equatable | .comparable | .referenceEquatable)) then
       features |= .equatable
     end
     handleEquatableComparableExtension (
       !?ioEquatableExtensionMap,
-      !self.optionalTypeName,
+      self.optionalTypeName,
       !?features,
       !acceptEquatable: true,
       !acceptComparable: false
@@ -132,7 +132,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
       !headerFileName: "optional-" + self.optionalTypeName.string.fileNameRepresentation,
       !headerKind: .oneHeader
     )
-    !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
+    !?ioTypeMap.insertType (typeDefinition.typeName, typeDefinition)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -152,21 +152,21 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
   ) {
   //--- Useful entities graph
-    let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.optionalTypeName)
-    !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
-    let unwrappedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.unwrappedTypeName)
+    let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.optionalTypeName)
+    !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
+    let unwrappedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.unwrappedTypeName)
     !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: unwrappedTypeNameForUsefulness)
     if self.isUsefull then
-      ioUsefulnessRootEntities ++= @(!nameForUsefulness)
+      ioUsefulnessRootEntities ++= @(nameForUsefulness)
     end
   //---
-    let optionalType = ioTypeMap.typeMapEntryForLKey (!self.optionalTypeName)
-    let unwrappedType = ioTypeMap.typeMapEntryForLKey (!self.unwrappedTypeName)
-    let correspondingWeakTypeName = makeWeakTypeLName (!unwrappedType.definition.typeName)
-    let correspondingWeakTypeOrNull = ioTypeMap.typeMapEntryOrNullForLKey (!correspondingWeakTypeName)
+    let optionalType = ioTypeMap.typeMapEntryForLKey (self.optionalTypeName)
+    let unwrappedType = ioTypeMap.typeMapEntryForLKey (self.unwrappedTypeName)
+    let correspondingWeakTypeName = makeWeakTypeLName (unwrappedType.definition.typeName)
+    let correspondingWeakTypeOrNull = ioTypeMap.typeMapEntryOrNullForLKey (correspondingWeakTypeName)
     ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "optional type " + self.optionalTypeName,
-      !@optionalTypeForGeneration (optionalType, unwrappedType, correspondingWeakTypeOrNull))
+      @optionalTypeForGeneration (optionalType, unwrappedType, correspondingWeakTypeOrNull))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

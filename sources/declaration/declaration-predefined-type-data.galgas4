@@ -64,9 +64,9 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
   override proc getEnumerationList (?!@unifiedTypeMap ioUnifiedTypeMap,
                                       !@enumerationDescriptorList outEnumerationList,
                                       !@string outEnumeratedType) {
-    !?ioUnifiedTypeMap.makeEntryFromString (!"uint", ?let uintTypeIndex)
+    !?ioUnifiedTypeMap.makeEntryFromString ("uint", ?let uintTypeIndex)
     outEnumerationList = @()
-    outEnumerationList ++= @(!uintTypeIndex, !"data")
+    outEnumerationList ++= @(uintTypeIndex, "data")
     outEnumeratedType = "uint"
   }
 
@@ -81,7 +81,7 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
       !inputArgTypeName: "string",
       !inputArgName: "inFilePath",
       !methodName: "writeToFile",
-      !true
+      true
     )
     enterInstanceMethodWithInputArgument (
       !?outInstanceMethodMap,
@@ -89,21 +89,21 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
       !inputArgTypeName: "string",
       !inputArgName: "inFilePath",
       !methodName: "writeToExecutableFile",
-      !true
+      true
     )
     var @formalParameterSignature argList = @()
-    !?ioUnifiedTypeMap.makeEntryFromString (!"string", ?@unifiedTypeMapEntry t)
-    argList ++= @(!"".nowhere, !t, !@formalArgumentPassingModeAST. argumentConstantIn, !"inFilePath")
-    !?ioUnifiedTypeMap.makeEntryFromString (!"bool", ?t)
-    argList ++= @(!"".nowhere, !t, !@formalArgumentPassingModeAST. argumentOut, !"outFileModified")
+    !?ioUnifiedTypeMap.makeEntryFromString ("string", ?@unifiedTypeMapEntry t)
+    argList ++= @("".nowhere, t, @formalArgumentPassingModeAST. argumentConstantIn, "inFilePath")
+    !?ioUnifiedTypeMap.makeEntryFromString ("bool", ?t)
+    argList ++= @("".nowhere, t, @formalArgumentPassingModeAST. argumentOut, "outFileModified")
     !?outInstanceMethodMap.insertKey
-      (!@lstring (!"writeToFileWhenDifferentContents", @location.here),
-      !@methodKind. definedAsMember,
-      !argList,
-      !@location.here,
-      !true,
-      !@methodQualifier. isBasic,
-      !"" // No error message
+      (@lstring ("writeToFileWhenDifferentContents", @location.here),
+      @methodKind. definedAsMember,
+      argList,
+      @location.here,
+      true,
+      @methodQualifier. isBasic,
+      "" // No error message
     )
   }
 

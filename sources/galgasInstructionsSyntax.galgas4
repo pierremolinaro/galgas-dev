@@ -347,13 +347,13 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     or
       repeat
         <semantic_instruction> (!?ioDeclarations, ?let @semanticInstructionAST instruction)
-        outInstructionsList ++= @(!instruction)
+        outInstructionsList ++= @(instruction)
       while
         select
           $;$
         or
           let separator = @string.separatorString
-          if not separator.containsCharacter (!'\n') then
+          if not separator.containsCharacter ('\n') then
             error (.separator : "instructions on same line should be separated by ';'")
           end
         end
@@ -378,7 +378,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
         else_instructionList,
         endOf_else_branch
       )
-      outInstructionsList ++= @(!instruction)
+      outInstructionsList ++= @(instruction)
     end
   }
 
@@ -415,14 +415,14 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     select
       $identifier$ (?resultVariableName)
     or
-      resultVariableName = @(!"result", .here)
+      resultVariableName = @("result", .here)
     end
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST functionInstructionList)
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
-      ioDeclarations.mDeclarationList ++= @(!@onceFunctionDeclarationAST (
+      ioDeclarations.mDeclarationList ++= @(@onceFunctionDeclarationAST (
         !isPredefined: false,
         functionName,
         resultTypeName,
@@ -433,7 +433,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
         isUsefull
       ))
     else
-      ioDeclarations.mDeclarationList ++= @(!@functionDeclarationAST (
+      ioDeclarations.mDeclarationList ++= @(@functionDeclarationAST (
         !isPredefined: false,
         functionName,
         formalInputParameterList,
@@ -479,14 +479,14 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     select
       $identifier$ (?resultVariableName)
     or
-      resultVariableName = @(!"result", .here)
+      resultVariableName = @("result", .here)
     end
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST functionInstructionList)
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
-      ioDeclarations.mDeclarationList ++= @(!@onceFunctionDeclarationAST (
+      ioDeclarations.mDeclarationList ++= @(@onceFunctionDeclarationAST (
         !isPredefined: false, // Is not predefined
         functionName,
         resultTypeName,
@@ -497,7 +497,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
         isUsefull
       ))
     else
-      ioDeclarations.mDeclarationList ++= @(!@functionDeclarationAST (
+      ioDeclarations.mDeclarationList ++= @(@functionDeclarationAST (
         !isPredefined: false,
         functionName,
         formalInputParameterList,
@@ -531,7 +531,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let resultTypeName)
-    ioDeclarations.mDeclarationList ++= @(!@externFunctionDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(@externFunctionDeclarationAST (
       !isPredefined: false,
       mActionName,
       formalInputParameterList,
@@ -555,19 +555,19 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     $?$
     select
       $*$
-      result = @grammarInstructionSyntaxDirectedTranslationDropResult (!@location.here)
+      result = @grammarInstructionSyntaxDirectedTranslationDropResult (@location.here)
     or
       <type_definition> (!?ioDeclarations, ?let @lstring actualParameterTypeName)
       $identifier$ (?let actualParameterName)
-      result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar (!actualParameterTypeName, actualParameterName)
+      result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar (actualParameterTypeName, actualParameterName)
     or
       $let$
       <type_definition> (!?ioDeclarations, ?let @lstring actualParameterTypeName)
       $identifier$ (?let actualParameterName)
-      result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst (!actualParameterTypeName, actualParameterName)
+      result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst (actualParameterTypeName, actualParameterName)
     or
       $identifier$ (?let actualParameterName)
-      result = @grammarInstructionSyntaxDirectedTranslationResultInVar (!actualParameterName)
+      result = @grammarInstructionSyntaxDirectedTranslationResultInVar (actualParameterName)
     end
     $)$
   }
@@ -585,11 +585,11 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           $?$
           let selector = "".here
           $*$
-          outActualInputParameterList ++= @(!selector, !@inputParameterAnonymousVariable ())
+          outActualInputParameterList ++= @(selector, @inputParameterAnonymousVariable ())
         or
           $?selector:$ (?let selector)
           $*$
-          outActualInputParameterList ++= @(!selector, !@inputParameterAnonymousVariable ())
+          outActualInputParameterList ++= @(selector, @inputParameterAnonymousVariable ())
         or
           $?selector:$ (?let selector)
           $var$
@@ -601,8 +601,8 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           end
           $identifier$ (?let actualParameterName)
           outActualInputParameterList ++= @(
-            !selector,
-            !@inputParameterDeclaredVariable (!actualParameterTypeName, actualParameterName))
+            selector,
+            @inputParameterDeclaredVariable (actualParameterTypeName, actualParameterName))
         or
           $?$
           let selector = "".here
@@ -615,8 +615,8 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           end
           $identifier$ (?let actualParameterName)
           outActualInputParameterList ++= @(
-            !selector,
-            !@inputParameterDeclaredVariable (!actualParameterTypeName, actualParameterName))
+            selector,
+            @inputParameterDeclaredVariable (actualParameterTypeName, actualParameterName))
         or
           $?selector:$ (?let selector)
           $let$
@@ -628,8 +628,8 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           end
           $identifier$ (?let actualParameterName)
           outActualInputParameterList ++= @(
-            !selector,
-            !@inputParameterDeclaredConstant (!actualParameterTypeName, actualParameterName))
+            selector,
+            @inputParameterDeclaredConstant (actualParameterTypeName, actualParameterName))
         or
           $?$
           let selector = "".here
@@ -642,17 +642,17 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
           end
           $identifier$ (?let actualParameterName)
           outActualInputParameterList ++= @(
-            !selector,
-            !@inputParameterDeclaredConstant (!actualParameterTypeName, actualParameterName))
+            selector,
+            @inputParameterDeclaredConstant (actualParameterTypeName, actualParameterName))
         or
           $?selector:$ (?let selector)
           $identifier$ (?let actualParameterName)
-          outActualInputParameterList ++= @(!selector, !@inputParameterVariable (!actualParameterName))
+          outActualInputParameterList ++= @(selector, @inputParameterVariable (actualParameterName))
         or
           $?$
           let selector = "".here
           $identifier$ (?let actualParameterName)
-          outActualInputParameterList ++= @(!selector, !@inputParameterVariable (!actualParameterName))
+          outActualInputParameterList ++= @(selector, @inputParameterVariable (actualParameterName))
         end
       while
         $,$

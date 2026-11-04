@@ -38,7 +38,7 @@ filewrapper grammarRulesInTexDocumentTemplate in "+generation-templates/grammar_
 private func escapeForTex (let @string inString) -> @string {
   result = ""
   for @uint idx in 0 ..< inString.count do
-    let c = inString.characterAtIndex (!idx)
+    let c = inString.characterAtIndex (idx)
     if c == '_' then
       result += "\\_"
     elsif c == '{' then
@@ -78,35 +78,35 @@ proc emitProductionRulesInTexFile
   let texDocumentFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".document.tex"
   texDocumentFilePath.deletingLastPathComponent.makeDirectory ()
   let document = filewrapper [grammarRulesInTexDocumentTemplate.document :
-    !inGrammarComponentName,
-    !escapeForTex (!inGrammarComponentName)
+    inGrammarComponentName,
+    escapeForTex (inGrammarComponentName)
   ]
-  document.writeToFileWhenDifferentContents (!texDocumentFilePath, ?*)
+  document.writeToFileWhenDifferentContents (texDocumentFilePath, ?*)
   let texFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".tex"
   var s = ""
-  inNonTerminalMapForGrammarAnalysis.searchKey (!inStartSymbol, ?let startSymbolIndex, ?*)
-  s += "\\startSymbol{" + escapeForTex (!inStartSymbol) + "}{" + startSymbolIndex + "}\n\n"
+  inNonTerminalMapForGrammarAnalysis.searchKey (inStartSymbol, ?let startSymbolIndex, ?*)
+  s += "\\startSymbol{" + escapeForTex (inStartSymbol) + "}{" + startSymbolIndex + "}\n\n"
   s += "\\nonTerminalSummaryStart "
   for nonterminal in inNonTerminalMapForGrammarAnalysis
-    do s += "\\nonTerminalSummary{" + escapeForTex (!nonterminal.lkey) + "}{" + nonterminal.mNonTerminalIndex + "}"
+    do s += "\\nonTerminalSummary{" + escapeForTex (nonterminal.lkey) + "}{" + nonterminal.mNonTerminalIndex + "}"
     between s += "\\nonTerminalSummarySeparator "
   end
   s += "\\nonTerminalSummaryEnd "
   for nonterminal in inNonTerminalMapForGrammarAnalysis do
-    s += "\\nonTerminalSection{" + escapeForTex (!nonterminal.lkey) + "}{" + nonterminal.mNonTerminalIndex + "}\n\n"
+    s += "\\nonTerminalSection{" + escapeForTex (nonterminal.lkey) + "}{" + nonterminal.mNonTerminalIndex + "}\n\n"
     for syntaxComponent in inSyntaxComponentListForGrammarAnalysis do
       for productionRule in syntaxComponent.mProductionRulesList do
         if productionRule.mLeftNonterminalSymbol.string == nonterminal.lkey then
           if productionRule.mInstructionList.displayVertically then
-            productionRule.displayRuleVertically (!syntaxComponent.mSyntaxComponentName.string, !?s)
+            productionRule.displayRuleVertically (syntaxComponent.mSyntaxComponentName.string, !?s)
           else
-            productionRule.displayRule (!syntaxComponent.mSyntaxComponentName.string, !?s)
+            productionRule.displayRule (syntaxComponent.mSyntaxComponentName.string, !?s)
           end
         end
       end
     end
   end
-  s.writeToFileWhenDifferentContents (!texFilePath, ?*)
+  s.writeToFileWhenDifferentContents (texFilePath, ?*)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -139,10 +139,10 @@ proc @productionRuleListForGrammarAnalysis.@element.displayRule
 //--- Write tex file
   let loc = self.mLeftNonterminalSymbol.location
   ioGeneratedCode += "\\ruleSubsection{"
-    + escapeForTex (!inSyntaxComponentName)
+    + escapeForTex (inSyntaxComponentName)
     + "}{"
-    + escapeForTex (!loc.file.lastPathComponent.deletingPathExtension)
-    + "}{" + escapeForTex (!loc.startLine)
+    + escapeForTex (loc.file.lastPathComponent.deletingPathExtension)
+    + "}{" + escapeForTex (loc.startLine)
     + "}\n\n"
     + "\\begin{tikzpicture}\n"
     + "  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"
@@ -199,10 +199,10 @@ proc @productionRuleListForGrammarAnalysis.@element.displayRuleVertically
 //--- Write tex file
   let loc = self.mLeftNonterminalSymbol.location
   ioGeneratedCode += "\\ruleSubsection{"
-    + escapeForTex (!inSyntaxComponentName)
+    + escapeForTex (inSyntaxComponentName)
     + "}{"
-    + escapeForTex (!loc.file.lastPathComponent.deletingPathExtension)
-    + "}{" + escapeForTex (!loc.startLine)
+    + escapeForTex (loc.file.lastPathComponent.deletingPathExtension)
+    + "}{" + escapeForTex (loc.startLine)
     + "}\n\n"
     + "\\begin{tikzpicture}\n"
     + "  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"
@@ -286,18 +286,18 @@ mutating proc @rowList.appendRow
     end
   end
 //--- Get row
-  var cols = self.columnsAtIndex (!inRow)
+  var cols = self.columnsAtIndex (inRow)
 //--- add column pads in row
   if cols.count <= inColumn then
     for * in cols.count ... inColumn do
-      cols ++= @(!"", !"")
+      cols ++= @("", "")
     end
   end
 //--- Add node
   outNodeName = "p" + inRow + "-" + cols.count
-  cols ++= @(!outNodeName, !inNodeDefinition)
+  cols ++= @(outNodeName, inNodeDefinition)
 //--- Set new row
-  !?self.setColumnsAtIndex (!cols, !inRow)
+  !?self.setColumnsAtIndex (cols, inRow)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -324,7 +324,7 @@ override proc @nonTerminalInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruc
   ?!@uint unused ioMaxUsedRowIndex,
   ?debug:let @bool unused inDebug
 ) {
-  let nodeDefinition = "[nonterminal] {\\nonTerminalSymbol{" + escapeForTex (!self.mNonterminalSymbolName)
+  let nodeDefinition = "[nonterminal] {\\nonTerminalSymbol{" + escapeForTex (self.mNonterminalSymbolName)
     + "}{" + self.mNonterminalSymbolIndex + "}}"
   !?ioRowList.appendRow
     (!nodeDefinition:nodeDefinition,
@@ -399,7 +399,7 @@ override proc @selectInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
       !?maxUsedRowIndex,
       !debug:inDebug
     )
-    endingNodes ++= @(!currentNode)
+    endingNodes ++= @(currentNode)
     if endColumn < branchColumn then
       endColumn = branchColumn
     end
@@ -487,7 +487,7 @@ override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
 //--- Enter branches
   var @stringlist endingNodes = @()
   if oneEmptyBranch then
-    endingNodes ++= @(!startNodeName)
+    endingNodes ++= @(startNodeName)
   else
     var nextBranchUsedRowIndex = inRow
     for branch in branches do
@@ -505,7 +505,7 @@ override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
         !?nextBranchUsedRowIndex,
         !debug:inDebug
       )
-      endingNodes ++= @(!currentNode)
+      endingNodes ++= @(currentNode)
       if endColumn < branchColumn then
         endColumn = branchColumn
       end

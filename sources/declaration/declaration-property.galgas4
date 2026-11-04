@@ -139,7 +139,7 @@ syntax extension galgas4DeclarationsSyntax {
       mutability = .mutableProperty
     or
       $let$
-      accessControl.checkCompatibilityWithLet (!.here)
+      accessControl.checkCompatibilityWithLet (.here)
       mutability = .constantProperty
     end
     <type_definition> (!?ioDeclarations, ?let propertyTypeName)
@@ -160,9 +160,9 @@ syntax extension galgas4DeclarationsSyntax {
     end
     ioAttributeInCollectionList ++= @(
       !mutability: mutability,
-      !propertyTypeName,
-      !propertyName,
-      !accessControl,
+      propertyTypeName,
+      propertyName,
+      accessControl,
       !hasSelector: selectorAttribute,
       !initialization: initialization)
   }
@@ -195,16 +195,16 @@ syntax extension galgas4DeclarationsSyntax {
       <expression> (!?ioDeclarations, ?let expression)
       initialization = .some (!expression: expression)
     end
-    let propertyWeakTypeName = makeWeakTypeLName (!propertyTypeName)
+    let propertyWeakTypeName = makeWeakTypeLName (propertyTypeName)
 //    if not [ioDeclarations.implicitTypeDeclarationSet hasKey !propertyWeakTypeName] then
 //      ioDeclarations.implicitTypeDeclarationSet += !propertyWeakTypeName
 //
 //    end
     ioAttributeInCollectionList ++= @(
       !mutability: .weakProperty,
-      !propertyWeakTypeName,
-      !propertyName,
-      !accessControl,
+      propertyWeakTypeName,
+      propertyName,
+      accessControl,
       !hasSelector: selectorAttribute,
       !initialization: initialization)
   }
@@ -240,7 +240,7 @@ list @propertyInCollectionListAST {
       case some (expressionAST) :
         var variableMap = @localVarManager ()
         let @analysisContext analysisContext = @(
-          !inSemanticContext,
+          inSemanticContext,
           inPredefinedTypes,
           !selfObjectCppName: "",
           !selfAvailability: .none,
@@ -251,16 +251,16 @@ list @propertyInCollectionListAST {
           (!usefulnessCallerEntityName: inTypeNameForUsefulness,
           !?ioUsefulEntitiesGraph,
           !inferenceType: propertyType,
-          !analysisContext,
+          analysisContext,
           !?ioTypeMap,
           !?variableMap,
           ?var @semanticExpressionForGeneration expression
         )
       //--- Check assignment type compatibility
         checkAssignmentTypeWithImplicitGetterCall (
-          !propertyType,
-          !expression.mResultType,
-          !property.name.location,
+          propertyType,
+          expression.mResultType,
+          property.name.location,
           !?expression
         )
         expression.generateExpression

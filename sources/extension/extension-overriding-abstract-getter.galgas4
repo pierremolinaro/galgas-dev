@@ -113,7 +113,7 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(@overridingAbstractExtensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -133,7 +133,7 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(@overridingAbstractExtensionGetterAST (
       !isPredefined: false,
       inTypeName,
       getterName,
@@ -166,20 +166,20 @@ override proc @overridingAbstractExtensionGetterAST.enterDeclarationInGraph (
       ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext,
       ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
       ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
-  ioExtensionOverrideDefinitionList ++= @(!self)
+  ioExtensionOverrideDefinitionList ++= @(self)
 //---
-  if not ioExtensionGetterMapForBuildingContext.hasKey (!self.mTypeName.string) then
+  if not ioExtensionGetterMapForBuildingContext.hasKey (self.mTypeName.string) then
     !?ioExtensionGetterMapForBuildingContext.insertKey
-      (!self.mTypeName,
-      !@()
+      (self.mTypeName,
+      @()
     )
   end
   var entry = ioExtensionGetterMapForBuildingContext [!searchKey: self.mTypeName]
   !?entry.mExtensionGetterMapForType.insertKey
-    (!self.mAbstractExtensionGetterName,
-    !self.mAbstractExtensionGetterReturnedTypeName,
-    !self.mAbstractExtensionGetterFormalInputParameterList,
-    !.isVirtualOverridingAbstract
+    (self.mAbstractExtensionGetterName,
+    self.mAbstractExtensionGetterReturnedTypeName,
+    self.mAbstractExtensionGetterFormalInputParameterList,
+    .isVirtualOverridingAbstract
   )
   !?ioExtensionGetterMapForBuildingContext.replaceKey (!with: entry)
 }
@@ -211,9 +211,9 @@ override proc @overridingAbstractExtensionGetterAST.semanticAnalysis (
   ?let @predefinedTypes unused inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration) {
 //--- Self type
-  let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
+  let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
 //--- Return type
-  let returnType = ioTypeMap.typeMapEntryForLKey (!self.mAbstractExtensionGetterReturnedTypeName)
+  let returnType = ioTypeMap.typeMapEntryForLKey (self.mAbstractExtensionGetterReturnedTypeName)
 //--- Check type is an abstract class
   if not selfType.definition.typeKind.isClassType then
     error (self.mAbstractExtensionGetterName: "cannot declare a extension func: '@" + selfType.definition.typeName.string + "' is not a class")
@@ -228,9 +228,9 @@ override proc @overridingAbstractExtensionGetterAST.semanticAnalysis (
   var @location inheritedDeclarationLocation = @location.here
   loop (ioTypeMap.count + 1)
   while (not superType.isNull) & (baseTypeName == "") do
-    if superType.definition.getterMap.hasKey (!self.mAbstractExtensionGetterName.string) then
+    if superType.definition.getterMap.hasKey (self.mAbstractExtensionGetterName.string) then
        superType.definition.getterMap.searchKey
-        (!self.mAbstractExtensionGetterName,
+        (self.mAbstractExtensionGetterName,
         ?*,
         ?inheritedSignature,
         ?inheritedDeclarationLocation,
@@ -253,20 +253,20 @@ override proc @overridingAbstractExtensionGetterAST.semanticAnalysis (
     var formalParameterListForGeneration = @formalInputParameterListForGeneration ()
     for parameter in self.mAbstractExtensionGetterFormalInputParameterList do
       formalParameterListForGeneration ++= @(
-        !parameter.mFormalSelector,
-        !ioTypeMap.typeMapEntryForLKey (parameter.mFormalArgumentTypeName),
+        parameter.mFormalSelector,
+        ioTypeMap.typeMapEntryForLKey (parameter.mFormalArgumentTypeName),
         parameter.mFormalArgumentName.string,
         parameter.mFormalArgumentName,
         parameter.mIsConstant
       )
     end
     checkGetterSignatures (
-      !formalParameterListForGeneration,
-      !returnType,
-      !self.mAbstractExtensionGetterName.location,
-      !inheritedSignature,
-      !inheritedReturnType,
-      !inheritedDeclarationLocation
+      formalParameterListForGeneration,
+      returnType,
+      self.mAbstractExtensionGetterName.location,
+      inheritedSignature,
+      inheritedReturnType,
+      inheritedDeclarationLocation
     )
   end
 }
@@ -289,8 +289,8 @@ override proc @overridingAbstractExtensionGetterAST.buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
   ?!@genericExtensionMethodListMap ioOverridingAbstractExtensionGetterListMap) {
   !? ioOverridingAbstractExtensionGetterListMap.insertKey
-    (!self.mTypeName.string,
-    !self.mAbstractExtensionGetterName
+    (self.mTypeName.string,
+    self.mAbstractExtensionGetterName
   )
 }
 

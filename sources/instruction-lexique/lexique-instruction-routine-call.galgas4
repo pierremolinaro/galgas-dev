@@ -112,13 +112,13 @@ syntax extension galgas4LexiqueComponentSyntax {
       $!$
       let passingModeLocation = @location.here
       <lexical_output_effective_argument> (?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg)
-      actualArgumentList ++= @(!@lexicalFormalInputArgumentAST (!passingModeLocation, arg))
+      actualArgumentList ++= @(@lexicalFormalInputArgumentAST (passingModeLocation, arg))
     while
       $!?$
       let passingModeLocation = @location.here
       $identifier$ (?let @lstring attributeName)
-      let arg = @lexicalAttributeInputOutputArgumentAST (!passingModeLocation, attributeName)
-      actualArgumentList ++= @(!arg)
+      let arg = @lexicalAttributeInputOutputArgumentAST (passingModeLocation, attributeName)
+      actualArgumentList ++= @(arg)
     end
     var @lstringlist errorMessageList = @()
     select
@@ -126,14 +126,14 @@ syntax extension galgas4LexiqueComponentSyntax {
       $error$
       repeat
         $identifier$ (?let @lstring errorMessageName)
-        errorMessageList ++= @(!errorMessageName)
+        errorMessageList ++= @(errorMessageName)
       while
         $,$
       end
     end
     $)$
-    ioInstructionList ++= @(!@lexicalRoutineCallInstructionAST (
-      !actionName,
+    ioInstructionList ++= @(@lexicalRoutineCallInstructionAST (
+      actionName,
       actualArgumentList,
       errorMessageList))
   }
@@ -182,7 +182,7 @@ override proc @lexicalAttributeInputOutputArgumentAST.checkLexicalRoutineCallArg
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType) {
 //--- Check attribute definition
   ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey
-    (!self.mAttributeName,
+    (self.mAttributeName,
     ?let attributeLexicalType
   )
 //--- Type check
@@ -209,7 +209,7 @@ override proc @lexicalFormalInputArgumentAST.checkLexicalRoutineCallArgument (
 //--- Check attribute definition
   self.mRoutineOrFunctionFormalInputArgument.checkLexicalRoutineCallArgument
     (!?ioLexiqueAnalysisContext,
-    !inLexicalRoutineFormalArgumentType
+    inLexicalRoutineFormalArgumentType
   )
 //--- Passing mode check
   if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST.lexicalInputMode then
@@ -223,7 +223,7 @@ override proc @lexicalRoutineCallInstructionAST.checkLexicalInstruction (
                          ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
                          ?!@lexicalTagMap unused ioTagMap) {
   ioLexiqueAnalysisContext.mLexicalRoutineMessageMap.searchKey
-    (!self.mRoutineName,
+    (self.mRoutineName,
     ?let lexicalRoutineFormalArgumentList,
     ?let routineErrorMessageList,
     ?*
@@ -240,8 +240,8 @@ override proc @lexicalRoutineCallInstructionAST.checkLexicalInstruction (
   for formal in lexicalRoutineFormalArgumentList, actual in self.mActualArgumentList do
     actual.mLexicalRoutineActualArgument.checkLexicalRoutineCallArgument
       (!?ioLexiqueAnalysisContext,
-      !formal.mLexicalFormalArgumentMode,
-      !formal.mLexicalFormalArgumentType
+      formal.mLexicalFormalArgumentMode,
+      formal.mLexicalFormalArgumentType
     )
   end
 //--- Check error message count
@@ -283,7 +283,7 @@ override func @lexicalRoutineCallInstructionAST.generateSwiftCocoaInstructionCod
   -> @string outGeneratedCode {
   outGeneratedCode = "scanner_cocoa_routine_" + self.mRoutineName + " (&scanningOk"
   for entry in self.mActualArgumentList do
-    outGeneratedCode += ", " + entry.mLexicalRoutineActualArgument.generateSwiftCocoaRoutineArgument (!inLexiqueAnalysisContext)
+    outGeneratedCode += ", " + entry.mLexicalRoutineActualArgument.generateSwiftCocoaRoutineArgument (inLexiqueAnalysisContext)
   end
   outGeneratedCode += ")\n"
 }

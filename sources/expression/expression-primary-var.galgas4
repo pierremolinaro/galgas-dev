@@ -40,7 +40,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $identifier$ (?let identifier)
-    outExpression = @varInExpressionAST (!identifier)
+    outExpression = @varInExpressionAST (identifier)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -70,13 +70,13 @@ final class @varInExpressionAST : @semanticExpressionAST {
         ?!@localVarManager ioVariableMap,
         !@semanticExpressionForGeneration outExpression ) {
     !?ioVariableMap.searchForReadAccess
-      (!self.mVarName,
+      (self.mVarName,
       ?let @unifiedTypeMapEntry type,
       ?let @string sourceVariableCppName,
       ?let @string nameForCheckingFormalParameterUsing
     )
     outExpression = @varInExpressionForGeneration (
-      !type,
+      type,
       self.mVarName.location,
       sourceVariableCppName,
       nameForCheckingFormalParameterUsing
@@ -105,7 +105,7 @@ final class @varInExpressionForGeneration : @semanticExpressionForGeneration {
                                       !@string outCppExpression ) {
     self.mResultType.addHeaderFileName (!?ioInclusionSet)
     outCppExpression = self.mCppVarName
-    !?ioUnusedVariableCppNameSet.removeKey (!self.mNameForCheckingFormalParameterUsing)
+    !?ioUnusedVariableCppNameSet.removeKey (self.mNameForCheckingFormalParameterUsing)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

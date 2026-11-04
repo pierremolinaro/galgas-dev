@@ -28,27 +28,27 @@ proc enterBaseFinalGetterWithoutArgument (?!@getterMap ioGetterMap,
                                          ?obsoleteName: let @string inObsoleteGetterName,
                                          ?returnedTypeName:let @string inReturnedTypeName,
                                          ?hasCompilerArgument:let @bool inHasCompilerArgument ) {
-  !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName, ?let returnedTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
   !?ioGetterMap.insertOrReplace
-    (!@lstring (!inGetterName, .here),
-    !@methodKind.definedAsMember,
-    !@functionSignature (),
-    !@location.here,
-    !inHasCompilerArgument,
-    !returnedTypeIndex,
-    !@methodQualifier.isBasicFinal,
-    !"" // func name is not obsolete, no replacement func
+    (@lstring (inGetterName, .here),
+    @methodKind.definedAsMember,
+    @functionSignature (),
+    @location.here,
+    inHasCompilerArgument,
+    returnedTypeIndex,
+    @methodQualifier.isBasicFinal,
+    "" // func name is not obsolete, no replacement func
   )
   if inObsoleteGetterName != "" then
     !?ioGetterMap.insertOrReplace
-      (!@lstring (!inObsoleteGetterName, .here),
-      !@methodKind.definedAsMember,
-      !@functionSignature (),
-      !@location.here,
-      !inHasCompilerArgument,
-      !returnedTypeIndex,
-      !@methodQualifier.isBasicFinal,
-      !inGetterName // func name is obsolete, replacement func
+      (@lstring (inObsoleteGetterName, .here),
+      @methodKind.definedAsMember,
+      @functionSignature (),
+      @location.here,
+      inHasCompilerArgument,
+      returnedTypeIndex,
+      @methodQualifier.isBasicFinal,
+      inGetterName // func name is obsolete, replacement func
     )
   end
 }
@@ -61,27 +61,27 @@ proc enterInheritedGetterWithoutArgument (?!@getterMap ioGetterMap,
                                           ?obsoleteName: let @string inObsoleteGetterName,
                                           ?returnedTypeName:let @string inReturnedTypeName,
                                           ?hasCompilerArgument:let @bool inHasCompilerArgument ) {
-  !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName, ?let returnedTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
   !?ioGetterMap.insertOrReplace
-    (!@lstring (!inGetterName, @location.here),
-    !@methodKind.definedAsMember,
-    !@functionSignature (),
-    !@location.here,
-    !inHasCompilerArgument,
-    !returnedTypeIndex,
-    !@methodQualifier. isInherited,
-    !"" // func name is not obsolete, no replacement func
+    (@lstring (inGetterName, @location.here),
+    @methodKind.definedAsMember,
+    @functionSignature (),
+    @location.here,
+    inHasCompilerArgument,
+    returnedTypeIndex,
+    @methodQualifier. isInherited,
+    "" // func name is not obsolete, no replacement func
   )
   if inObsoleteGetterName != "" then
     !?ioGetterMap.insertOrReplace
-      (!@(!inObsoleteGetterName, .here),
-      !@methodKind.definedAsMember,
-      !@functionSignature (),
-      !@location.here,
-      !inHasCompilerArgument,
-      !returnedTypeIndex,
-      !@methodQualifier. isInherited,
-      !inGetterName
+      (@(inObsoleteGetterName, .here),
+      @methodKind.definedAsMember,
+      @functionSignature (),
+      @location.here,
+      inHasCompilerArgument,
+      returnedTypeIndex,
+      @methodQualifier. isInherited,
+      inGetterName
     )
   end
 }
@@ -97,19 +97,19 @@ proc enterInheritedGetterWithArgument
   ?returnedTypeName:let @string inReturnedTypeName,
   ?hasCompilerArgument:let @bool inHasCompilerArgument
  ) {
-  !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName, ?let returnedTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
   var @functionSignature argList = @()
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument1TypeName, ?let t)
-  argList ++= @(!"".nowhere, !t, !inArgument1Name, !true)
+  !?ioUnifiedTypeMap.makeEntryFromString (inArgument1TypeName, ?let t)
+  argList ++= @("".nowhere, t, inArgument1Name, true)
   !?ioGetterMap.insertOrReplace
-    (!@lstring (!inGetterName, @location.here),
-    !@methodKind. definedAsMember,
-    !argList,
-    !@location.here,
-    !inHasCompilerArgument,
-    !returnedTypeIndex,
-    !@methodQualifier. isInherited,
-    !"" // func name is not obsolete, no replacement func
+    (@lstring (inGetterName, @location.here),
+    @methodKind. definedAsMember,
+    argList,
+    @location.here,
+    inHasCompilerArgument,
+    returnedTypeIndex,
+    @methodQualifier. isInherited,
+    "" // func name is not obsolete, no replacement func
   )
 }
 
@@ -124,19 +124,19 @@ proc enterBaseGetterWithArgument
   ?returnedTypeName:let @string inReturnedTypeName,
   ?hasCompilerArgument:let @bool inHasCompilerArgument
  ) {
-  !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName, ?let returnedTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
   var @functionSignature argList = @()
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument1TypeName, ?let t)
-  argList ++= @(!"".nowhere, !t, !inArgument1Name, !true)
+  !?ioUnifiedTypeMap.makeEntryFromString (inArgument1TypeName, ?let t)
+  argList ++= @("".nowhere, t, inArgument1Name, true)
   !?ioGetterMap.insertOrReplace
-    (!@(!inGetterName, .here),
-    !.definedAsMember,
-    !argList,
-    !.here,
-    !inHasCompilerArgument,
-    !returnedTypeIndex,
-    !.isBasicFinal,
-    !"" // func name is not obsolete, no replacement func
+    (@(inGetterName, .here),
+    .definedAsMember,
+    argList,
+    .here,
+    inHasCompilerArgument,
+    returnedTypeIndex,
+    .isBasicFinal,
+    "" // func name is not obsolete, no replacement func
   )
 }
 
@@ -184,21 +184,21 @@ proc enterBaseGetterWith2Arguments
   ?returnedTypeName:let @string inReturnedTypeName,
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 ) {
-  !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName, ?let returnedTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
   var @functionSignature argList = @()
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument1TypeName, ?@unifiedTypeMapEntry t)
-  argList ++= @(!"".nowhere, !t, !inArgument1Name, !true)
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument2TypeName, ?t)
-  argList ++= @(!"".nowhere, !t, !inArgument2Name, !true)
+  !?ioUnifiedTypeMap.makeEntryFromString (inArgument1TypeName, ?@unifiedTypeMapEntry t)
+  argList ++= @("".nowhere, t, inArgument1Name, true)
+  !?ioUnifiedTypeMap.makeEntryFromString (inArgument2TypeName, ?t)
+  argList ++= @("".nowhere, t, inArgument2Name, true)
   !?ioGetterMap.insertOrReplace
-    (!@(!inGetterName, .here),
-    !.definedAsMember,
-    !argList,
-    !@location.here,
-    !inHasCompilerArgument,
-    !returnedTypeIndex,
-    !.isBasicFinal,
-    !"" // func name is not obsolete, no replacement func
+    (@(inGetterName, .here),
+    .definedAsMember,
+    argList,
+    @location.here,
+    inHasCompilerArgument,
+    returnedTypeIndex,
+    .isBasicFinal,
+    "" // func name is not obsolete, no replacement func
   )
 }
 
@@ -210,27 +210,27 @@ proc enterBaseGetterWithoutArgument (?!@getterMap ioGetterMap,
                                     ?obsoleteName: let @string inObsoleteGetterName,
                                     ?returnedTypeName:let @string inReturnedTypeName,
                                     ?hasCompilerArgument:let @bool inHasCompilerArgument ) {
-  !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName, ?let returnedTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
   !?ioGetterMap.insertOrReplace
-    (!@lstring (!inGetterName, @location.here),
-    !@methodKind.definedAsMember,
-    !@functionSignature (),
-    !@location.here,
-    !inHasCompilerArgument,
-    !returnedTypeIndex,
-    !@methodQualifier. isBasic,
-    !"" // func name is not obsolete, no replacement func
+    (@lstring (inGetterName, @location.here),
+    @methodKind.definedAsMember,
+    @functionSignature (),
+    @location.here,
+    inHasCompilerArgument,
+    returnedTypeIndex,
+    @methodQualifier. isBasic,
+    "" // func name is not obsolete, no replacement func
   )
   if inObsoleteGetterName != "" then
     !?ioGetterMap.insertOrReplace
-      (!@lstring (!inObsoleteGetterName, .here),
-      !@methodKind.definedAsMember,
-      !@functionSignature (),
-      !@location.here,
-      !inHasCompilerArgument,
-      !returnedTypeIndex,
-      !@methodQualifier.isBasicFinal,
-      !inGetterName // func name is obsolete, replacement func
+      (@lstring (inObsoleteGetterName, .here),
+      @methodKind.definedAsMember,
+      @functionSignature (),
+      @location.here,
+      inHasCompilerArgument,
+      returnedTypeIndex,
+      @methodQualifier.isBasicFinal,
+      inGetterName // func name is obsolete, replacement func
     )
   end
 }
@@ -247,19 +247,19 @@ proc enterBaseGetterWithArgument
   ?returnedTypeName:let @string inReturnedTypeName,
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 ) {
-  !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName, ?let returnedTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
   var @functionSignature argList = @()
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument1TypeName, ?let t)
-  argList ++= @(!inArgument1Selector.nowhere, !t, !inArgument1Name, !true)
+  !?ioUnifiedTypeMap.makeEntryFromString (inArgument1TypeName, ?let t)
+  argList ++= @(inArgument1Selector.nowhere, t, inArgument1Name, true)
   !?ioGetterMap.insertOrReplace
-    (!@lstring (!inGetterName, @location.here),
-    !@methodKind. definedAsMember,
-    !argList,
-    !@location.here,
-    !inHasCompilerArgument,
-    !returnedTypeIndex,
-    !@methodQualifier. isBasic,
-    !"" // func name is not obsolete, no replacement func
+    (@lstring (inGetterName, @location.here),
+    @methodKind. definedAsMember,
+    argList,
+    @location.here,
+    inHasCompilerArgument,
+    returnedTypeIndex,
+    @methodQualifier. isBasic,
+    "" // func name is not obsolete, no replacement func
   )
 }
 
@@ -274,19 +274,19 @@ proc enterBaseFinalGetterWithArgument
   ?returnedTypeName:let @string inReturnedTypeName,
   ?hasCompilerArgument:let @bool inHasCompilerArgument
  ) {
-  !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName, ?let returnedTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
   var @functionSignature argList = @()
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument1TypeName, ?let t)
-  argList ++= @(!"".nowhere, !t, !inArgument1Name, !true)
+  !?ioUnifiedTypeMap.makeEntryFromString (inArgument1TypeName, ?let t)
+  argList ++= @("".nowhere, t, inArgument1Name, true)
   !?ioGetterMap.insertOrReplace
-    (!@lstring (!inGetterName, @location.here),
-    !@methodKind. definedAsMember,
-    !argList,
-    !@location.here,
-    !inHasCompilerArgument,
-    !returnedTypeIndex,
-    !@methodQualifier. isBasicFinal,
-    !"" // func name is not obsolete, no replacement func
+    (@lstring (inGetterName, @location.here),
+    @methodKind. definedAsMember,
+    argList,
+    @location.here,
+    inHasCompilerArgument,
+    returnedTypeIndex,
+    @methodQualifier. isBasicFinal,
+    "" // func name is not obsolete, no replacement func
   )
 }
 
@@ -305,21 +305,21 @@ proc enterBaseGetterWith2Arguments
   ?returnedTypeName:let @string inReturnedTypeName,
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 ) {
-  !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName, ?let returnedTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
   var @functionSignature argList = @()
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument1TypeName, ?@unifiedTypeMapEntry t)
-  argList ++= @(!inArgument1Selector.nowhere, !t, !inArgument1Name, !true)
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument2TypeName, ?t)
-  argList ++= @(!inArgument2Selector.nowhere, !t, !inArgument2Name, !true)
+  !?ioUnifiedTypeMap.makeEntryFromString (inArgument1TypeName, ?@unifiedTypeMapEntry t)
+  argList ++= @(inArgument1Selector.nowhere, t, inArgument1Name, true)
+  !?ioUnifiedTypeMap.makeEntryFromString (inArgument2TypeName, ?t)
+  argList ++= @(inArgument2Selector.nowhere, t, inArgument2Name, true)
   !?ioGetterMap.insertOrReplace
-    (!@lstring (!inGetterName, @location.here),
-    !@methodKind. definedAsMember,
-    !argList,
-    !@location.here,
-    !inHasCompilerArgument,
-    !returnedTypeIndex,
-    !@methodQualifier. isBasic,
-    !"" // func name is not obsolete, no replacement func
+    (@lstring (inGetterName, @location.here),
+    @methodKind. definedAsMember,
+    argList,
+    @location.here,
+    inHasCompilerArgument,
+    returnedTypeIndex,
+    @methodQualifier. isBasic,
+    "" // func name is not obsolete, no replacement func
   )
 }
 
@@ -336,21 +336,21 @@ proc enterBaseFinalGetterWith2Arguments
   ?returnedTypeName:let @string inReturnedTypeName,
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 ) {
-  !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName, ?let returnedTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
   var @functionSignature argList = @()
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument1TypeName, ?@unifiedTypeMapEntry t)
-  argList ++= @(!"".nowhere, !t, !inArgument1Name, !true)
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument2TypeName, ?t)
-  argList ++= @(!"".nowhere, !t, !inArgument2Name, !true)
+  !?ioUnifiedTypeMap.makeEntryFromString (inArgument1TypeName, ?@unifiedTypeMapEntry t)
+  argList ++= @("".nowhere, t, inArgument1Name, true)
+  !?ioUnifiedTypeMap.makeEntryFromString (inArgument2TypeName, ?t)
+  argList ++= @("".nowhere, t, inArgument2Name, true)
   !?ioGetterMap.insertOrReplace
-    (!@lstring (!inGetterName, @location.here),
-    !@methodKind. definedAsMember,
-    !argList,
-    !@location.here,
-    !inHasCompilerArgument,
-    !returnedTypeIndex,
-    !@methodQualifier. isBasicFinal,
-    !"" // func name is not obsolete, no replacement func
+    (@lstring (inGetterName, @location.here),
+    @methodKind. definedAsMember,
+    argList,
+    @location.here,
+    inHasCompilerArgument,
+    returnedTypeIndex,
+    @methodQualifier. isBasicFinal,
+    "" // func name is not obsolete, no replacement func
   )
 }
 
@@ -369,23 +369,23 @@ proc enterBaseFinalGetterWith3Arguments
   ?returnedTypeName:let @string inReturnedTypeName,
   ?hasCompilerArgument:let @bool inHasCompilerArgument
 ) {
-  !?ioUnifiedTypeMap.makeEntryFromString (!inReturnedTypeName, ?let returnedTypeIndex)
+  !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
   var @functionSignature argList = @()
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument1TypeName, ?@unifiedTypeMapEntry t)
-  argList ++= @(!"".nowhere, !t, !inArgument1Name, !true)
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument2TypeName, ?t)
-  argList ++= @(!"".nowhere, !t, !inArgument2Name, !true)
-  !?ioUnifiedTypeMap.makeEntryFromString (!inArgument3TypeName, ?t)
-  argList ++= @(!"".nowhere, !t, !inArgument3Name, !true)
+  !?ioUnifiedTypeMap.makeEntryFromString (inArgument1TypeName, ?@unifiedTypeMapEntry t)
+  argList ++= @("".nowhere, t, inArgument1Name, true)
+  !?ioUnifiedTypeMap.makeEntryFromString (inArgument2TypeName, ?t)
+  argList ++= @("".nowhere, t, inArgument2Name, true)
+  !?ioUnifiedTypeMap.makeEntryFromString (inArgument3TypeName, ?t)
+  argList ++= @("".nowhere, t, inArgument3Name, true)
   !?ioGetterMap.insertOrReplace
-    (!@lstring (!inGetterName, @location.here),
-    !@methodKind. definedAsMember,
-    !argList,
-    !@location.here,
-    !inHasCompilerArgument,
-    !returnedTypeIndex,
-    !@methodQualifier. isBasicFinal,
-    !"" // func name is not obsolete, no replacement func
+    (@lstring (inGetterName, @location.here),
+    @methodKind. definedAsMember,
+    argList,
+    @location.here,
+    inHasCompilerArgument,
+    returnedTypeIndex,
+    @methodQualifier. isBasicFinal,
+    "" // func name is not obsolete, no replacement func
   )
 }
 

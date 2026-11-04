@@ -139,24 +139,24 @@ syntax extension galgas4InstructionsSyntax {
           if hasFixItRemove then
             warning .here : "duplicated action" fixit %remove
           else
-            outFixitListAST ++= @(!.fixItRemove)
+            outFixitListAST ++= @(.fixItRemove)
             hasFixItRemove = true
           end
         or
           $%replaceBy$
           let errorLocation = @location.here
           <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-          outFixitListAST ++= @(!.fixItReplace (!exp:expression, !errorLocation:errorLocation))
+          outFixitListAST ++= @(.fixItReplace (!exp:expression, !errorLocation:errorLocation))
         or
           $%insertAfter$
           let errorLocation = @location.here
           <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-          outFixitListAST ++= @(!.fixItInsertAfter (!exp:expression, !errorLocation:errorLocation))
+          outFixitListAST ++= @(.fixItInsertAfter (!exp:expression, !errorLocation:errorLocation))
         or
           $%insertBefore$
           let errorLocation = @location.here
           <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-          outFixitListAST ++= @(!.fixItInsertBefore (!exp:expression, !errorLocation:errorLocation))
+          outFixitListAST ++= @(.fixItInsertBefore (!exp:expression, !errorLocation:errorLocation))
         end
       while
         $,$
@@ -180,7 +180,7 @@ syntax extension galgas4InstructionsSyntax {
       $spoil$
       repeat
        $identifier$ (?let builtVariableName)
-       builtVariableList ++= @(!builtVariableName)
+       builtVariableList ++= @(builtVariableName)
       while
         $,$
       end
@@ -188,7 +188,7 @@ syntax extension galgas4InstructionsSyntax {
     <issue_fixit> (!?ioDeclarations, ?let @fixitListAST fixitListAST)
     $)$
     outInstruction = @errorInstructionAST (
-      !instructionLocation,
+      instructionLocation,
       mReceiverExpression,
       mErrorExpression,
       builtVariableList,
@@ -263,16 +263,16 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: inAnalysisContext.predefinedTypes.mLocationType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?outLocationExpression
   )
 //--- Check type
   checkAssignmentTypeWithImplicitGetterCall (
-    !inAnalysisContext.predefinedTypes.mLocationType,
-    !outLocationExpression.mResultType,
-    !inErrorLocation,
+    inAnalysisContext.predefinedTypes.mLocationType,
+    outLocationExpression.mResultType,
+    inErrorLocation,
     !?outLocationExpression
   )
 //--- Analyze message expression
@@ -280,7 +280,7 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: .null,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?outMessageExpression
@@ -290,13 +290,13 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
   for entry in inFixitListAST do
     switch entry.mElement
     case fixItRemove :
-      outFixitListForGeneration ++= @(!.fixItRemove)
+      outFixitListForGeneration ++= @(.fixItRemove)
     case fixItReplace (exp, errorLocation) :
       exp.analyzeSemanticExpression
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
         !inferenceType: inAnalysisContext.predefinedTypes.mStringListType,
-        !inAnalysisContext,
+        inAnalysisContext,
         !?ioTypeMap,
         !?ioVariableMap,
         ?let expression
@@ -309,13 +309,13 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
          + ", it should be an @string, @stringset, @stringlist or @lstringlist"
         )
       end
-      outFixitListForGeneration ++= @(!.fixItReplace (!exp:expression))
+      outFixitListForGeneration ++= @(.fixItReplace (!exp:expression))
     case fixItInsertBefore (exp, errorLocation) :
       exp.analyzeSemanticExpression
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
         !inferenceType: inAnalysisContext.predefinedTypes.mStringListType,
-        !inAnalysisContext,
+        inAnalysisContext,
         !?ioTypeMap,
         !?ioVariableMap,
         ?let expression
@@ -328,13 +328,13 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
          + ", it should be an @string, @stringset, @stringlist or @lstringlist"
         )
       end
-      outFixitListForGeneration ++= @(!.fixItInsertBefore (!exp:expression))
+      outFixitListForGeneration ++= @(.fixItInsertBefore (!exp:expression))
     case fixItInsertAfter (exp, errorLocation) :
       exp.analyzeSemanticExpression
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
         !inferenceType: inAnalysisContext.predefinedTypes.mStringListType,
-        !inAnalysisContext,
+        inAnalysisContext,
         !?ioTypeMap,
         !?ioVariableMap,
         ?let expression
@@ -347,7 +347,7 @@ proc analyzeErrorOrWarningInstruction (?let @lstring inUsefulnessCallerEntityNam
          + ", it should be an @string, @stringset, @stringlist or @lstringlist"
         )
       end
-      outFixitListForGeneration ++= @(!.fixItInsertAfter (!exp:expression))
+      outFixitListForGeneration ++= @(.fixItInsertAfter (!exp:expression))
     end
   end
 //--- Check message expression type is @string
@@ -370,15 +370,15 @@ override proc @errorInstructionAST.analyzeSemanticInstruction (
                         ?!@localVarManager ioVariableMap) {
 //---
   analyzeErrorOrWarningInstruction (
-    !inUsefulnessCallerEntityName,
+    inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
-    !self.mLocationExpression,
-    !self.mMessageExpression,
-    !self.mFixitListAST,
-    !self.mInstructionLocation,
-    !"error",
+    self.mLocationExpression,
+    self.mMessageExpression,
+    self.mFixitListAST,
+    self.mInstructionLocation,
+    "error",
     !?ioVariableMap,
     ?let locationExpression,
     ?let messageExpression,
@@ -388,11 +388,11 @@ override proc @errorInstructionAST.analyzeSemanticInstruction (
   var builtVariableCppNameList = @stringlist ()
   for entry in self.mBuiltVariableList do
     !?ioVariableMap.searchForWriteAccess (entry.mValue, ?*, ?let varCppName, ?*)
-    builtVariableCppNameList ++= @(!varCppName)
+    builtVariableCppNameList ++= @(varCppName)
   end
 //--- Generate instruction
-  ioInstructionListForGeneration ++= @(!@errorInstructionForGeneration (
-    !self.mInstructionLocation,
+  ioInstructionListForGeneration ++= @(@errorInstructionForGeneration (
+    self.mInstructionLocation,
     locationExpression,
     messageExpression,
     builtVariableCppNameList,
@@ -486,12 +486,12 @@ override proc @errorInstructionForGeneration.generateInstruction (?!@stringset i
     (!?ioInclusionSet,
     !?ioTemporaryVariableIndex,
     !?ioUnusedVariableCppNameSet,
-    !inGenerateSyntaxDirectedTranslationString,
+    inGenerateSyntaxDirectedTranslationString,
     !?ioGeneratedCode,
     ?let @string fixItArrayCppName
   )
 //--- Generate error instruction
-  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
   ioGeneratedCode += compilerCppName () + "->emitSemanticError ("
     + receiverCppVarName + ", "
     + messageCppVarName + ", "

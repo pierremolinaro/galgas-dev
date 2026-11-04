@@ -192,10 +192,10 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"hexStringSeparatedBy",
-      !"char",
-      !"inSeparator",
-      !"uint",
-      !"inGroupCount",
+      "char",
+      "inSeparator",
+      "uint",
+      "inGroupCount",
       !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
@@ -218,7 +218,7 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"isInRange", !"range", !"inRange",
+      !getterName:"isInRange", "range", "inRange",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -226,28 +226,28 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canAdd", !"uint", !"inOperand",
+      !getterName:"canAdd", "uint", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canSubstract", !"uint", !"inOperand",
+      !getterName:"canSubstract", "uint", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canMultiply", !"uint", !"inOperand",
+      !getterName:"canMultiply", "uint", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canDivide", !"uint", !"inOperand",
+      !getterName:"canDivide", "uint", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )

@@ -136,8 +136,8 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
     let endOfPrologue = @location.here
     $}$
     ioDeclarations.mPrologueDeclarationList ++= @(
-      !prologueInstructionList,
-      !endOfPrologue)
+      prologueInstructionList,
+      endOfPrologue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -151,8 +151,8 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
     let endOfPrologue = @location.here
     $}$
     ioDeclarations.mEpilogueDeclarationList ++= @(
-      !prologueInstructionList,
-      !endOfPrologue)
+      prologueInstructionList,
+      endOfPrologue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -199,13 +199,13 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
     let endOfInstructionList = @location.here
     $}$
     ioDeclarations.mSourceRuleList ++= @(
-      !mSourceFileExtension,
-      !mSourceFileHelp,
-      !mSourceFileVariableName,
-      !isUnused,
-      !referenceGrammar,
-      !mInstructionList,
-      !endOfInstructionList)
+      mSourceFileExtension,
+      mSourceFileHelp,
+      mSourceFileVariableName,
+      isUnused,
+      referenceGrammar,
+      mInstructionList,
+      endOfInstructionList)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

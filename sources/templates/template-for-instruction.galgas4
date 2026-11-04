@@ -56,7 +56,7 @@ syntax extension templateSyntax {
       error (count: "this value should be > 0")
     end
     loop (n) while n > 0 do
-      ioElementList ++= @(!"".nowhere)
+      ioElementList ++= @("".nowhere)
       n -= 1
     end
   }
@@ -65,14 +65,14 @@ syntax extension templateSyntax {
 
   rule <for_instruction_element> (?!@lstringlist ioElementList ) {
     $*$
-    ioElementList ++= @(!"".nowhere)
+    ioElementList ++= @("".nowhere)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_element> (?!@lstringlist ioElementList ) {
     $identifier$ (?let constantName)
-    ioElementList ++= @(!constantName)
+    ioElementList ++= @(constantName)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -95,7 +95,7 @@ syntax extension templateSyntax {
       $:$
       let startLocation = @location.here
       $identifier$ (?let @lstring prefixString)
-      error (prefixString.location.union (!startLocation)
+      error (prefixString.location.union (startLocation)
       : "useless prefix" fixit %replaceBy "")
     end
   }
@@ -130,7 +130,7 @@ syntax extension templateSyntax {
     $do$
     let @lstring indexIdentifier
     select
-      indexIdentifier = @lstring (!"", @location.here)
+      indexIdentifier = @lstring ("", @location.here)
     or
       $($
       $identifier$ (? indexIdentifier)
@@ -166,8 +166,8 @@ syntax extension templateSyntax {
     end
   //---
     $end$
-    ioResultingInstructionList ++= @(!@templateInstructionForeachAST (
-      !ascending,
+    ioResultingInstructionList ++= @(@templateInstructionForeachAST (
+      ascending,
       expression,
       enumeration,
       endOfProperties,
@@ -196,9 +196,9 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
 ) {
 //--- Foreach expression
   self.mExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?let expression
   )
@@ -210,11 +210,11 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
 //--- Before instructions
   var beforeInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
-    !inUsefulnessCallerEntityName,
+    inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
-    !self.mBeforeInstructionList,
+    self.mBeforeInstructionList,
     !?beforeInstructionList
   )
 //--- Do instructions
@@ -223,7 +223,7 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
   let cppIndexVarName = "index_" + self.mIndexIdentifier.location.startLocationIndex.string
     + "_" + self.mIndexIdentifier.string.identifierRepresentation
   if self.mIndexIdentifier.string != "" then
-    !?doVariableMap.insertKey (!self.mIndexIdentifier, !inAnalysisContext.mPredefinedTypes.mUIntType, !cppIndexVarName)
+    !?doVariableMap.insertKey (self.mIndexIdentifier, inAnalysisContext.mPredefinedTypes.mUIntType, cppIndexVarName)
   end
   if self.mEnumeration.count != enumerationDescriptor.count then
     error (self.mEndOfProperties
@@ -235,48 +235,48 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
       if mValue.string != "" then // Empty string for joker
         !?doVariableMap.insertKey (
           mValue,
-          !entry.mEnumeratedType,
-          !enumeratorCppName +".current_" + entry.mEnumerationName.identifierRepresentation + " (HERE)"
+          entry.mEnumeratedType,
+          enumeratorCppName +".current_" + entry.mEnumerationName.identifierRepresentation + " (HERE)"
         )
       end
     end
   end
   let doAnalysisContext = @templateAnalysisContext (
-    !inAnalysisContext.mSemanticContext,
+    inAnalysisContext.mSemanticContext,
     inAnalysisContext.mPredefinedTypes,
     doVariableMap)
   var doInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
-    !inUsefulnessCallerEntityName,
+    inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !doAnalysisContext,
+    doAnalysisContext,
     !?ioTypeMap,
-    !self.mDoInstructionList,
+    self.mDoInstructionList,
     !?doInstructionList
   )
 //--- Between instructions
   var betweenInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
-    !inUsefulnessCallerEntityName,
+    inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
-    !self.mBetweenInstructionList,
+    self.mBetweenInstructionList,
     !?betweenInstructionList
   )
 //--- After instructions
   var afterInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
-    !inUsefulnessCallerEntityName,
+    inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
-    !self.mAfterInstructionList,
+    self.mAfterInstructionList,
     !?afterInstructionList
   )
 //---
-  ioInstructionList ++= @(!@templateInstructionForeachForGeneration (
-    !self.mIsAscending,
+  ioInstructionList ++= @(@templateInstructionForeachForGeneration (
+    self.mIsAscending,
     expression,
     enumeratorCppName,
     beforeInstructionList,
@@ -318,7 +318,7 @@ override proc @templateInstructionForeachForGeneration.templateCodeGeneration
   end
 //---
   ioGeneratedCode += "if (" + foreachVarCppName + ".isValid ()) {\n"
-  !?ioGeneratedCode.incIndentation (!2)
+  !?ioGeneratedCode.incIndentation (2)
   ioGeneratedCode += if self.mIsAscending then "Up" else "Down" end
   ioGeneratedCode += "Enumerator_" + self.mExpression.mResultType.identifierRepresentation
   ioGeneratedCode += " " + self.mEnumeratorCppName + " (" + foreachVarCppName + ") ;\n"
@@ -328,23 +328,23 @@ override proc @templateInstructionForeachForGeneration.templateCodeGeneration
   end
   if self.mBeforeInstructionList.count > 0 then
     ioGeneratedCode += "if (nonEmpty_" + self.mEnumeratorCppName + ") {\n"
-    !?ioGeneratedCode.incIndentation (!2)
+    !?ioGeneratedCode.incIndentation (2)
     templateCodeGenerationForListInstruction (
-      !self.mBeforeInstructionList,
+      self.mBeforeInstructionList,
       !?ioGeneratedCode,
       !?ioInclusionSet,
       !?ioTemporaryVariableIndex,
       !?ioUnusedVariableCppNameSet,
       !?ioUseColumnMarker
     )
-    !?ioGeneratedCode.decIndentation (!2)
+    !?ioGeneratedCode.decIndentation (2)
     ioGeneratedCode += "}\n"
   end
   ioGeneratedCode += "while (" + self.mEnumeratorCppName + ".hasCurrentObject ()) {\n"
-  !?ioGeneratedCode.incIndentation (!2)
+  !?ioGeneratedCode.incIndentation (2)
 //--- Do
   templateCodeGenerationForListInstruction (
-    !self.mDoInstructionList,
+    self.mDoInstructionList,
     !?ioGeneratedCode,
     !?ioInclusionSet,
     !?ioTemporaryVariableIndex,
@@ -356,41 +356,41 @@ override proc @templateInstructionForeachForGeneration.templateCodeGeneration
 //--- Between
   if self.mBetweenInstructionList.count > 0 then
     ioGeneratedCode += "if (" + self.mEnumeratorCppName + ".hasCurrentObject ()) {\n"
-    !?ioGeneratedCode.incIndentation (!2)
+    !?ioGeneratedCode.incIndentation (2)
     templateCodeGenerationForListInstruction (
-      !self.mBetweenInstructionList,
+      self.mBetweenInstructionList,
       !?ioGeneratedCode,
       !?ioInclusionSet,
       !?ioTemporaryVariableIndex,
       !?ioUnusedVariableCppNameSet,
       !?ioUseColumnMarker
     )
-    !?ioGeneratedCode.decIndentation (!2)
+    !?ioGeneratedCode.decIndentation (2)
     ioGeneratedCode += "}\n"
   end
 //--- Index
   if self.mIndexCppName.count > 0 then
     ioGeneratedCode += self.mIndexCppName + ".increment () ;\n"
   end
-  !?ioGeneratedCode.decIndentation (!2)
+  !?ioGeneratedCode.decIndentation (2)
   ioGeneratedCode += "}\n"
 //--- After
   if self.mAfterInstructionList.count > 0 then
     ioGeneratedCode += "if (nonEmpty_" + self.mEnumeratorCppName + ") {\n"
-    !?ioGeneratedCode.incIndentation (!2)
+    !?ioGeneratedCode.incIndentation (2)
     templateCodeGenerationForListInstruction (
-      !self.mAfterInstructionList,
+      self.mAfterInstructionList,
       !?ioGeneratedCode,
       !?ioInclusionSet,
       !?ioTemporaryVariableIndex,
       !?ioUnusedVariableCppNameSet,
       !?ioUseColumnMarker
     )
-    !?ioGeneratedCode.decIndentation (!2)
+    !?ioGeneratedCode.decIndentation (2)
     ioGeneratedCode += "}\n"
   end
 //---
-  !?ioGeneratedCode.decIndentation (!2)
+  !?ioGeneratedCode.decIndentation (2)
   ioGeneratedCode += "}\n"
 }
 

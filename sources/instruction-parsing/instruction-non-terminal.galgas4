@@ -64,7 +64,7 @@ syntax extension galgas4SyntaxComponentSyntax {
       <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationResult)
     end
     outInstruction = @nonterminalCallInstruction (
-      !mNonterminalName.location,
+      mNonterminalName.location,
       mNonterminalName,
       mActualParameterList,
       grammarInstructionSyntaxDirectedTranslationResult
@@ -91,9 +91,9 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
                     ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
                     ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex,
                     ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList ) {
-    inNonTerminalSymbolMap.searchKey (!self.mNonterminalName, ?let nonTerminalSymbolIndex, ?*)
-    ioSyntaxInstructionList ++= @(!@nonTerminalInstructionForGrammarAnalysis (
-      !self.mInstructionLocation,
+    inNonTerminalSymbolMap.searchKey (self.mNonterminalName, ?let nonTerminalSymbolIndex, ?*)
+    ioSyntaxInstructionList ++= @(@nonTerminalInstructionForGrammarAnalysis (
+      self.mInstructionLocation,
       self.mNonterminalName,
       nonTerminalSymbolIndex
     ))
@@ -114,32 +114,32 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
                                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                                             ?!@localVarManager ioVariableMap,
                                             ?!@uint unused ioSelectMethodCount ) {
-    inNonterminalMap.searchKey (!self.mNonterminalName, ?let @nonterminalLabelMap labelMap)
+    inNonterminalMap.searchKey (self.mNonterminalName, ?let @nonterminalLabelMap labelMap)
     let @formalParameterSignature signature
-    labelMap.searchKey (!"".nowhere, ?*, ?signature, ?*)
+    labelMap.searchKey ("".nowhere, ?*, ?signature, ?*)
   //--- call arguments
     self.mActualParameterList.analyzeRoutineArguments
-      (!inUsefulnessCallerEntityName,
+      (inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
-      !self.mNonterminalName,
+      self.mNonterminalName,
       !invokedEntityNameForErrorSignaling: "'<" + self.mNonterminalName + ">' nonterminal declaration",
-      !signature,
+      signature,
       !?ioVariableMap,
       !?ioInstructionListForGeneration,
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     )
   //--- Check syntax directed translation destination variable
     self.mGrammarInstructionSyntaxDirectedTranslationResult.analyzeSDT
-      (!inAnalysisContext,
+      (inAnalysisContext,
       !?ioTypeMap,
-      !inHasTranslateFeature,
+      inHasTranslateFeature,
       !?ioVariableMap
     )
   //--- Generate instructions
-    ioInstructionListForGeneration ++= @(!@nonterminalInstructionForGeneration (
-      !self.mInstructionLocation,
+    ioInstructionListForGeneration ++= @(@nonterminalInstructionForGeneration (
+      self.mInstructionLocation,
       self.mNonterminalName.string,
       "",
       actualParameterListForGeneration,
@@ -170,8 +170,8 @@ override proc @nonterminalInstructionForGeneration.appendSyntaxSignature
   (?let @string inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 ) {
-  ioInstructionListForGeneration ++= @(!@nonterminalInstructionForGeneration (
-    !self.mInstructionLocation,
+  ioInstructionListForGeneration ++= @(@nonterminalInstructionForGeneration (
+    self.mInstructionLocation,
     self.mNonterminalName,
     inPosfix,
     @actualParameterListForGeneration (),
@@ -229,7 +229,7 @@ override proc @nonterminalInstructionForGeneration.generateInstruction (?!@strin
       !?ioUnusedVariableCppNameSet,
       ?let @string parameterCppName
     )
-    parameterCppNameList ++= @(!parameterCppName)
+    parameterCppNameList ++= @(parameterCppName)
   end
 //--- Generate proc call
   let sdtResultVarName = "syntaxDirectedTranslationResult_" + self.mInstructionLocation.startLocationIndex
@@ -243,11 +243,11 @@ override proc @nonterminalInstructionForGeneration.generateInstruction (?!@strin
   if inGenerateSyntaxDirectedTranslationString then
     ioGeneratedCode += sdtResultVarName + ", "
   end
-  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
   ioGeneratedCode +=  compilerCppName () + ") ;\n"
   self.mGrammarInstructionSyntaxDirectedTranslationResult.generateCode
-    (!inGenerateSyntaxDirectedTranslationString,
-    !sdtResultVarName,
+    (inGenerateSyntaxDirectedTranslationString,
+    sdtResultVarName,
     !?ioUnusedVariableCppNameSet,
     !?ioGeneratedCode
   )

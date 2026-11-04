@@ -48,7 +48,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     let instructionLocation = @location.here
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST sentExpression)
     outInstruction = @syntaxSendInstructionAST (
-      !instructionLocation,
+      instructionLocation,
       sentExpression
     )
   }
@@ -98,7 +98,7 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
       (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inferenceType: @unifiedTypeMapEntry.null,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !?ioVariableMap,
       ?let @semanticExpressionForGeneration expression
@@ -108,8 +108,8 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
       error (self.mInstructionLocation: "'send' expresion should be an @string expression")
     end
   //---
-    ioInstructionListForGeneration ++= @(!@syntaxSendInstructionForGeneration (
-      !self.mInstructionLocation,
+    ioInstructionListForGeneration ++= @(@syntaxSendInstructionForGeneration (
+      self.mInstructionLocation,
       expression
     ))
   }
@@ -140,7 +140,7 @@ final class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneratio
       ?let @string sourceVar
     )
   //---
-    !?ioUnusedVariableCppNameSet.removeKey (!syntaxDirectedTranslationResultVarName ())
+    !?ioUnusedVariableCppNameSet.removeKey (syntaxDirectedTranslationResultVarName ())
     ioGeneratedCode += "if (" + sourceVar + ".isValid ()) {\n"
     ioGeneratedCode += "  " + syntaxDirectedTranslationResultVarName ()
     ioGeneratedCode += ".appendString (" + sourceVar + ".stringValue ()) ;\n"

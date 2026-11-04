@@ -76,11 +76,11 @@ syntax extension galgas4InstructionsSyntax {
     end
     $identifier$ (?let @lstring mActionName) indexing (routineDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST mFormalParameterList)
-    ioDeclarations.mDeclarationList ++= @(!@externProcedureDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(@externProcedureDeclarationAST (
       !isPredefined: false,
       !isFilePrivate: false,
-      !mActionName,
-      !mFormalParameterList,
+      mActionName,
+      mFormalParameterList,
       !usefullProcedure: isUsefull
     ))
   }
@@ -129,18 +129,18 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
   //--- Build signature
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
-      !?ioTypeMap.makeEntry (!argument.mFormalArgumentTypeName, ?let parameterTypeIndex)
+      !?ioTypeMap.makeEntry (argument.mFormalArgumentTypeName, ?let parameterTypeIndex)
       routineSignature ++= @(
-        !argument.mFormalSelector,
-        !parameterTypeIndex,
-        !argument.mFormalArgumentPassingMode,
-        !argument.mFormalArgumentName.string
+        argument.mFormalSelector,
+        parameterTypeIndex,
+        argument.mFormalArgumentPassingMode,
+        argument.mFormalArgumentName.string
       )
     end
   //--- Enter routine in routine map
     !?ioSemanticContext.routineMap.insertKey (
-      !self.mRoutineName,
-      !routineSignature,
+      self.mRoutineName,
+      routineSignature,
       !isFilePrivate: self.isFilePrivate
     )
   }
@@ -160,22 +160,22 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
     for argument in self.mFormalArgumentListAST do
       let parameterType = ioTypeMap.typeMapEntryForLKey (argument.mFormalArgumentTypeName)
       formalArgumentList ++= @(
-        !argument.mFormalSelector,
-        !argument.mFormalArgumentPassingMode,
-        !parameterType,
-        !argument.mFormalArgumentName,
-        !argument.mFormalArgumentName.string
+        argument.mFormalSelector,
+        argument.mFormalArgumentPassingMode,
+        parameterType,
+        argument.mFormalArgumentName,
+        argument.mFormalArgumentName.string
       )
       routineSignature ++= @(
-        !argument.mFormalSelector,
-        !parameterType,
-        !argument.mFormalArgumentPassingMode,
-        !argument.mFormalArgumentName.string
+        argument.mFormalSelector,
+        parameterType,
+        argument.mFormalArgumentPassingMode,
+        argument.mFormalArgumentName.string
       )
     end
-    let mangledName = routineMangledName (!self.mRoutineName, !routineSignature)
+    let mangledName = routineMangledName (self.mRoutineName, routineSignature)
   //--- Useful entities graph
-    let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!mangledName)
+    let nameForUsefulness = procedureNameForUsefulEntitiesGraph (mangledName)
     !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
     if self.usefullProcedure then
       ioUsefulnessRootEntities ++= @(nameForUsefulness)
@@ -183,11 +183,11 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
   //---
     ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "proc " + mangledName,
-      !@routinePrototypeDeclarationForGeneration (
+      @routinePrototypeDeclarationForGeneration (
         !generateHeader: true,
         !implementationCppFileName: "proc-" + mangledName.string.fileNameRepresentation,
         !routineMangledName: mangledName.string, // self.mRoutineName.string
-        !formalArgumentList
+        formalArgumentList
       )
     )
   }
@@ -217,8 +217,8 @@ class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeader
   override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
                                     !@string outHeader) {
     outHeader = filewrapper [semanticComponentGenerationTemplate.routineDeclaration:
-      !self.routineMangledName,
-      !self.mFormalArgumentList
+      self.routineMangledName,
+      self.mFormalArgumentList
     ]
   }
 

@@ -81,15 +81,15 @@ syntax extension galgas4DeclarationsSyntax {
     while
       $case$
       $identifier$ (?let slotName)
-      slotList ++= @(!slotName)
+      slotList ++= @(slotName)
     while
-      <method_declaration> (!boolsetTypeName, !?ioDeclarations)
+      <method_declaration> (boolsetTypeName, !?ioDeclarations)
     end
     $}$
     if slotList.count == 0 then
       error (boolsetTypeName : "a boolset type must define at least one case constant")
     end
-    ioDeclarations.mDeclarationList ++= @(!@boolsetDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(@boolsetDeclarationAST (
       !isPredefined: false,
       boolsetTypeName,
       slotList,
@@ -124,8 +124,8 @@ override proc @boolsetDeclarationAST.enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 ) {
-  let key = @lstring (!"@" + self.mBoolsetTypeName, self.mBoolsetTypeName.location)
-  !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
+  let key = @lstring ("@" + self.mBoolsetTypeName, self.mBoolsetTypeName.location)
+  !?ioSemanticTypePrecedenceGraph.addNode (key, self)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -157,7 +157,7 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
     slotNameSet ++= slotName.mValue
   end
 //--- boolset type index
-  !?ioTypeMap.makeEntry (!self.mBoolsetTypeName, ?let boolsetTypeIndex)
+  !?ioTypeMap.makeEntry (self.mBoolsetTypeName, ?let boolsetTypeIndex)
 //--- Getters
   commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap)
   enterBaseGetterWithArgument (
@@ -173,28 +173,28 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
 //--- class functions
   var @classFunctionMap classFunctionMap = @()
   for slotName in self.mFlagList do
-    if not classFunctionMap.hasKey (!slotName.mValue) then
-      !?classFunctionMap.insertKey (!slotName.mValue, @(), !false, !boolsetTypeIndex)
+    if not classFunctionMap.hasKey (slotName.mValue) then
+      !?classFunctionMap.insertKey (slotName.mValue, @(), false, boolsetTypeIndex)
     end
   end
 //--- Add initializer without argument
   var @initializerMap initializerMap = @()
   let @functionSignature emptyArgumentList = @()
   !?initializerMap.insertKey
-    (!@(!emptyArgumentList.initializerSignature, self.mBoolsetTypeName),
-    !emptyArgumentList
+    (@(emptyArgumentList.initializerSignature, self.mBoolsetTypeName),
+    emptyArgumentList
   )
 //--- Add extensions
   var @setterMap setterMap = @()
   var @instanceMethodMap instanceMethodMap = @()
   addExtensions (
-    !inExtensionInitializerMapForBuildingContext,
-    !inExtensionMethodMapForBuildingContext,
-    !inExtensionGetterMapForBuildingContext,
-    !inExtensionSetterMapForBuildingContext,
+    inExtensionInitializerMapForBuildingContext,
+    inExtensionMethodMapForBuildingContext,
+    inExtensionGetterMapForBuildingContext,
+    inExtensionSetterMapForBuildingContext,
     !?ioSemanticContext,
     !?ioTypeMap,
-    !self.mBoolsetTypeName,
+    self.mBoolsetTypeName,
     !isClass: false,
     !?initializerMap,
     !?getterMap,
@@ -215,7 +215,7 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
   end
   handleEquatableComparableExtension (
     !?ioEquatableExtensionMap,
-    !self.mBoolsetTypeName,
+    self.mBoolsetTypeName,
     !?features,
     !acceptEquatable: true,
     !acceptComparable: true
@@ -248,7 +248,7 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
     !headerFileName: "boolset-" + self.mBoolsetTypeName.string.fileNameRepresentation,
     !headerKind: .oneHeader
   )
-  !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
+  !?ioTypeMap.insertType (typeDefinition.typeName, typeDefinition)
 }
 
 
@@ -267,29 +267,29 @@ override proc @boolsetDeclarationAST.semanticAnalysis
 ) {
 //--- Check flags count
   if self.mFlagList.count > 64 then
-    let @location s = self.mFlagList.mValueAtIndex (!64)
+    let @location s = self.mFlagList.mValueAtIndex (64)
     error (s : "max flags count is 64 (here: " + self.mFlagList.count + ")")
   end
 //--- Useful entities graph
-  let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mBoolsetTypeName)
-  !?ioUsefulEntitiesGraph.addNode (!boolsetNameForUsefulness, !boolsetNameForUsefulness)
+  let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mBoolsetTypeName)
+  !?ioUsefulEntitiesGraph.addNode (boolsetNameForUsefulness, boolsetNameForUsefulness)
   if self.isPredefined  then
-    ioUsefulnessRootEntities ++= @(!boolsetNameForUsefulness)
+    ioUsefulnessRootEntities ++= @(boolsetNameForUsefulness)
   end
 //--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
-    !self.mBoolsetTypeName,
-    !@formalInputParameterListAST ().initializerSignature
+    self.mBoolsetTypeName,
+    @formalInputParameterListAST ().initializerSignature
   )
-  !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness, !initializerNameForUsefulness)
+  !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
   if self.isPredefined  then
-    ioUsefulnessRootEntities ++= @(!initializerNameForUsefulness)
+    ioUsefulnessRootEntities ++= @(initializerNameForUsefulness)
   end
 //---
   ioSemanticDeclarationListForGeneration ++= @(
     !infoMessage: "boolset " + self.mBoolsetTypeName,
-    !@boolsetTypeForGeneration (
-      !ioTypeMap.typeMapEntryForLKey (!self.mBoolsetTypeName),
+    @boolsetTypeForGeneration (
+      ioTypeMap.typeMapEntryForLKey (self.mBoolsetTypeName),
       self.mFlagList,
       self.isEquatable
     ))

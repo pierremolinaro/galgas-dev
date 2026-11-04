@@ -13,7 +13,7 @@ override func @B_B.aReader( ?var @uint inA, ?let @string inB) -> @string {
 
 func @B_B.otherReader( ?var @uint inA, ?let @string inB) -> @string {
   inA += 1
-  result = inB + inA + self.aReader (inA, !inB) + self.aReader (inA, !inB)
+  result = inB + inA + self.aReader (inA, inB) + self.aReader (inA, inB)
 }
 
 abstract func @A_A.location() -> @location
@@ -27,7 +27,7 @@ func @uint.carré () -> @uint {
 proc testsuite_extension_readers() {
   println ("*************************************** begin of extension reader test")
   let @B_B b = @()
-  let @string s = b.otherReader (!2, !"-")
+  let @string s = b.otherReader (2, "-")
   log s
   if false then
     error (b : "non displayed message")

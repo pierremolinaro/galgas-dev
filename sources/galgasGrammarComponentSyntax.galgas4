@@ -240,9 +240,9 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     let @lbool hasIndexing
     select
-      hasIndexing = @lbool (!false, @location.here)
+      hasIndexing = @lbool (false, @location.here)
     or
-      hasIndexing = @lbool (!true, @location.here)
+      hasIndexing = @lbool (true, @location.here)
       $indexing$
     end
     $grammar$
@@ -268,12 +268,12 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
   //--- Root symbol
     $<non_terminal>$ (?let @lstring startSymbol) indexing (ruleReference)
     var mLabelList = @nonTerminalLabelListAST ()
-    <grammar_start_symbol_label> (!?ioDeclarations, !@lstring (!"", @location.here), !?mLabelList)
+    <grammar_start_symbol_label> (!?ioDeclarations, @lstring ("", @location.here), !?mLabelList)
     repeat
     while
       $label$
       $identifier$ (?let @lstring labelName)
-      <grammar_start_symbol_label> (!?ioDeclarations, !labelName, !?mLabelList)
+      <grammar_start_symbol_label> (!?ioDeclarations, labelName, !?mLabelList)
      end
   //--- Unused non terminal symbols
     var mUnusedNonterminalList = @lstringlist ()
@@ -310,7 +310,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     or
       repeat
         <label_formal_parameter> (!?ioDeclarations, ?let argumentName, !?formalParameterList)
-        if argumentNameSet.hasKey (!argumentName.string) then
+        if argumentNameSet.hasKey (argumentName.string) then
           error (argumentName: "there is already an argument named '" + argumentName + "'")
         end
         argumentNameSet ++= argumentName.string
@@ -336,11 +336,11 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     end
     $identifier$ (?outArgumentName)
     ioStartSymbolLabelFormalParameterList ++= @(
-      !selector,
-      !.argumentVarIn,
-      !typeName,
-      !outArgumentName,
-      !false
+      selector,
+      .argumentVarIn,
+      typeName,
+      outArgumentName,
+      false
     )
   }
 
@@ -358,11 +358,11 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     end
     $identifier$ (?outArgumentName)
     ioStartSymbolLabelFormalParameterList ++= @(
-      !selector,
-      !.argumentConstantIn,
-      !typeName,
-      !outArgumentName,
-      !false
+      selector,
+      .argumentConstantIn,
+      typeName,
+      outArgumentName,
+      false
     )
   }
 
@@ -380,11 +380,11 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     end
     $identifier$ (?outArgumentName)
     ioStartSymbolLabelFormalParameterList++= @(
-      !selector,
-      !.argumentConstantIn,
-      !typeName,
-      !outArgumentName,
-      !false
+      selector,
+      .argumentConstantIn,
+      typeName,
+      outArgumentName,
+      false
     )
   }
 
@@ -403,11 +403,11 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     end
     $identifier$ (?outArgumentName)
     ioStartSymbolLabelFormalParameterList ++= @(
-      !selector,
-      !.argumentConstantIn,
-      !typeName,
-      !outArgumentName,
-      !false
+      selector,
+      .argumentConstantIn,
+      typeName,
+      outArgumentName,
+      false
     )
   }
 
@@ -424,11 +424,11 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     end
     $identifier$ (?outArgumentName)
     ioStartSymbolLabelFormalParameterList++= @(
-      !selector,
-      !.argumentInOut,
-      !typeName,
-      !outArgumentName,
-      !false
+      selector,
+      .argumentInOut,
+      typeName,
+      outArgumentName,
+      false
     )
   }
 
@@ -446,11 +446,11 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     end
     $identifier$ (?outArgumentName)
     ioStartSymbolLabelFormalParameterList ++= @(
-      !selector,
-      !.argumentInOut,
-      !typeName,
-      !outArgumentName,
-      !false
+      selector,
+      .argumentInOut,
+      typeName,
+      outArgumentName,
+      false
     ) 
   }
 
@@ -463,11 +463,11 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     <type_definition> (!?ioDeclarations, ?let @lstring typeName)
     $identifier$ (?outArgumentName)
     ioStartSymbolLabelFormalParameterList++= @(
-      !selector,
-      !.argumentOut,
-      !typeName,
-      !outArgumentName,
-      !false
+      selector,
+      .argumentOut,
+      typeName,
+      outArgumentName,
+      false
     )
   }
 

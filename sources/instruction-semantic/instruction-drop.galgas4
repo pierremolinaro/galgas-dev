@@ -62,11 +62,11 @@ syntax extension galgas4InstructionsSyntax {
     var @lstringlist dropList = @()
     repeat
       $identifier$ (?let variableName)
-      dropList ++= @(!variableName)
+      dropList ++= @(variableName)
     while
       $,$
     end
-    outInstruction = @dropInstructionAST (!instructionLocation, dropList)
+    outInstruction = @dropInstructionAST (instructionLocation, dropList)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

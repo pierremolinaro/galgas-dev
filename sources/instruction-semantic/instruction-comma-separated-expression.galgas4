@@ -110,7 +110,7 @@ syntax extension galgas4InstructionsSyntax {
         <expression_or> (!?ioDeclarations, ?let expression)
         let endOfReceiverExpression = @location.here
         select
-          outExpressionList ++= @(!.letVarExp (
+          outExpressionList ++= @(.letVarExp (
             !varName: varName,
             !isConstant: isConstant,
             !exp: expression,
@@ -120,7 +120,7 @@ syntax extension galgas4InstructionsSyntax {
         or
           $as$
           <type_definition> (!?ioDeclarations, ?let typeName)
-          outExpressionList ++= @(!.letVarExp (
+          outExpressionList ++= @(.letVarExp (
             !varName: varName,
             !isConstant: isConstant,
             !exp: expression,
@@ -130,7 +130,7 @@ syntax extension galgas4InstructionsSyntax {
         end
       or
         <expression> (!?ioDeclarations, ?let expression)
-        outExpressionList ++= @(!.regularExp (!exp: expression, !endOfExp: .here))
+        outExpressionList ++= @(.regularExp (!exp: expression, !endOfExp: .here))
       end
     while
       $,$
@@ -168,7 +168,7 @@ list @CommaSeparatedExpressionList {
         exp.enterExpressionInSemanticContext (!?ioTypeMap)
       case letVarExp (2*, exp, *, @lstring typeName) :
         exp.enterExpressionInSemanticContext (!?ioTypeMap)
-        !?ioTypeMap.makeEntry (!typeName, ?*)
+        !?ioTypeMap.makeEntry (typeName, ?*)
       end
     end
   }
@@ -189,18 +189,18 @@ list @CommaSeparatedExpressionList {
           (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
           !?ioUsefulEntitiesGraph,
           !inferenceType: .null,
-          !inAnalysisContext,
+          inAnalysisContext,
           !?ioTypeMap,
           !?ioVariableMap,
           ?let analyzed_if_expression
         )
         checkExpressionIsBoolean (
-          !inAnalysisContext,
-          !endOfExpression,
-          !analyzed_if_expression,
+          inAnalysisContext,
+          endOfExpression,
+          analyzed_if_expression,
           ?let if_expression
         )
-        outTestListForGeneration ++= @(!.regular (!exp: if_expression))
+        outTestListForGeneration ++= @(.regular (!exp: if_expression))
         !?ioVariableMap.openOverrideForSelectBlock ()
         !?ioVariableMap.openBranch ()
       case letVarExp (varName, isConstant, exp, *, @lstring typeName) :
@@ -208,7 +208,7 @@ list @CommaSeparatedExpressionList {
           (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
           !?ioUsefulEntitiesGraph,
           !inferenceType: .null,
-          !inAnalysisContext,
+          inAnalysisContext,
           !?ioTypeMap,
           !?ioVariableMap,
           ?let analyzedExpression
@@ -225,24 +225,24 @@ list @CommaSeparatedExpressionList {
           if varName.string != "" then
             if isConstant then
               !?ioVariableMap.insertInitializedLocalConstant
-                (!varName,
-                !unwrappedType,
-                !targetVariableCppName,
-                !targetVariableCppName
+                (varName,
+                unwrappedType,
+                targetVariableCppName,
+                targetVariableCppName
               )
             else
               !?ioVariableMap.insertInitializedLocalVariable
-                (!varName,
+                (varName,
                 !warnsIfNotMutated: true,
-                !unwrappedType,
-                !targetVariableCppName,
-                !targetVariableCppName
+                unwrappedType,
+                targetVariableCppName,
+                targetVariableCppName
               )
             end
           end
           castType = unwrappedType
           testType = analyzedExpression.mResultType
-          outTestListForGeneration ++= @(!.optionalExp (
+          outTestListForGeneration ++= @(.optionalExp (
             !targetVarCppName: targetVariableCppName,
             !isConstant: isConstant,
             !exp: analyzedExpression,
@@ -253,7 +253,7 @@ list @CommaSeparatedExpressionList {
           if typeName.string == "" then
             error (typeName.location : "on a class object, the 'as' clause is required" spoil castType, testType)
           else
-            castType = ioTypeMap.typeMapEntryForLKey (!typeName)
+            castType = ioTypeMap.typeMapEntryForLKey (typeName)
             testType = castType
           //--- Check expression type is a descendant of named type
             var @unifiedTypeMapEntry t = castType
@@ -278,22 +278,22 @@ list @CommaSeparatedExpressionList {
           if varName.string != "" then
              if isConstant then
               !?ioVariableMap.insertInitializedLocalConstant
-                (!varName,
-                !castType,
-                !targetVariableCppName,
-                !targetVariableCppName
+                (varName,
+                castType,
+                targetVariableCppName,
+                targetVariableCppName
               )
             else
               !?ioVariableMap.insertInitializedLocalVariable
-                (!varName,
+                (varName,
                 !warnsIfNotMutated: true,
-                !castType,
-                !targetVariableCppName,
-                !targetVariableCppName
+                castType,
+                targetVariableCppName,
+                targetVariableCppName
               )
             end
           end
-          outTestListForGeneration ++= @(!.letVarExp (
+          outTestListForGeneration ++= @(.letVarExp (
             !targetVarCppName: targetVariableCppName,
             !exp: analyzedExpression,
             !targetType: castType,
@@ -303,7 +303,7 @@ list @CommaSeparatedExpressionList {
           if typeName.string == "" then
             castType = weakRefType.referenceType
           else
-            castType = ioTypeMap.typeMapEntryForLKey (!typeName)
+            castType = ioTypeMap.typeMapEntryForLKey (typeName)
           end
           testType = castType
           var @unifiedTypeMapEntry t = castType
@@ -337,22 +337,22 @@ list @CommaSeparatedExpressionList {
           if varName.string != "" then
            if isConstant then
               !?ioVariableMap.insertInitializedLocalConstant
-                (!varName,
-                !castType,
-                !targetVariableCppName,
-                !targetVariableCppName
+                (varName,
+                castType,
+                targetVariableCppName,
+                targetVariableCppName
               )
             else
               !?ioVariableMap.insertInitializedLocalVariable
-                (!varName,
+                (varName,
                 !warnsIfNotMutated: true,
-                !castType,
-                !targetVariableCppName,
-                !targetVariableCppName
+                castType,
+                targetVariableCppName,
+                targetVariableCppName
               )
             end
           end
-          outTestListForGeneration ++= @(!.letVarExp (
+          outTestListForGeneration ++= @(.letVarExp (
             !targetVarCppName: targetVariableCppName,
             !exp: analyzedExpression,
             !targetType: castType,
@@ -409,7 +409,7 @@ list @ifTestListForGeneration {
     ioGeneratedCode += "GalgasBool " + outTestVar + " = GalgasBool::boolTrue ;\n"
     for entry in self do
       ioGeneratedCode += "if (GalgasBool::boolTrue == " + outTestVar + ") {\n"
-      !?ioGeneratedCode.incIndentation (!2)
+      !?ioGeneratedCode.incIndentation (2)
       switch entry.mExpression
       case regular (exp) :
         exp.generateExpression

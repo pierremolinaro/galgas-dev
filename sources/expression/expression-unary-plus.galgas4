@@ -55,7 +55,7 @@ syntax extension galgas4ExpressionSyntax {
     let operatorLocation = @location.here
     $+$
     <factor> (!?ioDeclarations, ? outExpression)
-    outExpression = @unaryPlusExpressionAST (!operatorLocation, outExpression)
+    outExpression = @unaryPlusExpressionAST (operatorLocation, outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -87,14 +87,14 @@ override proc @unaryPlusExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: .null,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?outExpression
   )
 //--- Check operator availability
   let @unifiedTypeMapEntry type = outExpression.mResultType
-  if not type.definition.features.contains (!.prefixPlusOperator) then
+  if not type.definition.features.contains (.prefixPlusOperator) then
     error (self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the prefix '+' operator"
     spoil outExpression)

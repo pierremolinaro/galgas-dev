@@ -51,7 +51,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $double.xxx$ (?let @ldouble literalDouble, ?*)
-    outExpression = @literalDoubleExpressionAST (!literalDouble)
+    outExpression = @literalDoubleExpressionAST (literalDouble)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -79,7 +79,7 @@ override proc @literalDoubleExpressionAST.analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
   outExpression = @literalDoubleExpressionForGeneration (
-    !inAnalysisContext.predefinedTypes.mDoubleType,
+    inAnalysisContext.predefinedTypes.mDoubleType,
     self.mValue.location,
     self.mValue.double
   )

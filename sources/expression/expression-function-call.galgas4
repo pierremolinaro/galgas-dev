@@ -70,7 +70,7 @@ syntax extension galgas4ExpressionSyntax {
     $($
     <output_expression_list> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
     $)$
-    outExpression = @functionCallExpressionAST (!functionName, expressionList)
+    outExpression = @functionCallExpressionAST (functionName, expressionList)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -106,18 +106,18 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
     ?!@localVarManager ioVariableMap,
     !@semanticExpressionForGeneration outExpression
   ) {
-    let usefulnessName = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
+    let usefulnessName = functionNameForUsefulEntitiesGraph (self.mFunctionName)
     !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
   //--- Retrieve function features
     inAnalysisContext.semanticContext.mFunctionMap.searchKey
-      (!self.mFunctionName,
+      (self.mFunctionName,
       ?let @functionSignature functionSignature,
       ?let @unifiedTypeMapEntry resultType,
       ?let @bool isInternal
     )
   //--- Check internal
     if isInternal then
-      let procDeclarationLocation = inAnalysisContext.semanticContext.mFunctionMap.locationForKey (!self.mFunctionName.string)
+      let procDeclarationLocation = inAnalysisContext.semanticContext.mFunctionMap.locationForKey (self.mFunctionName.string)
       if self.mFunctionName.location.file != procDeclarationLocation.file then
         error (self.mFunctionName : "this proc is internal to '" + procDeclarationLocation.file + "' file")
       end
@@ -136,15 +136,15 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
           (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
           !?ioUsefulEntitiesGraph,
           !inferenceType: formalArg.mFormalArgumentType,
-          !inAnalysisContext,
+          inAnalysisContext,
           !?ioTypeMap,
           !?ioVariableMap,
           ?@semanticExpressionForGeneration expression
         )
         checkAssignmentTypeWithImplicitGetterCall (
-          !formalArg.mFormalArgumentType,
-          !expression.mResultType,
-          !actualArg.mEndOfExpressionLocation,
+          formalArg.mFormalArgumentType,
+          expression.mResultType,
+          actualArg.mEndOfExpressionLocation,
           !?expression
         )
         if formalArg.mFormalSelector.string != actualArg.mActualSelector.string then
@@ -158,7 +158,7 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
         semanticExpressionListForGeneration ++= @(expression)
       end
       outExpression = @functionCallExpressionForGeneration (
-        !resultType,
+        resultType,
         self.mFunctionName.location,
         self.mFunctionName.string,
         semanticExpressionListForGeneration
@@ -199,7 +199,7 @@ final class @functionCallExpressionForGeneration : @semanticExpressionForGenerat
     for (mValue) in parameterList do
       outCppExpression += mValue + ", "
     end
-    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
     outCppExpression += compilerCppName ()
     outCppExpression += self.mLocation.commaSourceFile + ")"
   }

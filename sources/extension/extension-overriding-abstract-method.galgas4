@@ -95,7 +95,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
     <formal_parameter_list>(!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
-    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionMethodAST (
+    ioDeclarations.mDeclarationList ++= @(@overridingAbstractExtensionMethodAST (
       !isPredefined: false,
       typeName,
       methodName,
@@ -119,7 +119,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $identifier$ (?let @lstring methodName) indexing (overrideAbstractExtensionMethodDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
-    ioDeclarations.mDeclarationList ++= @(!@overridingAbstractExtensionMethodAST (
+    ioDeclarations.mDeclarationList ++= @(@overridingAbstractExtensionMethodAST (
       !isPredefined: false,
       typeName,
       methodName,
@@ -151,19 +151,19 @@ override proc @overridingAbstractExtensionMethodAST.enterDeclarationInGraph (
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
-  ioExtensionOverrideDefinitionList ++= @(!self)
+  ioExtensionOverrideDefinitionList ++= @(self)
 //---
-  if not ioExtensionMethodMapForBuildingContext.hasKey (!self.mTypeName.string) then
+  if not ioExtensionMethodMapForBuildingContext.hasKey (self.mTypeName.string) then
     !?ioExtensionMethodMapForBuildingContext.insertKey
-      (! self.mTypeName,
-      !@()
+      ( self.mTypeName,
+      @()
     )
   end
   var entry = ioExtensionMethodMapForBuildingContext [!searchKey: self.mTypeName]
   !?entry.mExtensionMethodMapForType.insertKey
-    (!self.mOverridingExtensionMethodName,
-    ! self.mOverridingExtensionMethodFormalParameterList,
-    !.isVirtualOverridingAbstract
+    (self.mOverridingExtensionMethodName,
+     self.mOverridingExtensionMethodFormalParameterList,
+    .isVirtualOverridingAbstract
   )
   !?ioExtensionMethodMapForBuildingContext.replaceKey (!with: entry)
 }
@@ -195,7 +195,7 @@ override proc @overridingAbstractExtensionMethodAST.semanticAnalysis (
   ?let @predefinedTypes unused inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration) {
 //--- Self type
-  let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
+  let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
 //--- Check type is an abstract class
   if not selfType.definition.typeKind.isClassType then
     error (self.mOverridingExtensionMethodName: "cannot declare a extension proc: '@" + selfType.definition.typeName.string + "' is not a class")
@@ -209,9 +209,9 @@ override proc @overridingAbstractExtensionMethodAST.semanticAnalysis (
   var @location inheritedDeclarationLocation = @location.here
   loop (ioTypeMap.count + 1)
   while (not superType.isNull) & (baseTypeName == "") do
-    if superType.definition.instanceMethodMap.hasKey (!self.mOverridingExtensionMethodName.string) then
+    if superType.definition.instanceMethodMap.hasKey (self.mOverridingExtensionMethodName.string) then
        superType.definition.instanceMethodMap.searchKey
-        (!self.mOverridingExtensionMethodName,
+        (self.mOverridingExtensionMethodName,
         ?*,
         ?inheritedSignature,
         ?inheritedDeclarationLocation,
@@ -231,19 +231,19 @@ override proc @overridingAbstractExtensionMethodAST.semanticAnalysis (
 //--- Analyze formal argument list
   var variableMap = @localVarManager ()
   buildLocalVariableMapAndSignature (
-    !inSemanticContext,
+    inSemanticContext,
     !?ioTypeMap,
-    !self.mOverridingExtensionMethodFormalParameterList,
+    self.mOverridingExtensionMethodFormalParameterList,
     !?variableMap,
     ?let formalParameterListForGeneration
   )
 //--- Check Signature
   if baseTypeName != "" then
     checkMethodSignatures (
-      !formalParameterListForGeneration,
-      !self.mOverridingExtensionMethodName.location,
-      !inheritedSignature,
-      !inheritedDeclarationLocation
+      formalParameterListForGeneration,
+      self.mOverridingExtensionMethodName.location,
+      inheritedSignature,
+      inheritedDeclarationLocation
     )
   end
 }
@@ -266,8 +266,8 @@ override proc @overridingAbstractExtensionMethodAST.buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
   !?ioOverridingAbstractExtensionMethodListMap.insertKey
-    (!self.mTypeName.string,
-    !self.mOverridingExtensionMethodName
+    (self.mTypeName.string,
+    self.mOverridingExtensionMethodName
   )
 }
 

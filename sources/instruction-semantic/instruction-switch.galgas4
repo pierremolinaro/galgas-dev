@@ -128,13 +128,13 @@ syntax extension galgas4InstructionsSyntax {
         ?let @switchExtractedValuesListAST associatedValuesExtraction)
       $:$
       <semantic_instruction_list> (!?ioDeclarations, ?let instructions)
-      switchBranches ++= @(!constantNameList, !associatedValuesExtraction, !instructions, !@location.here)
+      switchBranches ++= @(constantNameList, associatedValuesExtraction, instructions, @location.here)
     while
     end
     $end$
     let endOfSwitchInstruction = @location.here
     outInstruction = @switchInstructionAST (
-      !instructionLocation,
+      instructionLocation,
       switchExpression,
       endOfSwitchExpression,
       switchBranches,
@@ -150,7 +150,7 @@ syntax extension galgas4InstructionsSyntax {
     outConstantNameList = @()
     repeat
       $identifier$ (?let @lstring constantName)
-      !?outConstantNameList.append (!constantName)
+      !?outConstantNameList.append (constantName)
     while
       $,$
     end
@@ -163,11 +163,11 @@ syntax extension galgas4InstructionsSyntax {
           $literalInt$ (?let n)
           $*$
           for * in 0 ..< n.bigint do
-            outAssociatedValuesExtraction ++= @(!"".here, !"".here, !false)
+            outAssociatedValuesExtraction ++= @("".here, "".here, false)
           end
          or
           $*$
-          outAssociatedValuesExtraction ++= @(!"".here, !"".here, !false)
+          outAssociatedValuesExtraction ++= @("".here, "".here, false)
          or
           let @lstring typeName
           select
@@ -183,7 +183,7 @@ syntax extension galgas4InstructionsSyntax {
             constantMarkedAsUnused = true
           end
           $identifier$ (?let @lstring constantName)
-          outAssociatedValuesExtraction ++= @(!typeName, !constantName, !constantMarkedAsUnused)
+          outAssociatedValuesExtraction ++= @(typeName, constantName, constantMarkedAsUnused)
         end
       while
         $,$
@@ -245,7 +245,7 @@ final class @switchInstructionAST : @semanticInstructionAST {
       (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inferenceType: @unifiedTypeMapEntry.null,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !?ioVariableMap,
       ?let switchExpression
@@ -261,14 +261,14 @@ final class @switchInstructionAST : @semanticInstructionAST {
         !?ioVariableMap.openBranch ()
         var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = @()
         for constantName in branch.mSwitchConstantList do
-          if enumType.constantMap.hasKey (!constantName.string) then
-            if constantsNamedInSwitchInstruction.hasKey (!constantName.string) then
+          if enumType.constantMap.hasKey (constantName.string) then
+            if constantsNamedInSwitchInstruction.hasKey (constantName.string) then
               error (constantName
               :"the '" + constantName + "' constant is already named in this switch instruction"
               )
             end
             constantsNamedInSwitchInstruction ++= constantName.string
-            enumType.constantMap.searchKey (!constantName, ?*, ?let associatedTypeList)
+            enumType.constantMap.searchKey (constantName, ?*, ?let associatedTypeList)
             if (associatedTypeList.count > 0) & (branch.mAssociatedValuesExtraction.count == 0) then
               error (constantName
                 :"the associated values of '" + constantName + "' constant should be extracted"
@@ -297,23 +297,23 @@ final class @switchInstructionAST : @semanticInstructionAST {
                   + associatedValue.mExtractedValueName.location.startLocationIndex
                   + "_" + associatedValue.mExtractedValueName + "_" + IDX
                 extractedAssociatedValuesForGeneration ++= @(
-                  !descriptor.type,
-                  !cppName,
-                  !descriptor.name)
+                  descriptor.type,
+                  cppName,
+                  descriptor.name)
                 if associatedValue.mExtractedValueName.string != "" then
                   if associatedValue.mMarkedAsUnused then
                     !?ioVariableMap.insertUsedLocalConstant
-                      (!associatedValue.mExtractedValueName,
-                      !descriptor.type,
-                      !cppName,
-                      !cppName
+                      (associatedValue.mExtractedValueName,
+                      descriptor.type,
+                      cppName,
+                      cppName
                     )
                   else
                     !?ioVariableMap.insertInitializedLocalConstant
-                      (!associatedValue.mExtractedValueName,
-                      !descriptor.type,
-                      !cppName,
-                      !cppName
+                      (associatedValue.mExtractedValueName,
+                      descriptor.type,
+                      cppName,
+                      cppName
                     )
                   end
                 end
@@ -327,25 +327,25 @@ final class @switchInstructionAST : @semanticInstructionAST {
           end
         end
         analyzeSemanticInstructionListWithoutBranch (
-          !inUsefulnessCallerEntityName,
+          inUsefulnessCallerEntityName,
           !?ioUsefulEntitiesGraph,
-          !inAnalysisContext,
+          inAnalysisContext,
           !?ioTypeMap,
           !localConstantList: @(),
           !localInitializedVariableListWarnsIfNotMutated: @(),
           !localInitializedVariableListNoWarnsIfNotMutated: @(),
-          !branch.mInstructions,
+          branch.mInstructions,
           !?ioVariableMap,
           ?let @semanticInstructionListForGeneration instructionList
         )
-        !?ioVariableMap.closeBranch (!branch.mEndOfBranch)
+        !?ioVariableMap.closeBranch (branch.mEndOfBranch)
         switchBranchesForGeneration ++= @(
-          !branch.mSwitchConstantList,
-          !extractedAssociatedValuesForGeneration,
-          !branch.mEndOfBranch.startLocationIndex,
-          !instructionList)
+          branch.mSwitchConstantList,
+          extractedAssociatedValuesForGeneration,
+          branch.mEndOfBranch.startLocationIndex,
+          instructionList)
       end
-      !?ioVariableMap.closeOverride (!self.mEndOf_switch_instruction)
+      !?ioVariableMap.closeOverride (self.mEndOf_switch_instruction)
     //--- Check all constants have been named
       let forgottenConstants = enumType.constantMap.keySet - constantsNamedInSwitchInstruction
       if forgottenConstants.count > 0 then
@@ -358,8 +358,8 @@ final class @switchInstructionAST : @semanticInstructionAST {
         )
       end
     //--- Generate instruction
-      ioInstructionListForGeneration ++= @(!@switchInstructionForGeneration (
-        !switchExpression.mResultType,
+      ioInstructionListForGeneration ++= @(@switchInstructionForGeneration (
+        switchExpression.mResultType,
         switchExpression,
         switchBranchesForGeneration
       ))
@@ -431,7 +431,7 @@ final class @switchInstructionForGeneration : @semanticInstructionForGeneration 
         ioGeneratedCode += constantName.string.identifierRepresentation
         ioGeneratedCode += ":\n"
       end
-      !?ioGeneratedCode.incIndentation (!2)
+      !?ioGeneratedCode.incIndentation (2)
       if branch.mInstructions.count > 0 then
         ioGeneratedCode += "{\n"
         if branch.mExtractedAssociatedValuesForGeneration.count > 0 then
@@ -450,16 +450,16 @@ final class @switchInstructionForGeneration : @semanticInstructionForGeneration 
         end
         generateInstructionList (
           !?ioInclusionSet,
-          !branch.mInstructions,
+          branch.mInstructions,
           !?ioTemporaryVariableIndex,
           !?ioUnusedVariableCppNameSet,
-          !inGenerateSyntaxDirectedTranslationString,
+          inGenerateSyntaxDirectedTranslationString,
           !?ioGeneratedCode
         )
         ioGeneratedCode += "}\n"
       end
       ioGeneratedCode += "break ;\n"
-      !?ioGeneratedCode.decIndentation (!2)
+      !?ioGeneratedCode.decIndentation (2)
     end
     ioGeneratedCode += "}\n"
   }

@@ -101,7 +101,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@extensionMethodAST (
+    ioDeclarations.mDeclarationList ++= @(@extensionMethodAST (
       !isPredefined: false,
       typeName,
       methodName,
@@ -122,7 +122,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@extensionMethodAST (
+    ioDeclarations.mDeclarationList ++= @(@extensionMethodAST (
       !isPredefined: false,
       inTypeName,
       methodName,
@@ -162,23 +162,23 @@ final class @extensionMethodAST : @semanticDeclarationAST {
      ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
      ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
     let key = @lstring (
-      !"extension proc @" + self.mTypeName + " " + self.mExtensionMethodName,
+      "extension proc @" + self.mTypeName + " " + self.mExtensionMethodName,
       self.mExtensionMethodName.location
     )
-    !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
-    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"@" + self.mTypeName, self.mTypeName.location))
+    !?ioSemanticTypePrecedenceGraph.addNode (key, self)
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName.location))
   //---
-    if not ioExtensionMethodMapForBuildingContext.hasKey (!self.mTypeName.string) then
+    if not ioExtensionMethodMapForBuildingContext.hasKey (self.mTypeName.string) then
       !?ioExtensionMethodMapForBuildingContext.insertKey
-        (! self.mTypeName,
-        !@()
+        ( self.mTypeName,
+        @()
       )
     end
     var entry = ioExtensionMethodMapForBuildingContext [!searchKey: self.mTypeName]
     !?entry.mExtensionMethodMapForType.insertKey
-      (!self.mExtensionMethodName,
-      ! self.mExtensionMethodFormalParameterList,
-      !.isBasic
+      (self.mExtensionMethodName,
+       self.mExtensionMethodFormalParameterList,
+      .isBasic
     )
     !?ioExtensionMethodMapForBuildingContext.replaceKey (!with: entry)
 //    with %aliasOf ioExtensionMethodMapForBuildingContext [!searchKey: self.mTypeName] do
@@ -212,12 +212,12 @@ final class @extensionMethodAST : @semanticDeclarationAST {
                                     ?let @predefinedTypes inPredefinedTypes,
                  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
   //--- Useful entities graph
-    let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName, !self.mExtensionMethodName)
-    !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
-    let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (! self.mTypeName)
+    let nameForUsefulness = methodNameForUsefulEntitiesGraph (self.mTypeName, self.mExtensionMethodName)
+    !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
+    let typeNameForUsefulness = typeNameForUsefulEntitiesGraph ( self.mTypeName)
     !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness, !to: nameForUsefulness)
   //--- Self type
-    let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (! self.mTypeName)
+    let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey ( self.mTypeName)
     let @string selfObjectNameString
     let @string selfObjectPropertyAccessorString
     let @bool implementedAsFunction
@@ -234,7 +234,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
     end
   //--- Analyze instruction list
     let analysisContextNew = @analysisContext (
-      !inSemanticContext,
+      inSemanticContext,
       inPredefinedTypes,
       !selfObjectCppName: selfObjectNameString,
       !selfAvailability: .available (!type: selfType, !selfMutability: .propertiesAreMutableSelfIsNot),
@@ -245,20 +245,20 @@ final class @extensionMethodAST : @semanticDeclarationAST {
 //      isclass = classType.isReference
 //    end
     analyzeRoutineBody (
-      !nameForUsefulness,
+      nameForUsefulness,
       !?ioUsefulEntitiesGraph,
-      !analysisContextNew,
+      analysisContextNew,
       !?ioTypeMap,
-      !self.mExtensionMethodFormalParameterList,
-      !self.mExtensionMethodInstructionList,
-      !self.mEndOfMethodLocation,
+      self.mExtensionMethodFormalParameterList,
+      self.mExtensionMethodInstructionList,
+      self.mEndOfMethodLocation,
       ?let semanticInstructionListForGeneration,
       ?let formalParameterListForGeneration
     )
   //---
     ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage:"extension proc " + self.mExtensionMethodName,
-      !@extensionMethodForGeneration (
+      @extensionMethodForGeneration (
         !generateHeader: true,
         !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionMethodName.string.fileNameRepresentation,
         selfType,
@@ -292,7 +292,7 @@ override proc @extensionMethodAST.buildExtensionListMaps (
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
 //  ioExtensionMethodListMap += !self.mTypeName.string !self.mExtensionMethodName
-  !?ioExtensionMethodListMap.insertKey (!self.mTypeName.string, !self.mExtensionMethodName)
+  !?ioExtensionMethodListMap.insertKey (self.mTypeName.string, self.mExtensionMethodName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -320,15 +320,15 @@ override proc @extensionMethodForGeneration.appendDeclaration1 (?!@stringset unu
                                                                   !@string outHeader) {
   if self.mImplementedAsFunction then
     outHeader = filewrapper [semanticComponentGenerationTemplate.extensionMethodAsFunctionDeclaration :
-      !self.mReceiverType.definition.typeName.string,
-      !self.mExtensionMethodName,
-      !self.mExtensionMethodFormalParameterList
+      self.mReceiverType.definition.typeName.string,
+      self.mExtensionMethodName,
+      self.mExtensionMethodFormalParameterList
     ]
   else
     outHeader = filewrapper [semanticComponentGenerationTemplate.extensionMethodDeclaration :
-      !self.mReceiverType.definition.typeName.string,
-      !self.mExtensionMethodName,
-      !self.mExtensionMethodFormalParameterList
+      self.mReceiverType.definition.typeName.string,
+      self.mExtensionMethodName,
+      self.mExtensionMethodFormalParameterList
     ]
   end
 }
@@ -341,31 +341,31 @@ override proc @extensionMethodForGeneration.appendSpecificImplementation (?let @
   if self.mImplementedAsFunction then
     var @formalParameterListForGeneration extensionMethodFormalParameterList = self.mExtensionMethodFormalParameterList
     !?extensionMethodFormalParameterList.insertAtIndex
-      (!"".nowhere,
-      !@formalArgumentPassingModeAST.argumentConstantIn,
-      !self.mReceiverType,
-      !@lstring (!"self", @location.here),
-      !"inObject",
-      !0
+      ("".nowhere,
+      @formalArgumentPassingModeAST.argumentConstantIn,
+      self.mReceiverType,
+      @lstring ("self", @location.here),
+      "inObject",
+      0
     )
     ioInclusionSet ++= "proc-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionMethodName.fileNameRepresentation
     generateProcedure (
       !static:false,
-      !"extensionMethod_" + self.mExtensionMethodName.identifierRepresentation,
+      "extensionMethod_" + self.mExtensionMethodName.identifierRepresentation,
       !?ioInclusionSet,
-      !extensionMethodFormalParameterList,
-      !self.mSemanticInstructionListForGeneration,
-      !false, // is not const
-      !"Compiler",
-      !true, // Generate location Argument
-      !false, // Do not generate 'resetTemplateString'
-      !false, // Do not generate syntaxDirectedTranslationString argument
+      extensionMethodFormalParameterList,
+      self.mSemanticInstructionListForGeneration,
+      false, // is not const
+      "Compiler",
+      true, // Generate location Argument
+      false, // Do not generate 'resetTemplateString'
+      false, // Do not generate syntaxDirectedTranslationString argument
       ?let @string code
     )
     outImplementation = filewrapper [semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation :
-      !self.mReceiverType.definition.typeName.string,
-      !self.mExtensionMethodName,
-      !code
+      self.mReceiverType.definition.typeName.string,
+      self.mExtensionMethodName,
+      code
     ]
   else
     self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
@@ -376,7 +376,7 @@ override proc @extensionMethodForGeneration.appendSpecificImplementation (?let @
     var @bool searching = true
     loop (@uint.max) while searching do
       if not baseType.definition.superType.isNull then
-        if baseType.definition.superType.definition.instanceMethodMap.hasKey (!self.mExtensionMethodName) then
+        if baseType.definition.superType.definition.instanceMethodMap.hasKey (self.mExtensionMethodName) then
           baseType = baseType.definition.superType
         else
           searching = false
@@ -389,18 +389,18 @@ override proc @extensionMethodForGeneration.appendSpecificImplementation (?let @
       "proc-" + baseType.definition.typeName.string.fileNameRepresentation
       + "-" + self.mExtensionMethodName.fileNameRepresentation
     generateExtensionMethodNew (
-      !self.mReceiverType,
+      self.mReceiverType,
       !?ioInclusionSet,
-      !self.mExtensionMethodName,
-      !self.mExtensionMethodFormalParameterList,
-      !self.mSemanticInstructionListForGeneration,
+      self.mExtensionMethodName,
+      self.mExtensionMethodFormalParameterList,
+      self.mSemanticInstructionListForGeneration,
       ?let @string methodImplementation
     )
     outImplementation = filewrapper [semanticComponentGenerationTemplate.extensionMethodImplementation :
-      !self.mReceiverType.definition.typeName.string,
-      !self.mExtensionMethodName,
-      !self.mExtensionMethodFormalParameterList,
-      !methodImplementation
+      self.mReceiverType.definition.typeName.string,
+      self.mExtensionMethodName,
+      self.mExtensionMethodFormalParameterList,
+      methodImplementation
     ]
   end
 }

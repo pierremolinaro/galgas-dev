@@ -131,13 +131,13 @@ override proc @testDynamicClassInExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: @unifiedTypeMapEntry.null,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?let expression
   )
 //--- Get type information
-   let castType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
+   let castType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
 //--- This type is either a class
   if expression.mResultType.definition.typeKind.isClassType then
   //--- Check expression type is a descendant of named type
@@ -158,7 +158,7 @@ override proc @testDynamicClassInExpressionAST.analyzeSemanticExpression
   end
 //--- Generate expression
   outExpression = @testDynamicClassInExpressionForGeneration (
-    !inAnalysisContext.predefinedTypes.mBoolType,
+    inAnalysisContext.predefinedTypes.mBoolType,
     self.mTypeName.location,
     expression,
     castType
@@ -189,13 +189,13 @@ override proc @castInExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: @unifiedTypeMapEntry.null,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?let @semanticExpressionForGeneration expression
    )
 //--- Get type information
-   let type = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
+   let type = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
 //--- This type is an @object type
   if expression.mResultType.definition.typeKind.isClassType then
   //--- Check expression type is a descendant of named type
@@ -219,13 +219,13 @@ override proc @castInExpressionAST.analyzeSemanticExpression
 //--- Generate expression
   if expression.mResultType.definition.typeName.string == "object" then
     outExpression = @extractObjectInExpressionForGeneration (
-      !type,
+      type,
       self.mEndOfReceiverExpression,
       expression,
       self.mTypeName.string)
   else
     outExpression = @castInExpressionForGeneration (
-      !type,
+      type,
       self.mTypeName.location,
       expression,
       self.mTypeName.string,
@@ -291,7 +291,7 @@ override proc @castInExpressionForGeneration.generateExpression
   ioGeneratedCode += "GGS_" + self.mTypeName.identifierRepresentation
   + " " + outCppExpression + " ;\n"
   + "if (" + receiverExpression + ".isValid ()) {\n"
-  !?ioGeneratedCode.incIndentation (!2)
+  !?ioGeneratedCode.incIndentation (2)
 //---
   ioGeneratedCode +=
     "if (nullptr != dynamic_cast <const cPtr_"
@@ -300,16 +300,16 @@ override proc @castInExpressionForGeneration.generateExpression
   + "  " + outCppExpression + " = (cPtr_" + self.mTypeName.identifierRepresentation + " *) "
   + receiverExpression + ".ptr () ;\n"
   + "}else{\n"
-  !?ioGeneratedCode.incIndentation (!2)
+  !?ioGeneratedCode.incIndentation (2)
   ioGeneratedCode +=
     compilerCppName () + "->castError (\""
   + self.mTypeName.identifierRepresentation
   + "\", " + receiverExpression + ".ptr ()->classDescriptor ()"
   + self.mLocation.commaSourceFile + ") ;\n"
-  !?ioGeneratedCode.decIndentation (!2)
-  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+  !?ioGeneratedCode.decIndentation (2)
+  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
   ioGeneratedCode += "}\n"
-  !?ioGeneratedCode.decIndentation (!2)
+  !?ioGeneratedCode.decIndentation (2)
   ioGeneratedCode += "}\n"
 }
 
@@ -343,7 +343,7 @@ override proc @extractObjectInExpressionForGeneration.generateExpression
   + "::extractObject (" + receiverExpression
   + ", " + compilerCppName ()
   + self.mLocation.commaSourceFile + ")"
-  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
 }
 
 //--------------------------------------------------------------------------------------------------

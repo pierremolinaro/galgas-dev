@@ -143,13 +143,13 @@ syntax extension galgas4DeclarationsSyntax {
     select
       $identifier$ (?resultVariableName)
     or
-      resultVariableName = @(!"result", .here)
+      resultVariableName = @("result", .here)
     end
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfInstructionList = .here
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@overridingExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(@overridingExtensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -175,13 +175,13 @@ syntax extension galgas4DeclarationsSyntax {
     select
       $identifier$ (?resultVariableName)
     or
-      resultVariableName = @(!"result", .here)
+      resultVariableName = @("result", .here)
     end
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfInstructionList = .here
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@overridingExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(@overridingExtensionGetterAST (
       !isPredefined: false,
       inTypeName,
       getterName,
@@ -209,20 +209,20 @@ override proc @overridingExtensionGetterAST.enterDeclarationInGraph (
   ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
-  ioExtensionOverrideDefinitionList ++= @(!self)
+  ioExtensionOverrideDefinitionList ++= @(self)
 //---
-  if not ioExtensionGetterMapForBuildingContext.hasKey (!self.mTypeName.string) then
+  if not ioExtensionGetterMapForBuildingContext.hasKey (self.mTypeName.string) then
     !?ioExtensionGetterMapForBuildingContext.insertKey
-      (!self.mTypeName,
-      !@()
+      (self.mTypeName,
+      @()
     )
   end
   var entry = ioExtensionGetterMapForBuildingContext [!searchKey: self.mTypeName]
   !?entry.mExtensionGetterMapForType.insertKey
-    (!self.mOverridingExtensionGetterName,
-    !self.mOverridingExtensionGetterReturnedTypeName,
-    !self.mOverridingExtensionGetterFormalInputParameterList,
-    !.isVirtualOverriding
+    (self.mOverridingExtensionGetterName,
+    self.mOverridingExtensionGetterReturnedTypeName,
+    self.mOverridingExtensionGetterFormalInputParameterList,
+    .isVirtualOverriding
   )
   !?ioExtensionGetterMapForBuildingContext.replaceKey (!with: entry)
 }
@@ -262,12 +262,12 @@ override proc @overridingExtensionGetterAST.semanticAnalysis (
   ?let @predefinedTypes inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
 //--- Useful entities graph
-  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!self.mTypeName, !self.mOverridingExtensionGetterName)
-  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
-  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
+  let nameForUsefulness = getterNameForUsefulEntitiesGraph (self.mTypeName, self.mOverridingExtensionGetterName)
+  !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
+  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mTypeName)
   !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness, !to: nameForUsefulness)
 //--- Self type
-  let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
+  let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
 //--- Check self type is a class
   if not selfType.definition.typeKind.isClassType then
     error (self.mOverridingExtensionGetterName: "cannot declare a extension func: '@" + selfType.definition.typeName.string + "' is not a class")
@@ -280,9 +280,9 @@ override proc @overridingExtensionGetterAST.semanticAnalysis (
   var @location inheritedDeclarationLocation = @location.here
   loop (ioTypeMap.count + 1)
   while (not superType.isNull) & (baseTypeName == "") do
-    if superType.definition.getterMap.hasKey (!self.mOverridingExtensionGetterName.string) then
+    if superType.definition.getterMap.hasKey (self.mOverridingExtensionGetterName.string) then
        superType.definition.getterMap.searchKey
-        (!self.mOverridingExtensionGetterName,
+        (self.mOverridingExtensionGetterName,
         ?*,
         ?inheritedSignature,
         ?inheritedDeclarationLocation,
@@ -302,22 +302,22 @@ override proc @overridingExtensionGetterAST.semanticAnalysis (
   end
 //--- Analyze instruction list
   let analysisContext = @analysisContext (
-    !inSemanticContext,
+    inSemanticContext,
     inPredefinedTypes,
     !selfObjectCppName: "this",
     !selfAvailability: .available (!type: selfType, !selfMutability: .propertiesAreMutableSelfIsNot),
     !selfObjectCppPrefixForAccessingProperty: "object."
   )
   analyzeFunctionBody (
-    !nameForUsefulness,
+    nameForUsefulness,
     !?ioUsefulEntitiesGraph,
-    !analysisContext,
+    analysisContext,
     !?ioTypeMap,
-    ! self.mOverridingExtensionGetterFormalInputParameterList,
-    !self.mOverridingExtensionGetterInstructionList,
-    !self.mOverridingExtensionGetterReturnedVariableName,
-    !self.mOverridingExtensionGetterReturnedTypeName,
-    !self.mEndOfReaderLocation,
+     self.mOverridingExtensionGetterFormalInputParameterList,
+    self.mOverridingExtensionGetterInstructionList,
+    self.mOverridingExtensionGetterReturnedVariableName,
+    self.mOverridingExtensionGetterReturnedTypeName,
+    self.mEndOfReaderLocation,
     ?let @formalInputParameterListForGeneration formalParameterListForGeneration,
     ?let @unifiedTypeMapEntry returnType,
     ?let @string returnVariableCppName,
@@ -326,18 +326,18 @@ override proc @overridingExtensionGetterAST.semanticAnalysis (
 //--- Check Signature
   if baseTypeName != "" then
     checkGetterSignatures (
-      !formalParameterListForGeneration,
-      !returnType,
-      !self.mOverridingExtensionGetterName.location,
-      !inheritedSignature,
-      !inheritedReturnType,
-      !inheritedDeclarationLocation
+      formalParameterListForGeneration,
+      returnType,
+      self.mOverridingExtensionGetterName.location,
+      inheritedSignature,
+      inheritedReturnType,
+      inheritedDeclarationLocation
     )
   end
 //---
   ioSemanticDeclarationListForGeneration ++= @(
     !infoMessage: "override extension func " + self.mOverridingExtensionGetterName,
-    !@overrideExtensionGetterForGeneration (
+    @overrideExtensionGetterForGeneration (
       !generateHeader: false,
       !implementationCppFileName: "func-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mOverridingExtensionGetterName.string.fileNameRepresentation,
       selfType,
@@ -369,8 +369,8 @@ override proc @overridingExtensionGetterAST.buildExtensionListMaps (
   ?!@genericExtensionMethodListMap ioOverridingExtensionGetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
   !?ioOverridingExtensionGetterListMap.insertKey
-    (!self.mTypeName.string,
-    !self.mOverridingExtensionGetterName
+    (self.mTypeName.string,
+    self.mOverridingExtensionGetterName
   )
 }
 
@@ -403,20 +403,20 @@ override proc @overrideExtensionGetterForGeneration.appendSpecificImplementation
                                                               !@string outImplementation) {
   ioInclusionSet ++= "class-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation
   generateExtensionGetter (
-    !"cPtr_" + self.mReceiverType.definition.typeName.string.identifierRepresentation + "::getter_" + self.mOverridingExtensionGetterName.identifierRepresentation,
+    "cPtr_" + self.mReceiverType.definition.typeName.string.identifierRepresentation + "::getter_" + self.mOverridingExtensionGetterName.identifierRepresentation,
     !?ioInclusionSet,
-    !self.mOverridingExtensionGetterFormalParameterList,
-    !self.mSemanticInstructionListForGeneration,
-    !"Compiler",
-    !self.mResultType,
-    !self.mResultVarCppName,
+    self.mOverridingExtensionGetterFormalParameterList,
+    self.mSemanticInstructionListForGeneration,
+    "Compiler",
+    self.mResultType,
+    self.mResultVarCppName,
     ?let @string extensionGetterCode
   )
   outImplementation = filewrapper [semanticComponentGenerationTemplate.overridingExtensionGetterImplementation :
-    !self.mReceiverType.definition.typeName.string,
-    !self.mOverridingExtensionGetterName,
-    !extensionGetterCode,
-    !self.mResultType
+    self.mReceiverType.definition.typeName.string,
+    self.mOverridingExtensionGetterName,
+    extensionGetterCode,
+    self.mResultType
   ]
 }
 

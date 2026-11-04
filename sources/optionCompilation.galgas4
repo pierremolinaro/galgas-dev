@@ -98,7 +98,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
       <option_declaration_ggs3> (!?options)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@optionComponentDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(@optionComponentDeclarationAST (
       !isPredefined: false,
       optionComponentName,
       options
@@ -116,7 +116,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
     $"string"$ (?let @lstring mOptionInvocationString)
     $->$
     $"string"$ (?let @lstring mOptionComment)
-    var defaultValue = @lstring (!"", @location.here)
+    var defaultValue = @lstring ("", @location.here)
     let @optionDefaultValueEnumAST optionDefaultValueKind
     select
       optionDefaultValueKind = @optionDefaultValueEnumAST. noDefaultValue
@@ -127,18 +127,18 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
         optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
       or
         $literalInt$ (?let v)
-        defaultValue = @lstring (!v.bigint.string, v.location)
+        defaultValue = @lstring (v.bigint.string, v.location)
         optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
       end
     end
     ioCommandLineOptionList ++= @(
-      !mOptionTypeName,
-      !mOptionInternalName,
-      !mOptionInvocationLetter,
-      !mOptionInvocationString,
-      !mOptionComment,
-      !defaultValue,
-      !optionDefaultValueKind)
+      mOptionTypeName,
+      mOptionInternalName,
+      mOptionInvocationLetter,
+      mOptionInvocationString,
+      mOptionComment,
+      defaultValue,
+      optionDefaultValueKind)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -183,7 +183,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
   ) {
-    ioExtensionOverrideDefinitionList ++= @(!self)
+    ioExtensionOverrideDefinitionList ++= @(self)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -202,18 +202,18 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
     var @commandLineOptionMap stringListOptionMap = @()
     var optionNameSet = @stringset.emptySet
     for anOption in self.mOptions do
-      if optionNameSet.hasKey (!anOption.mOptionInternalName.string) then
+      if optionNameSet.hasKey (anOption.mOptionInternalName.string) then
         error (anOption.mOptionInternalName
         : "the '" + anOption.mOptionInternalName.string
         + "' command line option has been already declared"
         )
       elsif anOption.mOptionTypeName.string == "bool" then
         !?boolOptionMap.insertKey (
-          !anOption.mOptionInternalName,
-          !anOption.mOptionInvocationLetter.char,
-          !anOption.mOptionInvocationString.string,
-          !anOption.mOptionComment.string,
-          !"false"
+          anOption.mOptionInternalName,
+          anOption.mOptionInvocationLetter.char,
+          anOption.mOptionInvocationString.string,
+          anOption.mOptionComment.string,
+          "false"
         )
         if anOption.mOptionDefaultValueKind != @optionDefaultValueEnumAST. noDefaultValue then
           error (anOption.mOptionDefaultValue
@@ -222,11 +222,11 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         end
       elsif anOption.mOptionTypeName.string == "uint" then
         !?uintOptionMap.insertKey (
-          !anOption.mOptionInternalName,
-          !anOption.mOptionInvocationLetter.char,
-          !anOption.mOptionInvocationString.string,
-          !anOption.mOptionComment.string,
-          !if anOption.mOptionDefaultValue.string == "" then "0" else anOption.mOptionDefaultValue.string end
+          anOption.mOptionInternalName,
+          anOption.mOptionInvocationLetter.char,
+          anOption.mOptionInvocationString.string,
+          anOption.mOptionComment.string,
+          if anOption.mOptionDefaultValue.string == "" then "0" else anOption.mOptionDefaultValue.string end
         )
         if anOption.mOptionDefaultValueKind == @optionDefaultValueEnumAST. stringDefaultValue then
           error (anOption.mOptionDefaultValue
@@ -235,11 +235,11 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         end
       elsif anOption.mOptionTypeName.string == "string" then
         !?stringOptionMap.insertKey (
-          !anOption.mOptionInternalName,
-          !anOption.mOptionInvocationLetter.char,
-          !anOption.mOptionInvocationString.string,
-          !anOption.mOptionComment.string,
-          !anOption.mOptionDefaultValue.string
+          anOption.mOptionInternalName,
+          anOption.mOptionInvocationLetter.char,
+          anOption.mOptionInvocationString.string,
+          anOption.mOptionComment.string,
+          anOption.mOptionDefaultValue.string
         )
         if anOption.mOptionDefaultValueKind == @optionDefaultValueEnumAST. unsignedDefaultValue then
           error (anOption.mOptionDefaultValue
@@ -248,11 +248,11 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         end
       elsif anOption.mOptionTypeName.string == "stringlist" then
         !?stringListOptionMap.insertKey (
-          !anOption.mOptionInternalName,
-          !anOption.mOptionInvocationLetter.char,
-          !anOption.mOptionInvocationString.string,
-          !anOption.mOptionComment.string,
-          !anOption.mOptionDefaultValue.string
+          anOption.mOptionInternalName,
+          anOption.mOptionInvocationLetter.char,
+          anOption.mOptionInvocationString.string,
+          anOption.mOptionComment.string,
+          anOption.mOptionDefaultValue.string
         )
         if anOption.mOptionDefaultValueKind != .noDefaultValue then
           error (anOption.mOptionDefaultValue
@@ -268,12 +268,12 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
     end
   //--- Insert option
     !?ioSemanticContext.mOptionComponentMapForSemanticAnalysis.insertKey (
-      !self.mOptionComponentName,
-      !self.isPredefined,
-      !boolOptionMap,
-      !uintOptionMap,
-      !stringOptionMap,
-      !stringListOptionMap
+      self.mOptionComponentName,
+      self.isPredefined,
+      boolOptionMap,
+      uintOptionMap,
+      stringOptionMap,
+      stringListOptionMap
     )
   }
 
@@ -287,11 +287,11 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
                                   let @predefinedTypes unused inPredefinedTypes,
                                   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
   //--- Useful entities graph
-    let nameForUsefulness = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
-    !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
+    let nameForUsefulness = optionNameForUsefulEntitiesGraph (self.mOptionComponentName)
+    !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
   //---
     inSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey
-      (!self.mOptionComponentName,
+      (self.mOptionComponentName,
       ?let @bool optionIsPredefined,
       ?let @commandLineOptionMap boolOptionMap,
       ?let @commandLineOptionMap uintOptionMap,
@@ -302,43 +302,43 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
     var @commandLineOptionSortedList boolOptionSortedList = @()
     for anOption in boolOptionMap do
       boolOptionSortedList ++= @(
-        !anOption.lkey.string,
-        !anOption.mOptionChar,
-        !anOption.mOptionString,
-        !anOption.mComment,
-        !anOption.mDefaultValue)
+        anOption.lkey.string,
+        anOption.mOptionChar,
+        anOption.mOptionString,
+        anOption.mComment,
+        anOption.mDefaultValue)
     end
     var @commandLineOptionSortedList uintOptionSortedList = @()
     for anOption in uintOptionMap do
       uintOptionSortedList ++= @(
-        !anOption.lkey.string,
-        !anOption.mOptionChar,
-        !anOption.mOptionString,
-        !anOption.mComment,
-        !anOption.mDefaultValue)
+        anOption.lkey.string,
+        anOption.mOptionChar,
+        anOption.mOptionString,
+        anOption.mComment,
+        anOption.mDefaultValue)
     end
     var @commandLineOptionSortedList stringOptionSortedList = @()
     for anOption in stringOptionMap do
       stringOptionSortedList ++= @(
-        !anOption.lkey.string,
-        !anOption.mOptionChar,
-        !anOption.mOptionString,
-        !anOption.mComment,
-        !anOption.mDefaultValue)
+        anOption.lkey.string,
+        anOption.mOptionChar,
+        anOption.mOptionString,
+        anOption.mComment,
+        anOption.mDefaultValue)
     end
     var @commandLineOptionSortedList stringListOptionSortedList = @()
     for anOption in stringListOptionMap do
       stringListOptionSortedList ++= @(
-        !anOption.lkey.string,
-        !anOption.mOptionChar,
-        !anOption.mOptionString,
-        !anOption.mComment,
-        !anOption.mDefaultValue)
+        anOption.lkey.string,
+        anOption.mOptionChar,
+        anOption.mOptionString,
+        anOption.mComment,
+        anOption.mDefaultValue)
     end
   //--- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "option " + self.mOptionComponentName,
-      !@optionComponentForGeneration (
+      @optionComponentForGeneration (
         !generateHeader: true,
         !implementationCppFileName: "option-" + self.mOptionComponentName.string.fileNameRepresentation,
         optionIsPredefined,
@@ -386,11 +386,11 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
       outHeader = ""
     else
       outHeader = filewrapper [optionGenerationTemplates.optionHeaderZone3 :
-        !self.mOptionComponentName,
-        !self.mBoolOptionSortedList,
-        !self.mUIntOptionSortedList,
-        !self.mStringOptionSortedList,
-        !self.mStringListSortedList
+        self.mOptionComponentName,
+        self.mBoolOptionSortedList,
+        self.mUIntOptionSortedList,
+        self.mStringOptionSortedList,
+        self.mStringListSortedList
       ]
     end
   }
@@ -407,11 +407,11 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
     else
       ioInclusionSet ++= "option-" + self.mOptionComponentName.fileNameRepresentation
       outImplementation = filewrapper [optionGenerationTemplates.optionImplementationGalgas3 :
-        !self.mOptionComponentName,
-        !self.mBoolOptionSortedList,
-        !self.mUIntOptionSortedList,
-        !self.mStringOptionSortedList,
-        !self.mStringListSortedList
+        self.mOptionComponentName,
+        self.mBoolOptionSortedList,
+        self.mUIntOptionSortedList,
+        self.mStringOptionSortedList,
+        self.mStringListSortedList
       ]
     end
   }
@@ -427,7 +427,7 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
     if @uint.errorCount == 0 && not self.mIsPredefined then
     //--- Generate Swift Cocoa Implementation
       ioAllProductFileSet ++= "option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift"
-      ioSwiftAppProductFileList ++= @(!"option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift")
+      ioSwiftAppProductFileList ++= @("option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift")
       @string.generateFileWithPattern (
         !startPath:inProductDirectory,
         !fileName:"option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui.swift",
@@ -435,12 +435,12 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
         !header:"",
         !defaultUserZone1:"\n\n",
         !generatedZone2: filewrapper [optionGenerationTemplates.optionImplementationSwiftUI :
-          !"option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui",
-          !self.mOptionComponentName,
-          !self.mBoolOptionSortedList,
-          !self.mUIntOptionSortedList,
-          !self.mStringOptionSortedList,
-          !self.mStringListSortedList
+          "option-" + self.mOptionComponentName.fileNameRepresentation + "-swiftui",
+          self.mOptionComponentName,
+          self.mBoolOptionSortedList,
+          self.mUIntOptionSortedList,
+          self.mStringOptionSortedList,
+          self.mStringListSortedList
         ],
         !defaultUserZone2:"\n\n",
         !generatedZone3:"\n\n",

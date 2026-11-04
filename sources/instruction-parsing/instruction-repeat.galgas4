@@ -78,13 +78,13 @@ syntax extension galgas4SyntaxComponentSyntax {
     repeat
       $while$
       <syntax_instruction_list> (!?ioDeclarations, ?let @syntaxInstructionList mInstructionList)
-      mRepeatBranchList ++= @(! mInstructionList, !@location.here)
+      mRepeatBranchList ++= @( mInstructionList, @location.here)
     while
     end
     $end$
     let endOf_repeat_instruction = @location.here
     outInstruction = @repeatInstruction (
-      !mRepeatInstructionLocation,
+      mRepeatInstructionLocation,
       mRepeatedInstructionList,
       endOf_repeated_instructions,
       mRepeatBranchList,
@@ -110,13 +110,13 @@ override proc @repeatInstruction.transformInstructionForGrammarAnalysis
 
   var repeatedInstructionList = @syntaxInstructionListForGrammarAnalysis ()
   transformInstructionListForGrammarAnalysis (
-    !self.mRepeatedInstructionList,
+    self.mRepeatedInstructionList,
     !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap,
     !nonTerminalSymbolMap:inNonTerminalSymbolMap,
     !?addedTerminalIndex:ioAddedNonTerminalIndex,
     !?repeatedInstructionList
   )
-  var repeatBranchList = @branchListForGrammarAnalysis.listWithValue(!repeatedInstructionList)
+  var repeatBranchList = @branchListForGrammarAnalysis.listWithValue(repeatedInstructionList)
 
   for entry in self.mRepeatBranchList do
     var syntaxInstructionList = @syntaxInstructionListForGrammarAnalysis ()
@@ -127,11 +127,11 @@ override proc @repeatInstruction.transformInstructionForGrammarAnalysis
       !?addedTerminalIndex:ioAddedNonTerminalIndex,
       !?syntaxInstructionList
     )
-    repeatBranchList ++= @(!syntaxInstructionList)
+    repeatBranchList ++= @(syntaxInstructionList)
   end
 
-  ioSyntaxInstructionList ++= @(!@repeatInstructionForGrammarAnalysis (
-    !self.mInstructionLocation,
+  ioSyntaxInstructionList ++= @(@repeatInstructionForGrammarAnalysis (
+    self.mInstructionLocation,
     repeatBranchList,
     addedNonTerminalIndex
   ))
@@ -162,18 +162,18 @@ override proc @repeatInstruction.analyzeSyntaxInstruction
   !?ioVariableMap.openOverrideForRepeatBlock ()
 //--- Repeated instructions
   analyzeSyntaxInstructionList (
-    !inUsefulnessCallerEntityName,
+    inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
-    !inHasTranslateFeature,
-    !inTerminalMap,
-    !inLexiqueName,
-    !inNonterminalMap,
-    !inComponentName,
-    !self.mRepeatedInstructionList,
-    !self.mEndOf_repeated_instructions_branch,
-    !inIndexNameSet,
+    inHasTranslateFeature,
+    inTerminalMap,
+    inLexiqueName,
+    inNonterminalMap,
+    inComponentName,
+    self.mRepeatedInstructionList,
+    self.mEndOf_repeated_instructions_branch,
+    inIndexNameSet,
     !?ioVariableMap,
     !?ioSelectMethodCount,
     ?let repeated_instructionList
@@ -182,29 +182,29 @@ override proc @repeatInstruction.analyzeSyntaxInstruction
   var @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration = @()
   for repeatBranch in self.mRepeatBranchList do
     analyzeSyntaxInstructionList (
-      !inUsefulnessCallerEntityName,
+      inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
-      !inHasTranslateFeature,
-      !inTerminalMap,
-      !inLexiqueName,
-      !inNonterminalMap,
-      !inComponentName,
-      !repeatBranch.mSyntaxInstructionList,
-      !repeatBranch.mEndOf_instructions,
-      !inIndexNameSet,
+      inHasTranslateFeature,
+      inTerminalMap,
+      inLexiqueName,
+      inNonterminalMap,
+      inComponentName,
+      repeatBranch.mSyntaxInstructionList,
+      repeatBranch.mEndOf_instructions,
+      inIndexNameSet,
       !?ioVariableMap,
       !?ioSelectMethodCount,
       ?let instructionList
     )
-    listOfSemanticInstructionListForGeneration ++= @(!instructionList, repeatBranch.mEndOf_instructions)
+    listOfSemanticInstructionListForGeneration ++= @(instructionList, repeatBranch.mEndOf_instructions)
   end
 //--- End block
-  !?ioVariableMap.closeOverride (!self.mEndOf_repeat_instruction)
+  !?ioVariableMap.closeOverride (self.mEndOf_repeat_instruction)
 //---
-  ioInstructionListForGeneration ++= @(!@repeatInstructionForGeneration (
-    !self.mInstructionLocation,
+  ioInstructionListForGeneration ++= @(@repeatInstructionForGeneration (
+    self.mInstructionLocation,
     inComponentName,
     choiceIndex,
     repeated_instructionList,
@@ -233,16 +233,16 @@ override proc @repeatInstructionForGeneration.appendSyntaxSignature
   (?let @string inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 ) {
-  let repeated_instructionList = syntaxSignatureOfInstructionList (!inPosfix, !self.m_repeated_instructionList)
+  let repeated_instructionList = syntaxSignatureOfInstructionList (inPosfix, self.m_repeated_instructionList)
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
   for entry in self.mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration ++= @(
-      !syntaxSignatureOfInstructionList (!inPosfix, entry.mInstructionList),
+      syntaxSignatureOfInstructionList (inPosfix, entry.mInstructionList),
       entry.mEndOfInstructionList)
   end
 //---
-  ioInstructionListForGeneration ++= @(!@repeatInstructionForGeneration (
-    !self.mInstructionLocation,
+  ioInstructionListForGeneration ++= @(@repeatInstructionForGeneration (
+    self.mInstructionLocation,
     self.mSyntaxComponentName,
     self.mChoiceIndex,
     repeated_instructionList,
@@ -258,7 +258,7 @@ override proc @repeatInstructionForGeneration.appendSyntaxSignature
 override func @repeatInstructionForGeneration.compareInstructionSyntaxSignature
   (?let @semanticInstructionForGeneration inTestedInstruction ) ->@bool {
   if let si = inTestedInstruction as @repeatInstructionForGeneration then
-    result = compareSyntaxSignature (!self.m_repeated_instructionList, !si.m_repeated_instructionList, !si.mEndOfRepeatedInstructions)
+    result = compareSyntaxSignature (self.m_repeated_instructionList, si.m_repeated_instructionList, si.mEndOfRepeatedInstructions)
     if result & (self.mListOfSemanticInstructionListForGeneration.count != si.mListOfSemanticInstructionListForGeneration.count) then
       error (si.mInstructionLocation
         :"syntax signature error; the reference 'repeat' instruction has "
@@ -268,7 +268,7 @@ override func @repeatInstructionForGeneration.compareInstructionSyntaxSignature
       result = false
     end
     for ref in self.mListOfSemanticInstructionListForGeneration, test in si.mListOfSemanticInstructionListForGeneration while result do
-      result = compareSyntaxSignature (!ref.mInstructionList, !test.mInstructionList, !test.mEndOfInstructionList)
+      result = compareSyntaxSignature (ref.mInstructionList, test.mInstructionList, test.mEndOfInstructionList)
     end
   elsif let si = inTestedInstruction as @syntaxInstructionForGeneration then
 //  case >= @syntaxInstructionForGeneration si :
@@ -300,23 +300,23 @@ override proc @repeatInstructionForGeneration.generateInstruction (?!@stringset 
   ioGeneratedCode += "while (" + repeatFlagCppName + ") {\n"
   generateInstructionList (
     !?ioInclusionSet,
-    !self.m_repeated_instructionList,
+    self.m_repeated_instructionList,
     !?ioTemporaryVariableIndex,
     !?ioUnusedVariableCppNameSet,
-    !inGenerateSyntaxDirectedTranslationString,
+    inGenerateSyntaxDirectedTranslationString,
     !?ioGeneratedCode
   )
-  !?ioGeneratedCode.incIndentation (!2)
+  !?ioGeneratedCode.incIndentation (2)
   if self.mListOfSemanticInstructionListForGeneration.count == 1 then
     ioGeneratedCode += "if (select_" + self.mSyntaxComponentName.identifierRepresentation
     ioGeneratedCode += "_" + self.mChoiceIndex.string + " (" + compilerCppName () + ") == 2) {\n"
-    let instructionList = self.mListOfSemanticInstructionListForGeneration.mInstructionListAtIndex (!0)
+    let instructionList = self.mListOfSemanticInstructionListForGeneration.mInstructionListAtIndex (0)
     generateInstructionList (
       !?ioInclusionSet,
-      !instructionList,
+      instructionList,
       !?ioTemporaryVariableIndex,
       !?ioUnusedVariableCppNameSet,
-      !inGenerateSyntaxDirectedTranslationString,
+      inGenerateSyntaxDirectedTranslationString,
       !?ioGeneratedCode
     )
     ioGeneratedCode += "}else{\n"
@@ -332,7 +332,7 @@ override proc @repeatInstructionForGeneration.generateInstruction (?!@stringset 
         entry.mInstructionList,
         !?ioTemporaryVariableIndex,
         !?ioUnusedVariableCppNameSet,
-        !inGenerateSyntaxDirectedTranslationString,
+        inGenerateSyntaxDirectedTranslationString,
         !?ioGeneratedCode
       )
       ioGeneratedCode += "} break ;\n"
@@ -342,7 +342,7 @@ override proc @repeatInstructionForGeneration.generateInstruction (?!@stringset 
     ioGeneratedCode += "  break ;\n"
     ioGeneratedCode += "}\n"
   end
-  !?ioGeneratedCode.decIndentation (!2)
+  !?ioGeneratedCode.decIndentation (2)
   ioGeneratedCode += "}\n"
 }
 

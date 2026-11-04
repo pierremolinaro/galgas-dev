@@ -52,7 +52,7 @@ override proc @outputInputActualParameterForGeneration.generateActualParameter
   for entry in self.mStructAttributeList do
     outCppName += ".mProperty_" + entry.mValue.string.identifierRepresentation
   end
-  !?ioUnusedVariableCppNameSet.removeKey (!self.mOutputInputVariableCppName)
+  !?ioUnusedVariableCppNameSet.removeKey (self.mOutputInputVariableCppName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -66,8 +66,8 @@ override proc @inputActualParameterForGeneration.generateActualParameter
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppName ) {
   outCppName = self.mInputActualCppName
-  ioOutputVariableList ++= @(!self.mInputActualCppName)
-  !?ioUnusedVariableCppNameSet.removeKey (!outCppName)
+  ioOutputVariableList ++= @(self.mInputActualCppName)
+  !?ioUnusedVariableCppNameSet.removeKey (outCppName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -83,8 +83,8 @@ override proc @inputJokerParameterForGeneration.generateActualParameter
   self.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
   outCppName = self.mInputActualCppName
   ioImplementation += "GGS_" + self.mFormalArgumentType.identifierRepresentation + " " + outCppName + " ; // Joker input parameter\n"
-  ioJokerParametersToReleaseList ++= @(!self.mInputActualCppName)
-  ioOutputVariableList ++= @(!self.mInputActualCppName)
+  ioJokerParametersToReleaseList ++= @(self.mInputActualCppName)
+  ioOutputVariableList ++= @(self.mInputActualCppName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -97,10 +97,10 @@ override proc @semanticBlockInstructionForGeneration.generateInstruction (?!@str
   ioGeneratedCode += "{\n"
   generateInstructionList (
     !?ioInclusionSet,
-    !self.mInstructionList,
+    self.mInstructionList,
     !?ioTemporaryVariableIndex,
     !?ioUnusedVariableCppNameSet,
-    !inGenerateSyntaxDirectedTranslationString,
+    inGenerateSyntaxDirectedTranslationString,
     !?ioGeneratedCode
   )
   ioGeneratedCode += "}\n"

@@ -89,7 +89,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $identifier$ (?let @lstring mMethodName) indexing (abstractExtensionMethodDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
-    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionMethodAST (
+    ioDeclarations.mDeclarationList ++= @(@abstractExtensionMethodAST (
       !isPredefined: false,
       typeName,
       mMethodName,
@@ -105,7 +105,7 @@ syntax extension galgas4DeclarationsSyntax {
     $proc$
     $identifier$ (?let @lstring methodName) indexing (abstractExtensionMethodDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
-    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionMethodAST (
+    ioDeclarations.mDeclarationList ++= @(@abstractExtensionMethodAST (
       !isPredefined: false,
       inTypeName,
       methodName,
@@ -137,23 +137,23 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
     let key = @lstring (
-      !"extension proc @" + self.mTypeName + " " + self.mAbstractExtensionMethodName,
+      "extension proc @" + self.mTypeName + " " + self.mAbstractExtensionMethodName,
       self.mAbstractExtensionMethodName.location
     )
-    !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
-    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"@" + self.mTypeName, self.mTypeName.location))
+    !?ioSemanticTypePrecedenceGraph.addNode (key, self)
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName.location))
   //---
-    if not ioExtensionMethodMapForBuildingContext.hasKey (!self.mTypeName.string) then
+    if not ioExtensionMethodMapForBuildingContext.hasKey (self.mTypeName.string) then
       !?ioExtensionMethodMapForBuildingContext.insertKey
-        (!self.mTypeName,
-        !@()
+        (self.mTypeName,
+        @()
       )
     end
     var entry = ioExtensionMethodMapForBuildingContext [!searchKey: self.mTypeName]
     !?entry.mExtensionMethodMapForType.insertKey
-      (!self.mAbstractExtensionMethodName,
-      !self.mAbstractExtensionMethodFormalParameterList,
-      !.isVirtualAbstract
+      (self.mAbstractExtensionMethodName,
+      self.mAbstractExtensionMethodFormalParameterList,
+      .isVirtualAbstract
     )
     !?ioExtensionMethodMapForBuildingContext.replaceKey (!with: entry)
 //    with %aliasOf ioExtensionMethodMapForBuildingContext [!searchKey: self.mTypeName] do
@@ -194,7 +194,7 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
     ?let @predefinedTypes unused inPredefinedTypes,
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
   //--- Self type
-    let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
+    let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
   //--- Check self type is an abstract class
     if not selfType.definition.typeKind.isClassType then
       error (self.mAbstractExtensionMethodName: "cannot declare a extension proc: '@" + selfType.definition.typeName.string + "' is not a class")
@@ -205,17 +205,17 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
     var formalParameterListForGeneration = @formalParameterListForGeneration ()
     for formalParameter in self.mAbstractExtensionMethodFormalParameterList do
       formalParameterListForGeneration ++= @(
-        !formalParameter.mFormalSelector,
-        !formalParameter.mFormalArgumentPassingMode,
-        !ioTypeMap.typeMapEntryForLKey (formalParameter.mFormalArgumentTypeName),
-        !formalParameter.mFormalArgumentName,
-        !formalParameter.mFormalArgumentName.string
+        formalParameter.mFormalSelector,
+        formalParameter.mFormalArgumentPassingMode,
+        ioTypeMap.typeMapEntryForLKey (formalParameter.mFormalArgumentTypeName),
+        formalParameter.mFormalArgumentName,
+        formalParameter.mFormalArgumentName.string
       )
     end
   //---
     ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "abstract extension proc " + self.mAbstractExtensionMethodName,
-      !@abstractExtensionMethodForGeneration (
+      @abstractExtensionMethodForGeneration (
         !generateHeader: true,
         !implementationCppFileName: "proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionMethodName.string.fileNameRepresentation,
         selfType,
@@ -240,8 +240,8 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
     ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
     !?ioAbstractExtensionMethodListMapAST.insertKey
-      (!self.mTypeName.string,
-      !self.mAbstractExtensionMethodName
+      (self.mTypeName.string,
+      self.mAbstractExtensionMethodName
     )
   }
 
@@ -263,9 +263,9 @@ final class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHead
   override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
                                       !@string outHeader) {
     outHeader = filewrapper [semanticComponentGenerationTemplate.abstractExtensionMethodDeclaration :
-      !self.mReceiverType.definition.typeName.string,
-      !self.mAbstractExtensionMethodName,
-      !self.mAbstractExtensionMethodFormalParameterList
+      self.mReceiverType.definition.typeName.string,
+      self.mAbstractExtensionMethodName,
+      self.mAbstractExtensionMethodFormalParameterList
     ]
   }
 
@@ -288,9 +288,9 @@ final class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHead
       entry.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
     end
     outImplementation = filewrapper [semanticComponentGenerationTemplate.abstractExtensionMethodImplementation :
-      !self.mReceiverType,
-      !self.mAbstractExtensionMethodName,
-      !self.mAbstractExtensionMethodFormalParameterList
+      self.mReceiverType,
+      self.mAbstractExtensionMethodName,
+      self.mAbstractExtensionMethodFormalParameterList
     ]
   }
 

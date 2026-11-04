@@ -50,7 +50,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $'char'$ (?let @lchar literalChar)
-    outExpression = @literalCharExpressionAST (!literalChar)
+    outExpression = @literalCharExpressionAST (literalChar)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -78,7 +78,7 @@ override proc @literalCharExpressionAST.analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
   outExpression = @literalCharExpressionForGeneration (
-    !inAnalysisContext.predefinedTypes.mCharType,
+    inAnalysisContext.predefinedTypes.mCharType,
     self.mCharacter.location,
     self.mCharacter.char
   )

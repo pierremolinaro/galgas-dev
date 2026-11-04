@@ -92,13 +92,13 @@ syntax extension galgas4ExpressionSyntax {
     $[$
     $identifier$ (?let filewrapperName) indexing (filewrapperReference)
     select
-      outExpression = @filewrapperObjectInstanciationInExpressionAST (!filewrapperName)
+      outExpression = @filewrapperObjectInstanciationInExpressionAST (filewrapperName)
     or
       $.$
       select
         $"string"$ (?let @lstring filePath)
         outExpression = @filewrapperInExpressionAST (
-          !filewrapperName,
+          filewrapperName,
           filePath
         )
       or
@@ -106,7 +106,7 @@ syntax extension galgas4ExpressionSyntax {
         $:$
         <output_expression_list> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
         outExpression = @filewrapperTemplateInExpressionAST (
-          !filewrapperName,
+          filewrapperName,
           filewrapperTemplateName,
           expressionList
         )
@@ -139,25 +139,25 @@ override proc @filewrapperObjectInstanciationInExpressionAST.analyzeSemanticExpr
   ?!@localVarManager unused ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
+  let usefulnessName = filewrapperNameForUsefulEntitiesGraph (self.mFilewrapperName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
 //--- Search for filewrapper name in filewrapper map
   inAnalysisContext.semanticContext.mFilewrapperMap.searchKey
-    (!self.mFilewrapperName,
+    (self.mFilewrapperName,
     ?let @lstring filewrapperPath,
     ?4*,
     ?let @bool isInternal
   )
 //--- Check internal
   if isInternal then
-    let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (!self.mFilewrapperName.string)
+    let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (self.mFilewrapperName.string)
     if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
       error (self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file")
     end
   end
 //---
   outExpression = @filewrapperInExpressionForGeneration (
-    !ioTypeMap.typeMapEntryForLKey (!@lstring (!"filewrapper", self.mFilewrapperName.location)),
+    ioTypeMap.typeMapEntryForLKey (@lstring ("filewrapper", self.mFilewrapperName.location)),
     self.mFilewrapperName.location,
     self.mFilewrapperName.string,
     filewrapperPath.string)
@@ -184,24 +184,24 @@ override proc @filewrapperTemplateInExpressionAST.analyzeSemanticExpression
   ?!@localVarManager ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  let usefulnessName = filewrapperTemplateNameForUsefulEntitiesGraph (!self.mFilewrapperName, !self.mFilewrapperTemplateName)
+  let usefulnessName = filewrapperTemplateNameForUsefulEntitiesGraph (self.mFilewrapperName, self.mFilewrapperTemplateName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
 //---
   inAnalysisContext.semanticContext.mFilewrapperMap.searchKey
-     (!self.mFilewrapperName,
+     (self.mFilewrapperName,
      ?4*,
      ?let @filewrapperTemplateMap filewrapperTemplateMap,
      ?let @bool isInternal
    )
 //--- Check internal
   if isInternal then
-    let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (!self.mFilewrapperName.string)
+    let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (self.mFilewrapperName.string)
     if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
       error (self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file")
     end
   end
 //---
-  filewrapperTemplateMap.searchKey (!self.mFilewrapperTemplateName, ?let @functionSignature templateSignature, ?*)
+  filewrapperTemplateMap.searchKey (self.mFilewrapperTemplateName, ?let @functionSignature templateSignature, ?*)
 //--- Analysis arguments
   var @semanticExpressionListForGeneration effectiveParameterList
   if self.mExpressions.count != templateSignature.count then
@@ -221,18 +221,18 @@ override proc @filewrapperTemplateInExpressionAST.analyzeSemanticExpression
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
         !inferenceType: formal.mFormalArgumentType,
-        !inAnalysisContext,
+        inAnalysisContext,
         !?ioTypeMap,
         !?ioVariableMap,
         ?@semanticExpressionForGeneration exp
       )
-      checkAssignmentTypeWithImplicitGetterCall (!formal.mFormalArgumentType, !exp.mResultType, !actual.mEndOfExpressionLocation, !?exp)
+      checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
       effectiveParameterList ++= @(exp)
     end
   end
 //---
   outExpression = @filewrapperTemplateInExpressionForGeneration (
-    !inAnalysisContext.predefinedTypes.mStringType,
+    inAnalysisContext.predefinedTypes.mStringType,
     self.mFilewrapperName.location,
     self.mFilewrapperName.string,
     self.mFilewrapperTemplateName.string,
@@ -257,7 +257,7 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   ?!@localVarManager unused ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!self.mFilewrapperName)
+  let usefulnessName = filewrapperNameForUsefulEntitiesGraph (self.mFilewrapperName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
 //--- Parse filewrapper path
   var @stringlist directoryList
@@ -267,12 +267,12 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   elsif self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
     error (self.mFilewrapperPath : "the path should not begin with '/'" spoil directoryList, fileName)
   else
-    directoryList = self.mFilewrapperPath.componentsSeparatedByString (!"/")
+    directoryList = self.mFilewrapperPath.componentsSeparatedByString ("/")
     !?directoryList.popLast (?fileName)
   end
 //--- Get filewrapper features
   inAnalysisContext.semanticContext.mFilewrapperMap.searchKey
-    (!self.mFilewrapperName,
+    (self.mFilewrapperName,
     ?*,
     ?*,
     ?var @wrapperFileMap filewrapperFileMap,
@@ -282,7 +282,7 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   )
 //--- Check internal
   if isInternal then
-    let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (!self.mFilewrapperName.string)
+    let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (self.mFilewrapperName.string)
     if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
       error (self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file")
     end
@@ -293,9 +293,9 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   while directoryList.count > 0 do
     !?directoryList.popFirst (?let directoryName)
     builtPath += directoryName + "/"
-    if filewrapperDirectoryMap.hasKey (!directoryName) then
+    if filewrapperDirectoryMap.hasKey (directoryName) then
       filewrapperDirectoryMap.searchKey
-        (!@lstring (!directoryName, @location.here),
+        (@lstring (directoryName, @location.here),
         ?filewrapperFileMap,
         ?filewrapperDirectoryMap,
         ?*
@@ -307,8 +307,8 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   end
   let @uint fileIndex
   let @bool isTextFile
-  if filewrapperFileMap.hasKey (!fileName) then
-    filewrapperFileMap.searchKey (!@lstring (!fileName, @location.here), ?*, ?isTextFile, ?*, ?fileIndex)
+  if filewrapperFileMap.hasKey (fileName) then
+    filewrapperFileMap.searchKey (@lstring (fileName, @location.here), ?*, ?isTextFile, ?*, ?fileIndex)
   else
     error (self.mFilewrapperPath
     : "the '" + fileName + "' file does not exist in the '" + builtPath + "' directory of '" + self.mFilewrapperName + "' filewrapper"
@@ -316,9 +316,9 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   end
 //---
   outExpression = @filewrapperStaticPathInExpressionForGeneration (
-    !if isTextFile
+    if isTextFile
       then inAnalysisContext.predefinedTypes.mStringType
-      else ioTypeMap.typeMapEntryForLKey (!@lstring (!"data", @location.here))
+      else ioTypeMap.typeMapEntryForLKey (@lstring ("data", @location.here))
      end,
     self.mFilewrapperName.location,
     self.mFilewrapperName.string,
@@ -381,7 +381,7 @@ override proc @filewrapperTemplateInExpressionForGeneration.generateExpression
   for (mValue) in parameterList do
     outCppExpression += ", " + mValue
   end
-  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
   outCppExpression += self.mLocation.commaSourceFile + "))"
 }
 

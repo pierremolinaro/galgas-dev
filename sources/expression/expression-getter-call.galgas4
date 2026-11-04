@@ -43,14 +43,14 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
                           !@semanticExpressionForGeneration outExpression ) {
   //--- Check self is not inkoed before full initialization
     if self.mReceiver is @selfInExpressionAST then
-      ioVariableMap.checkSelfObjectIsFullyInitialized (!self.mGetterName.location)
+      ioVariableMap.checkSelfObjectIsFullyInitialized (self.mGetterName.location)
     end
   //-------------------------------------- Expression analysis
     self.mReceiver.analyzeSemanticExpression
       (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inferenceType: @unifiedTypeMapEntry.null,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !?ioVariableMap,
       ?@semanticExpressionForGeneration receiverExpression
@@ -63,7 +63,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           %replaceBy aGetter.mGetterNameThatObsoletesInvokationName
         )
       end
-      if receiverType.definition.propertyMap.hasKey (!self.mGetterName.string)
+      if receiverType.definition.propertyMap.hasKey (self.mGetterName.string)
         && (self.mActualArgumentList.count == 0) then
         error (self.mExpressionLocation : "use dot notation, instead of func call")
       end
@@ -80,7 +80,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
             !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
             !?ioUsefulEntitiesGraph,
             !inferenceType: formal.mFormalArgumentType,
-            !inAnalysisContext,
+            inAnalysisContext,
             !?ioTypeMap,
             !?ioVariableMap,
             ?@semanticExpressionForGeneration exp
@@ -89,11 +89,11 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
             let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
             error (actual.mActualSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
           end
-          checkAssignmentTypeWithImplicitGetterCall (!formal.mFormalArgumentType, !exp.mResultType, !actual.mEndOfExpressionLocation, !?exp)
+          checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
           constructorEffectiveParameterList ++= @(exp)
         end
         outExpression = @getterCallExpressionForGeneration (
-          !aGetter.mReturnedType,
+          aGetter.mReturnedType,
           self.mGetterName.location,
           aGetter.mKind,
           receiverExpression,
@@ -107,7 +107,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         end
       end
   //-------------------------------------- The func does not exist, it is a property ?
-    elsif self.mActualArgumentList.count == 0, receiverType.definition.propertyMap.hasKey (!self.mGetterName) then
+    elsif self.mActualArgumentList.count == 0, receiverType.definition.propertyMap.hasKey (self.mGetterName) then
       error (self.mExpressionLocation : "use dot notation, instead of func call" spoil outExpression)
   //-------------------------------------- not found, old style search
     else
@@ -129,7 +129,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
               hasCompilerArgument = entry.mHasCompilerArgument
               returnedType = entry.mReturnedType
               receiverExpression = @propertyAccessExpressionForGeneration (
-                !returnedType,
+                returnedType,
                 self.mGetterName.location,
                 receiverExpression,
                 property.name.string
@@ -168,7 +168,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
               !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
               !?ioUsefulEntitiesGraph,
               !inferenceType: formal.mFormalArgumentType,
-              !inAnalysisContext,
+              inAnalysisContext,
               !?ioTypeMap,
               !?ioVariableMap,
               ?@semanticExpressionForGeneration exp
@@ -177,14 +177,14 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
               let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
               error (actual.mActualSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
             end
-            checkAssignmentTypeWithImplicitGetterCall (!formal.mFormalArgumentType, !exp.mResultType, !actual.mEndOfExpressionLocation, !?exp)
+            checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
             constructorEffectiveParameterList ++= @(exp)
           end
           if obsoletedByGetter != "" then
             error (self.mGetterName : "obsolete func" fixit %replaceBy obsoletedByGetter)
           end
           outExpression = @getterCallExpressionForGeneration (
-            !returnedType,
+            returnedType,
             self.mGetterName.location,
             kind,
             receiverExpression,
@@ -262,7 +262,7 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
       var @bool searching = true
       loop (@uint.max) while searching do
         if not baseType.definition.superType.isNull then
-          if baseType.definition.superType.definition.getterMap.hasKey (!self.mGetterName) then
+          if baseType.definition.superType.definition.getterMap.hasKey (self.mGetterName) then
             baseType = baseType.definition.superType
           else
             searching = false
@@ -272,7 +272,7 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
         end
       end
       ioInclusionSet ++= "func-" + baseType.definition.typeName.string.fileNameRepresentation + "-" + self.mGetterName.fileNameRepresentation
-      !?ioUnusedVariableCppNameSet.removeKey (!receiverCppName)
+      !?ioUnusedVariableCppNameSet.removeKey (receiverCppName)
       if self.mReceiverExpression.mResultType.definition.typeKind.isClassType then
         outCppExpression = "callExtensionGetter_" + self.mGetterName.identifierRepresentation
            + " ((const cPtr_" + self.mReceiverExpression.mResultType.identifierRepresentation + " *) " + receiverCppName + ".ptr (), "
@@ -294,11 +294,11 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
     end
     if getterArgumentCppNameList.count == 0 then
       if self.mHasCompilerArgument then
-        !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+        !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
         outCppExpression += compilerCppName () + " COMMA_"
       end
     elsif self.mHasCompilerArgument then
-      !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+      !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
       outCppExpression += ", " + compilerCppName () + " COMMA_"
     else
       outCppExpression += " COMMA_"

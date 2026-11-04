@@ -115,7 +115,7 @@ syntax extension galgas4InstructionsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList ++= @(!@procDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(@procDeclarationAST (
       !isPredefined: false,
       !isFilePrivate: false,
       mRoutineName,
@@ -146,7 +146,7 @@ syntax extension galgas4InstructionsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList ++= @(!@procDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(@procDeclarationAST (
       !isPredefined: false,
       !isFilePrivate: true,
       mRoutineName,
@@ -180,19 +180,19 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
   //--- Build signature
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
-      !?ioTypeMap.makeEntry (!argument.mFormalArgumentTypeName, ?let parameterTypeIndex)
+      !?ioTypeMap.makeEntry (argument.mFormalArgumentTypeName, ?let parameterTypeIndex)
       routineSignature ++= @(
-        !argument.mFormalSelector,
-        !parameterTypeIndex,
-        !argument.mFormalArgumentPassingMode,
-        !argument.mFormalArgumentName.string)
+        argument.mFormalSelector,
+        parameterTypeIndex,
+        argument.mFormalArgumentPassingMode,
+        argument.mFormalArgumentName.string)
     end
   //--- Enter types for instruction list
     self.mRoutineInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
   //--- Enter routine in routine map
     !?ioSemanticContext.routineMap.insertKey
-      (!self.mRoutineName,
-      !routineSignature,
+      (self.mRoutineName,
+      routineSignature,
       !isFilePrivate: self.isFilePrivate
     )
   }
@@ -209,42 +209,42 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
   //---
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
-      let parameterType = ioTypeMap.typeMapEntryForLKey (!argument.mFormalArgumentTypeName)
+      let parameterType = ioTypeMap.typeMapEntryForLKey (argument.mFormalArgumentTypeName)
       routineSignature ++= @(
-        !argument.mFormalSelector,
-        !parameterType,
-        !argument.mFormalArgumentPassingMode,
-        !argument.mFormalArgumentName.string)
+        argument.mFormalSelector,
+        parameterType,
+        argument.mFormalArgumentPassingMode,
+        argument.mFormalArgumentName.string)
     end
-    let mangledName = routineMangledName (!self.mRoutineName, !routineSignature)
+    let mangledName = routineMangledName (self.mRoutineName, routineSignature)
   //--- Useful entities graph
-    let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!mangledName)
-    !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
+    let nameForUsefulness = procedureNameForUsefulEntitiesGraph (mangledName)
+    !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
     if self.usefullProcedure then
-      ioUsefulnessRootEntities ++= @(!nameForUsefulness)
+      ioUsefulnessRootEntities ++= @(nameForUsefulness)
     end
   //--- Instruction list
     let analysisContext = @analysisContext (
-      !inSemanticContext,
+      inSemanticContext,
       inPredefinedTypes,
       !selfObjectCppName: "",
       !selfAvailability: .none,
       !selfObjectCppPrefixForAccessingProperty: ""
     )
     analyzeRoutineBody (
-      !nameForUsefulness,
+      nameForUsefulness,
       !?ioUsefulEntitiesGraph,
-      !analysisContext,
+      analysisContext,
       !?ioTypeMap,
-      !self.mFormalArgumentListAST,
-      !self.mRoutineInstructionList,
-      !self.mEndOfRoutineInstructionList,
+      self.mFormalArgumentListAST,
+      self.mRoutineInstructionList,
+      self.mEndOfRoutineInstructionList,
       ?let instructionList,
       ?let formalArgumentList
     )
     ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "proc " + mangledName,
-      !@routineImplementationForGeneration (
+      @routineImplementationForGeneration (
         !generateHeader: true,
         !implementationCppFileName: "proc-" + mangledName.string.fileNameRepresentation,
         !routineMangledName: mangledName.string,
@@ -280,20 +280,20 @@ final class @routineImplementationForGeneration : @routinePrototypeDeclarationFo
     end
     generateProcedure (
       !static: self.mGenerateStatic,
-      !"routine_" + self.routineMangledName.identifierRepresentation,
+      "routine_" + self.routineMangledName.identifierRepresentation,
       !?ioInclusionSet,
-      !self.mFormalArgumentList,
-      !self.mRoutineInstructionList,
-      !false, // Do not generate 'const' qualifier
-      !"Compiler",
-      !true, // Generate location Argument
-      !false, // Do not generate 'resetTemplateString'
-      !false, // Do not generate syntaxDirectedTranslationString argument
+      self.mFormalArgumentList,
+      self.mRoutineInstructionList,
+      false, // Do not generate 'const' qualifier
+      "Compiler",
+      true, // Generate location Argument
+      false, // Do not generate 'resetTemplateString'
+      false, // Do not generate syntaxDirectedTranslationString argument
       ?let @string code
     )
     outImplementation = filewrapper [semanticComponentGenerationTemplate.routineImplementation :
-      !self.routineMangledName,
-      !code
+      self.routineMangledName,
+      code
     ]
   }
 

@@ -488,7 +488,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       <lexical_indexing_declaration> (!?indexingListAST)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@lexiqueComponentAST (
+    ioDeclarations.mDeclarationList ++= @(@lexiqueComponentAST (
       !isPredefined: false, // Is not predefined
       lexiqueComponentName,
       false, // isTemplate
@@ -511,7 +511,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     $identifier$ (?let @lstring indexName) indexing (indexingNameDefinition)
     $:$
     $"string"$ (?let @lstring indexComment)
-    ioIndexingListAST ++= @(!indexName, !indexComment)
+    ioIndexingListAST ++= @(indexName, indexComment)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -522,7 +522,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     $identifier$ (?let @lstring messageName)
     $:$
     $"string"$ (?let @lstring messageValue)
-    ioLexicalMessageDeclarationList ++= @(!messageName, !messageValue)
+    ioLexicalMessageDeclarationList ++= @(messageName, messageValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -531,7 +531,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     $rule$
     $list$
     $identifier$ (?let @lstring listName)
-    ioLexicalImplicitRuleList ++= @(!@lexicalImplicitRuleAST (!listName))
+    ioLexicalImplicitRuleList ++= @(@lexicalImplicitRuleAST (listName))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -546,7 +546,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       <lexical_instruction> (!?instructionList)
     end
     $}$
-    ioLexicalExplicitRuleList ++= @(!@lexicalExplicitRuleAST (!lexicalRuleExpression, instructionList))
+    ioLexicalExplicitRuleList ++= @(@lexicalExplicitRuleAST (lexicalRuleExpression, instructionList))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -554,7 +554,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList ) {
     $send$
     <lexical_send_instruction> (?let @lexicalInstructionAST instruction)
-    ioInstructionList ++= @(!instruction)
+    ioInstructionList ++= @(instruction)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -568,21 +568,21 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     while
       <lexical_instruction> (!?whileInstructionList)
     end
-    ioLexicalWhileBranchList ++= @(!whileExpression, !whileInstructionList)
+    ioLexicalWhileBranchList ++= @(whileExpression, whileInstructionList)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
     $'char'$ (?let @lchar character)
-    outEffectiveArgument = @lexicalCharacterInputArgumentAST (!character)
+    outEffectiveArgument = @lexicalCharacterInputArgumentAST (character)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
     $literalInt$ (?let unsignedValue)
-    outEffectiveArgument = @lexicalUnsignedInputArgumentAST (!unsignedValue)
+    outEffectiveArgument = @lexicalUnsignedInputArgumentAST (unsignedValue)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -590,7 +590,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
     let currentLocation = @location.here
     $*$
-    outEffectiveArgument = @lexicalCurrentCharacterInputArgumentAST (!currentLocation)
+    outEffectiveArgument = @lexicalCurrentCharacterInputArgumentAST (currentLocation)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -598,7 +598,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   rule <lexical_output_effective_argument> (!@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument ) {
     $identifier$ (?let idf)
     select
-      outEffectiveArgument = @lexicalAttributeInputArgumentAST (!idf)
+      outEffectiveArgument = @lexicalAttributeInputArgumentAST (idf)
     or
       $($
       var @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = @()
@@ -606,10 +606,10 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       while
         $!$
         <lexical_output_effective_argument> (?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg)
-        functionActualArgumentList ++= @(!arg)
+        functionActualArgumentList ++= @(arg)
       end
       $)$
-      outEffectiveArgument = @lexicalFunctionInputArgumentAST (!idf, functionActualArgumentList)
+      outEffectiveArgument = @lexicalFunctionInputArgumentAST (idf, functionActualArgumentList)
     end
   }
 
@@ -627,7 +627,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     while
       $|$
       <lexical_factor> (?let rightExpression)
-      outExpression = @lexicalOrExpressionAST (!outExpression, rightExpression)
+      outExpression = @lexicalOrExpressionAST (outExpression, rightExpression)
     end
   }
 
@@ -635,7 +635,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   rule <lexical_factor>(!@lexicalExpressionAST outExpression ) {
     $"string"$ (?let string)
-    outExpression = @lexicalStringMatchAST (!string)
+    outExpression = @lexicalStringMatchAST (string)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -645,7 +645,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     $"string"$ (?let string)
     $error$
     $identifier$ (?let errorMessage)
-    outExpression = @lexicalStringNotMatchAST (!string, errorMessage)
+    outExpression = @lexicalStringNotMatchAST (string, errorMessage)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -653,11 +653,11 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   rule <lexical_factor> (!@lexicalExpressionAST outExpression ) {
     $'char'$ (?let @lchar character)
     select
-      outExpression = @lexicalCharacterMatchAST (!character)
+      outExpression = @lexicalCharacterMatchAST (character)
     or
       $->$
       $'char'$ (?let @lchar upperBound)
-      outExpression = @lexicalCharacterIntervalMatchAST (!character, upperBound)
+      outExpression = @lexicalCharacterIntervalMatchAST (character, upperBound)
     end
   }
 
@@ -665,7 +665,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   rule <lexical_factor> (!@lexicalExpressionAST outExpression ) {
     $identifier$ (?let @lstring characterSet)
-    outExpression = @lexicalCharacterSetMatchAST (!characterSet)
+    outExpression = @lexicalCharacterSetMatchAST (characterSet)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -678,19 +678,19 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     while
       $!selector:$ (?let selector)
       $identifier$ (?let sentAttribute)
-      sentAttributeList ++= @(!selector, !sentAttribute)
+      sentAttributeList ++= @(selector, sentAttribute)
     while
       $!$
       let selector = "".here
       $identifier$ (?let sentAttribute)
-      sentAttributeList ++= @(!selector, !sentAttribute)
+      sentAttributeList ++= @(selector, sentAttribute)
     end
     let @lstring theStyle // Empty string if no style
     select
       $style$
       $identifier$ (? theStyle)
     or
-      theStyle = @lstring (!"", @location.here)
+      theStyle = @lstring ("", @location.here)
     end
     $%errorMessage$
     $"string"$ (?let @lstring errorMessage)
@@ -702,7 +702,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       $,$
     end
     $}$
-    ioLexicalListDeclarationList ++= @(!name, !theStyle, !errorMessage, !sentAttributeList, !entryList)
+    ioLexicalListDeclarationList ++= @(name, theStyle, errorMessage, sentAttributeList, entryList)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -727,8 +727,8 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       terminalSpelling = entrySpelling
     end
     ioLexicalListEntryList ++= @(
-      !entrySpelling,
-      !terminalSpelling,
+      entrySpelling,
+      terminalSpelling,
       !nonAtomicSelection: nonAtomicSelection,
       !isEndOfTemplateMark: isTemplateEndMark)
   }
@@ -738,7 +738,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   rule <lexical_attribute_declaration> (?!@lexicalAttributeListAST ioLexicalAttributeList ) {
     $@type$ (?let @lstring typeName)
     $identifier$ (?let @lstring name)
-    ioLexicalAttributeList ++= @(!typeName, !name)
+    ioLexicalAttributeList ++= @(typeName, name)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -750,12 +750,12 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     while
       $!selector:$ (?let selector)
       $identifier$ (?let sentAttribute)
-      sentAttributeList ++= @(!selector, !sentAttribute)
+      sentAttributeList ++= @(selector, sentAttribute)
     while
       $!$
       let selector = "".here
       $identifier$ (?let sentAttribute)
-      sentAttributeList ++= @(!selector, !sentAttribute)
+      sentAttributeList ++= @(selector, sentAttribute)
     end
     var @lstring theStyle = "".nowhere // Empty string if no style
     var nonAtomicSelection = false
@@ -777,10 +777,10 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     $%errorMessage$
     $"string"$ (?let @lstring errorMessage)
     ioTerminalDeclarationList ++= @(
-      !name,
-      !sentAttributeList,
-      !errorMessage,
-      !theStyle,
+      name,
+      sentAttributeList,
+      errorMessage,
+      theStyle,
       !nonAtomicSelection: nonAtomicSelection,
       !isEndOfTemplateMark: templateEndMark)
   }
@@ -790,15 +790,15 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   rule <style_declaration> (?!@lexicalStyleListAST ioLexicalStyleList ) {
     $style$
     $identifier$ (?let @lstring styleIdentifier)
-    if styleIdentifier.string.containsCharacter (!'_') then
+    if styleIdentifier.string.containsCharacter ('_') then
       error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain '_' character")
     end
-    if styleIdentifier.string.containsCharacterInRange (!'0', !'9') then
+    if styleIdentifier.string.containsCharacterInRange ('0', '9') then
       error (styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit")
     end
     $->$
     $"string"$ (?let @lstring comment)
-    ioLexicalStyleList ++= @(!styleIdentifier, !comment)
+    ioLexicalStyleList ++= @(styleIdentifier, comment)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -821,8 +821,8 @@ override proc @lexiqueComponentAST.enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
-  let key = @lstring (!"lexique " + self.mLexiqueComponentName, self.mLexiqueComponentName.location)
-  !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
+  let key = @lstring ("lexique " + self.mLexiqueComponentName, self.mLexiqueComponentName.location)
+  !?ioSemanticTypePrecedenceGraph.addNode (key, self)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -839,8 +839,8 @@ override proc @lexiqueComponentAST.enterDeclarationInSemanticContext
   let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
   var @lexicalAttributeMap lexicalAttributeMap = @()
   buildLexicalAttributeMap (
-   !lexicalTypeMap,
-   !self.mLexicalAttributeListAST,
+   lexicalTypeMap,
+   self.mLexicalAttributeListAST,
    !?lexicalAttributeMap
   )
 //--------------------------------------
@@ -849,31 +849,31 @@ override proc @lexiqueComponentAST.enterDeclarationInSemanticContext
     var argumentTypeList = @lexicalSentValueList ()
     for entry in terminal.mSentAttributeList do
       lexicalAttributeMap.searchKey (entry.mAttributeName, ?let attributeLexicalType)
-      argumentTypeList ++= @(!entry.mFormalSelector, !entry.mAttributeName.string, !attributeLexicalType)
+      argumentTypeList ++= @(entry.mFormalSelector, entry.mAttributeName.string, attributeLexicalType)
     end
-    !?terminalMap.insertKey (!terminal.mName, !argumentTypeList)
+    !?terminalMap.insertKey (terminal.mName, argumentTypeList)
   end
 //---
   for lexicalList in self.mLexicalListDeclarationListAST do
     var argumentTypeList = @lexicalSentValueList ()
     for entry in lexicalList.mSentAttributeList do
       lexicalAttributeMap.searchKey (entry.mAttributeName, ?let attributeLexicalType)
-      argumentTypeList ++= @(entry.mFormalSelector, entry.mAttributeName.string, !attributeLexicalType)
+      argumentTypeList ++= @(entry.mFormalSelector, entry.mAttributeName.string, attributeLexicalType)
     end
     for entry in lexicalList.mEntryList do
-      !?terminalMap.insertKey (entry.mTerminalSpelling, !argumentTypeList)
+      !?terminalMap.insertKey (entry.mTerminalSpelling, argumentTypeList)
     end
   end
 //---
   !?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis.insertKey (
-     !self.mLexiqueComponentName,
-     !self.mIsTemplate,
-     !terminalMap,
-     !self.mIndexingListAST,
-     !self.mTerminalDeclarationListAST,
-     !self.mLexicalAttributeListAST,
-     !self.mLexicalStyleListAST,
-     !self.mLexicalListDeclarationListAST
+     self.mLexiqueComponentName,
+     self.mIsTemplate,
+     terminalMap,
+     self.mIndexingListAST,
+     self.mTerminalDeclarationListAST,
+     self.mLexicalAttributeListAST,
+     self.mLexicalStyleListAST,
+     self.mLexicalListDeclarationListAST
   )
 }
 
@@ -888,8 +888,8 @@ override proc @lexiqueComponentAST.semanticAnalysis
                                       ?let @predefinedTypes unused inPredefinedTypes,
                                       ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
 //--- Useful entities graph
-  let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
-  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
+  let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (self.mLexiqueComponentName)
+  !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
 //-------------------------------------- Lexical attribute type name map
   let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
 //-------------------------------------- Build lexical routine map
@@ -900,7 +900,7 @@ override proc @lexiqueComponentAST.semanticAnalysis
   lexicalUnicodeTestFunctionAnalysis (?let unicodeTestFunctions)
 //--------------------------------------
   var @lexiqueAnalysisContext lexiqueAnalysisContext = @(
-    !self.mLexiqueComponentName.string,
+    self.mLexiqueComponentName.string,
     lexicalRoutineMap,
     lexicalFunctionMap,
     @lexicalMessageMap (),
@@ -916,13 +916,13 @@ override proc @lexiqueComponentAST.semanticAnalysis
 //-------------------------------------- Build style map
   var styleIndex = 1
   for styleEntry in self.mLexicalStyleListAST do
-    !?lexiqueAnalysisContext.mStyleMap.insertKey (styleEntry.mName, styleEntry.mComment, !styleIndex)
+    !?lexiqueAnalysisContext.mStyleMap.insertKey (styleEntry.mName, styleEntry.mComment, styleIndex)
     styleIndex += 1
   end
 //-------------------------------------- Build lexical attribute map
   buildLexicalAttributeMap (
-   !lexicalTypeMap,
-   !self.mLexicalAttributeListAST,
+   lexicalTypeMap,
+   self.mLexicalAttributeListAST,
    !?lexiqueAnalysisContext.mLexicalAttributeMap
   )
 //-------------------------------------- Build terminal map
@@ -934,16 +934,16 @@ override proc @lexiqueComponentAST.semanticAnalysis
     var argumentTypeList = @lexicalSentValueList ()
     for attribute in terminal.mSentAttributeList do
       lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (attribute.mAttributeName, ?let attributeLexicalType)
-      argumentTypeList ++= @(attribute.mFormalSelector, attribute.mAttributeName.string, !attributeLexicalType)
+      argumentTypeList ++= @(attribute.mFormalSelector, attribute.mAttributeName.string, attributeLexicalType)
     end
-    !?lexiqueAnalysisContext.mTerminalMap.insertKey (terminal.mName, !argumentTypeList)
+    !?lexiqueAnalysisContext.mTerminalMap.insertKey (terminal.mName, argumentTypeList)
     lexiqueAnalysisContext.mTerminalList ++= @(
       terminal.mName,
-      !argumentTypeList,
+      argumentTypeList,
       terminal.mSyntaxErrorMessage.string,
       !isEndOfTemplateMark: terminal.isEndOfTemplateMark,
       !atomicSelection: not terminal.nonAtomicSelection,
-      !terminalStyleIndex
+      terminalStyleIndex
     )
   end
   for lexicalList in self.mLexicalListDeclarationListAST do
@@ -959,16 +959,16 @@ override proc @lexiqueComponentAST.semanticAnalysis
     var @lexicalExplicitTokenListMap lexicalTokenListMap = @()
     var tokenSortedlist = @tokenSortedlist ()
     for entry in lexicalList.mEntryList do
-      let syntaxErrorMessage = lexicalList.mSyntaxErrorMessage.string.replacing (!"%K", !by: entry.mTerminalSpelling.string)
+      let syntaxErrorMessage = lexicalList.mSyntaxErrorMessage.string.replacing ("%K", !by: entry.mTerminalSpelling.string)
       lexiqueAnalysisContext.mTerminalList ++= @(
-        !entry.mTerminalSpelling,
-        !argumentTypeList,
+        entry.mTerminalSpelling,
+        argumentTypeList,
         syntaxErrorMessage,
         !isEndOfTemplateMark: entry.isEndOfTemplateMark,
         !atomicSelection: not entry.nonAtomicSelection,
-        !terminalStyleIndex
+        terminalStyleIndex
       )
-      !?lexiqueAnalysisContext.mTerminalMap.insertKey (entry.mTerminalSpelling, !argumentTypeList)
+      !?lexiqueAnalysisContext.mTerminalMap.insertKey (entry.mTerminalSpelling, argumentTypeList)
       !?lexicalTokenListMap.insertKey (
         entry.mEntrySpelling,
         entry.mTerminalSpelling,
@@ -978,11 +978,11 @@ override proc @lexiqueComponentAST.semanticAnalysis
       tokenSortedlist ++= @(entry.mEntrySpelling.string.count, entry.mEntrySpelling.string, entry.mTerminalSpelling.string)
       lexiqueAnalysisContext.mUnicodeStringToGenerate ++= entry.mEntrySpelling.string
     end
-    !?lexiqueAnalysisContext.mLexicalTokenListMap.insertKey (lexicalList.mName, !lexicalTokenListMap, !tokenSortedlist, !false)
+    !?lexiqueAnalysisContext.mLexicalTokenListMap.insertKey (lexicalList.mName, lexicalTokenListMap, tokenSortedlist, false)
   end
 //-------------------------------------- Build Message map
   for lexicalMessage in self.mLexicalMessageDeclarationListAST do
-    !?lexiqueAnalysisContext.mLexicalMessageMap.insertKey (lexicalMessage.mMessageName, lexicalMessage.mMessageValue, !false)
+    !?lexiqueAnalysisContext.mLexicalMessageMap.insertKey (lexicalMessage.mMessageName, lexicalMessage.mMessageValue, false)
   end
 //-------------------------------------- Check rules
   for entry in self.mLexicalRuleListAST do
@@ -1057,7 +1057,7 @@ override proc @lexiqueComponentAST.semanticAnalysis
   //---
     ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "",
-      !@lexiqueDeclarationForGeneration (
+      @lexiqueDeclarationForGeneration (
         !generateHeader: true,
         !implementationCppFileName: "lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation,
         self.mLexiqueComponentName.string,

@@ -73,10 +73,10 @@ syntax extension galgas4DeclarationsSyntax {
       $identifier$ (?let @lstring insertName)
       $%errorMessage$
       $"string"$ (?let @lstring errorMessage)
-      graphInsertModifierList ++= @(!insertName, !errorMessage)
+      graphInsertModifierList ++= @(insertName, errorMessage)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@graphDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @(@graphDeclarationAST (
       !isPredefined: false,
       graphTypeName,
       associatedListTypeName,
@@ -116,7 +116,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
   ) {
     let key = @lstring ("@" + self.mGraphTypeName, self.mGraphTypeName.location)
-    !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
+    !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     !?ioSemanticTypePrecedenceGraph.addEdge
       (!from: key,
       !to: @("@" + self.mAssociatedListTypeName, self.mAssociatedListTypeName.location)
@@ -135,27 +135,27 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     ?!@semanticContext ioSemanticContext ) {
   //--- string type Entry
     !?ioTypeMap.makeEntryFromString
-      (!"string",
+      ("string",
       ?let @unifiedTypeMapEntry stringTypeEntry
     )
   //--- lstring type Entry
     !?ioTypeMap.makeEntryFromString
-      (!"lstring",
+      ("lstring",
       ?let @unifiedTypeMapEntry lstringTypeEntry
     )
   //--- Graph type Entry
     !?ioTypeMap.makeEntry
-      (!self.mGraphTypeName,
+      (self.mGraphTypeName,
       ?* // let @unifiedTypeMapEntry graphTypeEntry
     )
   //--- Associated list type Entry
     !?ioTypeMap.makeEntry
-      (!self.mAssociatedListTypeName,
+      (self.mAssociatedListTypeName,
       ?let @unifiedTypeMapEntry associatedListTypeEntry
     )
   //--- @lstringlist type Entry
     !?ioTypeMap.makeEntryFromString
-      (!"lstringlist",
+      ("lstringlist",
       ?let @unifiedTypeMapEntry lstringListTypeEntry
     )
   //---
@@ -165,81 +165,81 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   //--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
     var formalParameterList = @formalParameterSignature ()
     formalParameterList ++= @(
-      !"".nowhere,
-      !associatedListTypeEntry,
-      !.argumentOut,
-      !"outSortedInformationList")
+      "".nowhere,
+      associatedListTypeEntry,
+      .argumentOut,
+      "outSortedInformationList")
     formalParameterList ++= @(
-      !"".nowhere,
-      !lstringListTypeEntry,
-      !.argumentOut,
-      !"outSortedLKeyList")
+      "".nowhere,
+      lstringListTypeEntry,
+      .argumentOut,
+      "outSortedLKeyList")
     formalParameterList ++= @(
-      !"".nowhere,
-      !associatedListTypeEntry,
-      !.argumentOut,
-      !"outUnsortedInformationList")
+      "".nowhere,
+      associatedListTypeEntry,
+      .argumentOut,
+      "outUnsortedInformationList")
     formalParameterList ++= @(
-      !"".nowhere,
-      !lstringListTypeEntry,
-      !.argumentOut,
-      !"outUnsortedLKeyList")
+      "".nowhere,
+      lstringListTypeEntry,
+      .argumentOut,
+      "outUnsortedLKeyList")
     !?instanceMethodMap.insertKey
-      (!@("topologicalSort", .here),
-      !.definedAsMember,
-      !formalParameterList,
-      !.here,
-      !true, // Has Compiler Argument
-      !.isBasic,
-      !"" // No error message
+      (@("topologicalSort", .here),
+      .definedAsMember,
+      formalParameterList,
+      .here,
+      true, // Has Compiler Argument
+      .isBasic,
+      "" // No error message
     )
     !?instanceMethodMap.insertKey
-      (!@("depthFirstTopologicalSort", .here),
-      !.definedAsMember,
-      !formalParameterList,
-      !.here,
-      !true, // Has Compiler Argument
-      !.isBasic,
-      !"" // No error message
+      (@("depthFirstTopologicalSort", .here),
+      .definedAsMember,
+      formalParameterList,
+      .here,
+      true, // Has Compiler Argument
+      .isBasic,
+      "" // No error message
     )
   //--- Methods 'nodesWithNoSuccessor', 'nodesWithNoPredecessor'
     formalParameterList = @()
     formalParameterList ++= @(
-      !"".nowhere,
-      !associatedListTypeEntry,
-      !.argumentOut,
-      !"outInformationList")
+      "".nowhere,
+      associatedListTypeEntry,
+      .argumentOut,
+      "outInformationList")
     formalParameterList ++= @(
-      !"".nowhere,
-      !lstringListTypeEntry,
-      !.argumentOut,
-      !"outLKeyList")
+      "".nowhere,
+      lstringListTypeEntry,
+      .argumentOut,
+      "outLKeyList")
     !?instanceMethodMap.insertKey
-      (!@("circularities", .here),
-      !.definedAsMember,
-      !formalParameterList,
-      !.here,
-      !false, // No Compiler Argument
-      !.isBasic,
-      !"" // No error message
+      (@("circularities", .here),
+      .definedAsMember,
+      formalParameterList,
+      .here,
+      false, // No Compiler Argument
+      .isBasic,
+      "" // No error message
     )
     !?instanceMethodMap.insertKey
-      (!@("nodesWithNoSuccessor", .here),
-      !.definedAsMember,
-      !formalParameterList,
-      !.here,
-      !false, // No compiler argument
-      !.isBasic,
-      !"" // No error message
+      (@("nodesWithNoSuccessor", .here),
+      .definedAsMember,
+      formalParameterList,
+      .here,
+      false, // No compiler argument
+      .isBasic,
+      "" // No error message
     )
     !?instanceMethodMap.insertKey
-      (!@("nodesWithNoPredecessor", .here),
-      !.definedAsMember,
-      !formalParameterList,
-      !.here,
-      !false, // No Compiler Argument
-      !.isBasic,
-      !"" // No error message
+      (@("nodesWithNoPredecessor", .here),
+      .definedAsMember,
+      formalParameterList,
+      .here,
+      false, // No Compiler Argument
+      .isBasic,
+      "" // No error message
     )
   //--- Getter 'nodeList'
     enterBaseFinalGetterWithoutArgument (
@@ -369,90 +369,90 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   //--- mutating proc 'enterNode'
     formalParameterList = @()
     formalParameterList ++= @(
-      !"".nowhere,
-      !lstringTypeEntry,
-      !.argumentVarIn,
-      !"inLKey")
+      "".nowhere,
+      lstringTypeEntry,
+      .argumentVarIn,
+      "inLKey")
     for formalArg in associatedListTypeEntry.definition.addAssignOperatorArguments do
       formalParameterList ++= @(
-        !"".nowhere,
-        !formalArg.mFormalArgumentType,
-        !.argumentVarIn,
-        !formalArg.mFormalArgumentName)
+        "".nowhere,
+        formalArg.mFormalArgumentType,
+        .argumentVarIn,
+        formalArg.mFormalArgumentName)
     end
     for insertSetter in self.mInsertModifierList do
       !?setterMap.insertOrReplace (
         insertSetter.mInsertModifierName,
-        !.definedAsMember,
-        !formalParameterList,
-        !true, // has compiler argument
-        !.isBasic,
-        !"" // No error message
+        .definedAsMember,
+        formalParameterList,
+        true, // has compiler argument
+        .isBasic,
+        "" // No error message
       )
     end
   //--- mutating proc 'removeEdgeToDominators'
     !?setterMap.insertKey
-      (!@("removeEdgesToDominators", .here),
-      !.definedAsMember,
-      !@(),
-      !false, // No compiler argument
-      !.isInherited,
-      !"" // No error message
+      (@("removeEdgesToDominators", .here),
+      .definedAsMember,
+      @(),
+      false, // No compiler argument
+      .isInherited,
+      "" // No error message
     )
   //--- mutating proc 'removeEdgesToNode'
     formalParameterList = @formalParameterSignature ()
-    formalParameterList ++= @(!"".nowhere, !stringTypeEntry, !.argumentVarIn, !"inNodeName")
+    formalParameterList ++= @("".nowhere, stringTypeEntry, .argumentVarIn, "inNodeName")
     !?setterMap.insertKey
-      (!@("removeEdgesToNode", .here),
-      !.definedAsMember,
-      !formalParameterList,
-      !true, // Compiler argument
-      !.isInherited,
-      !"" // No error message
+      (@("removeEdgesToNode", .here),
+      .definedAsMember,
+      formalParameterList,
+      true, // Compiler argument
+      .isInherited,
+      "" // No error message
     )
   //--- mutating proc 'addEdge'
     formalParameterList = @formalParameterSignature ()
-    formalParameterList ++= @(!"from".nowhere, !lstringTypeEntry, !.argumentVarIn, !"inSourceNodeLKey")
-    formalParameterList ++= @(!"to".nowhere, !lstringTypeEntry, !.argumentVarIn, !"inTargetNodeLKey")
+    formalParameterList ++= @("from".nowhere, lstringTypeEntry, .argumentVarIn, "inSourceNodeLKey")
+    formalParameterList ++= @("to".nowhere, lstringTypeEntry, .argumentVarIn, "inTargetNodeLKey")
     !?setterMap.insertKey
-      (!"addEdge".here,
-      !.definedAsMember,
-      !formalParameterList,
-      !false, // No compiler argument
-      !.isInherited,
-      !"" // No error message
+      ("addEdge".here,
+      .definedAsMember,
+      formalParameterList,
+      false, // No compiler argument
+      .isInherited,
+      "" // No error message
     )
   //--- mutating proc 'noteNode'
     formalParameterList = @formalParameterSignature ()
     formalParameterList ++= @(
-       !"".nowhere,
-       !lstringTypeEntry,
-       !.argumentVarIn,
-       !"inNodeLKey")
+       "".nowhere,
+       lstringTypeEntry,
+       .argumentVarIn,
+       "inNodeLKey")
     !?setterMap.insertKey
-      (!@("noteNode", .here),
-      !.definedAsMember,
-      !formalParameterList,
-      !false, // No compiler argument
-      !.isInherited,
-      !"" // No error message
+      (@("noteNode", .here),
+      .definedAsMember,
+      formalParameterList,
+      false, // No compiler argument
+      .isInherited,
+      "" // No error message
     )
   //--- Add initializer without argument
     var @initializerMap initializerMap = @()
     let @functionSignature constructorPropertyTypeList = @()
     !?initializerMap.insertKey
-      (!@(constructorPropertyTypeList.initializerSignature, self.mGraphTypeName),
-      !constructorPropertyTypeList
+      (@(constructorPropertyTypeList.initializerSignature, self.mGraphTypeName),
+      constructorPropertyTypeList
     )
   //--- Add Extensions
     addExtensions (
-      !inExtensionInitializerMapForBuildingContext,
-      !inExtensionMethodMapForBuildingContext,
-      !inExtensionGetterMapForBuildingContext,
-      !inExtensionSetterMapForBuildingContext,
+      inExtensionInitializerMapForBuildingContext,
+      inExtensionMethodMapForBuildingContext,
+      inExtensionGetterMapForBuildingContext,
+      inExtensionSetterMapForBuildingContext,
       !?ioSemanticContext,
       !?ioTypeMap,
-      !self.mGraphTypeName,
+      self.mGraphTypeName,
       !isClass: false,
       !?initializerMap,
       !?getterMap,
@@ -463,7 +463,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     var features = @typeFeatures.doNotGenererateObjectCompare
     handleEquatableComparableExtension (
       !?ioEquatableExtensionMap,
-      !self.mGraphTypeName,
+      self.mGraphTypeName,
       !?features,
       !acceptEquatable: false,
       !acceptComparable: false
@@ -496,7 +496,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !headerFileName: "graph-" + self.mGraphTypeName.string.fileNameRepresentation,
       !headerKind: .oneHeader
     )
-    !?ioTypeMap.insertType (!typeDefinition.typeName, !typeDefinition)
+    !?ioTypeMap.insertType (typeDefinition.typeName, typeDefinition)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -510,30 +510,30 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
                       ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
                     ) {
   //--- Useful entities graph
-    let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mGraphTypeName)
-    !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
+    let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.mGraphTypeName)
+    !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
     if self.isPredefined  then
-      ioUsefulnessRootEntities ++= @(!nameForUsefulness)
+      ioUsefulnessRootEntities ++= @(nameForUsefulness)
     end
-    let associatedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mAssociatedListTypeName)
+    let associatedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mAssociatedListTypeName)
     !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: associatedTypeNameForUsefulness)
     if self.isPredefined  then
-      ioUsefulnessRootEntities ++= @(!associatedTypeNameForUsefulness)
+      ioUsefulnessRootEntities ++= @(associatedTypeNameForUsefulness)
     end
   //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
-      !self.mGraphTypeName,
-      !@formalInputParameterListAST ().initializerSignature
+      self.mGraphTypeName,
+      @formalInputParameterListAST ().initializerSignature
     )
-    !?ioUsefulEntitiesGraph.addNode (!initializerNameForUsefulness, !initializerNameForUsefulness)
+    !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
     if self.isPredefined  then
-      ioUsefulnessRootEntities ++= @(!initializerNameForUsefulness)
+      ioUsefulnessRootEntities ++= @(initializerNameForUsefulness)
     end
   //---
-    let graphTypeEntry = ioTypeMap.typeMapEntryForLKey (!self.mGraphTypeName)
-    let associatedListTypeEntry = ioTypeMap.typeMapEntryForLKey (!self.mAssociatedListTypeName)
+    let graphTypeEntry = ioTypeMap.typeMapEntryForLKey (self.mGraphTypeName)
+    let associatedListTypeEntry = ioTypeMap.typeMapEntryForLKey (self.mAssociatedListTypeName)
     let associatedListElementTypeEntry = ioTypeMap.typeMapEntryForLKey (
-      !makeEmbeddedElementTypeLName (!self.mAssociatedListTypeName)
+      makeEmbeddedElementTypeLName (self.mAssociatedListTypeName)
     )
     if associatedListTypeEntry.definition.typeKind != .listType then
       error (self.mAssociatedListTypeName
@@ -551,8 +551,8 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   //---
     ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "graph " + self.mGraphTypeName,
-      !@graphDeclarationForGeneration (
-        !graphTypeEntry,
+      @graphDeclarationForGeneration (
+        graphTypeEntry,
         associatedListTypeEntry,
         associatedListElementTypeEntry,
         self.mInsertModifierList

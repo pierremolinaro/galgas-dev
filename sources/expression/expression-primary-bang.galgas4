@@ -56,7 +56,7 @@ syntax extension galgas4ExpressionSyntax {
     let operatorLocation = @location.here
     <primary> (!?ioDeclarations, ?outExpression)
     $!$
-    outExpression = @bangExpressionAST (!operatorLocation, outExpression)
+    outExpression = @bangExpressionAST (operatorLocation, outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -89,7 +89,7 @@ override proc @bangExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: @unifiedTypeMapEntry.null,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?let @semanticExpressionForGeneration expression
@@ -98,7 +98,7 @@ override proc @bangExpressionAST.analyzeSemanticExpression
   let @unifiedTypeMapEntry type = expression.mResultType
   if let weakRef = type.definition.typeKind.getWeakReferenceType then
     outExpression = @bangExpressionForGeneration (
-      !weakRef.referenceType,
+      weakRef.referenceType,
       self.mOperatorLocation,
       expression,
       type.definition.typeName.string
@@ -136,7 +136,7 @@ override proc @bangExpressionForGeneration.generateExpression (?!@string ioGener
     ?let operand
   )
 //--- Generate
-  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
   outCppExpression = operand + ".bang_" + self.mReceiverTypeName.identifierRepresentation
   outCppExpression += " (" + compilerCppName () + self.mLocation.commaSourceFile + ")"
 }

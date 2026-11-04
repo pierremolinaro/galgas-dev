@@ -91,7 +91,7 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST mFormalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(@abstractExtensionGetterAST (
       !isPredefined: false,
       typeName,
       mGetterName,
@@ -110,7 +110,7 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST mFormalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList ++= @(!@abstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(@abstractExtensionGetterAST (
       !isPredefined: false,
       inTypeName,
       mGetterName,
@@ -151,24 +151,24 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
               ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
               ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
     let key = @lstring (
-      !"extension func @" + self.mTypeName + " " + self.mAbstractExtensionGetterName,
+      "extension func @" + self.mTypeName + " " + self.mAbstractExtensionGetterName,
       self.mAbstractExtensionGetterName.location
     )
-    !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
-    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"@" + self.mTypeName, self.mTypeName.location))
+    !?ioSemanticTypePrecedenceGraph.addNode (key, self)
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName.location))
   //---
-    if not ioExtensionGetterMapForBuildingContext.hasKey (!self.mTypeName.string) then
+    if not ioExtensionGetterMapForBuildingContext.hasKey (self.mTypeName.string) then
       !?ioExtensionGetterMapForBuildingContext.insertKey
-        (!self.mTypeName,
-        !@()
+        (self.mTypeName,
+        @()
       )
     end
     var entry = ioExtensionGetterMapForBuildingContext [!searchKey: self.mTypeName]
     !?entry.mExtensionGetterMapForType.insertKey
-      (!self.mAbstractExtensionGetterName,
-      !self.mAbstractExtensionGetterReturnedTypeName,
-      !self.mAbstractExtensionGetterFormalInputParameterList,
-      !.isVirtualAbstract
+      (self.mAbstractExtensionGetterName,
+      self.mAbstractExtensionGetterReturnedTypeName,
+      self.mAbstractExtensionGetterFormalInputParameterList,
+      .isVirtualAbstract
     )
     !?ioExtensionGetterMapForBuildingContext.replaceKey (!with: entry)
 //   with %aliasOf ioExtensionGetterMapForBuildingContext [!searchKey: self.mTypeName] do
@@ -203,7 +203,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
     ?let @predefinedTypes unused inPredefinedTypes,
     ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
   //--- Self type
-    let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
+    let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
   //--- Check self type is an abstract class
     if not selfType.definition.typeKind.isClassType then
       error (self.mAbstractExtensionGetterName
@@ -218,22 +218,22 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
     var @formalInputParameterListForGeneration formalParameterListForGeneration = @()
     for formalParameter in self.mAbstractExtensionGetterFormalInputParameterList do
       formalParameterListForGeneration ++= @(
-        !formalParameter.mFormalSelector,
-        !ioTypeMap.typeMapEntryForLKey (formalParameter.mFormalArgumentTypeName),
-        !formalParameter.mFormalArgumentName.string,
-        !formalParameter.mFormalArgumentName,
-        !formalParameter.mIsConstant
+        formalParameter.mFormalSelector,
+        ioTypeMap.typeMapEntryForLKey (formalParameter.mFormalArgumentTypeName),
+        formalParameter.mFormalArgumentName.string,
+        formalParameter.mFormalArgumentName,
+        formalParameter.mIsConstant
       )
     end
   //---
     ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "abstract extension func " + self.mAbstractExtensionGetterName,
-      !@abstractExtensionGetterForGeneration (
+      @abstractExtensionGetterForGeneration (
         !generateHeader: true,
         !implementationCppFileName: "func-" + self.mTypeName.string.fileNameRepresentation + "-" + self.mAbstractExtensionGetterName.string.fileNameRepresentation,
         selfType,
         self.mAbstractExtensionGetterName.string,
-        ioTypeMap.typeMapEntryForLKey (!self.mAbstractExtensionGetterReturnedTypeName),
+        ioTypeMap.typeMapEntryForLKey (self.mAbstractExtensionGetterReturnedTypeName),
         formalParameterListForGeneration
       ))
   }
@@ -253,7 +253,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
     ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
     ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
-    !?ioAbstractExtensionGetterListMap.insertKey (!self.mTypeName.string, !self.mAbstractExtensionGetterName)
+    !?ioAbstractExtensionGetterListMap.insertKey (self.mTypeName.string, self.mAbstractExtensionGetterName)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -281,10 +281,10 @@ final class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHead
   override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
                                       !@string outHeader) {
     outHeader = filewrapper [semanticComponentGenerationTemplate.abstractExtensionGetterDeclaration :
-      !self.mReceiverType.definition.typeName.string,
-      !self.mAbstractExtensionGetterName,
-      !self.mAbstractExtensionGetterFormalParameterList,
-      !self.mResultType
+      self.mReceiverType.definition.typeName.string,
+      self.mAbstractExtensionGetterName,
+      self.mAbstractExtensionGetterFormalParameterList,
+      self.mResultType
     ]
   }
 
@@ -302,10 +302,10 @@ final class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHead
       entry.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
     end
     outImplementation = filewrapper [semanticComponentGenerationTemplate.abstractExtensionGetterImplementation :
-      !self.mReceiverType.definition.typeName.string,
-      !self.mAbstractExtensionGetterName,
-      !self.mAbstractExtensionGetterFormalParameterList,
-      !self.mResultType
+      self.mReceiverType.definition.typeName.string,
+      self.mAbstractExtensionGetterName,
+      self.mAbstractExtensionGetterFormalParameterList,
+      self.mResultType
     ]
   }
 

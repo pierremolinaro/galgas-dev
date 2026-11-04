@@ -23,8 +23,8 @@ println ("*************************************** begin of introspection test")
     log "mValue" : mValue
     println (mValue.description + "  " + mValue.name + " [" + s + "] -> @" + mValue.resultType.name)
   end
-  let b1 = @function.isFunctionDefined (!"foo")
-  let b2 = @function.isFunctionDefined (!"functionTest")
+  let b1 = @function.isFunctionDefined ("foo")
+  let b2 = @function.isFunctionDefined ("functionTest")
   println ("Function 'foo' exists:" + b1.cString + "")
   println ("Function 'functionTest' exists:" + b2.cString + "")
 //--- Introspection of an @uint
@@ -34,11 +34,11 @@ println ("*************************************** begin of introspection test")
   let @uint y =  (object as @uint)
   log y
 //--- Function invocation
-  let @function f = @function.functionWithName (!"functionTest")
+  let @function f = @function.functionWithName ("functionTest")
   var arguments = @objectlist []
   !?arguments.append (2 .uint.object)
   !?arguments.append (6 .uint.object)
-  let @object result = f.invoke (!arguments, !.here)
+  let @object result = f.invoke (arguments, .here)
   log result
 }
 

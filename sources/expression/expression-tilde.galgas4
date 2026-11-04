@@ -44,7 +44,7 @@ syntax extension galgas4ExpressionSyntax {
     let operatorLocation = @location.here
     $~$
     <factor> (!?ioDeclarations, ?outExpression)
-    outExpression = @tildeExpressionAST (!operatorLocation, outExpression)
+    outExpression = @tildeExpressionAST (operatorLocation, outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -82,7 +82,7 @@ final class @tildeExpressionAST : @semanticExpressionAST {
       (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inferenceType: inType,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !?ioVariableMap,
       ?let @semanticExpressionForGeneration expression
@@ -91,11 +91,11 @@ final class @tildeExpressionAST : @semanticExpressionAST {
     let @unifiedTypeMapEntry type = expression.mResultType
     if let exp = expression as @literalBigIntExpressionForGeneration then
       outExpression = @literalBigIntExpressionForGeneration (
-        !exp.mResultType,
+        exp.mResultType,
         exp.mLocation,
         ~ exp.mValue
       )
-    elsif not type.definition.features.contains (!.prefixTildeOperator) then
+    elsif not type.definition.features.contains (.prefixTildeOperator) then
       error (self.mOperatorLocation
       : "operand type is '@" + type.definition.typeName.string
       + "' and does not support the '~' operator"
@@ -103,7 +103,7 @@ final class @tildeExpressionAST : @semanticExpressionAST {
     else
     //--- Generate expression
       outExpression = @tildeExpressionForGeneration (
-        !type,
+        type,
         self.mOperatorLocation,
         expression
       )

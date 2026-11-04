@@ -42,21 +42,21 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
                         ?!@localVarManager ioVariableMap) {
   //--- Check self is not inkoved before full initialization
     if self.mReceiverExpression is @selfInExpressionAST then
-      ioVariableMap.checkSelfObjectIsFullyInitialized (!self.mMethodName.location)
+      ioVariableMap.checkSelfObjectIsFullyInitialized (self.mMethodName.location)
     end
   //--- Analyze receiver expression
     self.mReceiverExpression.analyzeSemanticExpression (
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inferenceType: .null,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !?ioVariableMap,
       ?let @semanticExpressionForGeneration receiverExpression
     )
   //--- Get type proc signature
     receiverExpression.mResultType.definition.instanceMethodMap.searchKey
-      (!self.mMethodName,
+      (self.mMethodName,
       ?let kind,
       ?let routineSignature,
       ?*,
@@ -69,13 +69,13 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
     end
   //--- Check effective parameters
     self.mActualParameterList.analyzeRoutineArguments
-      (!inUsefulnessCallerEntityName,
+      (inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
-      !self.mMethodName,
+      self.mMethodName,
       !invokedEntityNameForErrorSignaling: "'" + self.mMethodName + "' instance proc header",
-      !routineSignature,
+      routineSignature,
       !?ioVariableMap,
       !?ioInstructionListForGeneration,
       ?let @actualParameterListForGeneration actualParameterListForGeneration
@@ -88,7 +88,7 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
         if baseType.definition.superType.isNull then
           searching = false
         else
-          if baseType.definition.superType.definition.instanceMethodMap.hasKey (!self.mMethodName.string) then
+          if baseType.definition.superType.definition.instanceMethodMap.hasKey (self.mMethodName.string) then
             baseType = baseType.definition.superType
           else
             searching = false
@@ -97,8 +97,8 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
       end
     end
   //--- Generate instructions
-    ioInstructionListForGeneration ++= @(!@methodCallInstructionForGeneration (
-      !self.mInstructionLocation,
+    ioInstructionListForGeneration ++= @(@methodCallInstructionForGeneration (
+      self.mInstructionLocation,
       receiverExpression.mResultType,
       receiverExpression,
       self.mMethodName.string,
@@ -137,7 +137,7 @@ override proc @methodCallInstructionForGeneration.generateInstruction (?!@string
                                      ?!@string ioGeneratedCode) {
 //--- Receiver expression
   self.mReceiverExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let @string receiverCppName)
-  !?ioUnusedVariableCppNameSet.removeKey (!receiverCppName)
+  !?ioUnusedVariableCppNameSet.removeKey (receiverCppName)
 //---
   var parameterCppNameList = @stringlist ()
   var jokerParametersToReleaseList = @stringlist ()
@@ -167,12 +167,12 @@ override proc @methodCallInstructionForGeneration.generateInstruction (?!@string
   end
   if parameterCppNameList.count == 0 then
     if self.mHasCompilerArgument then
-      !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+      !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
       ioGeneratedCode += compilerCppName ()
       ioGeneratedCode += " COMMA_"
     end
   elsif self.mHasCompilerArgument then
-    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
     ioGeneratedCode += ", " + compilerCppName ()
     ioGeneratedCode += " COMMA_"
   else

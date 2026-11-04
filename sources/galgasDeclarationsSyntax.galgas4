@@ -230,13 +230,13 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
     ioDeclarations.mDeclarationList ++= @(@filewrapperDeclarationAST (
       !isPredefined: false, // Is not predefined
-      !false, // private
-      !@string.stringWithSourceFilePath,
-      !filewrapperName,
-      !filewrapperPath,
-      !filewrapperTextFileExtensionList,
-      !filewrapperBinaryFileExtensionList,
-      !filewrapperTemplateList
+      false, // private
+      @string.stringWithSourceFilePath,
+      filewrapperName,
+      filewrapperPath,
+      filewrapperTextFileExtensionList,
+      filewrapperBinaryFileExtensionList,
+      filewrapperTemplateList
     ))
   }
 
@@ -253,13 +253,13 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
     ioDeclarations.mDeclarationList ++= @(@filewrapperDeclarationAST (
       !isPredefined: false, // Is not predefined
-      !true, // private
-      !@string.stringWithSourceFilePath,
-      !filewrapperName,
-      !filewrapperPath,
-      !filewrapperTextFileExtensionList,
-      !filewrapperBinaryFileExtensionList,
-      !filewrapperTemplateList
+      true, // private
+      @string.stringWithSourceFilePath,
+      filewrapperName,
+      filewrapperPath,
+      filewrapperTextFileExtensionList,
+      filewrapperBinaryFileExtensionList,
+      filewrapperTemplateList
     ))
   }
 
@@ -339,9 +339,9 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       end
       $)$
       outFilewrapperTemplateList ++= @(
-        !mFilewrapperTemplateName,
-        !mFilewrapperTemplatePath,
-        !filewrapperTemplateFormalInputParameters
+        mFilewrapperTemplateName,
+        mFilewrapperTemplatePath,
+        filewrapperTemplateFormalInputParameters
       )
     end
     $}$

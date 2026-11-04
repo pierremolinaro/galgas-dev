@@ -16,11 +16,11 @@ mutating proc @uint.initialize (?let @uint inValue) {
 }
 
 mutating proc @uint.autreInit (?let @uint inValue) {
-  !?self.initialize (!inValue)
+  !?self.initialize (inValue)
 }
 
 mutating proc @uint.init3 (?let @uint inValue) {
-  myInitProc (?self, !inValue)
+  myInitProc (?self, inValue)
 }
 
 proc myInitProc (!@uint outValue, ?let @uint inValue) {

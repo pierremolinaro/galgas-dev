@@ -27,7 +27,7 @@ rule <Constant>
   (!@cExpression outExpressionTree,
   !@uint outValue ) {
   $number$ (?let cst)
-  outExpressionTree = @cConst ( !cst)
+  outExpressionTree = @cConst ( cst)
   outValue = cst.uint
 }
 
@@ -40,7 +40,7 @@ rule <Expression>
     <Expression> (?outExpressionTree, ?outValue)
     $+$
     <Terme> (?let rightOperand, ?let v)
-    outExpressionTree = @cAdd ( ! outExpressionTree , rightOperand)
+    outExpressionTree = @cAdd (  outExpressionTree , rightOperand)
     outValue = outValue + v
   end
 }
@@ -54,7 +54,7 @@ rule <Terme>
     <Terme> (?outExpressionTree, ?outValue)
     $*$
     <Facteur> (?let rightOperand, ?let v)
-    outExpressionTree = @cAdd ( ! outExpressionTree , rightOperand)
+    outExpressionTree = @cAdd (  outExpressionTree , rightOperand)
     outValue = outValue * v
   end
 }

@@ -135,37 +135,37 @@ syntax extension galgas4ExpressionSyntax {
       $<<$
       let leftOperand = outExpression
       <term> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @leftShiftExpressionAST (!operatorLocation, leftOperand, rightOperand)
+      outExpression = @leftShiftExpressionAST (operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $>>$
       let leftOperand = outExpression
       <term> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @rightShiftExpressionAST (!operatorLocation, leftOperand, rightOperand)
+      outExpression = @rightShiftExpressionAST (operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $+$
       let leftOperand = outExpression
       <term> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @addExpressionAST (!operatorLocation, leftOperand, rightOperand)
+      outExpression = @addExpressionAST (operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $&+$
       let leftOperand = outExpression
       <term> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @addExpressionNoOverflowAST (!operatorLocation, leftOperand, rightOperand)
+      outExpression = @addExpressionNoOverflowAST (operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $-$
       let leftOperand = outExpression
       <term> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @subExpressionAST (!operatorLocation, leftOperand, rightOperand)
+      outExpression = @subExpressionAST (operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
       $&-$
       let leftOperand = outExpression
       <term> (!?ioDeclarations, ?let rightOperand)
-      outExpression = @subExpressionNoOverflowAST (!operatorLocation, leftOperand, rightOperand)
+      outExpression = @subExpressionNoOverflowAST (operatorLocation, leftOperand, rightOperand)
     end
   }
 
@@ -200,7 +200,7 @@ override proc @rightShiftExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: inInferenceType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?let @semanticExpressionForGeneration leftExpression
@@ -210,7 +210,7 @@ override proc @rightShiftExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: inAnalysisContext.predefinedTypes.mBigIntType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?let @semanticExpressionForGeneration rightExpression
@@ -220,25 +220,25 @@ override proc @rightShiftExpressionAST.analyzeSemanticExpression
   if let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalUIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration (
-       !inAnalysisContext.predefinedTypes.mBigIntType,
+       inAnalysisContext.predefinedTypes.mBigIntType,
        self.mOperatorLocation,
        left.mValue >> right.mValue
      )
   elsif let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalBigIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration (
-       !inAnalysisContext.predefinedTypes.mBigIntType,
+       inAnalysisContext.predefinedTypes.mBigIntType,
        self.mOperatorLocation,
        left.mValue >> right.mValue.uint
      )
-  elsif not leftType.definition.features.contains (!.infixShiftOperator) then
+  elsif not leftType.definition.features.contains (.infixShiftOperator) then
     error (self.mOperatorLocation
     : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
     spoil outExpression)
   else
   //--- Generate expression
     outExpression = @binaryOperatorExpressionForGeneration (
-      !leftType,
+      leftType,
       self.mOperatorLocation,
       leftExpression,
       .rightShift,
@@ -272,7 +272,7 @@ override proc @leftShiftExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: inInferenceType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?let @semanticExpressionForGeneration leftExpression
@@ -282,7 +282,7 @@ override proc @leftShiftExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: inAnalysisContext.predefinedTypes.mBigIntType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?let @semanticExpressionForGeneration rightExpression
@@ -292,25 +292,25 @@ override proc @leftShiftExpressionAST.analyzeSemanticExpression
   if let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalUIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration (
-       !inAnalysisContext.predefinedTypes.mBigIntType,
+       inAnalysisContext.predefinedTypes.mBigIntType,
        self.mOperatorLocation,
        left.mValue << right.mValue
      )
   elsif let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalBigIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration (
-       !inAnalysisContext.predefinedTypes.mBigIntType,
+       inAnalysisContext.predefinedTypes.mBigIntType,
        self.mOperatorLocation,
        left.mValue << right.mValue.uint
      )
-  elsif not leftType.definition.features.contains (!.infixShiftOperator) then
+  elsif not leftType.definition.features.contains (.infixShiftOperator) then
     error (self.mOperatorLocation
     : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
     spoil outExpression)
   else
   //--- Generate expression
     outExpression = @binaryOperatorExpressionForGeneration (
-      !leftType,
+      leftType,
       self.mOperatorLocation,
       leftExpression,
       .leftShift,
@@ -344,7 +344,7 @@ override proc @addExpressionNoOverflowAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: inInferenceType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
@@ -354,16 +354,16 @@ override proc @addExpressionNoOverflowAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: leftExpression.mResultType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixAddOperatorNoOVF),
-    !"&+",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.infixAddOperatorNoOVF),
+    "&+",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
@@ -371,13 +371,13 @@ override proc @addExpressionNoOverflowAST.analyzeSemanticExpression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration (
-      !inAnalysisContext.predefinedTypes.mBigIntType,
+      inAnalysisContext.predefinedTypes.mBigIntType,
       self.mOperatorLocation,
       leftBigint.mValue + rightBigint.mValue
     )
   else
     outExpression = @binaryOperatorExpressionForGeneration (
-      !leftExpression.mResultType,
+      leftExpression.mResultType,
       self.mOperatorLocation,
       leftExpression,
       .addNoOverflow,
@@ -410,7 +410,7 @@ override proc @addExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: inInferenceType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
@@ -420,16 +420,16 @@ override proc @addExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: leftExpression.mResultType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixAddOperator),
-    !"+",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.infixAddOperator),
+    "+",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
@@ -437,13 +437,13 @@ override proc @addExpressionAST.analyzeSemanticExpression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration (
-      !inAnalysisContext.predefinedTypes.mBigIntType,
+      inAnalysisContext.predefinedTypes.mBigIntType,
       self.mOperatorLocation,
       leftBigint.mValue + rightBigint.mValue
     )
   else
     outExpression = @binaryOperatorExpressionForGeneration (
-      !leftExpression.mResultType,
+      leftExpression.mResultType,
       self.mOperatorLocation,
       leftExpression,
       .add,
@@ -477,7 +477,7 @@ override proc @subExpressionNoOverflowAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: inInferenceType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
@@ -487,16 +487,16 @@ override proc @subExpressionNoOverflowAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: leftExpression.mResultType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixSubOperatorNoOVF),
-    !"&-",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.infixSubOperatorNoOVF),
+    "&-",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
@@ -504,13 +504,13 @@ override proc @subExpressionNoOverflowAST.analyzeSemanticExpression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration (
-      !inAnalysisContext.predefinedTypes.mBigIntType,
+      inAnalysisContext.predefinedTypes.mBigIntType,
       self.mOperatorLocation,
       leftBigint.mValue - rightBigint.mValue
     )
   else
     outExpression = @binaryOperatorExpressionForGeneration (
-      !leftExpression.mResultType,
+      leftExpression.mResultType,
       self.mOperatorLocation,
       leftExpression,
       .subNoOverflow,
@@ -543,7 +543,7 @@ override proc @subExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: inInferenceType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?var @semanticExpressionForGeneration leftExpression
@@ -553,16 +553,16 @@ override proc @subExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: leftExpression.mResultType,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?@semanticExpressionForGeneration rightExpression
   )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixSubOperator),
-    !"-",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.infixSubOperator),
+    "-",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
@@ -570,13 +570,13 @@ override proc @subExpressionAST.analyzeSemanticExpression
   if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration (
-      !inAnalysisContext.predefinedTypes.mBigIntType,
+      inAnalysisContext.predefinedTypes.mBigIntType,
       self.mOperatorLocation,
       leftBigint.mValue - rightBigint.mValue
     )
   else
     outExpression = @binaryOperatorExpressionForGeneration (
-      !leftExpression.mResultType,
+      leftExpression.mResultType,
       self.mOperatorLocation,
       leftExpression,
       .sub,
@@ -678,7 +678,7 @@ override proc @binaryOperatorExpressionForGeneration.generateExpression
   outCppExpression += rightTemporaryOperand
   if hasCompilerOption then
     outCppExpression += ", " + compilerCppName ()
-    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
   end
   outCppExpression += self.mLocation.commaSourceFile + ")"
 }

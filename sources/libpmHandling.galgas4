@@ -36,30 +36,30 @@ proc updateLIBPMatPath (?let @string inLIBPMPath ) {
 //--- Update text files
   var @stringset allNeededFileSet = @()
   for (mValue) in fw.allTextFilePaths do
-    let contents = fw.textFileContentsAtPath (!mValue)
+    let contents = fw.textFileContentsAtPath (mValue)
     let actualFilePath = inLIBPMPath + mValue
     if actualFilePath.pathExtension == "py" then
-      contents.writeToExecutableFileWhenDifferentContents (!actualFilePath, ?*)
+      contents.writeToExecutableFileWhenDifferentContents (actualFilePath, ?*)
     else
-      contents.writeToFileWhenDifferentContents (!actualFilePath, ?*)
+      contents.writeToFileWhenDifferentContents (actualFilePath, ?*)
     end
     allNeededFileSet ++= mValue
   end
 //--- Update binary files
   for (mValue) in fw.allBinaryFilePaths do
-    let contents = fw.binaryFileContentsAtPath (!mValue)
+    let contents = fw.binaryFileContentsAtPath (mValue)
     let actualFilePath = inLIBPMPath + mValue
-    contents.writeToFileWhenDifferentContents (!actualFilePath, ?*)
+    contents.writeToFileWhenDifferentContents (actualFilePath, ?*)
     allNeededFileSet ++= mValue
   end
 //--- Remove useless files
   var @stringset allActualFileSet = @()
-  for (mValue) in inLIBPMPath.regularFiles (!true) do
+  for (mValue) in inLIBPMPath.regularFiles (true) do
     allActualFileSet ++= "/" + mValue
   end
   let uselessFileSet = allActualFileSet - allNeededFileSet
   for (key) in uselessFileSet do
-    @string.deleteFile (!inLIBPMPath + key)
+    @string.deleteFile (inLIBPMPath + key)
   end
 }
 

@@ -128,7 +128,7 @@ final class @collectionValueAST : @semanticExpressionAST {
     if self.mTypeName.string == "" then
       targetType = inType
     else
-      targetType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
+      targetType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
     end
   //---
     if targetType == .null then
@@ -140,13 +140,13 @@ final class @collectionValueAST : @semanticExpressionAST {
     else
       let initializerMap = targetType.definition.initializerMap
       let @functionSignature emptyArgumentList = @()
-      if not initializerMap.hasKey (!emptyArgumentList.initializerSignature) then
+      if not initializerMap.hasKey (emptyArgumentList.initializerSignature) then
         error (self.mTypeName : "the @" + self.mTypeName + " has no @() initializer")
       end
     //--- Usefull entity graph
       let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
-        !targetType.definition.typeName,
-        !emptyArgumentList.initializerSignature
+        targetType.definition.typeName,
+        emptyArgumentList.initializerSignature
       )
       !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: nameForUsefulness)
     //---
@@ -157,22 +157,22 @@ final class @collectionValueAST : @semanticExpressionAST {
           (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
           !?ioUsefulEntitiesGraph,
           !inferenceType: elementType,
-          !inAnalysisContext,
+          inAnalysisContext,
           !?ioTypeMap,
           !?ioVariableMap,
           ?var expressionForGeneration
         )
       //--- Check assignment type compatibility
         checkAssignmentTypeWithImplicitGetterCall (
-          !elementType,
-          !expressionForGeneration.mResultType,
-          !exp.location,
+          elementType,
+          expressionForGeneration.mResultType,
+          exp.location,
           !?expressionForGeneration
         )
         expressionListForGeneration ++= @(expressionForGeneration, exp.location)
       end
       outExpression = @expressionCollectionForGeneration (
-        !targetType,
+        targetType,
         self.mEndOfCollectionValue,
         expressionListForGeneration
       )
@@ -214,7 +214,7 @@ final class @expressionCollectionForGeneration : @semanticExpressionForGeneratio
     ioGeneratedCode += "GGS_" + self.mResultType.identifierRepresentation + " " + outCppExpression
     ioGeneratedCode += " = GGS_" + self.mResultType.identifierRepresentation
     ioGeneratedCode += "::init (" + compilerCppName () + self.mLocation.commaSourceFile + ") ;\n"
-    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
   //--- Add Elements
     for exp in self.expressionList do
       exp.expression.generateExpression

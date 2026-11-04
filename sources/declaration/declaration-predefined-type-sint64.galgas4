@@ -123,10 +123,10 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"hexStringSeparatedBy",
-      !"char",
-      !"inSeparator",
-      !"uint",
-      !"inGroupCount",
+      "char",
+      "inSeparator",
+      "uint",
+      "inGroupCount",
       !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
@@ -142,28 +142,28 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canAdd", !"sint64", !"inOperand",
+      !getterName:"canAdd", "sint64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canSubstract", !"sint64", !"inOperand",
+      !getterName:"canSubstract", "sint64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canMultiply", !"sint64", !"inOperand",
+      !getterName:"canMultiply", "sint64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canDivide", !"sint64", !"inOperand",
+      !getterName:"canDivide", "sint64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )

@@ -38,7 +38,7 @@ grammar class_sample_language_grammar
         mDeclaration.generateCode (!?codeToGenerate)
       end
       let @string targetFile = inSourceFile.deletingPathExtension() + ".cpp"
-      codeToGenerate.writeToFile (!targetFile)
+      codeToGenerate.writeToFile (targetFile)
     end
   end
 }

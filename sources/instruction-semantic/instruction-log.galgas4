@@ -89,25 +89,25 @@ syntax extension galgas4InstructionsSyntax {
     repeat
       select
         $identifier$ (?let loggedVariableName)
-        logList ++= @(!loggedVariableName, !@varInExpressionAST (!loggedVariableName))
+        logList ++= @(loggedVariableName, @varInExpressionAST (loggedVariableName))
       or
         $self$
         $.$
         $identifier$ (?let propertyName)
         logList ++= @(
-         !propertyName,
-         !@structPropertyAccessExpressionAST (!propertyName.location, @selfInExpressionAST (!propertyName.location), propertyName))
+         propertyName,
+         @structPropertyAccessExpressionAST (propertyName.location, @selfInExpressionAST (propertyName.location), propertyName))
       or
         $"string"$ (?let logMessage)
         $:$
         <expression> (!?ioDeclarations, ?let logExpression)
-        logList ++= @(!logMessage, !logExpression)
+        logList ++= @(logMessage, logExpression)
       end
     while
       $,$
     end
     outInstruction = @logInstructionAST (
-      !instructionLocation,
+      instructionLocation,
       logList
     )
   }
@@ -143,13 +143,13 @@ override proc @logInstructionAST.analyzeSemanticInstruction (
       !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inferenceType: @unifiedTypeMapEntry.null,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !?ioVariableMap,
       ?let expression
     )
   //--- Generate instruction
-    ioInstructionListForGeneration ++= @(!@logInstructionForGeneration (
+    ioInstructionListForGeneration ++= @(@logInstructionForGeneration (
       entry.mLogMessage,
       expression
     ))

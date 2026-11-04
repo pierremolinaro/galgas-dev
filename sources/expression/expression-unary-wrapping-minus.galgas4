@@ -55,7 +55,7 @@ syntax extension galgas4ExpressionSyntax {
     let operatorLocation = @location.here
     $&-$
     <factor> (!?ioDeclarations, ?outExpression)
-    outExpression = @unaryWrappingMinusExpressionAST (!operatorLocation, outExpression)
+    outExpression = @unaryWrappingMinusExpressionAST (operatorLocation, outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -87,21 +87,21 @@ override proc @unaryWrappingMinusExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: @unifiedTypeMapEntry.null,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?let expression
   )
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not type.definition.features.contains (!.prefixMinusOperatorNoOVF) then
+  if not type.definition.features.contains (.prefixMinusOperatorNoOVF) then
     error (self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the prefix minus operator"
     spoil outExpression)
   else
   //--- Generate expression
     outExpression = @unaryWrappingMinusExpressionForGeneration (
-      !type,
+      type,
       self.mOperatorLocation,
       expression)
   end

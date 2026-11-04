@@ -55,7 +55,7 @@ syntax extension galgas4ExpressionSyntax {
     let operatorLocation = @location.here
     $-$
     <factor> (!?ioDeclarations, ? outExpression)
-    outExpression = @unaryMinusExpressionAST (!operatorLocation, outExpression)
+    outExpression = @unaryMinusExpressionAST (operatorLocation, outExpression)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -88,7 +88,7 @@ override proc @unaryMinusExpressionAST.analyzeSemanticExpression
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: @unifiedTypeMapEntry.null,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?let @semanticExpressionForGeneration expression
@@ -97,18 +97,18 @@ override proc @unaryMinusExpressionAST.analyzeSemanticExpression
   let @unifiedTypeMapEntry type = expression.mResultType
   if let exp = expression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration (
-      !exp.mResultType,
+      exp.mResultType,
       exp.mLocation,
       - exp.mValue
     )
-  elsif not type.definition.features.contains (!.prefixMinusOperator) then
+  elsif not type.definition.features.contains (.prefixMinusOperator) then
     error (self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the prefix minus operator"
     spoil outExpression)
   else
   //--- Generate expression
     outExpression = @unaryMinusExpressionForGeneration (
-      !type,
+      type,
       self.mOperatorLocation,
       expression
     )
@@ -141,7 +141,7 @@ override proc @unaryMinusExpressionForGeneration.generateExpression (?!@string i
   )
 //--- Generate Comparison
   outCppExpression = operand + ".operator_unary_minus (" + compilerCppName () + self.mLocation.commaSourceFile + ")"
-  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
 }
 
 //--------------------------------------------------------------------------------------------------

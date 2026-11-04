@@ -48,30 +48,30 @@ final class @procCallInstructionAST : @semanticInstructionAST {
        ?routineMangledName: let routineMangledName
      )
   //--- Usefulness
-    let usefulnessName = procedureNameForUsefulEntitiesGraph (!routineMangledName)
+    let usefulnessName = procedureNameForUsefulEntitiesGraph (routineMangledName)
     !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
   //--- Check internal
     if isFilePrivate then
-      let procDeclarationLocation = inAnalysisContext.semanticContext.routineMap.locationForKey (!self.mRoutineName.string)
+      let procDeclarationLocation = inAnalysisContext.semanticContext.routineMap.locationForKey (self.mRoutineName.string)
       if self.mRoutineName.location.file != procDeclarationLocation.file then
         error (self.mRoutineName : "this proc is internal to '" + procDeclarationLocation.file + "' file")
       end
     end
   //--- Check effective parameters
     self.mActualParameterList.analyzeRoutineArguments
-      (!inUsefulnessCallerEntityName,
+      (inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
-      !self.mRoutineName,
+      self.mRoutineName,
       !invokedEntityNameForErrorSignaling: "'" + routineMangledName + "' routine header",
-      !routineSignature,
+      routineSignature,
       !?ioVariableMap,
       !?ioInstructionListForGeneration,
       ?let @actualParameterListForGeneration actualParameterListForGeneration
     )
   //--- Generate instruction
-    ioInstructionListForGeneration ++= @(!@procCallInstructionForGeneration (
+    ioInstructionListForGeneration ++= @(@procCallInstructionForGeneration (
       !routineMangledName: routineMangledName,
       actualParameterListForGeneration
     ))
@@ -112,14 +112,14 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
         !?ioUnusedVariableCppNameSet,
         ?let parameterCppName
       )
-      parameterCppNameList ++= @(!parameterCppName)
+      parameterCppNameList ++= @(parameterCppName)
     end
   //--- Generate proc call
     ioGeneratedCode += "routine_" + self.routineMangledName.string.identifierRepresentation + " ("
     for entry in parameterCppNameList do
       ioGeneratedCode += entry.mValue + ", "
     end
-    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
     ioGeneratedCode += compilerCppName () + " " + self.routineMangledName.location.commaSourceFile + ") ;\n"
     ioGeneratedCode += "}\n"
   //--- Generate poisoned variables

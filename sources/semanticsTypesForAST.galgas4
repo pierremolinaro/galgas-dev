@@ -37,20 +37,20 @@ struct @syntaxExtensions {
                     ?let @lstring inSyntaxComponentName,
                     ?let @nonterminalDeclarationListAST inNonterminalDeclarationList,
                     ?let @syntaxRuleListAST inRuleList) {
-    if self.dictionary.hasKey (!inKey) then
-      self.dictionary.searchKey (!inKey, ?var aList)
-      !?aList.append (!inSyntaxComponentName, !inNonterminalDeclarationList, !inRuleList)
-      self.dictionary ++= @(!inKey, !aList)
+    if self.dictionary.hasKey (inKey) then
+      self.dictionary.searchKey (inKey, ?var aList)
+      !?aList.append (inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)
+      self.dictionary ++= @(inKey, aList)
     else
-      self.dictionary ++= @(!inKey, ![@(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)])
+      self.dictionary ++= @(inKey, [@(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)])
     end
   }
 
   //·····························································································
 
   func listForKey (?let @string inKey) -> @galgas3SyntaxExtensionListAST {
-    if self.dictionary.hasKey (!inKey) then
-      self.dictionary.searchKey (!inKey, ?result)
+    if self.dictionary.hasKey (inKey) then
+      self.dictionary.searchKey (inKey, ?result)
    else
       result = @()
     end
@@ -429,9 +429,9 @@ struct @galgasDeclarationAST {
                               ?forTypeNamed: @lstring inTypeName,
                               ?isPredefined: let @bool inPredefined) {
     outOptionalTypeName = makeOptionalTypeLName (!forTypeNamed: inTypeName)
-    if not self.implicitTypeDeclarationSet.hasKey (!outOptionalTypeName.string) then
+    if not self.implicitTypeDeclarationSet.hasKey (outOptionalTypeName.string) then
       self.implicitTypeDeclarationSet ++= outOptionalTypeName.string
-      self.mDeclarationList ++= @(!@optionalTypeDeclarationAST (
+      self.mDeclarationList ++= @(@optionalTypeDeclarationAST (
         !isPredefined: inPredefined,
         !optionalTypeName: outOptionalTypeName,
         !unwrappedTypeName: inTypeName,

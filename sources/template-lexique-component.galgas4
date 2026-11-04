@@ -147,7 +147,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       <template_replacement> (!? templateReplacementList)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@templateLexiqueComponentAST (
+    ioDeclarations.mDeclarationList ++= @(@templateLexiqueComponentAST (
       !isPredefined: false,
       lexiqueComponentName,
       lexiqueSuperComponentName,
@@ -187,11 +187,11 @@ syntax extension galgas4LexiqueComponentSyntax {
     $...$
     $"string"$ (?let @lstring endString)
     ioTemplateDelimitorList ++= @(
-      !startString,
+      startString,
       !nonAtomicSelection: nonAtomicSelection,
-      !templateEndMark,
-      !preserved,
-      !endString)
+      templateEndMark,
+      preserved,
+      endString)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -209,9 +209,9 @@ syntax extension galgas4LexiqueComponentSyntax {
     or
       $->$
       $"string"$ (?replacementString)
-      replacementFunction = @lstring (!"", @location.here)
+      replacementFunction = @lstring ("", @location.here)
     end
-    ioTemplateReplacement ++= @(!matchString, !replacementString, !replacementFunction)
+    ioTemplateReplacement ++= @(matchString, replacementString, replacementFunction)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -234,9 +234,9 @@ override proc @templateLexiqueComponentAST.enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
-  let key = @lstring (!"lexique " + self.mLexiqueComponentName, self.mLexiqueComponentName.location)
-  !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
-  let superKey = @lstring (!"lexique " + self.mLexiqueSuperComponentName, self.mLexiqueComponentName.location)
+  let key = @lstring ("lexique " + self.mLexiqueComponentName, self.mLexiqueComponentName.location)
+  !?ioSemanticTypePrecedenceGraph.addNode (key, self)
+  let superKey = @lstring ("lexique " + self.mLexiqueSuperComponentName, self.mLexiqueComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: superKey)
 }
 
@@ -252,7 +252,7 @@ override proc @templateLexiqueComponentAST.enterDeclarationInSemanticContext
   ?!@semanticContext ioSemanticContext ) {
 //-------------------------------------- Get super lexique features
   ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey
-     (!self.mLexiqueSuperComponentName,
+     (self.mLexiqueSuperComponentName,
      ?let superLexiqueIsTemplate,
      ?let terminalMap,
      ?let indexingListAST,
@@ -266,14 +266,14 @@ override proc @templateLexiqueComponentAST.enterDeclarationInSemanticContext
   end
 //---
   !?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis.insertKey
-     (!self.mLexiqueComponentName,
-     !true,
-     !terminalMap,
-     !indexingListAST,
-     !terminalListAST,
-     !lexicalAttributeListAST,
-     !lexicalStyleListAST,
-     !lexicalListDeclarationListAST
+     (self.mLexiqueComponentName,
+     true,
+     terminalMap,
+     indexingListAST,
+     terminalListAST,
+     lexicalAttributeListAST,
+     lexicalStyleListAST,
+     lexicalListDeclarationListAST
   )
 }
 
@@ -288,11 +288,11 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
                                   ?let @predefinedTypes unused inPredefinedTypes,
                                   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration ) {
 //-------------------------------------- Useful entities graph
-  let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
-  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
+  let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (self.mLexiqueComponentName)
+  !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
 //-------------------------------------- Get super lexique features
   inSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey
-     (!self.mLexiqueSuperComponentName,
+     (self.mLexiqueSuperComponentName,
      ?*, //let superLexiqueIsTemplate
      ?*, //let terminalMap
      ?*, //let indexingDirectory
@@ -311,7 +311,7 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
   lexicalUnicodeTestFunctionAnalysis (?let unicodeTestFunctions)
 //--------------------------------------
   var @lexiqueAnalysisContext lexiqueAnalysisContext = @(
-    !self.mLexiqueComponentName.string,
+    self.mLexiqueComponentName.string,
     lexicalRoutineMap,
     lexicalFunctionMap,
     @lexicalMessageMap (),
@@ -327,13 +327,13 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
 //-------------------------------------- Build style map
   var styleIndex = 1
   for lexicalStyle in lexicalStyleListAST do
-    !?lexiqueAnalysisContext.mStyleMap.insertKey (lexicalStyle.mName, lexicalStyle.mComment, !styleIndex)
+    !?lexiqueAnalysisContext.mStyleMap.insertKey (lexicalStyle.mName, lexicalStyle.mComment, styleIndex)
     styleIndex += 1
   end
 //-------------------------------------- Build lexical attribute map
   buildLexicalAttributeMap (
-   !lexicalTypeMap,
-   !lexicalAttributeListAST,
+   lexicalTypeMap,
+   lexicalAttributeListAST,
    !?lexiqueAnalysisContext.mLexicalAttributeMap
   )
 //-------------------------------------- Build terminal map
@@ -346,16 +346,16 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
     var argumentTypeList = @lexicalSentValueList ()
     for attribute in terminal.mSentAttributeList do
       lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (attribute.mAttributeName, ?let attributeLexicalType)
-      argumentTypeList ++= @(attribute.mFormalSelector, attribute.mAttributeName.string, !attributeLexicalType)
+      argumentTypeList ++= @(attribute.mFormalSelector, attribute.mAttributeName.string, attributeLexicalType)
     end
-    !?lexiqueAnalysisContext.mTerminalMap.insertKey (terminal.mName, !argumentTypeList)
+    !?lexiqueAnalysisContext.mTerminalMap.insertKey (terminal.mName, argumentTypeList)
     terminalList ++= @(
-      !terminal.mName,
-      !argumentTypeList,
-      !terminal.mSyntaxErrorMessage.string,
+      terminal.mName,
+      argumentTypeList,
+      terminal.mSyntaxErrorMessage.string,
       !isEndOfTemplateMark: terminal.isEndOfTemplateMark,
       !atomicSelection: not terminal.nonAtomicSelection,
-      !terminalStyleIndex)
+      terminalStyleIndex)
   end
   for lexicalList in lexicalListDeclarationListAST do
     var @uint terminalStyleIndex = 0
@@ -365,17 +365,17 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
     var argumentTypeList = @lexicalSentValueList ()
     for attribute in lexicalList.mSentAttributeList do
       lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (attribute.mAttributeName, ?let attributeLexicalType)
-      argumentTypeList ++= @(attribute.mFormalSelector, attribute.mAttributeName.string, !attributeLexicalType)
+      argumentTypeList ++= @(attribute.mFormalSelector, attribute.mAttributeName.string, attributeLexicalType)
     end
     for entry in lexicalList.mEntryList do
-      let syntaxErrorMessage = lexicalList.mSyntaxErrorMessage.string.replacing (!"%K", !by: entry.mTerminalSpelling.string)
+      let syntaxErrorMessage = lexicalList.mSyntaxErrorMessage.string.replacing ("%K", !by: entry.mTerminalSpelling.string)
       terminalList ++= @(
-        !entry.mTerminalSpelling,
-        !argumentTypeList,
-        !syntaxErrorMessage,
+        entry.mTerminalSpelling,
+        argumentTypeList,
+        syntaxErrorMessage,
         !isEndOfTemplateMark: entry.isEndOfTemplateMark,
         !atomicSelection: not entry.nonAtomicSelection,
-        !terminalStyleIndex)
+        terminalStyleIndex)
     end
   end
 //-------------------------------------- Template delimiters
@@ -396,34 +396,34 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
   if @uint.errorCount == 0 then
   //--- Header
     let headerContents = filewrapper [templateLexiqueGenerationTemplates.cppHeader :
-       !self.mLexiqueComponentName.string.identifierRepresentation,
-       !self.mLexiqueSuperComponentName.string.identifierRepresentation
+       self.mLexiqueComponentName.string.identifierRepresentation,
+       self.mLexiqueSuperComponentName.string.identifierRepresentation
     ]
   //--- Cpp
     let cppContents = filewrapper [templateLexiqueGenerationTemplates.cppImplementation :
-      !self.mLexiqueComponentName.string.identifierRepresentation,
-      !self.mLexiqueSuperComponentName.string.identifierRepresentation,
-      !lexiqueAnalysisContext.mLexicalTokenListMap,
-      !unicodeStringToGenerate,
-      !templateDelimitorList,
-      !terminalList,
-      !self.mLexiqueComponentName.string,
-      !self.mTemplateReplacementList
+      self.mLexiqueComponentName.string.identifierRepresentation,
+      self.mLexiqueSuperComponentName.string.identifierRepresentation,
+      lexiqueAnalysisContext.mLexicalTokenListMap,
+      unicodeStringToGenerate,
+      templateDelimitorList,
+      terminalList,
+      self.mLexiqueComponentName.string,
+      self.mTemplateReplacementList
     ]
   //--- SwiftUI implementation
     let swiftuiImplementation = filewrapper [templateLexiqueGenerationTemplates.swiftuiImplementationZone :
-      !"lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation + "-swiftui",
-      !self.mLexiqueComponentName.string,
-      !self.mLexiqueSuperComponentName.string,
-      !terminalList,
-      !templateDelimitorList,
-      !self.mTemplateReplacementList,
-      !lexicalStyleListAST
+      "lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation + "-swiftui",
+      self.mLexiqueComponentName.string,
+      self.mLexiqueSuperComponentName.string,
+      terminalList,
+      templateDelimitorList,
+      self.mTemplateReplacementList,
+      lexicalStyleListAST
     ]
   //---
     ioSemanticDeclarationListForGeneration ++= @(
       !infoMessage: "",
-      !@lexiqueDeclarationForGeneration (
+      @lexiqueDeclarationForGeneration (
         !generateHeader: true,
         !implementationCppFileName: "lexique-" + self.mLexiqueComponentName.string.fileNameRepresentation,
         self.mLexiqueComponentName.string,

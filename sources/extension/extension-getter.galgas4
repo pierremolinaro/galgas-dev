@@ -119,13 +119,13 @@ syntax extension galgas4DeclarationsSyntax {
     select
       $identifier$ (?resultVariableName)
     or
-      resultVariableName = @(!"result", .here)
+      resultVariableName = @("result", .here)
     end
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@extensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(@extensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -153,12 +153,12 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    let @lstring resultVariableName = @(!"result", .here)
+    let @lstring resultVariableName = @("result", .here)
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@extensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @(@extensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -203,22 +203,22 @@ final class @extensionGetterAST : @semanticDeclarationAST {
         ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext,
         ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
         ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
-    let key = @lstring (!"extension func @" + self.mTypeName + " " + self.mExtensionGetterName, self.mExtensionGetterName.location)
-    !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
-    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"@" + self.mTypeName, self.mTypeName.location))
+    let key = @lstring ("extension func @" + self.mTypeName + " " + self.mExtensionGetterName, self.mExtensionGetterName.location)
+    !?ioSemanticTypePrecedenceGraph.addNode (key, self)
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName.location))
   //---
-    if not ioExtensionGetterMapForBuildingContext.hasKey (!self.mTypeName.string) then
+    if not ioExtensionGetterMapForBuildingContext.hasKey (self.mTypeName.string) then
       !?ioExtensionGetterMapForBuildingContext.insertKey
-        (!self.mTypeName,
-        !@()
+        (self.mTypeName,
+        @()
       )
     end
     var entry = ioExtensionGetterMapForBuildingContext [!searchKey: self.mTypeName]
     !?entry.mExtensionGetterMapForType.insertKey
-      (!self.mExtensionGetterName,
-      !self.mExtensionGetterReturnedTypeName,
-      !self.mExtensionGetterFormalInputParameterList,
-      !.isBasic
+      (self.mExtensionGetterName,
+      self.mExtensionGetterReturnedTypeName,
+      self.mExtensionGetterFormalInputParameterList,
+      .isBasic
     )
     !?ioExtensionGetterMapForBuildingContext.replaceKey (!with: entry)
 //    with %aliasOf ioExtensionGetterMapForBuildingContext [!searchKey: self.mTypeName] do
@@ -260,12 +260,12 @@ override proc @extensionGetterAST.semanticAnalysis (
   ?let @predefinedTypes inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
 //--- Useful entities graph
-  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!self.mTypeName, !self.mExtensionGetterName)
-  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
-  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
+  let nameForUsefulness = getterNameForUsefulEntitiesGraph (self.mTypeName, self.mExtensionGetterName)
+  !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
+  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mTypeName)
   !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness, !to: nameForUsefulness)
 //--- Self type
-  let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
+  let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
 //--- Check self type is a class (new)
   let @string selfObjectNameNew
   let @string selfObjectAccessorNew
@@ -281,22 +281,22 @@ override proc @extensionGetterAST.semanticAnalysis (
   end
 //--- Analyze instruction list
   let analysisContextNew = @analysisContext (
-    !inSemanticContext,
+    inSemanticContext,
     inPredefinedTypes,
     !selfObjectCppName: selfObjectNameNew,
     !selfAvailability: .available (!type: selfType, !selfMutability: .none),
     !selfObjectCppPrefixForAccessingProperty: selfObjectAccessorNew
   )
   analyzeFunctionBody (
-    !nameForUsefulness,
+    nameForUsefulness,
     !?ioUsefulEntitiesGraph,
-    !analysisContextNew,
+    analysisContextNew,
     !?ioTypeMap,
-    !self.mExtensionGetterFormalInputParameterList,
-    !self.mExtensionGetterInstructionList,
-    !self.mExtensionGetterReturnedVariableName,
-    !self.mExtensionGetterReturnedTypeName,
-    !self.mEndOfReaderLocation,
+    self.mExtensionGetterFormalInputParameterList,
+    self.mExtensionGetterInstructionList,
+    self.mExtensionGetterReturnedVariableName,
+    self.mExtensionGetterReturnedTypeName,
+    self.mEndOfReaderLocation,
     ?let formalParameterListForGeneration,
     ?let returnType,
     ?let returnVariableCppName,
@@ -305,7 +305,7 @@ override proc @extensionGetterAST.semanticAnalysis (
 //---
   ioSemanticDeclarationListForGeneration ++= @(
     !infoMessage:"extension func " + self.mExtensionGetterName,
-    !@extensionGetterForGeneration (
+    @extensionGetterForGeneration (
       !generateHeader: true,
       !implementationCppFileName: "func-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionGetterName.string.fileNameRepresentation,
       selfType,
@@ -336,7 +336,7 @@ override proc @extensionGetterAST.buildExtensionListMaps (
   ?!@genericExtensionMethodListMap ioExtensionGetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
-  !?ioExtensionGetterListMap.insertKey (!self.mTypeName.string, !self.mExtensionGetterName)
+  !?ioExtensionGetterListMap.insertKey (self.mTypeName.string, self.mExtensionGetterName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -365,17 +365,17 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
                                       !@string outHeader) {
     if self.mImplementedAsFunction then
       outHeader = filewrapper [semanticComponentGenerationTemplate.extensionGetterAsFunctionDeclaration :
-        !self.mReceiverType.definition.typeName.string,
-        !self.mExtensionGetterName,
-        !self.mExtensionGetterFormalParameterList,
-        !self.mResultType.identifierRepresentation
+        self.mReceiverType.definition.typeName.string,
+        self.mExtensionGetterName,
+        self.mExtensionGetterFormalParameterList,
+        self.mResultType.identifierRepresentation
       ]
     else
       outHeader = filewrapper [semanticComponentGenerationTemplate.extensionGetterDeclaration :
-        !self.mReceiverType.definition.typeName.string,
-        !self.mExtensionGetterName,
-        !self.mExtensionGetterFormalParameterList,
-        !self.mResultType
+        self.mReceiverType.definition.typeName.string,
+        self.mExtensionGetterName,
+        self.mExtensionGetterFormalParameterList,
+        self.mResultType
       ]
     end
   }
@@ -392,32 +392,32 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
     var extensionReaderFormalParameterList = self.mExtensionGetterFormalParameterList
     if self.mImplementedAsFunction then
       !?extensionReaderFormalParameterList.insertAtIndex
-        (!"".nowhere,
-        !self.mReceiverType,
-        !"inObject",
-        !@lstring (!"self", @location.here),
-        !true,
-        !0
+        ("".nowhere,
+        self.mReceiverType,
+        "inObject",
+        @lstring ("self", @location.here),
+        true,
+        0
       )
       ioInclusionSet ++= "func-"
         + self.mReceiverType.definition.typeName.string.fileNameRepresentation
         + "-" + self.mExtensionGetterName.fileNameRepresentation
       generateFunction (
-        !"extensionGetter_" + self.mExtensionGetterName.identifierRepresentation,
+        "extensionGetter_" + self.mExtensionGetterName.identifierRepresentation,
         !?ioInclusionSet,
-        !extensionReaderFormalParameterList,
-        !self.mSemanticInstructionListForGeneration,
-        !"Compiler",
-        !self.mResultType,
-        !self.mResultVarCppName,
+        extensionReaderFormalParameterList,
+        self.mSemanticInstructionListForGeneration,
+        "Compiler",
+        self.mResultType,
+        self.mResultVarCppName,
         !static: false,
         !const: false,
         ?let @string code
       )
       outImplementation = filewrapper [semanticComponentGenerationTemplate.extensionGetterAsFunctionImplementation :
-        !self.mReceiverType.definition.typeName.string,
-        !self.mExtensionGetterName,
-        !code
+        self.mReceiverType.definition.typeName.string,
+        self.mExtensionGetterName,
+        code
       ]
     else
       self.mReceiverType.addHeaderFileName (!?ioInclusionSet)
@@ -425,7 +425,7 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
       var @bool searching = true
       loop (@uint.max) while searching do
         if not baseType.definition.superType.isNull then
-          if baseType.definition.superType.definition.getterMap.hasKey (!self.mExtensionGetterName) then
+          if baseType.definition.superType.definition.getterMap.hasKey (self.mExtensionGetterName) then
             baseType = baseType.definition.superType
           else
             searching = false
@@ -438,21 +438,21 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
         + baseType.definition.typeName.string.fileNameRepresentation
         + "-" + self.mExtensionGetterName.fileNameRepresentation
       generateExtensionGetter (
-        !"cPtr_" + self.mReceiverType.definition.typeName.string.identifierRepresentation + "::getter_" + self.mExtensionGetterName.identifierRepresentation,
+        "cPtr_" + self.mReceiverType.definition.typeName.string.identifierRepresentation + "::getter_" + self.mExtensionGetterName.identifierRepresentation,
         !?ioInclusionSet,
-        !extensionReaderFormalParameterList,
-        !self.mSemanticInstructionListForGeneration,
-        !"Compiler",
-        !self.mResultType,
-        !self.mResultVarCppName,
+        extensionReaderFormalParameterList,
+        self.mSemanticInstructionListForGeneration,
+        "Compiler",
+        self.mResultType,
+        self.mResultVarCppName,
         ?let @string extensionGetterCode
       )
       outImplementation = filewrapper [semanticComponentGenerationTemplate.extensionGetterImplementation :
-        !self.mReceiverType.definition.typeName.string,
-        !self.mExtensionGetterName,
-        !self.mExtensionGetterFormalParameterList,
-        !extensionGetterCode,
-        !self.mResultType
+        self.mReceiverType.definition.typeName.string,
+        self.mExtensionGetterName,
+        self.mExtensionGetterFormalParameterList,
+        extensionGetterCode,
+        self.mResultType
       ]
     end
   }

@@ -70,17 +70,17 @@ syntax extension galgas4SyntaxComponentSyntax {
     let mSelectInstructionLocation = @location.here
     var mSelectBranchList = @listOfSyntaxInstructionList ()
     <syntax_instruction_list> (!?ioDeclarations, ?let @syntaxInstructionList il)
-    mSelectBranchList ++= @(!il, !@location.here)
+    mSelectBranchList ++= @(il, @location.here)
     repeat
       $or$
       <syntax_instruction_list> (!?ioDeclarations, ?let @syntaxInstructionList instructionList)
-      mSelectBranchList ++= @(!instructionList, !@location.here)
+      mSelectBranchList ++= @(instructionList, @location.here)
     while
     end
     $end$
     let endOf_select_instruction = @location.here
     outInstruction = @selectInstruction (
-      !mSelectInstructionLocation,
+      mSelectInstructionLocation,
       mSelectBranchList,
       endOf_select_instruction
     )
@@ -112,11 +112,11 @@ override proc @selectInstruction.transformInstructionForGrammarAnalysis
       !?addedTerminalIndex:ioAddedNonTerminalIndex,
       !?syntaxInstructionList
     )
-    selectBranchList ++= @(!syntaxInstructionList)
+    selectBranchList ++= @(syntaxInstructionList)
   end
 
-  ioSyntaxInstructionList ++= @(!@selectInstructionForGrammarAnalysis (
-    !self.mInstructionLocation,
+  ioSyntaxInstructionList ++= @(@selectInstructionForGrammarAnalysis (
+    self.mInstructionLocation,
     selectBranchList,
     addedNonTerminalIndex
   ))
@@ -148,28 +148,28 @@ override proc @selectInstruction.analyzeSyntaxInstruction
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
   for selectBranch in self.mSelectBranchList do
     analyzeSyntaxInstructionList (
-      !inUsefulnessCallerEntityName,
+      inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
-      !inHasTranslateFeature,
-      !inTerminalMap,
-      !inLexiqueName,
-      !inNonterminalMap,
-      !inComponentName,
-      !selectBranch.mSyntaxInstructionList,
-      !selectBranch.mEndOf_instructions,
-      !inIndexNameSet,
+      inHasTranslateFeature,
+      inTerminalMap,
+      inLexiqueName,
+      inNonterminalMap,
+      inComponentName,
+      selectBranch.mSyntaxInstructionList,
+      selectBranch.mEndOf_instructions,
+      inIndexNameSet,
       !?ioVariableMap,
       !?ioSelectMethodCount,
       ?let instructionList
     )
-    listOfSemanticInstructionListForGeneration ++= @(!instructionList, selectBranch.mEndOf_instructions)
+    listOfSemanticInstructionListForGeneration ++= @(instructionList, selectBranch.mEndOf_instructions)
   end
 //--- End block
-  !?ioVariableMap.closeOverride (!self.mEndOf_select_instruction)
-  ioInstructionListForGeneration ++= @(!@selectInstructionForGeneration (
-    !self.mInstructionLocation,
+  !?ioVariableMap.closeOverride (self.mEndOf_select_instruction)
+  ioInstructionListForGeneration ++= @(@selectInstructionForGeneration (
+    self.mInstructionLocation,
     inComponentName,
     choiceIndex,
     listOfSemanticInstructionListForGeneration
@@ -196,12 +196,12 @@ override proc @selectInstructionForGeneration.appendSyntaxSignature
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
   for entry in self.mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration ++= @(
-      !syntaxSignatureOfInstructionList (!inPosfix, entry.mInstructionList),
-      !entry.mEndOfInstructionList
+      syntaxSignatureOfInstructionList (inPosfix, entry.mInstructionList),
+      entry.mEndOfInstructionList
     )
   end
-  ioInstructionListForGeneration ++= @(!@selectInstructionForGeneration (
-    !self.mInstructionLocation,
+  ioInstructionListForGeneration ++= @(@selectInstructionForGeneration (
+    self.mInstructionLocation,
     self.mSyntaxComponentName,
     self.mChoiceIndex,
     listOfSemanticInstructionListForGeneration
@@ -227,7 +227,7 @@ override func @selectInstructionForGeneration.compareInstructionSyntaxSignature
       result = false
     end
     for ref in self.mListOfSemanticInstructionListForGeneration, test in si.mListOfSemanticInstructionListForGeneration while result do
-      result = compareSyntaxSignature (!ref.mInstructionList, !test.mInstructionList, !test.mEndOfInstructionList)
+      result = compareSyntaxSignature (ref.mInstructionList, test.mInstructionList, test.mEndOfInstructionList)
     end
   elsif let si = inTestedInstruction as @syntaxInstructionForGeneration then
     error (si.mInstructionLocation
@@ -252,7 +252,7 @@ override proc @selectInstructionForGeneration.generateInstruction (?!@stringset 
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        ?let @bool inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
-  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
   ioGeneratedCode += "switch (select_" + self.mSyntaxComponentName.identifierRepresentation + "_"
   ioGeneratedCode += self.mChoiceIndex.string + " (" + compilerCppName () + ")) {\n"
   for entry in self.mListOfSemanticInstructionListForGeneration do(IDX)
@@ -262,7 +262,7 @@ override proc @selectInstructionForGeneration.generateInstruction (?!@stringset 
       entry.mInstructionList,
       !?ioTemporaryVariableIndex,
       !?ioUnusedVariableCppNameSet,
-      !inGenerateSyntaxDirectedTranslationString,
+      inGenerateSyntaxDirectedTranslationString,
       !?ioGeneratedCode
     )
     ioGeneratedCode += "} break ;\n"

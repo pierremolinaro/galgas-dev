@@ -34,9 +34,9 @@ abstract func @lexicalExpressionAST.generateSwiftCocoaConditionCode
 override func @lexicalOrExpressionAST.generateSwiftCocoaConditionCode
   (?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   ) -> @string result {
-  result = self.mLeftOperand.generateSwiftCocoaConditionCode (!inLexiqueAnalysisContext)
+  result = self.mLeftOperand.generateSwiftCocoaConditionCode (inLexiqueAnalysisContext)
   result += " || "
-  result += self.mRightOperand.generateSwiftCocoaConditionCode (!inLexiqueAnalysisContext)
+  result += self.mRightOperand.generateSwiftCocoaConditionCode (inLexiqueAnalysisContext)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -176,7 +176,7 @@ override func @lexicalImplicitRuleAST.generateSwiftCocoaCode
   (?let @string inScannerClassName,
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
-  inLexiqueAnalysisContext.mLexicalTokenListMap.searchKey (!self.mListName, ?*, ?let tokenSortedList, ?*)
+  inLexiqueAnalysisContext.mLexicalTokenListMap.searchKey (self.mListName, ?*, ?let tokenSortedList, ?*)
   outGeneratedCode = ""
   for > token in tokenSortedList do
     outGeneratedCode += "if scanningOk && self.testForInputString ("
@@ -194,13 +194,13 @@ override func @lexicalExplicitRuleAST.generateSwiftCocoaCode
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
   outGeneratedCode = "if scanningOk && ("
-  outGeneratedCode += self.mLexicalRuleExpression.generateSwiftCocoaConditionCode (!inLexiqueAnalysisContext)
+  outGeneratedCode += self.mLexicalRuleExpression.generateSwiftCocoaConditionCode (inLexiqueAnalysisContext)
   outGeneratedCode += ") {\n"
-  !?outGeneratedCode.incIndentation (!2)
+  !?outGeneratedCode.incIndentation (2)
   for (mInstruction) in self.mInstructionList do
-    outGeneratedCode += mInstruction.generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+    outGeneratedCode += mInstruction.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
   end
-  !?outGeneratedCode.decIndentation (!2)
+  !?outGeneratedCode.decIndentation (2)
   outGeneratedCode += "}else "
 }
 

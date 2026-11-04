@@ -124,9 +124,9 @@ syntax extension galgas4ExpressionSyntax {
         let @lstring selector
         select
           $!selector:$ (?selector)
-        or
-          $!$
-          selector = "".here
+//        or § 
+//          $!$
+//          selector = "".here
         or
           selector = "".here
         end
@@ -148,9 +148,9 @@ syntax extension galgas4ExpressionSyntax {
       let @lstring selector
       select
         $!selector:$ (?selector)
-      or
-        $!$
-        selector = "".here
+//      or §
+//        $!$
+//         selector = "".here
       or
         selector = "".here
       end

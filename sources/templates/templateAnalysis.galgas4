@@ -75,9 +75,9 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
 ) {
 //--- Expression analysis
   self.mReceiverExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?let receiverExpression
   )
@@ -86,7 +86,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
   //-------------------------------------- Property ?
   if receiverType.definition.typeKind.isStructType || receiverType.definition.typeKind.isClassType,
      self.mExpressionList.count == 0,
-     receiverType.definition.propertyMap.hasKey (!self.mGetterName) then
+     receiverType.definition.propertyMap.hasKey (self.mGetterName) then
     error (self.mExpressionLocation : "use dot notation, instead of func call" spoil outExpression)
   else
   //--- Get func map
@@ -98,8 +98,8 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
     var @unifiedTypeMapEntry returnedType
     var fieldList = @stringlist ()
     var actualGetterName = self.mGetterName.string
-    if getterMap.hasKey (!self.mGetterName.string) then
-      getterMap.searchKey (!self.mGetterName,
+    if getterMap.hasKey (self.mGetterName.string) then
+      getterMap.searchKey (self.mGetterName,
         ?kind,
         ?getterFormalArgumentTypeList,
         ?*,
@@ -174,18 +174,18 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
         actual.mExpression.templateExpressionAnalysis (
           inUsefulnessCallerEntityName,
           !?ioUsefulEntitiesGraph,
-          !inAnalysisContext,
+          inAnalysisContext,
           !?ioTypeMap,
           ?@semanticExpressionForGeneration exp
         )
-        checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, !exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
-        constructorEffectiveParameterList ++= @(!exp)
+        checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
+        constructorEffectiveParameterList ++= @(exp)
       end
       if actualGetterName != self.mGetterName.string then
         error (self.mGetterName : "obsolete func" fixit %replaceBy actualGetterName)
       end
       outExpression = @getterCallExpressionForGeneration (
-        !returnedType,
+        returnedType,
         self.mGetterName.location,
         kind,
         receiverExpression,
@@ -209,14 +209,14 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  let @unifiedTypeMapEntry constructorType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
+  let @unifiedTypeMapEntry constructorType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
 //--- Get class function map from type map
   let @classFunctionMap classFunctionMap = constructorType.definition.classFunctionMap
 //--- Search class function
   let @unifiedTypeMapEntry returnedType
   let @bool hasCompilerArgument
   let @functionSignature classFuncFormalArgumentTypeList
-  if let entry = classFunctionMap [!self.mClassFunctionName.string] then
+  if let entry = classFunctionMap [self.mClassFunctionName.string] then
     classFuncFormalArgumentTypeList = entry.mArgumentTypeList
     hasCompilerArgument = entry.mHasCompilerArgument
     returnedType = entry.mReturnedType
@@ -250,19 +250,19 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
         error (actual.mActualSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
       end
       actual.mExpression.templateExpressionAnalysis
-        (!inUsefulnessCallerEntityName,
+        (inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
-        !inAnalysisContext,
+        inAnalysisContext,
         !?ioTypeMap,
         ?@semanticExpressionForGeneration exp
       )
-      checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, !exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
-      classFunctionEffectiveParameterList ++= @(!exp)
+      checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
+      classFunctionEffectiveParameterList ++= @(exp)
     end
   end
 //---
   outExpression = @classFuncExpressionForGeneration (
-    !returnedType,
+    returnedType,
     self.mClassFunctionName.location,
     constructorType,
     self.mClassFunctionName.string,
@@ -299,31 +299,31 @@ override proc @templateAndOperationAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixAndOperator),
-    !"&",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.infixAndOperator),
+    "&",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration (
-    !leftExpression.mResultType,
+    leftExpression.mResultType,
     self.mOperatorLocation,
     leftExpression,
     .operator_and,
@@ -342,31 +342,31 @@ override proc @templateOrOperationAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixOrOperator),
-    !"|",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.infixOrOperator),
+    "|",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration (
-    !leftExpression.mResultType,
+    leftExpression.mResultType,
     self.mOperatorLocation,
     leftExpression,
     .operator_or,
@@ -385,31 +385,31 @@ override proc @templateXorOperationAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixXorOperator),
-    !"^",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.infixXorOperator),
+    "^",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration (
-    !leftExpression.mResultType,
+    leftExpression.mResultType,
     self.mOperatorLocation,
     leftExpression,
     .operator_xor,
@@ -426,7 +426,7 @@ override proc @templateTrueBoolAST.templateExpressionAnalysis
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  outExpression = @trueExpressionForGeneration (!inAnalysisContext.mPredefinedTypes.mBoolType, self.mLocation)
+  outExpression = @trueExpressionForGeneration (inAnalysisContext.mPredefinedTypes.mBoolType, self.mLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -438,7 +438,7 @@ override proc @templateFalseBoolAST.templateExpressionAnalysis
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  outExpression = @falseExpressionForGeneration (!inAnalysisContext.mPredefinedTypes.mBoolType, self.mLocation)
+  outExpression = @falseExpressionForGeneration (inAnalysisContext.mPredefinedTypes.mBoolType, self.mLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -454,7 +454,7 @@ override proc @templateLiteralStringExpressionAST.templateExpressionAnalysis
   for (mValue) in self.mLiteralStringList do
     s += mValue
   end
-  outExpression = @literalStringExpressionForGeneration (!inAnalysisContext.mPredefinedTypes.mStringType, self.mLocation, s)
+  outExpression = @literalStringExpressionForGeneration (inAnalysisContext.mPredefinedTypes.mStringType, self.mLocation, s)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -467,7 +467,7 @@ override proc @templateLiteralUIntExpressionAST.templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 ) {
   outExpression = @literalBigIntExpressionForGeneration (
-    !inAnalysisContext.mPredefinedTypes.mBigIntType,
+    inAnalysisContext.mPredefinedTypes.mBigIntType,
     self.mLiteralInt.location,
     self.mLiteralInt.bigint
   )
@@ -483,7 +483,7 @@ override proc @templateLiteralCharExpressionAST.templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 ) {
   outExpression = @literalCharExpressionForGeneration (
-    !inAnalysisContext.mPredefinedTypes.mCharType,
+    inAnalysisContext.mPredefinedTypes.mCharType,
     self.mLiteralChar.location,
     self.mLiteralChar.char)
 }
@@ -497,7 +497,7 @@ override proc @templateLiteralDoubleExpressionAST.templateExpressionAnalysis
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression ) {
   outExpression = @literalDoubleExpressionForGeneration (
-    !inAnalysisContext.mPredefinedTypes.mDoubleType,
+    inAnalysisContext.mPredefinedTypes.mDoubleType,
     self.mLiteralDouble.location,
     self.mLiteralDouble.double
   )
@@ -514,22 +514,22 @@ override proc @templateNotOperatorAST.templateExpressionAnalysis
 ) {
 //--- Expression analysis
   self.mExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?let expression
   )
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not type.definition.features.contains (!.prefixNotOperator) then
+  if not type.definition.features.contains (.prefixNotOperator) then
     error (self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the 'not' operator"
     spoil outExpression)
   else
   //--- Generate expression
     outExpression = @notExpressionForGeneration (
-      !type,
+      type,
       self.mOperatorLocation,
       expression
     )
@@ -547,22 +547,22 @@ override proc @templateLogicalNegateAST.templateExpressionAnalysis
 ) {
 //--- Expression analysis
   self.mExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?let expression
   )
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not type.definition.features.contains (!.prefixTildeOperator) then
+  if not type.definition.features.contains (.prefixTildeOperator) then
     error (self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the '~' operator"
     spoil outExpression)
   else
   //--- Generate expression
     outExpression = @tildeExpressionForGeneration (
-      !type,
+      type,
       self.mOperatorLocation,
       expression)
   end
@@ -579,14 +579,14 @@ override proc @templateTestDynamicClassAST.templateExpressionAnalysis
 ) {
 //--- Receiver expression analysis
   self.mReceiverExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?let expression
   )
 //--- Get type information
-   let castType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
+   let castType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
 //--- This type is either a class
   if expression.mResultType.definition.typeKind.isClassType then
   //--- Check expression type is a descendant of named type
@@ -607,7 +607,7 @@ override proc @templateTestDynamicClassAST.templateExpressionAnalysis
   end
 //--- Generate expression
   outExpression = @testDynamicClassInExpressionForGeneration (
-    !inAnalysisContext.mPredefinedTypes.mBoolType,
+    inAnalysisContext.mPredefinedTypes.mBoolType,
     self.mTypeName.location,
     expression,
     castType
@@ -623,34 +623,34 @@ override proc @templateOptionAccessAST.templateExpressionAnalysis
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  let usefulnessName = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
+  let usefulnessName = optionNameForUsefulEntitiesGraph (self.mOptionComponentName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
   inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey
-    (!self.mOptionComponentName,
+    (self.mOptionComponentName,
     ?let @bool optionComponentIsPredefined,
     ?let @commandLineOptionMap boolOptionMap,
     ?let @commandLineOptionMap uintOptionMap,
     ?let @commandLineOptionMap stringOptionMap,
     ?let @commandLineOptionMap stringListOptionMap
   )
-  var found = boolOptionMap.hasKey (!self.mOptionName.string)
+  var found = boolOptionMap.hasKey (self.mOptionName.string)
   var @unifiedTypeMapEntry returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
   if not found then
-    found = uintOptionMap.hasKey (!self.mOptionName.string)
+    found = uintOptionMap.hasKey (self.mOptionName.string)
     returnedType = inAnalysisContext.mPredefinedTypes.mUIntType
   end
   if not found then
-    found = stringOptionMap.hasKey (!self.mOptionName.string)
+    found = stringOptionMap.hasKey (self.mOptionName.string)
     returnedType = inAnalysisContext.mPredefinedTypes.mStringType
   end
   if not found then
-    found = stringListOptionMap.hasKey (!self.mOptionName.string)
+    found = stringListOptionMap.hasKey (self.mOptionName.string)
     returnedType = inAnalysisContext.mPredefinedTypes.mStringListType
   end
   if found then
     if self.mGetterName.string == "value" then
       outExpression = @optionValueExpressionForGeneration (
-        !returnedType,
+        returnedType,
         self.mOptionComponentName.location,
         optionComponentIsPredefined,
         self.mOptionComponentName.string,
@@ -658,7 +658,7 @@ override proc @templateOptionAccessAST.templateExpressionAnalysis
       )
     elsif self.mGetterName.string == "char" then
       outExpression = @optionCharExpressionForGeneration (
-        !inAnalysisContext.mPredefinedTypes.mCharType,
+        inAnalysisContext.mPredefinedTypes.mCharType,
         self.mOptionComponentName.location,
         optionComponentIsPredefined,
         self.mOptionComponentName.string,
@@ -666,7 +666,7 @@ override proc @templateOptionAccessAST.templateExpressionAnalysis
       )
     elsif self.mGetterName.string == "string" then
       outExpression = @optionStringExpressionForGeneration (
-        !inAnalysisContext.mPredefinedTypes.mStringType,
+        inAnalysisContext.mPredefinedTypes.mStringType,
         self.mOptionComponentName.location,
         optionComponentIsPredefined,
         self.mOptionComponentName.string,
@@ -674,7 +674,7 @@ override proc @templateOptionAccessAST.templateExpressionAnalysis
       )
     elsif self.mGetterName.string == "comment" then
       outExpression = @optionCommentExpressionForGeneration (
-        !inAnalysisContext.mPredefinedTypes.mStringType,
+        inAnalysisContext.mPredefinedTypes.mStringType,
         self.mOptionComponentName.location,
         optionComponentIsPredefined,
         self.mOptionComponentName.string,
@@ -712,18 +712,18 @@ override proc @templateFunctionCallAST.templateExpressionAnalysis
   ?!@unifiedTypeMap ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  let usefulnessName = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
+  let usefulnessName = functionNameForUsefulEntitiesGraph (self.mFunctionName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
 //--- Retrieve function features
   inAnalysisContext.mSemanticContext.mFunctionMap.searchKey
-    (!self.mFunctionName,
+    (self.mFunctionName,
     ?let @functionSignature functionSignature,
     ?let @unifiedTypeMapEntry resultType,
     ?let @bool isInternal
   )
 //--- Check internal
   if isInternal then
-    let procDeclarationLocation = inAnalysisContext.mSemanticContext.mFunctionMap.locationForKey (!self.mFunctionName.string)
+    let procDeclarationLocation = inAnalysisContext.mSemanticContext.mFunctionMap.locationForKey (self.mFunctionName.string)
     if self.mFunctionName.location.file != procDeclarationLocation.file then
       error (self.mFunctionName : "this proc is internal to '" + procDeclarationLocation.file + "' file")
     end
@@ -739,14 +739,14 @@ override proc @templateFunctionCallAST.templateExpressionAnalysis
     var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
     for formal in functionSignature, actual in self.mExpressionList do
       actual.mExpression.templateExpressionAnalysis
-        (!inUsefulnessCallerEntityName,
+        (inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
-        !inAnalysisContext,
+        inAnalysisContext,
         !?ioTypeMap,
         ?@semanticExpressionForGeneration expression
       )
-      checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, !expression.mResultType, actual.mEndOfExpressionLocation, !?expression)
-      semanticExpressionListForGeneration ++= @(!expression)
+      checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, expression.mResultType, actual.mEndOfExpressionLocation, !?expression)
+      semanticExpressionListForGeneration ++= @(expression)
       if formal.mFormalSelector.string != actual.mActualSelector.string then
         let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
         error (actual.mActualSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
@@ -787,9 +787,9 @@ override proc @templateVarInExpressionAST.templateExpressionAnalysis
   ?!@unifiedTypeMap unused ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  inAnalysisContext.mTemplateVariableMap.searchKey (!self.mVarName, ?let type, ?let sourceVariableCppName)
+  inAnalysisContext.mTemplateVariableMap.searchKey (self.mVarName, ?let type, ?let sourceVariableCppName)
   outExpression = @varInExpressionForGeneration (
-    !type,
+    type,
     self.mVarName.location,
     sourceVariableCppName,
     sourceVariableCppName)
@@ -808,31 +808,31 @@ override proc @templateAddOperationAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixAddOperator),
-    !"+",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.infixAddOperator),
+    "+",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration (
-    !leftExpression.mResultType,
+    leftExpression.mResultType,
     self.mOperatorLocation,
     leftExpression,
     .add,
@@ -853,31 +853,31 @@ override proc @templateSubOperationAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixSubOperator),
-    !"-",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.infixSubOperator),
+    "-",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration (
-    !leftExpression.mResultType,
+    leftExpression.mResultType,
     self.mOperatorLocation,
     leftExpression,
     .sub,
@@ -898,31 +898,31 @@ override proc @templateMultiplyOperationAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixMulOperator),
-    !"*",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.infixMulOperator),
+    "*",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration (
-    !leftExpression.mResultType,
+    leftExpression.mResultType,
     self.mOperatorLocation,
     leftExpression,
     .multiply_operation,
@@ -943,31 +943,31 @@ override proc @templateDivideOperationAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixDivOperator),
-    !"/",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.infixDivOperator),
+    "/",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration (
-    !leftExpression.mResultType,
+    leftExpression.mResultType,
     self.mOperatorLocation,
     leftExpression,
     .divide_operation,
@@ -988,31 +988,31 @@ override proc @templateModuloOperationAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?@semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.infixModOperator),
-    !"mod",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.infixModOperator),
+    "mod",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @binaryOperatorExpressionForGeneration (
-    !leftExpression.mResultType,
+    leftExpression.mResultType,
     self.mOperatorLocation,
     leftExpression,
     .modulo_operation,
@@ -1033,22 +1033,22 @@ override proc @templateUnaryMinusOperationAST.templateExpressionAnalysis
 ) {
 //--- Expression analysis
   self.mExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?let expression
   )
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
-  if not type.definition.features.contains (!.prefixMinusOperator) then
+  if not type.definition.features.contains (.prefixMinusOperator) then
     error (self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the prefix minus operator"
     spoil outExpression)
   else
   //--- Generate expression
     outExpression = @unaryMinusExpressionForGeneration (
-      !type,
+      type,
       self.mOperatorLocation,
       expression)
   end
@@ -1067,9 +1067,9 @@ override proc @structFieldAccessTemplateExpressionAST.templateExpressionAnalysis
 ) {
 //--- Expression analysis
   self.mExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?let @semanticExpressionForGeneration expression
   )
@@ -1079,11 +1079,11 @@ override proc @structFieldAccessTemplateExpressionAST.templateExpressionAnalysis
     error (self.mStructFieldName:"the '.' operator requires the receiver to be a struct ou a class")
   end
   let propertyMap = type.definition.propertyMap
-  propertyMap.searchKey (!self.mStructFieldName, ?let accessControl, ?*, ?type)
-  accessControl.checkSetAccess (!.none, !self.mStructFieldName)
+  propertyMap.searchKey (self.mStructFieldName, ?let accessControl, ?*, ?type)
+  accessControl.checkSetAccess (.none, self.mStructFieldName)
 //--- Generate expression
   outExpression = @propertyAccessExpressionForGeneration (
-    !type,
+    type,
     self.mOperatorLocation,
     expression,
     self.mStructFieldName.string
@@ -1103,31 +1103,31 @@ override proc @templateEqualTestAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.equatable) | leftExpression.mResultType.definition.features.contains (!.comparable),
-    !"==",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.equatable) | leftExpression.mResultType.definition.features.contains (.comparable),
+    "==",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @comparisonExpressionForGeneration (
-    !inAnalysisContext.mPredefinedTypes.mBoolType,
+    inAnalysisContext.mPredefinedTypes.mBoolType,
     self.mOperatorLocation,
     leftExpression,
     .equal,
@@ -1146,31 +1146,31 @@ override proc @templateNonEqualTestAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.equatable) | leftExpression.mResultType.definition.features.contains (!.comparable),
-    !"!=",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.equatable) | leftExpression.mResultType.definition.features.contains (.comparable),
+    "!=",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @comparisonExpressionForGeneration (
-    !inAnalysisContext.mPredefinedTypes.mBoolType,
+    inAnalysisContext.mPredefinedTypes.mBoolType,
     self.mOperatorLocation,
     leftExpression,
     .notEqual,
@@ -1189,31 +1189,31 @@ override proc @templateStrictInfTestAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.comparable),
-    !"<",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.comparable),
+    "<",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @comparisonExpressionForGeneration (
-    !inAnalysisContext.mPredefinedTypes.mBoolType,
+    inAnalysisContext.mPredefinedTypes.mBoolType,
     self.mOperatorLocation,
     leftExpression,
     .lowerThan,
@@ -1232,31 +1232,31 @@ override proc @templateInfOrEqualTestAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.comparable),
-    !"<=",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.comparable),
+    "<=",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @comparisonExpressionForGeneration (
-    !inAnalysisContext.mPredefinedTypes.mBoolType,
+    inAnalysisContext.mPredefinedTypes.mBoolType,
     self.mOperatorLocation,
     leftExpression,
     .lowerOrEqual,
@@ -1275,31 +1275,31 @@ override proc @templateStrictSupTestAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.comparable),
-    !">",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.comparable),
+    ">",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @comparisonExpressionForGeneration (
-    !inAnalysisContext.mPredefinedTypes.mBoolType,
+    inAnalysisContext.mPredefinedTypes.mBoolType,
     self.mOperatorLocation,
     leftExpression,
     .greaterThan,
@@ -1318,31 +1318,31 @@ override proc @templateSupOrEqualTestAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   checkDiadicOperator (
-    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (!.comparable),
-    !">=",
-    !self.mOperatorLocation,
+    !operatorIsHandled: leftExpression.mResultType.definition.features.contains (.comparable),
+    ">=",
+    self.mOperatorLocation,
     !?leftExpression,
     !?rightExpression
   )
 //--- Generate expression
   outExpression = @comparisonExpressionForGeneration (
-    !inAnalysisContext.mPredefinedTypes.mBoolType,
+    inAnalysisContext.mPredefinedTypes.mBoolType,
     self.mOperatorLocation,
     leftExpression,
     .greaterOrEqual,
@@ -1361,24 +1361,24 @@ override proc @templateLeftShiftOperationAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?let @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?let @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not leftType.definition.features.contains (!.infixShiftOperator) then
+  if not leftType.definition.features.contains (.infixShiftOperator) then
     error (self.mOperatorLocation
     : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
     spoil outExpression)
@@ -1389,7 +1389,7 @@ override proc @templateLeftShiftOperationAST.templateExpressionAnalysis
   else
   //--- Generate expression
     outExpression = @binaryOperatorExpressionForGeneration (
-      !leftType,
+      leftType,
       self.mOperatorLocation,
       leftExpression,
       .leftShift,
@@ -1409,24 +1409,24 @@ override proc @templateRightShiftOperationAST.templateExpressionAnalysis
 ) {
 //--- Left expression analysis
   self.mLeftExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?let @semanticExpressionForGeneration leftExpression
   )
 //--- Right expression analysis
   self.mRightExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?let @semanticExpressionForGeneration rightExpression
    )
 //--- Check operator availability
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
-  if not leftType.definition.features.contains (!.infixShiftOperator) then
+  if not leftType.definition.features.contains (.infixShiftOperator) then
     error (self.mOperatorLocation
     : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
     spoil outExpression)
@@ -1437,7 +1437,7 @@ override proc @templateRightShiftOperationAST.templateExpressionAnalysis
   else
   //--- Generate expression
     outExpression = @binaryOperatorExpressionForGeneration (
-      !leftType,
+      leftType,
       self.mOperatorLocation,
       leftExpression,
       .rightShift,
@@ -1471,9 +1471,9 @@ proc templateInstructionListAnalysis
 ) {
   for (mInstruction) in inInstructionList do
     mInstruction.templateInstructionAnalysis
-      (!inUsefulnessCallerEntityName,
+      (inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !?ioInstructionList
     )
@@ -1489,7 +1489,7 @@ override proc @templateInstructionStringAST.templateInstructionAnalysis
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
-  ioInstructionList ++= @(!@templateInstructionStringForGeneration (!self.mTemplateString))
+  ioInstructionList ++= @(@templateInstructionStringForGeneration (self.mTemplateString))
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1502,16 +1502,16 @@ override proc @templateInstructionExpressionAST.templateInstructionAnalysis
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
   self.mExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?let expression
   )
   if expression.mResultType.definition.typeName.string != "string" then
     error (self.mLocation:"expression type should be '@string' (it is '@" + expression.mResultType.definition.typeName.string + "')")
   end
-  ioInstructionList ++= @(!@templateInstructionExpressionForGeneration (!expression))
+  ioInstructionList ++= @(@templateInstructionExpressionForGeneration (expression))
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1524,15 +1524,15 @@ override proc @templateBlockInstructionAST.templateInstructionAnalysis
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
   self.mExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?var expression
   )
   if expression.mResultType.definition.typeName.string == "bigint" then
     let conversionExpression = @getterCallExpressionForGeneration (
-      !expression.mResultType,
+      expression.mResultType,
       expression.mLocation,
       .definedAsMember,
       expression,
@@ -1547,14 +1547,14 @@ override proc @templateBlockInstructionAST.templateInstructionAnalysis
   end
   var blockInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
-    !inUsefulnessCallerEntityName,
+    inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
-    !self.mBlockInstructionList,
+    self.mBlockInstructionList,
     !?blockInstructionList
   )
-  ioInstructionList ++= @(!@templateBlockInstructionForGeneration (!expression, self.mLocation, blockInstructionList))
+  ioInstructionList ++= @(@templateBlockInstructionForGeneration (expression, self.mLocation, blockInstructionList))
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1566,7 +1566,7 @@ override proc @templateInstructionGetColumnLocationAST.templateInstructionAnalys
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
-  ioInstructionList ++= @(!@templateInstructionGetColumnLocationForGeneration ())
+  ioInstructionList ++= @(@templateInstructionGetColumnLocationForGeneration ())
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1578,7 +1578,7 @@ override proc @templateInstructionGotoColumnLocationAST.templateInstructionAnaly
   ?!@unifiedTypeMap unused ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
-  ioInstructionList ++= @(!@templateInstructionGotoColumnLocationForGeneration ())
+  ioInstructionList ++= @(@templateInstructionGotoColumnLocationForGeneration ())
 }
 
 
@@ -1596,7 +1596,7 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
     templateInstructionIfBranch.mExpression.templateExpressionAnalysis (
       inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       ?let expression
     )
@@ -1605,28 +1605,28 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
     end
     var instructionList = @templateInstructionListForGeneration ()
     templateInstructionListAnalysis (
-      !inUsefulnessCallerEntityName,
+      inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       templateInstructionIfBranch.mInstructionList,
       !?instructionList
     )
-    templateInstructionIfBranchList ++= @(!expression, !instructionList)
+    templateInstructionIfBranchList ++= @(expression, instructionList)
   end
 //---
   var elseInstructionList = @templateInstructionListForGeneration ()
   templateInstructionListAnalysis (
-    !inUsefulnessCallerEntityName,
+    inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
-    !self.mElseInstructionList,
+    self.mElseInstructionList,
     !?elseInstructionList
   )
 //---
-  ioInstructionList ++= @(!@templateInstructionIfForGeneration (
-    !templateInstructionIfBranchList,
+  ioInstructionList ++= @(@templateInstructionIfForGeneration (
+    templateInstructionIfBranchList,
     elseInstructionList))
 }
 

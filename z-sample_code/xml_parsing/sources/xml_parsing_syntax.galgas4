@@ -47,10 +47,10 @@ rule <start_symbol>
   outRootNodes = @()
   <element_list>(
     !?outRootNodes,
-    !inIncludeComments,
-    !inDoNotCondenseWhiteSpaces,
-    !inPrintDuringParsing,
-    !"")
+    inIncludeComments,
+    inDoNotCondenseWhiteSpaces,
+    inPrintDuringParsing,
+    "")
 }
 
 //---------------------------------------------------------------------------*
@@ -65,16 +65,16 @@ rule <element_list>
   while
     addText (
       !?ioNodes,
-      !inDoNotCondenseWhiteSpaces,
-      !inPrintDuringParsing,
-      !inIndendation
+      inDoNotCondenseWhiteSpaces,
+      inPrintDuringParsing,
+      inIndendation
     )
     <element>(
       !? ioNodes,
-      !inIncludeComments,
-      !inDoNotCondenseWhiteSpaces,
-      !inPrintDuringParsing,
-      !inIndendation)
+      inIncludeComments,
+      inDoNotCondenseWhiteSpaces,
+      inPrintDuringParsing,
+      inIndendation)
   end
 }
 
@@ -89,12 +89,12 @@ rule <element>
   $comment$ (?let @lstring commentString)
   if inIncludeComments then
     let node = @xmlNode (
-      !@xmlNodeType. comment,
+      @xmlNodeType. comment,
       commentString.string,
       @(),
       @()
     )
-    ioNodes ++= @(!node
+    ioNodes ++= @(node
   )end
   if inPrintDuringParsing then
     let @string discartedMessage
@@ -107,7 +107,7 @@ rule <element>
     s += commentString.location.endLine.string
     s += ":" + commentString.location.endColumn.string
     s += ":" + commentString.location.endLocationIndex.string + "\n"
-    print (!s)
+    print (s)
   end
 }
 
@@ -127,7 +127,7 @@ rule <element>
     $name$ (?let @lstring attributeName)
     $=$
     $value$ (?let @lstring attributeValue)
-    !?attributeMap.insertKey (!attributeName, !attributeValue)
+    !?attributeMap.insertKey (attributeName, attributeValue)
   end
 
   if inPrintDuringParsing then
@@ -148,7 +148,7 @@ rule <element>
     between s += ", "
     end
     s += "}\n"
-    print (!s)
+    print (s)
   end
 
   var nodeList = @xmlNodeList ()
@@ -158,15 +158,15 @@ rule <element>
     $>$
     <element_list>(
       !?nodeList,
-      !inIncludeComments,
-      !inDoNotCondenseWhiteSpaces,
-      !inPrintDuringParsing,
-      !inIndendation + " ")
+      inIncludeComments,
+      inDoNotCondenseWhiteSpaces,
+      inPrintDuringParsing,
+      inIndendation + " ")
     addText (
       !?nodeList,
-      !inDoNotCondenseWhiteSpaces,
-      !inPrintDuringParsing,
-      !inIndendation
+      inDoNotCondenseWhiteSpaces,
+      inPrintDuringParsing,
+      inIndendation
     )
     $</$
     $name$ (?let @lstring closingName)
@@ -176,12 +176,12 @@ rule <element>
     $>$
   end
   let node = @xmlNode (
-    !@xmlNodeType. element,
+    @xmlNodeType. element,
     name.string,
     attributeMap,
     nodeList
   )
-  ioNodes ++= @(!node
+  ioNodes ++= @(node
 )}
 
 //---------------------------------------------------------------------------*
@@ -205,15 +205,15 @@ proc addText
       ls = trimmedString
     end
     let node = @xmlNode (
-      !@xmlNodeType. text,
+      @xmlNodeType. text,
       ls,
       @(),
       @()
     )
-    ioNodes ++= @(!node)
+    ioNodes ++= @(node)
     if inPrintDuringParsing then
       let @string s = inIndendation + "TEXT " + "'" + ls + "'\n"
-      print (!s)
+      print (s)
     end
   end
 }

@@ -47,7 +47,7 @@ proc checkLabelMap
   var @stringset labelStringSet = @()
   for aLabel in inLabels do
     labelStringSet ++= aLabel.mLabelName.string
-    inNonterminalSymbolLabelMapForGrammarAnalysis.searchKey (!aLabel.mLabelName, ?let formalParametersList)
+    inNonterminalSymbolLabelMapForGrammarAnalysis.searchKey (aLabel.mLabelName, ?let formalParametersList)
     if aLabel.mFormalArgumentList.count != formalParametersList.count then
       error (aLabel.mLabelName: aLabel.mFormalArgumentList.count.string
         + " formal parameter"
@@ -100,10 +100,10 @@ proc handleNonTerminalDeclarations
   for nonTerminal in inNonterminalDeclarationList do
     if let entry = ioNonTerminalMapForGrammarAnalysis [nonTerminal.mNonterminalName.string] then
       checkLabelMap (
-        !nonTerminal.mNonterminalName.location,
-        !nonTerminal.mLabels,
-        !ioNonTerminalMapForGrammarAnalysis.locationForKey (!nonTerminal.mNonterminalName.string),
-        !entry.mNonterminalSymbolParametersMap
+        nonTerminal.mNonterminalName.location,
+        nonTerminal.mLabels,
+        ioNonTerminalMapForGrammarAnalysis.locationForKey (nonTerminal.mNonterminalName.string),
+        entry.mNonterminalSymbolParametersMap
       )
     else
       !?ioNonTerminalMapForGrammarAnalysis.insertKey (
@@ -125,23 +125,23 @@ proc handleNonTerminalDeclarationsFromRuleList (
     var nonTerminalLabelListAST = @nonTerminalLabelListAST ()
     for aLabel in aRule.mLabelList do
       nonTerminalLabelListAST ++= @(
-        !aLabel.mLabelName,
-        !aLabel.mFormalArguments,
-        !aLabel.mEndOfArgumentLocation
+        aLabel.mLabelName,
+        aLabel.mFormalArguments,
+        aLabel.mEndOfArgumentLocation
       )
     end
     if let entry = ioNonTerminalMapForGrammarAnalysis [aRule.mNonterminalName.string] then
       checkLabelMap (
-        !aRule.mNonterminalName.location,
-        !nonTerminalLabelListAST,
-        !ioNonTerminalMapForGrammarAnalysis.locationForKey (aRule.mNonterminalName.string),
-        !entry.mNonterminalSymbolParametersMap
+        aRule.mNonterminalName.location,
+        nonTerminalLabelListAST,
+        ioNonTerminalMapForGrammarAnalysis.locationForKey (aRule.mNonterminalName.string),
+        entry.mNonterminalSymbolParametersMap
       )
     else
       !?ioNonTerminalMapForGrammarAnalysis.insertKey (
         aRule.mNonterminalName,
-        !ioNonTerminalMapForGrammarAnalysis.count,
-        !transformLabelMap (!nonTerminalLabelListAST)
+        ioNonTerminalMapForGrammarAnalysis.count,
+        transformLabelMap (nonTerminalLabelListAST)
       )
     end
   end
@@ -203,7 +203,7 @@ proc buildRuleList (
   //--- Transform instruction list
     var instructionList = @syntaxInstructionListForGrammarAnalysis ()
     transformInstructionListForGrammarAnalysis (
-      !parsedSyntaxInstructionList,
+      parsedSyntaxInstructionList,
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap,
       !nonTerminalSymbolMap:inNonTerminalMapForGrammarAnalysis,
       !?addedTerminalIndex:ioAddedNonTerminalCount,
@@ -211,15 +211,15 @@ proc buildRuleList (
     )
   //---
     productionRulesList ++= @(
-      !aRule.mNonterminalName,
-      !nonTerminalIndex,
-      !instructionList,
-      !productionRulesList.count
+      aRule.mNonterminalName,
+      nonTerminalIndex,
+      instructionList,
+      productionRulesList.count
     )
   end
   ioSyntaxComponentListForGrammarAnalysis ++= @(
-    !productionRulesList,
-    !inSyntaxComponentName)
+    productionRulesList,
+    inSyntaxComponentName)
 }
 
 //--------------------------------------------------------------------------------------------------

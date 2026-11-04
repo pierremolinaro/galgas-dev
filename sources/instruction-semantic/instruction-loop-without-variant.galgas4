@@ -76,7 +76,7 @@ syntax extension galgas4InstructionsSyntax {
     $end$
     let endOfLoopInstruction = @location.here
     outInstruction = @loopInstructionWithoutVariantAST (
-      !instructionLocation,
+      instructionLocation,
       firstInstructions,
       endOfFirstInstructions,
       loopExpression,
@@ -123,9 +123,9 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
                         ?!@localVarManager ioVariableMap) {
   //--- Loop expression
    self.mLoopExpression.analyzeSemanticExpressionList
-     (!inUsefulnessCallerEntityName,
+     (inUsefulnessCallerEntityName,
      !?ioUsefulEntitiesGraph,
-     !inAnalysisContext,
+     inAnalysisContext,
      !?ioTypeMap,
      !?ioVariableMap,
      ?let @ifTestListForGeneration testListForGeneration
@@ -134,37 +134,37 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
     !?ioVariableMap.openOverrideForRepeatBlock ()
   //--- First branch
     analyzeSemanticInstructionList (
-      !inUsefulnessCallerEntityName,
+      inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !localConstantList: @(),
       !localInitializedVariableListWarnsIfNotMutated: @(),
       !localInitializedVariableListNoWarnsIfNotMutated: @(),
-      !self.mFirstInstructions,
-      !self.mEndOfFirstInstructions,
+      self.mFirstInstructions,
+      self.mEndOfFirstInstructions,
       !?ioVariableMap,
       ?let first_instructionList
     )
   //--- Second branch
     analyzeSemanticInstructionList (
-      !inUsefulnessCallerEntityName,
+      inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !localConstantList: @(),
       !localInitializedVariableListWarnsIfNotMutated: @(),
       !localInitializedVariableListNoWarnsIfNotMutated: @(),
-      !self.mSecondInstructions,
-      !self.mEndOfSecondInstructions,
+      self.mSecondInstructions,
+      self.mEndOfSecondInstructions,
       !?ioVariableMap,
       ?let second_instructionList
     )
   //--- End override
-    !?ioVariableMap.closeOverride (!self.mEndOfLoopInstruction)
+    !?ioVariableMap.closeOverride (self.mEndOfLoopInstruction)
   //--- Generate instruction
-    ioInstructionListForGeneration ++= @(!@loopInstructionWithoutVariantForGeneration (
-      !self.mInstructionLocation,
+    ioInstructionListForGeneration ++= @(@loopInstructionWithoutVariantForGeneration (
+      self.mInstructionLocation,
       first_instructionList,
       testListForGeneration,
       second_instructionList
@@ -195,13 +195,13 @@ final class @loopInstructionWithoutVariantForGeneration : @semanticInstructionFo
     let loopVar = "loop_" + self.mInstructionLocation.startLocationIndex
     ioGeneratedCode += "bool " + loopVar + " = true ;\n"
     ioGeneratedCode += "while (" + loopVar + ") {\n"
-    !?ioGeneratedCode.incIndentation (!2)
+    !?ioGeneratedCode.incIndentation (2)
     generateInstructionList (
       !?ioInclusionSet,
-      !self.mFirstInstructions,
+      self.mFirstInstructions,
       !?ioTemporaryVariableIndex,
       !?ioUnusedVariableCppNameSet,
-      !inGenerateSyntaxDirectedTranslationString,
+      inGenerateSyntaxDirectedTranslationString,
       !?ioGeneratedCode
     )
     self.mLoopExpression.generateInstruction
@@ -218,10 +218,10 @@ final class @loopInstructionWithoutVariantForGeneration : @semanticInstructionFo
     ioGeneratedCode += "if (" + loopVar + ") {\n"
     generateInstructionList (
       !?ioInclusionSet,
-      !self.mSecondInstructions,
+      self.mSecondInstructions,
       !?ioTemporaryVariableIndex,
       !?ioUnusedVariableCppNameSet,
-      !inGenerateSyntaxDirectedTranslationString,
+      inGenerateSyntaxDirectedTranslationString,
       !?ioGeneratedCode
     )
     var first = true
@@ -233,10 +233,10 @@ final class @loopInstructionWithoutVariantForGeneration : @semanticInstructionFo
         ioGeneratedCode += "  " + loopVar + " = false ;\n"
       end
       ioGeneratedCode += "}\n"
-      !?ioGeneratedCode.decIndentation (!2)
+      !?ioGeneratedCode.decIndentation (2)
     end
     ioGeneratedCode += "}\n"
-    !?ioGeneratedCode.decIndentation (!2)
+    !?ioGeneratedCode.decIndentation (2)
     ioGeneratedCode += "}\n"
   }
 

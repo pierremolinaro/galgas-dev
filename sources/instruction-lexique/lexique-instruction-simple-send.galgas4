@@ -49,7 +49,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   rule <lexical_send_instruction> (!@lexicalInstructionAST outInstruction) {
     $\$terminal\$$ (?let @lstring sentTerminal)
-    outInstruction = @lexicalSimpleSendInstructionAST (!sentTerminal)
+    outInstruction = @lexicalSimpleSendInstructionAST (sentTerminal)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -63,7 +63,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 override proc @lexicalSimpleSendInstructionAST.checkLexicalInstruction (
                          ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
                          ?!@lexicalTagMap unused ioTagMap)  {
-  ioLexiqueAnalysisContext.mTerminalMap.searchKey (!self.mSentTerminal, ?*)
+  ioLexiqueAnalysisContext.mTerminalMap.searchKey (self.mSentTerminal, ?*)
 }
 
 //--------------------------------------------------------------------------------------------------

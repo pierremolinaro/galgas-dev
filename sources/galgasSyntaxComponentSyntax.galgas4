@@ -272,11 +272,11 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   //--- end
     $}$
     ioDeclarations.mSyntaxComponentList ++= @(
-      !syntaxComponentName,
-      !importedLexiqueReference,
-      !nonterminalDeclarationList,
-      !ruleList,
-      !hasTranslateFeature)
+      syntaxComponentName,
+      importedLexiqueReference,
+      nonterminalDeclarationList,
+      ruleList,
+      hasTranslateFeature)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -300,10 +300,10 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   //--- end
     $}$
     !?ioDeclarations.mSyntaxExtensions.insertKey
-      (!syntaxComponentName.string,
-      !syntaxComponentName,
-      !nonterminalDeclarationList,
-      !ruleList
+      (syntaxComponentName.string,
+      syntaxComponentName,
+      nonterminalDeclarationList,
+      ruleList
     )
   }
 
@@ -317,15 +317,15 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     $<non_terminal>$ (?let @lstring mNonterminalName) indexing (ruleDefinition)
     var @nonTerminalLabelListAST labels = @()
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST firstBranchFormalParameters)
-    labels ++= @(!@(!"", .here), !firstBranchFormalParameters, !.here)
+    labels ++= @(@("", .here), firstBranchFormalParameters, .here)
     repeat
     while
       $label$
       $identifier$ (?let @lstring labelName)
       <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameters)
-      labels ++= @(!labelName, !formalParameters, !.here)
+      labels ++= @(labelName, formalParameters, .here)
     end
-    ioNonterminalDeclarationList ++= @(!mNonterminalName, !labels)
+    ioNonterminalDeclarationList ++= @(mNonterminalName, labels)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -339,11 +339,11 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     ${$
     <syntax_instruction_list> (!?ioDeclarations, ?let @syntaxInstructionList mSyntaxInstructionList)
     ioLabelList ++= @(
-      !inLabelName,
-      !mFormalParameters,
-      !endOfArguments,
-      !mSyntaxInstructionList,
-      !@location.here)
+      inLabelName,
+      mFormalParameters,
+      endOfArguments,
+      mSyntaxInstructionList,
+      @location.here)
     $}$
   }
 
@@ -353,17 +353,17 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
                                  ?!@syntaxRuleListAST ioRuleList ) {
     $rule$
     $<non_terminal>$ (?let @lstring mNonterminalName) indexing (ruleDefinition)
-    var labelName = @lstring (!"", @location.here)
+    var labelName = @lstring ("", @location.here)
     var mLabelList = @syntaxRuleLabelListAST ()
     repeat
-      <syntax_rule_label> (!?ioDeclarations, !labelName, !?mLabelList)
+      <syntax_rule_label> (!?ioDeclarations, labelName, !?mLabelList)
     while
       $label$
       $identifier$ (?labelName)
     end
     ioRuleList ++= @(
-      !mNonterminalName,
-      !mLabelList)
+      mNonterminalName,
+      mLabelList)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -378,17 +378,17 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
       repeat
         select
           <semantic_instruction> (!?ioDeclarations, ?let @semanticInstructionAST instruction)
-          outSyntaxInstructionList ++= @(!instruction)
+          outSyntaxInstructionList ++= @(instruction)
         or
           <syntax_instruction> (!?ioDeclarations, ?let instruction)
-          outSyntaxInstructionList ++= @(!instruction)
+          outSyntaxInstructionList ++= @(instruction)
         end
       while
         select
           $;$
         or
           let separator = @string.separatorString
-          if not separator.containsCharacter (!'\n') then
+          if not separator.containsCharacter ('\n') then
             error (.separator : "instructions on same line should be separated by ';'")
           end
         end

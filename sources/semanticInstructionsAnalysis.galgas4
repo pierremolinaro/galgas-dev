@@ -70,19 +70,19 @@ proc analyzeSemanticInstructionList
   !?ioVariableMap.openBranch ()
 //---
   analyzeSemanticInstructionListWithoutBranch (
-    !inUsefulnessCallerEntityName,
+    inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !localConstantList: inLocalConstantList,
     !localInitializedVariableListWarnsIfNotMutated: inLocalInitializedVariableList,
     !localInitializedVariableListNoWarnsIfNotMutated: inLocalInitializedVariableListNoWarns,
-    !inSemanticInstructionListAST,
+    inSemanticInstructionListAST,
     !?ioVariableMap,
     ?outInstructionListForGeneration
   )
 //--- Branch end
-  !?ioVariableMap.closeBranch (!inEndOfBranchLocation)
+  !?ioVariableMap.closeBranch (inEndOfBranchLocation)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ proc analyzeSemanticInstructionListWithoutBranch
     entry.mInstruction.analyzeSemanticInstruction (
       inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inAnalysisContext,
+      inAnalysisContext,
       !?ioTypeMap,
       !?outInstructionListForGeneration,
       !?ioVariableMap
@@ -152,17 +152,17 @@ proc checkExpressionIsBoolean
   if expressionType == boolType then
     outExpression = inExpression
   elsif expressionType.definition.typeKind == .structType then
-    if expressionType.definition.propertyMap.hasKey (!"bool") then
+    if expressionType.definition.propertyMap.hasKey ("bool") then
       expressionType.definition.propertyMap.searchKey
-        (!@lstring (!"bool", inErrorLocation),
+        (@lstring ("bool", inErrorLocation),
         ?let accessControl,
         ?*,
         ?let @unifiedTypeMapEntry attributeType
       )
-      accessControl.checkSetAccess (!inAnalysisContext.selfAvailability, !inErrorLocation)
+      accessControl.checkSetAccess (inAnalysisContext.selfAvailability, inErrorLocation)
       if attributeType == boolType then
         outExpression = @propertyAccessExpressionForGeneration (
-          !boolType,
+          boolType,
           inErrorLocation,
           inExpression,
           "bool"
@@ -186,7 +186,7 @@ proc checkExpressionIsBoolean
         error (inErrorLocation: "the expression type is not @bool, it handles a 'bool' func that requires argument(s)" spoil outExpression)
       else
         outExpression = @getterCallExpressionForGeneration (
-          !boolType,
+          boolType,
           inErrorLocation,
           entry.mKind,
           inExpression,
@@ -258,14 +258,14 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInVar.analyzeGra
   if not inHasTranslateFeature then
     error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end
-  !?ioVariableMap.searchForWriteAccess (!self.mActualParameterName, ?let @unifiedTypeMapEntry type, ?let @string cppName, ?*)
+  !?ioVariableMap.searchForWriteAccess (self.mActualParameterName, ?let @unifiedTypeMapEntry type, ?let @string cppName, ?*)
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
     error (self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
     + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
-  ioAssignementList ++= @(!cppName + " = GGS_string (" + inSyntaxDirectedTranslationResultVarName + ") ;")
+  ioAssignementList ++= @(cppName + " = GGS_string (" + inSyntaxDirectedTranslationResultVarName + ") ;")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -281,15 +281,15 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.an
     error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end
   let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
-  let type = ioTypeMap.typeMapEntryForLKey (!self.mActualParameterTypeName)
-  !?ioVariableMap.insertInitializedLocalVariable (!self.mActualParameterName, !warnsIfNotMutated: true, !type, !cppName, !cppName)
+  let type = ioTypeMap.typeMapEntryForLKey (self.mActualParameterTypeName)
+  !?ioVariableMap.insertInitializedLocalVariable (self.mActualParameterName, !warnsIfNotMutated: true, type, cppName, cppName)
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
     error (self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
     + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
-  ioAssignementList ++= @(!"GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;")
+  ioAssignementList ++= @("GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -305,15 +305,15 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.
     error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end
   let cppName = "var_" + self.mActualParameterName.string.identifierRepresentation + "_" + self.mActualParameterName.location.startLocationIndex
-  let type = ioTypeMap.typeMapEntryForLKey (!self.mActualParameterTypeName)
-  !?ioVariableMap.insertInitializedLocalConstant (!self.mActualParameterName, !type, !cppName, !cppName)
+  let type = ioTypeMap.typeMapEntryForLKey (self.mActualParameterTypeName)
+  !?ioVariableMap.insertInitializedLocalConstant (self.mActualParameterName, type, cppName, cppName)
   let expectedType = inAnalysisContext.predefinedTypes.mStringType
   if expectedType != type then
     error (self.mActualParameterName
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
     + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
-  ioAssignementList ++= @(!"const GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;")
+  ioAssignementList ++= @("const GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;")
 }
 
 //--------------------------------------------------------------------------------------------------

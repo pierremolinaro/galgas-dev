@@ -34,7 +34,7 @@ func routineMangledName (?let @lstring inRoutineName,
     end
     str += parameter.mFormalSelector
   end
-  result = @(!str, inRoutineName.location)
+  result = @(str, inRoutineName.location)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -69,21 +69,21 @@ struct @routineMap {
                     ?let @formalParameterSignature inRoutineSignature,
                     ?isFilePrivate: let @bool inIsFilePrivate) {
     var @routineArgumentMap routineArgumentMap
-    if self.mInternalRoutineMap.hasKey (!inRoutineName) then
-      self.mInternalRoutineMap.searchKey (!inRoutineName, ?routineArgumentMap)
+    if self.mInternalRoutineMap.hasKey (inRoutineName) then
+      self.mInternalRoutineMap.searchKey (inRoutineName, ?routineArgumentMap)
     else
       routineArgumentMap = @()
     end
-    let routineArguments = routineArgumentFromFormalParameters (!inRoutineSignature)
-    if routineArgumentMap.hasKey (!routineArguments) then
+    let routineArguments = routineArgumentFromFormalParameters (inRoutineSignature)
+    if routineArgumentMap.hasKey (routineArguments) then
       error (inRoutineName : "duplicated declaration of the " + inRoutineName + routineArguments + " routine")
     else
      !?routineArgumentMap.insertKey
-       (!@(!routineArguments, inRoutineName.location),
-       !inRoutineSignature,
-       !inIsFilePrivate
+       (@(routineArguments, inRoutineName.location),
+       inRoutineSignature,
+       inIsFilePrivate
      )
-     !?self.mInternalRoutineMap.insertOrReplace (!inRoutineName, !routineArgumentMap)
+     !?self.mInternalRoutineMap.insertOrReplace (inRoutineName, routineArgumentMap)
     end
   }
 
@@ -106,17 +106,17 @@ struct @routineMap {
         var accept = inActualParameterList.count == entry.mRoutineSignature.count
         for formalParameter in entry.mRoutineSignature, (mActualParameter) in inActualParameterList while accept do
           accept = mActualParameter.isCompatibleWith (
-            !formalParameter.mFormalArgumentPassingMode,
-            !formalParameter.mFormalSelector
+            formalParameter.mFormalArgumentPassingMode,
+            formalParameter.mFormalSelector
           )
         end
         if accept then
-          acceptableParameterList ++= @(!entry.mRoutineSignature, !entry.mIsFilePrivate)
+          acceptableParameterList ++= @(entry.mRoutineSignature, entry.mIsFilePrivate)
         end
       end
       if acceptableParameterList.count == 1 then
         acceptableParameterList.first (?outRoutineSignature, ?outIsFilePrivate)
-        outRoutineMangledName = routineMangledName (!inRoutineName, !outRoutineSignature)
+        outRoutineMangledName = routineMangledName (inRoutineName, outRoutineSignature)
       elsif acceptableParameterList.count == 0 then
         error (inRoutineName
         : "cannot find any procedure with compatible formal argument list"
@@ -124,7 +124,7 @@ struct @routineMap {
       else
         var s = "ambiguity, several procedures with compatible formal argument list:"
         for element in acceptableParameterList do
-          s += "\n  - " + routineArgumentFromFormalParameters (!element.mRoutineSignature)
+          s += "\n  - " + routineArgumentFromFormalParameters (element.mRoutineSignature)
         end
         error (inRoutineName
         : s
@@ -140,7 +140,7 @@ struct @routineMap {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func locationForKey (?let @string inKey ) -> @location {
-    result = self.mInternalRoutineMap.locationForKey (!inKey)
+    result = self.mInternalRoutineMap.locationForKey (inKey)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

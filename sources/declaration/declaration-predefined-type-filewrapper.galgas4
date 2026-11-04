@@ -91,63 +91,63 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"allFilePathsWithExtension", !"string", !"inExtension",
+      !getterName:"allFilePathsWithExtension", "string", "inExtension",
       !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"directoryExistsAtPath", !"string", !"inPath",
+      !getterName:"directoryExistsAtPath", "string", "inPath",
       !returnedTypeName:"bool",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"fileExistsAtPath", !"string", !"inPath",
+      !getterName:"fileExistsAtPath", "string", "inPath",
       !returnedTypeName:"bool",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"textFileContentsAtPath", !"string", !"inPath",
+      !getterName:"textFileContentsAtPath", "string", "inPath",
       !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"binaryFileContentsAtPath", !"string", !"inPath",
+      !getterName:"binaryFileContentsAtPath", "string", "inPath",
       !returnedTypeName:"data",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"absolutePathForPath", !"string", !"inPath",
+      !getterName:"absolutePathForPath", "string", "inPath",
       !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"directoriesAtPath", !"string", !"inPath",
+      !getterName:"directoriesAtPath", "string", "inPath",
       !returnedTypeName:"stringlist",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"binaryFilesAtPath", !"string", !"inPath",
+      !getterName:"binaryFilesAtPath", "string", "inPath",
       !returnedTypeName:"stringlist",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"textFilesAtPath", !"string", !"inPath",
+      !getterName:"textFilesAtPath", "string", "inPath",
       !returnedTypeName:"stringlist",
       !hasCompilerArgument: true
     )

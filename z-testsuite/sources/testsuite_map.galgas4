@@ -10,25 +10,25 @@ map @aMap {
 proc testsuite_map() {
   println ("*************************************** begin of map")
   var @aMap m = ()
-  !?m.insertKey (@(!"g", !.here), !37)
+  !?m.insertKey (@("g", .here), 37)
   log m
-  !?m.setValueForKey (!56, !"g")
+  !?m.setValueForKey (56, "g")
   log m
-  var mm = @aMap.mapWithMapToOverride (!m)
+  var mm = @aMap.mapWithMapToOverride (m)
   log mm
   var @uint v
-  mm.searchKey (@lstring (!"g", !.here), ?v)
+  mm.searchKey (@lstring ("g", .here), ?v)
   log v // Displays 56
-  !?mm.insertKey (@(!"g", !.here), !11)
+  !?mm.insertKey (@("g", .here), 11)
   log mm
-  mm.searchKey (@lstring (!"g", !.here), ?v)
+  mm.searchKey (@lstring ("g", .here), ?v)
   log v // Displays 11
   m = mm.overriddenMap
   log m
   log "levelCount": m.levels
   log "hasKeyAtLevel": m.hasKeyAtLevel ("g", 0)
   log "hasKeyAtLevel": m.hasKeyAtLevel ("h", 0)
-  let @location loc = m.locationForKey (!"g")
+  let @location loc = m.locationForKey ("g")
   log loc
 //---
   var @aMap otherMap = ()
@@ -86,7 +86,7 @@ proc testsuite_map() {
     println ("  key '" + e.lkey + "', value: " + e.value)
   end
   for key in otherMap.keyList do
-    !?otherMap.removeKey (!key.mValue, ?*)
+    !?otherMap.removeKey (key.mValue, ?*)
   end
 }
 

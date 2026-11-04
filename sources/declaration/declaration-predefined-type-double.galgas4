@@ -170,7 +170,7 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"power", !"double", !"inExponant",
+      !getterName:"power", "double", "inExponant",
       !returnedTypeName:"double",
       !hasCompilerArgument:true
     )

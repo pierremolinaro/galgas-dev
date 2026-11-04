@@ -22,7 +22,7 @@
 func makeEmbeddedTypeLName (?outer: let @lstring inOuterTypeName,
                           ?inner: let @lstring inInnerTypeName ) -> @lstring {
   result = @(makeEmbeddedTypeName (!outer: inOuterTypeName, !inner: inInnerTypeName),
-                  inOuterTypeName.location.union (!inInnerTypeName))
+                  inOuterTypeName.location.union (inInnerTypeName))
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ func makeEmbeddedElementTypeName (?let @string inTypeName ) -> @string {
 //--------------------------------------------------------------------------------------------------
 
 func makeEmbeddedElementTypeLName (?let @lstring inTypeName ) -> @lstring {
-  result = @(makeEmbeddedElementTypeName (!inTypeName), inTypeName)
+  result = @(makeEmbeddedElementTypeName (inTypeName), inTypeName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ func makeArrayTypeName (?let @string inTypeName ) -> @string {
 //--------------------------------------------------------------------------------------------------
 
 func makeArrayTypeLName (?let @lstring inTypeName ) -> @lstring {
-  result = @(makeArrayTypeName (!inTypeName), inTypeName)
+  result = @(makeArrayTypeName (inTypeName), inTypeName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ func makeWeakTypeName (?let @string inTypeName ) -> @string {
 //--------------------------------------------------------------------------------------------------
 
 func makeWeakTypeLName (?let @lstring inTypeName ) -> @lstring {
-  result = @(makeWeakTypeName (!inTypeName), inTypeName)
+  result = @(makeWeakTypeName (inTypeName), inTypeName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -227,10 +227,10 @@ syntax extension galgas4DeclarationsSyntax {
     <type_definition> (!?ioDeclarations, ?outTypeName)
     select
       let elementTypeName = outTypeName
-      outTypeName = makeArrayTypeLName (!elementTypeName)
-      if not ioDeclarations.implicitTypeDeclarationSet.hasKey (!outTypeName.string) then
+      outTypeName = makeArrayTypeLName (elementTypeName)
+      if not ioDeclarations.implicitTypeDeclarationSet.hasKey (outTypeName.string) then
         ioDeclarations.implicitTypeDeclarationSet ++= outTypeName.string
-        ioDeclarations.mDeclarationList ++= @(!@arrayTypeDeclarationAST (
+        ioDeclarations.mDeclarationList ++= @(@arrayTypeDeclarationAST (
           !isPredefined: false,
           outTypeName,
           elementTypeName,

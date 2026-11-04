@@ -206,25 +206,25 @@ proc testsuite_bigint_type() {
   var @bigint quotient
   var @bigint remainder
   let cst1 = 9876543210_9876543210 ; cst1.divideBy (
-    !1234567890,
+    1234567890,
     ?quotient:quotient,
     ?remainder:remainder
   )
   println (quotient.string + " " + remainder) // 80000000737 8280
   let cst2 = -9876543210_9876543210 ; cst2.divideBy (
-    !1234567890,
+    1234567890,
     ?quotient:quotient,
     ?remainder:remainder
   )
   println (quotient.string + " " + remainder) // -80000000737 -8280
   let cst3 = -9876543210_9876543210 ; cst3.divideBy (
-    !-1234567890,
+    -1234567890,
     ?quotient:quotient,
     ?remainder:remainder
   )
   println (quotient.string + " " + remainder) // 80000000737 -8280
   let cst4 = 9876543210_9876543210 ; cst4.divideBy (
-    !-1234567890,
+    -1234567890,
     ?quotient:quotient,
     ?remainder:remainder
   )
@@ -280,14 +280,14 @@ proc testsuite_bigint_type() {
   println ((-0x1234).bitAtIndex (25).ocString) // YES
   println ("--- setBitAtIndex")
   var b = 0x1234
-  !?b.setBitAtIndex (true, !14)
+  !?b.setBitAtIndex (true, 14)
   println (b.hexString) // 0x5234
-  !?b.setBitAtIndex (true, !40)
+  !?b.setBitAtIndex (true, 40)
   println (b.hexString) // 0x10000005234
   b = -0x1234
-  !?b.setBitAtIndex (false, !14)
+  !?b.setBitAtIndex (false, 14)
   println (b.hexString) // -0x5234
-  !?b.setBitAtIndex (false, !40) // -0x10000005234
+  !?b.setBitAtIndex (false, 40) // -0x10000005234
   println (b.hexString)
   println ("--- complementBitAtIndex")
   b = 0x1234

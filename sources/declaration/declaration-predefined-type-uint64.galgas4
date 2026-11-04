@@ -129,8 +129,8 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"uintSlice",
-      !"uint", !"inStartBit",
-      !"uint", !"inBitCount",
+      "uint", "inStartBit",
+      "uint", "inBitCount",
       !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
@@ -162,10 +162,10 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"hexStringSeparatedBy",
-      !"char",
-      !"inSeparator",
-      !"uint",
-      !"inGroupCount",
+      "char",
+      "inSeparator",
+      "uint",
+      "inGroupCount",
       !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
@@ -180,28 +180,28 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canAdd", !"uint64", !"inOperand",
+      !getterName:"canAdd", "uint64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canSubstract", !"uint64", !"inOperand",
+      !getterName:"canSubstract", "uint64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canMultiply", !"uint64", !"inOperand",
+      !getterName:"canMultiply", "uint64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"canDivide", !"uint64", !"inOperand",
+      !getterName:"canDivide", "uint64", "inOperand",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )

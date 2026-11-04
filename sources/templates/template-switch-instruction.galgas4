@@ -63,12 +63,12 @@ syntax extension templateSyntax {
       while
         <template_instruction> (!?instructionList)
       end
-      templateInstructionSwitchBranchList ++= @(!constantNameList, !associatedValuesExtraction, !instructionList, !.here)
+      templateInstructionSwitchBranchList ++= @(constantNameList, associatedValuesExtraction, instructionList, .here)
     end
     $end$
   //---
-    ioResultingInstructionList ++= @(!@templateInstructionSwitchAST (
-      !switchExpression,
+    ioResultingInstructionList ++= @(@templateInstructionSwitchAST (
+      switchExpression,
       endOfSwitchExpression,
       templateInstructionSwitchBranchList
     ))
@@ -81,7 +81,7 @@ syntax extension templateSyntax {
     outConstantNameList = @()
     repeat
       $identifier$ (?let @lstring constantName)
-      !?outConstantNameList.append (!constantName)
+      !?outConstantNameList.append (constantName)
     while
       $,$
     end
@@ -94,11 +94,11 @@ syntax extension templateSyntax {
           $literalInt$ (?let n)
           $*$
           for * in 0 ..< n.bigint do
-            outAssociatedValuesExtraction ++= @(!"".here, !"".here, !false)
+            outAssociatedValuesExtraction ++= @("".here, "".here, false)
           end
          or
           $*$
-          outAssociatedValuesExtraction ++= @(!"".here, !"".here, !false)
+          outAssociatedValuesExtraction ++= @("".here, "".here, false)
          or
           let @lstring typeName
           select
@@ -114,7 +114,7 @@ syntax extension templateSyntax {
             constantMarkedAsUnused = true
           end
           $identifier$ (?let @lstring constantName)
-          outAssociatedValuesExtraction ++= @(!typeName, !constantName, !constantMarkedAsUnused)
+          outAssociatedValuesExtraction ++= @(typeName, constantName, constantMarkedAsUnused)
         end
       while
       end
@@ -138,9 +138,9 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
                                 ?!@templateInstructionListForGeneration ioInstructionList ) {
 //---
   self.mSwitchExpression.templateExpressionAnalysis
-    (!inUsefulnessCallerEntityName,
+    (inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     ?let switchExpression
   )
@@ -153,12 +153,12 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
       var analysisContext = inAnalysisContext
       for constantName in templateInstructionSwitchBranch.constantList do
         if enumType.constantMap.hasKey (constantName.string) then
-          if constantsNamedInSwitchInstruction.hasKey (!constantName.string) then
+          if constantsNamedInSwitchInstruction.hasKey (constantName.string) then
             error (constantName
             :"the '" + constantName + "' constant is already named in this switch instruction")
           end
           constantsNamedInSwitchInstruction ++= constantName.string
-          enumType.constantMap.searchKey (!constantName, ?*, ?let @associatedValueDescriptorList associatedTypeList)
+          enumType.constantMap.searchKey (constantName, ?*, ?let @associatedValueDescriptorList associatedTypeList)
           if (associatedTypeList.count > 0) & (templateInstructionSwitchBranch.associatedValuesExtraction.count == 0) then
             error (constantName
               :"the associated values of '" + constantName + "' constant should be extracted")
@@ -179,14 +179,14 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
               let cppName = "extractedValue_" + associatedValue.mExtractedValueName.location.startLocationIndex
                 + "_" + associatedValue.mExtractedValueName + "_" + IDX
               extractedAssociatedValuesForGeneration ++= @(
-                !descriptor.type,
-                !cppName,
-                !descriptor.name)
+                descriptor.type,
+                cppName,
+                descriptor.name)
               if associatedValue.mExtractedValueName.string != "" then
                 !?analysisContext.mTemplateVariableMap.insertKey (
                   associatedValue.mExtractedValueName,
-                  !descriptor.type,
-                  !cppName
+                  descriptor.type,
+                  cppName
                 )
               end
             end
@@ -199,18 +199,18 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
       end
       var @templateInstructionListForGeneration templateInstructionList = @()
       templateInstructionListAnalysis (
-        !inUsefulnessCallerEntityName,
+        inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
-        !analysisContext,
+        analysisContext,
         !?ioTypeMap,
-        !templateInstructionSwitchBranch.instructionList,
+        templateInstructionSwitchBranch.instructionList,
         !?templateInstructionList
       )
       templateInstructionSwitchBranchList ++= @(
         templateInstructionSwitchBranch.constantList,
-        !extractedAssociatedValuesForGeneration,
+        extractedAssociatedValuesForGeneration,
         templateInstructionSwitchBranch.endOfBranch.startLocationIndex,
-        !templateInstructionList
+        templateInstructionList
       )
     end
   //--- Check all constants have been named
@@ -224,8 +224,8 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
       : "the switch instruction should name all enumeration constants; missing constants are:" + s)
     end
   //---
-    ioInstructionList ++= @(!@templateInstructionSwitchForGeneration (
-      !switchExpression.mResultType,
+    ioInstructionList ++= @(@templateInstructionSwitchForGeneration (
+      switchExpression.mResultType,
       switchExpression,
       templateInstructionSwitchBranchList
     ))
@@ -285,7 +285,7 @@ override proc @templateInstructionSwitchForGeneration.templateCodeGeneration
       ioGeneratedCode += "::Enumeration::enum_"
       ioGeneratedCode += constantName.string.identifierRepresentation + " :\n"
     end
-    !?ioGeneratedCode.incIndentation (!2)
+    !?ioGeneratedCode.incIndentation (2)
     ioGeneratedCode += "{\n"
     if branch.mExtractedAssociatedValuesForGeneration.count > 0 then
       for associatedValue in branch.mExtractedAssociatedValuesForGeneration do
@@ -302,20 +302,20 @@ override proc @templateInstructionSwitchForGeneration.templateCodeGeneration
       ioGeneratedCode += ") ;\n"
     end
     if branch.mInstructionList.count > 0 then
-      !?ioGeneratedCode.incIndentation (!2)
+      !?ioGeneratedCode.incIndentation (2)
       templateCodeGenerationForListInstruction (
-        !branch.mInstructionList,
+        branch.mInstructionList,
         !?ioGeneratedCode,
         !?ioInclusionSet,
         !?ioTemporaryVariableIndex,
         !?ioUnusedVariableCppNameSet,
         !?ioUseColumnMarker
       )
-      !?ioGeneratedCode.decIndentation (!2)
+      !?ioGeneratedCode.decIndentation (2)
     end
     ioGeneratedCode += "}\n"
     ioGeneratedCode += "break ;\n"
-    !?ioGeneratedCode.decIndentation (!2)
+    !?ioGeneratedCode.decIndentation (2)
   end
 //---
   ioGeneratedCode += "}\n"

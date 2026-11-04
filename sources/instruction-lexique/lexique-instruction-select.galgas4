@@ -83,7 +83,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       while
         <lexical_instruction> (!?selectInstructionList)
       end
-      lexicalWhileBranchList ++= @(!selectExpression, !selectInstructionList)
+      lexicalWhileBranchList ++= @(selectExpression, selectInstructionList)
     while
     end
     $default$
@@ -93,8 +93,8 @@ syntax extension galgas4LexiqueComponentSyntax {
       <lexical_instruction> (!?defaultInstructionList)
     end
     $end$
-    ioInstructionList ++= @(!@lexicalSelectInstructionAST (
-      !lexicalWhileBranchList,
+    ioInstructionList ++= @(@lexicalSelectInstructionAST (
+      lexicalWhileBranchList,
       defaultInstructionList
     ))
   }
@@ -112,12 +112,12 @@ override proc @lexicalSelectInstructionAST.checkLexicalInstruction (
                          ?!@lexicalTagMap ioTagMap)  {
   for lexicalSelectBranch in self.mLexicalSelectBranchList do
     lexicalSelectBranch.mSelectExpression.checkLexicalExpression (!?ioLexiqueAnalysisContext)
-    var tagMap = @lexicalTagMap.mapWithMapToOverride(!ioTagMap)
+    var tagMap = @lexicalTagMap.mapWithMapToOverride(ioTagMap)
     for entry in lexicalSelectBranch.mSelectInstructionList do
       entry.mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
     end
   end
-  var tagMap = @lexicalTagMap.mapWithMapToOverride(!ioTagMap)
+  var tagMap = @lexicalTagMap.mapWithMapToOverride(ioTagMap)
   for entry in self.mDefaultInstructionList do
     entry.mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
   end
@@ -134,24 +134,24 @@ override func @lexicalSelectInstructionAST.generateSwiftCocoaInstructionCode
   for lexicalSelectBranch in self.mLexicalSelectBranchList
   do
     outGeneratedCode += "if scanningOk && ("
-    outGeneratedCode += lexicalSelectBranch.mSelectExpression.generateSwiftCocoaConditionCode (!inLexiqueAnalysisContext)
+    outGeneratedCode += lexicalSelectBranch.mSelectExpression.generateSwiftCocoaConditionCode (inLexiqueAnalysisContext)
     outGeneratedCode += ") {\n"
-    !?outGeneratedCode.incIndentation (!2)
+    !?outGeneratedCode.incIndentation (2)
     for entry in lexicalSelectBranch.mSelectInstructionList do
-      outGeneratedCode += entry.mInstruction.generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+      outGeneratedCode += entry.mInstruction.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
     end
-    !?outGeneratedCode.decIndentation (!2)
+    !?outGeneratedCode.decIndentation (2)
   between
     outGeneratedCode += "}else "
   end
 //--- Default branch
   if self.mDefaultInstructionList.count > 0 then
     outGeneratedCode += "}else{\n"
-    !?outGeneratedCode.incIndentation (!2)
+    !?outGeneratedCode.incIndentation (2)
     for entry in self.mDefaultInstructionList do
-      outGeneratedCode += entry.mInstruction.generateSwiftCocoaInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+      outGeneratedCode += entry.mInstruction.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
     end
-    !?outGeneratedCode.decIndentation (!2)
+    !?outGeneratedCode.decIndentation (2)
   end
   outGeneratedCode += "}\n"
 }
@@ -185,22 +185,22 @@ override func @lexicalSelectInstructionAST.generateLexicalInstructionCode
     result += "if ("
     result += lexicalSelectBranch.mSelectExpression.generateConditionCode (!context:inLexiqueAnalysisContext)
     result += ") {\n"
-    !?result.incIndentation (!2)
+    !?result.incIndentation (2)
     for instr in lexicalSelectBranch.mSelectInstructionList do
-      result += instr.mInstruction.generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+      result += instr.mInstruction.generateLexicalInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
     end
-    !?result.decIndentation (!2)
+    !?result.decIndentation (2)
   between
     result += "}else "
   end
 //--- Default branch
   if self.mDefaultInstructionList.count > 0 then
     result += "}else{\n"
-    !?result.incIndentation (!2)
+    !?result.incIndentation (2)
     for instr in self.mDefaultInstructionList do
-      result += instr.mInstruction.generateLexicalInstructionCode (!inScannerClassName, !inLexiqueAnalysisContext)
+      result += instr.mInstruction.generateLexicalInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
     end
-    !?result.decIndentation (!2)
+    !?result.decIndentation (2)
   end
   result += "}\n"
 }

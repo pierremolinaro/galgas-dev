@@ -50,7 +50,7 @@ syntax extension galgas4ExpressionSyntax {
   rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $literalInt$ (?let @lbigint literalInt)
-    outExpression = @literalBigIntExpressionAST (!literalInt)
+    outExpression = @literalBigIntExpressionAST (literalInt)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -146,7 +146,7 @@ override proc @literalBigIntExpressionAST.analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
   outExpression = @literalBigIntExpressionForGeneration (
-    !inAnalysisContext.predefinedTypes.mBigIntType,
+    inAnalysisContext.predefinedTypes.mBigIntType,
     self.mValue.location,
     self.mValue.bigint
   )
@@ -237,7 +237,7 @@ override proc @literalBigIntExpressionForGeneration.generateExpression
                                                           ?!@stringset ioUnusedVariableCppNameSet,
                                                           !@string outCppExpression ) {
   outCppExpression = "GGS_bigint (\"" + self.mValue.string + "\", "
-  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
   outCppExpression += compilerCppName ()
   outCppExpression += " " + self.mLocation.commaSourceFile + ")"
 }

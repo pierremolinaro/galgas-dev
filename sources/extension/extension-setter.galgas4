@@ -117,7 +117,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@extensionSetterAST (
+    ioDeclarations.mDeclarationList ++= @(@extensionSetterAST (
       !isPredefined: false,
       typeName,
       setterName,
@@ -139,7 +139,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList ++= @(!@extensionSetterAST (
+    ioDeclarations.mDeclarationList ++= @(@extensionSetterAST (
       !isPredefined: false,
       inTypeName,
       setterName,
@@ -174,22 +174,22 @@ override proc @extensionSetterAST.enterDeclarationInGraph (
   ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
   let key = @lstring (
-    !"extension mutating proc @" + self.mTypeName + " " + self.mExtensionSetterName,
+    "extension mutating proc @" + self.mTypeName + " " + self.mExtensionSetterName,
     self.mExtensionSetterName.location
   )
-  !?ioSemanticTypePrecedenceGraph.addNode (!key, !self)
-  !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @(!"@" + self.mTypeName, self.mTypeName.location))
+  !?ioSemanticTypePrecedenceGraph.addNode (key, self)
+  !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName.location))
 //---
-  if not ioExtensionSetterMapForBuildingContext.hasKey (!self.mTypeName.string) then
+  if not ioExtensionSetterMapForBuildingContext.hasKey (self.mTypeName.string) then
     !?ioExtensionSetterMapForBuildingContext.insertKey
-      (!self.mTypeName,
-      !@()
+      (self.mTypeName,
+      @()
     )
   end
   var entry = ioExtensionSetterMapForBuildingContext [!searchKey: self.mTypeName]
   !?entry.mExtensionSetterMapForType.insertKey
-    (!self.mExtensionSetterName,
-    !self.mExtensionSetterFormalParameterList
+    (self.mExtensionSetterName,
+    self.mExtensionSetterFormalParameterList
   )
   !?ioExtensionSetterMapForBuildingContext.replaceKey (!with: entry)
 //  with %aliasOf ioExtensionSetterMapForBuildingContext [!searchKey: self.mTypeName] do
@@ -227,12 +227,12 @@ override proc @extensionSetterAST.semanticAnalysis (
   ?let @predefinedTypes inPredefinedTypes,
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration) {
 //--- Useful entities graph
-  let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName, !self.mExtensionSetterName)
-  !?ioUsefulEntitiesGraph.addNode (!nameForUsefulness, !nameForUsefulness)
-  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
+  let nameForUsefulness = setterNameForUsefulEntitiesGraph (self.mTypeName, self.mExtensionSetterName)
+  !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
+  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mTypeName)
   !?ioUsefulEntitiesGraph.addEdge (!from: typeNameForUsefulness, !to: nameForUsefulness)
 //--- Self type
-  let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (!self.mTypeName)
+  let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
   let @string selfObjectName
   let @string selfObjectAccessor
   let @bool implementedAsFunction
@@ -248,27 +248,27 @@ override proc @extensionSetterAST.semanticAnalysis (
   end
 //--- Analyze instruction list
   let analysisContext = @analysisContext (
-    !inSemanticContext,
+    inSemanticContext,
     inPredefinedTypes,
     !selfObjectCppName: selfObjectName,
     !selfAvailability: .available (!type: selfType, !selfMutability: .selfAndPropertiesAreMutable),
     !selfObjectCppPrefixForAccessingProperty: selfObjectAccessor
   )
   analyzeRoutineBody (
-    !nameForUsefulness,
+    nameForUsefulness,
     !?ioUsefulEntitiesGraph,
-    !analysisContext,
+    analysisContext,
     !?ioTypeMap,
-    !self.mExtensionSetterFormalParameterList,
-    !self.mExtensionSetterInstructionList,
-    !self.mEndOfSetterDeclarationLocation,
+    self.mExtensionSetterFormalParameterList,
+    self.mExtensionSetterInstructionList,
+    self.mEndOfSetterDeclarationLocation,
     ?let semanticInstructionListForGeneration,
     ?let formalParameterListForGeneration
   )
 //---
   ioSemanticDeclarationListForGeneration ++= @(
     !infoMessage:"extension mutating proc " + self.mExtensionSetterName,
-    !@extensionSetterForGeneration (
+    @extensionSetterForGeneration (
       !generateHeader: true,
       !implementationCppFileName: "mutating proc-" + selfType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.string.fileNameRepresentation,
       selfType,
@@ -300,8 +300,8 @@ override proc @extensionSetterAST.buildExtensionListMaps (
 //    !self.mTypeName.string
 //    !self.mExtensionSetterName
   !?ioExtensionSetterListMap.insertKey
-    (!self.mTypeName.string,
-    !self.mExtensionSetterName
+    (self.mTypeName.string,
+    self.mExtensionSetterName
   )
 }
 
@@ -330,15 +330,15 @@ override proc @extensionSetterForGeneration.appendDeclaration1 (?!@stringset unu
                                          !@string outHeader) {
   if self.mImplementedAsFunction then
     outHeader = filewrapper [semanticComponentGenerationTemplate.extensionSetterAsFunctionDeclaration :
-      !self.mReceiverType.definition.typeName.string,
-      !self.mExtensionSetterName,
-      !self.mExtensionSetterFormalParameterList
+      self.mReceiverType.definition.typeName.string,
+      self.mExtensionSetterName,
+      self.mExtensionSetterFormalParameterList
     ]
   else
     outHeader = filewrapper [semanticComponentGenerationTemplate.extensionSetterDeclaration :
-      !self.mReceiverType.definition.typeName.string,
-      !self.mExtensionSetterName,
-      !self.mExtensionSetterFormalParameterList
+      self.mReceiverType.definition.typeName.string,
+      self.mExtensionSetterName,
+      self.mExtensionSetterFormalParameterList
     ]
   end
 }
@@ -355,38 +355,38 @@ override proc @extensionSetterForGeneration.appendSpecificImplementation (
   if self.mImplementedAsFunction then
     var extensionSetterFormalParameterList = self.mExtensionSetterFormalParameterList
     !?extensionSetterFormalParameterList.insertAtIndex
-      (!"".nowhere,
-      !@formalArgumentPassingModeAST. argumentInOut,
-      !self.mReceiverType,
-      !@lstring (!"self", @location.here),
-      !"ioObject",
-      !0
+      ("".nowhere,
+      @formalArgumentPassingModeAST. argumentInOut,
+      self.mReceiverType,
+      @lstring ("self", @location.here),
+      "ioObject",
+      0
     )
     ioInclusionSet ++= "mutating proc-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.fileNameRepresentation
     generateProcedure (
       !static:false,
-      !"extensionSetter_" + self.mExtensionSetterName.identifierRepresentation,
+      "extensionSetter_" + self.mExtensionSetterName.identifierRepresentation,
       !?ioInclusionSet,
-      !extensionSetterFormalParameterList,
-      !self.mSemanticInstructionListForGeneration,
-      !false, // is not const
-      !"Compiler",
-      !true, // Generate location Argument
-      !false, // Do not generate 'resetTemplateString'
-      !false, // Do not generate syntaxDirectedTranslationString argument
+      extensionSetterFormalParameterList,
+      self.mSemanticInstructionListForGeneration,
+      false, // is not const
+      "Compiler",
+      true, // Generate location Argument
+      false, // Do not generate 'resetTemplateString'
+      false, // Do not generate syntaxDirectedTranslationString argument
       ?let @string code
     )
     outImplementation = filewrapper [semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation :
-      !self.mReceiverType.definition.typeName.string,
-      !self.mExtensionSetterName,
-      !code
+      self.mReceiverType.definition.typeName.string,
+      self.mExtensionSetterName,
+      code
     ]
   else
     var @unifiedTypeMapEntry baseType = self.mReceiverType
     var @bool searching = true
     loop (@uint.max) while searching do
       if not baseType.definition.superType.isNull then
-        if baseType.definition.superType.definition.setterMap.hasKey (!self.mExtensionSetterName) then
+        if baseType.definition.superType.definition.setterMap.hasKey (self.mExtensionSetterName) then
           baseType = baseType.definition.superType
         else
           searching = false
@@ -398,19 +398,19 @@ override proc @extensionSetterForGeneration.appendSpecificImplementation (
     ioInclusionSet ++= "mutating proc-" + baseType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.fileNameRepresentation
     baseType.addHeaderFileName (!?ioInclusionSet)
     generateExtensionSetter (
-      !self.mReceiverType.definition.typeName.string,
-      !"",
-      !self.mExtensionSetterName,
+      self.mReceiverType.definition.typeName.string,
+      "",
+      self.mExtensionSetterName,
       !?ioInclusionSet,
-      !self.mExtensionSetterFormalParameterList,
-      !self.mSemanticInstructionListForGeneration,
+      self.mExtensionSetterFormalParameterList,
+      self.mSemanticInstructionListForGeneration,
       ?let @string setterImplementation
     )
     outImplementation = filewrapper [semanticComponentGenerationTemplate.extensionsetterImplementation :
-      !self.mReceiverType.definition.typeName.string,
-      !self.mExtensionSetterName,
-      !self.mExtensionSetterFormalParameterList,
-      !setterImplementation
+      self.mReceiverType.definition.typeName.string,
+      self.mExtensionSetterName,
+      self.mExtensionSetterFormalParameterList,
+      setterImplementation
     ]
   end
 }

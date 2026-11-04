@@ -66,14 +66,14 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression ) {
     <simple_type_definition> (!?ioDeclarations, ?let typeName)
     select
-      <primary_beginning_by_type> (!typeName, !?ioDeclarations, ?outExpression)
+      <primary_beginning_by_type> (typeName, !?ioDeclarations, ?outExpression)
     or
       $.$
       select
         $identifier$ (?let @lstring classFuncName)
-        <primary_beginning_by_type_dot_name> (!typeName, !classFuncName, !?ioDeclarations, ?outExpression)
+        <primary_beginning_by_type_dot_name> (typeName, classFuncName, !?ioDeclarations, ?outExpression)
       or
-        <simple_type_followed_by_dot_type> (!typeName, !?ioDeclarations, ?outExpression)
+        <simple_type_followed_by_dot_type> (typeName, !?ioDeclarations, ?outExpression)
       end
     end
   }
@@ -87,14 +87,14 @@ syntax extension galgas4ExpressionSyntax {
     <simple_type_definition> (!?ioDeclarations, ?let t)
     let typeName = makeEmbeddedTypeLName (!outer: inTypeName, !inner: t)
     select
-      <primary_beginning_by_type> (!typeName, !?ioDeclarations, ?outExpression)
+      <primary_beginning_by_type> (typeName, !?ioDeclarations, ?outExpression)
     or
       $.$
       select
         $identifier$ (?let @lstring classFuncName)
-        <primary_beginning_by_type_dot_name> (!typeName, !classFuncName, !?ioDeclarations, ?outExpression)
+        <primary_beginning_by_type_dot_name> (typeName, classFuncName, !?ioDeclarations, ?outExpression)
       or
-        <simple_type_followed_by_dot_type> (!typeName, !?ioDeclarations, ?outExpression)
+        <simple_type_followed_by_dot_type> (typeName, !?ioDeclarations, ?outExpression)
       end
     end
   }
@@ -111,7 +111,7 @@ syntax extension galgas4ExpressionSyntax {
     let endOfExpression = @location.here
     $)$
     outExpression = @initializerCallAST (
-      !@("", initLocation),
+      @("", initLocation),
       expressionList,
       endOfExpression
     )
@@ -137,7 +137,7 @@ syntax extension galgas4ExpressionSyntax {
     let endOfExpression = @location.here
     $)$
     outExpression = @initializerCallAST (
-      !inTypeName,
+      inTypeName,
       expressionList,
       endOfExpression
     )
@@ -151,7 +151,7 @@ syntax extension galgas4ExpressionSyntax {
     let endOfExpression = @location.here
     $)$
     outExpression = @initializerCallAST (
-      !@("", endOfExpression),
+      @("", endOfExpression),
       @(),
       endOfExpression
     )
@@ -172,7 +172,7 @@ final class @initializerCallAST : @semanticExpressionAST {
 
   override proc enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     if self.mTypeName.string != "" then
-      !?ioTypeMap.makeEntry (!self.mTypeName, ?*)
+      !?ioTypeMap.makeEntry (self.mTypeName, ?*)
     end
     self.mExpressions.enterInSemanticContext (!?ioTypeMap)
   }
@@ -188,15 +188,15 @@ final class @initializerCallAST : @semanticExpressionAST {
             ?!@localVarManager ioVariableMap,
             !@semanticExpressionForGeneration outExpression ) {
     analyzeInitializerInvocation (
-      !inUsefulnessCallerEntityName,
+      inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
-      !inType,
-      !inAnalysisContext,
+      inType,
+      inAnalysisContext,
       !?ioTypeMap,
       !?ioVariableMap,
-      !self.mTypeName,
-      !self.mExpressions,
-      !self.mEndOfExpressions,
+      self.mTypeName,
+      self.mExpressions,
+      self.mEndOfExpressions,
       ?let @unifiedTypeMapEntry instanciedType,
       ?let @lstring initializerName,
       ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
@@ -206,7 +206,7 @@ final class @initializerCallAST : @semanticExpressionAST {
     !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: typeUsefulnessName)
   //---
     outExpression = @initializerCallForGeneration (
-      !instanciedType,
+      instanciedType,
       self.mEndOfExpressions,
       initializerName.string,
       constructorEffectiveParameterList
@@ -233,7 +233,7 @@ private proc analyzeInitializerInvocation (?let @lstring inUsefulnessCallerEntit
                       !@semanticExpressionListForGeneration outConstructorEffectiveParameterList ) {
   outInstanciedType = inType
   if inTypeName.string != "" then
-    outInstanciedType = ioTypeMap.typeMapEntryForLKey (!inTypeName)
+    outInstanciedType = ioTypeMap.typeMapEntryForLKey (inTypeName)
   end
   if outInstanciedType.isNull then
     error (inTypeName
@@ -248,16 +248,16 @@ private proc analyzeInitializerInvocation (?let @lstring inUsefulnessCallerEntit
     else
     //--- Usefull entity graph
       let nameForUsefulness = initializerNameForUsefulEntitiesGraph (
-        !instanciedTypeDefinition.typeName,
-        !inInvocationArguments.initializerSignature
+        instanciedTypeDefinition.typeName,
+        inInvocationArguments.initializerSignature
       )
       !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: nameForUsefulness)
     //--- Search initializer
-      outInitializerName = @(!inInvocationArguments.initializerSignature, inEndOfExpressions)
+      outInitializerName = @(inInvocationArguments.initializerSignature, inEndOfExpressions)
       let initializerMap = instanciedTypeDefinition.initializerMap
       let @functionSignature formalSignature
-      if initializerMap.hasKey (!outInitializerName) then
-        initializerMap.searchKey (!outInitializerName, ?formalSignature)
+      if initializerMap.hasKey (outInitializerName) then
+        initializerMap.searchKey (outInitializerName, ?formalSignature)
       else
         var s = "@" + instanciedTypeDefinition.typeName + " ("
         for formalArg in inInvocationArguments
@@ -282,15 +282,15 @@ private proc analyzeInitializerInvocation (?let @lstring inUsefulnessCallerEntit
           !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
           !?ioUsefulEntitiesGraph,
           !inferenceType: formalArg.mFormalArgumentType,
-          !inAnalysisContext,
+          inAnalysisContext,
           !?ioTypeMap,
           !?ioVariableMap,
           ?@semanticExpressionForGeneration exp
         )
         checkAssignmentTypeWithImplicitGetterCall (
-          !formalArg.mFormalArgumentType,
-          !exp.mResultType,
-          !effectiveParameter.mEndOfExpressionLocation,
+          formalArg.mFormalArgumentType,
+          exp.mResultType,
+          effectiveParameter.mEndOfExpressionLocation,
           !?exp
         )
         outConstructorEffectiveParameterList ++= @(exp)
@@ -340,7 +340,7 @@ final class @initializerCallForGeneration : @semanticExpressionForGeneration {
     for (mValue) in parameterList do
       outCppExpression += mValue + ", "
     end
-    !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+    !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
     outCppExpression += compilerCppName ()
     outCppExpression += " COMMA_HERE)"
   }

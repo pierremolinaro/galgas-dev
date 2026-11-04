@@ -106,7 +106,7 @@ syntax extension galgas4InstructionsSyntax {
     $end$
     let endOfLoopInstruction = @location.here
     outInstruction = @loopInstructionWithVariantAST (
-      !instructionLocation,
+      instructionLocation,
       variantExpression,
       endOfVariantExpression,
       firstInstructions,
@@ -150,16 +150,16 @@ override proc @loopInstructionWithVariantAST.analyzeSemanticInstruction (
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: @unifiedTypeMapEntry.null,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?var variantExpression
   )
 //--- Check variant expression type is @uint
   checkAssignmentTypeWithImplicitGetterCall (
-    !inAnalysisContext.predefinedTypes.mUIntType,
-    !variantExpression.mResultType,
-    !variantExpression.mLocation,
+    inAnalysisContext.predefinedTypes.mUIntType,
+    variantExpression.mResultType,
+    variantExpression.mLocation,
     !?variantExpression
   )
 //--- Loop expression
@@ -167,7 +167,7 @@ override proc @loopInstructionWithVariantAST.analyzeSemanticInstruction (
     (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: @unifiedTypeMapEntry.null,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !?ioVariableMap,
     ?let loopExpression
@@ -182,37 +182,37 @@ override proc @loopInstructionWithVariantAST.analyzeSemanticInstruction (
   !?ioVariableMap.openOverrideForRepeatBlock ()
 //--- First branch
   analyzeSemanticInstructionList (
-    !inUsefulnessCallerEntityName,
+    inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !localConstantList: @(),
     !localInitializedVariableListWarnsIfNotMutated: @(),
     !localInitializedVariableListNoWarnsIfNotMutated: @(),
-    !self.mFirstInstructions,
-    !self.mEndOfFirstInstructions,
+    self.mFirstInstructions,
+    self.mEndOfFirstInstructions,
     !?ioVariableMap,
     ?let first_instructionList
   )
 //--- Second branch
   analyzeSemanticInstructionList (
-    !inUsefulnessCallerEntityName,
+    inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
-    !inAnalysisContext,
+    inAnalysisContext,
     !?ioTypeMap,
     !localConstantList: @(),
     !localInitializedVariableListWarnsIfNotMutated: @(),
     !localInitializedVariableListNoWarnsIfNotMutated: @(),
-    !self.mSecondInstructions,
-    !self.mEndOfSecondInstructions,
+    self.mSecondInstructions,
+    self.mEndOfSecondInstructions,
     !?ioVariableMap,
     ?let second_instructionList
   )
 //--- End override
-  !?ioVariableMap.closeOverride (!self.mEndOfLoopInstruction)
+  !?ioVariableMap.closeOverride (self.mEndOfLoopInstruction)
 //--- Generate instruction
-  ioInstructionListForGeneration ++= @(! @loopInstructionWithVariantForGeneration (
-    !self.mInstructionLocation,
+  ioInstructionListForGeneration ++= @( @loopInstructionWithVariantForGeneration (
+    self.mInstructionLocation,
     variantExpression,
     first_instructionList,
     loopExpression,
@@ -247,19 +247,19 @@ override proc @loopInstructionWithVariantForGeneration.generateInstruction (?!@s
     ?let @string variantCppVarName
   )
   ioGeneratedCode += "if (" + variantCppVarName + ".isValid ()) {\n"
-  !?ioGeneratedCode.incIndentation (!2)
+  !?ioGeneratedCode.incIndentation (2)
   let @string variantVar = "variant_" + self.mInstructionLocation.startLocationIndex.string
   ioGeneratedCode += "uint32_t " + variantVar + " = " + variantCppVarName + ".uintValue () ;\n"
   let @string loopVar = "loop_" + self.mInstructionLocation.startLocationIndex.string
   ioGeneratedCode += "bool " + loopVar + " = true ;\n"
                   + "while (" + loopVar + ") {\n"
-  !?ioGeneratedCode.incIndentation (!2)
+  !?ioGeneratedCode.incIndentation (2)
   generateInstructionList (
     !?ioInclusionSet,
-    !self.mFirstInstructions,
+    self.mFirstInstructions,
     !?ioTemporaryVariableIndex,
     !?ioUnusedVariableCppNameSet,
-    !inGenerateSyntaxDirectedTranslationString,
+    inGenerateSyntaxDirectedTranslationString,
     !?ioGeneratedCode
   )
   self.mLoopExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let loopExpressionVar)
@@ -267,7 +267,7 @@ override proc @loopInstructionWithVariantForGeneration.generateInstruction (?!@s
                    + "if (" + loopVar + ") {\n"
                    + "  " + loopVar + " = " + loopExpressionVar + ".boolValue () ;\n"
                    + "}\n"
-  !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
+  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
   ioGeneratedCode += "if (" + loopVar + " && (0 == " + variantVar + ")) {\n"
                      "  " + loopVar + " = false ;\n"
                      "  " + compilerCppName () + "->loopRunTimeVariantError (" + self.mInstructionLocation.sourceFile + ") ;\n"
@@ -276,16 +276,16 @@ override proc @loopInstructionWithVariantForGeneration.generateInstruction (?!@s
   ioGeneratedCode += "  " + variantVar + " -= 1 ;\n"
   generateInstructionList (
     !?ioInclusionSet,
-    !self.mSecondInstructions,
+    self.mSecondInstructions,
     !?ioTemporaryVariableIndex,
     !?ioUnusedVariableCppNameSet,
-    !inGenerateSyntaxDirectedTranslationString,
+    inGenerateSyntaxDirectedTranslationString,
     !?ioGeneratedCode
   )
   ioGeneratedCode += "}\n"
-  !?ioGeneratedCode.decIndentation (!2)
+  !?ioGeneratedCode.decIndentation (2)
   ioGeneratedCode += "}\n"
-  !?ioGeneratedCode.decIndentation (!2)
+  !?ioGeneratedCode.decIndentation (2)
   ioGeneratedCode += "}\n"
 }
 

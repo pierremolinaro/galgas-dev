@@ -94,7 +94,7 @@ final class @functionPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWith2Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"invoke", !"objectlist", !"inParameters", !"location", !"inErrorLocation",
+      !getterName:"invoke", "objectlist", "inParameters", "location", "inErrorLocation",
       !returnedTypeName:"object",
       !hasCompilerArgument:true
     )

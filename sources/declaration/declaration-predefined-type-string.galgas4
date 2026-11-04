@@ -229,33 +229,33 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !argName:"inDirectoryPath",
       !compilerArg:true
     )
-    !?ioUnifiedTypeMap.makeEntryFromString (!"string", ?let @unifiedTypeMapEntry stringType)
-    !?ioUnifiedTypeMap.makeEntryFromString (!"bool", ?let @unifiedTypeMapEntry boolType)
+    !?ioUnifiedTypeMap.makeEntryFromString ("string", ?let @unifiedTypeMapEntry stringType)
+    !?ioUnifiedTypeMap.makeEntryFromString ("bool", ?let @unifiedTypeMapEntry boolType)
   //--- Generate file
     var @formalParameterSignature argList = @()
-    argList ++= @(!"".nowhere, !stringType, !@formalArgumentPassingModeAST. argumentConstantIn, !"inStartPath")
-    argList ++= @(!"".nowhere, !stringType, !@formalArgumentPassingModeAST. argumentConstantIn, !"inFileName")
-    argList ++= @(!"".nowhere, !stringType, !@formalArgumentPassingModeAST. argumentConstantIn, !"inContents")
+    argList ++= @("".nowhere, stringType, @formalArgumentPassingModeAST. argumentConstantIn, "inStartPath")
+    argList ++= @("".nowhere, stringType, @formalArgumentPassingModeAST. argumentConstantIn, "inFileName")
+    argList ++= @("".nowhere, stringType, @formalArgumentPassingModeAST. argumentConstantIn, "inContents")
     !?outClassMethodMap.insertOrReplace
-      (!@(!"generateFile", .here),
-      !argList,
-      !true
+      (@("generateFile", .here),
+      argList,
+      true
     )
   //--- Generate file with pattern
     argList = @()
-    argList ++= @(!"startPath".nowhere, !stringType, !.argumentConstantIn, !"inStartPath")
-    argList ++= @(!"fileName".nowhere, !stringType, !.argumentConstantIn, !"inFileName")
-    argList ++= @(!"lineComment".nowhere, !stringType, !.argumentConstantIn, !"inLineCommentPrefix")
-    argList ++= @(!"header".nowhere, !stringType, !.argumentConstantIn, !"inHeader")
-    argList ++= @(!"defaultUserZone1".nowhere, !stringType, !.argumentConstantIn, !"inDefaultUserZone1")
-    argList ++= @(!"generatedZone2".nowhere, !stringType, !.argumentConstantIn, !"inGeneratedZone2")
-    argList ++= @(!"defaultUserZone2".nowhere, !stringType, !.argumentConstantIn, !"inDefaultUserZone2")
-    argList ++= @(!"generatedZone3".nowhere, !stringType, !.argumentConstantIn, !"inGeneratedZone3")
-    argList ++= @(!"makeExecutable".nowhere, !boolType, !.argumentConstantIn, !"inMakeExecutable")
+    argList ++= @("startPath".nowhere, stringType, .argumentConstantIn, "inStartPath")
+    argList ++= @("fileName".nowhere, stringType, .argumentConstantIn, "inFileName")
+    argList ++= @("lineComment".nowhere, stringType, .argumentConstantIn, "inLineCommentPrefix")
+    argList ++= @("header".nowhere, stringType, .argumentConstantIn, "inHeader")
+    argList ++= @("defaultUserZone1".nowhere, stringType, .argumentConstantIn, "inDefaultUserZone1")
+    argList ++= @("generatedZone2".nowhere, stringType, .argumentConstantIn, "inGeneratedZone2")
+    argList ++= @("defaultUserZone2".nowhere, stringType, .argumentConstantIn, "inDefaultUserZone2")
+    argList ++= @("generatedZone3".nowhere, stringType, .argumentConstantIn, "inGeneratedZone3")
+    argList ++= @("makeExecutable".nowhere, boolType, .argumentConstantIn, "inMakeExecutable")
     !?outClassMethodMap.insertOrReplace
-      (!@lstring (!"generateFileWithPattern", @location.here),
-      !argList,
-      !true
+      (@lstring ("generateFileWithPattern", @location.here),
+      argList,
+      true
     )
   }
 
@@ -270,7 +270,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !inputArgTypeName:"string",
       !inputArgName:"inFilePath",
       !methodName:"writeToFile",
-      !true
+      true
     )
     enterInstanceMethodWithInputArgument (
       !?outInstanceMethodMap,
@@ -278,7 +278,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !inputArgTypeName:"string",
       !inputArgName:"inFilePath",
       !methodName:"writeToExecutableFile",
-      !true
+      true
     )
     enterInstanceMethodWithInputArgument (
       !?outInstanceMethodMap,
@@ -286,7 +286,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !inputArgTypeName:"string",
       !inputArgName:"inFilePath",
       !methodName:"makeDirectoryAndWriteToFile",
-      !true
+      true
     )
     enterInstanceMethodWithInputArgument (
       !?outInstanceMethodMap,
@@ -294,7 +294,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !inputArgTypeName:"string",
       !inputArgName:"inFilePath",
       !methodName:"makeDirectoryAndWriteToExecutableFile",
-      !true
+      true
     )
     enterInstanceMethodWithInputArgument (
       !?outInstanceMethodMap,
@@ -302,36 +302,36 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !inputArgTypeName:"string",
       !inputArgName:"inFilePath",
       !methodName:"makeSymbolicLinkWithPath",
-      !true
+      true
     )
     enterInstanceMethodWithoutArgument (
       !?outInstanceMethodMap,
       !methodName:"makeDirectory",
-      !true
+      true
     )
   //--- writeToFileWhenDifferentContents, writeToExecutableFileWhenDifferentContents
     var @formalParameterSignature argList = @()
-    !?ioUnifiedTypeMap.makeEntryFromString (!"string", ?@unifiedTypeMapEntry t)
-    argList ++= @(!"".nowhere, !t, !@formalArgumentPassingModeAST. argumentConstantIn, !"inFilePath")
-    !?ioUnifiedTypeMap.makeEntryFromString (!"bool", ?t)
-    argList ++= @(!"".nowhere, !t, !@formalArgumentPassingModeAST. argumentOut, !"outFileModified")
+    !?ioUnifiedTypeMap.makeEntryFromString ("string", ?@unifiedTypeMapEntry t)
+    argList ++= @("".nowhere, t, @formalArgumentPassingModeAST. argumentConstantIn, "inFilePath")
+    !?ioUnifiedTypeMap.makeEntryFromString ("bool", ?t)
+    argList ++= @("".nowhere, t, @formalArgumentPassingModeAST. argumentOut, "outFileModified")
     !?outInstanceMethodMap.insertKey
-      (!@lstring (!"writeToFileWhenDifferentContents", @location.here),
-      !@methodKind.definedAsMember,
-      !argList,
-      !@location.here,
-      !true,
-      !@methodQualifier.isBasic,
-      !"" // No error message
+      (@lstring ("writeToFileWhenDifferentContents", @location.here),
+      @methodKind.definedAsMember,
+      argList,
+      @location.here,
+      true,
+      @methodQualifier.isBasic,
+      "" // No error message
     )
     !?outInstanceMethodMap.insertKey
-      (!@(!"writeToExecutableFileWhenDifferentContents", .here),
-      !@methodKind.definedAsMember,
-      !argList,
-      !@location.here,
-      !true,
-      !@methodQualifier.isBasic,
-      !"" // No error message
+      (@("writeToExecutableFileWhenDifferentContents", .here),
+      @methodKind.definedAsMember,
+      argList,
+      @location.here,
+      true,
+      @methodQualifier.isBasic,
+      "" // No error message
     )
   }
 

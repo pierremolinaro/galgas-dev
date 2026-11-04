@@ -152,14 +152,14 @@ syntax galgas4ProjectSyntax (galgasScanner3) {
   //---
     outProjectComponentAST = @galgas3ProjectComponentAST (
       projectSourceList,
-      !toolCppSourceList,
-      !majorVersion,
-      !minorVersion,
-      !revisionVersion,
-      !generateFeatureList,
-      !qualifiedFeatureList,
-      !targetName,
-      !.here
+      toolCppSourceList,
+      majorVersion,
+      minorVersion,
+      revisionVersion,
+      generateFeatureList,
+      qualifiedFeatureList,
+      targetName,
+      .here
     )
   }
 
