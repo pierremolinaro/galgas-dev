@@ -160,7 +160,6 @@ map @optionComponentMapForSemanticAnalysis {
   public let @commandLineOptionMap mBoolOptionMap
   public let @commandLineOptionMap mUIntOptionMap
   public let @commandLineOptionMap mStringOptionMap
-  public let @commandLineOptionMap mStringListOptionMap
   %insertSetter insertKey %errorMessage "redefinition of the '%K' option component: it has been already declared in %L"
   %searchMethod searchKey %errorMessage "the '%K' option component is not imported"
 }

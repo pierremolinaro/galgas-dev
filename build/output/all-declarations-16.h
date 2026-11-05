@@ -1370,22 +1370,19 @@ class GGS_optionComponentForGeneration : public GGS_semanticDeclarationWithHeade
 
   public: class GGS_commandLineOptionSortedList readProperty_mStringOptionSortedList (void) const ;
 
-  public: class GGS_commandLineOptionSortedList readProperty_mStringListSortedList (void) const ;
-
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_optionComponentForGeneration init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                                                              const class GGS_bool & inOperand1,
-                                                                                                                                              const class GGS_string & inOperand2,
-                                                                                                                                              const class GGS_bool & inOperand3,
-                                                                                                                                              const class GGS_string & inOperand4,
-                                                                                                                                              const class GGS_commandLineOptionSortedList & inOperand5,
-                                                                                                                                              const class GGS_commandLineOptionSortedList & inOperand6,
-                                                                                                                                              const class GGS_commandLineOptionSortedList & inOperand7,
-                                                                                                                                              const class GGS_commandLineOptionSortedList & inOperand8,
-                                                                                                                                              Compiler * inCompiler
-                                                                                                                                              COMMA_LOCATION_ARGS) ;
+  public: static GGS_optionComponentForGeneration init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21_ (const class GGS_string & inOperand0,
+                                                                                                                                          const class GGS_bool & inOperand1,
+                                                                                                                                          const class GGS_string & inOperand2,
+                                                                                                                                          const class GGS_bool & inOperand3,
+                                                                                                                                          const class GGS_string & inOperand4,
+                                                                                                                                          const class GGS_commandLineOptionSortedList & inOperand5,
+                                                                                                                                          const class GGS_commandLineOptionSortedList & inOperand6,
+                                                                                                                                          const class GGS_commandLineOptionSortedList & inOperand7,
+                                                                                                                                          Compiler * inCompiler
+                                                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
@@ -1428,16 +1425,15 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
   #endif
 
 //--------------------------------- Initializers
-  public: void optionComponentForGeneration_init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                                                        const class GGS_bool & inOperand1,
-                                                                                                                                        const class GGS_string & inOperand2,
-                                                                                                                                        const class GGS_bool & inOperand3,
-                                                                                                                                        const class GGS_string & inOperand4,
-                                                                                                                                        const class GGS_commandLineOptionSortedList & inOperand5,
-                                                                                                                                        const class GGS_commandLineOptionSortedList & inOperand6,
-                                                                                                                                        const class GGS_commandLineOptionSortedList & inOperand7,
-                                                                                                                                        const class GGS_commandLineOptionSortedList & inOperand8,
-                                                                                                                                        Compiler * inCompiler) ;
+  public: void optionComponentForGeneration_init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21_ (const class GGS_string & inOperand0,
+                                                                                                                                    const class GGS_bool & inOperand1,
+                                                                                                                                    const class GGS_string & inOperand2,
+                                                                                                                                    const class GGS_bool & inOperand3,
+                                                                                                                                    const class GGS_string & inOperand4,
+                                                                                                                                    const class GGS_commandLineOptionSortedList & inOperand5,
+                                                                                                                                    const class GGS_commandLineOptionSortedList & inOperand6,
+                                                                                                                                    const class GGS_commandLineOptionSortedList & inOperand7,
+                                                                                                                                    Compiler * inCompiler) ;
 
 
 //--- Extension func headerKind
@@ -1469,7 +1465,6 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
   public: GGS_commandLineOptionSortedList mProperty_mBoolOptionSortedList ;
   public: GGS_commandLineOptionSortedList mProperty_mUIntOptionSortedList ;
   public: GGS_commandLineOptionSortedList mProperty_mStringOptionSortedList ;
-  public: GGS_commandLineOptionSortedList mProperty_mStringListSortedList ;
 
 
 //--- Default constructor
@@ -1484,7 +1479,6 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
                                              const GGS_commandLineOptionSortedList & in_mBoolOptionSortedList,
                                              const GGS_commandLineOptionSortedList & in_mUIntOptionSortedList,
                                              const GGS_commandLineOptionSortedList & in_mStringOptionSortedList,
-                                             const GGS_commandLineOptionSortedList & in_mStringListSortedList,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 

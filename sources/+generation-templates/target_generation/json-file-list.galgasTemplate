@@ -27,7 +27,6 @@ end
        "BoolCommandLineOption.cpp",
        "UIntCommandLineOption.cpp",
        "StringCommandLineOption.cpp",
-       "StringListCommandLineOption.cpp",
        "builtin-command-line-options.cpp",
        "analyzeCommandLineOptions.cpp",
        "F_mainForLIBPM.cpp",

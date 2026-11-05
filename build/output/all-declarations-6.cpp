@@ -5947,7 +5947,6 @@ GGS_optionComponentMapForSemanticAnalysis_2E_element_3F_ GGS_optionComponentMapF
       element.mProperty_mBoolOptionMap = info->mProperty_mBoolOptionMap ;
       element.mProperty_mUIntOptionMap = info->mProperty_mUIntOptionMap ;
       element.mProperty_mStringOptionMap = info->mProperty_mStringOptionMap ;
-      element.mProperty_mStringListOptionMap = info->mProperty_mStringListOptionMap ;
       result = element ;
     }
   }
@@ -5986,10 +5985,9 @@ void GGS_optionComponentMapForSemanticAnalysis::setter_insertKey (GGS_lstring in
                                                                   GGS_commandLineOptionMap inArgument1,
                                                                   GGS_commandLineOptionMap inArgument2,
                                                                   GGS_commandLineOptionMap inArgument3,
-                                                                  GGS_commandLineOptionMap inArgument4,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
-  const GGS_optionComponentMapForSemanticAnalysis_2E_element element (inLKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4) ;
+  const GGS_optionComponentMapForSemanticAnalysis_2E_element element (inLKey, inArgument0, inArgument1, inArgument2, inArgument3) ;
   const char * kInsertErrorMessage = "redefinition of the '%K' option component: it has been already declared in %L" ;
   const char * kShadowErrorMessage = nullptr ;
   performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
@@ -6002,7 +6000,6 @@ void GGS_optionComponentMapForSemanticAnalysis::method_searchKey (GGS_lstring in
                                                                   GGS_commandLineOptionMap & outArgument1,
                                                                   GGS_commandLineOptionMap & outArgument2,
                                                                   GGS_commandLineOptionMap & outArgument3,
-                                                                  GGS_commandLineOptionMap & outArgument4,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
   SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForSemanticAnalysis_2E_element> info ;
@@ -6021,13 +6018,11 @@ void GGS_optionComponentMapForSemanticAnalysis::method_searchKey (GGS_lstring in
     outArgument1.drop () ;
     outArgument2.drop () ;
     outArgument3.drop () ;
-    outArgument4.drop () ;
   }else{
     outArgument0 = info->mProperty_mIsPredefined ;
     outArgument1 = info->mProperty_mBoolOptionMap ;
     outArgument2 = info->mProperty_mUIntOptionMap ;
     outArgument3 = info->mProperty_mStringOptionMap ;
-    outArgument4 = info->mProperty_mStringListOptionMap ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -6106,26 +6101,6 @@ GGS_commandLineOptionMap GGS_optionComponentMapForSemanticAnalysis::getter_mStri
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
       result = info->mProperty_mStringOptionMap ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_commandLineOptionMap GGS_optionComponentMapForSemanticAnalysis::getter_mStringListOptionMapForKey (const GGS_string & inKey,
-                                                                                                       Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) const {
-  GGS_commandLineOptionMap result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForSemanticAnalysis_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mStringListOptionMap ;
     }
   }
   return result ;
@@ -6212,26 +6187,6 @@ void GGS_optionComponentMapForSemanticAnalysis::setter_setMStringOptionMapForKey
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_optionComponentMapForSemanticAnalysis::setter_setMStringListOptionMapForKey (GGS_commandLineOptionMap inValue,
-                                                                                      GGS_string inKey,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_optionComponentMapForSemanticAnalysis_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mStringListOptionMap = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
 static void GGS_optionComponentMapForSemanticAnalysis_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForSemanticAnalysis_2E_element>> & inArray,
                                                         String & ioString,
                                                         const int32_t inIndentation) {
@@ -6267,10 +6222,6 @@ static void GGS_optionComponentMapForSemanticAnalysis_internalDescription (const
     ioString.appendStringMultiple ("| ", inIndentation + 2) ;
     ioString.appendString ("mStringOptionMap:") ;
     inArray (i COMMA_HERE)->mProperty_mStringOptionMap.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mStringListOptionMap:") ;
-    inArray (i COMMA_HERE)->mProperty_mStringListOptionMap.description (ioString, inIndentation + 1) ;
   }
 }
 
@@ -6350,12 +6301,6 @@ GGS_commandLineOptionMap DownEnumerator_optionComponentMapForSemanticAnalysis::c
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_commandLineOptionMap DownEnumerator_optionComponentMapForSemanticAnalysis::current_mStringListOptionMap (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mStringListOptionMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //  Up Enumerator for @optionComponentMapForSemanticAnalysis
 //--------------------------------------------------------------------------------------------------
 
@@ -6398,12 +6343,6 @@ GGS_commandLineOptionMap UpEnumerator_optionComponentMapForSemanticAnalysis::cur
 
 GGS_commandLineOptionMap UpEnumerator_optionComponentMapForSemanticAnalysis::current_mStringOptionMap (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mStringOptionMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_commandLineOptionMap UpEnumerator_optionComponentMapForSemanticAnalysis::current_mStringListOptionMap (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mStringListOptionMap ;
 }
 
 
@@ -17156,6 +17095,75 @@ void extensionSetter_searchForWriteAccess (GGS_currentVarManager & ioObject,
   if (GalgasBool::boolFalse == test_0) {
     {
     extensionSetter_writeAccessInSubMap (ioObject.mProperty_mSubMaps, constinArgument_inVarName, GGS_uint (uint32_t (0U)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 553)) ;
+    }
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension proc '@localVarMapListForLLVM writeAccessInSubMap'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_writeAccessInSubMap (GGS_localVarMapListForLLVM & ioObject,
+                                          const GGS_lstring constinArgument_inVarName,
+                                          const GGS_uint constinArgument_inIndex,
+                                          GGS_unifiedTypeMapEntry & outArgument_outType,
+                                          GGS_string & outArgument_outCppName,
+                                          GGS_string & outArgument_outNameForCheckingFormalParameterUsing,
+                                          Compiler * inCompiler
+                                          COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outType.drop () ; // Release 'out' argument
+  outArgument_outCppName.drop () ; // Release 'out' argument
+  outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release 'out' argument
+  GalgasBool test_0 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_0) {
+    const GGS_localVarMapListForLLVM temp_1 = ioObject ;
+    test_0 = GGS_bool (ComparisonKind::greaterOrEqual, constinArgument_inIndex.objectCompare (temp_1.getter_count (SOURCE_FILE ("variable-manager.galgas4", 564)))).boolEnum () ;
+    if (GalgasBool::boolTrue == test_0) {
+      GenericArray <FixItDescription> fixItArray2 ;
+      inCompiler->emitSemanticError (constinArgument_inVarName.readProperty_location (), GGS_string ("'").add_operation (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 565)).add_operation (GGS_string ("' variable is not declared"), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 565)), fixItArray2  COMMA_SOURCE_FILE ("variable-manager.galgas4", 565)) ;
+      outArgument_outType.drop () ; // Release error dropped variable
+      outArgument_outCppName.drop () ; // Release error dropped variable
+      outArgument_outNameForCheckingFormalParameterUsing.drop () ; // Release error dropped variable
+    }
+  }
+  if (GalgasBool::boolFalse == test_0) {
+    const GGS_localVarMapListForLLVM temp_3 = ioObject ;
+    GGS_scopeLocalVarMap var_localMap_25533 = temp_3.getter_mMapAtIndex (constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 568)) ;
+    GalgasBool test_4 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_4) {
+      const GGS_scopeLocalVarMap_2E_element var_varDescriptor_25582 = var_localMap_25533.readSubscript__3F_ (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+      if (!var_localMap_25533.readSubscript__3F_ (constinArgument_inVarName.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+        test_4 = GalgasBool::boolFalse ;
+      }
+      if (GalgasBool::boolTrue == test_4) {
+        GGS_localVarValuation var_newValuation_25634 = var_varDescriptor_25582.readProperty_mState () ;
+        {
+        extensionSetter_writeTransition (var_newValuation_25634, constinArgument_inVarName, GGS_bool (true), var_varDescriptor_25582.readProperty_mAttributes (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 571)) ;
+        }
+        GalgasBool test_5 = GalgasBool::boolTrue ;
+        if (GalgasBool::boolTrue == test_5) {
+          test_5 = GGS_bool (ComparisonKind::notEqual, var_newValuation_25634.objectCompare (var_varDescriptor_25582.readProperty_mState ())).boolEnum () ;
+          if (GalgasBool::boolTrue == test_5) {
+            {
+            var_localMap_25533.setter_setMStateForKey (var_newValuation_25634, constinArgument_inVarName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 573)) ;
+            }
+            {
+            ioObject.setter_setMMapAtIndex (var_localMap_25533, constinArgument_inIndex, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 574)) ;
+            }
+          }
+        }
+        outArgument_outType = var_varDescriptor_25582.readProperty_mType () ;
+        outArgument_outCppName = var_varDescriptor_25582.readProperty_mCppName () ;
+        outArgument_outNameForCheckingFormalParameterUsing = var_varDescriptor_25582.readProperty_mNameForCheckingFormalParameterUsing () ;
+      }
+    }
+    if (GalgasBool::boolFalse == test_4) {
+      {
+      extensionSetter_writeAccessInSubMap (ioObject, constinArgument_inVarName, constinArgument_inIndex.add_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 580)), outArgument_outType, outArgument_outCppName, outArgument_outNameForCheckingFormalParameterUsing, inCompiler COMMA_SOURCE_FILE ("variable-manager.galgas4", 580)) ;
+      }
     }
   }
 }

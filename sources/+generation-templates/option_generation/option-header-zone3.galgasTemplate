@@ -27,13 +27,4 @@ end
   %extern StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ;\n\n%
 end
 %//--------------------------------------------------------------------------------------------------
-//
-//                              String List options                                              
-//
-//--------------------------------------------------------------------------------------------------
-
-%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_SORTED_LIST do
-  %extern StringListCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![mOptionIdentifier identifierRepresentation]% ;\n\n%
-end
-%//--------------------------------------------------------------------------------------------------
 

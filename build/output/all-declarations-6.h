@@ -3309,11 +3309,6 @@ class GGS_optionComponentMapForSemanticAnalysis_2E_element : public AC_GALGAS_ro
     return mProperty_mStringOptionMap ;
   }
 
-  public: GGS_commandLineOptionMap mProperty_mStringListOptionMap ;
-  public: inline GGS_commandLineOptionMap readProperty_mStringListOptionMap (void) const {
-    return mProperty_mStringListOptionMap ;
-  }
-
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
@@ -3342,10 +3337,6 @@ class GGS_optionComponentMapForSemanticAnalysis_2E_element : public AC_GALGAS_ro
     mProperty_mStringOptionMap = inValue ;
   }
 
-  public: inline void setter_setMStringListOptionMap (const GGS_commandLineOptionMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mStringListOptionMap = inValue ;
-  }
-
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -3354,8 +3345,7 @@ class GGS_optionComponentMapForSemanticAnalysis_2E_element : public AC_GALGAS_ro
                                                                 const GGS_bool & in_mIsPredefined,
                                                                 const GGS_commandLineOptionMap & in_mBoolOptionMap,
                                                                 const GGS_commandLineOptionMap & in_mUIntOptionMap,
-                                                                const GGS_commandLineOptionMap & in_mStringOptionMap,
-                                                                const GGS_commandLineOptionMap & in_mStringListOptionMap) ;
+                                                                const GGS_commandLineOptionMap & in_mStringOptionMap) ;
 
 //--------------------------------- Copy constructor
   public: GGS_optionComponentMapForSemanticAnalysis_2E_element (const GGS_optionComponentMapForSemanticAnalysis_2E_element & inSource) ;
@@ -3366,14 +3356,13 @@ class GGS_optionComponentMapForSemanticAnalysis_2E_element : public AC_GALGAS_ro
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_optionComponentMapForSemanticAnalysis_2E_element init_21__21__21__21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                                                    const class GGS_bool & inOperand1,
-                                                                                                    const class GGS_commandLineOptionMap & inOperand2,
-                                                                                                    const class GGS_commandLineOptionMap & inOperand3,
-                                                                                                    const class GGS_commandLineOptionMap & inOperand4,
-                                                                                                    const class GGS_commandLineOptionMap & inOperand5,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static GGS_optionComponentMapForSemanticAnalysis_2E_element init_21__21__21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                                                const class GGS_bool & inOperand1,
+                                                                                                const class GGS_commandLineOptionMap & inOperand2,
+                                                                                                const class GGS_commandLineOptionMap & inOperand3,
+                                                                                                const class GGS_commandLineOptionMap & inOperand4,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;

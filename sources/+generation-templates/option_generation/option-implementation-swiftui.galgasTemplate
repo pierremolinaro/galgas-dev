@@ -14,9 +14,6 @@ for (mOptionIdentifier * * * *) in UINT_OPTION_SORTED_LIST do
 end
 for (mOptionIdentifier * * * *) in STRING_OPTION_SORTED_LIST do
   %fileprivate let %!mOptionIdentifier%_PREFKEY = %![OPTION_COMPONENT_NAME + ":" + mOptionIdentifier utf8RepresentationEscapingQuestionMark]%\n%
-end
-for (mOptionIdentifier * * * *) in STRING_LIST_OPTION_SORTED_LIST do
-  %fileprivate let %!mOptionIdentifier%_PREFKEY = %![OPTION_COMPONENT_NAME + ":" + mOptionIdentifier utf8RepresentationEscapingQuestionMark]%\n%
 end%
 //--------------------------------------------------------------------------------------------------
 //   Options View
@@ -52,13 +49,6 @@ end%
   %  @AppStorage(%!mOptionIdentifier%_PREFKEY) private var %!mOptionIdentifier% : String = %![mDefaultValue utf8RepresentationEscapingQuestionMark]%\n%
 end%
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // String list options
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-%for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_SORTED_LIST do
-  %  @AppStorage(%!mOptionIdentifier%_PREFKEY) private var %!mOptionIdentifier% : [String] = %![mDefaultValue utf8RepresentationEscapingQuestionMark]%\n%
-end%
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Body
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -82,9 +72,6 @@ for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in UINT
 end
 for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_OPTION_SORTED_LIST do
   %          HStack { Text (%![mComment utf8RepresentationEscapingQuestionMark]%) ; TextField ("", text: self.$%!mOptionIdentifier%) }\n%
-end
-for (mOptionIdentifier mOptionChar mOptionString mComment mDefaultValue) in STRING_LIST_OPTION_SORTED_LIST do
-  %          HStack { Text (%![mComment utf8RepresentationEscapingQuestionMark]%) ; TextField ("", text: self.$%!mOptionIdentifier%)\n%
 end
 %        }.padding ()
       }.background (.white)
@@ -142,14 +129,6 @@ for (mOptionIdentifier * mOptionString * mDefaultValue) in UINT_OPTION_SORTED_LI
     %  }\n%
 end
 for (mOptionIdentifier * mOptionString * mDefaultValue) in STRING_OPTION_SORTED_LIST do
-    %  do{\n%
-    %    let v : String = ud.string (forKey: %!mOptionIdentifier%_PREFKEY) ?? ""\n%
-    %    if v != %![mDefaultValue utf8RepresentationEscapingQuestionMark]% {\n%
-    %      arguments.append (%!["--" + mOptionString + "=" utf8RepresentationEscapingQuestionMark]% + v)\n%
-    %    }\n%
-    %  }\n%
-end
-for (mOptionIdentifier * mOptionString * mDefaultValue) in STRING_LIST_OPTION_SORTED_LIST do
     %  do{\n%
     %    let v : String = ud.string (forKey: %!mOptionIdentifier%_PREFKEY) ?? ""\n%
     %    if v != %![mDefaultValue utf8RepresentationEscapingQuestionMark]% {\n%

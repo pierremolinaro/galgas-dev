@@ -901,9 +901,7 @@ proc updateGalgasTargets
         "UIntCommandLineOption.cpp",
         "UIntCommandLineOption.h",
         "StringCommandLineOption.cpp",
-        "StringCommandLineOption.h",
-        "StringListCommandLineOption.cpp",
-        "StringListCommandLineOption.h"
+        "StringCommandLineOption.h"
       ],
       !?cFileRefs:buildCFileRefListForTool,
       !?cppFileRefs:buildCppFileRefListForTool,

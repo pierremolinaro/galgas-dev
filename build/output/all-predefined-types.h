@@ -26,7 +26,6 @@
 #include "BoolCommandLineOption.h"
 #include "UIntCommandLineOption.h"
 #include "StringCommandLineOption.h"
-#include "StringListCommandLineOption.h"
 #include "PrologueEpilogue.h"
 #include "BigSigned.h"
 

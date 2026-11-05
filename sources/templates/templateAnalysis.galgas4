@@ -630,8 +630,7 @@ override proc @templateOptionAccessAST.templateExpressionAnalysis
     ?let @bool optionComponentIsPredefined,
     ?let @commandLineOptionMap boolOptionMap,
     ?let @commandLineOptionMap uintOptionMap,
-    ?let @commandLineOptionMap stringOptionMap,
-    ?let @commandLineOptionMap stringListOptionMap
+    ?let @commandLineOptionMap stringOptionMap
   )
   var found = boolOptionMap.hasKey (self.mOptionName.string)
   var @unifiedTypeMapEntry returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
@@ -642,10 +641,6 @@ override proc @templateOptionAccessAST.templateExpressionAnalysis
   if not found then
     found = stringOptionMap.hasKey (self.mOptionName.string)
     returnedType = inAnalysisContext.mPredefinedTypes.mStringType
-  end
-  if not found then
-    found = stringListOptionMap.hasKey (self.mOptionName.string)
-    returnedType = inAnalysisContext.mPredefinedTypes.mStringListType
   end
   if found then
     if self.mGetterName.string == "value" then

@@ -136,7 +136,6 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
     var @commandLineOptionMap boolOptionMap = @()
     var @commandLineOptionMap uintOptionMap = @()
     var @commandLineOptionMap stringOptionMap = @()
-    var @commandLineOptionMap stringListOptionMap = @()
     var optionNameSet = @stringset ()
     for anOption in self.mOptions do
       if optionNameSet.hasKey (anOption.mOptionInternalName.string) then
@@ -183,22 +182,9 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
           :"an @string option default value cannot be an @uint value"
           )
         end
-      elsif anOption.mOptionTypeName.string == "stringlist" then
-        !?stringListOptionMap.insertKey (
-          anOption.mOptionInternalName,
-          anOption.mOptionInvocationLetter.char,
-          anOption.mOptionInvocationString.string,
-          anOption.mOptionComment.string,
-          anOption.mOptionDefaultValue.string
-        )
-        if anOption.mOptionDefaultValueKind != .noDefaultValue then
-          error (anOption.mOptionDefaultValue
-          :"an @stringlist option cannot accept default value"
-          )
-        end
       else
         error (anOption.mOptionTypeName
-        : "only the @bool, @uint, @string or @stringlist types are allowed here"
+        : "only the @bool, @uint or @string types are allowed here"
         )
       end
       optionNameSet ++= anOption.mOptionInternalName.string
@@ -209,8 +195,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
       self.isPredefined,
       boolOptionMap,
       uintOptionMap,
-      stringOptionMap,
-      stringListOptionMap
+      stringOptionMap
     )
   }
 
@@ -232,8 +217,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
       ?let @bool optionIsPredefined,
       ?let @commandLineOptionMap boolOptionMap,
       ?let @commandLineOptionMap uintOptionMap,
-      ?let @commandLineOptionMap stringOptionMap,
-      ?let @commandLineOptionMap stringListOptionMap
+      ?let @commandLineOptionMap stringOptionMap
     )
   //--- Sort options
     var @commandLineOptionSortedList boolOptionSortedList = @()
@@ -266,16 +250,16 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
         anOption.mDefaultValue
       )
     end
-    var @commandLineOptionSortedList stringListOptionSortedList = @()
-    for anOption in stringListOptionMap do
-      stringListOptionSortedList ++= @(
-        anOption.lkey.string,
-        anOption.mOptionChar,
-        anOption.mOptionString,
-        anOption.mComment,
-        anOption.mDefaultValue
-      )
-    end
+//    var @commandLineOptionSortedList stringListOptionSortedList = @()
+//    for anOption in stringListOptionMap do
+//      stringListOptionSortedList ++= @(
+//        anOption.lkey.string,
+//        anOption.mOptionChar,
+//        anOption.mOptionString,
+//        anOption.mComment,
+//        anOption.mDefaultValue
+//      )
+//    end
   //--- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration ++= @optionComponentForGeneration (
       !infoMessage: "option " + self.mOptionComponentName,
@@ -285,8 +269,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
       self.mOptionComponentName.string,
       boolOptionSortedList,
       uintOptionSortedList,
-      stringOptionSortedList,
-      stringListOptionSortedList
+      stringOptionSortedList
     )
   }
 
@@ -304,7 +287,6 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
   public let @commandLineOptionSortedList mBoolOptionSortedList
   public let @commandLineOptionSortedList mUIntOptionSortedList
   public let @commandLineOptionSortedList mStringOptionSortedList
-  public let @commandLineOptionSortedList mStringListSortedList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -329,8 +311,7 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
         self.mOptionComponentName,
         self.mBoolOptionSortedList,
         self.mUIntOptionSortedList,
-        self.mStringOptionSortedList,
-        self.mStringListSortedList
+        self.mStringOptionSortedList
       ]
     end
   }
@@ -348,8 +329,7 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
         self.mOptionComponentName,
         self.mBoolOptionSortedList,
         self.mUIntOptionSortedList,
-        self.mStringOptionSortedList,
-        self.mStringListSortedList
+        self.mStringOptionSortedList
       ]
     end
   }
@@ -375,8 +355,7 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
           self.mOptionComponentName,
           self.mBoolOptionSortedList,
           self.mUIntOptionSortedList,
-          self.mStringOptionSortedList,
-          self.mStringListSortedList
+          self.mStringOptionSortedList
         ],
         !defaultUserZone2:"\n\n",
         !generatedZone3:"\n\n",
@@ -423,16 +402,14 @@ filewrapper optionGenerationTemplates in "+generation-templates/option_generatio
     ?@string OPTION_COMPONENT_NAME,
     ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST,
     ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST,
-    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST,
-    ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
   )
 
   template optionImplementationGalgas3 : "option-implementation-galgas3.cpp.galgasTemplate" (
     ?@string OPTION_COMPONENT_NAME,
     ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST,
     ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST,
-    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST,
-    ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
   )
 
 //  template optionImplementationSwiftCocoa "option-implementation-swift-cocoa.galgasTemplate"
@@ -448,8 +425,7 @@ filewrapper optionGenerationTemplates in "+generation-templates/option_generatio
     ?@string OPTION_COMPONENT_NAME,
     ?@commandLineOptionSortedList BOOL_OPTION_SORTED_LIST,
     ?@commandLineOptionSortedList UINT_OPTION_SORTED_LIST,
-    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST,
-    ?@commandLineOptionSortedList STRING_LIST_OPTION_SORTED_LIST
+    ?@commandLineOptionSortedList STRING_OPTION_SORTED_LIST
   )
 }
 

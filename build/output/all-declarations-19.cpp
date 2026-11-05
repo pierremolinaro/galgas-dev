@@ -7709,8 +7709,7 @@ mProperty_lkey (),
 mProperty_mIsPredefined (),
 mProperty_mBoolOptionMap (),
 mProperty_mUIntOptionMap (),
-mProperty_mStringOptionMap (),
-mProperty_mStringListOptionMap () {
+mProperty_mStringOptionMap () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7720,8 +7719,7 @@ mProperty_lkey (inSource.mProperty_lkey),
 mProperty_mIsPredefined (inSource.mProperty_mIsPredefined),
 mProperty_mBoolOptionMap (inSource.mProperty_mBoolOptionMap),
 mProperty_mUIntOptionMap (inSource.mProperty_mUIntOptionMap),
-mProperty_mStringOptionMap (inSource.mProperty_mStringOptionMap),
-mProperty_mStringListOptionMap (inSource.mProperty_mStringListOptionMap) {
+mProperty_mStringOptionMap (inSource.mProperty_mStringOptionMap) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7732,20 +7730,18 @@ GGS_optionComponentMapForSemanticAnalysis_2E_element & GGS_optionComponentMapFor
   mProperty_mBoolOptionMap = inSource.mProperty_mBoolOptionMap ;
   mProperty_mUIntOptionMap = inSource.mProperty_mUIntOptionMap ;
   mProperty_mStringOptionMap = inSource.mProperty_mStringOptionMap ;
-  mProperty_mStringListOptionMap = inSource.mProperty_mStringListOptionMap ;
   return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_optionComponentMapForSemanticAnalysis_2E_element GGS_optionComponentMapForSemanticAnalysis_2E_element::init_21__21__21__21__21__21_ (const GGS_lstring & in_lkey,
-                                                                                                                                         const GGS_bool & in_mIsPredefined,
-                                                                                                                                         const GGS_commandLineOptionMap & in_mBoolOptionMap,
-                                                                                                                                         const GGS_commandLineOptionMap & in_mUIntOptionMap,
-                                                                                                                                         const GGS_commandLineOptionMap & in_mStringOptionMap,
-                                                                                                                                         const GGS_commandLineOptionMap & in_mStringListOptionMap,
-                                                                                                                                         Compiler * inCompiler
-                                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+GGS_optionComponentMapForSemanticAnalysis_2E_element GGS_optionComponentMapForSemanticAnalysis_2E_element::init_21__21__21__21__21_ (const GGS_lstring & in_lkey,
+                                                                                                                                     const GGS_bool & in_mIsPredefined,
+                                                                                                                                     const GGS_commandLineOptionMap & in_mBoolOptionMap,
+                                                                                                                                     const GGS_commandLineOptionMap & in_mUIntOptionMap,
+                                                                                                                                     const GGS_commandLineOptionMap & in_mStringOptionMap,
+                                                                                                                                     Compiler * inCompiler
+                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GGS_optionComponentMapForSemanticAnalysis_2E_element result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_lkey = in_lkey ;
@@ -7753,7 +7749,6 @@ GGS_optionComponentMapForSemanticAnalysis_2E_element GGS_optionComponentMapForSe
   result.mProperty_mBoolOptionMap = in_mBoolOptionMap ;
   result.mProperty_mUIntOptionMap = in_mUIntOptionMap ;
   result.mProperty_mStringOptionMap = in_mStringOptionMap ;
-  result.mProperty_mStringListOptionMap = in_mStringListOptionMap ;
   return result ;
 }
 
@@ -7768,20 +7763,18 @@ GGS_optionComponentMapForSemanticAnalysis_2E_element::GGS_optionComponentMapForS
                                                                                                             const GGS_bool & inOperand1,
                                                                                                             const GGS_commandLineOptionMap & inOperand2,
                                                                                                             const GGS_commandLineOptionMap & inOperand3,
-                                                                                                            const GGS_commandLineOptionMap & inOperand4,
-                                                                                                            const GGS_commandLineOptionMap & inOperand5) :
+                                                                                                            const GGS_commandLineOptionMap & inOperand4) :
 mProperty_lkey (inOperand0),
 mProperty_mIsPredefined (inOperand1),
 mProperty_mBoolOptionMap (inOperand2),
 mProperty_mUIntOptionMap (inOperand3),
-mProperty_mStringOptionMap (inOperand4),
-mProperty_mStringListOptionMap (inOperand5) {
+mProperty_mStringOptionMap (inOperand4) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GGS_optionComponentMapForSemanticAnalysis_2E_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mIsPredefined.isValid () && mProperty_mBoolOptionMap.isValid () && mProperty_mUIntOptionMap.isValid () && mProperty_mStringOptionMap.isValid () && mProperty_mStringListOptionMap.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mIsPredefined.isValid () && mProperty_mBoolOptionMap.isValid () && mProperty_mUIntOptionMap.isValid () && mProperty_mStringOptionMap.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7792,7 +7785,6 @@ void GGS_optionComponentMapForSemanticAnalysis_2E_element::drop (void) {
   mProperty_mBoolOptionMap.drop () ;
   mProperty_mUIntOptionMap.drop () ;
   mProperty_mStringOptionMap.drop () ;
-  mProperty_mStringListOptionMap.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7812,8 +7804,6 @@ void GGS_optionComponentMapForSemanticAnalysis_2E_element::description (String &
     mProperty_mUIntOptionMap.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_mStringOptionMap.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mStringListOptionMap.description (ioString, inIndentation+1) ;
   }
   ioString.appendCString (">") ;
 }

@@ -691,14 +691,6 @@
                 "galgas-debug/compile-sources",
               ],
             },
-            { "path": "StringListCommandLineOption.h" },
-            {
-              "path": "StringListCommandLineOption.cpp",
-              "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
-              ],
-            },
             { "path": "UIntCommandLineOption.h" },
             {
               "path": "UIntCommandLineOption.cpp",

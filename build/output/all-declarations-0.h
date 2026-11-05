@@ -9047,8 +9047,6 @@ class DownEnumerator_optionComponentMapForSemanticAnalysis final {
 
   public: class GGS_commandLineOptionMap current_mStringOptionMap (LOCATION_ARGS) const ;
 
-  public: class GGS_commandLineOptionMap current_mStringListOptionMap (LOCATION_ARGS) const ;
-
   public: class GGS_optionComponentMapForSemanticAnalysis_2E_element current (LOCATION_ARGS) const ;
 
   private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForSemanticAnalysis_2E_element>> mInfoArray ;
@@ -9076,7 +9074,6 @@ class UpEnumerator_optionComponentMapForSemanticAnalysis final {
   public: class GGS_commandLineOptionMap current_mBoolOptionMap (LOCATION_ARGS) const ;
   public: class GGS_commandLineOptionMap current_mUIntOptionMap (LOCATION_ARGS) const ;
   public: class GGS_commandLineOptionMap current_mStringOptionMap (LOCATION_ARGS) const ;
-  public: class GGS_commandLineOptionMap current_mStringListOptionMap (LOCATION_ARGS) const ;
   public: class GGS_optionComponentMapForSemanticAnalysis_2E_element current (LOCATION_ARGS) const ;
 
   private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_optionComponentMapForSemanticAnalysis_2E_element>> mInfoArray ;
@@ -9163,7 +9160,6 @@ class GGS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_root {
                                  class GGS_commandLineOptionMap constinArgument2,
                                  class GGS_commandLineOptionMap constinArgument3,
                                  class GGS_commandLineOptionMap constinArgument4,
-                                 class GGS_commandLineOptionMap constinArgument5,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
@@ -9176,11 +9172,6 @@ class GGS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_root {
                                               class GGS_string constinArgument1,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMStringListOptionMapForKey (class GGS_commandLineOptionMap constinArgument0,
-                                                     class GGS_string constinArgument1,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
 
   public: void setter_setMStringOptionMapForKey (class GGS_commandLineOptionMap constinArgument0,
                                                  class GGS_string constinArgument1,
@@ -9199,7 +9190,6 @@ class GGS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_root {
                                  class GGS_commandLineOptionMap & outArgument2,
                                  class GGS_commandLineOptionMap & outArgument3,
                                  class GGS_commandLineOptionMap & outArgument4,
-                                 class GGS_commandLineOptionMap & outArgument5,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) const ;
 
@@ -9234,10 +9224,6 @@ class GGS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_root {
   public: class GGS_bool getter_mIsPredefinedForKey (const class GGS_string & constinOperand0,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_commandLineOptionMap getter_mStringListOptionMapForKey (const class GGS_string & constinOperand0,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_commandLineOptionMap getter_mStringOptionMapForKey (const class GGS_string & constinOperand0,
                                                                         Compiler * inCompiler

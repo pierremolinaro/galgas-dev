@@ -84,7 +84,6 @@
    <Unit filename="../build/libpm/command_line_interface/BoolCommandLineOption.cpp" />
    <Unit filename="../build/libpm/command_line_interface/UIntCommandLineOption.cpp" />
    <Unit filename="../build/libpm/command_line_interface/StringCommandLineOption.cpp" />
-   <Unit filename="../build/libpm/command_line_interface/StringListCommandLineOption.cpp" />
    <Unit filename="../build/libpm/command_line_interface/builtin-command-line-options.cpp" />
    <Unit filename="../build/libpm/command_line_interface/analyzeCommandLineOptions.cpp" />
    <Unit filename="../build/libpm/command_line_interface/F_mainForLIBPM.cpp" />

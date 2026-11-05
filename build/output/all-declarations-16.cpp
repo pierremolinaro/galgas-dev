@@ -6885,20 +6885,19 @@ GGS_semanticDeclarationWithHeaderForGeneration () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_optionComponentForGeneration GGS_optionComponentForGeneration::
-init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (const GGS_string & in_infoMessage,
-                                                                                            const GGS_bool & in_generateHeader,
-                                                                                            const GGS_string & in_implementationCppFileName,
-                                                                                            const GGS_bool & in_mIsPredefined,
-                                                                                            const GGS_string & in_mOptionComponentName,
-                                                                                            const GGS_commandLineOptionSortedList & in_mBoolOptionSortedList,
-                                                                                            const GGS_commandLineOptionSortedList & in_mUIntOptionSortedList,
-                                                                                            const GGS_commandLineOptionSortedList & in_mStringOptionSortedList,
-                                                                                            const GGS_commandLineOptionSortedList & in_mStringListSortedList,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
+init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21_ (const GGS_string & in_infoMessage,
+                                                                                        const GGS_bool & in_generateHeader,
+                                                                                        const GGS_string & in_implementationCppFileName,
+                                                                                        const GGS_bool & in_mIsPredefined,
+                                                                                        const GGS_string & in_mOptionComponentName,
+                                                                                        const GGS_commandLineOptionSortedList & in_mBoolOptionSortedList,
+                                                                                        const GGS_commandLineOptionSortedList & in_mUIntOptionSortedList,
+                                                                                        const GGS_commandLineOptionSortedList & in_mStringOptionSortedList,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
   cPtr_optionComponentForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_optionComponentForGeneration (inCompiler COMMA_THERE)) ;
-  object->optionComponentForGeneration_init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (in_infoMessage, in_generateHeader, in_implementationCppFileName, in_mIsPredefined, in_mOptionComponentName, in_mBoolOptionSortedList, in_mUIntOptionSortedList, in_mStringOptionSortedList, in_mStringListSortedList, inCompiler) ;
+  object->optionComponentForGeneration_init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21_ (in_infoMessage, in_generateHeader, in_implementationCppFileName, in_mIsPredefined, in_mOptionComponentName, in_mBoolOptionSortedList, in_mUIntOptionSortedList, in_mStringOptionSortedList, inCompiler) ;
   const GGS_optionComponentForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -6907,16 +6906,15 @@ init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__2
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_optionComponentForGeneration::
-optionComponentForGeneration_init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21_ (const GGS_string & in_infoMessage,
-                                                                                                                         const GGS_bool & in_generateHeader,
-                                                                                                                         const GGS_string & in_implementationCppFileName,
-                                                                                                                         const GGS_bool & in_mIsPredefined,
-                                                                                                                         const GGS_string & in_mOptionComponentName,
-                                                                                                                         const GGS_commandLineOptionSortedList & in_mBoolOptionSortedList,
-                                                                                                                         const GGS_commandLineOptionSortedList & in_mUIntOptionSortedList,
-                                                                                                                         const GGS_commandLineOptionSortedList & in_mStringOptionSortedList,
-                                                                                                                         const GGS_commandLineOptionSortedList & in_mStringListSortedList,
-                                                                                                                         Compiler * /* inCompiler */) {
+optionComponentForGeneration_init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21_ (const GGS_string & in_infoMessage,
+                                                                                                                     const GGS_bool & in_generateHeader,
+                                                                                                                     const GGS_string & in_implementationCppFileName,
+                                                                                                                     const GGS_bool & in_mIsPredefined,
+                                                                                                                     const GGS_string & in_mOptionComponentName,
+                                                                                                                     const GGS_commandLineOptionSortedList & in_mBoolOptionSortedList,
+                                                                                                                     const GGS_commandLineOptionSortedList & in_mUIntOptionSortedList,
+                                                                                                                     const GGS_commandLineOptionSortedList & in_mStringOptionSortedList,
+                                                                                                                     Compiler * /* inCompiler */) {
   mProperty_infoMessage = in_infoMessage ;
   mProperty_generateHeader = in_generateHeader ;
   mProperty_implementationCppFileName = in_implementationCppFileName ;
@@ -6925,7 +6923,6 @@ optionComponentForGeneration_init_21_infoMessage_21_generateHeader_21_implementa
   mProperty_mBoolOptionSortedList = in_mBoolOptionSortedList ;
   mProperty_mUIntOptionSortedList = in_mUIntOptionSortedList ;
   mProperty_mStringOptionSortedList = in_mStringOptionSortedList ;
-  mProperty_mStringListSortedList = in_mStringListSortedList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6995,18 +6992,6 @@ GGS_commandLineOptionSortedList GGS_optionComponentForGeneration::readProperty_m
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_commandLineOptionSortedList GGS_optionComponentForGeneration::readProperty_mStringListSortedList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_commandLineOptionSortedList () ;
-  }else{
-    cPtr_optionComponentForGeneration * p = (cPtr_optionComponentForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_optionComponentForGeneration) ;
-    return p->mProperty_mStringListSortedList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
 //Pointer class for @optionComponentForGeneration class
 //--------------------------------------------------------------------------------------------------
 
@@ -7016,8 +7001,7 @@ mProperty_mIsPredefined (),
 mProperty_mOptionComponentName (),
 mProperty_mBoolOptionSortedList (),
 mProperty_mUIntOptionSortedList (),
-mProperty_mStringOptionSortedList (),
-mProperty_mStringListSortedList () {
+mProperty_mStringOptionSortedList () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7030,7 +7014,6 @@ cPtr_optionComponentForGeneration::cPtr_optionComponentForGeneration (const GGS_
                                                                       const GGS_commandLineOptionSortedList & in_mBoolOptionSortedList,
                                                                       const GGS_commandLineOptionSortedList & in_mUIntOptionSortedList,
                                                                       const GGS_commandLineOptionSortedList & in_mStringOptionSortedList,
-                                                                      const GGS_commandLineOptionSortedList & in_mStringListSortedList,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_infoMessage, in_generateHeader, in_implementationCppFileName, inCompiler COMMA_THERE),
@@ -7038,8 +7021,7 @@ mProperty_mIsPredefined (),
 mProperty_mOptionComponentName (),
 mProperty_mBoolOptionSortedList (),
 mProperty_mUIntOptionSortedList (),
-mProperty_mStringOptionSortedList (),
-mProperty_mStringListSortedList () {
+mProperty_mStringOptionSortedList () {
   mProperty_infoMessage = in_infoMessage ;
   mProperty_generateHeader = in_generateHeader ;
   mProperty_implementationCppFileName = in_implementationCppFileName ;
@@ -7048,7 +7030,6 @@ mProperty_mStringListSortedList () {
   mProperty_mBoolOptionSortedList = in_mBoolOptionSortedList ;
   mProperty_mUIntOptionSortedList = in_mUIntOptionSortedList ;
   mProperty_mStringOptionSortedList = in_mStringOptionSortedList ;
-  mProperty_mStringListSortedList = in_mStringListSortedList ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7075,8 +7056,6 @@ void cPtr_optionComponentForGeneration::description (String & ioString,
   mProperty_mUIntOptionSortedList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mStringOptionSortedList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mStringListSortedList.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
 }
 
@@ -7084,7 +7063,7 @@ void cPtr_optionComponentForGeneration::description (String & ioString,
 
 AbstractPtrClass * cPtr_optionComponentForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_optionComponentForGeneration (mProperty_infoMessage, mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mIsPredefined, mProperty_mOptionComponentName, mProperty_mBoolOptionSortedList, mProperty_mUIntOptionSortedList, mProperty_mStringOptionSortedList, mProperty_mStringListSortedList, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_optionComponentForGeneration (mProperty_infoMessage, mProperty_generateHeader, mProperty_implementationCppFileName, mProperty_mIsPredefined, mProperty_mOptionComponentName, mProperty_mBoolOptionSortedList, mProperty_mUIntOptionSortedList, mProperty_mStringOptionSortedList, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -7099,7 +7078,6 @@ AbstractPtrClass * cPtr_optionComponentForGeneration::duplicate (Compiler * inCo
     mProperty_mBoolOptionSortedList.printNonNullClassInstanceProperties ("mBoolOptionSortedList") ;
     mProperty_mUIntOptionSortedList.printNonNullClassInstanceProperties ("mUIntOptionSortedList") ;
     mProperty_mStringOptionSortedList.printNonNullClassInstanceProperties ("mStringOptionSortedList") ;
-    mProperty_mStringListSortedList.printNonNullClassInstanceProperties ("mStringListSortedList") ;
   }
 #endif
 

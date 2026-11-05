@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 2001, ..., 2024 Pierre Molinaro.
+//  Copyright (C) 2001, ..., 2026 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -22,7 +22,6 @@
 #include "BoolCommandLineOption.h"
 #include "UIntCommandLineOption.h"
 #include "StringCommandLineOption.h"
-#include "StringListCommandLineOption.h"
 #include "builtin-command-line-options.h"
 #include "ConsoleOut.h"
 #include "FileManager.h"
@@ -81,7 +80,6 @@ static void print_usage (int argv, const char * argc []) {
   BoolCommandLineOption::printUsageOfBoolOptions () ;
   UIntCommandLineOption::printUsageOfUIntOptions () ;
   StringCommandLineOption::printUsageOfStringOptions () ;
-  StringListCommandLineOption::printUsageOfStringOptions () ;
   gCout.appendCString (" file...\n") ;
 }
 
@@ -96,7 +94,6 @@ static void print_option_list (void) {
   BoolCommandLineOption::printBoolOptions () ;
   UIntCommandLineOption::printUIntOptions () ;
   StringCommandLineOption::printStringOptions () ;
-  StringListCommandLineOption::printStringOptions () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -129,7 +126,6 @@ static void print_help (const int argv,
   BoolCommandLineOption::printBoolOptions () ;
   UIntCommandLineOption::printUIntOptions () ;
   StringCommandLineOption::printStringOptions () ;
-  StringListCommandLineOption::printStringOptions () ;
 
   int32_t extensionIndex = 0 ;
   while (inExtensionArray [extensionIndex] != nullptr) {
@@ -192,9 +188,6 @@ static void option_beginning_with_single_minus_sign (const String & inCommand, /
       StringCommandLineOption::setStringOptionForCommandChar (command, outOk, correctFormat) ;
     }
     if (! outOk) {
-      StringListCommandLineOption::setStringListOptionForCommandChar (command, outOk, correctFormat) ;
-    }
-    if (! outOk) {
       gCout.appendCString ("Error : unknown '-") ;
       gCout.appendString (inCommand) ;
       gCout.appendCString ("' command line option.\n") ;
@@ -240,9 +233,6 @@ static void option_beginning_with_double_minus_sign (const String & inCommand,
   //--- If not found, look for a String option
     if (! outFound) {
       StringCommandLineOption::setStringOptionForCommandString (inCommand, outFound, correctFormat) ;
-    }
-    if (! outFound) {
-      StringListCommandLineOption::setStringListOptionForCommandString (inCommand, outFound, correctFormat) ;
     }
     if (! outFound) {
       gCout.appendCString ("Error : unknown '--") ;

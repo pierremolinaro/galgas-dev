@@ -434,10 +434,7 @@ private proc guiComponentSemanticAnalysis (let @galgasGUIComponentListAST.@eleme
   context.mProjectIndexingDescriptorList = inGUIComponentAST.mProjectIndexingDescriptorList
 //--- Check imported options components
   for (mValue) in inGUIComponentAST.mImportedOptionList do
-    inSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey
-      (mValue,
-      ?5*
-    )
+    inSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey (mValue, ?4*)
     context.mImportedOptionComponentList ++= @(mValue.string)
   end
 //--- Nib and main classes
