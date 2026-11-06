@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 graph @usefulEntitiesGraph (@lstringlist) {
-  %insertSetter addNode %errorMessage "the '%K' entity is already declared at %L"
+  #insertSetter addNode #errorMessage "the '%K' entity is already declared at %L"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -31,14 +31,14 @@ graph @usefulEntitiesGraph (@lstringlist) {
 map @uselessEntityLocationMap {
   public let @string mUnusedEntityName
   public let @location mLocation
-  %insertSetter insertKey %errorMessage "--- %K INTERNAL ERROR ---"
+  #insertSetter insertKey #errorMessage "--- %K INTERNAL ERROR ---"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 proc checkUsefulEntities (let @usefulEntitiesGraph inUsefulEntitiesGraph,
                         let @lstringlist inRootEntities,
-                        let @string unused inProductDirectory ) {
+                        let @string _inProductDirectory ) {
   if option galgas_cli_options [checkEntityUsefulness.value], @uint.errorCount == 0 then
   //--- Undefined nodes
     let undefinedNodeList = inUsefulEntitiesGraph.undefinedNodeKeyList

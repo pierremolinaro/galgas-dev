@@ -88,50 +88,50 @@ syntax galgas4ProjectSyntax (galgasScanner4) {
     var [@galgasQualifiedFeature] qualifiedFeatureList = @()
     repeat
     while
-      $%quietOutputByDefault$
+      $#quietOutputByDefault$
       generateFeatureList ++= @("quietOutputByDefault".here)
     while
-      $%MacSwiftApp$
+      $#MacSwiftApp$
       generateFeatureList ++= @("MacSwiftApp".here)
     while
-      $%makefile-macosx$
+      $#makefile-macosx$
       generateFeatureList ++= @("makefile-macosx".here)
     while
-      $%makefile-unix$
+      $#makefile-unix$
       generateFeatureList ++= @("makefile-unix".here)
     while
-      $%makefile-x86linux32-on-macosx$
+      $#makefile-x86linux32-on-macosx$
       generateFeatureList ++= @("makefile-x86linux32-on-macosx".here)
     while
-      $%makefile-x86linux64-on-macosx$
+      $#makefile-x86linux64-on-macosx$
       generateFeatureList ++= @("makefile-x86linux64-on-macosx".here)
     while
-      $%makefile-arm64-linux-on-macosx$
+      $#makefile-arm64-linux-on-macosx$
       generateFeatureList ++= @("makefile-arm64-linux-on-macosx".here)
     while
-      $%makefile-win32-on-macosx$
+      $#makefile-win32-on-macosx$
       generateFeatureList ++= @("makefile-win32-on-macosx".here)
     while
-      $%codeblocks-windows$
+      $#codeblocks-windows$
       generateFeatureList ++= @("codeblocks-windows".here)
     while
-      $%codeblocks-linux32$
+      $#codeblocks-linux32$
       generateFeatureList ++= @("codeblocks-linux32".here)
     while
-      $%codeblocks-linux64$
+      $#codeblocks-linux64$
       generateFeatureList ++= @("codeblocks-linux64".here)
     while
-      $%applicationBundleBase$
+      $#applicationBundleBase$
       $:$
       $"string"$ (?let @lstring featureValue)
       qualifiedFeatureList ++= @("applicationBundleBase".here, featureValue)
     while
-      $%libpmAtPath$
+      $#libpmAtPath$
       $:$
       $"string"$ (?let @lstring featureValue)
       qualifiedFeatureList ++= @("libpmAtPath".here, featureValue)
     while
-      $%macCodeSign$
+      $#macCodeSign$
       $:$
       $"string"$ (?let @lstring featureValue)
       qualifiedFeatureList ++= @("macCodeSign".here, featureValue)
@@ -142,13 +142,13 @@ syntax galgas4ProjectSyntax (galgasScanner4) {
      var extensionList = @stringlist ()
 //     extensionList ++= @("galgas3")
      extensionList ++= @("galgas4")
-     let projectSourceList = sourceDirectory.regularFilesWithExtensions (true, extensionList)
+     let projectSourceList = sourceDirectory.regularFilesWithExtensions (!recursive: true, extensionList)
   //--- Enumerate tool C++ sources directory
      let toolCppDirectory = sourceDirectory + "/tool-sources"
      var cppExtensionList = @stringlist ()
      cppExtensionList ++= @("cpp")
      cppExtensionList ++= @("h")
-     let toolCppSourceList = toolCppDirectory.regularFilesWithExtensions (true, cppExtensionList)
+     let toolCppSourceList = toolCppDirectory.regularFilesWithExtensions (!recursive: true, cppExtensionList)
   //---
     outProjectComponentAST = @galgas3ProjectComponentAST (
       projectSourceList,

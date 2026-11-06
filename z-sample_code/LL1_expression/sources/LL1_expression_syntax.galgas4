@@ -1,4 +1,4 @@
-syntax LL1_expression_syntax (LL1_expression_lexique) %translate {
+syntax LL1_expression_syntax (LL1_expression_lexique) #translate {
 
 rule <StartSymbol> () {
   <Expression> (?let @cExpression expressionTree, ?let @uint value)

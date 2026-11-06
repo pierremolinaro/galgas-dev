@@ -72,7 +72,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   rule <lexical_send_instruction> (!@lexicalInstructionAST outInstruction) {
     var @lexicalSendSearchListAST lexicalSendSearchList = @()
-    $%searchString$
+    $#searchString$
     repeat
       $identifier$ (?let @lstring attributeName)
       $in$
@@ -80,7 +80,7 @@ syntax extension galgas4LexiqueComponentSyntax {
       lexicalSendSearchList ++= @(attributeName, searchListName)
       $default$
     while
-      $%searchString$
+      $#searchString$
     end
     let @lexicalSendDefaultActionAST lexicalSendDefaultAction
     select
@@ -107,7 +107,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
 override proc @lexicalStructuredSendInstructionAST.checkLexicalInstruction (
                          ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-                         ?!@lexicalTagMap unused ioTagMap) {
+                         ?!@lexicalTagMap _ioTagMap) {
   for lexicalSendSearch in self.mLexicalSendSearchList do
     !?ioLexiqueAnalysisContext.mLexicalTokenListMap.setMShouldBeGeneratedForKey (true, lexicalSendSearch.mSearchListName.string)
     ioLexiqueAnalysisContext.mLexicalAttributeMap.searchKey (lexicalSendSearch.mAttributeName, ?*)
@@ -119,7 +119,7 @@ override proc @lexicalStructuredSendInstructionAST.checkLexicalInstruction (
 
 override func @lexicalStructuredSendInstructionAST.generateSwiftCocoaInstructionCode
   (?let @string inScannerClassName,
-   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
+   ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
   outGeneratedCode = ""
   for lexicalSendSearch in self.mLexicalSendSearchList do
@@ -145,7 +145,7 @@ override func @lexicalStructuredSendInstructionAST.lexicalInstructionUsesLoopLoc
 
 override func @lexicalStructuredSendInstructionAST.generateLexicalInstructionCode
   (?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
+  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
   -> @string {
   result = ""
   for lexicalSendSearch in self.mLexicalSendSearchList do

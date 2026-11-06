@@ -23,7 +23,7 @@ final class @dictDeclarationAST : @semanticDeclarationAST {
   private let @lstring mDictTypeName
   private let @lstring mKeyTypeName
   private let @propertyInCollectionListAST mPropertyList
-  private let @bool equatable %initArgLabel
+  private let @bool equatable #initArgLabel
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ syntax extension galgas4DeclarationsSyntax {
     select
       equatable = false
     or
-      $%equatable$
+      $#equatable$
       equatable = true
     end
     $:$
@@ -161,12 +161,12 @@ override proc @dictDeclarationAST.addAssociatedElement (?!@galgasDeclarationAST 
 
 override proc @dictDeclarationAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+  ?!@equatableExtensionMap _ioEquatableExtensionMap,
+  ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+  ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+  ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+  ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+  ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList
  ) {
   let key = @lstring ("@" + self.mDictTypeName, self.mDictTypeName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)
@@ -452,7 +452,7 @@ proc check_K_L_escapeCharacters (let @lstring inString ) {  //--- Check escape s
 
 //--------------------------------------------------------------------------------------------------
 
-func %once forbiddenKeysForMapAndDict () -> @stringset {
+func #once forbiddenKeysForMapAndDict () -> @stringset {
   result = ["key", "description", "object"]
 }
 
@@ -461,10 +461,10 @@ func %once forbiddenKeysForMapAndDict () -> @stringset {
 override proc @dictDeclarationAST.semanticAnalysis
                 (?!@lstringlist ioUsefulnessRootEntities,
                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                let @string unused inProductDirectory,
-                let @semanticContext unused inSemanticContext,
+                let @string _inProductDirectory,
+                let @semanticContext _inSemanticContext,
                 ?!@unifiedTypeMap ioTypeMap,
-                let @predefinedTypes unused inPredefinedTypes,
+                let @predefinedTypes _inPredefinedTypes,
                 ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
 ) {
 //--- Check key is comparable
@@ -584,7 +584,7 @@ final class @dictTypeForGeneration : @semanticTypeForGeneration {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificImplementation
-                                          (let @unifiedTypeMap unused inTypeMap,
+                                          (let @unifiedTypeMap _inTypeMap,
                                           ?!@stringset ioInclusionSet,
                                           !@string outImplementation ) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)

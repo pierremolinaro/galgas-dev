@@ -31,7 +31,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-abstract class @abstractSyntaxInstructionForGrammarAnalysis %generatedInSeparateFile {
+abstract class @abstractSyntaxInstructionForGrammarAnalysis #generatedInSeparateFile {
   public let @location mStartLocation
 }
 
@@ -63,7 +63,7 @@ list @productionRuleListForGrammarAnalysis {
 
 map @unusedNonTerminalSymbolMapForGrammarAnalysis {
   public let @uint mNonTerminalIndex
-  %insertSetter insertKey %errorMessage "the '<%K>' non terminal symbol has already been declared as unused in %L"
+  #insertSetter insertKey #errorMessage "the '<%K>' non terminal symbol has already been declared as unused in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -142,8 +142,8 @@ list @syntaxComponentListForGrammarAnalysis {
 
 map @terminalSymbolsMapForGrammarAnalysis {
   public let @uint mTerminalIndex
-  %insertSetter insertKey %errorMessage "the terminal symbol '$%K$' is already declared in %L"
-  %searchMethod searchKey %errorMessage "the terminal symbol '$%K$' is not declared"
+  #insertSetter insertKey #errorMessage "the terminal symbol '$%K$' is already declared in %L"
+  #searchMethod searchKey #errorMessage "the terminal symbol '$%K$' is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------

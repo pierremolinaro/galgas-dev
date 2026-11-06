@@ -707,7 +707,7 @@ final class @opAssignInstructionForGeneration : @semanticInstructionForGeneratio
   override proc generateInstruction (?!@stringset ioInclusionSet,
     ?!@uint ioTemporaryVariableIndex,
     ?!@stringset ioUnusedVariableCppNameSet,
-    let @bool unused inGenerateSyntaxDirectedTranslationString,
+    let @bool _inGenerateSyntaxDirectedTranslationString,
     ?!@string ioGeneratedCode) {
     self.mTargetType.addHeaderFileName (!?ioInclusionSet)
     self.mSourceExpression.generateExpression
@@ -748,7 +748,7 @@ final class @plusPlusAssignInstructionForGeneration : @semanticInstructionForGen
   override proc generateInstruction (?!@stringset ioInclusionSet,
     ?!@uint ioTemporaryVariableIndex,
     ?!@stringset ioUnusedVariableCppNameSet,
-    let @bool unused inGenerateSyntaxDirectedTranslationString,
+    let @bool _inGenerateSyntaxDirectedTranslationString,
     ?!@string ioGeneratedCode) {
     self.mTargetType.addHeaderFileName (!?ioInclusionSet)
     self.mSourceExpression.generateExpression

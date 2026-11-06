@@ -1,4 +1,4 @@
-grammar LL1_expression_grammar "LL1" %translate {
+grammar LL1_expression_grammar "LL1" #translate {
 syntax LL1_expression_syntax
 
  <StartSymbol> ()

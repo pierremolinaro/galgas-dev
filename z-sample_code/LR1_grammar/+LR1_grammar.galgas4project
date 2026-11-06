@@ -1,6 +1,6 @@
 project (1:0:0) -> "LR1Grammar"{
-  %makefile-unix
-  %MacSwiftApp
-  %applicationBundleBase : "fr.what"
+  #makefile-unix
+  #MacSwiftApp
+  #applicationBundleBase : "fr.what"
 }
 

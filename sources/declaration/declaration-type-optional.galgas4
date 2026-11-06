@@ -18,9 +18,9 @@
 //--------------------------------------------------------------------------------------------------
 
 final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
-  private let @lstring optionalTypeName %initArgLabel
-  private let @lstring unwrappedTypeName %initArgLabel
-  private let @bool isUsefull %initArgLabel
+  private let @lstring optionalTypeName #initArgLabel
+  private let @lstring unwrappedTypeName #initArgLabel
+  private let @bool isUsefull #initArgLabel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -32,12 +32,12 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInGraph
     (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+    ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
     let selfKey = @lstring ("@" + self.optionalTypeName, self.optionalTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (selfKey, self)
     let unwrappedKey = @lstring ("@" + self.unwrappedTypeName, self.unwrappedTypeName.location)
@@ -137,7 +137,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc addAssociatedElement (?!@galgasDeclarationAST unused ioDeclarations ) {
+  override proc addAssociatedElement (?!@galgasDeclarationAST _ioDeclarations ) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -145,10 +145,10 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
   override proc semanticAnalysis
     (?!@lstringlist ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-    let @string unused inProductDirectory,
-    let @semanticContext unused inSemanticContext,
+    let @string _inProductDirectory,
+    let @semanticContext _inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-    let @predefinedTypes unused inPredefinedTypes,
+    let @predefinedTypes _inPredefinedTypes,
     ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
   ) {
   //--- Useful entities graph
@@ -217,7 +217,7 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
                                               ?!@stringset ioInclusionSet,
                                               !@string outImplementation ) {
     self.unwrappedType.addHeaderFileName (!?ioInclusionSet)

@@ -67,10 +67,10 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc transformInstructionForGrammarAnalysis (
-    ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap,
-    ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap,
-    ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex,
-    ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList) {
+    ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis _ioActuallyUsedTerminalSymbolMap,
+    ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis _inNonTerminalSymbolMap,
+    ?!addedTerminalIndex:@uint _ioAddedNonTerminalIndex,
+    ?!@syntaxInstructionListForGrammarAnalysis _ioSyntaxInstructionList) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -80,14 +80,14 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
                                   let @analysisContext inAnalysisContext,
                                   ?!@unifiedTypeMap ioTypeMap,
                                   let @bool inHasTranslateFeature,
-                                  let @terminalMap unused inTerminalMap,
-                                  let @string unused inLexiqueName,
-                                  let @nonterminalMap unused inNonterminalMap,
-                                  let @string unused inComponentName,
-                                  let @stringset unused inIndexNameSet,
+                                  let @terminalMap _inTerminalMap,
+                                  let @string _inLexiqueName,
+                                  let @nonterminalMap _inNonterminalMap,
+                                  let @string _inComponentName,
+                                  let @stringset _inIndexNameSet,
                                   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                                   ?!@localVarManager ioVariableMap,
-                                  ?!@uint unused ioSelectMethodCount) {
+                                  ?!@uint _ioSelectMethodCount) {
     if not inHasTranslateFeature then
       error (self.mInstructionLocation
       : "'send' instruction is only allowed when syntax componant has 'translate' feature"
@@ -130,7 +130,7 @@ final class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneratio
   override proc generateInstruction (?!@stringset ioInclusionSet,
                                        ?!@uint ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
-                                       let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                       let @bool _inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
     self.mExpression.generateExpression
       (!?ioGeneratedCode,

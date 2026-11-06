@@ -298,12 +298,12 @@ mutating proc @localVarManager.openOverrideForRepeatBlock () {
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarManager.closeOverride (let @location unused inEndOfBranchLocation ) {
+mutating proc @localVarManager.closeOverride (let @location _inEndOfBranchLocation ) {
   if self.mOverridenManagers.count > 0 then
     !?self.mOverridenManagers.popLast (?let savedManager)
     switch savedManager
-    case selectOverrideFirstBranch (@currentVarManager unused savedManager) :
-    case selectOverrideNextBranches (@currentVarManager unused savedManager, @currentVarManager referenceManager) :
+    case selectOverrideFirstBranch (@currentVarManager _savedManager) :
+    case selectOverrideNextBranches (@currentVarManager _savedManager, @currentVarManager referenceManager) :
       self.mCurrentManager = referenceManager
     case repeatOverride :
     end
@@ -353,7 +353,7 @@ boolset @localVariableAttributes {
 
 //--------------------------------------------------------------------------------------------------
 
-enum @localVarValuation %equatable {
+enum @localVarValuation #equatable {
   case invalid //--- Error state, for disabled further error messages
   case declared (@bool usedInSubscope) // The variable has no value
   case initialized // The variable has been written once
@@ -369,9 +369,9 @@ map @scopeLocalVarMap {
   private var @string mNameForCheckingFormalParameterUsing
   private var @localVariableAttributes mAttributes
   private var @localVarValuation mState
-  %insertSetter insertKey %errorMessage "the '%K' local variable is already declared"
-  %searchMethod searchKey %errorMessage "there is no '%K' local variable"
-  %removeSetter removeKey %errorMessage "there is no '%K' local variable"
+  #insertSetter insertKey #errorMessage "the '%K' local variable is already declared"
+  #searchMethod searchKey #errorMessage "there is no '%K' local variable"
+  #removeSetter removeKey #errorMessage "there is no '%K' local variable"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -847,7 +847,7 @@ proc @localVarValuation.checkFinalState (let @lstring inVarName ,let @localVaria
 
 //--------------------------------------------------------------------------------------------------
 
-proc @scopeLocalVarMap.checkFinalStates (let @location unused inErrorLocation ) {
+proc @scopeLocalVarMap.checkFinalStates (let @location _inErrorLocation ) {
   for entry in self do
     entry.mState.checkFinalState (entry.lkey, entry.mAttributes)
   end
@@ -871,7 +871,7 @@ proc @currentVarManager.checkAutomatonStates (let @location inErrorLocation ) {
 
 proc @localVarValuation.combineValuationWith (let @localVarValuation inOther,
                                                !@localVarValuation outResult,
-                                               ?!@string unused ioErrorMessage ) {
+                                               ?!@string _ioErrorMessage ) {
   switch self
   case invalid :
     outResult = self

@@ -205,7 +205,7 @@ proc checkExpressionIsBoolean
         error (inErrorLocation
         : "the expression type is not '@bool', but '@"+ expressionType.definition.typeName.string + "', and this type does not define the 'bool' func "
         spoil outExpression
-        fixit %replaceBy expressionType.definition.getterMap.keyList)
+        fixit #replaceBy expressionType.definition.getterMap.keyList)
       end
     end
   end
@@ -224,23 +224,23 @@ abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult.analyze
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationResultNone.analyzeGrammarInstructionSDT
-  (let @analysisContext unused inAnalysisContext,
-                                ?!@unifiedTypeMap unused ioTypeMap,
-  let @bool unused inHasTranslateFeature,
-  let @string unused inSyntaxDirectedTranslationResultVarName,
-  ?!@stringlist unused ioAssignementList,
-  ?!@localVarManager unused ioVariableMap ) {
+  (let @analysisContext _inAnalysisContext,
+                                ?!@unifiedTypeMap _ioTypeMap,
+  let @bool _inHasTranslateFeature,
+  let @string _inSyntaxDirectedTranslationResultVarName,
+  ?!@stringlist _ioAssignementList,
+  ?!@localVarManager _ioVariableMap ) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @grammarInstructionSyntaxDirectedTranslationDropResult.analyzeGrammarInstructionSDT
-  (let @analysisContext unused inAnalysisContext,
-                                ?!@unifiedTypeMap unused ioTypeMap,
+  (let @analysisContext _inAnalysisContext,
+                                ?!@unifiedTypeMap _ioTypeMap,
   let @bool inHasTranslateFeature,
-  let @string unused inSyntaxDirectedTranslationResultVarName,
-  ?!@stringlist unused ioAssignementList,
-  ?!@localVarManager unused ioVariableMap ) {
+  let @string _inSyntaxDirectedTranslationResultVarName,
+  ?!@stringlist _ioAssignementList,
+  ?!@localVarManager _ioVariableMap ) {
   if not inHasTranslateFeature then
     error (self.mLocation : "the ':>' construct requires the grammar to be declared with 'translate' feature")
   end
@@ -250,7 +250,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationDropResult.analyzeGram
 
 override proc @grammarInstructionSyntaxDirectedTranslationResultInVar.analyzeGrammarInstructionSDT
   (let @analysisContext inAnalysisContext,
-                                ?!@unifiedTypeMap unused ioTypeMap,
+                                ?!@unifiedTypeMap _ioTypeMap,
   let @bool inHasTranslateFeature,
   let @string inSyntaxDirectedTranslationResultVarName,
   ?!@stringlist ioAssignementList,

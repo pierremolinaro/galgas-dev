@@ -166,19 +166,19 @@ syntax extension galgas4LexiqueComponentSyntax {
     var preserved = false
     repeat
     while
-      $%nonAtomicSelection$
+      $#nonAtomicSelection$
       if nonAtomicSelection then
         error (.here : "duplicated %nonAtomicSelection attribute")
       end
       nonAtomicSelection = true
     while
-      $%templateEndMark$
+      $#templateEndMark$
       if templateEndMark then
         error (.here : "duplicated %templateEndMark attribute")
       end
       templateEndMark = true
     while
-      $%preserved$
+      $#preserved$
       if preserved then
         error (.here : "duplicated %preserved attribute")
       end
@@ -197,7 +197,7 @@ syntax extension galgas4LexiqueComponentSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <template_replacement> (?!@templateReplacementListAST ioTemplateReplacement ) {
-    $%templateReplacement$
+    $#templateReplacement$
     $"string"$ (?let @lstring matchString)
     let @lstring replacementString
     let @lstring replacementFunction
@@ -228,12 +228,12 @@ override func @templateLexiqueComponentAST.keyRepresentation () -> @string {
 
 override proc @templateLexiqueComponentAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
+  ?!@equatableExtensionMap _ioEquatableExtensionMap,
+  ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+  ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+  ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+  ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+  ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
   let key = @lstring ("lexique " + self.mLexiqueComponentName, self.mLexiqueComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   let superKey = @lstring ("lexique " + self.mLexiqueSuperComponentName, self.mLexiqueComponentName.location)
@@ -243,12 +243,12 @@ override proc @templateLexiqueComponentAST.enterDeclarationInGraph
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLexiqueComponentAST.enterDeclarationInSemanticContext
-  (?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-  let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-  let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-  let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
-  ?!@unifiedTypeMap unused ioTypeMap,
+  (?!@equatableExtensionMap _ioEquatableExtensionMap,
+  let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+  let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+  let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+  let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
+  ?!@unifiedTypeMap _ioTypeMap,
   ?!@semanticContext ioSemanticContext ) {
 //-------------------------------------- Get super lexique features
   ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis.searchKey
@@ -280,12 +280,12 @@ override proc @templateLexiqueComponentAST.enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLexiqueComponentAST.semanticAnalysis
-                                  (?!@lstringlist unused ioUsefulnessRootEntities,
+                                  (?!@lstringlist _ioUsefulnessRootEntities,
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                  let @string unused inProductDirectory,
+                                  let @string _inProductDirectory,
                                   let @semanticContext inSemanticContext,
-                                  ?!@unifiedTypeMap unused ioTypeMap,
-                                  let @predefinedTypes unused inPredefinedTypes,
+                                  ?!@unifiedTypeMap _ioTypeMap,
+                                  let @predefinedTypes _inPredefinedTypes,
                                   ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration ) {
 //-------------------------------------- Useful entities graph
   let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (self.mLexiqueComponentName)

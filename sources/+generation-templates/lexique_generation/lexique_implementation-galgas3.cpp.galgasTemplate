@@ -185,7 +185,7 @@ end
 //--------------------------------------------------------------------------------------------------
 
 void Lexique_%!LEXIQUE_IDENTIFIER%::internalParseLexicalToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & token) {
-%IF USE_LOOP_LOCAL_VARIABLE THEN
+%if USE_LOOP_LOCAL_VARIABLE then
 %  bool loop = true ;
 %
  end

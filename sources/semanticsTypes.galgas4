@@ -22,7 +22,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-func %once generateFewHeaderFiles () -> @bool {
+func #once generateFewHeaderFiles () -> @bool {
   result = true
 }
 
@@ -57,9 +57,9 @@ map @classFunctionMap {
   public let @functionSignature mArgumentTypeList
   public let @bool mHasCompilerArgument
   public let @unifiedTypeMapEntry mReturnedType
-  %insertOrReplaceSetter
-  %insertSetter insertKey %errorMessage "the '%K' class function has been already defined"
-  %searchMethod searchKey %errorMessage "the '%K' class function is not declared"
+  #insertOrReplaceSetter
+  #insertSetter insertKey #errorMessage "the '%K' class function has been already defined"
+  #searchMethod searchKey #errorMessage "the '%K' class function is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -68,13 +68,13 @@ map @classFunctionMap {
 
 map @initializerMap { // Key is argument signature
   public let @functionSignature mArgumentTypeList
-  %insertSetter insertKey %errorMessage "the '%K' initializer has been already defined"
-  %searchMethod searchKey %errorMessage "the '%K' initializer is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' initializer has been already defined"
+  #searchMethod searchKey #errorMessage "the '%K' initializer is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
 
-enum @methodQualifier %comparable { // NE PAS CHANGER L'ORDRE
+enum @methodQualifier #comparable { // NE PAS CHANGER L'ORDRE
   case isVirtual
   case isVirtualAbstract
   case isBasic
@@ -86,7 +86,7 @@ enum @methodQualifier %comparable { // NE PAS CHANGER L'ORDRE
 
 //--------------------------------------------------------------------------------------------------
 
-enum @methodKind %equatable {
+enum @methodKind #equatable {
   case definedAsMember
   case definedAsExtension
 }
@@ -119,10 +119,10 @@ map @getterMap {
   public let @methodQualifier mQualifier
   public let @string mGetterNameThatObsoletesInvokationName // If not empty, this func is the one actually called
 
-  %insertSetter insertKey %errorMessage "the '%K' func is already declared"
-  %searchMethod searchKey %errorMessage "the '%K' func is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' func is already declared"
+  #searchMethod searchKey #errorMessage "the '%K' func is not declared"
 
-  %insertOrReplaceSetter
+  #insertOrReplaceSetter
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -146,9 +146,9 @@ map @setterMap {
   public let @bool mHasCompilerArgument
   public let @methodQualifier mQualifier
   public let @string mErrorMessage // If not empty, calling the mutating proc raises an error ith this message
-  %insertOrReplaceSetter
-  %insertSetter insertKey %errorMessage "the '%K' mutating proc is already declared"
-  %searchMethod searchKey %errorMessage "the '%K' mutating proc is not declared"
+  #insertOrReplaceSetter
+  #insertSetter insertKey #errorMessage "the '%K' mutating proc is already declared"
+  #searchMethod searchKey #errorMessage "the '%K' mutating proc is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -164,9 +164,9 @@ map @instanceMethodMap {
   public let @bool mHasCompilerArgument
   public let @methodQualifier mQualifier
   public let @string mErrorMessage // If not empty, calling the proc raises an error with this message
-  %insertSetter insertKey %errorMessage "the '%K' instance proc is already declared"
-  %searchMethod searchKey %errorMessage "the '%K' instance proc is not declared"
-  %searchMethod searchInheritedKey %errorMessage "as the '%K' proc is tagged as 'override', it should be declared in the super class"
+  #insertSetter insertKey #errorMessage "the '%K' instance proc is already declared"
+  #searchMethod searchKey #errorMessage "the '%K' instance proc is not declared"
+  #searchMethod searchInheritedKey #errorMessage "as the '%K' proc is tagged as 'override', it should be declared in the super class"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -178,9 +178,9 @@ map @instanceMethodMap {
 map @classMethodMap {
   public let @formalParameterSignature mParameterList
   public let @bool mHasCompilerArgument
-  %insertOrReplaceSetter
-  %insertSetter insertKey %errorMessage "the '%K' type proc is already declared"
-  %searchMethod searchKey %errorMessage "the '%K' type proc is not declared"
+  #insertOrReplaceSetter
+  #insertSetter insertKey #errorMessage "the '%K' type proc is already declared"
+  #searchMethod searchKey #errorMessage "the '%K' type proc is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -204,8 +204,8 @@ list @typedPropertyList {
   public let @unifiedTypeMapEntry typeEntry
   public let @lstring name
   public let @propertyInCollectionInitializationAST initialization
-  public let @bool hasSetter %initArgLabel
-  public let @bool hasSelector %initArgLabel
+  public let @bool hasSetter #initArgLabel
+  public let @bool hasSelector #initArgLabel
 
   func initializerSignature () -> @string {
     result = "init"
@@ -226,13 +226,13 @@ map @propertyMap {
   public let @AccessControl mAccessControl
   public let @bool mIsConstant
   public let @unifiedTypeMapEntry mPropertyType
-  %insertSetter insertKey %errorMessage "the '%K' property has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' property is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' property has been already declared in %L"
+  #searchMethod searchKey #errorMessage "the '%K' property is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
 
-enum @headerKind %equatable {
+enum @headerKind #equatable {
   case noHeader
   case oneHeader
   case twoHeaders
@@ -240,18 +240,18 @@ enum @headerKind %equatable {
 
 //--------------------------------------------------------------------------------------------------
 
-list @associatedValueDescriptorList %equatable {
+list @associatedValueDescriptorList #equatable {
   private let @unifiedTypeMapEntry type
   private let @string name
 }
 
 //--------------------------------------------------------------------------------------------------
 
-map @constantIndexMap %equatable {
+map @constantIndexMap #equatable {
   public let @uint mIndex
   public let @associatedValueDescriptorList mAssociatedTypeList
-  %insertSetter insertKey %errorMessage "the '%K' constant is already declared"
-  %searchMethod searchKey %errorMessage "the '%K' constant is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' constant is already declared"
+  #searchMethod searchKey #errorMessage "the '%K' constant is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------

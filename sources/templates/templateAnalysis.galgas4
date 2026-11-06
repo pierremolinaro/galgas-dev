@@ -28,8 +28,8 @@
 map @templateVariableMap {
   public let @unifiedTypeMapEntry mType
   public let @string mCppName
-  %searchMethod searchKey %errorMessage "the '%K' variable is not declared"
-  %insertSetter insertKey %errorMessage "the '%K' variable is already declared in %L"
+  #searchMethod searchKey #errorMessage "the '%K' variable is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' variable is already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -109,7 +109,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
         ?let actualGetterNameString
       )
       if actualGetterNameString != "" then
-        error (self.mGetterName : "obsolete func" fixit %replaceBy actualGetterName)
+        error (self.mGetterName : "obsolete func" fixit #replaceBy actualGetterName)
       end
     else
       var @uint matchingReaderCount = 0
@@ -156,7 +156,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
         error (self.mGetterName
         : "the '@"+ receiverTypeName + "' type does not define the '" + self.mGetterName + "' func"
         spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
-        fixit %replaceBy getterMap.keyList)
+        fixit #replaceBy getterMap.keyList)
       end
     end
   //--- Analysis arguments
@@ -169,7 +169,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
       for actual in self.mExpressionList, formal in getterFormalArgumentTypeList do
         if formal.mFormalSelector.string != actual.mActualSelector.string then
           let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
-          error (actual.mActualSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
+          error (actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
         end
         actual.mExpression.templateExpressionAnalysis (
           inUsefulnessCallerEntityName,
@@ -182,7 +182,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
         constructorEffectiveParameterList ++= @(exp)
       end
       if actualGetterName != self.mGetterName.string then
-        error (self.mGetterName : "obsolete func" fixit %replaceBy actualGetterName)
+        error (self.mGetterName : "obsolete func" fixit #replaceBy actualGetterName)
       end
       outExpression = @getterCallExpressionForGeneration (
         returnedType,
@@ -229,7 +229,7 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
       error (self.mClassFunctionName
       : "the '@"+ self.mTypeName + "' type does not define the '" + self.mClassFunctionName + "' constructor"
       spoil classFuncFormalArgumentTypeList, hasCompilerArgument, returnedType
-      fixit %replaceBy classFunctionMap.keyList)
+      fixit #replaceBy classFunctionMap.keyList)
     end
   end
 //--- Analysis arguments
@@ -247,7 +247,7 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
       !?requiredTypes.append (formal.mFormalArgumentType)
       if formal.mFormalSelector.string != actual.mActualSelector.string then
         let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
-        error (actual.mActualSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
+        error (actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
       end
       actual.mExpression.templateExpressionAnalysis
         (inUsefulnessCallerEntityName,
@@ -277,10 +277,10 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateFileWrapperTemplateCallAST.templateExpressionAnalysis
-  (let @lstring unused inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  let @templateAnalysisContext unused inAnalysisContext,
-  ?!@unifiedTypeMap unused ioTypeMap,
+  (let @lstring _inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+  let @templateAnalysisContext _inAnalysisContext,
+  ?!@unifiedTypeMap _ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
   error (self.mFileWrapperName:"unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis" spoil outExpression)
@@ -420,10 +420,10 @@ override proc @templateXorOperationAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateTrueBoolAST.templateExpressionAnalysis
-  (let @lstring unused inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+  (let @lstring _inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,
-  ?!@unifiedTypeMap unused ioTypeMap,
+  ?!@unifiedTypeMap _ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
   outExpression = @trueExpressionForGeneration (inAnalysisContext.mPredefinedTypes.mBoolType, self.mLocation)
@@ -432,10 +432,10 @@ override proc @templateTrueBoolAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateFalseBoolAST.templateExpressionAnalysis
-  (let @lstring unused inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+  (let @lstring _inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,
-  ?!@unifiedTypeMap unused ioTypeMap,
+  ?!@unifiedTypeMap _ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
   outExpression = @falseExpressionForGeneration (inAnalysisContext.mPredefinedTypes.mBoolType, self.mLocation)
@@ -444,10 +444,10 @@ override proc @templateFalseBoolAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLiteralStringExpressionAST.templateExpressionAnalysis
-  (let @lstring unused inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+  (let @lstring _inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,
-  ?!@unifiedTypeMap unused ioTypeMap,
+  ?!@unifiedTypeMap _ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
   var @string s = ""
@@ -460,10 +460,10 @@ override proc @templateLiteralStringExpressionAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLiteralUIntExpressionAST.templateExpressionAnalysis
-  (let @lstring unused inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+  (let @lstring _inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,
-  ?!@unifiedTypeMap unused ioTypeMap,
+  ?!@unifiedTypeMap _ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
   outExpression = @literalBigIntExpressionForGeneration (
@@ -476,10 +476,10 @@ override proc @templateLiteralUIntExpressionAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLiteralCharExpressionAST.templateExpressionAnalysis
-  (let @lstring unused inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+  (let @lstring _inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,
-  ?!@unifiedTypeMap unused ioTypeMap,
+  ?!@unifiedTypeMap _ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
   outExpression = @literalCharExpressionForGeneration (
@@ -491,10 +491,10 @@ override proc @templateLiteralCharExpressionAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateLiteralDoubleExpressionAST.templateExpressionAnalysis
-  (let @lstring unused inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+  (let @lstring _inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,
-  ?!@unifiedTypeMap unused ioTypeMap,
+  ?!@unifiedTypeMap _ioTypeMap,
   !@semanticExpressionForGeneration outExpression ) {
   outExpression = @literalDoubleExpressionForGeneration (
     inAnalysisContext.mPredefinedTypes.mDoubleType,
@@ -620,7 +620,7 @@ override proc @templateOptionAccessAST.templateExpressionAnalysis
   (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,
-  ?!@unifiedTypeMap unused ioTypeMap,
+  ?!@unifiedTypeMap _ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
   let usefulnessName = optionNameForUsefulEntitiesGraph (self.mOptionComponentName)
@@ -692,7 +692,7 @@ override proc @templateOptionAccessAST.templateExpressionAnalysis
     error (self.mOptionName
     : "the '" + self.mOptionComponentName + "' option component does not define the '" + self.mOptionName + "' option"
     spoil outExpression
-    fixit %replaceBy s)
+    fixit #replaceBy s)
   end
 }
 
@@ -744,7 +744,7 @@ override proc @templateFunctionCallAST.templateExpressionAnalysis
       semanticExpressionListForGeneration ++= @(expression)
       if formal.mFormalSelector.string != actual.mActualSelector.string then
         let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
-        error (actual.mActualSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
+        error (actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
       end
     end
     outExpression = @functionCallExpressionForGeneration (
@@ -760,10 +760,10 @@ override proc @templateFunctionCallAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateExtensionTemplateCallAST.templateExpressionAnalysis
-  (let @lstring unused inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  let @templateAnalysisContext unused inAnalysisContext,
-  ?!@unifiedTypeMap unused ioTypeMap,
+  (let @lstring _inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+  let @templateAnalysisContext _inAnalysisContext,
+  ?!@unifiedTypeMap _ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
   error (self.mTemplateName
@@ -776,10 +776,10 @@ override proc @templateExtensionTemplateCallAST.templateExpressionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateVarInExpressionAST.templateExpressionAnalysis
-  (let @lstring unused inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+  (let @lstring _inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,
-  ?!@unifiedTypeMap unused ioTypeMap,
+  ?!@unifiedTypeMap _ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
   inAnalysisContext.mTemplateVariableMap.searchKey (self.mVarName, ?let type, ?let sourceVariableCppName)
@@ -1478,10 +1478,10 @@ proc templateInstructionListAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionStringAST.templateInstructionAnalysis
-  (let @lstring unused inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  let @templateAnalysisContext unused inAnalysisContext,
-  ?!@unifiedTypeMap unused ioTypeMap,
+  (let @lstring _inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+  let @templateAnalysisContext _inAnalysisContext,
+  ?!@unifiedTypeMap _ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
   ioInstructionList ++= @(@templateInstructionStringForGeneration (self.mTemplateString))
@@ -1555,10 +1555,10 @@ override proc @templateBlockInstructionAST.templateInstructionAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionGetColumnLocationAST.templateInstructionAnalysis
-  (let @lstring unused inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  let @templateAnalysisContext unused inAnalysisContext,
-  ?!@unifiedTypeMap unused ioTypeMap,
+  (let @lstring _inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+  let @templateAnalysisContext _inAnalysisContext,
+  ?!@unifiedTypeMap _ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
   ioInstructionList ++= @(@templateInstructionGetColumnLocationForGeneration ())
@@ -1567,10 +1567,10 @@ override proc @templateInstructionGetColumnLocationAST.templateInstructionAnalys
 //--------------------------------------------------------------------------------------------------
 
 override proc @templateInstructionGotoColumnLocationAST.templateInstructionAnalysis
-  (let @lstring unused inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  let @templateAnalysisContext unused inAnalysisContext,
-  ?!@unifiedTypeMap unused ioTypeMap,
+  (let @lstring _inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+  let @templateAnalysisContext _inAnalysisContext,
+  ?!@unifiedTypeMap _ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
   ioInstructionList ++= @(@templateInstructionGotoColumnLocationForGeneration ())

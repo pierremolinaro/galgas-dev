@@ -78,7 +78,7 @@ override proc @lexicalRewindInstructionAST.checkLexicalInstruction (
 
 override func @lexicalRewindInstructionAST.generateSwiftCocoaInstructionCode (
   ?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
+  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
   outGeneratedCode = "self.restoreScanningPoint (locationForTag_" + self.mLexicalTagName + ")\n"
   outGeneratedCode += "tokenCode = " + inScannerClassName + "_1_" + self.mTerminalName.string.identifierRepresentation + "\n"
@@ -94,8 +94,8 @@ override func @lexicalRewindInstructionAST.lexicalInstructionUsesLoopLocalVariab
 
 //·································································································
 
-override func @lexicalRewindInstructionAST.generateLexicalInstructionCode (?let @string unused inScannerClassName,
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
+override func @lexicalRewindInstructionAST.generateLexicalInstructionCode (?let @string _inScannerClassName,
+  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
   -> @string {
   result  = "mCurrentLocation = currentLocationForTag_" + self.mLexicalTagName + " ;\n"
   result += "mTokenEndLocation = endLocationForTag_" + self.mLexicalTagName + " ;\n"

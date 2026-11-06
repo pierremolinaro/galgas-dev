@@ -136,7 +136,7 @@ final class @superInitInstructionAST : @semanticInstructionAST {
               else ""
             end
             error (actualArg.mActualSelector : "the selector should be '" + s + "'"
-            fixit %replaceBy s
+            fixit #replaceBy s
             )
           end
           actualParameterListForGeneration ++= @(expression)
@@ -175,7 +175,7 @@ final class @superInitInstructionForGeneration : @semanticInstructionForGenerati
   override proc generateInstruction (?!@stringset ioInclusionSet,
                                        ?!@uint ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
-                                       let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                       let @bool _inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
     var @stringlist getterArgumentCppNameList = @()
     for entry in self.mActualParameterList do

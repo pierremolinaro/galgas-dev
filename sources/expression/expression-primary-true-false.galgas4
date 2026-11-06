@@ -61,7 +61,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
+  rule <primary> (?!@galgasDeclarationAST _ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $true$
     outExpression = @trueExpressionAST (.here)
@@ -69,7 +69,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
+  rule <primary> (?!@galgasDeclarationAST _ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $false$
     outExpression = @falseExpressionAST (.here)
@@ -84,19 +84,19 @@ syntax extension galgas4ExpressionSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @trueExpressionAST.enterExpressionInSemanticContext
-  (?!@unifiedTypeMap unused ioTypeMap
+  (?!@unifiedTypeMap _ioTypeMap
 ) {
 }
 
 //································································································
 
 override proc @trueExpressionAST.analyzeSemanticExpression
-  (?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  ?inferenceType: let @unifiedTypeMapEntry unused inType,
+  (?usefulnessCallerEntityName: let @lstring _inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+  ?inferenceType: let @unifiedTypeMapEntry _inType,
   let @analysisContext inAnalysisContext,
-                                ?!@unifiedTypeMap unused ioTypeMap,
-  ?!@localVarManager unused ioVariableMap,
+                                ?!@unifiedTypeMap _ioTypeMap,
+  ?!@localVarManager _ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
   outExpression = @trueExpressionForGeneration (inAnalysisContext.predefinedTypes.mBoolType, self.mLocation)
@@ -105,19 +105,19 @@ override proc @trueExpressionAST.analyzeSemanticExpression
 //--------------------------------------------------------------------------------------------------
 
 override proc @falseExpressionAST.enterExpressionInSemanticContext
-  (?!@unifiedTypeMap unused ioTypeMap
+  (?!@unifiedTypeMap _ioTypeMap
 ) {
 }
 
 //································································································
 
 override proc @falseExpressionAST.analyzeSemanticExpression
-  (?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-  ?inferenceType: let @unifiedTypeMapEntry unused inType,
+  (?usefulnessCallerEntityName: let @lstring _inUsefulnessCallerEntityName,
+  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+  ?inferenceType: let @unifiedTypeMapEntry _inType,
   let @analysisContext inAnalysisContext,
-                                ?!@unifiedTypeMap unused ioTypeMap,
-  ?!@localVarManager unused ioVariableMap,
+                                ?!@unifiedTypeMap _ioTypeMap,
+  ?!@localVarManager _ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
   outExpression = @falseExpressionForGeneration (inAnalysisContext.predefinedTypes.mBoolType, self.mLocation)
@@ -133,10 +133,10 @@ final class @trueExpressionForGeneration : @semanticExpressionForGeneration {
 //································································································
 
 override proc @trueExpressionForGeneration.generateExpression
-  (?!@string unused ioGeneratedCode,
-  ?!@stringset unused ioInclusionSet,
-  ?!@uint unused ioTemporaryVariableIndex,
-  ?!@stringset unused ioUnusedVariableCppNameSet,
+  (?!@string _ioGeneratedCode,
+  ?!@stringset _ioInclusionSet,
+  ?!@uint _ioTemporaryVariableIndex,
+  ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   outCppExpression = "GGS_bool (true)"
 }
@@ -149,10 +149,10 @@ final class @falseExpressionForGeneration : @semanticExpressionForGeneration {
 //································································································
 
 override proc @falseExpressionForGeneration.generateExpression
-  (?!@string unused ioGeneratedCode,
-  ?!@stringset unused ioInclusionSet,
-  ?!@uint unused ioTemporaryVariableIndex,
-  ?!@stringset unused ioUnusedVariableCppNameSet,
+  (?!@string _ioGeneratedCode,
+  ?!@stringset _ioInclusionSet,
+  ?!@uint _ioTemporaryVariableIndex,
+  ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
   outCppExpression = "GGS_bool (false)"
 }

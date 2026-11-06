@@ -59,8 +59,8 @@ syntax extension galgas4DeclarationsSyntax {
 final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   private let @lstring arrayTypeName
   private let @lstring elementTypeName
-  private let @bool isUsefull %initArgLabel
-  private let @bool equatable %initArgLabel
+  private let @bool isUsefull #initArgLabel
+  private let @bool equatable #initArgLabel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -72,12 +72,12 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInGraph
     (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+    ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
     let key = @lstring ("@" + self.arrayTypeName, self.arrayTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     !?ioSemanticTypePrecedenceGraph.noteNode (@lstring ("@" + self.elementTypeName, self.elementTypeName))
@@ -287,7 +287,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc addAssociatedElement (?!@galgasDeclarationAST unused ioDeclarations ) {
+  override proc addAssociatedElement (?!@galgasDeclarationAST _ioDeclarations ) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -295,10 +295,10 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   override proc semanticAnalysis
     (?!@lstringlist ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-    let @string unused inProductDirectory,
-    let @semanticContext unused inSemanticContext,
+    let @string _inProductDirectory,
+    let @semanticContext _inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-    let @predefinedTypes unused inPredefinedTypes,
+    let @predefinedTypes _inPredefinedTypes,
     ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
   ) {
   //--- Useful entities graph
@@ -343,7 +343,7 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
+  override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                      !@string outHeader ) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = filewrapper [arrayTypeGenerationTemplate.arrayTypeHeader1 :
@@ -372,7 +372,7 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation  (let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation  (let @unifiedTypeMap _inTypeMap,
                                           ?!@stringset ioInclusionSet,
                                           !@string outImplementation ) {
     self.elementType.addHeaderFileName (!?ioInclusionSet)

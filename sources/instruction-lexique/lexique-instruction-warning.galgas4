@@ -64,7 +64,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
 override proc @lexicalWarningInstructionAST.checkLexicalInstruction (
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-  ?!@lexicalTagMap unused ioTagMap) {
+  ?!@lexicalTagMap _ioTagMap) {
   !?ioLexiqueAnalysisContext.mLexicalMessageMap.setMMessageIsUsedForKey (true, self.mWarningMessageName.string)
 }
 
@@ -73,8 +73,8 @@ override proc @lexicalWarningInstructionAST.checkLexicalInstruction (
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalWarningInstructionAST.generateSwiftCocoaInstructionCode (
-  ?let @string unused inScannerClassName,
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
+  ?let @string _inScannerClassName,
+  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
   outGeneratedCode = "" // No generated code
 }
@@ -91,7 +91,7 @@ override func @lexicalWarningInstructionAST.lexicalInstructionUsesLoopLocalVaria
 
 override func @lexicalWarningInstructionAST.generateLexicalInstructionCode (
   ?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
+  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
   -> @string {
   result = "lexicalWarning (gLexicalMessage_" + inScannerClassName + "_" + self.mWarningMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }

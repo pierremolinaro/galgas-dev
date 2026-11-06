@@ -27,7 +27,7 @@
 
 map @unifiedTypeMap {
   private var @unifiedTypeMapElementClass mElement
-  %insertSetter internalInsertKey %errorMessage "the '%K' key is already declared in %L"
+  #insertSetter internalInsertKey #errorMessage "the '%K' key is already declared in %L"
 
   //----------------------------------------------------------------------------------------------
 
@@ -169,7 +169,7 @@ final class @unifiedTypeMapElementClass {
 
 //--------------------------------------------------------------------------------------------------
 
-enum @unifiedTypeMapEntry %equatable {
+enum @unifiedTypeMapEntry #equatable {
   case null
 //  case element (@weakEntry weakElement)
   case element (@unifiedTypeMapElementClass.@weak weakElement)

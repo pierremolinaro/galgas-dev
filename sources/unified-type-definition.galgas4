@@ -23,37 +23,37 @@
 //--------------------------------------------------------------------------------------------------
 
 struct @unifiedTypeDefinition {
-  public let @lstring typeName %initArgLabel
-  public let @bool isPredefined %initArgLabel
-  public let @bool isConcrete %initArgLabel // false if abstract class
-  public let @bool isFinal %initArgLabel // true if not class
-  public let @unifiedTypeMapEntry superType %initArgLabel
-  public let @typeKindEnum typeKind %initArgLabel
-  public let @bool supportCollectionValue %initArgLabel
-  public let @typedPropertyList allTypedPropertyList %initArgLabel
-  public let @propertyMap propertyMap %initArgLabel // struct, class
-  public let @typedPropertyList currentTypedPropertyList %initArgLabel
-  public let @initializerMap initializerMap %initArgLabel
-  public let @classFunctionMap classFunctionMap %initArgLabel
-  public let @getterMap getterMap %initArgLabel
-  public let @setterMap setterMap %initArgLabel
-  public let @instanceMethodMap instanceMethodMap %initArgLabel
-  public let @classMethodMap classMethodMap %initArgLabel
-  public let @unifiedTypeMapEntry unwrappedType %initArgLabel // null if not optional
-  public let @subscriptMap readSubscriptMap %initArgLabel // Read access
-  public let @enumerationDescriptorList enumerationDescriptorList %initArgLabel // Empty List if cannot be enumerated
-  public let @typeFeatures features %initArgLabel
+  public let @lstring typeName #initArgLabel
+  public let @bool isPredefined #initArgLabel
+  public let @bool isConcrete #initArgLabel // false if abstract class
+  public let @bool isFinal #initArgLabel // true if not class
+  public let @unifiedTypeMapEntry superType #initArgLabel
+  public let @typeKindEnum typeKind #initArgLabel
+  public let @bool supportCollectionValue #initArgLabel
+  public let @typedPropertyList allTypedPropertyList #initArgLabel
+  public let @propertyMap propertyMap #initArgLabel // struct, class
+  public let @typedPropertyList currentTypedPropertyList #initArgLabel
+  public let @initializerMap initializerMap #initArgLabel
+  public let @classFunctionMap classFunctionMap #initArgLabel
+  public let @getterMap getterMap #initArgLabel
+  public let @setterMap setterMap #initArgLabel
+  public let @instanceMethodMap instanceMethodMap #initArgLabel
+  public let @classMethodMap classMethodMap #initArgLabel
+  public let @unifiedTypeMapEntry unwrappedType #initArgLabel // null if not optional
+  public let @subscriptMap readSubscriptMap #initArgLabel // Read access
+  public let @enumerationDescriptorList enumerationDescriptorList #initArgLabel // Empty List if cannot be enumerated
+  public let @typeFeatures features #initArgLabel
 // addAssignOperatorArguments is empty list if += operator is not supported
-  public let @functionSignature addAssignOperatorArguments %initArgLabel
-  public let @bool generateHeaderInSeparateFile %initArgLabel // Significant only for classes
-  public let @unifiedTypeMapEntry typeForEnumeratedElement %initArgLabel
-  public let @string headerFileName %initArgLabel // Name of C++ header file that contains type declaration
-  public let @headerKind headerKind %initArgLabel
+  public let @functionSignature addAssignOperatorArguments #initArgLabel
+  public let @bool generateHeaderInSeparateFile #initArgLabel // Significant only for classes
+  public let @unifiedTypeMapEntry typeForEnumeratedElement #initArgLabel
+  public let @string headerFileName #initArgLabel // Name of C++ header file that contains type declaration
+  public let @headerKind headerKind #initArgLabel
 }
 
 //--------------------------------------------------------------------------------------------------
 
-enum @typeKindEnum %equatable {
+enum @typeKindEnum #equatable {
   case classType
   case weakReferenceType (@unifiedTypeMapEntry referenceType)
   case enumType (@constantIndexMap constantMap)
@@ -158,8 +158,8 @@ boolset @typeFeatures {
 map @subscriptMap {
   public let @functionSignature argumentTypeList
   public let @unifiedTypeMapEntry valueType
-  %insertSetter insertKey %errorMessage "the '%K' subscript has been already defined"
-  %searchMethod searchKey %errorMessage "the '%K' subscript is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' subscript has been already defined"
+  #searchMethod searchKey #errorMessage "the '%K' subscript is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------

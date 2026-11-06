@@ -135,25 +135,25 @@ syntax extension galgas4InstructionsSyntax {
       var hasFixItRemove = false
       repeat
         select
-          $%remove$
+          $#remove$
           if hasFixItRemove then
-            warning .here : "duplicated action" fixit %remove
+            warning .here : "duplicated action" fixit #remove
           else
             outFixitListAST ++= @(.fixItRemove)
             hasFixItRemove = true
           end
         or
-          $%replaceBy$
+          $#replaceBy$
           let errorLocation = @location.here
           <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
           outFixitListAST ++= @(.fixItReplace (!exp:expression, !errorLocation:errorLocation))
         or
-          $%insertAfter$
+          $#insertAfter$
           let errorLocation = @location.here
           <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
           outFixitListAST ++= @(.fixItInsertAfter (!exp:expression, !errorLocation:errorLocation))
         or
-          $%insertBefore$
+          $#insertBefore$
           let errorLocation = @location.here
           <expression> (!?ioDeclarations, ?let @semanticExpressionAST expression)
           outFixitListAST ++= @(.fixItInsertBefore (!exp:expression, !errorLocation:errorLocation))
@@ -407,7 +407,7 @@ override proc @errorInstructionAST.analyzeSemanticInstruction (
 proc @fixitListForGeneration.generateFixIt (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
-  let @bool unused inGenerateSyntaxDirectedTranslationString,
+  let @bool _inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode,
   !@string outFixItArrayCppName) {
   outFixItArrayCppName = "fixItArray" + ioTemporaryVariableIndex

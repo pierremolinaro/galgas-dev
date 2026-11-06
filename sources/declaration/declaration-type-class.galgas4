@@ -124,7 +124,7 @@ syntax extension galgas4DeclarationsSyntax {
       clonable = false
       finalClass = true
     or
-      $%clonable$
+      $#clonable$
       isAbstract = false
       clonable = true
       finalClass = false
@@ -142,7 +142,7 @@ syntax extension galgas4DeclarationsSyntax {
     select
       generateInSeparateFile = false
     or
-      $%generatedInSeparateFile$
+      $#generatedInSeparateFile$
       generateInSeparateFile = true
     end
     ${$
@@ -205,12 +205,12 @@ final class @classDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInGraph
             (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-            ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-            ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-            ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-            ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-            ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-            ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
+            ?!@equatableExtensionMap _ioEquatableExtensionMap,
+            ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+            ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+            ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+            ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+            ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
     let key = @lstring ("@" + self.mClassTypeName, self.mClassTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   //--- Add edge from super class
@@ -444,7 +444,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
 
   override proc semanticAnalysis (?!@lstringlist ioUsefulnessRootEntities,
                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                let @string unused inProductDirectory,
+                let @string _inProductDirectory,
                 let @semanticContext inSemanticContext,
                 ?!@unifiedTypeMap ioTypeMap,
                 let @predefinedTypes inPredefinedTypes,
@@ -695,7 +695,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
                                                ?!@stringset ioInclusionSet,
                                                !@string outImplementation ) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)

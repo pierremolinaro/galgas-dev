@@ -27,11 +27,11 @@ template lexique galgasTemplateScanner : galgasScanner4 {
 
   template "%" ... "%"
 
-  %templateReplacement "\\%" -> "%"
+  #templateReplacement "\\%" -> "%"
 
-  %templateReplacement "\\n" -> "\n"
+  #templateReplacement "\\n" -> "\n"
 
-  %templateReplacement "\\\\" -> "\\"
+  #templateReplacement "\\\\" -> "\\"
 }
 
 //--------------------------------------------------------------------------------------------------

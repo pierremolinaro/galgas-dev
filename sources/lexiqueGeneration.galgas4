@@ -26,7 +26,7 @@
 //--------------------------------------------------------------------------------------------------
 
 abstract func @lexicalExpressionAST.generateConditionCode
-  (?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?context:let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string
 
 //--------------------------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ override func @lexicalOrExpressionAST.generateConditionCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalCharacterIntervalMatchAST.generateConditionCode
-  (?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?context:let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string {
   result = ""
   result = "testForInputUTF32CharRange ("
@@ -77,7 +77,7 @@ override func @lexicalStringNotMatchAST.generateConditionCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalCharacterMatchAST.generateConditionCode
-  (?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?context:let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string {
   result = "testForInputUTF32Char ("
   result += self.mCharacter.char.utf32CharConstantRepresentation
@@ -87,7 +87,7 @@ override func @lexicalCharacterMatchAST.generateConditionCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalCharacterSetMatchAST.generateConditionCode
-  (?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?context:let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string {
   result = "testForChar_" + self.mCharacterSetName.string + " ()"
 }
@@ -148,7 +148,7 @@ abstract func @lexicalSendDefaultActionAST.generateDefaultSendCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalSendTerminalByDefaultAST.generateDefaultSendCode
-  (?let @string unused inScannerClassName
+  (?let @string _inScannerClassName
   ) -> @string
 {
   result = "token.mTokenCode = kToken_" + self.mDefaultSentTerminal.string.identifierRepresentation + " ;\n"
@@ -181,7 +181,7 @@ abstract func @lexicalInstructionAST.lexicalInstructionUsesLoopLocalVariable () 
 
 abstract func @abstractLexicalRuleAST.generateLexicalRuleCode
   (?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string
 
 //--------------------------------------------------------------------------------------------------

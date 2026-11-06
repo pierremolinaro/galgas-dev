@@ -28,10 +28,10 @@ syntax extension galgas4DeclarationsSyntax {
     select
       comparison = .none
     or
-      $%comparable$
+      $#comparable$
       comparison = .comparable
     or
-      $%equatable$
+      $#equatable$
       comparison = .equatable
     end
     ${$
@@ -59,7 +59,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 //--------------------------------------------------------------------------------------------------
 
-private func %once forbiddenKeysForStruct () -> @stringset {
+private func #once forbiddenKeysForStruct () -> @stringset {
   result = ["description", "object", "dynamicType"]
 }
 
@@ -76,20 +76,20 @@ enum @structComparison {
 final class @structDeclarationAST : @semanticDeclarationAST {
   public let @lstring structTypeName
   private let @propertyInCollectionListAST mStructurePropertyListAST
-  private let @string enumeratedElementTypeName %initArgLabel // Empty string if not enumerable
-  private let @structComparison comparison %initArgLabel
-  private let @bool isUsefullStruct %initArgLabel
+  private let @string enumeratedElementTypeName #initArgLabel // Empty string if not enumerable
+  private let @structComparison comparison #initArgLabel
+  private let @bool isUsefullStruct #initArgLabel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph (
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+    ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList
   ) {
     let key = @lstring ("@" + self.structTypeName, self.structTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
@@ -231,7 +231,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
   override proc semanticAnalysis
               (?!@lstringlist ioUsefulnessRootEntities,
               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-              let @string unused inProductDirectory,
+              let @string _inProductDirectory,
               let @semanticContext inSemanticContext,
               ?!@unifiedTypeMap ioTypeMap,
               let @predefinedTypes inPredefinedTypes,
@@ -393,7 +393,7 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificImplementation
-    (let @unifiedTypeMap unused inTypeMap,
+    (let @unifiedTypeMap _inTypeMap,
     ?!@stringset ioInclusionSet,
     !@string outImplementation
   ) {

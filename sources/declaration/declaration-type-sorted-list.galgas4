@@ -89,7 +89,7 @@ syntax extension galgas4DeclarationsSyntax {
     select
       isEquatable = false
     or
-      $%equatable$
+      $#equatable$
       isEquatable = true
     end
     ${$
@@ -149,18 +149,18 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   private let @lstring mSortedListTypeName
   private let @propertyInCollectionListAST mPropertyList
   private let @sortedListSortDescriptorListAST mSortDescriptorList
-  private let @bool equatable %initArgLabel
+  private let @bool equatable #initArgLabel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph
     (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+    ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
     let key = @lstring ("@" + self.mSortedListTypeName, self.mSortedListTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     for property in self.mPropertyList do
@@ -361,10 +361,10 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   override proc semanticAnalysis
     (?!@lstringlist ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-    let @string unused inProductDirectory,
-    let @semanticContext unused inSemanticContext,
+    let @string _inProductDirectory,
+    let @semanticContext _inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-    let @predefinedTypes unused inPredefinedTypes,
+    let @predefinedTypes _inPredefinedTypes,
     ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
   ) {
   //--- Useful entities graph
@@ -453,7 +453,7 @@ final class @sortedListTypeForGeneration : @semanticTypeForGeneration {
 //································································································
 
 override proc @sortedListTypeForGeneration.appendDeclaration1
-  (?!@stringset unused ioInclusionSet,
+  (?!@stringset _ioInclusionSet,
   !@string outHeader ) {
   let selfTypeDefinition = self.mSelfTypeEntry.definition
   let elementTypeDefinition = self.mListElementTypeIndex.definition
@@ -487,7 +487,7 @@ override proc @sortedListTypeForGeneration.appendDeclaration1
 //································································································
 
 override proc @sortedListTypeForGeneration.appendSpecificImplementation
-  (let @unifiedTypeMap unused inTypeMap,
+  (let @unifiedTypeMap _inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation ) {
   for property in self.mTypedAttributeList do

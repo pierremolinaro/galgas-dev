@@ -62,7 +62,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
 override proc @lexicalSimpleSendInstructionAST.checkLexicalInstruction (
                          ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-                         ?!@lexicalTagMap unused ioTagMap)  {
+                         ?!@lexicalTagMap _ioTagMap)  {
   ioLexiqueAnalysisContext.mTerminalMap.searchKey (self.mSentTerminal, ?*)
 }
 
@@ -70,7 +70,7 @@ override proc @lexicalSimpleSendInstructionAST.checkLexicalInstruction (
 
 override func @lexicalSimpleSendInstructionAST.generateSwiftCocoaInstructionCode
   (?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
   outGeneratedCode = "tokenCode = " + inScannerClassName + "_1_" + self.mSentTerminal.string.identifierRepresentation + "\n"
 }
@@ -86,8 +86,8 @@ override func @lexicalSimpleSendInstructionAST.lexicalInstructionUsesLoopLocalVa
 //·································································································
 
 override func @lexicalSimpleSendInstructionAST.generateLexicalInstructionCode
-  (?let @string unused inScannerClassName,
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?let @string _inScannerClassName,
+  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string
 {
   result  = "token.mTokenCode = kToken_" + self.mSentTerminal.string.identifierRepresentation + " ;\n"

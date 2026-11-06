@@ -72,7 +72,7 @@ syntax extension galgas4DeclarationsSyntax {
     select
       isEquatable = false
     or
-      $%equatable$
+      $#equatable$
       isEquatable = true
     end
     ${$
@@ -108,7 +108,7 @@ syntax extension galgas4DeclarationsSyntax {
 final class @boolsetDeclarationAST : @semanticDeclarationAST {
   private let @lstring mBoolsetTypeName
   private let @lstringlist mFlagList
-  private let @bool isEquatable %initArgLabel
+  private let @bool isEquatable #initArgLabel
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -117,12 +117,12 @@ final class @boolsetDeclarationAST : @semanticDeclarationAST {
 
 override proc @boolsetDeclarationAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+  ?!@equatableExtensionMap _ioEquatableExtensionMap,
+  ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+  ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+  ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+  ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+  ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList
 ) {
   let key = @lstring ("@" + self.mBoolsetTypeName, self.mBoolsetTypeName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)
@@ -259,10 +259,10 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
 override proc @boolsetDeclarationAST.semanticAnalysis
   (?!@lstringlist ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @string unused inProductDirectory,
-  let @semanticContext unused inSemanticContext,
+  let @string _inProductDirectory,
+  let @semanticContext _inSemanticContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  let @predefinedTypes unused inPredefinedTypes,
+  let @predefinedTypes _inPredefinedTypes,
   ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
 ) {
 //--- Check flags count
@@ -326,7 +326,7 @@ filewrapper structGenerationTemplate in "../+generation-templates/type_generatio
 //································································································
 
 override proc @boolsetTypeForGeneration.appendDeclaration1
-  (?!@stringset unused ioInclusionSet,
+  (?!@stringset _ioInclusionSet,
   !@string outHeader
 ) {
   let selfTypeDefinition = self.mSelfTypeEntry.definition
@@ -357,7 +357,7 @@ override proc @boolsetTypeForGeneration.appendDeclaration1
 //································································································
 
 override proc @boolsetTypeForGeneration.appendSpecificImplementation (
-  let @unifiedTypeMap unused inTypeMap,
+  let @unifiedTypeMap _inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation
 ) {

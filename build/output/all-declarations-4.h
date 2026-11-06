@@ -1846,8 +1846,8 @@ void callExtensionMethod_enterParameterInSemanticContext (class cPtr_actualParam
 //--------------------------------------------------------------------------------------------------
 
 class GGS_bool callExtensionGetter_isCompatibleWith (const class cPtr_actualParameterAST * inObject,
-                                                     const class GGS_formalArgumentPassingModeAST constin_inFormalPassingMode,
-                                                     const class GGS_string constin_inSelector,
+                                                     const class GGS_formalArgumentPassingModeAST constin__5F_inFormalPassingMode,
+                                                     const class GGS_string constin__5F_inSelector,
                                                      class Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
@@ -2016,8 +2016,8 @@ class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
 
 
 //--- Extension func isCompatibleWith
-  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GGS_string inSelector,
+  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST _inFormalPassingMode,
+           const class GGS_string _inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension proc checkAgainstFormalArgument
@@ -2225,8 +2225,8 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
 
 
 //--- Extension func isCompatibleWith
-  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GGS_string inSelector,
+  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST _inFormalPassingMode,
+           const class GGS_string _inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension proc checkAgainstFormalArgument
@@ -2430,8 +2430,8 @@ class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
 
 
 //--- Extension func isCompatibleWith
-  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GGS_string inSelector,
+  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST _inFormalPassingMode,
+           const class GGS_string _inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension proc checkAgainstFormalArgument
@@ -2629,8 +2629,8 @@ class cPtr_outputInputSelfParameterAST : public cPtr_actualParameterAST {
 
 
 //--- Extension func isCompatibleWith
-  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GGS_string inSelector,
+  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST _inFormalPassingMode,
+           const class GGS_string _inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension proc checkAgainstFormalArgument
@@ -2834,8 +2834,8 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
 
 
 //--- Extension func isCompatibleWith
-  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GGS_string inSelector,
+  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST _inFormalPassingMode,
+           const class GGS_string _inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension proc checkAgainstFormalArgument
@@ -3043,8 +3043,8 @@ class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST 
 
 
 //--- Extension func isCompatibleWith
-  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GGS_string inSelector,
+  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST _inFormalPassingMode,
+           const class GGS_string _inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension proc checkAgainstFormalArgument
@@ -3252,8 +3252,8 @@ class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
 
 
 //--- Extension func isCompatibleWith
-  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GGS_string inSelector,
+  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST _inFormalPassingMode,
+           const class GGS_string _inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension proc checkAgainstFormalArgument
@@ -3465,8 +3465,8 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
 
 
 //--- Extension func isCompatibleWith
-  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GGS_string inSelector,
+  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST _inFormalPassingMode,
+           const class GGS_string _inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension proc checkAgainstFormalArgument
@@ -3684,8 +3684,8 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
 
 
 //--- Extension func isCompatibleWith
-  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GGS_string inSelector,
+  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST _inFormalPassingMode,
+           const class GGS_string _inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension proc checkAgainstFormalArgument
@@ -3893,8 +3893,8 @@ class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
 
 
 //--- Extension func isCompatibleWith
-  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GGS_string inSelector,
+  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST _inFormalPassingMode,
+           const class GGS_string _inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension proc checkAgainstFormalArgument
@@ -4096,8 +4096,8 @@ class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
 
 
 //--- Extension func isCompatibleWith
-  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GGS_string inSelector,
+  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST _inFormalPassingMode,
+           const class GGS_string _inSelector,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension proc checkAgainstFormalArgument
@@ -9109,12 +9109,12 @@ class cPtr_nonterminalInstructionForGeneration : public cPtr_syntaxInstructionFo
 
 
 //--- Extension func compareInstructionSyntaxSignature
-  public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration inTestedInstruction,
+  public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration _inTestedInstruction,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension proc appendSyntaxSignature
-  public: virtual void method_appendSyntaxSignature (const class GGS_string arg_inPosfix,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+  public: virtual void method_appendSyntaxSignature (const class GGS_string arg__inPosfix,
+           class GGS_semanticInstructionListForGeneration & arg__ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc generateInstruction
@@ -10391,12 +10391,12 @@ class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstruction
 
 
 //--- Extension func compareInstructionSyntaxSignature
-  public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration inTestedInstruction,
+  public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration _inTestedInstruction,
            Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension proc appendSyntaxSignature
-  public: virtual void method_appendSyntaxSignature (const class GGS_string arg_inPosfix,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+  public: virtual void method_appendSyntaxSignature (const class GGS_string arg__inPosfix,
+           class GGS_semanticInstructionListForGeneration & arg__ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc generateInstruction

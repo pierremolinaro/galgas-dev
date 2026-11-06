@@ -26,7 +26,7 @@
 //--------------------------------------------------------------------------------------------------
 
 abstract func @lexicalExpressionAST.generateSwiftCocoaConditionCode
-  (?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string
 
 //--------------------------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ override func @lexicalOrExpressionAST.generateSwiftCocoaConditionCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalCharacterIntervalMatchAST.generateSwiftCocoaConditionCode
-  (?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
   outGeneratedCode = ""
   outGeneratedCode = "self.testForInputFromChar ("
@@ -55,7 +55,7 @@ override func @lexicalCharacterIntervalMatchAST.generateSwiftCocoaConditionCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalStringMatchAST.generateSwiftCocoaConditionCode
-  (?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
   outGeneratedCode = "self.testForInputString (" + self.mString.string.utf8Representation
   outGeneratedCode += ", advance: true)"
@@ -64,7 +64,7 @@ override func @lexicalStringMatchAST.generateSwiftCocoaConditionCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalStringNotMatchAST.generateSwiftCocoaConditionCode
-  (?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
   outGeneratedCode = "self.notTestForInputString ("
   outGeneratedCode += self.mString.string.utf8RepresentationEscapingQuestionMark
@@ -74,7 +74,7 @@ override func @lexicalStringNotMatchAST.generateSwiftCocoaConditionCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalCharacterMatchAST.generateSwiftCocoaConditionCode
-  (?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
   outGeneratedCode = "self.testForInputChar ("
   outGeneratedCode += self.mCharacter.char.uint.string
@@ -84,7 +84,7 @@ override func @lexicalCharacterMatchAST.generateSwiftCocoaConditionCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalCharacterSetMatchAST.generateSwiftCocoaConditionCode
-            (?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext ) -> @string outGeneratedCode {
+            (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext ) -> @string outGeneratedCode {
   outGeneratedCode = "self.testForChar_" +  self.mCharacterSetName.string + " ()"
 }
 
@@ -149,7 +149,7 @@ override func @lexicalSendTerminalByDefaultAST.generateSwiftCocoaDefaultSendCode
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalErrorByDefaultAST.generateSwiftCocoaDefaultSendCode
-  (?let @string unused inScannerClassName
+  (?let @string _inScannerClassName
   ) -> @string outGeneratedCode {
   outGeneratedCode = "scanningOk = false\n"
 }
@@ -167,7 +167,7 @@ abstract func @lexicalInstructionAST.generateSwiftCocoaInstructionCode
 
 abstract func @abstractLexicalRuleAST.generateSwiftCocoaCode
   (?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string
 
 //--------------------------------------------------------------------------------------------------

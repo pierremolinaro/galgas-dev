@@ -163,7 +163,7 @@ syntax extension galgas4DeclarationsSyntax {
     select
       isEquatable = false
     or
-      $%equatable$
+      $#equatable$
       isEquatable = true
     end
     ${$
@@ -210,9 +210,9 @@ syntax extension galgas4DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <search_method_declaration> (?!@mapAccessorListAST ioMapSearchMethodListAST ) {
-    $%searchMethod$
+    $#searchMethod$
     $identifier$ (?let @lstring methodName)
-    $%errorMessage$
+    $#errorMessage$
     $"string"$ (?let @lstring errorMessage)
     ioMapSearchMethodListAST ++= @(methodName, errorMessage)
   }
@@ -220,9 +220,9 @@ syntax extension galgas4DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <search_subscript_declaration> (?!@mapAccessorListAST ioMapSearchSubscriptListAST ) {
-    $%searchSubscript$
+    $#searchSubscript$
     $identifier$ (?let @lstring methodName)
-    $%errorMessage$
+    $#errorMessage$
     $"string"$ (?let @lstring errorMessage)
     ioMapSearchSubscriptListAST ++= @(methodName, errorMessage)
   }
@@ -230,9 +230,9 @@ syntax extension galgas4DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <remove_setter_declaration> (?!@mapAccessorListAST ioMapRemoveMethodListAST ) {
-    $%removeSetter$
+    $#removeSetter$
     $identifier$ (?let @lstring mMethodName)
-    $%errorMessage$
+    $#errorMessage$
     $"string"$ (?let @lstring mErrorMessage)
     ioMapRemoveMethodListAST ++= @(mMethodName, mErrorMessage)
   }
@@ -240,9 +240,9 @@ syntax extension galgas4DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <replace_setter_declaration> (?!@mapAccessorListAST ioMapReplaceMethodListAST ) {
-    $%replaceSetter$
+    $#replaceSetter$
     $identifier$ (?let @lstring mMethodName)
-    $%errorMessage$
+    $#errorMessage$
     $"string"$ (?let @lstring mErrorMessage)
     ioMapReplaceMethodListAST ++= @(mMethodName, mErrorMessage)
   }
@@ -250,16 +250,16 @@ syntax extension galgas4DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <insert_or_replace_declaration> (?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST ) {
-    $%insertOrReplaceSetter$
+    $#insertOrReplaceSetter$
     ioInsertOrReplaceDeclarationListAST ++= @(@location.here)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <map_insert_setter_declaration> (?!@insertSetterListAST ioMapMethodList ) {
-    $%insertSetter$
+    $#insertSetter$
     $identifier$ (?let @lstring mMethodName)
-    $%errorMessage$
+    $#errorMessage$
     $"string"$ (?let @lstring mErrorMessage)
     let @lstring mShadowErrorMessage
     select
@@ -304,13 +304,13 @@ list @insertOrReplaceDeclarationListAST {
 //--------------------------------------------------------------------------------------------------
 
 map @insertMethodMap {
-  %insertSetter insertKey %errorMessage "the '%K' insert mutating proc is already declared"
+  #insertSetter insertKey #errorMessage "the '%K' insert mutating proc is already declared"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 map @searchMethodMap {
-  %insertSetter insertKey %errorMessage "the '%K' search proc is already declared"
+  #insertSetter insertKey #errorMessage "the '%K' search proc is already declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -324,7 +324,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
   private let @mapAccessorListAST mRemoveSetterList
   private let @mapAccessorListAST mReplaceSetterList
   private let @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST
-  private let @bool equatable %initArgLabel
+  private let @bool equatable #initArgLabel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -371,12 +371,12 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInGraph
     (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+    ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
     let key = @lstring ("@" + self.mMapTypeName, self.mMapTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     for property in self.mPropertyList do
@@ -748,10 +748,10 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
   override proc semanticAnalysis
     (?!@lstringlist ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-    let @string unused inProductDirectory,
-    let @semanticContext unused  inSemanticContext,
+    let @string _inProductDirectory,
+    let @semanticContext _inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-    let @predefinedTypes unused inPredefinedTypes,
+    let @predefinedTypes _inPredefinedTypes,
     ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
   ) {
   //--- Useful entities graph
@@ -872,7 +872,7 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
+  override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                       !@string outHeader ) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = filewrapper [mapGenerationTemplate.mapTypeHeader1 :
@@ -906,7 +906,7 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
                                                ?!@stringset ioInclusionSet,
                                                !@string outImplementation ) {
     self.mElementTypeEntry.addHeaderFileName (!?ioInclusionSet)

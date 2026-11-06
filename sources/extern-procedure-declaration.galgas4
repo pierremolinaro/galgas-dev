@@ -33,9 +33,9 @@ syntax extension galgas4InstructionsSyntax {
     var isUsefull = false
     repeat
     while
-      $%usefull$
+      $#usefull$
       if isUsefull then
-        error (.here : "duplicate attribute" fixit %remove)
+        error (.here : "duplicate attribute" fixit #remove)
       end
       isUsefull = true
     end
@@ -57,20 +57,20 @@ syntax extension galgas4InstructionsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 class @externProcedureDeclarationAST : @semanticDeclarationAST {
-  public let @bool isFilePrivate %initArgLabel
+  public let @bool isFilePrivate #initArgLabel
   public let @lstring mRoutineName
   public let @formalParameterListAST mFormalArgumentListAST
-  public let @bool usefullProcedure %initArgLabel
+  public let @bool usefullProcedure #initArgLabel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph (
-    ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
+    ?!@semanticTypePrecedenceGraph _ioSemanticTypePrecedenceGraph,
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
     ioExtensionOverrideDefinitionList ++= @(self)
   }
@@ -84,11 +84,11 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext (
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-    let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-    let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-    let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext) {
   //--- Build signature
@@ -114,10 +114,10 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
 
   override proc semanticAnalysis (?!@lstringlist ioUsefulnessRootEntities,
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                  let @string unused inProductDirectory,
-                                  let @semanticContext unused inSemanticContext,
+                                  let @string _inProductDirectory,
+                                  let @semanticContext _inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-                                  let @predefinedTypes unused inPredefinedTypes,
+                                  let @predefinedTypes _inPredefinedTypes,
                                   ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
   //---
     var formalArgumentList = @formalParameterListForGeneration ()
@@ -166,7 +166,7 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
 //--------------------------------------------------------------------------------------------------
 
 class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  public let @string routineMangledName %initArgLabel
+  public let @string routineMangledName #initArgLabel
   public let @formalParameterListForGeneration mFormalArgumentList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -177,7 +177,7 @@ class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeader
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
+  override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                     !@string outHeader) {
     outHeader = filewrapper [semanticComponentGenerationTemplate.routineDeclaration:
       self.routineMangledName,

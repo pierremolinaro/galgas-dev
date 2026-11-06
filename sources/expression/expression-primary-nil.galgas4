@@ -39,7 +39,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
+  rule <primary> (?!@galgasDeclarationAST _ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $nil$
     outExpression = @nilExpressionAST (.here)
@@ -56,18 +56,18 @@ final class @nilExpressionAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterExpressionInSemanticContext (?!@unifiedTypeMap unused ioTypeMap ) {
+  override proc enterExpressionInSemanticContext (?!@unifiedTypeMap _ioTypeMap ) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSemanticExpression
-                    (?usefulnessCallerEntityName: let @lstring unused inUsefulnessCallerEntityName,
-                    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+                    (?usefulnessCallerEntityName: let @lstring _inUsefulnessCallerEntityName,
+                    ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
                     ?inferenceType: let @unifiedTypeMapEntry inType,
-                    let @analysisContext unused inAnalysisContext,
-                    ?!@unifiedTypeMap unused ioTypeMap,
-                    ?!@localVarManager unused ioVariableMap,
+                    let @analysisContext _inAnalysisContext,
+                    ?!@unifiedTypeMap _ioTypeMap,
+                    ?!@localVarManager _ioVariableMap,
                     !@semanticExpressionForGeneration outExpression ) {
     if inType.isNull then
       error (self.mLocation : "cannot infer type" spoil outExpression)
@@ -94,10 +94,10 @@ final class @nilExpressionForGeneration : @semanticExpressionForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc generateExpression (?!@string unused ioGeneratedCode,
-                                      ?!@stringset unused ioInclusionSet,
-                                      ?!@uint unused ioTemporaryVariableIndex,
-                                      ?!@stringset unused ioUnusedVariableCppNameSet,
+  override proc generateExpression (?!@string _ioGeneratedCode,
+                                      ?!@stringset _ioInclusionSet,
+                                      ?!@uint _ioTemporaryVariableIndex,
+                                      ?!@stringset _ioUnusedVariableCppNameSet,
                                       !@string outCppExpression ) {
     outCppExpression = "GGS_" + self.mResultType.identifierRepresentation + "::init_nil ()"
   }

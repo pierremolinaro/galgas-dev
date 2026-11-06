@@ -214,7 +214,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <simple_type_definition> (?!@galgasDeclarationAST unused ioDeclarations,
+  rule <simple_type_definition> (?!@galgasDeclarationAST _ioDeclarations,
                                 !@lstring outTypeName ) {
     $@type$ (?outTypeName)
   }

@@ -32,9 +32,9 @@ syntax extension galgas4InstructionsSyntax {
     var isUsefull = false
     repeat
     while
-      $%usefull$
+      $#usefull$
       if isUsefull then
-        error (.here : "duplicate attribute" fixit %remove)
+        error (.here : "duplicate attribute" fixit #remove)
       end
       isUsefull = true
     end
@@ -63,9 +63,9 @@ syntax extension galgas4InstructionsSyntax {
     var isUsefull = false
     repeat
     while
-      $%usefull$
+      $#usefull$
       if isUsefull then
-        error (.here : "duplicate attribute" fixit %remove)
+        error (.here : "duplicate attribute" fixit #remove)
       end
       isUsefull = true
     end
@@ -99,11 +99,11 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext (
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-    let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-    let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-    let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext ) {
   //--- Build signature
@@ -130,7 +130,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
 
   override proc semanticAnalysis (?!@lstringlist ioUsefulnessRootEntities,
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                  let @string unused inProductDirectory,
+                                  let @string _inProductDirectory,
                                   let @semanticContext inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
                                   let @predefinedTypes inPredefinedTypes,
@@ -199,7 +199,7 @@ final class @routineImplementationForGeneration : @routinePrototypeDeclarationFo
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificImplementation
-    (let @unifiedTypeMap unused inTypeMap,
+    (let @unifiedTypeMap _inTypeMap,
     ?!@stringset ioInclusionSet,
     !@string outImplementation
   ) {

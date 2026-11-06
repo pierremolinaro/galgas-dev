@@ -38,7 +38,7 @@ final class @timerPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc getSetterMap (?!@unifiedTypeMap unused ioUnifiedTypeMap,
+  override proc getSetterMap (?!@unifiedTypeMap _ioUnifiedTypeMap,
                                !@setterMap outSetterMap ) {
     outSetterMap = @()
     enterModifierWithoutArgument (

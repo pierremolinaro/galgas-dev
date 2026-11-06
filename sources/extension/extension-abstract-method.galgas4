@@ -130,12 +130,12 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInGraph (
     ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
     ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext,
-    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
+    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+    ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList) {
     let key = @lstring (
       "extension proc @" + self.mTypeName + " " + self.mAbstractExtensionMethodName,
       self.mAbstractExtensionMethodName.location
@@ -174,24 +174,24 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext (
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-    let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-    let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-    let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
-    ?!@unifiedTypeMap unused ioTypeMap,
-    ?!@semanticContext unused ioSemanticContext) {
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
+    ?!@unifiedTypeMap _ioTypeMap,
+    ?!@semanticContext _ioSemanticContext) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis (
-    ?!@lstringlist unused ioUsefulnessRootEntities,
-    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-    let @string unused inProductDirectory,
-    let @semanticContext unused inSemanticContext,
+    ?!@lstringlist _ioUsefulnessRootEntities,
+    ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+    let @string _inProductDirectory,
+    let @semanticContext _inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-    let @predefinedTypes unused inPredefinedTypes,
+    let @predefinedTypes _inPredefinedTypes,
     ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
   //--- Self type
     let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
@@ -226,18 +226,18 @@ final class @abstractExtensionMethodAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc buildExtensionListMaps (
-    ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
-    ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
-    ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
-    ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap,
+    ?!@genericExtensionMethodListMap _ioAbstractExtensionSetterListMap,
+    ?!@genericExtensionMethodListMap _ioExtensionSetterListMap,
+    ?!@genericExtensionMethodListMap _ioOverridingExtensionSetterListMap,
+    ?!@genericExtensionMethodListMap _ioOverridingAbstractExtensionSetterListMap,
     ?!@genericExtensionMethodListMap ioAbstractExtensionMethodListMapAST,
-    ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap,
-    ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap,
-    ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap,
-    ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap,
-    ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
-    ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
-    ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
+    ?!@genericExtensionMethodListMap _ioExtensionMethodListMap,
+    ?!@genericExtensionMethodListMap _ioOverridingExtensionMethodListMap,
+    ?!@genericExtensionMethodListMap _ioOverridingAbstractExtensionMethodListMap,
+    ?!@genericExtensionMethodListMap _ioAbstractExtensionGetterListMap,
+    ?!@genericExtensionMethodListMap _ioExtensionGetterListMap,
+    ?!@genericExtensionMethodListMap _ioOverridingExtensionGetterListMap,
+    ?!@genericExtensionMethodListMap _ioOverridingAbstractExtensionGetterListMap) {
     !?ioAbstractExtensionMethodListMapAST.insertKey
       (self.mTypeName.string,
       self.mAbstractExtensionMethodName
@@ -259,7 +259,7 @@ final class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHead
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
+  override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                       !@string outHeader) {
     outHeader = filewrapper [semanticComponentGenerationTemplate.abstractExtensionMethodDeclaration :
       self.mReceiverType.definition.typeName.string,
@@ -276,7 +276,7 @@ final class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHead
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
                                                 ?!@stringset ioInclusionSet,
                                                 !@string outImplementation) {
     ioInclusionSet ++= "proc-"

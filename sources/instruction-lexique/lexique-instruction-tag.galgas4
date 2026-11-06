@@ -63,7 +63,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @lexicalTagInstructionAST.checkLexicalInstruction (
-  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
+  ?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext,
   ?!@lexicalTagMap ioTagMap) {
   !?ioTagMap.insertKey (self.mLexicalTagName)
 }
@@ -71,8 +71,8 @@ override proc @lexicalTagInstructionAST.checkLexicalInstruction (
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalTagInstructionAST.generateSwiftCocoaInstructionCode (
-  ?let @string unused inScannerClassName,
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
+  ?let @string _inScannerClassName,
+  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
   outGeneratedCode = "let locationForTag_" + self.mLexicalTagName + " = self.savedScanningPoint ()\n"
 }
@@ -88,8 +88,8 @@ override func @lexicalTagInstructionAST.lexicalInstructionUsesLoopLocalVariable 
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalTagInstructionAST.generateLexicalInstructionCode (
-  ?let @string unused inScannerClassName,
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext)
+  ?let @string _inScannerClassName,
+  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
   -> @string {
   result = "const LocationInSource currentLocationForTag_" + self.mLexicalTagName + " = mCurrentLocation ;\n"
                     + "const LocationInSource endLocationForTag_" + self.mLexicalTagName + " = mTokenEndLocation ;\n"

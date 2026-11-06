@@ -64,7 +64,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
 override proc @lexicalDropInstructionAST.checkLexicalInstruction (
                          ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-                         ?!@lexicalTagMap unused ioTagMap) {
+                         ?!@lexicalTagMap _ioTagMap) {
   ioLexiqueAnalysisContext.mTerminalMap.searchKey (self.mTerminalName, ?*)
 }
 
@@ -72,7 +72,7 @@ override proc @lexicalDropInstructionAST.checkLexicalInstruction (
 
 override func @lexicalDropInstructionAST.generateSwiftCocoaInstructionCode
   (?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
   outGeneratedCode = "tokenCode = " + inScannerClassName + "_1_" + self.mTerminalName.string.identifierRepresentation + "\n"
 }
@@ -88,8 +88,8 @@ override func @lexicalDropInstructionAST.lexicalInstructionUsesLoopLocalVariable
 //·································································································
 
 override func @lexicalDropInstructionAST.generateLexicalInstructionCode
-  (?let @string unused inScannerClassName,
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?let @string _inScannerClassName,
+  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string
 {
   result = "enterDroppedTerminal (kToken_" + self.mTerminalName.string.identifierRepresentation + ") ;\n"

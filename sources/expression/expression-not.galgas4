@@ -77,7 +77,7 @@ override proc @notExpressionAST.enterExpressionInSemanticContext
 override proc @notExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?inferenceType: let @unifiedTypeMapEntry unused inType,
+  ?inferenceType: let @unifiedTypeMapEntry _inType,
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@localVarManager ioVariableMap,

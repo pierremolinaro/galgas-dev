@@ -161,7 +161,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
                                               ?!@stringset ioInclusionSet,
                                               !@string outImplementation ) {
     ioInclusionSet ++= "syntax-" + self.mSyntaxComponentName.fileNameRepresentation
@@ -979,7 +979,7 @@ override func @functionPrototypeDeclarationForGeneration.headerKind () ->@header
 //--------------------------------------------------------------------------------------------------
 
 override proc @functionPrototypeDeclarationForGeneration.appendDeclaration1
-  (?!@stringset unused ioInclusionSet,
+  (?!@stringset _ioInclusionSet,
   !@string outHeader ) {
   outHeader = filewrapper [semanticComponentGenerationTemplate.functionDeclaration :
     self.mFunctionName,
@@ -997,7 +997,7 @@ override func @onceFunctionDeclarationForGeneration.headerKind () ->@headerKind 
 //--------------------------------------------------------------------------------------------------
 
 override proc @onceFunctionDeclarationForGeneration.appendDeclaration1
-  (?!@stringset unused ioInclusionSet,
+  (?!@stringset _ioInclusionSet,
   !@string outHeader ) {
   outHeader = filewrapper [semanticComponentGenerationTemplate.functionDeclaration :
     self.mFunctionName,
@@ -1028,7 +1028,7 @@ override func @semanticTypeForGeneration.appendTypeGenericImplementation () -> @
 //--------------------------------------------------------------------------------------------------
 
 override proc @functionImplementationForGeneration.appendSpecificImplementation
-  (let @unifiedTypeMap unused inTypeMap,
+  (let @unifiedTypeMap _inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation ) {
   ioInclusionSet ++= "func-" + self.mFunctionName.fileNameRepresentation
@@ -1055,7 +1055,7 @@ override proc @functionImplementationForGeneration.appendSpecificImplementation
 //--------------------------------------------------------------------------------------------------
 
 override proc @onceFunctionDeclarationForGeneration.appendSpecificImplementation
-  (let @unifiedTypeMap unused inTypeMap,
+  (let @unifiedTypeMap _inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation
 ) {
@@ -1111,7 +1111,7 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendSpecificImplementation
-    (let @unifiedTypeMap unused inTypeMap,
+    (let @unifiedTypeMap _inTypeMap,
     ?!@stringset ioInclusionSet,
     !@string outHeader ) {
     ioInclusionSet ++= "lexique-" + self.mLexiqueName.fileNameRepresentation
@@ -1155,7 +1155,7 @@ override func @programComponentForGeneration.headerKind () ->@headerKind {
 //--------------------------------------------------------------------------------------------------
 
 override proc @programComponentForGeneration.appendSpecificImplementation
-  (let @unifiedTypeMap unused inTypeMap,
+  (let @unifiedTypeMap _inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation ) {
   ioInclusionSet +=self. mInclusionSet
@@ -1205,7 +1205,7 @@ proc recursivlyEnumerateRegularFile
 //--------------------------------------------------------------------------------------------------
 
 override proc @filewrapperDeclarationForGeneration.appendDeclaration1
-  (?!@stringset unused ioInclusionSet,
+  (?!@stringset _ioInclusionSet,
   !@string outHeader) {
   var regularFileIndexStringList = @stringlist ()
   var regularBinaryContentIndexStringList = @stringlist ()
@@ -1349,7 +1349,7 @@ proc generateWrapperContents
 //--------------------------------------------------------------------------------------------------
 
 override proc @filewrapperDeclarationForGeneration.appendSpecificImplementation
-  (let @unifiedTypeMap unused inTypeMap,
+  (let @unifiedTypeMap _inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation ) {
   ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
@@ -1404,7 +1404,7 @@ override proc @filewrapperDeclarationForGeneration.appendSpecificImplementation
 final class @primitiveTypeForGeneration : @semanticTypeForGeneration {
   public let @string mPredefinedTypeName
   public let @string mCppDeclarationString
-  public let @bool isPackage %initArgLabel
+  public let @bool isPackage #initArgLabel
 
   //----------------------------------------------------------------------------------------------
 
@@ -1475,14 +1475,14 @@ proc generatePredefinedTypeFiles
   end
   for declaration in inSemanticDeclarationListForGeneration do
     if declaration.isPredefined then
-      declaration.appendDeclaration1 (!? %from @(), ?let @string code)
+      declaration.appendDeclaration1 (!? #from @(), ?let @string code)
       generatedCode += code
     end
   end
   generatedCode += filewrapper [predefinedTypeGenerationTemplate.predefinedTypeSeparation : ]
   for declaration in inSemanticDeclarationListForGeneration do
     if declaration.isPredefined then
-      declaration.appendDeclaration2 (inDirectory, !? %from @(), ?let @string headerString2)
+      declaration.appendDeclaration2 (inDirectory, !? #from @(), ?let @string headerString2)
       generatedCode += headerString2
     end
   end
@@ -1506,7 +1506,7 @@ proc generatePredefinedTypeFiles
   for declaration in inSemanticDeclarationListForGeneration do
     if declaration.isPredefined then
       generatedCode += declaration.appendTypeGenericImplementation
-      declaration.appendSpecificImplementation ( @(), !? %from @(), ?let @string code)
+      declaration.appendSpecificImplementation ( @(), !? #from @(), ?let @string code)
       generatedCode += code
     end
   end

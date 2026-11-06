@@ -155,12 +155,12 @@ final class @extensionMethodAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInGraph (
      ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
+     ?!@equatableExtensionMap _ioEquatableExtensionMap,
+     ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
      ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext,
-     ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-     ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-     ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
+     ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+     ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+     ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList) {
     let key = @lstring (
       "extension proc @" + self.mTypeName + " " + self.mExtensionMethodName,
       self.mExtensionMethodName.location
@@ -193,20 +193,20 @@ final class @extensionMethodAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext (
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-    let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-    let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-    let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
-    ?!@unifiedTypeMap unused ioTypeMap,
-    ?!@semanticContext unused ioSemanticContext) {
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
+    ?!@unifiedTypeMap _ioTypeMap,
+    ?!@semanticContext _ioSemanticContext) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc semanticAnalysis (?!@lstringlist unused ioUsefulnessRootEntities,
+  override proc semanticAnalysis (?!@lstringlist _ioUsefulnessRootEntities,
                                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                    let @string unused inProductDirectory,
+                                    let @string _inProductDirectory,
                                     let @semanticContext inSemanticContext,
                                     ?!@unifiedTypeMap ioTypeMap,
                                     let @predefinedTypes inPredefinedTypes,
@@ -278,18 +278,18 @@ final class @extensionMethodAST : @semanticDeclarationAST {
 //--------------------------------------------------------------------------------------------------
 
 override proc @extensionMethodAST.buildExtensionListMaps (
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
-  ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap,
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST,
+  ?!@genericExtensionMethodListMap _ioAbstractExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap _ioExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap _ioOverridingExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap _ioOverridingAbstractExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap _ioAbstractExtensionMethodListMapAST,
   ?!@genericExtensionMethodListMap ioExtensionMethodListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap,
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap,
-  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
+  ?!@genericExtensionMethodListMap _ioOverridingExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap _ioOverridingAbstractExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap _ioAbstractExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap _ioExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap _ioOverridingExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap _ioOverridingAbstractExtensionGetterListMap) {
 //  ioExtensionMethodListMap += !self.mTypeName.string !self.mExtensionMethodName
   !?ioExtensionMethodListMap.insertKey (self.mTypeName.string, self.mExtensionMethodName)
 }
@@ -315,7 +315,7 @@ override func @extensionMethodForGeneration.headerKind () ->@headerKind {
 
 //································································································
 
-override proc @extensionMethodForGeneration.appendDeclaration1 (?!@stringset unused ioInclusionSet,
+override proc @extensionMethodForGeneration.appendDeclaration1 (?!@stringset _ioInclusionSet,
                                                                   !@string outHeader) {
   if self.mImplementedAsFunction then
     outHeader = filewrapper [semanticComponentGenerationTemplate.extensionMethodAsFunctionDeclaration :
@@ -334,7 +334,7 @@ override proc @extensionMethodForGeneration.appendDeclaration1 (?!@stringset unu
 
 //································································································
 
-override proc @extensionMethodForGeneration.appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
+override proc @extensionMethodForGeneration.appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
                                                     ?!@stringset ioInclusionSet,
                                                     !@string outImplementation) {
   if self.mImplementedAsFunction then

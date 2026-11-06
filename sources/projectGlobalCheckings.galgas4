@@ -73,18 +73,18 @@ struct @genericExtensionMethodListMap {
 //--------------------------------------------------------------------------------------------------
 
 proc @semanticDeclarationAST.buildExtensionListMaps
-  (?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
-  ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap,
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST,
-  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap,
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap,
-  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap ) {
+  (?!@genericExtensionMethodListMap _ioAbstractExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap _ioExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap _ioOverridingExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap _ioOverridingAbstractExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap _ioAbstractExtensionMethodListMapAST,
+  ?!@genericExtensionMethodListMap _ioExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap _ioOverridingExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap _ioOverridingAbstractExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap _ioAbstractExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap _ioExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap _ioOverridingExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap _ioOverridingAbstractExtensionGetterListMap ) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ proc @semanticDeclarationAST.buildExtensionListMaps
 //
 //--------------------------------------------------------------------------------------------------
 
-list @unifiedTypeMapEntryList %equatable {
+list @unifiedTypeMapEntryList #equatable {
   public var @unifiedTypeMapEntry mEntry
 }
 
@@ -143,7 +143,7 @@ struct @descendantClassListMap {
 //--------------------------------------------------------------------------------------------------
 
 map @extensionMethodMapForGlobalCheckings {
-  %insertSetter insertKey %errorMessage "the '%K' extension proc is already declared in %L"
+  #insertSetter insertKey #errorMessage "the '%K' extension proc is already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -154,7 +154,7 @@ map @extensionMethodMapForGlobalCheckings {
 //--------------------------------------------------------------------------------------------------
 
 map @extensionSetterMapForGlobalCheckings {
-  %insertSetter insertKey %errorMessage "the '%K' extension mutating proc is already declared in %L"
+  #insertSetter insertKey #errorMessage "the '%K' extension mutating proc is already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -165,7 +165,7 @@ map @extensionSetterMapForGlobalCheckings {
 //--------------------------------------------------------------------------------------------------
 
 map @extensionGetterMapForGlobalCheckings {
-  %insertSetter insertKey %errorMessage "the '%K' extension func is already declared in %L"
+  #insertSetter insertKey #errorMessage "the '%K' extension func is already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------

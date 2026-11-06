@@ -48,7 +48,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
+  rule <primary> (?!@galgasDeclarationAST _ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $`$
     $@type$ (?let @lstring typeName) // Cannot use <type_definition> !? ioDeclarations ?let @lstring typeName
@@ -74,10 +74,10 @@ override proc @literalTypeInExpressionAST.enterExpressionInSemanticContext
 override proc @literalTypeInExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?inferenceType: let @unifiedTypeMapEntry unused inType,
-  let @analysisContext unused inAnalysisContext,
+  ?inferenceType: let @unifiedTypeMapEntry _inType,
+  let @analysisContext _inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  ?!@localVarManager unused ioVariableMap,
+  ?!@localVarManager _ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
   let usefulnessName = typeNameForUsefulEntitiesGraph (self.mLiteralTypeName)
@@ -102,10 +102,10 @@ final class @literalTypeInExpressionForGeneration : @semanticExpressionForGenera
 //································································································
 
 override proc @literalTypeInExpressionForGeneration.generateExpression
-  (?!@string unused ioGeneratedCode,
+  (?!@string _ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint unused ioTemporaryVariableIndex,
-  ?!@stringset unused ioUnusedVariableCppNameSet,
+  ?!@uint _ioTemporaryVariableIndex,
+  ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppExpression
 ) {
   self.mLiteralType.addHeaderFileName (!?ioInclusionSet)

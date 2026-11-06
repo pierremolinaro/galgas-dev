@@ -5009,7 +5009,7 @@ void extensionMethod_generateFixIt (const GGS_fixitListForGeneration inObject,
                                     GGS_stringset & ioArgument_ioInclusionSet,
                                     GGS_uint & ioArgument_ioTemporaryVariableIndex,
                                     GGS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                    const GGS_bool /* constinArgument_inGenerateSyntaxDirectedTranslationString */,
+                                    const GGS_bool /* constinArgument__5F_inGenerateSyntaxDirectedTranslationString */,
                                     GGS_string & ioArgument_ioGeneratedCode,
                                     GGS_string & outArgument_outFixItArrayCppName,
                                     Compiler * inCompiler
@@ -5019,9 +5019,9 @@ void extensionMethod_generateFixIt (const GGS_fixitListForGeneration inObject,
   ioArgument_ioTemporaryVariableIndex.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 414)) ;
   ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("GenericArray <FixItDescription> ").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 415)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 415)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 415)) ;
   const GGS_fixitListForGeneration temp_0 = inObject ;
-  UpEnumerator_fixitListForGeneration enumerator_16666 (temp_0) ;
-  while (enumerator_16666.hasCurrentObject ()) {
-    switch (enumerator_16666.current (HERE).readProperty_mElement ().enumValue ()) {
+  UpEnumerator_fixitListForGeneration enumerator_16660 (temp_0) ;
+  while (enumerator_16660.hasCurrentObject ()) {
+    switch (enumerator_16660.current (HERE).readProperty_mElement ().enumValue ()) {
     case GGS_fixitElementForGeneration::Enumeration::invalid:
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItRemove:
@@ -5031,33 +5031,33 @@ void extensionMethod_generateFixIt (const GGS_fixitListForGeneration inObject,
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItReplace:
       {
-        GGS_semanticExpressionForGeneration extractedValue_16903_exp_0 ;
-        enumerator_16666.current (HERE).readProperty_mElement ().getAssociatedValuesFor_fixItReplace (extractedValue_16903_exp_0) ;
-        GGS_string var_receiverCppVarName_17080 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_16903_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_17080, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 421)) ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 428)).add_operation (GGS_string (", EnumFixItKind::fixItReplace, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 428)).add_operation (var_receiverCppVarName_17080, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 428)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 428)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 428)) ;
+        GGS_semanticExpressionForGeneration extractedValue_16897_exp_0 ;
+        enumerator_16660.current (HERE).readProperty_mElement ().getAssociatedValuesFor_fixItReplace (extractedValue_16897_exp_0) ;
+        GGS_string var_receiverCppVarName_17074 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_16897_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_17074, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 421)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 428)).add_operation (GGS_string (", EnumFixItKind::fixItReplace, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 428)).add_operation (var_receiverCppVarName_17074, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 428)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 428)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 428)) ;
       }
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItInsertBefore:
       {
-        GGS_semanticExpressionForGeneration extractedValue_17306_exp_0 ;
-        enumerator_16666.current (HERE).readProperty_mElement ().getAssociatedValuesFor_fixItInsertBefore (extractedValue_17306_exp_0) ;
-        GGS_string var_receiverCppVarName_17483 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_17306_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_17483, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 430)) ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 437)).add_operation (GGS_string (", EnumFixItKind::fixItInsertBefore, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 437)).add_operation (var_receiverCppVarName_17483, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 437)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 437)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 437)) ;
+        GGS_semanticExpressionForGeneration extractedValue_17300_exp_0 ;
+        enumerator_16660.current (HERE).readProperty_mElement ().getAssociatedValuesFor_fixItInsertBefore (extractedValue_17300_exp_0) ;
+        GGS_string var_receiverCppVarName_17477 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_17300_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_17477, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 430)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 437)).add_operation (GGS_string (", EnumFixItKind::fixItInsertBefore, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 437)).add_operation (var_receiverCppVarName_17477, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 437)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 437)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 437)) ;
       }
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItInsertAfter:
       {
-        GGS_semanticExpressionForGeneration extractedValue_17713_exp_0 ;
-        enumerator_16666.current (HERE).readProperty_mElement ().getAssociatedValuesFor_fixItInsertAfter (extractedValue_17713_exp_0) ;
-        GGS_string var_receiverCppVarName_17890 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_17713_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_17890, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 439)) ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 446)).add_operation (GGS_string (", EnumFixItKind::fixItInsertAfter, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 446)).add_operation (var_receiverCppVarName_17890, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 446)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 446)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 446)) ;
+        GGS_semanticExpressionForGeneration extractedValue_17707_exp_0 ;
+        enumerator_16660.current (HERE).readProperty_mElement ().getAssociatedValuesFor_fixItInsertAfter (extractedValue_17707_exp_0) ;
+        GGS_string var_receiverCppVarName_17884 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_17707_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_17884, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 439)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 446)).add_operation (GGS_string (", EnumFixItKind::fixItInsertAfter, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 446)).add_operation (var_receiverCppVarName_17884, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 446)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 446)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 446)) ;
       }
       break ;
     }
-    enumerator_16666.gotoNextObject () ;
+    enumerator_16660.gotoNextObject () ;
   }
 }
 

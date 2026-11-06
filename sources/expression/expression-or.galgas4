@@ -337,7 +337,7 @@ override proc @closedSliceExpressionAST.enterExpressionInSemanticContext
 override proc @closedSliceExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?inferenceType: let @unifiedTypeMapEntry unused inInferenceType,
+  ?inferenceType: let @unifiedTypeMapEntry _inInferenceType,
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@localVarManager ioVariableMap,
@@ -395,7 +395,7 @@ override proc @openedSliceExpressionAST.enterExpressionInSemanticContext
 override proc @openedSliceExpressionAST.analyzeSemanticExpression
                                               (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
                                               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                              ?inferenceType: let @unifiedTypeMapEntry unused inInferenceType,
+                                              ?inferenceType: let @unifiedTypeMapEntry _inInferenceType,
                                               let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
                                               ?!@localVarManager ioVariableMap,

@@ -4,7 +4,7 @@ before {
 }
 
 case . "classSampleLanguage"
-%errorMessage "an '.class_sample_language' source file"
+#errorMessage "an '.class_sample_language' source file"
 grammar class_sample_language_grammar
 ?sourceFilePath:@lstring inSourceFile {
 //--- Build Abstract Syntax Tree

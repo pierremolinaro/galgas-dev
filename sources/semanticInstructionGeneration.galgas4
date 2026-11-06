@@ -26,8 +26,8 @@ override proc @outputActualParameterForGeneration.generateActualParameter (
   ?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@string ioImplementation,
-  ?!@stringlist unused ioJokerParametersToReleaseList,
-  ?!@stringlist unused ioOutputVariableList,
+  ?!@stringlist _ioJokerParametersToReleaseList,
+  ?!@stringlist _ioOutputVariableList,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppName
 ) {
@@ -39,10 +39,10 @@ override proc @outputActualParameterForGeneration.generateActualParameter (
 
 override proc @outputInputActualParameterForGeneration.generateActualParameter (
   ?!@stringset ioInclusionSet,
-  ?!@uint unused ioTemporaryVariableIndex,
-  ?!@string unused ioImplementation,
-  ?!@stringlist unused ioJokerParametersToReleaseList,
-  ?!@stringlist unused ioOutputVariableList,
+  ?!@uint _ioTemporaryVariableIndex,
+  ?!@string _ioImplementation,
+  ?!@stringlist _ioJokerParametersToReleaseList,
+  ?!@stringlist _ioOutputVariableList,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppName ) {
   for entry in self.mTypeList do
@@ -58,10 +58,10 @@ override proc @outputInputActualParameterForGeneration.generateActualParameter (
 //--------------------------------------------------------------------------------------------------
 
 override proc @inputActualParameterForGeneration.generateActualParameter (
-  ?!@stringset unused ioInclusionSet,
-  ?!@uint unused ioTemporaryVariableIndex,
-  ?!@string unused ioImplementation,
-  ?!@stringlist unused ioJokerParametersToReleaseList,
+  ?!@stringset _ioInclusionSet,
+  ?!@uint _ioTemporaryVariableIndex,
+  ?!@string _ioImplementation,
+  ?!@stringlist _ioJokerParametersToReleaseList,
   ?!@stringlist ioOutputVariableList,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppName ) {
@@ -74,11 +74,11 @@ override proc @inputActualParameterForGeneration.generateActualParameter (
 
 override proc @inputJokerParameterForGeneration.generateActualParameter (
   ?!@stringset ioInclusionSet,
-  ?!@uint unused ioTemporaryVariableIndex,
+  ?!@uint _ioTemporaryVariableIndex,
   ?!@string ioImplementation,
   ?!@stringlist ioJokerParametersToReleaseList,
   ?!@stringlist ioOutputVariableList,
-  ?!@stringset unused ioUnusedVariableCppNameSet,
+  ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppName ) {
   self.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
   outCppName = self.mInputActualCppName
@@ -109,15 +109,15 @@ override proc @semanticBlockInstructionForGeneration.generateInstruction (?!@str
 //--------------------------------------------------------------------------------------------------
 
 override proc @outputInputActualParameterForGeneration.generatePoisonedVariables
-  (?!@string unused ioImplementation,
-  ?!@stringset unused ioUnusedVariableCppNameSet ) {
+  (?!@string _ioImplementation,
+  ?!@stringset _ioUnusedVariableCppNameSet ) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @outputActualParameterForGeneration.generatePoisonedVariables
-  (?!@string unused ioImplementation,
-  ?!@stringset unused ioUnusedVariableCppNameSet ) {
+  (?!@string _ioImplementation,
+  ?!@stringset _ioUnusedVariableCppNameSet ) {
 }
 
 //--------------------------------------------------------------------------------------------------

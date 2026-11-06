@@ -1913,20 +1913,20 @@ void callExtensionMethod_enterDeclarationInGraph (cPtr_semanticDeclarationAST * 
 //--------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_enterDeclarationInSemanticContext (cPtr_semanticDeclarationAST * inObject,
-                                                            GGS_equatableExtensionMap & io_ioEquatableExtensionMap,
-                                                            const GGS_extensionInitializerForBuildingContext constin_inExtensionInitializerMapForBuildingContext,
-                                                            const GGS_extensionMethodMapForBuildingContext constin_inExtensionMethodMapForBuildingContext,
-                                                            const GGS_extensionGetterMapForBuildingContext constin_inExtensionGetterMapForBuildingContext,
-                                                            const GGS_extensionSetterMapForBuildingContext constin_inExtensionSetterMapForBuildingContext,
+                                                            GGS_equatableExtensionMap & io__5F_ioEquatableExtensionMap,
+                                                            const GGS_extensionInitializerForBuildingContext constin__5F_inExtensionInitializerMapForBuildingContext,
+                                                            const GGS_extensionMethodMapForBuildingContext constin__5F_inExtensionMethodMapForBuildingContext,
+                                                            const GGS_extensionGetterMapForBuildingContext constin__5F_inExtensionGetterMapForBuildingContext,
+                                                            const GGS_extensionSetterMapForBuildingContext constin__5F_inExtensionSetterMapForBuildingContext,
                                                             GGS_unifiedTypeMap & io_ioTypeMap,
-                                                            GGS_semanticContext & io_ioSemanticContext,
+                                                            GGS_semanticContext & io__5F_ioSemanticContext,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
-    inObject->method_enterDeclarationInSemanticContext (io_ioEquatableExtensionMap, constin_inExtensionInitializerMapForBuildingContext, constin_inExtensionMethodMapForBuildingContext, constin_inExtensionGetterMapForBuildingContext, constin_inExtensionSetterMapForBuildingContext, io_ioTypeMap, io_ioSemanticContext, inCompiler COMMA_THERE) ;
+    inObject->method_enterDeclarationInSemanticContext (io__5F_ioEquatableExtensionMap, constin__5F_inExtensionInitializerMapForBuildingContext, constin__5F_inExtensionMethodMapForBuildingContext, constin__5F_inExtensionGetterMapForBuildingContext, constin__5F_inExtensionSetterMapForBuildingContext, io_ioTypeMap, io__5F_ioSemanticContext, inCompiler COMMA_THERE) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -1939,17 +1939,17 @@ void callExtensionMethod_semanticAnalysis (cPtr_semanticDeclarationAST * inObjec
                                            GGS_lstringlist & io_ioUsefulnessRootEntities,
                                            GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                            const GGS_string constin_inProductDirectory,
-                                           const GGS_semanticContext constin_inSemanticContext,
-                                           GGS_unifiedTypeMap & io_ioTypeMap,
-                                           const GGS_predefinedTypes constin_inPredefinedTypes,
-                                           GGS__5B_semanticDeclarationForGeneration_5D_ & io_ioSemanticDeclarationListForGeneration,
+                                           const GGS_semanticContext constin__5F_inSemanticContext,
+                                           GGS_unifiedTypeMap & io__5F_ioTypeMap,
+                                           const GGS_predefinedTypes constin__5F_inPredefinedTypes,
+                                           GGS__5B_semanticDeclarationForGeneration_5D_ & io__5F_ioSemanticDeclarationListForGeneration,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find proc
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
-    inObject->method_semanticAnalysis (io_ioUsefulnessRootEntities, io_ioUsefulEntitiesGraph, constin_inProductDirectory, constin_inSemanticContext, io_ioTypeMap, constin_inPredefinedTypes, io_ioSemanticDeclarationListForGeneration, inCompiler COMMA_THERE) ;
+    inObject->method_semanticAnalysis (io_ioUsefulnessRootEntities, io_ioUsefulEntitiesGraph, constin_inProductDirectory, constin__5F_inSemanticContext, io__5F_ioTypeMap, constin__5F_inPredefinedTypes, io__5F_ioSemanticDeclarationListForGeneration, inCompiler COMMA_THERE) ;
   }
 }
 //--------------------------------------------------------------------------------------------------
@@ -2489,12 +2489,12 @@ GGS_programListForGeneration GGS_programListForGeneration::extractObject (const 
 //--------------------------------------------------------------------------------------------------
 
 GGS_string callExtensionGetter_generateConditionCode (const cPtr_lexicalExpressionAST * inObject,
-                                                      const GGS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                      const GGS_lexiqueAnalysisContext in__5F_inLexiqueAnalysisContext,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
   GGS_string result ;
   if (nullptr != inObject) {
-    result = inObject->getter_generateConditionCode (in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
+    result = inObject->getter_generateConditionCode (in__5F_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
   }
   return result ;
 }
@@ -2574,12 +2574,12 @@ GGS_bool callExtensionGetter_lexicalInstructionUsesLoopLocalVariable (const cPtr
 
 GGS_string callExtensionGetter_generateLexicalRuleCode (const cPtr_abstractLexicalRuleAST * inObject,
                                                         const GGS_string in_inScannerClassName,
-                                                        const GGS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                        const GGS_lexiqueAnalysisContext in__5F_inLexiqueAnalysisContext,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) {
   GGS_string result ;
   if (nullptr != inObject) {
-    result = inObject->getter_generateLexicalRuleCode (in_inScannerClassName, in_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
+    result = inObject->getter_generateLexicalRuleCode (in_inScannerClassName, in__5F_inLexiqueAnalysisContext, inCompiler COMMA_THERE) ;
   }
   return result ;
 }
@@ -14021,8 +14021,8 @@ GGS_lexicalTypeMap GGS_lexicalTypeMap::extractObject (const GGS_object & inObjec
 //Extension proc '@semanticInstructionForGeneration appendSyntaxSignature'
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_semanticInstructionForGeneration::method_appendSyntaxSignature (const GGS_string /* constinArgument_inPosfix */,
-                                                                          GGS_semanticInstructionListForGeneration & /* ioArgument_ioInstructionListForGeneration */,
+void cPtr_semanticInstructionForGeneration::method_appendSyntaxSignature (const GGS_string /* constinArgument__5F_inPosfix */,
+                                                                          GGS_semanticInstructionListForGeneration & /* ioArgument__5F_ioInstructionListForGeneration */,
                                                                           Compiler * /* inCompiler */
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
 }
@@ -14030,13 +14030,13 @@ void cPtr_semanticInstructionForGeneration::method_appendSyntaxSignature (const 
 //--------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_appendSyntaxSignature (cPtr_semanticInstructionForGeneration * inObject,
-                                                const GGS_string constin_inPosfix,
-                                                GGS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                                const GGS_string constin__5F_inPosfix,
+                                                GGS_semanticInstructionListForGeneration & io__5F_ioInstructionListForGeneration,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
   if (nullptr != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticInstructionForGeneration) ;
-    inObject->method_appendSyntaxSignature (constin_inPosfix, io_ioInstructionListForGeneration, inCompiler COMMA_THERE) ;
+    inObject->method_appendSyntaxSignature (constin__5F_inPosfix, io__5F_ioInstructionListForGeneration, inCompiler COMMA_THERE) ;
   }
 }
 
@@ -14046,7 +14046,7 @@ void callExtensionMethod_appendSyntaxSignature (cPtr_semanticInstructionForGener
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool cPtr_semanticInstructionForGeneration::getter_compareInstructionSyntaxSignature (const GGS_semanticInstructionForGeneration /* constinArgument_inTestedInstruction */,
+GGS_bool cPtr_semanticInstructionForGeneration::getter_compareInstructionSyntaxSignature (const GGS_semanticInstructionForGeneration /* constinArgument__5F_inTestedInstruction */,
                                                                                           Compiler */* inCompiler */
                                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result_result ; // Returned variable
@@ -14060,12 +14060,12 @@ GGS_bool cPtr_semanticInstructionForGeneration::getter_compareInstructionSyntaxS
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
-                                                                const GGS_semanticInstructionForGeneration in_inTestedInstruction,
+                                                                const GGS_semanticInstructionForGeneration in__5F_inTestedInstruction,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) {
   GGS_bool result ;
   if (nullptr != inObject) {
-    result = inObject->getter_compareInstructionSyntaxSignature (in_inTestedInstruction, inCompiler COMMA_THERE) ;
+    result = inObject->getter_compareInstructionSyntaxSignature (in__5F_inTestedInstruction, inCompiler COMMA_THERE) ;
   }
   return result ;
 }

@@ -810,12 +810,12 @@ class cPtr_semanticInstructionForGeneration : public AbstractStrongPtrClass {
 
 
 //--- Extension func compareInstructionSyntaxSignature
-  public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration inTestedInstruction,
+  public: virtual class GGS_bool getter_compareInstructionSyntaxSignature (const class GGS_semanticInstructionForGeneration _inTestedInstruction,
            Compiler * COMMA_LOCATION_ARGS) const ;
 
 //--- Extension proc appendSyntaxSignature
-  public: virtual void method_appendSyntaxSignature (const class GGS_string arg_inPosfix,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+  public: virtual void method_appendSyntaxSignature (const class GGS_string arg__inPosfix,
+           class GGS_semanticInstructionListForGeneration & arg__ioInstructionListForGeneration,
            Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension proc generateInstruction
@@ -1204,8 +1204,8 @@ class cPtr_actualParameterAST : public AbstractStrongPtrClass {
 
 
 //--- Extension func isCompatibleWith
-  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST inFormalPassingMode,
-           const class GGS_string inSelector,
+  public: virtual class GGS_bool getter_isCompatibleWith (const class GGS_formalArgumentPassingModeAST _inFormalPassingMode,
+           const class GGS_string _inSelector,
            Compiler * COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Extension proc checkAgainstFormalArgument
@@ -1700,7 +1700,7 @@ class cPtr_actualParameterForGeneration : public AbstractStrongPtrClass {
            class GGS_string & arg_ioImplementation,
            class GGS_stringlist & arg_ioJokerParametersToReleaseList,
            class GGS_stringlist & arg_ioOutputVariableList,
-           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           class GGS_stringset & arg__ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppName,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
@@ -4806,7 +4806,7 @@ void extensionMethod_generateFixIt (const class GGS_fixitListForGeneration inObj
                                     class GGS_stringset & io_ioInclusionSet,
                                     class GGS_uint & io_ioTemporaryVariableIndex,
                                     class GGS_stringset & io_ioUnusedVariableCppNameSet,
-                                    const class GGS_bool constin_inGenerateSyntaxDirectedTranslationString,
+                                    const class GGS_bool constin__5F_inGenerateSyntaxDirectedTranslationString,
                                     class GGS_string & io_ioGeneratedCode,
                                     class GGS_string & out_outFixItArrayCppName,
                                     class Compiler * inCompiler
@@ -14865,7 +14865,7 @@ class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public Ab
 
 //--- Extension proc analyzeSDT
   public: virtual void method_analyzeSDT (const class GGS_analysisContext arg_inAnalysisContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS_unifiedTypeMap & arg__ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
@@ -15047,7 +15047,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultNone : public cPtr_a
 
 //--- Extension proc analyzeSDT
   public: virtual void method_analyzeSDT (const class GGS_analysisContext arg_inAnalysisContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS_unifiedTypeMap & arg__ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -15236,7 +15236,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationDropResult : public cPtr_a
 
 //--- Extension proc analyzeSDT
   public: virtual void method_analyzeSDT (const class GGS_analysisContext arg_inAnalysisContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS_unifiedTypeMap & arg__ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -15429,7 +15429,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar : public cPtr_
 
 //--- Extension proc analyzeSDT
   public: virtual void method_analyzeSDT (const class GGS_analysisContext arg_inAnalysisContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS_unifiedTypeMap & arg__ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -15626,7 +15626,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : publ
 
 //--- Extension proc analyzeSDT
   public: virtual void method_analyzeSDT (const class GGS_analysisContext arg_inAnalysisContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS_unifiedTypeMap & arg__ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -15825,7 +15825,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : pu
 
 //--- Extension proc analyzeSDT
   public: virtual void method_analyzeSDT (const class GGS_analysisContext arg_inAnalysisContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS_unifiedTypeMap & arg__ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;

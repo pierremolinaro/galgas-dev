@@ -56,10 +56,10 @@ syntax extension galgas4DeclarationsSyntax {
     $:$
     let @equatableComparableExtension theExtension
     select
-      $%equatable$
+      $#equatable$
       theExtension = .equatable
     or
-      $%comparable$
+      $#comparable$
       theExtension = .comparable
     end
     ioDeclarations.mDeclarationList ++= @(@equatableExtensionAST (
@@ -121,8 +121,8 @@ enum @equatableComparableExtension {
 
 map @equatableExtensionMap {
   public let @equatableComparableExtension mExtension
-  %insertSetter insertKey %errorMessage "the '%K' type is already declared equatable or commarable in %L"
-  %removeSetter removeKey %errorMessage "internal error ('%K' type)"
+  #insertSetter insertKey #errorMessage "the '%K' type is already declared equatable or commarable in %L"
+  #removeSetter removeKey #errorMessage "internal error ('%K' type)"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -142,11 +142,11 @@ final class @equatableExtensionAST : @semanticDeclarationAST {
   override proc enterDeclarationInGraph (
           ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
           ?!@equatableExtensionMap ioEquatableExtensionMap,
-          ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-          ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-          ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-          ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-          ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList) {
+          ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+          ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+          ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+          ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+          ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList) {
     let key = @lstring (self.keyRepresentation, self.mTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName))
@@ -180,25 +180,25 @@ final class @equatableExtensionAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext (
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-    let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-    let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-    let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
-    ?!@unifiedTypeMap unused ioTypeMap,
-    ?!@semanticContext unused ioSemanticContext) {
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
+    ?!@unifiedTypeMap _ioTypeMap,
+    ?!@semanticContext _ioSemanticContext) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis (
-                ?!@lstringlist unused ioUsefulnessRootEntities,
-                ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-                let @string unused inProductDirectory,
-                let @semanticContext unused inSemanticContext,
-                ?!@unifiedTypeMap unused ioTypeMap,
-                let @predefinedTypes unused inPredefinedTypes,
-                ?![@semanticDeclarationForGeneration] unused ioSemanticDeclarationListForGeneration) {
+                ?!@lstringlist _ioUsefulnessRootEntities,
+                ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+                let @string _inProductDirectory,
+                let @semanticContext _inSemanticContext,
+                ?!@unifiedTypeMap _ioTypeMap,
+                let @predefinedTypes _inPredefinedTypes,
+                ?![@semanticDeclarationForGeneration] _ioSemanticDeclarationListForGeneration) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

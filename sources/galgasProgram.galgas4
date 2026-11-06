@@ -65,43 +65,16 @@ before {
 
 //--------------------------------------------------------------------------------------------------
 //
-//          galgas3
-//
-//--------------------------------------------------------------------------------------------------
-
-//case . "galgas3"
-//%errorMessage "a GALGAS 3 source file"
-//grammar galgas3Grammar
-//?sourceFilePath: @lstring inSourceFile {
-////--- Search for a project file in parent directory
-//  let parentDirectory = inSourceFile.string.deletingLastPathComponent.deletingLastPathComponent
-//  let candidateProjectFiles = parentDirectory.regularFilesWithExtensions (!false, ![@("galgas4project")])
-//  if candidateProjectFiles.count == 0 then
-//    error (inSourceFile : "no project file in parent directory of source file")
-//  elsif candidateProjectFiles.count > 1 then
-//    var s = "several project files in source file parent directory:"
-//    for (mValue) in candidateProjectFiles do
-//      s += "\n  - " + mValue
-//    end
-//    error (inSourceFile : s)
-//  else
-//    let projectFilePath = parentDirectory + "/" + candidateProjectFiles.mValueAtIndex (!0)
-//    parseAndAnalyzeProject (!@(!projectFilePath, inSourceFile.location), !inSourceFile.string)
-//  end
-//}
-
-//--------------------------------------------------------------------------------------------------
-//
 //          galgas4
 //
 //--------------------------------------------------------------------------------------------------
 
 case . "galgas4"
-%errorMessage "a GALGAS 4 source file"
+#errorMessage "a GALGAS 4 source file"
 grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
   let parentDirectory = inSourceFile.string.deletingLastPathComponent.deletingLastPathComponent
-  let candidateProjectFiles = parentDirectory.regularFilesWithExtensions (false, [@("galgas4project")])
+  let candidateProjectFiles = parentDirectory.regularFilesWithExtensions (!recursive: false, [@("galgas4project")])
   if candidateProjectFiles.count == 0 then
     error (inSourceFile : "no project file in parent directory of source file")
   elsif candidateProjectFiles.count > 1 then
@@ -123,7 +96,7 @@ grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 //--------------------------------------------------------------------------------------------------
 
 case . "galgasTemplate"
-%errorMessage "a GALGAS Template source file"
+#errorMessage "a GALGAS Template source file"
 grammar templateGrammar
 ?sourceFilePath:@lstring inSourceFile {
   grammar templateGrammar (?*) in inSourceFile
@@ -136,7 +109,7 @@ grammar templateGrammar
 //--------------------------------------------------------------------------------------------------
 
 case . "galgas4project"
-%errorMessage "a GALGAS project source file"
+#errorMessage "a GALGAS project source file"
 grammar galgas4ProjectGrammar
 ?sourceFilePath: @lstring inProjectSourceFile {
   parseAndAnalyzeProject (inProjectSourceFile, "" )

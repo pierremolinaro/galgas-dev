@@ -321,8 +321,8 @@ override proc @nonTerminalInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruc
   ?!node: @string ioCurrentNode,
   ?!arrowShape: @string ioArrowShape,
   ?!arrows:@string ioArrows,
-  ?!@uint unused ioMaxUsedRowIndex,
-  ?debug:let @bool unused inDebug
+  ?!@uint _ioMaxUsedRowIndex,
+  ?debug:let @bool _inDebug
 ) {
   let nodeDefinition = "[nonterminal] {\\nonTerminalSymbol{" + escapeForTex (self.mNonterminalSymbolName)
     + "}{" + self.mNonterminalSymbolIndex + "}}"

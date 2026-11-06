@@ -90,7 +90,7 @@ syntax extension galgas4InstructionsSyntax {
       $[$
       <non_empty_output_expression_list> (
         !?ioDeclarations,
-        ?let @actualOutputArgumentList unused outExpressionList
+        ?let @actualOutputArgumentList _outExpressionList
       )
       $]$
       error (.here : "not handled yet" spoil optionalProperty)
@@ -123,7 +123,7 @@ syntax extension galgas4InstructionsSyntax {
       $[$
       <non_empty_output_expression_list> (
          !?ioDeclarations,
-         ?let @actualOutputArgumentList unused outExpressionList
+         ?let @actualOutputArgumentList _outExpressionList
       )
       $]$
       error (.here : "not handled yet" spoil optionalProperty)
@@ -334,7 +334,7 @@ class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
   override proc generateInstruction (?!@stringset ioInclusionSet,
                                        ?!@uint ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
-                                       let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                       let @bool _inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
     self.mSourceExpression.generateExpression
       (!?ioGeneratedCode,

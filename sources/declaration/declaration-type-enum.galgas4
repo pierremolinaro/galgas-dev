@@ -107,7 +107,7 @@ syntax extension galgas4DeclarationsSyntax {
     var @structComparison comparison = .none
     repeat
     while
-      $%comparable$
+      $#comparable$
       switch comparison
       case none :
         comparison = .comparable
@@ -117,7 +117,7 @@ syntax extension galgas4DeclarationsSyntax {
         error (.here : "%comparable and %equatable are mutually exclusive")
       end
     while
-      $%equatable$
+      $#equatable$
       switch comparison
       case none :
         comparison = .equatable
@@ -195,7 +195,7 @@ list @enumConstantList {
 final class @enumDeclarationAST : @semanticDeclarationAST {
   private let @lstring enumTypeName
   private let @enumConstantList mConstantList
-  private let @structComparison comparison %initArgLabel
+  private let @structComparison comparison #initArgLabel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -248,12 +248,12 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInGraph
         (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-        ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-        ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-        ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-        ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-        ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-        ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
+        ?!@equatableExtensionMap _ioEquatableExtensionMap,
+        ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+        ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+        ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+        ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+        ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
     let key = @lstring ("@" + self.enumTypeName, self.enumTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   //--- There is a circular reference if all constants names current type in associated values
@@ -438,10 +438,10 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
   override proc semanticAnalysis
                     (?!@lstringlist ioUsefulnessRootEntities,
                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                    let @string unused inProductDirectory,
-                    let @semanticContext unused inSemanticContext,
+                    let @string _inProductDirectory,
+                    let @semanticContext _inSemanticContext,
                     ?!@unifiedTypeMap ioTypeMap,
-                    let @predefinedTypes unused inPredefinedTypes,
+                    let @predefinedTypes _inPredefinedTypes,
                     ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration ) {
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.enumTypeName)
@@ -524,7 +524,7 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
+  override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                      !@string outHeader ) {
     var @bool hasAssociatedValues = false
     for constant in self.constantList while not hasAssociatedValues do
@@ -558,7 +558,7 @@ final class @enumTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
                                                 ?!@stringset ioInclusionSet,
                                                 !@string outImplementation ) {
     for type in self.associatedValuesTypes do

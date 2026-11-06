@@ -256,7 +256,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     select
       hasTranslateFeature = false
     or
-      $%translate$
+      $#translate$
       hasTranslateFeature = true
     end
     ${$

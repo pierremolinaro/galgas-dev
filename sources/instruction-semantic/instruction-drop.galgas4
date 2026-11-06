@@ -55,7 +55,7 @@ syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <semantic_instruction> (?!@galgasDeclarationAST unused ioDeclarations,
+  rule <semantic_instruction> (?!@galgasDeclarationAST _ioDeclarations,
                                !@semanticInstructionAST outInstruction) {
     $drop$
     let instructionLocation = @location.here
@@ -77,18 +77,18 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override proc @dropInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
+override proc @dropInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap _ioTypeMap) {
 }
 
 //--------------------------------------------------------------------------------------------------
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
 
-override proc @dropInstructionAST.analyzeSemanticInstruction (let @lstring unused inUsefulnessCallerEntityName,
-                                                                ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-                                                                let @analysisContext unused inAnalysisContext,
-                    						                          ?!@unifiedTypeMap unused ioTypeMap,
-                                   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration,
+override proc @dropInstructionAST.analyzeSemanticInstruction (let @lstring _inUsefulnessCallerEntityName,
+                                                                ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+                                                                let @analysisContext _inAnalysisContext,
+                    						                          ?!@unifiedTypeMap _ioTypeMap,
+                                   ?!@semanticInstructionListForGeneration _ioInstructionListForGeneration,
                                    ?!@localVarManager ioVariableMap) {
   for entry in self.mDropList do
     !?ioVariableMap.searchForDropAccess (entry.mValue)

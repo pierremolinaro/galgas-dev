@@ -51,7 +51,7 @@ syntax galgas4ExpressionSyntax (galgasScanner4) {
   rule <type_definition> (?!@galgasDeclarationAST ioDeclarations,
                          !@lstring outTypeName)
 
-  rule <simple_type_definition> (?!@galgasDeclarationAST unused ioDeclarations,
+  rule <simple_type_definition> (?!@galgasDeclarationAST _ioDeclarations,
                                 !@lstring outTypeName)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

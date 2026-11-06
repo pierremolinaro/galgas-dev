@@ -1,7 +1,7 @@
 project (1:0:0) -> "LL1Expression" {
 //--- Targets
-  %makefile-unix
-  %MacSwiftApp
-  %applicationBundleBase : "fr.what"
+  #makefile-unix
+  #MacSwiftApp
+  #applicationBundleBase : "fr.what"
 }
 

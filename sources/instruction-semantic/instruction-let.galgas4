@@ -142,7 +142,7 @@ syntax extension galgas4InstructionsSyntax {
 //! CONTEXT
 //--------------------------------------------------------------------------------------------------
 
-override proc @undefinedLocalConstantDeclarationAST.enterInstructionInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
+override proc @undefinedLocalConstantDeclarationAST.enterInstructionInSemanticContext (?!@unifiedTypeMap _ioTypeMap) {
 }
 
 //·································································································
@@ -166,9 +166,9 @@ override proc @localVariableOrConstantDeclarationWithAssignmentAST.enterInstruct
 //--------------------------------------------------------------------------------------------------
 
 override proc @undefinedLocalConstantDeclarationAST.analyzeSemanticInstruction (
-                        let @lstring unused inUsefulnessCallerEntityName,
-                        ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-                        let @analysisContext unused inAnalysisContext,
+                        let @lstring _inUsefulnessCallerEntityName,
+                        ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+                        let @analysisContext _inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
@@ -296,9 +296,9 @@ final class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration
 
 override proc @undefinedLocalConstantDeclarationForGeneration.generateInstruction (
   ?!@stringset ioInclusionSet,
-  ?!@uint unused ioTemporaryVariableIndex,
-  ?!@stringset unused ioUnusedVariableCppNameSet,
-  let @bool unused inGenerateSyntaxDirectedTranslationString,
+  ?!@uint _ioTemporaryVariableIndex,
+  ?!@stringset _ioUnusedVariableCppNameSet,
+  let @bool _inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {
   self.mTargetType.addHeaderFileName (!?ioInclusionSet)
   ioGeneratedCode += "GGS_" + self.mTargetType.identifierRepresentation + " " + self.mCppVariableName + " ;\n"
@@ -310,7 +310,7 @@ override proc @localVariableOrConstantDeclarationWithSourceExpressionForGenerati
                                 ?!@stringset ioInclusionSet,
     								   ?!@uint ioTemporaryVariableIndex,
                        			?!@stringset ioUnusedVariableCppNameSet,
-                                let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                let @bool _inGenerateSyntaxDirectedTranslationString,
                                 ?!@string ioGeneratedCode) {
   self.mTargetType.addHeaderFileName (!?ioInclusionSet)
   self.mSourceExpression.generateExpression

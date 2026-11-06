@@ -41,7 +41,7 @@ list @lexicalInstructionListAST {
 
 list @templateDelimitorListAST {
   public let @lstring mStartString
-  public let @bool nonAtomicSelection %initArgLabel
+  public let @bool nonAtomicSelection #initArgLabel
   public let @bool mTemplateEndMark
   public let @bool mPreserved
   public let @lstring mEndString
@@ -116,8 +116,8 @@ list @terminalDeclarationListAST {
   public let @sentLexicalAttributeListAST mSentAttributeList
   public let @lstring mSyntaxErrorMessage
   public let @lstring mStyle // Empty string if no style
-  public let @bool nonAtomicSelection %initArgLabel
-  public let @bool isEndOfTemplateMark %initArgLabel
+  public let @bool nonAtomicSelection #initArgLabel
+  public let @bool isEndOfTemplateMark #initArgLabel
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -125,8 +125,8 @@ list @terminalDeclarationListAST {
 list @lexicalListEntryListAST {
   public let @lstring mEntrySpelling
   public let @lstring mTerminalSpelling
-  public let @bool nonAtomicSelection %initArgLabel
-  public let @bool isEndOfTemplateMark %initArgLabel
+  public let @bool nonAtomicSelection #initArgLabel
+  public let @bool isEndOfTemplateMark #initArgLabel
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -267,7 +267,7 @@ final class @lexicalFunctionInputArgumentAST : @lexicalRoutineOrFunctionFormalIn
 
 //--------------------------------------------------------------------------------------------------
 
-enum @lexicalArgumentModeAST %equatable {
+enum @lexicalArgumentModeAST #equatable {
   case lexicalInputMode
   case lexicalInputOutputMode
 }
@@ -313,7 +313,7 @@ list @indexingListAST {
 //
 //--------------------------------------------------------------------------------------------------
 
-enum @lexicalTypeEnum %equatable {
+enum @lexicalTypeEnum #equatable {
   case lexicalType_string
   case lexicalType_char
   case lexicalType_uint
@@ -336,8 +336,8 @@ list @lexicalSentValueList {
 
 map @terminalMap {
   public let @lexicalSentValueList mSentAttributeList
-  %insertSetter insertKey %errorMessage "the '%K' terminal has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' terminal is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' terminal has been already declared in %L"
+  #searchMethod searchKey #errorMessage "the '%K' terminal is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -346,13 +346,13 @@ map @terminalMap {
 
 map @lexicalTypeMap {
   public let @lexicalTypeEnum mLexicalType
-  %insertSetter insertKey %errorMessage "the '@%K' lexical type is already declared in %L"
-  %searchMethod searchKey %errorMessage "there is no '@%K' lexical type"
+  #insertSetter insertKey #errorMessage "the '@%K' lexical type is already declared in %L"
+  #searchMethod searchKey #errorMessage "there is no '@%K' lexical type"
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func %once buildLexicalTypeMap () -> @lexicalTypeMap {
+func #once buildLexicalTypeMap () -> @lexicalTypeMap {
   result = @()
   !?result.insertKey (@lstring ("string", @location.here), .lexicalType_string)
   !?result.insertKey (@lstring ("char", @location.here), .lexicalType_char)
@@ -368,8 +368,8 @@ func %once buildLexicalTypeMap () -> @lexicalTypeMap {
 
 map @lexicalAttributeMap {
   public let @lexicalTypeEnum mLexicalType
-  %insertSetter insertKey %errorMessage "the '%K' lexical attribute has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' lexical attribute is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' lexical attribute has been already declared in %L"
+  #searchMethod searchKey #errorMessage "the '%K' lexical attribute is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------

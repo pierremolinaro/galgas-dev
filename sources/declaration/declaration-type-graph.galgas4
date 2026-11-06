@@ -69,9 +69,9 @@ syntax extension galgas4DeclarationsSyntax {
     var graphInsertModifierList = @graphInsertModifierList ()
     repeat
     while
-      $%insertSetter$
+      $#insertSetter$
       $identifier$ (?let @lstring insertName)
-      $%errorMessage$
+      $#errorMessage$
       $"string"$ (?let @lstring errorMessage)
       graphInsertModifierList ++= @(insertName, errorMessage)
     end
@@ -108,12 +108,12 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInGraph
     (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+    ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList
   ) {
     let key = @lstring ("@" + self.mGraphTypeName, self.mGraphTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
@@ -503,10 +503,10 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
 
   override proc semanticAnalysis (?!@lstringlist ioUsefulnessRootEntities,
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                  let @string unused inProductDirectory,
-                                  let @semanticContext unused inSemanticContext,
+                                  let @string _inProductDirectory,
+                                  let @semanticContext _inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-                      let @predefinedTypes unused inPredefinedTypes,
+                      let @predefinedTypes _inPredefinedTypes,
                       ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
                     ) {
   //--- Useful entities graph
@@ -573,7 +573,7 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
+  override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                      !@string outHeader ) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = filewrapper [typeGenerationTemplate.graphTypeHeader1 :
@@ -601,7 +601,7 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
                                                ?!@stringset ioInclusionSet,
                                                !@string outImplementation ) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)

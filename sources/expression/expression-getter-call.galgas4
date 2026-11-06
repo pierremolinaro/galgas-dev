@@ -36,7 +36,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
   override proc analyzeSemanticExpression
                           (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                          ?inferenceType: let @unifiedTypeMapEntry unused inType,
+                          ?inferenceType: let @unifiedTypeMapEntry _inType,
                           let @analysisContext inAnalysisContext,
                           ?!@unifiedTypeMap ioTypeMap,
                           ?!@localVarManager ioVariableMap,
@@ -60,7 +60,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
     if let aGetter = receiverType.definition.getterMap [self.mGetterName] then
       if aGetter.mGetterNameThatObsoletesInvokationName != "" then
         error (self.mGetterName : "obsolete func" fixit
-          %replaceBy aGetter.mGetterNameThatObsoletesInvokationName
+          #replaceBy aGetter.mGetterNameThatObsoletesInvokationName
         )
       end
       if receiverType.definition.propertyMap.hasKey (self.mGetterName.string)
@@ -87,7 +87,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           )
           if formal.mFormalSelector.string != actual.mActualSelector.string then
             let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
-            error (actual.mActualSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
+            error (actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
           end
           checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
           constructorEffectiveParameterList ++= @(exp)
@@ -103,7 +103,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           aGetter.mHasCompilerArgument
         )
         if self.mActualArgumentList.count == 0 then
-          error (self.mExpressionLocation : "func with no argument, remove parenthesis" fixit %remove)
+          error (self.mExpressionLocation : "func with no argument, remove parenthesis" fixit #remove)
         end
       end
   //-------------------------------------- The func does not exist, it is a property ?
@@ -175,13 +175,13 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
             )
             if formal.mFormalSelector.string != actual.mActualSelector.string then
               let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
-              error (actual.mActualSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
+              error (actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
             end
             checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
             constructorEffectiveParameterList ++= @(exp)
           end
           if obsoletedByGetter != "" then
-            error (self.mGetterName : "obsolete func" fixit %replaceBy obsoletedByGetter)
+            error (self.mGetterName : "obsolete func" fixit #replaceBy obsoletedByGetter)
           end
           outExpression = @getterCallExpressionForGeneration (
             returnedType,
@@ -202,7 +202,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         error (self.mGetterName
         : "the '@"+ receiverType.definition.typeName.string + "' type does not define the '" + self.mGetterName + "' func "
         spoil outExpression
-        fixit %replaceBy receiverType.definition.getterMap.keyList)
+        fixit #replaceBy receiverType.definition.getterMap.keyList)
       end
     end
   }

@@ -202,12 +202,12 @@ syntax extension galgas4DeclarationsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @overridingExtensionGetterAST.enterDeclarationInGraph (
-  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
+  ?!@semanticTypePrecedenceGraph _ioSemanticTypePrecedenceGraph,
+  ?!@equatableExtensionMap _ioEquatableExtensionMap,
+  ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+  ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
   ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext,
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
+  ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
   ioExtensionOverrideDefinitionList ++= @(self)
 //---
@@ -240,13 +240,13 @@ override func @overridingExtensionGetterAST.keyRepresentation () -> @string {
 //--------------------------------------------------------------------------------------------------
 
 override proc @overridingExtensionGetterAST.enterDeclarationInSemanticContext (
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-  let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-  let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-  let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
-                                ?!@unifiedTypeMap unused ioTypeMap,
-  ?!@semanticContext unused ioSemanticContext) {
+  ?!@equatableExtensionMap _ioEquatableExtensionMap,
+  let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+  let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+  let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+  let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
+                                ?!@unifiedTypeMap _ioTypeMap,
+  ?!@semanticContext _ioSemanticContext) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -254,9 +254,9 @@ override proc @overridingExtensionGetterAST.enterDeclarationInSemanticContext (
 //--------------------------------------------------------------------------------------------------
 
 override proc @overridingExtensionGetterAST.semanticAnalysis (
-  ?!@lstringlist unused ioUsefulnessRootEntities,
+  ?!@lstringlist _ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @string unused inProductDirectory,
+  let @string _inProductDirectory,
   let @semanticContext inSemanticContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   let @predefinedTypes inPredefinedTypes,
@@ -355,18 +355,18 @@ override proc @overridingExtensionGetterAST.semanticAnalysis (
 //--------------------------------------------------------------------------------------------------
 
 override proc @overridingExtensionGetterAST.buildExtensionListMaps (
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap,
-  ?!@genericExtensionMethodListMap unused ioExtensionSetterListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap,
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST,
-  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap,
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap,
-  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap _ioAbstractExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap _ioExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap _ioOverridingExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap _ioOverridingAbstractExtensionSetterListMap,
+  ?!@genericExtensionMethodListMap _ioAbstractExtensionMethodListMapAST,
+  ?!@genericExtensionMethodListMap _ioExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap _ioOverridingExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap _ioOverridingAbstractExtensionMethodListMap,
+  ?!@genericExtensionMethodListMap _ioAbstractExtensionGetterListMap,
+  ?!@genericExtensionMethodListMap _ioExtensionGetterListMap,
   ?!@genericExtensionMethodListMap ioOverridingExtensionGetterListMap,
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap) {
+  ?!@genericExtensionMethodListMap _ioOverridingAbstractExtensionGetterListMap) {
   !?ioOverridingExtensionGetterListMap.insertKey
     (self.mTypeName.string,
     self.mOverridingExtensionGetterName
@@ -397,7 +397,7 @@ override func @overrideExtensionGetterForGeneration.headerKind () ->@headerKind 
 //································································································
 
 override proc @overrideExtensionGetterForGeneration.appendSpecificImplementation (
-                                                              let @unifiedTypeMap unused inTypeMap,
+                                                              let @unifiedTypeMap _inTypeMap,
                                                               ?!@stringset ioInclusionSet,
                                                               !@string outImplementation) {
   ioInclusionSet ++= "class-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation

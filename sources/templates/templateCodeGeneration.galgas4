@@ -26,9 +26,9 @@
 abstract proc @templateInstructionForGeneration.templateCodeGeneration
   (?!@string ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint unused ioTemporaryVariableIndex,
-  ?!@stringset unused ioUnusedVariableCppNameSet,
-  ?!@bool unused ioUseColumnMarker)
+  ?!@uint _ioTemporaryVariableIndex,
+  ?!@stringset _ioUnusedVariableCppNameSet,
+  ?!@bool _ioUseColumnMarker)
 
 //--------------------------------------------------------------------------------------------------
 
@@ -53,10 +53,10 @@ proc templateCodeGenerationForListInstruction (let @templateInstructionListForGe
 
 override proc @templateInstructionStringForGeneration.templateCodeGeneration
   (?!@string ioGeneratedCode,
-  ?!@stringset unused  ioInclusionSet,
-  ?!@uint unused ioTemporaryVariableIndex,
-  ?!@stringset unused ioUnusedVariableCppNameSet,
-  ?!@bool unused ioUseColumnMarker ) {
+  ?!@stringset _ioInclusionSet,
+  ?!@uint _ioTemporaryVariableIndex,
+  ?!@stringset _ioUnusedVariableCppNameSet,
+  ?!@bool _ioUseColumnMarker ) {
   ioGeneratedCode += "result.appendString (" + self.mTemplateString.utf8RepresentationEscapingQuestionMark + ") ;\n"
 }
 
@@ -67,7 +67,7 @@ override proc @templateInstructionExpressionForGeneration.templateCodeGeneration
   ?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
-  ?!@bool unused ioUseColumnMarker ) {
+  ?!@bool _ioUseColumnMarker ) {
 //--- Expression
   self.mExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let cppName)
   ioGeneratedCode += "result.appendString (" + cppName + ".stringValue ()) ;\n"
@@ -103,9 +103,9 @@ override proc @templateBlockInstructionForGeneration.templateCodeGeneration
 
 override proc @templateInstructionGetColumnLocationForGeneration.templateCodeGeneration
   (?!@string ioGeneratedCode,
-  ?!@stringset unused ioInclusionSet,
-  ?!@uint unused ioTemporaryVariableIndex,
-  ?!@stringset unused ioUnusedVariableCppNameSet,
+  ?!@stringset _ioInclusionSet,
+  ?!@uint _ioTemporaryVariableIndex,
+  ?!@stringset _ioUnusedVariableCppNameSet,
   ?!@bool ioUseColumnMarker ) {
   ioUseColumnMarker = true
   ioGeneratedCode += "columnMarker = result.currentColumn () ;\n"
@@ -115,9 +115,9 @@ override proc @templateInstructionGetColumnLocationForGeneration.templateCodeGen
 
 override proc @templateInstructionGotoColumnLocationForGeneration.templateCodeGeneration
   (?!@string ioGeneratedCode,
-  ?!@stringset unused ioInclusionSet,
-  ?!@uint unused ioTemporaryVariableIndex,
-  ?!@stringset unused ioUnusedVariableCppNameSet,
+  ?!@stringset _ioInclusionSet,
+  ?!@uint _ioTemporaryVariableIndex,
+  ?!@stringset _ioUnusedVariableCppNameSet,
   ?!@bool ioUseColumnMarker ) {
   ioUseColumnMarker = true
   ioGeneratedCode += "result.appendSpacesUntilColumn (columnMarker) ;\n"

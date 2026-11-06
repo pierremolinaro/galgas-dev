@@ -20,7 +20,7 @@
 //--------------------------------------------------------------------------------------------------
 
 abstract class @semanticDeclarationAST {
-  protected let @bool isPredefined %initArgLabel
+  protected let @bool isPredefined #initArgLabel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -35,13 +35,13 @@ abstract class @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   abstract proc enterDeclarationInSemanticContext (
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-    let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-    let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-    let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
-    ?!@semanticContext unused ioSemanticContext)
+    ?!@semanticContext _ioSemanticContext)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -49,10 +49,10 @@ abstract class @semanticDeclarationAST {
     ?!@lstringlist ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
     let @string inProductDirectory,
-    let @semanticContext unused inSemanticContext,
-                                  ?!@unifiedTypeMap unused ioTypeMap,
-    let @predefinedTypes unused inPredefinedTypes,
-    ?![@semanticDeclarationForGeneration] unused ioSemanticDeclarationListForGeneration)
+    let @semanticContext _inSemanticContext,
+                                  ?!@unifiedTypeMap _ioTypeMap,
+    let @predefinedTypes _inPredefinedTypes,
+    ?![@semanticDeclarationForGeneration] _ioSemanticDeclarationListForGeneration)
 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

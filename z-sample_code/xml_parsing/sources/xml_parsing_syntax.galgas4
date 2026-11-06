@@ -83,7 +83,7 @@ rule <element_list>
 rule <element>
   (?!@xmlNodeList ioNodes,
   let @bool inIncludeComments,
-  let @bool unused inDoNotCondenseWhiteSpaces,
+  let @bool _inDoNotCondenseWhiteSpaces,
   let @bool inPrintDuringParsing,
   let @string inIndendation ) {
   $comment$ (?let @lstring commentString)

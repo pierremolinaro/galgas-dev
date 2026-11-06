@@ -18,7 +18,7 @@ final class @classWithSuperClassAST : @declarationAST {
 
 
 graph @inheritanceGraph (@declarationListAST) {
-  %insertSetter addNode %errorMessage "the '%K' class is already declared"
+  #insertSetter addNode #errorMessage "the '%K' class is already declared"
 }
 
 abstract proc @declarationAST.buildGraph

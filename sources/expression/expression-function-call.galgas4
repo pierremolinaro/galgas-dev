@@ -100,7 +100,7 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
   override proc analyzeSemanticExpression
     (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-    ?inferenceType: let @unifiedTypeMapEntry unused inType,
+    ?inferenceType: let @unifiedTypeMapEntry _inType,
     let @analysisContext inAnalysisContext,
                                   ?!@unifiedTypeMap ioTypeMap,
     ?!@localVarManager ioVariableMap,
@@ -153,7 +153,7 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
             else ""
           end
           error (actualArg.mActualSelector : "the selector should be '" + s + "'"
-          fixit %replaceBy s)
+          fixit #replaceBy s)
         end
         semanticExpressionListForGeneration ++= @(expression)
       end

@@ -38,13 +38,13 @@ func @location.commaSourceFile () -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-func %once compilerCppName () ->@string {
+func #once compilerCppName () ->@string {
   result = "inCompiler"
 }
 
 //--------------------------------------------------------------------------------------------------
 
-func %once syntaxDirectedTranslationResultVarName () ->@string {
+func #once syntaxDirectedTranslationResultVarName () ->@string {
   result = "ioSyntaxDirectedTranslationResult"
 }
 
@@ -74,8 +74,8 @@ proc @semanticInstructionListAST.enterInstructionListInSemanticContext
 
 map @grammarLabelMap {
   public let @formalParameterSignature mLabelSignature
-  %insertSetter insertKey %errorMessage "the '%K' grammar label has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' grammar label is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' grammar label has been already declared in %L"
+  #searchMethod searchKey #errorMessage "the '%K' grammar label is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -84,8 +84,8 @@ map @grammarMap {
   public let @grammarLabelMap mLabelMap
   public let @bool mHasIndexing
   public let @bool mHasTranslateFeature
-  %insertSetter insertGrammar %errorMessage "the '%K' grammar has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' grammar is not declared"
+  #insertSetter insertGrammar #errorMessage "the '%K' grammar has been already declared in %L"
+  #searchMethod searchKey #errorMessage "the '%K' grammar is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -98,8 +98,8 @@ map @functionMap {
   public let @functionSignature mFunctionSignature
   public let @unifiedTypeMapEntry mResultType
   public let @bool mIsInternal
-  %insertSetter insertKey %errorMessage "the '%K' function has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' function is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' function has been already declared in %L"
+  #searchMethod searchKey #errorMessage "the '%K' function is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -113,8 +113,8 @@ map @wrapperFileMap { // Key is file name
   public let @bool mIsTextFile // true: text file, false: binary file
   public let @uint mWrapperDirectoryIndex
   public let @uint mWrapperFileIndex
-  %insertSetter insertKey %errorMessage "INTERNAL ERROR"
-  %searchMethod searchKey %errorMessage "INTERNAL ERROR"
+  #insertSetter insertKey #errorMessage "INTERNAL ERROR"
+  #searchMethod searchKey #errorMessage "INTERNAL ERROR"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -123,8 +123,8 @@ map @wrapperDirectoryMap { // Key is directory name
   public let @wrapperFileMap mRegularFileMap
   public let @wrapperDirectoryMap mDirectoryMap
   public let @uint mWrapperDirectoryIndex
-  %insertSetter insertKey %errorMessage "INTERNAL ERROR"
-  %searchMethod searchKey %errorMessage "INTERNAL ERROR"
+  #insertSetter insertKey #errorMessage "INTERNAL ERROR"
+  #searchMethod searchKey #errorMessage "INTERNAL ERROR"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -132,8 +132,8 @@ map @wrapperDirectoryMap { // Key is directory name
 map @filewrapperTemplateMap {
   public let @functionSignature mTemplateSignature
   public let @lstring mFilewrapperTemplatePath
-  %insertSetter insertKey %errorMessage "the '%K' filewrapper template has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' filewrapper template is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' filewrapper template has been already declared in %L"
+  #searchMethod searchKey #errorMessage "the '%K' filewrapper template is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -145,8 +145,8 @@ map @filewrapperMap {
   public let @wrapperDirectoryMap mFilewrapperDirectoryMap
   public let @filewrapperTemplateMap mFilewrapperTemplateMap
   public let @bool mIsInternal
-  %insertSetter insertKey %errorMessage "the '%K' filewrapper has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' filewrapper is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' filewrapper has been already declared in %L"
+  #searchMethod searchKey #errorMessage "the '%K' filewrapper is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -160,8 +160,8 @@ map @optionComponentMapForSemanticAnalysis {
   public let @commandLineOptionMap mBoolOptionMap
   public let @commandLineOptionMap mUIntOptionMap
   public let @commandLineOptionMap mStringOptionMap
-  %insertSetter insertKey %errorMessage "redefinition of the '%K' option component: it has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' option component is not imported"
+  #insertSetter insertKey #errorMessage "redefinition of the '%K' option component: it has been already declared in %L"
+  #searchMethod searchKey #errorMessage "the '%K' option component is not imported"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -179,8 +179,8 @@ map @lexiqueComponentMapForSemanticAnalysis {
   private let @lexicalAttributeListAST mLexicalAttributeListAST
   private let @lexicalStyleListAST mLexicalStyleListAST
   private let @lexicalListDeclarationListAST mLexicalListDeclarationListAST
-  %insertSetter insertKey %errorMessage "redefinition of the '%K' lexique component: it has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' lexique component is not imported"
+  #insertSetter insertKey #errorMessage "redefinition of the '%K' lexique component: it has been already declared in %L"
+  #searchMethod searchKey #errorMessage "the '%K' lexique component is not imported"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -194,8 +194,8 @@ map @syntaxComponentMap {
   public let @nonterminalDeclarationListAST mNonterminalDeclarationList
   public let @syntaxRuleListAST mRuleList
   public let @bool mHasTranslateFeature
-  %insertSetter insertKey %errorMessage "the '%K' syntax component has already been parsed"
-  %searchMethod searchKey %errorMessage "the '%K' syntax component is not parsed"
+  #insertSetter insertKey #errorMessage "the '%K' syntax component has already been parsed"
+  #searchMethod searchKey #errorMessage "the '%K' syntax component is not parsed"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -222,17 +222,17 @@ struct @semanticContext {
 
 map @extensionInitializerMapForType {
   public let @formalInputParameterListAST mFormalParameterList
-  %insertSetter insertKey %errorMessage "the '%K' initializer has been already declared in %L"
+  #insertSetter insertKey #errorMessage "the '%K' initializer has been already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 map @extensionInitializerForBuildingContext {
   public let @extensionInitializerMapForType mExtensionInitializerMapForType
-  %insertSetter insertKey %errorMessage "internal error"
-  %searchMethod searchKey %errorMessage "internal error"
-  %searchSubscript searchKey %errorMessage "internal error"
-  %replaceSetter replaceKey %errorMessage "internal error"
+  #insertSetter insertKey #errorMessage "internal error"
+  #searchMethod searchKey #errorMessage "internal error"
+  #searchSubscript searchKey #errorMessage "internal error"
+  #replaceSetter replaceKey #errorMessage "internal error"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -244,17 +244,17 @@ map @extensionInitializerForBuildingContext {
 map @extensionMethodMapForType {
   public let @formalParameterListAST mFormalParameterList
   public let @methodQualifier mQualifier
-  %insertSetter insertKey %errorMessage "the '%K' proc has been already declared in %L"
+  #insertSetter insertKey #errorMessage "the '%K' proc has been already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 map @extensionMethodMapForBuildingContext {
   public let @extensionMethodMapForType mExtensionMethodMapForType
-  %insertSetter insertKey %errorMessage "internal error"
-  %searchMethod searchKey %errorMessage "internal error"
-  %searchSubscript searchKey %errorMessage "internal error"
-  %replaceSetter replaceKey %errorMessage "internal error"
+  #insertSetter insertKey #errorMessage "internal error"
+  #searchMethod searchKey #errorMessage "internal error"
+  #searchSubscript searchKey #errorMessage "internal error"
+  #replaceSetter replaceKey #errorMessage "internal error"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -265,17 +265,17 @@ map @extensionMethodMapForBuildingContext {
 
 map @extensionSetterMapForType {
   public let @formalParameterListAST mFormalParameterList
-  %insertSetter insertKey %errorMessage "the '%K' mutating proc has been already declared in %L"
+  #insertSetter insertKey #errorMessage "the '%K' mutating proc has been already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 map @extensionSetterMapForBuildingContext {
   public let @extensionSetterMapForType mExtensionSetterMapForType
-  %insertSetter insertKey %errorMessage "internal error"
-  %searchMethod searchKey %errorMessage "internal error"
-  %searchSubscript searchKey %errorMessage "internal error"
-  %replaceSetter replaceKey %errorMessage "internal error"
+  #insertSetter insertKey #errorMessage "internal error"
+  #searchMethod searchKey #errorMessage "internal error"
+  #searchSubscript searchKey #errorMessage "internal error"
+  #replaceSetter replaceKey #errorMessage "internal error"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -288,17 +288,17 @@ map @extensionGetterMapForType {
   public let @lstring mResultTypeName
   public let @formalInputParameterListAST mInputFormalParameterList
   public let @methodQualifier mQualifier
-  %insertSetter insertKey %errorMessage "the '%K' func has been already declared in %L"
+  #insertSetter insertKey #errorMessage "the '%K' func has been already declared in %L"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 map @extensionGetterMapForBuildingContext {
   public let @extensionGetterMapForType mExtensionGetterMapForType
-  %insertSetter insertKey %errorMessage "internal error"
-  %searchMethod searchKey %errorMessage "internal error"
-  %searchSubscript searchKey %errorMessage "internal error"
-  %replaceSetter replaceKey %errorMessage "internal error"
+  #insertSetter insertKey #errorMessage "internal error"
+  #searchMethod searchKey #errorMessage "internal error"
+  #searchSubscript searchKey #errorMessage "internal error"
+  #replaceSetter replaceKey #errorMessage "internal error"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -375,7 +375,7 @@ proc addExtensions
      let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
      let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
      let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
-     ?!@semanticContext unused ioSemanticContext,
+     ?!@semanticContext _ioSemanticContext,
      ?!@unifiedTypeMap ioTypeMap,
      let @lstring inTypeName,
      ?isClass: let @bool inIsClass,
@@ -523,7 +523,7 @@ proc addExtensions
 //--------------------------------------------------------------------------------------------------
 
 map @wrapperExtensionMap {
-  %insertSetter insertKey %errorMessage "the '%K' extension has been already declared"
+  #insertSetter insertKey #errorMessage "the '%K' extension has been already declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -592,11 +592,11 @@ proc recursivelyEnumerateDirectories
 //--------------------------------------------------------------------------------------------------
 
 override proc @filewrapperDeclarationAST.enterDeclarationInSemanticContext
-  (?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-  let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-  let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-  let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+  (?!@equatableExtensionMap _ioEquatableExtensionMap,
+  let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+  let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+  let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+  let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@semanticContext ioSemanticContext
 ) {
@@ -674,11 +674,11 @@ override proc @filewrapperDeclarationAST.enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @externFunctionDeclarationAST.enterDeclarationInSemanticContext // Handles also function declaration
-  (?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-  let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-  let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-  let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+  (?!@equatableExtensionMap _ioEquatableExtensionMap,
+  let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+  let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+  let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+  let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@semanticContext ioSemanticContext ) {
 //--- Build signature
@@ -701,11 +701,11 @@ override proc @externFunctionDeclarationAST.enterDeclarationInSemanticContext //
 //--------------------------------------------------------------------------------------------------
 
 override proc @onceFunctionDeclarationAST.enterDeclarationInSemanticContext
-  (?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-  let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-  let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-  let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+  (?!@equatableExtensionMap _ioEquatableExtensionMap,
+  let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+  let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+  let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+  let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@semanticContext ioSemanticContext ) {
 //--- Result type
@@ -717,12 +717,12 @@ override proc @onceFunctionDeclarationAST.enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @galgas3SyntaxComponentAST.enterDeclarationInSemanticContext
-  (?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-  let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-  let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-  let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
-                                ?!@unifiedTypeMap unused ioTypeMap,
+  (?!@equatableExtensionMap _ioEquatableExtensionMap,
+  let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+  let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+  let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+  let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
+                                ?!@unifiedTypeMap _ioTypeMap,
   ?!@semanticContext ioSemanticContext
 ) {
   !?ioSemanticContext.mSyntaxComponentMapForSemanticAnalysis.insertKey
@@ -737,11 +737,11 @@ override proc @galgas3SyntaxComponentAST.enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @galgas3GrammarComponentAST.enterDeclarationInSemanticContext
-  (?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-  let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-  let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-  let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+  (?!@equatableExtensionMap _ioEquatableExtensionMap,
+  let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+  let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+  let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+  let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@semanticContext ioSemanticContext
 ) {
@@ -783,19 +783,19 @@ override proc @galgas3GrammarComponentAST.enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 graph @semanticTypePrecedenceGraph (@semanticDeclarationListAST) {
-  %insertSetter addNode %errorMessage "the '%K' type is already declared at %L"
+  #insertSetter addNode #errorMessage "the '%K' type is already declared at %L"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 override proc @galgas3GrammarComponentAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
+  ?!@equatableExtensionMap _ioEquatableExtensionMap,
+  ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+  ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+  ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+  ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+  ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
   let key = @lstring ("grammar " + self.mGrammarComponentName, self.mGrammarComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   for (mValue) in self.mSyntaxComponents do
@@ -807,12 +807,12 @@ override proc @galgas3GrammarComponentAST.enterDeclarationInGraph
 
 override proc @galgas3SyntaxComponentAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
+  ?!@equatableExtensionMap _ioEquatableExtensionMap,
+  ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+  ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+  ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+  ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+  ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
   let key = @lstring ("syntax " + self.mSyntaxComponentName, self.mSyntaxComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("lexique " + self.mLexiqueName, self.mLexiqueName.location))
@@ -831,12 +831,12 @@ override proc @galgas3SyntaxComponentAST.enterDeclarationInGraph
 //--------------------------------------------------------------------------------------------------
 
 override proc @externFunctionDeclarationAST.enterDeclarationInGraph
-  (?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
+  (?!@semanticTypePrecedenceGraph _ioSemanticTypePrecedenceGraph,
+  ?!@equatableExtensionMap _ioEquatableExtensionMap,
+  ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+  ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+  ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+  ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList ) {
   ioExtensionOverrideDefinitionList ++= @(self)
 }
@@ -844,12 +844,12 @@ override proc @externFunctionDeclarationAST.enterDeclarationInGraph
 //--------------------------------------------------------------------------------------------------
 
 override proc @onceFunctionDeclarationAST.enterDeclarationInGraph
-  (?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
+  (?!@semanticTypePrecedenceGraph _ioSemanticTypePrecedenceGraph,
+  ?!@equatableExtensionMap _ioEquatableExtensionMap,
+  ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+  ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+  ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+  ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList ) {
   ioExtensionOverrideDefinitionList ++= @(self)
 }
@@ -857,12 +857,12 @@ override proc @onceFunctionDeclarationAST.enterDeclarationInGraph
 //--------------------------------------------------------------------------------------------------
 
 override proc @filewrapperDeclarationAST.enterDeclarationInGraph
-  (?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
+  (?!@semanticTypePrecedenceGraph _ioSemanticTypePrecedenceGraph,
+  ?!@equatableExtensionMap _ioEquatableExtensionMap,
+  ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+  ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+  ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+  ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
   ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList ) {
   ioExtensionOverrideDefinitionList ++= @(self)
 }
@@ -870,7 +870,7 @@ override proc @filewrapperDeclarationAST.enterDeclarationInGraph
 //--------------------------------------------------------------------------------------------------
 
 proc @semanticDeclarationAST.addAssociatedElement
-  (?!@galgasDeclarationAST unused ioDeclarations ) {
+  (?!@galgasDeclarationAST _ioDeclarations ) {
 }
 
 //--------------------------------------------------------------------------------------------------

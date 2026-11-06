@@ -150,8 +150,8 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
 
   override proc transformInstructionForGrammarAnalysis (
     ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
-    ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap,
-    ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex,
+    ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis _inNonTerminalSymbolMap,
+    ?!addedTerminalIndex:@uint _ioAddedNonTerminalIndex,
     ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList) {
     let @uint terminalSymbolIndex
     if let entry = ioActuallyUsedTerminalSymbolMap [self.mTerminalName.string] then
@@ -170,19 +170,19 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc analyzeSyntaxInstruction (
-    let @lstring unused inUsefulnessCallerEntityName,
-    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+    let @lstring _inUsefulnessCallerEntityName,
+    ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
     let @analysisContext inAnalysisContext,
                                   ?!@unifiedTypeMap ioTypeMap,
     let @bool inHasTranslateFeature,
     let @terminalMap inTerminalMap,
     let @string inLexiqueName,
-    let @nonterminalMap unused inNonterminalMap,
-    let @string unused inComponentName,
+    let @nonterminalMap _inNonterminalMap,
+    let @string _inComponentName,
     let @stringset inIndexNameSet,
     ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
     ?!@localVarManager ioVariableMap,
-    ?!@uint unused ioSelectMethodCount) {
+    ?!@uint _ioSelectMethodCount) {
     inTerminalMap.searchKey (self.mTerminalName, ?let @lexicalSentValueList sentAttributeList)
   //---
     if self.mActualInputParameterList.count != sentAttributeList.count then
@@ -213,7 +213,7 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
   //---
     for indexingKey in self.mIndexingKeyList do
       if not inIndexNameSet.hasKey (indexingKey.mValue0.string) then
-        error (indexingKey.mValue0 : "the '" + indexingKey.mValue0 + "' indexing name is not declared by the lexique" fixit %replaceBy inIndexNameSet)
+        error (indexingKey.mValue0 : "the '" + indexingKey.mValue0 + "' indexing name is not declared by the lexique" fixit #replaceBy inIndexNameSet)
       end
     end
   //--- Check syntax directed translation destination variable
@@ -261,8 +261,8 @@ final class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionF
                                                 ?!node: @string ioCurrentNode,
                                                 ?!arrowShape: @string ioArrowShape,
                                                 ?!arrows:@string ioArrows,
-                                                ?!@uint unused ioMaxUsedRowIndex,
-                                                ?debug:let @bool unused inDebug) {
+                                                ?!@uint _ioMaxUsedRowIndex,
+                                                ?debug:let @bool _inDebug) {
     !?ioRowList.appendRow
       (!nodeDefinition:"[terminal] {" + escapeForTex (self.mTerminalSymbolName) + "}",
       !row:inRow,
@@ -303,7 +303,7 @@ final class @terminalCheckInstructionForGeneration : @syntaxInstructionForGenera
 //--------------------------------------------------------------------------------------------------
 
 override proc @terminalCheckInstructionForGeneration.appendSyntaxSignature (
-  let @string unused inPosfix,
+  let @string _inPosfix,
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration) {
   ioInstructionListForGeneration ++= @(@terminalCheckInstructionForGeneration (
     self.mInstructionLocation,
@@ -346,8 +346,8 @@ override func @terminalCheckInstructionForGeneration.compareInstructionSyntaxSig
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-override proc @terminalCheckInstructionForGeneration.generateInstruction (?!@stringset unused ioInclusionSet,
-                                       ?!@uint unused ioTemporaryVariableIndex,
+override proc @terminalCheckInstructionForGeneration.generateInstruction (?!@stringset _ioInclusionSet,
+                                       ?!@uint _ioTemporaryVariableIndex,
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        let @bool inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {

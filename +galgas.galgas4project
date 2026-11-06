@@ -23,17 +23,17 @@
 //--------------------------------------------------------------------------------------------------
   
 project (4:0:0) -> "galgas4" {
-  %libpmAtPath : "../libpm"
+  #libpmAtPath : "../libpm"
 //--- Targets
-  %makefile-macosx
-  %makefile-unix
-  %makefile-x86linux32-on-macosx
-  %makefile-x86linux64-on-macosx
-  %makefile-arm64-linux-on-macosx
-  %makefile-win32-on-macosx
-  %codeblocks-windows
-  %codeblocks-linux32
-  %codeblocks-linux64
+  #makefile-macosx
+  #makefile-unix
+  #makefile-x86linux32-on-macosx
+  #makefile-x86linux64-on-macosx
+  #makefile-arm64-linux-on-macosx
+  #makefile-win32-on-macosx
+  #codeblocks-windows
+  #codeblocks-linux32
+  #codeblocks-linux64
 }
 
 //--------------------------------------------------------------------------------------------------

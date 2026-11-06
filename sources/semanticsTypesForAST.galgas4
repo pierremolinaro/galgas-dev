@@ -71,7 +71,7 @@ abstract class @semanticExpressionAST {
 //
 //--------------------------------------------------------------------------------------------------
 
-enum @formalArgumentPassingModeAST %equatable {
+enum @formalArgumentPassingModeAST #equatable {
   case argumentVarIn
   case argumentOut
   case argumentInOut
@@ -229,7 +229,7 @@ class @externFunctionDeclarationAST : @semanticDeclarationAST {
   public let @lstring mFunctionName
   public let @formalInputParameterListAST mFormalArgumentList
   public let @lstring mResultTypeName
-  public let @bool usefullFunc %initArgLabel
+  public let @bool usefullFunc #initArgLabel
 }
 
 //--------------------------------------------------------------------------------------------------

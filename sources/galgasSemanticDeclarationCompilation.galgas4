@@ -419,14 +419,14 @@ private proc generateOneBigHeader
 //--- Declaration 1
   for declaration in inSemanticDeclarationSortedListForGeneration do
     if not declaration.isPredefined then
-      declaration.appendDeclaration1 (!? %from @(), ?let @string headerString1)
+      declaration.appendDeclaration1 (!? #from @(), ?let @string headerString1)
       headerString += headerString1
     end
   end
 //--- Declaration 2
   for declaration in inSemanticDeclarationSortedListForGeneration do
     if not declaration.isPredefined then
-      declaration.appendDeclaration2 (inProductDirectory, !? %from @(), ?let @string headerString2)
+      declaration.appendDeclaration2 (inProductDirectory, !? #from @(), ?let @string headerString2)
       headerString += headerString2
     end
   end
@@ -444,16 +444,16 @@ private proc generateOneBigHeader
 map @headerCompositionMap {
   public let @stringset mInclusion
   public let @string mHeaderString
-  %insertSetter insertKey %errorMessage "the '%K' key is already declared in %L"
-  %searchMethod searchKey %errorMessage "there is no '%K' key"
+  #insertSetter insertKey #errorMessage "the '%K' key is already declared in %L"
+  #searchMethod searchKey #errorMessage "there is no '%K' key"
 }
 
 //--------------------------------------------------------------------------------------------------
 
 map @headerRepartitionMap {
   public let @string mHeaderFileName
-  %insertSetter insertKey %errorMessage "the '%K' key is already declared in %L"
-  %searchMethod searchKey %errorMessage "there is no '%K' key"
+  #insertSetter insertKey #errorMessage "the '%K' key is already declared in %L"
+  #searchMethod searchKey #errorMessage "there is no '%K' key"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -492,7 +492,7 @@ private proc buildHeader
 
 //--------------------------------------------------------------------------------------------------
 
-private func %once definitionGroupAmount () -> @uint {
+private func #once definitionGroupAmount () -> @uint {
   result = 50
 }
 

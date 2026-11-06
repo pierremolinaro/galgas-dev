@@ -370,12 +370,12 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInGraph
     (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList ) {
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+    ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
     let key = @lstring ("@" + self.mExternTypeName, self.mExternTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   }
@@ -390,12 +390,12 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
 
   override proc enterDeclarationInSemanticContext
     (?!@equatableExtensionMap ioEquatableExtensionMap,
-    let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-    let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-    let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-    let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
+    let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+    let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+    let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+    let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
-    ?!@semanticContext unused ioSemanticContext ) {
+    ?!@semanticContext _ioSemanticContext ) {
   //---
     commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap )
 //    var @classFunctionMap classFunctionMap = @()
@@ -527,10 +527,10 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
 override proc @externTypeDeclarationAST.semanticAnalysis (
   ?!@lstringlist ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @string unused inProductDirectory,
-  let @semanticContext unused inSemanticContext,
+  let @string _inProductDirectory,
+  let @semanticContext _inSemanticContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  let @predefinedTypes unused inPredefinedTypes,
+  let @predefinedTypes _inPredefinedTypes,
   ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
 ) {
 //--- Useful entities graph
@@ -571,7 +571,7 @@ final class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 override proc @externTypeDeclarationForGeneration.appendDeclaration1
-  (?!@stringset unused ioInclusionSet,
+  (?!@stringset _ioInclusionSet,
   !@string outHeader ) {
   let selfTypeDefinition = self.mSelfTypeEntry.definition
   outHeader = filewrapper [typeGenerationTemplate.externTypeHeader1 :

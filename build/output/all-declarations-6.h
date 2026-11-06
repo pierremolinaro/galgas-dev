@@ -4977,7 +4977,7 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationLis
 //--------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_addAssociatedElement (class cPtr_semanticDeclarationAST * inObject,
-                                               class GGS_galgasDeclarationAST & io_ioDeclarations,
+                                               class GGS_galgasDeclarationAST & io__5F_ioDeclarations,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
@@ -8002,7 +8002,7 @@ void extensionSetter_closeScope (class GGS_currentVarManager & ioObject,
 //--------------------------------------------------------------------------------------------------
 
 void extensionMethod_checkFinalStates (const class GGS_scopeLocalVarMap inObject,
-                                       const class GGS_location constin_inErrorLocation,
+                                       const class GGS_location constin__5F_inErrorLocation,
                                        class Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
@@ -8042,7 +8042,7 @@ void extensionMethod_checkAutomatonStates (const class GGS_currentVarManager inO
 void extensionMethod_combineValuationWith (const class GGS_localVarValuation inObject,
                                            const class GGS_localVarValuation constin_inOther,
                                            class GGS_localVarValuation & out_outResult,
-                                           class GGS_string & io_ioErrorMessage,
+                                           class GGS_string & io__5F_ioErrorMessage,
                                            class Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 

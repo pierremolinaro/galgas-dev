@@ -39,7 +39,7 @@ final class @boolPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc getClassFunctionMap (?!@unifiedTypeMap unused ioUnifiedTypeMap,
+  override proc getClassFunctionMap (?!@unifiedTypeMap _ioUnifiedTypeMap,
                                       !@classFunctionMap outMap ) {
     outMap = @()
   }

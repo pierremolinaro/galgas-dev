@@ -145,7 +145,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
+  rule <primary> (?!@galgasDeclarationAST _ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $($
     let endOfExpression = @location.here
@@ -300,7 +300,7 @@ private proc analyzeInitializerInvocation (let @lstring inUsefulnessCallerEntity
             else ""
           end
           error (effectiveParameter.mActualSelector
-          : "the selector should be '" + s + "'" fixit %replaceBy s )
+          : "the selector should be '" + s + "'" fixit #replaceBy s )
         end
       end
     end

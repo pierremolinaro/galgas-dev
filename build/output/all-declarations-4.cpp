@@ -3705,13 +3705,13 @@ void callExtensionMethod_enterParameterInSemanticContext (cPtr_actualParameterAS
 //--------------------------------------------------------------------------------------------------
 
 GGS_bool callExtensionGetter_isCompatibleWith (const cPtr_actualParameterAST * inObject,
-                                               const GGS_formalArgumentPassingModeAST in_inFormalPassingMode,
-                                               const GGS_string in_inSelector,
+                                               const GGS_formalArgumentPassingModeAST in__5F_inFormalPassingMode,
+                                               const GGS_string in__5F_inSelector,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
   GGS_bool result ;
   if (nullptr != inObject) {
-    result = inObject->getter_isCompatibleWith (in_inFormalPassingMode, in_inSelector, inCompiler COMMA_THERE) ;
+    result = inObject->getter_isCompatibleWith (in__5F_inFormalPassingMode, in__5F_inSelector, inCompiler COMMA_THERE) ;
   }
   return result ;
 }

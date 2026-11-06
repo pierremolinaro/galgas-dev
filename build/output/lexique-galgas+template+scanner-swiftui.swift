@@ -127,51 +127,51 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* then */,
   false /* true */,
   false /* typealias */,
-  false /* unused */,
   false /* var */,
   false /* warning */,
   false /* weak */,
   false /* while */,
   false /* with */,
-  false /* %applicationBundleBase */,
-  false /* %clonable */,
-  false /* %codeblocks-linux32 */,
-  false /* %codeblocks-linux64 */,
-  false /* %codeblocks-windows */,
-  false /* %comparable */,
-  false /* %equatable */,
-  false /* %errorMessage */,
-  false /* %from */,
-  false /* %generatedInSeparateFile */,
-  false /* %initArgLabel */,
-  false /* %insertAfter */,
-  false /* %insertBefore */,
-  false /* %insertOrReplaceSetter */,
-  false /* %insertSetter */,
-  false /* %libpmAtPath */,
-  false /* %macCodeSign */,
-  false /* %makefile-macosx */,
-  false /* %makefile-unix */,
-  false /* %makefile-x86linux32-on-macosx */,
-  false /* %makefile-x86linux64-on-macosx */,
-  false /* %makefile-arm64-linux-on-macosx */,
-  false /* %makefile-win32-on-macosx */,
-  false /* %MacSwiftApp */,
-  false /* %nonAtomicSelection */,
-  false /* %once */,
-  false /* %preserved */,
-  false /* %quietOutputByDefault */,
-  false /* %replaceBy */,
-  false /* %remove */,
-  false /* %removeSetter */,
-  false /* %replaceSetter */,
-  false /* %searchMethod */,
-  false /* %searchSubscript */,
-  false /* %searchString */,
-  false /* %templateEndMark */,
-  false /* %templateReplacement */,
-  false /* %translate */,
-  false /* %usefull */,
+  false /* #applicationBundleBase */,
+  false /* #clonable */,
+  false /* #codeblocks-linux32 */,
+  false /* #codeblocks-linux64 */,
+  false /* #codeblocks-windows */,
+  false /* #comparable */,
+  false /* #equatable */,
+  false /* #errorMessage */,
+  false /* #from */,
+  false /* #generatedInSeparateFile */,
+  false /* #initArgLabel */,
+  false /* #insertAfter */,
+  false /* #insertBefore */,
+  false /* #insertOrReplaceSetter */,
+  false /* #insertSetter */,
+  false /* #libpmAtPath */,
+  false /* #macCodeSign */,
+  false /* #makefile-macosx */,
+  false /* #makefile-unix */,
+  false /* #makefile-x86linux32-on-macosx */,
+  false /* #makefile-x86linux64-on-macosx */,
+  false /* #makefile-arm64-linux-on-macosx */,
+  false /* #makefile-win32-on-macosx */,
+  false /* #MacSwiftApp */,
+  false /* #nonAtomicSelection */,
+  false /* #once */,
+  false /* #preserved */,
+  false /* #quietOutputByDefault */,
+  false /* #replaceBy */,
+  false /* #remove */,
+  false /* #removeSetter */,
+  false /* #replaceSetter */,
+  false /* #searchMethod */,
+  false /* #searchSubscript */,
+  false /* #searchString */,
+  false /* #templateEndMark */,
+  false /* #templateReplacement */,
+  false /* #translate */,
+  false /* #unused */,
+  false /* #usefull */,
   false /* * */,
   false /* , */,
   false /* + */,
@@ -234,6 +234,8 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
 struct SettingViewFor_galgasTemplateScanner : View {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @State private var mUnused = false
 
   @AppStorage("FontFor_galgasTemplateScanner")
   private var mFont = CustomFont (nsFont: NSFont.monospacedSystemFont (ofSize: 13.0, weight: .regular))
@@ -384,7 +386,13 @@ struct SettingViewFor_galgasTemplateScanner : View {
         Text("1.7").tag(17)
         Text("2.0").tag(20)
       }.pickerStyle(.automatic)
-      ColorPicker ("Default Color", selection: self.$mDefaultColor)
+      LabeledContent ("Default Color") {
+        HStack {
+          ColorPicker ("", selection: self.$mDefaultColor).labelsHidden ()
+          Toggle ("Bold", isOn: self.$mUnused).hidden () // Hidden, unused
+          Toggle ("Italic", isOn: self.$mUnused).hidden () // Hidden, unused
+        }
+      }
       LabeledContent ("Keywords") {
         HStack {
           ColorPicker ("", selection: self.$mColorFor_keywordsStyle).labelsHidden ()
@@ -455,7 +463,7 @@ struct SettingViewFor_galgasTemplateScanner : View {
           Toggle ("Italic", isOn: self.$mItalicFor_typeNameStyle)
         }
       }
-      LabeledContent ("Attributes (%...)") {
+      LabeledContent ("Attributes (#...)") {
         HStack {
           ColorPicker ("", selection: self.$mColorFor_attributeStyle).labelsHidden ()
           Toggle ("Bold", isOn: self.$mBoldFor_attributeStyle)

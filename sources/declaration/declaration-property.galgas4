@@ -117,7 +117,7 @@ enum @propertyMutability {
 
 //--------------------------------------------------------------------------------------------------
 
-enum @propertyInCollectionInitializationAST %equatable {
+enum @propertyInCollectionInitializationAST #equatable {
   case none
   case some (@semanticExpressionAST expression)
 }
@@ -147,7 +147,7 @@ syntax extension galgas4DeclarationsSyntax {
     var selectorAttribute = false
     repeat
     while
-      $%initArgLabel$
+      $#initArgLabel$
       selectorAttribute = true
     end
     let @propertyInCollectionInitializationAST initialization
@@ -184,7 +184,7 @@ syntax extension galgas4DeclarationsSyntax {
     var selectorAttribute = false
     repeat
     while
-      $%initArgLabel$
+      $#initArgLabel$
       selectorAttribute = true
     end
     let @propertyInCollectionInitializationAST initialization
@@ -216,12 +216,12 @@ syntax extension galgas4DeclarationsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 list @propertyInCollectionListAST {
-  public let @propertyMutability mutability %initArgLabel
+  public let @propertyMutability mutability #initArgLabel
   public let @lstring typeName
   public let @lstring name
   public let @AccessControlAST accessControl
-  public let @bool hasSelector %initArgLabel
-  public let @propertyInCollectionInitializationAST initialization %initArgLabel
+  public let @bool hasSelector #initArgLabel
+  public let @propertyInCollectionInitializationAST initialization #initArgLabel
 
   proc buildPropertyInitializationCode (let @lstring inTypeNameForUsefulness,
                                           let @semanticContext inSemanticContext,

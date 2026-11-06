@@ -197,7 +197,7 @@ private proc analyzeConstructorInvocation (let @lstring inUsefulnessCallerEntity
                       let @lstring inTypeName,
                       let @lstring inConstructorName,
                       let @actualOutputArgumentList inInitializerEffectiveParameterExpressions,
-                      let @location unused inLocationForOldStyleCollectionInitializerError,
+                      let @location _inLocationForOldStyleCollectionInitializerError,
                       !@unifiedTypeMapEntry outReturnedType,
                       !@unifiedTypeMapEntry outConstructorType,
                       !@semanticExpressionListForGeneration outConstructorEffectiveParameterList,
@@ -232,7 +232,7 @@ private proc analyzeConstructorInvocation (let @lstring inUsefulnessCallerEntity
         : "the '@"+ outConstructorType.definition.typeName.string
         + "' type does not define the '" + inConstructorName + "' constructor"
         spoil constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
-        fixit %replaceBy classFunctionMap.keyList)
+        fixit #replaceBy classFunctionMap.keyList)
       end
     end
   //--- Analysis arguments
@@ -269,7 +269,7 @@ private proc analyzeConstructorInvocation (let @lstring inUsefulnessCallerEntity
           else ""
         end
         error (effectiveParameter.mActualSelector
-        : "the selector should be '" + s + "'" fixit %replaceBy s)
+        : "the selector should be '" + s + "'" fixit #replaceBy s)
       end
     end
   end

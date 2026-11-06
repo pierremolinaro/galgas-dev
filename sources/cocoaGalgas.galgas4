@@ -36,101 +36,6 @@ gui cocoa {
 
   //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-//  with lexique galgasScanner3 {
-//    fileExtension : "galgas3"
-//    blockComment : "//"
-//    title: "Source GALGAS 3"
-//    label $before$, ${$
-//    label $after$, ${$
-//    label $map$, $@type$
-//    label $boolset$, $@type$
-//    label $list$, $@type$
-//    label $sortedlist$, $@type$
-//    label $enum$, $@type$
-//    label $class$, $@type$
-//    label $extern$, $@type$
-//    label $struct$, $@type$
-//    label $rule$, $<non_terminal>$
-//    label $proc$, $identifier$
-//    label $func$, $identifier$
-//    label $func$, $%once$, $identifier$
-//    label $func$, $%once$, $%usefull$, $identifier$
-//    label $func$, $%usefull$, $identifier$
-//    label $func$, $%usefull$, $%once$, $identifier$
-//    label $filewrapper$, $identifier$, $in$
-//
-//    label $dict$, $@type$
-//
-//    label $abstract$, $proc$, $@type$, $identifier$
-//    label $override$, $proc$, $@type$, $identifier$
-//    label $proc$, $@type$, $identifier$
-//
-//    label $abstract$, $proc$, $identifier$
-//    label $override$, $proc$, $identifier$
-//    label $proc$, $identifier$
-//
-//    label $abstract$, $func$, $@type$, $identifier$
-//    label $override$,  $func$, $@type$, $identifier$
-//    label $func$, $@type$, $identifier$
-//
-//    label $abstract$, $func$, $identifier$
-//    label $override$,  $func$, $identifier$
-//    label $func$, $identifier$
-//
-//    label $abstract$, $mutating$, $proc$, $@type$, $identifier$
-//    label $override$, $mutating$, $proc$, $@type$, $identifier$
-//    label $mutating$, $proc$, $@type$, $identifier$
-//
-//    label $abstract$, $mutating$, $proc$, $identifier$
-//    label $override$,  $mutating$, $proc$, $identifier$
-//    label $mutating$, $proc$, $identifier$
-//
-//    label $syntax$, $extension$, $identifier$
-//
-//    label $case$, $.$, $"string"$
-//    label * $commentMark$ (2, 0)
-//    label $\$terminal\$$, $!selector:$ -
-//    label $\$terminal\$$, $error$ -
-//
-//
-//    textMacro "Class" :
-//      "class @aClassName : @superClassName {\n"
-//      "  public let @aType mProperty\n"
-//      "}\n"
-//
-//    textMacro "Enum" :
-//      "enum @aType {\n"
-//      "  constant1, constant2\n"
-//      "}\n"
-//
-//    textMacro "List" :
-//      "list @type {\n"
-//      "  public let @aType mProperty\n"
-//      "}\n"
-//
-//    textMacro "Map" :
-//      "map @type {\n"
-//      "  public let @aType mProperty\n"
-//      "  insert insertKey error message\"the '%K' key is already declared in %L\"\n"
-//      "  search searchKey error message\"there is no '%K' key\"\n"
-//      "}\n"
-//
-//    textMacro "Sorted List" :
-//      "sortedlist @type {\n"
-//      "  public let @string mFirstAttribute\n"
-//      "  public let @bool mSecondAttribute\n"
-//      "}{\n"
-//      "  mFirstAttribute >, mSecondAttribute <\n"
-//      "}\n"
-//
-//    textMacro "Struct" :
-//      "struct @type {\n"
-//      "  public let @aType mProperty\n"
-//      "}\n"
-//  }
-
-  //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   with lexique galgasScanner4 {
     fileExtension : "galgas4project"
     fileExtension : "galgas4"
@@ -151,10 +56,10 @@ gui cocoa {
     label $rule$, $<non_terminal>$
     label $proc$, $identifier$
     label $func$, $identifier$
-    label $func$, $%once$, $identifier$
-    label $func$, $%once$, $%usefull$, $identifier$
-    label $func$, $%usefull$, $identifier$
-    label $func$, $%usefull$, $%once$, $identifier$
+    label $func$, $#once$, $identifier$
+    label $func$, $#once$, $#usefull$, $identifier$
+    label $func$, $#usefull$, $identifier$
+    label $func$, $#usefull$, $#once$, $identifier$
     label $filewrapper$, $identifier$, $in$
 
     label $abstract$, $proc$, $@type$, $identifier$
@@ -191,8 +96,8 @@ gui cocoa {
 //    textMacro "Map" :
 //      "map @type {\n"
 //      "  public let @aType mProperty\n"
-//      "  %insertSetter insertKey %errorMessage \"the '%K' key is already declared in %L\"\n"
-//      "  %searchMethod searchKey %error%essage \"there is no '%K' key\"\n"
+//      "  #insertSetter insertKey #errorMessage \"the '%K' key is already declared in %L\"\n"
+//      "  #searchMethod searchKey #errorMessage \"there is no '%K' key\"\n"
 //      "}\n"
   }
 

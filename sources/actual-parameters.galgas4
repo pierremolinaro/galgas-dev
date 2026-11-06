@@ -77,8 +77,8 @@ abstract class @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  abstract func isCompatibleWith (?let @formalArgumentPassingModeAST unused inFormalPassingMode,
-                                   ?let @string unused inSelector) -> @bool
+  abstract func isCompatibleWith (?let @formalArgumentPassingModeAST _inFormalPassingMode,
+                                   ?let @string _inSelector) -> @bool
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -148,8 +148,8 @@ final class @outputActualParameterAST : @actualParameterAST {
                                   let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
                                   ?!@localVarManager ioVariableMap,
                                   ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
-                                  ?!@stringset unused ioExclusiveVariableSet,
-                                  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
+                                  ?!@stringset _ioExclusiveVariableSet,
+                                  ?!@semanticInstructionListForGeneration _ioInstructionListForGeneration) {
     if (inFormalArgumentPassingMode != .argumentVarIn)
      & (inFormalArgumentPassingMode != .argumentConstantIn) then
       error (self.mActualSelector
@@ -159,7 +159,7 @@ final class @outputActualParameterAST : @actualParameterAST {
     else
       if inFormalSelector.string != self.mActualSelector.string then
         let @string s = "!" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-        error (self.mActualSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
+        error (self.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
        end
       self.mOutputActualParameterExpression.analyzeSemanticExpression (
         !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
@@ -200,7 +200,7 @@ final class @outputInputActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterParameterInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
+  override proc enterParameterInSemanticContext (?!@unifiedTypeMap _ioTypeMap) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -215,24 +215,24 @@ final class @outputInputActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support output/input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc checkAgainstFormalArgument (
-                              let @lstring unused inUsefulnessCallerEntityName,
-                              ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+                              let @lstring _inUsefulnessCallerEntityName,
+                              ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
                               let @analysisContext inAnalysisContext,
-                              ?!@unifiedTypeMap unused ioTypeMap,
+                              ?!@unifiedTypeMap _ioTypeMap,
                               let @lstring inFormalSelector,
                               let @unifiedTypeMapEntry inFormalArgumentType,
                               let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
                               ?!@localVarManager ioVariableMap,
                               ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
                               ?!@stringset ioExclusiveVariableSet,
-                              ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
+                              ?!@semanticInstructionListForGeneration _ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != .argumentInOut then
       error (self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
@@ -240,7 +240,7 @@ final class @outputInputActualParameterAST : @actualParameterAST {
       + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error (self.mActualSelector : "the selector should be '" + s + "'" fixit %replaceBy s)
+      error (self.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
     end
   //--- Analyze input/output variable
     !?ioVariableMap.searchForReadWriteAccess (
@@ -316,7 +316,7 @@ final class @outputInputJokerParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support output/input parameter")
   }
 
@@ -332,7 +332,7 @@ final class @outputInputJokerParameterAST : @actualParameterAST {
                                   let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
                                   ?!@localVarManager ioVariableMap,
                                   ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
-                                  ?!@stringset unused ioExclusiveVariableSet,
+                                  ?!@stringset _ioExclusiveVariableSet,
                                   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != .argumentInOut then
       error (self.mActualSelector
@@ -341,7 +341,7 @@ final class @outputInputJokerParameterAST : @actualParameterAST {
       + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit %replaceBy s)
+      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit #replaceBy s)
     end
   //--- Check source expression
    self.expression.analyzeSemanticExpression (
@@ -391,7 +391,7 @@ final class @outputInputSelfParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterParameterInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
+  override proc enterParameterInSemanticContext (?!@unifiedTypeMap _ioTypeMap) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -406,24 +406,24 @@ final class @outputInputSelfParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support output/input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc checkAgainstFormalArgument (
-                            let @lstring unused inUsefulnessCallerEntityName,
-                            ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+                            let @lstring _inUsefulnessCallerEntityName,
+                            ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
                             let @analysisContext inAnalysisContext,
-                                  ?!@unifiedTypeMap unused ioTypeMap,
+                                  ?!@unifiedTypeMap _ioTypeMap,
                             let @lstring inFormalSelector,
                             let @unifiedTypeMapEntry inFormalArgumentType,
                             let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
-                            ?!@localVarManager unused ioVariableMap,
+                            ?!@localVarManager _ioVariableMap,
                             ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
-                            ?!@stringset unused ioExclusiveVariableSet,
-                            ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
+                            ?!@stringset _ioExclusiveVariableSet,
+                            ?!@semanticInstructionListForGeneration _ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != .argumentInOut then
       error (self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
@@ -431,7 +431,7 @@ final class @outputInputSelfParameterAST : @actualParameterAST {
       + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "!?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit %replaceBy s)
+      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit #replaceBy s)
     end
   //--- Analyze self
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
@@ -471,7 +471,7 @@ final class @inputActualExistingVariableParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterParameterInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
+  override proc enterParameterInSemanticContext (?!@unifiedTypeMap _ioTypeMap) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -486,31 +486,31 @@ final class @inputActualExistingVariableParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc checkAgainstFormalArgument (
-    let @lstring unused inUsefulnessCallerEntityName,
-    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-    let @analysisContext unused inAnalysisContext,
-                                  ?!@unifiedTypeMap unused ioTypeMap,
+    let @lstring _inUsefulnessCallerEntityName,
+    ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+    let @analysisContext _inAnalysisContext,
+                                  ?!@unifiedTypeMap _ioTypeMap,
     let @lstring inFormalSelector,
     let @unifiedTypeMapEntry inFormalArgumentType,
     let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
     ?!@localVarManager ioVariableMap,
     ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
     ?!@stringset ioExclusiveVariableSet,
-    ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
+    ?!@semanticInstructionListForGeneration _ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != .argumentOut then
       error (self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '" + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit %replaceBy s)
+      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit #replaceBy s)
     end
     !?ioVariableMap.searchForWriteAccess (
       self.mInputActualParameterName,
@@ -563,7 +563,7 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterParameterInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
+  override proc enterParameterInSemanticContext (?!@unifiedTypeMap _ioTypeMap) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -578,24 +578,24 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc checkAgainstFormalArgument (
-    let @lstring unused inUsefulnessCallerEntityName,
-    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+    let @lstring _inUsefulnessCallerEntityName,
+    ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
     let @analysisContext inAnalysisContext,
-                                  ?!@unifiedTypeMap unused ioTypeMap,
+                                  ?!@unifiedTypeMap _ioTypeMap,
     let @lstring inFormalSelector,
     let @unifiedTypeMapEntry inFormalArgumentType,
     let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
     ?!@localVarManager ioVariableMap,
     ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
-    ?!@stringset unused ioExclusiveVariableSet,
-    ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration)
+    ?!@stringset _ioExclusiveVariableSet,
+    ?!@semanticInstructionListForGeneration _ioInstructionListForGeneration)
   {
     if inFormalArgumentPassingMode != .argumentOut then
       error (self.mActualSelector
@@ -603,7 +603,7 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
       + "' passing mode: this parameter should be passed with '" + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit %replaceBy s)
+      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit #replaceBy s)
     end
 
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
@@ -656,7 +656,7 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterParameterInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
+  override proc enterParameterInSemanticContext (?!@unifiedTypeMap _ioTypeMap) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -671,31 +671,31 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc checkAgainstFormalArgument (
-    let @lstring unused inUsefulnessCallerEntityName,
-    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
+    let @lstring _inUsefulnessCallerEntityName,
+    ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
     let @analysisContext inAnalysisContext,
-                                  ?!@unifiedTypeMap unused ioTypeMap,
+                                  ?!@unifiedTypeMap _ioTypeMap,
     let @lstring inFormalSelector,
     let @unifiedTypeMapEntry inFormalArgumentType,
     let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
     ?!@localVarManager ioVariableMap,
     ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
-    ?!@stringset unused ioExclusiveVariableSet,
-    ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
+    ?!@stringset _ioExclusiveVariableSet,
+    ?!@semanticInstructionListForGeneration _ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != .argumentOut then
       error (self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
       + "' passing mode: this parameter should be passed with '" + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit %replaceBy s)
+      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit #replaceBy s)
     end
 
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
@@ -747,7 +747,7 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterParameterInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
+  override proc enterParameterInSemanticContext (?!@unifiedTypeMap _ioTypeMap) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -762,16 +762,16 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc checkAgainstFormalArgument (
-    let @lstring unused inUsefulnessCallerEntityName,
-    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-    let @analysisContext unused inAnalysisContext,
+    let @lstring _inUsefulnessCallerEntityName,
+    ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+    let @analysisContext _inAnalysisContext,
     ?!@unifiedTypeMap ioTypeMap,
     let @lstring inFormalSelector,
     let @unifiedTypeMapEntry inFormalArgumentType,
@@ -788,7 +788,7 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
       + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit %replaceBy s)
+      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit #replaceBy s)
     end
   //--- Analyze or infer type
     if self.mInputOptionalActualTypeName.string != "" then
@@ -857,7 +857,7 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterParameterInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
+  override proc enterParameterInSemanticContext (?!@unifiedTypeMap _ioTypeMap) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -872,16 +872,16 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc checkAgainstFormalArgument (
-    let @lstring unused inUsefulnessCallerEntityName,
-    ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-    let @analysisContext unused inAnalysisContext,
+    let @lstring _inUsefulnessCallerEntityName,
+    ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+    let @analysisContext _inAnalysisContext,
                                   ?!@unifiedTypeMap ioTypeMap,
     let @lstring inFormalSelector,
     let @unifiedTypeMapEntry inFormalArgumentType,
@@ -898,7 +898,7 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
       + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit %replaceBy s)
+      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit #replaceBy s)
     end
   //--- Analyze or infer type
     if self.mInputOptionalActualTypeName.string != "" then
@@ -971,7 +971,7 @@ final class @inputSingleJokerActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterParameterInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
+  override proc enterParameterInSemanticContext (?!@unifiedTypeMap _ioTypeMap) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -986,24 +986,24 @@ final class @inputSingleJokerActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc checkAgainstFormalArgument (
-                                  let @lstring unused inUsefulnessCallerEntityName,
-                                  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-                                  let @analysisContext unused inAnalysisContext,
-                                  ?!@unifiedTypeMap unused ioTypeMap,
+                                  let @lstring _inUsefulnessCallerEntityName,
+                                  ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+                                  let @analysisContext _inAnalysisContext,
+                                  ?!@unifiedTypeMap _ioTypeMap,
                                   let @lstring inFormalSelector,
                                   let @unifiedTypeMapEntry inFormalArgumentType,
                                   let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
                                   ?!@localVarManager ioVariableMap,
                                   ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
-                                  ?!@stringset unused ioExclusiveVariableSet,
-                                  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
+                                  ?!@stringset _ioExclusiveVariableSet,
+                                  ?!@semanticInstructionListForGeneration _ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
       error (self.mActualSelector
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string
@@ -1011,7 +1011,7 @@ final class @inputSingleJokerActualParameterAST : @actualParameterAST {
       + inFormalArgumentPassingMode.correspondingEffectiveParameterString + "'")
     elsif inFormalSelector.string != self.mActualSelector.string then
       let @string s = "?" + if inFormalSelector.string != "" then inFormalSelector.string + ":" else "" end
-      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit %replaceBy s)
+      error (self.mActualSelector : "the selector should be '" + s + "'"  fixit #replaceBy s)
     else
       let cppVarName = "joker_" + self.mActualSelector.location.startLocationIndex
     //--- Generate actual parameter
@@ -1047,35 +1047,35 @@ final class @inputJokerActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterParameterInSemanticContext (?!@unifiedTypeMap unused ioTypeMap) {
+  override proc enterParameterInSemanticContext (?!@unifiedTypeMap _ioTypeMap) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func isCompatibleWith (?let @formalArgumentPassingModeAST inFormalPassingMode,
-                                    ?let @string unused inSelector) -> @bool {
+                                    ?let @string _inSelector) -> @bool {
     result = inFormalPassingMode == .argumentOut
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList unused ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
     error (self.mQualifierLocation : "a func does not support input parameter")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc checkAgainstFormalArgument (let @lstring unused inUsefulnessCallerEntityName,
-                                              ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph,
-                                              let @analysisContext unused inAnalysisContext,
-                                              ?!@unifiedTypeMap unused ioTypeMap,
-                                              let @lstring unused inFormalSelector,
+  override proc checkAgainstFormalArgument (let @lstring _inUsefulnessCallerEntityName,
+                                              ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
+                                              let @analysisContext _inAnalysisContext,
+                                              ?!@unifiedTypeMap _ioTypeMap,
+                                              let @lstring _inFormalSelector,
                                               let @unifiedTypeMapEntry inFormalArgumentType,
                                               let @formalArgumentPassingModeAST inFormalArgumentPassingMode,
-     				    		   ?!@localVarManager unused ioVariableMap,
+     				    		   ?!@localVarManager _ioVariableMap,
                            ?!@actualParameterListForGeneration ioActualParameterListForGeneration,
-                           ?!@stringset unused ioExclusiveVariableSet,
-    							  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
+                           ?!@stringset _ioExclusiveVariableSet,
+    							  ?!@semanticInstructionListForGeneration _ioInstructionListForGeneration) {
     if inFormalArgumentPassingMode != @formalArgumentPassingModeAST.argumentOut then
       error (self.mQualifierLocation
       :"the corresponding formal argument has the '" + inFormalArgumentPassingMode.string

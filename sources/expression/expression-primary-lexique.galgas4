@@ -53,7 +53,7 @@ syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <primary> (?!@galgasDeclarationAST unused ioDeclarations,
+  rule <primary> (?!@galgasDeclarationAST _ioDeclarations,
                  !@semanticExpressionAST outExpression ) {
     $lexique$
     $[$
@@ -73,7 +73,7 @@ syntax extension galgas4ExpressionSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @lexiqueIntrospectionExpressionAST.enterExpressionInSemanticContext
-  (?!@unifiedTypeMap unused ioTypeMap
+  (?!@unifiedTypeMap _ioTypeMap
 ) {
 }
 
@@ -82,10 +82,10 @@ override proc @lexiqueIntrospectionExpressionAST.enterExpressionInSemanticContex
 override proc @lexiqueIntrospectionExpressionAST.analyzeSemanticExpression
   (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  ?inferenceType: let @unifiedTypeMapEntry unused inType,
+  ?inferenceType: let @unifiedTypeMapEntry _inType,
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  ?!@localVarManager unused ioVariableMap,
+  ?!@localVarManager _ioVariableMap,
   !@semanticExpressionForGeneration outExpression
 ) {
  let usefulnessName = lexiqueNameForUsefulEntitiesGraph (self.mLexiqueComponentName)
@@ -119,10 +119,10 @@ final class @lexiqueIntrospectionForGeneration : @semanticExpressionForGeneratio
 //································································································
 
 override proc @lexiqueIntrospectionForGeneration.generateExpression
-  (?!@string unused ioGeneratedCode,
+  (?!@string _ioGeneratedCode,
   ?!@stringset ioInclusionSet,
-  ?!@uint unused ioTemporaryVariableIndex,
-  ?!@stringset unused ioUnusedVariableCppNameSet,
+  ?!@uint _ioTemporaryVariableIndex,
+  ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppExpression ) {
 //---
   ioInclusionSet ++= "lexique-" + self.mLexiqueComponentName.fileNameRepresentation

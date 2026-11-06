@@ -85,7 +85,7 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-enum @optionDefaultValueEnumAST %equatable {
+enum @optionDefaultValueEnumAST #equatable {
   case noDefaultValue
   case unsignedDefaultValue
   case stringDefaultValue
@@ -112,12 +112,12 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInGraph (
-    ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph,
-    ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-    ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-    ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-    ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-    ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
+    ?!@semanticTypePrecedenceGraph _ioSemanticTypePrecedenceGraph,
+    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
     ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
   ) {
     ioExtensionOverrideDefinitionList ++= @(self)
@@ -126,12 +126,12 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterDeclarationInSemanticContext (
-             ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-             let @extensionInitializerForBuildingContext unused inExtensionInitializerMapForBuildingContext,
-             let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext,
-             let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext,
-             let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext,
-             ?!@unifiedTypeMap unused ioTypeMap,
+             ?!@equatableExtensionMap _ioEquatableExtensionMap,
+             let @extensionInitializerForBuildingContext _inExtensionInitializerMapForBuildingContext,
+             let @extensionMethodMapForBuildingContext _inExtensionMethodMapForBuildingContext,
+             let @extensionGetterMapForBuildingContext _inExtensionGetterMapForBuildingContext,
+             let @extensionSetterMapForBuildingContext _inExtensionSetterMapForBuildingContext,
+             ?!@unifiedTypeMap _ioTypeMap,
              ?!@semanticContext ioSemanticContext) {
     var @commandLineOptionMap boolOptionMap = @()
     var @commandLineOptionMap uintOptionMap = @()
@@ -201,12 +201,12 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc semanticAnalysis (?!@lstringlist unused ioUsefulnessRootEntities,
+  override proc semanticAnalysis (?!@lstringlist _ioUsefulnessRootEntities,
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                  let @string unused inProductDirectory,
+                                  let @string _inProductDirectory,
                                   let @semanticContext inSemanticContext,
-                                  ?!@unifiedTypeMap unused ioTypeMap,
-                                  let @predefinedTypes unused inPredefinedTypes,
+                                  ?!@unifiedTypeMap _ioTypeMap,
+                                  let @predefinedTypes _inPredefinedTypes,
                                   ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
   //--- Useful entities graph
     let nameForUsefulness = optionNameForUsefulEntitiesGraph (self.mOptionComponentName)
@@ -302,7 +302,7 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 (?!@stringset unused ioInclusionSet,
+  override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
                                     !@string outHeader) {
     if self.mIsPredefined then
       outHeader = ""
@@ -318,7 +318,7 @@ final class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGen
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendSpecificImplementation (let @unifiedTypeMap unused inTypeMap,
+  override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
                                               ?!@stringset ioInclusionSet,
                                               !@string outImplementation) {
     if self.mIsPredefined then
@@ -375,8 +375,8 @@ map @commandLineOptionMap { // the key is the option identifier
   public let @string mOptionString
   public let @string mComment
   public let @string mDefaultValue
-  %insertSetter insertKey %errorMessage "the '%K' command line option has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' command line option is not declared"
+  #insertSetter insertKey #errorMessage "the '%K' command line option has been already declared in %L"
+  #searchMethod searchKey #errorMessage "the '%K' command line option is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------

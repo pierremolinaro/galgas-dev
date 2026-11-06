@@ -60,8 +60,8 @@ syntax extension galgas4LexiqueComponentSyntax {
 //--------------------------------------------------------------------------------------------------
 
 override proc @lexicalLogInstructionAST.checkLexicalInstruction (
-                         ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext,
-                         ?!@lexicalTagMap unused ioTagMap) {
+                         ?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext,
+                         ?!@lexicalTagMap _ioTagMap) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -69,8 +69,8 @@ override proc @lexicalLogInstructionAST.checkLexicalInstruction (
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalLogInstructionAST.generateSwiftCocoaInstructionCode
-  (?let @string unused inScannerClassName,
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?let @string _inScannerClassName,
+  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string outGeneratedCode {
   outGeneratedCode = "/* lexicalLog (LINE_AND_SOURCE_FILE) */\n"
 }
@@ -86,8 +86,8 @@ override func @lexicalLogInstructionAST.lexicalInstructionUsesLoopLocalVariable 
 //·································································································
 
 override func @lexicalLogInstructionAST.generateLexicalInstructionCode
-  (?let @string unused inScannerClassName,
-  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  (?let @string _inScannerClassName,
+  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
   ) -> @string {
   result = "lexicalLog (LINE_AND_SOURCE_FILE) ;\n"
 }

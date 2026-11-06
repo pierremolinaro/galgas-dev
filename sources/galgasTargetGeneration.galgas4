@@ -327,7 +327,7 @@ private proc generateArm64LinuxMakefileTarget (let @string inProjectDirectory,
 
 //--------------------------------------------------------------------------------------------------
 
-enum @xcodeProject %comparable {
+enum @xcodeProject #comparable {
   case none
   case swiftApp
 }
@@ -339,7 +339,7 @@ proc updateGalgasTargets
   ?buildDirName: let @string inBuildDirectoryName,
   let @string inProjectSourceFilePath,
   let @string inTargetName,
-  let @location unused inEndOfProjectSourceFile,
+  let @location _inEndOfProjectSourceFile,
   let @string inProjectVersionString,
   let @projectQualifiedFeatureMap inProjectQualifiedFeatureMap,
   let @lstringlist inTargetFeatureList,
@@ -432,7 +432,7 @@ proc updateGalgasTargets
       for (key) in availableGenerationFeatures do
         s ++= @("%" + key)
       end
-      error (mValue: "unknown '" + mValue + "' feature" fixit %replaceBy s )
+      error (mValue: "unknown '" + mValue + "' feature" fixit #replaceBy s )
     end
   end
 //--- Codesign without selecting OSX ?
@@ -573,7 +573,7 @@ proc updateGalgasTargets
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
     userResourceDir.makeDirectory ()
     let @stringlist extensionList = [@("icns")]
-    let resourceFiles = userResourceDir.regularFilesWithExtensions (false, extensionList)
+    let resourceFiles = userResourceDir.regularFilesWithExtensions (!recursive: false, extensionList)
   //--- Build paths
     let newIntermediateFilePath = inAbsoluteBuildDirectory + "/output/file-list-for-xcode-project.txt"
     ioAllProductFileSet ++= "file-list-for-xcode-project.txt"
@@ -675,11 +675,11 @@ proc updateGalgasTargets
         (!groupName: "Frameworks (App)",
         !groupPath: "/System/Library/Frameworks",
         !fileNames: .setWithStringList (inHandCodedLinkAppFileList),
-        !?cFileRefs: %from @(),
-        !?cppFileRefs: %from @(),
-        !?swiftFileRefs: %from @(),
+        !?cFileRefs: #from @(),
+        !?cppFileRefs: #from @(),
+        !?swiftFileRefs: #from @(),
         !?frameworkFileRefs: appFrameworksFileRefList,
-        !?resourceFileRefs: %from @(),
+        !?resourceFileRefs: #from @(),
         ?groupRef: let @string frameworkGroupRef
       )
       !?xcodeProject.placeGroupAsMainGroup (!groupRef:frameworkGroupRef)
@@ -712,11 +712,11 @@ proc updateGalgasTargets
         (!groupName:"Frameworks (Tool)",
         !groupPath:"/System/Library/Frameworks",
         !fileNames:@stringset.setWithStringList (inFrameworkToolFileList),
-        !?cFileRefs: %from @(),
-        !?cppFileRefs: %from @(),
-        !?swiftFileRefs: %from @(),
+        !?cFileRefs: #from @(),
+        !?cppFileRefs: #from @(),
+        !?swiftFileRefs: #from @(),
         !?frameworkFileRefs:toolFrameworksFileRefList,
-        !?resourceFileRefs: %from @(),
+        !?resourceFileRefs: #from @(),
         ?groupRef:let @string frameworkGroupRef
       )
       !?xcodeProject.placeGroupAsMainGroup (!groupRef:frameworkGroupRef)

@@ -139,7 +139,7 @@ final class @typeMethodCallInstructionForGeneration : @semanticInstructionForGen
 override proc @typeMethodCallInstructionForGeneration.generateInstruction (?!@stringset ioInclusionSet,
                                     ?!@uint ioTemporaryVariableIndex,
                                     ?!@stringset ioUnusedVariableCppNameSet,
-                                    let @bool unused inGenerateSyntaxDirectedTranslationString,
+                                    let @bool _inGenerateSyntaxDirectedTranslationString,
                                     ?!@string ioGeneratedCode) {
   ioGeneratedCode += "{\n"
 //--- Parameters

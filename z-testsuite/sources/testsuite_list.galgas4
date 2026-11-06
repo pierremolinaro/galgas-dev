@@ -2,7 +2,7 @@
 
 extern proc testsuite_hand_coded ()
 
-list @myList %equatable {
+list @myList #equatable {
   public let @string mValue
 }
 

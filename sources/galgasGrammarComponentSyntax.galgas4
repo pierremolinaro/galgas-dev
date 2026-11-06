@@ -20,211 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-//syntax galgas3GrammarComponentSyntax (galgasScanner3) {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                               !@lstring outTypeName)
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//  //   G R A M M A R    C O M P O N E N T
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    let @lbool hasIndexing
-//    select
-//      hasIndexing = @lbool (!false, @location.here)
-//    or
-//      hasIndexing = @lbool (!true, @location.here)
-//      $indexing$
-//    end
-//    $grammar$
-//    $identifier$ (?let @lstring mGrammarName) indexing (grammarComponentDefinition)
-//    $"string"$ (?let @lstring mGrammarClass)
-//  //--- Feature translate
-//    let @bool hasTranslateFeature
-//    select
-//      hasTranslateFeature = false
-//    or
-//      $%translate$
-//      hasTranslateFeature = true
-//    end
-//    ${$
-//  //--- Imports
-//    var @lstringlist syntaxComponents = @()
-//    repeat
-//      $syntax$
-//      $identifier$ (?let @lstring syntaxComponent)
-//      syntaxComponents ++= @(syntaxComponent)
-//    while
-//    end
-//  //--- Root symbol
-//    $<non_terminal>$ (?let @lstring  mStartSymbol) indexing (ruleReference)
-//    var mLabelList = @nonTerminalLabelListAST ()
-//    <grammar_start_symbol_label_ggs3> (!?ioDeclarations, !@lstring (!"", @location.here), !?mLabelList)
-//    repeat
-//    while
-//      $label$
-//      $identifier$ (?let @lstring labelName)
-//      <grammar_start_symbol_label_ggs3> (!?ioDeclarations, !labelName, !?mLabelList)
-//     end
-//  //--- Unused non terminal symbols
-//    var mUnusedNonterminalList = @lstringlist ()
-//    repeat
-//    while
-//      $unused$
-//      $<non_terminal>$ (?let @lstring nonterminalSymbolName)
-//      mUnusedNonterminalList ++= @(nonterminalSymbolName)
-//    end
-//  //---
-//    $}$
-//    ioDeclarations.mDeclarationList ++= @(@galgas3GrammarComponentAST (
-//      !isPredefined: false,
-//      hasIndexing,
-//      mGrammarName,
-//      mGrammarClass,
-//      syntaxComponents,
-//      mStartSymbol,
-//      mLabelList,
-//      mUnusedNonterminalList,
-//      hasTranslateFeature
-//    ))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <grammar_start_symbol_label_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                         ?let @lstring inLabelName,
-//                                         ?!@nonTerminalLabelListAST ioLabelList ) {
-//    var @stringset argumentNameSet = @()
-//    var @formalParameterListAST mFormalParameterList = @()
-//    repeat
-//    while
-//      <label_formal_parameter_ggs3> (!?ioDeclarations, ?let argumentName, !?mFormalParameterList)
-//      if argumentNameSet.hasKey (!argumentName.string) then
-//        error (argumentName: "there is already an argument named '" + argumentName + "'")
-//      end
-//      argumentNameSet ++= argumentName.string
-//    end
-//    ioLabelList++= @(inLabelName, mFormalParameterList, .here)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <label_formal_parameter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                     !@lstring outArgumentName,
-//                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
-//    let @lstring selector
-//    select
-//      $?selector:$ (?selector)
-//    or
-//      $?$
-//      selector = "".here
-//    end
-//    select
-//    or
-//      $let$
-//    end
-//    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring typeName)
-//    select
-//    or
-//     $unused$
-//    end
-//    $identifier$ (?outArgumentName)
-//    ioStartSymbolLabelFormalParameterList++= @(
-//      !selector,
-//      !.argumentConstantIn,
-//      !typeName,
-//      !outArgumentName,
-//      !false
-//    )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <label_formal_parameter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                     !@lstring outArgumentName,
-//                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
-//    let @lstring selector
-//    select
-//      $?selector:$ (?selector)
-//    or
-//      $?$
-//      selector = "".here
-//    end
-//    $var$
-//    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring typeName)
-//    select
-//    or
-//     $unused$
-//    end
-//    $identifier$ (?outArgumentName)
-//    ioStartSymbolLabelFormalParameterList ++= @(
-//      !selector,
-//      !.argumentVarIn,
-//      !typeName,
-//      !outArgumentName,
-//      !false
-//    )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <label_formal_parameter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                     !@lstring outArgumentName,
-//                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
-//    let @lstring selector
-//    select
-//      $?!selector:$ (?selector)
-//    or
-//      $?!$
-//      selector = "".here
-//    end
-//    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring typeName)
-//    select
-//    or
-//     $unused$
-//    end
-//    $identifier$ (?outArgumentName)
-//    ioStartSymbolLabelFormalParameterList++= @(
-//      !selector,
-//      !@formalArgumentPassingModeAST.argumentInOut,
-//      !typeName,
-//      !outArgumentName,
-//      !false
-//    )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <label_formal_parameter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                     !@lstring outArgumentName,
-//                                     ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
-//    let @lstring selector
-//    select
-//      $!selector:$ (?selector)
-//    or
-//      $!$
-//      selector = "".here
-//    end
-//    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring typeName)
-//    $identifier$ (?outArgumentName)
-//    ioStartSymbolLabelFormalParameterList++= @(
-//      !selector,
-//      !@formalArgumentPassingModeAST.argumentOut,
-//      !typeName,
-//      !outArgumentName,
-//      !false
-//    )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax galgas4GrammarComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -253,7 +48,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     select
       hasTranslateFeature = false
     or
-      $%translate$
+      $#translate$
       hasTranslateFeature = true
     end
     ${$
@@ -276,16 +71,16 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       <grammar_start_symbol_label> (!?ioDeclarations, labelName, !?mLabelList)
      end
   //--- Unused non terminal symbols
-    var mUnusedNonterminalList = @lstringlist ()
+    var unusedNonterminalList = @lstringlist ()
     repeat
     while
-      $unused$
+      $#unused$
       $<non_terminal>$ (?let @lstring nonterminalSymbolName)
-      mUnusedNonterminalList ++= @(nonterminalSymbolName)
+      unusedNonterminalList ++= @(nonterminalSymbolName)
     end
   //---
     $}$
-    ioDeclarations.mDeclarationList++= @(@galgas3GrammarComponentAST (
+    ioDeclarations.mDeclarationList ++= @(@galgas3GrammarComponentAST (
       !isPredefined: false,
       hasIndexing,
       mGrammarName,
@@ -293,7 +88,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       syntaxComponents,
       startSymbol,
       mLabelList,
-      mUnusedNonterminalList,
+      unusedNonterminalList,
       hasTranslateFeature
     ))
   }
@@ -330,10 +125,6 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     $?selector:$ (?let selector)
     $var$
     <type_definition> (!?ioDeclarations, ?let @lstring typeName)
-    select
-    or
-      $unused$
-    end
     $identifier$ (?outArgumentName)
     ioStartSymbolLabelFormalParameterList ++= @(
       selector,
@@ -352,10 +143,6 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     $?$
     let selector = "".here
     <type_definition> (!?ioDeclarations, ?let @lstring typeName)
-    select
-    or
-     $unused$
-    end
     $identifier$ (?outArgumentName)
     ioStartSymbolLabelFormalParameterList ++= @(
       selector,
@@ -374,10 +161,6 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     $?selector:$ (?let selector)
     $let$
     <type_definition> (!?ioDeclarations, ?let @lstring typeName)
-    select
-    or
-     $unused$
-    end
     $identifier$ (?outArgumentName)
     ioStartSymbolLabelFormalParameterList++= @(
       selector,
@@ -397,10 +180,6 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     let selector = "".here
     $let$
     <type_definition> (!?ioDeclarations, ?let @lstring typeName)
-    select
-    or
-     $unused$
-    end
     $identifier$ (?outArgumentName)
     ioStartSymbolLabelFormalParameterList ++= @(
       selector,
@@ -418,10 +197,6 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
                                 ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList ) {
     $?!selector:$ (?let selector)
     <type_definition> (!?ioDeclarations, ?let @lstring typeName)
-    select
-    or
-     $unused$
-    end
     $identifier$ (?outArgumentName)
     ioStartSymbolLabelFormalParameterList++= @(
       selector,
@@ -440,10 +215,6 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     $?!$
     let selector = "".here
     <type_definition> (!?ioDeclarations, ?let @lstring typeName)
-    select
-    or
-     $unused$
-    end
     $identifier$ (?outArgumentName)
     ioStartSymbolLabelFormalParameterList ++= @(
       selector,

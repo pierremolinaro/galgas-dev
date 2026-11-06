@@ -27,8 +27,8 @@
 //--------------------------------------------------------------------------------------------------
 
 proc @semanticInstructionForGeneration.appendSyntaxSignature ( // Capture all semantic instructions
-  let @string unused inPosfix,
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration) {
+  let @string _inPosfix,
+  ?!@semanticInstructionListForGeneration _ioInstructionListForGeneration) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ func syntaxSignatureOfInstructionList (
 //--------------------------------------------------------------------------------------------------
 
 func @semanticInstructionForGeneration.compareInstructionSyntaxSignature
-  (?let @semanticInstructionForGeneration unused inTestedInstruction)
+  (?let @semanticInstructionForGeneration _inTestedInstruction)
   ->@bool
 {
   result = true

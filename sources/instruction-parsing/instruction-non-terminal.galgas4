@@ -87,9 +87,9 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc transformInstructionForGrammarAnalysis
-                    (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap,
+                    (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis _ioActuallyUsedTerminalSymbolMap,
                     ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
-                    ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex,
+                    ?!addedTerminalIndex:@uint _ioAddedNonTerminalIndex,
                     ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList ) {
     inNonTerminalSymbolMap.searchKey (self.mNonterminalName, ?let nonTerminalSymbolIndex, ?*)
     ioSyntaxInstructionList ++= @(@nonTerminalInstructionForGrammarAnalysis (
@@ -106,14 +106,14 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
                                            let @analysisContext inAnalysisContext,
                                            ?!@unifiedTypeMap ioTypeMap,
                                             let @bool inHasTranslateFeature,
-                                            let @terminalMap unused inTerminalMap,
-                                            let @string unused inLexiqueName,
+                                            let @terminalMap _inTerminalMap,
+                                            let @string _inLexiqueName,
                                             let @nonterminalMap inNonterminalMap,
-                                            let @string unused inComponentName,
-                                            let @stringset unused inIndexNameSet,
+                                            let @string _inComponentName,
+                                            let @stringset _inIndexNameSet,
                                             ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                                             ?!@localVarManager ioVariableMap,
-                                            ?!@uint unused ioSelectMethodCount ) {
+                                            ?!@uint _ioSelectMethodCount ) {
     inNonterminalMap.searchKey (self.mNonterminalName, ?let @nonterminalLabelMap labelMap)
     let @formalParameterSignature signature
     labelMap.searchKey ("".nowhere, ?*, ?signature, ?*)

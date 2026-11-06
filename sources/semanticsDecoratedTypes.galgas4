@@ -132,7 +132,7 @@ abstract proc @actualParameterForGeneration.generateActualParameter
   ?!@string ioImplementation,
   ?!@stringlist ioJokerParametersToReleaseList,
   ?!@stringlist ioOutputVariableList,
-  ?!@stringset unused ioUnusedVariableCppNameSet,
+  ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppName)
 
 //--------------------------------------------------------------------------------------------------
@@ -211,7 +211,7 @@ list @listOfSemanticInstructionListForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 abstract class @semanticDeclarationForGeneration {
-  public let @string infoMessage %initArgLabel
+  public let @string infoMessage #initArgLabel
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -222,7 +222,7 @@ func @semanticDeclarationForGeneration.appendPrimitiveTypeDeclaration () -> @str
 
 //--------------------------------------------------------------------------------------------------
 
-proc @semanticDeclarationForGeneration.appendPrimitiveTypePreDeclaration (?!@string unused ioHeader ) {
+proc @semanticDeclarationForGeneration.appendPrimitiveTypePreDeclaration (?!@string _ioHeader ) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -282,8 +282,8 @@ override func @semanticTypeForGeneration.headerKind () -> @headerKind {
 //--------------------------------------------------------------------------------------------------
 
 abstract class @semanticDeclarationWithHeaderForGeneration : @semanticDeclarationForGeneration {
-  public let @bool generateHeader %initArgLabel
-  public let @string implementationCppFileName %initArgLabel
+  public let @bool generateHeader #initArgLabel
+  public let @string implementationCppFileName #initArgLabel
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -330,8 +330,8 @@ list @signatureForGrammarAnalysis {
 map @nonterminalSymbolLabelMapForGrammarAnalysis {
   public let @signatureForGrammarAnalysis mFormalParametersList
 
-  %insertSetter insertKey %errorMessage "the rule label '%K' has been already declared in %L"
-  %searchMethod searchKey %errorMessage "the rule label '%K' is not declared"
+  #insertSetter insertKey #errorMessage "the rule label '%K' has been already declared in %L"
+  #searchMethod searchKey #errorMessage "the rule label '%K' is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -344,8 +344,8 @@ map @nonTerminalSymbolMapForGrammarAnalysis {
   public let @uint mNonTerminalIndex
   public let @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap
 
-  %insertSetter insertKey %errorMessage "the '<%K>' non terminal symbol has already been declared in %L"
-  %searchMethod searchKey %errorMessage "the '<%K>' non terminal symbol is not declared"
+  #insertSetter insertKey #errorMessage "the '<%K>' non terminal symbol has already been declared in %L"
+  #searchMethod searchKey #errorMessage "the '<%K>' non terminal symbol is not declared"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -449,7 +449,7 @@ final class @programComponentForGeneration : @semanticDeclarationWithHeaderForGe
 //--------------------------------------------------------------------------------------------------
 
 proc @semanticDeclarationForGeneration.appendDeclaration1
-  (?!@stringset unused ioInclusionSet,
+  (?!@stringset _ioInclusionSet,
   !@string outHeader
 ) {
   outHeader = ""
@@ -462,8 +462,8 @@ proc @semanticDeclarationForGeneration.appendDeclaration1
 //--------------------------------------------------------------------------------------------------
 
 proc @semanticDeclarationForGeneration.appendDeclaration2
-  (let @string unused inOutputDirectory,
-  ?!@stringset unused ioInclusionSet,
+  (let @string _inOutputDirectory,
+  ?!@stringset _ioInclusionSet,
   !@string outHeader
 ) {
   outHeader = ""
@@ -478,8 +478,8 @@ func @semanticDeclarationForGeneration.appendTypeGenericImplementation () ->@str
 //--------------------------------------------------------------------------------------------------
 
 proc @semanticDeclarationForGeneration.appendSpecificImplementation
-  (let @unifiedTypeMap unused inUnifiedTypeMap,
-  ?!@stringset unused  ioInclusionSet,
+  (let @unifiedTypeMap _inUnifiedTypeMap,
+  ?!@stringset _ioInclusionSet,
   !@string outImplementation ) {
   outImplementation = ""
 }
@@ -487,9 +487,9 @@ proc @semanticDeclarationForGeneration.appendSpecificImplementation
 //--------------------------------------------------------------------------------------------------
 
 proc @semanticDeclarationForGeneration.appendSpecificFiles
-  (let @string unused inProductDirectory,
-  ?!@stringset unused ioAllProductFileSet,
-  ?!swift: @stringlist unused ioSwiftAppProductFileList
+  (let @string _inProductDirectory,
+  ?!@stringset _ioAllProductFileSet,
+  ?!swift: @stringlist _ioSwiftAppProductFileList
 ) {
 }
 

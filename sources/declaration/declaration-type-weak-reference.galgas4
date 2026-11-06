@@ -38,12 +38,12 @@ override func @weakReferenceDeclarationAST.keyRepresentation () -> @string {
 
 override proc @weakReferenceDeclarationAST.enterDeclarationInGraph
   (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-  ?!@equatableExtensionMap unused ioEquatableExtensionMap,
-  ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext,
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+  ?!@equatableExtensionMap _ioEquatableExtensionMap,
+  ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+  ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+  ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+  ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+  ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList
 ) {
   let key = @lstring ("@" + self.mWeakReferenceTypeName, self.mWeakReferenceTypeName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)
@@ -165,12 +165,12 @@ override proc @weakReferenceDeclarationAST.enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @weakReferenceDeclarationAST.semanticAnalysis
-  (?!@lstringlist unused ioUsefulnessRootEntities,
+  (?!@lstringlist _ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @string unused inProductDirectory,
-  let @semanticContext unused inSemanticContext,
+  let @string _inProductDirectory,
+  let @semanticContext _inSemanticContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  let @predefinedTypes unused inPredefinedTypes,
+  let @predefinedTypes _inPredefinedTypes,
   ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
 ) {
 //--- Useful entities graph
@@ -260,7 +260,7 @@ override proc @weakReferenceTypeForGeneration.appendDeclaration1 (?!@stringset i
 //--------------------------------------------------------------------------------------------------
 
 override proc @weakReferenceTypeForGeneration.appendSpecificImplementation
-  (let @unifiedTypeMap unused inTypeMap,
+  (let @unifiedTypeMap _inTypeMap,
   ?!@stringset ioInclusionSet,
   !@string outImplementation
 ) {
