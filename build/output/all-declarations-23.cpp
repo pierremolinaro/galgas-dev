@@ -5899,7 +5899,7 @@ void cPtr_externProcedureDeclarationAST::method_enterDeclarationInGraph (GGS_sem
                                                                          Compiler * inCompiler
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_externProcedureDeclarationAST temp_0 = this ;
-  ioArgument_ioExtensionOverrideDefinitionList.plusPlusAssignOperation (GGS_semanticDeclarationListAST_2E_element::init_21_ (temp_0, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 110)) ;
+  ioArgument_ioExtensionOverrideDefinitionList.plusPlusAssignOperation (GGS_semanticDeclarationListAST_2E_element::init_21_ (temp_0, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 75)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5913,7 +5913,7 @@ GGS_string cPtr_externProcedureDeclarationAST::getter_keyRepresentation (Compile
   GGS_string result_result ; // Returned variable
   const GGS_externProcedureDeclarationAST temp_0 = this ;
   const GGS_externProcedureDeclarationAST temp_1 = this ;
-  result_result = GGS_string ("routine ").add_operation (temp_0.readProperty_mRoutineName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 116)).add_operation (extensionGetter_keyRepresentation (temp_1.readProperty_mFormalArgumentListAST (), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 116)), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 116)) ;
+  result_result = GGS_string ("routine ").add_operation (temp_0.readProperty_mRoutineName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 81)).add_operation (extensionGetter_keyRepresentation (temp_1.readProperty_mFormalArgumentListAST (), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 81)), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 81)) ;
 //---
   return result_result ;
 }
@@ -5932,21 +5932,21 @@ void cPtr_externProcedureDeclarationAST::method_enterDeclarationInSemanticContex
                                                                                    GGS_semanticContext & ioArgument_ioSemanticContext,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_formalParameterSignature var_routineSignature_5774 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
+  GGS_formalParameterSignature var_routineSignature_4529 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
   const GGS_externProcedureDeclarationAST temp_0 = this ;
-  UpEnumerator_formalParameterListAST enumerator_5847 (temp_0.readProperty_mFormalArgumentListAST ()) ;
-  while (enumerator_5847.hasCurrentObject ()) {
-    GGS_unifiedTypeMapEntry var_parameterTypeIndex_5941 ;
+  UpEnumerator_formalParameterListAST enumerator_4602 (temp_0.readProperty_mFormalArgumentListAST ()) ;
+  while (enumerator_4602.hasCurrentObject ()) {
+    GGS_unifiedTypeMapEntry var_parameterTypeIndex_4696 ;
     {
-    extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_5847.current (HERE).readProperty_mFormalArgumentTypeName (), var_parameterTypeIndex_5941, inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 132)) ;
+    extensionSetter_makeEntry (ioArgument_ioTypeMap, enumerator_4602.current (HERE).readProperty_mFormalArgumentTypeName (), var_parameterTypeIndex_4696, inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 97)) ;
     }
-    var_routineSignature_5774.plusPlusAssignOperation (GGS_formalParameterSignature_2E_element::init_21__21__21__21_ (enumerator_5847.current (HERE).readProperty_mFormalSelector (), var_parameterTypeIndex_5941, enumerator_5847.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_5847.current (HERE).readProperty_mFormalArgumentName ().readProperty_string (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 133)) ;
-    enumerator_5847.gotoNextObject () ;
+    var_routineSignature_4529.plusPlusAssignOperation (GGS_formalParameterSignature_2E_element::init_21__21__21__21_ (enumerator_4602.current (HERE).readProperty_mFormalSelector (), var_parameterTypeIndex_4696, enumerator_4602.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_4602.current (HERE).readProperty_mFormalArgumentName ().readProperty_string (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 98)) ;
+    enumerator_4602.gotoNextObject () ;
   }
   {
   const GGS_externProcedureDeclarationAST temp_1 = this ;
   const GGS_externProcedureDeclarationAST temp_2 = this ;
-  extensionSetter_insertKey (ioArgument_ioSemanticContext.mProperty_routineMap, temp_1.readProperty_mRoutineName (), var_routineSignature_5774, temp_2.readProperty_isFilePrivate (), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 141)) ;
+  extensionSetter_insertKey (ioArgument_ioSemanticContext.mProperty_routineMap, temp_1.readProperty_mRoutineName (), var_routineSignature_4529, temp_2.readProperty_isFilePrivate (), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 106)) ;
   }
 }
 
@@ -5963,31 +5963,31 @@ void cPtr_externProcedureDeclarationAST::method_semanticAnalysis (GGS_lstringlis
                                                                   GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument_ioSemanticDeclarationListForGeneration,
                                                                   Compiler * inCompiler
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_formalParameterListForGeneration var_formalArgumentList_7028 = GGS_formalParameterListForGeneration::init (inCompiler COMMA_HERE) ;
-  GGS_formalParameterSignature var_routineSignature_7094 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
+  GGS_formalParameterListForGeneration var_formalArgumentList_5783 = GGS_formalParameterListForGeneration::init (inCompiler COMMA_HERE) ;
+  GGS_formalParameterSignature var_routineSignature_5849 = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
   const GGS_externProcedureDeclarationAST temp_0 = this ;
-  UpEnumerator_formalParameterListAST enumerator_7167 (temp_0.readProperty_mFormalArgumentListAST ()) ;
-  while (enumerator_7167.hasCurrentObject ()) {
-    GGS_unifiedTypeMapEntry var_parameterType_7203 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_7167.current (HERE).readProperty_mFormalArgumentTypeName (), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 161)) ;
-    var_formalArgumentList_7028.plusPlusAssignOperation (GGS_formalParameterListForGeneration_2E_element::init_21__21__21__21__21_ (enumerator_7167.current (HERE).readProperty_mFormalSelector (), enumerator_7167.current (HERE).readProperty_mFormalArgumentPassingMode (), var_parameterType_7203, enumerator_7167.current (HERE).readProperty_mFormalArgumentName (), enumerator_7167.current (HERE).readProperty_mFormalArgumentName ().readProperty_string (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 162)) ;
-    var_routineSignature_7094.plusPlusAssignOperation (GGS_formalParameterSignature_2E_element::init_21__21__21__21_ (enumerator_7167.current (HERE).readProperty_mFormalSelector (), var_parameterType_7203, enumerator_7167.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_7167.current (HERE).readProperty_mFormalArgumentName ().readProperty_string (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 169)) ;
-    enumerator_7167.gotoNextObject () ;
+  UpEnumerator_formalParameterListAST enumerator_5922 (temp_0.readProperty_mFormalArgumentListAST ()) ;
+  while (enumerator_5922.hasCurrentObject ()) {
+    GGS_unifiedTypeMapEntry var_parameterType_5958 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, enumerator_5922.current (HERE).readProperty_mFormalArgumentTypeName (), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 126)) ;
+    var_formalArgumentList_5783.plusPlusAssignOperation (GGS_formalParameterListForGeneration_2E_element::init_21__21__21__21__21_ (enumerator_5922.current (HERE).readProperty_mFormalSelector (), enumerator_5922.current (HERE).readProperty_mFormalArgumentPassingMode (), var_parameterType_5958, enumerator_5922.current (HERE).readProperty_mFormalArgumentName (), enumerator_5922.current (HERE).readProperty_mFormalArgumentName ().readProperty_string (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 127)) ;
+    var_routineSignature_5849.plusPlusAssignOperation (GGS_formalParameterSignature_2E_element::init_21__21__21__21_ (enumerator_5922.current (HERE).readProperty_mFormalSelector (), var_parameterType_5958, enumerator_5922.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_5922.current (HERE).readProperty_mFormalArgumentName ().readProperty_string (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 134)) ;
+    enumerator_5922.gotoNextObject () ;
   }
   const GGS_externProcedureDeclarationAST temp_1 = this ;
-  GGS_lstring var_mangledName_7708 = function_routineMangledName (temp_1.readProperty_mRoutineName (), var_routineSignature_7094, inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 176)) ;
-  GGS_lstring var_nameForUsefulness_7817 = function_procedureNameForUsefulEntitiesGraph (var_mangledName_7708, inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 178)) ;
+  GGS_lstring var_mangledName_6463 = function_routineMangledName (temp_1.readProperty_mRoutineName (), var_routineSignature_5849, inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 141)) ;
+  GGS_lstring var_nameForUsefulness_6572 = function_procedureNameForUsefulEntitiesGraph (var_mangledName_6463, inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 143)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_7817, var_nameForUsefulness_7817, inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 179)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_6572, var_nameForUsefulness_6572, inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 144)) ;
   }
   GalgasBool test_2 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_2) {
     const GGS_externProcedureDeclarationAST temp_3 = this ;
     test_2 = temp_3.readProperty_usefullProcedure ().boolEnum () ;
     if (GalgasBool::boolTrue == test_2) {
-      ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (var_nameForUsefulness_7817, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 181)) ;
+      ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (var_nameForUsefulness_6572, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 146)) ;
     }
   }
-  ioArgument_ioSemanticDeclarationListForGeneration.plusPlusAssignOperation (GGS_routinePrototypeDeclarationForGeneration::init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21_routineMangledName_21_ (GGS_string ("proc ").add_operation (var_mangledName_7708.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 185)), GGS_bool (true), GGS_string ("proc-").add_operation (var_mangledName_7708.readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extern-procedure-declaration.galgas4", 187)), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 187)), var_mangledName_7708.readProperty_string (), var_formalArgumentList_7028, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 184)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.plusPlusAssignOperation (GGS_routinePrototypeDeclarationForGeneration::init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21_routineMangledName_21_ (GGS_string ("proc ").add_operation (var_mangledName_6463.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 150)), GGS_bool (true), GGS_string ("proc-").add_operation (var_mangledName_6463.readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("extern-procedure-declaration.galgas4", 152)), inCompiler COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 152)), var_mangledName_6463.readProperty_string (), var_formalArgumentList_5783, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 149)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5999,7 +5999,7 @@ void cPtr_externProcedureDeclarationAST::method_semanticAnalysis (GGS_lstringlis
 GGS_headerKind cPtr_routinePrototypeDeclarationForGeneration::getter_headerKind (Compiler */* inCompiler */
                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_headerKind result_result ; // Returned variable
-  result_result = GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("extern-procedure-declaration.galgas4", 210)) ;
+  result_result = GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("extern-procedure-declaration.galgas4", 175)) ;
 //---
   return result_result ;
 }
@@ -6015,7 +6015,7 @@ void cPtr_routinePrototypeDeclarationForGeneration::method_appendDeclaration_31_
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_routinePrototypeDeclarationForGeneration temp_0 = this ;
   const GGS_routinePrototypeDeclarationForGeneration temp_1 = this ;
-  outArgument_outHeader = GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_routineDeclaration (inCompiler, temp_0.readProperty_routineMangledName (), temp_1.readProperty_mFormalArgumentList () COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 217))) ;
+  outArgument_outHeader = GGS_string (filewrapperTemplate_semanticComponentGenerationTemplate_routineDeclaration (inCompiler, temp_0.readProperty_routineMangledName (), temp_1.readProperty_mFormalArgumentList () COMMA_SOURCE_FILE ("extern-procedure-declaration.galgas4", 182))) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8957,28 +8957,28 @@ void cPtr_inputActualExistingVariableParameterAST::method_checkAgainstFormalArgu
         }else if (GalgasBool::boolFalse == test_6) {
           temp_5 = GGS_string::makeEmptyString () ;
         }
-        GGS_string var_s_24210 = GGS_string ("\?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 512)) ;
+        GGS_string var_s_24208 = GGS_string ("\?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 512)) ;
         const GGS_inputActualExistingVariableParameterAST temp_7 = this ;
         GenericArray <FixItDescription> fixItArray8 ;
-        appendFixItActions (fixItArray8, EnumFixItKind::fixItReplace, var_s_24210) ;
-        inCompiler->emitSemanticError (temp_7.readProperty_mActualSelector ().readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_24210, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 513)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 513)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas4", 513)) ;
+        appendFixItActions (fixItArray8, EnumFixItKind::fixItReplace, var_s_24208) ;
+        inCompiler->emitSemanticError (temp_7.readProperty_mActualSelector ().readProperty_location (), GGS_string ("the selector should be '").add_operation (var_s_24208, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 513)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 513)), fixItArray8  COMMA_SOURCE_FILE ("actual-parameters.galgas4", 513)) ;
       }
     }
   }
-  GGS_unifiedTypeMapEntry var_parameterType_24494 ;
-  GGS_string var_targetVariableCppName_24520 ;
+  GGS_unifiedTypeMapEntry var_parameterType_24492 ;
+  GGS_string var_targetVariableCppName_24518 ;
   {
   const GGS_inputActualExistingVariableParameterAST temp_9 = this ;
-  GGS_string joker_24549 ; // Joker input parameter
-  extensionSetter_searchForWriteAccess (ioArgument_ioVariableMap, temp_9.readProperty_mInputActualParameterName (), var_parameterType_24494, var_targetVariableCppName_24520, joker_24549, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 515)) ;
+  GGS_string joker_24547 ; // Joker input parameter
+  extensionSetter_searchForWriteAccess (ioArgument_ioVariableMap, temp_9.readProperty_mInputActualParameterName (), var_parameterType_24492, var_targetVariableCppName_24518, joker_24547, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 515)) ;
   }
   GalgasBool test_10 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_10) {
-    test_10 = GGS_bool (ComparisonKind::notEqual, constinArgument_inFormalArgumentType.objectCompare (var_parameterType_24494)).boolEnum () ;
+    test_10 = GGS_bool (ComparisonKind::notEqual, constinArgument_inFormalArgumentType.objectCompare (var_parameterType_24492)).boolEnum () ;
     if (GalgasBool::boolTrue == test_10) {
       const GGS_inputActualExistingVariableParameterAST temp_11 = this ;
       GenericArray <FixItDescription> fixItArray12 ;
-      inCompiler->emitSemanticError (temp_11.readProperty_mInputActualParameterName ().readProperty_location (), GGS_string ("the parameter object has the '@").add_operation (extensionGetter_definition (var_parameterType_24494, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 524)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 524)).add_operation (GGS_string ("', it should be the same as the corresponding formal argument: '@"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 524)).add_operation (extensionGetter_definition (constinArgument_inFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 525)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 525)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 525)), fixItArray12  COMMA_SOURCE_FILE ("actual-parameters.galgas4", 523)) ;
+      inCompiler->emitSemanticError (temp_11.readProperty_mInputActualParameterName ().readProperty_location (), GGS_string ("the parameter object has the '@").add_operation (extensionGetter_definition (var_parameterType_24492, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 524)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 524)).add_operation (GGS_string ("', it should be the same as the corresponding formal argument: '@"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 524)).add_operation (extensionGetter_definition (constinArgument_inFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 525)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 525)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 525)), fixItArray12  COMMA_SOURCE_FILE ("actual-parameters.galgas4", 523)) ;
     }
   }
   GalgasBool test_13 = GalgasBool::boolTrue ;
@@ -8993,19 +8993,19 @@ void cPtr_inputActualExistingVariableParameterAST::method_checkAgainstFormalArgu
   }
   const GGS_inputActualExistingVariableParameterAST temp_17 = this ;
   ioArgument_ioExclusiveVariableSet.plusPlusAssignOperation (temp_17.readProperty_mInputActualParameterName ().readProperty_string ()  COMMA_SOURCE_FILE ("actual-parameters.galgas4", 532)) ;
-  GGS__32_stringlist var_poisonedVarCppNameList_25275 = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
+  GGS__32_stringlist var_poisonedVarCppNameList_25273 = GGS__32_stringlist::init (inCompiler COMMA_HERE) ;
   const GGS_inputActualExistingVariableParameterAST temp_18 = this ;
-  UpEnumerator_lstringlist enumerator_25313 (temp_18.readProperty_mPoisonedVarNameList ()) ;
-  while (enumerator_25313.hasCurrentObject ()) {
-    GGS_string var_targetVariableCppName_25439 ;
-    GGS_string var_nameForCheckingFormalParameterUsing_25475 ;
+  UpEnumerator__5B_lstring_5D_ enumerator_25326 (temp_18.readProperty_mPoisonedVarNameList ()) ;
+  while (enumerator_25326.hasCurrentObject ()) {
+    GGS_string var_targetVariableCppName_25437 ;
+    GGS_string var_nameForCheckingFormalParameterUsing_25473 ;
     {
-    GGS_unifiedTypeMapEntry joker_25422 ; // Joker input parameter
-    extensionSetter_searchForWriteAccess (ioArgument_ioVariableMap, enumerator_25313.current_mValue (HERE), joker_25422, var_targetVariableCppName_25439, var_nameForCheckingFormalParameterUsing_25475, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 536)) ;
+    GGS_unifiedTypeMapEntry joker_25420 ; // Joker input parameter
+    extensionSetter_searchForWriteAccess (ioArgument_ioVariableMap, enumerator_25326.current (HERE), joker_25420, var_targetVariableCppName_25437, var_nameForCheckingFormalParameterUsing_25473, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 536)) ;
     }
-    var_poisonedVarCppNameList_25275.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (var_targetVariableCppName_25439, var_nameForCheckingFormalParameterUsing_25475, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("actual-parameters.galgas4", 542)) ;
-    enumerator_25313.gotoNextObject () ;
+    var_poisonedVarCppNameList_25273.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (var_targetVariableCppName_25437, var_nameForCheckingFormalParameterUsing_25473, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("actual-parameters.galgas4", 542)) ;
+    enumerator_25326.gotoNextObject () ;
   }
-  ioArgument_ioActualParameterListForGeneration.plusPlusAssignOperation (GGS_actualParameterListForGeneration_2E_element::init_21_ (GGS_inputActualParameterForGeneration::init_21__21__21_ (var_parameterType_24494, var_targetVariableCppName_24520, var_poisonedVarCppNameList_25275, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("actual-parameters.galgas4", 544)) ;
+  ioArgument_ioActualParameterListForGeneration.plusPlusAssignOperation (GGS_actualParameterListForGeneration_2E_element::init_21_ (GGS_inputActualParameterForGeneration::init_21__21__21_ (var_parameterType_24492, var_targetVariableCppName_24518, var_poisonedVarCppNameList_25273, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("actual-parameters.galgas4", 544)) ;
 }
 

@@ -3767,7 +3767,7 @@ GGS_actualParameterAST () {
 GGS_inputActualExistingVariableParameterAST GGS_inputActualExistingVariableParameterAST::
 init_21__21__21_ (const GGS_lstring & in_mActualSelector,
                   const GGS_lstring & in_mInputActualParameterName,
-                  const GGS_lstringlist & in_mPoisonedVarNameList,
+                  const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                   Compiler * inCompiler
                   COMMA_LOCATION_ARGS) {
   cPtr_inputActualExistingVariableParameterAST * object = nullptr ;
@@ -3783,7 +3783,7 @@ init_21__21__21_ (const GGS_lstring & in_mActualSelector,
 void cPtr_inputActualExistingVariableParameterAST::
 inputActualExistingVariableParameterAST_init_21__21__21_ (const GGS_lstring & in_mActualSelector,
                                                           const GGS_lstring & in_mInputActualParameterName,
-                                                          const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                          const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                           Compiler * /* inCompiler */) {
   mProperty_mActualSelector = in_mActualSelector ;
   mProperty_mInputActualParameterName = in_mInputActualParameterName ;
@@ -3822,9 +3822,9 @@ GGS_lstring GGS_inputActualExistingVariableParameterAST::readProperty_mInputActu
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_inputActualExistingVariableParameterAST::readProperty_mPoisonedVarNameList (void) const {
+GGS__5B_lstring_5D_ GGS_inputActualExistingVariableParameterAST::readProperty_mPoisonedVarNameList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_inputActualExistingVariableParameterAST * p = (cPtr_inputActualExistingVariableParameterAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_inputActualExistingVariableParameterAST) ;
@@ -3847,7 +3847,7 @@ mProperty_mPoisonedVarNameList () {
 
 cPtr_inputActualExistingVariableParameterAST::cPtr_inputActualExistingVariableParameterAST (const GGS_lstring & in_mActualSelector,
                                                                                             const GGS_lstring & in_mInputActualParameterName,
-                                                                                            const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                                                            const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) :
 cPtr_actualParameterAST (inCompiler COMMA_THERE),
@@ -3967,7 +3967,7 @@ GGS_actualParameterAST () {
 GGS_inputActualSelfPropertyParameterAST GGS_inputActualSelfPropertyParameterAST::
 init_21__21__21_ (const GGS_lstring & in_mActualSelector,
                   const GGS_lstring & in_mInputActualSelfPropertyName,
-                  const GGS_lstringlist & in_mPoisonedVarNameList,
+                  const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                   Compiler * inCompiler
                   COMMA_LOCATION_ARGS) {
   cPtr_inputActualSelfPropertyParameterAST * object = nullptr ;
@@ -3983,7 +3983,7 @@ init_21__21__21_ (const GGS_lstring & in_mActualSelector,
 void cPtr_inputActualSelfPropertyParameterAST::
 inputActualSelfPropertyParameterAST_init_21__21__21_ (const GGS_lstring & in_mActualSelector,
                                                       const GGS_lstring & in_mInputActualSelfPropertyName,
-                                                      const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                      const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                       Compiler * /* inCompiler */) {
   mProperty_mActualSelector = in_mActualSelector ;
   mProperty_mInputActualSelfPropertyName = in_mInputActualSelfPropertyName ;
@@ -4022,9 +4022,9 @@ GGS_lstring GGS_inputActualSelfPropertyParameterAST::readProperty_mInputActualSe
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_inputActualSelfPropertyParameterAST::readProperty_mPoisonedVarNameList (void) const {
+GGS__5B_lstring_5D_ GGS_inputActualSelfPropertyParameterAST::readProperty_mPoisonedVarNameList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_inputActualSelfPropertyParameterAST * p = (cPtr_inputActualSelfPropertyParameterAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_inputActualSelfPropertyParameterAST) ;
@@ -4047,7 +4047,7 @@ mProperty_mPoisonedVarNameList () {
 
 cPtr_inputActualSelfPropertyParameterAST::cPtr_inputActualSelfPropertyParameterAST (const GGS_lstring & in_mActualSelector,
                                                                                     const GGS_lstring & in_mInputActualSelfPropertyName,
-                                                                                    const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                                                    const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                                                     Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) :
 cPtr_actualParameterAST (inCompiler COMMA_THERE),
@@ -4167,7 +4167,7 @@ GGS_actualParameterAST () {
 GGS_inputActualSelfParameterAST GGS_inputActualSelfParameterAST::
 init_21__21__21_ (const GGS_lstring & in_mActualSelector,
                   const GGS_location & in_mSelfLocation,
-                  const GGS_lstringlist & in_mPoisonedVarNameList,
+                  const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                   Compiler * inCompiler
                   COMMA_LOCATION_ARGS) {
   cPtr_inputActualSelfParameterAST * object = nullptr ;
@@ -4183,7 +4183,7 @@ init_21__21__21_ (const GGS_lstring & in_mActualSelector,
 void cPtr_inputActualSelfParameterAST::
 inputActualSelfParameterAST_init_21__21__21_ (const GGS_lstring & in_mActualSelector,
                                               const GGS_location & in_mSelfLocation,
-                                              const GGS_lstringlist & in_mPoisonedVarNameList,
+                                              const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                               Compiler * /* inCompiler */) {
   mProperty_mActualSelector = in_mActualSelector ;
   mProperty_mSelfLocation = in_mSelfLocation ;
@@ -4222,9 +4222,9 @@ GGS_location GGS_inputActualSelfParameterAST::readProperty_mSelfLocation (void) 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_inputActualSelfParameterAST::readProperty_mPoisonedVarNameList (void) const {
+GGS__5B_lstring_5D_ GGS_inputActualSelfParameterAST::readProperty_mPoisonedVarNameList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_inputActualSelfParameterAST * p = (cPtr_inputActualSelfParameterAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_inputActualSelfParameterAST) ;
@@ -4247,7 +4247,7 @@ mProperty_mPoisonedVarNameList () {
 
 cPtr_inputActualSelfParameterAST::cPtr_inputActualSelfParameterAST (const GGS_lstring & in_mActualSelector,
                                                                     const GGS_location & in_mSelfLocation,
-                                                                    const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                                    const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) :
 cPtr_actualParameterAST (inCompiler COMMA_THERE),
@@ -4368,7 +4368,7 @@ GGS_inputActualNewVariableParameterAST GGS_inputActualNewVariableParameterAST::
 init_21__21__21__21_ (const GGS_lstring & in_mActualSelector,
                       const GGS_lstring & in_mInputOptionalActualTypeName,
                       const GGS_lstring & in_mInputActualParameterName,
-                      const GGS_lstringlist & in_mPoisonedVarNameList,
+                      const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                       Compiler * inCompiler
                       COMMA_LOCATION_ARGS) {
   cPtr_inputActualNewVariableParameterAST * object = nullptr ;
@@ -4385,7 +4385,7 @@ void cPtr_inputActualNewVariableParameterAST::
 inputActualNewVariableParameterAST_init_21__21__21__21_ (const GGS_lstring & in_mActualSelector,
                                                          const GGS_lstring & in_mInputOptionalActualTypeName,
                                                          const GGS_lstring & in_mInputActualParameterName,
-                                                         const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                         const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                          Compiler * /* inCompiler */) {
   mProperty_mActualSelector = in_mActualSelector ;
   mProperty_mInputOptionalActualTypeName = in_mInputOptionalActualTypeName ;
@@ -4437,9 +4437,9 @@ GGS_lstring GGS_inputActualNewVariableParameterAST::readProperty_mInputActualPar
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_inputActualNewVariableParameterAST::readProperty_mPoisonedVarNameList (void) const {
+GGS__5B_lstring_5D_ GGS_inputActualNewVariableParameterAST::readProperty_mPoisonedVarNameList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_inputActualNewVariableParameterAST * p = (cPtr_inputActualNewVariableParameterAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_inputActualNewVariableParameterAST) ;
@@ -4464,7 +4464,7 @@ mProperty_mPoisonedVarNameList () {
 cPtr_inputActualNewVariableParameterAST::cPtr_inputActualNewVariableParameterAST (const GGS_lstring & in_mActualSelector,
                                                                                   const GGS_lstring & in_mInputOptionalActualTypeName,
                                                                                   const GGS_lstring & in_mInputActualParameterName,
-                                                                                  const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                                                  const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) :
 cPtr_actualParameterAST (inCompiler COMMA_THERE),
@@ -4591,7 +4591,7 @@ init_21__21__21__21__21_ (const GGS_lstring & in_mActualSelector,
                           const GGS_lstring & in_mInputOptionalActualTypeName,
                           const GGS_lstring & in_mInputActualParameterName,
                           const GGS_bool & in_mMarkedAsUnused,
-                          const GGS_lstringlist & in_mPoisonedVarNameList,
+                          const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                           Compiler * inCompiler
                           COMMA_LOCATION_ARGS) {
   cPtr_inputActualNewConstantParameterAST * object = nullptr ;
@@ -4609,7 +4609,7 @@ inputActualNewConstantParameterAST_init_21__21__21__21__21_ (const GGS_lstring &
                                                              const GGS_lstring & in_mInputOptionalActualTypeName,
                                                              const GGS_lstring & in_mInputActualParameterName,
                                                              const GGS_bool & in_mMarkedAsUnused,
-                                                             const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                             const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                              Compiler * /* inCompiler */) {
   mProperty_mActualSelector = in_mActualSelector ;
   mProperty_mInputOptionalActualTypeName = in_mInputOptionalActualTypeName ;
@@ -4674,9 +4674,9 @@ GGS_bool GGS_inputActualNewConstantParameterAST::readProperty_mMarkedAsUnused (v
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_inputActualNewConstantParameterAST::readProperty_mPoisonedVarNameList (void) const {
+GGS__5B_lstring_5D_ GGS_inputActualNewConstantParameterAST::readProperty_mPoisonedVarNameList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_inputActualNewConstantParameterAST * p = (cPtr_inputActualNewConstantParameterAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_inputActualNewConstantParameterAST) ;
@@ -4703,7 +4703,7 @@ cPtr_inputActualNewConstantParameterAST::cPtr_inputActualNewConstantParameterAST
                                                                                   const GGS_lstring & in_mInputOptionalActualTypeName,
                                                                                   const GGS_lstring & in_mInputActualParameterName,
                                                                                   const GGS_bool & in_mMarkedAsUnused,
-                                                                                  const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                                                  const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) :
 cPtr_actualParameterAST (inCompiler COMMA_THERE),
@@ -4832,7 +4832,7 @@ GGS_actualParameterAST () {
 
 GGS_inputSingleJokerActualParameterAST GGS_inputSingleJokerActualParameterAST::
 init_21__21_ (const GGS_lstring & in_mActualSelector,
-              const GGS_lstringlist & in_mPoisonedVarNameList,
+              const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
               Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   cPtr_inputSingleJokerActualParameterAST * object = nullptr ;
@@ -4847,7 +4847,7 @@ init_21__21_ (const GGS_lstring & in_mActualSelector,
 
 void cPtr_inputSingleJokerActualParameterAST::
 inputSingleJokerActualParameterAST_init_21__21_ (const GGS_lstring & in_mActualSelector,
-                                                 const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                 const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                  Compiler * /* inCompiler */) {
   mProperty_mActualSelector = in_mActualSelector ;
   mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
@@ -4873,9 +4873,9 @@ GGS_lstring GGS_inputSingleJokerActualParameterAST::readProperty_mActualSelector
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_inputSingleJokerActualParameterAST::readProperty_mPoisonedVarNameList (void) const {
+GGS__5B_lstring_5D_ GGS_inputSingleJokerActualParameterAST::readProperty_mPoisonedVarNameList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_inputSingleJokerActualParameterAST * p = (cPtr_inputSingleJokerActualParameterAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_inputSingleJokerActualParameterAST) ;
@@ -4896,7 +4896,7 @@ mProperty_mPoisonedVarNameList () {
 //--------------------------------------------------------------------------------------------------
 
 cPtr_inputSingleJokerActualParameterAST::cPtr_inputSingleJokerActualParameterAST (const GGS_lstring & in_mActualSelector,
-                                                                                  const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                                                  const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) :
 cPtr_actualParameterAST (inCompiler COMMA_THERE),

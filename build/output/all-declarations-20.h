@@ -793,7 +793,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual void nt_poisoned_5F_var_5F_list_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_poisoned_5F_var_5F_list_ (GGS_lstringlist & outArgument0,
+  public: virtual void nt_poisoned_5F_var_5F_list_ (GGS__5B_lstring_5D_ & outArgument0,
                                                     Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'primary' non terminal

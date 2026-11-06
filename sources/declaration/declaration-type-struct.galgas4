@@ -17,48 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3DeclarationsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    $struct$
-//    $@type$ (?let @lstring structTypeName) indexing (structDefinition)
-//    let @structComparison comparison
-//    select
-//      comparison = .none
-//    or
-//      $%comparable$
-//      comparison = .comparable
-//    or
-//      $%equatable$
-//      comparison = .equatable
-//    end
-//    ${$
-//    var @propertyInCollectionListAST propertyList = @()
-//    repeat
-//    while
-//      <property_declaration_ggs3> (!?ioDeclarations, !?propertyList)
-//    while
-//      <method_declaration_ggs3> (!structTypeName, !?ioDeclarations)
-//    end
-//    $}$
-//    ioDeclarations.mDeclarationList ++= @(!@structDeclarationAST (
-//      !isPredefined: false,
-//      structTypeName,
-//      propertyList,
-//      !enumeratedElementTypeName: "",
-//      !comparison: comparison,
-//      !isUsefullStruct: false
-//    ))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -124,8 +82,8 @@ final class @structDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterDeclarationInGraph
-    (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+  override proc enterDeclarationInGraph (
+    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
     ?!@equatableExtensionMap unused ioEquatableExtensionMap,
     ?!@extensionInitializerForBuildingContext unused ioExtensionInitializerForBuildingContext,
     ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext,
@@ -149,14 +107,14 @@ final class @structDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterDeclarationInSemanticContext
-    (?!@equatableExtensionMap ioEquatableExtensionMap,
+  override proc enterDeclarationInSemanticContext (
+    ?!@equatableExtensionMap ioEquatableExtensionMap,
     let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
     let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
     let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
     let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
-    ?!@semanticContext ioSemanticContext ) {
+    ?!@semanticContext ioSemanticContext) {
   //--- Struct type index
     !?ioTypeMap.makeEntry (self.structTypeName, ?let structTypeIndex)
   //--- Class functions and property map
@@ -176,9 +134,10 @@ final class @structDeclarationAST : @semanticDeclarationAST {
         property.name,
         property.initialization,
         !hasSetter: not property.mutability.isConstantProperty,
-        !hasSelector: property.hasSelector)
-      !?propertyMap.insertKey
-        (property.name,
+        !hasSelector: property.hasSelector
+      )
+      !?propertyMap.insertKey (
+        property.name,
         property.accessControl.accessControl (!forDeclaringType: structTypeIndex),
         property.mutability.isConstantProperty,
         propertyTypeEntry
@@ -209,8 +168,8 @@ final class @structDeclarationAST : @semanticDeclarationAST {
   //--- Synthetize an initializer, if the structure defines none
     if initializerMap.count == 0 then
       features |= .generateSynthetizedInitializer
-      !?initializerMap.insertKey
-        (@(constructorPropertyTypeList.initializerSignature, self.structTypeName),
+      !?initializerMap.insertKey (
+        @(constructorPropertyTypeList.initializerSignature, self.structTypeName),
         constructorPropertyTypeList
       )
     end

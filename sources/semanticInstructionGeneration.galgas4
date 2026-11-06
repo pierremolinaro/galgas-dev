@@ -22,8 +22,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-override proc @outputActualParameterForGeneration.generateActualParameter
-  (?!@stringset ioInclusionSet,
+override proc @outputActualParameterForGeneration.generateActualParameter (
+  ?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@string ioImplementation,
   ?!@stringlist unused ioJokerParametersToReleaseList,
@@ -37,8 +37,8 @@ override proc @outputActualParameterForGeneration.generateActualParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @outputInputActualParameterForGeneration.generateActualParameter
-  (?!@stringset ioInclusionSet,
+override proc @outputInputActualParameterForGeneration.generateActualParameter (
+  ?!@stringset ioInclusionSet,
   ?!@uint unused ioTemporaryVariableIndex,
   ?!@string unused ioImplementation,
   ?!@stringlist unused ioJokerParametersToReleaseList,
@@ -57,8 +57,8 @@ override proc @outputInputActualParameterForGeneration.generateActualParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @inputActualParameterForGeneration.generateActualParameter
-  (?!@stringset unused ioInclusionSet,
+override proc @inputActualParameterForGeneration.generateActualParameter (
+  ?!@stringset unused ioInclusionSet,
   ?!@uint unused ioTemporaryVariableIndex,
   ?!@string unused ioImplementation,
   ?!@stringlist unused ioJokerParametersToReleaseList,
@@ -72,8 +72,8 @@ override proc @inputActualParameterForGeneration.generateActualParameter
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @inputJokerParameterForGeneration.generateActualParameter
-  (?!@stringset ioInclusionSet,
+override proc @inputJokerParameterForGeneration.generateActualParameter (
+  ?!@stringset ioInclusionSet,
   ?!@uint unused ioTemporaryVariableIndex,
   ?!@string ioImplementation,
   ?!@stringlist ioJokerParametersToReleaseList,

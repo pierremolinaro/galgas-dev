@@ -49,7 +49,7 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
       self.mHasTranslateFeature,
       self.mGrammarName,
       self.mSyntaxComponents
-     ]
+    ]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

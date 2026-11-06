@@ -2775,14 +2775,14 @@ class GGS_inputActualExistingVariableParameterAST : public GGS_actualParameterAS
 
   public: class GGS_lstring readProperty_mInputActualParameterName (void) const ;
 
-  public: class GGS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mPoisonedVarNameList (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
   public: static GGS_inputActualExistingVariableParameterAST init_21__21__21_ (const class GGS_lstring & inOperand0,
                                                                                const class GGS_lstring & inOperand1,
-                                                                               const class GGS_lstringlist & inOperand2,
+                                                                               const class GGS__5B_lstring_5D_ & inOperand2,
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
 
@@ -2829,7 +2829,7 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
 //--------------------------------- Initializers
   public: void inputActualExistingVariableParameterAST_init_21__21__21_ (const class GGS_lstring & inOperand0,
                                                                          const class GGS_lstring & inOperand1,
-                                                                         const class GGS_lstringlist & inOperand2,
+                                                                         const class GGS__5B_lstring_5D_ & inOperand2,
                                                                          Compiler * inCompiler) ;
 
 
@@ -2863,7 +2863,7 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
 //--- Properties
   public: GGS_lstring mProperty_mActualSelector ;
   public: GGS_lstring mProperty_mInputActualParameterName ;
-  public: GGS_lstringlist mProperty_mPoisonedVarNameList ;
+  public: GGS__5B_lstring_5D_ mProperty_mPoisonedVarNameList ;
 
 
 //--- Default constructor
@@ -2872,7 +2872,7 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
 //--- Constructor
   public: cPtr_inputActualExistingVariableParameterAST (const GGS_lstring & in_mActualSelector,
                                                         const GGS_lstring & in_mInputActualParameterName,
-                                                        const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                        const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
@@ -2984,14 +2984,14 @@ class GGS_inputActualSelfPropertyParameterAST : public GGS_actualParameterAST {
 
   public: class GGS_lstring readProperty_mInputActualSelfPropertyName (void) const ;
 
-  public: class GGS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mPoisonedVarNameList (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
   public: static GGS_inputActualSelfPropertyParameterAST init_21__21__21_ (const class GGS_lstring & inOperand0,
                                                                            const class GGS_lstring & inOperand1,
-                                                                           const class GGS_lstringlist & inOperand2,
+                                                                           const class GGS__5B_lstring_5D_ & inOperand2,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
@@ -3038,7 +3038,7 @@ class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST 
 //--------------------------------- Initializers
   public: void inputActualSelfPropertyParameterAST_init_21__21__21_ (const class GGS_lstring & inOperand0,
                                                                      const class GGS_lstring & inOperand1,
-                                                                     const class GGS_lstringlist & inOperand2,
+                                                                     const class GGS__5B_lstring_5D_ & inOperand2,
                                                                      Compiler * inCompiler) ;
 
 
@@ -3072,7 +3072,7 @@ class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST 
 //--- Properties
   public: GGS_lstring mProperty_mActualSelector ;
   public: GGS_lstring mProperty_mInputActualSelfPropertyName ;
-  public: GGS_lstringlist mProperty_mPoisonedVarNameList ;
+  public: GGS__5B_lstring_5D_ mProperty_mPoisonedVarNameList ;
 
 
 //--- Default constructor
@@ -3081,7 +3081,7 @@ class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST 
 //--- Constructor
   public: cPtr_inputActualSelfPropertyParameterAST (const GGS_lstring & in_mActualSelector,
                                                     const GGS_lstring & in_mInputActualSelfPropertyName,
-                                                    const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                    const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
@@ -3193,14 +3193,14 @@ class GGS_inputActualSelfParameterAST : public GGS_actualParameterAST {
 
   public: class GGS_location readProperty_mSelfLocation (void) const ;
 
-  public: class GGS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mPoisonedVarNameList (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
   public: static GGS_inputActualSelfParameterAST init_21__21__21_ (const class GGS_lstring & inOperand0,
                                                                    const class GGS_location & inOperand1,
-                                                                   const class GGS_lstringlist & inOperand2,
+                                                                   const class GGS__5B_lstring_5D_ & inOperand2,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
@@ -3247,7 +3247,7 @@ class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
 //--------------------------------- Initializers
   public: void inputActualSelfParameterAST_init_21__21__21_ (const class GGS_lstring & inOperand0,
                                                              const class GGS_location & inOperand1,
-                                                             const class GGS_lstringlist & inOperand2,
+                                                             const class GGS__5B_lstring_5D_ & inOperand2,
                                                              Compiler * inCompiler) ;
 
 
@@ -3281,7 +3281,7 @@ class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
 //--- Properties
   public: GGS_lstring mProperty_mActualSelector ;
   public: GGS_location mProperty_mSelfLocation ;
-  public: GGS_lstringlist mProperty_mPoisonedVarNameList ;
+  public: GGS__5B_lstring_5D_ mProperty_mPoisonedVarNameList ;
 
 
 //--- Default constructor
@@ -3290,7 +3290,7 @@ class cPtr_inputActualSelfParameterAST : public cPtr_actualParameterAST {
 //--- Constructor
   public: cPtr_inputActualSelfParameterAST (const GGS_lstring & in_mActualSelector,
                                             const GGS_location & in_mSelfLocation,
-                                            const GGS_lstringlist & in_mPoisonedVarNameList,
+                                            const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
@@ -3404,7 +3404,7 @@ class GGS_inputActualNewVariableParameterAST : public GGS_actualParameterAST {
 
   public: class GGS_lstring readProperty_mInputActualParameterName (void) const ;
 
-  public: class GGS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mPoisonedVarNameList (void) const ;
 
 //-- Start of type generic part
 
@@ -3412,7 +3412,7 @@ class GGS_inputActualNewVariableParameterAST : public GGS_actualParameterAST {
   public: static GGS_inputActualNewVariableParameterAST init_21__21__21__21_ (const class GGS_lstring & inOperand0,
                                                                               const class GGS_lstring & inOperand1,
                                                                               const class GGS_lstring & inOperand2,
-                                                                              const class GGS_lstringlist & inOperand3,
+                                                                              const class GGS__5B_lstring_5D_ & inOperand3,
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
 
@@ -3460,7 +3460,7 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
   public: void inputActualNewVariableParameterAST_init_21__21__21__21_ (const class GGS_lstring & inOperand0,
                                                                         const class GGS_lstring & inOperand1,
                                                                         const class GGS_lstring & inOperand2,
-                                                                        const class GGS_lstringlist & inOperand3,
+                                                                        const class GGS__5B_lstring_5D_ & inOperand3,
                                                                         Compiler * inCompiler) ;
 
 
@@ -3495,7 +3495,7 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
   public: GGS_lstring mProperty_mActualSelector ;
   public: GGS_lstring mProperty_mInputOptionalActualTypeName ;
   public: GGS_lstring mProperty_mInputActualParameterName ;
-  public: GGS_lstringlist mProperty_mPoisonedVarNameList ;
+  public: GGS__5B_lstring_5D_ mProperty_mPoisonedVarNameList ;
 
 
 //--- Default constructor
@@ -3505,7 +3505,7 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
   public: cPtr_inputActualNewVariableParameterAST (const GGS_lstring & in_mActualSelector,
                                                    const GGS_lstring & in_mInputOptionalActualTypeName,
                                                    const GGS_lstring & in_mInputActualParameterName,
-                                                   const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                   const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
@@ -3621,7 +3621,7 @@ class GGS_inputActualNewConstantParameterAST : public GGS_actualParameterAST {
 
   public: class GGS_bool readProperty_mMarkedAsUnused (void) const ;
 
-  public: class GGS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mPoisonedVarNameList (void) const ;
 
 //-- Start of type generic part
 
@@ -3630,7 +3630,7 @@ class GGS_inputActualNewConstantParameterAST : public GGS_actualParameterAST {
                                                                                   const class GGS_lstring & inOperand1,
                                                                                   const class GGS_lstring & inOperand2,
                                                                                   const class GGS_bool & inOperand3,
-                                                                                  const class GGS_lstringlist & inOperand4,
+                                                                                  const class GGS__5B_lstring_5D_ & inOperand4,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
@@ -3679,7 +3679,7 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
                                                                             const class GGS_lstring & inOperand1,
                                                                             const class GGS_lstring & inOperand2,
                                                                             const class GGS_bool & inOperand3,
-                                                                            const class GGS_lstringlist & inOperand4,
+                                                                            const class GGS__5B_lstring_5D_ & inOperand4,
                                                                             Compiler * inCompiler) ;
 
 
@@ -3715,7 +3715,7 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
   public: GGS_lstring mProperty_mInputOptionalActualTypeName ;
   public: GGS_lstring mProperty_mInputActualParameterName ;
   public: GGS_bool mProperty_mMarkedAsUnused ;
-  public: GGS_lstringlist mProperty_mPoisonedVarNameList ;
+  public: GGS__5B_lstring_5D_ mProperty_mPoisonedVarNameList ;
 
 
 //--- Default constructor
@@ -3726,7 +3726,7 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
                                                    const GGS_lstring & in_mInputOptionalActualTypeName,
                                                    const GGS_lstring & in_mInputActualParameterName,
                                                    const GGS_bool & in_mMarkedAsUnused,
-                                                   const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                   const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
@@ -3836,13 +3836,13 @@ class GGS_inputSingleJokerActualParameterAST : public GGS_actualParameterAST {
 //--------------------------------- Property access
   public: class GGS_lstring readProperty_mActualSelector (void) const ;
 
-  public: class GGS_lstringlist readProperty_mPoisonedVarNameList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mPoisonedVarNameList (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
   public: static GGS_inputSingleJokerActualParameterAST init_21__21_ (const class GGS_lstring & inOperand0,
-                                                                      const class GGS_lstringlist & inOperand1,
+                                                                      const class GGS__5B_lstring_5D_ & inOperand1,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
@@ -3888,7 +3888,7 @@ class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
 
 //--------------------------------- Initializers
   public: void inputSingleJokerActualParameterAST_init_21__21_ (const class GGS_lstring & inOperand0,
-                                                                const class GGS_lstringlist & inOperand1,
+                                                                const class GGS__5B_lstring_5D_ & inOperand1,
                                                                 Compiler * inCompiler) ;
 
 
@@ -3921,7 +3921,7 @@ class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
 
 //--- Properties
   public: GGS_lstring mProperty_mActualSelector ;
-  public: GGS_lstringlist mProperty_mPoisonedVarNameList ;
+  public: GGS__5B_lstring_5D_ mProperty_mPoisonedVarNameList ;
 
 
 //--- Default constructor
@@ -3929,7 +3929,7 @@ class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
 
 //--- Constructor
   public: cPtr_inputSingleJokerActualParameterAST (const GGS_lstring & in_mActualSelector,
-                                                   const GGS_lstringlist & in_mPoisonedVarNameList,
+                                                   const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 

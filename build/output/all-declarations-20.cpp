@@ -37109,7 +37109,7 @@ void cGrammar_galgas_34_Grammar::nt_poisoned_5F_var_5F_list_indexing (Lexique_ga
   }
 }
 
-void cGrammar_galgas_34_Grammar::nt_poisoned_5F_var_5F_list_ (GGS_lstringlist &  parameter_1,
+void cGrammar_galgas_34_Grammar::nt_poisoned_5F_var_5F_list_ (GGS__5B_lstring_5D_ &  parameter_1,
                                 Lexique_galgasScanner_34_ * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 48 :

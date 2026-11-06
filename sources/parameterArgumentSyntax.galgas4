@@ -740,19 +740,19 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <poisoned_var_list> (!@lstringlist outPoisonedVarNameList ) {
+  rule <poisoned_var_list> (![@lstring] outPoisonedVarNameList ) {
     outPoisonedVarNameList = @()
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <poisoned_var_list> (!@lstringlist outPoisonedVarNameList ) {
+  rule <poisoned_var_list> (![@lstring] outPoisonedVarNameList ) {
     outPoisonedVarNameList = @()
     $spoil$
     $($
     repeat
        $identifier$ (?let varName)
-       outPoisonedVarNameList ++= @(varName)
+       outPoisonedVarNameList ++= varName
     while
       $,$
     end

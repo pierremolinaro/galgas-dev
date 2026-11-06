@@ -137,8 +137,8 @@ abstract proc @actualParameterForGeneration.generateActualParameter
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @actualParameterForGeneration.generatePoisonedVariables
-  (?!@string ioImplementation,
+abstract proc @actualParameterForGeneration.generatePoisonedVariables (
+  ?!@string ioImplementation,
   ?!@stringset ioUnusedVariableCppNameSet)
 
 //--------------------------------------------------------------------------------------------------
@@ -240,13 +240,6 @@ abstract func @semanticDeclarationForGeneration.isPredefined () -> @bool
 //--------------------------------------------------------------------------------------------------
 
 abstract func @semanticDeclarationForGeneration.headerKind () -> @headerKind
-
-//--------------------------------------------------------------------------------------------------
-
-//struct @semanticDeclarationForGeneration {
-//  public let @string infoMessage %initArgLabel
-//  public let @semanticDeclarationForGeneration mDeclaration
-//}
 
 //--------------------------------------------------------------------------------------------------
 //
