@@ -393,7 +393,6 @@
         },
         { "path": "option-galgas-5Fcli-5Foptions-swiftui.swift", "target-membership": [ "GalgasIDE/compile-sources" ] },
         { "path": "gui-swiftui-cocoa.swift", "target-membership": [ "GalgasIDE/compile-sources" ] },
-        { "path": "lexique-galgas+scanner3-swiftui.swift", "target-membership": [ "GalgasIDE/compile-sources" ] },
         { "path": "lexique-galgas+scanner4-swiftui.swift", "target-membership": [ "GalgasIDE/compile-sources" ] },
         { "path": "lexique-galgas+template+scanner-swiftui.swift", "target-membership": [ "GalgasIDE/compile-sources" ] },
       ],

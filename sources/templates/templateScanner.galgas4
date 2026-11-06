@@ -23,7 +23,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-template lexique galgasTemplateScanner : galgasScanner3 {
+template lexique galgasTemplateScanner : galgasScanner4 {
 
   template "%" ... "%"
 
