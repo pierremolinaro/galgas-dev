@@ -140,7 +140,7 @@ class cParser_galgas_34_DeclarationsSyntax {
   protected: virtual void nt_search_5F_subscript_5F_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_semantic_5F_instruction_5F_list_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                               class GGS_semanticInstructionListAST & outArgument1,
+                                                               class GGS__5B_semanticInstructionAST_5D_ & outArgument1,
                                                                class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_semantic_5F_instruction_5F_list_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
@@ -1734,7 +1734,7 @@ class cParser_galgas_34_ProgramDeclarations {
   protected: virtual void nt_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_semantic_5F_instruction_5F_list_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                               class GGS_semanticInstructionListAST & outArgument1,
+                                                               class GGS__5B_semanticInstructionAST_5D_ & outArgument1,
                                                                class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_semantic_5F_instruction_5F_list_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;

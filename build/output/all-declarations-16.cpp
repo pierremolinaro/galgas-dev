@@ -2844,7 +2844,7 @@ init_21_isPredefined_21__21__21__21_usefullFunc_21__21__21__21_ (const GGS_bool 
                                                                  const GGS_lstring & in_mResultTypeName,
                                                                  const GGS_bool & in_usefullFunc,
                                                                  const GGS_lstring & in_mResultVariableName,
-                                                                 const GGS_semanticInstructionListAST & in_mFunctionInstructionList,
+                                                                 const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
                                                                  const GGS_location & in_mEndOfFunctionInstructionList,
                                                                  const GGS_bool & in_mIsInternal,
                                                                  Compiler * inCompiler
@@ -2866,7 +2866,7 @@ functionDeclarationAST_init_21_isPredefined_21__21__21__21_usefullFunc_21__21__2
                                                                                         const GGS_lstring & in_mResultTypeName,
                                                                                         const GGS_bool & in_usefullFunc,
                                                                                         const GGS_lstring & in_mResultVariableName,
-                                                                                        const GGS_semanticInstructionListAST & in_mFunctionInstructionList,
+                                                                                        const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
                                                                                         const GGS_location & in_mEndOfFunctionInstructionList,
                                                                                         const GGS_bool & in_mIsInternal,
                                                                                         Compiler * /* inCompiler */) {
@@ -2901,9 +2901,9 @@ GGS_lstring GGS_functionDeclarationAST::readProperty_mResultVariableName (void) 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticInstructionListAST GGS_functionDeclarationAST::readProperty_mFunctionInstructionList (void) const {
+GGS__5B_semanticInstructionAST_5D_ GGS_functionDeclarationAST::readProperty_mFunctionInstructionList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_semanticInstructionListAST () ;
+    return GGS__5B_semanticInstructionAST_5D_ () ;
   }else{
     cPtr_functionDeclarationAST * p = (cPtr_functionDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_functionDeclarationAST) ;
@@ -2955,7 +2955,7 @@ cPtr_functionDeclarationAST::cPtr_functionDeclarationAST (const GGS_bool & in_is
                                                           const GGS_lstring & in_mResultTypeName,
                                                           const GGS_bool & in_usefullFunc,
                                                           const GGS_lstring & in_mResultVariableName,
-                                                          const GGS_semanticInstructionListAST & in_mFunctionInstructionList,
+                                                          const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
                                                           const GGS_location & in_mEndOfFunctionInstructionList,
                                                           const GGS_bool & in_mIsInternal,
                                                           Compiler * inCompiler
@@ -3099,7 +3099,7 @@ init_21_isPredefined_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefin
                                                   const GGS_lstring & in_mFunctionName,
                                                   const GGS_lstring & in_mResultTypeName,
                                                   const GGS_lstring & in_mResultVariableName,
-                                                  const GGS_semanticInstructionListAST & in_mFunctionInstructionList,
+                                                  const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
                                                   const GGS_location & in_mEndOfFunctionInstructionList,
                                                   const GGS_bool & in_mIsInternal,
                                                   const GGS_bool & in_mIsUsefull,
@@ -3120,7 +3120,7 @@ onceFunctionDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (con
                                                                              const GGS_lstring & in_mFunctionName,
                                                                              const GGS_lstring & in_mResultTypeName,
                                                                              const GGS_lstring & in_mResultVariableName,
-                                                                             const GGS_semanticInstructionListAST & in_mFunctionInstructionList,
+                                                                             const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
                                                                              const GGS_location & in_mEndOfFunctionInstructionList,
                                                                              const GGS_bool & in_mIsInternal,
                                                                              const GGS_bool & in_mIsUsefull,
@@ -3179,9 +3179,9 @@ GGS_lstring GGS_onceFunctionDeclarationAST::readProperty_mResultVariableName (vo
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticInstructionListAST GGS_onceFunctionDeclarationAST::readProperty_mFunctionInstructionList (void) const {
+GGS__5B_semanticInstructionAST_5D_ GGS_onceFunctionDeclarationAST::readProperty_mFunctionInstructionList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_semanticInstructionListAST () ;
+    return GGS__5B_semanticInstructionAST_5D_ () ;
   }else{
     cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_onceFunctionDeclarationAST) ;
@@ -3246,7 +3246,7 @@ cPtr_onceFunctionDeclarationAST::cPtr_onceFunctionDeclarationAST (const GGS_bool
                                                                   const GGS_lstring & in_mFunctionName,
                                                                   const GGS_lstring & in_mResultTypeName,
                                                                   const GGS_lstring & in_mResultVariableName,
-                                                                  const GGS_semanticInstructionListAST & in_mFunctionInstructionList,
+                                                                  const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
                                                                   const GGS_location & in_mEndOfFunctionInstructionList,
                                                                   const GGS_bool & in_mIsInternal,
                                                                   const GGS_bool & in_mIsUsefull,
@@ -9902,7 +9902,7 @@ init_21_isPredefined_21_isFilePrivate_21__21__21_usefullProcedure_21__21_ (const
                                                                            const GGS_lstring & in_mRoutineName,
                                                                            const GGS_formalParameterListAST & in_mFormalArgumentListAST,
                                                                            const GGS_bool & in_usefullProcedure,
-                                                                           const GGS_semanticInstructionListAST & in_mRoutineInstructionList,
+                                                                           const GGS__5B_semanticInstructionAST_5D_ & in_mRoutineInstructionList,
                                                                            const GGS_location & in_mEndOfRoutineInstructionList,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
@@ -9922,7 +9922,7 @@ procDeclarationAST_init_21_isPredefined_21_isFilePrivate_21__21__21_usefullProce
                                                                                               const GGS_lstring & in_mRoutineName,
                                                                                               const GGS_formalParameterListAST & in_mFormalArgumentListAST,
                                                                                               const GGS_bool & in_usefullProcedure,
-                                                                                              const GGS_semanticInstructionListAST & in_mRoutineInstructionList,
+                                                                                              const GGS__5B_semanticInstructionAST_5D_ & in_mRoutineInstructionList,
                                                                                               const GGS_location & in_mEndOfRoutineInstructionList,
                                                                                               Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
@@ -9942,9 +9942,9 @@ GGS_externProcedureDeclarationAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_semanticInstructionListAST GGS_procDeclarationAST::readProperty_mRoutineInstructionList (void) const {
+GGS__5B_semanticInstructionAST_5D_ GGS_procDeclarationAST::readProperty_mRoutineInstructionList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_semanticInstructionListAST () ;
+    return GGS__5B_semanticInstructionAST_5D_ () ;
   }else{
     cPtr_procDeclarationAST * p = (cPtr_procDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_procDeclarationAST) ;
@@ -9981,7 +9981,7 @@ cPtr_procDeclarationAST::cPtr_procDeclarationAST (const GGS_bool & in_isPredefin
                                                   const GGS_lstring & in_mRoutineName,
                                                   const GGS_formalParameterListAST & in_mFormalArgumentListAST,
                                                   const GGS_bool & in_usefullProcedure,
-                                                  const GGS_semanticInstructionListAST & in_mRoutineInstructionList,
+                                                  const GGS__5B_semanticInstructionAST_5D_ & in_mRoutineInstructionList,
                                                   const GGS_location & in_mEndOfRoutineInstructionList,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) :

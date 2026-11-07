@@ -27,7 +27,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_list> (?!@galgasDeclarationAST _ioDeclarations,
-                                    !@semanticInstructionListAST outInstructionsList)
+                                    ![@semanticInstructionAST] outInstructionsList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   P R O L O G U E
@@ -36,7 +36,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $before$
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST prologueInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] prologueInstructionList)
     let endOfPrologue = @location.here
     $}$
     ioDeclarations.mPrologueDeclarationList ++= @(
@@ -51,7 +51,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $after$
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST prologueInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] prologueInstructionList)
     let endOfPrologue = @location.here
     $}$
     ioDeclarations.mEpilogueDeclarationList ++= @(
@@ -93,7 +93,7 @@ syntax galgas4ProgramDeclarations (galgasScanner4) {
     let isUnused = sourceFileVariableName.hasPrefix ("_")
   //---
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST mInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] mInstructionList)
     let endOfInstructionList = @location.here
     $}$
     ioDeclarations.mSourceRuleList ++= @(

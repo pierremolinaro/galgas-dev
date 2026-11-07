@@ -41,7 +41,7 @@ syntax extension galgas4InstructionsSyntax {
     $identifier$ (?let routineName) indexing (routineDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList ++= @(@procDeclarationAST (
@@ -72,7 +72,7 @@ syntax extension galgas4InstructionsSyntax {
     $identifier$ (?let routineName) indexing (routineDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList ++= @(@procDeclarationAST (
@@ -93,7 +93,7 @@ syntax extension galgas4InstructionsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 final class @procDeclarationAST : @externProcedureDeclarationAST {
-  public let @semanticInstructionListAST mRoutineInstructionList
+  public let [@semanticInstructionAST] mRoutineInstructionList
   public let @location mEndOfRoutineInstructionList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -16390,144 +16390,115 @@ class GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak : public G
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceExpressionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @semanticInstructionListAST list enumerator
+// Phase 1: [semanticInstructionAST] array
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_semanticInstructionListAST final {
-  public: DownEnumerator_semanticInstructionListAST (const class GGS_semanticInstructionListAST & inList) ;
+class DownEnumerator__5B_semanticInstructionAST_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_semanticInstructionAST_5D_ (const class GGS__5B_semanticInstructionAST_5D_ & inOperand) ;
 
-  public: ~ DownEnumerator_semanticInstructionListAST (void) = default ;
+//--- No copy
+  private: DownEnumerator__5B_semanticInstructionAST_5D_ (const DownEnumerator__5B_semanticInstructionAST_5D_ &) = delete ;
+  private: DownEnumerator__5B_semanticInstructionAST_5D_ & operator = (const DownEnumerator__5B_semanticInstructionAST_5D_ &) = delete ;
 
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+//--- 
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent >= 0 ;
+  }
 
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+//--- 
+  public: inline void gotoNextObject (void) {
+    mCurrent -= 1 ;
+  }
 
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_semanticInstructionAST current_mInstruction (LOCATION_ARGS) const ;
 //--- Current element access
-  public: class GGS_semanticInstructionListAST_2E_element current (LOCATION_ARGS) const ;
+  public: class GGS_semanticInstructionAST current (LOCATION_ARGS) const ;
 
-  private: GenericArray <GGS_semanticInstructionListAST_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: DownEnumerator_semanticInstructionListAST (const DownEnumerator_semanticInstructionListAST &) = delete ;
-  private: DownEnumerator_semanticInstructionListAST & operator = (const DownEnumerator_semanticInstructionListAST &) = delete ;
+//---- Properties
+  private: const GenericArray <GGS_semanticInstructionAST> mSharedArray ;
+  private: int32_t mCurrent ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class UpEnumerator_semanticInstructionListAST final {
-  public: UpEnumerator_semanticInstructionListAST (const class GGS_semanticInstructionListAST & inList)  ;
+class UpEnumerator__5B_semanticInstructionAST_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_semanticInstructionAST_5D_ (const class GGS__5B_semanticInstructionAST_5D_ & inOperand) ;
 
-  public: ~ UpEnumerator_semanticInstructionListAST (void) = default ;
+//--- No copy
+  private: UpEnumerator__5B_semanticInstructionAST_5D_ (const UpEnumerator__5B_semanticInstructionAST_5D_ &) = delete ;
+  private: UpEnumerator__5B_semanticInstructionAST_5D_ & operator = (const UpEnumerator__5B_semanticInstructionAST_5D_ &) = delete ;
 
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+//--- 
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent < mSharedArray.count () ;
+  }
+  
+//--- 
+  public: inline void gotoNextObject (void) {
+    mCurrent += 1 ;
+  }
 
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_semanticInstructionAST current_mInstruction (LOCATION_ARGS) const ;
 //--- Current element access
-  public: class GGS_semanticInstructionListAST_2E_element current (LOCATION_ARGS) const ;
+  public: class GGS_semanticInstructionAST current (LOCATION_ARGS) const ;
 
-  private: GenericArray <GGS_semanticInstructionListAST_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: UpEnumerator_semanticInstructionListAST (const UpEnumerator_semanticInstructionListAST &) = delete ;
-  private: UpEnumerator_semanticInstructionListAST & operator = (const UpEnumerator_semanticInstructionListAST &) = delete ;
+//---- Properties
+  private: const GenericArray <GGS_semanticInstructionAST> mSharedArray ;
+  private: int32_t mCurrent ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// @semanticInstructionListAST list
-//--------------------------------------------------------------------------------------------------
 
-class GGS_semanticInstructionListAST : public AC_GALGAS_root {
-//--- Private property
-  private: GenericArray <GGS_semanticInstructionListAST_2E_element> mArray ;
+class GGS__5B_semanticInstructionAST_5D_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_semanticInstructionAST> mSharedArray ;
 
-//--- Default constructor
-  public: GGS_semanticInstructionListAST (void) ;
+//--------------------------------- Default constructor
+  public: GGS__5B_semanticInstructionAST_5D_ (void) ;
 
-//--- Destructor
-  public: virtual ~ GGS_semanticInstructionListAST (void) = default ;
+//--------------------------------- Handle copy
+  public: GGS__5B_semanticInstructionAST_5D_ (const GGS__5B_semanticInstructionAST_5D_ & inSource) ;
+  public: GGS__5B_semanticInstructionAST_5D_ & operator = (const GGS__5B_semanticInstructionAST_5D_ & inSource) ;
 
-//--- Copy
-  public: GGS_semanticInstructionListAST (const GGS_semanticInstructionListAST &) = default ;
-  public: GGS_semanticInstructionListAST & operator = (const GGS_semanticInstructionListAST &) = default ;
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
 
-//--- Is valid
-  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
-
-//--- Drop
-  public: inline virtual void drop (void) override { mArray.removeAll () ; }
-
-//--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Count
-  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
- 
-//--- sortedElementArray
-  public : inline GenericArray <GGS_semanticInstructionListAST_2E_element> sortedElementArray (void) const {
-    return mArray ;
-  }
-
-//--- subList
-  private: GGS_semanticInstructionListAST subList (const int32_t inStart,
-                                                   const int32_t inLength,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--- List constructor for graph
-  public: GGS_semanticInstructionListAST (const CollectionElementArray & inSharedArray) ;
-
-//--- Element constructor
-  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                 const class GGS_semanticInstructionAST & in_mInstruction
-                                                 COMMA_LOCATION_ARGS) ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_semanticInstructionAST_5D_ ;
+  friend class DownEnumerator__5B_semanticInstructionAST_5D_ ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_semanticInstructionListAST init (Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
+  public: static GGS__5B_semanticInstructionAST_5D_ init (Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_semanticInstructionListAST extractObject (const GGS_object & inObject,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_semanticInstructionListAST class_func_listWithValue (const class GGS_semanticInstructionAST & inOperand0
-                                                                                COMMA_LOCATION_ARGS) ;
+  public: static GGS__5B_semanticInstructionAST_5D_ extractObject (const GGS_object & inObject,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: void plusAssignOperation (const GGS_semanticInstructionListAST inOperand,
+  public: void plusAssignOperation (const GGS__5B_semanticInstructionAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_semanticInstructionAST & inOperand0
-                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: void plusPlusAssignOperation (const GGS_semanticInstructionListAST_2E_element & inOperand
+  public: void plusPlusAssignOperation (const GGS_semanticInstructionAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
-  public: GGS_semanticInstructionListAST add_operation (const GGS_semanticInstructionListAST & inOperand,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const ;
+  public: GGS__5B_semanticInstructionAST_5D_ add_operation (const GGS__5B_semanticInstructionAST_5D_ & inOperand,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
@@ -16553,11 +16524,6 @@ class GGS_semanticInstructionListAST : public AC_GALGAS_root {
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMInstructionAtIndex (class GGS_semanticInstructionAST constinArgument0,
-                                              class GGS_uint constinArgument1,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
   public: void method_first (class GGS_semanticInstructionAST & outArgument0,
@@ -16573,39 +16539,22 @@ class GGS_semanticInstructionListAST : public AC_GALGAS_root {
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_semanticInstructionAST getter_mInstructionAtIndex (const class GGS_uint & constinOperand0,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
-
-  public: class GGS_semanticInstructionListAST getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_semanticInstructionListAST getter_subListToIndex (const class GGS_uint & constinOperand0,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_semanticInstructionListAST getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
+  public: class GGS_semanticInstructionAST readSubscript__3F_ (const class GGS_uint & in0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator_semanticInstructionListAST ;
-  friend class DownEnumerator_semanticInstructionListAST ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticInstructionListAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_semanticInstructionAST_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @semanticInstructionAST reference class
@@ -16727,79 +16676,6 @@ class cPtr_semanticInstructionAST : public cPtr_syntaxInstructionAST {
   public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override = 0 ;
 
 } ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @semanticInstructionListAST_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_semanticInstructionListAST_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_semanticInstructionAST mProperty_mInstruction ;
-  public: inline GGS_semanticInstructionAST readProperty_mInstruction (void) const {
-    return mProperty_mInstruction ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_semanticInstructionListAST_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMInstruction (const GGS_semanticInstructionAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInstruction = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_semanticInstructionListAST_2E_element (const GGS_semanticInstructionAST & in_mInstruction) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_semanticInstructionListAST_2E_element (const GGS_semanticInstructionListAST_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_semanticInstructionListAST_2E_element & operator = (const GGS_semanticInstructionListAST_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_semanticInstructionListAST_2E_element init_21_ (const class GGS_semanticInstructionAST & inOperand0,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_semanticInstructionListAST_2E_element extractObject (const GGS_object & inObject,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticInstructionListAST_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @semanticInstructionListForGeneration list enumerator
@@ -20467,7 +20343,7 @@ class DownEnumerator_switchBranchesAST final {
 
   public: class GGS__5B_lstring_5D_ current_mSwitchConstantList (LOCATION_ARGS) const ;
   public: class GGS_switchExtractedValuesListAST current_mAssociatedValuesExtraction (LOCATION_ARGS) const ;
-  public: class GGS_semanticInstructionListAST current_mInstructions (LOCATION_ARGS) const ;
+  public: class GGS__5B_semanticInstructionAST_5D_ current_mInstructions (LOCATION_ARGS) const ;
   public: class GGS_location current_mEndOfBranch (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_switchBranchesAST_2E_element current (LOCATION_ARGS) const ;
@@ -20496,7 +20372,7 @@ class UpEnumerator_switchBranchesAST final {
 
   public: class GGS__5B_lstring_5D_ current_mSwitchConstantList (LOCATION_ARGS) const ;
   public: class GGS_switchExtractedValuesListAST current_mAssociatedValuesExtraction (LOCATION_ARGS) const ;
-  public: class GGS_semanticInstructionListAST current_mInstructions (LOCATION_ARGS) const ;
+  public: class GGS__5B_semanticInstructionAST_5D_ current_mInstructions (LOCATION_ARGS) const ;
   public: class GGS_location current_mEndOfBranch (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_switchBranchesAST_2E_element current (LOCATION_ARGS) const ;
@@ -20558,7 +20434,7 @@ class GGS_switchBranchesAST : public AC_GALGAS_root {
   public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS__5B_lstring_5D_ & in_mSwitchConstantList,
                                                  const class GGS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
-                                                 const class GGS_semanticInstructionListAST & in_mInstructions,
+                                                 const class GGS__5B_semanticInstructionAST_5D_ & in_mInstructions,
                                                  const class GGS_location & in_mEndOfBranch
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -20579,7 +20455,7 @@ class GGS_switchBranchesAST : public AC_GALGAS_root {
 //--------------------------------- GALGAS class functions
   public: static class GGS_switchBranchesAST class_func_listWithValue (const class GGS__5B_lstring_5D_ & inOperand0,
                                                                        const class GGS_switchExtractedValuesListAST & inOperand1,
-                                                                       const class GGS_semanticInstructionListAST & inOperand2,
+                                                                       const class GGS__5B_semanticInstructionAST_5D_ & inOperand2,
                                                                        const class GGS_location & inOperand3
                                                                        COMMA_LOCATION_ARGS) ;
 
@@ -20591,7 +20467,7 @@ class GGS_switchBranchesAST : public AC_GALGAS_root {
 //--------------------------------- += operator (with list of field expressions)
   public: void addAssignOperation (const class GGS__5B_lstring_5D_ & inOperand0,
                                    const class GGS_switchExtractedValuesListAST & inOperand1,
-                                   const class GGS_semanticInstructionListAST & inOperand2,
+                                   const class GGS__5B_semanticInstructionAST_5D_ & inOperand2,
                                    const class GGS_location & inOperand3
                                    COMMA_LOCATION_ARGS) ;
 
@@ -20607,14 +20483,14 @@ class GGS_switchBranchesAST : public AC_GALGAS_root {
 //--------------------------------- Setters
   public: void setter_append (class GGS__5B_lstring_5D_ constinArgument0,
                               class GGS_switchExtractedValuesListAST constinArgument1,
-                              class GGS_semanticInstructionListAST constinArgument2,
+                              class GGS__5B_semanticInstructionAST_5D_ constinArgument2,
                               class GGS_location constinArgument3,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
   public: void setter_insertAtIndex (class GGS__5B_lstring_5D_ constinArgument0,
                                      class GGS_switchExtractedValuesListAST constinArgument1,
-                                     class GGS_semanticInstructionListAST constinArgument2,
+                                     class GGS__5B_semanticInstructionAST_5D_ constinArgument2,
                                      class GGS_location constinArgument3,
                                      class GGS_uint constinArgument4,
                                      Compiler * inCompiler
@@ -20622,21 +20498,21 @@ class GGS_switchBranchesAST : public AC_GALGAS_root {
 
   public: void setter_popFirst (class GGS__5B_lstring_5D_ & outArgument0,
                                 class GGS_switchExtractedValuesListAST & outArgument1,
-                                class GGS_semanticInstructionListAST & outArgument2,
+                                class GGS__5B_semanticInstructionAST_5D_ & outArgument2,
                                 class GGS_location & outArgument3,
                                 Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
   public: void setter_popLast (class GGS__5B_lstring_5D_ & outArgument0,
                                class GGS_switchExtractedValuesListAST & outArgument1,
-                               class GGS_semanticInstructionListAST & outArgument2,
+                               class GGS__5B_semanticInstructionAST_5D_ & outArgument2,
                                class GGS_location & outArgument3,
                                Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAtIndex (class GGS__5B_lstring_5D_ & outArgument0,
                                      class GGS_switchExtractedValuesListAST & outArgument1,
-                                     class GGS_semanticInstructionListAST & outArgument2,
+                                     class GGS__5B_semanticInstructionAST_5D_ & outArgument2,
                                      class GGS_location & outArgument3,
                                      class GGS_uint constinArgument4,
                                      Compiler * inCompiler
@@ -20652,7 +20528,7 @@ class GGS_switchBranchesAST : public AC_GALGAS_root {
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMInstructionsAtIndex (class GGS_semanticInstructionListAST constinArgument0,
+  public: void setter_setMInstructionsAtIndex (class GGS__5B_semanticInstructionAST_5D_ constinArgument0,
                                                class GGS_uint constinArgument1,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
@@ -20666,14 +20542,14 @@ class GGS_switchBranchesAST : public AC_GALGAS_root {
 //--------------------------------- Instance Methods
   public: void method_first (class GGS__5B_lstring_5D_ & outArgument0,
                              class GGS_switchExtractedValuesListAST & outArgument1,
-                             class GGS_semanticInstructionListAST & outArgument2,
+                             class GGS__5B_semanticInstructionAST_5D_ & outArgument2,
                              class GGS_location & outArgument3,
                              Compiler * inCompiler
                              COMMA_LOCATION_ARGS) const ;
 
   public: void method_last (class GGS__5B_lstring_5D_ & outArgument0,
                             class GGS_switchExtractedValuesListAST & outArgument1,
-                            class GGS_semanticInstructionListAST & outArgument2,
+                            class GGS__5B_semanticInstructionAST_5D_ & outArgument2,
                             class GGS_location & outArgument3,
                             Compiler * inCompiler
                             COMMA_LOCATION_ARGS) const ;
@@ -20691,9 +20567,9 @@ class GGS_switchBranchesAST : public AC_GALGAS_root {
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_semanticInstructionListAST getter_mInstructionsAtIndex (const class GGS_uint & constinOperand0,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_semanticInstructionAST_5D_ getter_mInstructionsAtIndex (const class GGS_uint & constinOperand0,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const ;
 
   public: class GGS__5B_lstring_5D_ getter_mSwitchConstantListAtIndex (const class GGS_uint & constinOperand0,
                                                                        Compiler * inCompiler
@@ -20745,8 +20621,8 @@ class GGS_switchBranchesAST_2E_element : public AC_GALGAS_root {
     return mProperty_mAssociatedValuesExtraction ;
   }
 
-  public: GGS_semanticInstructionListAST mProperty_mInstructions ;
-  public: inline GGS_semanticInstructionListAST readProperty_mInstructions (void) const {
+  public: GGS__5B_semanticInstructionAST_5D_ mProperty_mInstructions ;
+  public: inline GGS__5B_semanticInstructionAST_5D_ readProperty_mInstructions (void) const {
     return mProperty_mInstructions ;
   }
 
@@ -20771,7 +20647,7 @@ class GGS_switchBranchesAST_2E_element : public AC_GALGAS_root {
     mProperty_mAssociatedValuesExtraction = inValue ;
   }
 
-  public: inline void setter_setMInstructions (const GGS_semanticInstructionListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMInstructions (const GGS__5B_semanticInstructionAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mInstructions = inValue ;
   }
 
@@ -20785,7 +20661,7 @@ class GGS_switchBranchesAST_2E_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_switchBranchesAST_2E_element (const GGS__5B_lstring_5D_ & in_mSwitchConstantList,
                                             const GGS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
-                                            const GGS_semanticInstructionListAST & in_mInstructions,
+                                            const GGS__5B_semanticInstructionAST_5D_ & in_mInstructions,
                                             const GGS_location & in_mEndOfBranch) ;
 
 //--------------------------------- Copy constructor
@@ -20799,7 +20675,7 @@ class GGS_switchBranchesAST_2E_element : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS_switchBranchesAST_2E_element init_21__21__21__21_ (const class GGS__5B_lstring_5D_ & inOperand0,
                                                                         const class GGS_switchExtractedValuesListAST & inOperand1,
-                                                                        const class GGS_semanticInstructionListAST & inOperand2,
+                                                                        const class GGS__5B_semanticInstructionAST_5D_ & inOperand2,
                                                                         const class GGS_location & inOperand3,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
@@ -21189,4 +21065,391 @@ class GGS_extractedAssociatedValuesForGeneration_2E_element : public AC_GALGAS_r
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extractedAssociatedValuesForGeneration_2E_element ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @switchBranchesForGeneration list enumerator
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_switchBranchesForGeneration final {
+  public: DownEnumerator_switchBranchesForGeneration (const class GGS_switchBranchesForGeneration & inList) ;
+
+  public: ~ DownEnumerator_switchBranchesForGeneration (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
+
+  public: class GGS__5B_lstring_5D_ current_mSwitchConstantList (LOCATION_ARGS) const ;
+  public: class GGS_extractedAssociatedValuesForGeneration current_mExtractedAssociatedValuesForGeneration (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mEndOfBranchLocationIndex (LOCATION_ARGS) const ;
+  public: class GGS_semanticInstructionListForGeneration current_mInstructions (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_switchBranchesForGeneration_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <GGS_switchBranchesForGeneration_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_switchBranchesForGeneration (const DownEnumerator_switchBranchesForGeneration &) = delete ;
+  private: DownEnumerator_switchBranchesForGeneration & operator = (const DownEnumerator_switchBranchesForGeneration &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_switchBranchesForGeneration final {
+  public: UpEnumerator_switchBranchesForGeneration (const class GGS_switchBranchesForGeneration & inList)  ;
+
+  public: ~ UpEnumerator_switchBranchesForGeneration (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
+
+  public: class GGS__5B_lstring_5D_ current_mSwitchConstantList (LOCATION_ARGS) const ;
+  public: class GGS_extractedAssociatedValuesForGeneration current_mExtractedAssociatedValuesForGeneration (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mEndOfBranchLocationIndex (LOCATION_ARGS) const ;
+  public: class GGS_semanticInstructionListForGeneration current_mInstructions (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_switchBranchesForGeneration_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <GGS_switchBranchesForGeneration_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_switchBranchesForGeneration (const UpEnumerator_switchBranchesForGeneration &) = delete ;
+  private: UpEnumerator_switchBranchesForGeneration & operator = (const UpEnumerator_switchBranchesForGeneration &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// @switchBranchesForGeneration list
+//--------------------------------------------------------------------------------------------------
+
+class GGS_switchBranchesForGeneration : public AC_GALGAS_root {
+//--- Private property
+  private: GenericArray <GGS_switchBranchesForGeneration_2E_element> mArray ;
+
+//--- Default constructor
+  public: GGS_switchBranchesForGeneration (void) ;
+
+//--- Destructor
+  public: virtual ~ GGS_switchBranchesForGeneration (void) = default ;
+
+//--- Copy
+  public: GGS_switchBranchesForGeneration (const GGS_switchBranchesForGeneration &) = default ;
+  public: GGS_switchBranchesForGeneration & operator = (const GGS_switchBranchesForGeneration &) = default ;
+
+//--- Is valid
+  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+
+//--- Drop
+  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Count
+  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
+ 
+//--- sortedElementArray
+  public : inline GenericArray <GGS_switchBranchesForGeneration_2E_element> sortedElementArray (void) const {
+    return mArray ;
+  }
+
+//--- subList
+  private: GGS_switchBranchesForGeneration subList (const int32_t inStart,
+                                                    const int32_t inLength,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+
+//--- List constructor for graph
+  public: GGS_switchBranchesForGeneration (const CollectionElementArray & inSharedArray) ;
+
+//--- Element constructor
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
+                                                 const class GGS__5B_lstring_5D_ & in_mSwitchConstantList,
+                                                 const class GGS_extractedAssociatedValuesForGeneration & in_mExtractedAssociatedValuesForGeneration,
+                                                 const class GGS_uint & in_mEndOfBranchLocationIndex,
+                                                 const class GGS_semanticInstructionListForGeneration & in_mInstructions
+                                                 COMMA_LOCATION_ARGS) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_switchBranchesForGeneration init (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_switchBranchesForGeneration extractObject (const GGS_object & inObject,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_switchBranchesForGeneration class_func_listWithValue (const class GGS__5B_lstring_5D_ & inOperand0,
+                                                                                 const class GGS_extractedAssociatedValuesForGeneration & inOperand1,
+                                                                                 const class GGS_uint & inOperand2,
+                                                                                 const class GGS_semanticInstructionListForGeneration & inOperand3
+                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public: void plusAssignOperation (const GGS_switchBranchesForGeneration inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public: void addAssignOperation (const class GGS__5B_lstring_5D_ & inOperand0,
+                                   const class GGS_extractedAssociatedValuesForGeneration & inOperand1,
+                                   const class GGS_uint & inOperand2,
+                                   const class GGS_semanticInstructionListForGeneration & inOperand3
+                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator, collection value
+  public: void plusPlusAssignOperation (const GGS_switchBranchesForGeneration_2E_element & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS_switchBranchesForGeneration add_operation (const GGS_switchBranchesForGeneration & inOperand,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS__5B_lstring_5D_ constinArgument0,
+                              class GGS_extractedAssociatedValuesForGeneration constinArgument1,
+                              class GGS_uint constinArgument2,
+                              class GGS_semanticInstructionListForGeneration constinArgument3,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insertAtIndex (class GGS__5B_lstring_5D_ constinArgument0,
+                                     class GGS_extractedAssociatedValuesForGeneration constinArgument1,
+                                     class GGS_uint constinArgument2,
+                                     class GGS_semanticInstructionListForGeneration constinArgument3,
+                                     class GGS_uint constinArgument4,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popFirst (class GGS__5B_lstring_5D_ & outArgument0,
+                                class GGS_extractedAssociatedValuesForGeneration & outArgument1,
+                                class GGS_uint & outArgument2,
+                                class GGS_semanticInstructionListForGeneration & outArgument3,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popLast (class GGS__5B_lstring_5D_ & outArgument0,
+                               class GGS_extractedAssociatedValuesForGeneration & outArgument1,
+                               class GGS_uint & outArgument2,
+                               class GGS_semanticInstructionListForGeneration & outArgument3,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAtIndex (class GGS__5B_lstring_5D_ & outArgument0,
+                                     class GGS_extractedAssociatedValuesForGeneration & outArgument1,
+                                     class GGS_uint & outArgument2,
+                                     class GGS_semanticInstructionListForGeneration & outArgument3,
+                                     class GGS_uint constinArgument4,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMEndOfBranchLocationIndexAtIndex (class GGS_uint constinArgument0,
+                                                           class GGS_uint constinArgument1,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMExtractedAssociatedValuesForGenerationAtIndex (class GGS_extractedAssociatedValuesForGeneration constinArgument0,
+                                                                         class GGS_uint constinArgument1,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMInstructionsAtIndex (class GGS_semanticInstructionListForGeneration constinArgument0,
+                                               class GGS_uint constinArgument1,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMSwitchConstantListAtIndex (class GGS__5B_lstring_5D_ constinArgument0,
+                                                     class GGS_uint constinArgument1,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_first (class GGS__5B_lstring_5D_ & outArgument0,
+                             class GGS_extractedAssociatedValuesForGeneration & outArgument1,
+                             class GGS_uint & outArgument2,
+                             class GGS_semanticInstructionListForGeneration & outArgument3,
+                             Compiler * inCompiler
+                             COMMA_LOCATION_ARGS) const ;
+
+  public: void method_last (class GGS__5B_lstring_5D_ & outArgument0,
+                            class GGS_extractedAssociatedValuesForGeneration & outArgument1,
+                            class GGS_uint & outArgument2,
+                            class GGS_semanticInstructionListForGeneration & outArgument3,
+                            Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_mEndOfBranchLocationIndexAtIndex (const class GGS_uint & constinOperand0,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_extractedAssociatedValuesForGeneration getter_mExtractedAssociatedValuesForGenerationAtIndex (const class GGS_uint & constinOperand0,
+                                                                                                                  Compiler * inCompiler
+                                                                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_semanticInstructionListForGeneration getter_mInstructionsAtIndex (const class GGS_uint & constinOperand0,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lstring_5D_ getter_mSwitchConstantListAtIndex (const class GGS_uint & constinOperand0,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_range getter_range (LOCATION_ARGS) const ;
+
+  public: class GGS_switchBranchesForGeneration getter_subListFromIndex (const class GGS_uint & constinOperand0,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_switchBranchesForGeneration getter_subListToIndex (const class GGS_uint & constinOperand0,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_switchBranchesForGeneration getter_subListWithRange (const class GGS_range & constinOperand0,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_switchBranchesForGeneration ;
+  friend class DownEnumerator_switchBranchesForGeneration ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchBranchesForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @switchBranchesForGeneration_2E_element struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_switchBranchesForGeneration_2E_element : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS__5B_lstring_5D_ mProperty_mSwitchConstantList ;
+  public: inline GGS__5B_lstring_5D_ readProperty_mSwitchConstantList (void) const {
+    return mProperty_mSwitchConstantList ;
+  }
+
+  public: GGS_extractedAssociatedValuesForGeneration mProperty_mExtractedAssociatedValuesForGeneration ;
+  public: inline GGS_extractedAssociatedValuesForGeneration readProperty_mExtractedAssociatedValuesForGeneration (void) const {
+    return mProperty_mExtractedAssociatedValuesForGeneration ;
+  }
+
+  public: GGS_uint mProperty_mEndOfBranchLocationIndex ;
+  public: inline GGS_uint readProperty_mEndOfBranchLocationIndex (void) const {
+    return mProperty_mEndOfBranchLocationIndex ;
+  }
+
+  public: GGS_semanticInstructionListForGeneration mProperty_mInstructions ;
+  public: inline GGS_semanticInstructionListForGeneration readProperty_mInstructions (void) const {
+    return mProperty_mInstructions ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_switchBranchesForGeneration_2E_element (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMSwitchConstantList (const GGS__5B_lstring_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mSwitchConstantList = inValue ;
+  }
+
+  public: inline void setter_setMExtractedAssociatedValuesForGeneration (const GGS_extractedAssociatedValuesForGeneration & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mExtractedAssociatedValuesForGeneration = inValue ;
+  }
+
+  public: inline void setter_setMEndOfBranchLocationIndex (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mEndOfBranchLocationIndex = inValue ;
+  }
+
+  public: inline void setter_setMInstructions (const GGS_semanticInstructionListForGeneration & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mInstructions = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_switchBranchesForGeneration_2E_element (const GGS__5B_lstring_5D_ & in_mSwitchConstantList,
+                                                      const GGS_extractedAssociatedValuesForGeneration & in_mExtractedAssociatedValuesForGeneration,
+                                                      const GGS_uint & in_mEndOfBranchLocationIndex,
+                                                      const GGS_semanticInstructionListForGeneration & in_mInstructions) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_switchBranchesForGeneration_2E_element (const GGS_switchBranchesForGeneration_2E_element & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_switchBranchesForGeneration_2E_element & operator = (const GGS_switchBranchesForGeneration_2E_element & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_switchBranchesForGeneration_2E_element init_21__21__21__21_ (const class GGS__5B_lstring_5D_ & inOperand0,
+                                                                                  const class GGS_extractedAssociatedValuesForGeneration & inOperand1,
+                                                                                  const class GGS_uint & inOperand2,
+                                                                                  const class GGS_semanticInstructionListForGeneration & inOperand3,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_switchBranchesForGeneration_2E_element extractObject (const GGS_object & inObject,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchBranchesForGeneration_2E_element ;
 

@@ -960,7 +960,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
 //----------- '' label
   public: virtual void nt_semantic_5F_instruction_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                            GGS_semanticInstructionListAST & outArgument1,
+                                                            GGS__5B_semanticInstructionAST_5D_ & outArgument1,
                                                             Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'simple_expression' non terminal

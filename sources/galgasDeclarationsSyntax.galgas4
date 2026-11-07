@@ -41,7 +41,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
                                !@formalParameterListAST outFormalParameterList)
 
   rule <semantic_instruction_list> (?!@galgasDeclarationAST ioDeclarations,
-                                   !@semanticInstructionListAST outInstructionsList)
+                                   ![@semanticInstructionAST] outInstructionsList)
 
   rule <formal_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
                                      !@formalInputParameterListAST outFormalInputParameterList)

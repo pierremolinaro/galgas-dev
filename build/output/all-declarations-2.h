@@ -9,178 +9,6 @@
 #include "all-declarations-1.h"
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @classMethodMap_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_classMethodMap_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_lstring mProperty_lkey ;
-  public: inline GGS_lstring readProperty_lkey (void) const {
-    return mProperty_lkey ;
-  }
-
-  public: GGS_formalParameterSignature mProperty_mParameterList ;
-  public: inline GGS_formalParameterSignature readProperty_mParameterList (void) const {
-    return mProperty_mParameterList ;
-  }
-
-  public: GGS_bool mProperty_mHasCompilerArgument ;
-  public: inline GGS_bool readProperty_mHasCompilerArgument (void) const {
-    return mProperty_mHasCompilerArgument ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_classMethodMap_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setLkey (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_lkey = inValue ;
-  }
-
-  public: inline void setter_setMParameterList (const GGS_formalParameterSignature & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mParameterList = inValue ;
-  }
-
-  public: inline void setter_setMHasCompilerArgument (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mHasCompilerArgument = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_classMethodMap_2E_element (const GGS_lstring & in_lkey,
-                                         const GGS_formalParameterSignature & in_mParameterList,
-                                         const GGS_bool & in_mHasCompilerArgument) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_classMethodMap_2E_element (const GGS_classMethodMap_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_classMethodMap_2E_element & operator = (const GGS_classMethodMap_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_classMethodMap_2E_element init_21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                 const class GGS_formalParameterSignature & inOperand1,
-                                                                 const class GGS_bool & inOperand2,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_classMethodMap_2E_element extractObject (const GGS_object & inObject,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classMethodMap_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: classMethodMap.element? optional
-//--------------------------------------------------------------------------------------------------
-
-class GGS_classMethodMap_2E_element_3F_ : public AC_GALGAS_root {
-//--------------------------------- Private property
-  private: GGS_classMethodMap_2E_element mValue ;
-  private: OptionalState mState ;
-
-//--------------------------------- Default constructor
-  public: GGS_classMethodMap_2E_element_3F_ (void) ;
-
-//--------------------------------- Constructor from unwrapped type
-  public: GGS_classMethodMap_2E_element_3F_ (const GGS_classMethodMap_2E_element & inSource) ;
-
-//--------------------------------- Constructor from weak type
-
-//--------------------------------- nil initializer
-  public: static GGS_classMethodMap_2E_element_3F_ init_nil (void) ;
-
-  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
-
-  public: bool isValuated (void) const ;
-  public: inline GGS_classMethodMap_2E_element unwrappedValue (void) const {
-    return mValue ;
-  }
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
-  }
-
-  
-//--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
-  
-  public: virtual void drop (void) override ;
-
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_classMethodMap_2E_element_3F_ extractObject (const GGS_object & inObject,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classMethodMap_2E_element_3F_ ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @subscriptMap_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
@@ -4737,7 +4565,7 @@ class GGS_overridingExtensionGetterAST : public GGS_semanticDeclarationAST {
 
   public: class GGS_lstring readProperty_mOverridingExtensionGetterReturnedVariableName (void) const ;
 
-  public: class GGS_semanticInstructionListAST readProperty_mOverridingExtensionGetterInstructionList (void) const ;
+  public: class GGS__5B_semanticInstructionAST_5D_ readProperty_mOverridingExtensionGetterInstructionList (void) const ;
 
   public: class GGS_location readProperty_mEndOfReaderLocation (void) const ;
 
@@ -4750,7 +4578,7 @@ class GGS_overridingExtensionGetterAST : public GGS_semanticDeclarationAST {
                                                                                                     const class GGS_formalInputParameterListAST & inOperand3,
                                                                                                     const class GGS_lstring & inOperand4,
                                                                                                     const class GGS_lstring & inOperand5,
-                                                                                                    const class GGS_semanticInstructionListAST & inOperand6,
+                                                                                                    const class GGS__5B_semanticInstructionAST_5D_ & inOperand6,
                                                                                                     const class GGS_location & inOperand7,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) ;
@@ -4802,7 +4630,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
                                                                                               const class GGS_formalInputParameterListAST & inOperand3,
                                                                                               const class GGS_lstring & inOperand4,
                                                                                               const class GGS_lstring & inOperand5,
-                                                                                              const class GGS_semanticInstructionListAST & inOperand6,
+                                                                                              const class GGS__5B_semanticInstructionAST_5D_ & inOperand6,
                                                                                               const class GGS_location & inOperand7,
                                                                                               Compiler * inCompiler) ;
 
@@ -4861,7 +4689,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
   public: GGS_formalInputParameterListAST mProperty_mOverridingExtensionGetterFormalInputParameterList ;
   public: GGS_lstring mProperty_mOverridingExtensionGetterReturnedTypeName ;
   public: GGS_lstring mProperty_mOverridingExtensionGetterReturnedVariableName ;
-  public: GGS_semanticInstructionListAST mProperty_mOverridingExtensionGetterInstructionList ;
+  public: GGS__5B_semanticInstructionAST_5D_ mProperty_mOverridingExtensionGetterInstructionList ;
   public: GGS_location mProperty_mEndOfReaderLocation ;
 
 
@@ -4875,7 +4703,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
                                              const GGS_formalInputParameterListAST & in_mOverridingExtensionGetterFormalInputParameterList,
                                              const GGS_lstring & in_mOverridingExtensionGetterReturnedTypeName,
                                              const GGS_lstring & in_mOverridingExtensionGetterReturnedVariableName,
-                                             const GGS_semanticInstructionListAST & in_mOverridingExtensionGetterInstructionList,
+                                             const GGS__5B_semanticInstructionAST_5D_ & in_mOverridingExtensionGetterInstructionList,
                                              const GGS_location & in_mEndOfReaderLocation,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
@@ -6061,7 +5889,7 @@ class GGS_extensionSetterAST : public GGS_semanticDeclarationAST {
 
   public: class GGS_formalParameterListAST readProperty_mExtensionSetterFormalParameterList (void) const ;
 
-  public: class GGS_semanticInstructionListAST readProperty_mExtensionSetterInstructionList (void) const ;
+  public: class GGS__5B_semanticInstructionAST_5D_ readProperty_mExtensionSetterInstructionList (void) const ;
 
   public: class GGS_location readProperty_mEndOfSetterDeclarationLocation (void) const ;
 
@@ -6072,7 +5900,7 @@ class GGS_extensionSetterAST : public GGS_semanticDeclarationAST {
                                                                                   const class GGS_lstring & inOperand1,
                                                                                   const class GGS_lstring & inOperand2,
                                                                                   const class GGS_formalParameterListAST & inOperand3,
-                                                                                  const class GGS_semanticInstructionListAST & inOperand4,
+                                                                                  const class GGS__5B_semanticInstructionAST_5D_ & inOperand4,
                                                                                   const class GGS_location & inOperand5,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
@@ -6122,7 +5950,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
                                                                             const class GGS_lstring & inOperand1,
                                                                             const class GGS_lstring & inOperand2,
                                                                             const class GGS_formalParameterListAST & inOperand3,
-                                                                            const class GGS_semanticInstructionListAST & inOperand4,
+                                                                            const class GGS__5B_semanticInstructionAST_5D_ & inOperand4,
                                                                             const class GGS_location & inOperand5,
                                                                             Compiler * inCompiler) ;
 
@@ -6179,7 +6007,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
   public: GGS_lstring mProperty_mTypeName ;
   public: GGS_lstring mProperty_mExtensionSetterName ;
   public: GGS_formalParameterListAST mProperty_mExtensionSetterFormalParameterList ;
-  public: GGS_semanticInstructionListAST mProperty_mExtensionSetterInstructionList ;
+  public: GGS__5B_semanticInstructionAST_5D_ mProperty_mExtensionSetterInstructionList ;
   public: GGS_location mProperty_mEndOfSetterDeclarationLocation ;
 
 
@@ -6191,7 +6019,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
                                    const GGS_lstring & in_mTypeName,
                                    const GGS_lstring & in_mExtensionSetterName,
                                    const GGS_formalParameterListAST & in_mExtensionSetterFormalParameterList,
-                                   const GGS_semanticInstructionListAST & in_mExtensionSetterInstructionList,
+                                   const GGS__5B_semanticInstructionAST_5D_ & in_mExtensionSetterInstructionList,
                                    const GGS_location & in_mEndOfSetterDeclarationLocation,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
@@ -6723,7 +6551,7 @@ class GGS_initializerAST : public GGS_semanticDeclarationAST {
 
   public: class GGS_formalInputParameterListAST readProperty_mFormalParameterList (void) const ;
 
-  public: class GGS_semanticInstructionListAST readProperty_mInstructionList (void) const ;
+  public: class GGS__5B_semanticInstructionAST_5D_ readProperty_mInstructionList (void) const ;
 
   public: class GGS_location readProperty_mEndOfInitializerLocation (void) const ;
 
@@ -6733,7 +6561,7 @@ class GGS_initializerAST : public GGS_semanticDeclarationAST {
   public: static GGS_initializerAST init_21_isPredefined_21__21__21__21_ (const class GGS_bool & inOperand0,
                                                                           const class GGS_lstring & inOperand1,
                                                                           const class GGS_formalInputParameterListAST & inOperand2,
-                                                                          const class GGS_semanticInstructionListAST & inOperand3,
+                                                                          const class GGS__5B_semanticInstructionAST_5D_ & inOperand3,
                                                                           const class GGS_location & inOperand4,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
@@ -6782,7 +6610,7 @@ class cPtr_initializerAST : public cPtr_semanticDeclarationAST {
   public: void initializerAST_init_21_isPredefined_21__21__21__21_ (const class GGS_bool & inOperand0,
                                                                     const class GGS_lstring & inOperand1,
                                                                     const class GGS_formalInputParameterListAST & inOperand2,
-                                                                    const class GGS_semanticInstructionListAST & inOperand3,
+                                                                    const class GGS__5B_semanticInstructionAST_5D_ & inOperand3,
                                                                     const class GGS_location & inOperand4,
                                                                     Compiler * inCompiler) ;
 
@@ -6823,7 +6651,7 @@ class cPtr_initializerAST : public cPtr_semanticDeclarationAST {
 //--- Properties
   public: GGS_lstring mProperty_mTypeName ;
   public: GGS_formalInputParameterListAST mProperty_mFormalParameterList ;
-  public: GGS_semanticInstructionListAST mProperty_mInstructionList ;
+  public: GGS__5B_semanticInstructionAST_5D_ mProperty_mInstructionList ;
   public: GGS_location mProperty_mEndOfInitializerLocation ;
 
 
@@ -6834,7 +6662,7 @@ class cPtr_initializerAST : public cPtr_semanticDeclarationAST {
   public: cPtr_initializerAST (const GGS_bool & in_isPredefined,
                                const GGS_lstring & in_mTypeName,
                                const GGS_formalInputParameterListAST & in_mFormalParameterList,
-                               const GGS_semanticInstructionListAST & in_mInstructionList,
+                               const GGS__5B_semanticInstructionAST_5D_ & in_mInstructionList,
                                const GGS_location & in_mEndOfInitializerLocation,
                                Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
@@ -7457,7 +7285,7 @@ class GGS_extensionGetterAST : public GGS_semanticDeclarationAST {
 
   public: class GGS_lstring readProperty_mExtensionGetterReturnedVariableName (void) const ;
 
-  public: class GGS_semanticInstructionListAST readProperty_mExtensionGetterInstructionList (void) const ;
+  public: class GGS__5B_semanticInstructionAST_5D_ readProperty_mExtensionGetterInstructionList (void) const ;
 
   public: class GGS_location readProperty_mEndOfReaderLocation (void) const ;
 
@@ -7470,7 +7298,7 @@ class GGS_extensionGetterAST : public GGS_semanticDeclarationAST {
                                                                                           const class GGS_formalInputParameterListAST & inOperand3,
                                                                                           const class GGS_lstring & inOperand4,
                                                                                           const class GGS_lstring & inOperand5,
-                                                                                          const class GGS_semanticInstructionListAST & inOperand6,
+                                                                                          const class GGS__5B_semanticInstructionAST_5D_ & inOperand6,
                                                                                           const class GGS_location & inOperand7,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) ;
@@ -7522,7 +7350,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
                                                                                     const class GGS_formalInputParameterListAST & inOperand3,
                                                                                     const class GGS_lstring & inOperand4,
                                                                                     const class GGS_lstring & inOperand5,
-                                                                                    const class GGS_semanticInstructionListAST & inOperand6,
+                                                                                    const class GGS__5B_semanticInstructionAST_5D_ & inOperand6,
                                                                                     const class GGS_location & inOperand7,
                                                                                     Compiler * inCompiler) ;
 
@@ -7581,7 +7409,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
   public: GGS_formalInputParameterListAST mProperty_mExtensionGetterFormalInputParameterList ;
   public: GGS_lstring mProperty_mExtensionGetterReturnedTypeName ;
   public: GGS_lstring mProperty_mExtensionGetterReturnedVariableName ;
-  public: GGS_semanticInstructionListAST mProperty_mExtensionGetterInstructionList ;
+  public: GGS__5B_semanticInstructionAST_5D_ mProperty_mExtensionGetterInstructionList ;
   public: GGS_location mProperty_mEndOfReaderLocation ;
 
 
@@ -7595,7 +7423,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
                                    const GGS_formalInputParameterListAST & in_mExtensionGetterFormalInputParameterList,
                                    const GGS_lstring & in_mExtensionGetterReturnedTypeName,
                                    const GGS_lstring & in_mExtensionGetterReturnedVariableName,
-                                   const GGS_semanticInstructionListAST & in_mExtensionGetterInstructionList,
+                                   const GGS__5B_semanticInstructionAST_5D_ & in_mExtensionGetterInstructionList,
                                    const GGS_location & in_mEndOfReaderLocation,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
@@ -7866,7 +7694,7 @@ class GGS_overridingExtensionMethodAST : public GGS_semanticDeclarationAST {
 
   public: class GGS_formalParameterListAST readProperty_mOverridingExtensionMethodFormalParameterList (void) const ;
 
-  public: class GGS_semanticInstructionListAST readProperty_mOverridingExtensionMethodInstructionList (void) const ;
+  public: class GGS__5B_semanticInstructionAST_5D_ readProperty_mOverridingExtensionMethodInstructionList (void) const ;
 
   public: class GGS_location readProperty_mEndOfMethodLocation (void) const ;
 
@@ -7877,7 +7705,7 @@ class GGS_overridingExtensionMethodAST : public GGS_semanticDeclarationAST {
                                                                                             const class GGS_lstring & inOperand1,
                                                                                             const class GGS_lstring & inOperand2,
                                                                                             const class GGS_formalParameterListAST & inOperand3,
-                                                                                            const class GGS_semanticInstructionListAST & inOperand4,
+                                                                                            const class GGS__5B_semanticInstructionAST_5D_ & inOperand4,
                                                                                             const class GGS_location & inOperand5,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) ;
@@ -7927,7 +7755,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
                                                                                       const class GGS_lstring & inOperand1,
                                                                                       const class GGS_lstring & inOperand2,
                                                                                       const class GGS_formalParameterListAST & inOperand3,
-                                                                                      const class GGS_semanticInstructionListAST & inOperand4,
+                                                                                      const class GGS__5B_semanticInstructionAST_5D_ & inOperand4,
                                                                                       const class GGS_location & inOperand5,
                                                                                       Compiler * inCompiler) ;
 
@@ -7984,7 +7812,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
   public: GGS_lstring mProperty_mTypeName ;
   public: GGS_lstring mProperty_mOverridingExtensionMethodName ;
   public: GGS_formalParameterListAST mProperty_mOverridingExtensionMethodFormalParameterList ;
-  public: GGS_semanticInstructionListAST mProperty_mOverridingExtensionMethodInstructionList ;
+  public: GGS__5B_semanticInstructionAST_5D_ mProperty_mOverridingExtensionMethodInstructionList ;
   public: GGS_location mProperty_mEndOfMethodLocation ;
 
 
@@ -7996,7 +7824,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
                                              const GGS_lstring & in_mTypeName,
                                              const GGS_lstring & in_mOverridingExtensionMethodName,
                                              const GGS_formalParameterListAST & in_mOverridingExtensionMethodFormalParameterList,
-                                             const GGS_semanticInstructionListAST & in_mOverridingExtensionMethodInstructionList,
+                                             const GGS__5B_semanticInstructionAST_5D_ & in_mOverridingExtensionMethodInstructionList,
                                              const GGS_location & in_mEndOfMethodLocation,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
@@ -9495,7 +9323,7 @@ class GGS_extensionMethodAST : public GGS_semanticDeclarationAST {
 
   public: class GGS_formalParameterListAST readProperty_mExtensionMethodFormalParameterList (void) const ;
 
-  public: class GGS_semanticInstructionListAST readProperty_mExtensionMethodInstructionList (void) const ;
+  public: class GGS__5B_semanticInstructionAST_5D_ readProperty_mExtensionMethodInstructionList (void) const ;
 
   public: class GGS_location readProperty_mEndOfMethodLocation (void) const ;
 
@@ -9506,7 +9334,7 @@ class GGS_extensionMethodAST : public GGS_semanticDeclarationAST {
                                                                                   const class GGS_lstring & inOperand1,
                                                                                   const class GGS_lstring & inOperand2,
                                                                                   const class GGS_formalParameterListAST & inOperand3,
-                                                                                  const class GGS_semanticInstructionListAST & inOperand4,
+                                                                                  const class GGS__5B_semanticInstructionAST_5D_ & inOperand4,
                                                                                   const class GGS_location & inOperand5,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
@@ -9556,7 +9384,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
                                                                             const class GGS_lstring & inOperand1,
                                                                             const class GGS_lstring & inOperand2,
                                                                             const class GGS_formalParameterListAST & inOperand3,
-                                                                            const class GGS_semanticInstructionListAST & inOperand4,
+                                                                            const class GGS__5B_semanticInstructionAST_5D_ & inOperand4,
                                                                             const class GGS_location & inOperand5,
                                                                             Compiler * inCompiler) ;
 
@@ -9613,7 +9441,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
   public: GGS_lstring mProperty_mTypeName ;
   public: GGS_lstring mProperty_mExtensionMethodName ;
   public: GGS_formalParameterListAST mProperty_mExtensionMethodFormalParameterList ;
-  public: GGS_semanticInstructionListAST mProperty_mExtensionMethodInstructionList ;
+  public: GGS__5B_semanticInstructionAST_5D_ mProperty_mExtensionMethodInstructionList ;
   public: GGS_location mProperty_mEndOfMethodLocation ;
 
 
@@ -9625,7 +9453,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
                                    const GGS_lstring & in_mTypeName,
                                    const GGS_lstring & in_mExtensionMethodName,
                                    const GGS_formalParameterListAST & in_mExtensionMethodFormalParameterList,
-                                   const GGS_semanticInstructionListAST & in_mExtensionMethodInstructionList,
+                                   const GGS__5B_semanticInstructionAST_5D_ & in_mExtensionMethodInstructionList,
                                    const GGS_location & in_mEndOfMethodLocation,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
@@ -10316,4 +10144,327 @@ class GGS_bool extensionGetter_displayVertically (const class GGS_syntaxInstruct
 class GGS_bool callExtensionGetter_isLinear (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
                                              class Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lexicalSendSearchListAST list enumerator
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_lexicalSendSearchListAST final {
+  public: DownEnumerator_lexicalSendSearchListAST (const class GGS_lexicalSendSearchListAST & inList) ;
+
+  public: ~ DownEnumerator_lexicalSendSearchListAST (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
+
+  public: class GGS_lstring current_mAttributeName (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mSearchListName (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalSendSearchListAST_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <GGS_lexicalSendSearchListAST_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_lexicalSendSearchListAST (const DownEnumerator_lexicalSendSearchListAST &) = delete ;
+  private: DownEnumerator_lexicalSendSearchListAST & operator = (const DownEnumerator_lexicalSendSearchListAST &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_lexicalSendSearchListAST final {
+  public: UpEnumerator_lexicalSendSearchListAST (const class GGS_lexicalSendSearchListAST & inList)  ;
+
+  public: ~ UpEnumerator_lexicalSendSearchListAST (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
+
+  public: class GGS_lstring current_mAttributeName (LOCATION_ARGS) const ;
+  public: class GGS_lstring current_mSearchListName (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_lexicalSendSearchListAST_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <GGS_lexicalSendSearchListAST_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_lexicalSendSearchListAST (const UpEnumerator_lexicalSendSearchListAST &) = delete ;
+  private: UpEnumerator_lexicalSendSearchListAST & operator = (const UpEnumerator_lexicalSendSearchListAST &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// @lexicalSendSearchListAST list
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalSendSearchListAST : public AC_GALGAS_root {
+//--- Private property
+  private: GenericArray <GGS_lexicalSendSearchListAST_2E_element> mArray ;
+
+//--- Default constructor
+  public: GGS_lexicalSendSearchListAST (void) ;
+
+//--- Destructor
+  public: virtual ~ GGS_lexicalSendSearchListAST (void) = default ;
+
+//--- Copy
+  public: GGS_lexicalSendSearchListAST (const GGS_lexicalSendSearchListAST &) = default ;
+  public: GGS_lexicalSendSearchListAST & operator = (const GGS_lexicalSendSearchListAST &) = default ;
+
+//--- Is valid
+  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+
+//--- Drop
+  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Count
+  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
+ 
+//--- sortedElementArray
+  public : inline GenericArray <GGS_lexicalSendSearchListAST_2E_element> sortedElementArray (void) const {
+    return mArray ;
+  }
+
+//--- subList
+  private: GGS_lexicalSendSearchListAST subList (const int32_t inStart,
+                                                 const int32_t inLength,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const ;
+
+
+//--- List constructor for graph
+  public: GGS_lexicalSendSearchListAST (const CollectionElementArray & inSharedArray) ;
+
+//--- Element constructor
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
+                                                 const class GGS_lstring & in_mAttributeName,
+                                                 const class GGS_lstring & in_mSearchListName
+                                                 COMMA_LOCATION_ARGS) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexicalSendSearchListAST init (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_lexicalSendSearchListAST extractObject (const GGS_object & inObject,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_lexicalSendSearchListAST class_func_listWithValue (const class GGS_lstring & inOperand0,
+                                                                              const class GGS_lstring & inOperand1
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public: void plusAssignOperation (const GGS_lexicalSendSearchListAST inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public: void addAssignOperation (const class GGS_lstring & inOperand0,
+                                   const class GGS_lstring & inOperand1
+                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator, collection value
+  public: void plusPlusAssignOperation (const GGS_lexicalSendSearchListAST_2E_element & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS_lexicalSendSearchListAST add_operation (const GGS_lexicalSendSearchListAST & inOperand,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_lstring constinArgument0,
+                              class GGS_lstring constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insertAtIndex (class GGS_lstring constinArgument0,
+                                     class GGS_lstring constinArgument1,
+                                     class GGS_uint constinArgument2,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popFirst (class GGS_lstring & outArgument0,
+                                class GGS_lstring & outArgument1,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popLast (class GGS_lstring & outArgument0,
+                               class GGS_lstring & outArgument1,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAtIndex (class GGS_lstring & outArgument0,
+                                     class GGS_lstring & outArgument1,
+                                     class GGS_uint constinArgument2,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMAttributeNameAtIndex (class GGS_lstring constinArgument0,
+                                                class GGS_uint constinArgument1,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMSearchListNameAtIndex (class GGS_lstring constinArgument0,
+                                                 class GGS_uint constinArgument1,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_first (class GGS_lstring & outArgument0,
+                             class GGS_lstring & outArgument1,
+                             Compiler * inCompiler
+                             COMMA_LOCATION_ARGS) const ;
+
+  public: void method_last (class GGS_lstring & outArgument0,
+                            class GGS_lstring & outArgument1,
+                            Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_lstring getter_mAttributeNameAtIndex (const class GGS_uint & constinOperand0,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lstring getter_mSearchListNameAtIndex (const class GGS_uint & constinOperand0,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_range getter_range (LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalSendSearchListAST getter_subListFromIndex (const class GGS_uint & constinOperand0,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalSendSearchListAST getter_subListToIndex (const class GGS_uint & constinOperand0,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lexicalSendSearchListAST getter_subListWithRange (const class GGS_range & constinOperand0,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_lexicalSendSearchListAST ;
+  friend class DownEnumerator_lexicalSendSearchListAST ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalSendSearchListAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lexicalSendSearchListAST_2E_element struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalSendSearchListAST_2E_element : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_lstring mProperty_mAttributeName ;
+  public: inline GGS_lstring readProperty_mAttributeName (void) const {
+    return mProperty_mAttributeName ;
+  }
+
+  public: GGS_lstring mProperty_mSearchListName ;
+  public: inline GGS_lstring readProperty_mSearchListName (void) const {
+    return mProperty_mSearchListName ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_lexicalSendSearchListAST_2E_element (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMAttributeName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mAttributeName = inValue ;
+  }
+
+  public: inline void setter_setMSearchListName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mSearchListName = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_lexicalSendSearchListAST_2E_element (const GGS_lstring & in_mAttributeName,
+                                                   const GGS_lstring & in_mSearchListName) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_lexicalSendSearchListAST_2E_element (const GGS_lexicalSendSearchListAST_2E_element & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_lexicalSendSearchListAST_2E_element & operator = (const GGS_lexicalSendSearchListAST_2E_element & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexicalSendSearchListAST_2E_element init_21__21_ (const class GGS_lstring & inOperand0,
+                                                                       const class GGS_lstring & inOperand1,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_lexicalSendSearchListAST_2E_element extractObject (const GGS_object & inObject,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalSendSearchListAST_2E_element ;
 

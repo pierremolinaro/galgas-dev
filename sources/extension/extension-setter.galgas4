@@ -23,7 +23,7 @@ final class @extensionSetterAST : @semanticDeclarationAST {
   private let @lstring mTypeName
   private let @lstring mExtensionSetterName
   private let @formalParameterListAST mExtensionSetterFormalParameterList
-  private let @semanticInstructionListAST mExtensionSetterInstructionList
+  private let [@semanticInstructionAST] mExtensionSetterInstructionList
   private let @location mEndOfSetterDeclarationLocation
 }
 
@@ -49,7 +49,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ (?let @lstring setterName) indexing (extensionSetterDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList ++= @(@extensionSetterAST (
@@ -71,7 +71,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ (?let @lstring setterName) indexing (extensionSetterDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfSetterLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList ++= @(@extensionSetterAST (

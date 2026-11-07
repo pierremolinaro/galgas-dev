@@ -52,13 +52,13 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <semantic_instruction_list> (?!@galgasDeclarationAST ioDeclarations,
-                                   !@semanticInstructionListAST outInstructionsList ) {
-    outInstructionsList = @semanticInstructionListAST ()
+                                   ![@semanticInstructionAST] outInstructionsList ) {
+    outInstructionsList = [@semanticInstructionAST] ()
     select
     or
       repeat
         <semantic_instruction> (!?ioDeclarations, ?let @semanticInstructionAST instruction)
-        outInstructionsList ++= @(instruction)
+        outInstructionsList ++= instruction
       while
         select
           $;$
@@ -89,7 +89,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
         else_instructionList,
         endOf_else_branch
       )
-      outInstructionsList ++= @(instruction)
+      outInstructionsList ++= instruction
     end
   }
 
@@ -129,7 +129,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       resultVariableName = @("result", .here)
     end
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST functionInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] functionInstructionList)
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then
@@ -193,7 +193,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       resultVariableName = @("result", .here)
     end
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST functionInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] functionInstructionList)
     $}$
     let endOfFunctionInstructionList = @location.here
     if isOnce then

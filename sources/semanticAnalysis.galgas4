@@ -199,7 +199,7 @@ proc analyzeRoutineBody (let @lstring inUsefulnessCallerEntityName,
                          let @analysisContext inAnalysisContext,
                          ?!@unifiedTypeMap ioTypeMap,
                          let @formalParameterListAST inRoutineSignatureAST,
-                         let @semanticInstructionListAST inInstructionList,
+                         let [@semanticInstructionAST] inInstructionList,
                          let @location inEndOfMethodLocation,
                          !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration,
                          !@formalParameterListForGeneration outRoutineSignature ) {
@@ -231,9 +231,9 @@ proc analyzeRoutineBody (let @lstring inUsefulnessCallerEntityName,
   )
 //---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
-  for (mInstruction) in inInstructionList do
-    mInstruction.analyzeSemanticInstruction
-      (inUsefulnessCallerEntityName,
+  for instruction in inInstructionList do
+    instruction.analyzeSemanticInstruction (
+      inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       inAnalysisContext,
       !?ioTypeMap,
@@ -288,7 +288,7 @@ proc analyzeFunctionBody
   let @analysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   let @formalInputParameterListAST inFunctionSignature,
-  let @semanticInstructionListAST inInstructionList,
+  let [@semanticInstructionAST] inInstructionList,
   let @lstring inReturnVariableName,
   let @lstring inResultTypeName,
   let @location inEndOfFunctionLocation,
@@ -349,8 +349,8 @@ proc analyzeFunctionBody
   end
 //---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
-  for (mInstruction) in inInstructionList do
-    mInstruction.analyzeSemanticInstruction (
+  for instruction in inInstructionList do
+    instruction.analyzeSemanticInstruction (
       inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       inAnalysisContext,

@@ -58,11 +58,9 @@ abstract proc @semanticExpressionAST.enterExpressionInSemanticContext (?!@unifie
 
 //--------------------------------------------------------------------------------------------------
 
-proc @semanticInstructionListAST.enterInstructionListInSemanticContext
-  (?!@unifiedTypeMap ioTypeMap
-) {
-  for (mInstruction) in self do
-    mInstruction.enterInstructionInSemanticContext (!?ioTypeMap)
+proc [@semanticInstructionAST].enterInstructionListInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+  for instruction in self do
+    instruction.enterInstructionInSemanticContext (!?ioTypeMap)
   end
 }
 

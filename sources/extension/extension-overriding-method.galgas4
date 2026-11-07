@@ -37,7 +37,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ (?let @lstring methodName) indexing (overrideExtensionMethodDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList ++= @(@overridingExtensionMethodAST (
@@ -59,7 +59,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ (?let @lstring methodName) indexing (overrideExtensionMethodDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList ++= @(@overridingExtensionMethodAST (
@@ -84,7 +84,7 @@ final class @overridingExtensionMethodAST : @semanticDeclarationAST {
   private let @lstring mTypeName
   private let @lstring mOverridingExtensionMethodName
   private let @formalParameterListAST mOverridingExtensionMethodFormalParameterList
-  private let @semanticInstructionListAST mOverridingExtensionMethodInstructionList
+  private let [@semanticInstructionAST] mOverridingExtensionMethodInstructionList
   private let @location mEndOfMethodLocation
 }
 

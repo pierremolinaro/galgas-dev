@@ -19,58 +19,6 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3InstructionsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <expression_or_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                            !@semanticExpressionAST outExpression)
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <if_instruction_core> (?!@galgasDeclarationAST ioDeclarations,
-//                             !@semanticInstructionAST outInstruction) {
-//    let instructionLocation = @location.here
-//    <comma_separated_expression_ggs3> (!?ioDeclarations, ?let testExpression)
-//    $then$
-//    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let then_instructionList)
-//    let endOf_then_branchLocation = @location.here
-//    let @semanticInstructionListAST else_instructionList
-//    select
-//      else_instructionList = @semanticInstructionListAST ()
-//    or
-//      $else$
-//      <semantic_instruction_list_ggs3> (!?ioDeclarations, ?else_instructionList)
-//    or
-//      $elsif$
-//      <if_instruction_core> (!?ioDeclarations, ?let instruction)
-//      else_instructionList = [@(instruction)]
-//    end
-//    outInstruction = @ifInstructionAST (
-//      !instructionLocation,
-//      testExpression,
-//      then_instructionList,
-//      endOf_then_branchLocation,
-//      else_instructionList,
-//      @location.here
-//    )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                   !@semanticInstructionAST outInstruction ) {
-//    $if$
-//    <if_instruction_core> (!?ioDeclarations, ?outInstruction)
-//    $end$
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -87,7 +35,7 @@ syntax extension galgas4InstructionsSyntax {
     $then$
     <semantic_instruction_list> (!?ioDeclarations, ?let then_instructionList)
     let endOf_then_branchLocation = @location.here
-    let @semanticInstructionListAST else_instructionList
+    let [@semanticInstructionAST] else_instructionList
     select
       else_instructionList = @()
     or
@@ -96,7 +44,7 @@ syntax extension galgas4InstructionsSyntax {
     or
       $elsif$
       <if_instruction_core> (!?ioDeclarations, ?let instruction)
-      else_instructionList = [@(instruction)]
+      else_instructionList = [instruction]
     end
     outInstruction = @ifInstructionAST (
       instructionLocation,
@@ -127,9 +75,9 @@ syntax extension galgas4InstructionsSyntax {
 
 final class @ifInstructionAST : @semanticInstructionAST {
   public let @CommaSeparatedExpressionList mExpressions
-  public let @semanticInstructionListAST m_then_instructionList
+  public let [@semanticInstructionAST] m_then_instructionList
   public let @location mEndOf_then_branch
-  public let @semanticInstructionListAST m_else_instructionList
+  public let [@semanticInstructionAST] m_else_instructionList
   public let @location mEndOf_if_instruction
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

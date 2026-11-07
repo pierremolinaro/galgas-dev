@@ -209,9 +209,9 @@ abstract class @semanticInstructionAST : @syntaxInstructionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @semanticInstructionListAST {
-  public let @semanticInstructionAST mInstruction
-}
+//list @semanticInstructionListAST {
+//  public let @semanticInstructionAST mInstruction
+//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -240,7 +240,7 @@ class @externFunctionDeclarationAST : @semanticDeclarationAST {
 
 final class @functionDeclarationAST : @externFunctionDeclarationAST {
   public let @lstring mResultVariableName
-  public let @semanticInstructionListAST mFunctionInstructionList
+  public let [@semanticInstructionAST] mFunctionInstructionList
   public let @location mEndOfFunctionInstructionList
   public let @bool mIsInternal
 }
@@ -255,7 +255,7 @@ final class @onceFunctionDeclarationAST : @semanticDeclarationAST {
   public let @lstring mFunctionName
   public let @lstring mResultTypeName
   public let @lstring mResultVariableName
-  public let @semanticInstructionListAST mFunctionInstructionList
+  public let [@semanticInstructionAST] mFunctionInstructionList
   public let @location mEndOfFunctionInstructionList
   public let @bool mIsInternal
   public let @bool mIsUsefull
@@ -395,7 +395,7 @@ list @galgas3SyntaxExtensionListAST {
 //--------------------------------------------------------------------------------------------------
 
 list @prologueEpilogueList {
-  public let @semanticInstructionListAST mInstructionList
+  public let [@semanticInstructionAST] mInstructionList
   public let @location mEndOfInstructionList
 }
 
@@ -407,7 +407,7 @@ list @programRuleList {
   public let @lstring mSourceFileVariableName
   public let @bool mSourceFileVariableNameIsUnused
   public let @lstring mReferenceGrammar // Empty string if no grammar
-  public let @semanticInstructionListAST mInstructionList
+  public let [@semanticInstructionAST] mInstructionList
   public let @location mEndOfInstructionList
 }
 

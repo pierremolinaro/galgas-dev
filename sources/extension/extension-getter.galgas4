@@ -44,7 +44,7 @@ syntax extension galgas4DeclarationsSyntax {
       resultVariableName = @("result", .here)
     end
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList ++= @(@extensionGetterAST (
@@ -77,7 +77,7 @@ syntax extension galgas4DeclarationsSyntax {
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
     let @lstring resultVariableName = @("result", .here)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfInstructionList = @location.here
     $}$
     ioDeclarations.mDeclarationList ++= @(@extensionGetterAST (
@@ -106,7 +106,7 @@ final class @extensionGetterAST : @semanticDeclarationAST {
   private let @formalInputParameterListAST mExtensionGetterFormalInputParameterList
   private let @lstring mExtensionGetterReturnedTypeName
   private let @lstring mExtensionGetterReturnedVariableName
-  private let @semanticInstructionListAST mExtensionGetterInstructionList
+  private let [@semanticInstructionAST] mExtensionGetterInstructionList
   private let @location mEndOfReaderLocation
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

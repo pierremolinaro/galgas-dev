@@ -25,7 +25,7 @@ final class @overridingExtensionGetterAST : @semanticDeclarationAST {
   private let @formalInputParameterListAST mOverridingExtensionGetterFormalInputParameterList
   private let @lstring mOverridingExtensionGetterReturnedTypeName
   private let @lstring mOverridingExtensionGetterReturnedVariableName
-  private let @semanticInstructionListAST mOverridingExtensionGetterInstructionList
+  private let [@semanticInstructionAST] mOverridingExtensionGetterInstructionList
   private let @location mEndOfReaderLocation
 }
 
@@ -59,7 +59,7 @@ syntax extension galgas4DeclarationsSyntax {
       resultVariableName = @("result", .here)
     end
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfInstructionList = .here
     $}$
     ioDeclarations.mDeclarationList ++= @(@overridingExtensionGetterAST (
@@ -91,7 +91,7 @@ syntax extension galgas4DeclarationsSyntax {
       resultVariableName = @("result", .here)
     end
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfInstructionList = .here
     $}$
     ioDeclarations.mDeclarationList ++= @(@overridingExtensionGetterAST (

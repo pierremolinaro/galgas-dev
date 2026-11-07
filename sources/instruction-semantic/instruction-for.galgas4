@@ -61,13 +61,13 @@ final class @forInstructionAST : @semanticInstructionAST {
   private let @lstring mIndexVariableName
   private let @semanticExpressionAST mWhileExpression
   private let @location mEndOf_while_expression
-  private let @semanticInstructionListAST mBeforeInstructionList
+  private let [@semanticInstructionAST] mBeforeInstructionList
   private let @location mEndOf_before_branch
-  private let @semanticInstructionListAST mBetweenInstructionList
+  private let [@semanticInstructionAST] mBetweenInstructionList
   private let @location mEndOf_between_branch
-  private let @semanticInstructionListAST mDoInstructionList
+  private let [@semanticInstructionAST] mDoInstructionList
   private let @location mEndOf_do_branch
-  private let @semanticInstructionListAST mAfterInstructionList
+  private let [@semanticInstructionAST] mAfterInstructionList
   private let @location mEndOf_after_branch
   private let @location mEndOf_foreach_instruction
 }
@@ -191,9 +191,9 @@ syntax extension galgas4InstructionsSyntax {
       <expression> (!?ioDeclarations, ? mWhileExpression)
     end
     let endof_while_expression = @location.here
-    let @semanticInstructionListAST mBeforeInstructionList
+    let [@semanticInstructionAST] mBeforeInstructionList
     select
-      mBeforeInstructionList = @semanticInstructionListAST ()
+      mBeforeInstructionList = [@semanticInstructionAST] ()
     or
       $before$
       <semantic_instruction_list> (!?ioDeclarations, ? mBeforeInstructionList)
@@ -210,17 +210,17 @@ syntax extension galgas4InstructionsSyntax {
     end
     <semantic_instruction_list> (!?ioDeclarations, ?let mDoInstructionList)
     let endof_do_branch = @location.here
-    let @semanticInstructionListAST mBetweenInstructionList
+    let [@semanticInstructionAST] mBetweenInstructionList
     select
-      mBetweenInstructionList = @semanticInstructionListAST ()
+      mBetweenInstructionList = [@semanticInstructionAST] ()
     or
       $between$
       <semantic_instruction_list> (!?ioDeclarations, ? mBetweenInstructionList)
     end
     let endof_between_branch = @location.here
-    let @semanticInstructionListAST mAfterInstructionList
+    let [@semanticInstructionAST] mAfterInstructionList
     select
-      mAfterInstructionList = @semanticInstructionListAST ()
+      mAfterInstructionList = [@semanticInstructionAST] ()
     or
       $after$
       <semantic_instruction_list> (!?ioDeclarations, ? mAfterInstructionList)

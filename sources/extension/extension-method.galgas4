@@ -34,7 +34,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ (?let @lstring methodName) indexing (extensionMethodDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList ++= @(@extensionMethodAST (
@@ -55,7 +55,7 @@ syntax extension galgas4DeclarationsSyntax {
     $identifier$ (?let @lstring methodName) indexing (extensionMethodDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let endOfMethodLocation = @location.here
     $}$
     ioDeclarations.mDeclarationList ++= @(@extensionMethodAST (
@@ -78,7 +78,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
   private let @lstring mTypeName
   private let @lstring mExtensionMethodName
   private let @formalParameterListAST mExtensionMethodFormalParameterList
-  private let @semanticInstructionListAST mExtensionMethodInstructionList
+  private let [@semanticInstructionAST] mExtensionMethodInstructionList
   private let @location mEndOfMethodLocation
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

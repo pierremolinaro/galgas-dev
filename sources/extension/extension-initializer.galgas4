@@ -132,7 +132,7 @@ syntax extension galgas4DeclarationsSyntax {
 final class @initializerAST : @semanticDeclarationAST {
   private let @lstring mTypeName
   private let @formalInputParameterListAST mFormalParameterList
-  private let @semanticInstructionListAST mInstructionList
+  private let [@semanticInstructionAST] mInstructionList
   private let @location mEndOfInitializerLocation
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -257,7 +257,7 @@ private proc analyzeInitializerBody (let @lstring inUsefulnessCallerEntityName,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
                         let @formalInputParameterListAST inFormalArgumentListAST,
-                        let @semanticInstructionListAST inInstructionList,
+                        let [@semanticInstructionAST] inInstructionList,
                         let @location inEndOfMethodLocation,
                         !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration,
                         !@formalInputParameterListForGeneration outSignatureForGeneration) {
@@ -313,9 +313,9 @@ private proc analyzeInitializerBody (let @lstring inUsefulnessCallerEntityName,
   end
 //---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
-  for entry in inInstructionList do
-    entry.mInstruction.analyzeSemanticInstruction
-      (inUsefulnessCallerEntityName,
+  for instruction in inInstructionList do
+    instruction.analyzeSemanticInstruction (
+      inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       inAnalysisContext,
       !?ioTypeMap,

@@ -115,7 +115,7 @@ list @switchExtractedValuesListAST {
 list @switchBranchesAST {
   public let [@lstring] mSwitchConstantList
   public let @switchExtractedValuesListAST mAssociatedValuesExtraction
-  public let @semanticInstructionListAST mInstructions
+  public let [@semanticInstructionAST] mInstructions
   public let @location mEndOfBranch
 }
 
