@@ -38,26 +38,26 @@ syntax extension galgas4InstructionsSyntax {
       end
       isUsefull = true
     end
-    $identifier$ (?let mRoutineName) indexing (routineDefinition)
-    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST mFormalParameterList)
+    $identifier$ (?let routineName) indexing (routineDefinition)
+    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList ++= @(@procDeclarationAST (
       !isPredefined: false,
       !isFilePrivate: false,
-      mRoutineName,
-      mFormalParameterList,
+      routineName,
+      formalParameterList,
       !usefullProcedure: isUsefull,
-      mRoutineInstructionList,
+      routineInstructionList,
       endOfInstructionList
     ))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $private$
     $proc$
     var isUsefull = false
@@ -69,19 +69,19 @@ syntax extension galgas4InstructionsSyntax {
       end
       isUsefull = true
     end
-    $identifier$ (?let mRoutineName) indexing (routineDefinition)
-    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST mFormalParameterList)
+    $identifier$ (?let routineName) indexing (routineDefinition)
+    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
     ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST mRoutineInstructionList)
+    <semantic_instruction_list> (!?ioDeclarations, ?let @semanticInstructionListAST routineInstructionList)
     $}$
     let endOfInstructionList = @location.here
     ioDeclarations.mDeclarationList ++= @(@procDeclarationAST (
       !isPredefined: false,
       !isFilePrivate: true,
-      mRoutineName,
-      mFormalParameterList,
+      routineName,
+      formalParameterList,
       !usefullProcedure: isUsefull,
-      mRoutineInstructionList,
+      routineInstructionList,
       endOfInstructionList
     ))
   }
@@ -119,8 +119,8 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
   //--- Enter types for instruction list
     self.mRoutineInstructionList.enterInstructionListInSemanticContext (!?ioTypeMap)
   //--- Enter routine in routine map
-    !?ioSemanticContext.routineMap.insertKey
-      (self.mRoutineName,
+    !?ioSemanticContext.routineMap.insertKey (
+      self.mRoutineName,
       routineSignature,
       !isFilePrivate: self.isFilePrivate
     )

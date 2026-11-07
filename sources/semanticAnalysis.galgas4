@@ -24,12 +24,10 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-proc checkMethodSignatures
-  (let @formalParameterListForGeneration inTestedSignature,
-  let @location inErrorLocation,
-  let @formalParameterSignature inReferenceSignature,
-  let @location inReferenceLocation
-) {
+proc checkMethodSignatures (let @formalParameterListForGeneration inTestedSignature,
+                            let @location inErrorLocation,
+                            let @formalParameterSignature inReferenceSignature,
+                            let @location inReferenceLocation) {
   if inTestedSignature.count != inReferenceSignature.count then
     error (inErrorLocation:"this proc declares " + inTestedSignature.count.string
     + " formal parameter(s), but overriden proc declares " + inReferenceSignature.count.string)
@@ -72,13 +70,12 @@ proc checkMethodSignatures
 //
 //--------------------------------------------------------------------------------------------------
 
-proc checkGetterSignatures
-  (let @formalInputParameterListForGeneration inTestedSignature,
-  let @unifiedTypeMapEntry inReturnType,
-  let @location inErrorLocation,
-  let @functionSignature inReferenceSignature,
-  let @unifiedTypeMapEntry inInheritedReturnType,
-  let @location inReferenceLocation ) {
+proc checkGetterSignatures (let @formalInputParameterListForGeneration inTestedSignature,
+                            let @unifiedTypeMapEntry inReturnType,
+                            let @location inErrorLocation,
+                            let @functionSignature inReferenceSignature,
+                            let @unifiedTypeMapEntry inInheritedReturnType,
+                            let @location inReferenceLocation) {
   if inReturnType.definition.typeName.string != inInheritedReturnType.definition.typeName.string then
     error (inErrorLocation : "the return type is '@"
     + inReturnType.definition.typeName.string + "', but overriden func names '@"
@@ -118,10 +115,10 @@ map @propertyIndexMap {
 //--------------------------------------------------------------------------------------------------
 
 proc buildLocalVariableMapAndSignature (let @semanticContext _inSemanticContext,
-                                       ?!@unifiedTypeMap ioTypeMap,
-                                       let @formalParameterListAST inRoutineSignatureAST,
-                                       ?!@localVarManager ioVariableMap,
-                                       !@formalParameterListForGeneration outRoutineSignature ) {
+                                        ?!@unifiedTypeMap ioTypeMap,
+                                        let @formalParameterListAST inRoutineSignatureAST,
+                                        ?!@localVarManager ioVariableMap,
+                                        !@formalParameterListForGeneration outRoutineSignature ) {
   outRoutineSignature = @formalParameterListForGeneration ()
   for formalArgument in inRoutineSignatureAST do
     let type = ioTypeMap.typeMapEntryForLKey (formalArgument.mFormalArgumentTypeName)
@@ -198,14 +195,14 @@ proc buildLocalVariableMapAndSignature (let @semanticContext _inSemanticContext,
 //--------------------------------------------------------------------------------------------------
 
 proc analyzeRoutineBody (let @lstring inUsefulnessCallerEntityName,
-                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        let @analysisContext inAnalysisContext,
-                        ?!@unifiedTypeMap ioTypeMap,
-                        let @formalParameterListAST inRoutineSignatureAST,
-                        let @semanticInstructionListAST inInstructionList,
-                        let @location inEndOfMethodLocation,
-                        !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration,
-                        !@formalParameterListForGeneration outRoutineSignature ) {
+                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                         let @analysisContext inAnalysisContext,
+                         ?!@unifiedTypeMap ioTypeMap,
+                         let @formalParameterListAST inRoutineSignatureAST,
+                         let @semanticInstructionListAST inInstructionList,
+                         let @location inEndOfMethodLocation,
+                         !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration,
+                         !@formalParameterListForGeneration outRoutineSignature ) {
   var variableMap = @localVarManager ()
 //--- Enter properties that should be explicitly initialized
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
@@ -250,15 +247,13 @@ proc analyzeRoutineBody (let @lstring inUsefulnessCallerEntityName,
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @externFunctionDeclarationAST.semanticAnalysis
-  (?!@lstringlist ioUsefulnessRootEntities,
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @string _inProductDirectory,
-  let @semanticContext _inSemanticContext,
-                                ?!@unifiedTypeMap ioTypeMap,
-  let @predefinedTypes _inPredefinedTypes,
-  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
-) {
+override proc @externFunctionDeclarationAST.semanticAnalysis (?!@lstringlist ioUsefulnessRootEntities,
+                                              ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                              let @string _inProductDirectory,
+                                              let @semanticContext _inSemanticContext,
+                                              ?!@unifiedTypeMap ioTypeMap,
+                                              let @predefinedTypes _inPredefinedTypes,
+                                              ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
 //--- Useful entities graph
   let nameForUsefulness = functionNameForUsefulEntitiesGraph (self.mFunctionName)
   !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
@@ -355,8 +350,8 @@ proc analyzeFunctionBody
 //---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
   for (mInstruction) in inInstructionList do
-    mInstruction.analyzeSemanticInstruction
-      (inUsefulnessCallerEntityName,
+    mInstruction.analyzeSemanticInstruction (
+      inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       inAnalysisContext,
       !?ioTypeMap,
@@ -1041,7 +1036,7 @@ abstract proc @abstractInputParameter.analyzeInputParameter
   ?!@unifiedTypeMap ioTypeMap,
   let @lexicalTypeEnum inRequiredLexicalType,
   let @string inLexicalAttributeName,
-  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList,
+  ?![@terminalCheckAssignement] ioTerminalCheckAssignementList,
   ?!@localVarManager ioVariableMap)
 
 //--------------------------------------------------------------------------------------------------
@@ -1051,7 +1046,7 @@ override proc @inputParameterAnonymousVariable.analyzeInputParameter
   ?!@unifiedTypeMap _ioTypeMap,
   let @lexicalTypeEnum _inRequiredLexicalType,
   let @string _inLexicalAttributeName,
-  ?!@terminalCheckAssignementList _ioTerminalCheckAssignementList,
+  ?![@terminalCheckAssignement] _ioTerminalCheckAssignementList,
   ?!@localVarManager _ioVariableMap ) {
 }
 
@@ -1062,7 +1057,7 @@ override proc @inputParameterVariable.analyzeInputParameter
   ?!@unifiedTypeMap _ioTypeMap,
   let @lexicalTypeEnum inRequiredLexicalType,
   let @string inLexicalAttributeName,
-  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList,
+  ?![@terminalCheckAssignement] ioTerminalCheckAssignementList,
   ?!@localVarManager ioVariableMap ) {
   !?ioVariableMap.searchForWriteAccess (self.mActualParameterName, ?let @unifiedTypeMapEntry type, ?let @string cppName, ?*)
   let @unifiedTypeMapEntry expectedType
@@ -1094,7 +1089,7 @@ override proc @inputParameterDeclaredVariable.analyzeInputParameter
   ?!@unifiedTypeMap ioTypeMap,
   let @lexicalTypeEnum inRequiredLexicalType,
   let @string inLexicalAttributeName,
-  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList,
+  ?![@terminalCheckAssignement] ioTerminalCheckAssignementList,
   ?!@localVarManager ioVariableMap ) {
 //--- Expected type
   let @unifiedTypeMapEntry expectedType
@@ -1139,7 +1134,7 @@ override proc @inputParameterDeclaredConstant.analyzeInputParameter
                                 ?!@unifiedTypeMap ioTypeMap,
   let @lexicalTypeEnum inRequiredLexicalType,
   let @string inLexicalAttributeName,
-  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList,
+  ?![@terminalCheckAssignement] ioTerminalCheckAssignementList,
   ?!@localVarManager ioVariableMap ) {
 //--- Expected type
   let @unifiedTypeMapEntry expectedType

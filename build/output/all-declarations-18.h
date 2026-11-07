@@ -8,13 +8,3 @@
 
 #include "all-declarations-17.h"
 
-//--------------------------------------------------------------------------------------------------
-//
-//Extension func '@typeNameFormalParameterNameList initializerSignature' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string extensionGetter_initializerSignature (const class GGS_typeNameFormalParameterNameList & inObject,
-                                                       class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-

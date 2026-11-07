@@ -25,13 +25,13 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <expression> (?!@galgasDeclarationAST ioDeclarations,
-                    !@semanticExpressionAST outExpressionAST)
+                     !@semanticExpressionAST outExpressionAST)
 
   rule <type_definition> (?!@galgasDeclarationAST ioDeclarations,
-                         !@lstring outTypeName)
+                          !@lstring outTypeName)
 
   rule <simple_type_definition> (?!@galgasDeclarationAST _ioDeclarations,
-                                !@lstring outTypeName)
+                                 !@lstring outTypeName)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //          F O R M A L    P A R A M E T E R    L I S T
@@ -103,7 +103,8 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
           formalParameterPassingMode,
           formalParameterTypeName,
           formalParameterName,
-          isUnused)
+          isUnused
+        )
       while
         $,$
       end
@@ -296,20 +297,6 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       endOfExpressionLocation
     ))
   }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-//  rule <actual_parameter> (?!@galgasDeclarationAST ioDeclarations,
-//                          ?!@actualParameterListAST ioActualParameterList ) {
-//    let selector = "".here
-//    <expression> (!?ioDeclarations, ?let @semanticExpressionAST e)
-//    let @location endOfExpressionLocation = @location.here
-//    ioActualParameterList ++= @(@outputActualParameterAST (
-//      selector,
-//      e,
-//      endOfExpressionLocation
-//    ))
-//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //  F O R M A L    I N P U T    P A R A M E T E R S

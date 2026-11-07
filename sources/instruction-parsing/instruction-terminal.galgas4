@@ -195,10 +195,10 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
       )
     end
   //---
-    var terminalCheckAssignementList = @terminalCheckAssignementList ()
+    var terminalCheckAssignementList = [@terminalCheckAssignement] ()
     for actual in self.mActualInputParameterList, formal in sentAttributeList do
-      actual.mInputParameter.analyzeInputParameter
-        (inAnalysisContext,
+      actual.mInputParameter.analyzeInputParameter (
+        inAnalysisContext,
         !?ioTypeMap,
         formal.mLexicalType,
         formal.mLexicalAttributeName,
@@ -286,13 +286,21 @@ final class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionF
 }
 
 //--------------------------------------------------------------------------------------------------
+
+struct @terminalCheckAssignement {
+  public let @string mTypeName // Empty string if no declaration
+  public let @string mTargetVarCppName
+  public let @string mSourceLexicalAttributeName
+}
+
+//--------------------------------------------------------------------------------------------------
 //! @terminalCheckInstructionForGeneration
 //--------------------------------------------------------------------------------------------------
 
 final class @terminalCheckInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @lstring mTerminalName
   private let @string mLexiqueIdentifier
-  private let @terminalCheckAssignementList mTerminalCheckAssignementList
+  private let [@terminalCheckAssignement] mTerminalCheckAssignementList
   private let @2lstringlist mIndexingKeyList
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
@@ -309,7 +317,7 @@ override proc @terminalCheckInstructionForGeneration.appendSyntaxSignature (
     self.mInstructionLocation,
     self.mTerminalName,
     self.mLexiqueIdentifier,
-    @terminalCheckAssignementList (),
+    [@terminalCheckAssignement] (),
     self.mIndexingKeyList,
     @grammarInstructionSyntaxDirectedTranslationResultNone (),
     @grammarInstructionSyntaxDirectedTranslationResultNone ()

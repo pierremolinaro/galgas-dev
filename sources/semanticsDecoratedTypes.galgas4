@@ -222,7 +222,7 @@ func @semanticDeclarationForGeneration.appendPrimitiveTypeDeclaration () -> @str
 
 //--------------------------------------------------------------------------------------------------
 
-proc @semanticDeclarationForGeneration.appendPrimitiveTypePreDeclaration (?!@string _ioHeader ) {
+proc @semanticDeclarationForGeneration.appendPrimitiveTypePreDeclaration (?!@string _ioHeader) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -395,14 +395,6 @@ final class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHead
 //
 //  T E R M I N A L    C H E C K    I N S T R U C T I O N
 //
-//--------------------------------------------------------------------------------------------------
-
-list @terminalCheckAssignementList {
-  public let @string mTypeName // Empty string if no declaration
-  public let @string mTargetVarCppName
-  public let @string mSourceLexicalAttributeName
-}
-
 //--------------------------------------------------------------------------------------------------
 
 abstract class @syntaxInstructionForGeneration : @semanticInstructionForGeneration {
