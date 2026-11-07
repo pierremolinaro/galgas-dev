@@ -193,7 +193,7 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> (mapTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(@mapDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @mapDeclarationAST (
       !isPredefined: false,
       mapTypeName,
       propertyList,
@@ -204,7 +204,7 @@ syntax extension galgas4DeclarationsSyntax {
       replaceMethodList,
       insertOrReplaceDeclarationListAST,
       !equatable: isEquatable
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -355,14 +355,14 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       )
     end
     let elementTypeName = makeEmbeddedElementTypeLName (self.mMapTypeName)
-    ioDeclarations.mDeclarationList ++= @(@structDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @structDeclarationAST (
       !isPredefined: self.isPredefined,
       elementTypeName,
       structAttributeList,
       !enumeratedElementTypeName: "",
       !comparison: if self.equatable then .equatable else .none end,
       !isUsefullStruct: true
-    ))
+    )
   //--- Add optional element
     !?ioDeclarations.getOptionalTypeName (?*, !forTypeNamed: elementTypeName, !isPredefined: false)
   }
@@ -376,7 +376,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
     ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
+    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
     let key = @lstring ("@" + self.mMapTypeName, self.mMapTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     for property in self.mPropertyList do

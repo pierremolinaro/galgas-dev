@@ -41,13 +41,13 @@ syntax extension galgas4InstructionsSyntax {
     end
     $identifier$ (?let @lstring mActionName) indexing (routineDefinition)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST mFormalParameterList)
-    ioDeclarations.mDeclarationList ++= @(@externProcedureDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @externProcedureDeclarationAST (
       !isPredefined: false,
       !isFilePrivate: false,
       mActionName,
       mFormalParameterList,
       !usefullProcedure: isUsefull
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -71,8 +71,8 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
     ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
     ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
-    ioExtensionOverrideDefinitionList ++= @(self)
+    ?![@semanticDeclarationAST] ioExtensionOverrideDefinitionList) {
+    ioExtensionOverrideDefinitionList ++= self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

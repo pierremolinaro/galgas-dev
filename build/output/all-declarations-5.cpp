@@ -1896,7 +1896,7 @@ void callExtensionMethod_enterDeclarationInGraph (cPtr_semanticDeclarationAST * 
                                                   GGS_extensionMethodMapForBuildingContext & io_ioExtensionMethodMapForBuildingContext,
                                                   GGS_extensionGetterMapForBuildingContext & io_ioExtensionGetterMapForBuildingContext,
                                                   GGS_extensionSetterMapForBuildingContext & io_ioExtensionSetterMapForBuildingContext,
-                                                  GGS_semanticDeclarationListAST & io_ioExtensionOverrideDefinitionList,
+                                                  GGS__5B_semanticDeclarationAST_5D_ & io_ioExtensionOverrideDefinitionList,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
 //--- Drop output arguments

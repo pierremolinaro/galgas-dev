@@ -40,14 +40,14 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList ++= @(@overridingExtensionMethodAST (
+    ioDeclarations.mDeclarationList ++= @overridingExtensionMethodAST (
       !isPredefined: false,
       typeName,
       methodName,
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -62,14 +62,14 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList ++= @(@overridingExtensionMethodAST (
+    ioDeclarations.mDeclarationList ++= @overridingExtensionMethodAST (
       !isPredefined: false,
       inTypeName,
       methodName,
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -107,8 +107,8 @@ override proc @overridingExtensionMethodAST.enterDeclarationInGraph (
   ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext,
   ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
-  ioExtensionOverrideDefinitionList ++= @(self)
+  ?![@semanticDeclarationAST] ioExtensionOverrideDefinitionList) {
+  ioExtensionOverrideDefinitionList ++= self
 //---
   if not ioExtensionMethodMapForBuildingContext.hasKey (self.mTypeName.string) then
     !?ioExtensionMethodMapForBuildingContext.insertKey

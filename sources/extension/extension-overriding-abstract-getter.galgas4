@@ -113,13 +113,13 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList ++= @(@overridingAbstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @overridingAbstractExtensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
       formalInputParameterList,
       returnedTypeName
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -133,13 +133,13 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList ++= @(@overridingAbstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @overridingAbstractExtensionGetterAST (
       !isPredefined: false,
       inTypeName,
       getterName,
       formalInputParameterList,
       returnedTypeName
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -165,8 +165,8 @@ override proc @overridingAbstractExtensionGetterAST.enterDeclarationInGraph (
       ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
       ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext,
       ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-      ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
-  ioExtensionOverrideDefinitionList ++= @(self)
+      ?![@semanticDeclarationAST] ioExtensionOverrideDefinitionList) {
+  ioExtensionOverrideDefinitionList ++= self
 //---
   if not ioExtensionGetterMapForBuildingContext.hasKey (self.mTypeName.string) then
     !?ioExtensionGetterMapForBuildingContext.insertKey

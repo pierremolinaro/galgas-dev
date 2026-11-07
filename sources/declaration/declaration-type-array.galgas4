@@ -38,7 +38,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
     ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
+    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
     let key = @lstring ("@" + self.arrayTypeName, self.arrayTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     !?ioSemanticTypePrecedenceGraph.noteNode (@lstring ("@" + self.elementTypeName, self.elementTypeName))

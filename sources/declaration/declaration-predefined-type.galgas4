@@ -54,7 +54,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
        ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
        ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
        ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-       ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
+       ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
     let key = @lstring ("@" + self.mPredefinedTypeName, .nowhere)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   }
@@ -251,7 +251,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
 //--------------------------------------------------------------------------------------------------
 
-private proc appendPredefinedListTypeAST (?!@semanticDeclarationListAST ioDeclarationListASTs,
+private proc appendPredefinedListTypeAST (?![@semanticDeclarationAST] ioDeclarationListASTs,
                                           let @string inElementTypeName,
                                           ?!@lstringlist ioUsefulnessRootEntities ) {
   var @propertyInCollectionListAST attributeList = @()
@@ -263,19 +263,19 @@ private proc appendPredefinedListTypeAST (?!@semanticDeclarationListAST ioDeclar
     !hasSelector: false,
     !initialization: .none
   )
-  ioDeclarationListASTs ++= @(@listDeclarationAST (
+  ioDeclarationListASTs ++= @listDeclarationAST (
     !isPredefined: true,
     @lstring (inElementTypeName + "list", @location.here),
     attributeList,
     !usefullList: true,
     !equatable: true
-  ))
+  )
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities, inElementTypeName + "list")
 }
 
 //--------------------------------------------------------------------------------------------------
 
-private proc appendPredefined2StringListTypeAST (?!@semanticDeclarationListAST ioDeclarationListASTs,
+private proc appendPredefined2StringListTypeAST (?![@semanticDeclarationAST] ioDeclarationListASTs,
                                                 ?!@lstringlist ioUsefulnessRootEntities ) {
   var attributeList = @propertyInCollectionListAST ()
   attributeList ++= @(
@@ -295,19 +295,19 @@ private proc appendPredefined2StringListTypeAST (?!@semanticDeclarationListAST i
     !initialization: .none
   )
 
-  ioDeclarationListASTs ++= @(@listDeclarationAST (
+  ioDeclarationListASTs ++= @listDeclarationAST (
     !isPredefined: true,
     @lstring ("2stringlist", @location.here),
     attributeList,
     !usefullList: true,
     !equatable: true
-  ))
+  )
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities, "2stringlist")
 }
 
 //--------------------------------------------------------------------------------------------------
 
-private proc appendStructASTForTypeWithLocation (?!@semanticDeclarationListAST ioDeclarationListASTs,
+private proc appendStructASTForTypeWithLocation (?![@semanticDeclarationAST] ioDeclarationListASTs,
                                                 let @string inElementTypeName,
                                                 ?!@lstringlist ioUsefulnessRootEntities ) {
   var attributeList = @propertyInCollectionListAST ()
@@ -335,7 +335,7 @@ private proc appendStructASTForTypeWithLocation (?!@semanticDeclarationListAST i
     !comparison: .equatable,
     !isUsefullStruct: true
   )
-  ioDeclarationListASTs ++= @(type)
+  ioDeclarationListASTs ++= type
 //--- Mark it as usefull
   let typeUsefulnessName = typeNameForUsefulEntitiesGraph (type.structTypeName)
   ioUsefulnessRootEntities ++= @(typeUsefulnessName)
@@ -343,7 +343,7 @@ private proc appendStructASTForTypeWithLocation (?!@semanticDeclarationListAST i
 
 //--------------------------------------------------------------------------------------------------
 
-private proc appendStructASTForRangeType (?!@semanticDeclarationListAST ioDeclarationListASTs,
+private proc appendStructASTForRangeType (?![@semanticDeclarationAST] ioDeclarationListASTs,
                                          ?!@lstringlist _ioUsefulnessRootEntities ) {
   var @propertyInCollectionListAST attributeList = @()
   attributeList ++= @(
@@ -362,14 +362,14 @@ private proc appendStructASTForRangeType (?!@semanticDeclarationListAST ioDeclar
     !hasSelector: false,
     !initialization: .none
   )
-  ioDeclarationListASTs ++= @(@structDeclarationAST (
+  ioDeclarationListASTs ++= @structDeclarationAST (
     !isPredefined: true,
     @lstring ("range", @location.here),
     attributeList,
     !enumeratedElementTypeName: "uint",
     !comparison: .equatable,
     !isUsefullStruct: true
-  ))
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -384,11 +384,11 @@ private proc insertInUsefulnessEntities
 //--------------------------------------------------------------------------------------------------
 
 private proc insertPredefinedType
-         (?!@semanticDeclarationListAST ioDeclarationListASTs,
+         (?![@semanticDeclarationAST] ioDeclarationListASTs,
          ?!@lstringlist ioUsefulnessRootEntities,
          let @predefinedTypeAST inPredefinedTypeAST ) {
 //--- Declare type
-  ioDeclarationListASTs++= @(inPredefinedTypeAST)
+  ioDeclarationListASTs ++= inPredefinedTypeAST
   let typeUsefulnessName = typeNameForUsefulEntitiesGraph (
     @(inPredefinedTypeAST.mPredefinedTypeName, .nowhere)
   )
@@ -406,7 +406,7 @@ private proc insertPredefinedType
 
 //--------------------------------------------------------------------------------------------------
 
-proc appendPredefinedTypesASTs (?!@semanticDeclarationListAST ioDeclarationListASTs,
+proc appendPredefinedTypesASTs (?![@semanticDeclarationAST] ioDeclarationListASTs,
                                ?!@lstringlist ioUsefulnessRootEntities ) {
   insertPredefinedType (
     !?ioDeclarationListASTs,

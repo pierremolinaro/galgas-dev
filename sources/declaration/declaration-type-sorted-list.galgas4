@@ -107,13 +107,13 @@ syntax extension galgas4DeclarationsSyntax {
       $,$
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(@sortedListDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @sortedListDeclarationAST (
       !isPredefined: false,
       sortedListTypeName,
       attributeList,
       sortDescriptorList,
       !equatable: isEquatable
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -160,7 +160,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
     ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
+    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
     let key = @lstring ("@" + self.mSortedListTypeName, self.mSortedListTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     for property in self.mPropertyList do
@@ -183,14 +183,14 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
         !initialization: property.initialization
       )
     end
-    ioDeclarations.mDeclarationList ++= @(@structDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @structDeclarationAST (
       !isPredefined: self.isPredefined,
       makeEmbeddedElementTypeLName (self.mSortedListTypeName),
       structAttributeList,
       !enumeratedElementTypeName: "",
       !comparison: if self.equatable then .equatable else .none end,
       !isUsefullStruct: true
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

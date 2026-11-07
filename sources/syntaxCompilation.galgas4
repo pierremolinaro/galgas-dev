@@ -25,7 +25,7 @@
 proc groupSyntaxComponentsGalgas3
   (let @galgas3SyntaxComponentListAST inAllSyntaxComponents,
   let @syntaxExtensions inSyntaxExtensions,
-  ?!@semanticDeclarationListAST ioDeclarationList
+  ?![@semanticDeclarationAST] ioDeclarationList
 ) {
 //--- Add extensions to syntax list
   var @stringset componentNameSet = @()
@@ -37,13 +37,14 @@ proc groupSyntaxComponentsGalgas3
       nonterminalDeclarationList += syntaxExtension.mNonterminalDeclarationList
       ruleList += syntaxExtension.mRuleList
     end
-    ioDeclarationList ++= @(@galgas3SyntaxComponentAST (
+    ioDeclarationList ++= @galgas3SyntaxComponentAST (
       !isPredefined: false,
       component.mSyntaxComponentName,
       component.mImportedLexiqueFilePath,
       nonterminalDeclarationList,
       ruleList,
-      component.mHasTranslateFeature))
+      component.mHasTranslateFeature
+    )
   end
 //--- Check all extensions are handled
   for syntaxExtension in inSyntaxExtensions.dictionary do

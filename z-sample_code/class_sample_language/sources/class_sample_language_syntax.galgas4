@@ -1,19 +1,19 @@
 syntax class_sample_language_syntax (class_sample_language_lexique) {
 
-rule <start_symbol> (!@declarationListAST outDeclarationListAST
+rule <start_symbol> (![@declarationAST] outDeclarationListAST
 
-)rule <start_symbol> (!@declarationListAST outDeclarationListAST ) {
+)rule <start_symbol> (![@declarationAST] outDeclarationListAST ) {
   outDeclarationListAST = @()
   repeat
   while
     $class$
     $identifier$ (?let @lstring className )indexing (classDefinition)
     select
-      outDeclarationListAST ++= @(@classWithoutSuperClassAST ( className))
+      outDeclarationListAST ++= @classWithoutSuperClassAST (className)
     or
       $:$
       $identifier$ (?let @lstring superClassName )indexing (superClassReference)
-      outDeclarationListAST ++= @(@classWithSuperClassAST ( className , superClassName))
+      outDeclarationListAST ++= @classWithSuperClassAST (className, superClassName)
     end
     $;$
   end

@@ -2745,7 +2745,7 @@ class cPtr_semanticDeclarationAST : public AbstractStrongPtrClass {
            class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
            class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
+           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
 //--- Extension proc enterDeclarationInSemanticContext
@@ -6712,6 +6712,179 @@ class GGS_semanticDeclarationAST_2E_weak : public AC_GALGAS_weak_reference {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: [semanticDeclarationAST] array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_semanticDeclarationAST_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_semanticDeclarationAST_5D_ (const class GGS__5B_semanticDeclarationAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_semanticDeclarationAST_5D_ (const DownEnumerator__5B_semanticDeclarationAST_5D_ &) = delete ;
+  private: DownEnumerator__5B_semanticDeclarationAST_5D_ & operator = (const DownEnumerator__5B_semanticDeclarationAST_5D_ &) = delete ;
+
+//--- 
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent >= 0 ;
+  }
+
+//--- 
+  public: inline void gotoNextObject (void) {
+    mCurrent -= 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_semanticDeclarationAST current (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_semanticDeclarationAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_semanticDeclarationAST_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_semanticDeclarationAST_5D_ (const class GGS__5B_semanticDeclarationAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_semanticDeclarationAST_5D_ (const UpEnumerator__5B_semanticDeclarationAST_5D_ &) = delete ;
+  private: UpEnumerator__5B_semanticDeclarationAST_5D_ & operator = (const UpEnumerator__5B_semanticDeclarationAST_5D_ &) = delete ;
+
+//--- 
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent < mSharedArray.count () ;
+  }
+  
+//--- 
+  public: inline void gotoNextObject (void) {
+    mCurrent += 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_semanticDeclarationAST current (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_semanticDeclarationAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_semanticDeclarationAST_5D_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_semanticDeclarationAST> mSharedArray ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_semanticDeclarationAST_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_semanticDeclarationAST_5D_ (const GGS__5B_semanticDeclarationAST_5D_ & inSource) ;
+  public: GGS__5B_semanticDeclarationAST_5D_ & operator = (const GGS__5B_semanticDeclarationAST_5D_ & inSource) ;
+
+//--------------------------------- Remove All
+  public: VIRTUAL_IN_DEBUG void removeAll (void) ;
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_semanticDeclarationAST_5D_ ;
+  friend class DownEnumerator__5B_semanticDeclarationAST_5D_ ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_semanticDeclarationAST_5D_ init (Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS__5B_semanticDeclarationAST_5D_ extractObject (const GGS_object & inObject,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public: void plusAssignOperation (const GGS__5B_semanticDeclarationAST_5D_ inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- ++= operator, collection value
+  public: void plusPlusAssignOperation (const GGS_semanticDeclarationAST & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_semanticDeclarationAST_5D_ add_operation (const GGS__5B_semanticDeclarationAST_5D_ & inOperand,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_semanticDeclarationAST constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insertAtIndex (class GGS_semanticDeclarationAST constinArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popFirst (class GGS_semanticDeclarationAST & outArgument0,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popLast (class GGS_semanticDeclarationAST & outArgument0,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAtIndex (class GGS_semanticDeclarationAST & outArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_first (class GGS_semanticDeclarationAST & outArgument0,
+                             Compiler * inCompiler
+                             COMMA_LOCATION_ARGS) const ;
+
+  public: void method_last (class GGS_semanticDeclarationAST & outArgument0,
+                            Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+  public: class GGS_semanticDeclarationAST readSubscript__3F_ (const class GGS_uint & in0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_semanticDeclarationAST_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: [semanticDeclarationForGeneration] array

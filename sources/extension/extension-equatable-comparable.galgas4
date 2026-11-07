@@ -62,11 +62,11 @@ syntax extension galgas4DeclarationsSyntax {
       $#comparable$
       theExtension = .comparable
     end
-    ioDeclarations.mDeclarationList ++= @(@equatableExtensionAST (
+    ioDeclarations.mDeclarationList ++= @equatableExtensionAST (
       !isPredefined: false,
       typeName,
       theExtension
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -146,7 +146,7 @@ final class @equatableExtensionAST : @semanticDeclarationAST {
           ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
           ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
           ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-          ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList) {
+          ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList) {
     let key = @lstring (self.keyRepresentation, self.mTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName))

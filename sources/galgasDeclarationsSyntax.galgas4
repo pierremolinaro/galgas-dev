@@ -64,7 +64,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
     <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
     <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
-    ioDeclarations.mDeclarationList ++= @(@filewrapperDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @filewrapperDeclarationAST (
       !isPredefined: false, // Is not predefined
       false, // private
       @string.stringWithSourceFilePath,
@@ -73,7 +73,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       filewrapperTextFileExtensionList,
       filewrapperBinaryFileExtensionList,
       filewrapperTemplateList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -87,7 +87,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
     <filewrapper_text_files> (?let filewrapperTextFileExtensionList)
     <filewrapper_binary_files> (?let filewrapperBinaryFileExtensionList)
     <filewrapper_templates> (!?ioDeclarations, ?let filewrapperTemplateList)
-    ioDeclarations.mDeclarationList ++= @(@filewrapperDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @filewrapperDeclarationAST (
       !isPredefined: false, // Is not predefined
       true, // private
       @string.stringWithSourceFilePath,
@@ -96,7 +96,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       filewrapperTextFileExtensionList,
       filewrapperBinaryFileExtensionList,
       filewrapperTemplateList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

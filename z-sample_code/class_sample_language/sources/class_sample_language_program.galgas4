@@ -11,8 +11,8 @@ grammar class_sample_language_grammar
   grammar class_sample_language_grammar (?let declarationListAST) in inSourceFile
 //--- Build dependence graph
   var inheritanceGraph = @inheritanceGraph ()
-  for (mDeclaration) in  declarationListAST do
-    mDeclaration.buildGraph (!?inheritanceGraph)
+  for declaration in  declarationListAST do
+    declaration.buildGraph (!?inheritanceGraph)
   end
 //--- Undefined classes ?
   if inheritanceGraph.undefinedNodeCount > 0 then
@@ -22,7 +22,7 @@ grammar class_sample_language_grammar
   else
   //--- Topologic sort
     inheritanceGraph.topologicalSort
-      (?let @declarationListAST sortedDeclarationListAST,
+      (?let [@declarationAST] sortedDeclarationListAST,
       ?*,
       ?*,
       ?let @lstringlist circularDefinitionClassNameList
@@ -34,8 +34,8 @@ grammar class_sample_language_grammar
     else
     //--- Generate code
       var @string codeToGenerate = ""
-      for (mDeclaration) in  sortedDeclarationListAST do
-        mDeclaration.generateCode (!?codeToGenerate)
+      for declaration in  sortedDeclarationListAST do
+        declaration.generateCode (!?codeToGenerate)
       end
       let @string targetFile = inSourceFile.deletingPathExtension() + ".cpp"
       codeToGenerate.writeToFile (targetFile)

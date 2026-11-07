@@ -44,7 +44,7 @@ syntax extension galgas4InstructionsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList ++= @(@procDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @procDeclarationAST (
       !isPredefined: false,
       !isFilePrivate: false,
       routineName,
@@ -52,7 +52,7 @@ syntax extension galgas4InstructionsSyntax {
       !usefullProcedure: isUsefull,
       routineInstructionList,
       endOfInstructionList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -75,7 +75,7 @@ syntax extension galgas4InstructionsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     $}$
     let endOfInstructionList = @location.here
-    ioDeclarations.mDeclarationList ++= @(@procDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @procDeclarationAST (
       !isPredefined: false,
       !isFilePrivate: true,
       routineName,
@@ -83,7 +83,7 @@ syntax extension galgas4InstructionsSyntax {
       !usefullProcedure: isUsefull,
       routineInstructionList,
       endOfInstructionList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

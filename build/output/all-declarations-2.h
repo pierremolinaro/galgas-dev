@@ -4660,7 +4660,7 @@ class cPtr_overridingExtensionGetterAST : public cPtr_semanticDeclarationAST {
            class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
            class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
+           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc enterDeclarationInSemanticContext
@@ -5739,7 +5739,7 @@ class cPtr_overridingAbstractExtensionMethodAST : public cPtr_semanticDeclaratio
            class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
            class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
+           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc enterDeclarationInSemanticContext
@@ -5980,7 +5980,7 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
            class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
            class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
+           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc enterDeclarationInSemanticContext
@@ -6625,7 +6625,7 @@ class cPtr_initializerAST : public cPtr_semanticDeclarationAST {
            class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
            class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
+           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc enterDeclarationInSemanticContext
@@ -6997,7 +6997,7 @@ class cPtr_abstractExtensionGetterAST : public cPtr_semanticDeclarationAST {
            class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
            class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
+           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc enterDeclarationInSemanticContext
@@ -7380,7 +7380,7 @@ class cPtr_extensionGetterAST : public cPtr_semanticDeclarationAST {
            class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
            class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
+           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc enterDeclarationInSemanticContext
@@ -7785,7 +7785,7 @@ class cPtr_overridingExtensionMethodAST : public cPtr_semanticDeclarationAST {
            class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
            class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
+           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc enterDeclarationInSemanticContext
@@ -8165,7 +8165,7 @@ class cPtr_overridingAbstractExtensionGetterAST : public cPtr_semanticDeclaratio
            class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
            class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
+           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc enterDeclarationInSemanticContext
@@ -8816,7 +8816,7 @@ class cPtr_equatableExtensionAST : public cPtr_semanticDeclarationAST {
            class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
            class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
+           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc enterDeclarationInSemanticContext
@@ -9047,7 +9047,7 @@ class cPtr_abstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
            class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
            class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
+           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc enterDeclarationInSemanticContext
@@ -9414,7 +9414,7 @@ class cPtr_extensionMethodAST : public cPtr_semanticDeclarationAST {
            class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
            class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
+           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc enterDeclarationInSemanticContext

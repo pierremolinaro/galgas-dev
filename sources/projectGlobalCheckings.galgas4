@@ -283,7 +283,7 @@ proc checkExtensionGetterDefinitionForClass
 
 proc performGalgas3ProjectGlobalCheckings
   (?!@unifiedTypeMap ioTypeMap,
-  let @semanticDeclarationListAST inSemanticDeclarationList
+  let [@semanticDeclarationAST] inSemanticDeclarationList
 ) {
   if @application.verboseOutput then
     println ("*** Perform global checkings")
@@ -313,9 +313,9 @@ proc performGalgas3ProjectGlobalCheckings
   var @genericExtensionMethodListMap extensionSetterListMap = @()
   var @genericExtensionMethodListMap overridingExtensionSetterListMap = @()
   var @genericExtensionMethodListMap overridingAbstractExtensionSetterListMap = @()
-  for (mSemanticDeclaration) in inSemanticDeclarationList do
-    mSemanticDeclaration.buildExtensionListMaps
-      (!?abstractExtensionSetterListMap,
+  for declaration in inSemanticDeclarationList do
+    declaration.buildExtensionListMaps (
+      !?abstractExtensionSetterListMap,
       !?extensionSetterListMap,
       !?overridingExtensionSetterListMap,
       !?overridingAbstractExtensionSetterListMap,

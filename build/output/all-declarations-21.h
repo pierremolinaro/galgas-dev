@@ -1180,27 +1180,3 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplement
                                                                                        const class GGS_graphInsertModifierList & in_INSERT_5F_MODIFIER_5F_LIST
                                                                                        COMMA_LOCATION_ARGS) ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'typeGenerationTemplate graphTypeHeader1_EX'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_typeGenerationTemplate_graphTypeHeader_31__5F_EX (class Compiler * inCompiler,
-                                                                                 const class GGS_string & in_TYPE_5F_NAME,
-                                                                                 const class GGS_string & in_TYPE_5F_IDENTIFIER
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'typeGenerationTemplate graphTypeSpecificImplementation_EX'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplementation_5F_EX (class Compiler * inCompiler,
-                                                                                             const class GGS_unifiedTypeMapEntry & in_TYPE,
-                                                                                             const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                             const class GGS_unifiedTypeMapEntry & in_ASSOCIATED_5F_LIST_5F_TYPE,
-                                                                                             const class GGS_graphInsertModifierList & in_INSERT_5F_MODIFIER_5F_LIST
-                                                                                             COMMA_LOCATION_ARGS) ;
-

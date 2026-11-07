@@ -772,14 +772,6 @@
                 "galgas-debug/compile-sources",
               ],
             },
-            { "path": "AC_GALGAS_graph.h" },
-            {
-              "path": "AC_GALGAS_graph.cpp",
-              "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
-              ],
-            },
             { "path": "AC_GALGAS_reference_class.h" },
             {
               "path": "AC_GALGAS_reference_class.cpp",

@@ -3,10 +3,6 @@
 abstract class @declarationAST {
 }
 
-list @declarationListAST {
-  public let @declarationAST mDeclaration
-}
-
 final class @classWithoutSuperClassAST : @declarationAST {
   public let @lstring mClassName
 }
@@ -17,7 +13,7 @@ final class @classWithSuperClassAST : @declarationAST {
 }
 
 
-graph @inheritanceGraph : @declarationListAST {
+graph @inheritanceGraph : @declarationAST {
   #insertSetter addNode #errorMessage "the '%K' class is already declared"
 }
 

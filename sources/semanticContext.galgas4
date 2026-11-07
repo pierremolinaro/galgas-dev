@@ -773,7 +773,7 @@ override proc @galgas3GrammarComponentAST.enterDeclarationInSemanticContext
 
 //--------------------------------------------------------------------------------------------------
 
-graph @semanticTypePrecedenceGraph : @semanticDeclarationListAST {
+graph @semanticTypePrecedenceGraph : @semanticDeclarationAST {
   #insertSetter addNode #errorMessage "the '%K' type is already declared at %L"
 }
 
@@ -786,7 +786,7 @@ override proc @galgas3GrammarComponentAST.enterDeclarationInGraph (
   ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
   ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
+  ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
   let key = @lstring ("grammar " + self.mGrammarComponentName, self.mGrammarComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   for (mValue) in self.mSyntaxComponents do
@@ -803,7 +803,7 @@ override proc @galgas3SyntaxComponentAST.enterDeclarationInGraph
   ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
   ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
+  ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
   let key = @lstring ("syntax " + self.mSyntaxComponentName, self.mSyntaxComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("lexique " + self.mLexiqueName, self.mLexiqueName.location))
@@ -828,8 +828,8 @@ override proc @externFunctionDeclarationAST.enterDeclarationInGraph
   ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
   ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList ) {
-  ioExtensionOverrideDefinitionList ++= @(self)
+  ?![@semanticDeclarationAST] ioExtensionOverrideDefinitionList ) {
+  ioExtensionOverrideDefinitionList ++= self
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -841,8 +841,8 @@ override proc @onceFunctionDeclarationAST.enterDeclarationInGraph
   ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
   ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList ) {
-  ioExtensionOverrideDefinitionList ++= @(self)
+  ?![@semanticDeclarationAST] ioExtensionOverrideDefinitionList ) {
+  ioExtensionOverrideDefinitionList ++= self
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -854,8 +854,8 @@ override proc @filewrapperDeclarationAST.enterDeclarationInGraph
   ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
   ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList ) {
-  ioExtensionOverrideDefinitionList ++= @(self)
+  ?![@semanticDeclarationAST] ioExtensionOverrideDefinitionList ) {
+  ioExtensionOverrideDefinitionList ++= self
 }
 
 //--------------------------------------------------------------------------------------------------

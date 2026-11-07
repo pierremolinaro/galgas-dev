@@ -5492,7 +5492,7 @@ class cPtr_externProcedureDeclarationAST : public cPtr_semanticDeclarationAST {
            class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
            class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
            class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
-           class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
+           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc enterDeclarationInSemanticContext

@@ -43,7 +43,7 @@ override proc @weakReferenceDeclarationAST.enterDeclarationInGraph
   ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
   ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList
+  ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList
 ) {
   let key = @lstring ("@" + self.mWeakReferenceTypeName, self.mWeakReferenceTypeName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)

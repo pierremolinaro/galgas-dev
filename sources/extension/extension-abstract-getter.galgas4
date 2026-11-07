@@ -91,13 +91,13 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST mFormalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList ++= @(@abstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @abstractExtensionGetterAST (
       !isPredefined: false,
       typeName,
       mGetterName,
       mFormalInputParameterList,
       returnedTypeName
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -110,13 +110,13 @@ syntax extension galgas4DeclarationsSyntax {
     <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST mFormalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList ++= @(@abstractExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @abstractExtensionGetterAST (
       !isPredefined: false,
       inTypeName,
       mGetterName,
       mFormalInputParameterList,
       returnedTypeName
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -149,7 +149,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
               ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
               ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext,
               ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-              ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList) {
+              ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList) {
     let key = @lstring (
       "extension func @" + self.mTypeName + " " + self.mAbstractExtensionGetterName,
       self.mAbstractExtensionGetterName.location

@@ -22,7 +22,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-graph graph @usefulEntitiesGraph : @lstring {
+graph @usefulEntitiesGraph : @lstring {
   #insertSetter addNode #errorMessage "the '%K' entity is already declared at %L"
 }
 

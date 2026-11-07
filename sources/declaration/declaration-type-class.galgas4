@@ -155,7 +155,7 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> (className, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(@classDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @classDeclarationAST (
       !isPredefined: false,
       isAbstract,
       finalClass,
@@ -164,9 +164,9 @@ syntax extension galgas4DeclarationsSyntax {
       generateInSeparateFile,
       propertyList,
       clonable
-    ))
+    )
   //--- Associated Weak Type
-    ioDeclarations.mDeclarationList ++= @(@weakReferenceDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @weakReferenceDeclarationAST (
       !isPredefined: false,
       className,
       makeWeakTypeLName (className),
@@ -175,7 +175,7 @@ syntax extension galgas4DeclarationsSyntax {
          else makeWeakTypeLName (superClassName)
        end,
       generateInSeparateFile
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -210,7 +210,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
             ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
             ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
             ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-            ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
+            ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
     let key = @lstring ("@" + self.mClassTypeName, self.mClassTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   //--- Add edge from super class

@@ -89,12 +89,12 @@ syntax extension galgas4DeclarationsSyntax {
     if slotList.count == 0 then
       error (boolsetTypeName : "a boolset type must define at least one case constant")
     end
-    ioDeclarations.mDeclarationList ++= @(@boolsetDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @boolsetDeclarationAST (
       !isPredefined: false,
       boolsetTypeName,
       slotList,
       !isEquatable: isEquatable
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -122,7 +122,7 @@ override proc @boolsetDeclarationAST.enterDeclarationInGraph
   ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
   ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList
+  ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList
 ) {
   let key = @lstring ("@" + self.mBoolsetTypeName, self.mBoolsetTypeName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)

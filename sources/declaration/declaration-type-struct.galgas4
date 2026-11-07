@@ -43,14 +43,14 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> (structTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(@structDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @structDeclarationAST (
       !isPredefined: false,
       structTypeName,
       propertyList,
       !enumeratedElementTypeName: "",
       !comparison: comparison,
       !isUsefullStruct: false
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -89,7 +89,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
     ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList
+    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList
   ) {
     let key = @lstring ("@" + self.structTypeName, self.structTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)

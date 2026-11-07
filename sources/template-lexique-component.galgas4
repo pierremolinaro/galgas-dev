@@ -147,13 +147,13 @@ syntax extension galgas4LexiqueComponentSyntax {
       <template_replacement> (!? templateReplacementList)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(@templateLexiqueComponentAST (
+    ioDeclarations.mDeclarationList ++= @templateLexiqueComponentAST (
       !isPredefined: false,
       lexiqueComponentName,
       lexiqueSuperComponentName,
       templateDelimitorList,
       templateReplacementList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -233,7 +233,7 @@ override proc @templateLexiqueComponentAST.enterDeclarationInGraph
   ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
   ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
+  ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
   let key = @lstring ("lexique " + self.mLexiqueComponentName, self.mLexiqueComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   let superKey = @lstring ("lexique " + self.mLexiqueSuperComponentName, self.mLexiqueComponentName.location)

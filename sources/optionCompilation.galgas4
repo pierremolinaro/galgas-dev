@@ -34,11 +34,11 @@ syntax galgas4OptionComponentSyntax (galgasScanner4) {
       <option_declaration> (!?options)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(@optionComponentDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @optionComponentDeclarationAST (
       !isPredefined: false,
       optionComponentName,
       options
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -118,9 +118,9 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
     ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
     ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
+    ?![@semanticDeclarationAST] ioExtensionOverrideDefinitionList
   ) {
-    ioExtensionOverrideDefinitionList ++= @(self)
+    ioExtensionOverrideDefinitionList ++= self
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

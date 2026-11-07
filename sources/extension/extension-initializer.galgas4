@@ -92,13 +92,13 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let routineInstructionList)
     $}$
     let endOfMethodLocation = @location.here
-    ioDeclarations.mDeclarationList ++= @(@initializerAST (
+    ioDeclarations.mDeclarationList ++= @initializerAST (
       !isPredefined: false,
       @lstring (typeName, initLocation),
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -112,13 +112,13 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let routineInstructionList)
     $}$
     let endOfMethodLocation = @location.here
-    ioDeclarations.mDeclarationList ++= @(@initializerAST (
+    ioDeclarations.mDeclarationList ++= @initializerAST (
       !isPredefined: false,
       @lstring (inTypeName, initLocation),
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -153,7 +153,7 @@ final class @initializerAST : @semanticDeclarationAST {
           ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
           ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
           ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-          ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList) {
+          ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList) {
     let key = @lstring (self.keyRepresentation, self.mTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName))

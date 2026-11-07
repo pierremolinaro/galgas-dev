@@ -71,7 +71,7 @@ class GGS_predefinedTypes function_buildPredefinedTypes (const class GGS_unified
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_appendPredefinedTypesASTs_26__26_ (class GGS_semanticDeclarationListAST & ioArgument0,
+void routine_appendPredefinedTypesASTs_26__26_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
                                                 class GGS_lstringlist & ioArgument1,
                                                 class Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
@@ -86,7 +86,7 @@ void routine_buildGalgasSemanticContext_3F__3F__21__21__21_ (const class GGS_gal
                                                              const class GGS_location constinArgument1,
                                                              class GGS_semanticContext & outArgument2,
                                                              class GGS_unifiedTypeMap & outArgument3,
-                                                             class GGS_semanticDeclarationListAST & outArgument4,
+                                                             class GGS__5B_semanticDeclarationAST_5D_ & outArgument4,
                                                              class Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
@@ -334,7 +334,7 @@ void routine_compileProgramComponentGalgas_33__26__26__3F__3F__3F__3F__26__3F__2
 
 void routine_groupSyntaxComponentsGalgas_33__3F__3F__26_ (const class GGS_galgas_33_SyntaxComponentListAST constinArgument0,
                                                           const class GGS_syntaxExtensions constinArgument1,
-                                                          class GGS_semanticDeclarationListAST & ioArgument2,
+                                                          class GGS__5B_semanticDeclarationAST_5D_ & ioArgument2,
                                                           class Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
@@ -345,7 +345,7 @@ void routine_groupSyntaxComponentsGalgas_33__3F__3F__26_ (const class GGS_galgas
 //--------------------------------------------------------------------------------------------------
 
 void routine_performGalgas_33_ProjectGlobalCheckings_26__3F_ (class GGS_unifiedTypeMap & ioArgument0,
-                                                              const class GGS_semanticDeclarationListAST constinArgument1,
+                                                              const class GGS__5B_semanticDeclarationAST_5D_ constinArgument1,
                                                               class Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 

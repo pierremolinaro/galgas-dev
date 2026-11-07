@@ -161,12 +161,12 @@ syntax extension galgas4DeclarationsSyntax {
     if constantList.count == 0 then
       error (enumTypeName : "an enumerated type must define at least one case constant")
     end
-    ioDeclarations.mDeclarationList ++= @(@enumDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @enumDeclarationAST (
       !isPredefined: false,
       enumTypeName,
       constantList,
       !comparison: comparison
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -234,7 +234,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
           !comparison: self.comparison,
           !isUsefullStruct: true
         )
-        ioDeclarations.mDeclarationList ++= @(s)
+        ioDeclarations.mDeclarationList ++= s
         !?ioDeclarations.getOptionalTypeName
           (?*,
           !forTypeNamed: associatedTypeName,
@@ -253,7 +253,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
         ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
         ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-        ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
+        ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
     let key = @lstring ("@" + self.enumTypeName, self.enumTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   //--- There is a circular reference if all constants names current type in associated values

@@ -183,7 +183,7 @@ syntax extension galgas4DeclarationsSyntax {
       <externtype_method> (!?ioDeclarations, !?externTypeMethodList)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(@externTypeDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @externTypeDeclarationAST (
       !isPredefined: false,
       externTypeName,
       cppPredeclarationCode,
@@ -192,7 +192,7 @@ syntax extension galgas4DeclarationsSyntax {
       externTypeGetterList,
       externTypeSetterList,
       externTypeMethodList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -375,7 +375,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
     ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
     ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
+    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
     let key = @lstring ("@" + self.mExternTypeName, self.mExternTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   }

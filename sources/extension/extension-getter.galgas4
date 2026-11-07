@@ -47,7 +47,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList ++= @(@extensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @extensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -56,7 +56,7 @@ syntax extension galgas4DeclarationsSyntax {
       resultVariableName,
       routineInstructionList,
       endOfInstructionList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -80,7 +80,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfInstructionList = @location.here
     $}$
-    ioDeclarations.mDeclarationList ++= @(@extensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @extensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -89,7 +89,7 @@ syntax extension galgas4DeclarationsSyntax {
       resultVariableName,
       routineInstructionList,
       endOfInstructionList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -124,7 +124,7 @@ final class @extensionGetterAST : @semanticDeclarationAST {
         ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
         ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext,
         ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-        ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList) {
+        ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList) {
     let key = @lstring ("extension func @" + self.mTypeName + " " + self.mExtensionGetterName, self.mExtensionGetterName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName.location))

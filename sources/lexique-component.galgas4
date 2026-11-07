@@ -488,7 +488,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       <lexical_indexing_declaration> (!?indexingListAST)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(@lexiqueComponentAST (
+    ioDeclarations.mDeclarationList ++= @lexiqueComponentAST (
       !isPredefined: false, // Is not predefined
       lexiqueComponentName,
       false, // isTemplate
@@ -501,7 +501,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       lexicalListDeclarationList,
       lexicalRuleList,
       indexingListAST
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -820,7 +820,7 @@ override proc @lexiqueComponentAST.enterDeclarationInGraph
   ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
   ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
+  ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
   let key = @lstring ("lexique " + self.mLexiqueComponentName, self.mLexiqueComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)
 }

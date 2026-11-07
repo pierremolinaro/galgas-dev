@@ -80,7 +80,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     end
   //---
     $}$
-    ioDeclarations.mDeclarationList ++= @(@galgas3GrammarComponentAST (
+    ioDeclarations.mDeclarationList ++= @galgas3GrammarComponentAST (
       !isPredefined: false,
       hasIndexing,
       mGrammarName,
@@ -90,7 +90,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       mLabelList,
       unusedNonterminalList,
       hasTranslateFeature
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

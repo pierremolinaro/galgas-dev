@@ -66,11 +66,11 @@ proc compileSemanticDeclarationsGalgas (?!@lstringlist ioUsefulnessRootEntities,
       "".nowhere,
       .noDefaultValue)
   end
-  semanticDeclarations.mDeclarationList ++= @(@optionComponentDeclarationAST (
+  semanticDeclarations.mDeclarationList ++= @optionComponentDeclarationAST (
     !isPredefined: true,
     "galgas_builtin_options".nowhere,
     options
-  ))
+  )
   let galgas_builtin_optionsUsefulnessName = optionNameForUsefulEntitiesGraph ("galgas_builtin_options".nowhere)
   ioUsefulnessRootEntities ++= @(galgas_builtin_optionsUsefulnessName)
 //----- Build semantic context
@@ -79,7 +79,7 @@ proc compileSemanticDeclarationsGalgas (?!@lstringlist ioUsefulnessRootEntities,
     inEndOfProjectSourceFile,
     ?outSemanticContext,
     ?outTypeMap,
-    ?let @semanticDeclarationListAST sortedSemanticDeclarationListAST
+    ?let [@semanticDeclarationAST] sortedSemanticDeclarationListAST
   )
 //---
   if @application.verboseOutput then
@@ -94,7 +94,7 @@ proc compileSemanticDeclarationsGalgas (?!@lstringlist ioUsefulnessRootEntities,
   if @uint.errorCount == 0 then
     let @predefinedTypes predefinedTypes = buildPredefinedTypes (outTypeMap)
     for declaration in sortedSemanticDeclarationListAST do
-      declaration.mSemanticDeclaration.semanticAnalysis (
+      declaration.semanticAnalysis (
         !?ioUsefulnessRootEntities,
         !?ioUsefulEntitiesGraph,
         inProductDirectory,
@@ -117,11 +117,11 @@ private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclaration
                                         let @location inEndOfProjectSourceFile,
                                         !@semanticContext outSemanticContext,
                                         !@unifiedTypeMap outTypeMap,
-                                        !@semanticDeclarationListAST outSortedSemanticDeclarationListAST ) {
+                                        ![@semanticDeclarationAST] outSortedSemanticDeclarationListAST) {
 //----- Create associated types for lists, maps, ...
   var @galgasDeclarationAST semanticDeclarations = inDeclarations
   for declaration in inDeclarations.mDeclarationList do
-    declaration.mSemanticDeclaration.addAssociatedElement (!?semanticDeclarations)
+    declaration.addAssociatedElement (!?semanticDeclarations)
   end
 //----- Build ordered types list, so that
 //  - a class appears after its super class
@@ -133,9 +133,9 @@ private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclaration
   var @extensionMethodMapForBuildingContext extensionMethodMapForBuildingContext = @()
   var @extensionGetterMapForBuildingContext extensionGetterMapForBuildingContext = @()
   var @extensionSetterMapForBuildingContext extensionSetterMapForBuildingContext = @()
-  var @semanticDeclarationListAST extensionOverrideDefinitionList = @()
+  var [@semanticDeclarationAST] extensionOverrideDefinitionList = @()
   for declaration in semanticDeclarations.mDeclarationList do
-    declaration.mSemanticDeclaration.enterDeclarationInGraph
+    declaration.enterDeclarationInGraph
       (!?semanticTypePrecedenceGraph,
       !?equatableExtensionMap,
       !?extensionInitializerForBuildingContext,
@@ -163,13 +163,13 @@ private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclaration
     semanticTypePrecedenceGraph.topologicalSort
       (?outSortedSemanticDeclarationListAST,
       ?*,
-      ?let @semanticDeclarationListAST unsortedSemanticDeclarationListAST,
+      ?let [@semanticDeclarationAST] unsortedSemanticDeclarationListAST,
       ?*
     )
     if unsortedSemanticDeclarationListAST.count > 0 then
       var s = "semantic analysis not performed, " + unsortedSemanticDeclarationListAST.count.string + " declarations are involved in circular definition:"
       for declaration in unsortedSemanticDeclarationListAST do
-        s += "\n-  " + declaration.mSemanticDeclaration.keyRepresentation
+        s += "\n-  " + declaration.keyRepresentation
       end
       error (inEndOfProjectSourceFile : s spoil outSemanticContext, outTypeMap)
     else
@@ -180,7 +180,7 @@ private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclaration
       outSemanticContext = @semanticContext ()
     //--- Loop throught all declarations
       for declaration in outSortedSemanticDeclarationListAST do
-        declaration.mSemanticDeclaration.enterDeclarationInSemanticContext
+        declaration.enterDeclarationInSemanticContext
           (!?equatableExtensionMap,
           extensionInitializerForBuildingContext,
           extensionMethodMapForBuildingContext,

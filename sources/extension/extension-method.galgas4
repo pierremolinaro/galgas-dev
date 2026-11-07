@@ -37,14 +37,14 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList ++= @(@extensionMethodAST (
+    ioDeclarations.mDeclarationList ++= @extensionMethodAST (
       !isPredefined: false,
       typeName,
       methodName,
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -58,14 +58,14 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let endOfMethodLocation = @location.here
     $}$
-    ioDeclarations.mDeclarationList ++= @(@extensionMethodAST (
+    ioDeclarations.mDeclarationList ++= @extensionMethodAST (
       !isPredefined: false,
       inTypeName,
       methodName,
       formalParameterList,
       routineInstructionList,
       endOfMethodLocation
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -96,7 +96,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
      ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext,
      ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
      ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-     ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList) {
+     ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList) {
     let key = @lstring (
       "extension proc @" + self.mTypeName + " " + self.mExtensionMethodName,
       self.mExtensionMethodName.location

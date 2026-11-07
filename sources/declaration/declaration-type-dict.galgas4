@@ -105,13 +105,13 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> (mDictTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(@dictDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @dictDeclarationAST (
       !isPredefined: false,
       mDictTypeName,
       keyTypeName,
       propertyList,
       !equatable: equatable
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -143,14 +143,14 @@ override proc @dictDeclarationAST.addAssociatedElement (?!@galgasDeclarationAST 
     )
   end
   let elementTypeName = makeEmbeddedElementTypeLName (self.mDictTypeName)
-  ioDeclarations.mDeclarationList ++= @(@structDeclarationAST (
+  ioDeclarations.mDeclarationList ++= @structDeclarationAST (
     !isPredefined: self.isPredefined,
     elementTypeName,
     structAttributeList,
     !enumeratedElementTypeName: "",
     !comparison: if self.equatable then .equatable else .none end,
     !isUsefullStruct: true
-  ))
+  )
 //--- Add optional element
   !?ioDeclarations.getOptionalTypeName (?*, !forTypeNamed: elementTypeName, !isPredefined: false)
 }
@@ -166,7 +166,7 @@ override proc @dictDeclarationAST.enterDeclarationInGraph
   ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
   ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList
+  ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList
  ) {
   let key = @lstring ("@" + self.mDictTypeName, self.mDictTypeName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)

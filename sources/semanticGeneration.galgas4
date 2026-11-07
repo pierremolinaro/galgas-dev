@@ -756,18 +756,6 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@unifiedTypeMapEntry ASSOCIATED_ELEMENT_TYPE,
     ?@graphInsertModifierList INSERT_MODIFIER_LIST
   )
-
-  template graphTypeHeader1_EX : "GALGAS_graphEX.h1.galgasTemplate" (
-    ?@string TYPE_NAME,
-    ?@string TYPE_IDENTIFIER
-  )
-
-  template graphTypeSpecificImplementation_EX : "GALGAS_graphEX.cpp.galgasTemplate" (
-    ?@unifiedTypeMapEntry TYPE,
-    ?@string TYPE_IDENTIFIER,
-    ?@unifiedTypeMapEntry ASSOCIATED_LIST_TYPE,
-    ?@graphInsertModifierList INSERT_MODIFIER_LIST
-  )
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -25,20 +25,19 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $graph$
-    $graph$
     $@type$ (?let @lstring graphTypeName) indexing (graphDefinition)
     $:$
     <type_definition> (!?ioDeclarations, ?let elementTypeName)
     let arrayTypeName = makeArrayTypeLName (elementTypeName)
     if not ioDeclarations.implicitTypeDeclarationSet.hasKey (arrayTypeName.string) then
       ioDeclarations.implicitTypeDeclarationSet ++= arrayTypeName.string
-      ioDeclarations.mDeclarationList ++= @(@arrayTypeDeclarationAST (
+      ioDeclarations.mDeclarationList ++= @arrayTypeDeclarationAST (
         !isPredefined: false,
         arrayTypeName,
         elementTypeName,
         !isUsefull: false,
         !equatable: false
-      ))
+      )
     end
     ${$
     var graphInsertModifierList = @graphInsertModifierList ()
@@ -51,13 +50,13 @@ syntax extension galgas4DeclarationsSyntax {
       graphInsertModifierList ++= @(insertName, errorMessage)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(@graphDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @graphDeclarationAST (
       !isPredefined: false,
       graphTypeName,
       arrayTypeName,
       elementTypeName,
       graphInsertModifierList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -96,7 +95,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
     ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList
+    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList
   ) {
     let key = @lstring ("@" + self.mGraphTypeName, self.mGraphTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)

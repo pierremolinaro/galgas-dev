@@ -112,13 +112,13 @@ syntax extension galgas4DeclarationsSyntax {
       <method_declaration> (listTypeName, !?ioDeclarations)
     end
     $}$
-    ioDeclarations.mDeclarationList ++= @(@listDeclarationAST (
+    ioDeclarations.mDeclarationList ++= @listDeclarationAST (
       !isPredefined: false,
       listTypeName,
       propertyList,
       !usefullList: isUsefull,
       !equatable: isEquatable
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -143,7 +143,7 @@ override proc @listDeclarationAST.enterDeclarationInGraph
   ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
   ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST _ioExtensionOverrideDefinitionList ) {
+  ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
   let key = @lstring ("@" + self.mListTypeName, self.mListTypeName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   for property in self.mPropertyList do
@@ -432,14 +432,14 @@ override proc @listDeclarationAST.addAssociatedElement
       !initialization: property.initialization
     )
   end
-  ioDeclarations.mDeclarationList ++= @(@structDeclarationAST (
+  ioDeclarations.mDeclarationList ++= @structDeclarationAST (
     !isPredefined: self.isPredefined,
     makeEmbeddedElementTypeLName (self.mListTypeName),
     structAttributeList,
     !enumeratedElementTypeName: "",
     !comparison: if self.equatable then .equatable else .none end,
     !isUsefullStruct: true
-  ))
+  )
 }
 
 

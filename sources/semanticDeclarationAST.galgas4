@@ -30,7 +30,7 @@ abstract class @semanticDeclarationAST {
     ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext,
     ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext,
     ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext,
-    ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList)
+    ?![@semanticDeclarationAST] ioExtensionOverrideDefinitionList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

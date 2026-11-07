@@ -62,7 +62,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfInstructionList = .here
     $}$
-    ioDeclarations.mDeclarationList ++= @(@overridingExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @overridingExtensionGetterAST (
       !isPredefined: false,
       typeName,
       getterName,
@@ -71,7 +71,7 @@ syntax extension galgas4DeclarationsSyntax {
       resultVariableName,
       routineInstructionList,
       endOfInstructionList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -94,7 +94,7 @@ syntax extension galgas4DeclarationsSyntax {
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfInstructionList = .here
     $}$
-    ioDeclarations.mDeclarationList ++= @(@overridingExtensionGetterAST (
+    ioDeclarations.mDeclarationList ++= @overridingExtensionGetterAST (
       !isPredefined: false,
       inTypeName,
       getterName,
@@ -103,7 +103,7 @@ syntax extension galgas4DeclarationsSyntax {
       resultVariableName,
       routineInstructionList,
       endOfInstructionList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -121,8 +121,8 @@ override proc @overridingExtensionGetterAST.enterDeclarationInGraph (
   ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
   ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext,
   ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList) {
-  ioExtensionOverrideDefinitionList ++= @(self)
+  ?![@semanticDeclarationAST] ioExtensionOverrideDefinitionList) {
+  ioExtensionOverrideDefinitionList ++= self
 //---
   if not ioExtensionGetterMapForBuildingContext.hasKey (self.mTypeName.string) then
     !?ioExtensionGetterMapForBuildingContext.insertKey
