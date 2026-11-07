@@ -2,8 +2,1394 @@
 //%!"'@" + TYPE_IDENTIFIER + "' graph"%
 //--------------------------------------------------------------------------------------------------
 
+class GraphNode_%!TYPE_IDENTIFIER% final {
+  public: GraphNode_%!TYPE_IDENTIFIER% * mInfPtr ;
+  public: GraphNode_%!TYPE_IDENTIFIER% * mSupPtr ;
+  public: int32_t mBalance ;
+  public: const String mKey ;
+  public: const uint32_t mNodeID ;
+  public: GGS_%![ASSOCIATED_ELEMENT_TYPE identifierRepresentation]% mElement ;
+  public: GGS_location mDefinitionLocation ;
+  public: GenericUniqueArray <GGS_location> mReferenceLocationArray ;
+  public: bool mIsDefined ;
+
+//--- Constructors
+  public: GraphNode_%!TYPE_IDENTIFIER% (const String & inKey,
+                                        const uint32_t inNodeID) ;
+
+  public: GraphNode_%!TYPE_IDENTIFIER% (GraphNode_%!TYPE_IDENTIFIER% * inNode) ;
+
+  public: void accumulateNodes (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outNodeList) const ;
+
+//--- Destructor
+  public: ~ GraphNode_%!TYPE_IDENTIFIER% (void) ;
+
+//--- No copy
+  private: GraphNode_%!TYPE_IDENTIFIER% (const GraphNode_%!TYPE_IDENTIFIER% &) = delete ;
+  private: GraphNode_%!TYPE_IDENTIFIER% & operator = (const GraphNode_%!TYPE_IDENTIFIER% &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GraphNode_%!TYPE_IDENTIFIER%::~ GraphNode_%!TYPE_IDENTIFIER% (void) {
+  macroMyDelete (mInfPtr) ;
+  macroMyDelete (mSupPtr) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+class SharedGraph_%!TYPE_IDENTIFIER% : public SharedObject {
+//--------------------------------- Attributes
+  private: GraphNode_%!TYPE_IDENTIFIER% * mRoot ;
+  public: inline const GraphNode_%!TYPE_IDENTIFIER% * root (void) const { return mRoot ; }
+  private: DirectedGraph mDirectedGraph ;
+  private: GenericUniqueArray <GraphNode_%!TYPE_IDENTIFIER% *> mNodeArray ;
+
+//--- Constructor
+  public: SharedGraph_%!TYPE_IDENTIFIER% (LOCATION_ARGS) ;
+
+//--- Destructor
+  public: virtual ~ SharedGraph_%!TYPE_IDENTIFIER% (void) ;
+
+//--- Count
+  public: inline uint32_t allNodeCount (void) const { return (uint32_t) mNodeArray.count () ; }
+
+//--- isNodeDefined
+  public: bool isNodeDefined (const String & inKey) const ;
+
+//--- locationForKey
+  public: GGS_location locationForKey (const String & inKey,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+//--- Internal methods
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const ;
+
+  public: void copyFrom (const SharedGraph_%!TYPE_IDENTIFIER% * inSource) ;
+
+  public: void copyReversedGraphFrom (const SharedGraph_%!TYPE_IDENTIFIER% * inSource) ;
+
+  public: int32_t graphCompare (const SharedGraph_%!TYPE_IDENTIFIER% * inOperand) const ;
+
+  public: GraphNode_%!TYPE_IDENTIFIER% * findOrAddNodeForKey (const String & inKey) ;
+
+  protected: GraphNode_%!TYPE_IDENTIFIER% * internalInsert (GraphNode_%!TYPE_IDENTIFIER% * & ioRootPtr,
+                                          const String & inKey,
+                                          bool & ioExtension) ;
+
+  public: void internalAddNode (const GGS_lstring & inKey,
+                                const char * inErrorMessage,
+                                const GGS_%![ASSOCIATED_ELEMENT_TYPE identifierRepresentation]% & inElement,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+  public: void addEdge (const String & inSourceNodeKey,
+                        const GGS_location & inSourceNodeLocation,
+                        const String & inTargetNodeKey,
+                        const GGS_location & inTargetNodeLocation) ;
+
+  public: void removeEdgesToDominators (LOCATION_ARGS) ;
+
+  public: void removeEdgesToNode (const String & inNodeName,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+  public: void internalTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
+                                        GGS_lstringlist & outSortedNodeKeyList,
+                                        GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
+                                        GGS_lstringlist & outUnsortedNodeKeyList) const ;
+
+
+  public: void internalFindCircularities (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
+                                          GGS_lstringlist & outNodeKeyList) const ;
+
+  public: void internalNodesWithNoPredecessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
+                                               GGS_lstringlist & outNodeKeyList) const ;
+
+  public: void internalNodesWithNoSuccessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
+                                             GGS_lstringlist & outNodeKeyList) const ;
+
+  public: void internalDepthFirstTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
+                                                  GGS_lstringlist & outSortedNodeKeyList,
+                                                  GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
+                                                  GGS_lstringlist & outUnsortedNodeKeyList) const ;
+
+  public: void subGraph (GGS_%!TYPE_IDENTIFIER% & outResultingGraph,
+                         const GGS_lstringlist & inStartNodes,
+                         const GGS_stringset & inNodesToExclude,
+                         Compiler * inCompiler
+                         COMMA_LOCATION_ARGS) const ;
+
+  public: void graph (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outNodeList) const ;
+
+  public: GGS_stringlist keyList (void) const ;
+
+  public: GGS_lstringlist lkeyList (void) const ;
+
+  public: String getter_graphviz (void) const ;
+
+  public: void edges (GGS__32_stringlist & ioList) const ;
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: void checkGraph (LOCATION_ARGS) const ;
+  #endif
+
+//--- No copy
+  private: SharedGraph_%!TYPE_IDENTIFIER% (const SharedGraph_%!TYPE_IDENTIFIER% &) = delete ;
+  private: SharedGraph_%!TYPE_IDENTIFIER% & operator = (const SharedGraph_%!TYPE_IDENTIFIER% &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+SharedGraph_%!TYPE_IDENTIFIER%::SharedGraph_%!TYPE_IDENTIFIER% (LOCATION_ARGS) :
+SharedObject (THERE),
+mRoot (nullptr),
+mDirectedGraph (),
+mNodeArray () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+SharedGraph_%!TYPE_IDENTIFIER%::~ SharedGraph_%!TYPE_IDENTIFIER% (void) {
+  macroMyDelete (mRoot) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Copy
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+GraphNode_%!TYPE_IDENTIFIER%::GraphNode_%!TYPE_IDENTIFIER% (GraphNode_%!TYPE_IDENTIFIER% * inNode) :
+mInfPtr (nullptr),
+mSupPtr (nullptr),
+mBalance (inNode->mBalance),
+mKey (inNode->mKey),
+mNodeID (inNode->mNodeID),
+mElement (inNode->mElement),
+mDefinitionLocation (inNode->mDefinitionLocation),
+mReferenceLocationArray (),
+mIsDefined (inNode->mIsDefined) {
+  mReferenceLocationArray.setCapacity (inNode->mReferenceLocationArray.count ()) ;
+  for (int32_t i=0 ; i<inNode->mReferenceLocationArray.count () ; i++) {
+    mReferenceLocationArray.appendObject (inNode->mReferenceLocationArray (i COMMA_HERE)) ;
+  }
+  if (nullptr != inNode->mInfPtr) {
+    macroMyNew (mInfPtr, GraphNode_%!TYPE_IDENTIFIER% (inNode->mInfPtr)) ;
+  }
+  if (nullptr != inNode->mSupPtr) {
+    macroMyNew (mSupPtr, GraphNode_%!TYPE_IDENTIFIER% (inNode->mSupPtr)) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static void buildNodeArray (GraphNode_%!TYPE_IDENTIFIER% * inNode,
+                            GenericUniqueArray <GraphNode_%!TYPE_IDENTIFIER% *> & ioNodeArray) {
+  if (nullptr != inNode) {
+    macroAssert (ioNodeArray ((int32_t) inNode->mNodeID COMMA_HERE) == nullptr, "ioNodeArray (\%lld COMMA_HERE) != nullptr", inNode->mNodeID, 0) ;
+    ioNodeArray ((int32_t) inNode->mNodeID COMMA_HERE) = inNode ;
+    buildNodeArray (inNode->mInfPtr, ioNodeArray) ;
+    buildNodeArray (inNode->mSupPtr, ioNodeArray) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_%!TYPE_IDENTIFIER%::copyFrom (const SharedGraph_%!TYPE_IDENTIFIER% * inSource) {
+  macroUniqueSharedObject (this) ;
+  if (nullptr != inSource->mRoot) {
+    macroMyNew (mRoot, GraphNode_%!TYPE_IDENTIFIER% (inSource->mRoot)) ;
+    mNodeArray.appendObjects (inSource->mNodeArray.count (), nullptr) ;
+    buildNodeArray (mRoot, mNodeArray) ;
+    mDirectedGraph = inSource->mDirectedGraph ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkGraph (HERE) ;
+  #endif
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_%!TYPE_IDENTIFIER%::description (String & ioString,
+                                const int32_t /* inIndentation */) const {
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (mDirectedGraph.nodeCount ()) ;
+  ioString.appendCString (" node") ;
+  ioString.appendCString ((mDirectedGraph.nodeCount () > 1) ? "s" : "") ;
+  ioString.appendCString (", ") ;
+  ioString.appendUnsigned (mDirectedGraph.edgeCount ()) ;
+  ioString.appendCString (" edge") ;
+  ioString.appendCString ((mDirectedGraph.edgeCount () > 1) ? "s" : "") ;
+  ioString.appendCString (")") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void SharedGraph_%!TYPE_IDENTIFIER%::checkGraph (LOCATION_ARGS) const {
+    GenericUniqueArray <GraphNode_%!TYPE_IDENTIFIER% *> nodeArray (mNodeArray.count () COMMA_HERE) ;
+    nodeArray.appendObjects (mNodeArray.count (), nullptr) ;
+    buildNodeArray (mRoot, nodeArray) ;
+    macroAssertThere (nodeArray.count() == mNodeArray.count (), "nodeArray.count() == \%lld != mNodeArray.count () \%lld", nodeArray.count(), mNodeArray.count ()) ;
+    for (int32_t i=0 ; i<nodeArray.count() ; i++) {
+      macroAssertThere (nodeArray (i COMMA_HERE) == mNodeArray (i COMMA_HERE), "nodeArray.(\%lld) != mNodeArray.(\%lld)", i, i) ;
+      macroAssertThere (mDirectedGraph.isNodeDefined ((uint32_t) i), "! mDirectedGraph.isNodeDefined (i) : \%lld != 0", i, 0) ;
+    }
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//    GGS_%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
+
 GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
-AC_GALGAS_graph () {
+AC_GALGAS_root (),
+mSharedGraph (nullptr) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER%::~ GGS_%!TYPE_IDENTIFIER% (void) {
+  macroDetachSharedObject (mSharedGraph) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) :
+AC_GALGAS_root (),
+mSharedGraph (nullptr) {
+  macroAssignSharedObject (mSharedGraph, inSource.mSharedGraph) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER% & GGS_%!TYPE_IDENTIFIER%::operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) {
+  macroAssignSharedObject (mSharedGraph, inSource.mSharedGraph) ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::makeNewEmptyGraph (LOCATION_ARGS) {
+  macroMyNew (mSharedGraph, SharedGraph_%!TYPE_IDENTIFIER% (THERE)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<graph @") ;
+  ioString.appendCString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    mSharedGraph->description (ioString, inIndentation) ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+uint32_t GGS_%!TYPE_IDENTIFIER%::count () const {
+  uint32_t result = 0 ;
+  if (isValid ()) {
+    result = mSharedGraph->allNodeCount () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
+  return GGS_uint (count ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::drop (void) {
+  macroDetachSharedObject (mSharedGraph) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::insulateGraph (LOCATION_ARGS) {
+  if ((mSharedGraph != nullptr) && !mSharedGraph->isUniquelyReferenced ()) {
+    SharedGraph_%!TYPE_IDENTIFIER% * p = nullptr ;
+    macroMyNew (p, SharedGraph_%!TYPE_IDENTIFIER% (THERE)) ;
+    p->copyFrom (mSharedGraph) ;
+    macroAssignSharedObject (mSharedGraph, p) ;
+    macroDetachSharedObject (p) ;
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      mSharedGraph->checkGraph (HERE) ;
+    #endif
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark getter_hasKey
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_isNodeDefined (const GGS_string & inKey
+                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = mSharedGraph->isNodeDefined (inKey.stringValue ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool SharedGraph_%!TYPE_IDENTIFIER%::isNodeDefined (const String & inKey) const {
+  bool result = false ;
+  for (int32_t i=0 ; (i<mNodeArray.count ()) && !result ; i++) {
+    const GraphNode_%!TYPE_IDENTIFIER% * p = mNodeArray (i COMMA_HERE) ;
+    result = p->mIsDefined && (p->mKey == inKey) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark getter_locationForKey
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_%!TYPE_IDENTIFIER%::getter_locationForKey (const GGS_string & inKey,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    result = mSharedGraph->locationForKey (inKey.stringValue (), inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location SharedGraph_%!TYPE_IDENTIFIER%::locationForKey (const String & inKey,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  bool found = false ;
+  bool ok = false ;
+  for (int32_t i=0 ; (i<mNodeArray.count ()) && !found ; i++) {
+    const GraphNode_%!TYPE_IDENTIFIER% * p = mNodeArray (i COMMA_HERE) ;
+    found = p->mKey == inKey ;
+    if (found && p->mIsDefined) {
+      ok = true ;
+      result = p->mDefinitionLocation ;
+    }
+  }
+  if (!ok) {
+    inCompiler->emitSemanticError (
+      GGS_location (),
+      String ("graph locationForKey: node '") + inKey + String ("' is undefined"),
+      GenericArray <FixItDescription> ()
+      COMMA_THERE
+    ) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark getter_keyList
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringlist SharedGraph_%!TYPE_IDENTIFIER%::keyList (void) const {
+  GGS_stringlist result = GGS_stringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
+    result.addAssignOperation (mNodeArray (i COMMA_HERE)->mKey COMMA_HERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringlist GGS_%!TYPE_IDENTIFIER%::getter_keyList (UNUSED_LOCATION_ARGS) const {
+  GGS_stringlist result ;
+  if (isValid ()) {
+    result = mSharedGraph->keyList () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark getter_lkeyList
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist SharedGraph_%!TYPE_IDENTIFIER%::lkeyList (void) const {
+  GGS_lstringlist result = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
+    const GraphNode_%!TYPE_IDENTIFIER% * p = mNodeArray (i COMMA_HERE) ;
+    GGS_location loc = p->mDefinitionLocation ;
+    if (! loc.isValid ()) {
+      loc = GGS_location::class_func_nowhere (HERE) ;
+    }
+    result.addAssignOperation (GGS_lstring (p->mKey, loc) COMMA_HERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_%!TYPE_IDENTIFIER%::getter_lkeyList (UNUSED_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = mSharedGraph->lkeyList () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark internalFindNode
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+static const GraphNode_%!TYPE_IDENTIFIER% * findNode (const String & inKey,
+                                   const GraphNode_%!TYPE_IDENTIFIER% * inNode) {
+  const GraphNode_%!TYPE_IDENTIFIER% * result = nullptr ;
+  while ((nullptr != inNode) && (result == nullptr)) {
+    const int32_t r = inKey.compare (inNode->mKey) ;
+    if (r < 0) {
+      inNode = inNode->mInfPtr ;
+    }else if (r > 0) {
+      inNode = inNode->mSupPtr ;
+    }else{
+      result = inNode ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark graph
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void GraphNode_%!TYPE_IDENTIFIER%::accumulateNodes (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outNodeList) const {
+  outNodeList.plusPlusAssignOperation (mElement COMMA_HERE) ;
+  if (mInfPtr != nullptr) {
+    mInfPtr->accumulateNodes (outNodeList) ;
+  }
+  if (mSupPtr != nullptr) {
+    mSupPtr->accumulateNodes (outNodeList) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_%!TYPE_IDENTIFIER%::graph (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outNodeList) const {
+  if (mRoot != nullptr) {
+    mRoot->accumulateNodes (outNodeList) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::graph (void) const {
+  GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% result ;
+  if (isValid ()) {
+    mSharedGraph->graph (result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark subGraph
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_%!TYPE_IDENTIFIER%::subGraph (GGS_%!TYPE_IDENTIFIER% & outResultingGraph,
+                            const GGS_lstringlist & inStartNodes,
+                            const GGS_stringset & inNodesToExclude,
+                            Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) const {
+//--- Build start node set
+  UInt32Set startNodeSet ;
+  UpEnumerator_lstringlist enumerator1 (inStartNodes) ;
+  while (enumerator1.hasCurrentObject ()) {
+    const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = findNode (enumerator1.current_mValue (THERE).mProperty_string.stringValue(), root()) ;
+    if (nullptr == nodePtr) {
+      String message ("subgraphFromNodes: '") ;
+      message.appendString (enumerator1.current_mValue (THERE).mProperty_string.stringValue()) ;
+      message.appendCString ("' is not a declared node, cannot start from it") ;
+      inCompiler->emitSemanticError (
+        enumerator1.current_mValue (THERE).mProperty_location,
+        message,
+        GenericArray <FixItDescription> ()
+        COMMA_THERE
+      ) ;
+    }else{
+      startNodeSet.add (nodePtr->mNodeID) ;
+    }
+    enumerator1.gotoNextObject () ;
+  }
+//--- Build node to exclude set
+  UInt32Set nodesToExcludeSet ;
+  UpEnumerator_stringset enumerator2 (inNodesToExclude) ;
+  while (enumerator2.hasCurrentObject ()) {
+    const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = findNode (enumerator2.current_key (THERE).stringValue(), root()) ;
+    if (nullptr == nodePtr) {
+      String message ("subgraphFromNodes: '") ;
+      message.appendString (enumerator2.current_key (THERE).stringValue()) ;
+      message.appendCString ("' is not a declared node, cannot be excluded") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      nodesToExcludeSet.add (nodePtr->mNodeID) ;
+    }
+    enumerator2.gotoNextObject () ;
+  }
+//--- Build sub graph
+  const DirectedGraph theSubGraph = mDirectedGraph.subGraphFromNodes (
+    startNodeSet,
+    nodesToExcludeSet
+  ) ;
+//--- Enter nodes
+  GenericUniqueArray <uint32_t> nodeArray ; theSubGraph.getNodeValueArray (nodeArray) ;
+  for (int32_t i=0 ; i<nodeArray.count () ; i++) {
+    const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
+    const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_THERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_string = nodePtr->mKey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    outResultingGraph.internalAddNode (
+      lkey,
+      "subgraphFromNodes Internal error",
+      nodePtr->mElement,
+      inCompiler
+      COMMA_THERE
+    ) ;
+  }
+//--- Enter edges
+  GenericUniqueArray <GraphEdge> edgeArray ; theSubGraph.getEdges (edgeArray) ;
+  for (int32_t i=0 ; i<edgeArray.count () ; i++) {
+    const uint32_t sourceNodeIndex = edgeArray (i COMMA_HERE).mSource ;
+    const GraphNode_%!TYPE_IDENTIFIER% * sourceNodePtr = mNodeArray ((int32_t) sourceNodeIndex COMMA_THERE) ;
+    GGS_lstring source ;
+    source.mProperty_string = sourceNodePtr->mKey ;
+    source.mProperty_location = sourceNodePtr->mDefinitionLocation ;
+    const uint32_t targetNodeIndex = edgeArray (i COMMA_HERE).mTarget ;
+    const GraphNode_%!TYPE_IDENTIFIER% * targetNodePtr = mNodeArray ((int32_t) targetNodeIndex COMMA_THERE) ;
+    GGS_lstring target ;
+    target.mProperty_string = targetNodePtr->mKey ;
+    target.mProperty_location = targetNodePtr->mDefinitionLocation ;
+    outResultingGraph.setter_addEdge (source, target COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::subGraph (GGS_%!TYPE_IDENTIFIER% & outResultingGraph,
+                                const GGS_lstringlist & inStartNodes,
+                                const GGS_stringset & inNodesToExclude,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) const {
+  if (isValid () && inStartNodes.isValid () && inNodesToExclude.isValid ()) {
+    outResultingGraph.makeNewEmptyGraph (THERE) ;
+    mSharedGraph->subGraph (
+      outResultingGraph,
+      inStartNodes,
+      inNodesToExclude,
+      inCompiler
+      COMMA_THERE
+    ) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Reversed Graph
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_%!TYPE_IDENTIFIER%::copyReversedGraphFrom (const SharedGraph_%!TYPE_IDENTIFIER% * inSource) {
+  macroUniqueSharedObject (this) ;
+  if (nullptr != inSource->mRoot) {
+    macroMyNew (mRoot, GraphNode_%!TYPE_IDENTIFIER% (inSource->mRoot)) ;
+    mNodeArray.appendObjects (inSource->mNodeArray.count (), nullptr) ;
+    buildNodeArray (mRoot, mNodeArray) ;
+    mDirectedGraph = inSource->mDirectedGraph.reversedGraph () ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkGraph (HERE) ;
+  #endif
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::reversedGraphFromGraph (const GGS_%!TYPE_IDENTIFIER% & inGraph
+                                              COMMA_LOCATION_ARGS) {
+  macroDetachSharedObject (mSharedGraph) ;
+  if (inGraph.isValid ()) {
+    macroMyNew (mSharedGraph, SharedGraph_%!TYPE_IDENTIFIER% (THERE)) ;
+    mSharedGraph->copyReversedGraphFrom (inGraph.mSharedGraph) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Object Compare
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+int32_t SharedGraph_%!TYPE_IDENTIFIER%::graphCompare (const SharedGraph_%!TYPE_IDENTIFIER% * inOperand) const {
+  const int32_t r = int32_t (allNodeCount ()) - int32_t (inOperand->allNodeCount ()) ;
+  return r ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_%!TYPE_IDENTIFIER%::objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t r = mSharedGraph->graphCompare (inOperand.mSharedGraph) ;
+    if (r < 0) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (r > 0) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Node Insertion
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+static void rotateLeft (GraphNode_%!TYPE_IDENTIFIER% * & ioRootPtr) {
+  GraphNode_%!TYPE_IDENTIFIER% * b = ioRootPtr->mSupPtr ;
+  ioRootPtr->mSupPtr = b->mInfPtr ;
+  b->mInfPtr = ioRootPtr;
+
+  if (b->mBalance >= 0) {
+    ioRootPtr->mBalance += 1 ;
+  }else{
+    ioRootPtr->mBalance += 1 - b->mBalance ;
+  }
+
+  if (ioRootPtr->mBalance > 0) {
+    b->mBalance += ioRootPtr->mBalance + 1 ;
+  }else{
+    b->mBalance += 1 ;
+  }
+  ioRootPtr = b ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static void rotateRight (GraphNode_%!TYPE_IDENTIFIER% * & ioRootPtr) {
+  GraphNode_%!TYPE_IDENTIFIER% * b = ioRootPtr->mInfPtr ;
+  ioRootPtr->mInfPtr = b->mSupPtr ;
+  b->mSupPtr = ioRootPtr ;
+
+  if (b->mBalance > 0) {
+    ioRootPtr->mBalance += -b->mBalance - 1 ;
+  }else{
+    ioRootPtr->mBalance -= 1 ;
+  }
+  if (ioRootPtr->mBalance >= 0) {
+    b->mBalance -= 1 ;
+  }else{
+    b->mBalance += ioRootPtr->mBalance - 1 ;
+  }
+  ioRootPtr = b ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GraphNode_%!TYPE_IDENTIFIER%::GraphNode_%!TYPE_IDENTIFIER% (const String & inKey,
+                        const uint32_t inNodeID) :
+mInfPtr (nullptr),
+mSupPtr (nullptr),
+mBalance (0),
+mKey (inKey),
+mNodeID (inNodeID),
+mElement (),
+mDefinitionLocation (),
+mReferenceLocationArray (),
+mIsDefined (false) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GraphNode_%!TYPE_IDENTIFIER% * SharedGraph_%!TYPE_IDENTIFIER%::internalInsert (GraphNode_%!TYPE_IDENTIFIER% * & ioRootPtr,
+                                         const String & inKey,
+                                         bool & ioExtension) {
+  GraphNode_%!TYPE_IDENTIFIER% * matchingEntry = nullptr ;
+  if (ioRootPtr == nullptr) {
+    macroMyNew (ioRootPtr, GraphNode_%!TYPE_IDENTIFIER% (inKey, (uint32_t) mNodeArray.count ())) ;
+    mDirectedGraph.addNode ((uint32_t) mNodeArray.count ()) ;
+    mNodeArray.appendObject (ioRootPtr) ;
+    ioExtension = true ;
+    matchingEntry = ioRootPtr ;
+  }else{
+    macroValidPointer (ioRootPtr) ;
+    const int32_t comparaison = ioRootPtr->mKey.compare (inKey) ;
+    if (comparaison > 0) {
+      matchingEntry = internalInsert (ioRootPtr->mInfPtr, inKey, ioExtension) ;
+      if (ioExtension) {
+        ioRootPtr->mBalance += 1 ;
+        if (ioRootPtr->mBalance == 0) {
+          ioExtension = false;
+        }else if (ioRootPtr->mBalance == 2) {
+          if (ioRootPtr->mInfPtr->mBalance == -1) {
+            rotateLeft (ioRootPtr->mInfPtr) ;
+          }
+          rotateRight (ioRootPtr) ;
+          ioExtension = false;
+        }
+      }
+    }else if (comparaison < 0) {
+      matchingEntry = internalInsert (ioRootPtr->mSupPtr, inKey, ioExtension) ;
+      if (ioExtension) {
+        ioRootPtr->mBalance-- ;
+        if (ioRootPtr->mBalance == 0) {
+          ioExtension = false ;
+        }else if (ioRootPtr->mBalance == -2) {
+          if (ioRootPtr->mSupPtr->mBalance == 1) {
+            rotateRight (ioRootPtr->mSupPtr) ;
+          }
+          rotateLeft (ioRootPtr) ;
+          ioExtension = false;
+        }
+      }
+    }else{ // Entry already exists
+      matchingEntry = ioRootPtr ;
+      ioExtension = false ;
+    }
+  }
+  return matchingEntry ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark internalAddNode
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+GraphNode_%!TYPE_IDENTIFIER% * SharedGraph_%!TYPE_IDENTIFIER%::findOrAddNodeForKey (const String & inKey) {
+  bool extension = false ; // Unused here
+  return internalInsert (mRoot, inKey, extension) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_%!TYPE_IDENTIFIER%::internalAddNode (const GGS_lstring & inKey,
+                                   const char * inErrorMessage,
+                                   const GGS_%![ASSOCIATED_ELEMENT_TYPE identifierRepresentation]% & inElement,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) {
+  GraphNode_%!TYPE_IDENTIFIER% * node = findOrAddNodeForKey (inKey.mProperty_string.stringValue ()) ;
+  if (node->mElement.ptr () == nullptr) { // Node exists, but is undefined
+    node->mElement = inElement ;
+    node->mDefinitionLocation = inKey.mProperty_location ;
+    node->mIsDefined = true ;
+  }else{ // Error : node redefinition
+    GGS_lstring existingKey ;
+    existingKey.mProperty_location = node->mDefinitionLocation ;
+    existingKey.mProperty_string = GGS_string (node->mKey) ;
+    inCompiler->semanticErrorWith_K_L_message (existingKey, inErrorMessage, inKey.mProperty_location COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::internalAddNode (const GGS_lstring & inKey,
+                                       const char * inErrorMessage,
+                                       const GGS_%![ASSOCIATED_ELEMENT_TYPE identifierRepresentation]% & inElement,
+                                       Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid () && inElement.isValid ()) {
+    insulateGraph (THERE) ;
+    macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
+    if (nullptr != mSharedGraph) {
+      mSharedGraph->internalAddNode (inKey, inErrorMessage, inElement, inCompiler COMMA_THERE) ;
+    }
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      mSharedGraph->checkGraph (HERE) ;
+    #endif
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark modifier noteNode
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_noteNode (const GGS_lstring & inKey
+                                       COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    insulateGraph (THERE) ;
+    macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
+    GraphNode_%!TYPE_IDENTIFIER% * node = (nullptr == mSharedGraph)
+      ? nullptr
+      : mSharedGraph->findOrAddNodeForKey (inKey.mProperty_string.stringValue ())
+    ;
+    if (nullptr != node) {
+      node->mReferenceLocationArray.appendObject (inKey.mProperty_location) ;
+    }
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      mSharedGraph->checkGraph (HERE) ;
+    #endif
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Modifier addEdge
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_%!TYPE_IDENTIFIER%::addEdge (const String & inSourceNodeKey,
+                           const GGS_location & inSourceNodeLocation,
+                           const String & inTargetNodeKey,
+                           const GGS_location & inTargetNodeLocation) {
+  GraphNode_%!TYPE_IDENTIFIER% * sourceNode = findOrAddNodeForKey (inSourceNodeKey) ;
+  macroValidPointer (sourceNode) ;
+  GraphNode_%!TYPE_IDENTIFIER% * targetNode = findOrAddNodeForKey (inTargetNodeKey) ;
+  macroValidPointer (targetNode) ;
+  sourceNode->mReferenceLocationArray.appendObject (inSourceNodeLocation) ;
+  targetNode->mReferenceLocationArray.appendObject (inTargetNodeLocation) ;
+  mDirectedGraph.addEdge (sourceNode->mNodeID, targetNode->mNodeID) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_addEdge (const GGS_lstring & inSourceNodeKey,
+                                      const GGS_lstring & inTargetNodeKey
+                                      COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inSourceNodeKey.isValid () && inTargetNodeKey.isValid ()) {
+    insulateGraph (HERE) ;
+    macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
+    if (nullptr != mSharedGraph) {
+      mSharedGraph->addEdge (inSourceNodeKey.mProperty_string.stringValue (),
+                             inSourceNodeKey.mProperty_location,
+                             inTargetNodeKey.mProperty_string.stringValue (),
+                             inTargetNodeKey.mProperty_location) ;
+    }
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      mSharedGraph->checkGraph (HERE) ;
+    #endif
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Output graphviz text
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+String SharedGraph_%!TYPE_IDENTIFIER%::getter_graphviz (void) const {
+  GenericUniqueArray <String> nodeNameArray ;
+  for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
+    nodeNameArray.appendObject (mNodeArray (i COMMA_HERE)->mKey) ;
+  }
+  return mDirectedGraph.graphvizString (nodeNameArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_%!TYPE_IDENTIFIER%::getter_graphviz (UNUSED_LOCATION_ARGS) const {
+  GGS_string result ;
+  if (isValid ()) {
+    result = GGS_string (mSharedGraph->getter_graphviz ()) ;
+  }
+  return result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Output arc list
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_%!TYPE_IDENTIFIER%::edges (GGS__32_stringlist & ioList) const {
+  GenericUniqueArray <GraphEdge> edgeArray ; mDirectedGraph.getEdges (edgeArray) ;
+  for (int32_t i=0 ; i<edgeArray.count () ; i++) {
+    const GraphEdge edge = edgeArray (i COMMA_HERE) ;
+    ioList.addAssignOperation (
+      mNodeArray ((int32_t) edge.mSource COMMA_HERE)->mKey,
+      mNodeArray ((int32_t) edge.mTarget COMMA_HERE)->mKey
+      COMMA_HERE
+    ) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_stringlist GGS_%!TYPE_IDENTIFIER%::getter_edges (LOCATION_ARGS) const {
+  GGS__32_stringlist result ;
+  if (isValid ()) {
+    result = GGS__32_stringlist::init (nullptr COMMA_THERE) ;
+    mSharedGraph->edges (result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark getter_undefinedNodeCount
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+static void countUndefinedNodeCount (const GraphNode_%!TYPE_IDENTIFIER% * inNode, uint32_t & ioCount) {
+  if (nullptr != inNode) {
+    countUndefinedNodeCount (inNode->mInfPtr, ioCount) ;
+    if (! inNode->mIsDefined) {
+      ioCount += 1 ;
+    }
+    countUndefinedNodeCount (inNode->mSupPtr, ioCount) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_undefinedNodeCount (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    uint32_t undefinedNodeCount = 0 ;
+    countUndefinedNodeCount (mSharedGraph->root (), undefinedNodeCount) ;
+    result = GGS_uint (undefinedNodeCount) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark getter_undefinedNodeKeyList
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+static void buildUndefinedNodeKeyList (const GraphNode_%!TYPE_IDENTIFIER% * inNode, GGS_stringlist & ioResult) {
+  if (nullptr != inNode) {
+    buildUndefinedNodeKeyList (inNode->mInfPtr, ioResult) ;
+    if (! inNode->mIsDefined) {
+      ioResult.addAssignOperation (GGS_string (inNode->mKey) COMMA_HERE) ;
+    }
+    buildUndefinedNodeKeyList (inNode->mSupPtr, ioResult) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringlist GGS_%!TYPE_IDENTIFIER%::getter_undefinedNodeKeyList (LOCATION_ARGS) const {
+  GGS_stringlist result ;
+  if (isValid ()) {
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
+    buildUndefinedNodeKeyList (mSharedGraph->root (), result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Find circularities
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_%!TYPE_IDENTIFIER%::internalFindCircularities (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
+                                             GGS_lstringlist & outNodeKeyList) const {
+  GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesInvolvedInCircularities (nodeArray) ;
+//--- Add nodes
+  outInfoList.removeAll () ;
+  outNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<nodeArray.count () ; i++) {
+    const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
+    const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outInfoList.plusPlusAssignOperation (nodePtr->mElement COMMA_HERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
+    outNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::internalFindCircularities (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
+                                                 GGS_lstringlist & outNodeKeyList
+                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+  outNodeKeyList.drop () ;
+  if (isValid ()) {
+    mSharedGraph->internalFindCircularities (outInfoList, outNodeKeyList) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Nodes with no predecessor
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_%!TYPE_IDENTIFIER%::internalNodesWithNoPredecessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
+                                                  GGS_lstringlist & outNodeKeyList) const {
+  GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoPredecessor (nodeArray) ;
+//--- Add nodes
+  outInfoList.removeAll () ;
+  outNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<nodeArray.count () ; i++) {
+    const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
+    const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outInfoList.plusPlusAssignOperation (nodePtr->mElement COMMA_HERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
+    outNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::internalNodesWithNoPredecessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
+                                                      GGS_lstringlist & outNodeKeyList
+                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+  outNodeKeyList.drop () ;
+  if (isValid ()) {
+    mSharedGraph->internalNodesWithNoPredecessor (outInfoList, outNodeKeyList) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Nodes with no successor
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_%!TYPE_IDENTIFIER%::internalNodesWithNoSuccessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
+                                                GGS_lstringlist & outNodeKeyList) const {
+  GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoSuccessor (nodeArray) ;
+//--- Add nodes
+  outInfoList.removeAll () ;
+  outNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<nodeArray.count () ; i++) {
+    const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
+    const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outInfoList.plusPlusAssignOperation (nodePtr->mElement COMMA_HERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
+    outNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::internalNodesWithNoSuccessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
+                                                    GGS_lstringlist & outNodeKeyList
+                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  outNodeKeyList.drop () ;
+  if (isValid ()) {
+    mSharedGraph->internalNodesWithNoSuccessor (outInfoList, outNodeKeyList) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Breath First Topological sort
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_%!TYPE_IDENTIFIER%::internalTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
+                                           GGS_lstringlist & outSortedNodeKeyList,
+                                           GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
+                                           GGS_lstringlist & outUnsortedNodeKeyList) const {
+  GenericUniqueArray <uint32_t> sortedNodes ;
+  GenericUniqueArray <uint32_t> unsortedNodes ;
+  mDirectedGraph.topologicalSort (sortedNodes, unsortedNodes) ;
+//--- Add sorted nodes
+  outSortedList.removeAll () ;
+  outSortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<sortedNodes.count () ; i++) {
+    const uint32_t nodeIndex = sortedNodes (i COMMA_HERE) ;
+    const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outSortedList.plusPlusAssignOperation (nodePtr->mElement COMMA_HERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
+    outSortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+  }
+//--- Add unsorted nodes
+  outUnsortedList.removeAll () ;
+  outUnsortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<unsortedNodes.count () ; i++) {
+    const uint32_t nodeIndex = unsortedNodes (i COMMA_HERE) ;
+    const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outUnsortedList.plusPlusAssignOperation (nodePtr->mElement COMMA_HERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
+    outUnsortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::internalTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
+                                               GGS_lstringlist & outSortedNodeKeyList,
+                                               GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
+                                               GGS_lstringlist & outUnsortedNodeKeyList,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  outSortedNodeKeyList.drop () ;
+  outUnsortedNodeKeyList.drop () ;
+  if (isValid ()) {
+    uint32_t undefinedNodeCount = 0 ;
+    countUndefinedNodeCount (mSharedGraph->root (), undefinedNodeCount) ;
+    if (0 != undefinedNodeCount) {
+      String s ("Cannot apply graph topologicalSort: there ") ;
+      if (undefinedNodeCount > 1) {
+        s.appendCString ("are ") ;
+        s.appendUnsigned (undefinedNodeCount) ;
+        s.appendCString (" undefined nodes") ;
+      }else{
+        s.appendCString ("is 1 undefined node") ;
+      }
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }else{
+      mSharedGraph->internalTopologicalSort (outSortedList, outSortedNodeKeyList, outUnsortedList, outUnsortedNodeKeyList) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Depth First Topological sort
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_%!TYPE_IDENTIFIER%::internalDepthFirstTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
+                                                     GGS_lstringlist & outSortedNodeKeyList,
+                                                     GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
+                                                     GGS_lstringlist & outUnsortedNodeKeyList) const {
+  GenericUniqueArray <uint32_t> sortedNodes ;
+  GenericUniqueArray <uint32_t> unsortedNodes ;
+  mDirectedGraph.depthFirstTopologicalSort (sortedNodes, unsortedNodes) ;
+//--- Add sorted nodes
+  outSortedList.removeAll () ;
+  outSortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<sortedNodes.count () ; i++) {
+    const uint32_t nodeIndex = sortedNodes (i COMMA_HERE) ;
+    const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outSortedList.plusPlusAssignOperation (nodePtr->mElement COMMA_HERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
+    outSortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+  }
+//--- Add unsorted nodes
+  outUnsortedList.removeAll () ;
+  outUnsortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<unsortedNodes.count () ; i++) {
+    const uint32_t nodeIndex = unsortedNodes (i COMMA_HERE) ;
+    const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outUnsortedList.plusPlusAssignOperation (nodePtr->mElement COMMA_HERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
+    outUnsortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::internalDepthFirstTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
+                                                         GGS_lstringlist & outSortedNodeKeyList,
+                                                         GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
+                                                         GGS_lstringlist & outUnsortedNodeKeyList,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  outSortedNodeKeyList.drop () ;
+  outUnsortedNodeKeyList.drop () ;
+  if (isValid ()) {
+    uint32_t undefinedNodeCount = 0 ;
+    countUndefinedNodeCount (mSharedGraph->root (), undefinedNodeCount) ;
+    if (0 != undefinedNodeCount) {
+      String s ("Cannot apply graph topologicalSort: there ") ;
+      if (undefinedNodeCount > 1) {
+        s.appendCString ("are ") ;
+        s.appendUnsigned (undefinedNodeCount) ;
+        s.appendCString (" undefined nodes") ;
+      }else{
+        s.appendCString ("is 1 undefined node") ;
+      }
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }else{
+      mSharedGraph->internalDepthFirstTopologicalSort (outSortedList, outSortedNodeKeyList, outUnsortedList, outUnsortedNodeKeyList) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark getter_undefinedNodeReferenceList
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+static void buildUndefinedNodeReferenceList (const GraphNode_%!TYPE_IDENTIFIER% * inNode,
+                                             GGS_lstringlist & ioResult) {
+  if (nullptr != inNode) {
+    buildUndefinedNodeReferenceList (inNode->mInfPtr, ioResult) ;
+    if (nullptr == inNode->mElement.ptr ()) {
+      GGS_lstring lkey ;
+      lkey.mProperty_string = GGS_string (inNode->mKey) ;
+      for (int32_t i=0 ; i < inNode->mReferenceLocationArray.count () ; i++) {
+        lkey.mProperty_location = inNode->mReferenceLocationArray (i COMMA_HERE) ;
+        ioResult.addAssignOperation (lkey COMMA_HERE) ;
+      }
+    }
+    buildUndefinedNodeReferenceList (inNode->mSupPtr, ioResult) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_%!TYPE_IDENTIFIER%::getter_undefinedNodeReferenceList (LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = GGS_lstringlist::init (nullptr COMMA_THERE) ;
+    buildUndefinedNodeReferenceList (mSharedGraph->root (), result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Modifier removeEdgesToNode
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_removeEdgesToNode (const GGS_string & inNodeName,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
+  if (isValid () && inNodeName.isValid ()) {
+    insulateGraph (HERE) ;
+    macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
+    if (nullptr != mSharedGraph) {
+      mSharedGraph->removeEdgesToNode (inNodeName.stringValue (), inCompiler COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_%!TYPE_IDENTIFIER%::removeEdgesToNode (const String & inNodeName,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) {
+//--- Find node
+  const GraphNode_%!TYPE_IDENTIFIER% * node = findNode (inNodeName, mRoot) ;
+  if (nullptr == node) {
+    String s ("graph removeEdgesToNode: node '") ;
+    s.appendString (inNodeName) ;
+    s.appendCString ("' does not exist") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const uint32_t nodeIndex = node->mNodeID ;
+    mDirectedGraph.removeEdgesToNode (nodeIndex COMMA_HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Modifier removeEdgesToDominators
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_removeEdgesToDominators (LOCATION_ARGS) {
+  if (isValid ()) {
+    insulateGraph (HERE) ;
+    macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
+    if (nullptr != mSharedGraph) {
+      mSharedGraph->removeEdgesToDominators (THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_%!TYPE_IDENTIFIER%::removeEdgesToDominators (LOCATION_ARGS) {
+//--- Find start nodes
+  GenericUniqueArray <uint32_t> startNodes ; mDirectedGraph.getNodesWithNoPredecessor (startNodes) ;
+//--- Add a dummy start node for handling case where there several start nodes
+  const uint32_t dummyNodeIndex = mDirectedGraph.unusedNodeIndex () ;
+//--- Add edges from dummy node to start nodes
+  for (int32_t i=0 ; i<startNodes.count () ; i++) {
+    mDirectedGraph.addEdge (dummyNodeIndex, startNodes (i COMMA_HERE)) ;
+  }
+//--- Remove edge to dominator
+  mDirectedGraph.removeEdgesToDominator (THERE) ;
+//--- Remove dummy node
+  mDirectedGraph.removeNode (dummyNodeIndex) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -18,51 +1404,43 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_A
 %//--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::setter_%![mInsertModifierName identifierRepresentation]% (%?^%GGS_lstring inKey%
-  for (* mFormalArgumentType 2*) in [ASSOCIATED_LIST_TYPE definition].addAssignOperatorArguments do (IDX)
-    %,\n%!^%GGS_%![mFormalArgumentType identifierRepresentation]% inArgument_%![IDX string]
-  end
+  %,\n%!^%GGS_%![ASSOCIATED_ELEMENT_TYPE identifierRepresentation]% inElement%
   %,\n%!^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) {
-  CollectionElement attributes ;
-  GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::makeAttributesFromObjects (attributes%
-  for (4*) in [ASSOCIATED_LIST_TYPE definition].addAssignOperatorArguments
-  do (IDX) %, inArgument_%![IDX string]
-  end
-  % COMMA_THERE) ;
   const char * kErrorMessage = %![mInsertErrorMessage utf8RepresentationEscapingQuestionMark]% ;
-  internalAddNode (inKey, kErrorMessage, attributes, inCompiler COMMA_THERE) ;
+  internalAddNode (inKey, kErrorMessage, inElement, inCompiler COMMA_THERE) ;
 }
 %
 end
 %
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::method_topologicalSort (%?^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,
+void GGS_%!TYPE_IDENTIFIER%::method_topologicalSort (%?^%GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
                        %!^%GGS_lstringlist & outSortedKeyList,
-                       %!^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outUnsortedList,
+                       %!^%GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
                        %!^%GGS_lstringlist & outUnsortedKeyList,
                        %!^%Compiler * inCompiler
                        %!^%COMMA_LOCATION_ARGS) const {
-  CollectionElementArray sortedList ;
-  CollectionElementArray unsortedList ;
+  GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% sortedList ;
+  GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% unsortedList ;
   internalTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
-  outSortedList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (sortedList) ;
-  outUnsortedList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (unsortedList) ;
+  outSortedList = GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% (sortedList) ;
+  outUnsortedList = GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% (unsortedList) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::method_depthFirstTopologicalSort (%?^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,
+void GGS_%!TYPE_IDENTIFIER%::method_depthFirstTopologicalSort (%?^%GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
                        %!^%GGS_lstringlist & outSortedKeyList,
-                       %!^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outUnsortedList,
+                       %!^%GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
                        %!^%GGS_lstringlist & outUnsortedKeyList,
                        %!^%Compiler * inCompiler
                        %!^%COMMA_LOCATION_ARGS) const {
-  CollectionElementArray sortedList ;
-  CollectionElementArray unsortedList ;
+  GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% sortedList ;
+  GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% unsortedList ;
   internalDepthFirstTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
-  outSortedList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (sortedList) ;
-  outUnsortedList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (unsortedList) ;
+  outSortedList = GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% (sortedList) ;
+  outUnsortedList = GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% (unsortedList) ;
 }
 
 
@@ -76,32 +1454,32 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_reversedGraph (LOCATION_AR
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::method_circularities (%?^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
+void GGS_%!TYPE_IDENTIFIER%::method_circularities (%?^%GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
                        %!^%GGS_lstringlist & outKeyList
                        %!^%COMMA_LOCATION_ARGS) const {
-  CollectionElementArray infoList ;
+  GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% infoList ;
   internalFindCircularities (infoList, outKeyList COMMA_THERE) ;
-  outInfoList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
+  outInfoList = GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% (infoList) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::method_nodesWithNoSuccessor (%?^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
+void GGS_%!TYPE_IDENTIFIER%::method_nodesWithNoSuccessor (%?^%GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
                        %!^%GGS_lstringlist & outKeyList
                        %!^%COMMA_LOCATION_ARGS) const {
-  CollectionElementArray infoList ;
+  GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% infoList ;
   internalNodesWithNoSuccessor (infoList, outKeyList COMMA_THERE) ;
-  outInfoList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
+  outInfoList = GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% (infoList) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::method_nodesWithNoPredecessor (%?^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
+void GGS_%!TYPE_IDENTIFIER%::method_nodesWithNoPredecessor (%?^%GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
                        %!^%GGS_lstringlist & outKeyList
                        %!^%COMMA_LOCATION_ARGS) const {
-  CollectionElementArray infoList ;
+  GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% infoList ;
   internalNodesWithNoPredecessor (infoList, outKeyList COMMA_THERE) ;
-  outInfoList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
+  outInfoList = GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% (infoList) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -117,8 +1495,8 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_subgraphFromNodes (%?^%con
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::getter_nodeList (UNUSED_LOCATION_ARGS) const {
-  GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% resultingList ;
+GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::getter_nodeList (UNUSED_LOCATION_ARGS) const {
+  GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% resultingList ;
   if (isValid ()) {
     resultingList = graph () ;
   }

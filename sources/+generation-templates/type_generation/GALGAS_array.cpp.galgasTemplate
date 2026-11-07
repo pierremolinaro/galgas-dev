@@ -43,6 +43,13 @@ void GGS_%!TYPE_IDENTIFIER%::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS_%!TYPE_IDENTIFIER%::removeAll (void) {
+  mSharedArray.removeAll () ;
+  mSharedArray.setCapacity (16) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_%!TYPE_IDENTIFIER%::plusPlusAssignOperation (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue
       %!^%COMMA_UNUSED_LOCATION_ARGS) {
   mSharedArray.appendObject (inValue) ;
@@ -108,6 +115,13 @@ void GGS_%!TYPE_IDENTIFIER%::setter_append (%?^%const GGS_%!ELEMENT_TYPE_IDENTIF
   if (isValid ()) {
     mSharedArray.appendObject (inValue) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_removeAll (%?^%Compiler * /* inCompiler */
+                                               %!^%COMMA_UNUSED_LOCATION_ARGS) {
+  removeAll () ;
 }
 
 //--------------------------------------------------------------------------------------------------

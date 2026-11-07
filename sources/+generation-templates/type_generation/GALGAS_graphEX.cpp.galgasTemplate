@@ -1,0 +1,146 @@
+//--------------------------------------------------------------------------------------------------
+//%!"'@" + TYPE_IDENTIFIER + "' graph"%
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
+AC_GALGAS_graph () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_ARGS) {
+  GGS_%!TYPE_IDENTIFIER% result ;
+  result.makeNewEmptyGraph (THERE) ;
+  return result ;
+}
+
+%for (mInsertModifierName mInsertErrorMessage) in INSERT_MODIFIER_LIST do
+%//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_%![mInsertModifierName identifierRepresentation]% (%?^%GGS_lstring inKey%
+  for (* mFormalArgumentType 2*) in [ASSOCIATED_LIST_TYPE definition].addAssignOperatorArguments do (IDX)
+    %,\n%!^%GGS_%![mFormalArgumentType identifierRepresentation]% inArgument_%![IDX string]
+  end
+  %,\n%!^%Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) {
+  CollectionElement attributes ;
+  GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::makeAttributesFromObjects (attributes%
+  for (4*) in [ASSOCIATED_LIST_TYPE definition].addAssignOperatorArguments
+  do (IDX) %, inArgument_%![IDX string]
+  end
+  % COMMA_THERE) ;
+  const char * kErrorMessage = %![mInsertErrorMessage utf8RepresentationEscapingQuestionMark]% ;
+  internalAddNode (inKey, kErrorMessage, attributes, inCompiler COMMA_THERE) ;
+}
+%
+end
+%
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::method_topologicalSort (%?^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,
+                       %!^%GGS_lstringlist & outSortedKeyList,
+                       %!^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outUnsortedList,
+                       %!^%GGS_lstringlist & outUnsortedKeyList,
+                       %!^%Compiler * inCompiler
+                       %!^%COMMA_LOCATION_ARGS) const {
+  CollectionElementArray sortedList ;
+  CollectionElementArray unsortedList ;
+  internalTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
+  outSortedList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (sortedList) ;
+  outUnsortedList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (unsortedList) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::method_depthFirstTopologicalSort (%?^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,
+                       %!^%GGS_lstringlist & outSortedKeyList,
+                       %!^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outUnsortedList,
+                       %!^%GGS_lstringlist & outUnsortedKeyList,
+                       %!^%Compiler * inCompiler
+                       %!^%COMMA_LOCATION_ARGS) const {
+  CollectionElementArray sortedList ;
+  CollectionElementArray unsortedList ;
+  internalDepthFirstTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
+  outSortedList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (sortedList) ;
+  outUnsortedList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (unsortedList) ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_reversedGraph (LOCATION_ARGS) const {
+  GGS_%!TYPE_IDENTIFIER% result ;
+  result.reversedGraphFromGraph (*this COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::method_circularities (%?^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
+                       %!^%GGS_lstringlist & outKeyList
+                       %!^%COMMA_LOCATION_ARGS) const {
+  CollectionElementArray infoList ;
+  internalFindCircularities (infoList, outKeyList COMMA_THERE) ;
+  outInfoList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::method_nodesWithNoSuccessor (%?^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
+                       %!^%GGS_lstringlist & outKeyList
+                       %!^%COMMA_LOCATION_ARGS) const {
+  CollectionElementArray infoList ;
+  internalNodesWithNoSuccessor (infoList, outKeyList COMMA_THERE) ;
+  outInfoList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::method_nodesWithNoPredecessor (%?^%GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
+                       %!^%GGS_lstringlist & outKeyList
+                       %!^%COMMA_LOCATION_ARGS) const {
+  CollectionElementArray infoList ;
+  internalNodesWithNoPredecessor (infoList, outKeyList COMMA_THERE) ;
+  outInfoList = GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_subgraphFromNodes (%?^%const GGS_lstringlist & inStartKeyList,
+                                        %!^%const GGS_stringset & inKeysToExclude,
+                                        %!^%Compiler * inCompiler
+                                        %!^%COMMA_LOCATION_ARGS) const {
+  GGS_%!TYPE_IDENTIFIER% result ;
+  subGraph (result, inStartKeyList, inKeysToExclude, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::getter_nodeList (UNUSED_LOCATION_ARGS) const {
+  GGS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% resultingList ;
+  if (isValid ()) {
+    resultingList = graph () ;
+  }
+  return resultingList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_%!TYPE_IDENTIFIER%::getter_accessibleNodesFrom (%?^%const GGS_lstringlist & inStartKeyList,
+                                        %!^%const GGS_stringset & inNodesToExclude,
+                                        %!^%Compiler * inCompiler
+                                        %!^%COMMA_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  GGS_%!TYPE_IDENTIFIER% resultingGraph ;
+  subGraph (resultingGraph,
+            inStartKeyList,
+            inNodesToExclude,
+            inCompiler
+            COMMA_THERE) ;
+  if (resultingGraph.isValid ()) {
+    result = resultingGraph.getter_lkeyList (THERE) ;
+  }
+  return result ;
+}
+

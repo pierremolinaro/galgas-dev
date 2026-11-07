@@ -16,45 +16,6 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
-//   SYNTAX
-//--------------------------------------------------------------------------------------------------
-
-//syntax extension galgas3DeclarationsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                              !@lstring outTypeName ) {
-//    $[$
-//    <type_definition_ggs3> (!?ioDeclarations, ?let elementTypeName)
-//    outTypeName = makeArrayTypeLName (!elementTypeName)
-//    if not ioDeclarations.implicitTypeDeclarationSet.hasKey (!outTypeName.string) then
-//      ioDeclarations.implicitTypeDeclarationSet ++= outTypeName.string
-//      ioDeclarations.mDeclarationList ++= @(!@arrayTypeDeclarationAST (
-//        !isPredefined: false,
-//        outTypeName,
-//        elementTypeName,
-//        !isUsefull: true,
-//        !equatable: false
-//      ))
-//    end
-//    $]$
-//  }
-//
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-syntax extension galgas4DeclarationsSyntax {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-}
-
-//--------------------------------------------------------------------------------------------------
 
 final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   private let @lstring arrayTypeName
@@ -168,12 +129,20 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     )
   //---------------------------------------- Setters
     var @setterMap setterMap = @()
-    !?setterMap.insertKey
-      (@lstring ("append", .here),
+    !?setterMap.insertKey (
+      @("removeAll", .here),
+      .definedAsMember,
+      [],
+      true,
+      .isBasic,
+      ""
+    )
+    !?setterMap.insertKey (
+      @("append", .here),
       .definedAsMember,
       [@("".nowhere, elementType, .argumentConstantIn, "inElement")],
       true,
-      @methodQualifier.isBasic,
+      .isBasic,
       ""
     )
     !?setterMap.insertKey

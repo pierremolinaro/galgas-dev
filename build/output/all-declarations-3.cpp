@@ -5199,6 +5199,13 @@ void GGS__5B_commandLineOptionAST_5D_::drop (void) {
 
 //--------------------------------------------------------------------------------------------------
 
+void GGS__5B_commandLineOptionAST_5D_::removeAll (void) {
+  mSharedArray.removeAll () ;
+  mSharedArray.setCapacity (16) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS__5B_commandLineOptionAST_5D_::plusPlusAssignOperation (const GGS_commandLineOptionAST & inValue
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   mSharedArray.appendObject (inValue) ;
@@ -5264,6 +5271,13 @@ void GGS__5B_commandLineOptionAST_5D_::setter_append (const GGS_commandLineOptio
   if (isValid ()) {
     mSharedArray.appendObject (inValue) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_commandLineOptionAST_5D_::setter_removeAll (Compiler * /* inCompiler */
+                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  removeAll () ;
 }
 
 //--------------------------------------------------------------------------------------------------

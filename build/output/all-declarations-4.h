@@ -8696,6 +8696,9 @@ class GGS__5B_terminalCheckAssignement_5D_ : public AC_GALGAS_root {
   public: GGS__5B_terminalCheckAssignement_5D_ (const GGS__5B_terminalCheckAssignement_5D_ & inSource) ;
   public: GGS__5B_terminalCheckAssignement_5D_ & operator = (const GGS__5B_terminalCheckAssignement_5D_ & inSource) ;
 
+//--------------------------------- Remove All
+  public: VIRTUAL_IN_DEBUG void removeAll (void) ;
+
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
   
@@ -8754,6 +8757,9 @@ class GGS__5B_terminalCheckAssignement_5D_ : public AC_GALGAS_root {
   public: void setter_popLast (class GGS_terminalCheckAssignement & outArgument0,
                                Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAtIndex (class GGS_terminalCheckAssignement & outArgument0,
                                      class GGS_uint constinArgument1,

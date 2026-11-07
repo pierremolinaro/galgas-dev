@@ -21,7 +21,6 @@
 #include "all-predefined-types.h"
 #include "MF_MemoryControl.h"
 #include "Compiler.h"
-#include "DirectedGraph.h"
 
 //--------------------------------------------------------------------------------------------------
 

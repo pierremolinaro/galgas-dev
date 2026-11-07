@@ -344,13 +344,6 @@ override func @optionComponentDeclarationAST.keyRepresentation
 
 //--------------------------------------------------------------------------------------------------
 
-override func @graphDeclarationAST.keyRepresentation
-  () ->@string {
-  result = "graph @" + self.mGraphTypeName
-}
-
-//--------------------------------------------------------------------------------------------------
-
 override func @onceFunctionDeclarationAST.keyRepresentation
   () ->@string {
   result = "once function " + self.mFunctionName

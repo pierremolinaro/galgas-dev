@@ -9,6 +9,193 @@
 #include "all-declarations-13.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @lexiqueComponentAST reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexiqueComponentAST : public GGS_semanticDeclarationAST {
+//--------------------------------- Default constructor
+  public: GGS_lexiqueComponentAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_lexiqueComponentAST (const class cPtr_lexiqueComponentAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_lstring readProperty_mLexiqueComponentName (void) const ;
+
+  public: class GGS_bool readProperty_mIsTemplate (void) const ;
+
+  public: class GGS_templateDelimitorListAST readProperty_mTemplateDelimitorListAST (void) const ;
+
+  public: class GGS_templateReplacementListAST readProperty_mTemplateReplacementListAST (void) const ;
+
+  public: class GGS_lexicalAttributeListAST readProperty_mLexicalAttributeListAST (void) const ;
+
+  public: class GGS_lexicalStyleListAST readProperty_mLexicalStyleListAST (void) const ;
+
+  public: class GGS_terminalDeclarationListAST readProperty_mTerminalDeclarationListAST (void) const ;
+
+  public: class GGS_lexicalMessageDeclarationListAST readProperty_mLexicalMessageDeclarationListAST (void) const ;
+
+  public: class GGS_lexicalListDeclarationListAST readProperty_mLexicalListDeclarationListAST (void) const ;
+
+  public: class GGS_lexicalRuleListAST readProperty_mLexicalRuleListAST (void) const ;
+
+  public: class GGS_indexingListAST readProperty_mIndexingListAST (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexiqueComponentAST init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                                           const class GGS_lstring & inOperand1,
+                                                                                                           const class GGS_bool & inOperand2,
+                                                                                                           const class GGS_templateDelimitorListAST & inOperand3,
+                                                                                                           const class GGS_templateReplacementListAST & inOperand4,
+                                                                                                           const class GGS_lexicalAttributeListAST & inOperand5,
+                                                                                                           const class GGS_lexicalStyleListAST & inOperand6,
+                                                                                                           const class GGS_terminalDeclarationListAST & inOperand7,
+                                                                                                           const class GGS_lexicalMessageDeclarationListAST & inOperand8,
+                                                                                                           const class GGS_lexicalListDeclarationListAST & inOperand9,
+                                                                                                           const class GGS_lexicalRuleListAST & inOperand10,
+                                                                                                           const class GGS_indexingListAST & inOperand11,
+                                                                                                           Compiler * inCompiler
+                                                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_lexiqueComponentAST extractObject (const GGS_object & inObject,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_lexiqueComponentAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueComponentAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @lexiqueComponentAST class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_lexiqueComponentAST : public cPtr_semanticDeclarationAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void lexiqueComponentAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
+                                                                                                     const class GGS_lstring & inOperand1,
+                                                                                                     const class GGS_bool & inOperand2,
+                                                                                                     const class GGS_templateDelimitorListAST & inOperand3,
+                                                                                                     const class GGS_templateReplacementListAST & inOperand4,
+                                                                                                     const class GGS_lexicalAttributeListAST & inOperand5,
+                                                                                                     const class GGS_lexicalStyleListAST & inOperand6,
+                                                                                                     const class GGS_terminalDeclarationListAST & inOperand7,
+                                                                                                     const class GGS_lexicalMessageDeclarationListAST & inOperand8,
+                                                                                                     const class GGS_lexicalListDeclarationListAST & inOperand9,
+                                                                                                     const class GGS_lexicalRuleListAST & inOperand10,
+                                                                                                     const class GGS_indexingListAST & inOperand11,
+                                                                                                     Compiler * inCompiler) ;
+
+
+//--- Extension func keyRepresentation
+  public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension proc enterDeclarationInGraph
+  public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
+           class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
+           class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
+           class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
+           class GGS_semanticDeclarationListAST & arg_ioExtensionOverrideDefinitionList,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension proc enterDeclarationInSemanticContext
+  public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg__ioEquatableExtensionMap,
+           const class GGS_extensionInitializerForBuildingContext arg__inExtensionInitializerMapForBuildingContext,
+           const class GGS_extensionMethodMapForBuildingContext arg__inExtensionMethodMapForBuildingContext,
+           const class GGS_extensionGetterMapForBuildingContext arg__inExtensionGetterMapForBuildingContext,
+           const class GGS_extensionSetterMapForBuildingContext arg__inExtensionSetterMapForBuildingContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS_semanticContext & arg__ioSemanticContext,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension proc semanticAnalysis
+  public: virtual void method_semanticAnalysis (class GGS_lstringlist & arg_ioUsefulnessRootEntities,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_string arg_inProductDirectory,
+           const class GGS_semanticContext arg__inSemanticContext,
+           class GGS_unifiedTypeMap & arg__ioTypeMap,
+           const class GGS_predefinedTypes arg__inPredefinedTypes,
+           class GGS__5B_semanticDeclarationForGeneration_5D_ & arg__ioSemanticDeclarationListForGeneration,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_lstring mProperty_mLexiqueComponentName ;
+  public: GGS_bool mProperty_mIsTemplate ;
+  public: GGS_templateDelimitorListAST mProperty_mTemplateDelimitorListAST ;
+  public: GGS_templateReplacementListAST mProperty_mTemplateReplacementListAST ;
+  public: GGS_lexicalAttributeListAST mProperty_mLexicalAttributeListAST ;
+  public: GGS_lexicalStyleListAST mProperty_mLexicalStyleListAST ;
+  public: GGS_terminalDeclarationListAST mProperty_mTerminalDeclarationListAST ;
+  public: GGS_lexicalMessageDeclarationListAST mProperty_mLexicalMessageDeclarationListAST ;
+  public: GGS_lexicalListDeclarationListAST mProperty_mLexicalListDeclarationListAST ;
+  public: GGS_lexicalRuleListAST mProperty_mLexicalRuleListAST ;
+  public: GGS_indexingListAST mProperty_mIndexingListAST ;
+
+
+//--- Default constructor
+  public: cPtr_lexiqueComponentAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_lexiqueComponentAST (const GGS_bool & in_isPredefined,
+                                    const GGS_lstring & in_mLexiqueComponentName,
+                                    const GGS_bool & in_mIsTemplate,
+                                    const GGS_templateDelimitorListAST & in_mTemplateDelimitorListAST,
+                                    const GGS_templateReplacementListAST & in_mTemplateReplacementListAST,
+                                    const GGS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
+                                    const GGS_lexicalStyleListAST & in_mLexicalStyleListAST,
+                                    const GGS_terminalDeclarationListAST & in_mTerminalDeclarationListAST,
+                                    const GGS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationListAST,
+                                    const GGS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST,
+                                    const GGS_lexicalRuleListAST & in_mLexicalRuleListAST,
+                                    const GGS_indexingListAST & in_mIndexingListAST,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @lexiqueComponentAST_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 

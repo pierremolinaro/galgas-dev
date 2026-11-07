@@ -25,9 +25,21 @@ syntax extension galgas4DeclarationsSyntax {
 
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $graph$
+    $graph$
     $@type$ (?let @lstring graphTypeName) indexing (graphDefinition)
     $:$
-    <type_definition> (!?ioDeclarations, ?let associatedListTypeName)
+    <type_definition> (!?ioDeclarations, ?let elementTypeName)
+    let associatedArrayTypeName = makeArrayTypeLName (elementTypeName)
+    if not ioDeclarations.implicitTypeDeclarationSet.hasKey (associatedArrayTypeName.string) then
+      ioDeclarations.implicitTypeDeclarationSet ++= associatedArrayTypeName.string
+      ioDeclarations.mDeclarationList ++= @(@arrayTypeDeclarationAST (
+        !isPredefined: false,
+        associatedArrayTypeName,
+        elementTypeName,
+        !isUsefull: false,
+        !equatable: false
+      ))
+    end
     ${$
     var graphInsertModifierList = @graphInsertModifierList ()
     repeat
@@ -42,7 +54,8 @@ syntax extension galgas4DeclarationsSyntax {
     ioDeclarations.mDeclarationList ++= @(@graphDeclarationAST (
       !isPredefined: false,
       graphTypeName,
-      associatedListTypeName,
+      associatedArrayTypeName,
+      elementTypeName,
       graphInsertModifierList
     ))
   }
@@ -64,8 +77,15 @@ list @graphInsertModifierList {
 
 final class @graphDeclarationAST : @semanticDeclarationAST {
   private let @lstring mGraphTypeName
-  private let @lstring mAssociatedListTypeName
+  private let @lstring mAssociatedArrayTypeName
+  private let @lstring mAssociatedElementTypeName
   private let @graphInsertModifierList mInsertModifierList
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override func keyRepresentation () ->@string {
+    result = "graph @" + self.mGraphTypeName
+  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -82,45 +102,34 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     !?ioSemanticTypePrecedenceGraph.addEdge (
       !from: key,
-      !to: @("@" + self.mAssociatedListTypeName, self.mAssociatedListTypeName.location)
+      !to: @("@" + self.mAssociatedArrayTypeName, self.mAssociatedArrayTypeName.location)
     )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterDeclarationInSemanticContext (
-    ?!@equatableExtensionMap ioEquatableExtensionMap,
-    let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-    let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-    let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-    let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
-    ?!@unifiedTypeMap ioTypeMap,
-    ?!@semanticContext ioSemanticContext ) {
+  override proc enterDeclarationInSemanticContext (?!@equatableExtensionMap ioEquatableExtensionMap,
+                 let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+                 let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+                 let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+                 let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+                 ?!@unifiedTypeMap ioTypeMap,
+                 ?!@semanticContext ioSemanticContext) {
   //--- string type Entry
-    !?ioTypeMap.makeEntryFromString
-      ("string",
-      ?let @unifiedTypeMapEntry stringTypeEntry
-    )
+    !?ioTypeMap.makeEntryFromString ("string", ?let @unifiedTypeMapEntry stringTypeEntry)
   //--- lstring type Entry
-    !?ioTypeMap.makeEntryFromString
-      ("lstring",
-      ?let @unifiedTypeMapEntry lstringTypeEntry
-    )
+    !?ioTypeMap.makeEntryFromString ("lstring", ?let @unifiedTypeMapEntry lstringTypeEntry)
   //--- Graph type Entry
     !?ioTypeMap.makeEntry
       (self.mGraphTypeName,
       ?* // let @unifiedTypeMapEntry graphTypeEntry
     )
-  //--- Associated list type Entry
-    !?ioTypeMap.makeEntry
-      (self.mAssociatedListTypeName,
-      ?let @unifiedTypeMapEntry associatedListTypeEntry
-    )
+  //--- Associated array type Entry
+    !?ioTypeMap.makeEntry (self.mAssociatedArrayTypeName, ?let @unifiedTypeMapEntry associatedArrayType)
+  //--- Associated element type Entry
+    !?ioTypeMap.makeEntry (self.mAssociatedElementTypeName, ?let @unifiedTypeMapEntry associatedElementType)
   //--- @lstringlist type Entry
-    !?ioTypeMap.makeEntryFromString
-      ("lstringlist",
-      ?let @unifiedTypeMapEntry lstringListTypeEntry
-    )
+    !?ioTypeMap.makeEntryFromString ("lstringlist", ?let @unifiedTypeMapEntry lstringListTypeEntry)
   //---
     commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap )
     var @setterMap setterMap = @()
@@ -129,26 +138,30 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     var formalParameterList = @formalParameterSignature ()
     formalParameterList ++= @(
       "".nowhere,
-      associatedListTypeEntry,
+      associatedArrayType,
       .argumentOut,
-      "outSortedInformationList")
+      "outSortedInformationList"
+    )
     formalParameterList ++= @(
       "".nowhere,
       lstringListTypeEntry,
       .argumentOut,
-      "outSortedLKeyList")
+      "outSortedLKeyList"
+    )
     formalParameterList ++= @(
       "".nowhere,
-      associatedListTypeEntry,
+      associatedArrayType,
       .argumentOut,
-      "outUnsortedInformationList")
+      "outUnsortedInformationList"
+    )
     formalParameterList ++= @(
       "".nowhere,
       lstringListTypeEntry,
       .argumentOut,
-      "outUnsortedLKeyList")
-    !?instanceMethodMap.insertKey
-      (@("topologicalSort", .here),
+      "outUnsortedLKeyList"
+    )
+    !?instanceMethodMap.insertKey (
+      @("topologicalSort", .here),
       .definedAsMember,
       formalParameterList,
       .here,
@@ -156,8 +169,8 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       .isBasic,
       "" // No error message
     )
-    !?instanceMethodMap.insertKey
-      (@("depthFirstTopologicalSort", .here),
+    !?instanceMethodMap.insertKey (
+      @("depthFirstTopologicalSort", .here),
       .definedAsMember,
       formalParameterList,
       .here,
@@ -169,14 +182,16 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     formalParameterList = @()
     formalParameterList ++= @(
       "".nowhere,
-      associatedListTypeEntry,
+      associatedArrayType,
       .argumentOut,
-      "outInformationList")
+      "outInformationList"
+    )
     formalParameterList ++= @(
       "".nowhere,
       lstringListTypeEntry,
       .argumentOut,
-      "outLKeyList")
+      "outLKeyList"
+    )
     !?instanceMethodMap.insertKey
       (@("circularities", .here),
       .definedAsMember,
@@ -186,8 +201,8 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       .isBasic,
       "" // No error message
     )
-    !?instanceMethodMap.insertKey
-      (@("nodesWithNoSuccessor", .here),
+    !?instanceMethodMap.insertKey (
+      @("nodesWithNoSuccessor", .here),
       .definedAsMember,
       formalParameterList,
       .here,
@@ -195,8 +210,8 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       .isBasic,
       "" // No error message
     )
-    !?instanceMethodMap.insertKey
-      (@("nodesWithNoPredecessor", .here),
+    !?instanceMethodMap.insertKey (
+      @("nodesWithNoPredecessor", .here),
       .definedAsMember,
       formalParameterList,
       .here,
@@ -210,7 +225,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !?ioTypeMap,
       !getterName: "nodeList",
       !obsoleteName: "",
-      !returnedTypeName: self.mAssociatedListTypeName,
+      !returnedTypeName: self.mAssociatedArrayTypeName,
       !hasCompilerArgument: false // No compiler argument
     )
   //--- Getter 'reversedGraph'
@@ -335,14 +350,16 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       "".nowhere,
       lstringTypeEntry,
       .argumentVarIn,
-      "inLKey")
-    for formalArg in associatedListTypeEntry.definition.addAssignOperatorArguments do
+      "inLKey"
+    )
+ //   for formalArg in associatedArrayType.definition.addAssignOperatorArguments do
       formalParameterList ++= @(
         "".nowhere,
-        formalArg.mFormalArgumentType,
+        associatedElementType,
         .argumentVarIn,
-        formalArg.mFormalArgumentName)
-    end
+        "inElement"
+      )
+ //   end
     for insertSetter in self.mInsertModifierList do
       !?setterMap.insertOrReplace (
         insertSetter.mInsertModifierName,
@@ -365,8 +382,8 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   //--- mutating proc 'removeEdgesToNode'
     formalParameterList = @formalParameterSignature ()
     formalParameterList ++= @("".nowhere, stringTypeEntry, .argumentVarIn, "inNodeName")
-    !?setterMap.insertKey
-      (@("removeEdgesToNode", .here),
+    !?setterMap.insertKey (
+      @("removeEdgesToNode", .here),
       .definedAsMember,
       formalParameterList,
       true, // Compiler argument
@@ -469,16 +486,15 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
                                   let @string _inProductDirectory,
                                   let @semanticContext _inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-                      let @predefinedTypes _inPredefinedTypes,
-                      ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
-                    ) {
+                                  let @predefinedTypes _inPredefinedTypes,
+                                  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.mGraphTypeName)
     !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
     if self.isPredefined  then
       ioUsefulnessRootEntities ++= @(nameForUsefulness)
     end
-    let associatedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mAssociatedListTypeName)
+    let associatedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mAssociatedArrayTypeName)
     !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: associatedTypeNameForUsefulness)
     if self.isPredefined  then
       ioUsefulnessRootEntities ++= @(associatedTypeNameForUsefulness)
@@ -494,14 +510,15 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     end
   //---
     let graphTypeEntry = ioTypeMap.typeMapEntryForLKey (self.mGraphTypeName)
-    let associatedListTypeEntry = ioTypeMap.typeMapEntryForLKey (self.mAssociatedListTypeName)
-    let associatedListElementTypeEntry = ioTypeMap.typeMapEntryForLKey (
-      makeEmbeddedElementTypeLName (self.mAssociatedListTypeName)
-    )
-    if associatedListTypeEntry.definition.typeKind != .listType then
-      error (self.mAssociatedListTypeName
-      : "the '@" + self.mAssociatedListTypeName + "' type should be a list")
-    end
+    let associatedArrayType = ioTypeMap.typeMapEntryForLKey (self.mAssociatedArrayTypeName)
+    let associatedListElementTypeEntry = ioTypeMap.typeMapEntryForLKey (self.mAssociatedElementTypeName)
+//    let associatedListElementTypeEntry = ioTypeMap.typeMapEntryForLKey (
+//      makeEmbeddedElementTypeLName (self.mAssociatedArrayTypeName)
+//    )
+//    if associatedArrayType.definition.typeKind != .listType then
+//      error (self.mAssociatedArrayTypeName
+//      : "the '@" + self.mAssociatedArrayTypeName + "' type should be a list")
+//    end
   //--- Analyze insert methods
     let @stringset reservedModifierNames = ["noteNode", "addArc"]
     for insertSetter in self.mInsertModifierList do
@@ -515,7 +532,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     ioSemanticDeclarationListForGeneration ++= @graphDeclarationForGeneration (
       !infoMessage: "graph " + self.mGraphTypeName,
       graphTypeEntry,
-      associatedListTypeEntry,
+      associatedArrayType,
       associatedListElementTypeEntry,
       self.mInsertModifierList
     )
@@ -530,18 +547,20 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
 //--------------------------------------------------------------------------------------------------
 
 final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
-  private let @unifiedTypeMapEntry mAssociatedListTypeEntry
-  private let @unifiedTypeMapEntry mAssociatedListElementTypeEntry
+  private let @unifiedTypeMapEntry mAssociatedArrayTypeEntry
+  private let @unifiedTypeMapEntry mAssociatedElementTypeEntry
   private let @graphInsertModifierList mInsertModifierList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
-                                     !@string outHeader ) {
+                                     !@string outHeader) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = filewrapper [typeGenerationTemplate.graphTypeHeader1 :
       selfTypeDefinition.typeName.string,
-      self.mSelfTypeEntry.identifierRepresentation
+      self.mSelfTypeEntry.identifierRepresentation,
+      self.mAssociatedArrayTypeEntry,
+      self.mAssociatedElementTypeEntry
     ]
     outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
       selfTypeDefinition.typeName.string,
@@ -568,12 +587,13 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
                                                ?!@stringset ioInclusionSet,
                                                !@string outImplementation ) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
-    self.mAssociatedListTypeEntry.addHeaderFileName (!?ioInclusionSet)
-    self.mAssociatedListElementTypeEntry.addHeaderFileName (!?ioInclusionSet)
+    self.mAssociatedArrayTypeEntry.addHeaderFileName (!?ioInclusionSet)
+    self.mAssociatedElementTypeEntry.addHeaderFileName (!?ioInclusionSet)
     outImplementation = filewrapper [typeGenerationTemplate.graphTypeSpecificImplementation :
       self.mSelfTypeEntry,
       self.mSelfTypeEntry.identifierRepresentation,
-      self.mAssociatedListTypeEntry,
+      self.mAssociatedArrayTypeEntry,
+      self.mAssociatedElementTypeEntry,
       self.mInsertModifierList
     ]
   }
