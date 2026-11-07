@@ -256,20 +256,18 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc addAssociatedElement (?!@galgasDeclarationAST _ioDeclarations ) {
+  override proc addAssociatedElement (?!@galgasDeclarationAST _ioDeclarations) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc semanticAnalysis
-    (?!@lstringlist ioUsefulnessRootEntities,
-    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-    let @string _inProductDirectory,
-    let @semanticContext _inSemanticContext,
+  override proc semanticAnalysis (?!@lstringlist ioUsefulnessRootEntities,
+                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                  let @string _inProductDirectory,
+                                  let @semanticContext _inSemanticContext,
                                   ?!@unifiedTypeMap ioTypeMap,
-    let @predefinedTypes _inPredefinedTypes,
-    ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
-  ) {
+                                  let @predefinedTypes _inPredefinedTypes,
+                                  ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
   //--- Useful entities graph
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.arrayTypeName)
     !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)

@@ -121,14 +121,14 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     var @propertyMap propertyMap = @()
     var @functionSignature constructorPropertyTypeList = @()
     var @typedPropertyList typedPropertyList = @()
-    var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = @()
+//    var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = @()
     for property in self.mStructurePropertyListAST do
       !?ioTypeMap.makeEntry (property.typeName, ?let propertyTypeEntry)
       let selector = (if property.hasSelector then property.name.string else "" end).nowhere
       if property.initialization.isNone then
         constructorPropertyTypeList ++= @(selector, propertyTypeEntry, property.name.string, true)
       end
-      typesToIncludeInHeaderCompilation ++= @(propertyTypeEntry)
+//      typesToIncludeInHeaderCompilation ++= @(propertyTypeEntry)
       typedPropertyList ++= @(
         propertyTypeEntry,
         property.name,
@@ -305,8 +305,8 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       end
     end
   //--- Build property initialization code
-    self.mStructurePropertyListAST.buildPropertyInitializationCode
-      (structNameForUsefulness,
+    self.mStructurePropertyListAST.buildPropertyInitializationCode (
+      structNameForUsefulness,
       inSemanticContext,
       inPredefinedTypes,
       !?ioUsefulEntitiesGraph,
@@ -361,7 +361,7 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc appendDeclaration1 (?!@stringset ioInclusionSet ,!@string outHeader ) {
+  override proc appendDeclaration1 (?!@stringset ioInclusionSet, !@string outHeader ) {
     for property in self.mTypedPropertyList do
       property.typeEntry.addHeaderFileName1 (!?ioInclusionSet)
     end

@@ -736,7 +736,7 @@ static void rotateRight (GraphNode_%!TYPE_IDENTIFIER% * & ioRootPtr) {
 //--------------------------------------------------------------------------------------------------
 
 GraphNode_%!TYPE_IDENTIFIER%::GraphNode_%!TYPE_IDENTIFIER% (const String & inKey,
-                        const uint32_t inNodeID) :
+                                                            const uint32_t inNodeID) :
 mInfPtr (nullptr),
 mSupPtr (nullptr),
 mBalance (0),
@@ -820,7 +820,7 @@ void SharedGraph_%!TYPE_IDENTIFIER%::internalAddNode (const GGS_lstring & inKey,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) {
   GraphNode_%!TYPE_IDENTIFIER% * node = findOrAddNodeForKey (inKey.mProperty_string.stringValue ()) ;
-  if (node->mElement.ptr () == nullptr) { // Node exists, but is undefined
+  if (!node->mIsDefined) { // Node exists, but is undefined
     node->mElement = inElement ;
     node->mDefinitionLocation = inKey.mProperty_location ;
     node->mIsDefined = true ;
@@ -1296,7 +1296,7 @@ static void buildUndefinedNodeReferenceList (const GraphNode_%!TYPE_IDENTIFIER% 
                                              GGS_lstringlist & ioResult) {
   if (nullptr != inNode) {
     buildUndefinedNodeReferenceList (inNode->mInfPtr, ioResult) ;
-    if (nullptr == inNode->mElement.ptr ()) {
+    if (!inNode->mIsDefined) {
       GGS_lstring lkey ;
       lkey.mProperty_string = GGS_string (inNode->mKey) ;
       for (int32_t i=0 ; i < inNode->mReferenceLocationArray.count () ; i++) {

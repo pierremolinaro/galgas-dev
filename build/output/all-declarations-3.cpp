@@ -4459,8 +4459,1394 @@ GGS_lexicalErrorInstructionAST_2E_weak GGS_lexicalErrorInstructionAST_2E_weak::e
 //'@usefulEntitiesGraph' graph
 //--------------------------------------------------------------------------------------------------
 
+class GraphNode_usefulEntitiesGraph final {
+  public: GraphNode_usefulEntitiesGraph * mInfPtr ;
+  public: GraphNode_usefulEntitiesGraph * mSupPtr ;
+  public: int32_t mBalance ;
+  public: const String mKey ;
+  public: const uint32_t mNodeID ;
+  public: GGS_lstring mElement ;
+  public: GGS_location mDefinitionLocation ;
+  public: GenericUniqueArray <GGS_location> mReferenceLocationArray ;
+  public: bool mIsDefined ;
+
+//--- Constructors
+  public: GraphNode_usefulEntitiesGraph (const String & inKey,
+                                        const uint32_t inNodeID) ;
+
+  public: GraphNode_usefulEntitiesGraph (GraphNode_usefulEntitiesGraph * inNode) ;
+
+  public: void accumulateNodes (GGS__5B_lstring_5D_ & outNodeList) const ;
+
+//--- Destructor
+  public: ~ GraphNode_usefulEntitiesGraph (void) ;
+
+//--- No copy
+  private: GraphNode_usefulEntitiesGraph (const GraphNode_usefulEntitiesGraph &) = delete ;
+  private: GraphNode_usefulEntitiesGraph & operator = (const GraphNode_usefulEntitiesGraph &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GraphNode_usefulEntitiesGraph::~ GraphNode_usefulEntitiesGraph (void) {
+  macroMyDelete (mInfPtr) ;
+  macroMyDelete (mSupPtr) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+class SharedGraph_usefulEntitiesGraph : public SharedObject {
+//--------------------------------- Attributes
+  private: GraphNode_usefulEntitiesGraph * mRoot ;
+  public: inline const GraphNode_usefulEntitiesGraph * root (void) const { return mRoot ; }
+  private: DirectedGraph mDirectedGraph ;
+  private: GenericUniqueArray <GraphNode_usefulEntitiesGraph *> mNodeArray ;
+
+//--- Constructor
+  public: SharedGraph_usefulEntitiesGraph (LOCATION_ARGS) ;
+
+//--- Destructor
+  public: virtual ~ SharedGraph_usefulEntitiesGraph (void) ;
+
+//--- Count
+  public: inline uint32_t allNodeCount (void) const { return (uint32_t) mNodeArray.count () ; }
+
+//--- isNodeDefined
+  public: bool isNodeDefined (const String & inKey) const ;
+
+//--- locationForKey
+  public: GGS_location locationForKey (const String & inKey,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
+
+//--- Internal methods
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const ;
+
+  public: void copyFrom (const SharedGraph_usefulEntitiesGraph * inSource) ;
+
+  public: void copyReversedGraphFrom (const SharedGraph_usefulEntitiesGraph * inSource) ;
+
+  public: int32_t graphCompare (const SharedGraph_usefulEntitiesGraph * inOperand) const ;
+
+  public: GraphNode_usefulEntitiesGraph * findOrAddNodeForKey (const String & inKey) ;
+
+  protected: GraphNode_usefulEntitiesGraph * internalInsert (GraphNode_usefulEntitiesGraph * & ioRootPtr,
+                                          const String & inKey,
+                                          bool & ioExtension) ;
+
+  public: void internalAddNode (const GGS_lstring & inKey,
+                                const char * inErrorMessage,
+                                const GGS_lstring & inElement,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+  public: void addEdge (const String & inSourceNodeKey,
+                        const GGS_location & inSourceNodeLocation,
+                        const String & inTargetNodeKey,
+                        const GGS_location & inTargetNodeLocation) ;
+
+  public: void removeEdgesToDominators (LOCATION_ARGS) ;
+
+  public: void removeEdgesToNode (const String & inNodeName,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+  public: void internalTopologicalSort (GGS__5B_lstring_5D_ & outSortedList,
+                                        GGS_lstringlist & outSortedNodeKeyList,
+                                        GGS__5B_lstring_5D_ & outUnsortedList,
+                                        GGS_lstringlist & outUnsortedNodeKeyList) const ;
+
+
+  public: void internalFindCircularities (GGS__5B_lstring_5D_ & outInfoList,
+                                          GGS_lstringlist & outNodeKeyList) const ;
+
+  public: void internalNodesWithNoPredecessor (GGS__5B_lstring_5D_ & outInfoList,
+                                               GGS_lstringlist & outNodeKeyList) const ;
+
+  public: void internalNodesWithNoSuccessor (GGS__5B_lstring_5D_ & outInfoList,
+                                             GGS_lstringlist & outNodeKeyList) const ;
+
+  public: void internalDepthFirstTopologicalSort (GGS__5B_lstring_5D_ & outSortedList,
+                                                  GGS_lstringlist & outSortedNodeKeyList,
+                                                  GGS__5B_lstring_5D_ & outUnsortedList,
+                                                  GGS_lstringlist & outUnsortedNodeKeyList) const ;
+
+  public: void subGraph (GGS_usefulEntitiesGraph & outResultingGraph,
+                         const GGS_lstringlist & inStartNodes,
+                         const GGS_stringset & inNodesToExclude,
+                         Compiler * inCompiler
+                         COMMA_LOCATION_ARGS) const ;
+
+  public: void graph (GGS__5B_lstring_5D_ & outNodeList) const ;
+
+  public: GGS_stringlist keyList (void) const ;
+
+  public: GGS_lstringlist lkeyList (void) const ;
+
+  public: String getter_graphviz (void) const ;
+
+  public: void edges (GGS__32_stringlist & ioList) const ;
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: void checkGraph (LOCATION_ARGS) const ;
+  #endif
+
+//--- No copy
+  private: SharedGraph_usefulEntitiesGraph (const SharedGraph_usefulEntitiesGraph &) = delete ;
+  private: SharedGraph_usefulEntitiesGraph & operator = (const SharedGraph_usefulEntitiesGraph &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+SharedGraph_usefulEntitiesGraph::SharedGraph_usefulEntitiesGraph (LOCATION_ARGS) :
+SharedObject (THERE),
+mRoot (nullptr),
+mDirectedGraph (),
+mNodeArray () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+SharedGraph_usefulEntitiesGraph::~ SharedGraph_usefulEntitiesGraph (void) {
+  macroMyDelete (mRoot) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Copy
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+GraphNode_usefulEntitiesGraph::GraphNode_usefulEntitiesGraph (GraphNode_usefulEntitiesGraph * inNode) :
+mInfPtr (nullptr),
+mSupPtr (nullptr),
+mBalance (inNode->mBalance),
+mKey (inNode->mKey),
+mNodeID (inNode->mNodeID),
+mElement (inNode->mElement),
+mDefinitionLocation (inNode->mDefinitionLocation),
+mReferenceLocationArray (),
+mIsDefined (inNode->mIsDefined) {
+  mReferenceLocationArray.setCapacity (inNode->mReferenceLocationArray.count ()) ;
+  for (int32_t i=0 ; i<inNode->mReferenceLocationArray.count () ; i++) {
+    mReferenceLocationArray.appendObject (inNode->mReferenceLocationArray (i COMMA_HERE)) ;
+  }
+  if (nullptr != inNode->mInfPtr) {
+    macroMyNew (mInfPtr, GraphNode_usefulEntitiesGraph (inNode->mInfPtr)) ;
+  }
+  if (nullptr != inNode->mSupPtr) {
+    macroMyNew (mSupPtr, GraphNode_usefulEntitiesGraph (inNode->mSupPtr)) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static void buildNodeArray (GraphNode_usefulEntitiesGraph * inNode,
+                            GenericUniqueArray <GraphNode_usefulEntitiesGraph *> & ioNodeArray) {
+  if (nullptr != inNode) {
+    macroAssert (ioNodeArray ((int32_t) inNode->mNodeID COMMA_HERE) == nullptr, "ioNodeArray (%lld COMMA_HERE) != nullptr", inNode->mNodeID, 0) ;
+    ioNodeArray ((int32_t) inNode->mNodeID COMMA_HERE) = inNode ;
+    buildNodeArray (inNode->mInfPtr, ioNodeArray) ;
+    buildNodeArray (inNode->mSupPtr, ioNodeArray) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_usefulEntitiesGraph::copyFrom (const SharedGraph_usefulEntitiesGraph * inSource) {
+  macroUniqueSharedObject (this) ;
+  if (nullptr != inSource->mRoot) {
+    macroMyNew (mRoot, GraphNode_usefulEntitiesGraph (inSource->mRoot)) ;
+    mNodeArray.appendObjects (inSource->mNodeArray.count (), nullptr) ;
+    buildNodeArray (mRoot, mNodeArray) ;
+    mDirectedGraph = inSource->mDirectedGraph ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkGraph (HERE) ;
+  #endif
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_usefulEntitiesGraph::description (String & ioString,
+                                const int32_t /* inIndentation */) const {
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (mDirectedGraph.nodeCount ()) ;
+  ioString.appendCString (" node") ;
+  ioString.appendCString ((mDirectedGraph.nodeCount () > 1) ? "s" : "") ;
+  ioString.appendCString (", ") ;
+  ioString.appendUnsigned (mDirectedGraph.edgeCount ()) ;
+  ioString.appendCString (" edge") ;
+  ioString.appendCString ((mDirectedGraph.edgeCount () > 1) ? "s" : "") ;
+  ioString.appendCString (")") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void SharedGraph_usefulEntitiesGraph::checkGraph (LOCATION_ARGS) const {
+    GenericUniqueArray <GraphNode_usefulEntitiesGraph *> nodeArray (mNodeArray.count () COMMA_HERE) ;
+    nodeArray.appendObjects (mNodeArray.count (), nullptr) ;
+    buildNodeArray (mRoot, nodeArray) ;
+    macroAssertThere (nodeArray.count() == mNodeArray.count (), "nodeArray.count() == %lld != mNodeArray.count () %lld", nodeArray.count(), mNodeArray.count ()) ;
+    for (int32_t i=0 ; i<nodeArray.count() ; i++) {
+      macroAssertThere (nodeArray (i COMMA_HERE) == mNodeArray (i COMMA_HERE), "nodeArray.(%lld) != mNodeArray.(%lld)", i, i) ;
+      macroAssertThere (mDirectedGraph.isNodeDefined ((uint32_t) i), "! mDirectedGraph.isNodeDefined (i) : %lld != 0", i, 0) ;
+    }
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//    GGS_usefulEntitiesGraph
+//--------------------------------------------------------------------------------------------------
+
 GGS_usefulEntitiesGraph::GGS_usefulEntitiesGraph (void) :
-AC_GALGAS_graph () {
+AC_GALGAS_root (),
+mSharedGraph (nullptr) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_usefulEntitiesGraph::~ GGS_usefulEntitiesGraph (void) {
+  macroDetachSharedObject (mSharedGraph) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_usefulEntitiesGraph::GGS_usefulEntitiesGraph (const GGS_usefulEntitiesGraph & inSource) :
+AC_GALGAS_root (),
+mSharedGraph (nullptr) {
+  macroAssignSharedObject (mSharedGraph, inSource.mSharedGraph) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_usefulEntitiesGraph & GGS_usefulEntitiesGraph::operator = (const GGS_usefulEntitiesGraph & inSource) {
+  macroAssignSharedObject (mSharedGraph, inSource.mSharedGraph) ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::makeNewEmptyGraph (LOCATION_ARGS) {
+  macroMyNew (mSharedGraph, SharedGraph_usefulEntitiesGraph (THERE)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<graph @") ;
+  ioString.appendCString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  if (isValid ()) {
+    mSharedGraph->description (ioString, inIndentation) ;
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+uint32_t GGS_usefulEntitiesGraph::count () const {
+  uint32_t result = 0 ;
+  if (isValid ()) {
+    result = mSharedGraph->allNodeCount () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_usefulEntitiesGraph::getter_count (UNUSED_LOCATION_ARGS) const {
+  return GGS_uint (count ()) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::drop (void) {
+  macroDetachSharedObject (mSharedGraph) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::insulateGraph (LOCATION_ARGS) {
+  if ((mSharedGraph != nullptr) && !mSharedGraph->isUniquelyReferenced ()) {
+    SharedGraph_usefulEntitiesGraph * p = nullptr ;
+    macroMyNew (p, SharedGraph_usefulEntitiesGraph (THERE)) ;
+    p->copyFrom (mSharedGraph) ;
+    macroAssignSharedObject (mSharedGraph, p) ;
+    macroDetachSharedObject (p) ;
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      mSharedGraph->checkGraph (HERE) ;
+    #endif
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark getter_hasKey
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_usefulEntitiesGraph::getter_isNodeDefined (const GGS_string & inKey
+                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = mSharedGraph->isNodeDefined (inKey.stringValue ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool SharedGraph_usefulEntitiesGraph::isNodeDefined (const String & inKey) const {
+  bool result = false ;
+  for (int32_t i=0 ; (i<mNodeArray.count ()) && !result ; i++) {
+    const GraphNode_usefulEntitiesGraph * p = mNodeArray (i COMMA_HERE) ;
+    result = p->mIsDefined && (p->mKey == inKey) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark getter_locationForKey
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_usefulEntitiesGraph::getter_locationForKey (const GGS_string & inKey,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    result = mSharedGraph->locationForKey (inKey.stringValue (), inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location SharedGraph_usefulEntitiesGraph::locationForKey (const String & inKey,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  bool found = false ;
+  bool ok = false ;
+  for (int32_t i=0 ; (i<mNodeArray.count ()) && !found ; i++) {
+    const GraphNode_usefulEntitiesGraph * p = mNodeArray (i COMMA_HERE) ;
+    found = p->mKey == inKey ;
+    if (found && p->mIsDefined) {
+      ok = true ;
+      result = p->mDefinitionLocation ;
+    }
+  }
+  if (!ok) {
+    inCompiler->emitSemanticError (
+      GGS_location (),
+      String ("graph locationForKey: node '") + inKey + String ("' is undefined"),
+      GenericArray <FixItDescription> ()
+      COMMA_THERE
+    ) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark getter_keyList
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringlist SharedGraph_usefulEntitiesGraph::keyList (void) const {
+  GGS_stringlist result = GGS_stringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
+    result.addAssignOperation (mNodeArray (i COMMA_HERE)->mKey COMMA_HERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringlist GGS_usefulEntitiesGraph::getter_keyList (UNUSED_LOCATION_ARGS) const {
+  GGS_stringlist result ;
+  if (isValid ()) {
+    result = mSharedGraph->keyList () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark getter_lkeyList
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist SharedGraph_usefulEntitiesGraph::lkeyList (void) const {
+  GGS_lstringlist result = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
+    const GraphNode_usefulEntitiesGraph * p = mNodeArray (i COMMA_HERE) ;
+    GGS_location loc = p->mDefinitionLocation ;
+    if (! loc.isValid ()) {
+      loc = GGS_location::class_func_nowhere (HERE) ;
+    }
+    result.addAssignOperation (GGS_lstring (p->mKey, loc) COMMA_HERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_usefulEntitiesGraph::getter_lkeyList (UNUSED_LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = mSharedGraph->lkeyList () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark internalFindNode
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+static const GraphNode_usefulEntitiesGraph * findNode (const String & inKey,
+                                   const GraphNode_usefulEntitiesGraph * inNode) {
+  const GraphNode_usefulEntitiesGraph * result = nullptr ;
+  while ((nullptr != inNode) && (result == nullptr)) {
+    const int32_t r = inKey.compare (inNode->mKey) ;
+    if (r < 0) {
+      inNode = inNode->mInfPtr ;
+    }else if (r > 0) {
+      inNode = inNode->mSupPtr ;
+    }else{
+      result = inNode ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark graph
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void GraphNode_usefulEntitiesGraph::accumulateNodes (GGS__5B_lstring_5D_ & outNodeList) const {
+  outNodeList.plusPlusAssignOperation (mElement COMMA_HERE) ;
+  if (mInfPtr != nullptr) {
+    mInfPtr->accumulateNodes (outNodeList) ;
+  }
+  if (mSupPtr != nullptr) {
+    mSupPtr->accumulateNodes (outNodeList) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_usefulEntitiesGraph::graph (GGS__5B_lstring_5D_ & outNodeList) const {
+  if (mRoot != nullptr) {
+    mRoot->accumulateNodes (outNodeList) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lstring_5D_ GGS_usefulEntitiesGraph::graph (void) const {
+  GGS__5B_lstring_5D_ result ;
+  if (isValid ()) {
+    mSharedGraph->graph (result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark subGraph
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_usefulEntitiesGraph::subGraph (GGS_usefulEntitiesGraph & outResultingGraph,
+                            const GGS_lstringlist & inStartNodes,
+                            const GGS_stringset & inNodesToExclude,
+                            Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) const {
+//--- Build start node set
+  UInt32Set startNodeSet ;
+  UpEnumerator_lstringlist enumerator1 (inStartNodes) ;
+  while (enumerator1.hasCurrentObject ()) {
+    const GraphNode_usefulEntitiesGraph * nodePtr = findNode (enumerator1.current_mValue (THERE).mProperty_string.stringValue(), root()) ;
+    if (nullptr == nodePtr) {
+      String message ("subgraphFromNodes: '") ;
+      message.appendString (enumerator1.current_mValue (THERE).mProperty_string.stringValue()) ;
+      message.appendCString ("' is not a declared node, cannot start from it") ;
+      inCompiler->emitSemanticError (
+        enumerator1.current_mValue (THERE).mProperty_location,
+        message,
+        GenericArray <FixItDescription> ()
+        COMMA_THERE
+      ) ;
+    }else{
+      startNodeSet.add (nodePtr->mNodeID) ;
+    }
+    enumerator1.gotoNextObject () ;
+  }
+//--- Build node to exclude set
+  UInt32Set nodesToExcludeSet ;
+  UpEnumerator_stringset enumerator2 (inNodesToExclude) ;
+  while (enumerator2.hasCurrentObject ()) {
+    const GraphNode_usefulEntitiesGraph * nodePtr = findNode (enumerator2.current_key (THERE).stringValue(), root()) ;
+    if (nullptr == nodePtr) {
+      String message ("subgraphFromNodes: '") ;
+      message.appendString (enumerator2.current_key (THERE).stringValue()) ;
+      message.appendCString ("' is not a declared node, cannot be excluded") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      nodesToExcludeSet.add (nodePtr->mNodeID) ;
+    }
+    enumerator2.gotoNextObject () ;
+  }
+//--- Build sub graph
+  const DirectedGraph theSubGraph = mDirectedGraph.subGraphFromNodes (
+    startNodeSet,
+    nodesToExcludeSet
+  ) ;
+//--- Enter nodes
+  GenericUniqueArray <uint32_t> nodeArray ; theSubGraph.getNodeValueArray (nodeArray) ;
+  for (int32_t i=0 ; i<nodeArray.count () ; i++) {
+    const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
+    const GraphNode_usefulEntitiesGraph * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_THERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_string = nodePtr->mKey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    outResultingGraph.internalAddNode (
+      lkey,
+      "subgraphFromNodes Internal error",
+      nodePtr->mElement,
+      inCompiler
+      COMMA_THERE
+    ) ;
+  }
+//--- Enter edges
+  GenericUniqueArray <GraphEdge> edgeArray ; theSubGraph.getEdges (edgeArray) ;
+  for (int32_t i=0 ; i<edgeArray.count () ; i++) {
+    const uint32_t sourceNodeIndex = edgeArray (i COMMA_HERE).mSource ;
+    const GraphNode_usefulEntitiesGraph * sourceNodePtr = mNodeArray ((int32_t) sourceNodeIndex COMMA_THERE) ;
+    GGS_lstring source ;
+    source.mProperty_string = sourceNodePtr->mKey ;
+    source.mProperty_location = sourceNodePtr->mDefinitionLocation ;
+    const uint32_t targetNodeIndex = edgeArray (i COMMA_HERE).mTarget ;
+    const GraphNode_usefulEntitiesGraph * targetNodePtr = mNodeArray ((int32_t) targetNodeIndex COMMA_THERE) ;
+    GGS_lstring target ;
+    target.mProperty_string = targetNodePtr->mKey ;
+    target.mProperty_location = targetNodePtr->mDefinitionLocation ;
+    outResultingGraph.setter_addEdge (source, target COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::subGraph (GGS_usefulEntitiesGraph & outResultingGraph,
+                                const GGS_lstringlist & inStartNodes,
+                                const GGS_stringset & inNodesToExclude,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) const {
+  if (isValid () && inStartNodes.isValid () && inNodesToExclude.isValid ()) {
+    outResultingGraph.makeNewEmptyGraph (THERE) ;
+    mSharedGraph->subGraph (
+      outResultingGraph,
+      inStartNodes,
+      inNodesToExclude,
+      inCompiler
+      COMMA_THERE
+    ) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Reversed Graph
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_usefulEntitiesGraph::copyReversedGraphFrom (const SharedGraph_usefulEntitiesGraph * inSource) {
+  macroUniqueSharedObject (this) ;
+  if (nullptr != inSource->mRoot) {
+    macroMyNew (mRoot, GraphNode_usefulEntitiesGraph (inSource->mRoot)) ;
+    mNodeArray.appendObjects (inSource->mNodeArray.count (), nullptr) ;
+    buildNodeArray (mRoot, mNodeArray) ;
+    mDirectedGraph = inSource->mDirectedGraph.reversedGraph () ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkGraph (HERE) ;
+  #endif
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::reversedGraphFromGraph (const GGS_usefulEntitiesGraph & inGraph
+                                              COMMA_LOCATION_ARGS) {
+  macroDetachSharedObject (mSharedGraph) ;
+  if (inGraph.isValid ()) {
+    macroMyNew (mSharedGraph, SharedGraph_usefulEntitiesGraph (THERE)) ;
+    mSharedGraph->copyReversedGraphFrom (inGraph.mSharedGraph) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Object Compare
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+int32_t SharedGraph_usefulEntitiesGraph::graphCompare (const SharedGraph_usefulEntitiesGraph * inOperand) const {
+  const int32_t r = int32_t (allNodeCount ()) - int32_t (inOperand->allNodeCount ()) ;
+  return r ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_usefulEntitiesGraph::objectCompare (const GGS_usefulEntitiesGraph & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t r = mSharedGraph->graphCompare (inOperand.mSharedGraph) ;
+    if (r < 0) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (r > 0) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Node Insertion
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+static void rotateLeft (GraphNode_usefulEntitiesGraph * & ioRootPtr) {
+  GraphNode_usefulEntitiesGraph * b = ioRootPtr->mSupPtr ;
+  ioRootPtr->mSupPtr = b->mInfPtr ;
+  b->mInfPtr = ioRootPtr;
+
+  if (b->mBalance >= 0) {
+    ioRootPtr->mBalance += 1 ;
+  }else{
+    ioRootPtr->mBalance += 1 - b->mBalance ;
+  }
+
+  if (ioRootPtr->mBalance > 0) {
+    b->mBalance += ioRootPtr->mBalance + 1 ;
+  }else{
+    b->mBalance += 1 ;
+  }
+  ioRootPtr = b ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static void rotateRight (GraphNode_usefulEntitiesGraph * & ioRootPtr) {
+  GraphNode_usefulEntitiesGraph * b = ioRootPtr->mInfPtr ;
+  ioRootPtr->mInfPtr = b->mSupPtr ;
+  b->mSupPtr = ioRootPtr ;
+
+  if (b->mBalance > 0) {
+    ioRootPtr->mBalance += -b->mBalance - 1 ;
+  }else{
+    ioRootPtr->mBalance -= 1 ;
+  }
+  if (ioRootPtr->mBalance >= 0) {
+    b->mBalance -= 1 ;
+  }else{
+    b->mBalance += ioRootPtr->mBalance - 1 ;
+  }
+  ioRootPtr = b ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GraphNode_usefulEntitiesGraph::GraphNode_usefulEntitiesGraph (const String & inKey,
+                                                            const uint32_t inNodeID) :
+mInfPtr (nullptr),
+mSupPtr (nullptr),
+mBalance (0),
+mKey (inKey),
+mNodeID (inNodeID),
+mElement (),
+mDefinitionLocation (),
+mReferenceLocationArray (),
+mIsDefined (false) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GraphNode_usefulEntitiesGraph * SharedGraph_usefulEntitiesGraph::internalInsert (GraphNode_usefulEntitiesGraph * & ioRootPtr,
+                                         const String & inKey,
+                                         bool & ioExtension) {
+  GraphNode_usefulEntitiesGraph * matchingEntry = nullptr ;
+  if (ioRootPtr == nullptr) {
+    macroMyNew (ioRootPtr, GraphNode_usefulEntitiesGraph (inKey, (uint32_t) mNodeArray.count ())) ;
+    mDirectedGraph.addNode ((uint32_t) mNodeArray.count ()) ;
+    mNodeArray.appendObject (ioRootPtr) ;
+    ioExtension = true ;
+    matchingEntry = ioRootPtr ;
+  }else{
+    macroValidPointer (ioRootPtr) ;
+    const int32_t comparaison = ioRootPtr->mKey.compare (inKey) ;
+    if (comparaison > 0) {
+      matchingEntry = internalInsert (ioRootPtr->mInfPtr, inKey, ioExtension) ;
+      if (ioExtension) {
+        ioRootPtr->mBalance += 1 ;
+        if (ioRootPtr->mBalance == 0) {
+          ioExtension = false;
+        }else if (ioRootPtr->mBalance == 2) {
+          if (ioRootPtr->mInfPtr->mBalance == -1) {
+            rotateLeft (ioRootPtr->mInfPtr) ;
+          }
+          rotateRight (ioRootPtr) ;
+          ioExtension = false;
+        }
+      }
+    }else if (comparaison < 0) {
+      matchingEntry = internalInsert (ioRootPtr->mSupPtr, inKey, ioExtension) ;
+      if (ioExtension) {
+        ioRootPtr->mBalance-- ;
+        if (ioRootPtr->mBalance == 0) {
+          ioExtension = false ;
+        }else if (ioRootPtr->mBalance == -2) {
+          if (ioRootPtr->mSupPtr->mBalance == 1) {
+            rotateRight (ioRootPtr->mSupPtr) ;
+          }
+          rotateLeft (ioRootPtr) ;
+          ioExtension = false;
+        }
+      }
+    }else{ // Entry already exists
+      matchingEntry = ioRootPtr ;
+      ioExtension = false ;
+    }
+  }
+  return matchingEntry ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark internalAddNode
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+GraphNode_usefulEntitiesGraph * SharedGraph_usefulEntitiesGraph::findOrAddNodeForKey (const String & inKey) {
+  bool extension = false ; // Unused here
+  return internalInsert (mRoot, inKey, extension) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_usefulEntitiesGraph::internalAddNode (const GGS_lstring & inKey,
+                                   const char * inErrorMessage,
+                                   const GGS_lstring & inElement,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) {
+  GraphNode_usefulEntitiesGraph * node = findOrAddNodeForKey (inKey.mProperty_string.stringValue ()) ;
+  if (!node->mIsDefined) { // Node exists, but is undefined
+    node->mElement = inElement ;
+    node->mDefinitionLocation = inKey.mProperty_location ;
+    node->mIsDefined = true ;
+  }else{ // Error : node redefinition
+    GGS_lstring existingKey ;
+    existingKey.mProperty_location = node->mDefinitionLocation ;
+    existingKey.mProperty_string = GGS_string (node->mKey) ;
+    inCompiler->semanticErrorWith_K_L_message (existingKey, inErrorMessage, inKey.mProperty_location COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::internalAddNode (const GGS_lstring & inKey,
+                                       const char * inErrorMessage,
+                                       const GGS_lstring & inElement,
+                                       Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid () && inElement.isValid ()) {
+    insulateGraph (THERE) ;
+    macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
+    if (nullptr != mSharedGraph) {
+      mSharedGraph->internalAddNode (inKey, inErrorMessage, inElement, inCompiler COMMA_THERE) ;
+    }
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      mSharedGraph->checkGraph (HERE) ;
+    #endif
+  }
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark modifier noteNode
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::setter_noteNode (const GGS_lstring & inKey
+                                       COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    insulateGraph (THERE) ;
+    macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
+    GraphNode_usefulEntitiesGraph * node = (nullptr == mSharedGraph)
+      ? nullptr
+      : mSharedGraph->findOrAddNodeForKey (inKey.mProperty_string.stringValue ())
+    ;
+    if (nullptr != node) {
+      node->mReferenceLocationArray.appendObject (inKey.mProperty_location) ;
+    }
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      mSharedGraph->checkGraph (HERE) ;
+    #endif
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Modifier addEdge
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_usefulEntitiesGraph::addEdge (const String & inSourceNodeKey,
+                           const GGS_location & inSourceNodeLocation,
+                           const String & inTargetNodeKey,
+                           const GGS_location & inTargetNodeLocation) {
+  GraphNode_usefulEntitiesGraph * sourceNode = findOrAddNodeForKey (inSourceNodeKey) ;
+  macroValidPointer (sourceNode) ;
+  GraphNode_usefulEntitiesGraph * targetNode = findOrAddNodeForKey (inTargetNodeKey) ;
+  macroValidPointer (targetNode) ;
+  sourceNode->mReferenceLocationArray.appendObject (inSourceNodeLocation) ;
+  targetNode->mReferenceLocationArray.appendObject (inTargetNodeLocation) ;
+  mDirectedGraph.addEdge (sourceNode->mNodeID, targetNode->mNodeID) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::setter_addEdge (const GGS_lstring & inSourceNodeKey,
+                                      const GGS_lstring & inTargetNodeKey
+                                      COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inSourceNodeKey.isValid () && inTargetNodeKey.isValid ()) {
+    insulateGraph (HERE) ;
+    macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
+    if (nullptr != mSharedGraph) {
+      mSharedGraph->addEdge (inSourceNodeKey.mProperty_string.stringValue (),
+                             inSourceNodeKey.mProperty_location,
+                             inTargetNodeKey.mProperty_string.stringValue (),
+                             inTargetNodeKey.mProperty_location) ;
+    }
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      mSharedGraph->checkGraph (HERE) ;
+    #endif
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Output graphviz text
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+String SharedGraph_usefulEntitiesGraph::getter_graphviz (void) const {
+  GenericUniqueArray <String> nodeNameArray ;
+  for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
+    nodeNameArray.appendObject (mNodeArray (i COMMA_HERE)->mKey) ;
+  }
+  return mDirectedGraph.graphvizString (nodeNameArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_usefulEntitiesGraph::getter_graphviz (UNUSED_LOCATION_ARGS) const {
+  GGS_string result ;
+  if (isValid ()) {
+    result = GGS_string (mSharedGraph->getter_graphviz ()) ;
+  }
+  return result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Output arc list
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_usefulEntitiesGraph::edges (GGS__32_stringlist & ioList) const {
+  GenericUniqueArray <GraphEdge> edgeArray ; mDirectedGraph.getEdges (edgeArray) ;
+  for (int32_t i=0 ; i<edgeArray.count () ; i++) {
+    const GraphEdge edge = edgeArray (i COMMA_HERE) ;
+    ioList.addAssignOperation (
+      mNodeArray ((int32_t) edge.mSource COMMA_HERE)->mKey,
+      mNodeArray ((int32_t) edge.mTarget COMMA_HERE)->mKey
+      COMMA_HERE
+    ) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__32_stringlist GGS_usefulEntitiesGraph::getter_edges (LOCATION_ARGS) const {
+  GGS__32_stringlist result ;
+  if (isValid ()) {
+    result = GGS__32_stringlist::init (nullptr COMMA_THERE) ;
+    mSharedGraph->edges (result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark getter_undefinedNodeCount
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+static void countUndefinedNodeCount (const GraphNode_usefulEntitiesGraph * inNode, uint32_t & ioCount) {
+  if (nullptr != inNode) {
+    countUndefinedNodeCount (inNode->mInfPtr, ioCount) ;
+    if (! inNode->mIsDefined) {
+      ioCount += 1 ;
+    }
+    countUndefinedNodeCount (inNode->mSupPtr, ioCount) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_usefulEntitiesGraph::getter_undefinedNodeCount (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    uint32_t undefinedNodeCount = 0 ;
+    countUndefinedNodeCount (mSharedGraph->root (), undefinedNodeCount) ;
+    result = GGS_uint (undefinedNodeCount) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark getter_undefinedNodeKeyList
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+static void buildUndefinedNodeKeyList (const GraphNode_usefulEntitiesGraph * inNode, GGS_stringlist & ioResult) {
+  if (nullptr != inNode) {
+    buildUndefinedNodeKeyList (inNode->mInfPtr, ioResult) ;
+    if (! inNode->mIsDefined) {
+      ioResult.addAssignOperation (GGS_string (inNode->mKey) COMMA_HERE) ;
+    }
+    buildUndefinedNodeKeyList (inNode->mSupPtr, ioResult) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringlist GGS_usefulEntitiesGraph::getter_undefinedNodeKeyList (LOCATION_ARGS) const {
+  GGS_stringlist result ;
+  if (isValid ()) {
+    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
+    buildUndefinedNodeKeyList (mSharedGraph->root (), result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Find circularities
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_usefulEntitiesGraph::internalFindCircularities (GGS__5B_lstring_5D_ & outInfoList,
+                                             GGS_lstringlist & outNodeKeyList) const {
+  GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesInvolvedInCircularities (nodeArray) ;
+//--- Add nodes
+  outInfoList.removeAll () ;
+  outNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<nodeArray.count () ; i++) {
+    const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
+    const GraphNode_usefulEntitiesGraph * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outInfoList.plusPlusAssignOperation (nodePtr->mElement COMMA_HERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
+    outNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::internalFindCircularities (GGS__5B_lstring_5D_ & outInfoList,
+                                                 GGS_lstringlist & outNodeKeyList
+                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+  outNodeKeyList.drop () ;
+  if (isValid ()) {
+    mSharedGraph->internalFindCircularities (outInfoList, outNodeKeyList) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Nodes with no predecessor
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_usefulEntitiesGraph::internalNodesWithNoPredecessor (GGS__5B_lstring_5D_ & outInfoList,
+                                                  GGS_lstringlist & outNodeKeyList) const {
+  GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoPredecessor (nodeArray) ;
+//--- Add nodes
+  outInfoList.removeAll () ;
+  outNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<nodeArray.count () ; i++) {
+    const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
+    const GraphNode_usefulEntitiesGraph * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outInfoList.plusPlusAssignOperation (nodePtr->mElement COMMA_HERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
+    outNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::internalNodesWithNoPredecessor (GGS__5B_lstring_5D_ & outInfoList,
+                                                      GGS_lstringlist & outNodeKeyList
+                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+  outNodeKeyList.drop () ;
+  if (isValid ()) {
+    mSharedGraph->internalNodesWithNoPredecessor (outInfoList, outNodeKeyList) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Nodes with no successor
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_usefulEntitiesGraph::internalNodesWithNoSuccessor (GGS__5B_lstring_5D_ & outInfoList,
+                                                GGS_lstringlist & outNodeKeyList) const {
+  GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoSuccessor (nodeArray) ;
+//--- Add nodes
+  outInfoList.removeAll () ;
+  outNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<nodeArray.count () ; i++) {
+    const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
+    const GraphNode_usefulEntitiesGraph * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outInfoList.plusPlusAssignOperation (nodePtr->mElement COMMA_HERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
+    outNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::internalNodesWithNoSuccessor (GGS__5B_lstring_5D_ & outInfoList,
+                                                    GGS_lstringlist & outNodeKeyList
+                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  outNodeKeyList.drop () ;
+  if (isValid ()) {
+    mSharedGraph->internalNodesWithNoSuccessor (outInfoList, outNodeKeyList) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Breath First Topological sort
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_usefulEntitiesGraph::internalTopologicalSort (GGS__5B_lstring_5D_ & outSortedList,
+                                           GGS_lstringlist & outSortedNodeKeyList,
+                                           GGS__5B_lstring_5D_ & outUnsortedList,
+                                           GGS_lstringlist & outUnsortedNodeKeyList) const {
+  GenericUniqueArray <uint32_t> sortedNodes ;
+  GenericUniqueArray <uint32_t> unsortedNodes ;
+  mDirectedGraph.topologicalSort (sortedNodes, unsortedNodes) ;
+//--- Add sorted nodes
+  outSortedList.removeAll () ;
+  outSortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<sortedNodes.count () ; i++) {
+    const uint32_t nodeIndex = sortedNodes (i COMMA_HERE) ;
+    const GraphNode_usefulEntitiesGraph * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outSortedList.plusPlusAssignOperation (nodePtr->mElement COMMA_HERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
+    outSortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+  }
+//--- Add unsorted nodes
+  outUnsortedList.removeAll () ;
+  outUnsortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<unsortedNodes.count () ; i++) {
+    const uint32_t nodeIndex = unsortedNodes (i COMMA_HERE) ;
+    const GraphNode_usefulEntitiesGraph * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outUnsortedList.plusPlusAssignOperation (nodePtr->mElement COMMA_HERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
+    outUnsortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::internalTopologicalSort (GGS__5B_lstring_5D_ & outSortedList,
+                                               GGS_lstringlist & outSortedNodeKeyList,
+                                               GGS__5B_lstring_5D_ & outUnsortedList,
+                                               GGS_lstringlist & outUnsortedNodeKeyList,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  outSortedNodeKeyList.drop () ;
+  outUnsortedNodeKeyList.drop () ;
+  if (isValid ()) {
+    uint32_t undefinedNodeCount = 0 ;
+    countUndefinedNodeCount (mSharedGraph->root (), undefinedNodeCount) ;
+    if (0 != undefinedNodeCount) {
+      String s ("Cannot apply graph topologicalSort: there ") ;
+      if (undefinedNodeCount > 1) {
+        s.appendCString ("are ") ;
+        s.appendUnsigned (undefinedNodeCount) ;
+        s.appendCString (" undefined nodes") ;
+      }else{
+        s.appendCString ("is 1 undefined node") ;
+      }
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }else{
+      mSharedGraph->internalTopologicalSort (outSortedList, outSortedNodeKeyList, outUnsortedList, outUnsortedNodeKeyList) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Depth First Topological sort
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_usefulEntitiesGraph::internalDepthFirstTopologicalSort (GGS__5B_lstring_5D_ & outSortedList,
+                                                     GGS_lstringlist & outSortedNodeKeyList,
+                                                     GGS__5B_lstring_5D_ & outUnsortedList,
+                                                     GGS_lstringlist & outUnsortedNodeKeyList) const {
+  GenericUniqueArray <uint32_t> sortedNodes ;
+  GenericUniqueArray <uint32_t> unsortedNodes ;
+  mDirectedGraph.depthFirstTopologicalSort (sortedNodes, unsortedNodes) ;
+//--- Add sorted nodes
+  outSortedList.removeAll () ;
+  outSortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<sortedNodes.count () ; i++) {
+    const uint32_t nodeIndex = sortedNodes (i COMMA_HERE) ;
+    const GraphNode_usefulEntitiesGraph * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outSortedList.plusPlusAssignOperation (nodePtr->mElement COMMA_HERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
+    outSortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+  }
+//--- Add unsorted nodes
+  outUnsortedList.removeAll () ;
+  outUnsortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  for (int32_t i=0 ; i<unsortedNodes.count () ; i++) {
+    const uint32_t nodeIndex = unsortedNodes (i COMMA_HERE) ;
+    const GraphNode_usefulEntitiesGraph * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outUnsortedList.plusPlusAssignOperation (nodePtr->mElement COMMA_HERE) ;
+    GGS_lstring lkey ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
+    outUnsortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::internalDepthFirstTopologicalSort (GGS__5B_lstring_5D_ & outSortedList,
+                                                         GGS_lstringlist & outSortedNodeKeyList,
+                                                         GGS__5B_lstring_5D_ & outUnsortedList,
+                                                         GGS_lstringlist & outUnsortedNodeKeyList,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  outSortedNodeKeyList.drop () ;
+  outUnsortedNodeKeyList.drop () ;
+  if (isValid ()) {
+    uint32_t undefinedNodeCount = 0 ;
+    countUndefinedNodeCount (mSharedGraph->root (), undefinedNodeCount) ;
+    if (0 != undefinedNodeCount) {
+      String s ("Cannot apply graph topologicalSort: there ") ;
+      if (undefinedNodeCount > 1) {
+        s.appendCString ("are ") ;
+        s.appendUnsigned (undefinedNodeCount) ;
+        s.appendCString (" undefined nodes") ;
+      }else{
+        s.appendCString ("is 1 undefined node") ;
+      }
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }else{
+      mSharedGraph->internalDepthFirstTopologicalSort (outSortedList, outSortedNodeKeyList, outUnsortedList, outUnsortedNodeKeyList) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark getter_undefinedNodeReferenceList
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+static void buildUndefinedNodeReferenceList (const GraphNode_usefulEntitiesGraph * inNode,
+                                             GGS_lstringlist & ioResult) {
+  if (nullptr != inNode) {
+    buildUndefinedNodeReferenceList (inNode->mInfPtr, ioResult) ;
+    if (!inNode->mIsDefined) {
+      GGS_lstring lkey ;
+      lkey.mProperty_string = GGS_string (inNode->mKey) ;
+      for (int32_t i=0 ; i < inNode->mReferenceLocationArray.count () ; i++) {
+        lkey.mProperty_location = inNode->mReferenceLocationArray (i COMMA_HERE) ;
+        ioResult.addAssignOperation (lkey COMMA_HERE) ;
+      }
+    }
+    buildUndefinedNodeReferenceList (inNode->mSupPtr, ioResult) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstringlist GGS_usefulEntitiesGraph::getter_undefinedNodeReferenceList (LOCATION_ARGS) const {
+  GGS_lstringlist result ;
+  if (isValid ()) {
+    result = GGS_lstringlist::init (nullptr COMMA_THERE) ;
+    buildUndefinedNodeReferenceList (mSharedGraph->root (), result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Modifier removeEdgesToNode
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::setter_removeEdgesToNode (const GGS_string & inNodeName,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
+  if (isValid () && inNodeName.isValid ()) {
+    insulateGraph (HERE) ;
+    macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
+    if (nullptr != mSharedGraph) {
+      mSharedGraph->removeEdgesToNode (inNodeName.stringValue (), inCompiler COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_usefulEntitiesGraph::removeEdgesToNode (const String & inNodeName,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) {
+//--- Find node
+  const GraphNode_usefulEntitiesGraph * node = findNode (inNodeName, mRoot) ;
+  if (nullptr == node) {
+    String s ("graph removeEdgesToNode: node '") ;
+    s.appendString (inNodeName) ;
+    s.appendCString ("' does not exist") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const uint32_t nodeIndex = node->mNodeID ;
+    mDirectedGraph.removeEdgesToNode (nodeIndex COMMA_HERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Modifier removeEdgesToDominators
+#endif
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_usefulEntitiesGraph::setter_removeEdgesToDominators (LOCATION_ARGS) {
+  if (isValid ()) {
+    insulateGraph (HERE) ;
+    macroAssert (nullptr != mSharedGraph, "mSharedGraph == nullptr", 0, 0) ;
+    if (nullptr != mSharedGraph) {
+      mSharedGraph->removeEdgesToDominators (THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void SharedGraph_usefulEntitiesGraph::removeEdgesToDominators (LOCATION_ARGS) {
+//--- Find start nodes
+  GenericUniqueArray <uint32_t> startNodes ; mDirectedGraph.getNodesWithNoPredecessor (startNodes) ;
+//--- Add a dummy start node for handling case where there several start nodes
+  const uint32_t dummyNodeIndex = mDirectedGraph.unusedNodeIndex () ;
+//--- Add edges from dummy node to start nodes
+  for (int32_t i=0 ; i<startNodes.count () ; i++) {
+    mDirectedGraph.addEdge (dummyNodeIndex, startNodes (i COMMA_HERE)) ;
+  }
+//--- Remove edge to dominator
+  mDirectedGraph.removeEdgesToDominator (THERE) ;
+//--- Remove dummy node
+  mDirectedGraph.removeNode (dummyNodeIndex) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4474,43 +5860,41 @@ GGS_usefulEntitiesGraph GGS_usefulEntitiesGraph::init (Compiler * COMMA_LOCATION
 //--------------------------------------------------------------------------------------------------
 
 void GGS_usefulEntitiesGraph::setter_addNode (GGS_lstring inKey,
-                                              GGS_lstring inArgument_0,
+                                              GGS_lstring inElement,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
-  CollectionElement attributes ;
-  GGS_lstringlist::makeAttributesFromObjects (attributes, inArgument_0 COMMA_THERE) ;
   const char * kErrorMessage = "the '%K' entity is already declared at %L" ;
-  internalAddNode (inKey, kErrorMessage, attributes, inCompiler COMMA_THERE) ;
+  internalAddNode (inKey, kErrorMessage, inElement, inCompiler COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_usefulEntitiesGraph::method_topologicalSort (GGS_lstringlist & outSortedList,
+void GGS_usefulEntitiesGraph::method_topologicalSort (GGS__5B_lstring_5D_ & outSortedList,
                                                       GGS_lstringlist & outSortedKeyList,
-                                                      GGS_lstringlist & outUnsortedList,
+                                                      GGS__5B_lstring_5D_ & outUnsortedList,
                                                       GGS_lstringlist & outUnsortedKeyList,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
-  CollectionElementArray sortedList ;
-  CollectionElementArray unsortedList ;
+  GGS__5B_lstring_5D_ sortedList ;
+  GGS__5B_lstring_5D_ unsortedList ;
   internalTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
-  outSortedList = GGS_lstringlist (sortedList) ;
-  outUnsortedList = GGS_lstringlist (unsortedList) ;
+  outSortedList = GGS__5B_lstring_5D_ (sortedList) ;
+  outUnsortedList = GGS__5B_lstring_5D_ (unsortedList) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_usefulEntitiesGraph::method_depthFirstTopologicalSort (GGS_lstringlist & outSortedList,
+void GGS_usefulEntitiesGraph::method_depthFirstTopologicalSort (GGS__5B_lstring_5D_ & outSortedList,
                                                                 GGS_lstringlist & outSortedKeyList,
-                                                                GGS_lstringlist & outUnsortedList,
+                                                                GGS__5B_lstring_5D_ & outUnsortedList,
                                                                 GGS_lstringlist & outUnsortedKeyList,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  CollectionElementArray sortedList ;
-  CollectionElementArray unsortedList ;
+  GGS__5B_lstring_5D_ sortedList ;
+  GGS__5B_lstring_5D_ unsortedList ;
   internalDepthFirstTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
-  outSortedList = GGS_lstringlist (sortedList) ;
-  outUnsortedList = GGS_lstringlist (unsortedList) ;
+  outSortedList = GGS__5B_lstring_5D_ (sortedList) ;
+  outUnsortedList = GGS__5B_lstring_5D_ (unsortedList) ;
 }
 
 
@@ -4524,32 +5908,32 @@ GGS_usefulEntitiesGraph GGS_usefulEntitiesGraph::getter_reversedGraph (LOCATION_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_usefulEntitiesGraph::method_circularities (GGS_lstringlist & outInfoList,
+void GGS_usefulEntitiesGraph::method_circularities (GGS__5B_lstring_5D_ & outInfoList,
                                                     GGS_lstringlist & outKeyList
                                                     COMMA_LOCATION_ARGS) const {
-  CollectionElementArray infoList ;
+  GGS__5B_lstring_5D_ infoList ;
   internalFindCircularities (infoList, outKeyList COMMA_THERE) ;
-  outInfoList = GGS_lstringlist (infoList) ;
+  outInfoList = GGS__5B_lstring_5D_ (infoList) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_usefulEntitiesGraph::method_nodesWithNoSuccessor (GGS_lstringlist & outInfoList,
+void GGS_usefulEntitiesGraph::method_nodesWithNoSuccessor (GGS__5B_lstring_5D_ & outInfoList,
                                                            GGS_lstringlist & outKeyList
                                                            COMMA_LOCATION_ARGS) const {
-  CollectionElementArray infoList ;
+  GGS__5B_lstring_5D_ infoList ;
   internalNodesWithNoSuccessor (infoList, outKeyList COMMA_THERE) ;
-  outInfoList = GGS_lstringlist (infoList) ;
+  outInfoList = GGS__5B_lstring_5D_ (infoList) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_usefulEntitiesGraph::method_nodesWithNoPredecessor (GGS_lstringlist & outInfoList,
+void GGS_usefulEntitiesGraph::method_nodesWithNoPredecessor (GGS__5B_lstring_5D_ & outInfoList,
                                                              GGS_lstringlist & outKeyList
                                                              COMMA_LOCATION_ARGS) const {
-  CollectionElementArray infoList ;
+  GGS__5B_lstring_5D_ infoList ;
   internalNodesWithNoPredecessor (infoList, outKeyList COMMA_THERE) ;
-  outInfoList = GGS_lstringlist (infoList) ;
+  outInfoList = GGS__5B_lstring_5D_ (infoList) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4565,8 +5949,8 @@ GGS_usefulEntitiesGraph GGS_usefulEntitiesGraph::getter_subgraphFromNodes (const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_usefulEntitiesGraph::getter_nodeList (UNUSED_LOCATION_ARGS) const {
-  GGS_lstringlist resultingList ;
+GGS__5B_lstring_5D_ GGS_usefulEntitiesGraph::getter_nodeList (UNUSED_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ resultingList ;
   if (isValid ()) {
     resultingList = graph () ;
   }
@@ -16334,2067 +17718,6 @@ GGS_projectQualifiedFeatureMap GGS_projectQualifiedFeatureMap::extractObject (co
       result = *p ;
     }else{
       inCompiler->castError ("projectQualifiedFeatureMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@XCodeGroupList' list
-//--------------------------------------------------------------------------------------------------
-
-class CollectionElementPtr_XCodeGroupList : public CollectionElementPtr {
-  public: GGS_XCodeGroupList_2E_element mObject ;
-
-//--- Class functions
-  public: CollectionElementPtr_XCodeGroupList (const GGS_string & in_mGroupReference,
-                                               const GGS_string & in_mGroupName,
-                                               const GGS_string & in_mGroupPath,
-                                               const GGS_stringlist & in_mChildrenRefs
-                                               COMMA_LOCATION_ARGS) ;
-  public: CollectionElementPtr_XCodeGroupList (const GGS_XCodeGroupList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual proc that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual proc that returns a copy of current object
-  public: virtual CollectionElementPtr * copy (void) ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_XCodeGroupList::CollectionElementPtr_XCodeGroupList (const GGS_string & in_mGroupReference,
-                                                                          const GGS_string & in_mGroupName,
-                                                                          const GGS_string & in_mGroupPath,
-                                                                          const GGS_stringlist & in_mChildrenRefs
-                                                                          COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (in_mGroupReference, in_mGroupName, in_mGroupPath, in_mChildrenRefs) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_XCodeGroupList::CollectionElementPtr_XCodeGroupList (const GGS_XCodeGroupList_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (inElement.mProperty_mGroupReference, inElement.mProperty_mGroupName, inElement.mProperty_mGroupPath, inElement.mProperty_mChildrenRefs) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool CollectionElementPtr_XCodeGroupList::isValid (void) const {
-  return true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr * CollectionElementPtr_XCodeGroupList::copy (void) {
-  CollectionElementPtr * result = nullptr ;
-  macroMyNew (result, CollectionElementPtr_XCodeGroupList (mObject.mProperty_mGroupReference, mObject.mProperty_mGroupName, mObject.mProperty_mGroupPath, mObject.mProperty_mChildrenRefs COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// List type @XCodeGroupList
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeGroupList::GGS_XCodeGroupList (void) :
-mArray () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeGroupList::GGS_XCodeGroupList (const CollectionElementArray & inArray) :
-mArray () {
-  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
-  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElementPtr_XCodeGroupList * p = (CollectionElementPtr_XCodeGroupList *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElementPtr_XCodeGroupList) ;
-    const GGS_XCodeGroupList_2E_element element (p->mObject.mProperty_mGroupReference, p->mObject.mProperty_mGroupName, p->mObject.mProperty_mGroupPath, p->mObject.mProperty_mChildrenRefs) ;
-    mArray.appendObject (element) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                    const GGS_string & in_mGroupReference,
-                                                    const GGS_string & in_mGroupName,
-                                                    const GGS_string & in_mGroupPath,
-                                                    const GGS_stringlist & in_mChildrenRefs
-                                                    COMMA_LOCATION_ARGS) {
-  CollectionElementPtr_XCodeGroupList * p = nullptr ;
-  macroMyNew (p, CollectionElementPtr_XCodeGroupList (in_mGroupReference, in_mGroupName, in_mGroupPath, in_mChildrenRefs COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_XCodeGroupList::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_range GGS_XCodeGroupList::getter_range (UNUSED_LOCATION_ARGS) const {
-  GGS_range result ;
-  if (isValid ()) {
-    result = GGS_range (0, count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::description (String & ioString,
-                                      const int32_t inIndentation) const {
-  ioString.appendCString ("<list @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (" (") ;
-  ioString.appendUnsigned (count()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((count() > 1) ? "s" : "") ;
-  ioString.appendCString ("):") ;
-  if (isValid ()) {
-    for (uint32_t i = 0 ; i < count () ; i++) {
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation) ;
-      ioString.appendString ("|-at ") ;
-      ioString.appendUnsigned (i) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mGroupReference:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mGroupReference.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mGroupName:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mGroupName.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mGroupPath:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mGroupPath.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mChildrenRefs:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mChildrenRefs.description (ioString, inIndentation + 1) ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeGroupList GGS_XCodeGroupList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_XCodeGroupList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::plusPlusAssignOperation (const GGS_XCodeGroupList_2E_element & inValue
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inValue.isValid ()) {
-    mArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeGroupList GGS_XCodeGroupList::class_func_listWithValue (const GGS_string & inOperand0,
-                                                                 const GGS_string & inOperand1,
-                                                                 const GGS_string & inOperand2,
-                                                                 const GGS_stringlist & inOperand3
-                                                                 COMMA_LOCATION_ARGS) {
-  const GGS_XCodeGroupList_2E_element element (inOperand0, inOperand1, inOperand2, inOperand3) ;
-  GGS_XCodeGroupList result ;
-  if (element.isValid ()) {
-    result.mArray.setCapacity (16) ; // Build
-    result.plusPlusAssignOperation (element COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::addAssignOperation (const GGS_string & inOperand0,
-                                             const GGS_string & inOperand1,
-                                             const GGS_string & inOperand2,
-                                             const GGS_stringlist & inOperand3
-                                             COMMA_LOCATION_ARGS) {
-  const GGS_XCodeGroupList_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3) ;
-  plusPlusAssignOperation (newElement COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::setter_append (const GGS_string inOperand0,
-                                        const GGS_string inOperand1,
-                                        const GGS_string inOperand2,
-                                        const GGS_stringlist inOperand3,
-                                        Compiler * /* inCompiler */
-                                        COMMA_LOCATION_ARGS) {
-  const GGS_XCodeGroupList_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3) ;
-  if (isValid () && newElement.isValid ()) {
-    plusPlusAssignOperation (newElement COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::setter_insertAtIndex (const GGS_string inOperand0,
-                                               const GGS_string inOperand1,
-                                               const GGS_string inOperand2,
-                                               const GGS_stringlist inOperand3,
-                                               const GGS_uint inInsertionIndex,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
-  const GGS_XCodeGroupList_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3) ;
-  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx <= mArray.count ()) {
-      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
-    }else{
-      String message = "cannot insert at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::setter_removeAtIndex (GGS_string & outOperand0,
-                                               GGS_string & outOperand1,
-                                               GGS_string & outOperand2,
-                                               GGS_stringlist & outOperand3,
-                                               const GGS_uint inRemoveIndex,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx < mArray.count ()) {
-      removed = true ;
-      outOperand0 = mArray (idx COMMA_HERE).mProperty_mGroupReference ;
-      outOperand1 = mArray (idx COMMA_HERE).mProperty_mGroupName ;
-      outOperand2 = mArray (idx COMMA_HERE).mProperty_mGroupPath ;
-      outOperand3 = mArray (idx COMMA_HERE).mProperty_mChildrenRefs ;
-      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
-    }else{
-      String message = "cannot remove at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::setter_popFirst (GGS_string & outOperand0,
-                                          GGS_string & outOperand1,
-                                          GGS_string & outOperand2,
-                                          GGS_stringlist & outOperand3,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mGroupReference ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mGroupName ;
-      outOperand2 = mArray (0 COMMA_THERE).mProperty_mGroupPath ;
-      outOperand3 = mArray (0 COMMA_THERE).mProperty_mChildrenRefs ;
-      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
-    }else{
-      const String message = "cannot remove first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::setter_popLast (GGS_string & outOperand0,
-                                         GGS_string & outOperand1,
-                                         GGS_string & outOperand2,
-                                         GGS_stringlist & outOperand3,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mGroupReference ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mGroupName ;
-      outOperand2 = mArray.lastObject (HERE).mProperty_mGroupPath ;
-      outOperand3 = mArray.lastObject (HERE).mProperty_mChildrenRefs ;
-      mArray.removeLastObject (HERE) ;
-    }else{
-      const String message = "cannot remove last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::method_first (GGS_string & outOperand0,
-                                       GGS_string & outOperand1,
-                                       GGS_string & outOperand2,
-                                       GGS_stringlist & outOperand3,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mGroupReference ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mGroupName ;
-      outOperand2 = mArray (0 COMMA_THERE).mProperty_mGroupPath ;
-      outOperand3 = mArray (0 COMMA_THERE).mProperty_mChildrenRefs ;
-    }else{
-      const String message = "cannot get first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::method_last (GGS_string & outOperand0,
-                                      GGS_string & outOperand1,
-                                      GGS_string & outOperand2,
-                                      GGS_stringlist & outOperand3,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mGroupReference ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mGroupName ;
-      outOperand2 = mArray.lastObject (HERE).mProperty_mGroupPath ;
-      outOperand3 = mArray.lastObject (HERE).mProperty_mChildrenRefs ;
-    }else{
-      const String message = "cannot get last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeGroupList GGS_XCodeGroupList::add_operation (const GGS_XCodeGroupList & inOperand,
-                                                      Compiler * /* inCompiler */
-                                                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_XCodeGroupList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
-      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeGroupList GGS_XCodeGroupList::subList (const int32_t inStart,
-                                                const int32_t inLength,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const {
-  GGS_XCodeGroupList result ;
-  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
-  if (ok) {
-    result.mArray.setCapacity (std::max (16, inLength)) ;
-    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
-      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
-    }
-  }else{
-    String message = "cannot get sublist [start: " ;
-    message.appendSigned (inStart) ;
-    message.appendCString (", length: ") ;
-    message.appendSigned (inLength) ;
-    message.appendCString ("], list count is ") ;
-    message.appendSigned (mArray.count ()) ;
-    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeGroupList GGS_XCodeGroupList::getter_subListWithRange (const GGS_range & inRange,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const {
-  GGS_XCodeGroupList result ;
-  if (isValid () && inRange.isValid ()) {
-    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
-    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeGroupList GGS_XCodeGroupList::getter_subListFromIndex (const GGS_uint & inIndex,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const {
-  GGS_XCodeGroupList result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = int32_t (inIndex.uintValue ()) ;
-    const int32_t length = int32_t (count ()) - start ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeGroupList GGS_XCodeGroupList::getter_subListToIndex (const GGS_uint & inIndex,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const {
-  GGS_XCodeGroupList result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = 0 ;
-    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::plusAssignOperation (const GGS_XCodeGroupList inList,
-                                              Compiler * /* inCompiler */
-                                              COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inList.isValid ()) {
-    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
-    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
-      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::setter_setMGroupReferenceAtIndex (GGS_string inOperand,
-                                                           GGS_uint inIndex,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mGroupReference = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_XCodeGroupList::getter_mGroupReferenceAtIndex (const GGS_uint & inIndex,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const {
-  GGS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mGroupReference ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::setter_setMGroupNameAtIndex (GGS_string inOperand,
-                                                      GGS_uint inIndex,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mGroupName = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_XCodeGroupList::getter_mGroupNameAtIndex (const GGS_uint & inIndex,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  GGS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mGroupName ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::setter_setMGroupPathAtIndex (GGS_string inOperand,
-                                                      GGS_uint inIndex,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mGroupPath = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_XCodeGroupList::getter_mGroupPathAtIndex (const GGS_uint & inIndex,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  GGS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mGroupPath ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeGroupList::setter_setMChildrenRefsAtIndex (GGS_stringlist inOperand,
-                                                         GGS_uint inIndex,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mChildrenRefs = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist GGS_XCodeGroupList::getter_mChildrenRefsAtIndex (const GGS_uint & inIndex,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const {
-  GGS_stringlist result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mChildrenRefs ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @XCodeGroupList
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_XCodeGroupList::DownEnumerator_XCodeGroupList (const GGS_XCodeGroupList & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-  mIndex = mArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeGroupList_2E_element DownEnumerator_XCodeGroupList::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_XCodeGroupList::current_mGroupReference (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mGroupReference ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_XCodeGroupList::current_mGroupName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mGroupName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_XCodeGroupList::current_mGroupPath (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mGroupPath ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist DownEnumerator_XCodeGroupList::current_mChildrenRefs (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mChildrenRefs ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @XCodeGroupList
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_XCodeGroupList::UpEnumerator_XCodeGroupList (const GGS_XCodeGroupList & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeGroupList_2E_element UpEnumerator_XCodeGroupList::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_XCodeGroupList::current_mGroupReference (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mGroupReference ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_XCodeGroupList::current_mGroupName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mGroupName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_XCodeGroupList::current_mGroupPath (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mGroupPath ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist UpEnumerator_XCodeGroupList::current_mChildrenRefs (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mChildrenRefs ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//     @XCodeGroupList generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_XCodeGroupList ("XCodeGroupList",
-                                                                   nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_XCodeGroupList::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_XCodeGroupList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_XCodeGroupList::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_XCodeGroupList (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeGroupList GGS_XCodeGroupList::extractObject (const GGS_object & inObject,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  GGS_XCodeGroupList result ;
-  const GGS_XCodeGroupList * p = (const GGS_XCodeGroupList *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_XCodeGroupList *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("XCodeGroupList", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@XCodeToolTargetList' list
-//--------------------------------------------------------------------------------------------------
-
-class CollectionElementPtr_XCodeToolTargetList : public CollectionElementPtr {
-  public: GGS_XCodeToolTargetList_2E_element mObject ;
-
-//--- Class functions
-  public: CollectionElementPtr_XCodeToolTargetList (const GGS_string & in_mTargetRef,
-                                                    const GGS_string & in_mTargetName,
-                                                    const GGS_string & in_mProductFileReference,
-                                                    const GGS_string & in_mProductFileName,
-                                                    const GGS_stringlist & in_mBuildPhaseRefList,
-                                                    const GGS_string & in_mBuildPhaseRef,
-                                                    const GGS_string & in_mBuildConfigurationListRef,
-                                                    const GGS_stringlist & in_mBuildConfigurationSettingList,
-                                                    const GGS_string & in_mBuildConfigurationRef,
-                                                    const GGS_stringlist & in_mFrameworksFileRefList,
-                                                    const GGS_string & in_mFrameworkBuildPhaseRef
-                                                    COMMA_LOCATION_ARGS) ;
-  public: CollectionElementPtr_XCodeToolTargetList (const GGS_XCodeToolTargetList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual proc that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual proc that returns a copy of current object
-  public: virtual CollectionElementPtr * copy (void) ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_XCodeToolTargetList::CollectionElementPtr_XCodeToolTargetList (const GGS_string & in_mTargetRef,
-                                                                                    const GGS_string & in_mTargetName,
-                                                                                    const GGS_string & in_mProductFileReference,
-                                                                                    const GGS_string & in_mProductFileName,
-                                                                                    const GGS_stringlist & in_mBuildPhaseRefList,
-                                                                                    const GGS_string & in_mBuildPhaseRef,
-                                                                                    const GGS_string & in_mBuildConfigurationListRef,
-                                                                                    const GGS_stringlist & in_mBuildConfigurationSettingList,
-                                                                                    const GGS_string & in_mBuildConfigurationRef,
-                                                                                    const GGS_stringlist & in_mFrameworksFileRefList,
-                                                                                    const GGS_string & in_mFrameworkBuildPhaseRef
-                                                                                    COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (in_mTargetRef, in_mTargetName, in_mProductFileReference, in_mProductFileName, in_mBuildPhaseRefList, in_mBuildPhaseRef, in_mBuildConfigurationListRef, in_mBuildConfigurationSettingList, in_mBuildConfigurationRef, in_mFrameworksFileRefList, in_mFrameworkBuildPhaseRef) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_XCodeToolTargetList::CollectionElementPtr_XCodeToolTargetList (const GGS_XCodeToolTargetList_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (inElement.mProperty_mTargetRef, inElement.mProperty_mTargetName, inElement.mProperty_mProductFileReference, inElement.mProperty_mProductFileName, inElement.mProperty_mBuildPhaseRefList, inElement.mProperty_mBuildPhaseRef, inElement.mProperty_mBuildConfigurationListRef, inElement.mProperty_mBuildConfigurationSettingList, inElement.mProperty_mBuildConfigurationRef, inElement.mProperty_mFrameworksFileRefList, inElement.mProperty_mFrameworkBuildPhaseRef) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool CollectionElementPtr_XCodeToolTargetList::isValid (void) const {
-  return true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr * CollectionElementPtr_XCodeToolTargetList::copy (void) {
-  CollectionElementPtr * result = nullptr ;
-  macroMyNew (result, CollectionElementPtr_XCodeToolTargetList (mObject.mProperty_mTargetRef, mObject.mProperty_mTargetName, mObject.mProperty_mProductFileReference, mObject.mProperty_mProductFileName, mObject.mProperty_mBuildPhaseRefList, mObject.mProperty_mBuildPhaseRef, mObject.mProperty_mBuildConfigurationListRef, mObject.mProperty_mBuildConfigurationSettingList, mObject.mProperty_mBuildConfigurationRef, mObject.mProperty_mFrameworksFileRefList, mObject.mProperty_mFrameworkBuildPhaseRef COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// List type @XCodeToolTargetList
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeToolTargetList::GGS_XCodeToolTargetList (void) :
-mArray () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeToolTargetList::GGS_XCodeToolTargetList (const CollectionElementArray & inArray) :
-mArray () {
-  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
-  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElementPtr_XCodeToolTargetList * p = (CollectionElementPtr_XCodeToolTargetList *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElementPtr_XCodeToolTargetList) ;
-    const GGS_XCodeToolTargetList_2E_element element (p->mObject.mProperty_mTargetRef, p->mObject.mProperty_mTargetName, p->mObject.mProperty_mProductFileReference, p->mObject.mProperty_mProductFileName, p->mObject.mProperty_mBuildPhaseRefList, p->mObject.mProperty_mBuildPhaseRef, p->mObject.mProperty_mBuildConfigurationListRef, p->mObject.mProperty_mBuildConfigurationSettingList, p->mObject.mProperty_mBuildConfigurationRef, p->mObject.mProperty_mFrameworksFileRefList, p->mObject.mProperty_mFrameworkBuildPhaseRef) ;
-    mArray.appendObject (element) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                         const GGS_string & in_mTargetRef,
-                                                         const GGS_string & in_mTargetName,
-                                                         const GGS_string & in_mProductFileReference,
-                                                         const GGS_string & in_mProductFileName,
-                                                         const GGS_stringlist & in_mBuildPhaseRefList,
-                                                         const GGS_string & in_mBuildPhaseRef,
-                                                         const GGS_string & in_mBuildConfigurationListRef,
-                                                         const GGS_stringlist & in_mBuildConfigurationSettingList,
-                                                         const GGS_string & in_mBuildConfigurationRef,
-                                                         const GGS_stringlist & in_mFrameworksFileRefList,
-                                                         const GGS_string & in_mFrameworkBuildPhaseRef
-                                                         COMMA_LOCATION_ARGS) {
-  CollectionElementPtr_XCodeToolTargetList * p = nullptr ;
-  macroMyNew (p, CollectionElementPtr_XCodeToolTargetList (in_mTargetRef, in_mTargetName, in_mProductFileReference, in_mProductFileName, in_mBuildPhaseRefList, in_mBuildPhaseRef, in_mBuildConfigurationListRef, in_mBuildConfigurationSettingList, in_mBuildConfigurationRef, in_mFrameworksFileRefList, in_mFrameworkBuildPhaseRef COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_XCodeToolTargetList::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_range GGS_XCodeToolTargetList::getter_range (UNUSED_LOCATION_ARGS) const {
-  GGS_range result ;
-  if (isValid ()) {
-    result = GGS_range (0, count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::description (String & ioString,
-                                           const int32_t inIndentation) const {
-  ioString.appendCString ("<list @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (" (") ;
-  ioString.appendUnsigned (count()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((count() > 1) ? "s" : "") ;
-  ioString.appendCString ("):") ;
-  if (isValid ()) {
-    for (uint32_t i = 0 ; i < count () ; i++) {
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation) ;
-      ioString.appendString ("|-at ") ;
-      ioString.appendUnsigned (i) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mTargetRef:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mTargetRef.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mTargetName:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mTargetName.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mProductFileReference:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mProductFileReference.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mProductFileName:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mProductFileName.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mBuildPhaseRefList:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mBuildPhaseRefList.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mBuildPhaseRef:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mBuildPhaseRef.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mBuildConfigurationListRef:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mBuildConfigurationListRef.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mBuildConfigurationSettingList:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mBuildConfigurationSettingList.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mBuildConfigurationRef:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mBuildConfigurationRef.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mFrameworksFileRefList:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mFrameworksFileRefList.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mFrameworkBuildPhaseRef:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mFrameworkBuildPhaseRef.description (ioString, inIndentation + 1) ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeToolTargetList GGS_XCodeToolTargetList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_XCodeToolTargetList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::plusPlusAssignOperation (const GGS_XCodeToolTargetList_2E_element & inValue
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inValue.isValid ()) {
-    mArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeToolTargetList GGS_XCodeToolTargetList::class_func_listWithValue (const GGS_string & inOperand0,
-                                                                           const GGS_string & inOperand1,
-                                                                           const GGS_string & inOperand2,
-                                                                           const GGS_string & inOperand3,
-                                                                           const GGS_stringlist & inOperand4,
-                                                                           const GGS_string & inOperand5,
-                                                                           const GGS_string & inOperand6,
-                                                                           const GGS_stringlist & inOperand7,
-                                                                           const GGS_string & inOperand8,
-                                                                           const GGS_stringlist & inOperand9,
-                                                                           const GGS_string & inOperand10
-                                                                           COMMA_LOCATION_ARGS) {
-  const GGS_XCodeToolTargetList_2E_element element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10) ;
-  GGS_XCodeToolTargetList result ;
-  if (element.isValid ()) {
-    result.mArray.setCapacity (16) ; // Build
-    result.plusPlusAssignOperation (element COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::addAssignOperation (const GGS_string & inOperand0,
-                                                  const GGS_string & inOperand1,
-                                                  const GGS_string & inOperand2,
-                                                  const GGS_string & inOperand3,
-                                                  const GGS_stringlist & inOperand4,
-                                                  const GGS_string & inOperand5,
-                                                  const GGS_string & inOperand6,
-                                                  const GGS_stringlist & inOperand7,
-                                                  const GGS_string & inOperand8,
-                                                  const GGS_stringlist & inOperand9,
-                                                  const GGS_string & inOperand10
-                                                  COMMA_LOCATION_ARGS) {
-  const GGS_XCodeToolTargetList_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10) ;
-  plusPlusAssignOperation (newElement COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_append (const GGS_string inOperand0,
-                                             const GGS_string inOperand1,
-                                             const GGS_string inOperand2,
-                                             const GGS_string inOperand3,
-                                             const GGS_stringlist inOperand4,
-                                             const GGS_string inOperand5,
-                                             const GGS_string inOperand6,
-                                             const GGS_stringlist inOperand7,
-                                             const GGS_string inOperand8,
-                                             const GGS_stringlist inOperand9,
-                                             const GGS_string inOperand10,
-                                             Compiler * /* inCompiler */
-                                             COMMA_LOCATION_ARGS) {
-  const GGS_XCodeToolTargetList_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10) ;
-  if (isValid () && newElement.isValid ()) {
-    plusPlusAssignOperation (newElement COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_insertAtIndex (const GGS_string inOperand0,
-                                                    const GGS_string inOperand1,
-                                                    const GGS_string inOperand2,
-                                                    const GGS_string inOperand3,
-                                                    const GGS_stringlist inOperand4,
-                                                    const GGS_string inOperand5,
-                                                    const GGS_string inOperand6,
-                                                    const GGS_stringlist inOperand7,
-                                                    const GGS_string inOperand8,
-                                                    const GGS_stringlist inOperand9,
-                                                    const GGS_string inOperand10,
-                                                    const GGS_uint inInsertionIndex,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  const GGS_XCodeToolTargetList_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10) ;
-  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx <= mArray.count ()) {
-      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
-    }else{
-      String message = "cannot insert at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_removeAtIndex (GGS_string & outOperand0,
-                                                    GGS_string & outOperand1,
-                                                    GGS_string & outOperand2,
-                                                    GGS_string & outOperand3,
-                                                    GGS_stringlist & outOperand4,
-                                                    GGS_string & outOperand5,
-                                                    GGS_string & outOperand6,
-                                                    GGS_stringlist & outOperand7,
-                                                    GGS_string & outOperand8,
-                                                    GGS_stringlist & outOperand9,
-                                                    GGS_string & outOperand10,
-                                                    const GGS_uint inRemoveIndex,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx < mArray.count ()) {
-      removed = true ;
-      outOperand0 = mArray (idx COMMA_HERE).mProperty_mTargetRef ;
-      outOperand1 = mArray (idx COMMA_HERE).mProperty_mTargetName ;
-      outOperand2 = mArray (idx COMMA_HERE).mProperty_mProductFileReference ;
-      outOperand3 = mArray (idx COMMA_HERE).mProperty_mProductFileName ;
-      outOperand4 = mArray (idx COMMA_HERE).mProperty_mBuildPhaseRefList ;
-      outOperand5 = mArray (idx COMMA_HERE).mProperty_mBuildPhaseRef ;
-      outOperand6 = mArray (idx COMMA_HERE).mProperty_mBuildConfigurationListRef ;
-      outOperand7 = mArray (idx COMMA_HERE).mProperty_mBuildConfigurationSettingList ;
-      outOperand8 = mArray (idx COMMA_HERE).mProperty_mBuildConfigurationRef ;
-      outOperand9 = mArray (idx COMMA_HERE).mProperty_mFrameworksFileRefList ;
-      outOperand10 = mArray (idx COMMA_HERE).mProperty_mFrameworkBuildPhaseRef ;
-      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
-    }else{
-      String message = "cannot remove at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
-    outOperand7.drop () ;
-    outOperand8.drop () ;
-    outOperand9.drop () ;
-    outOperand10.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_popFirst (GGS_string & outOperand0,
-                                               GGS_string & outOperand1,
-                                               GGS_string & outOperand2,
-                                               GGS_string & outOperand3,
-                                               GGS_stringlist & outOperand4,
-                                               GGS_string & outOperand5,
-                                               GGS_string & outOperand6,
-                                               GGS_stringlist & outOperand7,
-                                               GGS_string & outOperand8,
-                                               GGS_stringlist & outOperand9,
-                                               GGS_string & outOperand10,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mTargetRef ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mTargetName ;
-      outOperand2 = mArray (0 COMMA_THERE).mProperty_mProductFileReference ;
-      outOperand3 = mArray (0 COMMA_THERE).mProperty_mProductFileName ;
-      outOperand4 = mArray (0 COMMA_THERE).mProperty_mBuildPhaseRefList ;
-      outOperand5 = mArray (0 COMMA_THERE).mProperty_mBuildPhaseRef ;
-      outOperand6 = mArray (0 COMMA_THERE).mProperty_mBuildConfigurationListRef ;
-      outOperand7 = mArray (0 COMMA_THERE).mProperty_mBuildConfigurationSettingList ;
-      outOperand8 = mArray (0 COMMA_THERE).mProperty_mBuildConfigurationRef ;
-      outOperand9 = mArray (0 COMMA_THERE).mProperty_mFrameworksFileRefList ;
-      outOperand10 = mArray (0 COMMA_THERE).mProperty_mFrameworkBuildPhaseRef ;
-      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
-    }else{
-      const String message = "cannot remove first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
-    outOperand7.drop () ;
-    outOperand8.drop () ;
-    outOperand9.drop () ;
-    outOperand10.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_popLast (GGS_string & outOperand0,
-                                              GGS_string & outOperand1,
-                                              GGS_string & outOperand2,
-                                              GGS_string & outOperand3,
-                                              GGS_stringlist & outOperand4,
-                                              GGS_string & outOperand5,
-                                              GGS_string & outOperand6,
-                                              GGS_stringlist & outOperand7,
-                                              GGS_string & outOperand8,
-                                              GGS_stringlist & outOperand9,
-                                              GGS_string & outOperand10,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mTargetRef ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mTargetName ;
-      outOperand2 = mArray.lastObject (HERE).mProperty_mProductFileReference ;
-      outOperand3 = mArray.lastObject (HERE).mProperty_mProductFileName ;
-      outOperand4 = mArray.lastObject (HERE).mProperty_mBuildPhaseRefList ;
-      outOperand5 = mArray.lastObject (HERE).mProperty_mBuildPhaseRef ;
-      outOperand6 = mArray.lastObject (HERE).mProperty_mBuildConfigurationListRef ;
-      outOperand7 = mArray.lastObject (HERE).mProperty_mBuildConfigurationSettingList ;
-      outOperand8 = mArray.lastObject (HERE).mProperty_mBuildConfigurationRef ;
-      outOperand9 = mArray.lastObject (HERE).mProperty_mFrameworksFileRefList ;
-      outOperand10 = mArray.lastObject (HERE).mProperty_mFrameworkBuildPhaseRef ;
-      mArray.removeLastObject (HERE) ;
-    }else{
-      const String message = "cannot remove last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
-    outOperand7.drop () ;
-    outOperand8.drop () ;
-    outOperand9.drop () ;
-    outOperand10.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::method_first (GGS_string & outOperand0,
-                                            GGS_string & outOperand1,
-                                            GGS_string & outOperand2,
-                                            GGS_string & outOperand3,
-                                            GGS_stringlist & outOperand4,
-                                            GGS_string & outOperand5,
-                                            GGS_string & outOperand6,
-                                            GGS_stringlist & outOperand7,
-                                            GGS_string & outOperand8,
-                                            GGS_stringlist & outOperand9,
-                                            GGS_string & outOperand10,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mTargetRef ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mTargetName ;
-      outOperand2 = mArray (0 COMMA_THERE).mProperty_mProductFileReference ;
-      outOperand3 = mArray (0 COMMA_THERE).mProperty_mProductFileName ;
-      outOperand4 = mArray (0 COMMA_THERE).mProperty_mBuildPhaseRefList ;
-      outOperand5 = mArray (0 COMMA_THERE).mProperty_mBuildPhaseRef ;
-      outOperand6 = mArray (0 COMMA_THERE).mProperty_mBuildConfigurationListRef ;
-      outOperand7 = mArray (0 COMMA_THERE).mProperty_mBuildConfigurationSettingList ;
-      outOperand8 = mArray (0 COMMA_THERE).mProperty_mBuildConfigurationRef ;
-      outOperand9 = mArray (0 COMMA_THERE).mProperty_mFrameworksFileRefList ;
-      outOperand10 = mArray (0 COMMA_THERE).mProperty_mFrameworkBuildPhaseRef ;
-    }else{
-      const String message = "cannot get first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
-    outOperand7.drop () ;
-    outOperand8.drop () ;
-    outOperand9.drop () ;
-    outOperand10.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::method_last (GGS_string & outOperand0,
-                                           GGS_string & outOperand1,
-                                           GGS_string & outOperand2,
-                                           GGS_string & outOperand3,
-                                           GGS_stringlist & outOperand4,
-                                           GGS_string & outOperand5,
-                                           GGS_string & outOperand6,
-                                           GGS_stringlist & outOperand7,
-                                           GGS_string & outOperand8,
-                                           GGS_stringlist & outOperand9,
-                                           GGS_string & outOperand10,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mTargetRef ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mTargetName ;
-      outOperand2 = mArray.lastObject (HERE).mProperty_mProductFileReference ;
-      outOperand3 = mArray.lastObject (HERE).mProperty_mProductFileName ;
-      outOperand4 = mArray.lastObject (HERE).mProperty_mBuildPhaseRefList ;
-      outOperand5 = mArray.lastObject (HERE).mProperty_mBuildPhaseRef ;
-      outOperand6 = mArray.lastObject (HERE).mProperty_mBuildConfigurationListRef ;
-      outOperand7 = mArray.lastObject (HERE).mProperty_mBuildConfigurationSettingList ;
-      outOperand8 = mArray.lastObject (HERE).mProperty_mBuildConfigurationRef ;
-      outOperand9 = mArray.lastObject (HERE).mProperty_mFrameworksFileRefList ;
-      outOperand10 = mArray.lastObject (HERE).mProperty_mFrameworkBuildPhaseRef ;
-    }else{
-      const String message = "cannot get last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
-    outOperand7.drop () ;
-    outOperand8.drop () ;
-    outOperand9.drop () ;
-    outOperand10.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeToolTargetList GGS_XCodeToolTargetList::add_operation (const GGS_XCodeToolTargetList & inOperand,
-                                                                Compiler * /* inCompiler */
-                                                                COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_XCodeToolTargetList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
-      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeToolTargetList GGS_XCodeToolTargetList::subList (const int32_t inStart,
-                                                          const int32_t inLength,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const {
-  GGS_XCodeToolTargetList result ;
-  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
-  if (ok) {
-    result.mArray.setCapacity (std::max (16, inLength)) ;
-    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
-      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
-    }
-  }else{
-    String message = "cannot get sublist [start: " ;
-    message.appendSigned (inStart) ;
-    message.appendCString (", length: ") ;
-    message.appendSigned (inLength) ;
-    message.appendCString ("], list count is ") ;
-    message.appendSigned (mArray.count ()) ;
-    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeToolTargetList GGS_XCodeToolTargetList::getter_subListWithRange (const GGS_range & inRange,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_XCodeToolTargetList result ;
-  if (isValid () && inRange.isValid ()) {
-    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
-    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeToolTargetList GGS_XCodeToolTargetList::getter_subListFromIndex (const GGS_uint & inIndex,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_XCodeToolTargetList result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = int32_t (inIndex.uintValue ()) ;
-    const int32_t length = int32_t (count ()) - start ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeToolTargetList GGS_XCodeToolTargetList::getter_subListToIndex (const GGS_uint & inIndex,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const {
-  GGS_XCodeToolTargetList result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = 0 ;
-    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::plusAssignOperation (const GGS_XCodeToolTargetList inList,
-                                                   Compiler * /* inCompiler */
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inList.isValid ()) {
-    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
-    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
-      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_setMTargetRefAtIndex (GGS_string inOperand,
-                                                           GGS_uint inIndex,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mTargetRef = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_XCodeToolTargetList::getter_mTargetRefAtIndex (const GGS_uint & inIndex,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const {
-  GGS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mTargetRef ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_setMTargetNameAtIndex (GGS_string inOperand,
-                                                            GGS_uint inIndex,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mTargetName = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_XCodeToolTargetList::getter_mTargetNameAtIndex (const GGS_uint & inIndex,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const {
-  GGS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mTargetName ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_setMProductFileReferenceAtIndex (GGS_string inOperand,
-                                                                      GGS_uint inIndex,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mProductFileReference = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_XCodeToolTargetList::getter_mProductFileReferenceAtIndex (const GGS_uint & inIndex,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const {
-  GGS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mProductFileReference ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_setMProductFileNameAtIndex (GGS_string inOperand,
-                                                                 GGS_uint inIndex,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mProductFileName = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_XCodeToolTargetList::getter_mProductFileNameAtIndex (const GGS_uint & inIndex,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mProductFileName ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_setMBuildPhaseRefListAtIndex (GGS_stringlist inOperand,
-                                                                   GGS_uint inIndex,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mBuildPhaseRefList = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist GGS_XCodeToolTargetList::getter_mBuildPhaseRefListAtIndex (const GGS_uint & inIndex,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_stringlist result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mBuildPhaseRefList ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_setMBuildPhaseRefAtIndex (GGS_string inOperand,
-                                                               GGS_uint inIndex,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mBuildPhaseRef = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_XCodeToolTargetList::getter_mBuildPhaseRefAtIndex (const GGS_uint & inIndex,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mBuildPhaseRef ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_setMBuildConfigurationListRefAtIndex (GGS_string inOperand,
-                                                                           GGS_uint inIndex,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mBuildConfigurationListRef = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_XCodeToolTargetList::getter_mBuildConfigurationListRefAtIndex (const GGS_uint & inIndex,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const {
-  GGS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mBuildConfigurationListRef ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_setMBuildConfigurationSettingListAtIndex (GGS_stringlist inOperand,
-                                                                               GGS_uint inIndex,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mBuildConfigurationSettingList = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist GGS_XCodeToolTargetList::getter_mBuildConfigurationSettingListAtIndex (const GGS_uint & inIndex,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) const {
-  GGS_stringlist result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mBuildConfigurationSettingList ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_setMBuildConfigurationRefAtIndex (GGS_string inOperand,
-                                                                       GGS_uint inIndex,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mBuildConfigurationRef = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_XCodeToolTargetList::getter_mBuildConfigurationRefAtIndex (const GGS_uint & inIndex,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mBuildConfigurationRef ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_setMFrameworksFileRefListAtIndex (GGS_stringlist inOperand,
-                                                                       GGS_uint inIndex,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mFrameworksFileRefList = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist GGS_XCodeToolTargetList::getter_mFrameworksFileRefListAtIndex (const GGS_uint & inIndex,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const {
-  GGS_stringlist result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mFrameworksFileRefList ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_XCodeToolTargetList::setter_setMFrameworkBuildPhaseRefAtIndex (GGS_string inOperand,
-                                                                        GGS_uint inIndex,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mFrameworkBuildPhaseRef = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_XCodeToolTargetList::getter_mFrameworkBuildPhaseRefAtIndex (const GGS_uint & inIndex,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const {
-  GGS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mFrameworkBuildPhaseRef ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @XCodeToolTargetList
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_XCodeToolTargetList::DownEnumerator_XCodeToolTargetList (const GGS_XCodeToolTargetList & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-  mIndex = mArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeToolTargetList_2E_element DownEnumerator_XCodeToolTargetList::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_XCodeToolTargetList::current_mTargetRef (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mTargetRef ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_XCodeToolTargetList::current_mTargetName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mTargetName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_XCodeToolTargetList::current_mProductFileReference (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mProductFileReference ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_XCodeToolTargetList::current_mProductFileName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mProductFileName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist DownEnumerator_XCodeToolTargetList::current_mBuildPhaseRefList (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mBuildPhaseRefList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_XCodeToolTargetList::current_mBuildPhaseRef (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mBuildPhaseRef ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_XCodeToolTargetList::current_mBuildConfigurationListRef (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mBuildConfigurationListRef ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist DownEnumerator_XCodeToolTargetList::current_mBuildConfigurationSettingList (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mBuildConfigurationSettingList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_XCodeToolTargetList::current_mBuildConfigurationRef (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mBuildConfigurationRef ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist DownEnumerator_XCodeToolTargetList::current_mFrameworksFileRefList (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mFrameworksFileRefList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_XCodeToolTargetList::current_mFrameworkBuildPhaseRef (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mFrameworkBuildPhaseRef ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @XCodeToolTargetList
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_XCodeToolTargetList::UpEnumerator_XCodeToolTargetList (const GGS_XCodeToolTargetList & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeToolTargetList_2E_element UpEnumerator_XCodeToolTargetList::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_XCodeToolTargetList::current_mTargetRef (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mTargetRef ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_XCodeToolTargetList::current_mTargetName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mTargetName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_XCodeToolTargetList::current_mProductFileReference (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mProductFileReference ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_XCodeToolTargetList::current_mProductFileName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mProductFileName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist UpEnumerator_XCodeToolTargetList::current_mBuildPhaseRefList (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mBuildPhaseRefList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_XCodeToolTargetList::current_mBuildPhaseRef (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mBuildPhaseRef ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_XCodeToolTargetList::current_mBuildConfigurationListRef (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mBuildConfigurationListRef ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist UpEnumerator_XCodeToolTargetList::current_mBuildConfigurationSettingList (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mBuildConfigurationSettingList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_XCodeToolTargetList::current_mBuildConfigurationRef (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mBuildConfigurationRef ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringlist UpEnumerator_XCodeToolTargetList::current_mFrameworksFileRefList (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mFrameworksFileRefList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_XCodeToolTargetList::current_mFrameworkBuildPhaseRef (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mFrameworkBuildPhaseRef ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//     @XCodeToolTargetList generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_XCodeToolTargetList ("XCodeToolTargetList",
-                                                                        nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_XCodeToolTargetList::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_XCodeToolTargetList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_XCodeToolTargetList::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_XCodeToolTargetList (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_XCodeToolTargetList GGS_XCodeToolTargetList::extractObject (const GGS_object & inObject,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GGS_XCodeToolTargetList result ;
-  const GGS_XCodeToolTargetList * p = (const GGS_XCodeToolTargetList *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_XCodeToolTargetList *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("XCodeToolTargetList", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
