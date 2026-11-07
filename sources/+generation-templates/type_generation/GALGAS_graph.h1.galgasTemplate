@@ -13,7 +13,7 @@ class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
   public: virtual ~ GGS_%!TYPE_IDENTIFIER% (void) ;
 
 //--- count
-  public: VIRTUAL_IN_DEBUG uint32_t count (void) const ;
+  public: uint32_t count (void) const ;
 
 //--- isValid
   public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
@@ -28,35 +28,35 @@ class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
   public: GGS_%!TYPE_IDENTIFIER% & operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
 
 //--- Create a new list
-  protected: VIRTUAL_IN_DEBUG void makeNewEmptyGraph (LOCATION_ARGS) ;
+  protected: void makeNewEmptyGraph (LOCATION_ARGS) ;
 
 //--------------------------------- Getters
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_bool getter_isNodeDefined (const GGS_string & inKey COMMA_LOCATION_ARGS) const ;
+  public: class GGS_bool getter_isNodeDefined (const GGS_string & inKey COMMA_LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_keyList (LOCATION_ARGS) const ;
+  public: class GGS_stringlist getter_keyList (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_lstringlist getter_lkeyList (LOCATION_ARGS) const ;
+  public: class GGS_lstringlist getter_lkeyList (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_uint getter_undefinedNodeCount (LOCATION_ARGS) const ;
+  public: class GGS_uint getter_undefinedNodeCount (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_stringlist getter_undefinedNodeKeyList (LOCATION_ARGS) const ;
+  public: class GGS_stringlist getter_undefinedNodeKeyList (LOCATION_ARGS) const ;
 
-  public: VIRTUAL_IN_DEBUG class GGS_location getter_locationForKey (const GGS_string & inKey,
+  public: class GGS_location getter_locationForKey (const GGS_string & inKey,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Setters
-  public: VIRTUAL_IN_DEBUG void setter_addEdge (const class GGS_lstring & inSourceNodeKey,
-                                                const class GGS_lstring & inTargetNodeKey
-                                                COMMA_LOCATION_ARGS) ;
+  public: void setter_addEdge (const class GGS_lstring & inSourceNodeKey,
+                               const class GGS_lstring & inTargetNodeKey
+                               COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_removeEdgesToNode (const GGS_string & inNodeName,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
+  public: void setter_removeEdgesToNode (const GGS_string & inNodeName,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG void setter_removeEdgesToDominators (LOCATION_ARGS) ;
+  public: void setter_removeEdgesToDominators (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public: ComparisonResult objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const ;
@@ -66,61 +66,61 @@ class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
                                              const int32_t inIndentation) const override ;
 
 //--- Internal methods for handling graph
-  protected: VIRTUAL_IN_DEBUG void reversedGraphFromGraph (const GGS_%!TYPE_IDENTIFIER% & inGraph
-                                                           COMMA_LOCATION_ARGS) ;
+  protected: void reversedGraphFromGraph (const GGS_%!TYPE_IDENTIFIER% & inGraph
+                                          COMMA_LOCATION_ARGS) ;
 
-  protected: VIRTUAL_IN_DEBUG void subGraph (GGS_%!TYPE_IDENTIFIER% & outResultingGraph,
-                                             const class GGS_lstringlist & inStartNodes,
-                                             const class GGS_stringset & inNodesToExclude,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const ;
-
-
-  protected: VIRTUAL_IN_DEBUG GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% graph (void) const ;
-
-  private: VIRTUAL_IN_DEBUG void insulateGraph (LOCATION_ARGS) ;
-
-  protected: VIRTUAL_IN_DEBUG void internalAddNode (const GGS_lstring & inKey,
-                                                    const char * inErrorMessage,
-                                                    const GGS_%![ASSOCIATED_ELEMENT_TYPE identifierRepresentation]% & inElement,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG void setter_noteNode (const GGS_lstring & inKey
-                                                 COMMA_LOCATION_ARGS) ;
-
-  public: VIRTUAL_IN_DEBUG GGS_lstringlist getter_undefinedNodeReferenceList (LOCATION_ARGS) const ;
-
-  protected: VIRTUAL_IN_DEBUG void internalTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                                                            GGS_lstringlist & outSortedNodeKeyList,
-                                                            GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
-                                                            GGS_lstringlist & outUnsortedNodeKeyList,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
-
-  protected: VIRTUAL_IN_DEBUG void internalFindCircularities (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
-                                                              GGS_lstringlist & outNodeKeyList
-                                                              COMMA_UNUSED_LOCATION_ARGS) const ;
-
-  protected: VIRTUAL_IN_DEBUG void internalNodesWithNoPredecessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                                                                   GGS_lstringlist & outSortedNodeKeyList
-                                                                   COMMA_LOCATION_ARGS) const ;
-
-  protected: VIRTUAL_IN_DEBUG void internalNodesWithNoSuccessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                                                                 GGS_lstringlist & outSortedNodeKeyList
-                                                                 COMMA_LOCATION_ARGS) const ;
+  protected: void subGraph (GGS_%!TYPE_IDENTIFIER% & outResultingGraph,
+                            const class GGS_lstringlist & inStartNodes,
+                            const class GGS_stringset & inNodesToExclude,
+                            Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) const ;
 
 
-  protected: VIRTUAL_IN_DEBUG void internalDepthFirstTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                                                                      GGS_lstringlist & outSortedNodeKeyList,
-                                                                      GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
-                                                                      GGS_lstringlist & outUnsortedNodeKeyList,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const ;
+  protected: GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% graph (void) const ;
 
-  public: VIRTUAL_IN_DEBUG GGS_string getter_graphviz (UNUSED_LOCATION_ARGS) const ;
+  private: void insulateGraph (LOCATION_ARGS) ;
 
-  public: VIRTUAL_IN_DEBUG class GGS__32_stringlist getter_edges (UNUSED_LOCATION_ARGS) const ;
+  protected: void internalAddNode (const GGS_lstring & inKey,
+                                   const char * inErrorMessage,
+                                   const GGS_%![ASSOCIATED_ELEMENT_TYPE identifierRepresentation]% & inElement,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_noteNode (const GGS_lstring & inKey
+                                COMMA_LOCATION_ARGS) ;
+
+  public: GGS_lstringlist getter_undefinedNodeReferenceList (LOCATION_ARGS) const ;
+
+  protected: void internalTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
+                                           GGS_lstringlist & outSortedNodeKeyList,
+                                           GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
+                                           GGS_lstringlist & outUnsortedNodeKeyList,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) const ;
+
+  protected: void internalFindCircularities (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
+                                             GGS_lstringlist & outNodeKeyList
+                                             COMMA_UNUSED_LOCATION_ARGS) const ;
+
+  protected: void internalNodesWithNoPredecessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
+                                                  GGS_lstringlist & outSortedNodeKeyList
+                                                  COMMA_LOCATION_ARGS) const ;
+
+  protected: void internalNodesWithNoSuccessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
+                                                GGS_lstringlist & outSortedNodeKeyList
+                                                COMMA_LOCATION_ARGS) const ;
+
+
+  protected: void internalDepthFirstTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
+                                                     GGS_lstringlist & outSortedNodeKeyList,
+                                                     GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
+                                                     GGS_lstringlist & outUnsortedNodeKeyList,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const ;
+
+  public: GGS_string getter_graphviz (UNUSED_LOCATION_ARGS) const ;
+
+  public: class GGS__32_stringlist getter_edges (UNUSED_LOCATION_ARGS) const ;
 
   friend class SharedGraph_%!TYPE_IDENTIFIER% ;
 
