@@ -116,7 +116,6 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"count",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
@@ -124,7 +123,6 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"cStringRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )

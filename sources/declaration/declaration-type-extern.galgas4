@@ -525,7 +525,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
 //--------------------------------------------------------------------------------------------------
 
 override proc @externTypeDeclarationAST.semanticAnalysis (
-  ?!@lstringlist ioUsefulnessRootEntities,
+  ?![@lstring] ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @string _inProductDirectory,
   let @semanticContext _inSemanticContext,
@@ -537,7 +537,7 @@ override proc @externTypeDeclarationAST.semanticAnalysis (
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.mExternTypeName)
   !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
   if self.isPredefined  then
-    ioUsefulnessRootEntities ++= @(nameForUsefulness)
+    ioUsefulnessRootEntities ++= nameForUsefulness
   end
 //--- Initializers
   for initializer in self.externTypeInitializerList do

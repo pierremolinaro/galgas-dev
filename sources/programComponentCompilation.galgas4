@@ -51,7 +51,7 @@ private filewrapper programFileGenerationTemplate in "+generation-templates/prog
 //--------------------------------------------------------------------------------------------------
 
 proc compileBeforeClauseGalgas3
-  (?!@lstringlist ioUsefulnessRootEntities,
+  (?![@lstring] ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
@@ -60,7 +60,7 @@ proc compileBeforeClauseGalgas3
 ) {
   let usefulnessName = beforeNameForUsefulEntitiesGraph (.here)
   !?ioUsefulEntitiesGraph.addNode (usefulnessName, usefulnessName)
-  ioUsefulnessRootEntities ++= @(usefulnessName)
+  ioUsefulnessRootEntities ++= usefulnessName
 //--- Compile 'before' routines
   var semanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
   for prologue in inPrologueList do
@@ -99,7 +99,7 @@ proc compileBeforeClauseGalgas3
 //--------------------------------------------------------------------------------------------------
 
 private proc compileProgramRulesGalgas3
-  (?!@lstringlist ioUsefulnessRootEntities,
+  (?![@lstring] ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
@@ -110,7 +110,7 @@ private proc compileProgramRulesGalgas3
   for programRule in inProgramRules do
     let usefulnessName = rootRuleNameForUsefulEntitiesGraph (programRule.mSourceFileExtension)
     !?ioUsefulEntitiesGraph.addNode (usefulnessName, usefulnessName)
-    ioUsefulnessRootEntities ++= @(usefulnessName)
+    ioUsefulnessRootEntities ++= usefulnessName
     let @formalParameterListAST argumentList = [
       @("".nowhere, .argumentConstantIn, @lstring ("lstring", .here), programRule.mSourceFileVariableName, programRule.mSourceFileVariableNameIsUnused)
     ]
@@ -145,7 +145,7 @@ private proc compileProgramRulesGalgas3
 //--------------------------------------------------------------------------------------------------
 
 proc compileAfterClauseGalgas3
-  (?!@lstringlist ioUsefulnessRootEntities,
+  (?![@lstring] ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
@@ -154,7 +154,7 @@ proc compileAfterClauseGalgas3
 ) {
   let usefulnessName = afterNameForUsefulEntitiesGraph (.here)
   !?ioUsefulEntitiesGraph.addNode (usefulnessName, usefulnessName)
-  ioUsefulnessRootEntities ++= @(usefulnessName)
+  ioUsefulnessRootEntities ++= usefulnessName
 //--- Compile 'after' routines
   var @semanticInstructionListForGeneration semanticInstructionListForGeneration = @()
   for epilogue in inEpilogueList do
@@ -190,7 +190,7 @@ proc compileAfterClauseGalgas3
 //--------------------------------------------------------------------------------------------------
 
 proc compileProgramComponentGalgas3
-  (?!@lstringlist ioUsefulnessRootEntities,
+  (?![@lstring] ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @prologueEpilogueList inPrologueList,
   let @programRuleList inProgramRules,

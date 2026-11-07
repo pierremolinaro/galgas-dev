@@ -25,7 +25,6 @@
 proc enterBaseFinalGetterWithoutArgument (?!@getterMap ioGetterMap,
                                          ?!@unifiedTypeMap ioUnifiedTypeMap,
                                          ?getterName:let @string inGetterName,
-                                         ?obsoleteName: let @string inObsoleteGetterName,
                                          ?returnedTypeName:let @string inReturnedTypeName,
                                          ?hasCompilerArgument:let @bool inHasCompilerArgument ) {
   !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
@@ -39,18 +38,18 @@ proc enterBaseFinalGetterWithoutArgument (?!@getterMap ioGetterMap,
     @methodQualifier.isBasicFinal,
     "" // func name is not obsolete, no replacement func
   )
-  if inObsoleteGetterName != "" then
-    !?ioGetterMap.insertOrReplace
-      (@lstring (inObsoleteGetterName, .here),
-      @methodKind.definedAsMember,
-      @functionSignature (),
-      @location.here,
-      inHasCompilerArgument,
-      returnedTypeIndex,
-      @methodQualifier.isBasicFinal,
-      inGetterName // func name is obsolete, replacement func
-    )
-  end
+//  if inObsoleteGetterName != "" then
+//    !?ioGetterMap.insertOrReplace
+//      (@lstring (inObsoleteGetterName, .here),
+//      @methodKind.definedAsMember,
+//      @functionSignature (),
+//      @location.here,
+//      inHasCompilerArgument,
+//      returnedTypeIndex,
+//      @methodQualifier.isBasicFinal,
+//      inGetterName // func name is obsolete, replacement func
+//    )
+//  end
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -58,12 +57,11 @@ proc enterBaseFinalGetterWithoutArgument (?!@getterMap ioGetterMap,
 proc enterInheritedGetterWithoutArgument (?!@getterMap ioGetterMap,
                                           ?!@unifiedTypeMap ioUnifiedTypeMap,
                                           ?getterName:let @string inGetterName,
-                                          ?obsoleteName: let @string inObsoleteGetterName,
                                           ?returnedTypeName:let @string inReturnedTypeName,
                                           ?hasCompilerArgument:let @bool inHasCompilerArgument ) {
   !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
-  !?ioGetterMap.insertOrReplace
-    (@lstring (inGetterName, @location.here),
+  !?ioGetterMap.insertOrReplace (
+    @lstring (inGetterName, @location.here),
     @methodKind.definedAsMember,
     @functionSignature (),
     @location.here,
@@ -72,18 +70,18 @@ proc enterInheritedGetterWithoutArgument (?!@getterMap ioGetterMap,
     @methodQualifier. isInherited,
     "" // func name is not obsolete, no replacement func
   )
-  if inObsoleteGetterName != "" then
-    !?ioGetterMap.insertOrReplace
-      (@(inObsoleteGetterName, .here),
-      @methodKind.definedAsMember,
-      @functionSignature (),
-      @location.here,
-      inHasCompilerArgument,
-      returnedTypeIndex,
-      @methodQualifier. isInherited,
-      inGetterName
-    )
-  end
+//  if inObsoleteGetterName != "" then
+//    !?ioGetterMap.insertOrReplace
+//      (@(inObsoleteGetterName, .here),
+//      @methodKind.definedAsMember,
+//      @functionSignature (),
+//      @location.here,
+//      inHasCompilerArgument,
+//      returnedTypeIndex,
+//      @methodQualifier. isInherited,
+//      inGetterName
+//    )
+//  end
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -398,7 +396,6 @@ proc commonGetterMapForAllTypes (?!@unifiedTypeMap ioUnifiedTypeMap,
     !?outMap,
     !?ioUnifiedTypeMap,
     !getterName:"description",
-    !obsoleteName: "",
     !returnedTypeName:"string",
     !hasCompilerArgument:false
   )
@@ -406,7 +403,6 @@ proc commonGetterMapForAllTypes (?!@unifiedTypeMap ioUnifiedTypeMap,
     !?outMap,
     !?ioUnifiedTypeMap,
     !getterName:"staticType",
-    !obsoleteName: "",
     !returnedTypeName:"type",
     !hasCompilerArgument:false
   )
@@ -414,7 +410,6 @@ proc commonGetterMapForAllTypes (?!@unifiedTypeMap ioUnifiedTypeMap,
     !?outMap,
     !?ioUnifiedTypeMap,
     !getterName:"dynamicType",
-    !obsoleteName: "",
     !returnedTypeName:"type",
     !hasCompilerArgument:false
   )
@@ -422,7 +417,6 @@ proc commonGetterMapForAllTypes (?!@unifiedTypeMap ioUnifiedTypeMap,
     !?outMap,
     !?ioUnifiedTypeMap,
     !getterName:"object",
-    !obsoleteName: "",
     !returnedTypeName:"object",
     !hasCompilerArgument:false
   )

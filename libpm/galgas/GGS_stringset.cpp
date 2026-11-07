@@ -279,6 +279,36 @@ GGS_stringset GGS_stringset::init (Compiler * COMMA_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_stringset GGS_stringset::init_21_stringArray (const GGS__5B_string_5D_ & inStringArray,
+                                                  Compiler * /* inCompiler */
+                                                  COMMA_LOCATION_ARGS) {
+  GGS_stringset result ;
+  result.mSharedMap = SharedStringMap::build (THERE) ;
+  UpEnumerator__5B_string_5D_ iterator (inStringArray) ;
+  while (iterator.hasCurrentObject ()) {
+    result.plusPlusAssignOperation (iterator.current (HERE) COMMA_HERE) ;
+    iterator.gotoNextObject () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringset GGS_stringset::init_21_lstringArray (const GGS__5B_lstring_5D_ & inStringArray,
+                                                   Compiler * /* inCompiler */
+                                                   COMMA_LOCATION_ARGS) {
+  GGS_stringset result ;
+  result.mSharedMap = SharedStringMap::build (THERE) ;
+  UpEnumerator__5B_lstring_5D_ iterator (inStringArray) ;
+  while (iterator.hasCurrentObject ()) {
+    result.plusPlusAssignOperation (iterator.current (HERE).mProperty_string COMMA_HERE) ;
+    iterator.gotoNextObject () ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 void GGS_stringset::plusPlusAssignOperation (const GGS_string & inValue
                                              COMMA_LOCATION_ARGS) {
   if (isValid () && (inValue.isValid ())) {

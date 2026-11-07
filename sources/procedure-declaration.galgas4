@@ -128,7 +128,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc semanticAnalysis (?!@lstringlist ioUsefulnessRootEntities,
+  override proc semanticAnalysis (?![@lstring] ioUsefulnessRootEntities,
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                   let @string _inProductDirectory,
                                   let @semanticContext inSemanticContext,
@@ -150,7 +150,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
     let nameForUsefulness = procedureNameForUsefulEntitiesGraph (mangledName)
     !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
     if self.usefullProcedure then
-      ioUsefulnessRootEntities ++= @(nameForUsefulness)
+      ioUsefulnessRootEntities ++= nameForUsefulness
     end
   //--- Instruction list
     let analysisContext = @analysisContext (

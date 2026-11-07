@@ -195,7 +195,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc semanticAnalysis (?!@lstringlist _ioUsefulnessRootEntities,
+  override proc semanticAnalysis (?![@lstring] _ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
     let @string _inProductDirectory,
     let @semanticContext _inSemanticContext,

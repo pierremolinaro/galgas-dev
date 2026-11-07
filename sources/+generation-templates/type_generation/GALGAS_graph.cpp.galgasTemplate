@@ -96,36 +96,36 @@ class SharedGraph_%!TYPE_IDENTIFIER% : public SharedObject {
                                   COMMA_LOCATION_ARGS) ;
 
   public: void internalTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                                        GGS_lstringlist & outSortedNodeKeyList,
+                                        GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outSortedNodeKeyList,
                                         GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
-                                        GGS_lstringlist & outUnsortedNodeKeyList) const ;
+                                        GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outUnsortedNodeKeyList) const ;
 
 
   public: void internalFindCircularities (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
-                                          GGS_lstringlist & outNodeKeyList) const ;
+                                          GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outNodeKeyList) const ;
 
   public: void internalNodesWithNoPredecessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
-                                               GGS_lstringlist & outNodeKeyList) const ;
+                                               GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outNodeKeyList) const ;
 
   public: void internalNodesWithNoSuccessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
-                                             GGS_lstringlist & outNodeKeyList) const ;
+                                             GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outNodeKeyList) const ;
 
   public: void internalDepthFirstTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                                                  GGS_lstringlist & outSortedNodeKeyList,
+                                                  GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outSortedNodeKeyList,
                                                   GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
-                                                  GGS_lstringlist & outUnsortedNodeKeyList) const ;
+                                                  GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outUnsortedNodeKeyList) const ;
 
   public: void subGraph (GGS_%!TYPE_IDENTIFIER% & outResultingGraph,
-                         const GGS_lstringlist & inStartNodes,
+                         const GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & inStartNodes,
                          const GGS_stringset & inNodesToExclude,
                          Compiler * inCompiler
                          COMMA_LOCATION_ARGS) const ;
 
   public: void graph (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outNodeList) const ;
 
-  public: GGS_stringlist keyList (void) const ;
+  public: GGS_%![STRING_ARRAY_TYPE identifierRepresentation]% keyList (void) const ;
 
-  public: GGS_lstringlist lkeyList (void) const ;
+  public: GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% lkeyList (void) const ;
 
   public: String getter_graphviz (void) const ;
 
@@ -410,18 +410,18 @@ GGS_location SharedGraph_%!TYPE_IDENTIFIER%::locationForKey (const String & inKe
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist SharedGraph_%!TYPE_IDENTIFIER%::keyList (void) const {
-  GGS_stringlist result = GGS_stringlist::init (nullptr COMMA_HERE) ;
+GGS_%![STRING_ARRAY_TYPE identifierRepresentation]% SharedGraph_%!TYPE_IDENTIFIER%::keyList (void) const {
+  GGS_%![STRING_ARRAY_TYPE identifierRepresentation]% result = GGS_%![STRING_ARRAY_TYPE identifierRepresentation]%::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
-    result.addAssignOperation (mNodeArray (i COMMA_HERE)->mKey COMMA_HERE) ;
+    result.plusPlusAssignOperation (mNodeArray (i COMMA_HERE)->mKey COMMA_HERE) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist GGS_%!TYPE_IDENTIFIER%::getter_keyList (UNUSED_LOCATION_ARGS) const {
-  GGS_stringlist result ;
+GGS_%![STRING_ARRAY_TYPE identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::getter_keyList (UNUSED_LOCATION_ARGS) const {
+  GGS_%![STRING_ARRAY_TYPE identifierRepresentation]% result ;
   if (isValid ()) {
     result = mSharedGraph->keyList () ;
   }
@@ -436,23 +436,23 @@ GGS_stringlist GGS_%!TYPE_IDENTIFIER%::getter_keyList (UNUSED_LOCATION_ARGS) con
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist SharedGraph_%!TYPE_IDENTIFIER%::lkeyList (void) const {
-  GGS_lstringlist result = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% SharedGraph_%!TYPE_IDENTIFIER%::lkeyList (void) const {
+  GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% result = GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]%::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
     const GraphNode_%!TYPE_IDENTIFIER% * p = mNodeArray (i COMMA_HERE) ;
     GGS_location loc = p->mDefinitionLocation ;
     if (! loc.isValid ()) {
       loc = GGS_location::class_func_nowhere (HERE) ;
     }
-    result.addAssignOperation (GGS_lstring (p->mKey, loc) COMMA_HERE) ;
+    result.plusPlusAssignOperation (GGS_lstring (p->mKey, loc) COMMA_HERE) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_%!TYPE_IDENTIFIER%::getter_lkeyList (UNUSED_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::getter_lkeyList (UNUSED_LOCATION_ARGS) const {
+  GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% result ;
   if (isValid ()) {
     result = mSharedGraph->lkeyList () ;
   }
@@ -528,21 +528,21 @@ GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::
 //--------------------------------------------------------------------------------------------------
 
 void SharedGraph_%!TYPE_IDENTIFIER%::subGraph (GGS_%!TYPE_IDENTIFIER% & outResultingGraph,
-                            const GGS_lstringlist & inStartNodes,
+                            const GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & inStartNodes,
                             const GGS_stringset & inNodesToExclude,
                             Compiler * inCompiler
                             COMMA_LOCATION_ARGS) const {
 //--- Build start node set
   UInt32Set startNodeSet ;
-  UpEnumerator_lstringlist enumerator1 (inStartNodes) ;
+  UpEnumerator_%![LSTRING_ARRAY_TYPE identifierRepresentation]% enumerator1 (inStartNodes) ;
   while (enumerator1.hasCurrentObject ()) {
-    const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = findNode (enumerator1.current_mValue (THERE).mProperty_string.stringValue(), root()) ;
+    const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = findNode (enumerator1.current (THERE).mProperty_string.stringValue(), root()) ;
     if (nullptr == nodePtr) {
       String message ("subgraphFromNodes: '") ;
-      message.appendString (enumerator1.current_mValue (THERE).mProperty_string.stringValue()) ;
+      message.appendString (enumerator1.current (THERE).mProperty_string.stringValue()) ;
       message.appendCString ("' is not a declared node, cannot start from it") ;
       inCompiler->emitSemanticError (
-        enumerator1.current_mValue (THERE).mProperty_location,
+        enumerator1.current (THERE).mProperty_location,
         message,
         GenericArray <FixItDescription> ()
         COMMA_THERE
@@ -608,7 +608,7 @@ void SharedGraph_%!TYPE_IDENTIFIER%::subGraph (GGS_%!TYPE_IDENTIFIER% & outResul
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::subGraph (GGS_%!TYPE_IDENTIFIER% & outResultingGraph,
-                                const GGS_lstringlist & inStartNodes,
+                                const GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & inStartNodes,
                                 const GGS_stringset & inNodesToExclude,
                                 Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) const {
@@ -1045,11 +1045,11 @@ GGS_stringlist GGS_%!TYPE_IDENTIFIER%::getter_undefinedNodeKeyList (LOCATION_ARG
 //--------------------------------------------------------------------------------------------------
 
 void SharedGraph_%!TYPE_IDENTIFIER%::internalFindCircularities (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
-                                             GGS_lstringlist & outNodeKeyList) const {
+                                             GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outNodeKeyList) const {
   GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesInvolvedInCircularities (nodeArray) ;
 //--- Add nodes
   outInfoList.removeAll () ;
-  outNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  outNodeKeyList = GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]%::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<nodeArray.count () ; i++) {
     const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
     const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1057,14 +1057,14 @@ void SharedGraph_%!TYPE_IDENTIFIER%::internalFindCircularities (GGS_%![ASSOCIATE
     GGS_lstring lkey ;
     lkey.mProperty_location = nodePtr->mDefinitionLocation ;
     lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
-    outNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+    outNodeKeyList.plusPlusAssignOperation (lkey COMMA_HERE) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::internalFindCircularities (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
-                                                 GGS_lstringlist & outNodeKeyList
+                                                 GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outNodeKeyList
                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   outNodeKeyList.drop () ;
   if (isValid ()) {
@@ -1081,11 +1081,11 @@ void GGS_%!TYPE_IDENTIFIER%::internalFindCircularities (GGS_%![ASSOCIATED_ARRAY_
 //--------------------------------------------------------------------------------------------------
 
 void SharedGraph_%!TYPE_IDENTIFIER%::internalNodesWithNoPredecessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
-                                                  GGS_lstringlist & outNodeKeyList) const {
+                                                  GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outNodeKeyList) const {
   GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoPredecessor (nodeArray) ;
 //--- Add nodes
   outInfoList.removeAll () ;
-  outNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  outNodeKeyList = GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]%::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<nodeArray.count () ; i++) {
     const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
     const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1093,14 +1093,14 @@ void SharedGraph_%!TYPE_IDENTIFIER%::internalNodesWithNoPredecessor (GGS_%![ASSO
     GGS_lstring lkey ;
     lkey.mProperty_location = nodePtr->mDefinitionLocation ;
     lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
-    outNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+    outNodeKeyList.plusPlusAssignOperation (lkey COMMA_HERE) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::internalNodesWithNoPredecessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
-                                                      GGS_lstringlist & outNodeKeyList
+                                                      GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outNodeKeyList
                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   outNodeKeyList.drop () ;
   if (isValid ()) {
@@ -1117,11 +1117,11 @@ void GGS_%!TYPE_IDENTIFIER%::internalNodesWithNoPredecessor (GGS_%![ASSOCIATED_A
 //--------------------------------------------------------------------------------------------------
 
 void SharedGraph_%!TYPE_IDENTIFIER%::internalNodesWithNoSuccessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
-                                                GGS_lstringlist & outNodeKeyList) const {
+                                                GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outNodeKeyList) const {
   GenericUniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoSuccessor (nodeArray) ;
 //--- Add nodes
   outInfoList.removeAll () ;
-  outNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  outNodeKeyList = GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]%::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<nodeArray.count () ; i++) {
     const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
     const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1129,14 +1129,14 @@ void SharedGraph_%!TYPE_IDENTIFIER%::internalNodesWithNoSuccessor (GGS_%![ASSOCI
     GGS_lstring lkey ;
     lkey.mProperty_location = nodePtr->mDefinitionLocation ;
     lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
-    outNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+    outNodeKeyList.plusPlusAssignOperation (lkey COMMA_HERE) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::internalNodesWithNoSuccessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
-                                                    GGS_lstringlist & outNodeKeyList
+                                                    GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outNodeKeyList
                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   outNodeKeyList.drop () ;
   if (isValid ()) {
@@ -1153,15 +1153,15 @@ void GGS_%!TYPE_IDENTIFIER%::internalNodesWithNoSuccessor (GGS_%![ASSOCIATED_ARR
 //--------------------------------------------------------------------------------------------------
 
 void SharedGraph_%!TYPE_IDENTIFIER%::internalTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                                           GGS_lstringlist & outSortedNodeKeyList,
+                                           GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outSortedNodeKeyList,
                                            GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
-                                           GGS_lstringlist & outUnsortedNodeKeyList) const {
+                                           GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outUnsortedNodeKeyList) const {
   GenericUniqueArray <uint32_t> sortedNodes ;
   GenericUniqueArray <uint32_t> unsortedNodes ;
   mDirectedGraph.topologicalSort (sortedNodes, unsortedNodes) ;
 //--- Add sorted nodes
   outSortedList.removeAll () ;
-  outSortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  outSortedNodeKeyList = GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]%::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<sortedNodes.count () ; i++) {
     const uint32_t nodeIndex = sortedNodes (i COMMA_HERE) ;
     const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1169,11 +1169,11 @@ void SharedGraph_%!TYPE_IDENTIFIER%::internalTopologicalSort (GGS_%![ASSOCIATED_
     GGS_lstring lkey ;
     lkey.mProperty_location = nodePtr->mDefinitionLocation ;
     lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
-    outSortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+    outSortedNodeKeyList.plusPlusAssignOperation (lkey COMMA_HERE) ;
   }
 //--- Add unsorted nodes
   outUnsortedList.removeAll () ;
-  outUnsortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  outUnsortedNodeKeyList = GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]%::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<unsortedNodes.count () ; i++) {
     const uint32_t nodeIndex = unsortedNodes (i COMMA_HERE) ;
     const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1181,16 +1181,16 @@ void SharedGraph_%!TYPE_IDENTIFIER%::internalTopologicalSort (GGS_%![ASSOCIATED_
     GGS_lstring lkey ;
     lkey.mProperty_location = nodePtr->mDefinitionLocation ;
     lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
-    outUnsortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+    outUnsortedNodeKeyList.plusPlusAssignOperation (lkey COMMA_HERE) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::internalTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                                               GGS_lstringlist & outSortedNodeKeyList,
+                                               GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outSortedNodeKeyList,
                                                GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
-                                               GGS_lstringlist & outUnsortedNodeKeyList,
+                                               GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outUnsortedNodeKeyList,
                                                Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
   outSortedNodeKeyList.drop () ;
@@ -1223,15 +1223,15 @@ void GGS_%!TYPE_IDENTIFIER%::internalTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TY
 //--------------------------------------------------------------------------------------------------
 
 void SharedGraph_%!TYPE_IDENTIFIER%::internalDepthFirstTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                                                     GGS_lstringlist & outSortedNodeKeyList,
+                                                     GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outSortedNodeKeyList,
                                                      GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
-                                                     GGS_lstringlist & outUnsortedNodeKeyList) const {
+                                                     GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outUnsortedNodeKeyList) const {
   GenericUniqueArray <uint32_t> sortedNodes ;
   GenericUniqueArray <uint32_t> unsortedNodes ;
   mDirectedGraph.depthFirstTopologicalSort (sortedNodes, unsortedNodes) ;
 //--- Add sorted nodes
   outSortedList.removeAll () ;
-  outSortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  outSortedNodeKeyList = GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]%::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<sortedNodes.count () ; i++) {
     const uint32_t nodeIndex = sortedNodes (i COMMA_HERE) ;
     const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1239,11 +1239,11 @@ void SharedGraph_%!TYPE_IDENTIFIER%::internalDepthFirstTopologicalSort (GGS_%![A
     GGS_lstring lkey ;
     lkey.mProperty_location = nodePtr->mDefinitionLocation ;
     lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
-    outSortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+    outSortedNodeKeyList.plusPlusAssignOperation (lkey COMMA_HERE) ;
   }
 //--- Add unsorted nodes
   outUnsortedList.removeAll () ;
-  outUnsortedNodeKeyList = GGS_lstringlist::init (nullptr COMMA_HERE) ;
+  outUnsortedNodeKeyList = GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]%::init (nullptr COMMA_HERE) ;
   for (int32_t i=0 ; i<unsortedNodes.count () ; i++) {
     const uint32_t nodeIndex = unsortedNodes (i COMMA_HERE) ;
     const GraphNode_%!TYPE_IDENTIFIER% * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
@@ -1251,16 +1251,16 @@ void SharedGraph_%!TYPE_IDENTIFIER%::internalDepthFirstTopologicalSort (GGS_%![A
     GGS_lstring lkey ;
     lkey.mProperty_location = nodePtr->mDefinitionLocation ;
     lkey.mProperty_string = GGS_string (nodePtr->mKey) ;
-    outUnsortedNodeKeyList.addAssignOperation (lkey COMMA_HERE) ;
+    outUnsortedNodeKeyList.plusPlusAssignOperation (lkey COMMA_HERE) ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::internalDepthFirstTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                                                         GGS_lstringlist & outSortedNodeKeyList,
+                                                         GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outSortedNodeKeyList,
                                                          GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
-                                                         GGS_lstringlist & outUnsortedNodeKeyList,
+                                                         GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outUnsortedNodeKeyList,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
   outSortedNodeKeyList.drop () ;
@@ -1293,7 +1293,7 @@ void GGS_%!TYPE_IDENTIFIER%::internalDepthFirstTopologicalSort (GGS_%![ASSOCIATE
 //--------------------------------------------------------------------------------------------------
 
 static void buildUndefinedNodeReferenceList (const GraphNode_%!TYPE_IDENTIFIER% * inNode,
-                                             GGS_lstringlist & ioResult) {
+                                             GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & ioResult) {
   if (nullptr != inNode) {
     buildUndefinedNodeReferenceList (inNode->mInfPtr, ioResult) ;
     if (!inNode->mIsDefined) {
@@ -1301,7 +1301,7 @@ static void buildUndefinedNodeReferenceList (const GraphNode_%!TYPE_IDENTIFIER% 
       lkey.mProperty_string = GGS_string (inNode->mKey) ;
       for (int32_t i=0 ; i < inNode->mReferenceLocationArray.count () ; i++) {
         lkey.mProperty_location = inNode->mReferenceLocationArray (i COMMA_HERE) ;
-        ioResult.addAssignOperation (lkey COMMA_HERE) ;
+        ioResult.plusPlusAssignOperation (lkey COMMA_HERE) ;
       }
     }
     buildUndefinedNodeReferenceList (inNode->mSupPtr, ioResult) ;
@@ -1310,10 +1310,10 @@ static void buildUndefinedNodeReferenceList (const GraphNode_%!TYPE_IDENTIFIER% 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_%!TYPE_IDENTIFIER%::getter_undefinedNodeReferenceList (LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::getter_undefinedNodeReferenceList (LOCATION_ARGS) const {
+  GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (nullptr COMMA_THERE) ;
+    result = GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]%::init (nullptr COMMA_THERE) ;
     buildUndefinedNodeReferenceList (mSharedGraph->root (), result) ;
   }
   return result ;
@@ -1416,9 +1416,9 @@ end
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::method_topologicalSort (%?^%GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                       %!^%GGS_lstringlist & outSortedKeyList,
+                       %!^%GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outSortedKeyList,
                        %!^%GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
-                       %!^%GGS_lstringlist & outUnsortedKeyList,
+                       %!^%GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outUnsortedKeyList,
                        %!^%Compiler * inCompiler
                        %!^%COMMA_LOCATION_ARGS) const {
   GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% sortedList ;
@@ -1431,9 +1431,9 @@ void GGS_%!TYPE_IDENTIFIER%::method_topologicalSort (%?^%GGS_%![ASSOCIATED_ARRAY
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::method_depthFirstTopologicalSort (%?^%GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                       %!^%GGS_lstringlist & outSortedKeyList,
+                       %!^%GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outSortedKeyList,
                        %!^%GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
-                       %!^%GGS_lstringlist & outUnsortedKeyList,
+                       %!^%GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outUnsortedKeyList,
                        %!^%Compiler * inCompiler
                        %!^%COMMA_LOCATION_ARGS) const {
   GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% sortedList ;
@@ -1455,7 +1455,7 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_reversedGraph (LOCATION_AR
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::method_circularities (%?^%GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
-                       %!^%GGS_lstringlist & outKeyList
+                       %!^%GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outKeyList
                        %!^%COMMA_LOCATION_ARGS) const {
   GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% infoList ;
   internalFindCircularities (infoList, outKeyList COMMA_THERE) ;
@@ -1465,7 +1465,7 @@ void GGS_%!TYPE_IDENTIFIER%::method_circularities (%?^%GGS_%![ASSOCIATED_ARRAY_T
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::method_nodesWithNoSuccessor (%?^%GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
-                       %!^%GGS_lstringlist & outKeyList
+                       %!^%GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outKeyList
                        %!^%COMMA_LOCATION_ARGS) const {
   GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% infoList ;
   internalNodesWithNoSuccessor (infoList, outKeyList COMMA_THERE) ;
@@ -1475,7 +1475,7 @@ void GGS_%!TYPE_IDENTIFIER%::method_nodesWithNoSuccessor (%?^%GGS_%![ASSOCIATED_
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::method_nodesWithNoPredecessor (%?^%GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
-                       %!^%GGS_lstringlist & outKeyList
+                       %!^%GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outKeyList
                        %!^%COMMA_LOCATION_ARGS) const {
   GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% infoList ;
   internalNodesWithNoPredecessor (infoList, outKeyList COMMA_THERE) ;
@@ -1484,7 +1484,7 @@ void GGS_%!TYPE_IDENTIFIER%::method_nodesWithNoPredecessor (%?^%GGS_%![ASSOCIATE
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_subgraphFromNodes (%?^%const GGS_lstringlist & inStartKeyList,
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_subgraphFromNodes (%?^%const GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & inStartKeyList,
                                         %!^%const GGS_stringset & inKeysToExclude,
                                         %!^%Compiler * inCompiler
                                         %!^%COMMA_LOCATION_ARGS) const {
@@ -1505,11 +1505,11 @@ GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_%!TYPE_IDENTIFIER%::getter_accessibleNodesFrom (%?^%const GGS_lstringlist & inStartKeyList,
+GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::getter_accessibleNodesFrom (%?^%const GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & inStartKeyList,
                                         %!^%const GGS_stringset & inNodesToExclude,
                                         %!^%Compiler * inCompiler
                                         %!^%COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+  GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% result ;
   GGS_%!TYPE_IDENTIFIER% resultingGraph ;
   subGraph (resultingGraph,
             inStartKeyList,

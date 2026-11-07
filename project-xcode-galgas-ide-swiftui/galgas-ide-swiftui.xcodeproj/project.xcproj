@@ -788,14 +788,6 @@
                 "galgas-debug/compile-sources",
               ],
             },
-            { "path": "AC_GALGAS_value_class.h" },
-            {
-              "path": "AC_GALGAS_value_class.cpp",
-              "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
-              ],
-            },
             { "path": "AC_GALGAS_weak_reference.h" },
             {
               "path": "AC_GALGAS_weak_reference.cpp",

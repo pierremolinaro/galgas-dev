@@ -229,7 +229,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis
-              (?!@lstringlist ioUsefulnessRootEntities,
+              (?![@lstring] ioUsefulnessRootEntities,
               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
               let @string _inProductDirectory,
               let @semanticContext inSemanticContext,
@@ -328,7 +328,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
   //--- Useful entities graph
     !?ioUsefulEntitiesGraph.addNode (structNameForUsefulness, structNameForUsefulness)
     if self.isUsefullStruct || self.isPredefined then
-      ioUsefulnessRootEntities ++= @(structNameForUsefulness)
+      ioUsefulnessRootEntities ++= structNameForUsefulness
     end
   //--- Add synthetized initializer ?
     if structType.definition.features.contains (.generateSynthetizedInitializer) then
@@ -339,7 +339,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       !?ioUsefulEntitiesGraph.addNode (initializerForUsefulness, initializerForUsefulness)
       !?ioUsefulEntitiesGraph.addEdge (!from: initializerForUsefulness, !to: structNameForUsefulness)
       if self.isUsefullStruct || self.isPredefined then
-        ioUsefulnessRootEntities ++= @(initializerForUsefulness)
+        ioUsefulnessRootEntities ++= initializerForUsefulness
       end
     end
   }

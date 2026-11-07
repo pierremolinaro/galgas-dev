@@ -459,7 +459,7 @@ func #once forbiddenKeysForMapAndDict () -> @stringset {
 //--------------------------------------------------------------------------------------------------
 
 override proc @dictDeclarationAST.semanticAnalysis
-                (?!@lstringlist ioUsefulnessRootEntities,
+                (?![@lstring] ioUsefulnessRootEntities,
                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                 let @string _inProductDirectory,
                 let @semanticContext _inSemanticContext,
@@ -476,14 +476,14 @@ override proc @dictDeclarationAST.semanticAnalysis
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.mDictTypeName)
   !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
   if self.isPredefined then
-    ioUsefulnessRootEntities ++= @(nameForUsefulness)
+    ioUsefulnessRootEntities ++= nameForUsefulness
   end
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (
     makeEmbeddedElementTypeLName (self.mDictTypeName)
   )
   !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: elementTypeNameForUsefulness)
   if self.isPredefined then
-    ioUsefulnessRootEntities ++= @(elementTypeNameForUsefulness)
+    ioUsefulnessRootEntities ++= elementTypeNameForUsefulness
   end
 //--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
@@ -492,7 +492,7 @@ override proc @dictDeclarationAST.semanticAnalysis
   )
   !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
   if self.isPredefined then
-    ioUsefulnessRootEntities ++= @(initializerNameForUsefulness)
+    ioUsefulnessRootEntities ++= initializerNameForUsefulness
   end
 //----- Enter attributes
   var @typedPropertyList typedAttributeList = @()

@@ -222,7 +222,7 @@ syntax extension galgas4DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <simple_type_definition> (?!@galgasDeclarationAST ioDeclarations,
-                                !@lstring outTypeName ) {
+                                !@lstring outTypeName) {
     $[$
     <type_definition> (!?ioDeclarations, ?outTypeName)
     select
@@ -232,8 +232,8 @@ syntax extension galgas4DeclarationsSyntax {
         ioDeclarations.implicitTypeDeclarationSet ++= outTypeName.string
         ioDeclarations.mDeclarationList ++= @arrayTypeDeclarationAST (
           !isPredefined: false,
-          outTypeName,
-          elementTypeName,
+          !arrayTypeName: outTypeName,
+          !elementTypeName: elementTypeName,
           !isUsefull: true,
           !equatable: false
         )

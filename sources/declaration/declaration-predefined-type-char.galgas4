@@ -39,7 +39,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"string",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -47,7 +46,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"utf8Length",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
@@ -55,7 +53,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"utf32CharConstantRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -63,7 +60,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"uint",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
@@ -71,7 +67,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"isalnum",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -79,7 +74,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"isalpha",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -87,7 +81,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"iscntrl",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -95,7 +88,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"isdigit",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -103,7 +95,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"islower",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -111,7 +102,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"isupper",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -119,7 +109,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"isxdigit",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -127,7 +116,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"isUnicodeLetter",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -135,7 +123,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"isUnicodeMark",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -143,7 +130,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"isUnicodeNumber",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -151,7 +137,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"isUnicodeSeparator",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -159,7 +144,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"isUnicodeCommand",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -167,7 +151,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"isUnicodePunctuation",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -175,7 +158,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"isUnicodeSymbol",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -183,7 +165,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"unicodeName",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -191,7 +172,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"unicodeToLower",
-      !obsoleteName: "",
       !returnedTypeName:"char",
       !hasCompilerArgument:false
     )
@@ -199,7 +179,6 @@ final class @charPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"unicodeToUpper",
-      !obsoleteName: "",
       !returnedTypeName:"char",
       !hasCompilerArgument:false
     )

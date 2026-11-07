@@ -52,7 +52,7 @@ syntax galgas4ExpressionSyntax (galgasScanner4) {
                           !@lstring outTypeName)
 
   rule <simple_type_definition> (?!@galgasDeclarationAST _ioDeclarations,
-                                !@lstring outTypeName)
+                                 !@lstring outTypeName)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

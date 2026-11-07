@@ -442,7 +442,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc semanticAnalysis (?!@lstringlist ioUsefulnessRootEntities,
+  override proc semanticAnalysis (?![@lstring] ioUsefulnessRootEntities,
                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                 let @string _inProductDirectory,
                 let @semanticContext inSemanticContext,
@@ -453,7 +453,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mClassTypeName)
     !?ioUsefulEntitiesGraph.addNode (classTypeNameForUsefulness, classTypeNameForUsefulness)
     if self.isPredefined  then
-      ioUsefulnessRootEntities ++= @(classTypeNameForUsefulness)
+      ioUsefulnessRootEntities ++= classTypeNameForUsefulness
     end
     if self.mSuperClassName.string != "" then
       let superClassNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mSuperClassName)
@@ -462,7 +462,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     let weakRefTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (makeWeakTypeLName (self.mClassTypeName))
     !?ioUsefulEntitiesGraph.addEdge (!from: classTypeNameForUsefulness, !to: weakRefTypeNameForUsefulness)
     if self.isPredefined  then
-      ioUsefulnessRootEntities ++= @(weakRefTypeNameForUsefulness)
+      ioUsefulnessRootEntities ++= weakRefTypeNameForUsefulness
     end
   //----- Self type
     let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mClassTypeName)
@@ -561,10 +561,10 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       )
       !?ioUsefulEntitiesGraph.addNode (initializerForUsefulness, initializerForUsefulness)
       if self.isPredefined then
-        ioUsefulnessRootEntities ++= @(initializerForUsefulness)
+        ioUsefulnessRootEntities ++= initializerForUsefulness
         !?ioUsefulEntitiesGraph.addEdge (!from: initializerForUsefulness, !to: classTypeNameForUsefulness)
       elsif self.mIsAbstract then
-        ioUsefulnessRootEntities ++= @(initializerForUsefulness)
+        ioUsefulnessRootEntities ++= initializerForUsefulness
       else
         !?ioUsefulEntitiesGraph.addEdge (!from: initializerForUsefulness, !to: classTypeNameForUsefulness)
       end

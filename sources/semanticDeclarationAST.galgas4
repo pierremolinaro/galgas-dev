@@ -46,7 +46,7 @@ abstract class @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   abstract proc semanticAnalysis (
-    ?!@lstringlist ioUsefulnessRootEntities,
+    ?![@lstring] ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
     let @string inProductDirectory,
     let @semanticContext _inSemanticContext,

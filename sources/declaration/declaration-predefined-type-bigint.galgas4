@@ -105,7 +105,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"fitsInUInt",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -113,7 +112,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"fitsInSInt",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -121,7 +119,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"fitsInUInt64",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -129,7 +126,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"fitsInSInt64",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -137,7 +133,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"string",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -153,7 +148,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"hexString",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -172,7 +166,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"xString",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -180,7 +173,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"bitCountForSignedRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
@@ -188,7 +180,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"bitCountForUnsignedRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
@@ -196,7 +187,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"uint",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
@@ -204,7 +194,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sint",
-      !obsoleteName: "",
       !returnedTypeName:"sint",
       !hasCompilerArgument:true
     )
@@ -212,7 +201,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"uint64",
-      !obsoleteName: "",
       !returnedTypeName:"uint64",
       !hasCompilerArgument:true
     )
@@ -220,7 +208,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sint64",
-      !obsoleteName: "",
       !returnedTypeName:"sint64",
       !hasCompilerArgument:true
     )
@@ -228,7 +215,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"abs",
-      !obsoleteName: "",
       !returnedTypeName:"bigint",
       !hasCompilerArgument:false
     )
@@ -244,7 +230,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"isZero",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -252,7 +237,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sign",
-      !obsoleteName: "",
       !returnedTypeName:"sint",
       !hasCompilerArgument:false
     )
@@ -260,7 +244,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract8ForUnsignedRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"uintlist",
       !hasCompilerArgument:false
     )
@@ -268,7 +251,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract8ForSignedRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"uintlist",
       !hasCompilerArgument:false
     )
@@ -276,7 +258,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract32ForUnsignedRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"uintlist",
       !hasCompilerArgument:false
     )
@@ -284,7 +265,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract32ForSignedRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"uintlist",
       !hasCompilerArgument:false
     )
@@ -292,7 +272,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract64ForUnsignedRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"uint64list",
       !hasCompilerArgument:false
     )
@@ -300,7 +279,6 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract64ForSignedRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"uint64list",
       !hasCompilerArgument:false
     )

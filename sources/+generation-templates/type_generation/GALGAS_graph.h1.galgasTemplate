@@ -35,17 +35,17 @@ class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
 
   public: class GGS_bool getter_isNodeDefined (const GGS_string & inKey COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_keyList (LOCATION_ARGS) const ;
+  public: class GGS_%![STRING_ARRAY_TYPE identifierRepresentation]% getter_keyList (LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_lkeyList (LOCATION_ARGS) const ;
+  public: class GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% getter_lkeyList (LOCATION_ARGS) const ;
 
   public: class GGS_uint getter_undefinedNodeCount (LOCATION_ARGS) const ;
 
   public: class GGS_stringlist getter_undefinedNodeKeyList (LOCATION_ARGS) const ;
 
   public: class GGS_location getter_locationForKey (const GGS_string & inKey,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const ;
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Setters
   public: void setter_addEdge (const class GGS_lstring & inSourceNodeKey,
@@ -70,7 +70,7 @@ class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
                                           COMMA_LOCATION_ARGS) ;
 
   protected: void subGraph (GGS_%!TYPE_IDENTIFIER% & outResultingGraph,
-                            const class GGS_lstringlist & inStartNodes,
+                            const class GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & inStartNodes,
                             const class GGS_stringset & inNodesToExclude,
                             Compiler * inCompiler
                             COMMA_LOCATION_ARGS) const ;
@@ -89,32 +89,32 @@ class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
   public: void setter_noteNode (const GGS_lstring & inKey
                                 COMMA_LOCATION_ARGS) ;
 
-  public: GGS_lstringlist getter_undefinedNodeReferenceList (LOCATION_ARGS) const ;
+  public: GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% getter_undefinedNodeReferenceList (LOCATION_ARGS) const ;
 
   protected: void internalTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                                           GGS_lstringlist & outSortedNodeKeyList,
+                                           GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outSortedNodeKeyList,
                                            GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
-                                           GGS_lstringlist & outUnsortedNodeKeyList,
+                                           GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outUnsortedNodeKeyList,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const ;
 
   protected: void internalFindCircularities (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outInfoList,
-                                             GGS_lstringlist & outNodeKeyList
+                                             GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outNodeKeyList
                                              COMMA_UNUSED_LOCATION_ARGS) const ;
 
   protected: void internalNodesWithNoPredecessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                                                  GGS_lstringlist & outSortedNodeKeyList
+                                                  GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outSortedNodeKeyList
                                                   COMMA_LOCATION_ARGS) const ;
 
   protected: void internalNodesWithNoSuccessor (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                                                GGS_lstringlist & outSortedNodeKeyList
+                                                GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outSortedNodeKeyList
                                                 COMMA_LOCATION_ARGS) const ;
 
 
   protected: void internalDepthFirstTopologicalSort (GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outSortedList,
-                                                     GGS_lstringlist & outSortedNodeKeyList,
+                                                     GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outSortedNodeKeyList,
                                                      GGS_%![ASSOCIATED_ARRAY_TYPE identifierRepresentation]% & outUnsortedList,
-                                                     GGS_lstringlist & outUnsortedNodeKeyList,
+                                                     GGS_%![LSTRING_ARRAY_TYPE identifierRepresentation]% & outUnsortedNodeKeyList,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const ;
 

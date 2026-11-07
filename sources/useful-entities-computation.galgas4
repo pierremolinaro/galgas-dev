@@ -37,8 +37,8 @@ map @uselessEntityLocationMap {
 //--------------------------------------------------------------------------------------------------
 
 proc checkUsefulEntities (let @usefulEntitiesGraph inUsefulEntitiesGraph,
-                        let @lstringlist inRootEntities,
-                        let @string _inProductDirectory ) {
+                          let [@lstring] inRootEntities,
+                          let @string _inProductDirectory) {
   if option galgas_cli_options [checkEntityUsefulness.value], @uint.errorCount == 0 then
   //--- Undefined nodes
     let undefinedNodeList = inUsefulEntitiesGraph.undefinedNodeKeyList
@@ -51,8 +51,8 @@ proc checkUsefulEntities (let @usefulEntitiesGraph inUsefulEntitiesGraph,
     else
     //--- No undefined node, compute usefull entities
       let usefullEntityList = inUsefulEntitiesGraph.accessibleNodesFrom (inRootEntities, @())
-      let usefullEntitySet = @stringset.setWithLStringList (usefullEntityList)
-      let allEntitySet = @stringset.setWithStringList (inUsefulEntitiesGraph.keyList)
+      let usefullEntitySet = @stringset (!lstringArray: usefullEntityList)
+      let allEntitySet = @stringset (!stringArray: inUsefulEntitiesGraph.keyList)
       let unusedEntities = allEntitySet - usefullEntitySet
       var @uselessEntityLocationMap uselessEntityLocationMap = @()
       for key in unusedEntities do

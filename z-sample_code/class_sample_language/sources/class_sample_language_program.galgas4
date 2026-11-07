@@ -16,8 +16,8 @@ grammar class_sample_language_grammar
   end
 //--- Undefined classes ?
   if inheritanceGraph.undefinedNodeCount > 0 then
-    for (mValue) in inheritanceGraph.undefinedNodeReferenceList do
-      error (mValue : "the '" + mValue + "' class is not declared")
+    for nodeName in inheritanceGraph.undefinedNodeReferenceList do
+      error (nodeName : "the '" + nodeName + "' class is not declared")
     end
   else
   //--- Topologic sort
@@ -25,11 +25,11 @@ grammar class_sample_language_grammar
       (?let [@declarationAST] sortedDeclarationListAST,
       ?*,
       ?*,
-      ?let @lstringlist circularDefinitionClassNameList
+      ?let circularDefinitionClassNameList
     )
     if circularDefinitionClassNameList.count > 0 then
-      for (mValue) in  circularDefinitionClassNameList do
-        error (mValue : "the '" + mValue + "' class is involved in a circular definition")
+      for nodeName in  circularDefinitionClassNameList do
+        error (nodeName : "the '" + nodeName + "' class is involved in a circular definition")
       end
     else
     //--- Generate code

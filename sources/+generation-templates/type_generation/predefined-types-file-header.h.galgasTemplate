@@ -13,7 +13,6 @@
 #include "String-class.h"
 #include "Timer.h"
 #include "AC_GALGAS_reference_class.h"
-#include "AC_GALGAS_value_class.h"
 #include "AC_GALGAS_enumAssociatedValues.h"
 #include "DirectedGraph.h"
 #include "AbstractStrongPtrClass.h"

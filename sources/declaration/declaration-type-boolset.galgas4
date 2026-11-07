@@ -257,7 +257,7 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @boolsetDeclarationAST.semanticAnalysis
-  (?!@lstringlist ioUsefulnessRootEntities,
+  (?![@lstring] ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @string _inProductDirectory,
   let @semanticContext _inSemanticContext,
@@ -274,7 +274,7 @@ override proc @boolsetDeclarationAST.semanticAnalysis
   let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mBoolsetTypeName)
   !?ioUsefulEntitiesGraph.addNode (boolsetNameForUsefulness, boolsetNameForUsefulness)
   if self.isPredefined  then
-    ioUsefulnessRootEntities ++= @(boolsetNameForUsefulness)
+    ioUsefulnessRootEntities ++= boolsetNameForUsefulness
   end
 //--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
@@ -283,7 +283,7 @@ override proc @boolsetDeclarationAST.semanticAnalysis
   )
   !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
   if self.isPredefined  then
-    ioUsefulnessRootEntities ++= @(initializerNameForUsefulness)
+    ioUsefulnessRootEntities ++= initializerNameForUsefulness
   end
 //---
   ioSemanticDeclarationListForGeneration ++= @boolsetTypeForGeneration (

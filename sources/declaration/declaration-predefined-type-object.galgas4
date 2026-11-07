@@ -45,7 +45,6 @@ final class @objectPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"objectStaticType",
-      !obsoleteName: "",
       !returnedTypeName:"type",
       !hasCompilerArgument:false
     )
@@ -53,7 +52,6 @@ final class @objectPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"objectDynamicType",
-      !obsoleteName: "",
       !returnedTypeName:"type",
       !hasCompilerArgument:false
     )

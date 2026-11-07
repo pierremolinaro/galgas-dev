@@ -167,7 +167,7 @@ override proc @overridingExtensionGetterAST.enterDeclarationInSemanticContext (
 //--------------------------------------------------------------------------------------------------
 
 override proc @overridingExtensionGetterAST.semanticAnalysis (
-  ?!@lstringlist _ioUsefulnessRootEntities,
+  ?![@lstring] _ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @string _inProductDirectory,
   let @semanticContext inSemanticContext,

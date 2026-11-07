@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-proc compileSemanticDeclarationsGalgas (?!@lstringlist ioUsefulnessRootEntities,
+proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                             let @string inProductDirectory,
                             let @location inEndOfProjectSourceFile,
@@ -33,7 +33,7 @@ proc compileSemanticDeclarationsGalgas (?!@lstringlist ioUsefulnessRootEntities,
   end
 //----- Add predefined types to semantics declarations
   var semanticDeclarations = inSemanticDeclarations
-  appendPredefinedTypesASTs (!?semanticDeclarations.mDeclarationList, !?ioUsefulnessRootEntities)
+ // appendPredefinedTypesASTs (!?semanticDeclarations, !?ioUsefulnessRootEntities)
 //--- Add predefined option component
   var [@commandLineOptionAST] options = []
   for name in @application.boolOptionNameList do
@@ -72,7 +72,7 @@ proc compileSemanticDeclarationsGalgas (?!@lstringlist ioUsefulnessRootEntities,
     options
   )
   let galgas_builtin_optionsUsefulnessName = optionNameForUsefulEntitiesGraph ("galgas_builtin_options".nowhere)
-  ioUsefulnessRootEntities ++= @(galgas_builtin_optionsUsefulnessName)
+  ioUsefulnessRootEntities ++= galgas_builtin_optionsUsefulnessName
 //----- Build semantic context
   buildGalgasSemanticContext (
     semanticDeclarations,
@@ -146,15 +146,15 @@ private proc buildGalgasSemanticContext (let @galgasDeclarationAST inDeclaration
     )
   end
 //--- Add optional declarations
-  for node in semanticTypePrecedenceGraph.undefinedNodeReferenceList do
-    if node.mValue.lastCharacter() == '?' then
-      println ("Optional '" + node.mValue + "'")
+  for nodeName in semanticTypePrecedenceGraph.undefinedNodeReferenceList do
+    if nodeName.lastCharacter() == '?' then
+      println ("Optional '" + nodeName + "'")
     end
   end
 //---
   if semanticTypePrecedenceGraph.undefinedNodeCount > 0 then
-    for node in semanticTypePrecedenceGraph.undefinedNodeReferenceList do
-      error (node.mValue : "the '" + node.mValue + "' type is not defined")
+    for nodeName in semanticTypePrecedenceGraph.undefinedNodeReferenceList do
+      error (nodeName : "the '" + nodeName + "' type is not defined")
     end
     error (inEndOfProjectSourceFile
       : "semantic analysis not performed, due to undefined type error(s)"

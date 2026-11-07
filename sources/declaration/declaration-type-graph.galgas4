@@ -31,10 +31,24 @@ syntax extension galgas4DeclarationsSyntax {
     let arrayTypeName = makeArrayTypeLName (elementTypeName)
     if not ioDeclarations.implicitTypeDeclarationSet.hasKey (arrayTypeName.string) then
       ioDeclarations.implicitTypeDeclarationSet ++= arrayTypeName.string
+      println ("ADDED " + arrayTypeName)
       ioDeclarations.mDeclarationList ++= @arrayTypeDeclarationAST (
         !isPredefined: false,
-        arrayTypeName,
-        elementTypeName,
+        !arrayTypeName: arrayTypeName,
+        !elementTypeName: elementTypeName,
+        !isUsefull: false,
+        !equatable: false
+      )
+    end
+  //--- Add [@lstring] type, if needed
+    let lstringArrayTypeName = makeArrayTypeName ("lstring")
+    if not ioDeclarations.implicitTypeDeclarationSet.hasKey (lstringArrayTypeName) then
+      ioDeclarations.implicitTypeDeclarationSet ++= lstringArrayTypeName
+      println ("ADDED " + lstringArrayTypeName)
+      ioDeclarations.mDeclarationList ++= @arrayTypeDeclarationAST (
+        !isPredefined: false,
+        !arrayTypeName: lstringArrayTypeName.nowhere,
+        !elementTypeName: "lstring".nowhere,
         !isUsefull: false,
         !equatable: false
       )
@@ -101,6 +115,9 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     let arrayTypeKey = @lstring ("@" + self.mAssociatedArrayTypeName, self.mAssociatedArrayTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: arrayTypeKey)
+    let lstringArrayTypeName = makeArrayTypeLName ("lstring".nowhere)
+    let lstringArrayTypeKey = @lstring ("@" + lstringArrayTypeName, lstringArrayTypeName.location)
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: lstringArrayTypeKey)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -117,16 +134,13 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   //--- lstring type Entry
     !?ioTypeMap.makeEntryFromString ("lstring", ?let @unifiedTypeMapEntry lstringTypeEntry)
   //--- Graph type Entry
-    !?ioTypeMap.makeEntry
-      (self.mGraphTypeName,
-      ?* // let @unifiedTypeMapEntry graphTypeEntry
-    )
+    !?ioTypeMap.makeEntry (self.mGraphTypeName, ?*)
   //--- Associated array type Entry
     !?ioTypeMap.makeEntry (self.mAssociatedArrayTypeName, ?let @unifiedTypeMapEntry associatedArrayType)
   //--- Associated element type Entry
     !?ioTypeMap.makeEntry (self.mAssociatedElementTypeName, ?let @unifiedTypeMapEntry associatedElementType)
-  //--- @lstringlist type Entry
-    !?ioTypeMap.makeEntryFromString ("lstringlist", ?let @unifiedTypeMapEntry lstringListTypeEntry)
+  //--- [@lstring] type Entry
+    !?ioTypeMap.makeEntryFromString (makeArrayTypeLName ("lstring".nowhere), ?let @unifiedTypeMapEntry lstringArrayTypeEntry)
   //---
     commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap )
     var @setterMap setterMap = @()
@@ -141,7 +155,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     )
     formalParameterList ++= @(
       "".nowhere,
-      lstringListTypeEntry,
+      lstringArrayTypeEntry,
       .argumentOut,
       "outSortedLKeyList"
     )
@@ -153,7 +167,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     )
     formalParameterList ++= @(
       "".nowhere,
-      lstringListTypeEntry,
+      lstringArrayTypeEntry,
       .argumentOut,
       "outUnsortedLKeyList"
     )
@@ -185,7 +199,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     )
     formalParameterList ++= @(
       "".nowhere,
-      lstringListTypeEntry,
+      lstringArrayTypeEntry,
       .argumentOut,
       "outLKeyList"
     )
@@ -221,7 +235,6 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "nodeList",
-      !obsoleteName: "",
       !returnedTypeName: self.mAssociatedArrayTypeName,
       !hasCompilerArgument: false // No compiler argument
     )
@@ -230,7 +243,6 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "reversedGraph",
-      !obsoleteName: "",
       !returnedTypeName: self.mGraphTypeName.string,
       !hasCompilerArgument:false // No compiler argument
     )
@@ -239,7 +251,6 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "undefinedNodeCount",
-      !obsoleteName: "",
       !returnedTypeName: "uint",
       !hasCompilerArgument:false // No compiler argument
     )
@@ -248,7 +259,6 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "undefinedNodeKeyList",
-      !obsoleteName: "",
       !returnedTypeName: "stringlist",
       !hasCompilerArgument:false // No compiler argument
     )
@@ -257,8 +267,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "undefinedNodeReferenceList",
-      !obsoleteName: "",
-      !returnedTypeName: "lstringlist",
+      !returnedTypeName: "[lstring]",
       !hasCompilerArgument:false // No compiler argument
     )
   //--- Getter 'graphviz'
@@ -266,7 +275,6 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "graphviz",
-      !obsoleteName: "",
       !returnedTypeName: "string",
       !hasCompilerArgument:false // No compiler argument
     )
@@ -295,17 +303,15 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "keyList",
-      !obsoleteName: "",
-      !returnedTypeName: "stringlist",
-      !hasCompilerArgument:false // No compiler argument
+      !returnedTypeName: "[string]",
+      !hasCompilerArgument: false // No compiler argument
     )
   //--- Getter 'lkeyList'
     enterInheritedGetterWithoutArgument (
       !?getterMap,
       !?ioTypeMap,
       !getterName: "lkeyList",
-      !obsoleteName: "",
-      !returnedTypeName: "lstringlist",
+      !returnedTypeName: "[lstring]",
       !hasCompilerArgument: false // No compiler argument
     )
   //--- Getter 'egdes'
@@ -313,7 +319,6 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "edges",
-      !obsoleteName: "",
       !returnedTypeName: "2stringlist",
       !hasCompilerArgument:false // No compiler argument
     )
@@ -323,7 +328,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !?ioTypeMap,
       !getterName: "subgraphFromNodes",
       !arg1Selector: "",
-      !arg1TypeName: "lstringlist",
+      !arg1TypeName: "[lstring]",
       !arg1Name: "inStartNodeLStringList",
       !arg2Selector: "",
       !arg2TypeName: "stringset",
@@ -336,9 +341,9 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "accessibleNodesFrom",
-      !arg1Selector: "", !arg1TypeName: "lstringlist", !arg1Name: "inStartNodeStringList",
+      !arg1Selector: "", !arg1TypeName: "[lstring]", !arg1Name: "inStartNodeStringList",
       !arg2Selector: "", !arg2TypeName: "stringset", !arg2Name: "inNodesToExclude",
-      !returnedTypeName: "lstringlist",
+      !returnedTypeName: "[lstring]",
       !hasCompilerArgument: true // has compiler argument
     )
   //--- mutating proc 'enterNode'
@@ -349,14 +354,12 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       .argumentVarIn,
       "inLKey"
     )
- //   for formalArg in associatedArrayType.definition.addAssignOperatorArguments do
-      formalParameterList ++= @(
-        "".nowhere,
-        associatedElementType,
-        .argumentVarIn,
-        "inElement"
-      )
- //   end
+    formalParameterList ++= @(
+      "".nowhere,
+      associatedElementType,
+      .argumentVarIn,
+      "inElement"
+    )
     for insertSetter in self.mInsertModifierList do
       !?setterMap.insertOrReplace (
         insertSetter.mInsertModifierName,
@@ -478,7 +481,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc semanticAnalysis (?!@lstringlist ioUsefulnessRootEntities,
+  override proc semanticAnalysis (?![@lstring] ioUsefulnessRootEntities,
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                   let @string _inProductDirectory,
                                   let @semanticContext _inSemanticContext,
@@ -489,12 +492,12 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.mGraphTypeName)
     !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
     if self.isPredefined  then
-      ioUsefulnessRootEntities ++= @(nameForUsefulness)
+      ioUsefulnessRootEntities ++= nameForUsefulness
     end
     let associatedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mAssociatedArrayTypeName)
     !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: associatedTypeNameForUsefulness)
     if self.isPredefined  then
-      ioUsefulnessRootEntities ++= @(associatedTypeNameForUsefulness)
+      ioUsefulnessRootEntities ++= associatedTypeNameForUsefulness
     end
   //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
@@ -503,12 +506,14 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     )
     !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
     if self.isPredefined  then
-      ioUsefulnessRootEntities ++= @(initializerNameForUsefulness)
+      ioUsefulnessRootEntities ++= initializerNameForUsefulness
     end
   //---
     let graphTypeEntry = ioTypeMap.typeMapEntryForLKey (self.mGraphTypeName)
     let associatedArrayType = ioTypeMap.typeMapEntryForLKey (self.mAssociatedArrayTypeName)
     let associatedListElementTypeEntry = ioTypeMap.typeMapEntryForLKey (self.mAssociatedElementTypeName)
+    let lstringArrayTypeEntry = ioTypeMap.typeMapEntryForLKey (makeArrayTypeLName ("lstring".nowhere))
+    let stringArrayTypeEntry = ioTypeMap.typeMapEntryForLKey (makeArrayTypeLName ("string".nowhere))
   //--- Analyze insert methods
     let @stringset reservedModifierNames = ["noteNode", "addArc"]
     for insertSetter in self.mInsertModifierList do
@@ -524,6 +529,8 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       graphTypeEntry,
       associatedArrayType,
       associatedListElementTypeEntry,
+      lstringArrayTypeEntry,
+      stringArrayTypeEntry,
       self.mInsertModifierList
     )
   }
@@ -539,6 +546,8 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
 final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mAssociatedArrayTypeEntry
   private let @unifiedTypeMapEntry mAssociatedElementTypeEntry
+  private let @unifiedTypeMapEntry mLStringArrayType
+  private let @unifiedTypeMapEntry mStringArrayType
   private let @graphInsertModifierList mInsertModifierList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -547,11 +556,15 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
                                     !@string outHeader) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     self.mAssociatedArrayTypeEntry.addHeaderFileName1 (!?ioInclusionSet)
-    outHeader = filewrapper [typeGenerationTemplate.graphTypeHeader1 :
+    self.mLStringArrayType.addHeaderFileName1 (!?ioInclusionSet)
+    self.mStringArrayType.addHeaderFileName1 (!?ioInclusionSet)
+    outHeader = filewrapper [graphGenerationTemplate.graphTypeHeader1 :
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       self.mAssociatedArrayTypeEntry,
-      self.mAssociatedElementTypeEntry
+      self.mAssociatedElementTypeEntry,
+      self.mLStringArrayType,
+      self.mStringArrayType
     ]
     outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
       selfTypeDefinition.typeName.string,
@@ -576,21 +589,49 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
 
   override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
                                               ?!@stringset ioInclusionSet,
-                                              !@string outImplementation ) {
+                                              !@string outImplementation) {
     self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
     self.mAssociatedArrayTypeEntry.addHeaderFileName (!?ioInclusionSet)
     self.mAssociatedElementTypeEntry.addHeaderFileName (!?ioInclusionSet)
-    outImplementation = filewrapper [typeGenerationTemplate.graphTypeSpecificImplementation :
+    outImplementation = filewrapper [graphGenerationTemplate.graphTypeSpecificImplementation :
       self.mSelfTypeEntry,
       self.mSelfTypeEntry.identifierRepresentation,
       self.mAssociatedArrayTypeEntry,
       self.mAssociatedElementTypeEntry,
-      self.mInsertModifierList
+      self.mInsertModifierList,
+      self.mLStringArrayType,
+      self.mStringArrayType
     ]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private filewrapper graphGenerationTemplate in "../+generation-templates/type_generation" {
+}{
+}{
+  template graphTypeHeader1 : "GALGAS_graph.h1.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string TYPE_IDENTIFIER,
+    ?@unifiedTypeMapEntry ASSOCIATED_ARRAY_TYPE,
+    ?@unifiedTypeMapEntry ASSOCIATED_ELEMENT_TYPE,
+    ?@unifiedTypeMapEntry LSTRING_ARRAY_TYPE,
+    ?@unifiedTypeMapEntry STRING_ARRAY_TYPE
+  )
+
+  template graphTypeSpecificImplementation : "GALGAS_graph.cpp.galgasTemplate" (
+    ?@unifiedTypeMapEntry TYPE,
+    ?@string TYPE_IDENTIFIER,
+    ?@unifiedTypeMapEntry ASSOCIATED_ARRAY_TYPE,
+    ?@unifiedTypeMapEntry ASSOCIATED_ELEMENT_TYPE,
+    ?@graphInsertModifierList INSERT_MODIFIER_LIST,
+    ?@unifiedTypeMapEntry LSTRING_ARRAY_TYPE,
+    ?@unifiedTypeMapEntry STRING_ARRAY_TYPE
+
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

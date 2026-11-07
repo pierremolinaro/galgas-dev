@@ -740,22 +740,6 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string PRE_DECLARATION,
     ?@string CODE
   )
-
-//--------- Graph
-  template graphTypeHeader1 : "GALGAS_graph.h1.galgasTemplate" (
-    ?@string TYPE_NAME,
-    ?@string TYPE_IDENTIFIER,
-    ?@unifiedTypeMapEntry ASSOCIATED_ARRAY_TYPE,
-    ?@unifiedTypeMapEntry ASSOCIATED_ELEMENT_TYPE
-  )
-
-  template graphTypeSpecificImplementation : "GALGAS_graph.cpp.galgasTemplate" (
-    ?@unifiedTypeMapEntry TYPE,
-    ?@string TYPE_IDENTIFIER,
-    ?@unifiedTypeMapEntry ASSOCIATED_ARRAY_TYPE,
-    ?@unifiedTypeMapEntry ASSOCIATED_ELEMENT_TYPE,
-    ?@graphInsertModifierList INSERT_MODIFIER_LIST
-  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1411,7 +1395,7 @@ final class @primitiveTypeForGeneration : @semanticTypeForGeneration {
 
   //----------------------------------------------------------------------------------------------
 
-  override proc appendPrimitiveTypePreDeclaration (?!@string ioHeader ) {
+  override proc appendPrimitiveTypePreDeclaration (?!@string ioHeader) {
     ioHeader += "class GGS_" + self.mPredefinedTypeName + " ;\n"
   }
 
@@ -1456,8 +1440,8 @@ final class @primitiveTypeForGeneration : @semanticTypeForGeneration {
 //! Generate Predefined types
 //--------------------------------------------------------------------------------------------------
 
-proc generatePredefinedTypeFiles
-  (let @string inDirectory,
+proc generatePredefinedTypeFiles (
+  let @string inDirectory,
   let [@semanticDeclarationForGeneration] inSemanticDeclarationListForGeneration,
   ?!@stringlist ioToolHeaderFileList,
   ?!@stringlist ioToolCppFileList,

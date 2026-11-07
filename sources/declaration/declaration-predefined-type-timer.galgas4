@@ -62,7 +62,6 @@ final class @timerPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"msFromStart",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
@@ -70,7 +69,6 @@ final class @timerPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"string",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -78,7 +76,6 @@ final class @timerPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"isRunning",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )

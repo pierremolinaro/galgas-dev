@@ -43,7 +43,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"string",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -51,7 +50,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"uint",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
@@ -59,7 +57,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sint",
-      !obsoleteName: "",
       !returnedTypeName:"sint",
       !hasCompilerArgument:true
     )
@@ -67,7 +64,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"uint64",
-      !obsoleteName: "",
       !returnedTypeName:"uint64",
       !hasCompilerArgument:true
     )
@@ -75,7 +71,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sint64",
-      !obsoleteName: "",
       !returnedTypeName:"sint64",
       !hasCompilerArgument:true
     )
@@ -83,7 +78,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"cos",
-      !obsoleteName: "",
       !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
@@ -91,7 +85,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sin",
-      !obsoleteName: "",
       !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
@@ -99,7 +92,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"tan",
-      !obsoleteName: "",
       !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
@@ -107,7 +99,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"log10",
-      !obsoleteName: "",
       !returnedTypeName:"double",
       !hasCompilerArgument:true
     )
@@ -115,7 +106,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"log2",
-      !obsoleteName: "",
       !returnedTypeName:"double",
       !hasCompilerArgument:true
     )
@@ -123,7 +113,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"logn",
-      !obsoleteName: "",
       !returnedTypeName:"double",
       !hasCompilerArgument:true
     )
@@ -131,7 +120,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"exp",
-      !obsoleteName: "",
       !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
@@ -139,7 +127,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"cosDegree",
-      !obsoleteName: "",
       !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
@@ -147,7 +134,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sinDegree",
-      !obsoleteName: "",
       !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
@@ -155,7 +141,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"tanDegree",
-      !obsoleteName: "",
       !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
@@ -163,7 +148,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sqrt",
-      !obsoleteName: "",
       !returnedTypeName:"double",
       !hasCompilerArgument:true
     )
@@ -178,7 +162,6 @@ final class @doublePredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"binaryImage",
-      !obsoleteName: "",
       !returnedTypeName:"uint64",
       !hasCompilerArgument:false
     )

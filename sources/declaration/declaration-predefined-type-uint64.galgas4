@@ -43,7 +43,7 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc getClassFunctionMap (?!@unifiedTypeMap ioUnifiedTypeMap,
-                                      !@classFunctionMap outMap ) {
+                                     !@classFunctionMap outMap) {
     outMap = @()
     enterClassFunctionWithoutArgument (
       !?outMap,
@@ -90,7 +90,6 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"double",
-      !obsoleteName: "",
       !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
@@ -98,7 +97,6 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"bigint",
-      !obsoleteName: "",
       !returnedTypeName:"bigint",
       !hasCompilerArgument:false
     )
@@ -106,14 +104,12 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sint",
-      !obsoleteName: "",
       !returnedTypeName:"sint",
       !hasCompilerArgument:true)
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sint64",
-      !obsoleteName: "",
       !returnedTypeName:"sint64",
       !hasCompilerArgument:true
     )
@@ -121,7 +117,6 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"uint",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
@@ -138,7 +133,6 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"alphaString",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -146,7 +140,6 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"string",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -154,7 +147,6 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"hexString",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -173,7 +165,6 @@ final class @uint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"xString",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )

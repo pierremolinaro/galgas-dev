@@ -67,7 +67,6 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"double",
-      !obsoleteName: "",
       !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
@@ -75,7 +74,6 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"uint64",
-      !obsoleteName: "",
       !returnedTypeName:"uint64",
       !hasCompilerArgument:true
     )
@@ -83,7 +81,6 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sint",
-      !obsoleteName: "",
       !returnedTypeName:"sint",
       !hasCompilerArgument:true
     )
@@ -91,7 +88,6 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"uint",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
@@ -99,7 +95,6 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"bigint",
-      !obsoleteName: "",
       !returnedTypeName:"bigint",
       !hasCompilerArgument:false
     )
@@ -107,7 +102,6 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"string",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -115,7 +109,6 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"hexString",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -134,7 +127,6 @@ final class @sint64PredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"xString",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )

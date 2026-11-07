@@ -436,7 +436,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis
-                    (?!@lstringlist ioUsefulnessRootEntities,
+                    (?![@lstring] ioUsefulnessRootEntities,
                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                     let @string _inProductDirectory,
                     let @semanticContext _inSemanticContext,
@@ -447,7 +447,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.enumTypeName)
     !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
     if self.isPredefined  then
-      ioUsefulnessRootEntities ++= @(nameForUsefulness)
+      ioUsefulnessRootEntities ++= nameForUsefulness
     end
   //--- Constant list
     var [@unifiedTypeMapEntry] associatedValuesTypes = @()

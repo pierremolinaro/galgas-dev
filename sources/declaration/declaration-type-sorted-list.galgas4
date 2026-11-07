@@ -359,7 +359,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis
-    (?!@lstringlist ioUsefulnessRootEntities,
+    (?![@lstring] ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
     let @string _inProductDirectory,
     let @semanticContext _inSemanticContext,
@@ -375,7 +375,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     )
     !?ioUsefulEntitiesGraph.addEdge (!from: sortedListNameForUsefulness, !to: elementTypeNameForUsefulness)
     if self.isPredefined then
-      ioUsefulnessRootEntities ++= @(sortedListNameForUsefulness)
+      ioUsefulnessRootEntities ++= sortedListNameForUsefulness
     end
   //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
@@ -385,7 +385,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
     !?ioUsefulEntitiesGraph.addEdge (!from: initializerNameForUsefulness, !to: sortedListNameForUsefulness)
     if self.isPredefined then
-      ioUsefulnessRootEntities ++= @(initializerNameForUsefulness)
+      ioUsefulnessRootEntities ++= initializerNameForUsefulness
     end
   //--- Attribute
     var typedAttributeList = @typedPropertyList ()

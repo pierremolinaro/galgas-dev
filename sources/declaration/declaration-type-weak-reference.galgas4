@@ -165,7 +165,7 @@ override proc @weakReferenceDeclarationAST.enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @weakReferenceDeclarationAST.semanticAnalysis
-  (?!@lstringlist _ioUsefulnessRootEntities,
+  (?![@lstring] _ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @string _inProductDirectory,
   let @semanticContext _inSemanticContext,

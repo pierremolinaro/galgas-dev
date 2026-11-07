@@ -104,7 +104,6 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"double",
-      !obsoleteName: "",
       !returnedTypeName:"double",
       !hasCompilerArgument:false
     )
@@ -112,7 +111,6 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sint",
-      !obsoleteName: "",
       !returnedTypeName:"sint",
       !hasCompilerArgument:true
     )
@@ -120,7 +118,6 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"sint64",
-      !obsoleteName: "",
       !returnedTypeName:"sint64",
       !hasCompilerArgument:false
     )
@@ -128,7 +125,6 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"bigint",
-      !obsoleteName: "",
       !returnedTypeName:"bigint",
       !hasCompilerArgument:false
     )
@@ -136,7 +132,6 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"uint64",
-      !obsoleteName: "",
       !returnedTypeName:"uint64",
       !hasCompilerArgument:false
     )
@@ -144,7 +139,6 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"lsbIndex",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
@@ -152,7 +146,6 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"significantBitCount",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
@@ -160,7 +153,6 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"oneBitCount",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
@@ -168,7 +160,6 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"string",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -176,7 +167,6 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"alphaString",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -184,7 +174,6 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"hexString",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -203,7 +192,6 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"xString",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -211,7 +199,6 @@ final class @uintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"isUnicodeValueAssigned",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )

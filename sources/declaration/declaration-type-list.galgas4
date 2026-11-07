@@ -30,56 +30,6 @@ final class @listDeclarationAST : @semanticDeclarationAST {
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3DeclarationsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    $list$
-//    $@type$ (?let @lstring listTypeName) indexing (listDefinition, structDefinition ".element")
-//    var isUsefull = false
-//    var isEquatable = false
-//    repeat
-//    while
-//      $%equatable$
-//      if isEquatable then
-//        error (.here : "duplicate attribute" fixit %remove)
-//      end
-//      isEquatable = true
-//    while
-//      $%usefull$
-//      if isUsefull then
-//        error (.here : "duplicate attribute" fixit %remove)
-//      end
-//      isUsefull = true
-//    end
-//    ${$
-//    var @propertyInCollectionListAST propertyList = @()
-//    repeat
-//    while
-//      <property_declaration_ggs3> (!?ioDeclarations, !?propertyList)
-//    while
-//      <method_declaration_ggs3> (!listTypeName, !?ioDeclarations)
-//    end
-//    if propertyList.count == 0 then
-//      error (.here : "a list declaration must declare at least one property")
-//    end
-//    $}$
-//    ioDeclarations.mDeclarationList ++= @(!@listDeclarationAST (
-//      !isPredefined: false,
-//      listTypeName,
-//      propertyList,
-//      !usefullList: isUsefull,
-//      !equatable: isEquatable
-//    ))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -448,7 +398,7 @@ override proc @listDeclarationAST.addAssociatedElement
 //--------------------------------------------------------------------------------------------------
 
 override proc @listDeclarationAST.semanticAnalysis
-          (?!@lstringlist ioUsefulnessRootEntities,
+          (?![@lstring] ioUsefulnessRootEntities,
           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
           let @string _inProductDirectory,
           let @semanticContext _inSemanticContext,
@@ -460,14 +410,14 @@ override proc @listDeclarationAST.semanticAnalysis
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.mListTypeName)
   !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
   if self.usefullList || self.isPredefined  then
-    ioUsefulnessRootEntities ++= @(nameForUsefulness)
+    ioUsefulnessRootEntities ++= nameForUsefulness
   end
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (
     makeEmbeddedElementTypeLName (self.mListTypeName)
   )
   !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: elementTypeNameForUsefulness)
   if self.usefullList || self.isPredefined  then
-    ioUsefulnessRootEntities ++= @(elementTypeNameForUsefulness)
+    ioUsefulnessRootEntities ++= elementTypeNameForUsefulness
   end
 //--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
@@ -477,7 +427,7 @@ override proc @listDeclarationAST.semanticAnalysis
   !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
   !?ioUsefulEntitiesGraph.addEdge (!from: initializerNameForUsefulness, !to: nameForUsefulness)
   if self.usefullList || self.isPredefined then
-    ioUsefulnessRootEntities ++= @(initializerNameForUsefulness)
+    ioUsefulnessRootEntities ++= initializerNameForUsefulness
   end
 //---
   var @typedPropertyList typedAttributeList = @()

@@ -18,8 +18,8 @@
 //--------------------------------------------------------------------------------------------------
 
 final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
-  private let @lstring arrayTypeName
-  private let @lstring elementTypeName
+  private let @lstring arrayTypeName #initArgLabel
+  private let @lstring elementTypeName #initArgLabel
   private let @bool isUsefull #initArgLabel
   private let @bool equatable #initArgLabel
 
@@ -31,14 +31,14 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterDeclarationInGraph
-    (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
-    ?!@equatableExtensionMap _ioEquatableExtensionMap,
-    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
-    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
-    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
-    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
-    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
+  override proc enterDeclarationInGraph (
+                    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+                    ?!@equatableExtensionMap _ioEquatableExtensionMap,
+                    ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+                    ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+                    ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+                    ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+                    ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList) {
     let key = @lstring ("@" + self.arrayTypeName, self.arrayTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     !?ioSemanticTypePrecedenceGraph.noteNode (@lstring ("@" + self.elementTypeName, self.elementTypeName))
@@ -53,7 +53,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
     let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
     ?!@unifiedTypeMap ioTypeMap,
-    ?!@semanticContext ioSemanticContext ) {
+    ?!@semanticContext ioSemanticContext) {
   //--- uint type index
     !?ioTypeMap.makeEntryFromString ("uint", ?let uintType)
   //--- Element type index
@@ -261,7 +261,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc semanticAnalysis (?!@lstringlist ioUsefulnessRootEntities,
+  override proc semanticAnalysis (?![@lstring] ioUsefulnessRootEntities,
                                   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                   let @string _inProductDirectory,
                                   let @semanticContext _inSemanticContext,
@@ -272,12 +272,12 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.arrayTypeName)
     !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
     if self.isUsefull || self.isPredefined then
-      ioUsefulnessRootEntities ++= @(nameForUsefulness)
+      ioUsefulnessRootEntities ++= nameForUsefulness
     end
     let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.elementTypeName)
     !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: elementTypeNameForUsefulness)
     if self.isUsefull || self.isPredefined then
-      ioUsefulnessRootEntities ++= @(elementTypeNameForUsefulness)
+      ioUsefulnessRootEntities ++= elementTypeNameForUsefulness
     end
   //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
@@ -286,7 +286,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     )
     !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
     if self.isUsefull || self.isPredefined then
-      ioUsefulnessRootEntities ++= @(initializerNameForUsefulness)
+      ioUsefulnessRootEntities ++= initializerNameForUsefulness
     end
   //---
     let selfType = ioTypeMap.typeMapEntryForLKey (self.arrayTypeName)

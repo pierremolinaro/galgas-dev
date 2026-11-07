@@ -60,7 +60,6 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"allTextFilePaths",
-      !obsoleteName: "",
       !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )
@@ -68,7 +67,6 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"allBinaryFilePaths",
-      !obsoleteName: "",
       !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )
@@ -76,7 +74,6 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"allDirectoryPaths",
-      !obsoleteName: "",
       !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )
@@ -84,7 +81,6 @@ final class @filewrapperPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"currentDirectory",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )

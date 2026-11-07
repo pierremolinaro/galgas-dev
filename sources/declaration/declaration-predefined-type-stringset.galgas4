@@ -33,7 +33,14 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func initializers () -> [@formalInputParameterListAST] {
-    result = [@formalInputParameterListAST ()]
+    let defaultInitializer = @formalInputParameterListAST ()
+    let initializerFromStringArray = @formalInputParameterListAST [
+      @("stringArray".nowhere, makeArrayTypeLName ("string".nowhere), "inStringArray".nowhere, false, true)
+    ]
+    let initializerFromLStringArray = @formalInputParameterListAST [
+      @("lstringArray".nowhere, "[lstring]".nowhere, "inLStringArray".nowhere, false, true)
+    ]
+    result = [defaultInitializer, initializerFromStringArray, initializerFromLStringArray]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -99,9 +106,9 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
                                !@setterMap outSetterMap ) {
     !?ioUnifiedTypeMap.makeEntryFromString ("string", ?let stringType)
     outSetterMap = @()
-    !?outSetterMap.insertKey
-      (@lstring ("removeKey", @location.here),
-      @methodKind. definedAsMember,
+    !?outSetterMap.insertKey (
+      "removeKey".nowhere,
+      .definedAsMember,
       @formalParameterSignature.listWithValue ("".nowhere, stringType, .argumentVarIn, "inKey"),
       false, // No Compiler argument
       @methodQualifier. isBasic,
@@ -120,8 +127,8 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc getEnumerationList (?!@unifiedTypeMap ioUnifiedTypeMap,
-                                     !@enumerationDescriptorList outEnumerationList,
-                                     !@string outEnumeratedType ) {
+                                    !@enumerationDescriptorList outEnumerationList,
+                                    !@string outEnumeratedType ) {
     !?ioUnifiedTypeMap.makeEntryFromString ("string", ?let stringTypeIndex)
     outEnumerationList = @()
     outEnumerationList ++= @(stringTypeIndex, "key")
@@ -152,7 +159,6 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"count",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
@@ -160,7 +166,6 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"anyString",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
@@ -168,7 +173,6 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"stringList",
-      !obsoleteName: "",
       !returnedTypeName:"stringlist",
       !hasCompilerArgument:false
     )

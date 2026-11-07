@@ -155,8 +155,9 @@ private proc parseAndAnalyzeProject (let @lstring inProjectSourceFilePath,
 
 private proc compileProject (let @lstring inProjectSourceFile,
                             let @string inSourceToAnalyze,
-                            let @galgas3ProjectComponentAST inProjectComponentAST ) {
+                            let @galgas3ProjectComponentAST inProjectComponentAST) {
   var @galgasDeclarationAST declarationAST = @()
+  appendPredefinedTypesASTs (!?declarationAST)
 //--- Parse predefined type definitions
   grammar galgas4Grammar (!?declarationAST) on
   filewrapper [typeGenerationTemplate].textFileContentsAtPath ("galgas-predefined-entities.txt")
@@ -164,13 +165,8 @@ private proc compileProject (let @lstring inProjectSourceFile,
  //--- Parse source file
   let sourcesDir = inProjectSourceFile.string.deletingLastPathComponent + "/sources"
   for (mValue) in inProjectComponentAST.mProjectSourceList do
-//    if mValue.pathExtension == "galgas3" then
-//      let absoluteSourcePath = mValue.absolutePathFromPath (!sourcesDir)
-//      galgas3Grammar (!?declarationAST) in @lstring (!absoluteSourcePath, .nowhere)
-//    elsif mValue.pathExtension == "galgas4" then
-      let absoluteSourcePath = mValue.absolutePathFromPath (sourcesDir)
-      grammar galgas4Grammar (!?declarationAST) in @lstring (absoluteSourcePath, .nowhere)
-//    end
+    let absoluteSourcePath = mValue.absolutePathFromPath (sourcesDir)
+    grammar galgas4Grammar (!?declarationAST) in @lstring (absoluteSourcePath, .nowhere)
   end
 //-------------------------------- Hand coded source files
   var @stringlist handCodedLinkToolFileList = @()
@@ -212,10 +208,10 @@ private proc compileProject (let @lstring inProjectSourceFile,
   let absoluteBuildDirectory = inProjectSourceFile.string.deletingLastPathComponent + "/" + buildDirectoryName
   let productDirectory = absoluteBuildDirectory + "/output"
   let @stringlist appProductFileList = @()
+  var [@lstring] usefulnessRootEntities = @()
   let @semanticContext semanticContext
   var @unifiedTypeMap typeMap
   var [@semanticDeclarationForGeneration] semanticDeclarationSortedListForGeneration
-  var @lstringlist usefulnessRootEntities = @()
   if @uint.errorCount == 0 then
     compileSemanticDeclarationsGalgas (
       !?usefulnessRootEntities,

@@ -140,7 +140,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc semanticAnalysis (?!@lstringlist _ioUsefulnessRootEntities,
+  override proc semanticAnalysis (?![@lstring] _ioUsefulnessRootEntities,
                                     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                     let @string _inProductDirectory,
                                     let @semanticContext inSemanticContext,

@@ -187,7 +187,7 @@ final class @initializerAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis (
-                ?!@lstringlist _ioUsefulnessRootEntities,
+                ?![@lstring] _ioUsefulnessRootEntities,
                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                 let @string _inProductDirectory,
                 let @semanticContext inSemanticContext,

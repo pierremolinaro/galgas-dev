@@ -880,7 +880,7 @@ override proc @lexiqueComponentAST.enterDeclarationInSemanticContext
 //--------------------------------------------------------------------------------------------------
 
 override proc @lexiqueComponentAST.semanticAnalysis
-                                      (?!@lstringlist _ioUsefulnessRootEntities,
+                                      (?![@lstring] _ioUsefulnessRootEntities,
                                       ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                       let @string _inProductDirectory,
                                       let @semanticContext _inSemanticContext,

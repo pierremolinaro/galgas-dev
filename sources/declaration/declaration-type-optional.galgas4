@@ -143,7 +143,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc semanticAnalysis
-    (?!@lstringlist ioUsefulnessRootEntities,
+    (?![@lstring] ioUsefulnessRootEntities,
     ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
     let @string _inProductDirectory,
     let @semanticContext _inSemanticContext,
@@ -157,7 +157,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
     let unwrappedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.unwrappedTypeName)
     !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: unwrappedTypeNameForUsefulness)
     if self.isUsefull then
-      ioUsefulnessRootEntities ++= @(nameForUsefulness)
+      ioUsefulnessRootEntities ++= nameForUsefulness
     end
   //---
     let optionalType = ioTypeMap.typeMapEntryForLKey (self.optionalTypeName)

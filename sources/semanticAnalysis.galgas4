@@ -247,7 +247,7 @@ proc analyzeRoutineBody (let @lstring inUsefulnessCallerEntityName,
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @externFunctionDeclarationAST.semanticAnalysis (?!@lstringlist ioUsefulnessRootEntities,
+override proc @externFunctionDeclarationAST.semanticAnalysis (?![@lstring] ioUsefulnessRootEntities,
                                               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                               let @string _inProductDirectory,
                                               let @semanticContext _inSemanticContext,
@@ -258,7 +258,7 @@ override proc @externFunctionDeclarationAST.semanticAnalysis (?!@lstringlist ioU
   let nameForUsefulness = functionNameForUsefulEntitiesGraph (self.mFunctionName)
   !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
   if self.usefullFunc then
-    ioUsefulnessRootEntities ++= @(nameForUsefulness)
+    ioUsefulnessRootEntities ++= nameForUsefulness
   end
 //---
   var formalArgumentList = @formalInputParameterListForGeneration ()
@@ -366,7 +366,7 @@ proc analyzeFunctionBody
 //--------------------------------------------------------------------------------------------------
 
 override proc @functionDeclarationAST.semanticAnalysis
-  (?!@lstringlist ioUsefulnessRootEntities,
+  (?![@lstring] ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @string _inProductDirectory,
   let @semanticContext inSemanticContext,
@@ -378,7 +378,7 @@ override proc @functionDeclarationAST.semanticAnalysis
   let nameForUsefulness = functionNameForUsefulEntitiesGraph (self.mFunctionName)
   !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
   if self.usefullFunc then
-    ioUsefulnessRootEntities ++= @(nameForUsefulness)
+    ioUsefulnessRootEntities ++= nameForUsefulness
   end
 //--- Analyse function body
   let analysisContext = @analysisContext (
@@ -419,7 +419,7 @@ override proc @functionDeclarationAST.semanticAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @onceFunctionDeclarationAST.semanticAnalysis
-  (?!@lstringlist ioUsefulnessRootEntities,
+  (?![@lstring] ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @string _inProductDirectory,
   let @semanticContext inSemanticContext,
@@ -431,7 +431,7 @@ override proc @onceFunctionDeclarationAST.semanticAnalysis
   let nameForUsefulness = functionNameForUsefulEntitiesGraph (self.mFunctionName)
   !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
   if self.mIsUsefull then
-    ioUsefulnessRootEntities ++= @(nameForUsefulness)
+    ioUsefulnessRootEntities ++= nameForUsefulness
   end
 //--- Analyse function body
   let analysisContext = @analysisContext (
@@ -475,7 +475,7 @@ override proc @onceFunctionDeclarationAST.semanticAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @filewrapperDeclarationAST.semanticAnalysis
-  (?!@lstringlist _ioUsefulnessRootEntities,
+  (?![@lstring] _ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @string _inProductDirectory,
   let @semanticContext inSemanticContext,
@@ -569,7 +569,7 @@ override proc @filewrapperDeclarationAST.semanticAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @galgas3SyntaxComponentAST.semanticAnalysis
-  (?!@lstringlist _ioUsefulnessRootEntities,
+  (?![@lstring] _ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @string _inProductDirectory,
   let @semanticContext inSemanticContext,
@@ -623,7 +623,7 @@ override proc @galgas3SyntaxComponentAST.semanticAnalysis
 //--------------------------------------------------------------------------------------------------
 
 override proc @galgas3GrammarComponentAST.semanticAnalysis
-                                (?!@lstringlist _ioUsefulnessRootEntities,
+                                (?![@lstring] _ioUsefulnessRootEntities,
                                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                 let @string inProductDirectory,
                                 let @semanticContext inSemanticContext,

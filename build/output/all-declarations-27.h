@@ -87,6 +87,56 @@ void routine_check_5F_K_5F_L_5F_escapeCharacters_3F_ (const class GGS_lstring co
 
 //--------------------------------------------------------------------------------------------------
 //
+//Filewrapper 'graphGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_graphGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_graphGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_graphGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'graphGenerationTemplate graphTypeHeader1'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_graphGenerationTemplate_graphTypeHeader_31_ (class Compiler * inCompiler,
+                                                                            const class GGS_string & in_TYPE_5F_NAME,
+                                                                            const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                            const class GGS_unifiedTypeMapEntry & in_ASSOCIATED_5F_ARRAY_5F_TYPE,
+                                                                            const class GGS_unifiedTypeMapEntry & in_ASSOCIATED_5F_ELEMENT_5F_TYPE,
+                                                                            const class GGS_unifiedTypeMapEntry & in_LSTRING_5F_ARRAY_5F_TYPE,
+                                                                            const class GGS_unifiedTypeMapEntry & in_STRING_5F_ARRAY_5F_TYPE
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'graphGenerationTemplate graphTypeSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_graphGenerationTemplate_graphTypeSpecificImplementation (class Compiler * inCompiler,
+                                                                                        const class GGS_unifiedTypeMapEntry & in_TYPE,
+                                                                                        const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                        const class GGS_unifiedTypeMapEntry & in_ASSOCIATED_5F_ARRAY_5F_TYPE,
+                                                                                        const class GGS_unifiedTypeMapEntry & in_ASSOCIATED_5F_ELEMENT_5F_TYPE,
+                                                                                        const class GGS_graphInsertModifierList & in_INSERT_5F_MODIFIER_5F_LIST,
+                                                                                        const class GGS_unifiedTypeMapEntry & in_LSTRING_5F_ARRAY_5F_TYPE,
+                                                                                        const class GGS_unifiedTypeMapEntry & in_STRING_5F_ARRAY_5F_TYPE
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Filewrapper 'optionalTypeGenerationTemplate'
 //
 //--------------------------------------------------------------------------------------------------
@@ -140,16 +190,6 @@ GGS_string filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeSpecif
 class GGS_string function_makeEmbeddedElementTypeName (const class GGS_string & constinArgument0,
                                                        class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'makeArrayTypeName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string function_makeArrayTypeName (const class GGS_string & constinArgument0,
-                                             class Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -400,122 +440,65 @@ class GGS_string function_generateClassInstanceMethodDeclaration (const class GG
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'appendPredefinedListTypeAST&?&'
+//Routine 'appendPredefinedListTypeAST&?'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_appendPredefinedListTypeAST_26__3F__26_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
-                                                      const class GGS_string constinArgument1,
-                                                      class GGS_lstringlist & ioArgument2,
-                                                      class Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'insertInUsefulnessEntities&?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_insertInUsefulnessEntities_26__3F_ (class GGS_lstringlist & ioArgument0,
-                                                 const class GGS_string constinArgument1,
-                                                 class Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'appendPredefined2StringListTypeAST&&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_appendPredefined_32_StringListTypeAST_26__26_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
-                                                            class GGS_lstringlist & ioArgument1,
-                                                            class Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'appendStructASTForTypeWithLocation&?&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_appendStructASTForTypeWithLocation_26__3F__26_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
-                                                             const class GGS_string constinArgument1,
-                                                             class GGS_lstringlist & ioArgument2,
-                                                             class Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'appendStructASTForRangeType&&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_appendStructASTForRangeType_26__26_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
-                                                  class GGS_lstringlist & ioArgument1,
+void routine_appendPredefinedListTypeAST_26__3F_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
+                                                  const class GGS_string constinArgument1,
                                                   class Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'insertPredefinedType&&?'
+//Routine 'appendPredefinedArrayTypeAST&?'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_insertPredefinedType_26__26__3F_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
-                                               class GGS_lstringlist & ioArgument1,
-                                               const class GGS_predefinedTypeAST constinArgument2,
-                                               class Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
+void routine_appendPredefinedArrayTypeAST_26__3F_ (class GGS_galgasDeclarationAST & ioArgument0,
+                                                   const class GGS_string constinArgument1,
+                                                   class Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper 'dictGenerationTemplate'
+//Routine 'appendPredefined2StringListTypeAST&'
 //
 //--------------------------------------------------------------------------------------------------
 
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_dictGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_dictGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_dictGenerationTemplate ;
+void routine_appendPredefined_32_StringListTypeAST_26_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
+                                                        class Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'dictGenerationTemplate dictTypeHeader1'
+//Routine 'appendStructASTForTypeWithLocation&?'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_dictGenerationTemplate_dictTypeHeader_31_ (class Compiler * inCompiler,
-                                                                          const class GGS_string & in_TYPE_5F_NAME,
-                                                                          const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                          const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
-                                                                          const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
-                                                                          const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
-                                                                          const class GGS_string & in_KEY_5F_TYPE_5F_IDENTIFIER,
-                                                                          const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER
-                                                                          COMMA_LOCATION_ARGS) ;
+void routine_appendStructASTForTypeWithLocation_26__3F_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
+                                                         const class GGS_string constinArgument1,
+                                                         class Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'dictGenerationTemplate dictTypeSpecificImplementation'
+//Routine 'appendStructASTForRangeType&'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_dictGenerationTemplate_dictTypeSpecificImplementation (class Compiler * inCompiler,
-                                                                                      const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                      const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
-                                                                                      const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
-                                                                                      const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
-                                                                                      const class GGS_string & in_KEY_5F_TYPE_5F_IDENTIFIER,
-                                                                                      const class GGS_bool & in_GENERATE_5F_COMPARISON,
-                                                                                      const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
-                                                                                      const class GGS_string & in_OPTIONAL_5F_ELEMENT_5F_TYPE_5F_IDENTIFIER
-                                                                                      COMMA_LOCATION_ARGS) ;
+void routine_appendStructASTForRangeType_26_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
+                                              class Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'insertPredefinedType&?'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_insertPredefinedType_26__3F_ (class GGS_galgasDeclarationAST & ioArgument0,
+                                           const class GGS_predefinedTypeAST constinArgument1,
+                                           class Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
 

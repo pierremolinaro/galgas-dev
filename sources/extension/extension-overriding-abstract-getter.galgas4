@@ -203,7 +203,7 @@ override proc @overridingAbstractExtensionGetterAST.enterDeclarationInSemanticCo
 //--------------------------------------------------------------------------------------------------
 
 override proc @overridingAbstractExtensionGetterAST.semanticAnalysis (
-  ?!@lstringlist _ioUsefulnessRootEntities,
+  ?![@lstring] _ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
   let @string _inProductDirectory,
   let @semanticContext _inSemanticContext,
