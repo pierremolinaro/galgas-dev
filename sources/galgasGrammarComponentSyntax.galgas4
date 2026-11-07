@@ -25,7 +25,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <type_definition> (?!@galgasDeclarationAST ioDeclarations,
-                         !@lstring outTypeName)
+                          !@lstring outTypeName)
 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

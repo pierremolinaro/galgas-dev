@@ -39,7 +39,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
                                      !@formalInputParameterListAST outFormalInputParameterList)
 
   rule <type_definition> (?!@galgasDeclarationAST ioDeclarations,
-                         !@lstring outTypeName)
+                          !@lstring outTypeName)
 
   rule <non_empty_output_expression_list> (?!@galgasDeclarationAST ioDeclarations,
                                           !@actualOutputArgumentList outExpressionList)

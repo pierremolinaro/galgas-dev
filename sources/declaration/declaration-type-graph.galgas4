@@ -19,52 +19,15 @@
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3DeclarationsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    $graph$
-//    $@type$ (?let @lstring graphTypeName) indexing (graphDefinition)
-//    $($
-//    <type_definition_ggs3> (!?ioDeclarations, ?let associatedListTypeName)
-//    $)$
-//    ${$
-//    var graphInsertModifierList = @graphInsertModifierList ()
-//    repeat
-//    while
-//      $insert$
-//      $identifier$ (?let @lstring insertName)
-//      $error$
-//      $message$
-//      $"string"$ (?let @lstring errorMessage)
-//      graphInsertModifierList ++= @(!insertName, !errorMessage)
-//    end
-//    $}$
-//    ioDeclarations.mDeclarationList ++= @(!@graphDeclarationAST (
-//      !isPredefined: false,
-//      graphTypeName,
-//      associatedListTypeName,
-//      graphInsertModifierList
-//    ))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
+  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $graph$
     $@type$ (?let @lstring graphTypeName) indexing (graphDefinition)
-    $($
+    $:$
     <type_definition> (!?ioDeclarations, ?let associatedListTypeName)
-    $)$
     ${$
     var graphInsertModifierList = @graphInsertModifierList ()
     repeat
@@ -106,8 +69,8 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterDeclarationInGraph
-    (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+  override proc enterDeclarationInGraph (
+    ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
     ?!@equatableExtensionMap _ioEquatableExtensionMap,
     ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
     ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
@@ -117,16 +80,16 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   ) {
     let key = @lstring ("@" + self.mGraphTypeName, self.mGraphTypeName.location)
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
-    !?ioSemanticTypePrecedenceGraph.addEdge
-      (!from: key,
+    !?ioSemanticTypePrecedenceGraph.addEdge (
+      !from: key,
       !to: @("@" + self.mAssociatedListTypeName, self.mAssociatedListTypeName.location)
     )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterDeclarationInSemanticContext
-    (?!@equatableExtensionMap ioEquatableExtensionMap,
+  override proc enterDeclarationInSemanticContext (
+    ?!@equatableExtensionMap ioEquatableExtensionMap,
     let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
     let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
     let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,

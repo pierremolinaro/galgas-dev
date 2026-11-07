@@ -17,7 +17,7 @@ final class @classWithSuperClassAST : @declarationAST {
 }
 
 
-graph @inheritanceGraph (@declarationListAST) {
+graph @inheritanceGraph : @declarationListAST {
   #insertSetter addNode #errorMessage "the '%K' class is already declared"
 }
 

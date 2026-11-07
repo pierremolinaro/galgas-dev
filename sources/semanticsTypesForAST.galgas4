@@ -209,12 +209,6 @@ abstract class @semanticInstructionAST : @syntaxInstructionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-//list @semanticInstructionListAST {
-//  public let @semanticInstructionAST mInstruction
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 list @semanticDeclarationListAST {
   public let @semanticDeclarationAST mSemanticDeclaration
 }

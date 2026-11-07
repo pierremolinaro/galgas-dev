@@ -242,7 +242,7 @@ syntax extension galgas4DeclarationsSyntax {
       $:$
       <type_definition> (!?ioDeclarations, ?*)
       error (.here : "Not handled yet")
-      end
+    end
     $]$
   }
 

@@ -22,30 +22,30 @@ void cPtr_galgas_33_SyntaxComponentAST::method_enterDeclarationInGraph (GGS_sema
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_galgas_33_SyntaxComponentAST temp_0 = this ;
   const GGS_galgas_33_SyntaxComponentAST temp_1 = this ;
-  GGS_lstring var_key_34528 = GGS_lstring::init_21__21_ (GGS_string ("syntax ").add_operation (temp_0.readProperty_mSyntaxComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 814)), temp_1.readProperty_mSyntaxComponentName ().readProperty_location (), inCompiler COMMA_HERE) ;
+  GGS_lstring var_key_34529 = GGS_lstring::init_21__21_ (GGS_string ("syntax ").add_operation (temp_0.readProperty_mSyntaxComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 814)), temp_1.readProperty_mSyntaxComponentName ().readProperty_location (), inCompiler COMMA_HERE) ;
   {
   const GGS_galgas_33_SyntaxComponentAST temp_2 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_34528, temp_2, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 815)) ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_34529, temp_2, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 815)) ;
   }
   {
   const GGS_galgas_33_SyntaxComponentAST temp_3 = this ;
   const GGS_galgas_33_SyntaxComponentAST temp_4 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_34528, GGS_lstring::init_21__21_ (GGS_string ("lexique ").add_operation (temp_3.readProperty_mLexiqueName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 816)), temp_4.readProperty_mLexiqueName ().readProperty_location (), inCompiler COMMA_HERE) COMMA_SOURCE_FILE ("semanticContext.galgas4", 816)) ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_34529, GGS_lstring::init_21__21_ (GGS_string ("lexique ").add_operation (temp_3.readProperty_mLexiqueName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 816)), temp_4.readProperty_mLexiqueName ().readProperty_location (), inCompiler COMMA_HERE) COMMA_SOURCE_FILE ("semanticContext.galgas4", 816)) ;
   }
   const GGS_galgas_33_SyntaxComponentAST temp_5 = this ;
-  UpEnumerator_syntaxRuleListAST enumerator_34816 (temp_5.readProperty_mRuleList ()) ;
-  while (enumerator_34816.hasCurrentObject ()) {
-    UpEnumerator_syntaxRuleLabelListAST enumerator_34853 (enumerator_34816.current (HERE).readProperty_mLabelList ()) ;
-    while (enumerator_34853.hasCurrentObject ()) {
-      UpEnumerator_formalParameterListAST enumerator_34894 (enumerator_34853.current (HERE).readProperty_mFormalArguments ()) ;
-      while (enumerator_34894.hasCurrentObject ()) {
-        switch (enumerator_34894.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
+  UpEnumerator_syntaxRuleListAST enumerator_34817 (temp_5.readProperty_mRuleList ()) ;
+  while (enumerator_34817.hasCurrentObject ()) {
+    UpEnumerator_syntaxRuleLabelListAST enumerator_34854 (enumerator_34817.current (HERE).readProperty_mLabelList ()) ;
+    while (enumerator_34854.hasCurrentObject ()) {
+      UpEnumerator_formalParameterListAST enumerator_34895 (enumerator_34854.current (HERE).readProperty_mFormalArguments ()) ;
+      while (enumerator_34895.hasCurrentObject ()) {
+        switch (enumerator_34895.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
         case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
           break ;
         case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn:
           {
             {
-            ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_34528, GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (enumerator_34894.current (HERE).readProperty_mFormalArgumentTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 821)), enumerator_34894.current (HERE).readProperty_mFormalArgumentTypeName ().readProperty_location (), inCompiler COMMA_HERE) COMMA_SOURCE_FILE ("semanticContext.galgas4", 821)) ;
+            ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_34529, GGS_lstring::init_21__21_ (GGS_string ("@").add_operation (enumerator_34895.current (HERE).readProperty_mFormalArgumentTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 821)), enumerator_34895.current (HERE).readProperty_mFormalArgumentTypeName ().readProperty_location (), inCompiler COMMA_HERE) COMMA_SOURCE_FILE ("semanticContext.galgas4", 821)) ;
             }
           }
           break ;
@@ -54,11 +54,11 @@ void cPtr_galgas_33_SyntaxComponentAST::method_enterDeclarationInGraph (GGS_sema
         case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
           break ;
         }
-        enumerator_34894.gotoNextObject () ;
+        enumerator_34895.gotoNextObject () ;
       }
-      enumerator_34853.gotoNextObject () ;
+      enumerator_34854.gotoNextObject () ;
     }
-    enumerator_34816.gotoNextObject () ;
+    enumerator_34817.gotoNextObject () ;
   }
 }
 

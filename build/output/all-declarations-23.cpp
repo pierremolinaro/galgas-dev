@@ -9037,18 +9037,18 @@ void cPtr_galgas_33_GrammarComponentAST::method_enterDeclarationInGraph (GGS_sem
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_galgas_33_GrammarComponentAST temp_0 = this ;
   const GGS_galgas_33_GrammarComponentAST temp_1 = this ;
-  GGS_lstring var_key_33527 = GGS_lstring::init_21__21_ (GGS_string ("grammar ").add_operation (temp_0.readProperty_mGrammarComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 797)), temp_1.readProperty_mGrammarComponentName ().readProperty_location (), inCompiler COMMA_HERE) ;
+  GGS_lstring var_key_33528 = GGS_lstring::init_21__21_ (GGS_string ("grammar ").add_operation (temp_0.readProperty_mGrammarComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 797)), temp_1.readProperty_mGrammarComponentName ().readProperty_location (), inCompiler COMMA_HERE) ;
   {
   const GGS_galgas_33_GrammarComponentAST temp_2 = this ;
-  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_33527, temp_2, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 798)) ;
+  ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key_33528, temp_2, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 798)) ;
   }
   const GGS_galgas_33_GrammarComponentAST temp_3 = this ;
-  UpEnumerator_lstringlist enumerator_33682 (temp_3.readProperty_mSyntaxComponents ()) ;
-  while (enumerator_33682.hasCurrentObject ()) {
+  UpEnumerator_lstringlist enumerator_33683 (temp_3.readProperty_mSyntaxComponents ()) ;
+  while (enumerator_33683.hasCurrentObject ()) {
     {
-    ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_33527, GGS_lstring::init_21__21_ (GGS_string ("syntax ").add_operation (enumerator_33682.current_mValue (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 800)), enumerator_33682.current_mValue (HERE).readProperty_location (), inCompiler COMMA_HERE) COMMA_SOURCE_FILE ("semanticContext.galgas4", 800)) ;
+    ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key_33528, GGS_lstring::init_21__21_ (GGS_string ("syntax ").add_operation (enumerator_33683.current_mValue (HERE).readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas4", 800)), enumerator_33683.current_mValue (HERE).readProperty_location (), inCompiler COMMA_HERE) COMMA_SOURCE_FILE ("semanticContext.galgas4", 800)) ;
     }
-    enumerator_33682.gotoNextObject () ;
+    enumerator_33683.gotoNextObject () ;
   }
 }
 

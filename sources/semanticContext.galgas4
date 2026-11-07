@@ -780,14 +780,14 @@ override proc @galgas3GrammarComponentAST.enterDeclarationInSemanticContext
 
 //--------------------------------------------------------------------------------------------------
 
-graph @semanticTypePrecedenceGraph (@semanticDeclarationListAST) {
+graph @semanticTypePrecedenceGraph : @semanticDeclarationListAST {
   #insertSetter addNode #errorMessage "the '%K' type is already declared at %L"
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override proc @galgas3GrammarComponentAST.enterDeclarationInGraph
-  (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+override proc @galgas3GrammarComponentAST.enterDeclarationInGraph (
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
   ?!@equatableExtensionMap _ioEquatableExtensionMap,
   ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
   ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,

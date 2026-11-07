@@ -50,7 +50,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
                     !@semanticExpressionAST outExpression)
 
   rule <type_definition> (?!@galgasDeclarationAST ioDeclarations,
-                         !@lstring outTypeName)
+                          !@lstring outTypeName)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //! Filewrapper Declaration
