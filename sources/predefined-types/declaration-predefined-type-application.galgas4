@@ -261,7 +261,7 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
       !name:"keywordListForIdentifier",
       !argTypeName:"string",
       !argName:"inIdentifier",
-      !resultTypeName:"stringlist",
+      !resultTypeName:"[string]",
       !hasLexiqueArg:false
     )
   }

@@ -8450,7 +8450,7 @@ void cPtr_graphDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equ
   routine_enterInheritedGetterWithoutArgument_26__26__3F_getterName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_7031, ioArgument_ioTypeMap, GGS_string ("undefinedNodeCount"), GGS_string ("uint"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 250)) ;
   }
   {
-  routine_enterInheritedGetterWithoutArgument_26__26__3F_getterName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_7031, ioArgument_ioTypeMap, GGS_string ("undefinedNodeKeyList"), GGS_string ("stringlist"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 258)) ;
+  routine_enterInheritedGetterWithoutArgument_26__26__3F_getterName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_7031, ioArgument_ioTypeMap, GGS_string ("undefinedNodeKeyList"), GGS_string ("[string]"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 258)) ;
   }
   {
   routine_enterInheritedGetterWithoutArgument_26__26__3F_getterName_3F_returnedTypeName_3F_hasCompilerArgument (var_getterMap_7031, ioArgument_ioTypeMap, GGS_string ("undefinedNodeReferenceList"), GGS_string ("[lstring]"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 266)) ;
@@ -8484,12 +8484,12 @@ void cPtr_graphDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equ
   var_formalParameterList_7200.plusPlusAssignOperation (GGS_formalParameterSignature_2E_element::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-graph.galgas4", 352)), var_lstringTypeEntry_6423, GGS_formalArgumentPassingModeAST::class_func_argumentVarIn (SOURCE_FILE ("declaration-type-graph.galgas4", 354)), GGS_string ("inLKey"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 351)) ;
   var_formalParameterList_7200.plusPlusAssignOperation (GGS_formalParameterSignature_2E_element::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-type-graph.galgas4", 358)), var_associatedElementType_6783, GGS_formalArgumentPassingModeAST::class_func_argumentVarIn (SOURCE_FILE ("declaration-type-graph.galgas4", 360)), GGS_string ("inElement"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 357)) ;
   const GGS_graphDeclarationAST temp_6 = this ;
-  UpEnumerator__5B_graphInsertModifier_5D_ enumerator_13359 (temp_6.readProperty_mInsertModifierList ()) ;
-  while (enumerator_13359.hasCurrentObject ()) {
+  UpEnumerator__5B_graphInsertModifier_5D_ enumerator_13357 (temp_6.readProperty_mInsertModifierList ()) ;
+  while (enumerator_13357.hasCurrentObject ()) {
     {
-    var_setterMap_7062.setter_insertOrReplace (enumerator_13359.current (HERE).readProperty_mInsertModifierName (), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-graph.galgas4", 366)), var_formalParameterList_7200, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-graph.galgas4", 369)), GGS_string::makeEmptyString () COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 364)) ;
+    var_setterMap_7062.setter_insertOrReplace (enumerator_13357.current (HERE).readProperty_mInsertModifierName (), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-graph.galgas4", 366)), var_formalParameterList_7200, GGS_bool (true), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-graph.galgas4", 369)), GGS_string::makeEmptyString () COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 364)) ;
     }
-    enumerator_13359.gotoNextObject () ;
+    enumerator_13357.gotoNextObject () ;
   }
   {
   var_setterMap_7062.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("removeEdgesToDominators"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 375)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-graph.galgas4", 376)), GGS_formalParameterSignature::init (inCompiler COMMA_HERE), GGS_bool (false), GGS_methodQualifier::class_func_isInherited (SOURCE_FILE ("declaration-type-graph.galgas4", 379)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 374)) ;
@@ -8510,27 +8510,27 @@ void cPtr_graphDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equ
   {
   var_setterMap_7062.setter_insertKey (GGS_lstring::init_21__21_ (GGS_string ("noteNode"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 413)), inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-graph.galgas4", 414)), var_formalParameterList_7200, GGS_bool (false), GGS_methodQualifier::class_func_isInherited (SOURCE_FILE ("declaration-type-graph.galgas4", 417)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 412)) ;
   }
-  GGS_initializerMap var_initializerMap_15201 = GGS_initializerMap::init (inCompiler COMMA_HERE) ;
-  GGS_functionSignature var_constructorPropertyTypeList_15249 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
+  GGS_initializerMap var_initializerMap_15199 = GGS_initializerMap::init (inCompiler COMMA_HERE) ;
+  GGS_functionSignature var_constructorPropertyTypeList_15247 = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
   {
   const GGS_graphDeclarationAST temp_7 = this ;
-  var_initializerMap_15201.setter_insertKey (GGS_lstring::init_21__21_ (extensionGetter_initializerSignature (var_constructorPropertyTypeList_15249, inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 424)), temp_7.readProperty_mGraphTypeName ().readProperty_location (), inCompiler COMMA_HERE), var_constructorPropertyTypeList_15249, inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 423)) ;
+  var_initializerMap_15199.setter_insertKey (GGS_lstring::init_21__21_ (extensionGetter_initializerSignature (var_constructorPropertyTypeList_15247, inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 424)), temp_7.readProperty_mGraphTypeName ().readProperty_location (), inCompiler COMMA_HERE), var_constructorPropertyTypeList_15247, inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 423)) ;
   }
   {
   const GGS_graphDeclarationAST temp_8 = this ;
-  routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26__3F_acceptSetters (constinArgument_inExtensionInitializerMapForBuildingContext, constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, ioArgument_ioTypeMap, temp_8.readProperty_mGraphTypeName (), GGS_bool (false), var_initializerMap_15201, var_getterMap_7031, var_setterMap_7062, var_instanceMethodMap_7105, GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 428)) ;
+  routine_addExtensions_3F__3F__3F__3F__26__26__3F__3F_isClass_26__26__26__26__3F_acceptSetters (constinArgument_inExtensionInitializerMapForBuildingContext, constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, ioArgument_ioTypeMap, temp_8.readProperty_mGraphTypeName (), GGS_bool (false), var_initializerMap_15199, var_getterMap_7031, var_setterMap_7062, var_instanceMethodMap_7105, GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 428)) ;
   }
-  GGS_typeFeatures var_features_15893 = GGS_typeFeatures::class_func_doNotGenererateObjectCompare (SOURCE_FILE ("declaration-type-graph.galgas4", 443)) ;
+  GGS_typeFeatures var_features_15891 = GGS_typeFeatures::class_func_doNotGenererateObjectCompare (SOURCE_FILE ("declaration-type-graph.galgas4", 443)) ;
   {
   const GGS_graphDeclarationAST temp_9 = this ;
-  routine_handleEquatableComparableExtension_26__3F__26__3F_acceptEquatable_3F_acceptComparable (ioArgument_ioEquatableExtensionMap, temp_9.readProperty_mGraphTypeName (), var_features_15893, GGS_bool (false), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 444)) ;
+  routine_handleEquatableComparableExtension_26__3F__26__3F_acceptEquatable_3F_acceptComparable (ioArgument_ioEquatableExtensionMap, temp_9.readProperty_mGraphTypeName (), var_features_15891, GGS_bool (false), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 444)) ;
   }
   const GGS_graphDeclarationAST temp_10 = this ;
   const GGS_graphDeclarationAST temp_11 = this ;
   const GGS_graphDeclarationAST temp_12 = this ;
-  GGS_unifiedTypeDefinition var_typeDefinition_16173 = GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_10.readProperty_mGraphTypeName (), temp_11.readProperty_isPredefined (), GGS_bool (true), GGS_bool (true), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-graph.galgas4", 457)), GGS_typeKindEnum::class_func_graphType (SOURCE_FILE ("declaration-type-graph.galgas4", 458)), GGS_bool (false), GGS_typedPropertyList::init (inCompiler COMMA_HERE), GGS_propertyMap::init (inCompiler COMMA_HERE), GGS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_15201, GGS_classFunctionMap::init (inCompiler COMMA_HERE), var_getterMap_7031, var_setterMap_7062, var_instanceMethodMap_7105, GGS_classMethodMap::init (inCompiler COMMA_HERE), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-graph.galgas4", 469)), GGS_subscriptMap::init (inCompiler COMMA_HERE), GGS_enumerationDescriptorList::init (inCompiler COMMA_HERE), var_features_15893, GGS_functionSignature::init (inCompiler COMMA_HERE), GGS_bool (false), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-graph.galgas4", 475)), GGS_string ("graph-").add_operation (temp_12.readProperty_mGraphTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("declaration-type-graph.galgas4", 476)), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 476)), GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("declaration-type-graph.galgas4", 477)), inCompiler COMMA_HERE) ;
+  GGS_unifiedTypeDefinition var_typeDefinition_16171 = GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (temp_10.readProperty_mGraphTypeName (), temp_11.readProperty_isPredefined (), GGS_bool (true), GGS_bool (true), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-graph.galgas4", 457)), GGS_typeKindEnum::class_func_graphType (SOURCE_FILE ("declaration-type-graph.galgas4", 458)), GGS_bool (false), GGS_typedPropertyList::init (inCompiler COMMA_HERE), GGS_propertyMap::init (inCompiler COMMA_HERE), GGS_typedPropertyList::init (inCompiler COMMA_HERE), var_initializerMap_15199, GGS_classFunctionMap::init (inCompiler COMMA_HERE), var_getterMap_7031, var_setterMap_7062, var_instanceMethodMap_7105, GGS_classMethodMap::init (inCompiler COMMA_HERE), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-graph.galgas4", 469)), GGS_subscriptMap::init (inCompiler COMMA_HERE), GGS_enumerationDescriptorList::init (inCompiler COMMA_HERE), var_features_15891, GGS_functionSignature::init (inCompiler COMMA_HERE), GGS_bool (false), GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("declaration-type-graph.galgas4", 475)), GGS_string ("graph-").add_operation (temp_12.readProperty_mGraphTypeName ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("declaration-type-graph.galgas4", 476)), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 476)), GGS_headerKind::class_func_oneHeader (SOURCE_FILE ("declaration-type-graph.galgas4", 477)), inCompiler COMMA_HERE) ;
   {
-  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_16173.readProperty_typeName (), var_typeDefinition_16173, inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 479)) ;
+  extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_16171.readProperty_typeName (), var_typeDefinition_16171, inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 479)) ;
   }
 }
 
@@ -8548,75 +8548,75 @@ void cPtr_graphDeclarationAST::method_semanticAnalysis (GGS__5B_lstring_5D_ & io
                                                         Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_graphDeclarationAST temp_0 = this ;
-  GGS_lstring var_nameForUsefulness_17860 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mGraphTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 492)) ;
+  GGS_lstring var_nameForUsefulness_17858 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_mGraphTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 492)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_17860, var_nameForUsefulness_17860, inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 493)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_17858, var_nameForUsefulness_17858, inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 493)) ;
   }
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
     const GGS_graphDeclarationAST temp_2 = this ;
     test_1 = temp_2.readProperty_isPredefined ().boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
-      ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (var_nameForUsefulness_17860  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 495)) ;
+      ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (var_nameForUsefulness_17858  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 495)) ;
     }
   }
   const GGS_graphDeclarationAST temp_3 = this ;
-  GGS_lstring var_associatedTypeNameForUsefulness_18108 = function_typeNameForUsefulEntitiesGraph (temp_3.readProperty_mAssociatedArrayTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 497)) ;
+  GGS_lstring var_associatedTypeNameForUsefulness_18106 = function_typeNameForUsefulEntitiesGraph (temp_3.readProperty_mAssociatedArrayTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 497)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_nameForUsefulness_17860, var_associatedTypeNameForUsefulness_18108 COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 498)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_nameForUsefulness_17858, var_associatedTypeNameForUsefulness_18106 COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 498)) ;
   }
   GalgasBool test_4 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_4) {
     const GGS_graphDeclarationAST temp_5 = this ;
     test_4 = temp_5.readProperty_isPredefined ().boolEnum () ;
     if (GalgasBool::boolTrue == test_4) {
-      ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (var_associatedTypeNameForUsefulness_18108  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 500)) ;
+      ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (var_associatedTypeNameForUsefulness_18106  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 500)) ;
     }
   }
   const GGS_graphDeclarationAST temp_6 = this ;
-  GGS_lstring var_initializerNameForUsefulness_18487 = function_initializerNameForUsefulEntitiesGraph (temp_6.readProperty_mGraphTypeName (), extensionGetter_initializerSignature (GGS_formalInputParameterListAST::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 505)), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 503)) ;
+  GGS_lstring var_initializerNameForUsefulness_18485 = function_initializerNameForUsefulEntitiesGraph (temp_6.readProperty_mGraphTypeName (), extensionGetter_initializerSignature (GGS_formalInputParameterListAST::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 505)), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 503)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_initializerNameForUsefulness_18487, var_initializerNameForUsefulness_18487, inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 507)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_initializerNameForUsefulness_18485, var_initializerNameForUsefulness_18485, inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 507)) ;
   }
   GalgasBool test_7 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_7) {
     const GGS_graphDeclarationAST temp_8 = this ;
     test_7 = temp_8.readProperty_isPredefined ().boolEnum () ;
     if (GalgasBool::boolTrue == test_7) {
-      ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (var_initializerNameForUsefulness_18487  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 509)) ;
+      ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (var_initializerNameForUsefulness_18485  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 509)) ;
     }
   }
   const GGS_graphDeclarationAST temp_9 = this ;
-  GGS_unifiedTypeMapEntry var_graphTypeEntry_18866 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_9.readProperty_mGraphTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 512)) ;
+  GGS_unifiedTypeMapEntry var_graphTypeEntry_18864 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_9.readProperty_mGraphTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 512)) ;
   const GGS_graphDeclarationAST temp_10 = this ;
-  GGS_unifiedTypeMapEntry var_associatedArrayType_18943 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_10.readProperty_mAssociatedArrayTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 513)) ;
+  GGS_unifiedTypeMapEntry var_associatedArrayType_18941 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_10.readProperty_mAssociatedArrayTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 513)) ;
   const GGS_graphDeclarationAST temp_11 = this ;
-  GGS_unifiedTypeMapEntry var_associatedListElementTypeEntry_19035 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_11.readProperty_mAssociatedElementTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 514)) ;
-  GGS_unifiedTypeMapEntry var_lstringArrayTypeEntry_19140 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, function_makeArrayTypeLName (GGS_string ("lstring").getter_nowhere (SOURCE_FILE ("declaration-type-graph.galgas4", 515)), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 515)), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 515)) ;
-  GGS_unifiedTypeMapEntry var_stringArrayTypeEntry_19243 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, function_makeArrayTypeLName (GGS_string ("string").getter_nowhere (SOURCE_FILE ("declaration-type-graph.galgas4", 516)), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 516)), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 516)) ;
+  GGS_unifiedTypeMapEntry var_associatedListElementTypeEntry_19033 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_11.readProperty_mAssociatedElementTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 514)) ;
+  GGS_unifiedTypeMapEntry var_lstringArrayTypeEntry_19138 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, function_makeArrayTypeLName (GGS_string ("lstring").getter_nowhere (SOURCE_FILE ("declaration-type-graph.galgas4", 515)), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 515)), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 515)) ;
+  GGS_unifiedTypeMapEntry var_stringArrayTypeEntry_19241 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, function_makeArrayTypeLName (GGS_string ("string").getter_nowhere (SOURCE_FILE ("declaration-type-graph.galgas4", 516)), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 516)), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 516)) ;
   GGS_stringset temp_12 = GGS_stringset::init (inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 518)) ;
   temp_12.plusPlusAssignOperation (GGS_string ("noteNode")  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 518)) ;
   temp_12.plusPlusAssignOperation (GGS_string ("addArc")  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 518)) ;
-  GGS_stringset var_reservedModifierNames_19386 = temp_12 ;
+  GGS_stringset var_reservedModifierNames_19384 = temp_12 ;
   const GGS_graphDeclarationAST temp_13 = this ;
-  UpEnumerator__5B_graphInsertModifier_5D_ enumerator_19462 (temp_13.readProperty_mInsertModifierList ()) ;
-  while (enumerator_19462.hasCurrentObject ()) {
+  UpEnumerator__5B_graphInsertModifier_5D_ enumerator_19460 (temp_13.readProperty_mInsertModifierList ()) ;
+  while (enumerator_19460.hasCurrentObject ()) {
     GalgasBool test_14 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_14) {
-      test_14 = var_reservedModifierNames_19386.getter_contains (enumerator_19462.current (HERE).readProperty_mInsertModifierName ().readProperty_string () COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 520)).boolEnum () ;
+      test_14 = var_reservedModifierNames_19384.getter_contains (enumerator_19460.current (HERE).readProperty_mInsertModifierName ().readProperty_string () COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 520)).boolEnum () ;
       if (GalgasBool::boolTrue == test_14) {
         GenericArray <FixItDescription> fixItArray15 ;
-        inCompiler->emitSemanticError (enumerator_19462.current (HERE).readProperty_mInsertModifierName ().readProperty_location (), GGS_string ("the '").add_operation (enumerator_19462.current (HERE).readProperty_mInsertModifierName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 522)).add_operation (GGS_string ("' mutating proc name is reserved for a graph type"), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 522)), fixItArray15  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 521)) ;
+        inCompiler->emitSemanticError (enumerator_19460.current (HERE).readProperty_mInsertModifierName ().readProperty_location (), GGS_string ("the '").add_operation (enumerator_19460.current (HERE).readProperty_mInsertModifierName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 522)).add_operation (GGS_string ("' mutating proc name is reserved for a graph type"), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 522)), fixItArray15  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 521)) ;
       }
     }
     {
-    routine_check_5F_K_5F_L_5F_escapeCharacters_3F_ (enumerator_19462.current (HERE).readProperty_mInsertErrorMessage (), inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 524)) ;
+    routine_check_5F_K_5F_L_5F_escapeCharacters_3F_ (enumerator_19460.current (HERE).readProperty_mInsertErrorMessage (), inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 524)) ;
     }
-    enumerator_19462.gotoNextObject () ;
+    enumerator_19460.gotoNextObject () ;
   }
   const GGS_graphDeclarationAST temp_16 = this ;
   const GGS_graphDeclarationAST temp_17 = this ;
-  ioArgument_ioSemanticDeclarationListForGeneration.plusPlusAssignOperation (GGS_graphDeclarationForGeneration::init_21_infoMessage_21__21__21__21__21__21_ (GGS_string ("graph ").add_operation (temp_16.readProperty_mGraphTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 528)), var_graphTypeEntry_18866, var_associatedArrayType_18943, var_associatedListElementTypeEntry_19035, var_lstringArrayTypeEntry_19140, var_stringArrayTypeEntry_19243, temp_17.readProperty_mInsertModifierList (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 527)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.plusPlusAssignOperation (GGS_graphDeclarationForGeneration::init_21_infoMessage_21__21__21__21__21__21_ (GGS_string ("graph ").add_operation (temp_16.readProperty_mGraphTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 528)), var_graphTypeEntry_18864, var_associatedArrayType_18941, var_associatedListElementTypeEntry_19033, var_lstringArrayTypeEntry_19138, var_stringArrayTypeEntry_19241, temp_17.readProperty_mInsertModifierList (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 527)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8628,7 +8628,7 @@ void cPtr_graphDeclarationForGeneration::method_appendDeclaration_31_ (GGS_strin
                                                                        Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GGS_graphDeclarationForGeneration temp_0 = this ;
-  GGS_unifiedTypeDefinition var_selfTypeDefinition_21064 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 557)) ;
+  GGS_unifiedTypeDefinition var_selfTypeDefinition_21062 = extensionGetter_definition (temp_0.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 557)) ;
   const GGS_graphDeclarationForGeneration temp_1 = this ;
   extensionMethod_addHeaderFileName_31_ (temp_1.readProperty_mAssociatedArrayTypeEntry (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 558)) ;
   const GGS_graphDeclarationForGeneration temp_2 = this ;
@@ -8640,9 +8640,9 @@ void cPtr_graphDeclarationForGeneration::method_appendDeclaration_31_ (GGS_strin
   const GGS_graphDeclarationForGeneration temp_6 = this ;
   const GGS_graphDeclarationForGeneration temp_7 = this ;
   const GGS_graphDeclarationForGeneration temp_8 = this ;
-  outArgument_outHeader = GGS_string (filewrapperTemplate_graphGenerationTemplate_graphTypeHeader_31_ (inCompiler, var_selfTypeDefinition_21064.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 563)), temp_5.readProperty_mAssociatedArrayTypeEntry (), temp_6.readProperty_mAssociatedElementTypeEntry (), temp_7.readProperty_mLStringArrayType (), temp_8.readProperty_mStringArrayType () COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 561))) ;
+  outArgument_outHeader = GGS_string (filewrapperTemplate_graphGenerationTemplate_graphTypeHeader_31_ (inCompiler, var_selfTypeDefinition_21062.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_4.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 563)), temp_5.readProperty_mAssociatedArrayTypeEntry (), temp_6.readProperty_mAssociatedElementTypeEntry (), temp_7.readProperty_mLStringArrayType (), temp_8.readProperty_mStringArrayType () COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 561))) ;
   const GGS_graphDeclarationForGeneration temp_9 = this ;
-  outArgument_outHeader.plusAssignOperation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_21064.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_9.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 571)), var_selfTypeDefinition_21064.readProperty_isConcrete (), var_selfTypeDefinition_21064.readProperty_initializerMap (), var_selfTypeDefinition_21064.readProperty_classFunctionMap (), var_selfTypeDefinition_21064.readProperty_getterMap (), var_selfTypeDefinition_21064.readProperty_setterMap (), var_selfTypeDefinition_21064.readProperty_instanceMethodMap (), var_selfTypeDefinition_21064.readProperty_classMethodMap (), var_selfTypeDefinition_21064.readProperty_readSubscriptMap (), var_selfTypeDefinition_21064.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_21064.readProperty_features (), var_selfTypeDefinition_21064.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_21064.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_21064.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 569))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 569)) ;
+  outArgument_outHeader.plusAssignOperation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_21062.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_9.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 571)), var_selfTypeDefinition_21062.readProperty_isConcrete (), var_selfTypeDefinition_21062.readProperty_initializerMap (), var_selfTypeDefinition_21062.readProperty_classFunctionMap (), var_selfTypeDefinition_21062.readProperty_getterMap (), var_selfTypeDefinition_21062.readProperty_setterMap (), var_selfTypeDefinition_21062.readProperty_instanceMethodMap (), var_selfTypeDefinition_21062.readProperty_classMethodMap (), var_selfTypeDefinition_21062.readProperty_readSubscriptMap (), var_selfTypeDefinition_21062.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_21062.readProperty_features (), var_selfTypeDefinition_21062.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_21062.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_21062.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 569))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 569)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8782,7 +8782,7 @@ GGS_string filewrapperTemplate_graphGenerationTemplate_graphTypeHeader_31_ (Comp
   result.appendString (extensionGetter_identifierRepresentation (in_STRING_5F_ARRAY_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.h1.galgasTemplate", 38)).stringValue ()) ;
   result.appendString (" getter_keyList (LOCATION_ARGS) const ;\n\n  public: class GGS_") ;
   result.appendString (extensionGetter_identifierRepresentation (in_LSTRING_5F_ARRAY_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.h1.galgasTemplate", 40)).stringValue ()) ;
-  result.appendString (" getter_lkeyList (LOCATION_ARGS) const ;\n\n  public: class GGS_uint getter_undefinedNodeCount (LOCATION_ARGS) const ;\n\n  public: class GGS_stringlist getter_undefinedNodeKeyList (LOCATION_ARGS) const ;\n\n  public: class GGS_location getter_locationForKey (const GGS_string & inKey,\n                                                    Compiler * inCompiler\n                                                    COMMA_LOCATION_ARGS) const ;\n\n//--------------------------------- Setters\n  public: void setter_addEdge (const class GGS_lstring & inSourceNodeKey,\n                               const class GGS_lstring & inTargetNodeKey\n                               COMMA_LOCATION_ARGS) ;\n\n  public: void setter_removeEdgesToNode (const GGS_string & inNodeName,\n                                         Compiler * inCompiler\n                                         COMMA_LOCATION_ARGS) ;\n\n  public: void setter_removeEdgesToDominators (LOCATION_ARGS) ;\n\n//--------------------------------- Comparison\n  public: ComparisonResult objectCompare (const GGS_") ;
+  result.appendString (" getter_lkeyList (LOCATION_ARGS) const ;\n\n  public: class GGS_uint getter_undefinedNodeCount (LOCATION_ARGS) const ;\n\n  public: class GGS__5B_string_5D_ getter_undefinedNodeKeyList (LOCATION_ARGS) const ;\n\n  public: class GGS_location getter_locationForKey (const GGS_string & inKey,\n                                                    Compiler * inCompiler\n                                                    COMMA_LOCATION_ARGS) const ;\n\n//--------------------------------- Setters\n  public: void setter_addEdge (const class GGS_lstring & inSourceNodeKey,\n                               const class GGS_lstring & inTargetNodeKey\n                               COMMA_LOCATION_ARGS) ;\n\n  public: void setter_removeEdgesToNode (const GGS_string & inNodeName,\n                                         Compiler * inCompiler\n                                         COMMA_LOCATION_ARGS) ;\n\n  public: void setter_removeEdgesToDominators (LOCATION_ARGS) ;\n\n//--------------------------------- Comparison\n  public: ComparisonResult objectCompare (const GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" & inOperand) const ;\n\n//--- Description\n  public: VIRTUAL_IN_DEBUG void description (String & ioString,\n                                             const int32_t inIndentation) const override ;\n\n//--- Internal methods for handling graph\n  protected: void reversedGraphFromGraph (const GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
@@ -9193,9 +9193,9 @@ GGS_string filewrapperTemplate_graphGenerationTemplate_graphTypeSpecificImplemen
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::getter_undefinedNodeCount (UNUSED_LOCATION_ARGS) const {\n  GGS_uint result ;\n  if (isValid ()) {\n    uint32_t undefinedNodeCount = 0 ;\n    countUndefinedNodeCount (mSharedGraph->root (), undefinedNodeCount) ;\n    result = GGS_uint (undefinedNodeCount) ;\n  }\n  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\n#ifdef PRAGMA_MARK_ALLOWED\n  #pragma mark getter_undefinedNodeKeyList\n#endif\n\n//--------------------------------------------------------------------------------------------------\n\nstatic void buildUndefinedNodeKeyList (const GraphNode_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString (" * inNode, GGS_stringlist & ioResult) {\n  if (nullptr != inNode) {\n    buildUndefinedNodeKeyList (inNode->mInfPtr, ioResult) ;\n    if (! inNode->mIsDefined) {\n      ioResult.addAssignOperation (GGS_string (inNode->mKey) COMMA_HERE) ;\n    }\n    buildUndefinedNodeKeyList (inNode->mSupPtr, ioResult) ;\n  }\n}\n\n//--------------------------------------------------------------------------------------------------\n\nGGS_stringlist GGS_") ;
+  result.appendString (" * inNode, GGS__5B_string_5D_ & ioResult) {\n  if (nullptr != inNode) {\n    buildUndefinedNodeKeyList (inNode->mInfPtr, ioResult) ;\n    if (!inNode->mIsDefined) {\n      ioResult.plusPlusAssignOperation (GGS_string (inNode->mKey) COMMA_HERE) ;\n    }\n    buildUndefinedNodeKeyList (inNode->mSupPtr, ioResult) ;\n  }\n}\n\n//--------------------------------------------------------------------------------------------------\n\nGGS__5B_string_5D_ GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
-  result.appendString ("::getter_undefinedNodeKeyList (LOCATION_ARGS) const {\n  GGS_stringlist result ;\n  if (isValid ()) {\n    result = GGS_stringlist::init (nullptr COMMA_THERE) ;\n    buildUndefinedNodeKeyList (mSharedGraph->root (), result) ;\n  }\n  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\n#ifdef PRAGMA_MARK_ALLOWED\n  #pragma mark Find circularities\n#endif\n\n//--------------------------------------------------------------------------------------------------\n\nvoid SharedGraph_") ;
+  result.appendString ("::getter_undefinedNodeKeyList (LOCATION_ARGS) const {\n  GGS__5B_string_5D_ result ;\n  if (isValid ()) {\n    result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;\n    buildUndefinedNodeKeyList (mSharedGraph->root (), result) ;\n  }\n  return result ;\n}\n\n//--------------------------------------------------------------------------------------------------\n\n#ifdef PRAGMA_MARK_ALLOWED\n  #pragma mark Find circularities\n#endif\n\n//--------------------------------------------------------------------------------------------------\n\nvoid SharedGraph_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString ("::internalFindCircularities (GGS_") ;
   result.appendString (extensionGetter_identifierRepresentation (in_ASSOCIATED_5F_ARRAY_5F_TYPE, inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 1047)).stringValue ()) ;
@@ -9328,14 +9328,14 @@ GGS_string filewrapperTemplate_graphGenerationTemplate_graphTypeSpecificImplemen
   result.appendString ("::init (Compiler * COMMA_LOCATION_ARGS) {\n  GGS_") ;
   result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
   result.appendString (" result ;\n  result.makeNewEmptyGraph (THERE) ;\n  return result ;\n}\n\n") ;
-  GGS_uint index_59160_ (0) ;
+  GGS_uint index_59180_ (0) ;
   if (in_INSERT_5F_MODIFIER_5F_LIST.isValid ()) {
-    UpEnumerator__5B_graphInsertModifier_5D_ enumerator_59160 (in_INSERT_5F_MODIFIER_5F_LIST) ;
-    while (enumerator_59160.hasCurrentObject ()) {
+    UpEnumerator__5B_graphInsertModifier_5D_ enumerator_59180 (in_INSERT_5F_MODIFIER_5F_LIST) ;
+    while (enumerator_59180.hasCurrentObject ()) {
       result.appendString ("//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;
       result.appendString (in_TYPE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString ("::setter_") ;
-      result.appendString (enumerator_59160.current_entry (HERE).readProperty_mInsertModifierName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 1406)).stringValue ()) ;
+      result.appendString (enumerator_59180.current_entry (HERE).readProperty_mInsertModifierName ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 1406)).stringValue ()) ;
       result.appendString (" (") ;
       columnMarker = result.currentColumn () ;
       result.appendString ("GGS_lstring inKey,\n") ;
@@ -9347,10 +9347,10 @@ GGS_string filewrapperTemplate_graphGenerationTemplate_graphTypeSpecificImplemen
       result.appendString ("Compiler * inCompiler\n") ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result.appendString ("COMMA_LOCATION_ARGS) {\n  const char * kErrorMessage = ") ;
-      result.appendString (enumerator_59160.current_entry (HERE).readProperty_mInsertErrorMessage ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 1410)).stringValue ()) ;
+      result.appendString (enumerator_59180.current_entry (HERE).readProperty_mInsertErrorMessage ().readProperty_string ().getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 1410)).stringValue ()) ;
       result.appendString (" ;\n  internalAddNode (inKey, kErrorMessage, inElement, inCompiler COMMA_THERE) ;\n}\n") ;
-      enumerator_59160.gotoNextObject () ;
-      index_59160_.increment () ;
+      enumerator_59180.gotoNextObject () ;
+      index_59180_.increment () ;
     }
   }
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\nvoid GGS_") ;

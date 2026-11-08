@@ -292,8 +292,8 @@ class GGS_application final {
 
   public: static class GGS_stringset class_func_keywordIdentifierSet (LOCATION_ARGS) ;
 
-  public: static class GGS_stringlist class_func_keywordListForIdentifier (const class GGS_string & inOperand0
-                                                                           COMMA_LOCATION_ARGS) ;
+  public: static class GGS__5B_string_5D_ class_func_keywordListForIdentifier (const class GGS_string & inOperand0
+                                                                               COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_string class_func_projectVersionString (LOCATION_ARGS) ;
 
@@ -2372,9 +2372,9 @@ class GGS_string : public AC_GALGAS_root {
   public: class GGS_stringlist getter_regularFiles (const class GGS_bool & constinOperand0
                                                     COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_regularFilesWithExtensions (const class GGS_bool & constinOperand0,
-                                                                  const class GGS_stringlist & constinOperand1
-                                                                  COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_regularFilesWithExtensions (const class GGS_bool & constinOperand0,
+                                                                      const class GGS__5B_string_5D_ & constinOperand1
+                                                                      COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_string getter_relativePathFromPath (const class GGS_string & constinOperand0
                                                         COMMA_LOCATION_ARGS) const ;
@@ -2853,8 +2853,8 @@ class GGS_stringset : public AC_GALGAS_root {
   public: static class GGS_stringset class_func_setWithString (const class GGS_string & inOperand0
                                                                COMMA_LOCATION_ARGS) ;
 
-  public: static class GGS_stringset class_func_setWithStringList (const class GGS_stringlist & inOperand0
-                                                                   COMMA_LOCATION_ARGS) ;
+  public: static class GGS_stringset class_func_setWithStringArray (const class GGS__5B_string_5D_ & inOperand0
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Handle copy
   public: GGS_stringset (const GGS_stringset & inSource) ;
@@ -2911,6 +2911,8 @@ class GGS_stringset : public AC_GALGAS_root {
                                           COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS__5B_string_5D_ getter_stringArray (LOCATION_ARGS) const ;
 
   public: class GGS_stringlist getter_stringList (LOCATION_ARGS) const ;
 

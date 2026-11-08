@@ -348,16 +348,16 @@ GGS_stringset GGS_application::class_func_keywordIdentifierSet (LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------*
 
-GGS_stringlist GGS_application::class_func_keywordListForIdentifier (const GGS_string & inIdentifier
-                                                                     COMMA_LOCATION_ARGS) {
-  GGS_stringlist result ;
+GGS__5B_string_5D_ GGS_application::class_func_keywordListForIdentifier (const GGS_string & inIdentifier
+                                                                         COMMA_LOCATION_ARGS) {
+  GGS__5B_string_5D_ result ;
   if (inIdentifier.isValid ()) {
-    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
+    result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
     GenericUniqueArray <String> list ;
     bool found = false ;
     LexiqueIntrospection::getKeywordListForIdentifier (inIdentifier.stringValue(), found, list) ;
     for (int32_t i=0 ; i < list.count () ; i++) {
-      result.addAssignOperation (GGS_string (list (i COMMA_HERE)) COMMA_HERE) ;
+      result.plusPlusAssignOperation (GGS_string (list (i COMMA_HERE)) COMMA_HERE) ;
     }
   }
   return result ;

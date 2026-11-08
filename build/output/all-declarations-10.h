@@ -4725,13 +4725,13 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_galgasQualifiedFea
 
 class GGS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GGS_stringlist mProperty_mProjectSourceList ;
-  public: inline GGS_stringlist readProperty_mProjectSourceList (void) const {
+  public: GGS__5B_string_5D_ mProperty_mProjectSourceList ;
+  public: inline GGS__5B_string_5D_ readProperty_mProjectSourceList (void) const {
     return mProperty_mProjectSourceList ;
   }
 
-  public: GGS_stringlist mProperty_mToolCppSourceList ;
-  public: inline GGS_stringlist readProperty_mToolCppSourceList (void) const {
+  public: GGS__5B_string_5D_ mProperty_mToolCppSourceList ;
+  public: inline GGS__5B_string_5D_ readProperty_mToolCppSourceList (void) const {
     return mProperty_mToolCppSourceList ;
   }
 
@@ -4778,11 +4778,11 @@ class GGS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
   public: GGS_galgas_33_ProjectComponentAST (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setMProjectSourceList (const GGS_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMProjectSourceList (const GGS__5B_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mProjectSourceList = inValue ;
   }
 
-  public: inline void setter_setMToolCppSourceList (const GGS_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMToolCppSourceList (const GGS__5B_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mToolCppSourceList = inValue ;
   }
 
@@ -4818,8 +4818,8 @@ class GGS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_galgas_33_ProjectComponentAST (const GGS_stringlist & in_mProjectSourceList,
-                                             const GGS_stringlist & in_mToolCppSourceList,
+  public: GGS_galgas_33_ProjectComponentAST (const GGS__5B_string_5D_ & in_mProjectSourceList,
+                                             const GGS__5B_string_5D_ & in_mToolCppSourceList,
                                              const GGS_lbigint & in_mMajorVersion,
                                              const GGS_lbigint & in_mMinorVersion,
                                              const GGS_lbigint & in_mRevisionVersion,
@@ -4837,8 +4837,8 @@ class GGS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_galgas_33_ProjectComponentAST init_21__21__21__21__21__21__21__21__21_ (const class GGS_stringlist & inOperand0,
-                                                                                             const class GGS_stringlist & inOperand1,
+  public: static GGS_galgas_33_ProjectComponentAST init_21__21__21__21__21__21__21__21__21_ (const class GGS__5B_string_5D_ & inOperand0,
+                                                                                             const class GGS__5B_string_5D_ & inOperand1,
                                                                                              const class GGS_lbigint & inOperand2,
                                                                                              const class GGS_lbigint & inOperand3,
                                                                                              const class GGS_lbigint & inOperand4,
@@ -10409,7 +10409,7 @@ void callExtensionMethod_appendSpecificImplementation (class cPtr_semanticDeclar
 void callExtensionMethod_appendSpecificFiles (class cPtr_semanticDeclarationForGeneration * inObject,
                                               const class GGS_string constin__5F_inProductDirectory,
                                               class GGS_stringset & io__5F_ioAllProductFileSet,
-                                              class GGS_stringlist & io__5F_ioSwiftAppProductFileList,
+                                              class GGS__5B_string_5D_ & io__5F_ioSwiftAppProductFileList,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 

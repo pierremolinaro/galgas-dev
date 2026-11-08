@@ -1075,8 +1075,8 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !getterName: "regularFilesWithExtensions",
       !arg1Selector: "recursive", !arg1TypeName: "bool", !arg1Name: "inRecursiveSearch",
-      !arg2Selector: "", !arg2TypeName: "stringlist", !arg2Name: "inExtensionList",
-      !returnedTypeName:"stringlist",
+      !arg2Selector: "", !arg2TypeName: "[string]", !arg2Name: "inExtensionList",
+      !returnedTypeName:"[string]",
       !hasCompilerArgument:false
     )
   }

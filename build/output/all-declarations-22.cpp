@@ -23829,16 +23829,16 @@ const char * gWrapperFileContent_161_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------*\n"
   "\n"
-  "GGS_stringlist GGS_application::class_func_keywordListForIdentifier (const GGS_string & inIdentifier\n"
-  "                                                                     COMMA_LOCATION_ARGS) {\n"
-  "  GGS_stringlist result ;\n"
+  "GGS__5B_string_5D_ GGS_application::class_func_keywordListForIdentifier (const GGS_string & inIdentifier\n"
+  "                                                                         COMMA_LOCATION_ARGS) {\n"
+  "  GGS__5B_string_5D_ result ;\n"
   "  if (inIdentifier.isValid ()) {\n"
-  "    result = GGS_stringlist::init (nullptr COMMA_THERE) ;\n"
+  "    result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;\n"
   "    GenericUniqueArray <String> list ;\n"
   "    bool found = false ;\n"
   "    LexiqueIntrospection::getKeywordListForIdentifier (inIdentifier.stringValue(), found, list) ;\n"
   "    for (int32_t i=0 ; i < list.count () ; i++) {\n"
-  "      result.addAssignOperation (GGS_string (list (i COMMA_HERE)) COMMA_HERE) ;\n"
+  "      result.plusPlusAssignOperation (GGS_string (list (i COMMA_HERE)) COMMA_HERE) ;\n"
   "    }\n"
   "  }\n"
   "  return result ;\n"
@@ -23851,7 +23851,7 @@ const cRegularFileWrapper gWrapperFile_161_libpmFileWrapper (
   "GGS_application.cpp",
   "cpp",
   true, // Text file
- 17798, // Text length
+ 17819, // Text length
   gWrapperFileContent_161_libpmFileWrapper
 ) ;
 
@@ -30656,10 +30656,10 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "static void recursiveSearchForRegularFiles (const String & inUnixStartPath,\n"
-  "                                            GGS_stringlist inExtensionList,\n"
+  "                                            GGS__5B_string_5D_ inExtensionList,\n"
   "                                            const bool inRecursiveSearch,\n"
   "                                            const String & inRelativePath,\n"
-  "                                            GGS_stringlist & ioResult) {\n"
+  "                                            GGS__5B_string_5D_ & ioResult) {\n"
   "  const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;\n"
   "  DIR * dir = ::opendir (nativeStartPath.cString ()) ;\n"
   "  if (dir != nullptr) {\n"
@@ -30671,23 +30671,25 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "        name.appendString (current->d_name) ;\n"
   "        if (FileManager::directoryExistsWithNativePath (name)) {\n"
   "          if (inRecursiveSearch) {\n"
-  "            recursiveSearchForRegularFiles (name,\n"
-  "                                            inExtensionList,\n"
-  "                                            inRecursiveSearch,\n"
-  "                                            inRelativePath + current->d_name + \"/\",\n"
-  "                                            ioResult) ;\n"
+  "            recursiveSearchForRegularFiles (\n"
+  "              name,\n"
+  "              inExtensionList,\n"
+  "              inRecursiveSearch,\n"
+  "              inRelativePath + current->d_name + \"/\",\n"
+  "              ioResult\n"
+  "            ) ;\n"
   "          }\n"
   "        }else if (FileManager::fileExistsAtPath (name)) {\n"
   "          const String extension = name.pathExtension () ;\n"
   "          bool extensionFound = false ;\n"
-  "          UpEnumerator_stringlist currentExtension (inExtensionList) ;\n"
+  "          UpEnumerator__5B_string_5D_ currentExtension (inExtensionList) ;\n"
   "          while (currentExtension.hasCurrentObject () && ! extensionFound) {\n"
-  "            extensionFound = currentExtension.current_mValue (HERE).stringValue () == extension ;\n"
+  "            extensionFound = currentExtension.current (HERE).stringValue () == extension ;\n"
   "            currentExtension.gotoNextObject () ;\n"
   "          }\n"
   "          if (extensionFound) {\n"
   "            const String relativePath = inRelativePath + current->d_name ;\n"
-  "            ioResult.addAssignOperation (GGS_string (relativePath) COMMA_HERE) ;\n"
+  "            ioResult.plusPlusAssignOperation (GGS_string (relativePath) COMMA_HERE) ;\n"
   "          }\n"
   "        }\n"
   "      }\n"
@@ -30699,12 +30701,12 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_stringlist GGS_string::getter_regularFilesWithExtensions (const GGS_bool & inRecursiveSearch,\n"
-  "                                                              const GGS_stringlist & inExtensionList\n"
-  "                                                              COMMA_LOCATION_ARGS) const {\n"
-  "  GGS_stringlist result ;\n"
+  "GGS__5B_string_5D_ GGS_string::getter_regularFilesWithExtensions (const GGS_bool & inRecursiveSearch,\n"
+  "                                                                  const GGS__5B_string_5D_ & inExtensionList\n"
+  "                                                                  COMMA_LOCATION_ARGS) const {\n"
+  "  GGS__5B_string_5D_ result ;\n"
   "  if ((inRecursiveSearch.isValid ()) && (inExtensionList.isValid ())) {\n"
-  "    result = GGS_stringlist::init (nullptr COMMA_THERE) ;\n"
+  "    result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;\n"
   "    if (FileManager::directoryExists (mString)) {\n"
   "      recursiveSearchForRegularFiles (\n"
   "        mString,\n"
@@ -31166,7 +31168,7 @@ const cRegularFileWrapper gWrapperFile_179_libpmFileWrapper (
   "GGS_string-getters.cpp",
   "cpp",
   true, // Text file
- 52825, // Text length
+ 52767, // Text length
   gWrapperFileContent_179_libpmFileWrapper
 ) ;
 
@@ -32411,6 +32413,20 @@ const char * gWrapperFileContent_116_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
+  "GGS__5B_string_5D_ GGS_stringset::getter_stringArray (LOCATION_ARGS) const {\n"
+  "  GGS__5B_string_5D_ result ;\n"
+  "  if (isValid ()) {\n"
+  "    result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;\n"
+  "    const GenericArray <String> array = mSharedMap.sortedKeyArray () ;\n"
+  "    for (int32_t i=0 ; i<array.count () ; i++) {\n"
+  "      result.plusPlusAssignOperation (GGS_string (array (i COMMA_HERE)) COMMA_HERE) ;\n"
+  "    }\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
   "GGS_bool GGS_stringset::getter_contains (const GGS_string & inKey\n"
   "                                         COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_bool result ;\n"
@@ -32548,14 +32564,14 @@ const char * gWrapperFileContent_116_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_stringset GGS_stringset::class_func_setWithStringList (const GGS_stringlist & inStringList\n"
+  "GGS_stringset GGS_stringset::class_func_setWithStringArray (const GGS__5B_string_5D_ & inStringList\n"
   "                                                           COMMA_LOCATION_ARGS) {\n"
   "  GGS_stringset result ;\n"
   "  if (inStringList.isValid ()) {\n"
   "    result = class_func_emptySet (THERE) ;\n"
-  "    UpEnumerator_stringlist enumerator (inStringList) ;\n"
+  "    UpEnumerator__5B_string_5D_ enumerator (inStringList) ;\n"
   "    while (enumerator.hasCurrentObject ()) {\n"
-  "      result.plusPlusAssignOperation (enumerator.current_mValue (THERE) COMMA_THERE) ;\n"
+  "      result.plusPlusAssignOperation (enumerator.current (THERE) COMMA_THERE) ;\n"
   "      enumerator.gotoNextObject () ;\n"
   "    }\n"
   "  }\n"
@@ -33092,7 +33108,7 @@ const cRegularFileWrapper gWrapperFile_116_libpmFileWrapper (
   "GGS_stringset.cpp",
   "cpp",
   true, // Text file
- 33298, // Text length
+ 33828, // Text length
   gWrapperFileContent_116_libpmFileWrapper
 ) ;
 

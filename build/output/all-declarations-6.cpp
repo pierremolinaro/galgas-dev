@@ -10505,11 +10505,11 @@ GGS_uint GGS_semanticTypePrecedenceGraph::getter_undefinedNodeCount (UNUSED_LOCA
 
 //--------------------------------------------------------------------------------------------------
 
-static void buildUndefinedNodeKeyList (const GraphNode_semanticTypePrecedenceGraph * inNode, GGS_stringlist & ioResult) {
+static void buildUndefinedNodeKeyList (const GraphNode_semanticTypePrecedenceGraph * inNode, GGS__5B_string_5D_ & ioResult) {
   if (nullptr != inNode) {
     buildUndefinedNodeKeyList (inNode->mInfPtr, ioResult) ;
-    if (! inNode->mIsDefined) {
-      ioResult.addAssignOperation (GGS_string (inNode->mKey) COMMA_HERE) ;
+    if (!inNode->mIsDefined) {
+      ioResult.plusPlusAssignOperation (GGS_string (inNode->mKey) COMMA_HERE) ;
     }
     buildUndefinedNodeKeyList (inNode->mSupPtr, ioResult) ;
   }
@@ -10517,10 +10517,10 @@ static void buildUndefinedNodeKeyList (const GraphNode_semanticTypePrecedenceGra
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist GGS_semanticTypePrecedenceGraph::getter_undefinedNodeKeyList (LOCATION_ARGS) const {
-  GGS_stringlist result ;
+GGS__5B_string_5D_ GGS_semanticTypePrecedenceGraph::getter_undefinedNodeKeyList (LOCATION_ARGS) const {
+  GGS__5B_string_5D_ result ;
   if (isValid ()) {
-    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
+    result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
     buildUndefinedNodeKeyList (mSharedGraph->root (), result) ;
   }
   return result ;

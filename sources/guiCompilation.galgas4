@@ -414,11 +414,11 @@ private proc guiComponentSemanticAnalysis (let @galgasGUIComponentListAST.@eleme
 proc generateAllGuiComponentsGalgas3 (let @optionComponentMapForGeneration inOptionComponentMapForGeneration,
                                       let @string inOutputDirectory,
                                       let @bool inQuietOutputByDefault,
-                                      ?!swift: @stringlist ioSwiftAllProductFileList ) {
+                                      ?!swift: [@string] ioSwiftAllProductFileList ) {
   for anOption in inOptionComponentMapForGeneration do
 //  for (lkey guiComponentContext) in inOptionComponentMapForGeneration do
     let swiftuiFileName = "gui-swiftui-" + anOption.lkey + ".swift"
-    ioSwiftAllProductFileList ++= @(swiftuiFileName)
+    ioSwiftAllProductFileList ++= swiftuiFileName
     let @string swiftui_string = filewrapper [guiGenerationTemplates.swiftui_gui_implementation :
       anOption.mGuiComponentContext,
       inQuietOutputByDefault

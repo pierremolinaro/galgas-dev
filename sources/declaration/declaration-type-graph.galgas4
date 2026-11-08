@@ -259,7 +259,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "undefinedNodeKeyList",
-      !returnedTypeName: "stringlist",
+      !returnedTypeName: "[string]",
       !hasCompilerArgument:false // No compiler argument
     )
   //--- Getter 'undefinedNodeReferenceList'

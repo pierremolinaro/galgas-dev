@@ -915,10 +915,10 @@ GGS_stringlist GGS_string::getter_directories (const GGS_bool & inRecursiveSearc
 //--------------------------------------------------------------------------------------------------
 
 static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
-                                            GGS_stringlist inExtensionList,
+                                            GGS__5B_string_5D_ inExtensionList,
                                             const bool inRecursiveSearch,
                                             const String & inRelativePath,
-                                            GGS_stringlist & ioResult) {
+                                            GGS__5B_string_5D_ & ioResult) {
   const String nativeStartPath = FileManager::nativePathWithUnixPath (inUnixStartPath) ;
   DIR * dir = ::opendir (nativeStartPath.cString ()) ;
   if (dir != nullptr) {
@@ -930,23 +930,25 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
         name.appendString (current->d_name) ;
         if (FileManager::directoryExistsWithNativePath (name)) {
           if (inRecursiveSearch) {
-            recursiveSearchForRegularFiles (name,
-                                            inExtensionList,
-                                            inRecursiveSearch,
-                                            inRelativePath + current->d_name + "/",
-                                            ioResult) ;
+            recursiveSearchForRegularFiles (
+              name,
+              inExtensionList,
+              inRecursiveSearch,
+              inRelativePath + current->d_name + "/",
+              ioResult
+            ) ;
           }
         }else if (FileManager::fileExistsAtPath (name)) {
           const String extension = name.pathExtension () ;
           bool extensionFound = false ;
-          UpEnumerator_stringlist currentExtension (inExtensionList) ;
+          UpEnumerator__5B_string_5D_ currentExtension (inExtensionList) ;
           while (currentExtension.hasCurrentObject () && ! extensionFound) {
-            extensionFound = currentExtension.current_mValue (HERE).stringValue () == extension ;
+            extensionFound = currentExtension.current (HERE).stringValue () == extension ;
             currentExtension.gotoNextObject () ;
           }
           if (extensionFound) {
             const String relativePath = inRelativePath + current->d_name ;
-            ioResult.addAssignOperation (GGS_string (relativePath) COMMA_HERE) ;
+            ioResult.plusPlusAssignOperation (GGS_string (relativePath) COMMA_HERE) ;
           }
         }
       }
@@ -958,12 +960,12 @@ static void recursiveSearchForRegularFiles (const String & inUnixStartPath,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist GGS_string::getter_regularFilesWithExtensions (const GGS_bool & inRecursiveSearch,
-                                                              const GGS_stringlist & inExtensionList
-                                                              COMMA_LOCATION_ARGS) const {
-  GGS_stringlist result ;
+GGS__5B_string_5D_ GGS_string::getter_regularFilesWithExtensions (const GGS_bool & inRecursiveSearch,
+                                                                  const GGS__5B_string_5D_ & inExtensionList
+                                                                  COMMA_LOCATION_ARGS) const {
+  GGS__5B_string_5D_ result ;
   if ((inRecursiveSearch.isValid ()) && (inExtensionList.isValid ())) {
-    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
+    result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
     if (FileManager::directoryExists (mString)) {
       recursiveSearchForRegularFiles (
         mString,

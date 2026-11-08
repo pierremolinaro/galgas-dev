@@ -6989,8 +6989,8 @@ class GGS_XCodeGroup : public AC_GALGAS_root {
     return mProperty_mGroupPath ;
   }
 
-  public: GGS_stringlist mProperty_mChildrenRefs ;
-  public: inline GGS_stringlist readProperty_mChildrenRefs (void) const {
+  public: GGS__5B_string_5D_ mProperty_mChildrenRefs ;
+  public: inline GGS__5B_string_5D_ readProperty_mChildrenRefs (void) const {
     return mProperty_mChildrenRefs ;
   }
 
@@ -7014,7 +7014,7 @@ class GGS_XCodeGroup : public AC_GALGAS_root {
     mProperty_mGroupPath = inValue ;
   }
 
-  public: inline void setter_setMChildrenRefs (const GGS_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMChildrenRefs (const GGS__5B_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mChildrenRefs = inValue ;
   }
 
@@ -7025,7 +7025,7 @@ class GGS_XCodeGroup : public AC_GALGAS_root {
   public: GGS_XCodeGroup (const GGS_string & in_mGroupReference,
                           const GGS_string & in_mGroupName,
                           const GGS_string & in_mGroupPath,
-                          const GGS_stringlist & in_mChildrenRefs) ;
+                          const GGS__5B_string_5D_ & in_mChildrenRefs) ;
 
 //--------------------------------- Copy constructor
   public: GGS_XCodeGroup (const GGS_XCodeGroup & inSource) ;
@@ -7039,7 +7039,7 @@ class GGS_XCodeGroup : public AC_GALGAS_root {
   public: static GGS_XCodeGroup init_21__21__21__21_ (const class GGS_string & inOperand0,
                                                       const class GGS_string & inOperand1,
                                                       const class GGS_string & inOperand2,
-                                                      const class GGS_stringlist & inOperand3,
+                                                      const class GGS__5B_string_5D_ & inOperand3,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
@@ -7091,8 +7091,8 @@ class GGS_XCodeToolTarget : public AC_GALGAS_root {
     return mProperty_mProductFileName ;
   }
 
-  public: GGS_stringlist mProperty_mBuildPhaseRefList ;
-  public: inline GGS_stringlist readProperty_mBuildPhaseRefList (void) const {
+  public: GGS__5B_string_5D_ mProperty_mBuildPhaseRefList ;
+  public: inline GGS__5B_string_5D_ readProperty_mBuildPhaseRefList (void) const {
     return mProperty_mBuildPhaseRefList ;
   }
 
@@ -7106,8 +7106,8 @@ class GGS_XCodeToolTarget : public AC_GALGAS_root {
     return mProperty_mBuildConfigurationListRef ;
   }
 
-  public: GGS_stringlist mProperty_mBuildConfigurationSettingList ;
-  public: inline GGS_stringlist readProperty_mBuildConfigurationSettingList (void) const {
+  public: GGS__5B_string_5D_ mProperty_mBuildConfigurationSettingList ;
+  public: inline GGS__5B_string_5D_ readProperty_mBuildConfigurationSettingList (void) const {
     return mProperty_mBuildConfigurationSettingList ;
   }
 
@@ -7116,8 +7116,8 @@ class GGS_XCodeToolTarget : public AC_GALGAS_root {
     return mProperty_mBuildConfigurationRef ;
   }
 
-  public: GGS_stringlist mProperty_mFrameworksFileRefList ;
-  public: inline GGS_stringlist readProperty_mFrameworksFileRefList (void) const {
+  public: GGS__5B_string_5D_ mProperty_mFrameworksFileRefList ;
+  public: inline GGS__5B_string_5D_ readProperty_mFrameworksFileRefList (void) const {
     return mProperty_mFrameworksFileRefList ;
   }
 
@@ -7150,7 +7150,7 @@ class GGS_XCodeToolTarget : public AC_GALGAS_root {
     mProperty_mProductFileName = inValue ;
   }
 
-  public: inline void setter_setMBuildPhaseRefList (const GGS_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMBuildPhaseRefList (const GGS__5B_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mBuildPhaseRefList = inValue ;
   }
 
@@ -7162,7 +7162,7 @@ class GGS_XCodeToolTarget : public AC_GALGAS_root {
     mProperty_mBuildConfigurationListRef = inValue ;
   }
 
-  public: inline void setter_setMBuildConfigurationSettingList (const GGS_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMBuildConfigurationSettingList (const GGS__5B_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mBuildConfigurationSettingList = inValue ;
   }
 
@@ -7170,7 +7170,7 @@ class GGS_XCodeToolTarget : public AC_GALGAS_root {
     mProperty_mBuildConfigurationRef = inValue ;
   }
 
-  public: inline void setter_setMFrameworksFileRefList (const GGS_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMFrameworksFileRefList (const GGS__5B_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mFrameworksFileRefList = inValue ;
   }
 
@@ -7186,12 +7186,12 @@ class GGS_XCodeToolTarget : public AC_GALGAS_root {
                                const GGS_string & in_mTargetName,
                                const GGS_string & in_mProductFileReference,
                                const GGS_string & in_mProductFileName,
-                               const GGS_stringlist & in_mBuildPhaseRefList,
+                               const GGS__5B_string_5D_ & in_mBuildPhaseRefList,
                                const GGS_string & in_mBuildPhaseRef,
                                const GGS_string & in_mBuildConfigurationListRef,
-                               const GGS_stringlist & in_mBuildConfigurationSettingList,
+                               const GGS__5B_string_5D_ & in_mBuildConfigurationSettingList,
                                const GGS_string & in_mBuildConfigurationRef,
-                               const GGS_stringlist & in_mFrameworksFileRefList,
+                               const GGS__5B_string_5D_ & in_mFrameworksFileRefList,
                                const GGS_string & in_mFrameworkBuildPhaseRef) ;
 
 //--------------------------------- Copy constructor
@@ -7207,12 +7207,12 @@ class GGS_XCodeToolTarget : public AC_GALGAS_root {
                                                                                        const class GGS_string & inOperand1,
                                                                                        const class GGS_string & inOperand2,
                                                                                        const class GGS_string & inOperand3,
-                                                                                       const class GGS_stringlist & inOperand4,
+                                                                                       const class GGS__5B_string_5D_ & inOperand4,
                                                                                        const class GGS_string & inOperand5,
                                                                                        const class GGS_string & inOperand6,
-                                                                                       const class GGS_stringlist & inOperand7,
+                                                                                       const class GGS__5B_string_5D_ & inOperand7,
                                                                                        const class GGS_string & inOperand8,
-                                                                                       const class GGS_stringlist & inOperand9,
+                                                                                       const class GGS__5B_string_5D_ & inOperand9,
                                                                                        const class GGS_string & inOperand10,
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
@@ -7265,8 +7265,8 @@ class GGS_XCodeAppTarget : public AC_GALGAS_root {
     return mProperty_mProductFileName ;
   }
 
-  public: GGS_stringlist mProperty_mBuildPhaseRefList ;
-  public: inline GGS_stringlist readProperty_mBuildPhaseRefList (void) const {
+  public: GGS__5B_string_5D_ mProperty_mBuildPhaseRefList ;
+  public: inline GGS__5B_string_5D_ readProperty_mBuildPhaseRefList (void) const {
     return mProperty_mBuildPhaseRefList ;
   }
 
@@ -7280,8 +7280,8 @@ class GGS_XCodeAppTarget : public AC_GALGAS_root {
     return mProperty_mBuildConfigurationListRef ;
   }
 
-  public: GGS_stringlist mProperty_mBuildConfigurationSettingList ;
-  public: inline GGS_stringlist readProperty_mBuildConfigurationSettingList (void) const {
+  public: GGS__5B_string_5D_ mProperty_mBuildConfigurationSettingList ;
+  public: inline GGS__5B_string_5D_ readProperty_mBuildConfigurationSettingList (void) const {
     return mProperty_mBuildConfigurationSettingList ;
   }
 
@@ -7290,8 +7290,8 @@ class GGS_XCodeAppTarget : public AC_GALGAS_root {
     return mProperty_mBuildConfigurationRef ;
   }
 
-  public: GGS_stringlist mProperty_mFrameworksFileRefList ;
-  public: inline GGS_stringlist readProperty_mFrameworksFileRefList (void) const {
+  public: GGS__5B_string_5D_ mProperty_mFrameworksFileRefList ;
+  public: inline GGS__5B_string_5D_ readProperty_mFrameworksFileRefList (void) const {
     return mProperty_mFrameworksFileRefList ;
   }
 
@@ -7310,8 +7310,8 @@ class GGS_XCodeAppTarget : public AC_GALGAS_root {
     return mProperty_mResourceBuildRef ;
   }
 
-  public: GGS_stringlist mProperty_mResourceFileBuildRefs ;
-  public: inline GGS_stringlist readProperty_mResourceFileBuildRefs (void) const {
+  public: GGS__5B_string_5D_ mProperty_mResourceFileBuildRefs ;
+  public: inline GGS__5B_string_5D_ readProperty_mResourceFileBuildRefs (void) const {
     return mProperty_mResourceFileBuildRefs ;
   }
 
@@ -7339,7 +7339,7 @@ class GGS_XCodeAppTarget : public AC_GALGAS_root {
     mProperty_mProductFileName = inValue ;
   }
 
-  public: inline void setter_setMBuildPhaseRefList (const GGS_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMBuildPhaseRefList (const GGS__5B_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mBuildPhaseRefList = inValue ;
   }
 
@@ -7351,7 +7351,7 @@ class GGS_XCodeAppTarget : public AC_GALGAS_root {
     mProperty_mBuildConfigurationListRef = inValue ;
   }
 
-  public: inline void setter_setMBuildConfigurationSettingList (const GGS_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMBuildConfigurationSettingList (const GGS__5B_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mBuildConfigurationSettingList = inValue ;
   }
 
@@ -7359,7 +7359,7 @@ class GGS_XCodeAppTarget : public AC_GALGAS_root {
     mProperty_mBuildConfigurationRef = inValue ;
   }
 
-  public: inline void setter_setMFrameworksFileRefList (const GGS_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMFrameworksFileRefList (const GGS__5B_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mFrameworksFileRefList = inValue ;
   }
 
@@ -7375,7 +7375,7 @@ class GGS_XCodeAppTarget : public AC_GALGAS_root {
     mProperty_mResourceBuildRef = inValue ;
   }
 
-  public: inline void setter_setMResourceFileBuildRefs (const GGS_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMResourceFileBuildRefs (const GGS__5B_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mResourceFileBuildRefs = inValue ;
   }
 
@@ -7387,16 +7387,16 @@ class GGS_XCodeAppTarget : public AC_GALGAS_root {
                               const GGS_string & in_mTargetName,
                               const GGS_string & in_mProductFileReference,
                               const GGS_string & in_mProductFileName,
-                              const GGS_stringlist & in_mBuildPhaseRefList,
+                              const GGS__5B_string_5D_ & in_mBuildPhaseRefList,
                               const GGS_string & in_mBuildPhaseRef,
                               const GGS_string & in_mBuildConfigurationListRef,
-                              const GGS_stringlist & in_mBuildConfigurationSettingList,
+                              const GGS__5B_string_5D_ & in_mBuildConfigurationSettingList,
                               const GGS_string & in_mBuildConfigurationRef,
-                              const GGS_stringlist & in_mFrameworksFileRefList,
+                              const GGS__5B_string_5D_ & in_mFrameworksFileRefList,
                               const GGS_string & in_mFrameworkBuildPhaseRef,
                               const GGS__32_stringlist & in_mDependentTargets,
                               const GGS_string & in_mResourceBuildRef,
-                              const GGS_stringlist & in_mResourceFileBuildRefs) ;
+                              const GGS__5B_string_5D_ & in_mResourceFileBuildRefs) ;
 
 //--------------------------------- Copy constructor
   public: GGS_XCodeAppTarget (const GGS_XCodeAppTarget & inSource) ;
@@ -7411,16 +7411,16 @@ class GGS_XCodeAppTarget : public AC_GALGAS_root {
                                                                                                   const class GGS_string & inOperand1,
                                                                                                   const class GGS_string & inOperand2,
                                                                                                   const class GGS_string & inOperand3,
-                                                                                                  const class GGS_stringlist & inOperand4,
+                                                                                                  const class GGS__5B_string_5D_ & inOperand4,
                                                                                                   const class GGS_string & inOperand5,
                                                                                                   const class GGS_string & inOperand6,
-                                                                                                  const class GGS_stringlist & inOperand7,
+                                                                                                  const class GGS__5B_string_5D_ & inOperand7,
                                                                                                   const class GGS_string & inOperand8,
-                                                                                                  const class GGS_stringlist & inOperand9,
+                                                                                                  const class GGS__5B_string_5D_ & inOperand9,
                                                                                                   const class GGS_string & inOperand10,
                                                                                                   const class GGS__32_stringlist & inOperand11,
                                                                                                   const class GGS_string & inOperand12,
-                                                                                                  const class GGS_stringlist & inOperand13,
+                                                                                                  const class GGS__5B_string_5D_ & inOperand13,
                                                                                                   Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'

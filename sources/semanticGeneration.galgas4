@@ -1110,10 +1110,10 @@ final class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderFor
   override proc appendSpecificFiles
     (let @string inProductDirectory,
     ?!@stringset ioAllProductFileSet,
-    ?!swift: @stringlist ioSwiftAppProductFileList ) {
+    ?!swift: [@string] ioSwiftAppProductFileList) {
   //--- Generate SwiftUI implementation file
     ioAllProductFileSet ++= "lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift"
-    ioSwiftAppProductFileList ++= @("lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift")
+    ioSwiftAppProductFileList ++= "lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift"
     @string.generateFileWithPattern (
       !startPath:inProductDirectory,
       !fileName:"lexique-" + self.mLexiqueName.fileNameRepresentation + "-swiftui.swift",
@@ -1443,8 +1443,8 @@ final class @primitiveTypeForGeneration : @semanticTypeForGeneration {
 proc generatePredefinedTypeFiles (
   let @string inDirectory,
   let [@semanticDeclarationForGeneration] inSemanticDeclarationListForGeneration,
-  ?!@stringlist ioToolHeaderFileList,
-  ?!@stringlist ioToolCppFileList,
+  ?![@string] ioToolHeaderFileList,
+  ?![@string] ioToolCppFileList,
   ?!@stringset ioAllProductFileSet
 ) {
 //----------------------------------------------------------------- Generate header file
@@ -1474,7 +1474,7 @@ proc generatePredefinedTypeFiles (
     end
   end
   if @uint.errorCount == 0 then
-    ioToolHeaderFileList ++= @("all-predefined-types.h")
+    ioToolHeaderFileList ++= "all-predefined-types.h"
     ioAllProductFileSet ++= "all-predefined-types.h"
     @string.generateFileWithPattern (
       !startPath:inDirectory,
@@ -1498,7 +1498,7 @@ proc generatePredefinedTypeFiles (
     end
   end
   if @uint.errorCount == 0 then
-    ioToolCppFileList ++= @("all-predefined-types.cpp")
+    ioToolCppFileList ++= "all-predefined-types.cpp"
     ioAllProductFileSet ++= "all-predefined-types.cpp"
     @string.generateFileWithPattern (
       !startPath:inDirectory,
@@ -1525,11 +1525,11 @@ filewrapper semanticFileGenerationTemplate in "+generation-templates/semantic_ge
 }{
   template semanticFileHeader : "semantic-file.h.galgasTemplate" (
     ?@string COMPONENT_NAME,
-    ?@stringlist IMPORTED_COMPONENT_LIST
+    ?[@string] IMPORTED_COMPONENT_LIST
   )
 
   template semanticFileImplementation : "semantic-file.cpp.galgasTemplate" (
-    ?@stringlist IMPORTED_COMPONENT_LIST
+    ?[@string] IMPORTED_COMPONENT_LIST
   )
 }
 

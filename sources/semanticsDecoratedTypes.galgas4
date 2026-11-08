@@ -481,7 +481,7 @@ proc @semanticDeclarationForGeneration.appendSpecificImplementation
 proc @semanticDeclarationForGeneration.appendSpecificFiles
   (let @string _inProductDirectory,
   ?!@stringset _ioAllProductFileSet,
-  ?!swift: @stringlist _ioSwiftAppProductFileList
+  ?!swift: [@string] _ioSwiftAppProductFileList
 ) {
 }
 

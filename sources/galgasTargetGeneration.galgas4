@@ -66,9 +66,9 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
 
   template codeblocks_project : "project-codeblocks.cbp.galgasTemplate" (
     ?@string PROJECT_NAME,
-    ?@stringlist TOOL_CPP_FILE_LIST,
+    ?[@string] TOOL_CPP_FILE_LIST,
     ?@string LIBPM_PATH,
-    ?@stringlist HAND_CODED_SOURCE_TOOL_FILE_LIST,
+    ?[@string] HAND_CODED_SOURCE_TOOL_FILE_LIST,
     ?@string HAND_CODED_SOURCE_TOOL_DIRECTORY,
     ?windows:@bool GENERATE_FOR_WINDOWS,
     ?platform:@string PLATFORM,
@@ -91,9 +91,9 @@ private filewrapper targetGalgas3GenerationFileWrapper in "+generation-templates
 
   template json_file_list : "json-file-list.galgasTemplate" (
     ?@stringset HAND_CODED_SOURCE_DIR_SET,
-    ?@stringlist HAND_CODED_SOURCE_FILE_LIST,
-    ?@stringlist MAKEFILE_FILE_LIST,
-    ?@stringlist TOOL_LINK_LIST,
+    ?[@string] HAND_CODED_SOURCE_FILE_LIST,
+    ?[@string] MAKEFILE_FILE_LIST,
+    ?[@string] TOOL_LINK_LIST,
     ?@string LIBPM_DIRECTORY_PATH,
     ?@string RELATIVE_BUILD_DIR
   )
@@ -107,9 +107,9 @@ private proc generateGalgasCodeBlocksWindowsTarget
   (let @string inProjectDirectory,
   ?buildDirName: let @string inBuildDirectoryName,
   let @string inProjectName,
-  let @stringlist inToolCppFileList,
+  let [@string] inToolCppFileList,
   ?libpmPath: let @string inLIBPMpath,
-  let @stringlist inHandCodedSourceToolFileList,
+  let [@string] inHandCodedSourceToolFileList,
   let @string inHandCodedSourceDirectory,
   let @bool inVerboseOption
 ) {
@@ -131,13 +131,13 @@ private proc generateGalgasCodeBlocksWindowsTarget
 
 //--------------------------------------------------------------------------------------------------
 
-private proc generateGalgasCodeBlocksLinuxI686Target
-  (let @string inProjectDirectory,
+private proc generateGalgasCodeBlocksLinuxI686Target (
+  let @string inProjectDirectory,
   ?buildDirName: let @string inBuildDirectoryName,
   let @string inProjectName,
-  let @stringlist inToolCppFileList,
+  let [@string] inToolCppFileList,
   let @string inLIBPMpath,
-  let @stringlist inHandCodedSourceToolFileList,
+  let [@string] inHandCodedSourceToolFileList,
   let @string inHandCodedSourceDirectory,
   let @bool inVerboseOption
  ) {
@@ -159,13 +159,13 @@ private proc generateGalgasCodeBlocksLinuxI686Target
 
 //--------------------------------------------------------------------------------------------------
 
-private proc generateGalgasCodeBlocksLinuxX86_64Target
-  (let @string inProjectDirectory,
+private proc generateGalgasCodeBlocksLinuxX86_64Target (
+  let @string inProjectDirectory,
   ?buildDirName: let @string inBuildDirectoryName,
   let @string inProjectName,
-  let @stringlist inToolCppFileList,
+  let [@string] inToolCppFileList,
   let @string inLIBPMpath,
-  let @stringlist inHandCodedSourceToolFileList,
+  let [@string] inHandCodedSourceToolFileList,
   let @string inHandCodedSourceDirectory,
   let @bool inVerboseOption
 ) {
@@ -344,17 +344,17 @@ proc updateGalgasTargets (
   let @projectQualifiedFeatureMap inProjectQualifiedFeatureMap,
   let [@lstring] inTargetFeatureList,
   let @bool inQuietOutputByDefault,
-  let @stringlist inToolCppFileList,
-  let @stringlist inToolHeaderFileList,
-  ?appProductFileList: let @stringlist inAppProductFileList,
-  ?swiftAppProductFileList: let @stringlist inSwiftAppProductFileList,
-  let @stringlist inHandCodedSourceToolFileList,
-  let @stringlist inFrameworkToolFileList,
+  let [@string] inToolCppFileList,
+  let [@string] inToolHeaderFileList,
+  ?appProductFileList: let [@string] inAppProductFileList,
+  ?swiftAppProductFileList: let [@string] inSwiftAppProductFileList,
+  let [@string] inHandCodedSourceToolFileList,
+  let [@string] inFrameworkToolFileList,
   let @string inHandCodedSourceDirectory,
   let @stringset inHandledExtensionSet,
   ?!@stringset ioAllProductFileSet,
-  let @stringlist inHandCodedLinkAppFileList ) {
-  ioAllProductFileSet += .setWithStringList (inSwiftAppProductFileList)
+  let [@string] inHandCodedLinkAppFileList ) {
+  ioAllProductFileSet += .setWithStringArray (inSwiftAppProductFileList)
   let projectDirectory = inProjectSourceFilePath.deletingLastPathComponent
 //--- Update project header
   let s1 = filewrapper [targetGalgas3GenerationFileWrapper.project_header : inProjectVersionString]
@@ -366,9 +366,9 @@ proc updateGalgasTargets (
 //---------------------------------------------------------- %quietOutputByDefault
   var toolCppFileList = inToolCppFileList
   if inQuietOutputByDefault then
-    toolCppFileList ++= @("C_galgas_verbose_option.cpp")
+    toolCppFileList ++= "C_galgas_verbose_option.cpp"
   else
-    toolCppFileList ++= @("C_galgas_quiet_option.cpp")
+    toolCppFileList ++= "C_galgas_quiet_option.cpp"
   end
 //---------------------------------------------------------- macCodeSign
   let @lstring macCodeSign
@@ -500,21 +500,21 @@ proc updateGalgasTargets (
     )
   end
 //--- Frameworks to link with tool
-  var @stringlist linkOptionForLinkingFrameworkWithTool = @()
+  var [@string] linkOptionForLinkingFrameworkWithTool = @()
   for (mValue) in inFrameworkToolFileList do
-    linkOptionForLinkingFrameworkWithTool ++= @("-framework")
-    linkOptionForLinkingFrameworkWithTool ++= @(mValue.deletingPathExtension)
+    linkOptionForLinkingFrameworkWithTool ++= "-framework"
+    linkOptionForLinkingFrameworkWithTool ++= mValue.deletingPathExtension
   end
 //--- Update json file list
-  var @stringlist handCodedSourceToolFileList = @()
+  var [@string] handCodedSourceToolFileList = @()
   for (mValue) in inHandCodedSourceToolFileList do
     if mValue.pathExtension != "h" then
-      handCodedSourceToolFileList ++= @(mValue.lastPathComponent)
+      handCodedSourceToolFileList ++= mValue.lastPathComponent
     end
   end
   var handCodedSourceDirectorySet = @stringset ()
   for sourcePath in inHandCodedSourceToolFileList do
-    let subDir = sourcePath.mValue.deletingLastPathComponent
+    let subDir = sourcePath.deletingLastPathComponent
     if subDir == "" then
       handCodedSourceDirectorySet ++= "../sources/tool-sources"
     else
@@ -572,8 +572,7 @@ proc updateGalgasTargets (
   //--- Enumerate icons files in "userResources" directory
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
     userResourceDir.makeDirectory ()
-    let @stringlist extensionList = [@("icns")]
-    let resourceFiles = userResourceDir.regularFilesWithExtensions (!recursive: false, extensionList)
+    let resourceFiles = userResourceDir.regularFilesWithExtensions (!recursive: false, ["icns"])
   //--- Build paths
     let newIntermediateFilePath = inAbsoluteBuildDirectory + "/output/file-list-for-xcode-project.txt"
     ioAllProductFileSet ++= "file-list-for-xcode-project.txt"
@@ -588,93 +587,93 @@ proc updateGalgasTargets (
     headerSearchPaths += ", \"" + inHandCodedSourceDirectory + "\""
     headerSearchPaths += ")"
   //--- Default build configuration
-    var @stringlist xcodeSettingList = [
-      @("ALWAYS_SEARCH_USER_PATHS = NO"),
-      @("CLANG_CXX_LANGUAGE_STANDARD = \"c++17\""),
-      @("CLANG_ENABLE_OBJC_ARC = YES"),
-      @("CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES"),
-      @("CLANG_WARN_COMMA = YES"),
-      @("CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES"),
-      @("CLANG_WARN_EMPTY_BODY = YES"),
-      @("CLANG_WARN_INFINITE_RECURSION = YES"),
-      @("CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES"),
-      @("CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES"),
-      @("CLANG_WARN_RANGE_LOOP_ANALYSIS = YES"),
-      @("CLANG_WARN_STRICT_PROTOTYPES = YES"),
-      @("CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES"),
-      @("CLANG_WARN_SUSPICIOUS_MOVE = YES"),
-      @("CLANG_WARN_UNREACHABLE_CODE = YES"),
-      @("CLANG_WARN__DUPLICATE_METHOD_MATCH = YES"),
-      @("GCC_GENERATE_DEBUGGING_SYMBOLS = NO"),
-      @("GCC_NO_COMMON_BLOCKS = YES"),
-      @("ENABLE_STRICT_OBJC_MSGSEND = YES"),
-      @("GCC_PRECOMPILE_PREFIX_HEADER = YES"),
-      @("GCC_THREADSAFE_STATICS = NO"),
-      @("GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES"),
-      @("GCC_TREAT_WARNINGS_AS_ERRORS = YES"),
-      @("GCC_WARN_64_TO_32_BIT_CONVERSION = YES"),
-      @("GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO"),
-      @("GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES"),
-      @("CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES"),
-      @("GCC_WARN_ABOUT_MISSING_NEWLINE = YES"),
-      @("GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO"),
-      @("GCC_WARN_ABOUT_RETURN_TYPE = YES"),
-      @("GCC_WARN_CHECK_SWITCH_STATEMENTS = YES"),
-      @("GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES"),
-      @("GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES"),
-      @("GCC_WARN_INHIBIT_ALL_WARNINGS = NO"),
-      @("GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES"),
-      @("GCC_WARN_MISSING_PARENTHESES = YES"),
-      @("GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES"),
-      @("GCC_WARN_PEDANTIC = NO"),
-      @("GCC_WARN_SHADOW = YES"),
-      @("GCC_WARN_SIGN_COMPARE = YES"),
-      @("GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES"),
-      @("GCC_WARN_UNDECLARED_SELECTOR = YES"),
-      @("GCC_WARN_UNINITIALIZED_AUTOS = YES"),
-      @("GCC_WARN_UNKNOWN_PRAGMAS = YES"),
-      @("GCC_WARN_UNUSED_FUNCTION = YES"),
-      @("GCC_WARN_UNUSED_LABEL = YES"),
-      @("GCC_WARN_UNUSED_VALUE = YES"),
-      @("GCC_WARN_UNUSED_VARIABLE = YES"),
-      @(headerSearchPaths),
-      @("SDKROOT = macosx"),
-      @("COPY_PHASE_STRIP = NO"),
-      @("CLANG_ENABLE_OBJC_ARC = YES"),
-      @("SWIFT_DISABLE_SAFETY_CHECKS = NO"),
-      @("SWIFT_ENABLE_BARE_SLASH_REGEX = NO"),
-      @("SWIFT_ENABLE_EMIT_CONST_VALUES = NO"),
-      @("SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off"),
-      @("SWIFT_INSTALL_MODULE = YES"),
-      @("SWIFT_INSTALL_OBJC_HEADER = NO"),
-      @("SWIFT_PRECOMPILE_BRIDGING_HEADER = NO"),
-      @("SWIFT_REFLECTION_METADATA_LEVEL = all"),
-      @("SWIFT_STRICT_CONCURRENCY = complete"),
-      @("SWIFT_TREAT_WARNINGS_AS_ERRORS = NO"),
-      @("SWIFT_UPCOMING_FEATURE_CONCISE_MAGIC_FILE = NO"),
-      @("SWIFT_UPCOMING_FEATURE_DEPRECATE_APPLICATION_MAIN = NO"),
-      @("SWIFT_UPCOMING_FEATURE_DISABLE_OUTWARD_ACTOR_ISOLATION = NO"),
-      @("SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY = NO"),
-      @("SWIFT_UPCOMING_FEATURE_FORWARD_TRAILING_CLOSURES = NO"),
-      @("SWIFT_UPCOMING_FEATURE_GLOBAL_CONCURRENCY = NO"),
-      @("SWIFT_UPCOMING_FEATURE_IMPLICIT_OPEN_EXISTENTIALS = NO"),
-      @("SWIFT_UPCOMING_FEATURE_IMPORT_OBJC_FORWARD_DECLS = NO"),
-      @("SWIFT_UPCOMING_FEATURE_INFER_SENDABLE_FROM_CAPTURES = NO"),
-      @("SWIFT_UPCOMING_FEATURE_ISOLATED_DEFAULT_VALUES = NO"),
-      @("SWIFT_UPCOMING_FEATURE_REGION_BASED_ISOLATION = NO"),
-      @("SWIFT_VERSION = 6.0")
+    var [@string] xcodeSettingList = [
+      "ALWAYS_SEARCH_USER_PATHS = NO",
+      "CLANG_CXX_LANGUAGE_STANDARD = \"c++17\"",
+      "CLANG_ENABLE_OBJC_ARC = YES",
+      "CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES",
+      "CLANG_WARN_COMMA = YES",
+      "CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES",
+      "CLANG_WARN_EMPTY_BODY = YES",
+      "CLANG_WARN_INFINITE_RECURSION = YES",
+      "CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES",
+      "CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES",
+      "CLANG_WARN_RANGE_LOOP_ANALYSIS = YES",
+      "CLANG_WARN_STRICT_PROTOTYPES = YES",
+      "CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES",
+      "CLANG_WARN_SUSPICIOUS_MOVE = YES",
+      "CLANG_WARN_UNREACHABLE_CODE = YES",
+      "CLANG_WARN__DUPLICATE_METHOD_MATCH = YES",
+      "GCC_GENERATE_DEBUGGING_SYMBOLS = NO",
+      "GCC_NO_COMMON_BLOCKS = YES",
+      "ENABLE_STRICT_OBJC_MSGSEND = YES",
+      "GCC_PRECOMPILE_PREFIX_HEADER = YES",
+      "GCC_THREADSAFE_STATICS = NO",
+      "GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES",
+      "GCC_TREAT_WARNINGS_AS_ERRORS = YES",
+      "GCC_WARN_64_TO_32_BIT_CONVERSION = YES",
+      "GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO",
+      "GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES",
+      "CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES",
+      "GCC_WARN_ABOUT_MISSING_NEWLINE = YES",
+      "GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO",
+      "GCC_WARN_ABOUT_RETURN_TYPE = YES",
+      "GCC_WARN_CHECK_SWITCH_STATEMENTS = YES",
+      "GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES",
+      "GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES",
+      "GCC_WARN_INHIBIT_ALL_WARNINGS = NO",
+      "GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES",
+      "GCC_WARN_MISSING_PARENTHESES = YES",
+      "GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES",
+      "GCC_WARN_PEDANTIC = NO",
+      "GCC_WARN_SHADOW = YES",
+      "GCC_WARN_SIGN_COMPARE = YES",
+      "GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES",
+      "GCC_WARN_UNDECLARED_SELECTOR = YES",
+      "GCC_WARN_UNINITIALIZED_AUTOS = YES",
+      "GCC_WARN_UNKNOWN_PRAGMAS = YES",
+      "GCC_WARN_UNUSED_FUNCTION = YES",
+      "GCC_WARN_UNUSED_LABEL = YES",
+      "GCC_WARN_UNUSED_VALUE = YES",
+      "GCC_WARN_UNUSED_VARIABLE = YES",
+      headerSearchPaths,
+      "SDKROOT = macosx",
+      "COPY_PHASE_STRIP = NO",
+      "CLANG_ENABLE_OBJC_ARC = YES",
+      "SWIFT_DISABLE_SAFETY_CHECKS = NO",
+      "SWIFT_ENABLE_BARE_SLASH_REGEX = NO",
+      "SWIFT_ENABLE_EMIT_CONST_VALUES = NO",
+      "SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off",
+      "SWIFT_INSTALL_MODULE = YES",
+      "SWIFT_INSTALL_OBJC_HEADER = NO",
+      "SWIFT_PRECOMPILE_BRIDGING_HEADER = NO",
+      "SWIFT_REFLECTION_METADATA_LEVEL = all",
+      "SWIFT_STRICT_CONCURRENCY = complete",
+      "SWIFT_TREAT_WARNINGS_AS_ERRORS = NO",
+      "SWIFT_UPCOMING_FEATURE_CONCISE_MAGIC_FILE = NO",
+      "SWIFT_UPCOMING_FEATURE_DEPRECATE_APPLICATION_MAIN = NO",
+      "SWIFT_UPCOMING_FEATURE_DISABLE_OUTWARD_ACTOR_ISOLATION = NO",
+      "SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY = NO",
+      "SWIFT_UPCOMING_FEATURE_FORWARD_TRAILING_CLOSURES = NO",
+      "SWIFT_UPCOMING_FEATURE_GLOBAL_CONCURRENCY = NO",
+      "SWIFT_UPCOMING_FEATURE_IMPLICIT_OPEN_EXISTENTIALS = NO",
+      "SWIFT_UPCOMING_FEATURE_IMPORT_OBJC_FORWARD_DECLS = NO",
+      "SWIFT_UPCOMING_FEATURE_INFER_SENDABLE_FROM_CAPTURES = NO",
+      "SWIFT_UPCOMING_FEATURE_ISOLATED_DEFAULT_VALUES = NO",
+      "SWIFT_UPCOMING_FEATURE_REGION_BASED_ISOLATION = NO",
+      "SWIFT_VERSION = 6.0"
     ]
     if MACOSX_DEPLOYMENT_TARGET != "" then
-      xcodeSettingList ++= @("MACOSX_DEPLOYMENT_TARGET = \"" + MACOSX_DEPLOYMENT_TARGET + "\"")
+      xcodeSettingList ++= "MACOSX_DEPLOYMENT_TARGET = \"" + MACOSX_DEPLOYMENT_TARGET + "\""
     end
     !?xcodeProject.addSettingsToDefaultConfiguration (!settingList: xcodeSettingList)
   //--- Add "Frameworks for App" group
-    var @stringlist appFrameworksFileRefList = @()
+    var [@string] appFrameworksFileRefList = @()
     if inHandCodedLinkAppFileList.count > 0 then
       !?xcodeProject.addGroupWithFiles
         (!groupName: "Frameworks (App)",
         !groupPath: "/System/Library/Frameworks",
-        !fileNames: .setWithStringList (inHandCodedLinkAppFileList),
+        !fileNames: .setWithStringArray (inHandCodedLinkAppFileList),
         !?cFileRefs: #from @(),
         !?cppFileRefs: #from @(),
         !?swiftFileRefs: #from @(),
@@ -685,17 +684,17 @@ proc updateGalgasTargets (
       !?xcodeProject.placeGroupAsMainGroup (!groupRef:frameworkGroupRef)
     end
   //--- Mach O target
-    var @stringlist buildCFileRefListForTool = @()
-    var @stringlist buildCppFileRefListForTool = @()
-    var @stringlist swift_FileRefList = @()
-    var @stringlist frameworksFileRefList = @()
-    var @stringlist resourceFileBuildRefs = @()
+    var [@string] buildCFileRefListForTool = @()
+    var [@string] buildCppFileRefListForTool = @()
+    var [@string] swift_FileRefList = @()
+    var [@string] frameworksFileRefList = @()
+    var [@string] resourceFileBuildRefs = @()
   //--- Add "Hand coded sources (Tool)" group
     if inHandCodedSourceToolFileList.count > 0 then
       !?xcodeProject.addGroupWithFiles
         (!groupName:"Hand Coded Sources (Tool)",
         !groupPath:"../sources/tool-sources/",
-        !fileNames:@stringset.setWithStringList (inHandCodedSourceToolFileList),
+        !fileNames:@stringset.setWithStringArray (inHandCodedSourceToolFileList),
         !?cFileRefs:buildCFileRefListForTool,
         !?cppFileRefs:buildCppFileRefListForTool,
         !?swiftFileRefs: swift_FileRefList,
@@ -706,12 +705,12 @@ proc updateGalgasTargets (
       !?xcodeProject.placeGroupAsMainGroup (!groupRef:groupRef)
     end
   //--- Add "Frameworks for tool" group
-    var @stringlist toolFrameworksFileRefList = @()
+    var [@string] toolFrameworksFileRefList = @()
     if inFrameworkToolFileList.count > 0 then
       !?xcodeProject.addGroupWithFiles
         (!groupName:"Frameworks (Tool)",
         !groupPath:"/System/Library/Frameworks",
-        !fileNames:@stringset.setWithStringList (inFrameworkToolFileList),
+        !fileNames:@stringset.setWithStringArray (inFrameworkToolFileList),
         !?cFileRefs: #from @(),
         !?cppFileRefs: #from @(),
         !?swiftFileRefs: #from @(),
@@ -727,7 +726,7 @@ proc updateGalgasTargets (
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Generated by GALGAS",
       !groupPath:"../" + inBuildDirectoryName + "/output",
-      !fileNames: .setWithStringList (outputGroupFileList),
+      !fileNames: .setWithStringArray (outputGroupFileList),
       !?cFileRefs:buildCFileRefListForTool,
       !?cppFileRefs:buildCppFileRefListForTool,
       !?swiftFileRefs: swift_FileRefList,
@@ -736,7 +735,7 @@ proc updateGalgasTargets (
       ?groupRef:var @string groupRef
     )
     !?xcodeProject.placeGroupAsMainGroup (!groupRef:groupRef)
-    var @stringlist libpmReferenceGroupList = @()
+    var [@string] libpmReferenceGroupList = @()
   //--- Add "BDD" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Binary Decision Diagrams",
@@ -759,7 +758,7 @@ proc updateGalgasTargets (
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList ++= @(groupRef)
+    libpmReferenceGroupList ++= groupRef
   //--- Add "Big Integers" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Big Integers",
@@ -810,7 +809,7 @@ proc updateGalgasTargets (
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList ++= @(groupRef)
+    libpmReferenceGroupList ++= groupRef
  //--- Add "SwiftUI app" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Swift App",
@@ -865,7 +864,7 @@ proc updateGalgasTargets (
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList ++= @(groupRef)
+    libpmReferenceGroupList ++= groupRef
   //--- Add "collection" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Generic Arraies",
@@ -882,7 +881,7 @@ proc updateGalgasTargets (
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList ++= @(groupRef)
+    libpmReferenceGroupList ++= groupRef
   //--- Add "Command line Interface" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Command line Interface",
@@ -910,7 +909,7 @@ proc updateGalgasTargets (
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList ++= @(groupRef)
+    libpmReferenceGroupList ++= groupRef
   //--- Add "File" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"File",
@@ -934,7 +933,7 @@ proc updateGalgasTargets (
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList ++= @(groupRef)
+    libpmReferenceGroupList ++= groupRef
   //--- Add "Galgas 2" group
     !?xcodeProject.addGroupWithFiles (
       !groupName:"Galgas",
@@ -1026,7 +1025,7 @@ proc updateGalgasTargets (
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList ++= @(groupRef)
+    libpmReferenceGroupList ++= groupRef
   //--- Add "Streams" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Streams",
@@ -1046,7 +1045,7 @@ proc updateGalgasTargets (
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList ++= @(groupRef)
+    libpmReferenceGroupList ++= groupRef
   //--- Add "String" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Strings",
@@ -1069,7 +1068,7 @@ proc updateGalgasTargets (
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList ++= @(groupRef)
+    libpmReferenceGroupList ++= groupRef
   //--- Add "Time" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Time",
@@ -1087,7 +1086,7 @@ proc updateGalgasTargets (
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList ++= @(groupRef)
+    libpmReferenceGroupList ++= groupRef
   //--- Add "Utilities" group
     !?xcodeProject.addGroupWithFiles
       (!groupName:"Utilities",
@@ -1131,7 +1130,7 @@ proc updateGalgasTargets (
       !?resourceFileRefs:resourceFileBuildRefs,
       ?groupRef:groupRef
     )
-    libpmReferenceGroupList ++= @(groupRef)
+    libpmReferenceGroupList ++= groupRef
   //--- Add "LIBPM" group
     !?xcodeProject.addGroup (!groupName:"libpm", !groupPath:"../" + inBuildDirectoryName + "/libpm", !childrenRefs:libpmReferenceGroupList, ?groupRef:let @string libpmGroupRef)
     !?xcodeProject.placeGroupAsMainGroup (!groupRef:libpmGroupRef)
@@ -1152,7 +1151,7 @@ proc updateGalgasTargets (
     !?xcodeProject.addGroupWithFiles
       (!groupName: "User Resources",
       !groupPath: "userResources",
-      !fileNames: .setWithStringList (resourceFiles),
+      !fileNames: .setWithStringArray (resourceFiles),
       !?cFileRefs: buildCFileRefListForTool,
       !?cppFileRefs: buildCppFileRefListForTool,
       !?swiftFileRefs: swift_FileRefList,
@@ -1178,33 +1177,33 @@ proc updateGalgasTargets (
     )
     !?xcodeProject.placeGroupAsMainGroup (!groupRef:frameworkGroupRef)
   //--- Code signing identity
-    let @stringlist codeSigningSettingList
+    let [@string] codeSigningSettingList
     if macCodeSign.string == "" then
-      codeSigningSettingList = [@("CODE_SIGN_IDENTITY = \"-\"")]
+      codeSigningSettingList = ["CODE_SIGN_IDENTITY = \"-\""]
     else
       let components = macCodeSign.string.componentsSeparatedByString (":")
       if components.count != 2 then
         error (macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\"" spoil codeSigningSettingList)
       elsif components.mValueAtIndex (0) == "MacDeveloper" then
         codeSigningSettingList = [
-          @("CODE_SIGN_IDENTITY = \"Mac Developer\""),
-          @("DEVELOPMENT_TEAM = \"" + components.mValueAtIndex (1) + "\"")
+          "CODE_SIGN_IDENTITY = \"Mac Developer\"",
+          "DEVELOPMENT_TEAM = \"" + components.mValueAtIndex (1) + "\""
         ]
       elsif components.mValueAtIndex (0) == "Certificate" then
-        codeSigningSettingList = [@("CODE_SIGN_IDENTITY = \"" + components.mValueAtIndex (1) + "\"")]
+        codeSigningSettingList = ["CODE_SIGN_IDENTITY = \"" + components.mValueAtIndex (1) + "\""]
       else
         error (macCodeSign : "the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'" spoil codeSigningSettingList)
       end
     end
   //--- Add Mach O release target
-    var @stringlist settingList = [
-      @("GCC_OPTIMIZATION_LEVEL = 2"),
-      @("GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)"),
-      @("GCC_WARN_UNUSED_PARAMETER = YES"),
-      @("PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tool\"")
+    var [@string] settingList = [
+      "GCC_OPTIMIZATION_LEVEL = 2",
+      "GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)",
+      "GCC_WARN_UNUSED_PARAMETER = YES",
+      "PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tool\""
     ] + codeSigningSettingList
-    !?xcodeProject.addToolTarget
-      (!targetName:inTargetName + " tool",
+    !?xcodeProject.addToolTarget (
+      !targetName:inTargetName + " tool",
       !productFileName:inTargetName,
       !sources:buildCFileRefListForTool + buildCppFileRefListForTool,
       !frameworkRefs:toolFrameworksFileRefList,
@@ -1214,11 +1213,11 @@ proc updateGalgasTargets (
     )
   //--- Add Mach O debug target
     settingList = [
-      @("GCC_OPTIMIZATION_LEVEL = 0"),
-      @("GCC_GENERATE_DEBUGGING_SYMBOLS = YES"),
-      @("GCC_PREPROCESSOR_DEFINITIONS = ()"),
-      @("GCC_WARN_UNUSED_PARAMETER = YES"),
-      @("PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tooldebug\"")
+      "GCC_OPTIMIZATION_LEVEL = 0",
+      "GCC_GENERATE_DEBUGGING_SYMBOLS = YES",
+      "GCC_PREPROCESSOR_DEFINITIONS = ()",
+      "GCC_WARN_UNUSED_PARAMETER = YES",
+      "PRODUCT_BUNDLE_IDENTIFIER = \"" + applicationBundleBase + "." + inTargetName + ".tooldebug\""
     ] + codeSigningSettingList
     !?xcodeProject.addToolTarget
       (!targetName:inTargetName + " tool debug",
@@ -1230,18 +1229,18 @@ proc updateGalgasTargets (
       ?productFileRef:let debugProductFileRef
     )
   //--- Add Cocoa target
-    let @stringlist cocoaConfigurationSettingList = [
-      @("GCC_OPTIMIZATION_LEVEL = 0"),
-      @("GCC_PREPROCESSOR_DEFINITIONS = ()")
+    let [@string] cocoaConfigurationSettingList = [
+      "GCC_OPTIMIZATION_LEVEL = 0",
+      "GCC_PREPROCESSOR_DEFINITIONS = ()"
     ] + codeSigningSettingList
-    !?xcodeProject.addAppTarget
-      (!targetName: inTargetName + " IDE",
+    !?xcodeProject.addAppTarget (
+      !targetName: inTargetName + " IDE",
       !productFileName: inTargetName.capitalizingFirstCharacter + " IDE",
       !sources: swift_FileRefList,
       !frameworkFileRefs: frameworksFileRefList + appFrameworksFileRefList,
       !resourceFileRefs: resourceFileBuildRefs,
       !buildConfigurationSettingList: cocoaConfigurationSettingList,
-      !dependantTargetList: [@(releaseTargetRef), @(debugTargetRef)],
+      !dependantTargetList: [releaseTargetRef, debugTargetRef],
       !productCopyList: [@(releaseProductFileRef, inTargetName), @(debugProductFileRef, inTargetName + "-debug")],
       ?productFileRef:*
     )

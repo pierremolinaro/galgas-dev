@@ -974,7 +974,7 @@ void cPtr_optionComponentForGeneration::method_appendSpecificImplementation (con
 
 void cPtr_optionComponentForGeneration::method_appendSpecificFiles (const GGS_string constinArgument_inProductDirectory,
                                                                     GGS_stringset & ioArgument_ioAllProductFileSet,
-                                                                    GGS_stringlist & ioArgument_ioSwiftAppProductFileList,
+                                                                    GGS__5B_string_5D_ & ioArgument_ioSwiftAppProductFileList,
                                                                     Compiler * inCompiler
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GalgasBool test_0 = GalgasBool::boolTrue ;
@@ -989,7 +989,7 @@ void cPtr_optionComponentForGeneration::method_appendSpecificFiles (const GGS_st
       const GGS_optionComponentForGeneration temp_3 = this ;
       ioArgument_ioAllProductFileSet.plusPlusAssignOperation (GGS_string ("option-").add_operation (temp_3.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas4", 345)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas4", 345)).add_operation (GGS_string ("-swiftui.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas4", 345))  COMMA_SOURCE_FILE ("optionCompilation.galgas4", 345)) ;
       const GGS_optionComponentForGeneration temp_4 = this ;
-      ioArgument_ioSwiftAppProductFileList.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("option-").add_operation (temp_4.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas4", 346)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas4", 346)).add_operation (GGS_string ("-swiftui.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas4", 346)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("optionCompilation.galgas4", 346)) ;
+      ioArgument_ioSwiftAppProductFileList.plusPlusAssignOperation (GGS_string ("option-").add_operation (temp_4.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas4", 346)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas4", 346)).add_operation (GGS_string ("-swiftui.swift"), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas4", 346))  COMMA_SOURCE_FILE ("optionCompilation.galgas4", 346)) ;
       {
       const GGS_optionComponentForGeneration temp_5 = this ;
       const GGS_optionComponentForGeneration temp_6 = this ;

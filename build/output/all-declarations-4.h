@@ -9376,7 +9376,7 @@ class GGS_semanticTypePrecedenceGraph final : public AC_GALGAS_root {
 
   public: class GGS_uint getter_undefinedNodeCount (LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_undefinedNodeKeyList (LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_undefinedNodeKeyList (LOCATION_ARGS) const ;
 
   public: class GGS_location getter_locationForKey (const GGS_string & inKey,
                                                     Compiler * inCompiler

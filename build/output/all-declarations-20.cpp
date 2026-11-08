@@ -17,7 +17,7 @@ GGS_string function_linkForType (const GGS_string & constinArgument_inTypeName,
                                  Compiler * inCompiler
                                  COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
-  result_result = GGS_string ("<a class=\"header_link\" href=\"#").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 457)).add_operation (GGS_string ("\">@"), inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 457)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 457)).add_operation (GGS_string ("</a>"), inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 457)) ;
+  result_result = GGS_string ("<a class=\"header_link\" href=\"#").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 454)).add_operation (GGS_string ("\">@"), inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 454)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 454)).add_operation (GGS_string ("</a>"), inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 454)) ;
 //---
   return result_result ;
 }
@@ -85,7 +85,7 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
                                                                             const GGS_string & in_PROJECT_5F_REF,
                                                                             const GGS_string & in_MAIN_5F_GROUP_5F_REF,
                                                                             const GGS__5B_XCodeGroup_5D_ & in_GROUPS,
-                                                                            const GGS_stringlist & in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS,
+                                                                            const GGS__5B_string_5D_ & in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS,
                                                                             const GGS__5B_XCodeToolTarget_5D_ & in_TOOL_5F_TARGET_5F_LIST,
                                                                             const GGS__5B_XCodeAppTarget_5D_ & in_APP_5F_TARGET_5F_LIST,
                                                                             const GGS__32_stringlist & in_C_5F_FILE_5F_LIST,
@@ -101,7 +101,7 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
                                                                             const GGS__32_stringlist & in_XIB_5F_FILE_5F_LIST,
                                                                             const GGS__5B_BuildFile_5D_ & in_BUILD_5F_FILE_5F_LIST,
                                                                             const GGS_string & in_DEFAULT_5F_CONFIGURATION_5F_REF,
-                                                                            const GGS_stringlist & in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST,
+                                                                            const GGS__5B_string_5D_ & in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST,
                                                                             const GGS_string & in_PROJECT_5F_BUILD_5F_DEFAULT_5F_CONFIGURATION_5F_REF,
                                                                             const GGS_string & in_APPLICATION_5F_BUNDLE_5F_BASE,
                                                                             const GGS_string & in_PROJECT_5F_NAME
@@ -342,10 +342,10 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
         result.appendString (" = {\n    isa = PBXFrameworksBuildPhase;\n    buildActionMask = 2147483647;\n    files = (\n") ;
         GGS_uint index_5641_ (0) ;
         if (enumerator_5387.current_entry (HERE).readProperty_mFrameworksFileRefList ().isValid ()) {
-          UpEnumerator_stringlist enumerator_5641 (enumerator_5387.current_entry (HERE).readProperty_mFrameworksFileRefList ()) ;
+          UpEnumerator__5B_string_5D_ enumerator_5641 (enumerator_5387.current_entry (HERE).readProperty_mFrameworksFileRefList ()) ;
           while (enumerator_5641.hasCurrentObject ()) {
             result.appendString ("      ") ;
-            result.appendString (enumerator_5641.current_mValue (HERE).stringValue ()) ;
+            result.appendString (enumerator_5641.current_entry (HERE).stringValue ()) ;
             result.appendString (",\n") ;
             enumerator_5641.gotoNextObject () ;
             index_5641_.increment () ;
@@ -371,10 +371,10 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (" = {\n    isa = PBXFrameworksBuildPhase;\n    buildActionMask = 2147483647;\n    files = (\n") ;
       GGS_uint index_5992_ (0) ;
       if (enumerator_5800.current_entry (HERE).readProperty_mFrameworksFileRefList ().isValid ()) {
-        UpEnumerator_stringlist enumerator_5992 (enumerator_5800.current_entry (HERE).readProperty_mFrameworksFileRefList ()) ;
+        UpEnumerator__5B_string_5D_ enumerator_5992 (enumerator_5800.current_entry (HERE).readProperty_mFrameworksFileRefList ()) ;
         while (enumerator_5992.hasCurrentObject ()) {
           result.appendString ("      ") ;
-          result.appendString (enumerator_5992.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_5992.current_entry (HERE).stringValue ()) ;
           result.appendString (",\n") ;
           enumerator_5992.gotoNextObject () ;
           index_5992_.increment () ;
@@ -397,10 +397,10 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (" */ = {\n    isa = PBXGroup;\n    children = (\n") ;
       GGS_uint index_6367_ (0) ;
       if (enumerator_6222.current_entry (HERE).readProperty_mChildrenRefs ().isValid ()) {
-        UpEnumerator_stringlist enumerator_6367 (enumerator_6222.current_entry (HERE).readProperty_mChildrenRefs ()) ;
+        UpEnumerator__5B_string_5D_ enumerator_6367 (enumerator_6222.current_entry (HERE).readProperty_mChildrenRefs ()) ;
         while (enumerator_6367.hasCurrentObject ()) {
           result.appendString ("      ") ;
-          result.appendString (enumerator_6367.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_6367.current_entry (HERE).stringValue ()) ;
           result.appendString (", \n") ;
           enumerator_6367.gotoNextObject () ;
           index_6367_.increment () ;
@@ -420,10 +420,10 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   result.appendString (" /* Main Group */ = {\n    isa = PBXGroup;\n    children = (\n") ;
   GGS_uint index_6731_ (0) ;
   if (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS.isValid ()) {
-    UpEnumerator_stringlist enumerator_6731 (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS) ;
+    UpEnumerator__5B_string_5D_ enumerator_6731 (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS) ;
     while (enumerator_6731.hasCurrentObject ()) {
       result.appendString ("      ") ;
-      result.appendString (enumerator_6731.current_mValue (HERE).stringValue ()) ;
+      result.appendString (enumerator_6731.current_entry (HERE).stringValue ()) ;
       result.appendString (",\n") ;
       enumerator_6731.gotoNextObject () ;
       index_6731_.increment () ;
@@ -544,10 +544,10 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (" /* Resources */ = {\n    isa = PBXResourcesBuildPhase;\n    buildActionMask = 2147483647;\n    files = (\n") ;
       GGS_uint index_9315_ (0) ;
       if (enumerator_9124.current_entry (HERE).readProperty_mResourceFileBuildRefs ().isValid ()) {
-        UpEnumerator_stringlist enumerator_9315 (enumerator_9124.current_entry (HERE).readProperty_mResourceFileBuildRefs ()) ;
+        UpEnumerator__5B_string_5D_ enumerator_9315 (enumerator_9124.current_entry (HERE).readProperty_mResourceFileBuildRefs ()) ;
         while (enumerator_9315.hasCurrentObject ()) {
           result.appendString ("      ") ;
-          result.appendString (enumerator_9315.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_9315.current_entry (HERE).stringValue ()) ;
           result.appendString (",\n") ;
           enumerator_9315.gotoNextObject () ;
           index_9315_.increment () ;
@@ -568,10 +568,10 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (" /* Sources */ = {\n      isa = PBXSourcesBuildPhase;\n      buildActionMask = 2147483647;\n      files = (\n") ;
       GGS_uint index_9723_ (0) ;
       if (enumerator_9546.current_entry (HERE).readProperty_mBuildPhaseRefList ().isValid ()) {
-        UpEnumerator_stringlist enumerator_9723 (enumerator_9546.current_entry (HERE).readProperty_mBuildPhaseRefList ()) ;
+        UpEnumerator__5B_string_5D_ enumerator_9723 (enumerator_9546.current_entry (HERE).readProperty_mBuildPhaseRefList ()) ;
         while (enumerator_9723.hasCurrentObject ()) {
           result.appendString ("        ") ;
-          result.appendString (enumerator_9723.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_9723.current_entry (HERE).stringValue ()) ;
           result.appendString (",\n") ;
           enumerator_9723.gotoNextObject () ;
           index_9723_.increment () ;
@@ -591,10 +591,10 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (" /* Sources */ = {\n      isa = PBXSourcesBuildPhase;\n      buildActionMask = 2147483647;\n      files = (\n") ;
       GGS_uint index_10025_ (0) ;
       if (enumerator_9850.current_entry (HERE).readProperty_mBuildPhaseRefList ().isValid ()) {
-        UpEnumerator_stringlist enumerator_10025 (enumerator_9850.current_entry (HERE).readProperty_mBuildPhaseRefList ()) ;
+        UpEnumerator__5B_string_5D_ enumerator_10025 (enumerator_9850.current_entry (HERE).readProperty_mBuildPhaseRefList ()) ;
         while (enumerator_10025.hasCurrentObject ()) {
           result.appendString ("        ") ;
-          result.appendString (enumerator_10025.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_10025.current_entry (HERE).stringValue ()) ;
           result.appendString (",\n") ;
           enumerator_10025.gotoNextObject () ;
           index_10025_.increment () ;
@@ -632,10 +632,10 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
   result.appendString (" /* Default */ = {\n      isa = XCBuildConfiguration;\n      buildSettings = {\n        CLANG_CXX_LANGUAGE_STANDARD = \"c++17\";\n        SWIFT_APPROACHABLE_CONCURRENCY = YES;\n        SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;\n        SWIFT_OPTIMIZATION_LEVEL = \"-Onone\";\n        SWIFT_STRICT_CONCURRENCY = complete;\n        SWIFT_VERSION = 6.0;\n") ;
   GGS_uint index_11045_ (0) ;
   if (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST.isValid ()) {
-    UpEnumerator_stringlist enumerator_11045 (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST) ;
+    UpEnumerator__5B_string_5D_ enumerator_11045 (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST) ;
     while (enumerator_11045.hasCurrentObject ()) {
       result.appendString ("      ") ;
-      result.appendString (enumerator_11045.current_mValue (HERE).stringValue ()) ;
+      result.appendString (enumerator_11045.current_entry (HERE).stringValue ()) ;
       result.appendString (" ;\n") ;
       enumerator_11045.gotoNextObject () ;
       index_11045_.increment () ;
@@ -651,10 +651,10 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (" /* Default */ = {\n      isa = XCBuildConfiguration;\n      buildSettings = {\n        ONLY_ACTIVE_ARCH = NO;\n") ;
       GGS_uint index_11354_ (0) ;
       if (enumerator_11141.current_entry (HERE).readProperty_mBuildConfigurationSettingList ().isValid ()) {
-        UpEnumerator_stringlist enumerator_11354 (enumerator_11141.current_entry (HERE).readProperty_mBuildConfigurationSettingList ()) ;
+        UpEnumerator__5B_string_5D_ enumerator_11354 (enumerator_11141.current_entry (HERE).readProperty_mBuildConfigurationSettingList ()) ;
         while (enumerator_11354.hasCurrentObject ()) {
           result.appendString ("      ") ;
-          result.appendString (enumerator_11354.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_11354.current_entry (HERE).stringValue ()) ;
           result.appendString (" ;\n") ;
           enumerator_11354.gotoNextObject () ;
           index_11354_.increment () ;
@@ -676,10 +676,10 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (Comp
       result.appendString (" /* Default */ = {\n      isa = XCBuildConfiguration;\n      buildSettings = {\n") ;
       GGS_uint index_11731_ (0) ;
       if (enumerator_11555.current_entry (HERE).readProperty_mBuildConfigurationSettingList ().isValid ()) {
-        UpEnumerator_stringlist enumerator_11731 (enumerator_11555.current_entry (HERE).readProperty_mBuildConfigurationSettingList ()) ;
+        UpEnumerator__5B_string_5D_ enumerator_11731 (enumerator_11555.current_entry (HERE).readProperty_mBuildConfigurationSettingList ()) ;
         while (enumerator_11731.hasCurrentObject ()) {
           result.appendString ("      ") ;
-          result.appendString (enumerator_11731.current_mValue (HERE).stringValue ()) ;
+          result.appendString (enumerator_11731.current_entry (HERE).stringValue ()) ;
           result.appendString (" ;\n") ;
           enumerator_11731.gotoNextObject () ;
           index_11731_.increment () ;
@@ -2386,18 +2386,18 @@ void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const GGS_galgasGUICompon
 void routine_generateAllGuiComponentsGalgas_33__3F__3F__3F__26_swift (const GGS_optionComponentMapForGeneration constinArgument_inOptionComponentMapForGeneration,
                                                                       const GGS_string constinArgument_inOutputDirectory,
                                                                       const GGS_bool constinArgument_inQuietOutputByDefault,
-                                                                      GGS_stringlist & ioArgument_ioSwiftAllProductFileList,
+                                                                      GGS__5B_string_5D_ & ioArgument_ioSwiftAllProductFileList,
                                                                       Compiler * inCompiler
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  UpEnumerator_optionComponentMapForGeneration enumerator_15607 (constinArgument_inOptionComponentMapForGeneration) ;
-  while (enumerator_15607.hasCurrentObject ()) {
-    GGS_string var_swiftuiFileName_15727 = GGS_string ("gui-swiftui-").add_operation (enumerator_15607.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas4", 420)).add_operation (GGS_string (".swift"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas4", 420)) ;
-    ioArgument_ioSwiftAllProductFileList.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (var_swiftuiFileName_15727, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 421)) ;
-    GGS_string var_swiftui_5F_string_15856 = GGS_string (filewrapperTemplate_guiGenerationTemplates_swiftui_5F_gui_5F_implementation (inCompiler, enumerator_15607.current (HERE).readProperty_mGuiComponentContext (), constinArgument_inQuietOutputByDefault COMMA_SOURCE_FILE ("guiCompilation.galgas4", 422))) ;
+  UpEnumerator_optionComponentMapForGeneration enumerator_15605 (constinArgument_inOptionComponentMapForGeneration) ;
+  while (enumerator_15605.hasCurrentObject ()) {
+    GGS_string var_swiftuiFileName_15725 = GGS_string ("gui-swiftui-").add_operation (enumerator_15605.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas4", 420)).add_operation (GGS_string (".swift"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas4", 420)) ;
+    ioArgument_ioSwiftAllProductFileList.plusPlusAssignOperation (var_swiftuiFileName_15725  COMMA_SOURCE_FILE ("guiCompilation.galgas4", 421)) ;
+    GGS_string var_swiftui_5F_string_15851 = GGS_string (filewrapperTemplate_guiGenerationTemplates_swiftui_5F_gui_5F_implementation (inCompiler, enumerator_15605.current (HERE).readProperty_mGuiComponentContext (), constinArgument_inQuietOutputByDefault COMMA_SOURCE_FILE ("guiCompilation.galgas4", 422))) ;
     {
-    GGS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_swiftuiFileName_15727, GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), var_swiftui_5F_string_15856, GGS_string ("\n\n"), GGS_string ("\n\n"), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas4", 426)) ;
+    GGS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_swiftuiFileName_15725, GGS_string ("//"), GGS_string::makeEmptyString (), GGS_string ("\n\n"), var_swiftui_5F_string_15851, GGS_string ("\n\n"), GGS_string ("\n\n"), GGS_bool (false), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas4", 426)) ;
     }
-    enumerator_15607.gotoNextObject () ;
+    enumerator_15605.gotoNextObject () ;
   }
 }
 
@@ -5012,7 +5012,7 @@ void cPtr_stringPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & ioA
   routine_enterBaseGetterWith_32_Arguments_26__26__3F_getterName_3F_arg_31_Selector_3F_arg_31_TypeName_3F_arg_31_Name_3F_arg_32_Selector_3F_arg_32_TypeName_3F_arg_32_Name_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("directoriesWithExtensions"), GGS_string::makeEmptyString (), GGS_string ("bool"), GGS_string ("inRecursiveSearch"), GGS_string::makeEmptyString (), GGS_string ("stringlist"), GGS_string ("inExtensionList"), GGS_string ("stringlist"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas4", 1064)) ;
   }
   {
-  routine_enterBaseGetterWith_32_Arguments_26__26__3F_getterName_3F_arg_31_Selector_3F_arg_31_TypeName_3F_arg_31_Name_3F_arg_32_Selector_3F_arg_32_TypeName_3F_arg_32_Name_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("regularFilesWithExtensions"), GGS_string ("recursive"), GGS_string ("bool"), GGS_string ("inRecursiveSearch"), GGS_string::makeEmptyString (), GGS_string ("stringlist"), GGS_string ("inExtensionList"), GGS_string ("stringlist"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas4", 1073)) ;
+  routine_enterBaseGetterWith_32_Arguments_26__26__3F_getterName_3F_arg_31_Selector_3F_arg_31_TypeName_3F_arg_31_Name_3F_arg_32_Selector_3F_arg_32_TypeName_3F_arg_32_Name_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("regularFilesWithExtensions"), GGS_string ("recursive"), GGS_string ("bool"), GGS_string ("inRecursiveSearch"), GGS_string::makeEmptyString (), GGS_string ("[string]"), GGS_string ("inExtensionList"), GGS_string ("[string]"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-string.galgas4", 1073)) ;
   }
 }
 
@@ -6849,7 +6849,7 @@ void cPtr_applicationPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedT
   routine_enterClassFunctionWithoutArgument_26__26__3F_name_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("keywordIdentifierSet"), GGS_string ("stringset"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-application.galgas4", 251)) ;
   }
   {
-  routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("keywordListForIdentifier"), GGS_string ("string"), GGS_string ("inIdentifier"), GGS_string ("stringlist"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-application.galgas4", 258)) ;
+  routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("keywordListForIdentifier"), GGS_string ("string"), GGS_string ("inIdentifier"), GGS_string ("[string]"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-application.galgas4", 258)) ;
   }
 }
 
@@ -7201,7 +7201,7 @@ void cPtr_stringsetPredefinedTypeAST::method_getClassFunctionMap (GGS_unifiedTyp
   routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("setWithString"), GGS_string ("string"), GGS_string ("inString"), GGS_string ("stringset"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 74)) ;
   }
   {
-  routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("setWithStringList"), GGS_string ("stringlist"), GGS_string ("inStringList"), GGS_string ("stringset"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 83)) ;
+  routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("setWithStringArray"), GGS_string ("[string]"), GGS_string ("inStringArray"), GGS_string ("stringset"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 83)) ;
   }
   {
   routine_enterClassFunctionWithArgument_26__26__3F_name_3F_argTypeName_3F_argName_3F_resultTypeName_3F_hasLexiqueArg (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("setWithLStringArray"), GGS_string ("[lstring]"), GGS_string ("inLStringArray"), GGS_string ("stringset"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 92)) ;
@@ -7216,13 +7216,13 @@ void cPtr_stringsetPredefinedTypeAST::method_getSetterMap (GGS_unifiedTypeMap & 
                                                            GGS_setterMap & outArgument_outSetterMap,
                                                            Compiler * inCompiler
                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_stringType_4429 ;
+  GGS_unifiedTypeMapEntry var_stringType_4434 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("string"), var_stringType_4429, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 107)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("string"), var_stringType_4434, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 107)) ;
   }
   outArgument_outSetterMap = GGS_setterMap::init (inCompiler COMMA_HERE) ;
   {
-  outArgument_outSetterMap.setter_insertKey (GGS_string ("removeKey").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 110)), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 111)), GGS_formalParameterSignature::class_func_listWithValue (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 112)), var_stringType_4429, GGS_formalArgumentPassingModeAST::class_func_argumentVarIn (SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 112)), GGS_string ("inKey")  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 112)), GGS_bool (false), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 114)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 109)) ;
+  outArgument_outSetterMap.setter_insertKey (GGS_string ("removeKey").getter_nowhere (SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 110)), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 111)), GGS_formalParameterSignature::class_func_listWithValue (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 112)), var_stringType_4434, GGS_formalArgumentPassingModeAST::class_func_argumentVarIn (SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 112)), GGS_string ("inKey")  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 112)), GGS_bool (false), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 114)), GGS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 109)) ;
   }
   {
   routine_enterModifierWithInputArgument_26__26__3F_argTypeName_3F_argName_3F_setterName_3F_compilerArg (outArgument_outSetterMap, ioArgument_ioUnifiedTypeMap, GGS_string ("string"), GGS_string ("inValue"), GGS_string ("insert"), GGS_bool (true), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 117)) ;
@@ -7238,12 +7238,12 @@ void cPtr_stringsetPredefinedTypeAST::method_getEnumerationList (GGS_unifiedType
                                                                  GGS_string & outArgument_outEnumeratedType,
                                                                  Compiler * inCompiler
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_stringTypeIndex_5319 ;
+  GGS_unifiedTypeMapEntry var_stringTypeIndex_5324 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("string"), var_stringTypeIndex_5319, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 132)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("string"), var_stringTypeIndex_5324, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 132)) ;
   }
   outArgument_outEnumerationList = GGS_enumerationDescriptorList::init (inCompiler COMMA_HERE) ;
-  outArgument_outEnumerationList.plusPlusAssignOperation (GGS_enumerationDescriptorList_2E_element::init_21__21_ (var_stringTypeIndex_5319, GGS_string ("key"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 134)) ;
+  outArgument_outEnumerationList.plusPlusAssignOperation (GGS_enumerationDescriptorList_2E_element::init_21__21_ (var_stringTypeIndex_5324, GGS_string ("key"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 134)) ;
   outArgument_outEnumeratedType = GGS_string ("string") ;
 }
 
@@ -7255,12 +7255,12 @@ void cPtr_stringsetPredefinedTypeAST::method_getAddAssignArgumentList (GGS_unifi
                                                                        GGS_functionSignature & outArgument_outAddAssignArgumentList,
                                                                        Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_stringTypeIndex_5811 ;
+  GGS_unifiedTypeMapEntry var_stringTypeIndex_5816 ;
   {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("stringset"), var_stringTypeIndex_5811, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 142)) ;
+  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("stringset"), var_stringTypeIndex_5816, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 142)) ;
   }
   GGS_functionSignature temp_0 = GGS_functionSignature::init (inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 143)) ;
-  temp_0.plusPlusAssignOperation (GGS_functionSignature_2E_element::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 143)), var_stringTypeIndex_5811, GGS_string ("inString"), GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 143)) ;
+  temp_0.plusPlusAssignOperation (GGS_functionSignature_2E_element::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 143)), var_stringTypeIndex_5816, GGS_string ("inString"), GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 143)) ;
   outArgument_outAddAssignArgumentList = temp_0 ;
 }
 
@@ -7286,6 +7286,9 @@ void cPtr_stringsetPredefinedTypeAST::method_getGetterMap (GGS_unifiedTypeMap & 
   }
   {
   routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("stringList"), GGS_string ("stringlist"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 172)) ;
+  }
+  {
+  routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_returnedTypeName_3F_hasCompilerArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GGS_string ("stringArray"), GGS_string ("[string]"), GGS_bool (false), inCompiler  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 179)) ;
   }
 }
 

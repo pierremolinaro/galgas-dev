@@ -61,8 +61,8 @@ void routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (c
 
 void routine_generatePredefinedTypeFiles_3F__3F__26__26__26_ (const class GGS_string constinArgument0,
                                                               const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument1,
-                                                              class GGS_stringlist & ioArgument2,
-                                                              class GGS_stringlist & ioArgument3,
+                                                              class GGS__5B_string_5D_ & ioArgument2,
+                                                              class GGS__5B_string_5D_ & ioArgument3,
                                                               class GGS_stringset & ioArgument4,
                                                               class Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
@@ -282,7 +282,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_semanticFileGenerationTemplat
 
 GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader (class Compiler * inCompiler,
                                                                                   const class GGS_string & in_COMPONENT_5F_NAME,
-                                                                                  const class GGS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST
+                                                                                  const class GGS__5B_string_5D_ & in_IMPORTED_5F_COMPONENT_5F_LIST
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -292,7 +292,7 @@ GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader
 //--------------------------------------------------------------------------------------------------
 
 GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (class Compiler * inCompiler,
-                                                                                          const class GGS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST
+                                                                                          const class GGS__5B_string_5D_ & in_IMPORTED_5F_COMPONENT_5F_LIST
                                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -673,9 +673,9 @@ void routine_buildGalgasSemanticContext_3F__3F__21__21__21_ (const class GGS_gal
 void routine_generateSemanticDeclarationsGalgas_33__3F__3F__3F__26_swift_26__26__26_ (const class GGS_unifiedTypeMap constinArgument0,
                                                                                       const class GGS_string constinArgument1,
                                                                                       const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument2,
-                                                                                      class GGS_stringlist & ioArgument3,
-                                                                                      class GGS_stringlist & ioArgument4,
-                                                                                      class GGS_stringlist & ioArgument5,
+                                                                                      class GGS__5B_string_5D_ & ioArgument3,
+                                                                                      class GGS__5B_string_5D_ & ioArgument4,
+                                                                                      class GGS__5B_string_5D_ & ioArgument5,
                                                                                       class GGS_stringset & ioArgument6,
                                                                                       class Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
@@ -698,9 +698,9 @@ class GGS_bool function_generateFewHeaderFiles (class Compiler * inCompiler
 void routine_generateFewImplementationFilesWithFewHeaders_3F__3F__3F__26__26__26_ (const class GGS_unifiedTypeMap constinArgument0,
                                                                                    const class GGS_string constinArgument1,
                                                                                    const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument2,
-                                                                                   class GGS_stringlist & ioArgument3,
+                                                                                   class GGS__5B_string_5D_ & ioArgument3,
                                                                                    class GGS_stringset & ioArgument4,
-                                                                                   class GGS_stringlist & ioArgument5,
+                                                                                   class GGS__5B_string_5D_ & ioArgument5,
                                                                                    class Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
 
@@ -713,7 +713,7 @@ void routine_generateFewImplementationFilesWithFewHeaders_3F__3F__3F__26__26__26
 void routine_generateFewImplementationFiles_3F__3F__3F__26__26_ (const class GGS_unifiedTypeMap constinArgument0,
                                                                  const class GGS_string constinArgument1,
                                                                  const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument2,
-                                                                 class GGS_stringlist & ioArgument3,
+                                                                 class GGS__5B_string_5D_ & ioArgument3,
                                                                  class GGS_stringset & ioArgument4,
                                                                  class Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
@@ -727,7 +727,7 @@ void routine_generateFewImplementationFiles_3F__3F__3F__26__26_ (const class GGS
 void routine_generateManyHeaders_3F__3F__26__26_ (const class GGS_string constinArgument0,
                                                   const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument1,
                                                   class GGS_stringset & ioArgument2,
-                                                  class GGS_stringlist & ioArgument3,
+                                                  class GGS__5B_string_5D_ & ioArgument3,
                                                   class Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
@@ -740,7 +740,7 @@ void routine_generateManyHeaders_3F__3F__26__26_ (const class GGS_string constin
 void routine_generateManyImplementationFiles_3F__3F__3F__26__26_ (const class GGS_unifiedTypeMap constinArgument0,
                                                                   const class GGS_string constinArgument1,
                                                                   const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument2,
-                                                                  class GGS_stringlist & ioArgument3,
+                                                                  class GGS__5B_string_5D_ & ioArgument3,
                                                                   class GGS_stringset & ioArgument4,
                                                                   class Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
@@ -754,7 +754,7 @@ void routine_generateManyImplementationFiles_3F__3F__3F__26__26_ (const class GG
 void routine_generateOneBigHeader_3F__3F__26__26_ (const class GGS_string constinArgument0,
                                                    const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument1,
                                                    class GGS_stringset & ioArgument2,
-                                                   class GGS_stringlist & ioArgument3,
+                                                   class GGS__5B_string_5D_ & ioArgument3,
                                                    class Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
@@ -943,15 +943,15 @@ void routine_projectGeneration_3F__3F_absoluteBuildDir_3F_buildDirName_3F__3F__3
                                                                                                                 const class GGS_string constinArgument1,
                                                                                                                 const class GGS_string constinArgument2,
                                                                                                                 const class GGS_optionComponentMapForGeneration constinArgument3,
-                                                                                                                const class GGS_stringlist constinArgument4,
+                                                                                                                const class GGS__5B_string_5D_ constinArgument4,
                                                                                                                 const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument5,
                                                                                                                 const class GGS_programRuleList constinArgument6,
                                                                                                                 const class GGS_galgas_33_ProjectComponentAST constinArgument7,
                                                                                                                 const class GGS_string constinArgument8,
                                                                                                                 const class GGS_string constinArgument9,
-                                                                                                                const class GGS_stringlist constinArgument10,
-                                                                                                                const class GGS_stringlist constinArgument11,
-                                                                                                                const class GGS_stringlist constinArgument12,
+                                                                                                                const class GGS__5B_string_5D_ constinArgument10,
+                                                                                                                const class GGS__5B_string_5D_ constinArgument11,
+                                                                                                                const class GGS__5B_string_5D_ constinArgument12,
                                                                                                                 class Compiler * inCompiler
                                                                                                                 COMMA_LOCATION_ARGS) ;
 
@@ -964,7 +964,7 @@ void routine_projectGeneration_3F__3F_absoluteBuildDir_3F_buildDirName_3F__3F__3
 void routine_generateAllGuiComponentsGalgas_33__3F__3F__3F__26_swift (const class GGS_optionComponentMapForGeneration constinArgument0,
                                                                       const class GGS_string constinArgument1,
                                                                       const class GGS_bool constinArgument2,
-                                                                      class GGS_stringlist & ioArgument3,
+                                                                      class GGS__5B_string_5D_ & ioArgument3,
                                                                       class Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 

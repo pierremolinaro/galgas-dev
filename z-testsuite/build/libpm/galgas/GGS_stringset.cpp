@@ -194,6 +194,20 @@ GGS_stringlist GGS_stringset::getter_stringList (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
+GGS__5B_string_5D_ GGS_stringset::getter_stringArray (LOCATION_ARGS) const {
+  GGS__5B_string_5D_ result ;
+  if (isValid ()) {
+    result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
+    const GenericArray <String> array = mSharedMap.sortedKeyArray () ;
+    for (int32_t i=0 ; i<array.count () ; i++) {
+      result.plusPlusAssignOperation (GGS_string (array (i COMMA_HERE)) COMMA_HERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_bool GGS_stringset::getter_contains (const GGS_string & inKey
                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
@@ -331,14 +345,14 @@ GGS_stringset GGS_stringset::class_func_setWithString (const GGS_string & inStri
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringset GGS_stringset::class_func_setWithStringList (const GGS_stringlist & inStringList
+GGS_stringset GGS_stringset::class_func_setWithStringArray (const GGS__5B_string_5D_ & inStringList
                                                            COMMA_LOCATION_ARGS) {
   GGS_stringset result ;
   if (inStringList.isValid ()) {
     result = class_func_emptySet (THERE) ;
-    UpEnumerator_stringlist enumerator (inStringList) ;
+    UpEnumerator__5B_string_5D_ enumerator (inStringList) ;
     while (enumerator.hasCurrentObject ()) {
-      result.plusPlusAssignOperation (enumerator.current_mValue (THERE) COMMA_THERE) ;
+      result.plusPlusAssignOperation (enumerator.current (THERE) COMMA_THERE) ;
       enumerator.gotoNextObject () ;
     }
   }

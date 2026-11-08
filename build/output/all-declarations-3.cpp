@@ -3135,11 +3135,11 @@ GGS_uint GGS_usefulEntitiesGraph::getter_undefinedNodeCount (UNUSED_LOCATION_ARG
 
 //--------------------------------------------------------------------------------------------------
 
-static void buildUndefinedNodeKeyList (const GraphNode_usefulEntitiesGraph * inNode, GGS_stringlist & ioResult) {
+static void buildUndefinedNodeKeyList (const GraphNode_usefulEntitiesGraph * inNode, GGS__5B_string_5D_ & ioResult) {
   if (nullptr != inNode) {
     buildUndefinedNodeKeyList (inNode->mInfPtr, ioResult) ;
-    if (! inNode->mIsDefined) {
-      ioResult.addAssignOperation (GGS_string (inNode->mKey) COMMA_HERE) ;
+    if (!inNode->mIsDefined) {
+      ioResult.plusPlusAssignOperation (GGS_string (inNode->mKey) COMMA_HERE) ;
     }
     buildUndefinedNodeKeyList (inNode->mSupPtr, ioResult) ;
   }
@@ -3147,10 +3147,10 @@ static void buildUndefinedNodeKeyList (const GraphNode_usefulEntitiesGraph * inN
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist GGS_usefulEntitiesGraph::getter_undefinedNodeKeyList (LOCATION_ARGS) const {
-  GGS_stringlist result ;
+GGS__5B_string_5D_ GGS_usefulEntitiesGraph::getter_undefinedNodeKeyList (LOCATION_ARGS) const {
+  GGS__5B_string_5D_ result ;
   if (isValid ()) {
-    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
+    result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
     buildUndefinedNodeKeyList (mSharedGraph->root (), result) ;
   }
   return result ;
@@ -14981,7 +14981,7 @@ GGS_XCodeGroup & GGS_XCodeGroup::operator = (const GGS_XCodeGroup & inSource) {
 GGS_XCodeGroup GGS_XCodeGroup::init_21__21__21__21_ (const GGS_string & in_mGroupReference,
                                                      const GGS_string & in_mGroupName,
                                                      const GGS_string & in_mGroupPath,
-                                                     const GGS_stringlist & in_mChildrenRefs,
+                                                     const GGS__5B_string_5D_ & in_mChildrenRefs,
                                                      Compiler * inCompiler
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GGS_XCodeGroup result ;
@@ -15003,7 +15003,7 @@ void GGS_XCodeGroup::setInitializedProperties (Compiler * /* inCompiler */) {
 GGS_XCodeGroup::GGS_XCodeGroup (const GGS_string & inOperand0,
                                 const GGS_string & inOperand1,
                                 const GGS_string & inOperand2,
-                                const GGS_stringlist & inOperand3) :
+                                const GGS__5B_string_5D_ & inOperand3) :
 mProperty_mGroupReference (inOperand0),
 mProperty_mGroupName (inOperand1),
 mProperty_mGroupPath (inOperand2),
@@ -15112,12 +15112,12 @@ GGS_XCodeToolTarget GGS_XCodeToolTarget::init_21__21__21__21__21__21__21__21__21
                                                                                            const GGS_string & in_mTargetName,
                                                                                            const GGS_string & in_mProductFileReference,
                                                                                            const GGS_string & in_mProductFileName,
-                                                                                           const GGS_stringlist & in_mBuildPhaseRefList,
+                                                                                           const GGS__5B_string_5D_ & in_mBuildPhaseRefList,
                                                                                            const GGS_string & in_mBuildPhaseRef,
                                                                                            const GGS_string & in_mBuildConfigurationListRef,
-                                                                                           const GGS_stringlist & in_mBuildConfigurationSettingList,
+                                                                                           const GGS__5B_string_5D_ & in_mBuildConfigurationSettingList,
                                                                                            const GGS_string & in_mBuildConfigurationRef,
-                                                                                           const GGS_stringlist & in_mFrameworksFileRefList,
+                                                                                           const GGS__5B_string_5D_ & in_mFrameworksFileRefList,
                                                                                            const GGS_string & in_mFrameworkBuildPhaseRef,
                                                                                            Compiler * inCompiler
                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
@@ -15148,12 +15148,12 @@ GGS_XCodeToolTarget::GGS_XCodeToolTarget (const GGS_string & inOperand0,
                                           const GGS_string & inOperand1,
                                           const GGS_string & inOperand2,
                                           const GGS_string & inOperand3,
-                                          const GGS_stringlist & inOperand4,
+                                          const GGS__5B_string_5D_ & inOperand4,
                                           const GGS_string & inOperand5,
                                           const GGS_string & inOperand6,
-                                          const GGS_stringlist & inOperand7,
+                                          const GGS__5B_string_5D_ & inOperand7,
                                           const GGS_string & inOperand8,
-                                          const GGS_stringlist & inOperand9,
+                                          const GGS__5B_string_5D_ & inOperand9,
                                           const GGS_string & inOperand10) :
 mProperty_mTargetRef (inOperand0),
 mProperty_mTargetName (inOperand1),
@@ -15300,16 +15300,16 @@ GGS_XCodeAppTarget GGS_XCodeAppTarget::init_21__21__21__21__21__21__21__21__21__
                                                                                                      const GGS_string & in_mTargetName,
                                                                                                      const GGS_string & in_mProductFileReference,
                                                                                                      const GGS_string & in_mProductFileName,
-                                                                                                     const GGS_stringlist & in_mBuildPhaseRefList,
+                                                                                                     const GGS__5B_string_5D_ & in_mBuildPhaseRefList,
                                                                                                      const GGS_string & in_mBuildPhaseRef,
                                                                                                      const GGS_string & in_mBuildConfigurationListRef,
-                                                                                                     const GGS_stringlist & in_mBuildConfigurationSettingList,
+                                                                                                     const GGS__5B_string_5D_ & in_mBuildConfigurationSettingList,
                                                                                                      const GGS_string & in_mBuildConfigurationRef,
-                                                                                                     const GGS_stringlist & in_mFrameworksFileRefList,
+                                                                                                     const GGS__5B_string_5D_ & in_mFrameworksFileRefList,
                                                                                                      const GGS_string & in_mFrameworkBuildPhaseRef,
                                                                                                      const GGS__32_stringlist & in_mDependentTargets,
                                                                                                      const GGS_string & in_mResourceBuildRef,
-                                                                                                     const GGS_stringlist & in_mResourceFileBuildRefs,
+                                                                                                     const GGS__5B_string_5D_ & in_mResourceFileBuildRefs,
                                                                                                      Compiler * inCompiler
                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GGS_XCodeAppTarget result ;
@@ -15342,16 +15342,16 @@ GGS_XCodeAppTarget::GGS_XCodeAppTarget (const GGS_string & inOperand0,
                                         const GGS_string & inOperand1,
                                         const GGS_string & inOperand2,
                                         const GGS_string & inOperand3,
-                                        const GGS_stringlist & inOperand4,
+                                        const GGS__5B_string_5D_ & inOperand4,
                                         const GGS_string & inOperand5,
                                         const GGS_string & inOperand6,
-                                        const GGS_stringlist & inOperand7,
+                                        const GGS__5B_string_5D_ & inOperand7,
                                         const GGS_string & inOperand8,
-                                        const GGS_stringlist & inOperand9,
+                                        const GGS__5B_string_5D_ & inOperand9,
                                         const GGS_string & inOperand10,
                                         const GGS__32_stringlist & inOperand11,
                                         const GGS_string & inOperand12,
-                                        const GGS_stringlist & inOperand13) :
+                                        const GGS__5B_string_5D_ & inOperand13) :
 mProperty_mTargetRef (inOperand0),
 mProperty_mTargetName (inOperand1),
 mProperty_mProductFileReference (inOperand2),

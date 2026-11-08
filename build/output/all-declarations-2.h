@@ -1345,7 +1345,7 @@ class cPtr_lexiqueDeclarationForGeneration : public cPtr_semanticDeclarationWith
 //--- Extension proc appendSpecificFiles
   public: virtual void method_appendSpecificFiles (const class GGS_string arg__inProductDirectory,
            class GGS_stringset & arg__ioAllProductFileSet,
-           class GGS_stringlist & arg__ioSwiftAppProductFileList,
+           class GGS__5B_string_5D_ & arg__ioSwiftAppProductFileList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc appendSpecificImplementation

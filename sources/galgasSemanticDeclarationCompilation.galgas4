@@ -201,9 +201,9 @@ proc generateSemanticDeclarationsGalgas3
   (let @unifiedTypeMap inUnifiedTypeMap,
   let @string inProductDirectory,
   let [@semanticDeclarationForGeneration] inSemanticDeclarationSortedListForGeneration,
-  ?!swift: @stringlist ioSwiftAppProductFileList,
-  ?!@stringlist ioToolProductFileList,
-  ?!@stringlist ioToolHeaderFileList,
+  ?!swift: [@string] ioSwiftAppProductFileList,
+  ?![@string] ioToolProductFileList,
+  ?![@string] ioToolHeaderFileList,
   ?!@stringset ioAllProductFileSet
 ) {
 //--- Generate specific files
@@ -291,11 +291,11 @@ private proc generateManyHeaders
   (let @string inProductDirectory,
   let [@semanticDeclarationForGeneration] inSemanticDeclarationSortedListForGeneration,
   ?!@stringset ioAllProductFileSet,
-  ?!@stringlist ioToolHeaderFileList
+  ?![@string] ioToolHeaderFileList
 ) {
 //--- Header files
-  var @stringlist headerInclusionList1 = @()
-  var @stringlist headerInclusionList2 = @()
+  var [@string] headerInclusionList1 = @()
+  var [@string] headerInclusionList2 = @()
   for declaration in inSemanticDeclarationSortedListForGeneration do
     if not declaration.isPredefined then
       var @stringset inclusionSet1 = @()
@@ -359,9 +359,9 @@ private proc generateManyHeaders
         headerString += "//" + @string.stringByRepeatingString ("-", 118) + "\n\n"
         let headerFileName = declaration.getImplementationCppFileName
            + if declaration.headerKind == @headerKind.twoHeaders then "-1" else "" end
-        headerInclusionList1 ++= @(headerFileName)
+        headerInclusionList1 ++= headerFileName
         ioAllProductFileSet ++= headerFileName + ".h"
-        ioToolHeaderFileList ++= @(headerFileName + ".h")
+        ioToolHeaderFileList ++= headerFileName + ".h"
         @string.generateFile (
           inProductDirectory,
           headerFileName + ".h",
@@ -379,9 +379,9 @@ private proc generateManyHeaders
         headerString += "\n"
         headerString += "//" + @string.stringByRepeatingString ("-", 118) + "\n\n"
         headerString += "#endif\n\n"
-        headerInclusionList2 ++= @(declaration.getImplementationCppFileName)
+        headerInclusionList2 ++= declaration.getImplementationCppFileName
         ioAllProductFileSet ++= declaration.getImplementationCppFileName + ".h"
-        ioToolHeaderFileList ++= @(declaration.getImplementationCppFileName + ".h")
+        ioToolHeaderFileList ++= declaration.getImplementationCppFileName + ".h"
         @string.generateFile (
           inProductDirectory,
           declaration.getImplementationCppFileName + ".h",
@@ -396,7 +396,7 @@ private proc generateManyHeaders
     headerInclusionList1 + headerInclusionList2
   ]
   ioAllProductFileSet ++= "all-declarations.h"
-  ioToolHeaderFileList ++= @("all-declarations.h")
+  ioToolHeaderFileList ++= "all-declarations.h"
   @string.generateFile (
     inProductDirectory,
     "all-declarations.h",
@@ -410,7 +410,7 @@ private proc generateOneBigHeader
   (let @string inProductDirectory,
   let [@semanticDeclarationForGeneration] inSemanticDeclarationSortedListForGeneration,
   ?!@stringset ioAllProductFileSet,
-  ?!@stringlist ioToolHeaderFileList ) {
+  ?![@string] ioToolHeaderFileList ) {
   var headerString = filewrapper [semanticFileGenerationTemplate.semanticFileHeader :
     "all-declarations",
     @()
@@ -430,7 +430,7 @@ private proc generateOneBigHeader
     end
   end
   ioAllProductFileSet ++= "all-declarations.h"
-  ioToolHeaderFileList ++= @("all-declarations.h")
+  ioToolHeaderFileList ++= "all-declarations.h"
   @string.generateFile (
     inProductDirectory,
     "all-declarations.h",
@@ -501,7 +501,7 @@ private proc generateFewImplementationFiles
   (let @unifiedTypeMap inUnifiedTypeMap,
   let @string inProductDirectory,
   let [@semanticDeclarationForGeneration] inSemanticDeclarationSortedListForGeneration,
-  ?!@stringlist ioToolProductFileList,
+  ?![@string] ioToolProductFileList,
   ?!@stringset ioAllProductFileSet
 ) {
   let useOneHugeHeader = option galgas_cli_options [generateOneHeader.value]
@@ -524,10 +524,10 @@ private proc generateFewImplementationFiles
           inclusionSet = ["all-declarations"]
         end
         let header = filewrapper [semanticFileGenerationTemplate.semanticFileImplementation :
-          inclusionSet.stringList
+          inclusionSet.stringArray
         ]
         let fileName = "all-declarations-" + fileIdx + ".cpp"
-        ioToolProductFileList = @stringlist [@(fileName)] + ioToolProductFileList
+        ioToolProductFileList = [@string] [fileName] + ioToolProductFileList
         ioAllProductFileSet ++= fileName
         @string.generateFile (
           inProductDirectory,
@@ -547,10 +547,10 @@ private proc generateFewImplementationFiles
       inclusionSet = ["all-declarations"]
     end
     let header = filewrapper [semanticFileGenerationTemplate.semanticFileImplementation :
-      inclusionSet.stringList
+      inclusionSet.stringArray
     ]
     let fileName = "all-declarations-" + fileIdx + ".cpp"
-    ioToolProductFileList = @stringlist [@(fileName)] + ioToolProductFileList
+    ioToolProductFileList = [fileName] + ioToolProductFileList
     ioAllProductFileSet ++= fileName
     @string.generateFile (
       inProductDirectory,
@@ -566,9 +566,9 @@ private proc generateFewImplementationFilesWithFewHeaders
   (let @unifiedTypeMap inUnifiedTypeMap,
   let @string inProductDirectory,
   let [@semanticDeclarationForGeneration] inSemanticDeclarationSortedListForGeneration,
-  ?!@stringlist ioToolProductFileList,
+  ?![@string] ioToolProductFileList,
   ?!@stringset ioAllProductFileSet,
-  ?!@stringlist ioToolHeaderFileList ) {
+  ?![@string] ioToolHeaderFileList ) {
   var @headerCompositionMap headerCompositionMap = @()
   for declaration in inSemanticDeclarationSortedListForGeneration do
     if not declaration.isPredefined then
@@ -618,10 +618,10 @@ private proc generateFewImplementationFilesWithFewHeaders
       if implementationString.count > 786432 then
         inclusionSet = ["all-declarations-" + fileIdx]
         let cppHeader = filewrapper [semanticFileGenerationTemplate.semanticFileImplementation :
-          inclusionSet.stringList
+          inclusionSet.stringArray
         ]
         let fileName = "all-declarations-" + fileIdx + ".cpp"
-        ioToolProductFileList = @stringlist [@(fileName)] + ioToolProductFileList
+        ioToolProductFileList = [fileName] + ioToolProductFileList
         ioAllProductFileSet ++= fileName
         @string.generateFile (
           inProductDirectory,
@@ -630,10 +630,10 @@ private proc generateFewImplementationFilesWithFewHeaders
         )
       //---
         ioAllProductFileSet ++= headerFileName + ".h"
-        ioToolHeaderFileList ++= @(headerFileName + ".h")
+        ioToolHeaderFileList ++= headerFileName + ".h"
         let startOfHeader = filewrapper [semanticFileGenerationTemplate.semanticFileHeader :
           headerFileName,
-          if fileIdx == 0 then @() else [@("all-declarations-" + (fileIdx-1))] end
+          if fileIdx == 0 then @() else ["all-declarations-" + (fileIdx-1)] end
         ]
         @string.generateFile (
           inProductDirectory,
@@ -654,10 +654,10 @@ private proc generateFewImplementationFilesWithFewHeaders
     fileIdx -= 1
   else
     let header = filewrapper [semanticFileGenerationTemplate.semanticFileImplementation :
-      [@("all-declarations-" + fileIdx)]
+      ["all-declarations-" + fileIdx]
     ]
     let fileName = "all-declarations-" + fileIdx + ".cpp"
-    ioToolProductFileList = @stringlist [@(fileName)] + ioToolProductFileList
+    ioToolProductFileList = [fileName] + ioToolProductFileList
     ioAllProductFileSet ++= fileName
     @string.generateFile (
       inProductDirectory,
@@ -666,10 +666,10 @@ private proc generateFewImplementationFilesWithFewHeaders
     )
   //---
     ioAllProductFileSet ++= headerFileName + ".h"
-    ioToolHeaderFileList ++= @(headerFileName + ".h")
+    ioToolHeaderFileList ++= headerFileName + ".h"
     let startOfHeader = filewrapper [semanticFileGenerationTemplate.semanticFileHeader :
       headerFileName,
-      if fileIdx == 0 then @() else [@("all-declarations-" + (fileIdx-1))] end
+      if fileIdx == 0 then @() else ["all-declarations-" + (fileIdx-1)] end
     ]
     @string.generateFile (
       inProductDirectory,
@@ -679,10 +679,10 @@ private proc generateFewImplementationFilesWithFewHeaders
   end
 //--- all declarations header
   ioAllProductFileSet ++= "all-declarations.h"
-  ioToolHeaderFileList ++= @("all-declarations.h")
+  ioToolHeaderFileList ++= "all-declarations.h"
   let startOfAllDeclarationsHeader = filewrapper [semanticFileGenerationTemplate.semanticFileHeader :
     "all-declarations",
-    [@("all-declarations-" + fileIdx)]
+    ["all-declarations-" + fileIdx]
   ]
   @string.generateFile (
     inProductDirectory,
@@ -697,7 +697,7 @@ private proc generateManyImplementationFiles
   (let @unifiedTypeMap inUnifiedTypeMap,
   let @string inProductDirectory,
   let [@semanticDeclarationForGeneration] inSemanticDeclarationSortedListForGeneration,
-  ?!@stringlist ioToolProductFileList,
+  ?![@string] ioToolProductFileList,
   ?!@stringset ioAllProductFileSet
 ) {
   let useOneHugeHeader = option galgas_cli_options [generateOneHeader.value]
@@ -713,7 +713,7 @@ private proc generateManyImplementationFiles
         inclusionSet = ["all-declarations"]
       end
       let header = filewrapper [semanticFileGenerationTemplate.semanticFileImplementation :
-        inclusionSet.stringList
+        inclusionSet.stringArray
       ]
       implementationString += declaration.appendTypeGenericImplementation
       let fileName = declaration.getImplementationCppFileName + ".cpp"
@@ -723,7 +723,7 @@ private proc generateManyImplementationFiles
         fileName,
         header + implementationString
       )
-      ioToolProductFileList ++= @(fileName)
+      ioToolProductFileList ++= fileName
     end
   end
 }

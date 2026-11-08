@@ -74,7 +74,7 @@ case . "galgas4"
 grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
 //--- Search for a project file in parent directory
   let parentDirectory = inSourceFile.string.deletingLastPathComponent.deletingLastPathComponent
-  let candidateProjectFiles = parentDirectory.regularFilesWithExtensions (!recursive: false, [@("galgas4project")])
+  let candidateProjectFiles = parentDirectory.regularFilesWithExtensions (!recursive: false, ["galgas4project"])
   if candidateProjectFiles.count == 0 then
     error (inSourceFile : "no project file in parent directory of source file")
   elsif candidateProjectFiles.count > 1 then
@@ -84,7 +84,7 @@ grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
     end
     error (inSourceFile : s)
   else
-    let projectFilePath = parentDirectory + "/" + candidateProjectFiles.mValueAtIndex (0)
+    let projectFilePath = parentDirectory + "/" + candidateProjectFiles.first
     parseAndAnalyzeProject (@(projectFilePath, inSourceFile.location), inSourceFile.string)
   end
 }
@@ -169,17 +169,17 @@ private proc compileProject (let @lstring inProjectSourceFile,
     grammar galgas4Grammar (!?declarationAST) in @lstring (absoluteSourcePath, .nowhere)
   end
 //-------------------------------- Hand coded source files
-  var @stringlist handCodedLinkToolFileList = @()
-  let @stringlist handCodedSourceToolFileList = inProjectComponentAST.mToolCppSourceList
-  var @stringlist frameworkToolFileList = @()
+  var [@string] handCodedLinkToolFileList = @()
+  let [@string] handCodedSourceToolFileList = inProjectComponentAST.mToolCppSourceList
+  var [@string] frameworkToolFileList = @()
   var @stringset handCodedSourceDirectorySet = @()
   for feature in inProjectComponentAST.mQualifiedFeatureList do
     if feature.featureName.string == "tool-include" then
       handCodedSourceDirectorySet ++= feature.featureValue
     elsif feature.featureName.string == "tool-framework" then
-      frameworkToolFileList ++= @(feature.featureValue.string.lastPathComponent)
+      frameworkToolFileList ++= feature.featureValue.string.lastPathComponent
     elsif feature.featureName.string == "tool-link" then
-      handCodedLinkToolFileList ++= @(feature.featureValue.string)
+      handCodedLinkToolFileList ++= feature.featureValue.string
     elsif feature.featureName.string == "libpmAtPath" then
     elsif feature.featureName.string == "applicationBundleBase" then
     elsif feature.featureName.string == "macCodeSign" then
@@ -207,7 +207,7 @@ private proc compileProject (let @lstring inProjectSourceFile,
   let @string buildDirectoryName = "build"
   let absoluteBuildDirectory = inProjectSourceFile.string.deletingLastPathComponent + "/" + buildDirectoryName
   let productDirectory = absoluteBuildDirectory + "/output"
-  let @stringlist appProductFileList = @()
+  let [@string] appProductFileList = @()
   var [@lstring] usefulnessRootEntities = @()
   let @semanticContext semanticContext
   var @unifiedTypeMap typeMap
@@ -324,15 +324,15 @@ private proc projectGeneration
               ?absoluteBuildDir: let @string inAbsoluteBuildDirectory,
               ?buildDirName: let @string inBuildDirectoryName,
               let @optionComponentMapForGeneration inOptionComponentMapForGeneration,
-              let @stringlist inAppProductFileList,
+              let [@string] inAppProductFileList,
               let [@semanticDeclarationForGeneration] inSemanticDeclarationSortedListForGeneration,
               let @programRuleList inSourceRuleList,
               let @galgas3ProjectComponentAST inProjectComponentAST,
               let @string inProjectSourceFile,
               let @string inHandCodedSourceDirectory,
-              let @stringlist inHandCodedSourceToolFileList,
-              let @stringlist inFrameworkToolFileList,
-              let @stringlist inHandCodedLinkAppFileList
+              let [@string] inHandCodedSourceToolFileList,
+              let [@string] inFrameworkToolFileList,
+              let [@string] inHandCodedLinkAppFileList
 ) {
   let appProductFileList = inAppProductFileList
 //--------------------------------- File generation
@@ -347,7 +347,7 @@ private proc projectGeneration
   let quietOutputByDefault = @stringset.setWithLStringArray (inProjectComponentAST.mGenerationFeatureList).contains ("quietOutputByDefault")
 //--------------------------------- Generate GUI components
   let productDirectory = inAbsoluteBuildDirectory + "/output"
-  var @stringlist swiftAppProductFileList = @()
+  var [@string] swiftAppProductFileList = @()
   if @uint.errorCount == 0 then
     generateAllGuiComponentsGalgas3 (
       inOptionComponentMapForGeneration,
@@ -358,8 +358,8 @@ private proc projectGeneration
   end
 //--------------------------------- Generate semantic files
 //  message "*** Generate semantic\n" ;
-  var @stringlist toolCppFileList = @()
-  var @stringlist toolHeaderFileList = @()
+  var [@string] toolCppFileList = @()
+  var [@string] toolHeaderFileList = @()
   generatePredefinedTypeFiles (
     productDirectory,
     inSemanticDeclarationSortedListForGeneration,
@@ -391,10 +391,7 @@ private proc projectGeneration
     var @projectQualifiedFeatureMap projectQualifiedFeatureMap = @()
     for feature in inProjectComponentAST.mQualifiedFeatureList do
       if not ignoredFeatureSet.contains (feature.featureName.string) then
-        !?projectQualifiedFeatureMap.insertKey
-          (feature.featureName,
-          feature.featureValue
-        )
+        !?projectQualifiedFeatureMap.insertKey (feature.featureName, feature.featureValue)
       end
     end
     updateGalgasTargets (
