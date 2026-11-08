@@ -209,7 +209,6 @@
    <Unit filename="../libpm/galgas/LocationInSource.cpp" />
    <Unit filename="../libpm/galgas/SourceTextInString.cpp" />
    <Unit filename="../libpm/galgas/GALGAS_TypeDescriptor.cpp" />
-   <Unit filename="../libpm/galgas/C_galgas_function_descriptor.cpp" />
    <Unit filename="../libpm/galgas/galgas-input-output.cpp" />
    <Unit filename="../libpm/galgas/C_galgas_class_inspector.cpp" />
    <Unit filename="../libpm/galgas/IssueWithFixIt.cpp" />

@@ -1441,9 +1441,7 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionDecla
 
 GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionImplementation (class Compiler * inCompiler,
                                                                                            const class GGS_string & in_FUNCTION_5F_NAME,
-                                                                                           const class GGS_string & in_FUNCTION_5F_IMPLEMENTATION,
-                                                                                           const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                           const class GGS_string & in_RETURN_5F_TYPE_5F_IDENTIFIER
+                                                                                           const class GGS_string & in_FUNCTION_5F_IMPLEMENTATION
                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

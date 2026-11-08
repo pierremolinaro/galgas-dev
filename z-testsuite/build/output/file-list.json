@@ -93,7 +93,6 @@
        "LocationInSource.cpp",
        "SourceTextInString.cpp",
        "GALGAS_TypeDescriptor.cpp",
-       "C_galgas_function_descriptor.cpp",
        "galgas-input-output.cpp",
        "C_galgas_class_inspector.cpp",
        "IssueWithFixIt.cpp",

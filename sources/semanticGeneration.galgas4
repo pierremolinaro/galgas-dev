@@ -916,9 +916,9 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
 
   template functionImplementation : "function-implementation.cpp.galgasTemplate" (
     ?@string FUNCTION_NAME,
-    ?@string FUNCTION_IMPLEMENTATION,
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
-    ?@string RETURN_TYPE_IDENTIFIER
+    ?@string FUNCTION_IMPLEMENTATION
+//    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
+//    ?@string RETURN_TYPE_IDENTIFIER
   )
 
 //--- Routine
@@ -1033,9 +1033,9 @@ override proc @functionImplementationForGeneration.appendSpecificImplementation
   )
   outImplementation = filewrapper [semanticComponentGenerationTemplate.functionImplementation :
     self.mFunctionName,
-    code,
-    self.mFormalArgumentList,
-    self.mReturnType.identifierRepresentation
+    code
+//    self.mFormalArgumentList,
+//    self.mReturnType.identifierRepresentation
   ]
 }
 

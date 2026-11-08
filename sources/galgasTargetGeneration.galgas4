@@ -963,8 +963,6 @@ proc updateGalgasTargets
         if inQuietOutputByDefault then "C_galgas_verbose_option.cpp" else "C_galgas_quiet_option.cpp" end,
         if inQuietOutputByDefault then "C_galgas_verbose_option.h" else "C_galgas_quiet_option.h" end,
         "F_verbose_output.h",
-        "C_galgas_function_descriptor.cpp",
-        "C_galgas_function_descriptor.h",
         "galgas-input-output.cpp",
         "galgas-input-output.h",
         "GALGAS_TypeDescriptor.cpp",

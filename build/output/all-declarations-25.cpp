@@ -1968,37 +1968,6 @@ GGS_predefinedTypes function_buildPredefinedTypes (const GGS_unifiedTypeMap & co
 
 
 //--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const GALGAS_TypeDescriptor * functionArgs_buildPredefinedTypes [2] = {
-  & kTypeDescriptor_GALGAS_unifiedTypeMap,
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_buildPredefinedTypes (Compiler * inCompiler,
-                                                                  const GALGAS_ObjectArray & inEffectiveParameterArray,
-                                                                  const GGS_location & /* inErrorLocation */
-                                                                  COMMA_LOCATION_ARGS) {
-  const GGS_unifiedTypeMap operand0 = GGS_unifiedTypeMap::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
-                                                                         inCompiler
-                                                                         COMMA_THERE) ;
-  return function_buildPredefinedTypes (operand0,
-                                        inCompiler
-                                        COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_buildPredefinedTypes ("buildPredefinedTypes",
-                                                                      functionWithGenericHeader_buildPredefinedTypes,
-                                                                      & kTypeDescriptor_GALGAS_predefinedTypes,
-                                                                      1,
-                                                                      functionArgs_buildPredefinedTypes) ;
-
-//--------------------------------------------------------------------------------------------------
 //
 //Filewrapper 'syntaxFileGenerationTemplate'
 //
@@ -4486,31 +4455,6 @@ static void releaseOnceFunctionResult_forbiddenKeysForStruct (void) {
 
 PrologueEpilogue gEpilogueForOnceFunction_forbiddenKeysForStruct (nullptr,
                                                                   releaseOnceFunctionResult_forbiddenKeysForStruct) ;
-
-//--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const GALGAS_TypeDescriptor * functionArgs_forbiddenKeysForStruct [1] = {
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_forbiddenKeysForStruct (Compiler * inCompiler,
-                                                                    const GALGAS_ObjectArray & /* inEffectiveParameterArray */,
-                                                                    const GGS_location & /* inErrorLocation */
-                                                                    COMMA_LOCATION_ARGS) {
-  return function_forbiddenKeysForStruct (inCompiler COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_forbiddenKeysForStruct ("forbiddenKeysForStruct",
-                                                                        functionWithGenericHeader_forbiddenKeysForStruct,
-                                                                        & kTypeDescriptor_GALGAS_stringset,
-                                                                        0,
-                                                                        functionArgs_forbiddenKeysForStruct) ;
 
 //--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@structDeclarationAST enterDeclarationInGraph'

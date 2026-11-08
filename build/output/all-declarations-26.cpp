@@ -456,42 +456,6 @@ GGS_lstring function_makeEmbeddedTypeLName (const GGS_lstring & constinArgument_
 
 
 //--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const GALGAS_TypeDescriptor * functionArgs_makeEmbeddedTypeLName [3] = {
-  & kTypeDescriptor_GALGAS_lstring,
-  & kTypeDescriptor_GALGAS_lstring,
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_makeEmbeddedTypeLName (Compiler * inCompiler,
-                                                                   const GALGAS_ObjectArray & inEffectiveParameterArray,
-                                                                   const GGS_location & /* inErrorLocation */
-                                                                   COMMA_LOCATION_ARGS) {
-  const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
-                                                           inCompiler
-                                                           COMMA_THERE) ;
-  const GGS_lstring operand1 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (1 COMMA_HERE),
-                                                           inCompiler
-                                                           COMMA_THERE) ;
-  return function_makeEmbeddedTypeLName (operand0,
-                                         operand1,
-                                         inCompiler
-                                         COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_makeEmbeddedTypeLName ("makeEmbeddedTypeLName",
-                                                                       functionWithGenericHeader_makeEmbeddedTypeLName,
-                                                                       & kTypeDescriptor_GALGAS_lstring,
-                                                                       2,
-                                                                       functionArgs_makeEmbeddedTypeLName) ;
-
-//--------------------------------------------------------------------------------------------------
 //
 //Function 'makeEmbeddedTypeName'
 //
@@ -509,42 +473,6 @@ GGS_string function_makeEmbeddedTypeName (const GGS_string & constinArgument_inO
 
 
 //--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const GALGAS_TypeDescriptor * functionArgs_makeEmbeddedTypeName [3] = {
-  & kTypeDescriptor_GALGAS_string,
-  & kTypeDescriptor_GALGAS_string,
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_makeEmbeddedTypeName (Compiler * inCompiler,
-                                                                  const GALGAS_ObjectArray & inEffectiveParameterArray,
-                                                                  const GGS_location & /* inErrorLocation */
-                                                                  COMMA_LOCATION_ARGS) {
-  const GGS_string operand0 = GGS_string::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
-                                                         inCompiler
-                                                         COMMA_THERE) ;
-  const GGS_string operand1 = GGS_string::extractObject (inEffectiveParameterArray.objectAtIndex (1 COMMA_HERE),
-                                                         inCompiler
-                                                         COMMA_THERE) ;
-  return function_makeEmbeddedTypeName (operand0,
-                                        operand1,
-                                        inCompiler
-                                        COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_makeEmbeddedTypeName ("makeEmbeddedTypeName",
-                                                                      functionWithGenericHeader_makeEmbeddedTypeName,
-                                                                      & kTypeDescriptor_GALGAS_string,
-                                                                      2,
-                                                                      functionArgs_makeEmbeddedTypeName) ;
-
-//--------------------------------------------------------------------------------------------------
 //
 //Function 'makeOptionalTypeName'
 //
@@ -559,37 +487,6 @@ GGS_string function_makeOptionalTypeName (const GGS_string & constinArgument_inT
   return result_result ;
 }
 
-
-//--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const GALGAS_TypeDescriptor * functionArgs_makeOptionalTypeName [2] = {
-  & kTypeDescriptor_GALGAS_string,
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_makeOptionalTypeName (Compiler * inCompiler,
-                                                                  const GALGAS_ObjectArray & inEffectiveParameterArray,
-                                                                  const GGS_location & /* inErrorLocation */
-                                                                  COMMA_LOCATION_ARGS) {
-  const GGS_string operand0 = GGS_string::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
-                                                         inCompiler
-                                                         COMMA_THERE) ;
-  return function_makeOptionalTypeName (operand0,
-                                        inCompiler
-                                        COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_makeOptionalTypeName ("makeOptionalTypeName",
-                                                                      functionWithGenericHeader_makeOptionalTypeName,
-                                                                      & kTypeDescriptor_GALGAS_string,
-                                                                      1,
-                                                                      functionArgs_makeOptionalTypeName) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -609,37 +506,6 @@ GGS_lstring function_makeOptionalTypeLName (const GGS_lstring & constinArgument_
 
 
 //--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const GALGAS_TypeDescriptor * functionArgs_makeOptionalTypeLName [2] = {
-  & kTypeDescriptor_GALGAS_lstring,
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_makeOptionalTypeLName (Compiler * inCompiler,
-                                                                   const GALGAS_ObjectArray & inEffectiveParameterArray,
-                                                                   const GGS_location & /* inErrorLocation */
-                                                                   COMMA_LOCATION_ARGS) {
-  const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
-                                                           inCompiler
-                                                           COMMA_THERE) ;
-  return function_makeOptionalTypeLName (operand0,
-                                         inCompiler
-                                         COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_makeOptionalTypeLName ("makeOptionalTypeLName",
-                                                                       functionWithGenericHeader_makeOptionalTypeLName,
-                                                                       & kTypeDescriptor_GALGAS_lstring,
-                                                                       1,
-                                                                       functionArgs_makeOptionalTypeLName) ;
-
-//--------------------------------------------------------------------------------------------------
 //
 //Function 'makeEmbeddedElementTypeName'
 //
@@ -654,37 +520,6 @@ GGS_string function_makeEmbeddedElementTypeName (const GGS_string & constinArgum
   return result_result ;
 }
 
-
-//--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const GALGAS_TypeDescriptor * functionArgs_makeEmbeddedElementTypeName [2] = {
-  & kTypeDescriptor_GALGAS_string,
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_makeEmbeddedElementTypeName (Compiler * inCompiler,
-                                                                         const GALGAS_ObjectArray & inEffectiveParameterArray,
-                                                                         const GGS_location & /* inErrorLocation */
-                                                                         COMMA_LOCATION_ARGS) {
-  const GGS_string operand0 = GGS_string::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
-                                                         inCompiler
-                                                         COMMA_THERE) ;
-  return function_makeEmbeddedElementTypeName (operand0,
-                                               inCompiler
-                                               COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_makeEmbeddedElementTypeName ("makeEmbeddedElementTypeName",
-                                                                             functionWithGenericHeader_makeEmbeddedElementTypeName,
-                                                                             & kTypeDescriptor_GALGAS_string,
-                                                                             1,
-                                                                             functionArgs_makeEmbeddedElementTypeName) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -703,37 +538,6 @@ GGS_lstring function_makeEmbeddedElementTypeLName (const GGS_lstring & constinAr
 
 
 //--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const GALGAS_TypeDescriptor * functionArgs_makeEmbeddedElementTypeLName [2] = {
-  & kTypeDescriptor_GALGAS_lstring,
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_makeEmbeddedElementTypeLName (Compiler * inCompiler,
-                                                                          const GALGAS_ObjectArray & inEffectiveParameterArray,
-                                                                          const GGS_location & /* inErrorLocation */
-                                                                          COMMA_LOCATION_ARGS) {
-  const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
-                                                           inCompiler
-                                                           COMMA_THERE) ;
-  return function_makeEmbeddedElementTypeLName (operand0,
-                                                inCompiler
-                                                COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_makeEmbeddedElementTypeLName ("makeEmbeddedElementTypeLName",
-                                                                              functionWithGenericHeader_makeEmbeddedElementTypeLName,
-                                                                              & kTypeDescriptor_GALGAS_lstring,
-                                                                              1,
-                                                                              functionArgs_makeEmbeddedElementTypeLName) ;
-
-//--------------------------------------------------------------------------------------------------
 //
 //Function 'makeArrayTypeName'
 //
@@ -748,37 +552,6 @@ GGS_string function_makeArrayTypeName (const GGS_string & constinArgument_inType
   return result_result ;
 }
 
-
-//--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const GALGAS_TypeDescriptor * functionArgs_makeArrayTypeName [2] = {
-  & kTypeDescriptor_GALGAS_string,
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_makeArrayTypeName (Compiler * inCompiler,
-                                                               const GALGAS_ObjectArray & inEffectiveParameterArray,
-                                                               const GGS_location & /* inErrorLocation */
-                                                               COMMA_LOCATION_ARGS) {
-  const GGS_string operand0 = GGS_string::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
-                                                         inCompiler
-                                                         COMMA_THERE) ;
-  return function_makeArrayTypeName (operand0,
-                                     inCompiler
-                                     COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_makeArrayTypeName ("makeArrayTypeName",
-                                                                   functionWithGenericHeader_makeArrayTypeName,
-                                                                   & kTypeDescriptor_GALGAS_string,
-                                                                   1,
-                                                                   functionArgs_makeArrayTypeName) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -797,37 +570,6 @@ GGS_lstring function_makeArrayTypeLName (const GGS_lstring & constinArgument_inT
 
 
 //--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const GALGAS_TypeDescriptor * functionArgs_makeArrayTypeLName [2] = {
-  & kTypeDescriptor_GALGAS_lstring,
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_makeArrayTypeLName (Compiler * inCompiler,
-                                                                const GALGAS_ObjectArray & inEffectiveParameterArray,
-                                                                const GGS_location & /* inErrorLocation */
-                                                                COMMA_LOCATION_ARGS) {
-  const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
-                                                           inCompiler
-                                                           COMMA_THERE) ;
-  return function_makeArrayTypeLName (operand0,
-                                      inCompiler
-                                      COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_makeArrayTypeLName ("makeArrayTypeLName",
-                                                                    functionWithGenericHeader_makeArrayTypeLName,
-                                                                    & kTypeDescriptor_GALGAS_lstring,
-                                                                    1,
-                                                                    functionArgs_makeArrayTypeLName) ;
-
-//--------------------------------------------------------------------------------------------------
 //
 //Function 'makeWeakTypeName'
 //
@@ -844,37 +586,6 @@ GGS_string function_makeWeakTypeName (const GGS_string & constinArgument_inTypeN
 
 
 //--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const GALGAS_TypeDescriptor * functionArgs_makeWeakTypeName [2] = {
-  & kTypeDescriptor_GALGAS_string,
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_makeWeakTypeName (Compiler * inCompiler,
-                                                              const GALGAS_ObjectArray & inEffectiveParameterArray,
-                                                              const GGS_location & /* inErrorLocation */
-                                                              COMMA_LOCATION_ARGS) {
-  const GGS_string operand0 = GGS_string::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
-                                                         inCompiler
-                                                         COMMA_THERE) ;
-  return function_makeWeakTypeName (operand0,
-                                    inCompiler
-                                    COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_makeWeakTypeName ("makeWeakTypeName",
-                                                                  functionWithGenericHeader_makeWeakTypeName,
-                                                                  & kTypeDescriptor_GALGAS_string,
-                                                                  1,
-                                                                  functionArgs_makeWeakTypeName) ;
-
-//--------------------------------------------------------------------------------------------------
 //
 //Function 'makeWeakTypeLName'
 //
@@ -889,37 +600,6 @@ GGS_lstring function_makeWeakTypeLName (const GGS_lstring & constinArgument_inTy
   return result_result ;
 }
 
-
-//--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const GALGAS_TypeDescriptor * functionArgs_makeWeakTypeLName [2] = {
-  & kTypeDescriptor_GALGAS_lstring,
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_makeWeakTypeLName (Compiler * inCompiler,
-                                                               const GALGAS_ObjectArray & inEffectiveParameterArray,
-                                                               const GGS_location & /* inErrorLocation */
-                                                               COMMA_LOCATION_ARGS) {
-  const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
-                                                           inCompiler
-                                                           COMMA_THERE) ;
-  return function_makeWeakTypeLName (operand0,
-                                     inCompiler
-                                     COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_makeWeakTypeLName ("makeWeakTypeLName",
-                                                                   functionWithGenericHeader_makeWeakTypeLName,
-                                                                   & kTypeDescriptor_GALGAS_lstring,
-                                                                   1,
-                                                                   functionArgs_makeWeakTypeLName) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -3601,57 +3281,6 @@ GGS_string function_generateClassGetterDeclaration (const GGS_lstring & constinA
 
 
 //--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const GALGAS_TypeDescriptor * functionArgs_generateClassGetterDeclaration [6] = {
-  & kTypeDescriptor_GALGAS_lstring,
-  & kTypeDescriptor_GALGAS_functionSignature,
-  & kTypeDescriptor_GALGAS_bool,
-  & kTypeDescriptor_GALGAS_unifiedTypeMapEntry,
-  & kTypeDescriptor_GALGAS_methodQualifier,
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_generateClassGetterDeclaration (Compiler * inCompiler,
-                                                                            const GALGAS_ObjectArray & inEffectiveParameterArray,
-                                                                            const GGS_location & /* inErrorLocation */
-                                                                            COMMA_LOCATION_ARGS) {
-  const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
-                                                           inCompiler
-                                                           COMMA_THERE) ;
-  const GGS_functionSignature operand1 = GGS_functionSignature::extractObject (inEffectiveParameterArray.objectAtIndex (1 COMMA_HERE),
-                                                                               inCompiler
-                                                                               COMMA_THERE) ;
-  const GGS_bool operand2 = GGS_bool::extractObject (inEffectiveParameterArray.objectAtIndex (2 COMMA_HERE),
-                                                     inCompiler
-                                                     COMMA_THERE) ;
-  const GGS_unifiedTypeMapEntry operand3 = GGS_unifiedTypeMapEntry::extractObject (inEffectiveParameterArray.objectAtIndex (3 COMMA_HERE),
-                                                                                   inCompiler
-                                                                                   COMMA_THERE) ;
-  const GGS_methodQualifier operand4 = GGS_methodQualifier::extractObject (inEffectiveParameterArray.objectAtIndex (4 COMMA_HERE),
-                                                                           inCompiler
-                                                                           COMMA_THERE) ;
-  return function_generateClassGetterDeclaration (operand0,
-                                                  operand1,
-                                                  operand2,
-                                                  operand3,
-                                                  operand4,
-                                                  inCompiler
-                                                  COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_generateClassGetterDeclaration ("generateClassGetterDeclaration",
-                                                                                functionWithGenericHeader_generateClassGetterDeclaration,
-                                                                                & kTypeDescriptor_GALGAS_string,
-                                                                                5,
-                                                                                functionArgs_generateClassGetterDeclaration) ;
-
-//--------------------------------------------------------------------------------------------------
 //
 //Function 'generateClassInstanceMethodDeclaration'
 //
@@ -3775,52 +3404,6 @@ GGS_string function_generateClassInstanceMethodDeclaration (const GGS_lstring & 
   return result_result ;
 }
 
-
-//--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const GALGAS_TypeDescriptor * functionArgs_generateClassInstanceMethodDeclaration [5] = {
-  & kTypeDescriptor_GALGAS_lstring,
-  & kTypeDescriptor_GALGAS_formalParameterSignature,
-  & kTypeDescriptor_GALGAS_bool,
-  & kTypeDescriptor_GALGAS_methodQualifier,
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_generateClassInstanceMethodDeclaration (Compiler * inCompiler,
-                                                                                    const GALGAS_ObjectArray & inEffectiveParameterArray,
-                                                                                    const GGS_location & /* inErrorLocation */
-                                                                                    COMMA_LOCATION_ARGS) {
-  const GGS_lstring operand0 = GGS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
-                                                           inCompiler
-                                                           COMMA_THERE) ;
-  const GGS_formalParameterSignature operand1 = GGS_formalParameterSignature::extractObject (inEffectiveParameterArray.objectAtIndex (1 COMMA_HERE),
-                                                                                             inCompiler
-                                                                                             COMMA_THERE) ;
-  const GGS_bool operand2 = GGS_bool::extractObject (inEffectiveParameterArray.objectAtIndex (2 COMMA_HERE),
-                                                     inCompiler
-                                                     COMMA_THERE) ;
-  const GGS_methodQualifier operand3 = GGS_methodQualifier::extractObject (inEffectiveParameterArray.objectAtIndex (3 COMMA_HERE),
-                                                                           inCompiler
-                                                                           COMMA_THERE) ;
-  return function_generateClassInstanceMethodDeclaration (operand0,
-                                                          operand1,
-                                                          operand2,
-                                                          operand3,
-                                                          inCompiler
-                                                          COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_generateClassInstanceMethodDeclaration ("generateClassInstanceMethodDeclaration",
-                                                                                        functionWithGenericHeader_generateClassInstanceMethodDeclaration,
-                                                                                        & kTypeDescriptor_GALGAS_string,
-                                                                                        4,
-                                                                                        functionArgs_generateClassInstanceMethodDeclaration) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -5043,31 +4626,6 @@ static void releaseOnceFunctionResult_forbiddenKeysForMapAndDict (void) {
 
 PrologueEpilogue gEpilogueForOnceFunction_forbiddenKeysForMapAndDict (nullptr,
                                                                       releaseOnceFunctionResult_forbiddenKeysForMapAndDict) ;
-
-//--------------------------------------------------------------------------------------------------
-//  Function introspection                                                                       
-//--------------------------------------------------------------------------------------------------
-
-static const GALGAS_TypeDescriptor * functionArgs_forbiddenKeysForMapAndDict [1] = {
-  nullptr
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-static GGS_object functionWithGenericHeader_forbiddenKeysForMapAndDict (Compiler * inCompiler,
-                                                                        const GALGAS_ObjectArray & /* inEffectiveParameterArray */,
-                                                                        const GGS_location & /* inErrorLocation */
-                                                                        COMMA_LOCATION_ARGS) {
-  return function_forbiddenKeysForMapAndDict (inCompiler COMMA_THERE).getter_object (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-C_galgas_function_descriptor functionDescriptor_forbiddenKeysForMapAndDict ("forbiddenKeysForMapAndDict",
-                                                                            functionWithGenericHeader_forbiddenKeysForMapAndDict,
-                                                                            & kTypeDescriptor_GALGAS_stringset,
-                                                                            0,
-                                                                            functionArgs_forbiddenKeysForMapAndDict) ;
 
 //--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@dictDeclarationAST semanticAnalysis'

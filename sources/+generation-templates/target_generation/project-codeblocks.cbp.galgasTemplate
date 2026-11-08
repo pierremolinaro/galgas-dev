@@ -163,7 +163,6 @@ end
    <Unit filename="%!LIBPM_PATH%/galgas/LocationInSource.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/SourceTextInString.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GALGAS_TypeDescriptor.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/C_galgas_function_descriptor.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/galgas-input-output.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/C_galgas_class_inspector.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/IssueWithFixIt.cpp" />

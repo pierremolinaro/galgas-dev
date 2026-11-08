@@ -796,14 +796,6 @@
                 "galgas-debug/compile-sources",
               ],
             },
-            { "path": "C_galgas_function_descriptor.h" },
-            {
-              "path": "C_galgas_function_descriptor.cpp",
-              "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
-              ],
-            },
             { "path": "C_galgas_quiet_option.h" },
             {
               "path": "C_galgas_quiet_option.cpp",

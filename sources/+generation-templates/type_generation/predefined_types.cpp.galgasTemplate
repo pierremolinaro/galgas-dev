@@ -4,11 +4,3 @@
 #include "CollectionElementPtr.h"
 #include "Compiler.h"
 
-//--------------------------------------------------------------------------------------------------
-
-cMapElement::cMapElement (const GGS_lstring & inLKey
-                          COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mProperty_lkey (inLKey) {
-}
-

@@ -6734,22 +6734,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__32_stringlist_2E_elem
 
 //--------------------------------------------------------------------------------------------------
 
-class cMapElement : public CollectionElementPtr {
-//--- Attribut
-  public: GGS_lstring mProperty_lkey ;
-
-//--- Default constructor
-  public: cMapElement (const GGS_lstring & inLKey
-                       COMMA_LOCATION_ARGS) ;
-
-//--- No copy
-  private: cMapElement (const cMapElement &) ;
-  private: cMapElement & operator = (const cMapElement &) ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-#include "C_galgas_function_descriptor.h"
 #include "GALGAS_ObjectArray.h"
 
 
