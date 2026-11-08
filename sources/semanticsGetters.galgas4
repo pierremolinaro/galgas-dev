@@ -399,20 +399,20 @@ proc commonGetterMapForAllTypes (?!@unifiedTypeMap ioUnifiedTypeMap,
     !returnedTypeName:"string",
     !hasCompilerArgument:false
   )
-  enterInheritedGetterWithoutArgument (
-    !?outMap,
-    !?ioUnifiedTypeMap,
-    !getterName:"staticType",
-    !returnedTypeName:"type",
-    !hasCompilerArgument:false
-  )
-  enterInheritedGetterWithoutArgument (
-    !?outMap,
-    !?ioUnifiedTypeMap,
-    !getterName:"dynamicType",
-    !returnedTypeName:"type",
-    !hasCompilerArgument:false
-  )
+//  enterInheritedGetterWithoutArgument (
+//    !?outMap,
+//    !?ioUnifiedTypeMap,
+//    !getterName:"staticType",
+//    !returnedTypeName:"type",
+//    !hasCompilerArgument:false
+//  )
+//  enterInheritedGetterWithoutArgument (
+//    !?outMap,
+//    !?ioUnifiedTypeMap,
+//    !getterName:"dynamicType",
+//    !returnedTypeName:"type",
+//    !hasCompilerArgument:false
+//  )
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -990,8 +990,6 @@ proc updateGalgasTargets
         "IssueDescriptor.h",
         "LexiqueIntrospection.cpp",
         "LexiqueIntrospection.h",
-        "PtrObject.cpp",
-        "PtrObject.h",
         "TemplateDelimiter.h",
         "GGS_application.cpp",
         "GGS_binaryset.cpp",

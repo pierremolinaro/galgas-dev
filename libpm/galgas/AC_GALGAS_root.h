@@ -32,8 +32,6 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_object ;
-class GGS_type ;
 class GGS_string ;
 class String ;
 class GALGAS_TypeDescriptor ;
@@ -87,10 +85,6 @@ class AC_GALGAS_root {
 
 //--- Readers implemented in this class
   public: VIRTUAL_IN_DEBUG GGS_string getter_description (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG GGS_type getter_staticType (LOCATION_ARGS) const ;
-
-  public: VIRTUAL_IN_DEBUG GGS_type getter_dynamicType (LOCATION_ARGS) const ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void checkIsValid (LOCATION_ARGS) const ;

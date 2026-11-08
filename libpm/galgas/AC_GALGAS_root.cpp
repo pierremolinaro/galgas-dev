@@ -52,24 +52,6 @@ const GALGAS_TypeDescriptor * AC_GALGAS_root::dynamicTypeDescriptor (void) const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_type AC_GALGAS_root::getter_staticType (UNUSED_LOCATION_ARGS) const {
-  return GGS_type (staticTypeDescriptor ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_type AC_GALGAS_root::getter_dynamicType (UNUSED_LOCATION_ARGS) const {
-  return GGS_type (dynamicTypeDescriptor ()) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-/* GGS_object AC_GALGAS_root::getter_object (LOCATION_ARGS) const {
-  return GGS_object (clonedObject () COMMA_THERE) ;
-}*/
-
-//--------------------------------------------------------------------------------------------------
-
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void AC_GALGAS_root::checkIsValid (LOCATION_ARGS) const {
     macroAssertThere (isValid (), "Object not valid", 0, 0) ;

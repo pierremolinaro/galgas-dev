@@ -1013,14 +1013,6 @@
               ],
             },
             { "path": "ProductionNameDescriptor.h" },
-            { "path": "PtrObject.h" },
-            {
-              "path": "PtrObject.cpp",
-              "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
-              ],
-            },
             { "path": "PtrWeakReferenceProxy.h" },
             {
               "path": "PtrWeakReferenceProxy.cpp",
