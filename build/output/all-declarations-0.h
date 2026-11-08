@@ -7049,11 +7049,6 @@ class GGS_predefinedTypes : public AC_GALGAS_root {
     return mProperty_mStringSetType ;
   }
 
-  public: GGS_unifiedTypeMapEntry mProperty_mLStringListType ;
-  public: inline GGS_unifiedTypeMapEntry readProperty_mLStringListType (void) const {
-    return mProperty_mLStringListType ;
-  }
-
   public: GGS_unifiedTypeMapEntry mProperty_mStringArrayType ;
   public: inline GGS_unifiedTypeMapEntry readProperty_mStringArrayType (void) const {
     return mProperty_mStringArrayType ;
@@ -7156,10 +7151,6 @@ class GGS_predefinedTypes : public AC_GALGAS_root {
     mProperty_mStringSetType = inValue ;
   }
 
-  public: inline void setter_setMLStringListType (const GGS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mLStringListType = inValue ;
-  }
-
   public: inline void setter_setMStringArrayType (const GGS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mStringArrayType = inValue ;
   }
@@ -7193,7 +7184,6 @@ class GGS_predefinedTypes : public AC_GALGAS_root {
                                const GGS_unifiedTypeMapEntry & in_mLBigIntType,
                                const GGS_unifiedTypeMapEntry & in_mBigIntType,
                                const GGS_unifiedTypeMapEntry & in_mStringSetType,
-                               const GGS_unifiedTypeMapEntry & in_mLStringListType,
                                const GGS_unifiedTypeMapEntry & in_mStringArrayType,
                                const GGS_unifiedTypeMapEntry & in_mLStringArrayType) ;
 
@@ -7206,32 +7196,31 @@ class GGS_predefinedTypes : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_predefinedTypes init_21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand4,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand5,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand6,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand7,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand8,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand9,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand10,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand11,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand12,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand13,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand14,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand15,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand16,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand17,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand18,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand19,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand20,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand21,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand22,
-                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand23,
-                                                                                                                                           Compiler * inCompiler
-                                                                                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GGS_predefinedTypes init_21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand3,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand4,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand5,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand6,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand7,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand8,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand9,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand10,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand11,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand12,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand13,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand14,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand15,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand16,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand17,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand18,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand19,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand20,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand21,
+                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand22,
+                                                                                                                                       Compiler * inCompiler
+                                                                                                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;

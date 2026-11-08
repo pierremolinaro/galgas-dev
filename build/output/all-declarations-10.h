@@ -5002,8 +5002,8 @@ class GGS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
     return mProperty_mRevisionVersion ;
   }
 
-  public: GGS_lstringlist mProperty_mGenerationFeatureList ;
-  public: inline GGS_lstringlist readProperty_mGenerationFeatureList (void) const {
+  public: GGS__5B_lstring_5D_ mProperty_mGenerationFeatureList ;
+  public: inline GGS__5B_lstring_5D_ readProperty_mGenerationFeatureList (void) const {
     return mProperty_mGenerationFeatureList ;
   }
 
@@ -5050,7 +5050,7 @@ class GGS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
     mProperty_mRevisionVersion = inValue ;
   }
 
-  public: inline void setter_setMGenerationFeatureList (const GGS_lstringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMGenerationFeatureList (const GGS__5B_lstring_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mGenerationFeatureList = inValue ;
   }
 
@@ -5075,7 +5075,7 @@ class GGS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
                                              const GGS_lbigint & in_mMajorVersion,
                                              const GGS_lbigint & in_mMinorVersion,
                                              const GGS_lbigint & in_mRevisionVersion,
-                                             const GGS_lstringlist & in_mGenerationFeatureList,
+                                             const GGS__5B_lstring_5D_ & in_mGenerationFeatureList,
                                              const GGS__5B_galgasQualifiedFeature_5D_ & in_mQualifiedFeatureList,
                                              const GGS_lstring & in_mTargetName,
                                              const GGS_location & in_mEndOfSourceFile) ;
@@ -5094,7 +5094,7 @@ class GGS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
                                                                                              const class GGS_lbigint & inOperand2,
                                                                                              const class GGS_lbigint & inOperand3,
                                                                                              const class GGS_lbigint & inOperand4,
-                                                                                             const class GGS_lstringlist & inOperand5,
+                                                                                             const class GGS__5B_lstring_5D_ & inOperand5,
                                                                                              const class GGS__5B_galgasQualifiedFeature_5D_ & inOperand6,
                                                                                              const class GGS_lstring & inOperand7,
                                                                                              const class GGS_location & inOperand8,
@@ -8855,7 +8855,7 @@ class GGS_outputInputActualParameterForGeneration : public GGS_actualParameterFo
 //--------------------------------- Property access
   public: class GGS_string readProperty_mOutputInputVariableCppName (void) const ;
 
-  public: class GGS_lstringlist readProperty_mStructAttributeList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mStructAttributeList (void) const ;
 
   public: class GGS_unifiedTypeMapEntryList readProperty_mTypeList (void) const ;
 
@@ -8864,7 +8864,7 @@ class GGS_outputInputActualParameterForGeneration : public GGS_actualParameterFo
 //--------------------------------- Initializers
   public: static GGS_outputInputActualParameterForGeneration init_21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                                    const class GGS_string & inOperand1,
-                                                                                   const class GGS_lstringlist & inOperand2,
+                                                                                   const class GGS__5B_lstring_5D_ & inOperand2,
                                                                                    const class GGS_unifiedTypeMapEntryList & inOperand3,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) ;
@@ -8903,7 +8903,7 @@ class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameter
 //--------------------------------- Initializers
   public: void outputInputActualParameterForGeneration_init_21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                              const class GGS_string & inOperand1,
-                                                                             const class GGS_lstringlist & inOperand2,
+                                                                             const class GGS__5B_lstring_5D_ & inOperand2,
                                                                              const class GGS_unifiedTypeMapEntryList & inOperand3,
                                                                              Compiler * inCompiler) ;
 
@@ -8925,7 +8925,7 @@ class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameter
 
 //--- Properties
   public: GGS_string mProperty_mOutputInputVariableCppName ;
-  public: GGS_lstringlist mProperty_mStructAttributeList ;
+  public: GGS__5B_lstring_5D_ mProperty_mStructAttributeList ;
   public: GGS_unifiedTypeMapEntryList mProperty_mTypeList ;
 
 
@@ -8935,7 +8935,7 @@ class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameter
 //--- Constructor
   public: cPtr_outputInputActualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                         const GGS_string & in_mOutputInputVariableCppName,
-                                                        const GGS_lstringlist & in_mStructAttributeList,
+                                                        const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                         const GGS_unifiedTypeMapEntryList & in_mTypeList,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;

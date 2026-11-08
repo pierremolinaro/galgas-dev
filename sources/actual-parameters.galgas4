@@ -196,7 +196,7 @@ final class @outputActualParameterAST : @actualParameterAST {
 final class @outputInputActualParameterAST : @actualParameterAST {
   public let @lstring mActualSelector
   public let @lstring mOutputInputActualParameterName
-  public let @lstringlist mStructAttributeList
+  public let [@lstring] mStructAttributeList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -206,7 +206,7 @@ final class @outputInputActualParameterAST : @actualParameterAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override func isCompatibleWith (?let @formalArgumentPassingModeAST inFormalPassingMode,
-                                    ?let @string inSelector) -> @bool {
+                                  ?let @string inSelector) -> @bool {
     result = inFormalPassingMode == .argumentInOut
     if result then
       result = self.mActualSelector.string == inSelector

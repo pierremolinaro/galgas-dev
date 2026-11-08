@@ -36,7 +36,7 @@ struct @galgas3ProjectComponentAST {
   public let @lbigint mMajorVersion
   public let @lbigint mMinorVersion
   public let @lbigint mRevisionVersion
-  public let @lstringlist mGenerationFeatureList
+  public let [@lstring] mGenerationFeatureList
   public let [@galgasQualifiedFeature] mQualifiedFeatureList
   public let @lstring mTargetName
   public let @location mEndOfSourceFile
@@ -84,42 +84,42 @@ syntax galgas4ProjectSyntax (galgasScanner4) {
       ?let @lstring targetName
     )
     ${$
-    var @lstringlist generateFeatureList = @()
+    var [@lstring] generateFeatureList = @()
     var [@galgasQualifiedFeature] qualifiedFeatureList = @()
     repeat
     while
       $#quietOutputByDefault$
-      generateFeatureList ++= @("quietOutputByDefault".here)
+      generateFeatureList ++= "quietOutputByDefault".here
     while
       $#MacSwiftApp$
-      generateFeatureList ++= @("MacSwiftApp".here)
+      generateFeatureList ++= "MacSwiftApp".here
     while
       $#makefile-macosx$
-      generateFeatureList ++= @("makefile-macosx".here)
+      generateFeatureList ++= "makefile-macosx".here
     while
       $#makefile-unix$
-      generateFeatureList ++= @("makefile-unix".here)
+      generateFeatureList ++= "makefile-unix".here
     while
       $#makefile-x86linux32-on-macosx$
-      generateFeatureList ++= @("makefile-x86linux32-on-macosx".here)
+      generateFeatureList ++= "makefile-x86linux32-on-macosx".here
     while
       $#makefile-x86linux64-on-macosx$
-      generateFeatureList ++= @("makefile-x86linux64-on-macosx".here)
+      generateFeatureList ++= "makefile-x86linux64-on-macosx".here
     while
       $#makefile-arm64-linux-on-macosx$
-      generateFeatureList ++= @("makefile-arm64-linux-on-macosx".here)
+      generateFeatureList ++= "makefile-arm64-linux-on-macosx".here
     while
       $#makefile-win32-on-macosx$
-      generateFeatureList ++= @("makefile-win32-on-macosx".here)
+      generateFeatureList ++= "makefile-win32-on-macosx".here
     while
       $#codeblocks-windows$
-      generateFeatureList ++= @("codeblocks-windows".here)
+      generateFeatureList ++= "codeblocks-windows".here
     while
       $#codeblocks-linux32$
-      generateFeatureList ++= @("codeblocks-linux32".here)
+      generateFeatureList ++= "codeblocks-linux32".here
     while
       $#codeblocks-linux64$
-      generateFeatureList ++= @("codeblocks-linux64".here)
+      generateFeatureList ++= "codeblocks-linux64".here
     while
       $#applicationBundleBase$
       $:$

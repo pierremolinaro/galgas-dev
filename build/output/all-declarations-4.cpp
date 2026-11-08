@@ -38,7 +38,7 @@ GGS_actualParameterAST () {
 GGS_outputInputActualParameterAST GGS_outputInputActualParameterAST::
 init_21__21__21_ (const GGS_lstring & in_mActualSelector,
                   const GGS_lstring & in_mOutputInputActualParameterName,
-                  const GGS_lstringlist & in_mStructAttributeList,
+                  const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                   Compiler * inCompiler
                   COMMA_LOCATION_ARGS) {
   cPtr_outputInputActualParameterAST * object = nullptr ;
@@ -54,7 +54,7 @@ init_21__21__21_ (const GGS_lstring & in_mActualSelector,
 void cPtr_outputInputActualParameterAST::
 outputInputActualParameterAST_init_21__21__21_ (const GGS_lstring & in_mActualSelector,
                                                 const GGS_lstring & in_mOutputInputActualParameterName,
-                                                const GGS_lstringlist & in_mStructAttributeList,
+                                                const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                 Compiler * /* inCompiler */) {
   mProperty_mActualSelector = in_mActualSelector ;
   mProperty_mOutputInputActualParameterName = in_mOutputInputActualParameterName ;
@@ -93,9 +93,9 @@ GGS_lstring GGS_outputInputActualParameterAST::readProperty_mOutputInputActualPa
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_outputInputActualParameterAST::readProperty_mStructAttributeList (void) const {
+GGS__5B_lstring_5D_ GGS_outputInputActualParameterAST::readProperty_mStructAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_outputInputActualParameterAST * p = (cPtr_outputInputActualParameterAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_outputInputActualParameterAST) ;
@@ -118,7 +118,7 @@ mProperty_mStructAttributeList () {
 
 cPtr_outputInputActualParameterAST::cPtr_outputInputActualParameterAST (const GGS_lstring & in_mActualSelector,
                                                                         const GGS_lstring & in_mOutputInputActualParameterName,
-                                                                        const GGS_lstringlist & in_mStructAttributeList,
+                                                                        const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) :
 cPtr_actualParameterAST (inCompiler COMMA_THERE),

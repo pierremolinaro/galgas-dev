@@ -151,7 +151,7 @@ final class @outputActualParameterForGeneration : @actualParameterForGeneration 
 
 final class @outputInputActualParameterForGeneration : @actualParameterForGeneration {
   public let @string mOutputInputVariableCppName
-  public let @lstringlist mStructAttributeList
+  public let [@lstring] mStructAttributeList
   public let @unifiedTypeMapEntryList mTypeList
 }
 

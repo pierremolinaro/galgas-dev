@@ -5349,7 +5349,7 @@ GGS_galgas_33_ProjectComponentAST GGS_galgas_33_ProjectComponentAST::init_21__21
                                                                                                                const GGS_lbigint & in_mMajorVersion,
                                                                                                                const GGS_lbigint & in_mMinorVersion,
                                                                                                                const GGS_lbigint & in_mRevisionVersion,
-                                                                                                               const GGS_lstringlist & in_mGenerationFeatureList,
+                                                                                                               const GGS__5B_lstring_5D_ & in_mGenerationFeatureList,
                                                                                                                const GGS__5B_galgasQualifiedFeature_5D_ & in_mQualifiedFeatureList,
                                                                                                                const GGS_lstring & in_mTargetName,
                                                                                                                const GGS_location & in_mEndOfSourceFile,
@@ -5381,7 +5381,7 @@ GGS_galgas_33_ProjectComponentAST::GGS_galgas_33_ProjectComponentAST (const GGS_
                                                                       const GGS_lbigint & inOperand2,
                                                                       const GGS_lbigint & inOperand3,
                                                                       const GGS_lbigint & inOperand4,
-                                                                      const GGS_lstringlist & inOperand5,
+                                                                      const GGS__5B_lstring_5D_ & inOperand5,
                                                                       const GGS__5B_galgasQualifiedFeature_5D_ & inOperand6,
                                                                       const GGS_lstring & inOperand7,
                                                                       const GGS_location & inOperand8) :
@@ -5508,81 +5508,81 @@ void cParser_galgas_34_ProjectSyntax::rule_galgas_34_ProjectSyntax_project_5F_co
                                                                                                                 GGS_galgas_33_ProjectComponentAST & outArgument_outProjectComponentAST,
                                                                                                                 Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outProjectComponentAST.drop () ; // Release 'out' argument
-  GGS_lbigint var_majorVersion_3264 ;
-  GGS_lbigint var_minorVersion_3298 ;
-  GGS_lbigint var_revisionVersion_3332 ;
-  GGS_lstring var_targetName_3369 ;
-  nt_project_5F_header_ (var_majorVersion_3264, var_minorVersion_3298, var_revisionVersion_3332, var_targetName_3369, inCompiler) ;
+  GGS_lbigint var_majorVersion_3262 ;
+  GGS_lbigint var_minorVersion_3296 ;
+  GGS_lbigint var_revisionVersion_3330 ;
+  GGS_lstring var_targetName_3367 ;
+  nt_project_5F_header_ (var_majorVersion_3262, var_minorVersion_3296, var_revisionVersion_3330, var_targetName_3367, inCompiler) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("galgas-project.galgas4", 86)) ;
-  GGS_lstringlist var_generateFeatureList_3415 = GGS_lstringlist::init (inCompiler COMMA_HERE) ;
-  GGS__5B_galgasQualifiedFeature_5D_ var_qualifiedFeatureList_3475 = GGS__5B_galgasQualifiedFeature_5D_::init (inCompiler COMMA_HERE) ;
+  GGS__5B_lstring_5D_ var_generateFeatureList_3411 = GGS__5B_lstring_5D_::init (inCompiler COMMA_HERE) ;
+  GGS__5B_galgasQualifiedFeature_5D_ var_qualifiedFeatureList_3471 = GGS__5B_galgasQualifiedFeature_5D_::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     switch (select_galgas_34_ProjectSyntax_0 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_quietOutputByDefault COMMA_SOURCE_FILE ("galgas-project.galgas4", 91)) ;
-      var_generateFeatureList_3415.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (GGS_string ("quietOutputByDefault").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 92)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 92)) ;
+      var_generateFeatureList_3411.plusPlusAssignOperation (GGS_string ("quietOutputByDefault").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 92))  COMMA_SOURCE_FILE ("galgas-project.galgas4", 92)) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_MacSwiftApp COMMA_SOURCE_FILE ("galgas-project.galgas4", 94)) ;
-      var_generateFeatureList_3415.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (GGS_string ("MacSwiftApp").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 95)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 95)) ;
+      var_generateFeatureList_3411.plusPlusAssignOperation (GGS_string ("MacSwiftApp").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 95))  COMMA_SOURCE_FILE ("galgas-project.galgas4", 95)) ;
     } break ;
     case 4: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_makefile_2D_macosx COMMA_SOURCE_FILE ("galgas-project.galgas4", 97)) ;
-      var_generateFeatureList_3415.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (GGS_string ("makefile-macosx").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 98)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 98)) ;
+      var_generateFeatureList_3411.plusPlusAssignOperation (GGS_string ("makefile-macosx").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 98))  COMMA_SOURCE_FILE ("galgas-project.galgas4", 98)) ;
     } break ;
     case 5: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_makefile_2D_unix COMMA_SOURCE_FILE ("galgas-project.galgas4", 100)) ;
-      var_generateFeatureList_3415.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (GGS_string ("makefile-unix").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 101)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 101)) ;
+      var_generateFeatureList_3411.plusPlusAssignOperation (GGS_string ("makefile-unix").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 101))  COMMA_SOURCE_FILE ("galgas-project.galgas4", 101)) ;
     } break ;
     case 6: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_makefile_2D_x_38__36_linux_33__32__2D_on_2D_macosx COMMA_SOURCE_FILE ("galgas-project.galgas4", 103)) ;
-      var_generateFeatureList_3415.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (GGS_string ("makefile-x86linux32-on-macosx").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 104)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 104)) ;
+      var_generateFeatureList_3411.plusPlusAssignOperation (GGS_string ("makefile-x86linux32-on-macosx").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 104))  COMMA_SOURCE_FILE ("galgas-project.galgas4", 104)) ;
     } break ;
     case 7: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_makefile_2D_x_38__36_linux_36__34__2D_on_2D_macosx COMMA_SOURCE_FILE ("galgas-project.galgas4", 106)) ;
-      var_generateFeatureList_3415.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (GGS_string ("makefile-x86linux64-on-macosx").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 107)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 107)) ;
+      var_generateFeatureList_3411.plusPlusAssignOperation (GGS_string ("makefile-x86linux64-on-macosx").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 107))  COMMA_SOURCE_FILE ("galgas-project.galgas4", 107)) ;
     } break ;
     case 8: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_makefile_2D_arm_36__34__2D_linux_2D_on_2D_macosx COMMA_SOURCE_FILE ("galgas-project.galgas4", 109)) ;
-      var_generateFeatureList_3415.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (GGS_string ("makefile-arm64-linux-on-macosx").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 110)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 110)) ;
+      var_generateFeatureList_3411.plusPlusAssignOperation (GGS_string ("makefile-arm64-linux-on-macosx").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 110))  COMMA_SOURCE_FILE ("galgas-project.galgas4", 110)) ;
     } break ;
     case 9: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_makefile_2D_win_33__32__2D_on_2D_macosx COMMA_SOURCE_FILE ("galgas-project.galgas4", 112)) ;
-      var_generateFeatureList_3415.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (GGS_string ("makefile-win32-on-macosx").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 113)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 113)) ;
+      var_generateFeatureList_3411.plusPlusAssignOperation (GGS_string ("makefile-win32-on-macosx").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 113))  COMMA_SOURCE_FILE ("galgas-project.galgas4", 113)) ;
     } break ;
     case 10: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_codeblocks_2D_windows COMMA_SOURCE_FILE ("galgas-project.galgas4", 115)) ;
-      var_generateFeatureList_3415.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (GGS_string ("codeblocks-windows").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 116)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 116)) ;
+      var_generateFeatureList_3411.plusPlusAssignOperation (GGS_string ("codeblocks-windows").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 116))  COMMA_SOURCE_FILE ("galgas-project.galgas4", 116)) ;
     } break ;
     case 11: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_codeblocks_2D_linux_33__32_ COMMA_SOURCE_FILE ("galgas-project.galgas4", 118)) ;
-      var_generateFeatureList_3415.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (GGS_string ("codeblocks-linux32").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 119)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 119)) ;
+      var_generateFeatureList_3411.plusPlusAssignOperation (GGS_string ("codeblocks-linux32").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 119))  COMMA_SOURCE_FILE ("galgas-project.galgas4", 119)) ;
     } break ;
     case 12: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_codeblocks_2D_linux_36__34_ COMMA_SOURCE_FILE ("galgas-project.galgas4", 121)) ;
-      var_generateFeatureList_3415.plusPlusAssignOperation (GGS_lstringlist_2E_element::init_21_ (GGS_string ("codeblocks-linux64").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 122)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 122)) ;
+      var_generateFeatureList_3411.plusPlusAssignOperation (GGS_string ("codeblocks-linux64").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 122))  COMMA_SOURCE_FILE ("galgas-project.galgas4", 122)) ;
     } break ;
     case 13: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_applicationBundleBase COMMA_SOURCE_FILE ("galgas-project.galgas4", 124)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("galgas-project.galgas4", 125)) ;
-      GGS_lstring var_featureValue_4717 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_featureValue_4680 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgas-project.galgas4", 126)) ;
-      var_qualifiedFeatureList_3475.plusPlusAssignOperation (GGS_galgasQualifiedFeature::init_21__21_ (GGS_string ("applicationBundleBase").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 127)), var_featureValue_4717, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 127)) ;
+      var_qualifiedFeatureList_3471.plusPlusAssignOperation (GGS_galgasQualifiedFeature::init_21__21_ (GGS_string ("applicationBundleBase").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 127)), var_featureValue_4680, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 127)) ;
     } break ;
     case 14: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_libpmAtPath COMMA_SOURCE_FILE ("galgas-project.galgas4", 129)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("galgas-project.galgas4", 130)) ;
-      GGS_lstring var_featureValue_4881 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_featureValue_4844 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgas-project.galgas4", 131)) ;
-      var_qualifiedFeatureList_3475.plusPlusAssignOperation (GGS_galgasQualifiedFeature::init_21__21_ (GGS_string ("libpmAtPath").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 132)), var_featureValue_4881, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 132)) ;
+      var_qualifiedFeatureList_3471.plusPlusAssignOperation (GGS_galgasQualifiedFeature::init_21__21_ (GGS_string ("libpmAtPath").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 132)), var_featureValue_4844, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 132)) ;
     } break ;
     case 15: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_macCodeSign COMMA_SOURCE_FILE ("galgas-project.galgas4", 134)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("galgas-project.galgas4", 135)) ;
-      GGS_lstring var_featureValue_5035 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_featureValue_4998 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("galgas-project.galgas4", 136)) ;
-      var_qualifiedFeatureList_3475.plusPlusAssignOperation (GGS_galgasQualifiedFeature::init_21__21_ (GGS_string ("macCodeSign").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 137)), var_featureValue_5035, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 137)) ;
+      var_qualifiedFeatureList_3471.plusPlusAssignOperation (GGS_galgasQualifiedFeature::init_21__21_ (GGS_string ("macCodeSign").getter_here (inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 137)), var_featureValue_4998, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 137)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -5590,16 +5590,16 @@ void cParser_galgas_34_ProjectSyntax::rule_galgas_34_ProjectSyntax_project_5F_co
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("galgas-project.galgas4", 139)) ;
-  GGS_string var_sourceDirectory_5206 = constinArgument_inProjectSourceFilePath.readProperty_string ().getter_deletingLastPathComponent (SOURCE_FILE ("galgas-project.galgas4", 141)).add_operation (GGS_string ("/sources"), inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 141)) ;
-  GGS_stringlist var_extensionList_5303 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  var_extensionList_5303.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("galgas4"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 144)) ;
-  GGS_stringlist var_projectSourceList_5417 = var_sourceDirectory_5206.getter_regularFilesWithExtensions (GGS_bool (true), var_extensionList_5303 COMMA_SOURCE_FILE ("galgas-project.galgas4", 145)) ;
-  GGS_string var_toolCppDirectory_5568 = var_sourceDirectory_5206.add_operation (GGS_string ("/tool-sources"), inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 147)) ;
-  GGS_stringlist var_cppExtensionList_5630 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-  var_cppExtensionList_5630.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("cpp"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 149)) ;
-  var_cppExtensionList_5630.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("h"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 150)) ;
-  GGS_stringlist var_toolCppSourceList_5741 = var_toolCppDirectory_5568.getter_regularFilesWithExtensions (GGS_bool (true), var_cppExtensionList_5630 COMMA_SOURCE_FILE ("galgas-project.galgas4", 151)) ;
-  outArgument_outProjectComponentAST = GGS_galgas_33_ProjectComponentAST::init_21__21__21__21__21__21__21__21__21_ (var_projectSourceList_5417, var_toolCppSourceList_5741, var_majorVersion_3264, var_minorVersion_3298, var_revisionVersion_3332, var_generateFeatureList_3415, var_qualifiedFeatureList_3475, var_targetName_3369, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgas-project.galgas4", 162)), inCompiler COMMA_HERE) ;
+  GGS_string var_sourceDirectory_5169 = constinArgument_inProjectSourceFilePath.readProperty_string ().getter_deletingLastPathComponent (SOURCE_FILE ("galgas-project.galgas4", 141)).add_operation (GGS_string ("/sources"), inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 141)) ;
+  GGS_stringlist var_extensionList_5266 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  var_extensionList_5266.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("galgas4"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 144)) ;
+  GGS_stringlist var_projectSourceList_5380 = var_sourceDirectory_5169.getter_regularFilesWithExtensions (GGS_bool (true), var_extensionList_5266 COMMA_SOURCE_FILE ("galgas-project.galgas4", 145)) ;
+  GGS_string var_toolCppDirectory_5531 = var_sourceDirectory_5169.add_operation (GGS_string ("/tool-sources"), inCompiler COMMA_SOURCE_FILE ("galgas-project.galgas4", 147)) ;
+  GGS_stringlist var_cppExtensionList_5593 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  var_cppExtensionList_5593.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("cpp"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 149)) ;
+  var_cppExtensionList_5593.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (GGS_string ("h"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgas-project.galgas4", 150)) ;
+  GGS_stringlist var_toolCppSourceList_5704 = var_toolCppDirectory_5531.getter_regularFilesWithExtensions (GGS_bool (true), var_cppExtensionList_5593 COMMA_SOURCE_FILE ("galgas-project.galgas4", 151)) ;
+  outArgument_outProjectComponentAST = GGS_galgas_33_ProjectComponentAST::init_21__21__21__21__21__21__21__21__21_ (var_projectSourceList_5380, var_toolCppSourceList_5704, var_majorVersion_3262, var_minorVersion_3296, var_revisionVersion_3330, var_generateFeatureList_3411, var_qualifiedFeatureList_3471, var_targetName_3367, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("galgas-project.galgas4", 162)), inCompiler COMMA_HERE) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -11465,7 +11465,7 @@ GGS_actualParameterForGeneration () {
 GGS_outputInputActualParameterForGeneration GGS_outputInputActualParameterForGeneration::
 init_21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
                       const GGS_string & in_mOutputInputVariableCppName,
-                      const GGS_lstringlist & in_mStructAttributeList,
+                      const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                       const GGS_unifiedTypeMapEntryList & in_mTypeList,
                       Compiler * inCompiler
                       COMMA_LOCATION_ARGS) {
@@ -11482,7 +11482,7 @@ init_21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
 void cPtr_outputInputActualParameterForGeneration::
 outputInputActualParameterForGeneration_init_21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                               const GGS_string & in_mOutputInputVariableCppName,
-                                                              const GGS_lstringlist & in_mStructAttributeList,
+                                                              const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                               const GGS_unifiedTypeMapEntryList & in_mTypeList,
                                                               Compiler * /* inCompiler */) {
   mProperty_mFormalArgumentType = in_mFormalArgumentType ;
@@ -11511,9 +11511,9 @@ GGS_string GGS_outputInputActualParameterForGeneration::readProperty_mOutputInpu
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_outputInputActualParameterForGeneration::readProperty_mStructAttributeList (void) const {
+GGS__5B_lstring_5D_ GGS_outputInputActualParameterForGeneration::readProperty_mStructAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_outputInputActualParameterForGeneration * p = (cPtr_outputInputActualParameterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_outputInputActualParameterForGeneration) ;
@@ -11548,7 +11548,7 @@ mProperty_mTypeList () {
 
 cPtr_outputInputActualParameterForGeneration::cPtr_outputInputActualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                                                             const GGS_string & in_mOutputInputVariableCppName,
-                                                                                            const GGS_lstringlist & in_mStructAttributeList,
+                                                                                            const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                                                             const GGS_unifiedTypeMapEntryList & in_mTypeList,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) :

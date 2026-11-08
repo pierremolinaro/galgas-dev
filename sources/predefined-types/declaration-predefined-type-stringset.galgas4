@@ -92,10 +92,10 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
     enterClassFunctionWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !name:"setWithLStringList",
-      !argTypeName:"lstringlist",
-      !argName:"inLStringList",
-      !resultTypeName:"stringset",
+      !name: "setWithLStringArray",
+      !argTypeName: "[lstring]",
+      !argName: "inLStringArray",
+      !resultTypeName: "stringset",
       !hasLexiqueArg:false
     )
   }

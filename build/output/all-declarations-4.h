@@ -24,14 +24,14 @@ class GGS_outputInputActualParameterAST : public GGS_actualParameterAST {
 
   public: class GGS_lstring readProperty_mOutputInputActualParameterName (void) const ;
 
-  public: class GGS_lstringlist readProperty_mStructAttributeList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mStructAttributeList (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
   public: static GGS_outputInputActualParameterAST init_21__21__21_ (const class GGS_lstring & inOperand0,
                                                                      const class GGS_lstring & inOperand1,
-                                                                     const class GGS_lstringlist & inOperand2,
+                                                                     const class GGS__5B_lstring_5D_ & inOperand2,
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
@@ -69,7 +69,7 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
 //--------------------------------- Initializers
   public: void outputInputActualParameterAST_init_21__21__21_ (const class GGS_lstring & inOperand0,
                                                                const class GGS_lstring & inOperand1,
-                                                               const class GGS_lstringlist & inOperand2,
+                                                               const class GGS__5B_lstring_5D_ & inOperand2,
                                                                Compiler * inCompiler) ;
 
 
@@ -103,7 +103,7 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
 //--- Properties
   public: GGS_lstring mProperty_mActualSelector ;
   public: GGS_lstring mProperty_mOutputInputActualParameterName ;
-  public: GGS_lstringlist mProperty_mStructAttributeList ;
+  public: GGS__5B_lstring_5D_ mProperty_mStructAttributeList ;
 
 
 //--- Default constructor
@@ -112,7 +112,7 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
 //--- Constructor
   public: cPtr_outputInputActualParameterAST (const GGS_lstring & in_mActualSelector,
                                               const GGS_lstring & in_mOutputInputActualParameterName,
-                                              const GGS_lstringlist & in_mStructAttributeList,
+                                              const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 

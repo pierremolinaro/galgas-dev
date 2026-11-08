@@ -2847,8 +2847,8 @@ class GGS_stringset : public AC_GALGAS_root {
 //--------------------------------- GALGAS class functions
   public: static class GGS_stringset class_func_emptySet (LOCATION_ARGS) ;
 
-  public: static class GGS_stringset class_func_setWithLStringList (const class GGS_lstringlist & inOperand0
-                                                                    COMMA_LOCATION_ARGS) ;
+  public: static class GGS_stringset class_func_setWithLStringArray (const class GGS__5B_lstring_5D_ & inOperand0
+                                                                     COMMA_LOCATION_ARGS) ;
 
   public: static class GGS_stringset class_func_setWithString (const class GGS_string & inOperand0
                                                                COMMA_LOCATION_ARGS) ;

@@ -344,7 +344,7 @@ private proc projectGeneration
   let userHeadersDir = inAbsoluteBuildDirectory + "/user-headers"
   userHeadersDir.makeDirectory ()
 //--------------------------------- %quietOutputByDefault
-  let quietOutputByDefault = @stringset.setWithLStringList (inProjectComponentAST.mGenerationFeatureList).contains ("quietOutputByDefault")
+  let quietOutputByDefault = @stringset.setWithLStringArray (inProjectComponentAST.mGenerationFeatureList).contains ("quietOutputByDefault")
 //--------------------------------- Generate GUI components
   let productDirectory = inAbsoluteBuildDirectory + "/output"
   var @stringlist swiftAppProductFileList = @()

@@ -32672,14 +32672,14 @@ const char * gWrapperFileContent_116_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_stringset GGS_stringset::class_func_setWithLStringList (const GGS_lstringlist & inStringList\n"
-  "                                                            COMMA_LOCATION_ARGS) {\n"
+  "GGS_stringset GGS_stringset::class_func_setWithLStringArray (const GGS__5B_lstring_5D_ & inStringList\n"
+  "                                                             COMMA_LOCATION_ARGS) {\n"
   "  GGS_stringset result ;\n"
   "  if (inStringList.isValid ()) {\n"
   "    result = class_func_emptySet (THERE) ;\n"
-  "    UpEnumerator_lstringlist enumerator (inStringList) ;\n"
+  "    UpEnumerator__5B_lstring_5D_ enumerator (inStringList) ;\n"
   "    while (enumerator.hasCurrentObject ()) {\n"
-  "      result.plusPlusAssignOperation (enumerator.current_mValue (THERE).mProperty_string COMMA_THERE) ;\n"
+  "      result.plusPlusAssignOperation (enumerator.current (THERE).mProperty_string COMMA_THERE) ;\n"
   "      enumerator.gotoNextObject () ;\n"
   "    }\n"
   "  }\n"
@@ -33200,7 +33200,7 @@ const cRegularFileWrapper gWrapperFile_116_libpmFileWrapper (
   "GGS_stringset.cpp",
   "cpp",
   true, // Text file
- 33295, // Text length
+ 33298, // Text length
   gWrapperFileContent_116_libpmFileWrapper
 ) ;
 

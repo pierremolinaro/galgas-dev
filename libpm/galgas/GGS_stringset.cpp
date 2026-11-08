@@ -347,14 +347,14 @@ GGS_stringset GGS_stringset::class_func_setWithStringList (const GGS_stringlist 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringset GGS_stringset::class_func_setWithLStringList (const GGS_lstringlist & inStringList
-                                                            COMMA_LOCATION_ARGS) {
+GGS_stringset GGS_stringset::class_func_setWithLStringArray (const GGS__5B_lstring_5D_ & inStringList
+                                                             COMMA_LOCATION_ARGS) {
   GGS_stringset result ;
   if (inStringList.isValid ()) {
     result = class_func_emptySet (THERE) ;
-    UpEnumerator_lstringlist enumerator (inStringList) ;
+    UpEnumerator__5B_lstring_5D_ enumerator (inStringList) ;
     while (enumerator.hasCurrentObject ()) {
-      result.plusPlusAssignOperation (enumerator.current_mValue (THERE).mProperty_string COMMA_THERE) ;
+      result.plusPlusAssignOperation (enumerator.current (THERE).mProperty_string COMMA_THERE) ;
       enumerator.gotoNextObject () ;
     }
   }

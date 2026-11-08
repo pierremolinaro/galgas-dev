@@ -334,15 +334,15 @@ enum @xcodeProject #comparable {
 
 //--------------------------------------------------------------------------------------------------
 
-proc updateGalgasTargets
-  (?absoluteBuildDir: let @string inAbsoluteBuildDirectory,
+proc updateGalgasTargets (
+  ?absoluteBuildDir: let @string inAbsoluteBuildDirectory,
   ?buildDirName: let @string inBuildDirectoryName,
   let @string inProjectSourceFilePath,
   let @string inTargetName,
   let @location _inEndOfProjectSourceFile,
   let @string inProjectVersionString,
   let @projectQualifiedFeatureMap inProjectQualifiedFeatureMap,
-  let @lstringlist inTargetFeatureList,
+  let [@lstring] inTargetFeatureList,
   let @bool inQuietOutputByDefault,
   let @stringlist inToolCppFileList,
   let @stringlist inToolHeaderFileList,
@@ -413,26 +413,26 @@ proc updateGalgasTargets
   var @stringset generationFeatures = @()
 //--- Check xcode target architectures
   var xcodeProject = @xcodeProject.none
-  for (mValue) in inTargetFeatureList do
-    if availableGenerationFeatures.contains (mValue.string) then
-      if generationFeatures.contains (mValue.string) then
-        error (mValue: "duplicate '" + mValue + "' feature")
+  for feature in inTargetFeatureList do
+    if availableGenerationFeatures.contains (feature.string) then
+      if generationFeatures.contains (feature.string) then
+        error (feature: "duplicate '" + feature + "' feature")
       end
    //--- MacOS
-      if mValue.string == "MacSwiftApp" then
+      if feature.string == "MacSwiftApp" then
         if xcodeProject != .none then
-          error (mValue: "duplicated XCode setting")
+          error (feature: "duplicated XCode setting")
         end
         xcodeProject = .swiftApp
       else
-        generationFeatures ++= mValue.string
+        generationFeatures ++= feature.string
       end
     else
       var [@string] s = @()
       for key in availableGenerationFeatures do
         s ++= "%" + key
       end
-      error (mValue: "unknown '" + mValue + "' feature" fixit #replaceBy s )
+      error (feature: "unknown '" + feature + "' feature" fixit #replaceBy s )
     end
   end
 //--- Codesign without selecting OSX ?

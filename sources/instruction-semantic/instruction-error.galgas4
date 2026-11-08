@@ -233,12 +233,12 @@ proc analyzeErrorOrWarningInstruction (let @lstring inUsefulnessCallerEntityName
         !?ioVariableMap,
         ?let expression
       )
-      if (expression.mResultType != inAnalysisContext.predefinedTypes.mStringListType)
-       && (expression.mResultType != inAnalysisContext.predefinedTypes.mLStringListType)
+      if (expression.mResultType != inAnalysisContext.predefinedTypes.mStringArrayType)
+       && (expression.mResultType != inAnalysisContext.predefinedTypes.mLStringArrayType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringSetType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringType) then
         error (errorLocation : "expression type is @" + expression.mResultType.definition.typeName.string
-         + ", it should be an @string, @stringset, @stringlist or @lstringlist"
+         + ", it should be an @string, @stringset, [@string] or [@lstring]"
         )
       end
       outFixitListForGeneration ++= .fixItInsertBefore (!exp:expression)
@@ -252,12 +252,12 @@ proc analyzeErrorOrWarningInstruction (let @lstring inUsefulnessCallerEntityName
         !?ioVariableMap,
         ?let expression
       )
-      if (expression.mResultType != inAnalysisContext.predefinedTypes.mStringListType)
-       && (expression.mResultType != inAnalysisContext.predefinedTypes.mLStringListType)
+      if (expression.mResultType != inAnalysisContext.predefinedTypes.mStringArrayType)
+       && (expression.mResultType != inAnalysisContext.predefinedTypes.mLStringArrayType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringSetType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringType) then
         error (errorLocation : "expression type is @" + expression.mResultType.definition.typeName.string
-         + ", it should be an @string, @stringset, @stringlist or @lstringlist"
+         + ", it should be an @string, @stringset, [@string] or [@lstring]"
         )
       end
       outFixitListForGeneration ++= .fixItInsertAfter (!exp:expression)

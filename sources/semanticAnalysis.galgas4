@@ -838,7 +838,6 @@ func buildPredefinedTypes (?let @unifiedTypeMap inTypeMap) -> @predefinedTypes {
     inTypeMap.typeMapEntryForLKey ("lbigint".here),
     inTypeMap.typeMapEntryForLKey ("bigint".here),
     inTypeMap.typeMapEntryForLKey ("stringset".here),
-    inTypeMap.typeMapEntryForLKey ("lstringlist".here),
     inTypeMap.typeMapEntryForLKey ("[string]".here),
     inTypeMap.typeMapEntryForLKey ("[lstring]".here)
   )

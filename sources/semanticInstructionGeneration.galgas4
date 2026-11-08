@@ -49,8 +49,8 @@ override proc @outputInputActualParameterForGeneration.generateActualParameter (
     entry.mEntry.addHeaderFileName (!?ioInclusionSet)
   end
   outCppName = self.mOutputInputVariableCppName
-  for entry in self.mStructAttributeList do
-    outCppName += ".mProperty_" + entry.mValue.string.identifierRepresentation
+  for prop in self.mStructAttributeList do
+    outCppName += ".mProperty_" + prop.string.identifierRepresentation
   end
   !?ioUnusedVariableCppNameSet.removeKey (self.mOutputInputVariableCppName)
 }

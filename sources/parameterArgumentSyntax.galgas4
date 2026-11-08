@@ -252,12 +252,12 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
     end
     select
       $identifier$ (?let outputInputActualParameterName)
-      var structAttributeList = @lstringlist ()
+      var structAttributeList = [@lstring] ()
       repeat
       while
         $.$
         $identifier$ (?let structAttributeName)
-        structAttributeList ++= @(structAttributeName)
+        structAttributeList ++= structAttributeName
       end
       ioActualParameterList ++= @(@outputInputActualParameterAST (
         selector,
