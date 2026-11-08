@@ -17,24 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3ExpressionSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <factor_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                     !@semanticExpressionAST outExpression ) {
-//    let operatorLocation = @location.here
-//    $~$
-//    <factor_ggs3> (!?ioDeclarations, ?outExpression)
-//    outExpression = @tildeExpressionAST (!operatorLocation, outExpression)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -61,8 +43,7 @@ final class @tildeExpressionAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterExpressionInSemanticContext
-    (?!@unifiedTypeMap ioTypeMap ) {
+  override proc enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     self.mExpression.enterExpressionInSemanticContext (!?ioTypeMap)
   }
 

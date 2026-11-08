@@ -365,7 +365,7 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   func terminalVocabularyCount () -> Int {
-    return 192
+    return 191
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -555,18 +555,17 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       2, // 180 : galgasScanner4_1__26_
       2, // 181 : galgasScanner4_1__7B_
       2, // 182 : galgasScanner4_1__7D_
-      2, // 183 : galgasScanner4_1__60_
-      2, // 184 : galgasScanner4_1__7C__7C_
-      2, // 185 : galgasScanner4_1__7C_
-      2, // 186 : galgasScanner4_1__5E_
-      2, // 187 : galgasScanner4_1__3E__3E_
-      2, // 188 : galgasScanner4_1__7E_
-      2, // 189 : galgasScanner4_1__3D__3D__3D_
-      2, // 190 : galgasScanner4_1__21__3D__3D_
-      2, // 191 : galgasScanner4_1__3F__5E_
-      2, // 192 : galgasScanner4_1__21__5E_
-      13, // 193 : galgasScanner4_2_ERROR
-      14  // 194 : galgasScanner4_2_TEMPLATE
+      2, // 183 : galgasScanner4_1__7C__7C_
+      2, // 184 : galgasScanner4_1__7C_
+      2, // 185 : galgasScanner4_1__5E_
+      2, // 186 : galgasScanner4_1__3E__3E_
+      2, // 187 : galgasScanner4_1__7E_
+      2, // 188 : galgasScanner4_1__3D__3D__3D_
+      2, // 189 : galgasScanner4_1__21__3D__3D_
+      2, // 190 : galgasScanner4_1__3F__5E_
+      2, // 191 : galgasScanner4_1__21__5E_
+      13, // 192 : galgasScanner4_2_ERROR
+      14  // 193 : galgasScanner4_2_TEMPLATE
     ]
     return kTerminalSymbolStyles [Int (inTokenIndex)]
   }
@@ -758,18 +757,17 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       true, // 180 : galgasScanner4_1__26_
       true, // 181 : galgasScanner4_1__7B_
       true, // 182 : galgasScanner4_1__7D_
-      true, // 183 : galgasScanner4_1__60_
-      true, // 184 : galgasScanner4_1__7C__7C_
-      true, // 185 : galgasScanner4_1__7C_
-      true, // 186 : galgasScanner4_1__5E_
-      true, // 187 : galgasScanner4_1__3E__3E_
-      true, // 188 : galgasScanner4_1__7E_
-      true, // 189 : galgasScanner4_1__3D__3D__3D_
-      true, // 190 : galgasScanner4_1__21__3D__3D_
-      true, // 191 : galgasScanner4_1__3F__5E_
-      true, // 192 : galgasScanner4_1__21__5E_
-      false, // 193 : galgasScanner4_2_ERROR
-      false  // 194 : galgasScanner4_2_TEMPLATE
+      true, // 183 : galgasScanner4_1__7C__7C_
+      true, // 184 : galgasScanner4_1__7C_
+      true, // 185 : galgasScanner4_1__5E_
+      true, // 186 : galgasScanner4_1__3E__3E_
+      true, // 187 : galgasScanner4_1__7E_
+      true, // 188 : galgasScanner4_1__3D__3D__3D_
+      true, // 189 : galgasScanner4_1__21__3D__3D_
+      true, // 190 : galgasScanner4_1__3F__5E_
+      true, // 191 : galgasScanner4_1__21__5E_
+      false, // 192 : galgasScanner4_2_ERROR
+      false  // 193 : galgasScanner4_2_TEMPLATE
     ]
     return kTerminalAtomicSelection [Int (inTokenIndex)]
   }
@@ -1895,8 +1893,6 @@ class ScannerFor_galgasScanner4 : AbstractScanner {
       tokenCode = galgasScanner4_1__7C_
     }else if scanningOk && self.testForInputString ("{", advance: true) {
       tokenCode = galgasScanner4_1__7B_
-    }else if scanningOk && self.testForInputString ("`", advance: true) {
-      tokenCode = galgasScanner4_1__60_
     }else if scanningOk && self.testForInputString ("^", advance: true) {
       tokenCode = galgasScanner4_1__5E_
     }else if scanningOk && self.testForInputString ("]", advance: true) {
@@ -2569,18 +2565,17 @@ let galgasScanner4_1__3E__3D_ : UInt16 = 179
 let galgasScanner4_1__26_ : UInt16 = 180
 let galgasScanner4_1__7B_ : UInt16 = 181
 let galgasScanner4_1__7D_ : UInt16 = 182
-let galgasScanner4_1__60_ : UInt16 = 183
-let galgasScanner4_1__7C__7C_ : UInt16 = 184
-let galgasScanner4_1__7C_ : UInt16 = 185
-let galgasScanner4_1__5E_ : UInt16 = 186
-let galgasScanner4_1__3E__3E_ : UInt16 = 187
-let galgasScanner4_1__7E_ : UInt16 = 188
-let galgasScanner4_1__3D__3D__3D_ : UInt16 = 189
-let galgasScanner4_1__21__3D__3D_ : UInt16 = 190
-let galgasScanner4_1__3F__5E_ : UInt16 = 191
-let galgasScanner4_1__21__5E_ : UInt16 = 192
-let galgasScanner4_2_ERROR : UInt16 = 193
-let galgasScanner4_2_TEMPLATE : UInt16 = 194
+let galgasScanner4_1__7C__7C_ : UInt16 = 183
+let galgasScanner4_1__7C_ : UInt16 = 184
+let galgasScanner4_1__5E_ : UInt16 = 185
+let galgasScanner4_1__3E__3E_ : UInt16 = 186
+let galgasScanner4_1__7E_ : UInt16 = 187
+let galgasScanner4_1__3D__3D__3D_ : UInt16 = 188
+let galgasScanner4_1__21__3D__3D_ : UInt16 = 189
+let galgasScanner4_1__3F__5E_ : UInt16 = 190
+let galgasScanner4_1__21__5E_ : UInt16 = 191
+let galgasScanner4_2_ERROR : UInt16 = 192
+let galgasScanner4_2_TEMPLATE : UInt16 = 193
 
 //--------------------------------------------------------------------------------------------------
 
