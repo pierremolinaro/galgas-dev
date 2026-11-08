@@ -55,7 +55,7 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "uint")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "uint64")
   // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "bigint")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "lbigint")
+  // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "lbigint")
 
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "bool")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "bigint")

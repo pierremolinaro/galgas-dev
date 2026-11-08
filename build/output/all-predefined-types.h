@@ -5609,224 +5609,90 @@ class GGS_uint_36__34_list : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint_36__34_list ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @lbigintlist list enumerator
+// Phase 1: @lbool struct
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_lbigintlist final {
-  public: DownEnumerator_lbigintlist (const class GGS_lbigintlist & inList) ;
-
-  public: ~ DownEnumerator_lbigintlist (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
-
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_lbigint current_mValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lbigintlist_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS_lbigintlist_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: DownEnumerator_lbigintlist (const DownEnumerator_lbigintlist &) = delete ;
-  private: DownEnumerator_lbigintlist & operator = (const DownEnumerator_lbigintlist &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_lbigintlist final {
-  public: UpEnumerator_lbigintlist (const class GGS_lbigintlist & inList)  ;
-
-  public: ~ UpEnumerator_lbigintlist (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
-
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_lbigint current_mValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lbigintlist_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS_lbigintlist_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: UpEnumerator_lbigintlist (const UpEnumerator_lbigintlist &) = delete ;
-  private: UpEnumerator_lbigintlist & operator = (const UpEnumerator_lbigintlist &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// @lbigintlist list
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lbigintlist : public AC_GALGAS_root {
-//--- Private property
-  private: GenericArray <GGS_lbigintlist_2E_element> mArray ;
-
-//--- Default constructor
-  public: GGS_lbigintlist (void) ;
-
-//--- Destructor
-  public: virtual ~ GGS_lbigintlist (void) = default ;
-
-//--- Copy
-  public: GGS_lbigintlist (const GGS_lbigintlist &) = default ;
-  public: GGS_lbigintlist & operator = (const GGS_lbigintlist &) = default ;
-
-//--- Is valid
-  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
-
-//--- Drop
-  public: inline virtual void drop (void) override { mArray.removeAll () ; }
-
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Count
-  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
- 
-//--- sortedElementArray
-  public : inline GenericArray <GGS_lbigintlist_2E_element> sortedElementArray (void) const {
-    return mArray ;
+class GGS_lbool : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_bool mProperty_bool ;
+  public: inline GGS_bool readProperty_bool (void) const {
+    return mProperty_bool ;
   }
 
-//--- subList
-  private: GGS_lbigintlist subList (const int32_t inStart,
-                                    const int32_t inLength,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) const ;
+  public: GGS_location mProperty_location ;
+  public: inline GGS_location readProperty_location (void) const {
+    return mProperty_location ;
+  }
 
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
-//--- List constructor for graph
-  public: GGS_lbigintlist (const CollectionElementArray & inSharedArray) ;
+//--------------------------------- Default constructor
+  public: GGS_lbool (void) ;
 
-//--- Element constructor
-  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                 const class GGS_lbigint & in_mValue
-                                                 COMMA_LOCATION_ARGS) ;
+//--------------------------------- Property setters
+  public: inline void setter_setBool (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_bool = inValue ;
+  }
+
+  public: inline void setter_setLocation (const GGS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_location = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_lbool (const GGS_bool & in_bool,
+                     const GGS_location & in_location) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_lbool (const GGS_lbool & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_lbool & operator = (const GGS_lbool & inSource) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_lbigintlist init (Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
+  public: static GGS_lbool init_21__21_ (const class GGS_bool & inOperand0,
+                                         const class GGS_location & inOperand1,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_lbigintlist extractObject (const GGS_object & inObject,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
+  public: static GGS_lbool extractObject (const GGS_object & inObject,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- GALGAS class functions
-  public: static class GGS_lbigintlist class_func_listWithValue (const class GGS_lbigint & inOperand0
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: void plusAssignOperation (const GGS_lbigintlist inOperand,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_lbigint & inOperand0
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator, collection value
-  public: void plusPlusAssignOperation (const GGS_lbigintlist_2E_element & inOperand
-                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: GGS_lbigintlist add_operation (const GGS_lbigintlist & inOperand,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) const ;
-
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_lbigintlist & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_lbool & inOperand) const ;
 
 //--------------------------------- Setters
-  public: void setter_append (class GGS_lbigint constinArgument0,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_insertAtIndex (class GGS_lbigint constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popFirst (class GGS_lbigint & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_lbigint & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeAtIndex (class GGS_lbigint & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMValueAtIndex (class GGS_lbigint constinArgument0,
-                                        class GGS_uint constinArgument1,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_lbigint & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_lbigint & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
-
-  public: class GGS_lbigint getter_mValueAtIndex (const class GGS_uint & constinOperand0,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
-
-  public: class GGS_lbigintlist getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_lbigintlist getter_subListToIndex (const class GGS_uint & constinOperand0,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_lbigintlist getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
 
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator_lbigintlist ;
-  friend class DownEnumerator_lbigintlist ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbigintlist ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbool ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lbigint struct
@@ -5913,92 +5779,6 @@ class GGS_lbigint : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbigint ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @lbool struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lbool : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_bool mProperty_bool ;
-  public: inline GGS_bool readProperty_bool (void) const {
-    return mProperty_bool ;
-  }
-
-  public: GGS_location mProperty_location ;
-  public: inline GGS_location readProperty_location (void) const {
-    return mProperty_location ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_lbool (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setBool (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_bool = inValue ;
-  }
-
-  public: inline void setter_setLocation (const GGS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_location = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_lbool (const GGS_bool & in_bool,
-                     const GGS_location & in_location) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_lbool (const GGS_lbool & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_lbool & operator = (const GGS_lbool & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_lbool init_21__21_ (const class GGS_bool & inOperand0,
-                                         const class GGS_location & inOperand1,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_lbool extractObject (const GGS_object & inObject,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_lbool & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbool ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @lchar struct
@@ -7360,81 +7140,6 @@ class GGS_uint_36__34_list_2E_element : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint_36__34_list_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @lbigintlist_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lbigintlist_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_lbigint mProperty_mValue ;
-  public: inline GGS_lbigint readProperty_mValue (void) const {
-    return mProperty_mValue ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_lbigintlist_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMValue (const GGS_lbigint & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mValue = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_lbigintlist_2E_element (const GGS_lbigint & in_mValue) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_lbigintlist_2E_element (const GGS_lbigintlist_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_lbigintlist_2E_element & operator = (const GGS_lbigintlist_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_lbigintlist_2E_element init_21_ (const class GGS_lbigint & inOperand0,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_lbigintlist_2E_element extractObject (const GGS_object & inObject,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_lbigintlist_2E_element & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbigintlist_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @_32_stringlist_2E_element struct
