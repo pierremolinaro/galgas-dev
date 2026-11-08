@@ -110,11 +110,11 @@ GGS_location GGS_routineArgumentMap::getter_locationForKey (const GGS_string & i
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_routineArgumentMap::getter_keyList (Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_routineArgumentMap::getter_keyList (Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;

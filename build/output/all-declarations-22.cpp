@@ -22823,10 +22823,10 @@ const char * gWrapperFileContent_144_libpmFileWrapper =
   "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
   "\n"
   "  private: static void populateKeyList (const OptionalSharedRef <GenericMapNode> & inNode,\n"
-  "                                        GGS_lstringlist & ioList) {\n"
+  "                                        GGS__5B_lstring_5D_ & ioList) {\n"
   "    if (inNode.isNotNil ()) {\n"
   "      populateKeyList (inNode->mInfPtr, ioList) ;\n"
-  "      ioList.addAssignOperation (inNode->mSharedInfo->mProperty_lkey COMMA_HERE) ;\n"
+  "      ioList.plusPlusAssignOperation (inNode->mSharedInfo->mProperty_lkey COMMA_HERE) ;\n"
   "      populateKeyList (inNode->mSupPtr, ioList) ;\n"
   "    }\n"
   "  }\n"
@@ -22961,7 +22961,7 @@ const char * gWrapperFileContent_144_libpmFileWrapper =
   "\n"
   "  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
   "\n"
-  "  public: void populateKeyList (GGS_lstringlist & ioList) const {\n"
+  "  public: void populateKeyList (GGS__5B_lstring_5D_ & ioList) const {\n"
   "    GenericMapNode <INFO>::populateKeyList (mRootNode, ioList) ;\n"
   "  }\n"
   "\n"
@@ -23324,7 +23324,7 @@ const cRegularFileWrapper gWrapperFile_144_libpmFileWrapper (
   "GALGAS_GenericMapRoot.h",
   "h",
   true, // Text file
- 24216, // Text length
+ 24229, // Text length
   gWrapperFileContent_144_libpmFileWrapper
 ) ;
 
@@ -35404,7 +35404,7 @@ const char * gWrapperFileContent_145_libpmFileWrapper =
   "//\n"
   "//  This file is part of libpm library                                                           \n"
   "//\n"
-  "//  Copyright (C) 2016, ..., 2025 Pierre Molinaro.\n"
+  "//  Copyright (C) 2016, ..., 2026 Pierre Molinaro.\n"
   "//\n"
   "//  e-mail : pierre@pcmolinaro.name\n"
   "//\n"
@@ -35447,8 +35447,8 @@ const char * gWrapperFileContent_145_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "IssueWithFixIt::IssueWithFixIt (const LocationInSource & inStartLocation,\n"
-  "                                    const LocationInSource & inEndLocation,\n"
-  "                                    const GenericArray <FixItDescription> & inFixItArray) :\n"
+  "                                const LocationInSource & inEndLocation,\n"
+  "                                const GenericArray <FixItDescription> & inFixItArray) :\n"
   "mStartLocation (inStartLocation),\n"
   "mEndLocation (inEndLocation),\n"
   "mFixItArray (inFixItArray) {\n"
@@ -35456,36 +35456,12 @@ const char * gWrapperFileContent_145_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "//String IssueWithFixIt::jsonDescriptionString (void) const {\n"
-  "//  String result = \"{\" ;\n"
-  "////--- Error\n"
-  "//  result.appendString (\"\\\"error\\\":\") ;\n"
-  "//  result.appendString (mIsError \? \"true\" : \"false\") ;\n"
-  "////--- file\n"
-  "//  result.appendString (\",\\\"file\\\":\") ;\n"
-  "//  result.appendString (mFile) ;\n"
-  "////--- Line\n"
-  "//  result.appendString (\",\\\"line\\\":\") ;\n"
-  "//  result.appendSigned (mLine) ;\n"
-  "////--- Start Column\n"
-  "//  result.appendString (\",\\\"startCol\\\":\") ;\n"
-  "//  result.appendSigned (mStartColumn) ;\n"
-  "////--- End Column\n"
-  "//  result.appendString (\",\\\"lastCol\\\":\") ;\n"
-  "//  result.appendSigned (mEndColumn) ;\n"
-  "//\n"
-  "//  result.appendString (\"}\") ;\n"
-  "//  return result ;\n"
-  "//}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
   "void appendFixItActions (GenericArray <FixItDescription> & ioArray,\n"
   "                         const EnumFixItKind inKind,\n"
-  "                         const GGS_stringlist & inList) {\n"
-  "  UpEnumerator_stringlist enumerator (inList) ;\n"
+  "                         const GGS__5B_string_5D_ & inList) {\n"
+  "  UpEnumerator__5B_string_5D_ enumerator (inList) ;\n"
   "  while (enumerator.hasCurrentObject ()) {\n"
-  "    const String s = enumerator.current_mValue (HERE).stringValue () ;\n"
+  "    const String s = enumerator.current (HERE).stringValue () ;\n"
   "    ioArray.appendObject (FixItDescription (inKind, s)) ;\n"
   "    enumerator.gotoNextObject () ;\n"
   "  }\n"
@@ -35495,10 +35471,10 @@ const char * gWrapperFileContent_145_libpmFileWrapper =
   "\n"
   "void appendFixItActions (GenericArray <FixItDescription> & ioArray,\n"
   "                         const EnumFixItKind inKind,\n"
-  "                         const GGS_lstringlist & inList) {\n"
-  "  UpEnumerator_lstringlist enumerator (inList) ;\n"
+  "                         const GGS__5B_lstring_5D_ & inList) {\n"
+  "  UpEnumerator__5B_lstring_5D_ enumerator (inList) ;\n"
   "  while (enumerator.hasCurrentObject ()) {\n"
-  "    const String s = enumerator.current_mValue (HERE).mProperty_string.stringValue () ;\n"
+  "    const String s = enumerator.current (HERE).mProperty_string.stringValue () ;\n"
   "    ioArray.appendObject (FixItDescription (inKind, s)) ;\n"
   "    enumerator.gotoNextObject () ;\n"
   "  }\n"
@@ -35533,7 +35509,7 @@ const cRegularFileWrapper gWrapperFile_145_libpmFileWrapper (
   "IssueWithFixIt.cpp",
   "cpp",
   true, // Text file
- 5081, // Text length
+ 4329, // Text length
   gWrapperFileContent_145_libpmFileWrapper
 ) ;
 
@@ -35570,8 +35546,8 @@ const char * gWrapperFileContent_106_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "class GGS_stringlist ;\n"
-  "class GGS_lstringlist ;\n"
+  "class GGS__5B_lstring_5D_ ;\n"
+  "class GGS__5B_string_5D_ ;\n"
   "class GGS_string ;\n"
   "class GGS_stringset ;\n"
   "\n"
@@ -35624,13 +35600,13 @@ const char * gWrapperFileContent_106_libpmFileWrapper =
   "\n"
   "void appendFixItActions (GenericArray <FixItDescription> & ioArray,\n"
   "                         const EnumFixItKind inKind,\n"
-  "                         const GGS_stringlist & inList) ;\n"
+  "                         const GGS__5B_lstring_5D_ & inList) ;\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "void appendFixItActions (GenericArray <FixItDescription> & ioArray,\n"
   "                         const EnumFixItKind inKind,\n"
-  "                         const GGS_lstringlist & inList) ;\n"
+  "                         const GGS__5B_string_5D_ & inList) ;\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -35651,7 +35627,7 @@ const cRegularFileWrapper gWrapperFile_106_libpmFileWrapper (
   "IssueWithFixIt.h",
   "h",
   true, // Text file
- 4019, // Text length
+ 4035, // Text length
   gWrapperFileContent_106_libpmFileWrapper
 ) ;
 

@@ -110,11 +110,11 @@ GGS_location GGS_wrapperFileMap::getter_locationForKey (const GGS_string & inKey
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_wrapperFileMap::getter_keyList (Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_wrapperFileMap::getter_keyList (Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -753,11 +753,11 @@ GGS_location GGS_wrapperDirectoryMap::getter_locationForKey (const GGS_string & 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_wrapperDirectoryMap::getter_keyList (Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_wrapperDirectoryMap::getter_keyList (Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -1335,11 +1335,11 @@ GGS_location GGS_filewrapperTemplateMap::getter_locationForKey (const GGS_string
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_filewrapperTemplateMap::getter_keyList (Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_filewrapperTemplateMap::getter_keyList (Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -1856,11 +1856,11 @@ GGS_location GGS_filewrapperMap::getter_locationForKey (const GGS_string & inKey
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_filewrapperMap::getter_keyList (Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_filewrapperMap::getter_keyList (Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -2621,11 +2621,11 @@ GGS_location GGS_optionComponentMapForSemanticAnalysis::getter_locationForKey (c
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_optionComponentMapForSemanticAnalysis::getter_keyList (Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_optionComponentMapForSemanticAnalysis::getter_keyList (Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -3264,11 +3264,11 @@ GGS_location GGS_lexiqueComponentMapForSemanticAnalysis::getter_locationForKey (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_lexiqueComponentMapForSemanticAnalysis::getter_keyList (Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_lexiqueComponentMapForSemanticAnalysis::getter_keyList (Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -4090,11 +4090,11 @@ GGS_location GGS_syntaxComponentMap::getter_locationForKey (const GGS_string & i
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_syntaxComponentMap::getter_keyList (Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_syntaxComponentMap::getter_keyList (Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -5893,11 +5893,11 @@ GGS_location GGS_extensionInitializerMapForType::getter_locationForKey (const GG
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_extensionInitializerMapForType::getter_keyList (Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_extensionInitializerMapForType::getter_keyList (Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -6330,11 +6330,11 @@ GGS_location GGS_extensionInitializerForBuildingContext::getter_locationForKey (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_extensionInitializerForBuildingContext::getter_keyList (Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_extensionInitializerForBuildingContext::getter_keyList (Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -6836,11 +6836,11 @@ GGS_location GGS_extensionMethodMapForType::getter_locationForKey (const GGS_str
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_extensionMethodMapForType::getter_keyList (Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_extensionMethodMapForType::getter_keyList (Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -7331,11 +7331,11 @@ GGS_location GGS_extensionMethodMapForBuildingContext::getter_locationForKey (co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_extensionMethodMapForBuildingContext::getter_keyList (Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_extensionMethodMapForBuildingContext::getter_keyList (Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -7837,11 +7837,11 @@ GGS_location GGS_extensionSetterMapForType::getter_locationForKey (const GGS_str
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_extensionSetterMapForType::getter_keyList (Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_extensionSetterMapForType::getter_keyList (Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -8274,11 +8274,11 @@ GGS_location GGS_extensionSetterMapForBuildingContext::getter_locationForKey (co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_extensionSetterMapForBuildingContext::getter_keyList (Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_extensionSetterMapForBuildingContext::getter_keyList (Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -8780,11 +8780,11 @@ GGS_location GGS_extensionGetterMapForType::getter_locationForKey (const GGS_str
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_extensionGetterMapForType::getter_keyList (Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_extensionGetterMapForType::getter_keyList (Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -9333,11 +9333,11 @@ GGS_location GGS_extensionGetterMapForBuildingContext::getter_locationForKey (co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_extensionGetterMapForBuildingContext::getter_keyList (Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_extensionGetterMapForBuildingContext::getter_keyList (Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -9855,11 +9855,11 @@ GGS_location GGS_wrapperExtensionMap::getter_locationForKey (const GGS_string & 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_wrapperExtensionMap::getter_keyList (Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_wrapperExtensionMap::getter_keyList (Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -12190,11 +12190,11 @@ GGS_location GGS_scopeLocalVarMap::getter_locationForKey (const GGS_string & inK
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_scopeLocalVarMap::getter_keyList (Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_scopeLocalVarMap::getter_keyList (Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -15370,11 +15370,11 @@ GGS_location GGS_unifiedTypeMap::getter_locationForKey (const GGS_string & inKey
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_unifiedTypeMap::getter_keyList (Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_unifiedTypeMap::getter_keyList (Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -16462,11 +16462,11 @@ GGS_location GGS_internalRoutineMap::getter_locationForKey (const GGS_string & i
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_internalRoutineMap::getter_keyList (Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_internalRoutineMap::getter_keyList (Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;

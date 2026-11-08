@@ -86,7 +86,7 @@ proc testsuite_map() {
     println ("  key '" + e.lkey + "', value: " + e.value)
   end
   for key in otherMap.keyList do
-    !?otherMap.removeKey (key.mValue, ?*)
+    !?otherMap.removeKey (key, ?*)
   end
 }
 

@@ -5951,8 +5951,8 @@ class GGS_propertyIndexMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -7623,8 +7623,8 @@ class GGS_extensionMethodMapForGlobalCheckings : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -7925,8 +7925,8 @@ class GGS_extensionSetterMapForGlobalCheckings : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -8227,8 +8227,8 @@ class GGS_extensionGetterMapForGlobalCheckings : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;

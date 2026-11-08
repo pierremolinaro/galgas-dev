@@ -3360,8 +3360,8 @@ class GGS_unifiedTypeMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -7054,6 +7054,16 @@ class GGS_predefinedTypes : public AC_GALGAS_root {
     return mProperty_mLStringListType ;
   }
 
+  public: GGS_unifiedTypeMapEntry mProperty_mStringArrayType ;
+  public: inline GGS_unifiedTypeMapEntry readProperty_mStringArrayType (void) const {
+    return mProperty_mStringArrayType ;
+  }
+
+  public: GGS_unifiedTypeMapEntry mProperty_mLStringArrayType ;
+  public: inline GGS_unifiedTypeMapEntry readProperty_mLStringArrayType (void) const {
+    return mProperty_mLStringArrayType ;
+  }
+
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
@@ -7150,6 +7160,14 @@ class GGS_predefinedTypes : public AC_GALGAS_root {
     mProperty_mLStringListType = inValue ;
   }
 
+  public: inline void setter_setMStringArrayType (const GGS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mStringArrayType = inValue ;
+  }
+
+  public: inline void setter_setMLStringArrayType (const GGS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mLStringArrayType = inValue ;
+  }
+
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
@@ -7175,7 +7193,9 @@ class GGS_predefinedTypes : public AC_GALGAS_root {
                                const GGS_unifiedTypeMapEntry & in_mLBigIntType,
                                const GGS_unifiedTypeMapEntry & in_mBigIntType,
                                const GGS_unifiedTypeMapEntry & in_mStringSetType,
-                               const GGS_unifiedTypeMapEntry & in_mLStringListType) ;
+                               const GGS_unifiedTypeMapEntry & in_mLStringListType,
+                               const GGS_unifiedTypeMapEntry & in_mStringArrayType,
+                               const GGS_unifiedTypeMapEntry & in_mLStringArrayType) ;
 
 //--------------------------------- Copy constructor
   public: GGS_predefinedTypes (const GGS_predefinedTypes & inSource) ;
@@ -7186,30 +7206,32 @@ class GGS_predefinedTypes : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_predefinedTypes init_21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand4,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand5,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand6,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand7,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand8,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand9,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand10,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand11,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand12,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand13,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand14,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand15,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand16,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand17,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand18,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand19,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand20,
-                                                                                                                                   const class GGS_unifiedTypeMapEntry & inOperand21,
-                                                                                                                                   Compiler * inCompiler
-                                                                                                                                   COMMA_LOCATION_ARGS) ;
+  public: static GGS_predefinedTypes init_21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand2,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand3,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand4,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand5,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand6,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand7,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand8,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand9,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand10,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand11,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand12,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand13,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand14,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand15,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand16,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand17,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand18,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand19,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand20,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand21,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand22,
+                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand23,
+                                                                                                                                           Compiler * inCompiler
+                                                                                                                                           COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -7432,8 +7454,8 @@ class GGS_filewrapperMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -7660,8 +7682,8 @@ class GGS_functionMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -7876,8 +7898,8 @@ class GGS_grammarMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -8132,8 +8154,8 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -8374,8 +8396,8 @@ class GGS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -8604,8 +8626,8 @@ class GGS_syntaxComponentMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -8808,8 +8830,8 @@ class GGS_internalRoutineMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -9821,8 +9843,8 @@ class GGS_scopeLocalVarMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -11230,8 +11252,8 @@ class GGS_classFunctionMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -11441,8 +11463,8 @@ class GGS_classMethodMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -11703,8 +11725,8 @@ class GGS_getterMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -11915,8 +11937,8 @@ class GGS_initializerMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -12163,8 +12185,8 @@ class GGS_instanceMethodMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -12391,8 +12413,8 @@ class GGS_propertyMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -12635,8 +12657,8 @@ class GGS_setterMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -12853,8 +12875,8 @@ class GGS_subscriptMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;

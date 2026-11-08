@@ -28,8 +28,8 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_stringlist ;
-class GGS_lstringlist ;
+class GGS__5B_lstring_5D_ ;
+class GGS__5B_string_5D_ ;
 class GGS_string ;
 class GGS_stringset ;
 
@@ -82,13 +82,13 @@ class IssueWithFixIt final {
 
 void appendFixItActions (GenericArray <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
-                         const GGS_stringlist & inList) ;
+                         const GGS__5B_lstring_5D_ & inList) ;
 
 //--------------------------------------------------------------------------------------------------
 
 void appendFixItActions (GenericArray <FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
-                         const GGS_lstringlist & inList) ;
+                         const GGS__5B_string_5D_ & inList) ;
 
 //--------------------------------------------------------------------------------------------------
 

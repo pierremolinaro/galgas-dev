@@ -110,11 +110,11 @@ GGS_location GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::getter_locationFo
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::getter_keyList (Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::getter_keyList (Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -836,11 +836,11 @@ GGS_location GGS_nonterminalSymbolLabelMapForGrammarAnalysis::getter_locationFor
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_nonterminalSymbolLabelMapForGrammarAnalysis::getter_keyList (Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_nonterminalSymbolLabelMapForGrammarAnalysis::getter_keyList (Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -3138,11 +3138,11 @@ GGS_location GGS_terminalSymbolsMapForGrammarAnalysis::getter_locationForKey (co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_terminalSymbolsMapForGrammarAnalysis::getter_keyList (Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_terminalSymbolsMapForGrammarAnalysis::getter_keyList (Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;

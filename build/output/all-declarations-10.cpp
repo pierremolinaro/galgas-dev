@@ -6753,11 +6753,11 @@ GGS_location GGS_propertyIndexMap::getter_locationForKey (const GGS_string & inK
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_propertyIndexMap::getter_keyList (Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_propertyIndexMap::getter_keyList (Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -7213,11 +7213,11 @@ GGS_location GGS_nonterminalLabelMap::getter_locationForKey (const GGS_string & 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_nonterminalLabelMap::getter_keyList (Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_nonterminalLabelMap::getter_keyList (Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -9980,11 +9980,11 @@ GGS_location GGS_extensionMethodMapForGlobalCheckings::getter_locationForKey (co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_extensionMethodMapForGlobalCheckings::getter_keyList (Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_extensionMethodMapForGlobalCheckings::getter_keyList (Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -10359,11 +10359,11 @@ GGS_location GGS_extensionSetterMapForGlobalCheckings::getter_locationForKey (co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_extensionSetterMapForGlobalCheckings::getter_keyList (Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_extensionSetterMapForGlobalCheckings::getter_keyList (Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;
@@ -10738,11 +10738,11 @@ GGS_location GGS_extensionGetterMapForGlobalCheckings::getter_locationForKey (co
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_extensionGetterMapForGlobalCheckings::getter_keyList (Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_extensionGetterMapForGlobalCheckings::getter_keyList (Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid ()) {
-    result = GGS_lstringlist::init (inCompiler COMMA_THERE) ;
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
     mSharedRoot->populateKeyList (result) ;
   }
   return result ;

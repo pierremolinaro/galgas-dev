@@ -399,6 +399,8 @@ struct @predefinedTypes {
   public let @unifiedTypeMapEntry mBigIntType
   public let @unifiedTypeMapEntry mStringSetType
   public let @unifiedTypeMapEntry mLStringListType
+  public let @unifiedTypeMapEntry mStringArrayType
+  public let @unifiedTypeMapEntry mLStringArrayType
 }
 
 //--------------------------------------------------------------------------------------------------

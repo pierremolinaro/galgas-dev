@@ -136,20 +136,21 @@ override proc @optionExpressionAST.analyzeSemanticExpression
       error (self.mOptionGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" spoil outExpression)
     end
   else
-    var @stringlist s = @()
+    var [@string] s = @()
     for entry in boolOptionMap do
-      s ++= @(entry.lkey)
+      s ++= entry.lkey
     end
     for entry in uintOptionMap do
-      s ++= @(entry.lkey)
+      s ++= entry.lkey
     end
     for entry in stringOptionMap do
-      s ++= @(entry.lkey)
+      s ++= entry.lkey
     end
     error (self.mOptionEntryName
     : "the '" + self.mOptionComponentName + "' option component does not define the '" + self.mOptionEntryName + "' option"
     spoil outExpression
-    fixit #replaceBy s)
+    fixit #replaceBy s
+    )
   end
 }
 

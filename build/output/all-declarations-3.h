@@ -1842,8 +1842,8 @@ class GGS_uselessEntityLocationMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -2573,8 +2573,8 @@ class GGS_headerCompositionMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -2919,8 +2919,8 @@ class GGS_headerRepartitionMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -4045,8 +4045,8 @@ class GGS_lexicalExplicitTokenListMap : public AC_GALGAS_root {
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -6188,8 +6188,8 @@ class GGS_lexicalTagMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
@@ -6790,8 +6790,8 @@ class GGS_projectQualifiedFeatureMap : public AC_GALGAS_root {
                                                const class GGS_uint & constinOperand1
                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_keyList (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_stringset getter_keySet (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;

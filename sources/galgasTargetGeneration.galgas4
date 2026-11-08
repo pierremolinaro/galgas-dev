@@ -428,9 +428,9 @@ proc updateGalgasTargets
         generationFeatures ++= mValue.string
       end
     else
-      var @stringlist s = @()
-      for (key) in availableGenerationFeatures do
-        s ++= @("%" + key)
+      var [@string] s = @()
+      for key in availableGenerationFeatures do
+        s ++= "%" + key
       end
       error (mValue: "unknown '" + mValue + "' feature" fixit #replaceBy s )
     end

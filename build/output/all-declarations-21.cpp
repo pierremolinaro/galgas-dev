@@ -6483,27 +6483,27 @@ void cPtr_optionExpressionAST::method_analyzeSemanticExpression (const GGS_lstri
     }
   }
   if (GalgasBool::boolFalse == test_7) {
-    GGS_stringlist var_s_6100 = GGS_stringlist::init (inCompiler COMMA_HERE) ;
-    UpEnumerator_commandLineOptionMap enumerator_6125 (var_boolOptionMap_4018) ;
-    while (enumerator_6125.hasCurrentObject ()) {
-      var_s_6100.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (enumerator_6125.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 141)) ;
-      enumerator_6125.gotoNextObject () ;
+    GGS__5B_string_5D_ var_s_6098 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
+    UpEnumerator_commandLineOptionMap enumerator_6123 (var_boolOptionMap_4018) ;
+    while (enumerator_6123.hasCurrentObject ()) {
+      var_s_6098.plusPlusAssignOperation (enumerator_6123.current (HERE).readProperty_lkey ().readProperty_string ()  COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 141)) ;
+      enumerator_6123.gotoNextObject () ;
     }
-    UpEnumerator_commandLineOptionMap enumerator_6193 (var_uintOptionMap_4064) ;
-    while (enumerator_6193.hasCurrentObject ()) {
-      var_s_6100.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (enumerator_6193.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 144)) ;
-      enumerator_6193.gotoNextObject () ;
+    UpEnumerator_commandLineOptionMap enumerator_6188 (var_uintOptionMap_4064) ;
+    while (enumerator_6188.hasCurrentObject ()) {
+      var_s_6098.plusPlusAssignOperation (enumerator_6188.current (HERE).readProperty_lkey ().readProperty_string ()  COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 144)) ;
+      enumerator_6188.gotoNextObject () ;
     }
-    UpEnumerator_commandLineOptionMap enumerator_6261 (var_stringOptionMap_4110) ;
-    while (enumerator_6261.hasCurrentObject ()) {
-      var_s_6100.plusPlusAssignOperation (GGS_stringlist_2E_element::init_21_ (enumerator_6261.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 147)) ;
-      enumerator_6261.gotoNextObject () ;
+    UpEnumerator_commandLineOptionMap enumerator_6253 (var_stringOptionMap_4110) ;
+    while (enumerator_6253.hasCurrentObject ()) {
+      var_s_6098.plusPlusAssignOperation (enumerator_6253.current (HERE).readProperty_lkey ().readProperty_string ()  COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 147)) ;
+      enumerator_6253.gotoNextObject () ;
     }
     const GGS_optionExpressionAST temp_30 = this ;
     const GGS_optionExpressionAST temp_31 = this ;
     const GGS_optionExpressionAST temp_32 = this ;
     GenericArray <FixItDescription> fixItArray33 ;
-    appendFixItActions (fixItArray33, EnumFixItKind::fixItReplace, var_s_6100) ;
+    appendFixItActions (fixItArray33, EnumFixItKind::fixItReplace, var_s_6098) ;
     inCompiler->emitSemanticError (temp_30.readProperty_mOptionEntryName ().readProperty_location (), GGS_string ("the '").add_operation (temp_31.readProperty_mOptionComponentName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 150)).add_operation (GGS_string ("' option component does not define the '"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 150)).add_operation (temp_32.readProperty_mOptionEntryName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 150)).add_operation (GGS_string ("' option"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 150)), fixItArray33  COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 149)) ;
     outArgument_outExpression.drop () ; // Release error dropped variable
   }
@@ -6523,16 +6523,16 @@ void cPtr_optionValueExpressionForGeneration::method_generateExpression (GGS_str
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_optionValueExpressionForGeneration temp_1 = this ;
-    test_0 = temp_1.readProperty_mOptionComponentIsPredefined ().operator_not (SOURCE_FILE ("expression-primary-option.galgas4", 174)).boolEnum () ;
+    test_0 = temp_1.readProperty_mOptionComponentIsPredefined ().operator_not (SOURCE_FILE ("expression-primary-option.galgas4", 175)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       const GGS_optionValueExpressionForGeneration temp_2 = this ;
-      ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("option-").add_operation (temp_2.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 175)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 175))  COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 175)) ;
+      ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("option-").add_operation (temp_2.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 176)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 176))  COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 176)) ;
     }
   }
   const GGS_optionValueExpressionForGeneration temp_3 = this ;
   const GGS_optionValueExpressionForGeneration temp_4 = this ;
   const GGS_optionValueExpressionForGeneration temp_5 = this ;
-  outArgument_outCppExpression = GGS_string ("GGS_").add_operation (extensionGetter_identifierRepresentation (temp_3.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 177)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 177)).add_operation (GGS_string (" (gOption_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 177)).add_operation (temp_4.readProperty_mOptionComponentName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 177)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 177)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 177)).add_operation (temp_5.readProperty_mOptionEntryName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 178)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 178)).add_operation (GGS_string (".readProperty_value ())"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 178)) ;
+  outArgument_outCppExpression = GGS_string ("GGS_").add_operation (extensionGetter_identifierRepresentation (temp_3.readProperty_mResultType (), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 178)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 178)).add_operation (GGS_string (" (gOption_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 178)).add_operation (temp_4.readProperty_mOptionComponentName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 178)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 178)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 178)).add_operation (temp_5.readProperty_mOptionEntryName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 179)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 179)).add_operation (GGS_string (".readProperty_value ())"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 179)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6549,15 +6549,15 @@ void cPtr_optionCharExpressionForGeneration::method_generateExpression (GGS_stri
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_optionCharExpressionForGeneration temp_1 = this ;
-    test_0 = temp_1.readProperty_mOptionComponentIsPredefined ().operator_not (SOURCE_FILE ("expression-primary-option.galgas4", 197)).boolEnum () ;
+    test_0 = temp_1.readProperty_mOptionComponentIsPredefined ().operator_not (SOURCE_FILE ("expression-primary-option.galgas4", 198)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       const GGS_optionCharExpressionForGeneration temp_2 = this ;
-      ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("option-").add_operation (temp_2.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 198)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 198))  COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 198)) ;
+      ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("option-").add_operation (temp_2.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 199)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 199))  COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 199)) ;
     }
   }
   const GGS_optionCharExpressionForGeneration temp_3 = this ;
   const GGS_optionCharExpressionForGeneration temp_4 = this ;
-  outArgument_outCppExpression = GGS_string ("GGS_char (gOption_").add_operation (temp_3.readProperty_mOptionComponentName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 200)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 200)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 200)).add_operation (temp_4.readProperty_mOptionEntryName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 201)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 201)).add_operation (GGS_string (".readProperty_char ())"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 201)) ;
+  outArgument_outCppExpression = GGS_string ("GGS_char (gOption_").add_operation (temp_3.readProperty_mOptionComponentName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 201)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 201)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 201)).add_operation (temp_4.readProperty_mOptionEntryName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 202)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 202)).add_operation (GGS_string (".readProperty_char ())"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 202)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6574,15 +6574,15 @@ void cPtr_optionStringExpressionForGeneration::method_generateExpression (GGS_st
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_optionStringExpressionForGeneration temp_1 = this ;
-    test_0 = temp_1.readProperty_mOptionComponentIsPredefined ().operator_not (SOURCE_FILE ("expression-primary-option.galgas4", 220)).boolEnum () ;
+    test_0 = temp_1.readProperty_mOptionComponentIsPredefined ().operator_not (SOURCE_FILE ("expression-primary-option.galgas4", 221)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       const GGS_optionStringExpressionForGeneration temp_2 = this ;
-      ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("option-").add_operation (temp_2.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 221)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 221))  COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 221)) ;
+      ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("option-").add_operation (temp_2.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 222)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 222))  COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 222)) ;
     }
   }
   const GGS_optionStringExpressionForGeneration temp_3 = this ;
   const GGS_optionStringExpressionForGeneration temp_4 = this ;
-  outArgument_outCppExpression = GGS_string ("GGS_string (gOption_").add_operation (temp_3.readProperty_mOptionComponentName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 223)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 223)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 223)).add_operation (temp_4.readProperty_mOptionEntryName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 224)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 224)).add_operation (GGS_string (".readProperty_string ())"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 224)) ;
+  outArgument_outCppExpression = GGS_string ("GGS_string (gOption_").add_operation (temp_3.readProperty_mOptionComponentName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 224)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 224)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 224)).add_operation (temp_4.readProperty_mOptionEntryName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 225)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 225)).add_operation (GGS_string (".readProperty_string ())"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 225)) ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6599,15 +6599,15 @@ void cPtr_optionCommentExpressionForGeneration::method_generateExpression (GGS_s
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_optionCommentExpressionForGeneration temp_1 = this ;
-    test_0 = temp_1.readProperty_mOptionComponentIsPredefined ().operator_not (SOURCE_FILE ("expression-primary-option.galgas4", 235)).boolEnum () ;
+    test_0 = temp_1.readProperty_mOptionComponentIsPredefined ().operator_not (SOURCE_FILE ("expression-primary-option.galgas4", 236)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       const GGS_optionCommentExpressionForGeneration temp_2 = this ;
-      ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("option-").add_operation (temp_2.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 236)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 236))  COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 236)) ;
+      ioArgument_ioInclusionSet.plusPlusAssignOperation (GGS_string ("option-").add_operation (temp_2.readProperty_mOptionComponentName ().getter_fileNameRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 237)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 237))  COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 237)) ;
     }
   }
   const GGS_optionCommentExpressionForGeneration temp_3 = this ;
   const GGS_optionCommentExpressionForGeneration temp_4 = this ;
-  outArgument_outCppExpression = GGS_string ("gOption_").add_operation (temp_3.readProperty_mOptionComponentName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 238)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 238)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 238)).add_operation (temp_4.readProperty_mOptionEntryName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 239)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 239)).add_operation (GGS_string (".readProperty_comment ()"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 239)) ;
+  outArgument_outCppExpression = GGS_string ("gOption_").add_operation (temp_3.readProperty_mOptionComponentName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 239)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 239)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 239)).add_operation (temp_4.readProperty_mOptionEntryName ().getter_identifierRepresentation (SOURCE_FILE ("expression-primary-option.galgas4", 240)), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 240)).add_operation (GGS_string (".readProperty_comment ()"), inCompiler COMMA_SOURCE_FILE ("expression-primary-option.galgas4", 240)) ;
 }
 
 //--------------------------------------------------------------------------------------------------

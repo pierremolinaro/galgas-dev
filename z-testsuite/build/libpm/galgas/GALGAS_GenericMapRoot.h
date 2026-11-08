@@ -101,10 +101,10 @@ template <typename INFO> class GenericMapNode final : public SharedObject {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: static void populateKeyList (const OptionalSharedRef <GenericMapNode> & inNode,
-                                        GGS_lstringlist & ioList) {
+                                        GGS__5B_lstring_5D_ & ioList) {
     if (inNode.isNotNil ()) {
       populateKeyList (inNode->mInfPtr, ioList) ;
-      ioList.addAssignOperation (inNode->mSharedInfo->mProperty_lkey COMMA_HERE) ;
+      ioList.plusPlusAssignOperation (inNode->mSharedInfo->mProperty_lkey COMMA_HERE) ;
       populateKeyList (inNode->mSupPtr, ioList) ;
     }
   }
@@ -239,7 +239,7 @@ template <typename INFO> class GenericMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: void populateKeyList (GGS_lstringlist & ioList) const {
+  public: void populateKeyList (GGS__5B_lstring_5D_ & ioList) const {
     GenericMapNode <INFO>::populateKeyList (mRootNode, ioList) ;
   }
 

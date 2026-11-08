@@ -310,7 +310,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !?ioTypeMap,
       !getterName: "keyList",
       !obsoleteName: "",
-      !returnedTypeName: "lstringlist",
+      !returnedTypeName: "[lstring]",
       !hasCompilerArgument: true
     )
     enterBaseGetterWithArgument (
