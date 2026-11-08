@@ -483,7 +483,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     end
   //--------- Handle "insertOrReplace" mutating proc
     if self.mInsertOrReplaceDeclarationListAST.count >= 1 then
-      self.mInsertOrReplaceDeclarationListAST.first (?let insertOrReplaceLocation)
+      let insertOrReplaceLocation = self.mInsertOrReplaceDeclarationListAST.first
       !?setterMap.insertOrReplace
         (@lstring ("insertOrReplace", insertOrReplaceLocation),
         .definedAsMember,
@@ -685,7 +685,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     end
     let @bool hasInsertOrReplaceModifier = self.mInsertOrReplaceDeclarationListAST.count > 0
     if hasInsertOrReplaceModifier & insertMethodMap.contains ("insertOrReplace") then
-      self.mInsertOrReplaceDeclarationListAST.first (?let insertOrReplaceDeclarationLocation)
+      let insertOrReplaceDeclarationLocation = self.mInsertOrReplaceDeclarationListAST.first
       error (insertOrReplaceDeclarationLocation
       : "the insertOrReplace' mutating proc cannot be declared : an insert mutating proc or a remove mutating proc has been declared with this name")
     end

@@ -4938,18 +4938,14 @@ class GGS__5B_galgasQualifiedFeature_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_galgasQualifiedFeature & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_galgasQualifiedFeature & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_galgasQualifiedFeature getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_galgasQualifiedFeature getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -6484,8 +6480,8 @@ class GGS_genericExtensionMethodListMapDictionary_2E_element : public AC_GALGAS_
     return mProperty_key ;
   }
 
-  public: GGS_lstringlist mProperty_mList ;
-  public: inline GGS_lstringlist readProperty_mList (void) const {
+  public: GGS__5B_lstring_5D_ mProperty_mList ;
+  public: inline GGS__5B_lstring_5D_ readProperty_mList (void) const {
     return mProperty_mList ;
   }
 
@@ -6501,7 +6497,7 @@ class GGS_genericExtensionMethodListMapDictionary_2E_element : public AC_GALGAS_
     mProperty_key = inValue ;
   }
 
-  public: inline void setter_setMList (const GGS_lstringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMList (const GGS__5B_lstring_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mList = inValue ;
   }
 
@@ -6510,7 +6506,7 @@ class GGS_genericExtensionMethodListMapDictionary_2E_element : public AC_GALGAS_
 
 //--------------------------------- Native constructor
   public: GGS_genericExtensionMethodListMapDictionary_2E_element (const GGS_string & in_key,
-                                                                  const GGS_lstringlist & in_mList) ;
+                                                                  const GGS__5B_lstring_5D_ & in_mList) ;
 
 //--------------------------------- Copy constructor
   public: GGS_genericExtensionMethodListMapDictionary_2E_element (const GGS_genericExtensionMethodListMapDictionary_2E_element & inSource) ;
@@ -6522,7 +6518,7 @@ class GGS_genericExtensionMethodListMapDictionary_2E_element : public AC_GALGAS_
 
 //--------------------------------- Initializers
   public: static GGS_genericExtensionMethodListMapDictionary_2E_element init_21__21_ (const class GGS_string & inOperand0,
-                                                                                      const class GGS_lstringlist & inOperand1,
+                                                                                      const class GGS__5B_lstring_5D_ & inOperand1,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
@@ -6633,7 +6629,7 @@ class DownEnumerator_genericExtensionMethodListMapDictionary final {
 
   public: class GGS_string current_key (UNUSED_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist current_mList (UNUSED_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ current_mList (UNUSED_LOCATION_ARGS) const ;
 
 
 //--- Current element access
@@ -6658,7 +6654,7 @@ class UpEnumerator_genericExtensionMethodListMapDictionary final {
   public: inline void gotoNextObject (void) { mIndex += 1 ; }
 
   public: class GGS_string current_key (UNUSED_LOCATION_ARGS) const ;
-  public: class GGS_lstringlist current_mList (UNUSED_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ current_mList (UNUSED_LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_genericExtensionMethodListMapDictionary_2E_element current (UNUSED_LOCATION_ARGS) const ;
 
@@ -6694,7 +6690,7 @@ class GGS_genericExtensionMethodListMapDictionary final : public GenericDictiona
                                                                    COMMA_LOCATION_ARGS) ;
 //--------------------------------- += operator (with list of field expressions)
   public: void addAssignOperation (const class GGS_string & inOperand0,
-                                   const class GGS_lstringlist & inOperand1,
+                                   const class GGS__5B_lstring_5D_ & inOperand1,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
@@ -6704,16 +6700,16 @@ class GGS_genericExtensionMethodListMapDictionary final : public GenericDictiona
 
 //--------------------------------- Setters
   public: void setter_insert (class GGS_string constinArgument0,
-                              class GGS_lstringlist constinArgument1,
+                              class GGS__5B_lstring_5D_ constinArgument1,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeKey (class GGS_string constinArgument0,
-                                 class GGS_lstringlist & outArgument1,
+                                 class GGS__5B_lstring_5D_ & outArgument1,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMListForKey (class GGS_lstringlist constinArgument0,
+  public: void setter_setMListForKey (class GGS__5B_lstring_5D_ constinArgument0,
                                       class GGS_string constinArgument1,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
@@ -6721,7 +6717,7 @@ class GGS_genericExtensionMethodListMapDictionary final : public GenericDictiona
 
 //--------------------------------- Instance Methods
   public: void method_searchKey (class GGS_string constinArgument0,
-                                 class GGS_lstringlist & outArgument1,
+                                 class GGS__5B_lstring_5D_ & outArgument1,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) const ;
 
@@ -6733,9 +6729,9 @@ class GGS_genericExtensionMethodListMapDictionary final : public GenericDictiona
 
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_mListForKey (const class GGS_string & constinOperand0,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_mListForKey (const class GGS_string & constinOperand0,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -6826,10 +6822,10 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_genericExtensionMethod
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lstringlist extensionGetter_listForKey (const class GGS_genericExtensionMethodListMap & inObject,
-                                                  const class GGS_string & constinArgument0,
-                                                  class Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
+class GGS__5B_lstring_5D_ extensionGetter_listForKey (const class GGS_genericExtensionMethodListMap & inObject,
+                                                      const class GGS_string & constinArgument0,
+                                                      class Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

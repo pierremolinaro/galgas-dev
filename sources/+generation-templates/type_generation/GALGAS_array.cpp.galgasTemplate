@@ -179,25 +179,21 @@ void GGS_%!TYPE_IDENTIFIER%::setter_popLast (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::method_first (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
-      %!^%Compiler * /* inCompiler */
-      %!^%COMMA_LOCATION_ARGS) const {
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_%!ELEMENT_TYPE_IDENTIFIER% () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::method_last (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
-      %!^%Compiler * /* inCompiler */
-      %!^%COMMA_LOCATION_ARGS) const {
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_%!ELEMENT_TYPE_IDENTIFIER% () ;
   }
 }
 

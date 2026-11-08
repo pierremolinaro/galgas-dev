@@ -839,25 +839,21 @@ void GGS__5B_logAST_5D_::setter_popLast (GGS_logAST & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_logAST_5D_::method_first (GGS_logAST & outValue,
-                                       Compiler * /* inCompiler */
-                                       COMMA_LOCATION_ARGS) const {
+GGS_logAST GGS__5B_logAST_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_logAST () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_logAST_5D_::method_last (GGS_logAST & outValue,
-                                      Compiler * /* inCompiler */
-                                      COMMA_LOCATION_ARGS) const {
+GGS_logAST GGS__5B_logAST_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_logAST () ;
   }
 }
 
@@ -3143,25 +3139,21 @@ void GGS__5B_fixitElementAST_5D_::setter_popLast (GGS_fixitElementAST & outValue
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_fixitElementAST_5D_::method_first (GGS_fixitElementAST & outValue,
-                                                Compiler * /* inCompiler */
-                                                COMMA_LOCATION_ARGS) const {
+GGS_fixitElementAST GGS__5B_fixitElementAST_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_fixitElementAST () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_fixitElementAST_5D_::method_last (GGS_fixitElementAST & outValue,
-                                               Compiler * /* inCompiler */
-                                               COMMA_LOCATION_ARGS) const {
+GGS_fixitElementAST GGS__5B_fixitElementAST_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_fixitElementAST () ;
   }
 }
 
@@ -3254,39 +3246,39 @@ void extensionMethod_enterFixItListInSemanticContext (const GGS__5B_fixitElement
                                                       Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const GGS__5B_fixitElementAST_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_fixitElementAST_5D_ enumerator_5412 (temp_0) ;
-  while (enumerator_5412.hasCurrentObject ()) {
-    switch (enumerator_5412.current (HERE).enumValue ()) {
+  UpEnumerator__5B_fixitElementAST_5D_ enumerator_5405 (temp_0) ;
+  while (enumerator_5405.hasCurrentObject ()) {
+    switch (enumerator_5405.current (HERE).enumValue ()) {
     case GGS_fixitElementAST::Enumeration::invalid:
       break ;
     case GGS_fixitElementAST::Enumeration::enum_fixItRemove:
       break ;
     case GGS_fixitElementAST::Enumeration::enum_fixItReplace:
       {
-        GGS_semanticExpressionAST extractedValue_5506_exp_0 ;
-        GGS_location extractedValue_5511__1 ;
-        enumerator_5412.current (HERE).getAssociatedValuesFor_fixItReplace (extractedValue_5506_exp_0, extractedValue_5511__1) ;
-        callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) extractedValue_5506_exp_0.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 137)) ;
+        GGS_semanticExpressionAST extractedValue_5499_exp_0 ;
+        GGS_location extractedValue_5504__1 ;
+        enumerator_5405.current (HERE).getAssociatedValuesFor_fixItReplace (extractedValue_5499_exp_0, extractedValue_5504__1) ;
+        callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) extractedValue_5499_exp_0.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 137)) ;
       }
       break ;
     case GGS_fixitElementAST::Enumeration::enum_fixItInsertBefore:
       {
-        GGS_semanticExpressionAST extractedValue_5624_exp_0 ;
-        GGS_location extractedValue_5629__1 ;
-        enumerator_5412.current (HERE).getAssociatedValuesFor_fixItInsertBefore (extractedValue_5624_exp_0, extractedValue_5629__1) ;
-        callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) extractedValue_5624_exp_0.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 139)) ;
+        GGS_semanticExpressionAST extractedValue_5617_exp_0 ;
+        GGS_location extractedValue_5622__1 ;
+        enumerator_5405.current (HERE).getAssociatedValuesFor_fixItInsertBefore (extractedValue_5617_exp_0, extractedValue_5622__1) ;
+        callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) extractedValue_5617_exp_0.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 139)) ;
       }
       break ;
     case GGS_fixitElementAST::Enumeration::enum_fixItInsertAfter:
       {
-        GGS_semanticExpressionAST extractedValue_5741_exp_0 ;
-        GGS_location extractedValue_5746__1 ;
-        enumerator_5412.current (HERE).getAssociatedValuesFor_fixItInsertAfter (extractedValue_5741_exp_0, extractedValue_5746__1) ;
-        callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) extractedValue_5741_exp_0.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 141)) ;
+        GGS_semanticExpressionAST extractedValue_5734_exp_0 ;
+        GGS_location extractedValue_5739__1 ;
+        enumerator_5405.current (HERE).getAssociatedValuesFor_fixItInsertAfter (extractedValue_5734_exp_0, extractedValue_5739__1) ;
+        callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) extractedValue_5734_exp_0.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 141)) ;
       }
       break ;
     }
-    enumerator_5412.gotoNextObject () ;
+    enumerator_5405.gotoNextObject () ;
   }
 }
 
@@ -3697,25 +3689,21 @@ void GGS__5B_fixitElementForGeneration_5D_::setter_popLast (GGS_fixitElementForG
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_fixitElementForGeneration_5D_::method_first (GGS_fixitElementForGeneration & outValue,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_LOCATION_ARGS) const {
+GGS_fixitElementForGeneration GGS__5B_fixitElementForGeneration_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_fixitElementForGeneration () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_fixitElementForGeneration_5D_::method_last (GGS_fixitElementForGeneration & outValue,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_LOCATION_ARGS) const {
+GGS_fixitElementForGeneration GGS__5B_fixitElementForGeneration_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_fixitElementForGeneration () ;
   }
 }
 
@@ -3817,9 +3805,9 @@ void extensionMethod_generateFixIt (const GGS__5B_fixitElementForGeneration_5D_ 
   ioArgument_ioTemporaryVariableIndex.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 327)) ;
   ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("GenericArray <FixItDescription> ").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 328)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 328)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 328)) ;
   const GGS__5B_fixitElementForGeneration_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_fixitElementForGeneration_5D_ enumerator_13729 (temp_0) ;
-  while (enumerator_13729.hasCurrentObject ()) {
-    switch (enumerator_13729.current (HERE).enumValue ()) {
+  UpEnumerator__5B_fixitElementForGeneration_5D_ enumerator_13715 (temp_0) ;
+  while (enumerator_13715.hasCurrentObject ()) {
+    switch (enumerator_13715.current (HERE).enumValue ()) {
     case GGS_fixitElementForGeneration::Enumeration::invalid:
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItRemove:
@@ -3829,33 +3817,33 @@ void extensionMethod_generateFixIt (const GGS__5B_fixitElementForGeneration_5D_ 
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItReplace:
       {
-        GGS_semanticExpressionForGeneration extractedValue_13957_exp_0 ;
-        enumerator_13729.current (HERE).getAssociatedValuesFor_fixItReplace (extractedValue_13957_exp_0) ;
-        GGS_string var_receiverCppVarName_14134 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_13957_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_14134, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 334)) ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 341)).add_operation (GGS_string (", EnumFixItKind::fixItReplace, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 341)).add_operation (var_receiverCppVarName_14134, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 341)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 341)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 341)) ;
+        GGS_semanticExpressionForGeneration extractedValue_13943_exp_0 ;
+        enumerator_13715.current (HERE).getAssociatedValuesFor_fixItReplace (extractedValue_13943_exp_0) ;
+        GGS_string var_receiverCppVarName_14120 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_13943_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_14120, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 334)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 341)).add_operation (GGS_string (", EnumFixItKind::fixItReplace, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 341)).add_operation (var_receiverCppVarName_14120, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 341)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 341)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 341)) ;
       }
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItInsertBefore:
       {
-        GGS_semanticExpressionForGeneration extractedValue_14360_exp_0 ;
-        enumerator_13729.current (HERE).getAssociatedValuesFor_fixItInsertBefore (extractedValue_14360_exp_0) ;
-        GGS_string var_receiverCppVarName_14537 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_14360_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_14537, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 343)) ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 350)).add_operation (GGS_string (", EnumFixItKind::fixItInsertBefore, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 350)).add_operation (var_receiverCppVarName_14537, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 350)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 350)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 350)) ;
+        GGS_semanticExpressionForGeneration extractedValue_14346_exp_0 ;
+        enumerator_13715.current (HERE).getAssociatedValuesFor_fixItInsertBefore (extractedValue_14346_exp_0) ;
+        GGS_string var_receiverCppVarName_14523 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_14346_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_14523, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 343)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 350)).add_operation (GGS_string (", EnumFixItKind::fixItInsertBefore, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 350)).add_operation (var_receiverCppVarName_14523, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 350)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 350)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 350)) ;
       }
       break ;
     case GGS_fixitElementForGeneration::Enumeration::enum_fixItInsertAfter:
       {
-        GGS_semanticExpressionForGeneration extractedValue_14767_exp_0 ;
-        enumerator_13729.current (HERE).getAssociatedValuesFor_fixItInsertAfter (extractedValue_14767_exp_0) ;
-        GGS_string var_receiverCppVarName_14944 ;
-        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_14767_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_14944, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 352)) ;
-        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 359)).add_operation (GGS_string (", EnumFixItKind::fixItInsertAfter, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 359)).add_operation (var_receiverCppVarName_14944, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 359)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 359)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 359)) ;
+        GGS_semanticExpressionForGeneration extractedValue_14753_exp_0 ;
+        enumerator_13715.current (HERE).getAssociatedValuesFor_fixItInsertAfter (extractedValue_14753_exp_0) ;
+        GGS_string var_receiverCppVarName_14930 ;
+        callExtensionMethod_generateExpression ((cPtr_semanticExpressionForGeneration *) extractedValue_14753_exp_0.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_14930, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 352)) ;
+        ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("appendFixItActions (").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 359)).add_operation (GGS_string (", EnumFixItKind::fixItInsertAfter, "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 359)).add_operation (var_receiverCppVarName_14930, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 359)).add_operation (GGS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas4", 359)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas4", 359)) ;
       }
       break ;
     }
-    enumerator_13729.gotoNextObject () ;
+    enumerator_13715.gotoNextObject () ;
   }
 }
 
@@ -8155,25 +8143,21 @@ void GGS__5B_semanticInstructionAST_5D_::setter_popLast (GGS_semanticInstruction
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_semanticInstructionAST_5D_::method_first (GGS_semanticInstructionAST & outValue,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_LOCATION_ARGS) const {
+GGS_semanticInstructionAST GGS__5B_semanticInstructionAST_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_semanticInstructionAST () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_semanticInstructionAST_5D_::method_last (GGS_semanticInstructionAST & outValue,
-                                                      Compiler * /* inCompiler */
-                                                      COMMA_LOCATION_ARGS) const {
+GGS_semanticInstructionAST GGS__5B_semanticInstructionAST_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_semanticInstructionAST () ;
   }
 }
 
@@ -10061,25 +10045,21 @@ void GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::setter_popLast (GGS_f
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::method_first (GGS_forInstructionEnumeratedObjectElementAST & outValue,
-                                                                         Compiler * /* inCompiler */
-                                                                         COMMA_LOCATION_ARGS) const {
+GGS_forInstructionEnumeratedObjectElementAST GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_forInstructionEnumeratedObjectElementAST () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::method_last (GGS_forInstructionEnumeratedObjectElementAST & outValue,
-                                                                        Compiler * /* inCompiler */
-                                                                        COMMA_LOCATION_ARGS) const {
+GGS_forInstructionEnumeratedObjectElementAST GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_forInstructionEnumeratedObjectElementAST () ;
   }
 }
 
@@ -10699,25 +10679,21 @@ void GGS__5B_forInstructionEnumeratedObjectAST_5D_::setter_popLast (GGS_forInstr
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_forInstructionEnumeratedObjectAST_5D_::method_first (GGS_forInstructionEnumeratedObjectAST & outValue,
-                                                                  Compiler * /* inCompiler */
-                                                                  COMMA_LOCATION_ARGS) const {
+GGS_forInstructionEnumeratedObjectAST GGS__5B_forInstructionEnumeratedObjectAST_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_forInstructionEnumeratedObjectAST () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_forInstructionEnumeratedObjectAST_5D_::method_last (GGS_forInstructionEnumeratedObjectAST & outValue,
-                                                                 Compiler * /* inCompiler */
-                                                                 COMMA_LOCATION_ARGS) const {
+GGS_forInstructionEnumeratedObjectAST GGS__5B_forInstructionEnumeratedObjectAST_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_forInstructionEnumeratedObjectAST () ;
   }
 }
 
@@ -11023,25 +10999,21 @@ void GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::setter_popLast (GG
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::method_first (GGS_forInstructionEnumeratedObjectForGeneration & outValue,
-                                                                            Compiler * /* inCompiler */
-                                                                            COMMA_LOCATION_ARGS) const {
+GGS_forInstructionEnumeratedObjectForGeneration GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_forInstructionEnumeratedObjectForGeneration () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::method_last (GGS_forInstructionEnumeratedObjectForGeneration & outValue,
-                                                                           Compiler * /* inCompiler */
-                                                                           COMMA_LOCATION_ARGS) const {
+GGS_forInstructionEnumeratedObjectForGeneration GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_forInstructionEnumeratedObjectForGeneration () ;
   }
 }
 
@@ -11399,25 +11371,21 @@ void GGS__5B_switchBranchAST_5D_::setter_popLast (GGS_switchBranchAST & outValue
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_switchBranchAST_5D_::method_first (GGS_switchBranchAST & outValue,
-                                                Compiler * /* inCompiler */
-                                                COMMA_LOCATION_ARGS) const {
+GGS_switchBranchAST GGS__5B_switchBranchAST_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_switchBranchAST () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_switchBranchAST_5D_::method_last (GGS_switchBranchAST & outValue,
-                                               Compiler * /* inCompiler */
-                                               COMMA_LOCATION_ARGS) const {
+GGS_switchBranchAST GGS__5B_switchBranchAST_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_switchBranchAST () ;
   }
 }
 
@@ -11680,25 +11648,21 @@ void GGS__5B_switchExtractedValuesAST_5D_::setter_popLast (GGS_switchExtractedVa
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_switchExtractedValuesAST_5D_::method_first (GGS_switchExtractedValuesAST & outValue,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_LOCATION_ARGS) const {
+GGS_switchExtractedValuesAST GGS__5B_switchExtractedValuesAST_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_switchExtractedValuesAST () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_switchExtractedValuesAST_5D_::method_last (GGS_switchExtractedValuesAST & outValue,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_LOCATION_ARGS) const {
+GGS_switchExtractedValuesAST GGS__5B_switchExtractedValuesAST_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_switchExtractedValuesAST () ;
   }
 }
 
@@ -12060,25 +12024,21 @@ void GGS__5B_switchBranchForGeneration_5D_::setter_popLast (GGS_switchBranchForG
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_switchBranchForGeneration_5D_::method_first (GGS_switchBranchForGeneration & outValue,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_LOCATION_ARGS) const {
+GGS_switchBranchForGeneration GGS__5B_switchBranchForGeneration_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_switchBranchForGeneration () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_switchBranchForGeneration_5D_::method_last (GGS_switchBranchForGeneration & outValue,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_LOCATION_ARGS) const {
+GGS_switchBranchForGeneration GGS__5B_switchBranchForGeneration_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_switchBranchForGeneration () ;
   }
 }
 
@@ -12341,25 +12301,21 @@ void GGS__5B_extractedAssociatedValueForGeneration_5D_::setter_popLast (GGS_extr
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_extractedAssociatedValueForGeneration_5D_::method_first (GGS_extractedAssociatedValueForGeneration & outValue,
-                                                                      Compiler * /* inCompiler */
-                                                                      COMMA_LOCATION_ARGS) const {
+GGS_extractedAssociatedValueForGeneration GGS__5B_extractedAssociatedValueForGeneration_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_extractedAssociatedValueForGeneration () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_extractedAssociatedValueForGeneration_5D_::method_last (GGS_extractedAssociatedValueForGeneration & outValue,
-                                                                     Compiler * /* inCompiler */
-                                                                     COMMA_LOCATION_ARGS) const {
+GGS_extractedAssociatedValueForGeneration GGS__5B_extractedAssociatedValueForGeneration_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_extractedAssociatedValueForGeneration () ;
   }
 }
 
@@ -12667,7 +12623,7 @@ GGS_setterCallInstructionForGeneration GGS_setterCallInstructionForGeneration::
 init_21__21__21__21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                                               const GGS_string & in_mReceiverCppName,
                                               const GGS_string & in_mReceiverBaseName,
-                                              const GGS_lstringlist & in_mReceiverStructAttributes,
+                                              const GGS__5B_lstring_5D_ & in_mReceiverStructAttributes,
                                               const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                               const GGS_lstring & in_mSetterName,
                                               const GGS_methodKind & in_mKind,
@@ -12690,7 +12646,7 @@ void cPtr_setterCallInstructionForGeneration::
 setterCallInstructionForGeneration_init_21__21__21__21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                                                                                  const GGS_string & in_mReceiverCppName,
                                                                                  const GGS_string & in_mReceiverBaseName,
-                                                                                 const GGS_lstringlist & in_mReceiverStructAttributes,
+                                                                                 const GGS__5B_lstring_5D_ & in_mReceiverStructAttributes,
                                                                                  const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                                                  const GGS_lstring & in_mSetterName,
                                                                                  const GGS_methodKind & in_mKind,
@@ -12754,9 +12710,9 @@ GGS_string GGS_setterCallInstructionForGeneration::readProperty_mReceiverBaseNam
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_setterCallInstructionForGeneration::readProperty_mReceiverStructAttributes (void) const {
+GGS__5B_lstring_5D_ GGS_setterCallInstructionForGeneration::readProperty_mReceiverStructAttributes (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_setterCallInstructionForGeneration * p = (cPtr_setterCallInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_setterCallInstructionForGeneration) ;
@@ -12859,7 +12815,7 @@ mProperty_mMethodBaseType () {
 cPtr_setterCallInstructionForGeneration::cPtr_setterCallInstructionForGeneration (const GGS_location & in_mInstructionLocation,
                                                                                   const GGS_string & in_mReceiverCppName,
                                                                                   const GGS_string & in_mReceiverBaseName,
-                                                                                  const GGS_lstringlist & in_mReceiverStructAttributes,
+                                                                                  const GGS__5B_lstring_5D_ & in_mReceiverStructAttributes,
                                                                                   const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                                                   const GGS_lstring & in_mSetterName,
                                                                                   const GGS_methodKind & in_mKind,

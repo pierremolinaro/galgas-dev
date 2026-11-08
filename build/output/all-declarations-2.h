@@ -8722,18 +8722,14 @@ class GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ final : public AC_GALG
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_abstractLexicalRoutineActualArgumentAST & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_abstractLexicalRoutineActualArgumentAST & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_abstractLexicalRoutineActualArgumentAST getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_abstractLexicalRoutineActualArgumentAST getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -8771,14 +8767,14 @@ class GGS_lexicalRoutineCallInstructionAST : public GGS_lexicalInstructionAST {
 
   public: class GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ readProperty_mActualArgumentList (void) const ;
 
-  public: class GGS_lstringlist readProperty_mErrorMessageList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mErrorMessageList (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
   public: static GGS_lexicalRoutineCallInstructionAST init_21__21__21_ (const class GGS_lstring & inOperand0,
                                                                         const class GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ & inOperand1,
-                                                                        const class GGS_lstringlist & inOperand2,
+                                                                        const class GGS__5B_lstring_5D_ & inOperand2,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
@@ -8816,7 +8812,7 @@ class cPtr_lexicalRoutineCallInstructionAST : public cPtr_lexicalInstructionAST 
 //--------------------------------- Initializers
   public: void lexicalRoutineCallInstructionAST_init_21__21__21_ (const class GGS_lstring & inOperand0,
                                                                   const class GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ & inOperand1,
-                                                                  const class GGS_lstringlist & inOperand2,
+                                                                  const class GGS__5B_lstring_5D_ & inOperand2,
                                                                   Compiler * inCompiler) ;
 
 
@@ -8841,7 +8837,7 @@ class cPtr_lexicalRoutineCallInstructionAST : public cPtr_lexicalInstructionAST 
 //--- Properties
   public: GGS_lstring mProperty_mRoutineName ;
   public: GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ mProperty_mActualArgumentList ;
-  public: GGS_lstringlist mProperty_mErrorMessageList ;
+  public: GGS__5B_lstring_5D_ mProperty_mErrorMessageList ;
 
 
 //--- Default constructor
@@ -8850,7 +8846,7 @@ class cPtr_lexicalRoutineCallInstructionAST : public cPtr_lexicalInstructionAST 
 //--- Constructor
   public: cPtr_lexicalRoutineCallInstructionAST (const GGS_lstring & in_mRoutineName,
                                                  const GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ & in_mActualArgumentList,
-                                                 const GGS_lstringlist & in_mErrorMessageList,
+                                                 const GGS__5B_lstring_5D_ & in_mErrorMessageList,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 

@@ -3124,18 +3124,14 @@ class GGS__5B_uint_36__34__5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_uint_36__34_ & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_uint_36__34_ & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_uint_36__34_ getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_uint_36__34_ getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -3294,18 +3290,14 @@ class GGS__5B_string_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_string & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_string & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -3541,18 +3533,14 @@ class GGS__5B_lstring_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_lstring & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_lstring & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_lstring getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_lstring getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -3711,18 +3699,14 @@ class GGS__5B_uint_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_uint & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_uint & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -3743,217 +3727,6 @@ class GGS__5B_uint_5D_ final : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_uint_5D_ ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @lstringlist list enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_lstringlist final {
-  public: DownEnumerator_lstringlist (const class GGS_lstringlist & inList) ;
-
-  public: ~ DownEnumerator_lstringlist (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
-
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_lstring current_mValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lstringlist_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS_lstringlist_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: DownEnumerator_lstringlist (const DownEnumerator_lstringlist &) = delete ;
-  private: DownEnumerator_lstringlist & operator = (const DownEnumerator_lstringlist &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_lstringlist final {
-  public: UpEnumerator_lstringlist (const class GGS_lstringlist & inList)  ;
-
-  public: ~ UpEnumerator_lstringlist (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
-
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_lstring current_mValue (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_lstringlist_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS_lstringlist_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: UpEnumerator_lstringlist (const UpEnumerator_lstringlist &) = delete ;
-  private: UpEnumerator_lstringlist & operator = (const UpEnumerator_lstringlist &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// @lstringlist list
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstringlist : public AC_GALGAS_root {
-//--- Private property
-  private: GenericArray <GGS_lstringlist_2E_element> mArray ;
-
-//--- Default constructor
-  public: GGS_lstringlist (void) ;
-
-//--- Destructor
-  public: virtual ~ GGS_lstringlist (void) = default ;
-
-//--- Copy
-  public: GGS_lstringlist (const GGS_lstringlist &) = default ;
-  public: GGS_lstringlist & operator = (const GGS_lstringlist &) = default ;
-
-//--- Is valid
-  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
-
-//--- Drop
-  public: inline virtual void drop (void) override { mArray.removeAll () ; }
-
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Count
-  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
- 
-//--- sortedElementArray
-  public : inline GenericArray <GGS_lstringlist_2E_element> sortedElementArray (void) const {
-    return mArray ;
-  }
-
-//--- subList
-  private: GGS_lstringlist subList (const int32_t inStart,
-                                    const int32_t inLength,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) const ;
-
-
-//--- List constructor for graph
-  public: GGS_lstringlist (const CollectionElementArray & inSharedArray) ;
-
-//--- Element constructor
-  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                 const class GGS_lstring & in_mValue
-                                                 COMMA_LOCATION_ARGS) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_lstringlist init (Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
-  public: static class GGS_lstringlist class_func_listWithValue (const class GGS_lstring & inOperand0
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: void plusAssignOperation (const GGS_lstringlist inOperand,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_lstring & inOperand0
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator, collection value
-  public: void plusPlusAssignOperation (const GGS_lstringlist_2E_element & inOperand
-                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: GGS_lstringlist add_operation (const GGS_lstringlist & inOperand,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_lstringlist & inOperand) const ;
-
-//--------------------------------- Setters
-  public: void setter_append (class GGS_lstring constinArgument0,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_insertAtIndex (class GGS_lstring constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popFirst (class GGS_lstring & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_lstring & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeAtIndex (class GGS_lstring & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMValueAtIndex (class GGS_lstring constinArgument0,
-                                        class GGS_uint constinArgument1,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: void method_first (class GGS_lstring & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_lstring & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
-
-  public: class GGS_lstring getter_mValueAtIndex (const class GGS_uint & constinOperand0,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
-
-  public: class GGS_lstringlist getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_lstringlist getter_subListToIndex (const class GGS_uint & constinOperand0,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_lstringlist getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator_lstringlist ;
-  friend class DownEnumerator_lstringlist ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lstringlist ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @stringlist list enumerator
@@ -5160,72 +4933,6 @@ class GGS_bigint_3F_ : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigint_3F_ ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @lstringlist_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstringlist_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_lstring mProperty_mValue ;
-  public: inline GGS_lstring readProperty_mValue (void) const {
-    return mProperty_mValue ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_lstringlist_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMValue (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mValue = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_lstringlist_2E_element (const GGS_lstring & in_mValue) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_lstringlist_2E_element (const GGS_lstringlist_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_lstringlist_2E_element & operator = (const GGS_lstringlist_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_lstringlist_2E_element init_21_ (const class GGS_lstring & inOperand0,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_lstringlist_2E_element & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lstringlist_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @stringlist_2E_element struct

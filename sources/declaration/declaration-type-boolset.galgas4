@@ -19,48 +19,6 @@
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3DeclarationsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    $boolset$
-//    $@type$ (?let @lstring boolsetTypeName) indexing (structDefinition)
-//    let @bool isEquatable
-//    select
-//      isEquatable = false
-//    or
-//      $%equatable$
-//      isEquatable = true
-//    end
-//    ${$
-//    var @lstringlist slotList = @()
-//    repeat
-//    while
-//      $case$
-//      $identifier$ (?let slotName)
-//      slotList ++= @(!slotName)
-//    while
-//      <method_declaration_ggs3> (!boolsetTypeName, !?ioDeclarations)
-//    end
-//    $}$
-//    if slotList.count == 0 then
-//      error (boolsetTypeName : "a boolset type must define at least one case constant")
-//    end
-//    ioDeclarations.mDeclarationList ++= @(!@boolsetDeclarationAST (
-//      !isPredefined: false,
-//      boolsetTypeName,
-//      slotList,
-//      !isEquatable: isEquatable
-//    ))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -76,12 +34,12 @@ syntax extension galgas4DeclarationsSyntax {
       isEquatable = true
     end
     ${$
-    var @lstringlist slotList = @()
+    var [@lstring] slotList = @()
     repeat
     while
       $case$
       $identifier$ (?let slotName)
-      slotList ++= @(slotName)
+      slotList ++= slotName
     while
       <method_declaration> (boolsetTypeName, !?ioDeclarations)
     end
@@ -107,7 +65,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 final class @boolsetDeclarationAST : @semanticDeclarationAST {
   private let @lstring mBoolsetTypeName
-  private let @lstringlist mFlagList
+  private let [@lstring] mFlagList
   private let @bool isEquatable #initArgLabel
 }
 
@@ -151,10 +109,10 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
 //--- Check unicity of slot names
   var @stringset slotNameSet = @()
   for slotName in self.mFlagList do
-    if slotNameSet.contains (slotName.mValue) then
-      error (slotName.mValue : "duplicated slot name")
+    if slotNameSet.contains (slotName) then
+      error (slotName : "duplicated slot name")
     end
-    slotNameSet ++= slotName.mValue
+    slotNameSet ++= slotName
   end
 //--- boolset type index
   !?ioTypeMap.makeEntry (self.mBoolsetTypeName, ?let boolsetTypeIndex)
@@ -173,8 +131,8 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
 //--- class functions
   var @classFunctionMap classFunctionMap = @()
   for slotName in self.mFlagList do
-    if not classFunctionMap.contains (slotName.mValue) then
-      !?classFunctionMap.insertKey (slotName.mValue, @(), false, boolsetTypeIndex)
+    if not classFunctionMap.contains (slotName) then
+      !?classFunctionMap.insertKey (slotName, @(), false, boolsetTypeIndex)
     end
   end
 //--- Add initializer without argument
@@ -267,7 +225,7 @@ override proc @boolsetDeclarationAST.semanticAnalysis
 ) {
 //--- Check flags count
   if self.mFlagList.count > 64 then
-    let @location s = self.mFlagList.mValueAtIndex (64)
+    let @location s = self.mFlagList [64]
     error (s : "max flags count is 64 (here: " + self.mFlagList.count + ")")
   end
 //--- Useful entities graph
@@ -299,7 +257,7 @@ override proc @boolsetDeclarationAST.semanticAnalysis
 //--------------------------------------------------------------------------------------------------
 
 final class @boolsetTypeForGeneration : @semanticTypeForGeneration {
-  private let @lstringlist mFlagList
+  private let [@lstring] mFlagList
   private let @bool equatable
 }
 
@@ -311,13 +269,13 @@ filewrapper structGenerationTemplate in "../+generation-templates/type_generatio
   template boolsetTypeHeader1 : "GALGAS_boolset.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
-    ?@lstringlist SLOT_LIST
+    ?[@lstring] SLOT_LIST
   )
 
   template boolsetTypeSpecificImplementation : "GALGAS_boolset.cpp.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
-    ?@lstringlist SLOT_LIST,
+    ?[@lstring] SLOT_LIST,
     ?@bigint FULL_SET,
     ?@bool EQUATABLE
   )

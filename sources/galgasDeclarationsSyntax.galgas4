@@ -101,14 +101,14 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <filewrapper_text_files> (!@lstringlist outFilewrapperTextFileExtensionList ) {
+  rule <filewrapper_text_files> (![@lstring] outFilewrapperTextFileExtensionList ) {
     outFilewrapperTextFileExtensionList = @()
     ${$
     select
     or
       repeat
         $"string"$ (?let @lstring pathExtension)
-        outFilewrapperTextFileExtensionList ++= @(pathExtension)
+        outFilewrapperTextFileExtensionList ++= pathExtension
       while
         $,$
       end
@@ -118,14 +118,14 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <filewrapper_binary_files> (!@lstringlist outFilewrapperBinaryFileExtensionList ) {
+  rule <filewrapper_binary_files> (![@lstring] outFilewrapperBinaryFileExtensionList ) {
     outFilewrapperBinaryFileExtensionList = @()
     ${$
     select
     or
       repeat
         $"string"$ (?let @lstring pathExtension)
-        outFilewrapperBinaryFileExtensionList ++= @(pathExtension)
+        outFilewrapperBinaryFileExtensionList ++= pathExtension
       while
         $,$
       end

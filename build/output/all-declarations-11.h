@@ -1367,18 +1367,14 @@ class GGS__5B_enumConstant_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_enumConstant & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_enumConstant & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_enumConstant getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_enumConstant getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -1537,18 +1533,14 @@ class GGS__5B_associatedValue_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_associatedValue & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_associatedValue & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_associatedValue getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_associatedValue getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -1868,18 +1860,14 @@ class GGS__5B_enumConstantForGeneration_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_enumConstantForGeneration & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_enumConstantForGeneration & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_enumConstantForGeneration getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_enumConstantForGeneration getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -2492,18 +2480,14 @@ class GGS__5B_graphInsertModifier_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_graphInsertModifier & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_graphInsertModifier & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_graphInsertModifier getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_graphInsertModifier getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -3515,18 +3499,14 @@ class GGS__5B_insertSetterAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_insertSetterAST & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_insertSetterAST & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_insertSetterAST getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_insertSetterAST getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -3771,18 +3751,14 @@ class GGS__5B_mapAccessorAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_mapAccessorAST & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_mapAccessorAST & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_mapAccessorAST getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_mapAccessorAST getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -4016,18 +3992,14 @@ class GGS__5B_location_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_location & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_location & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_location getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_location getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -5130,7 +5102,7 @@ class GGS_boolsetDeclarationAST : public GGS_semanticDeclarationAST {
 //--------------------------------- Property access
   public: class GGS_lstring readProperty_mBoolsetTypeName (void) const ;
 
-  public: class GGS_lstringlist readProperty_mFlagList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mFlagList (void) const ;
 
   public: class GGS_bool readProperty_isEquatable (void) const ;
 
@@ -5139,7 +5111,7 @@ class GGS_boolsetDeclarationAST : public GGS_semanticDeclarationAST {
 //--------------------------------- Initializers
   public: static GGS_boolsetDeclarationAST init_21_isPredefined_21__21__21_isEquatable (const class GGS_bool & inOperand0,
                                                                                         const class GGS_lstring & inOperand1,
-                                                                                        const class GGS_lstringlist & inOperand2,
+                                                                                        const class GGS__5B_lstring_5D_ & inOperand2,
                                                                                         const class GGS_bool & inOperand3,
                                                                                         Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) ;
@@ -5178,7 +5150,7 @@ class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
 //--------------------------------- Initializers
   public: void boolsetDeclarationAST_init_21_isPredefined_21__21__21_isEquatable (const class GGS_bool & inOperand0,
                                                                                   const class GGS_lstring & inOperand1,
-                                                                                  const class GGS_lstringlist & inOperand2,
+                                                                                  const class GGS__5B_lstring_5D_ & inOperand2,
                                                                                   const class GGS_bool & inOperand3,
                                                                                   Compiler * inCompiler) ;
 
@@ -5218,7 +5190,7 @@ class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Properties
   public: GGS_lstring mProperty_mBoolsetTypeName ;
-  public: GGS_lstringlist mProperty_mFlagList ;
+  public: GGS__5B_lstring_5D_ mProperty_mFlagList ;
   public: GGS_bool mProperty_isEquatable ;
 
 
@@ -5228,7 +5200,7 @@ class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Constructor
   public: cPtr_boolsetDeclarationAST (const GGS_bool & in_isPredefined,
                                       const GGS_lstring & in_mBoolsetTypeName,
-                                      const GGS_lstringlist & in_mFlagList,
+                                      const GGS__5B_lstring_5D_ & in_mFlagList,
                                       const GGS_bool & in_isEquatable,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
@@ -5328,7 +5300,7 @@ class GGS_boolsetTypeForGeneration : public GGS_semanticTypeForGeneration {
   public: GGS_boolsetTypeForGeneration (const class cPtr_boolsetTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_lstringlist readProperty_mFlagList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mFlagList (void) const ;
 
   public: class GGS_bool readProperty_equatable (void) const ;
 
@@ -5337,7 +5309,7 @@ class GGS_boolsetTypeForGeneration : public GGS_semanticTypeForGeneration {
 //--------------------------------- Initializers
   public: static GGS_boolsetTypeForGeneration init_21_infoMessage_21__21__21_ (const class GGS_string & inOperand0,
                                                                                const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                               const class GGS_lstringlist & inOperand2,
+                                                                               const class GGS__5B_lstring_5D_ & inOperand2,
                                                                                const class GGS_bool & inOperand3,
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
@@ -5376,7 +5348,7 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--------------------------------- Initializers
   public: void boolsetTypeForGeneration_init_21_infoMessage_21__21__21_ (const class GGS_string & inOperand0,
                                                                          const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                         const class GGS_lstringlist & inOperand2,
+                                                                         const class GGS__5B_lstring_5D_ & inOperand2,
                                                                          const class GGS_bool & inOperand3,
                                                                          Compiler * inCompiler) ;
 
@@ -5393,7 +5365,7 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_lstringlist mProperty_mFlagList ;
+  public: GGS__5B_lstring_5D_ mProperty_mFlagList ;
   public: GGS_bool mProperty_equatable ;
 
 
@@ -5403,7 +5375,7 @@ class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Constructor
   public: cPtr_boolsetTypeForGeneration (const GGS_string & in_infoMessage,
                                          const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                         const GGS_lstringlist & in_mFlagList,
+                                         const GGS__5B_lstring_5D_ & in_mFlagList,
                                          const GGS_bool & in_equatable,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
@@ -6490,18 +6462,14 @@ class GGS__5B_sortedListSortDescriptorAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_sortedListSortDescriptorAST & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_sortedListSortDescriptorAST & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_sortedListSortDescriptorAST getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_sortedListSortDescriptorAST getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -6735,18 +6703,14 @@ class GGS__5B_sortDescriptorForGeneration_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_sortDescriptorForGeneration & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_sortDescriptorForGeneration & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_sortDescriptorForGeneration getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_sortDescriptorForGeneration getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -7382,18 +7346,14 @@ class GGS__5B_typeNameFormalParameterName_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_typeNameFormalParameterName & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_typeNameFormalParameterName & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_typeNameFormalParameterName getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_typeNameFormalParameterName getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -7638,18 +7598,14 @@ class GGS__5B__5B_typeNameFormalParameterName_5D__5D_ final : public AC_GALGAS_r
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS__5B_typeNameFormalParameterName_5D_ & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS__5B_typeNameFormalParameterName_5D_ & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS__5B_typeNameFormalParameterName_5D_ getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS__5B_typeNameFormalParameterName_5D_ getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -7808,18 +7764,14 @@ class GGS__5B_externTypeGetter_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_externTypeGetter & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_externTypeGetter & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_externTypeGetter getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_externTypeGetter getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -8064,18 +8016,14 @@ class GGS__5B_externTypeSetter_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_externTypeSetter & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_externTypeSetter & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_externTypeSetter getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_externTypeSetter getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -8309,18 +8257,14 @@ class GGS__5B_externTypeMethod_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_externTypeMethod & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_externTypeMethod & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_externTypeMethod getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_externTypeMethod getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts

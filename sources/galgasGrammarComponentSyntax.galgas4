@@ -53,11 +53,11 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     end
     ${$
   //--- Imports
-    var @lstringlist syntaxComponents = @()
+    var [@lstring] syntaxComponents = @()
     repeat
       $syntax$
       $identifier$ (?let @lstring syntaxComponent)
-      syntaxComponents++= @(syntaxComponent)
+      syntaxComponents++= syntaxComponent
     while
     end
   //--- Root symbol
@@ -71,12 +71,12 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       <grammar_start_symbol_label> (!?ioDeclarations, labelName, !?mLabelList)
      end
   //--- Unused non terminal symbols
-    var unusedNonterminalList = @lstringlist ()
+    var unusedNonterminalList = [@lstring] ()
     repeat
     while
       $#unused$
       $<non_terminal>$ (?let @lstring nonterminalSymbolName)
-      unusedNonterminalList ++= @(nonterminalSymbolName)
+      unusedNonterminalList ++= nonterminalSymbolName
     end
   //---
     $}$

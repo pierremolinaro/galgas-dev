@@ -775,7 +775,7 @@ class GGS_errorInstructionAST : public GGS_semanticInstructionAST {
 
   public: class GGS_semanticExpressionAST readProperty_mMessageExpression (void) const ;
 
-  public: class GGS_lstringlist readProperty_mBuiltVariableList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mBuiltVariableList (void) const ;
 
   public: class GGS__5B_fixitElementAST_5D_ readProperty_mFixitListAST (void) const ;
 
@@ -785,7 +785,7 @@ class GGS_errorInstructionAST : public GGS_semanticInstructionAST {
   public: static GGS_errorInstructionAST init_21__21__21__21__21_ (const class GGS_location & inOperand0,
                                                                    const class GGS_semanticExpressionAST & inOperand1,
                                                                    const class GGS_semanticExpressionAST & inOperand2,
-                                                                   const class GGS_lstringlist & inOperand3,
+                                                                   const class GGS__5B_lstring_5D_ & inOperand3,
                                                                    const class GGS__5B_fixitElementAST_5D_ & inOperand4,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
@@ -825,7 +825,7 @@ class cPtr_errorInstructionAST : public cPtr_semanticInstructionAST {
   public: void errorInstructionAST_init_21__21__21__21__21_ (const class GGS_location & inOperand0,
                                                              const class GGS_semanticExpressionAST & inOperand1,
                                                              const class GGS_semanticExpressionAST & inOperand2,
-                                                             const class GGS_lstringlist & inOperand3,
+                                                             const class GGS__5B_lstring_5D_ & inOperand3,
                                                              const class GGS__5B_fixitElementAST_5D_ & inOperand4,
                                                              Compiler * inCompiler) ;
 
@@ -846,7 +846,7 @@ class cPtr_errorInstructionAST : public cPtr_semanticInstructionAST {
 //--- Properties
   public: GGS_semanticExpressionAST mProperty_mLocationExpression ;
   public: GGS_semanticExpressionAST mProperty_mMessageExpression ;
-  public: GGS_lstringlist mProperty_mBuiltVariableList ;
+  public: GGS__5B_lstring_5D_ mProperty_mBuiltVariableList ;
   public: GGS__5B_fixitElementAST_5D_ mProperty_mFixitListAST ;
 
 
@@ -857,7 +857,7 @@ class cPtr_errorInstructionAST : public cPtr_semanticInstructionAST {
   public: cPtr_errorInstructionAST (const GGS_location & in_mInstructionLocation,
                                     const GGS_semanticExpressionAST & in_mLocationExpression,
                                     const GGS_semanticExpressionAST & in_mMessageExpression,
-                                    const GGS_lstringlist & in_mBuiltVariableList,
+                                    const GGS__5B_lstring_5D_ & in_mBuiltVariableList,
                                     const GGS__5B_fixitElementAST_5D_ & in_mFixitListAST,
                                     Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
@@ -1817,7 +1817,7 @@ class GGS_opAssignExpressionInstructionAST : public GGS_semanticInstructionAST {
 
   public: class GGS_lstring readProperty_mReceiverName (void) const ;
 
-  public: class GGS_lstringlist readProperty_mStructAttributeList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mStructAttributeList (void) const ;
 
   public: class GGS_opAssignmentOperator readProperty_mOperator (void) const ;
 
@@ -1829,7 +1829,7 @@ class GGS_opAssignExpressionInstructionAST : public GGS_semanticInstructionAST {
   public: static GGS_opAssignExpressionInstructionAST init_21__21__21__21__21__21_ (const class GGS_location & inOperand0,
                                                                                     const class GGS_bool & inOperand1,
                                                                                     const class GGS_lstring & inOperand2,
-                                                                                    const class GGS_lstringlist & inOperand3,
+                                                                                    const class GGS__5B_lstring_5D_ & inOperand3,
                                                                                     const class GGS_opAssignmentOperator & inOperand4,
                                                                                     const class GGS_semanticExpressionAST & inOperand5,
                                                                                     Compiler * inCompiler
@@ -1870,7 +1870,7 @@ class cPtr_opAssignExpressionInstructionAST : public cPtr_semanticInstructionAST
   public: void opAssignExpressionInstructionAST_init_21__21__21__21__21__21_ (const class GGS_location & inOperand0,
                                                                               const class GGS_bool & inOperand1,
                                                                               const class GGS_lstring & inOperand2,
-                                                                              const class GGS_lstringlist & inOperand3,
+                                                                              const class GGS__5B_lstring_5D_ & inOperand3,
                                                                               const class GGS_opAssignmentOperator & inOperand4,
                                                                               const class GGS_semanticExpressionAST & inOperand5,
                                                                               Compiler * inCompiler) ;
@@ -1892,7 +1892,7 @@ class cPtr_opAssignExpressionInstructionAST : public cPtr_semanticInstructionAST
 //--- Properties
   public: GGS_bool mProperty_mPrefixedBySelf ;
   public: GGS_lstring mProperty_mReceiverName ;
-  public: GGS_lstringlist mProperty_mStructAttributeList ;
+  public: GGS__5B_lstring_5D_ mProperty_mStructAttributeList ;
   public: GGS_opAssignmentOperator mProperty_mOperator ;
   public: GGS_semanticExpressionAST mProperty_mExpression ;
 
@@ -1904,7 +1904,7 @@ class cPtr_opAssignExpressionInstructionAST : public cPtr_semanticInstructionAST
   public: cPtr_opAssignExpressionInstructionAST (const GGS_location & in_mInstructionLocation,
                                                  const GGS_bool & in_mPrefixedBySelf,
                                                  const GGS_lstring & in_mReceiverName,
-                                                 const GGS_lstringlist & in_mStructAttributeList,
+                                                 const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                  const GGS_opAssignmentOperator & in_mOperator,
                                                  const GGS_semanticExpressionAST & in_mExpression,
                                                  Compiler * inCompiler
@@ -2009,7 +2009,7 @@ class GGS_plusPlusEqualElementInstructionAST : public GGS_semanticInstructionAST
 
   public: class GGS_lstring readProperty_mReceiverName (void) const ;
 
-  public: class GGS_lstringlist readProperty_mStructAttributeList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mStructAttributeList (void) const ;
 
   public: class GGS_semanticExpressionAST readProperty_mExpression (void) const ;
 
@@ -2019,7 +2019,7 @@ class GGS_plusPlusEqualElementInstructionAST : public GGS_semanticInstructionAST
   public: static GGS_plusPlusEqualElementInstructionAST init_21__21__21__21__21_ (const class GGS_location & inOperand0,
                                                                                   const class GGS_bool & inOperand1,
                                                                                   const class GGS_lstring & inOperand2,
-                                                                                  const class GGS_lstringlist & inOperand3,
+                                                                                  const class GGS__5B_lstring_5D_ & inOperand3,
                                                                                   const class GGS_semanticExpressionAST & inOperand4,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
@@ -2059,7 +2059,7 @@ class cPtr_plusPlusEqualElementInstructionAST : public cPtr_semanticInstructionA
   public: void plusPlusEqualElementInstructionAST_init_21__21__21__21__21_ (const class GGS_location & inOperand0,
                                                                             const class GGS_bool & inOperand1,
                                                                             const class GGS_lstring & inOperand2,
-                                                                            const class GGS_lstringlist & inOperand3,
+                                                                            const class GGS__5B_lstring_5D_ & inOperand3,
                                                                             const class GGS_semanticExpressionAST & inOperand4,
                                                                             Compiler * inCompiler) ;
 
@@ -2080,7 +2080,7 @@ class cPtr_plusPlusEqualElementInstructionAST : public cPtr_semanticInstructionA
 //--- Properties
   public: GGS_bool mProperty_mPrefixedBySelf ;
   public: GGS_lstring mProperty_mReceiverName ;
-  public: GGS_lstringlist mProperty_mStructAttributeList ;
+  public: GGS__5B_lstring_5D_ mProperty_mStructAttributeList ;
   public: GGS_semanticExpressionAST mProperty_mExpression ;
 
 
@@ -2091,7 +2091,7 @@ class cPtr_plusPlusEqualElementInstructionAST : public cPtr_semanticInstructionA
   public: cPtr_plusPlusEqualElementInstructionAST (const GGS_location & in_mInstructionLocation,
                                                    const GGS_bool & in_mPrefixedBySelf,
                                                    const GGS_lstring & in_mReceiverName,
-                                                   const GGS_lstringlist & in_mStructAttributeList,
+                                                   const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                    const GGS_semanticExpressionAST & in_mExpression,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
@@ -3823,7 +3823,7 @@ class GGS_setterCallInstructionAST : public GGS_semanticInstructionAST {
 
   public: class GGS_lstring readProperty_mReceiverName (void) const ;
 
-  public: class GGS_lstringlist readProperty_mReceiverStructProperties (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mReceiverStructProperties (void) const ;
 
   public: class GGS_lstring readProperty_mSetterName (void) const ;
 
@@ -3835,7 +3835,7 @@ class GGS_setterCallInstructionAST : public GGS_semanticInstructionAST {
   public: static GGS_setterCallInstructionAST init_21__21__21__21__21__21_ (const class GGS_location & inOperand0,
                                                                             const class GGS_bool & inOperand1,
                                                                             const class GGS_lstring & inOperand2,
-                                                                            const class GGS_lstringlist & inOperand3,
+                                                                            const class GGS__5B_lstring_5D_ & inOperand3,
                                                                             const class GGS_lstring & inOperand4,
                                                                             const class GGS_actualParameterListAST & inOperand5,
                                                                             Compiler * inCompiler
@@ -3876,7 +3876,7 @@ class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
   public: void setterCallInstructionAST_init_21__21__21__21__21__21_ (const class GGS_location & inOperand0,
                                                                       const class GGS_bool & inOperand1,
                                                                       const class GGS_lstring & inOperand2,
-                                                                      const class GGS_lstringlist & inOperand3,
+                                                                      const class GGS__5B_lstring_5D_ & inOperand3,
                                                                       const class GGS_lstring & inOperand4,
                                                                       const class GGS_actualParameterListAST & inOperand5,
                                                                       Compiler * inCompiler) ;
@@ -3898,7 +3898,7 @@ class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
 //--- Properties
   public: GGS_bool mProperty_mPrefixedBySelf ;
   public: GGS_lstring mProperty_mReceiverName ;
-  public: GGS_lstringlist mProperty_mReceiverStructProperties ;
+  public: GGS__5B_lstring_5D_ mProperty_mReceiverStructProperties ;
   public: GGS_lstring mProperty_mSetterName ;
   public: GGS_actualParameterListAST mProperty_mActualParameterList ;
 
@@ -3910,7 +3910,7 @@ class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
   public: cPtr_setterCallInstructionAST (const GGS_location & in_mInstructionLocation,
                                          const GGS_bool & in_mPrefixedBySelf,
                                          const GGS_lstring & in_mReceiverName,
-                                         const GGS_lstringlist & in_mReceiverStructProperties,
+                                         const GGS__5B_lstring_5D_ & in_mReceiverStructProperties,
                                          const GGS_lstring & in_mSetterName,
                                          const GGS_actualParameterListAST & in_mActualParameterList,
                                          Compiler * inCompiler

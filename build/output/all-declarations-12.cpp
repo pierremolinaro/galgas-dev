@@ -2369,7 +2369,7 @@ GGS_galgasGUIComponentListAST_2E_element & GGS_galgasGUIComponentListAST_2E_elem
 //---Synthetized initializer -----------------------------------------------------------------------
 
 GGS_galgasGUIComponentListAST_2E_element GGS_galgasGUIComponentListAST_2E_element::init_21__21__21__21__21_ (const GGS_lstring & in_mGUIComponentName,
-                                                                                                             const GGS_lstringlist & in_mImportedOptionList,
+                                                                                                             const GGS__5B_lstring_5D_ & in_mImportedOptionList,
                                                                                                              const GGS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
                                                                                                              const GGS_withLexiqueListAST & in_mWithLexiqueList,
                                                                                                              const GGS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList,
@@ -2393,7 +2393,7 @@ void GGS_galgasGUIComponentListAST_2E_element::setInitializedProperties (Compile
 //--------------------------------------------------------------------------------------------------
 
 GGS_galgasGUIComponentListAST_2E_element::GGS_galgasGUIComponentListAST_2E_element (const GGS_lstring & inOperand0,
-                                                                                    const GGS_lstringlist & inOperand1,
+                                                                                    const GGS__5B_lstring_5D_ & inOperand1,
                                                                                     const GGS_guiSimpleAttributeListAST & inOperand2,
                                                                                     const GGS_withLexiqueListAST & inOperand3,
                                                                                     const GGS_projectIndexingDescriptorList & inOperand4) :
@@ -8956,7 +8956,7 @@ GGS_filewrapperMap_2E_element & GGS_filewrapperMap_2E_element::operator = (const
 
 GGS_filewrapperMap_2E_element GGS_filewrapperMap_2E_element::init_21__21__21__21__21__21__21_ (const GGS_lstring & in_lkey,
                                                                                                const GGS_lstring & in_mFilewrapperPath,
-                                                                                               const GGS_lstringlist & in_mFilewrapperExtensionList,
+                                                                                               const GGS__5B_lstring_5D_ & in_mFilewrapperExtensionList,
                                                                                                const GGS_wrapperFileMap & in_mFilewrapperFileMap,
                                                                                                const GGS_wrapperDirectoryMap & in_mFilewrapperDirectoryMap,
                                                                                                const GGS_filewrapperTemplateMap & in_mFilewrapperTemplateMap,
@@ -8984,7 +8984,7 @@ void GGS_filewrapperMap_2E_element::setInitializedProperties (Compiler * /* inCo
 
 GGS_filewrapperMap_2E_element::GGS_filewrapperMap_2E_element (const GGS_lstring & inOperand0,
                                                               const GGS_lstring & inOperand1,
-                                                              const GGS_lstringlist & inOperand2,
+                                                              const GGS__5B_lstring_5D_ & inOperand2,
                                                               const GGS_wrapperFileMap & inOperand3,
                                                               const GGS_wrapperDirectoryMap & inOperand4,
                                                               const GGS_filewrapperTemplateMap & inOperand5,

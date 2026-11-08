@@ -41,7 +41,7 @@ final class @lexicalFormalInputArgumentAST : @abstractLexicalRoutineActualArgume
 final class @lexicalRoutineCallInstructionAST : @lexicalInstructionAST {
   private let @lstring mRoutineName
   private let [@abstractLexicalRoutineActualArgumentAST] mActualArgumentList
-  private let @lstringlist mErrorMessageList
+  private let [@lstring] mErrorMessageList
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -68,13 +68,13 @@ syntax extension galgas4LexiqueComponentSyntax {
       $identifier$ (?let @lstring attributeName)
       actualArgumentList ++= @lexicalAttributeInputOutputArgumentAST (passingModeLocation, attributeName)
     end
-    var @lstringlist errorMessageList = @()
+    var [@lstring] errorMessageList = @()
     select
     or
       $error$
       repeat
         $identifier$ (?let @lstring errorMessageName)
-        errorMessageList ++= @(errorMessageName)
+        errorMessageList ++= errorMessageName
       while
         $,$
       end
@@ -274,7 +274,7 @@ override func @lexicalRoutineCallInstructionAST.generateLexicalInstructionCode (
     result += ", " + mLexicalRoutineActualArgument.generateRoutineArgument
   end
   for entry in self.mErrorMessageList do
-    result += ", gLexicalMessage_" + inScannerClassName + "_" + entry.mValue
+    result += ", gLexicalMessage_" + inScannerClassName + "_" + entry
   end
   result += ") ;\n"
 }

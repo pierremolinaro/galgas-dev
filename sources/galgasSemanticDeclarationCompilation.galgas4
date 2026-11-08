@@ -86,7 +86,7 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
   end
 //----- Check there is no undefined types
   for entry in outTypeMap.unsolvedEntryList do
-    error (entry.mValue : "the '@" + entry.mValue + "' type is undefined")
+    error (entry : "the '@" + entry + "' type is undefined")
   end
 //----- Semantic Analysis
   outSemanticDeclarationSortedListForGeneration = @()

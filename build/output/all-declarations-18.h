@@ -835,7 +835,7 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
                                                                                           const class GGS_string & in_START_5F_SYMBOL_5F_NAME,
                                                                                           const class GGS_bool & in_HAS_5F_TRANSLATE_5F_FEATURE,
                                                                                           const class GGS_string & in_GRAMMAR_5F_NAME,
-                                                                                          const class GGS_lstringlist & in_SYNTAX_5F_COMPONENTS
+                                                                                          const class GGS__5B_lstring_5D_ & in_SYNTAX_5F_COMPONENTS
                                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

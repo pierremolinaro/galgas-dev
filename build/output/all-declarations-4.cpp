@@ -8,179 +8,6 @@
 #include "all-declarations-4.h"
 
 //--------------------------------------------------------------------------------------------------
-// @outputInputActualParameterAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_outputInputActualParameterAST::objectCompare (const GGS_outputInputActualParameterAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_outputInputActualParameterAST::GGS_outputInputActualParameterAST (void) :
-GGS_actualParameterAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_outputInputActualParameterAST GGS_outputInputActualParameterAST::
-init_21__21__21_ (const GGS_lstring & in_mActualSelector,
-                  const GGS_lstring & in_mOutputInputActualParameterName,
-                  const GGS__5B_lstring_5D_ & in_mStructAttributeList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_outputInputActualParameterAST * object = nullptr ;
-  macroMyNew (object, cPtr_outputInputActualParameterAST (inCompiler COMMA_THERE)) ;
-  object->outputInputActualParameterAST_init_21__21__21_ (in_mActualSelector, in_mOutputInputActualParameterName, in_mStructAttributeList, inCompiler) ;
-  const GGS_outputInputActualParameterAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_outputInputActualParameterAST::
-outputInputActualParameterAST_init_21__21__21_ (const GGS_lstring & in_mActualSelector,
-                                                const GGS_lstring & in_mOutputInputActualParameterName,
-                                                const GGS__5B_lstring_5D_ & in_mStructAttributeList,
-                                                Compiler * /* inCompiler */) {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mOutputInputActualParameterName = in_mOutputInputActualParameterName ;
-  mProperty_mStructAttributeList = in_mStructAttributeList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_outputInputActualParameterAST::GGS_outputInputActualParameterAST (const cPtr_outputInputActualParameterAST * inSourcePtr) :
-GGS_actualParameterAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_outputInputActualParameterAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_outputInputActualParameterAST::readProperty_mActualSelector (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_outputInputActualParameterAST * p = (cPtr_outputInputActualParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_outputInputActualParameterAST) ;
-    return p->mProperty_mActualSelector ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_outputInputActualParameterAST::readProperty_mOutputInputActualParameterName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_outputInputActualParameterAST * p = (cPtr_outputInputActualParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_outputInputActualParameterAST) ;
-    return p->mProperty_mOutputInputActualParameterName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lstring_5D_ GGS_outputInputActualParameterAST::readProperty_mStructAttributeList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS__5B_lstring_5D_ () ;
-  }else{
-    cPtr_outputInputActualParameterAST * p = (cPtr_outputInputActualParameterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_outputInputActualParameterAST) ;
-    return p->mProperty_mStructAttributeList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @outputInputActualParameterAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_outputInputActualParameterAST::cPtr_outputInputActualParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mOutputInputActualParameterName (),
-mProperty_mStructAttributeList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_outputInputActualParameterAST::cPtr_outputInputActualParameterAST (const GGS_lstring & in_mActualSelector,
-                                                                        const GGS_lstring & in_mOutputInputActualParameterName,
-                                                                        const GGS__5B_lstring_5D_ & in_mStructAttributeList,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) :
-cPtr_actualParameterAST (inCompiler COMMA_THERE),
-mProperty_mActualSelector (),
-mProperty_mOutputInputActualParameterName (),
-mProperty_mStructAttributeList () {
-  mProperty_mActualSelector = in_mActualSelector ;
-  mProperty_mOutputInputActualParameterName = in_mOutputInputActualParameterName ;
-  mProperty_mStructAttributeList = in_mStructAttributeList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_outputInputActualParameterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_outputInputActualParameterAST ;
-}
-
-void cPtr_outputInputActualParameterAST::description (String & ioString,
-                                                      const int32_t inIndentation) const {
-  ioString.appendCString ("[@outputInputActualParameterAST:") ;
-  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mOutputInputActualParameterName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mStructAttributeList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_outputInputActualParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_outputInputActualParameterAST (mProperty_mActualSelector, mProperty_mOutputInputActualParameterName, mProperty_mStructAttributeList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_outputInputActualParameterAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
-    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
-    mProperty_mOutputInputActualParameterName.printNonNullClassInstanceProperties ("mOutputInputActualParameterName") ;
-    mProperty_mStructAttributeList.printNonNullClassInstanceProperties ("mStructAttributeList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @outputInputActualParameterAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputInputActualParameterAST ("outputInputActualParameterAST",
-                                                                                  & kTypeDescriptor_GALGAS_actualParameterAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_outputInputActualParameterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_outputInputActualParameterAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
 
 ComparisonResult GGS_outputInputActualParameterAST_2E_weak::objectCompare (const GGS_outputInputActualParameterAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
@@ -9291,7 +9118,7 @@ class CollectionElementPtr_galgasGUIComponentListAST : public CollectionElementP
 
 //--- Class functions
   public: CollectionElementPtr_galgasGUIComponentListAST (const GGS_lstring & in_mGUIComponentName,
-                                                          const GGS_lstringlist & in_mImportedOptionList,
+                                                          const GGS__5B_lstring_5D_ & in_mImportedOptionList,
                                                           const GGS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
                                                           const GGS_withLexiqueListAST & in_mWithLexiqueList,
                                                           const GGS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList
@@ -9308,7 +9135,7 @@ class CollectionElementPtr_galgasGUIComponentListAST : public CollectionElementP
 //--------------------------------------------------------------------------------------------------
 
 CollectionElementPtr_galgasGUIComponentListAST::CollectionElementPtr_galgasGUIComponentListAST (const GGS_lstring & in_mGUIComponentName,
-                                                                                                const GGS_lstringlist & in_mImportedOptionList,
+                                                                                                const GGS__5B_lstring_5D_ & in_mImportedOptionList,
                                                                                                 const GGS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
                                                                                                 const GGS_withLexiqueListAST & in_mWithLexiqueList,
                                                                                                 const GGS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList
@@ -9364,7 +9191,7 @@ mArray () {
 
 void GGS_galgasGUIComponentListAST::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                                const GGS_lstring & in_mGUIComponentName,
-                                                               const GGS_lstringlist & in_mImportedOptionList,
+                                                               const GGS__5B_lstring_5D_ & in_mImportedOptionList,
                                                                const GGS_guiSimpleAttributeListAST & in_mGlobalSimpleAttributeList,
                                                                const GGS_withLexiqueListAST & in_mWithLexiqueList,
                                                                const GGS_projectIndexingDescriptorList & in_mProjectIndexingDescriptorList
@@ -9459,7 +9286,7 @@ void GGS_galgasGUIComponentListAST::plusPlusAssignOperation (const GGS_galgasGUI
 //--------------------------------------------------------------------------------------------------
 
 GGS_galgasGUIComponentListAST GGS_galgasGUIComponentListAST::class_func_listWithValue (const GGS_lstring & inOperand0,
-                                                                                       const GGS_lstringlist & inOperand1,
+                                                                                       const GGS__5B_lstring_5D_ & inOperand1,
                                                                                        const GGS_guiSimpleAttributeListAST & inOperand2,
                                                                                        const GGS_withLexiqueListAST & inOperand3,
                                                                                        const GGS_projectIndexingDescriptorList & inOperand4
@@ -9476,7 +9303,7 @@ GGS_galgasGUIComponentListAST GGS_galgasGUIComponentListAST::class_func_listWith
 //--------------------------------------------------------------------------------------------------
 
 void GGS_galgasGUIComponentListAST::addAssignOperation (const GGS_lstring & inOperand0,
-                                                        const GGS_lstringlist & inOperand1,
+                                                        const GGS__5B_lstring_5D_ & inOperand1,
                                                         const GGS_guiSimpleAttributeListAST & inOperand2,
                                                         const GGS_withLexiqueListAST & inOperand3,
                                                         const GGS_projectIndexingDescriptorList & inOperand4
@@ -9488,7 +9315,7 @@ void GGS_galgasGUIComponentListAST::addAssignOperation (const GGS_lstring & inOp
 //--------------------------------------------------------------------------------------------------
 
 void GGS_galgasGUIComponentListAST::setter_append (const GGS_lstring inOperand0,
-                                                   const GGS_lstringlist inOperand1,
+                                                   const GGS__5B_lstring_5D_ inOperand1,
                                                    const GGS_guiSimpleAttributeListAST inOperand2,
                                                    const GGS_withLexiqueListAST inOperand3,
                                                    const GGS_projectIndexingDescriptorList inOperand4,
@@ -9503,7 +9330,7 @@ void GGS_galgasGUIComponentListAST::setter_append (const GGS_lstring inOperand0,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_galgasGUIComponentListAST::setter_insertAtIndex (const GGS_lstring inOperand0,
-                                                          const GGS_lstringlist inOperand1,
+                                                          const GGS__5B_lstring_5D_ inOperand1,
                                                           const GGS_guiSimpleAttributeListAST inOperand2,
                                                           const GGS_withLexiqueListAST inOperand3,
                                                           const GGS_projectIndexingDescriptorList inOperand4,
@@ -9528,7 +9355,7 @@ void GGS_galgasGUIComponentListAST::setter_insertAtIndex (const GGS_lstring inOp
 //--------------------------------------------------------------------------------------------------
 
 void GGS_galgasGUIComponentListAST::setter_removeAtIndex (GGS_lstring & outOperand0,
-                                                          GGS_lstringlist & outOperand1,
+                                                          GGS__5B_lstring_5D_ & outOperand1,
                                                           GGS_guiSimpleAttributeListAST & outOperand2,
                                                           GGS_withLexiqueListAST & outOperand3,
                                                           GGS_projectIndexingDescriptorList & outOperand4,
@@ -9566,7 +9393,7 @@ void GGS_galgasGUIComponentListAST::setter_removeAtIndex (GGS_lstring & outOpera
 //--------------------------------------------------------------------------------------------------
 
 void GGS_galgasGUIComponentListAST::setter_popFirst (GGS_lstring & outOperand0,
-                                                     GGS_lstringlist & outOperand1,
+                                                     GGS__5B_lstring_5D_ & outOperand1,
                                                      GGS_guiSimpleAttributeListAST & outOperand2,
                                                      GGS_withLexiqueListAST & outOperand3,
                                                      GGS_projectIndexingDescriptorList & outOperand4,
@@ -9599,7 +9426,7 @@ void GGS_galgasGUIComponentListAST::setter_popFirst (GGS_lstring & outOperand0,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_galgasGUIComponentListAST::setter_popLast (GGS_lstring & outOperand0,
-                                                    GGS_lstringlist & outOperand1,
+                                                    GGS__5B_lstring_5D_ & outOperand1,
                                                     GGS_guiSimpleAttributeListAST & outOperand2,
                                                     GGS_withLexiqueListAST & outOperand3,
                                                     GGS_projectIndexingDescriptorList & outOperand4,
@@ -9632,7 +9459,7 @@ void GGS_galgasGUIComponentListAST::setter_popLast (GGS_lstring & outOperand0,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_galgasGUIComponentListAST::method_first (GGS_lstring & outOperand0,
-                                                  GGS_lstringlist & outOperand1,
+                                                  GGS__5B_lstring_5D_ & outOperand1,
                                                   GGS_guiSimpleAttributeListAST & outOperand2,
                                                   GGS_withLexiqueListAST & outOperand3,
                                                   GGS_projectIndexingDescriptorList & outOperand4,
@@ -9664,7 +9491,7 @@ void GGS_galgasGUIComponentListAST::method_first (GGS_lstring & outOperand0,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_galgasGUIComponentListAST::method_last (GGS_lstring & outOperand0,
-                                                 GGS_lstringlist & outOperand1,
+                                                 GGS__5B_lstring_5D_ & outOperand1,
                                                  GGS_guiSimpleAttributeListAST & outOperand2,
                                                  GGS_withLexiqueListAST & outOperand3,
                                                  GGS_projectIndexingDescriptorList & outOperand4,
@@ -9830,7 +9657,7 @@ GGS_lstring GGS_galgasGUIComponentListAST::getter_mGUIComponentNameAtIndex (cons
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_galgasGUIComponentListAST::setter_setMImportedOptionListAtIndex (GGS_lstringlist inOperand,
+void GGS_galgasGUIComponentListAST::setter_setMImportedOptionListAtIndex (GGS__5B_lstring_5D_ inOperand,
                                                                           GGS_uint inIndex,
                                                                           Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
@@ -9849,10 +9676,10 @@ void GGS_galgasGUIComponentListAST::setter_setMImportedOptionListAtIndex (GGS_ls
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_galgasGUIComponentListAST::getter_mImportedOptionListAtIndex (const GGS_uint & inIndex,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_galgasGUIComponentListAST::getter_mImportedOptionListAtIndex (const GGS_uint & inIndex,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < count ()) {
@@ -10008,7 +9835,7 @@ GGS_lstring DownEnumerator_galgasGUIComponentListAST::current_mGUIComponentName 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist DownEnumerator_galgasGUIComponentListAST::current_mImportedOptionList (LOCATION_ARGS) const {
+GGS__5B_lstring_5D_ DownEnumerator_galgasGUIComponentListAST::current_mImportedOptionList (LOCATION_ARGS) const {
   return mArray (mIndex COMMA_THERE).mProperty_mImportedOptionList ;
 }
 
@@ -10055,7 +9882,7 @@ GGS_lstring UpEnumerator_galgasGUIComponentListAST::current_mGUIComponentName (L
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist UpEnumerator_galgasGUIComponentListAST::current_mImportedOptionList (LOCATION_ARGS) const {
+GGS__5B_lstring_5D_ UpEnumerator_galgasGUIComponentListAST::current_mImportedOptionList (LOCATION_ARGS) const {
   return mArray (mIndex COMMA_THERE).mProperty_mImportedOptionList ;
 }
 
@@ -11433,25 +11260,21 @@ void GGS__5B_terminalCheckAssignement_5D_::setter_popLast (GGS_terminalCheckAssi
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_terminalCheckAssignement_5D_::method_first (GGS_terminalCheckAssignement & outValue,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_LOCATION_ARGS) const {
+GGS_terminalCheckAssignement GGS__5B_terminalCheckAssignement_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_terminalCheckAssignement () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_terminalCheckAssignement_5D_::method_last (GGS_terminalCheckAssignement & outValue,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_LOCATION_ARGS) const {
+GGS_terminalCheckAssignement GGS__5B_terminalCheckAssignement_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_terminalCheckAssignement () ;
   }
 }
 
@@ -15418,25 +15241,21 @@ void GGS__5B_formalInputParameterListAST_5D_::setter_popLast (GGS_formalInputPar
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalInputParameterListAST_5D_::method_first (GGS_formalInputParameterListAST & outValue,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_LOCATION_ARGS) const {
+GGS_formalInputParameterListAST GGS__5B_formalInputParameterListAST_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_formalInputParameterListAST () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalInputParameterListAST_5D_::method_last (GGS_formalInputParameterListAST & outValue,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_LOCATION_ARGS) const {
+GGS_formalInputParameterListAST GGS__5B_formalInputParameterListAST_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_formalInputParameterListAST () ;
   }
 }
 
@@ -16356,5 +16175,221 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigintPredefinedTypeAST_2E_we
 
 const GALGAS_TypeDescriptor * GGS_bigintPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bigintPredefinedTypeAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @locationPredefinedTypeAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_locationPredefinedTypeAST::objectCompare (const GGS_locationPredefinedTypeAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_locationPredefinedTypeAST::GGS_locationPredefinedTypeAST (void) :
+GGS_predefinedTypeAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_locationPredefinedTypeAST GGS_locationPredefinedTypeAST::
+init_21_isPredefined_21_ (const GGS_bool & in_isPredefined,
+                          const GGS_string & in_mPredefinedTypeName,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
+  cPtr_locationPredefinedTypeAST * object = nullptr ;
+  macroMyNew (object, cPtr_locationPredefinedTypeAST (inCompiler COMMA_THERE)) ;
+  object->locationPredefinedTypeAST_init_21_isPredefined_21_ (in_isPredefined, in_mPredefinedTypeName, inCompiler) ;
+  const GGS_locationPredefinedTypeAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_locationPredefinedTypeAST::
+locationPredefinedTypeAST_init_21_isPredefined_21_ (const GGS_bool & in_isPredefined,
+                                                    const GGS_string & in_mPredefinedTypeName,
+                                                    Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_locationPredefinedTypeAST::GGS_locationPredefinedTypeAST (const cPtr_locationPredefinedTypeAST * inSourcePtr) :
+GGS_predefinedTypeAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_locationPredefinedTypeAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @locationPredefinedTypeAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_locationPredefinedTypeAST::cPtr_locationPredefinedTypeAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_predefinedTypeAST (inCompiler COMMA_THERE) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_locationPredefinedTypeAST::cPtr_locationPredefinedTypeAST (const GGS_bool & in_isPredefined,
+                                                                const GGS_string & in_mPredefinedTypeName,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) :
+cPtr_predefinedTypeAST (in_isPredefined, in_mPredefinedTypeName, inCompiler COMMA_THERE) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mPredefinedTypeName = in_mPredefinedTypeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_locationPredefinedTypeAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_locationPredefinedTypeAST ;
+}
+
+void cPtr_locationPredefinedTypeAST::description (String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("[@locationPredefinedTypeAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_locationPredefinedTypeAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_locationPredefinedTypeAST (mProperty_isPredefined, mProperty_mPredefinedTypeName, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_locationPredefinedTypeAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_predefinedTypeAST::printNonNullClassInstanceProperties () ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @locationPredefinedTypeAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_locationPredefinedTypeAST ("locationPredefinedTypeAST",
+                                                                              & kTypeDescriptor_GALGAS_predefinedTypeAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_locationPredefinedTypeAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_locationPredefinedTypeAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_locationPredefinedTypeAST_2E_weak::objectCompare (const GGS_locationPredefinedTypeAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_locationPredefinedTypeAST_2E_weak::GGS_locationPredefinedTypeAST_2E_weak (void) :
+GGS_predefinedTypeAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_locationPredefinedTypeAST_2E_weak & GGS_locationPredefinedTypeAST_2E_weak::operator = (const GGS_locationPredefinedTypeAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_locationPredefinedTypeAST_2E_weak::GGS_locationPredefinedTypeAST_2E_weak (const GGS_locationPredefinedTypeAST & inSource) :
+GGS_predefinedTypeAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_locationPredefinedTypeAST_2E_weak GGS_locationPredefinedTypeAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_locationPredefinedTypeAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_locationPredefinedTypeAST GGS_locationPredefinedTypeAST_2E_weak::unwrappedValue (void) const {
+  GGS_locationPredefinedTypeAST result ;
+  if (isValid ()) {
+    const cPtr_locationPredefinedTypeAST * p = (cPtr_locationPredefinedTypeAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_locationPredefinedTypeAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_locationPredefinedTypeAST GGS_locationPredefinedTypeAST_2E_weak::bang_locationPredefinedTypeAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_locationPredefinedTypeAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_locationPredefinedTypeAST) ;
+      result = GGS_locationPredefinedTypeAST ((cPtr_locationPredefinedTypeAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @locationPredefinedTypeAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_locationPredefinedTypeAST_2E_weak ("locationPredefinedTypeAST.weak",
+                                                                                      & kTypeDescriptor_GALGAS_predefinedTypeAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_locationPredefinedTypeAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_locationPredefinedTypeAST_2E_weak ;
 }
 

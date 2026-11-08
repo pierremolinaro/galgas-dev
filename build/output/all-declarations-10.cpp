@@ -5199,25 +5199,21 @@ void GGS__5B_galgasQualifiedFeature_5D_::setter_popLast (GGS_galgasQualifiedFeat
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_galgasQualifiedFeature_5D_::method_first (GGS_galgasQualifiedFeature & outValue,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_LOCATION_ARGS) const {
+GGS_galgasQualifiedFeature GGS__5B_galgasQualifiedFeature_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_galgasQualifiedFeature () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_galgasQualifiedFeature_5D_::method_last (GGS_galgasQualifiedFeature & outValue,
-                                                      Compiler * /* inCompiler */
-                                                      COMMA_LOCATION_ARGS) const {
+GGS_galgasQualifiedFeature GGS__5B_galgasQualifiedFeature_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_galgasQualifiedFeature () ;
   }
 }
 
@@ -8664,7 +8660,7 @@ void GGS_genericExtensionMethodListMapDictionary::plusPlusAssignOperation (const
 //--------------------------------------------------------------------------------------------------
 
 void GGS_genericExtensionMethodListMapDictionary::addAssignOperation (const GGS_string & inKey,
-                                                                      const GGS_lstringlist & inArgument0,
+                                                                      const GGS__5B_lstring_5D_ & inArgument0,
                                                                       Compiler * /* inCompiler */
                                                                       COMMA_LOCATION_ARGS) {
   GGS_genericExtensionMethodListMapDictionary_2E_element newElement (inKey, inArgument0) ;
@@ -8676,7 +8672,7 @@ void GGS_genericExtensionMethodListMapDictionary::addAssignOperation (const GGS_
 //--------------------------------------------------------------------------------------------------
 
 void GGS_genericExtensionMethodListMapDictionary::setter_insert (const GGS_string inKey,
-                                                                 const GGS_lstringlist inArgument0,
+                                                                 const GGS__5B_lstring_5D_ inArgument0,
                                                                  Compiler * /* inCompiler */
                                                                  COMMA_LOCATION_ARGS) {
   GGS_genericExtensionMethodListMapDictionary_2E_element newElement (inKey, inArgument0) ;
@@ -8699,7 +8695,7 @@ GGS_bool GGS_genericExtensionMethodListMapDictionary::getter_contains (const GGS
 //--------------------------------------------------------------------------------------------------
 
 void GGS_genericExtensionMethodListMapDictionary::method_searchKey (GGS_string inKey,
-                                                                    GGS_lstringlist & outArgument0,
+                                                                    GGS__5B_lstring_5D_ & outArgument0,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
   if (isValid () && inKey.isValid ()) {
@@ -8720,7 +8716,7 @@ void GGS_genericExtensionMethodListMapDictionary::method_searchKey (GGS_string i
 //--------------------------------------------------------------------------------------------------
 
 void GGS_genericExtensionMethodListMapDictionary::setter_removeKey (GGS_string inKey,
-                                                                    GGS_lstringlist & outArgument0,
+                                                                    GGS__5B_lstring_5D_ & outArgument0,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
@@ -8742,10 +8738,10 @@ void GGS_genericExtensionMethodListMapDictionary::setter_removeKey (GGS_string i
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_genericExtensionMethodListMapDictionary::getter_mListForKey (const GGS_string & inKey,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const {
-  GGS_lstringlist result ;
+GGS__5B_lstring_5D_ GGS_genericExtensionMethodListMapDictionary::getter_mListForKey (const GGS_string & inKey,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const SharedGenericPtrWithValueSemantics <GGS_genericExtensionMethodListMapDictionary_2E_element> object = infoForKey (inKey) ;
     if (object.isNil ()) { // Not found
@@ -8761,7 +8757,7 @@ GGS_lstringlist GGS_genericExtensionMethodListMapDictionary::getter_mListForKey 
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_genericExtensionMethodListMapDictionary::setter_setMListForKey (GGS_lstringlist inPropertyValue,
+void GGS_genericExtensionMethodListMapDictionary::setter_setMListForKey (GGS__5B_lstring_5D_ inPropertyValue,
                                                                          GGS_string inKey,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
@@ -8795,7 +8791,7 @@ GGS_string UpEnumerator_genericExtensionMethodListMapDictionary::current_key (UN
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist UpEnumerator_genericExtensionMethodListMapDictionary::current_mList (UNUSED_LOCATION_ARGS) const {
+GGS__5B_lstring_5D_ UpEnumerator_genericExtensionMethodListMapDictionary::current_mList (UNUSED_LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_HERE)->mProperty_mList ;
 }
 
@@ -8823,7 +8819,7 @@ GGS_string DownEnumerator_genericExtensionMethodListMapDictionary::current_key (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist DownEnumerator_genericExtensionMethodListMapDictionary::current_mList (UNUSED_LOCATION_ARGS) const {
+GGS__5B_lstring_5D_ DownEnumerator_genericExtensionMethodListMapDictionary::current_mList (UNUSED_LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_HERE)->mProperty_mList ;
 }
 
@@ -8928,22 +8924,22 @@ const GALGAS_TypeDescriptor * GGS_genericExtensionMethodListMap::staticTypeDescr
 //  Extension Getter '@genericExtensionMethodListMap listForKey'
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist extensionGetter_listForKey (const GGS_genericExtensionMethodListMap & inObject,
-                                            const GGS_string & constinArgument_inKey,
-                                            Compiler * inCompiler
-                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lstringlist result_result ; // Returned variable
+GGS__5B_lstring_5D_ extensionGetter_listForKey (const GGS_genericExtensionMethodListMap & inObject,
+                                                const GGS_string & constinArgument_inKey,
+                                                Compiler * inCompiler
+                                                COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_lstring_5D_ result_result ; // Returned variable
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_genericExtensionMethodListMap temp_1 = inObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_contains (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 58)).boolEnum () ;
+    test_0 = temp_1.readProperty_dictionary ().getter_contains (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 54)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       const GGS_genericExtensionMethodListMap temp_2 = inObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, result_result, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 59)) ;
+      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, result_result, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 55)) ;
     }
   }
   if (GalgasBool::boolFalse == test_0) {
-    result_result = GGS_lstringlist::init (inCompiler COMMA_HERE) ;
+    result_result = GGS__5B_lstring_5D_::init (inCompiler COMMA_HERE) ;
   }
 //---
   return result_result ;
@@ -9861,10 +9857,10 @@ GGS_unifiedTypeMapEntryList extensionGetter_listForKey (const GGS_descendantClas
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_descendantClassListMap temp_1 = inObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_contains (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 127)).boolEnum () ;
+    test_0 = temp_1.readProperty_dictionary ().getter_contains (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 123)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       const GGS_descendantClassListMap temp_2 = inObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, result_result, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 128)) ;
+      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, result_result, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 124)) ;
     }
   }
   if (GalgasBool::boolFalse == test_0) {

@@ -6461,25 +6461,21 @@ void GGS__5B_semanticDeclarationAST_5D_::setter_popLast (GGS_semanticDeclaration
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_semanticDeclarationAST_5D_::method_first (GGS_semanticDeclarationAST & outValue,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_LOCATION_ARGS) const {
+GGS_semanticDeclarationAST GGS__5B_semanticDeclarationAST_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_semanticDeclarationAST () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_semanticDeclarationAST_5D_::method_last (GGS_semanticDeclarationAST & outValue,
-                                                      Compiler * /* inCompiler */
-                                                      COMMA_LOCATION_ARGS) const {
+GGS_semanticDeclarationAST GGS__5B_semanticDeclarationAST_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_semanticDeclarationAST () ;
   }
 }
 
@@ -6742,25 +6738,21 @@ void GGS__5B_semanticDeclarationForGeneration_5D_::setter_popLast (GGS_semanticD
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_semanticDeclarationForGeneration_5D_::method_first (GGS_semanticDeclarationForGeneration & outValue,
-                                                                 Compiler * /* inCompiler */
-                                                                 COMMA_LOCATION_ARGS) const {
+GGS_semanticDeclarationForGeneration GGS__5B_semanticDeclarationForGeneration_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_semanticDeclarationForGeneration () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_semanticDeclarationForGeneration_5D_::method_last (GGS_semanticDeclarationForGeneration & outValue,
-                                                                Compiler * /* inCompiler */
-                                                                COMMA_LOCATION_ARGS) const {
+GGS_semanticDeclarationForGeneration GGS__5B_semanticDeclarationForGeneration_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_semanticDeclarationForGeneration () ;
   }
 }
 

@@ -20,35 +20,11 @@
 //--------------------------------------------------------------------------------------------------
 
 final class @dropInstructionAST : @semanticInstructionAST {
-  private let @lstringlist mDropList
+  private let [@lstring] mDropList
 }
 
 //--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//--------------------------------------------------------------------------------------------------
-
-//syntax extension galgas3InstructionsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST unused ioDeclarations,
-//                                    !@semanticInstructionAST outInstruction) {
-//    $drop$
-//    let instructionLocation = @location.here
-//    var @lstringlist dropList = @()
-//    repeat
-//      $identifier$ (?let variableName)
-//      dropList ++= @(!variableName)
-//    while
-//      $,$
-//    end
-//    outInstruction = @dropInstructionAST (!instructionLocation, dropList)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
 //--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
@@ -59,10 +35,10 @@ syntax extension galgas4InstructionsSyntax {
                                !@semanticInstructionAST outInstruction) {
     $drop$
     let instructionLocation = @location.here
-    var @lstringlist dropList = @()
+    var [@lstring] dropList = @()
     repeat
       $identifier$ (?let variableName)
-      dropList ++= @(variableName)
+      dropList ++= variableName
     while
       $,$
     end
@@ -91,7 +67,7 @@ override proc @dropInstructionAST.analyzeSemanticInstruction (let @lstring _inUs
                                    ?!@semanticInstructionListForGeneration _ioInstructionListForGeneration,
                                    ?!@localVarManager ioVariableMap) {
   for entry in self.mDropList do
-    !?ioVariableMap.searchForDropAccess (entry.mValue)
+    !?ioVariableMap.searchForDropAccess (entry)
   end
 }
 

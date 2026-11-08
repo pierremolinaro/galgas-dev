@@ -2170,7 +2170,7 @@ GGS_genericExtensionMethodListMapDictionary_2E_element & GGS_genericExtensionMet
 //---Synthetized initializer -----------------------------------------------------------------------
 
 GGS_genericExtensionMethodListMapDictionary_2E_element GGS_genericExtensionMethodListMapDictionary_2E_element::init_21__21_ (const GGS_string & in_key,
-                                                                                                                             const GGS_lstringlist & in_mList,
+                                                                                                                             const GGS__5B_lstring_5D_ & in_mList,
                                                                                                                              Compiler * inCompiler
                                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GGS_genericExtensionMethodListMapDictionary_2E_element result ;
@@ -2188,7 +2188,7 @@ void GGS_genericExtensionMethodListMapDictionary_2E_element::setInitializedPrope
 //--------------------------------------------------------------------------------------------------
 
 GGS_genericExtensionMethodListMapDictionary_2E_element::GGS_genericExtensionMethodListMapDictionary_2E_element (const GGS_string & inOperand0,
-                                                                                                                const GGS_lstringlist & inOperand1) :
+                                                                                                                const GGS__5B_lstring_5D_ & inOperand1) :
 mProperty_key (inOperand0),
 mProperty_mList (inOperand1) {
 }
@@ -6414,7 +6414,7 @@ GGS_errorInstructionAST GGS_errorInstructionAST::
 init_21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                           const GGS_semanticExpressionAST & in_mLocationExpression,
                           const GGS_semanticExpressionAST & in_mMessageExpression,
-                          const GGS_lstringlist & in_mBuiltVariableList,
+                          const GGS__5B_lstring_5D_ & in_mBuiltVariableList,
                           const GGS__5B_fixitElementAST_5D_ & in_mFixitListAST,
                           Compiler * inCompiler
                           COMMA_LOCATION_ARGS) {
@@ -6432,7 +6432,7 @@ void cPtr_errorInstructionAST::
 errorInstructionAST_init_21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                                               const GGS_semanticExpressionAST & in_mLocationExpression,
                                               const GGS_semanticExpressionAST & in_mMessageExpression,
-                                              const GGS_lstringlist & in_mBuiltVariableList,
+                                              const GGS__5B_lstring_5D_ & in_mBuiltVariableList,
                                               const GGS__5B_fixitElementAST_5D_ & in_mFixitListAST,
                                               Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
@@ -6474,9 +6474,9 @@ GGS_semanticExpressionAST GGS_errorInstructionAST::readProperty_mMessageExpressi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_errorInstructionAST::readProperty_mBuiltVariableList (void) const {
+GGS__5B_lstring_5D_ GGS_errorInstructionAST::readProperty_mBuiltVariableList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_errorInstructionAST * p = (cPtr_errorInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_errorInstructionAST) ;
@@ -6513,7 +6513,7 @@ mProperty_mFixitListAST () {
 cPtr_errorInstructionAST::cPtr_errorInstructionAST (const GGS_location & in_mInstructionLocation,
                                                     const GGS_semanticExpressionAST & in_mLocationExpression,
                                                     const GGS_semanticExpressionAST & in_mMessageExpression,
-                                                    const GGS_lstringlist & in_mBuiltVariableList,
+                                                    const GGS__5B_lstring_5D_ & in_mBuiltVariableList,
                                                     const GGS__5B_fixitElementAST_5D_ & in_mFixitListAST,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) :
@@ -8087,37 +8087,37 @@ GGS_typeFeatures extensionGetter_features (const GGS_opAssignmentOperator & inOb
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_orAssign:
     {
-      result_result = GGS_typeFeatures::class_func_orAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas4", 395)) ;
+      result_result = GGS_typeFeatures::class_func_orAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas4", 207)) ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_xorAssign:
     {
-      result_result = GGS_typeFeatures::class_func_xorAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas4", 396)) ;
+      result_result = GGS_typeFeatures::class_func_xorAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas4", 208)) ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_andAssign:
     {
-      result_result = GGS_typeFeatures::class_func_andAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas4", 397)) ;
+      result_result = GGS_typeFeatures::class_func_andAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas4", 209)) ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_plusAssign:
     {
-      result_result = GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas4", 398)) ;
+      result_result = GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas4", 210)) ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_minusAssign:
     {
-      result_result = GGS_typeFeatures::class_func_minusAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas4", 399)) ;
+      result_result = GGS_typeFeatures::class_func_minusAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas4", 211)) ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_mulAssign:
     {
-      result_result = GGS_typeFeatures::class_func_mulAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas4", 400)) ;
+      result_result = GGS_typeFeatures::class_func_mulAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas4", 212)) ;
     }
     break ;
   case GGS_opAssignmentOperator::Enumeration::enum_divAssign:
     {
-      result_result = GGS_typeFeatures::class_func_divAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas4", 401)) ;
+      result_result = GGS_typeFeatures::class_func_divAssignOperatorWithExpression (SOURCE_FILE ("instruction-concat.galgas4", 213)) ;
     }
     break ;
   }
@@ -8160,7 +8160,7 @@ GGS_opAssignExpressionInstructionAST GGS_opAssignExpressionInstructionAST::
 init_21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                               const GGS_bool & in_mPrefixedBySelf,
                               const GGS_lstring & in_mReceiverName,
-                              const GGS_lstringlist & in_mStructAttributeList,
+                              const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                               const GGS_opAssignmentOperator & in_mOperator,
                               const GGS_semanticExpressionAST & in_mExpression,
                               Compiler * inCompiler
@@ -8179,7 +8179,7 @@ void cPtr_opAssignExpressionInstructionAST::
 opAssignExpressionInstructionAST_init_21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                                                                const GGS_bool & in_mPrefixedBySelf,
                                                                const GGS_lstring & in_mReceiverName,
-                                                               const GGS_lstringlist & in_mStructAttributeList,
+                                                               const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                                const GGS_opAssignmentOperator & in_mOperator,
                                                                const GGS_semanticExpressionAST & in_mExpression,
                                                                Compiler * /* inCompiler */) {
@@ -8223,9 +8223,9 @@ GGS_lstring GGS_opAssignExpressionInstructionAST::readProperty_mReceiverName (vo
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_opAssignExpressionInstructionAST::readProperty_mStructAttributeList (void) const {
+GGS__5B_lstring_5D_ GGS_opAssignExpressionInstructionAST::readProperty_mStructAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_opAssignExpressionInstructionAST * p = (cPtr_opAssignExpressionInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_opAssignExpressionInstructionAST) ;
@@ -8275,7 +8275,7 @@ mProperty_mExpression () {
 cPtr_opAssignExpressionInstructionAST::cPtr_opAssignExpressionInstructionAST (const GGS_location & in_mInstructionLocation,
                                                                               const GGS_bool & in_mPrefixedBySelf,
                                                                               const GGS_lstring & in_mReceiverName,
-                                                                              const GGS_lstringlist & in_mStructAttributeList,
+                                                                              const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                                               const GGS_opAssignmentOperator & in_mOperator,
                                                                               const GGS_semanticExpressionAST & in_mExpression,
                                                                               Compiler * inCompiler
@@ -8479,7 +8479,7 @@ GGS_plusPlusEqualElementInstructionAST GGS_plusPlusEqualElementInstructionAST::
 init_21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                           const GGS_bool & in_mPrefixedBySelf,
                           const GGS_lstring & in_mReceiverName,
-                          const GGS_lstringlist & in_mStructAttributeList,
+                          const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                           const GGS_semanticExpressionAST & in_mExpression,
                           Compiler * inCompiler
                           COMMA_LOCATION_ARGS) {
@@ -8497,7 +8497,7 @@ void cPtr_plusPlusEqualElementInstructionAST::
 plusPlusEqualElementInstructionAST_init_21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                                                              const GGS_bool & in_mPrefixedBySelf,
                                                              const GGS_lstring & in_mReceiverName,
-                                                             const GGS_lstringlist & in_mStructAttributeList,
+                                                             const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                              const GGS_semanticExpressionAST & in_mExpression,
                                                              Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
@@ -8539,9 +8539,9 @@ GGS_lstring GGS_plusPlusEqualElementInstructionAST::readProperty_mReceiverName (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_plusPlusEqualElementInstructionAST::readProperty_mStructAttributeList (void) const {
+GGS__5B_lstring_5D_ GGS_plusPlusEqualElementInstructionAST::readProperty_mStructAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_plusPlusEqualElementInstructionAST * p = (cPtr_plusPlusEqualElementInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_plusPlusEqualElementInstructionAST) ;
@@ -8578,7 +8578,7 @@ mProperty_mExpression () {
 cPtr_plusPlusEqualElementInstructionAST::cPtr_plusPlusEqualElementInstructionAST (const GGS_location & in_mInstructionLocation,
                                                                                   const GGS_bool & in_mPrefixedBySelf,
                                                                                   const GGS_lstring & in_mReceiverName,
-                                                                                  const GGS_lstringlist & in_mStructAttributeList,
+                                                                                  const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                                                   const GGS_semanticExpressionAST & in_mExpression,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) :
@@ -8777,7 +8777,7 @@ init_21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                                   const GGS_unifiedTypeMapEntry & in_mTargetType,
                                   const GGS_string & in_mTargetVariableCppName,
                                   const GGS_string & in_mNameForCheckingFormalParameterUsing,
-                                  const GGS_lstringlist & in_mStructAttributeList,
+                                  const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                   const GGS_semanticExpressionForGeneration & in_mSourceExpression,
                                   const GGS_string & in_mGeneratedMethod,
                                   Compiler * inCompiler
@@ -8797,7 +8797,7 @@ opAssignInstructionForGeneration_init_21__21__21__21__21__21__21_ (const GGS_loc
                                                                    const GGS_unifiedTypeMapEntry & in_mTargetType,
                                                                    const GGS_string & in_mTargetVariableCppName,
                                                                    const GGS_string & in_mNameForCheckingFormalParameterUsing,
-                                                                   const GGS_lstringlist & in_mStructAttributeList,
+                                                                   const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                                    const GGS_semanticExpressionForGeneration & in_mSourceExpression,
                                                                    const GGS_string & in_mGeneratedMethod,
                                                                    Compiler * /* inCompiler */) {
@@ -8866,9 +8866,9 @@ GGS_string GGS_opAssignInstructionForGeneration::readProperty_mNameForCheckingFo
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_opAssignInstructionForGeneration::readProperty_mStructAttributeList (void) const {
+GGS__5B_lstring_5D_ GGS_opAssignInstructionForGeneration::readProperty_mStructAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_opAssignInstructionForGeneration * p = (cPtr_opAssignInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_opAssignInstructionForGeneration) ;
@@ -8921,7 +8921,7 @@ cPtr_opAssignInstructionForGeneration::cPtr_opAssignInstructionForGeneration (co
                                                                               const GGS_unifiedTypeMapEntry & in_mTargetType,
                                                                               const GGS_string & in_mTargetVariableCppName,
                                                                               const GGS_string & in_mNameForCheckingFormalParameterUsing,
-                                                                              const GGS_lstringlist & in_mStructAttributeList,
+                                                                              const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                                               const GGS_semanticExpressionForGeneration & in_mSourceExpression,
                                                                               const GGS_string & in_mGeneratedMethod,
                                                                               Compiler * inCompiler
@@ -9038,7 +9038,7 @@ init_21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                               const GGS_unifiedTypeMapEntry & in_mTargetType,
                               const GGS_string & in_mTargetVariableCppName,
                               const GGS_string & in_mNameForCheckingFormalParameterUsing,
-                              const GGS_lstringlist & in_mStructAttributeList,
+                              const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                               const GGS_semanticExpressionForGeneration & in_mSourceExpression,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) {
@@ -9057,7 +9057,7 @@ plusPlusAssignInstructionForGeneration_init_21__21__21__21__21__21_ (const GGS_l
                                                                      const GGS_unifiedTypeMapEntry & in_mTargetType,
                                                                      const GGS_string & in_mTargetVariableCppName,
                                                                      const GGS_string & in_mNameForCheckingFormalParameterUsing,
-                                                                     const GGS_lstringlist & in_mStructAttributeList,
+                                                                     const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                                      const GGS_semanticExpressionForGeneration & in_mSourceExpression,
                                                                      Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
@@ -9124,9 +9124,9 @@ GGS_string GGS_plusPlusAssignInstructionForGeneration::readProperty_mNameForChec
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_plusPlusAssignInstructionForGeneration::readProperty_mStructAttributeList (void) const {
+GGS__5B_lstring_5D_ GGS_plusPlusAssignInstructionForGeneration::readProperty_mStructAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_plusPlusAssignInstructionForGeneration * p = (cPtr_plusPlusAssignInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_plusPlusAssignInstructionForGeneration) ;
@@ -9166,7 +9166,7 @@ cPtr_plusPlusAssignInstructionForGeneration::cPtr_plusPlusAssignInstructionForGe
                                                                                           const GGS_unifiedTypeMapEntry & in_mTargetType,
                                                                                           const GGS_string & in_mTargetVariableCppName,
                                                                                           const GGS_string & in_mNameForCheckingFormalParameterUsing,
-                                                                                          const GGS_lstringlist & in_mStructAttributeList,
+                                                                                          const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                                                           const GGS_semanticExpressionForGeneration & in_mSourceExpression,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) :
@@ -14258,7 +14258,7 @@ GGS_setterCallInstructionAST GGS_setterCallInstructionAST::
 init_21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                               const GGS_bool & in_mPrefixedBySelf,
                               const GGS_lstring & in_mReceiverName,
-                              const GGS_lstringlist & in_mReceiverStructProperties,
+                              const GGS__5B_lstring_5D_ & in_mReceiverStructProperties,
                               const GGS_lstring & in_mSetterName,
                               const GGS_actualParameterListAST & in_mActualParameterList,
                               Compiler * inCompiler
@@ -14277,7 +14277,7 @@ void cPtr_setterCallInstructionAST::
 setterCallInstructionAST_init_21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                                                        const GGS_bool & in_mPrefixedBySelf,
                                                        const GGS_lstring & in_mReceiverName,
-                                                       const GGS_lstringlist & in_mReceiverStructProperties,
+                                                       const GGS__5B_lstring_5D_ & in_mReceiverStructProperties,
                                                        const GGS_lstring & in_mSetterName,
                                                        const GGS_actualParameterListAST & in_mActualParameterList,
                                                        Compiler * /* inCompiler */) {
@@ -14321,9 +14321,9 @@ GGS_lstring GGS_setterCallInstructionAST::readProperty_mReceiverName (void) cons
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_setterCallInstructionAST::readProperty_mReceiverStructProperties (void) const {
+GGS__5B_lstring_5D_ GGS_setterCallInstructionAST::readProperty_mReceiverStructProperties (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_setterCallInstructionAST * p = (cPtr_setterCallInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_setterCallInstructionAST) ;
@@ -14373,7 +14373,7 @@ mProperty_mActualParameterList () {
 cPtr_setterCallInstructionAST::cPtr_setterCallInstructionAST (const GGS_location & in_mInstructionLocation,
                                                               const GGS_bool & in_mPrefixedBySelf,
                                                               const GGS_lstring & in_mReceiverName,
-                                                              const GGS_lstringlist & in_mReceiverStructProperties,
+                                                              const GGS__5B_lstring_5D_ & in_mReceiverStructProperties,
                                                               const GGS_lstring & in_mSetterName,
                                                               const GGS_actualParameterListAST & in_mActualParameterList,
                                                               Compiler * inCompiler

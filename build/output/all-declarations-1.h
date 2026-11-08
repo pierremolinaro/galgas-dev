@@ -4197,18 +4197,14 @@ class GGS__5B_semanticDeclarationAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_semanticDeclarationAST & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_semanticDeclarationAST & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_semanticDeclarationAST getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_semanticDeclarationAST getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -4367,18 +4363,14 @@ class GGS__5B_semanticDeclarationForGeneration_5D_ final : public AC_GALGAS_root
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_semanticDeclarationForGeneration & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_semanticDeclarationForGeneration & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_semanticDeclarationForGeneration getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_semanticDeclarationForGeneration getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts

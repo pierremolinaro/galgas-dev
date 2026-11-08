@@ -66,13 +66,29 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       @("".nowhere, elementType, .argumentOut, "outElement")
     ]
   //--- Getters
-    commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap )
+    commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap)
     enterBaseGetterWithoutArgument (
       !?getterMap,
       !?ioTypeMap,
       !getterName: "count",
       !obsoleteName: "",
       !returnedTypeName: "uint",
+      !hasCompilerArgument: false
+    )
+    enterBaseGetterWithoutArgument (
+      !?getterMap,
+      !?ioTypeMap,
+      !getterName: "first",
+      !obsoleteName: "",
+      !returnedTypeName: self.elementTypeName,
+      !hasCompilerArgument: false
+    )
+    enterBaseGetterWithoutArgument (
+      !?getterMap,
+      !?ioTypeMap,
+      !getterName: "last",
+      !obsoleteName: "",
+      !returnedTypeName: self.elementTypeName,
       !hasCompilerArgument: false
     )
 //    enterInheritedGetterWithoutArgument (
@@ -109,24 +125,24 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 //    )
   //------------------------ Instance methods
     var @instanceMethodMap instanceMethodMap = @()
-    !?instanceMethodMap.insertKey (
-      @lstring ("first", @location.here),
-      @methodKind.definedAsMember,
-      setterOutputFormalArgumentList,
-      @location.here,
-      true,
-      @methodQualifier.isBasic,
-      ""
-    )
-    !?instanceMethodMap.insertKey
-      (@lstring ("last", @location.here),
-      @methodKind.definedAsMember,
-      setterOutputFormalArgumentList,
-      @location.here,
-      true,
-      @methodQualifier.isBasic,
-      ""
-    )
+//    !?instanceMethodMap.insertKey (
+//      @lstring ("first", @location.here),
+//      @methodKind.definedAsMember,
+//      setterOutputFormalArgumentList,
+//      @location.here,
+//      true,
+//      @methodQualifier.isBasic,
+//      ""
+//    )
+//    !?instanceMethodMap.insertKey
+//      (@lstring ("last", @location.here),
+//      @methodKind.definedAsMember,
+//      setterOutputFormalArgumentList,
+//      @location.here,
+//      true,
+//      @methodQualifier.isBasic,
+//      ""
+//    )
   //---------------------------------------- Setters
     var @setterMap setterMap = @()
     !?setterMap.insertKey (

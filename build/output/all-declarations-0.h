@@ -534,18 +534,14 @@ class GGS__5B_logAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_logAST & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_logAST & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_logAST getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_logAST getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -3172,18 +3168,14 @@ class GGS__5B_fixitElementAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_fixitElementAST & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_fixitElementAST & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_fixitElementAST getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_fixitElementAST getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -4092,18 +4084,14 @@ class GGS__5B_fixitElementForGeneration_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_fixitElementForGeneration & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_fixitElementForGeneration & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_fixitElementForGeneration getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_fixitElementForGeneration getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -4690,7 +4678,7 @@ class GGS_opAssignInstructionForGeneration : public GGS_semanticInstructionForGe
 
   public: class GGS_string readProperty_mNameForCheckingFormalParameterUsing (void) const ;
 
-  public: class GGS_lstringlist readProperty_mStructAttributeList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mStructAttributeList (void) const ;
 
   public: class GGS_semanticExpressionForGeneration readProperty_mSourceExpression (void) const ;
 
@@ -4703,7 +4691,7 @@ class GGS_opAssignInstructionForGeneration : public GGS_semanticInstructionForGe
                                                                                         const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                                         const class GGS_string & inOperand2,
                                                                                         const class GGS_string & inOperand3,
-                                                                                        const class GGS_lstringlist & inOperand4,
+                                                                                        const class GGS__5B_lstring_5D_ & inOperand4,
                                                                                         const class GGS_semanticExpressionForGeneration & inOperand5,
                                                                                         const class GGS_string & inOperand6,
                                                                                         Compiler * inCompiler
@@ -4745,7 +4733,7 @@ class cPtr_opAssignInstructionForGeneration : public cPtr_semanticInstructionFor
                                                                                   const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                                   const class GGS_string & inOperand2,
                                                                                   const class GGS_string & inOperand3,
-                                                                                  const class GGS_lstringlist & inOperand4,
+                                                                                  const class GGS__5B_lstring_5D_ & inOperand4,
                                                                                   const class GGS_semanticExpressionForGeneration & inOperand5,
                                                                                   const class GGS_string & inOperand6,
                                                                                   Compiler * inCompiler) ;
@@ -4764,7 +4752,7 @@ class cPtr_opAssignInstructionForGeneration : public cPtr_semanticInstructionFor
   public: GGS_unifiedTypeMapEntry mProperty_mTargetType ;
   public: GGS_string mProperty_mTargetVariableCppName ;
   public: GGS_string mProperty_mNameForCheckingFormalParameterUsing ;
-  public: GGS_lstringlist mProperty_mStructAttributeList ;
+  public: GGS__5B_lstring_5D_ mProperty_mStructAttributeList ;
   public: GGS_semanticExpressionForGeneration mProperty_mSourceExpression ;
   public: GGS_string mProperty_mGeneratedMethod ;
 
@@ -4777,7 +4765,7 @@ class cPtr_opAssignInstructionForGeneration : public cPtr_semanticInstructionFor
                                                  const GGS_unifiedTypeMapEntry & in_mTargetType,
                                                  const GGS_string & in_mTargetVariableCppName,
                                                  const GGS_string & in_mNameForCheckingFormalParameterUsing,
-                                                 const GGS_lstringlist & in_mStructAttributeList,
+                                                 const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                  const GGS_semanticExpressionForGeneration & in_mSourceExpression,
                                                  const GGS_string & in_mGeneratedMethod,
                                                  Compiler * inCompiler
@@ -4886,7 +4874,7 @@ class GGS_plusPlusAssignInstructionForGeneration : public GGS_semanticInstructio
 
   public: class GGS_string readProperty_mNameForCheckingFormalParameterUsing (void) const ;
 
-  public: class GGS_lstringlist readProperty_mStructAttributeList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mStructAttributeList (void) const ;
 
   public: class GGS_semanticExpressionForGeneration readProperty_mSourceExpression (void) const ;
 
@@ -4897,7 +4885,7 @@ class GGS_plusPlusAssignInstructionForGeneration : public GGS_semanticInstructio
                                                                                           const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                                           const class GGS_string & inOperand2,
                                                                                           const class GGS_string & inOperand3,
-                                                                                          const class GGS_lstringlist & inOperand4,
+                                                                                          const class GGS__5B_lstring_5D_ & inOperand4,
                                                                                           const class GGS_semanticExpressionForGeneration & inOperand5,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) ;
@@ -4938,7 +4926,7 @@ class cPtr_plusPlusAssignInstructionForGeneration : public cPtr_semanticInstruct
                                                                                     const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                                     const class GGS_string & inOperand2,
                                                                                     const class GGS_string & inOperand3,
-                                                                                    const class GGS_lstringlist & inOperand4,
+                                                                                    const class GGS__5B_lstring_5D_ & inOperand4,
                                                                                     const class GGS_semanticExpressionForGeneration & inOperand5,
                                                                                     Compiler * inCompiler) ;
 
@@ -4956,7 +4944,7 @@ class cPtr_plusPlusAssignInstructionForGeneration : public cPtr_semanticInstruct
   public: GGS_unifiedTypeMapEntry mProperty_mTargetType ;
   public: GGS_string mProperty_mTargetVariableCppName ;
   public: GGS_string mProperty_mNameForCheckingFormalParameterUsing ;
-  public: GGS_lstringlist mProperty_mStructAttributeList ;
+  public: GGS__5B_lstring_5D_ mProperty_mStructAttributeList ;
   public: GGS_semanticExpressionForGeneration mProperty_mSourceExpression ;
 
 
@@ -4968,7 +4956,7 @@ class cPtr_plusPlusAssignInstructionForGeneration : public cPtr_semanticInstruct
                                                        const GGS_unifiedTypeMapEntry & in_mTargetType,
                                                        const GGS_string & in_mTargetVariableCppName,
                                                        const GGS_string & in_mNameForCheckingFormalParameterUsing,
-                                                       const GGS_lstringlist & in_mStructAttributeList,
+                                                       const GGS__5B_lstring_5D_ & in_mStructAttributeList,
                                                        const GGS_semanticExpressionForGeneration & in_mSourceExpression,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
@@ -7268,7 +7256,7 @@ class DownEnumerator_filewrapperMap final {
 
   public: class GGS_lstring current_mFilewrapperPath (LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist current_mFilewrapperExtensionList (LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ current_mFilewrapperExtensionList (LOCATION_ARGS) const ;
 
   public: class GGS_wrapperFileMap current_mFilewrapperFileMap (LOCATION_ARGS) const ;
 
@@ -7302,7 +7290,7 @@ class UpEnumerator_filewrapperMap final {
 
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mFilewrapperPath (LOCATION_ARGS) const ;
-  public: class GGS_lstringlist current_mFilewrapperExtensionList (LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ current_mFilewrapperExtensionList (LOCATION_ARGS) const ;
   public: class GGS_wrapperFileMap current_mFilewrapperFileMap (LOCATION_ARGS) const ;
   public: class GGS_wrapperDirectoryMap current_mFilewrapperDirectoryMap (LOCATION_ARGS) const ;
   public: class GGS_filewrapperTemplateMap current_mFilewrapperTemplateMap (LOCATION_ARGS) const ;
@@ -7381,7 +7369,7 @@ class GGS_filewrapperMap : public AC_GALGAS_root {
 //--------------------------------- Setters
   public: void setter_insertKey (class GGS_lstring constinArgument0,
                                  class GGS_lstring constinArgument1,
-                                 class GGS_lstringlist constinArgument2,
+                                 class GGS__5B_lstring_5D_ constinArgument2,
                                  class GGS_wrapperFileMap constinArgument3,
                                  class GGS_wrapperDirectoryMap constinArgument4,
                                  class GGS_filewrapperTemplateMap constinArgument5,
@@ -7394,7 +7382,7 @@ class GGS_filewrapperMap : public AC_GALGAS_root {
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMFilewrapperExtensionListForKey (class GGS_lstringlist constinArgument0,
+  public: void setter_setMFilewrapperExtensionListForKey (class GGS__5B_lstring_5D_ constinArgument0,
                                                           class GGS_string constinArgument1,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
@@ -7423,7 +7411,7 @@ class GGS_filewrapperMap : public AC_GALGAS_root {
 //--------------------------------- Instance Methods
   public: void method_searchKey (class GGS_lstring constinArgument0,
                                  class GGS_lstring & outArgument1,
-                                 class GGS_lstringlist & outArgument2,
+                                 class GGS__5B_lstring_5D_ & outArgument2,
                                  class GGS_wrapperFileMap & outArgument3,
                                  class GGS_wrapperDirectoryMap & outArgument4,
                                  class GGS_filewrapperTemplateMap & outArgument5,
@@ -7459,9 +7447,9 @@ class GGS_filewrapperMap : public AC_GALGAS_root {
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstringlist getter_mFilewrapperExtensionListForKey (const class GGS_string & constinOperand0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lstring_5D_ getter_mFilewrapperExtensionListForKey (const class GGS_string & constinOperand0,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_wrapperFileMap getter_mFilewrapperFileMapForKey (const class GGS_string & constinOperand0,
                                                                      Compiler * inCompiler
@@ -15283,18 +15271,14 @@ class GGS__5B_semanticInstructionAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_semanticInstructionAST & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_semanticInstructionAST & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_semanticInstructionAST getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_semanticInstructionAST getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -16899,18 +16883,14 @@ class GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ final : public AC_GAL
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_forInstructionEnumeratedObjectElementAST & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_forInstructionEnumeratedObjectElementAST & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_forInstructionEnumeratedObjectElementAST getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_forInstructionEnumeratedObjectElementAST getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -17323,18 +17303,14 @@ class GGS__5B_forInstructionEnumeratedObjectAST_5D_ final : public AC_GALGAS_roo
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_forInstructionEnumeratedObjectAST & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_forInstructionEnumeratedObjectAST & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_forInstructionEnumeratedObjectAST getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_forInstructionEnumeratedObjectAST getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -17794,18 +17770,14 @@ class GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ final : public AC_
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_forInstructionEnumeratedObjectForGeneration & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_forInstructionEnumeratedObjectForGeneration & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_forInstructionEnumeratedObjectForGeneration getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_forInstructionEnumeratedObjectForGeneration getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -18252,18 +18224,14 @@ class GGS__5B_switchBranchAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_switchBranchAST & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_switchBranchAST & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_switchBranchAST getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_switchBranchAST getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -18422,18 +18390,14 @@ class GGS__5B_switchExtractedValuesAST_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_switchExtractedValuesAST & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_switchExtractedValuesAST & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_switchExtractedValuesAST getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_switchExtractedValuesAST getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -18775,18 +18739,14 @@ class GGS__5B_switchBranchForGeneration_5D_ final : public AC_GALGAS_root {
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_switchBranchForGeneration & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_switchBranchForGeneration & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_switchBranchForGeneration getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_switchBranchForGeneration getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -18945,18 +18905,14 @@ class GGS__5B_extractedAssociatedValueForGeneration_5D_ final : public AC_GALGAS
 
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_extractedAssociatedValueForGeneration & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_extractedAssociatedValueForGeneration & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_extractedAssociatedValueForGeneration getter_first (LOCATION_ARGS) const ;
+
+  public: class GGS_extractedAssociatedValueForGeneration getter_last (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -19351,7 +19307,7 @@ class GGS_setterCallInstructionForGeneration : public GGS_semanticInstructionFor
 
   public: class GGS_string readProperty_mReceiverBaseName (void) const ;
 
-  public: class GGS_lstringlist readProperty_mReceiverStructAttributes (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mReceiverStructAttributes (void) const ;
 
   public: class GGS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
 
@@ -19371,7 +19327,7 @@ class GGS_setterCallInstructionForGeneration : public GGS_semanticInstructionFor
   public: static GGS_setterCallInstructionForGeneration init_21__21__21__21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
                                                                                                       const class GGS_string & inOperand1,
                                                                                                       const class GGS_string & inOperand2,
-                                                                                                      const class GGS_lstringlist & inOperand3,
+                                                                                                      const class GGS__5B_lstring_5D_ & inOperand3,
                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand4,
                                                                                                       const class GGS_lstring & inOperand5,
                                                                                                       const class GGS_methodKind & inOperand6,
@@ -19416,7 +19372,7 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
   public: void setterCallInstructionForGeneration_init_21__21__21__21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
                                                                                                 const class GGS_string & inOperand1,
                                                                                                 const class GGS_string & inOperand2,
-                                                                                                const class GGS_lstringlist & inOperand3,
+                                                                                                const class GGS__5B_lstring_5D_ & inOperand3,
                                                                                                 const class GGS_unifiedTypeMapEntry & inOperand4,
                                                                                                 const class GGS_lstring & inOperand5,
                                                                                                 const class GGS_methodKind & inOperand6,
@@ -19438,7 +19394,7 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
   public: GGS_location mProperty_mInstructionLocation ;
   public: GGS_string mProperty_mReceiverCppName ;
   public: GGS_string mProperty_mReceiverBaseName ;
-  public: GGS_lstringlist mProperty_mReceiverStructAttributes ;
+  public: GGS__5B_lstring_5D_ mProperty_mReceiverStructAttributes ;
   public: GGS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GGS_lstring mProperty_mSetterName ;
   public: GGS_methodKind mProperty_mKind ;
@@ -19454,7 +19410,7 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
   public: cPtr_setterCallInstructionForGeneration (const GGS_location & in_mInstructionLocation,
                                                    const GGS_string & in_mReceiverCppName,
                                                    const GGS_string & in_mReceiverBaseName,
-                                                   const GGS_lstringlist & in_mReceiverStructAttributes,
+                                                   const GGS__5B_lstring_5D_ & in_mReceiverStructAttributes,
                                                    const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                    const GGS_lstring & in_mSetterName,
                                                    const GGS_methodKind & in_mKind,

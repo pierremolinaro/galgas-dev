@@ -1912,25 +1912,21 @@ void GGS__5B_enumConstant_5D_::setter_popLast (GGS_enumConstant & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_enumConstant_5D_::method_first (GGS_enumConstant & outValue,
-                                             Compiler * /* inCompiler */
-                                             COMMA_LOCATION_ARGS) const {
+GGS_enumConstant GGS__5B_enumConstant_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_enumConstant () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_enumConstant_5D_::method_last (GGS_enumConstant & outValue,
-                                            Compiler * /* inCompiler */
-                                            COMMA_LOCATION_ARGS) const {
+GGS_enumConstant GGS__5B_enumConstant_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_enumConstant () ;
   }
 }
 
@@ -2193,25 +2189,21 @@ void GGS__5B_associatedValue_5D_::setter_popLast (GGS_associatedValue & outValue
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_associatedValue_5D_::method_first (GGS_associatedValue & outValue,
-                                                Compiler * /* inCompiler */
-                                                COMMA_LOCATION_ARGS) const {
+GGS_associatedValue GGS__5B_associatedValue_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_associatedValue () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_associatedValue_5D_::method_last (GGS_associatedValue & outValue,
-                                               Compiler * /* inCompiler */
-                                               COMMA_LOCATION_ARGS) const {
+GGS_associatedValue GGS__5B_associatedValue_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_associatedValue () ;
   }
 }
 
@@ -2573,25 +2565,21 @@ void GGS__5B_enumConstantForGeneration_5D_::setter_popLast (GGS_enumConstantForG
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_enumConstantForGeneration_5D_::method_first (GGS_enumConstantForGeneration & outValue,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_LOCATION_ARGS) const {
+GGS_enumConstantForGeneration GGS__5B_enumConstantForGeneration_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_enumConstantForGeneration () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_enumConstantForGeneration_5D_::method_last (GGS_enumConstantForGeneration & outValue,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_LOCATION_ARGS) const {
+GGS_enumConstantForGeneration GGS__5B_enumConstantForGeneration_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_enumConstantForGeneration () ;
   }
 }
 
@@ -3478,25 +3466,21 @@ void GGS__5B_graphInsertModifier_5D_::setter_popLast (GGS_graphInsertModifier & 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_graphInsertModifier_5D_::method_first (GGS_graphInsertModifier & outValue,
-                                                    Compiler * /* inCompiler */
-                                                    COMMA_LOCATION_ARGS) const {
+GGS_graphInsertModifier GGS__5B_graphInsertModifier_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_graphInsertModifier () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_graphInsertModifier_5D_::method_last (GGS_graphInsertModifier & outValue,
-                                                   Compiler * /* inCompiler */
-                                                   COMMA_LOCATION_ARGS) const {
+GGS_graphInsertModifier GGS__5B_graphInsertModifier_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_graphInsertModifier () ;
   }
 }
 
@@ -5006,25 +4990,21 @@ void GGS__5B_insertSetterAST_5D_::setter_popLast (GGS_insertSetterAST & outValue
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_insertSetterAST_5D_::method_first (GGS_insertSetterAST & outValue,
-                                                Compiler * /* inCompiler */
-                                                COMMA_LOCATION_ARGS) const {
+GGS_insertSetterAST GGS__5B_insertSetterAST_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_insertSetterAST () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_insertSetterAST_5D_::method_last (GGS_insertSetterAST & outValue,
-                                               Compiler * /* inCompiler */
-                                               COMMA_LOCATION_ARGS) const {
+GGS_insertSetterAST GGS__5B_insertSetterAST_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_insertSetterAST () ;
   }
 }
 
@@ -5386,25 +5366,21 @@ void GGS__5B_mapAccessorAST_5D_::setter_popLast (GGS_mapAccessorAST & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_mapAccessorAST_5D_::method_first (GGS_mapAccessorAST & outValue,
-                                               Compiler * /* inCompiler */
-                                               COMMA_LOCATION_ARGS) const {
+GGS_mapAccessorAST GGS__5B_mapAccessorAST_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_mapAccessorAST () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_mapAccessorAST_5D_::method_last (GGS_mapAccessorAST & outValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) const {
+GGS_mapAccessorAST GGS__5B_mapAccessorAST_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_mapAccessorAST () ;
   }
 }
 
@@ -5756,25 +5732,21 @@ void GGS__5B_location_5D_::setter_popLast (GGS_location & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_location_5D_::method_first (GGS_location & outValue,
-                                         Compiler * /* inCompiler */
-                                         COMMA_LOCATION_ARGS) const {
+GGS_location GGS__5B_location_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_location () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_location_5D_::method_last (GGS_location & outValue,
-                                        Compiler * /* inCompiler */
-                                        COMMA_LOCATION_ARGS) const {
+GGS_location GGS__5B_location_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_location () ;
   }
 }
 
@@ -7488,7 +7460,7 @@ GGS_semanticDeclarationAST () {
 GGS_boolsetDeclarationAST GGS_boolsetDeclarationAST::
 init_21_isPredefined_21__21__21_isEquatable (const GGS_bool & in_isPredefined,
                                              const GGS_lstring & in_mBoolsetTypeName,
-                                             const GGS_lstringlist & in_mFlagList,
+                                             const GGS__5B_lstring_5D_ & in_mFlagList,
                                              const GGS_bool & in_isEquatable,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
@@ -7505,7 +7477,7 @@ init_21_isPredefined_21__21__21_isEquatable (const GGS_bool & in_isPredefined,
 void cPtr_boolsetDeclarationAST::
 boolsetDeclarationAST_init_21_isPredefined_21__21__21_isEquatable (const GGS_bool & in_isPredefined,
                                                                    const GGS_lstring & in_mBoolsetTypeName,
-                                                                   const GGS_lstringlist & in_mFlagList,
+                                                                   const GGS__5B_lstring_5D_ & in_mFlagList,
                                                                    const GGS_bool & in_isEquatable,
                                                                    Compiler * /* inCompiler */) {
   mProperty_isPredefined = in_isPredefined ;
@@ -7534,9 +7506,9 @@ GGS_lstring GGS_boolsetDeclarationAST::readProperty_mBoolsetTypeName (void) cons
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_boolsetDeclarationAST::readProperty_mFlagList (void) const {
+GGS__5B_lstring_5D_ GGS_boolsetDeclarationAST::readProperty_mFlagList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_boolsetDeclarationAST * p = (cPtr_boolsetDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_boolsetDeclarationAST) ;
@@ -7571,7 +7543,7 @@ mProperty_isEquatable () {
 
 cPtr_boolsetDeclarationAST::cPtr_boolsetDeclarationAST (const GGS_bool & in_isPredefined,
                                                         const GGS_lstring & in_mBoolsetTypeName,
-                                                        const GGS_lstringlist & in_mFlagList,
+                                                        const GGS__5B_lstring_5D_ & in_mFlagList,
                                                         const GGS_bool & in_isEquatable,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) :
@@ -7763,7 +7735,7 @@ GGS_semanticTypeForGeneration () {
 GGS_boolsetTypeForGeneration GGS_boolsetTypeForGeneration::
 init_21_infoMessage_21__21__21_ (const GGS_string & in_infoMessage,
                                  const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                 const GGS_lstringlist & in_mFlagList,
+                                 const GGS__5B_lstring_5D_ & in_mFlagList,
                                  const GGS_bool & in_equatable,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
@@ -7780,7 +7752,7 @@ init_21_infoMessage_21__21__21_ (const GGS_string & in_infoMessage,
 void cPtr_boolsetTypeForGeneration::
 boolsetTypeForGeneration_init_21_infoMessage_21__21__21_ (const GGS_string & in_infoMessage,
                                                           const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                          const GGS_lstringlist & in_mFlagList,
+                                                          const GGS__5B_lstring_5D_ & in_mFlagList,
                                                           const GGS_bool & in_equatable,
                                                           Compiler * /* inCompiler */) {
   mProperty_infoMessage = in_infoMessage ;
@@ -7797,9 +7769,9 @@ GGS_semanticTypeForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_boolsetTypeForGeneration::readProperty_mFlagList (void) const {
+GGS__5B_lstring_5D_ GGS_boolsetTypeForGeneration::readProperty_mFlagList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_boolsetTypeForGeneration * p = (cPtr_boolsetTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_boolsetTypeForGeneration) ;
@@ -7833,7 +7805,7 @@ mProperty_equatable () {
 
 cPtr_boolsetTypeForGeneration::cPtr_boolsetTypeForGeneration (const GGS_string & in_infoMessage,
                                                               const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                              const GGS_lstringlist & in_mFlagList,
+                                                              const GGS__5B_lstring_5D_ & in_mFlagList,
                                                               const GGS_bool & in_equatable,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) :
@@ -9617,25 +9589,21 @@ void GGS__5B_sortedListSortDescriptorAST_5D_::setter_popLast (GGS_sortedListSort
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_sortedListSortDescriptorAST_5D_::method_first (GGS_sortedListSortDescriptorAST & outValue,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_LOCATION_ARGS) const {
+GGS_sortedListSortDescriptorAST GGS__5B_sortedListSortDescriptorAST_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_sortedListSortDescriptorAST () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_sortedListSortDescriptorAST_5D_::method_last (GGS_sortedListSortDescriptorAST & outValue,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_LOCATION_ARGS) const {
+GGS_sortedListSortDescriptorAST GGS__5B_sortedListSortDescriptorAST_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_sortedListSortDescriptorAST () ;
   }
 }
 
@@ -9987,25 +9955,21 @@ void GGS__5B_sortDescriptorForGeneration_5D_::setter_popLast (GGS_sortDescriptor
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_sortDescriptorForGeneration_5D_::method_first (GGS_sortDescriptorForGeneration & outValue,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_LOCATION_ARGS) const {
+GGS_sortDescriptorForGeneration GGS__5B_sortDescriptorForGeneration_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_sortDescriptorForGeneration () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_sortDescriptorForGeneration_5D_::method_last (GGS_sortDescriptorForGeneration & outValue,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_LOCATION_ARGS) const {
+GGS_sortDescriptorForGeneration GGS__5B_sortDescriptorForGeneration_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_sortDescriptorForGeneration () ;
   }
 }
 
@@ -10946,25 +10910,21 @@ void GGS__5B_typeNameFormalParameterName_5D_::setter_popLast (GGS_typeNameFormal
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_typeNameFormalParameterName_5D_::method_first (GGS_typeNameFormalParameterName & outValue,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_LOCATION_ARGS) const {
+GGS_typeNameFormalParameterName GGS__5B_typeNameFormalParameterName_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_typeNameFormalParameterName () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_typeNameFormalParameterName_5D_::method_last (GGS_typeNameFormalParameterName & outValue,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_LOCATION_ARGS) const {
+GGS_typeNameFormalParameterName GGS__5B_typeNameFormalParameterName_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_typeNameFormalParameterName () ;
   }
 }
 
@@ -11326,25 +11286,21 @@ void GGS__5B__5B_typeNameFormalParameterName_5D__5D_::setter_popLast (GGS__5B_ty
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B__5B_typeNameFormalParameterName_5D__5D_::method_first (GGS__5B_typeNameFormalParameterName_5D_ & outValue,
-                                                                    Compiler * /* inCompiler */
-                                                                    COMMA_LOCATION_ARGS) const {
+GGS__5B_typeNameFormalParameterName_5D_ GGS__5B__5B_typeNameFormalParameterName_5D__5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS__5B_typeNameFormalParameterName_5D_ () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B__5B_typeNameFormalParameterName_5D__5D_::method_last (GGS__5B_typeNameFormalParameterName_5D_ & outValue,
-                                                                   Compiler * /* inCompiler */
-                                                                   COMMA_LOCATION_ARGS) const {
+GGS__5B_typeNameFormalParameterName_5D_ GGS__5B__5B_typeNameFormalParameterName_5D__5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS__5B_typeNameFormalParameterName_5D_ () ;
   }
 }
 
@@ -11607,25 +11563,21 @@ void GGS__5B_externTypeGetter_5D_::setter_popLast (GGS_externTypeGetter & outVal
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_externTypeGetter_5D_::method_first (GGS_externTypeGetter & outValue,
-                                                 Compiler * /* inCompiler */
-                                                 COMMA_LOCATION_ARGS) const {
+GGS_externTypeGetter GGS__5B_externTypeGetter_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_externTypeGetter () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_externTypeGetter_5D_::method_last (GGS_externTypeGetter & outValue,
-                                                Compiler * /* inCompiler */
-                                                COMMA_LOCATION_ARGS) const {
+GGS_externTypeGetter GGS__5B_externTypeGetter_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_externTypeGetter () ;
   }
 }
 
@@ -11987,25 +11939,21 @@ void GGS__5B_externTypeSetter_5D_::setter_popLast (GGS_externTypeSetter & outVal
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_externTypeSetter_5D_::method_first (GGS_externTypeSetter & outValue,
-                                                 Compiler * /* inCompiler */
-                                                 COMMA_LOCATION_ARGS) const {
+GGS_externTypeSetter GGS__5B_externTypeSetter_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_externTypeSetter () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_externTypeSetter_5D_::method_last (GGS_externTypeSetter & outValue,
-                                                Compiler * /* inCompiler */
-                                                COMMA_LOCATION_ARGS) const {
+GGS_externTypeSetter GGS__5B_externTypeSetter_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_externTypeSetter () ;
   }
 }
 
@@ -12357,25 +12305,21 @@ void GGS__5B_externTypeMethod_5D_::setter_popLast (GGS_externTypeMethod & outVal
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_externTypeMethod_5D_::method_first (GGS_externTypeMethod & outValue,
-                                                 Compiler * /* inCompiler */
-                                                 COMMA_LOCATION_ARGS) const {
+GGS_externTypeMethod GGS__5B_externTypeMethod_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_externTypeMethod () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_externTypeMethod_5D_::method_last (GGS_externTypeMethod & outValue,
-                                                Compiler * /* inCompiler */
-                                                COMMA_LOCATION_ARGS) const {
+GGS_externTypeMethod GGS__5B_externTypeMethod_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_externTypeMethod () ;
   }
 }
 

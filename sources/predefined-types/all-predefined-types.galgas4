@@ -47,7 +47,7 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   ioDeclarations.mDeclarationList ++= @timerPredefinedTypeAST (!isPredefined: true, "timer")
 
 //  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "luint")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "lstring")
+//  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "lstring")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "string")
 
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "bool")

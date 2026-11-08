@@ -138,7 +138,7 @@ map @filewrapperTemplateMap {
 
 map @filewrapperMap {
   public let @lstring mFilewrapperPath
-  public let @lstringlist mFilewrapperExtensionList
+  public let [@lstring] mFilewrapperExtensionList
   public let @wrapperFileMap mFilewrapperFileMap
   public let @wrapperDirectoryMap mFilewrapperDirectoryMap
   public let @filewrapperTemplateMap mFilewrapperTemplateMap

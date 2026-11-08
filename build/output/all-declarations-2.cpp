@@ -14059,25 +14059,21 @@ void GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_::setter_popLast (GGS_ab
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_::method_first (GGS_abstractLexicalRoutineActualArgumentAST & outValue,
-                                                                        Compiler * /* inCompiler */
-                                                                        COMMA_LOCATION_ARGS) const {
+GGS_abstractLexicalRoutineActualArgumentAST GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_::getter_first (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray (0 COMMA_THERE) ;
+    return mSharedArray (0 COMMA_THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_abstractLexicalRoutineActualArgumentAST () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_::method_last (GGS_abstractLexicalRoutineActualArgumentAST & outValue,
-                                                                       Compiler * /* inCompiler */
-                                                                       COMMA_LOCATION_ARGS) const {
+GGS_abstractLexicalRoutineActualArgumentAST GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_::getter_last (LOCATION_ARGS) const {
   if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
+    return mSharedArray.lastObject (THERE) ;
   }else{
-    outValue.drop () ;
+    return GGS_abstractLexicalRoutineActualArgumentAST () ;
   }
 }
 
@@ -14190,7 +14186,7 @@ GGS_lexicalInstructionAST () {
 GGS_lexicalRoutineCallInstructionAST GGS_lexicalRoutineCallInstructionAST::
 init_21__21__21_ (const GGS_lstring & in_mRoutineName,
                   const GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ & in_mActualArgumentList,
-                  const GGS_lstringlist & in_mErrorMessageList,
+                  const GGS__5B_lstring_5D_ & in_mErrorMessageList,
                   Compiler * inCompiler
                   COMMA_LOCATION_ARGS) {
   cPtr_lexicalRoutineCallInstructionAST * object = nullptr ;
@@ -14206,7 +14202,7 @@ init_21__21__21_ (const GGS_lstring & in_mRoutineName,
 void cPtr_lexicalRoutineCallInstructionAST::
 lexicalRoutineCallInstructionAST_init_21__21__21_ (const GGS_lstring & in_mRoutineName,
                                                    const GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ & in_mActualArgumentList,
-                                                   const GGS_lstringlist & in_mErrorMessageList,
+                                                   const GGS__5B_lstring_5D_ & in_mErrorMessageList,
                                                    Compiler * /* inCompiler */) {
   mProperty_mRoutineName = in_mRoutineName ;
   mProperty_mActualArgumentList = in_mActualArgumentList ;
@@ -14245,9 +14241,9 @@ GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ GGS_lexicalRoutineCallInstru
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstringlist GGS_lexicalRoutineCallInstructionAST::readProperty_mErrorMessageList (void) const {
+GGS__5B_lstring_5D_ GGS_lexicalRoutineCallInstructionAST::readProperty_mErrorMessageList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstringlist () ;
+    return GGS__5B_lstring_5D_ () ;
   }else{
     cPtr_lexicalRoutineCallInstructionAST * p = (cPtr_lexicalRoutineCallInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_lexicalRoutineCallInstructionAST) ;
@@ -14270,7 +14266,7 @@ mProperty_mErrorMessageList () {
 
 cPtr_lexicalRoutineCallInstructionAST::cPtr_lexicalRoutineCallInstructionAST (const GGS_lstring & in_mRoutineName,
                                                                               const GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ & in_mActualArgumentList,
-                                                                              const GGS_lstringlist & in_mErrorMessageList,
+                                                                              const GGS__5B_lstring_5D_ & in_mErrorMessageList,
                                                                               Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) :
 cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),

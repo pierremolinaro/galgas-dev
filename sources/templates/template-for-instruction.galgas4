@@ -20,19 +20,11 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-//enum @templateInstructionForEnumerationAST {
-//  case implicit (@string prefix @location remplacementRange)
-//  case explicit (@lstringlist enumeration @location endOfProperties)
-//}
-
-//································································································
-
 final class @templateInstructionForeachAST : @templateInstructionAST {
   private let @bool mIsAscending
   private let @templateExpressionAST mExpression
-  private let @lstringlist mEnumeration
+  private let [@lstring] mEnumeration
   private let @location mEndOfProperties
-//  private let @templateInstructionForEnumerationAST mEnumeratedObjectProperties
   private let @templateInstructionListAST mBeforeInstructionList
   private let @templateInstructionListAST mDoInstructionList
   private let @lstring mIndexIdentifier
@@ -48,7 +40,7 @@ syntax extension templateSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <for_instruction_element> (?!@lstringlist ioElementList ) {
+  rule <for_instruction_element> (?![@lstring] ioElementList ) {
     $literalInt$ (?let count)
     $*$
     var n = count.bigint.uint
@@ -56,31 +48,31 @@ syntax extension templateSyntax {
       error (count: "this value should be > 0")
     end
     loop (n) while n > 0 do
-      ioElementList ++= @("".nowhere)
+      ioElementList ++= "".nowhere
       n -= 1
     end
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <for_instruction_element> (?!@lstringlist ioElementList ) {
+  rule <for_instruction_element> (?![@lstring] ioElementList ) {
     $*$
-    ioElementList ++= @("".nowhere)
+    ioElementList ++= "".nowhere
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <for_instruction_element> (?!@lstringlist ioElementList ) {
+  rule <for_instruction_element> (?![@lstring] ioElementList ) {
     $identifier$ (?let constantName)
-    ioElementList ++= @(constantName)
+    ioElementList ++= constantName
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <for_instruction_enumerated_object> (!@lstringlist outEnumeration,
+  rule <for_instruction_enumerated_object> (![@lstring] outEnumeration,
                                            !@location outEndOfProperties,
                                            !@templateExpressionAST outExpression ) {
-    outEnumeration = @lstringlist ()
+    outEnumeration = [@lstring] ()
     $($
     repeat
       <for_instruction_element> (!?outEnumeration)

@@ -368,13 +368,13 @@ class GGS_dropInstructionAST : public GGS_semanticInstructionAST {
   public: GGS_dropInstructionAST (const class cPtr_dropInstructionAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_lstringlist readProperty_mDropList (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mDropList (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
   public: static GGS_dropInstructionAST init_21__21_ (const class GGS_location & inOperand0,
-                                                      const class GGS_lstringlist & inOperand1,
+                                                      const class GGS__5B_lstring_5D_ & inOperand1,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
@@ -411,7 +411,7 @@ class cPtr_dropInstructionAST : public cPtr_semanticInstructionAST {
 
 //--------------------------------- Initializers
   public: void dropInstructionAST_init_21__21_ (const class GGS_location & inOperand0,
-                                                const class GGS_lstringlist & inOperand1,
+                                                const class GGS__5B_lstring_5D_ & inOperand1,
                                                 Compiler * inCompiler) ;
 
 
@@ -429,7 +429,7 @@ class cPtr_dropInstructionAST : public cPtr_semanticInstructionAST {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_lstringlist mProperty_mDropList ;
+  public: GGS__5B_lstring_5D_ mProperty_mDropList ;
 
 
 //--- Default constructor
@@ -437,7 +437,7 @@ class cPtr_dropInstructionAST : public cPtr_semanticInstructionAST {
 
 //--- Constructor
   public: cPtr_dropInstructionAST (const GGS_location & in_mInstructionLocation,
-                                   const GGS_lstringlist & in_mDropList,
+                                   const GGS__5B_lstring_5D_ & in_mDropList,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
@@ -2083,7 +2083,7 @@ class GGS_grammarForGeneration : public GGS_semanticDeclarationWithHeaderForGene
 
   public: class GGS_nonTerminalToAddList readProperty_mNonTerminalToAddList (void) const ;
 
-  public: class GGS_lstringlist readProperty_mSyntaxComponents (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mSyntaxComponents (void) const ;
 
   public: class GGS_string readProperty_mStartSymbolName (void) const ;
 
@@ -2101,7 +2101,7 @@ class GGS_grammarForGeneration : public GGS_semanticDeclarationWithHeaderForGene
                                                                                                                                               const class GGS_string & inOperand4,
                                                                                                                                               const class GGS_nonTerminalSymbolMapForGrammarAnalysis & inOperand5,
                                                                                                                                               const class GGS_nonTerminalToAddList & inOperand6,
-                                                                                                                                              const class GGS_lstringlist & inOperand7,
+                                                                                                                                              const class GGS__5B_lstring_5D_ & inOperand7,
                                                                                                                                               const class GGS_string & inOperand8,
                                                                                                                                               const class GGS_bool & inOperand9,
                                                                                                                                               const class GGS_string & inOperand10,
@@ -2147,7 +2147,7 @@ class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGe
                                                                                                                                         const class GGS_string & inOperand4,
                                                                                                                                         const class GGS_nonTerminalSymbolMapForGrammarAnalysis & inOperand5,
                                                                                                                                         const class GGS_nonTerminalToAddList & inOperand6,
-                                                                                                                                        const class GGS_lstringlist & inOperand7,
+                                                                                                                                        const class GGS__5B_lstring_5D_ & inOperand7,
                                                                                                                                         const class GGS_string & inOperand8,
                                                                                                                                         const class GGS_bool & inOperand9,
                                                                                                                                         const class GGS_string & inOperand10,
@@ -2182,7 +2182,7 @@ class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGe
   public: GGS_string mProperty_mLexiqueName ;
   public: GGS_nonTerminalSymbolMapForGrammarAnalysis mProperty_mNonTerminalMapForGrammarAnalysis ;
   public: GGS_nonTerminalToAddList mProperty_mNonTerminalToAddList ;
-  public: GGS_lstringlist mProperty_mSyntaxComponents ;
+  public: GGS__5B_lstring_5D_ mProperty_mSyntaxComponents ;
   public: GGS_string mProperty_mStartSymbolName ;
   public: GGS_bool mProperty_mHasTranslateFeature ;
   public: GGS_string mProperty_mCppFileContents ;
@@ -2199,7 +2199,7 @@ class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGe
                                      const GGS_string & in_mLexiqueName,
                                      const GGS_nonTerminalSymbolMapForGrammarAnalysis & in_mNonTerminalMapForGrammarAnalysis,
                                      const GGS_nonTerminalToAddList & in_mNonTerminalToAddList,
-                                     const GGS_lstringlist & in_mSyntaxComponents,
+                                     const GGS__5B_lstring_5D_ & in_mSyntaxComponents,
                                      const GGS_string & in_mStartSymbolName,
                                      const GGS_bool & in_mHasTranslateFeature,
                                      const GGS_string & in_mCppFileContents,

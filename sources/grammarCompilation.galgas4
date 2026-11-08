@@ -238,7 +238,7 @@ filewrapper grammarGenerationTemplate in "+generation-templates/grammar_generati
     ?@string START_SYMBOL_NAME,
     ?@bool HAS_TRANSLATE_FEATURE,
     ?@string GRAMMAR_NAME,
-    ?@lstringlist SYNTAX_COMPONENTS
+    ?[@lstring] SYNTAX_COMPONENTS
   )
 }
 

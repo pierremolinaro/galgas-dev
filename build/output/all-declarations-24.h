@@ -177,7 +177,7 @@ extern const cDirectoryWrapper gWrapperDirectory_2_structGenerationTemplate ;
 GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (class Compiler * inCompiler,
                                                                                const class GGS_string & in_TYPE_5F_NAME,
                                                                                const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                               const class GGS_lstringlist & in_SLOT_5F_LIST
+                                                                               const class GGS__5B_lstring_5D_ & in_SLOT_5F_LIST
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -189,7 +189,7 @@ GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (c
 GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                            const class GGS_string & in_TYPE_5F_NAME,
                                                                                            const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                           const class GGS_lstringlist & in_SLOT_5F_LIST,
+                                                                                           const class GGS__5B_lstring_5D_ & in_SLOT_5F_LIST,
                                                                                            const class GGS_bigint & in_FULL_5F_SET,
                                                                                            const class GGS_bool & in_EQUATABLE
                                                                                            COMMA_LOCATION_ARGS) ;

@@ -644,11 +644,11 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
   var @nonTerminalToAddList nonTerminalToAddList = @()
   var @uint addedNonTerminalCount = 0
   for syntaxComponentName in self.mSyntaxComponents do
-    let syntaxNameForUsefulness = syntaxNameForUsefulEntitiesGraph (syntaxComponentName.mValue)
+    let syntaxNameForUsefulness = syntaxNameForUsefulEntitiesGraph (syntaxComponentName)
     !?ioUsefulEntitiesGraph.addEdge (!from: grammarNameForUsefulness, !to: syntaxNameForUsefulness)
     let @uint addedNonTerminalCountRef = addedNonTerminalCount
     inSemanticContext.mSyntaxComponentMapForSemanticAnalysis.searchKey
-      (syntaxComponentName.mValue,
+      (syntaxComponentName,
       ?let @lstring lexiqueName,
       ?let @nonterminalDeclarationListAST nonterminalDeclarationList,
       ?let @syntaxRuleListAST ruleList,
@@ -658,15 +658,15 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
     !?ioUsefulEntitiesGraph.addEdge (!from: grammarNameForUsefulness, !to: lexiqueNameForUsefulness)
   //--- Check translate feature
     if self.mHasTranslateFeature & not hasTranslateFeature then
-      error (syntaxComponentName.mValue : "as '" + self.mGrammarComponentName + "' grammar declares 'translate' feature, this syntax component should do so")
+      error (syntaxComponentName : "as '" + self.mGrammarComponentName + "' grammar declares 'translate' feature, this syntax component should do so")
     elsif hasTranslateFeature & not self.mHasTranslateFeature then
-      error (self.mGrammarComponentName : "as '" + syntaxComponentName.mValue + "' syntax component declares 'translate' feature, this grammar should do so")
+      error (self.mGrammarComponentName : "as '" + syntaxComponentName + "' syntax component declares 'translate' feature, this grammar should do so")
     end
   //--- Handle lexique component
     if lexiqueComponentName.string == "" then
       lexiqueComponentName = lexiqueName
     elsif lexiqueName.string != lexiqueComponentName.string then
-      error (syntaxComponentName.mValue : "this syntax component uses '"
+      error (syntaxComponentName : "this syntax component uses '"
         + lexiqueName + "' lexique component, but the first syntax component uses the '"
         + lexiqueComponentName + "' lexique component (they should be the same)")
     end
@@ -683,7 +683,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
   //--- Handle syntax rules
     buildRuleList (
       nonTerminalMapForGrammarAnalysis,
-      syntaxComponentName.mValue,
+      syntaxComponentName,
       ruleList,
       !?actuallyUsedTerminalSymbolMap,
       !?syntaxComponentListForGrammarAnalysis,
@@ -691,7 +691,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
     )
     var @uint i = 0
     loop (addedNonTerminalCount) while i < (addedNonTerminalCount - addedNonTerminalCountRef) do
-      nonTerminalToAddList ++= @(syntaxComponentName.mValue, i)
+      nonTerminalToAddList ++= @(syntaxComponentName, i)
       i += 1
     end
   end

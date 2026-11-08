@@ -69,7 +69,7 @@ class cParser_galgas_34_DeclarationsSyntax {
 
   protected: virtual void nt_externtype_5F_setter_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
-  protected: virtual void nt_filewrapper_5F_binary_5F_files_ (class GGS_lstringlist & outArgument0,
+  protected: virtual void nt_filewrapper_5F_binary_5F_files_ (class GGS__5B_lstring_5D_ & outArgument0,
                                                               class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_filewrapper_5F_binary_5F_files_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
@@ -80,7 +80,7 @@ class cParser_galgas_34_DeclarationsSyntax {
 
   protected: virtual void nt_filewrapper_5F_templates_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
-  protected: virtual void nt_filewrapper_5F_text_5F_files_ (class GGS_lstringlist & outArgument0,
+  protected: virtual void nt_filewrapper_5F_text_5F_files_ (class GGS__5B_lstring_5D_ & outArgument0,
                                                             class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_filewrapper_5F_text_5F_files_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
@@ -190,14 +190,14 @@ class cParser_galgas_34_DeclarationsSyntax {
 
   protected: void rule_galgas_34_DeclarationsSyntax_declaration_i2_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_filewrapper_5F_text_5F_files_i3_ (GGS_lstringlist & outArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_filewrapper_5F_text_5F_files_i3_ (GGS__5B_lstring_5D_ & outArgument0,
                                                                                       Lexique_galgasScanner_34_ * inLexique) ;
 
 /*  protected: void rule_galgas_34_DeclarationsSyntax_filewrapper_5F_text_5F_files_i3_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
   protected: void rule_galgas_34_DeclarationsSyntax_filewrapper_5F_text_5F_files_i3_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_filewrapper_5F_binary_5F_files_i4_ (GGS_lstringlist & outArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_filewrapper_5F_binary_5F_files_i4_ (GGS__5B_lstring_5D_ & outArgument0,
                                                                                         Lexique_galgasScanner_34_ * inLexique) ;
 
 /*  protected: void rule_galgas_34_DeclarationsSyntax_filewrapper_5F_binary_5F_files_i4_parse (Lexique_galgasScanner_34_ * inLexique) ; */
@@ -1298,7 +1298,7 @@ class cParser_galgas_34_GuiComponentSyntax {
 
   protected: virtual void nt_gui_5F_with_5F_lexique_5F_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
-  protected: virtual void nt_gui_5F_with_5F_option_5F_declaration_ (class GGS_lstringlist & ioArgument0,
+  protected: virtual void nt_gui_5F_with_5F_option_5F_declaration_ (class GGS__5B_lstring_5D_ & ioArgument0,
                                                                     class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_gui_5F_with_5F_option_5F_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
@@ -1319,7 +1319,7 @@ class cParser_galgas_34_GuiComponentSyntax {
 
   protected: void rule_galgas_34_GuiComponentSyntax_gui_5F_with_5F_lexique_5F_declaration_i1_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_GuiComponentSyntax_gui_5F_with_5F_option_5F_declaration_i2_ (GGS_lstringlist & ioArgument0,
+  protected: void rule_galgas_34_GuiComponentSyntax_gui_5F_with_5F_option_5F_declaration_i2_ (GGS__5B_lstring_5D_ & ioArgument0,
                                                                                               Lexique_galgasScanner_34_ * inLexique) ;
 
 /*  protected: void rule_galgas_34_GuiComponentSyntax_gui_5F_with_5F_option_5F_declaration_i2_parse (Lexique_galgasScanner_34_ * inLexique) ; */
@@ -3155,9 +3155,9 @@ void extensionMethod_checkAutomatonStates (const class GGS_localVarManager inObj
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lstringlist extensionGetter_unsolvedEntryList (const class GGS_unifiedTypeMap & inObject,
-                                                         class Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+class GGS__5B_lstring_5D_ extensionGetter_unsolvedEntryList (const class GGS_unifiedTypeMap & inObject,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -3315,7 +3315,7 @@ class GGS_templateInstructionForeachAST : public GGS_templateInstructionAST {
 
   public: class GGS_templateExpressionAST readProperty_mExpression (void) const ;
 
-  public: class GGS_lstringlist readProperty_mEnumeration (void) const ;
+  public: class GGS__5B_lstring_5D_ readProperty_mEnumeration (void) const ;
 
   public: class GGS_location readProperty_mEndOfProperties (void) const ;
 
@@ -3334,7 +3334,7 @@ class GGS_templateInstructionForeachAST : public GGS_templateInstructionAST {
 //--------------------------------- Initializers
   public: static GGS_templateInstructionForeachAST init_21__21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
                                                                                              const class GGS_templateExpressionAST & inOperand1,
-                                                                                             const class GGS_lstringlist & inOperand2,
+                                                                                             const class GGS__5B_lstring_5D_ & inOperand2,
                                                                                              const class GGS_location & inOperand3,
                                                                                              const class GGS_templateInstructionListAST & inOperand4,
                                                                                              const class GGS_templateInstructionListAST & inOperand5,
@@ -3378,7 +3378,7 @@ class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
 //--------------------------------- Initializers
   public: void templateInstructionForeachAST_init_21__21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
                                                                                        const class GGS_templateExpressionAST & inOperand1,
-                                                                                       const class GGS_lstringlist & inOperand2,
+                                                                                       const class GGS__5B_lstring_5D_ & inOperand2,
                                                                                        const class GGS_location & inOperand3,
                                                                                        const class GGS_templateInstructionListAST & inOperand4,
                                                                                        const class GGS_templateInstructionListAST & inOperand5,
@@ -3399,7 +3399,7 @@ class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
 //--- Properties
   public: GGS_bool mProperty_mIsAscending ;
   public: GGS_templateExpressionAST mProperty_mExpression ;
-  public: GGS_lstringlist mProperty_mEnumeration ;
+  public: GGS__5B_lstring_5D_ mProperty_mEnumeration ;
   public: GGS_location mProperty_mEndOfProperties ;
   public: GGS_templateInstructionListAST mProperty_mBeforeInstructionList ;
   public: GGS_templateInstructionListAST mProperty_mDoInstructionList ;
@@ -3414,7 +3414,7 @@ class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
 //--- Constructor
   public: cPtr_templateInstructionForeachAST (const GGS_bool & in_mIsAscending,
                                               const GGS_templateExpressionAST & in_mExpression,
-                                              const GGS_lstringlist & in_mEnumeration,
+                                              const GGS__5B_lstring_5D_ & in_mEnumeration,
                                               const GGS_location & in_mEndOfProperties,
                                               const GGS_templateInstructionListAST & in_mBeforeInstructionList,
                                               const GGS_templateInstructionListAST & in_mDoInstructionList,

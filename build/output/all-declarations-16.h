@@ -99,12 +99,12 @@ class cParser_templateSyntax {
 
   protected: virtual void nt_factor_5F_tpl_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
 
-  protected: virtual void nt_for_5F_instruction_5F_element_ (class GGS_lstringlist & ioArgument0,
+  protected: virtual void nt_for_5F_instruction_5F_element_ (class GGS__5B_lstring_5D_ & ioArgument0,
                                                              class Lexique_galgasTemplateScanner * inLexique) = 0 ;
 
   protected: virtual void nt_for_5F_instruction_5F_element_indexing (class Lexique_galgasTemplateScanner * inLexique) = 0 ;
 
-  protected: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (class GGS_lstringlist & outArgument0,
+  protected: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (class GGS__5B_lstring_5D_ & outArgument0,
                                                                           class GGS_location & outArgument1,
                                                                           class GGS_templateExpressionAST & outArgument2,
                                                                           class Lexique_galgasTemplateScanner * inLexique) = 0 ;
@@ -348,28 +348,28 @@ class cParser_templateSyntax {
 
   protected: void rule_templateSyntax_template_5F_parser_5F_start_5F_symbol_i26_indexing (Lexique_galgasTemplateScanner * inLexique) ;
 
-  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i27_ (GGS_lstringlist & ioArgument0,
+  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i27_ (GGS__5B_lstring_5D_ & ioArgument0,
                                                                           Lexique_galgasTemplateScanner * inLexique) ;
 
 /*  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i27_parse (Lexique_galgasTemplateScanner * inLexique) ; */
 
   protected: void rule_templateSyntax_for_5F_instruction_5F_element_i27_indexing (Lexique_galgasTemplateScanner * inLexique) ;
 
-  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i28_ (GGS_lstringlist & ioArgument0,
+  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i28_ (GGS__5B_lstring_5D_ & ioArgument0,
                                                                           Lexique_galgasTemplateScanner * inLexique) ;
 
 /*  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i28_parse (Lexique_galgasTemplateScanner * inLexique) ; */
 
   protected: void rule_templateSyntax_for_5F_instruction_5F_element_i28_indexing (Lexique_galgasTemplateScanner * inLexique) ;
 
-  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i29_ (GGS_lstringlist & ioArgument0,
+  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i29_ (GGS__5B_lstring_5D_ & ioArgument0,
                                                                           Lexique_galgasTemplateScanner * inLexique) ;
 
 /*  protected: void rule_templateSyntax_for_5F_instruction_5F_element_i29_parse (Lexique_galgasTemplateScanner * inLexique) ; */
 
   protected: void rule_templateSyntax_for_5F_instruction_5F_element_i29_indexing (Lexique_galgasTemplateScanner * inLexique) ;
 
-  protected: void rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i30_ (GGS_lstringlist & outArgument0,
+  protected: void rule_templateSyntax_for_5F_instruction_5F_enumerated_5F_object_i30_ (GGS__5B_lstring_5D_ & outArgument0,
                                                                                        GGS_location & outArgument1,
                                                                                        GGS_templateExpressionAST & outArgument2,
                                                                                        Lexique_galgasTemplateScanner * inLexique) ;
@@ -1551,7 +1551,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual void nt_filewrapper_5F_binary_5F_files_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_filewrapper_5F_binary_5F_files_ (GGS_lstringlist & outArgument0,
+  public: virtual void nt_filewrapper_5F_binary_5F_files_ (GGS__5B_lstring_5D_ & outArgument0,
                                                            Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'filewrapper_templates' non terminal
@@ -1574,7 +1574,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual void nt_filewrapper_5F_text_5F_files_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_filewrapper_5F_text_5F_files_ (GGS_lstringlist & outArgument0,
+  public: virtual void nt_filewrapper_5F_text_5F_files_ (GGS__5B_lstring_5D_ & outArgument0,
                                                          Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'for_instruction_element' non terminal
@@ -1684,7 +1684,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual void nt_gui_5F_with_5F_option_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_gui_5F_with_5F_option_5F_declaration_ (GGS_lstringlist & ioArgument0,
+  public: virtual void nt_gui_5F_with_5F_option_5F_declaration_ (GGS__5B_lstring_5D_ & ioArgument0,
                                                                  Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'if_instruction_core' non terminal

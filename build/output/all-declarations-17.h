@@ -57,7 +57,7 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
   public: virtual void nt_for_5F_instruction_5F_element_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_for_5F_instruction_5F_element_ (GGS_lstringlist & ioArgument0,
+  public: virtual void nt_for_5F_instruction_5F_element_ (GGS__5B_lstring_5D_ & ioArgument0,
                                                           Lexique_galgasTemplateScanner * inCompiler) ;
 
 //------------------------------------- 'for_instruction_enumerated_object' non terminal
@@ -68,7 +68,7 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
   public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (GGS_lstringlist & outArgument0,
+  public: virtual void nt_for_5F_instruction_5F_enumerated_5F_object_ (GGS__5B_lstring_5D_ & outArgument0,
                                                                        GGS_location & outArgument1,
                                                                        GGS_templateExpressionAST & outArgument2,
                                                                        Lexique_galgasTemplateScanner * inCompiler) ;

@@ -31,11 +31,11 @@ map @unifiedTypeMap {
 
   //----------------------------------------------------------------------------------------------
 
-  func unsolvedEntryList () -> @lstringlist {
+  func unsolvedEntryList () -> [@lstring] {
     result = @()
     for (lkey, mElement) in self do
       if mElement.mDefinition.isUnsolved then
-        result ++= @(lkey)
+        result ++= lkey
       end
     end
   }

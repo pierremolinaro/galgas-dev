@@ -277,8 +277,8 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
   public let @string mSourceFileAbsolutePath
   public let @lstring mFilewrapperName
   public let @lstring mFilewrapperPath
-  public let @lstringlist mFilewrapperTextFileExtensionList
-  public let @lstringlist mFilewrapperBinaryFileExtensionList
+  public let [@lstring] mFilewrapperTextFileExtensionList
+  public let [@lstring] mFilewrapperBinaryFileExtensionList
   public let @filewrapperTemplateListAST mFilewrapperTemplateList
 }
 
@@ -355,10 +355,10 @@ final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
   public let @lbool mHasIndexing
   public let @lstring mGrammarComponentName
   public let @lstring mGrammarClass
-  public let @lstringlist mSyntaxComponents
+  public let [@lstring] mSyntaxComponents
   public let @lstring mStartSymbolName
   public let @nonTerminalLabelListAST mStartSymbolLabelList
-  public let @lstringlist mUnusedNonterminalList
+  public let [@lstring] mUnusedNonterminalList
   public let @bool mHasTranslateFeature
 }
 

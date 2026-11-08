@@ -19,194 +19,6 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3InstructionsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                    !@semanticInstructionAST outInstruction) {
-//    <semantic_instruction_beginning_with_identifier> (!?ioDeclarations, !prefixedBySelf: false, ?outInstruction)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                    !@semanticInstructionAST outInstruction) {
-//    $self$
-//    $.$
-//    <semantic_instruction_beginning_with_identifier> (!?ioDeclarations, !prefixedBySelf: true, ?outInstruction)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <semantic_instruction_beginning_with_identifier> (?!@galgasDeclarationAST ioDeclarations,
-//                                                         ?prefixedBySelf: let @bool inHasSelfPrefix,
-//                                                         !@semanticInstructionAST outInstruction) {
-//    $identifier$ (?let @lstring receiverName)
-//    let instructionLocation = @location.here
-//    var @lstringlist propertyList = @()
-//    repeat
-//    while
-//      $.$
-//      $identifier$ (?let attributeName)
-//      propertyList ++= @(!attributeName)
-//    end
-//    select
-//      $-=$
-//      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//      outInstruction = @opAssignExpressionInstructionAST (
-//        !instructionLocation,
-//        inHasSelfPrefix,
-//        receiverName,
-//        propertyList,
-//        .minusAssign,
-//        expression
-//      )
-//    or
-//      $++=$
-//      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//      outInstruction = @plusPlusEqualElementInstructionAST (
-//        !instructionLocation,
-//        inHasSelfPrefix,
-//        receiverName,
-//        propertyList,
-//        expression
-//      )
-//    or
-//      $+=$
-//      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//      outInstruction = @opAssignExpressionInstructionAST (
-//        !instructionLocation,
-//        inHasSelfPrefix,
-//        receiverName,
-//        propertyList,
-//        .plusAssign,
-//        expression
-//      )
-//    or
-//      $*=$
-//      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//      outInstruction = @opAssignExpressionInstructionAST (
-//        !instructionLocation,
-//        inHasSelfPrefix,
-//        receiverName,
-//        propertyList,
-//        .mulAssign,
-//        expression
-//      )
-//    or
-//      $&=$
-//      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//      outInstruction = @opAssignExpressionInstructionAST (
-//        !instructionLocation,
-//        inHasSelfPrefix,
-//        receiverName,
-//        propertyList,
-//        .andAssign,
-//        expression
-//      )
-//    or
-//      $|=$
-//      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//      outInstruction = @opAssignExpressionInstructionAST (
-//        !instructionLocation,
-//        inHasSelfPrefix,
-//        receiverName,
-//        propertyList,
-//        .orAssign,
-//        expression
-//      )
-//    or
-//      $^=$
-//      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//      outInstruction = @opAssignExpressionInstructionAST (
-//        !instructionLocation,
-//        inHasSelfPrefix,
-//        receiverName,
-//        propertyList,
-//        .xorAssign,
-//        expression
-//      )
-//    or
-//      $/=$
-//      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//      outInstruction = @opAssignExpressionInstructionAST (
-//        !instructionLocation,
-//        inHasSelfPrefix,
-//        receiverName,
-//        propertyList,
-//        .divAssign,
-//        expression
-//      )
-//    or
-//      <actual_parameter_list_ggs34> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
-//      if inHasSelfPrefix then
-//        if propertyList.count == 0 then
-//          outInstruction = @methodCallInstructionAST (
-//            !instructionLocation,
-//            @selfInExpressionAST (!instructionLocation),
-//            receiverName,
-//            actualParameterList
-//          )
-//        else
-//          !?propertyList.popLast (?let methodName)
-//          var @semanticExpressionAST receiverExpression = @selfInExpressionAST (!@location.here)
-//          receiverExpression = @structPropertyAccessExpressionAST (!receiverName.location, receiverExpression, receiverName)
-//          for entry in propertyList do
-//            receiverExpression = @structPropertyAccessExpressionAST (entry.mValue.location, receiverExpression, entry.mValue)
-//          end
-//          outInstruction = @methodCallInstructionAST (
-//            !instructionLocation,
-//            receiverExpression,
-//            methodName,
-//            actualParameterList
-//          )
-//        end
-//      elsif propertyList.count == 0 then
-//        outInstruction = @procCallInstructionAST (
-//          !receiverName.location,
-//          receiverName,
-//          actualParameterList
-//        )
-//      else
-//        !?propertyList.popLast (?let methodName)
-//        var @semanticExpressionAST receiverExpression = @varInExpressionAST (!receiverName)
-//        for entry in propertyList do
-//          receiverExpression = @structPropertyAccessExpressionAST (entry.mValue.location, receiverExpression, entry.mValue)
-//        end
-//        outInstruction = @methodCallInstructionAST (
-//          !instructionLocation,
-//          receiverExpression,
-//          methodName,
-//          actualParameterList
-//        )
-//      end
-//    end
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <non_empty_output_expression_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                                !@actualOutputArgumentList outExpressionList) {
-//    outExpressionList = @()
-//    repeat
-//      let @lstring selector
-//      select
-//        $!selector:$ (?selector)
-//      or
-//        $!$
-//        selector = "".here
-//      end
-//      <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//      outExpressionList ++= @(!selector, !expression, !@location.here)
-//    while
-//    end
-//  }
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -232,12 +44,12 @@ syntax extension galgas4InstructionsSyntax {
                                                          !@semanticInstructionAST outInstruction) {
     $identifier$ (?let @lstring receiverName)
     let instructionLocation = @location.here
-    var @lstringlist propertyList = @()
+    var [@lstring] propertyList = @()
     repeat
     while
       $.$
       $identifier$ (?let attributeName)
-      propertyList ++= @(attributeName)
+      propertyList ++= attributeName
     end
   //---
     select
@@ -342,7 +154,7 @@ syntax extension galgas4InstructionsSyntax {
           var @semanticExpressionAST receiverExpression = @selfInExpressionAST (@location.here)
           receiverExpression = @structPropertyAccessExpressionAST (receiverName.location, receiverExpression, receiverName)
           for entry in propertyList do
-            receiverExpression = @structPropertyAccessExpressionAST (entry.mValue.location, receiverExpression, entry.mValue)
+            receiverExpression = @structPropertyAccessExpressionAST (entry.location, receiverExpression, entry)
           end
           outInstruction = @methodCallInstructionAST (
             instructionLocation,
@@ -361,7 +173,7 @@ syntax extension galgas4InstructionsSyntax {
         !?propertyList.popLast (?let methodName)
         var @semanticExpressionAST receiverExpression = @varInExpressionAST (receiverName)
         for entry in propertyList do
-          receiverExpression = @structPropertyAccessExpressionAST (entry.mValue.location, receiverExpression, entry.mValue)
+          receiverExpression = @structPropertyAccessExpressionAST (entry.location, receiverExpression, entry)
         end
         outInstruction = @methodCallInstructionAST (
           instructionLocation,
@@ -439,7 +251,7 @@ enum @opAssignmentOperator {
 final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
   private let @lstring mReceiverName
-  private let @lstringlist mStructAttributeList
+  private let [@lstring] mStructAttributeList
   private let @opAssignmentOperator mOperator
   private let @semanticExpressionAST mExpression
 
@@ -493,8 +305,8 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
   //--- Check target variable
     for property in self.mStructAttributeList do
       let propertyMap = targetType.definition.propertyMap
-      propertyMap.searchKey (property.mValue, ?let accessControl, ?let isConstant, ?targetType)
-      accessControl.checkSetAccess (inAnalysisContext.selfAvailability, property.mValue.location)
+      propertyMap.searchKey (property, ?let accessControl, ?let isConstant, ?targetType)
+      accessControl.checkSetAccess (inAnalysisContext.selfAvailability, property.location)
       if isConstant then
         error (self.mReceiverName : "a constant property cannot be modified")
       end
@@ -539,7 +351,7 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
 final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
   private let @bool mPrefixedBySelf
   private let @lstring mReceiverName
-  private let @lstringlist mStructAttributeList
+  private let [@lstring] mStructAttributeList
   private let @semanticExpressionAST mExpression
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -589,10 +401,10 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
   //--- Check target variable
     for entry in self.mStructAttributeList do
       let propertyMap = targetType.definition.propertyMap
-      propertyMap.searchKey (entry.mValue, ?let accessControl, ?let isConstant, ?targetType)
-      accessControl.checkSetAccess (inAnalysisContext.selfAvailability, entry.mValue)
+      propertyMap.searchKey (entry, ?let accessControl, ?let isConstant, ?targetType)
+      accessControl.checkSetAccess (inAnalysisContext.selfAvailability, entry)
       if isConstant then
-        error (entry.mValue : "a constant property cannot be modified")
+        error (entry : "a constant property cannot be modified")
       end
     end
   //--- Check target variable type support '++=' operator
@@ -639,66 +451,12 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
 //! GENERATION
 //--------------------------------------------------------------------------------------------------
 
-//final class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
-//  private let @string mReceiverCppName
-//  private let @unifiedTypeMapEntry mTargetType
-//  private let @string mNameForCheckingFormalParameterUsing
-//  private let @location mInstructionLocation
-//  private let @lstringlist mStructAttributeList
-//  private let @semanticExpressionListForGeneration mExpressionList
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  override proc generateInstruction (?!@stringset ioInclusionSet,
-//    ?!@uint ioTemporaryVariableIndex,
-//    ?!@stringset ioUnusedVariableCppNameSet,
-//    ?let @bool unused inGenerateSyntaxDirectedTranslationString,
-//    ?!@string ioGeneratedCode) {
-//  //--- Parameters
-//    self.mTargetType.addHeaderFileName (!?ioInclusionSet)
-//    var parameterList = @stringlist ()
-//    for entry in self.mExpressionList do
-//      entry.mExpression.generateExpression (
-//        !?ioGeneratedCode,
-//        !?ioInclusionSet,
-//        !?ioTemporaryVariableIndex,
-//        !?ioUnusedVariableCppNameSet,
-//        ?let @string parameter
-//      )
-//      parameterList ++= @(!parameter)
-//    end
-//  //--- Receiver
-//    !?ioUnusedVariableCppNameSet.removeKey (!self.mNameForCheckingFormalParameterUsing)
-//    ioGeneratedCode += self.mReceiverCppName
-//    for entry in self.mStructAttributeList do
-//      ioGeneratedCode += ".mProperty_" + entry.mValue.string.identifierRepresentation
-//    end
-//  //--- Call add assign (+=) operator
-//    ioGeneratedCode += ".addAssignOperation ("
-//    !?ioUnusedVariableCppNameSet.removeKey (!self.mReceiverCppName)
-//    for entry in parameterList
-//      do ioGeneratedCode += entry.mValue
-//      between ioGeneratedCode += ", "
-//    end
-//    if self.mTargetType.definition.features.contains (!.plusEqualOperatorWithFieldListNeedsCompilerArg) then
-//      ioGeneratedCode  += ", " + compilerCppName ()
-//      !?ioUnusedVariableCppNameSet.removeKey (!compilerCppName ())
-//    end
-//    ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 final class @opAssignInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @unifiedTypeMapEntry mTargetType
   private let @string mTargetVariableCppName
   private let @string mNameForCheckingFormalParameterUsing
-  private let @lstringlist mStructAttributeList
+  private let [@lstring] mStructAttributeList
   private let @semanticExpressionForGeneration mSourceExpression
   private let @string mGeneratedMethod
 
@@ -720,7 +478,7 @@ final class @opAssignInstructionForGeneration : @semanticInstructionForGeneratio
     !?ioUnusedVariableCppNameSet.removeKey (self.mNameForCheckingFormalParameterUsing)
     ioGeneratedCode += self.mTargetVariableCppName
     for entry in self.mStructAttributeList do
-      ioGeneratedCode += ".mProperty_" + entry.mValue
+      ioGeneratedCode += ".mProperty_" + entry
     end
     ioGeneratedCode += "." + self.mGeneratedMethod + "(" + sourceVar
     ioGeneratedCode += ", " + compilerCppName ()
@@ -740,7 +498,7 @@ final class @plusPlusAssignInstructionForGeneration : @semanticInstructionForGen
   private let @unifiedTypeMapEntry mTargetType
   private let @string mTargetVariableCppName
   private let @string mNameForCheckingFormalParameterUsing
-  private let @lstringlist mStructAttributeList
+  private let [@lstring] mStructAttributeList
   private let @semanticExpressionForGeneration mSourceExpression
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -761,7 +519,7 @@ final class @plusPlusAssignInstructionForGeneration : @semanticInstructionForGen
     !?ioUnusedVariableCppNameSet.removeKey (self.mNameForCheckingFormalParameterUsing)
     ioGeneratedCode += self.mTargetVariableCppName
     for entry in self.mStructAttributeList do
-      ioGeneratedCode += ".mProperty_" + entry.mValue
+      ioGeneratedCode += ".mProperty_" + entry
     end
     ioGeneratedCode += ".plusPlusAssignOperation (" + sourceVar + " "
     ioGeneratedCode += self.mInstructionLocation.commaSourceFile + ") ;\n"
