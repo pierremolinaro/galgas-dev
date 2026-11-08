@@ -10,1499 +10,979 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'buildLexicalTypeMap'
+//Routine 'recursivlyEnumerateRegularFile??&&&&'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_lexicalTypeMap function_buildLexicalTypeMap (class Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+void routine_recursivlyEnumerateRegularFile_3F__3F__26__26__26__26_ (const class GGS_wrapperFileMap constinArgument0,
+                                                                     const class GGS_wrapperDirectoryMap constinArgument1,
+                                                                     class GGS_stringlist & ioArgument2,
+                                                                     class GGS_stringlist & ioArgument3,
+                                                                     class GGS_stringlist & ioArgument4,
+                                                                     class GGS_stringlist & ioArgument5,
+                                                                     class Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'buildLexicalAttributeMap??&'
+//Routine 'generateWrapperContents?????&'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_buildLexicalAttributeMap_3F__3F__26_ (const class GGS_lexicalTypeMap constinArgument0,
-                                                   const class GGS_lexicalAttributeListAST constinArgument1,
-                                                   class GGS_lexicalAttributeMap & ioArgument2,
-                                                   class Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'lexiqueGenerationTemplates'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_lexiqueGenerationTemplates ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'lexiqueGenerationTemplates headerZone2'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (class Compiler * inCompiler,
-                                                                          const class GGS_string & in_LEXIQUE_5F_IDENTIFIER,
-                                                                          const class GGS_lexicalListDeclarationListAST & in_DELIMITOR_5F_LIST_5F_LIST,
-                                                                          const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                          const class GGS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                          const class GGS_indexingListAST & in_INDEXING_5F_LIST
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'lexiqueGenerationTemplates implementationZone2Galgas3'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_Galgas_33_ (class Compiler * inCompiler,
-                                                                                            const class GGS_string & in_LEXIQUE_5F_IDENTIFIER,
-                                                                                            const class GGS_bool & in_USE_5F_LOOP_5F_LOCAL_5F_VARIABLE,
-                                                                                            const class GGS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
-                                                                                            const class GGS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
-                                                                                            const class GGS_terminalList & in_TERMINAL_5F_LIST,
-                                                                                            const class GGS_lexicalExplicitTokenListMapMap & in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP,
-                                                                                            const class GGS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
-                                                                                            const class GGS_lexicalRuleListAST & in_LEXICAL_5F_RULE_5F_LIST,
-                                                                                            const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                            const class GGS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                                            const class GGS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
-                                                                                            const class GGS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
-                                                                                            const class GGS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST
-                                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'lexiqueGenerationTemplates swiftUIImplementationZone2'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftUIImplementationZone_32_ (class Compiler * inCompiler,
-                                                                                         const class GGS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
-                                                                                         const class GGS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                         const class GGS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
-                                                                                         const class GGS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
-                                                                                         const class GGS_terminalList & in_TERMINAL_5F_LIST,
-                                                                                         const class GGS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
-                                                                                         const class GGS_lexicalRuleListAST & in_LEXICAL_5F_RULE_5F_LIST,
-                                                                                         const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                         const class GGS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
-                                                                                         const class GGS_indexingListAST & in_INDEXING_5F_LIST,
-                                                                                         const class GGS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST,
-                                                                                         const class GGS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST
-                                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'lexiqueNameForUsefulEntitiesGraph'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_lexiqueNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+void routine_generateWrapperContents_3F__3F__3F__3F__3F__26_ (const class GGS_string constinArgument0,
+                                                              const class GGS_string constinArgument1,
+                                                              const class GGS_uint constinArgument2,
+                                                              const class GGS_wrapperFileMap constinArgument3,
+                                                              const class GGS_wrapperDirectoryMap constinArgument4,
+                                                              class GGS_string & ioArgument5,
                                                               class Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'buildLexicalFunctionMap!'
+//Routine 'templateCodeGenerationForListInstruction?&&&&&'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_buildLexicalFunctionMap_21_ (class GGS_lexicalFunctionMap & outArgument0,
-                                          class Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
+void routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (const class GGS_templateInstructionListForGeneration constinArgument0,
+                                                                               class GGS_string & ioArgument1,
+                                                                               class GGS_stringset & ioArgument2,
+                                                                               class GGS_uint & ioArgument3,
+                                                                               class GGS_stringset & ioArgument4,
+                                                                               class GGS_bool & ioArgument5,
+                                                                               class Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'buildLexicalRoutineMap!'
+//Routine 'generatePredefinedTypeFiles??&&&'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_buildLexicalRoutineMap_21_ (class GGS_lexicalRoutineMap & outArgument0,
-                                         class Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
+void routine_generatePredefinedTypeFiles_3F__3F__26__26__26_ (const class GGS_string constinArgument0,
+                                                              const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument1,
+                                                              class GGS_stringlist & ioArgument2,
+                                                              class GGS_stringlist & ioArgument3,
+                                                              class GGS_stringset & ioArgument4,
+                                                              class Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'lexicalUnicodeTestFunctionAnalysis!'
+//Filewrapper 'predefinedTypeGenerationTemplate'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_lexicalUnicodeTestFunctionAnalysis_21_ (class GGS_stringset & outArgument0,
-                                                     class Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_predefinedTypeGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_predefinedTypeGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_predefinedTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper 'targetGalgas3GenerationFileWrapper'
+//Filewrapper template 'predefinedTypeGenerationTemplate predefinedTypesImplementation'
 //
 //--------------------------------------------------------------------------------------------------
 
-extern const char * gWrapperFileContent_0_targetGalgas_33_GenerationFileWrapper ;
-extern const char * gWrapperFileContent_1_targetGalgas_33_GenerationFileWrapper ;
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cRegularFileWrapper gWrapperFile_0_targetGalgas_33_GenerationFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_1_targetGalgas_33_GenerationFileWrapper ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_1_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_2_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_3_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_4_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_5_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_6_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_7_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_8_targetGalgas_33_GenerationFileWrapper ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_macosx'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_macosx (class Compiler * inCompiler,
-                                                                                      const class GGS_string & in_PROJECT_5F_NAME
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_macosx'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_macosx (class Compiler * inCompiler,
-                                                                                      const class GGS_string & in_PROJECT_5F_NAME,
-                                                                                      const class GGS_string & in_BUILD_5F_DIR_5F_NAME
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_macosx'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_macosx (class Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_macosx'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_macosx (class Compiler * inCompiler
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypesImplementation (class Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_macosx'
+//Filewrapper template 'predefinedTypeGenerationTemplate primitiveTypesHeaderPrologue'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_macosx (class Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveTypesHeaderPrologue (class Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_macosx'
+//Filewrapper template 'predefinedTypeGenerationTemplate predefinedTypeSeparation'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_macosx (class Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypeSeparation (class Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_unix'
+//Filewrapper template 'predefinedTypeGenerationTemplate sint_type'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_unix (class Compiler * inCompiler,
-                                                                                    const class GGS_string & in_PROJECT_5F_NAME
-                                                                                    COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_sint_5F_type (class Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_unix'
+//Filewrapper template 'predefinedTypeGenerationTemplate sint64_type'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_unix (class Compiler * inCompiler,
-                                                                                    const class GGS_string & in_PROJECT_5F_NAME,
-                                                                                    const class GGS_string & in_BUILD_5F_DIR_5F_NAME
-                                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_unix'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_unix (class Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_unix'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_unix (class Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_unix'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_unix (class Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_unix'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_unix (class Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper install_unix'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_unix (class Compiler * inCompiler
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_sint_36__34__5F_type (class Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_x86linux32_on_mac'
+//Filewrapper template 'predefinedTypeGenerationTemplate object_type'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_33__32__5F_on_5F_mac (class Compiler * inCompiler,
-                                                                                                                   const class GGS_string & in_PROJECT_5F_NAME
-                                                                                                                   COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_object_5F_type (class Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_x86linux32_on_mac'
+//Filewrapper template 'predefinedTypeGenerationTemplate uint_type'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_33__32__5F_on_5F_mac (class Compiler * inCompiler,
-                                                                                                                   const class GGS_string & in_PROJECT_5F_NAME,
-                                                                                                                   const class GGS_string & in_BUILD_5F_DIR_5F_NAME
-                                                                                                                   COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_uint_5F_type (class Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_x86linux32_on_mac'
+//Filewrapper template 'predefinedTypeGenerationTemplate uint64_type'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_33__32__5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                                              COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_uint_36__34__5F_type (class Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_x86linux32_on_mac'
+//Filewrapper template 'predefinedTypeGenerationTemplate bool_type'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_33__32__5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                                            COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_bool_5F_type (class Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_x86linux32_on_mac'
+//Filewrapper template 'predefinedTypeGenerationTemplate binaryset_type'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_33__32__5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                                              COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_binaryset_5F_type (class Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_x86linux32_on_mac'
+//Filewrapper template 'predefinedTypeGenerationTemplate type_type'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_33__32__5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                                          COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_type_5F_type (class Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_x86linux64_on_mac'
+//Filewrapper template 'predefinedTypeGenerationTemplate location_type'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_36__34__5F_on_5F_mac (class Compiler * inCompiler,
-                                                                                                                   const class GGS_string & in_PROJECT_5F_NAME
-                                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_x86linux64_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_36__34__5F_on_5F_mac (class Compiler * inCompiler,
-                                                                                                                   const class GGS_string & in_PROJECT_5F_NAME,
-                                                                                                                   const class GGS_string & in_BUILD_5F_DIR_5F_NAME
-                                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_x86linux64_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_36__34__5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_x86linux64_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_36__34__5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_x86linux64_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_36__34__5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_x86linux64_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_36__34__5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_win32_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_win_33__32__5F_on_5F_mac (class Compiler * inCompiler,
-                                                                                                        const class GGS_string & in_PROJECT_5F_NAME
-                                                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_win32_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_win_33__32__5F_on_5F_mac (class Compiler * inCompiler,
-                                                                                                        const class GGS_string & in_PROJECT_5F_NAME,
-                                                                                                        const class GGS_string & in_BUILD_5F_DIR_5F_NAME
-                                                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_win32_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_win_33__32__5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_win32_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_win_33__32__5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_win32_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_win_33__32__5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper clean_arm64_linux_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler,
-                                                                                                                 const class GGS_string & in_PROJECT_5F_NAME
-                                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_arm64_linux_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler,
-                                                                                                                 const class GGS_string & in_PROJECT_5F_NAME,
-                                                                                                                 const class GGS_string & in_BUILD_5F_DIR_5F_NAME
-                                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_arm64_linux_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_arm64_linux_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_arm64_linux_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_arm64_linux_on_mac'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_arm_36__34__5F_linux_5F_on_5F_mac (class Compiler * inCompiler
-                                                                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper codeblocks_project'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (class Compiler * inCompiler,
-                                                                                            const class GGS_string & in_PROJECT_5F_NAME,
-                                                                                            const class GGS_stringlist & in_TOOL_5F_CPP_5F_FILE_5F_LIST,
-                                                                                            const class GGS_string & in_LIBPM_5F_PATH,
-                                                                                            const class GGS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST,
-                                                                                            const class GGS_string & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY,
-                                                                                            const class GGS_bool & in_GENERATE_5F_FOR_5F_WINDOWS,
-                                                                                            const class GGS_string & in_PLATFORM,
-                                                                                            const class GGS_bool & in_VERBOSE_5F_OPTION,
-                                                                                            const class GGS_string & in_BUILD_5F_DIR_5F_NAME
-                                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_info_plist'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist (class Compiler * inCompiler,
-                                                                                                const class GGS_string & in_PROJECT_5F_NAME,
-                                                                                                const class GGS_string & in_APPLICATION_5F_BUNDLE_5F_BASE,
-                                                                                                const class GGS_string & in_VERSION_5F_STRING,
-                                                                                                const class GGS_stringset & in_HANDLED_5F_EXTENSION_5F_SET,
-                                                                                                const class GGS_string & in_MACOSX_5F_DEPLOYMENT_5F_TARGET,
-                                                                                                const class GGS_string & in_DOCUMENT_5F_CLASS
-                                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_build_xcode'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_build_5F_xcode (class Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_info_plist_strings'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist_5F_strings (class Compiler * inCompiler,
-                                                                                                           const class GGS_string & in_PROJECT_5F_NAME
-                                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper json_file_list'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_file_5F_list (class Compiler * inCompiler,
-                                                                                           const class GGS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET,
-                                                                                           const class GGS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST,
-                                                                                           const class GGS_stringlist & in_MAKEFILE_5F_FILE_5F_LIST,
-                                                                                           const class GGS_stringlist & in_TOOL_5F_LINK_5F_LIST,
-                                                                                           const class GGS_string & in_LIBPM_5F_DIRECTORY_5F_PATH,
-                                                                                           const class GGS_string & in_RELATIVE_5F_BUILD_5F_DIR
-                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'targetGalgas3GenerationFileWrapper project_header'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_header (class Compiler * inCompiler,
-                                                                                        const class GGS_string & in_VERSION_5F_STRING
-                                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateGalgasCodeBlocksWindowsTarget??buildDirName???libpmPath???'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateGalgasCodeBlocksWindowsTarget_3F__3F_buildDirName_3F__3F__3F_libpmPath_3F__3F__3F_ (const class GGS_string constinArgument0,
-                                                                                                         const class GGS_string constinArgument1,
-                                                                                                         const class GGS_string constinArgument2,
-                                                                                                         const class GGS_stringlist constinArgument3,
-                                                                                                         const class GGS_string constinArgument4,
-                                                                                                         const class GGS_stringlist constinArgument5,
-                                                                                                         const class GGS_string constinArgument6,
-                                                                                                         const class GGS_bool constinArgument7,
-                                                                                                         class Compiler * inCompiler
-                                                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateGalgasCodeBlocksLinuxI686Target??buildDirName??????'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target_3F__3F_buildDirName_3F__3F__3F__3F__3F__3F_ (const class GGS_string constinArgument0,
-                                                                                                           const class GGS_string constinArgument1,
-                                                                                                           const class GGS_string constinArgument2,
-                                                                                                           const class GGS_stringlist constinArgument3,
-                                                                                                           const class GGS_string constinArgument4,
-                                                                                                           const class GGS_stringlist constinArgument5,
-                                                                                                           const class GGS_string constinArgument6,
-                                                                                                           const class GGS_bool constinArgument7,
-                                                                                                           class Compiler * inCompiler
-                                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateGalgasCodeBlocksLinuxX86_64Target??buildDirName??????'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target_3F__3F_buildDirName_3F__3F__3F__3F__3F__3F_ (const class GGS_string constinArgument0,
-                                                                                                                   const class GGS_string constinArgument1,
-                                                                                                                   const class GGS_string constinArgument2,
-                                                                                                                   const class GGS_stringlist constinArgument3,
-                                                                                                                   const class GGS_string constinArgument4,
-                                                                                                                   const class GGS_stringlist constinArgument5,
-                                                                                                                   const class GGS_string constinArgument6,
-                                                                                                                   const class GGS_bool constinArgument7,
-                                                                                                                   class Compiler * inCompiler
-                                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateMakefileMinGWOnMacOSXTarget??buildDirName?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateMakefileMinGWOnMacOSXTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                          const class GGS_string constinArgument1,
-                                                                          const class GGS_string constinArgument2,
-                                                                          class Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateMakefileUnixTarget??buildDirName?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateMakefileUnixTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                 const class GGS_string constinArgument1,
-                                                                 const class GGS_string constinArgument2,
-                                                                 class Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateMakefileMacTarget??buildDirName?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateMakefileMacTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                const class GGS_string constinArgument1,
-                                                                const class GGS_string constinArgument2,
-                                                                class Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateMakefileLinux32OnMacOSXTarget??buildDirName?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateMakefileLinux_33__32_OnMacOSXTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                                  const class GGS_string constinArgument1,
-                                                                                  const class GGS_string constinArgument2,
-                                                                                  class Compiler * inCompiler
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_location_5F_type (class Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generateMakefileLinux64OnMacOSXTarget??buildDirName?'
+//Filewrapper template 'predefinedTypeGenerationTemplate data_type'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateMakefileLinux_36__34_OnMacOSXTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                                  const class GGS_string constinArgument1,
-                                                                                  const class GGS_string constinArgument2,
-                                                                                  class Compiler * inCompiler
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_data_5F_type (class Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'predefinedTypeGenerationTemplate char_type'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_char_5F_type (class Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'predefinedTypeGenerationTemplate double_type'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_double_5F_type (class Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'predefinedTypeGenerationTemplate string_type'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_string_5F_type (class Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'predefinedTypeGenerationTemplate stringset_type'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_stringset_5F_type (class Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'predefinedTypeGenerationTemplate filewrapper_type'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_filewrapper_5F_type (class Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'predefinedTypeGenerationTemplate application_type'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_application_5F_type (class Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'predefinedTypeGenerationTemplate bigint_type'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_bigint_5F_type (class Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'predefinedTypeGenerationTemplate timer_type'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_timer_5F_type (class Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'semanticFileGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_semanticFileGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'semanticFileGenerationTemplate semanticFileHeader'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader (class Compiler * inCompiler,
+                                                                                  const class GGS_string & in_COMPONENT_5F_NAME,
+                                                                                  const class GGS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generateArm64LinuxMakefileTarget??buildDirName?'
+//Filewrapper template 'semanticFileGenerationTemplate semanticFileImplementation'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateArm_36__34_LinuxMakefileTarget_3F__3F_buildDirName_3F_ (const class GGS_string constinArgument0,
-                                                                             const class GGS_string constinArgument1,
-                                                                             const class GGS_string constinArgument2,
-                                                                             class Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImplementation (class Compiler * inCompiler,
+                                                                                          const class GGS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST
+                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'updateGalgasTargets?absoluteBuildDir?buildDirName??????????appProductFileList?swiftAppProductFileList????&?'
+//Function 'getterNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F_appProductFileList_3F_swiftAppProductFileList_3F__3F__3F__3F__26__3F_ (const class GGS_string constinArgument0,
-                                                                                                                                                                                   const class GGS_string constinArgument1,
-                                                                                                                                                                                   const class GGS_string constinArgument2,
-                                                                                                                                                                                   const class GGS_string constinArgument3,
-                                                                                                                                                                                   const class GGS_location constinArgument4,
-                                                                                                                                                                                   const class GGS_string constinArgument5,
-                                                                                                                                                                                   const class GGS_projectQualifiedFeatureMap constinArgument6,
-                                                                                                                                                                                   const class GGS_lstringlist constinArgument7,
-                                                                                                                                                                                   const class GGS_bool constinArgument8,
-                                                                                                                                                                                   const class GGS_stringlist constinArgument9,
-                                                                                                                                                                                   const class GGS_stringlist constinArgument10,
-                                                                                                                                                                                   const class GGS_stringlist constinArgument11,
-                                                                                                                                                                                   const class GGS_stringlist constinArgument12,
-                                                                                                                                                                                   const class GGS_stringlist constinArgument13,
-                                                                                                                                                                                   const class GGS_stringlist constinArgument14,
-                                                                                                                                                                                   const class GGS_string constinArgument15,
-                                                                                                                                                                                   const class GGS_stringset constinArgument16,
-                                                                                                                                                                                   class GGS_stringset & ioArgument17,
-                                                                                                                                                                                   const class GGS_stringlist constinArgument18,
-                                                                                                                                                                                   class Compiler * inCompiler
-                                                                                                                                                                                   COMMA_LOCATION_ARGS) ;
+class GGS_lstring function_getterNameForUsefulEntitiesGraph (const class GGS_string & constinArgument0,
+                                                             const class GGS_lstring & constinArgument1,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'updateLIBPMatPath?'
+//Function 'typeNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_updateLIBPMatPath_3F_ (const class GGS_string constinArgument0,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
+class GGS_lstring function_typeNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                           class Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'transformLabelMap'
+//Routine 'analyzeFunctionBody?&?&?????!!!!'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_nonterminalSymbolLabelMapForGrammarAnalysis function_transformLabelMap (const class GGS_nonTerminalLabelListAST & constinArgument0,
-                                                                                  class Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
+void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__3F__21__21__21__21_ (const class GGS_lstring constinArgument0,
+                                                                                      class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                                      const class GGS_analysisContext constinArgument2,
+                                                                                      class GGS_unifiedTypeMap & ioArgument3,
+                                                                                      const class GGS_formalInputParameterListAST constinArgument4,
+                                                                                      const class GGS__5B_semanticInstructionAST_5D_ constinArgument5,
+                                                                                      const class GGS_lstring constinArgument6,
+                                                                                      const class GGS_lstring constinArgument7,
+                                                                                      const class GGS_location constinArgument8,
+                                                                                      class GGS_formalInputParameterListForGeneration & outArgument9,
+                                                                                      class GGS_unifiedTypeMapEntry & outArgument10,
+                                                                                      class GGS_string & outArgument11,
+                                                                                      class GGS_semanticInstructionListForGeneration & outArgument12,
+                                                                                      class Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'checkLabelMap????'
+//Routine 'checkGetterSignatures??????'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_checkLabelMap_3F__3F__3F__3F_ (const class GGS_location constinArgument0,
-                                            const class GGS_nonTerminalLabelListAST constinArgument1,
-                                            const class GGS_location constinArgument2,
-                                            const class GGS_nonterminalSymbolLabelMapForGrammarAnalysis constinArgument3,
-                                            class Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
+void routine_checkGetterSignatures_3F__3F__3F__3F__3F__3F_ (const class GGS_formalInputParameterListForGeneration constinArgument0,
+                                                            const class GGS_unifiedTypeMapEntry constinArgument1,
+                                                            const class GGS_location constinArgument2,
+                                                            const class GGS_functionSignature constinArgument3,
+                                                            const class GGS_unifiedTypeMapEntry constinArgument4,
+                                                            const class GGS_location constinArgument5,
+                                                            class Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'handleNonTerminalDeclarations&?'
+//Routine 'buildLocalVariableMapAndSignature?&?&!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_handleNonTerminalDeclarations_26__3F_ (class GGS_nonTerminalSymbolMapForGrammarAnalysis & ioArgument0,
-                                                    const class GGS_nonterminalDeclarationListAST constinArgument1,
+void routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (const class GGS_semanticContext constinArgument0,
+                                                                    class GGS_unifiedTypeMap & ioArgument1,
+                                                                    const class GGS_formalParameterListAST constinArgument2,
+                                                                    class GGS_localVarManager & ioArgument3,
+                                                                    class GGS_formalParameterListForGeneration & outArgument4,
+                                                                    class Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'checkMethodSignatures????'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkMethodSignatures_3F__3F__3F__3F_ (const class GGS_formalParameterListForGeneration constinArgument0,
+                                                    const class GGS_location constinArgument1,
+                                                    const class GGS_formalParameterSignature constinArgument2,
+                                                    const class GGS_location constinArgument3,
                                                     class Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'handleNonTerminalDeclarationsFromRuleList&?'
+//Function 'setterNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_handleNonTerminalDeclarationsFromRuleList_26__3F_ (class GGS_nonTerminalSymbolMapForGrammarAnalysis & ioArgument0,
-                                                                const class GGS_syntaxRuleListAST constinArgument1,
-                                                                class Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
+class GGS_lstring function_setterNameForUsefulEntitiesGraph (const class GGS_string & constinArgument0,
+                                                             const class GGS_lstring & constinArgument1,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'transformInstructionListForGrammarAnalysis?&usedTerminalMap?nonTerminalSymbolMap&addedTerminalIndex&'
+//Routine 'analyzeRoutineBody?&?&???!!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_transformInstructionListForGrammarAnalysis_3F__26_usedTerminalMap_3F_nonTerminalSymbolMap_26_addedTerminalIndex_26_ (const class GGS_syntaxInstructionList constinArgument0,
-                                                                                                                                  class GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument1,
-                                                                                                                                  const class GGS_nonTerminalSymbolMapForGrammarAnalysis constinArgument2,
-                                                                                                                                  class GGS_uint & ioArgument3,
-                                                                                                                                  class GGS_syntaxInstructionListForGrammarAnalysis & ioArgument4,
-                                                                                                                                  class Compiler * inCompiler
-                                                                                                                                  COMMA_LOCATION_ARGS) ;
+void routine_analyzeRoutineBody_3F__26__3F__26__3F__3F__3F__21__21_ (const class GGS_lstring constinArgument0,
+                                                                     class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                     const class GGS_analysisContext constinArgument2,
+                                                                     class GGS_unifiedTypeMap & ioArgument3,
+                                                                     const class GGS_formalParameterListAST constinArgument4,
+                                                                     const class GGS__5B_semanticInstructionAST_5D_ constinArgument5,
+                                                                     const class GGS_location constinArgument6,
+                                                                     class GGS_semanticInstructionListForGeneration & outArgument7,
+                                                                     class GGS_formalParameterListForGeneration & outArgument8,
+                                                                     class Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'buildRuleList???&&&'
+//Function 'initializerNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_buildRuleList_3F__3F__3F__26__26__26_ (const class GGS_nonTerminalSymbolMapForGrammarAnalysis constinArgument0,
-                                                    const class GGS_lstring constinArgument1,
-                                                    const class GGS_syntaxRuleListAST constinArgument2,
-                                                    class GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument3,
-                                                    class GGS_syntaxComponentListForGrammarAnalysis & ioArgument4,
-                                                    class GGS_uint & ioArgument5,
-                                                    class Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'grammarGenerationTemplate'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_grammarGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'grammarGenerationTemplate grammarZone3HeaderGalgas3'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGalgas_33_ (class Compiler * inCompiler,
-                                                                                          const class GGS_string & in_LEXIQUE_5F_IDENTIFIER,
-                                                                                          const class GGS_nonTerminalSymbolMapForGrammarAnalysis & in_NON_5F_TERMINAL_5F_MAP,
-                                                                                          const class GGS_nonTerminalToAddList & in_ADDED_5F_NON_5F_TERMINAL_5F_LIST,
-                                                                                          const class GGS_string & in_START_5F_SYMBOL_5F_NAME,
-                                                                                          const class GGS_bool & in_HAS_5F_TRANSLATE_5F_FEATURE,
-                                                                                          const class GGS_string & in_GRAMMAR_5F_NAME,
-                                                                                          const class GGS_lstringlist & in_SYNTAX_5F_COMPONENTS
-                                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'grammarAnalysisAndGeneration??????????!!!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F__21__21__21_ (const class GGS_lstring constinArgument0,
-                                                                                               const class GGS_lstring constinArgument1,
-                                                                                               const class GGS_uint constinArgument2,
-                                                                                               const class GGS_string constinArgument3,
-                                                                                               const class GGS_terminalSymbolsMapForGrammarAnalysis constinArgument4,
-                                                                                               const class GGS_syntaxComponentListForGrammarAnalysis constinArgument5,
-                                                                                               const class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis constinArgument6,
-                                                                                               const class GGS_string constinArgument7,
-                                                                                               const class GGS_nonTerminalSymbolSortedListForGrammarAnalysis constinArgument8,
-                                                                                               const class GGS_string constinArgument9,
-                                                                                               class GGS_string & outArgument10,
-                                                                                               class GGS_string & outArgument11,
-                                                                                               class GGS_string & outArgument12,
-                                                                                               class Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassMethodWithInputArgument&&?methodName?argType?argName?compilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassMethodWithInputArgument_26__26__3F_methodName_3F_argType_3F_argName_3F_compilerArgument (class GGS_classMethodMap & ioArgument0,
-                                                                                                                class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                const class GGS_string constinArgument2,
-                                                                                                                const class GGS_string constinArgument3,
-                                                                                                                const class GGS_string constinArgument4,
-                                                                                                                const class GGS_bool constinArgument5,
-                                                                                                                class Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassMethodWith3InputArguments&&?methodName?argType1?argName1?argType2?argName2?argType3?argName3?compilerArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassMethodWith_33_InputArguments_26__26__3F_methodName_3F_argType_31__3F_argName_31__3F_argType_32__3F_argName_32__3F_argType_33__3F_argName_33__3F_compilerArgument (class GGS_classMethodMap & ioArgument0,
-                                                                                                                                                                                         class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                                                                                         const class GGS_string constinArgument2,
-                                                                                                                                                                                         const class GGS_string constinArgument3,
-                                                                                                                                                                                         const class GGS_string constinArgument4,
-                                                                                                                                                                                         const class GGS_string constinArgument5,
-                                                                                                                                                                                         const class GGS_string constinArgument6,
-                                                                                                                                                                                         const class GGS_string constinArgument7,
-                                                                                                                                                                                         const class GGS_string constinArgument8,
-                                                                                                                                                                                         const class GGS_bool constinArgument9,
-                                                                                                                                                                                         class Compiler * inCompiler
-                                                                                                                                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'enterClassMethodWithStringInputArgument&&?classMethod?argName?compilerArg'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_enterClassMethodWithStringInputArgument_26__26__3F_classMethod_3F_argName_3F_compilerArg (class GGS_classMethodMap & ioArgument0,
-                                                                                                       class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                       const class GGS_string constinArgument2,
-                                                                                                       const class GGS_string constinArgument3,
-                                                                                                       const class GGS_bool constinArgument4,
-                                                                                                       class Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'syntaxFileGenerationTemplate'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_syntaxFileGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'syntaxFileGenerationTemplate syntaxFileImplementationGalgas3'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxFileImplementationGalgas_33_ (class Compiler * inCompiler,
-                                                                                                const class GGS_stringset & in_INCLUSION_5F_SET
-                                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'syntaxFileGenerationTemplate syntaxAnalyserClassDeclaration'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassDeclaration (class Compiler * inCompiler,
-                                                                                            const class GGS_string & in_COMPONENT_5F_NAME,
-                                                                                            const class GGS_string & in_LEXIQUE_5F_NAME,
-                                                                                            const class GGS_nonterminalMap & in_NONTERMINAL_5F_MAP,
-                                                                                            const class GGS_ruleDeclarationList & in_RULE_5F_DECLARATION_5F_LIST,
-                                                                                            const class GGS__5B_uint_5D_ & in_SELECT_5F_METHOD_5F_LIST,
-                                                                                            const class GGS_bool & in_HAS_5F_INDEXING,
-                                                                                            const class GGS_bool & in_HAS_5F_TRANSLATE_5F_FEATURE
-                                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Function 'syntaxSignatureOfInstructionList'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_semanticInstructionListForGeneration function_syntaxSignatureOfInstructionList (const class GGS_string & constinArgument0,
-                                                                                          const class GGS_semanticInstructionListForGeneration & constinArgument1,
-                                                                                          class Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateProcedure?static?&???????!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateProcedure_3F_static_3F__26__3F__3F__3F__3F__3F__3F__3F__21_ (const class GGS_bool constinArgument0,
-                                                                                  const class GGS_string constinArgument1,
-                                                                                  class GGS_stringset & ioArgument2,
-                                                                                  const class GGS_formalParameterListForGeneration constinArgument3,
-                                                                                  const class GGS_semanticInstructionListForGeneration constinArgument4,
-                                                                                  const class GGS_bool constinArgument5,
-                                                                                  const class GGS_string constinArgument6,
-                                                                                  const class GGS_bool constinArgument7,
-                                                                                  const class GGS_bool constinArgument8,
-                                                                                  const class GGS_bool constinArgument9,
-                                                                                  class GGS_string & outArgument10,
-                                                                                  class Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateFunction?&??????static?const!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateFunction_3F__26__3F__3F__3F__3F__3F__3F_static_3F_const_21_ (const class GGS_string constinArgument0,
-                                                                                  class GGS_stringset & ioArgument1,
-                                                                                  const class GGS_formalInputParameterListForGeneration constinArgument2,
-                                                                                  const class GGS_semanticInstructionListForGeneration constinArgument3,
-                                                                                  const class GGS_string constinArgument4,
-                                                                                  const class GGS_unifiedTypeMapEntry constinArgument5,
-                                                                                  const class GGS_string constinArgument6,
-                                                                                  const class GGS_bool constinArgument7,
-                                                                                  const class GGS_bool constinArgument8,
-                                                                                  class GGS_string & outArgument9,
-                                                                                  class Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateExtensionGetter?&?????!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateExtensionGetter_3F__26__3F__3F__3F__3F__3F__21_ (const class GGS_string constinArgument0,
-                                                                      class GGS_stringset & ioArgument1,
-                                                                      const class GGS_formalInputParameterListForGeneration constinArgument2,
-                                                                      const class GGS_semanticInstructionListForGeneration constinArgument3,
-                                                                      const class GGS_string constinArgument4,
-                                                                      const class GGS_unifiedTypeMapEntry constinArgument5,
-                                                                      const class GGS_string constinArgument6,
-                                                                      class GGS_string & outArgument7,
-                                                                      class Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Routine 'generateExtensionSetter???&??!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateExtensionSetter_3F__3F__3F__26__3F__3F__21_ (const class GGS_string constinArgument0,
-                                                                  const class GGS_string constinArgument1,
-                                                                  const class GGS_string constinArgument2,
-                                                                  class GGS_stringset & ioArgument3,
-                                                                  const class GGS_formalParameterListForGeneration constinArgument4,
-                                                                  const class GGS_semanticInstructionListForGeneration constinArgument5,
-                                                                  class GGS_string & outArgument6,
+class GGS_lstring function_initializerNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                                  const class GGS_string & constinArgument1,
                                                                   class Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generateExtensionMethodNew?&???!'
+//Routine 'analyzeInitializerBody?&?&???!!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_generateExtensionMethodNew_3F__26__3F__3F__3F__21_ (const class GGS_unifiedTypeMapEntry constinArgument0,
-                                                                 class GGS_stringset & ioArgument1,
-                                                                 const class GGS_string constinArgument2,
-                                                                 const class GGS_formalParameterListForGeneration constinArgument3,
-                                                                 const class GGS_semanticInstructionListForGeneration constinArgument4,
-                                                                 class GGS_string & outArgument5,
+void routine_analyzeInitializerBody_3F__26__3F__26__3F__3F__3F__21__21_ (const class GGS_lstring constinArgument0,
+                                                                         class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                         const class GGS_analysisContext constinArgument2,
+                                                                         class GGS_unifiedTypeMap & ioArgument3,
+                                                                         const class GGS_formalInputParameterListAST constinArgument4,
+                                                                         const class GGS__5B_semanticInstructionAST_5D_ constinArgument5,
+                                                                         const class GGS_location constinArgument6,
+                                                                         class GGS_semanticInstructionListForGeneration & outArgument7,
+                                                                         class GGS_formalInputParameterListForGeneration & outArgument8,
+                                                                         class Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateInitializer??&??!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateInitializer_3F__3F__26__3F__3F__21_ (const class GGS_unifiedTypeMapEntry constinArgument0,
+                                                          const class GGS_string constinArgument1,
+                                                          class GGS_stringset & ioArgument2,
+                                                          const class GGS_formalInputParameterListForGeneration constinArgument3,
+                                                          const class GGS_semanticInstructionListForGeneration constinArgument4,
+                                                          class GGS_string & outArgument5,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'methodNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_methodNameForUsefulEntitiesGraph (const class GGS_string & constinArgument0,
+                                                             const class GGS_lstring & constinArgument1,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'handleEquatableComparableExtension&?&?acceptEquatable?acceptComparable'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_handleEquatableComparableExtension_26__3F__26__3F_acceptEquatable_3F_acceptComparable (class GGS_equatableExtensionMap & ioArgument0,
+                                                                                                    const class GGS_lstring constinArgument1,
+                                                                                                    class GGS_typeFeatures & ioArgument2,
+                                                                                                    const class GGS_bool constinArgument3,
+                                                                                                    const class GGS_bool constinArgument4,
+                                                                                                    class Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'equatableNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_equatableNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                                class Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'grammarRulesInTexDocumentTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_grammarRulesInTexDocumentTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'grammarRulesInTexDocumentTemplate document'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_grammarRulesInTexDocumentTemplate_document (class Compiler * inCompiler,
+                                                                           const class GGS_string & in_DOCUMENT_5F_NAME,
+                                                                           const class GGS_string & in_TEX_5F_ESCAPED_5F_DOCUMENT_5F_NAME
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'emitProductionRulesInTexFile?????'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_emitProductionRulesInTexFile_3F__3F__3F__3F__3F_ (const class GGS_string constinArgument0,
+                                                               const class GGS_string constinArgument1,
+                                                               const class GGS_nonTerminalSymbolMapForGrammarAnalysis constinArgument2,
+                                                               const class GGS_syntaxComponentListForGrammarAnalysis constinArgument3,
+                                                               const class GGS_lstring constinArgument4,
+                                                               class Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'checkUsefulEntities???'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_checkUsefulEntities_3F__3F__3F_ (const class GGS_usefulEntitiesGraph constinArgument0,
+                                              const class GGS__5B_lstring_5D_ constinArgument1,
+                                              const class GGS_string constinArgument2,
+                                              class Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'syntaxNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_syntaxNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'optionNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_optionNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'filewrapperNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_filewrapperNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'filewrapperTemplateNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_filewrapperTemplateNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                                          const class GGS_lstring & constinArgument1,
+                                                                          class Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'functionNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_functionNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                               class Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'afterNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_afterNameForUsefulEntitiesGraph (const class GGS_location & constinArgument0,
+                                                            class Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'beforeNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_beforeNameForUsefulEntitiesGraph (const class GGS_location & constinArgument0,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'rootRuleNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_rootRuleNameForUsefulEntitiesGraph (const class GGS_lstring & constinArgument0,
+                                                               class Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'compileSemanticDeclarationsGalgas&&???!!!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_compileSemanticDeclarationsGalgas_26__26__3F__3F__3F__21__21__21_ (class GGS__5B_lstring_5D_ & ioArgument0,
+                                                                                class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                                const class GGS_string constinArgument2,
+                                                                                const class GGS_location constinArgument3,
+                                                                                const class GGS_galgasDeclarationAST constinArgument4,
+                                                                                class GGS_semanticContext & outArgument5,
+                                                                                class GGS_unifiedTypeMap & outArgument6,
+                                                                                class GGS__5B_semanticDeclarationForGeneration_5D_ & outArgument7,
+                                                                                class Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'buildPredefinedTypes'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_predefinedTypes function_buildPredefinedTypes (const class GGS_unifiedTypeMap & constinArgument0,
+                                                         class Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'buildGalgasSemanticContext??!!!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_buildGalgasSemanticContext_3F__3F__21__21__21_ (const class GGS_galgasDeclarationAST constinArgument0,
+                                                             const class GGS_location constinArgument1,
+                                                             class GGS_semanticContext & outArgument2,
+                                                             class GGS_unifiedTypeMap & outArgument3,
+                                                             class GGS__5B_semanticDeclarationAST_5D_ & outArgument4,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateSemanticDeclarationsGalgas3???&swift&&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateSemanticDeclarationsGalgas_33__3F__3F__3F__26_swift_26__26__26_ (const class GGS_unifiedTypeMap constinArgument0,
+                                                                                      const class GGS_string constinArgument1,
+                                                                                      const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument2,
+                                                                                      class GGS_stringlist & ioArgument3,
+                                                                                      class GGS_stringlist & ioArgument4,
+                                                                                      class GGS_stringlist & ioArgument5,
+                                                                                      class GGS_stringset & ioArgument6,
+                                                                                      class Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'generateFewHeaderFiles'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_bool function_generateFewHeaderFiles (class Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateFewImplementationFilesWithFewHeaders???&&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateFewImplementationFilesWithFewHeaders_3F__3F__3F__26__26__26_ (const class GGS_unifiedTypeMap constinArgument0,
+                                                                                   const class GGS_string constinArgument1,
+                                                                                   const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument2,
+                                                                                   class GGS_stringlist & ioArgument3,
+                                                                                   class GGS_stringset & ioArgument4,
+                                                                                   class GGS_stringlist & ioArgument5,
+                                                                                   class Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateFewImplementationFiles???&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateFewImplementationFiles_3F__3F__3F__26__26_ (const class GGS_unifiedTypeMap constinArgument0,
+                                                                 const class GGS_string constinArgument1,
+                                                                 const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument2,
+                                                                 class GGS_stringlist & ioArgument3,
+                                                                 class GGS_stringset & ioArgument4,
                                                                  class Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper 'typeGenerationTemplate'
+//Routine 'generateManyHeaders??&&'
 //
 //--------------------------------------------------------------------------------------------------
 
-extern const char * gWrapperFileContent_0_typeGenerationTemplate ;
+void routine_generateManyHeaders_3F__3F__26__26_ (const class GGS_string constinArgument0,
+                                                  const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument1,
+                                                  class GGS_stringset & ioArgument2,
+                                                  class GGS_stringlist & ioArgument3,
+                                                  class Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cRegularFileWrapper gWrapperFile_0_typeGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_typeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_typeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_typeGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'typeGenerationTemplate unifiedClassBodyForType'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (class Compiler * inCompiler,
-                                                                               const class GGS_string & in_TYPE_5F_NAME,
-                                                                               const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                               const class GGS_bool & in_IS_5F_CONCRETE,
-                                                                               const class GGS_initializerMap & in_INITIALIZER_5F_MAP,
-                                                                               const class GGS_classFunctionMap & in_CLASS_5F_FUNC_5F_MAP,
-                                                                               const class GGS_getterMap & in_GETTER_5F_MAP,
-                                                                               const class GGS_setterMap & in_MODIFIER_5F_MAP,
-                                                                               const class GGS_instanceMethodMap & in_INSTANCE_5F_METHOD_5F_MAP,
-                                                                               const class GGS_classMethodMap & in_CLASS_5F_METHOD_5F_MAP,
-                                                                               const class GGS_subscriptMap & in_READ_5F_SUBSCRIPT_5F_MAP,
-                                                                               const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
-                                                                               const class GGS_typeFeatures & in_SUPPORTED_5F_OPERATORS,
-                                                                               const class GGS_functionSignature & in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST,
-                                                                               const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
-                                                                               const class GGS_bool & in_SUPPORT_5F_COLLECTION_5F_VALUE
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'typeGenerationTemplate unifiedClassBodyForPackage'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForPackage (class Compiler * inCompiler,
-                                                                                  const class GGS_string & in_TYPE_5F_NAME,
-                                                                                  const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                  const class GGS_classFunctionMap & in_CLASS_5F_FUNC_5F_MAP,
-                                                                                  const class GGS_classMethodMap & in_CLASS_5F_METHOD_5F_MAP
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'typeGenerationTemplate genericTypeImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementation (class Compiler * inCompiler,
-                                                                                 const class GGS_string & in_TYPE_5F_NAME,
-                                                                                 const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                 const class GGS_unifiedTypeMapEntry & in_SUPER_5F_TYPE_5F_INDEX
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'typeGenerationTemplate externTypeHeader1'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (class Compiler * inCompiler,
-                                                                            const class GGS_string & in_TYPE_5F_NAME,
-                                                                            const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                            const class GGS_string & in_PRE_5F_DECLARATION,
-                                                                            const class GGS_string & in_CODE
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'semanticComponentGenerationTemplate'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_semanticComponentGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'semanticComponentGenerationTemplate initializerImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_initializerImplementation (class Compiler * inCompiler,
-                                                                                              const class GGS_string & in_CLASS_5F_NAME,
-                                                                                              const class GGS_string & in_INITIALIZER_5F_NAME,
-                                                                                              const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                              const class GGS_string & in_INITIALIZER_5F_IMPLEMENTATION
-                                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionGetterDeclaration'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionGetterDeclaration (class Compiler * inCompiler,
-                                                                                                       const class GGS_string & in_CLASS_5F_NAME,
-                                                                                                       const class GGS_string & in_GETTER_5F_NAME,
-                                                                                                       const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                       const class GGS_unifiedTypeMapEntry & in_RETURN_5F_TYPE
-                                                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionGetterImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionGetterImplementation (class Compiler * inCompiler,
-                                                                                                          const class GGS_string & in_CLASS_5F_NAME,
-                                                                                                          const class GGS_string & in_GETTER_5F_NAME,
-                                                                                                          const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                          const class GGS_unifiedTypeMapEntry & in_RETURN_5F_TYPE
-                                                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'semanticComponentGenerationTemplate extensionGetterDeclaration'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterDeclaration (class Compiler * inCompiler,
-                                                                                               const class GGS_string & in_CLASS_5F_NAME,
-                                                                                               const class GGS_string & in_GETTER_5F_NAME,
-                                                                                               const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                               const class GGS_unifiedTypeMapEntry & in_RETURN_5F_TYPE
-                                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'semanticComponentGenerationTemplate extensionGetterImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterImplementation (class Compiler * inCompiler,
-                                                                                                  const class GGS_string & in_CLASS_5F_NAME,
-                                                                                                  const class GGS_string & in_GETTER_5F_NAME,
-                                                                                                  const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                  const class GGS_string & in_GETTER_5F_IMPLEMENTATION,
-                                                                                                  const class GGS_unifiedTypeMapEntry & in_RETURN_5F_TYPE
-                                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'semanticComponentGenerationTemplate overridingExtensionGetterImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionGetterImplementation (class Compiler * inCompiler,
-                                                                                                            const class GGS_string & in_CLASS_5F_NAME,
-                                                                                                            const class GGS_string & in_GETTER_5F_NAME,
-                                                                                                            const class GGS_string & in_GETTER_5F_IMPLEMENTATION,
-                                                                                                            const class GGS_unifiedTypeMapEntry & in_RETURN_5F_TYPE
-                                                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate extensionSetterDeclaration'
+//Routine 'generateManyImplementationFiles???&&'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSetterDeclaration (class Compiler * inCompiler,
-                                                                                               const class GGS_string & in_CLASS_5F_NAME,
-                                                                                               const class GGS_string & in_MODIFIER_5F_NAME,
-                                                                                               const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
-                                                                                               COMMA_LOCATION_ARGS) ;
+void routine_generateManyImplementationFiles_3F__3F__3F__26__26_ (const class GGS_unifiedTypeMap constinArgument0,
+                                                                  const class GGS_string constinArgument1,
+                                                                  const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument2,
+                                                                  class GGS_stringlist & ioArgument3,
+                                                                  class GGS_stringset & ioArgument4,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate extensionsetterImplementation'
+//Routine 'generateOneBigHeader??&&'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionsetterImplementation (class Compiler * inCompiler,
-                                                                                                  const class GGS_string & in_CLASS_5F_NAME,
-                                                                                                  const class GGS_string & in_MODIFIER_5F_NAME,
-                                                                                                  const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                  const class GGS_string & in_MODIFIER_5F_IMPLEMENTATION
-                                                                                                  COMMA_LOCATION_ARGS) ;
+void routine_generateOneBigHeader_3F__3F__26__26_ (const class GGS_string constinArgument0,
+                                                   const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument1,
+                                                   class GGS_stringset & ioArgument2,
+                                                   class GGS_stringlist & ioArgument3,
+                                                   class Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionMethodDeclaration'
+//Routine 'buildHeader???&&'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionMethodDeclaration (class Compiler * inCompiler,
-                                                                                                       const class GGS_string & in_CLASS_5F_NAME,
-                                                                                                       const class GGS_string & in_METHOD_5F_NAME,
-                                                                                                       const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
-                                                                                                       COMMA_LOCATION_ARGS) ;
+void routine_buildHeader_3F__3F__3F__26__26_ (const class GGS_headerCompositionMap constinArgument0,
+                                              const class GGS_string constinArgument1,
+                                              const class GGS_string constinArgument2,
+                                              class GGS_headerRepartitionMap & ioArgument3,
+                                              class GGS_string & ioArgument4,
+                                              class Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionMethodImplementation'
+//Function 'definitionGroupAmount'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionMethodImplementation (class Compiler * inCompiler,
-                                                                                                          const class GGS_unifiedTypeMapEntry & in_RECEIVER_5F_TYPE,
-                                                                                                          const class GGS_string & in_METHOD_5F_NAME,
-                                                                                                          const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
-                                                                                                          COMMA_LOCATION_ARGS) ;
+class GGS_uint function_definitionGroupAmount (class Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate extensionMethodDeclaration'
+//Routine 'checkBigInteger'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodDeclaration (class Compiler * inCompiler,
-                                                                                               const class GGS_string & in_CLASS_5F_NAME,
-                                                                                               const class GGS_string & in_METHOD_5F_NAME,
-                                                                                               const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
-                                                                                               COMMA_LOCATION_ARGS) ;
+void routine_checkBigInteger (class Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate extensionMethodImplementation'
+//Routine 'displayUnicodeLexicalTestFunctions'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodImplementation (class Compiler * inCompiler,
-                                                                                                  const class GGS_string & in_CLASS_5F_NAME,
-                                                                                                  const class GGS_string & in_METHOD_5F_NAME,
-                                                                                                  const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                  const class GGS_string & in_METHOD_5F_IMPLEMENTATION
-                                                                                                  COMMA_LOCATION_ARGS) ;
+void routine_displayUnicodeLexicalTestFunctions (class Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate overridingExtensionMethodImplementation'
+//Routine 'parseAndAnalyzeProject??'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionMethodImplementation (class Compiler * inCompiler,
-                                                                                                            const class GGS_string & in_CLASS_5F_NAME,
-                                                                                                            const class GGS_string & in_METHOD_5F_NAME,
-                                                                                                            const class GGS_string & in_METHOD_5F_IMPLEMENTATION
-                                                                                                            COMMA_LOCATION_ARGS) ;
+void routine_parseAndAnalyzeProject_3F__3F_ (const class GGS_lstring constinArgument0,
+                                             const class GGS_string constinArgument1,
+                                             class Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate filewrapperDeclaration'
+//Routine 'compileProject???'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDeclaration (class Compiler * inCompiler,
-                                                                                           const class GGS_stringlist & in_FILE_5F_INDEX_5F_STRING_5F_LIST,
-                                                                                           const class GGS_stringlist & in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST,
-                                                                                           const class GGS_stringlist & in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
-                                                                                           const class GGS_stringlist & in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
-                                                                                           const class GGS_string & in_FILEWRAPPER_5F_NAME
-                                                                                           COMMA_LOCATION_ARGS) ;
+void routine_compileProject_3F__3F__3F_ (const class GGS_lstring constinArgument0,
+                                         const class GGS_string constinArgument1,
+                                         const class GGS_galgas_33_ProjectComponentAST constinArgument2,
+                                         class Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate filewrapperImplementation'
+//Filewrapper 'typeDumpGenerationTemplate'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperImplementation (class Compiler * inCompiler,
-                                                                                              const class GGS_string & in_FILEWRAPPER_5F_NAME,
-                                                                                              const class GGS_string & in_FILEWRAPPER_5F_IMPLEMENTATION
-                                                                                              COMMA_LOCATION_ARGS) ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'semanticComponentGenerationTemplate extensionGetterAsFunctionDeclaration'
-//
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterAsFunctionDeclaration (class Compiler * inCompiler,
-                                                                                                         const class GGS_string & in_TYPE_5F_NAME,
-                                                                                                         const class GGS_string & in_GETTER_5F_NAME,
-                                                                                                         const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                         const class GGS_string & in_RETURN_5F_TYPE_5F_IDENTIFIER
-                                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'semanticComponentGenerationTemplate extensionGetterAsFunctionImplementation'
-//
-//--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterAsFunctionImplementation (class Compiler * inCompiler,
-                                                                                                            const class GGS_string & in_TYPE_5F_NAME,
-                                                                                                            const class GGS_string & in_GETTER_5F_NAME,
-                                                                                                            const class GGS_string & in_FUNCTION_5F_IMPLEMENTATION
-                                                                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'semanticComponentGenerationTemplate extensionMethodAsFunctionDeclaration'
-//
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodAsFunctionDeclaration (class Compiler * inCompiler,
-                                                                                                         const class GGS_string & in_TYPE_5F_NAME,
-                                                                                                         const class GGS_string & in_METHOD_5F_NAME,
-                                                                                                         const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
-                                                                                                         COMMA_LOCATION_ARGS) ;
+extern const cDirectoryWrapper gWrapperDirectory_0_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_3_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_4_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_5_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_6_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_7_typeDumpGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_8_typeDumpGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate extensionMethodAsFunctionImplementation'
+//Filewrapper template 'typeDumpGenerationTemplate typeDump'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodAsFunctionImplementation (class Compiler * inCompiler,
-                                                                                                            const class GGS_string & in_TYPE_5F_NAME,
-                                                                                                            const class GGS_string & in_METHOD_5F_NAME,
-                                                                                                            const class GGS_string & in_METHOD_5F_IMPLEMENTATION
-                                                                                                            COMMA_LOCATION_ARGS) ;
+GGS_string filewrapperTemplate_typeDumpGenerationTemplate_typeDump (class Compiler * inCompiler,
+                                                                    const class GGS_string & in_PROJECT_5F_NAME,
+                                                                    const class GGS_unifiedTypeMap & in_UNIFIED_5F_TYPE_5F_MAP,
+                                                                    const class GGS_stringset & in_FIRST_5F_LETTER_5F_SET,
+                                                                    const class GGS_string & in_TABLE_5F_OF_5F_TYPES_5F_STRING
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate extensionSetterAsFunctionDeclaration'
+//Function 'linkForType'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSetterAsFunctionDeclaration (class Compiler * inCompiler,
-                                                                                                         const class GGS_string & in_TYPE_5F_NAME,
-                                                                                                         const class GGS_string & in_MODIFIER_5F_NAME,
-                                                                                                         const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
-                                                                                                         COMMA_LOCATION_ARGS) ;
+class GGS_string function_linkForType (const class GGS_string & constinArgument0,
+                                       class Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate functionDeclaration'
+//Routine 'appendPredefinedTypesASTs&'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionDeclaration (class Compiler * inCompiler,
-                                                                                        const class GGS_string & in_FUNCTION_5F_NAME,
-                                                                                        const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                        const class GGS_string & in_RETURN_5F_TYPE_5F_IDENTIFIER
-                                                                                        COMMA_LOCATION_ARGS) ;
+void routine_appendPredefinedTypesASTs_26_ (class GGS_galgasDeclarationAST & ioArgument0,
+                                            class Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate functionImplementation'
+//Routine 'compileAllGuiComponentFromASTGalgas3??!'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionImplementation (class Compiler * inCompiler,
-                                                                                           const class GGS_string & in_FUNCTION_5F_NAME,
-                                                                                           const class GGS_string & in_FUNCTION_5F_IMPLEMENTATION
-                                                                                           COMMA_LOCATION_ARGS) ;
+void routine_compileAllGuiComponentFromASTGalgas_33__3F__3F__21_ (const class GGS_galgasGUIComponentListAST constinArgument0,
+                                                                  const class GGS_semanticContext constinArgument1,
+                                                                  class GGS_optionComponentMapForGeneration & outArgument2,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate routineDeclaration'
+//Routine 'compileProgramComponentGalgas3&&????&?!'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineDeclaration (class Compiler * inCompiler,
-                                                                                       const class GGS_string & in_ROUTINE_5F_NAME,
-                                                                                       const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
-                                                                                       COMMA_LOCATION_ARGS) ;
+void routine_compileProgramComponentGalgas_33__26__26__3F__3F__3F__3F__26__3F__21_ (class GGS__5B_lstring_5D_ & ioArgument0,
+                                                                                    class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                                    const class GGS_prologueEpilogueList constinArgument2,
+                                                                                    const class GGS_programRuleList constinArgument3,
+                                                                                    const class GGS_prologueEpilogueList constinArgument4,
+                                                                                    const class GGS_semanticContext constinArgument5,
+                                                                                    class GGS_unifiedTypeMap & ioArgument6,
+                                                                                    const class GGS_string constinArgument7,
+                                                                                    class GGS_programComponentForGeneration & outArgument8,
+                                                                                    class Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate routineImplementation'
+//Routine 'groupSyntaxComponentsGalgas3??&'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineImplementation (class Compiler * inCompiler,
-                                                                                          const class GGS_string & in_ROUTINE_5F_NAME,
-                                                                                          const class GGS_string & in_ROUTINE_5F_IMPLEMENTATION
-                                                                                          COMMA_LOCATION_ARGS) ;
+void routine_groupSyntaxComponentsGalgas_33__3F__3F__26_ (const class GGS_galgas_33_SyntaxComponentListAST constinArgument0,
+                                                          const class GGS_syntaxExtensions constinArgument1,
+                                                          class GGS__5B_semanticDeclarationAST_5D_ & ioArgument2,
+                                                          class Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate onceFunctionImplementation'
+//Routine 'performGalgas3ProjectGlobalCheckings&?'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFunctionImplementation (class Compiler * inCompiler,
-                                                                                               const class GGS_string & in_FUNCTION_5F_NAME,
-                                                                                               const class GGS_string & in_FUNCTION_5F_IMPLEMENTATION,
-                                                                                               const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                               const class GGS_string & in_RETURN_5F_TYPE_5F_IDENTIFIER
-                                                                                               COMMA_LOCATION_ARGS) ;
+void routine_performGalgas_33_ProjectGlobalCheckings_26__3F_ (class GGS_unifiedTypeMap & ioArgument0,
+                                                              const class GGS__5B_semanticDeclarationAST_5D_ constinArgument1,
+                                                              class Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate filewrapperTemplateDeclaration'
+//Routine 'projectGeneration??absoluteBuildDir?buildDirName??????????'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateDeclaration (class Compiler * inCompiler,
-                                                                                                   const class GGS_string & in_FILEWRAPPER_5F_NAME,
-                                                                                                   const class GGS_string & in_TEMPLATE_5F_NAME,
-                                                                                                   const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
-                                                                                                   COMMA_LOCATION_ARGS) ;
+void routine_projectGeneration_3F__3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F_ (const class GGS_unifiedTypeMap constinArgument0,
+                                                                                                                const class GGS_string constinArgument1,
+                                                                                                                const class GGS_string constinArgument2,
+                                                                                                                const class GGS_optionComponentMapForGeneration constinArgument3,
+                                                                                                                const class GGS_stringlist constinArgument4,
+                                                                                                                const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument5,
+                                                                                                                const class GGS_programRuleList constinArgument6,
+                                                                                                                const class GGS_galgas_33_ProjectComponentAST constinArgument7,
+                                                                                                                const class GGS_string constinArgument8,
+                                                                                                                const class GGS_string constinArgument9,
+                                                                                                                const class GGS_stringlist constinArgument10,
+                                                                                                                const class GGS_stringlist constinArgument11,
+                                                                                                                const class GGS_stringlist constinArgument12,
+                                                                                                                class Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'semanticComponentGenerationTemplate filewrapperTemplateImplementation'
+//Routine 'generateAllGuiComponentsGalgas3???&swift'
 //
 //--------------------------------------------------------------------------------------------------
 
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateImplementation (class Compiler * inCompiler,
-                                                                                                      const class GGS_string & in_FILEWRAPPER_5F_NAME,
-                                                                                                      const class GGS_string & in_TEMPLATE_5F_NAME,
-                                                                                                      const class GGS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                      const class GGS_stringset & in_UNUSED_5F_VAR_5F_SET,
-                                                                                                      const class GGS_bool & in_USES_5F_COLUMN_5F_MARKER,
-                                                                                                      const class GGS_string & in_GENERATED_5F_INSTRUCTION_5F_STRING
-                                                                                                      COMMA_LOCATION_ARGS) ;
+void routine_generateAllGuiComponentsGalgas_33__3F__3F__3F__26_swift (const class GGS_optionComponentMapForGeneration constinArgument0,
+                                                                      const class GGS_string constinArgument1,
+                                                                      const class GGS_bool constinArgument2,
+                                                                      class GGS_stringlist & ioArgument3,
+                                                                      class Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 

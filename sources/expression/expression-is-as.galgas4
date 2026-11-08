@@ -196,7 +196,7 @@ override proc @castInExpressionAST.analyzeSemanticExpression
    )
 //--- Get type information
    let type = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
-//--- This type is an @object type
+//--- This type is a class type
   if expression.mResultType.definition.typeKind.isClassType then
   //--- Check expression type is a descendant of named type
     var @unifiedTypeMapEntry t = type
@@ -211,27 +211,20 @@ override proc @castInExpressionAST.analyzeSemanticExpression
       :"the '@" + self.mTypeName + "' is not a descendant of the '@"
       + expression.mResultType.definition.typeName.string + "' type of the cast expression")
     end
-  elsif expression.mResultType.definition.typeName.string != "object" then
+ // elsif expression.mResultType.definition.typeName.string != "object" then
+  else
     error (expression.mLocation:
-      "cast expression should be a class instance or an @object instance: it is an @"
+      "cast expression should be a class instance: it is an @"
      + expression.mResultType.definition.typeName.string + " instance")
   end
 //--- Generate expression
-  if expression.mResultType.definition.typeName.string == "object" then
-    outExpression = @extractObjectInExpressionForGeneration (
-      type,
-      self.mEndOfReceiverExpression,
-      expression,
-      self.mTypeName.string)
-  else
-    outExpression = @castInExpressionForGeneration (
-      type,
-      self.mTypeName.location,
-      expression,
-      self.mTypeName.string,
-      type
-    )
-  end
+  outExpression = @castInExpressionForGeneration (
+    type,
+    self.mTypeName.location,
+    expression,
+    self.mTypeName.string,
+    type
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -311,39 +304,6 @@ override proc @castInExpressionForGeneration.generateExpression
   ioGeneratedCode += "}\n"
   !?ioGeneratedCode.decIndentation (2)
   ioGeneratedCode += "}\n"
-}
-
-//--------------------------------------------------------------------------------------------------
-
-final class @extractObjectInExpressionForGeneration : @semanticExpressionForGeneration {
-  private let @semanticExpressionForGeneration mReceiverExpression
-  private let @string mTypeName
-}
-
-//································································································
-
-override proc @extractObjectInExpressionForGeneration.generateExpression
-  (?!@string ioGeneratedCode,
-  ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
-  ?!@stringset ioUnusedVariableCppNameSet,
-  !@string outCppExpression ) {
-  outCppExpression = "temp_" + ioTemporaryVariableIndex.string
-  ioTemporaryVariableIndex += 1
-//--- Receiver expression
-  self.mReceiverExpression.generateExpression
-    (!?ioGeneratedCode,
-    !?ioInclusionSet,
-    !?ioTemporaryVariableIndex,
-    !?ioUnusedVariableCppNameSet,
-    ?let @string receiverExpression
-  )
-//--- Generate code
-  outCppExpression = "GGS_" + self.mResultType.identifierRepresentation
-  + "::extractObject (" + receiverExpression
-  + ", " + compilerCppName ()
-  + self.mLocation.commaSourceFile + ")"
-  !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
 }
 
 //--------------------------------------------------------------------------------------------------

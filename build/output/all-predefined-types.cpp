@@ -32,23 +32,6 @@ AC_GALGAS_root * GGS_uint_36__34_::clonedObject (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_uint_36__34_ GGS_uint_36__34_::extractObject (const GGS_object & inObject,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  GGS_uint_36__34_ result ;
-  const GGS_uint_36__34_ * p = (const GGS_uint_36__34_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_uint_36__34_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("uint64", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @[uint64] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -67,23 +50,6 @@ AC_GALGAS_root * GGS__5B_uint_36__34__5D_::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS__5B_uint_36__34__5D_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_uint_36__34__5D_ GGS__5B_uint_36__34__5D_::extractObject (const GGS_object & inObject,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  GGS__5B_uint_36__34__5D_ result ;
-  const GGS__5B_uint_36__34__5D_ * p = (const GGS__5B_uint_36__34__5D_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS__5B_uint_36__34__5D_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("[uint64]", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -380,23 +346,6 @@ AC_GALGAS_root * GGS_bigint::clonedObject (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_bigint GGS_bigint::extractObject (const GGS_object & inObject,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  GGS_bigint result ;
-  const GGS_bigint * p = (const GGS_bigint *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_bigint *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("bigint", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @binaryset generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -415,23 +364,6 @@ AC_GALGAS_root * GGS_binaryset::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS_binaryset (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_binaryset GGS_binaryset::extractObject (const GGS_object & inObject,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  GGS_binaryset result ;
-  const GGS_binaryset * p = (const GGS_binaryset *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_binaryset *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("binaryset", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -460,23 +392,6 @@ AC_GALGAS_root * GGS_bool::clonedObject (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_bool::extractObject (const GGS_object & inObject,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) {
-  GGS_bool result ;
-  const GGS_bool * p = (const GGS_bool *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_bool *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("bool", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @char generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -495,23 +410,6 @@ AC_GALGAS_root * GGS_char::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS_char (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_char GGS_char::extractObject (const GGS_object & inObject,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) {
-  GGS_char result ;
-  const GGS_char * p = (const GGS_char *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_char *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("char", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -540,23 +438,6 @@ AC_GALGAS_root * GGS_data::clonedObject (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_data GGS_data::extractObject (const GGS_object & inObject,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) {
-  GGS_data result ;
-  const GGS_data * p = (const GGS_data *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_data *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("data", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @double generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -575,23 +456,6 @@ AC_GALGAS_root * GGS_double::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS_double (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_double GGS_double::extractObject (const GGS_object & inObject,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  GGS_double result ;
-  const GGS_double * p = (const GGS_double *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_double *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("double", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -620,23 +484,6 @@ AC_GALGAS_root * GGS_filewrapper::clonedObject (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_filewrapper GGS_filewrapper::extractObject (const GGS_object & inObject,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  GGS_filewrapper result ;
-  const GGS_filewrapper * p = (const GGS_filewrapper *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_filewrapper *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("filewrapper", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @location generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -655,23 +502,6 @@ AC_GALGAS_root * GGS_location::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS_location (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_location::extractObject (const GGS_object & inObject,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
-  GGS_location result ;
-  const GGS_location * p = (const GGS_location *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_location *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("location", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -700,23 +530,6 @@ AC_GALGAS_root * GGS_object::clonedObject (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_object GGS_object::extractObject (const GGS_object & inObject,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  GGS_object result ;
-  const GGS_object * p = (const GGS_object *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_object *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("object", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @sint generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -735,23 +548,6 @@ AC_GALGAS_root * GGS_sint::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS_sint (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_sint GGS_sint::extractObject (const GGS_object & inObject,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) {
-  GGS_sint result ;
-  const GGS_sint * p = (const GGS_sint *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_sint *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("sint", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -780,23 +576,6 @@ AC_GALGAS_root * GGS_sint_36__34_::clonedObject (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_sint_36__34_ GGS_sint_36__34_::extractObject (const GGS_object & inObject,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  GGS_sint_36__34_ result ;
-  const GGS_sint_36__34_ * p = (const GGS_sint_36__34_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_sint_36__34_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("sint64", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @string generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -820,23 +599,6 @@ AC_GALGAS_root * GGS_string::clonedObject (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_string::extractObject (const GGS_object & inObject,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  GGS_string result ;
-  const GGS_string * p = (const GGS_string *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_string *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("string", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @[string] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -855,23 +617,6 @@ AC_GALGAS_root * GGS__5B_string_5D_::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS__5B_string_5D_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_string_5D_ GGS__5B_string_5D_::extractObject (const GGS_object & inObject,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  GGS__5B_string_5D_ result ;
-  const GGS__5B_string_5D_ * p = (const GGS__5B_string_5D_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS__5B_string_5D_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("[string]", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -1169,23 +914,6 @@ AC_GALGAS_root * GGS_lstring::clonedObject (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring GGS_lstring::extractObject (const GGS_object & inObject,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
-  GGS_lstring result ;
-  const GGS_lstring * p = (const GGS_lstring *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lstring *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lstring", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lstring::GGS_lstring (void) :
 mProperty_string (),
 mProperty_location () {
@@ -1292,23 +1020,6 @@ AC_GALGAS_root * GGS__5B_lstring_5D_::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS__5B_lstring_5D_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lstring_5D_ GGS__5B_lstring_5D_::extractObject (const GGS_object & inObject,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  GGS__5B_lstring_5D_ result ;
-  const GGS__5B_lstring_5D_ * p = (const GGS__5B_lstring_5D_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS__5B_lstring_5D_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("[lstring]", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -1605,23 +1316,6 @@ AC_GALGAS_root * GGS_uint::clonedObject (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_uint::extractObject (const GGS_object & inObject,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) {
-  GGS_uint result ;
-  const GGS_uint * p = (const GGS_uint *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_uint *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("uint", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @[uint] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -1640,23 +1334,6 @@ AC_GALGAS_root * GGS__5B_uint_5D_::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS__5B_uint_5D_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_uint_5D_ GGS__5B_uint_5D_::extractObject (const GGS_object & inObject,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  GGS__5B_uint_5D_ result ;
-  const GGS__5B_uint_5D_ * p = (const GGS__5B_uint_5D_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS__5B_uint_5D_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("[uint]", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -1953,23 +1630,6 @@ AC_GALGAS_root * GGS_stringset::clonedObject (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_stringset GGS_stringset::extractObject (const GGS_object & inObject,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  GGS_stringset result ;
-  const GGS_stringset * p = (const GGS_stringset *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_stringset *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("stringset", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @timer generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -1988,23 +1648,6 @@ AC_GALGAS_root * GGS_timer::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS_timer (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_timer GGS_timer::extractObject (const GGS_object & inObject,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) {
-  GGS_timer result ;
-  const GGS_timer * p = (const GGS_timer *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_timer *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("timer", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -2033,23 +1676,6 @@ AC_GALGAS_root * GGS_type::clonedObject (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_type GGS_type::extractObject (const GGS_object & inObject,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) {
-  GGS_type result ;
-  const GGS_type * p = (const GGS_type *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_type *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("type", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @luintlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -2068,23 +1694,6 @@ AC_GALGAS_root * GGS_luintlist::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS_luintlist (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_luintlist GGS_luintlist::extractObject (const GGS_object & inObject,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  GGS_luintlist result ;
-  const GGS_luintlist * p = (const GGS_luintlist *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_luintlist *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("luintlist", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -2625,23 +2234,6 @@ AC_GALGAS_root * GGS_luint::clonedObject (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_luint GGS_luint::extractObject (const GGS_object & inObject,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) {
-  GGS_luint result ;
-  const GGS_luint * p = (const GGS_luint *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_luint *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("luint", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_luint::GGS_luint (void) :
 mProperty_uint (),
 mProperty_location () {
@@ -2748,23 +2340,6 @@ AC_GALGAS_root * GGS_lstringlist::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS_lstringlist (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist GGS_lstringlist::extractObject (const GGS_object & inObject,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  GGS_lstringlist result ;
-  const GGS_lstringlist * p = (const GGS_lstringlist *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lstringlist *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lstringlist", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -3304,23 +2879,6 @@ AC_GALGAS_root * GGS_stringlist::clonedObject (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_stringlist GGS_stringlist::extractObject (const GGS_object & inObject,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  GGS_stringlist result ;
-  const GGS_stringlist * p = (const GGS_stringlist *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_stringlist *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("stringlist", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Class for element of '@stringlist' list
 //--------------------------------------------------------------------------------------------------
 
@@ -3850,23 +3408,6 @@ AC_GALGAS_root * GGS_typelist::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS_typelist (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typelist GGS_typelist::extractObject (const GGS_object & inObject,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
-  GGS_typelist result ;
-  const GGS_typelist * p = (const GGS_typelist *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_typelist *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("typelist", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -4407,23 +3948,6 @@ AC_GALGAS_root * GGS_lbool::clonedObject (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lbool GGS_lbool::extractObject (const GGS_object & inObject,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) {
-  GGS_lbool result ;
-  const GGS_lbool * p = (const GGS_lbool *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lbool *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lbool", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lbool::GGS_lbool (void) :
 mProperty_bool (),
 mProperty_location () {
@@ -4530,23 +4054,6 @@ AC_GALGAS_root * GGS_lbigint::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS_lbigint (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lbigint GGS_lbigint::extractObject (const GGS_object & inObject,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
-  GGS_lbigint result ;
-  const GGS_lbigint * p = (const GGS_lbigint *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lbigint *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lbigint", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -4665,23 +4172,6 @@ AC_GALGAS_root * GGS_lchar::clonedObject (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lchar GGS_lchar::extractObject (const GGS_object & inObject,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) {
-  GGS_lchar result ;
-  const GGS_lchar * p = (const GGS_lchar *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lchar *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lchar", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lchar::GGS_lchar (void) :
 mProperty_char (),
 mProperty_location () {
@@ -4788,23 +4278,6 @@ AC_GALGAS_root * GGS_ldouble::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS_ldouble (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ldouble GGS_ldouble::extractObject (const GGS_object & inObject,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
-  GGS_ldouble result ;
-  const GGS_ldouble * p = (const GGS_ldouble *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_ldouble *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("ldouble", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -4923,23 +4396,6 @@ AC_GALGAS_root * GGS_lsint::clonedObject (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lsint GGS_lsint::extractObject (const GGS_object & inObject,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) {
-  GGS_lsint result ;
-  const GGS_lsint * p = (const GGS_lsint *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lsint *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lsint", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lsint::GGS_lsint (void) :
 mProperty_sint (),
 mProperty_location () {
@@ -5046,23 +4502,6 @@ AC_GALGAS_root * GGS_lsint_36__34_::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS_lsint_36__34_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lsint_36__34_ GGS_lsint_36__34_::extractObject (const GGS_object & inObject,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  GGS_lsint_36__34_ result ;
-  const GGS_lsint_36__34_ * p = (const GGS_lsint_36__34_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lsint_36__34_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lsint64", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -5181,23 +4620,6 @@ AC_GALGAS_root * GGS_luint_36__34_::clonedObject (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_luint_36__34_ GGS_luint_36__34_::extractObject (const GGS_object & inObject,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  GGS_luint_36__34_ result ;
-  const GGS_luint_36__34_ * p = (const GGS_luint_36__34_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_luint_36__34_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("luint64", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_luint_36__34_::GGS_luint_36__34_ (void) :
 mProperty_uint_36__34_ (),
 mProperty_location () {
@@ -5304,23 +4726,6 @@ AC_GALGAS_root * GGS__32_stringlist::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS__32_stringlist (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__32_stringlist GGS__32_stringlist::extractObject (const GGS_object & inObject,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-  GGS__32_stringlist result ;
-  const GGS__32_stringlist * p = (const GGS__32_stringlist *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS__32_stringlist *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("2stringlist", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -5938,23 +5343,6 @@ AC_GALGAS_root * GGS_range::clonedObject (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_range GGS_range::extractObject (const GGS_object & inObject,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) {
-  GGS_range result ;
-  const GGS_range * p = (const GGS_range *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_range *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("range", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_range::GGS_range (void) :
 mProperty_start (),
 mProperty_length () {
@@ -6061,23 +5449,6 @@ AC_GALGAS_root * GGS_bigint_3F_::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS_bigint_3F_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bigint_3F_ GGS_bigint_3F_::extractObject (const GGS_object & inObject,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
-  GGS_bigint_3F_ result ;
-  const GGS_bigint_3F_ * p = (const GGS_bigint_3F_ *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_bigint_3F_ *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("bigint?", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -6202,23 +5573,6 @@ AC_GALGAS_root * GGS_luintlist_2E_element::clonedObject (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_luintlist_2E_element GGS_luintlist_2E_element::extractObject (const GGS_object & inObject,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  GGS_luintlist_2E_element result ;
-  const GGS_luintlist_2E_element * p = (const GGS_luintlist_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_luintlist_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("luintlist.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_luintlist_2E_element::GGS_luintlist_2E_element (void) :
 mProperty_mValue () {
 }
@@ -6312,23 +5666,6 @@ AC_GALGAS_root * GGS_lstringlist_2E_element::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS_lstringlist_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstringlist_2E_element GGS_lstringlist_2E_element::extractObject (const GGS_object & inObject,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  GGS_lstringlist_2E_element result ;
-  const GGS_lstringlist_2E_element * p = (const GGS_lstringlist_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_lstringlist_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lstringlist.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }
@@ -6434,23 +5771,6 @@ AC_GALGAS_root * GGS_stringlist_2E_element::clonedObject (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist_2E_element GGS_stringlist_2E_element::extractObject (const GGS_object & inObject,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
-  GGS_stringlist_2E_element result ;
-  const GGS_stringlist_2E_element * p = (const GGS_stringlist_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_stringlist_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("stringlist.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_stringlist_2E_element::GGS_stringlist_2E_element (void) :
 mProperty_mValue () {
 }
@@ -6550,23 +5870,6 @@ AC_GALGAS_root * GGS_typelist_2E_element::clonedObject (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typelist_2E_element GGS_typelist_2E_element::extractObject (const GGS_object & inObject,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GGS_typelist_2E_element result ;
-  const GGS_typelist_2E_element * p = (const GGS_typelist_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_typelist_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("typelist.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_typelist_2E_element::GGS_typelist_2E_element (void) :
 mProperty_mValue () {
 }
@@ -6660,23 +5963,6 @@ AC_GALGAS_root * GGS__32_stringlist_2E_element::clonedObject (void) const {
   AC_GALGAS_root * result = nullptr ;
   if (isValid ()) {
     macroMyNew (result, GGS__32_stringlist_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__32_stringlist_2E_element GGS__32_stringlist_2E_element::extractObject (const GGS_object & inObject,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) {
-  GGS__32_stringlist_2E_element result ;
-  const GGS__32_stringlist_2E_element * p = (const GGS__32_stringlist_2E_element *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS__32_stringlist_2E_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("2stringlist.element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
   }
   return result ;
 }

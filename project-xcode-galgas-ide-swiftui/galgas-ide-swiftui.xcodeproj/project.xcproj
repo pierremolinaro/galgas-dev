@@ -359,14 +359,6 @@
             "galgas-debug/compile-sources",
           ],
         },
-        { "path": "all-declarations-26.h" },
-        {
-          "path": "all-declarations-26.cpp",
-          "target-membership": [
-            "galgas/compile-sources",
-            "galgas-debug/compile-sources",
-          ],
-        },
         { "path": "all-predefined-types.h" },
         {
           "path": "all-predefined-types.cpp",

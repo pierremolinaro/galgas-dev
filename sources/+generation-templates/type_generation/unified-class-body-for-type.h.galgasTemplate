@@ -17,11 +17,6 @@
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
-//--------------------------------- Object extraction
-  public: static GGS_%!TYPE_IDENTIFIER% extractObject (%?^%const GGS_object & inObject,
-               %!^%Compiler * inCompiler
-               %!^%COMMA_LOCATION_ARGS) ;
-
 %
 if [CLASS_FUNC_MAP count] > 0 then
   %//--------------------------------- GALGAS class functions\n%

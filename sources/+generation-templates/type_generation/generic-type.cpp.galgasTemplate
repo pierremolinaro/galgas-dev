@@ -21,20 +21,3 @@ AC_GALGAS_root * GGS_%!TYPE_IDENTIFIER%::clonedObject (void) const {
   return result ;
 }
 
-//--------------------------------------------------------------------------------------------------
-
-GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::extractObject (%?^%const GGS_object & inObject,
-               %!^%Compiler * inCompiler
-               %!^%COMMA_LOCATION_ARGS) {
-  GGS_%!TYPE_IDENTIFIER% result ;
-  const GGS_%!TYPE_IDENTIFIER% * p = (const GGS_%!TYPE_IDENTIFIER% *) inObject.embeddedObject () ;
-  if (nullptr != p) {
-    if (nullptr != dynamic_cast <const GGS_%!TYPE_IDENTIFIER% *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("%!TYPE_NAME%", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-

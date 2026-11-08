@@ -10,7 +10,6 @@ before {
   testsuite_struct ()
   testsuite_map ()
   testsuite_functions ()
-  testsuite_introspection ()
   testsuite_extension_readers ()
   testsuite_extension_methods ()
   testsuite_extension_setters ()
