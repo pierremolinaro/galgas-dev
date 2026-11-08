@@ -244,28 +244,28 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract8ForUnsignedRepresentation",
-      !returnedTypeName:"uintlist",
+      !returnedTypeName:"[uint]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract8ForSignedRepresentation",
-      !returnedTypeName:"uintlist",
+      !returnedTypeName:"[uint]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract32ForUnsignedRepresentation",
-      !returnedTypeName:"uintlist",
+      !returnedTypeName:"[uint]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract32ForSignedRepresentation",
-      !returnedTypeName:"uintlist",
+      !returnedTypeName:"[uint]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (

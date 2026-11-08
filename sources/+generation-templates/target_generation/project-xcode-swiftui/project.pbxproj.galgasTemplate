@@ -8,10 +8,10 @@
 
   /*------------------------------------------------------------------ PBXBuildFile */
 %
-for (mFileReference mFileName mBuildReference) in BUILD_FILE_LIST do
-%  %!mBuildReference% /* %!mFileName% */ = {\n%
+for (build) in BUILD_FILE_LIST do
+%  %!build.mBuildReference% /* %!build.mFileName% */ = {\n%
 %    isa = PBXBuildFile;\n%
-%    fileRef = %!mFileReference% ;\n%
+%    fileRef = %!build.mFileReference% ;\n%
 %    settings = {ATTRIBUTES = (); };\n%
 %  };\n\n%
 end
@@ -86,21 +86,21 @@ for (mValue0 mValue1) in FRAMEWORK_FILE_LIST do
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef) in TOOL_TARGET_LIST do
-%  %!mProductFileReference% = {\n%
+for (tool) in TOOL_TARGET_LIST do
+%  %!tool.mProductFileReference% = {\n%
 %    isa = PBXFileReference;\n%
 %    explicitFileType = "compiled.mach-o.executable";\n%
 %    includeInIndex = 0;\n%
-%    path = %![mProductFileName utf8RepresentationEscapingQuestionMark]%;\n%
+%    path = %![tool.mProductFileName utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = BUILT_PRODUCTS_DIR;\n%
 %  };\n\n%
 end
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef mDependentTargets mResourceBuildRef mResourceFileBuildRefs) in APP_TARGET_LIST do
-%  %!mProductFileReference% = {\n%
+for (app) in APP_TARGET_LIST do
+%  %!app.mProductFileReference% = {\n%
 %    isa = PBXFileReference;\n%
 %    explicitFileType = "compiled.mach-o.executable";\n%
 %    includeInIndex = 0;\n%
-%    path = %![mProductFileName utf8RepresentationEscapingQuestionMark]%;\n%
+%    path = %![app.mProductFileName utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = BUILT_PRODUCTS_DIR;\n%
 %  };\n\n%
 end
@@ -145,13 +145,13 @@ end
 %  /*------------------------------------------------------------------ PBXFrameworksBuildPhase */
 
 %
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef) in TOOL_TARGET_LIST do
-  if [mFrameworksFileRefList count] > 0 then
-    %  %!mFrameworkBuildPhaseRef% = {\n%
+for (tool) in TOOL_TARGET_LIST do
+  if [tool.mFrameworksFileRefList count] > 0 then
+    %  %!tool.mFrameworkBuildPhaseRef% = {\n%
     %    isa = PBXFrameworksBuildPhase;\n%
     %    buildActionMask = 2147483647;\n%
     %    files = (\n%
-    for (mValue) in mFrameworksFileRefList do
+    for (mValue) in tool.mFrameworksFileRefList do
       %      %!mValue%,\n%
     end
     %    );\n%
@@ -159,12 +159,12 @@ for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRe
     %  };\n\n%
   end
 end
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef mDependentTargets mResourceBuildRef mResourceFileBuildRefs) in APP_TARGET_LIST do
-  %  %!mFrameworkBuildPhaseRef% = {\n%
+for (app) in APP_TARGET_LIST do
+  %  %!app.mFrameworkBuildPhaseRef% = {\n%
   %    isa = PBXFrameworksBuildPhase;\n%
   %    buildActionMask = 2147483647;\n%
   %    files = (\n%
-  for (mValue) in mFrameworksFileRefList do
+  for (mValue) in app.mFrameworksFileRefList do
     %      %!mValue%,\n%
   end
   %    );\n%
@@ -173,16 +173,16 @@ for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRe
 end
 %  /*------------------------------------------------------------------ PBXGroup section */
 %
-for (mGroupReference mGroupName mGroupPath mChildrenRefs) in GROUPS do
-%  %!mGroupReference% /* %!mGroupName% */ = {\n%
+for (group) in GROUPS do
+%  %!group.mGroupReference% /* %!group.mGroupName% */ = {\n%
 %    isa = PBXGroup;\n%
 %    children = (\n%
-for (mValue) in mChildrenRefs do
+for (mValue) in group.mChildrenRefs do
   %      %!mValue%, \n%
 end
 %    );\n%
-%    name = %![mGroupName utf8RepresentationEscapingQuestionMark]%;\n%
-%    path = %![mGroupPath utf8RepresentationEscapingQuestionMark]%;\n%
+%    name = %![group.mGroupName utf8RepresentationEscapingQuestionMark]%;\n%
+%    path = %![group.mGroupPath utf8RepresentationEscapingQuestionMark]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n%
 end
@@ -200,51 +200,51 @@ end
 
   /*------------------------------------------------------------------ PBXNativeTarget */
 %
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef) in TOOL_TARGET_LIST do
-%  %!mTargetRef% /* %!mTargetName% */ = {
+for (tool) in TOOL_TARGET_LIST do
+%  %!tool.mTargetRef% /* %!tool.mTargetName% */ = {
     isa = PBXNativeTarget;
-    buildConfigurationList = %!mBuildConfigurationListRef% ;
+    buildConfigurationList = %!tool.mBuildConfigurationListRef% ;
     buildPhases = (
-      %!mBuildPhaseRef% ,
+      %!tool.mBuildPhaseRef% ,
 %
-  if [mFrameworksFileRefList count] > 0 then
-    %      %!mFrameworkBuildPhaseRef%, /* Frameworks */\n%
+  if [tool.mFrameworksFileRefList count] > 0 then
+    %      %!tool.mFrameworkBuildPhaseRef%, /* Frameworks */\n%
   end
 %    );
     buildRules = (
     );
     dependencies = (
     );
-    name = %![mTargetName utf8RepresentationEscapingQuestionMark]%;
+    name = %![tool.mTargetName utf8RepresentationEscapingQuestionMark]%;
     productInstallPath = "$(HOME)/bin";
-    productName = %![mTargetName utf8RepresentationEscapingQuestionMark]%;
-    productReference = %!mProductFileReference% ;
+    productName = %![tool.mTargetName utf8RepresentationEscapingQuestionMark]%;
+    productReference = %!tool.mProductFileReference% ;
     productType = "com.apple.product-type.tool";
   };
  
 %
 end
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef mDependentTargets mResourceBuildRef mResourceFileBuildRefs) in APP_TARGET_LIST do
-%  %!mTargetRef% /* %!mTargetName% */ = {
+for (app) in APP_TARGET_LIST do
+%  %!app.mTargetRef% /* %!app.mTargetName% */ = {
     isa = PBXNativeTarget;
-    buildConfigurationList = %!mBuildConfigurationListRef% ;
+    buildConfigurationList = %!app.mBuildConfigurationListRef% ;
     buildPhases = (
-      %!mResourceBuildRef% , /* Resources */
-      %!mFrameworkBuildPhaseRef% , /* Frameworks */
-      %!mBuildPhaseRef% , /* Sources */
+      %!app.mResourceBuildRef% , /* Resources */
+      %!app.mFrameworkBuildPhaseRef% , /* Frameworks */
+      %!app.mBuildPhaseRef% , /* Sources */
     );
     buildRules = (
     );
     dependencies = (
 %
-for (mValue0 mValue1) in mDependentTargets do
+for (mValue0 mValue1) in app.mDependentTargets do
   %      %!mValue0% ,\n%
 end
 %    );
-    name = %![mTargetName utf8RepresentationEscapingQuestionMark]%;
+    name = %![app.mTargetName utf8RepresentationEscapingQuestionMark]%;
     productInstallPath = "$(HOME)/bin";
-    productName = %![mTargetName utf8RepresentationEscapingQuestionMark]%;
-    productReference = %!mProductFileReference% ;
+    productName = %![app.mTargetName utf8RepresentationEscapingQuestionMark]%;
+    productReference = %!app.mProductFileReference% ;
     productType = "com.apple.product-type.application";
   };
 
@@ -261,11 +261,11 @@ end
    projectRoot = "";
    targets = (
 %
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef) in TOOL_TARGET_LIST do
-%    %!mTargetRef%, \n%
+for (tool) in TOOL_TARGET_LIST do
+%    %!tool.mTargetRef%, \n%
 end
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef mDependentTargets mResourceBuildRef mResourceFileBuildRefs) in APP_TARGET_LIST do
-%    %!mTargetRef%, \n%
+for (app) in APP_TARGET_LIST do
+%    %!app.mTargetRef%, \n%
 end
 %   );
   };
@@ -273,12 +273,12 @@ end
   /*------------------------------------------------------------------ PBXResourcesBuildPhase */
 
 %
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef mDependentTargets mResourceBuildRef mResourceFileBuildRefs) in APP_TARGET_LIST do
-%  %!mResourceBuildRef% /* Resources */ = {\n%
+for (app) in APP_TARGET_LIST do
+%  %!app.mResourceBuildRef% /* Resources */ = {\n%
 %    isa = PBXResourcesBuildPhase;\n%
 %    buildActionMask = 2147483647;\n%
 %    files = (\n%
-for (mValue) in mResourceFileBuildRefs do
+for (mValue) in app.mResourceFileBuildRefs do
 %      %!mValue%,\n%
 end
 %    );\n%
@@ -287,26 +287,26 @@ end
 end
 %  /*------------------------------------------------------------------ PBXSourcesBuildPhase */
 %
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef) in TOOL_TARGET_LIST do
-%    %!mBuildPhaseRef% /* Sources */ = {
+for (tool) in TOOL_TARGET_LIST do
+%    %!tool.mBuildPhaseRef% /* Sources */ = {
       isa = PBXSourcesBuildPhase;
       buildActionMask = 2147483647;
       files = (
 %
-for (mValue) in mBuildPhaseRefList do
+for (mValue) in tool.mBuildPhaseRefList do
 %        %!mValue%,\n%
 end
 %      );
       runOnlyForDeploymentPostprocessing = 0;
     };
 %end
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef mDependentTargets mResourceBuildRef mResourceFileBuildRefs) in APP_TARGET_LIST do
-%    %!mBuildPhaseRef% /* Sources */ = {
+for (app) in APP_TARGET_LIST do
+%    %!app.mBuildPhaseRef% /* Sources */ = {
       isa = PBXSourcesBuildPhase;
       buildActionMask = 2147483647;
       files = (
 %
-for (mValue) in mBuildPhaseRefList do
+for (mValue) in app.mBuildPhaseRefList do
 %        %!mValue%,\n%
 end
 %      );
@@ -318,8 +318,8 @@ end
   /*------------------------------------------------------------------ PBXTargetDependency */
  
 %
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef mDependentTargets mResourceBuildRef mResourceFileBuildRefs) in APP_TARGET_LIST do
-  for (mValue0 mValue1) in mDependentTargets do
+for (app) in APP_TARGET_LIST do
+  for (mValue0 mValue1) in app.mDependentTargets do
     %  %!mValue0% = {\n%
     %    isa = PBXTargetDependency;\n%
     %    target = %!mValue1%;\n%
@@ -349,28 +349,28 @@ end
   };
 
 %
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef) in TOOL_TARGET_LIST do
-%    %!mBuildConfigurationRef% /* Default */ = {\n%
+for (tool) in TOOL_TARGET_LIST do
+%    %!tool.mBuildConfigurationRef% /* Default */ = {\n%
 %      isa = XCBuildConfiguration;\n%
 %      buildSettings = {\n%
 %        ONLY_ACTIVE_ARCH = NO;\n%
-for (mValue) in mBuildConfigurationSettingList do
+for (mValue) in tool.mBuildConfigurationSettingList do
 %      %!mValue% ;\n%
 end
-%      PRODUCT_NAME = %![mProductFileName utf8RepresentationEscapingQuestionMark]% ;\n%
+%      PRODUCT_NAME = %![tool.mProductFileName utf8RepresentationEscapingQuestionMark]% ;\n%
 %    };\n%
 %    name = Default;\n%
 %  };\n\n%
 end
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef mDependentTargets mResourceBuildRef mResourceFileBuildRefs) in APP_TARGET_LIST do
-%    %!mBuildConfigurationRef% /* Default */ = {\n%
+for (app) in APP_TARGET_LIST do
+%    %!app.mBuildConfigurationRef% /* Default */ = {\n%
 %      isa = XCBuildConfiguration;\n%
 %      buildSettings = {\n%
-for (mValue) in mBuildConfigurationSettingList do
+for (mValue) in app.mBuildConfigurationSettingList do
 %      %!mValue% ;\n%
 end
 %      INFOPLIST_FILE = "Info.plist";\n%
-%      PRODUCT_NAME = %![mProductFileName utf8RepresentationEscapingQuestionMark]%;\n%
+%      PRODUCT_NAME = %![app.mProductFileName utf8RepresentationEscapingQuestionMark]%;\n%
 %      PRODUCT_BUNDLE_IDENTIFIER = "%!APPLICATION_BUNDLE_BASE%.%!PROJECT_NAME%";\n%
 %      SWIFT_ACTIVE_COMPILATION_CONDITIONS = "CONFIGURATION_IS_DEBUG $(inherited)";\n%
 %      SWIFT_VERSION = 6.0;\n%
@@ -390,11 +390,11 @@ end
     };
 
 %
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef) in TOOL_TARGET_LIST do
-%    %!mBuildConfigurationListRef% /* Default */ = {
+for (tool) in TOOL_TARGET_LIST do
+%    %!tool.mBuildConfigurationListRef% /* Default */ = {
       isa = XCConfigurationList;
       buildConfigurations = (
-        %!mBuildConfigurationRef% /* Default */,
+        %!tool.mBuildConfigurationRef% /* Default */,
       );
       defaultConfigurationIsVisible = 0;
       defaultConfigurationName = Default;
@@ -402,11 +402,11 @@ for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRe
 
 %
 end
-for (mTargetRef mTargetName mProductFileReference mProductFileName mBuildPhaseRefList mBuildPhaseRef mBuildConfigurationListRef mBuildConfigurationSettingList mBuildConfigurationRef mFrameworksFileRefList mFrameworkBuildPhaseRef mDependentTargets mResourceBuildRef mResourceFileBuildRefs) in APP_TARGET_LIST do
-%    %!mBuildConfigurationListRef% /* Default */ = {
+for (app) in APP_TARGET_LIST do
+%    %!app.mBuildConfigurationListRef% /* Default */ = {
       isa = XCConfigurationList;
       buildConfigurations = (
-        %!mBuildConfigurationRef% /* Default */,
+        %!app.mBuildConfigurationRef% /* Default */,
       );
       defaultConfigurationIsVisible = 0;
       defaultConfigurationName = Default;

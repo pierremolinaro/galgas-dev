@@ -109,8 +109,8 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 //    )
   //------------------------ Instance methods
     var @instanceMethodMap instanceMethodMap = @()
-    !?instanceMethodMap.insertKey
-      (@lstring ("first", @location.here),
+    !?instanceMethodMap.insertKey (
+      @lstring ("first", @location.here),
       @methodKind.definedAsMember,
       setterOutputFormalArgumentList,
       @location.here,
@@ -223,6 +223,9 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !acceptEquatable: true,
       !acceptComparable: false
     )
+  //--- Enumeration descriptor
+    var @enumerationDescriptorList enumerationDescriptor = @()
+    enumerationDescriptor ++= @(elementType, "entry")
   //--- Enter in type map
     let typeDefinition = @unifiedTypeDefinition (
       !typeName: self.arrayTypeName,
@@ -243,7 +246,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !classMethodMap: @(),
       !unwrappedType: .null,
       !readSubscriptMap: readSubscriptMap,
-      !enumerationDescriptorList: @(),
+      !enumerationDescriptorList: enumerationDescriptor,
       !features: features,
       !addAssignOperatorArguments: @(),
       !generateHeaderInSeparateFile: false,

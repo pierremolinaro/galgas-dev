@@ -900,7 +900,7 @@ filewrapper syntaxFileGenerationTemplate in "+generation-templates/syntax_genera
     ?@string LEXIQUE_NAME,
     ?@nonterminalMap NONTERMINAL_MAP,
     ?@ruleDeclarationList RULE_DECLARATION_LIST,
-    ?@uintlist SELECT_METHOD_LIST,
+    ?[@uint] SELECT_METHOD_LIST,
     ?@bool HAS_INDEXING,
     ?@bool HAS_TRANSLATE_FEATURE
   )

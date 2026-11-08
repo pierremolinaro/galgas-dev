@@ -22,37 +22,11 @@
 final class @warningInstructionAST : @semanticInstructionAST {
   public let @semanticExpressionAST mLocationExpression
   public let @semanticExpressionAST mMessageExpression
-  public let @fixitListAST mFixitListAST
+  public let [@fixitElementAST] mFixitListAST
 }
 
 //--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//--------------------------------------------------------------------------------------------------
-
-//syntax extension galgas3InstructionsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                    !@semanticInstructionAST outInstruction) {
-//    $warning$
-//    let instructionLocation = @location.here
-//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mReceiverExpression)
-//    $:$
-//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mWarningExpression)
-//    <issue_fixit> (!?ioDeclarations, ?let @fixitListAST fixitListAST)
-//    outInstruction = @warningInstructionAST (
-//      !instructionLocation,
-//      mReceiverExpression,
-//      mWarningExpression,
-//      fixitListAST
-//    )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
 //--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
@@ -66,7 +40,7 @@ syntax extension galgas4InstructionsSyntax {
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST mReceiverExpression)
     $:$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST mWarningExpression)
-    <issue_fixit> (!?ioDeclarations, ?let @fixitListAST fixitListAST)
+    <issue_fixit> (!?ioDeclarations, ?let [@fixitElementAST] fixitListAST)
     outInstruction = @warningInstructionAST (
       instructionLocation,
       mReceiverExpression,
@@ -133,7 +107,7 @@ final class @warningInstructionForGeneration : @semanticInstructionForGeneration
   public let @location mInstructionLocation
   public let @semanticExpressionForGeneration mReceiverExpression
   public let @semanticExpressionForGeneration mWarningExpression
-  public let @fixitListForGeneration mFixitListForGeneration
+  public let [@fixitElementForGeneration] mFixitListForGeneration
 }
 
 //·································································································

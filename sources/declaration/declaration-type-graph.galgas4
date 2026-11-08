@@ -54,7 +54,7 @@ syntax extension galgas4DeclarationsSyntax {
       )
     end
     ${$
-    var graphInsertModifierList = @graphInsertModifierList ()
+    var graphInsertModifierList = [@graphInsertModifier] ()
     repeat
     while
       $#insertSetter$
@@ -81,9 +81,9 @@ syntax extension galgas4DeclarationsSyntax {
 //   AST
 //--------------------------------------------------------------------------------------------------
 
-list @graphInsertModifierList {
-  private let @lstring mInsertModifierName
-  private let @lstring mInsertErrorMessage
+struct @graphInsertModifier {
+  let @lstring mInsertModifierName
+  let @lstring mInsertErrorMessage
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -92,7 +92,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   private let @lstring mGraphTypeName
   private let @lstring mAssociatedArrayTypeName
   private let @lstring mAssociatedElementTypeName
-  private let @graphInsertModifierList mInsertModifierList
+  private let [@graphInsertModifier] mInsertModifierList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -548,7 +548,7 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mAssociatedElementTypeEntry
   private let @unifiedTypeMapEntry mLStringArrayType
   private let @unifiedTypeMapEntry mStringArrayType
-  private let @graphInsertModifierList mInsertModifierList
+  private let [@graphInsertModifier] mInsertModifierList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -627,7 +627,7 @@ private filewrapper graphGenerationTemplate in "../+generation-templates/type_ge
     ?@string TYPE_IDENTIFIER,
     ?@unifiedTypeMapEntry ASSOCIATED_ARRAY_TYPE,
     ?@unifiedTypeMapEntry ASSOCIATED_ELEMENT_TYPE,
-    ?@graphInsertModifierList INSERT_MODIFIER_LIST,
+    ?[@graphInsertModifier] INSERT_MODIFIER_LIST,
     ?@unifiedTypeMapEntry LSTRING_ARRAY_TYPE,
     ?@unifiedTypeMapEntry STRING_ARRAY_TYPE
 

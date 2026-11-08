@@ -19,65 +19,6 @@
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3DeclarationsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    $sortedlist$
-//    $@type$ (?let sortedListTypeName) indexing (sortedListDefinition, structDefinition ".element")
-//    let @bool isEquatable
-//    select
-//      isEquatable = false
-//    or
-//      $%equatable$
-//      isEquatable = true
-//    end
-//    ${$
-//    var @propertyInCollectionListAST attributeList = @()
-//    repeat
-//    while
-//      <property_declaration_ggs3> (!?ioDeclarations, !?attributeList)
-//    end
-//    $}$
-//    ${$
-//    var @sortedListSortDescriptorListAST sortDescriptorList = @()
-//    repeat
-//      <sortedlist_sort_descriptor> (!? sortDescriptorList)
-//    while
-//      $,$
-//    end
-//    $}$
-//    ioDeclarations.mDeclarationList ++= @(!@sortedListDeclarationAST (
-//      !isPredefined: false,
-//      sortedListTypeName,
-//      attributeList,
-//      sortDescriptorList,
-//      !equatable: isEquatable
-//    ))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <sortedlist_sort_descriptor> (?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList ) {
-//    $identifier$ (?let @lstring mSortedAttributeName)
-//    let @bool mAscending
-//    select
-//      $<$
-//      mAscending = true
-//    or
-//      $>$
-//      mAscending = false
-//    end
-//    ioSortedListSortDescriptorList ++= @(!mSortedAttributeName, !mAscending)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -100,7 +41,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $}$
     ${$
-    var @sortedListSortDescriptorListAST sortDescriptorList = @()
+    var [@sortedListSortDescriptorAST] sortDescriptorList = @()
     repeat
       <sortedlist_sort_descriptor> (!? sortDescriptorList)
     while
@@ -118,7 +59,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <sortedlist_sort_descriptor> (?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList ) {
+  rule <sortedlist_sort_descriptor> (?![@sortedListSortDescriptorAST] ioSortedListSortDescriptorList ) {
     $identifier$ (?let @lstring mSortedAttributeName)
     let @bool mAscending
     select
@@ -138,7 +79,7 @@ syntax extension galgas4DeclarationsSyntax {
 //   AST
 //--------------------------------------------------------------------------------------------------
 
-list @sortedListSortDescriptorListAST {
+struct @sortedListSortDescriptorAST {
   public let @lstring mSortedAttributeName
   public let @bool mAscending
 }
@@ -148,7 +89,7 @@ list @sortedListSortDescriptorListAST {
 final class @sortedListDeclarationAST : @semanticDeclarationAST {
   private let @lstring mSortedListTypeName
   private let @propertyInCollectionListAST mPropertyList
-  private let @sortedListSortDescriptorListAST mSortDescriptorList
+  private let [@sortedListSortDescriptorAST] mSortDescriptorList
   private let @bool equatable #initArgLabel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -406,7 +347,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     end
   //--- Sort descriptor
     var @stringset attributesUsedForSorting = @()
-    var @sortDescriptorListForGeneration sortDescriptorList = @()
+    var [@sortDescriptorForGeneration] sortDescriptorList = @()
     for sortDescriptor in self.mSortDescriptorList do
       attributeMap.searchKey (sortDescriptor.mSortedAttributeName, ?let @unifiedTypeMapEntry type)
       sortDescriptorList ++= @(type, sortDescriptor.mSortedAttributeName.string, sortDescriptor.mAscending)
@@ -436,7 +377,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
 //   CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-list @sortDescriptorListForGeneration {
+struct @sortDescriptorForGeneration {
   public let @unifiedTypeMapEntry mAttributeTypeIndex
   public let @string mAttributeName
   public let @bool mAscendingOrder
@@ -447,7 +388,7 @@ list @sortDescriptorListForGeneration {
 final class @sortedListTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mListElementTypeIndex
   private let @typedPropertyList mTypedAttributeList
-  private let @sortDescriptorListForGeneration mSortDescriptorList
+  private let [@sortDescriptorForGeneration] mSortDescriptorList
 }
 
 //································································································
@@ -522,7 +463,7 @@ filewrapper sortedListGenerationTemplate in "../+generation-templates/type_gener
   template sortedlistTypeSpecificImplementation : "GALGAS_sortedlist.cpp.galgasTemplate" ( 
     ?@string TYPE_IDENTIFIER,
     ?@typedPropertyList ATTRIBUTE_LIST,
-    ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST,
+    ?[@sortDescriptorForGeneration] SORT_ATTRIBUTE_LIST,
     ?@string ELEMENT_TYPE_IDENTIFIER,
     ?@bool GENERATE_COMPARISON
   ) 

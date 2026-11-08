@@ -21,6 +21,57 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
+
+proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
+  ioDeclarations.mDeclarationList ++= @applicationPredefinedTypeAST (!isPredefined: true, "application")
+  ioDeclarations.mDeclarationList ++= @bigintPredefinedTypeAST (!isPredefined: true, "bigint")
+  ioDeclarations.mDeclarationList ++= @binarysetPredefinedTypeAST (!isPredefined: true, "binaryset")
+  ioDeclarations.mDeclarationList ++= @boolPredefinedTypeAST (!isPredefined: true, "bool")
+  ioDeclarations.mDeclarationList ++= @charPredefinedTypeAST (!isPredefined: true, "char")
+  ioDeclarations.mDeclarationList ++= @dataPredefinedTypeAST (!isPredefined: true, "data")
+  ioDeclarations.mDeclarationList ++= @doublePredefinedTypeAST (!isPredefined: true, "double")
+  ioDeclarations.mDeclarationList ++= @filewrapperPredefinedTypeAST (!isPredefined: true, "filewrapper")
+  ioDeclarations.mDeclarationList ++= @functionPredefinedTypeAST (!isPredefined: true, "function")
+  ioDeclarations.mDeclarationList ++= @locationPredefinedTypeAST (!isPredefined: true, "location")
+  ioDeclarations.mDeclarationList ++= @objectPredefinedTypeAST (!isPredefined: true, "object")
+  ioDeclarations.mDeclarationList ++= @sintPredefinedTypeAST (!isPredefined: true, "sint")
+  ioDeclarations.mDeclarationList ++= @sint64PredefinedTypeAST (!isPredefined: true, "sint64")
+  ioDeclarations.mDeclarationList ++= @stringPredefinedTypeAST (!isPredefined: true, "string")
+  appendPredefinedArrayTypeAST (!?ioDeclarations, "string")
+  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "string")
+  appendPredefinedArrayTypeAST (!?ioDeclarations, "lstring")
+  ioDeclarations.mDeclarationList ++= @uintPredefinedTypeAST (!isPredefined: true, "uint")
+  appendPredefinedArrayTypeAST (!?ioDeclarations, "uint")
+  ioDeclarations.mDeclarationList ++= @stringsetPredefinedTypeAST (!isPredefined: true, "stringset")
+  ioDeclarations.mDeclarationList ++= @timerPredefinedTypeAST (!isPredefined: true, "timer")
+  ioDeclarations.mDeclarationList ++= @typePredefinedTypeAST (!isPredefined: true, "type")
+  ioDeclarations.mDeclarationList ++= @uint64PredefinedTypeAST (!isPredefined: true, "uint64")
+  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "function")
+  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "luint")
+  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "lstring")
+  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "object")
+  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "string")
+  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "type")
+  // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "uint")
+  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "uint64")
+  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "bigint")
+  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "lbigint")
+
+  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "bool")
+  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "bigint")
+  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "char")
+  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "double")
+  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "sint")
+  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "sint64")
+  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "uint")
+  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "uint64")
+
+  appendPredefined2StringListTypeAST (!?ioDeclarations.mDeclarationList)
+
+  appendStructASTForRangeType (!?ioDeclarations.mDeclarationList)
+}
+
+//--------------------------------------------------------------------------------------------------
 //  A S T   C L A S S    F O R    P R E D E F I N E D   T Y P E S
 //--------------------------------------------------------------------------------------------------
 
@@ -267,7 +318,6 @@ private proc appendPredefinedListTypeAST (?![@semanticDeclarationAST] ioDeclarat
     !usefullList: true,
     !equatable: true
   )
-//  insertInUsefulnessEntities (!?ioUsefulnessRootEntities, inElementTypeName + "list")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -283,8 +333,6 @@ private proc appendPredefinedArrayTypeAST (?!@galgasDeclarationAST ioDeclaration
     !isUsefull: false,
     !equatable: false
   )
-//  insertInUsefulnessEntities (!?ioUsefulnessRootEntities, inElementTypeName + "list")
-//  insertInUsefulnessEntities (!?ioUsefulnessRootEntities, arrayTypeName)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -315,7 +363,6 @@ private proc appendPredefined2StringListTypeAST (?![@semanticDeclarationAST] ioD
     !usefullList: true,
     !equatable: true
   )
-//  insertInUsefulnessEntities (!?ioUsefulnessRootEntities, "2stringlist")
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -348,9 +395,6 @@ private proc appendStructASTForTypeWithLocation (?![@semanticDeclarationAST] ioD
     !isUsefullStruct: true
   )
   ioDeclarationListASTs ++= type
-//--- Mark it as usefull
-//  let typeUsefulnessName = typeNameForUsefulEntitiesGraph (type.structTypeName)
-//  ioUsefulnessRootEntities ++= typeUsefulnessName
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -381,143 +425,6 @@ private proc appendStructASTForRangeType (?![@semanticDeclarationAST] ioDeclarat
     !comparison: .equatable,
     !isUsefullStruct: true
   )
-}
-
-//--------------------------------------------------------------------------------------------------
-
-//private proc insertInUsefulnessEntities (?![@lstring] ioUsefulnessRootEntities,
-//                                         let @string inTypeName) {
-//  let typeUsefulnessName = typeNameForUsefulEntitiesGraph (@(inTypeName, .nowhere))
-//  ioUsefulnessRootEntities ++= typeUsefulnessName
-//}
-
-//--------------------------------------------------------------------------------------------------
-
-private proc insertPredefinedType (?!@galgasDeclarationAST ioDeclarations,
-                                   let @predefinedTypeAST inPredefinedTypeAST) {
-//--- Declare type
-  ioDeclarations.mDeclarationList ++= inPredefinedTypeAST
-//  let typeUsefulnessName = typeNameForUsefulEntitiesGraph (inPredefinedTypeAST.mPredefinedTypeName.nowhere)
-//--- Mark it as usefull
-//  ioUsefulnessRootEntities ++= typeUsefulnessName
-//--- Mark its initializers as usefull
-//  for initializer in inPredefinedTypeAST.initializers do
-//    let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
-//      inPredefinedTypeAST.mPredefinedTypeName.nowhere,
-//      initializer.initializerSignature
-//    )
-//  end
-}
-
-//--------------------------------------------------------------------------------------------------
-
-proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
-  insertPredefinedType (
-    !?ioDeclarations,
-    @applicationPredefinedTypeAST (!isPredefined: true, "application")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @bigintPredefinedTypeAST (!isPredefined: true, "bigint")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @binarysetPredefinedTypeAST (!isPredefined: true, "binaryset")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @boolPredefinedTypeAST (!isPredefined: true, "bool")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @charPredefinedTypeAST (!isPredefined: true, "char")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @dataPredefinedTypeAST (!isPredefined: true, "data")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @doublePredefinedTypeAST (!isPredefined: true, "double")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @filewrapperPredefinedTypeAST (!isPredefined: true, "filewrapper")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @functionPredefinedTypeAST (!isPredefined: true, "function")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @locationPredefinedTypeAST (!isPredefined: true, "location")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @objectPredefinedTypeAST (!isPredefined: true, "object")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @sintPredefinedTypeAST (!isPredefined: true, "sint")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @sint64PredefinedTypeAST (!isPredefined: true, "sint64")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @stringPredefinedTypeAST (!isPredefined: true, "string")
-  )
-
-  appendPredefinedArrayTypeAST (!?ioDeclarations, "string")
-  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "string")
-  appendPredefinedArrayTypeAST (!?ioDeclarations, "lstring")
-
-  insertPredefinedType (
-    !?ioDeclarations,
-    @stringsetPredefinedTypeAST (!isPredefined: true, "stringset")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @timerPredefinedTypeAST (!isPredefined: true, "timer")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @typePredefinedTypeAST (!isPredefined: true, "type")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @uintPredefinedTypeAST (!isPredefined: true, "uint")
-  )
-  insertPredefinedType (
-    !?ioDeclarations,
-    @uint64PredefinedTypeAST (!isPredefined: true, "uint64")
-  )
-
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "function")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "luint")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "lstring")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "object")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "string")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "type")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "uint")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "uint64")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "bigint")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "lbigint")
-
-
-  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "bool")
-  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "bigint")
-  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "char")
-  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "double")
-  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "sint")
-  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "sint64")
-  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "uint")
-  appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "uint64")
-
-  appendPredefined2StringListTypeAST (!?ioDeclarations.mDeclarationList)
-
-  appendStructASTForRangeType (!?ioDeclarations.mDeclarationList)
 }
 
 //--------------------------------------------------------------------------------------------------

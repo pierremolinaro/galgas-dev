@@ -35,12 +35,12 @@ syntax extension galgas4DeclarationsSyntax {
     end
     ${$
     var propertyList = @propertyInCollectionListAST ()
-    var mInsertSetterList = @insertSetterListAST ()
-    var @mapAccessorListAST mSearchMethodList = @()
-    var @mapAccessorListAST mRemoveSetterList = @()
-    var @mapAccessorListAST replaceMethodList = @()
-    var @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST = @()
-    var @mapAccessorListAST searchSubscriptListAST = @()
+    var mInsertSetterList = [@insertSetterAST] ()
+    var [@mapAccessorAST] mSearchMethodList = @()
+    var [@mapAccessorAST] mRemoveSetterList = @()
+    var [@mapAccessorAST] replaceMethodList = @()
+    var [@location] insertOrReplaceDeclarationListAST = @()
+    var [@mapAccessorAST] searchSubscriptListAST = @()
     repeat
     while
       <property_declaration> (!?ioDeclarations, !? propertyList)
@@ -76,7 +76,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <search_method_declaration> (?!@mapAccessorListAST ioMapSearchMethodListAST ) {
+  rule <search_method_declaration> (?![@mapAccessorAST] ioMapSearchMethodListAST ) {
     $#searchMethod$
     $identifier$ (?let @lstring methodName)
     $#errorMessage$
@@ -86,7 +86,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <search_subscript_declaration> (?!@mapAccessorListAST ioMapSearchSubscriptListAST ) {
+  rule <search_subscript_declaration> (?![@mapAccessorAST] ioMapSearchSubscriptListAST ) {
     $#searchSubscript$
     $identifier$ (?let @lstring methodName)
     $#errorMessage$
@@ -96,7 +96,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <remove_setter_declaration> (?!@mapAccessorListAST ioMapRemoveMethodListAST ) {
+  rule <remove_setter_declaration> (?![@mapAccessorAST] ioMapRemoveMethodListAST ) {
     $#removeSetter$
     $identifier$ (?let @lstring mMethodName)
     $#errorMessage$
@@ -106,7 +106,7 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <replace_setter_declaration> (?!@mapAccessorListAST ioMapReplaceMethodListAST ) {
+  rule <replace_setter_declaration> (?![@mapAccessorAST] ioMapReplaceMethodListAST ) {
     $#replaceSetter$
     $identifier$ (?let @lstring mMethodName)
     $#errorMessage$
@@ -116,14 +116,14 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <insert_or_replace_declaration> (?!@insertOrReplaceDeclarationListAST ioInsertOrReplaceDeclarationListAST ) {
+  rule <insert_or_replace_declaration> (?![@location] ioInsertOrReplaceDeclarationListAST ) {
     $#insertOrReplaceSetter$
-    ioInsertOrReplaceDeclarationListAST ++= @(@location.here)
+    ioInsertOrReplaceDeclarationListAST ++= .here
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <map_insert_setter_declaration> (?!@insertSetterListAST ioMapMethodList ) {
+  rule <map_insert_setter_declaration> (?![@insertSetterAST] ioMapMethodList ) {
     $#insertSetter$
     $identifier$ (?let @lstring mMethodName)
     $#errorMessage$
@@ -149,7 +149,7 @@ syntax extension galgas4DeclarationsSyntax {
 //   AST
 //--------------------------------------------------------------------------------------------------
 
-list @insertSetterListAST {
+struct @insertSetterAST {
   public let @lstring mInsertMethodName
   public let @lstring mErrorMessage
   public let @lstring mShadowErrorMessage
@@ -157,15 +157,9 @@ list @insertSetterListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @mapAccessorListAST {
+struct @mapAccessorAST {
   public let @lstring mName
   public let @lstring mErrorMessage
-}
-
-//--------------------------------------------------------------------------------------------------
-
-list @insertOrReplaceDeclarationListAST {
-  public let @location mInsertOrReplaceDeclarationLocation
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -185,12 +179,12 @@ map @searchMethodMap {
 final class @mapDeclarationAST : @semanticDeclarationAST {
   private let @lstring mMapTypeName
   private let @propertyInCollectionListAST mPropertyList
-  private let @insertSetterListAST mInsertSetterList
-  private let @mapAccessorListAST mSearchMethodList
-  private let @mapAccessorListAST mSearchSubscriptList
-  private let @mapAccessorListAST mRemoveSetterList
-  private let @mapAccessorListAST mReplaceSetterList
-  private let @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST
+  private let [@insertSetterAST] mInsertSetterList
+  private let [@mapAccessorAST] mSearchMethodList
+  private let [@mapAccessorAST] mSearchSubscriptList
+  private let [@mapAccessorAST] mRemoveSetterList
+  private let [@mapAccessorAST] mReplaceSetterList
+  private let [@location] mInsertOrReplaceDeclarationListAST
   private let @bool equatable #initArgLabel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -729,11 +723,11 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mElementTypeEntry
   private let @lstring mMapTypeName
   private let @typedPropertyList mTypedAttributeList
-  private let @insertSetterListAST mInsertSetterList
-  private let @mapAccessorListAST mSearchMethodList
-  private let @mapAccessorListAST mSearchSubscriptList
-  private let @mapAccessorListAST mRemoveSetterList
-  private let @mapAccessorListAST mReplaceSetterList
+  private let [@insertSetterAST] mInsertSetterList
+  private let [@mapAccessorAST] mSearchMethodList
+  private let [@mapAccessorAST] mSearchSubscriptList
+  private let [@mapAccessorAST] mRemoveSetterList
+  private let [@mapAccessorAST] mReplaceSetterList
   private let @bool mHasInsertOrReplaceModifier
   private let @unifiedTypeMapEntry mOptionalElementTypeEntry
 
@@ -810,7 +804,7 @@ private filewrapper mapGenerationTemplate in "../+generation-templates/type_gene
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?@typedPropertyList CURRENT_PROPERTY_LIST,
-    ?@mapAccessorListAST SEARCH_METHOD_LIST,
+    ?[@mapAccessorAST] SEARCH_METHOD_LIST,
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST,
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE,
     ?@string ELEMENT_TYPE_IDENTIFIER,
@@ -821,12 +815,12 @@ private filewrapper mapGenerationTemplate in "../+generation-templates/type_gene
     ?@string TYPE_IDENTIFIER,
     ?@typedPropertyList PROPERTY_LIST,
     ?@string ELEMENT_TYPE_IDENTIFIER,
-    ?insertSetters: @insertSetterListAST INSERT_SETTER_LIST,
+    ?insertSetters: [@insertSetterAST] INSERT_SETTER_LIST,
     ?optionalElementTypeIdentifier: @string OPTIONAL_ELEMENT_TYPE_IDENTIFIER,
-    ?searchMethods: @mapAccessorListAST SEARCH_METHOD_LIST,
-    ?searchSubscripts: @mapAccessorListAST SEARCH_SUBSCRIPT_LIST,
-    ?removeSetters: @mapAccessorListAST REMOVE_SETTER_LIST,
-    ?replaceSetters: @mapAccessorListAST REPLACE_SETTER_LIST,
+    ?searchMethods: [@mapAccessorAST] SEARCH_METHOD_LIST,
+    ?searchSubscripts: [@mapAccessorAST] SEARCH_SUBSCRIPT_LIST,
+    ?removeSetters: [@mapAccessorAST] REMOVE_SETTER_LIST,
+    ?replaceSetters: [@mapAccessorAST] REPLACE_SETTER_LIST,
     ?@bool HAS_INSERT_OR_REPLACE,
     ?@bool GENERATE_COMPARISON
   )

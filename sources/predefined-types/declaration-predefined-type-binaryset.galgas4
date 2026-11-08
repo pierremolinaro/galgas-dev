@@ -286,7 +286,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !getterName:"print",
       "stringlist", "inVariableList",
-      "uintlist", "inBDDCount",
+      "[uint]", "inBDDCount",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -309,7 +309,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"transformedBy",
-      "uintlist", "inTransformationArray",
+      "[uint]", "inTransformationArray",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:false
     )
@@ -447,7 +447,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"transposedBy", "uintlist", "inTransposeVector",
+      !getterName:"transposedBy", "[uint]", "inTransposeVector",
       !returnedTypeName:"binaryset",
       !hasCompilerArgument:true
     )

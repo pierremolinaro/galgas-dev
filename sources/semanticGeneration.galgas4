@@ -141,11 +141,11 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
   override proc appendDeclaration1 (?!@stringset ioInclusionSet,
                                      !@string outHeader ) {
     ioInclusionSet ++= "lexique-" + self.mLexiqueName.fileNameRepresentation
-    var selectMethodList = @uintlist ()
+    var selectMethodList = [@uint] ()
     var @uint idx = 0
     loop (self.mSelectMethodCount + 1)
     while idx < self.mSelectMethodCount do
-      selectMethodList ++= @(idx)
+      selectMethodList ++= idx
       idx += 1
     end
     outHeader = filewrapper [syntaxFileGenerationTemplate.syntaxAnalyserClassDeclaration :

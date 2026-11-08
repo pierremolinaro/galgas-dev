@@ -19,7 +19,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-list @forInstructionEnumeratedObjectElementListAST {
+struct @forInstructionEnumeratedObjectElementAST {
   public let @lstring mOptionalTypeName // Empty string if joker
   public let @bool mDeclaredAsUnused // true if joker
   public let @lstring mOptionalConstantName  // Empty string if joker
@@ -42,22 +42,22 @@ final class @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST 
 //································································································*
 
 final class @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
-  private let @forInstructionEnumeratedObjectElementListAST mElementList
+  private let [@forInstructionEnumeratedObjectElementAST] mElementList
   private let @semanticExpressionAST mEnumeratedExpression
   private let @location mEndOfEnumerationExpression
 }
 
 //································································································*
 
-list @forInstructionEnumeratedObjectListAST {
-  private let @bool mAscending
-  private let @abstractEnumeratedCollectionAST mEnumeratedCollection
+struct @forInstructionEnumeratedObjectAST {
+  let @bool mAscending
+  let @abstractEnumeratedCollectionAST mEnumeratedCollection
 }
 
 //································································································*
 
 final class @forInstructionAST : @semanticInstructionAST {
-  private let @forInstructionEnumeratedObjectListAST mEnumeratedObjectList
+  private let [@forInstructionEnumeratedObjectAST] mEnumeratedObjectList
   private let @lstring mIndexVariableName
   private let @semanticExpressionAST mWhileExpression
   private let @location mEndOf_while_expression
@@ -81,7 +81,7 @@ syntax extension galgas4InstructionsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_element> (?!@galgasDeclarationAST _ioDeclarations,
-                                  ?!@forInstructionEnumeratedObjectElementListAST ioElementList) {
+                                  ?![@forInstructionEnumeratedObjectElementAST] ioElementList) {
     $literalInt$ (?let count)
     $*$
     var n = count.bigint.uint
@@ -97,7 +97,7 @@ syntax extension galgas4InstructionsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <for_instruction_element> (?!@galgasDeclarationAST ioDeclarations,
-                                  ?!@forInstructionEnumeratedObjectElementListAST ioElementList) {
+                                  ?![@forInstructionEnumeratedObjectElementAST] ioElementList) {
     let @lstring typeName
     select
       typeName = "".nowhere
@@ -119,7 +119,7 @@ syntax extension galgas4InstructionsSyntax {
   rule <for_instruction_enumerated_object> (?!@galgasDeclarationAST ioDeclarations,
                                             !@abstractEnumeratedCollectionAST outEnumeratedObject) {
     $($
-    var elementList = @forInstructionEnumeratedObjectElementListAST ()
+    var elementList = [@forInstructionEnumeratedObjectElementAST] ()
     repeat
       <for_instruction_element> (!?ioDeclarations, !?elementList)
     while
@@ -169,7 +169,7 @@ syntax extension galgas4InstructionsSyntax {
                                !@semanticInstructionAST outInstruction) {
     $for$
     let instructionLocation = @location.here
-    var mEnumeratedObjectList = @forInstructionEnumeratedObjectListAST ()
+    var mEnumeratedObjectList = [@forInstructionEnumeratedObjectAST] ()
     repeat
       let @bool ascending
       select
@@ -470,7 +470,7 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
   !?ioVariableMap.closeOverride (self.mEndOf_after_branch)
 //--- Analyze enumerated objects
   var @localConstantList localConstantListForDoBranch = @()
-  var @forInstructionEnumeratedObjectListForGeneration enumerationList = @()
+  var [@forInstructionEnumeratedObjectForGeneration] enumerationList = @()
   for object in self.mEnumeratedObjectList do
     object.mEnumeratedCollection.analyzeEnumeration (
       inUsefulnessCallerEntityName,
@@ -566,7 +566,7 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
 //! GENERATION TYPES
 //--------------------------------------------------------------------------------------------------
 
-list @forInstructionEnumeratedObjectListForGeneration {
+struct @forInstructionEnumeratedObjectForGeneration {
   public let @string mEnumerationOrder
   public let @semanticExpressionForGeneration mEnumeratedExpression
   public let @string mEnumeratorCppName
@@ -576,7 +576,7 @@ list @forInstructionEnumeratedObjectListForGeneration {
 
 final class @forInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
-  private let @forInstructionEnumeratedObjectListForGeneration mEnumeratedObjectList
+  private let [@forInstructionEnumeratedObjectForGeneration] mEnumeratedObjectList
   private let @string mIndexVariableCppName  // Empty string if no index
   private let @semanticExpressionForGeneration mWhileExpression
   private let @semanticInstructionListForGeneration mBeforeInstructionList

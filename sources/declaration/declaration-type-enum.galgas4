@@ -19,84 +19,6 @@
 //!  SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3DeclarationsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    $enum$
-//    $@type$ (?let enumTypeName) indexing (enumDefinition)
-//    var @structComparison comparison = .none
-//    repeat
-//    while
-//      $%comparable$
-//      switch comparison
-//      case none :
-//        comparison = .comparable
-//      case comparable :
-//        error (.here : "duplicated attribute")
-//      case equatable :
-//        error (.here : "%comparable and %equatable are mutually exclusive")
-//      end
-//    while
-//      $%equatable$
-//      switch comparison
-//      case none :
-//        comparison = .equatable
-//      case equatable :
-//        error (.here : "duplicated attribute")
-//      case comparable :
-//        error (.here : "%comparable and %equatable are mutually exclusive")
-//      end
-//    end
-//    ${$
-//    var @enumConstantList constantList = @()
-//    repeat
-//    while
-//      $case$
-//      $identifier$ (?let constantName)
-//      var [@associatedValue] associatedValueTypeList = @()
-//      select
-//      or
-//        $($
-//        repeat
-//          let @bool weakQualifier
-//          select
-//            weakQualifier = false
-//          or
-//            $weak$
-//            weakQualifier = true
-//          end
-//          <type_definition_ggs3> (!?ioDeclarations, ?let associatedValueType)
-//          $identifier$ (?let associatedValueName)
-//          !?associatedValueTypeList.append (!@(weakQualifier, associatedValueType, associatedValueName))
-//        while
-//          $,$
-//        end
-//        $)$
-//      end
-//      constantList ++= @(!constantName, !associatedValueTypeList)
-//    while
-//      <method_declaration_ggs3> (!enumTypeName, !?ioDeclarations)
-//    end
-//    $}$
-//    if constantList.count == 0 then
-//      error (enumTypeName : "an enumerated type must define at least one case constant")
-//    end
-//    ioDeclarations.mDeclarationList ++= @(!@enumDeclarationAST (
-//      !isPredefined: false,
-//      enumTypeName,
-//      constantList,
-//      !comparison: comparison
-//    ))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -128,7 +50,7 @@ syntax extension galgas4DeclarationsSyntax {
       end
     end
     ${$
-    var @enumConstantList constantList = @()
+    var [@enumConstant] constantList = @()
     repeat
     while
       $case$
@@ -185,7 +107,7 @@ struct @associatedValue {
 
 //--------------------------------------------------------------------------------------------------
 
-list @enumConstantList {
+struct @enumConstant {
   public let @lstring name
   public let [@associatedValue] associatedValueTypeList
 }
@@ -194,7 +116,7 @@ list @enumConstantList {
 
 final class @enumDeclarationAST : @semanticDeclarationAST {
   private let @lstring enumTypeName
-  private let @enumConstantList mConstantList
+  private let [@enumConstant] mConstantList
   private let @structComparison comparison #initArgLabel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -452,7 +374,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
   //--- Constant list
     var [@unifiedTypeMapEntry] associatedValuesTypes = @()
     var constantList = @stringlist ()
-    var @enumConstantListForGeneration enumConstantListForGeneration = @()
+    var [@enumConstantForGeneration] enumConstantListForGeneration = @()
     var constantMap = @constantIndexMap ()
     for constant in self.mConstantList do
       if constant.associatedValueTypeList.count > 0 then
@@ -511,7 +433,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
 //!  CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-list @enumConstantListForGeneration {
+struct @enumConstantForGeneration {
   public let @string name
   public let @associatedValueDescriptorList associatedValueTypeList
 }
@@ -519,7 +441,7 @@ list @enumConstantListForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 final class @enumTypeForGeneration : @semanticTypeForGeneration {
-  private let @enumConstantListForGeneration constantList
+  private let [@enumConstantForGeneration] constantList
   private let [@unifiedTypeMapEntry] associatedValuesTypes
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -591,14 +513,14 @@ filewrapper enumGenerationTemplate in "../+generation-templates/type_generation"
   template enumTypeHeader1 : "GALGAS_enum.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
-    ?@enumConstantListForGeneration CONSTANT_LIST,
+    ?[@enumConstantForGeneration] CONSTANT_LIST,
     ?@bool HAS_ASSOCIATED_VALUES
   )
 
   template enumTypeSpecificImplementation : "GALGAS_enum.cpp.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
-    ?@enumConstantListForGeneration CONSTANT_LIST,
+    ?[@enumConstantForGeneration] CONSTANT_LIST,
     ?@bool HAS_ASSOCIATED_VALUES,
     ?@bool GENERATE_COMPARISON
   )

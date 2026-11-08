@@ -744,18 +744,18 @@ GGS_binaryset GGS_binaryset::getter_existOnBitIndexAndBeyond (const GGS_uint & i
 //--------------------------------------------------------------------------------------------------
 
 GGS_string GGS_binaryset::getter_print (const GGS_stringlist & inVariableList,
-                                              const GGS_uintlist & inBDDCount
-                                              COMMA_UNUSED_LOCATION_ARGS) const {
+                                        const GGS__5B_uint_5D_ & inBDDCount
+                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid () && inVariableList.isValid () && inBDDCount.isValid ()) {
     GenericUniqueArray <String> variablesNames ;
     GenericUniqueArray <int32_t> bitCounts ;
     UpEnumerator_stringlist variableEnumerator (inVariableList) ;
-    UpEnumerator_uintlist bddCountEnumerator (inBDDCount) ;
+    UpEnumerator__5B_uint_5D_ bddCountEnumerator (inBDDCount) ;
     while (variableEnumerator.hasCurrentObject () && bddCountEnumerator.hasCurrentObject ()) {
       const String name = variableEnumerator.current_mValue (HERE).stringValue () ;
       variablesNames.appendObject (name) ;
-      const uint32_t bddCount = bddCountEnumerator.current_mValue (HERE).uintValue () ;
+      const uint32_t bddCount = bddCountEnumerator.current (HERE).uintValue () ;
       bitCounts.appendObject ((int32_t) bddCount) ;
       variableEnumerator.gotoNextObject () ;
       bddCountEnumerator.gotoNextObject () ;
@@ -769,16 +769,16 @@ GGS_string GGS_binaryset::getter_print (const GGS_stringlist & inVariableList,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_transformedBy (const GGS_uintlist & inTransformationArray
-                                                         COMMA_LOCATION_ARGS) const {
+GGS_binaryset GGS_binaryset::getter_transformedBy (const GGS__5B_uint_5D_ & inTransformationArray
+                                                   COMMA_LOCATION_ARGS) const {
   GGS_binaryset result ;
   if (isValid () && inTransformationArray.isValid ()) {
     uint32_t * substitutionArray = nullptr ;
     macroMyNewPODArray (substitutionArray, uint32_t, inTransformationArray.count ()) ;
-    UpEnumerator_uintlist enumerator (inTransformationArray) ;
+    UpEnumerator__5B_uint_5D_ enumerator (inTransformationArray) ;
     uint32_t idx = 0 ;
     while (enumerator.hasCurrentObject ()) {
-      const uint32_t value = enumerator.current_mValue (HERE).uintValue () ;
+      const uint32_t value = enumerator.current (HERE).uintValue () ;
       substitutionArray [idx] = value ;
       idx += 1 ;
       enumerator.gotoNextObject () ;
@@ -999,16 +999,16 @@ GGS_binaryset GGS_binaryset::getter_existsOnBitRange (const GGS_uint & inFirstIn
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_binaryset GGS_binaryset::getter_transposedBy (const class GGS_uintlist & inVector,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
+GGS_binaryset GGS_binaryset::getter_transposedBy (const GGS__5B_uint_5D_ & inVector,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
   GGS_binaryset result ;
   if (isValid () && inVector.isValid ()) {
-    const uint32_t varCount = inVector.count() ;
+    const uint32_t varCount = inVector.count () ;
     uint32_t * substitionArray = nullptr ;
     macroMyNewArray (substitionArray, uint32_t, varCount) ;
     for (uint32_t i=0 ; i<varCount ; i++) {
-      const GGS_uint v = inVector.getter_mValueAtIndex (GGS_uint (i), inCompiler COMMA_THERE) ;
+      const GGS_uint v = inVector.readSubscript__3F_ (GGS_uint (i), inCompiler COMMA_THERE) ;
       substitionArray [i] = v.uintValue () ;
     }
     result = GGS_binaryset (mBDD.substitution (substitionArray, varCount COMMA_THERE)) ;

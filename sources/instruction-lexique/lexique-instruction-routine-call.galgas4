@@ -38,65 +38,14 @@ final class @lexicalFormalInputArgumentAST : @abstractLexicalRoutineActualArgume
 
 //--------------------------------------------------------------------------------------------------
 
-list @lexicalRoutineCallActualArgumentListAST {
-  public let @abstractLexicalRoutineActualArgumentAST mLexicalRoutineActualArgument
-}
-
-//--------------------------------------------------------------------------------------------------
-
 final class @lexicalRoutineCallInstructionAST : @lexicalInstructionAST {
   private let @lstring mRoutineName
-  private let @lexicalRoutineCallActualArgumentListAST mActualArgumentList
+  private let [@abstractLexicalRoutineActualArgumentAST] mActualArgumentList
   private let @lstringlist mErrorMessageList
 }
 
 //--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//--------------------------------------------------------------------------------------------------
-
-//syntax extension galgas3LexiqueComponentSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
-//    $identifier$ (?let @lstring actionName)
-//    var @lexicalRoutineCallActualArgumentListAST actualArgumentList = @()
-//    $($
-//    repeat
-//    while
-//      $!$
-//      let passingModeLocation = @location.here
-//      <lexical_output_effective_argument> (?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg)
-//      actualArgumentList ++= @(!@lexicalFormalInputArgumentAST (!passingModeLocation, arg))
-//    while
-//      $!?$
-//      let passingModeLocation = @location.here
-//      $identifier$ (?let @lstring attributeName)
-//      let arg = @lexicalAttributeInputOutputArgumentAST (!passingModeLocation, attributeName)
-//      actualArgumentList ++= @(!arg)
-//    end
-//    var @lstringlist errorMessageList = @()
-//    select
-//    or
-//      $error$
-//      repeat
-//        $identifier$ (?let @lstring errorMessageName)
-//        errorMessageList ++= @(!errorMessageName)
-//      while
-//        $,$
-//      end
-//    end
-//    $)$
-//    ioInstructionList ++= @(!@lexicalRoutineCallInstructionAST (
-//      !actionName,
-//      actualArgumentList,
-//      errorMessageList))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
 //--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4LexiqueComponentSyntax {
@@ -105,20 +54,19 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
     $identifier$ (?let @lstring actionName)
-    var @lexicalRoutineCallActualArgumentListAST actualArgumentList = @()
+    var [@abstractLexicalRoutineActualArgumentAST] actualArgumentList = @()
     $($
     repeat
     while
       $!$
       let passingModeLocation = @location.here
       <lexical_output_effective_argument> (?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg)
-      actualArgumentList ++= @(@lexicalFormalInputArgumentAST (passingModeLocation, arg))
+      actualArgumentList ++= @lexicalFormalInputArgumentAST (passingModeLocation, arg)
     while
       $!?$
       let passingModeLocation = @location.here
       $identifier$ (?let @lstring attributeName)
-      let arg = @lexicalAttributeInputOutputArgumentAST (passingModeLocation, attributeName)
-      actualArgumentList ++= @(arg)
+      actualArgumentList ++= @lexicalAttributeInputOutputArgumentAST (passingModeLocation, attributeName)
     end
     var @lstringlist errorMessageList = @()
     select
@@ -238,7 +186,7 @@ override proc @lexicalRoutineCallInstructionAST.checkLexicalInstruction (
   end
 //--- Check actual argument against formal parameters
   for formal in lexicalRoutineFormalArgumentList, actual in self.mActualArgumentList do
-    actual.mLexicalRoutineActualArgument.checkLexicalRoutineCallArgument
+    actual.checkLexicalRoutineCallArgument
       (!?ioLexiqueAnalysisContext,
       formal.mLexicalFormalArgumentMode,
       formal.mLexicalFormalArgumentType
@@ -282,8 +230,8 @@ override func @lexicalRoutineCallInstructionAST.generateSwiftCocoaInstructionCod
    ?let @lexiqueAnalysisContext inLexiqueAnalysisContext)
   -> @string outGeneratedCode {
   outGeneratedCode = "scanner_cocoa_routine_" + self.mRoutineName + " (&scanningOk"
-  for entry in self.mActualArgumentList do
-    outGeneratedCode += ", " + entry.mLexicalRoutineActualArgument.generateSwiftCocoaRoutineArgument (inLexiqueAnalysisContext)
+  for actual in self.mActualArgumentList do
+    outGeneratedCode += ", " + actual.generateSwiftCocoaRoutineArgument (inLexiqueAnalysisContext)
   end
   outGeneratedCode += ")\n"
 }

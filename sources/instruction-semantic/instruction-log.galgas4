@@ -19,7 +19,7 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-list @logListAST {
+struct @logAST {
   public let @lstring mLogMessage
   public let @semanticExpressionAST mLogExpression
 }
@@ -27,54 +27,12 @@ list @logListAST {
 //································································································*
 
 final class @logInstructionAST : @semanticInstructionAST {
-  public let @logListAST mLogList
+  public let [@logAST] mLogList
 }
 
 
 //--------------------------------------------------------------------------------------------------
 //! SYNTAX
-//--------------------------------------------------------------------------------------------------
-
-//syntax extension galgas3InstructionsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                    !@semanticInstructionAST outInstruction) {
-//    $log$
-//    let instructionLocation = @location.here
-//    var @logListAST logList = @()
-//    repeat
-//      select
-//        $identifier$ (?let loggedVariableName)
-//        logList ++= @(!loggedVariableName, !@varInExpressionAST (!loggedVariableName))
-//      or
-//        $self$
-//        $.$
-//        $identifier$ (?let propertyName)
-//        logList ++= @(
-//          !propertyName,
-//          !@structPropertyAccessExpressionAST (!propertyName.location, @selfInExpressionAST (!propertyName.location), propertyName)
-//        )
-//      or
-//        $"string"$ (?let logMessage)
-//        $:$
-//        <expression_ggs3> (!?ioDeclarations, ?let logExpression)
-//        logList ++= @(!logMessage, !logExpression)
-//      end
-//    while
-//      $,$
-//    end
-//    outInstruction = @logInstructionAST (
-//      !instructionLocation,
-//      logList
-//    )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
 //--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4InstructionsSyntax {
@@ -85,7 +43,7 @@ syntax extension galgas4InstructionsSyntax {
                                !@semanticInstructionAST outInstruction) {
     $log$
     let instructionLocation = @location.here
-    var @logListAST logList = @()
+    var [@logAST] logList = @()
     repeat
       select
         $identifier$ (?let loggedVariableName)

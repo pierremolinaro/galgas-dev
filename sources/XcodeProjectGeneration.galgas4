@@ -319,7 +319,7 @@ mutating proc @XcodeProjectDescriptor.addSettingsToDefaultConfiguration
 
 //--------------------------------------------------------------------------------------------------
 
-list @XCodeGroupList {
+struct @XCodeGroup {
   public let @string mGroupReference
   public let @string mGroupName
   public let @string mGroupPath
@@ -328,7 +328,7 @@ list @XCodeGroupList {
 
 //--------------------------------------------------------------------------------------------------
 
-list @XCodeToolTargetList {
+struct @XCodeToolTarget {
   public let @string mTargetRef
   public let @string mTargetName
   public let @string mProductFileReference
@@ -344,7 +344,7 @@ list @XCodeToolTargetList {
 
 //--------------------------------------------------------------------------------------------------
 
-list @XCodeAppTargetList {
+struct @XCodeAppTarget {
   public let @string mTargetRef
   public let @string mTargetName
   public let @string mProductFileReference
@@ -363,7 +363,7 @@ list @XCodeAppTargetList {
 
 //--------------------------------------------------------------------------------------------------
 
-list @BuildFileList {
+struct @BuildFile {
   public let @string mFileReference
   public let @string mFileName
   public let @string mBuildReference
@@ -388,9 +388,9 @@ struct @XcodeProjectDescriptor {
   public let @string mMainGroupReference = ""
   public var @stringlist mMainGroupChildrenRefs = @()
   public var @string mProjectObjectReference = ""
-  public var @XCodeGroupList mGroupList = @()
-  public var @XCodeToolTargetList mToolTargetList = @()
-  public var @XCodeAppTargetList mAppTargetList = @()
+  public var [@XCodeGroup] mGroupList = @()
+  public var [@XCodeToolTarget] mToolTargetList = @()
+  public var [@XCodeAppTarget] mAppTargetList = @()
   public var @2stringlist mCFileList = @()
   public var @2stringlist mCppFileList = @()
   public var @2stringlist m_Swift_FileList = @()
@@ -398,7 +398,7 @@ struct @XcodeProjectDescriptor {
   public var @2stringlist m_MM_FileList = @()
   public var @2stringlist mFrameworkFileList = @()
   public var @2stringlist mHeaderFileList = @()
-  public var @BuildFileList mBuildFileList = @()
+  public var [@BuildFile] mBuildFileList = @()
 //--- Default configuration
   public let @string mDefaultConfigurationRef = ""
   public var @stringlist mDefaultConfigurationSettingList = @()
@@ -421,10 +421,10 @@ private filewrapper xcodeProjectGenerationFilewrapper in "+generation-templates/
   template xcodeproj : "project.pbxproj.galgasTemplate" (
     ?@string PROJECT_REF,
     ?@string MAIN_GROUP_REF,
-    ?@XCodeGroupList GROUPS,
+    ?[@XCodeGroup] GROUPS,
     ?@stringlist MAIN_GROUP_CHILDREN_REFS,
-    ?@XCodeToolTargetList TOOL_TARGET_LIST,
-    ?@XCodeAppTargetList APP_TARGET_LIST,
+    ?[@XCodeToolTarget] TOOL_TARGET_LIST,
+    ?[@XCodeAppTarget] APP_TARGET_LIST,
     ?@2stringlist C_FILE_LIST,
     ?@2stringlist CPP_FILE_LIST,
     ?@2stringlist SWIFT_FILE_LIST,
@@ -436,7 +436,7 @@ private filewrapper xcodeProjectGenerationFilewrapper in "+generation-templates/
     ?@2stringlist TIFF_FILE_LIST,
     ?@2stringlist ICNS_FILE_LIST,
     ?@2stringlist XIB_FILE_LIST,
-    ?@BuildFileList BUILD_FILE_LIST,
+    ?[@BuildFile] BUILD_FILE_LIST,
     ?@string DEFAULT_CONFIGURATION_REF,
     ?@stringlist DEFAULT_CONFIGURATION_SETTING_LIST,
     ?@string PROJECT_BUILD_DEFAULT_CONFIGURATION_REF,

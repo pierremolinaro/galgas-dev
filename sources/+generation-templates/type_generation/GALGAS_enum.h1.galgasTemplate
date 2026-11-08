@@ -9,8 +9,8 @@ class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Enumeration
   public: enum class Enumeration {
     invalid%
-    for (mConstantName *) in CONSTANT_LIST do
-      %,\n    enum_%![mConstantName identifierRepresentation]
+    for (cst) in CONSTANT_LIST do
+      %,\n    enum_%![cst.name identifierRepresentation]
     end
 %
   } ;
@@ -24,10 +24,10 @@ end
 
 //--------------------------------- Associated value extraction
 %
-for (mConstantName mAssociatedValueTypeList) in CONSTANT_LIST do
-  if [mAssociatedValueTypeList count] > 0 then
-    %  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_%![mConstantName identifierRepresentation]% (%?^
-    for (mType valueName) in mAssociatedValueTypeList
+for (cst) in CONSTANT_LIST do
+  if [cst.associatedValueTypeList count] > 0 then
+    %  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_%![cst.name identifierRepresentation]% (%?^
+    for (mType valueName) in cst.associatedValueTypeList
     do (idx) %class GGS_%![mType identifierRepresentation]% & out_%!valueName
     between %,\n%!^
     end

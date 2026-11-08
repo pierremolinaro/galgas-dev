@@ -19,145 +19,6 @@
 //   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3DeclarationsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    $extern$
-//    $@type$ (?let @lstring externTypeName) indexing (externTypeDefinition)
-//    <externtype_cpp_predeclaration> (?let cppPredeclarationCode)
-//    <externtype_cpp_classdeclaration> (?let cppClassCode)
-//    ${$
-//    var @externTypeConstructorList externTypeConstructorList = @()
-//    var @externTypeGetterList externTypeGetterList = @()
-//    var @externTypeSetterList externTypeSetterList = @()
-//    var @externTypeMethodList externTypeMethodList = @()
-//    repeat
-//    while
-//      <externtype_constructor_ggs3> (!?ioDeclarations, !?externTypeConstructorList)
-//    while
-//      <externtype_getter_ggs3> (!?ioDeclarations, !?externTypeGetterList)
-//    while
-//      <externtype_setter_ggs3> (!?ioDeclarations, !?externTypeSetterList)
-//    while
-//      <externtype_method_ggs3> (!?ioDeclarations, !?externTypeMethodList)
-//    end
-//    $}$
-//    ioDeclarations.mDeclarationList ++= @(!@externTypeDeclarationAST (
-//      !isPredefined: false,
-//      externTypeName,
-//      cppPredeclarationCode,
-//      cppClassCode,
-//      externTypeConstructorList,
-//      externTypeGetterList,
-//      externTypeSetterList,
-//      externTypeMethodList
-//    ))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <externtype_cpp_predeclaration> (!@string outCppPredeclarationCode ) {
-//    ${$
-//    outCppPredeclarationCode = ""
-//    repeat
-//    while
-//      $"string"$ (?let @lstring cppPredeclarationCodeElement)
-//      outCppPredeclarationCode += cppPredeclarationCodeElement.string
-//    end
-//    $}$
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <externtype_cpp_classdeclaration> (!@string outCppClassCode ) {
-//    ${$
-//    outCppClassCode = ""
-//    repeat
-//    while
-//      $"string"$ (?let @lstring cppPredeclarationCodeElement)
-//      outCppClassCode += cppPredeclarationCodeElement.string
-//    end
-//    $}$
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <externtype_constructor_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                     ?!@externTypeConstructorList ioExternTypeConstructorList ) {
-//    $init$
-//    $($
-//    var @typeNameFormalParameterNameList argumentTypeList = @()
-//    repeat
-//    while
-//      $?selector:$ (?let selector)
-//      <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
-//      $identifier$ (?let @lstring argumentName)
-//      argumentTypeList ++= @(!selector, !argumentTypeName, !argumentName)
-//    while
-//      $?$
-//      let selector = "".here
-//      <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
-//      $identifier$ (?let @lstring argumentName)
-//      argumentTypeList ++= @(!selector, !argumentTypeName, !argumentName)
-//    end
-//    $)$
-//    ioExternTypeConstructorList ++= @(!argumentTypeList)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <externtype_getter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                ?!@externTypeGetterList ioExternTypeGetterList ) {
-//    $func$
-//    $identifier$ (?let @lstring getterName)
-//    var @typeNameFormalParameterNameList argumentTypeList = @()
-//    repeat
-//    while
-//      $?selector:$ (?let selector)
-//      <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
-//      $identifier$ (?let @lstring argumentName)
-//      argumentTypeList ++= @(!selector, !argumentTypeName, !argumentName)
-//    while
-//      $?$
-//      let selector = "".here
-//      <type_definition_ggs3> (!?ioDeclarations, ?let argumentTypeName)
-//      $identifier$ (?let @lstring argumentName)
-//      argumentTypeList ++= @(!selector, !argumentTypeName, !argumentName)
-//    end
-//    $->$
-//    <type_definition_ggs3> (!?ioDeclarations, ?let @lstring resultTypeName)
-//    ioExternTypeGetterList ++= @(!getterName, !resultTypeName, !argumentTypeList)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <externtype_setter_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                ?!@externTypeSetterList ioExternTypeSetterList ) {
-//    $mutating$
-//    $proc$
-//    $identifier$ (?let @lstring setterName)
-//    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-//    ioExternTypeSetterList ++= @(!setterName, !formalParameterList)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <externtype_method_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                ?!@externTypeMethodList ioExternTypeMethodList ) {
-//    $proc$
-//    $identifier$ (?let @lstring methodName)
-//    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-//    ioExternTypeMethodList ++= @(!methodName, !formalParameterList, !.here)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -168,10 +29,10 @@ syntax extension galgas4DeclarationsSyntax {
     <externtype_cpp_predeclaration> (?let cppPredeclarationCode)
     <externtype_cpp_classdeclaration> (?let cppClassCode)
     ${$
-    var @externTypeConstructorList externTypeConstructorList = @()
-    var @externTypeGetterList externTypeGetterList = @()
-    var @externTypeSetterList externTypeSetterList = @()
-    var @externTypeMethodList externTypeMethodList = @()
+    var [[@typeNameFormalParameterName]] externTypeConstructorList = @()
+    var [@externTypeGetter] externTypeGetterList = @()
+    var [@externTypeSetter] externTypeSetterList = @()
+    var [@externTypeMethod] externTypeMethodList = @()
     repeat
     while
       <externtype_constructor> (!?ioDeclarations, !?externTypeConstructorList)
@@ -224,10 +85,10 @@ syntax extension galgas4DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_constructor> (?!@galgasDeclarationAST ioDeclarations,
-                                ?!@externTypeConstructorList ioExternTypeConstructorList ) {
+                                ?![[@typeNameFormalParameterName]] ioExternTypeConstructorList ) {
     $init$
     $($
-    var @typeNameFormalParameterNameList argumentTypeList = @()
+    var [@typeNameFormalParameterName] argumentTypeList = @()
     select
     or
       repeat
@@ -253,16 +114,16 @@ syntax extension galgas4DeclarationsSyntax {
       end
     end
     $)$
-    ioExternTypeConstructorList ++= @(argumentTypeList)
+    ioExternTypeConstructorList ++= argumentTypeList
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_getter> (?!@galgasDeclarationAST ioDeclarations,
-                           ?!@externTypeGetterList ioExternTypeGetterList ) {
+                           ?![@externTypeGetter] ioExternTypeGetterList ) {
     $func$
     $identifier$ (?let @lstring getterName)
-    var @typeNameFormalParameterNameList argumentTypeList = @()
+    var [@typeNameFormalParameterName] argumentTypeList = @()
     repeat
     while
       $?selector:$ (?let selector)
@@ -289,7 +150,7 @@ syntax extension galgas4DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_setter> (?!@galgasDeclarationAST ioDeclarations,
-                                ?!@externTypeSetterList ioExternTypeSetterList ) {
+                            ?![@externTypeSetter] ioExternTypeSetterList ) {
     $mutating$
     $proc$
     $identifier$ (?let @lstring setterName)
@@ -300,7 +161,7 @@ syntax extension galgas4DeclarationsSyntax {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <externtype_method> (?!@galgasDeclarationAST ioDeclarations,
-                           ?!@externTypeMethodList ioExternTypeMethodList ) {
+                           ?![@externTypeMethod] ioExternTypeMethodList ) {
     $proc$
     $identifier$ (?let @lstring methodName)
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
@@ -313,43 +174,39 @@ syntax extension galgas4DeclarationsSyntax {
 
 //--------------------------------------------------------------------------------------------------
 
-list @typeNameFormalParameterNameList {
+struct @typeNameFormalParameterName {
   public let @lstring mFormalSelector
   public let @lstring mFormalParameterTypeName
   public let @lstring mFormalParameterName
-
-  func initializerSignature () -> @string {
-    result = "init"
-    for formalArg in self do
-      result += "!" + formalArg.mFormalSelector
-    end
-  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @externTypeConstructorList {
-  public let @typeNameFormalParameterNameList mParameterList
+func [@typeNameFormalParameterName].initializerSignature () -> @string {
+  result = "init"
+  for formalArg in self do
+    result += "!" + formalArg.mFormalSelector
+  end
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @externTypeGetterList {
+struct @externTypeGetter {
   public let @lstring mGetterName
   public let @lstring mResultTypeName
-  public let @typeNameFormalParameterNameList mParameterList
+  public let [@typeNameFormalParameterName] mParameterList
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @externTypeSetterList {
+struct @externTypeSetter {
   public let @lstring mSetterName
   public let @formalParameterListAST mFormalParameterList
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @externTypeMethodList {
+struct @externTypeMethod {
   public let @lstring mMethodName
   public let @formalParameterListAST mFormalParameterList
   public let @location mDeclarationLocation
@@ -361,10 +218,10 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
   private let @lstring mExternTypeName
   private let @string mCppPreDeclarationCode
   private let @string mCppClassCode
-  private let @externTypeConstructorList externTypeInitializerList
-  private let @externTypeGetterList mExternTypeGetterList
-  private let @externTypeSetterList mExternTypeSetterList
-  private let @externTypeMethodList mExternTypeMethodList
+  private let [[@typeNameFormalParameterName]] externTypeInitializerList
+  private let [@externTypeGetter] mExternTypeGetterList
+  private let [@externTypeSetter] mExternTypeSetterList
+  private let [@externTypeMethod] mExternTypeMethodList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -407,12 +264,12 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
 //      !?ioTypeMap makeEntry !initializer.mResultTypeName ?let returnedTypeEntry]
     //---
       var @functionSignature arguments = @()
-      for parameter in initializer.mParameterList do
+      for parameter in initializer do
         !?ioTypeMap.makeEntry (parameter.mFormalParameterTypeName, ?let argumentTypeEntry)
         arguments ++= @(parameter.mFormalSelector, argumentTypeEntry, parameter.mFormalParameterName.string, true)
       end
     //---
-      let initializerName = @lstring (initializer.mParameterList.initializerSignature, self.mExternTypeName)
+      let initializerName = @lstring (initializer.initializerSignature, self.mExternTypeName)
       !?initializerMap.insertKey (initializerName, arguments)
     end
   //--- Getters
@@ -543,7 +400,7 @@ override proc @externTypeDeclarationAST.semanticAnalysis (
   for initializer in self.externTypeInitializerList do
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
       self.mExternTypeName,
-      initializer.mParameterList.initializerSignature
+      initializer.initializerSignature
     )
     !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
     !?ioUsefulEntitiesGraph.addEdge (!from: initializerNameForUsefulness, !to: nameForUsefulness)

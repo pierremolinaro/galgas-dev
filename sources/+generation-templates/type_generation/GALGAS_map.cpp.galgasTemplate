@@ -234,11 +234,11 @@ GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
   return result ;
 }
 
-%for (mSearchMethodName mErrorMessage) in SEARCH_SUBSCRIPT_LIST do
+%for (entry) in SEARCH_SUBSCRIPT_LIST do
 %//--------------------------------------------------------------------------------------------------
 
 GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
-::readSubscript__3F_%![mSearchMethodName identifierRepresentation]% (%?^%const GGS_lstring & inLKey,
+::readSubscript__3F_%![entry.mName identifierRepresentation]% (%?^%const GGS_lstring & inLKey,
     %!^%Compiler * inCompiler
     %!^%COMMA_LOCATION_ARGS) const {
   GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
@@ -248,7 +248,7 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
     if (info.isNotNil ()) {
       result = info.value () ;
     }else{
-      const char * kErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
+      const char * kErrorMessage = %![entry.mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
       GenericUniqueArray <String> nearestKeyArray ;
       findNearestKey (key, nearestKeyArray) ;
       inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kErrorMessage COMMA_THERE) ;
@@ -284,10 +284,10 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_overriddenMap (%?^%Compile
   return result ;
 }
 
-%for (insertMethodName errorMessage shadowErrorMessage) in INSERT_SETTER_LIST do
+%for (entry) in INSERT_SETTER_LIST do
 %//--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::setter_%![insertMethodName identifierRepresentation]% (%?^%GGS_lstring inLKey%
+void GGS_%!TYPE_IDENTIFIER%::setter_%![entry.mInsertMethodName identifierRepresentation]% (%?^%GGS_lstring inLKey%
 for (propertyTypeEntry 4*) in PROPERTY_LIST do (IDX)
 %,\n%!^%GGS_%![propertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
 end
@@ -295,22 +295,22 @@ end
   %!^%COMMA_LOCATION_ARGS) {
   const GGS_%!ELEMENT_TYPE_IDENTIFIER% element (inLKey%
   for (5*) in PROPERTY_LIST do (IDX) %, inArgument%![IDX string] end%) ;
-  const char * kInsertErrorMessage = %![errorMessage utf8RepresentationEscapingQuestionMark]% ;
+  const char * kInsertErrorMessage = %![entry.mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
 %
-if [shadowErrorMessage count] == 0 then
+if [entry.mShadowErrorMessage count] == 0 then
 %  const char * kShadowErrorMessage = nullptr ;
 %else
-%  const char * kShadowErrorMessage = %![shadowErrorMessage utf8RepresentationEscapingQuestionMark]% ;
+%  const char * kShadowErrorMessage = %![entry.mShadowErrorMessage utf8RepresentationEscapingQuestionMark]% ;
 %end
 %  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
 }
 
 %end
 
-for (mSearchMethodName mErrorMessage) in SEARCH_METHOD_LIST do
+for (entry) in SEARCH_METHOD_LIST do
 %//--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentation]% (%?^%GGS_lstring inLKey%
+void GGS_%!TYPE_IDENTIFIER%::method_%![entry.mName identifierRepresentation]% (%?^%GGS_lstring inLKey%
   for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST
     do (IDX) %,\n%!^%GGS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
   end
@@ -323,7 +323,7 @@ void GGS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentatio
     if (info.isNil ()) {
       GenericUniqueArray <String> nearestKeyArray ;
       findNearestKey (key, nearestKeyArray) ;
-      const char * kSearchErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
+      const char * kSearchErrorMessage = %![entry.mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
       inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
     }
   }
@@ -340,9 +340,9 @@ void GGS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentatio
 %
 end
 
-for (mSetterName mErrorMessage) in REMOVE_SETTER_LIST do
+for (entry) in REMOVE_SETTER_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GGS_%!TYPE_IDENTIFIER%::setter_%![mSetterName identifierRepresentation]% (%?^%GGS_lstring inLKey%
+  %void GGS_%!TYPE_IDENTIFIER%::setter_%![entry.mName identifierRepresentation]% (%?^%GGS_lstring inLKey%
   for (mPropertyTypeEntry 4*) in PROPERTY_LIST do (IDX)
     %,\n%!^%GGS_%![mPropertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
   end
@@ -350,7 +350,7 @@ for (mSetterName mErrorMessage) in REMOVE_SETTER_LIST do
   %\n %!^%COMMA_LOCATION_ARGS) {
   SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> info ;
   if (isValid () && inLKey.isValid ()) {
-    const char * kRemoveErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
+    const char * kRemoveErrorMessage = %![entry.mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
     const String key = inLKey.mProperty_string.stringValue () ;
     mSharedRoot.insulate (THERE) ;
     info = mSharedRoot->removeAndReturnRemovedInfo (key) ;
@@ -374,14 +374,14 @@ for (mSetterName mErrorMessage) in REMOVE_SETTER_LIST do
 end
 
 
-for (mSetterName mErrorMessage) in REPLACE_SETTER_LIST do
+for (entry) in REPLACE_SETTER_LIST do
   %//--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::setter_%![mSetterName identifierRepresentation]% (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% inElement,
+void GGS_%!TYPE_IDENTIFIER%::setter_%![entry.mName identifierRepresentation]% (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% inElement,
        %!^%Compiler * inCompiler
        %!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inElement.isValid ()) {
-    const char * kReplaceErrorMessage = %![mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
+    const char * kReplaceErrorMessage = %![entry.mErrorMessage utf8RepresentationEscapingQuestionMark]% ;
     const String key = inElement.mProperty_lkey.mProperty_string.stringValue () ;
     mSharedRoot.insulate (HERE) ;
     OptionalSharedRef <GenericMapNode <GGS_%!ELEMENT_TYPE_IDENTIFIER%>> node = mSharedRoot->searchNode (key) ;

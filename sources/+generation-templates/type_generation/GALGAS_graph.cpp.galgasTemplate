@@ -1400,14 +1400,14 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_A
   return result ;
 }
 
-%for (mInsertModifierName mInsertErrorMessage) in INSERT_MODIFIER_LIST do
+%for (entry) in INSERT_MODIFIER_LIST do
 %//--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::setter_%![mInsertModifierName identifierRepresentation]% (%?^%GGS_lstring inKey%
+void GGS_%!TYPE_IDENTIFIER%::setter_%![entry.mInsertModifierName identifierRepresentation]% (%?^%GGS_lstring inKey%
   %,\n%!^%GGS_%![ASSOCIATED_ELEMENT_TYPE identifierRepresentation]% inElement%
   %,\n%!^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) {
-  const char * kErrorMessage = %![mInsertErrorMessage utf8RepresentationEscapingQuestionMark]% ;
+  const char * kErrorMessage = %![entry.mInsertErrorMessage utf8RepresentationEscapingQuestionMark]% ;
   internalAddNode (inKey, kErrorMessage, inElement, inCompiler COMMA_THERE) ;
 }
 %

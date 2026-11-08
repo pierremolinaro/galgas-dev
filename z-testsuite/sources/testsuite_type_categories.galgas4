@@ -3,7 +3,7 @@
 proc testsuite_type_categories() {
   println ("*************************************** begin of type extension test")
   log "Square of 7" : 7 .uint64.square
-  var aList = @uintlist []
+  var aList = [@uint] []
   !?aList.append (1)
   !?aList.append (2)
   !?aList.append (3)
@@ -34,7 +34,7 @@ func @uint64.square() -> @uint64 {
   result = self * self
 }
 
-func @uintlist.sum() -> @uint {
+func [@uint].sum() -> @uint {
   result = 0
   for (mValue) in self do
     result = result + mValue
@@ -50,7 +50,7 @@ proc @uint64.square (!@uint64 outResult) {
   outResult = self * self
 }
 
-proc @uintlist.sum (!@uint outResult) {
+proc [@uint].sum (!@uint outResult) {
   outResult = 0
   for (mValue) in self do
     outResult = outResult + mValue
@@ -66,7 +66,7 @@ mutating proc @lstring.appendInt (let@uint inValue) {
   self.string += inValue.string
 }
 
-mutating proc @uintlist.appendSquare (let@uint inValue) {
+mutating proc [@uint].appendSquare (let@uint inValue) {
   !?self.append (inValue * inValue)
 }
 

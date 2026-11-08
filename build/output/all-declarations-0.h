@@ -331,245 +331,6 @@ class GGS__32_lstringlist_2E_element : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__32_lstringlist_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @logListAST list enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_logListAST final {
-  public: DownEnumerator_logListAST (const class GGS_logListAST & inList) ;
-
-  public: ~ DownEnumerator_logListAST (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
-
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_lstring current_mLogMessage (LOCATION_ARGS) const ;
-  public: class GGS_semanticExpressionAST current_mLogExpression (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_logListAST_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS_logListAST_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: DownEnumerator_logListAST (const DownEnumerator_logListAST &) = delete ;
-  private: DownEnumerator_logListAST & operator = (const DownEnumerator_logListAST &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_logListAST final {
-  public: UpEnumerator_logListAST (const class GGS_logListAST & inList)  ;
-
-  public: ~ UpEnumerator_logListAST (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
-
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_lstring current_mLogMessage (LOCATION_ARGS) const ;
-  public: class GGS_semanticExpressionAST current_mLogExpression (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_logListAST_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS_logListAST_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: UpEnumerator_logListAST (const UpEnumerator_logListAST &) = delete ;
-  private: UpEnumerator_logListAST & operator = (const UpEnumerator_logListAST &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// @logListAST list
-//--------------------------------------------------------------------------------------------------
-
-class GGS_logListAST : public AC_GALGAS_root {
-//--- Private property
-  private: GenericArray <GGS_logListAST_2E_element> mArray ;
-
-//--- Default constructor
-  public: GGS_logListAST (void) ;
-
-//--- Destructor
-  public: virtual ~ GGS_logListAST (void) = default ;
-
-//--- Copy
-  public: GGS_logListAST (const GGS_logListAST &) = default ;
-  public: GGS_logListAST & operator = (const GGS_logListAST &) = default ;
-
-//--- Is valid
-  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
-
-//--- Drop
-  public: inline virtual void drop (void) override { mArray.removeAll () ; }
-
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Count
-  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
- 
-//--- sortedElementArray
-  public : inline GenericArray <GGS_logListAST_2E_element> sortedElementArray (void) const {
-    return mArray ;
-  }
-
-//--- subList
-  private: GGS_logListAST subList (const int32_t inStart,
-                                   const int32_t inLength,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--- List constructor for graph
-  public: GGS_logListAST (const CollectionElementArray & inSharedArray) ;
-
-//--- Element constructor
-  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                 const class GGS_lstring & in_mLogMessage,
-                                                 const class GGS_semanticExpressionAST & in_mLogExpression
-                                                 COMMA_LOCATION_ARGS) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_logListAST init (Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_logListAST extractObject (const GGS_object & inObject,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_logListAST class_func_listWithValue (const class GGS_lstring & inOperand0,
-                                                                const class GGS_semanticExpressionAST & inOperand1
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: void plusAssignOperation (const GGS_logListAST inOperand,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_lstring & inOperand0,
-                                   const class GGS_semanticExpressionAST & inOperand1
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator, collection value
-  public: void plusPlusAssignOperation (const GGS_logListAST_2E_element & inOperand
-                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: GGS_logListAST add_operation (const GGS_logListAST & inOperand,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: void setter_append (class GGS_lstring constinArgument0,
-                              class GGS_semanticExpressionAST constinArgument1,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_insertAtIndex (class GGS_lstring constinArgument0,
-                                     class GGS_semanticExpressionAST constinArgument1,
-                                     class GGS_uint constinArgument2,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popFirst (class GGS_lstring & outArgument0,
-                                class GGS_semanticExpressionAST & outArgument1,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_lstring & outArgument0,
-                               class GGS_semanticExpressionAST & outArgument1,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeAtIndex (class GGS_lstring & outArgument0,
-                                     class GGS_semanticExpressionAST & outArgument1,
-                                     class GGS_uint constinArgument2,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMLogExpressionAtIndex (class GGS_semanticExpressionAST constinArgument0,
-                                                class GGS_uint constinArgument1,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMLogMessageAtIndex (class GGS_lstring constinArgument0,
-                                             class GGS_uint constinArgument1,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: void method_first (class GGS_lstring & outArgument0,
-                             class GGS_semanticExpressionAST & outArgument1,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_lstring & outArgument0,
-                            class GGS_semanticExpressionAST & outArgument1,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
-
-  public: class GGS_semanticExpressionAST getter_mLogExpressionAtIndex (const class GGS_uint & constinOperand0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_lstring getter_mLogMessageAtIndex (const class GGS_uint & constinOperand0,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
-
-  public: class GGS_logListAST getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_logListAST getter_subListToIndex (const class GGS_uint & constinOperand0,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_logListAST getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator_logListAST ;
-  friend class DownEnumerator_logListAST ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_logListAST ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @semanticExpressionAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -664,10 +425,189 @@ class cPtr_semanticExpressionAST : public AbstractStrongPtrClass {
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @logListAST_2E_element struct
+// Phase 1: [logAST] array
 //--------------------------------------------------------------------------------------------------
 
-class GGS_logListAST_2E_element : public AC_GALGAS_root {
+class DownEnumerator__5B_logAST_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_logAST_5D_ (const class GGS__5B_logAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_logAST_5D_ (const DownEnumerator__5B_logAST_5D_ &) = delete ;
+  private: DownEnumerator__5B_logAST_5D_ & operator = (const DownEnumerator__5B_logAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent >= 0 ;
+  }
+
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent -= 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_logAST current (LOCATION_ARGS) const ;
+  public: class GGS_logAST current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_logAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_logAST_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_logAST_5D_ (const class GGS__5B_logAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_logAST_5D_ (const UpEnumerator__5B_logAST_5D_ &) = delete ;
+  private: UpEnumerator__5B_logAST_5D_ & operator = (const UpEnumerator__5B_logAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent < mSharedArray.count () ;
+  }
+
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent += 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_logAST current (LOCATION_ARGS) const ;
+  public: class GGS_logAST current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_logAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_logAST_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_logAST> mSharedArray ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_logAST_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_logAST_5D_ (const GGS__5B_logAST_5D_ & inSource) ;
+  public: GGS__5B_logAST_5D_ & operator = (const GGS__5B_logAST_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_logAST_5D_ ;
+  friend class DownEnumerator__5B_logAST_5D_ ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_logAST_5D_ init (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS__5B_logAST_5D_ extractObject (const GGS_object & inObject,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public: void plusAssignOperation (const GGS__5B_logAST_5D_ inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- ++= operator, collection value
+  public: void plusPlusAssignOperation (const GGS_logAST & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_logAST_5D_ add_operation (const GGS__5B_logAST_5D_ & inOperand,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_logAST constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insertAtIndex (class GGS_logAST constinArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popFirst (class GGS_logAST & outArgument0,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popLast (class GGS_logAST & outArgument0,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAtIndex (class GGS_logAST & outArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_first (class GGS_logAST & outArgument0,
+                             Compiler * inCompiler
+                             COMMA_LOCATION_ARGS) const ;
+
+  public: void method_last (class GGS_logAST & outArgument0,
+                            Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+  public: class GGS_logAST readSubscript__3F_ (const class GGS_uint & in0,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_logAST_5D_ ;
+  friend class DownEnumerator__5B_logAST_5D_ ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_logAST_5D_ ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @logAST struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_logAST : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mLogMessage ;
   public: inline GGS_lstring readProperty_mLogMessage (void) const {
@@ -684,7 +624,7 @@ class GGS_logListAST_2E_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GGS_logListAST_2E_element (void) ;
+  public: GGS_logAST (void) ;
 
 //--------------------------------- Property setters
   public: inline void setter_setMLogMessage (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -699,30 +639,30 @@ class GGS_logListAST_2E_element : public AC_GALGAS_root {
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_logListAST_2E_element (const GGS_lstring & in_mLogMessage,
-                                     const GGS_semanticExpressionAST & in_mLogExpression) ;
+  public: GGS_logAST (const GGS_lstring & in_mLogMessage,
+                      const GGS_semanticExpressionAST & in_mLogExpression) ;
 
 //--------------------------------- Copy constructor
-  public: GGS_logListAST_2E_element (const GGS_logListAST_2E_element & inSource) ;
+  public: GGS_logAST (const GGS_logAST & inSource) ;
 
 //--------------------------------- Assignment operator
-  public: GGS_logListAST_2E_element & operator = (const GGS_logListAST_2E_element & inSource) ;
+  public: GGS_logAST & operator = (const GGS_logAST & inSource) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_logListAST_2E_element init_21__21_ (const class GGS_lstring & inOperand0,
-                                                         const class GGS_semanticExpressionAST & inOperand1,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+  public: static GGS_logAST init_21__21_ (const class GGS_lstring & inOperand0,
+                                          const class GGS_semanticExpressionAST & inOperand1,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_logListAST_2E_element extractObject (const GGS_object & inObject,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
+  public: static GGS_logAST extractObject (const GGS_object & inObject,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
@@ -745,7 +685,7 @@ class GGS_logListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_logListAST_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_logAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @semanticInstructionForGeneration reference class
@@ -3384,144 +3324,121 @@ class GGS_fixitElementAST_2E_fixItReplace_3F_ : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementAST_2E_fixItReplace_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @fixitListAST list enumerator
+// Phase 1: [fixitElementAST] array
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_fixitListAST final {
-  public: DownEnumerator_fixitListAST (const class GGS_fixitListAST & inList) ;
+class DownEnumerator__5B_fixitElementAST_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_fixitElementAST_5D_ (const class GGS__5B_fixitElementAST_5D_ & inOperand) ;
 
-  public: ~ DownEnumerator_fixitListAST (void) = default ;
+//--- No copy
+  private: DownEnumerator__5B_fixitElementAST_5D_ (const DownEnumerator__5B_fixitElementAST_5D_ &) = delete ;
+  private: DownEnumerator__5B_fixitElementAST_5D_ & operator = (const DownEnumerator__5B_fixitElementAST_5D_ &) = delete ;
 
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent >= 0 ;
+  }
 
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent -= 1 ;
+  }
 
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_fixitElementAST current_mElement (LOCATION_ARGS) const ;
 //--- Current element access
-  public: class GGS_fixitListAST_2E_element current (LOCATION_ARGS) const ;
+  public: class GGS_fixitElementAST current (LOCATION_ARGS) const ;
+  public: class GGS_fixitElementAST current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
 
-  private: GenericArray <GGS_fixitListAST_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: DownEnumerator_fixitListAST (const DownEnumerator_fixitListAST &) = delete ;
-  private: DownEnumerator_fixitListAST & operator = (const DownEnumerator_fixitListAST &) = delete ;
+//---- Properties
+  private: const GenericArray <GGS_fixitElementAST> mSharedArray ;
+  private: int32_t mCurrent ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class UpEnumerator_fixitListAST final {
-  public: UpEnumerator_fixitListAST (const class GGS_fixitListAST & inList)  ;
+class UpEnumerator__5B_fixitElementAST_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_fixitElementAST_5D_ (const class GGS__5B_fixitElementAST_5D_ & inOperand) ;
 
-  public: ~ UpEnumerator_fixitListAST (void) = default ;
+//--- No copy
+  private: UpEnumerator__5B_fixitElementAST_5D_ (const UpEnumerator__5B_fixitElementAST_5D_ &) = delete ;
+  private: UpEnumerator__5B_fixitElementAST_5D_ & operator = (const UpEnumerator__5B_fixitElementAST_5D_ &) = delete ;
 
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent < mSharedArray.count () ;
+  }
 
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent += 1 ;
+  }
 
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_fixitElementAST current_mElement (LOCATION_ARGS) const ;
 //--- Current element access
-  public: class GGS_fixitListAST_2E_element current (LOCATION_ARGS) const ;
+  public: class GGS_fixitElementAST current (LOCATION_ARGS) const ;
+  public: class GGS_fixitElementAST current_entry (LOCATION_ARGS) const ;
 
-  private: GenericArray <GGS_fixitListAST_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: UpEnumerator_fixitListAST (const UpEnumerator_fixitListAST &) = delete ;
-  private: UpEnumerator_fixitListAST & operator = (const UpEnumerator_fixitListAST &) = delete ;
+//---- Properties
+  private: const GenericArray <GGS_fixitElementAST> mSharedArray ;
+  private: int32_t mCurrent ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// @fixitListAST list
-//--------------------------------------------------------------------------------------------------
 
-class GGS_fixitListAST : public AC_GALGAS_root {
-//--- Private property
-  private: GenericArray <GGS_fixitListAST_2E_element> mArray ;
+class GGS__5B_fixitElementAST_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_fixitElementAST> mSharedArray ;
 
-//--- Default constructor
-  public: GGS_fixitListAST (void) ;
+//--------------------------------- Default constructor
+  public: GGS__5B_fixitElementAST_5D_ (void) ;
 
-//--- Destructor
-  public: virtual ~ GGS_fixitListAST (void) = default ;
+//--------------------------------- Handle copy
+  public: GGS__5B_fixitElementAST_5D_ (const GGS__5B_fixitElementAST_5D_ & inSource) ;
+  public: GGS__5B_fixitElementAST_5D_ & operator = (const GGS__5B_fixitElementAST_5D_ & inSource) ;
 
-//--- Copy
-  public: GGS_fixitListAST (const GGS_fixitListAST &) = default ;
-  public: GGS_fixitListAST & operator = (const GGS_fixitListAST &) = default ;
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
-//--- Is valid
-  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
 
-//--- Drop
-  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+  public: virtual void drop (void) override ;
 
-//--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Count
-  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
- 
-//--- sortedElementArray
-  public : inline GenericArray <GGS_fixitListAST_2E_element> sortedElementArray (void) const {
-    return mArray ;
-  }
-
-//--- subList
-  private: GGS_fixitListAST subList (const int32_t inStart,
-                                     const int32_t inLength,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) const ;
-
-
-//--- List constructor for graph
-  public: GGS_fixitListAST (const CollectionElementArray & inSharedArray) ;
-
-//--- Element constructor
-  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                 const class GGS_fixitElementAST & in_mElement
-                                                 COMMA_LOCATION_ARGS) ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_fixitElementAST_5D_ ;
+  friend class DownEnumerator__5B_fixitElementAST_5D_ ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_fixitListAST init (Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
+  public: static GGS__5B_fixitElementAST_5D_ init (Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_fixitListAST extractObject (const GGS_object & inObject,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_fixitListAST class_func_listWithValue (const class GGS_fixitElementAST & inOperand0
-                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GGS__5B_fixitElementAST_5D_ extractObject (const GGS_object & inObject,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: void plusAssignOperation (const GGS_fixitListAST inOperand,
+  public: void plusAssignOperation (const GGS__5B_fixitElementAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_fixitElementAST & inOperand0
-                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: void plusPlusAssignOperation (const GGS_fixitListAST_2E_element & inOperand
+  public: void plusPlusAssignOperation (const GGS_fixitElementAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
-  public: GGS_fixitListAST add_operation (const GGS_fixitListAST & inOperand,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const ;
+  public: GGS__5B_fixitElementAST_5D_ add_operation (const GGS__5B_fixitElementAST_5D_ & inOperand,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
@@ -3542,15 +3459,13 @@ class GGS_fixitListAST : public AC_GALGAS_root {
                                Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
   public: void setter_removeAtIndex (class GGS_fixitElementAST & outArgument0,
                                      class GGS_uint constinArgument1,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMElementAtIndex (class GGS_fixitElementAST constinArgument0,
-                                          class GGS_uint constinArgument1,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -3567,120 +3482,33 @@ class GGS_fixitListAST : public AC_GALGAS_root {
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_fixitElementAST getter_mElementAtIndex (const class GGS_uint & constinOperand0,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
-
-  public: class GGS_fixitListAST getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_fixitListAST getter_subListToIndex (const class GGS_uint & constinOperand0,
+//--------------------------------- Read subscripts
+  public: class GGS_fixitElementAST readSubscript__3F_ (const class GGS_uint & in0,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_fixitListAST getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
 
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
-  friend class UpEnumerator_fixitListAST ;
-  friend class DownEnumerator_fixitListAST ;
+  friend class UpEnumerator__5B_fixitElementAST_5D_ ;
+  friend class DownEnumerator__5B_fixitElementAST_5D_ ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitListAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @fixitListAST_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_fixitListAST_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_fixitElementAST mProperty_mElement ;
-  public: inline GGS_fixitElementAST readProperty_mElement (void) const {
-    return mProperty_mElement ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_fixitListAST_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMElement (const GGS_fixitElementAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mElement = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_fixitListAST_2E_element (const GGS_fixitElementAST & in_mElement) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_fixitListAST_2E_element (const GGS_fixitListAST_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_fixitListAST_2E_element & operator = (const GGS_fixitListAST_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_fixitListAST_2E_element init_21_ (const class GGS_fixitElementAST & inOperand0,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_fixitListAST_2E_element extractObject (const GGS_object & inObject,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitListAST_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_fixitElementAST_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension proc '@fixitListAST enterFixItListInSemanticContext'
+//Extension proc '@[fixitElementAST] enterFixItListInSemanticContext'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionMethod_enterFixItListInSemanticContext (const class GGS_fixitListAST inObject,
+void extensionMethod_enterFixItListInSemanticContext (const class GGS__5B_fixitElementAST_5D_ inObject,
                                                       class GGS_unifiedTypeMap & io_ioTypeMap,
                                                       class Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
@@ -4506,144 +4334,121 @@ class GGS_fixitElementForGeneration_2E_fixItReplace_3F_ : public AC_GALGAS_root 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitElementForGeneration_2E_fixItReplace_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @fixitListForGeneration list enumerator
+// Phase 1: [fixitElementForGeneration] array
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_fixitListForGeneration final {
-  public: DownEnumerator_fixitListForGeneration (const class GGS_fixitListForGeneration & inList) ;
+class DownEnumerator__5B_fixitElementForGeneration_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_fixitElementForGeneration_5D_ (const class GGS__5B_fixitElementForGeneration_5D_ & inOperand) ;
 
-  public: ~ DownEnumerator_fixitListForGeneration (void) = default ;
+//--- No copy
+  private: DownEnumerator__5B_fixitElementForGeneration_5D_ (const DownEnumerator__5B_fixitElementForGeneration_5D_ &) = delete ;
+  private: DownEnumerator__5B_fixitElementForGeneration_5D_ & operator = (const DownEnumerator__5B_fixitElementForGeneration_5D_ &) = delete ;
 
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent >= 0 ;
+  }
 
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent -= 1 ;
+  }
 
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_fixitElementForGeneration current_mElement (LOCATION_ARGS) const ;
 //--- Current element access
-  public: class GGS_fixitListForGeneration_2E_element current (LOCATION_ARGS) const ;
+  public: class GGS_fixitElementForGeneration current (LOCATION_ARGS) const ;
+  public: class GGS_fixitElementForGeneration current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
 
-  private: GenericArray <GGS_fixitListForGeneration_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: DownEnumerator_fixitListForGeneration (const DownEnumerator_fixitListForGeneration &) = delete ;
-  private: DownEnumerator_fixitListForGeneration & operator = (const DownEnumerator_fixitListForGeneration &) = delete ;
+//---- Properties
+  private: const GenericArray <GGS_fixitElementForGeneration> mSharedArray ;
+  private: int32_t mCurrent ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class UpEnumerator_fixitListForGeneration final {
-  public: UpEnumerator_fixitListForGeneration (const class GGS_fixitListForGeneration & inList)  ;
+class UpEnumerator__5B_fixitElementForGeneration_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_fixitElementForGeneration_5D_ (const class GGS__5B_fixitElementForGeneration_5D_ & inOperand) ;
 
-  public: ~ UpEnumerator_fixitListForGeneration (void) = default ;
+//--- No copy
+  private: UpEnumerator__5B_fixitElementForGeneration_5D_ (const UpEnumerator__5B_fixitElementForGeneration_5D_ &) = delete ;
+  private: UpEnumerator__5B_fixitElementForGeneration_5D_ & operator = (const UpEnumerator__5B_fixitElementForGeneration_5D_ &) = delete ;
 
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent < mSharedArray.count () ;
+  }
 
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent += 1 ;
+  }
 
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_fixitElementForGeneration current_mElement (LOCATION_ARGS) const ;
 //--- Current element access
-  public: class GGS_fixitListForGeneration_2E_element current (LOCATION_ARGS) const ;
+  public: class GGS_fixitElementForGeneration current (LOCATION_ARGS) const ;
+  public: class GGS_fixitElementForGeneration current_entry (LOCATION_ARGS) const ;
 
-  private: GenericArray <GGS_fixitListForGeneration_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: UpEnumerator_fixitListForGeneration (const UpEnumerator_fixitListForGeneration &) = delete ;
-  private: UpEnumerator_fixitListForGeneration & operator = (const UpEnumerator_fixitListForGeneration &) = delete ;
+//---- Properties
+  private: const GenericArray <GGS_fixitElementForGeneration> mSharedArray ;
+  private: int32_t mCurrent ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// @fixitListForGeneration list
-//--------------------------------------------------------------------------------------------------
 
-class GGS_fixitListForGeneration : public AC_GALGAS_root {
-//--- Private property
-  private: GenericArray <GGS_fixitListForGeneration_2E_element> mArray ;
+class GGS__5B_fixitElementForGeneration_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_fixitElementForGeneration> mSharedArray ;
 
-//--- Default constructor
-  public: GGS_fixitListForGeneration (void) ;
+//--------------------------------- Default constructor
+  public: GGS__5B_fixitElementForGeneration_5D_ (void) ;
 
-//--- Destructor
-  public: virtual ~ GGS_fixitListForGeneration (void) = default ;
+//--------------------------------- Handle copy
+  public: GGS__5B_fixitElementForGeneration_5D_ (const GGS__5B_fixitElementForGeneration_5D_ & inSource) ;
+  public: GGS__5B_fixitElementForGeneration_5D_ & operator = (const GGS__5B_fixitElementForGeneration_5D_ & inSource) ;
 
-//--- Copy
-  public: GGS_fixitListForGeneration (const GGS_fixitListForGeneration &) = default ;
-  public: GGS_fixitListForGeneration & operator = (const GGS_fixitListForGeneration &) = default ;
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
-//--- Is valid
-  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
 
-//--- Drop
-  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+  public: virtual void drop (void) override ;
 
-//--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Count
-  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
- 
-//--- sortedElementArray
-  public : inline GenericArray <GGS_fixitListForGeneration_2E_element> sortedElementArray (void) const {
-    return mArray ;
-  }
-
-//--- subList
-  private: GGS_fixitListForGeneration subList (const int32_t inStart,
-                                               const int32_t inLength,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const ;
-
-
-//--- List constructor for graph
-  public: GGS_fixitListForGeneration (const CollectionElementArray & inSharedArray) ;
-
-//--- Element constructor
-  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                 const class GGS_fixitElementForGeneration & in_mElement
-                                                 COMMA_LOCATION_ARGS) ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_fixitElementForGeneration_5D_ ;
+  friend class DownEnumerator__5B_fixitElementForGeneration_5D_ ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_fixitListForGeneration init (Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
+  public: static GGS__5B_fixitElementForGeneration_5D_ init (Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_fixitListForGeneration extractObject (const GGS_object & inObject,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_fixitListForGeneration class_func_listWithValue (const class GGS_fixitElementForGeneration & inOperand0
-                                                                            COMMA_LOCATION_ARGS) ;
+  public: static GGS__5B_fixitElementForGeneration_5D_ extractObject (const GGS_object & inObject,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: void plusAssignOperation (const GGS_fixitListForGeneration inOperand,
+  public: void plusAssignOperation (const GGS__5B_fixitElementForGeneration_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_fixitElementForGeneration & inOperand0
-                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: void plusPlusAssignOperation (const GGS_fixitListForGeneration_2E_element & inOperand
+  public: void plusPlusAssignOperation (const GGS_fixitElementForGeneration & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
-  public: GGS_fixitListForGeneration add_operation (const GGS_fixitListForGeneration & inOperand,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const ;
+  public: GGS__5B_fixitElementForGeneration_5D_ add_operation (const GGS__5B_fixitElementForGeneration_5D_ & inOperand,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
@@ -4664,15 +4469,13 @@ class GGS_fixitListForGeneration : public AC_GALGAS_root {
                                Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
   public: void setter_removeAtIndex (class GGS_fixitElementForGeneration & outArgument0,
                                      class GGS_uint constinArgument1,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMElementAtIndex (class GGS_fixitElementForGeneration constinArgument0,
-                                          class GGS_uint constinArgument1,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -4689,120 +4492,33 @@ class GGS_fixitListForGeneration : public AC_GALGAS_root {
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_fixitElementForGeneration getter_mElementAtIndex (const class GGS_uint & constinOperand0,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
-
-  public: class GGS_fixitListForGeneration getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_fixitListForGeneration getter_subListToIndex (const class GGS_uint & constinOperand0,
+//--------------------------------- Read subscripts
+  public: class GGS_fixitElementForGeneration readSubscript__3F_ (const class GGS_uint & in0,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_fixitListForGeneration getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
 
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
-  friend class UpEnumerator_fixitListForGeneration ;
-  friend class DownEnumerator_fixitListForGeneration ;
+  friend class UpEnumerator__5B_fixitElementForGeneration_5D_ ;
+  friend class DownEnumerator__5B_fixitElementForGeneration_5D_ ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitListForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @fixitListForGeneration_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_fixitListForGeneration_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_fixitElementForGeneration mProperty_mElement ;
-  public: inline GGS_fixitElementForGeneration readProperty_mElement (void) const {
-    return mProperty_mElement ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_fixitListForGeneration_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMElement (const GGS_fixitElementForGeneration & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mElement = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_fixitListForGeneration_2E_element (const GGS_fixitElementForGeneration & in_mElement) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_fixitListForGeneration_2E_element (const GGS_fixitListForGeneration_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_fixitListForGeneration_2E_element & operator = (const GGS_fixitListForGeneration_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_fixitListForGeneration_2E_element init_21_ (const class GGS_fixitElementForGeneration & inOperand0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_fixitListForGeneration_2E_element extractObject (const GGS_object & inObject,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_fixitListForGeneration_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_fixitElementForGeneration_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension proc '@fixitListForGeneration generateFixIt'
+//Extension proc '@[fixitElementForGeneration] generateFixIt'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionMethod_generateFixIt (const class GGS_fixitListForGeneration inObject,
+void extensionMethod_generateFixIt (const class GGS__5B_fixitElementForGeneration_5D_ inObject,
                                     class GGS_stringset & io_ioInclusionSet,
                                     class GGS_uint & io_ioTemporaryVariableIndex,
                                     class GGS_stringset & io_ioUnusedVariableCppNameSet,
@@ -4898,7 +4614,7 @@ class GGS_errorInstructionForGeneration : public GGS_semanticInstructionForGener
 
   public: class GGS_stringlist readProperty_mBuiltVariableCppNameList (void) const ;
 
-  public: class GGS_fixitListForGeneration readProperty_mFixitListForGeneration (void) const ;
+  public: class GGS__5B_fixitElementForGeneration_5D_ readProperty_mFixitListForGeneration (void) const ;
 
 //-- Start of type generic part
 
@@ -4907,7 +4623,7 @@ class GGS_errorInstructionForGeneration : public GGS_semanticInstructionForGener
                                                                              const class GGS_semanticExpressionForGeneration & inOperand1,
                                                                              const class GGS_semanticExpressionForGeneration & inOperand2,
                                                                              const class GGS_stringlist & inOperand3,
-                                                                             const class GGS_fixitListForGeneration & inOperand4,
+                                                                             const class GGS__5B_fixitElementForGeneration_5D_ & inOperand4,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
@@ -4956,7 +4672,7 @@ class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGen
                                                                        const class GGS_semanticExpressionForGeneration & inOperand1,
                                                                        const class GGS_semanticExpressionForGeneration & inOperand2,
                                                                        const class GGS_stringlist & inOperand3,
-                                                                       const class GGS_fixitListForGeneration & inOperand4,
+                                                                       const class GGS__5B_fixitElementForGeneration_5D_ & inOperand4,
                                                                        Compiler * inCompiler) ;
 
 
@@ -4973,7 +4689,7 @@ class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGen
   public: GGS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
   public: GGS_semanticExpressionForGeneration mProperty_mErrorExpression ;
   public: GGS_stringlist mProperty_mBuiltVariableCppNameList ;
-  public: GGS_fixitListForGeneration mProperty_mFixitListForGeneration ;
+  public: GGS__5B_fixitElementForGeneration_5D_ mProperty_mFixitListForGeneration ;
 
 
 //--- Default constructor
@@ -4984,7 +4700,7 @@ class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGen
                                               const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
                                               const GGS_semanticExpressionForGeneration & in_mErrorExpression,
                                               const GGS_stringlist & in_mBuiltVariableCppNameList,
-                                              const GGS_fixitListForGeneration & in_mFixitListForGeneration,
+                                              const GGS__5B_fixitElementForGeneration_5D_ & in_mFixitListForGeneration,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
@@ -5826,7 +5542,7 @@ class GGS_warningInstructionForGeneration : public GGS_semanticInstructionForGen
 
   public: class GGS_semanticExpressionForGeneration readProperty_mWarningExpression (void) const ;
 
-  public: class GGS_fixitListForGeneration readProperty_mFixitListForGeneration (void) const ;
+  public: class GGS__5B_fixitElementForGeneration_5D_ readProperty_mFixitListForGeneration (void) const ;
 
 //-- Start of type generic part
 
@@ -5834,7 +5550,7 @@ class GGS_warningInstructionForGeneration : public GGS_semanticInstructionForGen
   public: static GGS_warningInstructionForGeneration init_21__21__21__21_ (const class GGS_location & inOperand0,
                                                                            const class GGS_semanticExpressionForGeneration & inOperand1,
                                                                            const class GGS_semanticExpressionForGeneration & inOperand2,
-                                                                           const class GGS_fixitListForGeneration & inOperand3,
+                                                                           const class GGS__5B_fixitElementForGeneration_5D_ & inOperand3,
                                                                            Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
 
@@ -5882,7 +5598,7 @@ class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForG
   public: void warningInstructionForGeneration_init_21__21__21__21_ (const class GGS_location & inOperand0,
                                                                      const class GGS_semanticExpressionForGeneration & inOperand1,
                                                                      const class GGS_semanticExpressionForGeneration & inOperand2,
-                                                                     const class GGS_fixitListForGeneration & inOperand3,
+                                                                     const class GGS__5B_fixitElementForGeneration_5D_ & inOperand3,
                                                                      Compiler * inCompiler) ;
 
 
@@ -5898,7 +5614,7 @@ class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForG
   public: GGS_location mProperty_mInstructionLocation ;
   public: GGS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
   public: GGS_semanticExpressionForGeneration mProperty_mWarningExpression ;
-  public: GGS_fixitListForGeneration mProperty_mFixitListForGeneration ;
+  public: GGS__5B_fixitElementForGeneration_5D_ mProperty_mFixitListForGeneration ;
 
 
 //--- Default constructor
@@ -5908,7 +5624,7 @@ class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForG
   public: cPtr_warningInstructionForGeneration (const GGS_location & in_mInstructionLocation,
                                                 const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
                                                 const GGS_semanticExpressionForGeneration & in_mWarningExpression,
-                                                const GGS_fixitListForGeneration & in_mFixitListForGeneration,
+                                                const GGS__5B_fixitElementForGeneration_5D_ & in_mFixitListForGeneration,
                                                 Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
@@ -16520,18 +16236,19 @@ class DownEnumerator__5B_semanticInstructionAST_5D_ final {
   private: DownEnumerator__5B_semanticInstructionAST_5D_ (const DownEnumerator__5B_semanticInstructionAST_5D_ &) = delete ;
   private: DownEnumerator__5B_semanticInstructionAST_5D_ & operator = (const DownEnumerator__5B_semanticInstructionAST_5D_ &) = delete ;
 
-//--- 
+//---
   public: inline bool hasCurrentObject (void) const {
     return mCurrent >= 0 ;
   }
 
-//--- 
+//---
   public: inline void gotoNextObject (void) {
     mCurrent -= 1 ;
   }
 
 //--- Current element access
   public: class GGS_semanticInstructionAST current (LOCATION_ARGS) const ;
+  public: class GGS_semanticInstructionAST current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
 
 //---- Properties
   private: const GenericArray <GGS_semanticInstructionAST> mSharedArray ;
@@ -16548,18 +16265,19 @@ class UpEnumerator__5B_semanticInstructionAST_5D_ final {
   private: UpEnumerator__5B_semanticInstructionAST_5D_ (const UpEnumerator__5B_semanticInstructionAST_5D_ &) = delete ;
   private: UpEnumerator__5B_semanticInstructionAST_5D_ & operator = (const UpEnumerator__5B_semanticInstructionAST_5D_ &) = delete ;
 
-//--- 
+//---
   public: inline bool hasCurrentObject (void) const {
     return mCurrent < mSharedArray.count () ;
   }
-  
-//--- 
+
+//---
   public: inline void gotoNextObject (void) {
     mCurrent += 1 ;
   }
 
 //--- Current element access
   public: class GGS_semanticInstructionAST current (LOCATION_ARGS) const ;
+  public: class GGS_semanticInstructionAST current_entry (LOCATION_ARGS) const ;
 
 //---- Properties
   private: const GenericArray <GGS_semanticInstructionAST> mSharedArray ;
@@ -16568,7 +16286,7 @@ class UpEnumerator__5B_semanticInstructionAST_5D_ final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS__5B_semanticInstructionAST_5D_ : public AC_GALGAS_root {
+class GGS__5B_semanticInstructionAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_semanticInstructionAST> mSharedArray ;
 
@@ -16579,12 +16297,13 @@ class GGS__5B_semanticInstructionAST_5D_ : public AC_GALGAS_root {
   public: GGS__5B_semanticInstructionAST_5D_ (const GGS__5B_semanticInstructionAST_5D_ & inSource) ;
   public: GGS__5B_semanticInstructionAST_5D_ & operator = (const GGS__5B_semanticInstructionAST_5D_ & inSource) ;
 
-//--------------------------------- Remove All
-  public: VIRTUAL_IN_DEBUG void removeAll (void) ;
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
-  
+
   public: virtual void drop (void) override ;
 
   public: virtual void description (String & ioString,
@@ -16674,6 +16393,9 @@ class GGS__5B_semanticInstructionAST_5D_ : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_semanticInstructionAST_5D_ ;
+  friend class DownEnumerator__5B_semanticInstructionAST_5D_ ;
  
 } ;
 
@@ -17791,270 +17513,10 @@ class GGS_ifInstructionForGeneration_2E_weak : public GGS_semanticInstructionFor
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifInstructionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @forInstructionEnumeratedObjectElementListAST list enumerator
+// Phase 1: @forInstructionEnumeratedObjectElementAST struct
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_forInstructionEnumeratedObjectElementListAST final {
-  public: DownEnumerator_forInstructionEnumeratedObjectElementListAST (const class GGS_forInstructionEnumeratedObjectElementListAST & inList) ;
-
-  public: ~ DownEnumerator_forInstructionEnumeratedObjectElementListAST (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
-
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_lstring current_mOptionalTypeName (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mDeclaredAsUnused (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mOptionalConstantName (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_forInstructionEnumeratedObjectElementListAST_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS_forInstructionEnumeratedObjectElementListAST_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: DownEnumerator_forInstructionEnumeratedObjectElementListAST (const DownEnumerator_forInstructionEnumeratedObjectElementListAST &) = delete ;
-  private: DownEnumerator_forInstructionEnumeratedObjectElementListAST & operator = (const DownEnumerator_forInstructionEnumeratedObjectElementListAST &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_forInstructionEnumeratedObjectElementListAST final {
-  public: UpEnumerator_forInstructionEnumeratedObjectElementListAST (const class GGS_forInstructionEnumeratedObjectElementListAST & inList)  ;
-
-  public: ~ UpEnumerator_forInstructionEnumeratedObjectElementListAST (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
-
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_lstring current_mOptionalTypeName (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mDeclaredAsUnused (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mOptionalConstantName (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_forInstructionEnumeratedObjectElementListAST_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS_forInstructionEnumeratedObjectElementListAST_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: UpEnumerator_forInstructionEnumeratedObjectElementListAST (const UpEnumerator_forInstructionEnumeratedObjectElementListAST &) = delete ;
-  private: UpEnumerator_forInstructionEnumeratedObjectElementListAST & operator = (const UpEnumerator_forInstructionEnumeratedObjectElementListAST &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// @forInstructionEnumeratedObjectElementListAST list
-//--------------------------------------------------------------------------------------------------
-
-class GGS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_root {
-//--- Private property
-  private: GenericArray <GGS_forInstructionEnumeratedObjectElementListAST_2E_element> mArray ;
-
-//--- Default constructor
-  public: GGS_forInstructionEnumeratedObjectElementListAST (void) ;
-
-//--- Destructor
-  public: virtual ~ GGS_forInstructionEnumeratedObjectElementListAST (void) = default ;
-
-//--- Copy
-  public: GGS_forInstructionEnumeratedObjectElementListAST (const GGS_forInstructionEnumeratedObjectElementListAST &) = default ;
-  public: GGS_forInstructionEnumeratedObjectElementListAST & operator = (const GGS_forInstructionEnumeratedObjectElementListAST &) = default ;
-
-//--- Is valid
-  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
-
-//--- Drop
-  public: inline virtual void drop (void) override { mArray.removeAll () ; }
-
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Count
-  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
- 
-//--- sortedElementArray
-  public : inline GenericArray <GGS_forInstructionEnumeratedObjectElementListAST_2E_element> sortedElementArray (void) const {
-    return mArray ;
-  }
-
-//--- subList
-  private: GGS_forInstructionEnumeratedObjectElementListAST subList (const int32_t inStart,
-                                                                     const int32_t inLength,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const ;
-
-
-//--- List constructor for graph
-  public: GGS_forInstructionEnumeratedObjectElementListAST (const CollectionElementArray & inSharedArray) ;
-
-//--- Element constructor
-  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                 const class GGS_lstring & in_mOptionalTypeName,
-                                                 const class GGS_bool & in_mDeclaredAsUnused,
-                                                 const class GGS_lstring & in_mOptionalConstantName
-                                                 COMMA_LOCATION_ARGS) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_forInstructionEnumeratedObjectElementListAST init (Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_forInstructionEnumeratedObjectElementListAST extractObject (const GGS_object & inObject,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_forInstructionEnumeratedObjectElementListAST class_func_listWithValue (const class GGS_lstring & inOperand0,
-                                                                                                  const class GGS_bool & inOperand1,
-                                                                                                  const class GGS_lstring & inOperand2
-                                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: void plusAssignOperation (const GGS_forInstructionEnumeratedObjectElementListAST inOperand,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_lstring & inOperand0,
-                                   const class GGS_bool & inOperand1,
-                                   const class GGS_lstring & inOperand2
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator, collection value
-  public: void plusPlusAssignOperation (const GGS_forInstructionEnumeratedObjectElementListAST_2E_element & inOperand
-                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: GGS_forInstructionEnumeratedObjectElementListAST add_operation (const GGS_forInstructionEnumeratedObjectElementListAST & inOperand,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: void setter_append (class GGS_lstring constinArgument0,
-                              class GGS_bool constinArgument1,
-                              class GGS_lstring constinArgument2,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_insertAtIndex (class GGS_lstring constinArgument0,
-                                     class GGS_bool constinArgument1,
-                                     class GGS_lstring constinArgument2,
-                                     class GGS_uint constinArgument3,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popFirst (class GGS_lstring & outArgument0,
-                                class GGS_bool & outArgument1,
-                                class GGS_lstring & outArgument2,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_lstring & outArgument0,
-                               class GGS_bool & outArgument1,
-                               class GGS_lstring & outArgument2,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeAtIndex (class GGS_lstring & outArgument0,
-                                     class GGS_bool & outArgument1,
-                                     class GGS_lstring & outArgument2,
-                                     class GGS_uint constinArgument3,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMDeclaredAsUnusedAtIndex (class GGS_bool constinArgument0,
-                                                   class GGS_uint constinArgument1,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMOptionalConstantNameAtIndex (class GGS_lstring constinArgument0,
-                                                       class GGS_uint constinArgument1,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMOptionalTypeNameAtIndex (class GGS_lstring constinArgument0,
-                                                   class GGS_uint constinArgument1,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: void method_first (class GGS_lstring & outArgument0,
-                             class GGS_bool & outArgument1,
-                             class GGS_lstring & outArgument2,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_lstring & outArgument0,
-                            class GGS_bool & outArgument1,
-                            class GGS_lstring & outArgument2,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_mDeclaredAsUnusedAtIndex (const class GGS_uint & constinOperand0,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_lstring getter_mOptionalConstantNameAtIndex (const class GGS_uint & constinOperand0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_lstring getter_mOptionalTypeNameAtIndex (const class GGS_uint & constinOperand0,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
-
-  public: class GGS_forInstructionEnumeratedObjectElementListAST getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_forInstructionEnumeratedObjectElementListAST getter_subListToIndex (const class GGS_uint & constinOperand0,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_forInstructionEnumeratedObjectElementListAST getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                                                          Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator_forInstructionEnumeratedObjectElementListAST ;
-  friend class DownEnumerator_forInstructionEnumeratedObjectElementListAST ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectElementListAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @forInstructionEnumeratedObjectElementListAST_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_forInstructionEnumeratedObjectElementListAST_2E_element : public AC_GALGAS_root {
+class GGS_forInstructionEnumeratedObjectElementAST : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mOptionalTypeName ;
   public: inline GGS_lstring readProperty_mOptionalTypeName (void) const {
@@ -18076,7 +17538,7 @@ class GGS_forInstructionEnumeratedObjectElementListAST_2E_element : public AC_GA
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GGS_forInstructionEnumeratedObjectElementListAST_2E_element (void) ;
+  public: GGS_forInstructionEnumeratedObjectElementAST (void) ;
 
 //--------------------------------- Property setters
   public: inline void setter_setMOptionalTypeName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -18095,32 +17557,32 @@ class GGS_forInstructionEnumeratedObjectElementListAST_2E_element : public AC_GA
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_forInstructionEnumeratedObjectElementListAST_2E_element (const GGS_lstring & in_mOptionalTypeName,
-                                                                       const GGS_bool & in_mDeclaredAsUnused,
-                                                                       const GGS_lstring & in_mOptionalConstantName) ;
+  public: GGS_forInstructionEnumeratedObjectElementAST (const GGS_lstring & in_mOptionalTypeName,
+                                                        const GGS_bool & in_mDeclaredAsUnused,
+                                                        const GGS_lstring & in_mOptionalConstantName) ;
 
 //--------------------------------- Copy constructor
-  public: GGS_forInstructionEnumeratedObjectElementListAST_2E_element (const GGS_forInstructionEnumeratedObjectElementListAST_2E_element & inSource) ;
+  public: GGS_forInstructionEnumeratedObjectElementAST (const GGS_forInstructionEnumeratedObjectElementAST & inSource) ;
 
 //--------------------------------- Assignment operator
-  public: GGS_forInstructionEnumeratedObjectElementListAST_2E_element & operator = (const GGS_forInstructionEnumeratedObjectElementListAST_2E_element & inSource) ;
+  public: GGS_forInstructionEnumeratedObjectElementAST & operator = (const GGS_forInstructionEnumeratedObjectElementAST & inSource) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_forInstructionEnumeratedObjectElementListAST_2E_element init_21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                                               const class GGS_bool & inOperand1,
-                                                                                               const class GGS_lstring & inOperand2,
-                                                                                               Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) ;
+  public: static GGS_forInstructionEnumeratedObjectElementAST init_21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                                const class GGS_bool & inOperand1,
+                                                                                const class GGS_lstring & inOperand2,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_forInstructionEnumeratedObjectElementListAST_2E_element extractObject (const GGS_object & inObject,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) ;
+  public: static GGS_forInstructionEnumeratedObjectElementAST extractObject (const GGS_object & inObject,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
@@ -18143,7 +17605,7 @@ class GGS_forInstructionEnumeratedObjectElementListAST_2E_element : public AC_GA
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectElementListAST_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectElementAST ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @abstractEnumeratedCollectionAST reference class
@@ -18523,6 +17985,185 @@ class GGS_enumeratedCollectionVarInExpAST_2E_weak : public GGS_abstractEnumerate
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: [forInstructionEnumeratedObjectElementAST] array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ (const class GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ (const DownEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ &) = delete ;
+  private: DownEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ & operator = (const DownEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent >= 0 ;
+  }
+
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent -= 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_forInstructionEnumeratedObjectElementAST current (LOCATION_ARGS) const ;
+  public: class GGS_forInstructionEnumeratedObjectElementAST current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_forInstructionEnumeratedObjectElementAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ (const class GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ (const UpEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ &) = delete ;
+  private: UpEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ & operator = (const UpEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent < mSharedArray.count () ;
+  }
+
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent += 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_forInstructionEnumeratedObjectElementAST current (LOCATION_ARGS) const ;
+  public: class GGS_forInstructionEnumeratedObjectElementAST current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_forInstructionEnumeratedObjectElementAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_forInstructionEnumeratedObjectElementAST> mSharedArray ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ (const GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ & inSource) ;
+  public: GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ & operator = (const GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ ;
+  friend class DownEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ init (Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ extractObject (const GGS_object & inObject,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public: void plusAssignOperation (const GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- ++= operator, collection value
+  public: void plusPlusAssignOperation (const GGS_forInstructionEnumeratedObjectElementAST & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ add_operation (const GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ & inOperand,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_forInstructionEnumeratedObjectElementAST constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insertAtIndex (class GGS_forInstructionEnumeratedObjectElementAST constinArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popFirst (class GGS_forInstructionEnumeratedObjectElementAST & outArgument0,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popLast (class GGS_forInstructionEnumeratedObjectElementAST & outArgument0,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAtIndex (class GGS_forInstructionEnumeratedObjectElementAST & outArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_first (class GGS_forInstructionEnumeratedObjectElementAST & outArgument0,
+                             Compiler * inCompiler
+                             COMMA_LOCATION_ARGS) const ;
+
+  public: void method_last (class GGS_forInstructionEnumeratedObjectElementAST & outArgument0,
+                            Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+  public: class GGS_forInstructionEnumeratedObjectElementAST readSubscript__3F_ (const class GGS_uint & in0,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ ;
+  friend class DownEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_forInstructionEnumeratedObjectElementAST_5D_ ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @enumeratedCollectionCstListInExpAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -18534,7 +18175,7 @@ class GGS_enumeratedCollectionCstListInExpAST : public GGS_abstractEnumeratedCol
   public: GGS_enumeratedCollectionCstListInExpAST (const class cPtr_enumeratedCollectionCstListInExpAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_forInstructionEnumeratedObjectElementListAST readProperty_mElementList (void) const ;
+  public: class GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ readProperty_mElementList (void) const ;
 
   public: class GGS_semanticExpressionAST readProperty_mEnumeratedExpression (void) const ;
 
@@ -18543,7 +18184,7 @@ class GGS_enumeratedCollectionCstListInExpAST : public GGS_abstractEnumeratedCol
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_enumeratedCollectionCstListInExpAST init_21__21__21_ (const class GGS_forInstructionEnumeratedObjectElementListAST & inOperand0,
+  public: static GGS_enumeratedCollectionCstListInExpAST init_21__21__21_ (const class GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ & inOperand0,
                                                                            const class GGS_semanticExpressionAST & inOperand1,
                                                                            const class GGS_location & inOperand2,
                                                                            Compiler * inCompiler
@@ -18590,7 +18231,7 @@ class cPtr_enumeratedCollectionCstListInExpAST : public cPtr_abstractEnumeratedC
   #endif
 
 //--------------------------------- Initializers
-  public: void enumeratedCollectionCstListInExpAST_init_21__21__21_ (const class GGS_forInstructionEnumeratedObjectElementListAST & inOperand0,
+  public: void enumeratedCollectionCstListInExpAST_init_21__21__21_ (const class GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ & inOperand0,
                                                                      const class GGS_semanticExpressionAST & inOperand1,
                                                                      const class GGS_location & inOperand2,
                                                                      Compiler * inCompiler) ;
@@ -18612,7 +18253,7 @@ class cPtr_enumeratedCollectionCstListInExpAST : public cPtr_abstractEnumeratedC
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_forInstructionEnumeratedObjectElementListAST mProperty_mElementList ;
+  public: GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ mProperty_mElementList ;
   public: GGS_semanticExpressionAST mProperty_mEnumeratedExpression ;
   public: GGS_location mProperty_mEndOfEnumerationExpression ;
 
@@ -18621,7 +18262,7 @@ class cPtr_enumeratedCollectionCstListInExpAST : public cPtr_abstractEnumeratedC
   public: cPtr_enumeratedCollectionCstListInExpAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_enumeratedCollectionCstListInExpAST (const GGS_forInstructionEnumeratedObjectElementListAST & in_mElementList,
+  public: cPtr_enumeratedCollectionCstListInExpAST (const GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ & in_mElementList,
                                                     const GGS_semanticExpressionAST & in_mEnumeratedExpression,
                                                     const GGS_location & in_mEndOfEnumerationExpression,
                                                     Compiler * inCompiler
@@ -18720,249 +18361,10 @@ class GGS_enumeratedCollectionCstListInExpAST_2E_weak : public GGS_abstractEnume
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_enumeratedCollectionCstListInExpAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @forInstructionEnumeratedObjectListAST list enumerator
+// Phase 1: @forInstructionEnumeratedObjectAST struct
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_forInstructionEnumeratedObjectListAST final {
-  public: DownEnumerator_forInstructionEnumeratedObjectListAST (const class GGS_forInstructionEnumeratedObjectListAST & inList) ;
-
-  public: ~ DownEnumerator_forInstructionEnumeratedObjectListAST (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
-
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_bool current_mAscending (LOCATION_ARGS) const ;
-  public: class GGS_abstractEnumeratedCollectionAST current_mEnumeratedCollection (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_forInstructionEnumeratedObjectListAST_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS_forInstructionEnumeratedObjectListAST_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: DownEnumerator_forInstructionEnumeratedObjectListAST (const DownEnumerator_forInstructionEnumeratedObjectListAST &) = delete ;
-  private: DownEnumerator_forInstructionEnumeratedObjectListAST & operator = (const DownEnumerator_forInstructionEnumeratedObjectListAST &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_forInstructionEnumeratedObjectListAST final {
-  public: UpEnumerator_forInstructionEnumeratedObjectListAST (const class GGS_forInstructionEnumeratedObjectListAST & inList)  ;
-
-  public: ~ UpEnumerator_forInstructionEnumeratedObjectListAST (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
-
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_bool current_mAscending (LOCATION_ARGS) const ;
-  public: class GGS_abstractEnumeratedCollectionAST current_mEnumeratedCollection (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_forInstructionEnumeratedObjectListAST_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS_forInstructionEnumeratedObjectListAST_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: UpEnumerator_forInstructionEnumeratedObjectListAST (const UpEnumerator_forInstructionEnumeratedObjectListAST &) = delete ;
-  private: UpEnumerator_forInstructionEnumeratedObjectListAST & operator = (const UpEnumerator_forInstructionEnumeratedObjectListAST &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// @forInstructionEnumeratedObjectListAST list
-//--------------------------------------------------------------------------------------------------
-
-class GGS_forInstructionEnumeratedObjectListAST : public AC_GALGAS_root {
-//--- Private property
-  private: GenericArray <GGS_forInstructionEnumeratedObjectListAST_2E_element> mArray ;
-
-//--- Default constructor
-  public: GGS_forInstructionEnumeratedObjectListAST (void) ;
-
-//--- Destructor
-  public: virtual ~ GGS_forInstructionEnumeratedObjectListAST (void) = default ;
-
-//--- Copy
-  public: GGS_forInstructionEnumeratedObjectListAST (const GGS_forInstructionEnumeratedObjectListAST &) = default ;
-  public: GGS_forInstructionEnumeratedObjectListAST & operator = (const GGS_forInstructionEnumeratedObjectListAST &) = default ;
-
-//--- Is valid
-  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
-
-//--- Drop
-  public: inline virtual void drop (void) override { mArray.removeAll () ; }
-
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Count
-  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
- 
-//--- sortedElementArray
-  public : inline GenericArray <GGS_forInstructionEnumeratedObjectListAST_2E_element> sortedElementArray (void) const {
-    return mArray ;
-  }
-
-//--- subList
-  private: GGS_forInstructionEnumeratedObjectListAST subList (const int32_t inStart,
-                                                              const int32_t inLength,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const ;
-
-
-//--- List constructor for graph
-  public: GGS_forInstructionEnumeratedObjectListAST (const CollectionElementArray & inSharedArray) ;
-
-//--- Element constructor
-  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                 const class GGS_bool & in_mAscending,
-                                                 const class GGS_abstractEnumeratedCollectionAST & in_mEnumeratedCollection
-                                                 COMMA_LOCATION_ARGS) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_forInstructionEnumeratedObjectListAST init (Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GGS_forInstructionEnumeratedObjectListAST extractObject (const GGS_object & inObject,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_forInstructionEnumeratedObjectListAST class_func_listWithValue (const class GGS_bool & inOperand0,
-                                                                                           const class GGS_abstractEnumeratedCollectionAST & inOperand1
-                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: void plusAssignOperation (const GGS_forInstructionEnumeratedObjectListAST inOperand,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_bool & inOperand0,
-                                   const class GGS_abstractEnumeratedCollectionAST & inOperand1
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator, collection value
-  public: void plusPlusAssignOperation (const GGS_forInstructionEnumeratedObjectListAST_2E_element & inOperand
-                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: GGS_forInstructionEnumeratedObjectListAST add_operation (const GGS_forInstructionEnumeratedObjectListAST & inOperand,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: void setter_append (class GGS_bool constinArgument0,
-                              class GGS_abstractEnumeratedCollectionAST constinArgument1,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_insertAtIndex (class GGS_bool constinArgument0,
-                                     class GGS_abstractEnumeratedCollectionAST constinArgument1,
-                                     class GGS_uint constinArgument2,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popFirst (class GGS_bool & outArgument0,
-                                class GGS_abstractEnumeratedCollectionAST & outArgument1,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_bool & outArgument0,
-                               class GGS_abstractEnumeratedCollectionAST & outArgument1,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeAtIndex (class GGS_bool & outArgument0,
-                                     class GGS_abstractEnumeratedCollectionAST & outArgument1,
-                                     class GGS_uint constinArgument2,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMAscendingAtIndex (class GGS_bool constinArgument0,
-                                            class GGS_uint constinArgument1,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMEnumeratedCollectionAtIndex (class GGS_abstractEnumeratedCollectionAST constinArgument0,
-                                                       class GGS_uint constinArgument1,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: void method_first (class GGS_bool & outArgument0,
-                             class GGS_abstractEnumeratedCollectionAST & outArgument1,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_bool & outArgument0,
-                            class GGS_abstractEnumeratedCollectionAST & outArgument1,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_mAscendingAtIndex (const class GGS_uint & constinOperand0,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_abstractEnumeratedCollectionAST getter_mEnumeratedCollectionAtIndex (const class GGS_uint & constinOperand0,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
-
-  public: class GGS_forInstructionEnumeratedObjectListAST getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_forInstructionEnumeratedObjectListAST getter_subListToIndex (const class GGS_uint & constinOperand0,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_forInstructionEnumeratedObjectListAST getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator_forInstructionEnumeratedObjectListAST ;
-  friend class DownEnumerator_forInstructionEnumeratedObjectListAST ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @forInstructionEnumeratedObjectListAST_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_forInstructionEnumeratedObjectListAST_2E_element : public AC_GALGAS_root {
+class GGS_forInstructionEnumeratedObjectAST : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_bool mProperty_mAscending ;
   public: inline GGS_bool readProperty_mAscending (void) const {
@@ -18979,7 +18381,7 @@ class GGS_forInstructionEnumeratedObjectListAST_2E_element : public AC_GALGAS_ro
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GGS_forInstructionEnumeratedObjectListAST_2E_element (void) ;
+  public: GGS_forInstructionEnumeratedObjectAST (void) ;
 
 //--------------------------------- Property setters
   public: inline void setter_setMAscending (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -18994,30 +18396,30 @@ class GGS_forInstructionEnumeratedObjectListAST_2E_element : public AC_GALGAS_ro
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_forInstructionEnumeratedObjectListAST_2E_element (const GGS_bool & in_mAscending,
-                                                                const GGS_abstractEnumeratedCollectionAST & in_mEnumeratedCollection) ;
+  public: GGS_forInstructionEnumeratedObjectAST (const GGS_bool & in_mAscending,
+                                                 const GGS_abstractEnumeratedCollectionAST & in_mEnumeratedCollection) ;
 
 //--------------------------------- Copy constructor
-  public: GGS_forInstructionEnumeratedObjectListAST_2E_element (const GGS_forInstructionEnumeratedObjectListAST_2E_element & inSource) ;
+  public: GGS_forInstructionEnumeratedObjectAST (const GGS_forInstructionEnumeratedObjectAST & inSource) ;
 
 //--------------------------------- Assignment operator
-  public: GGS_forInstructionEnumeratedObjectListAST_2E_element & operator = (const GGS_forInstructionEnumeratedObjectListAST_2E_element & inSource) ;
+  public: GGS_forInstructionEnumeratedObjectAST & operator = (const GGS_forInstructionEnumeratedObjectAST & inSource) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_forInstructionEnumeratedObjectListAST_2E_element init_21__21_ (const class GGS_bool & inOperand0,
-                                                                                    const class GGS_abstractEnumeratedCollectionAST & inOperand1,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
+  public: static GGS_forInstructionEnumeratedObjectAST init_21__21_ (const class GGS_bool & inOperand0,
+                                                                     const class GGS_abstractEnumeratedCollectionAST & inOperand1,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_forInstructionEnumeratedObjectListAST_2E_element extractObject (const GGS_object & inObject,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GGS_forInstructionEnumeratedObjectAST extractObject (const GGS_object & inObject,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
@@ -19040,7 +18442,186 @@ class GGS_forInstructionEnumeratedObjectListAST_2E_element : public AC_GALGAS_ro
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListAST_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: [forInstructionEnumeratedObjectAST] array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ (const class GGS__5B_forInstructionEnumeratedObjectAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ (const DownEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ &) = delete ;
+  private: DownEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ & operator = (const DownEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent >= 0 ;
+  }
+
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent -= 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_forInstructionEnumeratedObjectAST current (LOCATION_ARGS) const ;
+  public: class GGS_forInstructionEnumeratedObjectAST current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_forInstructionEnumeratedObjectAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ (const class GGS__5B_forInstructionEnumeratedObjectAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ (const UpEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ &) = delete ;
+  private: UpEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ & operator = (const UpEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent < mSharedArray.count () ;
+  }
+
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent += 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_forInstructionEnumeratedObjectAST current (LOCATION_ARGS) const ;
+  public: class GGS_forInstructionEnumeratedObjectAST current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_forInstructionEnumeratedObjectAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_forInstructionEnumeratedObjectAST_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_forInstructionEnumeratedObjectAST> mSharedArray ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_forInstructionEnumeratedObjectAST_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_forInstructionEnumeratedObjectAST_5D_ (const GGS__5B_forInstructionEnumeratedObjectAST_5D_ & inSource) ;
+  public: GGS__5B_forInstructionEnumeratedObjectAST_5D_ & operator = (const GGS__5B_forInstructionEnumeratedObjectAST_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ ;
+  friend class DownEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_forInstructionEnumeratedObjectAST_5D_ init (Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS__5B_forInstructionEnumeratedObjectAST_5D_ extractObject (const GGS_object & inObject,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public: void plusAssignOperation (const GGS__5B_forInstructionEnumeratedObjectAST_5D_ inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- ++= operator, collection value
+  public: void plusPlusAssignOperation (const GGS_forInstructionEnumeratedObjectAST & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_forInstructionEnumeratedObjectAST_5D_ add_operation (const GGS__5B_forInstructionEnumeratedObjectAST_5D_ & inOperand,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_forInstructionEnumeratedObjectAST constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insertAtIndex (class GGS_forInstructionEnumeratedObjectAST constinArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popFirst (class GGS_forInstructionEnumeratedObjectAST & outArgument0,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popLast (class GGS_forInstructionEnumeratedObjectAST & outArgument0,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAtIndex (class GGS_forInstructionEnumeratedObjectAST & outArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_first (class GGS_forInstructionEnumeratedObjectAST & outArgument0,
+                             Compiler * inCompiler
+                             COMMA_LOCATION_ARGS) const ;
+
+  public: void method_last (class GGS_forInstructionEnumeratedObjectAST & outArgument0,
+                            Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+  public: class GGS_forInstructionEnumeratedObjectAST readSubscript__3F_ (const class GGS_uint & in0,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ ;
+  friend class DownEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_forInstructionEnumeratedObjectAST_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -19353,215 +18934,156 @@ class GGS_localConstantList : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_localConstantList ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @forInstructionEnumeratedObjectListForGeneration list enumerator
+// Phase 1: [forInstructionEnumeratedObjectForGeneration] array
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_forInstructionEnumeratedObjectListForGeneration final {
-  public: DownEnumerator_forInstructionEnumeratedObjectListForGeneration (const class GGS_forInstructionEnumeratedObjectListForGeneration & inList) ;
+class DownEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ (const class GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ & inOperand) ;
 
-  public: ~ DownEnumerator_forInstructionEnumeratedObjectListForGeneration (void) = default ;
+//--- No copy
+  private: DownEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ (const DownEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ &) = delete ;
+  private: DownEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ & operator = (const DownEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ &) = delete ;
 
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent >= 0 ;
+  }
 
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent -= 1 ;
+  }
 
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_string current_mEnumerationOrder (LOCATION_ARGS) const ;
-  public: class GGS_semanticExpressionForGeneration current_mEnumeratedExpression (LOCATION_ARGS) const ;
-  public: class GGS_string current_mEnumeratorCppName (LOCATION_ARGS) const ;
 //--- Current element access
-  public: class GGS_forInstructionEnumeratedObjectListForGeneration_2E_element current (LOCATION_ARGS) const ;
+  public: class GGS_forInstructionEnumeratedObjectForGeneration current (LOCATION_ARGS) const ;
+  public: class GGS_forInstructionEnumeratedObjectForGeneration current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
 
-  private: GenericArray <GGS_forInstructionEnumeratedObjectListForGeneration_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: DownEnumerator_forInstructionEnumeratedObjectListForGeneration (const DownEnumerator_forInstructionEnumeratedObjectListForGeneration &) = delete ;
-  private: DownEnumerator_forInstructionEnumeratedObjectListForGeneration & operator = (const DownEnumerator_forInstructionEnumeratedObjectListForGeneration &) = delete ;
+//---- Properties
+  private: const GenericArray <GGS_forInstructionEnumeratedObjectForGeneration> mSharedArray ;
+  private: int32_t mCurrent ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class UpEnumerator_forInstructionEnumeratedObjectListForGeneration final {
-  public: UpEnumerator_forInstructionEnumeratedObjectListForGeneration (const class GGS_forInstructionEnumeratedObjectListForGeneration & inList)  ;
+class UpEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ (const class GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ & inOperand) ;
 
-  public: ~ UpEnumerator_forInstructionEnumeratedObjectListForGeneration (void) = default ;
+//--- No copy
+  private: UpEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ (const UpEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ &) = delete ;
+  private: UpEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ & operator = (const UpEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ &) = delete ;
 
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent < mSharedArray.count () ;
+  }
 
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent += 1 ;
+  }
 
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_string current_mEnumerationOrder (LOCATION_ARGS) const ;
-  public: class GGS_semanticExpressionForGeneration current_mEnumeratedExpression (LOCATION_ARGS) const ;
-  public: class GGS_string current_mEnumeratorCppName (LOCATION_ARGS) const ;
 //--- Current element access
-  public: class GGS_forInstructionEnumeratedObjectListForGeneration_2E_element current (LOCATION_ARGS) const ;
+  public: class GGS_forInstructionEnumeratedObjectForGeneration current (LOCATION_ARGS) const ;
+  public: class GGS_forInstructionEnumeratedObjectForGeneration current_entry (LOCATION_ARGS) const ;
 
-  private: GenericArray <GGS_forInstructionEnumeratedObjectListForGeneration_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: UpEnumerator_forInstructionEnumeratedObjectListForGeneration (const UpEnumerator_forInstructionEnumeratedObjectListForGeneration &) = delete ;
-  private: UpEnumerator_forInstructionEnumeratedObjectListForGeneration & operator = (const UpEnumerator_forInstructionEnumeratedObjectListForGeneration &) = delete ;
+//---- Properties
+  private: const GenericArray <GGS_forInstructionEnumeratedObjectForGeneration> mSharedArray ;
+  private: int32_t mCurrent ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// @forInstructionEnumeratedObjectListForGeneration list
-//--------------------------------------------------------------------------------------------------
 
-class GGS_forInstructionEnumeratedObjectListForGeneration : public AC_GALGAS_root {
-//--- Private property
-  private: GenericArray <GGS_forInstructionEnumeratedObjectListForGeneration_2E_element> mArray ;
+class GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_forInstructionEnumeratedObjectForGeneration> mSharedArray ;
 
-//--- Default constructor
-  public: GGS_forInstructionEnumeratedObjectListForGeneration (void) ;
+//--------------------------------- Default constructor
+  public: GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ (void) ;
 
-//--- Destructor
-  public: virtual ~ GGS_forInstructionEnumeratedObjectListForGeneration (void) = default ;
+//--------------------------------- Handle copy
+  public: GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ (const GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ & inSource) ;
+  public: GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ & operator = (const GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ & inSource) ;
 
-//--- Copy
-  public: GGS_forInstructionEnumeratedObjectListForGeneration (const GGS_forInstructionEnumeratedObjectListForGeneration &) = default ;
-  public: GGS_forInstructionEnumeratedObjectListForGeneration & operator = (const GGS_forInstructionEnumeratedObjectListForGeneration &) = default ;
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
-//--- Is valid
-  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
 
-//--- Drop
-  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+  public: virtual void drop (void) override ;
 
-//--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Count
-  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
- 
-//--- sortedElementArray
-  public : inline GenericArray <GGS_forInstructionEnumeratedObjectListForGeneration_2E_element> sortedElementArray (void) const {
-    return mArray ;
-  }
-
-//--- subList
-  private: GGS_forInstructionEnumeratedObjectListForGeneration subList (const int32_t inStart,
-                                                                        const int32_t inLength,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-
-//--- List constructor for graph
-  public: GGS_forInstructionEnumeratedObjectListForGeneration (const CollectionElementArray & inSharedArray) ;
-
-//--- Element constructor
-  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                 const class GGS_string & in_mEnumerationOrder,
-                                                 const class GGS_semanticExpressionForGeneration & in_mEnumeratedExpression,
-                                                 const class GGS_string & in_mEnumeratorCppName
-                                                 COMMA_LOCATION_ARGS) ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ ;
+  friend class DownEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_forInstructionEnumeratedObjectListForGeneration init (Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ init (Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_forInstructionEnumeratedObjectListForGeneration extractObject (const GGS_object & inObject,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_forInstructionEnumeratedObjectListForGeneration class_func_listWithValue (const class GGS_string & inOperand0,
-                                                                                                     const class GGS_semanticExpressionForGeneration & inOperand1,
-                                                                                                     const class GGS_string & inOperand2
-                                                                                                     COMMA_LOCATION_ARGS) ;
+  public: static GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ extractObject (const GGS_object & inObject,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: void plusAssignOperation (const GGS_forInstructionEnumeratedObjectListForGeneration inOperand,
+  public: void plusAssignOperation (const GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_string & inOperand0,
-                                   const class GGS_semanticExpressionForGeneration & inOperand1,
-                                   const class GGS_string & inOperand2
-                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: void plusPlusAssignOperation (const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & inOperand
+  public: void plusPlusAssignOperation (const GGS_forInstructionEnumeratedObjectForGeneration & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
-  public: GGS_forInstructionEnumeratedObjectListForGeneration add_operation (const GGS_forInstructionEnumeratedObjectListForGeneration & inOperand,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) const ;
+  public: GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ add_operation (const GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ & inOperand,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
-  public: void setter_append (class GGS_string constinArgument0,
-                              class GGS_semanticExpressionForGeneration constinArgument1,
-                              class GGS_string constinArgument2,
+  public: void setter_append (class GGS_forInstructionEnumeratedObjectForGeneration constinArgument0,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_string constinArgument0,
-                                     class GGS_semanticExpressionForGeneration constinArgument1,
-                                     class GGS_string constinArgument2,
-                                     class GGS_uint constinArgument3,
+  public: void setter_insertAtIndex (class GGS_forInstructionEnumeratedObjectForGeneration constinArgument0,
+                                     class GGS_uint constinArgument1,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_string & outArgument0,
-                                class GGS_semanticExpressionForGeneration & outArgument1,
-                                class GGS_string & outArgument2,
+  public: void setter_popFirst (class GGS_forInstructionEnumeratedObjectForGeneration & outArgument0,
                                 Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popLast (class GGS_string & outArgument0,
-                               class GGS_semanticExpressionForGeneration & outArgument1,
-                               class GGS_string & outArgument2,
+  public: void setter_popLast (class GGS_forInstructionEnumeratedObjectForGeneration & outArgument0,
                                Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_string & outArgument0,
-                                     class GGS_semanticExpressionForGeneration & outArgument1,
-                                     class GGS_string & outArgument2,
-                                     class GGS_uint constinArgument3,
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAtIndex (class GGS_forInstructionEnumeratedObjectForGeneration & outArgument0,
+                                     class GGS_uint constinArgument1,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMEnumeratedExpressionAtIndex (class GGS_semanticExpressionForGeneration constinArgument0,
-                                                       class GGS_uint constinArgument1,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMEnumerationOrderAtIndex (class GGS_string constinArgument0,
-                                                   class GGS_uint constinArgument1,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMEnumeratorCppNameAtIndex (class GGS_string constinArgument0,
-                                                    class GGS_uint constinArgument1,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_string & outArgument0,
-                             class GGS_semanticExpressionForGeneration & outArgument1,
-                             class GGS_string & outArgument2,
+  public: void method_first (class GGS_forInstructionEnumeratedObjectForGeneration & outArgument0,
                              Compiler * inCompiler
                              COMMA_LOCATION_ARGS) const ;
 
-  public: void method_last (class GGS_string & outArgument0,
-                            class GGS_semanticExpressionForGeneration & outArgument1,
-                            class GGS_string & outArgument2,
+  public: void method_last (class GGS_forInstructionEnumeratedObjectForGeneration & outArgument0,
                             Compiler * inCompiler
                             COMMA_LOCATION_ARGS) const ;
 
@@ -19570,53 +19092,31 @@ class GGS_forInstructionEnumeratedObjectListForGeneration : public AC_GALGAS_roo
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_semanticExpressionForGeneration getter_mEnumeratedExpressionAtIndex (const class GGS_uint & constinOperand0,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_mEnumerationOrderAtIndex (const class GGS_uint & constinOperand0,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_mEnumeratorCppNameAtIndex (const class GGS_uint & constinOperand0,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
-
-  public: class GGS_forInstructionEnumeratedObjectListForGeneration getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_forInstructionEnumeratedObjectListForGeneration getter_subListToIndex (const class GGS_uint & constinOperand0,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_forInstructionEnumeratedObjectListForGeneration getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
+  public: class GGS_forInstructionEnumeratedObjectForGeneration readSubscript__3F_ (const class GGS_uint & in0,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
-  friend class UpEnumerator_forInstructionEnumeratedObjectListForGeneration ;
-  friend class DownEnumerator_forInstructionEnumeratedObjectListForGeneration ;
+  friend class UpEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ ;
+  friend class DownEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListForGeneration ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_forInstructionEnumeratedObjectForGeneration_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @forInstructionEnumeratedObjectListForGeneration_2E_element struct
+// Phase 1: @forInstructionEnumeratedObjectForGeneration struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_forInstructionEnumeratedObjectListForGeneration_2E_element : public AC_GALGAS_root {
+class GGS_forInstructionEnumeratedObjectForGeneration : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_string mProperty_mEnumerationOrder ;
   public: inline GGS_string readProperty_mEnumerationOrder (void) const {
@@ -19638,7 +19138,7 @@ class GGS_forInstructionEnumeratedObjectListForGeneration_2E_element : public AC
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GGS_forInstructionEnumeratedObjectListForGeneration_2E_element (void) ;
+  public: GGS_forInstructionEnumeratedObjectForGeneration (void) ;
 
 //--------------------------------- Property setters
   public: inline void setter_setMEnumerationOrder (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -19657,32 +19157,32 @@ class GGS_forInstructionEnumeratedObjectListForGeneration_2E_element : public AC
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_forInstructionEnumeratedObjectListForGeneration_2E_element (const GGS_string & in_mEnumerationOrder,
-                                                                          const GGS_semanticExpressionForGeneration & in_mEnumeratedExpression,
-                                                                          const GGS_string & in_mEnumeratorCppName) ;
+  public: GGS_forInstructionEnumeratedObjectForGeneration (const GGS_string & in_mEnumerationOrder,
+                                                           const GGS_semanticExpressionForGeneration & in_mEnumeratedExpression,
+                                                           const GGS_string & in_mEnumeratorCppName) ;
 
 //--------------------------------- Copy constructor
-  public: GGS_forInstructionEnumeratedObjectListForGeneration_2E_element (const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & inSource) ;
+  public: GGS_forInstructionEnumeratedObjectForGeneration (const GGS_forInstructionEnumeratedObjectForGeneration & inSource) ;
 
 //--------------------------------- Assignment operator
-  public: GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & operator = (const GGS_forInstructionEnumeratedObjectListForGeneration_2E_element & inSource) ;
+  public: GGS_forInstructionEnumeratedObjectForGeneration & operator = (const GGS_forInstructionEnumeratedObjectForGeneration & inSource) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_forInstructionEnumeratedObjectListForGeneration_2E_element init_21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                  const class GGS_semanticExpressionForGeneration & inOperand1,
-                                                                                                  const class GGS_string & inOperand2,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GGS_forInstructionEnumeratedObjectForGeneration init_21__21__21_ (const class GGS_string & inOperand0,
+                                                                                   const class GGS_semanticExpressionForGeneration & inOperand1,
+                                                                                   const class GGS_string & inOperand2,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_forInstructionEnumeratedObjectListForGeneration_2E_element extractObject (const GGS_object & inObject,
-                                                                                               Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) ;
+  public: static GGS_forInstructionEnumeratedObjectForGeneration extractObject (const GGS_object & inObject,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
@@ -19705,7 +19205,7 @@ class GGS_forInstructionEnumeratedObjectListForGeneration_2E_element : public AC
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectListForGeneration_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionEnumeratedObjectForGeneration ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @forInstructionForGeneration reference class
@@ -19721,7 +19221,7 @@ class GGS_forInstructionForGeneration : public GGS_semanticInstructionForGenerat
 //--------------------------------- Property access
   public: class GGS_location readProperty_mInstructionLocation (void) const ;
 
-  public: class GGS_forInstructionEnumeratedObjectListForGeneration readProperty_mEnumeratedObjectList (void) const ;
+  public: class GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ readProperty_mEnumeratedObjectList (void) const ;
 
   public: class GGS_string readProperty_mIndexVariableCppName (void) const ;
 
@@ -19739,7 +19239,7 @@ class GGS_forInstructionForGeneration : public GGS_semanticInstructionForGenerat
 
 //--------------------------------- Initializers
   public: static GGS_forInstructionForGeneration init_21__21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
-                                                                                       const class GGS_forInstructionEnumeratedObjectListForGeneration & inOperand1,
+                                                                                       const class GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ & inOperand1,
                                                                                        const class GGS_string & inOperand2,
                                                                                        const class GGS_semanticExpressionForGeneration & inOperand3,
                                                                                        const class GGS_semanticInstructionListForGeneration & inOperand4,
@@ -19791,7 +19291,7 @@ class cPtr_forInstructionForGeneration : public cPtr_semanticInstructionForGener
 
 //--------------------------------- Initializers
   public: void forInstructionForGeneration_init_21__21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
-                                                                                 const class GGS_forInstructionEnumeratedObjectListForGeneration & inOperand1,
+                                                                                 const class GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ & inOperand1,
                                                                                  const class GGS_string & inOperand2,
                                                                                  const class GGS_semanticExpressionForGeneration & inOperand3,
                                                                                  const class GGS_semanticInstructionListForGeneration & inOperand4,
@@ -19811,7 +19311,7 @@ class cPtr_forInstructionForGeneration : public cPtr_semanticInstructionForGener
 
 //--- Properties
   public: GGS_location mProperty_mInstructionLocation ;
-  public: GGS_forInstructionEnumeratedObjectListForGeneration mProperty_mEnumeratedObjectList ;
+  public: GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ mProperty_mEnumeratedObjectList ;
   public: GGS_string mProperty_mIndexVariableCppName ;
   public: GGS_semanticExpressionForGeneration mProperty_mWhileExpression ;
   public: GGS_semanticInstructionListForGeneration mProperty_mBeforeInstructionList ;
@@ -19825,7 +19325,7 @@ class cPtr_forInstructionForGeneration : public cPtr_semanticInstructionForGener
 
 //--- Constructor
   public: cPtr_forInstructionForGeneration (const GGS_location & in_mInstructionLocation,
-                                            const GGS_forInstructionEnumeratedObjectListForGeneration & in_mEnumeratedObjectList,
+                                            const GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ & in_mEnumeratedObjectList,
                                             const GGS_string & in_mIndexVariableCppName,
                                             const GGS_semanticExpressionForGeneration & in_mWhileExpression,
                                             const GGS_semanticInstructionListForGeneration & in_mBeforeInstructionList,
@@ -19928,215 +19428,156 @@ class GGS_forInstructionForGeneration_2E_weak : public GGS_semanticInstructionFo
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_forInstructionForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @switchExtractedValuesListAST list enumerator
+// Phase 1: [switchBranchAST] array
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_switchExtractedValuesListAST final {
-  public: DownEnumerator_switchExtractedValuesListAST (const class GGS_switchExtractedValuesListAST & inList) ;
+class DownEnumerator__5B_switchBranchAST_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_switchBranchAST_5D_ (const class GGS__5B_switchBranchAST_5D_ & inOperand) ;
 
-  public: ~ DownEnumerator_switchExtractedValuesListAST (void) = default ;
+//--- No copy
+  private: DownEnumerator__5B_switchBranchAST_5D_ (const DownEnumerator__5B_switchBranchAST_5D_ &) = delete ;
+  private: DownEnumerator__5B_switchBranchAST_5D_ & operator = (const DownEnumerator__5B_switchBranchAST_5D_ &) = delete ;
 
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent >= 0 ;
+  }
 
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent -= 1 ;
+  }
 
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_lstring current_mExtractedValueTypeName (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mExtractedValueName (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mMarkedAsUnused (LOCATION_ARGS) const ;
 //--- Current element access
-  public: class GGS_switchExtractedValuesListAST_2E_element current (LOCATION_ARGS) const ;
+  public: class GGS_switchBranchAST current (LOCATION_ARGS) const ;
+  public: class GGS_switchBranchAST current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
 
-  private: GenericArray <GGS_switchExtractedValuesListAST_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: DownEnumerator_switchExtractedValuesListAST (const DownEnumerator_switchExtractedValuesListAST &) = delete ;
-  private: DownEnumerator_switchExtractedValuesListAST & operator = (const DownEnumerator_switchExtractedValuesListAST &) = delete ;
+//---- Properties
+  private: const GenericArray <GGS_switchBranchAST> mSharedArray ;
+  private: int32_t mCurrent ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class UpEnumerator_switchExtractedValuesListAST final {
-  public: UpEnumerator_switchExtractedValuesListAST (const class GGS_switchExtractedValuesListAST & inList)  ;
+class UpEnumerator__5B_switchBranchAST_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_switchBranchAST_5D_ (const class GGS__5B_switchBranchAST_5D_ & inOperand) ;
 
-  public: ~ UpEnumerator_switchExtractedValuesListAST (void) = default ;
+//--- No copy
+  private: UpEnumerator__5B_switchBranchAST_5D_ (const UpEnumerator__5B_switchBranchAST_5D_ &) = delete ;
+  private: UpEnumerator__5B_switchBranchAST_5D_ & operator = (const UpEnumerator__5B_switchBranchAST_5D_ &) = delete ;
 
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent < mSharedArray.count () ;
+  }
 
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent += 1 ;
+  }
 
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_lstring current_mExtractedValueTypeName (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_mExtractedValueName (LOCATION_ARGS) const ;
-  public: class GGS_bool current_mMarkedAsUnused (LOCATION_ARGS) const ;
 //--- Current element access
-  public: class GGS_switchExtractedValuesListAST_2E_element current (LOCATION_ARGS) const ;
+  public: class GGS_switchBranchAST current (LOCATION_ARGS) const ;
+  public: class GGS_switchBranchAST current_entry (LOCATION_ARGS) const ;
 
-  private: GenericArray <GGS_switchExtractedValuesListAST_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: UpEnumerator_switchExtractedValuesListAST (const UpEnumerator_switchExtractedValuesListAST &) = delete ;
-  private: UpEnumerator_switchExtractedValuesListAST & operator = (const UpEnumerator_switchExtractedValuesListAST &) = delete ;
+//---- Properties
+  private: const GenericArray <GGS_switchBranchAST> mSharedArray ;
+  private: int32_t mCurrent ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// @switchExtractedValuesListAST list
-//--------------------------------------------------------------------------------------------------
 
-class GGS_switchExtractedValuesListAST : public AC_GALGAS_root {
-//--- Private property
-  private: GenericArray <GGS_switchExtractedValuesListAST_2E_element> mArray ;
+class GGS__5B_switchBranchAST_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_switchBranchAST> mSharedArray ;
 
-//--- Default constructor
-  public: GGS_switchExtractedValuesListAST (void) ;
+//--------------------------------- Default constructor
+  public: GGS__5B_switchBranchAST_5D_ (void) ;
 
-//--- Destructor
-  public: virtual ~ GGS_switchExtractedValuesListAST (void) = default ;
+//--------------------------------- Handle copy
+  public: GGS__5B_switchBranchAST_5D_ (const GGS__5B_switchBranchAST_5D_ & inSource) ;
+  public: GGS__5B_switchBranchAST_5D_ & operator = (const GGS__5B_switchBranchAST_5D_ & inSource) ;
 
-//--- Copy
-  public: GGS_switchExtractedValuesListAST (const GGS_switchExtractedValuesListAST &) = default ;
-  public: GGS_switchExtractedValuesListAST & operator = (const GGS_switchExtractedValuesListAST &) = default ;
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
-//--- Is valid
-  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
 
-//--- Drop
-  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+  public: virtual void drop (void) override ;
 
-//--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Count
-  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
- 
-//--- sortedElementArray
-  public : inline GenericArray <GGS_switchExtractedValuesListAST_2E_element> sortedElementArray (void) const {
-    return mArray ;
-  }
-
-//--- subList
-  private: GGS_switchExtractedValuesListAST subList (const int32_t inStart,
-                                                     const int32_t inLength,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const ;
-
-
-//--- List constructor for graph
-  public: GGS_switchExtractedValuesListAST (const CollectionElementArray & inSharedArray) ;
-
-//--- Element constructor
-  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                 const class GGS_lstring & in_mExtractedValueTypeName,
-                                                 const class GGS_lstring & in_mExtractedValueName,
-                                                 const class GGS_bool & in_mMarkedAsUnused
-                                                 COMMA_LOCATION_ARGS) ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_switchBranchAST_5D_ ;
+  friend class DownEnumerator__5B_switchBranchAST_5D_ ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_switchExtractedValuesListAST init (Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
+  public: static GGS__5B_switchBranchAST_5D_ init (Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_switchExtractedValuesListAST extractObject (const GGS_object & inObject,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_switchExtractedValuesListAST class_func_listWithValue (const class GGS_lstring & inOperand0,
-                                                                                  const class GGS_lstring & inOperand1,
-                                                                                  const class GGS_bool & inOperand2
-                                                                                  COMMA_LOCATION_ARGS) ;
+  public: static GGS__5B_switchBranchAST_5D_ extractObject (const GGS_object & inObject,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: void plusAssignOperation (const GGS_switchExtractedValuesListAST inOperand,
+  public: void plusAssignOperation (const GGS__5B_switchBranchAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_lstring & inOperand0,
-                                   const class GGS_lstring & inOperand1,
-                                   const class GGS_bool & inOperand2
-                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: void plusPlusAssignOperation (const GGS_switchExtractedValuesListAST_2E_element & inOperand
+  public: void plusPlusAssignOperation (const GGS_switchBranchAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
-  public: GGS_switchExtractedValuesListAST add_operation (const GGS_switchExtractedValuesListAST & inOperand,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const ;
+  public: GGS__5B_switchBranchAST_5D_ add_operation (const GGS__5B_switchBranchAST_5D_ & inOperand,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
-  public: void setter_append (class GGS_lstring constinArgument0,
-                              class GGS_lstring constinArgument1,
-                              class GGS_bool constinArgument2,
+  public: void setter_append (class GGS_switchBranchAST constinArgument0,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_lstring constinArgument0,
-                                     class GGS_lstring constinArgument1,
-                                     class GGS_bool constinArgument2,
-                                     class GGS_uint constinArgument3,
+  public: void setter_insertAtIndex (class GGS_switchBranchAST constinArgument0,
+                                     class GGS_uint constinArgument1,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_lstring & outArgument0,
-                                class GGS_lstring & outArgument1,
-                                class GGS_bool & outArgument2,
+  public: void setter_popFirst (class GGS_switchBranchAST & outArgument0,
                                 Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popLast (class GGS_lstring & outArgument0,
-                               class GGS_lstring & outArgument1,
-                               class GGS_bool & outArgument2,
+  public: void setter_popLast (class GGS_switchBranchAST & outArgument0,
                                Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_lstring & outArgument0,
-                                     class GGS_lstring & outArgument1,
-                                     class GGS_bool & outArgument2,
-                                     class GGS_uint constinArgument3,
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAtIndex (class GGS_switchBranchAST & outArgument0,
+                                     class GGS_uint constinArgument1,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMExtractedValueNameAtIndex (class GGS_lstring constinArgument0,
-                                                     class GGS_uint constinArgument1,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMExtractedValueTypeNameAtIndex (class GGS_lstring constinArgument0,
-                                                         class GGS_uint constinArgument1,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMMarkedAsUnusedAtIndex (class GGS_bool constinArgument0,
-                                                 class GGS_uint constinArgument1,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS_lstring & outArgument0,
-                             class GGS_lstring & outArgument1,
-                             class GGS_bool & outArgument2,
+  public: void method_first (class GGS_switchBranchAST & outArgument0,
                              Compiler * inCompiler
                              COMMA_LOCATION_ARGS) const ;
 
-  public: void method_last (class GGS_lstring & outArgument0,
-                            class GGS_lstring & outArgument1,
-                            class GGS_bool & outArgument2,
+  public: void method_last (class GGS_switchBranchAST & outArgument0,
                             Compiler * inCompiler
                             COMMA_LOCATION_ARGS) const ;
 
@@ -20145,53 +19586,316 @@ class GGS_switchExtractedValuesListAST : public AC_GALGAS_root {
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_lstring getter_mExtractedValueNameAtIndex (const class GGS_uint & constinOperand0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstring getter_mExtractedValueTypeNameAtIndex (const class GGS_uint & constinOperand0,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_mMarkedAsUnusedAtIndex (const class GGS_uint & constinOperand0,
+//--------------------------------- Read subscripts
+  public: class GGS_switchBranchAST readSubscript__3F_ (const class GGS_uint & in0,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
 
-  public: class GGS_switchExtractedValuesListAST getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_switchExtractedValuesListAST getter_subListToIndex (const class GGS_uint & constinOperand0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_switchBranchAST_5D_ ;
+  friend class DownEnumerator__5B_switchBranchAST_5D_ ;
+ 
+} ;
 
-  public: class GGS_switchExtractedValuesListAST getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const ;
+//--------------------------------------------------------------------------------------------------
 
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_switchBranchAST_5D_ ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: [switchExtractedValuesAST] array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_switchExtractedValuesAST_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_switchExtractedValuesAST_5D_ (const class GGS__5B_switchExtractedValuesAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_switchExtractedValuesAST_5D_ (const DownEnumerator__5B_switchExtractedValuesAST_5D_ &) = delete ;
+  private: DownEnumerator__5B_switchExtractedValuesAST_5D_ & operator = (const DownEnumerator__5B_switchExtractedValuesAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent >= 0 ;
+  }
+
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent -= 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_switchExtractedValuesAST current (LOCATION_ARGS) const ;
+  public: class GGS_switchExtractedValuesAST current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_switchExtractedValuesAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_switchExtractedValuesAST_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_switchExtractedValuesAST_5D_ (const class GGS__5B_switchExtractedValuesAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_switchExtractedValuesAST_5D_ (const UpEnumerator__5B_switchExtractedValuesAST_5D_ &) = delete ;
+  private: UpEnumerator__5B_switchExtractedValuesAST_5D_ & operator = (const UpEnumerator__5B_switchExtractedValuesAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent < mSharedArray.count () ;
+  }
+
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent += 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_switchExtractedValuesAST current (LOCATION_ARGS) const ;
+  public: class GGS_switchExtractedValuesAST current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_switchExtractedValuesAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_switchExtractedValuesAST_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_switchExtractedValuesAST> mSharedArray ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_switchExtractedValuesAST_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_switchExtractedValuesAST_5D_ (const GGS__5B_switchExtractedValuesAST_5D_ & inSource) ;
+  public: GGS__5B_switchExtractedValuesAST_5D_ & operator = (const GGS__5B_switchExtractedValuesAST_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_switchExtractedValuesAST_5D_ ;
+  friend class DownEnumerator__5B_switchExtractedValuesAST_5D_ ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_switchExtractedValuesAST_5D_ init (Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS__5B_switchExtractedValuesAST_5D_ extractObject (const GGS_object & inObject,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public: void plusAssignOperation (const GGS__5B_switchExtractedValuesAST_5D_ inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- ++= operator, collection value
+  public: void plusPlusAssignOperation (const GGS_switchExtractedValuesAST & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_switchExtractedValuesAST_5D_ add_operation (const GGS__5B_switchExtractedValuesAST_5D_ & inOperand,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_switchExtractedValuesAST constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insertAtIndex (class GGS_switchExtractedValuesAST constinArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popFirst (class GGS_switchExtractedValuesAST & outArgument0,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popLast (class GGS_switchExtractedValuesAST & outArgument0,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAtIndex (class GGS_switchExtractedValuesAST & outArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_first (class GGS_switchExtractedValuesAST & outArgument0,
+                             Compiler * inCompiler
+                             COMMA_LOCATION_ARGS) const ;
+
+  public: void method_last (class GGS_switchExtractedValuesAST & outArgument0,
+                            Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+  public: class GGS_switchExtractedValuesAST readSubscript__3F_ (const class GGS_uint & in0,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_switchExtractedValuesAST_5D_ ;
+  friend class DownEnumerator__5B_switchExtractedValuesAST_5D_ ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_switchExtractedValuesAST_5D_ ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @switchBranchAST struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_switchBranchAST : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS__5B_lstring_5D_ mProperty_mSwitchConstantList ;
+  public: inline GGS__5B_lstring_5D_ readProperty_mSwitchConstantList (void) const {
+    return mProperty_mSwitchConstantList ;
+  }
+
+  public: GGS__5B_switchExtractedValuesAST_5D_ mProperty_mAssociatedValuesExtraction ;
+  public: inline GGS__5B_switchExtractedValuesAST_5D_ readProperty_mAssociatedValuesExtraction (void) const {
+    return mProperty_mAssociatedValuesExtraction ;
+  }
+
+  public: GGS__5B_semanticInstructionAST_5D_ mProperty_mInstructions ;
+  public: inline GGS__5B_semanticInstructionAST_5D_ readProperty_mInstructions (void) const {
+    return mProperty_mInstructions ;
+  }
+
+  public: GGS_location mProperty_mEndOfBranch ;
+  public: inline GGS_location readProperty_mEndOfBranch (void) const {
+    return mProperty_mEndOfBranch ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_switchBranchAST (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMSwitchConstantList (const GGS__5B_lstring_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mSwitchConstantList = inValue ;
+  }
+
+  public: inline void setter_setMAssociatedValuesExtraction (const GGS__5B_switchExtractedValuesAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mAssociatedValuesExtraction = inValue ;
+  }
+
+  public: inline void setter_setMInstructions (const GGS__5B_semanticInstructionAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mInstructions = inValue ;
+  }
+
+  public: inline void setter_setMEndOfBranch (const GGS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mEndOfBranch = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_switchBranchAST (const GGS__5B_lstring_5D_ & in_mSwitchConstantList,
+                               const GGS__5B_switchExtractedValuesAST_5D_ & in_mAssociatedValuesExtraction,
+                               const GGS__5B_semanticInstructionAST_5D_ & in_mInstructions,
+                               const GGS_location & in_mEndOfBranch) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_switchBranchAST (const GGS_switchBranchAST & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_switchBranchAST & operator = (const GGS_switchBranchAST & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_switchBranchAST init_21__21__21__21_ (const class GGS__5B_lstring_5D_ & inOperand0,
+                                                           const class GGS__5B_switchExtractedValuesAST_5D_ & inOperand1,
+                                                           const class GGS__5B_semanticInstructionAST_5D_ & inOperand2,
+                                                           const class GGS_location & inOperand3,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_switchBranchAST extractObject (const GGS_object & inObject,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
 
 //--------------------------------- Read subscripts
 
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator_switchExtractedValuesListAST ;
-  friend class DownEnumerator_switchExtractedValuesListAST ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchExtractedValuesListAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchBranchAST ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @switchExtractedValuesListAST_2E_element struct
+// Phase 1: @switchExtractedValuesAST struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_switchExtractedValuesListAST_2E_element : public AC_GALGAS_root {
+class GGS_switchExtractedValuesAST : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mExtractedValueTypeName ;
   public: inline GGS_lstring readProperty_mExtractedValueTypeName (void) const {
@@ -20213,7 +19917,7 @@ class GGS_switchExtractedValuesListAST_2E_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GGS_switchExtractedValuesListAST_2E_element (void) ;
+  public: GGS_switchExtractedValuesAST (void) ;
 
 //--------------------------------- Property setters
   public: inline void setter_setMExtractedValueTypeName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -20232,32 +19936,32 @@ class GGS_switchExtractedValuesListAST_2E_element : public AC_GALGAS_root {
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_switchExtractedValuesListAST_2E_element (const GGS_lstring & in_mExtractedValueTypeName,
-                                                       const GGS_lstring & in_mExtractedValueName,
-                                                       const GGS_bool & in_mMarkedAsUnused) ;
+  public: GGS_switchExtractedValuesAST (const GGS_lstring & in_mExtractedValueTypeName,
+                                        const GGS_lstring & in_mExtractedValueName,
+                                        const GGS_bool & in_mMarkedAsUnused) ;
 
 //--------------------------------- Copy constructor
-  public: GGS_switchExtractedValuesListAST_2E_element (const GGS_switchExtractedValuesListAST_2E_element & inSource) ;
+  public: GGS_switchExtractedValuesAST (const GGS_switchExtractedValuesAST & inSource) ;
 
 //--------------------------------- Assignment operator
-  public: GGS_switchExtractedValuesListAST_2E_element & operator = (const GGS_switchExtractedValuesListAST_2E_element & inSource) ;
+  public: GGS_switchExtractedValuesAST & operator = (const GGS_switchExtractedValuesAST & inSource) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_switchExtractedValuesListAST_2E_element init_21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                               const class GGS_lstring & inOperand1,
-                                                                               const class GGS_bool & inOperand2,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
+  public: static GGS_switchExtractedValuesAST init_21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                const class GGS_lstring & inOperand1,
+                                                                const class GGS_bool & inOperand2,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_switchExtractedValuesListAST_2E_element extractObject (const GGS_object & inObject,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
+  public: static GGS_switchExtractedValuesAST extractObject (const GGS_object & inObject,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
@@ -20280,235 +19984,159 @@ class GGS_switchExtractedValuesListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchExtractedValuesListAST_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchExtractedValuesAST ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @switchBranchesAST list enumerator
+// Phase 1: [switchBranchForGeneration] array
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_switchBranchesAST final {
-  public: DownEnumerator_switchBranchesAST (const class GGS_switchBranchesAST & inList) ;
+class DownEnumerator__5B_switchBranchForGeneration_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_switchBranchForGeneration_5D_ (const class GGS__5B_switchBranchForGeneration_5D_ & inOperand) ;
 
-  public: ~ DownEnumerator_switchBranchesAST (void) = default ;
+//--- No copy
+  private: DownEnumerator__5B_switchBranchForGeneration_5D_ (const DownEnumerator__5B_switchBranchForGeneration_5D_ &) = delete ;
+  private: DownEnumerator__5B_switchBranchForGeneration_5D_ & operator = (const DownEnumerator__5B_switchBranchForGeneration_5D_ &) = delete ;
 
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent >= 0 ;
+  }
 
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent -= 1 ;
+  }
 
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS__5B_lstring_5D_ current_mSwitchConstantList (LOCATION_ARGS) const ;
-  public: class GGS_switchExtractedValuesListAST current_mAssociatedValuesExtraction (LOCATION_ARGS) const ;
-  public: class GGS__5B_semanticInstructionAST_5D_ current_mInstructions (LOCATION_ARGS) const ;
-  public: class GGS_location current_mEndOfBranch (LOCATION_ARGS) const ;
 //--- Current element access
-  public: class GGS_switchBranchesAST_2E_element current (LOCATION_ARGS) const ;
+  public: class GGS_switchBranchForGeneration current (LOCATION_ARGS) const ;
+  public: class GGS_switchBranchForGeneration current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
 
-  private: GenericArray <GGS_switchBranchesAST_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: DownEnumerator_switchBranchesAST (const DownEnumerator_switchBranchesAST &) = delete ;
-  private: DownEnumerator_switchBranchesAST & operator = (const DownEnumerator_switchBranchesAST &) = delete ;
+//---- Properties
+  private: const GenericArray <GGS_switchBranchForGeneration> mSharedArray ;
+  private: int32_t mCurrent ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class UpEnumerator_switchBranchesAST final {
-  public: UpEnumerator_switchBranchesAST (const class GGS_switchBranchesAST & inList)  ;
+class UpEnumerator__5B_switchBranchForGeneration_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_switchBranchForGeneration_5D_ (const class GGS__5B_switchBranchForGeneration_5D_ & inOperand) ;
 
-  public: ~ UpEnumerator_switchBranchesAST (void) = default ;
+//--- No copy
+  private: UpEnumerator__5B_switchBranchForGeneration_5D_ (const UpEnumerator__5B_switchBranchForGeneration_5D_ &) = delete ;
+  private: UpEnumerator__5B_switchBranchForGeneration_5D_ & operator = (const UpEnumerator__5B_switchBranchForGeneration_5D_ &) = delete ;
 
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent < mSharedArray.count () ;
+  }
 
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent += 1 ;
+  }
 
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS__5B_lstring_5D_ current_mSwitchConstantList (LOCATION_ARGS) const ;
-  public: class GGS_switchExtractedValuesListAST current_mAssociatedValuesExtraction (LOCATION_ARGS) const ;
-  public: class GGS__5B_semanticInstructionAST_5D_ current_mInstructions (LOCATION_ARGS) const ;
-  public: class GGS_location current_mEndOfBranch (LOCATION_ARGS) const ;
 //--- Current element access
-  public: class GGS_switchBranchesAST_2E_element current (LOCATION_ARGS) const ;
+  public: class GGS_switchBranchForGeneration current (LOCATION_ARGS) const ;
+  public: class GGS_switchBranchForGeneration current_entry (LOCATION_ARGS) const ;
 
-  private: GenericArray <GGS_switchBranchesAST_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: UpEnumerator_switchBranchesAST (const UpEnumerator_switchBranchesAST &) = delete ;
-  private: UpEnumerator_switchBranchesAST & operator = (const UpEnumerator_switchBranchesAST &) = delete ;
+//---- Properties
+  private: const GenericArray <GGS_switchBranchForGeneration> mSharedArray ;
+  private: int32_t mCurrent ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
-// @switchBranchesAST list
-//--------------------------------------------------------------------------------------------------
 
-class GGS_switchBranchesAST : public AC_GALGAS_root {
-//--- Private property
-  private: GenericArray <GGS_switchBranchesAST_2E_element> mArray ;
+class GGS__5B_switchBranchForGeneration_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_switchBranchForGeneration> mSharedArray ;
 
-//--- Default constructor
-  public: GGS_switchBranchesAST (void) ;
+//--------------------------------- Default constructor
+  public: GGS__5B_switchBranchForGeneration_5D_ (void) ;
 
-//--- Destructor
-  public: virtual ~ GGS_switchBranchesAST (void) = default ;
+//--------------------------------- Handle copy
+  public: GGS__5B_switchBranchForGeneration_5D_ (const GGS__5B_switchBranchForGeneration_5D_ & inSource) ;
+  public: GGS__5B_switchBranchForGeneration_5D_ & operator = (const GGS__5B_switchBranchForGeneration_5D_ & inSource) ;
 
-//--- Copy
-  public: GGS_switchBranchesAST (const GGS_switchBranchesAST &) = default ;
-  public: GGS_switchBranchesAST & operator = (const GGS_switchBranchesAST &) = default ;
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
-//--- Is valid
-  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
 
-//--- Drop
-  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+  public: virtual void drop (void) override ;
 
-//--- Description
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--- Count
-  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
- 
-//--- sortedElementArray
-  public : inline GenericArray <GGS_switchBranchesAST_2E_element> sortedElementArray (void) const {
-    return mArray ;
-  }
-
-//--- subList
-  private: GGS_switchBranchesAST subList (const int32_t inStart,
-                                          const int32_t inLength,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const ;
-
-
-//--- List constructor for graph
-  public: GGS_switchBranchesAST (const CollectionElementArray & inSharedArray) ;
-
-//--- Element constructor
-  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                 const class GGS__5B_lstring_5D_ & in_mSwitchConstantList,
-                                                 const class GGS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
-                                                 const class GGS__5B_semanticInstructionAST_5D_ & in_mInstructions,
-                                                 const class GGS_location & in_mEndOfBranch
-                                                 COMMA_LOCATION_ARGS) ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_switchBranchForGeneration_5D_ ;
+  friend class DownEnumerator__5B_switchBranchForGeneration_5D_ ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_switchBranchesAST init (Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
+  public: static GGS__5B_switchBranchForGeneration_5D_ init (Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_switchBranchesAST extractObject (const GGS_object & inObject,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GGS_switchBranchesAST class_func_listWithValue (const class GGS__5B_lstring_5D_ & inOperand0,
-                                                                       const class GGS_switchExtractedValuesListAST & inOperand1,
-                                                                       const class GGS__5B_semanticInstructionAST_5D_ & inOperand2,
-                                                                       const class GGS_location & inOperand3
-                                                                       COMMA_LOCATION_ARGS) ;
+  public: static GGS__5B_switchBranchForGeneration_5D_ extractObject (const GGS_object & inObject,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public: void plusAssignOperation (const GGS_switchBranchesAST inOperand,
+  public: void plusAssignOperation (const GGS__5B_switchBranchForGeneration_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS__5B_lstring_5D_ & inOperand0,
-                                   const class GGS_switchExtractedValuesListAST & inOperand1,
-                                   const class GGS__5B_semanticInstructionAST_5D_ & inOperand2,
-                                   const class GGS_location & inOperand3
-                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- ++= operator, collection value
-  public: void plusPlusAssignOperation (const GGS_switchBranchesAST_2E_element & inOperand
+  public: void plusPlusAssignOperation (const GGS_switchBranchForGeneration & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
-  public: GGS_switchBranchesAST add_operation (const GGS_switchBranchesAST & inOperand,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const ;
+  public: GGS__5B_switchBranchForGeneration_5D_ add_operation (const GGS__5B_switchBranchForGeneration_5D_ & inOperand,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
-  public: void setter_append (class GGS__5B_lstring_5D_ constinArgument0,
-                              class GGS_switchExtractedValuesListAST constinArgument1,
-                              class GGS__5B_semanticInstructionAST_5D_ constinArgument2,
-                              class GGS_location constinArgument3,
+  public: void setter_append (class GGS_switchBranchForGeneration constinArgument0,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS__5B_lstring_5D_ constinArgument0,
-                                     class GGS_switchExtractedValuesListAST constinArgument1,
-                                     class GGS__5B_semanticInstructionAST_5D_ constinArgument2,
-                                     class GGS_location constinArgument3,
-                                     class GGS_uint constinArgument4,
+  public: void setter_insertAtIndex (class GGS_switchBranchForGeneration constinArgument0,
+                                     class GGS_uint constinArgument1,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS__5B_lstring_5D_ & outArgument0,
-                                class GGS_switchExtractedValuesListAST & outArgument1,
-                                class GGS__5B_semanticInstructionAST_5D_ & outArgument2,
-                                class GGS_location & outArgument3,
+  public: void setter_popFirst (class GGS_switchBranchForGeneration & outArgument0,
                                 Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popLast (class GGS__5B_lstring_5D_ & outArgument0,
-                               class GGS_switchExtractedValuesListAST & outArgument1,
-                               class GGS__5B_semanticInstructionAST_5D_ & outArgument2,
-                               class GGS_location & outArgument3,
+  public: void setter_popLast (class GGS_switchBranchForGeneration & outArgument0,
                                Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS__5B_lstring_5D_ & outArgument0,
-                                     class GGS_switchExtractedValuesListAST & outArgument1,
-                                     class GGS__5B_semanticInstructionAST_5D_ & outArgument2,
-                                     class GGS_location & outArgument3,
-                                     class GGS_uint constinArgument4,
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAtIndex (class GGS_switchBranchForGeneration & outArgument0,
+                                     class GGS_uint constinArgument1,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMAssociatedValuesExtractionAtIndex (class GGS_switchExtractedValuesListAST constinArgument0,
-                                                             class GGS_uint constinArgument1,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMEndOfBranchAtIndex (class GGS_location constinArgument0,
-                                              class GGS_uint constinArgument1,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMInstructionsAtIndex (class GGS__5B_semanticInstructionAST_5D_ constinArgument0,
-                                               class GGS_uint constinArgument1,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMSwitchConstantListAtIndex (class GGS__5B_lstring_5D_ constinArgument0,
-                                                     class GGS_uint constinArgument1,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
-  public: void method_first (class GGS__5B_lstring_5D_ & outArgument0,
-                             class GGS_switchExtractedValuesListAST & outArgument1,
-                             class GGS__5B_semanticInstructionAST_5D_ & outArgument2,
-                             class GGS_location & outArgument3,
+  public: void method_first (class GGS_switchBranchForGeneration & outArgument0,
                              Compiler * inCompiler
                              COMMA_LOCATION_ARGS) const ;
 
-  public: void method_last (class GGS__5B_lstring_5D_ & outArgument0,
-                            class GGS_switchExtractedValuesListAST & outArgument1,
-                            class GGS__5B_semanticInstructionAST_5D_ & outArgument2,
-                            class GGS_location & outArgument3,
+  public: void method_last (class GGS_switchBranchForGeneration & outArgument0,
                             Compiler * inCompiler
                             COMMA_LOCATION_ARGS) const ;
 
@@ -20517,76 +20145,229 @@ class GGS_switchBranchesAST : public AC_GALGAS_root {
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_switchExtractedValuesListAST getter_mAssociatedValuesExtractionAtIndex (const class GGS_uint & constinOperand0,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_location getter_mEndOfBranchAtIndex (const class GGS_uint & constinOperand0,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__5B_semanticInstructionAST_5D_ getter_mInstructionsAtIndex (const class GGS_uint & constinOperand0,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__5B_lstring_5D_ getter_mSwitchConstantListAtIndex (const class GGS_uint & constinOperand0,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
-
-  public: class GGS_switchBranchesAST getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_switchBranchesAST getter_subListToIndex (const class GGS_uint & constinOperand0,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_switchBranchesAST getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Read subscripts
+  public: class GGS_switchBranchForGeneration readSubscript__3F_ (const class GGS_uint & in0,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
 
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
-  friend class UpEnumerator_switchBranchesAST ;
-  friend class DownEnumerator_switchBranchesAST ;
+  friend class UpEnumerator__5B_switchBranchForGeneration_5D_ ;
+  friend class DownEnumerator__5B_switchBranchForGeneration_5D_ ;
  
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchBranchesAST ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_switchBranchForGeneration_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @switchBranchesAST_2E_element struct
+// Phase 1: [extractedAssociatedValueForGeneration] array
 //--------------------------------------------------------------------------------------------------
 
-class GGS_switchBranchesAST_2E_element : public AC_GALGAS_root {
+class DownEnumerator__5B_extractedAssociatedValueForGeneration_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_extractedAssociatedValueForGeneration_5D_ (const class GGS__5B_extractedAssociatedValueForGeneration_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_extractedAssociatedValueForGeneration_5D_ (const DownEnumerator__5B_extractedAssociatedValueForGeneration_5D_ &) = delete ;
+  private: DownEnumerator__5B_extractedAssociatedValueForGeneration_5D_ & operator = (const DownEnumerator__5B_extractedAssociatedValueForGeneration_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent >= 0 ;
+  }
+
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent -= 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_extractedAssociatedValueForGeneration current (LOCATION_ARGS) const ;
+  public: class GGS_extractedAssociatedValueForGeneration current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_extractedAssociatedValueForGeneration> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_extractedAssociatedValueForGeneration_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_extractedAssociatedValueForGeneration_5D_ (const class GGS__5B_extractedAssociatedValueForGeneration_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_extractedAssociatedValueForGeneration_5D_ (const UpEnumerator__5B_extractedAssociatedValueForGeneration_5D_ &) = delete ;
+  private: UpEnumerator__5B_extractedAssociatedValueForGeneration_5D_ & operator = (const UpEnumerator__5B_extractedAssociatedValueForGeneration_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent < mSharedArray.count () ;
+  }
+
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent += 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_extractedAssociatedValueForGeneration current (LOCATION_ARGS) const ;
+  public: class GGS_extractedAssociatedValueForGeneration current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_extractedAssociatedValueForGeneration> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_extractedAssociatedValueForGeneration_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_extractedAssociatedValueForGeneration> mSharedArray ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_extractedAssociatedValueForGeneration_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_extractedAssociatedValueForGeneration_5D_ (const GGS__5B_extractedAssociatedValueForGeneration_5D_ & inSource) ;
+  public: GGS__5B_extractedAssociatedValueForGeneration_5D_ & operator = (const GGS__5B_extractedAssociatedValueForGeneration_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_extractedAssociatedValueForGeneration_5D_ ;
+  friend class DownEnumerator__5B_extractedAssociatedValueForGeneration_5D_ ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_extractedAssociatedValueForGeneration_5D_ init (Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS__5B_extractedAssociatedValueForGeneration_5D_ extractObject (const GGS_object & inObject,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public: void plusAssignOperation (const GGS__5B_extractedAssociatedValueForGeneration_5D_ inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- ++= operator, collection value
+  public: void plusPlusAssignOperation (const GGS_extractedAssociatedValueForGeneration & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_extractedAssociatedValueForGeneration_5D_ add_operation (const GGS__5B_extractedAssociatedValueForGeneration_5D_ & inOperand,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_extractedAssociatedValueForGeneration constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insertAtIndex (class GGS_extractedAssociatedValueForGeneration constinArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popFirst (class GGS_extractedAssociatedValueForGeneration & outArgument0,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popLast (class GGS_extractedAssociatedValueForGeneration & outArgument0,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAtIndex (class GGS_extractedAssociatedValueForGeneration & outArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_first (class GGS_extractedAssociatedValueForGeneration & outArgument0,
+                             Compiler * inCompiler
+                             COMMA_LOCATION_ARGS) const ;
+
+  public: void method_last (class GGS_extractedAssociatedValueForGeneration & outArgument0,
+                            Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+  public: class GGS_extractedAssociatedValueForGeneration readSubscript__3F_ (const class GGS_uint & in0,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_extractedAssociatedValueForGeneration_5D_ ;
+  friend class DownEnumerator__5B_extractedAssociatedValueForGeneration_5D_ ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_extractedAssociatedValueForGeneration_5D_ ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @switchBranchForGeneration struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_switchBranchForGeneration : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS__5B_lstring_5D_ mProperty_mSwitchConstantList ;
   public: inline GGS__5B_lstring_5D_ readProperty_mSwitchConstantList (void) const {
     return mProperty_mSwitchConstantList ;
   }
 
-  public: GGS_switchExtractedValuesListAST mProperty_mAssociatedValuesExtraction ;
-  public: inline GGS_switchExtractedValuesListAST readProperty_mAssociatedValuesExtraction (void) const {
-    return mProperty_mAssociatedValuesExtraction ;
+  public: GGS__5B_extractedAssociatedValueForGeneration_5D_ mProperty_mExtractedAssociatedValuesForGeneration ;
+  public: inline GGS__5B_extractedAssociatedValueForGeneration_5D_ readProperty_mExtractedAssociatedValuesForGeneration (void) const {
+    return mProperty_mExtractedAssociatedValuesForGeneration ;
   }
 
-  public: GGS__5B_semanticInstructionAST_5D_ mProperty_mInstructions ;
-  public: inline GGS__5B_semanticInstructionAST_5D_ readProperty_mInstructions (void) const {
+  public: GGS_uint mProperty_mEndOfBranchLocationIndex ;
+  public: inline GGS_uint readProperty_mEndOfBranchLocationIndex (void) const {
+    return mProperty_mEndOfBranchLocationIndex ;
+  }
+
+  public: GGS_semanticInstructionListForGeneration mProperty_mInstructions ;
+  public: inline GGS_semanticInstructionListForGeneration readProperty_mInstructions (void) const {
     return mProperty_mInstructions ;
-  }
-
-  public: GGS_location mProperty_mEndOfBranch ;
-  public: inline GGS_location readProperty_mEndOfBranch (void) const {
-    return mProperty_mEndOfBranch ;
   }
 
 //--------------------------------- Accessors
@@ -20594,57 +20375,57 @@ class GGS_switchBranchesAST_2E_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GGS_switchBranchesAST_2E_element (void) ;
+  public: GGS_switchBranchForGeneration (void) ;
 
 //--------------------------------- Property setters
   public: inline void setter_setMSwitchConstantList (const GGS__5B_lstring_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mSwitchConstantList = inValue ;
   }
 
-  public: inline void setter_setMAssociatedValuesExtraction (const GGS_switchExtractedValuesListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mAssociatedValuesExtraction = inValue ;
+  public: inline void setter_setMExtractedAssociatedValuesForGeneration (const GGS__5B_extractedAssociatedValueForGeneration_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mExtractedAssociatedValuesForGeneration = inValue ;
   }
 
-  public: inline void setter_setMInstructions (const GGS__5B_semanticInstructionAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMEndOfBranchLocationIndex (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mEndOfBranchLocationIndex = inValue ;
+  }
+
+  public: inline void setter_setMInstructions (const GGS_semanticInstructionListForGeneration & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mInstructions = inValue ;
-  }
-
-  public: inline void setter_setMEndOfBranch (const GGS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mEndOfBranch = inValue ;
   }
 
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_switchBranchesAST_2E_element (const GGS__5B_lstring_5D_ & in_mSwitchConstantList,
-                                            const GGS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
-                                            const GGS__5B_semanticInstructionAST_5D_ & in_mInstructions,
-                                            const GGS_location & in_mEndOfBranch) ;
+  public: GGS_switchBranchForGeneration (const GGS__5B_lstring_5D_ & in_mSwitchConstantList,
+                                         const GGS__5B_extractedAssociatedValueForGeneration_5D_ & in_mExtractedAssociatedValuesForGeneration,
+                                         const GGS_uint & in_mEndOfBranchLocationIndex,
+                                         const GGS_semanticInstructionListForGeneration & in_mInstructions) ;
 
 //--------------------------------- Copy constructor
-  public: GGS_switchBranchesAST_2E_element (const GGS_switchBranchesAST_2E_element & inSource) ;
+  public: GGS_switchBranchForGeneration (const GGS_switchBranchForGeneration & inSource) ;
 
 //--------------------------------- Assignment operator
-  public: GGS_switchBranchesAST_2E_element & operator = (const GGS_switchBranchesAST_2E_element & inSource) ;
+  public: GGS_switchBranchForGeneration & operator = (const GGS_switchBranchForGeneration & inSource) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_switchBranchesAST_2E_element init_21__21__21__21_ (const class GGS__5B_lstring_5D_ & inOperand0,
-                                                                        const class GGS_switchExtractedValuesListAST & inOperand1,
-                                                                        const class GGS__5B_semanticInstructionAST_5D_ & inOperand2,
-                                                                        const class GGS_location & inOperand3,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+  public: static GGS_switchBranchForGeneration init_21__21__21__21_ (const class GGS__5B_lstring_5D_ & inOperand0,
+                                                                     const class GGS__5B_extractedAssociatedValueForGeneration_5D_ & inOperand1,
+                                                                     const class GGS_uint & inOperand2,
+                                                                     const class GGS_semanticInstructionListForGeneration & inOperand3,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Object cloning
   protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
 
 //--------------------------------- Object extraction
-  public: static GGS_switchBranchesAST_2E_element extractObject (const GGS_object & inObject,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
+  public: static GGS_switchBranchForGeneration extractObject (const GGS_object & inObject,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
@@ -20667,5 +20448,1031 @@ class GGS_switchBranchesAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchBranchesAST_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchBranchForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @extractedAssociatedValueForGeneration struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_extractedAssociatedValueForGeneration : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_unifiedTypeMapEntry mProperty_mType ;
+  public: inline GGS_unifiedTypeMapEntry readProperty_mType (void) const {
+    return mProperty_mType ;
+  }
+
+  public: GGS_string mProperty_mCppName ;
+  public: inline GGS_string readProperty_mCppName (void) const {
+    return mProperty_mCppName ;
+  }
+
+  public: GGS_string mProperty_name ;
+  public: inline GGS_string readProperty_name (void) const {
+    return mProperty_name ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_extractedAssociatedValueForGeneration (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMType (const GGS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mType = inValue ;
+  }
+
+  public: inline void setter_setMCppName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mCppName = inValue ;
+  }
+
+  public: inline void setter_setName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_name = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_extractedAssociatedValueForGeneration (const GGS_unifiedTypeMapEntry & in_mType,
+                                                     const GGS_string & in_mCppName,
+                                                     const GGS_string & in_name) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_extractedAssociatedValueForGeneration (const GGS_extractedAssociatedValueForGeneration & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_extractedAssociatedValueForGeneration & operator = (const GGS_extractedAssociatedValueForGeneration & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_extractedAssociatedValueForGeneration init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                             const class GGS_string & inOperand1,
+                                                                             const class GGS_string & inOperand2,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_extractedAssociatedValueForGeneration extractObject (const GGS_object & inObject,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_extractedAssociatedValueForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @switchInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_switchInstructionForGeneration : public GGS_semanticInstructionForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_switchInstructionForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_switchInstructionForGeneration (const class cPtr_switchInstructionForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_unifiedTypeMapEntry readProperty_mEnumType (void) const ;
+
+  public: class GGS_semanticExpressionForGeneration readProperty_mSwitchExpression (void) const ;
+
+  public: class GGS__5B_switchBranchForGeneration_5D_ readProperty_mBranches (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_switchInstructionForGeneration init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                      const class GGS_semanticExpressionForGeneration & inOperand1,
+                                                                      const class GGS__5B_switchBranchForGeneration_5D_ & inOperand2,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_switchInstructionForGeneration extractObject (const GGS_object & inObject,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_switchInstructionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchInstructionForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @switchInstructionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_switchInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void switchInstructionForGeneration_init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                const class GGS_semanticExpressionForGeneration & inOperand1,
+                                                                const class GGS__5B_switchBranchForGeneration_5D_ & inOperand2,
+                                                                Compiler * inCompiler) ;
+
+
+//--- Extension proc generateInstruction
+  public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
+           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GGS_string & arg_ioGeneratedCode,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_unifiedTypeMapEntry mProperty_mEnumType ;
+  public: GGS_semanticExpressionForGeneration mProperty_mSwitchExpression ;
+  public: GGS__5B_switchBranchForGeneration_5D_ mProperty_mBranches ;
+
+
+//--- Default constructor
+  public: cPtr_switchInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_switchInstructionForGeneration (const GGS_unifiedTypeMapEntry & in_mEnumType,
+                                               const GGS_semanticExpressionForGeneration & in_mSwitchExpression,
+                                               const GGS__5B_switchBranchForGeneration_5D_ & in_mBranches,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @switchInstructionForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_switchInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_switchInstructionForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_switchInstructionForGeneration_2E_weak (const class GGS_switchInstructionForGeneration & inSource) ;
+
+  public: GGS_switchInstructionForGeneration_2E_weak & operator = (const class GGS_switchInstructionForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_switchInstructionForGeneration_2E_weak init_nil (void) {
+    GGS_switchInstructionForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_switchInstructionForGeneration bang_switchInstructionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_switchInstructionForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_switchInstructionForGeneration_2E_weak extractObject (const GGS_object & inObject,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_switchInstructionForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_switchInstructionForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_switchInstructionForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @setterCallInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_setterCallInstructionForGeneration : public GGS_semanticInstructionForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_setterCallInstructionForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_setterCallInstructionForGeneration (const class cPtr_setterCallInstructionForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_location readProperty_mInstructionLocation (void) const ;
+
+  public: class GGS_string readProperty_mReceiverCppName (void) const ;
+
+  public: class GGS_string readProperty_mReceiverBaseName (void) const ;
+
+  public: class GGS_lstringlist readProperty_mReceiverStructAttributes (void) const ;
+
+  public: class GGS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
+
+  public: class GGS_lstring readProperty_mSetterName (void) const ;
+
+  public: class GGS_methodKind readProperty_mKind (void) const ;
+
+  public: class GGS_actualParameterListForGeneration readProperty_mActualParameterList (void) const ;
+
+  public: class GGS_bool readProperty_mHasCompilerArgument (void) const ;
+
+  public: class GGS_unifiedTypeMapEntry readProperty_mMethodBaseType (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_setterCallInstructionForGeneration init_21__21__21__21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                                                      const class GGS_string & inOperand1,
+                                                                                                      const class GGS_string & inOperand2,
+                                                                                                      const class GGS_lstringlist & inOperand3,
+                                                                                                      const class GGS_unifiedTypeMapEntry & inOperand4,
+                                                                                                      const class GGS_lstring & inOperand5,
+                                                                                                      const class GGS_methodKind & inOperand6,
+                                                                                                      const class GGS_actualParameterListForGeneration & inOperand7,
+                                                                                                      const class GGS_bool & inOperand8,
+                                                                                                      const class GGS_unifiedTypeMapEntry & inOperand9,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_setterCallInstructionForGeneration extractObject (const GGS_object & inObject,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_setterCallInstructionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setterCallInstructionForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @setterCallInstructionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void setterCallInstructionForGeneration_init_21__21__21__21__21__21__21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                                                const class GGS_string & inOperand1,
+                                                                                                const class GGS_string & inOperand2,
+                                                                                                const class GGS_lstringlist & inOperand3,
+                                                                                                const class GGS_unifiedTypeMapEntry & inOperand4,
+                                                                                                const class GGS_lstring & inOperand5,
+                                                                                                const class GGS_methodKind & inOperand6,
+                                                                                                const class GGS_actualParameterListForGeneration & inOperand7,
+                                                                                                const class GGS_bool & inOperand8,
+                                                                                                const class GGS_unifiedTypeMapEntry & inOperand9,
+                                                                                                Compiler * inCompiler) ;
+
+
+//--- Extension proc generateInstruction
+  public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
+           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GGS_string & arg_ioGeneratedCode,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_location mProperty_mInstructionLocation ;
+  public: GGS_string mProperty_mReceiverCppName ;
+  public: GGS_string mProperty_mReceiverBaseName ;
+  public: GGS_lstringlist mProperty_mReceiverStructAttributes ;
+  public: GGS_unifiedTypeMapEntry mProperty_mReceiverType ;
+  public: GGS_lstring mProperty_mSetterName ;
+  public: GGS_methodKind mProperty_mKind ;
+  public: GGS_actualParameterListForGeneration mProperty_mActualParameterList ;
+  public: GGS_bool mProperty_mHasCompilerArgument ;
+  public: GGS_unifiedTypeMapEntry mProperty_mMethodBaseType ;
+
+
+//--- Default constructor
+  public: cPtr_setterCallInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_setterCallInstructionForGeneration (const GGS_location & in_mInstructionLocation,
+                                                   const GGS_string & in_mReceiverCppName,
+                                                   const GGS_string & in_mReceiverBaseName,
+                                                   const GGS_lstringlist & in_mReceiverStructAttributes,
+                                                   const GGS_unifiedTypeMapEntry & in_mReceiverType,
+                                                   const GGS_lstring & in_mSetterName,
+                                                   const GGS_methodKind & in_mKind,
+                                                   const GGS_actualParameterListForGeneration & in_mActualParameterList,
+                                                   const GGS_bool & in_mHasCompilerArgument,
+                                                   const GGS_unifiedTypeMapEntry & in_mMethodBaseType,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @setterCallInstructionForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_setterCallInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_setterCallInstructionForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_setterCallInstructionForGeneration_2E_weak (const class GGS_setterCallInstructionForGeneration & inSource) ;
+
+  public: GGS_setterCallInstructionForGeneration_2E_weak & operator = (const class GGS_setterCallInstructionForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_setterCallInstructionForGeneration_2E_weak init_nil (void) {
+    GGS_setterCallInstructionForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_setterCallInstructionForGeneration bang_setterCallInstructionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_setterCallInstructionForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_setterCallInstructionForGeneration_2E_weak extractObject (const GGS_object & inObject,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_setterCallInstructionForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_setterCallInstructionForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setterCallInstructionForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @selfSetterCallInstructionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_selfSetterCallInstructionForGeneration : public GGS_semanticInstructionForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_selfSetterCallInstructionForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_selfSetterCallInstructionForGeneration (const class cPtr_selfSetterCallInstructionForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_string readProperty_mSelfCppName (void) const ;
+
+  public: class GGS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
+
+  public: class GGS_lstring readProperty_mSetterName (void) const ;
+
+  public: class GGS_methodKind readProperty_mKind (void) const ;
+
+  public: class GGS_actualParameterListForGeneration readProperty_mActualParameterList (void) const ;
+
+  public: class GGS_bool readProperty_mHasCompilerArgument (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_selfSetterCallInstructionForGeneration init_21__21__21__21__21__21_ (const class GGS_string & inOperand0,
+                                                                                          const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                                          const class GGS_lstring & inOperand2,
+                                                                                          const class GGS_methodKind & inOperand3,
+                                                                                          const class GGS_actualParameterListForGeneration & inOperand4,
+                                                                                          const class GGS_bool & inOperand5,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_selfSetterCallInstructionForGeneration extractObject (const GGS_object & inObject,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_selfSetterCallInstructionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfSetterCallInstructionForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @selfSetterCallInstructionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_selfSetterCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void selfSetterCallInstructionForGeneration_init_21__21__21__21__21__21_ (const class GGS_string & inOperand0,
+                                                                                    const class GGS_unifiedTypeMapEntry & inOperand1,
+                                                                                    const class GGS_lstring & inOperand2,
+                                                                                    const class GGS_methodKind & inOperand3,
+                                                                                    const class GGS_actualParameterListForGeneration & inOperand4,
+                                                                                    const class GGS_bool & inOperand5,
+                                                                                    Compiler * inCompiler) ;
+
+
+//--- Extension proc generateInstruction
+  public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
+           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GGS_string & arg_ioGeneratedCode,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_string mProperty_mSelfCppName ;
+  public: GGS_unifiedTypeMapEntry mProperty_mReceiverType ;
+  public: GGS_lstring mProperty_mSetterName ;
+  public: GGS_methodKind mProperty_mKind ;
+  public: GGS_actualParameterListForGeneration mProperty_mActualParameterList ;
+  public: GGS_bool mProperty_mHasCompilerArgument ;
+
+
+//--- Default constructor
+  public: cPtr_selfSetterCallInstructionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_selfSetterCallInstructionForGeneration (const GGS_string & in_mSelfCppName,
+                                                       const GGS_unifiedTypeMapEntry & in_mReceiverType,
+                                                       const GGS_lstring & in_mSetterName,
+                                                       const GGS_methodKind & in_mKind,
+                                                       const GGS_actualParameterListForGeneration & in_mActualParameterList,
+                                                       const GGS_bool & in_mHasCompilerArgument,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @selfSetterCallInstructionForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_selfSetterCallInstructionForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_selfSetterCallInstructionForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_selfSetterCallInstructionForGeneration_2E_weak (const class GGS_selfSetterCallInstructionForGeneration & inSource) ;
+
+  public: GGS_selfSetterCallInstructionForGeneration_2E_weak & operator = (const class GGS_selfSetterCallInstructionForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_selfSetterCallInstructionForGeneration_2E_weak init_nil (void) {
+    GGS_selfSetterCallInstructionForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_selfSetterCallInstructionForGeneration bang_selfSetterCallInstructionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_selfSetterCallInstructionForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_selfSetterCallInstructionForGeneration_2E_weak extractObject (const GGS_object & inObject,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_selfSetterCallInstructionForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_selfSetterCallInstructionForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfSetterCallInstructionForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @loopInstructionWithoutVariantForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_loopInstructionWithoutVariantForGeneration : public GGS_semanticInstructionForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_loopInstructionWithoutVariantForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_loopInstructionWithoutVariantForGeneration (const class cPtr_loopInstructionWithoutVariantForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_location readProperty_mInstructionLocation (void) const ;
+
+  public: class GGS_semanticInstructionListForGeneration readProperty_mFirstInstructions (void) const ;
+
+  public: class GGS_ifTestListForGeneration readProperty_mLoopExpression (void) const ;
+
+  public: class GGS_semanticInstructionListForGeneration readProperty_mSecondInstructions (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_loopInstructionWithoutVariantForGeneration init_21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                                      const class GGS_semanticInstructionListForGeneration & inOperand1,
+                                                                                      const class GGS_ifTestListForGeneration & inOperand2,
+                                                                                      const class GGS_semanticInstructionListForGeneration & inOperand3,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_loopInstructionWithoutVariantForGeneration extractObject (const GGS_object & inObject,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_loopInstructionWithoutVariantForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_loopInstructionWithoutVariantForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @loopInstructionWithoutVariantForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_loopInstructionWithoutVariantForGeneration : public cPtr_semanticInstructionForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void loopInstructionWithoutVariantForGeneration_init_21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                                const class GGS_semanticInstructionListForGeneration & inOperand1,
+                                                                                const class GGS_ifTestListForGeneration & inOperand2,
+                                                                                const class GGS_semanticInstructionListForGeneration & inOperand3,
+                                                                                Compiler * inCompiler) ;
+
+
+//--- Extension proc generateInstruction
+  public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
+           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GGS_string & arg_ioGeneratedCode,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_location mProperty_mInstructionLocation ;
+  public: GGS_semanticInstructionListForGeneration mProperty_mFirstInstructions ;
+  public: GGS_ifTestListForGeneration mProperty_mLoopExpression ;
+  public: GGS_semanticInstructionListForGeneration mProperty_mSecondInstructions ;
+
+
+//--- Default constructor
+  public: cPtr_loopInstructionWithoutVariantForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_loopInstructionWithoutVariantForGeneration (const GGS_location & in_mInstructionLocation,
+                                                           const GGS_semanticInstructionListForGeneration & in_mFirstInstructions,
+                                                           const GGS_ifTestListForGeneration & in_mLoopExpression,
+                                                           const GGS_semanticInstructionListForGeneration & in_mSecondInstructions,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @loopInstructionWithoutVariantForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_loopInstructionWithoutVariantForGeneration_2E_weak : public GGS_semanticInstructionForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_loopInstructionWithoutVariantForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_loopInstructionWithoutVariantForGeneration_2E_weak (const class GGS_loopInstructionWithoutVariantForGeneration & inSource) ;
+
+  public: GGS_loopInstructionWithoutVariantForGeneration_2E_weak & operator = (const class GGS_loopInstructionWithoutVariantForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_loopInstructionWithoutVariantForGeneration_2E_weak init_nil (void) {
+    GGS_loopInstructionWithoutVariantForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_loopInstructionWithoutVariantForGeneration bang_loopInstructionWithoutVariantForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_loopInstructionWithoutVariantForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_loopInstructionWithoutVariantForGeneration_2E_weak extractObject (const GGS_object & inObject,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS class functions
+  public: static class GGS_loopInstructionWithoutVariantForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_loopInstructionWithoutVariantForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_loopInstructionWithoutVariantForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @undefinedLocalConstantDeclarationForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_undefinedLocalConstantDeclarationForGeneration : public GGS_semanticInstructionForGeneration {
+//--------------------------------- Default constructor
+  public: GGS_undefinedLocalConstantDeclarationForGeneration (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_undefinedLocalConstantDeclarationForGeneration (const class cPtr_undefinedLocalConstantDeclarationForGeneration * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_unifiedTypeMapEntry readProperty_mTargetType (void) const ;
+
+  public: class GGS_string readProperty_mCppVariableName (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_undefinedLocalConstantDeclarationForGeneration init_21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                                  const class GGS_string & inOperand1,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Object cloning
+  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+
+//--------------------------------- Object extraction
+  public: static GGS_undefinedLocalConstantDeclarationForGeneration extractObject (const GGS_object & inObject,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_undefinedLocalConstantDeclarationForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+ 
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_undefinedLocalConstantDeclarationForGeneration ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @undefinedLocalConstantDeclarationForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_undefinedLocalConstantDeclarationForGeneration : public cPtr_semanticInstructionForGeneration {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void undefinedLocalConstantDeclarationForGeneration_init_21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                                            const class GGS_string & inOperand1,
+                                                                            Compiler * inCompiler) ;
+
+
+//--- Extension proc generateInstruction
+  public: virtual void method_generateInstruction (class GGS_stringset & arg_ioInclusionSet,
+           class GGS_uint & arg_ioTemporaryVariableIndex,
+           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
+           const class GGS_bool arg_inGenerateSyntaxDirectedTranslationString,
+           class GGS_string & arg_ioGeneratedCode,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_unifiedTypeMapEntry mProperty_mTargetType ;
+  public: GGS_string mProperty_mCppVariableName ;
+
+
+//--- Default constructor
+  public: cPtr_undefinedLocalConstantDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_undefinedLocalConstantDeclarationForGeneration (const GGS_unifiedTypeMapEntry & in_mTargetType,
+                                                               const GGS_string & in_mCppVariableName,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
 

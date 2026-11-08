@@ -79,8 +79,7 @@ syntax extension galgas4DeclarationsSyntax {
 //   ENTER IN GRAPH
 //--------------------------------------------------------------------------------------------------
 
-override func @listDeclarationAST.keyRepresentation
-  () ->@string {
+override func @listDeclarationAST.keyRepresentation () -> @string {
   result = "list @" + self.mListTypeName
 }
 

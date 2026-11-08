@@ -5,13 +5,13 @@
 static int32_t compareForSorting_%!TYPE_IDENTIFIER% (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inLeft,
                             %!^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inRight) {
   ComparisonResult result = ComparisonResult::operandEqual ;
-% for (mAttributeTypeIndex mAttributeName mAscendingOrder) in SORT_ATTRIBUTE_LIST do
+% for (entry) in SORT_ATTRIBUTE_LIST do
     %  if (result == ComparisonResult::operandEqual) {\n%
     %    result = %
-    if mAscendingOrder then
-      %inLeft.mProperty_%![mAttributeName identifierRepresentation]%.objectCompare (inRight.mProperty_%![mAttributeName identifierRepresentation]%)%
+    if entry.mAscendingOrder then
+      %inLeft.mProperty_%![entry.mAttributeName identifierRepresentation]%.objectCompare (inRight.mProperty_%![entry.mAttributeName identifierRepresentation]%)%
     else
-      %inRight.mProperty_%![mAttributeName identifierRepresentation]%.objectCompare (inLeft.mProperty_%![mAttributeName identifierRepresentation]%)%
+      %inRight.mProperty_%![entry.mAttributeName identifierRepresentation]%.objectCompare (inLeft.mProperty_%![entry.mAttributeName identifierRepresentation]%)%
     end
     % ;\n%
     %  }\n%

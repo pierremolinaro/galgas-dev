@@ -10,18 +10,19 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
   private: DownEnumerator_%!TYPE_IDENTIFIER% (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
   private: DownEnumerator_%!TYPE_IDENTIFIER% & operator = (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
 
-//--- 
+//---
   public: inline bool hasCurrentObject (void) const {
     return mCurrent >= 0 ;
   }
 
-//--- 
+//---
   public: inline void gotoNextObject (void) {
     mCurrent -= 1 ;
   }
 
 //--- Current element access
   public: class GGS_%!ELEMENT_TYPE_IDENTIFIER% current (LOCATION_ARGS) const ;
+  public: class GGS_%!ELEMENT_TYPE_IDENTIFIER% current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
 
 //---- Properties
   private: const GenericArray <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
@@ -38,18 +39,19 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
   private: UpEnumerator_%!TYPE_IDENTIFIER% (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
   private: UpEnumerator_%!TYPE_IDENTIFIER% & operator = (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
 
-//--- 
+//---
   public: inline bool hasCurrentObject (void) const {
     return mCurrent < mSharedArray.count () ;
   }
-  
-//--- 
+
+//---
   public: inline void gotoNextObject (void) {
     mCurrent += 1 ;
   }
 
 //--- Current element access
   public: class GGS_%!ELEMENT_TYPE_IDENTIFIER% current (LOCATION_ARGS) const ;
+  public: class GGS_%!ELEMENT_TYPE_IDENTIFIER% current_entry (LOCATION_ARGS) const ;
 
 //---- Properties
   private: const GenericArray <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
@@ -58,7 +60,7 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
 
@@ -69,12 +71,13 @@ class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
   public: GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
   public: GGS_%!TYPE_IDENTIFIER% & operator = (const GGS_%!TYPE_IDENTIFIER% & inSource) ;
 
-//--------------------------------- Remove All
-  public: VIRTUAL_IN_DEBUG void removeAll (void) ;
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
   public: virtual bool isValid (void) const override ;
-  
+
   public: virtual void drop (void) override ;
 
   public: virtual void description (String & ioString,

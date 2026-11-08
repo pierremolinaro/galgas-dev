@@ -29,13 +29,13 @@ syntax extension galgas4InstructionsSyntax {
     let instructionLocation = @location.here
     <expression> (!?ioDeclarations, ?let switchExpression)
     let endOfSwitchExpression = @location.here
-    var @switchBranchesAST switchBranches = @()
+    var [@switchBranchAST] switchBranches = @()
     repeat
       $case$
       <switch_case>(
         !?ioDeclarations,
         ?let [@lstring] constantNameList,
-        ?let @switchExtractedValuesListAST associatedValuesExtraction)
+        ?let [@switchExtractedValuesAST] associatedValuesExtraction)
       $:$
       <semantic_instruction_list> (!?ioDeclarations, ?let instructions)
       switchBranches ++= @(constantNameList, associatedValuesExtraction, instructions, @location.here)
@@ -56,7 +56,7 @@ syntax extension galgas4InstructionsSyntax {
 
   rule <switch_case> (?!@galgasDeclarationAST ioDeclarations,
                       ![@lstring] outConstantNameList,
-                      !@switchExtractedValuesListAST outAssociatedValuesExtraction) {
+                      ![@switchExtractedValuesAST] outAssociatedValuesExtraction) {
     outConstantNameList = @()
     repeat
       $identifier$ (?let @lstring constantName)
@@ -104,7 +104,7 @@ syntax extension galgas4InstructionsSyntax {
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-list @switchExtractedValuesListAST {
+struct @switchExtractedValuesAST {
   public let @lstring mExtractedValueTypeName
   public let @lstring mExtractedValueName
   public let @bool mMarkedAsUnused
@@ -112,9 +112,9 @@ list @switchExtractedValuesListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @switchBranchesAST {
+struct @switchBranchAST {
   public let [@lstring] mSwitchConstantList
-  public let @switchExtractedValuesListAST mAssociatedValuesExtraction
+  public let [@switchExtractedValuesAST] mAssociatedValuesExtraction
   public let [@semanticInstructionAST] mInstructions
   public let @location mEndOfBranch
 }
@@ -124,7 +124,7 @@ list @switchBranchesAST {
 final class @switchInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mSwitchExpression
   private let @location mEndOfSwitchExpression
-  private let @switchBranchesAST mBranches
+  private let [@switchBranchAST] mBranches
   private let @location mEndOf_switch_instruction
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -160,10 +160,10 @@ final class @switchInstructionAST : @semanticInstructionAST {
       var @stringset constantsNamedInSwitchInstruction = @()
     //--- Analyze branches
       !?ioVariableMap.openOverrideForSelectBlock ()
-      var @switchBranchesForGeneration switchBranchesForGeneration = @()
+      var [@switchBranchForGeneration] switchBranchesForGeneration = @()
       for branch in self.mBranches do
         !?ioVariableMap.openBranch ()
-        var @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = @()
+        var [@extractedAssociatedValueForGeneration] extractedAssociatedValuesForGeneration = @()
         for constantName in branch.mSwitchConstantList do
           if enumType.constantMap.contains (constantName.string) then
             if constantsNamedInSwitchInstruction.contains (constantName.string) then
@@ -284,18 +284,17 @@ final class @switchInstructionAST : @semanticInstructionAST {
 //! GENERATION
 //--------------------------------------------------------------------------------------------------
 
-list @extractedAssociatedValuesForGeneration {
+struct @extractedAssociatedValueForGeneration {
   public let @unifiedTypeMapEntry mType
   public let @string mCppName
-//  public let @uint mIndex
   public let @string name
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @switchBranchesForGeneration {
+struct @switchBranchForGeneration {
   public let [@lstring] mSwitchConstantList
-  public let @extractedAssociatedValuesForGeneration mExtractedAssociatedValuesForGeneration
+  public let [@extractedAssociatedValueForGeneration] mExtractedAssociatedValuesForGeneration
   public let @uint mEndOfBranchLocationIndex
   public let @semanticInstructionListForGeneration mInstructions
 }
@@ -305,7 +304,7 @@ list @switchBranchesForGeneration {
 final class @switchInstructionForGeneration : @semanticInstructionForGeneration {
   private let @unifiedTypeMapEntry mEnumType
   private let @semanticExpressionForGeneration mSwitchExpression
-  private let @switchBranchesForGeneration mBranches
+  private let [@switchBranchForGeneration] mBranches
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
