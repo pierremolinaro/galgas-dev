@@ -23,6 +23,9 @@
 //--------------------------------------------------------------------------------------------------
 
 proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
+  ioDeclarations.mDeclarationList ++= @uint64PredefinedTypeAST (!isPredefined: true, "uint64")
+  appendPredefinedArrayTypeAST (!?ioDeclarations, "uint64")
+
   ioDeclarations.mDeclarationList ++= @applicationPredefinedTypeAST (!isPredefined: true, "application")
   ioDeclarations.mDeclarationList ++= @bigintPredefinedTypeAST (!isPredefined: true, "bigint")
   ioDeclarations.mDeclarationList ++= @binarysetPredefinedTypeAST (!isPredefined: true, "binaryset")
@@ -45,7 +48,6 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   ioDeclarations.mDeclarationList ++= @stringsetPredefinedTypeAST (!isPredefined: true, "stringset")
   ioDeclarations.mDeclarationList ++= @timerPredefinedTypeAST (!isPredefined: true, "timer")
   ioDeclarations.mDeclarationList ++= @typePredefinedTypeAST (!isPredefined: true, "type")
-  ioDeclarations.mDeclarationList ++= @uint64PredefinedTypeAST (!isPredefined: true, "uint64")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "function")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "luint")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "lstring")
@@ -53,7 +55,7 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "string")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "type")
   // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "uint")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "uint64")
+  // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "uint64")
   // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "bigint")
   // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "lbigint")
 

@@ -609,16 +609,16 @@ GGS_uint_36__34_ GGS_binaryset::getter_compressedValueCount (UNUSED_LOCATION_ARG
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_list GGS_binaryset::getter_uint_36__34_ValueList (const GGS_uint & inVariableCount
-                                                                        COMMA_LOCATION_ARGS) const {
-  GGS_uint_36__34_list result ;
+GGS__5B_uint_36__34__5D_ GGS_binaryset::getter_uint_36__34_ValueList (const GGS_uint & inVariableCount
+                                                                      COMMA_LOCATION_ARGS) const {
+  GGS__5B_uint_36__34__5D_ result ;
   if (isValid () && inVariableCount.isValid ()) {
     GenericUniqueArray <uint64_t> valuesArray ;
     mBDD.buildValue64Array (valuesArray, inVariableCount.uintValue ()) ;
-    result = GGS_uint_36__34_list::init (nullptr COMMA_THERE) ;
+    result = GGS__5B_uint_36__34__5D_::init (nullptr COMMA_THERE) ;
     for (int32_t i=0 ; i<valuesArray.count () ; i++) {
       const uint64_t v = valuesArray (i COMMA_HERE) ;
-      result.addAssignOperation (GGS_uint_36__34_ (v) COMMA_HERE) ;
+      result.plusPlusAssignOperation (GGS_uint_36__34_ (v) COMMA_HERE) ;
     }
   }
   return result ;

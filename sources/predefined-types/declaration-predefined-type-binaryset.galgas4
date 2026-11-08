@@ -371,7 +371,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"uint64ValueList", "uint", "inBitCount",
-      !returnedTypeName:"uint64list",
+      !returnedTypeName:"[uint64]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithArgument (

@@ -272,14 +272,14 @@ final class @bigintPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract64ForUnsignedRepresentation",
-      !returnedTypeName:"uint64list",
+      !returnedTypeName:"[uint64]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWithoutArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"extract64ForSignedRepresentation",
-      !returnedTypeName:"uint64list",
+      !returnedTypeName:"[uint64]",
       !hasCompilerArgument:false
     )
   }

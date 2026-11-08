@@ -25628,21 +25628,21 @@ const char * gWrapperFileContent_105_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_uint_36__34_list GGS_bigint::getter_extract_36__34_ForUnsignedRepresentation (LOCATION_ARGS) const {\n"
-  "  GGS_uint_36__34_list result ;\n"
+  "GGS__5B_uint_36__34__5D_ GGS_bigint::getter_extract_36__34_ForUnsignedRepresentation (LOCATION_ARGS) const {\n"
+  "  GGS__5B_uint_36__34__5D_ result ;\n"
   "  if (isValid ()) {\n"
   "    GenericUniqueArray <uint8_t> valueArray ;\n"
   "    mValue.extractBytesForUnsignedRepresentation (valueArray) ;\n"
   "    const int32_t paddingCount = (8 - (valueArray.count () % 8)) % 8 ;\n"
   "    valueArray.appendObjects (paddingCount, 0) ;\n"
-  "    result = GGS_uint_36__34_list::init (nullptr COMMA_THERE) ;\n"
+  "    result = GGS__5B_uint_36__34__5D_::init (nullptr COMMA_THERE) ;\n"
   "    for (int32_t i=0 ; i<valueArray.count () ; i+=8) {\n"
   "      uint64_t v = 0 ;\n"
   "      for (int32_t j=7 ; j>=0 ; j--) {\n"
   "        v <<= 8 ;\n"
   "        v |= valueArray (i+j COMMA_HERE) ;\n"
   "      }\n"
-  "      result.addAssignOperation (GGS_uint_36__34_ (v) COMMA_HERE) ;\n"
+  "      result.plusPlusAssignOperation (GGS_uint_36__34_ (v) COMMA_HERE) ;\n"
   "    }\n"
   "  }\n"
   "  return result ;\n"
@@ -25650,21 +25650,21 @@ const char * gWrapperFileContent_105_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_uint_36__34_list GGS_bigint::getter_extract_36__34_ForSignedRepresentation (LOCATION_ARGS) const {\n"
-  "  GGS_uint_36__34_list result ;\n"
+  "GGS__5B_uint_36__34__5D_ GGS_bigint::getter_extract_36__34_ForSignedRepresentation (LOCATION_ARGS) const {\n"
+  "  GGS__5B_uint_36__34__5D_ result ;\n"
   "  if (isValid ()) {\n"
   "    GenericUniqueArray <uint8_t> valueArray ;\n"
   "    mValue.extractBytesForSignedRepresentation (valueArray) ;\n"
   "    const int32_t paddingCount = (8 - (valueArray.count () % 8)) % 8 ;\n"
   "    valueArray.appendObjects (paddingCount, ((valueArray.lastObject (HERE) & 0x80) != 0) \? 0xFF : 0) ;\n"
-  "    result = GGS_uint_36__34_list::init (nullptr COMMA_THERE) ;\n"
+  "    result = GGS__5B_uint_36__34__5D_::init (nullptr COMMA_THERE) ;\n"
   "    for (int32_t i=0 ; i<valueArray.count () ; i+=8) {\n"
   "      uint64_t v = 0 ;\n"
   "      for (int32_t j=7 ; j>=0 ; j--) {\n"
   "        v <<= 8 ;\n"
   "        v |= valueArray (i+j COMMA_HERE) ;\n"
   "      }\n"
-  "      result.addAssignOperation (GGS_uint_36__34_ (v) COMMA_HERE) ;\n"
+  "      result.plusPlusAssignOperation (GGS_uint_36__34_ (v) COMMA_HERE) ;\n"
   "    }\n"
   "  }\n"
   "  return result ;\n"
@@ -26150,7 +26150,7 @@ const cRegularFileWrapper gWrapperFile_105_libpmFileWrapper (
   "GGS_bigint.cpp",
   "cpp",
   true, // Text file
- 28642, // Text length
+ 28676, // Text length
   gWrapperFileContent_105_libpmFileWrapper
 ) ;
 
@@ -26768,16 +26768,16 @@ const char * gWrapperFileContent_143_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_uint_36__34_list GGS_binaryset::getter_uint_36__34_ValueList (const GGS_uint & inVariableCount\n"
-  "                                                                        COMMA_LOCATION_ARGS) const {\n"
-  "  GGS_uint_36__34_list result ;\n"
+  "GGS__5B_uint_36__34__5D_ GGS_binaryset::getter_uint_36__34_ValueList (const GGS_uint & inVariableCount\n"
+  "                                                                      COMMA_LOCATION_ARGS) const {\n"
+  "  GGS__5B_uint_36__34__5D_ result ;\n"
   "  if (isValid () && inVariableCount.isValid ()) {\n"
   "    GenericUniqueArray <uint64_t> valuesArray ;\n"
   "    mBDD.buildValue64Array (valuesArray, inVariableCount.uintValue ()) ;\n"
-  "    result = GGS_uint_36__34_list::init (nullptr COMMA_THERE) ;\n"
+  "    result = GGS__5B_uint_36__34__5D_::init (nullptr COMMA_THERE) ;\n"
   "    for (int32_t i=0 ; i<valuesArray.count () ; i++) {\n"
   "      const uint64_t v = valuesArray (i COMMA_HERE) ;\n"
-  "      result.addAssignOperation (GGS_uint_36__34_ (v) COMMA_HERE) ;\n"
+  "      result.plusPlusAssignOperation (GGS_uint_36__34_ (v) COMMA_HERE) ;\n"
   "    }\n"
   "  }\n"
   "  return result ;\n"
@@ -27273,7 +27273,7 @@ const cRegularFileWrapper gWrapperFile_143_libpmFileWrapper (
   "GGS_binaryset.cpp",
   "cpp",
   true, // Text file
- 52615, // Text length
+ 52630, // Text length
   gWrapperFileContent_143_libpmFileWrapper
 ) ;
 

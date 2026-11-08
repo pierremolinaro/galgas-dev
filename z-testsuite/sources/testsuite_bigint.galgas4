@@ -127,24 +127,24 @@ proc testsuite_bigint_type() {
   println (s) // 0xFFFFFFAA 0xBBCCDDEF
   println ("--- extract64ForUnsignedRepresentation")
   // Parcours dans le sens des indices croissants : little endian
-  var @uint64list aa = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract64ForUnsignedRepresentation
+  var [@uint64] aa = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract64ForUnsignedRepresentation
   s = ""
   for n in aa
-    do s += n.mValue.hexString
+    do s += n.hexString
     between s += " "
   end
   println (s) // 0x8877665544332211 0xFFEEDDCCBBAA99
   // Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > n in aa
-    do s += n.mValue.hexString
+    do s += n.hexString
     between s += " "
   end
   println (s) // 0xFFEEDDCCBBAA99 0x8877665544332211
   aa = (0).extract64ForUnsignedRepresentation
   s = ""
   for n in aa
-    do s += n.mValue.hexString
+    do s += n.hexString
     between s += " "
   end
   println (s) // 0x0
@@ -153,14 +153,14 @@ proc testsuite_bigint_type() {
   aa = (0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211).extract64ForSignedRepresentation
   s = ""
   for n in aa
-    do s += n.mValue.hexString
+    do s += n.hexString
     between s += " "
   end
   println (s) // 0x8877665544332211 0xFFEEDDCCBBAA99
   // Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > n in aa
-    do s += n.mValue.hexString
+    do s += n.hexString
     between s += " "
   end
   println (s) // 0xFFEEDDCCBBAA99 0x8877665544332211
@@ -168,14 +168,14 @@ proc testsuite_bigint_type() {
   aa = (-0x55_4433_2211).extract64ForSignedRepresentation
   s = ""
   for n in aa
-    do s += n.mValue.hexString
+    do s += n.hexString
     between s += " "
   end
   println (s) // 0xFFFFFFAABBCCDDEF
   // Parcours dans le sens des indices décroissants : big endian
   s = ""
   for > n in aa
-    do s += n.mValue.hexString
+    do s += n.hexString
     between s += " "
   end
   println (s) // 0xFFFFFFAABBCCDDEF

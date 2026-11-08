@@ -25,7 +25,7 @@ proc testsuite_type_categories() {
   log ls
   !?aList.appendSquare (9)
   log aList
-  var aList64 = @uint64list [@(7)]
+  var aList64 = [@uint64] [7]
   !?aList64.prependSquare (5)
 }
 
@@ -70,7 +70,7 @@ mutating proc [@uint].appendSquare (let@uint inValue) {
   !?self.append (inValue * inValue)
 }
 
-mutating proc @uint64list.prependSquare (let@uint64 inValue) {
+mutating proc [@uint64].prependSquare (let @uint64 inValue) {
   !?self.insertAtIndex (inValue.square, 0)
 }
 
