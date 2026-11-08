@@ -169,15 +169,6 @@ GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_binaryset_5F_typ
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'predefinedTypeGenerationTemplate type_type'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_type_5F_type (class Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper template 'predefinedTypeGenerationTemplate location_type'
 //
 //--------------------------------------------------------------------------------------------------

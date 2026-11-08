@@ -1006,7 +1006,6 @@ proc updateGalgasTargets
         "GGS_string-getters.cpp",
         "GGS_stringset.cpp",
         "GGS_timer.cpp",
-        "GGS_type.cpp",
         "GGS_uint64.cpp",
         "GGS_uint.cpp",
         "scanner_actions.cpp",

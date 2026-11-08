@@ -47,13 +47,13 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   appendPredefinedArrayTypeAST (!?ioDeclarations, "uint")
   ioDeclarations.mDeclarationList ++= @stringsetPredefinedTypeAST (!isPredefined: true, "stringset")
   ioDeclarations.mDeclarationList ++= @timerPredefinedTypeAST (!isPredefined: true, "timer")
-  ioDeclarations.mDeclarationList ++= @typePredefinedTypeAST (!isPredefined: true, "type")
+  // ioDeclarations.mDeclarationList ++= @typePredefinedTypeAST (!isPredefined: true, "type")
   // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "function")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "luint")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "lstring")
   // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "object")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "string")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "type")
+  // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "type")
   // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "uint")
   // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "uint64")
   // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "bigint")
@@ -451,8 +451,6 @@ filewrapper predefinedTypeGenerationTemplate in "../+generation-templates/type_g
   template bool_type : "bool-type.h.galgasTemplate" ()
 
   template binaryset_type : "binaryset-type.h.galgasTemplate" ()
-
-  template type_type : "type-type.h.galgasTemplate" ()
 
   template location_type : "location-type.h.galgasTemplate" ()
 
