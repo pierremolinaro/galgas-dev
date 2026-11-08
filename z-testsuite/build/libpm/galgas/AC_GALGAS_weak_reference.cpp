@@ -26,16 +26,6 @@
 #include "String-class.h"
 
 //--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * AC_GALGAS_weak_reference::dynamicTypeDescriptor (void) const {
-  const GALGAS_TypeDescriptor * result = nullptr ;
-  if (nullptr != mProxyPtr) {
-    result = mProxyPtr->classDescriptor () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //   Default constructor
 //--------------------------------------------------------------------------------------------------
 

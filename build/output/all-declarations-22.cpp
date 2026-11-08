@@ -8,32 +8,6 @@
 #include "all-declarations-22.h"
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension proc '@trueExpressionAST enterExpressionInSemanticContext'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_trueExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & /* ioArgument__5F_ioTypeMap */,
-                                                                      Compiler * /* inCompiler */
-                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-}
-
-//--------------------------------------------------------------------------------------------------
-//Overriding extension proc '@trueExpressionAST analyzeSemanticExpression'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_trueExpressionAST::method_analyzeSemanticExpression (const GGS_lstring /* constinArgument__5F_inUsefulnessCallerEntityName */,
-                                                               GGS_usefulEntitiesGraph & /* ioArgument__5F_ioUsefulEntitiesGraph */,
-                                                               const GGS_unifiedTypeMapEntry /* constinArgument__5F_inType */,
-                                                               const GGS_analysisContext constinArgument_inAnalysisContext,
-                                                               GGS_unifiedTypeMap & /* ioArgument__5F_ioTypeMap */,
-                                                               GGS_localVarManager & /* ioArgument__5F_ioVariableMap */,
-                                                               GGS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                               Compiler * inCompiler
-                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  const GGS_trueExpressionAST temp_0 = this ;
-  outArgument_outExpression = GGS_trueExpressionForGeneration::init_21__21_ (constinArgument_inAnalysisContext.readProperty_predefinedTypes ().readProperty_mBoolType (), temp_0.readProperty_mLocation (), inCompiler COMMA_HERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@falseExpressionAST enterExpressionInSemanticContext'
 //--------------------------------------------------------------------------------------------------
 
@@ -18310,16 +18284,6 @@ const char * gWrapperFileContent_122_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "const GALGAS_TypeDescriptor * AC_GALGAS_reference_class::dynamicTypeDescriptor (void) const {\n"
-  "  const GALGAS_TypeDescriptor * result = nullptr ;\n"
-  "  if (nullptr != mObjectPtr) {\n"
-  "    result = mObjectPtr->classDescriptor () ;\n"
-  "  }\n"
-  "  return result ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
   "AC_GALGAS_reference_class::AC_GALGAS_reference_class (void) :\n"
   "AC_GALGAS_root (),\n"
   "mObjectPtr (nullptr) {\n"
@@ -18392,7 +18356,7 @@ const cRegularFileWrapper gWrapperFile_122_libpmFileWrapper (
   "AC_GALGAS_reference_class.cpp",
   "cpp",
   true, // Text file
- 4135, // Text length
+ 3786, // Text length
   gWrapperFileContent_122_libpmFileWrapper
 ) ;
 
@@ -18457,9 +18421,6 @@ const char * gWrapperFileContent_104_libpmFileWrapper =
   "  protected: AC_GALGAS_reference_class (const AC_GALGAS_reference_class & inSource) ;\n"
   "  protected: AC_GALGAS_reference_class & operator = (const AC_GALGAS_reference_class & inSource) ;\n"
   "\n"
-  "//--- Dynamic Type Descriptor\n"
-  "  public: virtual const GALGAS_TypeDescriptor * dynamicTypeDescriptor (void) const ;\n"
-  "\n"
   "  public: virtual void description (String & ioString,\n"
   "                                    const int32_t inIndentation) const ;\n"
   "\n"
@@ -18475,7 +18436,7 @@ const cRegularFileWrapper gWrapperFile_104_libpmFileWrapper (
   "AC_GALGAS_reference_class.h",
   "h",
   true, // Text file
- 2726, // Text length
+ 2610, // Text length
   gWrapperFileContent_104_libpmFileWrapper
 ) ;
 
@@ -18530,12 +18491,6 @@ const char * gWrapperFileContent_156_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "const GALGAS_TypeDescriptor * AC_GALGAS_root::dynamicTypeDescriptor (void) const {\n"
-  "  return staticTypeDescriptor () ;\n"
-  "}\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
   "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
   "  void AC_GALGAS_root::checkIsValid (LOCATION_ARGS) const {\n"
   "    macroAssertThere (isValid (), \"Object not valid\", 0, 0) ;\n"
@@ -18556,7 +18511,7 @@ const cRegularFileWrapper gWrapperFile_156_libpmFileWrapper (
   "AC_GALGAS_root.cpp",
   "cpp",
   true, // Text file
- 2589, // Text length
+ 2366, // Text length
   gWrapperFileContent_156_libpmFileWrapper
 ) ;
 
@@ -18641,8 +18596,6 @@ const char * gWrapperFileContent_147_libpmFileWrapper =
   "\n"
   "  public: virtual const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const = 0 ;\n"
   "\n"
-  "  public: virtual const GALGAS_TypeDescriptor * dynamicTypeDescriptor (void) const ;\n"
-  "\n"
   "  public: VIRTUAL_IN_DEBUG void log (const char * inMessage COMMA_LOCATION_ARGS) const ;\n"
   "\n"
   "  public: virtual void description (String & ioString,\n"
@@ -18670,7 +18623,7 @@ const cRegularFileWrapper gWrapperFile_147_libpmFileWrapper (
   "AC_GALGAS_root.h",
   "h",
   true, // Text file
- 3916, // Text length
+ 3830, // Text length
   gWrapperFileContent_147_libpmFileWrapper
 ) ;
 
@@ -18703,16 +18656,6 @@ const char * gWrapperFileContent_152_libpmFileWrapper =
   "#include \"AbstractStrongPtrClass.h\"\n"
   "#include \"GALGAS_TypeDescriptor.h\"\n"
   "#include \"String-class.h\"\n"
-  "\n"
-  "//--------------------------------------------------------------------------------------------------\n"
-  "\n"
-  "const GALGAS_TypeDescriptor * AC_GALGAS_weak_reference::dynamicTypeDescriptor (void) const {\n"
-  "  const GALGAS_TypeDescriptor * result = nullptr ;\n"
-  "  if (nullptr != mProxyPtr) {\n"
-  "    result = mProxyPtr->classDescriptor () ;\n"
-  "  }\n"
-  "  return result ;\n"
-  "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "//   Default constructor\n"
@@ -18808,7 +18751,7 @@ const cRegularFileWrapper gWrapperFile_152_libpmFileWrapper (
   "AC_GALGAS_weak_reference.cpp",
   "cpp",
   true, // Text file
- 4977, // Text length
+ 4631, // Text length
   gWrapperFileContent_152_libpmFileWrapper
 ) ;
 
@@ -18876,9 +18819,6 @@ const char * gWrapperFileContent_163_libpmFileWrapper =
   "//--- Drop\n"
   "  public: virtual void drop (void) ;\n"
   "\n"
-  "//--- Dynamic Type Descriptor\n"
-  "  public: virtual const GALGAS_TypeDescriptor * dynamicTypeDescriptor (void) const ;\n"
-  "\n"
   "  public: virtual void description (String & ioString,\n"
   "                                    const int32_t inIndentation) const ;\n"
   "} ;\n"
@@ -18890,7 +18830,7 @@ const cRegularFileWrapper gWrapperFile_163_libpmFileWrapper (
   "AC_GALGAS_weak_reference.h",
   "h",
   true, // Text file
- 2704, // Text length
+ 2588, // Text length
   gWrapperFileContent_163_libpmFileWrapper
 ) ;
 
@@ -21041,7 +20981,7 @@ const char * gWrapperFileContent_121_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "void Compiler::onTheFlySemanticError (const String & inErrorMessage\n"
-  "                                        COMMA_LOCATION_ARGS) {\n"
+  "                                      COMMA_LOCATION_ARGS) {\n"
   "  signalSemanticError (this,\n"
   "                       sourceText (),\n"
   "                       IssueWithFixIt (mCurrentLocation, mCurrentLocation, GenericArray <FixItDescription> ()),\n"
@@ -21058,7 +20998,7 @@ const char * gWrapperFileContent_121_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "void Compiler::onTheFlySemanticWarning (const String & inWarningMessage\n"
-  "                                          COMMA_LOCATION_ARGS) {\n"
+  "                                        COMMA_LOCATION_ARGS) {\n"
   "  signalSemanticWarning (this,\n"
   "                         sourceText (),\n"
   "                         IssueWithFixIt (mCurrentLocation, mCurrentLocation, GenericArray <FixItDescription> ()),\n"
@@ -21141,9 +21081,9 @@ const char * gWrapperFileContent_121_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "void Compiler::semanticErrorAtLocation (const GGS_location & inErrorLocation,\n"
-  "                                          const String & inErrorMessage,\n"
-  "                                          const GenericArray <FixItDescription> & inFixItArray\n"
-  "                                          COMMA_LOCATION_ARGS) {\n"
+  "                                        const String & inErrorMessage,\n"
+  "                                        const GenericArray <FixItDescription> & inFixItArray\n"
+  "                                        COMMA_LOCATION_ARGS) {\n"
   "  if (inErrorLocation.isValid ()) { // No error raised if not built\n"
   "    if (!inErrorLocation.sourceText ().isValid ()) {\n"
   "      onTheFlyRunTimeError (inErrorMessage COMMA_THERE) ;\n"
@@ -21160,9 +21100,9 @@ const char * gWrapperFileContent_121_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "void Compiler::emitSemanticError (const GGS_location & inErrorLocation,\n"
-  "                                    const GGS_string & inErrorMessage,\n"
-  "                                    const GenericArray <FixItDescription> & inFixItArray\n"
-  "                                    COMMA_LOCATION_ARGS) {\n"
+  "                                  const GGS_string & inErrorMessage,\n"
+  "                                  const GenericArray <FixItDescription> & inFixItArray\n"
+  "                                  COMMA_LOCATION_ARGS) {\n"
   "  if (inErrorLocation.isValid () && inErrorMessage.isValid ()) {\n"
   "    const String errorMessage = inErrorMessage.stringValue () ;\n"
   "    if (!inErrorLocation.sourceText ().isValid ()) {\n"
@@ -21180,9 +21120,9 @@ const char * gWrapperFileContent_121_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "void Compiler::semanticErrorWith_K_message (const GGS_lstring & inKey,\n"
-  "                                              GenericUniqueArray <String> & ioNearestKeyArray,\n"
-  "                                              const char * in_K_ErrorMessage\n"
-  "                                              COMMA_LOCATION_ARGS) {\n"
+  "                                            GenericUniqueArray <String> & ioNearestKeyArray,\n"
+  "                                            const char * in_K_ErrorMessage\n"
+  "                                            COMMA_LOCATION_ARGS) {\n"
   "  const String key = inKey.mProperty_string.stringValue () ;\n"
   "//--- Build error message\n"
   "  String message ;\n"
@@ -21253,9 +21193,9 @@ const char * gWrapperFileContent_121_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "void Compiler::semanticWarningWith_K_L_message (const GGS_lstring & inKey,\n"
-  "                                                  const char * in_K_L_ErrorMessage,\n"
-  "                                                  const GGS_location & inExistingKeyLocation\n"
-  "                                                  COMMA_LOCATION_ARGS) {\n"
+  "                                                const char * in_K_L_ErrorMessage,\n"
+  "                                                const GGS_location & inExistingKeyLocation\n"
+  "                                                COMMA_LOCATION_ARGS) {\n"
   "  const String key = inKey.mProperty_string.stringValue () ;\n"
   "//--- Build error message\n"
   "  String message ;\n"
@@ -21291,8 +21231,8 @@ const char * gWrapperFileContent_121_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "void Compiler::semanticWarningAtLocation (const GGS_location & inWarningLocation,\n"
-  "                                            const String & inWarningMessage\n"
-  "                                            COMMA_LOCATION_ARGS) {\n"
+  "                                          const String & inWarningMessage\n"
+  "                                          COMMA_LOCATION_ARGS) {\n"
   "  if (inWarningLocation.isValid ()) { // No warning raised if not built\n"
   "    if (!inWarningLocation.sourceText ().isValid ()) {\n"
   "      signalRunTimeWarning (this, inWarningMessage COMMA_THERE) ;\n"
@@ -21335,7 +21275,7 @@ const char * gWrapperFileContent_121_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "void Compiler::onTheFlyRunTimeError (const String & inRunTimeErrorMessage\n"
-  "                                       COMMA_LOCATION_ARGS) {\n"
+  "                                     COMMA_LOCATION_ARGS) {\n"
   "  signalRunTimeError (this, inRunTimeErrorMessage COMMA_THERE) ;\n"
   "}\n"
   "\n"
@@ -21383,14 +21323,14 @@ const char * gWrapperFileContent_121_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "void Compiler::generateFile (const String & inLineCommentPrefix,\n"
-  "                               const GenericUniqueArray <String> & inDirectoriesToExclude,\n"
-  "                               const String & inFileName,\n"
-  "                               const String & inHeader,\n"
-  "                               const String & inDefaultUserZone1,\n"
-  "                               const String & inGeneratedZone2,\n"
-  "                               const String & inDefaultUserZone2,\n"
-  "                               const String & inGeneratedZone3,\n"
-  "                               const bool inMakeExecutable) {\n"
+  "                             const GenericUniqueArray <String> & inDirectoriesToExclude,\n"
+  "                             const String & inFileName,\n"
+  "                             const String & inHeader,\n"
+  "                             const String & inDefaultUserZone1,\n"
+  "                             const String & inGeneratedZone2,\n"
+  "                             const String & inDefaultUserZone2,\n"
+  "                             const String & inGeneratedZone3,\n"
+  "                             const bool inMakeExecutable) {\n"
   "  generateFileWithPatternFromPathes (sourceFilePath ().deletingLastPathComponent (),\n"
   "                          inDirectoriesToExclude,\n"
   "                          inLineCommentPrefix,\n"
@@ -21406,9 +21346,9 @@ const char * gWrapperFileContent_121_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "void Compiler::generateFileFromPathes (const String & inStartPath,\n"
-  "                                         const GenericUniqueArray <String> & inDirectoriesToExclude,\n"
-  "                                         const String & inFileName,\n"
-  "                                         const String & inContents) {\n"
+  "                                       const GenericUniqueArray <String> & inDirectoriesToExclude,\n"
+  "                                       const String & inFileName,\n"
+  "                                       const String & inContents) {\n"
   "//--- Verbose option \?\n"
   "  const bool verboseOptionOn = verboseOutput () ;\n"
   "//--- Start path : by default, use source file directory\n"
@@ -21610,7 +21550,7 @@ const cRegularFileWrapper gWrapperFile_121_libpmFileWrapper (
   "Compiler.cpp",
   "cpp",
   true, // Text file
- 29843, // Text length
+ 29787, // Text length
   gWrapperFileContent_121_libpmFileWrapper
 ) ;
 

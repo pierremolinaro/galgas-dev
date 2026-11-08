@@ -76,8 +76,6 @@ class AC_GALGAS_root {
 
   public: virtual const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const = 0 ;
 
-  public: virtual const GALGAS_TypeDescriptor * dynamicTypeDescriptor (void) const ;
-
   public: VIRTUAL_IN_DEBUG void log (const char * inMessage COMMA_LOCATION_ARGS) const ;
 
   public: virtual void description (String & ioString,

@@ -46,12 +46,6 @@ GGS_string AC_GALGAS_root::getter_description (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * AC_GALGAS_root::dynamicTypeDescriptor (void) const {
-  return staticTypeDescriptor () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void AC_GALGAS_root::checkIsValid (LOCATION_ARGS) const {
     macroAssertThere (isValid (), "Object not valid", 0, 0) ;

@@ -59,9 +59,6 @@ class AC_GALGAS_weak_reference : public AC_GALGAS_root { // AC_GALGAS_weak_refer
 //--- Drop
   public: virtual void drop (void) ;
 
-//--- Dynamic Type Descriptor
-  public: virtual const GALGAS_TypeDescriptor * dynamicTypeDescriptor (void) const ;
-
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const ;
 } ;

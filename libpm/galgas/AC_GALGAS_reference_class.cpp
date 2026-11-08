@@ -29,16 +29,6 @@
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * AC_GALGAS_reference_class::dynamicTypeDescriptor (void) const {
-  const GALGAS_TypeDescriptor * result = nullptr ;
-  if (nullptr != mObjectPtr) {
-    result = mObjectPtr->classDescriptor () ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 AC_GALGAS_reference_class::AC_GALGAS_reference_class (void) :
 AC_GALGAS_root (),
 mObjectPtr (nullptr) {

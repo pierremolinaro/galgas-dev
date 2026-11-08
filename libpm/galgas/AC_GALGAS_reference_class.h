@@ -56,9 +56,6 @@ class AC_GALGAS_reference_class : public AC_GALGAS_root { // AC_GALGAS_reference
   protected: AC_GALGAS_reference_class (const AC_GALGAS_reference_class & inSource) ;
   protected: AC_GALGAS_reference_class & operator = (const AC_GALGAS_reference_class & inSource) ;
 
-//--- Dynamic Type Descriptor
-  public: virtual const GALGAS_TypeDescriptor * dynamicTypeDescriptor (void) const ;
-
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const ;
 

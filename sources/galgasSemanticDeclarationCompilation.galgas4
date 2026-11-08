@@ -33,7 +33,6 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
   end
 //----- Add predefined types to semantics declarations
   var semanticDeclarations = inSemanticDeclarations
- // appendPredefinedTypesASTs (!?semanticDeclarations, !?ioUsefulnessRootEntities)
 //--- Add predefined option component
   var [@commandLineOptionAST] options = []
   for name in @application.boolOptionNameList do
