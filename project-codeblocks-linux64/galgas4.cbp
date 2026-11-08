@@ -208,7 +208,6 @@
    <Unit filename="../libpm/galgas/galgas-input-output.cpp" />
    <Unit filename="../libpm/galgas/C_galgas_class_inspector.cpp" />
    <Unit filename="../libpm/galgas/IssueWithFixIt.cpp" />
-   <Unit filename="../libpm/galgas/GALGAS_ObjectArray.cpp" />
    <Unit filename="../libpm/galgas/CollectionElementPtr.cpp" />
    <Unit filename="../libpm/galgas/CollectionElement.cpp" />
    <Unit filename="../libpm/galgas/CollectionElementArray.cpp" />

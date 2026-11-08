@@ -135,7 +135,6 @@
        "galgas-input-output.cpp",
        "C_galgas_class_inspector.cpp",
        "IssueWithFixIt.cpp",
-       "GALGAS_ObjectArray.cpp",
        "CollectionElementPtr.cpp",
        "CollectionElement.cpp",
        "CollectionElementArray.cpp",

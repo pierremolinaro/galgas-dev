@@ -850,14 +850,6 @@
             { "path": "F_verbose_output.h" },
             { "path": "GALGAS_GenericDictionary.h" },
             { "path": "GALGAS_GenericMapRoot.h" },
-            { "path": "GALGAS_ObjectArray.h" },
-            {
-              "path": "GALGAS_ObjectArray.cpp",
-              "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
-              ],
-            },
             { "path": "GALGAS_TypeDescriptor.h" },
             {
               "path": "GALGAS_TypeDescriptor.cpp",

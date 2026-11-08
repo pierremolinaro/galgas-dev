@@ -51,7 +51,7 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "function")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "luint")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "lstring")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "object")
+  // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "object")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "string")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "type")
   // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "uint")

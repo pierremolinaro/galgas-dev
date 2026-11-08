@@ -166,7 +166,6 @@ end
    <Unit filename="%!LIBPM_PATH%/galgas/galgas-input-output.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/C_galgas_class_inspector.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/IssueWithFixIt.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/GALGAS_ObjectArray.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/CollectionElementPtr.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/CollectionElement.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/CollectionElementArray.cpp" />
