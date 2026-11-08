@@ -91,7 +91,7 @@ class SharedStringMap final {
                            OptionalSharedRef <SharedStringMapNode> & outRemovedNode
                            COMMA_LOCATION_ARGS) ;
 
-  public: bool hasKey (const String & inKey) const ;
+  public: bool contains (const String & inKey) const ;
 
   public: int32_t count (void) const ;
 

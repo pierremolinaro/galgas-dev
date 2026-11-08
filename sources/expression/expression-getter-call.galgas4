@@ -63,7 +63,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           #replaceBy aGetter.mGetterNameThatObsoletesInvokationName
         )
       end
-      if receiverType.definition.propertyMap.hasKey (self.mGetterName.string)
+      if receiverType.definition.propertyMap.contains (self.mGetterName.string)
         && (self.mActualArgumentList.count == 0) then
         error (self.mExpressionLocation : "use dot notation, instead of func call")
       end
@@ -107,7 +107,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         end
       end
   //-------------------------------------- The func does not exist, it is a property ?
-    elsif self.mActualArgumentList.count == 0, receiverType.definition.propertyMap.hasKey (self.mGetterName) then
+    elsif self.mActualArgumentList.count == 0, receiverType.definition.propertyMap.contains (self.mGetterName) then
       error (self.mExpressionLocation : "use dot notation, instead of func call" spoil outExpression)
   //-------------------------------------- not found, old style search
     else
@@ -262,7 +262,7 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
       var @bool searching = true
       loop (@uint.max) while searching do
         if not baseType.definition.superType.isNull then
-          if baseType.definition.superType.definition.getterMap.hasKey (self.mGetterName) then
+          if baseType.definition.superType.definition.getterMap.contains (self.mGetterName) then
             baseType = baseType.definition.superType
           else
             searching = false

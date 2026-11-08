@@ -6649,15 +6649,15 @@ void extensionSetter_insertKey (GGS_genericExtensionMethodListMap & ioObject,
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_genericExtensionMethodListMap temp_1 = ioObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 46)).boolEnum () ;
+    test_0 = temp_1.readProperty_dictionary ().getter_contains (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 46)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      GGS_lstringlist var_aList_2260 ;
+      GGS_lstringlist var_aList_2262 ;
       const GGS_genericExtensionMethodListMap temp_2 = ioObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_2260, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 47)) ;
+      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_2262, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 47)) ;
       {
-      var_aList_2260.setter_append (constinArgument_inValue, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 48)) ;
+      var_aList_2262.setter_append (constinArgument_inValue, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 48)) ;
       }
-      ioObject.mProperty_dictionary.plusPlusAssignOperation (GGS_genericExtensionMethodListMapDictionary_2E_element::init_21__21_ (constinArgument_inKey, var_aList_2260, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 49)) ;
+      ioObject.mProperty_dictionary.plusPlusAssignOperation (GGS_genericExtensionMethodListMapDictionary_2E_element::init_21__21_ (constinArgument_inKey, var_aList_2262, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 49)) ;
     }
   }
   if (GalgasBool::boolFalse == test_0) {
@@ -6682,15 +6682,15 @@ void extensionSetter_insertKey (GGS_descendantClassListMap & ioObject,
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_descendantClassListMap temp_1 = ioObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 115)).boolEnum () ;
+    test_0 = temp_1.readProperty_dictionary ().getter_contains (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 115)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      GGS_unifiedTypeMapEntryList var_aList_5028 ;
+      GGS_unifiedTypeMapEntryList var_aList_5034 ;
       const GGS_descendantClassListMap temp_2 = ioObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_5028, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 116)) ;
+      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_5034, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 116)) ;
       {
-      var_aList_5028.setter_append (constinArgument_inType, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 117)) ;
+      var_aList_5034.setter_append (constinArgument_inType, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 117)) ;
       }
-      ioObject.mProperty_dictionary.plusPlusAssignOperation (GGS_descendantClassListMapDictionary_2E_element::init_21__21_ (constinArgument_inKey, var_aList_5028, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 118)) ;
+      ioObject.mProperty_dictionary.plusPlusAssignOperation (GGS_descendantClassListMapDictionary_2E_element::init_21__21_ (constinArgument_inKey, var_aList_5034, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 118)) ;
     }
   }
   if (GalgasBool::boolFalse == test_0) {

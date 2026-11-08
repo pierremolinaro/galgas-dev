@@ -344,7 +344,7 @@ private proc projectGeneration
   let userHeadersDir = inAbsoluteBuildDirectory + "/user-headers"
   userHeadersDir.makeDirectory ()
 //--------------------------------- %quietOutputByDefault
-  let quietOutputByDefault = @stringset.setWithLStringList (inProjectComponentAST.mGenerationFeatureList).hasKey ("quietOutputByDefault")
+  let quietOutputByDefault = @stringset.setWithLStringList (inProjectComponentAST.mGenerationFeatureList).contains ("quietOutputByDefault")
 //--------------------------------- Generate GUI components
   let productDirectory = inAbsoluteBuildDirectory + "/output"
   var @stringlist swiftAppProductFileList = @()
@@ -352,8 +352,7 @@ private proc projectGeneration
     generateAllGuiComponentsGalgas3 (
       inOptionComponentMapForGeneration,
       productDirectory,
-      quietOutputByDefault
-,
+      quietOutputByDefault,
       !?swift: swiftAppProductFileList
     )
   end
@@ -391,7 +390,7 @@ private proc projectGeneration
     ignoredFeatureSet ++= "tool-link"
     var @projectQualifiedFeatureMap projectQualifiedFeatureMap = @()
     for feature in inProjectComponentAST.mQualifiedFeatureList do
-      if not ignoredFeatureSet.hasKey (feature.featureName.string) then
+      if not ignoredFeatureSet.contains (feature.featureName.string) then
         !?projectQualifiedFeatureMap.insertKey
           (feature.featureName,
           feature.featureValue

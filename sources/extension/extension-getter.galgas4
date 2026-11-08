@@ -129,7 +129,7 @@ final class @extensionGetterAST : @semanticDeclarationAST {
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName.location))
   //---
-    if not ioExtensionGetterMapForBuildingContext.hasKey (self.mTypeName.string) then
+    if not ioExtensionGetterMapForBuildingContext.contains (self.mTypeName.string) then
       !?ioExtensionGetterMapForBuildingContext.insertKey
         (self.mTypeName,
         @()
@@ -346,7 +346,7 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
       var @bool searching = true
       loop (@uint.max) while searching do
         if not baseType.definition.superType.isNull then
-          if baseType.definition.superType.definition.getterMap.hasKey (self.mExtensionGetterName) then
+          if baseType.definition.superType.definition.getterMap.contains (self.mExtensionGetterName) then
             baseType = baseType.definition.superType
           else
             searching = false

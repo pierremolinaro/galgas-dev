@@ -43,7 +43,7 @@ struct @genericExtensionMethodListMap {
 
   mutating proc insertKey  (let @string inKey,
                     let @lstring inValue ) {
-    if self.dictionary.hasKey (inKey) then
+    if self.dictionary.contains (inKey) then
       self.dictionary.searchKey (inKey, ?var aList)
       !?aList.append (inValue)
       self.dictionary ++= @(inKey, aList)
@@ -55,7 +55,7 @@ struct @genericExtensionMethodListMap {
   //·····························································································
 
   func listForKey (?let @string inKey ) -> @lstringlist {
-    if self.dictionary.hasKey (inKey) then
+    if self.dictionary.contains (inKey) then
       self.dictionary.searchKey (inKey, ?result)
    else
       result = @()
@@ -112,7 +112,7 @@ struct @descendantClassListMap {
 
   mutating proc insertKey  (let @string inKey,
                     let @unifiedTypeMapEntry inType ) {
-    if self.dictionary.hasKey (inKey) then
+    if self.dictionary.contains (inKey) then
       self.dictionary.searchKey (inKey, ?var aList)
       !?aList.append (inType)
       self.dictionary ++= @(inKey, aList)
@@ -124,7 +124,7 @@ struct @descendantClassListMap {
   //·····························································································
 
   func listForKey (?let @string inKey ) -> @unifiedTypeMapEntryList {
-    if self.dictionary.hasKey (inKey) then
+    if self.dictionary.contains (inKey) then
       self.dictionary.searchKey (inKey, ?result)
    else
       result = @()

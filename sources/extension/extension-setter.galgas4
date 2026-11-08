@@ -115,7 +115,7 @@ override proc @extensionSetterAST.enterDeclarationInGraph (
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)
   !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName.location))
 //---
-  if not ioExtensionSetterMapForBuildingContext.hasKey (self.mTypeName.string) then
+  if not ioExtensionSetterMapForBuildingContext.contains (self.mTypeName.string) then
     !?ioExtensionSetterMapForBuildingContext.insertKey
       (self.mTypeName,
       @()
@@ -321,7 +321,7 @@ override proc @extensionSetterForGeneration.appendSpecificImplementation (
     var @bool searching = true
     loop (@uint.max) while searching do
       if not baseType.definition.superType.isNull then
-        if baseType.definition.superType.definition.setterMap.hasKey (self.mExtensionSetterName) then
+        if baseType.definition.superType.definition.setterMap.contains (self.mExtensionSetterName) then
           baseType = baseType.definition.superType
         else
           searching = false

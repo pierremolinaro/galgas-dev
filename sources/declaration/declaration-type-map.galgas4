@@ -322,7 +322,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     enterBaseGetterWithArgument (
       !?getterMap,
       !?ioTypeMap,
-      !getterName: "hasKey",
+      !getterName: "contains",
       !argumentTypeName: "string",
       !argumentName: "inKey",
       !returnedTypeName:"bool",
@@ -410,7 +410,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     end
   //--- Handle insert setters
     for insertSetter in self.mInsertSetterList do
-      if setterMap.hasKey (insertSetter.mInsertMethodName.string) then
+      if setterMap.contains (insertSetter.mInsertMethodName.string) then
         error (insertSetter.mInsertMethodName:"the '" + insertSetter.mInsertMethodName + "' insert proc is already declared")
       else
         !?setterMap.insertOrReplace (
@@ -445,7 +445,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     end
   //--- Handle remove setters
     for entry in self.mRemoveSetterList do
-      if setterMap.hasKey (entry.mName.string) then
+      if setterMap.contains (entry.mName.string) then
         error (entry.mName
         : "the '" + entry.mName
                   + "' proc is already declared as an insert mutating proc or a remove mutating proc")
@@ -655,7 +655,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
         property.initialization,
         !hasSetter: true,
         !hasSelector: hasSelector)
-      if forbiddenKeysForMapAndDict ().hasKey (property.name.string) then
+      if forbiddenKeysForMapAndDict ().contains (property.name.string) then
         var @string m = "a property cannot be named:"
         for s in forbiddenKeysForMapAndDict () do
           m += " " + s
@@ -690,7 +690,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       end
     end
     let @bool hasInsertOrReplaceModifier = self.mInsertOrReplaceDeclarationListAST.count > 0
-    if hasInsertOrReplaceModifier & insertMethodMap.hasKey ("insertOrReplace") then
+    if hasInsertOrReplaceModifier & insertMethodMap.contains ("insertOrReplace") then
       self.mInsertOrReplaceDeclarationListAST.first (?let insertOrReplaceDeclarationLocation)
       error (insertOrReplaceDeclarationLocation
       : "the insertOrReplace' mutating proc cannot be declared : an insert mutating proc or a remove mutating proc has been declared with this name")

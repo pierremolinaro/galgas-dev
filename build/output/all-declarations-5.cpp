@@ -2937,8 +2937,8 @@ GGS_extensionMap GGS_extensionMap::init (Compiler * COMMA_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_extensionMap::getter_hasKey (const GGS_string & inKey
-                                          COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_extensionMap::getter_contains (const GGS_string & inKey
+                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -6680,8 +6680,8 @@ GGS_optionComponentMapForGeneration GGS_optionComponentMapForGeneration::init (C
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_optionComponentMapForGeneration::getter_hasKey (const GGS_string & inKey
-                                                             COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_optionComponentMapForGeneration::getter_contains (const GGS_string & inKey
+                                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;

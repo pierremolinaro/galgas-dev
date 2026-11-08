@@ -2105,8 +2105,8 @@ GGS_terminalSymbolsMapForGrammarAnalysis GGS_terminalSymbolsMapForGrammarAnalysi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_terminalSymbolsMapForGrammarAnalysis::getter_hasKey (const GGS_string & inKey
-                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_terminalSymbolsMapForGrammarAnalysis::getter_contains (const GGS_string & inKey
+                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;

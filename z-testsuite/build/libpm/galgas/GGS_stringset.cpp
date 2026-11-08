@@ -194,11 +194,11 @@ GGS_stringlist GGS_stringset::getter_stringList (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_stringset::getter_hasKey (const GGS_string & inKey
-                                       COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_stringset::getter_contains (const GGS_string & inKey
+                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedMap.hasKey (inKey.stringValue ())) ;
+    result = GGS_bool (mSharedMap.contains (inKey.stringValue ())) ;
   }
   return result ;
 }
@@ -732,7 +732,7 @@ class SharedStringMapRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: bool hasKey (const String & inKey) const {
+  public: bool contains (const String & inKey) const {
     return recursiveSearch (mRootNode, inKey) ;
   }
 
@@ -850,10 +850,10 @@ String SharedStringMap::rootNodeKey (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-bool SharedStringMap::hasKey (const String & inKey) const {
+bool SharedStringMap::contains (const String & inKey) const {
   bool result = false ;
   if (mSharedRoot.isNotNil ()) {
-    result = mSharedRoot->hasKey (inKey) ;
+    result = mSharedRoot->contains (inKey) ;
   }
   return result ;
 }
@@ -868,5 +868,4 @@ int32_t SharedStringMap::count (void) const {
   }
 }
 
-//--------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------

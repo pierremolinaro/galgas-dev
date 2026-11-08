@@ -366,8 +366,8 @@ GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::init (Com
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_lexicalExplicitTokenListMapMap::getter_hasKey (const GGS_string & inKey
-                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_lexicalExplicitTokenListMapMap::getter_contains (const GGS_string & inKey
+                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -975,8 +975,8 @@ GGS_lexicalMessageMap GGS_lexicalMessageMap::init (Compiler * COMMA_LOCATION_ARG
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_lexicalMessageMap::getter_hasKey (const GGS_string & inKey
-                                               COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_lexicalMessageMap::getter_contains (const GGS_string & inKey
+                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -2367,8 +2367,8 @@ GGS_lexicalRoutineMap GGS_lexicalRoutineMap::init (Compiler * COMMA_LOCATION_ARG
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_lexicalRoutineMap::getter_hasKey (const GGS_string & inKey
-                                               COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_lexicalRoutineMap::getter_contains (const GGS_string & inKey
+                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -3583,8 +3583,8 @@ GGS_lexicalFunctionMap GGS_lexicalFunctionMap::init (Compiler * COMMA_LOCATION_A
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_lexicalFunctionMap::getter_hasKey (const GGS_string & inKey
-                                                COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_lexicalFunctionMap::getter_contains (const GGS_string & inKey
+                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -4937,8 +4937,8 @@ GGS_styleMap GGS_styleMap::init (Compiler * COMMA_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_styleMap::getter_hasKey (const GGS_string & inKey
-                                      COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_styleMap::getter_contains (const GGS_string & inKey
+                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -5485,8 +5485,8 @@ GGS_lexicalTagMap GGS_lexicalTagMap::init (Compiler * COMMA_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_lexicalTagMap::getter_hasKey (const GGS_string & inKey
-                                           COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_lexicalTagMap::getter_contains (const GGS_string & inKey
+                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -5911,8 +5911,8 @@ GGS_terminalMap GGS_terminalMap::init (Compiler * COMMA_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_terminalMap::getter_hasKey (const GGS_string & inKey
-                                         COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_terminalMap::getter_contains (const GGS_string & inKey
+                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -6398,8 +6398,8 @@ GGS_lexicalAttributeMap GGS_lexicalAttributeMap::init (Compiler * COMMA_LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_lexicalAttributeMap::getter_hasKey (const GGS_string & inKey
-                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_lexicalAttributeMap::getter_contains (const GGS_string & inKey
+                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -6885,8 +6885,8 @@ GGS_projectQualifiedFeatureMap GGS_projectQualifiedFeatureMap::init (Compiler * 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_projectQualifiedFeatureMap::getter_hasKey (const GGS_string & inKey
-                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_projectQualifiedFeatureMap::getter_contains (const GGS_string & inKey
+                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;

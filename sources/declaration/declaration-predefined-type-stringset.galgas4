@@ -151,7 +151,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
     enterBaseFinalGetterWithArgument (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"hasKey", "string", "inString",
+      !getterName:"contains", "string", "inString",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )

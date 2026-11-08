@@ -410,7 +410,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     for sortDescriptor in self.mSortDescriptorList do
       attributeMap.searchKey (sortDescriptor.mSortedAttributeName, ?let @unifiedTypeMapEntry type)
       sortDescriptorList ++= @(type, sortDescriptor.mSortedAttributeName.string, sortDescriptor.mAscending)
-      if attributesUsedForSorting.hasKey (sortDescriptor.mSortedAttributeName.string) then
+      if attributesUsedForSorting.contains (sortDescriptor.mSortedAttributeName.string) then
         error (sortDescriptor.mSortedAttributeName : "the '" + sortDescriptor.mSortedAttributeName + "' is already used for sorting")
       end
       attributesUsedForSorting ++= sortDescriptor.mSortedAttributeName.string

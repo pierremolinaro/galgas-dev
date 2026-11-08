@@ -152,7 +152,7 @@ proc checkExpressionIsBoolean
   if expressionType == boolType then
     outExpression = inExpression
   elsif expressionType.definition.typeKind == .structType then
-    if expressionType.definition.propertyMap.hasKey ("bool") then
+    if expressionType.definition.propertyMap.contains ("bool") then
       expressionType.definition.propertyMap.searchKey
         (@lstring ("bool", inErrorLocation),
         ?let accessControl,

@@ -151,7 +151,7 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
 //--- Check unicity of slot names
   var @stringset slotNameSet = @()
   for slotName in self.mFlagList do
-    if slotNameSet.hasKey (slotName.mValue) then
+    if slotNameSet.contains (slotName.mValue) then
       error (slotName.mValue : "duplicated slot name")
     end
     slotNameSet ++= slotName.mValue
@@ -173,7 +173,7 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
 //--- class functions
   var @classFunctionMap classFunctionMap = @()
   for slotName in self.mFlagList do
-    if not classFunctionMap.hasKey (slotName.mValue) then
+    if not classFunctionMap.contains (slotName.mValue) then
       !?classFunctionMap.insertKey (slotName.mValue, @(), false, boolsetTypeIndex)
     end
   end

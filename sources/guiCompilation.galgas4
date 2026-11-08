@@ -474,7 +474,7 @@ private proc guiComponentSemanticAnalysis (let @galgasGUIComponentListAST.@eleme
   //--- Check labels
     for aLabel in withLexiqueEntry.mLabels do
       for aTerminal in aLabel.mTerminalList do
-        if not terminalSymbolSet.hasKey (aTerminal.mTerminal.string) then
+        if not terminalSymbolSet.contains (aTerminal.mTerminal.string) then
           error (aTerminal.mTerminal: "the '$"
             + aTerminal.mTerminal
             + "$' terminal symbol is not declared by the '"

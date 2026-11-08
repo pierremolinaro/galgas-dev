@@ -110,7 +110,7 @@ override proc @overridingExtensionMethodAST.enterDeclarationInGraph (
   ?![@semanticDeclarationAST] ioExtensionOverrideDefinitionList) {
   ioExtensionOverrideDefinitionList ++= self
 //---
-  if not ioExtensionMethodMapForBuildingContext.hasKey (self.mTypeName.string) then
+  if not ioExtensionMethodMapForBuildingContext.contains (self.mTypeName.string) then
     !?ioExtensionMethodMapForBuildingContext.insertKey
       ( self.mTypeName,
       @()
@@ -169,7 +169,7 @@ override proc @overridingExtensionMethodAST.semanticAnalysis (
   var @location inheritedDeclarationLocation = @location.here
   loop (ioTypeMap.count + 1)
   while (not superType.isNull) & (baseTypeName == "") do
-    if superType.definition.instanceMethodMap.hasKey (self.mOverridingExtensionMethodName.string) then
+    if superType.definition.instanceMethodMap.contains (self.mOverridingExtensionMethodName.string) then
       superType.definition.instanceMethodMap.searchKey
         (self.mOverridingExtensionMethodName,
         ?*,

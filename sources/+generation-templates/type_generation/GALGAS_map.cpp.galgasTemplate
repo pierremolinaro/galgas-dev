@@ -38,7 +38,7 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_A
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_hasKey (%?^%const GGS_string & inKey
+GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_contains (%?^%const GGS_string & inKey
             %!^%COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {

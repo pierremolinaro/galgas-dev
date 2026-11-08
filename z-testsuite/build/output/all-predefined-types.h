@@ -2597,7 +2597,7 @@ class SharedStringMap final {
                            OptionalSharedRef <SharedStringMapNode> & outRemovedNode
                            COMMA_LOCATION_ARGS) ;
 
-  public: bool hasKey (const String & inKey) const ;
+  public: bool contains (const String & inKey) const ;
 
   public: int32_t count (void) const ;
 
@@ -2754,10 +2754,10 @@ class GGS_stringset : public AC_GALGAS_root {
   public: class GGS_string getter_anyString (Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_stringlist getter_stringList (LOCATION_ARGS) const ;
 

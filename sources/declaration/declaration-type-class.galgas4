@@ -339,7 +339,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
         property.mutability.isConstantProperty,
         attributeTypeIndex
       )
-      if getterMap.hasKey (property.name.string) then
+      if getterMap.contains (property.name.string) then
         error (property.name
         : "'" + property.name + "' is the name of a prefefined or a user defined func")
       end
@@ -537,7 +537,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       ?let initializationCode
     )
   //-----
-    let constructorNeedsCompilerVar = not unusedVariableCppNameSet.hasKey (compilerCppName ())
+    let constructorNeedsCompilerVar = not unusedVariableCppNameSet.contains (compilerCppName ())
     ioSemanticDeclarationListForGeneration ++= @classTypeForGeneration (
       !infoMessage: "class " + self.mClassTypeName,
       selfType,

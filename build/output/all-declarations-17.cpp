@@ -11827,7 +11827,7 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
   GGS_lstring var_arrayTypeName_1672 = function_makeArrayTypeLName (var_elementTypeName_1647, inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 31)) ;
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
-    test_0 = ioArgument_ioDeclarations.readProperty_implicitTypeDeclarationSet ().getter_hasKey (var_arrayTypeName_1672.readProperty_string () COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 32)).operator_not (SOURCE_FILE ("declaration-type-graph.galgas4", 32)).boolEnum () ;
+    test_0 = ioArgument_ioDeclarations.readProperty_implicitTypeDeclarationSet ().getter_contains (var_arrayTypeName_1672.readProperty_string () COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 32)).operator_not (SOURCE_FILE ("declaration-type-graph.galgas4", 32)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       ioArgument_ioDeclarations.mProperty_implicitTypeDeclarationSet.plusPlusAssignOperation (var_arrayTypeName_1672.readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 33)) ;
       {
@@ -11836,36 +11836,36 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_dec
       ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_arrayTypeDeclarationAST::init_21_isPredefined_21_arrayTypeName_21_elementTypeName_21_isUsefull_21_equatable (GGS_bool (false), var_arrayTypeName_1672, var_elementTypeName_1647, GGS_bool (false), GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 35)) ;
     }
   }
-  GGS_string var_lstringArrayTypeName_2224 = function_makeArrayTypeName (GGS_string ("lstring"), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 44)) ;
+  GGS_string var_lstringArrayTypeName_2226 = function_makeArrayTypeName (GGS_string ("lstring"), inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 44)) ;
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
-    test_1 = ioArgument_ioDeclarations.readProperty_implicitTypeDeclarationSet ().getter_hasKey (var_lstringArrayTypeName_2224 COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 45)).operator_not (SOURCE_FILE ("declaration-type-graph.galgas4", 45)).boolEnum () ;
+    test_1 = ioArgument_ioDeclarations.readProperty_implicitTypeDeclarationSet ().getter_contains (var_lstringArrayTypeName_2226 COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 45)).operator_not (SOURCE_FILE ("declaration-type-graph.galgas4", 45)).boolEnum () ;
     if (GalgasBool::boolTrue == test_1) {
-      ioArgument_ioDeclarations.mProperty_implicitTypeDeclarationSet.plusPlusAssignOperation (var_lstringArrayTypeName_2224  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 46)) ;
+      ioArgument_ioDeclarations.mProperty_implicitTypeDeclarationSet.plusPlusAssignOperation (var_lstringArrayTypeName_2226  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 46)) ;
       {
-      routine_println_3F_ (GGS_string ("ADDED ").add_operation (var_lstringArrayTypeName_2224, inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 47)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 47)) ;
+      routine_println_3F_ (GGS_string ("ADDED ").add_operation (var_lstringArrayTypeName_2226, inCompiler COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 47)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 47)) ;
       }
-      ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_arrayTypeDeclarationAST::init_21_isPredefined_21_arrayTypeName_21_elementTypeName_21_isUsefull_21_equatable (GGS_bool (false), var_lstringArrayTypeName_2224.getter_nowhere (SOURCE_FILE ("declaration-type-graph.galgas4", 50)), GGS_string ("lstring").getter_nowhere (SOURCE_FILE ("declaration-type-graph.galgas4", 51)), GGS_bool (false), GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 48)) ;
+      ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_arrayTypeDeclarationAST::init_21_isPredefined_21_arrayTypeName_21_elementTypeName_21_isUsefull_21_equatable (GGS_bool (false), var_lstringArrayTypeName_2226.getter_nowhere (SOURCE_FILE ("declaration-type-graph.galgas4", 50)), GGS_string ("lstring").getter_nowhere (SOURCE_FILE ("declaration-type-graph.galgas4", 51)), GGS_bool (false), GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 48)) ;
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7B_ COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 56)) ;
-  GGS_graphInsertModifierList var_graphInsertModifierList_2769 = GGS_graphInsertModifierList::init (inCompiler COMMA_HERE) ;
+  GGS_graphInsertModifierList var_graphInsertModifierList_2773 = GGS_graphInsertModifierList::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_2 = true ;
   while (repeatFlag_2) {
     if (select_galgas_34_DeclarationsSyntax_44 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_insertSetter COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 60)) ;
-      GGS_lstring var_insertName_2900 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_insertName_2904 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 61)) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__23_errorMessage COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 62)) ;
-      GGS_lstring var_errorMessage_2966 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_errorMessage_2970 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__22_string_22_ COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 63)) ;
-      var_graphInsertModifierList_2769.plusPlusAssignOperation (GGS_graphInsertModifierList_2E_element::init_21__21_ (var_insertName_2900, var_errorMessage_2966, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 64)) ;
+      var_graphInsertModifierList_2773.plusPlusAssignOperation (GGS_graphInsertModifierList_2E_element::init_21__21_ (var_insertName_2904, var_errorMessage_2970, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 64)) ;
     }else{
       repeatFlag_2 = false ;
     }
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__7D_ COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 66)) ;
-  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_graphDeclarationAST::init_21_isPredefined_21__21__21__21_ (GGS_bool (false), var_graphTypeName_1551, var_arrayTypeName_1672, var_elementTypeName_1647, var_graphInsertModifierList_2769, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 67)) ;
+  ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_graphDeclarationAST::init_21_isPredefined_21__21__21__21_ (GGS_bool (false), var_graphTypeName_1551, var_arrayTypeName_1672, var_elementTypeName_1647, var_graphInsertModifierList_2773, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-graph.galgas4", 67)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -12013,7 +12013,7 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_sim
     outArgument_outTypeName = function_makeArrayTypeLName (var_elementTypeName_9126, inCompiler COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas4", 230)) ;
     GalgasBool test_0 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_0) {
-      test_0 = ioArgument_ioDeclarations.readProperty_implicitTypeDeclarationSet ().getter_hasKey (outArgument_outTypeName.readProperty_string () COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas4", 231)).operator_not (SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas4", 231)).boolEnum () ;
+      test_0 = ioArgument_ioDeclarations.readProperty_implicitTypeDeclarationSet ().getter_contains (outArgument_outTypeName.readProperty_string () COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas4", 231)).operator_not (SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas4", 231)).boolEnum () ;
       if (GalgasBool::boolTrue == test_0) {
         ioArgument_ioDeclarations.mProperty_implicitTypeDeclarationSet.plusPlusAssignOperation (outArgument_outTypeName.readProperty_string ()  COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas4", 232)) ;
         ioArgument_ioDeclarations.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_arrayTypeDeclarationAST::init_21_isPredefined_21_arrayTypeName_21_elementTypeName_21_isUsefull_21_equatable (GGS_bool (false), outArgument_outTypeName, var_elementTypeName_9126, GGS_bool (true), GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas4", 233)) ;
@@ -12022,9 +12022,9 @@ void cParser_galgas_34_DeclarationsSyntax::rule_galgas_34_DeclarationsSyntax_sim
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3A_ COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas4", 242)) ;
-    GGS_lstring joker_9697 ; // Joker input parameter
-    nt_type_5F_definition_ (ioArgument_ioDeclarations, joker_9697, inCompiler) ;
-    joker_9697.drop () ; // Release temporary input variables (joker in source)
+    GGS_lstring joker_9699 ; // Joker input parameter
+    nt_type_5F_definition_ (ioArgument_ioDeclarations, joker_9699, inCompiler) ;
+    joker_9699.drop () ; // Release temporary input variables (joker in source)
     GenericArray <FixItDescription> fixItArray1 ;
     inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas4", 244)), GGS_string ("Not handled yet"), fixItArray1  COMMA_SOURCE_FILE ("declaration-type-alias-and-type-declaration.galgas4", 244)) ;
   } break ;

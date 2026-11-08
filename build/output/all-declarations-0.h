@@ -3829,10 +3829,10 @@ class GGS_unifiedTypeMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -8337,10 +8337,10 @@ class GGS_filewrapperMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -8574,10 +8574,10 @@ class GGS_functionMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -8799,10 +8799,10 @@ class GGS_grammarMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -9064,10 +9064,10 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -9315,10 +9315,10 @@ class GGS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -9554,10 +9554,10 @@ class GGS_syntaxComponentMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -9767,10 +9767,10 @@ class GGS_internalRoutineMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -10843,10 +10843,10 @@ class GGS_scopeLocalVarMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -12324,10 +12324,10 @@ class GGS_classFunctionMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -12544,10 +12544,10 @@ class GGS_classMethodMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -12815,10 +12815,10 @@ class GGS_getterMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -13036,10 +13036,10 @@ class GGS_initializerMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -13293,10 +13293,10 @@ class GGS_instanceMethodMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -13530,10 +13530,10 @@ class GGS_propertyMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -13783,10 +13783,10 @@ class GGS_setterMap : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1
@@ -14010,10 +14010,10 @@ class GGS_subscriptMap : public AC_GALGAS_root {
                                                                      Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_bool getter_hasKey (const class GGS_string & constinOperand0
-                                        COMMA_LOCATION_ARGS) const ;
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
                                                const class GGS_uint & constinOperand1

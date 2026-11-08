@@ -200,7 +200,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
   enterBaseGetterWithArgument (
     !?getterMap,
     !?ioTypeMap,
-    !getterName: "hasKey",
+    !getterName: "contains",
     !argSelector: "", !argType: self.mKeyTypeName.string, !argName: "inKey",
     !returnedTypeName:"bool",
     !hasCompilerArgument:false
@@ -509,7 +509,7 @@ override proc @dictDeclarationAST.semanticAnalysis
       !hasSetter: hasSetter,
       !hasSelector: property.hasSelector
     )
-    if forbiddenKeysForMapAndDict ().hasKey (property.name.string) then
+    if forbiddenKeysForMapAndDict ().contains (property.name.string) then
       var @string m = "a property cannot be named:"
       for s in forbiddenKeysForMapAndDict () do
         m+= " " + s

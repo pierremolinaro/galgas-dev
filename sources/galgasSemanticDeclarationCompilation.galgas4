@@ -302,7 +302,7 @@ private proc generateManyHeaders
       var @stringset inclusionSet1 = @()
       declaration.appendDeclaration1 (!?inclusionSet1, ?let @string headerDef1)
       var headerIncludes1 = ""
-      if inclusionSet1.hasKey ("") then
+      if inclusionSet1.contains ("") then
         println ("Empty inclusion in " + declaration.getImplementationCppFileName + "headers 1")
       end
       for (key) in inclusionSet1 do
@@ -312,7 +312,7 @@ private proc generateManyHeaders
       var @stringset inclusionSet2 = @()
       declaration.appendDeclaration2 (inProductDirectory, !?inclusionSet2, ?let @string headerDef2)
       var headerIncludes2 = ""
-      if inclusionSet2.hasKey ("") then
+      if inclusionSet2.contains ("") then
         println ("Empty inclusion in " + declaration.getImplementationCppFileName + "headers 2")
       end
       for (key) in inclusionSet2 do
@@ -465,9 +465,9 @@ private proc buildHeader
   ?!@headerRepartitionMap ioHeaderRepartitionMap,
   ?!@string ioHeaderString ) {
 //---
-  if not ioHeaderRepartitionMap.hasKey (inDeclarationName) then
+  if not ioHeaderRepartitionMap.contains (inDeclarationName) then
     !?ioHeaderRepartitionMap.insertKey (inDeclarationName.nowhere, inHeaderFileName)
-    if inHeaderCompositionMap.hasKey (inDeclarationName) then
+    if inHeaderCompositionMap.contains (inDeclarationName) then
       inHeaderCompositionMap.searchKey
         (inDeclarationName.nowhere,
         ?let @stringset inclusionSet,
@@ -514,7 +514,7 @@ private proc generateFewImplementationFiles
   for declaration in inSemanticDeclarationSortedListForGeneration do
     if not declaration.isPredefined then
       declaration.appendSpecificImplementation (inUnifiedTypeMap, !?inclusionSet, ?let @string code)
-      if inclusionSet.hasKey ("") then
+      if inclusionSet.contains ("") then
         println ("Empty inclusion in " + declaration.getImplementationCppFileName + " cpp headers")
       end
       implementationString += code

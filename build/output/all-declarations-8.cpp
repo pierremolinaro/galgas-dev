@@ -14471,8 +14471,8 @@ GGS_templateVariableMap GGS_templateVariableMap::init (Compiler * COMMA_LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_templateVariableMap::getter_hasKey (const GGS_string & inKey
-                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_templateVariableMap::getter_contains (const GGS_string & inKey
+                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;

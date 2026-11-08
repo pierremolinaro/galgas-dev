@@ -253,7 +253,7 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   while directoryList.count > 0 do
     !?directoryList.popFirst (?let directoryName)
     builtPath += directoryName + "/"
-    if filewrapperDirectoryMap.hasKey (directoryName) then
+    if filewrapperDirectoryMap.contains (directoryName) then
       filewrapperDirectoryMap.searchKey
         (@lstring (directoryName, @location.here),
         ?filewrapperFileMap,
@@ -267,7 +267,7 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   end
   let @uint fileIndex
   let @bool isTextFile
-  if filewrapperFileMap.hasKey (fileName) then
+  if filewrapperFileMap.contains (fileName) then
     filewrapperFileMap.searchKey (@lstring (fileName, @location.here), ?*, ?isTextFile, ?*, ?fileIndex)
   else
     error (self.mFilewrapperPath

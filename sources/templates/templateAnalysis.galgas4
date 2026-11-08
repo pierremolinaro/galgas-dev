@@ -86,7 +86,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
   //-------------------------------------- Property ?
   if receiverType.definition.typeKind.isStructType || receiverType.definition.typeKind.isClassType,
      self.mExpressionList.count == 0,
-     receiverType.definition.propertyMap.hasKey (self.mGetterName) then
+     receiverType.definition.propertyMap.contains (self.mGetterName) then
     error (self.mExpressionLocation : "use dot notation, instead of func call" spoil outExpression)
   else
   //--- Get func map
@@ -98,7 +98,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
     var @unifiedTypeMapEntry returnedType
     var fieldList = @stringlist ()
     var actualGetterName = self.mGetterName.string
-    if getterMap.hasKey (self.mGetterName.string) then
+    if getterMap.contains (self.mGetterName.string) then
       getterMap.searchKey (self.mGetterName,
         ?kind,
         ?getterFormalArgumentTypeList,
@@ -632,14 +632,14 @@ override proc @templateOptionAccessAST.templateExpressionAnalysis
     ?let @commandLineOptionMap uintOptionMap,
     ?let @commandLineOptionMap stringOptionMap
   )
-  var found = boolOptionMap.hasKey (self.mOptionName.string)
+  var found = boolOptionMap.contains (self.mOptionName.string)
   var @unifiedTypeMapEntry returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
   if not found then
-    found = uintOptionMap.hasKey (self.mOptionName.string)
+    found = uintOptionMap.contains (self.mOptionName.string)
     returnedType = inAnalysisContext.mPredefinedTypes.mUIntType
   end
   if not found then
-    found = stringOptionMap.hasKey (self.mOptionName.string)
+    found = stringOptionMap.contains (self.mOptionName.string)
     returnedType = inAnalysisContext.mPredefinedTypes.mStringType
   end
   if found then

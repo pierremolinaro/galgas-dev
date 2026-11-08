@@ -2722,7 +2722,7 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
       nt_label_5F_formal_5F_parameter_ (ioArgument_ioDeclarations, var_argumentName_4093, var_formalParameterList_3971, inCompiler) ;
       GalgasBool test_1 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_1) {
-        test_1 = var_argumentNameSet_3917.getter_hasKey (var_argumentName_4093.readProperty_string () COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 108)).boolEnum () ;
+        test_1 = var_argumentNameSet_3917.getter_contains (var_argumentName_4093.readProperty_string () COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 108)).boolEnum () ;
         if (GalgasBool::boolTrue == test_1) {
           GenericArray <FixItDescription> fixItArray2 ;
           inCompiler->emitSemanticError (var_argumentName_4093.readProperty_location (), GGS_string ("there is already an argument named '").add_operation (var_argumentName_4093.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 109)).add_operation (GGS_string ("'"), inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 109)), fixItArray2  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 109)) ;
@@ -2774,14 +2774,14 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
                                                                                                                        GGS_formalParameterListAST & ioArgument_ioStartSymbolLabelFormalParameterList,
                                                                                                                        Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outArgumentName.drop () ; // Release 'out' argument
-  GGS_lstring var_selector_4818 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_selector_4820 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_selector_3A_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 125)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_var COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 126)) ;
-  GGS_lstring var_typeName_4893 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_4893, inCompiler) ;
+  GGS_lstring var_typeName_4895 ;
+  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_4895, inCompiler) ;
   outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 128)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_4818, GGS_formalArgumentPassingModeAST::class_func_argumentVarIn (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 131)), var_typeName_4893, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 129)) ;
+  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_4820, GGS_formalArgumentPassingModeAST::class_func_argumentVarIn (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 131)), var_typeName_4895, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 129)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -2801,12 +2801,12 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
                                                                                                                        Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outArgumentName.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 143)) ;
-  GGS_lstring var_selector_5438 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 144)) ;
-  GGS_lstring var_typeName_5512 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_5512, inCompiler) ;
+  GGS_lstring var_selector_5440 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 144)) ;
+  GGS_lstring var_typeName_5514 ;
+  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_5514, inCompiler) ;
   outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 146)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_5438, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 149)), var_typeName_5512, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 147)) ;
+  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_5440, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 149)), var_typeName_5514, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 147)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -2824,14 +2824,14 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
                                                                                                                        GGS_formalParameterListAST & ioArgument_ioStartSymbolLabelFormalParameterList,
                                                                                                                        Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outArgumentName.drop () ; // Release 'out' argument
-  GGS_lstring var_selector_6069 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_selector_6071 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_selector_3A_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 161)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_let COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 162)) ;
-  GGS_lstring var_typeName_6144 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_6144, inCompiler) ;
+  GGS_lstring var_typeName_6146 ;
+  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_6146, inCompiler) ;
   outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 164)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_6069, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 167)), var_typeName_6144, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 165)) ;
+  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_6071, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 167)), var_typeName_6146, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 165)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -2851,13 +2851,13 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
                                                                                                                        Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outArgumentName.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 179)) ;
-  GGS_lstring var_selector_6693 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 180)) ;
+  GGS_lstring var_selector_6695 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 180)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_let COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 181)) ;
-  GGS_lstring var_typeName_6777 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_6777, inCompiler) ;
+  GGS_lstring var_typeName_6779 ;
+  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_6779, inCompiler) ;
   outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 183)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_6693, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 186)), var_typeName_6777, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 184)) ;
+  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_6695, GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 186)), var_typeName_6779, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 184)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -2876,13 +2876,13 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
                                                                                                                        GGS_formalParameterListAST & ioArgument_ioStartSymbolLabelFormalParameterList,
                                                                                                                        Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outArgumentName.drop () ; // Release 'out' argument
-  GGS_lstring var_selector_7335 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_selector_7337 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F__21_selector_3A_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 198)) ;
-  GGS_lstring var_typeName_7400 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_7400, inCompiler) ;
+  GGS_lstring var_typeName_7402 ;
+  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_7402, inCompiler) ;
   outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 200)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_7335, GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 203)), var_typeName_7400, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 201)) ;
+  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_7337, GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 203)), var_typeName_7402, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 201)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -2901,12 +2901,12 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
                                                                                                                        Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outArgumentName.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3F__21_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 215)) ;
-  GGS_lstring var_selector_7945 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 216)) ;
-  GGS_lstring var_typeName_8019 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_8019, inCompiler) ;
+  GGS_lstring var_selector_7947 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 216)) ;
+  GGS_lstring var_typeName_8021 ;
+  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_8021, inCompiler) ;
   outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 218)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_7945, GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 221)), var_typeName_8019, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 219)) ;
+  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_7947, GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 221)), var_typeName_8021, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 219)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -2924,13 +2924,13 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
                                                                                                                        GGS_formalParameterListAST & ioArgument_ioStartSymbolLabelFormalParameterList,
                                                                                                                        Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outArgumentName.drop () ; // Release 'out' argument
-  GGS_lstring var_selector_8572 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_selector_8574 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 233)) ;
-  GGS_lstring var_typeName_8637 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_8637, inCompiler) ;
+  GGS_lstring var_typeName_8639 ;
+  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_8639, inCompiler) ;
   outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 235)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_8572, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 238)), var_typeName_8637, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 236)) ;
+  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_8574, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 238)), var_typeName_8639, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 236)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -2949,12 +2949,12 @@ void cParser_galgas_34_GrammarComponentSyntax::rule_galgas_34_GrammarComponentSy
                                                                                                                        Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outArgumentName.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_ COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 250)) ;
-  GGS_lstring var_selector_9181 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 251)) ;
-  GGS_lstring var_typeName_9255 ;
-  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_9255, inCompiler) ;
+  GGS_lstring var_selector_9183 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 251)) ;
+  GGS_lstring var_typeName_9257 ;
+  nt_type_5F_definition_ (ioArgument_ioDeclarations, var_typeName_9257, inCompiler) ;
   outArgument_outArgumentName = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 253)) ;
-  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_9181, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 254)), var_typeName_9255, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 254)) ;
+  ioArgument_ioStartSymbolLabelFormalParameterList.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (var_selector_9183, GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 254)), var_typeName_9257, outArgument_outArgumentName, GGS_bool (false), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasGrammarComponentSyntax.galgas4", 254)) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -6802,7 +6802,7 @@ void extensionSetter_insertKey (GGS_routineMap & ioObject,
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_routineMap temp_1 = ioObject ;
-    test_0 = temp_1.readProperty_mInternalRoutineMap ().getter_hasKey (constinArgument_inRoutineName.readProperty_string () COMMA_SOURCE_FILE ("routineMap.galgas4", 72)).boolEnum () ;
+    test_0 = temp_1.readProperty_mInternalRoutineMap ().getter_contains (constinArgument_inRoutineName.readProperty_string () COMMA_SOURCE_FILE ("routineMap.galgas4", 72)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       const GGS_routineMap temp_2 = ioObject ;
       temp_2.readProperty_mInternalRoutineMap ().method_searchKey (constinArgument_inRoutineName, var_routineArgumentMap_2940, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 73)) ;
@@ -6811,18 +6811,18 @@ void extensionSetter_insertKey (GGS_routineMap & ioObject,
   if (GalgasBool::boolFalse == test_0) {
     var_routineArgumentMap_2940 = GGS_routineArgumentMap::init (inCompiler COMMA_HERE) ;
   }
-  GGS_string var_routineArguments_3153 = function_routineArgumentFromFormalParameters (constinArgument_inRoutineSignature, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 77)) ;
+  GGS_string var_routineArguments_3155 = function_routineArgumentFromFormalParameters (constinArgument_inRoutineSignature, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 77)) ;
   GalgasBool test_3 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_3) {
-    test_3 = var_routineArgumentMap_2940.getter_hasKey (var_routineArguments_3153 COMMA_SOURCE_FILE ("routineMap.galgas4", 78)).boolEnum () ;
+    test_3 = var_routineArgumentMap_2940.getter_contains (var_routineArguments_3155 COMMA_SOURCE_FILE ("routineMap.galgas4", 78)).boolEnum () ;
     if (GalgasBool::boolTrue == test_3) {
       GenericArray <FixItDescription> fixItArray4 ;
-      inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("duplicated declaration of the ").add_operation (constinArgument_inRoutineName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 79)).add_operation (var_routineArguments_3153, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 79)).add_operation (GGS_string (" routine"), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 79)), fixItArray4  COMMA_SOURCE_FILE ("routineMap.galgas4", 79)) ;
+      inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("duplicated declaration of the ").add_operation (constinArgument_inRoutineName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 79)).add_operation (var_routineArguments_3155, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 79)).add_operation (GGS_string (" routine"), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 79)), fixItArray4  COMMA_SOURCE_FILE ("routineMap.galgas4", 79)) ;
     }
   }
   if (GalgasBool::boolFalse == test_3) {
     {
-    var_routineArgumentMap_2940.setter_insertKey (GGS_lstring::init_21__21_ (var_routineArguments_3153, constinArgument_inRoutineName.readProperty_location (), inCompiler COMMA_HERE), constinArgument_inRoutineSignature, constinArgument_inIsFilePrivate, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 81)) ;
+    var_routineArgumentMap_2940.setter_insertKey (GGS_lstring::init_21__21_ (var_routineArguments_3155, constinArgument_inRoutineName.readProperty_location (), inCompiler COMMA_HERE), constinArgument_inRoutineSignature, constinArgument_inIsFilePrivate, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 81)) ;
     }
     {
     ioObject.mProperty_mInternalRoutineMap.setter_insertOrReplace (constinArgument_inRoutineName, var_routineArgumentMap_2940 COMMA_SOURCE_FILE ("routineMap.galgas4", 86)) ;
@@ -6851,57 +6851,57 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_routineMap temp_1 = inObject ;
-    const GGS_internalRoutineMap_2E_element var_routine_4097 = temp_1.readProperty_mInternalRoutineMap ().readSubscript__3F_ (constinArgument_inRoutineName.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+    const GGS_internalRoutineMap_2E_element var_routine_4101 = temp_1.readProperty_mInternalRoutineMap ().readSubscript__3F_ (constinArgument_inRoutineName.readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
     if (!temp_1.readProperty_mInternalRoutineMap ().readSubscript__3F_ (constinArgument_inRoutineName.readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
       test_0 = GalgasBool::boolFalse ;
     }
     if (GalgasBool::boolTrue == test_0) {
       outArgument_outIsFilePrivate = GGS_bool (false) ;
       outArgument_outRoutineSignature = GGS_formalParameterSignature::init (inCompiler COMMA_HERE) ;
-      UpEnumerator_routineArgumentMap enumerator_4243 (var_routine_4097.readProperty_mArgumentMap ()) ;
-      while (enumerator_4243.hasCurrentObject ()) {
-        outArgument_outIsFilePrivate = enumerator_4243.current (HERE).readProperty_mIsFilePrivate () ;
-        outArgument_outRoutineSignature = enumerator_4243.current (HERE).readProperty_mRoutineSignature () ;
-        enumerator_4243.gotoNextObject () ;
+      UpEnumerator_routineArgumentMap enumerator_4247 (var_routine_4101.readProperty_mArgumentMap ()) ;
+      while (enumerator_4247.hasCurrentObject ()) {
+        outArgument_outIsFilePrivate = enumerator_4247.current (HERE).readProperty_mIsFilePrivate () ;
+        outArgument_outRoutineSignature = enumerator_4247.current (HERE).readProperty_mRoutineSignature () ;
+        enumerator_4247.gotoNextObject () ;
       }
-      GGS_acceptableParameterList var_acceptableParameterList_4406 = GGS_acceptableParameterList::init (inCompiler COMMA_HERE) ;
-      UpEnumerator_routineArgumentMap enumerator_4463 (var_routine_4097.readProperty_mArgumentMap ()) ;
-      while (enumerator_4463.hasCurrentObject ()) {
-        GGS_bool var_accept_4491 = GGS_bool (ComparisonKind::equal, constinArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas4", 106)).objectCompare (enumerator_4463.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas4", 106)))) ;
-        UpEnumerator_formalParameterSignature enumerator_4598 (enumerator_4463.current (HERE).readProperty_mRoutineSignature ()) ;
-        UpEnumerator_actualParameterListAST enumerator_4618 (constinArgument_inActualParameterList) ;
-        bool bool_2 = var_accept_4491.isValidAndTrue () ;
-        if (enumerator_4598.hasCurrentObject () && enumerator_4618.hasCurrentObject () && bool_2) {
-          while (enumerator_4598.hasCurrentObject () && enumerator_4618.hasCurrentObject () && bool_2) {
-            var_accept_4491 = callExtensionGetter_isCompatibleWith ((const cPtr_actualParameterAST *) enumerator_4618.current_mActualParameter (HERE).ptr (), enumerator_4598.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_4598.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 108)) ;
-            enumerator_4598.gotoNextObject () ;
-            enumerator_4618.gotoNextObject () ;
-            if (enumerator_4598.hasCurrentObject () && enumerator_4618.hasCurrentObject ()) {
-              bool_2 = var_accept_4491.isValidAndTrue () ;
+      GGS_acceptableParameterList var_acceptableParameterList_4410 = GGS_acceptableParameterList::init (inCompiler COMMA_HERE) ;
+      UpEnumerator_routineArgumentMap enumerator_4467 (var_routine_4101.readProperty_mArgumentMap ()) ;
+      while (enumerator_4467.hasCurrentObject ()) {
+        GGS_bool var_accept_4495 = GGS_bool (ComparisonKind::equal, constinArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas4", 106)).objectCompare (enumerator_4467.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas4", 106)))) ;
+        UpEnumerator_formalParameterSignature enumerator_4602 (enumerator_4467.current (HERE).readProperty_mRoutineSignature ()) ;
+        UpEnumerator_actualParameterListAST enumerator_4622 (constinArgument_inActualParameterList) ;
+        bool bool_2 = var_accept_4495.isValidAndTrue () ;
+        if (enumerator_4602.hasCurrentObject () && enumerator_4622.hasCurrentObject () && bool_2) {
+          while (enumerator_4602.hasCurrentObject () && enumerator_4622.hasCurrentObject () && bool_2) {
+            var_accept_4495 = callExtensionGetter_isCompatibleWith ((const cPtr_actualParameterAST *) enumerator_4622.current_mActualParameter (HERE).ptr (), enumerator_4602.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_4602.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 108)) ;
+            enumerator_4602.gotoNextObject () ;
+            enumerator_4622.gotoNextObject () ;
+            if (enumerator_4602.hasCurrentObject () && enumerator_4622.hasCurrentObject ()) {
+              bool_2 = var_accept_4495.isValidAndTrue () ;
             }
           }
         }
         GalgasBool test_3 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_3) {
-          test_3 = var_accept_4491.boolEnum () ;
+          test_3 = var_accept_4495.boolEnum () ;
           if (GalgasBool::boolTrue == test_3) {
-            var_acceptableParameterList_4406.plusPlusAssignOperation (GGS_acceptableParameterList_2E_element::init_21__21_ (enumerator_4463.current (HERE).readProperty_mRoutineSignature (), enumerator_4463.current (HERE).readProperty_mIsFilePrivate (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("routineMap.galgas4", 114)) ;
+            var_acceptableParameterList_4410.plusPlusAssignOperation (GGS_acceptableParameterList_2E_element::init_21__21_ (enumerator_4467.current (HERE).readProperty_mRoutineSignature (), enumerator_4467.current (HERE).readProperty_mIsFilePrivate (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("routineMap.galgas4", 114)) ;
           }
         }
-        enumerator_4463.gotoNextObject () ;
+        enumerator_4467.gotoNextObject () ;
       }
       GalgasBool test_4 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_4) {
-        test_4 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4406.getter_count (SOURCE_FILE ("routineMap.galgas4", 117)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+        test_4 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4410.getter_count (SOURCE_FILE ("routineMap.galgas4", 117)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_4) {
-          var_acceptableParameterList_4406.method_first (outArgument_outRoutineSignature, outArgument_outIsFilePrivate, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 118)) ;
+          var_acceptableParameterList_4410.method_first (outArgument_outRoutineSignature, outArgument_outIsFilePrivate, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 118)) ;
           outArgument_outRoutineMangledName = function_routineMangledName (constinArgument_inRoutineName, outArgument_outRoutineSignature, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 119)) ;
         }
       }
       if (GalgasBool::boolFalse == test_4) {
         GalgasBool test_5 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_5) {
-          test_5 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4406.getter_count (SOURCE_FILE ("routineMap.galgas4", 120)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          test_5 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4410.getter_count (SOURCE_FILE ("routineMap.galgas4", 120)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_5) {
             GenericArray <FixItDescription> fixItArray6 ;
             inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("cannot find any procedure with compatible formal argument list"), fixItArray6  COMMA_SOURCE_FILE ("routineMap.galgas4", 121)) ;
@@ -6911,14 +6911,14 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
           }
         }
         if (GalgasBool::boolFalse == test_5) {
-          GGS_string var_s_5460 = GGS_string ("ambiguity, several procedures with compatible formal argument list:") ;
-          UpEnumerator_acceptableParameterList enumerator_5557 (var_acceptableParameterList_4406) ;
-          while (enumerator_5557.hasCurrentObject ()) {
-            var_s_5460.plusAssignOperation(GGS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5557.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas4", 127)) ;
-            enumerator_5557.gotoNextObject () ;
+          GGS_string var_s_5464 = GGS_string ("ambiguity, several procedures with compatible formal argument list:") ;
+          UpEnumerator_acceptableParameterList enumerator_5561 (var_acceptableParameterList_4410) ;
+          while (enumerator_5561.hasCurrentObject ()) {
+            var_s_5464.plusAssignOperation(GGS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5561.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas4", 127)) ;
+            enumerator_5561.gotoNextObject () ;
           }
           GenericArray <FixItDescription> fixItArray7 ;
-          inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5460, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas4", 129)) ;
+          inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5464, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas4", 129)) ;
           outArgument_outRoutineSignature.drop () ; // Release error dropped variable
           outArgument_outIsFilePrivate.drop () ; // Release error dropped variable
           outArgument_outRoutineMangledName.drop () ; // Release error dropped variable
@@ -6970,15 +6970,15 @@ void extensionSetter_insertKey (GGS_syntaxExtensions & ioObject,
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_syntaxExtensions temp_1 = ioObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 40)).boolEnum () ;
+    test_0 = temp_1.readProperty_dictionary ().getter_contains (constinArgument_inKey COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 40)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
-      GGS_galgas_33_SyntaxExtensionListAST var_aList_2104 ;
+      GGS_galgas_33_SyntaxExtensionListAST var_aList_2106 ;
       const GGS_syntaxExtensions temp_2 = ioObject ;
-      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_2104, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 41)) ;
+      temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, var_aList_2106, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 41)) ;
       {
-      var_aList_2104.setter_append (constinArgument_inSyntaxComponentName, constinArgument_inNonterminalDeclarationList, constinArgument_inRuleList, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 42)) ;
+      var_aList_2106.setter_append (constinArgument_inSyntaxComponentName, constinArgument_inNonterminalDeclarationList, constinArgument_inRuleList, inCompiler COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 42)) ;
       }
-      ioObject.mProperty_dictionary.plusPlusAssignOperation (GGS_syntaxExtensionsDictionary_2E_element::init_21__21_ (constinArgument_inKey, var_aList_2104, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 43)) ;
+      ioObject.mProperty_dictionary.plusPlusAssignOperation (GGS_syntaxExtensionsDictionary_2E_element::init_21__21_ (constinArgument_inKey, var_aList_2106, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 43)) ;
     }
   }
   if (GalgasBool::boolFalse == test_0) {
@@ -7006,7 +7006,7 @@ void extensionSetter_getOptionalTypeName (GGS_galgasDeclarationAST & ioObject,
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_galgasDeclarationAST temp_1 = ioObject ;
-    test_0 = temp_1.readProperty_implicitTypeDeclarationSet ().getter_hasKey (outArgument_outOptionalTypeName.readProperty_string () COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 420)).operator_not (SOURCE_FILE ("semanticsTypesForAST.galgas4", 420)).boolEnum () ;
+    test_0 = temp_1.readProperty_implicitTypeDeclarationSet ().getter_contains (outArgument_outOptionalTypeName.readProperty_string () COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 420)).operator_not (SOURCE_FILE ("semanticsTypesForAST.galgas4", 420)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       ioObject.mProperty_implicitTypeDeclarationSet.plusPlusAssignOperation (outArgument_outOptionalTypeName.readProperty_string ()  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 421)) ;
       ioObject.mProperty_mDeclarationList.plusPlusAssignOperation (GGS_optionalTypeDeclarationAST::init_21_isPredefined_21_optionalTypeName_21_unwrappedTypeName_21_isUsefull (constinArgument_inPredefined, outArgument_outOptionalTypeName, constinArgument_inTypeName, GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("semanticsTypesForAST.galgas4", 422)) ;

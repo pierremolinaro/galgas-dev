@@ -906,8 +906,8 @@ GGS_equatableExtensionMap GGS_equatableExtensionMap::init (Compiler * COMMA_LOCA
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_equatableExtensionMap::getter_hasKey (const GGS_string & inKey
-                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_equatableExtensionMap::getter_contains (const GGS_string & inKey
+                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -12121,8 +12121,8 @@ GGS_uselessEntityLocationMap GGS_uselessEntityLocationMap::init (Compiler * COMM
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_uselessEntityLocationMap::getter_hasKey (const GGS_string & inKey
-                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_uselessEntityLocationMap::getter_contains (const GGS_string & inKey
+                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -12939,8 +12939,8 @@ GGS_headerCompositionMap GGS_headerCompositionMap::init (Compiler * COMMA_LOCATI
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_headerCompositionMap::getter_hasKey (const GGS_string & inKey
-                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_headerCompositionMap::getter_contains (const GGS_string & inKey
+                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -13487,8 +13487,8 @@ GGS_headerRepartitionMap GGS_headerRepartitionMap::init (Compiler * COMMA_LOCATI
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_headerRepartitionMap::getter_hasKey (const GGS_string & inKey
-                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_headerRepartitionMap::getter_contains (const GGS_string & inKey
+                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -16123,8 +16123,8 @@ GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::init (Compiler 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_lexicalExplicitTokenListMap::getter_hasKey (const GGS_string & inKey
-                                                         COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_lexicalExplicitTokenListMap::getter_contains (const GGS_string & inKey
+                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;

@@ -104,7 +104,7 @@ final class @extensionMethodAST : @semanticDeclarationAST {
     !?ioSemanticTypePrecedenceGraph.addNode (key, self)
     !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("@" + self.mTypeName, self.mTypeName.location))
   //---
-    if not ioExtensionMethodMapForBuildingContext.hasKey (self.mTypeName.string) then
+    if not ioExtensionMethodMapForBuildingContext.contains (self.mTypeName.string) then
       !?ioExtensionMethodMapForBuildingContext.insertKey
         ( self.mTypeName,
         @()
@@ -311,7 +311,7 @@ override proc @extensionMethodForGeneration.appendSpecificImplementation (let @u
     var @bool searching = true
     loop (@uint.max) while searching do
       if not baseType.definition.superType.isNull then
-        if baseType.definition.superType.definition.instanceMethodMap.hasKey (self.mExtensionMethodName) then
+        if baseType.definition.superType.definition.instanceMethodMap.contains (self.mExtensionMethodName) then
           baseType = baseType.definition.superType
         else
           searching = false

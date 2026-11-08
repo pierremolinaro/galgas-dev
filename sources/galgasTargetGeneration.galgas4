@@ -414,8 +414,8 @@ proc updateGalgasTargets
 //--- Check xcode target architectures
   var xcodeProject = @xcodeProject.none
   for (mValue) in inTargetFeatureList do
-    if availableGenerationFeatures.hasKey (mValue.string) then
-      if generationFeatures.hasKey (mValue.string) then
+    if availableGenerationFeatures.contains (mValue.string) then
+      if generationFeatures.contains (mValue.string) then
         error (mValue: "duplicate '" + mValue + "' feature")
       end
    //--- MacOS
@@ -441,29 +441,29 @@ proc updateGalgasTargets
     : "the %macCodeSign attribute implies the definition of an OS X target system: \"%MacSwiftApp\"")
   end
 //--- Check Cocoa features
-  if xcodeProject != .none, not inProjectQualifiedFeatureMap.hasKey ("applicationBundleBase") then
+  if xcodeProject != .none, not inProjectQualifiedFeatureMap.contains ("applicationBundleBase") then
     warning @location.here: "For a MacOS target, the \"applicationBundleBase\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"
   end
 //--- Generation
-  if generationFeatures.hasKey ("makefile-macosx") then
+  if generationFeatures.contains ("makefile-macosx") then
     generateMakefileMacTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if generationFeatures.hasKey ("makefile-unix") then
+  if generationFeatures.contains ("makefile-unix") then
     generateMakefileUnixTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if generationFeatures.hasKey ("makefile-x86linux32-on-macosx") then
+  if generationFeatures.contains ("makefile-x86linux32-on-macosx") then
     generateMakefileLinux32OnMacOSXTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if generationFeatures.hasKey ("makefile-x86linux64-on-macosx") then
+  if generationFeatures.contains ("makefile-x86linux64-on-macosx") then
     generateMakefileLinux64OnMacOSXTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if generationFeatures.hasKey ("makefile-arm64-linux-on-macosx") then
+  if generationFeatures.contains ("makefile-arm64-linux-on-macosx") then
     generateArm64LinuxMakefileTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if generationFeatures.hasKey ("makefile-win32-on-macosx") then
+  if generationFeatures.contains ("makefile-win32-on-macosx") then
     generateMakefileMinGWOnMacOSXTarget (projectDirectory, !buildDirName: inBuildDirectoryName, inTargetName )
   end
-  if generationFeatures.hasKey ("codeblocks-windows") then
+  if generationFeatures.contains ("codeblocks-windows") then
     generateGalgasCodeBlocksWindowsTarget (
       projectDirectory,
       !buildDirName: inBuildDirectoryName,
@@ -475,7 +475,7 @@ proc updateGalgasTargets
       inQuietOutputByDefault
     )
   end
-  if generationFeatures.hasKey ("codeblocks-linux32") then
+  if generationFeatures.contains ("codeblocks-linux32") then
     generateGalgasCodeBlocksLinuxI686Target (
       projectDirectory,
       !buildDirName: inBuildDirectoryName,
@@ -487,7 +487,7 @@ proc updateGalgasTargets
       inQuietOutputByDefault
     )
   end
-  if generationFeatures.hasKey ("codeblocks-linux64") then
+  if generationFeatures.contains ("codeblocks-linux64") then
     generateGalgasCodeBlocksLinuxX86_64Target (
       projectDirectory,
       !buildDirName: inBuildDirectoryName,

@@ -381,7 +381,7 @@ proc buildLexicalAttributeMap
   let @lexicalAttributeListAST inLexicalAttributeList,
   ?!@lexicalAttributeMap ioLexicalAttributeMap ) {
   for lexicalAttribute in inLexicalAttributeList do
-    if inLexicalTypeMap.hasKey (lexicalAttribute.mTypeName.string) then
+    if inLexicalTypeMap.contains (lexicalAttribute.mTypeName.string) then
       inLexicalTypeMap.searchKey (lexicalAttribute.mTypeName, ?let @lexicalTypeEnum lexicalType)
       !?ioLexicalAttributeMap.insertKey (lexicalAttribute.mName, lexicalType)
     else

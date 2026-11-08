@@ -10260,8 +10260,8 @@ GGS_propertyIndexMap GGS_propertyIndexMap::init (Compiler * COMMA_LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_propertyIndexMap::getter_hasKey (const GGS_string & inKey
-                                              COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_propertyIndexMap::getter_contains (const GGS_string & inKey
+                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -10747,8 +10747,8 @@ GGS_nonterminalLabelMap GGS_nonterminalLabelMap::init (Compiler * COMMA_LOCATION
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_nonterminalLabelMap::getter_hasKey (const GGS_string & inKey
-                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_nonterminalLabelMap::getter_contains (const GGS_string & inKey
+                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -12338,8 +12338,8 @@ void GGS_genericExtensionMethodListMapDictionary::setter_insert (const GGS_strin
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_genericExtensionMethodListMapDictionary::getter_hasKey (const GGS_string & inKey
-                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_genericExtensionMethodListMapDictionary::getter_contains (const GGS_string & inKey
+                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (hasKey (inKey)) ;
@@ -12641,7 +12641,7 @@ GGS_lstringlist extensionGetter_listForKey (const GGS_genericExtensionMethodList
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_genericExtensionMethodListMap temp_1 = inObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 58)).boolEnum () ;
+    test_0 = temp_1.readProperty_dictionary ().getter_contains (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 58)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       const GGS_genericExtensionMethodListMap temp_2 = inObject ;
       temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, result_result, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 59)) ;
@@ -13344,8 +13344,8 @@ void GGS_descendantClassListMapDictionary::setter_insert (const GGS_string inKey
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_descendantClassListMapDictionary::getter_hasKey (const GGS_string & inKey
-                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_descendantClassListMapDictionary::getter_contains (const GGS_string & inKey
+                                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (hasKey (inKey)) ;
@@ -13647,7 +13647,7 @@ GGS_unifiedTypeMapEntryList extensionGetter_listForKey (const GGS_descendantClas
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
     const GGS_descendantClassListMap temp_1 = inObject ;
-    test_0 = temp_1.readProperty_dictionary ().getter_hasKey (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 127)).boolEnum () ;
+    test_0 = temp_1.readProperty_dictionary ().getter_contains (constinArgument_inKey COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 127)).boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       const GGS_descendantClassListMap temp_2 = inObject ;
       temp_2.readProperty_dictionary ().method_searchKey (constinArgument_inKey, result_result, inCompiler COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas4", 128)) ;
@@ -13703,8 +13703,8 @@ GGS_extensionMethodMapForGlobalCheckings GGS_extensionMethodMapForGlobalChecking
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_extensionMethodMapForGlobalCheckings::getter_hasKey (const GGS_string & inKey
-                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_extensionMethodMapForGlobalCheckings::getter_contains (const GGS_string & inKey
+                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -14109,8 +14109,8 @@ GGS_extensionSetterMapForGlobalCheckings GGS_extensionSetterMapForGlobalChecking
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_extensionSetterMapForGlobalCheckings::getter_hasKey (const GGS_string & inKey
-                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_extensionSetterMapForGlobalCheckings::getter_contains (const GGS_string & inKey
+                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -14515,8 +14515,8 @@ GGS_extensionGetterMapForGlobalCheckings GGS_extensionGetterMapForGlobalChecking
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_extensionGetterMapForGlobalCheckings::getter_hasKey (const GGS_string & inKey
-                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_extensionGetterMapForGlobalCheckings::getter_contains (const GGS_string & inKey
+                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;

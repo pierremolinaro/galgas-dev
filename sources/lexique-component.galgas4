@@ -1002,7 +1002,7 @@ override proc @lexiqueComponentAST.semanticAnalysis
   end
   var @stringset indexNameSet = @()
   for entry in self.mIndexingListAST do
-    if indexNameSet.hasKey (entry.mIndexName.string) then
+    if indexNameSet.contains (entry.mIndexName.string) then
       error (entry.mIndexName : "the '" + entry.mIndexName + "' index is already declared")
     end
     indexNameSet ++= entry.mIndexName.string

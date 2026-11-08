@@ -138,7 +138,7 @@ final class @optionComponentDeclarationAST : @semanticDeclarationAST {
     var @commandLineOptionMap stringOptionMap = @()
     var optionNameSet = @stringset ()
     for anOption in self.mOptions do
-      if optionNameSet.hasKey (anOption.mOptionInternalName.string) then
+      if optionNameSet.contains (anOption.mOptionInternalName.string) then
         error (anOption.mOptionInternalName
         : "the '" + anOption.mOptionInternalName.string
         + "' command line option has been already declared"

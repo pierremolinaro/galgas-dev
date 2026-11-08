@@ -228,7 +228,7 @@ syntax extension galgas4DeclarationsSyntax {
     select
       let elementTypeName = outTypeName
       outTypeName = makeArrayTypeLName (elementTypeName)
-      if not ioDeclarations.implicitTypeDeclarationSet.hasKey (outTypeName.string) then
+      if not ioDeclarations.implicitTypeDeclarationSet.contains (outTypeName.string) then
         ioDeclarations.implicitTypeDeclarationSet ++= outTypeName.string
         ioDeclarations.mDeclarationList ++= @arrayTypeDeclarationAST (
           !isPredefined: false,

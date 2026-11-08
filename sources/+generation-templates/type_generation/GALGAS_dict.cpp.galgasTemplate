@@ -103,7 +103,7 @@ end
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_hasKey (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% & inKey%
+GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_contains (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% & inKey%
 %\n %!^%COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {

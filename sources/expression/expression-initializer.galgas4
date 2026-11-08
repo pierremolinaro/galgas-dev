@@ -256,7 +256,7 @@ private proc analyzeInitializerInvocation (let @lstring inUsefulnessCallerEntity
       outInitializerName = @(inInvocationArguments.initializerSignature, inEndOfExpressions)
       let initializerMap = instanciedTypeDefinition.initializerMap
       let @functionSignature formalSignature
-      if initializerMap.hasKey (outInitializerName) then
+      if initializerMap.contains (outInitializerName) then
         initializerMap.searchKey (outInitializerName, ?formalSignature)
       else
         var s = "@" + instanciedTypeDefinition.typeName + " ("

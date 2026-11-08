@@ -15124,8 +15124,8 @@ GGS_propertyMap GGS_propertyMap::init (Compiler * COMMA_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_propertyMap::getter_hasKey (const GGS_string & inKey
-                                         COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_propertyMap::getter_contains (const GGS_string & inKey
+                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -15733,8 +15733,8 @@ GGS_initializerMap GGS_initializerMap::init (Compiler * COMMA_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_initializerMap::getter_hasKey (const GGS_string & inKey
-                                            COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_initializerMap::getter_contains (const GGS_string & inKey
+                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -16220,8 +16220,8 @@ GGS_classFunctionMap GGS_classFunctionMap::init (Compiler * COMMA_LOCATION_ARGS)
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_classFunctionMap::getter_hasKey (const GGS_string & inKey
-                                              COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_classFunctionMap::getter_contains (const GGS_string & inKey
+                                                COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;

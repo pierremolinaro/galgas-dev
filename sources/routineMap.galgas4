@@ -69,13 +69,13 @@ struct @routineMap {
                     let @formalParameterSignature inRoutineSignature,
                     ?isFilePrivate: let @bool inIsFilePrivate) {
     var @routineArgumentMap routineArgumentMap
-    if self.mInternalRoutineMap.hasKey (inRoutineName) then
+    if self.mInternalRoutineMap.contains (inRoutineName) then
       self.mInternalRoutineMap.searchKey (inRoutineName, ?routineArgumentMap)
     else
       routineArgumentMap = @()
     end
     let routineArguments = routineArgumentFromFormalParameters (inRoutineSignature)
-    if routineArgumentMap.hasKey (routineArguments) then
+    if routineArgumentMap.contains (routineArguments) then
       error (inRoutineName : "duplicated declaration of the " + inRoutineName + routineArguments + " routine")
     else
      !?routineArgumentMap.insertKey

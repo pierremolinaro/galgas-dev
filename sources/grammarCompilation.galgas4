@@ -82,7 +82,7 @@ proc checkLabelMap
   end
 //---
   for entry in inNonterminalSymbolLabelMapForGrammarAnalysis do
-    if not labelStringSet.hasKey (entry.lkey.string) then
+    if not labelStringSet.contains (entry.lkey.string) then
       error (inNonTerminalLocation :
         "this non terminal does not declare the '" + entry.lkey + "' label, but declaration at "
           + inOriginalNonTerminalLocation.startLocationString

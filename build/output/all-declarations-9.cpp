@@ -15126,8 +15126,8 @@ GGS_unusedNonTerminalSymbolMapForGrammarAnalysis GGS_unusedNonTerminalSymbolMapF
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::getter_hasKey (const GGS_string & inKey
-                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::getter_contains (const GGS_string & inKey
+                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
@@ -15906,8 +15906,8 @@ GGS_nonterminalSymbolLabelMapForGrammarAnalysis GGS_nonterminalSymbolLabelMapFor
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bool GGS_nonterminalSymbolLabelMapForGrammarAnalysis::getter_hasKey (const GGS_string & inKey
-                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_bool GGS_nonterminalSymbolLabelMapForGrammarAnalysis::getter_contains (const GGS_string & inKey
+                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isValid () && inKey.isValid ()) {
     result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;

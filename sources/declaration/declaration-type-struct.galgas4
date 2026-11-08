@@ -249,7 +249,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (property.typeName)
       !?ioUsefulEntitiesGraph.addEdge (!from: structNameForUsefulness, !to: propertyTypeNameForUsefulness)
       let t = ioTypeMap.typeMapEntryForLKey (property.typeName)
-      if forbiddenKeysForStruct ().hasKey (property.name.string) then
+      if forbiddenKeysForStruct ().contains (property.name.string) then
         var @string m = "an property cannot be named:"
         for s in forbiddenKeysForStruct () do
           m += " " + s
@@ -315,7 +315,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       ?let initializationCode
     )
   //---
-    let constructorNeedsCompilerVar = not unusedVariableCppNameSet.hasKey (compilerCppName ())
+    let constructorNeedsCompilerVar = not unusedVariableCppNameSet.contains (compilerCppName ())
     ioSemanticDeclarationListForGeneration ++= @structTypeForGeneration (
       !infoMessage: "struct " + self.structTypeName,
       structType,
