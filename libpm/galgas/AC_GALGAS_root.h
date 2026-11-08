@@ -92,9 +92,6 @@ class AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG GGS_type getter_dynamicType (LOCATION_ARGS) const ;
 
-//---
-  protected: virtual AC_GALGAS_root * clonedObject (void) const = 0 ;
-
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: virtual void checkIsValid (LOCATION_ARGS) const ;
     public: virtual void printNonNullClassInstanceProperties (const char * inPropertyName) const ;

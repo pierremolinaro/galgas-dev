@@ -72,10 +72,6 @@ class GGS_uint_36__34_ : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_uint_36__34_ class_func_max (LOCATION_ARGS) ;
 
@@ -253,7 +249,7 @@ class GGS_uint_36__34_ : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -391,10 +387,6 @@ class GGS_bigint : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_bigint class_func_zero (LOCATION_ARGS) ;
 
@@ -576,7 +568,7 @@ class GGS_bigint : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -612,10 +604,6 @@ class GGS_binaryset : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS_binaryset init (Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_binaryset class_func_binarySetWithBit (const class GGS_uint & inOperand0,
                                                                   class Compiler * inCompiler
@@ -894,7 +882,7 @@ class GGS_binaryset : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -937,10 +925,6 @@ class GGS_bool : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- & operator
   public: GGS_bool operator_and (const GGS_bool & inOperand
                                  COMMA_LOCATION_ARGS) const ;
@@ -988,7 +972,7 @@ class GGS_bool : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1018,10 +1002,6 @@ class GGS_char : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_char class_func_replacementCharacter (LOCATION_ARGS) ;
 
@@ -1091,7 +1071,7 @@ class GGS_char : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1170,10 +1150,6 @@ class GGS_data : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS_data init (Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_data class_func_dataWithContentsOfFile (const class GGS_string & inOperand0,
                                                                    class Compiler * inCompiler
@@ -1243,7 +1219,7 @@ class GGS_data : public AC_GALGAS_root {
 //--------------------------------- Friend
   friend class UpEnumerator_data ;
   friend class DownEnumerator_data ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1273,10 +1249,6 @@ class GGS_double : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_double class_func_doubleWithBinaryImage (const class GGS_uint_36__34_ & inOperand0
                                                                     COMMA_LOCATION_ARGS) ;
@@ -1399,7 +1371,7 @@ class GGS_double : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1474,10 +1446,6 @@ class GGS_filewrapper : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -1541,7 +1509,7 @@ class GGS_filewrapper : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1587,10 +1555,6 @@ class GGS_location : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_location class_func_here (Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
@@ -1654,7 +1618,7 @@ class GGS_location : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1684,10 +1648,6 @@ class GGS_sint : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_sint class_func_max (LOCATION_ARGS) ;
 
@@ -1854,7 +1814,7 @@ class GGS_sint : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1884,10 +1844,6 @@ class GGS_sint_36__34_ : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_sint_36__34_ class_func_max (LOCATION_ARGS) ;
 
@@ -2055,7 +2011,7 @@ class GGS_sint_36__34_ : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2092,10 +2048,6 @@ class GGS_string : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_string class_func_CppChar (const class GGS_char & inOperand0
                                                       COMMA_LOCATION_ARGS) ;
@@ -2490,7 +2442,7 @@ class GGS_string : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2522,10 +2474,6 @@ class GGS_uint : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_uint class_func_compilationMode (LOCATION_ARGS) ;
 
@@ -2712,7 +2660,7 @@ class GGS_uint : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -2897,10 +2845,6 @@ class GGS_stringset : public AC_GALGAS_root {
   public: static GGS_stringset init_21_stringArray (const class GGS__5B_string_5D_ & inOperand0,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_stringset class_func_emptySet (LOCATION_ARGS) ;
 
@@ -2980,7 +2924,7 @@ class GGS_stringset : public AC_GALGAS_root {
 //--------------------------------- Friend
   friend class UpEnumerator_stringset ;
   friend class DownEnumerator_stringset ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3008,10 +2952,6 @@ class GGS_timer : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS_timer init (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_timer class_func_start (LOCATION_ARGS) ;
 
@@ -3041,7 +2981,7 @@ class GGS_timer : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3077,10 +3017,6 @@ class GGS_type : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_typelist class_func_typeList (LOCATION_ARGS) ;
 
@@ -3109,7 +3045,7 @@ class GGS_type : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3210,10 +3146,6 @@ class GGS__5B_uint_36__34__5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_uint_36__34__5D_ init (Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- += operator (with expression)
   public: void plusAssignOperation (const GGS__5B_uint_36__34__5D_ inOperand,
                                     class Compiler * inCompiler
@@ -3283,7 +3215,7 @@ class GGS__5B_uint_36__34__5D_ final : public AC_GALGAS_root {
 //--------------------------------- Friend
   friend class UpEnumerator__5B_uint_36__34__5D_ ;
   friend class DownEnumerator__5B_uint_36__34__5D_ ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3384,10 +3316,6 @@ class GGS__5B_string_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_string_5D_ init (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- += operator (with expression)
   public: void plusAssignOperation (const GGS__5B_string_5D_ inOperand,
                                     class Compiler * inCompiler
@@ -3457,7 +3385,7 @@ class GGS__5B_string_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Friend
   friend class UpEnumerator__5B_string_5D_ ;
   friend class DownEnumerator__5B_string_5D_ ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3516,10 +3444,6 @@ class GGS_lstring : public AC_GALGAS_root {
                                            const class GGS_location & inOperand1,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -3538,7 +3462,7 @@ class GGS_lstring : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3639,10 +3563,6 @@ class GGS__5B_lstring_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_lstring_5D_ init (Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- += operator (with expression)
   public: void plusAssignOperation (const GGS__5B_lstring_5D_ inOperand,
                                     class Compiler * inCompiler
@@ -3712,7 +3632,7 @@ class GGS__5B_lstring_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Friend
   friend class UpEnumerator__5B_lstring_5D_ ;
   friend class DownEnumerator__5B_lstring_5D_ ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -3813,10 +3733,6 @@ class GGS__5B_uint_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_uint_5D_ init (Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- += operator (with expression)
   public: void plusAssignOperation (const GGS__5B_uint_5D_ inOperand,
                                     class Compiler * inCompiler
@@ -3886,7 +3802,7 @@ class GGS__5B_uint_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Friend
   friend class UpEnumerator__5B_uint_5D_ ;
   friend class DownEnumerator__5B_uint_5D_ ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4003,10 +3919,6 @@ class GGS_luintlist : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS_luintlist init (Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_luintlist class_func_listWithValue (const class GGS_luint & inOperand0
                                                                COMMA_LOCATION_ARGS) ;
@@ -4101,7 +4013,7 @@ class GGS_luintlist : public AC_GALGAS_root {
 //--------------------------------- Friend
   friend class UpEnumerator_luintlist ;
   friend class DownEnumerator_luintlist ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4160,10 +4072,6 @@ class GGS_luint : public AC_GALGAS_root {
                                          const class GGS_location & inOperand1,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -4182,7 +4090,7 @@ class GGS_luint : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4299,10 +4207,6 @@ class GGS_lstringlist : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS_lstringlist init (Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_lstringlist class_func_listWithValue (const class GGS_lstring & inOperand0
                                                                  COMMA_LOCATION_ARGS) ;
@@ -4397,7 +4301,7 @@ class GGS_lstringlist : public AC_GALGAS_root {
 //--------------------------------- Friend
   friend class UpEnumerator_lstringlist ;
   friend class DownEnumerator_lstringlist ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4514,10 +4418,6 @@ class GGS_stringlist : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS_stringlist init (Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_stringlist class_func_listWithValue (const class GGS_string & inOperand0
                                                                 COMMA_LOCATION_ARGS) ;
@@ -4612,7 +4512,7 @@ class GGS_stringlist : public AC_GALGAS_root {
 //--------------------------------- Friend
   friend class UpEnumerator_stringlist ;
   friend class DownEnumerator_stringlist ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4729,10 +4629,6 @@ class GGS_typelist : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS_typelist init (Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS_typelist class_func_listWithValue (const class GGS_type & inOperand0
                                                               COMMA_LOCATION_ARGS) ;
@@ -4827,7 +4723,7 @@ class GGS_typelist : public AC_GALGAS_root {
 //--------------------------------- Friend
   friend class UpEnumerator_typelist ;
   friend class DownEnumerator_typelist ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4886,10 +4782,6 @@ class GGS_lbool : public AC_GALGAS_root {
                                          const class GGS_location & inOperand1,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -4908,7 +4800,7 @@ class GGS_lbool : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -4967,10 +4859,6 @@ class GGS_lbigint : public AC_GALGAS_root {
                                            const class GGS_location & inOperand1,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -4989,7 +4877,7 @@ class GGS_lbigint : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5048,10 +4936,6 @@ class GGS_lchar : public AC_GALGAS_root {
                                          const class GGS_location & inOperand1,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -5070,7 +4954,7 @@ class GGS_lchar : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5129,10 +5013,6 @@ class GGS_ldouble : public AC_GALGAS_root {
                                            const class GGS_location & inOperand1,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -5151,7 +5031,7 @@ class GGS_ldouble : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5210,10 +5090,6 @@ class GGS_lsint : public AC_GALGAS_root {
                                          const class GGS_location & inOperand1,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -5232,7 +5108,7 @@ class GGS_lsint : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5291,10 +5167,6 @@ class GGS_lsint_36__34_ : public AC_GALGAS_root {
                                                  const class GGS_location & inOperand1,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -5313,7 +5185,7 @@ class GGS_lsint_36__34_ : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5372,10 +5244,6 @@ class GGS_luint_36__34_ : public AC_GALGAS_root {
                                                  const class GGS_location & inOperand1,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -5394,7 +5262,7 @@ class GGS_luint_36__34_ : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5514,10 +5382,6 @@ class GGS__32_stringlist : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__32_stringlist init (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- GALGAS class functions
   public: static class GGS__32_stringlist class_func_listWithValue (const class GGS_string & inOperand0,
                                                                     const class GGS_string & inOperand1
@@ -5630,7 +5494,7 @@ class GGS__32_stringlist : public AC_GALGAS_root {
 //--------------------------------- Friend
   friend class UpEnumerator__32_stringlist ;
   friend class DownEnumerator__32_stringlist ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5689,10 +5553,6 @@ class GGS_range : public AC_GALGAS_root {
                                          const class GGS_uint & inOperand1,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -5711,7 +5571,7 @@ class GGS_range : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5766,10 +5626,6 @@ class GGS_bigint_3F_ : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Comparison
   public: ComparisonResult objectCompare (const GGS_bigint_3F_ & inOperand) const ;
 
@@ -5785,7 +5641,7 @@ class GGS_bigint_3F_ : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5833,10 +5689,6 @@ class GGS_luintlist_2E_element : public AC_GALGAS_root {
   public: static GGS_luintlist_2E_element init_21_ (const class GGS_luint & inOperand0,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -5855,7 +5707,7 @@ class GGS_luintlist_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5903,10 +5755,6 @@ class GGS_lstringlist_2E_element : public AC_GALGAS_root {
   public: static GGS_lstringlist_2E_element init_21_ (const class GGS_lstring & inOperand0,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -5925,7 +5773,7 @@ class GGS_lstringlist_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -5973,10 +5821,6 @@ class GGS_stringlist_2E_element : public AC_GALGAS_root {
   public: static GGS_stringlist_2E_element init_21_ (const class GGS_string & inOperand0,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -5995,7 +5839,7 @@ class GGS_stringlist_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6043,10 +5887,6 @@ class GGS_typelist_2E_element : public AC_GALGAS_root {
   public: static GGS_typelist_2E_element init_21_ (const class GGS_type & inOperand0,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -6065,7 +5905,7 @@ class GGS_typelist_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------
@@ -6124,10 +5964,6 @@ class GGS__32_stringlist_2E_element : public AC_GALGAS_root {
                                                              const class GGS_string & inOperand1,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -6146,7 +5982,7 @@ class GGS__32_stringlist_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
+
 } ;
 
 //--------------------------------------------------------------------------------------------------

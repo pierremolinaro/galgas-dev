@@ -11,13 +11,3 @@ const GALGAS_TypeDescriptor * GGS_%!TYPE_IDENTIFIER%::staticTypeDescriptor (void
   return & kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;
 }
 
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_%!TYPE_IDENTIFIER%::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_%!TYPE_IDENTIFIER% (*this)) ;
-  }
-  return result ;
-}
-

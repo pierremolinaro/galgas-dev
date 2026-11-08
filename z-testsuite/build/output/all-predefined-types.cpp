@@ -22,16 +22,6 @@ const GALGAS_TypeDescriptor * GGS_uint_36__34_::staticTypeDescriptor (void) cons
 }
 
 //--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_uint_36__34_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_uint_36__34_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @[uint64] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -42,16 +32,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_uint_36__34__5D_ ("[uint6
 
 const GALGAS_TypeDescriptor * GGS__5B_uint_36__34__5D_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__5B_uint_36__34__5D_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS__5B_uint_36__34__5D_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS__5B_uint_36__34__5D_ (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -336,16 +316,6 @@ const GALGAS_TypeDescriptor * GGS_bigint::staticTypeDescriptor (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_bigint::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_bigint (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @binaryset generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -356,16 +326,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_binaryset ("binaryset",
 
 const GALGAS_TypeDescriptor * GGS_binaryset::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_binaryset ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_binaryset::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_binaryset (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -382,16 +342,6 @@ const GALGAS_TypeDescriptor * GGS_bool::staticTypeDescriptor (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_bool::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_bool (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @char generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -402,16 +352,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_char ("char",
 
 const GALGAS_TypeDescriptor * GGS_char::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_char ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_char::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_char (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -428,16 +368,6 @@ const GALGAS_TypeDescriptor * GGS_data::staticTypeDescriptor (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_data::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_data (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @double generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -448,16 +378,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_double ("double",
 
 const GALGAS_TypeDescriptor * GGS_double::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_double ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_double::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_double (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -474,16 +394,6 @@ const GALGAS_TypeDescriptor * GGS_filewrapper::staticTypeDescriptor (void) const
 }
 
 //--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_filewrapper::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_filewrapper (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @location generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -494,16 +404,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_location ("location",
 
 const GALGAS_TypeDescriptor * GGS_location::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_location ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_location::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_location (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -520,16 +420,6 @@ const GALGAS_TypeDescriptor * GGS_sint::staticTypeDescriptor (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_sint::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_sint (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @sint64 generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -540,16 +430,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sint_36__34_ ("sint64",
 
 const GALGAS_TypeDescriptor * GGS_sint_36__34_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_sint_36__34_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_sint_36__34_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_sint_36__34_ (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -566,16 +446,6 @@ const GALGAS_TypeDescriptor * GGS_string::staticTypeDescriptor (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_string::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_string (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @[string] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -586,16 +456,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_string_5D_ ("[string]",
 
 const GALGAS_TypeDescriptor * GGS__5B_string_5D_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__5B_string_5D_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS__5B_string_5D_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS__5B_string_5D_ (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -881,16 +741,6 @@ const GALGAS_TypeDescriptor * GGS_lstring::staticTypeDescriptor (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_lstring::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lstring (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lstring::GGS_lstring (void) :
 mProperty_string (),
 mProperty_location () {
@@ -989,16 +839,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_lstring_5D_ ("[lstring]",
 
 const GALGAS_TypeDescriptor * GGS__5B_lstring_5D_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__5B_lstring_5D_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS__5B_lstring_5D_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS__5B_lstring_5D_ (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1283,16 +1123,6 @@ const GALGAS_TypeDescriptor * GGS_uint::staticTypeDescriptor (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_uint::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_uint (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @[uint] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -1303,16 +1133,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_uint_5D_ ("[uint]",
 
 const GALGAS_TypeDescriptor * GGS__5B_uint_5D_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__5B_uint_5D_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS__5B_uint_5D_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS__5B_uint_5D_ (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1597,16 +1417,6 @@ const GALGAS_TypeDescriptor * GGS_stringset::staticTypeDescriptor (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_stringset::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_stringset (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @timer generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -1617,16 +1427,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_timer ("timer",
 
 const GALGAS_TypeDescriptor * GGS_timer::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_timer ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_timer::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_timer (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1643,16 +1443,6 @@ const GALGAS_TypeDescriptor * GGS_type::staticTypeDescriptor (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_type::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_type (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @luintlist generic code implementation
 //--------------------------------------------------------------------------------------------------
 
@@ -1663,16 +1453,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_luintlist ("luintlist",
 
 const GALGAS_TypeDescriptor * GGS_luintlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_luintlist ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_luintlist::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_luintlist (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2201,16 +1981,6 @@ const GALGAS_TypeDescriptor * GGS_luint::staticTypeDescriptor (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_luint::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_luint (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_luint::GGS_luint (void) :
 mProperty_uint (),
 mProperty_location () {
@@ -2309,16 +2079,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lstringlist ("lstringlist",
 
 const GALGAS_TypeDescriptor * GGS_lstringlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lstringlist ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lstringlist::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lstringlist (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2846,16 +2606,6 @@ const GALGAS_TypeDescriptor * GGS_stringlist::staticTypeDescriptor (void) const 
 }
 
 //--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_stringlist::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_stringlist (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Class for element of '@stringlist' list
 //--------------------------------------------------------------------------------------------------
 
@@ -3377,16 +3127,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typelist ("typelist",
 
 const GALGAS_TypeDescriptor * GGS_typelist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_typelist ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_typelist::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_typelist (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3915,16 +3655,6 @@ const GALGAS_TypeDescriptor * GGS_lbool::staticTypeDescriptor (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_lbool::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lbool (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lbool::GGS_lbool (void) :
 mProperty_bool (),
 mProperty_location () {
@@ -4023,16 +3753,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lbigint ("lbigint",
 
 const GALGAS_TypeDescriptor * GGS_lbigint::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lbigint ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lbigint::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lbigint (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4139,16 +3859,6 @@ const GALGAS_TypeDescriptor * GGS_lchar::staticTypeDescriptor (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_lchar::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lchar (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lchar::GGS_lchar (void) :
 mProperty_char (),
 mProperty_location () {
@@ -4247,16 +3957,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ldouble ("ldouble",
 
 const GALGAS_TypeDescriptor * GGS_ldouble::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_ldouble ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_ldouble::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_ldouble (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4363,16 +4063,6 @@ const GALGAS_TypeDescriptor * GGS_lsint::staticTypeDescriptor (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_lsint::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lsint (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_lsint::GGS_lsint (void) :
 mProperty_sint (),
 mProperty_location () {
@@ -4471,16 +4161,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lsint_36__34_ ("lsint64",
 
 const GALGAS_TypeDescriptor * GGS_lsint_36__34_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lsint_36__34_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lsint_36__34_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lsint_36__34_ (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4587,16 +4267,6 @@ const GALGAS_TypeDescriptor * GGS_luint_36__34_::staticTypeDescriptor (void) con
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_luint_36__34_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_luint_36__34_ (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_luint_36__34_::GGS_luint_36__34_ (void) :
 mProperty_uint_36__34_ (),
 mProperty_location () {
@@ -4695,16 +4365,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__32_stringlist ("2stringlist"
 
 const GALGAS_TypeDescriptor * GGS__32_stringlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__32_stringlist ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS__32_stringlist::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS__32_stringlist (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5310,16 +4970,6 @@ const GALGAS_TypeDescriptor * GGS_range::staticTypeDescriptor (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_range::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_range (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_range::GGS_range (void) :
 mProperty_start (),
 mProperty_length () {
@@ -5418,16 +5068,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigint_3F_ ("bigint?",
 
 const GALGAS_TypeDescriptor * GGS_bigint_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_bigint_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_bigint_3F_::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_bigint_3F_ (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5540,16 +5180,6 @@ const GALGAS_TypeDescriptor * GGS_luintlist_2E_element::staticTypeDescriptor (vo
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_luintlist_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_luintlist_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_luintlist_2E_element::GGS_luintlist_2E_element (void) :
 mProperty_mValue () {
 }
@@ -5635,16 +5265,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lstringlist_2E_element ("lstr
 
 const GALGAS_TypeDescriptor * GGS_lstringlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lstringlist_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_lstringlist_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_lstringlist_2E_element (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5738,16 +5358,6 @@ const GALGAS_TypeDescriptor * GGS_stringlist_2E_element::staticTypeDescriptor (v
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_stringlist_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_stringlist_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_stringlist_2E_element::GGS_stringlist_2E_element (void) :
 mProperty_mValue () {
 }
@@ -5837,16 +5447,6 @@ const GALGAS_TypeDescriptor * GGS_typelist_2E_element::staticTypeDescriptor (voi
 
 //--------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GGS_typelist_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_typelist_2E_element (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_typelist_2E_element::GGS_typelist_2E_element (void) :
 mProperty_mValue () {
 }
@@ -5932,16 +5532,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__32_stringlist_2E_element ("2
 
 const GALGAS_TypeDescriptor * GGS__32_stringlist_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS__32_stringlist_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS__32_stringlist_2E_element::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS__32_stringlist_2E_element (*this)) ;
-  }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

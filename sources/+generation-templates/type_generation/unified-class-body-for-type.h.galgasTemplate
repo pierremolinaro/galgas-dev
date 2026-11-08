@@ -13,11 +13,8 @@
     end
     %Compiler * inCompiler
     %!^%COMMA_LOCATION_ARGS) ;
-%end%
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
+%end
 
-%
 if [CLASS_FUNC_MAP count] > 0 then
   %//--------------------------------- GALGAS class functions\n%
   for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in CLASS_FUNC_MAP do
@@ -277,14 +274,14 @@ for (lkey mKind mParameterList mHasCompilerArgument mQualifier mErrorMessage) in
           !^%COMMA_LOCATION_ARGS%
         else
           !^%LOCATION_ARGS%
-        end  
+        end
       else
         if mHasCompilerArgument then
           %,\n%!^%Compiler * inCompiler\n%
           !^%COMMA_LOCATION_ARGS%
         else
           %\n%!^%COMMA_LOCATION_ARGS%
-        end  
+        end
       end
       %) ;\n\n%
     end
@@ -315,14 +312,14 @@ for (lkey mKind mParameterList mDeclarationLocation mHasCompilerArgument mQualif
           !^%COMMA_LOCATION_ARGS%
         else
           !^%LOCATION_ARGS%
-        end  
+        end
       else
         if mHasCompilerArgument then
           %,\n%!^%Compiler * inCompiler\n%
           !^%COMMA_LOCATION_ARGS%
         else
           %\n%!^%COMMA_LOCATION_ARGS%
-        end  
+        end
       end
       %) const ;\n\n%
     end
@@ -350,14 +347,14 @@ for (lkey mParameterList mHasCompilerArgument) in CLASS_METHOD_MAP do
       !^%COMMA_LOCATION_ARGS%
     else
       !^%LOCATION_ARGS%
-    end  
+    end
   else
     if mHasCompilerArgument then
       %,\n%!^%Compiler * inCompiler\n%
       !^%COMMA_LOCATION_ARGS%
     else
       %\n%!^%COMMA_LOCATION_ARGS%
-    end  
+    end
   end
   %) ;\n\n%
 end
@@ -366,7 +363,7 @@ end
 %
 for (lkey kind argumentTypeList * hasCompilerArgument returnedType qualifier replacementGetter) in GETTER_MAP do
   if replacementGetter == "" then
-    switch kind 
+    switch kind
     case definedAsExtension :
     case definedAsMember :
       if (qualifier == [@methodQualifier isVirtualAbstract]) | (qualifier == [@methodQualifier isBasic]) | (qualifier == [@methodQualifier isBasicFinal]) then
@@ -400,7 +397,7 @@ end
 for (key argumentList resultType) in READ_SUBSCRIPT_MAP do
 %  public: class GGS_%![resultType identifierRepresentation]% readSubscript_%
    ![key identifierRepresentation]% (%?^
-  for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in argumentList do (IDX) 
+  for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in argumentList do (IDX)
     %const class GGS_%![mFormalArgumentType identifierRepresentation]% & in% ![IDX string] %,\n% !^
   end
   %Compiler * inCompiler\n%!^%COMMA_LOCATION_ARGS) const ;\n\n%
@@ -416,7 +413,7 @@ if [ENUMERATION_DESCRIPTOR_LIST count] > 0 then
   friend class UpEnumerator_%!TYPE_IDENTIFIER% ;
   friend class DownEnumerator_%!TYPE_IDENTIFIER% ;
 %end
-% 
+%
 } ;
 
 //--------------------------------------------------------------------------------------------------

@@ -13,7 +13,6 @@
                        "../libpm/utilities",
                        "../sources/tool-sources"],
     "SOURCES"  :  [
-        "all-declarations-25.cpp",
         "all-declarations-24.cpp",
         "all-declarations-23.cpp",
         "all-declarations-22.cpp",

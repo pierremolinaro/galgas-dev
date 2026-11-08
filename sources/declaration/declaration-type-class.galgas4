@@ -19,88 +19,6 @@
 //!   SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3DeclarationsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    let @bool isAbstract
-//    let @bool clonable
-//    let @bool finalClass
-//    select
-//      isAbstract = false
-//      clonable = false
-//      finalClass = false
-//    or
-//      $abstract$
-//      isAbstract = true
-//      clonable = false
-//      finalClass = false
-//    or
-//      $final$
-//      isAbstract = false
-//      clonable = false
-//      finalClass = true
-//    or
-//      $%clonable$
-//      isAbstract = false
-//      clonable = true
-//      finalClass = false
-//    end
-//    $class$
-//    $@type$ (?let @lstring className) indexing (classDefinition)
-//    let @lstring superClassName // Empty if no super class
-//    select
-//      superClassName = "".nowhere
-//    or
-//      $:$
-//      $@type$ (? superClassName) indexing (classReferencedAsSuperClass)
-//    end
-//    let @bool generateInSeparateFile
-//    select
-//      generateInSeparateFile = false
-//    or
-//      $%generatedInSeparateFile$
-//      generateInSeparateFile = true
-//    end
-//    ${$
-//  //--- Class properties
-//    var @propertyInCollectionListAST propertyList = @()
-//    repeat
-//    while
-//      <property_declaration_ggs3> (!?ioDeclarations, !? propertyList)
-//    while
-//      <method_declaration_ggs3> (!className, !?ioDeclarations)
-//    end
-//    $}$
-//    ioDeclarations.mDeclarationList ++= @(!@classDeclarationAST (
-//      !isPredefined: false,
-//      isAbstract,
-//      finalClass,
-//      className,
-//      superClassName,
-//      generateInSeparateFile,
-//      propertyList,
-//      clonable
-//    ))
-//    ioDeclarations.mDeclarationList ++= @(!@weakReferenceDeclarationAST (
-//      !isPredefined: false,
-//      className,
-//      makeWeakTypeLName (!className),
-//      if superClassName.string == ""
-//         then superClassName
-//         else makeWeakTypeLName (!superClassName)
-//       end,
-//      generateInSeparateFile
-//    ))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -248,10 +166,10 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     let @typedPropertyList inheritedTypedPropertyList
     var @propertyMap attributeMap = @()
   //--- Handle super class
-    let @unifiedTypeMapEntry superClassIndex
+    let @unifiedTypeMapEntry superClassType
     let @bool generateHeaderInSeparateFile
     if self.mSuperClassName.string == "" then
-      superClassIndex = .null
+      superClassType = .null
       commonGetterMapForAllTypes (!?ioTypeMap, ?getterMap)
       setterMap = @()
       instanceMethodMap = @()
@@ -259,7 +177,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       attributeMap = @()
       generateHeaderInSeparateFile = self.mGenerateInSeparateFile
     else
-      !?ioTypeMap.makeEntry (self.mSuperClassName, ?superClassIndex)
+      !?ioTypeMap.makeEntry (self.mSuperClassName, ?superClassType)
       let superTypeDefinition = ioTypeMap.typeDefinition (self.mSuperClassName)
       inheritedTypedPropertyList = superTypeDefinition.allTypedPropertyList
       attributeMap = superTypeDefinition.propertyMap
@@ -312,7 +230,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       end
     end
   //--- Current class Index
-    !?ioTypeMap.makeEntry (self.mClassTypeName, ?let @unifiedTypeMapEntry classIndex)
+    !?ioTypeMap.makeEntry (self.mClassTypeName, ?let @unifiedTypeMapEntry classType)
   //--- Build attribute Map and constructor argument list
     var @functionSignature synthetizedInitializerArgumentList = @()
     for property in inheritedTypedPropertyList do
@@ -335,7 +253,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       end
       !?attributeMap.insertKey
         (property.name,
-        property.accessControl.accessControl (!forDeclaringType: classIndex),
+        property.accessControl.accessControl (!forDeclaringType: classType),
         property.mutability.isConstantProperty,
         attributeTypeIndex
       )
@@ -370,11 +288,11 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       var @functionSignature cloneInitializerArgumentList = @()
       cloneInitializerArgumentList ++= @(
         "cloned".nowhere,
-        classIndex,
+        classType,
         "inObject",
         true)
-      !?initializerMap.insertKey
-        (@(cloneInitializerArgumentList.initializerSignature, self.mClassTypeName),
+      !?initializerMap.insertKey (
+        @(cloneInitializerArgumentList.initializerSignature, self.mClassTypeName),
         cloneInitializerArgumentList
       )
     end
@@ -397,8 +315,8 @@ final class @classDeclarationAST : @semanticDeclarationAST {
   //--- Synthetize an initializer, if the structure defines none
     if initializerMap.count == if self.clonable then 1 else 0 end then
       features |= .generateSynthetizedInitializer
-      !?initializerMap.insertKey
-        (@(synthetizedInitializerArgumentList.initializerSignature, self.mClassTypeName),
+      !?initializerMap.insertKey (
+        @(synthetizedInitializerArgumentList.initializerSignature, self.mClassTypeName),
         synthetizedInitializerArgumentList
       )
     end
@@ -415,7 +333,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       !isPredefined: self.isPredefined,
       !isConcrete: not self.mIsAbstract,
       !isFinal: self.mIsFinal,
-      !superType: superClassIndex,
+      !superType: superClassType,
       !typeKind: .classType,
       !supportCollectionValue: false,
       !allTypedPropertyList: allTypedAttributeList,
