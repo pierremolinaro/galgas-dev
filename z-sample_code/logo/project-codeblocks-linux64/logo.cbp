@@ -185,7 +185,6 @@
    <Unit filename="../build/libpm/galgas/GGS_string-getters.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_stringset.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_type.cpp" />
-   <Unit filename="../build/libpm/galgas/GGS_object.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_uint.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_timer.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_uint64.cpp" />

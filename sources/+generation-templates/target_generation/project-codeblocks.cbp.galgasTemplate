@@ -197,7 +197,6 @@ end
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_string-getters.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_stringset.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_type.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/GGS_object.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_uint.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_timer.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_uint64.cpp" />

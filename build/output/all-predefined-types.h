@@ -41,7 +41,6 @@ class GGS_data ;
 class GGS_double ;
 class GGS_filewrapper ;
 class GGS_location ;
-class GGS_object ;
 class GGS_sint ;
 class GGS_sint64 ;
 class GGS_string ;
@@ -1661,75 +1660,6 @@ class GGS_location : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_location ;
-
-//--------------------------------------------------------------------------------------------------
-//   @object type
-//--------------------------------------------------------------------------------------------------
-
-class PtrObject ;
-
-//--------------------------------------------------------------------------------------------------
-
-class GGS_object : public AC_GALGAS_root {
-//--------------------------------- Private data member
-  private: PtrObject * mSharedObject ;
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mSharedObject != nullptr ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_object (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_object (AC_GALGAS_root * inObjectPointer
-                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Destructor (virtual in debug mode)
-  public: virtual ~ GGS_object (void) ;
-
-//--------------------------------- Handle copy
-  public: GGS_object (const GGS_object & inSource) ;
-  public: GGS_object & operator = (const GGS_object & inSource) ;
-
-//--------------------------------- Embedded Object
-  public: const AC_GALGAS_root * embeddedObject (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_object & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_type getter_objectDynamicType (LOCATION_ARGS) const ;
-
-  public: class GGS_type getter_objectStaticType (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
- 
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_object ;
 
 //--------------------------------------------------------------------------------------------------
 //   @sint type

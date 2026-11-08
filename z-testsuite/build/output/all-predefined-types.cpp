@@ -507,29 +507,6 @@ AC_GALGAS_root * GGS_location::clonedObject (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @object generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_object ("object",
-                                                           nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_object::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_object ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AC_GALGAS_root * GGS_object::clonedObject (void) const {
-  AC_GALGAS_root * result = nullptr ;
-  if (isValid ()) {
-    macroMyNew (result, GGS_object (*this)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //     @sint generic code implementation
 //--------------------------------------------------------------------------------------------------
 

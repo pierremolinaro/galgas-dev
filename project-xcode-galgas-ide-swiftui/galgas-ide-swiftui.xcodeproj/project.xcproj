@@ -912,12 +912,6 @@
                 "galgas-debug/compile-sources",
               ],
             }, {
-              "path": "GGS_object.cpp",
-              "target-membership": [
-                "galgas/compile-sources",
-                "galgas-debug/compile-sources",
-              ],
-            }, {
               "path": "GGS_sint.cpp",
               "target-membership": [
                 "galgas/compile-sources",

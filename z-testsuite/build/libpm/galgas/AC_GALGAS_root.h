@@ -92,8 +92,7 @@ class AC_GALGAS_root {
 
   public: VIRTUAL_IN_DEBUG GGS_type getter_dynamicType (LOCATION_ARGS) const ;
 
-//--- "object" reader
-  public: VIRTUAL_IN_DEBUG GGS_object getter_object (LOCATION_ARGS) const ;
+//---
   protected: virtual AC_GALGAS_root * clonedObject (void) const = 0 ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS

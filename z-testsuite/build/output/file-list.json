@@ -127,7 +127,6 @@
        "GGS_string-getters.cpp",
        "GGS_stringset.cpp",
        "GGS_type.cpp",
-       "GGS_object.cpp",
        "GGS_uint.cpp",
        "GGS_timer.cpp",
        "GGS_uint64.cpp"

@@ -390,7 +390,7 @@ proc enterBaseFinalGetterWith3Arguments
 //--------------------------------------------------------------------------------------------------
 
 proc commonGetterMapForAllTypes (?!@unifiedTypeMap ioUnifiedTypeMap,
-                                !@getterMap outMap ) {
+                                 !@getterMap outMap) {
   outMap = @()
   enterInheritedGetterWithoutArgument (
     !?outMap,
@@ -411,13 +411,6 @@ proc commonGetterMapForAllTypes (?!@unifiedTypeMap ioUnifiedTypeMap,
     !?ioUnifiedTypeMap,
     !getterName:"dynamicType",
     !returnedTypeName:"type",
-    !hasCompilerArgument:false
-  )
-  enterInheritedGetterWithoutArgument (
-    !?outMap,
-    !?ioUnifiedTypeMap,
-    !getterName:"object",
-    !returnedTypeName:"object",
     !hasCompilerArgument:false
   )
 }

@@ -64,9 +64,9 @@ GGS_type AC_GALGAS_root::getter_dynamicType (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_object AC_GALGAS_root::getter_object (LOCATION_ARGS) const {
+/* GGS_object AC_GALGAS_root::getter_object (LOCATION_ARGS) const {
   return GGS_object (clonedObject () COMMA_THERE) ;
-}
+}*/
 
 //--------------------------------------------------------------------------------------------------
 

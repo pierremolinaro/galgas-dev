@@ -211,7 +211,6 @@ override proc @castInExpressionAST.analyzeSemanticExpression
       :"the '@" + self.mTypeName + "' is not a descendant of the '@"
       + expression.mResultType.definition.typeName.string + "' type of the cast expression")
     end
- // elsif expression.mResultType.definition.typeName.string != "object" then
   else
     error (expression.mLocation:
       "cast expression should be a class instance: it is an @"

@@ -133,15 +133,6 @@ GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_sint_36__34__5F_
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'predefinedTypeGenerationTemplate object_type'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_predefinedTypeGenerationTemplate_object_5F_type (class Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper template 'predefinedTypeGenerationTemplate uint_type'
 //
 //--------------------------------------------------------------------------------------------------

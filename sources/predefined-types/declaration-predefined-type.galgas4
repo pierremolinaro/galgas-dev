@@ -36,7 +36,7 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   ioDeclarations.mDeclarationList ++= @filewrapperPredefinedTypeAST (!isPredefined: true, "filewrapper")
   // ioDeclarations.mDeclarationList ++= @functionPredefinedTypeAST (!isPredefined: true, "function")
   ioDeclarations.mDeclarationList ++= @locationPredefinedTypeAST (!isPredefined: true, "location")
-  ioDeclarations.mDeclarationList ++= @objectPredefinedTypeAST (!isPredefined: true, "object")
+  // ioDeclarations.mDeclarationList ++= @objectPredefinedTypeAST (!isPredefined: true, "object")
   ioDeclarations.mDeclarationList ++= @sintPredefinedTypeAST (!isPredefined: true, "sint")
   ioDeclarations.mDeclarationList ++= @sint64PredefinedTypeAST (!isPredefined: true, "sint64")
   ioDeclarations.mDeclarationList ++= @stringPredefinedTypeAST (!isPredefined: true, "string")
@@ -443,8 +443,6 @@ filewrapper predefinedTypeGenerationTemplate in "../+generation-templates/type_g
   template sint_type : "sint-type.h.galgasTemplate" ()
 
   template sint64_type : "sint64-type.h.galgasTemplate" ()
-
-  template object_type : "object-type.h.galgasTemplate" ()
 
   template uint_type : "uint-type.h.galgasTemplate" ()
 
