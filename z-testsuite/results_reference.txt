@@ -260,7 +260,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (102 types)
+--- Type list (95 types)
   @2lstringlist
   @2lstringlist.element
   @2stringlist
@@ -273,6 +273,10 @@ LOGGING r: <@uint:5>
   @TestExtensionMethod.weak
   @TestExtensionSetter
   @TestExtensionSetter.weak
+  @[lstring]
+  @[string]
+  @[uint64]
+  @[uint]
   @aMap
   @aMap.element
   @aMap.element?
@@ -284,8 +288,6 @@ LOGGING r: <@uint:5>
   @baseClassForTypeCastInSetterCall.weak
   @bigint
   @bigint?
-  @bigintlist
-  @bigintlist.element
   @binaryset
   @bool
   @char
@@ -312,14 +314,9 @@ LOGGING r: <@uint:5>
   @data
   @double
   @filewrapper
-  @function
-  @functionlist
-  @functionlist.element
   @inheritedClassForTypeCastInSetterCall
   @inheritedClassForTypeCastInSetterCall.weak
   @lbigint
-  @lbigintlist
-  @lbigintlist.element
   @lbool
   @lchar
   @ldouble
@@ -359,18 +356,8 @@ LOGGING r: <@uint:5>
   @typelist.element
   @uint
   @uint64
-  @uint64list
-  @uint64list.element
-  @uintlist
-  @uintlist.element
---- Function list (1 function)
-LOGGING mValue: <@function:functionTest [?@uint ?@uint] -> @uint>
-<@function:functionTest [?@uint ?@uint] -> @uint>  functionTest [?@uint ?@uint] -> @uint
-Function 'foo' exists:false
-Function 'functionTest' exists:true
 LOGGING object: 
 LOGGING y: <@uint:2>
-LOGGING result: 
 *************************************** begin of extension reader test
 LOGGING s: <@string:"-3-4-4">
 Carré de 9: 81
@@ -392,17 +379,7 @@ LOGGING v: <@uint64:49>
 LOGGING u: <@uint:10>
 LOGGING s: <@string:"Hello !">
 LOGGING ls: <struct @lstring:<@string:"Hello3">, <@location:nowhere:1:1>>
-LOGGING aList: <list @uintlist (5 objects):
-|-at 0
-| mValue:<@uint:1>
-|-at 1
-| mValue:<@uint:2>
-|-at 2
-| mValue:<@uint:3>
-|-at 3
-| mValue:<@uint:4>
-|-at 4
-| mValue:<@uint:81>>
+LOGGING aList: <array @[uint], 5 objects>
 *************************************** begin of string test
 LOGGING command: <@string:"echo accentué">
 LOGGING result: <@string:"accentué

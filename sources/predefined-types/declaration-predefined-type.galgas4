@@ -34,7 +34,7 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   ioDeclarations.mDeclarationList ++= @dataPredefinedTypeAST (!isPredefined: true, "data")
   ioDeclarations.mDeclarationList ++= @doublePredefinedTypeAST (!isPredefined: true, "double")
   ioDeclarations.mDeclarationList ++= @filewrapperPredefinedTypeAST (!isPredefined: true, "filewrapper")
-  ioDeclarations.mDeclarationList ++= @functionPredefinedTypeAST (!isPredefined: true, "function")
+  // ioDeclarations.mDeclarationList ++= @functionPredefinedTypeAST (!isPredefined: true, "function")
   ioDeclarations.mDeclarationList ++= @locationPredefinedTypeAST (!isPredefined: true, "location")
   ioDeclarations.mDeclarationList ++= @objectPredefinedTypeAST (!isPredefined: true, "object")
   ioDeclarations.mDeclarationList ++= @sintPredefinedTypeAST (!isPredefined: true, "sint")
@@ -48,7 +48,7 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   ioDeclarations.mDeclarationList ++= @stringsetPredefinedTypeAST (!isPredefined: true, "stringset")
   ioDeclarations.mDeclarationList ++= @timerPredefinedTypeAST (!isPredefined: true, "timer")
   ioDeclarations.mDeclarationList ++= @typePredefinedTypeAST (!isPredefined: true, "type")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "function")
+  // appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "function")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "luint")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "lstring")
   appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "object")
@@ -453,8 +453,6 @@ filewrapper predefinedTypeGenerationTemplate in "../+generation-templates/type_g
   template bool_type : "bool-type.h.galgasTemplate" ()
 
   template binaryset_type : "binaryset-type.h.galgasTemplate" ()
-
-  template function_type : "function-type.h.galgasTemplate" ()
 
   template type_type : "type-type.h.galgasTemplate" ()
 

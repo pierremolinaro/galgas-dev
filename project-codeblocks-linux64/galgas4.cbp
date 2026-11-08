@@ -234,7 +234,6 @@
    <Unit filename="../libpm/galgas/GGS_data.cpp" />
    <Unit filename="../libpm/galgas/GGS_double.cpp" />
    <Unit filename="../libpm/galgas/GGS_filewrapper.cpp" />
-   <Unit filename="../libpm/galgas/GGS_function.cpp" />
    <Unit filename="../libpm/galgas/GGS_location.cpp" />
    <Unit filename="../libpm/galgas/GGS_sint.cpp" />
    <Unit filename="../libpm/galgas/GGS_sint64.cpp" />

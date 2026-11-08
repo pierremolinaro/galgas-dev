@@ -192,7 +192,6 @@ end
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_data.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_double.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_filewrapper.cpp" />
-   <Unit filename="%!LIBPM_PATH%/galgas/GGS_function.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_location.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_sint.cpp" />
    <Unit filename="%!LIBPM_PATH%/galgas/GGS_sint64.cpp" />

@@ -161,7 +161,6 @@
        "GGS_data.cpp",
        "GGS_double.cpp",
        "GGS_filewrapper.cpp",
-       "GGS_function.cpp",
        "GGS_location.cpp",
        "GGS_sint.cpp",
        "GGS_sint64.cpp",

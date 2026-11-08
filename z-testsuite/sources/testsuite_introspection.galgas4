@@ -11,22 +11,22 @@ println ("*************************************** begin of introspection test")
     println ("  @" + mValue.name + "")
   end
 //--- List of functions
-  let @functionlist functionList = @function.functionList
-  println ("--- Function list (" + functionList.count.string
-  + " function" + if functionList.count > 1 then "s" else "" end + ")")
-  for (mValue) in functionList do
-    var @string s = ""
-    for (mValue) in mValue.formalParameterTypeList
-    do s += "?@" + mValue.name
-    between s += " "
-    end
-    log "mValue" : mValue
-    println (mValue.description + "  " + mValue.name + " [" + s + "] -> @" + mValue.resultType.name)
-  end
-  let b1 = @function.isFunctionDefined ("foo")
-  let b2 = @function.isFunctionDefined ("functionTest")
-  println ("Function 'foo' exists:" + b1.cString + "")
-  println ("Function 'functionTest' exists:" + b2.cString + "")
+//  let @functionlist functionList = @function.functionList
+//  println ("--- Function list (" + functionList.count.string
+//  + " function" + if functionList.count > 1 then "s" else "" end + ")")
+//  for (mValue) in functionList do
+//    var @string s = ""
+//    for (mValue) in mValue.formalParameterTypeList
+//    do s += "?@" + mValue.name
+//    between s += " "
+//    end
+//    log "mValue" : mValue
+//    println (mValue.description + "  " + mValue.name + " [" + s + "] -> @" + mValue.resultType.name)
+//  end
+//  let b1 = @function.isFunctionDefined ("foo")
+//  let b2 = @function.isFunctionDefined ("functionTest")
+//  println ("Function 'foo' exists:" + b1.cString + "")
+//  println ("Function 'functionTest' exists:" + b2.cString + "")
 //--- Introspection of an @uint
   let @uint x = 2
   let @object object = x.object
@@ -34,12 +34,12 @@ println ("*************************************** begin of introspection test")
   let @uint y =  (object as @uint)
   log y
 //--- Function invocation
-  let @function f = @function.functionWithName ("functionTest")
-  var arguments = @objectlist []
-  !?arguments.append (2 .uint.object)
-  !?arguments.append (6 .uint.object)
-  let @object result = f.invoke (arguments, .here)
-  log result
+//  let @function f = @function.functionWithName ("functionTest")
+//  var arguments = @objectlist []
+//  !?arguments.append (2 .uint.object)
+//  !?arguments.append (6 .uint.object)
+//  let @object result = f.invoke (arguments, .here)
+//  log result
 }
 
 //----------------------------------------------------------------------------

@@ -180,7 +180,6 @@
    <Unit filename="../build/libpm/galgas/GGS_data.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_double.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_filewrapper.cpp" />
-   <Unit filename="../build/libpm/galgas/GGS_function.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_location.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_sint.cpp" />
    <Unit filename="../build/libpm/galgas/GGS_sint64.cpp" />

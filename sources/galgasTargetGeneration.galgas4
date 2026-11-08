@@ -1005,7 +1005,6 @@ proc updateGalgasTargets
         "GGS_data.cpp",
         "GGS_double.cpp",
         "GGS_filewrapper.cpp",
-        "GGS_function.cpp",
         "GGS_location.cpp",
         "GGS_object.cpp",
         "GGS_sint64.cpp",
