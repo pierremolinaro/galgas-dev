@@ -25,11 +25,11 @@ final class @templateInstructionForeachAST : @templateInstructionAST {
   private let @templateExpressionAST mExpression
   private let [@lstring] mEnumeration
   private let @location mEndOfProperties
-  private let @templateInstructionListAST mBeforeInstructionList
-  private let @templateInstructionListAST mDoInstructionList
+  private let [@templateInstructionAST] mBeforeInstructionList
+  private let [@templateInstructionAST] mDoInstructionList
   private let @lstring mIndexIdentifier
-  private let @templateInstructionListAST mBetweenInstructionList
-  private let @templateInstructionListAST mAfterInstructionList
+  private let [@templateInstructionAST] mBetweenInstructionList
+  private let [@templateInstructionAST] mAfterInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ syntax extension templateSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
+  rule <template_instruction> (?![@templateInstructionAST] ioResultingInstructionList ) {
     $for$
     let @bool ascending
     select
@@ -108,7 +108,7 @@ syntax extension templateSyntax {
     end
     <for_instruction_enumerated_object> (?let enumeration, ?let endOfProperties, ?let expression)
   //--- before block
-    var @templateInstructionListAST beforeInstructionList = @()
+    var [@templateInstructionAST] beforeInstructionList = @()
     select
     or
       $before$
@@ -128,14 +128,14 @@ syntax extension templateSyntax {
       $identifier$ (? indexIdentifier)
       $)$
     end
-    var @templateInstructionListAST doInstructionList = @()
+    var [@templateInstructionAST] doInstructionList = @()
     repeat
       enterTemplateString (!?doInstructionList)
     while
       <template_instruction> (!?doInstructionList)
     end
   //--- between block
-    var @templateInstructionListAST betweenInstructionList = @()
+    var [@templateInstructionAST] betweenInstructionList = @()
     select
     or
       $between$
@@ -146,7 +146,7 @@ syntax extension templateSyntax {
       end
     end
   //--- after block
-    var @templateInstructionListAST afterInstructionList = @()
+    var [@templateInstructionAST] afterInstructionList = @()
     select
     or
       $after$
@@ -158,7 +158,7 @@ syntax extension templateSyntax {
     end
   //---
     $end$
-    ioResultingInstructionList ++= @(@templateInstructionForeachAST (
+    ioResultingInstructionList ++= @templateInstructionForeachAST (
       ascending,
       expression,
       enumeration,
@@ -168,7 +168,7 @@ syntax extension templateSyntax {
       indexIdentifier,
       betweenInstructionList,
       afterInstructionList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -225,7 +225,7 @@ void routine_templateInstructionListAnalysis_3F__26__3F__26__3F__26_ (const clas
                                                                       class GGS_usefulEntitiesGraph & ioArgument1,
                                                                       const class GGS_templateAnalysisContext constinArgument2,
                                                                       class GGS_unifiedTypeMap & ioArgument3,
-                                                                      const class GGS_templateInstructionListAST constinArgument4,
+                                                                      const class GGS__5B_templateInstructionAST_5D_ constinArgument4,
                                                                       class GGS_templateInstructionListForGeneration & ioArgument5,
                                                                       class Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;

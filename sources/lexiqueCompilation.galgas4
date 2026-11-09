@@ -523,7 +523,7 @@ override proc @lexicalExplicitRuleAST.checkLexicalRule
   self.mLexicalRuleExpression.checkLexicalExpression (!?ioLexiqueAnalysisContext)
   var @lexicalTagMap tagMap = @()
   for entry in self.mInstructionList do
-    entry.mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
+    entry.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
   end
 }
 

@@ -52,7 +52,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
+  rule <lexical_instruction> (?![@lexicalInstructionAST] ioInstructionList) {
     $identifier$ (?let @lstring actionName)
     var [@abstractLexicalRoutineActualArgumentAST] actualArgumentList = @()
     $($
@@ -80,10 +80,11 @@ syntax extension galgas4LexiqueComponentSyntax {
       end
     end
     $)$
-    ioInstructionList ++= @(@lexicalRoutineCallInstructionAST (
+    ioInstructionList ++= @lexicalRoutineCallInstructionAST (
       actionName,
       actualArgumentList,
-      errorMessageList))
+      errorMessageList
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

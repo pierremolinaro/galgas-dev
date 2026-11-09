@@ -60,8 +60,8 @@ String Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int32_t inTer
   String result = "<unknown>" ;
   if ((inTerminalIndex >= 0) && (inTerminalIndex < %![[TERMINAL_LIST count] + 1 string]%)) {
     static const char * syntaxErrorMessageArray [%![[TERMINAL_LIST count] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
-  for (* * mSyntaxErrorMessage * * *) in TERMINAL_LIST do
-   %,\n        %![mSyntaxErrorMessage utf8RepresentationEscapingQuestionMark]
+  for (terminal) in TERMINAL_LIST do
+   %,\n        %![terminal.mSyntaxErrorMessage utf8RepresentationEscapingQuestionMark]
   end
 %\n    } ;
     result = syntaxErrorMessageArray [inTerminalIndex] ;
@@ -111,12 +111,12 @@ String Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * inTo
     case kToken_:
       s.appendCString ("$$") ;
       break ;
-%for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
-   %    case kToken_%![mTerminalName.string identifierRepresentation]%:\n%
+%for (terminal) in TERMINAL_LIST do
+   %    case kToken_%![terminal.mTerminalName.string identifierRepresentation]%:\n%
    %      s.appendChar (utf32 ('$')) ;\n%
-   %      s.appendCString (%![mTerminalName.string utf8RepresentationEscapingQuestionMark]%) ;\n%
+   %      s.appendCString (%![terminal.mTerminalName.string utf8RepresentationEscapingQuestionMark]%) ;\n%
    %      s.appendChar (utf32 ('$')) ;\n%
-   for (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in mSentAttributeList do
+   for (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in terminal.mSentAttributeList do
      %      s.appendChar (utf32 (' ')) ;\n%
      %      s.%![mLexicalType appendMethodName]% (ptr->mLexicalAttribute_%![mLexicalAttributeName identifierRepresentation] ![mLexicalType appendArgumentOfMethod]%) ;\n%
    end
@@ -172,9 +172,9 @@ end
 //--------------------------------------------------------------------------------------------------
 
 % if [TEMPLATE_DELIMITOR_LIST count] > 0 then
-    for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
+    for (terminal) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
       before %static const bool %!LEXIQUE_IDENTIFIER%_kEndOfScriptInTemplateArray [%![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count] string]%] = {\n%
-      do %  %![mIsEndOfTemplateMark cString]% /* %!mTerminalName.string% */%
+      do %  %![terminal.isEndOfTemplateMark cString]% /* %!terminal.mTerminalName.string% */%
       between %,\n%
       after %\n} ;\n%
     end
@@ -322,8 +322,8 @@ void Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% 
 
  GGS__5B_string_5D_ Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
   GGS__5B_string_5D_ result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
-%for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
-  do %  result.plusPlusAssignOperation (GGS_string (%![mTerminalName utf8RepresentationEscapingQuestionMark]%) COMMA_HERE) ;\n%
+%for (terminal) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList
+  do %  result.plusPlusAssignOperation (GGS_string (%![terminal.mTerminalName utf8RepresentationEscapingQuestionMark]%) COMMA_HERE) ;\n%
   end
 %  return result ;
 }
@@ -369,8 +369,8 @@ __attribute__ ((unused)) (getKeywordLists_%!LEXIQUE_IDENTIFIER%, getKeywordsForI
 
 uint32_t Lexique_%!LEXIQUE_IDENTIFIER%::styleIndexForTerminal (const int32_t inTerminalIndex) const {
   static const uint32_t kTerminalSymbolStyles [%![[TERMINAL_LIST count] + 1 string]%] = {0%
-for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in TERMINAL_LIST do
-  %,\n    %![mStyleIndex string]% /* %!LEXIQUE_COMPONENT_NAME%_1_%![mTerminalName.string identifierRepresentation]% */%
+for (terminal) in TERMINAL_LIST do
+  %,\n    %![terminal.mStyleIndex string]% /* %!LEXIQUE_COMPONENT_NAME%_1_%![terminal.mTerminalName.string identifierRepresentation]% */%
 end%\n  } ;
   return (inTerminalIndex >= 0) ? kTerminalSymbolStyles [inTerminalIndex] : 0 ;
 }

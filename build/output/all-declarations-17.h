@@ -148,7 +148,7 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
   public: virtual void nt_template_5F_instruction_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_template_5F_instruction_ (GGS_templateInstructionListAST & ioArgument0,
+  public: virtual void nt_template_5F_instruction_ (GGS__5B_templateInstructionAST_5D_ & ioArgument0,
                                                     Lexique_galgasTemplateScanner * inCompiler) ;
 
 //------------------------------------- 'template_parser_start_symbol' non terminal
@@ -159,19 +159,19 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
   public: virtual void nt_template_5F_parser_5F_start_5F_symbol_indexing (Lexique_galgasTemplateScanner * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_template_5F_parser_5F_start_5F_symbol_ (GGS_templateInstructionListAST & outArgument0,
+  public: virtual void nt_template_5F_parser_5F_start_5F_symbol_ (GGS__5B_templateInstructionAST_5D_ & outArgument0,
                                                                   Lexique_galgasTemplateScanner * inCompiler) ;
 
 //--- Start symbol
   public: static void _performSourceFileParsing_ (Compiler * inCompiler,
                                                   GGS_lstring inFileName,
-                                                  GGS_templateInstructionListAST & outArgument0
+                                                  GGS__5B_templateInstructionAST_5D_ & outArgument0
                                                   COMMA_LOCATION_ARGS) ;
 
   public: static void _performSourceStringParsing_ (Compiler * inCompiler,
                                                     GGS_string inSourceString,
                                                     GGS_string inNameString,
-                                                    GGS_templateInstructionListAST & outArgument0
+                                                    GGS__5B_templateInstructionAST_5D_ & outArgument0
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Indexing

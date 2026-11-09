@@ -195,8 +195,8 @@ class ScannerFor_%!LEXIQUE_CLASS_NAME% : AbstractScanner {
     let kTerminalSymbolStyles : [UInt8] = [
       0, // Default
 %
-for (mTerminalName 4* mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
-  %      %![mStyleIndex string]%, // %![idx+1 string]% : %!LEXIQUE_CLASS_NAME%_1_%![mTerminalName.string identifierRepresentation]%\n%
+for (terminal) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
+  %      %![terminal.mStyleIndex string]%, // %![idx+1 string]% : %!LEXIQUE_CLASS_NAME%_1_%![terminal.mTerminalName.string identifierRepresentation]%\n%
 end
 %      %![[LEXICAL_STYLE_LIST count]+1 string]%, // %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+1 string]% : %!LEXIQUE_CLASS_NAME%_2_ERROR
       %![[LEXICAL_STYLE_LIST count]+2 string]%  // %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+2 string]% : %!LEXIQUE_CLASS_NAME%_2_TEMPLATE
@@ -210,8 +210,8 @@ end
     let kTerminalAtomicSelection : [Bool] = [
       false, // Default
 %
-for (mTerminalName 3* mAtomicSelection *) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
-  %      %![mAtomicSelection cString]%, // %![idx+1 string]% : %!LEXIQUE_CLASS_NAME%_1_%![mTerminalName.string identifierRepresentation]%\n%
+for (terminal) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
+  %      %![terminal.atomicSelection cString]%, // %![idx+1 string]% : %!LEXIQUE_CLASS_NAME%_1_%![terminal.mTerminalName.string identifierRepresentation]%\n%
 end
 %      false, // %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+1 string]% : %!LEXIQUE_CLASS_NAME%_2_ERROR
       false  // %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+2 string]% : %!LEXIQUE_CLASS_NAME%_2_TEMPLATE
@@ -707,8 +707,8 @@ end%
 
 let %!LEXIQUE_CLASS_NAME %_1_ : UInt16 = 0
 %
-for (mTerminalName 5*) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
-  %let %!LEXIQUE_CLASS_NAME %_1_%![mTerminalName.string identifierRepresentation]% : UInt16 = %![idx+1 string]%\n%
+for (terminal) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
+  %let %!LEXIQUE_CLASS_NAME %_1_%![terminal.mTerminalName.string identifierRepresentation]% : UInt16 = %![idx+1 string]%\n%
 end
 %let %!LEXIQUE_CLASS_NAME %_2_ERROR : UInt16 = %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+1 string]%
 let %!LEXIQUE_CLASS_NAME %_2_TEMPLATE : UInt16 = %![[LEXIQUE_ANALYSIS_CONTEXT.mTerminalList count]+2 string]%

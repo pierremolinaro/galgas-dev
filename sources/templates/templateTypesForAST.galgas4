@@ -29,9 +29,9 @@ abstract class @templateInstructionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @templateInstructionListAST {
-  public let @templateInstructionAST mInstruction
-}
+//list @templateInstructionListAST {
+//  public let @templateInstructionAST mInstruction
+//}
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -345,7 +345,7 @@ final class @templateInstructionExpressionAST : @templateInstructionAST {
 final class @templateBlockInstructionAST : @templateInstructionAST {
   private let @templateExpressionAST mExpression
   private let @location mLocation
-  private let @templateInstructionListAST mBlockInstructionList
+  private let [@templateInstructionAST] mBlockInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -362,14 +362,14 @@ final class @templateInstructionGotoColumnLocationAST : @templateInstructionAST 
 
 list @templateInstructionIfBranchListAST {
   public let @templateExpressionAST mExpression
-  public let @templateInstructionListAST mInstructionList
+  public let [@templateInstructionAST] mInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------
 
 final class @templateInstructionIfAST : @templateInstructionAST {
   private let @templateInstructionIfBranchListAST mTemplateInstructionIfBranchList
-  private let @templateInstructionListAST mElseInstructionList
+  private let [@templateInstructionAST] mElseInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------

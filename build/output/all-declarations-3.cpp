@@ -556,7 +556,7 @@ class CollectionElementPtr_lexicalWhileBranchListAST : public CollectionElementP
 
 //--- Class functions
   public: CollectionElementPtr_lexicalWhileBranchListAST (const GGS_lexicalExpressionAST & in_mWhileExpression,
-                                                          const GGS_lexicalInstructionListAST & in_mWhileInstructionList
+                                                          const GGS__5B_lexicalInstructionAST_5D_ & in_mWhileInstructionList
                                                           COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_lexicalWhileBranchListAST (const GGS_lexicalWhileBranchListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
@@ -570,7 +570,7 @@ class CollectionElementPtr_lexicalWhileBranchListAST : public CollectionElementP
 //--------------------------------------------------------------------------------------------------
 
 CollectionElementPtr_lexicalWhileBranchListAST::CollectionElementPtr_lexicalWhileBranchListAST (const GGS_lexicalExpressionAST & in_mWhileExpression,
-                                                                                                const GGS_lexicalInstructionListAST & in_mWhileInstructionList
+                                                                                                const GGS__5B_lexicalInstructionAST_5D_ & in_mWhileInstructionList
                                                                                                 COMMA_LOCATION_ARGS) :
 CollectionElementPtr (THERE),
 mObject (in_mWhileExpression, in_mWhileInstructionList) {
@@ -623,7 +623,7 @@ mArray () {
 
 void GGS_lexicalWhileBranchListAST::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                                const GGS_lexicalExpressionAST & in_mWhileExpression,
-                                                               const GGS_lexicalInstructionListAST & in_mWhileInstructionList
+                                                               const GGS__5B_lexicalInstructionAST_5D_ & in_mWhileInstructionList
                                                                COMMA_LOCATION_ARGS) {
   CollectionElementPtr_lexicalWhileBranchListAST * p = nullptr ;
   macroMyNew (p, CollectionElementPtr_lexicalWhileBranchListAST (in_mWhileExpression, in_mWhileInstructionList COMMA_THERE)) ;
@@ -703,7 +703,7 @@ void GGS_lexicalWhileBranchListAST::plusPlusAssignOperation (const GGS_lexicalWh
 //--------------------------------------------------------------------------------------------------
 
 GGS_lexicalWhileBranchListAST GGS_lexicalWhileBranchListAST::class_func_listWithValue (const GGS_lexicalExpressionAST & inOperand0,
-                                                                                       const GGS_lexicalInstructionListAST & inOperand1
+                                                                                       const GGS__5B_lexicalInstructionAST_5D_ & inOperand1
                                                                                        COMMA_LOCATION_ARGS) {
   const GGS_lexicalWhileBranchListAST_2E_element element (inOperand0, inOperand1) ;
   GGS_lexicalWhileBranchListAST result ;
@@ -717,7 +717,7 @@ GGS_lexicalWhileBranchListAST GGS_lexicalWhileBranchListAST::class_func_listWith
 //--------------------------------------------------------------------------------------------------
 
 void GGS_lexicalWhileBranchListAST::addAssignOperation (const GGS_lexicalExpressionAST & inOperand0,
-                                                        const GGS_lexicalInstructionListAST & inOperand1
+                                                        const GGS__5B_lexicalInstructionAST_5D_ & inOperand1
                                                         COMMA_LOCATION_ARGS) {
   const GGS_lexicalWhileBranchListAST_2E_element newElement (inOperand0, inOperand1) ;
   plusPlusAssignOperation (newElement COMMA_THERE) ;
@@ -726,7 +726,7 @@ void GGS_lexicalWhileBranchListAST::addAssignOperation (const GGS_lexicalExpress
 //--------------------------------------------------------------------------------------------------
 
 void GGS_lexicalWhileBranchListAST::setter_append (const GGS_lexicalExpressionAST inOperand0,
-                                                   const GGS_lexicalInstructionListAST inOperand1,
+                                                   const GGS__5B_lexicalInstructionAST_5D_ inOperand1,
                                                    Compiler * /* inCompiler */
                                                    COMMA_LOCATION_ARGS) {
   const GGS_lexicalWhileBranchListAST_2E_element newElement (inOperand0, inOperand1) ;
@@ -738,7 +738,7 @@ void GGS_lexicalWhileBranchListAST::setter_append (const GGS_lexicalExpressionAS
 //--------------------------------------------------------------------------------------------------
 
 void GGS_lexicalWhileBranchListAST::setter_insertAtIndex (const GGS_lexicalExpressionAST inOperand0,
-                                                          const GGS_lexicalInstructionListAST inOperand1,
+                                                          const GGS__5B_lexicalInstructionAST_5D_ inOperand1,
                                                           const GGS_uint inInsertionIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
@@ -760,7 +760,7 @@ void GGS_lexicalWhileBranchListAST::setter_insertAtIndex (const GGS_lexicalExpre
 //--------------------------------------------------------------------------------------------------
 
 void GGS_lexicalWhileBranchListAST::setter_removeAtIndex (GGS_lexicalExpressionAST & outOperand0,
-                                                          GGS_lexicalInstructionListAST & outOperand1,
+                                                          GGS__5B_lexicalInstructionAST_5D_ & outOperand1,
                                                           const GGS_uint inRemoveIndex,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
@@ -789,7 +789,7 @@ void GGS_lexicalWhileBranchListAST::setter_removeAtIndex (GGS_lexicalExpressionA
 //--------------------------------------------------------------------------------------------------
 
 void GGS_lexicalWhileBranchListAST::setter_popFirst (GGS_lexicalExpressionAST & outOperand0,
-                                                     GGS_lexicalInstructionListAST & outOperand1,
+                                                     GGS__5B_lexicalInstructionAST_5D_ & outOperand1,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   bool removed = false ;
@@ -813,7 +813,7 @@ void GGS_lexicalWhileBranchListAST::setter_popFirst (GGS_lexicalExpressionAST & 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_lexicalWhileBranchListAST::setter_popLast (GGS_lexicalExpressionAST & outOperand0,
-                                                    GGS_lexicalInstructionListAST & outOperand1,
+                                                    GGS__5B_lexicalInstructionAST_5D_ & outOperand1,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   bool removed = false ;
@@ -837,7 +837,7 @@ void GGS_lexicalWhileBranchListAST::setter_popLast (GGS_lexicalExpressionAST & o
 //--------------------------------------------------------------------------------------------------
 
 void GGS_lexicalWhileBranchListAST::method_first (GGS_lexicalExpressionAST & outOperand0,
-                                                  GGS_lexicalInstructionListAST & outOperand1,
+                                                  GGS__5B_lexicalInstructionAST_5D_ & outOperand1,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   bool found = false ;
@@ -860,7 +860,7 @@ void GGS_lexicalWhileBranchListAST::method_first (GGS_lexicalExpressionAST & out
 //--------------------------------------------------------------------------------------------------
 
 void GGS_lexicalWhileBranchListAST::method_last (GGS_lexicalExpressionAST & outOperand0,
-                                                 GGS_lexicalInstructionListAST & outOperand1,
+                                                 GGS__5B_lexicalInstructionAST_5D_ & outOperand1,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
   bool found = false ;
@@ -1017,7 +1017,7 @@ GGS_lexicalExpressionAST GGS_lexicalWhileBranchListAST::getter_mWhileExpressionA
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalWhileBranchListAST::setter_setMWhileInstructionListAtIndex (GGS_lexicalInstructionListAST inOperand,
+void GGS_lexicalWhileBranchListAST::setter_setMWhileInstructionListAtIndex (GGS__5B_lexicalInstructionAST_5D_ inOperand,
                                                                             GGS_uint inIndex,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
@@ -1036,10 +1036,10 @@ void GGS_lexicalWhileBranchListAST::setter_setMWhileInstructionListAtIndex (GGS_
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalInstructionListAST GGS_lexicalWhileBranchListAST::getter_mWhileInstructionListAtIndex (const GGS_uint & inIndex,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_lexicalInstructionListAST result ;
+GGS__5B_lexicalInstructionAST_5D_ GGS_lexicalWhileBranchListAST::getter_mWhileInstructionListAtIndex (const GGS_uint & inIndex,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) const {
+  GGS__5B_lexicalInstructionAST_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < count ()) {
@@ -1078,7 +1078,7 @@ GGS_lexicalExpressionAST DownEnumerator_lexicalWhileBranchListAST::current_mWhil
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalInstructionListAST DownEnumerator_lexicalWhileBranchListAST::current_mWhileInstructionList (LOCATION_ARGS) const {
+GGS__5B_lexicalInstructionAST_5D_ DownEnumerator_lexicalWhileBranchListAST::current_mWhileInstructionList (LOCATION_ARGS) const {
   return mArray (mIndex COMMA_THERE).mProperty_mWhileInstructionList ;
 }
 
@@ -1107,7 +1107,7 @@ GGS_lexicalExpressionAST UpEnumerator_lexicalWhileBranchListAST::current_mWhileE
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalInstructionListAST UpEnumerator_lexicalWhileBranchListAST::current_mWhileInstructionList (LOCATION_ARGS) const {
+GGS__5B_lexicalInstructionAST_5D_ UpEnumerator_lexicalWhileBranchListAST::current_mWhileInstructionList (LOCATION_ARGS) const {
   return mArray (mIndex COMMA_THERE).mProperty_mWhileInstructionList ;
 }
 
@@ -5686,894 +5686,6 @@ const GALGAS_TypeDescriptor * GGS_routinePrototypeDeclarationForGeneration::stat
 }
 
 //--------------------------------------------------------------------------------------------------
-//Class for element of '@terminalList' list
-//--------------------------------------------------------------------------------------------------
-
-class CollectionElementPtr_terminalList : public CollectionElementPtr {
-  public: GGS_terminalList_2E_element mObject ;
-
-//--- Class functions
-  public: CollectionElementPtr_terminalList (const GGS_lstring & in_mTerminalName,
-                                             const GGS_lexicalSentValueList & in_mSentAttributeList,
-                                             const GGS_string & in_mSyntaxErrorMessage,
-                                             const GGS_bool & in_isEndOfTemplateMark,
-                                             const GGS_bool & in_atomicSelection,
-                                             const GGS_uint & in_mStyleIndex
-                                             COMMA_LOCATION_ARGS) ;
-  public: CollectionElementPtr_terminalList (const GGS_terminalList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual proc that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual proc that returns a copy of current object
-  public: virtual CollectionElementPtr * copy (void) ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_terminalList::CollectionElementPtr_terminalList (const GGS_lstring & in_mTerminalName,
-                                                                      const GGS_lexicalSentValueList & in_mSentAttributeList,
-                                                                      const GGS_string & in_mSyntaxErrorMessage,
-                                                                      const GGS_bool & in_isEndOfTemplateMark,
-                                                                      const GGS_bool & in_atomicSelection,
-                                                                      const GGS_uint & in_mStyleIndex
-                                                                      COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (in_mTerminalName, in_mSentAttributeList, in_mSyntaxErrorMessage, in_isEndOfTemplateMark, in_atomicSelection, in_mStyleIndex) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_terminalList::CollectionElementPtr_terminalList (const GGS_terminalList_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (inElement.mProperty_mTerminalName, inElement.mProperty_mSentAttributeList, inElement.mProperty_mSyntaxErrorMessage, inElement.mProperty_isEndOfTemplateMark, inElement.mProperty_atomicSelection, inElement.mProperty_mStyleIndex) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool CollectionElementPtr_terminalList::isValid (void) const {
-  return true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr * CollectionElementPtr_terminalList::copy (void) {
-  CollectionElementPtr * result = nullptr ;
-  macroMyNew (result, CollectionElementPtr_terminalList (mObject.mProperty_mTerminalName, mObject.mProperty_mSentAttributeList, mObject.mProperty_mSyntaxErrorMessage, mObject.mProperty_isEndOfTemplateMark, mObject.mProperty_atomicSelection, mObject.mProperty_mStyleIndex COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// List type @terminalList
-//--------------------------------------------------------------------------------------------------
-
-GGS_terminalList::GGS_terminalList (void) :
-mArray () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_terminalList::GGS_terminalList (const CollectionElementArray & inArray) :
-mArray () {
-  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
-  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElementPtr_terminalList * p = (CollectionElementPtr_terminalList *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElementPtr_terminalList) ;
-    const GGS_terminalList_2E_element element (p->mObject.mProperty_mTerminalName, p->mObject.mProperty_mSentAttributeList, p->mObject.mProperty_mSyntaxErrorMessage, p->mObject.mProperty_isEndOfTemplateMark, p->mObject.mProperty_atomicSelection, p->mObject.mProperty_mStyleIndex) ;
-    mArray.appendObject (element) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                  const GGS_lstring & in_mTerminalName,
-                                                  const GGS_lexicalSentValueList & in_mSentAttributeList,
-                                                  const GGS_string & in_mSyntaxErrorMessage,
-                                                  const GGS_bool & in_isEndOfTemplateMark,
-                                                  const GGS_bool & in_atomicSelection,
-                                                  const GGS_uint & in_mStyleIndex
-                                                  COMMA_LOCATION_ARGS) {
-  CollectionElementPtr_terminalList * p = nullptr ;
-  macroMyNew (p, CollectionElementPtr_terminalList (in_mTerminalName, in_mSentAttributeList, in_mSyntaxErrorMessage, in_isEndOfTemplateMark, in_atomicSelection, in_mStyleIndex COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_terminalList::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_range GGS_terminalList::getter_range (UNUSED_LOCATION_ARGS) const {
-  GGS_range result ;
-  if (isValid ()) {
-    result = GGS_range (0, count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::description (String & ioString,
-                                    const int32_t inIndentation) const {
-  ioString.appendCString ("<list @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (" (") ;
-  ioString.appendUnsigned (count()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((count() > 1) ? "s" : "") ;
-  ioString.appendCString ("):") ;
-  if (isValid ()) {
-    for (uint32_t i = 0 ; i < count () ; i++) {
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation) ;
-      ioString.appendString ("|-at ") ;
-      ioString.appendUnsigned (i) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mTerminalName:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mTerminalName.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mSentAttributeList:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mSentAttributeList.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mSyntaxErrorMessage:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mSyntaxErrorMessage.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("isEndOfTemplateMark:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_isEndOfTemplateMark.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("atomicSelection:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_atomicSelection.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mStyleIndex:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mStyleIndex.description (ioString, inIndentation + 1) ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_terminalList GGS_terminalList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_terminalList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::plusPlusAssignOperation (const GGS_terminalList_2E_element & inValue
-                                                COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inValue.isValid ()) {
-    mArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_terminalList GGS_terminalList::class_func_listWithValue (const GGS_lstring & inOperand0,
-                                                             const GGS_lexicalSentValueList & inOperand1,
-                                                             const GGS_string & inOperand2,
-                                                             const GGS_bool & inOperand3,
-                                                             const GGS_bool & inOperand4,
-                                                             const GGS_uint & inOperand5
-                                                             COMMA_LOCATION_ARGS) {
-  const GGS_terminalList_2E_element element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5) ;
-  GGS_terminalList result ;
-  if (element.isValid ()) {
-    result.mArray.setCapacity (16) ; // Build
-    result.plusPlusAssignOperation (element COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::addAssignOperation (const GGS_lstring & inOperand0,
-                                           const GGS_lexicalSentValueList & inOperand1,
-                                           const GGS_string & inOperand2,
-                                           const GGS_bool & inOperand3,
-                                           const GGS_bool & inOperand4,
-                                           const GGS_uint & inOperand5
-                                           COMMA_LOCATION_ARGS) {
-  const GGS_terminalList_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5) ;
-  plusPlusAssignOperation (newElement COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::setter_append (const GGS_lstring inOperand0,
-                                      const GGS_lexicalSentValueList inOperand1,
-                                      const GGS_string inOperand2,
-                                      const GGS_bool inOperand3,
-                                      const GGS_bool inOperand4,
-                                      const GGS_uint inOperand5,
-                                      Compiler * /* inCompiler */
-                                      COMMA_LOCATION_ARGS) {
-  const GGS_terminalList_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5) ;
-  if (isValid () && newElement.isValid ()) {
-    plusPlusAssignOperation (newElement COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::setter_insertAtIndex (const GGS_lstring inOperand0,
-                                             const GGS_lexicalSentValueList inOperand1,
-                                             const GGS_string inOperand2,
-                                             const GGS_bool inOperand3,
-                                             const GGS_bool inOperand4,
-                                             const GGS_uint inOperand5,
-                                             const GGS_uint inInsertionIndex,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-  const GGS_terminalList_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5) ;
-  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx <= mArray.count ()) {
-      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
-    }else{
-      String message = "cannot insert at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::setter_removeAtIndex (GGS_lstring & outOperand0,
-                                             GGS_lexicalSentValueList & outOperand1,
-                                             GGS_string & outOperand2,
-                                             GGS_bool & outOperand3,
-                                             GGS_bool & outOperand4,
-                                             GGS_uint & outOperand5,
-                                             const GGS_uint inRemoveIndex,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx < mArray.count ()) {
-      removed = true ;
-      outOperand0 = mArray (idx COMMA_HERE).mProperty_mTerminalName ;
-      outOperand1 = mArray (idx COMMA_HERE).mProperty_mSentAttributeList ;
-      outOperand2 = mArray (idx COMMA_HERE).mProperty_mSyntaxErrorMessage ;
-      outOperand3 = mArray (idx COMMA_HERE).mProperty_isEndOfTemplateMark ;
-      outOperand4 = mArray (idx COMMA_HERE).mProperty_atomicSelection ;
-      outOperand5 = mArray (idx COMMA_HERE).mProperty_mStyleIndex ;
-      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
-    }else{
-      String message = "cannot remove at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::setter_popFirst (GGS_lstring & outOperand0,
-                                        GGS_lexicalSentValueList & outOperand1,
-                                        GGS_string & outOperand2,
-                                        GGS_bool & outOperand3,
-                                        GGS_bool & outOperand4,
-                                        GGS_uint & outOperand5,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mTerminalName ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mSentAttributeList ;
-      outOperand2 = mArray (0 COMMA_THERE).mProperty_mSyntaxErrorMessage ;
-      outOperand3 = mArray (0 COMMA_THERE).mProperty_isEndOfTemplateMark ;
-      outOperand4 = mArray (0 COMMA_THERE).mProperty_atomicSelection ;
-      outOperand5 = mArray (0 COMMA_THERE).mProperty_mStyleIndex ;
-      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
-    }else{
-      const String message = "cannot remove first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::setter_popLast (GGS_lstring & outOperand0,
-                                       GGS_lexicalSentValueList & outOperand1,
-                                       GGS_string & outOperand2,
-                                       GGS_bool & outOperand3,
-                                       GGS_bool & outOperand4,
-                                       GGS_uint & outOperand5,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mTerminalName ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mSentAttributeList ;
-      outOperand2 = mArray.lastObject (HERE).mProperty_mSyntaxErrorMessage ;
-      outOperand3 = mArray.lastObject (HERE).mProperty_isEndOfTemplateMark ;
-      outOperand4 = mArray.lastObject (HERE).mProperty_atomicSelection ;
-      outOperand5 = mArray.lastObject (HERE).mProperty_mStyleIndex ;
-      mArray.removeLastObject (HERE) ;
-    }else{
-      const String message = "cannot remove last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::method_first (GGS_lstring & outOperand0,
-                                     GGS_lexicalSentValueList & outOperand1,
-                                     GGS_string & outOperand2,
-                                     GGS_bool & outOperand3,
-                                     GGS_bool & outOperand4,
-                                     GGS_uint & outOperand5,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mTerminalName ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mSentAttributeList ;
-      outOperand2 = mArray (0 COMMA_THERE).mProperty_mSyntaxErrorMessage ;
-      outOperand3 = mArray (0 COMMA_THERE).mProperty_isEndOfTemplateMark ;
-      outOperand4 = mArray (0 COMMA_THERE).mProperty_atomicSelection ;
-      outOperand5 = mArray (0 COMMA_THERE).mProperty_mStyleIndex ;
-    }else{
-      const String message = "cannot get first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::method_last (GGS_lstring & outOperand0,
-                                    GGS_lexicalSentValueList & outOperand1,
-                                    GGS_string & outOperand2,
-                                    GGS_bool & outOperand3,
-                                    GGS_bool & outOperand4,
-                                    GGS_uint & outOperand5,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mTerminalName ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mSentAttributeList ;
-      outOperand2 = mArray.lastObject (HERE).mProperty_mSyntaxErrorMessage ;
-      outOperand3 = mArray.lastObject (HERE).mProperty_isEndOfTemplateMark ;
-      outOperand4 = mArray.lastObject (HERE).mProperty_atomicSelection ;
-      outOperand5 = mArray.lastObject (HERE).mProperty_mStyleIndex ;
-    }else{
-      const String message = "cannot get last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_terminalList GGS_terminalList::add_operation (const GGS_terminalList & inOperand,
-                                                  Compiler * /* inCompiler */
-                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_terminalList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
-      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_terminalList GGS_terminalList::subList (const int32_t inStart,
-                                            const int32_t inLength,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) const {
-  GGS_terminalList result ;
-  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
-  if (ok) {
-    result.mArray.setCapacity (std::max (16, inLength)) ;
-    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
-      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
-    }
-  }else{
-    String message = "cannot get sublist [start: " ;
-    message.appendSigned (inStart) ;
-    message.appendCString (", length: ") ;
-    message.appendSigned (inLength) ;
-    message.appendCString ("], list count is ") ;
-    message.appendSigned (mArray.count ()) ;
-    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_terminalList GGS_terminalList::getter_subListWithRange (const GGS_range & inRange,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
-  GGS_terminalList result ;
-  if (isValid () && inRange.isValid ()) {
-    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
-    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_terminalList GGS_terminalList::getter_subListFromIndex (const GGS_uint & inIndex,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
-  GGS_terminalList result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = int32_t (inIndex.uintValue ()) ;
-    const int32_t length = int32_t (count ()) - start ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_terminalList GGS_terminalList::getter_subListToIndex (const GGS_uint & inIndex,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const {
-  GGS_terminalList result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = 0 ;
-    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::plusAssignOperation (const GGS_terminalList inList,
-                                            Compiler * /* inCompiler */
-                                            COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inList.isValid ()) {
-    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
-    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
-      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::setter_setMTerminalNameAtIndex (GGS_lstring inOperand,
-                                                       GGS_uint inIndex,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mTerminalName = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_terminalList::getter_mTerminalNameAtIndex (const GGS_uint & inIndex,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const {
-  GGS_lstring result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mTerminalName ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::setter_setMSentAttributeListAtIndex (GGS_lexicalSentValueList inOperand,
-                                                            GGS_uint inIndex,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mSentAttributeList = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalSentValueList GGS_terminalList::getter_mSentAttributeListAtIndex (const GGS_uint & inIndex,
-                                                                             Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) const {
-  GGS_lexicalSentValueList result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mSentAttributeList ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::setter_setMSyntaxErrorMessageAtIndex (GGS_string inOperand,
-                                                             GGS_uint inIndex,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mSyntaxErrorMessage = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_terminalList::getter_mSyntaxErrorMessageAtIndex (const GGS_uint & inIndex,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const {
-  GGS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mSyntaxErrorMessage ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::setter_setIsEndOfTemplateMarkAtIndex (GGS_bool inOperand,
-                                                             GGS_uint inIndex,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_isEndOfTemplateMark = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_terminalList::getter_isEndOfTemplateMarkAtIndex (const GGS_uint & inIndex,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_isEndOfTemplateMark ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::setter_setAtomicSelectionAtIndex (GGS_bool inOperand,
-                                                         GGS_uint inIndex,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_atomicSelection = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_terminalList::getter_atomicSelectionAtIndex (const GGS_uint & inIndex,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_atomicSelection ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_terminalList::setter_setMStyleIndexAtIndex (GGS_uint inOperand,
-                                                     GGS_uint inIndex,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mStyleIndex = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_terminalList::getter_mStyleIndexAtIndex (const GGS_uint & inIndex,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mStyleIndex ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @terminalList
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_terminalList::DownEnumerator_terminalList (const GGS_terminalList & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-  mIndex = mArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_terminalList_2E_element DownEnumerator_terminalList::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring DownEnumerator_terminalList::current_mTerminalName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mTerminalName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalSentValueList DownEnumerator_terminalList::current_mSentAttributeList (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mSentAttributeList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_terminalList::current_mSyntaxErrorMessage (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mSyntaxErrorMessage ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool DownEnumerator_terminalList::current_isEndOfTemplateMark (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_isEndOfTemplateMark ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool DownEnumerator_terminalList::current_atomicSelection (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_atomicSelection ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint DownEnumerator_terminalList::current_mStyleIndex (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mStyleIndex ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @terminalList
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_terminalList::UpEnumerator_terminalList (const GGS_terminalList & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_terminalList_2E_element UpEnumerator_terminalList::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring UpEnumerator_terminalList::current_mTerminalName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mTerminalName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalSentValueList UpEnumerator_terminalList::current_mSentAttributeList (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mSentAttributeList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_terminalList::current_mSyntaxErrorMessage (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mSyntaxErrorMessage ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool UpEnumerator_terminalList::current_isEndOfTemplateMark (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_isEndOfTemplateMark ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool UpEnumerator_terminalList::current_atomicSelection (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_atomicSelection ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint UpEnumerator_terminalList::current_mStyleIndex (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mStyleIndex ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//     @terminalList generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_terminalList ("terminalList",
-                                                                 nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_terminalList::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_terminalList ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Class for element of '@lexicalSentValueList' list
 //--------------------------------------------------------------------------------------------------
 
@@ -9254,663 +8366,6 @@ const GALGAS_TypeDescriptor * GGS_lexicalMessageMap::staticTypeDescriptor (void)
 }
 
 //--------------------------------------------------------------------------------------------------
-//Class for element of '@lexicalRoutineFormalArgumentList' list
-//--------------------------------------------------------------------------------------------------
-
-class CollectionElementPtr_lexicalRoutineFormalArgumentList : public CollectionElementPtr {
-  public: GGS_lexicalRoutineFormalArgumentList_2E_element mObject ;
-
-//--- Class functions
-  public: CollectionElementPtr_lexicalRoutineFormalArgumentList (const GGS_lexicalArgumentModeAST & in_mLexicalFormalArgumentMode,
-                                                                 const GGS_lexicalTypeEnum & in_mLexicalFormalArgumentType,
-                                                                 const GGS_string & in_mArgumentNameForComment
-                                                                 COMMA_LOCATION_ARGS) ;
-  public: CollectionElementPtr_lexicalRoutineFormalArgumentList (const GGS_lexicalRoutineFormalArgumentList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual proc that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual proc that returns a copy of current object
-  public: virtual CollectionElementPtr * copy (void) ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_lexicalRoutineFormalArgumentList::CollectionElementPtr_lexicalRoutineFormalArgumentList (const GGS_lexicalArgumentModeAST & in_mLexicalFormalArgumentMode,
-                                                                                                              const GGS_lexicalTypeEnum & in_mLexicalFormalArgumentType,
-                                                                                                              const GGS_string & in_mArgumentNameForComment
-                                                                                                              COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (in_mLexicalFormalArgumentMode, in_mLexicalFormalArgumentType, in_mArgumentNameForComment) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_lexicalRoutineFormalArgumentList::CollectionElementPtr_lexicalRoutineFormalArgumentList (const GGS_lexicalRoutineFormalArgumentList_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (inElement.mProperty_mLexicalFormalArgumentMode, inElement.mProperty_mLexicalFormalArgumentType, inElement.mProperty_mArgumentNameForComment) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool CollectionElementPtr_lexicalRoutineFormalArgumentList::isValid (void) const {
-  return true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr * CollectionElementPtr_lexicalRoutineFormalArgumentList::copy (void) {
-  CollectionElementPtr * result = nullptr ;
-  macroMyNew (result, CollectionElementPtr_lexicalRoutineFormalArgumentList (mObject.mProperty_mLexicalFormalArgumentMode, mObject.mProperty_mLexicalFormalArgumentType, mObject.mProperty_mArgumentNameForComment COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// List type @lexicalRoutineFormalArgumentList
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineFormalArgumentList::GGS_lexicalRoutineFormalArgumentList (void) :
-mArray () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineFormalArgumentList::GGS_lexicalRoutineFormalArgumentList (const CollectionElementArray & inArray) :
-mArray () {
-  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
-  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElementPtr_lexicalRoutineFormalArgumentList * p = (CollectionElementPtr_lexicalRoutineFormalArgumentList *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElementPtr_lexicalRoutineFormalArgumentList) ;
-    const GGS_lexicalRoutineFormalArgumentList_2E_element element (p->mObject.mProperty_mLexicalFormalArgumentMode, p->mObject.mProperty_mLexicalFormalArgumentType, p->mObject.mProperty_mArgumentNameForComment) ;
-    mArray.appendObject (element) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineFormalArgumentList::makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                                      const GGS_lexicalArgumentModeAST & in_mLexicalFormalArgumentMode,
-                                                                      const GGS_lexicalTypeEnum & in_mLexicalFormalArgumentType,
-                                                                      const GGS_string & in_mArgumentNameForComment
-                                                                      COMMA_LOCATION_ARGS) {
-  CollectionElementPtr_lexicalRoutineFormalArgumentList * p = nullptr ;
-  macroMyNew (p, CollectionElementPtr_lexicalRoutineFormalArgumentList (in_mLexicalFormalArgumentMode, in_mLexicalFormalArgumentType, in_mArgumentNameForComment COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_lexicalRoutineFormalArgumentList::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_range GGS_lexicalRoutineFormalArgumentList::getter_range (UNUSED_LOCATION_ARGS) const {
-  GGS_range result ;
-  if (isValid ()) {
-    result = GGS_range (0, count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineFormalArgumentList::description (String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString.appendCString ("<list @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (" (") ;
-  ioString.appendUnsigned (count()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((count() > 1) ? "s" : "") ;
-  ioString.appendCString ("):") ;
-  if (isValid ()) {
-    for (uint32_t i = 0 ; i < count () ; i++) {
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation) ;
-      ioString.appendString ("|-at ") ;
-      ioString.appendUnsigned (i) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mLexicalFormalArgumentMode:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mLexicalFormalArgumentMode.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mLexicalFormalArgumentType:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mLexicalFormalArgumentType.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mArgumentNameForComment:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mArgumentNameForComment.description (ioString, inIndentation + 1) ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexicalRoutineFormalArgumentList result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineFormalArgumentList::plusPlusAssignOperation (const GGS_lexicalRoutineFormalArgumentList_2E_element & inValue
-                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inValue.isValid ()) {
-    mArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::class_func_listWithValue (const GGS_lexicalArgumentModeAST & inOperand0,
-                                                                                                     const GGS_lexicalTypeEnum & inOperand1,
-                                                                                                     const GGS_string & inOperand2
-                                                                                                     COMMA_LOCATION_ARGS) {
-  const GGS_lexicalRoutineFormalArgumentList_2E_element element (inOperand0, inOperand1, inOperand2) ;
-  GGS_lexicalRoutineFormalArgumentList result ;
-  if (element.isValid ()) {
-    result.mArray.setCapacity (16) ; // Build
-    result.plusPlusAssignOperation (element COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineFormalArgumentList::addAssignOperation (const GGS_lexicalArgumentModeAST & inOperand0,
-                                                               const GGS_lexicalTypeEnum & inOperand1,
-                                                               const GGS_string & inOperand2
-                                                               COMMA_LOCATION_ARGS) {
-  const GGS_lexicalRoutineFormalArgumentList_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
-  plusPlusAssignOperation (newElement COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineFormalArgumentList::setter_append (const GGS_lexicalArgumentModeAST inOperand0,
-                                                          const GGS_lexicalTypeEnum inOperand1,
-                                                          const GGS_string inOperand2,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_LOCATION_ARGS) {
-  const GGS_lexicalRoutineFormalArgumentList_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
-  if (isValid () && newElement.isValid ()) {
-    plusPlusAssignOperation (newElement COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineFormalArgumentList::setter_insertAtIndex (const GGS_lexicalArgumentModeAST inOperand0,
-                                                                 const GGS_lexicalTypeEnum inOperand1,
-                                                                 const GGS_string inOperand2,
-                                                                 const GGS_uint inInsertionIndex,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
-  const GGS_lexicalRoutineFormalArgumentList_2E_element newElement (inOperand0, inOperand1, inOperand2) ;
-  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx <= mArray.count ()) {
-      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
-    }else{
-      String message = "cannot insert at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineFormalArgumentList::setter_removeAtIndex (GGS_lexicalArgumentModeAST & outOperand0,
-                                                                 GGS_lexicalTypeEnum & outOperand1,
-                                                                 GGS_string & outOperand2,
-                                                                 const GGS_uint inRemoveIndex,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx < mArray.count ()) {
-      removed = true ;
-      outOperand0 = mArray (idx COMMA_HERE).mProperty_mLexicalFormalArgumentMode ;
-      outOperand1 = mArray (idx COMMA_HERE).mProperty_mLexicalFormalArgumentType ;
-      outOperand2 = mArray (idx COMMA_HERE).mProperty_mArgumentNameForComment ;
-      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
-    }else{
-      String message = "cannot remove at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineFormalArgumentList::setter_popFirst (GGS_lexicalArgumentModeAST & outOperand0,
-                                                            GGS_lexicalTypeEnum & outOperand1,
-                                                            GGS_string & outOperand2,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mLexicalFormalArgumentMode ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mLexicalFormalArgumentType ;
-      outOperand2 = mArray (0 COMMA_THERE).mProperty_mArgumentNameForComment ;
-      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
-    }else{
-      const String message = "cannot remove first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineFormalArgumentList::setter_popLast (GGS_lexicalArgumentModeAST & outOperand0,
-                                                           GGS_lexicalTypeEnum & outOperand1,
-                                                           GGS_string & outOperand2,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mLexicalFormalArgumentMode ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mLexicalFormalArgumentType ;
-      outOperand2 = mArray.lastObject (HERE).mProperty_mArgumentNameForComment ;
-      mArray.removeLastObject (HERE) ;
-    }else{
-      const String message = "cannot remove last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineFormalArgumentList::method_first (GGS_lexicalArgumentModeAST & outOperand0,
-                                                         GGS_lexicalTypeEnum & outOperand1,
-                                                         GGS_string & outOperand2,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mLexicalFormalArgumentMode ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mLexicalFormalArgumentType ;
-      outOperand2 = mArray (0 COMMA_THERE).mProperty_mArgumentNameForComment ;
-    }else{
-      const String message = "cannot get first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineFormalArgumentList::method_last (GGS_lexicalArgumentModeAST & outOperand0,
-                                                        GGS_lexicalTypeEnum & outOperand1,
-                                                        GGS_string & outOperand2,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mLexicalFormalArgumentMode ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mLexicalFormalArgumentType ;
-      outOperand2 = mArray.lastObject (HERE).mProperty_mArgumentNameForComment ;
-    }else{
-      const String message = "cannot get last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::add_operation (const GGS_lexicalRoutineFormalArgumentList & inOperand,
-                                                                                          Compiler * /* inCompiler */
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_lexicalRoutineFormalArgumentList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
-      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::subList (const int32_t inStart,
-                                                                                    const int32_t inLength,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_lexicalRoutineFormalArgumentList result ;
-  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
-  if (ok) {
-    result.mArray.setCapacity (std::max (16, inLength)) ;
-    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
-      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
-    }
-  }else{
-    String message = "cannot get sublist [start: " ;
-    message.appendSigned (inStart) ;
-    message.appendCString (", length: ") ;
-    message.appendSigned (inLength) ;
-    message.appendCString ("], list count is ") ;
-    message.appendSigned (mArray.count ()) ;
-    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::getter_subListWithRange (const GGS_range & inRange,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_lexicalRoutineFormalArgumentList result ;
-  if (isValid () && inRange.isValid ()) {
-    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
-    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::getter_subListFromIndex (const GGS_uint & inIndex,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_lexicalRoutineFormalArgumentList result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = int32_t (inIndex.uintValue ()) ;
-    const int32_t length = int32_t (count ()) - start ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::getter_subListToIndex (const GGS_uint & inIndex,
-                                                                                                  Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_lexicalRoutineFormalArgumentList result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = 0 ;
-    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineFormalArgumentList::plusAssignOperation (const GGS_lexicalRoutineFormalArgumentList inList,
-                                                                Compiler * /* inCompiler */
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inList.isValid ()) {
-    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
-    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
-      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineFormalArgumentList::setter_setMLexicalFormalArgumentModeAtIndex (GGS_lexicalArgumentModeAST inOperand,
-                                                                                        GGS_uint inIndex,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mLexicalFormalArgumentMode = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalArgumentModeAST GGS_lexicalRoutineFormalArgumentList::getter_mLexicalFormalArgumentModeAtIndex (const GGS_uint & inIndex,
-                                                                                                           Compiler * inCompiler
-                                                                                                           COMMA_LOCATION_ARGS) const {
-  GGS_lexicalArgumentModeAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mLexicalFormalArgumentMode ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineFormalArgumentList::setter_setMLexicalFormalArgumentTypeAtIndex (GGS_lexicalTypeEnum inOperand,
-                                                                                        GGS_uint inIndex,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mLexicalFormalArgumentType = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalTypeEnum GGS_lexicalRoutineFormalArgumentList::getter_mLexicalFormalArgumentTypeAtIndex (const GGS_uint & inIndex,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_lexicalTypeEnum result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mLexicalFormalArgumentType ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineFormalArgumentList::setter_setMArgumentNameForCommentAtIndex (GGS_string inOperand,
-                                                                                     GGS_uint inIndex,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mArgumentNameForComment = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_lexicalRoutineFormalArgumentList::getter_mArgumentNameForCommentAtIndex (const GGS_uint & inIndex,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) const {
-  GGS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mArgumentNameForComment ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @lexicalRoutineFormalArgumentList
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_lexicalRoutineFormalArgumentList::DownEnumerator_lexicalRoutineFormalArgumentList (const GGS_lexicalRoutineFormalArgumentList & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-  mIndex = mArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineFormalArgumentList_2E_element DownEnumerator_lexicalRoutineFormalArgumentList::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalArgumentModeAST DownEnumerator_lexicalRoutineFormalArgumentList::current_mLexicalFormalArgumentMode (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mLexicalFormalArgumentMode ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalTypeEnum DownEnumerator_lexicalRoutineFormalArgumentList::current_mLexicalFormalArgumentType (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mLexicalFormalArgumentType ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string DownEnumerator_lexicalRoutineFormalArgumentList::current_mArgumentNameForComment (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mArgumentNameForComment ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @lexicalRoutineFormalArgumentList
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_lexicalRoutineFormalArgumentList::UpEnumerator_lexicalRoutineFormalArgumentList (const GGS_lexicalRoutineFormalArgumentList & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineFormalArgumentList_2E_element UpEnumerator_lexicalRoutineFormalArgumentList::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalArgumentModeAST UpEnumerator_lexicalRoutineFormalArgumentList::current_mLexicalFormalArgumentMode (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mLexicalFormalArgumentMode ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalTypeEnum UpEnumerator_lexicalRoutineFormalArgumentList::current_mLexicalFormalArgumentType (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mLexicalFormalArgumentType ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string UpEnumerator_lexicalRoutineFormalArgumentList::current_mArgumentNameForComment (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mArgumentNameForComment ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalRoutineFormalArgumentList generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalRoutineFormalArgumentList ("lexicalRoutineFormalArgumentList",
-                                                                                     nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalRoutineFormalArgumentList::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalRoutineFormalArgumentList ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //  Enum lexicalArgumentModeAST
 //--------------------------------------------------------------------------------------------------
 
@@ -9995,6 +8450,318 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalArgumentModeAST ("lexi
 
 const GALGAS_TypeDescriptor * GGS_lexicalArgumentModeAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalArgumentModeAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@_5B_lexicalRoutineFormalArgumentAST_5D_' array
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalRoutineFormalArgumentAST_5D_::GGS__5B_lexicalRoutineFormalArgumentAST_5D_ (void) :
+AC_GALGAS_root (),
+mSharedArray () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalRoutineFormalArgumentAST_5D_::GGS__5B_lexicalRoutineFormalArgumentAST_5D_ (const GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & inSource) :
+AC_GALGAS_root (),
+mSharedArray (inSource.mSharedArray) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & GGS__5B_lexicalRoutineFormalArgumentAST_5D_::operator = (const GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & inSource)  {
+  mSharedArray = inSource.mSharedArray ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalRoutineFormalArgumentAST_5D_ GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_lexicalRoutineFormalArgumentAST_5D_ result ;
+  result.mSharedArray.setCapacity (16) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS__5B_lexicalRoutineFormalArgumentAST_5D_::isValid (void) const {
+  return mSharedArray.isAllocated () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalRoutineFormalArgumentAST_5D_::drop (void) {
+  mSharedArray.removeAll () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalRoutineFormalArgumentAST_5D_::removeAll (void) {
+  mSharedArray.removeAll () ;
+  mSharedArray.setCapacity (16) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalRoutineFormalArgumentAST_5D_::plusPlusAssignOperation (const GGS_lexicalRoutineFormalArgumentAST & inValue
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  mSharedArray.appendObject (inValue) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS__5B_lexicalRoutineFormalArgumentAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalRoutineFormalArgumentAST_5D_ GGS__5B_lexicalRoutineFormalArgumentAST_5D_::add_operation (const GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & inOperand,
+                                                                                                        Compiler * /* inCompiler */
+                                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_lexicalRoutineFormalArgumentAST_5D_ result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalRoutineFormalArgumentAST_5D_::description (String & ioString,
+                                                               const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (", ") ;
+  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalRoutineFormalArgumentAST_5D_::plusAssignOperation (const GGS__5B_lexicalRoutineFormalArgumentAST_5D_ inOperand,
+                                                                       Compiler * /* inCompiler */
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalRoutineFormalArgumentAST_5D_::setter_append (const GGS_lexicalRoutineFormalArgumentAST inValue,
+                                                                 Compiler * /* inCompiler */
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalRoutineFormalArgumentAST_5D_::setter_removeAll (Compiler * /* inCompiler */
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  removeAll () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalRoutineFormalArgumentAST_5D_::setter_insertAtIndex (const GGS_lexicalRoutineFormalArgumentAST inValue,
+                                                                        const GGS_uint inInsertionIndex,
+                                                                        Compiler * /* inCompiler */
+                                                                        COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalRoutineFormalArgumentAST_5D_::setter_removeAtIndex (GGS_lexicalRoutineFormalArgumentAST & outValue,
+                                                                        const GGS_uint inRemoveIndex,
+                                                                        Compiler * /* inCompiler */
+                                                                        COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    outValue = mSharedArray (idx COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
+  }else{
+    outValue.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalRoutineFormalArgumentAST_5D_::setter_popFirst (GGS_lexicalRoutineFormalArgumentAST & outValue,
+                                                                   Compiler * /* inCompiler */
+                                                                   COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    outValue = mSharedArray (0 COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
+  }else{
+    outValue.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalRoutineFormalArgumentAST_5D_::setter_popLast (GGS_lexicalRoutineFormalArgumentAST & outValue,
+                                                                  Compiler * /* inCompiler */
+                                                                  COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    outValue = mSharedArray.lastObject (THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
+  }else{
+    outValue.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalRoutineFormalArgumentAST_5D_ GGS__5B_lexicalRoutineFormalArgumentAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+                                                                                                               Compiler * inCompiler
+                                                                                                               COMMA_LOCATION_ARGS) const {
+  GGS__5B_lexicalRoutineFormalArgumentAST_5D_ result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_lexicalRoutineFormalArgumentAST_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineFormalArgumentAST GGS__5B_lexicalRoutineFormalArgumentAST_5D_::getter_first (Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) const {
+  GGS_lexicalRoutineFormalArgumentAST result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray (0 COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineFormalArgumentAST GGS__5B_lexicalRoutineFormalArgumentAST_5D_::getter_last (Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const {
+  GGS_lexicalRoutineFormalArgumentAST result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineFormalArgumentAST GGS__5B_lexicalRoutineFormalArgumentAST_5D_::readSubscript__3F_ (const GGS_uint & inIndex,
+                                                                                                     Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) const {
+  GGS_lexicalRoutineFormalArgumentAST result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < uint32_t (mSharedArray.count ())) {
+      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
+    }else{
+      String errorMessage ;
+      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendUnsigned (idx) ;
+      errorMessage.appendCString (") too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @_5B_lexicalRoutineFormalArgumentAST_5D_
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_::DownEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ (const GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (inOperand.mSharedArray.count () - 1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineFormalArgumentAST DownEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineFormalArgumentAST DownEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @_5B_lexicalRoutineFormalArgumentAST_5D_
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_::UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ (const GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineFormalArgumentAST UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalRoutineFormalArgumentAST UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @[lexicalRoutineFormalArgumentAST] generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_lexicalRoutineFormalArgumentAST_5D_ ("[lexicalRoutineFormalArgumentAST]",
+                                                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS__5B_lexicalRoutineFormalArgumentAST_5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_lexicalRoutineFormalArgumentAST_5D_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10261,7 +9028,7 @@ GGS_lexicalRoutineMap GGS_lexicalRoutineMap::getter_overriddenMap (Compiler * in
 //--------------------------------------------------------------------------------------------------
 
 void GGS_lexicalRoutineMap::setter_insertKey (GGS_lstring inLKey,
-                                              GGS_lexicalRoutineFormalArgumentList inArgument0,
+                                              GGS__5B_lexicalRoutineFormalArgumentAST_5D_ inArgument0,
                                               GGS__5B_string_5D_ inArgument1,
                                               GGS_bool inArgument2,
                                               Compiler * inCompiler
@@ -10275,7 +9042,7 @@ void GGS_lexicalRoutineMap::setter_insertKey (GGS_lstring inLKey,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_lexicalRoutineMap::method_searchKey (GGS_lstring inLKey,
-                                              GGS_lexicalRoutineFormalArgumentList & outArgument0,
+                                              GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & outArgument0,
                                               GGS__5B_string_5D_ & outArgument1,
                                               GGS_bool & outArgument2,
                                               Compiler * inCompiler
@@ -10303,10 +9070,10 @@ void GGS_lexicalRoutineMap::method_searchKey (GGS_lstring inLKey,
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineMap::getter_mLexicalRoutineFormalArgumentListForKey (const GGS_string & inKey,
-                                                                                                            Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) const {
-  GGS_lexicalRoutineFormalArgumentList result ;
+GGS__5B_lexicalRoutineFormalArgumentAST_5D_ GGS_lexicalRoutineMap::getter_mLexicalRoutineFormalArgumentListForKey (const GGS_string & inKey,
+                                                                                                                   Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) const {
+  GGS__5B_lexicalRoutineFormalArgumentAST_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     const SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> info = infoForKey (key) ;
@@ -10363,7 +9130,7 @@ GGS_bool GGS_lexicalRoutineMap::getter_mIsExternForKey (const GGS_string & inKey
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalRoutineMap::setter_setMLexicalRoutineFormalArgumentListForKey (GGS_lexicalRoutineFormalArgumentList inValue,
+void GGS_lexicalRoutineMap::setter_setMLexicalRoutineFormalArgumentListForKey (GGS__5B_lexicalRoutineFormalArgumentAST_5D_ inValue,
                                                                                GGS_string inKey,
                                                                                Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) {
@@ -10510,7 +9277,7 @@ GGS_lstring DownEnumerator_lexicalRoutineMap::current_lkey (LOCATION_ARGS) const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalRoutineFormalArgumentList DownEnumerator_lexicalRoutineMap::current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const {
+GGS__5B_lexicalRoutineFormalArgumentAST_5D_ DownEnumerator_lexicalRoutineMap::current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalRoutineFormalArgumentList ;
 }
 
@@ -10549,7 +9316,7 @@ GGS_lstring UpEnumerator_lexicalRoutineMap::current_lkey (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalRoutineFormalArgumentList UpEnumerator_lexicalRoutineMap::current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const {
+GGS__5B_lexicalRoutineFormalArgumentAST_5D_ UpEnumerator_lexicalRoutineMap::current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalRoutineFormalArgumentList ;
 }
 
@@ -10580,583 +9347,404 @@ const GALGAS_TypeDescriptor * GGS_lexicalRoutineMap::staticTypeDescriptor (void)
 }
 
 //--------------------------------------------------------------------------------------------------
-//Class for element of '@lexicalFunctionFormalArgumentList' list
-//--------------------------------------------------------------------------------------------------
 
-class CollectionElementPtr_lexicalFunctionFormalArgumentList : public CollectionElementPtr {
-  public: GGS_lexicalFunctionFormalArgumentList_2E_element mObject ;
-
-//--- Class functions
-  public: CollectionElementPtr_lexicalFunctionFormalArgumentList (const GGS_lexicalTypeEnum & in_mLexicalType,
-                                                                  const GGS_string & in_mArgumentNameForComment
-                                                                  COMMA_LOCATION_ARGS) ;
-  public: CollectionElementPtr_lexicalFunctionFormalArgumentList (const GGS_lexicalFunctionFormalArgumentList_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual proc that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual proc that returns a copy of current object
-  public: virtual CollectionElementPtr * copy (void) ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_lexicalFunctionFormalArgumentList::CollectionElementPtr_lexicalFunctionFormalArgumentList (const GGS_lexicalTypeEnum & in_mLexicalType,
-                                                                                                                const GGS_string & in_mArgumentNameForComment
-                                                                                                                COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (in_mLexicalType, in_mArgumentNameForComment) {
+GGS_lexicalFunctionFormalArgumentAST::GGS_lexicalFunctionFormalArgumentAST (void) :
+mProperty_mLexicalType (),
+mProperty_mArgumentNameForComment () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-CollectionElementPtr_lexicalFunctionFormalArgumentList::CollectionElementPtr_lexicalFunctionFormalArgumentList (const GGS_lexicalFunctionFormalArgumentList_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (inElement.mProperty_mLexicalType, inElement.mProperty_mArgumentNameForComment) {
+GGS_lexicalFunctionFormalArgumentAST::GGS_lexicalFunctionFormalArgumentAST (const GGS_lexicalFunctionFormalArgumentAST & inSource) :
+mProperty_mLexicalType (inSource.mProperty_mLexicalType),
+mProperty_mArgumentNameForComment (inSource.mProperty_mArgumentNameForComment) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool CollectionElementPtr_lexicalFunctionFormalArgumentList::isValid (void) const {
-  return true ;
+GGS_lexicalFunctionFormalArgumentAST & GGS_lexicalFunctionFormalArgumentAST::operator = (const GGS_lexicalFunctionFormalArgumentAST & inSource) {
+  mProperty_mLexicalType = inSource.mProperty_mLexicalType ;
+  mProperty_mArgumentNameForComment = inSource.mProperty_mArgumentNameForComment ;
+  return *this ;
 }
 
-//--------------------------------------------------------------------------------------------------
+//---Synthetized initializer -----------------------------------------------------------------------
 
-CollectionElementPtr * CollectionElementPtr_lexicalFunctionFormalArgumentList::copy (void) {
-  CollectionElementPtr * result = nullptr ;
-  macroMyNew (result, CollectionElementPtr_lexicalFunctionFormalArgumentList (mObject.mProperty_mLexicalType, mObject.mProperty_mArgumentNameForComment COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// List type @lexicalFunctionFormalArgumentList
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalFunctionFormalArgumentList::GGS_lexicalFunctionFormalArgumentList (void) :
-mArray () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalFunctionFormalArgumentList::GGS_lexicalFunctionFormalArgumentList (const CollectionElementArray & inArray) :
-mArray () {
-  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
-  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElementPtr_lexicalFunctionFormalArgumentList * p = (CollectionElementPtr_lexicalFunctionFormalArgumentList *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElementPtr_lexicalFunctionFormalArgumentList) ;
-    const GGS_lexicalFunctionFormalArgumentList_2E_element element (p->mObject.mProperty_mLexicalType, p->mObject.mProperty_mArgumentNameForComment) ;
-    mArray.appendObject (element) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalFunctionFormalArgumentList::makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                                       const GGS_lexicalTypeEnum & in_mLexicalType,
-                                                                       const GGS_string & in_mArgumentNameForComment
-                                                                       COMMA_LOCATION_ARGS) {
-  CollectionElementPtr_lexicalFunctionFormalArgumentList * p = nullptr ;
-  macroMyNew (p, CollectionElementPtr_lexicalFunctionFormalArgumentList (in_mLexicalType, in_mArgumentNameForComment COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_lexicalFunctionFormalArgumentList::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (count ()) ;
-  }
+GGS_lexicalFunctionFormalArgumentAST GGS_lexicalFunctionFormalArgumentAST::init_21__21_ (const GGS_lexicalTypeEnum & in_mLexicalType,
+                                                                                         const GGS_string & in_mArgumentNameForComment,
+                                                                                         Compiler * inCompiler
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_lexicalFunctionFormalArgumentAST result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mLexicalType = in_mLexicalType ;
+  result.mProperty_mArgumentNameForComment = in_mArgumentNameForComment ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_range GGS_lexicalFunctionFormalArgumentList::getter_range (UNUSED_LOCATION_ARGS) const {
-  GGS_range result ;
-  if (isValid ()) {
-    result = GGS_range (0, count ()) ;
-  }
-  return result ;
+void GGS_lexicalFunctionFormalArgumentAST::setInitializedProperties (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalFunctionFormalArgumentList::description (String & ioString,
-                                                         const int32_t inIndentation) const {
-  ioString.appendCString ("<list @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (" (") ;
-  ioString.appendUnsigned (count()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((count() > 1) ? "s" : "") ;
-  ioString.appendCString ("):") ;
-  if (isValid ()) {
-    for (uint32_t i = 0 ; i < count () ; i++) {
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation) ;
-      ioString.appendString ("|-at ") ;
-      ioString.appendUnsigned (i) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mLexicalType:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mLexicalType.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mArgumentNameForComment:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mArgumentNameForComment.description (ioString, inIndentation + 1) ;
-    }
-  }else{
+GGS_lexicalFunctionFormalArgumentAST::GGS_lexicalFunctionFormalArgumentAST (const GGS_lexicalTypeEnum & inOperand0,
+                                                                            const GGS_string & inOperand1) :
+mProperty_mLexicalType (inOperand0),
+mProperty_mArgumentNameForComment (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_lexicalFunctionFormalArgumentAST::isValid (void) const {
+  return mProperty_mLexicalType.isValid () && mProperty_mArgumentNameForComment.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalFunctionFormalArgumentAST::drop (void) {
+  mProperty_mLexicalType.drop () ;
+  mProperty_mArgumentNameForComment.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_lexicalFunctionFormalArgumentAST::description (String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @lexicalFunctionFormalArgumentAST:") ;
+  if (! isValid ()) {
     ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mLexicalType.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mArgumentNameForComment.description (ioString, inIndentation+1) ;
   }
   ioString.appendCString (">") ;
 }
 
 //--------------------------------------------------------------------------------------------------
+//     @lexicalFunctionFormalArgumentAST generic code implementation
+//--------------------------------------------------------------------------------------------------
 
-GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionFormalArgumentList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexicalFunctionFormalArgumentList result ;
-  result.mArray.setCapacity (16) ; // Build
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalFunctionFormalArgumentAST ("lexicalFunctionFormalArgumentAST",
+                                                                                     nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_lexicalFunctionFormalArgumentAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalFunctionFormalArgumentAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@_5B_lexicalFunctionFormalArgumentAST_5D_' array
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalFunctionFormalArgumentAST_5D_::GGS__5B_lexicalFunctionFormalArgumentAST_5D_ (void) :
+AC_GALGAS_root (),
+mSharedArray () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalFunctionFormalArgumentAST_5D_::GGS__5B_lexicalFunctionFormalArgumentAST_5D_ (const GGS__5B_lexicalFunctionFormalArgumentAST_5D_ & inSource) :
+AC_GALGAS_root (),
+mSharedArray (inSource.mSharedArray) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalFunctionFormalArgumentAST_5D_ & GGS__5B_lexicalFunctionFormalArgumentAST_5D_::operator = (const GGS__5B_lexicalFunctionFormalArgumentAST_5D_ & inSource)  {
+  mSharedArray = inSource.mSharedArray ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalFunctionFormalArgumentAST_5D_ GGS__5B_lexicalFunctionFormalArgumentAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_lexicalFunctionFormalArgumentAST_5D_ result ;
+  result.mSharedArray.setCapacity (16) ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalFunctionFormalArgumentList::plusPlusAssignOperation (const GGS_lexicalFunctionFormalArgumentList_2E_element & inValue
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inValue.isValid ()) {
-    mArray.appendObject (inValue) ;
-  }
+bool GGS__5B_lexicalFunctionFormalArgumentAST_5D_::isValid (void) const {
+  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionFormalArgumentList::class_func_listWithValue (const GGS_lexicalTypeEnum & inOperand0,
-                                                                                                       const GGS_string & inOperand1
-                                                                                                       COMMA_LOCATION_ARGS) {
-  const GGS_lexicalFunctionFormalArgumentList_2E_element element (inOperand0, inOperand1) ;
-  GGS_lexicalFunctionFormalArgumentList result ;
-  if (element.isValid ()) {
-    result.mArray.setCapacity (16) ; // Build
-    result.plusPlusAssignOperation (element COMMA_THERE) ;
+void GGS__5B_lexicalFunctionFormalArgumentAST_5D_::drop (void) {
+  mSharedArray.removeAll () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalFunctionFormalArgumentAST_5D_::removeAll (void) {
+  mSharedArray.removeAll () ;
+  mSharedArray.setCapacity (16) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalFunctionFormalArgumentAST_5D_::plusPlusAssignOperation (const GGS_lexicalFunctionFormalArgumentAST & inValue
+                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  mSharedArray.appendObject (inValue) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS__5B_lexicalFunctionFormalArgumentAST_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalFunctionFormalArgumentList::addAssignOperation (const GGS_lexicalTypeEnum & inOperand0,
-                                                                const GGS_string & inOperand1
-                                                                COMMA_LOCATION_ARGS) {
-  const GGS_lexicalFunctionFormalArgumentList_2E_element newElement (inOperand0, inOperand1) ;
-  plusPlusAssignOperation (newElement COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalFunctionFormalArgumentList::setter_append (const GGS_lexicalTypeEnum inOperand0,
-                                                           const GGS_string inOperand1,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_LOCATION_ARGS) {
-  const GGS_lexicalFunctionFormalArgumentList_2E_element newElement (inOperand0, inOperand1) ;
-  if (isValid () && newElement.isValid ()) {
-    plusPlusAssignOperation (newElement COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalFunctionFormalArgumentList::setter_insertAtIndex (const GGS_lexicalTypeEnum inOperand0,
-                                                                  const GGS_string inOperand1,
-                                                                  const GGS_uint inInsertionIndex,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  const GGS_lexicalFunctionFormalArgumentList_2E_element newElement (inOperand0, inOperand1) ;
-  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx <= mArray.count ()) {
-      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
-    }else{
-      String message = "cannot insert at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalFunctionFormalArgumentList::setter_removeAtIndex (GGS_lexicalTypeEnum & outOperand0,
-                                                                  GGS_string & outOperand1,
-                                                                  const GGS_uint inRemoveIndex,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx < mArray.count ()) {
-      removed = true ;
-      outOperand0 = mArray (idx COMMA_HERE).mProperty_mLexicalType ;
-      outOperand1 = mArray (idx COMMA_HERE).mProperty_mArgumentNameForComment ;
-      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
-    }else{
-      String message = "cannot remove at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalFunctionFormalArgumentList::setter_popFirst (GGS_lexicalTypeEnum & outOperand0,
-                                                             GGS_string & outOperand1,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mLexicalType ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mArgumentNameForComment ;
-      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
-    }else{
-      const String message = "cannot remove first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalFunctionFormalArgumentList::setter_popLast (GGS_lexicalTypeEnum & outOperand0,
-                                                            GGS_string & outOperand1,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mLexicalType ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mArgumentNameForComment ;
-      mArray.removeLastObject (HERE) ;
-    }else{
-      const String message = "cannot remove last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalFunctionFormalArgumentList::method_first (GGS_lexicalTypeEnum & outOperand0,
-                                                          GGS_string & outOperand1,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mLexicalType ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mArgumentNameForComment ;
-    }else{
-      const String message = "cannot get first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalFunctionFormalArgumentList::method_last (GGS_lexicalTypeEnum & outOperand0,
-                                                         GGS_string & outOperand1,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mLexicalType ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mArgumentNameForComment ;
-    }else{
-      const String message = "cannot get last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionFormalArgumentList::add_operation (const GGS_lexicalFunctionFormalArgumentList & inOperand,
-                                                                                            Compiler * /* inCompiler */
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_lexicalFunctionFormalArgumentList result ;
+GGS__5B_lexicalFunctionFormalArgumentAST_5D_ GGS__5B_lexicalFunctionFormalArgumentAST_5D_::add_operation (const GGS__5B_lexicalFunctionFormalArgumentAST_5D_ & inOperand,
+                                                                                                          Compiler * /* inCompiler */
+                                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_lexicalFunctionFormalArgumentAST_5D_ result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
-      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
-    }
+    result.mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionFormalArgumentList::subList (const int32_t inStart,
-                                                                                      const int32_t inLength,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) const {
-  GGS_lexicalFunctionFormalArgumentList result ;
-  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
-  if (ok) {
-    result.mArray.setCapacity (std::max (16, inLength)) ;
-    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
-      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
-    }
+void GGS__5B_lexicalFunctionFormalArgumentAST_5D_::description (String & ioString,
+                                                                const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (", ") ;
+  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalFunctionFormalArgumentAST_5D_::plusAssignOperation (const GGS__5B_lexicalFunctionFormalArgumentAST_5D_ inOperand,
+                                                                        Compiler * /* inCompiler */
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mSharedArray.appendDataFromPointer (
+      inOperand.mSharedArray.unsafeArrayPointer (),
+      inOperand.mSharedArray.count ()
+    ) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalFunctionFormalArgumentAST_5D_::setter_append (const GGS_lexicalFunctionFormalArgumentAST inValue,
+                                                                  Compiler * /* inCompiler */
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid ()) {
+    mSharedArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalFunctionFormalArgumentAST_5D_::setter_removeAll (Compiler * /* inCompiler */
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  removeAll () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalFunctionFormalArgumentAST_5D_::setter_insertAtIndex (const GGS_lexicalFunctionFormalArgumentAST inValue,
+                                                                         const GGS_uint inInsertionIndex,
+                                                                         Compiler * /* inCompiler */
+                                                                         COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS__5B_lexicalFunctionFormalArgumentAST_5D_::setter_removeAtIndex (GGS_lexicalFunctionFormalArgumentAST & outValue,
+                                                                         const GGS_uint inRemoveIndex,
+                                                                         Compiler * /* inCompiler */
+                                                                         COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    outValue = mSharedArray (idx COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
   }else{
-    String message = "cannot get sublist [start: " ;
-    message.appendSigned (inStart) ;
-    message.appendCString (", length: ") ;
-    message.appendSigned (inLength) ;
-    message.appendCString ("], list count is ") ;
-    message.appendSigned (mArray.count ()) ;
-    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    outValue.drop () ;
   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionFormalArgumentList::getter_subListWithRange (const GGS_range & inRange,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) const {
-  GGS_lexicalFunctionFormalArgumentList result ;
-  if (isValid () && inRange.isValid ()) {
-    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
-    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
+void GGS__5B_lexicalFunctionFormalArgumentAST_5D_::setter_popFirst (GGS_lexicalFunctionFormalArgumentAST & outValue,
+                                                                    Compiler * /* inCompiler */
+                                                                    COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    outValue = mSharedArray (0 COMMA_THERE) ;
+    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
+  }else{
+    outValue.drop () ;
   }
-  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionFormalArgumentList::getter_subListFromIndex (const GGS_uint & inIndex,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) const {
-  GGS_lexicalFunctionFormalArgumentList result ;
+void GGS__5B_lexicalFunctionFormalArgumentAST_5D_::setter_popLast (GGS_lexicalFunctionFormalArgumentAST & outValue,
+                                                                   Compiler * /* inCompiler */
+                                                                   COMMA_LOCATION_ARGS) {
+  if (isValid ()) {
+    outValue = mSharedArray.lastObject (THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
+  }else{
+    outValue.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lexicalFunctionFormalArgumentAST_5D_ GGS__5B_lexicalFunctionFormalArgumentAST_5D_::getter_removingFirst (const GGS_uint & inIndex,
+                                                                                                                 Compiler * inCompiler
+                                                                                                                 COMMA_LOCATION_ARGS) const {
+  GGS__5B_lexicalFunctionFormalArgumentAST_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = int32_t (inIndex.uintValue ()) ;
-    const int32_t length = int32_t (count ()) - start ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_lexicalFunctionFormalArgumentAST_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionFormalArgumentList::getter_subListToIndex (const GGS_uint & inIndex,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_lexicalFunctionFormalArgumentList result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = 0 ;
-    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
+GGS_lexicalFunctionFormalArgumentAST GGS__5B_lexicalFunctionFormalArgumentAST_5D_::getter_first (Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) const {
+  GGS_lexicalFunctionFormalArgumentAST result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray (0 COMMA_THERE) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalFunctionFormalArgumentList::plusAssignOperation (const GGS_lexicalFunctionFormalArgumentList inList,
-                                                                 Compiler * /* inCompiler */
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inList.isValid ()) {
-    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
-    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
-      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalFunctionFormalArgumentList::setter_setMLexicalTypeAtIndex (GGS_lexicalTypeEnum inOperand,
-                                                                           GGS_uint inIndex,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mLexicalType = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalTypeEnum GGS_lexicalFunctionFormalArgumentList::getter_mLexicalTypeAtIndex (const GGS_uint & inIndex,
-                                                                                       Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) const {
-  GGS_lexicalTypeEnum result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mLexicalType ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
+GGS_lexicalFunctionFormalArgumentAST GGS__5B_lexicalFunctionFormalArgumentAST_5D_::getter_last (Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const {
+  GGS_lexicalFunctionFormalArgumentAST result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
   }
   return result ;
 }
+
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalFunctionFormalArgumentList::setter_setMArgumentNameForCommentAtIndex (GGS_string inOperand,
-                                                                                      GGS_uint inIndex,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mArgumentNameForComment = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_lexicalFunctionFormalArgumentList::getter_mArgumentNameForCommentAtIndex (const GGS_uint & inIndex,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) const {
-  GGS_string result ;
+GGS_lexicalFunctionFormalArgumentAST GGS__5B_lexicalFunctionFormalArgumentAST_5D_::readSubscript__3F_ (const GGS_uint & inIndex,
+                                                                                                       Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) const {
+  GGS_lexicalFunctionFormalArgumentAST result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mArgumentNameForComment ;
+    if (idx < uint32_t (mSharedArray.count ())) {
+      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+      String errorMessage ;
+      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendUnsigned (idx) ;
+      errorMessage.appendCString (") too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }
   }
   return result ;
 }
+
 //--------------------------------------------------------------------------------------------------
-// Down Enumerator for @lexicalFunctionFormalArgumentList
+// Down Enumerator for @_5B_lexicalFunctionFormalArgumentAST_5D_
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator_lexicalFunctionFormalArgumentList::DownEnumerator_lexicalFunctionFormalArgumentList (const GGS_lexicalFunctionFormalArgumentList & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-  mIndex = mArray.count () - 1 ;
+DownEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_::DownEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ (const GGS__5B_lexicalFunctionFormalArgumentAST_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (inOperand.mSharedArray.count () - 1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalFunctionFormalArgumentList_2E_element DownEnumerator_lexicalFunctionFormalArgumentList::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
+GGS_lexicalFunctionFormalArgumentAST DownEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalTypeEnum DownEnumerator_lexicalFunctionFormalArgumentList::current_mLexicalType (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mLexicalType ;
+GGS_lexicalFunctionFormalArgumentAST DownEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @_5B_lexicalFunctionFormalArgumentAST_5D_
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_::UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ (const GGS__5B_lexicalFunctionFormalArgumentAST_5D_ & inOperand) :
+mSharedArray (inOperand.mSharedArray),
+mCurrent (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string DownEnumerator_lexicalFunctionFormalArgumentList::current_mArgumentNameForComment (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mArgumentNameForComment ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @lexicalFunctionFormalArgumentList
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_lexicalFunctionFormalArgumentList::UpEnumerator_lexicalFunctionFormalArgumentList (const GGS_lexicalFunctionFormalArgumentList & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
+GGS_lexicalFunctionFormalArgumentAST UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_::current (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalFunctionFormalArgumentList_2E_element UpEnumerator_lexicalFunctionFormalArgumentList::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
+GGS_lexicalFunctionFormalArgumentAST UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_::current_entry (LOCATION_ARGS) const {
+  return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
+//     @[lexicalFunctionFormalArgumentAST] generic code implementation
+//--------------------------------------------------------------------------------------------------
 
-GGS_lexicalTypeEnum UpEnumerator_lexicalFunctionFormalArgumentList::current_mLexicalType (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mLexicalType ;
-}
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_lexicalFunctionFormalArgumentAST_5D_ ("[lexicalFunctionFormalArgumentAST]",
+                                                                                             nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string UpEnumerator_lexicalFunctionFormalArgumentList::current_mArgumentNameForComment (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mArgumentNameForComment ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalFunctionFormalArgumentList generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalFunctionFormalArgumentList ("lexicalFunctionFormalArgumentList",
-                                                                                      nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalFunctionFormalArgumentList::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalFunctionFormalArgumentList ;
+const GALGAS_TypeDescriptor * GGS__5B_lexicalFunctionFormalArgumentAST_5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_lexicalFunctionFormalArgumentAST_5D_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11424,7 +10012,7 @@ GGS_lexicalFunctionMap GGS_lexicalFunctionMap::getter_overriddenMap (Compiler * 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_lexicalFunctionMap::setter_insertKey (GGS_lstring inLKey,
-                                               GGS_lexicalFunctionFormalArgumentList inArgument0,
+                                               GGS__5B_lexicalFunctionFormalArgumentAST_5D_ inArgument0,
                                                GGS_lexicalTypeEnum inArgument1,
                                                GGS_string inArgument2,
                                                GGS_bool inArgument3,
@@ -11439,7 +10027,7 @@ void GGS_lexicalFunctionMap::setter_insertKey (GGS_lstring inLKey,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_lexicalFunctionMap::method_searchKey (GGS_lstring inLKey,
-                                               GGS_lexicalFunctionFormalArgumentList & outArgument0,
+                                               GGS__5B_lexicalFunctionFormalArgumentAST_5D_ & outArgument0,
                                                GGS_lexicalTypeEnum & outArgument1,
                                                GGS_string & outArgument2,
                                                GGS_bool & outArgument3,
@@ -11470,10 +10058,10 @@ void GGS_lexicalFunctionMap::method_searchKey (GGS_lstring inLKey,
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionMap::getter_mLexicalTypeListForKey (const GGS_string & inKey,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) const {
-  GGS_lexicalFunctionFormalArgumentList result ;
+GGS__5B_lexicalFunctionFormalArgumentAST_5D_ GGS_lexicalFunctionMap::getter_mLexicalTypeListForKey (const GGS_string & inKey,
+                                                                                                    Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) const {
+  GGS__5B_lexicalFunctionFormalArgumentAST_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     const SharedGenericPtrWithValueSemantics <GGS_lexicalFunctionMap_2E_element> info = infoForKey (key) ;
@@ -11550,7 +10138,7 @@ GGS_bool GGS_lexicalFunctionMap::getter_mIsExternForKey (const GGS_string & inKe
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalFunctionMap::setter_setMLexicalTypeListForKey (GGS_lexicalFunctionFormalArgumentList inValue,
+void GGS_lexicalFunctionMap::setter_setMLexicalTypeListForKey (GGS__5B_lexicalFunctionFormalArgumentAST_5D_ inValue,
                                                                GGS_string inKey,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
@@ -11721,7 +10309,7 @@ GGS_lstring DownEnumerator_lexicalFunctionMap::current_lkey (LOCATION_ARGS) cons
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalFunctionFormalArgumentList DownEnumerator_lexicalFunctionMap::current_mLexicalTypeList (LOCATION_ARGS) const {
+GGS__5B_lexicalFunctionFormalArgumentAST_5D_ DownEnumerator_lexicalFunctionMap::current_mLexicalTypeList (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalTypeList ;
 }
 
@@ -11766,7 +10354,7 @@ GGS_lstring UpEnumerator_lexicalFunctionMap::current_lkey (LOCATION_ARGS) const 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalFunctionFormalArgumentList UpEnumerator_lexicalFunctionMap::current_mLexicalTypeList (LOCATION_ARGS) const {
+GGS__5B_lexicalFunctionFormalArgumentAST_5D_ UpEnumerator_lexicalFunctionMap::current_mLexicalTypeList (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalTypeList ;
 }
 
@@ -17348,5 +15936,1374 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputInputActualParameterAST
 
 const GALGAS_TypeDescriptor * GGS_outputInputActualParameterAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_outputInputActualParameterAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_outputInputActualParameterAST_2E_weak::objectCompare (const GGS_outputInputActualParameterAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputActualParameterAST_2E_weak::GGS_outputInputActualParameterAST_2E_weak (void) :
+GGS_actualParameterAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputActualParameterAST_2E_weak & GGS_outputInputActualParameterAST_2E_weak::operator = (const GGS_outputInputActualParameterAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputActualParameterAST_2E_weak::GGS_outputInputActualParameterAST_2E_weak (const GGS_outputInputActualParameterAST & inSource) :
+GGS_actualParameterAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputActualParameterAST_2E_weak GGS_outputInputActualParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_outputInputActualParameterAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputActualParameterAST GGS_outputInputActualParameterAST_2E_weak::unwrappedValue (void) const {
+  GGS_outputInputActualParameterAST result ;
+  if (isValid ()) {
+    const cPtr_outputInputActualParameterAST * p = (cPtr_outputInputActualParameterAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_outputInputActualParameterAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputActualParameterAST GGS_outputInputActualParameterAST_2E_weak::bang_outputInputActualParameterAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_outputInputActualParameterAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_outputInputActualParameterAST) ;
+      result = GGS_outputInputActualParameterAST ((cPtr_outputInputActualParameterAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @outputInputActualParameterAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputInputActualParameterAST_2E_weak ("outputInputActualParameterAST.weak",
+                                                                                          & kTypeDescriptor_GALGAS_actualParameterAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_outputInputActualParameterAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_outputInputActualParameterAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @outputInputJokerParameterAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_outputInputJokerParameterAST::objectCompare (const GGS_outputInputJokerParameterAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputJokerParameterAST::GGS_outputInputJokerParameterAST (void) :
+GGS_actualParameterAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_outputInputJokerParameterAST GGS_outputInputJokerParameterAST::
+init_21__21_ (const GGS_lstring & in_mActualSelector,
+              const GGS_semanticExpressionAST & in_expression,
+              Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
+  cPtr_outputInputJokerParameterAST * object = nullptr ;
+  macroMyNew (object, cPtr_outputInputJokerParameterAST (inCompiler COMMA_THERE)) ;
+  object->outputInputJokerParameterAST_init_21__21_ (in_mActualSelector, in_expression, inCompiler) ;
+  const GGS_outputInputJokerParameterAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_outputInputJokerParameterAST::
+outputInputJokerParameterAST_init_21__21_ (const GGS_lstring & in_mActualSelector,
+                                           const GGS_semanticExpressionAST & in_expression,
+                                           Compiler * /* inCompiler */) {
+  mProperty_mActualSelector = in_mActualSelector ;
+  mProperty_expression = in_expression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputJokerParameterAST::GGS_outputInputJokerParameterAST (const cPtr_outputInputJokerParameterAST * inSourcePtr) :
+GGS_actualParameterAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_outputInputJokerParameterAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_outputInputJokerParameterAST::readProperty_mActualSelector (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_outputInputJokerParameterAST * p = (cPtr_outputInputJokerParameterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_outputInputJokerParameterAST) ;
+    return p->mProperty_mActualSelector ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionAST GGS_outputInputJokerParameterAST::readProperty_expression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionAST () ;
+  }else{
+    cPtr_outputInputJokerParameterAST * p = (cPtr_outputInputJokerParameterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_outputInputJokerParameterAST) ;
+    return p->mProperty_expression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @outputInputJokerParameterAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_outputInputJokerParameterAST::cPtr_outputInputJokerParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_actualParameterAST (inCompiler COMMA_THERE),
+mProperty_mActualSelector (),
+mProperty_expression () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_outputInputJokerParameterAST::cPtr_outputInputJokerParameterAST (const GGS_lstring & in_mActualSelector,
+                                                                      const GGS_semanticExpressionAST & in_expression,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) :
+cPtr_actualParameterAST (inCompiler COMMA_THERE),
+mProperty_mActualSelector (),
+mProperty_expression () {
+  mProperty_mActualSelector = in_mActualSelector ;
+  mProperty_expression = in_expression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_outputInputJokerParameterAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_outputInputJokerParameterAST ;
+}
+
+void cPtr_outputInputJokerParameterAST::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("[@outputInputJokerParameterAST:") ;
+  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_expression.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_outputInputJokerParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_outputInputJokerParameterAST (mProperty_mActualSelector, mProperty_expression, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_outputInputJokerParameterAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
+    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
+    mProperty_expression.printNonNullClassInstanceProperties ("expression") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @outputInputJokerParameterAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputInputJokerParameterAST ("outputInputJokerParameterAST",
+                                                                                 & kTypeDescriptor_GALGAS_actualParameterAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_outputInputJokerParameterAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_outputInputJokerParameterAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_outputInputJokerParameterAST_2E_weak::objectCompare (const GGS_outputInputJokerParameterAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputJokerParameterAST_2E_weak::GGS_outputInputJokerParameterAST_2E_weak (void) :
+GGS_actualParameterAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputJokerParameterAST_2E_weak & GGS_outputInputJokerParameterAST_2E_weak::operator = (const GGS_outputInputJokerParameterAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputJokerParameterAST_2E_weak::GGS_outputInputJokerParameterAST_2E_weak (const GGS_outputInputJokerParameterAST & inSource) :
+GGS_actualParameterAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputJokerParameterAST_2E_weak GGS_outputInputJokerParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_outputInputJokerParameterAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputJokerParameterAST GGS_outputInputJokerParameterAST_2E_weak::unwrappedValue (void) const {
+  GGS_outputInputJokerParameterAST result ;
+  if (isValid ()) {
+    const cPtr_outputInputJokerParameterAST * p = (cPtr_outputInputJokerParameterAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_outputInputJokerParameterAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputJokerParameterAST GGS_outputInputJokerParameterAST_2E_weak::bang_outputInputJokerParameterAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_outputInputJokerParameterAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_outputInputJokerParameterAST) ;
+      result = GGS_outputInputJokerParameterAST ((cPtr_outputInputJokerParameterAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @outputInputJokerParameterAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputInputJokerParameterAST_2E_weak ("outputInputJokerParameterAST.weak",
+                                                                                         & kTypeDescriptor_GALGAS_actualParameterAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_outputInputJokerParameterAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_outputInputJokerParameterAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @outputInputSelfParameterAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_outputInputSelfParameterAST::objectCompare (const GGS_outputInputSelfParameterAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputSelfParameterAST::GGS_outputInputSelfParameterAST (void) :
+GGS_actualParameterAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_outputInputSelfParameterAST GGS_outputInputSelfParameterAST::
+init_21_ (const GGS_lstring & in_mActualSelector,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_outputInputSelfParameterAST * object = nullptr ;
+  macroMyNew (object, cPtr_outputInputSelfParameterAST (inCompiler COMMA_THERE)) ;
+  object->outputInputSelfParameterAST_init_21_ (in_mActualSelector, inCompiler) ;
+  const GGS_outputInputSelfParameterAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_outputInputSelfParameterAST::
+outputInputSelfParameterAST_init_21_ (const GGS_lstring & in_mActualSelector,
+                                      Compiler * /* inCompiler */) {
+  mProperty_mActualSelector = in_mActualSelector ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputSelfParameterAST::GGS_outputInputSelfParameterAST (const cPtr_outputInputSelfParameterAST * inSourcePtr) :
+GGS_actualParameterAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_outputInputSelfParameterAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_outputInputSelfParameterAST::readProperty_mActualSelector (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_outputInputSelfParameterAST * p = (cPtr_outputInputSelfParameterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_outputInputSelfParameterAST) ;
+    return p->mProperty_mActualSelector ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @outputInputSelfParameterAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_outputInputSelfParameterAST::cPtr_outputInputSelfParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_actualParameterAST (inCompiler COMMA_THERE),
+mProperty_mActualSelector () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_outputInputSelfParameterAST::cPtr_outputInputSelfParameterAST (const GGS_lstring & in_mActualSelector,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) :
+cPtr_actualParameterAST (inCompiler COMMA_THERE),
+mProperty_mActualSelector () {
+  mProperty_mActualSelector = in_mActualSelector ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_outputInputSelfParameterAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_outputInputSelfParameterAST ;
+}
+
+void cPtr_outputInputSelfParameterAST::description (String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString.appendCString ("[@outputInputSelfParameterAST:") ;
+  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_outputInputSelfParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_outputInputSelfParameterAST (mProperty_mActualSelector, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_outputInputSelfParameterAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
+    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @outputInputSelfParameterAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputInputSelfParameterAST ("outputInputSelfParameterAST",
+                                                                                & kTypeDescriptor_GALGAS_actualParameterAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_outputInputSelfParameterAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_outputInputSelfParameterAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_outputInputSelfParameterAST_2E_weak::objectCompare (const GGS_outputInputSelfParameterAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputSelfParameterAST_2E_weak::GGS_outputInputSelfParameterAST_2E_weak (void) :
+GGS_actualParameterAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputSelfParameterAST_2E_weak & GGS_outputInputSelfParameterAST_2E_weak::operator = (const GGS_outputInputSelfParameterAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputSelfParameterAST_2E_weak::GGS_outputInputSelfParameterAST_2E_weak (const GGS_outputInputSelfParameterAST & inSource) :
+GGS_actualParameterAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputSelfParameterAST_2E_weak GGS_outputInputSelfParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_outputInputSelfParameterAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputSelfParameterAST GGS_outputInputSelfParameterAST_2E_weak::unwrappedValue (void) const {
+  GGS_outputInputSelfParameterAST result ;
+  if (isValid ()) {
+    const cPtr_outputInputSelfParameterAST * p = (cPtr_outputInputSelfParameterAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_outputInputSelfParameterAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputSelfParameterAST GGS_outputInputSelfParameterAST_2E_weak::bang_outputInputSelfParameterAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_outputInputSelfParameterAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_outputInputSelfParameterAST) ;
+      result = GGS_outputInputSelfParameterAST ((cPtr_outputInputSelfParameterAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @outputInputSelfParameterAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputInputSelfParameterAST_2E_weak ("outputInputSelfParameterAST.weak",
+                                                                                        & kTypeDescriptor_GALGAS_actualParameterAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_outputInputSelfParameterAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_outputInputSelfParameterAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @inputActualExistingVariableParameterAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_inputActualExistingVariableParameterAST::objectCompare (const GGS_inputActualExistingVariableParameterAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualExistingVariableParameterAST::GGS_inputActualExistingVariableParameterAST (void) :
+GGS_actualParameterAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_inputActualExistingVariableParameterAST GGS_inputActualExistingVariableParameterAST::
+init_21__21__21_ (const GGS_lstring & in_mActualSelector,
+                  const GGS_lstring & in_mInputActualParameterName,
+                  const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_inputActualExistingVariableParameterAST * object = nullptr ;
+  macroMyNew (object, cPtr_inputActualExistingVariableParameterAST (inCompiler COMMA_THERE)) ;
+  object->inputActualExistingVariableParameterAST_init_21__21__21_ (in_mActualSelector, in_mInputActualParameterName, in_mPoisonedVarNameList, inCompiler) ;
+  const GGS_inputActualExistingVariableParameterAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_inputActualExistingVariableParameterAST::
+inputActualExistingVariableParameterAST_init_21__21__21_ (const GGS_lstring & in_mActualSelector,
+                                                          const GGS_lstring & in_mInputActualParameterName,
+                                                          const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
+                                                          Compiler * /* inCompiler */) {
+  mProperty_mActualSelector = in_mActualSelector ;
+  mProperty_mInputActualParameterName = in_mInputActualParameterName ;
+  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualExistingVariableParameterAST::GGS_inputActualExistingVariableParameterAST (const cPtr_inputActualExistingVariableParameterAST * inSourcePtr) :
+GGS_actualParameterAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_inputActualExistingVariableParameterAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_inputActualExistingVariableParameterAST::readProperty_mActualSelector (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_inputActualExistingVariableParameterAST * p = (cPtr_inputActualExistingVariableParameterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputActualExistingVariableParameterAST) ;
+    return p->mProperty_mActualSelector ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_inputActualExistingVariableParameterAST::readProperty_mInputActualParameterName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_inputActualExistingVariableParameterAST * p = (cPtr_inputActualExistingVariableParameterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputActualExistingVariableParameterAST) ;
+    return p->mProperty_mInputActualParameterName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lstring_5D_ GGS_inputActualExistingVariableParameterAST::readProperty_mPoisonedVarNameList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_lstring_5D_ () ;
+  }else{
+    cPtr_inputActualExistingVariableParameterAST * p = (cPtr_inputActualExistingVariableParameterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputActualExistingVariableParameterAST) ;
+    return p->mProperty_mPoisonedVarNameList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @inputActualExistingVariableParameterAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputActualExistingVariableParameterAST::cPtr_inputActualExistingVariableParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_actualParameterAST (inCompiler COMMA_THERE),
+mProperty_mActualSelector (),
+mProperty_mInputActualParameterName (),
+mProperty_mPoisonedVarNameList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputActualExistingVariableParameterAST::cPtr_inputActualExistingVariableParameterAST (const GGS_lstring & in_mActualSelector,
+                                                                                            const GGS_lstring & in_mInputActualParameterName,
+                                                                                            const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) :
+cPtr_actualParameterAST (inCompiler COMMA_THERE),
+mProperty_mActualSelector (),
+mProperty_mInputActualParameterName (),
+mProperty_mPoisonedVarNameList () {
+  mProperty_mActualSelector = in_mActualSelector ;
+  mProperty_mInputActualParameterName = in_mInputActualParameterName ;
+  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_inputActualExistingVariableParameterAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST ;
+}
+
+void cPtr_inputActualExistingVariableParameterAST::description (String & ioString,
+                                                                const int32_t inIndentation) const {
+  ioString.appendCString ("[@inputActualExistingVariableParameterAST:") ;
+  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mInputActualParameterName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_inputActualExistingVariableParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_inputActualExistingVariableParameterAST (mProperty_mActualSelector, mProperty_mInputActualParameterName, mProperty_mPoisonedVarNameList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_inputActualExistingVariableParameterAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
+    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
+    mProperty_mInputActualParameterName.printNonNullClassInstanceProperties ("mInputActualParameterName") ;
+    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @inputActualExistingVariableParameterAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST ("inputActualExistingVariableParameterAST",
+                                                                                            & kTypeDescriptor_GALGAS_actualParameterAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_inputActualExistingVariableParameterAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_inputActualExistingVariableParameterAST_2E_weak::objectCompare (const GGS_inputActualExistingVariableParameterAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualExistingVariableParameterAST_2E_weak::GGS_inputActualExistingVariableParameterAST_2E_weak (void) :
+GGS_actualParameterAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualExistingVariableParameterAST_2E_weak & GGS_inputActualExistingVariableParameterAST_2E_weak::operator = (const GGS_inputActualExistingVariableParameterAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualExistingVariableParameterAST_2E_weak::GGS_inputActualExistingVariableParameterAST_2E_weak (const GGS_inputActualExistingVariableParameterAST & inSource) :
+GGS_actualParameterAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualExistingVariableParameterAST_2E_weak GGS_inputActualExistingVariableParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_inputActualExistingVariableParameterAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualExistingVariableParameterAST GGS_inputActualExistingVariableParameterAST_2E_weak::unwrappedValue (void) const {
+  GGS_inputActualExistingVariableParameterAST result ;
+  if (isValid ()) {
+    const cPtr_inputActualExistingVariableParameterAST * p = (cPtr_inputActualExistingVariableParameterAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_inputActualExistingVariableParameterAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualExistingVariableParameterAST GGS_inputActualExistingVariableParameterAST_2E_weak::bang_inputActualExistingVariableParameterAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_inputActualExistingVariableParameterAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_inputActualExistingVariableParameterAST) ;
+      result = GGS_inputActualExistingVariableParameterAST ((cPtr_inputActualExistingVariableParameterAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @inputActualExistingVariableParameterAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST_2E_weak ("inputActualExistingVariableParameterAST.weak",
+                                                                                                    & kTypeDescriptor_GALGAS_actualParameterAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_inputActualExistingVariableParameterAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputActualExistingVariableParameterAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @inputActualSelfPropertyParameterAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_inputActualSelfPropertyParameterAST::objectCompare (const GGS_inputActualSelfPropertyParameterAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfPropertyParameterAST::GGS_inputActualSelfPropertyParameterAST (void) :
+GGS_actualParameterAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_inputActualSelfPropertyParameterAST GGS_inputActualSelfPropertyParameterAST::
+init_21__21__21_ (const GGS_lstring & in_mActualSelector,
+                  const GGS_lstring & in_mInputActualSelfPropertyName,
+                  const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_inputActualSelfPropertyParameterAST * object = nullptr ;
+  macroMyNew (object, cPtr_inputActualSelfPropertyParameterAST (inCompiler COMMA_THERE)) ;
+  object->inputActualSelfPropertyParameterAST_init_21__21__21_ (in_mActualSelector, in_mInputActualSelfPropertyName, in_mPoisonedVarNameList, inCompiler) ;
+  const GGS_inputActualSelfPropertyParameterAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_inputActualSelfPropertyParameterAST::
+inputActualSelfPropertyParameterAST_init_21__21__21_ (const GGS_lstring & in_mActualSelector,
+                                                      const GGS_lstring & in_mInputActualSelfPropertyName,
+                                                      const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
+                                                      Compiler * /* inCompiler */) {
+  mProperty_mActualSelector = in_mActualSelector ;
+  mProperty_mInputActualSelfPropertyName = in_mInputActualSelfPropertyName ;
+  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfPropertyParameterAST::GGS_inputActualSelfPropertyParameterAST (const cPtr_inputActualSelfPropertyParameterAST * inSourcePtr) :
+GGS_actualParameterAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_inputActualSelfPropertyParameterAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_inputActualSelfPropertyParameterAST::readProperty_mActualSelector (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_inputActualSelfPropertyParameterAST * p = (cPtr_inputActualSelfPropertyParameterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputActualSelfPropertyParameterAST) ;
+    return p->mProperty_mActualSelector ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_inputActualSelfPropertyParameterAST::readProperty_mInputActualSelfPropertyName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_inputActualSelfPropertyParameterAST * p = (cPtr_inputActualSelfPropertyParameterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputActualSelfPropertyParameterAST) ;
+    return p->mProperty_mInputActualSelfPropertyName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lstring_5D_ GGS_inputActualSelfPropertyParameterAST::readProperty_mPoisonedVarNameList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_lstring_5D_ () ;
+  }else{
+    cPtr_inputActualSelfPropertyParameterAST * p = (cPtr_inputActualSelfPropertyParameterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputActualSelfPropertyParameterAST) ;
+    return p->mProperty_mPoisonedVarNameList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @inputActualSelfPropertyParameterAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputActualSelfPropertyParameterAST::cPtr_inputActualSelfPropertyParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_actualParameterAST (inCompiler COMMA_THERE),
+mProperty_mActualSelector (),
+mProperty_mInputActualSelfPropertyName (),
+mProperty_mPoisonedVarNameList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputActualSelfPropertyParameterAST::cPtr_inputActualSelfPropertyParameterAST (const GGS_lstring & in_mActualSelector,
+                                                                                    const GGS_lstring & in_mInputActualSelfPropertyName,
+                                                                                    const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) :
+cPtr_actualParameterAST (inCompiler COMMA_THERE),
+mProperty_mActualSelector (),
+mProperty_mInputActualSelfPropertyName (),
+mProperty_mPoisonedVarNameList () {
+  mProperty_mActualSelector = in_mActualSelector ;
+  mProperty_mInputActualSelfPropertyName = in_mInputActualSelfPropertyName ;
+  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_inputActualSelfPropertyParameterAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST ;
+}
+
+void cPtr_inputActualSelfPropertyParameterAST::description (String & ioString,
+                                                            const int32_t inIndentation) const {
+  ioString.appendCString ("[@inputActualSelfPropertyParameterAST:") ;
+  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mInputActualSelfPropertyName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_inputActualSelfPropertyParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_inputActualSelfPropertyParameterAST (mProperty_mActualSelector, mProperty_mInputActualSelfPropertyName, mProperty_mPoisonedVarNameList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_inputActualSelfPropertyParameterAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
+    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
+    mProperty_mInputActualSelfPropertyName.printNonNullClassInstanceProperties ("mInputActualSelfPropertyName") ;
+    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @inputActualSelfPropertyParameterAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST ("inputActualSelfPropertyParameterAST",
+                                                                                        & kTypeDescriptor_GALGAS_actualParameterAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_inputActualSelfPropertyParameterAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_inputActualSelfPropertyParameterAST_2E_weak::objectCompare (const GGS_inputActualSelfPropertyParameterAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfPropertyParameterAST_2E_weak::GGS_inputActualSelfPropertyParameterAST_2E_weak (void) :
+GGS_actualParameterAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfPropertyParameterAST_2E_weak & GGS_inputActualSelfPropertyParameterAST_2E_weak::operator = (const GGS_inputActualSelfPropertyParameterAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfPropertyParameterAST_2E_weak::GGS_inputActualSelfPropertyParameterAST_2E_weak (const GGS_inputActualSelfPropertyParameterAST & inSource) :
+GGS_actualParameterAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfPropertyParameterAST_2E_weak GGS_inputActualSelfPropertyParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_inputActualSelfPropertyParameterAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfPropertyParameterAST GGS_inputActualSelfPropertyParameterAST_2E_weak::unwrappedValue (void) const {
+  GGS_inputActualSelfPropertyParameterAST result ;
+  if (isValid ()) {
+    const cPtr_inputActualSelfPropertyParameterAST * p = (cPtr_inputActualSelfPropertyParameterAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_inputActualSelfPropertyParameterAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfPropertyParameterAST GGS_inputActualSelfPropertyParameterAST_2E_weak::bang_inputActualSelfPropertyParameterAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_inputActualSelfPropertyParameterAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_inputActualSelfPropertyParameterAST) ;
+      result = GGS_inputActualSelfPropertyParameterAST ((cPtr_inputActualSelfPropertyParameterAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @inputActualSelfPropertyParameterAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST_2E_weak ("inputActualSelfPropertyParameterAST.weak",
+                                                                                                & kTypeDescriptor_GALGAS_actualParameterAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_inputActualSelfPropertyParameterAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @inputActualSelfParameterAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_inputActualSelfParameterAST::objectCompare (const GGS_inputActualSelfParameterAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfParameterAST::GGS_inputActualSelfParameterAST (void) :
+GGS_actualParameterAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_inputActualSelfParameterAST GGS_inputActualSelfParameterAST::
+init_21__21__21_ (const GGS_lstring & in_mActualSelector,
+                  const GGS_location & in_mSelfLocation,
+                  const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_inputActualSelfParameterAST * object = nullptr ;
+  macroMyNew (object, cPtr_inputActualSelfParameterAST (inCompiler COMMA_THERE)) ;
+  object->inputActualSelfParameterAST_init_21__21__21_ (in_mActualSelector, in_mSelfLocation, in_mPoisonedVarNameList, inCompiler) ;
+  const GGS_inputActualSelfParameterAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_inputActualSelfParameterAST::
+inputActualSelfParameterAST_init_21__21__21_ (const GGS_lstring & in_mActualSelector,
+                                              const GGS_location & in_mSelfLocation,
+                                              const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
+                                              Compiler * /* inCompiler */) {
+  mProperty_mActualSelector = in_mActualSelector ;
+  mProperty_mSelfLocation = in_mSelfLocation ;
+  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfParameterAST::GGS_inputActualSelfParameterAST (const cPtr_inputActualSelfParameterAST * inSourcePtr) :
+GGS_actualParameterAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_inputActualSelfParameterAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_inputActualSelfParameterAST::readProperty_mActualSelector (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_inputActualSelfParameterAST * p = (cPtr_inputActualSelfParameterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputActualSelfParameterAST) ;
+    return p->mProperty_mActualSelector ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_inputActualSelfParameterAST::readProperty_mSelfLocation (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_inputActualSelfParameterAST * p = (cPtr_inputActualSelfParameterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputActualSelfParameterAST) ;
+    return p->mProperty_mSelfLocation ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lstring_5D_ GGS_inputActualSelfParameterAST::readProperty_mPoisonedVarNameList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_lstring_5D_ () ;
+  }else{
+    cPtr_inputActualSelfParameterAST * p = (cPtr_inputActualSelfParameterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputActualSelfParameterAST) ;
+    return p->mProperty_mPoisonedVarNameList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @inputActualSelfParameterAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputActualSelfParameterAST::cPtr_inputActualSelfParameterAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_actualParameterAST (inCompiler COMMA_THERE),
+mProperty_mActualSelector (),
+mProperty_mSelfLocation (),
+mProperty_mPoisonedVarNameList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputActualSelfParameterAST::cPtr_inputActualSelfParameterAST (const GGS_lstring & in_mActualSelector,
+                                                                    const GGS_location & in_mSelfLocation,
+                                                                    const GGS__5B_lstring_5D_ & in_mPoisonedVarNameList,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) :
+cPtr_actualParameterAST (inCompiler COMMA_THERE),
+mProperty_mActualSelector (),
+mProperty_mSelfLocation (),
+mProperty_mPoisonedVarNameList () {
+  mProperty_mActualSelector = in_mActualSelector ;
+  mProperty_mSelfLocation = in_mSelfLocation ;
+  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_inputActualSelfParameterAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputActualSelfParameterAST ;
+}
+
+void cPtr_inputActualSelfParameterAST::description (String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString.appendCString ("[@inputActualSelfParameterAST:") ;
+  mProperty_mActualSelector.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mSelfLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_inputActualSelfParameterAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_inputActualSelfParameterAST (mProperty_mActualSelector, mProperty_mSelfLocation, mProperty_mPoisonedVarNameList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_inputActualSelfParameterAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_actualParameterAST::printNonNullClassInstanceProperties () ;
+    mProperty_mActualSelector.printNonNullClassInstanceProperties ("mActualSelector") ;
+    mProperty_mSelfLocation.printNonNullClassInstanceProperties ("mSelfLocation") ;
+    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @inputActualSelfParameterAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputActualSelfParameterAST ("inputActualSelfParameterAST",
+                                                                                & kTypeDescriptor_GALGAS_actualParameterAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_inputActualSelfParameterAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputActualSelfParameterAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_inputActualSelfParameterAST_2E_weak::objectCompare (const GGS_inputActualSelfParameterAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfParameterAST_2E_weak::GGS_inputActualSelfParameterAST_2E_weak (void) :
+GGS_actualParameterAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfParameterAST_2E_weak & GGS_inputActualSelfParameterAST_2E_weak::operator = (const GGS_inputActualSelfParameterAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfParameterAST_2E_weak::GGS_inputActualSelfParameterAST_2E_weak (const GGS_inputActualSelfParameterAST & inSource) :
+GGS_actualParameterAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfParameterAST_2E_weak GGS_inputActualSelfParameterAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_inputActualSelfParameterAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfParameterAST GGS_inputActualSelfParameterAST_2E_weak::unwrappedValue (void) const {
+  GGS_inputActualSelfParameterAST result ;
+  if (isValid ()) {
+    const cPtr_inputActualSelfParameterAST * p = (cPtr_inputActualSelfParameterAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_inputActualSelfParameterAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualSelfParameterAST GGS_inputActualSelfParameterAST_2E_weak::bang_inputActualSelfParameterAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_inputActualSelfParameterAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_inputActualSelfParameterAST) ;
+      result = GGS_inputActualSelfParameterAST ((cPtr_inputActualSelfParameterAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @inputActualSelfParameterAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputActualSelfParameterAST_2E_weak ("inputActualSelfParameterAST.weak",
+                                                                                        & kTypeDescriptor_GALGAS_actualParameterAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_inputActualSelfParameterAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputActualSelfParameterAST_2E_weak ;
 }
 

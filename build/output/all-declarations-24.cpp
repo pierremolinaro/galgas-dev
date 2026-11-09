@@ -6672,7 +6672,7 @@ static void routine_programRule_5F__30_ (const GGS_lstring constinArgument_inSou
 static void routine_programRule_5F__31_ (const GGS_lstring constinArgument_inSourceFile,
                                          Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_templateInstructionListAST joker_4168 ; // Joker input parameter
+  GGS__5B_templateInstructionAST_5D_ joker_4168 ; // Joker input parameter
   cGrammar_templateGrammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, joker_4168  COMMA_SOURCE_FILE ("galgasProgram.galgas4", 102)) ;
 }
 

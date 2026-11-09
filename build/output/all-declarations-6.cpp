@@ -8,1229 +8,6 @@
 #include "all-declarations-6.h"
 
 //--------------------------------------------------------------------------------------------------
-//  Map type @syntaxComponentMap
-//--------------------------------------------------------------------------------------------------
-
-#include "GALGAS_GenericMapRoot.h"
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentMap::GGS_syntaxComponentMap (void) :
-mSharedRoot () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentMap::~ GGS_syntaxComponentMap (void) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentMap::GGS_syntaxComponentMap (const GGS_syntaxComponentMap & inSource) :
-mSharedRoot (inSource.mSharedRoot) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentMap & GGS_syntaxComponentMap::operator = (const GGS_syntaxComponentMap & inSource) {
-  mSharedRoot = inSource.mSharedRoot ;
-  return * this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentMap GGS_syntaxComponentMap::init (Compiler * COMMA_LOCATION_ARGS) {
-  GGS_syntaxComponentMap result ;
-  result.build (THERE) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_syntaxComponentMap::getter_contains (const GGS_string & inKey
-                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_syntaxComponentMap::getter_hasKeyAtLevel (const GGS_string & inKey,
-                                                       const GGS_uint & inLevel
-                                                       COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_syntaxComponentMap::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_syntaxComponentMap::getter_levels (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (mSharedRoot->levels ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_location GGS_syntaxComponentMap::getter_locationForKey (const GGS_string & inKey,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
-  GGS_location result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      String message = "'locationForKey' map reader run-time error: the '" ;
-      message.appendString (inKey.stringValue ()) ;
-      message.appendCString ("' does not exist in map") ;
-      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_lkey.mProperty_location ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lstring_5D_ GGS_syntaxComponentMap::getter_keyList (Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const {
-  GGS__5B_lstring_5D_ result ;
-  if (isValid ()) {
-    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeyList (result) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_syntaxComponentMap::isValid (void) const {
-  return mSharedRoot.isNotNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentMap::drop (void)  {
-  mSharedRoot.setToNil () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentMap::build (LOCATION_ARGS) {
-  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_syntaxComponentMap_2E_element>>::make (THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentMap::performInsert (const GGS_syntaxComponentMap_2E_element & inElement,
-                                 const char * inInsertErrorMessage,
-                                 const char * inShadowErrorMessage,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.mProperty_lkey.isValid ()) {
-    OptionalSharedRef <GenericMapNode <GGS_syntaxComponentMap_2E_element>> existingNode ;
-    const bool allowReplacing = false ;
-    mSharedRoot.insulate (THERE) ;
-    mSharedRoot->insertOrReplaceInfo (
-      inElement,
-      allowReplacing,
-      existingNode
-      COMMA_THERE
-    ) ;
-    const GGS_lstring lkey = inElement.mProperty_lkey ;
-    if (existingNode.isNotNil ()) {
-      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
-      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
-      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
-      if (existingInfo.isNotNil ()) {
-        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
-        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
-      }
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element>
-GGS_syntaxComponentMap::infoForKey (const String & inKey) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->infoForKey (inKey) ;
-  }else{
-    return SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-int32_t GGS_syntaxComponentMap::count (void) const  {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->count () ;
-  }else{
-    return 0 ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GenericArray <SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element>>
-GGS_syntaxComponentMap::sortedInfoArray (void) const {
-  if (mSharedRoot.isNotNil ()) {
-    return mSharedRoot->sortedInfoArray () ;
-  }else{
-    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element>> () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_stringset GGS_syntaxComponentMap::getter_keySet (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
-  GGS_stringset result ;
-  if (isValid ()) {
-    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
-    mSharedRoot->populateKeySet (result, inCompiler) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentMap::findNearestKey (const String & inKey,
-                                  GenericUniqueArray <String> & outNearestKeyArray) const {
-  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentMap_2E_element_3F_ GGS_syntaxComponentMap
-::readSubscript__3F_ (const class GGS_string & inKey,
-                      Compiler * /* inCompiler */
-                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_syntaxComponentMap_2E_element_3F_ result ;
-  if (isValid () && inKey.isValid ()) {
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
-    if (info.isNil ()) {
-      result = GGS_syntaxComponentMap_2E_element_3F_::init_nil () ;
-    }else{
-      GGS_syntaxComponentMap_2E_element element ;
-      element.mProperty_lkey = info->mProperty_lkey ;
-      element.mProperty_mLexiqueName = info->mProperty_mLexiqueName ;
-      element.mProperty_mNonterminalDeclarationList = info->mProperty_mNonterminalDeclarationList ;
-      element.mProperty_mRuleList = info->mProperty_mRuleList ;
-      element.mProperty_mHasTranslateFeature = info->mProperty_mHasTranslateFeature ;
-      result = element ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentMap GGS_syntaxComponentMap::class_func_mapWithMapToOverride (const GGS_syntaxComponentMap & inMapToOverride
-                                                                                COMMA_LOCATION_ARGS) {
-  GGS_syntaxComponentMap result ;
-  if (inMapToOverride.isValid ()) {
-    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_syntaxComponentMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentMap GGS_syntaxComponentMap::getter_overriddenMap (Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const {
-  GGS_syntaxComponentMap result ;
-  if (isValid ()) {
-    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
-    if (result.mSharedRoot.isNil ()) {
-      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentMap::setter_insertKey (GGS_lstring inLKey,
-                                               GGS_lstring inArgument0,
-                                               GGS_nonterminalDeclarationListAST inArgument1,
-                                               GGS_syntaxRuleListAST inArgument2,
-                                               GGS_bool inArgument3,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
-  const GGS_syntaxComponentMap_2E_element element (inLKey, inArgument0, inArgument1, inArgument2, inArgument3) ;
-  const char * kInsertErrorMessage = "the '%K' syntax component has already been parsed" ;
-  const char * kShadowErrorMessage = nullptr ;
-  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentMap::method_searchKey (GGS_lstring inLKey,
-                                               GGS_lstring & outArgument0,
-                                               GGS_nonterminalDeclarationListAST & outArgument1,
-                                               GGS_syntaxRuleListAST & outArgument2,
-                                               GGS_bool & outArgument3,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const {
-  SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element> info ;
-  if (isValid () && inLKey.isValid ()) {
-    const String key = inLKey.mProperty_string.stringValue () ;
-    info = infoForKey (key) ;
-    if (info.isNil ()) {
-      GenericUniqueArray <String> nearestKeyArray ;
-      findNearestKey (key, nearestKeyArray) ;
-      const char * kSearchErrorMessage = "the '%K' syntax component is not parsed" ;
-      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
-    }
-  }
-  if (info.isNil ()) {
-    outArgument0.drop () ;
-    outArgument1.drop () ;
-    outArgument2.drop () ;
-    outArgument3.drop () ;
-  }else{
-    outArgument0 = info->mProperty_mLexiqueName ;
-    outArgument1 = info->mProperty_mNonterminalDeclarationList ;
-    outArgument2 = info->mProperty_mRuleList ;
-    outArgument3 = info->mProperty_mHasTranslateFeature ;
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_syntaxComponentMap::getter_mLexiqueNameForKey (const GGS_string & inKey,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const {
-  GGS_lstring result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mLexiqueName ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationListAST GGS_syntaxComponentMap::getter_mNonterminalDeclarationListForKey (const GGS_string & inKey,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_nonterminalDeclarationListAST result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mNonterminalDeclarationList ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST GGS_syntaxComponentMap::getter_mRuleListForKey (const GGS_string & inKey,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const {
-  GGS_syntaxRuleListAST result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mRuleList ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_syntaxComponentMap::getter_mHasTranslateFeatureForKey (const GGS_string & inKey,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    const SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element> info = infoForKey (key) ;
-    if (info.isNil ()) {
-      String message = "cannot read property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      result = info->mProperty_mHasTranslateFeature ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentMap::setter_setMLexiqueNameForKey (GGS_lstring inValue,
-                                                           GGS_string inKey,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_syntaxComponentMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mLexiqueName = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentMap::setter_setMNonterminalDeclarationListForKey (GGS_nonterminalDeclarationListAST inValue,
-                                                                          GGS_string inKey,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_syntaxComponentMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mNonterminalDeclarationList = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentMap::setter_setMRuleListForKey (GGS_syntaxRuleListAST inValue,
-                                                        GGS_string inKey,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_syntaxComponentMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mRuleList = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentMap::setter_setMHasTranslateFeatureForKey (GGS_bool inValue,
-                                                                   GGS_string inKey,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) {
-  if (isValid () && inKey.isValid ()) {
-    const String key = inKey.stringValue () ;
-    mSharedRoot.insulate (HERE) ;
-    OptionalSharedRef <GenericMapNode <GGS_syntaxComponentMap_2E_element>> node = mSharedRoot->searchNode (key) ;
-    if (node.isNil ()) {
-      String message = "cannot write property in map: the '" ;
-      message.appendString (key) ;
-      message.appendCString ("' key does not exist") ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }else{
-      node->mSharedInfo->mProperty_mHasTranslateFeature = inValue ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-static void GGS_syntaxComponentMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element>> & inArray,
-                                                        String & ioString,
-                                                        const int32_t inIndentation) {
-  const int32_t n = inArray.count () ;
-  ioString.appendString (" (") ;
-  ioString.appendSigned (n) ;
-  ioString.appendString (" object") ;
-  if (n > 1) {
-    ioString.appendString ("s") ;
-  }
-  ioString.appendString ("):") ;
-  for (int32_t i = 0 ; i < n ; i++) {
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation) ;
-    ioString.appendString ("|-at ") ;
-    ioString.appendSigned (i) ;
-    ioString.appendString (": key '") ;
-    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
-    ioString.appendString ("'") ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mLexiqueName:") ;
-    inArray (i COMMA_HERE)->mProperty_mLexiqueName.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mNonterminalDeclarationList:") ;
-    inArray (i COMMA_HERE)->mProperty_mNonterminalDeclarationList.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mRuleList:") ;
-    inArray (i COMMA_HERE)->mProperty_mRuleList.description (ioString, inIndentation + 1) ;
-    ioString.appendNewLine () ;
-    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
-    ioString.appendString ("mHasTranslateFeature:") ;
-    inArray (i COMMA_HERE)->mProperty_mHasTranslateFeature.description (ioString, inIndentation + 1) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_syntaxComponentMap::description (String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<map @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  if (isValid ()) {
-    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_syntaxComponentMap_2E_element>> array = sortedInfoArray () ;
-    GGS_syntaxComponentMap_internalDescription (array, ioString, inIndentation) ;
-    OptionalSharedRef <GenericMapRoot <GGS_syntaxComponentMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
-    uint32_t idx = 0 ;
-    while (subRoot.isNotNil ()) {
-     idx += 1 ;
-     ioString.appendNewLine () ;
-     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-     ioString.appendString (" override #") ;
-     ioString.appendUnsigned (idx) ;
-     const auto subRootArray = subRoot->sortedInfoArray () ;
-     GGS_syntaxComponentMap_internalDescription (subRootArray, ioString, inIndentation) ;
-     subRoot = subRoot->overriddenRoot () ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-//  Down Enumerator for @syntaxComponentMap
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_syntaxComponentMap::DownEnumerator_syntaxComponentMap (const GGS_syntaxComponentMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-  mIndex = mInfoArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentMap_2E_element DownEnumerator_syntaxComponentMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring DownEnumerator_syntaxComponentMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring DownEnumerator_syntaxComponentMap::current_mLexiqueName (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexiqueName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationListAST DownEnumerator_syntaxComponentMap::current_mNonterminalDeclarationList (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mNonterminalDeclarationList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST DownEnumerator_syntaxComponentMap::current_mRuleList (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mRuleList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool DownEnumerator_syntaxComponentMap::current_mHasTranslateFeature (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mHasTranslateFeature ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//  Up Enumerator for @syntaxComponentMap
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_syntaxComponentMap::UpEnumerator_syntaxComponentMap (const GGS_syntaxComponentMap & inMap) :
-mInfoArray (inMap.sortedInfoArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxComponentMap_2E_element UpEnumerator_syntaxComponentMap::current (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE).value () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring UpEnumerator_syntaxComponentMap::current_lkey (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring UpEnumerator_syntaxComponentMap::current_mLexiqueName (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexiqueName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationListAST UpEnumerator_syntaxComponentMap::current_mNonterminalDeclarationList (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mNonterminalDeclarationList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_syntaxRuleListAST UpEnumerator_syntaxComponentMap::current_mRuleList (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mRuleList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool UpEnumerator_syntaxComponentMap::current_mHasTranslateFeature (LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_THERE)->mProperty_mHasTranslateFeature ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-//     @syntaxComponentMap generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxComponentMap ("syntaxComponentMap",
-                                                                       nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_syntaxComponentMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_syntaxComponentMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@nonterminalDeclarationListAST' list
-//--------------------------------------------------------------------------------------------------
-
-class CollectionElementPtr_nonterminalDeclarationListAST : public CollectionElementPtr {
-  public: GGS_nonterminalDeclarationListAST_2E_element mObject ;
-
-//--- Class functions
-  public: CollectionElementPtr_nonterminalDeclarationListAST (const GGS_lstring & in_mNonterminalName,
-                                                              const GGS_nonTerminalLabelListAST & in_mLabels
-                                                              COMMA_LOCATION_ARGS) ;
-  public: CollectionElementPtr_nonterminalDeclarationListAST (const GGS_nonterminalDeclarationListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual proc that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual proc that returns a copy of current object
-  public: virtual CollectionElementPtr * copy (void) ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_nonterminalDeclarationListAST::CollectionElementPtr_nonterminalDeclarationListAST (const GGS_lstring & in_mNonterminalName,
-                                                                                                        const GGS_nonTerminalLabelListAST & in_mLabels
-                                                                                                        COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (in_mNonterminalName, in_mLabels) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_nonterminalDeclarationListAST::CollectionElementPtr_nonterminalDeclarationListAST (const GGS_nonterminalDeclarationListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (inElement.mProperty_mNonterminalName, inElement.mProperty_mLabels) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool CollectionElementPtr_nonterminalDeclarationListAST::isValid (void) const {
-  return true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr * CollectionElementPtr_nonterminalDeclarationListAST::copy (void) {
-  CollectionElementPtr * result = nullptr ;
-  macroMyNew (result, CollectionElementPtr_nonterminalDeclarationListAST (mObject.mProperty_mNonterminalName, mObject.mProperty_mLabels COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// List type @nonterminalDeclarationListAST
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationListAST::GGS_nonterminalDeclarationListAST (void) :
-mArray () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationListAST::GGS_nonterminalDeclarationListAST (const CollectionElementArray & inArray) :
-mArray () {
-  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
-  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElementPtr_nonterminalDeclarationListAST * p = (CollectionElementPtr_nonterminalDeclarationListAST *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElementPtr_nonterminalDeclarationListAST) ;
-    const GGS_nonterminalDeclarationListAST_2E_element element (p->mObject.mProperty_mNonterminalName, p->mObject.mProperty_mLabels) ;
-    mArray.appendObject (element) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationListAST::makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                                   const GGS_lstring & in_mNonterminalName,
-                                                                   const GGS_nonTerminalLabelListAST & in_mLabels
-                                                                   COMMA_LOCATION_ARGS) {
-  CollectionElementPtr_nonterminalDeclarationListAST * p = nullptr ;
-  macroMyNew (p, CollectionElementPtr_nonterminalDeclarationListAST (in_mNonterminalName, in_mLabels COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_nonterminalDeclarationListAST::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_range GGS_nonterminalDeclarationListAST::getter_range (UNUSED_LOCATION_ARGS) const {
-  GGS_range result ;
-  if (isValid ()) {
-    result = GGS_range (0, count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationListAST::description (String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString.appendCString ("<list @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (" (") ;
-  ioString.appendUnsigned (count()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((count() > 1) ? "s" : "") ;
-  ioString.appendCString ("):") ;
-  if (isValid ()) {
-    for (uint32_t i = 0 ; i < count () ; i++) {
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation) ;
-      ioString.appendString ("|-at ") ;
-      ioString.appendUnsigned (i) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mNonterminalName:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mNonterminalName.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mLabels:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mLabels.description (ioString, inIndentation + 1) ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationListAST GGS_nonterminalDeclarationListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_nonterminalDeclarationListAST result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationListAST::plusPlusAssignOperation (const GGS_nonterminalDeclarationListAST_2E_element & inValue
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inValue.isValid ()) {
-    mArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationListAST GGS_nonterminalDeclarationListAST::class_func_listWithValue (const GGS_lstring & inOperand0,
-                                                                                               const GGS_nonTerminalLabelListAST & inOperand1
-                                                                                               COMMA_LOCATION_ARGS) {
-  const GGS_nonterminalDeclarationListAST_2E_element element (inOperand0, inOperand1) ;
-  GGS_nonterminalDeclarationListAST result ;
-  if (element.isValid ()) {
-    result.mArray.setCapacity (16) ; // Build
-    result.plusPlusAssignOperation (element COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationListAST::addAssignOperation (const GGS_lstring & inOperand0,
-                                                            const GGS_nonTerminalLabelListAST & inOperand1
-                                                            COMMA_LOCATION_ARGS) {
-  const GGS_nonterminalDeclarationListAST_2E_element newElement (inOperand0, inOperand1) ;
-  plusPlusAssignOperation (newElement COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationListAST::setter_append (const GGS_lstring inOperand0,
-                                                       const GGS_nonTerminalLabelListAST inOperand1,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_LOCATION_ARGS) {
-  const GGS_nonterminalDeclarationListAST_2E_element newElement (inOperand0, inOperand1) ;
-  if (isValid () && newElement.isValid ()) {
-    plusPlusAssignOperation (newElement COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationListAST::setter_insertAtIndex (const GGS_lstring inOperand0,
-                                                              const GGS_nonTerminalLabelListAST inOperand1,
-                                                              const GGS_uint inInsertionIndex,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  const GGS_nonterminalDeclarationListAST_2E_element newElement (inOperand0, inOperand1) ;
-  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx <= mArray.count ()) {
-      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
-    }else{
-      String message = "cannot insert at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationListAST::setter_removeAtIndex (GGS_lstring & outOperand0,
-                                                              GGS_nonTerminalLabelListAST & outOperand1,
-                                                              const GGS_uint inRemoveIndex,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx < mArray.count ()) {
-      removed = true ;
-      outOperand0 = mArray (idx COMMA_HERE).mProperty_mNonterminalName ;
-      outOperand1 = mArray (idx COMMA_HERE).mProperty_mLabels ;
-      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
-    }else{
-      String message = "cannot remove at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationListAST::setter_popFirst (GGS_lstring & outOperand0,
-                                                         GGS_nonTerminalLabelListAST & outOperand1,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mNonterminalName ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mLabels ;
-      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
-    }else{
-      const String message = "cannot remove first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationListAST::setter_popLast (GGS_lstring & outOperand0,
-                                                        GGS_nonTerminalLabelListAST & outOperand1,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mNonterminalName ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mLabels ;
-      mArray.removeLastObject (HERE) ;
-    }else{
-      const String message = "cannot remove last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationListAST::method_first (GGS_lstring & outOperand0,
-                                                      GGS_nonTerminalLabelListAST & outOperand1,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mNonterminalName ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mLabels ;
-    }else{
-      const String message = "cannot get first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationListAST::method_last (GGS_lstring & outOperand0,
-                                                     GGS_nonTerminalLabelListAST & outOperand1,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mNonterminalName ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mLabels ;
-    }else{
-      const String message = "cannot get last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationListAST GGS_nonterminalDeclarationListAST::add_operation (const GGS_nonterminalDeclarationListAST & inOperand,
-                                                                                    Compiler * /* inCompiler */
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_nonterminalDeclarationListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
-      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationListAST GGS_nonterminalDeclarationListAST::subList (const int32_t inStart,
-                                                                              const int32_t inLength,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const {
-  GGS_nonterminalDeclarationListAST result ;
-  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
-  if (ok) {
-    result.mArray.setCapacity (std::max (16, inLength)) ;
-    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
-      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
-    }
-  }else{
-    String message = "cannot get sublist [start: " ;
-    message.appendSigned (inStart) ;
-    message.appendCString (", length: ") ;
-    message.appendSigned (inLength) ;
-    message.appendCString ("], list count is ") ;
-    message.appendSigned (mArray.count ()) ;
-    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationListAST GGS_nonterminalDeclarationListAST::getter_subListWithRange (const GGS_range & inRange,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) const {
-  GGS_nonterminalDeclarationListAST result ;
-  if (isValid () && inRange.isValid ()) {
-    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
-    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationListAST GGS_nonterminalDeclarationListAST::getter_subListFromIndex (const GGS_uint & inIndex,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) const {
-  GGS_nonterminalDeclarationListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = int32_t (inIndex.uintValue ()) ;
-    const int32_t length = int32_t (count ()) - start ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationListAST GGS_nonterminalDeclarationListAST::getter_subListToIndex (const GGS_uint & inIndex,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) const {
-  GGS_nonterminalDeclarationListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = 0 ;
-    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationListAST::plusAssignOperation (const GGS_nonterminalDeclarationListAST inList,
-                                                             Compiler * /* inCompiler */
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inList.isValid ()) {
-    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
-    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
-      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationListAST::setter_setMNonterminalNameAtIndex (GGS_lstring inOperand,
-                                                                           GGS_uint inIndex,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mNonterminalName = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_nonterminalDeclarationListAST::getter_mNonterminalNameAtIndex (const GGS_uint & inIndex,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) const {
-  GGS_lstring result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mNonterminalName ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_nonterminalDeclarationListAST::setter_setMLabelsAtIndex (GGS_nonTerminalLabelListAST inOperand,
-                                                                  GGS_uint inIndex,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mLabels = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonTerminalLabelListAST GGS_nonterminalDeclarationListAST::getter_mLabelsAtIndex (const GGS_uint & inIndex,
-                                                                                      Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) const {
-  GGS_nonTerminalLabelListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mLabels ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @nonterminalDeclarationListAST
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_nonterminalDeclarationListAST::DownEnumerator_nonterminalDeclarationListAST (const GGS_nonterminalDeclarationListAST & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-  mIndex = mArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationListAST_2E_element DownEnumerator_nonterminalDeclarationListAST::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring DownEnumerator_nonterminalDeclarationListAST::current_mNonterminalName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mNonterminalName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonTerminalLabelListAST DownEnumerator_nonterminalDeclarationListAST::current_mLabels (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mLabels ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @nonterminalDeclarationListAST
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_nonterminalDeclarationListAST::UpEnumerator_nonterminalDeclarationListAST (const GGS_nonterminalDeclarationListAST & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonterminalDeclarationListAST_2E_element UpEnumerator_nonterminalDeclarationListAST::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring UpEnumerator_nonterminalDeclarationListAST::current_mNonterminalName (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mNonterminalName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_nonTerminalLabelListAST UpEnumerator_nonterminalDeclarationListAST::current_mLabels (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mLabels ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//     @nonterminalDeclarationListAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonterminalDeclarationListAST ("nonterminalDeclarationListAST",
-                                                                                  nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_nonterminalDeclarationListAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_nonterminalDeclarationListAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Class for element of '@syntaxRuleListAST' list
 //--------------------------------------------------------------------------------------------------
 
@@ -16732,5 +15509,1102 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionDeclarationAST_2E_wea
 
 const GALGAS_TypeDescriptor * GGS_functionDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_functionDeclarationAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @onceFunctionDeclarationAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_onceFunctionDeclarationAST::objectCompare (const GGS_onceFunctionDeclarationAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_onceFunctionDeclarationAST::GGS_onceFunctionDeclarationAST (void) :
+GGS_semanticDeclarationAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_onceFunctionDeclarationAST GGS_onceFunctionDeclarationAST::
+init_21_isPredefined_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                  const GGS_lstring & in_mFunctionName,
+                                                  const GGS_lstring & in_mResultTypeName,
+                                                  const GGS_lstring & in_mResultVariableName,
+                                                  const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
+                                                  const GGS_location & in_mEndOfFunctionInstructionList,
+                                                  const GGS_bool & in_mIsInternal,
+                                                  const GGS_bool & in_mIsUsefull,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  cPtr_onceFunctionDeclarationAST * object = nullptr ;
+  macroMyNew (object, cPtr_onceFunctionDeclarationAST (inCompiler COMMA_THERE)) ;
+  object->onceFunctionDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (in_isPredefined, in_mFunctionName, in_mResultTypeName, in_mResultVariableName, in_mFunctionInstructionList, in_mEndOfFunctionInstructionList, in_mIsInternal, in_mIsUsefull, inCompiler) ;
+  const GGS_onceFunctionDeclarationAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_onceFunctionDeclarationAST::
+onceFunctionDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                             const GGS_lstring & in_mFunctionName,
+                                                                             const GGS_lstring & in_mResultTypeName,
+                                                                             const GGS_lstring & in_mResultVariableName,
+                                                                             const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
+                                                                             const GGS_location & in_mEndOfFunctionInstructionList,
+                                                                             const GGS_bool & in_mIsInternal,
+                                                                             const GGS_bool & in_mIsUsefull,
+                                                                             Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mResultTypeName = in_mResultTypeName ;
+  mProperty_mResultVariableName = in_mResultVariableName ;
+  mProperty_mFunctionInstructionList = in_mFunctionInstructionList ;
+  mProperty_mEndOfFunctionInstructionList = in_mEndOfFunctionInstructionList ;
+  mProperty_mIsInternal = in_mIsInternal ;
+  mProperty_mIsUsefull = in_mIsUsefull ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_onceFunctionDeclarationAST::GGS_onceFunctionDeclarationAST (const cPtr_onceFunctionDeclarationAST * inSourcePtr) :
+GGS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_onceFunctionDeclarationAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_onceFunctionDeclarationAST::readProperty_mFunctionName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_onceFunctionDeclarationAST) ;
+    return p->mProperty_mFunctionName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_onceFunctionDeclarationAST::readProperty_mResultTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_onceFunctionDeclarationAST) ;
+    return p->mProperty_mResultTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_onceFunctionDeclarationAST::readProperty_mResultVariableName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_onceFunctionDeclarationAST) ;
+    return p->mProperty_mResultVariableName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_semanticInstructionAST_5D_ GGS_onceFunctionDeclarationAST::readProperty_mFunctionInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_semanticInstructionAST_5D_ () ;
+  }else{
+    cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_onceFunctionDeclarationAST) ;
+    return p->mProperty_mFunctionInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_onceFunctionDeclarationAST::readProperty_mEndOfFunctionInstructionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_onceFunctionDeclarationAST) ;
+    return p->mProperty_mEndOfFunctionInstructionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_onceFunctionDeclarationAST::readProperty_mIsInternal (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_bool () ;
+  }else{
+    cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_onceFunctionDeclarationAST) ;
+    return p->mProperty_mIsInternal ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_onceFunctionDeclarationAST::readProperty_mIsUsefull (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_bool () ;
+  }else{
+    cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_onceFunctionDeclarationAST) ;
+    return p->mProperty_mIsUsefull ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @onceFunctionDeclarationAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_onceFunctionDeclarationAST::cPtr_onceFunctionDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mFunctionName (),
+mProperty_mResultTypeName (),
+mProperty_mResultVariableName (),
+mProperty_mFunctionInstructionList (),
+mProperty_mEndOfFunctionInstructionList (),
+mProperty_mIsInternal (),
+mProperty_mIsUsefull () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_onceFunctionDeclarationAST::cPtr_onceFunctionDeclarationAST (const GGS_bool & in_isPredefined,
+                                                                  const GGS_lstring & in_mFunctionName,
+                                                                  const GGS_lstring & in_mResultTypeName,
+                                                                  const GGS_lstring & in_mResultVariableName,
+                                                                  const GGS__5B_semanticInstructionAST_5D_ & in_mFunctionInstructionList,
+                                                                  const GGS_location & in_mEndOfFunctionInstructionList,
+                                                                  const GGS_bool & in_mIsInternal,
+                                                                  const GGS_bool & in_mIsUsefull,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
+mProperty_mFunctionName (),
+mProperty_mResultTypeName (),
+mProperty_mResultVariableName (),
+mProperty_mFunctionInstructionList (),
+mProperty_mEndOfFunctionInstructionList (),
+mProperty_mIsInternal (),
+mProperty_mIsUsefull () {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mFunctionName = in_mFunctionName ;
+  mProperty_mResultTypeName = in_mResultTypeName ;
+  mProperty_mResultVariableName = in_mResultVariableName ;
+  mProperty_mFunctionInstructionList = in_mFunctionInstructionList ;
+  mProperty_mEndOfFunctionInstructionList = in_mEndOfFunctionInstructionList ;
+  mProperty_mIsInternal = in_mIsInternal ;
+  mProperty_mIsUsefull = in_mIsUsefull ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_onceFunctionDeclarationAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_onceFunctionDeclarationAST ;
+}
+
+void cPtr_onceFunctionDeclarationAST::description (String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("[@onceFunctionDeclarationAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFunctionName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mResultTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mResultVariableName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFunctionInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfFunctionInstructionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mIsInternal.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mIsUsefull.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_onceFunctionDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_onceFunctionDeclarationAST (mProperty_isPredefined, mProperty_mFunctionName, mProperty_mResultTypeName, mProperty_mResultVariableName, mProperty_mFunctionInstructionList, mProperty_mEndOfFunctionInstructionList, mProperty_mIsInternal, mProperty_mIsUsefull, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_onceFunctionDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mFunctionName.printNonNullClassInstanceProperties ("mFunctionName") ;
+    mProperty_mResultTypeName.printNonNullClassInstanceProperties ("mResultTypeName") ;
+    mProperty_mResultVariableName.printNonNullClassInstanceProperties ("mResultVariableName") ;
+    mProperty_mFunctionInstructionList.printNonNullClassInstanceProperties ("mFunctionInstructionList") ;
+    mProperty_mEndOfFunctionInstructionList.printNonNullClassInstanceProperties ("mEndOfFunctionInstructionList") ;
+    mProperty_mIsInternal.printNonNullClassInstanceProperties ("mIsInternal") ;
+    mProperty_mIsUsefull.printNonNullClassInstanceProperties ("mIsUsefull") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @onceFunctionDeclarationAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_onceFunctionDeclarationAST ("onceFunctionDeclarationAST",
+                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_onceFunctionDeclarationAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_onceFunctionDeclarationAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_onceFunctionDeclarationAST_2E_weak::objectCompare (const GGS_onceFunctionDeclarationAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_onceFunctionDeclarationAST_2E_weak::GGS_onceFunctionDeclarationAST_2E_weak (void) :
+GGS_semanticDeclarationAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_onceFunctionDeclarationAST_2E_weak & GGS_onceFunctionDeclarationAST_2E_weak::operator = (const GGS_onceFunctionDeclarationAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_onceFunctionDeclarationAST_2E_weak::GGS_onceFunctionDeclarationAST_2E_weak (const GGS_onceFunctionDeclarationAST & inSource) :
+GGS_semanticDeclarationAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_onceFunctionDeclarationAST_2E_weak GGS_onceFunctionDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_onceFunctionDeclarationAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_onceFunctionDeclarationAST GGS_onceFunctionDeclarationAST_2E_weak::unwrappedValue (void) const {
+  GGS_onceFunctionDeclarationAST result ;
+  if (isValid ()) {
+    const cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_onceFunctionDeclarationAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_onceFunctionDeclarationAST GGS_onceFunctionDeclarationAST_2E_weak::bang_onceFunctionDeclarationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_onceFunctionDeclarationAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_onceFunctionDeclarationAST) ;
+      result = GGS_onceFunctionDeclarationAST ((cPtr_onceFunctionDeclarationAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @onceFunctionDeclarationAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_onceFunctionDeclarationAST_2E_weak ("onceFunctionDeclarationAST.weak",
+                                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_onceFunctionDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_onceFunctionDeclarationAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@formalTemplateInputParameterListAST' list
+//--------------------------------------------------------------------------------------------------
+
+class CollectionElementPtr_formalTemplateInputParameterListAST : public CollectionElementPtr {
+  public: GGS_formalTemplateInputParameterListAST_2E_element mObject ;
+
+//--- Class functions
+  public: CollectionElementPtr_formalTemplateInputParameterListAST (const GGS_lstring & in_mFormalTemplateSelector,
+                                                                    const GGS_lstring & in_mFormalArgumentTypeName,
+                                                                    const GGS_lstring & in_mFormalArgumentName,
+                                                                    const GGS_bool & in_mIsUnused
+                                                                    COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_formalTemplateInputParameterListAST (const GGS_formalTemplateInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
+
+//--- Virtual proc that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual proc that returns a copy of current object
+  public: virtual CollectionElementPtr * copy (void) ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+CollectionElementPtr_formalTemplateInputParameterListAST::CollectionElementPtr_formalTemplateInputParameterListAST (const GGS_lstring & in_mFormalTemplateSelector,
+                                                                                                                    const GGS_lstring & in_mFormalArgumentTypeName,
+                                                                                                                    const GGS_lstring & in_mFormalArgumentName,
+                                                                                                                    const GGS_bool & in_mIsUnused
+                                                                                                                    COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
+mObject (in_mFormalTemplateSelector, in_mFormalArgumentTypeName, in_mFormalArgumentName, in_mIsUnused) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+CollectionElementPtr_formalTemplateInputParameterListAST::CollectionElementPtr_formalTemplateInputParameterListAST (const GGS_formalTemplateInputParameterListAST_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
+mObject (inElement.mProperty_mFormalTemplateSelector, inElement.mProperty_mFormalArgumentTypeName, inElement.mProperty_mFormalArgumentName, inElement.mProperty_mIsUnused) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool CollectionElementPtr_formalTemplateInputParameterListAST::isValid (void) const {
+  return true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+CollectionElementPtr * CollectionElementPtr_formalTemplateInputParameterListAST::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_formalTemplateInputParameterListAST (mObject.mProperty_mFormalTemplateSelector, mObject.mProperty_mFormalArgumentTypeName, mObject.mProperty_mFormalArgumentName, mObject.mProperty_mIsUnused COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// List type @formalTemplateInputParameterListAST
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST::GGS_formalTemplateInputParameterListAST (void) :
+mArray () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST::GGS_formalTemplateInputParameterListAST (const CollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_formalTemplateInputParameterListAST * p = (CollectionElementPtr_formalTemplateInputParameterListAST *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_formalTemplateInputParameterListAST) ;
+    const GGS_formalTemplateInputParameterListAST_2E_element element (p->mObject.mProperty_mFormalTemplateSelector, p->mObject.mProperty_mFormalArgumentTypeName, p->mObject.mProperty_mFormalArgumentName, p->mObject.mProperty_mIsUnused) ;
+    mArray.appendObject (element) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::makeAttributesFromObjects (CollectionElement & outAttributes,
+                                                                         const GGS_lstring & in_mFormalTemplateSelector,
+                                                                         const GGS_lstring & in_mFormalArgumentTypeName,
+                                                                         const GGS_lstring & in_mFormalArgumentName,
+                                                                         const GGS_bool & in_mIsUnused
+                                                                         COMMA_LOCATION_ARGS) {
+  CollectionElementPtr_formalTemplateInputParameterListAST * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_formalTemplateInputParameterListAST (in_mFormalTemplateSelector, in_mFormalArgumentTypeName, in_mFormalArgumentName, in_mIsUnused COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_formalTemplateInputParameterListAST::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS_formalTemplateInputParameterListAST::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::description (String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mFormalTemplateSelector:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mFormalTemplateSelector.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mFormalArgumentTypeName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mFormalArgumentTypeName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mFormalArgumentName:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mFormalArgumentName.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mIsUnused:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mIsUnused.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST GGS_formalTemplateInputParameterListAST::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_formalTemplateInputParameterListAST result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::plusPlusAssignOperation (const GGS_formalTemplateInputParameterListAST_2E_element & inValue
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST GGS_formalTemplateInputParameterListAST::class_func_listWithValue (const GGS_lstring & inOperand0,
+                                                                                                           const GGS_lstring & inOperand1,
+                                                                                                           const GGS_lstring & inOperand2,
+                                                                                                           const GGS_bool & inOperand3
+                                                                                                           COMMA_LOCATION_ARGS) {
+  const GGS_formalTemplateInputParameterListAST_2E_element element (inOperand0, inOperand1, inOperand2, inOperand3) ;
+  GGS_formalTemplateInputParameterListAST result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::addAssignOperation (const GGS_lstring & inOperand0,
+                                                                  const GGS_lstring & inOperand1,
+                                                                  const GGS_lstring & inOperand2,
+                                                                  const GGS_bool & inOperand3
+                                                                  COMMA_LOCATION_ARGS) {
+  const GGS_formalTemplateInputParameterListAST_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::setter_append (const GGS_lstring inOperand0,
+                                                             const GGS_lstring inOperand1,
+                                                             const GGS_lstring inOperand2,
+                                                             const GGS_bool inOperand3,
+                                                             Compiler * /* inCompiler */
+                                                             COMMA_LOCATION_ARGS) {
+  const GGS_formalTemplateInputParameterListAST_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::setter_insertAtIndex (const GGS_lstring inOperand0,
+                                                                    const GGS_lstring inOperand1,
+                                                                    const GGS_lstring inOperand2,
+                                                                    const GGS_bool inOperand3,
+                                                                    const GGS_uint inInsertionIndex,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  const GGS_formalTemplateInputParameterListAST_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::setter_removeAtIndex (GGS_lstring & outOperand0,
+                                                                    GGS_lstring & outOperand1,
+                                                                    GGS_lstring & outOperand2,
+                                                                    GGS_bool & outOperand3,
+                                                                    const GGS_uint inRemoveIndex,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  bool removed = false ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_mFormalTemplateSelector ;
+      outOperand1 = mArray (idx COMMA_HERE).mProperty_mFormalArgumentTypeName ;
+      outOperand2 = mArray (idx COMMA_HERE).mProperty_mFormalArgumentName ;
+      outOperand3 = mArray (idx COMMA_HERE).mProperty_mIsUnused ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
+    }else{
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::setter_popFirst (GGS_lstring & outOperand0,
+                                                               GGS_lstring & outOperand1,
+                                                               GGS_lstring & outOperand2,
+                                                               GGS_bool & outOperand3,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mFormalTemplateSelector ;
+      outOperand1 = mArray (0 COMMA_THERE).mProperty_mFormalArgumentTypeName ;
+      outOperand2 = mArray (0 COMMA_THERE).mProperty_mFormalArgumentName ;
+      outOperand3 = mArray (0 COMMA_THERE).mProperty_mIsUnused ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::setter_popLast (GGS_lstring & outOperand0,
+                                                              GGS_lstring & outOperand1,
+                                                              GGS_lstring & outOperand2,
+                                                              GGS_bool & outOperand3,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mFormalTemplateSelector ;
+      outOperand1 = mArray.lastObject (HERE).mProperty_mFormalArgumentTypeName ;
+      outOperand2 = mArray.lastObject (HERE).mProperty_mFormalArgumentName ;
+      outOperand3 = mArray.lastObject (HERE).mProperty_mIsUnused ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::method_first (GGS_lstring & outOperand0,
+                                                            GGS_lstring & outOperand1,
+                                                            GGS_lstring & outOperand2,
+                                                            GGS_bool & outOperand3,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mFormalTemplateSelector ;
+      outOperand1 = mArray (0 COMMA_THERE).mProperty_mFormalArgumentTypeName ;
+      outOperand2 = mArray (0 COMMA_THERE).mProperty_mFormalArgumentName ;
+      outOperand3 = mArray (0 COMMA_THERE).mProperty_mIsUnused ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::method_last (GGS_lstring & outOperand0,
+                                                           GGS_lstring & outOperand1,
+                                                           GGS_lstring & outOperand2,
+                                                           GGS_bool & outOperand3,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mFormalTemplateSelector ;
+      outOperand1 = mArray.lastObject (HERE).mProperty_mFormalArgumentTypeName ;
+      outOperand2 = mArray.lastObject (HERE).mProperty_mFormalArgumentName ;
+      outOperand3 = mArray.lastObject (HERE).mProperty_mIsUnused ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST GGS_formalTemplateInputParameterListAST::add_operation (const GGS_formalTemplateInputParameterListAST & inOperand,
+                                                                                                Compiler * /* inCompiler */
+                                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_formalTemplateInputParameterListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST GGS_formalTemplateInputParameterListAST::subList (const int32_t inStart,
+                                                                                          const int32_t inLength,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const {
+  GGS_formalTemplateInputParameterListAST result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST GGS_formalTemplateInputParameterListAST::getter_subListWithRange (const GGS_range & inRange,
+                                                                                                          Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) const {
+  GGS_formalTemplateInputParameterListAST result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST GGS_formalTemplateInputParameterListAST::getter_subListFromIndex (const GGS_uint & inIndex,
+                                                                                                          Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) const {
+  GGS_formalTemplateInputParameterListAST result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST GGS_formalTemplateInputParameterListAST::getter_subListToIndex (const GGS_uint & inIndex,
+                                                                                                        Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) const {
+  GGS_formalTemplateInputParameterListAST result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::plusAssignOperation (const GGS_formalTemplateInputParameterListAST inList,
+                                                                   Compiler * /* inCompiler */
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::setter_setMFormalTemplateSelectorAtIndex (GGS_lstring inOperand,
+                                                                                        GGS_uint inIndex,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mFormalTemplateSelector = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_formalTemplateInputParameterListAST::getter_mFormalTemplateSelectorAtIndex (const GGS_uint & inIndex,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const {
+  GGS_lstring result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mFormalTemplateSelector ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::setter_setMFormalArgumentTypeNameAtIndex (GGS_lstring inOperand,
+                                                                                        GGS_uint inIndex,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mFormalArgumentTypeName = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_formalTemplateInputParameterListAST::getter_mFormalArgumentTypeNameAtIndex (const GGS_uint & inIndex,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const {
+  GGS_lstring result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mFormalArgumentTypeName ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::setter_setMFormalArgumentNameAtIndex (GGS_lstring inOperand,
+                                                                                    GGS_uint inIndex,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mFormalArgumentName = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_formalTemplateInputParameterListAST::getter_mFormalArgumentNameAtIndex (const GGS_uint & inIndex,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GGS_lstring result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mFormalArgumentName ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_formalTemplateInputParameterListAST::setter_setMIsUnusedAtIndex (GGS_bool inOperand,
+                                                                          GGS_uint inIndex,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mIsUnused = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_formalTemplateInputParameterListAST::getter_mIsUnusedAtIndex (const GGS_uint & inIndex,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mIsUnused ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @formalTemplateInputParameterListAST
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_formalTemplateInputParameterListAST::DownEnumerator_formalTemplateInputParameterListAST (const GGS_formalTemplateInputParameterListAST & inEnumeratedObject) :
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST_2E_element DownEnumerator_formalTemplateInputParameterListAST::current (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_formalTemplateInputParameterListAST::current_mFormalTemplateSelector (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mFormalTemplateSelector ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_formalTemplateInputParameterListAST::current_mFormalArgumentTypeName (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mFormalArgumentTypeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_formalTemplateInputParameterListAST::current_mFormalArgumentName (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mFormalArgumentName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool DownEnumerator_formalTemplateInputParameterListAST::current_mIsUnused (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mIsUnused ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @formalTemplateInputParameterListAST
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_formalTemplateInputParameterListAST::UpEnumerator_formalTemplateInputParameterListAST (const GGS_formalTemplateInputParameterListAST & inEnumeratedObject) :
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_formalTemplateInputParameterListAST_2E_element UpEnumerator_formalTemplateInputParameterListAST::current (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_formalTemplateInputParameterListAST::current_mFormalTemplateSelector (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mFormalTemplateSelector ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_formalTemplateInputParameterListAST::current_mFormalArgumentTypeName (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mFormalArgumentTypeName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_formalTemplateInputParameterListAST::current_mFormalArgumentName (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mFormalArgumentName ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool UpEnumerator_formalTemplateInputParameterListAST::current_mIsUnused (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mIsUnused ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//     @formalTemplateInputParameterListAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalTemplateInputParameterListAST ("formalTemplateInputParameterListAST",
+                                                                                        nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_formalTemplateInputParameterListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_formalTemplateInputParameterListAST ;
 }
 

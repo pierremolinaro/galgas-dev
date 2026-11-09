@@ -25,33 +25,15 @@ final class @lexicalDropInstructionAST : @lexicalInstructionAST {
 }
 
 //--------------------------------------------------------------------------------------------------
-//! SYNTAX
-//--------------------------------------------------------------------------------------------------
-
-//syntax extension galgas3LexiqueComponentSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
-//    $drop$
-//    $\$terminal\$$ (?let terminalName)
-//    ioInstructionList ++= @(!@lexicalDropInstructionAST (!terminalName))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
+  rule <lexical_instruction> (?![@lexicalInstructionAST] ioInstructionList) {
     $drop$
     $\$terminal\$$ (?let terminalName)
-    ioInstructionList ++= @(@lexicalDropInstructionAST (terminalName))
+    ioInstructionList ++= @lexicalDropInstructionAST (terminalName)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

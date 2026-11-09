@@ -22,48 +22,8 @@
 
 final class @lexicalSelectInstructionAST : @lexicalInstructionAST {
   private let @lexicalSelectBranchListAST mLexicalSelectBranchList
-  private let @lexicalInstructionListAST mDefaultInstructionList
+  private let [@lexicalInstructionAST] mDefaultInstructionList
 }
-
-//--------------------------------------------------------------------------------------------------
-//! SYNTAX
-//--------------------------------------------------------------------------------------------------
-
-//syntax extension galgas3LexiqueComponentSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
-//    $select$
-//    var @lexicalSelectBranchListAST lexicalWhileBranchList = @()
-//    repeat
-//      $case$
-//      <lexical_expression> (?let @lexicalExpressionAST selectExpression)
-//      $:$
-//      var @lexicalInstructionListAST selectInstructionList = @()
-//      repeat
-//      while
-//        <lexical_instruction> (!?selectInstructionList)
-//      end
-//      lexicalWhileBranchList ++= @(!selectExpression, !selectInstructionList)
-//    while
-//    end
-//    $default$
-//    var @lexicalInstructionListAST defaultInstructionList = @()
-//    repeat
-//    while
-//      <lexical_instruction> (!?defaultInstructionList)
-//    end
-//    $end$
-//    ioInstructionList ++= @(!@lexicalSelectInstructionAST (
-//      !lexicalWhileBranchList,
-//      defaultInstructionList
-//    ))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -71,14 +31,14 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_instruction> (?!@lexicalInstructionListAST ioInstructionList) {
+  rule <lexical_instruction> (?![@lexicalInstructionAST] ioInstructionList) {
     $select$
     var @lexicalSelectBranchListAST lexicalWhileBranchList = @()
     repeat
       $case$
       <lexical_expression> (?let @lexicalExpressionAST selectExpression)
       $:$
-      var @lexicalInstructionListAST selectInstructionList = @()
+      var [@lexicalInstructionAST] selectInstructionList = @()
       repeat
       while
         <lexical_instruction> (!?selectInstructionList)
@@ -87,16 +47,16 @@ syntax extension galgas4LexiqueComponentSyntax {
     while
     end
     $default$
-    var @lexicalInstructionListAST defaultInstructionList = @()
+    var [@lexicalInstructionAST] defaultInstructionList = @()
     repeat
     while
       <lexical_instruction> (!?defaultInstructionList)
     end
     $end$
-    ioInstructionList ++= @(@lexicalSelectInstructionAST (
+    ioInstructionList ++= @lexicalSelectInstructionAST (
       lexicalWhileBranchList,
       defaultInstructionList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -114,12 +74,12 @@ override proc @lexicalSelectInstructionAST.checkLexicalInstruction (
     lexicalSelectBranch.mSelectExpression.checkLexicalExpression (!?ioLexiqueAnalysisContext)
     var tagMap = @lexicalTagMap.mapWithMapToOverride(ioTagMap)
     for entry in lexicalSelectBranch.mSelectInstructionList do
-      entry.mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
+      entry.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
     end
   end
   var tagMap = @lexicalTagMap.mapWithMapToOverride(ioTagMap)
   for entry in self.mDefaultInstructionList do
-    entry.mInstruction.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
+    entry.checkLexicalInstruction (!?ioLexiqueAnalysisContext, !?tagMap)
   end
 }
 
@@ -138,7 +98,7 @@ override func @lexicalSelectInstructionAST.generateSwiftCocoaInstructionCode
     outGeneratedCode += ") {\n"
     !?outGeneratedCode.incIndentation (2)
     for entry in lexicalSelectBranch.mSelectInstructionList do
-      outGeneratedCode += entry.mInstruction.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+      outGeneratedCode += entry.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
     end
     !?outGeneratedCode.decIndentation (2)
   between
@@ -149,7 +109,7 @@ override func @lexicalSelectInstructionAST.generateSwiftCocoaInstructionCode
     outGeneratedCode += "}else{\n"
     !?outGeneratedCode.incIndentation (2)
     for entry in self.mDefaultInstructionList do
-      outGeneratedCode += entry.mInstruction.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+      outGeneratedCode += entry.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
     end
     !?outGeneratedCode.decIndentation (2)
   end
@@ -164,11 +124,11 @@ override func @lexicalSelectInstructionAST.lexicalInstructionUsesLoopLocalVariab
   result = false
   for entry in self.mLexicalSelectBranchList while not result do
     for inst in entry.mSelectInstructionList while not result do
-      result = inst.mInstruction.lexicalInstructionUsesLoopLocalVariable
+      result = inst.lexicalInstructionUsesLoopLocalVariable
     end
   end
   for instr in self.mDefaultInstructionList while not result do
-    result = instr.mInstruction.lexicalInstructionUsesLoopLocalVariable
+    result = instr.lexicalInstructionUsesLoopLocalVariable
   end
 }
 
@@ -187,7 +147,7 @@ override func @lexicalSelectInstructionAST.generateLexicalInstructionCode
     result += ") {\n"
     !?result.incIndentation (2)
     for instr in lexicalSelectBranch.mSelectInstructionList do
-      result += instr.mInstruction.generateLexicalInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+      result += instr.generateLexicalInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
     end
     !?result.decIndentation (2)
   between
@@ -198,7 +158,7 @@ override func @lexicalSelectInstructionAST.generateLexicalInstructionCode
     result += "}else{\n"
     !?result.incIndentation (2)
     for instr in self.mDefaultInstructionList do
-      result += instr.mInstruction.generateLexicalInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+      result += instr.generateLexicalInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
     end
     !?result.decIndentation (2)
   end

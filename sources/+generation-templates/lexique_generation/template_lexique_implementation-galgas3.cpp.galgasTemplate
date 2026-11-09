@@ -80,9 +80,9 @@ mMatchedTemplateDelimiterIndex (-1) {
 //            Terminal Symbols as end of script in template mark
 //--------------------------------------------------------------------------------------------------
 
-% for (mTerminalName * * mIsEndOfTemplateMark * *) in TERMINAL_LIST
+% for (terminal) in TERMINAL_LIST
     before %static const bool %!LEXIQUE_IDENTIFIER%_kEndOfScriptInTemplateArray [%![[TERMINAL_LIST count] string]%] = {\n%
-    do %  %![mIsEndOfTemplateMark cString]% /* %!mTerminalName.string% */%
+    do %  %![terminal.isEndOfTemplateMark cString]% /* %!terminal.mTerminalName.string% */%
     between %,\n%
     after %\n} ;\n%
   end
@@ -148,8 +148,8 @@ bool Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
 
 GGS__5B_string_5D_ Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
   GGS__5B_string_5D_ result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
-%for (mTerminalName * * * * *) in TERMINAL_LIST
-  do %  result.plusPlusAssignOperation (GGS_string (%![mTerminalName utf8RepresentationEscapingQuestionMark]%) COMMA_HERE) ;\n%
+%for (terminal) in TERMINAL_LIST
+  do %  result.plusPlusAssignOperation (GGS_string (%![terminal.mTerminalName utf8RepresentationEscapingQuestionMark]%) COMMA_HERE) ;\n%
   end
 %  return result ;
 }

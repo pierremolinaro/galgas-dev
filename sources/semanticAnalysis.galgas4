@@ -520,7 +520,7 @@ override proc @filewrapperDeclarationAST.semanticAnalysis
       end
       let absoluteTemplatePath = absoluteSourcePath + "/" + filewrapperTemplate.mFilewrapperTemplatePath
     //--- Parse template
-      grammar templateGrammar (?let @templateInstructionListAST resultingInstructionList)
+      grammar templateGrammar (?let [@templateInstructionAST] resultingInstructionList)
          in @lstring (absoluteTemplatePath, filewrapperTemplate.mFilewrapperTemplatePath.location)
     //--- Build template variable map
       var @templateVariableMap templateVariableMap = @()

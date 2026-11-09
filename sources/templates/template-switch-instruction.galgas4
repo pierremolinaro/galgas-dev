@@ -19,10 +19,10 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-list @templateInstructionSwitchBranchListAST {
+struct @templateInstructionSwitchBranchAST {
   public let [@lstring] constantList
   public let [@switchExtractedValuesAST] associatedValuesExtraction
-  public let @templateInstructionListAST instructionList
+  public let [@templateInstructionAST] instructionList
   public let @location endOfBranch
 }
 
@@ -31,7 +31,7 @@ list @templateInstructionSwitchBranchListAST {
 final class @templateInstructionSwitchAST : @templateInstructionAST {
   private let @templateExpressionAST mSwitchExpression
   private let @location switchExpressionEndLocation
-  private let @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList
+  private let [@templateInstructionSwitchBranchAST] templateInstructionSwitchBranchList
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -42,13 +42,13 @@ syntax extension templateSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
+  rule <template_instruction> (?![@templateInstructionAST] ioResultingInstructionList ) {
     $switch$
   //--- Switch expression
     <expression_template> (?let switchExpression)
     let @location endOfSwitchExpression = .here
   //--- Loop on "case" clauses
-    var @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList = @()
+    var [@templateInstructionSwitchBranchAST] templateInstructionSwitchBranchList = @()
     repeat
     while
       $case$
@@ -57,7 +57,7 @@ syntax extension templateSyntax {
         ?let [@switchExtractedValuesAST] associatedValuesExtraction
       )
       $:$
-      var @templateInstructionListAST instructionList = @()
+      var [@templateInstructionAST] instructionList = @()
       repeat
         enterTemplateString (!?instructionList)
       while
@@ -67,11 +67,11 @@ syntax extension templateSyntax {
     end
     $end$
   //---
-    ioResultingInstructionList ++= @(@templateInstructionSwitchAST (
+    ioResultingInstructionList ++= @templateInstructionSwitchAST (
       switchExpression,
       endOfSwitchExpression,
       templateInstructionSwitchBranchList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

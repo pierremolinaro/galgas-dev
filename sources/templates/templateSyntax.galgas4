@@ -495,34 +495,34 @@ rule <output_expression_list_tpl> (!@templateExpressionListAST outExpressionList
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
+rule <template_instruction> (?![@templateInstructionAST] ioResultingInstructionList ) {
   $!$
   <expression_template> (?let @templateExpressionAST expression)
-  ioResultingInstructionList ++= @(@templateInstructionExpressionAST (expression, @location.here))
+  ioResultingInstructionList ++= @templateInstructionExpressionAST (expression, .here)
 }
 
 //--------------------------------------------------------------------------------------------------
 
-rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
+rule <template_instruction> (?![@templateInstructionAST] ioResultingInstructionList ) {
   $?^$
-  ioResultingInstructionList ++= @(@templateInstructionGetColumnLocationAST ())
+  ioResultingInstructionList ++= @templateInstructionGetColumnLocationAST ()
 }
 
 //--------------------------------------------------------------------------------------------------
 
-rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
+rule <template_instruction> (?![@templateInstructionAST] ioResultingInstructionList ) {
   $!^$
-  ioResultingInstructionList ++= @(@templateInstructionGotoColumnLocationAST ())
+  ioResultingInstructionList ++= @templateInstructionGotoColumnLocationAST ()
 }
 
 //--------------------------------------------------------------------------------------------------
 
-rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
+rule <template_instruction> (?![@templateInstructionAST] ioResultingInstructionList ) {
   $block$
   <expression_template> (?let @templateExpressionAST expression)
   $:$
 //--- Instruction list
-  var blockInstructionList = @templateInstructionListAST ()
+  var blockInstructionList = [@templateInstructionAST] ()
   repeat
     enterTemplateString (!?blockInstructionList)
   while
@@ -530,21 +530,22 @@ rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructio
   end
 //---
   $end$
-  ioResultingInstructionList ++= @(@templateBlockInstructionAST (
-   expression,
-   @location.here,
-   blockInstructionList))
+  ioResultingInstructionList ++= @templateBlockInstructionAST (
+    expression,
+    @location.here,
+    blockInstructionList
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
 
-rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructionList ) {
+rule <template_instruction> (?![@templateInstructionAST] ioResultingInstructionList ) {
   $if$
   var templateInstructionIfBranchList = @templateInstructionIfBranchListAST ()
   repeat
     <expression_template> (?let expression)
     $then$
-    var @templateInstructionListAST instructionList = @()
+    var [@templateInstructionAST] instructionList = @()
     repeat
       enterTemplateString (!?instructionList)
     while
@@ -555,7 +556,7 @@ rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructio
     $elsif$
   end
 //--- else
-  var @templateInstructionListAST elseInstructionList = @()
+  var [@templateInstructionAST] elseInstructionList = @()
   select
   or
     $else$
@@ -567,14 +568,15 @@ rule <template_instruction> (?!@templateInstructionListAST ioResultingInstructio
   end
 //---
   $end$
-  ioResultingInstructionList ++= @(@templateInstructionIfAST (
+  ioResultingInstructionList ++= @templateInstructionIfAST (
     templateInstructionIfBranchList,
-    elseInstructionList))
+    elseInstructionList
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
 
-rule <template_parser_start_symbol> (!@templateInstructionListAST outResultingInstructionList ) {
+rule <template_parser_start_symbol> (![@templateInstructionAST] outResultingInstructionList ) {
   outResultingInstructionList = @()
   repeat
     enterTemplateString (!?outResultingInstructionList)
@@ -589,10 +591,10 @@ rule <template_parser_start_symbol> (!@templateInstructionListAST outResultingIn
 
 //--------------------------------------------------------------------------------------------------
 
-proc enterTemplateString (?!@templateInstructionListAST outResultingInstructionList ) {
+proc enterTemplateString (?![@templateInstructionAST] outResultingInstructionList ) {
   let @string s = @string.retrieveAndResetTemplateString
   if s.count > 0 then
-    outResultingInstructionList ++= @(@templateInstructionStringAST (s))
+    outResultingInstructionList ++= @templateInstructionStringAST (s)
   end
 }
 

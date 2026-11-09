@@ -39,9 +39,9 @@ end%
 //            Terminal Symbols as end of script in template mark
 //--------------------------------------------------------------------------------------------------
 
-% for (mTerminalName 2* mIsEndOfTemplateMark 2*) in TERMINAL_LIST
+% for (terminal) in TERMINAL_LIST
     before %fileprivate let kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [Bool] = [\n%
-    do %  %![mIsEndOfTemplateMark cString]% /* %!mTerminalName.string% */%
+    do %  %![terminal.isEndOfTemplateMark cString]% /* %!terminal.mTerminalName.string% */%
     between %,\n%
     after %\n]\n%
   end

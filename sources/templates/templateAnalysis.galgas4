@@ -1461,7 +1461,7 @@ proc templateInstructionListAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
-  let @templateInstructionListAST inInstructionList,
+  let [@templateInstructionAST] inInstructionList,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
   for (mInstruction) in inInstructionList do

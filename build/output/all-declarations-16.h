@@ -9,16 +9,6 @@
 #include "all-declarations-15.h"
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension func '@semanticExpressionForGeneration isTrueExpression'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_bool callExtensionGetter_isTrueExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                     class Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
 //  GRAMMAR galgas4ProjectGrammar
 //--------------------------------------------------------------------------------------------------
 
@@ -1073,7 +1063,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual void nt_lexical_5F_instruction_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_lexical_5F_instruction_ (GGS_lexicalInstructionListAST & ioArgument0,
+  public: virtual void nt_lexical_5F_instruction_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
                                                    Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'lexical_list_declaration' non terminal

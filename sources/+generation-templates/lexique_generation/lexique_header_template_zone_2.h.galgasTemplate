@@ -13,11 +13,11 @@
   for (lkey mLexicalRoutineFormalArgumentList mErrorMessageList mIsExtern) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalRoutineMessageMap do
     if mIsExtern then
       %\nvoid scanner_routine_%!lkey.string% (Lexique & inLexique%
-      for (mLexicalFormalArgumentMode mLexicalFormalArgumentType mArgumentNameForComment) in mLexicalRoutineFormalArgumentList do
-        %,\n                %![mLexicalFormalArgumentMode cppConstInFormalArgument]
-                             ![mLexicalFormalArgumentType cppTypeName]
-                             ![mLexicalFormalArgumentMode cppReferenceInFormalArgument]
-                             % %!mArgumentNameForComment
+      for (argument) in mLexicalRoutineFormalArgumentList do
+        %,\n                %![argument.mLexicalFormalArgumentMode cppConstInFormalArgument]
+                             ![argument.mLexicalFormalArgumentType cppTypeName]
+                             ![argument.mLexicalFormalArgumentMode cppReferenceInFormalArgument]
+                             % %!argument.mArgumentNameForComment
       end
       for (mValue) in mErrorMessageList do
         %,\n                const char * %!mValue
@@ -33,8 +33,8 @@
   for (lkey mLexicalTypeList mReturnedLexicalType mReplacementFunctionName mIsExtern) in LEXIQUE_ANALYSIS_CONTEXT.mLexicalFunctionMap do
     if mIsExtern then
       %\n%![mReturnedLexicalType cppTypeName]% scanner_function_%!lkey.string% (Lexique & inLexique%
-      for (mLexicalType mArgumentNameForComment) in mLexicalTypeList do
-        %,\n                const %![mLexicalType cppTypeName]% %!mArgumentNameForComment
+      for (argument) in mLexicalTypeList do
+        %,\n                const %![argument.mLexicalType cppTypeName]% %!argument.mArgumentNameForComment
       end
       %) ;\n%
     end
@@ -85,8 +85,8 @@ class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {
 
 //--- Terminal symbols enumeration
   public: const static int32_t kToken_ = 0 ;\n%
-  for (mTerminalName mSentAttributeList mSyntaxErrorMessage mIsEndOfTemplateMark mAtomicSelection mStyleIndex) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
-    %  public: static const int32_t kToken_%![mTerminalName.string identifierRepresentation]% = %![idx + 1 string]% ;\n%
+  for (terminal) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
+    %  public: static const int32_t kToken_%![terminal.mTerminalName.string identifierRepresentation]% = %![idx + 1 string]% ;\n%
   end
   for (mName mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in DELIMITOR_LIST_LIST do
     %\n//--- Key words table '%!mName.string%'\n%

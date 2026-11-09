@@ -9,705 +9,6 @@
 #include "all-declarations-13.h"
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @semanticDeclarationWithHeaderForGeneration_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_semanticDeclarationWithHeaderForGeneration_2E_weak : public GGS_semanticDeclarationForGeneration_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (const class GGS_semanticDeclarationWithHeaderForGeneration & inSource) ;
-
-  public: GGS_semanticDeclarationWithHeaderForGeneration_2E_weak & operator = (const class GGS_semanticDeclarationWithHeaderForGeneration & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_semanticDeclarationWithHeaderForGeneration_2E_weak init_nil (void) {
-    GGS_semanticDeclarationWithHeaderForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_semanticDeclarationWithHeaderForGeneration bang_semanticDeclarationWithHeaderForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_semanticDeclarationWithHeaderForGeneration unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_semanticDeclarationWithHeaderForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_semanticDeclarationWithHeaderForGeneration_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @syntaxDeclarationForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_syntaxDeclarationForGeneration : public GGS_semanticDeclarationForGeneration {
-//--------------------------------- Default constructor
-  public: GGS_syntaxDeclarationForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_syntaxDeclarationForGeneration (const class cPtr_syntaxDeclarationForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_string readProperty_mSyntaxComponentName (void) const ;
-
-  public: class GGS_string readProperty_mLexiqueName (void) const ;
-
-  public: class GGS_nonterminalMap readProperty_mNonterminalDeclarationMap (void) const ;
-
-  public: class GGS_ruleDeclarationList readProperty_mRuleDeclarationList (void) const ;
-
-  public: class GGS_uint readProperty_mSelectMethodCount (void) const ;
-
-  public: class GGS_bool readProperty_mHasIndexing (void) const ;
-
-  public: class GGS_bool readProperty_mHasTranslateFeature (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_syntaxDeclarationForGeneration init_21_infoMessage_21__21__21__21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                     const class GGS_string & inOperand1,
-                                                                                                     const class GGS_string & inOperand2,
-                                                                                                     const class GGS_nonterminalMap & inOperand3,
-                                                                                                     const class GGS_ruleDeclarationList & inOperand4,
-                                                                                                     const class GGS_uint & inOperand5,
-                                                                                                     const class GGS_bool & inOperand6,
-                                                                                                     const class GGS_bool & inOperand7,
-                                                                                                     Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_syntaxDeclarationForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @syntaxDeclarationForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void syntaxDeclarationForGeneration_init_21_infoMessage_21__21__21__21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                                               const class GGS_string & inOperand1,
-                                                                                               const class GGS_string & inOperand2,
-                                                                                               const class GGS_nonterminalMap & inOperand3,
-                                                                                               const class GGS_ruleDeclarationList & inOperand4,
-                                                                                               const class GGS_uint & inOperand5,
-                                                                                               const class GGS_bool & inOperand6,
-                                                                                               const class GGS_bool & inOperand7,
-                                                                                               Compiler * inCompiler) ;
-
-
-//--- Extension func getImplementationCppFileName
-  public: virtual class GGS_string getter_getImplementationCppFileName (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension func hasCppHeaderFile
-  public: virtual class GGS_bool getter_hasCppHeaderFile (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension func headerKind
-  public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension func isPredefined
-  public: virtual class GGS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension proc appendDeclaration1
-  public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg__ioInclusionSet,
-           class GGS_string & arg_outHeader,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension proc appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg__inUnifiedTypeMap,
-           class GGS_stringset & arg__ioInclusionSet,
-           class GGS_string & arg_outImplementation,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_string mProperty_mSyntaxComponentName ;
-  public: GGS_string mProperty_mLexiqueName ;
-  public: GGS_nonterminalMap mProperty_mNonterminalDeclarationMap ;
-  public: GGS_ruleDeclarationList mProperty_mRuleDeclarationList ;
-  public: GGS_uint mProperty_mSelectMethodCount ;
-  public: GGS_bool mProperty_mHasIndexing ;
-  public: GGS_bool mProperty_mHasTranslateFeature ;
-
-
-//--- Default constructor
-  public: cPtr_syntaxDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_syntaxDeclarationForGeneration (const GGS_string & in_infoMessage,
-                                               const GGS_string & in_mSyntaxComponentName,
-                                               const GGS_string & in_mLexiqueName,
-                                               const GGS_nonterminalMap & in_mNonterminalDeclarationMap,
-                                               const GGS_ruleDeclarationList & in_mRuleDeclarationList,
-                                               const GGS_uint & in_mSelectMethodCount,
-                                               const GGS_bool & in_mHasIndexing,
-                                               const GGS_bool & in_mHasTranslateFeature,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @syntaxDeclarationForGeneration_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_syntaxDeclarationForGeneration_2E_weak : public GGS_semanticDeclarationForGeneration_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_syntaxDeclarationForGeneration_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_syntaxDeclarationForGeneration_2E_weak (const class GGS_syntaxDeclarationForGeneration & inSource) ;
-
-  public: GGS_syntaxDeclarationForGeneration_2E_weak & operator = (const class GGS_syntaxDeclarationForGeneration & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_syntaxDeclarationForGeneration_2E_weak init_nil (void) {
-    GGS_syntaxDeclarationForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_syntaxDeclarationForGeneration bang_syntaxDeclarationForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_syntaxDeclarationForGeneration unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_syntaxDeclarationForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_syntaxDeclarationForGeneration_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @lexiqueDeclarationForGeneration_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lexiqueDeclarationForGeneration_2E_weak : public GGS_semanticDeclarationWithHeaderForGeneration_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_lexiqueDeclarationForGeneration_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_lexiqueDeclarationForGeneration_2E_weak (const class GGS_lexiqueDeclarationForGeneration & inSource) ;
-
-  public: GGS_lexiqueDeclarationForGeneration_2E_weak & operator = (const class GGS_lexiqueDeclarationForGeneration & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_lexiqueDeclarationForGeneration_2E_weak init_nil (void) {
-    GGS_lexiqueDeclarationForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_lexiqueDeclarationForGeneration bang_lexiqueDeclarationForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_lexiqueDeclarationForGeneration unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_lexiqueDeclarationForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_lexiqueDeclarationForGeneration_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexiqueDeclarationForGeneration_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @primitiveTypeForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_primitiveTypeForGeneration : public GGS_semanticTypeForGeneration {
-//--------------------------------- Default constructor
-  public: GGS_primitiveTypeForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_primitiveTypeForGeneration (const class cPtr_primitiveTypeForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_string readProperty_mPredefinedTypeName (void) const ;
-
-  public: class GGS_string readProperty_mCppDeclarationString (void) const ;
-
-  public: class GGS_bool readProperty_isPackage (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_primitiveTypeForGeneration init_21_infoMessage_21__21__21__21_isPackage (const class GGS_string & inOperand0,
-                                                                                              const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                                              const class GGS_string & inOperand2,
-                                                                                              const class GGS_string & inOperand3,
-                                                                                              const class GGS_bool & inOperand4,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_primitiveTypeForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_primitiveTypeForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @primitiveTypeForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_primitiveTypeForGeneration : public cPtr_semanticTypeForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void primitiveTypeForGeneration_init_21_infoMessage_21__21__21__21_isPackage (const class GGS_string & inOperand0,
-                                                                                        const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                                        const class GGS_string & inOperand2,
-                                                                                        const class GGS_string & inOperand3,
-                                                                                        const class GGS_bool & inOperand4,
-                                                                                        Compiler * inCompiler) ;
-
-
-//--- Extension func appendPrimitiveTypeDeclaration
-  public: virtual class GGS_string getter_appendPrimitiveTypeDeclaration (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension proc appendPrimitiveTypePreDeclaration
-  public: virtual void method_appendPrimitiveTypePreDeclaration (class GGS_string & arg__ioHeader,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_string mProperty_mPredefinedTypeName ;
-  public: GGS_string mProperty_mCppDeclarationString ;
-  public: GGS_bool mProperty_isPackage ;
-
-
-//--- Default constructor
-  public: cPtr_primitiveTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_primitiveTypeForGeneration (const GGS_string & in_infoMessage,
-                                           const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                           const GGS_string & in_mPredefinedTypeName,
-                                           const GGS_string & in_mCppDeclarationString,
-                                           const GGS_bool & in_isPackage,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @primitiveTypeForGeneration_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_primitiveTypeForGeneration_2E_weak : public GGS_semanticTypeForGeneration_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_primitiveTypeForGeneration_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_primitiveTypeForGeneration_2E_weak (const class GGS_primitiveTypeForGeneration & inSource) ;
-
-  public: GGS_primitiveTypeForGeneration_2E_weak & operator = (const class GGS_primitiveTypeForGeneration & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_primitiveTypeForGeneration_2E_weak init_nil (void) {
-    GGS_primitiveTypeForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_primitiveTypeForGeneration bang_primitiveTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_primitiveTypeForGeneration unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_primitiveTypeForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_primitiveTypeForGeneration_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_primitiveTypeForGeneration_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension proc '@semanticInstructionAST analyzeSemanticInstruction'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_analyzeSemanticInstruction (class cPtr_semanticInstructionAST * inObject,
-                                                     const class GGS_lstring constin_inUsefulnessCallerEntityName,
-                                                     class GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                     const class GGS_analysisContext constin_inAnalysisContext,
-                                                     class GGS_unifiedTypeMap & io_ioTypeMap,
-                                                     class GGS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
-                                                     class GGS_localVarManager & io_ioVariableMap,
-                                                     class Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension func '@formalArgumentPassingModeAST correspondingEffectiveParameterString' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string extensionGetter_correspondingEffectiveParameterString (const class GGS_formalArgumentPassingModeAST & inObject,
-                                                                        class Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @overrideExtensionGetterForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_overrideExtensionGetterForGeneration : public GGS_semanticDeclarationWithHeaderForGeneration {
-//--------------------------------- Default constructor
-  public: GGS_overrideExtensionGetterForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_overrideExtensionGetterForGeneration (const class cPtr_overrideExtensionGetterForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
-
-  public: class GGS_string readProperty_mBaseTypeName (void) const ;
-
-  public: class GGS_string readProperty_mOverridingExtensionGetterName (void) const ;
-
-  public: class GGS_unifiedTypeMapEntry readProperty_mResultType (void) const ;
-
-  public: class GGS_string readProperty_mResultVarCppName (void) const ;
-
-  public: class GGS_formalInputParameterListForGeneration readProperty_mOverridingExtensionGetterFormalParameterList (void) const ;
-
-  public: class GGS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
-
-  public: class GGS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_overrideExtensionGetterForGeneration init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                                                                              const class GGS_bool & inOperand1,
-                                                                                                                                                              const class GGS_string & inOperand2,
-                                                                                                                                                              const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                                                                                                              const class GGS_string & inOperand4,
-                                                                                                                                                              const class GGS_string & inOperand5,
-                                                                                                                                                              const class GGS_unifiedTypeMapEntry & inOperand6,
-                                                                                                                                                              const class GGS_string & inOperand7,
-                                                                                                                                                              const class GGS_formalInputParameterListForGeneration & inOperand8,
-                                                                                                                                                              const class GGS_typedPropertyList & inOperand9,
-                                                                                                                                                              const class GGS_semanticInstructionListForGeneration & inOperand10,
-                                                                                                                                                              Compiler * inCompiler
-                                                                                                                                                              COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_overrideExtensionGetterForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @overrideExtensionGetterForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_overrideExtensionGetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void overrideExtensionGetterForGeneration_init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                                                                        const class GGS_bool & inOperand1,
-                                                                                                                                                        const class GGS_string & inOperand2,
-                                                                                                                                                        const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                                                                                                        const class GGS_string & inOperand4,
-                                                                                                                                                        const class GGS_string & inOperand5,
-                                                                                                                                                        const class GGS_unifiedTypeMapEntry & inOperand6,
-                                                                                                                                                        const class GGS_string & inOperand7,
-                                                                                                                                                        const class GGS_formalInputParameterListForGeneration & inOperand8,
-                                                                                                                                                        const class GGS_typedPropertyList & inOperand9,
-                                                                                                                                                        const class GGS_semanticInstructionListForGeneration & inOperand10,
-                                                                                                                                                        Compiler * inCompiler) ;
-
-
-//--- Extension func headerKind
-  public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension proc appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg__inUnifiedTypeMap,
-           class GGS_stringset & arg__ioInclusionSet,
-           class GGS_string & arg_outImplementation,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_unifiedTypeMapEntry mProperty_mReceiverType ;
-  public: GGS_string mProperty_mBaseTypeName ;
-  public: GGS_string mProperty_mOverridingExtensionGetterName ;
-  public: GGS_unifiedTypeMapEntry mProperty_mResultType ;
-  public: GGS_string mProperty_mResultVarCppName ;
-  public: GGS_formalInputParameterListForGeneration mProperty_mOverridingExtensionGetterFormalParameterList ;
-  public: GGS_typedPropertyList mProperty_mTypedAttributeList ;
-  public: GGS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGeneration ;
-
-
-//--- Default constructor
-  public: cPtr_overrideExtensionGetterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_overrideExtensionGetterForGeneration (const GGS_string & in_infoMessage,
-                                                     const GGS_bool & in_generateHeader,
-                                                     const GGS_string & in_implementationCppFileName,
-                                                     const GGS_unifiedTypeMapEntry & in_mReceiverType,
-                                                     const GGS_string & in_mBaseTypeName,
-                                                     const GGS_string & in_mOverridingExtensionGetterName,
-                                                     const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                     const GGS_string & in_mResultVarCppName,
-                                                     const GGS_formalInputParameterListForGeneration & in_mOverridingExtensionGetterFormalParameterList,
-                                                     const GGS_typedPropertyList & in_mTypedAttributeList,
-                                                     const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @overrideExtensionGetterForGeneration_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -3935,4 +3236,424 @@ void extensionMethod_checkCompatibilityWithLet (const class GGS_AccessControlAST
 void routine_println_3F_ (const class GGS_string constinArgument0,
                           class Compiler * inCompiler
                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Parser class 'galgas4LexiqueComponentSyntax' declaration
+//
+//--------------------------------------------------------------------------------------------------
+
+class cParser_galgas_34_LexiqueComponentSyntax {
+//--- Virtual destructor
+  public: virtual ~ cParser_galgas_34_LexiqueComponentSyntax (void) { }
+
+//--- Non terminal declarations
+  protected: virtual void nt_declaration_ (class GGS_galgasDeclarationAST & ioArgument0,
+                                           class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_attribute_5F_declaration_ (class GGS_lexicalAttributeListAST & ioArgument0,
+                                                                   class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_attribute_5F_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_explicit_5F_rule_ (class GGS_lexicalRuleListAST & ioArgument0,
+                                                           class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_explicit_5F_rule_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_expression_ (class GGS_lexicalExpressionAST & outArgument0,
+                                                     class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_expression_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_factor_ (class GGS_lexicalExpressionAST & outArgument0,
+                                                 class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_factor_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_implicit_5F_rule_ (class GGS_lexicalRuleListAST & ioArgument0,
+                                                           class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_implicit_5F_rule_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_indexing_5F_declaration_ (class GGS_indexingListAST & ioArgument0,
+                                                                  class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_indexing_5F_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_instruction_ (class GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
+                                                      class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_instruction_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_list_5F_declaration_ (class GGS_lexicalListDeclarationListAST & ioArgument0,
+                                                              class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_list_5F_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_list_5F_entry_ (class GGS_lexicalListEntryListAST & ioArgument0,
+                                                        class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_list_5F_entry_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_message_5F_declaration_ (class GGS_lexicalMessageDeclarationListAST & ioArgument0,
+                                                                 class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_message_5F_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_output_5F_effective_5F_argument_ (class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
+                                                                          class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_output_5F_effective_5F_argument_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_send_5F_instruction_ (class GGS_lexicalInstructionAST & outArgument0,
+                                                              class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_send_5F_instruction_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_term_ (class GGS_lexicalExpressionAST & outArgument0,
+                                               class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_lexical_5F_term_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_repeat_5F_while_5F_branch_ (class GGS_lexicalWhileBranchListAST & ioArgument0,
+                                                         class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_repeat_5F_while_5F_branch_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_style_5F_declaration_ (class GGS_lexicalStyleListAST & ioArgument0,
+                                                    class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_style_5F_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_template_5F_delimitor_ (class GGS_templateDelimitorListAST & ioArgument0,
+                                                     class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_template_5F_delimitor_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_template_5F_replacement_ (class GGS_templateReplacementListAST & ioArgument0,
+                                                       class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_template_5F_replacement_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_terminal_5F_declaration_ (class GGS_terminalDeclarationListAST & ioArgument0,
+                                                       class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+  protected: virtual void nt_terminal_5F_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
+
+
+//--- Rule declarations
+  protected: void rule_galgas_34_LexiqueComponentSyntax_declaration_i0_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                         Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_declaration_i0_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_declaration_i0_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_indexing_5F_declaration_i1_ (GGS_indexingListAST & ioArgument0,
+                                                                                                Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_indexing_5F_declaration_i1_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_indexing_5F_declaration_i1_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_message_5F_declaration_i2_ (GGS_lexicalMessageDeclarationListAST & ioArgument0,
+                                                                                               Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_message_5F_declaration_i2_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_message_5F_declaration_i2_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_implicit_5F_rule_i3_ (GGS_lexicalRuleListAST & ioArgument0,
+                                                                                         Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_implicit_5F_rule_i3_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_implicit_5F_rule_i3_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_explicit_5F_rule_i4_ (GGS_lexicalRuleListAST & ioArgument0,
+                                                                                         Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_explicit_5F_rule_i4_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_explicit_5F_rule_i4_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i5_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
+                                                                                    Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i5_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i5_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_repeat_5F_while_5F_branch_i6_ (GGS_lexicalWhileBranchListAST & ioArgument0,
+                                                                                       Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_repeat_5F_while_5F_branch_i6_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_repeat_5F_while_5F_branch_i6_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i7_ (GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
+                                                                                                        Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i7_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i7_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i8_ (GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
+                                                                                                        Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i8_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i8_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i9_ (GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
+                                                                                                        Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i9_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i9_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i10_ (GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
+                                                                                                         Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i10_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i10_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_expression_i11_ (GGS_lexicalExpressionAST & outArgument0,
+                                                                                    Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_expression_i11_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_expression_i11_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_term_i12_ (GGS_lexicalExpressionAST & outArgument0,
+                                                                              Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_term_i12_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_term_i12_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i13_ (GGS_lexicalExpressionAST & outArgument0,
+                                                                                Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i13_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i13_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i14_ (GGS_lexicalExpressionAST & outArgument0,
+                                                                                Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i14_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i14_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i15_ (GGS_lexicalExpressionAST & outArgument0,
+                                                                                Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i15_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i15_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i16_ (GGS_lexicalExpressionAST & outArgument0,
+                                                                                Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i16_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i16_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_declaration_i17_ (GGS_lexicalListDeclarationListAST & ioArgument0,
+                                                                                             Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_declaration_i17_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_declaration_i17_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_entry_i18_ (GGS_lexicalListEntryListAST & ioArgument0,
+                                                                                       Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_entry_i18_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_entry_i18_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_attribute_5F_declaration_i19_ (GGS_lexicalAttributeListAST & ioArgument0,
+                                                                                                  Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_attribute_5F_declaration_i19_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_attribute_5F_declaration_i19_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_terminal_5F_declaration_i20_ (GGS_terminalDeclarationListAST & ioArgument0,
+                                                                                      Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_terminal_5F_declaration_i20_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_terminal_5F_declaration_i20_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_style_5F_declaration_i21_ (GGS_lexicalStyleListAST & ioArgument0,
+                                                                                   Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_style_5F_declaration_i21_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_style_5F_declaration_i21_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i22_ (GGS_lexicalInstructionAST & outArgument0,
+                                                                                             Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i22_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i22_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i23_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
+                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i23_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i23_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i24_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
+                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i24_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i24_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i25_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
+                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i25_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i25_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i26_ (GGS_lexicalInstructionAST & outArgument0,
+                                                                                             Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i26_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i26_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i27_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
+                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i27_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i27_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i28_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
+                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i28_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i28_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i29_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
+                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i29_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i29_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i30_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
+                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i30_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i30_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i31_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
+                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i31_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i31_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i32_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
+                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i32_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i32_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_declaration_i33_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                          Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_declaration_i33_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_declaration_i33_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_template_5F_delimitor_i34_ (GGS_templateDelimitorListAST & ioArgument0,
+                                                                                    Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_template_5F_delimitor_i34_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_template_5F_delimitor_i34_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_template_5F_replacement_i35_ (GGS_templateReplacementListAST & ioArgument0,
+                                                                                      Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_LexiqueComponentSyntax_template_5F_replacement_i35_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_LexiqueComponentSyntax_template_5F_replacement_i35_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+
+
+//--- Select methods
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_0 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_1 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_2 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_3 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_4 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_5 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_6 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_7 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_8 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_9 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_10 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_11 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_12 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_13 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_14 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_15 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_16 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_17 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_18 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_19 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_20 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_21 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_22 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_23 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_24 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_25 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_26 (Lexique_galgasScanner_34_ *) = 0 ;
+
+
+} ;
 

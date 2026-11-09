@@ -8,1466 +8,6 @@
 #include "all-declarations-8.h"
 
 //--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateInstructionSwitchAST_2E_weak::objectCompare (const GGS_templateInstructionSwitchAST_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchAST_2E_weak::GGS_templateInstructionSwitchAST_2E_weak (void) :
-GGS_templateInstructionAST_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchAST_2E_weak & GGS_templateInstructionSwitchAST_2E_weak::operator = (const GGS_templateInstructionSwitchAST & inSource) {
-  PtrWeakReferenceProxy * proxyPtr = nullptr ;
-  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchAST_2E_weak::GGS_templateInstructionSwitchAST_2E_weak (const GGS_templateInstructionSwitchAST & inSource) :
-GGS_templateInstructionAST_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchAST_2E_weak GGS_templateInstructionSwitchAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_templateInstructionSwitchAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchAST GGS_templateInstructionSwitchAST_2E_weak::unwrappedValue (void) const {
-  GGS_templateInstructionSwitchAST result ;
-  if (isValid ()) {
-    const cPtr_templateInstructionSwitchAST * p = (cPtr_templateInstructionSwitchAST *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_templateInstructionSwitchAST (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchAST GGS_templateInstructionSwitchAST_2E_weak::bang_templateInstructionSwitchAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_templateInstructionSwitchAST result ;
-  if (mProxyPtr != nullptr) {
-    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_templateInstructionSwitchAST) ;
-      result = GGS_templateInstructionSwitchAST ((cPtr_templateInstructionSwitchAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @templateInstructionSwitchAST.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchAST_2E_weak ("templateInstructionSwitchAST.weak",
-                                                                                         & kTypeDescriptor_GALGAS_templateInstructionAST_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateInstructionSwitchAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionSwitchAST_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@templateInstructionSwitchBranchListForGeneration' list
-//--------------------------------------------------------------------------------------------------
-
-class CollectionElementPtr_templateInstructionSwitchBranchListForGeneration : public CollectionElementPtr {
-  public: GGS_templateInstructionSwitchBranchListForGeneration_2E_element mObject ;
-
-//--- Class functions
-  public: CollectionElementPtr_templateInstructionSwitchBranchListForGeneration (const GGS__5B_lstring_5D_ & in_mConstantList,
-                                                                                 const GGS__5B_extractedAssociatedValueForGeneration_5D_ & in_mExtractedAssociatedValuesForGeneration,
-                                                                                 const GGS_uint & in_mEndOfBranchLocationIndex,
-                                                                                 const GGS_templateInstructionListForGeneration & in_mInstructionList
-                                                                                 COMMA_LOCATION_ARGS) ;
-  public: CollectionElementPtr_templateInstructionSwitchBranchListForGeneration (const GGS_templateInstructionSwitchBranchListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual proc that checks that all attributes are valid
-  public: virtual bool isValid (void) const ;
-
-//--- Virtual proc that returns a copy of current object
-  public: virtual CollectionElementPtr * copy (void) ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_templateInstructionSwitchBranchListForGeneration::CollectionElementPtr_templateInstructionSwitchBranchListForGeneration (const GGS__5B_lstring_5D_ & in_mConstantList,
-                                                                                                                                              const GGS__5B_extractedAssociatedValueForGeneration_5D_ & in_mExtractedAssociatedValuesForGeneration,
-                                                                                                                                              const GGS_uint & in_mEndOfBranchLocationIndex,
-                                                                                                                                              const GGS_templateInstructionListForGeneration & in_mInstructionList
-                                                                                                                                              COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (in_mConstantList, in_mExtractedAssociatedValuesForGeneration, in_mEndOfBranchLocationIndex, in_mInstructionList) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr_templateInstructionSwitchBranchListForGeneration::CollectionElementPtr_templateInstructionSwitchBranchListForGeneration (const GGS_templateInstructionSwitchBranchListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) :
-CollectionElementPtr (THERE),
-mObject (inElement.mProperty_mConstantList, inElement.mProperty_mExtractedAssociatedValuesForGeneration, inElement.mProperty_mEndOfBranchLocationIndex, inElement.mProperty_mInstructionList) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool CollectionElementPtr_templateInstructionSwitchBranchListForGeneration::isValid (void) const {
-  return true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-CollectionElementPtr * CollectionElementPtr_templateInstructionSwitchBranchListForGeneration::copy (void) {
-  CollectionElementPtr * result = nullptr ;
-  macroMyNew (result, CollectionElementPtr_templateInstructionSwitchBranchListForGeneration (mObject.mProperty_mConstantList, mObject.mProperty_mExtractedAssociatedValuesForGeneration, mObject.mProperty_mEndOfBranchLocationIndex, mObject.mProperty_mInstructionList COMMA_HERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// List type @templateInstructionSwitchBranchListForGeneration
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchListForGeneration::GGS_templateInstructionSwitchBranchListForGeneration (void) :
-mArray () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchListForGeneration::GGS_templateInstructionSwitchBranchListForGeneration (const CollectionElementArray & inArray) :
-mArray () {
-  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
-  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
-    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
-    CollectionElementPtr_templateInstructionSwitchBranchListForGeneration * p = (CollectionElementPtr_templateInstructionSwitchBranchListForGeneration *) v.ptr () ;
-    macroValidSharedObject (p, CollectionElementPtr_templateInstructionSwitchBranchListForGeneration) ;
-    const GGS_templateInstructionSwitchBranchListForGeneration_2E_element element (p->mObject.mProperty_mConstantList, p->mObject.mProperty_mExtractedAssociatedValuesForGeneration, p->mObject.mProperty_mEndOfBranchLocationIndex, p->mObject.mProperty_mInstructionList) ;
-    mArray.appendObject (element) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                                                      const GGS__5B_lstring_5D_ & in_mConstantList,
-                                                                                      const GGS__5B_extractedAssociatedValueForGeneration_5D_ & in_mExtractedAssociatedValuesForGeneration,
-                                                                                      const GGS_uint & in_mEndOfBranchLocationIndex,
-                                                                                      const GGS_templateInstructionListForGeneration & in_mInstructionList
-                                                                                      COMMA_LOCATION_ARGS) {
-  CollectionElementPtr_templateInstructionSwitchBranchListForGeneration * p = nullptr ;
-  macroMyNew (p, CollectionElementPtr_templateInstructionSwitchBranchListForGeneration (in_mConstantList, in_mExtractedAssociatedValuesForGeneration, in_mEndOfBranchLocationIndex, in_mInstructionList COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_templateInstructionSwitchBranchListForGeneration::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_range GGS_templateInstructionSwitchBranchListForGeneration::getter_range (UNUSED_LOCATION_ARGS) const {
-  GGS_range result ;
-  if (isValid ()) {
-    result = GGS_range (0, count ()) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::description (String & ioString,
-                                                                        const int32_t inIndentation) const {
-  ioString.appendCString ("<list @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (" (") ;
-  ioString.appendUnsigned (count()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((count() > 1) ? "s" : "") ;
-  ioString.appendCString ("):") ;
-  if (isValid ()) {
-    for (uint32_t i = 0 ; i < count () ; i++) {
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation) ;
-      ioString.appendString ("|-at ") ;
-      ioString.appendUnsigned (i) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mConstantList:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mConstantList.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mExtractedAssociatedValuesForGeneration:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mExtractedAssociatedValuesForGeneration.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mEndOfBranchLocationIndex:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mEndOfBranchLocationIndex.description (ioString, inIndentation + 1) ;
-      ioString.appendNewLine () ;
-      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
-      ioString.appendString ("mInstructionList:") ;
-      mArray (int32_t (i) COMMA_HERE).mProperty_mInstructionList.description (ioString, inIndentation + 1) ;
-    }
-  }else{
-    ioString.appendCString (" not built") ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchListForGeneration GGS_templateInstructionSwitchBranchListForGeneration::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_templateInstructionSwitchBranchListForGeneration result ;
-  result.mArray.setCapacity (16) ; // Build
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::plusPlusAssignOperation (const GGS_templateInstructionSwitchBranchListForGeneration_2E_element & inValue
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inValue.isValid ()) {
-    mArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchListForGeneration GGS_templateInstructionSwitchBranchListForGeneration::class_func_listWithValue (const GGS__5B_lstring_5D_ & inOperand0,
-                                                                                                                                     const GGS__5B_extractedAssociatedValueForGeneration_5D_ & inOperand1,
-                                                                                                                                     const GGS_uint & inOperand2,
-                                                                                                                                     const GGS_templateInstructionListForGeneration & inOperand3
-                                                                                                                                     COMMA_LOCATION_ARGS) {
-  const GGS_templateInstructionSwitchBranchListForGeneration_2E_element element (inOperand0, inOperand1, inOperand2, inOperand3) ;
-  GGS_templateInstructionSwitchBranchListForGeneration result ;
-  if (element.isValid ()) {
-    result.mArray.setCapacity (16) ; // Build
-    result.plusPlusAssignOperation (element COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::addAssignOperation (const GGS__5B_lstring_5D_ & inOperand0,
-                                                                               const GGS__5B_extractedAssociatedValueForGeneration_5D_ & inOperand1,
-                                                                               const GGS_uint & inOperand2,
-                                                                               const GGS_templateInstructionListForGeneration & inOperand3
-                                                                               COMMA_LOCATION_ARGS) {
-  const GGS_templateInstructionSwitchBranchListForGeneration_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3) ;
-  plusPlusAssignOperation (newElement COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::setter_append (const GGS__5B_lstring_5D_ inOperand0,
-                                                                          const GGS__5B_extractedAssociatedValueForGeneration_5D_ inOperand1,
-                                                                          const GGS_uint inOperand2,
-                                                                          const GGS_templateInstructionListForGeneration inOperand3,
-                                                                          Compiler * /* inCompiler */
-                                                                          COMMA_LOCATION_ARGS) {
-  const GGS_templateInstructionSwitchBranchListForGeneration_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3) ;
-  if (isValid () && newElement.isValid ()) {
-    plusPlusAssignOperation (newElement COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::setter_insertAtIndex (const GGS__5B_lstring_5D_ inOperand0,
-                                                                                 const GGS__5B_extractedAssociatedValueForGeneration_5D_ inOperand1,
-                                                                                 const GGS_uint inOperand2,
-                                                                                 const GGS_templateInstructionListForGeneration inOperand3,
-                                                                                 const GGS_uint inInsertionIndex,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) {
-  const GGS_templateInstructionSwitchBranchListForGeneration_2E_element newElement (inOperand0, inOperand1, inOperand2, inOperand3) ;
-  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx <= mArray.count ()) {
-      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
-    }else{
-      String message = "cannot insert at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::setter_removeAtIndex (GGS__5B_lstring_5D_ & outOperand0,
-                                                                                 GGS__5B_extractedAssociatedValueForGeneration_5D_ & outOperand1,
-                                                                                 GGS_uint & outOperand2,
-                                                                                 GGS_templateInstructionListForGeneration & outOperand3,
-                                                                                 const GGS_uint inRemoveIndex,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx < mArray.count ()) {
-      removed = true ;
-      outOperand0 = mArray (idx COMMA_HERE).mProperty_mConstantList ;
-      outOperand1 = mArray (idx COMMA_HERE).mProperty_mExtractedAssociatedValuesForGeneration ;
-      outOperand2 = mArray (idx COMMA_HERE).mProperty_mEndOfBranchLocationIndex ;
-      outOperand3 = mArray (idx COMMA_HERE).mProperty_mInstructionList ;
-      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
-    }else{
-      String message = "cannot remove at index " ;
-      message.appendSigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::setter_popFirst (GGS__5B_lstring_5D_ & outOperand0,
-                                                                            GGS__5B_extractedAssociatedValueForGeneration_5D_ & outOperand1,
-                                                                            GGS_uint & outOperand2,
-                                                                            GGS_templateInstructionListForGeneration & outOperand3,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mConstantList ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mExtractedAssociatedValuesForGeneration ;
-      outOperand2 = mArray (0 COMMA_THERE).mProperty_mEndOfBranchLocationIndex ;
-      outOperand3 = mArray (0 COMMA_THERE).mProperty_mInstructionList ;
-      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
-    }else{
-      const String message = "cannot remove first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::setter_popLast (GGS__5B_lstring_5D_ & outOperand0,
-                                                                           GGS__5B_extractedAssociatedValueForGeneration_5D_ & outOperand1,
-                                                                           GGS_uint & outOperand2,
-                                                                           GGS_templateInstructionListForGeneration & outOperand3,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
-  bool removed = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      removed = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mConstantList ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mExtractedAssociatedValuesForGeneration ;
-      outOperand2 = mArray.lastObject (HERE).mProperty_mEndOfBranchLocationIndex ;
-      outOperand3 = mArray.lastObject (HERE).mProperty_mInstructionList ;
-      mArray.removeLastObject (HERE) ;
-    }else{
-      const String message = "cannot remove last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!removed) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::method_first (GGS__5B_lstring_5D_ & outOperand0,
-                                                                         GGS__5B_extractedAssociatedValueForGeneration_5D_ & outOperand1,
-                                                                         GGS_uint & outOperand2,
-                                                                         GGS_templateInstructionListForGeneration & outOperand3,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray (0 COMMA_THERE).mProperty_mConstantList ;
-      outOperand1 = mArray (0 COMMA_THERE).mProperty_mExtractedAssociatedValuesForGeneration ;
-      outOperand2 = mArray (0 COMMA_THERE).mProperty_mEndOfBranchLocationIndex ;
-      outOperand3 = mArray (0 COMMA_THERE).mProperty_mInstructionList ;
-    }else{
-      const String message = "cannot get first element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::method_last (GGS__5B_lstring_5D_ & outOperand0,
-                                                                        GGS__5B_extractedAssociatedValueForGeneration_5D_ & outOperand1,
-                                                                        GGS_uint & outOperand2,
-                                                                        GGS_templateInstructionListForGeneration & outOperand3,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const {
-  bool found = false ;
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      found = true ;
-      outOperand0 = mArray.lastObject (HERE).mProperty_mConstantList ;
-      outOperand1 = mArray.lastObject (HERE).mProperty_mExtractedAssociatedValuesForGeneration ;
-      outOperand2 = mArray.lastObject (HERE).mProperty_mEndOfBranchLocationIndex ;
-      outOperand3 = mArray.lastObject (HERE).mProperty_mInstructionList ;
-    }else{
-      const String message = "cannot get last element, list is empty" ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  if (!found) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchListForGeneration GGS_templateInstructionSwitchBranchListForGeneration::add_operation (const GGS_templateInstructionSwitchBranchListForGeneration & inOperand,
-                                                                                                                          Compiler * /* inCompiler */
-                                                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_templateInstructionSwitchBranchListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
-      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchListForGeneration GGS_templateInstructionSwitchBranchListForGeneration::subList (const int32_t inStart,
-                                                                                                                    const int32_t inLength,
-                                                                                                                    Compiler * inCompiler
-                                                                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_templateInstructionSwitchBranchListForGeneration result ;
-  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
-  if (ok) {
-    result.mArray.setCapacity (std::max (16, inLength)) ;
-    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
-      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
-    }
-  }else{
-    String message = "cannot get sublist [start: " ;
-    message.appendSigned (inStart) ;
-    message.appendCString (", length: ") ;
-    message.appendSigned (inLength) ;
-    message.appendCString ("], list count is ") ;
-    message.appendSigned (mArray.count ()) ;
-    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchListForGeneration GGS_templateInstructionSwitchBranchListForGeneration::getter_subListWithRange (const GGS_range & inRange,
-                                                                                                                                    Compiler * inCompiler
-                                                                                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_templateInstructionSwitchBranchListForGeneration result ;
-  if (isValid () && inRange.isValid ()) {
-    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
-    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchListForGeneration GGS_templateInstructionSwitchBranchListForGeneration::getter_subListFromIndex (const GGS_uint & inIndex,
-                                                                                                                                    Compiler * inCompiler
-                                                                                                                                    COMMA_LOCATION_ARGS) const {
-  GGS_templateInstructionSwitchBranchListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = int32_t (inIndex.uintValue ()) ;
-    const int32_t length = int32_t (count ()) - start ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchListForGeneration GGS_templateInstructionSwitchBranchListForGeneration::getter_subListToIndex (const GGS_uint & inIndex,
-                                                                                                                                  Compiler * inCompiler
-                                                                                                                                  COMMA_LOCATION_ARGS) const {
-  GGS_templateInstructionSwitchBranchListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t start  = 0 ;
-    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
-    result = subList (start, length, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::plusAssignOperation (const GGS_templateInstructionSwitchBranchListForGeneration inList,
-                                                                                Compiler * /* inCompiler */
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inList.isValid ()) {
-    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
-    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
-      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::setter_setMConstantListAtIndex (GGS__5B_lstring_5D_ inOperand,
-                                                                                           GGS_uint inIndex,
-                                                                                           Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mConstantList = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lstring_5D_ GGS_templateInstructionSwitchBranchListForGeneration::getter_mConstantListAtIndex (const GGS_uint & inIndex,
-                                                                                                       Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) const {
-  GGS__5B_lstring_5D_ result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mConstantList ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::setter_setMExtractedAssociatedValuesForGenerationAtIndex (GGS__5B_extractedAssociatedValueForGeneration_5D_ inOperand,
-                                                                                                                     GGS_uint inIndex,
-                                                                                                                     Compiler * inCompiler
-                                                                                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mExtractedAssociatedValuesForGeneration = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_extractedAssociatedValueForGeneration_5D_ GGS_templateInstructionSwitchBranchListForGeneration::getter_mExtractedAssociatedValuesForGenerationAtIndex (const GGS_uint & inIndex,
-                                                                                                                                                               Compiler * inCompiler
-                                                                                                                                                               COMMA_LOCATION_ARGS) const {
-  GGS__5B_extractedAssociatedValueForGeneration_5D_ result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mExtractedAssociatedValuesForGeneration ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::setter_setMEndOfBranchLocationIndexAtIndex (GGS_uint inOperand,
-                                                                                                       GGS_uint inIndex,
-                                                                                                       Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mEndOfBranchLocationIndex = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS_templateInstructionSwitchBranchListForGeneration::getter_mEndOfBranchLocationIndexAtIndex (const GGS_uint & inIndex,
-                                                                                                        Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mEndOfBranchLocationIndex ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-
-void GGS_templateInstructionSwitchBranchListForGeneration::setter_setMInstructionListAtIndex (GGS_templateInstructionListForGeneration inOperand,
-                                                                                              GGS_uint inIndex,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      mArray (int32_t (idx) COMMA_HERE).mProperty_mInstructionList = inOperand ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListForGeneration GGS_templateInstructionSwitchBranchListForGeneration::getter_mInstructionListAtIndex (const GGS_uint & inIndex,
-                                                                                                                               Compiler * inCompiler
-                                                                                                                               COMMA_LOCATION_ARGS) const {
-  GGS_templateInstructionListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < count ()) {
-      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mInstructionList ;
-    }else{
-      String message = "cannot access at index " ;
-      message.appendUnsigned (idx) ;
-      message.appendCString (", list count is ") ;
-      message.appendSigned (mArray.count ()) ;
-      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @templateInstructionSwitchBranchListForGeneration
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator_templateInstructionSwitchBranchListForGeneration::DownEnumerator_templateInstructionSwitchBranchListForGeneration (const GGS_templateInstructionSwitchBranchListForGeneration & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-  mIndex = mArray.count () - 1 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchListForGeneration_2E_element DownEnumerator_templateInstructionSwitchBranchListForGeneration::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lstring_5D_ DownEnumerator_templateInstructionSwitchBranchListForGeneration::current_mConstantList (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mConstantList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_extractedAssociatedValueForGeneration_5D_ DownEnumerator_templateInstructionSwitchBranchListForGeneration::current_mExtractedAssociatedValuesForGeneration (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mExtractedAssociatedValuesForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint DownEnumerator_templateInstructionSwitchBranchListForGeneration::current_mEndOfBranchLocationIndex (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mEndOfBranchLocationIndex ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListForGeneration DownEnumerator_templateInstructionSwitchBranchListForGeneration::current_mInstructionList (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mInstructionList ;
-}
-
-
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @templateInstructionSwitchBranchListForGeneration
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator_templateInstructionSwitchBranchListForGeneration::UpEnumerator_templateInstructionSwitchBranchListForGeneration (const GGS_templateInstructionSwitchBranchListForGeneration & inEnumeratedObject) :
-mArray (inEnumeratedObject.sortedElementArray ()),
-mIndex (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchBranchListForGeneration_2E_element UpEnumerator_templateInstructionSwitchBranchListForGeneration::current (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_lstring_5D_ UpEnumerator_templateInstructionSwitchBranchListForGeneration::current_mConstantList (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mConstantList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_extractedAssociatedValueForGeneration_5D_ UpEnumerator_templateInstructionSwitchBranchListForGeneration::current_mExtractedAssociatedValuesForGeneration (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mExtractedAssociatedValuesForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint UpEnumerator_templateInstructionSwitchBranchListForGeneration::current_mEndOfBranchLocationIndex (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mEndOfBranchLocationIndex ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionListForGeneration UpEnumerator_templateInstructionSwitchBranchListForGeneration::current_mInstructionList (LOCATION_ARGS) const {
-  return mArray (mIndex COMMA_THERE).mProperty_mInstructionList ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
-//     @templateInstructionSwitchBranchListForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListForGeneration ("templateInstructionSwitchBranchListForGeneration",
-                                                                                                     nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateInstructionSwitchBranchListForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionSwitchBranchListForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateInstructionSwitchForGeneration_2E_weak::objectCompare (const GGS_templateInstructionSwitchForGeneration_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchForGeneration_2E_weak::GGS_templateInstructionSwitchForGeneration_2E_weak (void) :
-GGS_templateInstructionForGeneration_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchForGeneration_2E_weak & GGS_templateInstructionSwitchForGeneration_2E_weak::operator = (const GGS_templateInstructionSwitchForGeneration & inSource) {
-  PtrWeakReferenceProxy * proxyPtr = nullptr ;
-  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchForGeneration_2E_weak::GGS_templateInstructionSwitchForGeneration_2E_weak (const GGS_templateInstructionSwitchForGeneration & inSource) :
-GGS_templateInstructionForGeneration_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchForGeneration_2E_weak GGS_templateInstructionSwitchForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_templateInstructionSwitchForGeneration_2E_weak result ;
-  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchForGeneration GGS_templateInstructionSwitchForGeneration_2E_weak::unwrappedValue (void) const {
-  GGS_templateInstructionSwitchForGeneration result ;
-  if (isValid ()) {
-    const cPtr_templateInstructionSwitchForGeneration * p = (cPtr_templateInstructionSwitchForGeneration *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_templateInstructionSwitchForGeneration (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateInstructionSwitchForGeneration GGS_templateInstructionSwitchForGeneration_2E_weak::bang_templateInstructionSwitchForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_templateInstructionSwitchForGeneration result ;
-  if (mProxyPtr != nullptr) {
-    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_templateInstructionSwitchForGeneration) ;
-      result = GGS_templateInstructionSwitchForGeneration ((cPtr_templateInstructionSwitchForGeneration *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @templateInstructionSwitchForGeneration.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration_2E_weak ("templateInstructionSwitchForGeneration.weak",
-                                                                                                   & kTypeDescriptor_GALGAS_templateInstructionForGeneration_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateInstructionSwitchForGeneration_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateClassFunctionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateClassFunctionAST::objectCompare (const GGS_templateClassFunctionAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateClassFunctionAST::GGS_templateClassFunctionAST (void) :
-GGS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateClassFunctionAST GGS_templateClassFunctionAST::
-init_21__21__21_ (const GGS_lstring & in_mTypeName,
-                  const GGS_lstring & in_mClassFunctionName,
-                  const GGS_templateExpressionListAST & in_mExpressionList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateClassFunctionAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateClassFunctionAST (inCompiler COMMA_THERE)) ;
-  object->templateClassFunctionAST_init_21__21__21_ (in_mTypeName, in_mClassFunctionName, in_mExpressionList, inCompiler) ;
-  const GGS_templateClassFunctionAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateClassFunctionAST::
-templateClassFunctionAST_init_21__21__21_ (const GGS_lstring & in_mTypeName,
-                                           const GGS_lstring & in_mClassFunctionName,
-                                           const GGS_templateExpressionListAST & in_mExpressionList,
-                                           Compiler * /* inCompiler */) {
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mClassFunctionName = in_mClassFunctionName ;
-  mProperty_mExpressionList = in_mExpressionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateClassFunctionAST::GGS_templateClassFunctionAST (const cPtr_templateClassFunctionAST * inSourcePtr) :
-GGS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateClassFunctionAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_templateClassFunctionAST::readProperty_mTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateClassFunctionAST) ;
-    return p->mProperty_mTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_templateClassFunctionAST::readProperty_mClassFunctionName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateClassFunctionAST) ;
-    return p->mProperty_mClassFunctionName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionListAST GGS_templateClassFunctionAST::readProperty_mExpressionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionListAST () ;
-  }else{
-    cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateClassFunctionAST) ;
-    return p->mProperty_mExpressionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateClassFunctionAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateClassFunctionAST::cPtr_templateClassFunctionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mClassFunctionName (),
-mProperty_mExpressionList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateClassFunctionAST::cPtr_templateClassFunctionAST (const GGS_lstring & in_mTypeName,
-                                                              const GGS_lstring & in_mClassFunctionName,
-                                                              const GGS_templateExpressionListAST & in_mExpressionList,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mTypeName (),
-mProperty_mClassFunctionName (),
-mProperty_mExpressionList () {
-  mProperty_mTypeName = in_mTypeName ;
-  mProperty_mClassFunctionName = in_mClassFunctionName ;
-  mProperty_mExpressionList = in_mExpressionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateClassFunctionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateClassFunctionAST ;
-}
-
-void cPtr_templateClassFunctionAST::description (String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateClassFunctionAST:") ;
-  mProperty_mTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mClassFunctionName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mExpressionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_templateClassFunctionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateClassFunctionAST (mProperty_mTypeName, mProperty_mClassFunctionName, mProperty_mExpressionList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateClassFunctionAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
-    mProperty_mClassFunctionName.printNonNullClassInstanceProperties ("mClassFunctionName") ;
-    mProperty_mExpressionList.printNonNullClassInstanceProperties ("mExpressionList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateClassFunctionAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateClassFunctionAST ("templateClassFunctionAST",
-                                                                             & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateClassFunctionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateClassFunctionAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateClassFunctionAST_2E_weak::objectCompare (const GGS_templateClassFunctionAST_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateClassFunctionAST_2E_weak::GGS_templateClassFunctionAST_2E_weak (void) :
-GGS_templateExpressionAST_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateClassFunctionAST_2E_weak & GGS_templateClassFunctionAST_2E_weak::operator = (const GGS_templateClassFunctionAST & inSource) {
-  PtrWeakReferenceProxy * proxyPtr = nullptr ;
-  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateClassFunctionAST_2E_weak::GGS_templateClassFunctionAST_2E_weak (const GGS_templateClassFunctionAST & inSource) :
-GGS_templateExpressionAST_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateClassFunctionAST_2E_weak GGS_templateClassFunctionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_templateClassFunctionAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateClassFunctionAST GGS_templateClassFunctionAST_2E_weak::unwrappedValue (void) const {
-  GGS_templateClassFunctionAST result ;
-  if (isValid ()) {
-    const cPtr_templateClassFunctionAST * p = (cPtr_templateClassFunctionAST *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_templateClassFunctionAST (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateClassFunctionAST GGS_templateClassFunctionAST_2E_weak::bang_templateClassFunctionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_templateClassFunctionAST result ;
-  if (mProxyPtr != nullptr) {
-    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_templateClassFunctionAST) ;
-      result = GGS_templateClassFunctionAST ((cPtr_templateClassFunctionAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @templateClassFunctionAST.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateClassFunctionAST_2E_weak ("templateClassFunctionAST.weak",
-                                                                                     & kTypeDescriptor_GALGAS_templateExpressionAST_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateClassFunctionAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateClassFunctionAST_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @templateFileWrapperTemplateCallAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateFileWrapperTemplateCallAST::objectCompare (const GGS_templateFileWrapperTemplateCallAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateFileWrapperTemplateCallAST::GGS_templateFileWrapperTemplateCallAST (void) :
-GGS_templateExpressionAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_templateFileWrapperTemplateCallAST GGS_templateFileWrapperTemplateCallAST::
-init_21__21__21_ (const GGS_lstring & in_mFileWrapperName,
-                  const GGS_lstring & in_mTemplateName,
-                  const GGS_templateExpressionListAST & in_mOutExpressionList,
-                  Compiler * inCompiler
-                  COMMA_LOCATION_ARGS) {
-  cPtr_templateFileWrapperTemplateCallAST * object = nullptr ;
-  macroMyNew (object, cPtr_templateFileWrapperTemplateCallAST (inCompiler COMMA_THERE)) ;
-  object->templateFileWrapperTemplateCallAST_init_21__21__21_ (in_mFileWrapperName, in_mTemplateName, in_mOutExpressionList, inCompiler) ;
-  const GGS_templateFileWrapperTemplateCallAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_templateFileWrapperTemplateCallAST::
-templateFileWrapperTemplateCallAST_init_21__21__21_ (const GGS_lstring & in_mFileWrapperName,
-                                                     const GGS_lstring & in_mTemplateName,
-                                                     const GGS_templateExpressionListAST & in_mOutExpressionList,
-                                                     Compiler * /* inCompiler */) {
-  mProperty_mFileWrapperName = in_mFileWrapperName ;
-  mProperty_mTemplateName = in_mTemplateName ;
-  mProperty_mOutExpressionList = in_mOutExpressionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateFileWrapperTemplateCallAST::GGS_templateFileWrapperTemplateCallAST (const cPtr_templateFileWrapperTemplateCallAST * inSourcePtr) :
-GGS_templateExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateFileWrapperTemplateCallAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_templateFileWrapperTemplateCallAST::readProperty_mFileWrapperName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateFileWrapperTemplateCallAST) ;
-    return p->mProperty_mFileWrapperName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_templateFileWrapperTemplateCallAST::readProperty_mTemplateName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateFileWrapperTemplateCallAST) ;
-    return p->mProperty_mTemplateName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateExpressionListAST GGS_templateFileWrapperTemplateCallAST::readProperty_mOutExpressionList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_templateExpressionListAST () ;
-  }else{
-    cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_templateFileWrapperTemplateCallAST) ;
-    return p->mProperty_mOutExpressionList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @templateFileWrapperTemplateCallAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateFileWrapperTemplateCallAST::cPtr_templateFileWrapperTemplateCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mFileWrapperName (),
-mProperty_mTemplateName (),
-mProperty_mOutExpressionList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_templateFileWrapperTemplateCallAST::cPtr_templateFileWrapperTemplateCallAST (const GGS_lstring & in_mFileWrapperName,
-                                                                                  const GGS_lstring & in_mTemplateName,
-                                                                                  const GGS_templateExpressionListAST & in_mOutExpressionList,
-                                                                                  Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_templateExpressionAST (inCompiler COMMA_THERE),
-mProperty_mFileWrapperName (),
-mProperty_mTemplateName (),
-mProperty_mOutExpressionList () {
-  mProperty_mFileWrapperName = in_mFileWrapperName ;
-  mProperty_mTemplateName = in_mTemplateName ;
-  mProperty_mOutExpressionList = in_mOutExpressionList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_templateFileWrapperTemplateCallAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ;
-}
-
-void cPtr_templateFileWrapperTemplateCallAST::description (String & ioString,
-                                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@templateFileWrapperTemplateCallAST:") ;
-  mProperty_mFileWrapperName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTemplateName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mOutExpressionList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_templateFileWrapperTemplateCallAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_templateFileWrapperTemplateCallAST (mProperty_mFileWrapperName, mProperty_mTemplateName, mProperty_mOutExpressionList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_templateFileWrapperTemplateCallAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_templateExpressionAST::printNonNullClassInstanceProperties () ;
-    mProperty_mFileWrapperName.printNonNullClassInstanceProperties ("mFileWrapperName") ;
-    mProperty_mTemplateName.printNonNullClassInstanceProperties ("mTemplateName") ;
-    mProperty_mOutExpressionList.printNonNullClassInstanceProperties ("mOutExpressionList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @templateFileWrapperTemplateCallAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ("templateFileWrapperTemplateCallAST",
-                                                                                       & kTypeDescriptor_GALGAS_templateExpressionAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateFileWrapperTemplateCallAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateFileWrapperTemplateCallAST_2E_weak::objectCompare (const GGS_templateFileWrapperTemplateCallAST_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateFileWrapperTemplateCallAST_2E_weak::GGS_templateFileWrapperTemplateCallAST_2E_weak (void) :
-GGS_templateExpressionAST_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateFileWrapperTemplateCallAST_2E_weak & GGS_templateFileWrapperTemplateCallAST_2E_weak::operator = (const GGS_templateFileWrapperTemplateCallAST & inSource) {
-  PtrWeakReferenceProxy * proxyPtr = nullptr ;
-  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateFileWrapperTemplateCallAST_2E_weak::GGS_templateFileWrapperTemplateCallAST_2E_weak (const GGS_templateFileWrapperTemplateCallAST & inSource) :
-GGS_templateExpressionAST_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateFileWrapperTemplateCallAST_2E_weak GGS_templateFileWrapperTemplateCallAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_templateFileWrapperTemplateCallAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateFileWrapperTemplateCallAST GGS_templateFileWrapperTemplateCallAST_2E_weak::unwrappedValue (void) const {
-  GGS_templateFileWrapperTemplateCallAST result ;
-  if (isValid ()) {
-    const cPtr_templateFileWrapperTemplateCallAST * p = (cPtr_templateFileWrapperTemplateCallAST *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_templateFileWrapperTemplateCallAST (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateFileWrapperTemplateCallAST GGS_templateFileWrapperTemplateCallAST_2E_weak::bang_templateFileWrapperTemplateCallAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_templateFileWrapperTemplateCallAST result ;
-  if (mProxyPtr != nullptr) {
-    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_templateFileWrapperTemplateCallAST) ;
-      result = GGS_templateFileWrapperTemplateCallAST ((cPtr_templateFileWrapperTemplateCallAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @templateFileWrapperTemplateCallAST.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST_2E_weak ("templateFileWrapperTemplateCallAST.weak",
-                                                                                               & kTypeDescriptor_GALGAS_templateExpressionAST_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateFileWrapperTemplateCallAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
 // @templateExtensionTemplateCallAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -9902,7 +8442,7 @@ GGS_templateInstructionAST () {
 GGS_templateBlockInstructionAST GGS_templateBlockInstructionAST::
 init_21__21__21_ (const GGS_templateExpressionAST & in_mExpression,
                   const GGS_location & in_mLocation,
-                  const GGS_templateInstructionListAST & in_mBlockInstructionList,
+                  const GGS__5B_templateInstructionAST_5D_ & in_mBlockInstructionList,
                   Compiler * inCompiler
                   COMMA_LOCATION_ARGS) {
   cPtr_templateBlockInstructionAST * object = nullptr ;
@@ -9918,7 +8458,7 @@ init_21__21__21_ (const GGS_templateExpressionAST & in_mExpression,
 void cPtr_templateBlockInstructionAST::
 templateBlockInstructionAST_init_21__21__21_ (const GGS_templateExpressionAST & in_mExpression,
                                               const GGS_location & in_mLocation,
-                                              const GGS_templateInstructionListAST & in_mBlockInstructionList,
+                                              const GGS__5B_templateInstructionAST_5D_ & in_mBlockInstructionList,
                                               Compiler * /* inCompiler */) {
   mProperty_mExpression = in_mExpression ;
   mProperty_mLocation = in_mLocation ;
@@ -9957,9 +8497,9 @@ GGS_location GGS_templateBlockInstructionAST::readProperty_mLocation (void) cons
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_templateInstructionListAST GGS_templateBlockInstructionAST::readProperty_mBlockInstructionList (void) const {
+GGS__5B_templateInstructionAST_5D_ GGS_templateBlockInstructionAST::readProperty_mBlockInstructionList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_templateInstructionListAST () ;
+    return GGS__5B_templateInstructionAST_5D_ () ;
   }else{
     cPtr_templateBlockInstructionAST * p = (cPtr_templateBlockInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateBlockInstructionAST) ;
@@ -9982,7 +8522,7 @@ mProperty_mBlockInstructionList () {
 
 cPtr_templateBlockInstructionAST::cPtr_templateBlockInstructionAST (const GGS_templateExpressionAST & in_mExpression,
                                                                     const GGS_location & in_mLocation,
-                                                                    const GGS_templateInstructionListAST & in_mBlockInstructionList,
+                                                                    const GGS__5B_templateInstructionAST_5D_ & in_mBlockInstructionList,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) :
 cPtr_templateInstructionAST (inCompiler COMMA_THERE),
@@ -10546,7 +9086,7 @@ class CollectionElementPtr_templateInstructionIfBranchListAST : public Collectio
 
 //--- Class functions
   public: CollectionElementPtr_templateInstructionIfBranchListAST (const GGS_templateExpressionAST & in_mExpression,
-                                                                   const GGS_templateInstructionListAST & in_mInstructionList
+                                                                   const GGS__5B_templateInstructionAST_5D_ & in_mInstructionList
                                                                    COMMA_LOCATION_ARGS) ;
   public: CollectionElementPtr_templateInstructionIfBranchListAST (const GGS_templateInstructionIfBranchListAST_2E_element & inElement COMMA_LOCATION_ARGS) ;
 
@@ -10560,7 +9100,7 @@ class CollectionElementPtr_templateInstructionIfBranchListAST : public Collectio
 //--------------------------------------------------------------------------------------------------
 
 CollectionElementPtr_templateInstructionIfBranchListAST::CollectionElementPtr_templateInstructionIfBranchListAST (const GGS_templateExpressionAST & in_mExpression,
-                                                                                                                  const GGS_templateInstructionListAST & in_mInstructionList
+                                                                                                                  const GGS__5B_templateInstructionAST_5D_ & in_mInstructionList
                                                                                                                   COMMA_LOCATION_ARGS) :
 CollectionElementPtr (THERE),
 mObject (in_mExpression, in_mInstructionList) {
@@ -10613,7 +9153,7 @@ mArray () {
 
 void GGS_templateInstructionIfBranchListAST::makeAttributesFromObjects (CollectionElement & outAttributes,
                                                                         const GGS_templateExpressionAST & in_mExpression,
-                                                                        const GGS_templateInstructionListAST & in_mInstructionList
+                                                                        const GGS__5B_templateInstructionAST_5D_ & in_mInstructionList
                                                                         COMMA_LOCATION_ARGS) {
   CollectionElementPtr_templateInstructionIfBranchListAST * p = nullptr ;
   macroMyNew (p, CollectionElementPtr_templateInstructionIfBranchListAST (in_mExpression, in_mInstructionList COMMA_THERE)) ;
@@ -10693,7 +9233,7 @@ void GGS_templateInstructionIfBranchListAST::plusPlusAssignOperation (const GGS_
 //--------------------------------------------------------------------------------------------------
 
 GGS_templateInstructionIfBranchListAST GGS_templateInstructionIfBranchListAST::class_func_listWithValue (const GGS_templateExpressionAST & inOperand0,
-                                                                                                         const GGS_templateInstructionListAST & inOperand1
+                                                                                                         const GGS__5B_templateInstructionAST_5D_ & inOperand1
                                                                                                          COMMA_LOCATION_ARGS) {
   const GGS_templateInstructionIfBranchListAST_2E_element element (inOperand0, inOperand1) ;
   GGS_templateInstructionIfBranchListAST result ;
@@ -10707,7 +9247,7 @@ GGS_templateInstructionIfBranchListAST GGS_templateInstructionIfBranchListAST::c
 //--------------------------------------------------------------------------------------------------
 
 void GGS_templateInstructionIfBranchListAST::addAssignOperation (const GGS_templateExpressionAST & inOperand0,
-                                                                 const GGS_templateInstructionListAST & inOperand1
+                                                                 const GGS__5B_templateInstructionAST_5D_ & inOperand1
                                                                  COMMA_LOCATION_ARGS) {
   const GGS_templateInstructionIfBranchListAST_2E_element newElement (inOperand0, inOperand1) ;
   plusPlusAssignOperation (newElement COMMA_THERE) ;
@@ -10716,7 +9256,7 @@ void GGS_templateInstructionIfBranchListAST::addAssignOperation (const GGS_templ
 //--------------------------------------------------------------------------------------------------
 
 void GGS_templateInstructionIfBranchListAST::setter_append (const GGS_templateExpressionAST inOperand0,
-                                                            const GGS_templateInstructionListAST inOperand1,
+                                                            const GGS__5B_templateInstructionAST_5D_ inOperand1,
                                                             Compiler * /* inCompiler */
                                                             COMMA_LOCATION_ARGS) {
   const GGS_templateInstructionIfBranchListAST_2E_element newElement (inOperand0, inOperand1) ;
@@ -10728,7 +9268,7 @@ void GGS_templateInstructionIfBranchListAST::setter_append (const GGS_templateEx
 //--------------------------------------------------------------------------------------------------
 
 void GGS_templateInstructionIfBranchListAST::setter_insertAtIndex (const GGS_templateExpressionAST inOperand0,
-                                                                   const GGS_templateInstructionListAST inOperand1,
+                                                                   const GGS__5B_templateInstructionAST_5D_ inOperand1,
                                                                    const GGS_uint inInsertionIndex,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
@@ -10750,7 +9290,7 @@ void GGS_templateInstructionIfBranchListAST::setter_insertAtIndex (const GGS_tem
 //--------------------------------------------------------------------------------------------------
 
 void GGS_templateInstructionIfBranchListAST::setter_removeAtIndex (GGS_templateExpressionAST & outOperand0,
-                                                                   GGS_templateInstructionListAST & outOperand1,
+                                                                   GGS__5B_templateInstructionAST_5D_ & outOperand1,
                                                                    const GGS_uint inRemoveIndex,
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
@@ -10779,7 +9319,7 @@ void GGS_templateInstructionIfBranchListAST::setter_removeAtIndex (GGS_templateE
 //--------------------------------------------------------------------------------------------------
 
 void GGS_templateInstructionIfBranchListAST::setter_popFirst (GGS_templateExpressionAST & outOperand0,
-                                                              GGS_templateInstructionListAST & outOperand1,
+                                                              GGS__5B_templateInstructionAST_5D_ & outOperand1,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   bool removed = false ;
@@ -10803,7 +9343,7 @@ void GGS_templateInstructionIfBranchListAST::setter_popFirst (GGS_templateExpres
 //--------------------------------------------------------------------------------------------------
 
 void GGS_templateInstructionIfBranchListAST::setter_popLast (GGS_templateExpressionAST & outOperand0,
-                                                             GGS_templateInstructionListAST & outOperand1,
+                                                             GGS__5B_templateInstructionAST_5D_ & outOperand1,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   bool removed = false ;
@@ -10827,7 +9367,7 @@ void GGS_templateInstructionIfBranchListAST::setter_popLast (GGS_templateExpress
 //--------------------------------------------------------------------------------------------------
 
 void GGS_templateInstructionIfBranchListAST::method_first (GGS_templateExpressionAST & outOperand0,
-                                                           GGS_templateInstructionListAST & outOperand1,
+                                                           GGS__5B_templateInstructionAST_5D_ & outOperand1,
                                                            Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
   bool found = false ;
@@ -10850,7 +9390,7 @@ void GGS_templateInstructionIfBranchListAST::method_first (GGS_templateExpressio
 //--------------------------------------------------------------------------------------------------
 
 void GGS_templateInstructionIfBranchListAST::method_last (GGS_templateExpressionAST & outOperand0,
-                                                          GGS_templateInstructionListAST & outOperand1,
+                                                          GGS__5B_templateInstructionAST_5D_ & outOperand1,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
   bool found = false ;
@@ -11007,7 +9547,7 @@ GGS_templateExpressionAST GGS_templateInstructionIfBranchListAST::getter_mExpres
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_templateInstructionIfBranchListAST::setter_setMInstructionListAtIndex (GGS_templateInstructionListAST inOperand,
+void GGS_templateInstructionIfBranchListAST::setter_setMInstructionListAtIndex (GGS__5B_templateInstructionAST_5D_ inOperand,
                                                                                 GGS_uint inIndex,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
@@ -11026,10 +9566,10 @@ void GGS_templateInstructionIfBranchListAST::setter_setMInstructionListAtIndex (
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_templateInstructionListAST GGS_templateInstructionIfBranchListAST::getter_mInstructionListAtIndex (const GGS_uint & inIndex,
-                                                                                                       Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) const {
-  GGS_templateInstructionListAST result ;
+GGS__5B_templateInstructionAST_5D_ GGS_templateInstructionIfBranchListAST::getter_mInstructionListAtIndex (const GGS_uint & inIndex,
+                                                                                                           Compiler * inCompiler
+                                                                                                           COMMA_LOCATION_ARGS) const {
+  GGS__5B_templateInstructionAST_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < count ()) {
@@ -11068,7 +9608,7 @@ GGS_templateExpressionAST DownEnumerator_templateInstructionIfBranchListAST::cur
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_templateInstructionListAST DownEnumerator_templateInstructionIfBranchListAST::current_mInstructionList (LOCATION_ARGS) const {
+GGS__5B_templateInstructionAST_5D_ DownEnumerator_templateInstructionIfBranchListAST::current_mInstructionList (LOCATION_ARGS) const {
   return mArray (mIndex COMMA_THERE).mProperty_mInstructionList ;
 }
 
@@ -11097,7 +9637,7 @@ GGS_templateExpressionAST UpEnumerator_templateInstructionIfBranchListAST::curre
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_templateInstructionListAST UpEnumerator_templateInstructionIfBranchListAST::current_mInstructionList (LOCATION_ARGS) const {
+GGS__5B_templateInstructionAST_5D_ UpEnumerator_templateInstructionIfBranchListAST::current_mInstructionList (LOCATION_ARGS) const {
   return mArray (mIndex COMMA_THERE).mProperty_mInstructionList ;
 }
 
@@ -11147,7 +9687,7 @@ GGS_templateInstructionAST () {
 
 GGS_templateInstructionIfAST GGS_templateInstructionIfAST::
 init_21__21_ (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
-              const GGS_templateInstructionListAST & in_mElseInstructionList,
+              const GGS__5B_templateInstructionAST_5D_ & in_mElseInstructionList,
               Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   cPtr_templateInstructionIfAST * object = nullptr ;
@@ -11162,7 +9702,7 @@ init_21__21_ (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstruc
 
 void cPtr_templateInstructionIfAST::
 templateInstructionIfAST_init_21__21_ (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
-                                       const GGS_templateInstructionListAST & in_mElseInstructionList,
+                                       const GGS__5B_templateInstructionAST_5D_ & in_mElseInstructionList,
                                        Compiler * /* inCompiler */) {
   mProperty_mTemplateInstructionIfBranchList = in_mTemplateInstructionIfBranchList ;
   mProperty_mElseInstructionList = in_mElseInstructionList ;
@@ -11188,9 +9728,9 @@ GGS_templateInstructionIfBranchListAST GGS_templateInstructionIfAST::readPropert
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_templateInstructionListAST GGS_templateInstructionIfAST::readProperty_mElseInstructionList (void) const {
+GGS__5B_templateInstructionAST_5D_ GGS_templateInstructionIfAST::readProperty_mElseInstructionList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_templateInstructionListAST () ;
+    return GGS__5B_templateInstructionAST_5D_ () ;
   }else{
     cPtr_templateInstructionIfAST * p = (cPtr_templateInstructionIfAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionIfAST) ;
@@ -11211,7 +9751,7 @@ mProperty_mElseInstructionList () {
 //--------------------------------------------------------------------------------------------------
 
 cPtr_templateInstructionIfAST::cPtr_templateInstructionIfAST (const GGS_templateInstructionIfBranchListAST & in_mTemplateInstructionIfBranchList,
-                                                              const GGS_templateInstructionListAST & in_mElseInstructionList,
+                                                              const GGS__5B_templateInstructionAST_5D_ & in_mElseInstructionList,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) :
 cPtr_templateInstructionAST (inCompiler COMMA_THERE),
@@ -16245,5 +14785,1623 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFuncExpressionAST ("clas
 
 const GALGAS_TypeDescriptor * GGS_classFuncExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_classFuncExpressionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_classFuncExpressionAST_2E_weak::objectCompare (const GGS_classFuncExpressionAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classFuncExpressionAST_2E_weak::GGS_classFuncExpressionAST_2E_weak (void) :
+GGS_semanticExpressionAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classFuncExpressionAST_2E_weak & GGS_classFuncExpressionAST_2E_weak::operator = (const GGS_classFuncExpressionAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classFuncExpressionAST_2E_weak::GGS_classFuncExpressionAST_2E_weak (const GGS_classFuncExpressionAST & inSource) :
+GGS_semanticExpressionAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classFuncExpressionAST_2E_weak GGS_classFuncExpressionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_classFuncExpressionAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classFuncExpressionAST GGS_classFuncExpressionAST_2E_weak::unwrappedValue (void) const {
+  GGS_classFuncExpressionAST result ;
+  if (isValid ()) {
+    const cPtr_classFuncExpressionAST * p = (cPtr_classFuncExpressionAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_classFuncExpressionAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_classFuncExpressionAST GGS_classFuncExpressionAST_2E_weak::bang_classFuncExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_classFuncExpressionAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_classFuncExpressionAST) ;
+      result = GGS_classFuncExpressionAST ((cPtr_classFuncExpressionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @classFuncExpressionAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFuncExpressionAST_2E_weak ("classFuncExpressionAST.weak",
+                                                                                   & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_classFuncExpressionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_classFuncExpressionAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_semanticExpressionForGeneration_2E_weak::objectCompare (const GGS_semanticExpressionForGeneration_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration_2E_weak::GGS_semanticExpressionForGeneration_2E_weak (void) :
+AC_GALGAS_weak_reference () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration_2E_weak & GGS_semanticExpressionForGeneration_2E_weak::operator = (const GGS_semanticExpressionForGeneration & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration_2E_weak::GGS_semanticExpressionForGeneration_2E_weak (const GGS_semanticExpressionForGeneration & inSource) :
+AC_GALGAS_weak_reference (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration_2E_weak GGS_semanticExpressionForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_semanticExpressionForGeneration_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration GGS_semanticExpressionForGeneration_2E_weak::unwrappedValue (void) const {
+  GGS_semanticExpressionForGeneration result ;
+  if (isValid ()) {
+    const cPtr_semanticExpressionForGeneration * p = (cPtr_semanticExpressionForGeneration *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_semanticExpressionForGeneration (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration GGS_semanticExpressionForGeneration_2E_weak::bang_semanticExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_semanticExpressionForGeneration result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_semanticExpressionForGeneration) ;
+      result = GGS_semanticExpressionForGeneration ((cPtr_semanticExpressionForGeneration *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @semanticExpressionForGeneration.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak ("semanticExpressionForGeneration.weak",
+                                                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_semanticExpressionForGeneration_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_semanticExpressionForGeneration_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@collectionValueElementList' list
+//--------------------------------------------------------------------------------------------------
+
+class CollectionElementPtr_collectionValueElementList : public CollectionElementPtr {
+  public: GGS_collectionValueElementList_2E_element mObject ;
+
+//--- Class functions
+  public: CollectionElementPtr_collectionValueElementList (const GGS_semanticExpressionAST & in_mExpression,
+                                                           const GGS_location & in_location
+                                                           COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_collectionValueElementList (const GGS_collectionValueElementList_2E_element & inElement COMMA_LOCATION_ARGS) ;
+
+//--- Virtual proc that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual proc that returns a copy of current object
+  public: virtual CollectionElementPtr * copy (void) ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+CollectionElementPtr_collectionValueElementList::CollectionElementPtr_collectionValueElementList (const GGS_semanticExpressionAST & in_mExpression,
+                                                                                                  const GGS_location & in_location
+                                                                                                  COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
+mObject (in_mExpression, in_location) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+CollectionElementPtr_collectionValueElementList::CollectionElementPtr_collectionValueElementList (const GGS_collectionValueElementList_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
+mObject (inElement.mProperty_mExpression, inElement.mProperty_location) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool CollectionElementPtr_collectionValueElementList::isValid (void) const {
+  return true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+CollectionElementPtr * CollectionElementPtr_collectionValueElementList::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_collectionValueElementList (mObject.mProperty_mExpression, mObject.mProperty_location COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// List type @collectionValueElementList
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementList::GGS_collectionValueElementList (void) :
+mArray () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementList::GGS_collectionValueElementList (const CollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_collectionValueElementList * p = (CollectionElementPtr_collectionValueElementList *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_collectionValueElementList) ;
+    const GGS_collectionValueElementList_2E_element element (p->mObject.mProperty_mExpression, p->mObject.mProperty_location) ;
+    mArray.appendObject (element) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementList::makeAttributesFromObjects (CollectionElement & outAttributes,
+                                                                const GGS_semanticExpressionAST & in_mExpression,
+                                                                const GGS_location & in_location
+                                                                COMMA_LOCATION_ARGS) {
+  CollectionElementPtr_collectionValueElementList * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_collectionValueElementList (in_mExpression, in_location COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_collectionValueElementList::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS_collectionValueElementList::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementList::description (String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("mExpression:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_mExpression.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("location:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_location.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementList GGS_collectionValueElementList::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_collectionValueElementList result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementList::plusPlusAssignOperation (const GGS_collectionValueElementList_2E_element & inValue
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementList GGS_collectionValueElementList::class_func_listWithValue (const GGS_semanticExpressionAST & inOperand0,
+                                                                                         const GGS_location & inOperand1
+                                                                                         COMMA_LOCATION_ARGS) {
+  const GGS_collectionValueElementList_2E_element element (inOperand0, inOperand1) ;
+  GGS_collectionValueElementList result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementList::addAssignOperation (const GGS_semanticExpressionAST & inOperand0,
+                                                         const GGS_location & inOperand1
+                                                         COMMA_LOCATION_ARGS) {
+  const GGS_collectionValueElementList_2E_element newElement (inOperand0, inOperand1) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementList::setter_append (const GGS_semanticExpressionAST inOperand0,
+                                                    const GGS_location inOperand1,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_LOCATION_ARGS) {
+  const GGS_collectionValueElementList_2E_element newElement (inOperand0, inOperand1) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementList::setter_insertAtIndex (const GGS_semanticExpressionAST inOperand0,
+                                                           const GGS_location inOperand1,
+                                                           const GGS_uint inInsertionIndex,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+  const GGS_collectionValueElementList_2E_element newElement (inOperand0, inOperand1) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementList::setter_removeAtIndex (GGS_semanticExpressionAST & outOperand0,
+                                                           GGS_location & outOperand1,
+                                                           const GGS_uint inRemoveIndex,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+  bool removed = false ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_mExpression ;
+      outOperand1 = mArray (idx COMMA_HERE).mProperty_location ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
+    }else{
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementList::setter_popFirst (GGS_semanticExpressionAST & outOperand0,
+                                                      GGS_location & outOperand1,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mExpression ;
+      outOperand1 = mArray (0 COMMA_THERE).mProperty_location ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementList::setter_popLast (GGS_semanticExpressionAST & outOperand0,
+                                                     GGS_location & outOperand1,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mExpression ;
+      outOperand1 = mArray.lastObject (HERE).mProperty_location ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementList::method_first (GGS_semanticExpressionAST & outOperand0,
+                                                   GGS_location & outOperand1,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_mExpression ;
+      outOperand1 = mArray (0 COMMA_THERE).mProperty_location ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementList::method_last (GGS_semanticExpressionAST & outOperand0,
+                                                  GGS_location & outOperand1,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_mExpression ;
+      outOperand1 = mArray.lastObject (HERE).mProperty_location ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementList GGS_collectionValueElementList::add_operation (const GGS_collectionValueElementList & inOperand,
+                                                                              Compiler * /* inCompiler */
+                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_collectionValueElementList result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementList GGS_collectionValueElementList::subList (const int32_t inStart,
+                                                                        const int32_t inLength,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const {
+  GGS_collectionValueElementList result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementList GGS_collectionValueElementList::getter_subListWithRange (const GGS_range & inRange,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GGS_collectionValueElementList result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementList GGS_collectionValueElementList::getter_subListFromIndex (const GGS_uint & inIndex,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GGS_collectionValueElementList result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementList GGS_collectionValueElementList::getter_subListToIndex (const GGS_uint & inIndex,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const {
+  GGS_collectionValueElementList result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementList::plusAssignOperation (const GGS_collectionValueElementList inList,
+                                                          Compiler * /* inCompiler */
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementList::setter_setMExpressionAtIndex (GGS_semanticExpressionAST inOperand,
+                                                                   GGS_uint inIndex,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_mExpression = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionAST GGS_collectionValueElementList::getter_mExpressionAtIndex (const GGS_uint & inIndex,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) const {
+  GGS_semanticExpressionAST result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_mExpression ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementList::setter_setLocationAtIndex (GGS_location inOperand,
+                                                                GGS_uint inIndex,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_location = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_collectionValueElementList::getter_locationAtIndex (const GGS_uint & inIndex,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_location ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @collectionValueElementList
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_collectionValueElementList::DownEnumerator_collectionValueElementList (const GGS_collectionValueElementList & inEnumeratedObject) :
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementList_2E_element DownEnumerator_collectionValueElementList::current (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionAST DownEnumerator_collectionValueElementList::current_mExpression (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location DownEnumerator_collectionValueElementList::current_location (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_location ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @collectionValueElementList
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_collectionValueElementList::UpEnumerator_collectionValueElementList (const GGS_collectionValueElementList & inEnumeratedObject) :
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementList_2E_element UpEnumerator_collectionValueElementList::current (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionAST UpEnumerator_collectionValueElementList::current_mExpression (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_mExpression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location UpEnumerator_collectionValueElementList::current_location (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_location ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//     @collectionValueElementList generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_collectionValueElementList ("collectionValueElementList",
+                                                                               nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_collectionValueElementList::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_collectionValueElementList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @collectionValueAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_collectionValueAST::objectCompare (const GGS_collectionValueAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueAST::GGS_collectionValueAST (void) :
+GGS_semanticExpressionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_collectionValueAST GGS_collectionValueAST::
+init_21__21__21_ (const GGS_lstring & in_mTypeName,
+                  const GGS_collectionValueElementList & in_mExpressionList,
+                  const GGS_location & in_mEndOfCollectionValue,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_collectionValueAST * object = nullptr ;
+  macroMyNew (object, cPtr_collectionValueAST (inCompiler COMMA_THERE)) ;
+  object->collectionValueAST_init_21__21__21_ (in_mTypeName, in_mExpressionList, in_mEndOfCollectionValue, inCompiler) ;
+  const GGS_collectionValueAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_collectionValueAST::
+collectionValueAST_init_21__21__21_ (const GGS_lstring & in_mTypeName,
+                                     const GGS_collectionValueElementList & in_mExpressionList,
+                                     const GGS_location & in_mEndOfCollectionValue,
+                                     Compiler * /* inCompiler */) {
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+  mProperty_mEndOfCollectionValue = in_mEndOfCollectionValue ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueAST::GGS_collectionValueAST (const cPtr_collectionValueAST * inSourcePtr) :
+GGS_semanticExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_collectionValueAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_collectionValueAST::readProperty_mTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_collectionValueAST * p = (cPtr_collectionValueAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_collectionValueAST) ;
+    return p->mProperty_mTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementList GGS_collectionValueAST::readProperty_mExpressionList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_collectionValueElementList () ;
+  }else{
+    cPtr_collectionValueAST * p = (cPtr_collectionValueAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_collectionValueAST) ;
+    return p->mProperty_mExpressionList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_collectionValueAST::readProperty_mEndOfCollectionValue (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_collectionValueAST * p = (cPtr_collectionValueAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_collectionValueAST) ;
+    return p->mProperty_mEndOfCollectionValue ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @collectionValueAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_collectionValueAST::cPtr_collectionValueAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
+mProperty_mTypeName (),
+mProperty_mExpressionList (),
+mProperty_mEndOfCollectionValue () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_collectionValueAST::cPtr_collectionValueAST (const GGS_lstring & in_mTypeName,
+                                                  const GGS_collectionValueElementList & in_mExpressionList,
+                                                  const GGS_location & in_mEndOfCollectionValue,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionAST (inCompiler COMMA_THERE),
+mProperty_mTypeName (),
+mProperty_mExpressionList (),
+mProperty_mEndOfCollectionValue () {
+  mProperty_mTypeName = in_mTypeName ;
+  mProperty_mExpressionList = in_mExpressionList ;
+  mProperty_mEndOfCollectionValue = in_mEndOfCollectionValue ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_collectionValueAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_collectionValueAST ;
+}
+
+void cPtr_collectionValueAST::description (String & ioString,
+                                           const int32_t inIndentation) const {
+  ioString.appendCString ("[@collectionValueAST:") ;
+  mProperty_mTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExpressionList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfCollectionValue.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_collectionValueAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_collectionValueAST (mProperty_mTypeName, mProperty_mExpressionList, mProperty_mEndOfCollectionValue, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_collectionValueAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mTypeName.printNonNullClassInstanceProperties ("mTypeName") ;
+    mProperty_mExpressionList.printNonNullClassInstanceProperties ("mExpressionList") ;
+    mProperty_mEndOfCollectionValue.printNonNullClassInstanceProperties ("mEndOfCollectionValue") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @collectionValueAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_collectionValueAST ("collectionValueAST",
+                                                                       & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_collectionValueAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_collectionValueAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_collectionValueAST_2E_weak::objectCompare (const GGS_collectionValueAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueAST_2E_weak::GGS_collectionValueAST_2E_weak (void) :
+GGS_semanticExpressionAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueAST_2E_weak & GGS_collectionValueAST_2E_weak::operator = (const GGS_collectionValueAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueAST_2E_weak::GGS_collectionValueAST_2E_weak (const GGS_collectionValueAST & inSource) :
+GGS_semanticExpressionAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueAST_2E_weak GGS_collectionValueAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_collectionValueAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueAST GGS_collectionValueAST_2E_weak::unwrappedValue (void) const {
+  GGS_collectionValueAST result ;
+  if (isValid ()) {
+    const cPtr_collectionValueAST * p = (cPtr_collectionValueAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_collectionValueAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueAST GGS_collectionValueAST_2E_weak::bang_collectionValueAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_collectionValueAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_collectionValueAST) ;
+      result = GGS_collectionValueAST ((cPtr_collectionValueAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @collectionValueAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_collectionValueAST_2E_weak ("collectionValueAST.weak",
+                                                                               & kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_collectionValueAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_collectionValueAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Class for element of '@collectionValueElementListForGeneration' list
+//--------------------------------------------------------------------------------------------------
+
+class CollectionElementPtr_collectionValueElementListForGeneration : public CollectionElementPtr {
+  public: GGS_collectionValueElementListForGeneration_2E_element mObject ;
+
+//--- Class functions
+  public: CollectionElementPtr_collectionValueElementListForGeneration (const GGS_semanticExpressionForGeneration & in_expression,
+                                                                        const GGS_location & in_location
+                                                                        COMMA_LOCATION_ARGS) ;
+  public: CollectionElementPtr_collectionValueElementListForGeneration (const GGS_collectionValueElementListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) ;
+
+//--- Virtual proc that checks that all attributes are valid
+  public: virtual bool isValid (void) const ;
+
+//--- Virtual proc that returns a copy of current object
+  public: virtual CollectionElementPtr * copy (void) ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+CollectionElementPtr_collectionValueElementListForGeneration::CollectionElementPtr_collectionValueElementListForGeneration (const GGS_semanticExpressionForGeneration & in_expression,
+                                                                                                                            const GGS_location & in_location
+                                                                                                                            COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
+mObject (in_expression, in_location) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+CollectionElementPtr_collectionValueElementListForGeneration::CollectionElementPtr_collectionValueElementListForGeneration (const GGS_collectionValueElementListForGeneration_2E_element & inElement COMMA_LOCATION_ARGS) :
+CollectionElementPtr (THERE),
+mObject (inElement.mProperty_expression, inElement.mProperty_location) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool CollectionElementPtr_collectionValueElementListForGeneration::isValid (void) const {
+  return true ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+CollectionElementPtr * CollectionElementPtr_collectionValueElementListForGeneration::copy (void) {
+  CollectionElementPtr * result = nullptr ;
+  macroMyNew (result, CollectionElementPtr_collectionValueElementListForGeneration (mObject.mProperty_expression, mObject.mProperty_location COMMA_HERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// List type @collectionValueElementListForGeneration
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementListForGeneration::GGS_collectionValueElementListForGeneration (void) :
+mArray () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementListForGeneration::GGS_collectionValueElementListForGeneration (const CollectionElementArray & inArray) :
+mArray () {
+  mArray.setCapacity (std::max (16, int32_t (inArray.count ()))) ;
+  for (uint32_t i = 0 ; i < inArray.count () ; i++) {
+    const CollectionElement v = inArray.objectAtIndex (i COMMA_HERE) ;
+    CollectionElementPtr_collectionValueElementListForGeneration * p = (CollectionElementPtr_collectionValueElementListForGeneration *) v.ptr () ;
+    macroValidSharedObject (p, CollectionElementPtr_collectionValueElementListForGeneration) ;
+    const GGS_collectionValueElementListForGeneration_2E_element element (p->mObject.mProperty_expression, p->mObject.mProperty_location) ;
+    mArray.appendObject (element) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementListForGeneration::makeAttributesFromObjects (CollectionElement & outAttributes,
+                                                                             const GGS_semanticExpressionForGeneration & in_expression,
+                                                                             const GGS_location & in_location
+                                                                             COMMA_LOCATION_ARGS) {
+  CollectionElementPtr_collectionValueElementListForGeneration * p = nullptr ;
+  macroMyNew (p, CollectionElementPtr_collectionValueElementListForGeneration (in_expression, in_location COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_collectionValueElementListForGeneration::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_range GGS_collectionValueElementListForGeneration::getter_range (UNUSED_LOCATION_ARGS) const {
+  GGS_range result ;
+  if (isValid ()) {
+    result = GGS_range (0, count ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementListForGeneration::description (String & ioString,
+                                                               const int32_t inIndentation) const {
+  ioString.appendCString ("<list @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (" (") ;
+  ioString.appendUnsigned (count()) ;
+  ioString.appendCString (" object") ;
+  ioString.appendString ((count() > 1) ? "s" : "") ;
+  ioString.appendCString ("):") ;
+  if (isValid ()) {
+    for (uint32_t i = 0 ; i < count () ; i++) {
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation) ;
+      ioString.appendString ("|-at ") ;
+      ioString.appendUnsigned (i) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("expression:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_expression.description (ioString, inIndentation + 1) ;
+      ioString.appendNewLine () ;
+      ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+      ioString.appendString ("location:") ;
+      mArray (int32_t (i) COMMA_HERE).mProperty_location.description (ioString, inIndentation + 1) ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementListForGeneration GGS_collectionValueElementListForGeneration::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_collectionValueElementListForGeneration result ;
+  result.mArray.setCapacity (16) ; // Build
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementListForGeneration::plusPlusAssignOperation (const GGS_collectionValueElementListForGeneration_2E_element & inValue
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid ()) {
+    mArray.appendObject (inValue) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementListForGeneration GGS_collectionValueElementListForGeneration::class_func_listWithValue (const GGS_semanticExpressionForGeneration & inOperand0,
+                                                                                                                   const GGS_location & inOperand1
+                                                                                                                   COMMA_LOCATION_ARGS) {
+  const GGS_collectionValueElementListForGeneration_2E_element element (inOperand0, inOperand1) ;
+  GGS_collectionValueElementListForGeneration result ;
+  if (element.isValid ()) {
+    result.mArray.setCapacity (16) ; // Build
+    result.plusPlusAssignOperation (element COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementListForGeneration::addAssignOperation (const GGS_semanticExpressionForGeneration & inOperand0,
+                                                                      const GGS_location & inOperand1
+                                                                      COMMA_LOCATION_ARGS) {
+  const GGS_collectionValueElementListForGeneration_2E_element newElement (inOperand0, inOperand1) ;
+  plusPlusAssignOperation (newElement COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementListForGeneration::setter_append (const GGS_semanticExpressionForGeneration inOperand0,
+                                                                 const GGS_location inOperand1,
+                                                                 Compiler * /* inCompiler */
+                                                                 COMMA_LOCATION_ARGS) {
+  const GGS_collectionValueElementListForGeneration_2E_element newElement (inOperand0, inOperand1) ;
+  if (isValid () && newElement.isValid ()) {
+    plusPlusAssignOperation (newElement COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementListForGeneration::setter_insertAtIndex (const GGS_semanticExpressionForGeneration inOperand0,
+                                                                        const GGS_location inOperand1,
+                                                                        const GGS_uint inInsertionIndex,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  const GGS_collectionValueElementListForGeneration_2E_element newElement (inOperand0, inOperand1) ;
+  if (isValid () && inInsertionIndex.isValid () && newElement.isValid ()) {
+    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
+    if (idx <= mArray.count ()) {
+      mArray.insertObjectAtIndex (newElement, idx COMMA_THERE) ;
+    }else{
+      String message = "cannot insert at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementListForGeneration::setter_removeAtIndex (GGS_semanticExpressionForGeneration & outOperand0,
+                                                                        GGS_location & outOperand1,
+                                                                        const GGS_uint inRemoveIndex,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  bool removed = false ;
+  if (isValid () && inRemoveIndex.isValid ()) {
+    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
+    if (idx < mArray.count ()) {
+      removed = true ;
+      outOperand0 = mArray (idx COMMA_HERE).mProperty_expression ;
+      outOperand1 = mArray (idx COMMA_HERE).mProperty_location ;
+      mArray.removeObjectAtIndex (idx COMMA_HERE) ;
+    }else{
+      String message = "cannot remove at index " ;
+      message.appendSigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementListForGeneration::setter_popFirst (GGS_semanticExpressionForGeneration & outOperand0,
+                                                                   GGS_location & outOperand1,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_expression ;
+      outOperand1 = mArray (0 COMMA_THERE).mProperty_location ;
+      mArray.removeObjectAtIndex (0 COMMA_HERE) ;
+    }else{
+      const String message = "cannot remove first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementListForGeneration::setter_popLast (GGS_semanticExpressionForGeneration & outOperand0,
+                                                                  GGS_location & outOperand1,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  bool removed = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      removed = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_expression ;
+      outOperand1 = mArray.lastObject (HERE).mProperty_location ;
+      mArray.removeLastObject (HERE) ;
+    }else{
+      const String message = "cannot remove last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!removed) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementListForGeneration::method_first (GGS_semanticExpressionForGeneration & outOperand0,
+                                                                GGS_location & outOperand1,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray (0 COMMA_THERE).mProperty_expression ;
+      outOperand1 = mArray (0 COMMA_THERE).mProperty_location ;
+    }else{
+      const String message = "cannot get first element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementListForGeneration::method_last (GGS_semanticExpressionForGeneration & outOperand0,
+                                                               GGS_location & outOperand1,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const {
+  bool found = false ;
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      found = true ;
+      outOperand0 = mArray.lastObject (HERE).mProperty_expression ;
+      outOperand1 = mArray.lastObject (HERE).mProperty_location ;
+    }else{
+      const String message = "cannot get last element, list is empty" ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (!found) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementListForGeneration GGS_collectionValueElementListForGeneration::add_operation (const GGS_collectionValueElementListForGeneration & inOperand,
+                                                                                                        Compiler * /* inCompiler */
+                                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_collectionValueElementListForGeneration result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.mArray.setCapacity (1 + result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i = 0 ; i < inOperand.mArray.count () ; i++) {
+      result.mArray.appendObject (inOperand.mArray (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementListForGeneration GGS_collectionValueElementListForGeneration::subList (const int32_t inStart,
+                                                                                                  const int32_t inLength,
+                                                                                                  Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_collectionValueElementListForGeneration result ;
+  const bool ok = (inStart >= 0) && (inLength >= 0) && ((inStart + inLength) <= int32_t (count ())) ;
+  if (ok) {
+    result.mArray.setCapacity (std::max (16, inLength)) ;
+    for (int32_t i = inStart ; i < (inStart + inLength) ; i++) {
+      result.mArray.appendObject (mArray (i COMMA_HERE)) ;
+    }
+  }else{
+    String message = "cannot get sublist [start: " ;
+    message.appendSigned (inStart) ;
+    message.appendCString (", length: ") ;
+    message.appendSigned (inLength) ;
+    message.appendCString ("], list count is ") ;
+    message.appendSigned (mArray.count ()) ;
+    inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementListForGeneration GGS_collectionValueElementListForGeneration::getter_subListWithRange (const GGS_range & inRange,
+                                                                                                                  Compiler * inCompiler
+                                                                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_collectionValueElementListForGeneration result ;
+  if (isValid () && inRange.isValid ()) {
+    const int32_t start  = int32_t (inRange.mProperty_start.uintValue ()) ;
+    const int32_t length = int32_t (inRange.mProperty_length.uintValue ()) ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementListForGeneration GGS_collectionValueElementListForGeneration::getter_subListFromIndex (const GGS_uint & inIndex,
+                                                                                                                  Compiler * inCompiler
+                                                                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_collectionValueElementListForGeneration result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = int32_t (inIndex.uintValue ()) ;
+    const int32_t length = int32_t (count ()) - start ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementListForGeneration GGS_collectionValueElementListForGeneration::getter_subListToIndex (const GGS_uint & inIndex,
+                                                                                                                Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) const {
+  GGS_collectionValueElementListForGeneration result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t start  = 0 ;
+    const int32_t length = int32_t (inIndex.uintValue ()) + 1 ;
+    result = subList (start, length, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementListForGeneration::plusAssignOperation (const GGS_collectionValueElementListForGeneration inList,
+                                                                       Compiler * /* inCompiler */
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inList.isValid ()) {
+    mArray.setCapacity (1 + mArray.count () + inList.mArray.count ()) ;
+    for (int32_t i=0 ; i < int32_t (inList.count ()) ; i++) {
+      mArray.appendObject (inList.mArray (i COMMA_HERE)) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementListForGeneration::setter_setExpressionAtIndex (GGS_semanticExpressionForGeneration inOperand,
+                                                                               GGS_uint inIndex,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_expression = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration GGS_collectionValueElementListForGeneration::getter_expressionAtIndex (const GGS_uint & inIndex,
+                                                                                                           Compiler * inCompiler
+                                                                                                           COMMA_LOCATION_ARGS) const {
+  GGS_semanticExpressionForGeneration result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_expression ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_collectionValueElementListForGeneration::setter_setLocationAtIndex (GGS_location inOperand,
+                                                                             GGS_uint inIndex,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      mArray (int32_t (idx) COMMA_HERE).mProperty_location = inOperand ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_collectionValueElementListForGeneration::getter_locationAtIndex (const GGS_uint & inIndex,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inIndex.isValid ()) {
+    const uint32_t idx = inIndex.uintValue () ;
+    if (idx < count ()) {
+      result = mArray (int32_t (idx) COMMA_HERE).mProperty_location ;
+    }else{
+      String message = "cannot access at index " ;
+      message.appendUnsigned (idx) ;
+      message.appendCString (", list count is ") ;
+      message.appendSigned (mArray.count ()) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @collectionValueElementListForGeneration
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_collectionValueElementListForGeneration::DownEnumerator_collectionValueElementListForGeneration (const GGS_collectionValueElementListForGeneration & inEnumeratedObject) :
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+  mIndex = mArray.count () - 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementListForGeneration_2E_element DownEnumerator_collectionValueElementListForGeneration::current (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration DownEnumerator_collectionValueElementListForGeneration::current_expression (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_expression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location DownEnumerator_collectionValueElementListForGeneration::current_location (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_location ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @collectionValueElementListForGeneration
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_collectionValueElementListForGeneration::UpEnumerator_collectionValueElementListForGeneration (const GGS_collectionValueElementListForGeneration & inEnumeratedObject) :
+mArray (inEnumeratedObject.sortedElementArray ()),
+mIndex (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_collectionValueElementListForGeneration_2E_element UpEnumerator_collectionValueElementListForGeneration::current (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionForGeneration UpEnumerator_collectionValueElementListForGeneration::current_expression (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_expression ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location UpEnumerator_collectionValueElementListForGeneration::current_location (LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_THERE).mProperty_location ;
+}
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+//     @collectionValueElementListForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_collectionValueElementListForGeneration ("collectionValueElementListForGeneration",
+                                                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_collectionValueElementListForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_collectionValueElementListForGeneration ;
 }
 

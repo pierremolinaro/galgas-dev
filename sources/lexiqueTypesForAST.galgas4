@@ -33,12 +33,6 @@ abstract class @lexicalInstructionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @lexicalInstructionListAST {
-  public let @lexicalInstructionAST mInstruction
-}
-
-//--------------------------------------------------------------------------------------------------
-
 list @templateDelimitorListAST {
   public let @lstring mStartString
   public let @bool nonAtomicSelection #initArgLabel
@@ -85,7 +79,7 @@ final class @lexicalImplicitRuleAST : @abstractLexicalRuleAST {
 
 final class @lexicalExplicitRuleAST : @abstractLexicalRuleAST {
   private let @lexicalExpressionAST mLexicalRuleExpression
-  private let @lexicalInstructionListAST mInstructionList
+  private let [@lexicalInstructionAST] mInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -213,14 +207,14 @@ final class @lexicalErrorByDefaultAST : @lexicalSendDefaultActionAST {
 
 list @lexicalWhileBranchListAST {
   public let @lexicalExpressionAST mWhileExpression
-  public let @lexicalInstructionListAST mWhileInstructionList
+  public let [@lexicalInstructionAST] mWhileInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------
 
 list @lexicalSelectBranchListAST {
   public let @lexicalExpressionAST mSelectExpression
-  public let @lexicalInstructionListAST mSelectInstructionList
+  public let [@lexicalInstructionAST] mSelectInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------

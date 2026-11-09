@@ -18,7 +18,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-list @terminalList {
+struct @terminalAST {
   public let @lstring mTerminalName
   public let @lexicalSentValueList mSentAttributeList
   public let @string mSyntaxErrorMessage
@@ -70,7 +70,7 @@ map @lexicalMessageMap {
 
 //--------------------------------------------------------------------------------------------------
 
-list @lexicalRoutineFormalArgumentList {
+struct @lexicalRoutineFormalArgumentAST {
   public let @lexicalArgumentModeAST mLexicalFormalArgumentMode
   public let @lexicalTypeEnum mLexicalFormalArgumentType
   public let @string mArgumentNameForComment
@@ -79,7 +79,7 @@ list @lexicalRoutineFormalArgumentList {
 //--------------------------------------------------------------------------------------------------
 
 map @lexicalRoutineMap {
-  public let @lexicalRoutineFormalArgumentList mLexicalRoutineFormalArgumentList
+  public let [@lexicalRoutineFormalArgumentAST] mLexicalRoutineFormalArgumentList
   public let [@string] mErrorMessageList
   public let @bool mIsExtern
   #insertSetter insertKey #errorMessage "the '%K' lexical routine has been already declared"
@@ -88,7 +88,7 @@ map @lexicalRoutineMap {
 
 //--------------------------------------------------------------------------------------------------
 
-list @lexicalFunctionFormalArgumentList {
+struct @lexicalFunctionFormalArgumentAST {
   public let @lexicalTypeEnum mLexicalType
   public let @string mArgumentNameForComment
 }
@@ -96,7 +96,7 @@ list @lexicalFunctionFormalArgumentList {
 //--------------------------------------------------------------------------------------------------
 
 map @lexicalFunctionMap {
-  public let @lexicalFunctionFormalArgumentList mLexicalTypeList
+  public let [@lexicalFunctionFormalArgumentAST] mLexicalTypeList
   public let @lexicalTypeEnum mReturnedLexicalType
   public let @string mReplacementFunctionName // If obsolete, the name of replacement routine
   public let @bool mIsExtern
@@ -140,8 +140,8 @@ struct @lexiqueAnalysisContext {
   public let @lexicalFunctionMap mLexicalFunctionMap
   public var @lexicalMessageMap mLexicalMessageMap
   public var @terminalMap mTerminalMap
-  public var @terminalList mTerminalList
-  public var  @lexicalAttributeMap mLexicalAttributeMap
+  public var [@terminalAST] mTerminalList
+  public var @lexicalAttributeMap mLexicalAttributeMap
   public var @lexicalExplicitTokenListMapMap mLexicalTokenListMap
   public var @stringset mUnicodeStringToGenerate
   public var @templateDelimitorList mTemplateDelimitorList
