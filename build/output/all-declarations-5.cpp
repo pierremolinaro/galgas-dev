@@ -3627,7 +3627,6 @@ mProperty_mLSIntType (),
 mProperty_mLUInt_36__34_Type (),
 mProperty_mLSInt_36__34_Type (),
 mProperty_mLDoubleType (),
-mProperty_mStringListType (),
 mProperty_mLBigIntType (),
 mProperty_mBigIntType (),
 mProperty_mStringSetType (),
@@ -3655,7 +3654,6 @@ mProperty_mLSIntType (inSource.mProperty_mLSIntType),
 mProperty_mLUInt_36__34_Type (inSource.mProperty_mLUInt_36__34_Type),
 mProperty_mLSInt_36__34_Type (inSource.mProperty_mLSInt_36__34_Type),
 mProperty_mLDoubleType (inSource.mProperty_mLDoubleType),
-mProperty_mStringListType (inSource.mProperty_mStringListType),
 mProperty_mLBigIntType (inSource.mProperty_mLBigIntType),
 mProperty_mBigIntType (inSource.mProperty_mBigIntType),
 mProperty_mStringSetType (inSource.mProperty_mStringSetType),
@@ -3683,7 +3681,6 @@ GGS_predefinedTypes & GGS_predefinedTypes::operator = (const GGS_predefinedTypes
   mProperty_mLUInt_36__34_Type = inSource.mProperty_mLUInt_36__34_Type ;
   mProperty_mLSInt_36__34_Type = inSource.mProperty_mLSInt_36__34_Type ;
   mProperty_mLDoubleType = inSource.mProperty_mLDoubleType ;
-  mProperty_mStringListType = inSource.mProperty_mStringListType ;
   mProperty_mLBigIntType = inSource.mProperty_mLBigIntType ;
   mProperty_mBigIntType = inSource.mProperty_mBigIntType ;
   mProperty_mStringSetType = inSource.mProperty_mStringSetType ;
@@ -3694,31 +3691,30 @@ GGS_predefinedTypes & GGS_predefinedTypes::operator = (const GGS_predefinedTypes
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_predefinedTypes GGS_predefinedTypes::init_21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mLocationType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mBoolType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mCharType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mStringType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mUIntType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mSIntType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mUInt_36__34_Type,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mSInt_36__34_Type,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mDoubleType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mLBoolType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mLCharType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mLStringType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mLUIntType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mLSIntType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mLUInt_36__34_Type,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mLSInt_36__34_Type,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mLDoubleType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mStringListType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mLBigIntType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mBigIntType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mStringSetType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mStringArrayType,
-                                                                                                                                           const GGS_unifiedTypeMapEntry & in_mLStringArrayType,
-                                                                                                                                           Compiler * inCompiler
-                                                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+GGS_predefinedTypes GGS_predefinedTypes::init_21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mLocationType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mBoolType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mCharType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mStringType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mUIntType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mSIntType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mUInt_36__34_Type,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mSInt_36__34_Type,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mDoubleType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mLBoolType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mLCharType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mLStringType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mLUIntType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mLSIntType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mLUInt_36__34_Type,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mLSInt_36__34_Type,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mLDoubleType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mLBigIntType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mBigIntType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mStringSetType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mStringArrayType,
+                                                                                                                                       const GGS_unifiedTypeMapEntry & in_mLStringArrayType,
+                                                                                                                                       Compiler * inCompiler
+                                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GGS_predefinedTypes result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_mLocationType = in_mLocationType ;
@@ -3738,7 +3734,6 @@ GGS_predefinedTypes GGS_predefinedTypes::init_21__21__21__21__21__21__21__21__21
   result.mProperty_mLUInt_36__34_Type = in_mLUInt_36__34_Type ;
   result.mProperty_mLSInt_36__34_Type = in_mLSInt_36__34_Type ;
   result.mProperty_mLDoubleType = in_mLDoubleType ;
-  result.mProperty_mStringListType = in_mStringListType ;
   result.mProperty_mLBigIntType = in_mLBigIntType ;
   result.mProperty_mBigIntType = in_mBigIntType ;
   result.mProperty_mStringSetType = in_mStringSetType ;
@@ -3775,8 +3770,7 @@ GGS_predefinedTypes::GGS_predefinedTypes (const GGS_unifiedTypeMapEntry & inOper
                                           const GGS_unifiedTypeMapEntry & inOperand18,
                                           const GGS_unifiedTypeMapEntry & inOperand19,
                                           const GGS_unifiedTypeMapEntry & inOperand20,
-                                          const GGS_unifiedTypeMapEntry & inOperand21,
-                                          const GGS_unifiedTypeMapEntry & inOperand22) :
+                                          const GGS_unifiedTypeMapEntry & inOperand21) :
 mProperty_mLocationType (inOperand0),
 mProperty_mBoolType (inOperand1),
 mProperty_mCharType (inOperand2),
@@ -3794,18 +3788,17 @@ mProperty_mLSIntType (inOperand13),
 mProperty_mLUInt_36__34_Type (inOperand14),
 mProperty_mLSInt_36__34_Type (inOperand15),
 mProperty_mLDoubleType (inOperand16),
-mProperty_mStringListType (inOperand17),
-mProperty_mLBigIntType (inOperand18),
-mProperty_mBigIntType (inOperand19),
-mProperty_mStringSetType (inOperand20),
-mProperty_mStringArrayType (inOperand21),
-mProperty_mLStringArrayType (inOperand22) {
+mProperty_mLBigIntType (inOperand17),
+mProperty_mBigIntType (inOperand18),
+mProperty_mStringSetType (inOperand19),
+mProperty_mStringArrayType (inOperand20),
+mProperty_mLStringArrayType (inOperand21) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GGS_predefinedTypes::isValid (void) const {
-  return mProperty_mLocationType.isValid () && mProperty_mBoolType.isValid () && mProperty_mCharType.isValid () && mProperty_mStringType.isValid () && mProperty_mUIntType.isValid () && mProperty_mSIntType.isValid () && mProperty_mUInt_36__34_Type.isValid () && mProperty_mSInt_36__34_Type.isValid () && mProperty_mDoubleType.isValid () && mProperty_mLBoolType.isValid () && mProperty_mLCharType.isValid () && mProperty_mLStringType.isValid () && mProperty_mLUIntType.isValid () && mProperty_mLSIntType.isValid () && mProperty_mLUInt_36__34_Type.isValid () && mProperty_mLSInt_36__34_Type.isValid () && mProperty_mLDoubleType.isValid () && mProperty_mStringListType.isValid () && mProperty_mLBigIntType.isValid () && mProperty_mBigIntType.isValid () && mProperty_mStringSetType.isValid () && mProperty_mStringArrayType.isValid () && mProperty_mLStringArrayType.isValid () ;
+  return mProperty_mLocationType.isValid () && mProperty_mBoolType.isValid () && mProperty_mCharType.isValid () && mProperty_mStringType.isValid () && mProperty_mUIntType.isValid () && mProperty_mSIntType.isValid () && mProperty_mUInt_36__34_Type.isValid () && mProperty_mSInt_36__34_Type.isValid () && mProperty_mDoubleType.isValid () && mProperty_mLBoolType.isValid () && mProperty_mLCharType.isValid () && mProperty_mLStringType.isValid () && mProperty_mLUIntType.isValid () && mProperty_mLSIntType.isValid () && mProperty_mLUInt_36__34_Type.isValid () && mProperty_mLSInt_36__34_Type.isValid () && mProperty_mLDoubleType.isValid () && mProperty_mLBigIntType.isValid () && mProperty_mBigIntType.isValid () && mProperty_mStringSetType.isValid () && mProperty_mStringArrayType.isValid () && mProperty_mLStringArrayType.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3828,7 +3821,6 @@ void GGS_predefinedTypes::drop (void) {
   mProperty_mLUInt_36__34_Type.drop () ;
   mProperty_mLSInt_36__34_Type.drop () ;
   mProperty_mLDoubleType.drop () ;
-  mProperty_mStringListType.drop () ;
   mProperty_mLBigIntType.drop () ;
   mProperty_mBigIntType.drop () ;
   mProperty_mStringSetType.drop () ;
@@ -3877,8 +3869,6 @@ void GGS_predefinedTypes::description (String & ioString,
     mProperty_mLSInt_36__34_Type.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_mLDoubleType.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mStringListType.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_mLBigIntType.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;

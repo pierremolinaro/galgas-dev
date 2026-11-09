@@ -394,7 +394,6 @@ struct @predefinedTypes {
   public let @unifiedTypeMapEntry mLUInt64Type
   public let @unifiedTypeMapEntry mLSInt64Type
   public let @unifiedTypeMapEntry mLDoubleType
-  public let @unifiedTypeMapEntry mStringListType
   public let @unifiedTypeMapEntry mLBigIntType
   public let @unifiedTypeMapEntry mBigIntType
   public let @unifiedTypeMapEntry mStringSetType

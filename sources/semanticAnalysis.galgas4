@@ -834,7 +834,6 @@ func buildPredefinedTypes (?let @unifiedTypeMap inTypeMap) -> @predefinedTypes {
     inTypeMap.typeMapEntryForLKey ("luint64".here),
     inTypeMap.typeMapEntryForLKey ("lsint64".here),
     inTypeMap.typeMapEntryForLKey ("ldouble".here),
-    inTypeMap.typeMapEntryForLKey ("stringlist".here),
     inTypeMap.typeMapEntryForLKey ("lbigint".here),
     inTypeMap.typeMapEntryForLKey ("bigint".here),
     inTypeMap.typeMapEntryForLKey ("stringset".here),

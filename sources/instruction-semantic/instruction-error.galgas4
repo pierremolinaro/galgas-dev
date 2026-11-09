@@ -203,10 +203,10 @@ proc analyzeErrorOrWarningInstruction (let @lstring inUsefulnessCallerEntityName
     case fixItRemove :
       outFixitListForGeneration ++= .fixItRemove
     case fixItReplace (exp, errorLocation) :
-      exp.analyzeSemanticExpression
-        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      exp.analyzeSemanticExpression (
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
-        !inferenceType: inAnalysisContext.predefinedTypes.mStringListType,
+        !inferenceType: inAnalysisContext.predefinedTypes.mStringArrayType,
         inAnalysisContext,
         !?ioTypeMap,
         !?ioVariableMap,
@@ -214,8 +214,6 @@ proc analyzeErrorOrWarningInstruction (let @lstring inUsefulnessCallerEntityName
       )
       if (expression.mResultType != inAnalysisContext.predefinedTypes.mStringArrayType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mLStringArrayType)
-     //  && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringListType)
-   // §   && (expression.mResultType != inAnalysisContext.predefinedTypes.mLStringListType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringSetType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringType) then
         error (errorLocation : "expression type is @" + expression.mResultType.definition.typeName.string
@@ -224,10 +222,10 @@ proc analyzeErrorOrWarningInstruction (let @lstring inUsefulnessCallerEntityName
       end
       outFixitListForGeneration ++= .fixItReplace (!exp:expression)
     case fixItInsertBefore (exp, errorLocation) :
-      exp.analyzeSemanticExpression
-        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      exp.analyzeSemanticExpression (
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
-        !inferenceType: inAnalysisContext.predefinedTypes.mStringListType,
+        !inferenceType: inAnalysisContext.predefinedTypes.mStringArrayType,
         inAnalysisContext,
         !?ioTypeMap,
         !?ioVariableMap,
@@ -243,10 +241,10 @@ proc analyzeErrorOrWarningInstruction (let @lstring inUsefulnessCallerEntityName
       end
       outFixitListForGeneration ++= .fixItInsertBefore (!exp:expression)
     case fixItInsertAfter (exp, errorLocation) :
-      exp.analyzeSemanticExpression
-        (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+      exp.analyzeSemanticExpression (
+        !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
-        !inferenceType: inAnalysisContext.predefinedTypes.mStringListType,
+        !inferenceType: inAnalysisContext.predefinedTypes.mStringArrayType,
         inAnalysisContext,
         !?ioTypeMap,
         !?ioVariableMap,

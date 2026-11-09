@@ -373,7 +373,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
     end
   //--- Constant list
     var [@unifiedTypeMapEntry] associatedValuesTypes = @()
-    var constantList = @stringlist ()
+    var constantList = [@string] ()
     var [@enumConstantForGeneration] enumConstantListForGeneration = @()
     var constantMap = @constantIndexMap ()
     for constant in self.mConstantList do
@@ -383,7 +383,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         let associatedType = ioTypeMap.typeMapEntryForLKey (@(optionalTypeName, constant.name))
         !?associatedValuesTypes.append (associatedType)
       end
-      constantList ++= @(constant.name.string)
+      constantList ++= constant.name.string
       var @associatedValueDescriptorList associatedTypeList = @()
       var @stringset associatedValueNameSet = @()
       for associatedValue in constant.associatedValueTypeList do
