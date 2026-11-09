@@ -165,7 +165,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"componentsJoinedByString",
-      !argTypeName1:"stringlist",
+      !argTypeName1:"[string]",
       !argName1:"inComponents",
       !argTypeName2:"string",
       !argName2:"inSeparator",
@@ -883,7 +883,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !getterName: "commandWithArguments",
       !argSelector: "",
-      !argType: "stringlist", !argName: "inArguments",
+      !argType: "[string]", !argName: "inArguments",
       !returnedTypeName: "sint",
       !hasCompilerArgument: true
     )
@@ -892,7 +892,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !getterName: "hiddenCommandWithArguments",
       !argSelector: "",
-      !argType: "stringlist", !argName: "inArguments",
+      !argType: "[string]", !argName: "inArguments",
       !returnedTypeName: "string",
       !hasCompilerArgument: true
     )
@@ -994,7 +994,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?ioUnifiedTypeMap,
       !getterName: "componentsSeparatedByString",
       !argSelector: "", !argType: "string", !argName: "inSeparator",
-      !returnedTypeName:"stringlist",
+      !returnedTypeName:"[string]",
       !hasCompilerArgument:false
     )
     enterBaseGetterWith2Arguments (

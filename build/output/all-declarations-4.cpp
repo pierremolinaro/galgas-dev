@@ -9979,7 +9979,7 @@ void GGS_guiAnalysisContext::setInitializedProperties (Compiler * inCompiler) {
   mProperty_mBoolOptionList = GGS_guiCommandLineOptionList::init (inCompiler COMMA_HERE) ;
   mProperty_mUIntOptionList = GGS_guiCommandLineOptionList::init (inCompiler COMMA_HERE) ;
   mProperty_mStringOptionList = GGS_guiCommandLineOptionList::init (inCompiler COMMA_HERE) ;
-  mProperty_mNibAndClassList = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  mProperty_mNibAndClassList = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
   mProperty_mExtensionMap = GGS_extensionMap::init (inCompiler COMMA_HERE) ;
   mProperty_mWithLexiqueList = GGS_importedLexiqueList::init (inCompiler COMMA_HERE) ;
   mProperty_mBuildRunOption = GGS_string::makeEmptyString () ;
@@ -9992,7 +9992,7 @@ GGS_guiAnalysisContext::GGS_guiAnalysisContext (const GGS_stringlist & inOperand
                                                 const GGS_guiCommandLineOptionList & inOperand1,
                                                 const GGS_guiCommandLineOptionList & inOperand2,
                                                 const GGS_guiCommandLineOptionList & inOperand3,
-                                                const GGS_stringlist & inOperand4,
+                                                const GGS__5B_string_5D_ & inOperand4,
                                                 const GGS_extensionMap & inOperand5,
                                                 const GGS_importedLexiqueList & inOperand6,
                                                 const GGS_string & inOperand7,

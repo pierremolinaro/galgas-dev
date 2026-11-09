@@ -5691,8 +5691,8 @@ class GGS_guiAnalysisContext : public AC_GALGAS_root {
     return mProperty_mStringOptionList ;
   }
 
-  public: GGS_stringlist mProperty_mNibAndClassList ;
-  public: inline GGS_stringlist readProperty_mNibAndClassList (void) const {
+  public: GGS__5B_string_5D_ mProperty_mNibAndClassList ;
+  public: inline GGS__5B_string_5D_ readProperty_mNibAndClassList (void) const {
     return mProperty_mNibAndClassList ;
   }
 
@@ -5740,7 +5740,7 @@ class GGS_guiAnalysisContext : public AC_GALGAS_root {
     mProperty_mStringOptionList = inValue ;
   }
 
-  public: inline void setter_setMNibAndClassList (const GGS_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMNibAndClassList (const GGS__5B_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mNibAndClassList = inValue ;
   }
 
@@ -5768,7 +5768,7 @@ class GGS_guiAnalysisContext : public AC_GALGAS_root {
                                   const GGS_guiCommandLineOptionList & in_mBoolOptionList,
                                   const GGS_guiCommandLineOptionList & in_mUIntOptionList,
                                   const GGS_guiCommandLineOptionList & in_mStringOptionList,
-                                  const GGS_stringlist & in_mNibAndClassList,
+                                  const GGS__5B_string_5D_ & in_mNibAndClassList,
                                   const GGS_extensionMap & in_mExtensionMap,
                                   const GGS_importedLexiqueList & in_mWithLexiqueList,
                                   const GGS_string & in_mBuildRunOption,

@@ -1184,13 +1184,13 @@ proc updateGalgasTargets (
       let components = macCodeSign.string.componentsSeparatedByString (":")
       if components.count != 2 then
         error (macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\"" spoil codeSigningSettingList)
-      elsif components.mValueAtIndex (0) == "MacDeveloper" then
+      elsif components.first == "MacDeveloper" then
         codeSigningSettingList = [
           "CODE_SIGN_IDENTITY = \"Mac Developer\"",
-          "DEVELOPMENT_TEAM = \"" + components.mValueAtIndex (1) + "\""
+          "DEVELOPMENT_TEAM = \"" + components[1] + "\""
         ]
-      elsif components.mValueAtIndex (0) == "Certificate" then
-        codeSigningSettingList = ["CODE_SIGN_IDENTITY = \"" + components.mValueAtIndex (1) + "\""]
+      elsif components.first == "Certificate" then
+        codeSigningSettingList = ["CODE_SIGN_IDENTITY = \"" + components [1] + "\""]
       else
         error (macCodeSign : "the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'" spoil codeSigningSettingList)
       end

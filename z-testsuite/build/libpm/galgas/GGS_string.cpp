@@ -307,21 +307,21 @@ GGS_string GGS_string::class_func_stringWithEnvironmentVariableOrEmpty (const GG
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::class_func_componentsJoinedByString (const GGS_stringlist & inComponents,
-                                                                  const GGS_string & inSeparator
-                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+GGS_string GGS_string::class_func_componentsJoinedByString (const GGS__5B_string_5D_ & inComponents,
+                                                            const GGS_string & inSeparator
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result ;
   if ((inComponents.isValid ()) && (inSeparator.isValid ())) {
     bool first = true ;
     String s ;
-    UpEnumerator_stringlist current (inComponents) ;
+    UpEnumerator__5B_string_5D_ current (inComponents) ;
     while (current.hasCurrentObject ()) {
       if (first) {
         first = false ;
       }else{
         s.appendString (inSeparator.mString) ;
       }
-      s.appendString (current.current_mValue (HERE).mString) ;
+      s.appendString (current.current (HERE).mString) ;
       current.gotoNextObject () ;
     }
     result = GGS_string (s) ;

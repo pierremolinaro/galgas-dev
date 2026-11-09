@@ -220,7 +220,7 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   let usefulnessName = filewrapperNameForUsefulEntitiesGraph (self.mFilewrapperName)
   !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: usefulnessName)
 //--- Parse filewrapper path
-  var @stringlist directoryList
+  var [@string] directoryList
   let @string fileName
   if self.mFilewrapperPath.count() == 0 then
     error (self.mFilewrapperPath : "path is empty" spoil directoryList, fileName)
@@ -262,7 +262,7 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
       )
     else
       error (self.mFilewrapperPath : "the '" + builtPath + "' path does not exists for the '" + self.mFilewrapperName + "' filewrapper" spoil filewrapperFileMap)
-      directoryList = @stringlist () // For exiting loop
+      directoryList = [@string] () // For exiting loop
     end
   end
   let @uint fileIndex

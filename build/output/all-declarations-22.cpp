@@ -30442,15 +30442,15 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_stringlist GGS_string::getter_componentsSeparatedByString (const GGS_string & inSeparator\n"
-  "                                                               COMMA_LOCATION_ARGS) const {\n"
-  "  GGS_stringlist result ;\n"
+  "GGS__5B_string_5D_ GGS_string::getter_componentsSeparatedByString (const GGS_string & inSeparator\n"
+  "                                                                   COMMA_LOCATION_ARGS) const {\n"
+  "  GGS__5B_string_5D_ result ;\n"
   "  if (inSeparator.isValid ()) {\n"
-  "    result = GGS_stringlist::init (nullptr COMMA_THERE) ;\n"
+  "    result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;\n"
   "    GenericUniqueArray <String> components ;\n"
   "    mString.componentsSeparatedByString (inSeparator.mString, components) ;\n"
   "    for (int32_t i=0 ; i<components.count () ; i++) {\n"
-  "      result.addAssignOperation (GGS_string (components (i COMMA_HERE)) COMMA_HERE) ;\n"
+  "      result.plusPlusAssignOperation (GGS_string (components (i COMMA_HERE)) COMMA_HERE) ;\n"
   "    }\n"
   "  }\n"
   "  return result ;\n"
@@ -30468,7 +30468,7 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_sint GGS_string::getter_commandWithArguments (const GGS_stringlist & inArguments,\n"
+  "GGS_sint GGS_string::getter_commandWithArguments (const GGS__5B_string_5D_ & inArguments,\n"
   "                                                  Compiler * inCompiler\n"
   "                                                  COMMA_LOCATION_ARGS) const {\n"
   "  GGS_sint result ;\n"
@@ -30476,7 +30476,7 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "    String command = String (\"'\") + mString + \"'\" ;\n"
   "    for (uint32_t i=0 ; i<inArguments.count () ; i++) {\n"
   "      command.appendCString (\" '\") ;\n"
-  "      command.appendString (inArguments.getter_mValueAtIndex (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;\n"
+  "      command.appendString (inArguments.readSubscript__3F_ (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;\n"
   "      command.appendCString (\"'\") ;\n"
   "    }\n"
   "    result = GGS_sint (::system (command.cString ())) ;\n"
@@ -30486,7 +30486,7 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "\n"
   " //--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_string GGS_string::getter_hiddenCommandWithArguments (const GGS_stringlist & inArguments,\n"
+  "GGS_string GGS_string::getter_hiddenCommandWithArguments (const GGS__5B_string_5D_ & inArguments,\n"
   "                                                          Compiler * inCompiler\n"
   "                                                          COMMA_LOCATION_ARGS) const {\n"
   "  GGS_string result ;\n"
@@ -30494,7 +30494,7 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "    String command = String (\"'\") + mString + \"'\" ;\n"
   "    for (uint32_t i=0 ; i<inArguments.count () ; i++) {\n"
   "      command.appendCString (\" '\") ;\n"
-  "      command.appendString (inArguments.getter_mValueAtIndex (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;\n"
+  "      command.appendString (inArguments.readSubscript__3F_ (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;\n"
   "      command.appendCString (\"'\") ;\n"
   "    }\n"
   "    result = GGS_string (command).getter_popen (inCompiler COMMA_THERE) ;\n"
@@ -31176,7 +31176,7 @@ const cRegularFileWrapper gWrapperFile_179_libpmFileWrapper (
   "GGS_string-getters.cpp",
   "cpp",
   true, // Text file
- 52604, // Text length
+ 52629, // Text length
   gWrapperFileContent_179_libpmFileWrapper
 ) ;
 
@@ -31492,21 +31492,21 @@ const char * gWrapperFileContent_136_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS_string GGS_string::class_func_componentsJoinedByString (const GGS_stringlist & inComponents,\n"
-  "                                                                  const GGS_string & inSeparator\n"
-  "                                                                  COMMA_UNUSED_LOCATION_ARGS) {\n"
+  "GGS_string GGS_string::class_func_componentsJoinedByString (const GGS__5B_string_5D_ & inComponents,\n"
+  "                                                            const GGS_string & inSeparator\n"
+  "                                                            COMMA_UNUSED_LOCATION_ARGS) {\n"
   "  GGS_string result ;\n"
   "  if ((inComponents.isValid ()) && (inSeparator.isValid ())) {\n"
   "    bool first = true ;\n"
   "    String s ;\n"
-  "    UpEnumerator_stringlist current (inComponents) ;\n"
+  "    UpEnumerator__5B_string_5D_ current (inComponents) ;\n"
   "    while (current.hasCurrentObject ()) {\n"
   "      if (first) {\n"
   "        first = false ;\n"
   "      }else{\n"
   "        s.appendString (inSeparator.mString) ;\n"
   "      }\n"
-  "      s.appendString (current.current_mValue (HERE).mString) ;\n"
+  "      s.appendString (current.current (HERE).mString) ;\n"
   "      current.gotoNextObject () ;\n"
   "    }\n"
   "    result = GGS_string (s) ;\n"
@@ -32218,7 +32218,7 @@ const cRegularFileWrapper gWrapperFile_136_libpmFileWrapper (
   "GGS_string.cpp",
   "cpp",
   true, // Text file
- 42931, // Text length
+ 42920, // Text length
   gWrapperFileContent_136_libpmFileWrapper
 ) ;
 

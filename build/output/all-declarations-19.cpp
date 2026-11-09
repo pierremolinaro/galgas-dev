@@ -354,17 +354,17 @@ void routine_generateWrapperContents_3F__3F__3F__3F__3F__26_ (const GGS_string c
         if (GalgasBool::boolTrue == test_1) {
           test_1 = GGS_bool (ComparisonKind::greaterThan, var_contents_48239.getter_count (SOURCE_FILE ("semanticGeneration.galgas4", 1245)).objectCompare (GGS_uint (uint32_t (100U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_1) {
-            GGS_stringlist var_components_48753 = var_contents_48239.getter_componentsSeparatedByString (GGS_string ("\n") COMMA_SOURCE_FILE ("semanticGeneration.galgas4", 1246)) ;
+            GGS__5B_string_5D_ var_components_48753 = var_contents_48239.getter_componentsSeparatedByString (GGS_string ("\n") COMMA_SOURCE_FILE ("semanticGeneration.galgas4", 1246)) ;
             GGS_string var_lastLine_48845 ;
             {
             var_components_48753.setter_popLast (var_lastLine_48845, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas4", 1247)) ;
             }
-            UpEnumerator_stringlist enumerator_48868 (var_components_48753) ;
+            UpEnumerator__5B_string_5D_ enumerator_48868 (var_components_48753) ;
             const bool bool_2 = true ;
             if (enumerator_48868.hasCurrentObject () && bool_2) {
               ioArgument_ioImplementation.plusAssignOperation(GGS_string ("\n  "), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas4", 1250)) ;
               while (enumerator_48868.hasCurrentObject () && bool_2) {
-                GGS_string var_s_48967 = enumerator_48868.current_mValue (HERE).add_operation (GGS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas4", 1252)) ;
+                GGS_string var_s_48967 = enumerator_48868.current_entry (HERE).add_operation (GGS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas4", 1252)) ;
                 ioArgument_ioImplementation.plusAssignOperation(var_s_48967.getter_utf_38_RepresentationEscapingQuestionMark (SOURCE_FILE ("semanticGeneration.galgas4", 1253)).add_operation (GGS_string ("\n  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas4", 1253)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas4", 1253)) ;
                 enumerator_48868.gotoNextObject () ;
               }

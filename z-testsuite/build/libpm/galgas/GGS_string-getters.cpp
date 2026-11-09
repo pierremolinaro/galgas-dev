@@ -701,15 +701,15 @@ GGS_string GGS_string::getter_nativePathWithUnixPath (UNUSED_LOCATION_ARGS) cons
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist GGS_string::getter_componentsSeparatedByString (const GGS_string & inSeparator
-                                                               COMMA_LOCATION_ARGS) const {
-  GGS_stringlist result ;
+GGS__5B_string_5D_ GGS_string::getter_componentsSeparatedByString (const GGS_string & inSeparator
+                                                                   COMMA_LOCATION_ARGS) const {
+  GGS__5B_string_5D_ result ;
   if (inSeparator.isValid ()) {
-    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
+    result = GGS__5B_string_5D_::init (nullptr COMMA_THERE) ;
     GenericUniqueArray <String> components ;
     mString.componentsSeparatedByString (inSeparator.mString, components) ;
     for (int32_t i=0 ; i<components.count () ; i++) {
-      result.addAssignOperation (GGS_string (components (i COMMA_HERE)) COMMA_HERE) ;
+      result.plusPlusAssignOperation (GGS_string (components (i COMMA_HERE)) COMMA_HERE) ;
     }
   }
   return result ;
@@ -727,7 +727,7 @@ GGS_sint GGS_string::getter_system (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_string::getter_commandWithArguments (const GGS_stringlist & inArguments,
+GGS_sint GGS_string::getter_commandWithArguments (const GGS__5B_string_5D_ & inArguments,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   GGS_sint result ;
@@ -735,7 +735,7 @@ GGS_sint GGS_string::getter_commandWithArguments (const GGS_stringlist & inArgum
     String command = String ("'") + mString + "'" ;
     for (uint32_t i=0 ; i<inArguments.count () ; i++) {
       command.appendCString (" '") ;
-      command.appendString (inArguments.getter_mValueAtIndex (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
+      command.appendString (inArguments.readSubscript__3F_ (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
       command.appendCString ("'") ;
     }
     result = GGS_sint (::system (command.cString ())) ;
@@ -745,7 +745,7 @@ GGS_sint GGS_string::getter_commandWithArguments (const GGS_stringlist & inArgum
 
  //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_string::getter_hiddenCommandWithArguments (const GGS_stringlist & inArguments,
+GGS_string GGS_string::getter_hiddenCommandWithArguments (const GGS__5B_string_5D_ & inArguments,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
   GGS_string result ;
@@ -753,7 +753,7 @@ GGS_string GGS_string::getter_hiddenCommandWithArguments (const GGS_stringlist &
     String command = String ("'") + mString + "'" ;
     for (uint32_t i=0 ; i<inArguments.count () ; i++) {
       command.appendCString (" '") ;
-      command.appendString (inArguments.getter_mValueAtIndex (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
+      command.appendString (inArguments.readSubscript__3F_ (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
       command.appendCString ("'") ;
     }
     result = GGS_string (command).getter_popen (inCompiler COMMA_THERE) ;

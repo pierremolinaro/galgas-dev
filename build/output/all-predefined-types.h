@@ -2061,7 +2061,7 @@ class GGS_string : public AC_GALGAS_root {
   public: static class GGS_string class_func_CppTitleComment (const class GGS_string & inOperand0
                                                               COMMA_LOCATION_ARGS) ;
 
-  public: static class GGS_string class_func_componentsJoinedByString (const class GGS_stringlist & inOperand0,
+  public: static class GGS_string class_func_componentsJoinedByString (const class GGS__5B_string_5D_ & inOperand0,
                                                                        const class GGS_string & inOperand1
                                                                        COMMA_LOCATION_ARGS) ;
 
@@ -2244,12 +2244,12 @@ class GGS_string : public AC_GALGAS_root {
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_sint getter_commandWithArguments (const class GGS_stringlist & constinOperand0,
+  public: class GGS_sint getter_commandWithArguments (const class GGS__5B_string_5D_ & constinOperand0,
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_componentsSeparatedByString (const class GGS_string & constinOperand0
-                                                                   COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_componentsSeparatedByString (const class GGS_string & constinOperand0
+                                                                       COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_containsCharacter (const class GGS_char & constinOperand0
                                                    COMMA_LOCATION_ARGS) const ;
@@ -2313,7 +2313,7 @@ class GGS_string : public AC_GALGAS_root {
   public: class GGS_lstring getter_here (Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_string getter_hiddenCommandWithArguments (const class GGS_stringlist & constinOperand0,
+  public: class GGS_string getter_hiddenCommandWithArguments (const class GGS__5B_string_5D_ & constinOperand0,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const ;
 
