@@ -37,7 +37,7 @@ private filewrapper programFileGenerationTemplate in "+generation-templates/prog
 }{
   template programFileImplementation : "program-file.cpp.galgasTemplate" (
     ?@string COMPONENT_NAME,
-    ?@stringlist IMPORTED_COMPONENT_LIST,
+    ?[@string] IMPORTED_COMPONENT_LIST,
     ?@string BEFORE_AFTER_RULE_IMPLEMENTATION_STRING,
     ?@programRuleList PROGRAM_RULE_LIST,
     ?@string PROJECT_VERSION_STRING

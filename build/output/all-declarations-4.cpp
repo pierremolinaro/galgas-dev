@@ -9975,7 +9975,7 @@ GGS_guiAnalysisContext GGS_guiAnalysisContext::init (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GGS_guiAnalysisContext::setInitializedProperties (Compiler * inCompiler) {
-  mProperty_mImportedOptionComponentList = GGS_stringlist::init (inCompiler COMMA_HERE) ;
+  mProperty_mImportedOptionComponentList = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
   mProperty_mBoolOptionList = GGS_guiCommandLineOptionList::init (inCompiler COMMA_HERE) ;
   mProperty_mUIntOptionList = GGS_guiCommandLineOptionList::init (inCompiler COMMA_HERE) ;
   mProperty_mStringOptionList = GGS_guiCommandLineOptionList::init (inCompiler COMMA_HERE) ;
@@ -9988,7 +9988,7 @@ void GGS_guiAnalysisContext::setInitializedProperties (Compiler * inCompiler) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_guiAnalysisContext::GGS_guiAnalysisContext (const GGS_stringlist & inOperand0,
+GGS_guiAnalysisContext::GGS_guiAnalysisContext (const GGS__5B_string_5D_ & inOperand0,
                                                 const GGS_guiCommandLineOptionList & inOperand1,
                                                 const GGS_guiCommandLineOptionList & inOperand2,
                                                 const GGS_guiCommandLineOptionList & inOperand3,

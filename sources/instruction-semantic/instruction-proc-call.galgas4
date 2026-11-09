@@ -99,9 +99,9 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
     ioInclusionSet ++= "proc-" + self.routineMangledName.string.fileNameRepresentation
     ioGeneratedCode += "{\n"
   //--- Parameters
-    var @stringlist parameterCppNameList = @()
-    var @stringlist jokerParametersToReleaseList = @()
-    var @stringlist inputVariableList = @()
+    var [@string] parameterCppNameList = @()
+    var [@string] jokerParametersToReleaseList = @()
+    var [@string] inputVariableList = @()
     for entry in self.mActualParameterList do
       entry.mActualParameter.generateActualParameter (
         !?ioInclusionSet,
@@ -112,12 +112,12 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
         !?ioUnusedVariableCppNameSet,
         ?let parameterCppName
       )
-      parameterCppNameList ++= @(parameterCppName)
+      parameterCppNameList ++= parameterCppName
     end
   //--- Generate proc call
     ioGeneratedCode += "routine_" + self.routineMangledName.string.identifierRepresentation + " ("
     for entry in parameterCppNameList do
-      ioGeneratedCode += entry.mValue + ", "
+      ioGeneratedCode += entry + ", "
     end
     !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
     ioGeneratedCode += compilerCppName () + " " + self.routineMangledName.location.commaSourceFile + ") ;\n"

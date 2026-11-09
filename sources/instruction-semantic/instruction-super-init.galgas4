@@ -177,7 +177,7 @@ final class @superInitInstructionForGeneration : @semanticInstructionForGenerati
                                        ?!@stringset ioUnusedVariableCppNameSet,
                                        let @bool _inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
-    var @stringlist getterArgumentCppNameList = @()
+    var [@string] getterArgumentCppNameList = @()
     for entry in self.mActualParameterList do
       entry.mExpression.generateExpression
         (!?ioGeneratedCode,
@@ -186,13 +186,13 @@ final class @superInitInstructionForGeneration : @semanticInstructionForGenerati
         !?ioUnusedVariableCppNameSet,
         ?let argumentCppName
       )
-      getterArgumentCppNameList ++= @(argumentCppName)
+      getterArgumentCppNameList ++= argumentCppName
     end
     ioGeneratedCode += self.mSuperTypeName.identifierRepresentation + "_"
     ioGeneratedCode += self.mSuperInitializerSignature.identifierRepresentation
     ioGeneratedCode += " ("
     for entry in getterArgumentCppNameList do
-      ioGeneratedCode += entry.mValue + ", "
+      ioGeneratedCode += entry + ", "
     end
     !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
     ioGeneratedCode += compilerCppName () + ") ; \n"

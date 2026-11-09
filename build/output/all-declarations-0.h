@@ -1517,8 +1517,8 @@ class cPtr_actualParameterForGeneration : public AbstractStrongPtrClass {
   public: virtual void method_generateActualParameter (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_string & arg_ioImplementation,
-           class GGS_stringlist & arg_ioJokerParametersToReleaseList,
-           class GGS_stringlist & arg_ioOutputVariableList,
+           class GGS__5B_string_5D_ & arg_ioJokerParametersToReleaseList,
+           class GGS__5B_string_5D_ & arg_ioOutputVariableList,
            class GGS_stringset & arg__ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppName,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
@@ -4213,7 +4213,7 @@ class GGS_errorInstructionForGeneration : public GGS_semanticInstructionForGener
 
   public: class GGS_semanticExpressionForGeneration readProperty_mErrorExpression (void) const ;
 
-  public: class GGS_stringlist readProperty_mBuiltVariableCppNameList (void) const ;
+  public: class GGS__5B_string_5D_ readProperty_mBuiltVariableCppNameList (void) const ;
 
   public: class GGS__5B_fixitElementForGeneration_5D_ readProperty_mFixitListForGeneration (void) const ;
 
@@ -4223,7 +4223,7 @@ class GGS_errorInstructionForGeneration : public GGS_semanticInstructionForGener
   public: static GGS_errorInstructionForGeneration init_21__21__21__21__21_ (const class GGS_location & inOperand0,
                                                                              const class GGS_semanticExpressionForGeneration & inOperand1,
                                                                              const class GGS_semanticExpressionForGeneration & inOperand2,
-                                                                             const class GGS_stringlist & inOperand3,
+                                                                             const class GGS__5B_string_5D_ & inOperand3,
                                                                              const class GGS__5B_fixitElementForGeneration_5D_ & inOperand4,
                                                                              Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
@@ -4263,7 +4263,7 @@ class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGen
   public: void errorInstructionForGeneration_init_21__21__21__21__21_ (const class GGS_location & inOperand0,
                                                                        const class GGS_semanticExpressionForGeneration & inOperand1,
                                                                        const class GGS_semanticExpressionForGeneration & inOperand2,
-                                                                       const class GGS_stringlist & inOperand3,
+                                                                       const class GGS__5B_string_5D_ & inOperand3,
                                                                        const class GGS__5B_fixitElementForGeneration_5D_ & inOperand4,
                                                                        Compiler * inCompiler) ;
 
@@ -4280,7 +4280,7 @@ class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGen
   public: GGS_location mProperty_mInstructionLocation ;
   public: GGS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
   public: GGS_semanticExpressionForGeneration mProperty_mErrorExpression ;
-  public: GGS_stringlist mProperty_mBuiltVariableCppNameList ;
+  public: GGS__5B_string_5D_ mProperty_mBuiltVariableCppNameList ;
   public: GGS__5B_fixitElementForGeneration_5D_ mProperty_mFixitListForGeneration ;
 
 
@@ -4291,7 +4291,7 @@ class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGen
   public: cPtr_errorInstructionForGeneration (const GGS_location & in_mInstructionLocation,
                                               const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
                                               const GGS_semanticExpressionForGeneration & in_mErrorExpression,
-                                              const GGS_stringlist & in_mBuiltVariableCppNameList,
+                                              const GGS__5B_string_5D_ & in_mBuiltVariableCppNameList,
                                               const GGS__5B_fixitElementForGeneration_5D_ & in_mFixitListForGeneration,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
@@ -13728,7 +13728,7 @@ class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public Ab
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            const class GGS_string arg_inSyntaxDirectedTranslationResultVarName,
-           class GGS_stringlist & arg_ioAssignementList,
+           class GGS__5B_string_5D_ & arg_ioAssignementList,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) = 0 ;
 
@@ -13892,7 +13892,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultNone : public cPtr_a
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            const class GGS_string arg_inSyntaxDirectedTranslationResultVarName,
-           class GGS_stringlist & arg_ioAssignementList,
+           class GGS__5B_string_5D_ & arg_ioAssignementList,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -14063,7 +14063,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationDropResult : public cPtr_a
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            const class GGS_string arg_inSyntaxDirectedTranslationResultVarName,
-           class GGS_stringlist & arg_ioAssignementList,
+           class GGS__5B_string_5D_ & arg_ioAssignementList,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -14238,7 +14238,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar : public cPtr_
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            const class GGS_string arg_inSyntaxDirectedTranslationResultVarName,
-           class GGS_stringlist & arg_ioAssignementList,
+           class GGS__5B_string_5D_ & arg_ioAssignementList,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -14417,7 +14417,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : publ
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            const class GGS_string arg_inSyntaxDirectedTranslationResultVarName,
-           class GGS_stringlist & arg_ioAssignementList,
+           class GGS__5B_string_5D_ & arg_ioAssignementList,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -14598,7 +14598,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : pu
            class GGS_unifiedTypeMap & arg_ioTypeMap,
            const class GGS_bool arg_inHasTranslateFeature,
            const class GGS_string arg_inSyntaxDirectedTranslationResultVarName,
-           class GGS_stringlist & arg_ioAssignementList,
+           class GGS__5B_string_5D_ & arg_ioAssignementList,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -14737,7 +14737,7 @@ class GGS_grammarInstructionWithSourceFileForGeneration : public GGS_semanticIns
 
   public: class GGS_bool readProperty_mGrammarHasTranslateFeature (void) const ;
 
-  public: class GGS_stringlist readProperty_mAssignementList (void) const ;
+  public: class GGS__5B_string_5D_ readProperty_mAssignementList (void) const ;
 
   public: class GGS_string readProperty_mSyntaxDirectedTranslationResultVarName (void) const ;
 
@@ -14750,7 +14750,7 @@ class GGS_grammarInstructionWithSourceFileForGeneration : public GGS_semanticIns
                                                                                                          const class GGS_semanticExpressionForGeneration & inOperand3,
                                                                                                          const class GGS_actualParameterListForGeneration & inOperand4,
                                                                                                          const class GGS_bool & inOperand5,
-                                                                                                         const class GGS_stringlist & inOperand6,
+                                                                                                         const class GGS__5B_string_5D_ & inOperand6,
                                                                                                          const class GGS_string & inOperand7,
                                                                                                          Compiler * inCompiler
                                                                                                          COMMA_LOCATION_ARGS) ;
@@ -14793,7 +14793,7 @@ class cPtr_grammarInstructionWithSourceFileForGeneration : public cPtr_semanticI
                                                                                                    const class GGS_semanticExpressionForGeneration & inOperand3,
                                                                                                    const class GGS_actualParameterListForGeneration & inOperand4,
                                                                                                    const class GGS_bool & inOperand5,
-                                                                                                   const class GGS_stringlist & inOperand6,
+                                                                                                   const class GGS__5B_string_5D_ & inOperand6,
                                                                                                    const class GGS_string & inOperand7,
                                                                                                    Compiler * inCompiler) ;
 
@@ -14813,7 +14813,7 @@ class cPtr_grammarInstructionWithSourceFileForGeneration : public cPtr_semanticI
   public: GGS_semanticExpressionForGeneration mProperty_mSourceFileExpression ;
   public: GGS_actualParameterListForGeneration mProperty_mActualParameterList ;
   public: GGS_bool mProperty_mGrammarHasTranslateFeature ;
-  public: GGS_stringlist mProperty_mAssignementList ;
+  public: GGS__5B_string_5D_ mProperty_mAssignementList ;
   public: GGS_string mProperty_mSyntaxDirectedTranslationResultVarName ;
 
 
@@ -14827,7 +14827,7 @@ class cPtr_grammarInstructionWithSourceFileForGeneration : public cPtr_semanticI
                                                               const GGS_semanticExpressionForGeneration & in_mSourceFileExpression,
                                                               const GGS_actualParameterListForGeneration & in_mActualParameterList,
                                                               const GGS_bool & in_mGrammarHasTranslateFeature,
-                                                              const GGS_stringlist & in_mAssignementList,
+                                                              const GGS__5B_string_5D_ & in_mAssignementList,
                                                               const GGS_string & in_mSyntaxDirectedTranslationResultVarName,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
@@ -14941,7 +14941,7 @@ class GGS_grammarInstructionWithSourceExpressionForGeneration : public GGS_seman
 
   public: class GGS_bool readProperty_mGrammarHasTranslateFeature (void) const ;
 
-  public: class GGS_stringlist readProperty_mAssignementList (void) const ;
+  public: class GGS__5B_string_5D_ readProperty_mAssignementList (void) const ;
 
   public: class GGS_string readProperty_mSyntaxDirectedTranslationResultVarName (void) const ;
 
@@ -14955,7 +14955,7 @@ class GGS_grammarInstructionWithSourceExpressionForGeneration : public GGS_seman
                                                                                                                    const class GGS_semanticExpressionForGeneration & inOperand4,
                                                                                                                    const class GGS_actualParameterListForGeneration & inOperand5,
                                                                                                                    const class GGS_bool & inOperand6,
-                                                                                                                   const class GGS_stringlist & inOperand7,
+                                                                                                                   const class GGS__5B_string_5D_ & inOperand7,
                                                                                                                    const class GGS_string & inOperand8,
                                                                                                                    Compiler * inCompiler
                                                                                                                    COMMA_LOCATION_ARGS) ;
@@ -14999,7 +14999,7 @@ class cPtr_grammarInstructionWithSourceExpressionForGeneration : public cPtr_sem
                                                                                                              const class GGS_semanticExpressionForGeneration & inOperand4,
                                                                                                              const class GGS_actualParameterListForGeneration & inOperand5,
                                                                                                              const class GGS_bool & inOperand6,
-                                                                                                             const class GGS_stringlist & inOperand7,
+                                                                                                             const class GGS__5B_string_5D_ & inOperand7,
                                                                                                              const class GGS_string & inOperand8,
                                                                                                              Compiler * inCompiler) ;
 
@@ -15020,7 +15020,7 @@ class cPtr_grammarInstructionWithSourceExpressionForGeneration : public cPtr_sem
   public: GGS_semanticExpressionForGeneration mProperty_mNameStringExpression ;
   public: GGS_actualParameterListForGeneration mProperty_mActualParameterList ;
   public: GGS_bool mProperty_mGrammarHasTranslateFeature ;
-  public: GGS_stringlist mProperty_mAssignementList ;
+  public: GGS__5B_string_5D_ mProperty_mAssignementList ;
   public: GGS_string mProperty_mSyntaxDirectedTranslationResultVarName ;
 
 
@@ -15035,7 +15035,7 @@ class cPtr_grammarInstructionWithSourceExpressionForGeneration : public cPtr_sem
                                                                     const GGS_semanticExpressionForGeneration & in_mNameStringExpression,
                                                                     const GGS_actualParameterListForGeneration & in_mActualParameterList,
                                                                     const GGS_bool & in_mGrammarHasTranslateFeature,
-                                                                    const GGS_stringlist & in_mAssignementList,
+                                                                    const GGS__5B_string_5D_ & in_mAssignementList,
                                                                     const GGS_string & in_mSyntaxDirectedTranslationResultVarName,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;

@@ -5671,8 +5671,8 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_galgasGUIComponentList
 
 class GGS_guiAnalysisContext : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GGS_stringlist mProperty_mImportedOptionComponentList ;
-  public: inline GGS_stringlist readProperty_mImportedOptionComponentList (void) const {
+  public: GGS__5B_string_5D_ mProperty_mImportedOptionComponentList ;
+  public: inline GGS__5B_string_5D_ readProperty_mImportedOptionComponentList (void) const {
     return mProperty_mImportedOptionComponentList ;
   }
 
@@ -5724,7 +5724,7 @@ class GGS_guiAnalysisContext : public AC_GALGAS_root {
   public: GGS_guiAnalysisContext (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setMImportedOptionComponentList (const GGS_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMImportedOptionComponentList (const GGS__5B_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mImportedOptionComponentList = inValue ;
   }
 
@@ -5764,7 +5764,7 @@ class GGS_guiAnalysisContext : public AC_GALGAS_root {
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_guiAnalysisContext (const GGS_stringlist & in_mImportedOptionComponentList,
+  public: GGS_guiAnalysisContext (const GGS__5B_string_5D_ & in_mImportedOptionComponentList,
                                   const GGS_guiCommandLineOptionList & in_mBoolOptionList,
                                   const GGS_guiCommandLineOptionList & in_mUIntOptionList,
                                   const GGS_guiCommandLineOptionList & in_mStringOptionList,

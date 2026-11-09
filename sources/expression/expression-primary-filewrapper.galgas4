@@ -325,7 +325,7 @@ override proc @filewrapperTemplateInExpressionForGeneration.generateExpression
   !@string outCppExpression ) {
 //---
   ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
-  var parameterList = @stringlist ()
+  var parameterList = [@string] ()
   for (mExpression) in self.mActualOutputParameterList do
     mExpression.generateExpression
       (!?ioGeneratedCode,
@@ -334,7 +334,7 @@ override proc @filewrapperTemplateInExpressionForGeneration.generateExpression
       !?ioUnusedVariableCppNameSet,
       ?let parameter
     )
-    parameterList ++= @(parameter)
+    parameterList ++= parameter
   end
   outCppExpression = "GGS_string (filewrapperTemplate_" + self.mFilewrapperName.identifierRepresentation + "_" + self.mFilewrapperTemplateName.identifierRepresentation
                   + " (" + compilerCppName ()

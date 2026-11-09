@@ -39,7 +39,7 @@ GGS_lexicalRoutineMap_2E_element & GGS_lexicalRoutineMap_2E_element::operator = 
 
 GGS_lexicalRoutineMap_2E_element GGS_lexicalRoutineMap_2E_element::init_21__21__21__21_ (const GGS_lstring & in_lkey,
                                                                                          const GGS_lexicalRoutineFormalArgumentList & in_mLexicalRoutineFormalArgumentList,
-                                                                                         const GGS_stringlist & in_mErrorMessageList,
+                                                                                         const GGS__5B_string_5D_ & in_mErrorMessageList,
                                                                                          const GGS_bool & in_mIsExtern,
                                                                                          Compiler * inCompiler
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
@@ -61,7 +61,7 @@ void GGS_lexicalRoutineMap_2E_element::setInitializedProperties (Compiler * /* i
 
 GGS_lexicalRoutineMap_2E_element::GGS_lexicalRoutineMap_2E_element (const GGS_lstring & inOperand0,
                                                                     const GGS_lexicalRoutineFormalArgumentList & inOperand1,
-                                                                    const GGS_stringlist & inOperand2,
+                                                                    const GGS__5B_string_5D_ & inOperand2,
                                                                     const GGS_bool & inOperand3) :
 mProperty_lkey (inOperand0),
 mProperty_mLexicalRoutineFormalArgumentList (inOperand1),

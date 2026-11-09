@@ -5175,8 +5175,8 @@ class GGS_lexicalRoutineMap_2E_element : public AC_GALGAS_root {
     return mProperty_mLexicalRoutineFormalArgumentList ;
   }
 
-  public: GGS_stringlist mProperty_mErrorMessageList ;
-  public: inline GGS_stringlist readProperty_mErrorMessageList (void) const {
+  public: GGS__5B_string_5D_ mProperty_mErrorMessageList ;
+  public: inline GGS__5B_string_5D_ readProperty_mErrorMessageList (void) const {
     return mProperty_mErrorMessageList ;
   }
 
@@ -5201,7 +5201,7 @@ class GGS_lexicalRoutineMap_2E_element : public AC_GALGAS_root {
     mProperty_mLexicalRoutineFormalArgumentList = inValue ;
   }
 
-  public: inline void setter_setMErrorMessageList (const GGS_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMErrorMessageList (const GGS__5B_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mErrorMessageList = inValue ;
   }
 
@@ -5215,7 +5215,7 @@ class GGS_lexicalRoutineMap_2E_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public: GGS_lexicalRoutineMap_2E_element (const GGS_lstring & in_lkey,
                                             const GGS_lexicalRoutineFormalArgumentList & in_mLexicalRoutineFormalArgumentList,
-                                            const GGS_stringlist & in_mErrorMessageList,
+                                            const GGS__5B_string_5D_ & in_mErrorMessageList,
                                             const GGS_bool & in_mIsExtern) ;
 
 //--------------------------------- Copy constructor
@@ -5229,7 +5229,7 @@ class GGS_lexicalRoutineMap_2E_element : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS_lexicalRoutineMap_2E_element init_21__21__21__21_ (const class GGS_lstring & inOperand0,
                                                                         const class GGS_lexicalRoutineFormalArgumentList & inOperand1,
-                                                                        const class GGS_stringlist & inOperand2,
+                                                                        const class GGS__5B_string_5D_ & inOperand2,
                                                                         const class GGS_bool & inOperand3,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;

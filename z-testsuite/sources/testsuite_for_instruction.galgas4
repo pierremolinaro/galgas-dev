@@ -2,7 +2,7 @@
 
 proc testsuite_for_instruction() {
   println ("*************************************** begin of for instruction test 1")
-  var strList = @stringlist []
+  var strList = [@string] []
   !?strList.append ("a")
   !?strList.append ("b")
   !?strList.append ("c")
@@ -11,7 +11,7 @@ proc testsuite_for_instruction() {
   before
     println ("  before")
   do
-    println ("  do '" + s.mValue + "'")
+    println ("  do '" + s + "'")
   between
     println ("  between")
   after
@@ -38,7 +38,7 @@ proc testsuite_for_instruction() {
   before
     println ("  before")
   do
-    println ("  do '" + xyz.mValue + "', n: " + n.string + "")
+    println ("  do '" + xyz + "', n: " + n.string + "")
     n += 1
   between
     println ("  between")
@@ -47,11 +47,11 @@ proc testsuite_for_instruction() {
   end
 
   println ("--- begin of for instruction test 4")
-  for @stringlist.@element s in strList while s.mValue != "c"
+  for s in strList while s != "c"
   before
     println ("  before")
   do
-    println ("  do '" + s.mValue + "'")
+    println ("  do '" + s + "'")
   between
     println ("  between")
   after
@@ -63,7 +63,7 @@ proc testsuite_for_instruction() {
   before
     println ("  before")
   do (idx)
-    println ("  do '" + s.mValue + "' (idx: " + idx.string + ")")
+    println ("  do '" + s + "' (idx: " + idx.string + ")")
   between
     println ("  between")
   after
@@ -73,7 +73,7 @@ proc testsuite_for_instruction() {
   println ("--- begin of for instruction test 6")
   for s in strList
   do (idx)
-    println ("  do '" + s.mValue + "' (idx: " + idx.string + ")")
+    println ("  do '" + s + "' (idx: " + idx.string + ")")
   end
 
   println ("--- begin of for instruction test 7")

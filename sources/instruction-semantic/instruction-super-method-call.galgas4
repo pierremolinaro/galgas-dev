@@ -176,19 +176,19 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
                                        let @bool _inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
   //---
-    var parameterCppNameList = @stringlist ()
-    var jokerParametersToReleaseList = @stringlist ()
-    var inputVariableList = @stringlist ()
+    var parameterCppNameList = [@string] ()
+    var jokerParametersToReleaseList = [@string] ()
+    var inputVariableList = [@string] ()
     for actual in self.mActualParameterList do
       actual.mActualParameter.generateActualParameter (!?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioGeneratedCode, !?jokerParametersToReleaseList, !?inputVariableList, !?ioUnusedVariableCppNameSet, ?let parameterCppName)
-      parameterCppNameList ++= @(parameterCppName)
+      parameterCppNameList ++= parameterCppName
     end
   //--- Generate proc call
     ioInclusionSet ++= "proc-" + self.mBaseType.definition.typeName.string.fileNameRepresentation + "-" + self.mMethodName.fileNameRepresentation
     ioGeneratedCode += "cPtr_" + self.mBaseType.definition.typeName.string.identifierRepresentation
     ioGeneratedCode += "::method_" + self.mMethodName.identifierRepresentation + " ("
     for parameter in parameterCppNameList
-      do ioGeneratedCode += parameter.mValue
+      do ioGeneratedCode += parameter
       between ioGeneratedCode += ", "
     end
     if parameterCppNameList.count == 0 then

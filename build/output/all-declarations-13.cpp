@@ -6711,7 +6711,7 @@ GGS_errorInstructionForGeneration GGS_errorInstructionForGeneration::
 init_21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                           const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
                           const GGS_semanticExpressionForGeneration & in_mErrorExpression,
-                          const GGS_stringlist & in_mBuiltVariableCppNameList,
+                          const GGS__5B_string_5D_ & in_mBuiltVariableCppNameList,
                           const GGS__5B_fixitElementForGeneration_5D_ & in_mFixitListForGeneration,
                           Compiler * inCompiler
                           COMMA_LOCATION_ARGS) {
@@ -6729,7 +6729,7 @@ void cPtr_errorInstructionForGeneration::
 errorInstructionForGeneration_init_21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                                                         const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
                                                         const GGS_semanticExpressionForGeneration & in_mErrorExpression,
-                                                        const GGS_stringlist & in_mBuiltVariableCppNameList,
+                                                        const GGS__5B_string_5D_ & in_mBuiltVariableCppNameList,
                                                         const GGS__5B_fixitElementForGeneration_5D_ & in_mFixitListForGeneration,
                                                         Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
@@ -6783,9 +6783,9 @@ GGS_semanticExpressionForGeneration GGS_errorInstructionForGeneration::readPrope
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist GGS_errorInstructionForGeneration::readProperty_mBuiltVariableCppNameList (void) const {
+GGS__5B_string_5D_ GGS_errorInstructionForGeneration::readProperty_mBuiltVariableCppNameList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_stringlist () ;
+    return GGS__5B_string_5D_ () ;
   }else{
     cPtr_errorInstructionForGeneration * p = (cPtr_errorInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_errorInstructionForGeneration) ;
@@ -6823,7 +6823,7 @@ mProperty_mFixitListForGeneration () {
 cPtr_errorInstructionForGeneration::cPtr_errorInstructionForGeneration (const GGS_location & in_mInstructionLocation,
                                                                         const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
                                                                         const GGS_semanticExpressionForGeneration & in_mErrorExpression,
-                                                                        const GGS_stringlist & in_mBuiltVariableCppNameList,
+                                                                        const GGS__5B_string_5D_ & in_mBuiltVariableCppNameList,
                                                                         const GGS__5B_fixitElementForGeneration_5D_ & in_mFixitListForGeneration,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) :
@@ -10607,7 +10607,7 @@ init_21__21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocati
                                       const GGS_semanticExpressionForGeneration & in_mSourceFileExpression,
                                       const GGS_actualParameterListForGeneration & in_mActualParameterList,
                                       const GGS_bool & in_mGrammarHasTranslateFeature,
-                                      const GGS_stringlist & in_mAssignementList,
+                                      const GGS__5B_string_5D_ & in_mAssignementList,
                                       const GGS_string & in_mSyntaxDirectedTranslationResultVarName,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) {
@@ -10628,7 +10628,7 @@ grammarInstructionWithSourceFileForGeneration_init_21__21__21__21__21__21__21__2
                                                                                     const GGS_semanticExpressionForGeneration & in_mSourceFileExpression,
                                                                                     const GGS_actualParameterListForGeneration & in_mActualParameterList,
                                                                                     const GGS_bool & in_mGrammarHasTranslateFeature,
-                                                                                    const GGS_stringlist & in_mAssignementList,
+                                                                                    const GGS__5B_string_5D_ & in_mAssignementList,
                                                                                     const GGS_string & in_mSyntaxDirectedTranslationResultVarName,
                                                                                     Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
@@ -10721,9 +10721,9 @@ GGS_bool GGS_grammarInstructionWithSourceFileForGeneration::readProperty_mGramma
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist GGS_grammarInstructionWithSourceFileForGeneration::readProperty_mAssignementList (void) const {
+GGS__5B_string_5D_ GGS_grammarInstructionWithSourceFileForGeneration::readProperty_mAssignementList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_stringlist () ;
+    return GGS__5B_string_5D_ () ;
   }else{
     cPtr_grammarInstructionWithSourceFileForGeneration * p = (cPtr_grammarInstructionWithSourceFileForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_grammarInstructionWithSourceFileForGeneration) ;
@@ -10767,7 +10767,7 @@ cPtr_grammarInstructionWithSourceFileForGeneration::cPtr_grammarInstructionWithS
                                                                                                         const GGS_semanticExpressionForGeneration & in_mSourceFileExpression,
                                                                                                         const GGS_actualParameterListForGeneration & in_mActualParameterList,
                                                                                                         const GGS_bool & in_mGrammarHasTranslateFeature,
-                                                                                                        const GGS_stringlist & in_mAssignementList,
+                                                                                                        const GGS__5B_string_5D_ & in_mAssignementList,
                                                                                                         const GGS_string & in_mSyntaxDirectedTranslationResultVarName,
                                                                                                         Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) :
@@ -10891,7 +10891,7 @@ init_21__21__21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLo
                                           const GGS_semanticExpressionForGeneration & in_mNameStringExpression,
                                           const GGS_actualParameterListForGeneration & in_mActualParameterList,
                                           const GGS_bool & in_mGrammarHasTranslateFeature,
-                                          const GGS_stringlist & in_mAssignementList,
+                                          const GGS__5B_string_5D_ & in_mAssignementList,
                                           const GGS_string & in_mSyntaxDirectedTranslationResultVarName,
                                           Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) {
@@ -10913,7 +10913,7 @@ grammarInstructionWithSourceExpressionForGeneration_init_21__21__21__21__21__21_
                                                                                               const GGS_semanticExpressionForGeneration & in_mNameStringExpression,
                                                                                               const GGS_actualParameterListForGeneration & in_mActualParameterList,
                                                                                               const GGS_bool & in_mGrammarHasTranslateFeature,
-                                                                                              const GGS_stringlist & in_mAssignementList,
+                                                                                              const GGS__5B_string_5D_ & in_mAssignementList,
                                                                                               const GGS_string & in_mSyntaxDirectedTranslationResultVarName,
                                                                                               Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
@@ -11019,9 +11019,9 @@ GGS_bool GGS_grammarInstructionWithSourceExpressionForGeneration::readProperty_m
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist GGS_grammarInstructionWithSourceExpressionForGeneration::readProperty_mAssignementList (void) const {
+GGS__5B_string_5D_ GGS_grammarInstructionWithSourceExpressionForGeneration::readProperty_mAssignementList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_stringlist () ;
+    return GGS__5B_string_5D_ () ;
   }else{
     cPtr_grammarInstructionWithSourceExpressionForGeneration * p = (cPtr_grammarInstructionWithSourceExpressionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_grammarInstructionWithSourceExpressionForGeneration) ;
@@ -11067,7 +11067,7 @@ cPtr_grammarInstructionWithSourceExpressionForGeneration::cPtr_grammarInstructio
                                                                                                                     const GGS_semanticExpressionForGeneration & in_mNameStringExpression,
                                                                                                                     const GGS_actualParameterListForGeneration & in_mActualParameterList,
                                                                                                                     const GGS_bool & in_mGrammarHasTranslateFeature,
-                                                                                                                    const GGS_stringlist & in_mAssignementList,
+                                                                                                                    const GGS__5B_string_5D_ & in_mAssignementList,
                                                                                                                     const GGS_string & in_mSyntaxDirectedTranslationResultVarName,
                                                                                                                     Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) :

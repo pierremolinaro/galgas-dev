@@ -139,12 +139,12 @@ override proc @methodCallInstructionForGeneration.generateInstruction (?!@string
   self.mReceiverExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let @string receiverCppName)
   !?ioUnusedVariableCppNameSet.removeKey (receiverCppName)
 //---
-  var parameterCppNameList = @stringlist ()
-  var jokerParametersToReleaseList = @stringlist ()
-  var inputVariableList = @stringlist ()
+  var parameterCppNameList = [@string] ()
+  var jokerParametersToReleaseList = [@string] ()
+  var inputVariableList = [@string] ()
   for entry in self.mActualParameterList do
     entry.mActualParameter.generateActualParameter (!?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioGeneratedCode, !?jokerParametersToReleaseList, !?inputVariableList, !?ioUnusedVariableCppNameSet, ?let parameterCppName)
-    parameterCppNameList ++= @(parameterCppName)
+    parameterCppNameList ++= parameterCppName
   end
 //--- Generate proc call
   switch self.mKind
@@ -162,7 +162,7 @@ override proc @methodCallInstructionForGeneration.generateInstruction (?!@string
     ioGeneratedCode += receiverCppName + ".method_" + self.mMethodName.identifierRepresentation + " ("
   end
   for entry in parameterCppNameList
-    do ioGeneratedCode += entry.mValue
+    do ioGeneratedCode += entry
     between ioGeneratedCode += ", "
   end
   if parameterCppNameList.count == 0 then

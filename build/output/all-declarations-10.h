@@ -4298,7 +4298,7 @@ class GGS_getterCallExpressionForGeneration : public GGS_semanticExpressionForGe
 
   public: class GGS_semanticExpressionForGeneration readProperty_mReceiverExpression (void) const ;
 
-  public: class GGS_stringlist readProperty_mFieldList (void) const ;
+  public: class GGS__5B_string_5D_ readProperty_mFieldList (void) const ;
 
   public: class GGS_string readProperty_mGetterName (void) const ;
 
@@ -4313,7 +4313,7 @@ class GGS_getterCallExpressionForGeneration : public GGS_semanticExpressionForGe
                                                                                              const class GGS_location & inOperand1,
                                                                                              const class GGS_methodKind & inOperand2,
                                                                                              const class GGS_semanticExpressionForGeneration & inOperand3,
-                                                                                             const class GGS_stringlist & inOperand4,
+                                                                                             const class GGS__5B_string_5D_ & inOperand4,
                                                                                              const class GGS_string & inOperand5,
                                                                                              const class GGS_semanticExpressionListForGeneration & inOperand6,
                                                                                              const class GGS_bool & inOperand7,
@@ -4356,7 +4356,7 @@ class cPtr_getterCallExpressionForGeneration : public cPtr_semanticExpressionFor
                                                                                        const class GGS_location & inOperand1,
                                                                                        const class GGS_methodKind & inOperand2,
                                                                                        const class GGS_semanticExpressionForGeneration & inOperand3,
-                                                                                       const class GGS_stringlist & inOperand4,
+                                                                                       const class GGS__5B_string_5D_ & inOperand4,
                                                                                        const class GGS_string & inOperand5,
                                                                                        const class GGS_semanticExpressionListForGeneration & inOperand6,
                                                                                        const class GGS_bool & inOperand7,
@@ -4374,7 +4374,7 @@ class cPtr_getterCallExpressionForGeneration : public cPtr_semanticExpressionFor
 //--- Properties
   public: GGS_methodKind mProperty_mKind ;
   public: GGS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
-  public: GGS_stringlist mProperty_mFieldList ;
+  public: GGS__5B_string_5D_ mProperty_mFieldList ;
   public: GGS_string mProperty_mGetterName ;
   public: GGS_semanticExpressionListForGeneration mProperty_mActualArgumentList ;
   public: GGS_bool mProperty_mHasCompilerArgument ;
@@ -4388,7 +4388,7 @@ class cPtr_getterCallExpressionForGeneration : public cPtr_semanticExpressionFor
                                                   const GGS_location & in_mLocation,
                                                   const GGS_methodKind & in_mKind,
                                                   const GGS_semanticExpressionForGeneration & in_mReceiverExpression,
-                                                  const GGS_stringlist & in_mFieldList,
+                                                  const GGS__5B_string_5D_ & in_mFieldList,
                                                   const GGS_string & in_mGetterName,
                                                   const GGS_semanticExpressionListForGeneration & in_mActualArgumentList,
                                                   const GGS_bool & in_mHasCompilerArgument,
@@ -8400,8 +8400,8 @@ void callExtensionMethod_generateActualParameter (class cPtr_actualParameterForG
                                                   class GGS_stringset & io_ioInclusionSet,
                                                   class GGS_uint & io_ioTemporaryVariableIndex,
                                                   class GGS_string & io_ioImplementation,
-                                                  class GGS_stringlist & io_ioJokerParametersToReleaseList,
-                                                  class GGS_stringlist & io_ioOutputVariableList,
+                                                  class GGS__5B_string_5D_ & io_ioJokerParametersToReleaseList,
+                                                  class GGS__5B_string_5D_ & io_ioOutputVariableList,
                                                   class GGS_stringset & io__5F_ioUnusedVariableCppNameSet,
                                                   class GGS_string & out_outCppName,
                                                   class Compiler * inCompiler
@@ -8482,8 +8482,8 @@ class cPtr_outputActualParameterForGeneration : public cPtr_actualParameterForGe
   public: virtual void method_generateActualParameter (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_string & arg_ioImplementation,
-           class GGS_stringlist & arg_ioJokerParametersToReleaseList,
-           class GGS_stringlist & arg_ioOutputVariableList,
+           class GGS__5B_string_5D_ & arg_ioJokerParametersToReleaseList,
+           class GGS__5B_string_5D_ & arg_ioOutputVariableList,
            class GGS_stringset & arg__ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppName,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8660,8 +8660,8 @@ class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameter
   public: virtual void method_generateActualParameter (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_string & arg_ioImplementation,
-           class GGS_stringlist & arg_ioJokerParametersToReleaseList,
-           class GGS_stringlist & arg_ioOutputVariableList,
+           class GGS__5B_string_5D_ & arg_ioJokerParametersToReleaseList,
+           class GGS__5B_string_5D_ & arg_ioOutputVariableList,
            class GGS_stringset & arg__ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppName,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -8838,8 +8838,8 @@ class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGen
   public: virtual void method_generateActualParameter (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_string & arg_ioImplementation,
-           class GGS_stringlist & arg_ioJokerParametersToReleaseList,
-           class GGS_stringlist & arg_ioOutputVariableList,
+           class GGS__5B_string_5D_ & arg_ioJokerParametersToReleaseList,
+           class GGS__5B_string_5D_ & arg_ioOutputVariableList,
            class GGS_stringset & arg__ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppName,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -9014,8 +9014,8 @@ class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGene
   public: virtual void method_generateActualParameter (class GGS_stringset & arg_ioInclusionSet,
            class GGS_uint & arg_ioTemporaryVariableIndex,
            class GGS_string & arg_ioImplementation,
-           class GGS_stringlist & arg_ioJokerParametersToReleaseList,
-           class GGS_stringlist & arg_ioOutputVariableList,
+           class GGS__5B_string_5D_ & arg_ioJokerParametersToReleaseList,
+           class GGS__5B_string_5D_ & arg_ioOutputVariableList,
            class GGS_stringset & arg__ioUnusedVariableCppNameSet,
            class GGS_string & arg_outCppName,
            Compiler * COMMA_LOCATION_ARGS) override ;

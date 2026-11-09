@@ -2082,7 +2082,7 @@ void callExtensionMethod_analyzeGrammarInstructionSDT (class cPtr_abstractGramma
                                                        class GGS_unifiedTypeMap & io_ioTypeMap,
                                                        const class GGS_bool constin_inHasTranslateFeature,
                                                        const class GGS_string constin_inSyntaxDirectedTranslationResultVarName,
-                                                       class GGS_stringlist & io_ioAssignementList,
+                                                       class GGS__5B_string_5D_ & io_ioAssignementList,
                                                        class GGS_localVarManager & io_ioVariableMap,
                                                        class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;

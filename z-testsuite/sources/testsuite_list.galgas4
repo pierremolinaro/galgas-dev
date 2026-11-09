@@ -32,14 +32,14 @@ proc testsuite_list() {
   let @bool comp = aList == bList
   log comp
   println ("*************************************** begin of collection value")
-  var s1 = @stringlist [@("a")]
+  var s1 = [@string] ["a"]
   !?s1.append ("b")
-  var s2 = @stringlist [@("c")]
+  var s2 = [@string] ["c"]
   !?s2.append ("d")
-  s2 += [@("e")]
+  s2 += ["e"]
   let str = s1 + s2
   log str
-  let str2 = @stringlist [@("a"), @("b"), @("c"), @("d"), @("e")]
+  let str2 = [@string] ["a", "b", "c", "d", "e"]
   log str2
 }
 

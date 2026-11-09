@@ -216,9 +216,9 @@ override proc @nonterminalInstructionForGeneration.generateInstruction (?!@strin
                             let @bool inGenerateSyntaxDirectedTranslationString,
                             ?!@string ioGeneratedCode) {
 //--- Parameters
-  var parameterCppNameList = @stringlist ()
-  var jokerParametersToReleaseList = @stringlist ()
-  var inputVariableList = @stringlist ()
+  var parameterCppNameList = [@string] ()
+  var jokerParametersToReleaseList = [@string] ()
+  var inputVariableList = [@string] ()
   for parameter in self.mActualParameterList do
     parameter.mActualParameter.generateActualParameter
       (!?ioInclusionSet,
@@ -229,7 +229,7 @@ override proc @nonterminalInstructionForGeneration.generateInstruction (?!@strin
       !?ioUnusedVariableCppNameSet,
       ?let @string parameterCppName
     )
-    parameterCppNameList ++= @(parameterCppName)
+    parameterCppNameList ++= parameterCppName
   end
 //--- Generate proc call
   let sdtResultVarName = "syntaxDirectedTranslationResult_" + self.mInstructionLocation.startLocationIndex
@@ -238,7 +238,7 @@ override proc @nonterminalInstructionForGeneration.generateInstruction (?!@strin
   end
   ioGeneratedCode += "nt_" + self.mNonterminalName.identifierRepresentation + "_" + self.mLabelName.identifierRepresentation + " ("
   for entry in parameterCppNameList do
-    ioGeneratedCode += entry.mValue + ", "
+    ioGeneratedCode += entry + ", "
   end
   if inGenerateSyntaxDirectedTranslationString then
     ioGeneratedCode += sdtResultVarName + ", "

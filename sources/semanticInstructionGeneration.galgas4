@@ -26,8 +26,8 @@ override proc @outputActualParameterForGeneration.generateActualParameter (
   ?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@string ioImplementation,
-  ?!@stringlist _ioJokerParametersToReleaseList,
-  ?!@stringlist _ioOutputVariableList,
+  ?![@string] _ioJokerParametersToReleaseList,
+  ?![@string] _ioOutputVariableList,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppName
 ) {
@@ -41,8 +41,8 @@ override proc @outputInputActualParameterForGeneration.generateActualParameter (
   ?!@stringset ioInclusionSet,
   ?!@uint _ioTemporaryVariableIndex,
   ?!@string _ioImplementation,
-  ?!@stringlist _ioJokerParametersToReleaseList,
-  ?!@stringlist _ioOutputVariableList,
+  ?![@string] _ioJokerParametersToReleaseList,
+  ?![@string] _ioOutputVariableList,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppName ) {
   for entry in self.mTypeList do
@@ -61,12 +61,12 @@ override proc @inputActualParameterForGeneration.generateActualParameter (
   ?!@stringset _ioInclusionSet,
   ?!@uint _ioTemporaryVariableIndex,
   ?!@string _ioImplementation,
-  ?!@stringlist _ioJokerParametersToReleaseList,
-  ?!@stringlist ioOutputVariableList,
+  ?![@string] _ioJokerParametersToReleaseList,
+  ?![@string] ioOutputVariableList,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppName ) {
   outCppName = self.mInputActualCppName
-  ioOutputVariableList ++= @(self.mInputActualCppName)
+  ioOutputVariableList ++= self.mInputActualCppName
   !?ioUnusedVariableCppNameSet.removeKey (outCppName)
 }
 
@@ -76,15 +76,15 @@ override proc @inputJokerParameterForGeneration.generateActualParameter (
   ?!@stringset ioInclusionSet,
   ?!@uint _ioTemporaryVariableIndex,
   ?!@string ioImplementation,
-  ?!@stringlist ioJokerParametersToReleaseList,
-  ?!@stringlist ioOutputVariableList,
+  ?![@string] ioJokerParametersToReleaseList,
+  ?![@string] ioOutputVariableList,
   ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppName ) {
   self.mFormalArgumentType.addHeaderFileName (!?ioInclusionSet)
   outCppName = self.mInputActualCppName
   ioImplementation += "GGS_" + self.mFormalArgumentType.identifierRepresentation + " " + outCppName + " ; // Joker input parameter\n"
-  ioJokerParametersToReleaseList ++= @(self.mInputActualCppName)
-  ioOutputVariableList ++= @(self.mInputActualCppName)
+  ioJokerParametersToReleaseList ++= self.mInputActualCppName
+  ioOutputVariableList ++= self.mInputActualCppName
 }
 
 //--------------------------------------------------------------------------------------------------

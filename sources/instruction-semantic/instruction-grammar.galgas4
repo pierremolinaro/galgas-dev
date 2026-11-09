@@ -345,7 +345,7 @@ override proc @grammarInFileInstructionAST.analyzeSemanticInstruction (
   end
 //--- Check syntax directed translation result parameter
   let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + self.mGrammarComponentName.location.startLocationIndex
-  var assignementList = @stringlist ()
+  var assignementList = [@string] ()
   self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult.analyzeGrammarInstructionSDT
     (inAnalysisContext,
     !?ioTypeMap,
@@ -439,7 +439,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
   end
 //--- Check syntax directed translation result parameter
   let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + self.mGrammarComponentName.location.startLocationIndex
-  var assignementList = @stringlist ()
+  var assignementList = [@string] ()
   self.mAbstractGrammarInstructionSyntaxDirectedTranslationResult.analyzeGrammarInstructionSDT
     (inAnalysisContext,
     !?ioTypeMap,
@@ -473,7 +473,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
     private let @semanticExpressionForGeneration mSourceFileExpression
     private let @actualParameterListForGeneration mActualParameterList
     private let @bool mGrammarHasTranslateFeature
-    private let @stringlist mAssignementList
+    private let [@string] mAssignementList
     private let @string mSyntaxDirectedTranslationResultVarName
   }
 
@@ -494,9 +494,9 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
       ?let @string sourceVar
     )
   //--- Parameters
-    var parameterCppNameList = @stringlist ()
-    var jokerParametersToReleaseList = @stringlist ()
-    var inputVariableList = @stringlist ()
+    var parameterCppNameList = [@string] ()
+    var jokerParametersToReleaseList = [@string] ()
+    var inputVariableList = [@string] ()
     for entry in self.mActualParameterList do
       entry.mActualParameter.generateActualParameter
         (!?ioInclusionSet,
@@ -507,7 +507,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
         !?ioUnusedVariableCppNameSet,
         ?let @string parameterCppName
       )
-      parameterCppNameList ++= @(parameterCppName)
+      parameterCppNameList ++= parameterCppName
       if entry.mActualParameter is @inputActualParameterForGeneration then
         ioGeneratedCode += parameterCppName + ".drop () ;\n"
       end
@@ -522,12 +522,12 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
                     + if self.mGrammarHasTranslateFeature then self.mSyntaxDirectedTranslationResultVarName + ", " else "" end
                     + sourceVar
     for entry in parameterCppNameList do
-      ioGeneratedCode += ", " + entry.mValue
+      ioGeneratedCode += ", " + entry
     end
     ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
     !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
     for s in self.mAssignementList do
-      ioGeneratedCode += s.mValue + "\n"
+      ioGeneratedCode += s + "\n"
     end
   }
 
@@ -543,7 +543,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
     private let @semanticExpressionForGeneration mNameStringExpression
     private let @actualParameterListForGeneration mActualParameterList
     private let @bool mGrammarHasTranslateFeature
-    private let @stringlist mAssignementList
+    private let [@string] mAssignementList
     private let @string mSyntaxDirectedTranslationResultVarName
   }
 
@@ -572,9 +572,9 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
       ?let @string nameVar
     )
   //--- Parameters
-    var parameterCppNameList = @stringlist ()
-    var jokerParametersToReleaseList = @stringlist ()
-    var inputVariableList = @stringlist ()
+    var parameterCppNameList = [@string] ()
+    var jokerParametersToReleaseList = [@string] ()
+    var inputVariableList = [@string] ()
     for entry in self.mActualParameterList do
       entry.mActualParameter.generateActualParameter
          (!?ioInclusionSet,
@@ -585,7 +585,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
          !?ioUnusedVariableCppNameSet,
          ?let @string parameterCppName
       )
-      parameterCppNameList ++= @(parameterCppName)
+      parameterCppNameList ++= parameterCppName
       if entry.mActualParameter is @inputActualParameterForGeneration then
         ioGeneratedCode += parameterCppName + ".drop () ;\n"
       end
@@ -600,12 +600,12 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
                     + sourceVar
                     + ", " + nameVar
     for entry in parameterCppNameList do
-      ioGeneratedCode += ", " + entry.mValue
+      ioGeneratedCode += ", " + entry
     end
     ioGeneratedCode += " " + self.mInstructionLocation.commaSourceFile + ") ;\n"
     !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
     for s in self.mAssignementList do
-      ioGeneratedCode += s.mValue + "\n"
+      ioGeneratedCode += s + "\n"
     end
   }
 

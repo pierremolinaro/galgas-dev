@@ -281,10 +281,10 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (Compil
         }
         GGS_uint index_1226_ (0) ;
         if (enumerator_654.current_mErrorMessageList (HERE).isValid ()) {
-          UpEnumerator_stringlist enumerator_1226 (enumerator_654.current_mErrorMessageList (HERE)) ;
+          UpEnumerator__5B_string_5D_ enumerator_1226 (enumerator_654.current_mErrorMessageList (HERE)) ;
           while (enumerator_1226.hasCurrentObject ()) {
             result.appendString (",\n                const char * ") ;
-            result.appendString (enumerator_1226.current_mValue (HERE).stringValue ()) ;
+            result.appendString (enumerator_1226.current_entry (HERE).stringValue ()) ;
             enumerator_1226.gotoNextObject () ;
             index_1226_.increment () ;
           }
@@ -9229,10 +9229,10 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExt
 //--------------------------------------------------------------------------------------------------
 
 GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDeclaration (Compiler * inCompiler,
-                                                                                           const GGS_stringlist & in_FILE_5F_INDEX_5F_STRING_5F_LIST,
-                                                                                           const GGS_stringlist & in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST,
-                                                                                           const GGS_stringlist & in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
-                                                                                           const GGS_stringlist & in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                           const GGS__5B_string_5D_ & in_FILE_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                           const GGS__5B_string_5D_ & in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                           const GGS__5B_string_5D_ & in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                           const GGS__5B_string_5D_ & in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
                                                                                            const GGS_string & in_FILEWRAPPER_5F_NAME
                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   String result ;
@@ -9241,10 +9241,10 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDe
   result.appendString ("\n//\n//--------------------------------------------------------------------------------------------------\n\n") ;
   GGS_uint index_307_idx (0) ;
   if (in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    UpEnumerator_stringlist enumerator_307 (in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST) ;
+    UpEnumerator__5B_string_5D_ enumerator_307 (in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST) ;
     while (enumerator_307.hasCurrentObject ()) {
       result.appendString ("extern const char * gWrapperFileContent_") ;
-      result.appendString (enumerator_307.current_mValue (HERE).stringValue ()) ;
+      result.appendString (enumerator_307.current_entry (HERE).stringValue ()) ;
       result.appendString ("_") ;
       result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 8)).stringValue ()) ;
       result.appendString (" ;\n") ;
@@ -9255,10 +9255,10 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDe
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
   GGS_uint index_577_idx (0) ;
   if (in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    UpEnumerator_stringlist enumerator_577 (in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST) ;
+    UpEnumerator__5B_string_5D_ enumerator_577 (in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST) ;
     while (enumerator_577.hasCurrentObject ()) {
       result.appendString ("extern const uint8_t gWrapperFileContent_") ;
-      result.appendString (enumerator_577.current_mValue (HERE).stringValue ()) ;
+      result.appendString (enumerator_577.current_entry (HERE).stringValue ()) ;
       result.appendString ("_") ;
       result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 14)).stringValue ()) ;
       result.appendString (" [] ;\n") ;
@@ -9269,10 +9269,10 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDe
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
   GGS_uint index_841_idx (0) ;
   if (in_FILE_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    UpEnumerator_stringlist enumerator_841 (in_FILE_5F_INDEX_5F_STRING_5F_LIST) ;
+    UpEnumerator__5B_string_5D_ enumerator_841 (in_FILE_5F_INDEX_5F_STRING_5F_LIST) ;
     while (enumerator_841.hasCurrentObject ()) {
       result.appendString ("extern const cRegularFileWrapper gWrapperFile_") ;
-      result.appendString (enumerator_841.current_mValue (HERE).stringValue ()) ;
+      result.appendString (enumerator_841.current_entry (HERE).stringValue ()) ;
       result.appendString ("_") ;
       result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 20)).stringValue ()) ;
       result.appendString (" ;\n") ;
@@ -9283,10 +9283,10 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDe
   result.appendString ("\n//--------------------------------------------------------------------------------------------------\n\n") ;
   GGS_uint index_1108_ (0) ;
   if (in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
-    UpEnumerator_stringlist enumerator_1108 (in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST) ;
+    UpEnumerator__5B_string_5D_ enumerator_1108 (in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST) ;
     while (enumerator_1108.hasCurrentObject ()) {
       result.appendString ("extern const cDirectoryWrapper gWrapperDirectory_") ;
-      result.appendString (enumerator_1108.current_mValue (HERE).stringValue ()) ;
+      result.appendString (enumerator_1108.current_entry (HERE).stringValue ()) ;
       result.appendString ("_") ;
       result.appendString (in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 26)).stringValue ()) ;
       result.appendString (" ;\n") ;

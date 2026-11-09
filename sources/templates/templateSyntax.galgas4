@@ -350,10 +350,10 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
 //--------------------------------------------------------------------------------------------------
 
 rule <primary_tpl> (!@templateExpressionAST outExpression ) {
-  var @stringlist literalStringList = @()
+  var [@string] literalStringList = @()
   repeat
     $"string"$ (?let @lstring literalString)
-    literalStringList ++= @(literalString.string)
+    literalStringList ++= literalString.string
   while
   end
   outExpression = @templateLiteralStringExpressionAST (literalStringList, @location.here)

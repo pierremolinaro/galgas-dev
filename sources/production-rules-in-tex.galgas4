@@ -383,7 +383,7 @@ override proc @selectInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   )
   var endColumn = branchZeroColumn
 //--- Enter following branches
-  var @stringlist endingNodes = @()
+  var [@string] endingNodes = @()
   for branch in branches do
     maxUsedRowIndex += 1
     var branchColumn = ioColumn
@@ -399,7 +399,7 @@ override proc @selectInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
       !?maxUsedRowIndex,
       !debug:inDebug
     )
-    endingNodes ++= @(currentNode)
+    endingNodes ++= currentNode
     if endColumn < branchColumn then
       endColumn = branchColumn
     end
@@ -416,7 +416,7 @@ override proc @selectInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   ioCurrentNode = endNodeName
 //--- Add ending nodes
   for entry in endingNodes do
-    ioArrows += "  \\draw[->] (" + entry.mValue + ") -| (" + endNodeName + ") ;\n"
+    ioArrows += "  \\draw[->] (" + entry + ") -| (" + endNodeName + ") ;\n"
   end
 //--- Trace ?
   if inDebug then
@@ -485,9 +485,9 @@ override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
     oneEmptyBranch = firstBranch.count == 0
   end
 //--- Enter branches
-  var @stringlist endingNodes = @()
+  var [@string] endingNodes = @()
   if oneEmptyBranch then
-    endingNodes ++= @(startNodeName)
+    endingNodes ++= startNodeName
   else
     var nextBranchUsedRowIndex = inRow
     for branch in branches do
@@ -505,7 +505,7 @@ override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
         !?nextBranchUsedRowIndex,
         !debug:inDebug
       )
-      endingNodes ++= @(currentNode)
+      endingNodes ++= currentNode
       if endColumn < branchColumn then
         endColumn = branchColumn
       end
@@ -524,7 +524,7 @@ override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   ioArrows += "  \\draw[->] (" + returnUpperNodeName + ") -| (" + returnNodeName + ") ;\n"
 //--- Add ending arrows
   for entry in endingNodes do
-    ioArrows += "  \\draw[->] (" + entry.mValue + ") -| (" + returnUpperNodeName + ") ;\n"
+    ioArrows += "  \\draw[->] (" + entry + ") -| (" + returnUpperNodeName + ") ;\n"
   end
 //--- Trace ?
   if inDebug then

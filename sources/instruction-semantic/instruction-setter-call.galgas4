@@ -311,9 +311,9 @@ override proc @setterCallInstructionForGeneration.generateInstruction (?!@string
   end
   !?ioUnusedVariableCppNameSet.removeKey (self.mReceiverBaseName)
 //--- Parameters
-  var @stringlist parameterCppNameList = @()
-  var @stringlist jokerParametersToReleaseList = @()
-  var @stringlist inputVariableList = @()
+  var [@string] parameterCppNameList = @()
+  var [@string] jokerParametersToReleaseList = @()
+  var [@string] inputVariableList = @()
   for entry in self.mActualParameterList do
     entry.mActualParameter.generateActualParameter
       (!?ioInclusionSet,
@@ -324,7 +324,7 @@ override proc @setterCallInstructionForGeneration.generateInstruction (?!@string
       !?ioUnusedVariableCppNameSet,
       ?let parameterCppName
     )
-    parameterCppNameList ++= @(parameterCppName)
+    parameterCppNameList ++= parameterCppName
   end
 //--- Generate proc call
   switch self.mKind
@@ -348,7 +348,7 @@ override proc @setterCallInstructionForGeneration.generateInstruction (?!@string
     ioGeneratedCode += receiverCppName + ".setter_" + self.mSetterName.string.identifierRepresentation + " ("
   end
   for entry in parameterCppNameList
-    do ioGeneratedCode += entry.mValue
+    do ioGeneratedCode += entry
     between ioGeneratedCode += ", "
   end
   if self.mHasCompilerArgument then
@@ -375,9 +375,9 @@ override proc @selfSetterCallInstructionForGeneration.generateInstruction (?!@st
   ioGeneratedCode += "{\n"
   !?ioUnusedVariableCppNameSet.removeKey (self.mSelfCppName)
 //--- Parameters
-  var parameterCppNameList = @stringlist ()
-  var jokerParametersToReleaseList = @stringlist ()
-  var inputVariableList = @stringlist ()
+  var parameterCppNameList = [@string] ()
+  var jokerParametersToReleaseList = [@string] ()
+  var inputVariableList = [@string] ()
   for entry in self.mActualParameterList do
     entry.mActualParameter.generateActualParameter
       (!?ioInclusionSet,
@@ -387,7 +387,7 @@ override proc @selfSetterCallInstructionForGeneration.generateInstruction (?!@st
       !?inputVariableList,
       !?ioUnusedVariableCppNameSet,
       ?let @string parameterCppName)
-    parameterCppNameList ++= @(parameterCppName)
+    parameterCppNameList ++= parameterCppName
   end
 //--- Generate mutating proc call
   switch self.mKind
@@ -406,7 +406,7 @@ override proc @selfSetterCallInstructionForGeneration.generateInstruction (?!@st
     end
   end
   for entry in parameterCppNameList
-    do ioGeneratedCode += entry.mValue
+    do ioGeneratedCode += entry
     between ioGeneratedCode += ", "
   end
   if self.mHasCompilerArgument then

@@ -74,7 +74,7 @@ mutating proc [@uint64].prependSquare (let @uint64 inValue) {
   !?self.insertAtIndex (inValue.square, 0)
 }
 
-mutating proc @string.concatList (let@stringlist inList) {
+mutating proc @string.concatList (let [@string] inList) {
   for (mValue) in inList do
     self += mValue
   end

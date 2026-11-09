@@ -250,7 +250,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
 //--------------------------------------------------------------------------------------------------
 
 struct @guiAnalysisContext {
-  public var @stringlist mImportedOptionComponentList = @()
+  public var [@string] mImportedOptionComponentList = @()
   public let @guiCommandLineOptionList mBoolOptionList = @()
   public let @guiCommandLineOptionList mUIntOptionList = @()
   public let @guiCommandLineOptionList mStringOptionList = @()
@@ -298,7 +298,7 @@ private proc guiComponentSemanticAnalysis (let @galgasGUIComponentListAST.@eleme
 //--- Check imported options components
   for (mValue) in inGUIComponentAST.mImportedOptionList do
     inSemanticContext.mOptionComponentMapForSemanticAnalysis.searchKey (mValue, ?4*)
-    context.mImportedOptionComponentList ++= @(mValue.string)
+    context.mImportedOptionComponentList ++= mValue.string
   end
 //--- Nib and main classes
   var runOptionDefined = false

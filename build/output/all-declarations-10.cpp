@@ -10940,8 +10940,8 @@ void callExtensionMethod_generateActualParameter (cPtr_actualParameterForGenerat
                                                   GGS_stringset & io_ioInclusionSet,
                                                   GGS_uint & io_ioTemporaryVariableIndex,
                                                   GGS_string & io_ioImplementation,
-                                                  GGS_stringlist & io_ioJokerParametersToReleaseList,
-                                                  GGS_stringlist & io_ioOutputVariableList,
+                                                  GGS__5B_string_5D_ & io_ioJokerParametersToReleaseList,
+                                                  GGS__5B_string_5D_ & io_ioOutputVariableList,
                                                   GGS_stringset & io__5F_ioUnusedVariableCppNameSet,
                                                   GGS_string & out_outCppName,
                                                   Compiler * inCompiler

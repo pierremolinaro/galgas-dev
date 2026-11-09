@@ -96,7 +96,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
     var @methodKind kind
     var @bool hasCompilerArgument
     var @unifiedTypeMapEntry returnedType
-    var fieldList = @stringlist ()
+    var fieldList = [@string] ()
     var actualGetterName = self.mGetterName.string
     if getterMap.contains (self.mGetterName.string) then
       getterMap.searchKey (self.mGetterName,
@@ -129,7 +129,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
             if entry.mGetterNameThatObsoletesInvokationName != "" then
               actualGetterName = entry.mGetterNameThatObsoletesInvokationName
             end
-            fieldList ++= @(property.name.string)
+            fieldList ++= property.name.string
           end
         end
         if matchingReaderCount == 0 then

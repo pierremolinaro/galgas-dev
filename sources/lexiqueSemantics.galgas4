@@ -80,7 +80,7 @@ list @lexicalRoutineFormalArgumentList {
 
 map @lexicalRoutineMap {
   public let @lexicalRoutineFormalArgumentList mLexicalRoutineFormalArgumentList
-  public let @stringlist mErrorMessageList
+  public let [@string] mErrorMessageList
   public let @bool mIsExtern
   #insertSetter insertKey #errorMessage "the '%K' lexical routine has been already declared"
   #searchMethod searchKey #errorMessage "the '%K' lexical routine is not declared"

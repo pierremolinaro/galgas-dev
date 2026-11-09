@@ -143,9 +143,9 @@ override proc @typeMethodCallInstructionForGeneration.generateInstruction (?!@st
                                     ?!@string ioGeneratedCode) {
   ioGeneratedCode += "{\n"
 //--- Parameters
-  var parameterCppNameList = @stringlist ()
-  var jokerParametersToReleaseList = @stringlist ()
-  var inputVariableList = @stringlist ()
+  var parameterCppNameList = [@string] ()
+  var jokerParametersToReleaseList = [@string] ()
+  var inputVariableList = [@string] ()
   for entry in self.mActualParameterList do
     entry.mActualParameter.generateActualParameter
       (!?ioInclusionSet,
@@ -154,14 +154,15 @@ override proc @typeMethodCallInstructionForGeneration.generateInstruction (?!@st
       !?jokerParametersToReleaseList,
       !?inputVariableList,
       !?ioUnusedVariableCppNameSet,
-      ?let @string parameterCppName)
-    parameterCppNameList ++= @(parameterCppName)
+      ?let @string parameterCppName
+    )
+    parameterCppNameList ++= parameterCppName
   end
 //--- Generate proc call
   ioGeneratedCode += "GGS_" + self.mTypeName.string.identifierRepresentation
                   + "::class_method_" + self.mMethodName.string.identifierRepresentation + " ("
   for entry in parameterCppNameList
-    do ioGeneratedCode += entry.mValue
+    do ioGeneratedCode += entry
     between ioGeneratedCode += ", "
   end
   if self.mHasCompilerArgument then

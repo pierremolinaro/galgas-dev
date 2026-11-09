@@ -218,7 +218,7 @@ abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult.analyze
   ?!@unifiedTypeMap ioTypeMap,
   let @bool inHasTranslateFeature,
   let @string inSyntaxDirectedTranslationResultVarName,
-  ?!@stringlist ioAssignementList,
+  ?![@string] ioAssignementList,
   ?!@localVarManager ioVariableMap)
 
 //--------------------------------------------------------------------------------------------------
@@ -228,7 +228,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultNone.analyzeGram
                                 ?!@unifiedTypeMap _ioTypeMap,
   let @bool _inHasTranslateFeature,
   let @string _inSyntaxDirectedTranslationResultVarName,
-  ?!@stringlist _ioAssignementList,
+  ?![@string] _ioAssignementList,
   ?!@localVarManager _ioVariableMap ) {
 }
 
@@ -239,7 +239,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationDropResult.analyzeGram
                                 ?!@unifiedTypeMap _ioTypeMap,
   let @bool inHasTranslateFeature,
   let @string _inSyntaxDirectedTranslationResultVarName,
-  ?!@stringlist _ioAssignementList,
+  ?![@string] _ioAssignementList,
   ?!@localVarManager _ioVariableMap ) {
   if not inHasTranslateFeature then
     error (self.mLocation : "the ':>' construct requires the grammar to be declared with 'translate' feature")
@@ -253,7 +253,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInVar.analyzeGra
                                 ?!@unifiedTypeMap _ioTypeMap,
   let @bool inHasTranslateFeature,
   let @string inSyntaxDirectedTranslationResultVarName,
-  ?!@stringlist ioAssignementList,
+  ?![@string] ioAssignementList,
   ?!@localVarManager ioVariableMap ) {
   if not inHasTranslateFeature then
     error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
@@ -265,7 +265,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInVar.analyzeGra
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
     + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
-  ioAssignementList ++= @(cppName + " = GGS_string (" + inSyntaxDirectedTranslationResultVarName + ") ;")
+  ioAssignementList ++= cppName + " = GGS_string (" + inSyntaxDirectedTranslationResultVarName + ") ;"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -275,7 +275,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.an
   ?!@unifiedTypeMap ioTypeMap,
   let @bool inHasTranslateFeature,
   let @string inSyntaxDirectedTranslationResultVarName,
-  ?!@stringlist ioAssignementList,
+  ?![@string] ioAssignementList,
   ?!@localVarManager ioVariableMap ) {
   if not inHasTranslateFeature then
     error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
@@ -289,7 +289,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.an
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
     + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
-  ioAssignementList ++= @("GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;")
+  ioAssignementList ++= "GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -299,7 +299,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.
                                 ?!@unifiedTypeMap ioTypeMap,
   let @bool inHasTranslateFeature,
   let @string inSyntaxDirectedTranslationResultVarName,
-  ?!@stringlist ioAssignementList,
+  ?![@string] ioAssignementList,
   ?!@localVarManager ioVariableMap ) {
   if not inHasTranslateFeature then
     error (self.mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature")
@@ -313,7 +313,7 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.
     : "the '" + self.mActualParameterName + "' parameter has the '@" + type.identifierRepresentation
     + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
-  ioAssignementList ++= @("const GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;")
+  ioAssignementList ++= "const GGS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;"
 }
 
 //--------------------------------------------------------------------------------------------------

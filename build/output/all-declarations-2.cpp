@@ -3172,7 +3172,7 @@ void callExtensionMethod_analyzeGrammarInstructionSDT (cPtr_abstractGrammarInstr
                                                        GGS_unifiedTypeMap & io_ioTypeMap,
                                                        const GGS_bool constin_inHasTranslateFeature,
                                                        const GGS_string constin_inSyntaxDirectedTranslationResultVarName,
-                                                       GGS_stringlist & io_ioAssignementList,
+                                                       GGS__5B_string_5D_ & io_ioAssignementList,
                                                        GGS_localVarManager & io_ioVariableMap,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
@@ -12519,13 +12519,13 @@ GGS_bool extensionGetter_displayVertically (const GGS_syntaxInstructionListForGr
   const GGS_syntaxInstructionListForGrammarAnalysis temp_0 = inObject ;
   result_result = GGS_bool (ComparisonKind::greaterThan, temp_0.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 548)).objectCompare (GGS_uint (uint32_t (4U)))) ;
   const GGS_syntaxInstructionListForGrammarAnalysis temp_1 = inObject ;
-  UpEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_19136 (temp_1) ;
+  UpEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_19109 (temp_1) ;
   bool bool_2 = result_result.isValidAndTrue () ;
-  if (enumerator_19136.hasCurrentObject () && bool_2) {
-    while (enumerator_19136.hasCurrentObject () && bool_2) {
-      result_result = callExtensionGetter_isLinear ((const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_19136.current (HERE).readProperty_mInstruction ().ptr (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 550)) ;
-      enumerator_19136.gotoNextObject () ;
-      if (enumerator_19136.hasCurrentObject ()) {
+  if (enumerator_19109.hasCurrentObject () && bool_2) {
+    while (enumerator_19109.hasCurrentObject () && bool_2) {
+      result_result = callExtensionGetter_isLinear ((const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_19109.current (HERE).readProperty_mInstruction ().ptr (), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 550)) ;
+      enumerator_19109.gotoNextObject () ;
+      if (enumerator_19109.hasCurrentObject ()) {
         bool_2 = result_result.isValidAndTrue () ;
       }
     }

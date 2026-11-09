@@ -6740,7 +6740,7 @@ GGS_templateExpressionAST () {
 //--- Synthetized initializer ----------------------------------------------------------------------
 
 GGS_templateLiteralStringExpressionAST GGS_templateLiteralStringExpressionAST::
-init_21__21_ (const GGS_stringlist & in_mLiteralStringList,
+init_21__21_ (const GGS__5B_string_5D_ & in_mLiteralStringList,
               const GGS_location & in_mLocation,
               Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
@@ -6755,7 +6755,7 @@ init_21__21_ (const GGS_stringlist & in_mLiteralStringList,
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_templateLiteralStringExpressionAST::
-templateLiteralStringExpressionAST_init_21__21_ (const GGS_stringlist & in_mLiteralStringList,
+templateLiteralStringExpressionAST_init_21__21_ (const GGS__5B_string_5D_ & in_mLiteralStringList,
                                                  const GGS_location & in_mLocation,
                                                  Compiler * /* inCompiler */) {
   mProperty_mLiteralStringList = in_mLiteralStringList ;
@@ -6770,9 +6770,9 @@ GGS_templateExpressionAST (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist GGS_templateLiteralStringExpressionAST::readProperty_mLiteralStringList (void) const {
+GGS__5B_string_5D_ GGS_templateLiteralStringExpressionAST::readProperty_mLiteralStringList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_stringlist () ;
+    return GGS__5B_string_5D_ () ;
   }else{
     cPtr_templateLiteralStringExpressionAST * p = (cPtr_templateLiteralStringExpressionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateLiteralStringExpressionAST) ;
@@ -6804,7 +6804,7 @@ mProperty_mLocation () {
 
 //--------------------------------------------------------------------------------------------------
 
-cPtr_templateLiteralStringExpressionAST::cPtr_templateLiteralStringExpressionAST (const GGS_stringlist & in_mLiteralStringList,
+cPtr_templateLiteralStringExpressionAST::cPtr_templateLiteralStringExpressionAST (const GGS__5B_string_5D_ & in_mLiteralStringList,
                                                                                   const GGS_location & in_mLocation,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) :

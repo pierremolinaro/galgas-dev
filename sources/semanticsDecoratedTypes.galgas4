@@ -130,8 +130,8 @@ abstract proc @actualParameterForGeneration.generateActualParameter
   (?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@string ioImplementation,
-  ?!@stringlist ioJokerParametersToReleaseList,
-  ?!@stringlist ioOutputVariableList,
+  ?![@string] ioJokerParametersToReleaseList,
+  ?![@string] ioOutputVariableList,
   ?!@stringset _ioUnusedVariableCppNameSet,
   !@string outCppName)
 

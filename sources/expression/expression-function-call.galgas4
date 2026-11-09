@@ -190,10 +190,10 @@ final class @functionCallExpressionForGeneration : @semanticExpressionForGenerat
   //--- Add function header
     ioInclusionSet ++= "func-" + self.mFunctionName.fileNameRepresentation
   //---
-    var parameterList = @stringlist ()
+    var parameterList = [@string] ()
     for exp in self.mExpressions do
       exp.mExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let parameter)
-      parameterList ++= @(parameter)
+      parameterList ++= parameter
     end
     outCppExpression = "function_" + self.mFunctionName.identifierRepresentation + " ("
     for (mValue) in parameterList do

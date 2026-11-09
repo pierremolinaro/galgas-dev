@@ -861,10 +861,10 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
   )
 
   template filewrapperDeclaration : "filewrapper-declaration.h.galgasTemplate" (
-    ?@stringlist FILE_INDEX_STRING_LIST,
-    ?@stringlist DIRECTORY_INDEX_STRING_LIST,
-    ?@stringlist TEXT_CONTENT_INDEX_STRING_LIST,
-    ?@stringlist BINARY_CONTENT_INDEX_STRING_LIST,
+    ?[@string] FILE_INDEX_STRING_LIST,
+    ?[@string] DIRECTORY_INDEX_STRING_LIST,
+    ?[@string] TEXT_CONTENT_INDEX_STRING_LIST,
+    ?[@string] BINARY_CONTENT_INDEX_STRING_LIST,
     ?@string FILEWRAPPER_NAME
   )
 
@@ -1164,17 +1164,17 @@ override func @filewrapperDeclarationForGeneration.headerKind () ->@headerKind {
 proc recursivlyEnumerateRegularFile
   (let @wrapperFileMap inFilewrapperFileMap,
   let @wrapperDirectoryMap inFilewrapperDirectoryMap,
-  ?!@stringlist ioRegularFileIndexStringList,
-  ?!@stringlist ioDirectoryIndexStringList,
-  ?!@stringlist ioRegularTextContentIndexStringList,
-  ?!@stringlist ioRegularBinaryContentIndexStringList ) {
-  ioDirectoryIndexStringList ++= @(ioDirectoryIndexStringList.count.string)
+  ?![@string] ioRegularFileIndexStringList,
+  ?![@string] ioDirectoryIndexStringList,
+  ?![@string] ioRegularTextContentIndexStringList,
+  ?![@string] ioRegularBinaryContentIndexStringList ) {
+  ioDirectoryIndexStringList ++= ioDirectoryIndexStringList.count.string
   for filewrapperFile in inFilewrapperFileMap do
-    ioRegularFileIndexStringList ++= @(ioRegularFileIndexStringList.count.string)
+    ioRegularFileIndexStringList ++= ioRegularFileIndexStringList.count.string
     if filewrapperFile.mIsTextFile then
-      ioRegularTextContentIndexStringList ++= @(filewrapperFile.mWrapperFileIndex.string)
+      ioRegularTextContentIndexStringList ++= filewrapperFile.mWrapperFileIndex.string
     else
-      ioRegularBinaryContentIndexStringList ++= @(filewrapperFile.mWrapperFileIndex.string)
+      ioRegularBinaryContentIndexStringList ++= filewrapperFile.mWrapperFileIndex.string
     end
   end
   for filewrapperDirectory in inFilewrapperDirectoryMap do
@@ -1194,10 +1194,10 @@ proc recursivlyEnumerateRegularFile
 override proc @filewrapperDeclarationForGeneration.appendDeclaration1
   (?!@stringset _ioInclusionSet,
   !@string outHeader) {
-  var regularFileIndexStringList = @stringlist ()
-  var regularBinaryContentIndexStringList = @stringlist ()
-  var regularTextContentIndexStringList = @stringlist ()
-  var directoryIndexStringList = @stringlist ()
+  var regularFileIndexStringList = [@string] ()
+  var regularBinaryContentIndexStringList = [@string] ()
+  var regularTextContentIndexStringList = [@string] ()
+  var directoryIndexStringList = [@string] ()
   recursivlyEnumerateRegularFile (
     self.mFilewrapperFileMap,
     self.mFilewrapperDirectoryMap,

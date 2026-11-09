@@ -594,7 +594,7 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
   ?!@stringset ioUnusedVariableCppNameSet,
   let @bool inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode) {
-  var @stringlist enumerationVarCppNameList = @()
+  var [@string] enumerationVarCppNameList = @()
   for entry in self.mEnumeratedObjectList do
     entry.mEnumeratedExpression.generateExpression
       (!?ioGeneratedCode,
@@ -603,11 +603,11 @@ override proc @forInstructionForGeneration.generateInstruction (?!@stringset ioI
       !?ioUnusedVariableCppNameSet,
       ?let enumerationVar
     )
-    enumerationVarCppNameList ++= @(enumerationVar)
+    enumerationVarCppNameList ++= enumerationVar
   end
   for enumerated in self.mEnumeratedObjectList, entry in enumerationVarCppNameList do
     ioGeneratedCode += enumerated.mEnumerationOrder + "Enumerator_" + enumerated.mEnumeratedExpression.mResultType.identifierRepresentation
-    ioGeneratedCode += " " + enumerated.mEnumeratorCppName + " (" + entry.mValue + ") ;\n"
+    ioGeneratedCode += " " + enumerated.mEnumeratorCppName + " (" + entry + ") ;\n"
   end
 //--- Analyse 'while' expression
   let whileExpressionIsAllwaysTrue = self.mWhileExpression.isTrueExpression

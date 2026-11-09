@@ -10451,7 +10451,7 @@ GGS_lexicalRoutineMap GGS_lexicalRoutineMap::getter_overriddenMap (Compiler * in
 
 void GGS_lexicalRoutineMap::setter_insertKey (GGS_lstring inLKey,
                                               GGS_lexicalRoutineFormalArgumentList inArgument0,
-                                              GGS_stringlist inArgument1,
+                                              GGS__5B_string_5D_ inArgument1,
                                               GGS_bool inArgument2,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
@@ -10465,7 +10465,7 @@ void GGS_lexicalRoutineMap::setter_insertKey (GGS_lstring inLKey,
 
 void GGS_lexicalRoutineMap::method_searchKey (GGS_lstring inLKey,
                                               GGS_lexicalRoutineFormalArgumentList & outArgument0,
-                                              GGS_stringlist & outArgument1,
+                                              GGS__5B_string_5D_ & outArgument1,
                                               GGS_bool & outArgument2,
                                               Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
@@ -10512,10 +10512,10 @@ GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineMap::getter_mLexicalRouti
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist GGS_lexicalRoutineMap::getter_mErrorMessageListForKey (const GGS_string & inKey,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const {
-  GGS_stringlist result ;
+GGS__5B_string_5D_ GGS_lexicalRoutineMap::getter_mErrorMessageListForKey (const GGS_string & inKey,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const {
+  GGS__5B_string_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     const SharedGenericPtrWithValueSemantics <GGS_lexicalRoutineMap_2E_element> info = infoForKey (key) ;
@@ -10572,7 +10572,7 @@ void GGS_lexicalRoutineMap::setter_setMLexicalRoutineFormalArgumentListForKey (G
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexicalRoutineMap::setter_setMErrorMessageListForKey (GGS_stringlist inValue,
+void GGS_lexicalRoutineMap::setter_setMErrorMessageListForKey (GGS__5B_string_5D_ inValue,
                                                                GGS_string inKey,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
@@ -10705,7 +10705,7 @@ GGS_lexicalRoutineFormalArgumentList DownEnumerator_lexicalRoutineMap::current_m
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist DownEnumerator_lexicalRoutineMap::current_mErrorMessageList (LOCATION_ARGS) const {
+GGS__5B_string_5D_ DownEnumerator_lexicalRoutineMap::current_mErrorMessageList (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mErrorMessageList ;
 }
 
@@ -10744,7 +10744,7 @@ GGS_lexicalRoutineFormalArgumentList UpEnumerator_lexicalRoutineMap::current_mLe
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist UpEnumerator_lexicalRoutineMap::current_mErrorMessageList (LOCATION_ARGS) const {
+GGS__5B_string_5D_ UpEnumerator_lexicalRoutineMap::current_mErrorMessageList (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mErrorMessageList ;
 }
 

@@ -7481,7 +7481,7 @@ GGS_semanticExpressionAST () {
 
 GGS_literalStringExpressionAST GGS_literalStringExpressionAST::
 init_21__21_ (const GGS_location & in_mLocation,
-              const GGS_stringlist & in_mStringSequence,
+              const GGS__5B_string_5D_ & in_mStringSequence,
               Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
   cPtr_literalStringExpressionAST * object = nullptr ;
@@ -7496,7 +7496,7 @@ init_21__21_ (const GGS_location & in_mLocation,
 
 void cPtr_literalStringExpressionAST::
 literalStringExpressionAST_init_21__21_ (const GGS_location & in_mLocation,
-                                         const GGS_stringlist & in_mStringSequence,
+                                         const GGS__5B_string_5D_ & in_mStringSequence,
                                          Compiler * /* inCompiler */) {
   mProperty_mLocation = in_mLocation ;
   mProperty_mStringSequence = in_mStringSequence ;
@@ -7522,9 +7522,9 @@ GGS_location GGS_literalStringExpressionAST::readProperty_mLocation (void) const
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist GGS_literalStringExpressionAST::readProperty_mStringSequence (void) const {
+GGS__5B_string_5D_ GGS_literalStringExpressionAST::readProperty_mStringSequence (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_stringlist () ;
+    return GGS__5B_string_5D_ () ;
   }else{
     cPtr_literalStringExpressionAST * p = (cPtr_literalStringExpressionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_literalStringExpressionAST) ;
@@ -7545,7 +7545,7 @@ mProperty_mStringSequence () {
 //--------------------------------------------------------------------------------------------------
 
 cPtr_literalStringExpressionAST::cPtr_literalStringExpressionAST (const GGS_location & in_mLocation,
-                                                                  const GGS_stringlist & in_mStringSequence,
+                                                                  const GGS__5B_string_5D_ & in_mStringSequence,
                                                                   Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionAST (inCompiler COMMA_THERE),

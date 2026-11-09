@@ -4274,14 +4274,14 @@ class GGS_templateLiteralStringExpressionAST : public GGS_templateExpressionAST 
   public: GGS_templateLiteralStringExpressionAST (const class cPtr_templateLiteralStringExpressionAST * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_stringlist readProperty_mLiteralStringList (void) const ;
+  public: class GGS__5B_string_5D_ readProperty_mLiteralStringList (void) const ;
 
   public: class GGS_location readProperty_mLocation (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_templateLiteralStringExpressionAST init_21__21_ (const class GGS_stringlist & inOperand0,
+  public: static GGS_templateLiteralStringExpressionAST init_21__21_ (const class GGS__5B_string_5D_ & inOperand0,
                                                                       const class GGS_location & inOperand1,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
@@ -4318,7 +4318,7 @@ class cPtr_templateLiteralStringExpressionAST : public cPtr_templateExpressionAS
   #endif
 
 //--------------------------------- Initializers
-  public: void templateLiteralStringExpressionAST_init_21__21_ (const class GGS_stringlist & inOperand0,
+  public: void templateLiteralStringExpressionAST_init_21__21_ (const class GGS__5B_string_5D_ & inOperand0,
                                                                 const class GGS_location & inOperand1,
                                                                 Compiler * inCompiler) ;
 
@@ -4332,7 +4332,7 @@ class cPtr_templateLiteralStringExpressionAST : public cPtr_templateExpressionAS
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_stringlist mProperty_mLiteralStringList ;
+  public: GGS__5B_string_5D_ mProperty_mLiteralStringList ;
   public: GGS_location mProperty_mLocation ;
 
 
@@ -4340,7 +4340,7 @@ class cPtr_templateLiteralStringExpressionAST : public cPtr_templateExpressionAS
   public: cPtr_templateLiteralStringExpressionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--- Constructor
-  public: cPtr_templateLiteralStringExpressionAST (const GGS_stringlist & in_mLiteralStringList,
+  public: cPtr_templateLiteralStringExpressionAST (const GGS__5B_string_5D_ & in_mLiteralStringList,
                                                    const GGS_location & in_mLocation,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;

@@ -6414,7 +6414,7 @@ class DownEnumerator_lexicalRoutineMap final {
 
   public: class GGS_lexicalRoutineFormalArgumentList current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist current_mErrorMessageList (LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ current_mErrorMessageList (LOCATION_ARGS) const ;
 
   public: class GGS_bool current_mIsExtern (LOCATION_ARGS) const ;
 
@@ -6442,7 +6442,7 @@ class UpEnumerator_lexicalRoutineMap final {
 
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_lexicalRoutineFormalArgumentList current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const ;
-  public: class GGS_stringlist current_mErrorMessageList (LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ current_mErrorMessageList (LOCATION_ARGS) const ;
   public: class GGS_bool current_mIsExtern (LOCATION_ARGS) const ;
   public: class GGS_lexicalRoutineMap_2E_element current (LOCATION_ARGS) const ;
 
@@ -6518,12 +6518,12 @@ class GGS_lexicalRoutineMap : public AC_GALGAS_root {
 //--------------------------------- Setters
   public: void setter_insertKey (class GGS_lstring constinArgument0,
                                  class GGS_lexicalRoutineFormalArgumentList constinArgument1,
-                                 class GGS_stringlist constinArgument2,
+                                 class GGS__5B_string_5D_ constinArgument2,
                                  class GGS_bool constinArgument3,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMErrorMessageListForKey (class GGS_stringlist constinArgument0,
+  public: void setter_setMErrorMessageListForKey (class GGS__5B_string_5D_ constinArgument0,
                                                   class GGS_string constinArgument1,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
@@ -6542,7 +6542,7 @@ class GGS_lexicalRoutineMap : public AC_GALGAS_root {
 //--------------------------------- Instance Methods
   public: void method_searchKey (class GGS_lstring constinArgument0,
                                  class GGS_lexicalRoutineFormalArgumentList & outArgument1,
-                                 class GGS_stringlist & outArgument2,
+                                 class GGS__5B_string_5D_ & outArgument2,
                                  class GGS_bool & outArgument3,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) const ;
@@ -6571,9 +6571,9 @@ class GGS_lexicalRoutineMap : public AC_GALGAS_root {
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_mErrorMessageListForKey (const class GGS_string & constinOperand0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_mErrorMessageListForKey (const class GGS_string & constinOperand0,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_mIsExternForKey (const class GGS_string & constinOperand0,
                                                  Compiler * inCompiler

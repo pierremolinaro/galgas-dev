@@ -121,7 +121,7 @@ final class @templateFalseBoolAST : @templateExpressionAST {
 //--------------------------------------------------------------------------------------------------
 
 final class @templateLiteralStringExpressionAST : @templateExpressionAST {
-  private let @stringlist mLiteralStringList
+  private let [@string] mLiteralStringList
   private let @location mLocation
 }
 

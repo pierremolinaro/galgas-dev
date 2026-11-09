@@ -5849,13 +5849,13 @@ class GGS_literalStringExpressionAST : public GGS_semanticExpressionAST {
 //--------------------------------- Property access
   public: class GGS_location readProperty_mLocation (void) const ;
 
-  public: class GGS_stringlist readProperty_mStringSequence (void) const ;
+  public: class GGS__5B_string_5D_ readProperty_mStringSequence (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
   public: static GGS_literalStringExpressionAST init_21__21_ (const class GGS_location & inOperand0,
-                                                              const class GGS_stringlist & inOperand1,
+                                                              const class GGS__5B_string_5D_ & inOperand1,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
@@ -5892,7 +5892,7 @@ class cPtr_literalStringExpressionAST : public cPtr_semanticExpressionAST {
 
 //--------------------------------- Initializers
   public: void literalStringExpressionAST_init_21__21_ (const class GGS_location & inOperand0,
-                                                        const class GGS_stringlist & inOperand1,
+                                                        const class GGS__5B_string_5D_ & inOperand1,
                                                         Compiler * inCompiler) ;
 
 
@@ -5912,7 +5912,7 @@ class cPtr_literalStringExpressionAST : public cPtr_semanticExpressionAST {
 
 //--- Properties
   public: GGS_location mProperty_mLocation ;
-  public: GGS_stringlist mProperty_mStringSequence ;
+  public: GGS__5B_string_5D_ mProperty_mStringSequence ;
 
 
 //--- Default constructor
@@ -5920,7 +5920,7 @@ class cPtr_literalStringExpressionAST : public cPtr_semanticExpressionAST {
 
 //--- Constructor
   public: cPtr_literalStringExpressionAST (const GGS_location & in_mLocation,
-                                           const GGS_stringlist & in_mStringSequence,
+                                           const GGS__5B_string_5D_ & in_mStringSequence,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 

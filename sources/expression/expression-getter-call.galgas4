@@ -117,7 +117,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         var hasCompilerArgument = true
         var returnedType = @unifiedTypeMapEntry.null
         var kind = @methodKind.definedAsExtension
-        let @stringlist fieldList = @()
+        let [@string] fieldList = @()
         var obsoletedByGetter = ""
         for property in receiverType.definition.currentTypedPropertyList do
           let propertyType = ioTypeMap.typeMapEntryForLKey (@(property.typeEntry.definition.typeName.string, .here))
@@ -218,7 +218,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
 final class @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
   public let @methodKind mKind
   public let @semanticExpressionForGeneration mReceiverExpression
-  public let @stringlist mFieldList
+  public let [@string] mFieldList
   public let @string mGetterName
   public let @semanticExpressionListForGeneration mActualArgumentList
   public let @bool mHasCompilerArgument
@@ -243,7 +243,7 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
       ?let @string receiverCppName
     )
   //--- Reader operands
-    var @stringlist getterArgumentCppNameList = @()
+    var [@string] getterArgumentCppNameList = @()
     for (mExpression) in self.mActualArgumentList do
       mExpression.generateExpression
         (!?ioGeneratedCode,
@@ -252,7 +252,7 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
         !?ioUnusedVariableCppNameSet,
         ?let argumentCppName
       )
-      getterArgumentCppNameList ++= @(argumentCppName)
+      getterArgumentCppNameList ++= argumentCppName
     end
   //--- Generate Reader call
     switch self.mKind

@@ -535,7 +535,7 @@ extern const cDirectoryWrapper gWrapperDirectory_0_programFileGenerationTemplate
 
 GGS_string filewrapperTemplate_programFileGenerationTemplate_programFileImplementation (class Compiler * inCompiler,
                                                                                         const class GGS_string & in_COMPONENT_5F_NAME,
-                                                                                        const class GGS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST,
+                                                                                        const class GGS__5B_string_5D_ & in_IMPORTED_5F_COMPONENT_5F_LIST,
                                                                                         const class GGS_string & in_BEFORE_5F_AFTER_5F_RULE_5F_IMPLEMENTATION_5F_STRING,
                                                                                         const class GGS_programRuleList & in_PROGRAM_5F_RULE_5F_LIST,
                                                                                         const class GGS_string & in_PROJECT_5F_VERSION_5F_STRING

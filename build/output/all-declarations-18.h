@@ -1321,10 +1321,10 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExt
 //--------------------------------------------------------------------------------------------------
 
 GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDeclaration (class Compiler * inCompiler,
-                                                                                           const class GGS_stringlist & in_FILE_5F_INDEX_5F_STRING_5F_LIST,
-                                                                                           const class GGS_stringlist & in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST,
-                                                                                           const class GGS_stringlist & in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
-                                                                                           const class GGS_stringlist & in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                           const class GGS__5B_string_5D_ & in_FILE_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                           const class GGS__5B_string_5D_ & in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                           const class GGS__5B_string_5D_ & in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
+                                                                                           const class GGS__5B_string_5D_ & in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST,
                                                                                            const class GGS_string & in_FILEWRAPPER_5F_NAME
                                                                                            COMMA_LOCATION_ARGS) ;
 
