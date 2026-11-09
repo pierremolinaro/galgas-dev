@@ -7497,9 +7497,9 @@ void routine_projectGeneration_3F__3F_absoluteBuildDir_3F_buildDirName_3F__3F__3
     test_4 = GGS_bool (ComparisonKind::equal, GGS_uint (uint32_t (0U)).objectCompare (GGS_uint::class_func_errorCount (SOURCE_FILE ("galgasProgram.galgas4", 422)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_4) {
       GGS_stringset var_allActualFileSet_17808 = GGS_stringset::init (inCompiler COMMA_HERE) ;
-      UpEnumerator_stringlist enumerator_17914 (var_productDirectory_15101.getter_regularFiles (GGS_bool (false) COMMA_SOURCE_FILE ("galgasProgram.galgas4", 424))) ;
+      UpEnumerator__5B_string_5D_ enumerator_17914 (var_productDirectory_15101.getter_regularFiles (GGS_bool (false) COMMA_SOURCE_FILE ("galgasProgram.galgas4", 424))) ;
       while (enumerator_17914.hasCurrentObject ()) {
-        var_allActualFileSet_17808.plusPlusAssignOperation (enumerator_17914.current_mValue (HERE)  COMMA_SOURCE_FILE ("galgasProgram.galgas4", 425)) ;
+        var_allActualFileSet_17808.plusPlusAssignOperation (enumerator_17914.current_entry (HERE)  COMMA_SOURCE_FILE ("galgasProgram.galgas4", 425)) ;
         enumerator_17914.gotoNextObject () ;
       }
       GGS_stringset var_uselessFileSet_18016 = var_allActualFileSet_17808.substract_operation (var_allProductFileSet_14632, inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 427)) ;

@@ -180,20 +180,6 @@ GGS_stringset GGS_stringset::substract_operation (const GGS_stringset & inOperan
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringlist GGS_stringset::getter_stringList (LOCATION_ARGS) const {
-  GGS_stringlist result ;
-  if (isValid ()) {
-    result = GGS_stringlist::init (nullptr COMMA_THERE) ;
-    const GenericArray <String> array = mSharedMap.sortedKeyArray () ;
-    for (int32_t i=0 ; i<array.count () ; i++) {
-      result.plusPlusAssignOperation (GGS_string (array (i COMMA_HERE)) COMMA_HERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS__5B_string_5D_ GGS_stringset::getter_stringArray (LOCATION_ARGS) const {
   GGS__5B_string_5D_ result ;
   if (isValid ()) {

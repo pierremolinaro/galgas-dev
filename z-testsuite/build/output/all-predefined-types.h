@@ -1463,28 +1463,28 @@ class GGS_filewrapper : public AC_GALGAS_root {
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_allBinaryFilePaths (LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_allBinaryFilePaths (LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_allDirectoryPaths (LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_allDirectoryPaths (LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_allFilePathsWithExtension (const class GGS_string & constinOperand0
-                                                                 COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_allFilePathsWithExtension (const class GGS_string & constinOperand0
+                                                                     COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_allTextFilePaths (LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_allTextFilePaths (LOCATION_ARGS) const ;
 
   public: class GGS_data getter_binaryFileContentsAtPath (const class GGS_string & constinOperand0,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_binaryFilesAtPath (const class GGS_string & constinOperand0,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_binaryFilesAtPath (const class GGS_string & constinOperand0,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_string getter_currentDirectory (LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_directoriesAtPath (const class GGS_string & constinOperand0,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_directoriesAtPath (const class GGS_string & constinOperand0,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_directoryExistsAtPath (const class GGS_string & constinOperand0,
                                                        Compiler * inCompiler
@@ -1498,9 +1498,9 @@ class GGS_filewrapper : public AC_GALGAS_root {
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_textFilesAtPath (const class GGS_string & constinOperand0,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_textFilesAtPath (const class GGS_string & constinOperand0,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -2284,12 +2284,12 @@ class GGS_string : public AC_GALGAS_root {
 
   public: class GGS_string getter_deletingPathExtension (LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_directories (const class GGS_bool & constinOperand0
-                                                   COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_directories (const class GGS_bool & constinOperand0
+                                                       COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_directoriesWithExtensions (const class GGS_bool & constinOperand0,
-                                                                 const class GGS_stringlist & constinOperand1
-                                                                 COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_directoriesWithExtensions (const class GGS_bool & constinOperand0,
+                                                                     const class GGS__5B_string_5D_ & constinOperand1
+                                                                     COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_directoryExists (LOCATION_ARGS) const ;
 
@@ -2317,8 +2317,8 @@ class GGS_string : public AC_GALGAS_root {
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_hiddenFiles (const class GGS_bool & constinOperand0
-                                                   COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_hiddenFiles (const class GGS_bool & constinOperand0
+                                                       COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_string getter_identifierRepresentation (LOCATION_ARGS) const ;
 
@@ -2369,8 +2369,8 @@ class GGS_string : public AC_GALGAS_root {
 
   public: class GGS_range getter_range (LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_regularFiles (const class GGS_bool & constinOperand0
-                                                    COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_regularFiles (const class GGS_bool & constinOperand0
+                                                        COMMA_LOCATION_ARGS) const ;
 
   public: class GGS__5B_string_5D_ getter_regularFilesWithExtensions (const class GGS_bool & constinOperand0,
                                                                       const class GGS__5B_string_5D_ & constinOperand1
@@ -2913,8 +2913,6 @@ class GGS_stringset : public AC_GALGAS_root {
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
   public: class GGS__5B_string_5D_ getter_stringArray (LOCATION_ARGS) const ;
-
-  public: class GGS_stringlist getter_stringList (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts

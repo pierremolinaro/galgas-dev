@@ -531,7 +531,7 @@ proc recursivelyEnumerateDirectories
   let @uint currentDirectoryIndex = ioWrapperDirectoryIndex
   ioWrapperDirectoryIndex += 1
 //--- Enumerates regular files
-  let @stringlist files = inAbsoluteSourcePath.regularFiles (false)
+  let [@string] files = inAbsoluteSourcePath.regularFiles (false)
   outWrapperFileMap = @()
   for (mValue) in files do
     if inTextFileExtensionMap.contains (mValue.pathExtension) then
@@ -557,7 +557,7 @@ proc recursivelyEnumerateDirectories
     end
   end
 //--- Enumerates regular directories
-  let @stringlist directories = inAbsoluteSourcePath.directories (false)
+  let [@string] directories = inAbsoluteSourcePath.directories (false)
   outWrapperDirectoryMap = @()
   for (mValue) in directories do
     let @uint theDirectoryIndex = ioWrapperDirectoryIndex

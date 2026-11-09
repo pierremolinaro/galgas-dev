@@ -17,17 +17,17 @@ void routine_updateLIBPMatPath_3F_ (const GGS_string constinArgument_inLIBPMPath
                                     Compiler * inCompiler
                                     COMMA_UNUSED_LOCATION_ARGS) {
   GGS_filewrapper var_fw_1497 = GGS_filewrapper (gWrapperDirectory_0_libpmFileWrapper) ;
-  UpEnumerator_stringlist enumerator_1565 (var_fw_1497.getter_allDirectoryPaths (SOURCE_FILE ("libpmHandling.galgas4", 32))) ;
+  UpEnumerator__5B_string_5D_ enumerator_1565 (var_fw_1497.getter_allDirectoryPaths (SOURCE_FILE ("libpmHandling.galgas4", 32))) ;
   while (enumerator_1565.hasCurrentObject ()) {
-    GGS_string var_actualDirectory_1616 = constinArgument_inLIBPMPath.add_operation (enumerator_1565.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 33)) ;
+    GGS_string var_actualDirectory_1616 = constinArgument_inLIBPMPath.add_operation (enumerator_1565.current_entry (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 33)) ;
     var_actualDirectory_1616.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 34)) ;
     enumerator_1565.gotoNextObject () ;
   }
   GGS_stringset var_allNeededFileSet_1739 = GGS_stringset::init (inCompiler COMMA_HERE) ;
-  UpEnumerator_stringlist enumerator_1769 (var_fw_1497.getter_allTextFilePaths (SOURCE_FILE ("libpmHandling.galgas4", 38))) ;
+  UpEnumerator__5B_string_5D_ enumerator_1769 (var_fw_1497.getter_allTextFilePaths (SOURCE_FILE ("libpmHandling.galgas4", 38))) ;
   while (enumerator_1769.hasCurrentObject ()) {
-    GGS_string var_contents_1811 = var_fw_1497.getter_textFileContentsAtPath (enumerator_1769.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 39)) ;
-    GGS_string var_actualFilePath_1865 = constinArgument_inLIBPMPath.add_operation (enumerator_1769.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 40)) ;
+    GGS_string var_contents_1811 = var_fw_1497.getter_textFileContentsAtPath (enumerator_1769.current_entry (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 39)) ;
+    GGS_string var_actualFilePath_1865 = constinArgument_inLIBPMPath.add_operation (enumerator_1769.current_entry (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 40)) ;
     GalgasBool test_0 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_0) {
       test_0 = GGS_bool (ComparisonKind::equal, var_actualFilePath_1865.getter_pathExtension (SOURCE_FILE ("libpmHandling.galgas4", 41)).objectCompare (GGS_string ("py"))).boolEnum () ;
@@ -40,22 +40,22 @@ void routine_updateLIBPMatPath_3F_ (const GGS_string constinArgument_inLIBPMPath
       GGS_bool joker_2105 ; // Joker input parameter
       var_contents_1811.method_writeToFileWhenDifferentContents (var_actualFilePath_1865, joker_2105, inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 44)) ;
     }
-    var_allNeededFileSet_1739.plusPlusAssignOperation (enumerator_1769.current_mValue (HERE)  COMMA_SOURCE_FILE ("libpmHandling.galgas4", 46)) ;
+    var_allNeededFileSet_1739.plusPlusAssignOperation (enumerator_1769.current_entry (HERE)  COMMA_SOURCE_FILE ("libpmHandling.galgas4", 46)) ;
     enumerator_1769.gotoNextObject () ;
   }
-  UpEnumerator_stringlist enumerator_2188 (var_fw_1497.getter_allBinaryFilePaths (SOURCE_FILE ("libpmHandling.galgas4", 49))) ;
+  UpEnumerator__5B_string_5D_ enumerator_2188 (var_fw_1497.getter_allBinaryFilePaths (SOURCE_FILE ("libpmHandling.galgas4", 49))) ;
   while (enumerator_2188.hasCurrentObject ()) {
-    GGS_data var_contents_2232 = var_fw_1497.getter_binaryFileContentsAtPath (enumerator_2188.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 50)) ;
-    GGS_string var_actualFilePath_2288 = constinArgument_inLIBPMPath.add_operation (enumerator_2188.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 51)) ;
+    GGS_data var_contents_2232 = var_fw_1497.getter_binaryFileContentsAtPath (enumerator_2188.current_entry (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 50)) ;
+    GGS_string var_actualFilePath_2288 = constinArgument_inLIBPMPath.add_operation (enumerator_2188.current_entry (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 51)) ;
     GGS_bool joker_2389 ; // Joker input parameter
     var_contents_2232.method_writeToFileWhenDifferentContents (var_actualFilePath_2288, joker_2389, inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 52)) ;
-    var_allNeededFileSet_1739.plusPlusAssignOperation (enumerator_2188.current_mValue (HERE)  COMMA_SOURCE_FILE ("libpmHandling.galgas4", 53)) ;
+    var_allNeededFileSet_1739.plusPlusAssignOperation (enumerator_2188.current_entry (HERE)  COMMA_SOURCE_FILE ("libpmHandling.galgas4", 53)) ;
     enumerator_2188.gotoNextObject () ;
   }
   GGS_stringset var_allActualFileSet_2475 = GGS_stringset::init (inCompiler COMMA_HERE) ;
-  UpEnumerator_stringlist enumerator_2505 (constinArgument_inLIBPMPath.getter_regularFiles (GGS_bool (true) COMMA_SOURCE_FILE ("libpmHandling.galgas4", 57))) ;
+  UpEnumerator__5B_string_5D_ enumerator_2505 (constinArgument_inLIBPMPath.getter_regularFiles (GGS_bool (true) COMMA_SOURCE_FILE ("libpmHandling.galgas4", 57))) ;
   while (enumerator_2505.hasCurrentObject ()) {
-    var_allActualFileSet_2475.plusPlusAssignOperation (GGS_string ("/").add_operation (enumerator_2505.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 58))  COMMA_SOURCE_FILE ("libpmHandling.galgas4", 58)) ;
+    var_allActualFileSet_2475.plusPlusAssignOperation (GGS_string ("/").add_operation (enumerator_2505.current_entry (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 58))  COMMA_SOURCE_FILE ("libpmHandling.galgas4", 58)) ;
     enumerator_2505.gotoNextObject () ;
   }
   GGS_stringset var_uselessFileSet_2601 = var_allActualFileSet_2475.substract_operation (var_allNeededFileSet_1739, inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 60)) ;
