@@ -113,8 +113,8 @@ proc enterInheritedGetterWithArgument
 
 //--------------------------------------------------------------------------------------------------
 
-proc enterBaseGetterWithArgument
-  (?!@getterMap ioGetterMap,
+proc enterBaseGetterWithArgument (
+  ?!@getterMap ioGetterMap,
   ?!@unifiedTypeMap ioUnifiedTypeMap,
   ?getterName:let @string inGetterName,
   ?argumentTypeName:let @string inArgument1TypeName,
@@ -171,8 +171,8 @@ proc enterBaseGetterWithArgument
 
 //--------------------------------------------------------------------------------------------------
 
-proc enterBaseGetterWith2Arguments
-  (?!@getterMap ioGetterMap,
+proc enterBaseGetterWith2Arguments ( // §§
+  ?!@getterMap ioGetterMap,
   ?!@unifiedTypeMap ioUnifiedTypeMap,
   let @string inGetterName,
   let @string inArgument1TypeName,
@@ -290,19 +290,17 @@ proc enterBaseFinalGetterWithArgument
 
 //--------------------------------------------------------------------------------------------------
 
-proc enterBaseGetterWith2Arguments
-  (?!@getterMap ioGetterMap,
-  ?!@unifiedTypeMap ioUnifiedTypeMap,
-  ?getterName: let @string inGetterName,
-  ?arg1Selector: let @string inArgument1Selector,
-  ?arg1TypeName: let @string inArgument1TypeName,
-  ?arg1Name: let @string inArgument1Name,
-  ?arg2Selector: let @string inArgument2Selector,
-  ?arg2TypeName: let @string inArgument2TypeName,
-  ?arg2Name: let @string inArgument2Name,
-  ?returnedTypeName:let @string inReturnedTypeName,
-  ?hasCompilerArgument:let @bool inHasCompilerArgument
-) {
+proc enterBaseGetterWith2Arguments (?!@getterMap ioGetterMap,
+                                    ?!@unifiedTypeMap ioUnifiedTypeMap,
+                                    ?getterName: let @string inGetterName,
+                                    ?arg1Selector: let @string inArgument1Selector,
+                                    ?arg1TypeName: let @string inArgument1TypeName,
+                                    ?arg1Name: let @string inArgument1Name,
+                                    ?arg2Selector: let @string inArgument2Selector,
+                                    ?arg2TypeName: let @string inArgument2TypeName,
+                                    ?arg2Name: let @string inArgument2Name,
+                                    ?returnedTypeName:let @string inReturnedTypeName,
+                                    ?hasCompilerArgument:let @bool inHasCompilerArgument) {
   !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
   var @functionSignature argList = @()
   !?ioUnifiedTypeMap.makeEntryFromString (inArgument1TypeName, ?@unifiedTypeMapEntry t)

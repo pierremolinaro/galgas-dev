@@ -99,6 +99,15 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !returnedTypeName: self.arrayTypeName.string,
       !hasCompilerArgument: true
     )
+    enterBaseGetterWith2Arguments (
+      !?getterMap,
+      !?ioTypeMap,
+      !getterName: "sublist",
+      !arg1Selector: "from", !arg1TypeName: "uint", !arg1Name: "inStartIndex",
+      !arg2Selector: "count", !arg2TypeName: "uint", !arg2Name: "inCount",
+      !returnedTypeName: self.arrayTypeName.string,
+      !hasCompilerArgument: true
+    )
   //------------------------ Instance methods
     var @instanceMethodMap instanceMethodMap = @()
   //---------------------------------------- Setters
