@@ -199,7 +199,7 @@ final class @initializerCallAST : @semanticExpressionAST {
       self.mEndOfExpressions,
       ?let @unifiedTypeMapEntry instanciedType,
       ?let @lstring initializerName,
-      ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
+      ?let [@semanticExpressionForGeneration] constructorEffectiveParameterList
     )
   //--- Usefull entity graph
     let typeUsefulnessName = typeNameForUsefulEntitiesGraph (instanciedType.definition.typeName)
@@ -230,7 +230,7 @@ private proc analyzeInitializerInvocation (let @lstring inUsefulnessCallerEntity
                       let @location inEndOfExpressions,
                       !@unifiedTypeMapEntry outInstanciedType,
                       !@lstring outInitializerName,
-                      !@semanticExpressionListForGeneration outConstructorEffectiveParameterList ) {
+                      ![@semanticExpressionForGeneration] outConstructorEffectiveParameterList ) {
   outInstanciedType = inType
   if inTypeName.string != "" then
     outInstanciedType = ioTypeMap.typeMapEntryForLKey (inTypeName)
@@ -293,7 +293,7 @@ private proc analyzeInitializerInvocation (let @lstring inUsefulnessCallerEntity
           effectiveParameter.mEndOfExpressionLocation,
           !?exp
         )
-        outConstructorEffectiveParameterList ++= @(exp)
+        outConstructorEffectiveParameterList ++= exp
         if formalArg.mFormalSelector.string != effectiveParameter.mActualSelector.string then
           let @string s = "!" + if formalArg.mFormalSelector.string != ""
             then formalArg.mFormalSelector.string + ":"
@@ -313,7 +313,7 @@ private proc analyzeInitializerInvocation (let @lstring inUsefulnessCallerEntity
 
 final class @initializerCallForGeneration : @semanticExpressionForGeneration {
   private let @string initializerName
-  private let @semanticExpressionListForGeneration mEffectiveParameterList
+  private let [@semanticExpressionForGeneration] mEffectiveParameterList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

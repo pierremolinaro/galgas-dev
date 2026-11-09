@@ -7665,11 +7665,11 @@ class DownEnumerator_lexiqueComponentMapForSemanticAnalysis final {
 
   public: class GGS_terminalMap current_mTerminalMap (LOCATION_ARGS) const ;
 
-  public: class GGS_indexingListAST current_mIndexingListAST (LOCATION_ARGS) const ;
+  public: class GGS__5B_indexingAST_5D_ current_mIndexingListAST (LOCATION_ARGS) const ;
 
   public: class GGS_terminalDeclarationListAST current_mTerminalListAST (LOCATION_ARGS) const ;
 
-  public: class GGS_lexicalAttributeListAST current_mLexicalAttributeListAST (LOCATION_ARGS) const ;
+  public: class GGS__5B_lexicalAttributeAST_5D_ current_mLexicalAttributeListAST (LOCATION_ARGS) const ;
 
   public: class GGS_lexicalStyleListAST current_mLexicalStyleListAST (LOCATION_ARGS) const ;
 
@@ -7700,9 +7700,9 @@ class UpEnumerator_lexiqueComponentMapForSemanticAnalysis final {
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_bool current_mIsTemplate (LOCATION_ARGS) const ;
   public: class GGS_terminalMap current_mTerminalMap (LOCATION_ARGS) const ;
-  public: class GGS_indexingListAST current_mIndexingListAST (LOCATION_ARGS) const ;
+  public: class GGS__5B_indexingAST_5D_ current_mIndexingListAST (LOCATION_ARGS) const ;
   public: class GGS_terminalDeclarationListAST current_mTerminalListAST (LOCATION_ARGS) const ;
-  public: class GGS_lexicalAttributeListAST current_mLexicalAttributeListAST (LOCATION_ARGS) const ;
+  public: class GGS__5B_lexicalAttributeAST_5D_ current_mLexicalAttributeListAST (LOCATION_ARGS) const ;
   public: class GGS_lexicalStyleListAST current_mLexicalStyleListAST (LOCATION_ARGS) const ;
   public: class GGS_lexicalListDeclarationListAST current_mLexicalListDeclarationListAST (LOCATION_ARGS) const ;
   public: class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element current (LOCATION_ARGS) const ;
@@ -7780,15 +7780,15 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_root {
   public: void setter_insertKey (class GGS_lstring constinArgument0,
                                  class GGS_bool constinArgument1,
                                  class GGS_terminalMap constinArgument2,
-                                 class GGS_indexingListAST constinArgument3,
+                                 class GGS__5B_indexingAST_5D_ constinArgument3,
                                  class GGS_terminalDeclarationListAST constinArgument4,
-                                 class GGS_lexicalAttributeListAST constinArgument5,
+                                 class GGS__5B_lexicalAttributeAST_5D_ constinArgument5,
                                  class GGS_lexicalStyleListAST constinArgument6,
                                  class GGS_lexicalListDeclarationListAST constinArgument7,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMIndexingListASTForKey (class GGS_indexingListAST constinArgument0,
+  public: void setter_setMIndexingListASTForKey (class GGS__5B_indexingAST_5D_ constinArgument0,
                                                  class GGS_string constinArgument1,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
@@ -7798,7 +7798,7 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_root {
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMLexicalAttributeListASTForKey (class GGS_lexicalAttributeListAST constinArgument0,
+  public: void setter_setMLexicalAttributeListASTForKey (class GGS__5B_lexicalAttributeAST_5D_ constinArgument0,
                                                          class GGS_string constinArgument1,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
@@ -7828,9 +7828,9 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_root {
   public: void method_searchKey (class GGS_lstring constinArgument0,
                                  class GGS_bool & outArgument1,
                                  class GGS_terminalMap & outArgument2,
-                                 class GGS_indexingListAST & outArgument3,
+                                 class GGS__5B_indexingAST_5D_ & outArgument3,
                                  class GGS_terminalDeclarationListAST & outArgument4,
-                                 class GGS_lexicalAttributeListAST & outArgument5,
+                                 class GGS__5B_lexicalAttributeAST_5D_ & outArgument5,
                                  class GGS_lexicalStyleListAST & outArgument6,
                                  class GGS_lexicalListDeclarationListAST & outArgument7,
                                  Compiler * inCompiler
@@ -7860,17 +7860,17 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_root {
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_indexingListAST getter_mIndexingListASTForKey (const class GGS_string & constinOperand0,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_indexingAST_5D_ getter_mIndexingListASTForKey (const class GGS_string & constinOperand0,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_bool getter_mIsTemplateForKey (const class GGS_string & constinOperand0,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lexicalAttributeListAST getter_mLexicalAttributeListASTForKey (const class GGS_string & constinOperand0,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lexicalAttributeAST_5D_ getter_mLexicalAttributeListASTForKey (const class GGS_string & constinOperand0,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_lexicalListDeclarationListAST getter_mLexicalListDeclarationListASTForKey (const class GGS_string & constinOperand0,
                                                                                                Compiler * inCompiler
@@ -20020,6 +20020,183 @@ class GGS_localVariableDeclarationForGeneration_2E_weak : public GGS_semanticIns
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_localVariableDeclarationForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: [semanticExpressionForGeneration] array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_semanticExpressionForGeneration_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_semanticExpressionForGeneration_5D_ (const class GGS__5B_semanticExpressionForGeneration_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_semanticExpressionForGeneration_5D_ (const DownEnumerator__5B_semanticExpressionForGeneration_5D_ &) = delete ;
+  private: DownEnumerator__5B_semanticExpressionForGeneration_5D_ & operator = (const DownEnumerator__5B_semanticExpressionForGeneration_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent >= 0 ;
+  }
+
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent -= 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_semanticExpressionForGeneration current (LOCATION_ARGS) const ;
+  public: class GGS_semanticExpressionForGeneration current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_semanticExpressionForGeneration> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_semanticExpressionForGeneration_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_semanticExpressionForGeneration_5D_ (const class GGS__5B_semanticExpressionForGeneration_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_semanticExpressionForGeneration_5D_ (const UpEnumerator__5B_semanticExpressionForGeneration_5D_ &) = delete ;
+  private: UpEnumerator__5B_semanticExpressionForGeneration_5D_ & operator = (const UpEnumerator__5B_semanticExpressionForGeneration_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent < mSharedArray.count () ;
+  }
+
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent += 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_semanticExpressionForGeneration current (LOCATION_ARGS) const ;
+  public: class GGS_semanticExpressionForGeneration current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_semanticExpressionForGeneration> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_semanticExpressionForGeneration_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_semanticExpressionForGeneration> mSharedArray ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_semanticExpressionForGeneration_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_semanticExpressionForGeneration_5D_ (const GGS__5B_semanticExpressionForGeneration_5D_ & inSource) ;
+  public: GGS__5B_semanticExpressionForGeneration_5D_ & operator = (const GGS__5B_semanticExpressionForGeneration_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_semanticExpressionForGeneration_5D_ ;
+  friend class DownEnumerator__5B_semanticExpressionForGeneration_5D_ ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_semanticExpressionForGeneration_5D_ init (Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator (with expression)
+  public: void plusAssignOperation (const GGS__5B_semanticExpressionForGeneration_5D_ inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- ++= operator, collection value
+  public: void plusPlusAssignOperation (const GGS_semanticExpressionForGeneration & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_semanticExpressionForGeneration_5D_ add_operation (const GGS__5B_semanticExpressionForGeneration_5D_ & inOperand,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_semanticExpressionForGeneration constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insertAtIndex (class GGS_semanticExpressionForGeneration constinArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popFirst (class GGS_semanticExpressionForGeneration & outArgument0,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popLast (class GGS_semanticExpressionForGeneration & outArgument0,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAtIndex (class GGS_semanticExpressionForGeneration & outArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_semanticExpressionForGeneration getter_first (Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_semanticExpressionForGeneration getter_last (Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_semanticExpressionForGeneration_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_semanticExpressionForGeneration_5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                                            const class GGS_uint & constinOperand1,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+  public: class GGS_semanticExpressionForGeneration readSubscript__3F_ (const class GGS_uint & in0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_semanticExpressionForGeneration_5D_ ;
+  friend class DownEnumerator__5B_semanticExpressionForGeneration_5D_ ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_semanticExpressionForGeneration_5D_ ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @actualOutputArgumentList list enumerator
 //--------------------------------------------------------------------------------------------------
 
@@ -20355,277 +20532,4 @@ class GGS_actualOutputArgumentList_2E_element : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_actualOutputArgumentList_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @semanticExpressionListForGeneration list enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_semanticExpressionListForGeneration final {
-  public: DownEnumerator_semanticExpressionListForGeneration (const class GGS_semanticExpressionListForGeneration & inList) ;
-
-  public: ~ DownEnumerator_semanticExpressionListForGeneration (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
-
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_semanticExpressionForGeneration current_mExpression (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_semanticExpressionListForGeneration_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS_semanticExpressionListForGeneration_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: DownEnumerator_semanticExpressionListForGeneration (const DownEnumerator_semanticExpressionListForGeneration &) = delete ;
-  private: DownEnumerator_semanticExpressionListForGeneration & operator = (const DownEnumerator_semanticExpressionListForGeneration &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_semanticExpressionListForGeneration final {
-  public: UpEnumerator_semanticExpressionListForGeneration (const class GGS_semanticExpressionListForGeneration & inList)  ;
-
-  public: ~ UpEnumerator_semanticExpressionListForGeneration (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
-
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_semanticExpressionForGeneration current_mExpression (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_semanticExpressionListForGeneration_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS_semanticExpressionListForGeneration_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: UpEnumerator_semanticExpressionListForGeneration (const UpEnumerator_semanticExpressionListForGeneration &) = delete ;
-  private: UpEnumerator_semanticExpressionListForGeneration & operator = (const UpEnumerator_semanticExpressionListForGeneration &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// @semanticExpressionListForGeneration list
-//--------------------------------------------------------------------------------------------------
-
-class GGS_semanticExpressionListForGeneration : public AC_GALGAS_root {
-//--- Private property
-  private: GenericArray <GGS_semanticExpressionListForGeneration_2E_element> mArray ;
-
-//--- Default constructor
-  public: GGS_semanticExpressionListForGeneration (void) ;
-
-//--- Destructor
-  public: virtual ~ GGS_semanticExpressionListForGeneration (void) = default ;
-
-//--- Copy
-  public: GGS_semanticExpressionListForGeneration (const GGS_semanticExpressionListForGeneration &) = default ;
-  public: GGS_semanticExpressionListForGeneration & operator = (const GGS_semanticExpressionListForGeneration &) = default ;
-
-//--- Is valid
-  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
-
-//--- Drop
-  public: inline virtual void drop (void) override { mArray.removeAll () ; }
-
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Count
-  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
- 
-//--- sortedElementArray
-  public : inline GenericArray <GGS_semanticExpressionListForGeneration_2E_element> sortedElementArray (void) const {
-    return mArray ;
-  }
-
-//--- subList
-  private: GGS_semanticExpressionListForGeneration subList (const int32_t inStart,
-                                                            const int32_t inLength,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
-
-
-//--- List constructor for graph
-  public: GGS_semanticExpressionListForGeneration (const CollectionElementArray & inSharedArray) ;
-
-//--- Element constructor
-  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                 const class GGS_semanticExpressionForGeneration & in_mExpression
-                                                 COMMA_LOCATION_ARGS) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_semanticExpressionListForGeneration init (Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
-  public: static class GGS_semanticExpressionListForGeneration class_func_listWithValue (const class GGS_semanticExpressionForGeneration & inOperand0
-                                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: void plusAssignOperation (const GGS_semanticExpressionListForGeneration inOperand,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_semanticExpressionForGeneration & inOperand0
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator, collection value
-  public: void plusPlusAssignOperation (const GGS_semanticExpressionListForGeneration_2E_element & inOperand
-                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: GGS_semanticExpressionListForGeneration add_operation (const GGS_semanticExpressionListForGeneration & inOperand,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: void setter_append (class GGS_semanticExpressionForGeneration constinArgument0,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_insertAtIndex (class GGS_semanticExpressionForGeneration constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popFirst (class GGS_semanticExpressionForGeneration & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_semanticExpressionForGeneration & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeAtIndex (class GGS_semanticExpressionForGeneration & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMExpressionAtIndex (class GGS_semanticExpressionForGeneration constinArgument0,
-                                             class GGS_uint constinArgument1,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: void method_first (class GGS_semanticExpressionForGeneration & outArgument0,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_semanticExpressionForGeneration & outArgument0,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
-
-  public: class GGS_semanticExpressionForGeneration getter_mExpressionAtIndex (const class GGS_uint & constinOperand0,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
-
-  public: class GGS_semanticExpressionListForGeneration getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_semanticExpressionListForGeneration getter_subListToIndex (const class GGS_uint & constinOperand0,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_semanticExpressionListForGeneration getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator_semanticExpressionListForGeneration ;
-  friend class DownEnumerator_semanticExpressionListForGeneration ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticExpressionListForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @semanticExpressionListForGeneration_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_semanticExpressionListForGeneration_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_semanticExpressionForGeneration mProperty_mExpression ;
-  public: inline GGS_semanticExpressionForGeneration readProperty_mExpression (void) const {
-    return mProperty_mExpression ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_semanticExpressionListForGeneration_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMExpression (const GGS_semanticExpressionForGeneration & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mExpression = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_semanticExpressionListForGeneration_2E_element (const GGS_semanticExpressionForGeneration & in_mExpression) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_semanticExpressionListForGeneration_2E_element (const GGS_semanticExpressionListForGeneration_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_semanticExpressionListForGeneration_2E_element & operator = (const GGS_semanticExpressionListForGeneration_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_semanticExpressionListForGeneration_2E_element init_21_ (const class GGS_semanticExpressionForGeneration & inOperand0,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticExpressionListForGeneration_2E_element ;
 

@@ -32,7 +32,7 @@ abstract proc @templateInstructionForGeneration.templateCodeGeneration
 
 //--------------------------------------------------------------------------------------------------
 
-proc templateCodeGenerationForListInstruction (let @templateInstructionListForGeneration inInstructionList,
+proc templateCodeGenerationForListInstruction (let [@templateInstructionForGeneration] inInstructionList,
                                               ?!@string ioGeneratedCode,
                                               ?!@stringset ioInclusionSet,
                                               ?!@uint ioTemporaryVariableIndex,

@@ -165,7 +165,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
       + getterFormalArgumentTypeList.count.string + " parameter(s), while this call has "
       + self.mExpressionList.count.string + " parameter(s)" spoil outExpression)
     else
-      var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
+      var [@semanticExpressionForGeneration] constructorEffectiveParameterList = @()
       for actual in self.mExpressionList, formal in getterFormalArgumentTypeList do
         if formal.mFormalSelector.string != actual.mActualSelector.string then
           let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
@@ -179,7 +179,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
           ?@semanticExpressionForGeneration exp
         )
         checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
-        constructorEffectiveParameterList ++= @(exp)
+        constructorEffectiveParameterList ++= exp
       end
       if actualGetterName != self.mGetterName.string then
         error (self.mGetterName : "obsolete func" fixit #replaceBy actualGetterName)
@@ -234,7 +234,7 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
   end
 //--- Analysis arguments
   var [@unifiedTypeMapEntry] requiredTypes = @()
-  var @semanticExpressionListForGeneration classFunctionEffectiveParameterList
+  var [@semanticExpressionForGeneration] classFunctionEffectiveParameterList
   if self.mExpressionList.count != classFuncFormalArgumentTypeList.count then
     error (self.mClassFunctionName
     : "calling the '" + self.mClassFunctionName + "' constructor of '@" + constructorType.definition.typeName.string + "' requires "
@@ -242,7 +242,7 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
     + self.mExpressionList.count.string + " parameter(s)"
     spoil classFunctionEffectiveParameterList)
   else
-    classFunctionEffectiveParameterList = @semanticExpressionListForGeneration ()
+    classFunctionEffectiveParameterList = [@semanticExpressionForGeneration] ()
     for actual in self.mExpressionList, formal in classFuncFormalArgumentTypeList do
       !?requiredTypes.append (formal.mFormalArgumentType)
       if formal.mFormalSelector.string != actual.mActualSelector.string then
@@ -257,7 +257,7 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
         ?@semanticExpressionForGeneration exp
       )
       checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
-      classFunctionEffectiveParameterList ++= @(exp)
+      classFunctionEffectiveParameterList ++= exp
     end
   end
 //---
@@ -731,7 +731,7 @@ override proc @templateFunctionCallAST.templateExpressionAnalysis
       + " effective argument(s)"
     spoil outExpression)
   else
-    var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
+    var semanticExpressionListForGeneration = [@semanticExpressionForGeneration] ()
     for formal in functionSignature, actual in self.mExpressionList do
       actual.mExpression.templateExpressionAnalysis
         (inUsefulnessCallerEntityName,
@@ -741,7 +741,7 @@ override proc @templateFunctionCallAST.templateExpressionAnalysis
         ?@semanticExpressionForGeneration expression
       )
       checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, expression.mResultType, actual.mEndOfExpressionLocation, !?expression)
-      semanticExpressionListForGeneration ++= @(expression)
+      semanticExpressionListForGeneration ++= expression
       if formal.mFormalSelector.string != actual.mActualSelector.string then
         let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
         error (actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
@@ -1452,7 +1452,7 @@ abstract proc @templateInstructionAST.templateInstructionAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
-  ?!@templateInstructionListForGeneration ioInstructionList)
+  ?![@templateInstructionForGeneration] ioInstructionList)
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1462,7 +1462,7 @@ proc templateInstructionListAnalysis
   let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
   let [@templateInstructionAST] inInstructionList,
-  ?!@templateInstructionListForGeneration ioInstructionList
+  ?![@templateInstructionForGeneration] ioInstructionList
 ) {
   for (mInstruction) in inInstructionList do
     mInstruction.templateInstructionAnalysis
@@ -1482,9 +1482,9 @@ override proc @templateInstructionStringAST.templateInstructionAnalysis
   ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
   let @templateAnalysisContext _inAnalysisContext,
   ?!@unifiedTypeMap _ioTypeMap,
-  ?!@templateInstructionListForGeneration ioInstructionList
+  ?![@templateInstructionForGeneration] ioInstructionList
 ) {
-  ioInstructionList ++= @(@templateInstructionStringForGeneration (self.mTemplateString))
+  ioInstructionList ++= @templateInstructionStringForGeneration (self.mTemplateString)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1494,7 +1494,7 @@ override proc @templateInstructionExpressionAST.templateInstructionAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
-  ?!@templateInstructionListForGeneration ioInstructionList
+  ?![@templateInstructionForGeneration] ioInstructionList
 ) {
   self.mExpression.templateExpressionAnalysis
     (inUsefulnessCallerEntityName,
@@ -1506,7 +1506,7 @@ override proc @templateInstructionExpressionAST.templateInstructionAnalysis
   if expression.mResultType.definition.typeName.string != "string" then
     error (self.mLocation:"expression type should be '@string' (it is '@" + expression.mResultType.definition.typeName.string + "')")
   end
-  ioInstructionList ++= @(@templateInstructionExpressionForGeneration (expression))
+  ioInstructionList ++= @templateInstructionExpressionForGeneration (expression)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1516,7 +1516,7 @@ override proc @templateBlockInstructionAST.templateInstructionAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
-  ?!@templateInstructionListForGeneration ioInstructionList
+  ?![@templateInstructionForGeneration] ioInstructionList
 ) {
   self.mExpression.templateExpressionAnalysis
     (inUsefulnessCallerEntityName,
@@ -1540,7 +1540,7 @@ override proc @templateBlockInstructionAST.templateInstructionAnalysis
   elsif expression.mResultType.definition.typeName.string != "uint" then
     error (self.mLocation:"expression type should be '@uint' (it is '@" + expression.mResultType.definition.typeName.string + "')")
   end
-  var blockInstructionList = @templateInstructionListForGeneration ()
+  var blockInstructionList = [@templateInstructionForGeneration] ()
   templateInstructionListAnalysis (
     inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
@@ -1549,7 +1549,7 @@ override proc @templateBlockInstructionAST.templateInstructionAnalysis
     self.mBlockInstructionList,
     !?blockInstructionList
   )
-  ioInstructionList ++= @(@templateBlockInstructionForGeneration (expression, self.mLocation, blockInstructionList))
+  ioInstructionList ++= @templateBlockInstructionForGeneration (expression, self.mLocation, blockInstructionList)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1559,9 +1559,9 @@ override proc @templateInstructionGetColumnLocationAST.templateInstructionAnalys
   ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
   let @templateAnalysisContext _inAnalysisContext,
   ?!@unifiedTypeMap _ioTypeMap,
-  ?!@templateInstructionListForGeneration ioInstructionList
+  ?![@templateInstructionForGeneration] ioInstructionList
 ) {
-  ioInstructionList ++= @(@templateInstructionGetColumnLocationForGeneration ())
+  ioInstructionList ++= @templateInstructionGetColumnLocationForGeneration ()
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1571,9 +1571,9 @@ override proc @templateInstructionGotoColumnLocationAST.templateInstructionAnaly
   ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
   let @templateAnalysisContext _inAnalysisContext,
   ?!@unifiedTypeMap _ioTypeMap,
-  ?!@templateInstructionListForGeneration ioInstructionList
+  ?![@templateInstructionForGeneration] ioInstructionList
 ) {
-  ioInstructionList ++= @(@templateInstructionGotoColumnLocationForGeneration ())
+  ioInstructionList ++= @templateInstructionGotoColumnLocationForGeneration ()
 }
 
 
@@ -1584,7 +1584,7 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
-  ?!@templateInstructionListForGeneration ioInstructionList
+  ?![@templateInstructionForGeneration] ioInstructionList
 ) {
   var templateInstructionIfBranchList = [@templateInstructionIfBranchForGeneration] ()
   for templateInstructionIfBranch in self.mTemplateInstructionIfBranchList do
@@ -1598,7 +1598,7 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
     if expression.mResultType.definition.typeName.string != "bool" then
       error (expression.mLocation : "'if' expression type should be '@bool' (it is '@" + expression.mResultType.definition.typeName.string + "')")
     end
-    var instructionList = @templateInstructionListForGeneration ()
+    var instructionList = [@templateInstructionForGeneration] ()
     templateInstructionListAnalysis (
       inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
@@ -1610,7 +1610,7 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
     templateInstructionIfBranchList ++= @(expression, instructionList)
   end
 //---
-  var elseInstructionList = @templateInstructionListForGeneration ()
+  var elseInstructionList = [@templateInstructionForGeneration] ()
   templateInstructionListAnalysis (
     inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
@@ -1620,9 +1620,10 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
     !?elseInstructionList
   )
 //---
-  ioInstructionList ++= @(@templateInstructionIfForGeneration (
+  ioInstructionList ++= @templateInstructionIfForGeneration (
     templateInstructionIfBranchList,
-    elseInstructionList))
+    elseInstructionList
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

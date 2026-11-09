@@ -162,7 +162,7 @@ final class @classFuncExpressionAST : @semanticExpressionAST {
       self.locationForOldStyleCollectionInitializerError,
       ?let @unifiedTypeMapEntry returnedType,
       ?let @unifiedTypeMapEntry classFuncType,
-      ?let @semanticExpressionListForGeneration constructorEffectiveParameterList,
+      ?let [@semanticExpressionForGeneration] constructorEffectiveParameterList,
       ?let @bool hasCompilerArgument,
       ?let [@unifiedTypeMapEntry] requiredTypes
     )
@@ -200,7 +200,7 @@ private proc analyzeConstructorInvocation (let @lstring inUsefulnessCallerEntity
                       let @location _inLocationForOldStyleCollectionInitializerError,
                       !@unifiedTypeMapEntry outReturnedType,
                       !@unifiedTypeMapEntry outConstructorType,
-                      !@semanticExpressionListForGeneration outConstructorEffectiveParameterList,
+                      ![@semanticExpressionForGeneration] outConstructorEffectiveParameterList,
                       !@bool outHasCompilerArgument,
                       ![@unifiedTypeMapEntry] outRequiredTypes ) {
   outConstructorType = inType
@@ -262,7 +262,7 @@ private proc analyzeConstructorInvocation (let @lstring inUsefulnessCallerEntity
         effectiveParameter.mEndOfExpressionLocation,
         !?exp
       )
-      outConstructorEffectiveParameterList ++= @(exp)
+      outConstructorEffectiveParameterList ++= exp
       if formalArg.mFormalSelector.string != effectiveParameter.mActualSelector.string then
         let @string s = "!" + if formalArg.mFormalSelector.string != ""
           then formalArg.mFormalSelector.string + ":"
@@ -282,7 +282,7 @@ private proc analyzeConstructorInvocation (let @lstring inUsefulnessCallerEntity
 final class @classFuncExpressionForGeneration : @semanticExpressionForGeneration {
   private let @unifiedTypeMapEntry classFuncType
   private let @string classFuncName
-  private let @semanticExpressionListForGeneration mEffectiveParameterList
+  private let [@semanticExpressionForGeneration] mEffectiveParameterList
   private let @bool mHasCompilerArgument
   private let [@unifiedTypeMapEntry] requiredTypes
 

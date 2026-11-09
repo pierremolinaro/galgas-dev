@@ -8104,8 +8104,8 @@ class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element : public AC_GALGAS_r
     return mProperty_mTerminalMap ;
   }
 
-  public: GGS_indexingListAST mProperty_mIndexingListAST ;
-  public: inline GGS_indexingListAST readProperty_mIndexingListAST (void) const {
+  public: GGS__5B_indexingAST_5D_ mProperty_mIndexingListAST ;
+  public: inline GGS__5B_indexingAST_5D_ readProperty_mIndexingListAST (void) const {
     return mProperty_mIndexingListAST ;
   }
 
@@ -8114,8 +8114,8 @@ class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element : public AC_GALGAS_r
     return mProperty_mTerminalListAST ;
   }
 
-  public: GGS_lexicalAttributeListAST mProperty_mLexicalAttributeListAST ;
-  public: inline GGS_lexicalAttributeListAST readProperty_mLexicalAttributeListAST (void) const {
+  public: GGS__5B_lexicalAttributeAST_5D_ mProperty_mLexicalAttributeListAST ;
+  public: inline GGS__5B_lexicalAttributeAST_5D_ readProperty_mLexicalAttributeListAST (void) const {
     return mProperty_mLexicalAttributeListAST ;
   }
 
@@ -8149,7 +8149,7 @@ class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element : public AC_GALGAS_r
     mProperty_mTerminalMap = inValue ;
   }
 
-  public: inline void setter_setMIndexingListAST (const GGS_indexingListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMIndexingListAST (const GGS__5B_indexingAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mIndexingListAST = inValue ;
   }
 
@@ -8157,7 +8157,7 @@ class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element : public AC_GALGAS_r
     mProperty_mTerminalListAST = inValue ;
   }
 
-  public: inline void setter_setMLexicalAttributeListAST (const GGS_lexicalAttributeListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMLexicalAttributeListAST (const GGS__5B_lexicalAttributeAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mLexicalAttributeListAST = inValue ;
   }
 
@@ -8176,9 +8176,9 @@ class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element : public AC_GALGAS_r
   public: GGS_lexiqueComponentMapForSemanticAnalysis_2E_element (const GGS_lstring & in_lkey,
                                                                  const GGS_bool & in_mIsTemplate,
                                                                  const GGS_terminalMap & in_mTerminalMap,
-                                                                 const GGS_indexingListAST & in_mIndexingListAST,
+                                                                 const GGS__5B_indexingAST_5D_ & in_mIndexingListAST,
                                                                  const GGS_terminalDeclarationListAST & in_mTerminalListAST,
-                                                                 const GGS_lexicalAttributeListAST & in_mLexicalAttributeListAST,
+                                                                 const GGS__5B_lexicalAttributeAST_5D_ & in_mLexicalAttributeListAST,
                                                                  const GGS_lexicalStyleListAST & in_mLexicalStyleListAST,
                                                                  const GGS_lexicalListDeclarationListAST & in_mLexicalListDeclarationListAST) ;
 
@@ -8194,9 +8194,9 @@ class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element : public AC_GALGAS_r
   public: static GGS_lexiqueComponentMapForSemanticAnalysis_2E_element init_21__21__21__21__21__21__21__21_ (const class GGS_lstring & inOperand0,
                                                                                                              const class GGS_bool & inOperand1,
                                                                                                              const class GGS_terminalMap & inOperand2,
-                                                                                                             const class GGS_indexingListAST & inOperand3,
+                                                                                                             const class GGS__5B_indexingAST_5D_ & inOperand3,
                                                                                                              const class GGS_terminalDeclarationListAST & inOperand4,
-                                                                                                             const class GGS_lexicalAttributeListAST & inOperand5,
+                                                                                                             const class GGS__5B_lexicalAttributeAST_5D_ & inOperand5,
                                                                                                              const class GGS_lexicalStyleListAST & inOperand6,
                                                                                                              const class GGS_lexicalListDeclarationListAST & inOperand7,
                                                                                                              Compiler * inCompiler
@@ -9274,7 +9274,7 @@ class DownEnumerator_syntaxRuleLabelListAST final {
   public: class GGS_lstring current_mLabelName (LOCATION_ARGS) const ;
   public: class GGS_formalParameterListAST current_mFormalArguments (LOCATION_ARGS) const ;
   public: class GGS_location current_mEndOfArgumentLocation (LOCATION_ARGS) const ;
-  public: class GGS_syntaxInstructionList current_mSyntaxInstructionList (LOCATION_ARGS) const ;
+  public: class GGS__5B_syntaxInstructionAST_5D_ current_mSyntaxInstructionList (LOCATION_ARGS) const ;
   public: class GGS_location current_mEndOfInstructionList (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_syntaxRuleLabelListAST_2E_element current (LOCATION_ARGS) const ;
@@ -9304,7 +9304,7 @@ class UpEnumerator_syntaxRuleLabelListAST final {
   public: class GGS_lstring current_mLabelName (LOCATION_ARGS) const ;
   public: class GGS_formalParameterListAST current_mFormalArguments (LOCATION_ARGS) const ;
   public: class GGS_location current_mEndOfArgumentLocation (LOCATION_ARGS) const ;
-  public: class GGS_syntaxInstructionList current_mSyntaxInstructionList (LOCATION_ARGS) const ;
+  public: class GGS__5B_syntaxInstructionAST_5D_ current_mSyntaxInstructionList (LOCATION_ARGS) const ;
   public: class GGS_location current_mEndOfInstructionList (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_syntaxRuleLabelListAST_2E_element current (LOCATION_ARGS) const ;
@@ -9367,7 +9367,7 @@ class GGS_syntaxRuleLabelListAST : public AC_GALGAS_root {
                                                  const class GGS_lstring & in_mLabelName,
                                                  const class GGS_formalParameterListAST & in_mFormalArguments,
                                                  const class GGS_location & in_mEndOfArgumentLocation,
-                                                 const class GGS_syntaxInstructionList & in_mSyntaxInstructionList,
+                                                 const class GGS__5B_syntaxInstructionAST_5D_ & in_mSyntaxInstructionList,
                                                  const class GGS_location & in_mEndOfInstructionList
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -9380,7 +9380,7 @@ class GGS_syntaxRuleLabelListAST : public AC_GALGAS_root {
   public: static class GGS_syntaxRuleLabelListAST class_func_listWithValue (const class GGS_lstring & inOperand0,
                                                                             const class GGS_formalParameterListAST & inOperand1,
                                                                             const class GGS_location & inOperand2,
-                                                                            const class GGS_syntaxInstructionList & inOperand3,
+                                                                            const class GGS__5B_syntaxInstructionAST_5D_ & inOperand3,
                                                                             const class GGS_location & inOperand4
                                                                             COMMA_LOCATION_ARGS) ;
 
@@ -9393,7 +9393,7 @@ class GGS_syntaxRuleLabelListAST : public AC_GALGAS_root {
   public: void addAssignOperation (const class GGS_lstring & inOperand0,
                                    const class GGS_formalParameterListAST & inOperand1,
                                    const class GGS_location & inOperand2,
-                                   const class GGS_syntaxInstructionList & inOperand3,
+                                   const class GGS__5B_syntaxInstructionAST_5D_ & inOperand3,
                                    const class GGS_location & inOperand4
                                    COMMA_LOCATION_ARGS) ;
 
@@ -9410,7 +9410,7 @@ class GGS_syntaxRuleLabelListAST : public AC_GALGAS_root {
   public: void setter_append (class GGS_lstring constinArgument0,
                               class GGS_formalParameterListAST constinArgument1,
                               class GGS_location constinArgument2,
-                              class GGS_syntaxInstructionList constinArgument3,
+                              class GGS__5B_syntaxInstructionAST_5D_ constinArgument3,
                               class GGS_location constinArgument4,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
@@ -9418,7 +9418,7 @@ class GGS_syntaxRuleLabelListAST : public AC_GALGAS_root {
   public: void setter_insertAtIndex (class GGS_lstring constinArgument0,
                                      class GGS_formalParameterListAST constinArgument1,
                                      class GGS_location constinArgument2,
-                                     class GGS_syntaxInstructionList constinArgument3,
+                                     class GGS__5B_syntaxInstructionAST_5D_ constinArgument3,
                                      class GGS_location constinArgument4,
                                      class GGS_uint constinArgument5,
                                      Compiler * inCompiler
@@ -9427,7 +9427,7 @@ class GGS_syntaxRuleLabelListAST : public AC_GALGAS_root {
   public: void setter_popFirst (class GGS_lstring & outArgument0,
                                 class GGS_formalParameterListAST & outArgument1,
                                 class GGS_location & outArgument2,
-                                class GGS_syntaxInstructionList & outArgument3,
+                                class GGS__5B_syntaxInstructionAST_5D_ & outArgument3,
                                 class GGS_location & outArgument4,
                                 Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
@@ -9435,7 +9435,7 @@ class GGS_syntaxRuleLabelListAST : public AC_GALGAS_root {
   public: void setter_popLast (class GGS_lstring & outArgument0,
                                class GGS_formalParameterListAST & outArgument1,
                                class GGS_location & outArgument2,
-                               class GGS_syntaxInstructionList & outArgument3,
+                               class GGS__5B_syntaxInstructionAST_5D_ & outArgument3,
                                class GGS_location & outArgument4,
                                Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
@@ -9443,7 +9443,7 @@ class GGS_syntaxRuleLabelListAST : public AC_GALGAS_root {
   public: void setter_removeAtIndex (class GGS_lstring & outArgument0,
                                      class GGS_formalParameterListAST & outArgument1,
                                      class GGS_location & outArgument2,
-                                     class GGS_syntaxInstructionList & outArgument3,
+                                     class GGS__5B_syntaxInstructionAST_5D_ & outArgument3,
                                      class GGS_location & outArgument4,
                                      class GGS_uint constinArgument5,
                                      Compiler * inCompiler
@@ -9469,7 +9469,7 @@ class GGS_syntaxRuleLabelListAST : public AC_GALGAS_root {
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMSyntaxInstructionListAtIndex (class GGS_syntaxInstructionList constinArgument0,
+  public: void setter_setMSyntaxInstructionListAtIndex (class GGS__5B_syntaxInstructionAST_5D_ constinArgument0,
                                                         class GGS_uint constinArgument1,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
@@ -9479,7 +9479,7 @@ class GGS_syntaxRuleLabelListAST : public AC_GALGAS_root {
   public: void method_first (class GGS_lstring & outArgument0,
                              class GGS_formalParameterListAST & outArgument1,
                              class GGS_location & outArgument2,
-                             class GGS_syntaxInstructionList & outArgument3,
+                             class GGS__5B_syntaxInstructionAST_5D_ & outArgument3,
                              class GGS_location & outArgument4,
                              Compiler * inCompiler
                              COMMA_LOCATION_ARGS) const ;
@@ -9487,7 +9487,7 @@ class GGS_syntaxRuleLabelListAST : public AC_GALGAS_root {
   public: void method_last (class GGS_lstring & outArgument0,
                             class GGS_formalParameterListAST & outArgument1,
                             class GGS_location & outArgument2,
-                            class GGS_syntaxInstructionList & outArgument3,
+                            class GGS__5B_syntaxInstructionAST_5D_ & outArgument3,
                             class GGS_location & outArgument4,
                             Compiler * inCompiler
                             COMMA_LOCATION_ARGS) const ;
@@ -9513,9 +9513,9 @@ class GGS_syntaxRuleLabelListAST : public AC_GALGAS_root {
                                                       Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_syntaxInstructionList getter_mSyntaxInstructionListAtIndex (const class GGS_uint & constinOperand0,
-                                                                                Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_syntaxInstructionAST_5D_ getter_mSyntaxInstructionListAtIndex (const class GGS_uint & constinOperand0,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_range getter_range (LOCATION_ARGS) const ;
 

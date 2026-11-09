@@ -305,7 +305,7 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
     let subscriptMap = expressionType.definition.readSubscriptMap
     if let aSubscript = subscriptMap [invocationSignature] then
     //--- Check effective argument list
-      var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
+      var semanticExpressionListForGeneration = [@semanticExpressionForGeneration] ()
       for formalArg in aSubscript.argumentTypeList, actualArg in self.actualArgumentList do
         actualArg.mExpression.analyzeSemanticExpression
           (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
@@ -330,7 +330,7 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
           error (actualArg.mActualSelector : "the selector should be '" + s + "'"
           fixit #replaceBy s)
         end
-        semanticExpressionListForGeneration ++= @(expression)
+        semanticExpressionListForGeneration ++= expression
       end
     //--- Generate expression
       outExpression = @subscriptReadAccessExpressionForGeneration (
@@ -354,7 +354,7 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
 final class @subscriptReadAccessExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration expression
   private let @string subscriptInvocationName
-  private let @semanticExpressionListForGeneration actualExpressionList
+  private let [@semanticExpressionForGeneration] actualExpressionList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -375,8 +375,8 @@ final class @subscriptReadAccessExpressionForGeneration : @semanticExpressionFor
   //--- subscript arments
     var [@string] subscriptArgumentList = @()
     for actualArg in self.actualExpressionList do
-      actualArg.mExpression.generateExpression
-        (!?ioGeneratedCode,
+      actualArg.generateExpression (
+        !?ioGeneratedCode,
         !?ioInclusionSet,
         !?ioTemporaryVariableIndex,
         !?ioUnusedVariableCppNameSet,

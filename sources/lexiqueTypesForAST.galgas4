@@ -33,7 +33,7 @@ abstract class @lexicalInstructionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @templateDelimitorListAST {
+struct @templateDelimitor2AST {
   public let @lstring mStartString
   public let @bool nonAtomicSelection #initArgLabel
   public let @bool mTemplateEndMark
@@ -53,12 +53,6 @@ struct @templateReplacementAST {
 
 abstract class @abstractLexicalRuleAST {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-//list @lexicalRuleListAST {
-//  public let @abstractLexicalRuleAST mLexicalRule
-//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -84,14 +78,14 @@ final class @lexicalExplicitRuleAST : @abstractLexicalRuleAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @lexicalMessageDeclarationListAST {
+struct @lexicalMessageDeclarationAST {
   public let @lstring mMessageName
   public let @lstring mMessageValue
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @lexicalAttributeListAST {
+struct @lexicalAttributeAST {
   public let @lstring mTypeName
   public let @lstring mName
 }
@@ -296,7 +290,7 @@ func @lexicalArgumentModeAST.cocoaPointerInFormalArgument () -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-list @indexingListAST {
+struct @indexingAST {
   public let @lstring mIndexName
   public let @lstring mIndexComment
 }
@@ -372,7 +366,7 @@ map @lexicalAttributeMap {
 
 proc buildLexicalAttributeMap
   (let @lexicalTypeMap inLexicalTypeMap,
-  let @lexicalAttributeListAST inLexicalAttributeList,
+  let [@lexicalAttributeAST] inLexicalAttributeList,
   ?!@lexicalAttributeMap ioLexicalAttributeMap ) {
   for lexicalAttribute in inLexicalAttributeList do
     if inLexicalTypeMap.contains (lexicalAttribute.mTypeName.string) then

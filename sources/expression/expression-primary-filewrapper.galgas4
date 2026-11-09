@@ -163,7 +163,7 @@ override proc @filewrapperTemplateInExpressionAST.analyzeSemanticExpression
 //---
   filewrapperTemplateMap.searchKey (self.mFilewrapperTemplateName, ?let @functionSignature templateSignature, ?*)
 //--- Analysis arguments
-  var @semanticExpressionListForGeneration effectiveParameterList
+  var [@semanticExpressionForGeneration] effectiveParameterList
   if self.mExpressions.count != templateSignature.count then
     error (self.mFilewrapperTemplateName
     : "calling the '" + self.mFilewrapperTemplateName + "' template of '" + self.mFilewrapperName + "' filewrapper requires "
@@ -187,7 +187,7 @@ override proc @filewrapperTemplateInExpressionAST.analyzeSemanticExpression
         ?@semanticExpressionForGeneration exp
       )
       checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
-      effectiveParameterList ++= @(exp)
+      effectiveParameterList ++= exp
     end
   end
 //---
@@ -312,7 +312,7 @@ override proc @filewrapperInExpressionForGeneration.generateExpression
 final class @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGeneration {
   public let @string mFilewrapperName
   public let @string mFilewrapperTemplateName
-  public let @semanticExpressionListForGeneration mActualOutputParameterList
+  public let [@semanticExpressionForGeneration] mActualOutputParameterList
 }
 
 //································································································

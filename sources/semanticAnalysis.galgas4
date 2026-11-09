@@ -532,7 +532,7 @@ override proc @filewrapperDeclarationAST.semanticAnalysis
         filewrapperTemplateFormalInputParameters ++= @(formal.mFormalTemplateSelector, type, cppVarName, formal.mFormalArgumentName, true)
       end
     //--- Analyze template
-      var templateInstructionListForGeneration = @templateInstructionListForGeneration ()
+      var templateInstructionListForGeneration = [@templateInstructionForGeneration] ()
       let templateAnalysisContext = @templateAnalysisContext (
         inSemanticContext,
         inPredefinedTypes,
@@ -550,7 +550,8 @@ override proc @filewrapperDeclarationAST.semanticAnalysis
       filewrapperTemplateListForGeneration ++= @(
         filewrapperTemplate.mFilewrapperTemplateName.string,
         filewrapperTemplateFormalInputParameters,
-        templateInstructionListForGeneration)
+        templateInstructionListForGeneration
+      )
     end
   //--- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration ++= @filewrapperDeclarationForGeneration (
@@ -585,7 +586,7 @@ override proc @galgas3SyntaxComponentAST.semanticAnalysis
     (self.mLexiqueName,
     ?*,
     ?let @terminalMap terminalMap,
-    ?let @indexingListAST indexingListAST,
+    ?let [@indexingAST] indexingListAST,
     ?4*
   )
 //-------------------------------------- Build "indexing" set
@@ -1338,7 +1339,7 @@ proc analyzeSyntaxInstructionList
   let @string inLexiqueName,
   let @nonterminalMap inNonterminalMap,
   let @string  inComponentName,
-  let @syntaxInstructionList inSyntaxInstructionListAST,
+  let [@syntaxInstructionAST] inSyntaxInstructionListAST,
   let @location inEndOfBranchLocation,
   let @stringset inIndexNameSet,
   ?!@localVarManager ioVariableMap,
@@ -1379,7 +1380,7 @@ proc semanticAnalysisOfRuleLabel
   (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @formalParameterListAST inFormalArguments,
-  let @syntaxInstructionList inSyntaxInstructionList,
+  let [@syntaxInstructionAST] inSyntaxInstructionList,
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   let @terminalMap inTerminalMap,

@@ -447,7 +447,7 @@ class GGS_lexicalTypeMap function_buildLexicalTypeMap (class Compiler * inCompil
 //--------------------------------------------------------------------------------------------------
 
 void routine_buildLexicalAttributeMap_3F__3F__26_ (const class GGS_lexicalTypeMap constinArgument0,
-                                                   const class GGS_lexicalAttributeListAST constinArgument1,
+                                                   const class GGS__5B_lexicalAttributeAST_5D_ constinArgument1,
                                                    class GGS_lexicalAttributeMap & ioArgument2,
                                                    class Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;

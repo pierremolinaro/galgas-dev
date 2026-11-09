@@ -63,7 +63,7 @@ void routine_analyzeSyntaxInstructionList_3F__26__3F__26__3F__3F__3F__3F__3F__3F
                                                                                                        const class GGS_string constinArgument6,
                                                                                                        const class GGS_nonterminalMap constinArgument7,
                                                                                                        const class GGS_string constinArgument8,
-                                                                                                       const class GGS_syntaxInstructionList constinArgument9,
+                                                                                                       const class GGS__5B_syntaxInstructionAST_5D_ constinArgument9,
                                                                                                        const class GGS_location constinArgument10,
                                                                                                        const class GGS_stringset constinArgument11,
                                                                                                        class GGS_localVarManager & ioArgument12,
@@ -526,7 +526,7 @@ GGS_string filewrapperTemplate_programFileGenerationTemplate_programFileImplemen
                                                                                         const class GGS_string & in_COMPONENT_5F_NAME,
                                                                                         const class GGS__5B_string_5D_ & in_IMPORTED_5F_COMPONENT_5F_LIST,
                                                                                         const class GGS_string & in_BEFORE_5F_AFTER_5F_RULE_5F_IMPLEMENTATION_5F_STRING,
-                                                                                        const class GGS_programRuleList & in_PROGRAM_5F_RULE_5F_LIST,
+                                                                                        const class GGS__5B_programRuleAST_5D_ & in_PROGRAM_5F_RULE_5F_LIST,
                                                                                         const class GGS_string & in_PROJECT_5F_VERSION_5F_STRING
                                                                                         COMMA_LOCATION_ARGS) ;
 
@@ -540,7 +540,7 @@ void routine_compileBeforeClauseGalgas_33__26__26__3F__26__3F__26_ (class GGS__5
                                                                     class GGS_usefulEntitiesGraph & ioArgument1,
                                                                     const class GGS_analysisContext constinArgument2,
                                                                     class GGS_unifiedTypeMap & ioArgument3,
-                                                                    const class GGS_prologueEpilogueList constinArgument4,
+                                                                    const class GGS__5B_prologueEpilogueAST_5D_ constinArgument4,
                                                                     class GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument5,
                                                                     class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
@@ -555,7 +555,7 @@ void routine_compileProgramRulesGalgas_33__26__26__3F__26__3F__26_ (class GGS__5
                                                                     class GGS_usefulEntitiesGraph & ioArgument1,
                                                                     const class GGS_analysisContext constinArgument2,
                                                                     class GGS_unifiedTypeMap & ioArgument3,
-                                                                    const class GGS_programRuleList constinArgument4,
+                                                                    const class GGS__5B_programRuleAST_5D_ constinArgument4,
                                                                     class GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument5,
                                                                     class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
@@ -570,7 +570,7 @@ void routine_compileAfterClauseGalgas_33__26__26__3F__26__3F__26_ (class GGS__5B
                                                                    class GGS_usefulEntitiesGraph & ioArgument1,
                                                                    const class GGS_analysisContext constinArgument2,
                                                                    class GGS_unifiedTypeMap & ioArgument3,
-                                                                   const class GGS_prologueEpilogueList constinArgument4,
+                                                                   const class GGS__5B_prologueEpilogueAST_5D_ constinArgument4,
                                                                    class GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument5,
                                                                    class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;

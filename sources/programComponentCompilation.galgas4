@@ -33,7 +33,7 @@ private filewrapper programFileGenerationTemplate in "+generation-templates/prog
     ?@string COMPONENT_NAME,
     ?[@string] IMPORTED_COMPONENT_LIST,
     ?@string BEFORE_AFTER_RULE_IMPLEMENTATION_STRING,
-    ?@programRuleList PROGRAM_RULE_LIST,
+    ?[@programRuleAST] PROGRAM_RULE_LIST,
     ?@string PROJECT_VERSION_STRING
   )
 }
@@ -49,7 +49,7 @@ proc compileBeforeClauseGalgas3
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  let @prologueEpilogueList inPrologueList,
+  let [@prologueEpilogueAST] inPrologueList,
   ?![@semanticDeclarationForGeneration] ioDecoratedDeclarationListForGeneration
 ) {
   let usefulnessName = beforeNameForUsefulEntitiesGraph (.here)
@@ -96,7 +96,7 @@ private proc compileProgramRulesGalgas3
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  let @programRuleList inProgramRules,
+  let [@programRuleAST] inProgramRules,
   ?![@semanticDeclarationForGeneration] ioDecoratedDeclarationListForGeneration
 ) {
   var @uint ruleIndex = 0
@@ -142,7 +142,7 @@ proc compileAfterClauseGalgas3
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  let @prologueEpilogueList inEpilogueList,
+  let [@prologueEpilogueAST] inEpilogueList,
   ?![@semanticDeclarationForGeneration] ioDecoratedDeclarationListForGeneration
 ) {
   let usefulnessName = afterNameForUsefulEntitiesGraph (.here)
@@ -185,9 +185,9 @@ proc compileAfterClauseGalgas3
 proc compileProgramComponentGalgas3
   (?![@lstring] ioUsefulnessRootEntities,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @prologueEpilogueList inPrologueList,
-  let @programRuleList inProgramRules,
-  let @prologueEpilogueList inEpilogueList,
+  let [@prologueEpilogueAST] inPrologueList,
+  let [@programRuleAST] inProgramRules,
+  let [@prologueEpilogueAST] inEpilogueList,
   let @semanticContext inSemanticContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   let @string inProjectVersionString,

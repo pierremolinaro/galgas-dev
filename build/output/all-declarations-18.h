@@ -35,8 +35,8 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (class 
                                                                           const class GGS_string & in_LEXIQUE_5F_IDENTIFIER,
                                                                           const class GGS_lexicalListDeclarationListAST & in_DELIMITOR_5F_LIST_5F_LIST,
                                                                           const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                          const class GGS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                          const class GGS_indexingListAST & in_INDEXING_5F_LIST
+                                                                          const class GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                          const class GGS__5B_indexingAST_5D_ & in_INDEXING_5F_LIST
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -55,7 +55,7 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_
                                                                                             const class GGS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
                                                                                             const class GGS__5B_abstractLexicalRuleAST_5D_ & in_LEXICAL_5F_RULE_5F_LIST,
                                                                                             const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
-                                                                                            const class GGS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                            const class GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
                                                                                             const class GGS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
                                                                                             const class GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
                                                                                             const class GGS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST
@@ -77,9 +77,9 @@ GGS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftUIImplementationZ
                                                                                          const class GGS__5B_abstractLexicalRuleAST_5D_ & in_LEXICAL_5F_RULE_5F_LIST,
                                                                                          const class GGS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
                                                                                          const class GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
-                                                                                         const class GGS_indexingListAST & in_INDEXING_5F_LIST,
+                                                                                         const class GGS__5B_indexingAST_5D_ & in_INDEXING_5F_LIST,
                                                                                          const class GGS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST,
-                                                                                         const class GGS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST
+                                                                                         const class GGS__5B_templateDelimitor_32_AST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -782,7 +782,7 @@ void routine_handleNonTerminalDeclarationsFromRuleList_26__3F_ (class GGS_nonTer
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_transformInstructionListForGrammarAnalysis_3F__26_usedTerminalMap_3F_nonTerminalSymbolMap_26_addedTerminalIndex_26_ (const class GGS_syntaxInstructionList constinArgument0,
+void routine_transformInstructionListForGrammarAnalysis_3F__26_usedTerminalMap_3F_nonTerminalSymbolMap_26_addedTerminalIndex_26_ (const class GGS__5B_syntaxInstructionAST_5D_ constinArgument0,
                                                                                                                                   class GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument1,
                                                                                                                                   const class GGS_nonTerminalSymbolMapForGrammarAnalysis constinArgument2,
                                                                                                                                   class GGS_uint & ioArgument3,

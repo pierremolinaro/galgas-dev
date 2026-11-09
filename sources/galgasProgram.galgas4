@@ -326,7 +326,7 @@ private proc projectGeneration
               let @optionComponentMapForGeneration inOptionComponentMapForGeneration,
               let [@string] inAppProductFileList,
               let [@semanticDeclarationForGeneration] inSemanticDeclarationSortedListForGeneration,
-              let @programRuleList inSourceRuleList,
+              let [@programRuleAST] inSourceRuleList,
               let @galgas3ProjectComponentAST inProjectComponentAST,
               let @string inProjectSourceFile,
               let @string inHandCodedSourceDirectory,

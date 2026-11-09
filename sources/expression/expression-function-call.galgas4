@@ -130,7 +130,7 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
         + " effective argument(s)"
       spoil outExpression)
     else
-      var semanticExpressionListForGeneration = @semanticExpressionListForGeneration ()
+      var semanticExpressionListForGeneration = [@semanticExpressionForGeneration] ()
       for formalArg in functionSignature, actualArg in self.mExpressionList do
         actualArg.mExpression.analyzeSemanticExpression
           (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
@@ -155,7 +155,7 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
           error (actualArg.mActualSelector : "the selector should be '" + s + "'"
           fixit #replaceBy s)
         end
-        semanticExpressionListForGeneration ++= @(expression)
+        semanticExpressionListForGeneration ++= expression
       end
       outExpression = @functionCallExpressionForGeneration (
         resultType,
@@ -176,7 +176,7 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
 
 final class @functionCallExpressionForGeneration : @semanticExpressionForGeneration {
   private let @string mFunctionName
-  private let @semanticExpressionListForGeneration mExpressions
+  private let [@semanticExpressionForGeneration] mExpressions
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -192,7 +192,7 @@ final class @functionCallExpressionForGeneration : @semanticExpressionForGenerat
   //---
     var parameterList = [@string] ()
     for exp in self.mExpressions do
-      exp.mExpression.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let parameter)
+      exp.generateExpression (!?ioGeneratedCode, !?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioUnusedVariableCppNameSet, ?let parameter)
       parameterList ++= parameter
     end
     outCppExpression = "function_" + self.mFunctionName.identifierRepresentation + " ("

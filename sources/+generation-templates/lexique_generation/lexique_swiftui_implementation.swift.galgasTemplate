@@ -226,8 +226,8 @@ end
 if [INDEXING_LIST count] > 0 then
 %    return [
 %
-  for (mIndexName mIndexComment) in INDEXING_LIST
-    do %      %![mIndexComment utf8RepresentationEscapingQuestionMark]% /* %!mIndexName.string% */%
+  for (index) in INDEXING_LIST
+    do %      %![index.mIndexComment utf8RepresentationEscapingQuestionMark]% /* %!index.mIndexName.string% */%
     between %,\n%
   end
 %

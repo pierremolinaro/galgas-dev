@@ -3992,14 +3992,14 @@ GGS_bool extensionGetter_useLoopLocalVar (const GGS__5B_abstractLexicalRuleAST_5
   GGS_bool result_result ; // Returned variable
   result_result = GGS_bool (false) ;
   const GGS__5B_abstractLexicalRuleAST_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_abstractLexicalRuleAST_5D_ enumerator_2661 (temp_0) ;
-  bool bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas4", 67)).isValidAndTrue () ;
-  if (enumerator_2661.hasCurrentObject () && bool_1) {
-    while (enumerator_2661.hasCurrentObject () && bool_1) {
-      result_result = callExtensionGetter_lexicalRuleUsesLoopLocalVar ((const cPtr_abstractLexicalRuleAST *) enumerator_2661.current_entry (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 68)) ;
-      enumerator_2661.gotoNextObject () ;
-      if (enumerator_2661.hasCurrentObject ()) {
-        bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas4", 67)).isValidAndTrue () ;
+  UpEnumerator__5B_abstractLexicalRuleAST_5D_ enumerator_2472 (temp_0) ;
+  bool bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas4", 61)).isValidAndTrue () ;
+  if (enumerator_2472.hasCurrentObject () && bool_1) {
+    while (enumerator_2472.hasCurrentObject () && bool_1) {
+      result_result = callExtensionGetter_lexicalRuleUsesLoopLocalVar ((const cPtr_abstractLexicalRuleAST *) enumerator_2472.current_entry (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas4", 62)) ;
+      enumerator_2472.gotoNextObject () ;
+      if (enumerator_2472.hasCurrentObject ()) {
+        bool_1 = result_result.operator_not (SOURCE_FILE ("lexiqueTypesForAST.galgas4", 61)).isValidAndTrue () ;
       }
     }
   }
@@ -14515,9 +14515,9 @@ GGS_lexiqueComponentMapForSemanticAnalysis GGS_lexiqueComponentMapForSemanticAna
 void GGS_lexiqueComponentMapForSemanticAnalysis::setter_insertKey (GGS_lstring inLKey,
                                                                    GGS_bool inArgument0,
                                                                    GGS_terminalMap inArgument1,
-                                                                   GGS_indexingListAST inArgument2,
+                                                                   GGS__5B_indexingAST_5D_ inArgument2,
                                                                    GGS_terminalDeclarationListAST inArgument3,
-                                                                   GGS_lexicalAttributeListAST inArgument4,
+                                                                   GGS__5B_lexicalAttributeAST_5D_ inArgument4,
                                                                    GGS_lexicalStyleListAST inArgument5,
                                                                    GGS_lexicalListDeclarationListAST inArgument6,
                                                                    Compiler * inCompiler
@@ -14533,9 +14533,9 @@ void GGS_lexiqueComponentMapForSemanticAnalysis::setter_insertKey (GGS_lstring i
 void GGS_lexiqueComponentMapForSemanticAnalysis::method_searchKey (GGS_lstring inLKey,
                                                                    GGS_bool & outArgument0,
                                                                    GGS_terminalMap & outArgument1,
-                                                                   GGS_indexingListAST & outArgument2,
+                                                                   GGS__5B_indexingAST_5D_ & outArgument2,
                                                                    GGS_terminalDeclarationListAST & outArgument3,
-                                                                   GGS_lexicalAttributeListAST & outArgument4,
+                                                                   GGS__5B_lexicalAttributeAST_5D_ & outArgument4,
                                                                    GGS_lexicalStyleListAST & outArgument5,
                                                                    GGS_lexicalListDeclarationListAST & outArgument6,
                                                                    Compiler * inCompiler
@@ -14611,10 +14611,10 @@ GGS_terminalMap GGS_lexiqueComponentMapForSemanticAnalysis::getter_mTerminalMapF
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_indexingListAST GGS_lexiqueComponentMapForSemanticAnalysis::getter_mIndexingListASTForKey (const GGS_string & inKey,
-                                                                                               Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) const {
-  GGS_indexingListAST result ;
+GGS__5B_indexingAST_5D_ GGS_lexiqueComponentMapForSemanticAnalysis::getter_mIndexingListASTForKey (const GGS_string & inKey,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const {
+  GGS__5B_indexingAST_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     const SharedGenericPtrWithValueSemantics <GGS_lexiqueComponentMapForSemanticAnalysis_2E_element> info = infoForKey (key) ;
@@ -14651,10 +14651,10 @@ GGS_terminalDeclarationListAST GGS_lexiqueComponentMapForSemanticAnalysis::gette
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalAttributeListAST GGS_lexiqueComponentMapForSemanticAnalysis::getter_mLexicalAttributeListASTForKey (const GGS_string & inKey,
-                                                                                                               Compiler * inCompiler
-                                                                                                               COMMA_LOCATION_ARGS) const {
-  GGS_lexicalAttributeListAST result ;
+GGS__5B_lexicalAttributeAST_5D_ GGS_lexiqueComponentMapForSemanticAnalysis::getter_mLexicalAttributeListASTForKey (const GGS_string & inKey,
+                                                                                                                   Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) const {
+  GGS__5B_lexicalAttributeAST_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     const SharedGenericPtrWithValueSemantics <GGS_lexiqueComponentMapForSemanticAnalysis_2E_element> info = infoForKey (key) ;
@@ -14751,7 +14751,7 @@ void GGS_lexiqueComponentMapForSemanticAnalysis::setter_setMTerminalMapForKey (G
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexiqueComponentMapForSemanticAnalysis::setter_setMIndexingListASTForKey (GGS_indexingListAST inValue,
+void GGS_lexiqueComponentMapForSemanticAnalysis::setter_setMIndexingListASTForKey (GGS__5B_indexingAST_5D_ inValue,
                                                                                    GGS_string inKey,
                                                                                    Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
@@ -14791,7 +14791,7 @@ void GGS_lexiqueComponentMapForSemanticAnalysis::setter_setMTerminalListASTForKe
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_lexiqueComponentMapForSemanticAnalysis::setter_setMLexicalAttributeListASTForKey (GGS_lexicalAttributeListAST inValue,
+void GGS_lexiqueComponentMapForSemanticAnalysis::setter_setMLexicalAttributeListASTForKey (GGS__5B_lexicalAttributeAST_5D_ inValue,
                                                                                            GGS_string inKey,
                                                                                            Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) {
@@ -14966,7 +14966,7 @@ GGS_terminalMap DownEnumerator_lexiqueComponentMapForSemanticAnalysis::current_m
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_indexingListAST DownEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mIndexingListAST (LOCATION_ARGS) const {
+GGS__5B_indexingAST_5D_ DownEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mIndexingListAST (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mIndexingListAST ;
 }
 
@@ -14978,7 +14978,7 @@ GGS_terminalDeclarationListAST DownEnumerator_lexiqueComponentMapForSemanticAnal
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalAttributeListAST DownEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mLexicalAttributeListAST (LOCATION_ARGS) const {
+GGS__5B_lexicalAttributeAST_5D_ DownEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mLexicalAttributeListAST (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalAttributeListAST ;
 }
 
@@ -15029,7 +15029,7 @@ GGS_terminalMap UpEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mTe
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_indexingListAST UpEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mIndexingListAST (LOCATION_ARGS) const {
+GGS__5B_indexingAST_5D_ UpEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mIndexingListAST (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mIndexingListAST ;
 }
 
@@ -15041,7 +15041,7 @@ GGS_terminalDeclarationListAST UpEnumerator_lexiqueComponentMapForSemanticAnalys
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lexicalAttributeListAST UpEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mLexicalAttributeListAST (LOCATION_ARGS) const {
+GGS__5B_lexicalAttributeAST_5D_ UpEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mLexicalAttributeListAST (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mLexicalAttributeListAST ;
 }
 

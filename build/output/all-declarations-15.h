@@ -9,879 +9,6 @@
 #include "all-declarations-14.h"
 
 //--------------------------------------------------------------------------------------------------
-//
-//Parser class 'galgas4GrammarComponentSyntax' declaration
-//
-//--------------------------------------------------------------------------------------------------
-
-class cParser_galgas_34_GrammarComponentSyntax {
-//--- Virtual destructor
-  public: virtual ~ cParser_galgas_34_GrammarComponentSyntax (void) { }
-
-//--- Non terminal declarations
-  protected: virtual void nt_declaration_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                           class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_grammar_5F_start_5F_symbol_5F_label_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                   const class GGS_lstring constinArgument1,
-                                                                   class GGS_nonTerminalLabelListAST & ioArgument2,
-                                                                   class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_grammar_5F_start_5F_symbol_5F_label_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_label_5F_formal_5F_parameter_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                            class GGS_lstring & outArgument1,
-                                                            class GGS_formalParameterListAST & ioArgument2,
-                                                            class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_label_5F_formal_5F_parameter_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_type_5F_definition_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                  class GGS_lstring & outArgument1,
-                                                  class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_type_5F_definition_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-
-//--- Rule declarations
-  protected: void rule_galgas_34_GrammarComponentSyntax_declaration_i0_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                         Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_GrammarComponentSyntax_declaration_i0_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_declaration_i0_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_grammar_5F_start_5F_symbol_5F_label_i1_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                                 const GGS_lstring constinArgument1,
-                                                                                                 GGS_nonTerminalLabelListAST & ioArgument2,
-                                                                                                 Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_GrammarComponentSyntax_grammar_5F_start_5F_symbol_5F_label_i1_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_grammar_5F_start_5F_symbol_5F_label_i1_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i2_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                          GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
-                                                                                          Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i2_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i2_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i3_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                          GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
-                                                                                          Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i3_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i3_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i4_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                          GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
-                                                                                          Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i4_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i4_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i5_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                          GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
-                                                                                          Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i5_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i5_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i6_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                          GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
-                                                                                          Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i6_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i6_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i7_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                          GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
-                                                                                          Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i7_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i7_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i8_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                          GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
-                                                                                          Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i8_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i8_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i9_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                          GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
-                                                                                          Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i9_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i9_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-
-
-//--- Select methods
-  protected: virtual int32_t select_galgas_34_GrammarComponentSyntax_0 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_GrammarComponentSyntax_1 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_GrammarComponentSyntax_2 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_GrammarComponentSyntax_3 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_GrammarComponentSyntax_4 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_GrammarComponentSyntax_5 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_GrammarComponentSyntax_6 (Lexique_galgasScanner_34_ *) = 0 ;
-
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Parser class 'galgas4ProgramDeclarations' declaration
-//
-//--------------------------------------------------------------------------------------------------
-
-class cParser_galgas_34_ProgramDeclarations {
-//--- Virtual destructor
-  public: virtual ~ cParser_galgas_34_ProgramDeclarations (void) { }
-
-//--- Non terminal declarations
-  protected: virtual void nt_declaration_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                           class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_list_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                               class GGS__5B_semanticInstructionAST_5D_ & outArgument1,
-                                                               class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_semantic_5F_instruction_5F_list_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-
-//--- Rule declarations
-  protected: void rule_galgas_34_ProgramDeclarations_declaration_i0_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                      Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_ProgramDeclarations_declaration_i0_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_ProgramDeclarations_declaration_i0_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_ProgramDeclarations_declaration_i1_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                      Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_ProgramDeclarations_declaration_i1_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_ProgramDeclarations_declaration_i1_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_ProgramDeclarations_declaration_i2_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                      Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_ProgramDeclarations_declaration_i2_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_ProgramDeclarations_declaration_i2_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-
-
-//--- Select methods
-  protected: virtual int32_t select_galgas_34_ProgramDeclarations_0 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_ProgramDeclarations_1 (Lexique_galgasScanner_34_ *) = 0 ;
-
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @XcodeProjectDescriptor struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_uint mProperty_mSequenceNumber ;
-  public: inline GGS_uint readProperty_mSequenceNumber (void) const {
-    return mProperty_mSequenceNumber ;
-  }
-
-  public: GGS_string mProperty_mMainGroupReference ;
-  public: inline GGS_string readProperty_mMainGroupReference (void) const {
-    return mProperty_mMainGroupReference ;
-  }
-
-  public: GGS__5B_string_5D_ mProperty_mMainGroupChildrenRefs ;
-  public: inline GGS__5B_string_5D_ readProperty_mMainGroupChildrenRefs (void) const {
-    return mProperty_mMainGroupChildrenRefs ;
-  }
-
-  public: GGS_string mProperty_mProjectObjectReference ;
-  public: inline GGS_string readProperty_mProjectObjectReference (void) const {
-    return mProperty_mProjectObjectReference ;
-  }
-
-  public: GGS__5B_XCodeGroup_5D_ mProperty_mGroupList ;
-  public: inline GGS__5B_XCodeGroup_5D_ readProperty_mGroupList (void) const {
-    return mProperty_mGroupList ;
-  }
-
-  public: GGS__5B_XCodeToolTarget_5D_ mProperty_mToolTargetList ;
-  public: inline GGS__5B_XCodeToolTarget_5D_ readProperty_mToolTargetList (void) const {
-    return mProperty_mToolTargetList ;
-  }
-
-  public: GGS__5B_XCodeAppTarget_5D_ mProperty_mAppTargetList ;
-  public: inline GGS__5B_XCodeAppTarget_5D_ readProperty_mAppTargetList (void) const {
-    return mProperty_mAppTargetList ;
-  }
-
-  public: GGS__5B__32_string_5D_ mProperty_mCFileList ;
-  public: inline GGS__5B__32_string_5D_ readProperty_mCFileList (void) const {
-    return mProperty_mCFileList ;
-  }
-
-  public: GGS__5B__32_string_5D_ mProperty_mCppFileList ;
-  public: inline GGS__5B__32_string_5D_ readProperty_mCppFileList (void) const {
-    return mProperty_mCppFileList ;
-  }
-
-  public: GGS__5B__32_string_5D_ mProperty_m_5F_Swift_5F_FileList ;
-  public: inline GGS__5B__32_string_5D_ readProperty_m_5F_Swift_5F_FileList (void) const {
-    return mProperty_m_5F_Swift_5F_FileList ;
-  }
-
-  public: GGS__5B__32_string_5D_ mProperty_m_5F_M_5F_FileList ;
-  public: inline GGS__5B__32_string_5D_ readProperty_m_5F_M_5F_FileList (void) const {
-    return mProperty_m_5F_M_5F_FileList ;
-  }
-
-  public: GGS__5B__32_string_5D_ mProperty_m_5F_MM_5F_FileList ;
-  public: inline GGS__5B__32_string_5D_ readProperty_m_5F_MM_5F_FileList (void) const {
-    return mProperty_m_5F_MM_5F_FileList ;
-  }
-
-  public: GGS__5B__32_string_5D_ mProperty_mFrameworkFileList ;
-  public: inline GGS__5B__32_string_5D_ readProperty_mFrameworkFileList (void) const {
-    return mProperty_mFrameworkFileList ;
-  }
-
-  public: GGS__5B__32_string_5D_ mProperty_mHeaderFileList ;
-  public: inline GGS__5B__32_string_5D_ readProperty_mHeaderFileList (void) const {
-    return mProperty_mHeaderFileList ;
-  }
-
-  public: GGS__5B_BuildFile_5D_ mProperty_mBuildFileList ;
-  public: inline GGS__5B_BuildFile_5D_ readProperty_mBuildFileList (void) const {
-    return mProperty_mBuildFileList ;
-  }
-
-  public: GGS_string mProperty_mDefaultConfigurationRef ;
-  public: inline GGS_string readProperty_mDefaultConfigurationRef (void) const {
-    return mProperty_mDefaultConfigurationRef ;
-  }
-
-  public: GGS__5B_string_5D_ mProperty_mDefaultConfigurationSettingList ;
-  public: inline GGS__5B_string_5D_ readProperty_mDefaultConfigurationSettingList (void) const {
-    return mProperty_mDefaultConfigurationSettingList ;
-  }
-
-  public: GGS_string mProperty_mProjectBuildConfigurationRef ;
-  public: inline GGS_string readProperty_mProjectBuildConfigurationRef (void) const {
-    return mProperty_mProjectBuildConfigurationRef ;
-  }
-
-  public: GGS__5B__32_string_5D_ mProperty_mInfoPlistFileList ;
-  public: inline GGS__5B__32_string_5D_ readProperty_mInfoPlistFileList (void) const {
-    return mProperty_mInfoPlistFileList ;
-  }
-
-  public: GGS__5B__32_string_5D_ mProperty_mXIB_5F_fileList ;
-  public: inline GGS__5B__32_string_5D_ readProperty_mXIB_5F_fileList (void) const {
-    return mProperty_mXIB_5F_fileList ;
-  }
-
-  public: GGS__5B__32_string_5D_ mProperty_mTIFF_5F_fileList ;
-  public: inline GGS__5B__32_string_5D_ readProperty_mTIFF_5F_fileList (void) const {
-    return mProperty_mTIFF_5F_fileList ;
-  }
-
-  public: GGS__5B__32_string_5D_ mProperty_mICNS_5F_fileList ;
-  public: inline GGS__5B__32_string_5D_ readProperty_mICNS_5F_fileList (void) const {
-    return mProperty_mICNS_5F_fileList ;
-  }
-
-  public: GGS_string mProperty_mApplicationBundleName ;
-  public: inline GGS_string readProperty_mApplicationBundleName (void) const {
-    return mProperty_mApplicationBundleName ;
-  }
-
-  public: GGS_string mProperty_mProjectName ;
-  public: inline GGS_string readProperty_mProjectName (void) const {
-    return mProperty_mProjectName ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_XcodeProjectDescriptor (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMSequenceNumber (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSequenceNumber = inValue ;
-  }
-
-  public: inline void setter_setMMainGroupReference (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mMainGroupReference = inValue ;
-  }
-
-  public: inline void setter_setMMainGroupChildrenRefs (const GGS__5B_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mMainGroupChildrenRefs = inValue ;
-  }
-
-  public: inline void setter_setMProjectObjectReference (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mProjectObjectReference = inValue ;
-  }
-
-  public: inline void setter_setMGroupList (const GGS__5B_XCodeGroup_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mGroupList = inValue ;
-  }
-
-  public: inline void setter_setMToolTargetList (const GGS__5B_XCodeToolTarget_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mToolTargetList = inValue ;
-  }
-
-  public: inline void setter_setMAppTargetList (const GGS__5B_XCodeAppTarget_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mAppTargetList = inValue ;
-  }
-
-  public: inline void setter_setMCFileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mCFileList = inValue ;
-  }
-
-  public: inline void setter_setMCppFileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mCppFileList = inValue ;
-  }
-
-  public: inline void setter_setM_5F_Swift_5F_FileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_m_5F_Swift_5F_FileList = inValue ;
-  }
-
-  public: inline void setter_setM_5F_M_5F_FileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_m_5F_M_5F_FileList = inValue ;
-  }
-
-  public: inline void setter_setM_5F_MM_5F_FileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_m_5F_MM_5F_FileList = inValue ;
-  }
-
-  public: inline void setter_setMFrameworkFileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mFrameworkFileList = inValue ;
-  }
-
-  public: inline void setter_setMHeaderFileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mHeaderFileList = inValue ;
-  }
-
-  public: inline void setter_setMBuildFileList (const GGS__5B_BuildFile_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mBuildFileList = inValue ;
-  }
-
-  public: inline void setter_setMDefaultConfigurationRef (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mDefaultConfigurationRef = inValue ;
-  }
-
-  public: inline void setter_setMDefaultConfigurationSettingList (const GGS__5B_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mDefaultConfigurationSettingList = inValue ;
-  }
-
-  public: inline void setter_setMProjectBuildConfigurationRef (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mProjectBuildConfigurationRef = inValue ;
-  }
-
-  public: inline void setter_setMInfoPlistFileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInfoPlistFileList = inValue ;
-  }
-
-  public: inline void setter_setMXIB_5F_fileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mXIB_5F_fileList = inValue ;
-  }
-
-  public: inline void setter_setMTIFF_5F_fileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mTIFF_5F_fileList = inValue ;
-  }
-
-  public: inline void setter_setMICNS_5F_fileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mICNS_5F_fileList = inValue ;
-  }
-
-  public: inline void setter_setMApplicationBundleName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mApplicationBundleName = inValue ;
-  }
-
-  public: inline void setter_setMProjectName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mProjectName = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_XcodeProjectDescriptor (const GGS_uint & in_mSequenceNumber,
-                                      const GGS_string & in_mMainGroupReference,
-                                      const GGS__5B_string_5D_ & in_mMainGroupChildrenRefs,
-                                      const GGS_string & in_mProjectObjectReference,
-                                      const GGS__5B_XCodeGroup_5D_ & in_mGroupList,
-                                      const GGS__5B_XCodeToolTarget_5D_ & in_mToolTargetList,
-                                      const GGS__5B_XCodeAppTarget_5D_ & in_mAppTargetList,
-                                      const GGS__5B__32_string_5D_ & in_mCFileList,
-                                      const GGS__5B__32_string_5D_ & in_mCppFileList,
-                                      const GGS__5B__32_string_5D_ & in_m_5F_Swift_5F_FileList,
-                                      const GGS__5B__32_string_5D_ & in_m_5F_M_5F_FileList,
-                                      const GGS__5B__32_string_5D_ & in_m_5F_MM_5F_FileList,
-                                      const GGS__5B__32_string_5D_ & in_mFrameworkFileList,
-                                      const GGS__5B__32_string_5D_ & in_mHeaderFileList,
-                                      const GGS__5B_BuildFile_5D_ & in_mBuildFileList,
-                                      const GGS_string & in_mDefaultConfigurationRef,
-                                      const GGS__5B_string_5D_ & in_mDefaultConfigurationSettingList,
-                                      const GGS_string & in_mProjectBuildConfigurationRef,
-                                      const GGS__5B__32_string_5D_ & in_mInfoPlistFileList,
-                                      const GGS__5B__32_string_5D_ & in_mXIB_5F_fileList,
-                                      const GGS__5B__32_string_5D_ & in_mTIFF_5F_fileList,
-                                      const GGS__5B__32_string_5D_ & in_mICNS_5F_fileList,
-                                      const GGS_string & in_mApplicationBundleName,
-                                      const GGS_string & in_mProjectName) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_XcodeProjectDescriptor (const GGS_XcodeProjectDescriptor & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_XcodeProjectDescriptor & operator = (const GGS_XcodeProjectDescriptor & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_XcodeProjectDescriptor init (Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_XcodeProjectDescriptor ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addTIFF_file'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addTIFF_5F_file (class GGS_XcodeProjectDescriptor & ioObject,
-                                      const class GGS_string constin_inFileName,
-                                      class GGS_string & out_outFileRef,
-                                      class Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor getReferenceKey'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_getReferenceKey (class GGS_XcodeProjectDescriptor & ioObject,
-                                      class GGS_string & out_outRef,
-                                      class Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addInfoPlistFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addInfoPlistFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                       const class GGS_string constin_inFileName,
-                                       class GGS_string & out_outFileRef,
-                                       class Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addXIBFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addXIBFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                 const class GGS_string constin_inFileName,
-                                 class GGS_string & out_outFileRef,
-                                 class Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addFrameworkFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addFrameworkFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                       const class GGS_string constin_inFileName,
-                                       class GGS_string & out_outFileRef,
-                                       class Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addSwiftFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addSwiftFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                   const class GGS_string constin_inFileName,
-                                   class GGS_string & out_outFileRef,
-                                   class Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addMFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addMFile (class GGS_XcodeProjectDescriptor & ioObject,
-                               const class GGS_string constin_inFileName,
-                               class GGS_string & out_outFileRef,
-                               class Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addMMFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addMMFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                const class GGS_string constin_inFileName,
-                                class GGS_string & out_outFileRef,
-                                class Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addCppFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addCppFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                 const class GGS_string constin_inFileName,
-                                 class GGS_string & out_outFileRef,
-                                 class Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addCFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addCFile (class GGS_XcodeProjectDescriptor & ioObject,
-                               const class GGS_string constin_inFileName,
-                               class GGS_string & out_outFileRef,
-                               class Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addHeaderFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addHeaderFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                    const class GGS_string constin_inFileName,
-                                    class GGS_string & out_outFileRef,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addBuildFile'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addBuildFile (class GGS_XcodeProjectDescriptor & ioObject,
-                                   const class GGS_string constin_inFileReference,
-                                   const class GGS_string constin_inFileName,
-                                   class GGS_string & out_outBuildRef,
-                                   class Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addToolTarget'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addToolTarget (class GGS_XcodeProjectDescriptor & ioObject,
-                                    const class GGS_string constin_inTargetName,
-                                    const class GGS_string constin_inProductFileName,
-                                    const class GGS__5B_string_5D_ constin_inSourceList,
-                                    const class GGS__5B_string_5D_ constin_inToolFrameworksFileRefList,
-                                    const class GGS__5B_string_5D_ constin_inBuildConfigurationSettingList,
-                                    class GGS_string & out_outTargetRef,
-                                    class GGS_string & out_outProductFileRef,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addAppTarget'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addAppTarget (class GGS_XcodeProjectDescriptor & ioObject,
-                                   const class GGS_string constin_inTargetName,
-                                   const class GGS_string constin_inProductFileName,
-                                   const class GGS__5B_string_5D_ constin_inSourceList,
-                                   const class GGS__5B_string_5D_ constin_inFrameworksFileRefList,
-                                   const class GGS__5B_string_5D_ constin_inResourceFileBuildRefs,
-                                   const class GGS__5B_string_5D_ constin_inBuildConfigurationSettingList,
-                                   const class GGS__5B_string_5D_ constin_inDependentTargetRefList,
-                                   const class GGS__5B__32_string_5D_ constin_inProductCopyList,
-                                   class GGS_string & out_outProductFileRef,
-                                   class Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addGroup'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addGroup (class GGS_XcodeProjectDescriptor & ioObject,
-                               const class GGS_string constin_inGroupName,
-                               const class GGS_string constin_inGroupPath,
-                               const class GGS__5B_string_5D_ constin_inChildrenRefs,
-                               class GGS_string & out_outGroupRef,
-                               class Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addGroupWithFiles'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addGroupWithFiles (class GGS_XcodeProjectDescriptor & ioObject,
-                                        const class GGS_string constin_inGroupName,
-                                        const class GGS_string constin_inGroupPath,
-                                        const class GGS_stringset constin_inFileNames,
-                                        class GGS__5B_string_5D_ & io_ioCFileBuildRefs,
-                                        class GGS__5B_string_5D_ & io_ioCppFileBuildRefs,
-                                        class GGS__5B_string_5D_ & io_ioSwiftFileBuildRefs,
-                                        class GGS__5B_string_5D_ & io_ioFrameWorkFileBuildRefs,
-                                        class GGS__5B_string_5D_ & io_ioResourceFileBuildRefs,
-                                        class GGS_string & out_outGroupRef,
-                                        class Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addICNS_file'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addICNS_5F_file (class GGS_XcodeProjectDescriptor & ioObject,
-                                      const class GGS_string constin_inFileName,
-                                      class GGS_string & out_outFileRef,
-                                      class Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor placeGroupAsMainGroup'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_placeGroupAsMainGroup (class GGS_XcodeProjectDescriptor & ioObject,
-                                            const class GGS_string constin_inGroupRef,
-                                            class Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addSettingsToDefaultConfiguration (class GGS_XcodeProjectDescriptor & ioObject,
-                                                        const class GGS__5B_string_5D_ constin_inSettingList,
-                                                        class Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@XcodeProjectDescriptor generateAtPath'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_generateAtPath (const class GGS_XcodeProjectDescriptor inObject,
-                                     const class GGS_string constin_inPath,
-                                     const class GGS_string constin_inCacheFilePath,
-                                     class Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'xcodeProjectGenerationFilewrapper'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_xcodeProjectGenerationFilewrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_1_xcodeProjectGenerationFilewrapper ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'xcodeProjectGenerationFilewrapper xcodeproj'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (class Compiler * inCompiler,
-                                                                            const class GGS_string & in_PROJECT_5F_REF,
-                                                                            const class GGS_string & in_MAIN_5F_GROUP_5F_REF,
-                                                                            const class GGS__5B_XCodeGroup_5D_ & in_GROUPS,
-                                                                            const class GGS__5B_string_5D_ & in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS,
-                                                                            const class GGS__5B_XCodeToolTarget_5D_ & in_TOOL_5F_TARGET_5F_LIST,
-                                                                            const class GGS__5B_XCodeAppTarget_5D_ & in_APP_5F_TARGET_5F_LIST,
-                                                                            const class GGS__5B__32_string_5D_ & in_C_5F_FILE_5F_LIST,
-                                                                            const class GGS__5B__32_string_5D_ & in_CPP_5F_FILE_5F_LIST,
-                                                                            const class GGS__5B__32_string_5D_ & in_SWIFT_5F_FILE_5F_LIST,
-                                                                            const class GGS__5B__32_string_5D_ & in_M_5F_FILE_5F_LIST,
-                                                                            const class GGS__5B__32_string_5D_ & in_MM_5F_FILE_5F_LIST,
-                                                                            const class GGS__5B__32_string_5D_ & in_FRAMEWORK_5F_FILE_5F_LIST,
-                                                                            const class GGS__5B__32_string_5D_ & in_HEADER_5F_FILE_5F_LIST,
-                                                                            const class GGS__5B__32_string_5D_ & in_PLIST_5F_FILE_5F_LIST,
-                                                                            const class GGS__5B__32_string_5D_ & in_TIFF_5F_FILE_5F_LIST,
-                                                                            const class GGS__5B__32_string_5D_ & in_ICNS_5F_FILE_5F_LIST,
-                                                                            const class GGS__5B__32_string_5D_ & in_XIB_5F_FILE_5F_LIST,
-                                                                            const class GGS__5B_BuildFile_5D_ & in_BUILD_5F_FILE_5F_LIST,
-                                                                            const class GGS_string & in_DEFAULT_5F_CONFIGURATION_5F_REF,
-                                                                            const class GGS__5B_string_5D_ & in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST,
-                                                                            const class GGS_string & in_PROJECT_5F_BUILD_5F_DEFAULT_5F_CONFIGURATION_5F_REF,
-                                                                            const class GGS_string & in_APPLICATION_5F_BUNDLE_5F_BASE,
-                                                                            const class GGS_string & in_PROJECT_5F_NAME
-                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @terminalInstructionForGrammarAnalysis_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_terminalInstructionForGrammarAnalysis_2E_weak : public GGS_abstractSyntaxInstructionForGrammarAnalysis_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_terminalInstructionForGrammarAnalysis_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_terminalInstructionForGrammarAnalysis_2E_weak (const class GGS_terminalInstructionForGrammarAnalysis & inSource) ;
-
-  public: GGS_terminalInstructionForGrammarAnalysis_2E_weak & operator = (const class GGS_terminalInstructionForGrammarAnalysis & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_terminalInstructionForGrammarAnalysis_2E_weak init_nil (void) {
-    GGS_terminalInstructionForGrammarAnalysis_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_terminalInstructionForGrammarAnalysis bang_terminalInstructionForGrammarAnalysis_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_terminalInstructionForGrammarAnalysis unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_terminalInstructionForGrammarAnalysis_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_terminalInstructionForGrammarAnalysis_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_terminalInstructionForGrammarAnalysis_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @binarysetPredefinedTypeAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -1810,7 +937,7 @@ class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_templateAnalysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_templateInstructionListForGeneration & arg_ioInstructionList,
+           class GGS__5B_templateInstructionForGeneration_5D_ & arg_ioInstructionList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
@@ -1942,15 +1069,15 @@ class GGS_templateInstructionForeachForGeneration : public GGS_templateInstructi
 
   public: class GGS_string readProperty_mEnumeratorCppName (void) const ;
 
-  public: class GGS_templateInstructionListForGeneration readProperty_mBeforeInstructionList (void) const ;
+  public: class GGS__5B_templateInstructionForGeneration_5D_ readProperty_mBeforeInstructionList (void) const ;
 
-  public: class GGS_templateInstructionListForGeneration readProperty_mDoInstructionList (void) const ;
+  public: class GGS__5B_templateInstructionForGeneration_5D_ readProperty_mDoInstructionList (void) const ;
 
   public: class GGS_string readProperty_mIndexCppName (void) const ;
 
-  public: class GGS_templateInstructionListForGeneration readProperty_mBetweenInstructionList (void) const ;
+  public: class GGS__5B_templateInstructionForGeneration_5D_ readProperty_mBetweenInstructionList (void) const ;
 
-  public: class GGS_templateInstructionListForGeneration readProperty_mAfterInstructionList (void) const ;
+  public: class GGS__5B_templateInstructionForGeneration_5D_ readProperty_mAfterInstructionList (void) const ;
 
 //-- Start of type generic part
 
@@ -1958,11 +1085,11 @@ class GGS_templateInstructionForeachForGeneration : public GGS_templateInstructi
   public: static GGS_templateInstructionForeachForGeneration init_21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
                                                                                                    const class GGS_semanticExpressionForGeneration & inOperand1,
                                                                                                    const class GGS_string & inOperand2,
-                                                                                                   const class GGS_templateInstructionListForGeneration & inOperand3,
-                                                                                                   const class GGS_templateInstructionListForGeneration & inOperand4,
+                                                                                                   const class GGS__5B_templateInstructionForGeneration_5D_ & inOperand3,
+                                                                                                   const class GGS__5B_templateInstructionForGeneration_5D_ & inOperand4,
                                                                                                    const class GGS_string & inOperand5,
-                                                                                                   const class GGS_templateInstructionListForGeneration & inOperand6,
-                                                                                                   const class GGS_templateInstructionListForGeneration & inOperand7,
+                                                                                                   const class GGS__5B_templateInstructionForGeneration_5D_ & inOperand6,
+                                                                                                   const class GGS__5B_templateInstructionForGeneration_5D_ & inOperand7,
                                                                                                    Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
@@ -2001,11 +1128,11 @@ class cPtr_templateInstructionForeachForGeneration : public cPtr_templateInstruc
   public: void templateInstructionForeachForGeneration_init_21__21__21__21__21__21__21__21_ (const class GGS_bool & inOperand0,
                                                                                              const class GGS_semanticExpressionForGeneration & inOperand1,
                                                                                              const class GGS_string & inOperand2,
-                                                                                             const class GGS_templateInstructionListForGeneration & inOperand3,
-                                                                                             const class GGS_templateInstructionListForGeneration & inOperand4,
+                                                                                             const class GGS__5B_templateInstructionForGeneration_5D_ & inOperand3,
+                                                                                             const class GGS__5B_templateInstructionForGeneration_5D_ & inOperand4,
                                                                                              const class GGS_string & inOperand5,
-                                                                                             const class GGS_templateInstructionListForGeneration & inOperand6,
-                                                                                             const class GGS_templateInstructionListForGeneration & inOperand7,
+                                                                                             const class GGS__5B_templateInstructionForGeneration_5D_ & inOperand6,
+                                                                                             const class GGS__5B_templateInstructionForGeneration_5D_ & inOperand7,
                                                                                              Compiler * inCompiler) ;
 
 
@@ -2021,11 +1148,11 @@ class cPtr_templateInstructionForeachForGeneration : public cPtr_templateInstruc
   public: GGS_bool mProperty_mIsAscending ;
   public: GGS_semanticExpressionForGeneration mProperty_mExpression ;
   public: GGS_string mProperty_mEnumeratorCppName ;
-  public: GGS_templateInstructionListForGeneration mProperty_mBeforeInstructionList ;
-  public: GGS_templateInstructionListForGeneration mProperty_mDoInstructionList ;
+  public: GGS__5B_templateInstructionForGeneration_5D_ mProperty_mBeforeInstructionList ;
+  public: GGS__5B_templateInstructionForGeneration_5D_ mProperty_mDoInstructionList ;
   public: GGS_string mProperty_mIndexCppName ;
-  public: GGS_templateInstructionListForGeneration mProperty_mBetweenInstructionList ;
-  public: GGS_templateInstructionListForGeneration mProperty_mAfterInstructionList ;
+  public: GGS__5B_templateInstructionForGeneration_5D_ mProperty_mBetweenInstructionList ;
+  public: GGS__5B_templateInstructionForGeneration_5D_ mProperty_mAfterInstructionList ;
 
 
 //--- Default constructor
@@ -2035,11 +1162,11 @@ class cPtr_templateInstructionForeachForGeneration : public cPtr_templateInstruc
   public: cPtr_templateInstructionForeachForGeneration (const GGS_bool & in_mIsAscending,
                                                         const GGS_semanticExpressionForGeneration & in_mExpression,
                                                         const GGS_string & in_mEnumeratorCppName,
-                                                        const GGS_templateInstructionListForGeneration & in_mBeforeInstructionList,
-                                                        const GGS_templateInstructionListForGeneration & in_mDoInstructionList,
+                                                        const GGS__5B_templateInstructionForGeneration_5D_ & in_mBeforeInstructionList,
+                                                        const GGS__5B_templateInstructionForGeneration_5D_ & in_mDoInstructionList,
                                                         const GGS_string & in_mIndexCppName,
-                                                        const GGS_templateInstructionListForGeneration & in_mBetweenInstructionList,
-                                                        const GGS_templateInstructionListForGeneration & in_mAfterInstructionList,
+                                                        const GGS__5B_templateInstructionForGeneration_5D_ & in_mBetweenInstructionList,
+                                                        const GGS__5B_templateInstructionForGeneration_5D_ & in_mAfterInstructionList,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
@@ -2796,7 +1923,7 @@ class GGS_classFuncExpressionForGeneration : public GGS_semanticExpressionForGen
 
   public: class GGS_string readProperty_classFuncName (void) const ;
 
-  public: class GGS_semanticExpressionListForGeneration readProperty_mEffectiveParameterList (void) const ;
+  public: class GGS__5B_semanticExpressionForGeneration_5D_ readProperty_mEffectiveParameterList (void) const ;
 
   public: class GGS_bool readProperty_mHasCompilerArgument (void) const ;
 
@@ -2809,7 +1936,7 @@ class GGS_classFuncExpressionForGeneration : public GGS_semanticExpressionForGen
                                                                                         const class GGS_location & inOperand1,
                                                                                         const class GGS_unifiedTypeMapEntry & inOperand2,
                                                                                         const class GGS_string & inOperand3,
-                                                                                        const class GGS_semanticExpressionListForGeneration & inOperand4,
+                                                                                        const class GGS__5B_semanticExpressionForGeneration_5D_ & inOperand4,
                                                                                         const class GGS_bool & inOperand5,
                                                                                         const class GGS__5B_unifiedTypeMapEntry_5D_ & inOperand6,
                                                                                         Compiler * inCompiler
@@ -2851,7 +1978,7 @@ class cPtr_classFuncExpressionForGeneration : public cPtr_semanticExpressionForG
                                                                                   const class GGS_location & inOperand1,
                                                                                   const class GGS_unifiedTypeMapEntry & inOperand2,
                                                                                   const class GGS_string & inOperand3,
-                                                                                  const class GGS_semanticExpressionListForGeneration & inOperand4,
+                                                                                  const class GGS__5B_semanticExpressionForGeneration_5D_ & inOperand4,
                                                                                   const class GGS_bool & inOperand5,
                                                                                   const class GGS__5B_unifiedTypeMapEntry_5D_ & inOperand6,
                                                                                   Compiler * inCompiler) ;
@@ -2868,7 +1995,7 @@ class cPtr_classFuncExpressionForGeneration : public cPtr_semanticExpressionForG
 //--- Properties
   public: GGS_unifiedTypeMapEntry mProperty_classFuncType ;
   public: GGS_string mProperty_classFuncName ;
-  public: GGS_semanticExpressionListForGeneration mProperty_mEffectiveParameterList ;
+  public: GGS__5B_semanticExpressionForGeneration_5D_ mProperty_mEffectiveParameterList ;
   public: GGS_bool mProperty_mHasCompilerArgument ;
   public: GGS__5B_unifiedTypeMapEntry_5D_ mProperty_requiredTypes ;
 
@@ -2881,7 +2008,7 @@ class cPtr_classFuncExpressionForGeneration : public cPtr_semanticExpressionForG
                                                  const GGS_location & in_mLocation,
                                                  const GGS_unifiedTypeMapEntry & in_classFuncType,
                                                  const GGS_string & in_classFuncName,
-                                                 const GGS_semanticExpressionListForGeneration & in_mEffectiveParameterList,
+                                                 const GGS__5B_semanticExpressionForGeneration_5D_ & in_mEffectiveParameterList,
                                                  const GGS_bool & in_mHasCompilerArgument,
                                                  const GGS__5B_unifiedTypeMapEntry_5D_ & in_requiredTypes,
                                                  Compiler * inCompiler
@@ -2979,4 +2106,439 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFuncExpressionFor
 class GGS_bool callExtensionGetter_isTrueExpression (const cPtr_semanticExpressionForGeneration * inObject,
                                                      class Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//  GRAMMAR galgas4ProjectGrammar
+//--------------------------------------------------------------------------------------------------
+
+class cGrammar_galgas_34_ProjectGrammar : public cParser_galgas_34_ProjectSyntax {
+//------------------------------------- 'project_component_start_symbol' non terminal
+//--- 'parse' label
+ /*  public: virtual void nt_project_5F_component_5F_start_5F_symbol_parse (Lexique_galgasScanner_34_ * inCompiler) ; */
+
+//--- indexing
+  public: virtual void nt_project_5F_component_5F_start_5F_symbol_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_project_5F_component_5F_start_5F_symbol_ (const GGS_lstring inArgument0,
+                                                                    GGS_galgas_33_ProjectComponentAST & outArgument1,
+                                                                    Lexique_galgasScanner_34_ * inCompiler) ;
+
+//--- Start symbol
+  public: static void _performSourceFileParsing_ (Compiler * inCompiler,
+                                                  GGS_lstring inFileName,
+                                                  const GGS_lstring inArgument0,
+                                                  GGS_galgas_33_ProjectComponentAST & outArgument1
+                                                  COMMA_LOCATION_ARGS) ;
+
+  public: static void _performSourceStringParsing_ (Compiler * inCompiler,
+                                                    GGS_string inSourceString,
+                                                    GGS_string inNameString,
+                                                    const GGS_lstring inArgument0,
+                                                    GGS_galgas_33_ProjectComponentAST & outArgument1
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--- Indexing
+  public: static void performIndexing (Compiler * inCompiler,
+                                       const String & inSourceFilePath) ;
+
+//--- Only lexical analysis
+  public: static void performOnlyLexicalAnalysis (Compiler * inCompiler,
+                                                  const String & inSourceFilePath) ;
+
+//--- Only syntax analysis
+  public: static void performOnlySyntaxAnalysis (Compiler * inCompiler,
+                                                 const String & inSourceFilePath) ;
+
+//------------------------------------- 'project_header' non terminal
+//--- 'parse' label
+ /*  public: virtual void nt_project_5F_header_parse (Lexique_galgasScanner_34_ * inCompiler) ; */
+
+//--- indexing
+  public: virtual void nt_project_5F_header_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+
+//----------- '' label
+  public: virtual void nt_project_5F_header_ (GGS_lbigint & outArgument0,
+                                              GGS_lbigint & outArgument1,
+                                              GGS_lbigint & outArgument2,
+                                              GGS_lstring & outArgument3,
+                                              Lexique_galgasScanner_34_ * inCompiler) ;
+
+  public: virtual int32_t select_galgas_34_ProjectSyntax_0 (Lexique_galgasScanner_34_ *) ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+//
+//Extension mutating proc '@genericExtensionMethodListMap insertKey'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertKey (class GGS_genericExtensionMethodListMap & ioObject,
+                                const class GGS_string constin_inKey,
+                                const class GGS_lstring constin_inValue,
+                                class Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension mutating proc '@descendantClassListMap insertKey'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertKey (class GGS_descendantClassListMap & ioObject,
+                                const class GGS_string constin_inKey,
+                                const class GGS_unifiedTypeMapEntry constin_inType,
+                                class Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @functionPrototypeDeclarationForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_functionPrototypeDeclarationForGeneration_2E_weak : public GGS_semanticDeclarationWithHeaderForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_functionPrototypeDeclarationForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_functionPrototypeDeclarationForGeneration_2E_weak (const class GGS_functionPrototypeDeclarationForGeneration & inSource) ;
+
+  public: GGS_functionPrototypeDeclarationForGeneration_2E_weak & operator = (const class GGS_functionPrototypeDeclarationForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_functionPrototypeDeclarationForGeneration_2E_weak init_nil (void) {
+    GGS_functionPrototypeDeclarationForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_functionPrototypeDeclarationForGeneration bang_functionPrototypeDeclarationForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_functionPrototypeDeclarationForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_functionPrototypeDeclarationForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_functionPrototypeDeclarationForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionPrototypeDeclarationForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @functionImplementationForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_functionImplementationForGeneration_2E_weak : public GGS_functionPrototypeDeclarationForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_functionImplementationForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_functionImplementationForGeneration_2E_weak (const class GGS_functionImplementationForGeneration & inSource) ;
+
+  public: GGS_functionImplementationForGeneration_2E_weak & operator = (const class GGS_functionImplementationForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_functionImplementationForGeneration_2E_weak init_nil (void) {
+    GGS_functionImplementationForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_functionImplementationForGeneration bang_functionImplementationForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_functionImplementationForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_functionImplementationForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_functionImplementationForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionImplementationForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @onceFunctionDeclarationForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_onceFunctionDeclarationForGeneration_2E_weak : public GGS_semanticDeclarationWithHeaderForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_onceFunctionDeclarationForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_onceFunctionDeclarationForGeneration_2E_weak (const class GGS_onceFunctionDeclarationForGeneration & inSource) ;
+
+  public: GGS_onceFunctionDeclarationForGeneration_2E_weak & operator = (const class GGS_onceFunctionDeclarationForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_onceFunctionDeclarationForGeneration_2E_weak init_nil (void) {
+    GGS_onceFunctionDeclarationForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_onceFunctionDeclarationForGeneration bang_onceFunctionDeclarationForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_onceFunctionDeclarationForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_onceFunctionDeclarationForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_onceFunctionDeclarationForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_onceFunctionDeclarationForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @filewrapperDeclarationForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_filewrapperDeclarationForGeneration_2E_weak : public GGS_semanticDeclarationWithHeaderForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_filewrapperDeclarationForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_filewrapperDeclarationForGeneration_2E_weak (const class GGS_filewrapperDeclarationForGeneration & inSource) ;
+
+  public: GGS_filewrapperDeclarationForGeneration_2E_weak & operator = (const class GGS_filewrapperDeclarationForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_filewrapperDeclarationForGeneration_2E_weak init_nil (void) {
+    GGS_filewrapperDeclarationForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_filewrapperDeclarationForGeneration bang_filewrapperDeclarationForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_filewrapperDeclarationForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_filewrapperDeclarationForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_filewrapperDeclarationForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperDeclarationForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @programComponentForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_programComponentForGeneration_2E_weak : public GGS_semanticDeclarationWithHeaderForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_programComponentForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_programComponentForGeneration_2E_weak (const class GGS_programComponentForGeneration & inSource) ;
+
+  public: GGS_programComponentForGeneration_2E_weak & operator = (const class GGS_programComponentForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_programComponentForGeneration_2E_weak init_nil (void) {
+    GGS_programComponentForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_programComponentForGeneration bang_programComponentForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_programComponentForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_programComponentForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_programComponentForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_programComponentForGeneration_2E_weak ;
 

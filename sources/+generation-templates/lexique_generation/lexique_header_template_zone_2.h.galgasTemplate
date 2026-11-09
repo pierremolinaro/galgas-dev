@@ -110,8 +110,8 @@ class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {
 
 //--- indexing keys
 %
-  for (mIndexName mIndexComment) in INDEXING_LIST do (idx)
-    %public: static const uint32_t kIndexing_%![mIndexName identifierRepresentation]% = %![idx string]% ;\n%
+  for (index) in INDEXING_LIST do (idx)
+    %public: static const uint32_t kIndexing_%![index.mIndexName identifierRepresentation]% = %![idx string]% ;\n%
   end
 %
 //--- Parse lexical token

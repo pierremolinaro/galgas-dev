@@ -21,8 +21,8 @@ static void print_tool_help_message (void) {
 
 static const char * kSourceFileExtensions [] = {
 %
-for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in PROGRAM_RULE_LIST do
-  %  %![mSourceFileExtension utf8RepresentationEscapingQuestionMark]%,\n%
+for (prgm) in PROGRAM_RULE_LIST do
+  %  %![prgm.mSourceFileExtension utf8RepresentationEscapingQuestionMark]%,\n%
 end
 %  nullptr
 } ;    
@@ -31,8 +31,8 @@ end
 
 static const char * kSourceFileHelpMessages [] = {
 %
-for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in PROGRAM_RULE_LIST do
-  %  %![mSourceFileHelp utf8RepresentationEscapingQuestionMark]%,\n%
+for (prgm) in PROGRAM_RULE_LIST do
+  %  %![prgm.mSourceFileHelp utf8RepresentationEscapingQuestionMark]%,\n%
 end
 %  nullptr
 } ;    
@@ -82,10 +82,10 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
 %if [PROGRAM_RULE_LIST count] > 0 then
 %        int r = 0 ;
         %
-          for (mSourceFileExtension mSourceFileHelp mSourceFileVariableName mSourceFileVariableNameIsUnused mReferenceGrammar mInstructionList mEndOfInstructionList) in PROGRAM_RULE_LIST 
+          for (prgm) in PROGRAM_RULE_LIST 
           do (IDX)
-            %if (fileExtension == %![mSourceFileExtension utf8RepresentationEscapingQuestionMark]%) {\n%
-            if mReferenceGrammar.string == "" then
+            %if (fileExtension == %![prgm.mSourceFileExtension utf8RepresentationEscapingQuestionMark]%) {\n%
+            if prgm.mReferenceGrammar.string == "" then
             %          switch (executionMode ()) {\n%
             %          case kExecutionModeNormal :\n%
             %            routine_%!["programRule_" + [IDX string] identifierRepresentation]% (sourceFilePath, commonCompiler COMMA_HERE) ;\n%
@@ -109,16 +109,16 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
             %            routine_%!["programRule_" + [IDX string] identifierRepresentation]% (sourceFilePath, commonCompiler COMMA_HERE) ;\n%
             %            break ;\n%
             %          case kExecutionModeLexicalAnalysisOnly :\n%
-            %            cGrammar_%![mReferenceGrammar identifierRepresentation]%::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;\n%
+            %            cGrammar_%![prgm.mReferenceGrammar identifierRepresentation]%::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;\n%
             %            break ;\n%
             %          case kExecutionModeSyntaxAnalysisOnly :\n%
-            %            cGrammar_%![mReferenceGrammar identifierRepresentation]%::performOnlySyntaxAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;\n%
+            %            cGrammar_%![prgm.mReferenceGrammar identifierRepresentation]%::performOnlySyntaxAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;\n%
             %            break ;\n%
             %          case kExecutionModeIndexing :\n%
-            %            cGrammar_%![mReferenceGrammar identifierRepresentation]%::performIndexing (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;\n%
+            %            cGrammar_%![prgm.mReferenceGrammar identifierRepresentation]%::performIndexing (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;\n%
             %            break ;\n%
             %          case kExecutionModeLatex :\n%
-            %            cGrammar_%![mReferenceGrammar identifierRepresentation]%::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;\n%
+            %            cGrammar_%![prgm.mReferenceGrammar identifierRepresentation]%::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;\n%
             %            break ;\n%
             %          }\n%
             end

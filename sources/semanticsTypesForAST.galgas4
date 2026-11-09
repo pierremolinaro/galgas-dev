@@ -23,7 +23,7 @@
 //----------------------------------------------------------------------------------------------
 
 dict @syntaxExtensionsDictionary : @string {
-  public var @galgas3SyntaxExtensionListAST extensionList
+  public var [@galgas3SyntaxExtensionAST] extensionList
 }
 
 //----------------------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ struct @syntaxExtensions {
                     let @syntaxRuleListAST inRuleList) {
     if self.dictionary.contains (inKey) then
       self.dictionary.searchKey (inKey, ?var aList)
-      !?aList.append (inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)
+      aList ++= @(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)
       self.dictionary ++= @(inKey, aList)
     else
       self.dictionary ++= @(inKey, [@(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)])
@@ -48,7 +48,7 @@ struct @syntaxExtensions {
 
   //·····························································································
 
-  func listForKey (?let @string inKey) -> @galgas3SyntaxExtensionListAST {
+  func listForKey (?let @string inKey) -> [@galgas3SyntaxExtensionAST] {
     if self.dictionary.contains (inKey) then
       self.dictionary.searchKey (inKey, ?result)
    else
@@ -284,12 +284,6 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @syntaxInstructionList {
-  public let @syntaxInstructionAST mInstruction
-}
-
-//--------------------------------------------------------------------------------------------------
-
 list @nonTerminalLabelListAST {
   public let @lstring mLabelName
   public let @formalParameterListAST mFormalArgumentList
@@ -309,7 +303,7 @@ list @syntaxRuleLabelListAST {
   public let @lstring mLabelName
   public let @formalParameterListAST mFormalArguments
   public let @location mEndOfArgumentLocation
-  public let @syntaxInstructionList mSyntaxInstructionList
+  public let [@syntaxInstructionAST] mSyntaxInstructionList
   public let @location mEndOfInstructionList
 }
 
@@ -327,7 +321,7 @@ list @syntaxRuleListAST {
 //--------------------------------------------------------------------------------------------------
 
 list @listOfSyntaxInstructionList {
-  public let @syntaxInstructionList mSyntaxInstructionList
+  public let [@syntaxInstructionAST] mSyntaxInstructionList
   public let @location mEndOf_instructions
 }
 
@@ -374,7 +368,7 @@ list @galgas3SyntaxComponentListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @galgas3SyntaxExtensionListAST {
+struct @galgas3SyntaxExtensionAST {
   public let @lstring mSyntaxComponentName
   public let @nonterminalDeclarationListAST mNonterminalDeclarationList
   public let @syntaxRuleListAST mRuleList
@@ -382,14 +376,14 @@ list @galgas3SyntaxExtensionListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @prologueEpilogueList {
+struct @prologueEpilogueAST {
   public let [@semanticInstructionAST] mInstructionList
   public let @location mEndOfInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @programRuleList {
+struct @programRuleAST {
   public let @lstring mSourceFileExtension
   public let @lstring mSourceFileHelp
   public let @lstring mSourceFileVariableName
@@ -407,9 +401,9 @@ struct @galgasDeclarationAST {
   public var @galgas3SyntaxComponentListAST mSyntaxComponentList = @()
   public var @syntaxExtensions mSyntaxExtensions = @()
   public var [@galgasGUIComponentAST] mGUIComponentList = @()
-  public var @prologueEpilogueList mPrologueDeclarationList = @()
-  public var @programRuleList mSourceRuleList = @()
-  public var @prologueEpilogueList mEpilogueDeclarationList =  @()
+  public var [@prologueEpilogueAST] mPrologueDeclarationList = @()
+  public var [@programRuleAST] mSourceRuleList = @()
+  public var [@prologueEpilogueAST] mEpilogueDeclarationList =  @()
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

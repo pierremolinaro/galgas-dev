@@ -52,12 +52,6 @@ abstract class @templateInstructionForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-list @templateInstructionListForGeneration {
-  public let @templateInstructionForGeneration mInstruction
-}
-
-//--------------------------------------------------------------------------------------------------
-
 abstract class @semanticExpressionForGeneration {
   public let @unifiedTypeMapEntry mResultType
   public let @location mLocation
@@ -71,12 +65,6 @@ abstract proc @semanticExpressionForGeneration.generateExpression
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   !@string outCppExpression)
-
-//--------------------------------------------------------------------------------------------------
-
-list @semanticExpressionListForGeneration {
-  public let @semanticExpressionForGeneration mExpression
-}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -410,7 +398,7 @@ abstract class @syntaxInstructionForGeneration : @semanticInstructionForGenerati
 list @filewrapperTemplateListForGeneration {
   public let @string mFilewrapperTemplateName
   public let @formalInputParameterListForGeneration mFilewrapperTemplateFormalInputParameters
-  public let @templateInstructionListForGeneration mTemplateInstructionListForGeneration
+  public let [@templateInstructionForGeneration] mTemplateInstructionListForGeneration
 }
 
 //--------------------------------------------------------------------------------------------------

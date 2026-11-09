@@ -24,7 +24,7 @@
 final class @templateLexiqueComponentAST : @semanticDeclarationAST {
   private let @lstring mLexiqueComponentName
   private let @lstring mLexiqueSuperComponentName
-  private let @templateDelimitorListAST mTemplateDelimitorList
+  private let [@templateDelimitor2AST] mTemplateDelimitorList
   private let [@templateReplacementAST] mTemplateReplacementList
 }
 
@@ -43,7 +43,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     $identifier$ (?let @lstring lexiqueSuperComponentName)
   //--- Parse lexique body
     ${$
-    var @templateDelimitorListAST templateDelimitorList = @()
+    var [@templateDelimitor2AST] templateDelimitorList = @()
     var [@templateReplacementAST] templateReplacementList = @()
     repeat
     while
@@ -63,7 +63,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <template_delimitor> (?!@templateDelimitorListAST ioTemplateDelimitorList ) {
+  rule <template_delimitor> (?![@templateDelimitor2AST] ioTemplateDelimitorList ) {
     $template$
     $"string"$ (?let @lstring startString)
     var nonAtomicSelection = false

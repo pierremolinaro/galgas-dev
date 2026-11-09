@@ -226,7 +226,7 @@ void routine_templateInstructionListAnalysis_3F__26__3F__26__3F__26_ (const clas
                                                                       const class GGS_templateAnalysisContext constinArgument2,
                                                                       class GGS_unifiedTypeMap & ioArgument3,
                                                                       const class GGS__5B_templateInstructionAST_5D_ constinArgument4,
-                                                                      class GGS_templateInstructionListForGeneration & ioArgument5,
+                                                                      class GGS__5B_templateInstructionForGeneration_5D_ & ioArgument5,
                                                                       class Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
@@ -248,7 +248,7 @@ void routine_analyzeConstructorInvocation_3F__26__3F__3F__26__26__3F__3F__3F__3F
                                                                                                        const class GGS_location constinArgument9,
                                                                                                        class GGS_unifiedTypeMapEntry & outArgument10,
                                                                                                        class GGS_unifiedTypeMapEntry & outArgument11,
-                                                                                                       class GGS_semanticExpressionListForGeneration & outArgument12,
+                                                                                                       class GGS__5B_semanticExpressionForGeneration_5D_ & outArgument12,
                                                                                                        class GGS_bool & outArgument13,
                                                                                                        class GGS__5B_unifiedTypeMapEntry_5D_ & outArgument14,
                                                                                                        class Compiler * inCompiler
@@ -271,7 +271,7 @@ void routine_analyzeInitializerInvocation_3F__26__3F__3F__26__26__3F__3F__3F__21
                                                                                            const class GGS_location constinArgument8,
                                                                                            class GGS_unifiedTypeMapEntry & outArgument9,
                                                                                            class GGS_lstring & outArgument10,
-                                                                                           class GGS_semanticExpressionListForGeneration & outArgument11,
+                                                                                           class GGS__5B_semanticExpressionForGeneration_5D_ & outArgument11,
                                                                                            class Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) ;
 

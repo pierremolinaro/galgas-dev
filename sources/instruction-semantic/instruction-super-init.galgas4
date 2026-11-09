@@ -113,7 +113,7 @@ final class @superInitInstructionAST : @semanticInstructionAST {
      //--- Mark super initializer usefull (TODO)
 
      //--- Analyze argument list
-        var actualParameterListForGeneration = @semanticExpressionListForGeneration ()
+        var actualParameterListForGeneration = [@semanticExpressionForGeneration] ()
         for formalArg in formalSignature, actualArg in self.mActualParameterList do
           actualArg.mExpression.analyzeSemanticExpression
             (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
@@ -139,7 +139,7 @@ final class @superInitInstructionAST : @semanticInstructionAST {
             fixit #replaceBy s
             )
           end
-          actualParameterListForGeneration ++= @(expression)
+          actualParameterListForGeneration ++= expression
         end
       //--- Generate instructions
         ioInstructionListForGeneration ++= @(@superInitInstructionForGeneration (
@@ -167,7 +167,7 @@ final class @superInitInstructionAST : @semanticInstructionAST {
 final class @superInitInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @string mSuperInitializerSignature
-  private let @semanticExpressionListForGeneration mActualParameterList
+  private let [@semanticExpressionForGeneration] mActualParameterList
   private let @string mSuperTypeName
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -178,8 +178,8 @@ final class @superInitInstructionForGeneration : @semanticInstructionForGenerati
                                        let @bool _inGenerateSyntaxDirectedTranslationString,
                                        ?!@string ioGeneratedCode) {
     var [@string] getterArgumentCppNameList = @()
-    for entry in self.mActualParameterList do
-      entry.mExpression.generateExpression
+    for expression in self.mActualParameterList do
+      expression.generateExpression
         (!?ioGeneratedCode,
         !?ioInclusionSet,
         !?ioTemporaryVariableIndex,

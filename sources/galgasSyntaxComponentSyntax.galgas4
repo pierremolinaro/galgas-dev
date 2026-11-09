@@ -20,203 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-//syntax galgas3SyntaxComponentSyntax (galgasScanner3) {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//  //          Rules prototypes
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <expression_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                          !@semanticExpressionAST outExpression)
-//
-//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                    !@semanticInstructionAST outInstruction)
-//
-//  rule <formal_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
-//                                    !@formalParameterListAST outFormalParameterList)
-//
-//  rule <actual_parameter_list_ggs34> (?!@galgasDeclarationAST ioDeclarations,
-//                                      !@actualParameterListAST outActualParameterList)
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//  //      S Y N T A X    C O M P O N E N T
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    $syntax$
-//    $identifier$ (?let @lstring syntaxComponentName)
-//  //--- Imported lexique
-//    let @lstring importedLexiqueReference
-//    select
-//      importedLexiqueReference = "".nowhere
-//    or
-//      $($
-//      $identifier$ (?importedLexiqueReference)
-//      $)$
-//    end
-//  //--- Feature 'translate'
-//    let @bool hasTranslateFeature
-//    select
-//      hasTranslateFeature = false
-//    or
-//      $%translate$
-//      hasTranslateFeature = true
-//    end
-//    ${$
-//  //--- Loop on declarations
-//    var nonterminalDeclarationList = @nonterminalDeclarationListAST ()
-//    var ruleList = @syntaxRuleListAST ()
-//    repeat
-//    while
-//      <nonterminal_declaration> (!?ioDeclarations, !?nonterminalDeclarationList)
-//    while
-//      <syntax_rule_declaration> (!?ioDeclarations, !? ruleList)
-//    end
-//  //--- end
-//    $}$
-//    ioDeclarations.mSyntaxComponentList ++= @(
-//      !syntaxComponentName,
-//      !importedLexiqueReference,
-//      !nonterminalDeclarationList,
-//      !ruleList,
-//      !hasTranslateFeature)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//  //      S Y N T A X    E X T E N S I O N
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    $syntax$
-//    $extension$
-//    $identifier$ (?let @lstring syntaxComponentName)
-//    ${$
-//  //--- Loop on declarations
-//    var nonterminalDeclarationList = @nonterminalDeclarationListAST ()
-//    var ruleList = @syntaxRuleListAST ()
-//    repeat
-//    while
-//      <nonterminal_declaration> (!?ioDeclarations, !?nonterminalDeclarationList)
-//    while
-//      <syntax_rule_declaration> (!?ioDeclarations, !?ruleList)
-//    end
-//  //--- end
-//    $}$
-//    !?ioDeclarations.mSyntaxExtensions.insertKey
-//      (!syntaxComponentName.string,
-//      !syntaxComponentName,
-//      !nonterminalDeclarationList,
-//      !ruleList
-//    )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//  //      N O N T E R M I N A L    D E C L A R A T I O N
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <nonterminal_declaration> (?!@galgasDeclarationAST ioDeclarations,
-//                                 ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList ) {
-//    $rule$
-//    $<non_terminal>$ (?let @lstring mNonterminalName) indexing (ruleDefinition)
-//    var @nonTerminalLabelListAST labels = @()
-//    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let firstBranchFormalParameters)
-//    labels ++= @(!@(!"", .here), !firstBranchFormalParameters, !.here)
-//    repeat
-//    while
-//      $label$
-//      $identifier$ (?let @lstring labelName)
-//      <formal_parameter_list_ggs34> (!?ioDeclarations, ?let @formalParameterListAST formalParameters)
-//      labels ++= @(!labelName, !formalParameters, !.here)
-//    end
-//    ioNonterminalDeclarationList ++= @(!mNonterminalName, !labels)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//  //      S Y N T A X    R U L E    D E C L A R A T I O N
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <syntax_rule_label> (?!@galgasDeclarationAST ioDeclarations,
-//                           ?let @lstring inLabelName,
-//                           ?!@syntaxRuleLabelListAST ioLabelList ) {
-//    <formal_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameters)
-//    let endOfArguments = @location.here
-//    ${$
-//    <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList mSyntaxInstructionList)
-//    ioLabelList ++= @(
-//      !inLabelName,
-//      !formalParameters,
-//      !endOfArguments,
-//      !mSyntaxInstructionList,
-//      !@location.here)
-//    $}$
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <syntax_rule_declaration> (?!@galgasDeclarationAST ioDeclarations ,?!@syntaxRuleListAST ioRuleList ) {
-//    $rule$
-//    $<non_terminal>$ (?let @lstring mNonterminalName) indexing (ruleDefinition)
-//    var labelName = @lstring (!"", @location.here)
-//    var mLabelList = @syntaxRuleLabelListAST ()
-//    repeat
-//      <syntax_rule_label> (!?ioDeclarations, !labelName, !?mLabelList)
-//    while
-//      $label$
-//      $identifier$ (?labelName)
-//    end
-//    ioRuleList ++= @(
-//      !mNonterminalName,
-//      !mLabelList)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//  //   S Y N T A X    I N S T R U C T I O N    L I S T
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <syntax_instruction_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                      !@syntaxInstructionList outSyntaxInstructionList ) {
-//    outSyntaxInstructionList = @()
-//    select
-//    or
-//      repeat
-//        select
-//          <semantic_instruction_ggs3> (!?ioDeclarations, ?let @semanticInstructionAST instruction)
-//          outSyntaxInstructionList ++= @(!instruction)
-//        or
-//          <syntax_instruction_ggs3> (!?ioDeclarations, ?let instruction)
-//          outSyntaxInstructionList ++= @(!instruction)
-//        end
-//      while
-//        select
-//          $;$
-//        or
-//          let separator = @string.separatorString
-//          if not separator.containsCharacter (!'\n') then
-//            error (.separator : "instructions on same line should be separated by ';'")
-//          end
-//        end
-//      end
-//    end
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//  //   T E R M I N A L    C H E C K    I N S T R U C T I O N
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <actual_input_parameter_list_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                          !@actualInputParameterListAST outActualInputParameterList)
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <syntax_directed_translation_result> (?!@galgasDeclarationAST ioDeclarations,
-//                                            !@abstractGrammarInstructionSyntaxDirectedTranslationResult result)
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -337,7 +140,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     <formal_parameter_list> (!?ioDeclarations, ?let mFormalParameters)
     let endOfArguments = @location.here
     ${$
-    <syntax_instruction_list> (!?ioDeclarations, ?let @syntaxInstructionList mSyntaxInstructionList)
+    <syntax_instruction_list> (!?ioDeclarations, ?let [@syntaxInstructionAST] mSyntaxInstructionList)
     ioLabelList ++= @(
       inLabelName,
       mFormalParameters,
@@ -371,17 +174,17 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <syntax_instruction_list> (?!@galgasDeclarationAST ioDeclarations,
-                                 !@syntaxInstructionList outSyntaxInstructionList ) {
+                                 ![@syntaxInstructionAST] outSyntaxInstructionList ) {
     outSyntaxInstructionList = @()
     select
     or
       repeat
         select
           <semantic_instruction> (!?ioDeclarations, ?let @semanticInstructionAST instruction)
-          outSyntaxInstructionList ++= @(instruction)
+          outSyntaxInstructionList ++= instruction
         or
           <syntax_instruction> (!?ioDeclarations, ?let instruction)
-          outSyntaxInstructionList ++= @(instruction)
+          outSyntaxInstructionList ++= instruction
         end
       while
         select

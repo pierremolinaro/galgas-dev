@@ -129,7 +129,7 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
                                 ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                 let @templateAnalysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-                                ?!@templateInstructionListForGeneration ioInstructionList ) {
+                                ?![@templateInstructionForGeneration] ioInstructionList ) {
 //---
   self.mSwitchExpression.templateExpressionAnalysis (
     inUsefulnessCallerEntityName,
@@ -191,7 +191,7 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
           + switchExpression.mResultType.definition.typeName.string + "' enumeration type")
         end
       end
-      var @templateInstructionListForGeneration templateInstructionList = @()
+      var [@templateInstructionForGeneration] templateInstructionList = @()
       templateInstructionListAnalysis (
         inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
@@ -218,11 +218,11 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
       : "the switch instruction should name all enumeration constants; missing constants are:" + s)
     end
   //---
-    ioInstructionList ++= @(@templateInstructionSwitchForGeneration (
+    ioInstructionList ++= @templateInstructionSwitchForGeneration (
       switchExpression.mResultType,
       switchExpression,
       templateInstructionSwitchBranchList
-    ))
+    )
   else
     error (switchExpression.mLocation : "'switch' expression type should be an enumeration (it is a "
        + switchExpression.mResultType.definition.typeKind + " type)")
@@ -237,7 +237,7 @@ struct @templateInstructionSwitchBranchForGeneration {
   public let [@lstring] mConstantList
   public let [@extractedAssociatedValueForGeneration] mExtractedAssociatedValuesForGeneration
   public let @uint mEndOfBranchLocationIndex
-  public let @templateInstructionListForGeneration mInstructionList
+  public let [@templateInstructionForGeneration] mInstructionList
 }
 
 //································································································

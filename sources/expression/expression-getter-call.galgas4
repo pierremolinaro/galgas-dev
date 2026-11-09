@@ -74,7 +74,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
         + aGetter.mArgumentTypeList.count + " parameter(s), while this call has "
         + self.mActualArgumentList.count + " parameter(s)" spoil outExpression)
       else
-        var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
+        var [@semanticExpressionForGeneration] constructorEffectiveParameterList = @()
         for actual in self.mActualArgumentList, formal in aGetter.mArgumentTypeList do
           actual.mExpression.analyzeSemanticExpression (
             !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
@@ -90,7 +90,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
             error (actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
           end
           checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
-          constructorEffectiveParameterList ++= @(exp)
+          constructorEffectiveParameterList ++= exp
         end
         outExpression = @getterCallExpressionForGeneration (
           aGetter.mReturnedType,
@@ -162,7 +162,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           + getterFormalArgumentTypeList.count.string + " parameter(s), while this call has "
           + self.mActualArgumentList.count.string + " parameter(s)" spoil outExpression)
         else
-          var @semanticExpressionListForGeneration constructorEffectiveParameterList = @()
+          var [@semanticExpressionForGeneration] constructorEffectiveParameterList = @()
           for actual in self.mActualArgumentList, formal in getterFormalArgumentTypeList do
             actual.mExpression.analyzeSemanticExpression (
               !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
@@ -178,7 +178,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
               error (actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
             end
             checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
-            constructorEffectiveParameterList ++= @(exp)
+            constructorEffectiveParameterList ++= exp
           end
           if obsoletedByGetter != "" then
             error (self.mGetterName : "obsolete func" fixit #replaceBy obsoletedByGetter)
@@ -220,7 +220,7 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
   public let @semanticExpressionForGeneration mReceiverExpression
   public let [@string] mFieldList
   public let @string mGetterName
-  public let @semanticExpressionListForGeneration mActualArgumentList
+  public let [@semanticExpressionForGeneration] mActualArgumentList
   public let @bool mHasCompilerArgument
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

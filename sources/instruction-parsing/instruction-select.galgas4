@@ -28,38 +28,6 @@ final class @selectInstruction : @syntaxInstructionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3SyntaxComponentSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                 !@syntaxInstructionAST outInstruction ) {
-//    $select$
-//    let mSelectInstructionLocation = @location.here
-//    var mSelectBranchList = @listOfSyntaxInstructionList ()
-//    <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList il)
-//    mSelectBranchList ++= @(!il, !@location.here)
-//    repeat
-//      $or$
-//      <syntax_instruction_list_ggs3> (!?ioDeclarations, ?let @syntaxInstructionList instructionList)
-//      mSelectBranchList ++= @(!instructionList, !@location.here)
-//    while
-//    end
-//    $end$
-//    let endOf_select_instruction = @location.here
-//    outInstruction = @selectInstruction (
-//      !mSelectInstructionLocation,
-//      mSelectBranchList,
-//      endOf_select_instruction
-//    )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4SyntaxComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -69,11 +37,11 @@ syntax extension galgas4SyntaxComponentSyntax {
     $select$
     let mSelectInstructionLocation = @location.here
     var mSelectBranchList = @listOfSyntaxInstructionList ()
-    <syntax_instruction_list> (!?ioDeclarations, ?let @syntaxInstructionList il)
+    <syntax_instruction_list> (!?ioDeclarations, ?let [@syntaxInstructionAST] il)
     mSelectBranchList ++= @(il, @location.here)
     repeat
       $or$
-      <syntax_instruction_list> (!?ioDeclarations, ?let @syntaxInstructionList instructionList)
+      <syntax_instruction_list> (!?ioDeclarations, ?let [@syntaxInstructionAST] instructionList)
       mSelectBranchList ++= @(instructionList, @location.here)
     while
     end

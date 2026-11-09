@@ -184,7 +184,7 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @templateAnalysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  ?!@templateInstructionListForGeneration ioInstructionList
+  ?![@templateInstructionForGeneration] ioInstructionList
 ) {
 //--- Foreach expression
   self.mExpression.templateExpressionAnalysis
@@ -200,7 +200,7 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
     error (expression.mLocation : "expression of '@" + expression.mResultType.definition.typeName.string + "' cannot be enumerated")
   end
 //--- Before instructions
-  var beforeInstructionList = @templateInstructionListForGeneration ()
+  var beforeInstructionList = [@templateInstructionForGeneration] ()
   templateInstructionListAnalysis (
     inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
@@ -237,7 +237,7 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
     inAnalysisContext.mSemanticContext,
     inAnalysisContext.mPredefinedTypes,
     doVariableMap)
-  var doInstructionList = @templateInstructionListForGeneration ()
+  var doInstructionList = [@templateInstructionForGeneration] ()
   templateInstructionListAnalysis (
     inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
@@ -247,7 +247,7 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
     !?doInstructionList
   )
 //--- Between instructions
-  var betweenInstructionList = @templateInstructionListForGeneration ()
+  var betweenInstructionList = [@templateInstructionForGeneration] ()
   templateInstructionListAnalysis (
     inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
@@ -257,7 +257,7 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
     !?betweenInstructionList
   )
 //--- After instructions
-  var afterInstructionList = @templateInstructionListForGeneration ()
+  var afterInstructionList = [@templateInstructionForGeneration] ()
   templateInstructionListAnalysis (
     inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
@@ -267,7 +267,7 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
     !?afterInstructionList
   )
 //---
-  ioInstructionList ++= @(@templateInstructionForeachForGeneration (
+  ioInstructionList ++= @templateInstructionForeachForGeneration (
     self.mIsAscending,
     expression,
     enumeratorCppName,
@@ -276,7 +276,7 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
     cppIndexVarName,
     betweenInstructionList,
     afterInstructionList
-  ))
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -287,11 +287,11 @@ final class @templateInstructionForeachForGeneration : @templateInstructionForGe
   private let @bool mIsAscending
   private let @semanticExpressionForGeneration mExpression
   private let @string mEnumeratorCppName
-  private let @templateInstructionListForGeneration mBeforeInstructionList
-  private let @templateInstructionListForGeneration mDoInstructionList
+  private let [@templateInstructionForGeneration] mBeforeInstructionList
+  private let [@templateInstructionForGeneration] mDoInstructionList
   private let @string mIndexCppName
-  private let @templateInstructionListForGeneration mBetweenInstructionList
-  private let @templateInstructionListForGeneration mAfterInstructionList
+  private let [@templateInstructionForGeneration] mBetweenInstructionList
+  private let [@templateInstructionForGeneration] mAfterInstructionList
 }
 
 //································································································

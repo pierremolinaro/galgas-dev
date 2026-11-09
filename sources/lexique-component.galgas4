@@ -24,15 +24,15 @@
 final class @lexiqueComponentAST : @semanticDeclarationAST {
   private let @lstring mLexiqueComponentName
   private let @bool mIsTemplate
-  private let @templateDelimitorListAST mTemplateDelimitorListAST
+  private let [@templateDelimitor2AST] mTemplateDelimitorListAST
   private let [@templateReplacementAST] mTemplateReplacementListAST
-  private let @lexicalAttributeListAST mLexicalAttributeListAST
+  private let [@lexicalAttributeAST] mLexicalAttributeListAST
   private let @lexicalStyleListAST mLexicalStyleListAST
   private let @terminalDeclarationListAST mTerminalDeclarationListAST
-  private let @lexicalMessageDeclarationListAST mLexicalMessageDeclarationListAST
+  private let [@lexicalMessageDeclarationAST] mLexicalMessageDeclarationListAST
   private let @lexicalListDeclarationListAST mLexicalListDeclarationListAST
   private let [@abstractLexicalRuleAST] mLexicalRuleListAST
-  private let @indexingListAST mIndexingListAST
+  private let [@indexingAST] mIndexingListAST
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -47,15 +47,15 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     $identifier$ (?let @lstring lexiqueComponentName)
     ${$
   //--- Parse lexique body
-    var @templateDelimitorListAST templateDelimitorList = @()
+    var [@templateDelimitor2AST] templateDelimitorList = @()
     var [@templateReplacementAST] templateReplacementList = @()
-    var @lexicalAttributeListAST lexicalAttributeList = @()
+    var [@lexicalAttributeAST] lexicalAttributeList = @()
     var @lexicalStyleListAST lexicalStyleList = @()
     var @terminalDeclarationListAST terminalDeclarationList = @()
-    var @lexicalMessageDeclarationListAST lexicalMessageDeclarationList = @()
+    var [@lexicalMessageDeclarationAST] lexicalMessageDeclarationList = @()
     var @lexicalListDeclarationListAST lexicalListDeclarationList = @()
     var [@abstractLexicalRuleAST] lexicalRuleList = @()
-    var @indexingListAST indexingListAST = @()
+    var [@indexingAST] indexingListAST = @()
     repeat
     while
       <template_delimitor> (!? templateDelimitorList)
@@ -97,7 +97,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_indexing_declaration> (?!@indexingListAST ioIndexingListAST ) {
+  rule <lexical_indexing_declaration> (?![@indexingAST] ioIndexingListAST ) {
     $indexing$
     $identifier$ (?let @lstring indexName) indexing (indexingNameDefinition)
     $:$
@@ -108,7 +108,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <lexical_message_declaration>
-    (?!@lexicalMessageDeclarationListAST ioLexicalMessageDeclarationList ) {
+    (?![@lexicalMessageDeclarationAST] ioLexicalMessageDeclarationList ) {
     $#errorMessage$
     $identifier$ (?let @lstring messageName)
     $:$
@@ -326,7 +326,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_attribute_declaration> (?!@lexicalAttributeListAST ioLexicalAttributeList ) {
+  rule <lexical_attribute_declaration> (?![@lexicalAttributeAST] ioLexicalAttributeList ) {
     $@type$ (?let @lstring typeName)
     $identifier$ (?let @lstring name)
     ioLexicalAttributeList ++= @(typeName, name)
@@ -670,8 +670,8 @@ filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generat
     ?@string LEXIQUE_IDENTIFIER,
     ?@lexicalListDeclarationListAST DELIMITOR_LIST_LIST,
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT,
-    ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST,
-    ?@indexingListAST INDEXING_LIST
+    ?[@templateDelimitor2AST] TEMPLATE_DELIMITOR_LIST,
+    ?[@indexingAST] INDEXING_LIST
   )
 
   template implementationZone2Galgas3 : "lexique_implementation-galgas3.cpp.galgasTemplate" (
@@ -684,7 +684,7 @@ filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generat
     ?@stringset STRINGS_IN_EXPLICIT_RULES,
     ?[@abstractLexicalRuleAST] LEXICAL_RULE_LIST,
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT,
-    ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST,
+    ?[@templateDelimitor2AST] TEMPLATE_DELIMITOR_LIST,
     ?@string LEXIQUE_COMPONENT_NAME,
     ?[@templateReplacementAST] TEMPLATE_REPLACEMENT_LIST,
     ?@lexicalStyleListAST LEXICAL_STYLE_LIST
@@ -700,9 +700,9 @@ filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generat
     ?[@abstractLexicalRuleAST] LEXICAL_RULE_LIST,
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT,
     ?[@templateReplacementAST] TEMPLATE_REPLACEMENT_LIST,
-    ?@indexingListAST INDEXING_LIST,
+    ?[@indexingAST] INDEXING_LIST,
     ?@lexicalStyleListAST LEXICAL_STYLE_LIST,
-    ?@templateDelimitorListAST TEMPLATE_DELIMITOR_LIST
+    ?[@templateDelimitor2AST] TEMPLATE_DELIMITOR_LIST
   )
 }
 

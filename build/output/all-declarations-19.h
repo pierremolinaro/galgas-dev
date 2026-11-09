@@ -44,7 +44,7 @@ void routine_generateWrapperContents_3F__3F__3F__3F__3F__26_ (const class GGS_st
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (const class GGS_templateInstructionListForGeneration constinArgument0,
+void routine_templateCodeGenerationForListInstruction_3F__26__26__26__26__26_ (const class GGS__5B_templateInstructionForGeneration_5D_ constinArgument0,
                                                                                class GGS_string & ioArgument1,
                                                                                class GGS_stringset & ioArgument2,
                                                                                class GGS_uint & ioArgument3,
@@ -898,9 +898,9 @@ void routine_compileAllGuiComponentFromASTGalgas_33__3F__3F__21_ (const class GG
 
 void routine_compileProgramComponentGalgas_33__26__26__3F__3F__3F__3F__26__3F__21_ (class GGS__5B_lstring_5D_ & ioArgument0,
                                                                                     class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                    const class GGS_prologueEpilogueList constinArgument2,
-                                                                                    const class GGS_programRuleList constinArgument3,
-                                                                                    const class GGS_prologueEpilogueList constinArgument4,
+                                                                                    const class GGS__5B_prologueEpilogueAST_5D_ constinArgument2,
+                                                                                    const class GGS__5B_programRuleAST_5D_ constinArgument3,
+                                                                                    const class GGS__5B_prologueEpilogueAST_5D_ constinArgument4,
                                                                                     const class GGS_semanticContext constinArgument5,
                                                                                     class GGS_unifiedTypeMap & ioArgument6,
                                                                                     const class GGS_string constinArgument7,
@@ -943,7 +943,7 @@ void routine_projectGeneration_3F__3F_absoluteBuildDir_3F_buildDirName_3F__3F__3
                                                                                                                 const class GGS_optionComponentMapForGeneration constinArgument3,
                                                                                                                 const class GGS__5B_string_5D_ constinArgument4,
                                                                                                                 const class GGS__5B_semanticDeclarationForGeneration_5D_ constinArgument5,
-                                                                                                                const class GGS_programRuleList constinArgument6,
+                                                                                                                const class GGS__5B_programRuleAST_5D_ constinArgument6,
                                                                                                                 const class GGS_galgas_33_ProjectComponentAST constinArgument7,
                                                                                                                 const class GGS_string constinArgument8,
                                                                                                                 const class GGS_string constinArgument9,
