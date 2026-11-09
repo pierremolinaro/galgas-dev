@@ -107,7 +107,7 @@ map @lexicalFunctionMap {
 
 //--------------------------------------------------------------------------------------------------
 
-list @templateDelimitorList {
+struct @templateDelimitorAST {
   public let @lstring mStartString
   public let @lstring mEndString
   public let @bool mPreservesStartDelimiter
@@ -144,7 +144,7 @@ struct @lexiqueAnalysisContext {
   public var @lexicalAttributeMap mLexicalAttributeMap
   public var @lexicalExplicitTokenListMapMap mLexicalTokenListMap
   public var @stringset mUnicodeStringToGenerate
-  public var @templateDelimitorList mTemplateDelimitorList
+  public var [@templateDelimitorAST] mTemplateDelimitorList
   public var @styleMap mStyleMap
   public let @stringset mUnicodeTestFunctions
 }

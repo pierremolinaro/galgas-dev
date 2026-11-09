@@ -47,10 +47,10 @@ GGS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplementat
                                                                                      const class GGS_string & in_SUPER_5F_LEXIQUE_5F_IDENTIFIER,
                                                                                      const class GGS_lexicalExplicitTokenListMapMap & in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP,
                                                                                      const class GGS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
-                                                                                     const class GGS_templateDelimitorList & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                     const class GGS__5B_templateDelimitorAST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
                                                                                      const class GGS__5B_terminalAST_5D_ & in_TERMINAL_5F_LIST,
                                                                                      const class GGS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
-                                                                                     const class GGS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
+                                                                                     const class GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -64,8 +64,8 @@ GGS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftuiImpleme
                                                                                              const class GGS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
                                                                                              const class GGS_string & in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME,
                                                                                              const class GGS__5B_terminalAST_5D_ & in_TERMINAL_5F_LIST,
-                                                                                             const class GGS_templateDelimitorList & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
-                                                                                             const class GGS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
+                                                                                             const class GGS__5B_templateDelimitorAST_5D_ & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                             const class GGS__5B_templateReplacementAST_5D_ & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
                                                                                              const class GGS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST
                                                                                              COMMA_LOCATION_ARGS) ;
 

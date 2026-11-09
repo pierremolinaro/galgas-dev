@@ -42,16 +42,16 @@ mMatchedTemplateDelimiterIndex (-1) {
 //                           Template Delimiters
 //--------------------------------------------------------------------------------------------------
 
-% for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST
+% for (delimitor) in TEMPLATE_DELIMITOR_LIST
     before %static const TemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST count] string]%] = {\n%
-    do %  TemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mStartString identifierRepresentation]%, %![[mStartString count] string]%, %
-      if [mEndString count] == 0 then
+    do %  TemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![delimitor.mStartString identifierRepresentation]%, %![[delimitor.mStartString count] string]%, %
+      if [delimitor.mEndString count] == 0 then
         %{}, 0,%
       else
-        %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mEndString identifierRepresentation]%, %![[mEndString count] string]%,%
+        %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![delimitor.mEndString identifierRepresentation]%, %![[delimitor.mEndString count] string]%,%
       end
       % nullptr, %
-      ![not mPreservesStartDelimiter cString]
+      ![not delimitor.mPreservesStartDelimiter cString]
       %)%
     between %,\n%
     after %\n} ;\n%
@@ -61,15 +61,15 @@ mMatchedTemplateDelimiterIndex (-1) {
 //                           Template Replacements
 //--------------------------------------------------------------------------------------------------
 
-% for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST
+% for (rep) in TEMPLATE_REPLACEMENT_LIST
     before %static const TemplateDelimiter %!LEXIQUE_IDENTIFIER%_kTemplateReplacementArray [%![[TEMPLATE_REPLACEMENT_LIST count] string]%] = {\n%
     do
-      %  TemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mMatchString identifierRepresentation]%, %![[mMatchString count] string]%, %
-      %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![mReplacementString identifierRepresentation]%, %![[mReplacementString count] string]%, %
-      if [mReplacementFunction count] == 0 then
+      %  TemplateDelimiter (kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![rep.mMatchString identifierRepresentation]%, %![[rep.mMatchString count] string]%, %
+      %kUnicodeString_%!LEXIQUE_IDENTIFIER%_%![rep.mReplacementString identifierRepresentation]%, %![[rep.mReplacementString count] string]%, %
+      if [rep.mReplacementFunction count] == 0 then
         %nullptr%
       else
-        %scanner_routine_%!mReplacementFunction.string
+        %scanner_routine_%!rep.mReplacementFunction.string
       end
       %, true)%
     between %,\n%

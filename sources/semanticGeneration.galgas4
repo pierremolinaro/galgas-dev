@@ -107,7 +107,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
   public let @string mSyntaxComponentName
   public let @string mLexiqueName
   public let @nonterminalMap mNonterminalDeclarationMap
-  public let @ruleDeclarationList mRuleDeclarationList
+  public let [@ruleDeclarationAST] mRuleDeclarationList
   public let @uint mSelectMethodCount
   public let @bool mHasIndexing
   public let @bool mHasTranslateFeature
@@ -195,7 +195,8 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
       end
     //--- Generate indexing code
       if self.mHasIndexing then
-        ruleDeclaration.mLabelImplementationList.first (?*, ?*, ?*, ?*, ?let instructionList)
+        let r = ruleDeclaration.mLabelImplementationList.first
+        let instructionList = r.mInstructionListForGeneration
         let @string ruleName = "cParser_" + self.mSyntaxComponentName.identifierRepresentation
         + "::rule_" + self.mSyntaxComponentName.identifierRepresentation + "_"
         + ruleDeclaration.mNonterminalName.identifierRepresentation

@@ -7417,26 +7417,26 @@ void routine_compileBeforeClauseGalgas_33__26__26__3F__26__3F__26_ (GGS__5B_lstr
                                                                     const GGS_analysisContext constinArgument_inAnalysisContext,
                                                                     GGS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                     const GGS_prologueEpilogueList constinArgument_inPrologueList,
-                                                                    GGS_programListForGeneration & ioArgument_ioDecoratedDeclarationListForGeneration,
+                                                                    GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument_ioDecoratedDeclarationListForGeneration,
                                                                     Compiler * inCompiler
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lstring var_usefulnessName_2734 = function_beforeNameForUsefulEntitiesGraph (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 61)), inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 61)) ;
+  GGS_lstring var_usefulnessName_2546 = function_beforeNameForUsefulEntitiesGraph (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 55)), inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 55)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_usefulnessName_2734, var_usefulnessName_2734, inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 62)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_usefulnessName_2546, var_usefulnessName_2546, inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 56)) ;
   }
-  ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (var_usefulnessName_2734  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 63)) ;
-  GGS_semanticInstructionListForGeneration var_semanticInstructionListForGeneration_2943 = GGS_semanticInstructionListForGeneration::init (inCompiler COMMA_HERE) ;
-  UpEnumerator_prologueEpilogueList enumerator_3041 (constinArgument_inPrologueList) ;
-  while (enumerator_3041.hasCurrentObject ()) {
-    GGS_semanticInstructionListForGeneration var_blockSemanticInstructionListForGeneration_3370 ;
+  ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (var_usefulnessName_2546  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 57)) ;
+  GGS_semanticInstructionListForGeneration var_semanticInstructionListForGeneration_2755 = GGS_semanticInstructionListForGeneration::init (inCompiler COMMA_HERE) ;
+  UpEnumerator_prologueEpilogueList enumerator_2853 (constinArgument_inPrologueList) ;
+  while (enumerator_2853.hasCurrentObject ()) {
+    GGS_semanticInstructionListForGeneration var_blockSemanticInstructionListForGeneration_3182 ;
     {
-    GGS_formalParameterListForGeneration joker_3419 ; // Joker input parameter
-    routine_analyzeRoutineBody_3F__26__3F__26__3F__3F__3F__21__21_ (var_usefulnessName_2734, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, GGS_formalParameterListAST::init (inCompiler COMMA_HERE), enumerator_3041.current (HERE).readProperty_mInstructionList (), enumerator_3041.current (HERE).readProperty_mEndOfInstructionList (), var_blockSemanticInstructionListForGeneration_3370, joker_3419, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 67)) ;
+    GGS_formalParameterListForGeneration joker_3231 ; // Joker input parameter
+    routine_analyzeRoutineBody_3F__26__3F__26__3F__3F__3F__21__21_ (var_usefulnessName_2546, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, GGS_formalParameterListAST::init (inCompiler COMMA_HERE), enumerator_2853.current (HERE).readProperty_mInstructionList (), enumerator_2853.current (HERE).readProperty_mEndOfInstructionList (), var_blockSemanticInstructionListForGeneration_3182, joker_3231, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 61)) ;
     }
-    var_semanticInstructionListForGeneration_2943.plusPlusAssignOperation (GGS_semanticInstructionListForGeneration_2E_element::init_21_ (GGS_semanticBlockInstructionForGeneration::init_21_ (var_blockSemanticInstructionListForGeneration_3370, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 78)) ;
-    enumerator_3041.gotoNextObject () ;
+    var_semanticInstructionListForGeneration_2755.plusPlusAssignOperation (GGS_semanticInstructionListForGeneration_2E_element::init_21_ (GGS_semanticBlockInstructionForGeneration::init_21_ (var_blockSemanticInstructionListForGeneration_3182, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 72)) ;
+    enumerator_2853.gotoNextObject () ;
   }
-  ioArgument_ioDecoratedDeclarationListForGeneration.plusPlusAssignOperation (GGS_programListForGeneration_2E_element::init_21_ (GGS_routineImplementationForGeneration::init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21_routineMangledName_21__21__21_ (GGS_string ("routine-implementation"), GGS_bool (false), GGS_string ("proc-before"), GGS_string ("before"), GGS_formalParameterListForGeneration::init (inCompiler COMMA_HERE), GGS_bool (true), var_semanticInstructionListForGeneration_2943, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 83)) ;
+  ioArgument_ioDecoratedDeclarationListForGeneration.plusPlusAssignOperation (GGS_routineImplementationForGeneration::init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21_routineMangledName_21__21__21_ (GGS_string ("routine-implementation"), GGS_bool (false), GGS_string ("proc-before"), GGS_string ("before"), GGS_formalParameterListForGeneration::init (inCompiler COMMA_HERE), GGS_bool (true), var_semanticInstructionListForGeneration_2755, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 77)) ;
 }
 
 
@@ -7451,28 +7451,28 @@ void routine_compileProgramRulesGalgas_33__26__26__3F__26__3F__26_ (GGS__5B_lstr
                                                                     const GGS_analysisContext constinArgument_inAnalysisContext,
                                                                     GGS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                     const GGS_programRuleList constinArgument_inProgramRules,
-                                                                    GGS_programListForGeneration & ioArgument_ioDecoratedDeclarationListForGeneration,
+                                                                    GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument_ioDecoratedDeclarationListForGeneration,
                                                                     Compiler * inCompiler
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_uint var_ruleIndex_4587 = GGS_uint (uint32_t (0U)) ;
-  UpEnumerator_programRuleList enumerator_4622 (constinArgument_inProgramRules) ;
-  while (enumerator_4622.hasCurrentObject ()) {
-    GGS_lstring var_usefulnessName_4648 = function_rootRuleNameForUsefulEntitiesGraph (enumerator_4622.current (HERE).readProperty_mSourceFileExtension (), inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 111)) ;
+  GGS_uint var_ruleIndex_4385 = GGS_uint (uint32_t (0U)) ;
+  UpEnumerator_programRuleList enumerator_4420 (constinArgument_inProgramRules) ;
+  while (enumerator_4420.hasCurrentObject ()) {
+    GGS_lstring var_usefulnessName_4446 = function_rootRuleNameForUsefulEntitiesGraph (enumerator_4420.current (HERE).readProperty_mSourceFileExtension (), inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 104)) ;
     {
-    ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_usefulnessName_4648, var_usefulnessName_4648, inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 112)) ;
+    ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_usefulnessName_4446, var_usefulnessName_4446, inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 105)) ;
     }
-    ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (var_usefulnessName_4648  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 113)) ;
-    GGS_formalParameterListAST temp_0 = GGS_formalParameterListAST::init (inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 115)) ;
-    temp_0.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("programComponentCompilation.galgas4", 115)), GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("programComponentCompilation.galgas4", 115)), GGS_lstring::init_21__21_ (GGS_string ("lstring"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 115)), inCompiler COMMA_HERE), enumerator_4622.current (HERE).readProperty_mSourceFileVariableName (), enumerator_4622.current (HERE).readProperty_mSourceFileVariableNameIsUnused (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 115)) ;
-    GGS_formalParameterListAST var_argumentList_4884 = temp_0 ;
-    GGS_semanticInstructionListForGeneration var_semanticInstructionListForGeneration_5289 ;
-    GGS_formalParameterListForGeneration var_routineSignature_5338 ;
+    ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (var_usefulnessName_4446  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 106)) ;
+    GGS_formalParameterListAST temp_0 = GGS_formalParameterListAST::init (inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 108)) ;
+    temp_0.plusPlusAssignOperation (GGS_formalParameterListAST_2E_element::init_21__21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("programComponentCompilation.galgas4", 108)), GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("programComponentCompilation.galgas4", 108)), GGS_lstring::init_21__21_ (GGS_string ("lstring"), GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 108)), inCompiler COMMA_HERE), enumerator_4420.current (HERE).readProperty_mSourceFileVariableName (), enumerator_4420.current (HERE).readProperty_mSourceFileVariableNameIsUnused (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 108)) ;
+    GGS_formalParameterListAST var_argumentList_4682 = temp_0 ;
+    GGS_semanticInstructionListForGeneration var_semanticInstructionListForGeneration_5087 ;
+    GGS_formalParameterListForGeneration var_routineSignature_5136 ;
     {
-    routine_analyzeRoutineBody_3F__26__3F__26__3F__3F__3F__21__21_ (var_usefulnessName_4648, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_argumentList_4884, enumerator_4622.current (HERE).readProperty_mInstructionList (), enumerator_4622.current (HERE).readProperty_mEndOfInstructionList (), var_semanticInstructionListForGeneration_5289, var_routineSignature_5338, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 117)) ;
+    routine_analyzeRoutineBody_3F__26__3F__26__3F__3F__3F__21__21_ (var_usefulnessName_4446, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, var_argumentList_4682, enumerator_4420.current (HERE).readProperty_mInstructionList (), enumerator_4420.current (HERE).readProperty_mEndOfInstructionList (), var_semanticInstructionListForGeneration_5087, var_routineSignature_5136, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 110)) ;
     }
-    ioArgument_ioDecoratedDeclarationListForGeneration.plusPlusAssignOperation (GGS_programListForGeneration_2E_element::init_21_ (GGS_routineImplementationForGeneration::init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21_routineMangledName_21__21__21_ (GGS_string ("routine-implementation"), GGS_bool (false), GGS_string ("proc-programrule"), GGS_string ("programRule_").add_operation (var_ruleIndex_4587.getter_string (SOURCE_FILE ("programComponentCompilation.galgas4", 132)), inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 132)), var_routineSignature_5338, GGS_bool (true), var_semanticInstructionListForGeneration_5289, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 128)) ;
-    var_ruleIndex_4587.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 137)) ;
-    enumerator_4622.gotoNextObject () ;
+    ioArgument_ioDecoratedDeclarationListForGeneration.plusPlusAssignOperation (GGS_routineImplementationForGeneration::init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21_routineMangledName_21__21__21_ (GGS_string ("routine-implementation"), GGS_bool (false), GGS_string ("proc-programrule"), GGS_string ("programRule_").add_operation (var_ruleIndex_4385.getter_string (SOURCE_FILE ("programComponentCompilation.galgas4", 125)), inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 125)), var_routineSignature_5136, GGS_bool (true), var_semanticInstructionListForGeneration_5087, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 121)) ;
+    var_ruleIndex_4385.plusAssignOperation(GGS_uint (uint32_t (1U)), inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 130)) ;
+    enumerator_4420.gotoNextObject () ;
   }
 }
 
@@ -7488,26 +7488,26 @@ void routine_compileAfterClauseGalgas_33__26__26__3F__26__3F__26_ (GGS__5B_lstri
                                                                    const GGS_analysisContext constinArgument_inAnalysisContext,
                                                                    GGS_unifiedTypeMap & ioArgument_ioTypeMap,
                                                                    const GGS_prologueEpilogueList constinArgument_inEpilogueList,
-                                                                   GGS_programListForGeneration & ioArgument_ioDecoratedDeclarationListForGeneration,
+                                                                   GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument_ioDecoratedDeclarationListForGeneration,
                                                                    Compiler * inCompiler
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lstring var_usefulnessName_6375 = function_afterNameForUsefulEntitiesGraph (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 155)), inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 155)) ;
+  GGS_lstring var_usefulnessName_6180 = function_afterNameForUsefulEntitiesGraph (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 148)), inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 148)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_usefulnessName_6375, var_usefulnessName_6375, inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 156)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_usefulnessName_6180, var_usefulnessName_6180, inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 149)) ;
   }
-  ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (var_usefulnessName_6375  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 157)) ;
-  GGS_semanticInstructionListForGeneration var_semanticInstructionListForGeneration_6620 = GGS_semanticInstructionListForGeneration::init (inCompiler COMMA_HERE) ;
-  UpEnumerator_prologueEpilogueList enumerator_6681 (constinArgument_inEpilogueList) ;
-  while (enumerator_6681.hasCurrentObject ()) {
-    GGS_semanticInstructionListForGeneration var_blockSemanticInstructionListForGeneration_7010 ;
+  ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (var_usefulnessName_6180  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 150)) ;
+  GGS_semanticInstructionListForGeneration var_semanticInstructionListForGeneration_6425 = GGS_semanticInstructionListForGeneration::init (inCompiler COMMA_HERE) ;
+  UpEnumerator_prologueEpilogueList enumerator_6486 (constinArgument_inEpilogueList) ;
+  while (enumerator_6486.hasCurrentObject ()) {
+    GGS_semanticInstructionListForGeneration var_blockSemanticInstructionListForGeneration_6815 ;
     {
-    GGS_formalParameterListForGeneration joker_7059 ; // Joker input parameter
-    routine_analyzeRoutineBody_3F__26__3F__26__3F__3F__3F__21__21_ (var_usefulnessName_6375, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, GGS_formalParameterListAST::init (inCompiler COMMA_HERE), enumerator_6681.current (HERE).readProperty_mInstructionList (), enumerator_6681.current (HERE).readProperty_mEndOfInstructionList (), var_blockSemanticInstructionListForGeneration_7010, joker_7059, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 161)) ;
+    GGS_formalParameterListForGeneration joker_6864 ; // Joker input parameter
+    routine_analyzeRoutineBody_3F__26__3F__26__3F__3F__3F__21__21_ (var_usefulnessName_6180, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, GGS_formalParameterListAST::init (inCompiler COMMA_HERE), enumerator_6486.current (HERE).readProperty_mInstructionList (), enumerator_6486.current (HERE).readProperty_mEndOfInstructionList (), var_blockSemanticInstructionListForGeneration_6815, joker_6864, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 154)) ;
     }
-    var_semanticInstructionListForGeneration_6620.plusPlusAssignOperation (GGS_semanticInstructionListForGeneration_2E_element::init_21_ (GGS_semanticBlockInstructionForGeneration::init_21_ (var_blockSemanticInstructionListForGeneration_7010, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 172)) ;
-    enumerator_6681.gotoNextObject () ;
+    var_semanticInstructionListForGeneration_6425.plusPlusAssignOperation (GGS_semanticInstructionListForGeneration_2E_element::init_21_ (GGS_semanticBlockInstructionForGeneration::init_21_ (var_blockSemanticInstructionListForGeneration_6815, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 165)) ;
+    enumerator_6486.gotoNextObject () ;
   }
-  ioArgument_ioDecoratedDeclarationListForGeneration.plusPlusAssignOperation (GGS_programListForGeneration_2E_element::init_21_ (GGS_routineImplementationForGeneration::init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21_routineMangledName_21__21__21_ (GGS_string ("routine-implementation"), GGS_bool (false), GGS_string ("proc-after"), GGS_string ("after"), GGS_formalParameterListForGeneration::init (inCompiler COMMA_HERE), GGS_bool (true), var_semanticInstructionListForGeneration_6620, inCompiler COMMA_HERE), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 175)) ;
+  ioArgument_ioDecoratedDeclarationListForGeneration.plusPlusAssignOperation (GGS_routineImplementationForGeneration::init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21_routineMangledName_21__21__21_ (GGS_string ("routine-implementation"), GGS_bool (false), GGS_string ("proc-after"), GGS_string ("after"), GGS_formalParameterListForGeneration::init (inCompiler COMMA_HERE), GGS_bool (true), var_semanticInstructionListForGeneration_6425, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 168)) ;
 }
 
 
@@ -7529,40 +7529,40 @@ void routine_compileProgramComponentGalgas_33__26__26__3F__3F__3F__3F__26__3F__2
                                                                                     Compiler * inCompiler
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outProgramComponentForGeneration.drop () ; // Release 'out' argument
-  GGS_analysisContext var_analysisContext_8337 = GGS_analysisContext::init_21__21__21_selfObjectCppName_21_selfAvailability_21_selfObjectCppPrefixForAccessingProperty (constinArgument_inSemanticContext, function_buildPredefinedTypes (ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 206)), GGS_string::makeEmptyString (), GGS_selfAvailability::class_func_none (SOURCE_FILE ("programComponentCompilation.galgas4", 208)), GGS_string::makeEmptyString (), inCompiler COMMA_HERE) ;
-  GGS_programListForGeneration var_decoratedDeclarationListForGeneration_8614 = GGS_programListForGeneration::init (inCompiler COMMA_HERE) ;
+  GGS_analysisContext var_analysisContext_8139 = GGS_analysisContext::init_21__21__21_selfObjectCppName_21_selfAvailability_21_selfObjectCppPrefixForAccessingProperty (constinArgument_inSemanticContext, function_buildPredefinedTypes (ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 199)), GGS_string::makeEmptyString (), GGS_selfAvailability::class_func_none (SOURCE_FILE ("programComponentCompilation.galgas4", 201)), GGS_string::makeEmptyString (), inCompiler COMMA_HERE) ;
+  GGS__5B_semanticDeclarationForGeneration_5D_ var_decoratedDeclarationListForGeneration_8426 = GGS__5B_semanticDeclarationForGeneration_5D_::init (inCompiler COMMA_HERE) ;
   {
-  routine_compileBeforeClauseGalgas_33__26__26__3F__26__3F__26_ (ioArgument_ioUsefulnessRootEntities, ioArgument_ioUsefulEntitiesGraph, var_analysisContext_8337, ioArgument_ioTypeMap, constinArgument_inPrologueList, var_decoratedDeclarationListForGeneration_8614, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 213)) ;
-  }
-  {
-  routine_compileAfterClauseGalgas_33__26__26__3F__26__3F__26_ (ioArgument_ioUsefulnessRootEntities, ioArgument_ioUsefulEntitiesGraph, var_analysisContext_8337, ioArgument_ioTypeMap, constinArgument_inEpilogueList, var_decoratedDeclarationListForGeneration_8614, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 222)) ;
+  routine_compileBeforeClauseGalgas_33__26__26__3F__26__3F__26_ (ioArgument_ioUsefulnessRootEntities, ioArgument_ioUsefulEntitiesGraph, var_analysisContext_8139, ioArgument_ioTypeMap, constinArgument_inPrologueList, var_decoratedDeclarationListForGeneration_8426, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 206)) ;
   }
   {
-  routine_compileProgramRulesGalgas_33__26__26__3F__26__3F__26_ (ioArgument_ioUsefulnessRootEntities, ioArgument_ioUsefulEntitiesGraph, var_analysisContext_8337, ioArgument_ioTypeMap, constinArgument_inProgramRules, var_decoratedDeclarationListForGeneration_8614, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 231)) ;
+  routine_compileAfterClauseGalgas_33__26__26__3F__26__3F__26_ (ioArgument_ioUsefulnessRootEntities, ioArgument_ioUsefulEntitiesGraph, var_analysisContext_8139, ioArgument_ioTypeMap, constinArgument_inEpilogueList, var_decoratedDeclarationListForGeneration_8426, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 215)) ;
   }
-  GGS_stringset var_inclusionSet_9372 = GGS_stringset::init (inCompiler COMMA_HERE) ;
-  GGS_string var_beforeAfterRulesString_9397 = GGS_string::makeEmptyString () ;
-  UpEnumerator_programListForGeneration enumerator_9440 (var_decoratedDeclarationListForGeneration_8614) ;
-  while (enumerator_9440.hasCurrentObject ()) {
-    var_beforeAfterRulesString_9397.plusAssignOperation(callExtensionGetter_appendTypeGenericImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_9440.current (HERE).readProperty_mDeclaration ().ptr (), inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 243)), inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 243)) ;
-    GGS_string var_code_9655 ;
-    callExtensionMethod_appendSpecificImplementation ((cPtr_semanticDeclarationForGeneration *) enumerator_9440.current (HERE).readProperty_mDeclaration ().ptr (), ioArgument_ioTypeMap, var_inclusionSet_9372, var_code_9655, inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 244)) ;
-    var_beforeAfterRulesString_9397.plusAssignOperation(var_code_9655, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 245)) ;
-    enumerator_9440.gotoNextObject () ;
+  {
+  routine_compileProgramRulesGalgas_33__26__26__3F__26__3F__26_ (ioArgument_ioUsefulnessRootEntities, ioArgument_ioUsefulEntitiesGraph, var_analysisContext_8139, ioArgument_ioTypeMap, constinArgument_inProgramRules, var_decoratedDeclarationListForGeneration_8426, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 224)) ;
   }
-  UpEnumerator_programRuleList enumerator_9720 (constinArgument_inProgramRules) ;
-  while (enumerator_9720.hasCurrentObject ()) {
+  GGS_stringset var_inclusionSet_9184 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+  GGS_string var_beforeAfterRulesString_9209 = GGS_string::makeEmptyString () ;
+  UpEnumerator__5B_semanticDeclarationForGeneration_5D_ enumerator_9252 (var_decoratedDeclarationListForGeneration_8426) ;
+  while (enumerator_9252.hasCurrentObject ()) {
+    var_beforeAfterRulesString_9209.plusAssignOperation(callExtensionGetter_appendTypeGenericImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_9252.current (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 236)), inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 236)) ;
+    GGS_string var_code_9441 ;
+    callExtensionMethod_appendSpecificImplementation ((cPtr_semanticDeclarationForGeneration *) enumerator_9252.current (HERE).ptr (), ioArgument_ioTypeMap, var_inclusionSet_9184, var_code_9441, inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 237)) ;
+    var_beforeAfterRulesString_9209.plusAssignOperation(var_code_9441, inCompiler  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 238)) ;
+    enumerator_9252.gotoNextObject () ;
+  }
+  UpEnumerator_programRuleList enumerator_9506 (constinArgument_inProgramRules) ;
+  while (enumerator_9506.hasCurrentObject ()) {
     GalgasBool test_0 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_0) {
-      test_0 = GGS_bool (ComparisonKind::notEqual, enumerator_9720.current (HERE).readProperty_mReferenceGrammar ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
+      test_0 = GGS_bool (ComparisonKind::notEqual, enumerator_9506.current (HERE).readProperty_mReferenceGrammar ().readProperty_string ().objectCompare (GGS_string::makeEmptyString ())).boolEnum () ;
       if (GalgasBool::boolTrue == test_0) {
-        var_inclusionSet_9372.plusPlusAssignOperation (GGS_string ("grammar-").add_operation (enumerator_9720.current (HERE).readProperty_mReferenceGrammar ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("programComponentCompilation.galgas4", 249)), inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 249))  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 249)) ;
+        var_inclusionSet_9184.plusPlusAssignOperation (GGS_string ("grammar-").add_operation (enumerator_9506.current (HERE).readProperty_mReferenceGrammar ().readProperty_string ().getter_fileNameRepresentation (SOURCE_FILE ("programComponentCompilation.galgas4", 242)), inCompiler COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 242))  COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 242)) ;
       }
     }
-    enumerator_9720.gotoNextObject () ;
+    enumerator_9506.gotoNextObject () ;
   }
-  GGS_string var_cppContents_9903 = GGS_string (filewrapperTemplate_programFileGenerationTemplate_programFileImplementation (inCompiler, GGS_string ("program"), GGS__5B_string_5D_::init (inCompiler COMMA_HERE), var_beforeAfterRulesString_9397, constinArgument_inProgramRules, constinArgument_inProjectVersionString COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 252))) ;
-  outArgument_outProgramComponentForGeneration = GGS_programComponentForGeneration::init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21_ (GGS_string ("zprogram"), GGS_bool (false), GGS_string ("program"), var_inclusionSet_9372, var_cppContents_9903, inCompiler COMMA_HERE) ;
+  GGS_string var_cppContents_9689 = GGS_string (filewrapperTemplate_programFileGenerationTemplate_programFileImplementation (inCompiler, GGS_string ("program"), GGS__5B_string_5D_::init (inCompiler COMMA_HERE), var_beforeAfterRulesString_9209, constinArgument_inProgramRules, constinArgument_inProjectVersionString COMMA_SOURCE_FILE ("programComponentCompilation.galgas4", 245))) ;
+  outArgument_outProgramComponentForGeneration = GGS_programComponentForGeneration::init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21_ (GGS_string ("zprogram"), GGS_bool (false), GGS_string ("program"), var_inclusionSet_9184, var_cppContents_9689, inCompiler COMMA_HERE) ;
 }
 
 

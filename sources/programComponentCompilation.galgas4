@@ -21,12 +21,6 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
-
-list @programListForGeneration {
-  public let @semanticDeclarationForGeneration mDeclaration
-}
-
-//--------------------------------------------------------------------------------------------------
 //
 //           G E N E R A T I O N    F I L E W R A P P E R S
 //
@@ -56,7 +50,7 @@ proc compileBeforeClauseGalgas3
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   let @prologueEpilogueList inPrologueList,
-  ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
+  ?![@semanticDeclarationForGeneration] ioDecoratedDeclarationListForGeneration
 ) {
   let usefulnessName = beforeNameForUsefulEntitiesGraph (.here)
   !?ioUsefulEntitiesGraph.addNode (usefulnessName, usefulnessName)
@@ -80,16 +74,15 @@ proc compileBeforeClauseGalgas3
     ))
   end
 //---
-  ioDecoratedDeclarationListForGeneration ++= @(
-    @routineImplementationForGeneration (
-      !infoMessage: "routine-implementation",
-      !generateHeader: false,
-      !implementationCppFileName: "proc-before",
-      !routineMangledName:"before",
-      @formalParameterListForGeneration (),
-      true, // Generate static
-      semanticInstructionListForGeneration
-    ))
+  ioDecoratedDeclarationListForGeneration ++= @routineImplementationForGeneration (
+    !infoMessage: "routine-implementation",
+    !generateHeader: false,
+    !implementationCppFileName: "proc-before",
+    !routineMangledName:"before",
+    @formalParameterListForGeneration (),
+    true, // Generate static
+    semanticInstructionListForGeneration
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -104,7 +97,7 @@ private proc compileProgramRulesGalgas3
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   let @programRuleList inProgramRules,
-  ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
+  ?![@semanticDeclarationForGeneration] ioDecoratedDeclarationListForGeneration
 ) {
   var @uint ruleIndex = 0
   for programRule in inProgramRules do
@@ -125,7 +118,7 @@ private proc compileProgramRulesGalgas3
       ?let semanticInstructionListForGeneration,
       ?let routineSignature
     )
-    ioDecoratedDeclarationListForGeneration ++= @(@routineImplementationForGeneration (
+    ioDecoratedDeclarationListForGeneration ++= @routineImplementationForGeneration (
       !infoMessage: "routine-implementation",
       !generateHeader: false,
       !implementationCppFileName: "proc-programrule",
@@ -133,7 +126,7 @@ private proc compileProgramRulesGalgas3
       routineSignature,
       true, // Generate static
       semanticInstructionListForGeneration
-    ))
+    )
     ruleIndex += 1
   end
 }
@@ -150,7 +143,7 @@ proc compileAfterClauseGalgas3
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   let @prologueEpilogueList inEpilogueList,
-  ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
+  ?![@semanticDeclarationForGeneration] ioDecoratedDeclarationListForGeneration
 ) {
   let usefulnessName = afterNameForUsefulEntitiesGraph (.here)
   !?ioUsefulEntitiesGraph.addNode (usefulnessName, usefulnessName)
@@ -172,7 +165,7 @@ proc compileAfterClauseGalgas3
     semanticInstructionListForGeneration ++= @(@semanticBlockInstructionForGeneration (blockSemanticInstructionListForGeneration))
   end
 //---
-  ioDecoratedDeclarationListForGeneration ++= @(@routineImplementationForGeneration (
+  ioDecoratedDeclarationListForGeneration ++= @routineImplementationForGeneration (
     !infoMessage: "routine-implementation",
     !generateHeader: false,
     !implementationCppFileName: "proc-after",
@@ -180,7 +173,7 @@ proc compileAfterClauseGalgas3
     @formalParameterListForGeneration (),
     true, // Generate static
     semanticInstructionListForGeneration
-  ))
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -209,7 +202,7 @@ proc compileProgramComponentGalgas3
     !selfObjectCppPrefixForAccessingProperty: ""
   )
 //--- Analyse 'before' instructions
-  var @programListForGeneration decoratedDeclarationListForGeneration = @()
+  var [@semanticDeclarationForGeneration] decoratedDeclarationListForGeneration = @()
   compileBeforeClauseGalgas3 (
     !?ioUsefulnessRootEntities,
     !?ioUsefulEntitiesGraph,
@@ -240,8 +233,8 @@ proc compileProgramComponentGalgas3
   var @stringset inclusionSet = @()
   var beforeAfterRulesString = ""
   for entry in decoratedDeclarationListForGeneration do
-    beforeAfterRulesString += entry.mDeclaration.appendTypeGenericImplementation
-    entry.mDeclaration.appendSpecificImplementation (ioTypeMap, !?inclusionSet, ?let @string code)
+    beforeAfterRulesString += entry.appendTypeGenericImplementation
+    entry.appendSpecificImplementation (ioTypeMap, !?inclusionSet, ?let @string code)
     beforeAfterRulesString += code
   end
   for prgmRule in inProgramRules do

@@ -35,10 +35,10 @@ class cParser_%![COMPONENT_NAME identifierRepresentation]% {
   end
 end%
 //--- Rule declarations
-%for (mNonterminalName mRuleIndex mLabelImplementationList) in RULE_DECLARATION_LIST do
-  for (mLabelName mSignatureForGeneration mSignature mEndOfArgumentLocation mInstructionListForGeneration) in mLabelImplementationList do
-    %  protected: void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_%![mLabelName identifierRepresentation]% (%?^
-    for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in mSignature do (IDX)
+%for (aRule) in RULE_DECLARATION_LIST do
+  for (aLabel) in aRule.mLabelImplementationList do
+    %  protected: void rule_%![COMPONENT_NAME identifierRepresentation]%_%![aRule.mNonterminalName identifierRepresentation]%_i%![aRule.mRuleIndex string]%_%![aLabel.mLabelName identifierRepresentation]% (%?^
+    for (mFormalSelector mFormalArgumentType mFormalArgumentPassingMode mFormalArgumentName) in aLabel.mSignature do (IDX)
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %const GGS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
@@ -55,13 +55,13 @@ end%
     end
     %Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
   end
-  %/*  protected: void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_parse (%?^
+  %/*  protected: void rule_%![COMPONENT_NAME identifierRepresentation]%_%![aRule.mNonterminalName identifierRepresentation]%_i%![aRule.mRuleIndex string]%_parse (%?^
   if HAS_TRANSLATE_FEATURE then
     %String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
   end
   %Lexique_%!LEXIQUE_NAME% * inLexique) ; */\n\n%
   if HAS_INDEXING then
-    %  protected: void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_indexing (Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
+    %  protected: void rule_%![COMPONENT_NAME identifierRepresentation]%_%![aRule.mNonterminalName identifierRepresentation]%_i%![aRule.mRuleIndex string]%_indexing (Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
   end
 end%
 

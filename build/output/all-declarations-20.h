@@ -541,7 +541,7 @@ void routine_compileBeforeClauseGalgas_33__26__26__3F__26__3F__26_ (class GGS__5
                                                                     const class GGS_analysisContext constinArgument2,
                                                                     class GGS_unifiedTypeMap & ioArgument3,
                                                                     const class GGS_prologueEpilogueList constinArgument4,
-                                                                    class GGS_programListForGeneration & ioArgument5,
+                                                                    class GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument5,
                                                                     class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
@@ -556,7 +556,7 @@ void routine_compileProgramRulesGalgas_33__26__26__3F__26__3F__26_ (class GGS__5
                                                                     const class GGS_analysisContext constinArgument2,
                                                                     class GGS_unifiedTypeMap & ioArgument3,
                                                                     const class GGS_programRuleList constinArgument4,
-                                                                    class GGS_programListForGeneration & ioArgument5,
+                                                                    class GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument5,
                                                                     class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
@@ -571,7 +571,7 @@ void routine_compileAfterClauseGalgas_33__26__26__3F__26__3F__26_ (class GGS__5B
                                                                    const class GGS_analysisContext constinArgument2,
                                                                    class GGS_unifiedTypeMap & ioArgument3,
                                                                    const class GGS_prologueEpilogueList constinArgument4,
-                                                                   class GGS_programListForGeneration & ioArgument5,
+                                                                   class GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument5,
                                                                    class Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 

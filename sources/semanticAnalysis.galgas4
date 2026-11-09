@@ -866,7 +866,7 @@ map @nonterminalMap {
 
 //--------------------------------------------------------------------------------------------------
 
-list @ruleLabelImplementationList {
+struct @ruleLabelImplementationAST {
   public let @lstring mLabelName
   public let @formalParameterListForGeneration mSignatureForGeneration
   public let @formalParameterSignature mSignature
@@ -876,10 +876,10 @@ list @ruleLabelImplementationList {
 
 //--------------------------------------------------------------------------------------------------
 
-list @ruleDeclarationList {
+struct @ruleDeclarationAST {
   public let @string mNonterminalName
   public let @uint mRuleIndex
-  public let @ruleLabelImplementationList mLabelImplementationList
+  public let [@ruleLabelImplementationAST] mLabelImplementationList
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -899,7 +899,7 @@ filewrapper syntaxFileGenerationTemplate in "+generation-templates/syntax_genera
     ?@string COMPONENT_NAME,
     ?@string LEXIQUE_NAME,
     ?@nonterminalMap NONTERMINAL_MAP,
-    ?@ruleDeclarationList RULE_DECLARATION_LIST,
+    ?[@ruleDeclarationAST] RULE_DECLARATION_LIST,
     ?[@uint] SELECT_METHOD_LIST,
     ?@bool HAS_INDEXING,
     ?@bool HAS_TRANSLATE_FEATURE
@@ -1489,11 +1489,11 @@ private proc semanticAnalysisOfSyntaxComponent
   )
 //--- Rule list
   var @uint selectMethodCount = 0
-  var @ruleDeclarationList ruleDeclarationList = @()
+  var [@ruleDeclarationAST] ruleDeclarationList = @()
   var @uint newRuleIndex = 0
   for aRule in inRuleList do
   //---
-    var @ruleLabelImplementationList ruleLabelImplementationList = @()
+    var [@ruleLabelImplementationAST] ruleLabelImplementationList = @()
     var @uint localSelectMethodCount = selectMethodCount
     nonterminalMap.searchKey (aRule.mNonterminalName, ?*)
     for aLabel in aRule.mLabelList do

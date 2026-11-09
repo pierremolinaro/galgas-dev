@@ -43,7 +43,7 @@ list @templateDelimitorListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @templateReplacementListAST {
+struct @templateReplacementAST {
   public let @lstring mMatchString
   public let @lstring mReplacementString
   public let @lstring mReplacementFunction
@@ -56,13 +56,13 @@ abstract class @abstractLexicalRuleAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @lexicalRuleListAST {
-  public let @abstractLexicalRuleAST mLexicalRule
-}
+//list @lexicalRuleListAST {
+//  public let @abstractLexicalRuleAST mLexicalRule
+//}
 
 //--------------------------------------------------------------------------------------------------
 
-func @lexicalRuleListAST.useLoopLocalVar () -> @bool {
+func [@abstractLexicalRuleAST].useLoopLocalVar () -> @bool {
   result = false
   for (mLexicalRule) in self while not result do
     result = mLexicalRule.lexicalRuleUsesLoopLocalVar
@@ -116,7 +116,7 @@ list @terminalDeclarationListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @lexicalListEntryListAST {
+struct @lexicalListEntryAST {
   public let @lstring mEntrySpelling
   public let @lstring mTerminalSpelling
   public let @bool nonAtomicSelection #initArgLabel
@@ -137,7 +137,7 @@ list @lexicalListDeclarationListAST {
   public let @lstring mStyle // Empty string if no style
   public let @lstring mSyntaxErrorMessage
   public let @sentLexicalAttributeListAST mSentAttributeList
-  public let @lexicalListEntryListAST mEntryList
+  public let [@lexicalListEntryAST] mEntryList
 }
 
 //--------------------------------------------------------------------------------------------------

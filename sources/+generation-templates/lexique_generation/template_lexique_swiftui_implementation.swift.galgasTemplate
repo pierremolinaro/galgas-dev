@@ -8,8 +8,8 @@ import SwiftUI
 %if [TEMPLATE_REPLACEMENT_LIST count] > 0 then
 %fileprivate let kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [String] = [
 %
-for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST
-  do %  %![mMatchString utf8RepresentationEscapingQuestionMark]
+for (rep) in TEMPLATE_REPLACEMENT_LIST
+  do %  %![rep.mMatchString utf8RepresentationEscapingQuestionMark]
   between %,\n%
 end%
 ]
@@ -21,15 +21,15 @@ end%
 %if [TEMPLATE_DELIMITOR_LIST count] > 0 then
 %fileprivate let kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [TemplateDelimiter] = [
 %
-for (mStartString mEndString mPreservesStartDelimiter) in TEMPLATE_DELIMITOR_LIST
-  do  %  TemplateDelimiter (startString: %![mStartString utf8RepresentationEscapingQuestionMark]%, endString: %
-      if [mEndString count] == 0 then
+for (delimitor) in TEMPLATE_DELIMITOR_LIST
+  do  %  TemplateDelimiter (startString: %![delimitor.mStartString utf8RepresentationEscapingQuestionMark]%, endString: %
+      if [delimitor.mEndString count] == 0 then
         %nil%
       else
-        ![mEndString utf8RepresentationEscapingQuestionMark]
+        ![delimitor.mEndString utf8RepresentationEscapingQuestionMark]
       end
       %, discardStartString: %
-      ![not mPreservesStartDelimiter cString]
+      ![not delimitor.mPreservesStartDelimiter cString]
       %)%
   between %,\n%
 end%

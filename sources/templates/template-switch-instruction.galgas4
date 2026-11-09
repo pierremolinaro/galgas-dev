@@ -131,8 +131,8 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
                                 ?!@unifiedTypeMap ioTypeMap,
                                 ?!@templateInstructionListForGeneration ioInstructionList ) {
 //---
-  self.mSwitchExpression.templateExpressionAnalysis
-    (inUsefulnessCallerEntityName,
+  self.mSwitchExpression.templateExpressionAnalysis (
+    inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     inAnalysisContext,
     !?ioTypeMap,
@@ -141,7 +141,7 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
   if let enumType = switchExpression.mResultType.definition.typeKind.getEnumType then
     var @stringset constantsNamedInSwitchInstruction = @()
   //--- Analyze branches
-    var @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = @()
+    var [@templateInstructionSwitchBranchForGeneration] templateInstructionSwitchBranchList = @()
     for templateInstructionSwitchBranch in self.templateInstructionSwitchBranchList do
       var [@extractedAssociatedValueForGeneration] extractedAssociatedValuesForGeneration = @()
       var analysisContext = inAnalysisContext
@@ -233,7 +233,7 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
 //! CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-list @templateInstructionSwitchBranchListForGeneration {
+struct @templateInstructionSwitchBranchForGeneration {
   public let [@lstring] mConstantList
   public let [@extractedAssociatedValueForGeneration] mExtractedAssociatedValuesForGeneration
   public let @uint mEndOfBranchLocationIndex
@@ -245,7 +245,7 @@ list @templateInstructionSwitchBranchListForGeneration {
 final class @templateInstructionSwitchForGeneration : @templateInstructionForGeneration {
   private let @unifiedTypeMapEntry enumType
   private let @semanticExpressionForGeneration switchExpression
-  private let @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList
+  private let [@templateInstructionSwitchBranchForGeneration] templateInstructionSwitchBranchList
 }
 
 //································································································

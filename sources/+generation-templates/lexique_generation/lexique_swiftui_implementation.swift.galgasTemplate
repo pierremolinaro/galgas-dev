@@ -678,8 +678,8 @@ end
 %if [TEMPLATE_REPLACEMENT_LIST count] > 0 then
 %fileprivate let kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [String] = [
 %
-for (mMatchString mReplacementString mReplacementFunction) in TEMPLATE_REPLACEMENT_LIST
-  do %  %![mMatchString utf8RepresentationEscapingQuestionMark]
+for (rep) in TEMPLATE_REPLACEMENT_LIST
+  do %  %![rep.mMatchString utf8RepresentationEscapingQuestionMark]
   between %,\n%
 end%
 ]
@@ -692,9 +692,9 @@ end%
 %if [LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList count] > 0 then
 %fileprivate let kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% : [SWIFT_TemplateDelimiter] = [
 %
-for (mStartString mEndString mPreservesStartDelimiter) in LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList
-  do  %  SWIFT_TemplateDelimiter (startString: %![mStartString utf8RepresentationEscapingQuestionMark]%, endString: %![mEndString utf8RepresentationEscapingQuestionMark]%, discardStartString: %
-      ![not mPreservesStartDelimiter cString]
+for (delimitor) in LEXIQUE_ANALYSIS_CONTEXT.mTemplateDelimitorList
+  do  %  SWIFT_TemplateDelimiter (startString: %![delimitor.mStartString utf8RepresentationEscapingQuestionMark]%, endString: %![delimitor.mEndString utf8RepresentationEscapingQuestionMark]%, discardStartString: %
+      ![not delimitor.mPreservesStartDelimiter cString]
       %)%
   between %,\n%
 end%
