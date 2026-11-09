@@ -136,8 +136,6 @@ final class @ifInstructionAST : @semanticInstructionAST {
       inAnalysisContext,
       !?ioTypeMap,
       !localConstantList: @(),
-      !localInitializedVariableListWarnsIfNotMutated: @(),
-      !localInitializedVariableListNoWarnsIfNotMutated: @(),
       self.m_then_instructionList,
       !?ioVariableMap,
       ?let then_instructionList
@@ -156,8 +154,6 @@ final class @ifInstructionAST : @semanticInstructionAST {
       inAnalysisContext,
       !?ioTypeMap,
       !localConstantList: @(),
-      !localInitializedVariableListWarnsIfNotMutated: @(),
-      !localInitializedVariableListNoWarnsIfNotMutated: @(),
       self.m_else_instructionList,
       self.mEndOf_if_instruction,
       !?ioVariableMap,

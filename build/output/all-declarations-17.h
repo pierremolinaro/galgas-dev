@@ -330,23 +330,21 @@ class GGS_lstring function_grammarNameForUsefulEntitiesGraph (const class GGS_ls
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'analyzeSemanticInstructionList?&?&?localConstantList?localInitializedVariableListWarnsIfNotMutated?localInitializedVariableListNoWarnsIfNotMutated??&!'
+//Routine 'analyzeSemanticInstructionList?&?&?localConstantList??&!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_analyzeSemanticInstructionList_3F__26__3F__26__3F_localConstantList_3F_localInitializedVariableListWarnsIfNotMutated_3F_localInitializedVariableListNoWarnsIfNotMutated_3F__3F__26__21_ (const class GGS_lstring constinArgument0,
-                                                                                                                                                                                                      class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                                                                                                                                      const class GGS_analysisContext constinArgument2,
-                                                                                                                                                                                                      class GGS_unifiedTypeMap & ioArgument3,
-                                                                                                                                                                                                      const class GGS__5B_localConstant_5D_ constinArgument4,
-                                                                                                                                                                                                      const class GGS__5B_localInitializedVariable_5D_ constinArgument5,
-                                                                                                                                                                                                      const class GGS__5B_localInitializedVariable_5D_ constinArgument6,
-                                                                                                                                                                                                      const class GGS__5B_semanticInstructionAST_5D_ constinArgument7,
-                                                                                                                                                                                                      const class GGS_location constinArgument8,
-                                                                                                                                                                                                      class GGS_localVarManager & ioArgument9,
-                                                                                                                                                                                                      class GGS_semanticInstructionListForGeneration & outArgument10,
-                                                                                                                                                                                                      class Compiler * inCompiler
-                                                                                                                                                                                                      COMMA_LOCATION_ARGS) ;
+void routine_analyzeSemanticInstructionList_3F__26__3F__26__3F_localConstantList_3F__3F__26__21_ (const class GGS_lstring constinArgument0,
+                                                                                                  class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                                                  const class GGS_analysisContext constinArgument2,
+                                                                                                  class GGS_unifiedTypeMap & ioArgument3,
+                                                                                                  const class GGS__5B_localConstant_5D_ constinArgument4,
+                                                                                                  const class GGS__5B_semanticInstructionAST_5D_ constinArgument5,
+                                                                                                  const class GGS_location constinArgument6,
+                                                                                                  class GGS_localVarManager & ioArgument7,
+                                                                                                  class GGS_semanticInstructionListForGeneration & outArgument8,
+                                                                                                  class Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -365,22 +363,20 @@ void routine_generateInstructionList_26__3F__26__26__3F__26_ (class GGS_stringse
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'analyzeSemanticInstructionListWithoutBranch?&?&?localConstantList?localInitializedVariableListWarnsIfNotMutated?localInitializedVariableListNoWarnsIfNotMutated?&!'
+//Routine 'analyzeSemanticInstructionListWithoutBranch?&?&?localConstantList?&!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_analyzeSemanticInstructionListWithoutBranch_3F__26__3F__26__3F_localConstantList_3F_localInitializedVariableListWarnsIfNotMutated_3F_localInitializedVariableListNoWarnsIfNotMutated_3F__26__21_ (const class GGS_lstring constinArgument0,
-                                                                                                                                                                                                               class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                                                                                                                                               const class GGS_analysisContext constinArgument2,
-                                                                                                                                                                                                               class GGS_unifiedTypeMap & ioArgument3,
-                                                                                                                                                                                                               const class GGS__5B_localConstant_5D_ constinArgument4,
-                                                                                                                                                                                                               const class GGS__5B_localInitializedVariable_5D_ constinArgument5,
-                                                                                                                                                                                                               const class GGS__5B_localInitializedVariable_5D_ constinArgument6,
-                                                                                                                                                                                                               const class GGS__5B_semanticInstructionAST_5D_ constinArgument7,
-                                                                                                                                                                                                               class GGS_localVarManager & ioArgument8,
-                                                                                                                                                                                                               class GGS_semanticInstructionListForGeneration & outArgument9,
-                                                                                                                                                                                                               class Compiler * inCompiler
-                                                                                                                                                                                                               COMMA_LOCATION_ARGS) ;
+void routine_analyzeSemanticInstructionListWithoutBranch_3F__26__3F__26__3F_localConstantList_3F__26__21_ (const class GGS_lstring constinArgument0,
+                                                                                                           class GGS_usefulEntitiesGraph & ioArgument1,
+                                                                                                           const class GGS_analysisContext constinArgument2,
+                                                                                                           class GGS_unifiedTypeMap & ioArgument3,
+                                                                                                           const class GGS__5B_localConstant_5D_ constinArgument4,
+                                                                                                           const class GGS__5B_semanticInstructionAST_5D_ constinArgument5,
+                                                                                                           class GGS_localVarManager & ioArgument6,
+                                                                                                           class GGS_semanticInstructionListForGeneration & outArgument7,
+                                                                                                           class Compiler * inCompiler
+                                                                                                           COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------------------------------------------------------------------------

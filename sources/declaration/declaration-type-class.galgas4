@@ -621,22 +621,22 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
     let at = self.mAllTypedAttributeList.subListWithRange (
       @(0, self.mAllTypedAttributeList.count - self.mCurrentTypedAttributeList.count)
     )
-      outImplementation = filewrapper [classGenerationTemplate.referenceClassTypeSpecificImplementation :
-        selfTypeDefinition.typeName.string,
-        self.mSelfTypeEntry.identifierRepresentation,
-        if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end,
-        !currentPropertyList: self.mCurrentTypedAttributeList,
-        !allPropertyList: self.mAllTypedAttributeList,
-        !inheritedPropertyList: at,
-        self.mIsAbstract,
-        self.initializerNeedsCompilerVariable,
-        self.propertyInitializationCode,
-        selfTypeDefinition.features.contains (.generateSynthetizedInitializer),
-        self.synthetizedInitializerArgumentList,
-        self.inheritedSynthetizedInitializerArgumentList,
-        selfTypeDefinition.initializerMap,
-        self.clonable
-      ]
+    outImplementation = filewrapper [classGenerationTemplate.referenceClassTypeSpecificImplementation :
+      selfTypeDefinition.typeName.string,
+      self.mSelfTypeEntry.identifierRepresentation,
+      if self.mSuperClass.isNull then "" else self.mSuperClass.identifierRepresentation end,
+      !currentPropertyList: self.mCurrentTypedAttributeList,
+      !allPropertyList: self.mAllTypedAttributeList,
+      !inheritedPropertyList: at,
+      self.mIsAbstract,
+      self.initializerNeedsCompilerVariable,
+      self.propertyInitializationCode,
+      selfTypeDefinition.features.contains (.generateSynthetizedInitializer),
+      self.synthetizedInitializerArgumentList,
+      self.inheritedSynthetizedInitializerArgumentList,
+      selfTypeDefinition.initializerMap,
+      self.clonable
+    ]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

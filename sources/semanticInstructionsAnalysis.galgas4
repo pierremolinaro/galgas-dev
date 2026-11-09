@@ -45,22 +45,12 @@ struct @localConstant {
 
 //--------------------------------------------------------------------------------------------------
 
-struct @localInitializedVariable {
-  public let @unifiedTypeMapEntry mType
-  public let @lstring mName
-  public let @string mCppName
-}
-
-//--------------------------------------------------------------------------------------------------
-
 proc analyzeSemanticInstructionList
   (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?localConstantList: let [@localConstant] inLocalConstantList,
-  ?localInitializedVariableListWarnsIfNotMutated: let [@localInitializedVariable] inLocalInitializedVariableList,
-  ?localInitializedVariableListNoWarnsIfNotMutated: let [@localInitializedVariable] inLocalInitializedVariableListNoWarns,
   let [@semanticInstructionAST] inSemanticInstructionListAST,
   let @location inEndOfBranchLocation,
   ?!@localVarManager ioVariableMap,
@@ -75,8 +65,6 @@ proc analyzeSemanticInstructionList
     inAnalysisContext,
     !?ioTypeMap,
     !localConstantList: inLocalConstantList,
-    !localInitializedVariableListWarnsIfNotMutated: inLocalInitializedVariableList,
-    !localInitializedVariableListNoWarnsIfNotMutated: inLocalInitializedVariableListNoWarns,
     inSemanticInstructionListAST,
     !?ioVariableMap,
     ?outInstructionListForGeneration
@@ -92,8 +80,6 @@ proc analyzeSemanticInstructionListWithoutBranch (let @lstring inUsefulnessCalle
                                                   let @analysisContext inAnalysisContext,
                                                   ?!@unifiedTypeMap ioTypeMap,
                                                   ?localConstantList: let [@localConstant] inLocalConstantList,
-  ?localInitializedVariableListWarnsIfNotMutated: let [@localInitializedVariable] inLocalInitializedVariableList,
-  ?localInitializedVariableListNoWarnsIfNotMutated: let [@localInitializedVariable] inLocalInitializedVariableListNoWarns,
                                                   let [@semanticInstructionAST] inSemanticInstructionListAST,
                                                   ?!@localVarManager ioVariableMap,
                                                  !@semanticInstructionListForGeneration outInstructionListForGeneration) {
@@ -107,12 +93,12 @@ proc analyzeSemanticInstructionListWithoutBranch (let @lstring inUsefulnessCalle
     end
   end
 //--- Declare local variables
-  for localInitializedVariable in inLocalInitializedVariableList do
-    !?ioVariableMap.insertInitializedLocalVariable (localInitializedVariable.mName, !warnsIfNotMutated: true, localInitializedVariable.mType, localInitializedVariable.mCppName, localInitializedVariable.mCppName)
-  end
-  for localInitializedVariable in inLocalInitializedVariableListNoWarns do
-    !?ioVariableMap.insertInitializedLocalVariable (localInitializedVariable.mName, !warnsIfNotMutated: false, localInitializedVariable.mType, localInitializedVariable.mCppName, localInitializedVariable.mCppName)
-  end
+//  for localInitializedVariable in inLocalInitializedVariableList do
+//    !?ioVariableMap.insertInitializedLocalVariable (localInitializedVariable.mName, !warnsIfNotMutated: true, localInitializedVariable.mType, localInitializedVariable.mCppName, localInitializedVariable.mCppName)
+//  end
+//  for localInitializedVariable in inLocalInitializedVariableListNoWarns do
+//    !?ioVariableMap.insertInitializedLocalVariable (localInitializedVariable.mName, !warnsIfNotMutated: false, localInitializedVariable.mType, localInitializedVariable.mCppName, localInitializedVariable.mCppName)
+//  end
 //--- Instruction list
   for instruction in inSemanticInstructionListAST do
     instruction.analyzeSemanticInstruction (

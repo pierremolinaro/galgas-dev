@@ -3188,14 +3188,14 @@ GGS_string function_generateClassGetterDeclaration (const GGS_lstring & constinA
                                                     Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
-  GGS_bool var_generateMethodDeclaration_27210 = GGS_bool (true) ;
-  GGS_string var_suffix_27249 = GGS_string::makeEmptyString () ;
+  GGS_bool var_generateMethodDeclaration_27178 = GGS_bool (true) ;
+  GGS_string var_suffix_27217 = GGS_string::makeEmptyString () ;
   switch (constinArgument_inQualifier.enumValue ()) {
   case GGS_methodQualifier::Enumeration::invalid:
     break ;
   case GGS_methodQualifier::Enumeration::enum_isVirtualAbstract:
     {
-      var_suffix_27249 = GGS_string (" = 0") ;
+      var_suffix_27217 = GGS_string (" = 0") ;
     }
     break ;
   case GGS_methodQualifier::Enumeration::enum_isVirtual:
@@ -3203,49 +3203,49 @@ GGS_string function_generateClassGetterDeclaration (const GGS_lstring & constinA
   case GGS_methodQualifier::Enumeration::enum_isBasic:
   case GGS_methodQualifier::Enumeration::enum_isBasicFinal:
     {
-      var_generateMethodDeclaration_27210 = GGS_bool (false) ;
+      var_generateMethodDeclaration_27178 = GGS_bool (false) ;
     }
     break ;
   case GGS_methodQualifier::Enumeration::enum_isInherited:
     {
-      var_generateMethodDeclaration_27210 = GGS_bool (false) ;
+      var_generateMethodDeclaration_27178 = GGS_bool (false) ;
     }
     break ;
   case GGS_methodQualifier::Enumeration::enum_isVirtualOverriding:
     {
-      var_suffix_27249 = GGS_string (" override") ;
+      var_suffix_27217 = GGS_string (" override") ;
     }
     break ;
   case GGS_methodQualifier::Enumeration::enum_isVirtualOverridingAbstract:
     {
-      var_suffix_27249 = GGS_string (" override = 0") ;
+      var_suffix_27217 = GGS_string (" override = 0") ;
     }
     break ;
   }
   result_result = GGS_string::makeEmptyString () ;
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
-    test_0 = var_generateMethodDeclaration_27210.boolEnum () ;
+    test_0 = var_generateMethodDeclaration_27178.boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       result_result = GGS_string ("//--- Extension func ").add_operation (constinArgument_inGetterName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 672)).add_operation (GGS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 672)) ;
       result_result.plusAssignOperation(GGS_string ("  public: virtual class GGS_").add_operation (extensionGetter_identifierRepresentation (constinArgument_inReturnedType, inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 673)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 673)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 673)) ;
       result_result.plusAssignOperation(GGS_string (" getter_").add_operation (constinArgument_inGetterName.readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-class.galgas4", 674)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 674)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 674)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 674)) ;
-      GGS_bool var_first_27897 = GGS_bool (true) ;
-      UpEnumerator_functionSignature enumerator_27936 (constinArgument_inArgumentTypeList) ;
-      while (enumerator_27936.hasCurrentObject ()) {
+      GGS_bool var_first_27865 = GGS_bool (true) ;
+      UpEnumerator_functionSignature enumerator_27904 (constinArgument_inArgumentTypeList) ;
+      while (enumerator_27904.hasCurrentObject ()) {
         GalgasBool test_1 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_1) {
-          test_1 = var_first_27897.boolEnum () ;
+          test_1 = var_first_27865.boolEnum () ;
           if (GalgasBool::boolTrue == test_1) {
-            var_first_27897 = GGS_bool (false) ;
+            var_first_27865 = GGS_bool (false) ;
           }
         }
         if (GalgasBool::boolFalse == test_1) {
           result_result.plusAssignOperation(GGS_string (",\n           "), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 681)) ;
         }
-        result_result.plusAssignOperation(GGS_string ("const class GGS_").add_operation (extensionGetter_identifierRepresentation (enumerator_27936.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 683)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 683)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 683)) ;
-        result_result.plusAssignOperation(GGS_string (" ").add_operation (enumerator_27936.current (HERE).readProperty_mFormalArgumentName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 684)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 684)) ;
-        enumerator_27936.gotoNextObject () ;
+        result_result.plusAssignOperation(GGS_string ("const class GGS_").add_operation (extensionGetter_identifierRepresentation (enumerator_27904.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 683)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 683)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 683)) ;
+        result_result.plusAssignOperation(GGS_string (" ").add_operation (enumerator_27904.current (HERE).readProperty_mFormalArgumentName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 684)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 684)) ;
+        enumerator_27904.gotoNextObject () ;
       }
       GalgasBool test_2 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_2) {
@@ -3253,24 +3253,24 @@ GGS_string function_generateClassGetterDeclaration (const GGS_lstring & constinA
         if (GalgasBool::boolTrue == test_2) {
           GalgasBool test_3 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_3) {
-            test_3 = var_first_27897.operator_not (SOURCE_FILE ("declaration-type-class.galgas4", 687)).boolEnum () ;
+            test_3 = var_first_27865.operator_not (SOURCE_FILE ("declaration-type-class.galgas4", 687)).boolEnum () ;
             if (GalgasBool::boolTrue == test_3) {
               result_result.plusAssignOperation(GGS_string (",\n           "), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 688)) ;
             }
           }
           result_result.plusAssignOperation(GGS_string ("Compiler *"), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 690)) ;
-          var_first_27897 = GGS_bool (false) ;
+          var_first_27865 = GGS_bool (false) ;
         }
       }
       GGS_string temp_4 ;
-      const GalgasBool test_5 = var_first_27897.boolEnum () ;
+      const GalgasBool test_5 = var_first_27865.boolEnum () ;
       if (GalgasBool::boolTrue == test_5) {
         temp_4 = GGS_string ("LOCATION_ARGS") ;
       }else if (GalgasBool::boolFalse == test_5) {
         temp_4 = GGS_string (" COMMA_LOCATION_ARGS") ;
       }
       result_result.plusAssignOperation(temp_4.add_operation (GGS_string (") const"), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 693)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 693)) ;
-      result_result.plusAssignOperation(var_suffix_27249.add_operation (GGS_string (" ;\n\n"), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 694)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 694)) ;
+      result_result.plusAssignOperation(var_suffix_27217.add_operation (GGS_string (" ;\n\n"), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 694)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 694)) ;
     }
   }
 //---
@@ -3291,14 +3291,14 @@ GGS_string function_generateClassInstanceMethodDeclaration (const GGS_lstring & 
                                                             Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
-  GGS_bool var_generateMethodDeclaration_28958 = GGS_bool (true) ;
-  GGS_string var_suffix_28997 = GGS_string::makeEmptyString () ;
+  GGS_bool var_generateMethodDeclaration_28926 = GGS_bool (true) ;
+  GGS_string var_suffix_28965 = GGS_string::makeEmptyString () ;
   switch (constinArgument_inQualifier.enumValue ()) {
   case GGS_methodQualifier::Enumeration::invalid:
     break ;
   case GGS_methodQualifier::Enumeration::enum_isVirtualAbstract:
     {
-      var_suffix_28997 = GGS_string (" = 0") ;
+      var_suffix_28965 = GGS_string (" = 0") ;
     }
     break ;
   case GGS_methodQualifier::Enumeration::enum_isVirtual:
@@ -3306,71 +3306,71 @@ GGS_string function_generateClassInstanceMethodDeclaration (const GGS_lstring & 
   case GGS_methodQualifier::Enumeration::enum_isBasic:
   case GGS_methodQualifier::Enumeration::enum_isBasicFinal:
     {
-      var_generateMethodDeclaration_28958 = GGS_bool (false) ;
+      var_generateMethodDeclaration_28926 = GGS_bool (false) ;
     }
     break ;
   case GGS_methodQualifier::Enumeration::enum_isInherited:
     {
-      var_generateMethodDeclaration_28958 = GGS_bool (false) ;
+      var_generateMethodDeclaration_28926 = GGS_bool (false) ;
     }
     break ;
   case GGS_methodQualifier::Enumeration::enum_isVirtualOverriding:
     {
-      var_suffix_28997 = GGS_string (" override") ;
+      var_suffix_28965 = GGS_string (" override") ;
     }
     break ;
   case GGS_methodQualifier::Enumeration::enum_isVirtualOverridingAbstract:
     {
-      var_suffix_28997 = GGS_string (" override = 0") ;
+      var_suffix_28965 = GGS_string (" override = 0") ;
     }
     break ;
   }
   result_result = GGS_string::makeEmptyString () ;
   GalgasBool test_0 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_0) {
-    test_0 = var_generateMethodDeclaration_28958.boolEnum () ;
+    test_0 = var_generateMethodDeclaration_28926.boolEnum () ;
     if (GalgasBool::boolTrue == test_0) {
       result_result.plusAssignOperation(GGS_string ("//--- Extension proc ").add_operation (constinArgument_inMethodName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 723)).add_operation (GGS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 723)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 723)) ;
       result_result.plusAssignOperation(GGS_string ("  public: virtual void method_").add_operation (constinArgument_inMethodName.readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("declaration-type-class.galgas4", 724)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 724)).add_operation (GGS_string (" ("), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 724)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 724)) ;
-      GGS_bool var_first_29581 = GGS_bool (true) ;
-      UpEnumerator_formalParameterSignature enumerator_29620 (constinArgument_inArgumentTypeList) ;
-      while (enumerator_29620.hasCurrentObject ()) {
+      GGS_bool var_first_29549 = GGS_bool (true) ;
+      UpEnumerator_formalParameterSignature enumerator_29588 (constinArgument_inArgumentTypeList) ;
+      while (enumerator_29588.hasCurrentObject ()) {
         GalgasBool test_1 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_1) {
-          test_1 = var_first_29581.boolEnum () ;
+          test_1 = var_first_29549.boolEnum () ;
           if (GalgasBool::boolTrue == test_1) {
-            var_first_29581 = GGS_bool (false) ;
+            var_first_29549 = GGS_bool (false) ;
           }
         }
         if (GalgasBool::boolFalse == test_1) {
           result_result.plusAssignOperation(GGS_string (",\n           "), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 731)) ;
         }
-        switch (enumerator_29620.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
+        switch (enumerator_29588.current (HERE).readProperty_mFormalArgumentPassingMode ().enumValue ()) {
         case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
           break ;
         case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn:
           {
-            result_result.plusAssignOperation(GGS_string ("const class GGS_").add_operation (extensionGetter_identifierRepresentation (enumerator_29620.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 735)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 735)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 735)) ;
+            result_result.plusAssignOperation(GGS_string ("const class GGS_").add_operation (extensionGetter_identifierRepresentation (enumerator_29588.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 735)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 735)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 735)) ;
           }
           break ;
         case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentInOut:
           {
-            result_result.plusAssignOperation(GGS_string ("class GGS_").add_operation (extensionGetter_identifierRepresentation (enumerator_29620.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 737)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 737)).add_operation (GGS_string (" &"), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 737)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 737)) ;
+            result_result.plusAssignOperation(GGS_string ("class GGS_").add_operation (extensionGetter_identifierRepresentation (enumerator_29588.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 737)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 737)).add_operation (GGS_string (" &"), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 737)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 737)) ;
           }
           break ;
         case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentOut:
           {
-            result_result.plusAssignOperation(GGS_string ("class GGS_").add_operation (extensionGetter_identifierRepresentation (enumerator_29620.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 739)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 739)).add_operation (GGS_string (" &"), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 739)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 739)) ;
+            result_result.plusAssignOperation(GGS_string ("class GGS_").add_operation (extensionGetter_identifierRepresentation (enumerator_29588.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 739)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 739)).add_operation (GGS_string (" &"), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 739)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 739)) ;
           }
           break ;
         case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentVarIn:
           {
-            result_result.plusAssignOperation(GGS_string ("class GGS_").add_operation (extensionGetter_identifierRepresentation (enumerator_29620.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 741)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 741)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 741)) ;
+            result_result.plusAssignOperation(GGS_string ("class GGS_").add_operation (extensionGetter_identifierRepresentation (enumerator_29588.current (HERE).readProperty_mFormalArgumentType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 741)), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 741)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 741)) ;
           }
           break ;
         }
-        result_result.plusAssignOperation(GGS_string (" arg_").add_operation (enumerator_29620.current (HERE).readProperty_mFormalArgumentName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 743)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 743)) ;
-        enumerator_29620.gotoNextObject () ;
+        result_result.plusAssignOperation(GGS_string (" arg_").add_operation (enumerator_29588.current (HERE).readProperty_mFormalArgumentName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 743)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 743)) ;
+        enumerator_29588.gotoNextObject () ;
       }
       GalgasBool test_2 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_2) {
@@ -3378,24 +3378,24 @@ GGS_string function_generateClassInstanceMethodDeclaration (const GGS_lstring & 
         if (GalgasBool::boolTrue == test_2) {
           GalgasBool test_3 = GalgasBool::boolTrue ;
           if (GalgasBool::boolTrue == test_3) {
-            test_3 = var_first_29581.operator_not (SOURCE_FILE ("declaration-type-class.galgas4", 746)).boolEnum () ;
+            test_3 = var_first_29549.operator_not (SOURCE_FILE ("declaration-type-class.galgas4", 746)).boolEnum () ;
             if (GalgasBool::boolTrue == test_3) {
               result_result.plusAssignOperation(GGS_string (",\n           "), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 747)) ;
             }
           }
           result_result.plusAssignOperation(GGS_string ("Compiler *"), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 749)) ;
-          var_first_29581 = GGS_bool (false) ;
+          var_first_29549 = GGS_bool (false) ;
         }
       }
       GGS_string temp_4 ;
-      const GalgasBool test_5 = var_first_29581.boolEnum () ;
+      const GalgasBool test_5 = var_first_29549.boolEnum () ;
       if (GalgasBool::boolTrue == test_5) {
         temp_4 = GGS_string ("LOCATION_ARGS") ;
       }else if (GalgasBool::boolFalse == test_5) {
         temp_4 = GGS_string (" COMMA_LOCATION_ARGS") ;
       }
       result_result.plusAssignOperation(temp_4.add_operation (GGS_string (")"), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 752)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 752)) ;
-      result_result.plusAssignOperation(var_suffix_28997.add_operation (GGS_string (" ;\n\n"), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 753)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 753)) ;
+      result_result.plusAssignOperation(var_suffix_28965.add_operation (GGS_string (" ;\n\n"), inCompiler COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 753)), inCompiler  COMMA_SOURCE_FILE ("declaration-type-class.galgas4", 753)) ;
     }
   }
 //---
