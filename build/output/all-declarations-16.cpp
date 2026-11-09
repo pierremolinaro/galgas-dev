@@ -8984,7 +8984,7 @@ void extensionMethod_checkCompatibilityWithLet (const GGS_AccessControlAST inObj
   case GGS_AccessControlAST::Enumeration::enum_protectedSetAccess:
     {
       GenericArray <FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (constinArgument_inLocation, GGS_string ("'protected(set)' and 'let' are incompatible"), fixItArray1  COMMA_SOURCE_FILE ("accessControl.galgas4", 155)) ;
+      inCompiler->emitSemanticError (constinArgument_inLocation, GGS_string ("'protected(set)' and 'let' are incompatible"), fixItArray1  COMMA_SOURCE_FILE ("accessControl.galgas4", 97)) ;
     }
     break ;
   case GGS_AccessControlAST::Enumeration::enum_privateAccess:
@@ -8992,17 +8992,17 @@ void extensionMethod_checkCompatibilityWithLet (const GGS_AccessControlAST inObj
   case GGS_AccessControlAST::Enumeration::enum_privateSetAccess:
     {
       GenericArray <FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (constinArgument_inLocation, GGS_string ("'private(set)' and 'let' are incompatible"), fixItArray2  COMMA_SOURCE_FILE ("accessControl.galgas4", 158)) ;
+      inCompiler->emitSemanticError (constinArgument_inLocation, GGS_string ("'private(set)' and 'let' are incompatible"), fixItArray2  COMMA_SOURCE_FILE ("accessControl.galgas4", 100)) ;
     }
     break ;
   case GGS_AccessControlAST::Enumeration::enum_fileprivateAccess:
     break ;
   case GGS_AccessControlAST::Enumeration::enum_fileprivateSetAccess:
     {
-      GGS_location extractedValue_5358__0 ;
-      temp_0.getAssociatedValuesFor_fileprivateSetAccess (extractedValue_5358__0) ;
+      GGS_location extractedValue_3686__0 ;
+      temp_0.getAssociatedValuesFor_fileprivateSetAccess (extractedValue_3686__0) ;
       GenericArray <FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (constinArgument_inLocation, GGS_string ("'private(set)' and 'let' are incompatible"), fixItArray3  COMMA_SOURCE_FILE ("accessControl.galgas4", 161)) ;
+      inCompiler->emitSemanticError (constinArgument_inLocation, GGS_string ("'private(set)' and 'let' are incompatible"), fixItArray3  COMMA_SOURCE_FILE ("accessControl.galgas4", 103)) ;
     }
     break ;
   }
@@ -12385,8 +12385,8 @@ void extensionMethod_displayRule (const GGS_productionRuleListForGrammarAnalysis
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_currentNode_5049 = GGS_string ("P0start") ;
   GGS_rowList temp_0 = GGS_rowList::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 119)) ;
-  GGS__32_stringlist temp_1 = GGS__32_stringlist::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 119)) ;
-  temp_1.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (var_currentNode_5049, GGS_string ("[firstPoint] ()"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 119)) ;
+  GGS__5B__32_string_5D_ temp_1 = GGS__5B__32_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 119)) ;
+  temp_1.plusPlusAssignOperation (GGS__32_string::init_21__21_ (var_currentNode_5049, GGS_string ("[firstPoint] ()"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 119)) ;
   temp_0.plusPlusAssignOperation (GGS_rowList_2E_element::init_21_ (temp_1, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 119)) ;
   GGS_rowList var_rowArray_5088 = temp_0 ;
   GGS_string var_arrows_5154 = GGS_string::makeEmptyString () ;
@@ -12410,7 +12410,7 @@ void extensionMethod_displayRule (const GGS_productionRuleListForGrammarAnalysis
   DownEnumerator_rowList enumerator_6215 (var_rowArray_5088) ;
   while (enumerator_6215.hasCurrentObject ()) {
     ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("    "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 150)) ;
-    UpEnumerator__32_stringlist enumerator_6281 (enumerator_6215.current (HERE).readProperty_columns ()) ;
+    UpEnumerator__5B__32_string_5D_ enumerator_6281 (enumerator_6215.current (HERE).readProperty_columns ()) ;
     while (enumerator_6281.hasCurrentObject ()) {
       GalgasBool test_4 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_4) {
@@ -47617,7 +47617,7 @@ void cGrammar_galgas_34_Grammar::nt_terminal_5F_instruction_5F_indexing_indexing
   }
 }
 
-void cGrammar_galgas_34_Grammar::nt_terminal_5F_instruction_5F_indexing_ (GGS__32_lstringlist &  parameter_1,
+void cGrammar_galgas_34_Grammar::nt_terminal_5F_instruction_5F_indexing_ (GGS__5B__32_lstring_5D_ &  parameter_1,
                                 Lexique_galgasScanner_34_ * inLexique) {
   if (inLexique->nextProductionIndex () == 203) {
   rule_galgas_34_SyntaxComponentSyntax_terminal_5F_instruction_5F_indexing_i9_(parameter_1, inLexique) ;

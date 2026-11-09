@@ -1436,7 +1436,7 @@ class cParser_galgas_34_SyntaxComponentSyntax {
 
   protected: virtual void nt_syntax_5F_rule_5F_label_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
-  protected: virtual void nt_terminal_5F_instruction_5F_indexing_ (class GGS__32_lstringlist & outArgument0,
+  protected: virtual void nt_terminal_5F_instruction_5F_indexing_ (class GGS__5B__32_lstring_5D_ & outArgument0,
                                                                    class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_terminal_5F_instruction_5F_indexing_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
@@ -1514,7 +1514,7 @@ class cParser_galgas_34_SyntaxComponentSyntax {
 
   protected: void rule_galgas_34_SyntaxComponentSyntax_syntax_5F_instruction_i8_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_SyntaxComponentSyntax_terminal_5F_instruction_5F_indexing_i9_ (GGS__32_lstringlist & outArgument0,
+  protected: void rule_galgas_34_SyntaxComponentSyntax_terminal_5F_instruction_5F_indexing_i9_ (GGS__5B__32_lstring_5D_ & outArgument0,
                                                                                                 Lexique_galgasScanner_34_ * inLexique) ;
 
 /*  protected: void rule_galgas_34_SyntaxComponentSyntax_terminal_5F_instruction_5F_indexing_i9_parse (Lexique_galgasScanner_34_ * inLexique) ; */
@@ -1833,38 +1833,38 @@ class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
     return mProperty_mAppTargetList ;
   }
 
-  public: GGS__32_stringlist mProperty_mCFileList ;
-  public: inline GGS__32_stringlist readProperty_mCFileList (void) const {
+  public: GGS__5B__32_string_5D_ mProperty_mCFileList ;
+  public: inline GGS__5B__32_string_5D_ readProperty_mCFileList (void) const {
     return mProperty_mCFileList ;
   }
 
-  public: GGS__32_stringlist mProperty_mCppFileList ;
-  public: inline GGS__32_stringlist readProperty_mCppFileList (void) const {
+  public: GGS__5B__32_string_5D_ mProperty_mCppFileList ;
+  public: inline GGS__5B__32_string_5D_ readProperty_mCppFileList (void) const {
     return mProperty_mCppFileList ;
   }
 
-  public: GGS__32_stringlist mProperty_m_5F_Swift_5F_FileList ;
-  public: inline GGS__32_stringlist readProperty_m_5F_Swift_5F_FileList (void) const {
+  public: GGS__5B__32_string_5D_ mProperty_m_5F_Swift_5F_FileList ;
+  public: inline GGS__5B__32_string_5D_ readProperty_m_5F_Swift_5F_FileList (void) const {
     return mProperty_m_5F_Swift_5F_FileList ;
   }
 
-  public: GGS__32_stringlist mProperty_m_5F_M_5F_FileList ;
-  public: inline GGS__32_stringlist readProperty_m_5F_M_5F_FileList (void) const {
+  public: GGS__5B__32_string_5D_ mProperty_m_5F_M_5F_FileList ;
+  public: inline GGS__5B__32_string_5D_ readProperty_m_5F_M_5F_FileList (void) const {
     return mProperty_m_5F_M_5F_FileList ;
   }
 
-  public: GGS__32_stringlist mProperty_m_5F_MM_5F_FileList ;
-  public: inline GGS__32_stringlist readProperty_m_5F_MM_5F_FileList (void) const {
+  public: GGS__5B__32_string_5D_ mProperty_m_5F_MM_5F_FileList ;
+  public: inline GGS__5B__32_string_5D_ readProperty_m_5F_MM_5F_FileList (void) const {
     return mProperty_m_5F_MM_5F_FileList ;
   }
 
-  public: GGS__32_stringlist mProperty_mFrameworkFileList ;
-  public: inline GGS__32_stringlist readProperty_mFrameworkFileList (void) const {
+  public: GGS__5B__32_string_5D_ mProperty_mFrameworkFileList ;
+  public: inline GGS__5B__32_string_5D_ readProperty_mFrameworkFileList (void) const {
     return mProperty_mFrameworkFileList ;
   }
 
-  public: GGS__32_stringlist mProperty_mHeaderFileList ;
-  public: inline GGS__32_stringlist readProperty_mHeaderFileList (void) const {
+  public: GGS__5B__32_string_5D_ mProperty_mHeaderFileList ;
+  public: inline GGS__5B__32_string_5D_ readProperty_mHeaderFileList (void) const {
     return mProperty_mHeaderFileList ;
   }
 
@@ -1888,23 +1888,23 @@ class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
     return mProperty_mProjectBuildConfigurationRef ;
   }
 
-  public: GGS__32_stringlist mProperty_mInfoPlistFileList ;
-  public: inline GGS__32_stringlist readProperty_mInfoPlistFileList (void) const {
+  public: GGS__5B__32_string_5D_ mProperty_mInfoPlistFileList ;
+  public: inline GGS__5B__32_string_5D_ readProperty_mInfoPlistFileList (void) const {
     return mProperty_mInfoPlistFileList ;
   }
 
-  public: GGS__32_stringlist mProperty_mXIB_5F_fileList ;
-  public: inline GGS__32_stringlist readProperty_mXIB_5F_fileList (void) const {
+  public: GGS__5B__32_string_5D_ mProperty_mXIB_5F_fileList ;
+  public: inline GGS__5B__32_string_5D_ readProperty_mXIB_5F_fileList (void) const {
     return mProperty_mXIB_5F_fileList ;
   }
 
-  public: GGS__32_stringlist mProperty_mTIFF_5F_fileList ;
-  public: inline GGS__32_stringlist readProperty_mTIFF_5F_fileList (void) const {
+  public: GGS__5B__32_string_5D_ mProperty_mTIFF_5F_fileList ;
+  public: inline GGS__5B__32_string_5D_ readProperty_mTIFF_5F_fileList (void) const {
     return mProperty_mTIFF_5F_fileList ;
   }
 
-  public: GGS__32_stringlist mProperty_mICNS_5F_fileList ;
-  public: inline GGS__32_stringlist readProperty_mICNS_5F_fileList (void) const {
+  public: GGS__5B__32_string_5D_ mProperty_mICNS_5F_fileList ;
+  public: inline GGS__5B__32_string_5D_ readProperty_mICNS_5F_fileList (void) const {
     return mProperty_mICNS_5F_fileList ;
   }
 
@@ -1954,31 +1954,31 @@ class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
     mProperty_mAppTargetList = inValue ;
   }
 
-  public: inline void setter_setMCFileList (const GGS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMCFileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mCFileList = inValue ;
   }
 
-  public: inline void setter_setMCppFileList (const GGS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMCppFileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mCppFileList = inValue ;
   }
 
-  public: inline void setter_setM_5F_Swift_5F_FileList (const GGS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setM_5F_Swift_5F_FileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_m_5F_Swift_5F_FileList = inValue ;
   }
 
-  public: inline void setter_setM_5F_M_5F_FileList (const GGS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setM_5F_M_5F_FileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_m_5F_M_5F_FileList = inValue ;
   }
 
-  public: inline void setter_setM_5F_MM_5F_FileList (const GGS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setM_5F_MM_5F_FileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_m_5F_MM_5F_FileList = inValue ;
   }
 
-  public: inline void setter_setMFrameworkFileList (const GGS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMFrameworkFileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mFrameworkFileList = inValue ;
   }
 
-  public: inline void setter_setMHeaderFileList (const GGS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMHeaderFileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mHeaderFileList = inValue ;
   }
 
@@ -1998,19 +1998,19 @@ class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
     mProperty_mProjectBuildConfigurationRef = inValue ;
   }
 
-  public: inline void setter_setMInfoPlistFileList (const GGS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMInfoPlistFileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mInfoPlistFileList = inValue ;
   }
 
-  public: inline void setter_setMXIB_5F_fileList (const GGS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMXIB_5F_fileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mXIB_5F_fileList = inValue ;
   }
 
-  public: inline void setter_setMTIFF_5F_fileList (const GGS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMTIFF_5F_fileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mTIFF_5F_fileList = inValue ;
   }
 
-  public: inline void setter_setMICNS_5F_fileList (const GGS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMICNS_5F_fileList (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mICNS_5F_fileList = inValue ;
   }
 
@@ -2033,21 +2033,21 @@ class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                       const GGS__5B_XCodeGroup_5D_ & in_mGroupList,
                                       const GGS__5B_XCodeToolTarget_5D_ & in_mToolTargetList,
                                       const GGS__5B_XCodeAppTarget_5D_ & in_mAppTargetList,
-                                      const GGS__32_stringlist & in_mCFileList,
-                                      const GGS__32_stringlist & in_mCppFileList,
-                                      const GGS__32_stringlist & in_m_5F_Swift_5F_FileList,
-                                      const GGS__32_stringlist & in_m_5F_M_5F_FileList,
-                                      const GGS__32_stringlist & in_m_5F_MM_5F_FileList,
-                                      const GGS__32_stringlist & in_mFrameworkFileList,
-                                      const GGS__32_stringlist & in_mHeaderFileList,
+                                      const GGS__5B__32_string_5D_ & in_mCFileList,
+                                      const GGS__5B__32_string_5D_ & in_mCppFileList,
+                                      const GGS__5B__32_string_5D_ & in_m_5F_Swift_5F_FileList,
+                                      const GGS__5B__32_string_5D_ & in_m_5F_M_5F_FileList,
+                                      const GGS__5B__32_string_5D_ & in_m_5F_MM_5F_FileList,
+                                      const GGS__5B__32_string_5D_ & in_mFrameworkFileList,
+                                      const GGS__5B__32_string_5D_ & in_mHeaderFileList,
                                       const GGS__5B_BuildFile_5D_ & in_mBuildFileList,
                                       const GGS_string & in_mDefaultConfigurationRef,
                                       const GGS__5B_string_5D_ & in_mDefaultConfigurationSettingList,
                                       const GGS_string & in_mProjectBuildConfigurationRef,
-                                      const GGS__32_stringlist & in_mInfoPlistFileList,
-                                      const GGS__32_stringlist & in_mXIB_5F_fileList,
-                                      const GGS__32_stringlist & in_mTIFF_5F_fileList,
-                                      const GGS__32_stringlist & in_mICNS_5F_fileList,
+                                      const GGS__5B__32_string_5D_ & in_mInfoPlistFileList,
+                                      const GGS__5B__32_string_5D_ & in_mXIB_5F_fileList,
+                                      const GGS__5B__32_string_5D_ & in_mTIFF_5F_fileList,
+                                      const GGS__5B__32_string_5D_ & in_mICNS_5F_fileList,
                                       const GGS_string & in_mApplicationBundleName,
                                       const GGS_string & in_mProjectName) ;
 
@@ -2260,7 +2260,7 @@ void extensionSetter_addAppTarget (class GGS_XcodeProjectDescriptor & ioObject,
                                    const class GGS__5B_string_5D_ constin_inResourceFileBuildRefs,
                                    const class GGS__5B_string_5D_ constin_inBuildConfigurationSettingList,
                                    const class GGS__5B_string_5D_ constin_inDependentTargetRefList,
-                                   const class GGS__32_stringlist constin_inProductCopyList,
+                                   const class GGS__5B__32_string_5D_ constin_inProductCopyList,
                                    class GGS_string & out_outProductFileRef,
                                    class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
@@ -2375,17 +2375,17 @@ GGS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (clas
                                                                             const class GGS__5B_string_5D_ & in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS,
                                                                             const class GGS__5B_XCodeToolTarget_5D_ & in_TOOL_5F_TARGET_5F_LIST,
                                                                             const class GGS__5B_XCodeAppTarget_5D_ & in_APP_5F_TARGET_5F_LIST,
-                                                                            const class GGS__32_stringlist & in_C_5F_FILE_5F_LIST,
-                                                                            const class GGS__32_stringlist & in_CPP_5F_FILE_5F_LIST,
-                                                                            const class GGS__32_stringlist & in_SWIFT_5F_FILE_5F_LIST,
-                                                                            const class GGS__32_stringlist & in_M_5F_FILE_5F_LIST,
-                                                                            const class GGS__32_stringlist & in_MM_5F_FILE_5F_LIST,
-                                                                            const class GGS__32_stringlist & in_FRAMEWORK_5F_FILE_5F_LIST,
-                                                                            const class GGS__32_stringlist & in_HEADER_5F_FILE_5F_LIST,
-                                                                            const class GGS__32_stringlist & in_PLIST_5F_FILE_5F_LIST,
-                                                                            const class GGS__32_stringlist & in_TIFF_5F_FILE_5F_LIST,
-                                                                            const class GGS__32_stringlist & in_ICNS_5F_FILE_5F_LIST,
-                                                                            const class GGS__32_stringlist & in_XIB_5F_FILE_5F_LIST,
+                                                                            const class GGS__5B__32_string_5D_ & in_C_5F_FILE_5F_LIST,
+                                                                            const class GGS__5B__32_string_5D_ & in_CPP_5F_FILE_5F_LIST,
+                                                                            const class GGS__5B__32_string_5D_ & in_SWIFT_5F_FILE_5F_LIST,
+                                                                            const class GGS__5B__32_string_5D_ & in_M_5F_FILE_5F_LIST,
+                                                                            const class GGS__5B__32_string_5D_ & in_MM_5F_FILE_5F_LIST,
+                                                                            const class GGS__5B__32_string_5D_ & in_FRAMEWORK_5F_FILE_5F_LIST,
+                                                                            const class GGS__5B__32_string_5D_ & in_HEADER_5F_FILE_5F_LIST,
+                                                                            const class GGS__5B__32_string_5D_ & in_PLIST_5F_FILE_5F_LIST,
+                                                                            const class GGS__5B__32_string_5D_ & in_TIFF_5F_FILE_5F_LIST,
+                                                                            const class GGS__5B__32_string_5D_ & in_ICNS_5F_FILE_5F_LIST,
+                                                                            const class GGS__5B__32_string_5D_ & in_XIB_5F_FILE_5F_LIST,
                                                                             const class GGS__5B_BuildFile_5D_ & in_BUILD_5F_FILE_5F_LIST,
                                                                             const class GGS_string & in_DEFAULT_5F_CONFIGURATION_5F_REF,
                                                                             const class GGS__5B_string_5D_ & in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST,

@@ -267,7 +267,7 @@ proc @syntaxInstructionListForGrammarAnalysis.tikzNodeForSyntaxInstruction
 //--------------------------------------------------------------------------------------------------
 
 list @rowList {
-  public let @2stringlist columns // Node name, node definition
+  public let [@2string] columns // Node name, node definition
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -9123,13 +9123,13 @@ void extensionMethod_displayRuleVertically (const GGS_productionRuleListForGramm
   const GGS_productionRuleListForGrammarAnalysis_2E_element temp_0 = inObject ;
   UpEnumerator_range enumerator_6987 (GGS_range (GGS_uint (uint32_t (1U)), temp_0.readProperty_mInstructionList ().getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 174)).substract_operation (GGS_uint (uint32_t (1U)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 174)))) ;
   while (enumerator_6987.hasCurrentObject ()) {
-    GGS__32_stringlist temp_1 = GGS__32_stringlist::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 175)) ;
-    temp_1.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (GGS_string::makeEmptyString (), GGS_string::makeEmptyString (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 175)) ;
+    GGS__5B__32_string_5D_ temp_1 = GGS__5B__32_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 175)) ;
+    temp_1.plusPlusAssignOperation (GGS__32_string::init_21__21_ (GGS_string::makeEmptyString (), GGS_string::makeEmptyString (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 175)) ;
     var_rowArray_6933.plusPlusAssignOperation (GGS_rowList_2E_element::init_21_ (temp_1, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 175)) ;
     enumerator_6987.gotoNextObject () ;
   }
-  GGS__32_stringlist temp_2 = GGS__32_stringlist::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 177)) ;
-  temp_2.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (var_currentNode_6894, GGS_string ("[firstPoint] ()"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 177)) ;
+  GGS__5B__32_string_5D_ temp_2 = GGS__5B__32_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 177)) ;
+  temp_2.plusPlusAssignOperation (GGS__32_string::init_21__21_ (var_currentNode_6894, GGS_string ("[firstPoint] ()"), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 177)) ;
   var_rowArray_6933.plusPlusAssignOperation (GGS_rowList_2E_element::init_21_ (temp_2, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 177)) ;
   GGS_string var_arrows_7102 = GGS_string::makeEmptyString () ;
   GGS_string var_arrowStyle_7128 = GGS_string ("--") ;
@@ -9155,7 +9155,7 @@ void extensionMethod_displayRuleVertically (const GGS_productionRuleListForGramm
   DownEnumerator_rowList enumerator_8214 (var_rowArray_6933) ;
   while (enumerator_8214.hasCurrentObject ()) {
     ioArgument_ioGeneratedCode.plusAssignOperation(GGS_string ("    "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 210)) ;
-    UpEnumerator__32_stringlist enumerator_8278 (enumerator_8214.current (HERE).readProperty_columns ()) ;
+    UpEnumerator__5B__32_string_5D_ enumerator_8278 (enumerator_8214.current (HERE).readProperty_columns ()) ;
     while (enumerator_8278.hasCurrentObject ()) {
       GalgasBool test_6 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_6) {

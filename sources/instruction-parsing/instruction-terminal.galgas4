@@ -17,66 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3SyntaxComponentSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <syntax_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                  !@syntaxInstructionAST outInstruction) {
-//    $\$terminal\$$ (?let @lstring terminalName) indexing (terminalReference)
-//    <actual_input_parameter_list_ggs3> (!?ioDeclarations, ?let @actualInputParameterListAST actualInputParameterList)
-//    <terminal_instruction_indexing> (?let indexNameList)
-//  //--- Get syntax directed translation result string
-//    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-//    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken
-//    select
-//      grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = @grammarInstructionSyntaxDirectedTranslationResultNone ()
-//      grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone ()
-//    or
-//      $:>$
-//      <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor)
-//      <syntax_directed_translation_result> (!?ioDeclarations, ?grammarInstructionSyntaxDirectedTranslationPreceedingToken)
-//    end
-//    outInstruction = @terminalCheckInstructionAST (
-//      !terminalName.location,
-//      terminalName,
-//      actualInputParameterList,
-//      indexNameList,
-//      grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
-//      grammarInstructionSyntaxDirectedTranslationPreceedingToken
-//    )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <terminal_instruction_indexing> (!@2lstringlist outIndexNameList) {
-//    outIndexNameList = @()
-//    select
-//    or
-//      $indexing$
-//      $($
-//      repeat
-//        $identifier$ (?let @lstring indexName) indexing (indexingNameReference)
-//        let @lstring postfixName
-//        select
-//          postfixName = "".nowhere
-//        or
-//          $"string"$ (?postfixName)
-//        end
-//        outIndexNameList ++= @(!indexName, !postfixName)
-//      while
-//        $,$
-//      end
-//      $)$
-//    end
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4SyntaxComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -109,7 +49,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <terminal_instruction_indexing> (!@2lstringlist outIndexNameList) {
+  rule <terminal_instruction_indexing> (![@2lstring] outIndexNameList) {
     outIndexNameList = @()
     select
     or
@@ -142,7 +82,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 final class @terminalCheckInstructionAST : @syntaxInstructionAST {
   private let @lstring mTerminalName
   private let @actualInputParameterListAST mActualInputParameterList
-  private let @2lstringlist mIndexingKeyList // Empty list if no index
+  private let [@2lstring] mIndexingKeyList // Empty list if no index
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
 
@@ -301,7 +241,7 @@ final class @terminalCheckInstructionForGeneration : @syntaxInstructionForGenera
   private let @lstring mTerminalName
   private let @string mLexiqueIdentifier
   private let [@terminalCheckAssignement] mTerminalCheckAssignementList
-  private let @2lstringlist mIndexingKeyList
+  private let [@2lstring] mIndexingKeyList
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
 }

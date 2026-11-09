@@ -2347,7 +2347,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual void nt_terminal_5F_instruction_5F_indexing_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_terminal_5F_instruction_5F_indexing_ (GGS__32_lstringlist & outArgument0,
+  public: virtual void nt_terminal_5F_instruction_5F_indexing_ (GGS__5B__32_lstring_5D_ & outArgument0,
                                                                 Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'type_definition' non terminal

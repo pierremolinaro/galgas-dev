@@ -531,7 +531,7 @@ final class @inputActualExistingVariableParameterAST : @actualParameterAST {
     end
     ioExclusiveVariableSet ++= self.mInputActualParameterName.string
   //--- Generate actual parameter
-    var @2stringlist poisonedVarCppNameList = @()
+    var [@2string] poisonedVarCppNameList = @()
     for varName in self.mPoisonedVarNameList do
       !?ioVariableMap.searchForWriteAccess (
         varName,
@@ -621,7 +621,7 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
         + "', it should be the same as the corresponding formal argument: '@" + inFormalArgumentType.definition.typeName.string + "'")
       end
     //--- Generate actual parameter
-      var @2stringlist poisonedVarCppNameList = @()
+      var [@2string] poisonedVarCppNameList = @()
       for varName in self.mPoisonedVarNameList do
         !?ioVariableMap.searchForWriteAccess (
           varName,
@@ -711,7 +711,7 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
         + inFormalArgumentType.definition.typeName.string + "'")
       end
     //--- Generate actual parameter
-      var @2stringlist poisonedVarCppNameList = @()
+      var [@2string] poisonedVarCppNameList = @()
       for varName in self.mPoisonedVarNameList do
         !?ioVariableMap.searchForWriteAccess (
           varName,
@@ -823,7 +823,7 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
     end
     ioExclusiveVariableSet ++= self.mInputActualParameterName.string
   //--- Generate actual parameter
-    var @2stringlist poisonedVarCppNameList = @()
+    var [@2string] poisonedVarCppNameList = @()
     for varName in self.mPoisonedVarNameList do
       !?ioVariableMap.searchForWriteAccess (
         varName,
@@ -940,7 +940,7 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
     end
     ioExclusiveVariableSet ++= self.mInputActualParameterName.string
   //--- Generate actual parameter
-    var @2stringlist poisonedVarCppNameList = @()
+    var [@2string] poisonedVarCppNameList = @()
     for varName in self.mPoisonedVarNameList do
       !?ioVariableMap.searchForWriteAccess (
         varName,
@@ -1015,7 +1015,7 @@ final class @inputSingleJokerActualParameterAST : @actualParameterAST {
     else
       let cppVarName = "joker_" + self.mActualSelector.location.startLocationIndex
     //--- Generate actual parameter
-      var @2stringlist poisonedVarCppNameList = @()
+      var [@2string] poisonedVarCppNameList = @()
       for varName in self.mPoisonedVarNameList do
         !?ioVariableMap.searchForWriteAccess (
           varName,

@@ -159,14 +159,14 @@ final class @outputInputActualParameterForGeneration : @actualParameterForGenera
 
 final class @inputActualParameterForGeneration : @actualParameterForGeneration {
   public let @string mInputActualCppName
-  public let @2stringlist mPoisonedVarNameList
+  public let [@2string] mPoisonedVarNameList
 }
 
 //--------------------------------------------------------------------------------------------------
 
 final class @inputJokerParameterForGeneration : @actualParameterForGeneration {
   public let @string mInputActualCppName
-  public let @2stringlist mPoisonedVarNameList
+  public let [@2string] mPoisonedVarNameList
 }
 
 //--------------------------------------------------------------------------------------------------

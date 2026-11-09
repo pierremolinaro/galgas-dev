@@ -4693,9 +4693,9 @@ void routine_updateGalgasTargets_3F_absoluteBuildDir_3F_buildDirName_3F__3F__3F_
       GGS__5B_string_5D_ temp_68 = GGS__5B_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 1243)) ;
       temp_68.plusPlusAssignOperation (var_releaseTargetRef_52563  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 1243)) ;
       temp_68.plusPlusAssignOperation (var_debugTargetRef_53303  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 1243)) ;
-      GGS__32_stringlist temp_69 = GGS__32_stringlist::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 1244)) ;
-      temp_69.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (var_releaseProductFileRef_52607, constinArgument_inTargetName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 1244)) ;
-      temp_69.plusPlusAssignOperation (GGS__32_stringlist_2E_element::init_21__21_ (var_debugProductFileRef_53345, constinArgument_inTargetName.add_operation (GGS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 1244)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 1244)) ;
+      GGS__5B__32_string_5D_ temp_69 = GGS__5B__32_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 1244)) ;
+      temp_69.plusPlusAssignOperation (GGS__32_string::init_21__21_ (var_releaseProductFileRef_52607, constinArgument_inTargetName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 1244)) ;
+      temp_69.plusPlusAssignOperation (GGS__32_string::init_21__21_ (var_debugProductFileRef_53345, constinArgument_inTargetName.add_operation (GGS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 1244)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 1244)) ;
       GGS_string joker_54120 ; // Joker input parameter
       extensionSetter_addAppTarget (var_xcodeProject_28738, constinArgument_inTargetName.add_operation (GGS_string (" IDE"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 1237)), constinArgument_inTargetName.getter_capitalizingFirstCharacter (SOURCE_FILE ("galgasTargetGeneration.galgas4", 1238)).add_operation (GGS_string (" IDE"), inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 1238)), var_swift_5F_FileRefList_33747, var_frameworksFileRefList_33789.add_operation (var_appFrameworksFileRefList_32993, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 1240)), var_resourceFileBuildRefs_33835, var_cocoaConfigurationSettingList_53414, temp_68, temp_69, joker_54120, inCompiler COMMA_SOURCE_FILE ("galgasTargetGeneration.galgas4", 1236)) ;
       }
@@ -6437,19 +6437,13 @@ const char * gWrapperFileContent_0_typeGenerationTemplate =
   "extern proc #usefull println (let @string inString)\n"
   "\n"
   "extern proc #usefull print (let @string inString)\n"
-  "\n"
-  "list @2lstringlist #usefull {\n"
-  "  public var @lstring mValue0\n"
-  "  public var @lstring mValue1\n"
-  "}\n"
-  "\n"
    ;
 
 const cRegularFileWrapper gWrapperFile_0_typeGenerationTemplate (
   "galgas-predefined-entities.txt",
   "txt",
   true, // Text file
- 198, // Text length
+ 104, // Text length
   gWrapperFileContent_0_typeGenerationTemplate
 ) ;
 

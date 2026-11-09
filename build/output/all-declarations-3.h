@@ -7370,8 +7370,8 @@ class GGS_XCodeAppTarget : public AC_GALGAS_root {
     return mProperty_mFrameworkBuildPhaseRef ;
   }
 
-  public: GGS__32_stringlist mProperty_mDependentTargets ;
-  public: inline GGS__32_stringlist readProperty_mDependentTargets (void) const {
+  public: GGS__5B__32_string_5D_ mProperty_mDependentTargets ;
+  public: inline GGS__5B__32_string_5D_ readProperty_mDependentTargets (void) const {
     return mProperty_mDependentTargets ;
   }
 
@@ -7437,7 +7437,7 @@ class GGS_XCodeAppTarget : public AC_GALGAS_root {
     mProperty_mFrameworkBuildPhaseRef = inValue ;
   }
 
-  public: inline void setter_setMDependentTargets (const GGS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMDependentTargets (const GGS__5B__32_string_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mDependentTargets = inValue ;
   }
 
@@ -7464,7 +7464,7 @@ class GGS_XCodeAppTarget : public AC_GALGAS_root {
                               const GGS_string & in_mBuildConfigurationRef,
                               const GGS__5B_string_5D_ & in_mFrameworksFileRefList,
                               const GGS_string & in_mFrameworkBuildPhaseRef,
-                              const GGS__32_stringlist & in_mDependentTargets,
+                              const GGS__5B__32_string_5D_ & in_mDependentTargets,
                               const GGS_string & in_mResourceBuildRef,
                               const GGS__5B_string_5D_ & in_mResourceFileBuildRefs) ;
 
@@ -7488,7 +7488,7 @@ class GGS_XCodeAppTarget : public AC_GALGAS_root {
                                                                                                   const class GGS_string & inOperand8,
                                                                                                   const class GGS__5B_string_5D_ & inOperand9,
                                                                                                   const class GGS_string & inOperand10,
-                                                                                                  const class GGS__32_stringlist & inOperand11,
+                                                                                                  const class GGS__5B__32_string_5D_ & inOperand11,
                                                                                                   const class GGS_string & inOperand12,
                                                                                                   const class GGS__5B_string_5D_ & inOperand13,
                                                                                                   Compiler * inCompiler

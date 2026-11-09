@@ -15845,7 +15845,7 @@ GGS_XCodeAppTarget GGS_XCodeAppTarget::init_21__21__21__21__21__21__21__21__21__
                                                                                                      const GGS_string & in_mBuildConfigurationRef,
                                                                                                      const GGS__5B_string_5D_ & in_mFrameworksFileRefList,
                                                                                                      const GGS_string & in_mFrameworkBuildPhaseRef,
-                                                                                                     const GGS__32_stringlist & in_mDependentTargets,
+                                                                                                     const GGS__5B__32_string_5D_ & in_mDependentTargets,
                                                                                                      const GGS_string & in_mResourceBuildRef,
                                                                                                      const GGS__5B_string_5D_ & in_mResourceFileBuildRefs,
                                                                                                      Compiler * inCompiler
@@ -15887,7 +15887,7 @@ GGS_XCodeAppTarget::GGS_XCodeAppTarget (const GGS_string & inOperand0,
                                         const GGS_string & inOperand8,
                                         const GGS__5B_string_5D_ & inOperand9,
                                         const GGS_string & inOperand10,
-                                        const GGS__32_stringlist & inOperand11,
+                                        const GGS__5B__32_string_5D_ & inOperand11,
                                         const GGS_string & inOperand12,
                                         const GGS__5B_string_5D_ & inOperand13) :
 mProperty_mTargetRef (inOperand0),

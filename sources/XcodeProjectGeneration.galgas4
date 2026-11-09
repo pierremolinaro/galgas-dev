@@ -173,7 +173,7 @@ mutating proc @XcodeProjectDescriptor.addAppTarget
   ?resourceFileRefs:let [@string] inResourceFileBuildRefs,
   ?buildConfigurationSettingList:let [@string] inBuildConfigurationSettingList,
   ?dependantTargetList:let [@string] inDependentTargetRefList,
-  ?productCopyList:let @2stringlist inProductCopyList,
+  ?productCopyList:let [@2string] inProductCopyList,
   !productFileRef:@string outProductFileRef ) {
   !?self.getReferenceKey (?ref: outProductFileRef)
   !?self.getReferenceKey (?ref: let buildPhaseRef)
@@ -182,7 +182,7 @@ mutating proc @XcodeProjectDescriptor.addAppTarget
   !?self.getReferenceKey (?ref: let buildConfigurationRef)
   !?self.getReferenceKey (?ref: let frameworkBuildRef)
   !?self.getReferenceKey (?ref: let resourceBuildRef)
-  var @2stringlist dependentTargets = @()
+  var [@2string] dependentTargets = @()
   for entry in inDependentTargetRefList do
     !?self.getReferenceKey (?ref: let dependencyBuildRef)
     dependentTargets ++= @(dependencyBuildRef, entry)
@@ -356,7 +356,7 @@ struct @XCodeAppTarget {
   public let @string mBuildConfigurationRef
   public let [@string] mFrameworksFileRefList
   public let @string mFrameworkBuildPhaseRef
-  public let @2stringlist mDependentTargets
+  public let [@2string] mDependentTargets
   public let @string mResourceBuildRef
   public let [@string] mResourceFileBuildRefs
 }
@@ -391,23 +391,23 @@ struct @XcodeProjectDescriptor {
   public var [@XCodeGroup] mGroupList = @()
   public var [@XCodeToolTarget] mToolTargetList = @()
   public var [@XCodeAppTarget] mAppTargetList = @()
-  public var @2stringlist mCFileList = @()
-  public var @2stringlist mCppFileList = @()
-  public var @2stringlist m_Swift_FileList = @()
-  public var @2stringlist m_M_FileList = @()
-  public var @2stringlist m_MM_FileList = @()
-  public var @2stringlist mFrameworkFileList = @()
-  public var @2stringlist mHeaderFileList = @()
+  public var [@2string] mCFileList = @()
+  public var [@2string] mCppFileList = @()
+  public var [@2string] m_Swift_FileList = @()
+  public var [@2string] m_M_FileList = @()
+  public var [@2string] m_MM_FileList = @()
+  public var [@2string] mFrameworkFileList = @()
+  public var [@2string] mHeaderFileList = @()
   public var [@BuildFile] mBuildFileList = @()
 //--- Default configuration
   public let @string mDefaultConfigurationRef = ""
   public var [@string] mDefaultConfigurationSettingList = @()
   public let @string mProjectBuildConfigurationRef = ""
 //--- Resource files
-  public var @2stringlist mInfoPlistFileList = @()
-  public var @2stringlist mXIB_fileList = @()
-  public var @2stringlist mTIFF_fileList = @()
-  public var @2stringlist mICNS_fileList = @()
+  public var [@2string] mInfoPlistFileList = @()
+  public var [@2string] mXIB_fileList = @()
+  public var [@2string] mTIFF_fileList = @()
+  public var [@2string] mICNS_fileList = @()
 //--- Project
   public var @string mApplicationBundleName = ""
   public var @string mProjectName = ""
@@ -425,17 +425,17 @@ private filewrapper xcodeProjectGenerationFilewrapper in "+generation-templates/
     ?[@string] MAIN_GROUP_CHILDREN_REFS,
     ?[@XCodeToolTarget] TOOL_TARGET_LIST,
     ?[@XCodeAppTarget] APP_TARGET_LIST,
-    ?@2stringlist C_FILE_LIST,
-    ?@2stringlist CPP_FILE_LIST,
-    ?@2stringlist SWIFT_FILE_LIST,
-    ?@2stringlist M_FILE_LIST,
-    ?@2stringlist MM_FILE_LIST,
-    ?@2stringlist FRAMEWORK_FILE_LIST,
-    ?@2stringlist HEADER_FILE_LIST,
-    ?@2stringlist PLIST_FILE_LIST,
-    ?@2stringlist TIFF_FILE_LIST,
-    ?@2stringlist ICNS_FILE_LIST,
-    ?@2stringlist XIB_FILE_LIST,
+    ?[@2string] C_FILE_LIST,
+    ?[@2string] CPP_FILE_LIST,
+    ?[@2string] SWIFT_FILE_LIST,
+    ?[@2string] M_FILE_LIST,
+    ?[@2string] MM_FILE_LIST,
+    ?[@2string] FRAMEWORK_FILE_LIST,
+    ?[@2string] HEADER_FILE_LIST,
+    ?[@2string] PLIST_FILE_LIST,
+    ?[@2string] TIFF_FILE_LIST,
+    ?[@2string] ICNS_FILE_LIST,
+    ?[@2string] XIB_FILE_LIST,
     ?[@BuildFile] BUILD_FILE_LIST,
     ?@string DEFAULT_CONFIGURATION_REF,
     ?[@string] DEFAULT_CONFIGURATION_SETTING_LIST,

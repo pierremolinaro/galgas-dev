@@ -9879,14 +9879,14 @@ class GGS_inputActualParameterForGeneration : public GGS_actualParameterForGener
 //--------------------------------- Property access
   public: class GGS_string readProperty_mInputActualCppName (void) const ;
 
-  public: class GGS__32_stringlist readProperty_mPoisonedVarNameList (void) const ;
+  public: class GGS__5B__32_string_5D_ readProperty_mPoisonedVarNameList (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
   public: static GGS_inputActualParameterForGeneration init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                          const class GGS_string & inOperand1,
-                                                                         const class GGS__32_stringlist & inOperand2,
+                                                                         const class GGS__5B__32_string_5D_ & inOperand2,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
@@ -9924,7 +9924,7 @@ class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGen
 //--------------------------------- Initializers
   public: void inputActualParameterForGeneration_init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                    const class GGS_string & inOperand1,
-                                                                   const class GGS__32_stringlist & inOperand2,
+                                                                   const class GGS__5B__32_string_5D_ & inOperand2,
                                                                    Compiler * inCompiler) ;
 
 
@@ -9945,7 +9945,7 @@ class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGen
 
 //--- Properties
   public: GGS_string mProperty_mInputActualCppName ;
-  public: GGS__32_stringlist mProperty_mPoisonedVarNameList ;
+  public: GGS__5B__32_string_5D_ mProperty_mPoisonedVarNameList ;
 
 
 //--- Default constructor
@@ -9954,7 +9954,7 @@ class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGen
 //--- Constructor
   public: cPtr_inputActualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                   const GGS_string & in_mInputActualCppName,
-                                                  const GGS__32_stringlist & in_mPoisonedVarNameList,
+                                                  const GGS__5B__32_string_5D_ & in_mPoisonedVarNameList,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
@@ -10055,14 +10055,14 @@ class GGS_inputJokerParameterForGeneration : public GGS_actualParameterForGenera
 //--------------------------------- Property access
   public: class GGS_string readProperty_mInputActualCppName (void) const ;
 
-  public: class GGS__32_stringlist readProperty_mPoisonedVarNameList (void) const ;
+  public: class GGS__5B__32_string_5D_ readProperty_mPoisonedVarNameList (void) const ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
   public: static GGS_inputJokerParameterForGeneration init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                         const class GGS_string & inOperand1,
-                                                                        const class GGS__32_stringlist & inOperand2,
+                                                                        const class GGS__5B__32_string_5D_ & inOperand2,
                                                                         Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
@@ -10100,7 +10100,7 @@ class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGene
 //--------------------------------- Initializers
   public: void inputJokerParameterForGeneration_init_21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
                                                                   const class GGS_string & inOperand1,
-                                                                  const class GGS__32_stringlist & inOperand2,
+                                                                  const class GGS__5B__32_string_5D_ & inOperand2,
                                                                   Compiler * inCompiler) ;
 
 
@@ -10121,7 +10121,7 @@ class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGene
 
 //--- Properties
   public: GGS_string mProperty_mInputActualCppName ;
-  public: GGS__32_stringlist mProperty_mPoisonedVarNameList ;
+  public: GGS__5B__32_string_5D_ mProperty_mPoisonedVarNameList ;
 
 
 //--- Default constructor
@@ -10130,7 +10130,7 @@ class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGene
 //--- Constructor
   public: cPtr_inputJokerParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
                                                  const GGS_string & in_mInputActualCppName,
-                                                 const GGS__32_stringlist & in_mPoisonedVarNameList,
+                                                 const GGS__5B__32_string_5D_ & in_mPoisonedVarNameList,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
