@@ -179,22 +179,57 @@ void GGS_%!TYPE_IDENTIFIER%::setter_popLast (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% 
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_first (LOCATION_ARGS) const {
-  if (isValid ()) {
-    return mSharedArray (0 COMMA_THERE) ;
-  }else{
-    return GGS_%!ELEMENT_TYPE_IDENTIFIER% () ;
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_removingFirst (%?^%const GGS_uint & inIndex,
+        %!^%Compiler * inCompiler
+        %!^%COMMA_LOCATION_ARGS) const {
+  GGS_%!TYPE_IDENTIFIER% result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS_%!TYPE_IDENTIFIER%::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }
   }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_last (LOCATION_ARGS) const {
-  if (isValid ()) {
-    return mSharedArray.lastObject (THERE) ;
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_first (%?^%Compiler * inCompiler
+                                               %!^%COMMA_LOCATION_ARGS) const {
+  GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
   }else{
-    return GGS_%!ELEMENT_TYPE_IDENTIFIER% () ;
+    result = mSharedArray (0 COMMA_THERE) ;
   }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_last (%?^%Compiler * inCompiler
+                                               %!^%COMMA_LOCATION_ARGS) const {
+  GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

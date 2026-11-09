@@ -215,22 +215,57 @@ void GGS__5B_uint_36__34__5D_::setter_popLast (GGS_uint_36__34_ & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS__5B_uint_36__34__5D_::getter_first (LOCATION_ARGS) const {
-  if (isValid ()) {
-    return mSharedArray (0 COMMA_THERE) ;
-  }else{
-    return GGS_uint_36__34_ () ;
+GGS__5B_uint_36__34__5D_ GGS__5B_uint_36__34__5D_::getter_removingFirst (const GGS_uint & inIndex,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const {
+  GGS__5B_uint_36__34__5D_ result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_uint_36__34__5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }
   }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS__5B_uint_36__34__5D_::getter_last (LOCATION_ARGS) const {
-  if (isValid ()) {
-    return mSharedArray.lastObject (THERE) ;
+GGS_uint_36__34_ GGS__5B_uint_36__34__5D_::getter_first (Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  GGS_uint_36__34_ result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
   }else{
-    return GGS_uint_36__34_ () ;
+    result = mSharedArray (0 COMMA_THERE) ;
   }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint_36__34_ GGS__5B_uint_36__34__5D_::getter_last (Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GGS_uint_36__34_ result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -635,22 +670,57 @@ void GGS__5B_string_5D_::setter_popLast (GGS_string & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS__5B_string_5D_::getter_first (LOCATION_ARGS) const {
-  if (isValid ()) {
-    return mSharedArray (0 COMMA_THERE) ;
-  }else{
-    return GGS_string () ;
+GGS__5B_string_5D_ GGS__5B_string_5D_::getter_removingFirst (const GGS_uint & inIndex,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const {
+  GGS__5B_string_5D_ result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_string_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }
   }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS__5B_string_5D_::getter_last (LOCATION_ARGS) const {
-  if (isValid ()) {
-    return mSharedArray.lastObject (THERE) ;
+GGS_string GGS__5B_string_5D_::getter_first (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GGS_string result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
   }else{
-    return GGS_string () ;
+    result = mSharedArray (0 COMMA_THERE) ;
   }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS__5B_string_5D_::getter_last (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GGS_string result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1014,22 +1084,57 @@ void GGS__5B_lstring_5D_::setter_popLast (GGS_lstring & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring GGS__5B_lstring_5D_::getter_first (LOCATION_ARGS) const {
-  if (isValid ()) {
-    return mSharedArray (0 COMMA_THERE) ;
-  }else{
-    return GGS_lstring () ;
+GGS__5B_lstring_5D_ GGS__5B_lstring_5D_::getter_removingFirst (const GGS_uint & inIndex,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }
   }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring GGS__5B_lstring_5D_::getter_last (LOCATION_ARGS) const {
-  if (isValid ()) {
-    return mSharedArray.lastObject (THERE) ;
+GGS_lstring GGS__5B_lstring_5D_::getter_first (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GGS_lstring result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
   }else{
-    return GGS_lstring () ;
+    result = mSharedArray (0 COMMA_THERE) ;
   }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS__5B_lstring_5D_::getter_last (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GGS_lstring result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1304,22 +1409,57 @@ void GGS__5B_uint_5D_::setter_popLast (GGS_uint & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_uint_5D_::getter_first (LOCATION_ARGS) const {
-  if (isValid ()) {
-    return mSharedArray (0 COMMA_THERE) ;
-  }else{
-    return GGS_uint () ;
+GGS__5B_uint_5D_ GGS__5B_uint_5D_::getter_removingFirst (const GGS_uint & inIndex,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  GGS__5B_uint_5D_ result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
+    if (startIndex >= int32_t (count ())) {
+      String errorMessage ;
+      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
+      errorMessage.appendSigned (startIndex) ;
+      errorMessage.appendCString (" too large (array size is") ;
+      errorMessage.appendSigned (mSharedArray.count ()) ;
+      errorMessage.appendCString (")") ;
+      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    }else{
+      const int32_t lastIndex = int32_t (count ()) - 1 ;
+      result = GGS__5B_uint_5D_::init (inCompiler COMMA_THERE) ;
+      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
+    }
   }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_uint_5D_::getter_last (LOCATION_ARGS) const {
-  if (isValid ()) {
-    return mSharedArray.lastObject (THERE) ;
+GGS_uint GGS__5B_uint_5D_::getter_first (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'first' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
   }else{
-    return GGS_uint () ;
+    result = mSharedArray (0 COMMA_THERE) ;
   }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS__5B_uint_5D_::getter_last (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (!isValid ()) {
+  }else if (mSharedArray.count () == 0) {
+    const String errorMessage = "'last' getter call on an empty array'" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+  }else{
+    result = mSharedArray.lastObject (THERE) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

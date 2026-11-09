@@ -42331,7 +42331,7 @@ const char * gWrapperFileContent_26_libpmFileWrapper =
   "//\n"
   "//  This file is part of libpm library\n"
   "//\n"
-  "//  Copyright (C) 1997, ..., 2025 Pierre Molinaro.\n"
+  "//  Copyright (C) 1997, ..., 2026 Pierre Molinaro.\n"
   "//\n"
   "//  e-mail : pierre@pcmolinaro.name\n"
   "//\n"
@@ -42350,6 +42350,10 @@ const char * gWrapperFileContent_26_libpmFileWrapper =
   "\n"
   "#include \"SharedObject.h\"\n"
   "#include \"GenericUniqueArray.h\"\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "#include <algorithm>\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "//   Template class predeclaration\n"
@@ -42409,7 +42413,7 @@ const char * gWrapperFileContent_26_libpmFileWrapper =
   "\n"
   "//--- Allocation Constructor (array initialized with inValue)\n"
   "  public: GenericArray (const int32_t inCount,\n"
-  "                    const ELEMENT & inValue COMMA_LOCATION_ARGS) ;\n"
+  "                        const ELEMENT & inValue COMMA_LOCATION_ARGS) ;\n"
   "\n"
   "//--- Handle Copy\n"
   "  public: GenericArray (const GenericArray <ELEMENT> &) ;\n"
@@ -42509,6 +42513,9 @@ const char * gWrapperFileContent_26_libpmFileWrapper =
   "//  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2\n"
   "  public: void reverseQuickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) ;\n"
   "\n"
+  "//--- Sublist\n"
+  "  public: GenericArray <ELEMENT> subList (const int32_t inFirstIndex,\n"
+  "                                          const int32_t inLastIndex) const ;\n"
   "//--- Shared Array\n"
   "  private: InternalSharedArray <ELEMENT> * mSharedArray ;\n"
   "} ;\n"
@@ -42873,6 +42880,22 @@ const char * gWrapperFileContent_26_libpmFileWrapper =
   "}\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
+  "//   subList\n"
+  "//--------------------------------------------------------------------------------------------------\n"
+  "\n"
+  "template <typename ELEMENT>\n"
+  "GenericArray <ELEMENT> GenericArray <ELEMENT>::subList (const int32_t inFirstIndex,\n"
+  "                                                        const int32_t inLastIndex) const {\n"
+  "  GenericArray <ELEMENT> result ;\n"
+  "  const int32_t firstIndex = std::max (inFirstIndex, 0) ;\n"
+  "  const int32_t lastIndex  = std::min (inLastIndex, count () - 1) ;\n"
+  "  for (int32_t i = firstIndex ; i <= lastIndex ; i++) {\n"
+  "    result.appendObject (this->operator () (i COMMA_HERE)) ;\n"
+  "  }\n"
+  "  return result ;\n"
+  "}\n"
+  "\n"
+  "//--------------------------------------------------------------------------------------------------\n"
   "//--- Sort array with a sort function (does nothing if inCompareFunction == nullptr)\n"
   "//  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2\n"
   "template <typename ELEMENT>\n"
@@ -42902,7 +42925,7 @@ const cRegularFileWrapper gWrapperFile_26_libpmFileWrapper (
   "GenericArray.h",
   "h",
   true, // Text file
- 23359, // Text length
+ 24369, // Text length
   gWrapperFileContent_26_libpmFileWrapper
 ) ;
 

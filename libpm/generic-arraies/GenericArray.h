@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library
 //
-//  Copyright (C) 1997, ..., 2025 Pierre Molinaro.
+//  Copyright (C) 1997, ..., 2026 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -23,6 +23,10 @@
 
 #include "SharedObject.h"
 #include "GenericUniqueArray.h"
+
+//--------------------------------------------------------------------------------------------------
+
+#include <algorithm>
 
 //--------------------------------------------------------------------------------------------------
 //   Template class predeclaration
@@ -82,7 +86,7 @@ template <typename ELEMENT> class GenericArray final {
 
 //--- Allocation Constructor (array initialized with inValue)
   public: GenericArray (const int32_t inCount,
-                    const ELEMENT & inValue COMMA_LOCATION_ARGS) ;
+                        const ELEMENT & inValue COMMA_LOCATION_ARGS) ;
 
 //--- Handle Copy
   public: GenericArray (const GenericArray <ELEMENT> &) ;
@@ -182,6 +186,9 @@ template <typename ELEMENT> class GenericArray final {
 //  inCompareFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
   public: void reverseQuickSortUsingFunction (CompareFunction <ELEMENT> inCompareFunction) ;
 
+//--- Sublist
+  public: GenericArray <ELEMENT> subList (const int32_t inFirstIndex,
+                                          const int32_t inLastIndex) const ;
 //--- Shared Array
   private: InternalSharedArray <ELEMENT> * mSharedArray ;
 } ;
@@ -543,6 +550,22 @@ void GenericArray <ELEMENT>::insertObjectAtIndex (const ELEMENT & inObject,
   }
   macroUniqueSharedObject (mSharedArray) ;
   mSharedArray->mUniqueArray.insertObjectAtIndex (inObject, inIndex COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//   subList
+//--------------------------------------------------------------------------------------------------
+
+template <typename ELEMENT>
+GenericArray <ELEMENT> GenericArray <ELEMENT>::subList (const int32_t inFirstIndex,
+                                                        const int32_t inLastIndex) const {
+  GenericArray <ELEMENT> result ;
+  const int32_t firstIndex = std::max (inFirstIndex, 0) ;
+  const int32_t lastIndex  = std::min (inLastIndex, count () - 1) ;
+  for (int32_t i = firstIndex ; i <= lastIndex ; i++) {
+    result.appendObject (this->operator () (i COMMA_HERE)) ;
+  }
+  return result ;
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -3129,9 +3129,15 @@ class GGS__5B_uint_36__34__5D_ final : public AC_GALGAS_root {
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_uint_36__34_ getter_first (LOCATION_ARGS) const ;
+  public: class GGS_uint_36__34_ getter_first (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint_36__34_ getter_last (LOCATION_ARGS) const ;
+  public: class GGS_uint_36__34_ getter_last (Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_uint_36__34__5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -3295,9 +3301,15 @@ class GGS__5B_string_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_string getter_first (LOCATION_ARGS) const ;
+  public: class GGS_string getter_first (Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_string getter_last (LOCATION_ARGS) const ;
+  public: class GGS_string getter_last (Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_string_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -3538,9 +3550,15 @@ class GGS__5B_lstring_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_lstring getter_first (LOCATION_ARGS) const ;
+  public: class GGS_lstring getter_first (Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lstring getter_last (LOCATION_ARGS) const ;
+  public: class GGS_lstring getter_last (Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lstring_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -3704,9 +3722,15 @@ class GGS__5B_uint_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_first (LOCATION_ARGS) const ;
+  public: class GGS_uint getter_first (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_uint getter_last (LOCATION_ARGS) const ;
+  public: class GGS_uint getter_last (Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_uint_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts

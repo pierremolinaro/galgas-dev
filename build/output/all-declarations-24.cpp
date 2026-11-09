@@ -878,7 +878,7 @@ void cPtr_mapDeclarationAST::method_enterDeclarationInSemanticContext (GGS_equat
     test_25 = GGS_bool (ComparisonKind::greaterOrEqual, temp_26.readProperty_mInsertOrReplaceDeclarationListAST ().getter_count (SOURCE_FILE ("declaration-type-map.galgas4", 485)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
     if (GalgasBool::boolTrue == test_25) {
       const GGS_mapDeclarationAST temp_27 = this ;
-      GGS_location var_insertOrReplaceLocation_17792 = temp_27.readProperty_mInsertOrReplaceDeclarationListAST ().getter_first (SOURCE_FILE ("declaration-type-map.galgas4", 486)) ;
+      GGS_location var_insertOrReplaceLocation_17792 = temp_27.readProperty_mInsertOrReplaceDeclarationListAST ().getter_first (inCompiler COMMA_SOURCE_FILE ("declaration-type-map.galgas4", 486)) ;
       {
       var_setterMap_10702.setter_insertOrReplace (GGS_lstring::init_21__21_ (GGS_string ("insertOrReplace"), var_insertOrReplaceLocation_17792, inCompiler COMMA_HERE), GGS_methodKind::class_func_definedAsMember (SOURCE_FILE ("declaration-type-map.galgas4", 489)), var_insertMethodFormalArgumentList_12872, GGS_bool (false), GGS_methodQualifier::class_func_isBasic (SOURCE_FILE ("declaration-type-map.galgas4", 492)), GGS_string::makeEmptyString () COMMA_SOURCE_FILE ("declaration-type-map.galgas4", 487)) ;
       }
@@ -1094,7 +1094,7 @@ void cPtr_mapDeclarationAST::method_semanticAnalysis (GGS__5B_lstring_5D_ & ioAr
     test_17 = var_hasInsertOrReplaceModifier_25771.operator_and (var_insertMethodMap_24701.getter_contains (GGS_string ("insertOrReplace") COMMA_SOURCE_FILE ("declaration-type-map.galgas4", 687)) COMMA_SOURCE_FILE ("declaration-type-map.galgas4", 687)).boolEnum () ;
     if (GalgasBool::boolTrue == test_17) {
       const GGS_mapDeclarationAST temp_18 = this ;
-      GGS_location var_insertOrReplaceDeclarationLocation_25946 = temp_18.readProperty_mInsertOrReplaceDeclarationListAST ().getter_first (SOURCE_FILE ("declaration-type-map.galgas4", 688)) ;
+      GGS_location var_insertOrReplaceDeclarationLocation_25946 = temp_18.readProperty_mInsertOrReplaceDeclarationListAST ().getter_first (inCompiler COMMA_SOURCE_FILE ("declaration-type-map.galgas4", 688)) ;
       GenericArray <FixItDescription> fixItArray19 ;
       inCompiler->emitSemanticError (var_insertOrReplaceDeclarationLocation_25946, GGS_string ("the insertOrReplace' mutating proc cannot be declared : an insert mutating proc or a remove mutating proc has been declared with this name"), fixItArray19  COMMA_SOURCE_FILE ("declaration-type-map.galgas4", 689)) ;
     }
@@ -6652,7 +6652,7 @@ static void routine_programRule_5F__30_ (const GGS_lstring constinArgument_inSou
       }
     }
     if (GalgasBool::boolFalse == test_3) {
-      GGS_string var_projectFilePath_3606 = var_parentDirectory_3040.add_operation (GGS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 87)).add_operation (var_candidateProjectFiles_3136.getter_first (SOURCE_FILE ("galgasProgram.galgas4", 87)), inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 87)) ;
+      GGS_string var_projectFilePath_3606 = var_parentDirectory_3040.add_operation (GGS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 87)).add_operation (var_candidateProjectFiles_3136.getter_first (inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 87)), inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 87)) ;
       {
       routine_parseAndAnalyzeProject_3F__3F_ (GGS_lstring::init_21__21_ (var_projectFilePath_3606, constinArgument_inSourceFile.readProperty_location (), inCompiler COMMA_HERE), constinArgument_inSourceFile.readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("galgasProgram.galgas4", 88)) ;
       }

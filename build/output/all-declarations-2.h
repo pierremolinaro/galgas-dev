@@ -9,6 +9,311 @@
 #include "all-declarations-1.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @nonTerminalToAddList list enumerator
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_nonTerminalToAddList final {
+  public: DownEnumerator_nonTerminalToAddList (const class GGS_nonTerminalToAddList & inList) ;
+
+  public: ~ DownEnumerator_nonTerminalToAddList (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
+
+  public: class GGS_string current_mSyntaxComponentName (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mNonTerminalToAddCount (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_nonTerminalToAddList_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <GGS_nonTerminalToAddList_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_nonTerminalToAddList (const DownEnumerator_nonTerminalToAddList &) = delete ;
+  private: DownEnumerator_nonTerminalToAddList & operator = (const DownEnumerator_nonTerminalToAddList &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_nonTerminalToAddList final {
+  public: UpEnumerator_nonTerminalToAddList (const class GGS_nonTerminalToAddList & inList)  ;
+
+  public: ~ UpEnumerator_nonTerminalToAddList (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
+
+  public: class GGS_string current_mSyntaxComponentName (LOCATION_ARGS) const ;
+  public: class GGS_uint current_mNonTerminalToAddCount (LOCATION_ARGS) const ;
+//--- Current element access
+  public: class GGS_nonTerminalToAddList_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <GGS_nonTerminalToAddList_2E_element> mArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_nonTerminalToAddList (const UpEnumerator_nonTerminalToAddList &) = delete ;
+  private: UpEnumerator_nonTerminalToAddList & operator = (const UpEnumerator_nonTerminalToAddList &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// @nonTerminalToAddList list
+//--------------------------------------------------------------------------------------------------
+
+class GGS_nonTerminalToAddList : public AC_GALGAS_root {
+//--- Private property
+  private: GenericArray <GGS_nonTerminalToAddList_2E_element> mArray ;
+
+//--- Default constructor
+  public: GGS_nonTerminalToAddList (void) ;
+
+//--- Destructor
+  public: virtual ~ GGS_nonTerminalToAddList (void) = default ;
+
+//--- Copy
+  public: GGS_nonTerminalToAddList (const GGS_nonTerminalToAddList &) = default ;
+  public: GGS_nonTerminalToAddList & operator = (const GGS_nonTerminalToAddList &) = default ;
+
+//--- Is valid
+  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
+
+//--- Drop
+  public: inline virtual void drop (void) override { mArray.removeAll () ; }
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Count
+  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
+ 
+//--- sortedElementArray
+  public : inline GenericArray <GGS_nonTerminalToAddList_2E_element> sortedElementArray (void) const {
+    return mArray ;
+  }
+
+//--- subList
+  private: GGS_nonTerminalToAddList subList (const int32_t inStart,
+                                             const int32_t inLength,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+
+//--- List constructor for graph
+  public: GGS_nonTerminalToAddList (const CollectionElementArray & inSharedArray) ;
+
+//--- Element constructor
+  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
+                                                 const class GGS_string & in_mSyntaxComponentName,
+                                                 const class GGS_uint & in_mNonTerminalToAddCount
+                                                 COMMA_LOCATION_ARGS) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_nonTerminalToAddList init (Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GGS_nonTerminalToAddList class_func_listWithValue (const class GGS_string & inOperand0,
+                                                                          const class GGS_uint & inOperand1
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public: void plusAssignOperation (const GGS_nonTerminalToAddList inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public: void addAssignOperation (const class GGS_string & inOperand0,
+                                   const class GGS_uint & inOperand1
+                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator, collection value
+  public: void plusPlusAssignOperation (const GGS_nonTerminalToAddList_2E_element & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS_nonTerminalToAddList add_operation (const GGS_nonTerminalToAddList & inOperand,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_string constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insertAtIndex (class GGS_string constinArgument0,
+                                     class GGS_uint constinArgument1,
+                                     class GGS_uint constinArgument2,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popFirst (class GGS_string & outArgument0,
+                                class GGS_uint & outArgument1,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popLast (class GGS_string & outArgument0,
+                               class GGS_uint & outArgument1,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAtIndex (class GGS_string & outArgument0,
+                                     class GGS_uint & outArgument1,
+                                     class GGS_uint constinArgument2,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMNonTerminalToAddCountAtIndex (class GGS_uint constinArgument0,
+                                                        class GGS_uint constinArgument1,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setMSyntaxComponentNameAtIndex (class GGS_string constinArgument0,
+                                                      class GGS_uint constinArgument1,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_first (class GGS_string & outArgument0,
+                             class GGS_uint & outArgument1,
+                             Compiler * inCompiler
+                             COMMA_LOCATION_ARGS) const ;
+
+  public: void method_last (class GGS_string & outArgument0,
+                            class GGS_uint & outArgument1,
+                            Compiler * inCompiler
+                            COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_mNonTerminalToAddCountAtIndex (const class GGS_uint & constinOperand0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_mSyntaxComponentNameAtIndex (const class GGS_uint & constinOperand0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_range getter_range (LOCATION_ARGS) const ;
+
+  public: class GGS_nonTerminalToAddList getter_subListFromIndex (const class GGS_uint & constinOperand0,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_nonTerminalToAddList getter_subListToIndex (const class GGS_uint & constinOperand0,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_nonTerminalToAddList getter_subListWithRange (const class GGS_range & constinOperand0,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_nonTerminalToAddList ;
+  friend class DownEnumerator_nonTerminalToAddList ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonTerminalToAddList ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @nonTerminalToAddList_2E_element struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_nonTerminalToAddList_2E_element : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_string mProperty_mSyntaxComponentName ;
+  public: inline GGS_string readProperty_mSyntaxComponentName (void) const {
+    return mProperty_mSyntaxComponentName ;
+  }
+
+  public: GGS_uint mProperty_mNonTerminalToAddCount ;
+  public: inline GGS_uint readProperty_mNonTerminalToAddCount (void) const {
+    return mProperty_mNonTerminalToAddCount ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_nonTerminalToAddList_2E_element (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMSyntaxComponentName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mSyntaxComponentName = inValue ;
+  }
+
+  public: inline void setter_setMNonTerminalToAddCount (const GGS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mNonTerminalToAddCount = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_nonTerminalToAddList_2E_element (const GGS_string & in_mSyntaxComponentName,
+                                               const GGS_uint & in_mNonTerminalToAddCount) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_nonTerminalToAddList_2E_element (const GGS_nonTerminalToAddList_2E_element & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_nonTerminalToAddList_2E_element & operator = (const GGS_nonTerminalToAddList_2E_element & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_nonTerminalToAddList_2E_element init_21__21_ (const class GGS_string & inOperand0,
+                                                                   const class GGS_uint & inOperand1,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonTerminalToAddList_2E_element ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @nonterminalMap map
 //--------------------------------------------------------------------------------------------------
 
@@ -8727,9 +9032,15 @@ class GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ final : public AC_GALG
 //--------------------------------- Getters
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
-  public: class GGS_abstractLexicalRoutineActualArgumentAST getter_first (LOCATION_ARGS) const ;
+  public: class GGS_abstractLexicalRoutineActualArgumentAST getter_first (Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_abstractLexicalRoutineActualArgumentAST getter_last (LOCATION_ARGS) const ;
+  public: class GGS_abstractLexicalRoutineActualArgumentAST getter_last (Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                                                          Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -9720,68 +10031,4 @@ class GGS_lexicalSelectBranchListAST_2E_element : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalSelectBranchListAST_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @lexicalInstructionListAST_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lexicalInstructionListAST_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_lexicalInstructionAST mProperty_mInstruction ;
-  public: inline GGS_lexicalInstructionAST readProperty_mInstruction (void) const {
-    return mProperty_mInstruction ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_lexicalInstructionListAST_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMInstruction (const GGS_lexicalInstructionAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInstruction = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_lexicalInstructionListAST_2E_element (const GGS_lexicalInstructionAST & in_mInstruction) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_lexicalInstructionListAST_2E_element (const GGS_lexicalInstructionListAST_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_lexicalInstructionListAST_2E_element & operator = (const GGS_lexicalInstructionListAST_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_lexicalInstructionListAST_2E_element init_21_ (const class GGS_lexicalInstructionAST & inOperand0,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalInstructionListAST_2E_element ;
 
