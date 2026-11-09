@@ -754,9 +754,9 @@ class GGS_binaryset : public AC_GALGAS_root {
                                                                       const class GGS_uint & constinOperand1
                                                                       COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_compressedStringValueList (const class GGS_uint & constinOperand0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_compressedStringValueList (const class GGS_uint & constinOperand0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_uint_36__34_ getter_compressedValueCount (LOCATION_ARGS) const ;
 
@@ -784,7 +784,7 @@ class GGS_binaryset : public AC_GALGAS_root {
   public: class GGS_binaryset getter_forAllOnBitIndexAndBeyond (const class GGS_uint & constinOperand0
                                                                 COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_string getter_graphviz (const class GGS_stringlist & constinOperand0
+  public: class GGS_string getter_graphviz (const class GGS__5B_string_5D_ & constinOperand0
                                             COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_string getter_graphvizDump (LOCATION_ARGS) const ;
@@ -809,7 +809,7 @@ class GGS_binaryset : public AC_GALGAS_root {
 
   public: class GGS_string getter_predicateStringValue (LOCATION_ARGS) const ;
 
-  public: class GGS_string getter_print (const class GGS_stringlist & constinOperand0,
+  public: class GGS_string getter_print (const class GGS__5B_string_5D_ & constinOperand0,
                                          const class GGS__5B_uint_5D_ & constinOperand1
                                          COMMA_LOCATION_ARGS) const ;
 
@@ -821,13 +821,13 @@ class GGS_binaryset : public AC_GALGAS_root {
   public: class GGS_binaryset getter_strictLowerThan (const class GGS_binaryset & constinOperand0
                                                       COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_stringValueList (const class GGS_uint & constinOperand0
-                                                       COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_stringValueList (const class GGS_uint & constinOperand0
+                                                           COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_stringlist getter_stringValueListWithNameList (const class GGS_uint & constinOperand0,
-                                                                   const class GGS_stringlist & constinOperand1,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_string_5D_ getter_stringValueListWithNameList (const class GGS_uint & constinOperand0,
+                                                                       const class GGS__5B_string_5D_ & constinOperand1,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_binaryset getter_swap_30__32__31_ (const class GGS_uint & constinOperand0,
                                                        const class GGS_uint & constinOperand1,

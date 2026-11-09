@@ -285,7 +285,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"print",
-      "stringlist", "inVariableList",
+      "[string]", "inVariableList",
       "[uint]", "inBDDCount",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
@@ -301,7 +301,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"graphviz",
-      "stringlist", "inBitNameList",
+      "[string]", "inBitNameList",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -378,14 +378,14 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"stringValueList", "uint", "inBitCount",
-      !returnedTypeName:"stringlist",
+      !returnedTypeName:"[string]",
       !hasCompilerArgument:false
     )
     enterBaseFinalGetterWith2Arguments (
       !?outMap,
       !?ioUnifiedTypeMap,
-      !getterName:"stringValueListWithNameList", "uint", "inBitCount", "stringlist", "inNameList",
-      !returnedTypeName:"stringlist",
+      !getterName:"stringValueListWithNameList", "uint", "inBitCount", "[string]", "inNameList",
+      !returnedTypeName:"[string]",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWithoutArgument (
@@ -399,7 +399,7 @@ final class @binarysetPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName:"compressedStringValueList", "uint", "inBitCount",
-      !returnedTypeName:"stringlist",
+      !returnedTypeName:"[string]",
       !hasCompilerArgument:true
     )
     enterBaseFinalGetterWith2Arguments (
