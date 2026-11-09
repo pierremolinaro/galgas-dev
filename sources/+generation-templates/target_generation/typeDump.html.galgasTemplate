@@ -172,8 +172,8 @@ if [[element definition].addAssignOperatorArguments count] > 0 then
 end
 if [[element definition].enumerationDescriptorList count] > 0 then
   %<tr class="result_line"><td><b>for</b> constants</td><td>%
-  for (mEnumeratedType mEnumerationName) in [element definition].enumerationDescriptorList do
-    !linkForType (![mEnumeratedType definition].typeName.string)% %!mEnumerationName%<br>%
+  for (entry) in [element definition].enumerationDescriptorList do
+    !linkForType (![entry.mEnumeratedType definition].typeName.string)% %!entry.mEnumerationName%<br>%
   end
   %</td></tr>%
 end

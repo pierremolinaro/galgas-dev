@@ -187,11 +187,11 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
   let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
   let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
   ?!@unifiedTypeMap ioTypeMap,
-  ?!@semanticContext ioSemanticContext ) {
+  ?!@semanticContext ioSemanticContext) {
 //--- key type index
   !?ioTypeMap.makeEntryFromString (self.mKeyTypeName, ?let keyTypeIndex)
 //--- Enumeration description
-  var enumerationDescriptor = @enumerationDescriptorList.listWithValue (keyTypeIndex, "key")
+  var enumerationDescriptor = [@enumerationDescriptor] [@(keyTypeIndex, "key")]
 //---
   commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap )
   var @setterMap setterMap = @()
@@ -618,7 +618,7 @@ private filewrapper dictGenerationTemplate in "../+generation-templates/type_gen
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?@typedPropertyList CURRENT_PROPERTY_LIST,
-    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST,
+    ?[@enumerationDescriptor] ENUMERATION_DESCRIPTOR_LIST,
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE,
     ?@string KEY_TYPE_IDENTIFIER,
     ?@string ELEMENT_TYPE_IDENTIFIER
@@ -627,7 +627,7 @@ private filewrapper dictGenerationTemplate in "../+generation-templates/type_gen
   template dictTypeSpecificImplementation : "GALGAS_dict.cpp.galgasTemplate" (
     ?@string TYPE_IDENTIFIER,
     ?@typedPropertyList CURRENT_PROPERTY_LIST,
-    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST,
+    ?[@enumerationDescriptor] ENUMERATION_DESCRIPTOR_LIST,
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE,
     ?@string KEY_TYPE_IDENTIFIER,
     ?@bool GENERATE_COMPARISON,

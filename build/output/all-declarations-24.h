@@ -123,7 +123,7 @@ GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeHeader_31_ (class Co
                                                                         const class GGS_string & in_TYPE_5F_IDENTIFIER,
                                                                         const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
                                                                         const class GGS__5B_mapAccessorAST_5D_ & in_SEARCH_5F_METHOD_5F_LIST,
-                                                                        const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
+                                                                        const class GGS__5B_enumerationDescriptor_5D_ & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                         const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
                                                                         const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
                                                                         const class GGS_bool & in_GENERATE_5F_COMPARISON
@@ -340,7 +340,7 @@ GGS_string filewrapperTemplate_dictGenerationTemplate_dictTypeHeader_31_ (class 
                                                                           const class GGS_string & in_TYPE_5F_NAME,
                                                                           const class GGS_string & in_TYPE_5F_IDENTIFIER,
                                                                           const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
-                                                                          const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
+                                                                          const class GGS__5B_enumerationDescriptor_5D_ & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                           const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
                                                                           const class GGS_string & in_KEY_5F_TYPE_5F_IDENTIFIER,
                                                                           const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER
@@ -355,7 +355,7 @@ GGS_string filewrapperTemplate_dictGenerationTemplate_dictTypeHeader_31_ (class 
 GGS_string filewrapperTemplate_dictGenerationTemplate_dictTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                       const class GGS_string & in_TYPE_5F_IDENTIFIER,
                                                                                       const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
-                                                                                      const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
+                                                                                      const class GGS__5B_enumerationDescriptor_5D_ & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                                       const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
                                                                                       const class GGS_string & in_KEY_5F_TYPE_5F_IDENTIFIER,
                                                                                       const class GGS_bool & in_GENERATE_5F_COMPARISON,
@@ -392,7 +392,7 @@ GGS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHeader
                                                                                       const class GGS_string & in_TYPE_5F_NAME,
                                                                                       const class GGS_string & in_TYPE_5F_IDENTIFIER,
                                                                                       const class GGS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
-                                                                                      const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
+                                                                                      const class GGS__5B_enumerationDescriptor_5D_ & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                                       const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
                                                                                       const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER
                                                                                       COMMA_LOCATION_ARGS) ;

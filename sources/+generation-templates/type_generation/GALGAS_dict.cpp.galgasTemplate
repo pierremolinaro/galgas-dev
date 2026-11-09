@@ -222,11 +222,11 @@ mIndex (0) {
 }
 
 %
-  for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
+  for (entry) in ENUMERATION_DESCRIPTOR_LIST do
 %//--------------------------------------------------------------------------------------------------
 
-GGS_%![mEnumeratedType identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current_%![mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE)->mProperty_%![mEnumerationName identifierRepresentation]% ;
+GGS_%![entry.mEnumeratedType identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current_%![entry.mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_HERE)->mProperty_%![entry.mEnumerationName identifierRepresentation]% ;
 }
 
 %
@@ -247,11 +247,11 @@ mIndex () {
   mIndex = mInfoArray.count () - 1 ;
 }
 
-%  for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
+%  for (entry) in ENUMERATION_DESCRIPTOR_LIST do
 %//--------------------------------------------------------------------------------------------------
 
-GGS_%![mEnumeratedType identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current_%![mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
-  return mInfoArray (mIndex COMMA_HERE)->mProperty_%![mEnumerationName identifierRepresentation]% ;
+GGS_%![entry.mEnumeratedType identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current_%![entry.mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_HERE)->mProperty_%![entry.mEnumerationName identifierRepresentation]% ;
 }
 
 %

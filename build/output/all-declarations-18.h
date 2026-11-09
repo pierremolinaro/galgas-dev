@@ -1087,7 +1087,7 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (c
                                                                                const class GGS_instanceMethodMap & in_INSTANCE_5F_METHOD_5F_MAP,
                                                                                const class GGS_classMethodMap & in_CLASS_5F_METHOD_5F_MAP,
                                                                                const class GGS_subscriptMap & in_READ_5F_SUBSCRIPT_5F_MAP,
-                                                                               const class GGS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
+                                                                               const class GGS__5B_enumerationDescriptor_5D_ & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                                const class GGS_typeFeatures & in_SUPPORTED_5F_OPERATORS,
                                                                                const class GGS_functionSignature & in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST,
                                                                                const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,

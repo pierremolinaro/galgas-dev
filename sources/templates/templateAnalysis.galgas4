@@ -1586,7 +1586,7 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
   ?!@unifiedTypeMap ioTypeMap,
   ?!@templateInstructionListForGeneration ioInstructionList
 ) {
-  var templateInstructionIfBranchList = @templateInstructionIfBranchListForGeneration ()
+  var templateInstructionIfBranchList = [@templateInstructionIfBranchForGeneration] ()
   for templateInstructionIfBranch in self.mTemplateInstructionIfBranchList do
     templateInstructionIfBranch.mExpression.templateExpressionAnalysis (
       inUsefulnessCallerEntityName,

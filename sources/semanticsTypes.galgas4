@@ -189,7 +189,7 @@ map @classMethodMap {
 //
 //--------------------------------------------------------------------------------------------------
 
-list @enumerationDescriptorList {
+struct @enumerationDescriptor {
   public let @unifiedTypeMapEntry mEnumeratedType
   public let @string mEnumerationName
 }

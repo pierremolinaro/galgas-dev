@@ -46,10 +46,6 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   ioDeclarations.mDeclarationList ++= @stringsetPredefinedTypeAST (!isPredefined: true, "stringset")
   ioDeclarations.mDeclarationList ++= @timerPredefinedTypeAST (!isPredefined: true, "timer")
 
-//  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "luint")
-//  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "lstring")
-//  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "string")
-
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "bool")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "bigint")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "char")
@@ -119,7 +115,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
     self.getAddAssignArgumentList (!?ioTypeMap, ?let @functionSignature addAssignArgumentList)
     self.getEnumerationList (
       !?ioTypeMap,
-      ?let @enumerationDescriptorList enumerationList,
+      ?let [@enumerationDescriptor] enumerationList,
       ?let @string enumeratedTypeName
     )
     !?ioTypeMap.makeEntryFromString (self.mPredefinedTypeName, ?*)
@@ -281,7 +277,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   proc getEnumerationList (?!@unifiedTypeMap _ioUnifiedTypeMap,
-                            !@enumerationDescriptorList outEnumerationList,
+                            ![@enumerationDescriptor] outEnumerationList,
                             !@string outEnumeratedType) {
     outEnumerationList = @() // Enumeration is not supported
     outEnumeratedType = "" // Enumeration is not supported
@@ -290,28 +286,6 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 }
-
-//--------------------------------------------------------------------------------------------------
-
-//private proc appendPredefinedListTypeAST (?![@semanticDeclarationAST] ioDeclarationListASTs,
-//                                          let @string inElementTypeName) {
-//  var @propertyInCollectionListAST attributeList = @()
-//  attributeList ++= @(
-//    !mutability: .mutableProperty,
-//    inElementTypeName.nowhere,
-//    "mValue".nowhere,
-//    .publicAccess,
-//    !hasSelector: false,
-//    !initialization: .none
-//  )
-//  ioDeclarationListASTs ++= @listDeclarationAST (
-//    !isPredefined: true,
-//    (inElementTypeName + "list").nowhere,
-//    attributeList,
-//    !usefullList: true,
-//    !equatable: true
-//  )
-//}
 
 //--------------------------------------------------------------------------------------------------
 

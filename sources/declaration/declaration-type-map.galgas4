@@ -261,7 +261,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
   //--- lstring type index
     !?ioTypeMap.makeEntryFromString ("lstring", ?let lstringTypeIndex)
   //--- Enumeration description
-    var @enumerationDescriptorList enumerationDescriptor = [@(lstringTypeIndex, "lkey")]
+    var [@enumerationDescriptor] enumerationDescriptor = [@(lstringTypeIndex, "lkey")]
   //---
     var @classFunctionMap classFunctionMap = @()
     commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap)
@@ -805,7 +805,7 @@ private filewrapper mapGenerationTemplate in "../+generation-templates/type_gene
     ?@string TYPE_IDENTIFIER,
     ?@typedPropertyList CURRENT_PROPERTY_LIST,
     ?[@mapAccessorAST] SEARCH_METHOD_LIST,
-    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST,
+    ?[@enumerationDescriptor] ENUMERATION_DESCRIPTOR_LIST,
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE,
     ?@string ELEMENT_TYPE_IDENTIFIER,
     ?@bool GENERATE_COMPARISON

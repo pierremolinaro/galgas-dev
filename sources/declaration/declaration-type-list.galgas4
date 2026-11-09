@@ -132,7 +132,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
     ?let @unifiedTypeMapEntry listElementType
   )
 //--- Property description
-  var @enumerationDescriptorList enumerationDescriptor = @()
+  var [@enumerationDescriptor] enumerationDescriptor = @()
   var @functionSignature constructorAttributeTypeList = @()
   var @formalParameterSignature setterOutputFormalArgumentList = @()
   var @formalParameterSignature setterInputFormalArgumentList = @()
@@ -531,7 +531,7 @@ filewrapper listGenerationTemplate in "../+generation-templates/type_generation"
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?@typedPropertyList PROPERTY_LIST,
-    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST,
+    ?[@enumerationDescriptor] ENUMERATION_DESCRIPTOR_LIST,
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE,
     ?@string ELEMENT_TYPE_IDENTIFIER,
     ?@bool GENERATE_COMPARISON

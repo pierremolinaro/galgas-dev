@@ -11,8 +11,8 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
 
   public: inline void gotoNextObject (void) { mIndex -= 1 ; }
 %
-  for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
-%  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+  for (entry) in ENUMERATION_DESCRIPTOR_LIST do
+%  public: class GGS_%![entry.mEnumeratedType identifierRepresentation]% current_%![entry.mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
   end
 %
 //--- Current element access
@@ -40,8 +40,8 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 
   public: inline void rewind (void) { mIndex = 0 ; }
 %
-  for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
-%  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+  for (entry) in ENUMERATION_DESCRIPTOR_LIST do
+%  public: class GGS_%![entry.mEnumeratedType identifierRepresentation]% current_%![entry.mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
   end
 %
 //--- Current element access

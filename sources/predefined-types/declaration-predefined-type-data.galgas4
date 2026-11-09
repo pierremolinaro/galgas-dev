@@ -62,7 +62,7 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc getEnumerationList (?!@unifiedTypeMap ioUnifiedTypeMap,
-                                      !@enumerationDescriptorList outEnumerationList,
+                                      ![@enumerationDescriptor] outEnumerationList,
                                       !@string outEnumeratedType) {
     !?ioUnifiedTypeMap.makeEntryFromString ("uint", ?let uintTypeIndex)
     outEnumerationList = @()

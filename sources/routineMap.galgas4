@@ -101,7 +101,7 @@ struct @routineMap {
         outIsFilePrivate = entry.mIsFilePrivate
         outRoutineSignature = entry.mRoutineSignature
       end
-      var @acceptableParameterList acceptableParameterList = @()
+      var [@acceptableParameter] acceptableParameterList = @()
       for entry in routine.mArgumentMap do
         var accept = inActualParameterList.count == entry.mRoutineSignature.count
         for formalParameter in entry.mRoutineSignature, (mActualParameter) in inActualParameterList while accept do
@@ -115,7 +115,10 @@ struct @routineMap {
         end
       end
       if acceptableParameterList.count == 1 then
-        acceptableParameterList.first (?outRoutineSignature, ?outIsFilePrivate)
+        // acceptableParameterList.first (?outRoutineSignature, ?outIsFilePrivate)
+        let r = acceptableParameterList.first
+        outRoutineSignature = r.mRoutineSignature
+        outIsFilePrivate = r.mIsFilePrivate
         outRoutineMangledName = routineMangledName (inRoutineName, outRoutineSignature)
       elsif acceptableParameterList.count == 0 then
         error (inRoutineName
@@ -167,7 +170,7 @@ map @routineArgumentMap {
 
 //--------------------------------------------------------------------------------------------------
 
-list @acceptableParameterList {
+struct @acceptableParameter {
   public let @formalParameterSignature mRoutineSignature
   public let @bool mIsFilePrivate
 }

@@ -16,8 +16,8 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
   public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
 
 %
-  for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
-%  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+  for (entry) in ENUMERATION_DESCRIPTOR_LIST do
+%  public: class GGS_%![entry.mEnumeratedType identifierRepresentation]% current_%![entry.mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
   end
   if not [ENUMERATED_OBJECT_TYPE isNull] then
 %//--- Current element access\n%
@@ -47,8 +47,8 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
   public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
 
 %
-  for (mEnumeratedType mEnumerationName) in ENUMERATION_DESCRIPTOR_LIST do
-%  public: class GGS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+  for (entry) in ENUMERATION_DESCRIPTOR_LIST do
+%  public: class GGS_%![entry.mEnumeratedType identifierRepresentation]% current_%![entry.mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
   end
   if not [ENUMERATED_OBJECT_TYPE isNull] then
 %//--- Current element access\n%

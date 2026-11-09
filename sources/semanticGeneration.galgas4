@@ -713,7 +713,7 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@instanceMethodMap INSTANCE_METHOD_MAP,
     ?@classMethodMap CLASS_METHOD_MAP,
     ?@subscriptMap READ_SUBSCRIPT_MAP,
-    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST, // Empty List if cannot be enumerated
+    ?[@enumerationDescriptor] ENUMERATION_DESCRIPTOR_LIST, // Empty List if cannot be enumerated
     ?@typeFeatures SUPPORTED_OPERATORS,
     ?@functionSignature ADD_ASSIGN_ARGUMENT_LIST, // Empty list if operator is not supported
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE,

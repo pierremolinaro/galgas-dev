@@ -36,7 +36,7 @@ abstract proc @semanticInstructionAST.analyzeSemanticInstruction (
 
 //--------------------------------------------------------------------------------------------------
 
-list @localConstantList {
+struct @localConstant {
   public let @unifiedTypeMapEntry mType
   public let @lstring mName
   public let @bool mNoWarningIfUnused
@@ -58,7 +58,7 @@ proc analyzeSemanticInstructionList
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  ?localConstantList: let @localConstantList inLocalConstantList,
+  ?localConstantList: let [@localConstant] inLocalConstantList,
   ?localInitializedVariableListWarnsIfNotMutated: let @localInitializedVariableList inLocalInitializedVariableList,
   ?localInitializedVariableListNoWarnsIfNotMutated: let @localInitializedVariableList inLocalInitializedVariableListNoWarns,
   let [@semanticInstructionAST] inSemanticInstructionListAST,
@@ -92,7 +92,7 @@ proc analyzeSemanticInstructionListWithoutBranch
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
-  ?localConstantList: let @localConstantList inLocalConstantList,
+  ?localConstantList: let [@localConstant] inLocalConstantList,
   ?localInitializedVariableListWarnsIfNotMutated: let @localInitializedVariableList inLocalInitializedVariableList,
   ?localInitializedVariableListNoWarnsIfNotMutated: let @localInitializedVariableList inLocalInitializedVariableListNoWarns,
   let [@semanticInstructionAST] inSemanticInstructionListAST,

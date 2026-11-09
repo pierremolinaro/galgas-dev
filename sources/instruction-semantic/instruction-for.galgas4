@@ -292,7 +292,7 @@ abstract proc @abstractEnumeratedCollectionAST.analyzeEnumeration (
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@localVarManager ioVariableMap,
-  ?!@localConstantList ioLocalConstantListForDoBranch,
+  ?![@localConstant] ioLocalConstantListForDoBranch,
   !@string outEnumeratorCppName,
   !@semanticExpressionForGeneration outEnumerationExpression)
 
@@ -304,7 +304,7 @@ override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
                                 let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@localVarManager ioVariableMap,
-  ?!@localConstantList ioLocalConstantListForDoBranch,
+  ?![@localConstant] ioLocalConstantListForDoBranch,
   !@string outEnumeratorCppName,
   !@semanticExpressionForGeneration outEnumerationExpression) {
   self.mEnumeratedExpression.analyzeSemanticExpression (
@@ -378,7 +378,7 @@ override proc @enumeratedCollectionVarInExpAST.analyzeEnumeration (let @lstring 
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@localVarManager ioVariableMap,
-  ?!@localConstantList ioLocalConstantListForDoBranch,
+  ?![@localConstant] ioLocalConstantListForDoBranch,
   !@string outEnumeratorCppName,
   !@semanticExpressionForGeneration outEnumerationExpression) {
   self.mEnumeratedExpression.analyzeSemanticExpression
@@ -469,7 +469,7 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
   )
   !?ioVariableMap.closeOverride (self.mEndOf_after_branch)
 //--- Analyze enumerated objects
-  var @localConstantList localConstantListForDoBranch = @()
+  var [@localConstant] localConstantListForDoBranch = @()
   var [@forInstructionEnumeratedObjectForGeneration] enumerationList = @()
   for object in self.mEnumeratedObjectList do
     object.mEnumeratedCollection.analyzeEnumeration (

@@ -153,7 +153,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       ?let @unifiedTypeMapEntry listElementTypeIndex
     )
   //--- Enumeration description
-    var @enumerationDescriptorList enumerationDescriptor = @()
+    var [@enumerationDescriptor] enumerationDescriptor = @()
     var @functionSignature constructorAttributeTypeList = @()
     var @formalParameterSignature setterFormalOutputArgumentList = @()
     var @formalParameterSignature setterFormalInputArgumentList = @()
@@ -455,7 +455,7 @@ filewrapper sortedListGenerationTemplate in "../+generation-templates/type_gener
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
     ?@typedPropertyList ATTRIBUTE_LIST,
-    ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST,
+    ?[@enumerationDescriptor] ENUMERATION_DESCRIPTOR_LIST,
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE,
     ?@string ELEMENT_TYPE_IDENTIFIER
   )

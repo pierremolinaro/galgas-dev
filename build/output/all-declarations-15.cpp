@@ -10119,61 +10119,63 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
         outArgument_outRoutineSignature = enumerator_4247.current (HERE).readProperty_mRoutineSignature () ;
         enumerator_4247.gotoNextObject () ;
       }
-      GGS_acceptableParameterList var_acceptableParameterList_4410 = GGS_acceptableParameterList::init (inCompiler COMMA_HERE) ;
-      UpEnumerator_routineArgumentMap enumerator_4467 (var_routine_4101.readProperty_mArgumentMap ()) ;
-      while (enumerator_4467.hasCurrentObject ()) {
-        GGS_bool var_accept_4495 = GGS_bool (ComparisonKind::equal, constinArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas4", 106)).objectCompare (enumerator_4467.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas4", 106)))) ;
-        UpEnumerator_formalParameterSignature enumerator_4602 (enumerator_4467.current (HERE).readProperty_mRoutineSignature ()) ;
-        UpEnumerator_actualParameterListAST enumerator_4622 (constinArgument_inActualParameterList) ;
-        bool bool_2 = var_accept_4495.isValidAndTrue () ;
-        if (enumerator_4602.hasCurrentObject () && enumerator_4622.hasCurrentObject () && bool_2) {
-          while (enumerator_4602.hasCurrentObject () && enumerator_4622.hasCurrentObject () && bool_2) {
-            var_accept_4495 = callExtensionGetter_isCompatibleWith ((const cPtr_actualParameterAST *) enumerator_4622.current_mActualParameter (HERE).ptr (), enumerator_4602.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_4602.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 108)) ;
-            enumerator_4602.gotoNextObject () ;
-            enumerator_4622.gotoNextObject () ;
-            if (enumerator_4602.hasCurrentObject () && enumerator_4622.hasCurrentObject ()) {
-              bool_2 = var_accept_4495.isValidAndTrue () ;
+      GGS__5B_acceptableParameter_5D_ var_acceptableParameterList_4408 = GGS__5B_acceptableParameter_5D_::init (inCompiler COMMA_HERE) ;
+      UpEnumerator_routineArgumentMap enumerator_4465 (var_routine_4101.readProperty_mArgumentMap ()) ;
+      while (enumerator_4465.hasCurrentObject ()) {
+        GGS_bool var_accept_4493 = GGS_bool (ComparisonKind::equal, constinArgument_inActualParameterList.getter_count (SOURCE_FILE ("routineMap.galgas4", 106)).objectCompare (enumerator_4465.current (HERE).readProperty_mRoutineSignature ().getter_count (SOURCE_FILE ("routineMap.galgas4", 106)))) ;
+        UpEnumerator_formalParameterSignature enumerator_4600 (enumerator_4465.current (HERE).readProperty_mRoutineSignature ()) ;
+        UpEnumerator_actualParameterListAST enumerator_4620 (constinArgument_inActualParameterList) ;
+        bool bool_2 = var_accept_4493.isValidAndTrue () ;
+        if (enumerator_4600.hasCurrentObject () && enumerator_4620.hasCurrentObject () && bool_2) {
+          while (enumerator_4600.hasCurrentObject () && enumerator_4620.hasCurrentObject () && bool_2) {
+            var_accept_4493 = callExtensionGetter_isCompatibleWith ((const cPtr_actualParameterAST *) enumerator_4620.current_mActualParameter (HERE).ptr (), enumerator_4600.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_4600.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 108)) ;
+            enumerator_4600.gotoNextObject () ;
+            enumerator_4620.gotoNextObject () ;
+            if (enumerator_4600.hasCurrentObject () && enumerator_4620.hasCurrentObject ()) {
+              bool_2 = var_accept_4493.isValidAndTrue () ;
             }
           }
         }
         GalgasBool test_3 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_3) {
-          test_3 = var_accept_4495.boolEnum () ;
+          test_3 = var_accept_4493.boolEnum () ;
           if (GalgasBool::boolTrue == test_3) {
-            var_acceptableParameterList_4410.plusPlusAssignOperation (GGS_acceptableParameterList_2E_element::init_21__21_ (enumerator_4467.current (HERE).readProperty_mRoutineSignature (), enumerator_4467.current (HERE).readProperty_mIsFilePrivate (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("routineMap.galgas4", 114)) ;
+            var_acceptableParameterList_4408.plusPlusAssignOperation (GGS_acceptableParameter::init_21__21_ (enumerator_4465.current (HERE).readProperty_mRoutineSignature (), enumerator_4465.current (HERE).readProperty_mIsFilePrivate (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("routineMap.galgas4", 114)) ;
           }
         }
-        enumerator_4467.gotoNextObject () ;
+        enumerator_4465.gotoNextObject () ;
       }
       GalgasBool test_4 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_4) {
-        test_4 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4410.getter_count (SOURCE_FILE ("routineMap.galgas4", 117)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+        test_4 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4408.getter_count (SOURCE_FILE ("routineMap.galgas4", 117)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_4) {
-          var_acceptableParameterList_4410.method_first (outArgument_outRoutineSignature, outArgument_outIsFilePrivate, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 118)) ;
-          outArgument_outRoutineMangledName = function_routineMangledName (constinArgument_inRoutineName, outArgument_outRoutineSignature, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 119)) ;
+          GGS_acceptableParameter var_r_5134 = var_acceptableParameterList_4408.getter_first (inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 119)) ;
+          outArgument_outRoutineSignature = var_r_5134.readProperty_mRoutineSignature () ;
+          outArgument_outIsFilePrivate = var_r_5134.readProperty_mIsFilePrivate () ;
+          outArgument_outRoutineMangledName = function_routineMangledName (constinArgument_inRoutineName, outArgument_outRoutineSignature, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 122)) ;
         }
       }
       if (GalgasBool::boolFalse == test_4) {
         GalgasBool test_5 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_5) {
-          test_5 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4410.getter_count (SOURCE_FILE ("routineMap.galgas4", 120)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
+          test_5 = GGS_bool (ComparisonKind::equal, var_acceptableParameterList_4408.getter_count (SOURCE_FILE ("routineMap.galgas4", 123)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_5) {
             GenericArray <FixItDescription> fixItArray6 ;
-            inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("cannot find any procedure with compatible formal argument list"), fixItArray6  COMMA_SOURCE_FILE ("routineMap.galgas4", 121)) ;
+            inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("cannot find any procedure with compatible formal argument list"), fixItArray6  COMMA_SOURCE_FILE ("routineMap.galgas4", 124)) ;
             outArgument_outRoutineSignature.drop () ; // Release error dropped variable
             outArgument_outIsFilePrivate.drop () ; // Release error dropped variable
             outArgument_outRoutineMangledName.drop () ; // Release error dropped variable
           }
         }
         if (GalgasBool::boolFalse == test_5) {
-          GGS_string var_s_5464 = GGS_string ("ambiguity, several procedures with compatible formal argument list:") ;
-          UpEnumerator_acceptableParameterList enumerator_5561 (var_acceptableParameterList_4410) ;
-          while (enumerator_5561.hasCurrentObject ()) {
-            var_s_5464.plusAssignOperation(GGS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5561.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 127)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 127)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas4", 127)) ;
-            enumerator_5561.gotoNextObject () ;
+          GGS_string var_s_5605 = GGS_string ("ambiguity, several procedures with compatible formal argument list:") ;
+          UpEnumerator__5B_acceptableParameter_5D_ enumerator_5702 (var_acceptableParameterList_4408) ;
+          while (enumerator_5702.hasCurrentObject ()) {
+            var_s_5605.plusAssignOperation(GGS_string ("\n  - ").add_operation (function_routineArgumentFromFormalParameters (enumerator_5702.current (HERE).readProperty_mRoutineSignature (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 130)), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 130)), inCompiler  COMMA_SOURCE_FILE ("routineMap.galgas4", 130)) ;
+            enumerator_5702.gotoNextObject () ;
           }
           GenericArray <FixItDescription> fixItArray7 ;
-          inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5464, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas4", 129)) ;
+          inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), var_s_5605, fixItArray7  COMMA_SOURCE_FILE ("routineMap.galgas4", 132)) ;
           outArgument_outRoutineSignature.drop () ; // Release error dropped variable
           outArgument_outIsFilePrivate.drop () ; // Release error dropped variable
           outArgument_outRoutineMangledName.drop () ; // Release error dropped variable
@@ -10183,7 +10185,7 @@ void extensionMethod_searchKey (const GGS_routineMap inObject,
   }
   if (GalgasBool::boolFalse == test_0) {
     GenericArray <FixItDescription> fixItArray8 ;
-    inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("the '").add_operation (constinArgument_inRoutineName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 135)).add_operation (GGS_string ("' routine is not declared"), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 135)), fixItArray8  COMMA_SOURCE_FILE ("routineMap.galgas4", 134)) ;
+    inCompiler->emitSemanticError (constinArgument_inRoutineName.readProperty_location (), GGS_string ("the '").add_operation (constinArgument_inRoutineName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 138)).add_operation (GGS_string ("' routine is not declared"), inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 138)), fixItArray8  COMMA_SOURCE_FILE ("routineMap.galgas4", 137)) ;
     outArgument_outRoutineSignature.drop () ; // Release error dropped variable
     outArgument_outIsFilePrivate.drop () ; // Release error dropped variable
     outArgument_outRoutineMangledName.drop () ; // Release error dropped variable
@@ -10201,7 +10203,7 @@ GGS_location extensionGetter_locationForKey (const GGS_routineMap & inObject,
                                              COMMA_UNUSED_LOCATION_ARGS) {
   GGS_location result_result ; // Returned variable
   const GGS_routineMap temp_0 = inObject ;
-  result_result = temp_0.readProperty_mInternalRoutineMap ().getter_locationForKey (constinArgument_inKey, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 143)) ;
+  result_result = temp_0.readProperty_mInternalRoutineMap ().getter_locationForKey (constinArgument_inKey, inCompiler COMMA_SOURCE_FILE ("routineMap.galgas4", 146)) ;
 //---
   return result_result ;
 }
@@ -11924,6 +11926,95 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateBlockInstructionForGe
 
 const GALGAS_TypeDescriptor * GGS_templateBlockInstructionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionIfBranchForGeneration::GGS_templateInstructionIfBranchForGeneration (void) :
+mProperty_mExpression (),
+mProperty_mInstructionList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionIfBranchForGeneration::GGS_templateInstructionIfBranchForGeneration (const GGS_templateInstructionIfBranchForGeneration & inSource) :
+mProperty_mExpression (inSource.mProperty_mExpression),
+mProperty_mInstructionList (inSource.mProperty_mInstructionList) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionIfBranchForGeneration & GGS_templateInstructionIfBranchForGeneration::operator = (const GGS_templateInstructionIfBranchForGeneration & inSource) {
+  mProperty_mExpression = inSource.mProperty_mExpression ;
+  mProperty_mInstructionList = inSource.mProperty_mInstructionList ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_templateInstructionIfBranchForGeneration GGS_templateInstructionIfBranchForGeneration::init_21__21_ (const GGS_semanticExpressionForGeneration & in_mExpression,
+                                                                                                         const GGS_templateInstructionListForGeneration & in_mInstructionList,
+                                                                                                         Compiler * inCompiler
+                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_templateInstructionIfBranchForGeneration result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mExpression = in_mExpression ;
+  result.mProperty_mInstructionList = in_mInstructionList ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_templateInstructionIfBranchForGeneration::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateInstructionIfBranchForGeneration::GGS_templateInstructionIfBranchForGeneration (const GGS_semanticExpressionForGeneration & inOperand0,
+                                                                                            const GGS_templateInstructionListForGeneration & inOperand1) :
+mProperty_mExpression (inOperand0),
+mProperty_mInstructionList (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_templateInstructionIfBranchForGeneration::isValid (void) const {
+  return mProperty_mExpression.isValid () && mProperty_mInstructionList.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_templateInstructionIfBranchForGeneration::drop (void) {
+  mProperty_mExpression.drop () ;
+  mProperty_mInstructionList.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_templateInstructionIfBranchForGeneration::description (String & ioString,
+                                                                const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @templateInstructionIfBranchForGeneration:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mExpression.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mInstructionList.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @templateInstructionIfBranchForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionIfBranchForGeneration ("templateInstructionIfBranchForGeneration",
+                                                                                             nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateInstructionIfBranchForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateInstructionIfBranchForGeneration ;
 }
 
 //--------------------------------------------------------------------------------------------------

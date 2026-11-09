@@ -53,7 +53,7 @@ final class @templateInstructionGotoColumnLocationForGeneration : @templateInstr
 
 //--------------------------------------------------------------------------------------------------
 
-list @templateInstructionIfBranchListForGeneration {
+struct @templateInstructionIfBranchForGeneration {
   public let @semanticExpressionForGeneration mExpression
   public let @templateInstructionListForGeneration mInstructionList
 }
@@ -61,7 +61,7 @@ list @templateInstructionIfBranchListForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 final class @templateInstructionIfForGeneration : @templateInstructionForGeneration {
-  private let @templateInstructionIfBranchListForGeneration mTemplateInstructionIfBranchList
+  private let [@templateInstructionIfBranchForGeneration] mTemplateInstructionIfBranchList
   private let @templateInstructionListForGeneration mElseInstructionList
 }
 
