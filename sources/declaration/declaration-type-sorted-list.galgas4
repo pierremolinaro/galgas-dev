@@ -157,7 +157,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     var @functionSignature constructorAttributeTypeList = @()
     var @formalParameterSignature setterFormalOutputArgumentList = @()
     var @formalParameterSignature setterFormalInputArgumentList = @()
-    var @typedPropertyList typedAttributeList = @()
+    var [@typedProperty] typedAttributeList = @()
     for property in self.mPropertyList do
       !?ioTypeMap.makeEntry (property.typeName, ?let attributeTypeIndex)
       let hasSelector = false
@@ -329,7 +329,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       ioUsefulnessRootEntities ++= initializerNameForUsefulness
     end
   //--- Attribute
-    var typedAttributeList = @typedPropertyList ()
+    var typedAttributeList = [@typedProperty] ()
     var @propertyIndexMap attributeMap = @()
     for property in self.mPropertyList do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (property.typeName)
@@ -387,7 +387,7 @@ struct @sortDescriptorForGeneration {
 
 final class @sortedListTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mListElementTypeIndex
-  private let @typedPropertyList mTypedAttributeList
+  private let [@typedProperty] mTypedAttributeList
   private let [@sortDescriptorForGeneration] mSortDescriptorList
 }
 
@@ -454,7 +454,7 @@ filewrapper sortedListGenerationTemplate in "../+generation-templates/type_gener
   template sortedlistTypeHeader1 : "GALGAS_sortedlist.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
-    ?@typedPropertyList ATTRIBUTE_LIST,
+    ?[@typedProperty] ATTRIBUTE_LIST,
     ?[@enumerationDescriptor] ENUMERATION_DESCRIPTOR_LIST,
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE,
     ?@string ELEMENT_TYPE_IDENTIFIER
@@ -462,7 +462,7 @@ filewrapper sortedListGenerationTemplate in "../+generation-templates/type_gener
 
   template sortedlistTypeSpecificImplementation : "GALGAS_sortedlist.cpp.galgasTemplate" ( 
     ?@string TYPE_IDENTIFIER,
-    ?@typedPropertyList ATTRIBUTE_LIST,
+    ?[@typedProperty] ATTRIBUTE_LIST,
     ?[@sortDescriptorForGeneration] SORT_ATTRIBUTE_LIST,
     ?@string ELEMENT_TYPE_IDENTIFIER,
     ?@bool GENERATE_COMPARISON

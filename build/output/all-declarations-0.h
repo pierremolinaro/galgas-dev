@@ -9916,6 +9916,183 @@ class GGS__5B_enumerationDescriptor_5D_ final : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_enumerationDescriptor_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: [typedProperty] array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_typedProperty_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_typedProperty_5D_ (const class GGS__5B_typedProperty_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_typedProperty_5D_ (const DownEnumerator__5B_typedProperty_5D_ &) = delete ;
+  private: DownEnumerator__5B_typedProperty_5D_ & operator = (const DownEnumerator__5B_typedProperty_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent >= 0 ;
+  }
+
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent -= 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_typedProperty current (LOCATION_ARGS) const ;
+  public: class GGS_typedProperty current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_typedProperty> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_typedProperty_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_typedProperty_5D_ (const class GGS__5B_typedProperty_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_typedProperty_5D_ (const UpEnumerator__5B_typedProperty_5D_ &) = delete ;
+  private: UpEnumerator__5B_typedProperty_5D_ & operator = (const UpEnumerator__5B_typedProperty_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const {
+    return mCurrent < mSharedArray.count () ;
+  }
+
+//---
+  public: inline void gotoNextObject (void) {
+    mCurrent += 1 ;
+  }
+
+//--- Current element access
+  public: class GGS_typedProperty current (LOCATION_ARGS) const ;
+  public: class GGS_typedProperty current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_typedProperty> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_typedProperty_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_typedProperty> mSharedArray ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_typedProperty_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_typedProperty_5D_ (const GGS__5B_typedProperty_5D_ & inSource) ;
+  public: GGS__5B_typedProperty_5D_ & operator = (const GGS__5B_typedProperty_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_typedProperty_5D_ ;
+  friend class DownEnumerator__5B_typedProperty_5D_ ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_typedProperty_5D_ init (Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator (with expression)
+  public: void plusAssignOperation (const GGS__5B_typedProperty_5D_ inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- ++= operator, collection value
+  public: void plusPlusAssignOperation (const GGS_typedProperty & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_typedProperty_5D_ add_operation (const GGS__5B_typedProperty_5D_ & inOperand,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_typedProperty constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insertAtIndex (class GGS_typedProperty constinArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popFirst (class GGS_typedProperty & outArgument0,
+                                Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+  public: void setter_popLast (class GGS_typedProperty & outArgument0,
+                               Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAtIndex (class GGS_typedProperty & outArgument0,
+                                     class GGS_uint constinArgument1,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_typedProperty getter_first (Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_typedProperty getter_last (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_typedProperty_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_typedProperty_5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                          const class GGS_uint & constinOperand1,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+  public: class GGS_typedProperty readSubscript__3F_ (const class GGS_uint & in0,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_typedProperty_5D_ ;
+  friend class DownEnumerator__5B_typedProperty_5D_ ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_typedProperty_5D_ ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @typeFeatures boolset
 //--------------------------------------------------------------------------------------------------
 
@@ -10424,299 +10601,6 @@ class GGS_functionSignature : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_functionSignature ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @typedPropertyList list enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator_typedPropertyList final {
-  public: DownEnumerator_typedPropertyList (const class GGS_typedPropertyList & inList) ;
-
-  public: ~ DownEnumerator_typedPropertyList (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
-
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_unifiedTypeMapEntry current_typeEntry (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_name (LOCATION_ARGS) const ;
-  public: class GGS_propertyInCollectionInitializationAST current_initialization (LOCATION_ARGS) const ;
-  public: class GGS_bool current_hasSetter (LOCATION_ARGS) const ;
-  public: class GGS_bool current_hasSelector (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_typedPropertyList_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS_typedPropertyList_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: DownEnumerator_typedPropertyList (const DownEnumerator_typedPropertyList &) = delete ;
-  private: DownEnumerator_typedPropertyList & operator = (const DownEnumerator_typedPropertyList &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator_typedPropertyList final {
-  public: UpEnumerator_typedPropertyList (const class GGS_typedPropertyList & inList)  ;
-
-  public: ~ UpEnumerator_typedPropertyList (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
-
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_unifiedTypeMapEntry current_typeEntry (LOCATION_ARGS) const ;
-  public: class GGS_lstring current_name (LOCATION_ARGS) const ;
-  public: class GGS_propertyInCollectionInitializationAST current_initialization (LOCATION_ARGS) const ;
-  public: class GGS_bool current_hasSetter (LOCATION_ARGS) const ;
-  public: class GGS_bool current_hasSelector (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS_typedPropertyList_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS_typedPropertyList_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: UpEnumerator_typedPropertyList (const UpEnumerator_typedPropertyList &) = delete ;
-  private: UpEnumerator_typedPropertyList & operator = (const UpEnumerator_typedPropertyList &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// @typedPropertyList list
-//--------------------------------------------------------------------------------------------------
-
-class GGS_typedPropertyList : public AC_GALGAS_root {
-//--- Private property
-  private: GenericArray <GGS_typedPropertyList_2E_element> mArray ;
-
-//--- Default constructor
-  public: GGS_typedPropertyList (void) ;
-
-//--- Destructor
-  public: virtual ~ GGS_typedPropertyList (void) = default ;
-
-//--- Copy
-  public: GGS_typedPropertyList (const GGS_typedPropertyList &) = default ;
-  public: GGS_typedPropertyList & operator = (const GGS_typedPropertyList &) = default ;
-
-//--- Is valid
-  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
-
-//--- Drop
-  public: inline virtual void drop (void) override { mArray.removeAll () ; }
-
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Count
-  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
- 
-//--- sortedElementArray
-  public : inline GenericArray <GGS_typedPropertyList_2E_element> sortedElementArray (void) const {
-    return mArray ;
-  }
-
-//--- subList
-  private: GGS_typedPropertyList subList (const int32_t inStart,
-                                          const int32_t inLength,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const ;
-
-
-//--- List constructor for graph
-  public: GGS_typedPropertyList (const CollectionElementArray & inSharedArray) ;
-
-//--- Element constructor
-  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                 const class GGS_unifiedTypeMapEntry & in_typeEntry,
-                                                 const class GGS_lstring & in_name,
-                                                 const class GGS_propertyInCollectionInitializationAST & in_initialization,
-                                                 const class GGS_bool & in_hasSetter,
-                                                 const class GGS_bool & in_hasSelector
-                                                 COMMA_LOCATION_ARGS) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_typedPropertyList init (Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
-  public: static class GGS_typedPropertyList class_func_listWithValue (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                       const class GGS_lstring & inOperand1,
-                                                                       const class GGS_propertyInCollectionInitializationAST & inOperand2,
-                                                                       const class GGS_bool & inOperand3,
-                                                                       const class GGS_bool & inOperand4
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: void plusAssignOperation (const GGS_typedPropertyList inOperand,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                   const class GGS_lstring & inOperand1,
-                                   const class GGS_propertyInCollectionInitializationAST & inOperand2,
-                                   const class GGS_bool & inOperand3,
-                                   const class GGS_bool & inOperand4
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator, collection value
-  public: void plusPlusAssignOperation (const GGS_typedPropertyList_2E_element & inOperand
-                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: GGS_typedPropertyList add_operation (const GGS_typedPropertyList & inOperand,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: void setter_append (class GGS_unifiedTypeMapEntry constinArgument0,
-                              class GGS_lstring constinArgument1,
-                              class GGS_propertyInCollectionInitializationAST constinArgument2,
-                              class GGS_bool constinArgument3,
-                              class GGS_bool constinArgument4,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_insertAtIndex (class GGS_unifiedTypeMapEntry constinArgument0,
-                                     class GGS_lstring constinArgument1,
-                                     class GGS_propertyInCollectionInitializationAST constinArgument2,
-                                     class GGS_bool constinArgument3,
-                                     class GGS_bool constinArgument4,
-                                     class GGS_uint constinArgument5,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popFirst (class GGS_unifiedTypeMapEntry & outArgument0,
-                                class GGS_lstring & outArgument1,
-                                class GGS_propertyInCollectionInitializationAST & outArgument2,
-                                class GGS_bool & outArgument3,
-                                class GGS_bool & outArgument4,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_unifiedTypeMapEntry & outArgument0,
-                               class GGS_lstring & outArgument1,
-                               class GGS_propertyInCollectionInitializationAST & outArgument2,
-                               class GGS_bool & outArgument3,
-                               class GGS_bool & outArgument4,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeAtIndex (class GGS_unifiedTypeMapEntry & outArgument0,
-                                     class GGS_lstring & outArgument1,
-                                     class GGS_propertyInCollectionInitializationAST & outArgument2,
-                                     class GGS_bool & outArgument3,
-                                     class GGS_bool & outArgument4,
-                                     class GGS_uint constinArgument5,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setHasSelectorAtIndex (class GGS_bool constinArgument0,
-                                             class GGS_uint constinArgument1,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setHasSetterAtIndex (class GGS_bool constinArgument0,
-                                           class GGS_uint constinArgument1,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setInitializationAtIndex (class GGS_propertyInCollectionInitializationAST constinArgument0,
-                                                class GGS_uint constinArgument1,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setNameAtIndex (class GGS_lstring constinArgument0,
-                                      class GGS_uint constinArgument1,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setTypeEntryAtIndex (class GGS_unifiedTypeMapEntry constinArgument0,
-                                           class GGS_uint constinArgument1,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: void method_first (class GGS_unifiedTypeMapEntry & outArgument0,
-                             class GGS_lstring & outArgument1,
-                             class GGS_propertyInCollectionInitializationAST & outArgument2,
-                             class GGS_bool & outArgument3,
-                             class GGS_bool & outArgument4,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_unifiedTypeMapEntry & outArgument0,
-                            class GGS_lstring & outArgument1,
-                            class GGS_propertyInCollectionInitializationAST & outArgument2,
-                            class GGS_bool & outArgument3,
-                            class GGS_bool & outArgument4,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_hasSelectorAtIndex (const class GGS_uint & constinOperand0,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_hasSetterAtIndex (const class GGS_uint & constinOperand0,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_propertyInCollectionInitializationAST getter_initializationAtIndex (const class GGS_uint & constinOperand0,
-                                                                                        Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_lstring getter_nameAtIndex (const class GGS_uint & constinOperand0,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
-
-  public: class GGS_typedPropertyList getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_typedPropertyList getter_subListToIndex (const class GGS_uint & constinOperand0,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_typedPropertyList getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_unifiedTypeMapEntry getter_typeEntryAtIndex (const class GGS_uint & constinOperand0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator_typedPropertyList ;
-  friend class DownEnumerator_typedPropertyList ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typedPropertyList ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @classFunctionMap map
@@ -12596,8 +12480,8 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
     return mProperty_supportCollectionValue ;
   }
 
-  public: GGS_typedPropertyList mProperty_allTypedPropertyList ;
-  public: inline GGS_typedPropertyList readProperty_allTypedPropertyList (void) const {
+  public: GGS__5B_typedProperty_5D_ mProperty_allTypedPropertyList ;
+  public: inline GGS__5B_typedProperty_5D_ readProperty_allTypedPropertyList (void) const {
     return mProperty_allTypedPropertyList ;
   }
 
@@ -12606,8 +12490,8 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
     return mProperty_propertyMap ;
   }
 
-  public: GGS_typedPropertyList mProperty_currentTypedPropertyList ;
-  public: inline GGS_typedPropertyList readProperty_currentTypedPropertyList (void) const {
+  public: GGS__5B_typedProperty_5D_ mProperty_currentTypedPropertyList ;
+  public: inline GGS__5B_typedProperty_5D_ readProperty_currentTypedPropertyList (void) const {
     return mProperty_currentTypedPropertyList ;
   }
 
@@ -12722,7 +12606,7 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
     mProperty_supportCollectionValue = inValue ;
   }
 
-  public: inline void setter_setAllTypedPropertyList (const GGS_typedPropertyList & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setAllTypedPropertyList (const GGS__5B_typedProperty_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_allTypedPropertyList = inValue ;
   }
 
@@ -12730,7 +12614,7 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
     mProperty_propertyMap = inValue ;
   }
 
-  public: inline void setter_setCurrentTypedPropertyList (const GGS_typedPropertyList & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setCurrentTypedPropertyList (const GGS__5B_typedProperty_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_currentTypedPropertyList = inValue ;
   }
 
@@ -12805,9 +12689,9 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
                                      const GGS_unifiedTypeMapEntry & in_superType,
                                      const GGS_typeKindEnum & in_typeKind,
                                      const GGS_bool & in_supportCollectionValue,
-                                     const GGS_typedPropertyList & in_allTypedPropertyList,
+                                     const GGS__5B_typedProperty_5D_ & in_allTypedPropertyList,
                                      const GGS_propertyMap & in_propertyMap,
-                                     const GGS_typedPropertyList & in_currentTypedPropertyList,
+                                     const GGS__5B_typedProperty_5D_ & in_currentTypedPropertyList,
                                      const GGS_initializerMap & in_initializerMap,
                                      const GGS_classFunctionMap & in_classFunctionMap,
                                      const GGS_getterMap & in_getterMap,
@@ -12840,9 +12724,9 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            const class GGS_unifiedTypeMapEntry & inOperand4,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            const class GGS_typeKindEnum & inOperand5,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            const class GGS_bool & inOperand6,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_typedPropertyList & inOperand7,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS__5B_typedProperty_5D_ & inOperand7,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            const class GGS_propertyMap & inOperand8,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_typedPropertyList & inOperand9,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS__5B_typedProperty_5D_ & inOperand9,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            const class GGS_initializerMap & inOperand10,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            const class GGS_classFunctionMap & inOperand11,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            const class GGS_getterMap & inOperand12,

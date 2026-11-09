@@ -1381,7 +1381,10 @@ GGS__5B_ruleLabelImplementationAST_5D_ GGS__5B_ruleLabelImplementationAST_5D_::g
   GGS__5B_ruleLabelImplementationAST_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_ruleLabelImplementationAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -1390,7 +1393,7 @@ GGS__5B_ruleLabelImplementationAST_5D_ GGS__5B_ruleLabelImplementationAST_5D_::g
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -9606,8 +9609,8 @@ GGS_semanticTypeForGeneration () {
 GGS_structTypeForGeneration GGS_structTypeForGeneration::
 init_21_infoMessage_21__21__21__21__21__21_ (const GGS_string & in_infoMessage,
                                              const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                             const GGS_typedPropertyList & in_mTypedPropertyList,
-                                             const GGS_typedPropertyList & in_mConstructorArgumentList,
+                                             const GGS__5B_typedProperty_5D_ & in_mTypedPropertyList,
+                                             const GGS__5B_typedProperty_5D_ & in_mConstructorArgumentList,
                                              const GGS_string & in_mConstructorInitializationCode,
                                              const GGS_bool & in_mConstructorNeedsCompilerVar,
                                              const GGS_bool & in_synthetizeAnInitializer,
@@ -9626,8 +9629,8 @@ init_21_infoMessage_21__21__21__21__21__21_ (const GGS_string & in_infoMessage,
 void cPtr_structTypeForGeneration::
 structTypeForGeneration_init_21_infoMessage_21__21__21__21__21__21_ (const GGS_string & in_infoMessage,
                                                                      const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                                     const GGS_typedPropertyList & in_mTypedPropertyList,
-                                                                     const GGS_typedPropertyList & in_mConstructorArgumentList,
+                                                                     const GGS__5B_typedProperty_5D_ & in_mTypedPropertyList,
+                                                                     const GGS__5B_typedProperty_5D_ & in_mConstructorArgumentList,
                                                                      const GGS_string & in_mConstructorInitializationCode,
                                                                      const GGS_bool & in_mConstructorNeedsCompilerVar,
                                                                      const GGS_bool & in_synthetizeAnInitializer,
@@ -9649,9 +9652,9 @@ GGS_semanticTypeForGeneration (inSourcePtr) {
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_structTypeForGeneration::readProperty_mTypedPropertyList (void) const {
+GGS__5B_typedProperty_5D_ GGS_structTypeForGeneration::readProperty_mTypedPropertyList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_structTypeForGeneration * p = (cPtr_structTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_structTypeForGeneration) ;
@@ -9661,9 +9664,9 @@ GGS_typedPropertyList GGS_structTypeForGeneration::readProperty_mTypedPropertyLi
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_structTypeForGeneration::readProperty_mConstructorArgumentList (void) const {
+GGS__5B_typedProperty_5D_ GGS_structTypeForGeneration::readProperty_mConstructorArgumentList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_structTypeForGeneration * p = (cPtr_structTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_structTypeForGeneration) ;
@@ -9724,8 +9727,8 @@ mProperty_synthetizeAnInitializer () {
 
 cPtr_structTypeForGeneration::cPtr_structTypeForGeneration (const GGS_string & in_infoMessage,
                                                             const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                            const GGS_typedPropertyList & in_mTypedPropertyList,
-                                                            const GGS_typedPropertyList & in_mConstructorArgumentList,
+                                                            const GGS__5B_typedProperty_5D_ & in_mTypedPropertyList,
+                                                            const GGS__5B_typedProperty_5D_ & in_mConstructorArgumentList,
                                                             const GGS_string & in_mConstructorInitializationCode,
                                                             const GGS_bool & in_mConstructorNeedsCompilerVar,
                                                             const GGS_bool & in_synthetizeAnInitializer,
@@ -10230,7 +10233,7 @@ GGS_listTypeForGeneration GGS_listTypeForGeneration::
 init_21_infoMessage_21__21__21_ (const GGS_string & in_infoMessage,
                                  const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                  const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                 const GGS_typedPropertyList & in_mTypedAttributeList,
+                                 const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) {
   cPtr_listTypeForGeneration * object = nullptr ;
@@ -10247,7 +10250,7 @@ void cPtr_listTypeForGeneration::
 listTypeForGeneration_init_21_infoMessage_21__21__21_ (const GGS_string & in_infoMessage,
                                                        const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                        const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                                       const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                       const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                        Compiler * /* inCompiler */) {
   mProperty_infoMessage = in_infoMessage ;
   mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
@@ -10275,9 +10278,9 @@ GGS_unifiedTypeMapEntry GGS_listTypeForGeneration::readProperty_mListElementType
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_listTypeForGeneration::readProperty_mTypedAttributeList (void) const {
+GGS__5B_typedProperty_5D_ GGS_listTypeForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_listTypeForGeneration * p = (cPtr_listTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_listTypeForGeneration) ;
@@ -10300,7 +10303,7 @@ mProperty_mTypedAttributeList () {
 cPtr_listTypeForGeneration::cPtr_listTypeForGeneration (const GGS_string & in_infoMessage,
                                                         const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                         const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                                        const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                        const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_infoMessage, in_mSelfTypeEntry, inCompiler COMMA_THERE),
@@ -11417,7 +11420,10 @@ GGS__5B_enumConstant_5D_ GGS__5B_enumConstant_5D_::getter_sublist (const GGS_uin
   GGS__5B_enumConstant_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_enumConstant_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -11426,7 +11432,7 @@ GGS__5B_enumConstant_5D_ GGS__5B_enumConstant_5D_::getter_sublist (const GGS_uin
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -11765,7 +11771,10 @@ GGS__5B_associatedValue_5D_ GGS__5B_associatedValue_5D_::getter_sublist (const G
   GGS__5B_associatedValue_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_associatedValue_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -11774,7 +11783,7 @@ GGS__5B_associatedValue_5D_ GGS__5B_associatedValue_5D_::getter_sublist (const G
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -12212,7 +12221,10 @@ GGS__5B_enumConstantForGeneration_5D_ GGS__5B_enumConstantForGeneration_5D_::get
   GGS__5B_enumConstantForGeneration_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_enumConstantForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -12221,7 +12233,7 @@ GGS__5B_enumConstantForGeneration_5D_ GGS__5B_enumConstantForGeneration_5D_::get
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -13184,7 +13196,10 @@ GGS__5B_graphInsertModifier_5D_ GGS__5B_graphInsertModifier_5D_::getter_sublist 
   GGS__5B_graphInsertModifier_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_graphInsertModifier_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -13193,7 +13208,7 @@ GGS__5B_graphInsertModifier_5D_ GGS__5B_graphInsertModifier_5D_::getter_sublist 
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -14779,7 +14794,10 @@ GGS__5B_insertSetterAST_5D_ GGS__5B_insertSetterAST_5D_::getter_sublist (const G
   GGS__5B_insertSetterAST_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_insertSetterAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -14788,7 +14806,7 @@ GGS__5B_insertSetterAST_5D_ GGS__5B_insertSetterAST_5D_::getter_sublist (const G
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -15226,7 +15244,10 @@ GGS__5B_mapAccessorAST_5D_ GGS__5B_mapAccessorAST_5D_::getter_sublist (const GGS
   GGS__5B_mapAccessorAST_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_mapAccessorAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -15235,7 +15256,7 @@ GGS__5B_mapAccessorAST_5D_ GGS__5B_mapAccessorAST_5D_::getter_sublist (const GGS
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -15663,7 +15684,10 @@ GGS__5B_location_5D_ GGS__5B_location_5D_::getter_sublist (const GGS_uint & inSt
   GGS__5B_location_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_location_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -15672,7 +15696,7 @@ GGS__5B_location_5D_ GGS__5B_location_5D_::getter_sublist (const GGS_uint & inSt
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;

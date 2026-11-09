@@ -335,7 +335,7 @@ final class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderF
   private let @unifiedTypeMapEntry mReceiverType
   private let @string initializerName
   private let @formalInputParameterListForGeneration formalParameterList
-  private let @typedPropertyList mTypedAttributeList
+  private let [@typedProperty] mTypedAttributeList
   private let @semanticInstructionListForGeneration semanticInstructionListForGeneration
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

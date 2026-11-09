@@ -6053,9 +6053,9 @@ class GGS_structTypeForGeneration : public GGS_semanticTypeForGeneration {
   public: GGS_structTypeForGeneration (const class cPtr_structTypeForGeneration * inSourcePtr) ;
 
 //--------------------------------- Property access
-  public: class GGS_typedPropertyList readProperty_mTypedPropertyList (void) const ;
+  public: class GGS__5B_typedProperty_5D_ readProperty_mTypedPropertyList (void) const ;
 
-  public: class GGS_typedPropertyList readProperty_mConstructorArgumentList (void) const ;
+  public: class GGS__5B_typedProperty_5D_ readProperty_mConstructorArgumentList (void) const ;
 
   public: class GGS_string readProperty_mConstructorInitializationCode (void) const ;
 
@@ -6068,8 +6068,8 @@ class GGS_structTypeForGeneration : public GGS_semanticTypeForGeneration {
 //--------------------------------- Initializers
   public: static GGS_structTypeForGeneration init_21_infoMessage_21__21__21__21__21__21_ (const class GGS_string & inOperand0,
                                                                                           const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                                          const class GGS_typedPropertyList & inOperand2,
-                                                                                          const class GGS_typedPropertyList & inOperand3,
+                                                                                          const class GGS__5B_typedProperty_5D_ & inOperand2,
+                                                                                          const class GGS__5B_typedProperty_5D_ & inOperand3,
                                                                                           const class GGS_string & inOperand4,
                                                                                           const class GGS_bool & inOperand5,
                                                                                           const class GGS_bool & inOperand6,
@@ -6110,8 +6110,8 @@ class cPtr_structTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--------------------------------- Initializers
   public: void structTypeForGeneration_init_21_infoMessage_21__21__21__21__21__21_ (const class GGS_string & inOperand0,
                                                                                     const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                                    const class GGS_typedPropertyList & inOperand2,
-                                                                                    const class GGS_typedPropertyList & inOperand3,
+                                                                                    const class GGS__5B_typedProperty_5D_ & inOperand2,
+                                                                                    const class GGS__5B_typedProperty_5D_ & inOperand3,
                                                                                     const class GGS_string & inOperand4,
                                                                                     const class GGS_bool & inOperand5,
                                                                                     const class GGS_bool & inOperand6,
@@ -6130,8 +6130,8 @@ class cPtr_structTypeForGeneration : public cPtr_semanticTypeForGeneration {
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Properties
-  public: GGS_typedPropertyList mProperty_mTypedPropertyList ;
-  public: GGS_typedPropertyList mProperty_mConstructorArgumentList ;
+  public: GGS__5B_typedProperty_5D_ mProperty_mTypedPropertyList ;
+  public: GGS__5B_typedProperty_5D_ mProperty_mConstructorArgumentList ;
   public: GGS_string mProperty_mConstructorInitializationCode ;
   public: GGS_bool mProperty_mConstructorNeedsCompilerVar ;
   public: GGS_bool mProperty_synthetizeAnInitializer ;
@@ -6143,8 +6143,8 @@ class cPtr_structTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Constructor
   public: cPtr_structTypeForGeneration (const GGS_string & in_infoMessage,
                                         const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                        const GGS_typedPropertyList & in_mTypedPropertyList,
-                                        const GGS_typedPropertyList & in_mConstructorArgumentList,
+                                        const GGS__5B_typedProperty_5D_ & in_mTypedPropertyList,
+                                        const GGS__5B_typedProperty_5D_ & in_mConstructorArgumentList,
                                         const GGS_string & in_mConstructorInitializationCode,
                                         const GGS_bool & in_mConstructorNeedsCompilerVar,
                                         const GGS_bool & in_synthetizeAnInitializer,
@@ -6458,7 +6458,7 @@ class GGS_listTypeForGeneration : public GGS_semanticTypeForGeneration {
 //--------------------------------- Property access
   public: class GGS_unifiedTypeMapEntry readProperty_mListElementTypeIndex (void) const ;
 
-  public: class GGS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
+  public: class GGS__5B_typedProperty_5D_ readProperty_mTypedAttributeList (void) const ;
 
 //-- Start of type generic part
 
@@ -6466,7 +6466,7 @@ class GGS_listTypeForGeneration : public GGS_semanticTypeForGeneration {
   public: static GGS_listTypeForGeneration init_21_infoMessage_21__21__21_ (const class GGS_string & inOperand0,
                                                                             const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                             const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                            const class GGS_typedPropertyList & inOperand3,
+                                                                            const class GGS__5B_typedProperty_5D_ & inOperand3,
                                                                             Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 //--------------------------------- Comparison
@@ -6505,7 +6505,7 @@ class cPtr_listTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: void listTypeForGeneration_init_21_infoMessage_21__21__21_ (const class GGS_string & inOperand0,
                                                                       const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                       const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                      const class GGS_typedPropertyList & inOperand3,
+                                                                      const class GGS__5B_typedProperty_5D_ & inOperand3,
                                                                       Compiler * inCompiler) ;
 
 
@@ -6522,7 +6522,7 @@ class cPtr_listTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Properties
   public: GGS_unifiedTypeMapEntry mProperty_mListElementTypeIndex ;
-  public: GGS_typedPropertyList mProperty_mTypedAttributeList ;
+  public: GGS__5B_typedProperty_5D_ mProperty_mTypedAttributeList ;
 
 
 //--- Default constructor
@@ -6532,7 +6532,7 @@ class cPtr_listTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: cPtr_listTypeForGeneration (const GGS_string & in_infoMessage,
                                       const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                       const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                      const GGS_typedPropertyList & in_mTypedAttributeList,
+                                      const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                       Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 

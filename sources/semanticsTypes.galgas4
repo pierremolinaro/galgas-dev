@@ -200,24 +200,24 @@ struct @enumerationDescriptor {
 //
 //--------------------------------------------------------------------------------------------------
 
-list @typedPropertyList {
+struct @typedProperty {
   public let @unifiedTypeMapEntry typeEntry
   public let @lstring name
   public let @propertyInCollectionInitializationAST initialization
   public let @bool hasSetter #initArgLabel
   public let @bool hasSelector #initArgLabel
+}
 
-  func initializerSignature () -> @string {
-    result = "init"
-    for property in self do
-      if property.initialization == .none then
-        result += "!"
-        if property.hasSelector then
-          result += property.name
-        end
+func [@typedProperty].initializerSignature () -> @string {
+  result = "init"
+  for property in self do
+    if property.initialization == .none then
+      result += "!"
+      if property.hasSelector then
+        result += property.name
       end
     end
-  }
+  end
 }
 
 //--------------------------------------------------------------------------------------------------

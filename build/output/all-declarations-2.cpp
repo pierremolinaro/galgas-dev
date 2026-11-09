@@ -8,110 +8,6 @@
 #include "all-declarations-2.h"
 
 //--------------------------------------------------------------------------------------------------
-//  Enum headerKind
-//--------------------------------------------------------------------------------------------------
-
-GGS_headerKind::GGS_headerKind (void) :
-mEnum (Enumeration::invalid) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_headerKind GGS_headerKind::class_func_noHeader (UNUSED_LOCATION_ARGS) {
-  GGS_headerKind result ;
-  result.mEnum = Enumeration::enum_noHeader ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_headerKind GGS_headerKind::class_func_oneHeader (UNUSED_LOCATION_ARGS) {
-  GGS_headerKind result ;
-  result.mEnum = Enumeration::enum_oneHeader ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_headerKind GGS_headerKind::class_func_twoHeaders (UNUSED_LOCATION_ARGS) {
-  GGS_headerKind result ;
-  result.mEnum = Enumeration::enum_twoHeaders ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-//--------------------------------------------------------------------------------------------------
-
-static const char * gEnumNameArrayFor_headerKind [4] = {
-  "(not built)",
-  "noHeader",
-  "oneHeader",
-  "twoHeaders"
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_headerKind::getter_isNoHeader (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_noHeader == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_headerKind::getter_isOneHeader (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_oneHeader == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_headerKind::getter_isTwoHeaders (UNUSED_LOCATION_ARGS) const {
-  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_twoHeaders == mEnum) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_headerKind::description (String & ioString,
-                                  const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<enum @headerKind: ") ;
-  ioString.appendCString (gEnumNameArrayFor_headerKind [size_t (mEnum)]) ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_headerKind::objectCompare (const GGS_headerKind & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    if (mEnum < inOperand.mEnum) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (mEnum > inOperand.mEnum) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @headerKind generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_headerKind ("headerKind",
-                                                               nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_headerKind::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_headerKind ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //  Extension Getter '@typeKindEnum string'
 //--------------------------------------------------------------------------------------------------
 
@@ -130,8 +26,8 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
     break ;
   case GGS_typeKindEnum::Enumeration::enum_enumType:
     {
-      GGS_constantIndexMap extractedValue_3858__0 ;
-      temp_0.getAssociatedValuesFor_enumType (extractedValue_3858__0) ;
+      GGS_constantIndexMap extractedValue_3854__0 ;
+      temp_0.getAssociatedValuesFor_enumType (extractedValue_3854__0) ;
       result_result = GGS_string ("enumeration") ;
     }
     break ;
@@ -197,8 +93,8 @@ GGS_string extensionGetter_string (const GGS_typeKindEnum & inObject,
     break ;
   case GGS_typeKindEnum::Enumeration::enum_weakReferenceType:
     {
-      GGS_unifiedTypeMapEntry extractedValue_4447__0 ;
-      temp_0.getAssociatedValuesFor_weakReferenceType (extractedValue_4447__0) ;
+      GGS_unifiedTypeMapEntry extractedValue_4443__0 ;
+      temp_0.getAssociatedValuesFor_weakReferenceType (extractedValue_4443__0) ;
       result_result = GGS_string ("weak reference") ;
     }
     break ;
@@ -1764,7 +1660,10 @@ GGS__5B_ruleDeclarationAST_5D_ GGS__5B_ruleDeclarationAST_5D_::getter_sublist (c
   GGS__5B_ruleDeclarationAST_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_ruleDeclarationAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -1773,7 +1672,7 @@ GGS__5B_ruleDeclarationAST_5D_ GGS__5B_ruleDeclarationAST_5D_::getter_sublist (c
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -7112,7 +7011,7 @@ init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__2
                                                                                         const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                                                         const GGS_string & in_initializerName,
                                                                                         const GGS_formalInputParameterListForGeneration & in_formalParameterList,
-                                                                                        const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                        const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                         const GGS_semanticInstructionListForGeneration & in_semanticInstructionListForGeneration,
                                                                                         Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) {
@@ -7133,7 +7032,7 @@ extensionInitializerForGeneration_init_21_infoMessage_21_generateHeader_21_imple
                                                                                                                           const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                                                                                           const GGS_string & in_initializerName,
                                                                                                                           const GGS_formalInputParameterListForGeneration & in_formalParameterList,
-                                                                                                                          const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                                          const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                                                           const GGS_semanticInstructionListForGeneration & in_semanticInstructionListForGeneration,
                                                                                                                           Compiler * /* inCompiler */) {
   mProperty_infoMessage = in_infoMessage ;
@@ -7190,9 +7089,9 @@ GGS_formalInputParameterListForGeneration GGS_extensionInitializerForGeneration:
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_extensionInitializerForGeneration::readProperty_mTypedAttributeList (void) const {
+GGS__5B_typedProperty_5D_ GGS_extensionInitializerForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_extensionInitializerForGeneration * p = (cPtr_extensionInitializerForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_extensionInitializerForGeneration) ;
@@ -7233,7 +7132,7 @@ cPtr_extensionInitializerForGeneration::cPtr_extensionInitializerForGeneration (
                                                                                 const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                                                 const GGS_string & in_initializerName,
                                                                                 const GGS_formalInputParameterListForGeneration & in_formalParameterList,
-                                                                                const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                 const GGS_semanticInstructionListForGeneration & in_semanticInstructionListForGeneration,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) :
@@ -8229,7 +8128,7 @@ init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__2
                                                                                                     const GGS_unifiedTypeMapEntry & in_mResultType,
                                                                                                     const GGS_string & in_mResultVarCppName,
                                                                                                     const GGS_formalInputParameterListForGeneration & in_mExtensionGetterFormalParameterList,
-                                                                                                    const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                    const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                                     const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
@@ -8253,7 +8152,7 @@ extensionGetterForGeneration_init_21_infoMessage_21_generateHeader_21_implementa
                                                                                                                                  const GGS_unifiedTypeMapEntry & in_mResultType,
                                                                                                                                  const GGS_string & in_mResultVarCppName,
                                                                                                                                  const GGS_formalInputParameterListForGeneration & in_mExtensionGetterFormalParameterList,
-                                                                                                                                 const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                                                 const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                                                                  const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                                                                                                  Compiler * /* inCompiler */) {
   mProperty_infoMessage = in_infoMessage ;
@@ -8349,9 +8248,9 @@ GGS_formalInputParameterListForGeneration GGS_extensionGetterForGeneration::read
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_extensionGetterForGeneration::readProperty_mTypedAttributeList (void) const {
+GGS__5B_typedProperty_5D_ GGS_extensionGetterForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_extensionGetterForGeneration * p = (cPtr_extensionGetterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_extensionGetterForGeneration) ;
@@ -8398,7 +8297,7 @@ cPtr_extensionGetterForGeneration::cPtr_extensionGetterForGeneration (const GGS_
                                                                       const GGS_unifiedTypeMapEntry & in_mResultType,
                                                                       const GGS_string & in_mResultVarCppName,
                                                                       const GGS_formalInputParameterListForGeneration & in_mExtensionGetterFormalParameterList,
-                                                                      const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                      const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                       const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) :
@@ -8850,7 +8749,7 @@ init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__2
                                                                                             const GGS_string & in_mBaseTypeName,
                                                                                             const GGS_string & in_mExtensionMethodName,
                                                                                             const GGS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
-                                                                                            const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                            const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                             const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
@@ -8872,7 +8771,7 @@ overridingExtensionMethodForGeneration_init_21_infoMessage_21_generateHeader_21_
                                                                                                                                    const GGS_string & in_mBaseTypeName,
                                                                                                                                    const GGS_string & in_mExtensionMethodName,
                                                                                                                                    const GGS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
-                                                                                                                                   const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                                                   const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                                                                    const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                                                                                                    Compiler * /* inCompiler */) {
   mProperty_infoMessage = in_infoMessage ;
@@ -8942,9 +8841,9 @@ GGS_formalParameterListForGeneration GGS_overridingExtensionMethodForGeneration:
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_overridingExtensionMethodForGeneration::readProperty_mTypedAttributeList (void) const {
+GGS__5B_typedProperty_5D_ GGS_overridingExtensionMethodForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_overridingExtensionMethodForGeneration * p = (cPtr_overridingExtensionMethodForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overridingExtensionMethodForGeneration) ;
@@ -8987,7 +8886,7 @@ cPtr_overridingExtensionMethodForGeneration::cPtr_overridingExtensionMethodForGe
                                                                                           const GGS_string & in_mBaseTypeName,
                                                                                           const GGS_string & in_mExtensionMethodName,
                                                                                           const GGS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
-                                                                                          const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                          const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                           const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) :
@@ -10981,7 +10880,7 @@ init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__2
                                                                                             const GGS_string & in_mExtensionMethodName,
                                                                                             const GGS_bool & in_mImplementedAsFunction,
                                                                                             const GGS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
-                                                                                            const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                            const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                             const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
@@ -11003,7 +10902,7 @@ extensionMethodForGeneration_init_21_infoMessage_21_generateHeader_21_implementa
                                                                                                                          const GGS_string & in_mExtensionMethodName,
                                                                                                                          const GGS_bool & in_mImplementedAsFunction,
                                                                                                                          const GGS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
-                                                                                                                         const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                                         const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                                                          const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                                                                                          Compiler * /* inCompiler */) {
   mProperty_infoMessage = in_infoMessage ;
@@ -11073,9 +10972,9 @@ GGS_formalParameterListForGeneration GGS_extensionMethodForGeneration::readPrope
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_extensionMethodForGeneration::readProperty_mTypedAttributeList (void) const {
+GGS__5B_typedProperty_5D_ GGS_extensionMethodForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_extensionMethodForGeneration * p = (cPtr_extensionMethodForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_extensionMethodForGeneration) ;
@@ -11118,7 +11017,7 @@ cPtr_extensionMethodForGeneration::cPtr_extensionMethodForGeneration (const GGS_
                                                                       const GGS_string & in_mExtensionMethodName,
                                                                       const GGS_bool & in_mImplementedAsFunction,
                                                                       const GGS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
-                                                                      const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                      const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                       const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) :
@@ -11921,7 +11820,10 @@ GGS__5B__32_string_5D_ GGS__5B__32_string_5D_::getter_sublist (const GGS_uint & 
   GGS__5B__32_string_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B__32_string_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -11930,7 +11832,7 @@ GGS__5B__32_string_5D_ GGS__5B__32_string_5D_::getter_sublist (const GGS_uint & 
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -14372,7 +14274,10 @@ GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ GGS__5B_abstractLexicalRouti
   GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -14381,7 +14286,7 @@ GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ GGS__5B_abstractLexicalRouti
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -15724,5 +15629,134 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2
 
 const GALGAS_TypeDescriptor * GGS_lexicalSelectInstructionAST_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @lexicalSimpleSendInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_lexicalSimpleSendInstructionAST::objectCompare (const GGS_lexicalSimpleSendInstructionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSimpleSendInstructionAST::GGS_lexicalSimpleSendInstructionAST (void) :
+GGS_lexicalInstructionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_lexicalSimpleSendInstructionAST GGS_lexicalSimpleSendInstructionAST::
+init_21_ (const GGS_lstring & in_mSentTerminal,
+          Compiler * inCompiler
+          COMMA_LOCATION_ARGS) {
+  cPtr_lexicalSimpleSendInstructionAST * object = nullptr ;
+  macroMyNew (object, cPtr_lexicalSimpleSendInstructionAST (inCompiler COMMA_THERE)) ;
+  object->lexicalSimpleSendInstructionAST_init_21_ (in_mSentTerminal, inCompiler) ;
+  const GGS_lexicalSimpleSendInstructionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_lexicalSimpleSendInstructionAST::
+lexicalSimpleSendInstructionAST_init_21_ (const GGS_lstring & in_mSentTerminal,
+                                          Compiler * /* inCompiler */) {
+  mProperty_mSentTerminal = in_mSentTerminal ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lexicalSimpleSendInstructionAST::GGS_lexicalSimpleSendInstructionAST (const cPtr_lexicalSimpleSendInstructionAST * inSourcePtr) :
+GGS_lexicalInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalSimpleSendInstructionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_lexicalSimpleSendInstructionAST::readProperty_mSentTerminal (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_lexicalSimpleSendInstructionAST * p = (cPtr_lexicalSimpleSendInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexicalSimpleSendInstructionAST) ;
+    return p->mProperty_mSentTerminal ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @lexicalSimpleSendInstructionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalSimpleSendInstructionAST::cPtr_lexicalSimpleSendInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mSentTerminal () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_lexicalSimpleSendInstructionAST::cPtr_lexicalSimpleSendInstructionAST (const GGS_lstring & in_mSentTerminal,
+                                                                            Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) :
+cPtr_lexicalInstructionAST (inCompiler COMMA_THERE),
+mProperty_mSentTerminal () {
+  mProperty_mSentTerminal = in_mSentTerminal ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_lexicalSimpleSendInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST ;
+}
+
+void cPtr_lexicalSimpleSendInstructionAST::description (String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("[@lexicalSimpleSendInstructionAST:") ;
+  mProperty_mSentTerminal.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_lexicalSimpleSendInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_lexicalSimpleSendInstructionAST (mProperty_mSentTerminal, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_lexicalSimpleSendInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_lexicalInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mSentTerminal.printNonNullClassInstanceProperties ("mSentTerminal") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @lexicalSimpleSendInstructionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST ("lexicalSimpleSendInstructionAST",
+                                                                                    & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_lexicalSimpleSendInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST ;
 }
 

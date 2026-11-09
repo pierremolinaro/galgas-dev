@@ -68,13 +68,13 @@ void GGS_%!TYPE_IDENTIFIER%::plusPlusAssignOperation (%?^%const GGS_%!ELEMENT_TY
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::addAssignOperation (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% & inKey%
-for (propertyTypeEntry 4*) in CURRENT_PROPERTY_LIST
-  do (IDX) %,\n%!^%const GGS_%![propertyTypeEntry identifierRepresentation]% & inArgument%![IDX string]
+for (property) in CURRENT_PROPERTY_LIST
+  do (IDX) %,\n%!^%const GGS_%![property.typeEntry identifierRepresentation]% & inArgument%![IDX string]
 end
 %,\n %!^%Compiler * /* inCompiler */%
 %\n %!^%COMMA_LOCATION_ARGS) {\n%
 %  GGS_%!ELEMENT_TYPE_IDENTIFIER% newElement (inKey%
-for (5*) in CURRENT_PROPERTY_LIST
+for (*) in CURRENT_PROPERTY_LIST
   do (IDX) %, inArgument%![IDX string]
 end
 %) ;
@@ -86,13 +86,13 @@ end
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::setter_insert (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% inKey%
-for (propertyTypeEntry 4*) in CURRENT_PROPERTY_LIST
-  do (IDX) %,\n%!^%const GGS_%![propertyTypeEntry identifierRepresentation]% inArgument%![IDX string]
+for (property) in CURRENT_PROPERTY_LIST
+  do (IDX) %,\n%!^%const GGS_%![property.typeEntry identifierRepresentation]% inArgument%![IDX string]
 end
 %,\n %!^%Compiler * /* inCompiler */%
 %\n %!^%COMMA_LOCATION_ARGS) {\n%
 %  GGS_%!ELEMENT_TYPE_IDENTIFIER% newElement (inKey%
-for (5*) in CURRENT_PROPERTY_LIST
+for (*) in CURRENT_PROPERTY_LIST
   do (IDX) %, inArgument%![IDX string]
 end
 %) ;
@@ -115,8 +115,8 @@ GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_contains (%?^%const GGS_%!KEY_TYPE_IDENT
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::method_searchKey (%?^%GGS_%!KEY_TYPE_IDENTIFIER% inKey%
-for (propertyTypeEntry 4*) in CURRENT_PROPERTY_LIST
-  do (IDX) %,\n%!^%GGS_%![propertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
+for (property) in CURRENT_PROPERTY_LIST
+  do (IDX) %,\n%!^%GGS_%![property.typeEntry identifierRepresentation]% & outArgument%![IDX string]
 end
 %,\n %!^%Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) const {
@@ -129,13 +129,13 @@ end
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     //--- Drop out arguments
 %
-for (5*) in CURRENT_PROPERTY_LIST do (IDX)
+for (*) in CURRENT_PROPERTY_LIST do (IDX)
   %      outArgument%![IDX string]%.drop () ;\n%
 end
 %    }else{
 %
-for (* propertyName 3*) in CURRENT_PROPERTY_LIST do (IDX)
-  %      outArgument%![IDX string]% = object->mProperty_%![propertyName identifierRepresentation]% ;\n%
+for (property) in CURRENT_PROPERTY_LIST do (IDX)
+  %      outArgument%![IDX string]% = object->mProperty_%![property.name identifierRepresentation]% ;\n%
 end
 %    }
   }
@@ -143,8 +143,8 @@ end
 
 //--------------------------------------------------------------------------------------------------\n\n%
 %void GGS_%!TYPE_IDENTIFIER%::setter_removeKey (%?^%GGS_%!KEY_TYPE_IDENTIFIER% inKey%
-for (propertyTypeEntry 4*) in CURRENT_PROPERTY_LIST
-  do (IDX) %,\n%!^%GGS_%![propertyTypeEntry identifierRepresentation]% & outArgument%![IDX string]
+for (property) in CURRENT_PROPERTY_LIST
+  do (IDX) %,\n%!^%GGS_%![property.typeEntry identifierRepresentation]% & outArgument%![IDX string]
 end
 %,\n %!^%Compiler * inCompiler%
 %\n %!^%COMMA_LOCATION_ARGS) {
@@ -158,43 +158,43 @@ end
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     //--- Drop output arguments
 %
-for (5*) in CURRENT_PROPERTY_LIST do (IDX)
+for (*) in CURRENT_PROPERTY_LIST do (IDX)
   %      outArgument%![IDX string]%.drop () ;\n%
 end
 %    }else{
     //--- Assign output arguments
 %
-for (* propertyName 3*) in CURRENT_PROPERTY_LIST do (IDX)
-  %      outArgument%![IDX string]% = removedObject->mProperty_%![propertyName identifierRepresentation]% ;\n%
+for (property) in CURRENT_PROPERTY_LIST do (IDX)
+  %      outArgument%![IDX string]% = removedObject->mProperty_%![property.name identifierRepresentation]% ;\n%
 end
 %    }
   }
 }
 
-%for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do
+%for (property) in CURRENT_PROPERTY_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %GGS_%![propertyTypeEntry identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::getter_%![propertyName identifierRepresentation]%ForKey (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
+  %GGS_%![property.typeEntry identifierRepresentation]% GGS_%!TYPE_IDENTIFIER%::getter_%![property.name identifierRepresentation]%ForKey (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
                                                  %!^%Compiler * inCompiler
                                                  %!^%COMMA_LOCATION_ARGS) const {
-  GGS_%![propertyTypeEntry identifierRepresentation]% result ;
+  GGS_%![property.typeEntry identifierRepresentation]% result ;
   if (isValid () && inKey.isValid ()) {
     const SharedGenericPtrWithValueSemantics <GGS_%!ELEMENT_TYPE_IDENTIFIER%> object = infoForKey (inKey) ;
     if (object.isNil ()) { // Not found
     //--- Build error message
-      const String message = "cannot get %![propertyName identifierRepresentation]% ForKey in dict: the key does not exist" ;
+      const String message = "cannot get %![property.name identifierRepresentation]% ForKey in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      result = object->mProperty_%![propertyName identifierRepresentation]% ;
+      result = object->mProperty_%![property.name identifierRepresentation]% ;
     }
   }
   return result ;
 }\n%
 end
 
-for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do
+for (property) in CURRENT_PROPERTY_LIST do
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %void GGS_%!TYPE_IDENTIFIER%::setter_set%![[propertyName capitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GGS_%![propertyTypeEntry identifierRepresentation]% inPropertyValue,
+  %void GGS_%!TYPE_IDENTIFIER%::setter_set%![[property.name capitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GGS_%![property.typeEntry identifierRepresentation]% inPropertyValue,
                              %!^%GGS_%!KEY_TYPE_IDENTIFIER% inKey,
                              %!^%Compiler * inCompiler
                              %!^%COMMA_LOCATION_ARGS) {
@@ -202,11 +202,11 @@ for (propertyTypeEntry propertyName 3*) in CURRENT_PROPERTY_LIST do
     OptionalSharedRef <GenericDictionaryNode <GGS_%!KEY_TYPE_IDENTIFIER%, GGS_%!ELEMENT_TYPE_IDENTIFIER%>> modifiedNode = nodeForKey (inKey) ;
     if (modifiedNode.isNil ()) { // Not found
     //--- Build error message
-     const String message = "cannot set%![[propertyName capitalizingFirstCharacter] identifierRepresentation]%ForKey in dict: the key does not exist" ;
+     const String message = "cannot set%![[property.name capitalizingFirstCharacter] identifierRepresentation]%ForKey in dict: the key does not exist" ;
     //--- Emit error message
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
-      modifiedNode->mSharedInfo->mProperty_%![propertyName identifierRepresentation]% = inPropertyValue ;
+      modifiedNode->mSharedInfo->mProperty_%![property.name identifierRepresentation]% = inPropertyValue ;
     }
   }
 }\n\n%

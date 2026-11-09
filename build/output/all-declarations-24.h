@@ -24,8 +24,6 @@
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_optionalTypeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_optionalTypeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_optionalTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -109,8 +107,6 @@ void routine_check_5F_K_5F_escapeCharacters_3F_ (const class GGS_lstring constin
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_mapGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_mapGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_mapGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -121,7 +117,7 @@ extern const cDirectoryWrapper gWrapperDirectory_2_mapGenerationTemplate ;
 GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeHeader_31_ (class Compiler * inCompiler,
                                                                         const class GGS_string & in_TYPE_5F_NAME,
                                                                         const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                        const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                        const class GGS__5B_typedProperty_5D_ & in_CURRENT_5F_PROPERTY_5F_LIST,
                                                                         const class GGS__5B_mapAccessorAST_5D_ & in_SEARCH_5F_METHOD_5F_LIST,
                                                                         const class GGS__5B_enumerationDescriptor_5D_ & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                         const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
@@ -137,7 +133,7 @@ GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeHeader_31_ (class Co
 
 GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                     const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                    const class GGS_typedPropertyList & in_PROPERTY_5F_LIST,
+                                                                                    const class GGS__5B_typedProperty_5D_ & in_PROPERTY_5F_LIST,
                                                                                     const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
                                                                                     const class GGS__5B_insertSetterAST_5D_ & in_INSERT_5F_SETTER_5F_LIST,
                                                                                     const class GGS_string & in_OPTIONAL_5F_ELEMENT_5F_TYPE_5F_IDENTIFIER,
@@ -165,8 +161,6 @@ GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeSpecificImplementati
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_structGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_structGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -210,8 +204,6 @@ GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImple
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_classGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_classGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_classGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -224,7 +216,7 @@ GGS_string filewrapperTemplate_classGenerationTemplate_referenceClassTypeHeader_
                                                                                      const class GGS_string & in_TYPE_5F_IDENTIFIER,
                                                                                      const class GGS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
                                                                                      const class GGS_bool & in_IS_5F_ABSTRACT,
-                                                                                     const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST
+                                                                                     const class GGS__5B_typedProperty_5D_ & in_CURRENT_5F_PROPERTY_5F_LIST
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -237,8 +229,8 @@ GGS_string filewrapperTemplate_classGenerationTemplate_referenceClassTypeHeader_
                                                                                              const class GGS_string & in_TYPE_5F_NAME,
                                                                                              const class GGS_string & in_TYPE_5F_IDENTIFIER,
                                                                                              const class GGS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
-                                                                                             const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
-                                                                                             const class GGS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
+                                                                                             const class GGS__5B_typedProperty_5D_ & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                                             const class GGS__5B_typedProperty_5D_ & in_ALL_5F_PROPERTY_5F_LIST,
                                                                                              const class GGS_bool & in_IS_5F_ABSTRACT,
                                                                                              const class GGS_getterMap & in_GETTER_5F_MAP,
                                                                                              const class GGS_instanceMethodMap & in_INSTANCE_5F_METHOD_5F_MAP,
@@ -255,10 +247,10 @@ GGS_string filewrapperTemplate_classGenerationTemplate_referenceClassTypeHeader_
                                                                                              const class GGS_string & in_TYPE_5F_NAME,
                                                                                              const class GGS_string & in_TYPE_5F_IDENTIFIER,
                                                                                              const class GGS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
-                                                                                             const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
-                                                                                             const class GGS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
+                                                                                             const class GGS__5B_typedProperty_5D_ & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                                             const class GGS__5B_typedProperty_5D_ & in_ALL_5F_PROPERTY_5F_LIST,
                                                                                              const class GGS_bool & in_IS_5F_ABSTRACT,
-                                                                                             const class GGS_typedPropertyList & in_INITIALIZER_5F_ARGUMENT_5F_LIST
+                                                                                             const class GGS__5B_typedProperty_5D_ & in_INITIALIZER_5F_ARGUMENT_5F_LIST
                                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -271,15 +263,15 @@ GGS_string filewrapperTemplate_classGenerationTemplate_referenceClassTypeSpecifi
                                                                                                  const class GGS_string & in_TYPE_5F_NAME,
                                                                                                  const class GGS_string & in_TYPE_5F_IDENTIFIER,
                                                                                                  const class GGS_string & in_SUPER_5F_TYPE_5F_IDENTIFIER,
-                                                                                                 const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
-                                                                                                 const class GGS_typedPropertyList & in_ALL_5F_PROPERTY_5F_LIST,
-                                                                                                 const class GGS_typedPropertyList & in_INHERITED_5F_ATTRIBUTE_5F_LIST,
+                                                                                                 const class GGS__5B_typedProperty_5D_ & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                                                 const class GGS__5B_typedProperty_5D_ & in_ALL_5F_PROPERTY_5F_LIST,
+                                                                                                 const class GGS__5B_typedProperty_5D_ & in_INHERITED_5F_ATTRIBUTE_5F_LIST,
                                                                                                  const class GGS_bool & in_IS_5F_ABSTRACT,
                                                                                                  const class GGS_bool & in_CONSTRUCTOR_5F_NEEDS_5F_COMPILER_5F_VAR,
                                                                                                  const class GGS_string & in_CONSTRUCTOR_5F_INITIALIZATION_5F_CODE,
                                                                                                  const class GGS_bool & in_GENERATE_5F_SYNTHETIZED_5F_INITIALIZER,
-                                                                                                 const class GGS_typedPropertyList & in_INITIALIZER_5F_ARGUMENT_5F_LIST,
-                                                                                                 const class GGS_typedPropertyList & in_INHERITED_5F_INITIALIZER_5F_ARGUMENT_5F_LIST,
+                                                                                                 const class GGS__5B_typedProperty_5D_ & in_INITIALIZER_5F_ARGUMENT_5F_LIST,
+                                                                                                 const class GGS__5B_typedProperty_5D_ & in_INHERITED_5F_INITIALIZER_5F_ARGUMENT_5F_LIST,
                                                                                                  const class GGS_initializerMap & in_INITIALIZER_5F_MAP,
                                                                                                  const class GGS_bool & in_CLONABLE
                                                                                                  COMMA_LOCATION_ARGS) ;
@@ -327,8 +319,6 @@ class GGS_string function_generateClassInstanceMethodDeclaration (const class GG
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_dictGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_dictGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_dictGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -339,7 +329,7 @@ extern const cDirectoryWrapper gWrapperDirectory_2_dictGenerationTemplate ;
 GGS_string filewrapperTemplate_dictGenerationTemplate_dictTypeHeader_31_ (class Compiler * inCompiler,
                                                                           const class GGS_string & in_TYPE_5F_NAME,
                                                                           const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                          const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                          const class GGS__5B_typedProperty_5D_ & in_CURRENT_5F_PROPERTY_5F_LIST,
                                                                           const class GGS__5B_enumerationDescriptor_5D_ & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                           const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
                                                                           const class GGS_string & in_KEY_5F_TYPE_5F_IDENTIFIER,
@@ -354,7 +344,7 @@ GGS_string filewrapperTemplate_dictGenerationTemplate_dictTypeHeader_31_ (class 
 
 GGS_string filewrapperTemplate_dictGenerationTemplate_dictTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                       const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                      const class GGS_typedPropertyList & in_CURRENT_5F_PROPERTY_5F_LIST,
+                                                                                      const class GGS__5B_typedProperty_5D_ & in_CURRENT_5F_PROPERTY_5F_LIST,
                                                                                       const class GGS__5B_enumerationDescriptor_5D_ & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                                       const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
                                                                                       const class GGS_string & in_KEY_5F_TYPE_5F_IDENTIFIER,
@@ -379,8 +369,6 @@ GGS_string filewrapperTemplate_dictGenerationTemplate_dictTypeSpecificImplementa
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_sortedListGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_sortedListGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_sortedListGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -391,7 +379,7 @@ extern const cDirectoryWrapper gWrapperDirectory_2_sortedListGenerationTemplate 
 GGS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHeader_31_ (class Compiler * inCompiler,
                                                                                       const class GGS_string & in_TYPE_5F_NAME,
                                                                                       const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                      const class GGS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                      const class GGS__5B_typedProperty_5D_ & in_ATTRIBUTE_5F_LIST,
                                                                                       const class GGS__5B_enumerationDescriptor_5D_ & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                                       const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
                                                                                       const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER
@@ -405,7 +393,7 @@ GGS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHeader
 
 GGS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                                   const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                                  const class GGS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                                  const class GGS__5B_typedProperty_5D_ & in_ATTRIBUTE_5F_LIST,
                                                                                                   const class GGS__5B_sortDescriptorForGeneration_5D_ & in_SORT_5F_ATTRIBUTE_5F_LIST,
                                                                                                   const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
                                                                                                   const class GGS_bool & in_GENERATE_5F_COMPARISON

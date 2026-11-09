@@ -271,7 +271,7 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
   private let @unifiedTypeMapEntry mResultType
   private let @string mResultVarCppName
   private let @formalInputParameterListForGeneration mExtensionGetterFormalParameterList
-  private let @typedPropertyList mTypedAttributeList
+  private let [@typedProperty] mTypedAttributeList
   private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

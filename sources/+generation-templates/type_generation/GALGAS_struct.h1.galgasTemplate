@@ -5,10 +5,10 @@
 class GGS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Properties
 %
-for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in PROPERTY_LIST do
-  %  public: GGS_%![mPropertyTypeEntry identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n%
-  %  public: inline GGS_%![mPropertyTypeEntry identifierRepresentation]% readProperty_%![mPropertyName identifierRepresentation]% (void) const {\n%
-  %    return mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+for (property) in PROPERTY_LIST do
+  %  public: GGS_%![property.typeEntry identifierRepresentation]% mProperty_%![property.name identifierRepresentation]% ;\n%
+  %  public: inline GGS_%![property.typeEntry identifierRepresentation]% readProperty_%![property.name identifierRepresentation]% (void) const {\n%
+  %    return mProperty_%![property.name identifierRepresentation]% ;\n%
   %  }\n\n%
 end
 %//--------------------------------- Accessors
@@ -20,17 +20,17 @@ end
 
 //--------------------------------- Property setters
 %
-for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST do
-  %  public: inline void setter_set%![[mPropertyName capitalizingFirstCharacter] identifierRepresentation]% (const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inValue COMMA_UNUSED_LOCATION_ARGS) {\n%
-  %    mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n% 
+for (property) in PROPERTY_LIST do
+  %  public: inline void setter_set%![[property.name capitalizingFirstCharacter] identifierRepresentation]% (const GGS_%![property.typeEntry identifierRepresentation]% & inValue COMMA_UNUSED_LOCATION_ARGS) {\n%
+  %    mProperty_%![property.name identifierRepresentation]% = inValue ;\n% 
   %  }\n\n%
 end%//--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
   public: GGS_%!TYPE_IDENTIFIER% (%?^
-for (mPropertyTypeEntry mPropertyName 3*) in PROPERTY_LIST
-  do %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
+for (property) in PROPERTY_LIST
+  do %const GGS_%![property.typeEntry identifierRepresentation]% & in_%![property.name identifierRepresentation]
   between %,\n%!^
 end%) ;
 

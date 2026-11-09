@@ -291,7 +291,10 @@ GGS__5B_logAST_5D_ GGS__5B_logAST_5D_::getter_sublist (const GGS_uint & inStartI
   GGS__5B_logAST_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_logAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -300,7 +303,7 @@ GGS__5B_logAST_5D_ GGS__5B_logAST_5D_::getter_sublist (const GGS_uint & inStartI
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -2662,7 +2665,10 @@ GGS__5B_fixitElementAST_5D_ GGS__5B_fixitElementAST_5D_::getter_sublist (const G
   GGS__5B_fixitElementAST_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_fixitElementAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -2671,7 +2677,7 @@ GGS__5B_fixitElementAST_5D_ GGS__5B_fixitElementAST_5D_::getter_sublist (const G
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -3283,7 +3289,10 @@ GGS__5B_fixitElementForGeneration_5D_ GGS__5B_fixitElementForGeneration_5D_::get
   GGS__5B_fixitElementForGeneration_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_fixitElementForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -3292,7 +3301,7 @@ GGS__5B_fixitElementForGeneration_5D_ GGS__5B_fixitElementForGeneration_5D_::get
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -7808,7 +7817,10 @@ GGS__5B_semanticInstructionAST_5D_ GGS__5B_semanticInstructionAST_5D_::getter_su
   GGS__5B_semanticInstructionAST_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_semanticInstructionAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -7817,7 +7829,7 @@ GGS__5B_semanticInstructionAST_5D_ GGS__5B_semanticInstructionAST_5D_::getter_su
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -9781,7 +9793,10 @@ GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ GGS__5B_forInstructionEnume
   GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -9790,7 +9805,7 @@ GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ GGS__5B_forInstructionEnume
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -10486,7 +10501,10 @@ GGS__5B_forInstructionEnumeratedObjectAST_5D_ GGS__5B_forInstructionEnumeratedOb
   GGS__5B_forInstructionEnumeratedObjectAST_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_forInstructionEnumeratedObjectAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -10495,7 +10513,7 @@ GGS__5B_forInstructionEnumeratedObjectAST_5D_ GGS__5B_forInstructionEnumeratedOb
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -10851,7 +10869,10 @@ GGS__5B_localConstant_5D_ GGS__5B_localConstant_5D_::getter_sublist (const GGS_u
   GGS__5B_localConstant_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_localConstant_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -10860,7 +10881,7 @@ GGS__5B_localConstant_5D_ GGS__5B_localConstant_5D_::getter_sublist (const GGS_u
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -11334,7 +11355,10 @@ GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ GGS__5B_forInstructionEn
   GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -11343,7 +11367,7 @@ GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ GGS__5B_forInstructionEn
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -11777,7 +11801,10 @@ GGS__5B_switchBranchAST_5D_ GGS__5B_switchBranchAST_5D_::getter_sublist (const G
   GGS__5B_switchBranchAST_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_switchBranchAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -11786,7 +11813,7 @@ GGS__5B_switchBranchAST_5D_ GGS__5B_switchBranchAST_5D_::getter_sublist (const G
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -12125,7 +12152,10 @@ GGS__5B_switchExtractedValuesAST_5D_ GGS__5B_switchExtractedValuesAST_5D_::gette
   GGS__5B_switchExtractedValuesAST_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_switchExtractedValuesAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -12134,7 +12164,7 @@ GGS__5B_switchExtractedValuesAST_5D_ GGS__5B_switchExtractedValuesAST_5D_::gette
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -12572,7 +12602,10 @@ GGS__5B_switchBranchForGeneration_5D_ GGS__5B_switchBranchForGeneration_5D_::get
   GGS__5B_switchBranchForGeneration_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_switchBranchForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -12581,7 +12614,7 @@ GGS__5B_switchBranchForGeneration_5D_ GGS__5B_switchBranchForGeneration_5D_::get
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -12920,7 +12953,10 @@ GGS__5B_extractedAssociatedValueForGeneration_5D_ GGS__5B_extractedAssociatedVal
   GGS__5B_extractedAssociatedValueForGeneration_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_extractedAssociatedValueForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -12929,7 +12965,7 @@ GGS__5B_extractedAssociatedValueForGeneration_5D_ GGS__5B_extractedAssociatedVal
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;

@@ -211,7 +211,10 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_sublist (%?^%const GGS_uin
   GGS_%!TYPE_IDENTIFIER% result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS_%!TYPE_IDENTIFIER%::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -220,7 +223,7 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::getter_sublist (%?^%const GGS_uin
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;

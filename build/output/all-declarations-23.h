@@ -215,8 +215,6 @@ void routine_checkExtensionGetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (con
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_arrayTypeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_arrayTypeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_arrayTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -268,8 +266,6 @@ class GGS_stringset function_forbiddenKeysForStruct (class Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_structureGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_structureGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_structureGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -280,7 +276,7 @@ extern const cDirectoryWrapper gWrapperDirectory_2_structureGenerationTemplate ;
 GGS_string filewrapperTemplate_structureGenerationTemplate_structTypeHeader_31_ (class Compiler * inCompiler,
                                                                                  const class GGS_string & in_TYPE_5F_NAME,
                                                                                  const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                 const class GGS_typedPropertyList & in_PROPERTY_5F_LIST
+                                                                                 const class GGS__5B_typedProperty_5D_ & in_PROPERTY_5F_LIST
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -292,8 +288,8 @@ GGS_string filewrapperTemplate_structureGenerationTemplate_structTypeHeader_31_ 
 GGS_string filewrapperTemplate_structureGenerationTemplate_structTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                              const class GGS_string & in_TYPE_5F_NAME,
                                                                                              const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                             const class GGS_typedPropertyList & in_PROPERTY_5F_LIST,
-                                                                                             const class GGS_typedPropertyList & in_INITIALIZER_5F_ARGUMENT_5F_LIST,
+                                                                                             const class GGS__5B_typedProperty_5D_ & in_PROPERTY_5F_LIST,
+                                                                                             const class GGS__5B_typedProperty_5D_ & in_INITIALIZER_5F_ARGUMENT_5F_LIST,
                                                                                              const class GGS_string & in_CONSTRUCTOR_5F_INITIALIZATION_5F_CODE,
                                                                                              const class GGS_bool & in_CONSTRUCTOR_5F_NEEDS_5F_COMPILER_5F_VAR,
                                                                                              const class GGS_bool & in_GENERATE_5F_SYNTHETIZED_5F_INITIALIZER,
@@ -326,8 +322,6 @@ class GGS_lstring function_makeEmbeddedElementTypeLName (const class GGS_lstring
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_listGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_listGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_listGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -338,7 +332,7 @@ extern const cDirectoryWrapper gWrapperDirectory_2_listGenerationTemplate ;
 GGS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (class Compiler * inCompiler,
                                                                           const class GGS_string & in_TYPE_5F_NAME,
                                                                           const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                          const class GGS_typedPropertyList & in_PROPERTY_5F_LIST,
+                                                                          const class GGS__5B_typedProperty_5D_ & in_PROPERTY_5F_LIST,
                                                                           const class GGS__5B_enumerationDescriptor_5D_ & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                           const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
                                                                           const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
@@ -354,7 +348,7 @@ GGS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (class 
 GGS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementation (class Compiler * inCompiler,
                                                                                       const class GGS_string & in_TYPE_5F_NAME,
                                                                                       const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                      const class GGS_typedPropertyList & in_PROPERTY_5F_LIST,
+                                                                                      const class GGS__5B_typedProperty_5D_ & in_PROPERTY_5F_LIST,
                                                                                       const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
                                                                                       const class GGS_bool & in_GENERATE_5F_COMPARISON
                                                                                       COMMA_LOCATION_ARGS) ;
@@ -375,8 +369,6 @@ GGS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementa
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_weakClassGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_weakClassGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_weakClassGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -441,8 +433,6 @@ class GGS_string function_makeOptionalTypeName (const class GGS_string & constin
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_enumGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_enumGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_enumGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -497,8 +487,6 @@ void routine_check_5F_K_5F_L_5F_escapeCharacters_3F_ (const class GGS_lstring co
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_graphGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_graphGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_graphGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -826,7 +826,7 @@ init_21_infoMessage_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_strin
                                                                  const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                  const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
                                                                  const GGS_lstring & in_mMapTypeName,
-                                                                 const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                 const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                  const GGS__5B_insertSetterAST_5D_ & in_mInsertSetterList,
                                                                  const GGS__5B_mapAccessorAST_5D_ & in_mSearchMethodList,
                                                                  const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubscriptList,
@@ -851,7 +851,7 @@ mapTypeForGeneration_init_21_infoMessage_21__21__21__21__21__21__21__21__21__21_
                                                                                       const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                                       const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
                                                                                       const GGS_lstring & in_mMapTypeName,
-                                                                                      const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                      const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                       const GGS__5B_insertSetterAST_5D_ & in_mInsertSetterList,
                                                                                       const GGS__5B_mapAccessorAST_5D_ & in_mSearchMethodList,
                                                                                       const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubscriptList,
@@ -906,9 +906,9 @@ GGS_lstring GGS_mapTypeForGeneration::readProperty_mMapTypeName (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_mapTypeForGeneration::readProperty_mTypedAttributeList (void) const {
+GGS__5B_typedProperty_5D_ GGS_mapTypeForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_mapTypeForGeneration * p = (cPtr_mapTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapTypeForGeneration) ;
@@ -1024,7 +1024,7 @@ cPtr_mapTypeForGeneration::cPtr_mapTypeForGeneration (const GGS_string & in_info
                                                       const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                       const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
                                                       const GGS_lstring & in_mMapTypeName,
-                                                      const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                      const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                       const GGS__5B_insertSetterAST_5D_ & in_mInsertSetterList,
                                                       const GGS__5B_mapAccessorAST_5D_ & in_mSearchMethodList,
                                                       const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubscriptList,
@@ -2160,13 +2160,13 @@ init_21_infoMessage_21__21__21__21__21__21__21__21__21__21__21__21_ (const GGS_s
                                                                      const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                      const GGS_bool & in_mIsAbstract,
                                                                      const GGS_unifiedTypeMapEntry & in_mSuperClass,
-                                                                     const GGS_typedPropertyList & in_mAllTypedAttributeList,
-                                                                     const GGS_typedPropertyList & in_mCurrentTypedAttributeList,
+                                                                     const GGS__5B_typedProperty_5D_ & in_mAllTypedAttributeList,
+                                                                     const GGS__5B_typedProperty_5D_ & in_mCurrentTypedAttributeList,
                                                                      const GGS_bool & in_generateHeaderInSeparateFile,
                                                                      const GGS_bool & in_initializerNeedsCompilerVariable,
                                                                      const GGS_string & in_propertyInitializationCode,
-                                                                     const GGS_typedPropertyList & in_synthetizedInitializerArgumentList,
-                                                                     const GGS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
+                                                                     const GGS__5B_typedProperty_5D_ & in_synthetizedInitializerArgumentList,
+                                                                     const GGS__5B_typedProperty_5D_ & in_inheritedSynthetizedInitializerArgumentList,
                                                                      const GGS_initializerMap & in_initializerMap,
                                                                      const GGS_bool & in_clonable,
                                                                      Compiler * inCompiler
@@ -2186,13 +2186,13 @@ classTypeForGeneration_init_21_infoMessage_21__21__21__21__21__21__21__21__21__2
                                                                                             const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                                             const GGS_bool & in_mIsAbstract,
                                                                                             const GGS_unifiedTypeMapEntry & in_mSuperClass,
-                                                                                            const GGS_typedPropertyList & in_mAllTypedAttributeList,
-                                                                                            const GGS_typedPropertyList & in_mCurrentTypedAttributeList,
+                                                                                            const GGS__5B_typedProperty_5D_ & in_mAllTypedAttributeList,
+                                                                                            const GGS__5B_typedProperty_5D_ & in_mCurrentTypedAttributeList,
                                                                                             const GGS_bool & in_generateHeaderInSeparateFile,
                                                                                             const GGS_bool & in_initializerNeedsCompilerVariable,
                                                                                             const GGS_string & in_propertyInitializationCode,
-                                                                                            const GGS_typedPropertyList & in_synthetizedInitializerArgumentList,
-                                                                                            const GGS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
+                                                                                            const GGS__5B_typedProperty_5D_ & in_synthetizedInitializerArgumentList,
+                                                                                            const GGS__5B_typedProperty_5D_ & in_inheritedSynthetizedInitializerArgumentList,
                                                                                             const GGS_initializerMap & in_initializerMap,
                                                                                             const GGS_bool & in_clonable,
                                                                                             Compiler * /* inCompiler */) {
@@ -2243,9 +2243,9 @@ GGS_unifiedTypeMapEntry GGS_classTypeForGeneration::readProperty_mSuperClass (vo
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_classTypeForGeneration::readProperty_mAllTypedAttributeList (void) const {
+GGS__5B_typedProperty_5D_ GGS_classTypeForGeneration::readProperty_mAllTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_classTypeForGeneration * p = (cPtr_classTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_classTypeForGeneration) ;
@@ -2255,9 +2255,9 @@ GGS_typedPropertyList GGS_classTypeForGeneration::readProperty_mAllTypedAttribut
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_classTypeForGeneration::readProperty_mCurrentTypedAttributeList (void) const {
+GGS__5B_typedProperty_5D_ GGS_classTypeForGeneration::readProperty_mCurrentTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_classTypeForGeneration * p = (cPtr_classTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_classTypeForGeneration) ;
@@ -2303,9 +2303,9 @@ GGS_string GGS_classTypeForGeneration::readProperty_propertyInitializationCode (
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_classTypeForGeneration::readProperty_synthetizedInitializerArgumentList (void) const {
+GGS__5B_typedProperty_5D_ GGS_classTypeForGeneration::readProperty_synthetizedInitializerArgumentList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_classTypeForGeneration * p = (cPtr_classTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_classTypeForGeneration) ;
@@ -2315,9 +2315,9 @@ GGS_typedPropertyList GGS_classTypeForGeneration::readProperty_synthetizedInitia
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_classTypeForGeneration::readProperty_inheritedSynthetizedInitializerArgumentList (void) const {
+GGS__5B_typedProperty_5D_ GGS_classTypeForGeneration::readProperty_inheritedSynthetizedInitializerArgumentList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_classTypeForGeneration * p = (cPtr_classTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_classTypeForGeneration) ;
@@ -2374,13 +2374,13 @@ cPtr_classTypeForGeneration::cPtr_classTypeForGeneration (const GGS_string & in_
                                                           const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                           const GGS_bool & in_mIsAbstract,
                                                           const GGS_unifiedTypeMapEntry & in_mSuperClass,
-                                                          const GGS_typedPropertyList & in_mAllTypedAttributeList,
-                                                          const GGS_typedPropertyList & in_mCurrentTypedAttributeList,
+                                                          const GGS__5B_typedProperty_5D_ & in_mAllTypedAttributeList,
+                                                          const GGS__5B_typedProperty_5D_ & in_mCurrentTypedAttributeList,
                                                           const GGS_bool & in_generateHeaderInSeparateFile,
                                                           const GGS_bool & in_initializerNeedsCompilerVariable,
                                                           const GGS_string & in_propertyInitializationCode,
-                                                          const GGS_typedPropertyList & in_synthetizedInitializerArgumentList,
-                                                          const GGS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
+                                                          const GGS__5B_typedProperty_5D_ & in_synthetizedInitializerArgumentList,
+                                                          const GGS__5B_typedProperty_5D_ & in_inheritedSynthetizedInitializerArgumentList,
                                                           const GGS_initializerMap & in_initializerMap,
                                                           const GGS_bool & in_clonable,
                                                           Compiler * inCompiler
@@ -2915,7 +2915,7 @@ init_21_infoMessage_21__21__21__21__21__21_ (const GGS_string & in_infoMessage,
                                              const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                              const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
                                              const GGS_lstring & in_mDictTypeName,
-                                             const GGS_typedPropertyList & in_mTypedAttributeList,
+                                             const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                              const GGS_lstring & in_mKeyTypeName,
                                              const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
                                              Compiler * inCompiler
@@ -2935,7 +2935,7 @@ dictTypeForGeneration_init_21_infoMessage_21__21__21__21__21__21_ (const GGS_str
                                                                    const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                    const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
                                                                    const GGS_lstring & in_mDictTypeName,
-                                                                   const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                   const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                    const GGS_lstring & in_mKeyTypeName,
                                                                    const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
                                                                    Compiler * /* inCompiler */) {
@@ -2980,9 +2980,9 @@ GGS_lstring GGS_dictTypeForGeneration::readProperty_mDictTypeName (void) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_dictTypeForGeneration::readProperty_mTypedAttributeList (void) const {
+GGS__5B_typedProperty_5D_ GGS_dictTypeForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_dictTypeForGeneration * p = (cPtr_dictTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_dictTypeForGeneration) ;
@@ -3033,7 +3033,7 @@ cPtr_dictTypeForGeneration::cPtr_dictTypeForGeneration (const GGS_string & in_in
                                                         const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                         const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
                                                         const GGS_lstring & in_mDictTypeName,
-                                                        const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                        const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                         const GGS_lstring & in_mKeyTypeName,
                                                         const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
                                                         Compiler * inCompiler
@@ -3421,7 +3421,10 @@ GGS__5B_sortedListSortDescriptorAST_5D_ GGS__5B_sortedListSortDescriptorAST_5D_:
   GGS__5B_sortedListSortDescriptorAST_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_sortedListSortDescriptorAST_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -3430,7 +3433,7 @@ GGS__5B_sortedListSortDescriptorAST_5D_ GGS__5B_sortedListSortDescriptorAST_5D_:
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -3858,7 +3861,10 @@ GGS__5B_sortDescriptorForGeneration_5D_ GGS__5B_sortDescriptorForGeneration_5D_:
   GGS__5B_sortDescriptorForGeneration_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_sortDescriptorForGeneration_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -3867,7 +3873,7 @@ GGS__5B_sortDescriptorForGeneration_5D_ GGS__5B_sortDescriptorForGeneration_5D_:
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -4421,7 +4427,7 @@ GGS_sortedListTypeForGeneration GGS_sortedListTypeForGeneration::
 init_21_infoMessage_21__21__21__21_ (const GGS_string & in_infoMessage,
                                      const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                      const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                     const GGS_typedPropertyList & in_mTypedAttributeList,
+                                     const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                      const GGS__5B_sortDescriptorForGeneration_5D_ & in_mSortDescriptorList,
                                      Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) {
@@ -4439,7 +4445,7 @@ void cPtr_sortedListTypeForGeneration::
 sortedListTypeForGeneration_init_21_infoMessage_21__21__21__21_ (const GGS_string & in_infoMessage,
                                                                  const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                  const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                                                 const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                 const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                  const GGS__5B_sortDescriptorForGeneration_5D_ & in_mSortDescriptorList,
                                                                  Compiler * /* inCompiler */) {
   mProperty_infoMessage = in_infoMessage ;
@@ -4469,9 +4475,9 @@ GGS_unifiedTypeMapEntry GGS_sortedListTypeForGeneration::readProperty_mListEleme
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_sortedListTypeForGeneration::readProperty_mTypedAttributeList (void) const {
+GGS__5B_typedProperty_5D_ GGS_sortedListTypeForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_sortedListTypeForGeneration * p = (cPtr_sortedListTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_sortedListTypeForGeneration) ;
@@ -4507,7 +4513,7 @@ mProperty_mSortDescriptorList () {
 cPtr_sortedListTypeForGeneration::cPtr_sortedListTypeForGeneration (const GGS_string & in_infoMessage,
                                                                     const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                                                     const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                                                    const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                    const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                     const GGS__5B_sortDescriptorForGeneration_5D_ & in_mSortDescriptorList,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) :
@@ -4884,7 +4890,10 @@ GGS__5B_typeNameFormalParameterName_5D_ GGS__5B_typeNameFormalParameterName_5D_:
   GGS__5B_typeNameFormalParameterName_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_typeNameFormalParameterName_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -4893,7 +4902,7 @@ GGS__5B_typeNameFormalParameterName_5D_ GGS__5B_typeNameFormalParameterName_5D_:
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -5331,7 +5340,10 @@ GGS__5B__5B_typeNameFormalParameterName_5D__5D_ GGS__5B__5B_typeNameFormalParame
   GGS__5B__5B_typeNameFormalParameterName_5D__5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B__5B_typeNameFormalParameterName_5D__5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -5340,7 +5352,7 @@ GGS__5B__5B_typeNameFormalParameterName_5D__5D_ GGS__5B__5B_typeNameFormalParame
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -5679,7 +5691,10 @@ GGS__5B_externTypeGetter_5D_ GGS__5B_externTypeGetter_5D_::getter_sublist (const
   GGS__5B_externTypeGetter_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_externTypeGetter_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -5688,7 +5703,7 @@ GGS__5B_externTypeGetter_5D_ GGS__5B_externTypeGetter_5D_::getter_sublist (const
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -6126,7 +6141,10 @@ GGS__5B_externTypeSetter_5D_ GGS__5B_externTypeSetter_5D_::getter_sublist (const
   GGS__5B_externTypeSetter_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_externTypeSetter_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -6135,7 +6153,7 @@ GGS__5B_externTypeSetter_5D_ GGS__5B_externTypeSetter_5D_::getter_sublist (const
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -6563,7 +6581,10 @@ GGS__5B_externTypeMethod_5D_ GGS__5B_externTypeMethod_5D_::getter_sublist (const
   GGS__5B_externTypeMethod_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
+    const int32_t length = int32_t (inLength.uintValue ()) ;
+    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
+      result = GGS__5B_externTypeMethod_5D_::init (inCompiler COMMA_THERE) ;
+    }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
       errorMessage.appendSigned (startIndex) ;
@@ -6572,7 +6593,7 @@ GGS__5B_externTypeMethod_5D_ GGS__5B_externTypeMethod_5D_::getter_sublist (const
       errorMessage.appendCString (")") ;
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      const int32_t lastIndex = startIndex + int32_t (inLength.uintValue ()) - 1 ;
+      const int32_t lastIndex = startIndex + length - 1 ;
       if (lastIndex >= int32_t (count ())) {
         String errorMessage ;
         errorMessage.appendCString ("'sublist' getter call with last index ") ;
@@ -13842,125 +13863,6 @@ const GALGAS_TypeDescriptor * GGS_classMethodMap_2E_element_3F_::staticTypeDescr
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList_2E_element::GGS_typedPropertyList_2E_element (void) :
-mProperty_typeEntry (),
-mProperty_name (),
-mProperty_initialization (),
-mProperty_hasSetter (),
-mProperty_hasSelector () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedPropertyList_2E_element::GGS_typedPropertyList_2E_element (const GGS_typedPropertyList_2E_element & inSource) :
-mProperty_typeEntry (inSource.mProperty_typeEntry),
-mProperty_name (inSource.mProperty_name),
-mProperty_initialization (inSource.mProperty_initialization),
-mProperty_hasSetter (inSource.mProperty_hasSetter),
-mProperty_hasSelector (inSource.mProperty_hasSelector) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedPropertyList_2E_element & GGS_typedPropertyList_2E_element::operator = (const GGS_typedPropertyList_2E_element & inSource) {
-  mProperty_typeEntry = inSource.mProperty_typeEntry ;
-  mProperty_name = inSource.mProperty_name ;
-  mProperty_initialization = inSource.mProperty_initialization ;
-  mProperty_hasSetter = inSource.mProperty_hasSetter ;
-  mProperty_hasSelector = inSource.mProperty_hasSelector ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_typedPropertyList_2E_element GGS_typedPropertyList_2E_element::init_21__21__21__21_hasSetter_21_hasSelector (const GGS_unifiedTypeMapEntry & in_typeEntry,
-                                                                                                                 const GGS_lstring & in_name,
-                                                                                                                 const GGS_propertyInCollectionInitializationAST & in_initialization,
-                                                                                                                 const GGS_bool & in_hasSetter,
-                                                                                                                 const GGS_bool & in_hasSelector,
-                                                                                                                 Compiler * inCompiler
-                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_typedPropertyList_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_typeEntry = in_typeEntry ;
-  result.mProperty_name = in_name ;
-  result.mProperty_initialization = in_initialization ;
-  result.mProperty_hasSetter = in_hasSetter ;
-  result.mProperty_hasSelector = in_hasSelector ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typedPropertyList_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typedPropertyList_2E_element::GGS_typedPropertyList_2E_element (const GGS_unifiedTypeMapEntry & inOperand0,
-                                                                    const GGS_lstring & inOperand1,
-                                                                    const GGS_propertyInCollectionInitializationAST & inOperand2,
-                                                                    const GGS_bool & inOperand3,
-                                                                    const GGS_bool & inOperand4) :
-mProperty_typeEntry (inOperand0),
-mProperty_name (inOperand1),
-mProperty_initialization (inOperand2),
-mProperty_hasSetter (inOperand3),
-mProperty_hasSelector (inOperand4) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_typedPropertyList_2E_element::isValid (void) const {
-  return mProperty_typeEntry.isValid () && mProperty_name.isValid () && mProperty_initialization.isValid () && mProperty_hasSetter.isValid () && mProperty_hasSelector.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typedPropertyList_2E_element::drop (void) {
-  mProperty_typeEntry.drop () ;
-  mProperty_name.drop () ;
-  mProperty_initialization.drop () ;
-  mProperty_hasSetter.drop () ;
-  mProperty_hasSelector.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typedPropertyList_2E_element::description (String & ioString,
-                                                    const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @typedPropertyList.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_typeEntry.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_name.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_initialization.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_hasSetter.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_hasSelector.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @typedPropertyList.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typedPropertyList_2E_element ("typedPropertyList.element",
-                                                                                 nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_typedPropertyList_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typedPropertyList_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 GGS_propertyMap_2E_element::GGS_propertyMap_2E_element (void) :
 mProperty_lkey (),
 mProperty_mAccessControl (),
@@ -16897,5 +16799,96 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarMap_2E_element ("gramm
 
 const GALGAS_TypeDescriptor * GGS_grammarMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_grammarMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @grammarMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarMap_2E_element_3F_::GGS_grammarMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarMap_2E_element_3F_::GGS_grammarMap_2E_element_3F_ (const GGS_grammarMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarMap_2E_element_3F_ GGS_grammarMap_2E_element_3F_::init_nil (void) {
+  GGS_grammarMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_grammarMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_grammarMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_grammarMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_grammarMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_grammarMap_2E_element_3F_::description (String & ioString,
+                                                 const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @grammarMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarMap_2E_element_3F_ ("grammarMap.element?",
+                                                                              nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_grammarMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_grammarMap_2E_element_3F_ ;
 }
 

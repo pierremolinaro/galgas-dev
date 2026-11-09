@@ -349,7 +349,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     )
   //--- Handle properties
     var insertMethodFormalArgumentList = @formalParameterSignature ()
-    var typedPropertyList = @typedPropertyList ()
+    var typedPropertyList = [@typedProperty] ()
     var @optionalMethodSignature optionalMethodSignature = @()
     optionalMethodSignature ++= @(
       true,
@@ -636,7 +636,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       ioUsefulnessRootEntities ++= initializerNameForUsefulness
     end
   //----- Enter property
-    var @typedPropertyList typedAttributeList = @()
+    var [@typedProperty] typedAttributeList = @()
     var @propertyIndexMap attributeMap = @()
     for property in self.mPropertyList do
       let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (property.typeName)
@@ -722,7 +722,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
 final class @mapTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mElementTypeEntry
   private let @lstring mMapTypeName
-  private let @typedPropertyList mTypedAttributeList
+  private let [@typedProperty] mTypedAttributeList
   private let [@insertSetterAST] mInsertSetterList
   private let [@mapAccessorAST] mSearchMethodList
   private let [@mapAccessorAST] mSearchSubscriptList
@@ -803,7 +803,7 @@ private filewrapper mapGenerationTemplate in "../+generation-templates/type_gene
   template mapTypeHeader1 : "GALGAS_map.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
-    ?@typedPropertyList CURRENT_PROPERTY_LIST,
+    ?[@typedProperty] CURRENT_PROPERTY_LIST,
     ?[@mapAccessorAST] SEARCH_METHOD_LIST,
     ?[@enumerationDescriptor] ENUMERATION_DESCRIPTOR_LIST,
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE,
@@ -813,7 +813,7 @@ private filewrapper mapGenerationTemplate in "../+generation-templates/type_gene
 
   template mapTypeSpecificImplementation : "GALGAS_map.cpp.galgasTemplate" (
     ?@string TYPE_IDENTIFIER,
-    ?@typedPropertyList PROPERTY_LIST,
+    ?[@typedProperty] PROPERTY_LIST,
     ?@string ELEMENT_TYPE_IDENTIFIER,
     ?insertSetters: [@insertSetterAST] INSERT_SETTER_LIST,
     ?optionalElementTypeIdentifier: @string OPTIONAL_ELEMENT_TYPE_IDENTIFIER,

@@ -566,7 +566,7 @@ class GGS_mapTypeForGeneration : public GGS_semanticTypeForGeneration {
 
   public: class GGS_lstring readProperty_mMapTypeName (void) const ;
 
-  public: class GGS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
+  public: class GGS__5B_typedProperty_5D_ readProperty_mTypedAttributeList (void) const ;
 
   public: class GGS__5B_insertSetterAST_5D_ readProperty_mInsertSetterList (void) const ;
 
@@ -589,7 +589,7 @@ class GGS_mapTypeForGeneration : public GGS_semanticTypeForGeneration {
                                                                                                            const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                                                            const class GGS_unifiedTypeMapEntry & inOperand2,
                                                                                                            const class GGS_lstring & inOperand3,
-                                                                                                           const class GGS_typedPropertyList & inOperand4,
+                                                                                                           const class GGS__5B_typedProperty_5D_ & inOperand4,
                                                                                                            const class GGS__5B_insertSetterAST_5D_ & inOperand5,
                                                                                                            const class GGS__5B_mapAccessorAST_5D_ & inOperand6,
                                                                                                            const class GGS__5B_mapAccessorAST_5D_ & inOperand7,
@@ -636,7 +636,7 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                                                                                      const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                                                      const class GGS_unifiedTypeMapEntry & inOperand2,
                                                                                                      const class GGS_lstring & inOperand3,
-                                                                                                     const class GGS_typedPropertyList & inOperand4,
+                                                                                                     const class GGS__5B_typedProperty_5D_ & inOperand4,
                                                                                                      const class GGS__5B_insertSetterAST_5D_ & inOperand5,
                                                                                                      const class GGS__5B_mapAccessorAST_5D_ & inOperand6,
                                                                                                      const class GGS__5B_mapAccessorAST_5D_ & inOperand7,
@@ -661,7 +661,7 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Properties
   public: GGS_unifiedTypeMapEntry mProperty_mElementTypeEntry ;
   public: GGS_lstring mProperty_mMapTypeName ;
-  public: GGS_typedPropertyList mProperty_mTypedAttributeList ;
+  public: GGS__5B_typedProperty_5D_ mProperty_mTypedAttributeList ;
   public: GGS__5B_insertSetterAST_5D_ mProperty_mInsertSetterList ;
   public: GGS__5B_mapAccessorAST_5D_ mProperty_mSearchMethodList ;
   public: GGS__5B_mapAccessorAST_5D_ mProperty_mSearchSubscriptList ;
@@ -679,7 +679,7 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                      const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                      const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
                                      const GGS_lstring & in_mMapTypeName,
-                                     const GGS_typedPropertyList & in_mTypedAttributeList,
+                                     const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                      const GGS__5B_insertSetterAST_5D_ & in_mInsertSetterList,
                                      const GGS__5B_mapAccessorAST_5D_ & in_mSearchMethodList,
                                      const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubscriptList,
@@ -1388,9 +1388,9 @@ class GGS_classTypeForGeneration : public GGS_semanticTypeForGeneration {
 
   public: class GGS_unifiedTypeMapEntry readProperty_mSuperClass (void) const ;
 
-  public: class GGS_typedPropertyList readProperty_mAllTypedAttributeList (void) const ;
+  public: class GGS__5B_typedProperty_5D_ readProperty_mAllTypedAttributeList (void) const ;
 
-  public: class GGS_typedPropertyList readProperty_mCurrentTypedAttributeList (void) const ;
+  public: class GGS__5B_typedProperty_5D_ readProperty_mCurrentTypedAttributeList (void) const ;
 
   public: class GGS_bool readProperty_generateHeaderInSeparateFile (void) const ;
 
@@ -1398,9 +1398,9 @@ class GGS_classTypeForGeneration : public GGS_semanticTypeForGeneration {
 
   public: class GGS_string readProperty_propertyInitializationCode (void) const ;
 
-  public: class GGS_typedPropertyList readProperty_synthetizedInitializerArgumentList (void) const ;
+  public: class GGS__5B_typedProperty_5D_ readProperty_synthetizedInitializerArgumentList (void) const ;
 
-  public: class GGS_typedPropertyList readProperty_inheritedSynthetizedInitializerArgumentList (void) const ;
+  public: class GGS__5B_typedProperty_5D_ readProperty_inheritedSynthetizedInitializerArgumentList (void) const ;
 
   public: class GGS_initializerMap readProperty_initializerMap (void) const ;
 
@@ -1413,13 +1413,13 @@ class GGS_classTypeForGeneration : public GGS_semanticTypeForGeneration {
                                                                                                                  const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                                                                  const class GGS_bool & inOperand2,
                                                                                                                  const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                                                                 const class GGS_typedPropertyList & inOperand4,
-                                                                                                                 const class GGS_typedPropertyList & inOperand5,
+                                                                                                                 const class GGS__5B_typedProperty_5D_ & inOperand4,
+                                                                                                                 const class GGS__5B_typedProperty_5D_ & inOperand5,
                                                                                                                  const class GGS_bool & inOperand6,
                                                                                                                  const class GGS_bool & inOperand7,
                                                                                                                  const class GGS_string & inOperand8,
-                                                                                                                 const class GGS_typedPropertyList & inOperand9,
-                                                                                                                 const class GGS_typedPropertyList & inOperand10,
+                                                                                                                 const class GGS__5B_typedProperty_5D_ & inOperand9,
+                                                                                                                 const class GGS__5B_typedProperty_5D_ & inOperand10,
                                                                                                                  const class GGS_initializerMap & inOperand11,
                                                                                                                  const class GGS_bool & inOperand12,
                                                                                                                  Compiler * inCompiler
@@ -1461,13 +1461,13 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                                                                                            const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                                                            const class GGS_bool & inOperand2,
                                                                                                            const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                                                           const class GGS_typedPropertyList & inOperand4,
-                                                                                                           const class GGS_typedPropertyList & inOperand5,
+                                                                                                           const class GGS__5B_typedProperty_5D_ & inOperand4,
+                                                                                                           const class GGS__5B_typedProperty_5D_ & inOperand5,
                                                                                                            const class GGS_bool & inOperand6,
                                                                                                            const class GGS_bool & inOperand7,
                                                                                                            const class GGS_string & inOperand8,
-                                                                                                           const class GGS_typedPropertyList & inOperand9,
-                                                                                                           const class GGS_typedPropertyList & inOperand10,
+                                                                                                           const class GGS__5B_typedProperty_5D_ & inOperand9,
+                                                                                                           const class GGS__5B_typedProperty_5D_ & inOperand10,
                                                                                                            const class GGS_initializerMap & inOperand11,
                                                                                                            const class GGS_bool & inOperand12,
                                                                                                            Compiler * inCompiler) ;
@@ -1493,13 +1493,13 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Properties
   public: GGS_bool mProperty_mIsAbstract ;
   public: GGS_unifiedTypeMapEntry mProperty_mSuperClass ;
-  public: GGS_typedPropertyList mProperty_mAllTypedAttributeList ;
-  public: GGS_typedPropertyList mProperty_mCurrentTypedAttributeList ;
+  public: GGS__5B_typedProperty_5D_ mProperty_mAllTypedAttributeList ;
+  public: GGS__5B_typedProperty_5D_ mProperty_mCurrentTypedAttributeList ;
   public: GGS_bool mProperty_generateHeaderInSeparateFile ;
   public: GGS_bool mProperty_initializerNeedsCompilerVariable ;
   public: GGS_string mProperty_propertyInitializationCode ;
-  public: GGS_typedPropertyList mProperty_synthetizedInitializerArgumentList ;
-  public: GGS_typedPropertyList mProperty_inheritedSynthetizedInitializerArgumentList ;
+  public: GGS__5B_typedProperty_5D_ mProperty_synthetizedInitializerArgumentList ;
+  public: GGS__5B_typedProperty_5D_ mProperty_inheritedSynthetizedInitializerArgumentList ;
   public: GGS_initializerMap mProperty_initializerMap ;
   public: GGS_bool mProperty_clonable ;
 
@@ -1512,13 +1512,13 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                        const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                        const GGS_bool & in_mIsAbstract,
                                        const GGS_unifiedTypeMapEntry & in_mSuperClass,
-                                       const GGS_typedPropertyList & in_mAllTypedAttributeList,
-                                       const GGS_typedPropertyList & in_mCurrentTypedAttributeList,
+                                       const GGS__5B_typedProperty_5D_ & in_mAllTypedAttributeList,
+                                       const GGS__5B_typedProperty_5D_ & in_mCurrentTypedAttributeList,
                                        const GGS_bool & in_generateHeaderInSeparateFile,
                                        const GGS_bool & in_initializerNeedsCompilerVariable,
                                        const GGS_string & in_propertyInitializationCode,
-                                       const GGS_typedPropertyList & in_synthetizedInitializerArgumentList,
-                                       const GGS_typedPropertyList & in_inheritedSynthetizedInitializerArgumentList,
+                                       const GGS__5B_typedProperty_5D_ & in_synthetizedInitializerArgumentList,
+                                       const GGS__5B_typedProperty_5D_ & in_inheritedSynthetizedInitializerArgumentList,
                                        const GGS_initializerMap & in_initializerMap,
                                        const GGS_bool & in_clonable,
                                        Compiler * inCompiler
@@ -1833,7 +1833,7 @@ class GGS_dictTypeForGeneration : public GGS_semanticTypeForGeneration {
 
   public: class GGS_lstring readProperty_mDictTypeName (void) const ;
 
-  public: class GGS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
+  public: class GGS__5B_typedProperty_5D_ readProperty_mTypedAttributeList (void) const ;
 
   public: class GGS_lstring readProperty_mKeyTypeName (void) const ;
 
@@ -1846,7 +1846,7 @@ class GGS_dictTypeForGeneration : public GGS_semanticTypeForGeneration {
                                                                                         const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                                         const class GGS_unifiedTypeMapEntry & inOperand2,
                                                                                         const class GGS_lstring & inOperand3,
-                                                                                        const class GGS_typedPropertyList & inOperand4,
+                                                                                        const class GGS__5B_typedProperty_5D_ & inOperand4,
                                                                                         const class GGS_lstring & inOperand5,
                                                                                         const class GGS_unifiedTypeMapEntry & inOperand6,
                                                                                         Compiler * inCompiler
@@ -1888,7 +1888,7 @@ class cPtr_dictTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                                                                   const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                                   const class GGS_unifiedTypeMapEntry & inOperand2,
                                                                                   const class GGS_lstring & inOperand3,
-                                                                                  const class GGS_typedPropertyList & inOperand4,
+                                                                                  const class GGS__5B_typedProperty_5D_ & inOperand4,
                                                                                   const class GGS_lstring & inOperand5,
                                                                                   const class GGS_unifiedTypeMapEntry & inOperand6,
                                                                                   Compiler * inCompiler) ;
@@ -1908,7 +1908,7 @@ class cPtr_dictTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Properties
   public: GGS_unifiedTypeMapEntry mProperty_mElementTypeEntry ;
   public: GGS_lstring mProperty_mDictTypeName ;
-  public: GGS_typedPropertyList mProperty_mTypedAttributeList ;
+  public: GGS__5B_typedProperty_5D_ mProperty_mTypedAttributeList ;
   public: GGS_lstring mProperty_mKeyTypeName ;
   public: GGS_unifiedTypeMapEntry mProperty_mOptionalElementTypeEntry ;
 
@@ -1921,7 +1921,7 @@ class cPtr_dictTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                       const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                       const GGS_unifiedTypeMapEntry & in_mElementTypeEntry,
                                       const GGS_lstring & in_mDictTypeName,
-                                      const GGS_typedPropertyList & in_mTypedAttributeList,
+                                      const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                       const GGS_lstring & in_mKeyTypeName,
                                       const GGS_unifiedTypeMapEntry & in_mOptionalElementTypeEntry,
                                       Compiler * inCompiler
@@ -2749,7 +2749,7 @@ class GGS_sortedListTypeForGeneration : public GGS_semanticTypeForGeneration {
 //--------------------------------- Property access
   public: class GGS_unifiedTypeMapEntry readProperty_mListElementTypeIndex (void) const ;
 
-  public: class GGS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
+  public: class GGS__5B_typedProperty_5D_ readProperty_mTypedAttributeList (void) const ;
 
   public: class GGS__5B_sortDescriptorForGeneration_5D_ readProperty_mSortDescriptorList (void) const ;
 
@@ -2759,7 +2759,7 @@ class GGS_sortedListTypeForGeneration : public GGS_semanticTypeForGeneration {
   public: static GGS_sortedListTypeForGeneration init_21_infoMessage_21__21__21__21_ (const class GGS_string & inOperand0,
                                                                                       const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                                       const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                                      const class GGS_typedPropertyList & inOperand3,
+                                                                                      const class GGS__5B_typedProperty_5D_ & inOperand3,
                                                                                       const class GGS__5B_sortDescriptorForGeneration_5D_ & inOperand4,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
@@ -2799,7 +2799,7 @@ class cPtr_sortedListTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: void sortedListTypeForGeneration_init_21_infoMessage_21__21__21__21_ (const class GGS_string & inOperand0,
                                                                                 const class GGS_unifiedTypeMapEntry & inOperand1,
                                                                                 const class GGS_unifiedTypeMapEntry & inOperand2,
-                                                                                const class GGS_typedPropertyList & inOperand3,
+                                                                                const class GGS__5B_typedProperty_5D_ & inOperand3,
                                                                                 const class GGS__5B_sortDescriptorForGeneration_5D_ & inOperand4,
                                                                                 Compiler * inCompiler) ;
 
@@ -2817,7 +2817,7 @@ class cPtr_sortedListTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Properties
   public: GGS_unifiedTypeMapEntry mProperty_mListElementTypeIndex ;
-  public: GGS_typedPropertyList mProperty_mTypedAttributeList ;
+  public: GGS__5B_typedProperty_5D_ mProperty_mTypedAttributeList ;
   public: GGS__5B_sortDescriptorForGeneration_5D_ mProperty_mSortDescriptorList ;
 
 
@@ -2828,7 +2828,7 @@ class cPtr_sortedListTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: cPtr_sortedListTypeForGeneration (const GGS_string & in_infoMessage,
                                             const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
                                             const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                            const GGS_typedPropertyList & in_mTypedAttributeList,
+                                            const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                             const GGS__5B_sortDescriptorForGeneration_5D_ & in_mSortDescriptorList,
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;

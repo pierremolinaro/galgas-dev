@@ -78,14 +78,14 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOC
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_sortedListWithValue (%?^
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
-  do (IDX) %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
+  for (property) in ATTRIBUTE_LIST
+  do (IDX) %const GGS_%![property.typeEntry identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
   %\n%!^%COMMA_LOCATION_ARGS) {
   GGS_%!TYPE_IDENTIFIER% result = init (nullptr COMMA_THERE) ;
   const GGS_%!ELEMENT_TYPE_IDENTIFIER% newElement (%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
+  for (*) in ATTRIBUTE_LIST
   do (IDX) %inOperand%![IDX string]
   between %, %
   end
@@ -97,14 +97,14 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::class_func_sortedListWithValue (%
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::addAssignOperation (%?^
-  for (mPropertyTypeEntry mPropertyName 3*) in ATTRIBUTE_LIST
-  do (IDX) %const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inOperand%![IDX string]
+  for (property) in ATTRIBUTE_LIST
+  do (IDX) %const GGS_%![property.typeEntry identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
 %
     %!^%COMMA_LOCATION_ARGS) {
   const GGS_%!ELEMENT_TYPE_IDENTIFIER% newElement (%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
+  for (*) in ATTRIBUTE_LIST
   do (IDX) %inOperand%![IDX string]
   between %, %
   end
@@ -115,13 +115,13 @@ void GGS_%!TYPE_IDENTIFIER%::addAssignOperation (%?^
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::setter_insert (%?^
-  for (mPropertyTypeEntry mPropertyName 3*) in ATTRIBUTE_LIST
-  do (IDX) %const GGS_%![mPropertyTypeEntry identifierRepresentation]% inOperand%![IDX string]%,\n%!^
+  for (property) in ATTRIBUTE_LIST
+  do (IDX) %const GGS_%![property.typeEntry identifierRepresentation]% inOperand%![IDX string]%,\n%!^
   end
 %Compiler * /* inCompiler */
     %!^%COMMA_LOCATION_ARGS) {
   const GGS_%!ELEMENT_TYPE_IDENTIFIER% newElement (%
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
+  for (property) in ATTRIBUTE_LIST
   do (IDX) %inOperand%![IDX string]
   between %, %
   end
@@ -146,8 +146,8 @@ void GGS_%!TYPE_IDENTIFIER%::plusAssignOperation (%?^%const GGS_%!TYPE_IDENTIFIE
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::setter_popSmallest (%?^
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
-  do (IDX) %GGS_%![mPropertyTypeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  for (property) in ATTRIBUTE_LIST
+  do (IDX) %GGS_%![property.typeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
            %Compiler * inCompiler\n%
          !^%COMMA_LOCATION_ARGS) {
@@ -156,15 +156,15 @@ void GGS_%!TYPE_IDENTIFIER%::setter_popSmallest (%?^
     if (count () == 0) {
       inCompiler->onTheFlyRunTimeError ("'popSmallest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
-%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
-    %      outOperand%![IDX string] % = mSharedArray (0 COMMA_HERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+%for (property) in ATTRIBUTE_LIST do (IDX)
+    %      outOperand%![IDX string] % = mSharedArray (0 COMMA_HERE).mProperty_%![property.name identifierRepresentation]% ;\n%
  end
 %      mSharedArray.removeObjectAtIndex (0 COMMA_HERE) ;
       found = true ;
     }
   }
   if (!found) {
-% for (5*) in ATTRIBUTE_LIST do (IDX)
+% for (*) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
   end
 %  }
@@ -173,8 +173,8 @@ void GGS_%!TYPE_IDENTIFIER%::setter_popSmallest (%?^
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::setter_popGreatest (%?^
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
-  do (IDX) %GGS_%![mPropertyTypeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  for (property) in ATTRIBUTE_LIST
+  do (IDX) %GGS_%![property.typeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
            %Compiler * inCompiler\n%
          !^%COMMA_LOCATION_ARGS) {
@@ -183,15 +183,15 @@ void GGS_%!TYPE_IDENTIFIER%::setter_popGreatest (%?^
     if (count () == 0) {
       inCompiler->onTheFlyRunTimeError ("'popGreatest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
-%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
-    %      outOperand%![IDX string] % = mSharedArray.lastObject (HERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+%for (property) in ATTRIBUTE_LIST do (IDX)
+    %      outOperand%![IDX string] % = mSharedArray.lastObject (HERE).mProperty_%![property.name identifierRepresentation]% ;\n%
  end
 %      mSharedArray.removeLastObject (HERE) ;
       found = true ;
     }
   }
   if (!found) {
-% for (5*) in ATTRIBUTE_LIST do (IDX)
+% for (*) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
   end
 %  }
@@ -200,8 +200,8 @@ void GGS_%!TYPE_IDENTIFIER%::setter_popGreatest (%?^
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::method_smallest (%?^
-  for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST
-  do (IDX) %GGS_%![mPropertyTypeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  for (property) in ATTRIBUTE_LIST
+  do (IDX) %GGS_%![property.typeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
      %Compiler * inCompiler\n%
      !^%COMMA_LOCATION_ARGS) const {
@@ -210,14 +210,14 @@ void GGS_%!TYPE_IDENTIFIER%::method_smallest (%?^
     if (count () == 0) {
       inCompiler->onTheFlyRunTimeError ("'smallest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
-%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
-    %      outOperand%![IDX string] % = mSharedArray (0 COMMA_HERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+%for (property) in ATTRIBUTE_LIST do (IDX)
+    %      outOperand%![IDX string] % = mSharedArray (0 COMMA_HERE).mProperty_%![property.name identifierRepresentation]% ;\n%
  end
 %      found = true ;
     }
   }
   if (!found) {
-% for (5*) in ATTRIBUTE_LIST do (IDX)
+% for (*) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
   end
 %  }
@@ -226,8 +226,8 @@ void GGS_%!TYPE_IDENTIFIER%::method_smallest (%?^
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::method_greatest (%?^
-  for (mPropertyTypeEntry mPropertyName 3*) in ATTRIBUTE_LIST
-  do (IDX) %GGS_%![mPropertyTypeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  for (property) in ATTRIBUTE_LIST
+  do (IDX) %GGS_%![property.typeEntry identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
      %Compiler * inCompiler\n%
      !^%COMMA_LOCATION_ARGS) const {
@@ -236,14 +236,14 @@ void GGS_%!TYPE_IDENTIFIER%::method_greatest (%?^
     if (count () == 0) {
       inCompiler->onTheFlyRunTimeError ("'greatest' proc invoked on an empty list" COMMA_THERE) ;
     }else{
-%for (mPropertyTypeEntry mPropertyName * mHasSetter mHasSelector) in ATTRIBUTE_LIST do (IDX)
-    %      outOperand%![IDX string] % = mSharedArray.lastObject (HERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+%for (property) in ATTRIBUTE_LIST do (IDX)
+    %      outOperand%![IDX string] % = mSharedArray.lastObject (HERE).mProperty_%![property.name identifierRepresentation]% ;\n%
  end
 %      found = true ;
     }
   }
   if (!found) {
-% for (5*) in ATTRIBUTE_LIST do (IDX)
+% for (*) in ATTRIBUTE_LIST do (IDX)
     %    outOperand%![IDX string] %.drop () ;\n%
   end
 %  }
@@ -276,10 +276,10 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% DownEnumerator_%!TYPE_IDENTIFIER%::current (LOCAT
   return mElementArray (mIndex COMMA_THERE) ;
 }
 
-%for (mPropertyTypeEntry mPropertyName 3*) in ATTRIBUTE_LIST do (IDX)
+%for (property) in ATTRIBUTE_LIST do (IDX)
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %GGS_%![mPropertyTypeEntry identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
-  %  return mElementArray (mIndex COMMA_THERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+  %GGS_%![property.typeEntry identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current_%![property.name identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  return mElementArray (mIndex COMMA_THERE).mProperty_%![property.name identifierRepresentation]% ;\n%
   %}\n\n%
 end
 %//--------------------------------------------------------------------------------------------------
@@ -297,10 +297,10 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% UpEnumerator_%!TYPE_IDENTIFIER%::current (LOCATIO
   return mElementArray (mIndex COMMA_THERE) ;
 }
 
-%for (mPropertyTypeEntry mPropertyName 3*) in ATTRIBUTE_LIST do (IDX)
+%for (property) in ATTRIBUTE_LIST do (IDX)
   %//--------------------------------------------------------------------------------------------------\n\n%
-  %GGS_%![mPropertyTypeEntry identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
-  %  return mElementArray (mIndex COMMA_THERE).mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+  %GGS_%![property.typeEntry identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current_%![property.name identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  return mElementArray (mIndex COMMA_THERE).mProperty_%![property.name identifierRepresentation]% ;\n%
   %}\n\n%
 end
 %

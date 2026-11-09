@@ -742,41 +742,6 @@ const GALGAS_TypeDescriptor * GGS_formalParameterSignature::staticTypeDescriptor
 }
 
 //--------------------------------------------------------------------------------------------------
-//  Extension Getter '@typedPropertyList initializerSignature'
-//--------------------------------------------------------------------------------------------------
-
-GGS_string extensionGetter_initializerSignature (const GGS_typedPropertyList & inObject,
-                                                 Compiler * inCompiler
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_string result_result ; // Returned variable
-  result_result = GGS_string ("init") ;
-  const GGS_typedPropertyList temp_0 = inObject ;
-  UpEnumerator_typedPropertyList enumerator_8388 (temp_0) ;
-  while (enumerator_8388.hasCurrentObject ()) {
-    GalgasBool test_1 = GalgasBool::boolTrue ;
-    if (GalgasBool::boolTrue == test_1) {
-      test_1 = GGS_bool (ComparisonKind::equal, enumerator_8388.current (HERE).readProperty_initialization ().objectCompare (GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas4", 213)))).boolEnum () ;
-      if (GalgasBool::boolTrue == test_1) {
-        result_result.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 214)) ;
-        GalgasBool test_2 = GalgasBool::boolTrue ;
-        if (GalgasBool::boolTrue == test_2) {
-          test_2 = enumerator_8388.current (HERE).readProperty_hasSelector ().boolEnum () ;
-          if (GalgasBool::boolTrue == test_2) {
-            result_result.plusAssignOperation(enumerator_8388.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 216)) ;
-          }
-        }
-      }
-    }
-    enumerator_8388.gotoNextObject () ;
-  }
-//---
-  return result_result ;
-}
-
-
-
-
-//--------------------------------------------------------------------------------------------------
 //  Enum propertyInCollectionInitializationAST
 //--------------------------------------------------------------------------------------------------
 
@@ -912,6 +877,41 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyInCollectionInitializ
 const GALGAS_TypeDescriptor * GGS_propertyInCollectionInitializationAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_propertyInCollectionInitializationAST ;
 }
+
+//--------------------------------------------------------------------------------------------------
+//  Extension Getter '@[typedProperty] initializerSignature'
+//--------------------------------------------------------------------------------------------------
+
+GGS_string extensionGetter_initializerSignature (const GGS__5B_typedProperty_5D_ & inObject,
+                                                 Compiler * inCompiler
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_string result_result ; // Returned variable
+  result_result = GGS_string ("init") ;
+  const GGS__5B_typedProperty_5D_ temp_0 = inObject ;
+  UpEnumerator__5B_typedProperty_5D_ enumerator_8399 (temp_0) ;
+  while (enumerator_8399.hasCurrentObject ()) {
+    GalgasBool test_1 = GalgasBool::boolTrue ;
+    if (GalgasBool::boolTrue == test_1) {
+      test_1 = GGS_bool (ComparisonKind::equal, enumerator_8399.current (HERE).readProperty_initialization ().objectCompare (GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas4", 214)))).boolEnum () ;
+      if (GalgasBool::boolTrue == test_1) {
+        result_result.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 215)) ;
+        GalgasBool test_2 = GalgasBool::boolTrue ;
+        if (GalgasBool::boolTrue == test_2) {
+          test_2 = enumerator_8399.current (HERE).readProperty_hasSelector ().boolEnum () ;
+          if (GalgasBool::boolTrue == test_2) {
+            result_result.plusAssignOperation(enumerator_8399.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 217)) ;
+          }
+        }
+      }
+    }
+    enumerator_8399.gotoNextObject () ;
+  }
+//---
+  return result_result ;
+}
+
+
+
 
 //--------------------------------------------------------------------------------------------------
 //  Enum AccessControl

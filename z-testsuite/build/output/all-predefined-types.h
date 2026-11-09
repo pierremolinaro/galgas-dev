@@ -3139,6 +3139,11 @@ class GGS__5B_uint_36__34__5D_ final : public AC_GALGAS_root {
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const ;
 
+  public: class GGS__5B_uint_36__34__5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                         const class GGS_uint & constinOperand1,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
   public: class GGS_uint_36__34_ readSubscript__3F_ (const class GGS_uint & in0,
@@ -3310,6 +3315,11 @@ class GGS__5B_string_5D_ final : public AC_GALGAS_root {
   public: class GGS__5B_string_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_string_5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                   const class GGS_uint & constinOperand1,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts
@@ -3560,6 +3570,11 @@ class GGS__5B_lstring_5D_ final : public AC_GALGAS_root {
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const ;
 
+  public: class GGS__5B_lstring_5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                    const class GGS_uint & constinOperand1,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
 
 //--------------------------------- Read subscripts
   public: class GGS_lstring readSubscript__3F_ (const class GGS_uint & in0,
@@ -3731,6 +3746,11 @@ class GGS__5B_uint_5D_ final : public AC_GALGAS_root {
   public: class GGS__5B_uint_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_uint_5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                 const class GGS_uint & constinOperand1,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Read subscripts

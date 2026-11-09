@@ -15,10 +15,10 @@ class GGS_%!TYPE_IDENTIFIER% : public %
 
 //--------------------------------- Property access
 %
-for (mPropertyTypeEntry mPropertyName * mHasSetter *) in CURRENT_PROPERTY_LIST do
-  %  public: class GGS_%![mPropertyTypeEntry identifierRepresentation]% readProperty_%![mPropertyName identifierRepresentation]% (void) const ;\n%
-  if mHasSetter then
-    %  public: void setProperty_%![mPropertyName identifierRepresentation]% (const GGS_%![mPropertyTypeEntry identifierRepresentation]% & inValue) ;\n%
+for (property) in CURRENT_PROPERTY_LIST do
+  %  public: class GGS_%![property.typeEntry identifierRepresentation]% readProperty_%![property.name identifierRepresentation]% (void) const ;\n%
+  if property.hasSetter then
+    %  public: void setProperty_%![property.name identifierRepresentation]% (const GGS_%![property.typeEntry identifierRepresentation]% & inValue) ;\n%
   end
   %\n%
 end

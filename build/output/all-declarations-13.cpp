@@ -8,101 +8,6 @@
 #include "all-declarations-13.h"
 
 //--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_plusPlusEqualElementInstructionAST_2E_weak::objectCompare (const GGS_plusPlusEqualElementInstructionAST_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_plusPlusEqualElementInstructionAST_2E_weak::GGS_plusPlusEqualElementInstructionAST_2E_weak (void) :
-GGS_semanticInstructionAST_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_plusPlusEqualElementInstructionAST_2E_weak & GGS_plusPlusEqualElementInstructionAST_2E_weak::operator = (const GGS_plusPlusEqualElementInstructionAST & inSource) {
-  PtrWeakReferenceProxy * proxyPtr = nullptr ;
-  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_plusPlusEqualElementInstructionAST_2E_weak::GGS_plusPlusEqualElementInstructionAST_2E_weak (const GGS_plusPlusEqualElementInstructionAST & inSource) :
-GGS_semanticInstructionAST_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_plusPlusEqualElementInstructionAST_2E_weak GGS_plusPlusEqualElementInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_plusPlusEqualElementInstructionAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_plusPlusEqualElementInstructionAST GGS_plusPlusEqualElementInstructionAST_2E_weak::unwrappedValue (void) const {
-  GGS_plusPlusEqualElementInstructionAST result ;
-  if (isValid ()) {
-    const cPtr_plusPlusEqualElementInstructionAST * p = (cPtr_plusPlusEqualElementInstructionAST *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_plusPlusEqualElementInstructionAST (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_plusPlusEqualElementInstructionAST GGS_plusPlusEqualElementInstructionAST_2E_weak::bang_plusPlusEqualElementInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_plusPlusEqualElementInstructionAST result ;
-  if (mProxyPtr != nullptr) {
-    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_plusPlusEqualElementInstructionAST) ;
-      result = GGS_plusPlusEqualElementInstructionAST ((cPtr_plusPlusEqualElementInstructionAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @plusPlusEqualElementInstructionAST.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_plusPlusEqualElementInstructionAST_2E_weak ("plusPlusEqualElementInstructionAST.weak",
-                                                                                               & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_plusPlusEqualElementInstructionAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_plusPlusEqualElementInstructionAST_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
 // @opAssignInstructionForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -10691,6 +10596,125 @@ void callExtensionMethod_checkLexicalFunctionCallArgument (cPtr_lexicalRoutineOr
 }
 //--------------------------------------------------------------------------------------------------
 
+GGS_typedProperty::GGS_typedProperty (void) :
+mProperty_typeEntry (),
+mProperty_name (),
+mProperty_initialization (),
+mProperty_hasSetter (),
+mProperty_hasSelector () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typedProperty::GGS_typedProperty (const GGS_typedProperty & inSource) :
+mProperty_typeEntry (inSource.mProperty_typeEntry),
+mProperty_name (inSource.mProperty_name),
+mProperty_initialization (inSource.mProperty_initialization),
+mProperty_hasSetter (inSource.mProperty_hasSetter),
+mProperty_hasSelector (inSource.mProperty_hasSelector) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typedProperty & GGS_typedProperty::operator = (const GGS_typedProperty & inSource) {
+  mProperty_typeEntry = inSource.mProperty_typeEntry ;
+  mProperty_name = inSource.mProperty_name ;
+  mProperty_initialization = inSource.mProperty_initialization ;
+  mProperty_hasSetter = inSource.mProperty_hasSetter ;
+  mProperty_hasSelector = inSource.mProperty_hasSelector ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_typedProperty GGS_typedProperty::init_21__21__21__21_hasSetter_21_hasSelector (const GGS_unifiedTypeMapEntry & in_typeEntry,
+                                                                                   const GGS_lstring & in_name,
+                                                                                   const GGS_propertyInCollectionInitializationAST & in_initialization,
+                                                                                   const GGS_bool & in_hasSetter,
+                                                                                   const GGS_bool & in_hasSelector,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_typedProperty result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_typeEntry = in_typeEntry ;
+  result.mProperty_name = in_name ;
+  result.mProperty_initialization = in_initialization ;
+  result.mProperty_hasSetter = in_hasSetter ;
+  result.mProperty_hasSelector = in_hasSelector ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_typedProperty::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_typedProperty::GGS_typedProperty (const GGS_unifiedTypeMapEntry & inOperand0,
+                                      const GGS_lstring & inOperand1,
+                                      const GGS_propertyInCollectionInitializationAST & inOperand2,
+                                      const GGS_bool & inOperand3,
+                                      const GGS_bool & inOperand4) :
+mProperty_typeEntry (inOperand0),
+mProperty_name (inOperand1),
+mProperty_initialization (inOperand2),
+mProperty_hasSetter (inOperand3),
+mProperty_hasSelector (inOperand4) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_typedProperty::isValid (void) const {
+  return mProperty_typeEntry.isValid () && mProperty_name.isValid () && mProperty_initialization.isValid () && mProperty_hasSetter.isValid () && mProperty_hasSelector.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_typedProperty::drop (void) {
+  mProperty_typeEntry.drop () ;
+  mProperty_name.drop () ;
+  mProperty_initialization.drop () ;
+  mProperty_hasSetter.drop () ;
+  mProperty_hasSelector.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_typedProperty::description (String & ioString,
+                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @typedProperty:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_typeEntry.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_name.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_initialization.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_hasSetter.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_hasSelector.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @typedProperty generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typedProperty ("typedProperty",
+                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_typedProperty::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_typedProperty ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_unifiedTypeDefinition::GGS_unifiedTypeDefinition (void) :
 mProperty_typeName (),
 mProperty_isPredefined (),
@@ -10789,9 +10813,9 @@ GGS_unifiedTypeDefinition GGS_unifiedTypeDefinition::init_21_typeName_21_isPrede
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      const GGS_unifiedTypeMapEntry & in_superType,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      const GGS_typeKindEnum & in_typeKind,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      const GGS_bool & in_supportCollectionValue,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_typedPropertyList & in_allTypedPropertyList,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS__5B_typedProperty_5D_ & in_allTypedPropertyList,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      const GGS_propertyMap & in_propertyMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_typedPropertyList & in_currentTypedPropertyList,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS__5B_typedProperty_5D_ & in_currentTypedPropertyList,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      const GGS_initializerMap & in_initializerMap,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      const GGS_classFunctionMap & in_classFunctionMap,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      const GGS_getterMap & in_getterMap,
@@ -10853,9 +10877,9 @@ GGS_unifiedTypeDefinition::GGS_unifiedTypeDefinition (const GGS_lstring & inOper
                                                       const GGS_unifiedTypeMapEntry & inOperand4,
                                                       const GGS_typeKindEnum & inOperand5,
                                                       const GGS_bool & inOperand6,
-                                                      const GGS_typedPropertyList & inOperand7,
+                                                      const GGS__5B_typedProperty_5D_ & inOperand7,
                                                       const GGS_propertyMap & inOperand8,
-                                                      const GGS_typedPropertyList & inOperand9,
+                                                      const GGS__5B_typedProperty_5D_ & inOperand9,
                                                       const GGS_initializerMap & inOperand10,
                                                       const GGS_classFunctionMap & inOperand11,
                                                       const GGS_getterMap & inOperand12,
@@ -12614,7 +12638,7 @@ init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__2
                                                                                                     const GGS_unifiedTypeMapEntry & in_mResultType,
                                                                                                     const GGS_string & in_mResultVarCppName,
                                                                                                     const GGS_formalInputParameterListForGeneration & in_mOverridingExtensionGetterFormalParameterList,
-                                                                                                    const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                    const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                                     const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                                                                     Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) {
@@ -12638,7 +12662,7 @@ overrideExtensionGetterForGeneration_init_21_infoMessage_21_generateHeader_21_im
                                                                                                                                          const GGS_unifiedTypeMapEntry & in_mResultType,
                                                                                                                                          const GGS_string & in_mResultVarCppName,
                                                                                                                                          const GGS_formalInputParameterListForGeneration & in_mOverridingExtensionGetterFormalParameterList,
-                                                                                                                                         const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                                                         const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                                                                          const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                                                                                                          Compiler * /* inCompiler */) {
   mProperty_infoMessage = in_infoMessage ;
@@ -12734,9 +12758,9 @@ GGS_formalInputParameterListForGeneration GGS_overrideExtensionGetterForGenerati
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_overrideExtensionGetterForGeneration::readProperty_mTypedAttributeList (void) const {
+GGS__5B_typedProperty_5D_ GGS_overrideExtensionGetterForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_overrideExtensionGetterForGeneration * p = (cPtr_overrideExtensionGetterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overrideExtensionGetterForGeneration) ;
@@ -12783,7 +12807,7 @@ cPtr_overrideExtensionGetterForGeneration::cPtr_overrideExtensionGetterForGenera
                                                                                       const GGS_unifiedTypeMapEntry & in_mResultType,
                                                                                       const GGS_string & in_mResultVarCppName,
                                                                                       const GGS_formalInputParameterListForGeneration & in_mOverridingExtensionGetterFormalParameterList,
-                                                                                      const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                      const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                       const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) :
@@ -13191,7 +13215,7 @@ init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__2
                                                                                             const GGS_string & in_mExtensionSetterName,
                                                                                             const GGS_bool & in_mImplementedAsFunction,
                                                                                             const GGS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
-                                                                                            const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                            const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                             const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                                                             Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) {
@@ -13213,7 +13237,7 @@ extensionSetterForGeneration_init_21_infoMessage_21_generateHeader_21_implementa
                                                                                                                          const GGS_string & in_mExtensionSetterName,
                                                                                                                          const GGS_bool & in_mImplementedAsFunction,
                                                                                                                          const GGS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
-                                                                                                                         const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                                                                         const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                                                          const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                                                                                          Compiler * /* inCompiler */) {
   mProperty_infoMessage = in_infoMessage ;
@@ -13283,9 +13307,9 @@ GGS_formalParameterListForGeneration GGS_extensionSetterForGeneration::readPrope
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typedPropertyList GGS_extensionSetterForGeneration::readProperty_mTypedAttributeList (void) const {
+GGS__5B_typedProperty_5D_ GGS_extensionSetterForGeneration::readProperty_mTypedAttributeList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_typedPropertyList () ;
+    return GGS__5B_typedProperty_5D_ () ;
   }else{
     cPtr_extensionSetterForGeneration * p = (cPtr_extensionSetterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
@@ -13328,7 +13352,7 @@ cPtr_extensionSetterForGeneration::cPtr_extensionSetterForGeneration (const GGS_
                                                                       const GGS_string & in_mExtensionSetterName,
                                                                       const GGS_bool & in_mImplementedAsFunction,
                                                                       const GGS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
-                                                                      const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                                      const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                       const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                                       Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) :

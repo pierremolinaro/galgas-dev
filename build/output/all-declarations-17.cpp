@@ -9640,7 +9640,7 @@ void cPtr_superInitInstructionAST::method_analyzeSemanticInstruction (const GGS_
               GGS_lstring var_signature_4447 = GGS_lstring::init_21__21_ (extensionGetter_initializerSignature (temp_1.readProperty_mActualParameterList (), inCompiler COMMA_SOURCE_FILE ("instruction-super-init.galgas4", 101)), temp_2.readProperty_mInstructionLocation (), inCompiler COMMA_HERE) ;
               GGS_functionSignature var_formalSignature_4604 ;
               var_superClassInitializerMap_4373.method_searchKey (var_signature_4447, var_formalSignature_4604, inCompiler COMMA_SOURCE_FILE ("instruction-super-init.galgas4", 102)) ;
-              UpEnumerator_typedPropertyList enumerator_4720 (var_superTypeDefinition_4270.readProperty_allTypedPropertyList ()) ;
+              UpEnumerator__5B_typedProperty_5D_ enumerator_4720 (var_superTypeDefinition_4270.readProperty_allTypedPropertyList ()) ;
               while (enumerator_4720.hasCurrentObject ()) {
                 GalgasBool test_3 = GalgasBool::boolTrue ;
                 if (GalgasBool::boolTrue == test_3) {

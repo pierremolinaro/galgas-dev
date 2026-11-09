@@ -114,7 +114,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
   ?!@semanticContext ioSemanticContext
 ) {
 //--- Handle attributes
-  var @typedPropertyList typedAttributeList = @()
+  var [@typedProperty] typedAttributeList = @()
   for property in self.mPropertyList do
     if property.initialization.isSome then
       error (property.name : "property initialization is not handled for a list")
@@ -429,7 +429,7 @@ override proc @listDeclarationAST.semanticAnalysis
     ioUsefulnessRootEntities ++= initializerNameForUsefulness
   end
 //---
-  var @typedPropertyList typedAttributeList = @()
+  var [@typedProperty] typedAttributeList = @()
   var @propertyIndexMap attributeMap = @()
   for property in self.mPropertyList do
     if property.initialization.isSome then
@@ -463,7 +463,7 @@ override proc @listDeclarationAST.semanticAnalysis
 
 final class @listTypeForGeneration : @semanticTypeForGeneration {
   private let @unifiedTypeMapEntry mListElementTypeIndex
-  private let @typedPropertyList mTypedAttributeList
+  private let [@typedProperty] mTypedAttributeList
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -530,7 +530,7 @@ filewrapper listGenerationTemplate in "../+generation-templates/type_generation"
   template listTypeHeader1 : "GALGAS_list.h1.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
-    ?@typedPropertyList PROPERTY_LIST,
+    ?[@typedProperty] PROPERTY_LIST,
     ?[@enumerationDescriptor] ENUMERATION_DESCRIPTOR_LIST,
     ?@unifiedTypeMapEntry ENUMERATED_OBJECT_TYPE,
     ?@string ELEMENT_TYPE_IDENTIFIER,
@@ -540,7 +540,7 @@ filewrapper listGenerationTemplate in "../+generation-templates/type_generation"
   template listTypeSpecificImplementation : "GALGAS_list.cpp.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string TYPE_IDENTIFIER,
-    ?@typedPropertyList PROPERTY_LIST,
+    ?[@typedProperty] PROPERTY_LIST,
     ?@string ELEMENT_TYPE_IDENTIFIER,
     ?@bool GENERATE_COMPARISON
   )

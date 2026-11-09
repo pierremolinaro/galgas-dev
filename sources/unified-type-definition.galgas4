@@ -30,9 +30,9 @@ struct @unifiedTypeDefinition {
   public let @unifiedTypeMapEntry superType #initArgLabel
   public let @typeKindEnum typeKind #initArgLabel
   public let @bool supportCollectionValue #initArgLabel
-  public let @typedPropertyList allTypedPropertyList #initArgLabel
+  public let [@typedProperty] allTypedPropertyList #initArgLabel
   public let @propertyMap propertyMap #initArgLabel // struct, class
-  public let @typedPropertyList currentTypedPropertyList #initArgLabel
+  public let [@typedProperty] currentTypedPropertyList #initArgLabel
   public let @initializerMap initializerMap #initArgLabel
   public let @classFunctionMap classFunctionMap #initArgLabel
   public let @getterMap getterMap #initArgLabel

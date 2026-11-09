@@ -249,7 +249,7 @@ final class @extensionSetterForGeneration : @semanticDeclarationWithHeaderForGen
   private let @string mExtensionSetterName
   private let @bool mImplementedAsFunction
   private let @formalParameterListForGeneration mExtensionSetterFormalParameterList
-  private let @typedPropertyList mTypedAttributeList
+  private let [@typedProperty] mTypedAttributeList
   private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 

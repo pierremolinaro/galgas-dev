@@ -297,7 +297,7 @@ final class @overrideExtensionGetterForGeneration : @semanticDeclarationWithHead
   private let @unifiedTypeMapEntry mResultType
   private let @string mResultVarCppName
   private let @formalInputParameterListForGeneration mOverridingExtensionGetterFormalParameterList
-  private let @typedPropertyList mTypedAttributeList
+  private let [@typedProperty] mTypedAttributeList
   private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 

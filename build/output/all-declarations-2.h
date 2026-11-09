@@ -5422,7 +5422,7 @@ class GGS_extensionInitializerForGeneration : public GGS_semanticDeclarationWith
 
   public: class GGS_formalInputParameterListForGeneration readProperty_formalParameterList (void) const ;
 
-  public: class GGS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
+  public: class GGS__5B_typedProperty_5D_ readProperty_mTypedAttributeList (void) const ;
 
   public: class GGS_semanticInstructionListForGeneration readProperty_semanticInstructionListForGeneration (void) const ;
 
@@ -5435,7 +5435,7 @@ class GGS_extensionInitializerForGeneration : public GGS_semanticDeclarationWith
                                                                                                                                                const class GGS_unifiedTypeMapEntry & inOperand3,
                                                                                                                                                const class GGS_string & inOperand4,
                                                                                                                                                const class GGS_formalInputParameterListForGeneration & inOperand5,
-                                                                                                                                               const class GGS_typedPropertyList & inOperand6,
+                                                                                                                                               const class GGS__5B_typedProperty_5D_ & inOperand6,
                                                                                                                                                const class GGS_semanticInstructionListForGeneration & inOperand7,
                                                                                                                                                Compiler * inCompiler
                                                                                                                                                COMMA_LOCATION_ARGS) ;
@@ -5478,7 +5478,7 @@ class cPtr_extensionInitializerForGeneration : public cPtr_semanticDeclarationWi
                                                                                                                                          const class GGS_unifiedTypeMapEntry & inOperand3,
                                                                                                                                          const class GGS_string & inOperand4,
                                                                                                                                          const class GGS_formalInputParameterListForGeneration & inOperand5,
-                                                                                                                                         const class GGS_typedPropertyList & inOperand6,
+                                                                                                                                         const class GGS__5B_typedProperty_5D_ & inOperand6,
                                                                                                                                          const class GGS_semanticInstructionListForGeneration & inOperand7,
                                                                                                                                          Compiler * inCompiler) ;
 
@@ -5496,7 +5496,7 @@ class cPtr_extensionInitializerForGeneration : public cPtr_semanticDeclarationWi
   public: GGS_unifiedTypeMapEntry mProperty_mReceiverType ;
   public: GGS_string mProperty_initializerName ;
   public: GGS_formalInputParameterListForGeneration mProperty_formalParameterList ;
-  public: GGS_typedPropertyList mProperty_mTypedAttributeList ;
+  public: GGS__5B_typedProperty_5D_ mProperty_mTypedAttributeList ;
   public: GGS_semanticInstructionListForGeneration mProperty_semanticInstructionListForGeneration ;
 
 
@@ -5510,7 +5510,7 @@ class cPtr_extensionInitializerForGeneration : public cPtr_semanticDeclarationWi
                                                   const GGS_unifiedTypeMapEntry & in_mReceiverType,
                                                   const GGS_string & in_initializerName,
                                                   const GGS_formalInputParameterListForGeneration & in_formalParameterList,
-                                                  const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                  const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                   const GGS_semanticInstructionListForGeneration & in_semanticInstructionListForGeneration,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
@@ -6135,7 +6135,7 @@ class GGS_extensionGetterForGeneration : public GGS_semanticDeclarationWithHeade
 
   public: class GGS_formalInputParameterListForGeneration readProperty_mExtensionGetterFormalParameterList (void) const ;
 
-  public: class GGS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
+  public: class GGS__5B_typedProperty_5D_ readProperty_mTypedAttributeList (void) const ;
 
   public: class GGS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
 
@@ -6151,7 +6151,7 @@ class GGS_extensionGetterForGeneration : public GGS_semanticDeclarationWithHeade
                                                                                                                                                       const class GGS_unifiedTypeMapEntry & inOperand6,
                                                                                                                                                       const class GGS_string & inOperand7,
                                                                                                                                                       const class GGS_formalInputParameterListForGeneration & inOperand8,
-                                                                                                                                                      const class GGS_typedPropertyList & inOperand9,
+                                                                                                                                                      const class GGS__5B_typedProperty_5D_ & inOperand9,
                                                                                                                                                       const class GGS_semanticInstructionListForGeneration & inOperand10,
                                                                                                                                                       Compiler * inCompiler
                                                                                                                                                       COMMA_LOCATION_ARGS) ;
@@ -6197,7 +6197,7 @@ class cPtr_extensionGetterForGeneration : public cPtr_semanticDeclarationWithHea
                                                                                                                                                 const class GGS_unifiedTypeMapEntry & inOperand6,
                                                                                                                                                 const class GGS_string & inOperand7,
                                                                                                                                                 const class GGS_formalInputParameterListForGeneration & inOperand8,
-                                                                                                                                                const class GGS_typedPropertyList & inOperand9,
+                                                                                                                                                const class GGS__5B_typedProperty_5D_ & inOperand9,
                                                                                                                                                 const class GGS_semanticInstructionListForGeneration & inOperand10,
                                                                                                                                                 Compiler * inCompiler) ;
 
@@ -6223,7 +6223,7 @@ class cPtr_extensionGetterForGeneration : public cPtr_semanticDeclarationWithHea
   public: GGS_unifiedTypeMapEntry mProperty_mResultType ;
   public: GGS_string mProperty_mResultVarCppName ;
   public: GGS_formalInputParameterListForGeneration mProperty_mExtensionGetterFormalParameterList ;
-  public: GGS_typedPropertyList mProperty_mTypedAttributeList ;
+  public: GGS__5B_typedProperty_5D_ mProperty_mTypedAttributeList ;
   public: GGS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGeneration ;
 
 
@@ -6240,7 +6240,7 @@ class cPtr_extensionGetterForGeneration : public cPtr_semanticDeclarationWithHea
                                              const GGS_unifiedTypeMapEntry & in_mResultType,
                                              const GGS_string & in_mResultVarCppName,
                                              const GGS_formalInputParameterListForGeneration & in_mExtensionGetterFormalParameterList,
-                                             const GGS_typedPropertyList & in_mTypedAttributeList,
+                                             const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                              const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
@@ -6505,7 +6505,7 @@ class GGS_overridingExtensionMethodForGeneration : public GGS_semanticDeclaratio
 
   public: class GGS_formalParameterListForGeneration readProperty_mExtensionMethodFormalParameterList (void) const ;
 
-  public: class GGS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
+  public: class GGS__5B_typedProperty_5D_ readProperty_mTypedAttributeList (void) const ;
 
   public: class GGS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
 
@@ -6519,7 +6519,7 @@ class GGS_overridingExtensionMethodForGeneration : public GGS_semanticDeclaratio
                                                                                                                                                         const class GGS_string & inOperand4,
                                                                                                                                                         const class GGS_string & inOperand5,
                                                                                                                                                         const class GGS_formalParameterListForGeneration & inOperand6,
-                                                                                                                                                        const class GGS_typedPropertyList & inOperand7,
+                                                                                                                                                        const class GGS__5B_typedProperty_5D_ & inOperand7,
                                                                                                                                                         const class GGS_semanticInstructionListForGeneration & inOperand8,
                                                                                                                                                         Compiler * inCompiler
                                                                                                                                                         COMMA_LOCATION_ARGS) ;
@@ -6563,7 +6563,7 @@ class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarat
                                                                                                                                                   const class GGS_string & inOperand4,
                                                                                                                                                   const class GGS_string & inOperand5,
                                                                                                                                                   const class GGS_formalParameterListForGeneration & inOperand6,
-                                                                                                                                                  const class GGS_typedPropertyList & inOperand7,
+                                                                                                                                                  const class GGS__5B_typedProperty_5D_ & inOperand7,
                                                                                                                                                   const class GGS_semanticInstructionListForGeneration & inOperand8,
                                                                                                                                                   Compiler * inCompiler) ;
 
@@ -6582,7 +6582,7 @@ class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarat
   public: GGS_string mProperty_mBaseTypeName ;
   public: GGS_string mProperty_mExtensionMethodName ;
   public: GGS_formalParameterListForGeneration mProperty_mExtensionMethodFormalParameterList ;
-  public: GGS_typedPropertyList mProperty_mTypedAttributeList ;
+  public: GGS__5B_typedProperty_5D_ mProperty_mTypedAttributeList ;
   public: GGS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGeneration ;
 
 
@@ -6597,7 +6597,7 @@ class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarat
                                                        const GGS_string & in_mBaseTypeName,
                                                        const GGS_string & in_mExtensionMethodName,
                                                        const GGS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
-                                                       const GGS_typedPropertyList & in_mTypedAttributeList,
+                                                       const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                        const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
@@ -8008,7 +8008,7 @@ class GGS_extensionMethodForGeneration : public GGS_semanticDeclarationWithHeade
 
   public: class GGS_formalParameterListForGeneration readProperty_mExtensionMethodFormalParameterList (void) const ;
 
-  public: class GGS_typedPropertyList readProperty_mTypedAttributeList (void) const ;
+  public: class GGS__5B_typedProperty_5D_ readProperty_mTypedAttributeList (void) const ;
 
   public: class GGS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
 
@@ -8022,7 +8022,7 @@ class GGS_extensionMethodForGeneration : public GGS_semanticDeclarationWithHeade
                                                                                                                                               const class GGS_string & inOperand4,
                                                                                                                                               const class GGS_bool & inOperand5,
                                                                                                                                               const class GGS_formalParameterListForGeneration & inOperand6,
-                                                                                                                                              const class GGS_typedPropertyList & inOperand7,
+                                                                                                                                              const class GGS__5B_typedProperty_5D_ & inOperand7,
                                                                                                                                               const class GGS_semanticInstructionListForGeneration & inOperand8,
                                                                                                                                               Compiler * inCompiler
                                                                                                                                               COMMA_LOCATION_ARGS) ;
@@ -8066,7 +8066,7 @@ class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHea
                                                                                                                                         const class GGS_string & inOperand4,
                                                                                                                                         const class GGS_bool & inOperand5,
                                                                                                                                         const class GGS_formalParameterListForGeneration & inOperand6,
-                                                                                                                                        const class GGS_typedPropertyList & inOperand7,
+                                                                                                                                        const class GGS__5B_typedProperty_5D_ & inOperand7,
                                                                                                                                         const class GGS_semanticInstructionListForGeneration & inOperand8,
                                                                                                                                         Compiler * inCompiler) ;
 
@@ -8090,7 +8090,7 @@ class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHea
   public: GGS_string mProperty_mExtensionMethodName ;
   public: GGS_bool mProperty_mImplementedAsFunction ;
   public: GGS_formalParameterListForGeneration mProperty_mExtensionMethodFormalParameterList ;
-  public: GGS_typedPropertyList mProperty_mTypedAttributeList ;
+  public: GGS__5B_typedProperty_5D_ mProperty_mTypedAttributeList ;
   public: GGS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGeneration ;
 
 
@@ -8105,7 +8105,7 @@ class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHea
                                              const GGS_string & in_mExtensionMethodName,
                                              const GGS_bool & in_mImplementedAsFunction,
                                              const GGS_formalParameterListForGeneration & in_mExtensionMethodFormalParameterList,
-                                             const GGS_typedPropertyList & in_mTypedAttributeList,
+                                             const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                              const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
@@ -10776,4 +10776,104 @@ class GGS_lexicalSelectInstructionAST_2E_weak : public GGS_lexicalInstructionAST
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalSelectInstructionAST_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @lexicalSimpleSendInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lexicalSimpleSendInstructionAST : public GGS_lexicalInstructionAST {
+//--------------------------------- Default constructor
+  public: GGS_lexicalSimpleSendInstructionAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_lexicalSimpleSendInstructionAST (const class cPtr_lexicalSimpleSendInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_lstring readProperty_mSentTerminal (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_lexicalSimpleSendInstructionAST init_21_ (const class GGS_lstring & inOperand0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_lexicalSimpleSendInstructionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @lexicalSimpleSendInstructionAST class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_lexicalSimpleSendInstructionAST : public cPtr_lexicalInstructionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void lexicalSimpleSendInstructionAST_init_21_ (const class GGS_lstring & inOperand0,
+                                                         Compiler * inCompiler) ;
+
+
+//--- Extension func generateLexicalInstructionCode
+  public: virtual class GGS_string getter_generateLexicalInstructionCode (const class GGS_string inScannerClassName,
+           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension func generateSwiftCocoaInstructionCode
+  public: virtual class GGS_string getter_generateSwiftCocoaInstructionCode (const class GGS_string inScannerClassName,
+           const class GGS_lexiqueAnalysisContext inLexiqueAnalysisContext,
+           Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension func lexicalInstructionUsesLoopLocalVariable
+  public: virtual class GGS_bool getter_lexicalInstructionUsesLoopLocalVariable (Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension proc checkLexicalInstruction
+  public: virtual void method_checkLexicalInstruction (class GGS_lexiqueAnalysisContext & arg_ioLexiqueAnalysisContext,
+           class GGS_lexicalTagMap & arg__ioTagMap,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_lstring mProperty_mSentTerminal ;
+
+
+//--- Default constructor
+  public: cPtr_lexicalSimpleSendInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_lexicalSimpleSendInstructionAST (const GGS_lstring & in_mSentTerminal,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
 

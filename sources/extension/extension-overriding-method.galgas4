@@ -269,7 +269,7 @@ final class @overridingExtensionMethodForGeneration : @semanticDeclarationWithHe
   private let @string mBaseTypeName
   private let @string mExtensionMethodName
   private let @formalParameterListForGeneration mExtensionMethodFormalParameterList
-  private let @typedPropertyList mTypedAttributeList
+  private let [@typedProperty] mTypedAttributeList
   private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
