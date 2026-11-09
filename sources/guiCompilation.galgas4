@@ -19,14 +19,14 @@
 //! AST
 //--------------------------------------------------------------------------------------------------
 
-list @guiSimpleAttributeListAST {
+struct @guiSimpleAttributeAST {
   public let @lstring mKey
   public let @lstring mValue
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @guiCompoundAttributeListAST {
+struct @guiCompoundAttributeAST {
   public let @lstring mKey
   public let @lstring mAttributeName
   public let @lstring mValue
@@ -34,37 +34,37 @@ list @guiCompoundAttributeListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @terminalLabelListAST {
+struct @terminalLabelAST {
   public let @lstring mTerminal
   public let @uint mDisplayFlags
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @guiLabelListAST {
+struct @guiLabelAST {
   public let @uint mLeadingCharacterStrippedCount
-  public let @terminalLabelListAST mTerminalList
+  public let [@terminalLabelAST] mTerminalList
   public let @location mLocation
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @withLexiqueListAST {
+struct @withLexiqueAST {
   public let @lstring mLexiqueFileName
-  public let @guiLabelListAST mLabels
-  public let @guiSimpleAttributeListAST mSimpleAttributes
-  public let @guiCompoundAttributeListAST mCompoundAttributes
+  public let [@guiLabelAST] mLabels
+  public let [@guiSimpleAttributeAST] mSimpleAttributes
+  public let [@guiCompoundAttributeAST] mCompoundAttributes
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @guiCommandLineOptionList {
-  public let @string mOptionComponent
-  public let @string mOptionIdentifier
-  public let @char mOptionChar
-  public let @string mOptionString
-  public let @string mComment
-}
+//struct @guiCommandLineOptionAST {
+//  public let @string mOptionComponent
+//  public let @string mOptionIdentifier
+//  public let @char mOptionChar
+//  public let @string mOptionString
+//  public let @string mComment
+//}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -76,38 +76,38 @@ map @extensionMap {
 
 //--------------------------------------------------------------------------------------------------
 
-list @textMacroList {
+struct @textMacroAST {
   public let @string mKey
   public let @string mContents
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @importedLexiqueList {
+struct @importedLexiqueAST {
   public let @string mLexiqueClassName
   public let @uint mIndex
   public let @string mBlockComment
   public let @string mTitle
-  public let @textMacroList mTextMacroList
-  public let @guiLabelListAST mLabels
+  public let [@textMacroAST] mTextMacroList
+  public let [@guiLabelAST] mLabels
   public let @lexicalStyleListAST mLexicalStyleList
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @projectIndexingDescriptorList {
+struct @projectIndexingDescriptorAST {
   let @lstring mProjectFileExtension
   let @lstring indexingPathSuffix
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @galgasGUIComponentListAST {
+struct @galgasGUIComponentAST {
   public let @lstring mGUIComponentName
   public let [@lstring] mImportedOptionList
-  public let @guiSimpleAttributeListAST mGlobalSimpleAttributeList
-  public let @withLexiqueListAST mWithLexiqueList
-  public let @projectIndexingDescriptorList mProjectIndexingDescriptorList
+  public let [@guiSimpleAttributeAST] mGlobalSimpleAttributeList
+  public let [@withLexiqueAST] mWithLexiqueList
+  public let [@projectIndexingDescriptorAST] mProjectIndexingDescriptorList
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -121,9 +121,9 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
     $identifier$ (?let @lstring mGUIName)
     ${$
     var [@lstring] importedOptionList = @()
-    var @guiSimpleAttributeListAST simpleGlobalAttributes = @()
-    var @withLexiqueListAST withLexiqueList = @()
-    var @projectIndexingDescriptorList projectExtensionList = @()
+    var [@guiSimpleAttributeAST] simpleGlobalAttributes = @()
+    var [@withLexiqueAST] withLexiqueList = @()
+    var [@projectIndexingDescriptorAST] projectExtensionList = @()
     repeat
     while
       $project$
@@ -151,13 +151,13 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <gui_with_lexique_declaration> (?!@withLexiqueListAST ioWithLexiqueList ) {
+  rule <gui_with_lexique_declaration> (?![@withLexiqueAST] ioWithLexiqueList ) {
     $with$
     $lexique$
     $identifier$ (?let @lstring lexiqueReference)
-    var @guiLabelListAST labels = @()
-    var @guiSimpleAttributeListAST simpleAttributes = @()
-    var @guiCompoundAttributeListAST compoundAttributes = @()
+    var [@guiLabelAST] labels = @()
+    var [@guiSimpleAttributeAST] simpleAttributes = @()
+    var [@guiCompoundAttributeAST] compoundAttributes = @()
     ${$
     repeat
     while
@@ -169,7 +169,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
         $*$
         displayStyle = 1
       end
-      var @terminalLabelListAST terminalList = @()
+      var [@terminalLabelAST] terminalList = @()
       repeat
         $\$terminal\$$ (?let  @lstring terminal)
         let @uint displayFlags
@@ -229,7 +229,7 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <gui_attributes> (?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes ) {
+  rule <gui_attributes> (?![@guiSimpleAttributeAST] ioSimpleGlobalAttributes ) {
     $identifier$ (?let @lstring mKey)
     $:$
     var mValue = @lstring ("", .here)
@@ -251,14 +251,14 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
 
 struct @guiAnalysisContext {
   public var [@string] mImportedOptionComponentList = @()
-  public let @guiCommandLineOptionList mBoolOptionList = @()
-  public let @guiCommandLineOptionList mUIntOptionList = @()
-  public let @guiCommandLineOptionList mStringOptionList = @()
+//  public let [@guiCommandLineOptionAST] mBoolOptionList = @()
+//  public let [@guiCommandLineOptionAST] mUIntOptionList = @()
+//  public let [@guiCommandLineOptionAST] mStringOptionList = @()
   public var [@string] mNibAndClassList = @()
   public var @extensionMap mExtensionMap = @()
-  public var @importedLexiqueList mWithLexiqueList = @()
+  public var [@importedLexiqueAST] mWithLexiqueList = @()
   public var @string mBuildRunOption = ""
-  public var @projectIndexingDescriptorList mProjectIndexingDescriptorList = @()
+  public var [@projectIndexingDescriptorAST] mProjectIndexingDescriptorList = @()
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -270,8 +270,8 @@ map @optionComponentMapForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-proc compileAllGuiComponentFromASTGalgas3
-  (let @galgasGUIComponentListAST inGuiComponentListAST,
+proc compileAllGuiComponentFromASTGalgas3 (
+  let [@galgasGUIComponentAST] inGuiComponentListAST,
   let @semanticContext inSemanticContext,
   !@optionComponentMapForGeneration outOptionComponentMapForGeneration ) {
   outOptionComponentMapForGeneration = @()
@@ -286,7 +286,7 @@ proc compileAllGuiComponentFromASTGalgas3
 
 //--------------------------------------------------------------------------------------------------
 
-private proc guiComponentSemanticAnalysis (let @galgasGUIComponentListAST.@element inGUIComponentAST,
+private proc guiComponentSemanticAnalysis (let @galgasGUIComponentAST inGUIComponentAST,
                                           let @semanticContext inSemanticContext,
                                           ?!@optionComponentMapForGeneration ioOptionComponentMapForGeneration ) {
   if inGUIComponentAST.mGUIComponentName.string != "cocoa" then
@@ -348,7 +348,7 @@ private proc guiComponentSemanticAnalysis (let @galgasGUIComponentListAST.@eleme
       end
     end
   //--- Compound attributes
-    var @textMacroList textMacroList = @()
+    var [@textMacroAST] textMacroList = @()
     for compoundAttribute in withLexiqueEntry.mCompoundAttributes do
       if compoundAttribute.mKey.string != "textMacro" then
         error (compoundAttribute.mKey: "for a compound attribute, only the 'textMacro' key is valid")

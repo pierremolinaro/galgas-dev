@@ -59,8 +59,8 @@ struct SettingsView : View {
 
   enum SidebarItem {
     case commandLineOptions
-%for (lexiqueClassName lexiqueIndex * title 3*) in GUI_CONTEXT.mWithLexiqueList
-  do %    case %!lexiqueClassName%_%![lexiqueIndex string]%\n%
+%for (aLexique) in GUI_CONTEXT.mWithLexiqueList
+  do %    case %!aLexique.mLexiqueClassName%_%![aLexique.mIndex string]%\n%
 end
 %    case allocationDebugView
   }
@@ -75,8 +75,8 @@ end
     NavigationSplitView {
       List(selection: self.$mSelection) {
         Text ("Options").tag (SidebarItem.commandLineOptions)\n
-%for (lexiqueClassName lexiqueIndex * title 3*) in GUI_CONTEXT.mWithLexiqueList
-  do %        Text ("%!title%").tag (SidebarItem.%!lexiqueClassName%_%![lexiqueIndex string]%)\n%
+%for (aLexique) in GUI_CONTEXT.mWithLexiqueList
+  do %        Text ("%!aLexique.mTitle%").tag (SidebarItem.%!aLexique.mLexiqueClassName%_%![aLexique.mIndex string]%)\n%
 end
 %        Text ("Allocation Debug").tag (SidebarItem.allocationDebugView)
       }
@@ -84,8 +84,8 @@ end
     } detail: {
       switch self.mSelection {
         case .commandLineOptions : OptionView ()
-%for (lexiqueClassName lexiqueIndex 5*) in GUI_CONTEXT.mWithLexiqueList
-  do %        case .%!lexiqueClassName%_%![lexiqueIndex string]% : SettingViewFor_%!lexiqueClassName% ()\n%
+%for (aLexique) in GUI_CONTEXT.mWithLexiqueList
+  do %        case .%!aLexique.mLexiqueClassName%_%![aLexique.mIndex string]% : SettingViewFor_%!aLexique.mLexiqueClassName% ()\n%
 end
 %        case .allocationDebugView : AllocationDebugView ()
       }
@@ -97,16 +97,16 @@ end
 }
 
 
-%for (lexiqueClassName lexiqueIndex blockComment title textMacroList labels lexicalStyleList) in GUI_CONTEXT.mWithLexiqueList do
+%for (aLexique) in GUI_CONTEXT.mWithLexiqueList do
 %//--------------------------------------------------------------------------------------------------
-//   Popup list data for '%!lexiqueClassName%' lexique
+//   Popup list data for '%!aLexique.mLexiqueClassName%' lexique
 //--------------------------------------------------------------------------------------------------
 
-let gPopUpData_%!lexiqueClassName% : [[UInt16]] = [
-%  for (mLeadingCharacterStrippedCount mTerminalList mLocation) in labels do
-%  [%![mLeadingCharacterStrippedCount string]%, // Leading character count to strip\n%
-      for (mTerminal mDisplayFlags) in mTerminalList
-      do %    %!lexiqueClassName%_1_%![mTerminal identifierRepresentation]%, %![mDisplayFlags string]
+let gPopUpData_%!aLexique.mLexiqueClassName% : [[UInt16]] = [
+%  for (aLabel) in aLexique.mLabels do
+%  [%![aLabel.mLeadingCharacterStrippedCount string]%, // Leading character count to strip\n%
+      for (entry) in aLabel.mTerminalList
+      do %    %!aLexique.mLexiqueClassName%_1_%![entry.mTerminal identifierRepresentation]%, %![entry.mDisplayFlags string]
       between %,\n%
       end    
     %\n  ]%
@@ -116,10 +116,10 @@ let gPopUpData_%!lexiqueClassName% : [[UInt16]] = [
 ]
 
 //--------------------------------------------------------------------------------------------------
-//   Block Comment for '%!lexiqueClassName%' lexique
+//   Block Comment for '%!aLexique.mLexiqueClassName%' lexique
 //--------------------------------------------------------------------------------------------------
 
-let gLineComment_%!lexiqueClassName% : String? = %if [blockComment count] == 0 then %nil% else ![blockComment utf8Representation] end%
+let gLineComment_%!aLexique.mLexiqueClassName% : String? = %if [aLexique.mBlockComment count] == 0 then %nil% else ![aLexique.mBlockComment utf8Representation] end%
 
 %end%
 //--------------------------------------------------------------------------------------------------

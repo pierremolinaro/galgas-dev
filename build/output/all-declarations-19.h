@@ -886,7 +886,7 @@ void routine_appendPredefinedTypesASTs_26_ (class GGS_galgasDeclarationAST & ioA
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_compileAllGuiComponentFromASTGalgas_33__3F__3F__21_ (const class GGS_galgasGUIComponentListAST constinArgument0,
+void routine_compileAllGuiComponentFromASTGalgas_33__3F__3F__21_ (const class GGS__5B_galgasGUIComponentAST_5D_ constinArgument0,
                                                                   const class GGS_semanticContext constinArgument1,
                                                                   class GGS_optionComponentMapForGeneration & outArgument2,
                                                                   class Compiler * inCompiler

@@ -151,28 +151,8 @@ LOGGING s: <@string:"d">
 *************************************** begin of list compare
 LOGGING comp: <@bool:true>
 *************************************** begin of collection value
-LOGGING str: <list @stringlist (5 objects):
-|-at 0
-| mValue:<@string:"a">
-|-at 1
-| mValue:<@string:"b">
-|-at 2
-| mValue:<@string:"c">
-|-at 3
-| mValue:<@string:"d">
-|-at 4
-| mValue:<@string:"e">>
-LOGGING str2: <list @stringlist (5 objects):
-|-at 0
-| mValue:<@string:"a">
-|-at 1
-| mValue:<@string:"b">
-|-at 2
-| mValue:<@string:"c">
-|-at 3
-| mValue:<@string:"d">
-|-at 4
-| mValue:<@string:"e">>
+LOGGING str: <array @[string], 5 objects>
+LOGGING str2: <array @[string], 5 objects>
 *************************************** begin of sorted list test
   index 0 : d
   index 1 : c
@@ -259,105 +239,6 @@ LOGGING loc: <@location:nowhere:1:1>
 *************************************** begin of function test
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
-*************************************** begin of introspection test
---- Type list (95 types)
-  @2lstringlist
-  @2lstringlist.element
-  @2stringlist
-  @2stringlist.element
-  @A_A
-  @A_A.weak
-  @B_B
-  @B_B.weak
-  @TestExtensionMethod
-  @TestExtensionMethod.weak
-  @TestExtensionSetter
-  @TestExtensionSetter.weak
-  @[lstring]
-  @[string]
-  @[uint64]
-  @[uint]
-  @aMap
-  @aMap.element
-  @aMap.element?
-  @abstractOverridingTestExtensionSetter
-  @abstractOverridingTestExtensionSetter.weak
-  @abstractTestExtensionSetter
-  @abstractTestExtensionSetter.weak
-  @baseClassForTypeCastInSetterCall
-  @baseClassForTypeCastInSetterCall.weak
-  @bigint
-  @bigint?
-  @binaryset
-  @bool
-  @char
-  @classeA
-  @classeA.weak
-  @classeB
-  @classeB.weak
-  @classeC
-  @classeC.weak
-  @classeD
-  @classeD.weak
-  @classeE
-  @classeE.weak
-  @classeF
-  @classeF.weak
-  @classeG
-  @classeG.weak
-  @classeH
-  @classeH.weak
-  @classeH?
-  @classeI
-  @classeI.weak
-  @complex
-  @data
-  @double
-  @filewrapper
-  @inheritedClassForTypeCastInSetterCall
-  @inheritedClassForTypeCastInSetterCall.weak
-  @lbigint
-  @lbool
-  @lchar
-  @ldouble
-  @location
-  @lsint
-  @lsint64
-  @lstring
-  @lstringlist
-  @lstringlist.element
-  @luint
-  @luint64
-  @luintlist
-  @luintlist.element
-  @myList
-  @myList.element
-  @myMap
-  @myMap.element
-  @myMap.element?
-  @mySortedList
-  @mySortedList.element
-  @object
-  @objectlist
-  @objectlist.element
-  @overridingTestExtensionSetter
-  @overridingTestExtensionSetter.weak
-  @range
-  @sint
-  @sint64
-  @string
-  @stringlist
-  @stringlist.element
-  @stringset
-  @structTest
-  @timer
-  @type
-  @typelist
-  @typelist.element
-  @uint
-  @uint64
-LOGGING object: 
-LOGGING y: <@uint:2>
 *************************************** begin of extension reader test
 LOGGING s: <@string:"-3-4-4">
 Carré de 9: 81

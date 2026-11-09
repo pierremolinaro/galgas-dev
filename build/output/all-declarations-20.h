@@ -14,7 +14,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const class GGS_galgasGUIComponentListAST_2E_element constinArgument0,
+void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const class GGS_galgasGUIComponentAST constinArgument0,
                                                        const class GGS_semanticContext constinArgument1,
                                                        class GGS_optionComponentMapForGeneration & ioArgument2,
                                                        class Compiler * inCompiler

@@ -20,62 +20,6 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3InstructionsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                    !@semanticInstructionAST outInstruction) {
-//    $identifier$ (?let mTargetVariableName)
-//    let @lstring optionalProperty
-//    select
-//      optionalProperty = "".nowhere
-//    or
-//      $.$
-//      $identifier$ (?let attributeName)
-//      optionalProperty = attributeName
-//    end
-//    $=$
-//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mSourceExpression)
-//    outInstruction = @assignmentInstructionAST (
-//      !mTargetVariableName.location,
-//      mTargetVariableName,
-//      optionalProperty,
-//      mSourceExpression
-//     )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                    !@semanticInstructionAST outInstruction) {
-//    $self$
-//    $.$
-//    $identifier$ (?let mTargetVariableName)
-//    let @lstring optionalProperty
-//    select
-//      optionalProperty = "".nowhere
-//    or
-//      $.$
-//      $identifier$ (?let attributeName)
-//      optionalProperty = attributeName
-//    end
-//    $=$
-//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST mSourceExpression)
-//    outInstruction = @selfPropertyAssignmentInstructionAST (
-//      !mTargetVariableName.location,
-//      mTargetVariableName,
-//      optionalProperty,
-//      mSourceExpression
-//    )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -171,12 +115,7 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
                         ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
   //--- Get target variable type
-    !?ioVariableMap.neutralAccess
-      (self.mTargetVariableName,
-      ?let receiverType,
-      ?*,
-      ?*
-    )
+    !?ioVariableMap.neutralAccess (self.mTargetVariableName, ?let receiverType, ?*, ?*)
     var targetType = receiverType
     if self.mOptionalProperty.string != "" then
       let propertyMap = targetType.definition.propertyMap
@@ -187,8 +126,8 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
       end
     end
   //--- Analyze source expression
-    self.mSourceExpression.analyzeSemanticExpression
-      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    self.mSourceExpression.analyzeSemanticExpression (
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inferenceType: targetType,
       inAnalysisContext,
