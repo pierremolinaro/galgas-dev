@@ -448,17 +448,6 @@ void routine_appendPredefinedArrayTypeAST_26__3F_ (class GGS_galgasDeclarationAS
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'appendPredefinedListTypeAST&?'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_appendPredefinedListTypeAST_26__3F_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
-                                                  const class GGS_string constinArgument1,
-                                                  class Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'appendPredefined2StringListTypeAST&'
 //
 //--------------------------------------------------------------------------------------------------

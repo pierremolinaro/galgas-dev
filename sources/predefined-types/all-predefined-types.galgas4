@@ -48,7 +48,7 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
 
 //  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "luint")
 //  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "lstring")
-  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "string")
+//  appendPredefinedListTypeAST (!?ioDeclarations.mDeclarationList, "string")
 
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "bool")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "bigint")
@@ -293,25 +293,25 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
 //--------------------------------------------------------------------------------------------------
 
-private proc appendPredefinedListTypeAST (?![@semanticDeclarationAST] ioDeclarationListASTs,
-                                          let @string inElementTypeName) {
-  var @propertyInCollectionListAST attributeList = @()
-  attributeList ++= @(
-    !mutability: .mutableProperty,
-    inElementTypeName.nowhere,
-    "mValue".nowhere,
-    .publicAccess,
-    !hasSelector: false,
-    !initialization: .none
-  )
-  ioDeclarationListASTs ++= @listDeclarationAST (
-    !isPredefined: true,
-    (inElementTypeName + "list").nowhere,
-    attributeList,
-    !usefullList: true,
-    !equatable: true
-  )
-}
+//private proc appendPredefinedListTypeAST (?![@semanticDeclarationAST] ioDeclarationListASTs,
+//                                          let @string inElementTypeName) {
+//  var @propertyInCollectionListAST attributeList = @()
+//  attributeList ++= @(
+//    !mutability: .mutableProperty,
+//    inElementTypeName.nowhere,
+//    "mValue".nowhere,
+//    .publicAccess,
+//    !hasSelector: false,
+//    !initialization: .none
+//  )
+//  ioDeclarationListASTs ++= @listDeclarationAST (
+//    !isPredefined: true,
+//    (inElementTypeName + "list").nowhere,
+//    attributeList,
+//    !usefullList: true,
+//    !equatable: true
+//  )
+//}
 
 //--------------------------------------------------------------------------------------------------
 

@@ -4395,7 +4395,7 @@ class Lexique_galgasScanner_34_ : public Lexique {
                        COMMA_LOCATION_ARGS) ;
 
 //--- Instrospection
-  public: static GGS_stringlist symbols (LOCATION_ARGS) ;
+  public: static GGS__5B_string_5D_ symbols (LOCATION_ARGS) ;
 
 //--- Declaring a protected virtual destructor enables the compiler to raise
 //    an error if a direct delete is performed; only the static proc
