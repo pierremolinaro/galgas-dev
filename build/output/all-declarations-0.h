@@ -8165,9 +8165,9 @@ class DownEnumerator_syntaxComponentMap final {
 
   public: class GGS_lstring current_mLexiqueName (LOCATION_ARGS) const ;
 
-  public: class GGS_nonterminalDeclarationListAST current_mNonterminalDeclarationList (LOCATION_ARGS) const ;
+  public: class GGS__5B_nonterminalDeclarationAST_5D_ current_mNonterminalDeclarationList (LOCATION_ARGS) const ;
 
-  public: class GGS_syntaxRuleListAST current_mRuleList (LOCATION_ARGS) const ;
+  public: class GGS__5B_syntaxRuleAST_5D_ current_mRuleList (LOCATION_ARGS) const ;
 
   public: class GGS_bool current_mHasTranslateFeature (LOCATION_ARGS) const ;
 
@@ -8195,8 +8195,8 @@ class UpEnumerator_syntaxComponentMap final {
 
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mLexiqueName (LOCATION_ARGS) const ;
-  public: class GGS_nonterminalDeclarationListAST current_mNonterminalDeclarationList (LOCATION_ARGS) const ;
-  public: class GGS_syntaxRuleListAST current_mRuleList (LOCATION_ARGS) const ;
+  public: class GGS__5B_nonterminalDeclarationAST_5D_ current_mNonterminalDeclarationList (LOCATION_ARGS) const ;
+  public: class GGS__5B_syntaxRuleAST_5D_ current_mRuleList (LOCATION_ARGS) const ;
   public: class GGS_bool current_mHasTranslateFeature (LOCATION_ARGS) const ;
   public: class GGS_syntaxComponentMap_2E_element current (LOCATION_ARGS) const ;
 
@@ -8272,8 +8272,8 @@ class GGS_syntaxComponentMap : public AC_GALGAS_root {
 //--------------------------------- Setters
   public: void setter_insertKey (class GGS_lstring constinArgument0,
                                  class GGS_lstring constinArgument1,
-                                 class GGS_nonterminalDeclarationListAST constinArgument2,
-                                 class GGS_syntaxRuleListAST constinArgument3,
+                                 class GGS__5B_nonterminalDeclarationAST_5D_ constinArgument2,
+                                 class GGS__5B_syntaxRuleAST_5D_ constinArgument3,
                                  class GGS_bool constinArgument4,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
@@ -8288,12 +8288,12 @@ class GGS_syntaxComponentMap : public AC_GALGAS_root {
                                              Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMNonterminalDeclarationListForKey (class GGS_nonterminalDeclarationListAST constinArgument0,
+  public: void setter_setMNonterminalDeclarationListForKey (class GGS__5B_nonterminalDeclarationAST_5D_ constinArgument0,
                                                             class GGS_string constinArgument1,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMRuleListForKey (class GGS_syntaxRuleListAST constinArgument0,
+  public: void setter_setMRuleListForKey (class GGS__5B_syntaxRuleAST_5D_ constinArgument0,
                                           class GGS_string constinArgument1,
                                           Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
@@ -8302,8 +8302,8 @@ class GGS_syntaxComponentMap : public AC_GALGAS_root {
 //--------------------------------- Instance Methods
   public: void method_searchKey (class GGS_lstring constinArgument0,
                                  class GGS_lstring & outArgument1,
-                                 class GGS_nonterminalDeclarationListAST & outArgument2,
-                                 class GGS_syntaxRuleListAST & outArgument3,
+                                 class GGS__5B_nonterminalDeclarationAST_5D_ & outArgument2,
+                                 class GGS__5B_syntaxRuleAST_5D_ & outArgument3,
                                  class GGS_bool & outArgument4,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) const ;
@@ -8340,13 +8340,13 @@ class GGS_syntaxComponentMap : public AC_GALGAS_root {
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_nonterminalDeclarationListAST getter_mNonterminalDeclarationListForKey (const class GGS_string & constinOperand0,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_nonterminalDeclarationAST_5D_ getter_mNonterminalDeclarationListForKey (const class GGS_string & constinOperand0,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_syntaxRuleListAST getter_mRuleListForKey (const class GGS_string & constinOperand0,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_syntaxRuleAST_5D_ getter_mRuleListForKey (const class GGS_string & constinOperand0,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_syntaxComponentMap getter_overriddenMap (Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const ;

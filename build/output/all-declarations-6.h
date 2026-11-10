@@ -1972,8 +1972,8 @@ class DownEnumerator_galgas_33_SyntaxComponentListAST final {
 
   public: class GGS_lstring current_mSyntaxComponentName (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mImportedLexiqueFilePath (LOCATION_ARGS) const ;
-  public: class GGS_nonterminalDeclarationListAST current_mNonterminalDeclarationList (LOCATION_ARGS) const ;
-  public: class GGS_syntaxRuleListAST current_mRuleList (LOCATION_ARGS) const ;
+  public: class GGS__5B_nonterminalDeclarationAST_5D_ current_mNonterminalDeclarationList (LOCATION_ARGS) const ;
+  public: class GGS__5B_syntaxRuleAST_5D_ current_mRuleList (LOCATION_ARGS) const ;
   public: class GGS_bool current_mHasTranslateFeature (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_galgas_33_SyntaxComponentListAST_2E_element current (LOCATION_ARGS) const ;
@@ -2002,8 +2002,8 @@ class UpEnumerator_galgas_33_SyntaxComponentListAST final {
 
   public: class GGS_lstring current_mSyntaxComponentName (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mImportedLexiqueFilePath (LOCATION_ARGS) const ;
-  public: class GGS_nonterminalDeclarationListAST current_mNonterminalDeclarationList (LOCATION_ARGS) const ;
-  public: class GGS_syntaxRuleListAST current_mRuleList (LOCATION_ARGS) const ;
+  public: class GGS__5B_nonterminalDeclarationAST_5D_ current_mNonterminalDeclarationList (LOCATION_ARGS) const ;
+  public: class GGS__5B_syntaxRuleAST_5D_ current_mRuleList (LOCATION_ARGS) const ;
   public: class GGS_bool current_mHasTranslateFeature (LOCATION_ARGS) const ;
 //--- Current element access
   public: class GGS_galgas_33_SyntaxComponentListAST_2E_element current (LOCATION_ARGS) const ;
@@ -2065,8 +2065,8 @@ class GGS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_root {
   public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
                                                  const class GGS_lstring & in_mSyntaxComponentName,
                                                  const class GGS_lstring & in_mImportedLexiqueFilePath,
-                                                 const class GGS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
-                                                 const class GGS_syntaxRuleListAST & in_mRuleList,
+                                                 const class GGS__5B_nonterminalDeclarationAST_5D_ & in_mNonterminalDeclarationList,
+                                                 const class GGS__5B_syntaxRuleAST_5D_ & in_mRuleList,
                                                  const class GGS_bool & in_mHasTranslateFeature
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -2078,8 +2078,8 @@ class GGS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_root {
 //--------------------------------- GALGAS class functions
   public: static class GGS_galgas_33_SyntaxComponentListAST class_func_listWithValue (const class GGS_lstring & inOperand0,
                                                                                       const class GGS_lstring & inOperand1,
-                                                                                      const class GGS_nonterminalDeclarationListAST & inOperand2,
-                                                                                      const class GGS_syntaxRuleListAST & inOperand3,
+                                                                                      const class GGS__5B_nonterminalDeclarationAST_5D_ & inOperand2,
+                                                                                      const class GGS__5B_syntaxRuleAST_5D_ & inOperand3,
                                                                                       const class GGS_bool & inOperand4
                                                                                       COMMA_LOCATION_ARGS) ;
 
@@ -2091,8 +2091,8 @@ class GGS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_root {
 //--------------------------------- += operator (with list of field expressions)
   public: void addAssignOperation (const class GGS_lstring & inOperand0,
                                    const class GGS_lstring & inOperand1,
-                                   const class GGS_nonterminalDeclarationListAST & inOperand2,
-                                   const class GGS_syntaxRuleListAST & inOperand3,
+                                   const class GGS__5B_nonterminalDeclarationAST_5D_ & inOperand2,
+                                   const class GGS__5B_syntaxRuleAST_5D_ & inOperand3,
                                    const class GGS_bool & inOperand4
                                    COMMA_LOCATION_ARGS) ;
 
@@ -2108,16 +2108,16 @@ class GGS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_root {
 //--------------------------------- Setters
   public: void setter_append (class GGS_lstring constinArgument0,
                               class GGS_lstring constinArgument1,
-                              class GGS_nonterminalDeclarationListAST constinArgument2,
-                              class GGS_syntaxRuleListAST constinArgument3,
+                              class GGS__5B_nonterminalDeclarationAST_5D_ constinArgument2,
+                              class GGS__5B_syntaxRuleAST_5D_ constinArgument3,
                               class GGS_bool constinArgument4,
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
   public: void setter_insertAtIndex (class GGS_lstring constinArgument0,
                                      class GGS_lstring constinArgument1,
-                                     class GGS_nonterminalDeclarationListAST constinArgument2,
-                                     class GGS_syntaxRuleListAST constinArgument3,
+                                     class GGS__5B_nonterminalDeclarationAST_5D_ constinArgument2,
+                                     class GGS__5B_syntaxRuleAST_5D_ constinArgument3,
                                      class GGS_bool constinArgument4,
                                      class GGS_uint constinArgument5,
                                      Compiler * inCompiler
@@ -2125,24 +2125,24 @@ class GGS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_root {
 
   public: void setter_popFirst (class GGS_lstring & outArgument0,
                                 class GGS_lstring & outArgument1,
-                                class GGS_nonterminalDeclarationListAST & outArgument2,
-                                class GGS_syntaxRuleListAST & outArgument3,
+                                class GGS__5B_nonterminalDeclarationAST_5D_ & outArgument2,
+                                class GGS__5B_syntaxRuleAST_5D_ & outArgument3,
                                 class GGS_bool & outArgument4,
                                 Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
   public: void setter_popLast (class GGS_lstring & outArgument0,
                                class GGS_lstring & outArgument1,
-                               class GGS_nonterminalDeclarationListAST & outArgument2,
-                               class GGS_syntaxRuleListAST & outArgument3,
+                               class GGS__5B_nonterminalDeclarationAST_5D_ & outArgument2,
+                               class GGS__5B_syntaxRuleAST_5D_ & outArgument3,
                                class GGS_bool & outArgument4,
                                Compiler * inCompiler
                                COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAtIndex (class GGS_lstring & outArgument0,
                                      class GGS_lstring & outArgument1,
-                                     class GGS_nonterminalDeclarationListAST & outArgument2,
-                                     class GGS_syntaxRuleListAST & outArgument3,
+                                     class GGS__5B_nonterminalDeclarationAST_5D_ & outArgument2,
+                                     class GGS__5B_syntaxRuleAST_5D_ & outArgument3,
                                      class GGS_bool & outArgument4,
                                      class GGS_uint constinArgument5,
                                      Compiler * inCompiler
@@ -2158,12 +2158,12 @@ class GGS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_root {
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMNonterminalDeclarationListAtIndex (class GGS_nonterminalDeclarationListAST constinArgument0,
+  public: void setter_setMNonterminalDeclarationListAtIndex (class GGS__5B_nonterminalDeclarationAST_5D_ constinArgument0,
                                                              class GGS_uint constinArgument1,
                                                              Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMRuleListAtIndex (class GGS_syntaxRuleListAST constinArgument0,
+  public: void setter_setMRuleListAtIndex (class GGS__5B_syntaxRuleAST_5D_ constinArgument0,
                                            class GGS_uint constinArgument1,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
@@ -2177,16 +2177,16 @@ class GGS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_root {
 //--------------------------------- Instance Methods
   public: void method_first (class GGS_lstring & outArgument0,
                              class GGS_lstring & outArgument1,
-                             class GGS_nonterminalDeclarationListAST & outArgument2,
-                             class GGS_syntaxRuleListAST & outArgument3,
+                             class GGS__5B_nonterminalDeclarationAST_5D_ & outArgument2,
+                             class GGS__5B_syntaxRuleAST_5D_ & outArgument3,
                              class GGS_bool & outArgument4,
                              Compiler * inCompiler
                              COMMA_LOCATION_ARGS) const ;
 
   public: void method_last (class GGS_lstring & outArgument0,
                             class GGS_lstring & outArgument1,
-                            class GGS_nonterminalDeclarationListAST & outArgument2,
-                            class GGS_syntaxRuleListAST & outArgument3,
+                            class GGS__5B_nonterminalDeclarationAST_5D_ & outArgument2,
+                            class GGS__5B_syntaxRuleAST_5D_ & outArgument3,
                             class GGS_bool & outArgument4,
                             Compiler * inCompiler
                             COMMA_LOCATION_ARGS) const ;
@@ -2204,13 +2204,13 @@ class GGS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_root {
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_nonterminalDeclarationListAST getter_mNonterminalDeclarationListAtIndex (const class GGS_uint & constinOperand0,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_nonterminalDeclarationAST_5D_ getter_mNonterminalDeclarationListAtIndex (const class GGS_uint & constinOperand0,
+                                                                                                 Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_syntaxRuleListAST getter_mRuleListAtIndex (const class GGS_uint & constinOperand0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_syntaxRuleAST_5D_ getter_mRuleListAtIndex (const class GGS_uint & constinOperand0,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_lstring getter_mSyntaxComponentNameAtIndex (const class GGS_uint & constinOperand0,
                                                                 Compiler * inCompiler
@@ -5352,13 +5352,13 @@ class GGS_galgas_33_SyntaxExtensionAST : public AC_GALGAS_root {
     return mProperty_mSyntaxComponentName ;
   }
 
-  public: GGS_nonterminalDeclarationListAST mProperty_mNonterminalDeclarationList ;
-  public: inline GGS_nonterminalDeclarationListAST readProperty_mNonterminalDeclarationList (void) const {
+  public: GGS__5B_nonterminalDeclarationAST_5D_ mProperty_mNonterminalDeclarationList ;
+  public: inline GGS__5B_nonterminalDeclarationAST_5D_ readProperty_mNonterminalDeclarationList (void) const {
     return mProperty_mNonterminalDeclarationList ;
   }
 
-  public: GGS_syntaxRuleListAST mProperty_mRuleList ;
-  public: inline GGS_syntaxRuleListAST readProperty_mRuleList (void) const {
+  public: GGS__5B_syntaxRuleAST_5D_ mProperty_mRuleList ;
+  public: inline GGS__5B_syntaxRuleAST_5D_ readProperty_mRuleList (void) const {
     return mProperty_mRuleList ;
   }
 
@@ -5374,11 +5374,11 @@ class GGS_galgas_33_SyntaxExtensionAST : public AC_GALGAS_root {
     mProperty_mSyntaxComponentName = inValue ;
   }
 
-  public: inline void setter_setMNonterminalDeclarationList (const GGS_nonterminalDeclarationListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMNonterminalDeclarationList (const GGS__5B_nonterminalDeclarationAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mNonterminalDeclarationList = inValue ;
   }
 
-  public: inline void setter_setMRuleList (const GGS_syntaxRuleListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMRuleList (const GGS__5B_syntaxRuleAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mRuleList = inValue ;
   }
 
@@ -5387,8 +5387,8 @@ class GGS_galgas_33_SyntaxExtensionAST : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public: GGS_galgas_33_SyntaxExtensionAST (const GGS_lstring & in_mSyntaxComponentName,
-                                            const GGS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
-                                            const GGS_syntaxRuleListAST & in_mRuleList) ;
+                                            const GGS__5B_nonterminalDeclarationAST_5D_ & in_mNonterminalDeclarationList,
+                                            const GGS__5B_syntaxRuleAST_5D_ & in_mRuleList) ;
 
 //--------------------------------- Copy constructor
   public: GGS_galgas_33_SyntaxExtensionAST (const GGS_galgas_33_SyntaxExtensionAST & inSource) ;
@@ -5400,8 +5400,8 @@ class GGS_galgas_33_SyntaxExtensionAST : public AC_GALGAS_root {
 
 //--------------------------------- Initializers
   public: static GGS_galgas_33_SyntaxExtensionAST init_21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                    const class GGS_nonterminalDeclarationListAST & inOperand1,
-                                                                    const class GGS_syntaxRuleListAST & inOperand2,
+                                                                    const class GGS__5B_nonterminalDeclarationAST_5D_ & inOperand1,
+                                                                    const class GGS__5B_syntaxRuleAST_5D_ & inOperand2,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
@@ -7822,19 +7822,19 @@ class GGS_filewrapperDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperDeclarationAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @nonTerminalLabelListAST_2E_element struct
+// Phase 1: @syntaxRuleLabelListAST_2E_element struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS_nonTerminalLabelListAST_2E_element : public AC_GALGAS_root {
+class GGS_syntaxRuleLabelListAST_2E_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public: GGS_lstring mProperty_mLabelName ;
   public: inline GGS_lstring readProperty_mLabelName (void) const {
     return mProperty_mLabelName ;
   }
 
-  public: GGS_formalParameterListAST mProperty_mFormalArgumentList ;
-  public: inline GGS_formalParameterListAST readProperty_mFormalArgumentList (void) const {
-    return mProperty_mFormalArgumentList ;
+  public: GGS_formalParameterListAST mProperty_mFormalArguments ;
+  public: inline GGS_formalParameterListAST readProperty_mFormalArguments (void) const {
+    return mProperty_mFormalArguments ;
   }
 
   public: GGS_location mProperty_mEndOfArgumentLocation ;
@@ -7842,48 +7842,70 @@ class GGS_nonTerminalLabelListAST_2E_element : public AC_GALGAS_root {
     return mProperty_mEndOfArgumentLocation ;
   }
 
+  public: GGS__5B_syntaxInstructionAST_5D_ mProperty_mSyntaxInstructionList ;
+  public: inline GGS__5B_syntaxInstructionAST_5D_ readProperty_mSyntaxInstructionList (void) const {
+    return mProperty_mSyntaxInstructionList ;
+  }
+
+  public: GGS_location mProperty_mEndOfInstructionList ;
+  public: inline GGS_location readProperty_mEndOfInstructionList (void) const {
+    return mProperty_mEndOfInstructionList ;
+  }
+
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GGS_nonTerminalLabelListAST_2E_element (void) ;
+  public: GGS_syntaxRuleLabelListAST_2E_element (void) ;
 
 //--------------------------------- Property setters
   public: inline void setter_setMLabelName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mLabelName = inValue ;
   }
 
-  public: inline void setter_setMFormalArgumentList (const GGS_formalParameterListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mFormalArgumentList = inValue ;
+  public: inline void setter_setMFormalArguments (const GGS_formalParameterListAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mFormalArguments = inValue ;
   }
 
   public: inline void setter_setMEndOfArgumentLocation (const GGS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mEndOfArgumentLocation = inValue ;
   }
 
+  public: inline void setter_setMSyntaxInstructionList (const GGS__5B_syntaxInstructionAST_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mSyntaxInstructionList = inValue ;
+  }
+
+  public: inline void setter_setMEndOfInstructionList (const GGS_location & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mEndOfInstructionList = inValue ;
+  }
+
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS_nonTerminalLabelListAST_2E_element (const GGS_lstring & in_mLabelName,
-                                                  const GGS_formalParameterListAST & in_mFormalArgumentList,
-                                                  const GGS_location & in_mEndOfArgumentLocation) ;
+  public: GGS_syntaxRuleLabelListAST_2E_element (const GGS_lstring & in_mLabelName,
+                                                 const GGS_formalParameterListAST & in_mFormalArguments,
+                                                 const GGS_location & in_mEndOfArgumentLocation,
+                                                 const GGS__5B_syntaxInstructionAST_5D_ & in_mSyntaxInstructionList,
+                                                 const GGS_location & in_mEndOfInstructionList) ;
 
 //--------------------------------- Copy constructor
-  public: GGS_nonTerminalLabelListAST_2E_element (const GGS_nonTerminalLabelListAST_2E_element & inSource) ;
+  public: GGS_syntaxRuleLabelListAST_2E_element (const GGS_syntaxRuleLabelListAST_2E_element & inSource) ;
 
 //--------------------------------- Assignment operator
-  public: GGS_nonTerminalLabelListAST_2E_element & operator = (const GGS_nonTerminalLabelListAST_2E_element & inSource) ;
+  public: GGS_syntaxRuleLabelListAST_2E_element & operator = (const GGS_syntaxRuleLabelListAST_2E_element & inSource) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_nonTerminalLabelListAST_2E_element init_21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                          const class GGS_formalParameterListAST & inOperand1,
-                                                                          const class GGS_location & inOperand2,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
+  public: static GGS_syntaxRuleLabelListAST_2E_element init_21__21__21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                                 const class GGS_formalParameterListAST & inOperand1,
+                                                                                 const class GGS_location & inOperand2,
+                                                                                 const class GGS__5B_syntaxInstructionAST_5D_ & inOperand3,
+                                                                                 const class GGS_location & inOperand4,
+                                                                                 Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -7905,5 +7927,5 @@ class GGS_nonTerminalLabelListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonTerminalLabelListAST_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxRuleLabelListAST_2E_element ;
 

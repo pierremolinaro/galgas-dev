@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 func transformLabelMap
-  (?let @nonTerminalLabelListAST inLabels
+  (?let [@nonTerminalLabelAST] inLabels
   ) -> @nonterminalSymbolLabelMapForGrammarAnalysis
 {
   result = @()
@@ -40,7 +40,7 @@ func transformLabelMap
 
 proc checkLabelMap
   (let @location inNonTerminalLocation,
-  let @nonTerminalLabelListAST inLabels,
+  let [@nonTerminalLabelAST] inLabels,
   let @location inOriginalNonTerminalLocation,
   let @nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis
 ) {
@@ -96,7 +96,7 @@ proc checkLabelMap
 
 proc handleNonTerminalDeclarations
   (?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis,
-  let @nonterminalDeclarationListAST inNonterminalDeclarationList ) {
+  let [@nonterminalDeclarationAST] inNonterminalDeclarationList ) {
   for nonTerminal in inNonterminalDeclarationList do
     if let entry = ioNonTerminalMapForGrammarAnalysis [nonTerminal.mNonterminalName.string] then
       checkLabelMap (
@@ -119,10 +119,10 @@ proc handleNonTerminalDeclarations
 
 proc handleNonTerminalDeclarationsFromRuleList (
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis,
-  let @syntaxRuleListAST inRuleList
+  let [@syntaxRuleAST] inRuleList
 ) {
   for aRule in inRuleList do
-    var nonTerminalLabelListAST = @nonTerminalLabelListAST ()
+    var nonTerminalLabelListAST = [@nonTerminalLabelAST] ()
     for aLabel in aRule.mLabelList do
       nonTerminalLabelListAST ++= @(
         aLabel.mLabelName,
@@ -189,7 +189,7 @@ proc transformInstructionListForGrammarAnalysis
 proc buildRuleList (
   let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis,
   let @lstring inSyntaxComponentName,
-  let @syntaxRuleListAST inRuleList,
+  let [@syntaxRuleAST] inRuleList,
   ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
   ?!@syntaxComponentListForGrammarAnalysis ioSyntaxComponentListForGrammarAnalysis,
   ?!@uint ioAddedNonTerminalCount

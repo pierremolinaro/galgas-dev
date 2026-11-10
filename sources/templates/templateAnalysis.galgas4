@@ -58,7 +58,7 @@ abstract proc @templateExpressionAST.templateExpressionAnalysis
 final class @templateGetterCallInExpressionAST : @templateExpressionAST {
   private let @templateExpressionAST mReceiverExpression
   private let @lstring mGetterName
-  private let @templateExpressionListAST mExpressionList
+  private let [@templateExpressionElementAST] mExpressionList
   private let @location mExpressionLocation
 }
 

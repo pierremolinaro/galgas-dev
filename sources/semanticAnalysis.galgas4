@@ -651,8 +651,8 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
     inSemanticContext.mSyntaxComponentMapForSemanticAnalysis.searchKey
       (syntaxComponentName,
       ?let @lstring lexiqueName,
-      ?let @nonterminalDeclarationListAST nonterminalDeclarationList,
-      ?let @syntaxRuleListAST ruleList,
+      ?let [@nonterminalDeclarationAST] nonterminalDeclarationList,
+      ?let [@syntaxRuleAST] ruleList,
       ?let @bool hasTranslateFeature
     )
     let lexiqueNameForUsefulness = lexiqueNameForUsefulEntitiesGraph (lexiqueName)
@@ -960,7 +960,7 @@ proc enterNonterminalNonTerminalInMapAndCheck
 //--------------------------------------------------------------------------------------------------
 
 proc buildNonterminalDeclarationsMap
-  (let @nonterminalDeclarationListAST inNonterminalDeclarationList,
+  (let [@nonterminalDeclarationAST] inNonterminalDeclarationList,
   let @semanticContext _inSemanticContext,
                                 ?!@unifiedTypeMap ioTypeMap,
   !@nonterminalMap outNonterminalDeclarationMap ) {
@@ -1440,8 +1440,8 @@ proc semanticAnalysisOfRuleLabel
 private proc semanticAnalysisOfSyntaxComponent
   (let @lstring inSyntaxComponentUsefulnessName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @nonterminalDeclarationListAST inNonterminalDeclarationList,
-  let @syntaxRuleListAST inRuleList,
+  let [@nonterminalDeclarationAST] inNonterminalDeclarationList,
+  let [@syntaxRuleAST] inRuleList,
   let @string inSyntaxComponentName,
   let @string inLexiqueName,
   let @semanticContext inSemanticContext,

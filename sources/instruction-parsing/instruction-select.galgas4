@@ -20,7 +20,7 @@
 //--------------------------------------------------------------------------------------------------
 
 final class @selectInstruction : @syntaxInstructionAST {
-  public let @listOfSyntaxInstructionList mSelectBranchList
+  public let [@SyntaxInstructionListAST] mSelectBranchList
   public let @location mEndOf_select_instruction
 }
 
@@ -36,7 +36,7 @@ syntax extension galgas4SyntaxComponentSyntax {
                             !@syntaxInstructionAST outInstruction ) {
     $select$
     let mSelectInstructionLocation = @location.here
-    var mSelectBranchList = @listOfSyntaxInstructionList ()
+    var mSelectBranchList = [@SyntaxInstructionListAST] ()
     <syntax_instruction_list> (!?ioDeclarations, ?let [@syntaxInstructionAST] il)
     mSelectBranchList ++= @(il, @location.here)
     repeat

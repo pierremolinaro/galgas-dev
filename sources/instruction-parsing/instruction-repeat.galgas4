@@ -22,7 +22,7 @@
 final class @repeatInstruction : @syntaxInstructionAST {
   private let [@syntaxInstructionAST] mRepeatedInstructionList
   private let @location mEndOf_repeated_instructions_branch
-  private let @listOfSyntaxInstructionList mRepeatBranchList
+  private let [@SyntaxInstructionListAST] mRepeatBranchList
   private let @location mEndOf_repeat_instruction
 }
 
@@ -40,7 +40,7 @@ syntax extension galgas4SyntaxComponentSyntax {
     let mRepeatInstructionLocation = @location.here
     <syntax_instruction_list>(!?ioDeclarations, ?let [@syntaxInstructionAST] mRepeatedInstructionList)
     let endOf_repeated_instructions = @location.here
-    var mRepeatBranchList = @listOfSyntaxInstructionList ()
+    var mRepeatBranchList = [@SyntaxInstructionListAST] ()
     repeat
       $while$
       <syntax_instruction_list> (!?ioDeclarations, ?let [@syntaxInstructionAST] mInstructionList)

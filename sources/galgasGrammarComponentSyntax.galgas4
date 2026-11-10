@@ -62,7 +62,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
     end
   //--- Root symbol
     $<non_terminal>$ (?let @lstring startSymbol) indexing (ruleReference)
-    var mLabelList = @nonTerminalLabelListAST ()
+    var mLabelList = [@nonTerminalLabelAST] ()
     <grammar_start_symbol_label> (!?ioDeclarations, @lstring ("", @location.here), !?mLabelList)
     repeat
     while
@@ -97,7 +97,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
 
   rule <grammar_start_symbol_label> (?!@galgasDeclarationAST ioDeclarations,
                                     let @lstring inLabelName,
-                                    ?!@nonTerminalLabelListAST ioLabelList ) {
+                                    ?![@nonTerminalLabelAST] ioLabelList ) {
     var @stringset argumentNameSet = @()
     var @formalParameterListAST formalParameterList = @()
     $($

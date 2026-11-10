@@ -188,8 +188,8 @@ map @lexiqueComponentMapForSemanticAnalysis {
 
 map @syntaxComponentMap {
   public let @lstring mLexiqueName
-  public let @nonterminalDeclarationListAST mNonterminalDeclarationList
-  public let @syntaxRuleListAST mRuleList
+  public let [@nonterminalDeclarationAST] mNonterminalDeclarationList
+  public let [@syntaxRuleAST] mRuleList
   public let @bool mHasTranslateFeature
   #insertSetter insertKey #errorMessage "the '%K' syntax component has already been parsed"
   #searchMethod searchKey #errorMessage "the '%K' syntax component is not parsed"

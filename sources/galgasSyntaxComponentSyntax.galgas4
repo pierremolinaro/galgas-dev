@@ -64,8 +64,8 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     end
     ${$
   //--- Loop on declarations
-    var nonterminalDeclarationList = @nonterminalDeclarationListAST ()
-    var ruleList = @syntaxRuleListAST ()
+    var nonterminalDeclarationList = [@nonterminalDeclarationAST] ()
+    var ruleList = [@syntaxRuleAST] ()
     repeat
     while
       <nonterminal_declaration> (!?ioDeclarations, !? nonterminalDeclarationList)
@@ -92,8 +92,8 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     $identifier$ (?let @lstring syntaxComponentName)
     ${$
   //--- Loop on declarations
-    var nonterminalDeclarationList = @nonterminalDeclarationListAST ()
-    var ruleList = @syntaxRuleListAST ()
+    var nonterminalDeclarationList = [@nonterminalDeclarationAST] ()
+    var ruleList = [@syntaxRuleAST] ()
     repeat
     while
       <nonterminal_declaration> (!?ioDeclarations, !? nonterminalDeclarationList)
@@ -115,10 +115,10 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <nonterminal_declaration> (?!@galgasDeclarationAST ioDeclarations,
-                                 ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList ) {
+                                 ?![@nonterminalDeclarationAST] ioNonterminalDeclarationList ) {
     $rule$
     $<non_terminal>$ (?let @lstring mNonterminalName) indexing (ruleDefinition)
-    var @nonTerminalLabelListAST labels = @()
+    var [@nonTerminalLabelAST] labels = @()
     <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST firstBranchFormalParameters)
     labels ++= @(@("", .here), firstBranchFormalParameters, .here)
     repeat
@@ -153,7 +153,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <syntax_rule_declaration> (?!@galgasDeclarationAST ioDeclarations,
-                                 ?!@syntaxRuleListAST ioRuleList ) {
+                                 ?![@syntaxRuleAST] ioRuleList ) {
     $rule$
     $<non_terminal>$ (?let @lstring mNonterminalName) indexing (ruleDefinition)
     var labelName = @lstring ("", @location.here)

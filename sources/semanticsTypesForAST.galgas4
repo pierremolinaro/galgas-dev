@@ -35,8 +35,8 @@ struct @syntaxExtensions {
 
   mutating proc insertKey (let @string inKey,
                     let @lstring inSyntaxComponentName,
-                    let @nonterminalDeclarationListAST inNonterminalDeclarationList,
-                    let @syntaxRuleListAST inRuleList) {
+                    let [@nonterminalDeclarationAST] inNonterminalDeclarationList,
+                    let [@syntaxRuleAST] inRuleList) {
     if self.dictionary.contains (inKey) then
       self.dictionary.searchKey (inKey, ?var aList)
       aList ++= @(inSyntaxComponentName, inNonterminalDeclarationList, inRuleList)
@@ -284,7 +284,7 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @nonTerminalLabelListAST {
+struct @nonTerminalLabelAST {
   public let @lstring mLabelName
   public let @formalParameterListAST mFormalArgumentList
   public let @location mEndOfArgumentLocation
@@ -292,9 +292,9 @@ list @nonTerminalLabelListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @nonterminalDeclarationListAST {
+struct @nonterminalDeclarationAST {
   public let @lstring mNonterminalName
-  public let @nonTerminalLabelListAST mLabels
+  public let [@nonTerminalLabelAST] mLabels
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -309,7 +309,7 @@ list @syntaxRuleLabelListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @syntaxRuleListAST {
+struct @syntaxRuleAST {
   public let @lstring mNonterminalName
   public let @syntaxRuleLabelListAST mLabelList
 }
@@ -320,7 +320,7 @@ list @syntaxRuleListAST {
 //
 //--------------------------------------------------------------------------------------------------
 
-list @listOfSyntaxInstructionList {
+struct @SyntaxInstructionListAST {
   public let [@syntaxInstructionAST] mSyntaxInstructionList
   public let @location mEndOf_instructions
 }
@@ -338,8 +338,8 @@ list @listOfSyntaxInstructionList {
 final class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
   public let @lstring mSyntaxComponentName
   public let @lstring mLexiqueName
-  public let @nonterminalDeclarationListAST mNonterminalDeclarationList
-  public let @syntaxRuleListAST mRuleList
+  public let [@nonterminalDeclarationAST] mNonterminalDeclarationList
+  public let [@syntaxRuleAST] mRuleList
   public let @bool mHasTranslateFeature
 }
 
@@ -351,7 +351,7 @@ final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
   public let @lstring mGrammarClass
   public let [@lstring] mSyntaxComponents
   public let @lstring mStartSymbolName
-  public let @nonTerminalLabelListAST mStartSymbolLabelList
+  public let [@nonTerminalLabelAST] mStartSymbolLabelList
   public let [@lstring] mUnusedNonterminalList
   public let @bool mHasTranslateFeature
 }
@@ -361,8 +361,8 @@ final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
 list @galgas3SyntaxComponentListAST {
   public let @lstring mSyntaxComponentName
   public let @lstring mImportedLexiqueFilePath
-  public let @nonterminalDeclarationListAST mNonterminalDeclarationList
-  public let @syntaxRuleListAST mRuleList
+  public let [@nonterminalDeclarationAST] mNonterminalDeclarationList
+  public let [@syntaxRuleAST] mRuleList
   public let @bool mHasTranslateFeature
 }
 
@@ -370,8 +370,8 @@ list @galgas3SyntaxComponentListAST {
 
 struct @galgas3SyntaxExtensionAST {
   public let @lstring mSyntaxComponentName
-  public let @nonterminalDeclarationListAST mNonterminalDeclarationList
-  public let @syntaxRuleListAST mRuleList
+  public let [@nonterminalDeclarationAST] mNonterminalDeclarationList
+  public let [@syntaxRuleAST] mRuleList
 }
 
 //--------------------------------------------------------------------------------------------------

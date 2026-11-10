@@ -379,7 +379,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
     let @templateExpressionAST receiverExpression
     <expression_template> (?receiverExpression)
     $identifier$ (?let @lstring templateName)
-    let @templateExpressionListAST expressionList
+    let [@templateExpressionElementAST] expressionList
     <output_expression_list_tpl> (?expressionList)
     outExpression = @templateExtensionTemplateCallAST (
       receiverExpression,
@@ -390,7 +390,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   or //----------- Constructor call
     $@type$ (?let @lstring typeName)
     $identifier$ (?let @lstring constructorName)
-    <output_expression_list_tpl> (?let @templateExpressionListAST expressionList)
+    <output_expression_list_tpl> (?let [@templateExpressionElementAST] expressionList)
     outExpression = @templateClassFunctionAST (
       typeName,
       constructorName,
@@ -402,7 +402,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
     $identifier$ (?let @lstring filewrapperName)
     $.$
     $identifier$ (?let @lstring templateName)
-    let @templateExpressionListAST expressionList
+    let [@templateExpressionElementAST] expressionList
     <output_expression_list_tpl> (?expressionList)
     $]$
     outExpression = @templateFileWrapperTemplateCallAST (filewrapperName, templateName, expressionList)
@@ -411,7 +411,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
     let @templateExpressionAST receiverExpression
     <expression_template> (?receiverExpression)
     $identifier$ (?let @lstring getterName)
-    let @templateExpressionListAST expressionList
+    let [@templateExpressionElementAST] expressionList
     <output_expression_list_tpl> (?expressionList)
     $]$
     let endLocation = @location.here
@@ -449,7 +449,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
 rule <primary_tpl> (!@templateExpressionAST outExpression ) {
   $identifier$ (?let @lstring functionName)
   $($
-  <output_expression_list_tpl> (?let @templateExpressionListAST expressionList)
+  <output_expression_list_tpl> (?let [@templateExpressionElementAST] expressionList)
   $)$
   outExpression = @templateFunctionCallAST (functionName, expressionList)
 }
@@ -474,7 +474,7 @@ rule <primary_tpl> (!@templateExpressionAST outExpression ) {
 //
 //--------------------------------------------------------------------------------------------------
 
-rule <output_expression_list_tpl> (!@templateExpressionListAST outExpressionList ) {
+rule <output_expression_list_tpl> (![@templateExpressionElementAST] outExpressionList ) {
   outExpressionList = @()
   repeat
   while
@@ -541,7 +541,7 @@ rule <template_instruction> (?![@templateInstructionAST] ioResultingInstructionL
 
 rule <template_instruction> (?![@templateInstructionAST] ioResultingInstructionList ) {
   $if$
-  var templateInstructionIfBranchList = @templateInstructionIfBranchListAST ()
+  var templateInstructionIfBranchList = [@templateInstructionIfBranchAST] ()
   repeat
     <expression_template> (?let expression)
     $then$
