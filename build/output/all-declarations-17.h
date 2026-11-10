@@ -971,7 +971,7 @@ class GGS_semanticInstructionListForGeneration function_syntaxSignatureOfInstruc
 void routine_generateProcedure_3F_static_3F__26__3F__3F__3F__3F__3F__3F__3F__21_ (const class GGS_bool constinArgument0,
                                                                                   const class GGS_string constinArgument1,
                                                                                   class GGS_stringset & ioArgument2,
-                                                                                  const class GGS_formalParameterListForGeneration constinArgument3,
+                                                                                  const class GGS__5B_formalParameterForGeneration_5D_ constinArgument3,
                                                                                   const class GGS_semanticInstructionListForGeneration constinArgument4,
                                                                                   const class GGS_bool constinArgument5,
                                                                                   const class GGS_string constinArgument6,
@@ -1028,7 +1028,7 @@ void routine_generateExtensionSetter_3F__3F__3F__26__3F__3F__21_ (const class GG
                                                                   const class GGS_string constinArgument1,
                                                                   const class GGS_string constinArgument2,
                                                                   class GGS_stringset & ioArgument3,
-                                                                  const class GGS_formalParameterListForGeneration constinArgument4,
+                                                                  const class GGS__5B_formalParameterForGeneration_5D_ constinArgument4,
                                                                   const class GGS_semanticInstructionListForGeneration constinArgument5,
                                                                   class GGS_string & outArgument6,
                                                                   class Compiler * inCompiler
@@ -1043,7 +1043,7 @@ void routine_generateExtensionSetter_3F__3F__3F__26__3F__3F__21_ (const class GG
 void routine_generateExtensionMethodNew_3F__26__3F__3F__3F__21_ (const class GGS_unifiedTypeMapEntry constinArgument0,
                                                                  class GGS_stringset & ioArgument1,
                                                                  const class GGS_string constinArgument2,
-                                                                 const class GGS_formalParameterListForGeneration constinArgument3,
+                                                                 const class GGS__5B_formalParameterForGeneration_5D_ constinArgument3,
                                                                  const class GGS_semanticInstructionListForGeneration constinArgument4,
                                                                  class GGS_string & outArgument5,
                                                                  class Compiler * inCompiler
@@ -1235,7 +1235,7 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExt
 GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSetterDeclaration (class Compiler * inCompiler,
                                                                                                const class GGS_string & in_CLASS_5F_NAME,
                                                                                                const class GGS_string & in_MODIFIER_5F_NAME,
-                                                                                               const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                               const class GGS__5B_formalParameterForGeneration_5D_ & in_FORMAL_5F_ARGUMENT_5F_LIST
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1247,7 +1247,7 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSett
 GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionsetterImplementation (class Compiler * inCompiler,
                                                                                                   const class GGS_string & in_CLASS_5F_NAME,
                                                                                                   const class GGS_string & in_MODIFIER_5F_NAME,
-                                                                                                  const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                                  const class GGS__5B_formalParameterForGeneration_5D_ & in_FORMAL_5F_ARGUMENT_5F_LIST,
                                                                                                   const class GGS_string & in_MODIFIER_5F_IMPLEMENTATION
                                                                                                   COMMA_LOCATION_ARGS) ;
 
@@ -1260,7 +1260,7 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionsett
 GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionMethodDeclaration (class Compiler * inCompiler,
                                                                                                        const class GGS_string & in_CLASS_5F_NAME,
                                                                                                        const class GGS_string & in_METHOD_5F_NAME,
-                                                                                                       const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                                       const class GGS__5B_formalParameterForGeneration_5D_ & in_FORMAL_5F_ARGUMENT_5F_LIST
                                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1272,7 +1272,7 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
 GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionMethodImplementation (class Compiler * inCompiler,
                                                                                                           const class GGS_unifiedTypeMapEntry & in_RECEIVER_5F_TYPE,
                                                                                                           const class GGS_string & in_METHOD_5F_NAME,
-                                                                                                          const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                                          const class GGS__5B_formalParameterForGeneration_5D_ & in_FORMAL_5F_ARGUMENT_5F_LIST
                                                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1284,7 +1284,7 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExten
 GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodDeclaration (class Compiler * inCompiler,
                                                                                                const class GGS_string & in_CLASS_5F_NAME,
                                                                                                const class GGS_string & in_METHOD_5F_NAME,
-                                                                                               const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                               const class GGS__5B_formalParameterForGeneration_5D_ & in_FORMAL_5F_ARGUMENT_5F_LIST
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1296,7 +1296,7 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMeth
 GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodImplementation (class Compiler * inCompiler,
                                                                                                   const class GGS_string & in_CLASS_5F_NAME,
                                                                                                   const class GGS_string & in_METHOD_5F_NAME,
-                                                                                                  const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                                  const class GGS__5B_formalParameterForGeneration_5D_ & in_FORMAL_5F_ARGUMENT_5F_LIST,
                                                                                                   const class GGS_string & in_METHOD_5F_IMPLEMENTATION
                                                                                                   COMMA_LOCATION_ARGS) ;
 
@@ -1371,7 +1371,7 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGett
 GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodAsFunctionDeclaration (class Compiler * inCompiler,
                                                                                                          const class GGS_string & in_TYPE_5F_NAME,
                                                                                                          const class GGS_string & in_METHOD_5F_NAME,
-                                                                                                         const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                                         const class GGS__5B_formalParameterForGeneration_5D_ & in_FORMAL_5F_ARGUMENT_5F_LIST
                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1395,7 +1395,7 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMeth
 GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSetterAsFunctionDeclaration (class Compiler * inCompiler,
                                                                                                          const class GGS_string & in_TYPE_5F_NAME,
                                                                                                          const class GGS_string & in_MODIFIER_5F_NAME,
-                                                                                                         const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                                         const class GGS__5B_formalParameterForGeneration_5D_ & in_FORMAL_5F_ARGUMENT_5F_LIST
                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
@@ -1429,7 +1429,7 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionImple
 
 GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineDeclaration (class Compiler * inCompiler,
                                                                                        const class GGS_string & in_ROUTINE_5F_NAME,
-                                                                                       const class GGS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                       const class GGS__5B_formalParameterForGeneration_5D_ & in_FORMAL_5F_ARGUMENT_5F_LIST
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

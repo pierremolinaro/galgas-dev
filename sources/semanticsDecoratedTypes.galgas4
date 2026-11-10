@@ -80,7 +80,7 @@ final class @castInExpressionForGeneration : @semanticExpressionForGeneration {
 //
 //--------------------------------------------------------------------------------------------------
 
-list @formalParameterListForGeneration {
+struct @formalParameterForGeneration {
   public let @lstring mFormalSelector
   public let @formalArgumentPassingModeAST mFormalArgumentPassingMode
   public let @unifiedTypeMapEntry mFormalArgumentType

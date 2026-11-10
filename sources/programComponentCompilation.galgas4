@@ -63,7 +63,7 @@ proc compileBeforeClauseGalgas3
       !?ioUsefulEntitiesGraph,
       inAnalysisContext,
       !?ioTypeMap,
-      @formalParameterListAST (), // Routine signature : no argument
+      [@formalParameterAST] (), // Routine signature : no argument
       prologue.mInstructionList,
       prologue.mEndOfInstructionList,
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration,
@@ -79,7 +79,7 @@ proc compileBeforeClauseGalgas3
     !generateHeader: false,
     !implementationCppFileName: "proc-before",
     !routineMangledName:"before",
-    @formalParameterListForGeneration (),
+    [@formalParameterForGeneration] (),
     true, // Generate static
     semanticInstructionListForGeneration
   )
@@ -104,7 +104,7 @@ private proc compileProgramRulesGalgas3
     let usefulnessName = rootRuleNameForUsefulEntitiesGraph (programRule.mSourceFileExtension)
     !?ioUsefulEntitiesGraph.addNode (usefulnessName, usefulnessName)
     ioUsefulnessRootEntities ++= usefulnessName
-    let @formalParameterListAST argumentList = [
+    let [@formalParameterAST] argumentList = [
       @("".nowhere, .argumentConstantIn, @lstring ("lstring", .here), programRule.mSourceFileVariableName, programRule.mSourceFileVariableNameIsUnused)
     ]
     analyzeRoutineBody (
@@ -156,7 +156,7 @@ proc compileAfterClauseGalgas3
       !?ioUsefulEntitiesGraph,
       inAnalysisContext,
       !?ioTypeMap,
-      @formalParameterListAST (), // Routine signature : no argument
+      [@formalParameterAST] (), // Routine signature : no argument
       epilogue.mInstructionList,
       epilogue.mEndOfInstructionList,
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration,
@@ -170,7 +170,7 @@ proc compileAfterClauseGalgas3
     !generateHeader: false,
     !implementationCppFileName: "proc-after",
     !routineMangledName: "after",
-    @formalParameterListForGeneration (),
+    [@formalParameterForGeneration] (),
     true, // Generate static
     semanticInstructionListForGeneration
   )

@@ -33,10 +33,10 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
                                     !@CommaSeparatedExpressionList outExpressionList)
 
   rule <formal_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
-                               !@formalParameterListAST outFormalParameterList)
+                               ![@formalParameterAST] outFormalParameterList)
 
   rule <formal_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
-                                     !@formalInputParameterListAST outFormalInputParameterList)
+                                     ![@formalInputParameterAST] outFormalInputParameterList)
 
   rule <type_definition> (?!@galgasDeclarationAST ioDeclarations,
                           !@lstring outTypeName)
@@ -116,7 +116,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       isUsefull = true
     end
     $identifier$ (?let functionName) indexing (functionDefinition)
-    <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
+    <formal_input_parameter_list> (!?ioDeclarations, ?let [@formalInputParameterAST] formalInputParameterList)
     if isOnce, (formalInputParameterList.count > 0) then
       error (functionName: "an 'once' function should has no argument")
     end
@@ -180,7 +180,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       isUsefull = true
     end
     $identifier$ (?let functionName) indexing (functionDefinition)
-    <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
+    <formal_input_parameter_list> (!?ioDeclarations, ?let [@formalInputParameterAST] formalInputParameterList)
     if isOnce, (formalInputParameterList.count > 0) then
       error (functionName: "an 'once' function should has no argument")
     end
@@ -239,7 +239,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
       isUsefull = true
     end
     $identifier$ (?let mActionName) indexing (functionDefinition)
-    <formal_input_parameter_list> (!?ioDeclarations, ?let @formalInputParameterListAST formalInputParameterList)
+    <formal_input_parameter_list> (!?ioDeclarations, ?let [@formalInputParameterAST] formalInputParameterList)
     $->$
     <type_definition> (!?ioDeclarations, ?let resultTypeName)
     ioDeclarations.mDeclarationList ++= @externFunctionDeclarationAST (
@@ -286,8 +286,8 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <actual_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
-                                     !@actualInputParameterListAST outActualInputParameterList ) {
-    outActualInputParameterList = @actualInputParameterListAST ()
+                                     ![@actualInputParameterAST] outActualInputParameterList ) {
+    outActualInputParameterList = [@actualInputParameterAST] ()
     select
     or
       $($

@@ -38,16 +38,16 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <formal_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
-                               !@formalParameterListAST outFormalParameterList)
+                                ![@formalParameterAST] outFormalParameterList)
 
   rule <semantic_instruction_list> (?!@galgasDeclarationAST ioDeclarations,
-                                   ![@semanticInstructionAST] outInstructionsList)
+                                    ![@semanticInstructionAST] outInstructionsList)
 
   rule <formal_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
-                                     !@formalInputParameterListAST outFormalInputParameterList)
+                                      ![@formalInputParameterAST] outFormalInputParameterList)
 
   rule <expression> (?!@galgasDeclarationAST ioDeclarations,
-                    !@semanticExpressionAST outExpression)
+                     !@semanticExpressionAST outExpression)
 
   rule <type_definition> (?!@galgasDeclarationAST ioDeclarations,
                           !@lstring outTypeName)
@@ -136,7 +136,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <filewrapper_templates> (?!@galgasDeclarationAST ioDeclarations,
-                               !@filewrapperTemplateListAST outFilewrapperTemplateList ) {
+                               ![@filewrapperTemplateAST] outFilewrapperTemplateList ) {
     ${$
     outFilewrapperTemplateList = @()
     repeat
@@ -145,7 +145,7 @@ syntax galgas4DeclarationsSyntax (galgasScanner4) {
       $identifier$ (?let mFilewrapperTemplateName)
       $:$
       $"string"$ (?let mFilewrapperTemplatePath)
-      var @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = @()
+      var [@formalTemplateInputParameterAST] filewrapperTemplateFormalInputParameters = @()
       $($
       select
       or

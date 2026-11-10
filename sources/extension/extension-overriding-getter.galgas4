@@ -22,7 +22,7 @@
 final class @overridingExtensionGetterAST : @semanticDeclarationAST {
   private let @lstring mTypeName
   private let @lstring mOverridingExtensionGetterName
-  private let @formalInputParameterListAST mOverridingExtensionGetterFormalInputParameterList
+  private let [@formalInputParameterAST] mOverridingExtensionGetterFormalInputParameterList
   private let @lstring mOverridingExtensionGetterReturnedTypeName
   private let @lstring mOverridingExtensionGetterReturnedVariableName
   private let [@semanticInstructionAST] mOverridingExtensionGetterInstructionList

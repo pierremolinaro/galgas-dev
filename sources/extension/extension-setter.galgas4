@@ -22,7 +22,7 @@
 final class @extensionSetterAST : @semanticDeclarationAST {
   private let @lstring mTypeName
   private let @lstring mExtensionSetterName
-  private let @formalParameterListAST mExtensionSetterFormalParameterList
+  private let [@formalParameterAST] mExtensionSetterFormalParameterList
   private let [@semanticInstructionAST] mExtensionSetterInstructionList
   private let @location mEndOfSetterDeclarationLocation
 }
@@ -47,7 +47,7 @@ syntax extension galgas4DeclarationsSyntax {
       $.$
     end
     $identifier$ (?let @lstring setterName) indexing (extensionSetterDefinition)
-    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let [@formalParameterAST] formalParameterList)
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfSetterLocation = @location.here
@@ -69,7 +69,7 @@ syntax extension galgas4DeclarationsSyntax {
     $mutating$
     $proc$
     $identifier$ (?let @lstring setterName) indexing (extensionSetterDefinition)
-    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let [@formalParameterAST] formalParameterList)
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfSetterLocation = @location.here
@@ -248,7 +248,7 @@ final class @extensionSetterForGeneration : @semanticDeclarationWithHeaderForGen
   private let @unifiedTypeMapEntry mReceiverType
   private let @string mExtensionSetterName
   private let @bool mImplementedAsFunction
-  private let @formalParameterListForGeneration mExtensionSetterFormalParameterList
+  private let [@formalParameterForGeneration] mExtensionSetterFormalParameterList
   private let [@typedProperty] mTypedAttributeList
   private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
@@ -289,12 +289,13 @@ override proc @extensionSetterForGeneration.appendSpecificImplementation (
   end
   if self.mImplementedAsFunction then
     var extensionSetterFormalParameterList = self.mExtensionSetterFormalParameterList
-    !?extensionSetterFormalParameterList.insertAtIndex
-      ("".nowhere,
+    !?extensionSetterFormalParameterList.insertAtIndex (
+      @("".nowhere,
       @formalArgumentPassingModeAST. argumentInOut,
       self.mReceiverType,
       @lstring ("self", @location.here),
-      "ioObject",
+      "ioObject"
+      ),
       0
     )
     ioInclusionSet ++= "mutating proc-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.fileNameRepresentation

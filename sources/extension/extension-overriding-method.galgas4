@@ -35,7 +35,7 @@ syntax extension galgas4DeclarationsSyntax {
       $.$
     end
     $identifier$ (?let @lstring methodName) indexing (overrideExtensionMethodDefinition)
-    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let [@formalParameterAST] formalParameterList)
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfMethodLocation = @location.here
@@ -57,7 +57,7 @@ syntax extension galgas4DeclarationsSyntax {
     $override$
     $proc$
     $identifier$ (?let @lstring methodName) indexing (overrideExtensionMethodDefinition)
-    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let [@formalParameterAST] formalParameterList)
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let @location endOfMethodLocation = @location.here
@@ -83,7 +83,7 @@ syntax extension galgas4DeclarationsSyntax {
 final class @overridingExtensionMethodAST : @semanticDeclarationAST {
   private let @lstring mTypeName
   private let @lstring mOverridingExtensionMethodName
-  private let @formalParameterListAST mOverridingExtensionMethodFormalParameterList
+  private let [@formalParameterAST] mOverridingExtensionMethodFormalParameterList
   private let [@semanticInstructionAST] mOverridingExtensionMethodInstructionList
   private let @location mEndOfMethodLocation
 }
@@ -268,7 +268,7 @@ final class @overridingExtensionMethodForGeneration : @semanticDeclarationWithHe
   private let @unifiedTypeMapEntry mReceiverType
   private let @string mBaseTypeName
   private let @string mExtensionMethodName
-  private let @formalParameterListForGeneration mExtensionMethodFormalParameterList
+  private let [@formalParameterForGeneration] mExtensionMethodFormalParameterList
   private let [@typedProperty] mTypedAttributeList
   private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }

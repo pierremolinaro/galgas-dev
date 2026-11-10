@@ -24,7 +24,7 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-proc checkMethodSignatures (let @formalParameterListForGeneration inTestedSignature,
+proc checkMethodSignatures (let [@formalParameterForGeneration] inTestedSignature,
                             let @location inErrorLocation,
                             let @formalParameterSignature inReferenceSignature,
                             let @location inReferenceLocation) {
@@ -116,10 +116,10 @@ map @propertyIndexMap {
 
 proc buildLocalVariableMapAndSignature (let @semanticContext _inSemanticContext,
                                         ?!@unifiedTypeMap ioTypeMap,
-                                        let @formalParameterListAST inRoutineSignatureAST,
+                                        let [@formalParameterAST] inRoutineSignatureAST,
                                         ?!@localVarManager ioVariableMap,
-                                        !@formalParameterListForGeneration outRoutineSignature ) {
-  outRoutineSignature = @formalParameterListForGeneration ()
+                                        ![@formalParameterForGeneration] outRoutineSignature ) {
+  outRoutineSignature = [@formalParameterForGeneration] ()
   for formalArgument in inRoutineSignatureAST do
     let type = ioTypeMap.typeMapEntryForLKey (formalArgument.mFormalArgumentTypeName)
     let @string formalArgumentCppName
@@ -198,11 +198,11 @@ proc analyzeRoutineBody (let @lstring inUsefulnessCallerEntityName,
                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                          let @analysisContext inAnalysisContext,
                          ?!@unifiedTypeMap ioTypeMap,
-                         let @formalParameterListAST inRoutineSignatureAST,
+                         let [@formalParameterAST] inRoutineSignatureAST,
                          let [@semanticInstructionAST] inInstructionList,
                          let @location inEndOfMethodLocation,
                          !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration,
-                         !@formalParameterListForGeneration outRoutineSignature ) {
+                         ![@formalParameterForGeneration] outRoutineSignature ) {
   var variableMap = @localVarManager ()
 //--- Enter properties that should be explicitly initialized
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
@@ -287,7 +287,7 @@ proc analyzeFunctionBody
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
   let @analysisContext inAnalysisContext,
   ?!@unifiedTypeMap ioTypeMap,
-  let @formalInputParameterListAST inFunctionSignature,
+  let [@formalInputParameterAST] inFunctionSignature,
   let [@semanticInstructionAST] inInstructionList,
   let @lstring inReturnVariableName,
   let @lstring inResultTypeName,
@@ -446,7 +446,7 @@ override proc @onceFunctionDeclarationAST.semanticAnalysis
     !?ioUsefulEntitiesGraph,
     analysisContext,
     !?ioTypeMap,
-    @formalInputParameterListAST (),
+    [@formalInputParameterAST] (),
     self.mFunctionInstructionList,
     self.mResultVariableName,
     self.mResultTypeName,
@@ -850,7 +850,7 @@ func buildPredefinedTypes (?let @unifiedTypeMap inTypeMap) -> @predefinedTypes {
 //--------------------------------------------------------------------------------------------------
 
 map @nonterminalLabelMap {
-  public let @formalParameterListForGeneration mSignatureForGeneration
+  public let [@formalParameterForGeneration] mSignatureForGeneration
   public let @formalParameterSignature mSignature
   public let @location mEndOfArgumentLocation
   #insertSetter insertKey #errorMessage "the '%K' nonterminal label has been already declared in %L"
@@ -869,7 +869,7 @@ map @nonterminalMap {
 
 struct @ruleLabelImplementationAST {
   public let @lstring mLabelName
-  public let @formalParameterListForGeneration mSignatureForGeneration
+  public let [@formalParameterForGeneration] mSignatureForGeneration
   public let @formalParameterSignature mSignature
   public let @location mEndOfArgumentLocation
   public let @semanticInstructionListForGeneration mInstructionListForGeneration
@@ -969,7 +969,7 @@ proc buildNonterminalDeclarationsMap
   for nonterminal in inNonterminalDeclarationList do
     var nonterminalLabelMap = @nonterminalLabelMap ()
     for aLabel in nonterminal.mLabels do
-      var signatureForGeneration = @formalParameterListForGeneration ()
+      var signatureForGeneration = [@formalParameterForGeneration] ()
       var signature = @formalParameterSignature ()
       for formal in aLabel.mFormalArgumentList do
         let t = ioTypeMap.typeMapEntryForLKey (formal.mFormalArgumentTypeName)
@@ -1379,7 +1379,7 @@ proc analyzeSyntaxInstructionList
 proc semanticAnalysisOfRuleLabel
   (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @formalParameterListAST inFormalArguments,
+  let [@formalParameterAST] inFormalArguments,
   let [@syntaxInstructionAST] inSyntaxInstructionList,
   let @analysisContext inAnalysisContext,
                                 ?!@unifiedTypeMap ioTypeMap,
@@ -1391,7 +1391,7 @@ proc semanticAnalysisOfRuleLabel
   let @location inEndOfInstructionList,
   let @stringset inIndexNameSet,
   ?!@uint ioSelectMethodCount,
-  !@formalParameterListForGeneration outSignatureForGeneration,
+  ![@formalParameterForGeneration] outSignatureForGeneration,
   !@formalParameterSignature outSignature,
   !@semanticInstructionListForGeneration outInstructionListForGeneration
 ) {
@@ -1464,7 +1464,7 @@ private proc semanticAnalysisOfSyntaxComponent
   for aRule in inRuleList do
     var @nonterminalLabelMap nonterminalLabelMap = @()
     for aLabel in aRule.mLabelList do
-      var @formalParameterListForGeneration signatureForGeneration = @()
+      var [@formalParameterForGeneration] signatureForGeneration = @()
       var @formalParameterSignature signature = @()
       for formal in aLabel.mFormalArguments do
         let type = ioTypeMap.typeMapEntryForLKey (formal.mFormalArgumentTypeName)

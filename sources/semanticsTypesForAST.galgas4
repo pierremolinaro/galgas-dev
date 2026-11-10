@@ -106,32 +106,32 @@ func @formalArgumentPassingModeAST.formalArgumentMessage () -> @string {
 //
 //--------------------------------------------------------------------------------------------------
 
-list @formalParameterListAST {
+struct @formalParameterAST {
   public let @lstring mFormalSelector
   public let @formalArgumentPassingModeAST mFormalArgumentPassingMode
   public let @lstring mFormalArgumentTypeName
   public let @lstring mFormalArgumentName
   public let @bool mIsUnused
+}
 
-  func keyRepresentation () -> @string {
-    result = "("
-      for parameter in self
-    do
-      switch parameter.mFormalArgumentPassingMode
-      case argumentConstantIn, argumentVarIn :
-        result +="?"
-      case argumentInOut :
-        result +="?!"
-      case argumentOut :
-        result +="!"
-      end
-      result += parameter.mFormalSelector
-    between
-      result += ", "
+
+func [@formalParameterAST].keyRepresentation () -> @string {
+  result = "("
+    for parameter in self
+  do
+    switch parameter.mFormalArgumentPassingMode
+    case argumentConstantIn, argumentVarIn :
+      result +="?"
+    case argumentInOut :
+      result +="?!"
+    case argumentOut :
+      result +="!"
     end
-    result += ")"
-  }
-
+    result += parameter.mFormalSelector
+  between
+    result += ", "
+  end
+  result += ")"
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -140,19 +140,19 @@ list @formalParameterListAST {
 //
 //--------------------------------------------------------------------------------------------------
 
-list @formalInputParameterListAST {
+struct @formalInputParameterAST {
   public let @lstring mFormalSelector
   public let @lstring mFormalArgumentTypeName
   public let @lstring mFormalArgumentName
   public let @bool mIsUnused
   public let @bool mIsConstant
+}
 
-  func initializerSignature () -> @string {
-    result = "init"
-    for parameter in self do
-      result += "!" + parameter.mFormalSelector
-    end
-  }
+func [@formalInputParameterAST].initializerSignature () -> @string {
+  result = "init"
+  for parameter in self do
+    result += "!" + parameter.mFormalSelector
+  end
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -191,7 +191,7 @@ final class @inputParameterDeclaredConstant : @abstractInputParameter {
 
 //--------------------------------------------------------------------------------------------------
 
-list @actualInputParameterListAST {
+struct @actualInputParameterAST {
   public let @lstring mActualSelector
   public let @abstractInputParameter mInputParameter
 }
@@ -215,7 +215,7 @@ abstract class @semanticInstructionAST : @syntaxInstructionAST {
 
 class @externFunctionDeclarationAST : @semanticDeclarationAST {
   public let @lstring mFunctionName
-  public let @formalInputParameterListAST mFormalArgumentList
+  public let [@formalInputParameterAST] mFormalArgumentList
   public let @lstring mResultTypeName
   public let @bool usefullFunc #initArgLabel
 }
@@ -255,7 +255,7 @@ final class @onceFunctionDeclarationAST : @semanticDeclarationAST {
 //
 //--------------------------------------------------------------------------------------------------
 
-list @formalTemplateInputParameterListAST {
+struct @formalTemplateInputParameterAST {
   public let @lstring mFormalTemplateSelector
   public let @lstring mFormalArgumentTypeName
   public let @lstring mFormalArgumentName
@@ -264,10 +264,10 @@ list @formalTemplateInputParameterListAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @filewrapperTemplateListAST {
+struct @filewrapperTemplateAST {
   public let @lstring mFilewrapperTemplateName
   public let @lstring mFilewrapperTemplatePath
-  public let @formalTemplateInputParameterListAST mFilewrapperTemplateFormalInputParameters
+  public let [@formalTemplateInputParameterAST] mFilewrapperTemplateFormalInputParameters
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -279,14 +279,14 @@ final class @filewrapperDeclarationAST : @semanticDeclarationAST {
   public let @lstring mFilewrapperPath
   public let [@lstring] mFilewrapperTextFileExtensionList
   public let [@lstring] mFilewrapperBinaryFileExtensionList
-  public let @filewrapperTemplateListAST mFilewrapperTemplateList
+  public let [@filewrapperTemplateAST] mFilewrapperTemplateList
 }
 
 //--------------------------------------------------------------------------------------------------
 
 struct @nonTerminalLabelAST {
   public let @lstring mLabelName
-  public let @formalParameterListAST mFormalArgumentList
+  public let [@formalParameterAST] mFormalArgumentList
   public let @location mEndOfArgumentLocation
 }
 
@@ -299,9 +299,9 @@ struct @nonterminalDeclarationAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @syntaxRuleLabelListAST {
+struct @syntaxRuleLabelAST {
   public let @lstring mLabelName
-  public let @formalParameterListAST mFormalArguments
+  public let [@formalParameterAST] mFormalArguments
   public let @location mEndOfArgumentLocation
   public let [@syntaxInstructionAST] mSyntaxInstructionList
   public let @location mEndOfInstructionList
@@ -311,7 +311,7 @@ list @syntaxRuleLabelListAST {
 
 struct @syntaxRuleAST {
   public let @lstring mNonterminalName
-  public let @syntaxRuleLabelListAST mLabelList
+  public let [@syntaxRuleLabelAST] mLabelList
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -358,7 +358,7 @@ final class @galgas3GrammarComponentAST : @semanticDeclarationAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @galgas3SyntaxComponentListAST {
+struct @syntaxComponentAST {
   public let @lstring mSyntaxComponentName
   public let @lstring mImportedLexiqueFilePath
   public let [@nonterminalDeclarationAST] mNonterminalDeclarationList
@@ -398,7 +398,7 @@ struct @programRuleAST {
 struct @galgasDeclarationAST {
   public var [@semanticDeclarationAST] mDeclarationList = @()
   public var @stringset implicitTypeDeclarationSet = @()
-  public var @galgas3SyntaxComponentListAST mSyntaxComponentList = @()
+  public var [@syntaxComponentAST] mSyntaxComponentList = @()
   public var @syntaxExtensions mSyntaxExtensions = @()
   public var [@galgasGUIComponentAST] mGUIComponentList = @()
   public var [@prologueEpilogueAST] mPrologueDeclarationList = @()

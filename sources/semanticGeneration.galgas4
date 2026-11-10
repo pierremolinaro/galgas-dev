@@ -206,7 +206,7 @@ final class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration 
           !static:false,
           ruleName,
           !?ioInclusionSet,
-          @formalParameterListForGeneration (),
+          [@formalParameterForGeneration] (),
           syntaxSignatureOfInstructionList ("indexing", instructionList),
           false,
           lexiqueCppName,
@@ -234,7 +234,7 @@ proc generateProcedure
   (?static:let @bool inGenerateStatic,
   let @string inProcedureMangledName,
   ?!@stringset ioInclusionSet,
-  let @formalParameterListForGeneration inFormalArgumentList,
+  let [@formalParameterForGeneration] inFormalArgumentList,
   let @semanticInstructionListForGeneration inInstructionList,
   let @bool inProcedureIsConst,
   let @string inCompilerTypeName,
@@ -519,7 +519,7 @@ proc generateExtensionSetter
   let @string inBaseClassName,
   let @string inMethodName,
   ?!@stringset ioInclusionSet,
-  let @formalParameterListForGeneration inFormalArgumentList,
+  let [@formalParameterForGeneration] inFormalArgumentList,
   let @semanticInstructionListForGeneration inInstructionList,
   !@string outGeneratedCode ) {
 //--- Build unused variable set
@@ -611,7 +611,7 @@ proc generateExtensionSetter
 proc generateExtensionMethodNew (let @unifiedTypeMapEntry inReceiverType,
                                 ?!@stringset ioInclusionSet,
                                 let @string inMethodName,
-                                let @formalParameterListForGeneration inFormalArgumentList,
+                                let [@formalParameterForGeneration] inFormalArgumentList,
                                 let @semanticInstructionListForGeneration inInstructionList,
                                 !@string outGeneratedCode ) {
   let className = inReceiverType.definition.typeName.string
@@ -797,61 +797,42 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
     ?@unifiedTypeMapEntry RETURN_TYPE
   )
 
-//----------- Extension mutating proc
-//  template abstractExtensionSetterDeclaration : "abstract-extension-setter.h.galgasTemplate" (
-//    ?@string CLASS_NAME,
-//    ?@string MODIFIER_NAME,
-//    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
-//  )
-
-//  template abstractExtensionSetterImplementation : "abstract-extension-setter.cpp.galgasTemplate" (
-//    ?@string CLASS_NAME,
-//    ?@string MODIFIER_NAME,
-//    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
-//  )
-
   template extensionSetterDeclaration : "extension-setter.h.galgasTemplate" (
     ?@string CLASS_NAME,
     ?@string MODIFIER_NAME,
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?[@formalParameterForGeneration] FORMAL_ARGUMENT_LIST
   )  
 
   template extensionsetterImplementation : "extension-setter.cpp.galgasTemplate" (
     ?@string CLASS_NAME,
     ?@string MODIFIER_NAME,
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST,
+    ?[@formalParameterForGeneration] FORMAL_ARGUMENT_LIST,
     ?@string MODIFIER_IMPLEMENTATION
   )
-
-//  template overridingExtensionSetterImplementation : "overriding-extension-setter.cpp.galgasTemplate" (
-//    ?@string CLASS_NAME,
-//    ?@string MODIFIER_NAME,
-//    ?@string MODIFIER_IMPLEMENTATION
-//  )
 
 //----------- Extension proc
   template abstractExtensionMethodDeclaration : "abstract-extension-proc.h.galgasTemplate" (
     ?@string CLASS_NAME,
     ?@string METHOD_NAME,
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?[@formalParameterForGeneration] FORMAL_ARGUMENT_LIST
   )
 
   template abstractExtensionMethodImplementation : "abstract-extension-proc.cpp.galgasTemplate" (
     ?@unifiedTypeMapEntry RECEIVER_TYPE,
     ?@string METHOD_NAME,
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?[@formalParameterForGeneration] FORMAL_ARGUMENT_LIST
   )
 
   template extensionMethodDeclaration : "extension-proc.h.galgasTemplate" (
     ?@string CLASS_NAME,
     ?@string METHOD_NAME,
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?[@formalParameterForGeneration] FORMAL_ARGUMENT_LIST
   )
 
   template extensionMethodImplementation : "extension-proc.cpp.galgasTemplate" (
     ?@string CLASS_NAME,
     ?@string METHOD_NAME,
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST,
+    ?[@formalParameterForGeneration] FORMAL_ARGUMENT_LIST,
     ?@string METHOD_IMPLEMENTATION
   )
 
@@ -892,7 +873,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
   template extensionMethodAsFunctionDeclaration : "extension-proc-as-function.h.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string METHOD_NAME,
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?[@formalParameterForGeneration] FORMAL_ARGUMENT_LIST
   )
 
   template extensionMethodAsFunctionImplementation : "extension-proc-as-function.cpp.galgasTemplate" (
@@ -905,7 +886,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
   template extensionSetterAsFunctionDeclaration : "extension-setter-as-function.h.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string MODIFIER_NAME,
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?[@formalParameterForGeneration] FORMAL_ARGUMENT_LIST
   )
 
 //--- Function
@@ -925,7 +906,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
 //--- Routine
   template routineDeclaration : "routine-declaration.h.galgasTemplate" (
     ?@string ROUTINE_NAME,
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?[@formalParameterForGeneration] FORMAL_ARGUMENT_LIST
   )
 
   template routineImplementation : "routine-implementation.cpp.galgasTemplate" (

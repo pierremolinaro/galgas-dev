@@ -136,7 +136,7 @@ void routine_buildNonterminalDeclarationsMap_3F__3F__26__21_ (const class GGS__5
 
 void routine_semanticAnalysisOfRuleLabel_3F__26__3F__3F__3F__26__3F__3F__3F__3F__3F__3F__3F__26__21__21__21_ (const class GGS_lstring constinArgument0,
                                                                                                               class GGS_usefulEntitiesGraph & ioArgument1,
-                                                                                                              const class GGS_formalParameterListAST constinArgument2,
+                                                                                                              const class GGS__5B_formalParameterAST_5D_ constinArgument2,
                                                                                                               const class GGS__5B_syntaxInstructionAST_5D_ constinArgument3,
                                                                                                               const class GGS_analysisContext constinArgument4,
                                                                                                               class GGS_unifiedTypeMap & ioArgument5,
@@ -148,7 +148,7 @@ void routine_semanticAnalysisOfRuleLabel_3F__26__3F__3F__3F__26__3F__3F__3F__3F_
                                                                                                               const class GGS_location constinArgument11,
                                                                                                               const class GGS_stringset constinArgument12,
                                                                                                               class GGS_uint & ioArgument13,
-                                                                                                              class GGS_formalParameterListForGeneration & outArgument14,
+                                                                                                              class GGS__5B_formalParameterForGeneration_5D_ & outArgument14,
                                                                                                               class GGS_formalParameterSignature & outArgument15,
                                                                                                               class GGS_semanticInstructionListForGeneration & outArgument16,
                                                                                                               class Compiler * inCompiler

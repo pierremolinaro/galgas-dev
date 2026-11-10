@@ -198,8 +198,7 @@ proc buildRuleList (
   for aRule in inRuleList do
     inNonTerminalMapForGrammarAnalysis.searchKey (aRule.mNonterminalName, ?let nonTerminalIndex, ?*)
   //--- Retrieve instruction list from first label
-    let [@syntaxInstructionAST] parsedSyntaxInstructionList
-    aRule.mLabelList.first (?*, ?*, ?*, ?parsedSyntaxInstructionList, ?*)
+    let [@syntaxInstructionAST] parsedSyntaxInstructionList = aRule.mLabelList.first.mSyntaxInstructionList
   //--- Transform instruction list
     var instructionList = @syntaxInstructionListForGrammarAnalysis ()
     transformInstructionListForGrammarAnalysis (

@@ -26,8 +26,8 @@ final class @timerPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func initializers () -> [@formalInputParameterListAST] {
-    result = [@formalInputParameterListAST ()]
+  override func initializers () -> [[@formalInputParameterAST]] {
+    result = [[@formalInputParameterAST] ()]
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

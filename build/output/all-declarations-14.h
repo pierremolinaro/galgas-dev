@@ -75,7 +75,7 @@ class cParser_galgas_34_DeclarationsSyntax {
   protected: virtual void nt_filewrapper_5F_binary_5F_files_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_filewrapper_5F_templates_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                        class GGS_filewrapperTemplateListAST & outArgument1,
+                                                        class GGS__5B_filewrapperTemplateAST_5D_ & outArgument1,
                                                         class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_filewrapper_5F_templates_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
@@ -86,13 +86,13 @@ class cParser_galgas_34_DeclarationsSyntax {
   protected: virtual void nt_filewrapper_5F_text_5F_files_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                    class GGS_formalInputParameterListAST & outArgument1,
+                                                                    class GGS__5B_formalInputParameterAST_5D_ & outArgument1,
                                                                     class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_formal_5F_input_5F_parameter_5F_list_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_formal_5F_parameter_5F_list_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                           class GGS_formalParameterListAST & outArgument1,
+                                                           class GGS__5B_formalParameterAST_5D_ & outArgument1,
                                                            class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_formal_5F_parameter_5F_list_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
@@ -205,7 +205,7 @@ class cParser_galgas_34_DeclarationsSyntax {
   protected: void rule_galgas_34_DeclarationsSyntax_filewrapper_5F_binary_5F_files_i4_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
   protected: void rule_galgas_34_DeclarationsSyntax_filewrapper_5F_templates_i5_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                  GGS_filewrapperTemplateListAST & outArgument1,
+                                                                                  GGS__5B_filewrapperTemplateAST_5D_ & outArgument1,
                                                                                   Lexique_galgasScanner_34_ * inLexique) ;
 
 /*  protected: void rule_galgas_34_DeclarationsSyntax_filewrapper_5F_templates_i5_parse (Lexique_galgasScanner_34_ * inLexique) ; */
@@ -1365,7 +1365,7 @@ class cParser_galgas_34_SyntaxComponentSyntax {
 
 //--- Non terminal declarations
   protected: virtual void nt_actual_5F_input_5F_parameter_5F_list_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                                    class GGS_actualInputParameterListAST & outArgument1,
+                                                                    class GGS__5B_actualInputParameterAST_5D_ & outArgument1,
                                                                     class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_actual_5F_input_5F_parameter_5F_list_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
@@ -1388,7 +1388,7 @@ class cParser_galgas_34_SyntaxComponentSyntax {
   protected: virtual void nt_expression_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_formal_5F_parameter_5F_list_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                                           class GGS_formalParameterListAST & outArgument1,
+                                                           class GGS__5B_formalParameterAST_5D_ & outArgument1,
                                                            class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_formal_5F_parameter_5F_list_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
@@ -1431,7 +1431,7 @@ class cParser_galgas_34_SyntaxComponentSyntax {
 
   protected: virtual void nt_syntax_5F_rule_5F_label_ (class GGS_galgasDeclarationAST & ioArgument0,
                                                        const class GGS_lstring constinArgument1,
-                                                       class GGS_syntaxRuleLabelListAST & ioArgument2,
+                                                       class GGS__5B_syntaxRuleLabelAST_5D_ & ioArgument2,
                                                        class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_syntax_5F_rule_5F_label_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
@@ -1467,7 +1467,7 @@ class cParser_galgas_34_SyntaxComponentSyntax {
 
   protected: void rule_galgas_34_SyntaxComponentSyntax_syntax_5F_rule_5F_label_i3_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                     const GGS_lstring constinArgument1,
-                                                                                    GGS_syntaxRuleLabelListAST & ioArgument2,
+                                                                                    GGS__5B_syntaxRuleLabelAST_5D_ & ioArgument2,
                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
 
 /*  protected: void rule_galgas_34_SyntaxComponentSyntax_syntax_5F_rule_5F_label_i3_parse (Lexique_galgasScanner_34_ * inLexique) ; */
@@ -1616,7 +1616,7 @@ class cParser_galgas_34_GrammarComponentSyntax {
 
   protected: virtual void nt_label_5F_formal_5F_parameter_ (class GGS_galgasDeclarationAST & ioArgument0,
                                                             class GGS_lstring & outArgument1,
-                                                            class GGS_formalParameterListAST & ioArgument2,
+                                                            class GGS__5B_formalParameterAST_5D_ & ioArgument2,
                                                             class Lexique_galgasScanner_34_ * inLexique) = 0 ;
 
   protected: virtual void nt_label_5F_formal_5F_parameter_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
@@ -1647,7 +1647,7 @@ class cParser_galgas_34_GrammarComponentSyntax {
 
   protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i2_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                           GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
+                                                                                          GGS__5B_formalParameterAST_5D_ & ioArgument2,
                                                                                           Lexique_galgasScanner_34_ * inLexique) ;
 
 /*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i2_parse (Lexique_galgasScanner_34_ * inLexique) ; */
@@ -1656,7 +1656,7 @@ class cParser_galgas_34_GrammarComponentSyntax {
 
   protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i3_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                           GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
+                                                                                          GGS__5B_formalParameterAST_5D_ & ioArgument2,
                                                                                           Lexique_galgasScanner_34_ * inLexique) ;
 
 /*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i3_parse (Lexique_galgasScanner_34_ * inLexique) ; */
@@ -1665,7 +1665,7 @@ class cParser_galgas_34_GrammarComponentSyntax {
 
   protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i4_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                           GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
+                                                                                          GGS__5B_formalParameterAST_5D_ & ioArgument2,
                                                                                           Lexique_galgasScanner_34_ * inLexique) ;
 
 /*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i4_parse (Lexique_galgasScanner_34_ * inLexique) ; */
@@ -1674,7 +1674,7 @@ class cParser_galgas_34_GrammarComponentSyntax {
 
   protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i5_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                           GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
+                                                                                          GGS__5B_formalParameterAST_5D_ & ioArgument2,
                                                                                           Lexique_galgasScanner_34_ * inLexique) ;
 
 /*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i5_parse (Lexique_galgasScanner_34_ * inLexique) ; */
@@ -1683,7 +1683,7 @@ class cParser_galgas_34_GrammarComponentSyntax {
 
   protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i6_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                           GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
+                                                                                          GGS__5B_formalParameterAST_5D_ & ioArgument2,
                                                                                           Lexique_galgasScanner_34_ * inLexique) ;
 
 /*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i6_parse (Lexique_galgasScanner_34_ * inLexique) ; */
@@ -1692,7 +1692,7 @@ class cParser_galgas_34_GrammarComponentSyntax {
 
   protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i7_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                           GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
+                                                                                          GGS__5B_formalParameterAST_5D_ & ioArgument2,
                                                                                           Lexique_galgasScanner_34_ * inLexique) ;
 
 /*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i7_parse (Lexique_galgasScanner_34_ * inLexique) ; */
@@ -1701,7 +1701,7 @@ class cParser_galgas_34_GrammarComponentSyntax {
 
   protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i8_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                           GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
+                                                                                          GGS__5B_formalParameterAST_5D_ & ioArgument2,
                                                                                           Lexique_galgasScanner_34_ * inLexique) ;
 
 /*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i8_parse (Lexique_galgasScanner_34_ * inLexique) ; */
@@ -1710,7 +1710,7 @@ class cParser_galgas_34_GrammarComponentSyntax {
 
   protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i9_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                           GGS_lstring & outArgument1,
-                                                                                          GGS_formalParameterListAST & ioArgument2,
+                                                                                          GGS__5B_formalParameterAST_5D_ & ioArgument2,
                                                                                           Lexique_galgasScanner_34_ * inLexique) ;
 
 /*  protected: void rule_galgas_34_GrammarComponentSyntax_label_5F_formal_5F_parameter_i9_parse (Lexique_galgasScanner_34_ * inLexique) ; */
@@ -2528,7 +2528,7 @@ class cPtr_binarysetPredefinedTypeAST : public cPtr_predefinedTypeAST {
   public: virtual class GGS_typeFeatures getter_getSupportedOperatorFlags (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension func initializers
-  public: virtual class GGS__5B_formalInputParameterListAST_5D_ getter_initializers (Compiler * COMMA_LOCATION_ARGS) const override ;
+  public: virtual class GGS__5B__5B_formalInputParameterAST_5D__5D_ getter_initializers (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension proc getClassFunctionMap
   public: virtual void method_getClassFunctionMap (class GGS_unifiedTypeMap & arg__ioUnifiedTypeMap,

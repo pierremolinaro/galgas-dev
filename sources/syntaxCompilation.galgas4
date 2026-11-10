@@ -23,7 +23,7 @@
 //--------------------------------------------------------------------------------------------------
 
 proc groupSyntaxComponentsGalgas3
-  (let @galgas3SyntaxComponentListAST inAllSyntaxComponents,
+  (let [@syntaxComponentAST] inAllSyntaxComponents,
   let @syntaxExtensions inSyntaxExtensions,
   ?![@semanticDeclarationAST] ioDeclarationList
 ) {

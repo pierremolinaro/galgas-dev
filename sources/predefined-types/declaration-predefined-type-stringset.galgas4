@@ -32,12 +32,12 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func initializers () -> [@formalInputParameterListAST] {
-    let defaultInitializer = @formalInputParameterListAST ()
-    let initializerFromStringArray = @formalInputParameterListAST [
+  override func initializers () -> [[@formalInputParameterAST]] {
+    let defaultInitializer = [@formalInputParameterAST] ()
+    let initializerFromStringArray = [@formalInputParameterAST] [
       @("stringArray".nowhere, makeArrayTypeLName ("string".nowhere), "inStringArray".nowhere, false, true)
     ]
-    let initializerFromLStringArray = @formalInputParameterListAST [
+    let initializerFromLStringArray = [@formalInputParameterAST] [
       @("lstringArray".nowhere, "[lstring]".nowhere, "inLStringArray".nowhere, false, true)
     ]
     result = [defaultInitializer, initializerFromStringArray, initializerFromLStringArray]

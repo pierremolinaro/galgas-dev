@@ -218,7 +218,7 @@ struct @semanticContext {
 //--------------------------------------------------------------------------------------------------
 
 map @extensionInitializerMapForType {
-  public let @formalInputParameterListAST mFormalParameterList
+  public let [@formalInputParameterAST] mFormalParameterList
   #insertSetter insertKey #errorMessage "the '%K' initializer has been already declared in %L"
 }
 
@@ -239,7 +239,7 @@ map @extensionInitializerForBuildingContext {
 //--------------------------------------------------------------------------------------------------
 
 map @extensionMethodMapForType {
-  public let @formalParameterListAST mFormalParameterList
+  public let [@formalParameterAST] mFormalParameterList
   public let @methodQualifier mQualifier
   #insertSetter insertKey #errorMessage "the '%K' proc has been already declared in %L"
 }
@@ -261,7 +261,7 @@ map @extensionMethodMapForBuildingContext {
 //--------------------------------------------------------------------------------------------------
 
 map @extensionSetterMapForType {
-  public let @formalParameterListAST mFormalParameterList
+  public let [@formalParameterAST] mFormalParameterList
   #insertSetter insertKey #errorMessage "the '%K' mutating proc has been already declared in %L"
 }
 
@@ -283,7 +283,7 @@ map @extensionSetterMapForBuildingContext {
 
 map @extensionGetterMapForType {
   public let @lstring mResultTypeName
-  public let @formalInputParameterListAST mInputFormalParameterList
+  public let [@formalInputParameterAST] mInputFormalParameterList
   public let @methodQualifier mQualifier
   #insertSetter insertKey #errorMessage "the '%K' func has been already declared in %L"
 }

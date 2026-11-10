@@ -39,7 +39,7 @@ syntax extension galgas4InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ (?let routineName) indexing (routineDefinition)
-    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let [@formalParameterAST] formalParameterList)
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     $}$
@@ -70,7 +70,7 @@ syntax extension galgas4InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ (?let routineName) indexing (routineDefinition)
-    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let [@formalParameterAST] formalParameterList)
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     $}$

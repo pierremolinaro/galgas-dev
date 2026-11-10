@@ -38,7 +38,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <formal_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
-                               !@formalParameterListAST outFormalParameterList ) {
+                               ![@formalParameterAST] outFormalParameterList ) {
     outFormalParameterList = @()
     $($
     select
@@ -303,7 +303,7 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <formal_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
-                                     !@formalInputParameterListAST outFormalInputParameterList ) {
+                                     ![@formalInputParameterAST] outFormalInputParameterList ) {
     outFormalInputParameterList = @()
     $($
     select

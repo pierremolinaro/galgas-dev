@@ -488,7 +488,7 @@ override proc @dictDeclarationAST.semanticAnalysis
 //--- Useful entities graph for initializer without any argument
   let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
     self.mDictTypeName,
-    @formalInputParameterListAST ().initializerSignature
+    [@formalInputParameterAST] ().initializerSignature
   )
   !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
   if self.isPredefined then

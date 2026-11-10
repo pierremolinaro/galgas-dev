@@ -43316,7 +43316,7 @@ void cGrammar_galgas_34_Grammar::nt_formal_5F_parameter_5F_list_indexing (Lexiqu
 }
 
 void cGrammar_galgas_34_Grammar::nt_formal_5F_parameter_5F_list_ (GGS_galgasDeclarationAST &  parameter_1,
-                                GGS_formalParameterListAST &  parameter_2,
+                                GGS__5B_formalParameterAST_5D_ &  parameter_2,
                                 Lexique_galgasScanner_34_ * inLexique) {
   if (inLexique->nextProductionIndex () == 40) {
   rule_galgas_34_ParameterArgumentSyntax_formal_5F_parameter_5F_list_i0_(parameter_1, parameter_2, inLexique) ;
@@ -43382,7 +43382,7 @@ void cGrammar_galgas_34_Grammar::nt_formal_5F_input_5F_parameter_5F_list_indexin
 }
 
 void cGrammar_galgas_34_Grammar::nt_formal_5F_input_5F_parameter_5F_list_ (GGS_galgasDeclarationAST &  parameter_1,
-                                GGS_formalInputParameterListAST &  parameter_2,
+                                GGS__5B_formalInputParameterAST_5D_ &  parameter_2,
                                 Lexique_galgasScanner_34_ * inLexique) {
   if (inLexique->nextProductionIndex () == 45) {
   rule_galgas_34_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_i5_(parameter_1, parameter_2, inLexique) ;
@@ -43770,7 +43770,7 @@ void cGrammar_galgas_34_Grammar::nt_actual_5F_input_5F_parameter_5F_list_indexin
 }
 
 void cGrammar_galgas_34_Grammar::nt_actual_5F_input_5F_parameter_5F_list_ (GGS_galgasDeclarationAST &  parameter_1,
-                                GGS_actualInputParameterListAST &  parameter_2,
+                                GGS__5B_actualInputParameterAST_5D_ &  parameter_2,
                                 Lexique_galgasScanner_34_ * inLexique) {
   if (inLexique->nextProductionIndex () == 53) {
   rule_galgas_34_InstructionsSyntax_actual_5F_input_5F_parameter_5F_list_i5_(parameter_1, parameter_2, inLexique) ;
@@ -44371,7 +44371,7 @@ void cGrammar_galgas_34_Grammar::nt_filewrapper_5F_templates_indexing (Lexique_g
 }
 
 void cGrammar_galgas_34_Grammar::nt_filewrapper_5F_templates_ (GGS_galgasDeclarationAST &  parameter_1,
-                                GGS_filewrapperTemplateListAST &  parameter_2,
+                                GGS__5B_filewrapperTemplateAST_5D_ &  parameter_2,
                                 Lexique_galgasScanner_34_ * inLexique) {
   if (inLexique->nextProductionIndex () == 100) {
   rule_galgas_34_DeclarationsSyntax_filewrapper_5F_templates_i5_(parameter_1, parameter_2, inLexique) ;
@@ -45492,7 +45492,7 @@ void cGrammar_galgas_34_Grammar::nt_syntax_5F_rule_5F_label_indexing (Lexique_ga
 
 void cGrammar_galgas_34_Grammar::nt_syntax_5F_rule_5F_label_ (GGS_galgasDeclarationAST &  parameter_1,
                                 const GGS_lstring  parameter_2,
-                                GGS_syntaxRuleLabelListAST &  parameter_3,
+                                GGS__5B_syntaxRuleLabelAST_5D_ &  parameter_3,
                                 Lexique_galgasScanner_34_ * inLexique) {
   if (inLexique->nextProductionIndex () == 197) {
   rule_galgas_34_SyntaxComponentSyntax_syntax_5F_rule_5F_label_i3_(parameter_1, parameter_2, parameter_3, inLexique) ;
@@ -45691,7 +45691,7 @@ void cGrammar_galgas_34_Grammar::nt_label_5F_formal_5F_parameter_indexing (Lexiq
 
 void cGrammar_galgas_34_Grammar::nt_label_5F_formal_5F_parameter_ (GGS_galgasDeclarationAST &  parameter_1,
                                 GGS_lstring &  parameter_2,
-                                GGS_formalParameterListAST &  parameter_3,
+                                GGS__5B_formalParameterAST_5D_ &  parameter_3,
                                 Lexique_galgasScanner_34_ * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 208 :

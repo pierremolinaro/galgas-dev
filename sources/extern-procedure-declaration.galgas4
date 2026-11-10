@@ -40,7 +40,7 @@ syntax extension galgas4InstructionsSyntax {
       isUsefull = true
     end
     $identifier$ (?let @lstring mActionName) indexing (routineDefinition)
-    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST mFormalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let [@formalParameterAST] mFormalParameterList)
     ioDeclarations.mDeclarationList ++= @externProcedureDeclarationAST (
       !isPredefined: false,
       !isFilePrivate: false,
@@ -59,7 +59,7 @@ syntax extension galgas4InstructionsSyntax {
 class @externProcedureDeclarationAST : @semanticDeclarationAST {
   public let @bool isFilePrivate #initArgLabel
   public let @lstring mRoutineName
-  public let @formalParameterListAST mFormalArgumentListAST
+  public let [@formalParameterAST] mFormalArgumentListAST
   public let @bool usefullProcedure #initArgLabel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -120,7 +120,7 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
                                   let @predefinedTypes _inPredefinedTypes,
                                   ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
   //---
-    var formalArgumentList = @formalParameterListForGeneration ()
+    var formalArgumentList = [@formalParameterForGeneration] ()
     var routineSignature = @formalParameterSignature ()
     for argument in self.mFormalArgumentListAST do
       let parameterType = ioTypeMap.typeMapEntryForLKey (argument.mFormalArgumentTypeName)
@@ -167,7 +167,7 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
 
 class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string routineMangledName #initArgLabel
-  public let @formalParameterListForGeneration mFormalArgumentList
+  public let [@formalParameterForGeneration] mFormalArgumentList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

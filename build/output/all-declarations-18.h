@@ -324,7 +324,7 @@ void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__3F__21__21__21_
                                                                                       class GGS_usefulEntitiesGraph & ioArgument1,
                                                                                       const class GGS_analysisContext constinArgument2,
                                                                                       class GGS_unifiedTypeMap & ioArgument3,
-                                                                                      const class GGS_formalInputParameterListAST constinArgument4,
+                                                                                      const class GGS__5B_formalInputParameterAST_5D_ constinArgument4,
                                                                                       const class GGS__5B_semanticInstructionAST_5D_ constinArgument5,
                                                                                       const class GGS_lstring constinArgument6,
                                                                                       const class GGS_lstring constinArgument7,
@@ -359,9 +359,9 @@ void routine_checkGetterSignatures_3F__3F__3F__3F__3F__3F_ (const class GGS_form
 
 void routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (const class GGS_semanticContext constinArgument0,
                                                                     class GGS_unifiedTypeMap & ioArgument1,
-                                                                    const class GGS_formalParameterListAST constinArgument2,
+                                                                    const class GGS__5B_formalParameterAST_5D_ constinArgument2,
                                                                     class GGS_localVarManager & ioArgument3,
-                                                                    class GGS_formalParameterListForGeneration & outArgument4,
+                                                                    class GGS__5B_formalParameterForGeneration_5D_ & outArgument4,
                                                                     class Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
@@ -371,7 +371,7 @@ void routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (const class 
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_checkMethodSignatures_3F__3F__3F__3F_ (const class GGS_formalParameterListForGeneration constinArgument0,
+void routine_checkMethodSignatures_3F__3F__3F__3F_ (const class GGS__5B_formalParameterForGeneration_5D_ constinArgument0,
                                                     const class GGS_location constinArgument1,
                                                     const class GGS_formalParameterSignature constinArgument2,
                                                     const class GGS_location constinArgument3,
@@ -399,11 +399,11 @@ void routine_analyzeRoutineBody_3F__26__3F__26__3F__3F__3F__21__21_ (const class
                                                                      class GGS_usefulEntitiesGraph & ioArgument1,
                                                                      const class GGS_analysisContext constinArgument2,
                                                                      class GGS_unifiedTypeMap & ioArgument3,
-                                                                     const class GGS_formalParameterListAST constinArgument4,
+                                                                     const class GGS__5B_formalParameterAST_5D_ constinArgument4,
                                                                      const class GGS__5B_semanticInstructionAST_5D_ constinArgument5,
                                                                      const class GGS_location constinArgument6,
                                                                      class GGS_semanticInstructionListForGeneration & outArgument7,
-                                                                     class GGS_formalParameterListForGeneration & outArgument8,
+                                                                     class GGS__5B_formalParameterForGeneration_5D_ & outArgument8,
                                                                      class Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
 
@@ -428,7 +428,7 @@ void routine_analyzeInitializerBody_3F__26__3F__26__3F__3F__3F__21__21_ (const c
                                                                          class GGS_usefulEntitiesGraph & ioArgument1,
                                                                          const class GGS_analysisContext constinArgument2,
                                                                          class GGS_unifiedTypeMap & ioArgument3,
-                                                                         const class GGS_formalInputParameterListAST constinArgument4,
+                                                                         const class GGS__5B_formalInputParameterAST_5D_ constinArgument4,
                                                                          const class GGS__5B_semanticInstructionAST_5D_ constinArgument5,
                                                                          const class GGS_location constinArgument6,
                                                                          class GGS_semanticInstructionListForGeneration & outArgument7,
@@ -914,7 +914,7 @@ void routine_compileProgramComponentGalgas_33__26__26__3F__3F__3F__3F__26__3F__2
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_groupSyntaxComponentsGalgas_33__3F__3F__26_ (const class GGS_galgas_33_SyntaxComponentListAST constinArgument0,
+void routine_groupSyntaxComponentsGalgas_33__3F__3F__26_ (const class GGS__5B_syntaxComponentAST_5D_ constinArgument0,
                                                           const class GGS_syntaxExtensions constinArgument1,
                                                           class GGS__5B_semanticDeclarationAST_5D_ & ioArgument2,
                                                           class Compiler * inCompiler

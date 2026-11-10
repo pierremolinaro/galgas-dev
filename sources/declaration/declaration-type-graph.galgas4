@@ -502,7 +502,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
   //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
       self.mGraphTypeName,
-      @formalInputParameterListAST ().initializerSignature
+      [@formalInputParameterAST] ().initializerSignature
     )
     !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
     if self.isPredefined  then

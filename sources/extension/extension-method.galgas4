@@ -32,7 +32,7 @@ syntax extension galgas4DeclarationsSyntax {
       $.$
     end
     $identifier$ (?let @lstring methodName) indexing (extensionMethodDefinition)
-    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let [@formalParameterAST] formalParameterList)
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let endOfMethodLocation = @location.here
@@ -53,7 +53,7 @@ syntax extension galgas4DeclarationsSyntax {
                              ?!@galgasDeclarationAST ioDeclarations) {
     $proc$
     $identifier$ (?let @lstring methodName) indexing (extensionMethodDefinition)
-    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let [@formalParameterAST] formalParameterList)
     ${$
     <semantic_instruction_list> (!?ioDeclarations, ?let [@semanticInstructionAST] routineInstructionList)
     let endOfMethodLocation = @location.here
@@ -77,7 +77,7 @@ syntax extension galgas4DeclarationsSyntax {
 final class @extensionMethodAST : @semanticDeclarationAST {
   private let @lstring mTypeName
   private let @lstring mExtensionMethodName
-  private let @formalParameterListAST mExtensionMethodFormalParameterList
+  private let [@formalParameterAST] mExtensionMethodFormalParameterList
   private let [@semanticInstructionAST] mExtensionMethodInstructionList
   private let @location mEndOfMethodLocation
 
@@ -238,7 +238,7 @@ final class @extensionMethodForGeneration : @semanticDeclarationWithHeaderForGen
   private let @unifiedTypeMapEntry mReceiverType
   private let @string mExtensionMethodName
   private let @bool mImplementedAsFunction
-  private let @formalParameterListForGeneration mExtensionMethodFormalParameterList
+  private let [@formalParameterForGeneration] mExtensionMethodFormalParameterList
   private let [@typedProperty] mTypedAttributeList
   private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
@@ -274,13 +274,9 @@ override proc @extensionMethodForGeneration.appendSpecificImplementation (let @u
                                                     ?!@stringset ioInclusionSet,
                                                     !@string outImplementation) {
   if self.mImplementedAsFunction then
-    var @formalParameterListForGeneration extensionMethodFormalParameterList = self.mExtensionMethodFormalParameterList
-    !?extensionMethodFormalParameterList.insertAtIndex
-      ("".nowhere,
-      @formalArgumentPassingModeAST.argumentConstantIn,
-      self.mReceiverType,
-      @lstring ("self", @location.here),
-      "inObject",
+    var [@formalParameterForGeneration] extensionMethodFormalParameterList = self.mExtensionMethodFormalParameterList
+    !?extensionMethodFormalParameterList.insertAtIndex (
+      @("".nowhere, .argumentConstantIn, self.mReceiverType, "self".here, "inObject"),
       0
     )
     ioInclusionSet ++= "proc-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionMethodName.fileNameRepresentation

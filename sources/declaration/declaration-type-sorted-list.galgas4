@@ -321,7 +321,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
       self.mSortedListTypeName,
-      @formalInputParameterListAST ().initializerSignature
+      [@formalInputParameterAST] ().initializerSignature
     )
     !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
     !?ioUsefulEntitiesGraph.addEdge (!from: initializerNameForUsefulness, !to: sortedListNameForUsefulness)

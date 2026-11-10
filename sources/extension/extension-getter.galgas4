@@ -103,7 +103,7 @@ syntax extension galgas4DeclarationsSyntax {
 final class @extensionGetterAST : @semanticDeclarationAST {
   private let @lstring mTypeName
   private let @lstring mExtensionGetterName
-  private let @formalInputParameterListAST mExtensionGetterFormalInputParameterList
+  private let [@formalInputParameterAST] mExtensionGetterFormalInputParameterList
   private let @lstring mExtensionGetterReturnedTypeName
   private let @lstring mExtensionGetterReturnedVariableName
   private let [@semanticInstructionAST] mExtensionGetterInstructionList

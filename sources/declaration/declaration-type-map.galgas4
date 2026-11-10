@@ -628,7 +628,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
   //--- Useful entities graph for initializer without any argument
     let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
       self.mMapTypeName,
-      @formalInputParameterListAST ().initializerSignature
+      [@formalInputParameterAST] ().initializerSignature
     )
     !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
     !?ioUsefulEntitiesGraph.addEdge (!from: initializerNameForUsefulness, !to: nameForUsefulness)

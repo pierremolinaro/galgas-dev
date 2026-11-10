@@ -899,7 +899,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
 //----------- '' label
   public: virtual void nt_actual_5F_input_5F_parameter_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                 GGS_actualInputParameterListAST & outArgument1,
+                                                                 GGS__5B_actualInputParameterAST_5D_ & outArgument1,
                                                                  Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'actual_parameter' non terminal
@@ -1087,7 +1087,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
 //----------- '' label
   public: virtual void nt_filewrapper_5F_templates_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                     GGS_filewrapperTemplateListAST & outArgument1,
+                                                     GGS__5B_filewrapperTemplateAST_5D_ & outArgument1,
                                                      Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'filewrapper_text_files' non terminal
@@ -1134,7 +1134,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
 //----------- '' label
   public: virtual void nt_formal_5F_input_5F_parameter_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                 GGS_formalInputParameterListAST & outArgument1,
+                                                                 GGS__5B_formalInputParameterAST_5D_ & outArgument1,
                                                                  Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'formal_parameter_list' non terminal
@@ -1146,7 +1146,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
 //----------- '' label
   public: virtual void nt_formal_5F_parameter_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                        GGS_formalParameterListAST & outArgument1,
+                                                        GGS__5B_formalParameterAST_5D_ & outArgument1,
                                                         Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'grammar_instruction_core' non terminal
@@ -1256,7 +1256,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 //----------- '' label
   public: virtual void nt_label_5F_formal_5F_parameter_ (GGS_galgasDeclarationAST & ioArgument0,
                                                          GGS_lstring & outArgument1,
-                                                         GGS_formalParameterListAST & ioArgument2,
+                                                         GGS__5B_formalParameterAST_5D_ & ioArgument2,
                                                          Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'lexical_attribute_declaration' non terminal
@@ -1815,7 +1815,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 //----------- '' label
   public: virtual void nt_syntax_5F_rule_5F_label_ (GGS_galgasDeclarationAST & ioArgument0,
                                                     const GGS_lstring inArgument1,
-                                                    GGS_syntaxRuleLabelListAST & ioArgument2,
+                                                    GGS__5B_syntaxRuleLabelAST_5D_ & ioArgument2,
                                                     Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'template_delimitor' non terminal

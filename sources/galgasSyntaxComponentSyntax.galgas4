@@ -33,7 +33,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
                               !@semanticInstructionAST outInstruction)
 
   rule <formal_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
-                               !@formalParameterListAST outFormalParameterList)
+                               ![@formalParameterAST] outFormalParameterList)
 
   rule <actual_parameter_list_with_parenthesis> (?!@galgasDeclarationAST ioDeclarations,
                                                  !@actualParameterListAST outActualParameterList)
@@ -119,13 +119,13 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     $rule$
     $<non_terminal>$ (?let @lstring mNonterminalName) indexing (ruleDefinition)
     var [@nonTerminalLabelAST] labels = @()
-    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST firstBranchFormalParameters)
+    <formal_parameter_list> (!?ioDeclarations, ?let [@formalParameterAST] firstBranchFormalParameters)
     labels ++= @(@("", .here), firstBranchFormalParameters, .here)
     repeat
     while
       $label$
       $identifier$ (?let @lstring labelName)
-      <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameters)
+      <formal_parameter_list> (!?ioDeclarations, ?let [@formalParameterAST] formalParameters)
       labels ++= @(labelName, formalParameters, .here)
     end
     ioNonterminalDeclarationList ++= @(mNonterminalName, labels)
@@ -136,7 +136,8 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <syntax_rule_label> (?!@galgasDeclarationAST ioDeclarations,
-                           let @lstring inLabelName ,?!@syntaxRuleLabelListAST ioLabelList ) {
+                            let @lstring inLabelName,
+                            ?![@syntaxRuleLabelAST] ioLabelList) {
     <formal_parameter_list> (!?ioDeclarations, ?let mFormalParameters)
     let endOfArguments = @location.here
     ${$
@@ -157,7 +158,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
     $rule$
     $<non_terminal>$ (?let @lstring mNonterminalName) indexing (ruleDefinition)
     var labelName = @lstring ("", @location.here)
-    var mLabelList = @syntaxRuleLabelListAST ()
+    var mLabelList = [@syntaxRuleLabelAST] ()
     repeat
       <syntax_rule_label> (!?ioDeclarations, labelName, !?mLabelList)
     while
@@ -204,7 +205,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <actual_input_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
-                                     !@actualInputParameterListAST outActualInputParameterList)
+                                      ![@actualInputParameterAST] outActualInputParameterList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

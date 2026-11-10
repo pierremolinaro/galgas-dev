@@ -81,7 +81,7 @@ syntax extension galgas4SyntaxComponentSyntax {
 
 final class @terminalCheckInstructionAST : @syntaxInstructionAST {
   private let @lstring mTerminalName
-  private let @actualInputParameterListAST mActualInputParameterList
+  private let [@actualInputParameterAST] mActualInputParameterList
   private let [@2lstring] mIndexingKeyList // Empty list if no index
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken

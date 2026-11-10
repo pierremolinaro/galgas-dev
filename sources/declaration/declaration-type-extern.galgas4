@@ -154,7 +154,7 @@ syntax extension galgas4DeclarationsSyntax {
     $mutating$
     $proc$
     $identifier$ (?let @lstring setterName)
-    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let [@formalParameterAST] formalParameterList)
     ioExternTypeSetterList ++= @(setterName, formalParameterList)
   }
 
@@ -164,7 +164,7 @@ syntax extension galgas4DeclarationsSyntax {
                            ?![@externTypeMethod] ioExternTypeMethodList ) {
     $proc$
     $identifier$ (?let @lstring methodName)
-    <formal_parameter_list> (!?ioDeclarations, ?let @formalParameterListAST formalParameterList)
+    <formal_parameter_list> (!?ioDeclarations, ?let [@formalParameterAST] formalParameterList)
     ioExternTypeMethodList ++= @(methodName, formalParameterList, .here)
   }
 
@@ -201,14 +201,14 @@ struct @externTypeGetter {
 
 struct @externTypeSetter {
   public let @lstring mSetterName
-  public let @formalParameterListAST mFormalParameterList
+  public let [@formalParameterAST] mFormalParameterList
 }
 
 //--------------------------------------------------------------------------------------------------
 
 struct @externTypeMethod {
   public let @lstring mMethodName
-  public let @formalParameterListAST mFormalParameterList
+  public let [@formalParameterAST] mFormalParameterList
   public let @location mDeclarationLocation
 }
 

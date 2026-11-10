@@ -79,7 +79,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  func initializers () -> [@formalInputParameterListAST] {
+  func initializers () -> [[@formalInputParameterAST]] {
     result = @()
   }
 
