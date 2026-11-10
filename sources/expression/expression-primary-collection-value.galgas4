@@ -17,34 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3ExpressionSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                       !@semanticExpressionAST outExpression ) {
-//    <optional_type_ggs3> (?let @lstring typeName)
-//    $@[$
-//    var @collectionValueElementList expressionList = @()
-//    select
-//    or
-//      repeat
-//        <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//        expressionList ++= @(expression, .here)
-//      while
-//        $,$
-//      end
-//    end
-//    outExpression = @collectionValueAST (typeName, expressionList, .here)
-//    $]$
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -53,7 +25,7 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression ) {
     let startLocation = @location.here
     $[$
-    var @collectionValueElementList expressionList = @()
+    var [@collectionValueElementAST] expressionList = @()
     select
     or
       repeat
@@ -73,7 +45,7 @@ syntax extension galgas4ExpressionSyntax {
                                    ?!@galgasDeclarationAST ioDeclarations,
                                    !@semanticExpressionAST outExpression ) {
     $[$
-    var @collectionValueElementList expressionList = @()
+    var [@collectionValueElementAST] expressionList = @()
     select
     or
       repeat
@@ -93,7 +65,7 @@ syntax extension galgas4ExpressionSyntax {
 
 //--------------------------------------------------------------------------------------------------
 
-list @collectionValueElementList {
+struct @collectionValueElementAST {
   public let @semanticExpressionAST mExpression
   public let @location location
 }
@@ -102,7 +74,7 @@ list @collectionValueElementList {
 
 final class @collectionValueAST : @semanticExpressionAST {
   public let @lstring mTypeName // Empty string if infered
-  public let @collectionValueElementList mExpressionList
+  public let [@collectionValueElementAST] mExpressionList
   public let @location mEndOfCollectionValue
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

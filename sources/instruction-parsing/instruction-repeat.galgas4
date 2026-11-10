@@ -145,7 +145,7 @@ override proc @repeatInstruction.analyzeSyntaxInstruction
     ?let repeated_instructionList
   )
 //--- 'while' blocks
-  var @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration = @()
+  var [@semanticInstructionListForGeneration] listOfSemanticInstructionListForGeneration = @()
   for repeatBranch in self.mRepeatBranchList do
     analyzeSyntaxInstructionList (
       inUsefulnessCallerEntityName,
@@ -188,7 +188,7 @@ final class @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @uint mChoiceIndex
   private let [@semanticInstructionForGeneration] m_repeated_instructionList
   private let @location mEndOfRepeatedInstructions
-  private let @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
+  private let [@semanticInstructionListForGeneration] mListOfSemanticInstructionListForGeneration
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -200,7 +200,7 @@ override proc @repeatInstructionForGeneration.appendSyntaxSignature
   ?![@semanticInstructionForGeneration] ioInstructionListForGeneration
 ) {
   let repeated_instructionList = syntaxSignatureOfInstructionList (inPosfix, self.m_repeated_instructionList)
-  var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
+  var listOfSemanticInstructionListForGeneration = [@semanticInstructionListForGeneration] ()
   for entry in self.mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration ++= @(
       syntaxSignatureOfInstructionList (inPosfix, entry.mInstructionList),
@@ -276,7 +276,7 @@ override proc @repeatInstructionForGeneration.generateInstruction (?!@stringset 
   if self.mListOfSemanticInstructionListForGeneration.count == 1 then
     ioGeneratedCode += "if (select_" + self.mSyntaxComponentName.identifierRepresentation
     ioGeneratedCode += "_" + self.mChoiceIndex.string + " (" + compilerCppName () + ") == 2) {\n"
-    let instructionList = self.mListOfSemanticInstructionListForGeneration.mInstructionListAtIndex (0)
+    let instructionList = self.mListOfSemanticInstructionListForGeneration.first.mInstructionList
     generateInstructionList (
       !?ioInclusionSet,
       instructionList,

@@ -172,10 +172,10 @@ map @lexiqueComponentMapForSemanticAnalysis {
   public let @bool mIsTemplate
   public let @terminalMap mTerminalMap
   public let [@indexingAST] mIndexingListAST
-  public let @terminalDeclarationListAST mTerminalListAST
+  public let [@terminalDeclarationAST] mTerminalListAST
   private let [@lexicalAttributeAST] mLexicalAttributeListAST
-  private let @lexicalStyleListAST mLexicalStyleListAST
-  private let @lexicalListDeclarationListAST mLexicalListDeclarationListAST
+  private let [@lexicalStyleAST] mLexicalStyleListAST
+  private let [@lexicalListDeclarationAST] mLexicalListDeclarationListAST
   #insertSetter insertKey #errorMessage "redefinition of the '%K' lexique component: it has been already declared in %L"
   #searchMethod searchKey #errorMessage "the '%K' lexique component is not imported"
 }

@@ -20,7 +20,7 @@
 
 struct @terminalAST {
   public let @lstring mTerminalName
-  public let @lexicalSentValueList mSentAttributeList
+  public let [@lexicalSentValue] mSentAttributeList
   public let @string mSyntaxErrorMessage
   public let @bool isEndOfTemplateMark #initArgLabel
   public let @bool atomicSelection #initArgLabel // True if atomic selection in source editor

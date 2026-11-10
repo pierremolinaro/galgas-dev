@@ -248,7 +248,7 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
     if terminal.mStyle.string.count > 0 then
       lexiqueAnalysisContext.mStyleMap.searchKey (terminal.mStyle, ?*, ?terminalStyleIndex)
     end
-    var argumentTypeList = @lexicalSentValueList ()
+    var argumentTypeList = [@lexicalSentValue] ()
     for attribute in terminal.mSentAttributeList do
       lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (attribute.mAttributeName, ?let attributeLexicalType)
       argumentTypeList ++= @(attribute.mFormalSelector, attribute.mAttributeName.string, attributeLexicalType)
@@ -267,7 +267,7 @@ override proc @templateLexiqueComponentAST.semanticAnalysis
     if lexicalList.mStyle.string.count > 0 then
       lexiqueAnalysisContext.mStyleMap.searchKey (lexicalList.mStyle, ?*, ?terminalStyleIndex)
     end
-    var argumentTypeList = @lexicalSentValueList ()
+    var argumentTypeList = [@lexicalSentValue] ()
     for attribute in lexicalList.mSentAttributeList do
       lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (attribute.mAttributeName, ?let attributeLexicalType)
       argumentTypeList ++= @(attribute.mFormalSelector, attribute.mAttributeName.string, attributeLexicalType)
@@ -369,7 +369,7 @@ private filewrapper templateLexiqueGenerationTemplates in "+generation-templates
     ?[@terminalAST] TERMINAL_LIST,
     ?[@templateDelimitorAST] TEMPLATE_DELIMITOR_LIST,
     ?[@templateReplacementAST] TEMPLATE_REPLACEMENT_LIST,
-    ?@lexicalStyleListAST LEXICAL_STYLE_LIST
+    ?[@lexicalStyleAST] LEXICAL_STYLE_LIST
   )
 }
 

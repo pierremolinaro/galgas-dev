@@ -27,10 +27,10 @@ final class @lexiqueComponentAST : @semanticDeclarationAST {
   private let [@templateDelimitor2AST] mTemplateDelimitorListAST
   private let [@templateReplacementAST] mTemplateReplacementListAST
   private let [@lexicalAttributeAST] mLexicalAttributeListAST
-  private let @lexicalStyleListAST mLexicalStyleListAST
-  private let @terminalDeclarationListAST mTerminalDeclarationListAST
+  private let [@lexicalStyleAST] mLexicalStyleListAST
+  private let [@terminalDeclarationAST] mTerminalDeclarationListAST
   private let [@lexicalMessageDeclarationAST] mLexicalMessageDeclarationListAST
-  private let @lexicalListDeclarationListAST mLexicalListDeclarationListAST
+  private let [@lexicalListDeclarationAST] mLexicalListDeclarationListAST
   private let [@abstractLexicalRuleAST] mLexicalRuleListAST
   private let [@indexingAST] mIndexingListAST
 }
@@ -50,10 +50,10 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
     var [@templateDelimitor2AST] templateDelimitorList = @()
     var [@templateReplacementAST] templateReplacementList = @()
     var [@lexicalAttributeAST] lexicalAttributeList = @()
-    var @lexicalStyleListAST lexicalStyleList = @()
-    var @terminalDeclarationListAST terminalDeclarationList = @()
+    var [@lexicalStyleAST] lexicalStyleList = @()
+    var [@terminalDeclarationAST] terminalDeclarationList = @()
     var [@lexicalMessageDeclarationAST] lexicalMessageDeclarationList = @()
-    var @lexicalListDeclarationListAST lexicalListDeclarationList = @()
+    var [@lexicalListDeclarationAST] lexicalListDeclarationList = @()
     var [@abstractLexicalRuleAST] lexicalRuleList = @()
     var [@indexingAST] indexingListAST = @()
     repeat
@@ -150,7 +150,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <repeat_while_branch> (?!@lexicalWhileBranchListAST ioLexicalWhileBranchList ) {
+  rule <repeat_while_branch> (?![@lexicalWhileBranchAST] ioLexicalWhileBranchList ) {
     $while$
     <lexical_expression> (?let @lexicalExpressionAST whileExpression)
     $:$
@@ -192,12 +192,12 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
       outEffectiveArgument = @lexicalAttributeInputArgumentAST (idf)
     or
       $($
-      var @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = @()
+      var [@lexicalRoutineOrFunctionFormalInputArgumentAST] functionActualArgumentList = @()
       repeat
       while
         $!$
         <lexical_output_effective_argument> (?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg)
-        functionActualArgumentList ++= @(arg)
+        functionActualArgumentList ++= arg
       end
       $)$
       outEffectiveArgument = @lexicalFunctionInputArgumentAST (idf, functionActualArgumentList)
@@ -261,10 +261,10 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <lexical_list_declaration> (?!@lexicalListDeclarationListAST ioLexicalListDeclarationList ) {
+  rule <lexical_list_declaration> (?![@lexicalListDeclarationAST] ioLexicalListDeclarationList ) {
     $list$
     $identifier$ (?let name)
-    var @sentLexicalAttributeListAST sentAttributeList = @()
+    var [@sentLexicalAttributeAST] sentAttributeList = @()
     repeat
     while
       $!selector:$ (?let selector)
@@ -334,9 +334,9 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <terminal_declaration> (?!@terminalDeclarationListAST ioTerminalDeclarationList ) {
+  rule <terminal_declaration> (?![@terminalDeclarationAST] ioTerminalDeclarationList ) {
     $\$terminal\$$ (?let @lstring name) indexing (terminalDeclaration)
-    var sentAttributeList = @sentLexicalAttributeListAST ()
+    var sentAttributeList = [@sentLexicalAttributeAST] ()
     repeat
     while
       $!selector:$ (?let selector)
@@ -378,7 +378,7 @@ syntax galgas4LexiqueComponentSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <style_declaration> (?!@lexicalStyleListAST ioLexicalStyleList ) {
+  rule <style_declaration> (?![@lexicalStyleAST] ioLexicalStyleList ) {
     $style$
     $identifier$ (?let @lstring styleIdentifier)
     if styleIdentifier.string.containsCharacter ('_') then
@@ -437,7 +437,7 @@ override proc @lexiqueComponentAST.enterDeclarationInSemanticContext
 //--------------------------------------
   var @terminalMap terminalMap = @()
   for terminal in self.mTerminalDeclarationListAST do
-    var argumentTypeList = @lexicalSentValueList ()
+    var argumentTypeList = [@lexicalSentValue] ()
     for entry in terminal.mSentAttributeList do
       lexicalAttributeMap.searchKey (entry.mAttributeName, ?let attributeLexicalType)
       argumentTypeList ++= @(entry.mFormalSelector, entry.mAttributeName.string, attributeLexicalType)
@@ -446,7 +446,7 @@ override proc @lexiqueComponentAST.enterDeclarationInSemanticContext
   end
 //---
   for lexicalList in self.mLexicalListDeclarationListAST do
-    var argumentTypeList = @lexicalSentValueList ()
+    var argumentTypeList = [@lexicalSentValue] ()
     for entry in lexicalList.mSentAttributeList do
       lexicalAttributeMap.searchKey (entry.mAttributeName, ?let attributeLexicalType)
       argumentTypeList ++= @(entry.mFormalSelector, entry.mAttributeName.string, attributeLexicalType)
@@ -522,7 +522,7 @@ override proc @lexiqueComponentAST.semanticAnalysis
     if terminal.mStyle.string.count > 0 then
       lexiqueAnalysisContext.mStyleMap.searchKey (terminal.mStyle, ?*, ?terminalStyleIndex)
     end
-    var argumentTypeList = @lexicalSentValueList ()
+    var argumentTypeList = [@lexicalSentValue] ()
     for attribute in terminal.mSentAttributeList do
       lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (attribute.mAttributeName, ?let attributeLexicalType)
       argumentTypeList ++= @(attribute.mFormalSelector, attribute.mAttributeName.string, attributeLexicalType)
@@ -542,7 +542,7 @@ override proc @lexiqueComponentAST.semanticAnalysis
     if lexicalList.mStyle.string.count > 0 then
       lexiqueAnalysisContext.mStyleMap.searchKey (lexicalList.mStyle, ?*, ?terminalStyleIndex)
     end
-    var argumentTypeList = @lexicalSentValueList ()
+    var argumentTypeList = [@lexicalSentValue] ()
     for attribute in lexicalList.mSentAttributeList do
       lexiqueAnalysisContext.mLexicalAttributeMap.searchKey (attribute.mAttributeName, ?let attributeLexicalType)
       argumentTypeList ++= @(attribute.mFormalSelector, attribute.mAttributeName.string, attributeLexicalType)
@@ -668,7 +668,7 @@ filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generat
 }{
   template headerZone2 : "lexique_header_template_zone_2.h.galgasTemplate" (
     ?@string LEXIQUE_IDENTIFIER,
-    ?@lexicalListDeclarationListAST DELIMITOR_LIST_LIST,
+    ?[@lexicalListDeclarationAST] DELIMITOR_LIST_LIST,
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT,
     ?[@templateDelimitor2AST] TEMPLATE_DELIMITOR_LIST,
     ?[@indexingAST] INDEXING_LIST
@@ -687,7 +687,7 @@ filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generat
     ?[@templateDelimitor2AST] TEMPLATE_DELIMITOR_LIST,
     ?@string LEXIQUE_COMPONENT_NAME,
     ?[@templateReplacementAST] TEMPLATE_REPLACEMENT_LIST,
-    ?@lexicalStyleListAST LEXICAL_STYLE_LIST
+    ?[@lexicalStyleAST] LEXICAL_STYLE_LIST
   )
 
   template swiftUIImplementationZone2 : "lexique_swiftui_implementation.swift.galgasTemplate" (
@@ -701,7 +701,7 @@ filewrapper lexiqueGenerationTemplates in "+generation-templates/lexique_generat
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT,
     ?[@templateReplacementAST] TEMPLATE_REPLACEMENT_LIST,
     ?[@indexingAST] INDEXING_LIST,
-    ?@lexicalStyleListAST LEXICAL_STYLE_LIST,
+    ?[@lexicalStyleAST] LEXICAL_STYLE_LIST,
     ?[@templateDelimitor2AST] TEMPLATE_DELIMITOR_LIST
   )
 }

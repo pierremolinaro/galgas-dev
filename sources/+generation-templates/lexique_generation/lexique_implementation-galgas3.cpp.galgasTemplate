@@ -116,9 +116,9 @@ String Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * inTo
    %      s.appendChar (utf32 ('$')) ;\n%
    %      s.appendCString (%![terminal.mTerminalName.string utf8RepresentationEscapingQuestionMark]%) ;\n%
    %      s.appendChar (utf32 ('$')) ;\n%
-   for (mLexicalFormalSelector mLexicalAttributeName mLexicalType) in terminal.mSentAttributeList do
+   for (sended) in terminal.mSentAttributeList do
      %      s.appendChar (utf32 (' ')) ;\n%
-     %      s.%![mLexicalType appendMethodName]% (ptr->mLexicalAttribute_%![mLexicalAttributeName identifierRepresentation] ![mLexicalType appendArgumentOfMethod]%) ;\n%
+     %      s.%![sended.mLexicalType appendMethodName]% (ptr->mLexicalAttribute_%![sended.mLexicalAttributeName identifierRepresentation] ![sended.mLexicalType appendArgumentOfMethod]%) ;\n%
    end
    %      break ;\n%
 end
@@ -384,8 +384,8 @@ String Lexique_%!LEXIQUE_IDENTIFIER%::styleNameForIndex (const uint32_t inStyleI
   if (inStyleIndex < %![[LEXICAL_STYLE_LIST count] + 1 string]%) {
     static const char * kStyleArray [%![[LEXICAL_STYLE_LIST count] + 1 string]%] = {
       ""%
-for (mName mComment) in LEXICAL_STYLE_LIST do
-  %,\n      %![mName.string utf8RepresentationEscapingQuestionMark]
+for (lexicalStyle) in LEXICAL_STYLE_LIST do
+  %,\n      %![lexicalStyle.mName.string utf8RepresentationEscapingQuestionMark]
 end%\n    } ;
     result = kStyleArray [inStyleIndex] ;
   }

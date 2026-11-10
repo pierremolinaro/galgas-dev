@@ -113,7 +113,7 @@ override proc @selectInstruction.analyzeSyntaxInstruction
 //--- Begin block
   !?ioVariableMap.openOverrideForSelectBlock ()
 //--- 'or' blocks
-  var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
+  var listOfSemanticInstructionListForGeneration = [@semanticInstructionListForGeneration] ()
   for selectBranch in self.mSelectBranchList do
     analyzeSyntaxInstructionList (
       inUsefulnessCallerEntityName,
@@ -151,7 +151,7 @@ override proc @selectInstruction.analyzeSyntaxInstruction
 final class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
   public let @string mSyntaxComponentName
   public let @uint mChoiceIndex
-  public let @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
+  public let [@semanticInstructionListForGeneration] mListOfSemanticInstructionListForGeneration
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -161,7 +161,7 @@ final class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
 override proc @selectInstructionForGeneration.appendSyntaxSignature
   (let @string inPosfix,
   ?![@semanticInstructionForGeneration] ioInstructionListForGeneration ) {
-  var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
+  var listOfSemanticInstructionListForGeneration = [@semanticInstructionListForGeneration] ()
   for entry in self.mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration ++= @(
       syntaxSignatureOfInstructionList (inPosfix, entry.mInstructionList),

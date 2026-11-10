@@ -22,7 +22,7 @@
 
 final class @lexicalRepeatInstructionAST : @lexicalInstructionAST {
   private let [@lexicalInstructionAST] mRepeatedInstructionList
-  private let @lexicalWhileBranchListAST mLexicalWhileBranchList
+  private let [@lexicalWhileBranchAST] mLexicalWhileBranchList
   private let @location mLocation
 }
 
@@ -42,7 +42,7 @@ syntax extension galgas4LexiqueComponentSyntax {
     while
       <lexical_instruction> (!?repeatedInstructionList)
     end
-    var @lexicalWhileBranchListAST lexicalWhileBranchList = @()
+    var [@lexicalWhileBranchAST] lexicalWhileBranchList = @()
     repeat
       <repeat_while_branch> (!?lexicalWhileBranchList)
     while

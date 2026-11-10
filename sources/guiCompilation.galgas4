@@ -90,7 +90,7 @@ struct @importedLexiqueAST {
   public let @string mTitle
   public let [@textMacroAST] mTextMacroList
   public let [@guiLabelAST] mLabels
-  public let @lexicalStyleListAST mLexicalStyleList
+  public let [@lexicalStyleAST] mLexicalStyleList
 }
 
 //--------------------------------------------------------------------------------------------------

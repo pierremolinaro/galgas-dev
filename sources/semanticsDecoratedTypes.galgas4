@@ -179,7 +179,7 @@ final class @semanticBlockInstructionForGeneration : @semanticInstructionForGene
 
 //--------------------------------------------------------------------------------------------------
 
-list @listOfSemanticInstructionListForGeneration {
+struct @semanticInstructionListForGeneration {
   public let [@semanticInstructionForGeneration] mInstructionList
   public let @location mEndOfInstructionList
 }

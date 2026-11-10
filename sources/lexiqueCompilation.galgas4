@@ -369,10 +369,10 @@ override proc @lexicalFunctionInputArgumentAST.checkLexicalFunctionCallArgument
     )
   end
 //--- Check actual argument against formal parameters
-  for fomal in lexicalFormalTypeList, actual in self.mFunctionActualArgumentList do
-    actual.mLexicalActualInputArgument.checkLexicalFunctionCallArgument (
+  for formal in lexicalFormalTypeList, actual in self.mFunctionActualArgumentList do
+    actual.checkLexicalFunctionCallArgument (
       !?ioLexiqueAnalysisContext,
-      fomal.mLexicalType
+      formal.mLexicalType
     )
   end
 }
@@ -487,7 +487,7 @@ override proc @lexicalFunctionInputArgumentAST.checkLexicalRoutineCallArgument
   end
 //--- Check actual argument against formal parameters
   for formal in lexicalFormalTypeList, actual in self.mFunctionActualArgumentList do
-    actual.mLexicalActualInputArgument.checkLexicalFunctionCallArgument (
+    actual.checkLexicalFunctionCallArgument (
       !?ioLexiqueAnalysisContext,
       formal.mLexicalType
     )

@@ -7748,13 +7748,13 @@ class DownEnumerator_lexiqueComponentMapForSemanticAnalysis final {
 
   public: class GGS__5B_indexingAST_5D_ current_mIndexingListAST (LOCATION_ARGS) const ;
 
-  public: class GGS_terminalDeclarationListAST current_mTerminalListAST (LOCATION_ARGS) const ;
+  public: class GGS__5B_terminalDeclarationAST_5D_ current_mTerminalListAST (LOCATION_ARGS) const ;
 
   public: class GGS__5B_lexicalAttributeAST_5D_ current_mLexicalAttributeListAST (LOCATION_ARGS) const ;
 
-  public: class GGS_lexicalStyleListAST current_mLexicalStyleListAST (LOCATION_ARGS) const ;
+  public: class GGS__5B_lexicalStyleAST_5D_ current_mLexicalStyleListAST (LOCATION_ARGS) const ;
 
-  public: class GGS_lexicalListDeclarationListAST current_mLexicalListDeclarationListAST (LOCATION_ARGS) const ;
+  public: class GGS__5B_lexicalListDeclarationAST_5D_ current_mLexicalListDeclarationListAST (LOCATION_ARGS) const ;
 
   public: class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element current (LOCATION_ARGS) const ;
 
@@ -7782,10 +7782,10 @@ class UpEnumerator_lexiqueComponentMapForSemanticAnalysis final {
   public: class GGS_bool current_mIsTemplate (LOCATION_ARGS) const ;
   public: class GGS_terminalMap current_mTerminalMap (LOCATION_ARGS) const ;
   public: class GGS__5B_indexingAST_5D_ current_mIndexingListAST (LOCATION_ARGS) const ;
-  public: class GGS_terminalDeclarationListAST current_mTerminalListAST (LOCATION_ARGS) const ;
+  public: class GGS__5B_terminalDeclarationAST_5D_ current_mTerminalListAST (LOCATION_ARGS) const ;
   public: class GGS__5B_lexicalAttributeAST_5D_ current_mLexicalAttributeListAST (LOCATION_ARGS) const ;
-  public: class GGS_lexicalStyleListAST current_mLexicalStyleListAST (LOCATION_ARGS) const ;
-  public: class GGS_lexicalListDeclarationListAST current_mLexicalListDeclarationListAST (LOCATION_ARGS) const ;
+  public: class GGS__5B_lexicalStyleAST_5D_ current_mLexicalStyleListAST (LOCATION_ARGS) const ;
+  public: class GGS__5B_lexicalListDeclarationAST_5D_ current_mLexicalListDeclarationListAST (LOCATION_ARGS) const ;
   public: class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element current (LOCATION_ARGS) const ;
 
   private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_lexiqueComponentMapForSemanticAnalysis_2E_element>> mInfoArray ;
@@ -7862,10 +7862,10 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_root {
                                  class GGS_bool constinArgument1,
                                  class GGS_terminalMap constinArgument2,
                                  class GGS__5B_indexingAST_5D_ constinArgument3,
-                                 class GGS_terminalDeclarationListAST constinArgument4,
+                                 class GGS__5B_terminalDeclarationAST_5D_ constinArgument4,
                                  class GGS__5B_lexicalAttributeAST_5D_ constinArgument5,
-                                 class GGS_lexicalStyleListAST constinArgument6,
-                                 class GGS_lexicalListDeclarationListAST constinArgument7,
+                                 class GGS__5B_lexicalStyleAST_5D_ constinArgument6,
+                                 class GGS__5B_lexicalListDeclarationAST_5D_ constinArgument7,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
@@ -7884,17 +7884,17 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_root {
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMLexicalListDeclarationListASTForKey (class GGS_lexicalListDeclarationListAST constinArgument0,
+  public: void setter_setMLexicalListDeclarationListASTForKey (class GGS__5B_lexicalListDeclarationAST_5D_ constinArgument0,
                                                                class GGS_string constinArgument1,
                                                                Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMLexicalStyleListASTForKey (class GGS_lexicalStyleListAST constinArgument0,
+  public: void setter_setMLexicalStyleListASTForKey (class GGS__5B_lexicalStyleAST_5D_ constinArgument0,
                                                      class GGS_string constinArgument1,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMTerminalListASTForKey (class GGS_terminalDeclarationListAST constinArgument0,
+  public: void setter_setMTerminalListASTForKey (class GGS__5B_terminalDeclarationAST_5D_ constinArgument0,
                                                  class GGS_string constinArgument1,
                                                  Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
@@ -7910,10 +7910,10 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_root {
                                  class GGS_bool & outArgument1,
                                  class GGS_terminalMap & outArgument2,
                                  class GGS__5B_indexingAST_5D_ & outArgument3,
-                                 class GGS_terminalDeclarationListAST & outArgument4,
+                                 class GGS__5B_terminalDeclarationAST_5D_ & outArgument4,
                                  class GGS__5B_lexicalAttributeAST_5D_ & outArgument5,
-                                 class GGS_lexicalStyleListAST & outArgument6,
-                                 class GGS_lexicalListDeclarationListAST & outArgument7,
+                                 class GGS__5B_lexicalStyleAST_5D_ & outArgument6,
+                                 class GGS__5B_lexicalListDeclarationAST_5D_ & outArgument7,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) const ;
 
@@ -7953,17 +7953,17 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_root {
                                                                                        Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lexicalListDeclarationListAST getter_mLexicalListDeclarationListASTForKey (const class GGS_string & constinOperand0,
-                                                                                               Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lexicalListDeclarationAST_5D_ getter_mLexicalListDeclarationListASTForKey (const class GGS_string & constinOperand0,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_lexicalStyleListAST getter_mLexicalStyleListASTForKey (const class GGS_string & constinOperand0,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_lexicalStyleAST_5D_ getter_mLexicalStyleListASTForKey (const class GGS_string & constinOperand0,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_terminalDeclarationListAST getter_mTerminalListASTForKey (const class GGS_string & constinOperand0,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_terminalDeclarationAST_5D_ getter_mTerminalListASTForKey (const class GGS_string & constinOperand0,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_terminalMap getter_mTerminalMapForKey (const class GGS_string & constinOperand0,
                                                            Compiler * inCompiler

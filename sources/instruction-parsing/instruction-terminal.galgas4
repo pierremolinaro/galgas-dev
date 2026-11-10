@@ -123,7 +123,7 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
     ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
     ?!@localVarManager ioVariableMap,
     ?!@uint _ioSelectMethodCount) {
-    inTerminalMap.searchKey (self.mTerminalName, ?let @lexicalSentValueList sentAttributeList)
+    inTerminalMap.searchKey (self.mTerminalName, ?let [@lexicalSentValue] sentAttributeList)
   //---
     if self.mActualInputParameterList.count != sentAttributeList.count then
       error (self.mTerminalName

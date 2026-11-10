@@ -21,7 +21,7 @@
 //--------------------------------------------------------------------------------------------------
 
 final class @lexicalSelectInstructionAST : @lexicalInstructionAST {
-  private let @lexicalSelectBranchListAST mLexicalSelectBranchList
+  private let [@lexicalSelectBranchAST] mLexicalSelectBranchList
   private let [@lexicalInstructionAST] mDefaultInstructionList
 }
 
@@ -33,7 +33,7 @@ syntax extension galgas4LexiqueComponentSyntax {
 
   rule <lexical_instruction> (?![@lexicalInstructionAST] ioInstructionList) {
     $select$
-    var @lexicalSelectBranchListAST lexicalWhileBranchList = @()
+    var [@lexicalSelectBranchAST] lexicalWhileBranchList = @()
     repeat
       $case$
       <lexical_expression> (?let @lexicalExpressionAST selectExpression)

@@ -132,7 +132,7 @@ override func @lexicalFunctionInputArgumentAST.generateRoutineOrFunctionArgument
   () -> @string {
   result = "::scanner_function_" + self.mFunctionName + " (*this"
   for entry in self.mFunctionActualArgumentList do
-    result += ", " + entry.mLexicalActualInputArgument.generateRoutineOrFunctionArgument
+    result += ", " + entry.generateRoutineOrFunctionArgument
   end
   result += ")"
 }

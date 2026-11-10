@@ -88,9 +88,9 @@ class Lexique_%!LEXIQUE_IDENTIFIER% : public Lexique {
   for (terminal) in LEXIQUE_ANALYSIS_CONTEXT.mTerminalList do (idx)
     %  public: static const int32_t kToken_%![terminal.mTerminalName.string identifierRepresentation]% = %![idx + 1 string]% ;\n%
   end
-  for (mName mStyle mSyntaxErrorMessage mSentAttributeList mEntryList) in DELIMITOR_LIST_LIST do
-    %\n//--- Key words table '%!mName.string%'\n%
-    %  public: static int32_t search_into_%!mName.string% (const String & inSearchedString) ;\n%
+  for (delimitorList) in DELIMITOR_LIST_LIST do
+    %\n//--- Key words table '%!delimitorList.mName.string%'\n%
+    %  public: static int32_t search_into_%!delimitorList.mName.string% (const String & inSearchedString) ;\n%
   end
 %
 

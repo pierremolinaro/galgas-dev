@@ -70,15 +70,15 @@ struct SettingViewFor_%!LEXIQUE_CLASS_NAME% : View {
   @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%")
   private var mDefaultColor : Color = .black
 
-%for (identifier *) in LEXICAL_STYLE_LIST do
-%  @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%")
-  private var mColorFor_%!identifier.string% : Color = .black
+%for (lexicalStyle) in LEXICAL_STYLE_LIST do
+%  @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%-%!lexicalStyle.mName.string%")
+  private var mColorFor_%!lexicalStyle.mName.string% : Color = .black
 
-  @AppStorage("BoldFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%")
-  private var mBoldFor_%!identifier.string% : Bool = false
+  @AppStorage("BoldFor_%!LEXIQUE_CLASS_NAME%-%!lexicalStyle.mName.string%")
+  private var mBoldFor_%!lexicalStyle.mName.string% : Bool = false
 
-  @AppStorage("ItalicFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%")
-  private var mItalicFor_%!identifier.string% : Bool = false
+  @AppStorage("ItalicFor_%!LEXIQUE_CLASS_NAME%-%!lexicalStyle.mName.string%")
+  private var mItalicFor_%!lexicalStyle.mName.string% : Bool = false
 
 %end%
   @AppStorage("ColorFor_%!LEXIQUE_CLASS_NAME%_lexical_error")
@@ -119,12 +119,12 @@ struct SettingViewFor_%!LEXIQUE_CLASS_NAME% : View {
           Toggle ("Italic", isOn: self.$mUnused).hidden () // Hidden, unused
         }
       }
-%for (identifier comment) in LEXICAL_STYLE_LIST do
-%      LabeledContent (%![comment.string utf8RepresentationEscapingQuestionMark]%) {
+%for (lexicalStyle) in LEXICAL_STYLE_LIST do
+%      LabeledContent (%![lexicalStyle.mComment.string utf8RepresentationEscapingQuestionMark]%) {
         HStack {
-          ColorPicker ("", selection: self.$mColorFor_%!identifier.string%).labelsHidden ()
-          Toggle ("Bold", isOn: self.$mBoldFor_%!identifier.string%)
-          Toggle ("Italic", isOn: self.$mItalicFor_%!identifier.string%)
+          ColorPicker ("", selection: self.$mColorFor_%!lexicalStyle.mName.string%).labelsHidden ()
+          Toggle ("Bold", isOn: self.$mBoldFor_%!lexicalStyle.mName.string%)
+          Toggle ("Italic", isOn: self.$mItalicFor_%!lexicalStyle.mName.string%)
         }
       }
 %end%      LabeledContent ("Lexical Error") {
@@ -181,24 +181,24 @@ class ScannerFor_%!LEXIQUE_CLASS_NAME% : ScannerFor_%!SUPER_LEXIQUE_CLASS_NAME% 
         ioStyleDidChange = true
       }
     }
-%for (identifier *) in LEXICAL_STYLE_LIST do
-%    if let s = ud.string (forKey: "ColorFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%"), let v = Color (rawValue: s) {
-      if self.mColorFor_%!identifier.string% != v {
-        self.mColorFor_%!identifier.string% = v
+%for (lexicalStyle) in LEXICAL_STYLE_LIST do
+%    if let s = ud.string (forKey: "ColorFor_%!LEXIQUE_CLASS_NAME%-%!lexicalStyle.mName.string%"), let v = Color (rawValue: s) {
+      if self.mColorFor_%!lexicalStyle.mName.string% != v {
+        self.mColorFor_%!lexicalStyle.mName.string% = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%") != nil {
-      let v = ud.bool (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%")
-      if self.mBoldFor_%!identifier.string% != v {
-        self.mBoldFor_%!identifier.string% = v
+    if ud.string (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%-%!lexicalStyle.mName.string%") != nil {
+      let v = ud.bool (forKey: "BoldFor_%!LEXIQUE_CLASS_NAME%-%!lexicalStyle.mName.string%")
+      if self.mBoldFor_%!lexicalStyle.mName.string% != v {
+        self.mBoldFor_%!lexicalStyle.mName.string% = v
         ioStyleDidChange = true
       }
     }
-    if ud.string (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%") != nil {
-      let v = ud.bool (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%-%!identifier.string%")
-      if self.mItalicFor_%!identifier.string% != v {
-        self.mItalicFor_%!identifier.string% = v
+    if ud.string (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%-%!lexicalStyle.mName.string%") != nil {
+      let v = ud.bool (forKey: "ItalicFor_%!LEXIQUE_CLASS_NAME%-%!lexicalStyle.mName.string%")
+      if self.mItalicFor_%!lexicalStyle.mName.string% != v {
+        self.mItalicFor_%!lexicalStyle.mName.string% = v
         ioStyleDidChange = true
       }
     }
@@ -251,16 +251,16 @@ class ScannerFor_%!LEXIQUE_CLASS_NAME% : ScannerFor_%!SUPER_LEXIQUE_CLASS_NAME% 
       let boldItalicFont = fontManager.convert (boldFont, toHaveTrait: .italicFontMask)
       self.mTokenAttributeArray.removeAll (keepingCapacity: true)
       var attributes = [NSAttributedString.Key : Any] ()
-%for (identifier *) in LEXICAL_STYLE_LIST do
-%    //--- Attributes for %!identifier.string%
-      if self.mColorFor_%!identifier.string% != self.mDefaultColor {
-        attributes [.foregroundColor] = NSColor (self.mColorFor_%!identifier.string%)
+%for (lexicalStyle) in LEXICAL_STYLE_LIST do
+%    //--- Attributes for %!lexicalStyle.mName.string%
+      if self.mColorFor_%!lexicalStyle.mName.string% != self.mDefaultColor {
+        attributes [.foregroundColor] = NSColor (self.mColorFor_%!lexicalStyle.mName.string%)
       }
-      if self.mBoldFor_%!identifier.string% && self.mItalicFor_%!identifier.string% {
+      if self.mBoldFor_%!lexicalStyle.mName.string% && self.mItalicFor_%!lexicalStyle.mName.string% {
         attributes [.font] = boldItalicFont
-      }else if self.mBoldFor_%!identifier.string% {
+      }else if self.mBoldFor_%!lexicalStyle.mName.string% {
         attributes [.font] = boldFont
-      }else if self.mItalicFor_%!identifier.string% {
+      }else if self.mItalicFor_%!lexicalStyle.mName.string% {
         attributes [.font] = italicFont
       }
       self.mTokenAttributeArray.append (attributes.isEmpty ? nil : attributes)

@@ -92,16 +92,16 @@ struct @lexicalAttributeAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @lexicalStyleListAST {
+struct @lexicalStyleAST {
   public let @lstring mName
   public let @lstring mComment
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @terminalDeclarationListAST {
+struct @terminalDeclarationAST {
   public let @lstring mName
-  public let @sentLexicalAttributeListAST mSentAttributeList
+  public let [@sentLexicalAttributeAST] mSentAttributeList
   public let @lstring mSyntaxErrorMessage
   public let @lstring mStyle // Empty string if no style
   public let @bool nonAtomicSelection #initArgLabel
@@ -119,18 +119,18 @@ struct @lexicalListEntryAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @sentLexicalAttributeListAST {
+struct @sentLexicalAttributeAST {
   public let @lstring mFormalSelector
   public let @lstring mAttributeName
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @lexicalListDeclarationListAST {
+struct @lexicalListDeclarationAST {
   public let @lstring mName
   public let @lstring mStyle // Empty string if no style
   public let @lstring mSyntaxErrorMessage
-  public let @sentLexicalAttributeListAST mSentAttributeList
+  public let [@sentLexicalAttributeAST] mSentAttributeList
   public let [@lexicalListEntryAST] mEntryList
 }
 
@@ -175,9 +175,9 @@ final class @lexicalStringNotMatchAST : @lexicalExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @lexicalSendSearchListAST {
-  private let @lstring mAttributeName
-  private let @lstring mSearchListName
+struct @lexicalSendSearchAST {
+  let @lstring mAttributeName
+  let @lstring mSearchListName
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -199,14 +199,14 @@ final class @lexicalErrorByDefaultAST : @lexicalSendDefaultActionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @lexicalWhileBranchListAST {
+struct @lexicalWhileBranchAST {
   public let @lexicalExpressionAST mWhileExpression
   public let [@lexicalInstructionAST] mWhileInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------
 
-list @lexicalSelectBranchListAST {
+struct @lexicalSelectBranchAST {
   public let @lexicalExpressionAST mSelectExpression
   public let [@lexicalInstructionAST] mSelectInstructionList
 }
@@ -214,12 +214,6 @@ list @lexicalSelectBranchListAST {
 //--------------------------------------------------------------------------------------------------
 
 abstract class @lexicalRoutineOrFunctionFormalInputArgumentAST {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-list @lexicalFunctionCallActualArgumentListAST {
-  public let @lexicalRoutineOrFunctionFormalInputArgumentAST mLexicalActualInputArgument
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -250,7 +244,7 @@ final class @lexicalCurrentCharacterInputArgumentAST : @lexicalRoutineOrFunction
 
 final class @lexicalFunctionInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   private let @lstring mFunctionName
-  private let @lexicalFunctionCallActualArgumentListAST mFunctionActualArgumentList
+  private let [@lexicalRoutineOrFunctionFormalInputArgumentAST] mFunctionActualArgumentList
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -314,7 +308,7 @@ enum @lexicalTypeEnum #equatable {
 
 //--------------------------------------------------------------------------------------------------
 
-list @lexicalSentValueList {
+struct @lexicalSentValue {
   public let @lstring mLexicalFormalSelector
   public let @string mLexicalAttributeName
   public let @lexicalTypeEnum mLexicalType
@@ -323,7 +317,7 @@ list @lexicalSentValueList {
 //--------------------------------------------------------------------------------------------------
 
 map @terminalMap {
-  public let @lexicalSentValueList mSentAttributeList
+  public let [@lexicalSentValue] mSentAttributeList
   #insertSetter insertKey #errorMessage "the '%K' terminal has been already declared in %L"
   #searchMethod searchKey #errorMessage "the '%K' terminal is not declared"
 }
