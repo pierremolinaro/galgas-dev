@@ -71,7 +71,7 @@ mutating proc [@uint].appendSquare (let@uint inValue) {
 }
 
 mutating proc [@uint64].prependSquare (let @uint64 inValue) {
-  !?self.insertAtIndex (inValue.square, 0)
+  !?self.insert (inValue.square, !at: 0)
 }
 
 mutating proc @string.concatList (let [@string] inList) {

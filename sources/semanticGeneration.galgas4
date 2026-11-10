@@ -28,7 +28,7 @@ final class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration 
   public let @string mGrammarName
   public let @string mLexiqueName
   public let @nonTerminalSymbolMapForGrammarAnalysis mNonTerminalMapForGrammarAnalysis
-  public let @nonTerminalToAddList mNonTerminalToAddList
+  public let [@nonTerminalToAdd] mNonTerminalToAddList
   public let [@lstring] mSyntaxComponents
   public let @string mStartSymbolName
   public let @bool mHasTranslateFeature
@@ -235,7 +235,7 @@ proc generateProcedure
   let @string inProcedureMangledName,
   ?!@stringset ioInclusionSet,
   let [@formalParameterForGeneration] inFormalArgumentList,
-  let @semanticInstructionListForGeneration inInstructionList,
+  let [@semanticInstructionForGeneration] inInstructionList,
   let @bool inProcedureIsConst,
   let @string inCompilerTypeName,
   let @bool inGenerateLocationArgs,
@@ -261,8 +261,8 @@ proc generateProcedure
   var routineBody = ""
   !?routineBody.incIndentation (2)
   for entry in inInstructionList do
-    entry.mInstruction.generateInstruction
-      (!?ioInclusionSet,
+    entry.generateInstruction (
+      !?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
       inGenerateSyntaxDirectedTranslationString,
@@ -353,8 +353,8 @@ proc generateProcedure
 
 proc generateFunction (let @string inFunctionCppRepresentationName,
                       ?!@stringset ioInclusionSet,
-                      let @formalInputParameterListForGeneration inFormalArgumentList,
-                      let @semanticInstructionListForGeneration inInstructionList,
+                      let [@formalInputParameterForGeneration] inFormalArgumentList,
+                      let [@semanticInstructionForGeneration] inInstructionList,
                       let @string inCompilerTypeName,
                       let @unifiedTypeMapEntry inResultType,
                       let @string inResultVariableCppName,
@@ -376,8 +376,8 @@ proc generateFunction (let @string inFunctionCppRepresentationName,
   var @string routineBody = ""
   !?routineBody.incIndentation (2)
   for entry in inInstructionList do
-    entry.mInstruction.generateInstruction
-      (!?ioInclusionSet,
+    entry.generateInstruction (
+      !?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
       false, // inGenerateSyntaxDirectedTranslationString
@@ -437,8 +437,8 @@ proc generateFunction (let @string inFunctionCppRepresentationName,
 
 proc generateExtensionGetter (let @string inFunctionCppRepresentationName,
                                 ?!@stringset ioInclusionSet,
-                                let @formalInputParameterListForGeneration inFormalArgumentList,
-                                let @semanticInstructionListForGeneration inInstructionList,
+                                let [@formalInputParameterForGeneration] inFormalArgumentList,
+                                let [@semanticInstructionForGeneration] inInstructionList,
                                 let @string inCompilerTypeName,
                                 let @unifiedTypeMapEntry inResultType,
                                 let @string inResultVariableCppName,
@@ -458,8 +458,8 @@ proc generateExtensionGetter (let @string inFunctionCppRepresentationName,
   var @string routineBody = ""
   !?routineBody.incIndentation (2)
   for entry in inInstructionList do
-    entry.mInstruction.generateInstruction
-      (!?ioInclusionSet,
+    entry.generateInstruction (
+      !?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
       false, // inGenerateSyntaxDirectedTranslationString
@@ -520,7 +520,7 @@ proc generateExtensionSetter
   let @string inMethodName,
   ?!@stringset ioInclusionSet,
   let [@formalParameterForGeneration] inFormalArgumentList,
-  let @semanticInstructionListForGeneration inInstructionList,
+  let [@semanticInstructionForGeneration] inInstructionList,
   !@string outGeneratedCode ) {
 //--- Build unused variable set
   var @stringset unusedVariableCppNameSet = @()
@@ -534,7 +534,7 @@ proc generateExtensionSetter
   var routineBody = ""
   !?routineBody.incIndentation (2)
   for entry in inInstructionList do
-    entry.mInstruction.generateInstruction (
+    entry.generateInstruction (
       !?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
@@ -612,7 +612,7 @@ proc generateExtensionMethodNew (let @unifiedTypeMapEntry inReceiverType,
                                 ?!@stringset ioInclusionSet,
                                 let @string inMethodName,
                                 let [@formalParameterForGeneration] inFormalArgumentList,
-                                let @semanticInstructionListForGeneration inInstructionList,
+                                let [@semanticInstructionForGeneration] inInstructionList,
                                 !@string outGeneratedCode ) {
   let className = inReceiverType.definition.typeName.string
 //--- Build unused variable set
@@ -627,8 +627,8 @@ proc generateExtensionMethodNew (let @unifiedTypeMapEntry inReceiverType,
   var @string routineBody = ""
   !?routineBody.incIndentation (2)
   for entry in inInstructionList do
-    entry.mInstruction.generateInstruction
-      (!?ioInclusionSet,
+    entry.generateInstruction (
+      !?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,
       false, // inGenerateSyntaxDirectedTranslationString
@@ -756,7 +756,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
   template initializerImplementation : "initializer.cpp.galgasTemplate" (
     ?@string CLASS_NAME,
     ?@string INITIALIZER_NAME,
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
+    ?[@formalInputParameterForGeneration] FORMAL_ARGUMENT_LIST,
     ?@string INITIALIZER_IMPLEMENTATION
   )
 
@@ -764,28 +764,28 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
   template abstractExtensionGetterDeclaration : "abstract-extension-func.h.galgasTemplate" (
     ?@string CLASS_NAME,
     ?@string GETTER_NAME,
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
+    ?[@formalInputParameterForGeneration] FORMAL_ARGUMENT_LIST,
     ?@unifiedTypeMapEntry RETURN_TYPE
   )
 
   template abstractExtensionGetterImplementation : "abstract-extension-func.cpp.galgasTemplate" (
     ?@string CLASS_NAME,
     ?@string GETTER_NAME,
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
+    ?[@formalInputParameterForGeneration] FORMAL_ARGUMENT_LIST,
     ?@unifiedTypeMapEntry RETURN_TYPE
   )
 
   template extensionGetterDeclaration : "extension-func.h.galgasTemplate" (
     ?@string CLASS_NAME,
     ?@string GETTER_NAME,
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
+    ?[@formalInputParameterForGeneration] FORMAL_ARGUMENT_LIST,
     ?@unifiedTypeMapEntry RETURN_TYPE
   )
 
   template extensionGetterImplementation : "extension-func.cpp.galgasTemplate" (
     ?@string CLASS_NAME,
     ?@string GETTER_NAME,
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
+    ?[@formalInputParameterForGeneration] FORMAL_ARGUMENT_LIST,
     ?@string GETTER_IMPLEMENTATION,
     ?@unifiedTypeMapEntry RETURN_TYPE
   )
@@ -859,7 +859,7 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
   template extensionGetterAsFunctionDeclaration : "extension-func-as-function-declaration.h.galgasTemplate" (
     ?@string TYPE_NAME,
     ?@string GETTER_NAME,
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
+    ?[@formalInputParameterForGeneration] FORMAL_ARGUMENT_LIST,
     ?@string RETURN_TYPE_IDENTIFIER
   )
 
@@ -892,15 +892,13 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
 //--- Function
   template functionDeclaration : "function-declaration.h.galgasTemplate" (
     ?@string FUNCTION_NAME,
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
+    ?[@formalInputParameterForGeneration] FORMAL_ARGUMENT_LIST,
     ?@string RETURN_TYPE_IDENTIFIER
   )
 
   template functionImplementation : "function-implementation.cpp.galgasTemplate" (
     ?@string FUNCTION_NAME,
     ?@string FUNCTION_IMPLEMENTATION
-//    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
-//    ?@string RETURN_TYPE_IDENTIFIER
   )
 
 //--- Routine
@@ -917,20 +915,20 @@ filewrapper semanticComponentGenerationTemplate in "+generation-templates/semant
   template onceFunctionImplementation : "once-function-implementation.cpp.galgasTemplate" (
     ?@string FUNCTION_NAME,
     ?@string FUNCTION_IMPLEMENTATION,
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
+    ?[@formalInputParameterForGeneration] FORMAL_ARGUMENT_LIST,
     ?@string RETURN_TYPE_IDENTIFIER
   )
 
   template filewrapperTemplateDeclaration : "filewrapper-template.h.galgasTemplate" (
     ?@string FILEWRAPPER_NAME,
     ?@string TEMPLATE_NAME,
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?[@formalInputParameterForGeneration] FORMAL_ARGUMENT_LIST
   )
 
   template filewrapperTemplateImplementation : "filewrapper-template.cpp.galgasTemplate" (
     ?@string FILEWRAPPER_NAME,
     ?@string TEMPLATE_NAME,
-    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST,
+    ?[@formalInputParameterForGeneration] FORMAL_ARGUMENT_LIST,
     ?@stringset UNUSED_VAR_SET,
     ?@bool USES_COLUMN_MARKER,
     ?@string GENERATED_INSTRUCTION_STRING
@@ -970,7 +968,7 @@ override proc @onceFunctionDeclarationForGeneration.appendDeclaration1
   !@string outHeader ) {
   outHeader = filewrapper [semanticComponentGenerationTemplate.functionDeclaration :
     self.mFunctionName,
-    @formalInputParameterListForGeneration (),
+    [@formalInputParameterForGeneration] (),
     self.mReturnType.identifierRepresentation
   ]
 }
@@ -1032,7 +1030,7 @@ override proc @onceFunctionDeclarationForGeneration.appendSpecificImplementation
   generateFunction (
     "onceFunction_" + self.mFunctionName.identifierRepresentation,
     !?ioInclusionSet,
-    @formalInputParameterListForGeneration (),
+    [@formalInputParameterForGeneration] (),
     self.mFunctionInstructionList,
     "Compiler",
     self.mReturnType,
@@ -1044,7 +1042,7 @@ override proc @onceFunctionDeclarationForGeneration.appendSpecificImplementation
   outImplementation = filewrapper [semanticComponentGenerationTemplate.onceFunctionImplementation :
     self.mFunctionName,
     code,
-    @formalInputParameterListForGeneration (),
+    [@formalInputParameterForGeneration] (),
     self.mReturnType.identifierRepresentation
   ]
 }
@@ -1226,7 +1224,7 @@ proc generateWrapperContents
       ioImplementation += " = "
       if contents.count > 100 then
         var components = contents.componentsSeparatedByString ("\n")
-        !?components.popLast (?let lastLine)
+        !?components.removeLast (?let lastLine)
         for (mValue) in components
         before
           ioImplementation += "\n  "

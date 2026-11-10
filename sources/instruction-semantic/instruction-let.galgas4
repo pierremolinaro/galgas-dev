@@ -170,7 +170,7 @@ override proc @undefinedLocalConstantDeclarationAST.analyzeSemanticInstruction (
                         ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
                         let @analysisContext _inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
   let targetType = ioTypeMap.typeMapEntryForLKey (self.mConstantTypeName)
   let targetVariableCppName = "var_" + self.mConstantName.string.identifierRepresentation
@@ -182,10 +182,10 @@ override proc @undefinedLocalConstantDeclarationAST.analyzeSemanticInstruction (
     targetVariableCppName
   )
 //--- Generate instruction
-  ioInstructionListForGeneration ++= @(@undefinedLocalConstantDeclarationForGeneration (
+  ioInstructionListForGeneration ++= @undefinedLocalConstantDeclarationForGeneration (
     targetType,
     targetVariableCppName
-  ))
+  )
 }
 
 //·································································································
@@ -195,11 +195,11 @@ override proc @localConstantDeclarationWithAssignmentAST.analyzeSemanticInstruct
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
 //--- Analyze source expression
-  self.mSourceExpression.analyzeSemanticExpression
-    (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+  self.mSourceExpression.analyzeSemanticExpression (
+    !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
     !?ioUsefulEntitiesGraph,
     !inferenceType: .null,
     inAnalysisContext,
@@ -217,11 +217,12 @@ override proc @localConstantDeclarationWithAssignmentAST.analyzeSemanticInstruct
     targetVariableCppName
   )
 //--- Generate instruction
-  ioInstructionListForGeneration ++= @(@localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
+  ioInstructionListForGeneration ++= @localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
     expression.mResultType,
     true,
     targetVariableCppName,
-    expression))
+    expression
+  )
 }
 
 //·································································································
@@ -231,7 +232,7 @@ override proc @localVariableOrConstantDeclarationWithAssignmentAST.analyzeSemant
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
   let targetType = ioTypeMap.typeMapEntryForLKey (self.mOptionalTypeName)
 //--- Analyze source expression
@@ -266,12 +267,12 @@ override proc @localVariableOrConstantDeclarationWithAssignmentAST.analyzeSemant
 //--- Check assignment type compatibility
   checkAssignmentTypeWithImplicitGetterCall (targetType, expression.mResultType, self.mInstructionLocation, !?expression)
 //--- Generate instruction
-  ioInstructionListForGeneration ++= @(@localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
+  ioInstructionListForGeneration ++= @localVariableOrConstantDeclarationWithSourceExpressionForGeneration (
     targetType,
     self.mIsConstant,
     targetVariableCppName,
     expression
-  ))
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

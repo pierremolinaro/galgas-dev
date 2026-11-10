@@ -202,7 +202,7 @@ class GGS_typeMethodCallInstructionForGeneration : public GGS_semanticInstructio
 
   public: class GGS_lstring readProperty_mMethodName (void) const ;
 
-  public: class GGS_actualParameterListForGeneration readProperty_mActualParameterList (void) const ;
+  public: class GGS__5B_actualParameterForGeneration_5D_ readProperty_mActualParameterList (void) const ;
 
   public: class GGS_bool readProperty_mHasCompilerArgument (void) const ;
 
@@ -211,7 +211,7 @@ class GGS_typeMethodCallInstructionForGeneration : public GGS_semanticInstructio
 //--------------------------------- Initializers
   public: static GGS_typeMethodCallInstructionForGeneration init_21__21__21__21_ (const class GGS_lstring & inOperand0,
                                                                                   const class GGS_lstring & inOperand1,
-                                                                                  const class GGS_actualParameterListForGeneration & inOperand2,
+                                                                                  const class GGS__5B_actualParameterForGeneration_5D_ & inOperand2,
                                                                                   const class GGS_bool & inOperand3,
                                                                                   Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
@@ -250,7 +250,7 @@ class cPtr_typeMethodCallInstructionForGeneration : public cPtr_semanticInstruct
 //--------------------------------- Initializers
   public: void typeMethodCallInstructionForGeneration_init_21__21__21__21_ (const class GGS_lstring & inOperand0,
                                                                             const class GGS_lstring & inOperand1,
-                                                                            const class GGS_actualParameterListForGeneration & inOperand2,
+                                                                            const class GGS__5B_actualParameterForGeneration_5D_ & inOperand2,
                                                                             const class GGS_bool & inOperand3,
                                                                             Compiler * inCompiler) ;
 
@@ -266,7 +266,7 @@ class cPtr_typeMethodCallInstructionForGeneration : public cPtr_semanticInstruct
 //--- Properties
   public: GGS_lstring mProperty_mTypeName ;
   public: GGS_lstring mProperty_mMethodName ;
-  public: GGS_actualParameterListForGeneration mProperty_mActualParameterList ;
+  public: GGS__5B_actualParameterForGeneration_5D_ mProperty_mActualParameterList ;
   public: GGS_bool mProperty_mHasCompilerArgument ;
 
 
@@ -276,7 +276,7 @@ class cPtr_typeMethodCallInstructionForGeneration : public cPtr_semanticInstruct
 //--- Constructor
   public: cPtr_typeMethodCallInstructionForGeneration (const GGS_lstring & in_mTypeName,
                                                        const GGS_lstring & in_mMethodName,
-                                                       const GGS_actualParameterListForGeneration & in_mActualParameterList,
+                                                       const GGS__5B_actualParameterForGeneration_5D_ & in_mActualParameterList,
                                                        const GGS_bool & in_mHasCompilerArgument,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
@@ -674,26 +674,26 @@ class GGS__5B_templateDelimitor_32_AST_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_templateDelimitor_32_AST constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_templateDelimitor_32_AST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_templateDelimitor_32_AST & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_templateDelimitor_32_AST & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_templateDelimitor_32_AST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_templateDelimitor_32_AST & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_templateDelimitor_32_AST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_templateDelimitor_32_AST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -959,26 +959,26 @@ class GGS__5B_templateReplacementAST_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_templateReplacementAST constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_templateReplacementAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_templateReplacementAST & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_templateReplacementAST & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_templateReplacementAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_templateReplacementAST & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_templateReplacementAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_templateReplacementAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -1222,26 +1222,26 @@ class GGS__5B_lexicalAttributeAST_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_lexicalAttributeAST constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_lexicalAttributeAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_lexicalAttributeAST & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_lexicalAttributeAST & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_lexicalAttributeAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_lexicalAttributeAST & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_lexicalAttributeAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_lexicalAttributeAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -1474,26 +1474,26 @@ class GGS__5B_lexicalMessageDeclarationAST_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_lexicalMessageDeclarationAST constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_lexicalMessageDeclarationAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_lexicalMessageDeclarationAST & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_lexicalMessageDeclarationAST & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_lexicalMessageDeclarationAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_lexicalMessageDeclarationAST & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_lexicalMessageDeclarationAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_lexicalMessageDeclarationAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -1726,26 +1726,26 @@ class GGS__5B_abstractLexicalRuleAST_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_abstractLexicalRuleAST constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_abstractLexicalRuleAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_abstractLexicalRuleAST & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_abstractLexicalRuleAST & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_abstractLexicalRuleAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_abstractLexicalRuleAST & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_abstractLexicalRuleAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_abstractLexicalRuleAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -1991,26 +1991,26 @@ class GGS__5B_indexingAST_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_indexingAST constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_indexingAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_indexingAST & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_indexingAST & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_indexingAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_indexingAST & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_indexingAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_indexingAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -3635,26 +3635,26 @@ class GGS__5B_lexicalListEntryAST_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_lexicalListEntryAST constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_lexicalListEntryAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_lexicalListEntryAST & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_lexicalListEntryAST & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_lexicalListEntryAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_lexicalListEntryAST & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_lexicalListEntryAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_lexicalListEntryAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -3990,26 +3990,26 @@ class GGS__5B_lexicalInstructionAST_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_lexicalInstructionAST constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_lexicalInstructionAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_lexicalInstructionAST & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_lexicalInstructionAST & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_lexicalInstructionAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_lexicalInstructionAST & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_lexicalInstructionAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_lexicalInstructionAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -4353,26 +4353,26 @@ class GGS__5B_semanticDeclarationAST_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_semanticDeclarationAST constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_semanticDeclarationAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_semanticDeclarationAST & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_semanticDeclarationAST & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_semanticDeclarationAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_semanticDeclarationAST & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_semanticDeclarationAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_semanticDeclarationAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -4530,26 +4530,26 @@ class GGS__5B_semanticDeclarationForGeneration_5D_ final : public AC_GALGAS_root
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_semanticDeclarationForGeneration constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_semanticDeclarationForGeneration constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_semanticDeclarationForGeneration & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_semanticDeclarationForGeneration & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_semanticDeclarationForGeneration & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_semanticDeclarationForGeneration & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_semanticDeclarationForGeneration & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_semanticDeclarationForGeneration & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -4831,26 +4831,26 @@ class GGS__5B_terminalAST_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_terminalAST constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_terminalAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_terminalAST & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_terminalAST & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_terminalAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_terminalAST & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_terminalAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_terminalAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -5378,26 +5378,26 @@ class GGS__5B_templateDelimitorAST_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_templateDelimitorAST constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_templateDelimitorAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_templateDelimitorAST & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_templateDelimitorAST & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_templateDelimitorAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_templateDelimitorAST & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_templateDelimitorAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_templateDelimitorAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -7938,26 +7938,26 @@ class GGS__5B_formalParameterAST_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_formalParameterAST constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_formalParameterAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_formalParameterAST & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_formalParameterAST & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_formalParameterAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_formalParameterAST & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_formalParameterAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_formalParameterAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -8303,26 +8303,26 @@ class GGS__5B_formalInputParameterAST_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_formalInputParameterAST constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_formalInputParameterAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_formalInputParameterAST & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_formalInputParameterAST & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_formalInputParameterAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_formalInputParameterAST & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_formalInputParameterAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_formalInputParameterAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -8588,26 +8588,26 @@ class GGS__5B_filewrapperTemplateAST_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_filewrapperTemplateAST constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_filewrapperTemplateAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_filewrapperTemplateAST & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_filewrapperTemplateAST & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_filewrapperTemplateAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_filewrapperTemplateAST & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_filewrapperTemplateAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_filewrapperTemplateAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -8765,26 +8765,26 @@ class GGS__5B_formalTemplateInputParameterAST_5D_ final : public AC_GALGAS_root 
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_formalTemplateInputParameterAST constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_formalTemplateInputParameterAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_formalTemplateInputParameterAST & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_formalTemplateInputParameterAST & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_formalTemplateInputParameterAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_formalTemplateInputParameterAST & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_formalTemplateInputParameterAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_formalTemplateInputParameterAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods

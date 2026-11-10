@@ -228,7 +228,7 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
     error (self.mFilewrapperPath : "the path should not begin with '/'" spoil directoryList, fileName)
   else
     directoryList = self.mFilewrapperPath.componentsSeparatedByString ("/")
-    !?directoryList.popLast (?fileName)
+    !?directoryList.removeLast (?fileName)
   end
 //--- Get filewrapper features
   inAnalysisContext.semanticContext.mFilewrapperMap.searchKey
@@ -251,7 +251,7 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   var @string builtPath = ""
   loop (filewrapperDirectoryMap.count + 1)
   while directoryList.count > 0 do
-    !?directoryList.popFirst (?let directoryName)
+    !?directoryList.removeFirst (?let directoryName)
     builtPath += directoryName + "/"
     if filewrapperDirectoryMap.contains (directoryName) then
       filewrapperDirectoryMap.searchKey

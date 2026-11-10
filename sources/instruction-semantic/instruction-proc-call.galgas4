@@ -37,7 +37,7 @@ final class @procCallInstructionAST : @semanticInstructionAST {
                                               ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                                               let @analysisContext inAnalysisContext,
                                               ?!@unifiedTypeMap ioTypeMap,
-                                              ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                                              ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                                               ?!@localVarManager ioVariableMap) {
    //--- Get routine signature
     inAnalysisContext.semanticContext.routineMap.searchKey (
@@ -68,13 +68,13 @@ final class @procCallInstructionAST : @semanticInstructionAST {
       routineSignature,
       !?ioVariableMap,
       !?ioInstructionListForGeneration,
-      ?let @actualParameterListForGeneration actualParameterListForGeneration
+      ?let [@actualParameterForGeneration] actualParameterListForGeneration
     )
   //--- Generate instruction
-    ioInstructionListForGeneration ++= @(@procCallInstructionForGeneration (
+    ioInstructionListForGeneration ++= @procCallInstructionForGeneration (
       !routineMangledName: routineMangledName,
       actualParameterListForGeneration
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -87,7 +87,7 @@ final class @procCallInstructionAST : @semanticInstructionAST {
 
 final class @procCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @lstring routineMangledName #initArgLabel
-  private let @actualParameterListForGeneration mActualParameterList
+  private let [@actualParameterForGeneration] mActualParameterList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -103,7 +103,7 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
     var [@string] jokerParametersToReleaseList = @()
     var [@string] inputVariableList = @()
     for entry in self.mActualParameterList do
-      entry.mActualParameter.generateActualParameter (
+      entry.generateActualParameter (
         !?ioInclusionSet,
         !?ioTemporaryVariableIndex,
         !?ioGeneratedCode,
@@ -124,7 +124,7 @@ final class @procCallInstructionForGeneration : @semanticInstructionForGeneratio
     ioGeneratedCode += "}\n"
   //--- Generate poisoned variables
     for entry in self.mActualParameterList do
-      entry.mActualParameter.generatePoisonedVariables (
+      entry.generatePoisonedVariables (
         !?ioGeneratedCode,
         !?ioUnusedVariableCppNameSet
       )

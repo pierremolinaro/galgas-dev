@@ -111,7 +111,7 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
                                             let @nonterminalMap inNonterminalMap,
                                             let @string _inComponentName,
                                             let @stringset _inIndexNameSet,
-                                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                                            ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                                             ?!@localVarManager ioVariableMap,
                                             ?!@uint _ioSelectMethodCount ) {
     inNonterminalMap.searchKey (self.mNonterminalName, ?let @nonterminalLabelMap labelMap)
@@ -128,7 +128,7 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
       signature,
       !?ioVariableMap,
       !?ioInstructionListForGeneration,
-      ?let @actualParameterListForGeneration actualParameterListForGeneration
+      ?let [@actualParameterForGeneration] actualParameterListForGeneration
     )
   //--- Check syntax directed translation destination variable
     self.mGrammarInstructionSyntaxDirectedTranslationResult.analyzeSDT
@@ -138,13 +138,13 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
       !?ioVariableMap
     )
   //--- Generate instructions
-    ioInstructionListForGeneration ++= @(@nonterminalInstructionForGeneration (
+    ioInstructionListForGeneration ++= @nonterminalInstructionForGeneration (
       self.mInstructionLocation,
       self.mNonterminalName.string,
       "",
       actualParameterListForGeneration,
       self.mGrammarInstructionSyntaxDirectedTranslationResult
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -158,7 +158,7 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
 final class @nonterminalInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @string mNonterminalName
   private let @string mLabelName
-  private let @actualParameterListForGeneration mActualParameterList
+  private let [@actualParameterForGeneration] mActualParameterList
   private let @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
 }
 
@@ -168,15 +168,15 @@ final class @nonterminalInstructionForGeneration : @syntaxInstructionForGenerati
 
 override proc @nonterminalInstructionForGeneration.appendSyntaxSignature
   (let @string inPosfix,
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?![@semanticInstructionForGeneration] ioInstructionListForGeneration
 ) {
-  ioInstructionListForGeneration ++= @(@nonterminalInstructionForGeneration (
+  ioInstructionListForGeneration ++= @nonterminalInstructionForGeneration (
     self.mInstructionLocation,
     self.mNonterminalName,
     inPosfix,
-    @actualParameterListForGeneration (),
+    [@actualParameterForGeneration] (),
     @grammarInstructionSyntaxDirectedTranslationResultNone ()
-  ))
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -220,7 +220,7 @@ override proc @nonterminalInstructionForGeneration.generateInstruction (?!@strin
   var jokerParametersToReleaseList = [@string] ()
   var inputVariableList = [@string] ()
   for parameter in self.mActualParameterList do
-    parameter.mActualParameter.generateActualParameter
+    parameter.generateActualParameter
       (!?ioInclusionSet,
       !?ioTemporaryVariableIndex,
       !?ioGeneratedCode,

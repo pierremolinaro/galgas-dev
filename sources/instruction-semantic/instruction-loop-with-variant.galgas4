@@ -98,7 +98,7 @@ override proc @loopInstructionWithVariantAST.analyzeSemanticInstruction (
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
 //--- Variant expression
   self.mVariantExpression.analyzeSemanticExpression
@@ -162,12 +162,13 @@ override proc @loopInstructionWithVariantAST.analyzeSemanticInstruction (
 //--- End override
   !?ioVariableMap.closeOverride (self.mEndOfLoopInstruction)
 //--- Generate instruction
-  ioInstructionListForGeneration ++= @( @loopInstructionWithVariantForGeneration (
+  ioInstructionListForGeneration ++= @loopInstructionWithVariantForGeneration (
     self.mInstructionLocation,
     variantExpression,
     first_instructionList,
     loopExpression,
-    second_instructionList))
+    second_instructionList
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -177,9 +178,9 @@ override proc @loopInstructionWithVariantAST.analyzeSemanticInstruction (
 final class @loopInstructionWithVariantForGeneration : @semanticInstructionForGeneration {
   public let @location mInstructionLocation
   public let @semanticExpressionForGeneration mVariantExpression
-  public let @semanticInstructionListForGeneration mFirstInstructions
+  public let [@semanticInstructionForGeneration] mFirstInstructions
   public let @semanticExpressionForGeneration mLoopExpression
-  public let @semanticInstructionListForGeneration mSecondInstructions
+  public let [@semanticInstructionForGeneration] mSecondInstructions
 }
 
 //·································································································

@@ -5,12 +5,12 @@
 //--------------------------------------------------------------------------------------------------
 
 class GGS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
-  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do
+  for (formalArg) in FORMAL_ARGUMENT_LIST do
     %,\n%!^
-    if mIsConstant then
-      %const class GGS_%![mFormalArgumentType identifierRepresentation]% constin_%![mFormalArgumentName identifierRepresentation]
+    if formalArg.mIsConstant then
+      %const class GGS_%![formalArg.mFormalArgumentType identifierRepresentation]% constin_%![formalArg.mFormalArgumentName identifierRepresentation]
     else
-      %class GGS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
+      %class GGS_%![formalArg.mFormalArgumentType identifierRepresentation]% in_%![formalArg.mFormalArgumentName identifierRepresentation]
     end
   end
   %,\n%!^%class Compiler * inCompiler%

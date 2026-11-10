@@ -194,7 +194,7 @@ final class @procDeclarationAST : @externProcedureDeclarationAST {
 
 final class @routineImplementationForGeneration : @routinePrototypeDeclarationForGeneration {
   public let @bool mGenerateStatic
-  public let @semanticInstructionListForGeneration mRoutineInstructionList
+  public let [@semanticInstructionForGeneration] mRoutineInstructionList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

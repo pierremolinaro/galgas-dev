@@ -154,7 +154,7 @@ class cPtr_localVariableOrConstantDeclarationWithAssignmentAST : public cPtr_sem
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -332,7 +332,7 @@ class cPtr_undefinedLocalConstantDeclarationAST : public cPtr_semanticInstructio
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -506,7 +506,7 @@ class cPtr_localConstantDeclarationWithAssignmentAST : public cPtr_semanticInstr
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -676,7 +676,7 @@ class cPtr_dropInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -848,7 +848,7 @@ class cPtr_localVariableDeclarationWithAssignmentAST : public cPtr_semanticInstr
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1022,7 +1022,7 @@ class cPtr_localVariableDeclarationNoAssignmentAST : public cPtr_semanticInstruc
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1192,7 +1192,7 @@ class cPtr_selfAssignmentInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1360,7 +1360,7 @@ class cPtr_superInitInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1536,7 +1536,7 @@ class cPtr_typeMethodCallInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1716,7 +1716,7 @@ class cPtr_assignmentInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1896,7 +1896,7 @@ class cPtr_selfPropertyAssignmentInstructionAST : public cPtr_semanticInstructio
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2314,7 +2314,7 @@ class GGS_grammarForGeneration : public GGS_semanticDeclarationWithHeaderForGene
 
   public: class GGS_nonTerminalSymbolMapForGrammarAnalysis readProperty_mNonTerminalMapForGrammarAnalysis (void) const ;
 
-  public: class GGS_nonTerminalToAddList readProperty_mNonTerminalToAddList (void) const ;
+  public: class GGS__5B_nonTerminalToAdd_5D_ readProperty_mNonTerminalToAddList (void) const ;
 
   public: class GGS__5B_lstring_5D_ readProperty_mSyntaxComponents (void) const ;
 
@@ -2333,7 +2333,7 @@ class GGS_grammarForGeneration : public GGS_semanticDeclarationWithHeaderForGene
                                                                                                                                               const class GGS_string & inOperand3,
                                                                                                                                               const class GGS_string & inOperand4,
                                                                                                                                               const class GGS_nonTerminalSymbolMapForGrammarAnalysis & inOperand5,
-                                                                                                                                              const class GGS_nonTerminalToAddList & inOperand6,
+                                                                                                                                              const class GGS__5B_nonTerminalToAdd_5D_ & inOperand6,
                                                                                                                                               const class GGS__5B_lstring_5D_ & inOperand7,
                                                                                                                                               const class GGS_string & inOperand8,
                                                                                                                                               const class GGS_bool & inOperand9,
@@ -2379,7 +2379,7 @@ class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGe
                                                                                                                                         const class GGS_string & inOperand3,
                                                                                                                                         const class GGS_string & inOperand4,
                                                                                                                                         const class GGS_nonTerminalSymbolMapForGrammarAnalysis & inOperand5,
-                                                                                                                                        const class GGS_nonTerminalToAddList & inOperand6,
+                                                                                                                                        const class GGS__5B_nonTerminalToAdd_5D_ & inOperand6,
                                                                                                                                         const class GGS__5B_lstring_5D_ & inOperand7,
                                                                                                                                         const class GGS_string & inOperand8,
                                                                                                                                         const class GGS_bool & inOperand9,
@@ -2414,7 +2414,7 @@ class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGe
   public: GGS_string mProperty_mGrammarName ;
   public: GGS_string mProperty_mLexiqueName ;
   public: GGS_nonTerminalSymbolMapForGrammarAnalysis mProperty_mNonTerminalMapForGrammarAnalysis ;
-  public: GGS_nonTerminalToAddList mProperty_mNonTerminalToAddList ;
+  public: GGS__5B_nonTerminalToAdd_5D_ mProperty_mNonTerminalToAddList ;
   public: GGS__5B_lstring_5D_ mProperty_mSyntaxComponents ;
   public: GGS_string mProperty_mStartSymbolName ;
   public: GGS_bool mProperty_mHasTranslateFeature ;
@@ -2431,7 +2431,7 @@ class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGe
                                      const GGS_string & in_mGrammarName,
                                      const GGS_string & in_mLexiqueName,
                                      const GGS_nonTerminalSymbolMapForGrammarAnalysis & in_mNonTerminalMapForGrammarAnalysis,
-                                     const GGS_nonTerminalToAddList & in_mNonTerminalToAddList,
+                                     const GGS__5B_nonTerminalToAdd_5D_ & in_mNonTerminalToAddList,
                                      const GGS__5B_lstring_5D_ & in_mSyntaxComponents,
                                      const GGS_string & in_mStartSymbolName,
                                      const GGS_bool & in_mHasTranslateFeature,
@@ -2994,7 +2994,7 @@ void callExtensionMethod_analyzeSemanticInstruction (class cPtr_semanticInstruct
                                                      class GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const class GGS_analysisContext constin_inAnalysisContext,
                                                      class GGS_unifiedTypeMap & io_ioTypeMap,
-                                                     class GGS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                                     class GGS__5B_semanticInstructionForGeneration_5D_ & io_ioInstructionListForGeneration,
                                                      class GGS_localVarManager & io_ioVariableMap,
                                                      class Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
@@ -3008,148 +3008,6 @@ void callExtensionMethod_analyzeSemanticInstruction (class cPtr_semanticInstruct
 class GGS_string extensionGetter_correspondingEffectiveParameterString (const class GGS_formalArgumentPassingModeAST & inObject,
                                                                         class Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @overrideExtensionGetterForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_overrideExtensionGetterForGeneration : public GGS_semanticDeclarationWithHeaderForGeneration {
-//--------------------------------- Default constructor
-  public: GGS_overrideExtensionGetterForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_overrideExtensionGetterForGeneration (const class cPtr_overrideExtensionGetterForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_unifiedTypeMapEntry readProperty_mReceiverType (void) const ;
-
-  public: class GGS_string readProperty_mBaseTypeName (void) const ;
-
-  public: class GGS_string readProperty_mOverridingExtensionGetterName (void) const ;
-
-  public: class GGS_unifiedTypeMapEntry readProperty_mResultType (void) const ;
-
-  public: class GGS_string readProperty_mResultVarCppName (void) const ;
-
-  public: class GGS_formalInputParameterListForGeneration readProperty_mOverridingExtensionGetterFormalParameterList (void) const ;
-
-  public: class GGS__5B_typedProperty_5D_ readProperty_mTypedAttributeList (void) const ;
-
-  public: class GGS_semanticInstructionListForGeneration readProperty_mSemanticInstructionListForGeneration (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_overrideExtensionGetterForGeneration init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                                                                              const class GGS_bool & inOperand1,
-                                                                                                                                                              const class GGS_string & inOperand2,
-                                                                                                                                                              const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                                                                                                              const class GGS_string & inOperand4,
-                                                                                                                                                              const class GGS_string & inOperand5,
-                                                                                                                                                              const class GGS_unifiedTypeMapEntry & inOperand6,
-                                                                                                                                                              const class GGS_string & inOperand7,
-                                                                                                                                                              const class GGS_formalInputParameterListForGeneration & inOperand8,
-                                                                                                                                                              const class GGS__5B_typedProperty_5D_ & inOperand9,
-                                                                                                                                                              const class GGS_semanticInstructionListForGeneration & inOperand10,
-                                                                                                                                                              Compiler * inCompiler
-                                                                                                                                                              COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_overrideExtensionGetterForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overrideExtensionGetterForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @overrideExtensionGetterForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_overrideExtensionGetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void overrideExtensionGetterForGeneration_init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                                                                        const class GGS_bool & inOperand1,
-                                                                                                                                                        const class GGS_string & inOperand2,
-                                                                                                                                                        const class GGS_unifiedTypeMapEntry & inOperand3,
-                                                                                                                                                        const class GGS_string & inOperand4,
-                                                                                                                                                        const class GGS_string & inOperand5,
-                                                                                                                                                        const class GGS_unifiedTypeMapEntry & inOperand6,
-                                                                                                                                                        const class GGS_string & inOperand7,
-                                                                                                                                                        const class GGS_formalInputParameterListForGeneration & inOperand8,
-                                                                                                                                                        const class GGS__5B_typedProperty_5D_ & inOperand9,
-                                                                                                                                                        const class GGS_semanticInstructionListForGeneration & inOperand10,
-                                                                                                                                                        Compiler * inCompiler) ;
-
-
-//--- Extension func headerKind
-  public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension proc appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg__inUnifiedTypeMap,
-           class GGS_stringset & arg__ioInclusionSet,
-           class GGS_string & arg_outImplementation,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_unifiedTypeMapEntry mProperty_mReceiverType ;
-  public: GGS_string mProperty_mBaseTypeName ;
-  public: GGS_string mProperty_mOverridingExtensionGetterName ;
-  public: GGS_unifiedTypeMapEntry mProperty_mResultType ;
-  public: GGS_string mProperty_mResultVarCppName ;
-  public: GGS_formalInputParameterListForGeneration mProperty_mOverridingExtensionGetterFormalParameterList ;
-  public: GGS__5B_typedProperty_5D_ mProperty_mTypedAttributeList ;
-  public: GGS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGeneration ;
-
-
-//--- Default constructor
-  public: cPtr_overrideExtensionGetterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_overrideExtensionGetterForGeneration (const GGS_string & in_infoMessage,
-                                                     const GGS_bool & in_generateHeader,
-                                                     const GGS_string & in_implementationCppFileName,
-                                                     const GGS_unifiedTypeMapEntry & in_mReceiverType,
-                                                     const GGS_string & in_mBaseTypeName,
-                                                     const GGS_string & in_mOverridingExtensionGetterName,
-                                                     const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                     const GGS_string & in_mResultVarCppName,
-                                                     const GGS_formalInputParameterListForGeneration & in_mOverridingExtensionGetterFormalParameterList,
-                                                     const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
-                                                     const GGS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @overrideExtensionGetterForGeneration_2E_weak weak reference class
@@ -5416,7 +5274,7 @@ class cPtr_logInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 

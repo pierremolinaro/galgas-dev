@@ -99,8 +99,8 @@ for (lkey mNonTerminalIndex mNonterminalSymbolParametersMap) in NON_TERMINAL_MAP
   end
 end
 
-for (mSyntaxComponentName mNonTerminalToAddCount) in ADDED_NON_TERMINAL_LIST
-  do %  public: virtual int32_t select_%![mSyntaxComponentName identifierRepresentation]%_%![mNonTerminalToAddCount string]% (Lexique_%!LEXIQUE_IDENTIFIER% *) ;\n%
+for (terminal) in ADDED_NON_TERMINAL_LIST
+  do %  public: virtual int32_t select_%![terminal.mSyntaxComponentName identifierRepresentation]%_%![terminal.mNonTerminalToAddCount string]% (Lexique_%!LEXIQUE_IDENTIFIER% *) ;\n%
   between %\n%
 end
 %} ;

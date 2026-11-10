@@ -233,7 +233,7 @@ filewrapper grammarGenerationTemplate in "+generation-templates/grammar_generati
   template grammarZone3HeaderGalgas3 : "grammar-zone3-galgas3.h.galgasTemplate" (
     ?@string LEXIQUE_IDENTIFIER,
     ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP,
-    ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST,
+    ?[@nonTerminalToAdd] ADDED_NON_TERMINAL_LIST,
     ?@string START_SYMBOL_NAME,
     ?@bool HAS_TRANSLATE_FEATURE,
     ?@string GRAMMAR_NAME,

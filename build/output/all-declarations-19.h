@@ -68,7 +68,7 @@ void routine_analyzeSyntaxInstructionList_3F__26__3F__26__3F__3F__3F__3F__3F__3F
                                                                                                        const class GGS_stringset constinArgument11,
                                                                                                        class GGS_localVarManager & ioArgument12,
                                                                                                        class GGS_uint & ioArgument13,
-                                                                                                       class GGS_semanticInstructionListForGeneration & outArgument14,
+                                                                                                       class GGS__5B_semanticInstructionForGeneration_5D_ & outArgument14,
                                                                                                        class Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) ;
 
@@ -78,8 +78,8 @@ void routine_analyzeSyntaxInstructionList_3F__26__3F__26__3F__3F__3F__3F__3F__3F
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_bool function_compareSyntaxSignature (const class GGS_semanticInstructionListForGeneration & constinArgument0,
-                                                const class GGS_semanticInstructionListForGeneration & constinArgument1,
+class GGS_bool function_compareSyntaxSignature (const class GGS__5B_semanticInstructionForGeneration_5D_ & constinArgument0,
+                                                const class GGS__5B_semanticInstructionForGeneration_5D_ & constinArgument1,
                                                 const class GGS_location & constinArgument2,
                                                 class Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;

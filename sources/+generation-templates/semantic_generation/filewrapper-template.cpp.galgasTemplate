@@ -10,12 +10,12 @@ GGS_string filewrapperTemplate_%![FILEWRAPPER_NAME identifierRepresentation]%_%!
   else
     !compilerCppName ()
   end
-  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do
-    %,\n%!^%const GGS_%![mFormalArgumentType identifierRepresentation]% & %
-    if [UNUSED_VAR_SET contains !mFormalArgumentCppName] then
-      %/* %!mFormalArgumentCppName% */%
+  for (formalArg) in FORMAL_ARGUMENT_LIST do
+    %,\n%!^%const GGS_%![formalArg.mFormalArgumentType identifierRepresentation]% & %
+    if [UNUSED_VAR_SET contains !formalArg.mFormalArgumentCppName] then
+      %/* %!formalArg.mFormalArgumentCppName% */%
     else
-      !mFormalArgumentCppName
+      !formalArg.mFormalArgumentCppName
     end
   end
 %\n %!^%COMMA_UNUSED_LOCATION_ARGS) {

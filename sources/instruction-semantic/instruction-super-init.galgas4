@@ -87,7 +87,7 @@ final class @superInitInstructionAST : @semanticInstructionAST {
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
   //--- Check the call occurs in an class initializer
    if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable,
@@ -142,12 +142,12 @@ final class @superInitInstructionAST : @semanticInstructionAST {
           actualParameterListForGeneration ++= expression
         end
       //--- Generate instructions
-        ioInstructionListForGeneration ++= @(@superInitInstructionForGeneration (
+        ioInstructionListForGeneration ++= @superInitInstructionForGeneration (
           self.mInstructionLocation,
           formalSignature.initializerSignature,
           actualParameterListForGeneration,
           superTypeDefinition.typeName
-        ))
+        )
      case null :
        error (self.mInstructionLocation : "superinit  is not available, current class has no super class")
      end

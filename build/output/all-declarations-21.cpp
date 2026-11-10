@@ -17903,21 +17903,7 @@ const cDirectoryWrapper gWrapperDirectory_13_libpmFileWrapper (
 const char * gWrapperFileContent_124_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  AC_GALGAS_enumAssociatedValues : class for enum associated values\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2014, ..., 2024 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -18003,7 +17989,7 @@ const cRegularFileWrapper gWrapperFile_124_libpmFileWrapper (
   "AC_GALGAS_enumAssociatedValues.cpp",
   "cpp",
   true, // Text file
- 3962, // Text length
+ 3303, // Text length
   gWrapperFileContent_124_libpmFileWrapper
 ) ;
 
@@ -18012,21 +17998,7 @@ const cRegularFileWrapper gWrapperFile_124_libpmFileWrapper (
 const char * gWrapperFileContent_150_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  AC_GALGAS_enumAssociatedValues : class for enum associated values                            \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2014, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -18091,7 +18063,7 @@ const cRegularFileWrapper gWrapperFile_150_libpmFileWrapper (
   "AC_GALGAS_enumAssociatedValues.h",
   "h",
   true, // Text file
- 3050, // Text length
+ 2304, // Text length
   gWrapperFileContent_150_libpmFileWrapper
 ) ;
 
@@ -18100,21 +18072,7 @@ const cRegularFileWrapper gWrapperFile_150_libpmFileWrapper (
 const char * gWrapperFileContent_122_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  AC_GALGAS_reference_class : base class for reference class objects\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2021, ..., 2021 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -18201,7 +18159,7 @@ const cRegularFileWrapper gWrapperFile_122_libpmFileWrapper (
   "AC_GALGAS_reference_class.cpp",
   "cpp",
   true, // Text file
- 3786, // Text length
+ 3126, // Text length
   gWrapperFileContent_122_libpmFileWrapper
 ) ;
 
@@ -18210,21 +18168,7 @@ const cRegularFileWrapper gWrapperFile_122_libpmFileWrapper (
 const char * gWrapperFileContent_104_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  AC_GALGAS_reference_class : base class for reference class objects\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2021, ..., 2023 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -18281,7 +18225,7 @@ const cRegularFileWrapper gWrapperFile_104_libpmFileWrapper (
   "AC_GALGAS_reference_class.h",
   "h",
   true, // Text file
- 2610, // Text length
+ 1950, // Text length
   gWrapperFileContent_104_libpmFileWrapper
 ) ;
 
@@ -18290,21 +18234,9 @@ const cRegularFileWrapper gWrapperFile_104_libpmFileWrapper (
 const char * gWrapperFileContent_156_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  AC_GALGAS_root : root type for all GALGAS types                                              \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
   "//\n"
   "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -18356,7 +18288,7 @@ const cRegularFileWrapper gWrapperFile_156_libpmFileWrapper (
   "AC_GALGAS_root.cpp",
   "cpp",
   true, // Text file
- 2366, // Text length
+ 1659, // Text length
   gWrapperFileContent_156_libpmFileWrapper
 ) ;
 
@@ -18365,21 +18297,7 @@ const cRegularFileWrapper gWrapperFile_156_libpmFileWrapper (
 const char * gWrapperFileContent_147_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  AC_GALGAS_root : root type for all GALGAS types                        \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2010, ..., 2024 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -18468,7 +18386,7 @@ const cRegularFileWrapper gWrapperFile_147_libpmFileWrapper (
   "AC_GALGAS_root.h",
   "h",
   true, // Text file
- 3830, // Text length
+ 3106, // Text length
   gWrapperFileContent_147_libpmFileWrapper
 ) ;
 
@@ -18477,21 +18395,7 @@ const cRegularFileWrapper gWrapperFile_147_libpmFileWrapper (
 const char * gWrapperFileContent_152_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  AC_GALGAS_weak_reference : base class for reference class objects\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2021, ..., 2021 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -18596,7 +18500,7 @@ const cRegularFileWrapper gWrapperFile_152_libpmFileWrapper (
   "AC_GALGAS_weak_reference.cpp",
   "cpp",
   true, // Text file
- 4631, // Text length
+ 3972, // Text length
   gWrapperFileContent_152_libpmFileWrapper
 ) ;
 
@@ -18605,21 +18509,7 @@ const cRegularFileWrapper gWrapperFile_152_libpmFileWrapper (
 const char * gWrapperFileContent_163_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  AC_GALGAS_weak_reference : base class for reference class objects\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2021, ..., 2024 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -18675,7 +18565,7 @@ const cRegularFileWrapper gWrapperFile_163_libpmFileWrapper (
   "AC_GALGAS_weak_reference.h",
   "h",
   true, // Text file
- 2588, // Text length
+ 1929, // Text length
   gWrapperFileContent_163_libpmFileWrapper
 ) ;
 
@@ -18684,21 +18574,7 @@ const cRegularFileWrapper gWrapperFile_163_libpmFileWrapper (
 const char * gWrapperFileContent_178_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  AbstractPtrClass : Base class for GALGAS class                                                    \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2008, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -18717,7 +18593,7 @@ const cRegularFileWrapper gWrapperFile_178_libpmFileWrapper (
   "AbstractPtrClass.cpp",
   "cpp",
   true, // Text file
- 1324, // Text length
+ 573, // Text length
   gWrapperFileContent_178_libpmFileWrapper
 ) ;
 
@@ -18726,21 +18602,7 @@ const cRegularFileWrapper gWrapperFile_178_libpmFileWrapper (
 const char * gWrapperFileContent_158_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  AbstractPtrClass : Base class for GALGAS class                                                    \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2008, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -18780,7 +18642,7 @@ const cRegularFileWrapper gWrapperFile_158_libpmFileWrapper (
   "AbstractPtrClass.h",
   "h",
   true, // Text file
- 2109, // Text length
+ 1358, // Text length
   gWrapperFileContent_158_libpmFileWrapper
 ) ;
 
@@ -18789,21 +18651,7 @@ const cRegularFileWrapper gWrapperFile_158_libpmFileWrapper (
 const char * gWrapperFileContent_154_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  AbstractStrongPtrClass : Base class for reference class class\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2021, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -18903,7 +18751,7 @@ const cRegularFileWrapper gWrapperFile_154_libpmFileWrapper (
   "AbstractStrongPtrClass.cpp",
   "cpp",
   true, // Text file
- 3771, // Text length
+ 3116, // Text length
   gWrapperFileContent_154_libpmFileWrapper
 ) ;
 
@@ -18912,21 +18760,7 @@ const cRegularFileWrapper gWrapperFile_154_libpmFileWrapper (
 const char * gWrapperFileContent_146_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  AbstractStrongPtrClass : Base class for reference class class\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2021, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -18982,7 +18816,7 @@ const cRegularFileWrapper gWrapperFile_146_libpmFileWrapper (
   "AbstractStrongPtrClass.h",
   "h",
   true, // Text file
- 2399, // Text length
+ 1744, // Text length
   gWrapperFileContent_146_libpmFileWrapper
 ) ;
 
@@ -18991,21 +18825,7 @@ const cRegularFileWrapper gWrapperFile_146_libpmFileWrapper (
 const char * gWrapperFileContent_162_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  Built-in GALGAS Command Line Interface Options\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2006, ..., 2023 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -19196,7 +19016,7 @@ const cRegularFileWrapper gWrapperFile_162_libpmFileWrapper (
   "C_galgas_CLI_Options.cpp",
   "cpp",
   true, // Text file
- 9482, // Text length
+ 8842, // Text length
   gWrapperFileContent_162_libpmFileWrapper
 ) ;
 
@@ -19205,21 +19025,7 @@ const cRegularFileWrapper gWrapperFile_162_libpmFileWrapper (
 const char * gWrapperFileContent_123_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GALGAS Command Line Interface Options                                                        \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2006, ..., 2015 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -19296,7 +19102,7 @@ const cRegularFileWrapper gWrapperFile_123_libpmFileWrapper (
   "C_galgas_CLI_Options.h",
   "h",
   true, // Text file
- 3507, // Text length
+ 2761, // Text length
   gWrapperFileContent_123_libpmFileWrapper
 ) ;
 
@@ -19305,21 +19111,7 @@ const cRegularFileWrapper gWrapperFile_123_libpmFileWrapper (
 const char * gWrapperFileContent_119_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GALGAS introspection classes                                                                 \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2009, ..., 2009 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -19354,7 +19146,7 @@ const cRegularFileWrapper gWrapperFile_119_libpmFileWrapper (
   "C_galgas_class_inspector.cpp",
   "cpp",
   true, // Text file
- 2015, // Text length
+ 1269, // Text length
   gWrapperFileContent_119_libpmFileWrapper
 ) ;
 
@@ -19363,21 +19155,7 @@ const cRegularFileWrapper gWrapperFile_119_libpmFileWrapper (
 const char * gWrapperFileContent_171_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GALGAS introspection classes                                                                 \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2009, ..., 2009 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -19416,7 +19194,7 @@ const cRegularFileWrapper gWrapperFile_171_libpmFileWrapper (
   "C_galgas_class_inspector.h",
   "h",
   true, // Text file
- 2098, // Text length
+ 1352, // Text length
   gWrapperFileContent_171_libpmFileWrapper
 ) ;
 
@@ -19425,21 +19203,7 @@ const cRegularFileWrapper gWrapperFile_171_libpmFileWrapper (
 const char * gWrapperFileContent_118_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  Built-in GALGAS Command Line Interface Options                                               \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2015, ..., 2015 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -19470,7 +19234,7 @@ const cRegularFileWrapper gWrapperFile_118_libpmFileWrapper (
   "C_galgas_quiet_option.cpp",
   "cpp",
   true, // Text file
- 1949, // Text length
+ 1203, // Text length
   gWrapperFileContent_118_libpmFileWrapper
 ) ;
 
@@ -19479,21 +19243,7 @@ const cRegularFileWrapper gWrapperFile_118_libpmFileWrapper (
 const char * gWrapperFileContent_143_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GALGAS Command Line Interface Options                                                        \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2015, ..., 2015 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -19514,7 +19264,7 @@ const cRegularFileWrapper gWrapperFile_143_libpmFileWrapper (
   "C_galgas_quiet_option.h",
   "h",
   true, // Text file
- 1446, // Text length
+ 700, // Text length
   gWrapperFileContent_143_libpmFileWrapper
 ) ;
 
@@ -19619,21 +19369,7 @@ const cRegularFileWrapper gWrapperFile_137_libpmFileWrapper (
 const char * gWrapperFileContent_125_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GGS_enumerable : Base class for GALGAS enumerable object\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -19716,7 +19452,7 @@ const cRegularFileWrapper gWrapperFile_125_libpmFileWrapper (
   "CollectionElement.cpp",
   "cpp",
   true, // Text file
- 3277, // Text length
+ 2627, // Text length
   gWrapperFileContent_125_libpmFileWrapper
 ) ;
 
@@ -19725,21 +19461,7 @@ const cRegularFileWrapper gWrapperFile_125_libpmFileWrapper (
 const char * gWrapperFileContent_129_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GALGAS_enumerable : Base class for GALGAS enumerable object                                  \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -19798,7 +19520,7 @@ const cRegularFileWrapper gWrapperFile_129_libpmFileWrapper (
   "CollectionElement.h",
   "h",
   true, // Text file
- 2534, // Text length
+ 1788, // Text length
   gWrapperFileContent_129_libpmFileWrapper
 ) ;
 
@@ -19807,21 +19529,7 @@ const cRegularFileWrapper gWrapperFile_129_libpmFileWrapper (
 const char * gWrapperFileContent_128_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  CollectionElementArray\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -20284,7 +19992,7 @@ const cRegularFileWrapper gWrapperFile_128_libpmFileWrapper (
   "CollectionElementArray.cpp",
   "cpp",
   true, // Text file
- 18692, // Text length
+ 18076, // Text length
   gWrapperFileContent_128_libpmFileWrapper
 ) ;
 
@@ -20293,21 +20001,7 @@ const cRegularFileWrapper gWrapperFile_128_libpmFileWrapper (
 const char * gWrapperFileContent_131_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  CollectionElementArray                                                                    \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -20435,7 +20129,7 @@ const cRegularFileWrapper gWrapperFile_131_libpmFileWrapper (
   "CollectionElementArray.h",
   "h",
   true, // Text file
- 5730, // Text length
+ 4987, // Text length
   gWrapperFileContent_131_libpmFileWrapper
 ) ;
 
@@ -20444,21 +20138,7 @@ const cRegularFileWrapper gWrapperFile_131_libpmFileWrapper (
 const char * gWrapperFileContent_127_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GALGAS_enumerable : Base class for GALGAS enumerable object                                  \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -20477,7 +20157,7 @@ const cRegularFileWrapper gWrapperFile_127_libpmFileWrapper (
   "CollectionElementPtr.cpp",
   "cpp",
   true, // Text file
- 1331, // Text length
+ 585, // Text length
   gWrapperFileContent_127_libpmFileWrapper
 ) ;
 
@@ -20486,21 +20166,7 @@ const cRegularFileWrapper gWrapperFile_127_libpmFileWrapper (
 const char * gWrapperFileContent_176_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GALGAS_enumerable : Base class for GALGAS enumerable object                                  \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2010, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -20539,7 +20205,7 @@ const cRegularFileWrapper gWrapperFile_176_libpmFileWrapper (
   "CollectionElementPtr.h",
   "h",
   true, // Text file
- 2040, // Text length
+ 1294, // Text length
   gWrapperFileContent_176_libpmFileWrapper
 ) ;
 
@@ -20548,19 +20214,7 @@ const cRegularFileWrapper gWrapperFile_176_libpmFileWrapper (
 const char * gWrapperFileContent_140_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
-  "//  Copyright (C) 2010, ..., 2024 Pierre Molinaro.\n"
-  "//\n"
   "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -20586,7 +20240,7 @@ const cRegularFileWrapper gWrapperFile_140_libpmFileWrapper (
   "ComparisonKind.h",
   "h",
   true, // Text file
- 1356, // Text length
+ 696, // Text length
   gWrapperFileContent_140_libpmFileWrapper
 ) ;
 
@@ -20595,19 +20249,7 @@ const cRegularFileWrapper gWrapperFile_140_libpmFileWrapper (
 const char * gWrapperFileContent_120_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2010, ..., 2025 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -20631,7 +20273,7 @@ const cRegularFileWrapper gWrapperFile_120_libpmFileWrapper (
   "ComparisonResult.h",
   "h",
   true, // Text file
- 1398, // Text length
+ 753, // Text length
   gWrapperFileContent_120_libpmFileWrapper
 ) ;
 
@@ -20640,21 +20282,7 @@ const cRegularFileWrapper gWrapperFile_120_libpmFileWrapper (
 const char * gWrapperFileContent_121_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'Compiler' : the compiler base class ;\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2009, ..., 2015 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -21395,7 +21023,7 @@ const cRegularFileWrapper gWrapperFile_121_libpmFileWrapper (
   "Compiler.cpp",
   "cpp",
   true, // Text file
- 29787, // Text length
+ 29155, // Text length
   gWrapperFileContent_121_libpmFileWrapper
 ) ;
 
@@ -21404,21 +21032,7 @@ const cRegularFileWrapper gWrapperFile_121_libpmFileWrapper (
 const char * gWrapperFileContent_117_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'Compiler' : the compiler base class ;\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2009, ..., 2016 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -21634,7 +21248,7 @@ const cRegularFileWrapper gWrapperFile_117_libpmFileWrapper (
   "Compiler.h",
   "h",
   true, // Text file
- 9711, // Text length
+ 9079, // Text length
   gWrapperFileContent_117_libpmFileWrapper
 ) ;
 
@@ -21643,19 +21257,7 @@ const cRegularFileWrapper gWrapperFile_117_libpmFileWrapper (
 const char * gWrapperFileContent_148_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2010, ..., 2024 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -21674,7 +21276,7 @@ const cRegularFileWrapper gWrapperFile_148_libpmFileWrapper (
   "EnumerationOrder.h",
   "h",
   true, // Text file
- 1361, // Text length
+ 716, // Text length
   gWrapperFileContent_148_libpmFileWrapper
 ) ;
 
@@ -21683,21 +21285,7 @@ const cRegularFileWrapper gWrapperFile_148_libpmFileWrapper (
 const char * gWrapperFileContent_132_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'Enumerator_range' : galgas range enumerator                                                \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2012, ..., 2012 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -21770,7 +21358,7 @@ const cRegularFileWrapper gWrapperFile_132_libpmFileWrapper (
   "Enumerator_range.cpp",
   "cpp",
   true, // Text file
- 3432, // Text length
+ 2687, // Text length
   gWrapperFileContent_132_libpmFileWrapper
 ) ;
 
@@ -21779,21 +21367,7 @@ const cRegularFileWrapper gWrapperFile_132_libpmFileWrapper (
 const char * gWrapperFileContent_172_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'Enumerator_range' : galgas range enumerator\n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2012, ..., 2025 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -21859,7 +21433,7 @@ const cRegularFileWrapper gWrapperFile_172_libpmFileWrapper (
   "Enumerator_range.h",
   "h",
   true, // Text file
- 2664, // Text length
+ 1967, // Text length
   gWrapperFileContent_172_libpmFileWrapper
 ) ;
 
@@ -21868,21 +21442,7 @@ const cRegularFileWrapper gWrapperFile_172_libpmFileWrapper (
 const char * gWrapperFileContent_177_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GALGAS Command Line Interface Options                                                        \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2015, ..., 2015 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -21899,7 +21459,7 @@ const cRegularFileWrapper gWrapperFile_177_libpmFileWrapper (
   "F_verbose_output.h",
   "h",
   true, // Text file
- 1252, // Text length
+ 506, // Text length
   gWrapperFileContent_177_libpmFileWrapper
 ) ;
 
@@ -21908,20 +21468,7 @@ const cRegularFileWrapper gWrapperFile_177_libpmFileWrapper (
 const char * gWrapperFileContent_103_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GenericDictionary.h\n"
-  "//  galgas-ide\n"
-  "//\n"
   "//  Created by Pierre Molinaro on 26/06/2025, ..., 2025 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -22558,7 +22105,7 @@ const cRegularFileWrapper gWrapperFile_103_libpmFileWrapper (
   "GALGAS_GenericDictionary.h",
   "h",
   true, // Text file
- 25945, // Text length
+ 25359, // Text length
   gWrapperFileContent_103_libpmFileWrapper
 ) ;
 
@@ -22567,20 +22114,7 @@ const cRegularFileWrapper gWrapperFile_103_libpmFileWrapper (
 const char * gWrapperFileContent_144_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GenericMapRoot.h\n"
-  "//  galgas-ide\n"
-  "//\n"
   "//  Created by Pierre Molinaro on 1/07/2025, ..., 2025 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -23169,7 +22703,7 @@ const cRegularFileWrapper gWrapperFile_144_libpmFileWrapper (
   "GALGAS_GenericMapRoot.h",
   "h",
   true, // Text file
- 24229, // Text length
+ 23646, // Text length
   gWrapperFileContent_144_libpmFileWrapper
 ) ;
 
@@ -23178,21 +22712,7 @@ const cRegularFileWrapper gWrapperFile_144_libpmFileWrapper (
 const char * gWrapperFileContent_157_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GALGAS Type Inspector (for introspection)\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2010, ..., 2025 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -23346,7 +22866,7 @@ const cRegularFileWrapper gWrapperFile_157_libpmFileWrapper (
   "GALGAS_TypeDescriptor.cpp",
   "cpp",
   true, // Text file
- 6024, // Text length
+ 5389, // Text length
   gWrapperFileContent_157_libpmFileWrapper
 ) ;
 
@@ -23355,21 +22875,7 @@ const cRegularFileWrapper gWrapperFile_157_libpmFileWrapper (
 const char * gWrapperFileContent_134_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GALGAS Type Inspector (for introspection)                                                    \n"
-  "//\n"
   "//  This file is part of libpm library                                                           \n"
-  "//\n"
-  "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -23425,7 +22931,7 @@ const cRegularFileWrapper gWrapperFile_134_libpmFileWrapper (
   "GALGAS_TypeDescriptor.h",
   "h",
   true, // Text file
- 2974, // Text length
+ 2275, // Text length
   gWrapperFileContent_134_libpmFileWrapper
 ) ;
 
@@ -23434,19 +22940,7 @@ const cRegularFileWrapper gWrapperFile_134_libpmFileWrapper (
 const char * gWrapperFileContent_161_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -23804,7 +23298,7 @@ const cRegularFileWrapper gWrapperFile_161_libpmFileWrapper (
   "GGS_application.cpp",
   "cpp",
   true, // Text file
- 17819, // Text length
+ 17174, // Text length
   gWrapperFileContent_161_libpmFileWrapper
 ) ;
 
@@ -23813,21 +23307,7 @@ const cRegularFileWrapper gWrapperFile_161_libpmFileWrapper (
 const char * gWrapperFileContent_105_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GGS_bigint                                                                                \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2015, ..., 2023 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -24619,7 +24099,7 @@ const cRegularFileWrapper gWrapperFile_105_libpmFileWrapper (
   "GGS_bigint.cpp",
   "cpp",
   true, // Text file
- 28676, // Text length
+ 27933, // Text length
   gWrapperFileContent_105_libpmFileWrapper
 ) ;
 
@@ -24628,23 +24108,9 @@ const cRegularFileWrapper gWrapperFile_105_libpmFileWrapper (
 const char * gWrapperFileContent_139_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GGS_binaryset\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Created january 22, 2007.\n"
   "//\n"
   "//  Copyright (C) 2007, ..., 2024 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -25742,7 +25208,7 @@ const cRegularFileWrapper gWrapperFile_139_libpmFileWrapper (
   "GGS_binaryset.cpp",
   "cpp",
   true, // Text file
- 52667, // Text length
+ 52060, // Text length
   gWrapperFileContent_139_libpmFileWrapper
 ) ;
 
@@ -25751,21 +25217,7 @@ const cRegularFileWrapper gWrapperFile_139_libpmFileWrapper (
 const char * gWrapperFileContent_113_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//   GGS_bool : this class implements the GALGAS 'bool' native type                           \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -25986,7 +25438,7 @@ const cRegularFileWrapper gWrapperFile_113_libpmFileWrapper (
   "GGS_bool.cpp",
   "cpp",
   true, // Text file
- 8401, // Text length
+ 7658, // Text length
   gWrapperFileContent_113_libpmFileWrapper
 ) ;
 
@@ -25995,21 +25447,7 @@ const cRegularFileWrapper gWrapperFile_113_libpmFileWrapper (
 const char * gWrapperFileContent_165_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//   GGS_char                                                                                 \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2002, ..., 2016 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -26420,7 +25858,7 @@ const cRegularFileWrapper gWrapperFile_165_libpmFileWrapper (
   "GGS_char.cpp",
   "cpp",
   true, // Text file
- 13611, // Text length
+ 12868, // Text length
   gWrapperFileContent_165_libpmFileWrapper
 ) ;
 
@@ -26429,21 +25867,7 @@ const cRegularFileWrapper gWrapperFile_165_libpmFileWrapper (
 const char * gWrapperFileContent_151_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//   GGS_data : this class implements the GALGAS 'data' native type\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -26922,7 +26346,7 @@ const cRegularFileWrapper gWrapperFile_151_libpmFileWrapper (
   "GGS_data.cpp",
   "cpp",
   true, // Text file
- 19626, // Text length
+ 18969, // Text length
   gWrapperFileContent_151_libpmFileWrapper
 ) ;
 
@@ -26931,21 +26355,7 @@ const cRegularFileWrapper gWrapperFile_151_libpmFileWrapper (
 const char * gWrapperFileContent_183_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//   GGS_double                                                                               \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2002, ..., 2016 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -27405,7 +26815,7 @@ const cRegularFileWrapper gWrapperFile_183_libpmFileWrapper (
   "GGS_double.cpp",
   "cpp",
   true, // Text file
- 16573, // Text length
+ 15830, // Text length
   gWrapperFileContent_183_libpmFileWrapper
 ) ;
 
@@ -27414,23 +26824,9 @@ const cRegularFileWrapper gWrapperFile_183_libpmFileWrapper (
 const char * gWrapperFileContent_108_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GGS_filewrapper : class for GALGAS file wrappers\n"
-  "//\n"
   "//  Started february 23th, 2008.\n"
   "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2008, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -27983,7 +27379,7 @@ const cRegularFileWrapper gWrapperFile_108_libpmFileWrapper (
   "GGS_filewrapper.cpp",
   "cpp",
   true, // Text file
- 23561, // Text length
+ 22919, // Text length
   gWrapperFileContent_108_libpmFileWrapper
 ) ;
 
@@ -27992,21 +27388,7 @@ const cRegularFileWrapper gWrapperFile_108_libpmFileWrapper (
 const char * gWrapperFileContent_126_libpmFileWrapper = 
   "//----------------------------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'GGS_location'\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//----------------------------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -28379,7 +27761,7 @@ const cRegularFileWrapper gWrapperFile_126_libpmFileWrapper (
   "GGS_location.cpp",
   "cpp",
   true, // Text file
- 16056, // Text length
+ 15448, // Text length
   gWrapperFileContent_126_libpmFileWrapper
 ) ;
 
@@ -28388,21 +27770,7 @@ const cRegularFileWrapper gWrapperFile_126_libpmFileWrapper (
 const char * gWrapperFileContent_112_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'GGS_sint' : galgas sint32                                                                \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2004, ..., 2019 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -29028,7 +28396,7 @@ const cRegularFileWrapper gWrapperFile_112_libpmFileWrapper (
   "GGS_sint.cpp",
   "cpp",
   true, // Text file
- 22318, // Text length
+ 21575, // Text length
   gWrapperFileContent_112_libpmFileWrapper
 ) ;
 
@@ -29037,21 +28405,7 @@ const cRegularFileWrapper gWrapperFile_112_libpmFileWrapper (
 const char * gWrapperFileContent_167_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'GGS_sint64' : galgas sint64                                                              \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2006, ..., 2019 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -29685,7 +29039,7 @@ const cRegularFileWrapper gWrapperFile_167_libpmFileWrapper (
   "GGS_sint64.cpp",
   "cpp",
   true, // Text file
- 25085, // Text length
+ 24342, // Text length
   gWrapperFileContent_167_libpmFileWrapper
 ) ;
 
@@ -29694,21 +29048,7 @@ const cRegularFileWrapper gWrapperFile_167_libpmFileWrapper (
 const char * gWrapperFileContent_179_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'GGS_string' : class of galgas string\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 1996, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -31129,7 +30469,7 @@ const cRegularFileWrapper gWrapperFile_179_libpmFileWrapper (
   "GGS_string-getters.cpp",
   "cpp",
   true, // Text file
- 52629, // Text length
+ 51998, // Text length
   gWrapperFileContent_179_libpmFileWrapper
 ) ;
 
@@ -31138,21 +30478,7 @@ const cRegularFileWrapper gWrapperFile_179_libpmFileWrapper (
 const char * gWrapperFileContent_136_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'GGS_string' : class of galgas string\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 1996, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -32171,7 +31497,7 @@ const cRegularFileWrapper gWrapperFile_136_libpmFileWrapper (
   "GGS_string.cpp",
   "cpp",
   true, // Text file
- 42920, // Text length
+ 42289, // Text length
   gWrapperFileContent_136_libpmFileWrapper
 ) ;
 
@@ -32180,21 +31506,7 @@ const cRegularFileWrapper gWrapperFile_136_libpmFileWrapper (
 const char * gWrapperFileContent_116_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GGS_stringset\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2005, ..., 2025 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -33055,7 +32367,7 @@ const cRegularFileWrapper gWrapperFile_116_libpmFileWrapper (
   "GGS_stringset.cpp",
   "cpp",
   true, // Text file
- 33313, // Text length
+ 32706, // Text length
   gWrapperFileContent_116_libpmFileWrapper
 ) ;
 
@@ -33064,21 +32376,7 @@ const cRegularFileWrapper gWrapperFile_116_libpmFileWrapper (
 const char * gWrapperFileContent_141_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  GGS_timer                                                                                 \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2015, ..., 2025 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -33175,7 +32473,7 @@ const cRegularFileWrapper gWrapperFile_141_libpmFileWrapper (
   "GGS_timer.cpp",
   "cpp",
   true, // Text file
- 3513, // Text length
+ 2770, // Text length
   gWrapperFileContent_141_libpmFileWrapper
 ) ;
 
@@ -33184,21 +32482,7 @@ const cRegularFileWrapper gWrapperFile_141_libpmFileWrapper (
 const char * gWrapperFileContent_138_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'GGS_uint' : galgas uint32                                                                \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2009, ..., 2024 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -33944,7 +33228,7 @@ const cRegularFileWrapper gWrapperFile_138_libpmFileWrapper (
   "GGS_uint.cpp",
   "cpp",
   true, // Text file
- 26433, // Text length
+ 25690, // Text length
   gWrapperFileContent_138_libpmFileWrapper
 ) ;
 
@@ -33953,21 +33237,7 @@ const cRegularFileWrapper gWrapperFile_138_libpmFileWrapper (
 const char * gWrapperFileContent_149_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'GGS_uint_36__34_' : galgas uint64                                                        \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2006, ..., 2024 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -34673,7 +33943,7 @@ const cRegularFileWrapper gWrapperFile_149_libpmFileWrapper (
   "GGS_uint64.cpp",
   "cpp",
   true, // Text file
- 27460, // Text length
+ 26717, // Text length
   gWrapperFileContent_149_libpmFileWrapper
 ) ;
 
@@ -34682,21 +33952,9 @@ const cRegularFileWrapper gWrapperFile_149_libpmFileWrapper (
 const char * gWrapperFileContent_175_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'IndexingDictionary': dictionary for indexing soures\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
   "//\n"
   "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -34926,7 +34184,7 @@ const cRegularFileWrapper gWrapperFile_175_libpmFileWrapper (
   "IndexingDictionary.cpp",
   "cpp",
   true, // Text file
- 8679, // Text length
+ 8072, // Text length
   gWrapperFileContent_175_libpmFileWrapper
 ) ;
 
@@ -34935,21 +34193,7 @@ const cRegularFileWrapper gWrapperFile_175_libpmFileWrapper (
 const char * gWrapperFileContent_160_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'IndexingDictionary': dictionary for indexing soures                                        \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2010, ..., 2023 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -35007,7 +34251,7 @@ const cRegularFileWrapper gWrapperFile_160_libpmFileWrapper (
   "IndexingDictionary.h",
   "h",
   true, // Text file
- 2807, // Text length
+ 2062, // Text length
   gWrapperFileContent_160_libpmFileWrapper
 ) ;
 
@@ -35016,21 +34260,7 @@ const cRegularFileWrapper gWrapperFile_160_libpmFileWrapper (
 const char * gWrapperFileContent_181_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'IssueDescriptor'                                                                           \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2017, ..., 2025 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -35172,7 +34402,7 @@ const cRegularFileWrapper gWrapperFile_181_libpmFileWrapper (
   "IssueDescriptor.cpp",
   "cpp",
   true, // Text file
- 5734, // Text length
+ 4989, // Text length
   gWrapperFileContent_181_libpmFileWrapper
 ) ;
 
@@ -35181,21 +34411,7 @@ const cRegularFileWrapper gWrapperFile_181_libpmFileWrapper (
 const char * gWrapperFileContent_180_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'IssueDescriptor'                                                                           \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2017, ..., 2025 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -35246,7 +34462,7 @@ const cRegularFileWrapper gWrapperFile_180_libpmFileWrapper (
   "IssueDescriptor.h",
   "h",
   true, // Text file
- 2539, // Text length
+ 1794, // Text length
   gWrapperFileContent_180_libpmFileWrapper
 ) ;
 
@@ -35255,21 +34471,7 @@ const cRegularFileWrapper gWrapperFile_180_libpmFileWrapper (
 const char * gWrapperFileContent_145_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  IssueWithFixIt                                                                             \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2016, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -35364,7 +34566,7 @@ const cRegularFileWrapper gWrapperFile_145_libpmFileWrapper (
   "IssueWithFixIt.cpp",
   "cpp",
   true, // Text file
- 4329, // Text length
+ 3585, // Text length
   gWrapperFileContent_145_libpmFileWrapper
 ) ;
 
@@ -35373,21 +34575,7 @@ const cRegularFileWrapper gWrapperFile_145_libpmFileWrapper (
 const char * gWrapperFileContent_106_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  IssueWithFixIt                                                                             \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2016, ..., 2024 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -35482,7 +34670,7 @@ const cRegularFileWrapper gWrapperFile_106_libpmFileWrapper (
   "IssueWithFixIt.h",
   "h",
   true, // Text file
- 4035, // Text length
+ 3291, // Text length
   gWrapperFileContent_106_libpmFileWrapper
 ) ;
 
@@ -35491,22 +34679,7 @@ const cRegularFileWrapper gWrapperFile_106_libpmFileWrapper (
 const char * gWrapperFileContent_109_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'Lexique' : an abstract lexique class ;\n"
-  "//  Galgas generated scanner classes inherit from this class.\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 1996, ..., 2024 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -36445,7 +35618,7 @@ const cRegularFileWrapper gWrapperFile_109_libpmFileWrapper (
   "Lexique-parsing.cpp",
   "cpp",
   true, // Text file
- 46681, // Text length
+ 45986, // Text length
   gWrapperFileContent_109_libpmFileWrapper
 ) ;
 
@@ -36454,22 +35627,7 @@ const cRegularFileWrapper gWrapperFile_109_libpmFileWrapper (
 const char * gWrapperFileContent_168_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'Lexique' : an abstract lexique class ;\n"
-  "//  Galgas generated scanner classes inherit from this class.\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 1996, ..., 2024 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -37343,7 +36501,7 @@ const cRegularFileWrapper gWrapperFile_168_libpmFileWrapper (
   "Lexique.cpp",
   "cpp",
   true, // Text file
- 34430, // Text length
+ 33735, // Text length
   gWrapperFileContent_168_libpmFileWrapper
 ) ;
 
@@ -37352,22 +36510,7 @@ const cRegularFileWrapper gWrapperFile_168_libpmFileWrapper (
 const char * gWrapperFileContent_130_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  Lexique : an abstract lexique class ;                                                    \n"
-  "//  Galgas generated scanner classes inherit from this class.\n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -37614,7 +36757,7 @@ const cRegularFileWrapper gWrapperFile_130_libpmFileWrapper (
   "Lexique.h",
   "h",
   true, // Text file
- 12163, // Text length
+ 11359, // Text length
   gWrapperFileContent_130_libpmFileWrapper
 ) ;
 
@@ -37623,21 +36766,7 @@ const cRegularFileWrapper gWrapperFile_130_libpmFileWrapper (
 const char * gWrapperFileContent_182_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  Lexique introspection\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2016, ..., 2016 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -37772,7 +36901,7 @@ const cRegularFileWrapper gWrapperFile_182_libpmFileWrapper (
   "LexiqueIntrospection.cpp",
   "cpp",
   true, // Text file
- 6353, // Text length
+ 5738, // Text length
   gWrapperFileContent_182_libpmFileWrapper
 ) ;
 
@@ -37781,21 +36910,7 @@ const cRegularFileWrapper gWrapperFile_182_libpmFileWrapper (
 const char * gWrapperFileContent_166_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  Lexique introspection                                                                        \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2016, ..., 2023 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -37845,7 +36960,7 @@ const cRegularFileWrapper gWrapperFile_166_libpmFileWrapper (
   "LexiqueIntrospection.h",
   "h",
   true, // Text file
- 2800, // Text length
+ 2054, // Text length
   gWrapperFileContent_166_libpmFileWrapper
 ) ;
 
@@ -37854,21 +36969,7 @@ const cRegularFileWrapper gWrapperFile_166_libpmFileWrapper (
 const char * gWrapperFileContent_107_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'LocationInSource'                                                                         \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 1996, ..., 2011 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -37953,7 +37054,7 @@ const cRegularFileWrapper gWrapperFile_107_libpmFileWrapper (
   "LocationInSource.cpp",
   "cpp",
   true, // Text file
- 3250, // Text length
+ 2506, // Text length
   gWrapperFileContent_107_libpmFileWrapper
 ) ;
 
@@ -37962,21 +37063,7 @@ const cRegularFileWrapper gWrapperFile_107_libpmFileWrapper (
 const char * gWrapperFileContent_155_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'LocationInSource'                                                                         \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -38028,7 +37115,7 @@ const cRegularFileWrapper gWrapperFile_155_libpmFileWrapper (
   "LocationInSource.h",
   "h",
   true, // Text file
- 2322, // Text length
+ 1578, // Text length
   gWrapperFileContent_155_libpmFileWrapper
 ) ;
 
@@ -38037,22 +37124,7 @@ const cRegularFileWrapper gWrapperFile_155_libpmFileWrapper (
 const char * gWrapperFileContent_115_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'Lexique' : an abstract lexique class ;                                                    \n"
-  "//  Galgas generated scanner classes inherit from this class.                                    \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -38081,7 +37153,7 @@ const cRegularFileWrapper gWrapperFile_115_libpmFileWrapper (
   "ProductionNameDescriptor.h",
   "h",
   true, // Text file
- 1799, // Text length
+ 957, // Text length
   gWrapperFileContent_115_libpmFileWrapper
 ) ;
 
@@ -38090,21 +37162,7 @@ const cRegularFileWrapper gWrapperFile_115_libpmFileWrapper (
 const char * gWrapperFileContent_110_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  PtrWeakReferenceProxy : Base class for reference class class\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2021, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -38156,7 +37214,7 @@ const cRegularFileWrapper gWrapperFile_110_libpmFileWrapper (
   "PtrWeakReferenceProxy.cpp",
   "cpp",
   true, // Text file
- 2364, // Text length
+ 1710, // Text length
   gWrapperFileContent_110_libpmFileWrapper
 ) ;
 
@@ -38165,21 +37223,7 @@ const cRegularFileWrapper gWrapperFile_110_libpmFileWrapper (
 const char * gWrapperFileContent_135_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  PtrWeakReferenceProxy : Base class for reference class class\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2021, ..., 2026 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -38233,7 +37277,7 @@ const cRegularFileWrapper gWrapperFile_135_libpmFileWrapper (
   "PtrWeakReferenceProxy.h",
   "h",
   true, // Text file
- 2548, // Text length
+ 1894, // Text length
   gWrapperFileContent_135_libpmFileWrapper
 ) ;
 
@@ -38242,19 +37286,7 @@ const cRegularFileWrapper gWrapperFile_135_libpmFileWrapper (
 const char * gWrapperFileContent_170_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  SharedGenericObjectWithValueSemantics.h\n"
-  "//\n"
   "//  Created by Pierre Molinaro on 15/03/2025, ..., 2025 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -38440,7 +37472,7 @@ const cRegularFileWrapper gWrapperFile_170_libpmFileWrapper (
   "SharedGenericPtrWithValueSemantics.h",
   "h",
   true, // Text file
- 8831, // Text length
+ 8240, // Text length
   gWrapperFileContent_170_libpmFileWrapper
 ) ;
 
@@ -38449,21 +37481,7 @@ const cRegularFileWrapper gWrapperFile_170_libpmFileWrapper (
 const char * gWrapperFileContent_153_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  SharedObject : Base class for GALGAS object handling                                       \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2009, ..., 2025 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -38586,7 +37604,7 @@ const cRegularFileWrapper gWrapperFile_153_libpmFileWrapper (
   "SharedObject.cpp",
   "cpp",
   true, // Text file
- 4795, // Text length
+ 4051, // Text length
   gWrapperFileContent_153_libpmFileWrapper
 ) ;
 
@@ -38595,21 +37613,7 @@ const cRegularFileWrapper gWrapperFile_153_libpmFileWrapper (
 const char * gWrapperFileContent_142_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  SharedObject : Base class for GALGAS object handling                                       \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2009, ..., 2025 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -39550,7 +38554,7 @@ const cRegularFileWrapper gWrapperFile_142_libpmFileWrapper (
   "SharedObject.h",
   "h",
   true, // Text file
- 41227, // Text length
+ 40483, // Text length
   gWrapperFileContent_142_libpmFileWrapper
 ) ;
 
@@ -39559,21 +38563,7 @@ const cRegularFileWrapper gWrapperFile_142_libpmFileWrapper (
 const char * gWrapperFileContent_159_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'SourceTextInString'\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -39649,7 +38639,7 @@ const cRegularFileWrapper gWrapperFile_159_libpmFileWrapper (
   "SourceTextInString.cpp",
   "cpp",
   true, // Text file
- 3382, // Text length
+ 2768, // Text length
   gWrapperFileContent_159_libpmFileWrapper
 ) ;
 
@@ -39658,21 +38648,7 @@ const cRegularFileWrapper gWrapperFile_159_libpmFileWrapper (
 const char * gWrapperFileContent_169_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'SourceTextInString'\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -39766,7 +38742,7 @@ const cRegularFileWrapper gWrapperFile_169_libpmFileWrapper (
   "SourceTextInString.h",
   "h",
   true, // Text file
- 3781, // Text length
+ 3167, // Text length
   gWrapperFileContent_169_libpmFileWrapper
 ) ;
 
@@ -39775,21 +38751,7 @@ const cRegularFileWrapper gWrapperFile_169_libpmFileWrapper (
 const char * gWrapperFileContent_111_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'TemplateDelimiter' : a helper class for template scanner                                   \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 1996, ..., 2023 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -39804,9 +38766,7 @@ const char * gWrapperFileContent_111_libpmFileWrapper =
   "class Lexique ;\n"
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
-  "//\n"
-  "//  T E M P L A T E    D E L I M I T E R S     C L A S S                                         \n"
-  "//\n"
+  "//  T E M P L A T E    D E L I M I T E R S     C L A S S\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "class TemplateDelimiter final {\n"
@@ -39839,7 +38799,7 @@ const cRegularFileWrapper gWrapperFile_111_libpmFileWrapper (
   "TemplateDelimiter.h",
   "h",
   true, // Text file
- 2782, // Text length
+ 1990, // Text length
   gWrapperFileContent_111_libpmFileWrapper
 ) ;
 
@@ -39848,21 +38808,7 @@ const cRegularFileWrapper gWrapperFile_111_libpmFileWrapper (
 const char * gWrapperFileContent_174_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'galgas-input-output'\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 1996, ..., 2025 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -40664,7 +39610,7 @@ const cRegularFileWrapper gWrapperFile_174_libpmFileWrapper (
   "galgas-input-output.cpp",
   "cpp",
   true, // Text file
- 31891, // Text length
+ 31276, // Text length
   gWrapperFileContent_174_libpmFileWrapper
 ) ;
 
@@ -40673,21 +39619,7 @@ const cRegularFileWrapper gWrapperFile_174_libpmFileWrapper (
 const char * gWrapperFileContent_133_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  'galgas-input-output'                                                                                \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -40921,7 +39853,7 @@ const cRegularFileWrapper gWrapperFile_133_libpmFileWrapper (
   "galgas-input-output.h",
   "h",
   true, // Text file
- 10361, // Text length
+ 9607, // Text length
   gWrapperFileContent_133_libpmFileWrapper
 ) ;
 
@@ -40930,21 +39862,7 @@ const cRegularFileWrapper gWrapperFile_133_libpmFileWrapper (
 const char * gWrapperFileContent_114_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  scanner_actions: hand-coded routines for building attribute values during scanning.\n"
-  "//\n"
-  "//  This file is part of libpm library\n"
-  "//\n"
   "//  Copyright (C) 2009, ..., 2023 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -41821,7 +40739,7 @@ const cRegularFileWrapper gWrapperFile_114_libpmFileWrapper (
   "scanner_actions.cpp",
   "cpp",
   true, // Text file
- 39494, // Text length
+ 38817, // Text length
   gWrapperFileContent_114_libpmFileWrapper
 ) ;
 
@@ -41830,21 +40748,7 @@ const cRegularFileWrapper gWrapperFile_114_libpmFileWrapper (
 const char * gWrapperFileContent_164_libpmFileWrapper = 
   "//--------------------------------------------------------------------------------------------------\n"
   "//\n"
-  "//  scanner_actions:  hand-coded routines for building attribute values during scanning.         \n"
-  "//\n"
-  "//  This file is part of libpm library                                                           \n"
-  "//\n"
   "//  Copyright (C) 2009, ..., 2023 Pierre Molinaro.\n"
-  "//\n"
-  "//  e-mail : pierre@pcmolinaro.name\n"
-  "//\n"
-  "//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General\n"
-  "//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)\n"
-  "//  any later version.\n"
-  "//\n"
-  "//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied\n"
-  "//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\n"
-  "//  more details.\n"
   "//\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
@@ -42099,7 +41003,7 @@ const cRegularFileWrapper gWrapperFile_164_libpmFileWrapper (
   "scanner_actions.h",
   "h",
   true, // Text file
- 14996, // Text length
+ 14250, // Text length
   gWrapperFileContent_164_libpmFileWrapper
 ) ;
 

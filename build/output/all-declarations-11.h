@@ -9,6 +9,216 @@
 #include "all-declarations-10.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @sortedListDeclarationAST reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_sortedListDeclarationAST : public GGS_semanticDeclarationAST {
+//--------------------------------- Default constructor
+  public: GGS_sortedListDeclarationAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_sortedListDeclarationAST (const class cPtr_sortedListDeclarationAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_lstring readProperty_mSortedListTypeName (void) const ;
+
+  public: class GGS_propertyInCollectionListAST readProperty_mPropertyList (void) const ;
+
+  public: class GGS__5B_sortedListSortDescriptorAST_5D_ readProperty_mSortDescriptorList (void) const ;
+
+  public: class GGS_bool readProperty_equatable (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_sortedListDeclarationAST init_21_isPredefined_21__21__21__21_equatable (const class GGS_bool & inOperand0,
+                                                                                             const class GGS_lstring & inOperand1,
+                                                                                             const class GGS_propertyInCollectionListAST & inOperand2,
+                                                                                             const class GGS__5B_sortedListSortDescriptorAST_5D_ & inOperand3,
+                                                                                             const class GGS_bool & inOperand4,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_sortedListDeclarationAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedListDeclarationAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @sortedListDeclarationAST class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void sortedListDeclarationAST_init_21_isPredefined_21__21__21__21_equatable (const class GGS_bool & inOperand0,
+                                                                                       const class GGS_lstring & inOperand1,
+                                                                                       const class GGS_propertyInCollectionListAST & inOperand2,
+                                                                                       const class GGS__5B_sortedListSortDescriptorAST_5D_ & inOperand3,
+                                                                                       const class GGS_bool & inOperand4,
+                                                                                       Compiler * inCompiler) ;
+
+
+//--- Extension func keyRepresentation
+  public: virtual class GGS_string getter_keyRepresentation (Compiler * COMMA_LOCATION_ARGS) const override ;
+
+//--- Extension proc addAssociatedElement
+  public: virtual void method_addAssociatedElement (class GGS_galgasDeclarationAST & arg__ioDeclarations,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension proc enterDeclarationInGraph
+  public: virtual void method_enterDeclarationInGraph (class GGS_semanticTypePrecedenceGraph & arg_ioSemanticTypePrecedenceGraph,
+           class GGS_equatableExtensionMap & arg_ioEquatableExtensionMap,
+           class GGS_extensionInitializerForBuildingContext & arg_ioExtensionInitializerForBuildingContext,
+           class GGS_extensionMethodMapForBuildingContext & arg_ioExtensionMethodMapForBuildingContext,
+           class GGS_extensionGetterMapForBuildingContext & arg_ioExtensionGetterMapForBuildingContext,
+           class GGS_extensionSetterMapForBuildingContext & arg_ioExtensionSetterMapForBuildingContext,
+           class GGS__5B_semanticDeclarationAST_5D_ & arg_ioExtensionOverrideDefinitionList,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension proc enterDeclarationInSemanticContext
+  public: virtual void method_enterDeclarationInSemanticContext (class GGS_equatableExtensionMap & arg__ioEquatableExtensionMap,
+           const class GGS_extensionInitializerForBuildingContext arg__inExtensionInitializerMapForBuildingContext,
+           const class GGS_extensionMethodMapForBuildingContext arg__inExtensionMethodMapForBuildingContext,
+           const class GGS_extensionGetterMapForBuildingContext arg__inExtensionGetterMapForBuildingContext,
+           const class GGS_extensionSetterMapForBuildingContext arg__inExtensionSetterMapForBuildingContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS_semanticContext & arg__ioSemanticContext,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension proc semanticAnalysis
+  public: virtual void method_semanticAnalysis (class GGS__5B_lstring_5D_ & arg_ioUsefulnessRootEntities,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_string arg_inProductDirectory,
+           const class GGS_semanticContext arg__inSemanticContext,
+           class GGS_unifiedTypeMap & arg__ioTypeMap,
+           const class GGS_predefinedTypes arg__inPredefinedTypes,
+           class GGS__5B_semanticDeclarationForGeneration_5D_ & arg__ioSemanticDeclarationListForGeneration,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_lstring mProperty_mSortedListTypeName ;
+  public: GGS_propertyInCollectionListAST mProperty_mPropertyList ;
+  public: GGS__5B_sortedListSortDescriptorAST_5D_ mProperty_mSortDescriptorList ;
+  public: GGS_bool mProperty_equatable ;
+
+
+//--- Default constructor
+  public: cPtr_sortedListDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_sortedListDeclarationAST (const GGS_bool & in_isPredefined,
+                                         const GGS_lstring & in_mSortedListTypeName,
+                                         const GGS_propertyInCollectionListAST & in_mPropertyList,
+                                         const GGS__5B_sortedListSortDescriptorAST_5D_ & in_mSortDescriptorList,
+                                         const GGS_bool & in_equatable,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @sortedListDeclarationAST_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_sortedListDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_sortedListDeclarationAST_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_sortedListDeclarationAST_2E_weak (const class GGS_sortedListDeclarationAST & inSource) ;
+
+  public: GGS_sortedListDeclarationAST_2E_weak & operator = (const class GGS_sortedListDeclarationAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_sortedListDeclarationAST_2E_weak init_nil (void) {
+    GGS_sortedListDeclarationAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_sortedListDeclarationAST bang_sortedListDeclarationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_sortedListDeclarationAST unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_sortedListDeclarationAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_sortedListDeclarationAST_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sortedListDeclarationAST_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @sortedListTypeForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -303,26 +513,26 @@ class GGS__5B_typeNameFormalParameterName_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_typeNameFormalParameterName constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_typeNameFormalParameterName constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_typeNameFormalParameterName & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_typeNameFormalParameterName & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_typeNameFormalParameterName & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_typeNameFormalParameterName & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_typeNameFormalParameterName & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_typeNameFormalParameterName & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -566,26 +776,26 @@ class GGS__5B__5B_typeNameFormalParameterName_5D__5D_ final : public AC_GALGAS_r
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS__5B_typeNameFormalParameterName_5D_ constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS__5B_typeNameFormalParameterName_5D_ constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS__5B_typeNameFormalParameterName_5D_ & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS__5B_typeNameFormalParameterName_5D_ & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS__5B_typeNameFormalParameterName_5D_ & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS__5B_typeNameFormalParameterName_5D_ & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS__5B_typeNameFormalParameterName_5D_ & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS__5B_typeNameFormalParameterName_5D_ & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -743,26 +953,26 @@ class GGS__5B_externTypeGetter_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_externTypeGetter constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_externTypeGetter constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_externTypeGetter & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_externTypeGetter & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_externTypeGetter & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_externTypeGetter & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_externTypeGetter & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_externTypeGetter & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -1006,26 +1216,26 @@ class GGS__5B_externTypeSetter_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_externTypeSetter constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_externTypeSetter constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_externTypeSetter & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_externTypeSetter & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_externTypeSetter & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_externTypeSetter & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_externTypeSetter & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_externTypeSetter & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -1258,26 +1468,26 @@ class GGS__5B_externTypeMethod_5D_ final : public AC_GALGAS_root {
                               Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
-  public: void setter_insertAtIndex (class GGS_externTypeMethod constinArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_insert (class GGS_externTypeMethod constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
-  public: void setter_popFirst (class GGS_externTypeMethod & outArgument0,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_externTypeMethod & outArgument0,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+  public: void setter_remove (class GGS_externTypeMethod & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   public: void setter_removeAll (Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public: void setter_removeAtIndex (class GGS_externTypeMethod & outArgument0,
-                                     class GGS_uint constinArgument1,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+  public: void setter_removeFirst (class GGS_externTypeMethod & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_externTypeMethod & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods

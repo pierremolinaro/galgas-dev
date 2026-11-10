@@ -38,7 +38,7 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
   //--- Check self is not inkoved before full initialization
     if self.mReceiverExpression is @selfInExpressionAST then
@@ -78,7 +78,7 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
       routineSignature,
       !?ioVariableMap,
       !?ioInstructionListForGeneration,
-      ?let @actualParameterListForGeneration actualParameterListForGeneration
+      ?let [@actualParameterForGeneration] actualParameterListForGeneration
     )
   //--- Search base type that declares the proc
     var baseType = receiverExpression.mResultType
@@ -97,7 +97,7 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
       end
     end
   //--- Generate instructions
-    ioInstructionListForGeneration ++= @(@methodCallInstructionForGeneration (
+    ioInstructionListForGeneration ++= @methodCallInstructionForGeneration (
       self.mInstructionLocation,
       receiverExpression.mResultType,
       receiverExpression,
@@ -106,7 +106,7 @@ final class @methodCallInstructionAST : @semanticInstructionAST {
       actualParameterListForGeneration,
       hasCompilerArgument,
       baseType
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -123,7 +123,7 @@ final class @methodCallInstructionForGeneration : @semanticInstructionForGenerat
   private let @semanticExpressionForGeneration mReceiverExpression
   private let @string mMethodName
   private let @methodKind mKind
-  private let @actualParameterListForGeneration mActualParameterList
+  private let [@actualParameterForGeneration] mActualParameterList
   private let @bool mHasCompilerArgument
   private let @unifiedTypeMapEntry mMethodBaseType
 }
@@ -143,7 +143,7 @@ override proc @methodCallInstructionForGeneration.generateInstruction (?!@string
   var jokerParametersToReleaseList = [@string] ()
   var inputVariableList = [@string] ()
   for entry in self.mActualParameterList do
-    entry.mActualParameter.generateActualParameter (!?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioGeneratedCode, !?jokerParametersToReleaseList, !?inputVariableList, !?ioUnusedVariableCppNameSet, ?let parameterCppName)
+    entry.generateActualParameter (!?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioGeneratedCode, !?jokerParametersToReleaseList, !?inputVariableList, !?ioUnusedVariableCppNameSet, ?let parameterCppName)
     parameterCppNameList ++= parameterCppName
   end
 //--- Generate proc call
@@ -181,8 +181,8 @@ override proc @methodCallInstructionForGeneration.generateInstruction (?!@string
   ioGeneratedCode += self.mInstructionLocation.sourceFile + ") ;\n"
 //--- Generate poisoned variables
   for entry in self.mActualParameterList do
-    entry.mActualParameter.generatePoisonedVariables
-      (!?ioGeneratedCode,
+    entry.generatePoisonedVariables (
+      !?ioGeneratedCode,
       !?ioUnusedVariableCppNameSet
     )
   end

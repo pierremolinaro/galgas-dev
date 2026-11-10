@@ -86,7 +86,7 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
   //--- Get self type
     let @unifiedTypeMapEntry selfType
@@ -124,7 +124,7 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
       routineSignature,
       !?ioVariableMap,
       !?ioInstructionListForGeneration,
-      ?let @actualParameterListForGeneration actualParameterListForGeneration
+      ?let [@actualParameterForGeneration] actualParameterListForGeneration
     )
   //--- Search base type that declares the proc
     var baseType = selfType
@@ -143,13 +143,13 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
       end
     end
   //--- Generate instructions
-    ioInstructionListForGeneration ++= @(@superMethodCallInstructionForGeneration (
+    ioInstructionListForGeneration ++= @superMethodCallInstructionForGeneration (
       self.mInstructionLocation,
       self.mMethodName.string,
       actualParameterListForGeneration,
       hasCompilerArgument,
       baseType
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -163,8 +163,7 @@ final class @superMethodCallInstructionAST : @semanticInstructionAST {
 final class @superMethodCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @string mMethodName
-//  private let @methodKind mKind
-  private let @actualParameterListForGeneration mActualParameterList
+  private let [@actualParameterForGeneration] mActualParameterList
   private let @bool mHasCompilerArgument
   private let @unifiedTypeMapEntry mBaseType
 
@@ -180,7 +179,7 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
     var jokerParametersToReleaseList = [@string] ()
     var inputVariableList = [@string] ()
     for actual in self.mActualParameterList do
-      actual.mActualParameter.generateActualParameter (!?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioGeneratedCode, !?jokerParametersToReleaseList, !?inputVariableList, !?ioUnusedVariableCppNameSet, ?let parameterCppName)
+      actual.generateActualParameter (!?ioInclusionSet, !?ioTemporaryVariableIndex, !?ioGeneratedCode, !?jokerParametersToReleaseList, !?inputVariableList, !?ioUnusedVariableCppNameSet, ?let parameterCppName)
       parameterCppNameList ++= parameterCppName
     end
   //--- Generate proc call
@@ -207,8 +206,8 @@ final class @superMethodCallInstructionForGeneration : @semanticInstructionForGe
     ioGeneratedCode += self.mInstructionLocation.sourceFile + ") ;\n"
   //--- Generate poisoned variables
     for actual in self.mActualParameterList do
-      actual.mActualParameter.generatePoisonedVariables
-        (!?ioGeneratedCode,
+      actual.generatePoisonedVariables (
+        !?ioGeneratedCode,
         !?ioUnusedVariableCppNameSet
       )
     end

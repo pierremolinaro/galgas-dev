@@ -126,7 +126,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_removeAll (%?^%Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
+void GGS_%!TYPE_IDENTIFIER%::setter_insert (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
       %!^%const GGS_uint inInsertionIndex,
       %!^%Compiler * /* inCompiler */
       %!^%COMMA_LOCATION_ARGS) {
@@ -138,7 +138,7 @@ void GGS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^%const GGS_%!ELEMENT_TYPE_
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+void GGS_%!TYPE_IDENTIFIER%::setter_remove (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
       %!^%const GGS_uint inRemoveIndex,
       %!^%Compiler * /* inCompiler */
       %!^%COMMA_LOCATION_ARGS) {
@@ -153,27 +153,35 @@ void GGS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^%GGS_%!ELEMENT_TYPE_IDENTI
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
-      %!^%Compiler * /* inCompiler */
+void GGS_%!TYPE_IDENTIFIER%::setter_removeFirst (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+      %!^%Compiler * inCompiler
       %!^%COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_%!TYPE_IDENTIFIER%::setter_popLast (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
-      %!^%Compiler * /* inCompiler */
+void GGS_%!TYPE_IDENTIFIER%::setter_removeLast (%?^%GGS_%!ELEMENT_TYPE_IDENTIFIER% & outValue,
+      %!^%Compiler * inCompiler
       %!^%COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 

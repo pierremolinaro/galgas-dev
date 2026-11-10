@@ -312,7 +312,7 @@ class cPtr_superMethodCallInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -488,7 +488,7 @@ class cPtr_syntaxSendInstructionAST : public cPtr_syntaxInstructionAST {
            const class GGS_nonterminalMap arg_inNonterminalMap,
            const class GGS_string arg_inComponentName,
            const class GGS_stringset arg_inIndexNameSet,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            class GGS_uint & arg_ioSelectMethodCount,
            Compiler * COMMA_LOCATION_ARGS) override ;
@@ -835,7 +835,7 @@ class cPtr_errorInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1013,7 +1013,7 @@ class cPtr_procCallInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1183,7 +1183,7 @@ class cPtr_selfDivEqualExpressionInstructionAST : public cPtr_semanticInstructio
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1351,7 +1351,7 @@ class cPtr_selfPlusEqualExpressionInstructionAST : public cPtr_semanticInstructi
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1519,7 +1519,7 @@ class cPtr_selfMinusEqualExpressionInstructionAST : public cPtr_semanticInstruct
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1687,7 +1687,7 @@ class cPtr_selfMulEqualExpressionInstructionAST : public cPtr_semanticInstructio
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -1881,7 +1881,7 @@ class cPtr_opAssignExpressionInstructionAST : public cPtr_semanticInstructionAST
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2069,7 +2069,7 @@ class cPtr_plusPlusEqualElementInstructionAST : public cPtr_semanticInstructionA
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2251,7 +2251,7 @@ class cPtr_warningInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2469,7 +2469,7 @@ class cPtr_grammarInFileInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2675,7 +2675,7 @@ class cPtr_grammarInStringInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -2889,7 +2889,7 @@ class cPtr_loopInstructionWithVariantAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3081,7 +3081,7 @@ class cPtr_methodCallInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3269,7 +3269,7 @@ class cPtr_ifInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3493,7 +3493,7 @@ class cPtr_forInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3697,7 +3697,7 @@ class cPtr_switchInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -3887,7 +3887,7 @@ class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4067,7 +4067,7 @@ class cPtr_selfSetterCallInstructionAST : public cPtr_semanticInstructionAST {
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
@@ -4261,7 +4261,7 @@ class cPtr_loopInstructionWithoutVariantAST : public cPtr_semanticInstructionAST
            class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
            const class GGS_analysisContext arg_inAnalysisContext,
            class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticInstructionListForGeneration & arg_ioInstructionListForGeneration,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
            class GGS_localVarManager & arg_ioVariableMap,
            Compiler * COMMA_LOCATION_ARGS) override ;
 

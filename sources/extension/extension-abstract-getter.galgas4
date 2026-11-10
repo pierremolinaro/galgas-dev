@@ -160,7 +160,7 @@ final class @abstractExtensionGetterAST : @semanticDeclarationAST {
       )
     end
   //--- Compute proc signature
-    var @formalInputParameterListForGeneration formalParameterListForGeneration = @()
+    var [@formalInputParameterForGeneration] formalParameterListForGeneration = @()
     for formalParameter in self.mAbstractExtensionGetterFormalInputParameterList do
       formalParameterListForGeneration ++= @(
         formalParameter.mFormalSelector,
@@ -212,7 +212,7 @@ final class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHead
   private let @unifiedTypeMapEntry mReceiverType
   private let @string mAbstractExtensionGetterName
   private let @unifiedTypeMapEntry mResultType
-  private let @formalInputParameterListForGeneration mAbstractExtensionGetterFormalParameterList
+  private let [@formalInputParameterForGeneration] mAbstractExtensionGetterFormalParameterList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -142,7 +142,7 @@ final class @switchInstructionAST : @semanticInstructionAST {
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                             let @analysisContext inAnalysisContext,
                             ?!@unifiedTypeMap ioTypeMap,
-                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                            ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                             ?!@localVarManager ioVariableMap) {
   //--- Analyze switch expression
     self.mSwitchExpression.analyzeSemanticExpression
@@ -238,7 +238,7 @@ final class @switchInstructionAST : @semanticInstructionAST {
           !localConstantList: @(),
           branch.mInstructions,
           !?ioVariableMap,
-          ?let @semanticInstructionListForGeneration instructionList
+          ?let [@semanticInstructionForGeneration] instructionList
         )
         !?ioVariableMap.closeBranch (branch.mEndOfBranch)
         switchBranchesForGeneration ++= @(
@@ -260,11 +260,11 @@ final class @switchInstructionAST : @semanticInstructionAST {
         )
       end
     //--- Generate instruction
-      ioInstructionListForGeneration ++= @(@switchInstructionForGeneration (
+      ioInstructionListForGeneration ++= @switchInstructionForGeneration (
         switchExpression.mResultType,
         switchExpression,
         switchBranchesForGeneration
-      ))
+      )
     else
       error (self.mEndOfSwitchExpression
       : "the switch expression type should be an instance of an enumeration type (the '@"
@@ -294,7 +294,7 @@ struct @switchBranchForGeneration {
   public let [@lstring] mSwitchConstantList
   public let [@extractedAssociatedValueForGeneration] mExtractedAssociatedValuesForGeneration
   public let @uint mEndOfBranchLocationIndex
-  public let @semanticInstructionListForGeneration mInstructions
+  public let [@semanticInstructionForGeneration] mInstructions
 }
 
 //--------------------------------------------------------------------------------------------------

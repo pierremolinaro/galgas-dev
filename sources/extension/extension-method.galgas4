@@ -176,10 +176,6 @@ final class @extensionMethodAST : @semanticDeclarationAST {
       !selfAvailability: .available (!type: selfType, !selfMutability: .propertiesAreMutableSelfIsNot),
       !selfObjectCppPrefixForAccessingProperty: selfObjectPropertyAccessorString
     )
-//    var isclass = false
-//    if let classType = selfType.definition.typeKind.getClassType then
-//      isclass = classType.isReference
-//    end
     analyzeRoutineBody (
       nameForUsefulness,
       !?ioUsefulEntitiesGraph,
@@ -240,7 +236,7 @@ final class @extensionMethodForGeneration : @semanticDeclarationWithHeaderForGen
   private let @bool mImplementedAsFunction
   private let [@formalParameterForGeneration] mExtensionMethodFormalParameterList
   private let [@typedProperty] mTypedAttributeList
-  private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+  private let [@semanticInstructionForGeneration] mSemanticInstructionListForGeneration
 }
 
 //································································································
@@ -275,9 +271,13 @@ override proc @extensionMethodForGeneration.appendSpecificImplementation (let @u
                                                     !@string outImplementation) {
   if self.mImplementedAsFunction then
     var [@formalParameterForGeneration] extensionMethodFormalParameterList = self.mExtensionMethodFormalParameterList
-    !?extensionMethodFormalParameterList.insertAtIndex (
+//    !?extensionMethodFormalParameterList.insertAtIndex (
+//      @("".nowhere, .argumentConstantIn, self.mReceiverType, "self".here, "inObject"),
+//      0
+//    )
+    !?extensionMethodFormalParameterList.insert (
       @("".nowhere, .argumentConstantIn, self.mReceiverType, "self".here, "inObject"),
-      0
+      !at: 0
     )
     ioInclusionSet ++= "proc-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionMethodName.fileNameRepresentation
     generateProcedure (

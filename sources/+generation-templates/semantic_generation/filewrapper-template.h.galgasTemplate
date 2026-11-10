@@ -5,8 +5,8 @@
 //--------------------------------------------------------------------------------------------------
 
 GGS_string filewrapperTemplate_%![FILEWRAPPER_NAME identifierRepresentation]%_%![TEMPLATE_NAME identifierRepresentation]% (%?^%class Compiler * inCompiler%
-  for (mFormalSelector mFormalArgumentType mFormalArgumentCppName mFormalArgumentName mIsConstant) in FORMAL_ARGUMENT_LIST do
-    %,\n%!^%const class GGS_%![mFormalArgumentType identifierRepresentation]% & %!mFormalArgumentCppName
+  for (formalArg) in FORMAL_ARGUMENT_LIST do
+    %,\n%!^%const class GGS_%![formalArg.mFormalArgumentType identifierRepresentation]% & %!formalArg.mFormalArgumentCppName
   end
 %\n %!^%COMMA_LOCATION_ARGS) ;
 

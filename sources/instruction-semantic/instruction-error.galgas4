@@ -277,7 +277,7 @@ override proc @errorInstructionAST.analyzeSemanticInstruction (
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
 //---
   analyzeErrorOrWarningInstruction (
@@ -302,13 +302,13 @@ override proc @errorInstructionAST.analyzeSemanticInstruction (
     builtVariableCppNameList ++= varCppName
   end
 //--- Generate instruction
-  ioInstructionListForGeneration ++= @(@errorInstructionForGeneration (
+  ioInstructionListForGeneration ++= @errorInstructionForGeneration (
     self.mInstructionLocation,
     locationExpression,
     messageExpression,
     builtVariableCppNameList,
     fixitListForGeneration
-  ))
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

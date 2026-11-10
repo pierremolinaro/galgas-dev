@@ -112,7 +112,7 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
   //--- Get target variable type
     !?ioVariableMap.neutralAccess (self.mTargetVariableName, ?let receiverType, ?*, ?*)
@@ -161,7 +161,7 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
       )
     end
   //--- Generate instruction
-    ioInstructionListForGeneration ++= @(@assignmentInstructionForGeneration (
+    ioInstructionListForGeneration ++= @assignmentInstructionForGeneration (
       receiverType,
       targetType,
       targetVariableCppName,
@@ -169,7 +169,7 @@ final class @assignmentInstructionAST : @semanticInstructionAST {
       self.mOptionalProperty,
       expression,
       self.mTargetVariableName.location
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -198,7 +198,7 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.propertiesAreMutable then
@@ -237,7 +237,7 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
     //--- Check assignment type compatibility
       checkAssignmentTypeWithImplicitGetterCall (targetType, expression.mResultType, self.mInstructionLocation, !?expression)
     //--- Generate instruction
-      ioInstructionListForGeneration ++= @(@assignmentInstructionForGeneration (
+      ioInstructionListForGeneration ++= @assignmentInstructionForGeneration (
         selfAvailable.type,
         targetType,
         targetVariableCppName,
@@ -245,7 +245,7 @@ final class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
         self.mOptionalProperty,
         expression,
         self.mTargetSelfPropertyName.location
-      ))
+      )
     else
       error (self.mInstructionLocation : "'self' not available in this context")
     end

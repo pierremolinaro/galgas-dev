@@ -118,7 +118,7 @@ override proc @repeatInstruction.analyzeSyntaxInstruction
   let @nonterminalMap inNonterminalMap,
   let @string inComponentName,
   let @stringset inIndexNameSet,
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+  ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
   ?!@localVarManager ioVariableMap,
   ?!@uint ioSelectMethodCount
 ) {
@@ -169,14 +169,14 @@ override proc @repeatInstruction.analyzeSyntaxInstruction
 //--- End block
   !?ioVariableMap.closeOverride (self.mEndOf_repeat_instruction)
 //---
-  ioInstructionListForGeneration ++= @(@repeatInstructionForGeneration (
+  ioInstructionListForGeneration ++= @repeatInstructionForGeneration (
     self.mInstructionLocation,
     inComponentName,
     choiceIndex,
     repeated_instructionList,
     self.mEndOf_repeat_instruction,
     listOfSemanticInstructionListForGeneration
-  ))
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -186,7 +186,7 @@ override proc @repeatInstruction.analyzeSyntaxInstruction
 final class @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
   private let @string mSyntaxComponentName
   private let @uint mChoiceIndex
-  private let @semanticInstructionListForGeneration m_repeated_instructionList
+  private let [@semanticInstructionForGeneration] m_repeated_instructionList
   private let @location mEndOfRepeatedInstructions
   private let @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
 }
@@ -197,7 +197,7 @@ final class @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
 
 override proc @repeatInstructionForGeneration.appendSyntaxSignature
   (let @string inPosfix,
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?![@semanticInstructionForGeneration] ioInstructionListForGeneration
 ) {
   let repeated_instructionList = syntaxSignatureOfInstructionList (inPosfix, self.m_repeated_instructionList)
   var listOfSemanticInstructionListForGeneration = @listOfSemanticInstructionListForGeneration ()
@@ -207,14 +207,14 @@ override proc @repeatInstructionForGeneration.appendSyntaxSignature
       entry.mEndOfInstructionList)
   end
 //---
-  ioInstructionListForGeneration ++= @(@repeatInstructionForGeneration (
+  ioInstructionListForGeneration ++= @repeatInstructionForGeneration (
     self.mInstructionLocation,
     self.mSyntaxComponentName,
     self.mChoiceIndex,
     repeated_instructionList,
     self.mEndOfRepeatedInstructions,
     listOfSemanticInstructionListForGeneration
-  ))
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

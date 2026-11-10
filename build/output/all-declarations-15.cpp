@@ -7453,6 +7453,48 @@ const GALGAS_TypeDescriptor * GGS_castInExpressionForGeneration::staticTypeDescr
 }
 
 //--------------------------------------------------------------------------------------------------
+//
+//Abstract extension proc '@actualParameterForGeneration generateActualParameter'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_generateActualParameter (cPtr_actualParameterForGeneration * inObject,
+                                                  GGS_stringset & io_ioInclusionSet,
+                                                  GGS_uint & io_ioTemporaryVariableIndex,
+                                                  GGS_string & io_ioImplementation,
+                                                  GGS__5B_string_5D_ & io_ioJokerParametersToReleaseList,
+                                                  GGS__5B_string_5D_ & io_ioOutputVariableList,
+                                                  GGS_stringset & io__5F_ioUnusedVariableCppNameSet,
+                                                  GGS_string & out_outCppName,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+//--- Drop output arguments
+  out_outCppName.drop () ;
+//--- Find proc
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_actualParameterForGeneration) ;
+    inObject->method_generateActualParameter (io_ioInclusionSet, io_ioTemporaryVariableIndex, io_ioImplementation, io_ioJokerParametersToReleaseList, io_ioOutputVariableList, io__5F_ioUnusedVariableCppNameSet, out_outCppName, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension proc '@actualParameterForGeneration generatePoisonedVariables'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_generatePoisonedVariables (cPtr_actualParameterForGeneration * inObject,
+                                                    GGS_string & io_ioImplementation,
+                                                    GGS_stringset & io_ioUnusedVariableCppNameSet,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+//--- Drop output arguments
+//--- Find proc
+  if (nullptr != inObject) {
+    macroValidSharedObject (inObject, cPtr_actualParameterForGeneration) ;
+    inObject->method_generatePoisonedVariables (io_ioImplementation, io_ioUnusedVariableCppNameSet, inCompiler COMMA_THERE) ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
 // @outputActualParameterForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -7586,6 +7628,502 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputActualParameterForGener
 
 const GALGAS_TypeDescriptor * GGS_outputActualParameterForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_outputActualParameterForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @outputInputActualParameterForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_outputInputActualParameterForGeneration::objectCompare (const GGS_outputInputActualParameterForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputActualParameterForGeneration::GGS_outputInputActualParameterForGeneration (void) :
+GGS_actualParameterForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_outputInputActualParameterForGeneration GGS_outputInputActualParameterForGeneration::
+init_21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                      const GGS_string & in_mOutputInputVariableCppName,
+                      const GGS__5B_lstring_5D_ & in_mStructAttributeList,
+                      const GGS_unifiedTypeMapEntryList & in_mTypeList,
+                      Compiler * inCompiler
+                      COMMA_LOCATION_ARGS) {
+  cPtr_outputInputActualParameterForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_outputInputActualParameterForGeneration (inCompiler COMMA_THERE)) ;
+  object->outputInputActualParameterForGeneration_init_21__21__21__21_ (in_mFormalArgumentType, in_mOutputInputVariableCppName, in_mStructAttributeList, in_mTypeList, inCompiler) ;
+  const GGS_outputInputActualParameterForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_outputInputActualParameterForGeneration::
+outputInputActualParameterForGeneration_init_21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                              const GGS_string & in_mOutputInputVariableCppName,
+                                                              const GGS__5B_lstring_5D_ & in_mStructAttributeList,
+                                                              const GGS_unifiedTypeMapEntryList & in_mTypeList,
+                                                              Compiler * /* inCompiler */) {
+  mProperty_mFormalArgumentType = in_mFormalArgumentType ;
+  mProperty_mOutputInputVariableCppName = in_mOutputInputVariableCppName ;
+  mProperty_mStructAttributeList = in_mStructAttributeList ;
+  mProperty_mTypeList = in_mTypeList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_outputInputActualParameterForGeneration::GGS_outputInputActualParameterForGeneration (const cPtr_outputInputActualParameterForGeneration * inSourcePtr) :
+GGS_actualParameterForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_outputInputActualParameterForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_outputInputActualParameterForGeneration::readProperty_mOutputInputVariableCppName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_outputInputActualParameterForGeneration * p = (cPtr_outputInputActualParameterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_outputInputActualParameterForGeneration) ;
+    return p->mProperty_mOutputInputVariableCppName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lstring_5D_ GGS_outputInputActualParameterForGeneration::readProperty_mStructAttributeList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_lstring_5D_ () ;
+  }else{
+    cPtr_outputInputActualParameterForGeneration * p = (cPtr_outputInputActualParameterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_outputInputActualParameterForGeneration) ;
+    return p->mProperty_mStructAttributeList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapEntryList GGS_outputInputActualParameterForGeneration::readProperty_mTypeList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_unifiedTypeMapEntryList () ;
+  }else{
+    cPtr_outputInputActualParameterForGeneration * p = (cPtr_outputInputActualParameterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_outputInputActualParameterForGeneration) ;
+    return p->mProperty_mTypeList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @outputInputActualParameterForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_outputInputActualParameterForGeneration::cPtr_outputInputActualParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_actualParameterForGeneration (inCompiler COMMA_THERE),
+mProperty_mOutputInputVariableCppName (),
+mProperty_mStructAttributeList (),
+mProperty_mTypeList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_outputInputActualParameterForGeneration::cPtr_outputInputActualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                                            const GGS_string & in_mOutputInputVariableCppName,
+                                                                                            const GGS__5B_lstring_5D_ & in_mStructAttributeList,
+                                                                                            const GGS_unifiedTypeMapEntryList & in_mTypeList,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) :
+cPtr_actualParameterForGeneration (in_mFormalArgumentType, inCompiler COMMA_THERE),
+mProperty_mOutputInputVariableCppName (),
+mProperty_mStructAttributeList (),
+mProperty_mTypeList () {
+  mProperty_mFormalArgumentType = in_mFormalArgumentType ;
+  mProperty_mOutputInputVariableCppName = in_mOutputInputVariableCppName ;
+  mProperty_mStructAttributeList = in_mStructAttributeList ;
+  mProperty_mTypeList = in_mTypeList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_outputInputActualParameterForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_outputInputActualParameterForGeneration ;
+}
+
+void cPtr_outputInputActualParameterForGeneration::description (String & ioString,
+                                                                const int32_t inIndentation) const {
+  ioString.appendCString ("[@outputInputActualParameterForGeneration:") ;
+  mProperty_mFormalArgumentType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mOutputInputVariableCppName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mStructAttributeList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mTypeList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_outputInputActualParameterForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_outputInputActualParameterForGeneration (mProperty_mFormalArgumentType, mProperty_mOutputInputVariableCppName, mProperty_mStructAttributeList, mProperty_mTypeList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_outputInputActualParameterForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_actualParameterForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mOutputInputVariableCppName.printNonNullClassInstanceProperties ("mOutputInputVariableCppName") ;
+    mProperty_mStructAttributeList.printNonNullClassInstanceProperties ("mStructAttributeList") ;
+    mProperty_mTypeList.printNonNullClassInstanceProperties ("mTypeList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @outputInputActualParameterForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_outputInputActualParameterForGeneration ("outputInputActualParameterForGeneration",
+                                                                                            & kTypeDescriptor_GALGAS_actualParameterForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_outputInputActualParameterForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_outputInputActualParameterForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @inputActualParameterForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_inputActualParameterForGeneration::objectCompare (const GGS_inputActualParameterForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualParameterForGeneration::GGS_inputActualParameterForGeneration (void) :
+GGS_actualParameterForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_inputActualParameterForGeneration GGS_inputActualParameterForGeneration::
+init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                  const GGS_string & in_mInputActualCppName,
+                  const GGS__5B__32_string_5D_ & in_mPoisonedVarNameList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_inputActualParameterForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_inputActualParameterForGeneration (inCompiler COMMA_THERE)) ;
+  object->inputActualParameterForGeneration_init_21__21__21_ (in_mFormalArgumentType, in_mInputActualCppName, in_mPoisonedVarNameList, inCompiler) ;
+  const GGS_inputActualParameterForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_inputActualParameterForGeneration::
+inputActualParameterForGeneration_init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                    const GGS_string & in_mInputActualCppName,
+                                                    const GGS__5B__32_string_5D_ & in_mPoisonedVarNameList,
+                                                    Compiler * /* inCompiler */) {
+  mProperty_mFormalArgumentType = in_mFormalArgumentType ;
+  mProperty_mInputActualCppName = in_mInputActualCppName ;
+  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputActualParameterForGeneration::GGS_inputActualParameterForGeneration (const cPtr_inputActualParameterForGeneration * inSourcePtr) :
+GGS_actualParameterForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_inputActualParameterForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_inputActualParameterForGeneration::readProperty_mInputActualCppName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_inputActualParameterForGeneration * p = (cPtr_inputActualParameterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputActualParameterForGeneration) ;
+    return p->mProperty_mInputActualCppName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B__32_string_5D_ GGS_inputActualParameterForGeneration::readProperty_mPoisonedVarNameList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B__32_string_5D_ () ;
+  }else{
+    cPtr_inputActualParameterForGeneration * p = (cPtr_inputActualParameterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputActualParameterForGeneration) ;
+    return p->mProperty_mPoisonedVarNameList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @inputActualParameterForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputActualParameterForGeneration::cPtr_inputActualParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_actualParameterForGeneration (inCompiler COMMA_THERE),
+mProperty_mInputActualCppName (),
+mProperty_mPoisonedVarNameList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputActualParameterForGeneration::cPtr_inputActualParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                                const GGS_string & in_mInputActualCppName,
+                                                                                const GGS__5B__32_string_5D_ & in_mPoisonedVarNameList,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) :
+cPtr_actualParameterForGeneration (in_mFormalArgumentType, inCompiler COMMA_THERE),
+mProperty_mInputActualCppName (),
+mProperty_mPoisonedVarNameList () {
+  mProperty_mFormalArgumentType = in_mFormalArgumentType ;
+  mProperty_mInputActualCppName = in_mInputActualCppName ;
+  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_inputActualParameterForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputActualParameterForGeneration ;
+}
+
+void cPtr_inputActualParameterForGeneration::description (String & ioString,
+                                                          const int32_t inIndentation) const {
+  ioString.appendCString ("[@inputActualParameterForGeneration:") ;
+  mProperty_mFormalArgumentType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mInputActualCppName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_inputActualParameterForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_inputActualParameterForGeneration (mProperty_mFormalArgumentType, mProperty_mInputActualCppName, mProperty_mPoisonedVarNameList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_inputActualParameterForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_actualParameterForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mInputActualCppName.printNonNullClassInstanceProperties ("mInputActualCppName") ;
+    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @inputActualParameterForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputActualParameterForGeneration ("inputActualParameterForGeneration",
+                                                                                      & kTypeDescriptor_GALGAS_actualParameterForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_inputActualParameterForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputActualParameterForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @inputJokerParameterForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_inputJokerParameterForGeneration::objectCompare (const GGS_inputJokerParameterForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputJokerParameterForGeneration::GGS_inputJokerParameterForGeneration (void) :
+GGS_actualParameterForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_inputJokerParameterForGeneration GGS_inputJokerParameterForGeneration::
+init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                  const GGS_string & in_mInputActualCppName,
+                  const GGS__5B__32_string_5D_ & in_mPoisonedVarNameList,
+                  Compiler * inCompiler
+                  COMMA_LOCATION_ARGS) {
+  cPtr_inputJokerParameterForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_inputJokerParameterForGeneration (inCompiler COMMA_THERE)) ;
+  object->inputJokerParameterForGeneration_init_21__21__21_ (in_mFormalArgumentType, in_mInputActualCppName, in_mPoisonedVarNameList, inCompiler) ;
+  const GGS_inputJokerParameterForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_inputJokerParameterForGeneration::
+inputJokerParameterForGeneration_init_21__21__21_ (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                   const GGS_string & in_mInputActualCppName,
+                                                   const GGS__5B__32_string_5D_ & in_mPoisonedVarNameList,
+                                                   Compiler * /* inCompiler */) {
+  mProperty_mFormalArgumentType = in_mFormalArgumentType ;
+  mProperty_mInputActualCppName = in_mInputActualCppName ;
+  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_inputJokerParameterForGeneration::GGS_inputJokerParameterForGeneration (const cPtr_inputJokerParameterForGeneration * inSourcePtr) :
+GGS_actualParameterForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_inputJokerParameterForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_inputJokerParameterForGeneration::readProperty_mInputActualCppName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_inputJokerParameterForGeneration * p = (cPtr_inputJokerParameterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputJokerParameterForGeneration) ;
+    return p->mProperty_mInputActualCppName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B__32_string_5D_ GGS_inputJokerParameterForGeneration::readProperty_mPoisonedVarNameList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B__32_string_5D_ () ;
+  }else{
+    cPtr_inputJokerParameterForGeneration * p = (cPtr_inputJokerParameterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_inputJokerParameterForGeneration) ;
+    return p->mProperty_mPoisonedVarNameList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @inputJokerParameterForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputJokerParameterForGeneration::cPtr_inputJokerParameterForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_actualParameterForGeneration (inCompiler COMMA_THERE),
+mProperty_mInputActualCppName (),
+mProperty_mPoisonedVarNameList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_inputJokerParameterForGeneration::cPtr_inputJokerParameterForGeneration (const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
+                                                                              const GGS_string & in_mInputActualCppName,
+                                                                              const GGS__5B__32_string_5D_ & in_mPoisonedVarNameList,
+                                                                              Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) :
+cPtr_actualParameterForGeneration (in_mFormalArgumentType, inCompiler COMMA_THERE),
+mProperty_mInputActualCppName (),
+mProperty_mPoisonedVarNameList () {
+  mProperty_mFormalArgumentType = in_mFormalArgumentType ;
+  mProperty_mInputActualCppName = in_mInputActualCppName ;
+  mProperty_mPoisonedVarNameList = in_mPoisonedVarNameList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_inputJokerParameterForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputJokerParameterForGeneration ;
+}
+
+void cPtr_inputJokerParameterForGeneration::description (String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString.appendCString ("[@inputJokerParameterForGeneration:") ;
+  mProperty_mFormalArgumentType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mInputActualCppName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mPoisonedVarNameList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_inputJokerParameterForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_inputJokerParameterForGeneration (mProperty_mFormalArgumentType, mProperty_mInputActualCppName, mProperty_mPoisonedVarNameList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_inputJokerParameterForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_actualParameterForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mInputActualCppName.printNonNullClassInstanceProperties ("mInputActualCppName") ;
+    mProperty_mPoisonedVarNameList.printNonNullClassInstanceProperties ("mPoisonedVarNameList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @inputJokerParameterForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputJokerParameterForGeneration ("inputJokerParameterForGeneration",
+                                                                                     & kTypeDescriptor_GALGAS_actualParameterForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_inputJokerParameterForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_inputJokerParameterForGeneration ;
 }
 
 //--------------------------------------------------------------------------------------------------

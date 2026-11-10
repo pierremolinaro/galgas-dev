@@ -150,7 +150,7 @@ syntax extension galgas4InstructionsSyntax {
             actualParameterList
           )
         else
-          !?propertyList.popLast (?let methodName)
+          !?propertyList.removeLast (?let methodName)
           var @semanticExpressionAST receiverExpression = @selfInExpressionAST (@location.here)
           receiverExpression = @structPropertyAccessExpressionAST (receiverName.location, receiverExpression, receiverName)
           for entry in propertyList do
@@ -170,7 +170,7 @@ syntax extension galgas4InstructionsSyntax {
           actualParameterList
         )
       else
-        !?propertyList.popLast (?let methodName)
+        !?propertyList.removeLast (?let methodName)
         var @semanticExpressionAST receiverExpression = @varInExpressionAST (receiverName)
         for entry in propertyList do
           receiverExpression = @structPropertyAccessExpressionAST (entry.location, receiverExpression, entry)
@@ -268,7 +268,7 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
   //--- Check target variable, or self.property
     var @unifiedTypeMapEntry targetType
@@ -331,7 +331,7 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
   //--- Check assignment type compatibility
     checkAssignmentTypeWithImplicitGetterCall (targetType, expression.mResultType, self.mInstructionLocation, !?expression)
   //--- Generate instruction
-    ioInstructionListForGeneration ++= @(@opAssignInstructionForGeneration (
+    ioInstructionListForGeneration ++= @opAssignInstructionForGeneration (
       self.mInstructionLocation,
       targetType,
       targetVariableCppName,
@@ -339,7 +339,7 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
       self.mStructAttributeList,
       expression,
       self.mOperator.cppFunctionName
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -367,7 +367,7 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
   //--- Check target variable, or self.property
     var @unifiedTypeMapEntry targetType
@@ -433,14 +433,14 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
       !?expression
     )
   //--- Generate instruction
-    ioInstructionListForGeneration ++= @(@plusPlusAssignInstructionForGeneration (
+    ioInstructionListForGeneration ++= @plusPlusAssignInstructionForGeneration (
       self.mInstructionLocation,
       targetType,
       targetVariableCppName,
       nameForCheckingFormalParameterUsing,
       self.mStructAttributeList,
       expression
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

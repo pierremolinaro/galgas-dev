@@ -415,7 +415,7 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
 //--- Begin override for foreach defined constants
   !?ioVariableMap.openOverrideForSelectBlock ()
@@ -459,7 +459,7 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
     self.mAfterInstructionList,
     self.mEndOf_after_branch,
     !?ioVariableMap,
-    ?let @semanticInstructionListForGeneration after_instructionList
+    ?let [@semanticInstructionForGeneration] after_instructionList
   )
   !?ioVariableMap.closeOverride (self.mEndOf_after_branch)
 //--- Analyze enumerated objects
@@ -542,7 +542,7 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
   !?ioVariableMap.closeBranch (self.mEndOf_foreach_instruction)
   !?ioVariableMap.closeOverride (self.mEndOf_foreach_instruction)
 //--- Generate instruction
-  ioInstructionListForGeneration ++= @(@forInstructionForGeneration (
+  ioInstructionListForGeneration ++= @forInstructionForGeneration (
     self.mInstructionLocation,
     enumerationList,
     indexCppName,
@@ -551,7 +551,7 @@ override proc @forInstructionAST.analyzeSemanticInstruction (
     between_instructionList,
     do_instructionList,
     after_instructionList
-  ))
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -571,10 +571,10 @@ final class @forInstructionForGeneration : @semanticInstructionForGeneration {
   private let [@forInstructionEnumeratedObjectForGeneration] mEnumeratedObjectList
   private let @string mIndexVariableCppName  // Empty string if no index
   private let @semanticExpressionForGeneration mWhileExpression
-  private let @semanticInstructionListForGeneration mBeforeInstructionList
-  private let @semanticInstructionListForGeneration mBetweenInstructionList
-  private let @semanticInstructionListForGeneration mDoInstructionList
-  private let @semanticInstructionListForGeneration mAfterInstructionList
+  private let [@semanticInstructionForGeneration] mBeforeInstructionList
+  private let [@semanticInstructionForGeneration] mBetweenInstructionList
+  private let [@semanticInstructionForGeneration] mDoInstructionList
+  private let [@semanticInstructionForGeneration] mAfterInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------

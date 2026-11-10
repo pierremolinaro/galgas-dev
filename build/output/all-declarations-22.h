@@ -150,7 +150,7 @@ void routine_semanticAnalysisOfRuleLabel_3F__26__3F__3F__3F__26__3F__3F__3F__3F_
                                                                                                               class GGS_uint & ioArgument13,
                                                                                                               class GGS__5B_formalParameterForGeneration_5D_ & outArgument14,
                                                                                                               class GGS_formalParameterSignature & outArgument15,
-                                                                                                              class GGS_semanticInstructionListForGeneration & outArgument16,
+                                                                                                              class GGS__5B_semanticInstructionForGeneration_5D_ & outArgument16,
                                                                                                               class Compiler * inCompiler
                                                                                                               COMMA_LOCATION_ARGS) ;
 

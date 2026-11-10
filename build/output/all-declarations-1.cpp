@@ -328,7 +328,7 @@ GGS_semanticInstructionForGeneration () {
 GGS_typeMethodCallInstructionForGeneration GGS_typeMethodCallInstructionForGeneration::
 init_21__21__21__21_ (const GGS_lstring & in_mTypeName,
                       const GGS_lstring & in_mMethodName,
-                      const GGS_actualParameterListForGeneration & in_mActualParameterList,
+                      const GGS__5B_actualParameterForGeneration_5D_ & in_mActualParameterList,
                       const GGS_bool & in_mHasCompilerArgument,
                       Compiler * inCompiler
                       COMMA_LOCATION_ARGS) {
@@ -345,7 +345,7 @@ init_21__21__21__21_ (const GGS_lstring & in_mTypeName,
 void cPtr_typeMethodCallInstructionForGeneration::
 typeMethodCallInstructionForGeneration_init_21__21__21__21_ (const GGS_lstring & in_mTypeName,
                                                              const GGS_lstring & in_mMethodName,
-                                                             const GGS_actualParameterListForGeneration & in_mActualParameterList,
+                                                             const GGS__5B_actualParameterForGeneration_5D_ & in_mActualParameterList,
                                                              const GGS_bool & in_mHasCompilerArgument,
                                                              Compiler * /* inCompiler */) {
   mProperty_mTypeName = in_mTypeName ;
@@ -386,9 +386,9 @@ GGS_lstring GGS_typeMethodCallInstructionForGeneration::readProperty_mMethodName
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_actualParameterListForGeneration GGS_typeMethodCallInstructionForGeneration::readProperty_mActualParameterList (void) const {
+GGS__5B_actualParameterForGeneration_5D_ GGS_typeMethodCallInstructionForGeneration::readProperty_mActualParameterList (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_actualParameterListForGeneration () ;
+    return GGS__5B_actualParameterForGeneration_5D_ () ;
   }else{
     cPtr_typeMethodCallInstructionForGeneration * p = (cPtr_typeMethodCallInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_typeMethodCallInstructionForGeneration) ;
@@ -424,7 +424,7 @@ mProperty_mHasCompilerArgument () {
 
 cPtr_typeMethodCallInstructionForGeneration::cPtr_typeMethodCallInstructionForGeneration (const GGS_lstring & in_mTypeName,
                                                                                           const GGS_lstring & in_mMethodName,
-                                                                                          const GGS_actualParameterListForGeneration & in_mActualParameterList,
+                                                                                          const GGS__5B_actualParameterForGeneration_5D_ & in_mActualParameterList,
                                                                                           const GGS_bool & in_mHasCompilerArgument,
                                                                                           Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) :
@@ -810,10 +810,10 @@ void GGS__5B_templateDelimitor_32_AST_5D_::setter_removeAll (Compiler * /* inCom
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_templateDelimitor_32_AST_5D_::setter_insertAtIndex (const GGS_templateDelimitor_32_AST inValue,
-                                                                 const GGS_uint inInsertionIndex,
-                                                                 Compiler * /* inCompiler */
-                                                                 COMMA_LOCATION_ARGS) {
+void GGS__5B_templateDelimitor_32_AST_5D_::setter_insert (const GGS_templateDelimitor_32_AST inValue,
+                                                          const GGS_uint inInsertionIndex,
+                                                          Compiler * /* inCompiler */
+                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -822,10 +822,10 @@ void GGS__5B_templateDelimitor_32_AST_5D_::setter_insertAtIndex (const GGS_templ
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_templateDelimitor_32_AST_5D_::setter_removeAtIndex (GGS_templateDelimitor_32_AST & outValue,
-                                                                 const GGS_uint inRemoveIndex,
-                                                                 Compiler * /* inCompiler */
-                                                                 COMMA_LOCATION_ARGS) {
+void GGS__5B_templateDelimitor_32_AST_5D_::setter_remove (GGS_templateDelimitor_32_AST & outValue,
+                                                          const GGS_uint inRemoveIndex,
+                                                          Compiler * /* inCompiler */
+                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -837,27 +837,35 @@ void GGS__5B_templateDelimitor_32_AST_5D_::setter_removeAtIndex (GGS_templateDel
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_templateDelimitor_32_AST_5D_::setter_popFirst (GGS_templateDelimitor_32_AST & outValue,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_templateDelimitor_32_AST_5D_::setter_removeFirst (GGS_templateDelimitor_32_AST & outValue,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_templateDelimitor_32_AST_5D_::setter_popLast (GGS_templateDelimitor_32_AST & outValue,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_templateDelimitor_32_AST_5D_::setter_removeLast (GGS_templateDelimitor_32_AST & outValue,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -1280,10 +1288,10 @@ void GGS__5B_templateReplacementAST_5D_::setter_removeAll (Compiler * /* inCompi
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_templateReplacementAST_5D_::setter_insertAtIndex (const GGS_templateReplacementAST inValue,
-                                                               const GGS_uint inInsertionIndex,
-                                                               Compiler * /* inCompiler */
-                                                               COMMA_LOCATION_ARGS) {
+void GGS__5B_templateReplacementAST_5D_::setter_insert (const GGS_templateReplacementAST inValue,
+                                                        const GGS_uint inInsertionIndex,
+                                                        Compiler * /* inCompiler */
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -1292,10 +1300,10 @@ void GGS__5B_templateReplacementAST_5D_::setter_insertAtIndex (const GGS_templat
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_templateReplacementAST_5D_::setter_removeAtIndex (GGS_templateReplacementAST & outValue,
-                                                               const GGS_uint inRemoveIndex,
-                                                               Compiler * /* inCompiler */
-                                                               COMMA_LOCATION_ARGS) {
+void GGS__5B_templateReplacementAST_5D_::setter_remove (GGS_templateReplacementAST & outValue,
+                                                        const GGS_uint inRemoveIndex,
+                                                        Compiler * /* inCompiler */
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -1307,27 +1315,35 @@ void GGS__5B_templateReplacementAST_5D_::setter_removeAtIndex (GGS_templateRepla
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_templateReplacementAST_5D_::setter_popFirst (GGS_templateReplacementAST & outValue,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_templateReplacementAST_5D_::setter_removeFirst (GGS_templateReplacementAST & outValue,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_templateReplacementAST_5D_::setter_popLast (GGS_templateReplacementAST & outValue,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_templateReplacementAST_5D_::setter_removeLast (GGS_templateReplacementAST & outValue,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -1730,10 +1746,10 @@ void GGS__5B_lexicalAttributeAST_5D_::setter_removeAll (Compiler * /* inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalAttributeAST_5D_::setter_insertAtIndex (const GGS_lexicalAttributeAST inValue,
-                                                            const GGS_uint inInsertionIndex,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_LOCATION_ARGS) {
+void GGS__5B_lexicalAttributeAST_5D_::setter_insert (const GGS_lexicalAttributeAST inValue,
+                                                     const GGS_uint inInsertionIndex,
+                                                     Compiler * /* inCompiler */
+                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -1742,10 +1758,10 @@ void GGS__5B_lexicalAttributeAST_5D_::setter_insertAtIndex (const GGS_lexicalAtt
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalAttributeAST_5D_::setter_removeAtIndex (GGS_lexicalAttributeAST & outValue,
-                                                            const GGS_uint inRemoveIndex,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_LOCATION_ARGS) {
+void GGS__5B_lexicalAttributeAST_5D_::setter_remove (GGS_lexicalAttributeAST & outValue,
+                                                     const GGS_uint inRemoveIndex,
+                                                     Compiler * /* inCompiler */
+                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -1757,27 +1773,35 @@ void GGS__5B_lexicalAttributeAST_5D_::setter_removeAtIndex (GGS_lexicalAttribute
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalAttributeAST_5D_::setter_popFirst (GGS_lexicalAttributeAST & outValue,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_lexicalAttributeAST_5D_::setter_removeFirst (GGS_lexicalAttributeAST & outValue,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalAttributeAST_5D_::setter_popLast (GGS_lexicalAttributeAST & outValue,
-                                                      Compiler * /* inCompiler */
-                                                      COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_lexicalAttributeAST_5D_::setter_removeLast (GGS_lexicalAttributeAST & outValue,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -2170,10 +2194,10 @@ void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_removeAll (Compiler * /* i
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_insertAtIndex (const GGS_lexicalMessageDeclarationAST inValue,
-                                                                     const GGS_uint inInsertionIndex,
-                                                                     Compiler * /* inCompiler */
-                                                                     COMMA_LOCATION_ARGS) {
+void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_insert (const GGS_lexicalMessageDeclarationAST inValue,
+                                                              const GGS_uint inInsertionIndex,
+                                                              Compiler * /* inCompiler */
+                                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -2182,10 +2206,10 @@ void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_insertAtIndex (const GGS_l
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_removeAtIndex (GGS_lexicalMessageDeclarationAST & outValue,
-                                                                     const GGS_uint inRemoveIndex,
-                                                                     Compiler * /* inCompiler */
-                                                                     COMMA_LOCATION_ARGS) {
+void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_remove (GGS_lexicalMessageDeclarationAST & outValue,
+                                                              const GGS_uint inRemoveIndex,
+                                                              Compiler * /* inCompiler */
+                                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -2197,27 +2221,35 @@ void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_removeAtIndex (GGS_lexical
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_popFirst (GGS_lexicalMessageDeclarationAST & outValue,
-                                                                Compiler * /* inCompiler */
-                                                                COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_removeFirst (GGS_lexicalMessageDeclarationAST & outValue,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_popLast (GGS_lexicalMessageDeclarationAST & outValue,
-                                                               Compiler * /* inCompiler */
-                                                               COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_lexicalMessageDeclarationAST_5D_::setter_removeLast (GGS_lexicalMessageDeclarationAST & outValue,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -2610,10 +2642,10 @@ void GGS__5B_abstractLexicalRuleAST_5D_::setter_removeAll (Compiler * /* inCompi
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_abstractLexicalRuleAST_5D_::setter_insertAtIndex (const GGS_abstractLexicalRuleAST inValue,
-                                                               const GGS_uint inInsertionIndex,
-                                                               Compiler * /* inCompiler */
-                                                               COMMA_LOCATION_ARGS) {
+void GGS__5B_abstractLexicalRuleAST_5D_::setter_insert (const GGS_abstractLexicalRuleAST inValue,
+                                                        const GGS_uint inInsertionIndex,
+                                                        Compiler * /* inCompiler */
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -2622,10 +2654,10 @@ void GGS__5B_abstractLexicalRuleAST_5D_::setter_insertAtIndex (const GGS_abstrac
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_abstractLexicalRuleAST_5D_::setter_removeAtIndex (GGS_abstractLexicalRuleAST & outValue,
-                                                               const GGS_uint inRemoveIndex,
-                                                               Compiler * /* inCompiler */
-                                                               COMMA_LOCATION_ARGS) {
+void GGS__5B_abstractLexicalRuleAST_5D_::setter_remove (GGS_abstractLexicalRuleAST & outValue,
+                                                        const GGS_uint inRemoveIndex,
+                                                        Compiler * /* inCompiler */
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -2637,27 +2669,35 @@ void GGS__5B_abstractLexicalRuleAST_5D_::setter_removeAtIndex (GGS_abstractLexic
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_abstractLexicalRuleAST_5D_::setter_popFirst (GGS_abstractLexicalRuleAST & outValue,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_abstractLexicalRuleAST_5D_::setter_removeFirst (GGS_abstractLexicalRuleAST & outValue,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_abstractLexicalRuleAST_5D_::setter_popLast (GGS_abstractLexicalRuleAST & outValue,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_abstractLexicalRuleAST_5D_::setter_removeLast (GGS_abstractLexicalRuleAST & outValue,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -3032,10 +3072,10 @@ void GGS__5B_indexingAST_5D_::setter_removeAll (Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_indexingAST_5D_::setter_insertAtIndex (const GGS_indexingAST inValue,
-                                                    const GGS_uint inInsertionIndex,
-                                                    Compiler * /* inCompiler */
-                                                    COMMA_LOCATION_ARGS) {
+void GGS__5B_indexingAST_5D_::setter_insert (const GGS_indexingAST inValue,
+                                             const GGS_uint inInsertionIndex,
+                                             Compiler * /* inCompiler */
+                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -3044,10 +3084,10 @@ void GGS__5B_indexingAST_5D_::setter_insertAtIndex (const GGS_indexingAST inValu
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_indexingAST_5D_::setter_removeAtIndex (GGS_indexingAST & outValue,
-                                                    const GGS_uint inRemoveIndex,
-                                                    Compiler * /* inCompiler */
-                                                    COMMA_LOCATION_ARGS) {
+void GGS__5B_indexingAST_5D_::setter_remove (GGS_indexingAST & outValue,
+                                             const GGS_uint inRemoveIndex,
+                                             Compiler * /* inCompiler */
+                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -3059,27 +3099,35 @@ void GGS__5B_indexingAST_5D_::setter_removeAtIndex (GGS_indexingAST & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_indexingAST_5D_::setter_popFirst (GGS_indexingAST & outValue,
-                                               Compiler * /* inCompiler */
-                                               COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_indexingAST_5D_::setter_removeFirst (GGS_indexingAST & outValue,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_indexingAST_5D_::setter_popLast (GGS_indexingAST & outValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_indexingAST_5D_::setter_removeLast (GGS_indexingAST & outValue,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -5939,10 +5987,10 @@ void GGS__5B_lexicalInstructionAST_5D_::setter_removeAll (Compiler * /* inCompil
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalInstructionAST_5D_::setter_insertAtIndex (const GGS_lexicalInstructionAST inValue,
-                                                              const GGS_uint inInsertionIndex,
-                                                              Compiler * /* inCompiler */
-                                                              COMMA_LOCATION_ARGS) {
+void GGS__5B_lexicalInstructionAST_5D_::setter_insert (const GGS_lexicalInstructionAST inValue,
+                                                       const GGS_uint inInsertionIndex,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -5951,10 +5999,10 @@ void GGS__5B_lexicalInstructionAST_5D_::setter_insertAtIndex (const GGS_lexicalI
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalInstructionAST_5D_::setter_removeAtIndex (GGS_lexicalInstructionAST & outValue,
-                                                              const GGS_uint inRemoveIndex,
-                                                              Compiler * /* inCompiler */
-                                                              COMMA_LOCATION_ARGS) {
+void GGS__5B_lexicalInstructionAST_5D_::setter_remove (GGS_lexicalInstructionAST & outValue,
+                                                       const GGS_uint inRemoveIndex,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -5966,27 +6014,35 @@ void GGS__5B_lexicalInstructionAST_5D_::setter_removeAtIndex (GGS_lexicalInstruc
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalInstructionAST_5D_::setter_popFirst (GGS_lexicalInstructionAST & outValue,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_lexicalInstructionAST_5D_::setter_removeFirst (GGS_lexicalInstructionAST & outValue,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalInstructionAST_5D_::setter_popLast (GGS_lexicalInstructionAST & outValue,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_lexicalInstructionAST_5D_::setter_removeLast (GGS_lexicalInstructionAST & outValue,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -6361,10 +6417,10 @@ void GGS__5B_lexicalListEntryAST_5D_::setter_removeAll (Compiler * /* inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalListEntryAST_5D_::setter_insertAtIndex (const GGS_lexicalListEntryAST inValue,
-                                                            const GGS_uint inInsertionIndex,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_LOCATION_ARGS) {
+void GGS__5B_lexicalListEntryAST_5D_::setter_insert (const GGS_lexicalListEntryAST inValue,
+                                                     const GGS_uint inInsertionIndex,
+                                                     Compiler * /* inCompiler */
+                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -6373,10 +6429,10 @@ void GGS__5B_lexicalListEntryAST_5D_::setter_insertAtIndex (const GGS_lexicalLis
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalListEntryAST_5D_::setter_removeAtIndex (GGS_lexicalListEntryAST & outValue,
-                                                            const GGS_uint inRemoveIndex,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_LOCATION_ARGS) {
+void GGS__5B_lexicalListEntryAST_5D_::setter_remove (GGS_lexicalListEntryAST & outValue,
+                                                     const GGS_uint inRemoveIndex,
+                                                     Compiler * /* inCompiler */
+                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -6388,27 +6444,35 @@ void GGS__5B_lexicalListEntryAST_5D_::setter_removeAtIndex (GGS_lexicalListEntry
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalListEntryAST_5D_::setter_popFirst (GGS_lexicalListEntryAST & outValue,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_lexicalListEntryAST_5D_::setter_removeFirst (GGS_lexicalListEntryAST & outValue,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_lexicalListEntryAST_5D_::setter_popLast (GGS_lexicalListEntryAST & outValue,
-                                                      Compiler * /* inCompiler */
-                                                      COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_lexicalListEntryAST_5D_::setter_removeLast (GGS_lexicalListEntryAST & outValue,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -6821,10 +6885,10 @@ void GGS__5B_semanticDeclarationAST_5D_::setter_removeAll (Compiler * /* inCompi
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_semanticDeclarationAST_5D_::setter_insertAtIndex (const GGS_semanticDeclarationAST inValue,
-                                                               const GGS_uint inInsertionIndex,
-                                                               Compiler * /* inCompiler */
-                                                               COMMA_LOCATION_ARGS) {
+void GGS__5B_semanticDeclarationAST_5D_::setter_insert (const GGS_semanticDeclarationAST inValue,
+                                                        const GGS_uint inInsertionIndex,
+                                                        Compiler * /* inCompiler */
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -6833,10 +6897,10 @@ void GGS__5B_semanticDeclarationAST_5D_::setter_insertAtIndex (const GGS_semanti
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_semanticDeclarationAST_5D_::setter_removeAtIndex (GGS_semanticDeclarationAST & outValue,
-                                                               const GGS_uint inRemoveIndex,
-                                                               Compiler * /* inCompiler */
-                                                               COMMA_LOCATION_ARGS) {
+void GGS__5B_semanticDeclarationAST_5D_::setter_remove (GGS_semanticDeclarationAST & outValue,
+                                                        const GGS_uint inRemoveIndex,
+                                                        Compiler * /* inCompiler */
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -6848,27 +6912,35 @@ void GGS__5B_semanticDeclarationAST_5D_::setter_removeAtIndex (GGS_semanticDecla
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_semanticDeclarationAST_5D_::setter_popFirst (GGS_semanticDeclarationAST & outValue,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_semanticDeclarationAST_5D_::setter_removeFirst (GGS_semanticDeclarationAST & outValue,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_semanticDeclarationAST_5D_::setter_popLast (GGS_semanticDeclarationAST & outValue,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_semanticDeclarationAST_5D_::setter_removeLast (GGS_semanticDeclarationAST & outValue,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -7172,10 +7244,10 @@ void GGS__5B_semanticDeclarationForGeneration_5D_::setter_removeAll (Compiler * 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_semanticDeclarationForGeneration_5D_::setter_insertAtIndex (const GGS_semanticDeclarationForGeneration inValue,
-                                                                         const GGS_uint inInsertionIndex,
-                                                                         Compiler * /* inCompiler */
-                                                                         COMMA_LOCATION_ARGS) {
+void GGS__5B_semanticDeclarationForGeneration_5D_::setter_insert (const GGS_semanticDeclarationForGeneration inValue,
+                                                                  const GGS_uint inInsertionIndex,
+                                                                  Compiler * /* inCompiler */
+                                                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -7184,10 +7256,10 @@ void GGS__5B_semanticDeclarationForGeneration_5D_::setter_insertAtIndex (const G
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_semanticDeclarationForGeneration_5D_::setter_removeAtIndex (GGS_semanticDeclarationForGeneration & outValue,
-                                                                         const GGS_uint inRemoveIndex,
-                                                                         Compiler * /* inCompiler */
-                                                                         COMMA_LOCATION_ARGS) {
+void GGS__5B_semanticDeclarationForGeneration_5D_::setter_remove (GGS_semanticDeclarationForGeneration & outValue,
+                                                                  const GGS_uint inRemoveIndex,
+                                                                  Compiler * /* inCompiler */
+                                                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -7199,27 +7271,35 @@ void GGS__5B_semanticDeclarationForGeneration_5D_::setter_removeAtIndex (GGS_sem
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_semanticDeclarationForGeneration_5D_::setter_popFirst (GGS_semanticDeclarationForGeneration & outValue,
-                                                                    Compiler * /* inCompiler */
-                                                                    COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_semanticDeclarationForGeneration_5D_::setter_removeFirst (GGS_semanticDeclarationForGeneration & outValue,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_semanticDeclarationForGeneration_5D_::setter_popLast (GGS_semanticDeclarationForGeneration & outValue,
-                                                                   Compiler * /* inCompiler */
-                                                                   COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_semanticDeclarationForGeneration_5D_::setter_removeLast (GGS_semanticDeclarationForGeneration & outValue,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -7616,10 +7696,10 @@ void GGS__5B_terminalAST_5D_::setter_removeAll (Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_terminalAST_5D_::setter_insertAtIndex (const GGS_terminalAST inValue,
-                                                    const GGS_uint inInsertionIndex,
-                                                    Compiler * /* inCompiler */
-                                                    COMMA_LOCATION_ARGS) {
+void GGS__5B_terminalAST_5D_::setter_insert (const GGS_terminalAST inValue,
+                                             const GGS_uint inInsertionIndex,
+                                             Compiler * /* inCompiler */
+                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -7628,10 +7708,10 @@ void GGS__5B_terminalAST_5D_::setter_insertAtIndex (const GGS_terminalAST inValu
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_terminalAST_5D_::setter_removeAtIndex (GGS_terminalAST & outValue,
-                                                    const GGS_uint inRemoveIndex,
-                                                    Compiler * /* inCompiler */
-                                                    COMMA_LOCATION_ARGS) {
+void GGS__5B_terminalAST_5D_::setter_remove (GGS_terminalAST & outValue,
+                                             const GGS_uint inRemoveIndex,
+                                             Compiler * /* inCompiler */
+                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -7643,27 +7723,35 @@ void GGS__5B_terminalAST_5D_::setter_removeAtIndex (GGS_terminalAST & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_terminalAST_5D_::setter_popFirst (GGS_terminalAST & outValue,
-                                               Compiler * /* inCompiler */
-                                               COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_terminalAST_5D_::setter_removeFirst (GGS_terminalAST & outValue,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_terminalAST_5D_::setter_popLast (GGS_terminalAST & outValue,
-                                              Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_terminalAST_5D_::setter_removeLast (GGS_terminalAST & outValue,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -7967,10 +8055,10 @@ void GGS__5B_templateDelimitorAST_5D_::setter_removeAll (Compiler * /* inCompile
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_templateDelimitorAST_5D_::setter_insertAtIndex (const GGS_templateDelimitorAST inValue,
-                                                             const GGS_uint inInsertionIndex,
-                                                             Compiler * /* inCompiler */
-                                                             COMMA_LOCATION_ARGS) {
+void GGS__5B_templateDelimitorAST_5D_::setter_insert (const GGS_templateDelimitorAST inValue,
+                                                      const GGS_uint inInsertionIndex,
+                                                      Compiler * /* inCompiler */
+                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -7979,10 +8067,10 @@ void GGS__5B_templateDelimitorAST_5D_::setter_insertAtIndex (const GGS_templateD
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_templateDelimitorAST_5D_::setter_removeAtIndex (GGS_templateDelimitorAST & outValue,
-                                                             const GGS_uint inRemoveIndex,
-                                                             Compiler * /* inCompiler */
-                                                             COMMA_LOCATION_ARGS) {
+void GGS__5B_templateDelimitorAST_5D_::setter_remove (GGS_templateDelimitorAST & outValue,
+                                                      const GGS_uint inRemoveIndex,
+                                                      Compiler * /* inCompiler */
+                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -7994,27 +8082,35 @@ void GGS__5B_templateDelimitorAST_5D_::setter_removeAtIndex (GGS_templateDelimit
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_templateDelimitorAST_5D_::setter_popFirst (GGS_templateDelimitorAST & outValue,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_templateDelimitorAST_5D_::setter_removeFirst (GGS_templateDelimitorAST & outValue,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_templateDelimitorAST_5D_::setter_popLast (GGS_templateDelimitorAST & outValue,
-                                                       Compiler * /* inCompiler */
-                                                       COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_templateDelimitorAST_5D_::setter_removeLast (GGS_templateDelimitorAST & outValue,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -9472,10 +9568,10 @@ void GGS__5B_formalParameterAST_5D_::setter_removeAll (Compiler * /* inCompiler 
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalParameterAST_5D_::setter_insertAtIndex (const GGS_formalParameterAST inValue,
-                                                           const GGS_uint inInsertionIndex,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_LOCATION_ARGS) {
+void GGS__5B_formalParameterAST_5D_::setter_insert (const GGS_formalParameterAST inValue,
+                                                    const GGS_uint inInsertionIndex,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -9484,10 +9580,10 @@ void GGS__5B_formalParameterAST_5D_::setter_insertAtIndex (const GGS_formalParam
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalParameterAST_5D_::setter_removeAtIndex (GGS_formalParameterAST & outValue,
-                                                           const GGS_uint inRemoveIndex,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_LOCATION_ARGS) {
+void GGS__5B_formalParameterAST_5D_::setter_remove (GGS_formalParameterAST & outValue,
+                                                    const GGS_uint inRemoveIndex,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -9499,27 +9595,35 @@ void GGS__5B_formalParameterAST_5D_::setter_removeAtIndex (GGS_formalParameterAS
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalParameterAST_5D_::setter_popFirst (GGS_formalParameterAST & outValue,
-                                                      Compiler * /* inCompiler */
-                                                      COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_formalParameterAST_5D_::setter_removeFirst (GGS_formalParameterAST & outValue,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalParameterAST_5D_::setter_popLast (GGS_formalParameterAST & outValue,
-                                                     Compiler * /* inCompiler */
-                                                     COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_formalParameterAST_5D_::setter_removeLast (GGS_formalParameterAST & outValue,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -9823,10 +9927,10 @@ void GGS__5B_formalInputParameterAST_5D_::setter_removeAll (Compiler * /* inComp
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalInputParameterAST_5D_::setter_insertAtIndex (const GGS_formalInputParameterAST inValue,
-                                                                const GGS_uint inInsertionIndex,
-                                                                Compiler * /* inCompiler */
-                                                                COMMA_LOCATION_ARGS) {
+void GGS__5B_formalInputParameterAST_5D_::setter_insert (const GGS_formalInputParameterAST inValue,
+                                                         const GGS_uint inInsertionIndex,
+                                                         Compiler * /* inCompiler */
+                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -9835,10 +9939,10 @@ void GGS__5B_formalInputParameterAST_5D_::setter_insertAtIndex (const GGS_formal
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalInputParameterAST_5D_::setter_removeAtIndex (GGS_formalInputParameterAST & outValue,
-                                                                const GGS_uint inRemoveIndex,
-                                                                Compiler * /* inCompiler */
-                                                                COMMA_LOCATION_ARGS) {
+void GGS__5B_formalInputParameterAST_5D_::setter_remove (GGS_formalInputParameterAST & outValue,
+                                                         const GGS_uint inRemoveIndex,
+                                                         Compiler * /* inCompiler */
+                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -9850,27 +9954,35 @@ void GGS__5B_formalInputParameterAST_5D_::setter_removeAtIndex (GGS_formalInputP
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalInputParameterAST_5D_::setter_popFirst (GGS_formalInputParameterAST & outValue,
-                                                           Compiler * /* inCompiler */
-                                                           COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_formalInputParameterAST_5D_::setter_removeFirst (GGS_formalInputParameterAST & outValue,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalInputParameterAST_5D_::setter_popLast (GGS_formalInputParameterAST & outValue,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_formalInputParameterAST_5D_::setter_removeLast (GGS_formalInputParameterAST & outValue,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -10293,10 +10405,10 @@ void GGS__5B_filewrapperTemplateAST_5D_::setter_removeAll (Compiler * /* inCompi
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_filewrapperTemplateAST_5D_::setter_insertAtIndex (const GGS_filewrapperTemplateAST inValue,
-                                                               const GGS_uint inInsertionIndex,
-                                                               Compiler * /* inCompiler */
-                                                               COMMA_LOCATION_ARGS) {
+void GGS__5B_filewrapperTemplateAST_5D_::setter_insert (const GGS_filewrapperTemplateAST inValue,
+                                                        const GGS_uint inInsertionIndex,
+                                                        Compiler * /* inCompiler */
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -10305,10 +10417,10 @@ void GGS__5B_filewrapperTemplateAST_5D_::setter_insertAtIndex (const GGS_filewra
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_filewrapperTemplateAST_5D_::setter_removeAtIndex (GGS_filewrapperTemplateAST & outValue,
-                                                               const GGS_uint inRemoveIndex,
-                                                               Compiler * /* inCompiler */
-                                                               COMMA_LOCATION_ARGS) {
+void GGS__5B_filewrapperTemplateAST_5D_::setter_remove (GGS_filewrapperTemplateAST & outValue,
+                                                        const GGS_uint inRemoveIndex,
+                                                        Compiler * /* inCompiler */
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -10320,27 +10432,35 @@ void GGS__5B_filewrapperTemplateAST_5D_::setter_removeAtIndex (GGS_filewrapperTe
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_filewrapperTemplateAST_5D_::setter_popFirst (GGS_filewrapperTemplateAST & outValue,
-                                                          Compiler * /* inCompiler */
-                                                          COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_filewrapperTemplateAST_5D_::setter_removeFirst (GGS_filewrapperTemplateAST & outValue,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_filewrapperTemplateAST_5D_::setter_popLast (GGS_filewrapperTemplateAST & outValue,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_filewrapperTemplateAST_5D_::setter_removeLast (GGS_filewrapperTemplateAST & outValue,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -10644,10 +10764,10 @@ void GGS__5B_formalTemplateInputParameterAST_5D_::setter_removeAll (Compiler * /
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalTemplateInputParameterAST_5D_::setter_insertAtIndex (const GGS_formalTemplateInputParameterAST inValue,
-                                                                        const GGS_uint inInsertionIndex,
-                                                                        Compiler * /* inCompiler */
-                                                                        COMMA_LOCATION_ARGS) {
+void GGS__5B_formalTemplateInputParameterAST_5D_::setter_insert (const GGS_formalTemplateInputParameterAST inValue,
+                                                                 const GGS_uint inInsertionIndex,
+                                                                 Compiler * /* inCompiler */
+                                                                 COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -10656,10 +10776,10 @@ void GGS__5B_formalTemplateInputParameterAST_5D_::setter_insertAtIndex (const GG
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalTemplateInputParameterAST_5D_::setter_removeAtIndex (GGS_formalTemplateInputParameterAST & outValue,
-                                                                        const GGS_uint inRemoveIndex,
-                                                                        Compiler * /* inCompiler */
-                                                                        COMMA_LOCATION_ARGS) {
+void GGS__5B_formalTemplateInputParameterAST_5D_::setter_remove (GGS_formalTemplateInputParameterAST & outValue,
+                                                                 const GGS_uint inRemoveIndex,
+                                                                 Compiler * /* inCompiler */
+                                                                 COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -10671,27 +10791,35 @@ void GGS__5B_formalTemplateInputParameterAST_5D_::setter_removeAtIndex (GGS_form
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalTemplateInputParameterAST_5D_::setter_popFirst (GGS_formalTemplateInputParameterAST & outValue,
-                                                                   Compiler * /* inCompiler */
-                                                                   COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_formalTemplateInputParameterAST_5D_::setter_removeFirst (GGS_formalTemplateInputParameterAST & outValue,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_formalTemplateInputParameterAST_5D_::setter_popLast (GGS_formalTemplateInputParameterAST & outValue,
-                                                                  Compiler * /* inCompiler */
-                                                                  COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_formalTemplateInputParameterAST_5D_::setter_removeLast (GGS_formalTemplateInputParameterAST & outValue,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -11104,10 +11232,10 @@ void GGS__5B_typedProperty_5D_::setter_removeAll (Compiler * /* inCompiler */
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_typedProperty_5D_::setter_insertAtIndex (const GGS_typedProperty inValue,
-                                                      const GGS_uint inInsertionIndex,
-                                                      Compiler * /* inCompiler */
-                                                      COMMA_LOCATION_ARGS) {
+void GGS__5B_typedProperty_5D_::setter_insert (const GGS_typedProperty inValue,
+                                               const GGS_uint inInsertionIndex,
+                                               Compiler * /* inCompiler */
+                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -11116,10 +11244,10 @@ void GGS__5B_typedProperty_5D_::setter_insertAtIndex (const GGS_typedProperty in
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_typedProperty_5D_::setter_removeAtIndex (GGS_typedProperty & outValue,
-                                                      const GGS_uint inRemoveIndex,
-                                                      Compiler * /* inCompiler */
-                                                      COMMA_LOCATION_ARGS) {
+void GGS__5B_typedProperty_5D_::setter_remove (GGS_typedProperty & outValue,
+                                               const GGS_uint inRemoveIndex,
+                                               Compiler * /* inCompiler */
+                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -11131,27 +11259,35 @@ void GGS__5B_typedProperty_5D_::setter_removeAtIndex (GGS_typedProperty & outVal
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_typedProperty_5D_::setter_popFirst (GGS_typedProperty & outValue,
-                                                 Compiler * /* inCompiler */
-                                                 COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_typedProperty_5D_::setter_removeFirst (GGS_typedProperty & outValue,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_typedProperty_5D_::setter_popLast (GGS_typedProperty & outValue,
-                                                Compiler * /* inCompiler */
-                                                COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_typedProperty_5D_::setter_removeLast (GGS_typedProperty & outValue,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -11455,10 +11591,10 @@ void GGS__5B_enumerationDescriptor_5D_::setter_removeAll (Compiler * /* inCompil
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_enumerationDescriptor_5D_::setter_insertAtIndex (const GGS_enumerationDescriptor inValue,
-                                                              const GGS_uint inInsertionIndex,
-                                                              Compiler * /* inCompiler */
-                                                              COMMA_LOCATION_ARGS) {
+void GGS__5B_enumerationDescriptor_5D_::setter_insert (const GGS_enumerationDescriptor inValue,
+                                                       const GGS_uint inInsertionIndex,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
@@ -11467,10 +11603,10 @@ void GGS__5B_enumerationDescriptor_5D_::setter_insertAtIndex (const GGS_enumerat
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_enumerationDescriptor_5D_::setter_removeAtIndex (GGS_enumerationDescriptor & outValue,
-                                                              const GGS_uint inRemoveIndex,
-                                                              Compiler * /* inCompiler */
-                                                              COMMA_LOCATION_ARGS) {
+void GGS__5B_enumerationDescriptor_5D_::setter_remove (GGS_enumerationDescriptor & outValue,
+                                                       const GGS_uint inRemoveIndex,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
     outValue = mSharedArray (idx COMMA_THERE) ;
@@ -11482,27 +11618,35 @@ void GGS__5B_enumerationDescriptor_5D_::setter_removeAtIndex (GGS_enumerationDes
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_enumerationDescriptor_5D_::setter_popFirst (GGS_enumerationDescriptor & outValue,
-                                                         Compiler * /* inCompiler */
-                                                         COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
+void GGS__5B_enumerationDescriptor_5D_::setter_removeFirst (GGS_enumerationDescriptor & outValue,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
+    outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeFirst' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
     outValue = mSharedArray (0 COMMA_THERE) ;
     mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }else{
-    outValue.drop () ;
   }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_enumerationDescriptor_5D_::setter_popLast (GGS_enumerationDescriptor & outValue,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    outValue = mSharedArray.lastObject (THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }else{
+void GGS__5B_enumerationDescriptor_5D_::setter_removeLast (GGS_enumerationDescriptor & outValue,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
+  if (!isValid ()) {
     outValue.drop () ;
+  }else if (count () == 0) {
+    const String errorMessage = "'removeLast' setter call on an empty array" ;
+    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+    outValue.drop () ;
+  }else{
+    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
+    mSharedArray.removeLastObject (THERE) ;
   }
 }
 
@@ -17227,488 +17371,5 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_subscriptMap ("subscriptMap",
 
 const GALGAS_TypeDescriptor * GGS_subscriptMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_subscriptMap ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures::GGS_typeFeatures (void) :
-AC_GALGAS_root (),
-mFlags (0),
-mIsValid (false) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures::GGS_typeFeatures (const uint64_t inFlags) :
-AC_GALGAS_root (),
-mFlags (inFlags),
-mIsValid (true) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (0) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_infixAddOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 0) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_infixSubOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 1) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_infixMulOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 2) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_infixDivOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 3) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_infixModOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 4) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_infixShiftOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 5) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_prefixPlusOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 6) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_prefixMinusOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 7) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_prefixTildeOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 8) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_incDecOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 9) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_infixAndOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 10) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_infixOrOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 11) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_infixXorOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 12) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_prefixNotOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 13) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_equatable (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 14) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_comparable (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 15) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_referenceEquatable (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 16) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_plusAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 17) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_minusAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 18) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_mulAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 19) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_divAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 20) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_xorAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 21) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_orAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 22) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_andAssignOperatorWithExpression (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 23) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_infixAddOperatorNoOVF (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 24) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_infixSubOperatorNoOVF (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 25) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_infixMulOperatorNoOVF (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 26) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_infixDivOperatorNoOVF (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 27) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_prefixMinusOperatorNoOVF (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 28) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_incDecOperatorNoOVF (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 29) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_plusEqualOperatorWithFieldListNeedsCompilerArg (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 30) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_doNotGenererateObjectCompare (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 31) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_generateDescriptionGetterUtilityMethod (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 32) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_generateCopyConstructorAndAssignmentOperator (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 33) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_generateSynthetizedInitializer (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 34) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::class_func_clonable (UNUSED_LOCATION_ARGS) {
-  return GGS_typeFeatures (uint64_t (1) << 35) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_typeFeatures::isValid (void) const {
-  return mIsValid ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_typeFeatures::getter_contains (const GGS_typeFeatures & inOperand
-                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_bool result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = GGS_bool ((mFlags & inOperand.mFlags) != 0) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeFeatures::andAssignOperation (const GGS_typeFeatures inOperand,
-                                           class Compiler * /* inCompiler */
-                                           COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mFlags &= inOperand.mFlags ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeFeatures::orAssignOperation (const GGS_typeFeatures inOperand,
-                                          class Compiler * /* inCompiler */
-                                          COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mFlags |= inOperand.mFlags ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeFeatures::xorAssignOperation (const GGS_typeFeatures inOperand,
-                                           class Compiler * /* inCompiler */
-                                           COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mFlags ^= inOperand.mFlags ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeFeatures::minusAssignOperation (const GGS_typeFeatures inOperand,
-                                             class Compiler * /* inCompiler */
-                                             COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mFlags &= ~ inOperand.mFlags ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::operator_or (const GGS_typeFeatures & inOperand
-                                                COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_typeFeatures result ;
-  if (mIsValid && inOperand.mIsValid) {
-    result = GGS_typeFeatures (mFlags | inOperand.mFlags) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::operator_and (const GGS_typeFeatures & inOperand
-                                                 COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_typeFeatures result ;
-  if (mIsValid && inOperand.mIsValid) {
-    result = GGS_typeFeatures (mFlags & inOperand.mFlags) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::operator_xor (const GGS_typeFeatures & inOperand
-                                                 COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_typeFeatures result ;
-  if (mIsValid && inOperand.mIsValid) {
-    result = GGS_typeFeatures (mFlags ^ inOperand.mFlags) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::substract_operation (const GGS_typeFeatures & inOperand,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS_typeFeatures result ;
-  if (mIsValid && inOperand.mIsValid) {
-    result = GGS_typeFeatures (mFlags & ~ inOperand.mFlags) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeFeatures GGS_typeFeatures::operator_tilde (UNUSED_LOCATION_ARGS) const {
-  GGS_typeFeatures result ;
-  if (mIsValid) {
-    result = GGS_typeFeatures (uint64_t (0xFFFFFFFFF) ^ mFlags) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeFeatures::description (String & ioString,
-                                    const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<boolset @typeFeatures:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    if ((mFlags & (uint64_t (1) << 0)) != 0) {
-      ioString.appendCString (" infixAddOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 1)) != 0) {
-      ioString.appendCString (" infixSubOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 2)) != 0) {
-      ioString.appendCString (" infixMulOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 3)) != 0) {
-      ioString.appendCString (" infixDivOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 4)) != 0) {
-      ioString.appendCString (" infixModOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 5)) != 0) {
-      ioString.appendCString (" infixShiftOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 6)) != 0) {
-      ioString.appendCString (" prefixPlusOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 7)) != 0) {
-      ioString.appendCString (" prefixMinusOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 8)) != 0) {
-      ioString.appendCString (" prefixTildeOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 9)) != 0) {
-      ioString.appendCString (" incDecOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 10)) != 0) {
-      ioString.appendCString (" infixAndOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 11)) != 0) {
-      ioString.appendCString (" infixOrOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 12)) != 0) {
-      ioString.appendCString (" infixXorOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 13)) != 0) {
-      ioString.appendCString (" prefixNotOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 14)) != 0) {
-      ioString.appendCString (" equatable") ;
-    }
-    if ((mFlags & (uint64_t (1) << 15)) != 0) {
-      ioString.appendCString (" comparable") ;
-    }
-    if ((mFlags & (uint64_t (1) << 16)) != 0) {
-      ioString.appendCString (" referenceEquatable") ;
-    }
-    if ((mFlags & (uint64_t (1) << 17)) != 0) {
-      ioString.appendCString (" plusAssignOperatorWithExpression") ;
-    }
-    if ((mFlags & (uint64_t (1) << 18)) != 0) {
-      ioString.appendCString (" minusAssignOperatorWithExpression") ;
-    }
-    if ((mFlags & (uint64_t (1) << 19)) != 0) {
-      ioString.appendCString (" mulAssignOperatorWithExpression") ;
-    }
-    if ((mFlags & (uint64_t (1) << 20)) != 0) {
-      ioString.appendCString (" divAssignOperatorWithExpression") ;
-    }
-    if ((mFlags & (uint64_t (1) << 21)) != 0) {
-      ioString.appendCString (" xorAssignOperatorWithExpression") ;
-    }
-    if ((mFlags & (uint64_t (1) << 22)) != 0) {
-      ioString.appendCString (" orAssignOperatorWithExpression") ;
-    }
-    if ((mFlags & (uint64_t (1) << 23)) != 0) {
-      ioString.appendCString (" andAssignOperatorWithExpression") ;
-    }
-    if ((mFlags & (uint64_t (1) << 24)) != 0) {
-      ioString.appendCString (" infixAddOperatorNoOVF") ;
-    }
-    if ((mFlags & (uint64_t (1) << 25)) != 0) {
-      ioString.appendCString (" infixSubOperatorNoOVF") ;
-    }
-    if ((mFlags & (uint64_t (1) << 26)) != 0) {
-      ioString.appendCString (" infixMulOperatorNoOVF") ;
-    }
-    if ((mFlags & (uint64_t (1) << 27)) != 0) {
-      ioString.appendCString (" infixDivOperatorNoOVF") ;
-    }
-    if ((mFlags & (uint64_t (1) << 28)) != 0) {
-      ioString.appendCString (" prefixMinusOperatorNoOVF") ;
-    }
-    if ((mFlags & (uint64_t (1) << 29)) != 0) {
-      ioString.appendCString (" incDecOperatorNoOVF") ;
-    }
-    if ((mFlags & (uint64_t (1) << 30)) != 0) {
-      ioString.appendCString (" plusEqualOperatorWithFieldListNeedsCompilerArg") ;
-    }
-    if ((mFlags & (uint64_t (1) << 31)) != 0) {
-      ioString.appendCString (" doNotGenererateObjectCompare") ;
-    }
-    if ((mFlags & (uint64_t (1) << 32)) != 0) {
-      ioString.appendCString (" generateDescriptionGetterUtilityMethod") ;
-    }
-    if ((mFlags & (uint64_t (1) << 33)) != 0) {
-      ioString.appendCString (" generateCopyConstructorAndAssignmentOperator") ;
-    }
-    if ((mFlags & (uint64_t (1) << 34)) != 0) {
-      ioString.appendCString (" generateSynthetizedInitializer") ;
-    }
-    if ((mFlags & (uint64_t (1) << 35)) != 0) {
-      ioString.appendCString (" clonable") ;
-    }
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @typeFeatures generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeFeatures ("typeFeatures",
-                                                                 nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_typeFeatures::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typeFeatures ;
 }
 

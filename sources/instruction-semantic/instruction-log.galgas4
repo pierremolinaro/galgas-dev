@@ -93,7 +93,7 @@ override proc @logInstructionAST.analyzeSemanticInstruction (
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
   for entry in self.mLogList do
   //--- Analyze source expression
@@ -107,10 +107,10 @@ override proc @logInstructionAST.analyzeSemanticInstruction (
       ?let expression
     )
   //--- Generate instruction
-    ioInstructionListForGeneration ++= @(@logInstructionForGeneration (
+    ioInstructionListForGeneration ++= @logInstructionForGeneration (
       entry.mLogMessage,
       expression
-    ))
+    )
   end
 }
 

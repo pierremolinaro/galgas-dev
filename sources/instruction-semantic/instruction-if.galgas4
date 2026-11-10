@@ -118,7 +118,7 @@ final class @ifInstructionAST : @semanticInstructionAST {
                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                             let @analysisContext inAnalysisContext,
                             ?!@unifiedTypeMap ioTypeMap,
-                            ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                            ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                             ?!@localVarManager ioVariableMap ) {
   //--- Test expression
    self.mExpressions.analyzeSemanticExpressionList
@@ -161,12 +161,12 @@ final class @ifInstructionAST : @semanticInstructionAST {
     )
     !?ioVariableMap.closeOverride (self.mEndOf_if_instruction)
   //--- Generate instruction
-    ioInstructionListForGeneration ++= @(@ifInstructionForGeneration (
+    ioInstructionListForGeneration ++= @ifInstructionForGeneration (
       self.mEndOf_then_branch,
       testListForGeneration,
       then_instructionList,
       else_instructionList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -197,8 +197,8 @@ final class @ifInstructionAST : @semanticInstructionAST {
 final class @ifInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let @ifTestListForGeneration mExpressions
-  private let @semanticInstructionListForGeneration m_then_instructionList
-  private let @semanticInstructionListForGeneration m_else_instructionList
+  private let [@semanticInstructionForGeneration] m_then_instructionList
+  private let [@semanticInstructionForGeneration] m_else_instructionList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

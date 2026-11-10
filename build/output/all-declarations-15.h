@@ -364,6 +364,35 @@ void extensionSetter_insertKey (class GGS_descendantClassListMap & ioObject,
                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
+//
+//Abstract extension proc '@actualParameterForGeneration generateActualParameter'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_generateActualParameter (class cPtr_actualParameterForGeneration * inObject,
+                                                  class GGS_stringset & io_ioInclusionSet,
+                                                  class GGS_uint & io_ioTemporaryVariableIndex,
+                                                  class GGS_string & io_ioImplementation,
+                                                  class GGS__5B_string_5D_ & io_ioJokerParametersToReleaseList,
+                                                  class GGS__5B_string_5D_ & io_ioOutputVariableList,
+                                                  class GGS_stringset & io__5F_ioUnusedVariableCppNameSet,
+                                                  class GGS_string & out_outCppName,
+                                                  class Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension proc '@actualParameterForGeneration generatePoisonedVariables'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_generatePoisonedVariables (class cPtr_actualParameterForGeneration * inObject,
+                                                    class GGS_string & io_ioImplementation,
+                                                    class GGS_stringset & io_ioUnusedVariableCppNameSet,
+                                                    class Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @functionPrototypeDeclarationForGeneration_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 

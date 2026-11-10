@@ -185,7 +185,7 @@ override proc @overridingAbstractExtensionGetterAST.semanticAnalysis (
   end
 //--- Check Signature
   if baseTypeName != "" then
-    var formalParameterListForGeneration = @formalInputParameterListForGeneration ()
+    var formalParameterListForGeneration = [@formalInputParameterForGeneration] ()
     for parameter in self.mAbstractExtensionGetterFormalInputParameterList do
       formalParameterListForGeneration ++= @(
         parameter.mFormalSelector,

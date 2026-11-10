@@ -1,20 +1,6 @@
 //--------------------------------------------------------------------------------------------------
 //
-//  'TemplateDelimiter' : a helper class for template scanner                                   
-//
-//  This file is part of libpm library                                                           
-//
 //  Copyright (C) 1996, ..., 2023 Pierre Molinaro.
-//
-//  e-mail : pierre@pcmolinaro.name
-//
-//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General
-//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)
-//  any later version.
-//
-//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
-//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-//  more details.
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -29,9 +15,7 @@
 class Lexique ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//  T E M P L A T E    D E L I M I T E R S     C L A S S                                         
-//
+//  T E M P L A T E    D E L I M I T E R S     C L A S S
 //--------------------------------------------------------------------------------------------------
 
 class TemplateDelimiter final {

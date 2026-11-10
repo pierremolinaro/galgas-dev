@@ -270,9 +270,9 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
   private let @bool mImplementedAsFunction
   private let @unifiedTypeMapEntry mResultType
   private let @string mResultVarCppName
-  private let @formalInputParameterListForGeneration mExtensionGetterFormalParameterList
+  private let [@formalInputParameterForGeneration] mExtensionGetterFormalParameterList
   private let [@typedProperty] mTypedAttributeList
-  private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+  private let [@semanticInstructionForGeneration] mSemanticInstructionListForGeneration
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -312,13 +312,9 @@ final class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGen
     self.mResultType.addHeaderFileName (!?ioInclusionSet)
     var extensionReaderFormalParameterList = self.mExtensionGetterFormalParameterList
     if self.mImplementedAsFunction then
-      !?extensionReaderFormalParameterList.insertAtIndex
-        ("".nowhere,
-        self.mReceiverType,
-        "inObject",
-        @lstring ("self", @location.here),
-        true,
-        0
+      !?extensionReaderFormalParameterList.insert (
+        @("".nowhere, self.mReceiverType, "inObject", "self".here, true),
+        !at: 0
       )
       ioInclusionSet ++= "func-"
         + self.mReceiverType.definition.typeName.string.fileNameRepresentation

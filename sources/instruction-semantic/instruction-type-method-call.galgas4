@@ -96,7 +96,7 @@ override proc @typeMethodCallInstructionAST.analyzeSemanticInstruction (
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
 //--- Get type proc map for the named type
   let type = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
@@ -113,14 +113,15 @@ override proc @typeMethodCallInstructionAST.analyzeSemanticInstruction (
     routineSignature,
     !?ioVariableMap,
     !?ioInstructionListForGeneration,
-    ?let @actualParameterListForGeneration actualParameterListForGeneration
+    ?let [@actualParameterForGeneration] actualParameterListForGeneration
   )
 //--- Generate instructions
-  ioInstructionListForGeneration ++= @(@typeMethodCallInstructionForGeneration (
+  ioInstructionListForGeneration ++= @typeMethodCallInstructionForGeneration (
     self.mTypeName,
     self.mMethodName,
     actualParameterListForGeneration,
-    hasCompilerArgument))
+    hasCompilerArgument
+  )
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -130,7 +131,7 @@ override proc @typeMethodCallInstructionAST.analyzeSemanticInstruction (
 final class @typeMethodCallInstructionForGeneration : @semanticInstructionForGeneration {
   private let @lstring mTypeName
   private let @lstring mMethodName
-  private let @actualParameterListForGeneration mActualParameterList
+  private let [@actualParameterForGeneration] mActualParameterList
   private let @bool mHasCompilerArgument
 }
 
@@ -147,8 +148,8 @@ override proc @typeMethodCallInstructionForGeneration.generateInstruction (?!@st
   var jokerParametersToReleaseList = [@string] ()
   var inputVariableList = [@string] ()
   for entry in self.mActualParameterList do
-    entry.mActualParameter.generateActualParameter
-      (!?ioInclusionSet,
+    entry.generateActualParameter (
+      !?ioInclusionSet,
       !?ioTemporaryVariableIndex,
       !?ioGeneratedCode,
       !?jokerParametersToReleaseList,

@@ -70,7 +70,7 @@ proc checkMethodSignatures (let [@formalParameterForGeneration] inTestedSignatur
 //
 //--------------------------------------------------------------------------------------------------
 
-proc checkGetterSignatures (let @formalInputParameterListForGeneration inTestedSignature,
+proc checkGetterSignatures (let [@formalInputParameterForGeneration] inTestedSignature,
                             let @unifiedTypeMapEntry inReturnType,
                             let @location inErrorLocation,
                             let @functionSignature inReferenceSignature,
@@ -201,7 +201,7 @@ proc analyzeRoutineBody (let @lstring inUsefulnessCallerEntityName,
                          let [@formalParameterAST] inRoutineSignatureAST,
                          let [@semanticInstructionAST] inInstructionList,
                          let @location inEndOfMethodLocation,
-                         !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration,
+                         ![@semanticInstructionForGeneration] outSemanticInstructionListForGeneration,
                          ![@formalParameterForGeneration] outRoutineSignature ) {
   var variableMap = @localVarManager ()
 //--- Enter properties that should be explicitly initialized
@@ -230,7 +230,7 @@ proc analyzeRoutineBody (let @lstring inUsefulnessCallerEntityName,
     ?outRoutineSignature
   )
 //---  Analyze instruction list
-  outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
+  outSemanticInstructionListForGeneration = [@semanticInstructionForGeneration] ()
   for instruction in inInstructionList do
     instruction.analyzeSemanticInstruction (
       inUsefulnessCallerEntityName,
@@ -261,7 +261,7 @@ override proc @externFunctionDeclarationAST.semanticAnalysis (?![@lstring] ioUse
     ioUsefulnessRootEntities ++= nameForUsefulness
   end
 //---
-  var formalArgumentList = @formalInputParameterListForGeneration ()
+  var formalArgumentList = [@formalInputParameterForGeneration] ()
   for formal in self.mFormalArgumentList do
     formalArgumentList ++= @(
       formal.mFormalSelector,
@@ -292,14 +292,14 @@ proc analyzeFunctionBody
   let @lstring inReturnVariableName,
   let @lstring inResultTypeName,
   let @location inEndOfFunctionLocation,
-  !@formalInputParameterListForGeneration outSignatureForGeneration,
+  ![@formalInputParameterForGeneration] outSignatureForGeneration,
   !@unifiedTypeMapEntry outReturnedType,
   !@string outResultVariableCppName,
-  !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
+  ![@semanticInstructionForGeneration] outSemanticInstructionListForGeneration
 ) {
   var variableMap = @localVarManager ()
 //--- Enter formal parameters
-  outSignatureForGeneration = @formalInputParameterListForGeneration ()
+  outSignatureForGeneration = [@formalInputParameterForGeneration] ()
   for formalArg in inFunctionSignature do
     let parameterType = ioTypeMap.typeMapEntryForLKey (formalArg.mFormalArgumentTypeName)
     if formalArg.mIsConstant then
@@ -348,7 +348,7 @@ proc analyzeFunctionBody
     end
   end
 //---  Analyze instruction list
-  outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
+  outSemanticInstructionListForGeneration = [@semanticInstructionForGeneration] ()
   for instruction in inInstructionList do
     instruction.analyzeSemanticInstruction (
       inUsefulnessCallerEntityName,
@@ -506,7 +506,7 @@ override proc @filewrapperDeclarationAST.semanticAnalysis
     error (self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist")
   else
   //--- Analyze filewrapper templates
-    var @filewrapperTemplateListForGeneration filewrapperTemplateListForGeneration = @()
+    var [@filewrapperTemplateForGeneration] filewrapperTemplateListForGeneration = @()
     for filewrapperTemplate in self.mFilewrapperTemplateList do
       let filewrapperTemplateNameForUsefulness = filewrapperTemplateNameForUsefulEntitiesGraph (
         self.mFilewrapperName,
@@ -524,7 +524,7 @@ override proc @filewrapperDeclarationAST.semanticAnalysis
          in @lstring (absoluteTemplatePath, filewrapperTemplate.mFilewrapperTemplatePath.location)
     //--- Build template variable map
       var @templateVariableMap templateVariableMap = @()
-      var @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters = @()
+      var [@formalInputParameterForGeneration] filewrapperTemplateFormalInputParameters = @()
       for formal in filewrapperTemplate.mFilewrapperTemplateFormalInputParameters do
         let type = ioTypeMap.typeMapEntryForLKey (formal.mFormalArgumentTypeName)
         let @string cppVarName = "in_" + formal.mFormalArgumentName.string.identifierRepresentation
@@ -642,7 +642,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
   var @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis = @()
   var @lstring lexiqueComponentName =  "".nowhere // Empty string means unknown
   var @syntaxComponentListForGrammarAnalysis syntaxComponentListForGrammarAnalysis = @()
-  var @nonTerminalToAddList nonTerminalToAddList = @()
+  var [@nonTerminalToAdd] nonTerminalToAddList = @()
   var @uint addedNonTerminalCount = 0
   for syntaxComponentName in self.mSyntaxComponents do
     let syntaxNameForUsefulness = syntaxNameForUsefulEntitiesGraph (syntaxComponentName)
@@ -872,7 +872,7 @@ struct @ruleLabelImplementationAST {
   public let [@formalParameterForGeneration] mSignatureForGeneration
   public let @formalParameterSignature mSignature
   public let @location mEndOfArgumentLocation
-  public let @semanticInstructionListForGeneration mInstructionListForGeneration
+  public let [@semanticInstructionForGeneration] mInstructionListForGeneration
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -999,7 +999,7 @@ abstract proc @syntaxInstructionAST.analyzeSyntaxInstruction
   let @nonterminalMap inNonterminalMap,
   let @string inComponentName,
   let @stringset inIndexNameSet,
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+  ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
   ?!@localVarManager ioVariableMap,
   ?!@uint ioSelectMethodCount)
 
@@ -1016,7 +1016,7 @@ override proc @semanticInstructionAST.analyzeSyntaxInstruction
   let @nonterminalMap _inNonterminalMap,
   let @string _inComponentName,
   let @stringset _inIndexNameSet,
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+  ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
   ?!@localVarManager ioVariableMap,
   ?!@uint _ioSelectMethodCount
 ) {
@@ -1344,8 +1344,8 @@ proc analyzeSyntaxInstructionList
   let @stringset inIndexNameSet,
   ?!@localVarManager ioVariableMap,
   ?!@uint ioSelectMethodCount,
-  !@semanticInstructionListForGeneration outInstructionListForGeneration ) {
-  outInstructionListForGeneration = @semanticInstructionListForGeneration ()
+  ![@semanticInstructionForGeneration] outInstructionListForGeneration ) {
+  outInstructionListForGeneration = [@semanticInstructionForGeneration] ()
 //--- Begin branch
   !?ioVariableMap.openBranch ()
 //--- Instruction list
@@ -1393,7 +1393,7 @@ proc semanticAnalysisOfRuleLabel
   ?!@uint ioSelectMethodCount,
   ![@formalParameterForGeneration] outSignatureForGeneration,
   !@formalParameterSignature outSignature,
-  !@semanticInstructionListForGeneration outInstructionListForGeneration
+  ![@semanticInstructionForGeneration] outInstructionListForGeneration
 ) {
   var variableMap = @localVarManager ()
   buildLocalVariableMapAndSignature (
@@ -1409,7 +1409,7 @@ proc semanticAnalysisOfRuleLabel
     outSignature ++= @(formal.mFormalSelector, formal.mFormalArgumentType, formal.mFormalArgumentPassingMode, formal.mFormalArgumentName.string)
   end
 //--- Semantic analysis of instruction list
-  outInstructionListForGeneration = @semanticInstructionListForGeneration ()
+  outInstructionListForGeneration = [@semanticInstructionForGeneration] ()
   for (mInstruction) in inSyntaxInstructionList do
     mInstruction.analyzeSyntaxInstruction
       (inUsefulnessCallerEntityName,

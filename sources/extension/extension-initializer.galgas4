@@ -259,8 +259,8 @@ private proc analyzeInitializerBody (let @lstring inUsefulnessCallerEntityName,
                         let [@formalInputParameterAST] inFormalArgumentListAST,
                         let [@semanticInstructionAST] inInstructionList,
                         let @location inEndOfMethodLocation,
-                        !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration,
-                        !@formalInputParameterListForGeneration outSignatureForGeneration) {
+                        ![@semanticInstructionForGeneration] outSemanticInstructionListForGeneration,
+                        ![@formalInputParameterForGeneration] outSignatureForGeneration) {
   var variableMap = @localVarManager ()
 //--- Enter properties that should be explicitly initialized
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
@@ -280,7 +280,7 @@ private proc analyzeInitializerBody (let @lstring inUsefulnessCallerEntityName,
     end
   end
 //--- Enter formal parameters
-  outSignatureForGeneration = @formalInputParameterListForGeneration ()
+  outSignatureForGeneration = [@formalInputParameterForGeneration] ()
   for formalArg in inFormalArgumentListAST do
     let parameterType = ioTypeMap.typeMapEntryForLKey (formalArg.mFormalArgumentTypeName)
     if formalArg.mIsConstant then
@@ -312,7 +312,7 @@ private proc analyzeInitializerBody (let @lstring inUsefulnessCallerEntityName,
     end
   end
 //---  Analyze instruction list
-  outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
+  outSemanticInstructionListForGeneration = [@semanticInstructionForGeneration] ()
   for instruction in inInstructionList do
     instruction.analyzeSemanticInstruction (
       inUsefulnessCallerEntityName,
@@ -334,9 +334,9 @@ private proc analyzeInitializerBody (let @lstring inUsefulnessCallerEntityName,
 final class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderForGeneration {
   private let @unifiedTypeMapEntry mReceiverType
   private let @string initializerName
-  private let @formalInputParameterListForGeneration formalParameterList
+  private let [@formalInputParameterForGeneration] formalParameterList
   private let [@typedProperty] mTypedAttributeList
-  private let @semanticInstructionListForGeneration semanticInstructionListForGeneration
+  private let [@semanticInstructionForGeneration] semanticInstructionListForGeneration
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -379,8 +379,8 @@ final class @extensionInitializerForGeneration : @semanticDeclarationWithHeaderF
 private proc generateInitializer (let @unifiedTypeMapEntry inReceiverType,
                          let @string inInitializerName,
                          ?!@stringset ioInclusionSet,
-                         let @formalInputParameterListForGeneration inFormalArgumentList,
-                         let @semanticInstructionListForGeneration inInstructionList,
+                         let [@formalInputParameterForGeneration] inFormalArgumentList,
+                         let [@semanticInstructionForGeneration] inInstructionList,
                          !@string outGeneratedCode) {
   let className = inReceiverType.definition.typeName.string
 //--- Build unused variable set
@@ -394,7 +394,7 @@ private proc generateInitializer (let @unifiedTypeMapEntry inReceiverType,
   var @string routineBody = ""
   !?routineBody.incIndentation (2)
   for entry in inInstructionList do
-    entry.mInstruction.generateInstruction (
+    entry.generateInstruction (
       !?ioInclusionSet,
       !?temporaryVariableIndex,
       !?unusedVariableCppNameSet,

@@ -85,7 +85,7 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
                                   let @nonterminalMap _inNonterminalMap,
                                   let @string _inComponentName,
                                   let @stringset _inIndexNameSet,
-                                  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                                  ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                                   ?!@localVarManager ioVariableMap,
                                   ?!@uint _ioSelectMethodCount) {
     if not inHasTranslateFeature then
@@ -108,10 +108,10 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
       error (self.mInstructionLocation: "'send' expresion should be an @string expression")
     end
   //---
-    ioInstructionListForGeneration ++= @(@syntaxSendInstructionForGeneration (
+    ioInstructionListForGeneration ++= @syntaxSendInstructionForGeneration (
       self.mInstructionLocation,
       expression
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

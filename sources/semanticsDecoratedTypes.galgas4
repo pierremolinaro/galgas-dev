@@ -26,16 +26,16 @@
 
 proc generateInstructionList
   (?!@stringset ioInclusionSet,
-  let @semanticInstructionListForGeneration inInstructionList,
+  let [@semanticInstructionForGeneration] inInstructionList,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   let @bool inGenerateSyntaxDirectedTranslationString,
   ?!@string ioGeneratedCode
 ) {
   !?ioGeneratedCode.incIndentation (2)
-  for element in inInstructionList do
-    element.mInstruction.generateInstruction
-      (!?ioInclusionSet,
+  for instruction in inInstructionList do
+    instruction.generateInstruction (
+      !?ioInclusionSet,
       !?ioTemporaryVariableIndex,
       !?ioUnusedVariableCppNameSet,
       inGenerateSyntaxDirectedTranslationString,
@@ -94,7 +94,7 @@ struct @formalParameterForGeneration {
 //
 //--------------------------------------------------------------------------------------------------
 
-list @formalInputParameterListForGeneration {
+struct @formalInputParameterForGeneration {
   public let @lstring mFormalSelector
   public let @unifiedTypeMapEntry mFormalArgumentType
   public let @string mFormalArgumentCppName
@@ -114,8 +114,8 @@ abstract class @actualParameterForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @actualParameterForGeneration.generateActualParameter
-  (?!@stringset ioInclusionSet,
+abstract proc @actualParameterForGeneration.generateActualParameter (
+  ?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@string ioImplementation,
   ?![@string] ioJokerParametersToReleaseList,
@@ -159,19 +159,13 @@ final class @inputJokerParameterForGeneration : @actualParameterForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-list @actualParameterListForGeneration {
-  public let @actualParameterForGeneration mActualParameter
-}
-
-//--------------------------------------------------------------------------------------------------
-
 abstract class @semanticInstructionForGeneration {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @semanticInstructionForGeneration.generateInstruction
-  (?!@stringset ioInclusionSet,
+abstract proc @semanticInstructionForGeneration.generateInstruction (
+  ?!@stringset ioInclusionSet,
   ?!@uint ioTemporaryVariableIndex,
   ?!@stringset ioUnusedVariableCppNameSet,
   let @bool inGenerateSyntaxDirectedTranslationString,
@@ -179,20 +173,14 @@ abstract proc @semanticInstructionForGeneration.generateInstruction
 
 //--------------------------------------------------------------------------------------------------
 
-list @semanticInstructionListForGeneration {
-  public let @semanticInstructionForGeneration mInstruction
-}
-
-//--------------------------------------------------------------------------------------------------
-
 final class @semanticBlockInstructionForGeneration : @semanticInstructionForGeneration {
-  public let @semanticInstructionListForGeneration mInstructionList
+  public let [@semanticInstructionForGeneration] mInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------
 
 list @listOfSemanticInstructionListForGeneration {
-  public let @semanticInstructionListForGeneration mInstructionList
+  public let [@semanticInstructionForGeneration] mInstructionList
   public let @location mEndOfInstructionList
 }
 
@@ -338,7 +326,7 @@ map @nonTerminalSymbolMapForGrammarAnalysis {
 
 //--------------------------------------------------------------------------------------------------
 
-list @nonTerminalToAddList {
+struct @nonTerminalToAdd {
   public let @string mSyntaxComponentName
   public let @uint mNonTerminalToAddCount
 }
@@ -351,7 +339,7 @@ list @nonTerminalToAddList {
 
 class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
   public let @string mFunctionName
-  public let @formalInputParameterListForGeneration mFormalArgumentList
+  public let [@formalInputParameterForGeneration] mFormalArgumentList
   public let @unifiedTypeMapEntry mReturnType
 }
 
@@ -363,7 +351,7 @@ class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeade
 
 final class @functionImplementationForGeneration : @functionPrototypeDeclarationForGeneration {
   public let @string mResultVariableCppName
-  public let @semanticInstructionListForGeneration mFunctionInstructionList
+  public let [@semanticInstructionForGeneration] mFunctionInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -376,7 +364,7 @@ final class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHead
   public let @string mFunctionName
   public let @unifiedTypeMapEntry mReturnType
   public let @string mResultVariableCppName
-  public let @semanticInstructionListForGeneration mFunctionInstructionList
+  public let [@semanticInstructionForGeneration] mFunctionInstructionList
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -395,9 +383,9 @@ abstract class @syntaxInstructionForGeneration : @semanticInstructionForGenerati
 //
 //--------------------------------------------------------------------------------------------------
 
-list @filewrapperTemplateListForGeneration {
+struct @filewrapperTemplateForGeneration {
   public let @string mFilewrapperTemplateName
-  public let @formalInputParameterListForGeneration mFilewrapperTemplateFormalInputParameters
+  public let [@formalInputParameterForGeneration] mFilewrapperTemplateFormalInputParameters
   public let [@templateInstructionForGeneration] mTemplateInstructionListForGeneration
 }
 
@@ -408,7 +396,7 @@ final class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeade
   public let @string mFilewrapperAbsolutePath
   public let @wrapperFileMap mFilewrapperFileMap
   public let @wrapperDirectoryMap mFilewrapperDirectoryMap
-  public let @filewrapperTemplateListForGeneration mFilewrapperTemplateListForGeneration
+  public let [@filewrapperTemplateForGeneration] mFilewrapperTemplateListForGeneration
 }
 
 //--------------------------------------------------------------------------------------------------

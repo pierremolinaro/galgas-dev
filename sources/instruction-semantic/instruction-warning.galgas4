@@ -72,7 +72,7 @@ override proc @warningInstructionAST.analyzeSemanticInstruction (
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
 //---
   analyzeErrorOrWarningInstruction (
@@ -91,12 +91,12 @@ override proc @warningInstructionAST.analyzeSemanticInstruction (
     ?let fixitListForGeneration
   )
 //--- Generate instruction
-  ioInstructionListForGeneration ++= @(@warningInstructionForGeneration (
+  ioInstructionListForGeneration ++= @warningInstructionForGeneration (
     self.mInstructionLocation,
     locationExpression,
     messageExpression,
     fixitListForGeneration
-  ))
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

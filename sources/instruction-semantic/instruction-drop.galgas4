@@ -64,7 +64,7 @@ override proc @dropInstructionAST.analyzeSemanticInstruction (let @lstring _inUs
                                                                 ?!@usefulEntitiesGraph _ioUsefulEntitiesGraph,
                                                                 let @analysisContext _inAnalysisContext,
                     						                          ?!@unifiedTypeMap _ioTypeMap,
-                                   ?!@semanticInstructionListForGeneration _ioInstructionListForGeneration,
+                                   ?![@semanticInstructionForGeneration] _ioInstructionListForGeneration,
                                    ?!@localVarManager ioVariableMap) {
   for entry in self.mDropList do
     !?ioVariableMap.searchForDropAccess (entry)

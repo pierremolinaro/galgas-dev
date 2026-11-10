@@ -231,10 +231,10 @@ override proc @overridingExtensionGetterAST.semanticAnalysis (
     self.mOverridingExtensionGetterReturnedVariableName,
     self.mOverridingExtensionGetterReturnedTypeName,
     self.mEndOfReaderLocation,
-    ?let @formalInputParameterListForGeneration formalParameterListForGeneration,
+    ?let [@formalInputParameterForGeneration] formalParameterListForGeneration,
     ?let @unifiedTypeMapEntry returnType,
     ?let @string returnVariableCppName,
-    ?let @semanticInstructionListForGeneration semanticInstructionListForGeneration
+    ?let [@semanticInstructionForGeneration] semanticInstructionListForGeneration
   )
 //--- Check Signature
   if baseTypeName != "" then
@@ -296,9 +296,9 @@ final class @overrideExtensionGetterForGeneration : @semanticDeclarationWithHead
   private let @string mOverridingExtensionGetterName
   private let @unifiedTypeMapEntry mResultType
   private let @string mResultVarCppName
-  private let @formalInputParameterListForGeneration mOverridingExtensionGetterFormalParameterList
+  private let [@formalInputParameterForGeneration] mOverridingExtensionGetterFormalParameterList
   private let [@typedProperty] mTypedAttributeList
-  private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+  private let [@semanticInstructionForGeneration] mSemanticInstructionListForGeneration
 }
 
 //································································································

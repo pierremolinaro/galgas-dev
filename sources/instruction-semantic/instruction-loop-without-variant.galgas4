@@ -82,7 +82,7 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
   //--- Loop expression
    self.mLoopExpression.analyzeSemanticExpressionList
@@ -122,12 +122,12 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
   //--- End override
     !?ioVariableMap.closeOverride (self.mEndOfLoopInstruction)
   //--- Generate instruction
-    ioInstructionListForGeneration ++= @(@loopInstructionWithoutVariantForGeneration (
+    ioInstructionListForGeneration ++= @loopInstructionWithoutVariantForGeneration (
       self.mInstructionLocation,
       first_instructionList,
       testListForGeneration,
       second_instructionList
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -140,9 +140,9 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
 
 final class @loopInstructionWithoutVariantForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
-  private let @semanticInstructionListForGeneration mFirstInstructions
+  private let [@semanticInstructionForGeneration] mFirstInstructions
   private let @ifTestListForGeneration mLoopExpression
-  private let @semanticInstructionListForGeneration mSecondInstructions
+  private let [@semanticInstructionForGeneration] mSecondInstructions
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

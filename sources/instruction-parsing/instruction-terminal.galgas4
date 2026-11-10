@@ -120,7 +120,7 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
     let @nonterminalMap _inNonterminalMap,
     let @string _inComponentName,
     let @stringset inIndexNameSet,
-    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+    ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
     ?!@localVarManager ioVariableMap,
     ?!@uint _ioSelectMethodCount) {
     inTerminalMap.searchKey (self.mTerminalName, ?let @lexicalSentValueList sentAttributeList)
@@ -170,7 +170,7 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
       !?ioVariableMap
     )
   //---
-    ioInstructionListForGeneration ++= @(@terminalCheckInstructionForGeneration (
+    ioInstructionListForGeneration ++= @terminalCheckInstructionForGeneration (
       self.mInstructionLocation,
       self.mTerminalName,
       inLexiqueName,
@@ -178,7 +178,7 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
       self.mIndexingKeyList,
       self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
       self.mGrammarInstructionSyntaxDirectedTranslationToken
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -252,8 +252,8 @@ final class @terminalCheckInstructionForGeneration : @syntaxInstructionForGenera
 
 override proc @terminalCheckInstructionForGeneration.appendSyntaxSignature (
   let @string _inPosfix,
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration) {
-  ioInstructionListForGeneration ++= @(@terminalCheckInstructionForGeneration (
+  ?![@semanticInstructionForGeneration] ioInstructionListForGeneration) {
+  ioInstructionListForGeneration ++= @terminalCheckInstructionForGeneration (
     self.mInstructionLocation,
     self.mTerminalName,
     self.mLexiqueIdentifier,
@@ -261,7 +261,7 @@ override proc @terminalCheckInstructionForGeneration.appendSyntaxSignature (
     self.mIndexingKeyList,
     @grammarInstructionSyntaxDirectedTranslationResultNone (),
     @grammarInstructionSyntaxDirectedTranslationResultNone ()
-  ))
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

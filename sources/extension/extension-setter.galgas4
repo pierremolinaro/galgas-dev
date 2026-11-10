@@ -231,9 +231,6 @@ override proc @extensionSetterAST.buildExtensionListMaps (
   ?!@genericExtensionMethodListMap _ioExtensionGetterListMap,
   ?!@genericExtensionMethodListMap _ioOverridingExtensionGetterListMap,
   ?!@genericExtensionMethodListMap _ioOverridingAbstractExtensionGetterListMap) {
-//  ioExtensionSetterListMap +=
-//    !self.mTypeName.string
-//    !self.mExtensionSetterName
   !?ioExtensionSetterListMap.insertKey
     (self.mTypeName.string,
     self.mExtensionSetterName
@@ -250,7 +247,7 @@ final class @extensionSetterForGeneration : @semanticDeclarationWithHeaderForGen
   private let @bool mImplementedAsFunction
   private let [@formalParameterForGeneration] mExtensionSetterFormalParameterList
   private let [@typedProperty] mTypedAttributeList
-  private let @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+  private let [@semanticInstructionForGeneration] mSemanticInstructionListForGeneration
 }
 
 //································································································
@@ -289,14 +286,13 @@ override proc @extensionSetterForGeneration.appendSpecificImplementation (
   end
   if self.mImplementedAsFunction then
     var extensionSetterFormalParameterList = self.mExtensionSetterFormalParameterList
-    !?extensionSetterFormalParameterList.insertAtIndex (
-      @("".nowhere,
-      @formalArgumentPassingModeAST. argumentInOut,
-      self.mReceiverType,
-      @lstring ("self", @location.here),
-      "ioObject"
-      ),
-      0
+//    !?extensionSetterFormalParameterList.insertAtIndex (
+//      @("".nowhere, .argumentInOut, self.mReceiverType, "self".here, "ioObject"),
+//      0
+//    )
+    !?extensionSetterFormalParameterList.insert (
+      @("".nowhere, .argumentInOut, self.mReceiverType, "self".here, "ioObject"),
+      !at: 0
     )
     ioInclusionSet ++= "mutating proc-" + self.mReceiverType.definition.typeName.string.fileNameRepresentation + "-" + self.mExtensionSetterName.fileNameRepresentation
     generateProcedure (

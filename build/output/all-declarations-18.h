@@ -329,10 +329,10 @@ void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__3F__21__21__21_
                                                                                       const class GGS_lstring constinArgument6,
                                                                                       const class GGS_lstring constinArgument7,
                                                                                       const class GGS_location constinArgument8,
-                                                                                      class GGS_formalInputParameterListForGeneration & outArgument9,
+                                                                                      class GGS__5B_formalInputParameterForGeneration_5D_ & outArgument9,
                                                                                       class GGS_unifiedTypeMapEntry & outArgument10,
                                                                                       class GGS_string & outArgument11,
-                                                                                      class GGS_semanticInstructionListForGeneration & outArgument12,
+                                                                                      class GGS__5B_semanticInstructionForGeneration_5D_ & outArgument12,
                                                                                       class Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) ;
 
@@ -342,7 +342,7 @@ void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__3F__21__21__21_
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_checkGetterSignatures_3F__3F__3F__3F__3F__3F_ (const class GGS_formalInputParameterListForGeneration constinArgument0,
+void routine_checkGetterSignatures_3F__3F__3F__3F__3F__3F_ (const class GGS__5B_formalInputParameterForGeneration_5D_ constinArgument0,
                                                             const class GGS_unifiedTypeMapEntry constinArgument1,
                                                             const class GGS_location constinArgument2,
                                                             const class GGS_functionSignature constinArgument3,
@@ -402,7 +402,7 @@ void routine_analyzeRoutineBody_3F__26__3F__26__3F__3F__3F__21__21_ (const class
                                                                      const class GGS__5B_formalParameterAST_5D_ constinArgument4,
                                                                      const class GGS__5B_semanticInstructionAST_5D_ constinArgument5,
                                                                      const class GGS_location constinArgument6,
-                                                                     class GGS_semanticInstructionListForGeneration & outArgument7,
+                                                                     class GGS__5B_semanticInstructionForGeneration_5D_ & outArgument7,
                                                                      class GGS__5B_formalParameterForGeneration_5D_ & outArgument8,
                                                                      class Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
@@ -431,8 +431,8 @@ void routine_analyzeInitializerBody_3F__26__3F__26__3F__3F__3F__21__21_ (const c
                                                                          const class GGS__5B_formalInputParameterAST_5D_ constinArgument4,
                                                                          const class GGS__5B_semanticInstructionAST_5D_ constinArgument5,
                                                                          const class GGS_location constinArgument6,
-                                                                         class GGS_semanticInstructionListForGeneration & outArgument7,
-                                                                         class GGS_formalInputParameterListForGeneration & outArgument8,
+                                                                         class GGS__5B_semanticInstructionForGeneration_5D_ & outArgument7,
+                                                                         class GGS__5B_formalInputParameterForGeneration_5D_ & outArgument8,
                                                                          class Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 
@@ -445,8 +445,8 @@ void routine_analyzeInitializerBody_3F__26__3F__26__3F__3F__3F__21__21_ (const c
 void routine_generateInitializer_3F__3F__26__3F__3F__21_ (const class GGS_unifiedTypeMapEntry constinArgument0,
                                                           const class GGS_string constinArgument1,
                                                           class GGS_stringset & ioArgument2,
-                                                          const class GGS_formalInputParameterListForGeneration constinArgument3,
-                                                          const class GGS_semanticInstructionListForGeneration constinArgument4,
+                                                          const class GGS__5B_formalInputParameterForGeneration_5D_ constinArgument3,
+                                                          const class GGS__5B_semanticInstructionForGeneration_5D_ constinArgument4,
                                                           class GGS_string & outArgument5,
                                                           class Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;

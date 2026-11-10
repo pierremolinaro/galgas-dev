@@ -421,7 +421,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
 proc check_K_escapeCharacters (let @lstring inString ) {  //--- Check escape sequences : only %K or %%
   for components in inString.string.componentsSeparatedByString ("%%") do
     var [@string] explodedArray = components.componentsSeparatedByString ("%")
-    !?explodedArray.popFirst (?*)
+    !?explodedArray.removeFirst (?*)
     for (mValue) in explodedArray do
       if mValue.count > 0 then
         let @char c = mValue.characterAtIndex (0)
@@ -438,7 +438,7 @@ proc check_K_escapeCharacters (let @lstring inString ) {  //--- Check escape seq
 proc check_K_L_escapeCharacters (let @lstring inString ) {  //--- Check escape sequences : only %K, %L or %%
   for components in inString.string.componentsSeparatedByString ("%%") do
     var [@string] explodedArray = components.componentsSeparatedByString ("%")
-    !?explodedArray.popFirst (?*)
+    !?explodedArray.removeFirst (?*)
     for (mValue) in explodedArray do
       if mValue.count > 0 then
         let @char c = mValue.characterAtIndex (0)

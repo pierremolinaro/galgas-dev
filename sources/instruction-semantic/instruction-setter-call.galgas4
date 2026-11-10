@@ -74,7 +74,7 @@ syntax extension galgas4InstructionsSyntax {
         receiverStructProperties ++= structProperty
       while
       end
-      !?receiverStructProperties.popLast (?let setterName)
+      !?receiverStructProperties.removeLast (?let setterName)
       <actual_parameter_list_with_parenthesis> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
       outInstruction = @setterCallInstructionAST (
         instructionLocation,
@@ -118,7 +118,7 @@ override proc @setterCallInstructionAST.analyzeSemanticInstruction (
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
   var @unifiedTypeMapEntry receiverType
   let @string targetVariableCppName
@@ -191,7 +191,7 @@ override proc @setterCallInstructionAST.analyzeSemanticInstruction (
     routineSignature,
     !?ioVariableMap,
     !?ioInstructionListForGeneration,
-    ?let @actualParameterListForGeneration actualParameterListForGeneration
+    ?let [@actualParameterForGeneration] actualParameterListForGeneration
   )
 //--- Search base type that declares the proc
   var baseType = receiverType
@@ -210,7 +210,7 @@ override proc @setterCallInstructionAST.analyzeSemanticInstruction (
     end
   end
 //--- Generate instructions
-  ioInstructionListForGeneration ++= @(@setterCallInstructionForGeneration (
+  ioInstructionListForGeneration ++= @setterCallInstructionForGeneration (
     self.mReceiverName.location,
     targetVariableCppName,
     nameForCheckingFormalParameterUsing,
@@ -221,7 +221,7 @@ override proc @setterCallInstructionAST.analyzeSemanticInstruction (
     actualParameterListForGeneration,
     hasCompilerArgument,
     baseType
-  ))
+  )
 }
 
 //································································································*
@@ -231,7 +231,7 @@ override proc @selfSetterCallInstructionAST.analyzeSemanticInstruction (
                         ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
                         let @analysisContext inAnalysisContext,
                         ?!@unifiedTypeMap ioTypeMap,
-                        ?!@semanticInstructionListForGeneration ioInstructionListForGeneration,
+                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                         ?!@localVarManager ioVariableMap) {
 //--- Analyze "self", as receiver expression
   if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
@@ -253,17 +253,17 @@ override proc @selfSetterCallInstructionAST.analyzeSemanticInstruction (
       routineSignature,
       !?ioVariableMap,
       !?ioInstructionListForGeneration,
-      ?let @actualParameterListForGeneration actualParameterListForGeneration
+      ?let [@actualParameterForGeneration] actualParameterListForGeneration
     )
   //--- Generate instructions
-    ioInstructionListForGeneration ++= @(@selfSetterCallInstructionForGeneration (
+    ioInstructionListForGeneration ++= @selfSetterCallInstructionForGeneration (
       inAnalysisContext.selfObjectCppName,
       selfAvailable.type,
       self.mSetterName,
       kind,
       actualParameterListForGeneration,
       hasCompilerArgument
-    ))
+    )
   else
     error (self.mSetterName : "'self' not available in this context")
   end
@@ -281,7 +281,7 @@ final class @setterCallInstructionForGeneration : @semanticInstructionForGenerat
   private let @unifiedTypeMapEntry mReceiverType
   private let @lstring mSetterName
   private let @methodKind mKind
-  private let @actualParameterListForGeneration mActualParameterList
+  private let [@actualParameterForGeneration] mActualParameterList
   private let @bool mHasCompilerArgument
   private let @unifiedTypeMapEntry mMethodBaseType
 }
@@ -293,7 +293,7 @@ final class @selfSetterCallInstructionForGeneration : @semanticInstructionForGen
   private let @unifiedTypeMapEntry mReceiverType
   private let @lstring mSetterName
   private let @methodKind mKind
-  private let @actualParameterListForGeneration mActualParameterList
+  private let [@actualParameterForGeneration] mActualParameterList
   private let @bool mHasCompilerArgument
 }
 
@@ -315,7 +315,7 @@ override proc @setterCallInstructionForGeneration.generateInstruction (?!@string
   var [@string] jokerParametersToReleaseList = @()
   var [@string] inputVariableList = @()
   for entry in self.mActualParameterList do
-    entry.mActualParameter.generateActualParameter
+    entry.generateActualParameter
       (!?ioInclusionSet,
       !?ioTemporaryVariableIndex,
       !?ioGeneratedCode,
@@ -379,7 +379,7 @@ override proc @selfSetterCallInstructionForGeneration.generateInstruction (?!@st
   var jokerParametersToReleaseList = [@string] ()
   var inputVariableList = [@string] ()
   for entry in self.mActualParameterList do
-    entry.mActualParameter.generateActualParameter
+    entry.generateActualParameter
       (!?ioInclusionSet,
       !?ioTemporaryVariableIndex,
       !?ioGeneratedCode,

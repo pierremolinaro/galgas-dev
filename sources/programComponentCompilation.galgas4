@@ -56,7 +56,7 @@ proc compileBeforeClauseGalgas3
   !?ioUsefulEntitiesGraph.addNode (usefulnessName, usefulnessName)
   ioUsefulnessRootEntities ++= usefulnessName
 //--- Compile 'before' routines
-  var semanticInstructionListForGeneration = @semanticInstructionListForGeneration ()
+  var semanticInstructionListForGeneration = [@semanticInstructionForGeneration] ()
   for prologue in inPrologueList do
     analyzeRoutineBody (
       usefulnessName,
@@ -66,12 +66,12 @@ proc compileBeforeClauseGalgas3
       [@formalParameterAST] (), // Routine signature : no argument
       prologue.mInstructionList,
       prologue.mEndOfInstructionList,
-      ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration,
+      ?let [@semanticInstructionForGeneration] blockSemanticInstructionListForGeneration,
       ?*
     )
-    semanticInstructionListForGeneration ++= @(@semanticBlockInstructionForGeneration (
+    semanticInstructionListForGeneration ++= @semanticBlockInstructionForGeneration (
       blockSemanticInstructionListForGeneration
-    ))
+    )
   end
 //---
   ioDecoratedDeclarationListForGeneration ++= @routineImplementationForGeneration (
@@ -149,7 +149,7 @@ proc compileAfterClauseGalgas3
   !?ioUsefulEntitiesGraph.addNode (usefulnessName, usefulnessName)
   ioUsefulnessRootEntities ++= usefulnessName
 //--- Compile 'after' routines
-  var @semanticInstructionListForGeneration semanticInstructionListForGeneration = @()
+  var [@semanticInstructionForGeneration] semanticInstructionListForGeneration = @()
   for epilogue in inEpilogueList do
     analyzeRoutineBody (
       usefulnessName,
@@ -159,10 +159,10 @@ proc compileAfterClauseGalgas3
       [@formalParameterAST] (), // Routine signature : no argument
       epilogue.mInstructionList,
       epilogue.mEndOfInstructionList,
-      ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration,
+      ?let [@semanticInstructionForGeneration] blockSemanticInstructionListForGeneration,
       ?*
     )
-    semanticInstructionListForGeneration ++= @(@semanticBlockInstructionForGeneration (blockSemanticInstructionListForGeneration))
+    semanticInstructionListForGeneration ++= @semanticBlockInstructionForGeneration (blockSemanticInstructionListForGeneration)
   end
 //---
   ioDecoratedDeclarationListForGeneration ++= @routineImplementationForGeneration (
