@@ -9,16 +9,6 @@
 #include "all-declarations-14.h"
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension func '@semanticExpressionForGeneration isTrueExpression'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_bool callExtensionGetter_isTrueExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                     class Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
 //  GRAMMAR galgas4ProjectGrammar
 //--------------------------------------------------------------------------------------------------
 

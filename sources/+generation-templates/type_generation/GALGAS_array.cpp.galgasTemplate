@@ -4,20 +4,23 @@
 
 GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!TYPE_IDENTIFIER%::GGS_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!TYPE_IDENTIFIER% & GGS_%!TYPE_IDENTIFIER%::operator = (const GGS_%!TYPE_IDENTIFIER% & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -25,27 +28,22 @@ GGS_%!TYPE_IDENTIFIER% & GGS_%!TYPE_IDENTIFIER%::operator = (const GGS_%!TYPE_ID
 
 GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS_%!TYPE_IDENTIFIER% result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_%!TYPE_IDENTIFIER%::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS_%!TYPE_IDENTIFIER%::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -85,9 +83,7 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GGS_%!TY
 
 void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
      %!^%const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array %!ELEMENT_TYPE_IDENTIFIER%, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;

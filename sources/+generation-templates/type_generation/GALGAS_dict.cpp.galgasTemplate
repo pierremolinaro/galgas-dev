@@ -16,9 +16,7 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_A
 
 void GGS_%!TYPE_IDENTIFIER%::description (String & ioString,
                                           const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<dict @") ;
-  ioString.appendCString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
+  ioString.appendCString ("<dict @%!TYPE_IDENTIFIER%: ") ;
   if (isValid ()) {
     ioString.appendSigned (count ()) ;
     ioString.appendCString (" node(s)") ;

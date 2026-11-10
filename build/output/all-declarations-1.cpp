@@ -688,20 +688,23 @@ const GALGAS_TypeDescriptor * GGS_assignmentInstructionForGeneration_2E_weak::st
 
 GGS__5B_templateDelimitor_32_AST_5D_::GGS__5B_templateDelimitor_32_AST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_templateDelimitor_32_AST_5D_::GGS__5B_templateDelimitor_32_AST_5D_ (const GGS__5B_templateDelimitor_32_AST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_templateDelimitor_32_AST_5D_ & GGS__5B_templateDelimitor_32_AST_5D_::operator = (const GGS__5B_templateDelimitor_32_AST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -709,27 +712,22 @@ GGS__5B_templateDelimitor_32_AST_5D_ & GGS__5B_templateDelimitor_32_AST_5D_::ope
 
 GGS__5B_templateDelimitor_32_AST_5D_ GGS__5B_templateDelimitor_32_AST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_templateDelimitor_32_AST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_templateDelimitor_32_AST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_templateDelimitor_32_AST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_templateDelimitor_32_AST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -769,9 +767,7 @@ GGS__5B_templateDelimitor_32_AST_5D_ GGS__5B_templateDelimitor_32_AST_5D_::add_o
 
 void GGS__5B_templateDelimitor_32_AST_5D_::description (String & ioString,
                                                         const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array templateDelimitor_32_AST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -1166,20 +1162,23 @@ const GALGAS_TypeDescriptor * GGS_templateDelimitor_32_AST::staticTypeDescriptor
 
 GGS__5B_templateReplacementAST_5D_::GGS__5B_templateReplacementAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_templateReplacementAST_5D_::GGS__5B_templateReplacementAST_5D_ (const GGS__5B_templateReplacementAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_templateReplacementAST_5D_ & GGS__5B_templateReplacementAST_5D_::operator = (const GGS__5B_templateReplacementAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -1187,27 +1186,22 @@ GGS__5B_templateReplacementAST_5D_ & GGS__5B_templateReplacementAST_5D_::operato
 
 GGS__5B_templateReplacementAST_5D_ GGS__5B_templateReplacementAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_templateReplacementAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_templateReplacementAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_templateReplacementAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_templateReplacementAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1247,9 +1241,7 @@ GGS__5B_templateReplacementAST_5D_ GGS__5B_templateReplacementAST_5D_::add_opera
 
 void GGS__5B_templateReplacementAST_5D_::description (String & ioString,
                                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array templateReplacementAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -1624,20 +1616,23 @@ const GALGAS_TypeDescriptor * GGS_templateReplacementAST::staticTypeDescriptor (
 
 GGS__5B_lexicalAttributeAST_5D_::GGS__5B_lexicalAttributeAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalAttributeAST_5D_::GGS__5B_lexicalAttributeAST_5D_ (const GGS__5B_lexicalAttributeAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalAttributeAST_5D_ & GGS__5B_lexicalAttributeAST_5D_::operator = (const GGS__5B_lexicalAttributeAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -1645,27 +1640,22 @@ GGS__5B_lexicalAttributeAST_5D_ & GGS__5B_lexicalAttributeAST_5D_::operator = (c
 
 GGS__5B_lexicalAttributeAST_5D_ GGS__5B_lexicalAttributeAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_lexicalAttributeAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_lexicalAttributeAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalAttributeAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalAttributeAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1705,9 +1695,7 @@ GGS__5B_lexicalAttributeAST_5D_ GGS__5B_lexicalAttributeAST_5D_::add_operation (
 
 void GGS__5B_lexicalAttributeAST_5D_::description (String & ioString,
                                                    const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array lexicalAttributeAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -2072,20 +2060,23 @@ const GALGAS_TypeDescriptor * GGS_lexicalAttributeAST::staticTypeDescriptor (voi
 
 GGS__5B_lexicalStyleAST_5D_::GGS__5B_lexicalStyleAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalStyleAST_5D_::GGS__5B_lexicalStyleAST_5D_ (const GGS__5B_lexicalStyleAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalStyleAST_5D_ & GGS__5B_lexicalStyleAST_5D_::operator = (const GGS__5B_lexicalStyleAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -2093,27 +2084,22 @@ GGS__5B_lexicalStyleAST_5D_ & GGS__5B_lexicalStyleAST_5D_::operator = (const GGS
 
 GGS__5B_lexicalStyleAST_5D_ GGS__5B_lexicalStyleAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_lexicalStyleAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_lexicalStyleAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalStyleAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalStyleAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2153,9 +2139,7 @@ GGS__5B_lexicalStyleAST_5D_ GGS__5B_lexicalStyleAST_5D_::add_operation (const GG
 
 void GGS__5B_lexicalStyleAST_5D_::description (String & ioString,
                                                const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array lexicalStyleAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -2520,20 +2504,23 @@ const GALGAS_TypeDescriptor * GGS_lexicalStyleAST::staticTypeDescriptor (void) c
 
 GGS__5B_terminalDeclarationAST_5D_::GGS__5B_terminalDeclarationAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_terminalDeclarationAST_5D_::GGS__5B_terminalDeclarationAST_5D_ (const GGS__5B_terminalDeclarationAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_terminalDeclarationAST_5D_ & GGS__5B_terminalDeclarationAST_5D_::operator = (const GGS__5B_terminalDeclarationAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -2541,27 +2528,22 @@ GGS__5B_terminalDeclarationAST_5D_ & GGS__5B_terminalDeclarationAST_5D_::operato
 
 GGS__5B_terminalDeclarationAST_5D_ GGS__5B_terminalDeclarationAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_terminalDeclarationAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_terminalDeclarationAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_terminalDeclarationAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_terminalDeclarationAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2601,9 +2583,7 @@ GGS__5B_terminalDeclarationAST_5D_ GGS__5B_terminalDeclarationAST_5D_::add_opera
 
 void GGS__5B_terminalDeclarationAST_5D_::description (String & ioString,
                                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array terminalDeclarationAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -2879,20 +2859,23 @@ const GALGAS_TypeDescriptor * GGS__5B_terminalDeclarationAST_5D_::staticTypeDesc
 
 GGS__5B_lexicalMessageDeclarationAST_5D_::GGS__5B_lexicalMessageDeclarationAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalMessageDeclarationAST_5D_::GGS__5B_lexicalMessageDeclarationAST_5D_ (const GGS__5B_lexicalMessageDeclarationAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalMessageDeclarationAST_5D_ & GGS__5B_lexicalMessageDeclarationAST_5D_::operator = (const GGS__5B_lexicalMessageDeclarationAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -2900,27 +2883,22 @@ GGS__5B_lexicalMessageDeclarationAST_5D_ & GGS__5B_lexicalMessageDeclarationAST_
 
 GGS__5B_lexicalMessageDeclarationAST_5D_ GGS__5B_lexicalMessageDeclarationAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_lexicalMessageDeclarationAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_lexicalMessageDeclarationAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalMessageDeclarationAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalMessageDeclarationAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -2960,9 +2938,7 @@ GGS__5B_lexicalMessageDeclarationAST_5D_ GGS__5B_lexicalMessageDeclarationAST_5D
 
 void GGS__5B_lexicalMessageDeclarationAST_5D_::description (String & ioString,
                                                             const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array lexicalMessageDeclarationAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -3327,20 +3303,23 @@ const GALGAS_TypeDescriptor * GGS_lexicalMessageDeclarationAST::staticTypeDescri
 
 GGS__5B_lexicalListDeclarationAST_5D_::GGS__5B_lexicalListDeclarationAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalListDeclarationAST_5D_::GGS__5B_lexicalListDeclarationAST_5D_ (const GGS__5B_lexicalListDeclarationAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalListDeclarationAST_5D_ & GGS__5B_lexicalListDeclarationAST_5D_::operator = (const GGS__5B_lexicalListDeclarationAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -3348,27 +3327,22 @@ GGS__5B_lexicalListDeclarationAST_5D_ & GGS__5B_lexicalListDeclarationAST_5D_::o
 
 GGS__5B_lexicalListDeclarationAST_5D_ GGS__5B_lexicalListDeclarationAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_lexicalListDeclarationAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_lexicalListDeclarationAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalListDeclarationAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalListDeclarationAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3408,9 +3382,7 @@ GGS__5B_lexicalListDeclarationAST_5D_ GGS__5B_lexicalListDeclarationAST_5D_::add
 
 void GGS__5B_lexicalListDeclarationAST_5D_::description (String & ioString,
                                                          const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array lexicalListDeclarationAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -3686,20 +3658,23 @@ const GALGAS_TypeDescriptor * GGS__5B_lexicalListDeclarationAST_5D_::staticTypeD
 
 GGS__5B_abstractLexicalRuleAST_5D_::GGS__5B_abstractLexicalRuleAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_abstractLexicalRuleAST_5D_::GGS__5B_abstractLexicalRuleAST_5D_ (const GGS__5B_abstractLexicalRuleAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_abstractLexicalRuleAST_5D_ & GGS__5B_abstractLexicalRuleAST_5D_::operator = (const GGS__5B_abstractLexicalRuleAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -3707,27 +3682,22 @@ GGS__5B_abstractLexicalRuleAST_5D_ & GGS__5B_abstractLexicalRuleAST_5D_::operato
 
 GGS__5B_abstractLexicalRuleAST_5D_ GGS__5B_abstractLexicalRuleAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_abstractLexicalRuleAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_abstractLexicalRuleAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_abstractLexicalRuleAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_abstractLexicalRuleAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -3767,9 +3737,7 @@ GGS__5B_abstractLexicalRuleAST_5D_ GGS__5B_abstractLexicalRuleAST_5D_::add_opera
 
 void GGS__5B_abstractLexicalRuleAST_5D_::description (String & ioString,
                                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array abstractLexicalRuleAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -4116,20 +4084,23 @@ const GALGAS_TypeDescriptor * GGS_abstractLexicalRuleAST::staticTypeDescriptor (
 
 GGS__5B_indexingAST_5D_::GGS__5B_indexingAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_indexingAST_5D_::GGS__5B_indexingAST_5D_ (const GGS__5B_indexingAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_indexingAST_5D_ & GGS__5B_indexingAST_5D_::operator = (const GGS__5B_indexingAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -4137,27 +4108,22 @@ GGS__5B_indexingAST_5D_ & GGS__5B_indexingAST_5D_::operator = (const GGS__5B_ind
 
 GGS__5B_indexingAST_5D_ GGS__5B_indexingAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_indexingAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_indexingAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_indexingAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_indexingAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4197,9 +4163,7 @@ GGS__5B_indexingAST_5D_ GGS__5B_indexingAST_5D_::add_operation (const GGS__5B_in
 
 void GGS__5B_indexingAST_5D_::description (String & ioString,
                                            const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array indexingAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -4752,20 +4716,23 @@ const GALGAS_TypeDescriptor * GGS_semanticDeclarationAST_2E_weak::staticTypeDesc
 
 GGS__5B_lexicalInstructionAST_5D_::GGS__5B_lexicalInstructionAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalInstructionAST_5D_::GGS__5B_lexicalInstructionAST_5D_ (const GGS__5B_lexicalInstructionAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalInstructionAST_5D_ & GGS__5B_lexicalInstructionAST_5D_::operator = (const GGS__5B_lexicalInstructionAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -4773,27 +4740,22 @@ GGS__5B_lexicalInstructionAST_5D_ & GGS__5B_lexicalInstructionAST_5D_::operator 
 
 GGS__5B_lexicalInstructionAST_5D_ GGS__5B_lexicalInstructionAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_lexicalInstructionAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_lexicalInstructionAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalInstructionAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalInstructionAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -4833,9 +4795,7 @@ GGS__5B_lexicalInstructionAST_5D_ GGS__5B_lexicalInstructionAST_5D_::add_operati
 
 void GGS__5B_lexicalInstructionAST_5D_::description (String & ioString,
                                                      const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array lexicalInstructionAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -5182,20 +5142,23 @@ const GALGAS_TypeDescriptor * GGS_lexicalInstructionAST::staticTypeDescriptor (v
 
 GGS__5B_lexicalWhileBranchAST_5D_::GGS__5B_lexicalWhileBranchAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalWhileBranchAST_5D_::GGS__5B_lexicalWhileBranchAST_5D_ (const GGS__5B_lexicalWhileBranchAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalWhileBranchAST_5D_ & GGS__5B_lexicalWhileBranchAST_5D_::operator = (const GGS__5B_lexicalWhileBranchAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -5203,27 +5166,22 @@ GGS__5B_lexicalWhileBranchAST_5D_ & GGS__5B_lexicalWhileBranchAST_5D_::operator 
 
 GGS__5B_lexicalWhileBranchAST_5D_ GGS__5B_lexicalWhileBranchAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_lexicalWhileBranchAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_lexicalWhileBranchAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalWhileBranchAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalWhileBranchAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5263,9 +5221,7 @@ GGS__5B_lexicalWhileBranchAST_5D_ GGS__5B_lexicalWhileBranchAST_5D_::add_operati
 
 void GGS__5B_lexicalWhileBranchAST_5D_::description (String & ioString,
                                                      const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array lexicalWhileBranchAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -5541,20 +5497,23 @@ const GALGAS_TypeDescriptor * GGS__5B_lexicalWhileBranchAST_5D_::staticTypeDescr
 
 GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ (const GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ & GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::operator = (const GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -5562,27 +5521,22 @@ GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ & GGS__5B_lexicalRout
 
 GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -5622,9 +5576,7 @@ GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ GGS__5B_lexicalRoutin
 
 void GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::description (String & ioString,
                                                                               const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array lexicalRoutineOrFunctionFormalInputArgumentAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -5971,20 +5923,23 @@ const GALGAS_TypeDescriptor * GGS_lexicalRoutineOrFunctionFormalInputArgumentAST
 
 GGS__5B_sentLexicalAttributeAST_5D_::GGS__5B_sentLexicalAttributeAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_sentLexicalAttributeAST_5D_::GGS__5B_sentLexicalAttributeAST_5D_ (const GGS__5B_sentLexicalAttributeAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_sentLexicalAttributeAST_5D_ & GGS__5B_sentLexicalAttributeAST_5D_::operator = (const GGS__5B_sentLexicalAttributeAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -5992,27 +5947,22 @@ GGS__5B_sentLexicalAttributeAST_5D_ & GGS__5B_sentLexicalAttributeAST_5D_::opera
 
 GGS__5B_sentLexicalAttributeAST_5D_ GGS__5B_sentLexicalAttributeAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_sentLexicalAttributeAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_sentLexicalAttributeAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_sentLexicalAttributeAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_sentLexicalAttributeAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6052,9 +6002,7 @@ GGS__5B_sentLexicalAttributeAST_5D_ GGS__5B_sentLexicalAttributeAST_5D_::add_ope
 
 void GGS__5B_sentLexicalAttributeAST_5D_::description (String & ioString,
                                                        const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array sentLexicalAttributeAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -6419,20 +6367,23 @@ const GALGAS_TypeDescriptor * GGS_sentLexicalAttributeAST::staticTypeDescriptor 
 
 GGS__5B_lexicalListEntryAST_5D_::GGS__5B_lexicalListEntryAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalListEntryAST_5D_::GGS__5B_lexicalListEntryAST_5D_ (const GGS__5B_lexicalListEntryAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalListEntryAST_5D_ & GGS__5B_lexicalListEntryAST_5D_::operator = (const GGS__5B_lexicalListEntryAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -6440,27 +6391,22 @@ GGS__5B_lexicalListEntryAST_5D_ & GGS__5B_lexicalListEntryAST_5D_::operator = (c
 
 GGS__5B_lexicalListEntryAST_5D_ GGS__5B_lexicalListEntryAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_lexicalListEntryAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_lexicalListEntryAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalListEntryAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalListEntryAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6500,9 +6446,7 @@ GGS__5B_lexicalListEntryAST_5D_ GGS__5B_lexicalListEntryAST_5D_::add_operation (
 
 void GGS__5B_lexicalListEntryAST_5D_::description (String & ioString,
                                                    const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array lexicalListEntryAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -6887,20 +6831,23 @@ const GALGAS_TypeDescriptor * GGS_lexicalListEntryAST::staticTypeDescriptor (voi
 
 GGS__5B_semanticDeclarationAST_5D_::GGS__5B_semanticDeclarationAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_semanticDeclarationAST_5D_::GGS__5B_semanticDeclarationAST_5D_ (const GGS__5B_semanticDeclarationAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_semanticDeclarationAST_5D_ & GGS__5B_semanticDeclarationAST_5D_::operator = (const GGS__5B_semanticDeclarationAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -6908,27 +6855,22 @@ GGS__5B_semanticDeclarationAST_5D_ & GGS__5B_semanticDeclarationAST_5D_::operato
 
 GGS__5B_semanticDeclarationAST_5D_ GGS__5B_semanticDeclarationAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_semanticDeclarationAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_semanticDeclarationAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticDeclarationAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticDeclarationAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -6968,9 +6910,7 @@ GGS__5B_semanticDeclarationAST_5D_ GGS__5B_semanticDeclarationAST_5D_::add_opera
 
 void GGS__5B_semanticDeclarationAST_5D_::description (String & ioString,
                                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array semanticDeclarationAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -7246,20 +7186,23 @@ const GALGAS_TypeDescriptor * GGS__5B_semanticDeclarationAST_5D_::staticTypeDesc
 
 GGS__5B_lexicalSentValue_5D_::GGS__5B_lexicalSentValue_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalSentValue_5D_::GGS__5B_lexicalSentValue_5D_ (const GGS__5B_lexicalSentValue_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_lexicalSentValue_5D_ & GGS__5B_lexicalSentValue_5D_::operator = (const GGS__5B_lexicalSentValue_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -7267,27 +7210,22 @@ GGS__5B_lexicalSentValue_5D_ & GGS__5B_lexicalSentValue_5D_::operator = (const G
 
 GGS__5B_lexicalSentValue_5D_ GGS__5B_lexicalSentValue_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_lexicalSentValue_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_lexicalSentValue_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalSentValue_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_lexicalSentValue_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7327,9 +7265,7 @@ GGS__5B_lexicalSentValue_5D_ GGS__5B_lexicalSentValue_5D_::add_operation (const 
 
 void GGS__5B_lexicalSentValue_5D_::description (String & ioString,
                                                 const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array lexicalSentValue, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -7605,20 +7541,23 @@ const GALGAS_TypeDescriptor * GGS__5B_lexicalSentValue_5D_::staticTypeDescriptor
 
 GGS__5B_semanticDeclarationForGeneration_5D_::GGS__5B_semanticDeclarationForGeneration_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_semanticDeclarationForGeneration_5D_::GGS__5B_semanticDeclarationForGeneration_5D_ (const GGS__5B_semanticDeclarationForGeneration_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_semanticDeclarationForGeneration_5D_ & GGS__5B_semanticDeclarationForGeneration_5D_::operator = (const GGS__5B_semanticDeclarationForGeneration_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -7626,27 +7565,22 @@ GGS__5B_semanticDeclarationForGeneration_5D_ & GGS__5B_semanticDeclarationForGen
 
 GGS__5B_semanticDeclarationForGeneration_5D_ GGS__5B_semanticDeclarationForGeneration_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_semanticDeclarationForGeneration_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_semanticDeclarationForGeneration_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticDeclarationForGeneration_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_semanticDeclarationForGeneration_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7686,9 +7620,7 @@ GGS__5B_semanticDeclarationForGeneration_5D_ GGS__5B_semanticDeclarationForGener
 
 void GGS__5B_semanticDeclarationForGeneration_5D_::description (String & ioString,
                                                                 const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array semanticDeclarationForGeneration, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -8057,20 +7989,23 @@ const GALGAS_TypeDescriptor * GGS_semanticDeclarationForGeneration::staticTypeDe
 
 GGS__5B_terminalAST_5D_::GGS__5B_terminalAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_terminalAST_5D_::GGS__5B_terminalAST_5D_ (const GGS__5B_terminalAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_terminalAST_5D_ & GGS__5B_terminalAST_5D_::operator = (const GGS__5B_terminalAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -8078,27 +8013,22 @@ GGS__5B_terminalAST_5D_ & GGS__5B_terminalAST_5D_::operator = (const GGS__5B_ter
 
 GGS__5B_terminalAST_5D_ GGS__5B_terminalAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_terminalAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_terminalAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_terminalAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_terminalAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8138,9 +8068,7 @@ GGS__5B_terminalAST_5D_ GGS__5B_terminalAST_5D_::add_operation (const GGS__5B_te
 
 void GGS__5B_terminalAST_5D_::description (String & ioString,
                                            const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array terminalAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -8545,20 +8473,23 @@ const GALGAS_TypeDescriptor * GGS_terminalAST::staticTypeDescriptor (void) const
 
 GGS__5B_templateDelimitorAST_5D_::GGS__5B_templateDelimitorAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_templateDelimitorAST_5D_::GGS__5B_templateDelimitorAST_5D_ (const GGS__5B_templateDelimitorAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_templateDelimitorAST_5D_ & GGS__5B_templateDelimitorAST_5D_::operator = (const GGS__5B_templateDelimitorAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -8566,27 +8497,22 @@ GGS__5B_templateDelimitorAST_5D_ & GGS__5B_templateDelimitorAST_5D_::operator = 
 
 GGS__5B_templateDelimitorAST_5D_ GGS__5B_templateDelimitorAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_templateDelimitorAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_templateDelimitorAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_templateDelimitorAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_templateDelimitorAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8626,9 +8552,7 @@ GGS__5B_templateDelimitorAST_5D_ GGS__5B_templateDelimitorAST_5D_::add_operation
 
 void GGS__5B_templateDelimitorAST_5D_::description (String & ioString,
                                                     const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array templateDelimitorAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -10005,20 +9929,23 @@ void callExtensionMethod_checkLexicalRule (cPtr_abstractLexicalRuleAST * inObjec
 
 GGS__5B_formalParameterAST_5D_::GGS__5B_formalParameterAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_formalParameterAST_5D_::GGS__5B_formalParameterAST_5D_ (const GGS__5B_formalParameterAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_formalParameterAST_5D_ & GGS__5B_formalParameterAST_5D_::operator = (const GGS__5B_formalParameterAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -10026,27 +9953,22 @@ GGS__5B_formalParameterAST_5D_ & GGS__5B_formalParameterAST_5D_::operator = (con
 
 GGS__5B_formalParameterAST_5D_ GGS__5B_formalParameterAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_formalParameterAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_formalParameterAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalParameterAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalParameterAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10086,9 +10008,7 @@ GGS__5B_formalParameterAST_5D_ GGS__5B_formalParameterAST_5D_::add_operation (co
 
 void GGS__5B_formalParameterAST_5D_::description (String & ioString,
                                                   const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array formalParameterAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -10364,20 +10284,23 @@ const GALGAS_TypeDescriptor * GGS__5B_formalParameterAST_5D_::staticTypeDescript
 
 GGS__5B_formalInputParameterAST_5D_::GGS__5B_formalInputParameterAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_formalInputParameterAST_5D_::GGS__5B_formalInputParameterAST_5D_ (const GGS__5B_formalInputParameterAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_formalInputParameterAST_5D_ & GGS__5B_formalInputParameterAST_5D_::operator = (const GGS__5B_formalInputParameterAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -10385,27 +10308,22 @@ GGS__5B_formalInputParameterAST_5D_ & GGS__5B_formalInputParameterAST_5D_::opera
 
 GGS__5B_formalInputParameterAST_5D_ GGS__5B_formalInputParameterAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_formalInputParameterAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_formalInputParameterAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalInputParameterAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalInputParameterAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10445,9 +10363,7 @@ GGS__5B_formalInputParameterAST_5D_ GGS__5B_formalInputParameterAST_5D_::add_ope
 
 void GGS__5B_formalInputParameterAST_5D_::description (String & ioString,
                                                        const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array formalInputParameterAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -10842,20 +10758,23 @@ const GALGAS_TypeDescriptor * GGS_formalInputParameterAST::staticTypeDescriptor 
 
 GGS__5B_filewrapperTemplateAST_5D_::GGS__5B_filewrapperTemplateAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_filewrapperTemplateAST_5D_::GGS__5B_filewrapperTemplateAST_5D_ (const GGS__5B_filewrapperTemplateAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_filewrapperTemplateAST_5D_ & GGS__5B_filewrapperTemplateAST_5D_::operator = (const GGS__5B_filewrapperTemplateAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -10863,27 +10782,22 @@ GGS__5B_filewrapperTemplateAST_5D_ & GGS__5B_filewrapperTemplateAST_5D_::operato
 
 GGS__5B_filewrapperTemplateAST_5D_ GGS__5B_filewrapperTemplateAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_filewrapperTemplateAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_filewrapperTemplateAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_filewrapperTemplateAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_filewrapperTemplateAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -10923,9 +10837,7 @@ GGS__5B_filewrapperTemplateAST_5D_ GGS__5B_filewrapperTemplateAST_5D_::add_opera
 
 void GGS__5B_filewrapperTemplateAST_5D_::description (String & ioString,
                                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array filewrapperTemplateAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -11201,20 +11113,23 @@ const GALGAS_TypeDescriptor * GGS__5B_filewrapperTemplateAST_5D_::staticTypeDesc
 
 GGS__5B_formalTemplateInputParameterAST_5D_::GGS__5B_formalTemplateInputParameterAST_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_formalTemplateInputParameterAST_5D_::GGS__5B_formalTemplateInputParameterAST_5D_ (const GGS__5B_formalTemplateInputParameterAST_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_formalTemplateInputParameterAST_5D_ & GGS__5B_formalTemplateInputParameterAST_5D_::operator = (const GGS__5B_formalTemplateInputParameterAST_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -11222,27 +11137,22 @@ GGS__5B_formalTemplateInputParameterAST_5D_ & GGS__5B_formalTemplateInputParamet
 
 GGS__5B_formalTemplateInputParameterAST_5D_ GGS__5B_formalTemplateInputParameterAST_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_formalTemplateInputParameterAST_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_formalTemplateInputParameterAST_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalTemplateInputParameterAST_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_formalTemplateInputParameterAST_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11282,9 +11192,7 @@ GGS__5B_formalTemplateInputParameterAST_5D_ GGS__5B_formalTemplateInputParameter
 
 void GGS__5B_formalTemplateInputParameterAST_5D_::description (String & ioString,
                                                                const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array formalTemplateInputParameterAST, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -11669,20 +11577,23 @@ const GALGAS_TypeDescriptor * GGS_formalTemplateInputParameterAST::staticTypeDes
 
 GGS__5B_typedProperty_5D_::GGS__5B_typedProperty_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_typedProperty_5D_::GGS__5B_typedProperty_5D_ (const GGS__5B_typedProperty_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_typedProperty_5D_ & GGS__5B_typedProperty_5D_::operator = (const GGS__5B_typedProperty_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -11690,27 +11601,22 @@ GGS__5B_typedProperty_5D_ & GGS__5B_typedProperty_5D_::operator = (const GGS__5B
 
 GGS__5B_typedProperty_5D_ GGS__5B_typedProperty_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_typedProperty_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_typedProperty_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_typedProperty_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_typedProperty_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -11750,9 +11656,7 @@ GGS__5B_typedProperty_5D_ GGS__5B_typedProperty_5D_::add_operation (const GGS__5
 
 void GGS__5B_typedProperty_5D_::description (String & ioString,
                                              const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array typedProperty, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -12028,20 +11932,23 @@ const GALGAS_TypeDescriptor * GGS__5B_typedProperty_5D_::staticTypeDescriptor (v
 
 GGS__5B_enumerationDescriptor_5D_::GGS__5B_enumerationDescriptor_5D_ (void) :
 AC_GALGAS_root (),
-mSharedArray () {
+mSharedArray (),
+mIsValid (false) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_enumerationDescriptor_5D_::GGS__5B_enumerationDescriptor_5D_ (const GGS__5B_enumerationDescriptor_5D_ & inSource) :
 AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray) {
+mSharedArray (inSource.mSharedArray),
+mIsValid (inSource.mIsValid) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GGS__5B_enumerationDescriptor_5D_ & GGS__5B_enumerationDescriptor_5D_::operator = (const GGS__5B_enumerationDescriptor_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
+  mIsValid = inSource.mIsValid ;
   return *this ;
 }
 
@@ -12049,27 +11956,22 @@ GGS__5B_enumerationDescriptor_5D_ & GGS__5B_enumerationDescriptor_5D_::operator 
 
 GGS__5B_enumerationDescriptor_5D_ GGS__5B_enumerationDescriptor_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   GGS__5B_enumerationDescriptor_5D_ result ;
-  result.mSharedArray.setCapacity (16) ;
+  result.mIsValid = true ;
   return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS__5B_enumerationDescriptor_5D_::isValid (void) const {
-  return mSharedArray.isAllocated () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_enumerationDescriptor_5D_::drop (void) {
   mSharedArray.removeAll () ;
+  mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void GGS__5B_enumerationDescriptor_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
-  mSharedArray.setCapacity (16) ;
+  mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -12109,9 +12011,7 @@ GGS__5B_enumerationDescriptor_5D_ GGS__5B_enumerationDescriptor_5D_::add_operati
 
 void GGS__5B_enumerationDescriptor_5D_::description (String & ioString,
                                                      const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (", ") ;
+  ioString.appendCString ("<array enumerationDescriptor, ") ;
   ioString.appendSigned (mSharedArray.count()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
@@ -13336,8 +13236,7 @@ static void GGS_propertyMap_internalDescription (const GenericArray <SharedGener
 
 void GGS_propertyMap::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.appendCString ("<map @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString ("<map @propertyMap") ;
   if (isValid ()) {
     const GenericArray <SharedGenericPtrWithValueSemantics <GGS_propertyMap_2E_element>> array = sortedInfoArray () ;
     GGS_propertyMap_internalDescription (array, ioString, inIndentation) ;
@@ -13820,8 +13719,7 @@ static void GGS_initializerMap_internalDescription (const GenericArray <SharedGe
 
 void GGS_initializerMap::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.appendCString ("<map @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString ("<map @initializerMap") ;
   if (isValid ()) {
     const GenericArray <SharedGenericPtrWithValueSemantics <GGS_initializerMap_2E_element>> array = sortedInfoArray () ;
     GGS_initializerMap_internalDescription (array, ioString, inIndentation) ;
@@ -14392,8 +14290,7 @@ static void GGS_classFunctionMap_internalDescription (const GenericArray <Shared
 
 void GGS_classFunctionMap::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.appendCString ("<map @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString ("<map @classFunctionMap") ;
   if (isValid ()) {
     const GenericArray <SharedGenericPtrWithValueSemantics <GGS_classFunctionMap_2E_element>> array = sortedInfoArray () ;
     GGS_classFunctionMap_internalDescription (array, ioString, inIndentation) ;
@@ -15188,8 +15085,7 @@ static void GGS_getterMap_internalDescription (const GenericArray <SharedGeneric
 
 void GGS_getterMap::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.appendCString ("<map @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString ("<map @getterMap") ;
   if (isValid ()) {
     const GenericArray <SharedGenericPtrWithValueSemantics <GGS_getterMap_2E_element>> array = sortedInfoArray () ;
     GGS_getterMap_internalDescription (array, ioString, inIndentation) ;
@@ -15932,8 +15828,7 @@ static void GGS_setterMap_internalDescription (const GenericArray <SharedGeneric
 
 void GGS_setterMap::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.appendCString ("<map @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString ("<map @setterMap") ;
   if (isValid ()) {
     const GenericArray <SharedGenericPtrWithValueSemantics <GGS_setterMap_2E_element>> array = sortedInfoArray () ;
     GGS_setterMap_internalDescription (array, ioString, inIndentation) ;
@@ -16723,8 +16618,7 @@ static void GGS_instanceMethodMap_internalDescription (const GenericArray <Share
 
 void GGS_instanceMethodMap::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.appendCString ("<map @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString ("<map @instanceMethodMap") ;
   if (isValid ()) {
     const GenericArray <SharedGenericPtrWithValueSemantics <GGS_instanceMethodMap_2E_element>> array = sortedInfoArray () ;
     GGS_instanceMethodMap_internalDescription (array, ioString, inIndentation) ;
@@ -17305,8 +17199,7 @@ static void GGS_classMethodMap_internalDescription (const GenericArray <SharedGe
 
 void GGS_classMethodMap::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.appendCString ("<map @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString ("<map @classMethodMap") ;
   if (isValid ()) {
     const GenericArray <SharedGenericPtrWithValueSemantics <GGS_classMethodMap_2E_element>> array = sortedInfoArray () ;
     GGS_classMethodMap_internalDescription (array, ioString, inIndentation) ;
@@ -17409,5 +17302,525 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classMethodMap ("classMethodM
 
 const GALGAS_TypeDescriptor * GGS_classMethodMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_classMethodMap ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Map type @subscriptMap
+//--------------------------------------------------------------------------------------------------
+
+#include "GALGAS_GenericMapRoot.h"
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_subscriptMap::GGS_subscriptMap (void) :
+mSharedRoot () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_subscriptMap::~ GGS_subscriptMap (void) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_subscriptMap::GGS_subscriptMap (const GGS_subscriptMap & inSource) :
+mSharedRoot (inSource.mSharedRoot) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_subscriptMap & GGS_subscriptMap::operator = (const GGS_subscriptMap & inSource) {
+  mSharedRoot = inSource.mSharedRoot ;
+  return * this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_subscriptMap GGS_subscriptMap::init (Compiler * COMMA_LOCATION_ARGS) {
+  GGS_subscriptMap result ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_subscriptMap::getter_contains (const GGS_string & inKey
+                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), 0)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_subscriptMap::getter_hasKeyAtLevel (const GGS_string & inKey,
+                                                 const GGS_uint & inLevel
+                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (mSharedRoot->hasKey (inKey.stringValue (), inLevel.uintValue ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_subscriptMap::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (mSharedRoot->count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_subscriptMap::getter_levels (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (mSharedRoot->levels ()) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_subscriptMap::getter_locationForKey (const GGS_string & inKey,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
+  GGS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      String message = "'locationForKey' map reader run-time error: the '" ;
+      message.appendString (inKey.stringValue ()) ;
+      message.appendCString ("' does not exist in map") ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_lkey.mProperty_location ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_lstring_5D_ GGS_subscriptMap::getter_keyList (Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
+  GGS__5B_lstring_5D_ result ;
+  if (isValid ()) {
+    result = GGS__5B_lstring_5D_::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeyList (result) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_subscriptMap::isValid (void) const {
+  return mSharedRoot.isNotNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_subscriptMap::drop (void)  {
+  mSharedRoot.setToNil () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_subscriptMap::build (LOCATION_ARGS) {
+  mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_subscriptMap_2E_element>>::make (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_subscriptMap::performInsert (const GGS_subscriptMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.mProperty_lkey.isValid ()) {
+    OptionalSharedRef <GenericMapNode <GGS_subscriptMap_2E_element>> existingNode ;
+    const bool allowReplacing = false ;
+    mSharedRoot.insulate (THERE) ;
+    mSharedRoot->insertOrReplaceInfo (
+      inElement,
+      allowReplacing,
+      existingNode
+      COMMA_THERE
+    ) ;
+    const GGS_lstring lkey = inElement.mProperty_lkey ;
+    if (existingNode.isNotNil ()) {
+      const GGS_location lstring_existingKey_location = existingNode->mSharedInfo->mProperty_lkey.mProperty_location ;
+      inCompiler->semanticErrorWith_K_L_message (lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+    }else if ((inShadowErrorMessage != nullptr) && (mSharedRoot->overriddenRoot ().isNotNil ())) {
+      const auto existingInfo = mSharedRoot->overriddenRoot ()->infoForKey (lkey.mProperty_string.stringValue()) ;
+      if (existingInfo.isNotNil ()) {
+        const GGS_location lstring_existingKey_location = existingInfo->mProperty_lkey.mProperty_location ;
+        inCompiler->semanticErrorWith_K_L_message (lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+      }
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element>
+GGS_subscriptMap::infoForKey (const String & inKey) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->infoForKey (inKey) ;
+  }else{
+    return SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+int32_t GGS_subscriptMap::count (void) const  {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->count () ;
+  }else{
+    return 0 ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GenericArray <SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element>>
+GGS_subscriptMap::sortedInfoArray (void) const {
+  if (mSharedRoot.isNotNil ()) {
+    return mSharedRoot->sortedInfoArray () ;
+  }else{
+    return GenericArray <SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element>> () ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_stringset GGS_subscriptMap::getter_keySet (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  GGS_stringset result ;
+  if (isValid ()) {
+    result = GGS_stringset::init (inCompiler COMMA_THERE) ;
+    mSharedRoot->populateKeySet (result, inCompiler) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_subscriptMap::findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const {
+  mSharedRoot->findNearestKey (inKey, outNearestKeyArray) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_subscriptMap_2E_element_3F_ GGS_subscriptMap
+::readSubscript__3F_ (const class GGS_string & inKey,
+                      Compiler * /* inCompiler */
+                      COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_subscriptMap_2E_element_3F_ result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element> info = infoForKey (inKey.stringValue ()) ;
+    if (info.isNil ()) {
+      result = GGS_subscriptMap_2E_element_3F_::init_nil () ;
+    }else{
+      GGS_subscriptMap_2E_element element ;
+      element.mProperty_lkey = info->mProperty_lkey ;
+      element.mProperty_argumentTypeList = info->mProperty_argumentTypeList ;
+      element.mProperty_valueType = info->mProperty_valueType ;
+      result = element ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_subscriptMap GGS_subscriptMap::class_func_mapWithMapToOverride (const GGS_subscriptMap & inMapToOverride
+                                                                    COMMA_LOCATION_ARGS) {
+  GGS_subscriptMap result ;
+  if (inMapToOverride.isValid ()) {
+    result.mSharedRoot = OptionalSharedRef <GenericMapRoot <GGS_subscriptMap_2E_element>>::make (inMapToOverride.mSharedRoot COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_subscriptMap GGS_subscriptMap::getter_overriddenMap (Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  GGS_subscriptMap result ;
+  if (isValid ()) {
+    result.mSharedRoot = mSharedRoot->overriddenRoot () ;
+    if (result.mSharedRoot.isNil ()) {
+      inCompiler->onTheFlySemanticError ("getter 'overriddenMap': no overriden map" COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_subscriptMap::setter_insertKey (GGS_lstring inLKey,
+                                         GGS_functionSignature inArgument0,
+                                         GGS_unifiedTypeMapEntry inArgument1,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) {
+  const GGS_subscriptMap_2E_element element (inLKey, inArgument0, inArgument1) ;
+  const char * kInsertErrorMessage = "the '%K' subscript has been already defined" ;
+  const char * kShadowErrorMessage = nullptr ;
+  performInsert (element, kInsertErrorMessage, kShadowErrorMessage, inCompiler COMMA_THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_subscriptMap::method_searchKey (GGS_lstring inLKey,
+                                         GGS_functionSignature & outArgument0,
+                                         GGS_unifiedTypeMapEntry & outArgument1,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) const {
+  SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element> info ;
+  if (isValid () && inLKey.isValid ()) {
+    const String key = inLKey.mProperty_string.stringValue () ;
+    info = infoForKey (key) ;
+    if (info.isNil ()) {
+      GenericUniqueArray <String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      const char * kSearchErrorMessage = "the '%K' subscript is not declared" ;
+      inCompiler->semanticErrorWith_K_message (inLKey, nearestKeyArray, kSearchErrorMessage COMMA_THERE) ;
+    }
+  }
+  if (info.isNil ()) {
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+  }else{
+    outArgument0 = info->mProperty_argumentTypeList ;
+    outArgument1 = info->mProperty_valueType ;
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionSignature GGS_subscriptMap::getter_argumentTypeListForKey (const GGS_string & inKey,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const {
+  GGS_functionSignature result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_argumentTypeList ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapEntry GGS_subscriptMap::getter_valueTypeForKey (const GGS_string & inKey,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const {
+  GGS_unifiedTypeMapEntry result ;
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    const SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element> info = infoForKey (key) ;
+    if (info.isNil ()) {
+      String message = "cannot read property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = info->mProperty_valueType ;
+    }
+  }
+  return result ;
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_subscriptMap::setter_setArgumentTypeListForKey (GGS_functionSignature inValue,
+                                                         GGS_string inKey,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_subscriptMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_argumentTypeList = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+void GGS_subscriptMap::setter_setValueTypeForKey (GGS_unifiedTypeMapEntry inValue,
+                                                  GGS_string inKey,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const String key = inKey.stringValue () ;
+    mSharedRoot.insulate (HERE) ;
+    OptionalSharedRef <GenericMapNode <GGS_subscriptMap_2E_element>> node = mSharedRoot->searchNode (key) ;
+    if (node.isNil ()) {
+      String message = "cannot write property in map: the '" ;
+      message.appendString (key) ;
+      message.appendCString ("' key does not exist") ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      node->mSharedInfo->mProperty_valueType = inValue ;
+    }
+  }
+}
+//--------------------------------------------------------------------------------------------------
+
+static void GGS_subscriptMap_internalDescription (const GenericArray <SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element>> & inArray,
+                                                        String & ioString,
+                                                        const int32_t inIndentation) {
+  const int32_t n = inArray.count () ;
+  ioString.appendString (" (") ;
+  ioString.appendSigned (n) ;
+  ioString.appendString (" object") ;
+  if (n > 1) {
+    ioString.appendString ("s") ;
+  }
+  ioString.appendString ("):") ;
+  for (int32_t i = 0 ; i < n ; i++) {
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation) ;
+    ioString.appendString ("|-at ") ;
+    ioString.appendSigned (i) ;
+    ioString.appendString (": key '") ;
+    ioString.appendString (inArray (i COMMA_HERE)->mProperty_lkey.mProperty_string.stringValue ()) ;
+    ioString.appendString ("'") ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("argumentTypeList:") ;
+    inArray (i COMMA_HERE)->mProperty_argumentTypeList.description (ioString, inIndentation + 1) ;
+    ioString.appendNewLine () ;
+    ioString.appendStringMultiple ("| ", inIndentation + 2) ;
+    ioString.appendString ("valueType:") ;
+    inArray (i COMMA_HERE)->mProperty_valueType.description (ioString, inIndentation + 1) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_subscriptMap::description (String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<map @subscriptMap") ;
+  if (isValid ()) {
+    const GenericArray <SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element>> array = sortedInfoArray () ;
+    GGS_subscriptMap_internalDescription (array, ioString, inIndentation) ;
+    OptionalSharedRef <GenericMapRoot <GGS_subscriptMap_2E_element>> subRoot = mSharedRoot->overriddenRoot () ;
+    uint32_t idx = 0 ;
+    while (subRoot.isNotNil ()) {
+     idx += 1 ;
+     ioString.appendNewLine () ;
+     ioString.appendStringMultiple ("| ", inIndentation + 1) ;
+     ioString.appendString (" override #") ;
+     ioString.appendUnsigned (idx) ;
+     const auto subRootArray = subRoot->sortedInfoArray () ;
+     GGS_subscriptMap_internalDescription (subRootArray, ioString, inIndentation) ;
+     subRoot = subRoot->overriddenRoot () ;
+    }
+  }else{
+    ioString.appendCString (" not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+
+
+//--------------------------------------------------------------------------------------------------
+//  Down Enumerator for @subscriptMap
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_subscriptMap::DownEnumerator_subscriptMap (const GGS_subscriptMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+  mIndex = mInfoArray.count () - 1 ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_subscriptMap_2E_element DownEnumerator_subscriptMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring DownEnumerator_subscriptMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionSignature DownEnumerator_subscriptMap::current_argumentTypeList (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_argumentTypeList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapEntry DownEnumerator_subscriptMap::current_valueType (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_valueType ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//  Up Enumerator for @subscriptMap
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_subscriptMap::UpEnumerator_subscriptMap (const GGS_subscriptMap & inMap) :
+mInfoArray (inMap.sortedInfoArray ()),
+mIndex (0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_subscriptMap_2E_element UpEnumerator_subscriptMap::current (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE).value () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring UpEnumerator_subscriptMap::current_lkey (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_lkey ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_functionSignature UpEnumerator_subscriptMap::current_argumentTypeList (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_argumentTypeList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_unifiedTypeMapEntry UpEnumerator_subscriptMap::current_valueType (LOCATION_ARGS) const {
+  return mInfoArray (mIndex COMMA_THERE)->mProperty_valueType ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @subscriptMap generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_subscriptMap ("subscriptMap",
+                                                                 nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_subscriptMap::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_subscriptMap ;
 }
 

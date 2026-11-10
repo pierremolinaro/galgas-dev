@@ -157,6 +157,7 @@ class UpEnumerator__5B_logAST_5D_ final {
 class GGS__5B_logAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_logAST> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_logAST_5D_ (void) ;
@@ -170,7 +171,7 @@ class GGS__5B_logAST_5D_ final : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -409,6 +410,7 @@ class UpEnumerator__5B_semanticInstructionForGeneration_5D_ final {
 class GGS__5B_semanticInstructionForGeneration_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_semanticInstructionForGeneration> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_semanticInstructionForGeneration_5D_ (void) ;
@@ -422,7 +424,7 @@ class GGS__5B_semanticInstructionForGeneration_5D_ final : public AC_GALGAS_root
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -744,6 +746,7 @@ class UpEnumerator__5B_actualParameterForGeneration_5D_ final {
 class GGS__5B_actualParameterForGeneration_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_actualParameterForGeneration> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_actualParameterForGeneration_5D_ (void) ;
@@ -757,7 +760,7 @@ class GGS__5B_actualParameterForGeneration_5D_ final : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -2883,6 +2886,7 @@ class UpEnumerator__5B_fixitElementAST_5D_ final {
 class GGS__5B_fixitElementAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_fixitElementAST> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_fixitElementAST_5D_ (void) ;
@@ -2896,7 +2900,7 @@ class GGS__5B_fixitElementAST_5D_ final : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -3810,6 +3814,7 @@ class UpEnumerator__5B_fixitElementForGeneration_5D_ final {
 class GGS__5B_fixitElementForGeneration_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_fixitElementForGeneration> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_fixitElementForGeneration_5D_ (void) ;
@@ -3823,7 +3828,7 @@ class GGS__5B_fixitElementForGeneration_5D_ final : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -9884,6 +9889,7 @@ class UpEnumerator__5B_enumerationDescriptor_5D_ final {
 class GGS__5B_enumerationDescriptor_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_enumerationDescriptor> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_enumerationDescriptor_5D_ (void) ;
@@ -9897,7 +9903,7 @@ class GGS__5B_enumerationDescriptor_5D_ final : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -10061,6 +10067,7 @@ class UpEnumerator__5B_typedProperty_5D_ final {
 class GGS__5B_typedProperty_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_typedProperty> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_typedProperty_5D_ (void) ;
@@ -10074,7 +10081,7 @@ class GGS__5B_typedProperty_5D_ final : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -14828,6 +14835,7 @@ class UpEnumerator__5B_semanticInstructionAST_5D_ final {
 class GGS__5B_semanticInstructionAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_semanticInstructionAST> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_semanticInstructionAST_5D_ (void) ;
@@ -14841,7 +14849,7 @@ class GGS__5B_semanticInstructionAST_5D_ final : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -16178,6 +16186,7 @@ class UpEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ final {
 class GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_forInstructionEnumeratedObjectElementAST> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ (void) ;
@@ -16191,7 +16200,7 @@ class GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ final : public AC_GAL
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -16609,6 +16618,7 @@ class UpEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ final {
 class GGS__5B_forInstructionEnumeratedObjectAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_forInstructionEnumeratedObjectAST> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_forInstructionEnumeratedObjectAST_5D_ (void) ;
@@ -16622,7 +16632,7 @@ class GGS__5B_forInstructionEnumeratedObjectAST_5D_ final : public AC_GALGAS_roo
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -16797,6 +16807,7 @@ class UpEnumerator__5B_localConstant_5D_ final {
 class GGS__5B_localConstant_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_localConstant> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_localConstant_5D_ (void) ;
@@ -16810,7 +16821,7 @@ class GGS__5B_localConstant_5D_ final : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -17089,6 +17100,7 @@ class UpEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ final {
 class GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_forInstructionEnumeratedObjectForGeneration> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ (void) ;
@@ -17102,7 +17114,7 @@ class GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ final : public AC_
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -17554,6 +17566,7 @@ class UpEnumerator__5B_switchBranchAST_5D_ final {
 class GGS__5B_switchBranchAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_switchBranchAST> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_switchBranchAST_5D_ (void) ;
@@ -17567,7 +17580,7 @@ class GGS__5B_switchBranchAST_5D_ final : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -17731,6 +17744,7 @@ class UpEnumerator__5B_switchExtractedValuesAST_5D_ final {
 class GGS__5B_switchExtractedValuesAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_switchExtractedValuesAST> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_switchExtractedValuesAST_5D_ (void) ;
@@ -17744,7 +17758,7 @@ class GGS__5B_switchExtractedValuesAST_5D_ final : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -18091,6 +18105,7 @@ class UpEnumerator__5B_switchBranchForGeneration_5D_ final {
 class GGS__5B_switchBranchForGeneration_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_switchBranchForGeneration> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_switchBranchForGeneration_5D_ (void) ;
@@ -18104,7 +18119,7 @@ class GGS__5B_switchBranchForGeneration_5D_ final : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -18268,6 +18283,7 @@ class UpEnumerator__5B_extractedAssociatedValueForGeneration_5D_ final {
 class GGS__5B_extractedAssociatedValueForGeneration_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_extractedAssociatedValueForGeneration> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_extractedAssociatedValueForGeneration_5D_ (void) ;
@@ -18281,7 +18297,7 @@ class GGS__5B_extractedAssociatedValueForGeneration_5D_ final : public AC_GALGAS
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 
@@ -19892,6 +19908,7 @@ class UpEnumerator__5B_semanticExpressionForGeneration_5D_ final {
 class GGS__5B_semanticExpressionForGeneration_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_semanticExpressionForGeneration> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS__5B_semanticExpressionForGeneration_5D_ (void) ;
@@ -19905,7 +19922,7 @@ class GGS__5B_semanticExpressionForGeneration_5D_ final : public AC_GALGAS_root 
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 

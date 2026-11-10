@@ -63,6 +63,7 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
 //--------------------------------- Private property
   private: GenericArray <GGS_%!ELEMENT_TYPE_IDENTIFIER%> mSharedArray ;
+  private: bool mIsValid ;
 
 //--------------------------------- Default constructor
   public: GGS_%!TYPE_IDENTIFIER% (void) ;
@@ -76,7 +77,7 @@ class GGS_%!TYPE_IDENTIFIER% final : public AC_GALGAS_root {
   public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
 
 //--- Methods that every type should implement
-  public: virtual bool isValid (void) const override ;
+  public: virtual bool isValid (void) const override { return mIsValid ; }
 
   public: virtual void drop (void) override ;
 

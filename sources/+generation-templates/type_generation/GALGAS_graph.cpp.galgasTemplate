@@ -282,8 +282,7 @@ void GGS_%!TYPE_IDENTIFIER%::makeNewEmptyGraph (LOCATION_ARGS) {
 
 void GGS_%!TYPE_IDENTIFIER%::description (String & ioString,
                                           const int32_t inIndentation) const {
-  ioString.appendCString ("<graph @") ;
-  ioString.appendCString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString ("<graph @%!TYPE_IDENTIFIER%") ;
   if (isValid ()) {
     mSharedGraph->description (ioString, inIndentation) ;
   }else{
