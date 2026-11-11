@@ -19,47 +19,6 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3ExpressionSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                      !@semanticExpressionAST outExpression ) {
-//    $identifier$ (?let @lstring functionName) indexing (functionCall)
-//    $($
-// //   <output_expression_list_ggs3> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
-//    var @actualOutputArgumentList expressionList = @()
-//    select
-//    or
-//      repeat
-//        select
-//          $!selector:$ (?let selector)
-//          <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//          expressionList ++= @(selector, expression, .here)
-//        or
-//          $!$
-//          let selector = "".here
-//          <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//          expressionList ++= @(selector, expression, .here)
-//        or
-//          let selector = "".here
-//          <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST expression)
-//          expressionList ++= @(selector, expression, .here)
-//        end
-//      while
-//        $,$
-//      end 
-//    end 
-//    $)$
-//    outExpression = @functionCallExpressionAST (functionName, expressionList)
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4ExpressionSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -68,7 +27,7 @@ syntax extension galgas4ExpressionSyntax {
                  !@semanticExpressionAST outExpression ) {
     $identifier$ (?let @lstring functionName) indexing (functionCall)
     $($
-    <output_expression_list> (!?ioDeclarations, ?let @actualOutputArgumentList expressionList)
+    <output_expression_list> (!?ioDeclarations, ?let [@actualOutputArgumentAST] expressionList)
     $)$
     outExpression = @functionCallExpressionAST (functionName, expressionList)
   }
@@ -83,7 +42,7 @@ syntax extension galgas4ExpressionSyntax {
 
 final class @functionCallExpressionAST : @semanticExpressionAST {
   private let @lstring mFunctionName
-  private let @actualOutputArgumentList mExpressionList
+  private let [@actualOutputArgumentAST] mExpressionList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

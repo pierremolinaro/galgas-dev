@@ -158,6 +158,17 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       .isBasic,
       "" // No error message
     )
+  //--- mutating proc 'set'
+    !?setterMap.insertKey (
+      "set".here,
+      .definedAsMember,
+      [ @("".nowhere, elementType, .argumentConstantIn, "inElement"),
+        @("at".nowhere, uintType, .argumentConstantIn, "inIndex")
+      ],
+      true,
+      .isBasic,
+      "" // No error message
+    )
   //--- Add initializer without argument
     var @initializerMap initializerMap = @()
     let @functionSignature emptyArgumentList = @()

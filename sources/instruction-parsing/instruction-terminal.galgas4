@@ -195,7 +195,7 @@ final class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionF
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc tikzNodeForSyntaxInstruction (?!@rowList ioRowList,
+  override proc tikzNodeForSyntaxInstruction (?![@row] ioRowList,
                                                 ?fromRow:let @uint inRow,
                                                 ?!column:@uint ioColumn,
                                                 ?!node: @string ioCurrentNode,

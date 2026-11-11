@@ -36,7 +36,7 @@ syntax galgas4SyntaxComponentSyntax (galgasScanner4) {
                                ![@formalParameterAST] outFormalParameterList)
 
   rule <actual_parameter_list_with_parenthesis> (?!@galgasDeclarationAST ioDeclarations,
-                                                 !@actualParameterListAST outActualParameterList)
+                                                 ![@actualParameterAST] outActualParameterList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //      S Y N T A X    C O M P O N E N T

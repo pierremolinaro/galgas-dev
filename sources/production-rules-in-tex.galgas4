@@ -116,7 +116,7 @@ proc @productionRuleListForGrammarAnalysis.@element.displayRule
   ?!@string ioGeneratedCode
 ) {
   var @string currentNode = "P0start"
-  var @rowList rowArray = [@([@(currentNode, "[firstPoint] ()")])]
+  var [@row] rowArray = [@([@(currentNode, "[firstPoint] ()")])]
   var @string arrows = ""
   var @string arrowStyle = "--"
   var @uint column = 1
@@ -170,7 +170,7 @@ proc @productionRuleListForGrammarAnalysis.@element.displayRuleVertically
   ?!@string ioGeneratedCode
 ) {
   var @string currentNode = "P0start"
-  var @rowList rowArray = @()
+  var [@row] rowArray = @()
   for * in 1 ..< self.mInstructionList.count do
     rowArray ++= @([@("", "")])
   end
@@ -228,7 +228,7 @@ proc @productionRuleListForGrammarAnalysis.@element.displayRuleVertically
 //--------------------------------------------------------------------------------------------------
 
 proc @syntaxInstructionListForGrammarAnalysis.tikzNodeForSyntaxInstruction
-  (?!@rowList ioRowList,
+  (?![@row] ioRowList,
   ?fromRow:let @uint inRow,
   ?!column:@uint ioColumn,
   ?!node: @string ioCurrentNode,
@@ -266,14 +266,14 @@ proc @syntaxInstructionListForGrammarAnalysis.tikzNodeForSyntaxInstruction
 
 //--------------------------------------------------------------------------------------------------
 
-list @rowList {
+struct @row {
   public let [@2string] columns // Node name, node definition
 }
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @rowList.appendRow
-  (?nodeDefinition:let @string inNodeDefinition,
+mutating proc [@row].appendRow (
+  ?nodeDefinition:let @string inNodeDefinition,
   ?row:let @uint inRow,
   ?column:let @uint inColumn,
   !nodeName:@string outNodeName
@@ -286,7 +286,7 @@ mutating proc @rowList.appendRow
     end
   end
 //--- Get row
-  var cols = self.columnsAtIndex (inRow)
+  var cols = self [inRow].columns
 //--- add column pads in row
   if cols.count <= inColumn then
     for * in cols.count ... inColumn do
@@ -297,13 +297,13 @@ mutating proc @rowList.appendRow
   outNodeName = "p" + inRow + "-" + cols.count
   cols ++= @(outNodeName, inNodeDefinition)
 //--- Set new row
-  !?self.setColumnsAtIndex (cols, inRow)
+  !?self.set (@(cols), !at: inRow)
 }
 
 //--------------------------------------------------------------------------------------------------
 
 abstract proc @abstractSyntaxInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
-  (?!@rowList ioRowList,
+  (?![@row] ioRowList,
   ?fromRow:let @uint inRow,
   ?!column:@uint ioColumn,
   ?!node: @string ioCurrentNode,
@@ -315,7 +315,7 @@ abstract proc @abstractSyntaxInstructionForGrammarAnalysis.tikzNodeForSyntaxInst
 //--------------------------------------------------------------------------------------------------
 
 override proc @nonTerminalInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
-  (?!@rowList ioRowList,
+  (?![@row] ioRowList,
   ?fromRow:let @uint inRow,
   ?!column:@uint ioColumn,
   ?!node: @string ioCurrentNode,
@@ -341,7 +341,7 @@ override proc @nonTerminalInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruc
 //--------------------------------------------------------------------------------------------------
 
 override proc @selectInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
-  (?!@rowList ioRowList,
+  (?![@row] ioRowList,
   ?fromRow:let @uint inRow,
   ?!column:@uint ioColumn,
   ?!node: @string ioCurrentNode,
@@ -435,7 +435,7 @@ override proc @selectInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
 //--------------------------------------------------------------------------------------------------
 
 override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
-  (?!@rowList ioRowList,
+  (?![@row] ioRowList,
   ?fromRow:let @uint inRow,
   ?!column:@uint ioColumn,
   ?!node: @string ioCurrentNode,

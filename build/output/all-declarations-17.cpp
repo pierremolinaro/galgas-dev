@@ -4517,14 +4517,14 @@ GGS_nonterminalSymbolLabelMapForGrammarAnalysis function_transformLabelMap (cons
   result_result = GGS_nonterminalSymbolLabelMapForGrammarAnalysis::init (inCompiler COMMA_HERE) ;
   UpEnumerator__5B_nonTerminalLabelAST_5D_ enumerator_1527 (constinArgument_inLabels) ;
   while (enumerator_1527.hasCurrentObject ()) {
-    GGS_signatureForGrammarAnalysis var_formalParametersList_1576 = GGS_signatureForGrammarAnalysis::init (inCompiler COMMA_HERE) ;
-    UpEnumerator__5B_formalParameterAST_5D_ enumerator_1631 (enumerator_1527.current (HERE).readProperty_mFormalArgumentList ()) ;
-    while (enumerator_1631.hasCurrentObject ()) {
-      var_formalParametersList_1576.plusPlusAssignOperation (GGS_signatureForGrammarAnalysis_2E_element::init_21__21_ (enumerator_1631.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_1631.current (HERE).readProperty_mFormalArgumentTypeName (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 33)) ;
-      enumerator_1631.gotoNextObject () ;
+    GGS__5B_signatureElementForGrammarAnalysis_5D_ var_formalParametersList_1585 = GGS__5B_signatureElementForGrammarAnalysis_5D_::init (inCompiler COMMA_HERE) ;
+    UpEnumerator__5B_formalParameterAST_5D_ enumerator_1640 (enumerator_1527.current (HERE).readProperty_mFormalArgumentList ()) ;
+    while (enumerator_1640.hasCurrentObject ()) {
+      var_formalParametersList_1585.plusPlusAssignOperation (GGS_signatureElementForGrammarAnalysis::init_21__21_ (enumerator_1640.current (HERE).readProperty_mFormalArgumentPassingMode (), enumerator_1640.current (HERE).readProperty_mFormalArgumentTypeName (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 33)) ;
+      enumerator_1640.gotoNextObject () ;
     }
     {
-    result_result.setter_insertKey (enumerator_1527.current (HERE).readProperty_mLabelName (), var_formalParametersList_1576, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 35)) ;
+    result_result.setter_insertKey (enumerator_1527.current (HERE).readProperty_mLabelName (), var_formalParametersList_1585, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 35)) ;
     }
     enumerator_1527.gotoNextObject () ;
   }
@@ -4545,71 +4545,71 @@ void routine_checkLabelMap_3F__3F__3F__3F_ (const GGS_location constinArgument_i
                                             const GGS_nonterminalSymbolLabelMapForGrammarAnalysis constinArgument_inNonterminalSymbolLabelMapForGrammarAnalysis,
                                             Compiler * inCompiler
                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_stringset var_labelStringSet_2207 = GGS_stringset::init (inCompiler COMMA_HERE) ;
-  UpEnumerator__5B_nonTerminalLabelAST_5D_ enumerator_2244 (constinArgument_inLabels) ;
-  while (enumerator_2244.hasCurrentObject ()) {
-    var_labelStringSet_2207.plusPlusAssignOperation (enumerator_2244.current (HERE).readProperty_mLabelName ().readProperty_string ()  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 49)) ;
-    GGS_signatureForGrammarAnalysis var_formalParametersList_2389 ;
-    constinArgument_inNonterminalSymbolLabelMapForGrammarAnalysis.method_searchKey (enumerator_2244.current (HERE).readProperty_mLabelName (), var_formalParametersList_2389, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 50)) ;
+  GGS_stringset var_labelStringSet_2216 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+  UpEnumerator__5B_nonTerminalLabelAST_5D_ enumerator_2253 (constinArgument_inLabels) ;
+  while (enumerator_2253.hasCurrentObject ()) {
+    var_labelStringSet_2216.plusPlusAssignOperation (enumerator_2253.current (HERE).readProperty_mLabelName ().readProperty_string ()  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 49)) ;
+    GGS__5B_signatureElementForGrammarAnalysis_5D_ var_formalParametersList_2398 ;
+    constinArgument_inNonterminalSymbolLabelMapForGrammarAnalysis.method_searchKey (enumerator_2253.current (HERE).readProperty_mLabelName (), var_formalParametersList_2398, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 50)) ;
     GalgasBool test_0 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_0) {
-      test_0 = GGS_bool (ComparisonKind::notEqual, enumerator_2244.current (HERE).readProperty_mFormalArgumentList ().getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 51)).objectCompare (var_formalParametersList_2389.getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 51)))).boolEnum () ;
+      test_0 = GGS_bool (ComparisonKind::notEqual, enumerator_2253.current (HERE).readProperty_mFormalArgumentList ().getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 51)).objectCompare (var_formalParametersList_2398.getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 51)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_0) {
         GGS_string temp_1 ;
-        const GalgasBool test_2 = GGS_bool (ComparisonKind::greaterThan, enumerator_2244.current (HERE).readProperty_mFormalArgumentList ().getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 54)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+        const GalgasBool test_2 = GGS_bool (ComparisonKind::greaterThan, enumerator_2253.current (HERE).readProperty_mFormalArgumentList ().getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 54)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_2) {
           temp_1 = GGS_string ("s") ;
         }else if (GalgasBool::boolFalse == test_2) {
           temp_1 = GGS_string::makeEmptyString () ;
         }
         GGS_string temp_3 ;
-        const GalgasBool test_4 = GGS_bool (ComparisonKind::greaterThan, var_formalParametersList_2389.getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 58)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
+        const GalgasBool test_4 = GGS_bool (ComparisonKind::greaterThan, var_formalParametersList_2398.getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 58)).objectCompare (GGS_uint (uint32_t (1U)))).boolEnum () ;
         if (GalgasBool::boolTrue == test_4) {
           temp_3 = GGS_string ("s") ;
         }else if (GalgasBool::boolFalse == test_4) {
           temp_3 = GGS_string::makeEmptyString () ;
         }
         GenericArray <FixItDescription> fixItArray5 ;
-        inCompiler->emitSemanticError (enumerator_2244.current (HERE).readProperty_mLabelName ().readProperty_location (), enumerator_2244.current (HERE).readProperty_mFormalArgumentList ().getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 52)).getter_string (SOURCE_FILE ("grammarCompilation.galgas4", 52)).add_operation (GGS_string (" formal parameter"), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 52)).add_operation (temp_1, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 53)).add_operation (GGS_string (" declared here, but declaration at "), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 54)).add_operation (constinArgument_inNonterminalSymbolLabelMapForGrammarAnalysis.getter_locationForKey (enumerator_2244.current (HERE).readProperty_mLabelName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 56)).getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 56)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 55)).add_operation (GGS_string (" names "), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 56)).add_operation (var_formalParametersList_2389.getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 57)).getter_string (SOURCE_FILE ("grammarCompilation.galgas4", 57)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 57)).add_operation (GGS_string (" parameter"), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 57)).add_operation (temp_3, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 57)), fixItArray5  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 52)) ;
+        inCompiler->emitSemanticError (enumerator_2253.current (HERE).readProperty_mLabelName ().readProperty_location (), enumerator_2253.current (HERE).readProperty_mFormalArgumentList ().getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 52)).getter_string (SOURCE_FILE ("grammarCompilation.galgas4", 52)).add_operation (GGS_string (" formal parameter"), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 52)).add_operation (temp_1, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 53)).add_operation (GGS_string (" declared here, but declaration at "), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 54)).add_operation (constinArgument_inNonterminalSymbolLabelMapForGrammarAnalysis.getter_locationForKey (enumerator_2253.current (HERE).readProperty_mLabelName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 56)).getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 56)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 55)).add_operation (GGS_string (" names "), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 56)).add_operation (var_formalParametersList_2398.getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 57)).getter_string (SOURCE_FILE ("grammarCompilation.galgas4", 57)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 57)).add_operation (GGS_string (" parameter"), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 57)).add_operation (temp_3, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 57)), fixItArray5  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 52)) ;
       }
     }
     if (GalgasBool::boolFalse == test_0) {
-      UpEnumerator__5B_formalParameterAST_5D_ enumerator_3013 (enumerator_2244.current (HERE).readProperty_mFormalArgumentList ()) ;
-      UpEnumerator_signatureForGrammarAnalysis enumerator_3065 (var_formalParametersList_2389) ;
-      while (enumerator_3013.hasCurrentObject () && enumerator_3065.hasCurrentObject ()) {
+      UpEnumerator__5B_formalParameterAST_5D_ enumerator_3022 (enumerator_2253.current (HERE).readProperty_mFormalArgumentList ()) ;
+      UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ enumerator_3074 (var_formalParametersList_2398) ;
+      while (enumerator_3022.hasCurrentObject () && enumerator_3074.hasCurrentObject ()) {
         GalgasBool test_6 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_6) {
-          test_6 = GGS_bool (ComparisonKind::notEqual, enumerator_3065.current (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (enumerator_3013.current (HERE).readProperty_mFormalArgumentPassingMode ())).boolEnum () ;
+          test_6 = GGS_bool (ComparisonKind::notEqual, enumerator_3074.current (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (enumerator_3022.current (HERE).readProperty_mFormalArgumentPassingMode ())).boolEnum () ;
           if (GalgasBool::boolTrue == test_6) {
             GenericArray <FixItDescription> fixItArray7 ;
-            inCompiler->emitSemanticError (enumerator_3065.current (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_location (), GGS_string (" this formal parameter is declared with '").add_operation (extensionGetter_string (enumerator_3065.current (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 64)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 64)).add_operation (GGS_string ("' passing mode, but declaration at "), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 65)).add_operation (constinArgument_inNonterminalSymbolLabelMapForGrammarAnalysis.getter_locationForKey (enumerator_2244.current (HERE).readProperty_mLabelName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 67)).getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 67)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 66)).add_operation (GGS_string (" is declared with '"), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 67)).add_operation (extensionGetter_string (enumerator_3013.current (HERE).readProperty_mFormalArgumentPassingMode (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 68)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 68)).add_operation (GGS_string ("' passing mode"), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 68)), fixItArray7  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 63)) ;
+            inCompiler->emitSemanticError (enumerator_3074.current (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_location (), GGS_string (" this formal parameter is declared with '").add_operation (extensionGetter_string (enumerator_3074.current (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 64)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 64)).add_operation (GGS_string ("' passing mode, but declaration at "), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 65)).add_operation (constinArgument_inNonterminalSymbolLabelMapForGrammarAnalysis.getter_locationForKey (enumerator_2253.current (HERE).readProperty_mLabelName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 67)).getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 67)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 66)).add_operation (GGS_string (" is declared with '"), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 67)).add_operation (extensionGetter_string (enumerator_3022.current (HERE).readProperty_mFormalArgumentPassingMode (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 68)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 68)).add_operation (GGS_string ("' passing mode"), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 68)), fixItArray7  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 63)) ;
           }
         }
         GalgasBool test_8 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_8) {
-          test_8 = GGS_bool (ComparisonKind::notEqual, enumerator_3065.current (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().objectCompare (enumerator_3013.current (HERE).readProperty_mFormalArgumentTypeName ().readProperty_string ())).boolEnum () ;
+          test_8 = GGS_bool (ComparisonKind::notEqual, enumerator_3074.current (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().objectCompare (enumerator_3022.current (HERE).readProperty_mFormalArgumentTypeName ().readProperty_string ())).boolEnum () ;
           if (GalgasBool::boolTrue == test_8) {
             GenericArray <FixItDescription> fixItArray9 ;
-            inCompiler->emitSemanticError (enumerator_3065.current (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_location (), GGS_string (" this formal parameter is declared of '@").add_operation (enumerator_3065.current (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 73)).add_operation (GGS_string ("' type, but declaration at "), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 74)).add_operation (constinArgument_inNonterminalSymbolLabelMapForGrammarAnalysis.getter_locationForKey (enumerator_2244.current (HERE).readProperty_mLabelName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 76)).getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 76)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 75)).add_operation (GGS_string (" is declared with '@"), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 76)).add_operation (enumerator_3013.current (HERE).readProperty_mFormalArgumentTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 77)).add_operation (GGS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 77)), fixItArray9  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 72)) ;
+            inCompiler->emitSemanticError (enumerator_3074.current (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_location (), GGS_string (" this formal parameter is declared of '@").add_operation (enumerator_3074.current (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 73)).add_operation (GGS_string ("' type, but declaration at "), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 74)).add_operation (constinArgument_inNonterminalSymbolLabelMapForGrammarAnalysis.getter_locationForKey (enumerator_2253.current (HERE).readProperty_mLabelName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 76)).getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 76)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 75)).add_operation (GGS_string (" is declared with '@"), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 76)).add_operation (enumerator_3022.current (HERE).readProperty_mFormalArgumentTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 77)).add_operation (GGS_string ("' type"), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 77)), fixItArray9  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 72)) ;
           }
         }
-        enumerator_3013.gotoNextObject () ;
-        enumerator_3065.gotoNextObject () ;
+        enumerator_3022.gotoNextObject () ;
+        enumerator_3074.gotoNextObject () ;
       }
     }
-    enumerator_2244.gotoNextObject () ;
+    enumerator_2253.gotoNextObject () ;
   }
-  UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator_4398 (constinArgument_inNonterminalSymbolLabelMapForGrammarAnalysis) ;
-  while (enumerator_4398.hasCurrentObject ()) {
+  UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator_4407 (constinArgument_inNonterminalSymbolLabelMapForGrammarAnalysis) ;
+  while (enumerator_4407.hasCurrentObject ()) {
     GalgasBool test_10 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_10) {
-      test_10 = var_labelStringSet_2207.getter_contains (enumerator_4398.current (HERE).readProperty_lkey ().readProperty_string () COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 85)).operator_not (SOURCE_FILE ("grammarCompilation.galgas4", 85)).boolEnum () ;
+      test_10 = var_labelStringSet_2216.getter_contains (enumerator_4407.current (HERE).readProperty_lkey ().readProperty_string () COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 85)).operator_not (SOURCE_FILE ("grammarCompilation.galgas4", 85)).boolEnum () ;
       if (GalgasBool::boolTrue == test_10) {
         GenericArray <FixItDescription> fixItArray11 ;
-        inCompiler->emitSemanticError (constinArgument_inNonTerminalLocation, GGS_string ("this non terminal does not declare the '").add_operation (enumerator_4398.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 87)).add_operation (GGS_string ("' label, but declaration at "), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 87)).add_operation (constinArgument_inOriginalNonTerminalLocation.getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 88)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 87)).add_operation (GGS_string (" does"), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 88)), fixItArray11  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 86)) ;
+        inCompiler->emitSemanticError (constinArgument_inNonTerminalLocation, GGS_string ("this non terminal does not declare the '").add_operation (enumerator_4407.current (HERE).readProperty_lkey ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 87)).add_operation (GGS_string ("' label, but declaration at "), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 87)).add_operation (constinArgument_inOriginalNonTerminalLocation.getter_startLocationString (inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 88)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 87)).add_operation (GGS_string (" does"), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 88)), fixItArray11  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 86)) ;
       }
     }
-    enumerator_4398.gotoNextObject () ;
+    enumerator_4407.gotoNextObject () ;
   }
 }
 
@@ -4624,26 +4624,26 @@ void routine_handleNonTerminalDeclarations_26__3F_ (GGS_nonTerminalSymbolMapForG
                                                     const GGS__5B_nonterminalDeclarationAST_5D_ constinArgument_inNonterminalDeclarationList,
                                                     Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  UpEnumerator__5B_nonterminalDeclarationAST_5D_ enumerator_5055 (constinArgument_inNonterminalDeclarationList) ;
-  while (enumerator_5055.hasCurrentObject ()) {
+  UpEnumerator__5B_nonterminalDeclarationAST_5D_ enumerator_5064 (constinArgument_inNonterminalDeclarationList) ;
+  while (enumerator_5064.hasCurrentObject ()) {
     GalgasBool test_0 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_0) {
-      const GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element var_entry_5098 = ioArgument_ioNonTerminalMapForGrammarAnalysis.readSubscript__3F_ (enumerator_5055.current (HERE).readProperty_mNonterminalName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-      if (!ioArgument_ioNonTerminalMapForGrammarAnalysis.readSubscript__3F_ (enumerator_5055.current (HERE).readProperty_mNonterminalName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+      const GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element var_entry_5107 = ioArgument_ioNonTerminalMapForGrammarAnalysis.readSubscript__3F_ (enumerator_5064.current (HERE).readProperty_mNonterminalName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+      if (!ioArgument_ioNonTerminalMapForGrammarAnalysis.readSubscript__3F_ (enumerator_5064.current (HERE).readProperty_mNonterminalName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
         test_0 = GalgasBool::boolFalse ;
       }
       if (GalgasBool::boolTrue == test_0) {
         {
-        routine_checkLabelMap_3F__3F__3F__3F_ (enumerator_5055.current (HERE).readProperty_mNonterminalName ().readProperty_location (), enumerator_5055.current (HERE).readProperty_mLabels (), ioArgument_ioNonTerminalMapForGrammarAnalysis.getter_locationForKey (enumerator_5055.current (HERE).readProperty_mNonterminalName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 105)), var_entry_5098.readProperty_mNonterminalSymbolParametersMap (), inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 102)) ;
+        routine_checkLabelMap_3F__3F__3F__3F_ (enumerator_5064.current (HERE).readProperty_mNonterminalName ().readProperty_location (), enumerator_5064.current (HERE).readProperty_mLabels (), ioArgument_ioNonTerminalMapForGrammarAnalysis.getter_locationForKey (enumerator_5064.current (HERE).readProperty_mNonterminalName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 105)), var_entry_5107.readProperty_mNonterminalSymbolParametersMap (), inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 102)) ;
         }
       }
     }
     if (GalgasBool::boolFalse == test_0) {
       {
-      ioArgument_ioNonTerminalMapForGrammarAnalysis.setter_insertKey (enumerator_5055.current (HERE).readProperty_mNonterminalName (), ioArgument_ioNonTerminalMapForGrammarAnalysis.getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 111)), function_transformLabelMap (enumerator_5055.current (HERE).readProperty_mLabels (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 112)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 109)) ;
+      ioArgument_ioNonTerminalMapForGrammarAnalysis.setter_insertKey (enumerator_5064.current (HERE).readProperty_mNonterminalName (), ioArgument_ioNonTerminalMapForGrammarAnalysis.getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 111)), function_transformLabelMap (enumerator_5064.current (HERE).readProperty_mLabels (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 112)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 109)) ;
       }
     }
-    enumerator_5055.gotoNextObject () ;
+    enumerator_5064.gotoNextObject () ;
   }
 }
 
@@ -4658,32 +4658,32 @@ void routine_handleNonTerminalDeclarationsFromRuleList_26__3F_ (GGS_nonTerminalS
                                                                 const GGS__5B_syntaxRuleAST_5D_ constinArgument_inRuleList,
                                                                 Compiler * inCompiler
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  UpEnumerator__5B_syntaxRuleAST_5D_ enumerator_5942 (constinArgument_inRuleList) ;
-  while (enumerator_5942.hasCurrentObject ()) {
-    GGS__5B_nonTerminalLabelAST_5D_ var_nonTerminalLabelListAST_5964 = GGS__5B_nonTerminalLabelAST_5D_::init (inCompiler COMMA_HERE) ;
-    UpEnumerator__5B_syntaxRuleLabelAST_5D_ enumerator_6040 (enumerator_5942.current (HERE).readProperty_mLabelList ()) ;
-    while (enumerator_6040.hasCurrentObject ()) {
-      var_nonTerminalLabelListAST_5964.plusPlusAssignOperation (GGS_nonTerminalLabelAST::init_21__21__21_ (enumerator_6040.current (HERE).readProperty_mLabelName (), enumerator_6040.current (HERE).readProperty_mFormalArguments (), enumerator_6040.current (HERE).readProperty_mEndOfArgumentLocation (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 127)) ;
-      enumerator_6040.gotoNextObject () ;
+  UpEnumerator__5B_syntaxRuleAST_5D_ enumerator_5951 (constinArgument_inRuleList) ;
+  while (enumerator_5951.hasCurrentObject ()) {
+    GGS__5B_nonTerminalLabelAST_5D_ var_nonTerminalLabelListAST_5973 = GGS__5B_nonTerminalLabelAST_5D_::init (inCompiler COMMA_HERE) ;
+    UpEnumerator__5B_syntaxRuleLabelAST_5D_ enumerator_6049 (enumerator_5951.current (HERE).readProperty_mLabelList ()) ;
+    while (enumerator_6049.hasCurrentObject ()) {
+      var_nonTerminalLabelListAST_5973.plusPlusAssignOperation (GGS_nonTerminalLabelAST::init_21__21__21_ (enumerator_6049.current (HERE).readProperty_mLabelName (), enumerator_6049.current (HERE).readProperty_mFormalArguments (), enumerator_6049.current (HERE).readProperty_mEndOfArgumentLocation (), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 127)) ;
+      enumerator_6049.gotoNextObject () ;
     }
     GalgasBool test_0 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_0) {
-      const GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element var_entry_6216 = ioArgument_ioNonTerminalMapForGrammarAnalysis.readSubscript__3F_ (enumerator_5942.current (HERE).readProperty_mNonterminalName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-      if (!ioArgument_ioNonTerminalMapForGrammarAnalysis.readSubscript__3F_ (enumerator_5942.current (HERE).readProperty_mNonterminalName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+      const GGS_nonTerminalSymbolMapForGrammarAnalysis_2E_element var_entry_6225 = ioArgument_ioNonTerminalMapForGrammarAnalysis.readSubscript__3F_ (enumerator_5951.current (HERE).readProperty_mNonterminalName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+      if (!ioArgument_ioNonTerminalMapForGrammarAnalysis.readSubscript__3F_ (enumerator_5951.current (HERE).readProperty_mNonterminalName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
         test_0 = GalgasBool::boolFalse ;
       }
       if (GalgasBool::boolTrue == test_0) {
         {
-        routine_checkLabelMap_3F__3F__3F__3F_ (enumerator_5942.current (HERE).readProperty_mNonterminalName ().readProperty_location (), var_nonTerminalLabelListAST_5964, ioArgument_ioNonTerminalMapForGrammarAnalysis.getter_locationForKey (enumerator_5942.current (HERE).readProperty_mNonterminalName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 137)), var_entry_6216.readProperty_mNonterminalSymbolParametersMap (), inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 134)) ;
+        routine_checkLabelMap_3F__3F__3F__3F_ (enumerator_5951.current (HERE).readProperty_mNonterminalName ().readProperty_location (), var_nonTerminalLabelListAST_5973, ioArgument_ioNonTerminalMapForGrammarAnalysis.getter_locationForKey (enumerator_5951.current (HERE).readProperty_mNonterminalName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 137)), var_entry_6225.readProperty_mNonterminalSymbolParametersMap (), inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 134)) ;
         }
       }
     }
     if (GalgasBool::boolFalse == test_0) {
       {
-      ioArgument_ioNonTerminalMapForGrammarAnalysis.setter_insertKey (enumerator_5942.current (HERE).readProperty_mNonterminalName (), ioArgument_ioNonTerminalMapForGrammarAnalysis.getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 143)), function_transformLabelMap (var_nonTerminalLabelListAST_5964, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 144)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 141)) ;
+      ioArgument_ioNonTerminalMapForGrammarAnalysis.setter_insertKey (enumerator_5951.current (HERE).readProperty_mNonterminalName (), ioArgument_ioNonTerminalMapForGrammarAnalysis.getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 143)), function_transformLabelMap (var_nonTerminalLabelListAST_5973, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 144)), inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 141)) ;
       }
     }
-    enumerator_5942.gotoNextObject () ;
+    enumerator_5951.gotoNextObject () ;
   }
 }
 
@@ -4713,10 +4713,10 @@ void routine_transformInstructionListForGrammarAnalysis_3F__26_usedTerminalMap_3
                                                                                                                                   GGS_syntaxInstructionListForGrammarAnalysis & ioArgument_ioSyntaxInstructionList,
                                                                                                                                   Compiler * inCompiler
                                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  UpEnumerator__5B_syntaxInstructionAST_5D_ enumerator_8423 (constinArgument_inInstructionList) ;
-  while (enumerator_8423.hasCurrentObject ()) {
-    callExtensionMethod_transformInstructionForGrammarAnalysis ((cPtr_syntaxInstructionAST *) enumerator_8423.current (HERE).ptr (), ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, ioArgument_ioSyntaxInstructionList, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 178)) ;
-    enumerator_8423.gotoNextObject () ;
+  UpEnumerator__5B_syntaxInstructionAST_5D_ enumerator_8432 (constinArgument_inInstructionList) ;
+  while (enumerator_8432.hasCurrentObject ()) {
+    callExtensionMethod_transformInstructionForGrammarAnalysis ((cPtr_syntaxInstructionAST *) enumerator_8432.current (HERE).ptr (), ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, ioArgument_ioSyntaxInstructionList, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 178)) ;
+    enumerator_8432.gotoNextObject () ;
   }
 }
 
@@ -4735,21 +4735,21 @@ void routine_buildRuleList_3F__3F__3F__26__26__26_ (const GGS_nonTerminalSymbolM
                                                     GGS_uint & ioArgument_ioAddedNonTerminalCount,
                                                     Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_productionRuleListForGrammarAnalysis var_productionRulesList_9189 = GGS_productionRuleListForGrammarAnalysis::init (inCompiler COMMA_HERE) ;
-  UpEnumerator__5B_syntaxRuleAST_5D_ enumerator_9267 (constinArgument_inRuleList) ;
-  while (enumerator_9267.hasCurrentObject ()) {
-    GGS_uint var_nonTerminalIndex_9360 ;
-    GGS_nonterminalSymbolLabelMapForGrammarAnalysis joker_9378 ; // Joker input parameter
-    constinArgument_inNonTerminalMapForGrammarAnalysis.method_searchKey (enumerator_9267.current (HERE).readProperty_mNonterminalName (), var_nonTerminalIndex_9360, joker_9378, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 199)) ;
-    GGS__5B_syntaxInstructionAST_5D_ var_parsedSyntaxInstructionList_9465 = enumerator_9267.current (HERE).readProperty_mLabelList ().getter_first (inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 201)).readProperty_mSyntaxInstructionList () ;
-    GGS_syntaxInstructionListForGrammarAnalysis var_instructionList_9584 = GGS_syntaxInstructionListForGrammarAnalysis::init (inCompiler COMMA_HERE) ;
+  GGS_productionRuleListForGrammarAnalysis var_productionRulesList_9198 = GGS_productionRuleListForGrammarAnalysis::init (inCompiler COMMA_HERE) ;
+  UpEnumerator__5B_syntaxRuleAST_5D_ enumerator_9276 (constinArgument_inRuleList) ;
+  while (enumerator_9276.hasCurrentObject ()) {
+    GGS_uint var_nonTerminalIndex_9369 ;
+    GGS_nonterminalSymbolLabelMapForGrammarAnalysis joker_9387 ; // Joker input parameter
+    constinArgument_inNonTerminalMapForGrammarAnalysis.method_searchKey (enumerator_9276.current (HERE).readProperty_mNonterminalName (), var_nonTerminalIndex_9369, joker_9387, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 199)) ;
+    GGS__5B_syntaxInstructionAST_5D_ var_parsedSyntaxInstructionList_9474 = enumerator_9276.current (HERE).readProperty_mLabelList ().getter_first (inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 201)).readProperty_mSyntaxInstructionList () ;
+    GGS_syntaxInstructionListForGrammarAnalysis var_instructionList_9593 = GGS_syntaxInstructionListForGrammarAnalysis::init (inCompiler COMMA_HERE) ;
     {
-    routine_transformInstructionListForGrammarAnalysis_3F__26_usedTerminalMap_3F_nonTerminalSymbolMap_26_addedTerminalIndex_26_ (var_parsedSyntaxInstructionList_9465, ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalMapForGrammarAnalysis, ioArgument_ioAddedNonTerminalCount, var_instructionList_9584, inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 204)) ;
+    routine_transformInstructionListForGrammarAnalysis_3F__26_usedTerminalMap_3F_nonTerminalSymbolMap_26_addedTerminalIndex_26_ (var_parsedSyntaxInstructionList_9474, ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalMapForGrammarAnalysis, ioArgument_ioAddedNonTerminalCount, var_instructionList_9593, inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 204)) ;
     }
-    var_productionRulesList_9189.plusPlusAssignOperation (GGS_productionRuleListForGrammarAnalysis_2E_element::init_21__21__21__21_ (enumerator_9267.current (HERE).readProperty_mNonterminalName (), var_nonTerminalIndex_9360, var_instructionList_9584, var_productionRulesList_9189.getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 216)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 212)) ;
-    enumerator_9267.gotoNextObject () ;
+    var_productionRulesList_9198.plusPlusAssignOperation (GGS_productionRuleListForGrammarAnalysis_2E_element::init_21__21__21__21_ (enumerator_9276.current (HERE).readProperty_mNonterminalName (), var_nonTerminalIndex_9369, var_instructionList_9593, var_productionRulesList_9198.getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 216)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 212)) ;
+    enumerator_9276.gotoNextObject () ;
   }
-  ioArgument_ioSyntaxComponentListForGrammarAnalysis.plusPlusAssignOperation (GGS_syntaxComponentListForGrammarAnalysis_2E_element::init_21__21_ (var_productionRulesList_9189, constinArgument_inSyntaxComponentName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 219)) ;
+  ioArgument_ioSyntaxComponentListForGrammarAnalysis.plusPlusAssignOperation (GGS_syntaxComponentListForGrammarAnalysis_2E_element::init_21__21_ (var_productionRulesList_9198, constinArgument_inSyntaxComponentName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 219)) ;
 }
 
 
@@ -4862,41 +4862,41 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
           result.appendString (enumerator_1122.current_lkey (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 27)).stringValue ()) ;
           result.appendString (" (") ;
           columnMarker = result.currentColumn () ;
-          GGS_uint index_1443_IDX (0) ;
+          GGS_uint index_1371_IDX (0) ;
           if (enumerator_1122.current_mFormalParametersList (HERE).isValid ()) {
-            UpEnumerator_signatureForGrammarAnalysis enumerator_1443 (enumerator_1122.current_mFormalParametersList (HERE)) ;
-            while (enumerator_1443.hasCurrentObject ()) {
-              const GalgasBool test_1 = GGS_bool (ComparisonKind::equal, enumerator_1443.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 29)))).boolEnum () ;
+            UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ enumerator_1371 (enumerator_1122.current_mFormalParametersList (HERE)) ;
+            while (enumerator_1371.hasCurrentObject ()) {
+              const GalgasBool test_1 = GGS_bool (ComparisonKind::equal, enumerator_1371.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 29)))).boolEnum () ;
               switch (test_1) {
               case GalgasBool::boolTrue : {
                 result.appendString ("const GGS_") ;
-                result.appendString (enumerator_1443.current_mGalgasTypeNameForGrammarAnalysis (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 30)).stringValue ()) ;
+                result.appendString (enumerator_1371.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 30)).stringValue ()) ;
                 result.appendString (" inArgument") ;
-                result.appendString (index_1443_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 30)).stringValue ()) ;
+                result.appendString (index_1371_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 30)).stringValue ()) ;
                 } break ;
               case GalgasBool::boolFalse : {
-                const GalgasBool test_2 = GGS_bool (ComparisonKind::equal, enumerator_1443.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 31)))).boolEnum () ;
+                const GalgasBool test_2 = GGS_bool (ComparisonKind::equal, enumerator_1371.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 31)))).boolEnum () ;
                 switch (test_2) {
                 case GalgasBool::boolTrue : {
                   result.appendString ("GGS_") ;
-                  result.appendString (enumerator_1443.current_mGalgasTypeNameForGrammarAnalysis (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 32)).stringValue ()) ;
+                  result.appendString (enumerator_1371.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 32)).stringValue ()) ;
                   result.appendString (" & ioArgument") ;
-                  result.appendString (index_1443_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 32)).stringValue ()) ;
+                  result.appendString (index_1371_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 32)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
-                  const GalgasBool test_3 = GGS_bool (ComparisonKind::equal, enumerator_1443.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 33)))).boolEnum () ;
+                  const GalgasBool test_3 = GGS_bool (ComparisonKind::equal, enumerator_1371.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 33)))).boolEnum () ;
                   switch (test_3) {
                   case GalgasBool::boolTrue : {
                     result.appendString ("GGS_") ;
-                    result.appendString (enumerator_1443.current_mGalgasTypeNameForGrammarAnalysis (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 34)).stringValue ()) ;
+                    result.appendString (enumerator_1371.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 34)).stringValue ()) ;
                     result.appendString (" & outArgument") ;
-                    result.appendString (index_1443_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 34)).stringValue ()) ;
+                    result.appendString (index_1371_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 34)).stringValue ()) ;
                     } break ;
                   case GalgasBool::boolFalse : {
                     result.appendString ("GGS_") ;
-                    result.appendString (enumerator_1443.current_mGalgasTypeNameForGrammarAnalysis (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 36)).stringValue ()) ;
+                    result.appendString (enumerator_1371.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 36)).stringValue ()) ;
                     result.appendString (" inArgument") ;
-                    result.appendString (index_1443_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 36)).stringValue ()) ;
+                    result.appendString (index_1371_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 36)).stringValue ()) ;
                     } break ;
                   case GalgasBool::boolNotValid :
                     break ;
@@ -4911,8 +4911,8 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
               }
               result.appendString (",\n") ;
               result.appendSpacesUntilColumn (columnMarker) ;
-              enumerator_1443.gotoNextObject () ;
-              index_1443_IDX.increment () ;
+              enumerator_1371.gotoNextObject () ;
+              index_1371_IDX.increment () ;
             }
           }
           const GalgasBool test_4 = in_HAS_5F_TRANSLATE_5F_FEATURE.boolEnum () ;
@@ -4954,43 +4954,43 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
               break ;
             }
             result.appendString ("GGS_lstring inFileName") ;
-            GGS_uint index_2941_IDX (0) ;
+            GGS_uint index_2846_IDX (0) ;
             if (enumerator_1122.current_mFormalParametersList (HERE).isValid ()) {
-              UpEnumerator_signatureForGrammarAnalysis enumerator_2941 (enumerator_1122.current_mFormalParametersList (HERE)) ;
-              while (enumerator_2941.hasCurrentObject ()) {
+              UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ enumerator_2846 (enumerator_1122.current_mFormalParametersList (HERE)) ;
+              while (enumerator_2846.hasCurrentObject ()) {
                 result.appendString (",\n") ;
                 result.appendSpacesUntilColumn (columnMarker) ;
-                const GalgasBool test_7 = GGS_bool (ComparisonKind::equal, enumerator_2941.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 55)))).boolEnum () ;
+                const GalgasBool test_7 = GGS_bool (ComparisonKind::equal, enumerator_2846.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 55)))).boolEnum () ;
                 switch (test_7) {
                 case GalgasBool::boolTrue : {
                   result.appendString ("const GGS_") ;
-                  result.appendString (enumerator_2941.current_mGalgasTypeNameForGrammarAnalysis (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 56)).stringValue ()) ;
+                  result.appendString (enumerator_2846.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 56)).stringValue ()) ;
                   result.appendString (" inArgument") ;
-                  result.appendString (index_2941_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 56)).stringValue ()) ;
+                  result.appendString (index_2846_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 56)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
-                  const GalgasBool test_8 = GGS_bool (ComparisonKind::equal, enumerator_2941.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 57)))).boolEnum () ;
+                  const GalgasBool test_8 = GGS_bool (ComparisonKind::equal, enumerator_2846.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 57)))).boolEnum () ;
                   switch (test_8) {
                   case GalgasBool::boolTrue : {
                     result.appendString ("GGS_") ;
-                    result.appendString (enumerator_2941.current_mGalgasTypeNameForGrammarAnalysis (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 58)).stringValue ()) ;
+                    result.appendString (enumerator_2846.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 58)).stringValue ()) ;
                     result.appendString (" & ioArgument") ;
-                    result.appendString (index_2941_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 58)).stringValue ()) ;
+                    result.appendString (index_2846_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 58)).stringValue ()) ;
                     } break ;
                   case GalgasBool::boolFalse : {
-                    const GalgasBool test_9 = GGS_bool (ComparisonKind::equal, enumerator_2941.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 59)))).boolEnum () ;
+                    const GalgasBool test_9 = GGS_bool (ComparisonKind::equal, enumerator_2846.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 59)))).boolEnum () ;
                     switch (test_9) {
                     case GalgasBool::boolTrue : {
                       result.appendString ("GGS_") ;
-                      result.appendString (enumerator_2941.current_mGalgasTypeNameForGrammarAnalysis (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 60)).stringValue ()) ;
+                      result.appendString (enumerator_2846.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 60)).stringValue ()) ;
                       result.appendString (" & outArgument") ;
-                      result.appendString (index_2941_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 60)).stringValue ()) ;
+                      result.appendString (index_2846_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 60)).stringValue ()) ;
                       } break ;
                     case GalgasBool::boolFalse : {
                       result.appendString ("GGS_") ;
-                      result.appendString (enumerator_2941.current_mGalgasTypeNameForGrammarAnalysis (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 62)).stringValue ()) ;
+                      result.appendString (enumerator_2846.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 62)).stringValue ()) ;
                       result.appendString (" inArgument") ;
-                      result.appendString (index_2941_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 62)).stringValue ()) ;
+                      result.appendString (index_2846_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 62)).stringValue ()) ;
                       } break ;
                     case GalgasBool::boolNotValid :
                       break ;
@@ -5003,8 +5003,8 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
                 case GalgasBool::boolNotValid :
                   break ;
                 }
-                enumerator_2941.gotoNextObject () ;
-                index_2941_IDX.increment () ;
+                enumerator_2846.gotoNextObject () ;
+                index_2846_IDX.increment () ;
               }
             }
             result.appendString ("\n") ;
@@ -5031,43 +5031,43 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
             result.appendString ("GGS_string inSourceString,\n") ;
             result.appendSpacesUntilColumn (columnMarker) ;
             result.appendString ("GGS_string inNameString") ;
-            GGS_uint index_4281_IDX (0) ;
+            GGS_uint index_4163_IDX (0) ;
             if (enumerator_1122.current_mFormalParametersList (HERE).isValid ()) {
-              UpEnumerator_signatureForGrammarAnalysis enumerator_4281 (enumerator_1122.current_mFormalParametersList (HERE)) ;
-              while (enumerator_4281.hasCurrentObject ()) {
+              UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ enumerator_4163 (enumerator_1122.current_mFormalParametersList (HERE)) ;
+              while (enumerator_4163.hasCurrentObject ()) {
                 result.appendString (",\n") ;
                 result.appendSpacesUntilColumn (columnMarker) ;
-                const GalgasBool test_11 = GGS_bool (ComparisonKind::equal, enumerator_4281.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 75)))).boolEnum () ;
+                const GalgasBool test_11 = GGS_bool (ComparisonKind::equal, enumerator_4163.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentConstantIn (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 75)))).boolEnum () ;
                 switch (test_11) {
                 case GalgasBool::boolTrue : {
                   result.appendString ("const GGS_") ;
-                  result.appendString (enumerator_4281.current_mGalgasTypeNameForGrammarAnalysis (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 76)).stringValue ()) ;
+                  result.appendString (enumerator_4163.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 76)).stringValue ()) ;
                   result.appendString (" inArgument") ;
-                  result.appendString (index_4281_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 76)).stringValue ()) ;
+                  result.appendString (index_4163_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 76)).stringValue ()) ;
                   } break ;
                 case GalgasBool::boolFalse : {
-                  const GalgasBool test_12 = GGS_bool (ComparisonKind::equal, enumerator_4281.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 77)))).boolEnum () ;
+                  const GalgasBool test_12 = GGS_bool (ComparisonKind::equal, enumerator_4163.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentInOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 77)))).boolEnum () ;
                   switch (test_12) {
                   case GalgasBool::boolTrue : {
                     result.appendString ("GGS_") ;
-                    result.appendString (enumerator_4281.current_mGalgasTypeNameForGrammarAnalysis (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 78)).stringValue ()) ;
+                    result.appendString (enumerator_4163.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 78)).stringValue ()) ;
                     result.appendString (" & ioArgument") ;
-                    result.appendString (index_4281_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 78)).stringValue ()) ;
+                    result.appendString (index_4163_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 78)).stringValue ()) ;
                     } break ;
                   case GalgasBool::boolFalse : {
-                    const GalgasBool test_13 = GGS_bool (ComparisonKind::equal, enumerator_4281.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 79)))).boolEnum () ;
+                    const GalgasBool test_13 = GGS_bool (ComparisonKind::equal, enumerator_4163.current_entry (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().objectCompare (GGS_formalArgumentPassingModeAST::class_func_argumentOut (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 79)))).boolEnum () ;
                     switch (test_13) {
                     case GalgasBool::boolTrue : {
                       result.appendString ("GGS_") ;
-                      result.appendString (enumerator_4281.current_mGalgasTypeNameForGrammarAnalysis (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 80)).stringValue ()) ;
+                      result.appendString (enumerator_4163.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 80)).stringValue ()) ;
                       result.appendString (" & outArgument") ;
-                      result.appendString (index_4281_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 80)).stringValue ()) ;
+                      result.appendString (index_4163_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 80)).stringValue ()) ;
                       } break ;
                     case GalgasBool::boolFalse : {
                       result.appendString ("GGS_") ;
-                      result.appendString (enumerator_4281.current_mGalgasTypeNameForGrammarAnalysis (HERE).readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 82)).stringValue ()) ;
+                      result.appendString (enumerator_4163.current_entry (HERE).readProperty_mGalgasTypeNameForGrammarAnalysis ().readProperty_string ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 82)).stringValue ()) ;
                       result.appendString (" inArgument") ;
-                      result.appendString (index_4281_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 82)).stringValue ()) ;
+                      result.appendString (index_4163_IDX.getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 82)).stringValue ()) ;
                       } break ;
                     case GalgasBool::boolNotValid :
                       break ;
@@ -5080,8 +5080,8 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
                 case GalgasBool::boolNotValid :
                   break ;
                 }
-                enumerator_4281.gotoNextObject () ;
-                index_4281_IDX.increment () ;
+                enumerator_4163.gotoNextObject () ;
+                index_4163_IDX.increment () ;
               }
             }
             result.appendString ("\n") ;
@@ -5123,22 +5123,22 @@ GGS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGa
       index_503_.increment () ;
     }
   }
-  GGS_uint index_5783_ (0) ;
+  GGS_uint index_5714_ (0) ;
   if (in_ADDED_5F_NON_5F_TERMINAL_5F_LIST.isValid ()) {
-    UpEnumerator__5B_nonTerminalToAdd_5D_ enumerator_5783 (in_ADDED_5F_NON_5F_TERMINAL_5F_LIST) ;
-    while (enumerator_5783.hasCurrentObject ()) {
+    UpEnumerator__5B_nonTerminalToAdd_5D_ enumerator_5714 (in_ADDED_5F_NON_5F_TERMINAL_5F_LIST) ;
+    while (enumerator_5714.hasCurrentObject ()) {
       result.appendString ("  public: virtual int32_t select_") ;
-      result.appendString (enumerator_5783.current_entry (HERE).readProperty_mSyntaxComponentName ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 103)).stringValue ()) ;
+      result.appendString (enumerator_5714.current_entry (HERE).readProperty_mSyntaxComponentName ().getter_identifierRepresentation (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 103)).stringValue ()) ;
       result.appendString ("_") ;
-      result.appendString (enumerator_5783.current_entry (HERE).readProperty_mNonTerminalToAddCount ().getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 103)).stringValue ()) ;
+      result.appendString (enumerator_5714.current_entry (HERE).readProperty_mNonTerminalToAddCount ().getter_string (SOURCE_FILE ("grammar-zone3-galgas3.h.galgasTemplate", 103)).stringValue ()) ;
       result.appendString (" (Lexique_") ;
       result.appendString (in_LEXIQUE_5F_IDENTIFIER.stringValue ()) ;
       result.appendString (" *) ;\n") ;
-      enumerator_5783.gotoNextObject () ;
-      if (enumerator_5783.hasCurrentObject ()) {
+      enumerator_5714.gotoNextObject () ;
+      if (enumerator_5714.hasCurrentObject ()) {
         result.appendString ("\n") ;
       }
-      index_5783_.increment () ;
+      index_5714_.increment () ;
     }
   }
   result.appendString ("} ;\n\n//--------------------------------------------------------------------------------------------------\n") ;
@@ -5276,7 +5276,7 @@ void cPtr_grammarForGeneration::method_appendSpecificImplementation (const GGS_u
   while (enumerator_3077.hasCurrentObject ()) {
     UpEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator_3166 (enumerator_3077.current (HERE).readProperty_mNonterminalSymbolParametersMap ()) ;
     while (enumerator_3166.hasCurrentObject ()) {
-      UpEnumerator_signatureForGrammarAnalysis enumerator_3250 (enumerator_3166.current (HERE).readProperty_mFormalParametersList ()) ;
+      UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ enumerator_3250 (enumerator_3166.current (HERE).readProperty_mFormalParametersList ()) ;
       while (enumerator_3250.hasCurrentObject ()) {
         switch (enumerator_3250.current (HERE).readProperty_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue ()) {
         case GGS_formalArgumentPassingModeAST::Enumeration::invalid:
@@ -6091,6 +6091,51 @@ const cRegularFileWrapper gWrapperFile_0_typeGenerationTemplate (
   gWrapperFileContent_0_typeGenerationTemplate
 ) ;
 
+//--- All files of 'helpers' directory
+
+static const cRegularFileWrapper * gWrapperAllFiles_typeGenerationTemplate_2 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of 'helpers' directory
+
+static const cDirectoryWrapper * gWrapperAllDirectories_typeGenerationTemplate_2 [1] = {
+  nullptr
+} ;
+
+//--- Directory 'helpers'
+
+const cDirectoryWrapper gWrapperDirectory_2_typeGenerationTemplate (
+  "helpers",
+  0,
+  gWrapperAllFiles_typeGenerationTemplate_2,
+  0,
+  gWrapperAllDirectories_typeGenerationTemplate_2
+) ;
+
+//--- All files of 'build' directory
+
+static const cRegularFileWrapper * gWrapperAllFiles_typeGenerationTemplate_1 [1] = {
+  nullptr
+} ;
+
+//--- All sub-directories of 'build' directory
+
+static const cDirectoryWrapper * gWrapperAllDirectories_typeGenerationTemplate_1 [2] = {
+  & gWrapperDirectory_2_typeGenerationTemplate,
+  nullptr
+} ;
+
+//--- Directory 'build'
+
+const cDirectoryWrapper gWrapperDirectory_1_typeGenerationTemplate (
+  "build",
+  0,
+  gWrapperAllFiles_typeGenerationTemplate_1,
+  1,
+  gWrapperAllDirectories_typeGenerationTemplate_1
+) ;
+
 //--- All files of '' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_typeGenerationTemplate_0 [2] = {
@@ -6100,7 +6145,8 @@ static const cRegularFileWrapper * gWrapperAllFiles_typeGenerationTemplate_0 [2]
 
 //--- All sub-directories of '' directory
 
-static const cDirectoryWrapper * gWrapperAllDirectories_typeGenerationTemplate_0 [1] = {
+static const cDirectoryWrapper * gWrapperAllDirectories_typeGenerationTemplate_0 [2] = {
+  & gWrapperDirectory_1_typeGenerationTemplate,
   nullptr
 } ;
 
@@ -6110,7 +6156,7 @@ const cDirectoryWrapper gWrapperDirectory_0_typeGenerationTemplate (
   "",
   1,
   gWrapperAllFiles_typeGenerationTemplate_0,
-  0,
+  1,
   gWrapperAllDirectories_typeGenerationTemplate_0
 ) ;
 

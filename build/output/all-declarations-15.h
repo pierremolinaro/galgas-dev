@@ -9,6 +9,16 @@
 #include "all-declarations-14.h"
 
 //--------------------------------------------------------------------------------------------------
+//
+//Extension func '@semanticExpressionForGeneration isTrueExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_bool callExtensionGetter_isTrueExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
 //  GRAMMAR galgas4ProjectGrammar
 //--------------------------------------------------------------------------------------------------
 
@@ -670,7 +680,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
 //----------- '' label
   public: virtual void nt_actual_5F_parameter_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                GGS_actualParameterListAST & ioArgument1,
+                                                GGS__5B_actualParameterAST_5D_ & ioArgument1,
                                                 Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'actual_parameter_list_with_parenthesis' non terminal
@@ -682,7 +692,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
 //----------- '' label
   public: virtual void nt_actual_5F_parameter_5F_list_5F_with_5F_parenthesis_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                               GGS_actualParameterListAST & outArgument1,
+                                                                               GGS__5B_actualParameterAST_5D_ & outArgument1,
                                                                                Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'comma_separated_expression' non terminal
@@ -918,7 +928,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 //----------- '' label
   public: virtual void nt_grammar_5F_instruction_5F_core_ (GGS_galgasDeclarationAST & ioArgument0,
                                                            const GGS_location inArgument1,
-                                                           const GGS_actualParameterListAST inArgument2,
+                                                           const GGS__5B_actualParameterAST_5D_ inArgument2,
                                                            const GGS_lstring inArgument3,
                                                            const GGS_lstring inArgument4,
                                                            GGS_semanticInstructionAST & outArgument5,
@@ -1193,7 +1203,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
 //----------- '' label
   public: virtual void nt_non_5F_empty_5F_output_5F_expression_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                         GGS_actualOutputArgumentList & outArgument1,
+                                                                         GGS__5B_actualOutputArgumentAST_5D_ & outArgument1,
                                                                          Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'nonterminal_declaration' non terminal
@@ -1228,7 +1238,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
 //----------- '' label
   public: virtual void nt_output_5F_expression_5F_list_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                         GGS_actualOutputArgumentList & outArgument1,
+                                                         GGS__5B_actualOutputArgumentAST_5D_ & outArgument1,
                                                          Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'poisoned_var_list' non terminal

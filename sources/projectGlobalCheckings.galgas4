@@ -87,16 +87,10 @@ proc @semanticDeclarationAST.buildExtensionListMaps
 //
 //    D E S C E N D A N T    C L A S S    L I S T M A P
 //
-//--------------------------------------------------------------------------------------------------
-
-list @unifiedTypeMapEntryList #equatable {
-  public var @unifiedTypeMapEntry mEntry
-}
-
 //----------------------------------------------------------------------------------------------
 
 dict @descendantClassListMapDictionary : @string {
-  public var @unifiedTypeMapEntryList typeList
+  public var [@unifiedTypeMapEntry] typeList
 }
 
 //----------------------------------------------------------------------------------------------
@@ -113,13 +107,13 @@ struct @descendantClassListMap {
       !?aList.append (inType)
       self.dictionary ++= @(inKey, aList)
     else
-      self.dictionary ++= @(inKey, [@(inType)])
+      self.dictionary ++= @(inKey, [inType])
     end
   }
 
   //·····························································································
 
-  func listForKey (?let @string inKey ) -> @unifiedTypeMapEntryList {
+  func listForKey (?let @string inKey ) -> [@unifiedTypeMapEntry] {
     if self.dictionary.contains (inKey) then
       self.dictionary.searchKey (inKey, ?result)
    else
@@ -174,7 +168,7 @@ proc checkextensionSetterDefinitionForClass
   let @genericExtensionMethodListMap inOverridingExtensionMethodListMap,
   let @unifiedTypeMap inUnifiedTypeMap
 ) {
-  let @unifiedTypeMapEntryList descendantClasses = inDescendantClassListMap.listForKey (inClassName)
+  let [@unifiedTypeMapEntry] descendantClasses = inDescendantClassListMap.listForKey (inClassName)
   for (mEntry) in descendantClasses do
     let @lstring descendantClassName = mEntry.definition.typeName
     let [@lstring] overridingMethods = inOverridingExtensionMethodListMap.listForKey (descendantClassName.string)
@@ -211,7 +205,7 @@ proc checkExtensionMethodDefinitionForClass
   let @genericExtensionMethodListMap inOverridingExtensionMethodListMap,
   let @unifiedTypeMap inUnifiedTypeMap
 ) {
-  let @unifiedTypeMapEntryList descendantClasses = inDescendantClassListMap.listForKey (inClassName)
+  let [@unifiedTypeMapEntry] descendantClasses = inDescendantClassListMap.listForKey (inClassName)
   for (mEntry) in descendantClasses do
     let @lstring descendantClassName = mEntry.definition.typeName
     let [@lstring] overridingMethods = inOverridingExtensionMethodListMap.listForKey (descendantClassName.string)
@@ -248,7 +242,7 @@ proc checkExtensionGetterDefinitionForClass
   let @genericExtensionMethodListMap inOverridingExtensionGetterListMap,
   let @unifiedTypeMap inUnifiedTypeMap
 ) {
-  let @unifiedTypeMapEntryList descendantClasses = inDescendantClassListMap.listForKey (inClassName)
+  let [@unifiedTypeMapEntry] descendantClasses = inDescendantClassListMap.listForKey (inClassName)
   for (mEntry) in descendantClasses do
     let @lstring descendantClassName = mEntry.definition.typeName
     let [@lstring] overridingReaders = inOverridingExtensionGetterListMap.listForKey (descendantClassName.string)

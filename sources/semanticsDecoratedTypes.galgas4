@@ -140,7 +140,7 @@ final class @outputActualParameterForGeneration : @actualParameterForGeneration 
 final class @outputInputActualParameterForGeneration : @actualParameterForGeneration {
   public let @string mOutputInputVariableCppName
   public let [@lstring] mStructAttributeList
-  public let @unifiedTypeMapEntryList mTypeList
+  public let [@unifiedTypeMapEntry] mTypeList
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -292,9 +292,9 @@ override func @semanticDeclarationWithHeaderForGeneration.isPredefined () -> @bo
 //
 //--------------------------------------------------------------------------------------------------
 
-list @signatureForGrammarAnalysis {
-  public let @formalArgumentPassingModeAST mFormalArgumentPassingModeForGrammarAnalysis
-  public let @lstring mGalgasTypeNameForGrammarAnalysis
+struct @signatureElementForGrammarAnalysis {
+  let @formalArgumentPassingModeAST mFormalArgumentPassingModeForGrammarAnalysis
+  let @lstring mGalgasTypeNameForGrammarAnalysis
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -304,7 +304,7 @@ list @signatureForGrammarAnalysis {
 //--------------------------------------------------------------------------------------------------
 
 map @nonterminalSymbolLabelMapForGrammarAnalysis {
-  public let @signatureForGrammarAnalysis mFormalParametersList
+  public let [@signatureElementForGrammarAnalysis] mFormalParametersList
 
   #insertSetter insertKey #errorMessage "the rule label '%K' has been already declared in %L"
   #searchMethod searchKey #errorMessage "the rule label '%K' is not declared"

@@ -639,15 +639,15 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
       ioCppFileContents.appendCString ("_") ;
       ioCppFileContents.appendString (currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
       ioCppFileContents.appendCString (" (") ;
-      UpEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE)) ;
+      UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE)) ;
       int16_t numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
-        if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
+        if (parametre.current (HERE).mProperty_mFormalArgumentPassingModeForGrammarAnalysis.enumValue () == GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
           ioCppFileContents.appendCString ("const ") ;
         }
         ioCppFileContents.appendCString ("GGS_") ;
-        ioCppFileContents.appendString (parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-        switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
+        ioCppFileContents.appendString (parametre.current (HERE).mProperty_mGalgasTypeNameForGrammarAnalysis.mProperty_string.stringValue ().identifierRepresentation ()) ;
+        switch (parametre.current (HERE).mProperty_mFormalArgumentPassingModeForGrammarAnalysis.enumValue ()) {
         case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
           ioCppFileContents.appendCString (" ") ;
           break ;
@@ -787,16 +787,16 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
           ioCppFileContents.appendCString (",\n                                ") ;
         }
         ioCppFileContents.appendCString ("GGS_lstring inFilePath") ;
-        UpEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE)) ;
+        UpEnumerator__5B_signatureElementForGrammarAnalysis_5D_ parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE)) ;
         int16_t numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           ioCppFileContents.appendCString (",\n                                ") ;
-          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
+          if (parametre.current (HERE).mProperty_mFormalArgumentPassingModeForGrammarAnalysis.enumValue () == GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
             ioCppFileContents.appendCString ("const ") ;
           }
           ioCppFileContents.appendCString ("GGS_") ;
-          ioCppFileContents.appendString (parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
+          ioCppFileContents.appendString (parametre.current (HERE).mProperty_mGalgasTypeNameForGrammarAnalysis.mProperty_string.stringValue ().identifierRepresentation ()) ;
+          switch (parametre.current (HERE).mProperty_mFormalArgumentPassingModeForGrammarAnalysis.enumValue ()) {
           case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
             ioCppFileContents.appendCString (" ") ;
             break ;
@@ -913,12 +913,12 @@ generate_LL1_grammar_Cpp_file (const GGS_nonTerminalSymbolSortedListForGrammarAn
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           ioCppFileContents.appendCString (",\n                                ") ;
-          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
+          if (parametre.current (HERE).mProperty_mFormalArgumentPassingModeForGrammarAnalysis.enumValue () == GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn) {
             ioCppFileContents.appendCString ("const ") ;
           }
           ioCppFileContents.appendCString ("GGS_") ;
-          ioCppFileContents.appendString (parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation ()) ;
-          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
+          ioCppFileContents.appendString (parametre.current (HERE).mProperty_mGalgasTypeNameForGrammarAnalysis.mProperty_string.stringValue ().identifierRepresentation ()) ;
+          switch (parametre.current (HERE).mProperty_mFormalArgumentPassingModeForGrammarAnalysis.enumValue ()) {
           case GGS_formalArgumentPassingModeAST::Enumeration::enum_argumentConstantIn :
             ioCppFileContents.appendCString (" ") ;
             break ;

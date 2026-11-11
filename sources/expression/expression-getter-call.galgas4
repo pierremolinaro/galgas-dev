@@ -21,7 +21,7 @@
 final class @getterCallExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mReceiver
   private let @lstring mGetterName
-  private let @actualOutputArgumentList mActualArgumentList
+  private let [@actualOutputArgumentAST] mActualArgumentList
   private let @location mExpressionLocation
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

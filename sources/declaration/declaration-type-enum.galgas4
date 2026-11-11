@@ -244,12 +244,12 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
     var @instanceMethodMap instanceMethodMap = @()
     for constant in self.mConstantList do
       if constant.associatedValueTypeList.count > 0 then
-        var @unifiedTypeMapEntryList associatedTypeList = @()
+        var [@unifiedTypeMapEntry] associatedTypeList = @()
         var @formalParameterSignature argumentTypeList = @()
         for associatedValue in constant.associatedValueTypeList do
           !?ioTypeMap.makeEntry (associatedValue.typeName, ?let associatedTypeEntry)
           argumentTypeList ++= @(associatedValue.valueName, associatedTypeEntry, .argumentOut, associatedValue.typeName.string)
-          associatedTypeList ++= @(associatedTypeEntry)
+          associatedTypeList ++= associatedTypeEntry
           hasAssociatedValues = true
         end
         !?instanceMethodMap.insertKey

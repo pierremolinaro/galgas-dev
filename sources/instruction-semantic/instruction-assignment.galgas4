@@ -34,7 +34,7 @@ syntax extension galgas4InstructionsSyntax {
       $[$
       <non_empty_output_expression_list> (
         !?ioDeclarations,
-        ?let @actualOutputArgumentList _outExpressionList
+        ?let [@actualOutputArgumentAST] _outExpressionList
       )
       $]$
       error (.here : "not handled yet" spoil optionalProperty)
@@ -67,7 +67,7 @@ syntax extension galgas4InstructionsSyntax {
       $[$
       <non_empty_output_expression_list> (
          !?ioDeclarations,
-         ?let @actualOutputArgumentList _outExpressionList
+         ?let [@actualOutputArgumentAST] _outExpressionList
       )
       $]$
       error (.here : "not handled yet" spoil optionalProperty)

@@ -235,14 +235,14 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
     "".nowhere,
     keyTypeIndex,
     "inKey")
-  var typesToIncludeInHeaderCompilation = @unifiedTypeMapEntryList ()
+  var typesToIncludeInHeaderCompilation = [@unifiedTypeMapEntry] ()
   for property in self.mPropertyList do
     !?ioTypeMap.makeEntry (property.typeName, ?let attributeTypeIndex)
     let hasSetter = true
     let hasSelector = false
     argumentTypeListForAddAssignWithFieldExpressionList ++= @("".nowhere, attributeTypeIndex, property.name.string, true)
     typedPropertyList ++= @(attributeTypeIndex, property.name, property.initialization, !hasSetter: hasSetter, !hasSelector: hasSelector)
-    typesToIncludeInHeaderCompilation ++= @(attributeTypeIndex)
+    typesToIncludeInHeaderCompilation ++= attributeTypeIndex
     enumerationDescriptor ++= @(attributeTypeIndex, property.name.string)
     insertSetterFormalArgumentList ++= @(
       "".nowhere,

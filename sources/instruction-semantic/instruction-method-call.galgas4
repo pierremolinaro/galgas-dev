@@ -20,14 +20,14 @@
 final class @methodCallInstructionAST : @semanticInstructionAST {
   private let @semanticExpressionAST mReceiverExpression
   private let @lstring mMethodName
-  private let @actualParameterListAST mActualParameterList
+  private let [@actualParameterAST] mActualParameterList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     self.mReceiverExpression.enterExpressionInSemanticContext (!?ioTypeMap)
-    for entry in self.mActualParameterList do
-      entry.mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
+    for actual in self.mActualParameterList do
+      actual.enterParameterInSemanticContext (!?ioTypeMap)
     end
   }
 

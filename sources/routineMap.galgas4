@@ -90,7 +90,7 @@ struct @routineMap {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   proc searchKey (let @lstring inRoutineName,
-                    ?actualParameters: @actualParameterListAST inActualParameterList,
+                    ?actualParameters: [@actualParameterAST] inActualParameterList,
                     !@formalParameterSignature outRoutineSignature,
                     !isFilePrivate: @bool outIsFilePrivate,
                     !routineMangledName: @lstring outRoutineMangledName) {

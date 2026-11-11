@@ -28,7 +28,7 @@ func transformLabelMap
 {
   result = @()
   for aLabel in inLabels do
-    var @signatureForGrammarAnalysis formalParametersList = @()
+    var [@signatureElementForGrammarAnalysis] formalParametersList = @()
     for formalArg in aLabel.mFormalArgumentList do
       formalParametersList ++= @(formalArg.mFormalArgumentPassingMode, formalArg.mFormalArgumentTypeName)
     end

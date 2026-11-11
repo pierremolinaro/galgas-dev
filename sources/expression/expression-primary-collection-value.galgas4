@@ -123,7 +123,7 @@ final class @collectionValueAST : @semanticExpressionAST {
       !?ioUsefulEntitiesGraph.addEdge (!from: inUsefulnessCallerEntityName, !to: nameForUsefulness)
     //---
       let elementType = targetType.definition.typeForEnumeratedElement
-      var @collectionValueElementListForGeneration expressionListForGeneration = @()
+      var [@collectionValueElementForGeneration] expressionListForGeneration = @()
       for exp in self.mExpressionList do
         exp.mExpression.analyzeSemanticExpression
           (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
@@ -160,7 +160,7 @@ final class @collectionValueAST : @semanticExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-list @collectionValueElementListForGeneration {
+struct @collectionValueElementForGeneration {
   public let @semanticExpressionForGeneration expression
   public let @location location
 }
@@ -168,7 +168,7 @@ list @collectionValueElementListForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 final class @expressionCollectionForGeneration : @semanticExpressionForGeneration {
-  public let @collectionValueElementListForGeneration expressionList
+  public let [@collectionValueElementForGeneration] expressionList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

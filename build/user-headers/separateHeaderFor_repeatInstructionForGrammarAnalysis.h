@@ -23,7 +23,7 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
   public: virtual class GGS_bool getter_isLinear (Compiler * COMMA_LOCATION_ARGS) const override ;
 
 //--- Extension proc tikzNodeForSyntaxInstruction
-  public: virtual void method_tikzNodeForSyntaxInstruction (class GGS_rowList & arg_ioRowList,
+  public: virtual void method_tikzNodeForSyntaxInstruction (class GGS__5B_row_5D_ & arg_ioRowList,
            const class GGS_uint arg_inRow,
            class GGS_uint & arg_ioColumn,
            class GGS_string & arg_ioCurrentNode,

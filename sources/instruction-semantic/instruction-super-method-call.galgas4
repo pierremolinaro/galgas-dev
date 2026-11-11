@@ -19,30 +19,6 @@
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3InstructionsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <semantic_instruction_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                                    !@semanticInstructionAST outInstruction) {
-//    $super$
-//    let instructionLocation = @location.here
-//    $.$
-//    $identifier$ (?let methodName)
-//    <actual_parameter_list_ggs34> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
-//    outInstruction = @superMethodCallInstructionAST (
-//      !instructionLocation,
-//      methodName,
-//      actualParameterList
-//    )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -53,7 +29,7 @@ syntax extension galgas4InstructionsSyntax {
     $.$
     $identifier$ (?let methodName)
     let instructionLocation = @location.here
-    <actual_parameter_list_with_parenthesis> (!?ioDeclarations, ?let @actualParameterListAST actualParameterList)
+    <actual_parameter_list_with_parenthesis> (!?ioDeclarations, ?let [@actualParameterAST] actualParameterList)
     outInstruction = @superMethodCallInstructionAST (
       instructionLocation,
       methodName,
@@ -69,13 +45,13 @@ syntax extension galgas4InstructionsSyntax {
 
 final class @superMethodCallInstructionAST : @semanticInstructionAST {
   private let @lstring mMethodName
-  private let @actualParameterListAST mActualParameterList
+  private let [@actualParameterAST] mActualParameterList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
     for actual in self.mActualParameterList do
-      actual.mActualParameter.enterParameterInSemanticContext (!?ioTypeMap)
+      actual.enterParameterInSemanticContext (!?ioTypeMap)
     end
   }
 

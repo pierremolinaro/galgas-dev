@@ -57,7 +57,7 @@ syntax galgas4ExpressionSyntax (galgasScanner4) {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   rule <actual_parameter_list_with_parenthesis> (?!@galgasDeclarationAST ioDeclarations,
-                                                 !@actualParameterListAST outActualParameterList)
+                                                 ![@actualParameterAST] outActualParameterList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -373,7 +373,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       lstringTypeIndex,
       @formalArgumentPassingModeAST.argumentConstantIn,
       "inLKey")
-    var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = @()
+    var [@unifiedTypeMapEntry] typesToIncludeInHeaderCompilation = @()
     for property in self.mPropertyList do
       if property.initialization.isSome then
         error (property.name : "property initialization is not handled for a map")
@@ -381,7 +381,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !?ioTypeMap.makeEntry (property.typeName, ?let attributeTypeIndex)
       argumentTypeListForAddAssignWithFieldExpressionList ++= @("".nowhere, attributeTypeIndex, property.name.string, true)
       typedPropertyList ++= @(attributeTypeIndex, property.name, property.initialization, !hasSetter: true, !hasSelector: property.hasSelector)
-      typesToIncludeInHeaderCompilation ++= @(attributeTypeIndex)
+      typesToIncludeInHeaderCompilation ++= attributeTypeIndex
       enumerationDescriptor ++= @(attributeTypeIndex, property.name.string)
       insertMethodFormalArgumentList ++= @(
         if property.hasSelector then property.name else "".nowhere end,

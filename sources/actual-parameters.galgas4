@@ -20,51 +20,42 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-list @actualParameterListAST {
-  public let @actualParameterAST mActualParameter
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  proc analyzeRoutineArguments (let @lstring inUsefulnessCallerEntityName,
-                                  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                                  let @analysisContext inAnalysisContext,
-                                  ?!@unifiedTypeMap ioTypeMap,
-                                  let @lstring inRoutineName,
-                                  ?invokedEntityNameForErrorSignaling: let @string inInvokedEntityName,
-                                  let @formalParameterSignature inRoutineSignature,
-                                  ?!@localVarManager ioVariableMap,
-                                  ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
-                                  ![@actualParameterForGeneration] outActualParameterListForGeneration) {
-    if inRoutineSignature.count != self.count then
-      error (inRoutineName
-      : "the " + inInvokedEntityName + " defines " + inRoutineSignature.count
-      + " formal argument" + if inRoutineSignature.count > 1 then "s" else "" end
-      + " but this invocation names "
-      + self.count + " argument" + if self.count > 1 then "s" else "" end
-      spoil outActualParameterListForGeneration)
-    else
-      outActualParameterListForGeneration = @()
-      var @stringset exclusiveVariableSet = @()
-      for formalArgument in inRoutineSignature, (mActualParameter) in self do
-        mActualParameter.checkAgainstFormalArgument (
-          inUsefulnessCallerEntityName,
-          !?ioUsefulEntitiesGraph,
-          inAnalysisContext,
-          !?ioTypeMap,
-          formalArgument.mFormalSelector,
-          formalArgument.mFormalArgumentType,
-          formalArgument.mFormalArgumentPassingMode,
-          !?ioVariableMap,
-          !?outActualParameterListForGeneration,
-          !?exclusiveVariableSet,
-          !?ioInstructionListForGeneration
-        )
-      end
+proc [@actualParameterAST].analyzeRoutineArguments (let @lstring inUsefulnessCallerEntityName,
+                                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                let @analysisContext inAnalysisContext,
+                                ?!@unifiedTypeMap ioTypeMap,
+                                let @lstring inRoutineName,
+                                ?invokedEntityNameForErrorSignaling: let @string inInvokedEntityName,
+                                let @formalParameterSignature inRoutineSignature,
+                                ?!@localVarManager ioVariableMap,
+                                ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
+                                ![@actualParameterForGeneration] outActualParameterListForGeneration) {
+  if inRoutineSignature.count != self.count then
+    error (inRoutineName
+    : "the " + inInvokedEntityName + " defines " + inRoutineSignature.count
+    + " formal argument" + if inRoutineSignature.count > 1 then "s" else "" end
+    + " but this invocation names "
+    + self.count + " argument" + if self.count > 1 then "s" else "" end
+    spoil outActualParameterListForGeneration)
+  else
+    outActualParameterListForGeneration = @()
+    var @stringset exclusiveVariableSet = @()
+    for formalArgument in inRoutineSignature, (mActualParameter) in self do
+      mActualParameter.checkAgainstFormalArgument (
+        inUsefulnessCallerEntityName,
+        !?ioUsefulEntitiesGraph,
+        inAnalysisContext,
+        !?ioTypeMap,
+        formalArgument.mFormalSelector,
+        formalArgument.mFormalArgumentType,
+        formalArgument.mFormalArgumentPassingMode,
+        !?ioVariableMap,
+        !?outActualParameterListForGeneration,
+        !?exclusiveVariableSet,
+        !?ioInstructionListForGeneration
+      )
     end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+  end
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -82,7 +73,7 @@ abstract class @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  abstract proc enterInActualOutputParameterList (?!@actualOutputArgumentList ioActualOutputArgumentList)
+  abstract proc enterInActualOutputParameterList (?![@actualOutputArgumentAST] ioActualOutputArgumentList)
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -128,7 +119,7 @@ final class @outputActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?![@actualOutputArgumentAST] ioActualOutputArgumentList) {
     ioActualOutputArgumentList ++= @(
       self.mActualSelector,
       self.mOutputActualParameterExpression,
@@ -213,7 +204,7 @@ final class @outputInputActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?![@actualOutputArgumentAST] _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support output/input parameter")
   }
 
@@ -247,7 +238,7 @@ final class @outputInputActualParameterAST : @actualParameterAST {
       ?let variableCppName,
       ?*
     )
-    var typeList = @unifiedTypeMapEntryList.listWithValue (parameterType)
+    var typeList = [@unifiedTypeMapEntry] [parameterType]
     for (mValue) in self.mStructAttributeList do
       let propertyMap = parameterType.definition.propertyMap
       propertyMap.searchKey (
@@ -260,7 +251,7 @@ final class @outputInputActualParameterAST : @actualParameterAST {
       if isConstant then
         error (mValue : "a constant property cannot be modified")
       end
-      typeList ++= @(parameterType)
+      typeList ++= parameterType
     end
   //--- Check type
     if inFormalArgumentType != parameterType then
@@ -312,7 +303,7 @@ final class @outputInputJokerParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?![@actualOutputArgumentAST] _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support output/input parameter")
   }
 
@@ -368,7 +359,7 @@ final class @outputInputJokerParameterAST : @actualParameterAST {
       inFormalArgumentType,
       cppVarName,
       @(),
-      @unifiedTypeMapEntryList.listWithValue (inFormalArgumentType)
+      [@unifiedTypeMapEntry] [inFormalArgumentType]
     )
   }
 
@@ -398,7 +389,7 @@ final class @outputInputSelfParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?![@actualOutputArgumentAST] _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support output/input parameter")
   }
 
@@ -441,7 +432,7 @@ final class @outputInputSelfParameterAST : @actualParameterAST {
         inFormalArgumentType,
         "ioObject",
         @(),
-        @unifiedTypeMapEntryList.listWithValue (inFormalArgumentType)
+        [@unifiedTypeMapEntry] [inFormalArgumentType]
       )
     else
       error (self.mActualSelector : "'self' not available in this context")
@@ -476,7 +467,7 @@ final class @inputActualExistingVariableParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?![@actualOutputArgumentAST] _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support input parameter")
   }
 
@@ -566,7 +557,7 @@ final class @inputActualSelfPropertyParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?![@actualOutputArgumentAST] _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support input parameter")
   }
 
@@ -657,7 +648,7 @@ final class @inputActualSelfParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?![@actualOutputArgumentAST] _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support input parameter")
   }
 
@@ -746,7 +737,7 @@ final class @inputActualNewVariableParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?![@actualOutputArgumentAST] _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support input parameter")
   }
 
@@ -852,7 +843,7 @@ final class @inputActualNewConstantParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?![@actualOutputArgumentAST] _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support input parameter")
   }
 
@@ -962,7 +953,7 @@ final class @inputSingleJokerActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?![@actualOutputArgumentAST] _ioActualOutputArgumentList) {
     error (self.mActualSelector : "a func does not support input parameter")
   }
 
@@ -1033,7 +1024,7 @@ final class @inputJokerActualParameterAST : @actualParameterAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterInActualOutputParameterList (?!@actualOutputArgumentList _ioActualOutputArgumentList) {
+  override proc enterInActualOutputParameterList (?![@actualOutputArgumentAST] _ioActualOutputArgumentList) {
     error (self.mQualifierLocation : "a func does not support input parameter")
   }
 

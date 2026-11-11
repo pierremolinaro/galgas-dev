@@ -70,7 +70,7 @@ syntax extension galgas4InstructionsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 final class @superInitInstructionAST : @semanticInstructionAST {
-  private let @actualOutputArgumentList mActualParameterList
+  private let [@actualOutputArgumentAST] mActualParameterList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
