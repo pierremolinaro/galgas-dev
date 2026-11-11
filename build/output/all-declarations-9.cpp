@@ -4567,10 +4567,10 @@ GGS__5B_galgasQualifiedFeature_5D_ GGS__5B_galgasQualifiedFeature_5D_::add_opera
 
 void GGS__5B_galgasQualifiedFeature_5D_::description (String & ioString,
                                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array galgasQualifiedFeature, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@galgasQualifiedFeature], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -6732,10 +6732,10 @@ GGS__5B_filewrapperTemplateForGeneration_5D_ GGS__5B_filewrapperTemplateForGener
 
 void GGS__5B_filewrapperTemplateForGeneration_5D_::description (String & ioString,
                                                                 const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array filewrapperTemplateForGeneration, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@filewrapperTemplateForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -7886,10 +7886,10 @@ GGS__5B_ruleLabelImplementationAST_5D_ GGS__5B_ruleLabelImplementationAST_5D_::a
 
 void GGS__5B_ruleLabelImplementationAST_5D_::description (String & ioString,
                                                           const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array ruleLabelImplementationAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@ruleLabelImplementationAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 

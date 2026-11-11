@@ -906,22 +906,6 @@ void routine_generateExtensionGetter_3F__26__3F__3F__3F__3F__3F__21_ (const clas
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'generateExtensionSetter???&??!'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_generateExtensionSetter_3F__3F__3F__26__3F__3F__21_ (const class GGS_string constinArgument0,
-                                                                  const class GGS_string constinArgument1,
-                                                                  const class GGS_string constinArgument2,
-                                                                  class GGS_stringset & ioArgument3,
-                                                                  const class GGS__5B_formalParameterForGeneration_5D_ constinArgument4,
-                                                                  const class GGS__5B_semanticInstructionForGeneration_5D_ constinArgument5,
-                                                                  class GGS_string & outArgument6,
-                                                                  class Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'generateExtensionMethodNew?&???!'
 //
 //--------------------------------------------------------------------------------------------------
@@ -1111,31 +1095,6 @@ GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExt
                                                                                                             const class GGS_string & in_GETTER_5F_IMPLEMENTATION,
                                                                                                             const class GGS_unifiedTypeMapEntry & in_RETURN_5F_TYPE
                                                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'semanticComponentGenerationTemplate extensionSetterDeclaration'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSetterDeclaration (class Compiler * inCompiler,
-                                                                                               const class GGS_string & in_CLASS_5F_NAME,
-                                                                                               const class GGS_string & in_MODIFIER_5F_NAME,
-                                                                                               const class GGS__5B_formalParameterForGeneration_5D_ & in_FORMAL_5F_ARGUMENT_5F_LIST
-                                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'semanticComponentGenerationTemplate extensionsetterImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionsetterImplementation (class Compiler * inCompiler,
-                                                                                                  const class GGS_string & in_CLASS_5F_NAME,
-                                                                                                  const class GGS_string & in_MODIFIER_5F_NAME,
-                                                                                                  const class GGS__5B_formalParameterForGeneration_5D_ & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                  const class GGS_string & in_MODIFIER_5F_IMPLEMENTATION
-                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

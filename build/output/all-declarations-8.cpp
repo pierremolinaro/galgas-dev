@@ -3958,10 +3958,10 @@ GGS__5B_collectionValueElementAST_5D_ GGS__5B_collectionValueElementAST_5D_::add
 
 void GGS__5B_collectionValueElementAST_5D_::description (String & ioString,
                                                          const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array collectionValueElementAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@collectionValueElementAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 

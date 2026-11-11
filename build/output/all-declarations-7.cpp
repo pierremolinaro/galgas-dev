@@ -163,10 +163,10 @@ GGS__5B_templateInstructionForGeneration_5D_ GGS__5B_templateInstructionForGener
 
 void GGS__5B_templateInstructionForGeneration_5D_::description (String & ioString,
                                                                 const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array templateInstructionForGeneration, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@templateInstructionForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -518,10 +518,10 @@ GGS__5B_templateInstructionAST_5D_ GGS__5B_templateInstructionAST_5D_::add_opera
 
 void GGS__5B_templateInstructionAST_5D_::description (String & ioString,
                                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array templateInstructionAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@templateInstructionAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -1205,10 +1205,10 @@ GGS__5B_templateExpressionElementAST_5D_ GGS__5B_templateExpressionElementAST_5D
 
 void GGS__5B_templateExpressionElementAST_5D_::description (String & ioString,
                                                             const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array templateExpressionElementAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@templateExpressionElementAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -1659,10 +1659,10 @@ GGS__5B_templateInstructionIfBranchAST_5D_ GGS__5B_templateInstructionIfBranchAS
 
 void GGS__5B_templateInstructionIfBranchAST_5D_::description (String & ioString,
                                                               const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array templateInstructionIfBranchAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@templateInstructionIfBranchAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -2915,10 +2915,10 @@ GGS__5B_templateInstructionIfBranchForGeneration_5D_ GGS__5B_templateInstruction
 
 void GGS__5B_templateInstructionIfBranchForGeneration_5D_::description (String & ioString,
                                                                         const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array templateInstructionIfBranchForGeneration, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@templateInstructionIfBranchForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -4348,10 +4348,10 @@ GGS__5B_unifiedTypeMapEntry_5D_ GGS__5B_unifiedTypeMapEntry_5D_::add_operation (
 
 void GGS__5B_unifiedTypeMapEntry_5D_::description (String & ioString,
                                                    const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array unifiedTypeMapEntry, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@unifiedTypeMapEntry], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -4833,10 +4833,10 @@ GGS__5B_templateInstructionSwitchBranchAST_5D_ GGS__5B_templateInstructionSwitch
 
 void GGS__5B_templateInstructionSwitchBranchAST_5D_::description (String & ioString,
                                                                   const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array templateInstructionSwitchBranchAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@templateInstructionSwitchBranchAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -5456,10 +5456,10 @@ GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ GGS__5B_templateInstruc
 
 void GGS__5B_templateInstructionSwitchBranchForGeneration_5D_::description (String & ioString,
                                                                             const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array templateInstructionSwitchBranchForGeneration, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@templateInstructionSwitchBranchForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 

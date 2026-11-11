@@ -767,10 +767,10 @@ GGS__5B_templateDelimitor_32_AST_5D_ GGS__5B_templateDelimitor_32_AST_5D_::add_o
 
 void GGS__5B_templateDelimitor_32_AST_5D_::description (String & ioString,
                                                         const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array templateDelimitor_32_AST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@templateDelimitor_32_AST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -1241,10 +1241,10 @@ GGS__5B_templateReplacementAST_5D_ GGS__5B_templateReplacementAST_5D_::add_opera
 
 void GGS__5B_templateReplacementAST_5D_::description (String & ioString,
                                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array templateReplacementAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@templateReplacementAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -1695,10 +1695,10 @@ GGS__5B_lexicalAttributeAST_5D_ GGS__5B_lexicalAttributeAST_5D_::add_operation (
 
 void GGS__5B_lexicalAttributeAST_5D_::description (String & ioString,
                                                    const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array lexicalAttributeAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@lexicalAttributeAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -2139,10 +2139,10 @@ GGS__5B_lexicalStyleAST_5D_ GGS__5B_lexicalStyleAST_5D_::add_operation (const GG
 
 void GGS__5B_lexicalStyleAST_5D_::description (String & ioString,
                                                const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array lexicalStyleAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@lexicalStyleAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -2583,10 +2583,10 @@ GGS__5B_terminalDeclarationAST_5D_ GGS__5B_terminalDeclarationAST_5D_::add_opera
 
 void GGS__5B_terminalDeclarationAST_5D_::description (String & ioString,
                                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array terminalDeclarationAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@terminalDeclarationAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -2938,10 +2938,10 @@ GGS__5B_lexicalMessageDeclarationAST_5D_ GGS__5B_lexicalMessageDeclarationAST_5D
 
 void GGS__5B_lexicalMessageDeclarationAST_5D_::description (String & ioString,
                                                             const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array lexicalMessageDeclarationAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@lexicalMessageDeclarationAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -3382,10 +3382,10 @@ GGS__5B_lexicalListDeclarationAST_5D_ GGS__5B_lexicalListDeclarationAST_5D_::add
 
 void GGS__5B_lexicalListDeclarationAST_5D_::description (String & ioString,
                                                          const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array lexicalListDeclarationAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@lexicalListDeclarationAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -3737,10 +3737,10 @@ GGS__5B_abstractLexicalRuleAST_5D_ GGS__5B_abstractLexicalRuleAST_5D_::add_opera
 
 void GGS__5B_abstractLexicalRuleAST_5D_::description (String & ioString,
                                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array abstractLexicalRuleAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@abstractLexicalRuleAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -4163,10 +4163,10 @@ GGS__5B_indexingAST_5D_ GGS__5B_indexingAST_5D_::add_operation (const GGS__5B_in
 
 void GGS__5B_indexingAST_5D_::description (String & ioString,
                                            const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array indexingAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@indexingAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -4795,10 +4795,10 @@ GGS__5B_lexicalInstructionAST_5D_ GGS__5B_lexicalInstructionAST_5D_::add_operati
 
 void GGS__5B_lexicalInstructionAST_5D_::description (String & ioString,
                                                      const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array lexicalInstructionAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@lexicalInstructionAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -5221,10 +5221,10 @@ GGS__5B_lexicalWhileBranchAST_5D_ GGS__5B_lexicalWhileBranchAST_5D_::add_operati
 
 void GGS__5B_lexicalWhileBranchAST_5D_::description (String & ioString,
                                                      const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array lexicalWhileBranchAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@lexicalWhileBranchAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -5576,10 +5576,10 @@ GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_ GGS__5B_lexicalRoutin
 
 void GGS__5B_lexicalRoutineOrFunctionFormalInputArgumentAST_5D_::description (String & ioString,
                                                                               const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array lexicalRoutineOrFunctionFormalInputArgumentAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@lexicalRoutineOrFunctionFormalInputArgumentAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -6002,10 +6002,10 @@ GGS__5B_sentLexicalAttributeAST_5D_ GGS__5B_sentLexicalAttributeAST_5D_::add_ope
 
 void GGS__5B_sentLexicalAttributeAST_5D_::description (String & ioString,
                                                        const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array sentLexicalAttributeAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@sentLexicalAttributeAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -6446,10 +6446,10 @@ GGS__5B_lexicalListEntryAST_5D_ GGS__5B_lexicalListEntryAST_5D_::add_operation (
 
 void GGS__5B_lexicalListEntryAST_5D_::description (String & ioString,
                                                    const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array lexicalListEntryAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@lexicalListEntryAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -6910,10 +6910,10 @@ GGS__5B_semanticDeclarationAST_5D_ GGS__5B_semanticDeclarationAST_5D_::add_opera
 
 void GGS__5B_semanticDeclarationAST_5D_::description (String & ioString,
                                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array semanticDeclarationAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@semanticDeclarationAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -7265,10 +7265,10 @@ GGS__5B_lexicalSentValue_5D_ GGS__5B_lexicalSentValue_5D_::add_operation (const 
 
 void GGS__5B_lexicalSentValue_5D_::description (String & ioString,
                                                 const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array lexicalSentValue, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@lexicalSentValue], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -7620,10 +7620,10 @@ GGS__5B_semanticDeclarationForGeneration_5D_ GGS__5B_semanticDeclarationForGener
 
 void GGS__5B_semanticDeclarationForGeneration_5D_::description (String & ioString,
                                                                 const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array semanticDeclarationForGeneration, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@semanticDeclarationForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -8068,10 +8068,10 @@ GGS__5B_terminalAST_5D_ GGS__5B_terminalAST_5D_::add_operation (const GGS__5B_te
 
 void GGS__5B_terminalAST_5D_::description (String & ioString,
                                            const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array terminalAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@terminalAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -8552,10 +8552,10 @@ GGS__5B_templateDelimitorAST_5D_ GGS__5B_templateDelimitorAST_5D_::add_operation
 
 void GGS__5B_templateDelimitorAST_5D_::description (String & ioString,
                                                     const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array templateDelimitorAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@templateDelimitorAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -10008,10 +10008,10 @@ GGS__5B_formalParameterAST_5D_ GGS__5B_formalParameterAST_5D_::add_operation (co
 
 void GGS__5B_formalParameterAST_5D_::description (String & ioString,
                                                   const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array formalParameterAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@formalParameterAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -10363,10 +10363,10 @@ GGS__5B_formalInputParameterAST_5D_ GGS__5B_formalInputParameterAST_5D_::add_ope
 
 void GGS__5B_formalInputParameterAST_5D_::description (String & ioString,
                                                        const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array formalInputParameterAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@formalInputParameterAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -10837,10 +10837,10 @@ GGS__5B_filewrapperTemplateAST_5D_ GGS__5B_filewrapperTemplateAST_5D_::add_opera
 
 void GGS__5B_filewrapperTemplateAST_5D_::description (String & ioString,
                                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array filewrapperTemplateAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@filewrapperTemplateAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -11192,10 +11192,10 @@ GGS__5B_formalTemplateInputParameterAST_5D_ GGS__5B_formalTemplateInputParameter
 
 void GGS__5B_formalTemplateInputParameterAST_5D_::description (String & ioString,
                                                                const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array formalTemplateInputParameterAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@formalTemplateInputParameterAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -11656,10 +11656,10 @@ GGS__5B_typedProperty_5D_ GGS__5B_typedProperty_5D_::add_operation (const GGS__5
 
 void GGS__5B_typedProperty_5D_::description (String & ioString,
                                              const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array typedProperty, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@typedProperty], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -12011,10 +12011,10 @@ GGS__5B_enumerationDescriptor_5D_ GGS__5B_enumerationDescriptor_5D_::add_operati
 
 void GGS__5B_enumerationDescriptor_5D_::description (String & ioString,
                                                      const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array enumerationDescriptor, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@enumerationDescriptor], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 

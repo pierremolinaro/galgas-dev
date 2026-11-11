@@ -163,10 +163,10 @@ GGS__5B_logAST_5D_ GGS__5B_logAST_5D_::add_operation (const GGS__5B_logAST_5D_ &
 
 void GGS__5B_logAST_5D_::description (String & ioString,
                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array logAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@logAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -518,10 +518,10 @@ GGS__5B_semanticInstructionForGeneration_5D_ GGS__5B_semanticInstructionForGener
 
 void GGS__5B_semanticInstructionForGeneration_5D_::description (String & ioString,
                                                                 const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array semanticInstructionForGeneration, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@semanticInstructionForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -1039,10 +1039,10 @@ GGS__5B_actualParameterForGeneration_5D_ GGS__5B_actualParameterForGeneration_5D
 
 void GGS__5B_actualParameterForGeneration_5D_::description (String & ioString,
                                                             const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array actualParameterForGeneration, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@actualParameterForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -2746,10 +2746,10 @@ GGS__5B_fixitElementAST_5D_ GGS__5B_fixitElementAST_5D_::add_operation (const GG
 
 void GGS__5B_fixitElementAST_5D_::description (String & ioString,
                                                const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array fixitElementAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@fixitElementAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -3374,10 +3374,10 @@ GGS__5B_fixitElementForGeneration_5D_ GGS__5B_fixitElementForGeneration_5D_::add
 
 void GGS__5B_fixitElementForGeneration_5D_::description (String & ioString,
                                                          const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array fixitElementForGeneration, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@fixitElementForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -7902,10 +7902,10 @@ GGS__5B_semanticInstructionAST_5D_ GGS__5B_semanticInstructionAST_5D_::add_opera
 
 void GGS__5B_semanticInstructionAST_5D_::description (String & ioString,
                                                       const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array semanticInstructionAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@semanticInstructionAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -9379,10 +9379,10 @@ GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ GGS__5B_forInstructionEnume
 
 void GGS__5B_forInstructionEnumeratedObjectElementAST_5D_::description (String & ioString,
                                                                         const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array forInstructionEnumeratedObjectElementAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@forInstructionEnumeratedObjectElementAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -10091,10 +10091,10 @@ GGS__5B_forInstructionEnumeratedObjectAST_5D_ GGS__5B_forInstructionEnumeratedOb
 
 void GGS__5B_forInstructionEnumeratedObjectAST_5D_::description (String & ioString,
                                                                  const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array forInstructionEnumeratedObjectAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@forInstructionEnumeratedObjectAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -10463,10 +10463,10 @@ GGS__5B_localConstant_5D_ GGS__5B_localConstant_5D_::add_operation (const GGS__5
 
 void GGS__5B_localConstant_5D_::description (String & ioString,
                                              const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array localConstant, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@localConstant], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -10953,10 +10953,10 @@ GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ GGS__5B_forInstructionEn
 
 void GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_::description (String & ioString,
                                                                            const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array forInstructionEnumeratedObjectForGeneration, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@forInstructionEnumeratedObjectForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -11403,10 +11403,10 @@ GGS__5B_switchBranchAST_5D_ GGS__5B_switchBranchAST_5D_::add_operation (const GG
 
 void GGS__5B_switchBranchAST_5D_::description (String & ioString,
                                                const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array switchBranchAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@switchBranchAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -11758,10 +11758,10 @@ GGS__5B_switchExtractedValuesAST_5D_ GGS__5B_switchExtractedValuesAST_5D_::add_o
 
 void GGS__5B_switchExtractedValuesAST_5D_::description (String & ioString,
                                                         const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array switchExtractedValuesAST, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@switchExtractedValuesAST], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -12212,10 +12212,10 @@ GGS__5B_switchBranchForGeneration_5D_ GGS__5B_switchBranchForGeneration_5D_::add
 
 void GGS__5B_switchBranchForGeneration_5D_::description (String & ioString,
                                                          const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array switchBranchForGeneration, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@switchBranchForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -12567,10 +12567,10 @@ GGS__5B_extractedAssociatedValueForGeneration_5D_ GGS__5B_extractedAssociatedVal
 
 void GGS__5B_extractedAssociatedValueForGeneration_5D_::description (String & ioString,
                                                                      const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array extractedAssociatedValueForGeneration, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@extractedAssociatedValueForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
@@ -14749,10 +14749,10 @@ GGS__5B_semanticExpressionForGeneration_5D_ GGS__5B_semanticExpressionForGenerat
 
 void GGS__5B_semanticExpressionForGeneration_5D_::description (String & ioString,
                                                                const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array semanticExpressionForGeneration, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@semanticExpressionForGeneration], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 

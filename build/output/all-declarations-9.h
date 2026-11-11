@@ -4531,10 +4531,6 @@ class GGS__5B_galgasQualifiedFeature_5D_ final : public AC_GALGAS_root {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_galgasQualifiedFeature_5D_ ;
-  friend class DownEnumerator__5B_galgasQualifiedFeature_5D_ ;
-
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -5870,10 +5866,6 @@ class GGS__5B_filewrapperTemplateForGeneration_5D_ final : public AC_GALGAS_root
 
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_filewrapperTemplateForGeneration_5D_ ;
-  friend class DownEnumerator__5B_filewrapperTemplateForGeneration_5D_ ;
 
 //-- Start of type generic part
 

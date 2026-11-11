@@ -178,10 +178,6 @@ class GGS__5B_logAST_5D_ final : public AC_GALGAS_root {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_logAST_5D_ ;
-  friend class DownEnumerator__5B_logAST_5D_ ;
-
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -430,10 +426,6 @@ class GGS__5B_semanticInstructionForGeneration_5D_ final : public AC_GALGAS_root
 
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_semanticInstructionForGeneration_5D_ ;
-  friend class DownEnumerator__5B_semanticInstructionForGeneration_5D_ ;
 
 //-- Start of type generic part
 
@@ -766,10 +758,6 @@ class GGS__5B_actualParameterForGeneration_5D_ final : public AC_GALGAS_root {
 
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_actualParameterForGeneration_5D_ ;
-  friend class DownEnumerator__5B_actualParameterForGeneration_5D_ ;
 
 //-- Start of type generic part
 
@@ -2907,10 +2895,6 @@ class GGS__5B_fixitElementAST_5D_ final : public AC_GALGAS_root {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_fixitElementAST_5D_ ;
-  friend class DownEnumerator__5B_fixitElementAST_5D_ ;
-
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -3834,10 +3818,6 @@ class GGS__5B_fixitElementForGeneration_5D_ final : public AC_GALGAS_root {
 
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_fixitElementForGeneration_5D_ ;
-  friend class DownEnumerator__5B_fixitElementForGeneration_5D_ ;
 
 //-- Start of type generic part
 
@@ -9910,10 +9890,6 @@ class GGS__5B_enumerationDescriptor_5D_ final : public AC_GALGAS_root {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_enumerationDescriptor_5D_ ;
-  friend class DownEnumerator__5B_enumerationDescriptor_5D_ ;
-
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -10087,10 +10063,6 @@ class GGS__5B_typedProperty_5D_ final : public AC_GALGAS_root {
 
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_typedProperty_5D_ ;
-  friend class DownEnumerator__5B_typedProperty_5D_ ;
 
 //-- Start of type generic part
 
@@ -14856,10 +14828,6 @@ class GGS__5B_semanticInstructionAST_5D_ final : public AC_GALGAS_root {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_semanticInstructionAST_5D_ ;
-  friend class DownEnumerator__5B_semanticInstructionAST_5D_ ;
-
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -16207,10 +16175,6 @@ class GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ final : public AC_GAL
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ ;
-  friend class DownEnumerator__5B_forInstructionEnumeratedObjectElementAST_5D_ ;
-
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -16639,10 +16603,6 @@ class GGS__5B_forInstructionEnumeratedObjectAST_5D_ final : public AC_GALGAS_roo
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ ;
-  friend class DownEnumerator__5B_forInstructionEnumeratedObjectAST_5D_ ;
-
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -16827,10 +16787,6 @@ class GGS__5B_localConstant_5D_ final : public AC_GALGAS_root {
 
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_localConstant_5D_ ;
-  friend class DownEnumerator__5B_localConstant_5D_ ;
 
 //-- Start of type generic part
 
@@ -17120,10 +17076,6 @@ class GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ final : public AC_
 
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ ;
-  friend class DownEnumerator__5B_forInstructionEnumeratedObjectForGeneration_5D_ ;
 
 //-- Start of type generic part
 
@@ -17587,10 +17539,6 @@ class GGS__5B_switchBranchAST_5D_ final : public AC_GALGAS_root {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_switchBranchAST_5D_ ;
-  friend class DownEnumerator__5B_switchBranchAST_5D_ ;
-
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -17764,10 +17712,6 @@ class GGS__5B_switchExtractedValuesAST_5D_ final : public AC_GALGAS_root {
 
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_switchExtractedValuesAST_5D_ ;
-  friend class DownEnumerator__5B_switchExtractedValuesAST_5D_ ;
 
 //-- Start of type generic part
 
@@ -18126,10 +18070,6 @@ class GGS__5B_switchBranchForGeneration_5D_ final : public AC_GALGAS_root {
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
 
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_switchBranchForGeneration_5D_ ;
-  friend class DownEnumerator__5B_switchBranchForGeneration_5D_ ;
-
 //-- Start of type generic part
 
 //--------------------------------- Initializers
@@ -18303,10 +18243,6 @@ class GGS__5B_extractedAssociatedValueForGeneration_5D_ final : public AC_GALGAS
 
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_extractedAssociatedValueForGeneration_5D_ ;
-  friend class DownEnumerator__5B_extractedAssociatedValueForGeneration_5D_ ;
 
 //-- Start of type generic part
 
@@ -19928,10 +19864,6 @@ class GGS__5B_semanticExpressionForGeneration_5D_ final : public AC_GALGAS_root 
 
   public: virtual void description (String & ioString,
                                     const int32_t inIndentation) const override ;
-
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_semanticExpressionForGeneration_5D_ ;
-  friend class DownEnumerator__5B_semanticExpressionForGeneration_5D_ ;
 
 //-- Start of type generic part
 

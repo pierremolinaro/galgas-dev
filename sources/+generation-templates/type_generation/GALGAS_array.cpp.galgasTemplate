@@ -83,10 +83,10 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GGS_%!TY
 
 void GGS_%!TYPE_IDENTIFIER%::description (%?^%String & ioString,
      %!^%const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array %!ELEMENT_TYPE_IDENTIFIER%, ") ;
-  ioString.appendSigned (mSharedArray.count()) ;
+  ioString.appendCString ("<array [@%!ELEMENT_TYPE_IDENTIFIER%], ") ;
+  ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count() > 1) ? "s" : "") ;
+  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
   ioString.appendCString (">") ;
 }
 
