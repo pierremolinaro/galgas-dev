@@ -34,7 +34,7 @@ syntax extension galgas4DeclarationsSyntax {
       isEquatable = true
     end
     ${$
-    var propertyList = @propertyInCollectionListAST ()
+    var propertyList = [@propertyInCollectionAST] ()
     var mInsertSetterList = [@insertSetterAST] ()
     var [@mapAccessorAST] mSearchMethodList = @()
     var [@mapAccessorAST] mRemoveSetterList = @()
@@ -178,7 +178,7 @@ map @searchMethodMap {
 
 final class @mapDeclarationAST : @semanticDeclarationAST {
   private let @lstring mMapTypeName
-  private let @propertyInCollectionListAST mPropertyList
+  private let [@propertyInCollectionAST] mPropertyList
   private let [@insertSetterAST] mInsertSetterList
   private let [@mapAccessorAST] mSearchMethodList
   private let [@mapAccessorAST] mSearchSubscriptList
@@ -196,7 +196,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc addAssociatedElement (?!@galgasDeclarationAST ioDeclarations ) {
-    var structAttributeList = @propertyInCollectionListAST ()
+    var structAttributeList = [@propertyInCollectionAST] ()
     structAttributeList ++= @(
       !mutability: .constantProperty,
       "lstring".nowhere,

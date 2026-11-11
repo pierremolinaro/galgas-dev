@@ -22,7 +22,7 @@
 final class @dictDeclarationAST : @semanticDeclarationAST {
   private let @lstring mDictTypeName
   private let @lstring mKeyTypeName
-  private let @propertyInCollectionListAST mPropertyList
+  private let [@propertyInCollectionAST] mPropertyList
   private let @bool equatable #initArgLabel
 }
 
@@ -34,48 +34,6 @@ override func @dictDeclarationAST.keyRepresentation () ->@string {
 
 //--------------------------------------------------------------------------------------------------
 //   SYNTAX
-//--------------------------------------------------------------------------------------------------
-
-//syntax extension galgas3DeclarationsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    $dict$
-//  //--- Dict type name
-//    $@type$ (?let mDictTypeName) indexing (mapDefinition, structDefinition ".element")
-//    let @bool equatable
-//    select
-//      equatable = false
-//    or
-//      $%equatable$
-//      equatable = true
-//    end
-//    $:$
-//    <type_definition_ggs3> (!?ioDeclarations, ?let keyTypeName)
-//  //--- Map properties
-//    ${$
-//    var propertyList = @propertyInCollectionListAST ()
-//    repeat
-//    while
-//      <property_declaration_ggs3> (!?ioDeclarations, !? propertyList)
-//    while
-//      <method_declaration_ggs3> (!mDictTypeName, !?ioDeclarations)
-//    end
-//    $}$
-//    ioDeclarations.mDeclarationList ++= @(!@dictDeclarationAST (
-//      !isPredefined: false,
-//      mDictTypeName,
-//      keyTypeName,
-//      propertyList,
-//      !equatable: equatable
-//    ))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
 //--------------------------------------------------------------------------------------------------
 
 syntax extension galgas4DeclarationsSyntax {
@@ -97,7 +55,7 @@ syntax extension galgas4DeclarationsSyntax {
     <type_definition> (!?ioDeclarations, ?let keyTypeName)
   //--- Map properties
     ${$
-    var propertyList = @propertyInCollectionListAST ()
+    var propertyList = [@propertyInCollectionAST] ()
     repeat
     while
       <property_declaration> (!?ioDeclarations, !? propertyList)
@@ -124,7 +82,7 @@ syntax extension galgas4DeclarationsSyntax {
 
 override proc @dictDeclarationAST.addAssociatedElement (?!@galgasDeclarationAST ioDeclarations ) {
 //--- Add element
-  var @propertyInCollectionListAST structAttributeList = @()
+  var [@propertyInCollectionAST] structAttributeList = @()
   structAttributeList ++= @(
     !mutability: .constantProperty,
     self.mKeyTypeName,

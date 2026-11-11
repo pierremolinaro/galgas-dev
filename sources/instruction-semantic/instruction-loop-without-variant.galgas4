@@ -91,7 +91,7 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
      inAnalysisContext,
      !?ioTypeMap,
      !?ioVariableMap,
-     ?let @ifTestListForGeneration testListForGeneration
+     ?let [@ifTestForGeneration] testListForGeneration
    )
   //--- Begin override for analyze loop instruction list
     !?ioVariableMap.openOverrideForRepeatBlock ()
@@ -141,7 +141,7 @@ final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
 final class @loopInstructionWithoutVariantForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
   private let [@semanticInstructionForGeneration] mFirstInstructions
-  private let @ifTestListForGeneration mLoopExpression
+  private let [@ifTestForGeneration] mLoopExpression
   private let [@semanticInstructionForGeneration] mSecondInstructions
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

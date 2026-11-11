@@ -119,7 +119,7 @@ proc [@CommaSeparatedExpressionElement].analyzeSemanticExpressionList (let @lstr
                                      let @analysisContext inAnalysisContext,
                                      ?!@unifiedTypeMap ioTypeMap,
                                      ?!@localVarManager ioVariableMap,
-                                     !@ifTestListForGeneration outTestListForGeneration) {
+                                     ![@ifTestForGeneration] outTestListForGeneration) {
   outTestListForGeneration = @()
   for entry in self do
     switch entry.mExpression
@@ -139,7 +139,7 @@ proc [@CommaSeparatedExpressionElement].analyzeSemanticExpressionList (let @lstr
         analyzed_if_expression,
         ?let if_expression
       )
-      outTestListForGeneration ++= @(.regular (!exp: if_expression))
+      outTestListForGeneration ++= .regular (!exp: if_expression)
       !?ioVariableMap.openOverrideForSelectBlock ()
       !?ioVariableMap.openBranch ()
     case letVarExp (varName, isConstant, exp, *, @lstring typeName) :
@@ -181,12 +181,12 @@ proc [@CommaSeparatedExpressionElement].analyzeSemanticExpressionList (let @lstr
         end
         castType = unwrappedType
         testType = analyzedExpression.mResultType
-        outTestListForGeneration ++= @(.optionalExp (
+        outTestListForGeneration ++= .optionalExp (
           !targetVarCppName: targetVariableCppName,
           !isConstant: isConstant,
           !exp: analyzedExpression,
           !targetType: unwrappedType
-        ))
+        )
     //--- Check this is a class
       elsif analyzedExpression.mResultType.definition.typeKind.isClassType then
         if typeName.string == "" then
@@ -232,12 +232,12 @@ proc [@CommaSeparatedExpressionElement].analyzeSemanticExpressionList (let @lstr
             )
           end
         end
-        outTestListForGeneration ++= @(.letVarExp (
+        outTestListForGeneration ++= .letVarExp (
           !targetVarCppName: targetVariableCppName,
           !exp: analyzedExpression,
           !targetType: castType,
           !testType: testType
-        ))
+        )
       elsif let weakRefType = analyzedExpression.mResultType.definition.typeKind.getWeakReferenceType then
         if typeName.string == "" then
           castType = weakRefType.referenceType
@@ -291,12 +291,12 @@ proc [@CommaSeparatedExpressionElement].analyzeSemanticExpressionList (let @lstr
             )
           end
         end
-        outTestListForGeneration ++= @(.letVarExp (
+        outTestListForGeneration ++= .letVarExp (
           !targetVarCppName: targetVariableCppName,
           !exp: analyzedExpression,
           !targetType: castType,
           !testType: testType
-        ))
+        )
       else
         error (analyzedExpression.mLocation
          : "expression should be a class instance, or a weak reference: it is an @"
@@ -325,76 +325,64 @@ enum @ifTestForGeneration {
 
 //--------------------------------------------------------------------------------------------------
 
-list @ifTestListForGeneration {
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  private let @ifTestForGeneration mExpression
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  proc generateInstruction (?!@stringset ioInclusionSet,
-                              ?!@uint ioTemporaryVariableIndex,
-                              ?!@stringset ioUnusedVariableCppNameSet,
-                              ?!@string ioGeneratedCode,
-                              !@string outTestVar) {
-  //--- Generate test expression
-    outTestVar = "test_" + ioTemporaryVariableIndex.string
-    ioTemporaryVariableIndex += 1
-    ioGeneratedCode += "GalgasBool " + outTestVar + " = GalgasBool::boolTrue ;\n"
-    for entry in self do
-      ioGeneratedCode += "if (GalgasBool::boolTrue == " + outTestVar + ") {\n"
-      !?ioGeneratedCode.incIndentation (2)
-      switch entry.mExpression
-      case regular (exp) :
-        exp.generateExpression
-          (!?ioGeneratedCode,
-          !?ioInclusionSet,
-          !?ioTemporaryVariableIndex,
-          !?ioUnusedVariableCppNameSet,
-          ?let cppVarName
-        )
-        ioGeneratedCode += outTestVar + " = " + cppVarName + ".boolEnum () ;\n"
-      case letVarExp (targetVarCppName, exp, targetType, testType) :
-        targetType.addHeaderFileName (!?ioInclusionSet)
-        testType.addHeaderFileName (!?ioInclusionSet)
-        let targetTypeName = targetType.identifierRepresentation
-        let testTypeName = testType.identifierRepresentation
-        exp.generateExpression
-          (!?ioGeneratedCode,
-          !?ioInclusionSet,
-          !?ioTemporaryVariableIndex,
-          !?ioUnusedVariableCppNameSet,
-          ?let cppVarName
-        )
-        ioGeneratedCode += "GGS_" + targetTypeName + " " + targetVarCppName
-        ioGeneratedCode += " (dynamic_cast <const cPtr_" + testTypeName + " *> (" + cppVarName + ".ptr ())) ;\n"
-        ioGeneratedCode += "if (nullptr == " + targetVarCppName + ".ptr ()) {\n"
-        ioGeneratedCode += "  " + outTestVar + " = GalgasBool::boolFalse ;\n"
-        ioGeneratedCode += "}\n"
-      case optionalExp (targetVarCppName, isConstant, exp, targetType) :
-        let targetTypeName = targetType.identifierRepresentation
-        exp.generateExpression
-          (!?ioGeneratedCode,
-          !?ioInclusionSet,
-          !?ioTemporaryVariableIndex,
-          !?ioUnusedVariableCppNameSet,
-          ?let cppVarName
-        )
-        if isConstant then
-          ioGeneratedCode += "const "
-        end
-        ioGeneratedCode += "GGS_" + targetTypeName + " " + targetVarCppName
-        ioGeneratedCode += " = " + cppVarName + ".unwrappedValue () ;\n"
-        ioGeneratedCode += "if (!" + cppVarName + ".isValuated ()) {\n"
-        ioGeneratedCode += "  " + outTestVar + " = GalgasBool::boolFalse ;\n"
-        ioGeneratedCode += "}\n"
+proc [@ifTestForGeneration].generateInstruction (?!@stringset ioInclusionSet,
+                            ?!@uint ioTemporaryVariableIndex,
+                            ?!@stringset ioUnusedVariableCppNameSet,
+                            ?!@string ioGeneratedCode,
+                            !@string outTestVar) {
+//--- Generate test expression
+  outTestVar = "test_" + ioTemporaryVariableIndex.string
+  ioTemporaryVariableIndex += 1
+  ioGeneratedCode += "GalgasBool " + outTestVar + " = GalgasBool::boolTrue ;\n"
+  for expression in self do
+    ioGeneratedCode += "if (GalgasBool::boolTrue == " + outTestVar + ") {\n"
+    !?ioGeneratedCode.incIndentation (2)
+    switch expression
+    case regular (exp) :
+      exp.generateExpression (
+        !?ioGeneratedCode,
+        !?ioInclusionSet,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
+        ?let cppVarName
+      )
+      ioGeneratedCode += outTestVar + " = " + cppVarName + ".boolEnum () ;\n"
+    case letVarExp (targetVarCppName, exp, targetType, testType) :
+      targetType.addHeaderFileName (!?ioInclusionSet)
+      testType.addHeaderFileName (!?ioInclusionSet)
+      let targetTypeName = targetType.identifierRepresentation
+      let testTypeName = testType.identifierRepresentation
+      exp.generateExpression
+        (!?ioGeneratedCode,
+        !?ioInclusionSet,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
+        ?let cppVarName
+      )
+      ioGeneratedCode += "GGS_" + targetTypeName + " " + targetVarCppName
+      ioGeneratedCode += " (dynamic_cast <const cPtr_" + testTypeName + " *> (" + cppVarName + ".ptr ())) ;\n"
+      ioGeneratedCode += "if (nullptr == " + targetVarCppName + ".ptr ()) {\n"
+      ioGeneratedCode += "  " + outTestVar + " = GalgasBool::boolFalse ;\n"
+      ioGeneratedCode += "}\n"
+    case optionalExp (targetVarCppName, isConstant, exp, targetType) :
+      let targetTypeName = targetType.identifierRepresentation
+      exp.generateExpression
+        (!?ioGeneratedCode,
+        !?ioInclusionSet,
+        !?ioTemporaryVariableIndex,
+        !?ioUnusedVariableCppNameSet,
+        ?let cppVarName
+      )
+      if isConstant then
+        ioGeneratedCode += "const "
       end
+      ioGeneratedCode += "GGS_" + targetTypeName + " " + targetVarCppName
+      ioGeneratedCode += " = " + cppVarName + ".unwrappedValue () ;\n"
+      ioGeneratedCode += "if (!" + cppVarName + ".isValuated ()) {\n"
+      ioGeneratedCode += "  " + outTestVar + " = GalgasBool::boolFalse ;\n"
+      ioGeneratedCode += "}\n"
     end
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+  end
 }
 
 //--------------------------------------------------------------------------------------------------

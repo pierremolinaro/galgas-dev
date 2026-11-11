@@ -34,7 +34,7 @@ syntax extension galgas4DeclarationsSyntax {
       isEquatable = true
     end
     ${$
-    var @propertyInCollectionListAST attributeList = @()
+    var [@propertyInCollectionAST] attributeList = @()
     repeat
     while
       <property_declaration> (!?ioDeclarations, !? attributeList)
@@ -88,7 +88,7 @@ struct @sortedListSortDescriptorAST {
 
 final class @sortedListDeclarationAST : @semanticDeclarationAST {
   private let @lstring mSortedListTypeName
-  private let @propertyInCollectionListAST mPropertyList
+  private let [@propertyInCollectionAST] mPropertyList
   private let [@sortedListSortDescriptorAST] mSortDescriptorList
   private let @bool equatable #initArgLabel
 
@@ -113,7 +113,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
 
   override proc addAssociatedElement
     (?!@galgasDeclarationAST ioDeclarations ) {
-    var @propertyInCollectionListAST structAttributeList = @()
+    var [@propertyInCollectionAST] structAttributeList = @()
     for property in self.mPropertyList do
       structAttributeList ++= @(
         !mutability: property.mutability,

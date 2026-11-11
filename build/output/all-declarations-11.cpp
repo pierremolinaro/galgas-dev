@@ -8,498 +8,6 @@
 #include "all-declarations-11.h"
 
 //--------------------------------------------------------------------------------------------------
-
-GGS_typeNameFormalParameterName::GGS_typeNameFormalParameterName (void) :
-mProperty_mFormalSelector (),
-mProperty_mFormalParameterTypeName (),
-mProperty_mFormalParameterName () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeNameFormalParameterName::GGS_typeNameFormalParameterName (const GGS_typeNameFormalParameterName & inSource) :
-mProperty_mFormalSelector (inSource.mProperty_mFormalSelector),
-mProperty_mFormalParameterTypeName (inSource.mProperty_mFormalParameterTypeName),
-mProperty_mFormalParameterName (inSource.mProperty_mFormalParameterName) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeNameFormalParameterName & GGS_typeNameFormalParameterName::operator = (const GGS_typeNameFormalParameterName & inSource) {
-  mProperty_mFormalSelector = inSource.mProperty_mFormalSelector ;
-  mProperty_mFormalParameterTypeName = inSource.mProperty_mFormalParameterTypeName ;
-  mProperty_mFormalParameterName = inSource.mProperty_mFormalParameterName ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_typeNameFormalParameterName GGS_typeNameFormalParameterName::init_21__21__21_ (const GGS_lstring & in_mFormalSelector,
-                                                                                   const GGS_lstring & in_mFormalParameterTypeName,
-                                                                                   const GGS_lstring & in_mFormalParameterName,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_typeNameFormalParameterName result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mFormalSelector = in_mFormalSelector ;
-  result.mProperty_mFormalParameterTypeName = in_mFormalParameterTypeName ;
-  result.mProperty_mFormalParameterName = in_mFormalParameterName ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeNameFormalParameterName::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_typeNameFormalParameterName::GGS_typeNameFormalParameterName (const GGS_lstring & inOperand0,
-                                                                  const GGS_lstring & inOperand1,
-                                                                  const GGS_lstring & inOperand2) :
-mProperty_mFormalSelector (inOperand0),
-mProperty_mFormalParameterTypeName (inOperand1),
-mProperty_mFormalParameterName (inOperand2) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_typeNameFormalParameterName::isValid (void) const {
-  return mProperty_mFormalSelector.isValid () && mProperty_mFormalParameterTypeName.isValid () && mProperty_mFormalParameterName.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeNameFormalParameterName::drop (void) {
-  mProperty_mFormalSelector.drop () ;
-  mProperty_mFormalParameterTypeName.drop () ;
-  mProperty_mFormalParameterName.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_typeNameFormalParameterName::description (String & ioString,
-                                                   const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @typeNameFormalParameterName:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mFormalSelector.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mFormalParameterTypeName.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mFormalParameterName.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @typeNameFormalParameterName generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeNameFormalParameterName ("typeNameFormalParameterName",
-                                                                                nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_typeNameFormalParameterName::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typeNameFormalParameterName ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Class for element of '@_5B__5B_typeNameFormalParameterName_5D__5D_' array
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B__5B_typeNameFormalParameterName_5D__5D_::GGS__5B__5B_typeNameFormalParameterName_5D__5D_ (void) :
-AC_GALGAS_root (),
-mSharedArray (),
-mIsValid (false) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B__5B_typeNameFormalParameterName_5D__5D_::GGS__5B__5B_typeNameFormalParameterName_5D__5D_ (const GGS__5B__5B_typeNameFormalParameterName_5D__5D_ & inSource) :
-AC_GALGAS_root (),
-mSharedArray (inSource.mSharedArray),
-mIsValid (inSource.mIsValid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B__5B_typeNameFormalParameterName_5D__5D_ & GGS__5B__5B_typeNameFormalParameterName_5D__5D_::operator = (const GGS__5B__5B_typeNameFormalParameterName_5D__5D_ & inSource)  {
-  mSharedArray = inSource.mSharedArray ;
-  mIsValid = inSource.mIsValid ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B__5B_typeNameFormalParameterName_5D__5D_ GGS__5B__5B_typeNameFormalParameterName_5D__5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B__5B_typeNameFormalParameterName_5D__5D_ result ;
-  result.mIsValid = true ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B__5B_typeNameFormalParameterName_5D__5D_::drop (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = false ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B__5B_typeNameFormalParameterName_5D__5D_::removeAll (void) {
-  mSharedArray.removeAll () ;
-  mIsValid = true ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B__5B_typeNameFormalParameterName_5D__5D_::plusPlusAssignOperation (const GGS__5B_typeNameFormalParameterName_5D_ & inValue
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  mSharedArray.appendObject (inValue) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_uint GGS__5B__5B_typeNameFormalParameterName_5D__5D_::getter_count (UNUSED_LOCATION_ARGS) const {
-  GGS_uint result ;
-  if (isValid ()) {
-    result = GGS_uint (uint32_t (mSharedArray.count ())) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B__5B_typeNameFormalParameterName_5D__5D_ GGS__5B__5B_typeNameFormalParameterName_5D__5D_::add_operation (const GGS__5B__5B_typeNameFormalParameterName_5D__5D_ & inOperand,
-                                                                                                                Compiler * /* inCompiler */
-                                                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS__5B__5B_typeNameFormalParameterName_5D__5D_ result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B__5B_typeNameFormalParameterName_5D__5D_::description (String & ioString,
-                                                                   const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array [@_5B_typeNameFormalParameterName_5D_], ") ;
-  ioString.appendSigned (mSharedArray.count ()) ;
-  ioString.appendCString (" object") ;
-  ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B__5B_typeNameFormalParameterName_5D__5D_::plusAssignOperation (const GGS__5B__5B_typeNameFormalParameterName_5D__5D_ inOperand,
-                                                                           Compiler * /* inCompiler */
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mSharedArray.appendDataFromPointer (
-      inOperand.mSharedArray.unsafeArrayPointer (),
-      inOperand.mSharedArray.count ()
-    ) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B__5B_typeNameFormalParameterName_5D__5D_::setter_append (const GGS__5B_typeNameFormalParameterName_5D_ inValue,
-                                                                     Compiler * /* inCompiler */
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    mSharedArray.appendObject (inValue) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B__5B_typeNameFormalParameterName_5D__5D_::setter_removeAll (Compiler * /* inCompiler */
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  removeAll () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B__5B_typeNameFormalParameterName_5D__5D_::setter_set (const GGS__5B_typeNameFormalParameterName_5D_ inValue,
-                                                                  const GGS_uint inIndex,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t idx = int32_t (inIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'set' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray (idx COMMA_THERE) = inValue ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B__5B_typeNameFormalParameterName_5D__5D_::setter_insert (const GGS__5B_typeNameFormalParameterName_5D_ inValue,
-                                                                     const GGS_uint inInsertionIndex,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid ()) {
-    const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
-    if (idx > mSharedArray.count ()) {
-      String errorMessage = "'insert' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      mSharedArray.insertObjectAtIndex (inValue, idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B__5B_typeNameFormalParameterName_5D__5D_::setter_remove (GGS__5B_typeNameFormalParameterName_5D_ & outValue,
-                                                                     const GGS_uint inRemoveIndex,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {
-  outValue.drop () ;
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
-    if (idx >= mSharedArray.count ()) {
-      String errorMessage = "'remove' setter call with index " ;
-      errorMessage.appendSigned (idx) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      outValue = mSharedArray (idx COMMA_THERE) ;
-      mSharedArray.removeObjectAtIndex (idx COMMA_THERE) ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B__5B_typeNameFormalParameterName_5D__5D_::setter_removeFirst (GGS__5B_typeNameFormalParameterName_5D_ & outValue,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeFirst' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (0 COMMA_THERE) ;
-    mSharedArray.removeObjectAtIndex (0 COMMA_THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS__5B__5B_typeNameFormalParameterName_5D__5D_::setter_removeLast (GGS__5B_typeNameFormalParameterName_5D_ & outValue,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
-  if (!isValid ()) {
-    outValue.drop () ;
-  }else if (count () == 0) {
-    const String errorMessage = "'removeLast' setter call on an empty array" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    outValue.drop () ;
-  }else{
-    outValue = mSharedArray (mSharedArray.count () - 1 COMMA_THERE) ;
-    mSharedArray.removeLastObject (THERE) ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B__5B_typeNameFormalParameterName_5D__5D_ GGS__5B__5B_typeNameFormalParameterName_5D__5D_::getter_removingFirst (const GGS_uint & inIndex,
-                                                                                                                       Compiler * inCompiler
-                                                                                                                       COMMA_LOCATION_ARGS) const {
-  GGS__5B__5B_typeNameFormalParameterName_5D__5D_ result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
-    if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'removingFirst' getter call with argument ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B__5B_typeNameFormalParameterName_5D__5D_::init (inCompiler COMMA_THERE) ;
-      result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B__5B_typeNameFormalParameterName_5D__5D_ GGS__5B__5B_typeNameFormalParameterName_5D__5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                                                                                 const GGS_uint & inLength,
-                                                                                                                 Compiler * inCompiler
-                                                                                                                 COMMA_LOCATION_ARGS) const {
-  GGS__5B__5B_typeNameFormalParameterName_5D__5D_ result ;
-  if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
-    const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
-    const int32_t length = int32_t (inLength.uintValue ()) ;
-    if ((startIndex == 0) && (length == 0) && (count () == 0)) {
-      result = GGS__5B__5B_typeNameFormalParameterName_5D__5D_::init (inCompiler COMMA_THERE) ;
-    }else if (startIndex >= int32_t (count ())) {
-      String errorMessage ;
-      errorMessage.appendCString ("'sublist' getter call with start index ") ;
-      errorMessage.appendSigned (startIndex) ;
-      errorMessage.appendCString (" too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }else{
-      const int32_t lastIndex = startIndex + length - 1 ;
-      if (lastIndex >= int32_t (count ())) {
-        String errorMessage ;
-        errorMessage.appendCString ("'sublist' getter call with last index ") ;
-        errorMessage.appendSigned (lastIndex) ;
-        errorMessage.appendCString (" too large (array size is") ;
-        errorMessage.appendSigned (mSharedArray.count ()) ;
-        errorMessage.appendCString (")") ;
-        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-      }else{
-        result = GGS__5B__5B_typeNameFormalParameterName_5D__5D_::init (inCompiler COMMA_THERE) ;
-        result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
-      }
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_typeNameFormalParameterName_5D_ GGS__5B__5B_typeNameFormalParameterName_5D__5D_::getter_first (Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) const {
-  GGS__5B_typeNameFormalParameterName_5D_ result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'first' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray (0 COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_typeNameFormalParameterName_5D_ GGS__5B__5B_typeNameFormalParameterName_5D__5D_::getter_last (Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) const {
-  GGS__5B_typeNameFormalParameterName_5D_ result ;
-  if (!isValid ()) {
-  }else if (mSharedArray.count () == 0) {
-    const String errorMessage = "'last' getter call on an empty array'" ;
-    inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-  }else{
-    result = mSharedArray.lastObject (THERE) ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_typeNameFormalParameterName_5D_ GGS__5B__5B_typeNameFormalParameterName_5D__5D_::readSubscript__3F_ (const GGS_uint & inIndex,
-                                                                                                             Compiler * inCompiler
-                                                                                                             COMMA_LOCATION_ARGS) const {
-  GGS__5B_typeNameFormalParameterName_5D_ result ;
-  if (isValid () && inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
-    if (idx < uint32_t (mSharedArray.count ())) {
-      result = mSharedArray (int32_t (idx) COMMA_HERE) ;
-    }else{
-      String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
-      errorMessage.appendUnsigned (idx) ;
-      errorMessage.appendCString (") too large (array size is") ;
-      errorMessage.appendSigned (mSharedArray.count ()) ;
-      errorMessage.appendCString (")") ;
-      inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Down Enumerator for @_5B__5B_typeNameFormalParameterName_5D__5D_
-//--------------------------------------------------------------------------------------------------
-
-DownEnumerator__5B__5B_typeNameFormalParameterName_5D__5D_::DownEnumerator__5B__5B_typeNameFormalParameterName_5D__5D_ (const GGS__5B__5B_typeNameFormalParameterName_5D__5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (inOperand.mSharedArray.count () - 1) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_typeNameFormalParameterName_5D_ DownEnumerator__5B__5B_typeNameFormalParameterName_5D__5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_typeNameFormalParameterName_5D_ DownEnumerator__5B__5B_typeNameFormalParameterName_5D__5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// Up Enumerator for @_5B__5B_typeNameFormalParameterName_5D__5D_
-//--------------------------------------------------------------------------------------------------
-
-UpEnumerator__5B__5B_typeNameFormalParameterName_5D__5D_::UpEnumerator__5B__5B_typeNameFormalParameterName_5D__5D_ (const GGS__5B__5B_typeNameFormalParameterName_5D__5D_ & inOperand) :
-mSharedArray (inOperand.mSharedArray),
-mCurrent (0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_typeNameFormalParameterName_5D_ UpEnumerator__5B__5B_typeNameFormalParameterName_5D__5D_::current (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_typeNameFormalParameterName_5D_ UpEnumerator__5B__5B_typeNameFormalParameterName_5D__5D_::current_entry (LOCATION_ARGS) const {
-  return mSharedArray (mCurrent COMMA_THERE) ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @[[typeNameFormalParameterName]] generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B__5B_typeNameFormalParameterName_5D__5D_ ("[[typeNameFormalParameterName]]",
-                                                                                                nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS__5B__5B_typeNameFormalParameterName_5D__5D_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS__5B__5B_typeNameFormalParameterName_5D__5D_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Class for element of '@_5B_externTypeGetter_5D_' array
 //--------------------------------------------------------------------------------------------------
 
@@ -3560,85 +3068,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifExpressionKind_2E_letVarExp
 
 const GALGAS_TypeDescriptor * GGS_ifExpressionKind_2E_letVarExp_3F_::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_ifExpressionKind_2E_letVarExp_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ifTestListForGeneration_2E_element::GGS_ifTestListForGeneration_2E_element (void) :
-mProperty_mExpression () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ifTestListForGeneration_2E_element::GGS_ifTestListForGeneration_2E_element (const GGS_ifTestListForGeneration_2E_element & inSource) :
-mProperty_mExpression (inSource.mProperty_mExpression) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ifTestListForGeneration_2E_element & GGS_ifTestListForGeneration_2E_element::operator = (const GGS_ifTestListForGeneration_2E_element & inSource) {
-  mProperty_mExpression = inSource.mProperty_mExpression ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_ifTestListForGeneration_2E_element GGS_ifTestListForGeneration_2E_element::init_21_ (const GGS_ifTestForGeneration & in_mExpression,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_ifTestListForGeneration_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_mExpression = in_mExpression ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_ifTestListForGeneration_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_ifTestListForGeneration_2E_element::GGS_ifTestListForGeneration_2E_element (const GGS_ifTestForGeneration & inOperand0) :
-mProperty_mExpression (inOperand0) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_ifTestListForGeneration_2E_element::isValid (void) const {
-  return mProperty_mExpression.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_ifTestListForGeneration_2E_element::drop (void) {
-  mProperty_mExpression.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_ifTestListForGeneration_2E_element::description (String & ioString,
-                                                          const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @ifTestListForGeneration.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_mExpression.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @ifTestListForGeneration.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_ifTestListForGeneration_2E_element ("ifTestListForGeneration.element",
-                                                                                       nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_ifTestListForGeneration_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_ifTestListForGeneration_2E_element ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -17384,5 +16813,656 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_AccessControl_2E_fileprivateS
 
 const GALGAS_TypeDescriptor * GGS_AccessControl_2E_fileprivateSetAccess::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_AccessControl_2E_fileprivateSetAccess ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @AccessControl_2E_fileprivateSetAccess_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl_2E_fileprivateSetAccess_3F_::GGS_AccessControl_2E_fileprivateSetAccess_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl_2E_fileprivateSetAccess_3F_::GGS_AccessControl_2E_fileprivateSetAccess_3F_ (const GGS_AccessControl_2E_fileprivateSetAccess & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_AccessControl_2E_fileprivateSetAccess_3F_ GGS_AccessControl_2E_fileprivateSetAccess_3F_::init_nil (void) {
+  GGS_AccessControl_2E_fileprivateSetAccess_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_AccessControl_2E_fileprivateSetAccess_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_AccessControl_2E_fileprivateSetAccess_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_AccessControl_2E_fileprivateSetAccess_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_AccessControl_2E_fileprivateSetAccess () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_AccessControl_2E_fileprivateSetAccess_3F_::description (String & ioString,
+                                                                 const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @AccessControl.fileprivateSetAccess? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_AccessControl_2E_fileprivateSetAccess_3F_ ("AccessControl.fileprivateSetAccess?",
+                                                                                              nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_AccessControl_2E_fileprivateSetAccess_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_AccessControl_2E_fileprivateSetAccess_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyIndexMap_2E_element::GGS_propertyIndexMap_2E_element (void) :
+mProperty_lkey (),
+mProperty_mPropertyTypeIndex () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyIndexMap_2E_element::GGS_propertyIndexMap_2E_element (const GGS_propertyIndexMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mPropertyTypeIndex (inSource.mProperty_mPropertyTypeIndex) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyIndexMap_2E_element & GGS_propertyIndexMap_2E_element::operator = (const GGS_propertyIndexMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mPropertyTypeIndex = inSource.mProperty_mPropertyTypeIndex ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_propertyIndexMap_2E_element GGS_propertyIndexMap_2E_element::init_21__21_ (const GGS_lstring & in_lkey,
+                                                                               const GGS_unifiedTypeMapEntry & in_mPropertyTypeIndex,
+                                                                               Compiler * inCompiler
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_propertyIndexMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mPropertyTypeIndex = in_mPropertyTypeIndex ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyIndexMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyIndexMap_2E_element::GGS_propertyIndexMap_2E_element (const GGS_lstring & inOperand0,
+                                                                  const GGS_unifiedTypeMapEntry & inOperand1) :
+mProperty_lkey (inOperand0),
+mProperty_mPropertyTypeIndex (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_propertyIndexMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mPropertyTypeIndex.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyIndexMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mPropertyTypeIndex.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyIndexMap_2E_element::description (String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @propertyIndexMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mPropertyTypeIndex.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @propertyIndexMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyIndexMap_2E_element ("propertyIndexMap.element",
+                                                                                nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_propertyIndexMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_propertyIndexMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @propertyIndexMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyIndexMap_2E_element_3F_::GGS_propertyIndexMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyIndexMap_2E_element_3F_::GGS_propertyIndexMap_2E_element_3F_ (const GGS_propertyIndexMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyIndexMap_2E_element_3F_ GGS_propertyIndexMap_2E_element_3F_::init_nil (void) {
+  GGS_propertyIndexMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_propertyIndexMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_propertyIndexMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyIndexMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_propertyIndexMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyIndexMap_2E_element_3F_::description (String & ioString,
+                                                       const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @propertyIndexMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyIndexMap_2E_element_3F_ ("propertyIndexMap.element?",
+                                                                                    nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_propertyIndexMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_propertyIndexMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalLabelMap_2E_element::GGS_nonterminalLabelMap_2E_element (void) :
+mProperty_lkey (),
+mProperty_mSignatureForGeneration (),
+mProperty_mSignature (),
+mProperty_mEndOfArgumentLocation () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalLabelMap_2E_element::GGS_nonterminalLabelMap_2E_element (const GGS_nonterminalLabelMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mSignatureForGeneration (inSource.mProperty_mSignatureForGeneration),
+mProperty_mSignature (inSource.mProperty_mSignature),
+mProperty_mEndOfArgumentLocation (inSource.mProperty_mEndOfArgumentLocation) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalLabelMap_2E_element & GGS_nonterminalLabelMap_2E_element::operator = (const GGS_nonterminalLabelMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mSignatureForGeneration = inSource.mProperty_mSignatureForGeneration ;
+  mProperty_mSignature = inSource.mProperty_mSignature ;
+  mProperty_mEndOfArgumentLocation = inSource.mProperty_mEndOfArgumentLocation ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_nonterminalLabelMap_2E_element GGS_nonterminalLabelMap_2E_element::init_21__21__21__21_ (const GGS_lstring & in_lkey,
+                                                                                             const GGS__5B_formalParameterForGeneration_5D_ & in_mSignatureForGeneration,
+                                                                                             const GGS_formalParameterSignature & in_mSignature,
+                                                                                             const GGS_location & in_mEndOfArgumentLocation,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_nonterminalLabelMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mSignatureForGeneration = in_mSignatureForGeneration ;
+  result.mProperty_mSignature = in_mSignature ;
+  result.mProperty_mEndOfArgumentLocation = in_mEndOfArgumentLocation ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalLabelMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalLabelMap_2E_element::GGS_nonterminalLabelMap_2E_element (const GGS_lstring & inOperand0,
+                                                                        const GGS__5B_formalParameterForGeneration_5D_ & inOperand1,
+                                                                        const GGS_formalParameterSignature & inOperand2,
+                                                                        const GGS_location & inOperand3) :
+mProperty_lkey (inOperand0),
+mProperty_mSignatureForGeneration (inOperand1),
+mProperty_mSignature (inOperand2),
+mProperty_mEndOfArgumentLocation (inOperand3) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_nonterminalLabelMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mSignatureForGeneration.isValid () && mProperty_mSignature.isValid () && mProperty_mEndOfArgumentLocation.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalLabelMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mSignatureForGeneration.drop () ;
+  mProperty_mSignature.drop () ;
+  mProperty_mEndOfArgumentLocation.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalLabelMap_2E_element::description (String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @nonterminalLabelMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mSignatureForGeneration.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mSignature.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mEndOfArgumentLocation.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @nonterminalLabelMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonterminalLabelMap_2E_element ("nonterminalLabelMap.element",
+                                                                                   nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_nonterminalLabelMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_nonterminalLabelMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @nonterminalLabelMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalLabelMap_2E_element_3F_::GGS_nonterminalLabelMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalLabelMap_2E_element_3F_::GGS_nonterminalLabelMap_2E_element_3F_ (const GGS_nonterminalLabelMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalLabelMap_2E_element_3F_ GGS_nonterminalLabelMap_2E_element_3F_::init_nil (void) {
+  GGS_nonterminalLabelMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_nonterminalLabelMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_nonterminalLabelMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalLabelMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_nonterminalLabelMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalLabelMap_2E_element_3F_::description (String & ioString,
+                                                          const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @nonterminalLabelMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonterminalLabelMap_2E_element_3F_ ("nonterminalLabelMap.element?",
+                                                                                       nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_nonterminalLabelMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_nonterminalLabelMap_2E_element_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap_2E_element::GGS_nonterminalMap_2E_element (void) :
+mProperty_lkey (),
+mProperty_mLabelMap () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap_2E_element::GGS_nonterminalMap_2E_element (const GGS_nonterminalMap_2E_element & inSource) :
+mProperty_lkey (inSource.mProperty_lkey),
+mProperty_mLabelMap (inSource.mProperty_mLabelMap) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap_2E_element & GGS_nonterminalMap_2E_element::operator = (const GGS_nonterminalMap_2E_element & inSource) {
+  mProperty_lkey = inSource.mProperty_lkey ;
+  mProperty_mLabelMap = inSource.mProperty_mLabelMap ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_nonterminalMap_2E_element GGS_nonterminalMap_2E_element::init_21__21_ (const GGS_lstring & in_lkey,
+                                                                           const GGS_nonterminalLabelMap & in_mLabelMap,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_nonterminalMap_2E_element result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_lkey = in_lkey ;
+  result.mProperty_mLabelMap = in_mLabelMap ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap_2E_element::GGS_nonterminalMap_2E_element (const GGS_lstring & inOperand0,
+                                                              const GGS_nonterminalLabelMap & inOperand1) :
+mProperty_lkey (inOperand0),
+mProperty_mLabelMap (inOperand1) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_nonterminalMap_2E_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mLabelMap.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalMap_2E_element::drop (void) {
+  mProperty_lkey.drop () ;
+  mProperty_mLabelMap.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalMap_2E_element::description (String & ioString,
+                                                 const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @nonterminalMap.element:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_lkey.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_mLabelMap.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @nonterminalMap.element generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonterminalMap_2E_element ("nonterminalMap.element",
+                                                                              nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_nonterminalMap_2E_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_nonterminalMap_2E_element ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @nonterminalMap_2E_element_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap_2E_element_3F_::GGS_nonterminalMap_2E_element_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap_2E_element_3F_::GGS_nonterminalMap_2E_element_3F_ (const GGS_nonterminalMap_2E_element & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_nonterminalMap_2E_element_3F_ GGS_nonterminalMap_2E_element_3F_::init_nil (void) {
+  GGS_nonterminalMap_2E_element_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_nonterminalMap_2E_element_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_nonterminalMap_2E_element_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalMap_2E_element_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_nonterminalMap_2E_element () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_nonterminalMap_2E_element_3F_::description (String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @nonterminalMap.element? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_nonterminalMap_2E_element_3F_ ("nonterminalMap.element?",
+                                                                                  nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_nonterminalMap_2E_element_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_nonterminalMap_2E_element_3F_ ;
 }
 

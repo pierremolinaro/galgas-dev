@@ -305,7 +305,7 @@ private proc appendPredefinedArrayTypeAST (?!@galgasDeclarationAST ioDeclaration
 //--------------------------------------------------------------------------------------------------
 
 private proc appendPredefined2StringListTypeAST (?![@semanticDeclarationAST] ioDeclarationListASTs) {
-  var attributeList = @propertyInCollectionListAST ()
+  var attributeList = [@propertyInCollectionAST] ()
   attributeList ++= @(
     !mutability: .mutableProperty,
     "string".nowhere,
@@ -336,7 +336,7 @@ private proc appendPredefined2StringListTypeAST (?![@semanticDeclarationAST] ioD
 
 private proc appendStructASTForTypeWithLocation (?![@semanticDeclarationAST] ioDeclarationListASTs,
                                                  let @string inElementTypeName) {
-  var attributeList = @propertyInCollectionListAST ()
+  var attributeList = [@propertyInCollectionAST] ()
   attributeList ++= @(
     !mutability: .mutableProperty,
     @lstring (inElementTypeName, @location.here),
@@ -367,7 +367,7 @@ private proc appendStructASTForTypeWithLocation (?![@semanticDeclarationAST] ioD
 //--------------------------------------------------------------------------------------------------
 
 private proc appendStructASTForRangeType (?![@semanticDeclarationAST] ioDeclarationListASTs) {
-  var @propertyInCollectionListAST attributeList = @()
+  var [@propertyInCollectionAST] attributeList = @()
   attributeList ++= @(
     !mutability: .mutableProperty,
     @lstring ("uint", @location.here),

@@ -8,6 +8,193 @@
 #include "all-declarations-15.h"
 
 //--------------------------------------------------------------------------------------------------
+// @filewrapperTemplateInExpressionForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_filewrapperTemplateInExpressionForGeneration::objectCompare (const GGS_filewrapperTemplateInExpressionForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapperTemplateInExpressionForGeneration::GGS_filewrapperTemplateInExpressionForGeneration (void) :
+GGS_semanticExpressionForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_filewrapperTemplateInExpressionForGeneration GGS_filewrapperTemplateInExpressionForGeneration::
+init_21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                          const GGS_location & in_mLocation,
+                          const GGS_string & in_mFilewrapperName,
+                          const GGS_string & in_mFilewrapperTemplateName,
+                          const GGS__5B_semanticExpressionForGeneration_5D_ & in_mActualOutputParameterList,
+                          Compiler * inCompiler
+                          COMMA_LOCATION_ARGS) {
+  cPtr_filewrapperTemplateInExpressionForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_filewrapperTemplateInExpressionForGeneration (inCompiler COMMA_THERE)) ;
+  object->filewrapperTemplateInExpressionForGeneration_init_21__21__21__21__21_ (in_mResultType, in_mLocation, in_mFilewrapperName, in_mFilewrapperTemplateName, in_mActualOutputParameterList, inCompiler) ;
+  const GGS_filewrapperTemplateInExpressionForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_filewrapperTemplateInExpressionForGeneration::
+filewrapperTemplateInExpressionForGeneration_init_21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                                       const GGS_location & in_mLocation,
+                                                                       const GGS_string & in_mFilewrapperName,
+                                                                       const GGS_string & in_mFilewrapperTemplateName,
+                                                                       const GGS__5B_semanticExpressionForGeneration_5D_ & in_mActualOutputParameterList,
+                                                                       Compiler * /* inCompiler */) {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mFilewrapperName = in_mFilewrapperName ;
+  mProperty_mFilewrapperTemplateName = in_mFilewrapperTemplateName ;
+  mProperty_mActualOutputParameterList = in_mActualOutputParameterList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_filewrapperTemplateInExpressionForGeneration::GGS_filewrapperTemplateInExpressionForGeneration (const cPtr_filewrapperTemplateInExpressionForGeneration * inSourcePtr) :
+GGS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_filewrapperTemplateInExpressionForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_filewrapperTemplateInExpressionForGeneration::readProperty_mFilewrapperName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_filewrapperTemplateInExpressionForGeneration * p = (cPtr_filewrapperTemplateInExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_filewrapperTemplateInExpressionForGeneration) ;
+    return p->mProperty_mFilewrapperName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_filewrapperTemplateInExpressionForGeneration::readProperty_mFilewrapperTemplateName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_filewrapperTemplateInExpressionForGeneration * p = (cPtr_filewrapperTemplateInExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_filewrapperTemplateInExpressionForGeneration) ;
+    return p->mProperty_mFilewrapperTemplateName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_semanticExpressionForGeneration_5D_ GGS_filewrapperTemplateInExpressionForGeneration::readProperty_mActualOutputParameterList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_semanticExpressionForGeneration_5D_ () ;
+  }else{
+    cPtr_filewrapperTemplateInExpressionForGeneration * p = (cPtr_filewrapperTemplateInExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_filewrapperTemplateInExpressionForGeneration) ;
+    return p->mProperty_mActualOutputParameterList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @filewrapperTemplateInExpressionForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_filewrapperTemplateInExpressionForGeneration::cPtr_filewrapperTemplateInExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
+mProperty_mFilewrapperName (),
+mProperty_mFilewrapperTemplateName (),
+mProperty_mActualOutputParameterList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_filewrapperTemplateInExpressionForGeneration::cPtr_filewrapperTemplateInExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
+                                                                                                      const GGS_location & in_mLocation,
+                                                                                                      const GGS_string & in_mFilewrapperName,
+                                                                                                      const GGS_string & in_mFilewrapperTemplateName,
+                                                                                                      const GGS__5B_semanticExpressionForGeneration_5D_ & in_mActualOutputParameterList,
+                                                                                                      Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
+mProperty_mFilewrapperName (),
+mProperty_mFilewrapperTemplateName (),
+mProperty_mActualOutputParameterList () {
+  mProperty_mResultType = in_mResultType ;
+  mProperty_mLocation = in_mLocation ;
+  mProperty_mFilewrapperName = in_mFilewrapperName ;
+  mProperty_mFilewrapperTemplateName = in_mFilewrapperTemplateName ;
+  mProperty_mActualOutputParameterList = in_mActualOutputParameterList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_filewrapperTemplateInExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration ;
+}
+
+void cPtr_filewrapperTemplateInExpressionForGeneration::description (String & ioString,
+                                                                     const int32_t inIndentation) const {
+  ioString.appendCString ("[@filewrapperTemplateInExpressionForGeneration:") ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFilewrapperName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFilewrapperTemplateName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mActualOutputParameterList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_filewrapperTemplateInExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_filewrapperTemplateInExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mFilewrapperName, mProperty_mFilewrapperTemplateName, mProperty_mActualOutputParameterList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_filewrapperTemplateInExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mFilewrapperName.printNonNullClassInstanceProperties ("mFilewrapperName") ;
+    mProperty_mFilewrapperTemplateName.printNonNullClassInstanceProperties ("mFilewrapperTemplateName") ;
+    mProperty_mActualOutputParameterList.printNonNullClassInstanceProperties ("mActualOutputParameterList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @filewrapperTemplateInExpressionForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration ("filewrapperTemplateInExpressionForGeneration",
+                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_filewrapperTemplateInExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @filewrapperStaticPathInExpressionForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -5340,230 +5527,6 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_programComponentForGeneration
 
 const GALGAS_TypeDescriptor * GGS_programComponentForGeneration_2E_weak::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_programComponentForGeneration_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @structDeclarationAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_structDeclarationAST::objectCompare (const GGS_structDeclarationAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_structDeclarationAST::GGS_structDeclarationAST (void) :
-GGS_semanticDeclarationAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_structDeclarationAST GGS_structDeclarationAST::
-init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (const GGS_bool & in_isPredefined,
-                                                                                            const GGS_lstring & in_structTypeName,
-                                                                                            const GGS_propertyInCollectionListAST & in_mStructurePropertyListAST,
-                                                                                            const GGS_string & in_enumeratedElementTypeName,
-                                                                                            const GGS_structComparison & in_comparison,
-                                                                                            const GGS_bool & in_isUsefullStruct,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) {
-  cPtr_structDeclarationAST * object = nullptr ;
-  macroMyNew (object, cPtr_structDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->structDeclarationAST_init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (in_isPredefined, in_structTypeName, in_mStructurePropertyListAST, in_enumeratedElementTypeName, in_comparison, in_isUsefullStruct, inCompiler) ;
-  const GGS_structDeclarationAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_structDeclarationAST::
-structDeclarationAST_init_21_isPredefined_21__21__21_enumeratedElementTypeName_21_comparison_21_isUsefullStruct (const GGS_bool & in_isPredefined,
-                                                                                                                 const GGS_lstring & in_structTypeName,
-                                                                                                                 const GGS_propertyInCollectionListAST & in_mStructurePropertyListAST,
-                                                                                                                 const GGS_string & in_enumeratedElementTypeName,
-                                                                                                                 const GGS_structComparison & in_comparison,
-                                                                                                                 const GGS_bool & in_isUsefullStruct,
-                                                                                                                 Compiler * /* inCompiler */) {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_structTypeName = in_structTypeName ;
-  mProperty_mStructurePropertyListAST = in_mStructurePropertyListAST ;
-  mProperty_enumeratedElementTypeName = in_enumeratedElementTypeName ;
-  mProperty_comparison = in_comparison ;
-  mProperty_isUsefullStruct = in_isUsefullStruct ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_structDeclarationAST::GGS_structDeclarationAST (const cPtr_structDeclarationAST * inSourcePtr) :
-GGS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_structDeclarationAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_structDeclarationAST::readProperty_structTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_structDeclarationAST * p = (cPtr_structDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_structDeclarationAST) ;
-    return p->mProperty_structTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_propertyInCollectionListAST GGS_structDeclarationAST::readProperty_mStructurePropertyListAST (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_propertyInCollectionListAST () ;
-  }else{
-    cPtr_structDeclarationAST * p = (cPtr_structDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_structDeclarationAST) ;
-    return p->mProperty_mStructurePropertyListAST ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_structDeclarationAST::readProperty_enumeratedElementTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_string () ;
-  }else{
-    cPtr_structDeclarationAST * p = (cPtr_structDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_structDeclarationAST) ;
-    return p->mProperty_enumeratedElementTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_structComparison GGS_structDeclarationAST::readProperty_comparison (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_structComparison () ;
-  }else{
-    cPtr_structDeclarationAST * p = (cPtr_structDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_structDeclarationAST) ;
-    return p->mProperty_comparison ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_structDeclarationAST::readProperty_isUsefullStruct (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_structDeclarationAST * p = (cPtr_structDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_structDeclarationAST) ;
-    return p->mProperty_isUsefullStruct ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @structDeclarationAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_structDeclarationAST::cPtr_structDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_structTypeName (),
-mProperty_mStructurePropertyListAST (),
-mProperty_enumeratedElementTypeName (),
-mProperty_comparison (),
-mProperty_isUsefullStruct () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_structDeclarationAST::cPtr_structDeclarationAST (const GGS_bool & in_isPredefined,
-                                                      const GGS_lstring & in_structTypeName,
-                                                      const GGS_propertyInCollectionListAST & in_mStructurePropertyListAST,
-                                                      const GGS_string & in_enumeratedElementTypeName,
-                                                      const GGS_structComparison & in_comparison,
-                                                      const GGS_bool & in_isUsefullStruct,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
-mProperty_structTypeName (),
-mProperty_mStructurePropertyListAST (),
-mProperty_enumeratedElementTypeName (),
-mProperty_comparison (),
-mProperty_isUsefullStruct () {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_structTypeName = in_structTypeName ;
-  mProperty_mStructurePropertyListAST = in_mStructurePropertyListAST ;
-  mProperty_enumeratedElementTypeName = in_enumeratedElementTypeName ;
-  mProperty_comparison = in_comparison ;
-  mProperty_isUsefullStruct = in_isUsefullStruct ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_structDeclarationAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_structDeclarationAST ;
-}
-
-void cPtr_structDeclarationAST::description (String & ioString,
-                                             const int32_t inIndentation) const {
-  ioString.appendCString ("[@structDeclarationAST:") ;
-  mProperty_isPredefined.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_structTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mStructurePropertyListAST.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_enumeratedElementTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_comparison.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_isUsefullStruct.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_structDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_structDeclarationAST (mProperty_isPredefined, mProperty_structTypeName, mProperty_mStructurePropertyListAST, mProperty_enumeratedElementTypeName, mProperty_comparison, mProperty_isUsefullStruct, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_structDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_structTypeName.printNonNullClassInstanceProperties ("structTypeName") ;
-    mProperty_mStructurePropertyListAST.printNonNullClassInstanceProperties ("mStructurePropertyListAST") ;
-    mProperty_enumeratedElementTypeName.printNonNullClassInstanceProperties ("enumeratedElementTypeName") ;
-    mProperty_comparison.printNonNullClassInstanceProperties ("comparison") ;
-    mProperty_isUsefullStruct.printNonNullClassInstanceProperties ("isUsefullStruct") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @structDeclarationAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_structDeclarationAST ("structDeclarationAST",
-                                                                         & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_structDeclarationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_structDeclarationAST ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -41637,7 +41600,7 @@ void cGrammar_galgas_34_Grammar::nt_property_5F_declaration_indexing (Lexique_ga
 }
 
 void cGrammar_galgas_34_Grammar::nt_property_5F_declaration_ (GGS_galgasDeclarationAST &  parameter_1,
-                                GGS_propertyInCollectionListAST &  parameter_2,
+                                GGS__5B_propertyInCollectionAST_5D_ &  parameter_2,
                                 Lexique_galgasScanner_34_ * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 125 :

@@ -390,12 +390,6 @@ enum @overrideKind {
 
 //--------------------------------------------------------------------------------------------------
 
-//list @openedOverrideList {
-//  public let @overrideKind mOverrideKind
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 struct @localVarManager {
   private var @currentVarManager mCurrentManager = @()
   private var [@overrideKind] mOverridenManagers = @()

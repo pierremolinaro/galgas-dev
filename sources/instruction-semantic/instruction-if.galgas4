@@ -127,7 +127,7 @@ final class @ifInstructionAST : @semanticInstructionAST {
      inAnalysisContext,
      !?ioTypeMap,
      !?ioVariableMap,
-     ?let @ifTestListForGeneration testListForGeneration
+     ?let [@ifTestForGeneration] testListForGeneration
    )
   //--- Then branch
     analyzeSemanticInstructionListWithoutBranch (
@@ -196,7 +196,7 @@ final class @ifInstructionAST : @semanticInstructionAST {
 
 final class @ifInstructionForGeneration : @semanticInstructionForGeneration {
   private let @location mInstructionLocation
-  private let @ifTestListForGeneration mExpressions
+  private let [@ifTestForGeneration] mExpressions
   private let [@semanticInstructionForGeneration] m_then_instructionList
   private let [@semanticInstructionForGeneration] m_else_instructionList
 

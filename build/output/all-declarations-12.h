@@ -2360,21 +2360,6 @@ class GGS_warningInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_w
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_warningInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@ifTestListForGeneration generateInstruction'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_generateInstruction (const class GGS_ifTestListForGeneration inObject,
-                                          class GGS_stringset & io_ioInclusionSet,
-                                          class GGS_uint & io_ioTemporaryVariableIndex,
-                                          class GGS_stringset & io_ioUnusedVariableCppNameSet,
-                                          class GGS_string & io_ioGeneratedCode,
-                                          class GGS_string & out_outTestVar,
-                                          class Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @grammarInFileInstructionAST reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -6041,4 +6026,254 @@ class cPtr_assignmentInstructionAST : public cPtr_semanticInstructionAST {
   public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
 
 } ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @assignmentInstructionAST_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_assignmentInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_assignmentInstructionAST_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_assignmentInstructionAST_2E_weak (const class GGS_assignmentInstructionAST & inSource) ;
+
+  public: GGS_assignmentInstructionAST_2E_weak & operator = (const class GGS_assignmentInstructionAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_assignmentInstructionAST_2E_weak init_nil (void) {
+    GGS_assignmentInstructionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_assignmentInstructionAST bang_assignmentInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_assignmentInstructionAST unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_assignmentInstructionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_assignmentInstructionAST_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentInstructionAST_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @selfPropertyAssignmentInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_selfPropertyAssignmentInstructionAST : public GGS_semanticInstructionAST {
+//--------------------------------- Default constructor
+  public: GGS_selfPropertyAssignmentInstructionAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_selfPropertyAssignmentInstructionAST (const class cPtr_selfPropertyAssignmentInstructionAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_lstring readProperty_mTargetSelfPropertyName (void) const ;
+
+  public: class GGS_lstring readProperty_mOptionalProperty (void) const ;
+
+  public: class GGS_semanticExpressionAST readProperty_mSourceExpression (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_selfPropertyAssignmentInstructionAST init_21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                                const class GGS_lstring & inOperand1,
+                                                                                const class GGS_lstring & inOperand2,
+                                                                                const class GGS_semanticExpressionAST & inOperand3,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_selfPropertyAssignmentInstructionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @selfPropertyAssignmentInstructionAST class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_selfPropertyAssignmentInstructionAST : public cPtr_semanticInstructionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void selfPropertyAssignmentInstructionAST_init_21__21__21__21_ (const class GGS_location & inOperand0,
+                                                                          const class GGS_lstring & inOperand1,
+                                                                          const class GGS_lstring & inOperand2,
+                                                                          const class GGS_semanticExpressionAST & inOperand3,
+                                                                          Compiler * inCompiler) ;
+
+
+//--- Extension proc analyzeSemanticInstruction
+  public: virtual void method_analyzeSemanticInstruction (const class GGS_lstring arg_inUsefulnessCallerEntityName,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_analysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS__5B_semanticInstructionForGeneration_5D_ & arg_ioInstructionListForGeneration,
+           class GGS_localVarManager & arg_ioVariableMap,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Extension proc enterInstructionInSemanticContext
+  public: virtual void method_enterInstructionInSemanticContext (class GGS_unifiedTypeMap & arg_ioTypeMap,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_lstring mProperty_mTargetSelfPropertyName ;
+  public: GGS_lstring mProperty_mOptionalProperty ;
+  public: GGS_semanticExpressionAST mProperty_mSourceExpression ;
+
+
+//--- Default constructor
+  public: cPtr_selfPropertyAssignmentInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_selfPropertyAssignmentInstructionAST (const GGS_location & in_mInstructionLocation,
+                                                     const GGS_lstring & in_mTargetSelfPropertyName,
+                                                     const GGS_lstring & in_mOptionalProperty,
+                                                     const GGS_semanticExpressionAST & in_mSourceExpression,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @selfPropertyAssignmentInstructionAST_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_selfPropertyAssignmentInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_selfPropertyAssignmentInstructionAST_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_selfPropertyAssignmentInstructionAST_2E_weak (const class GGS_selfPropertyAssignmentInstructionAST & inSource) ;
+
+  public: GGS_selfPropertyAssignmentInstructionAST_2E_weak & operator = (const class GGS_selfPropertyAssignmentInstructionAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_selfPropertyAssignmentInstructionAST_2E_weak init_nil (void) {
+    GGS_selfPropertyAssignmentInstructionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_selfPropertyAssignmentInstructionAST bang_selfPropertyAssignmentInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_selfPropertyAssignmentInstructionAST unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_selfPropertyAssignmentInstructionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_selfPropertyAssignmentInstructionAST_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST_2E_weak ;
 

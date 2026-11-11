@@ -5990,16 +5990,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_typeDefinition_2E_solv
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension func '@unifiedTypeMapEntry identifierRepresentation' (as function)
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string extensionGetter_identifierRepresentation (const class GGS_unifiedTypeMapEntry & inObject,
-                                                           class Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Extension func '@unifiedTypeMapEntry typeName' (as function)
 //
 //--------------------------------------------------------------------------------------------------
@@ -6017,17 +6007,6 @@ class GGS_string extensionGetter_typeName (const class GGS_unifiedTypeMapEntry &
 class GGS_unifiedTypeMapEntry extensionGetter_baseType (const class GGS_unifiedTypeMapEntry & inObject,
                                                         class Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@unifiedTypeMapEntry addHeaderFileName'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_addHeaderFileName (const class GGS_unifiedTypeMapEntry inObject,
-                                        class GGS_stringset & io_ioInclusions,
-                                        class Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

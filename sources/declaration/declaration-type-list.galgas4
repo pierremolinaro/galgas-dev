@@ -21,7 +21,7 @@
 
 final class @listDeclarationAST : @semanticDeclarationAST {
   private let @lstring mListTypeName
-  private let @propertyInCollectionListAST mPropertyList
+  private let [@propertyInCollectionAST] mPropertyList
   private let @bool usefullList #initArgLabel
   private let @bool equatable #initArgLabel
 }
@@ -54,7 +54,7 @@ syntax extension galgas4DeclarationsSyntax {
       isUsefull = true
     end
     ${$
-    var @propertyInCollectionListAST propertyList = @()
+    var [@propertyInCollectionAST] propertyList = @()
     repeat
     while
       <property_declaration> (!?ioDeclarations, !?propertyList)
@@ -370,7 +370,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
 
 override proc @listDeclarationAST.addAssociatedElement
   (?!@galgasDeclarationAST ioDeclarations ) {
-  var @propertyInCollectionListAST structAttributeList = @()
+  var [@propertyInCollectionAST] structAttributeList = @()
   for property in self.mPropertyList do
     structAttributeList ++= @(
       !mutability: property.mutability,

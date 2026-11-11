@@ -35,7 +35,7 @@ syntax extension galgas4DeclarationsSyntax {
       comparison = .equatable
     end
     ${$
-    var @propertyInCollectionListAST propertyList = @()
+    var [@propertyInCollectionAST] propertyList = @()
     repeat
     while
       <property_declaration> (!?ioDeclarations, !?propertyList)
@@ -75,7 +75,7 @@ enum @structComparison {
 
 final class @structDeclarationAST : @semanticDeclarationAST {
   public let @lstring structTypeName
-  private let @propertyInCollectionListAST mStructurePropertyListAST
+  private let [@propertyInCollectionAST] mStructurePropertyListAST
   private let @string enumeratedElementTypeName #initArgLabel // Empty string if not enumerable
   private let @structComparison comparison #initArgLabel
   private let @bool isUsefullStruct #initArgLabel

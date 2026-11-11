@@ -4694,6 +4694,135 @@ const GALGAS_TypeDescriptor * GGS_binarysetPredefinedTypeAST_2E_weak::staticType
 }
 
 //--------------------------------------------------------------------------------------------------
+
+GGS_propertyInCollectionAST::GGS_propertyInCollectionAST (void) :
+mProperty_mutability (),
+mProperty_typeName (),
+mProperty_name (),
+mProperty_accessControl (),
+mProperty_hasSelector (),
+mProperty_initialization () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyInCollectionAST::GGS_propertyInCollectionAST (const GGS_propertyInCollectionAST & inSource) :
+mProperty_mutability (inSource.mProperty_mutability),
+mProperty_typeName (inSource.mProperty_typeName),
+mProperty_name (inSource.mProperty_name),
+mProperty_accessControl (inSource.mProperty_accessControl),
+mProperty_hasSelector (inSource.mProperty_hasSelector),
+mProperty_initialization (inSource.mProperty_initialization) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyInCollectionAST & GGS_propertyInCollectionAST::operator = (const GGS_propertyInCollectionAST & inSource) {
+  mProperty_mutability = inSource.mProperty_mutability ;
+  mProperty_typeName = inSource.mProperty_typeName ;
+  mProperty_name = inSource.mProperty_name ;
+  mProperty_accessControl = inSource.mProperty_accessControl ;
+  mProperty_hasSelector = inSource.mProperty_hasSelector ;
+  mProperty_initialization = inSource.mProperty_initialization ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_propertyInCollectionAST GGS_propertyInCollectionAST::init_21_mutability_21__21__21__21_hasSelector_21_initialization (const GGS_propertyMutability & in_mutability,
+                                                                                                                          const GGS_lstring & in_typeName,
+                                                                                                                          const GGS_lstring & in_name,
+                                                                                                                          const GGS_AccessControlAST & in_accessControl,
+                                                                                                                          const GGS_bool & in_hasSelector,
+                                                                                                                          const GGS_propertyInCollectionInitializationAST & in_initialization,
+                                                                                                                          Compiler * inCompiler
+                                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_propertyInCollectionAST result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_mutability = in_mutability ;
+  result.mProperty_typeName = in_typeName ;
+  result.mProperty_name = in_name ;
+  result.mProperty_accessControl = in_accessControl ;
+  result.mProperty_hasSelector = in_hasSelector ;
+  result.mProperty_initialization = in_initialization ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyInCollectionAST::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_propertyInCollectionAST::GGS_propertyInCollectionAST (const GGS_propertyMutability & inOperand0,
+                                                          const GGS_lstring & inOperand1,
+                                                          const GGS_lstring & inOperand2,
+                                                          const GGS_AccessControlAST & inOperand3,
+                                                          const GGS_bool & inOperand4,
+                                                          const GGS_propertyInCollectionInitializationAST & inOperand5) :
+mProperty_mutability (inOperand0),
+mProperty_typeName (inOperand1),
+mProperty_name (inOperand2),
+mProperty_accessControl (inOperand3),
+mProperty_hasSelector (inOperand4),
+mProperty_initialization (inOperand5) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_propertyInCollectionAST::isValid (void) const {
+  return mProperty_mutability.isValid () && mProperty_typeName.isValid () && mProperty_name.isValid () && mProperty_accessControl.isValid () && mProperty_hasSelector.isValid () && mProperty_initialization.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyInCollectionAST::drop (void) {
+  mProperty_mutability.drop () ;
+  mProperty_typeName.drop () ;
+  mProperty_name.drop () ;
+  mProperty_accessControl.drop () ;
+  mProperty_hasSelector.drop () ;
+  mProperty_initialization.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_propertyInCollectionAST::description (String & ioString,
+                                               const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @propertyInCollectionAST:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_mutability.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_typeName.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_name.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_accessControl.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_hasSelector.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_initialization.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @propertyInCollectionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyInCollectionAST ("propertyInCollectionAST",
+                                                                            nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_propertyInCollectionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_propertyInCollectionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
 //  Extension Getter '@selfMutability propertiesAreMutable'
 //--------------------------------------------------------------------------------------------------
 
@@ -12977,192 +13106,5 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperInExpressionForGen
 
 const GALGAS_TypeDescriptor * GGS_filewrapperInExpressionForGeneration::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_filewrapperInExpressionForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @filewrapperTemplateInExpressionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_filewrapperTemplateInExpressionForGeneration::objectCompare (const GGS_filewrapperTemplateInExpressionForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateInExpressionForGeneration::GGS_filewrapperTemplateInExpressionForGeneration (void) :
-GGS_semanticExpressionForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_filewrapperTemplateInExpressionForGeneration GGS_filewrapperTemplateInExpressionForGeneration::
-init_21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
-                          const GGS_location & in_mLocation,
-                          const GGS_string & in_mFilewrapperName,
-                          const GGS_string & in_mFilewrapperTemplateName,
-                          const GGS__5B_semanticExpressionForGeneration_5D_ & in_mActualOutputParameterList,
-                          Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) {
-  cPtr_filewrapperTemplateInExpressionForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_filewrapperTemplateInExpressionForGeneration (inCompiler COMMA_THERE)) ;
-  object->filewrapperTemplateInExpressionForGeneration_init_21__21__21__21__21_ (in_mResultType, in_mLocation, in_mFilewrapperName, in_mFilewrapperTemplateName, in_mActualOutputParameterList, inCompiler) ;
-  const GGS_filewrapperTemplateInExpressionForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_filewrapperTemplateInExpressionForGeneration::
-filewrapperTemplateInExpressionForGeneration_init_21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                                       const GGS_location & in_mLocation,
-                                                                       const GGS_string & in_mFilewrapperName,
-                                                                       const GGS_string & in_mFilewrapperTemplateName,
-                                                                       const GGS__5B_semanticExpressionForGeneration_5D_ & in_mActualOutputParameterList,
-                                                                       Compiler * /* inCompiler */) {
-  mProperty_mResultType = in_mResultType ;
-  mProperty_mLocation = in_mLocation ;
-  mProperty_mFilewrapperName = in_mFilewrapperName ;
-  mProperty_mFilewrapperTemplateName = in_mFilewrapperTemplateName ;
-  mProperty_mActualOutputParameterList = in_mActualOutputParameterList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_filewrapperTemplateInExpressionForGeneration::GGS_filewrapperTemplateInExpressionForGeneration (const cPtr_filewrapperTemplateInExpressionForGeneration * inSourcePtr) :
-GGS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_filewrapperTemplateInExpressionForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_filewrapperTemplateInExpressionForGeneration::readProperty_mFilewrapperName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_string () ;
-  }else{
-    cPtr_filewrapperTemplateInExpressionForGeneration * p = (cPtr_filewrapperTemplateInExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperTemplateInExpressionForGeneration) ;
-    return p->mProperty_mFilewrapperName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_string GGS_filewrapperTemplateInExpressionForGeneration::readProperty_mFilewrapperTemplateName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_string () ;
-  }else{
-    cPtr_filewrapperTemplateInExpressionForGeneration * p = (cPtr_filewrapperTemplateInExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperTemplateInExpressionForGeneration) ;
-    return p->mProperty_mFilewrapperTemplateName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_semanticExpressionForGeneration_5D_ GGS_filewrapperTemplateInExpressionForGeneration::readProperty_mActualOutputParameterList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS__5B_semanticExpressionForGeneration_5D_ () ;
-  }else{
-    cPtr_filewrapperTemplateInExpressionForGeneration * p = (cPtr_filewrapperTemplateInExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperTemplateInExpressionForGeneration) ;
-    return p->mProperty_mActualOutputParameterList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @filewrapperTemplateInExpressionForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_filewrapperTemplateInExpressionForGeneration::cPtr_filewrapperTemplateInExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (inCompiler COMMA_THERE),
-mProperty_mFilewrapperName (),
-mProperty_mFilewrapperTemplateName (),
-mProperty_mActualOutputParameterList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_filewrapperTemplateInExpressionForGeneration::cPtr_filewrapperTemplateInExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                                                                      const GGS_location & in_mLocation,
-                                                                                                      const GGS_string & in_mFilewrapperName,
-                                                                                                      const GGS_string & in_mFilewrapperTemplateName,
-                                                                                                      const GGS__5B_semanticExpressionForGeneration_5D_ & in_mActualOutputParameterList,
-                                                                                                      Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation, inCompiler COMMA_THERE),
-mProperty_mFilewrapperName (),
-mProperty_mFilewrapperTemplateName (),
-mProperty_mActualOutputParameterList () {
-  mProperty_mResultType = in_mResultType ;
-  mProperty_mLocation = in_mLocation ;
-  mProperty_mFilewrapperName = in_mFilewrapperName ;
-  mProperty_mFilewrapperTemplateName = in_mFilewrapperTemplateName ;
-  mProperty_mActualOutputParameterList = in_mActualOutputParameterList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_filewrapperTemplateInExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration ;
-}
-
-void cPtr_filewrapperTemplateInExpressionForGeneration::description (String & ioString,
-                                                                     const int32_t inIndentation) const {
-  ioString.appendCString ("[@filewrapperTemplateInExpressionForGeneration:") ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mFilewrapperName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mFilewrapperTemplateName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mActualOutputParameterList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_filewrapperTemplateInExpressionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_filewrapperTemplateInExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mFilewrapperName, mProperty_mFilewrapperTemplateName, mProperty_mActualOutputParameterList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_filewrapperTemplateInExpressionForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticExpressionForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mFilewrapperName.printNonNullClassInstanceProperties ("mFilewrapperName") ;
-    mProperty_mFilewrapperTemplateName.printNonNullClassInstanceProperties ("mFilewrapperTemplateName") ;
-    mProperty_mActualOutputParameterList.printNonNullClassInstanceProperties ("mActualOutputParameterList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @filewrapperTemplateInExpressionForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration ("filewrapperTemplateInExpressionForGeneration",
-                                                                                                 & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_filewrapperTemplateInExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration ;
 }
 

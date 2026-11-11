@@ -22,28 +22,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-//syntax galgas3ExpressionSyntax (galgasScanner3) {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <type_definition_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                              !@lstring outTypeName)
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <primary_ggs3> (?!@galgasDeclarationAST ioDeclarations,
-//                      !@semanticExpressionAST outExpression ) {
-//    $($
-//    <expression_ggs3> (!?ioDeclarations, ?outExpression)
-//    $)$
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax galgas4ExpressionSyntax (galgasScanner4) {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

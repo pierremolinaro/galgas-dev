@@ -65,7 +65,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     ${$
   //--- Class properties
-    var @propertyInCollectionListAST propertyList = @()
+    var [@propertyInCollectionAST] propertyList = @()
     repeat
     while
       <property_declaration> (!?ioDeclarations, !?propertyList)
@@ -110,7 +110,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
   private let @lstring mClassTypeName
   private let @lstring mSuperClassName // Empty if no super class
   private let @bool mGenerateInSeparateFile
-  private let @propertyInCollectionListAST mPropertyList
+  private let [@propertyInCollectionAST] mPropertyList
   private let @bool clonable
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

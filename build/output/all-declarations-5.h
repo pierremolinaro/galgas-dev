@@ -1257,6 +1257,483 @@ void callExtensionMethod_getEnumerationList (class cPtr_predefinedTypeAST * inOb
                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: [propertyInCollectionAST] array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_propertyInCollectionAST_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_propertyInCollectionAST_5D_ (const class GGS__5B_propertyInCollectionAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_propertyInCollectionAST_5D_ (const DownEnumerator__5B_propertyInCollectionAST_5D_ &) = delete ;
+  private: DownEnumerator__5B_propertyInCollectionAST_5D_ & operator = (const DownEnumerator__5B_propertyInCollectionAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+
+//--- Current element access
+  public: class GGS_propertyInCollectionAST current (LOCATION_ARGS) const ;
+  public: class GGS_propertyInCollectionAST current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_propertyInCollectionAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_propertyInCollectionAST_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_propertyInCollectionAST_5D_ (const class GGS__5B_propertyInCollectionAST_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_propertyInCollectionAST_5D_ (const UpEnumerator__5B_propertyInCollectionAST_5D_ &) = delete ;
+  private: UpEnumerator__5B_propertyInCollectionAST_5D_ & operator = (const UpEnumerator__5B_propertyInCollectionAST_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+
+//---
+  public: inline void rewind (void) { mCurrent = 0 ; }
+
+//--- Current element access
+  public: class GGS_propertyInCollectionAST current (LOCATION_ARGS) const ;
+  public: class GGS_propertyInCollectionAST current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_propertyInCollectionAST> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_propertyInCollectionAST_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_propertyInCollectionAST> mSharedArray ;
+  private: bool mIsValid ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_propertyInCollectionAST_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_propertyInCollectionAST_5D_ (const GGS__5B_propertyInCollectionAST_5D_ & inSource) ;
+  public: GGS__5B_propertyInCollectionAST_5D_ & operator = (const GGS__5B_propertyInCollectionAST_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override { return mIsValid ; }
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_propertyInCollectionAST_5D_ init (Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator (with expression)
+  public: void plusAssignOperation (const GGS__5B_propertyInCollectionAST_5D_ inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- ++= operator, collection value
+  public: void plusPlusAssignOperation (const GGS_propertyInCollectionAST & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_propertyInCollectionAST_5D_ add_operation (const GGS__5B_propertyInCollectionAST_5D_ & inOperand,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_propertyInCollectionAST constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insert (class GGS_propertyInCollectionAST constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_remove (class GGS_propertyInCollectionAST & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeFirst (class GGS_propertyInCollectionAST & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_propertyInCollectionAST & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+  public: void setter_set (class GGS_propertyInCollectionAST constinArgument0,
+                           class GGS_uint constinArgument1,
+                           Compiler * inCompiler
+                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_propertyInCollectionAST getter_first (Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_propertyInCollectionAST getter_last (Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_propertyInCollectionAST_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_propertyInCollectionAST_5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                                    const class GGS_uint & constinOperand1,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+  public: class GGS_propertyInCollectionAST readSubscript__3F_ (const class GGS_uint & in0,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_propertyInCollectionAST_5D_ ;
+  friend class DownEnumerator__5B_propertyInCollectionAST_5D_ ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_propertyInCollectionAST_5D_ ;
+
+//--------------------------------------------------------------------------------------------------
+//   enum AccessControlAST
+//--------------------------------------------------------------------------------------------------
+
+class GGS_AccessControlAST : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GGS_AccessControlAST (void) ;
+
+//--------------------------------- Enumeration
+  public: enum class Enumeration {
+    invalid,
+    enum_publicAccess,
+    enum_protectedAccess,
+    enum_protectedSetAccess,
+    enum_privateAccess,
+    enum_privateSetAccess,
+    enum_fileprivateAccess,
+    enum_fileprivateSetAccess
+  } ;
+  
+//--------------------------------- Private properties
+  private: AC_GALGAS_enumerationAssociatedValues mAssociatedValues ;
+  private: Enumeration mEnum ;
+
+//--------------------------------- Associated value extraction
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fileprivateAccess (class GGS_location & out_declarationLocation) const ;
+  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_fileprivateSetAccess (class GGS_location & out_declarationLocation) const ;
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+    return Enumeration::invalid != mEnum ;
+  }
+
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+    mEnum = Enumeration::invalid ;
+    mAssociatedValues.drop () ;
+  }
+
+  public: inline Enumeration enumValue (void) const {
+    return mEnum ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_AccessControlAST class_func_fileprivateAccess (const class GGS_location & inOperand0
+                                                                          COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_AccessControlAST class_func_fileprivateSetAccess (const class GGS_location & inOperand0
+                                                                             COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_AccessControlAST class_func_privateAccess (LOCATION_ARGS) ;
+
+  public: static class GGS_AccessControlAST class_func_privateSetAccess (LOCATION_ARGS) ;
+
+  public: static class GGS_AccessControlAST class_func_protectedAccess (LOCATION_ARGS) ;
+
+  public: static class GGS_AccessControlAST class_func_protectedSetAccess (LOCATION_ARGS) ;
+
+  public: static class GGS_AccessControlAST class_func_publicAccess (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+  public: void method_extractFileprivateAccess (class GGS_location & outArgument0,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const ;
+
+  public: void method_extractFileprivateSetAccess (class GGS_location & outArgument0,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_AccessControlAST_2E_fileprivateAccess_3F_ getter_getFileprivateAccess (LOCATION_ARGS) const ;
+
+  public: class GGS_AccessControlAST_2E_fileprivateSetAccess_3F_ getter_getFileprivateSetAccess (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isFileprivateAccess (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isFileprivateSetAccess (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isPrivateAccess (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isPrivateSetAccess (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isProtectedAccess (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isProtectedSetAccess (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isPublicAccess (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_AccessControlAST ;
+
+//--------------------------------------------------------------------------------------------------
+//   enum propertyMutability
+//--------------------------------------------------------------------------------------------------
+
+class GGS_propertyMutability : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public: GGS_propertyMutability (void) ;
+
+//--------------------------------- Enumeration
+  public: enum class Enumeration {
+    invalid,
+    enum_constantProperty,
+    enum_mutableProperty,
+    enum_weakProperty
+  } ;
+  
+//--------------------------------- Private properties
+  private: Enumeration mEnum ;
+
+//--------------------------------- Associated value extraction
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override {
+    return Enumeration::invalid != mEnum ;
+  }
+
+  public: VIRTUAL_IN_DEBUG inline void drop (void) override {
+    mEnum = Enumeration::invalid ;
+  }
+
+  public: inline Enumeration enumValue (void) const {
+    return mEnum ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_propertyMutability class_func_constantProperty (LOCATION_ARGS) ;
+
+  public: static class GGS_propertyMutability class_func_mutableProperty (LOCATION_ARGS) ;
+
+  public: static class GGS_propertyMutability class_func_weakProperty (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_bool getter_isConstantProperty (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isMutableProperty (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isWeakProperty (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyMutability ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @propertyInCollectionAST struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_propertyInCollectionAST : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_propertyMutability mProperty_mutability ;
+  public: inline GGS_propertyMutability readProperty_mutability (void) const {
+    return mProperty_mutability ;
+  }
+
+  public: GGS_lstring mProperty_typeName ;
+  public: inline GGS_lstring readProperty_typeName (void) const {
+    return mProperty_typeName ;
+  }
+
+  public: GGS_lstring mProperty_name ;
+  public: inline GGS_lstring readProperty_name (void) const {
+    return mProperty_name ;
+  }
+
+  public: GGS_AccessControlAST mProperty_accessControl ;
+  public: inline GGS_AccessControlAST readProperty_accessControl (void) const {
+    return mProperty_accessControl ;
+  }
+
+  public: GGS_bool mProperty_hasSelector ;
+  public: inline GGS_bool readProperty_hasSelector (void) const {
+    return mProperty_hasSelector ;
+  }
+
+  public: GGS_propertyInCollectionInitializationAST mProperty_initialization ;
+  public: inline GGS_propertyInCollectionInitializationAST readProperty_initialization (void) const {
+    return mProperty_initialization ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_propertyInCollectionAST (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMutability (const GGS_propertyMutability & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mutability = inValue ;
+  }
+
+  public: inline void setter_setTypeName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_typeName = inValue ;
+  }
+
+  public: inline void setter_setName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_name = inValue ;
+  }
+
+  public: inline void setter_setAccessControl (const GGS_AccessControlAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_accessControl = inValue ;
+  }
+
+  public: inline void setter_setHasSelector (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_hasSelector = inValue ;
+  }
+
+  public: inline void setter_setInitialization (const GGS_propertyInCollectionInitializationAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_initialization = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_propertyInCollectionAST (const GGS_propertyMutability & in_mutability,
+                                       const GGS_lstring & in_typeName,
+                                       const GGS_lstring & in_name,
+                                       const GGS_AccessControlAST & in_accessControl,
+                                       const GGS_bool & in_hasSelector,
+                                       const GGS_propertyInCollectionInitializationAST & in_initialization) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_propertyInCollectionAST (const GGS_propertyInCollectionAST & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_propertyInCollectionAST & operator = (const GGS_propertyInCollectionAST & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_propertyInCollectionAST init_21_mutability_21__21__21__21_hasSelector_21_initialization (const class GGS_propertyMutability & inOperand0,
+                                                                                                              const class GGS_lstring & inOperand1,
+                                                                                                              const class GGS_lstring & inOperand2,
+                                                                                                              const class GGS_AccessControlAST & inOperand3,
+                                                                                                              const class GGS_bool & inOperand4,
+                                                                                                              const class GGS_propertyInCollectionInitializationAST & inOperand5,
+                                                                                                              Compiler * inCompiler
+                                                                                                              COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyInCollectionAST ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @sintPredefinedTypeAST reference class
 //--------------------------------------------------------------------------------------------------
 

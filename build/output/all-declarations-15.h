@@ -1300,7 +1300,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
 //----------- '' label
   public: virtual void nt_property_5F_declaration_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                    GGS_propertyInCollectionListAST & ioArgument1,
+                                                    GGS__5B_propertyInCollectionAST_5D_ & ioArgument1,
                                                     Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'relation_factor' non terminal
