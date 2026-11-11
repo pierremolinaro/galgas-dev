@@ -4695,7 +4695,7 @@ void routine_handleNonTerminalDeclarationsFromRuleList_26__3F_ (GGS_nonTerminalS
 void cPtr_semanticInstructionAST::method_transformInstructionForGrammarAnalysis (GGS_terminalSymbolsMapForGrammarAnalysis & /* ioArgument__5F_ioActuallyUsedTerminalSymbolMap */,
                                                                                  const GGS_nonTerminalSymbolMapForGrammarAnalysis /* constinArgument__5F_inNonTerminalSymbolMap */,
                                                                                  GGS_uint & /* ioArgument__5F_ioAddedNonTerminalIndex */,
-                                                                                 GGS_syntaxInstructionListForGrammarAnalysis & /* ioArgument__5F_ioSyntaxInstructionList */,
+                                                                                 GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ & /* ioArgument__5F_ioSyntaxInstructionList */,
                                                                                  Compiler * /* inCompiler */
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
 }
@@ -4710,13 +4710,13 @@ void routine_transformInstructionListForGrammarAnalysis_3F__26_usedTerminalMap_3
                                                                                                                                   GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument_ioActuallyUsedTerminalSymbolMap,
                                                                                                                                   const GGS_nonTerminalSymbolMapForGrammarAnalysis constinArgument_inNonTerminalSymbolMap,
                                                                                                                                   GGS_uint & ioArgument_ioAddedNonTerminalIndex,
-                                                                                                                                  GGS_syntaxInstructionListForGrammarAnalysis & ioArgument_ioSyntaxInstructionList,
+                                                                                                                                  GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ & ioArgument_ioSyntaxInstructionList,
                                                                                                                                   Compiler * inCompiler
                                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  UpEnumerator__5B_syntaxInstructionAST_5D_ enumerator_8432 (constinArgument_inInstructionList) ;
-  while (enumerator_8432.hasCurrentObject ()) {
-    callExtensionMethod_transformInstructionForGrammarAnalysis ((cPtr_syntaxInstructionAST *) enumerator_8432.current (HERE).ptr (), ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, ioArgument_ioSyntaxInstructionList, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 178)) ;
-    enumerator_8432.gotoNextObject () ;
+  UpEnumerator__5B_syntaxInstructionAST_5D_ enumerator_8450 (constinArgument_inInstructionList) ;
+  while (enumerator_8450.hasCurrentObject ()) {
+    callExtensionMethod_transformInstructionForGrammarAnalysis ((cPtr_syntaxInstructionAST *) enumerator_8450.current (HERE).ptr (), ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, ioArgument_ioSyntaxInstructionList, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 178)) ;
+    enumerator_8450.gotoNextObject () ;
   }
 }
 
@@ -4731,25 +4731,25 @@ void routine_buildRuleList_3F__3F__3F__26__26__26_ (const GGS_nonTerminalSymbolM
                                                     const GGS_lstring constinArgument_inSyntaxComponentName,
                                                     const GGS__5B_syntaxRuleAST_5D_ constinArgument_inRuleList,
                                                     GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument_ioActuallyUsedTerminalSymbolMap,
-                                                    GGS_syntaxComponentListForGrammarAnalysis & ioArgument_ioSyntaxComponentListForGrammarAnalysis,
+                                                    GGS__5B_syntaxComponentForGrammarAnalysis_5D_ & ioArgument_ioSyntaxComponentListForGrammarAnalysis,
                                                     GGS_uint & ioArgument_ioAddedNonTerminalCount,
                                                     Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_productionRuleListForGrammarAnalysis var_productionRulesList_9198 = GGS_productionRuleListForGrammarAnalysis::init (inCompiler COMMA_HERE) ;
-  UpEnumerator__5B_syntaxRuleAST_5D_ enumerator_9276 (constinArgument_inRuleList) ;
-  while (enumerator_9276.hasCurrentObject ()) {
-    GGS_uint var_nonTerminalIndex_9369 ;
-    GGS_nonterminalSymbolLabelMapForGrammarAnalysis joker_9387 ; // Joker input parameter
-    constinArgument_inNonTerminalMapForGrammarAnalysis.method_searchKey (enumerator_9276.current (HERE).readProperty_mNonterminalName (), var_nonTerminalIndex_9369, joker_9387, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 199)) ;
-    GGS__5B_syntaxInstructionAST_5D_ var_parsedSyntaxInstructionList_9474 = enumerator_9276.current (HERE).readProperty_mLabelList ().getter_first (inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 201)).readProperty_mSyntaxInstructionList () ;
-    GGS_syntaxInstructionListForGrammarAnalysis var_instructionList_9593 = GGS_syntaxInstructionListForGrammarAnalysis::init (inCompiler COMMA_HERE) ;
+  GGS__5B_productionRuleForGrammarAnalysis_5D_ var_productionRulesList_9214 = GGS__5B_productionRuleForGrammarAnalysis_5D_::init (inCompiler COMMA_HERE) ;
+  UpEnumerator__5B_syntaxRuleAST_5D_ enumerator_9290 (constinArgument_inRuleList) ;
+  while (enumerator_9290.hasCurrentObject ()) {
+    GGS_uint var_nonTerminalIndex_9383 ;
+    GGS_nonterminalSymbolLabelMapForGrammarAnalysis joker_9401 ; // Joker input parameter
+    constinArgument_inNonTerminalMapForGrammarAnalysis.method_searchKey (enumerator_9290.current (HERE).readProperty_mNonterminalName (), var_nonTerminalIndex_9383, joker_9401, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 199)) ;
+    GGS__5B_syntaxInstructionAST_5D_ var_parsedSyntaxInstructionList_9488 = enumerator_9290.current (HERE).readProperty_mLabelList ().getter_first (inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 201)).readProperty_mSyntaxInstructionList () ;
+    GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ var_instructionList_9607 = GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_::init (inCompiler COMMA_HERE) ;
     {
-    routine_transformInstructionListForGrammarAnalysis_3F__26_usedTerminalMap_3F_nonTerminalSymbolMap_26_addedTerminalIndex_26_ (var_parsedSyntaxInstructionList_9474, ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalMapForGrammarAnalysis, ioArgument_ioAddedNonTerminalCount, var_instructionList_9593, inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 204)) ;
+    routine_transformInstructionListForGrammarAnalysis_3F__26_usedTerminalMap_3F_nonTerminalSymbolMap_26_addedTerminalIndex_26_ (var_parsedSyntaxInstructionList_9488, ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalMapForGrammarAnalysis, ioArgument_ioAddedNonTerminalCount, var_instructionList_9607, inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 204)) ;
     }
-    var_productionRulesList_9198.plusPlusAssignOperation (GGS_productionRuleListForGrammarAnalysis_2E_element::init_21__21__21__21_ (enumerator_9276.current (HERE).readProperty_mNonterminalName (), var_nonTerminalIndex_9369, var_instructionList_9593, var_productionRulesList_9198.getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 216)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 212)) ;
-    enumerator_9276.gotoNextObject () ;
+    var_productionRulesList_9214.plusPlusAssignOperation (GGS_productionRuleForGrammarAnalysis::init_21__21__21__21_ (enumerator_9290.current (HERE).readProperty_mNonterminalName (), var_nonTerminalIndex_9383, var_instructionList_9607, var_productionRulesList_9214.getter_count (SOURCE_FILE ("grammarCompilation.galgas4", 216)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 212)) ;
+    enumerator_9290.gotoNextObject () ;
   }
-  ioArgument_ioSyntaxComponentListForGrammarAnalysis.plusPlusAssignOperation (GGS_syntaxComponentListForGrammarAnalysis_2E_element::init_21__21_ (var_productionRulesList_9198, constinArgument_inSyntaxComponentName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 219)) ;
+  ioArgument_ioSyntaxComponentListForGrammarAnalysis.plusPlusAssignOperation (GGS_syntaxComponentForGrammarAnalysis::init_21__21_ (var_productionRulesList_9214, constinArgument_inSyntaxComponentName, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("grammarCompilation.galgas4", 219)) ;
 }
 
 

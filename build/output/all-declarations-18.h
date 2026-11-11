@@ -525,7 +525,7 @@ GGS_string filewrapperTemplate_grammarRulesInTexDocumentTemplate_document (class
 void routine_emitProductionRulesInTexFile_3F__3F__3F__3F__3F_ (const class GGS_string constinArgument0,
                                                                const class GGS_string constinArgument1,
                                                                const class GGS_nonTerminalSymbolMapForGrammarAnalysis constinArgument2,
-                                                               const class GGS_syntaxComponentListForGrammarAnalysis constinArgument3,
+                                                               const class GGS__5B_syntaxComponentForGrammarAnalysis_5D_ constinArgument3,
                                                                const class GGS_lstring constinArgument4,
                                                                class Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;

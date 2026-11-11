@@ -66,13 +66,13 @@ override proc @selectInstruction.transformInstructionForGrammarAnalysis
   (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
-  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList ) {
+  ?![@abstractSyntaxInstructionForGrammarAnalysis] ioSyntaxInstructionList ) {
   let @uint addedNonTerminalIndex = ioAddedNonTerminalIndex
   ioAddedNonTerminalIndex += 1
 
-  var selectBranchList = @branchListForGrammarAnalysis ()
+  var selectBranchList = [[@abstractSyntaxInstructionForGrammarAnalysis]] ()
   for entry in self.mSelectBranchList do
-    var syntaxInstructionList = @syntaxInstructionListForGrammarAnalysis ()
+    var syntaxInstructionList = [@abstractSyntaxInstructionForGrammarAnalysis] ()
     transformInstructionListForGrammarAnalysis (
       entry.mSyntaxInstructionList,
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap,
@@ -80,14 +80,14 @@ override proc @selectInstruction.transformInstructionForGrammarAnalysis
       !?addedTerminalIndex:ioAddedNonTerminalIndex,
       !?syntaxInstructionList
     )
-    selectBranchList ++= @(syntaxInstructionList)
+    selectBranchList ++= syntaxInstructionList
   end
 
-  ioSyntaxInstructionList ++= @(@selectInstructionForGrammarAnalysis (
+  ioSyntaxInstructionList ++= @selectInstructionForGrammarAnalysis (
     self.mInstructionLocation,
     selectBranchList,
     addedNonTerminalIndex
-  ))
+  )
 }
 
 //--------------------------------------------------------------------------------------------------

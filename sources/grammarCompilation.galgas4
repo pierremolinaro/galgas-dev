@@ -155,7 +155,7 @@ abstract proc @syntaxInstructionAST.transformInstructionForGrammarAnalysis
   (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
-  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList)
+  ?![@abstractSyntaxInstructionForGrammarAnalysis] ioSyntaxInstructionList)
 
 //--------------------------------------------------------------------------------------------------
 
@@ -163,7 +163,7 @@ override proc @semanticInstructionAST.transformInstructionForGrammarAnalysis
   (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis _ioActuallyUsedTerminalSymbolMap,
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis _inNonTerminalSymbolMap,
   ?!addedTerminalIndex:@uint _ioAddedNonTerminalIndex,
-  ?!@syntaxInstructionListForGrammarAnalysis _ioSyntaxInstructionList ) {
+  ?![@abstractSyntaxInstructionForGrammarAnalysis] _ioSyntaxInstructionList ) {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -173,7 +173,7 @@ proc transformInstructionListForGrammarAnalysis
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
-  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList ) {
+  ?![@abstractSyntaxInstructionForGrammarAnalysis] ioSyntaxInstructionList ) {
   for instruction in inInstructionList do
     instruction.transformInstructionForGrammarAnalysis (
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap,
@@ -191,16 +191,16 @@ proc buildRuleList (
   let @lstring inSyntaxComponentName,
   let [@syntaxRuleAST] inRuleList,
   ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
-  ?!@syntaxComponentListForGrammarAnalysis ioSyntaxComponentListForGrammarAnalysis,
+  ?![@syntaxComponentForGrammarAnalysis] ioSyntaxComponentListForGrammarAnalysis,
   ?!@uint ioAddedNonTerminalCount
 ) {
-  var productionRulesList = @productionRuleListForGrammarAnalysis ()
+  var productionRulesList = [@productionRuleForGrammarAnalysis] ()
   for aRule in inRuleList do
     inNonTerminalMapForGrammarAnalysis.searchKey (aRule.mNonterminalName, ?let nonTerminalIndex, ?*)
   //--- Retrieve instruction list from first label
     let [@syntaxInstructionAST] parsedSyntaxInstructionList = aRule.mLabelList.first.mSyntaxInstructionList
   //--- Transform instruction list
-    var instructionList = @syntaxInstructionListForGrammarAnalysis ()
+    var instructionList = [@abstractSyntaxInstructionForGrammarAnalysis] ()
     transformInstructionListForGrammarAnalysis (
       parsedSyntaxInstructionList,
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap,
@@ -253,7 +253,7 @@ extern proc grammarAnalysisAndGeneration (
   let @uint startSymbolIndex,
   let @string inLexiqueName,
   let @terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
-  let @syntaxComponentListForGrammarAnalysis ioSyntaxComponentsList,
+  let [@syntaxComponentForGrammarAnalysis] ioSyntaxComponentsList,
   let @unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
   let @string inHTMLfileName,
   let @nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,

@@ -14,7 +14,7 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
 
 //--------------------------------- Initializers
   public: void repeatInstructionForGrammarAnalysis_init_21__21__21_ (const class GGS_location & inOperand0,
-                                                                     const class GGS_branchListForGrammarAnalysis & inOperand1,
+                                                                     const class GGS__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ & inOperand1,
                                                                      const class GGS_uint & inOperand2,
                                                                      Compiler * inCompiler) ;
 
@@ -53,7 +53,7 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
 
 //--- END OF USER ZONE 2
 //--- Properties
-  public: GGS_branchListForGrammarAnalysis mProperty_mRepeatBranchList ;
+  public: GGS__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ mProperty_mRepeatBranchList ;
   public: GGS_uint mProperty_mAddedNonTerminalSymbolIndex ;
 
 
@@ -62,7 +62,7 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
 
 //--- Constructor
   public: cPtr_repeatInstructionForGrammarAnalysis (const GGS_location & in_mStartLocation,
-                                                    const GGS_branchListForGrammarAnalysis & in_mRepeatBranchList,
+                                                    const GGS__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ & in_mRepeatBranchList,
                                                     const GGS_uint & in_mAddedNonTerminalSymbolIndex,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;

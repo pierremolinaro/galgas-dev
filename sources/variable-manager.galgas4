@@ -287,20 +287,20 @@ mutating proc @localVarManager.insertInitializerSelfProperty
 //--------------------------------------------------------------------------------------------------
 
 mutating proc @localVarManager.openOverrideForSelectBlock () {
-  self.mOverridenManagers ++= @(.selectOverrideFirstBranch (!savedManager: self.mCurrentManager))
+  self.mOverridenManagers ++= .selectOverrideFirstBranch (!savedManager: self.mCurrentManager)
 }
 
 //--------------------------------------------------------------------------------------------------
 
 mutating proc @localVarManager.openOverrideForRepeatBlock () {
-  self.mOverridenManagers ++= @(.repeatOverride)
+  self.mOverridenManagers ++= .repeatOverride
 }
 
 //--------------------------------------------------------------------------------------------------
 
 mutating proc @localVarManager.closeOverride (let @location _inEndOfBranchLocation ) {
   if self.mOverridenManagers.count > 0 then
-    !?self.mOverridenManagers.popLast (?let savedManager)
+    !?self.mOverridenManagers.removeLast (?let savedManager)
     switch savedManager
     case selectOverrideFirstBranch (@currentVarManager _savedManager) :
     case selectOverrideNextBranches (@currentVarManager _savedManager, @currentVarManager referenceManager) :
@@ -322,18 +322,18 @@ mutating proc @localVarManager.closeBranch (let @location inEndOfBranchLocation 
   !?self.mCurrentManager.closeScope (inEndOfBranchLocation)
 //---
   if self.mOverridenManagers.count > 0 then
-    !?self.mOverridenManagers.popLast (?let savedManager)
+    !?self.mOverridenManagers.removeLast (?let savedManager)
     switch savedManager
     case selectOverrideFirstBranch (@currentVarManager savedManager) :
-      self.mOverridenManagers ++= @(.selectOverrideNextBranches (!savedManager: savedManager, !referenceManager: self.mCurrentManager))
+      self.mOverridenManagers ++= .selectOverrideNextBranches (!savedManager: savedManager, !referenceManager: self.mCurrentManager)
       self.mCurrentManager = savedManager
     case selectOverrideNextBranches (@currentVarManager savedManager, @currentVarManager referenceManager) :
       var newReferenceManager = self.mCurrentManager
       !?newReferenceManager.combineManagerWith (!otherManager: referenceManager, !errorLocation: inEndOfBranchLocation)
-      self.mOverridenManagers ++= @(.selectOverrideNextBranches (!savedManager: savedManager, !referenceManager: newReferenceManager))
+      self.mOverridenManagers ++= .selectOverrideNextBranches (!savedManager: savedManager, !referenceManager: newReferenceManager)
       self.mCurrentManager = savedManager
     case repeatOverride :
-      self.mOverridenManagers ++= @(savedManager)
+      self.mOverridenManagers ++= savedManager
     end
   end
 }
@@ -390,15 +390,15 @@ enum @overrideKind {
 
 //--------------------------------------------------------------------------------------------------
 
-list @openedOverrideList {
-  public let @overrideKind mOverrideKind
-}
+//list @openedOverrideList {
+//  public let @overrideKind mOverrideKind
+//}
 
 //--------------------------------------------------------------------------------------------------
 
 struct @localVarManager {
   private var @currentVarManager mCurrentManager = @()
-  private var @openedOverrideList mOverridenManagers = @()
+  private var [@overrideKind] mOverridenManagers = @()
 }
 
 //--------------------------------------------------------------------------------------------------

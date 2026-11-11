@@ -37,25 +37,14 @@ abstract class @abstractSyntaxInstructionForGrammarAnalysis #generatedInSeparate
 
 //--------------------------------------------------------------------------------------------------
 //
-//        Syntax signature
-//      (sequence of terminal, nonterminal, select and repeat)
-//
-//--------------------------------------------------------------------------------------------------
-
-list @syntaxInstructionListForGrammarAnalysis {
-  public let @abstractSyntaxInstructionForGrammarAnalysis mInstruction
-}
-
-//--------------------------------------------------------------------------------------------------
-//
 //   Production rules list (for a grammar component)
 //
 //--------------------------------------------------------------------------------------------------
 
-list @productionRuleListForGrammarAnalysis {
+struct @productionRuleForGrammarAnalysis {
   public let @lstring mLeftNonterminalSymbol
   public let @uint mLeftNonterminalSymbolIndex
-  public let @syntaxInstructionListForGrammarAnalysis mInstructionList
+  public let [@abstractSyntaxInstructionForGrammarAnalysis] mInstructionList
   public let @uint mProductionIndex
 }
 
@@ -97,9 +86,9 @@ final class @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructi
 //
 //--------------------------------------------------------------------------------------------------
 
-list @branchListForGrammarAnalysis {
-  public let @syntaxInstructionListForGrammarAnalysis mSyntaxInstructionList
-}
+//struct @branchForGrammarAnalysis {
+//  public let [@abstractSyntaxInstructionForGrammarAnalysis] mSyntaxInstructionList
+//}
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -108,7 +97,7 @@ list @branchListForGrammarAnalysis {
 //--------------------------------------------------------------------------------------------------
 
 final class @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
-  public let @branchListForGrammarAnalysis mSelectBranchList
+  public let [[@abstractSyntaxInstructionForGrammarAnalysis]] mSelectBranchList
   public let @uint mAddedNonTerminalSymbolIndex
 }
 
@@ -119,7 +108,7 @@ final class @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionFor
 //--------------------------------------------------------------------------------------------------
 
 final class @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
-  public let @branchListForGrammarAnalysis mRepeatBranchList
+  public let [[@abstractSyntaxInstructionForGrammarAnalysis]] mRepeatBranchList
   public let @uint mAddedNonTerminalSymbolIndex
 }
 
@@ -129,8 +118,8 @@ final class @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionFor
 //
 //--------------------------------------------------------------------------------------------------
 
-list @syntaxComponentListForGrammarAnalysis {
-  public let @productionRuleListForGrammarAnalysis mProductionRulesList
+struct @syntaxComponentForGrammarAnalysis {
+  public let [@productionRuleForGrammarAnalysis] mProductionRulesList
   public let @lstring mSyntaxComponentName
 }
 

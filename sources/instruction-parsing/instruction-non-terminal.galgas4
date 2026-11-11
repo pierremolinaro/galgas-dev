@@ -60,13 +60,13 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
                     (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis _ioActuallyUsedTerminalSymbolMap,
                     ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
                     ?!addedTerminalIndex:@uint _ioAddedNonTerminalIndex,
-                    ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList ) {
+                    ?![@abstractSyntaxInstructionForGrammarAnalysis] ioSyntaxInstructionList ) {
     inNonTerminalSymbolMap.searchKey (self.mNonterminalName, ?let nonTerminalSymbolIndex, ?*)
-    ioSyntaxInstructionList ++= @(@nonTerminalInstructionForGrammarAnalysis (
+    ioSyntaxInstructionList ++= @nonTerminalInstructionForGrammarAnalysis (
       self.mInstructionLocation,
       self.mNonterminalName,
       nonTerminalSymbolIndex
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

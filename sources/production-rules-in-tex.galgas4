@@ -71,7 +71,7 @@ proc emitProductionRulesInTexFile
   (let @string inProductDirectory,
   let @string  inGrammarComponentName,
   let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis,
-  let @syntaxComponentListForGrammarAnalysis inSyntaxComponentListForGrammarAnalysis,
+  let [@syntaxComponentForGrammarAnalysis] inSyntaxComponentListForGrammarAnalysis,
   let @lstring inStartSymbol
 ) {
 //--------------------------------------------------------- Print an tex file for grammar rule list
@@ -111,18 +111,16 @@ proc emitProductionRulesInTexFile
 
 //--------------------------------------------------------------------------------------------------
 
-proc @productionRuleListForGrammarAnalysis.@element.displayRule
-  (let @string inSyntaxComponentName,
-  ?!@string ioGeneratedCode
-) {
+proc @productionRuleForGrammarAnalysis.displayRule (let @string inSyntaxComponentName,
+                                                    ?!@string ioGeneratedCode) {
   var @string currentNode = "P0start"
   var [@row] rowArray = [@([@(currentNode, "[firstPoint] ()")])]
   var @string arrows = ""
   var @string arrowStyle = "--"
   var @uint column = 1
   var @uint unusedMaxUsedRowIndex = 0 // Unused
-  for entry in self.mInstructionList do
-    entry.mInstruction.tikzNodeForSyntaxInstruction (
+  for instruction in self.mInstructionList do
+    instruction.tikzNodeForSyntaxInstruction (
       !?rowArray,
       !fromRow:0,
       !?column:column,
@@ -165,10 +163,8 @@ proc @productionRuleListForGrammarAnalysis.@element.displayRule
 
 //--------------------------------------------------------------------------------------------------
 
-proc @productionRuleListForGrammarAnalysis.@element.displayRuleVertically
-  (let @string inSyntaxComponentName,
-  ?!@string ioGeneratedCode
-) {
+proc @productionRuleForGrammarAnalysis.displayRuleVertically (let @string inSyntaxComponentName,
+                                                              ?!@string ioGeneratedCode) {
   var @string currentNode = "P0start"
   var [@row] rowArray = @()
   for * in 1 ..< self.mInstructionList.count do
@@ -179,11 +175,11 @@ proc @productionRuleListForGrammarAnalysis.@element.displayRuleVertically
   var @string arrowStyle = "--"
   var @uint unusedMaxUsedRowIndex = 0 // Unused
   var row = self.mInstructionList.count
-  for entry in self.mInstructionList do
+  for instruction in self.mInstructionList do
     row -= 1
     var @uint column = 1
-    entry.mInstruction.tikzNodeForSyntaxInstruction
-      (!?rowArray,
+    instruction.tikzNodeForSyntaxInstruction (
+      !?rowArray,
       !fromRow:row,
       !?column:column,
       !?node:currentNode,
@@ -227,7 +223,7 @@ proc @productionRuleListForGrammarAnalysis.@element.displayRuleVertically
 //! tikzNodeForSyntaxInstruction
 //--------------------------------------------------------------------------------------------------
 
-proc @syntaxInstructionListForGrammarAnalysis.tikzNodeForSyntaxInstruction
+proc [@abstractSyntaxInstructionForGrammarAnalysis].tikzNodeForSyntaxInstruction
   (?![@row] ioRowList,
   ?fromRow:let @uint inRow,
   ?!column:@uint ioColumn,
@@ -249,9 +245,9 @@ proc @syntaxInstructionListForGrammarAnalysis.tikzNodeForSyntaxInstruction
     ioArrowShape = "--"
     ioColumn += 1
   else
-    for entry in self do
-      entry.mInstruction.tikzNodeForSyntaxInstruction
-        (!?ioRowList,
+    for instruction in self do
+      instruction.tikzNodeForSyntaxInstruction (
+        !?ioRowList,
         !fromRow:inRow,
         !?column:ioColumn,
         !?node:ioCurrentNode,
@@ -368,7 +364,7 @@ override proc @selectInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   ioColumn += 1
 //--- Enter branch zero
   var branches = self.mSelectBranchList
-  !?branches.popFirst (?let @syntaxInstructionListForGrammarAnalysis brancheZero)
+  !?branches.removeFirst (?let [@abstractSyntaxInstructionForGrammarAnalysis] brancheZero)
   var branchZeroColumn = ioColumn
   var maxUsedRowIndex = inRow
   brancheZero.tikzNodeForSyntaxInstruction
@@ -389,8 +385,8 @@ override proc @selectInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
     var branchColumn = ioColumn
     var currentNode = startNodeName
     var arrowStyle = "|-"
-    branch.mSyntaxInstructionList.tikzNodeForSyntaxInstruction
-      (!?ioRowList,
+    branch.tikzNodeForSyntaxInstruction (
+      !?ioRowList,
       !fromRow:maxUsedRowIndex,
       !?column:branchColumn,
       !?node:currentNode,
@@ -462,7 +458,7 @@ override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   ioColumn += 1
 //--- Enter branch zero
   var branches = self.mRepeatBranchList
-  !?branches.popFirst (?let @syntaxInstructionListForGrammarAnalysis brancheZero)
+  !?branches.removeFirst (?let [@abstractSyntaxInstructionForGrammarAnalysis] brancheZero)
   var maxUsedRowIndex = inRow
   brancheZero.tikzNodeForSyntaxInstruction
     (!?ioRowList,
@@ -481,7 +477,7 @@ override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
 //--- Enter following branches; particular case: one empty branch
   var oneEmptyBranch = branches.count == 1
   if oneEmptyBranch then
-    branches.first (?let firstBranch)
+    let firstBranch = branches.first
     oneEmptyBranch = firstBranch.count == 0
   end
 //--- Enter branches
@@ -495,8 +491,8 @@ override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
       var branchColumn = ioColumn
       var currentNode = startNodeName
       var arrowStyle = "|-"
-      branch.mSyntaxInstructionList.tikzNodeForSyntaxInstruction
-        (!?ioRowList,
+      branch.tikzNodeForSyntaxInstruction (
+        !?ioRowList,
         !fromRow:nextBranchUsedRowIndex,
         !?column:branchColumn,
         !?node:currentNode,
@@ -544,10 +540,10 @@ override proc @repeatInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
 //! isLinear
 //--------------------------------------------------------------------------------------------------
 
-func @syntaxInstructionListForGrammarAnalysis.displayVertically () -> @bool {
+func [@abstractSyntaxInstructionForGrammarAnalysis].displayVertically () -> @bool {
   result = self.count > 4
-  for entry in self while result do
-    result = entry.mInstruction.isLinear
+  for instruction in self while result do
+    result = instruction.isLinear
   end
 }
 

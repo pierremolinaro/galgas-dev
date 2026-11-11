@@ -92,7 +92,7 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
     ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
     ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis _inNonTerminalSymbolMap,
     ?!addedTerminalIndex:@uint _ioAddedNonTerminalIndex,
-    ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList) {
+    ?![@abstractSyntaxInstructionForGrammarAnalysis] ioSyntaxInstructionList) {
     let @uint terminalSymbolIndex
     if let entry = ioActuallyUsedTerminalSymbolMap [self.mTerminalName.string] then
       terminalSymbolIndex = entry.mTerminalIndex
@@ -100,11 +100,11 @@ final class @terminalCheckInstructionAST : @syntaxInstructionAST {
       terminalSymbolIndex = ioActuallyUsedTerminalSymbolMap.count
       !?ioActuallyUsedTerminalSymbolMap.insertKey (self.mTerminalName, terminalSymbolIndex)
     end
-    ioSyntaxInstructionList ++= @(@terminalInstructionForGrammarAnalysis (
+    ioSyntaxInstructionList ++= @terminalInstructionForGrammarAnalysis (
       self.mInstructionLocation,
       self.mTerminalName,
       terminalSymbolIndex
-    ))
+    )
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

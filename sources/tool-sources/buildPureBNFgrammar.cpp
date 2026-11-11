@@ -39,13 +39,33 @@
 
 //--------------------------------------------------------------------------------------------------
 
-static void fixNewNonterminalSymbolsForList (const GGS_syntaxInstructionListForGrammarAnalysis & inList,
+//static void fixNewNonterminalSymbolsForList (const GGS_productionRuleForGrammarAnalysis & inList,
+//                                             GrammarVocabulary & ioVocabulary,
+//                                             const String & inSyntaxComponentName,
+//                                             int32_t & ioCount) {
+//  UpEnumerator_productionRuleForGrammarAnalysis currentInstruction (inList) ;
+//  while (currentInstruction.hasCurrentObject ()) {
+//    cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current (HERE).ptr () ;
+//    macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
+//    if (p == nullptr) {
+//      printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
+//      exit (1) ;
+//    }else{
+//      p->fixNewNonterminalSymbols (ioVocabulary, inSyntaxComponentName, ioCount) ;
+//    }
+//    currentInstruction.gotoNextObject () ;
+//  }
+//}
+
+//--------------------------------------------------------------------------------------------------
+
+static void fixNewNonterminalSymbolsForList (const GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ & inList,
                                              GrammarVocabulary & ioVocabulary,
                                              const String & inSyntaxComponentName,
                                              int32_t & ioCount) {
-  UpEnumerator_syntaxInstructionListForGrammarAnalysis currentInstruction (inList) ;
+  UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ currentInstruction (inList) ;
   while (currentInstruction.hasCurrentObject ()) {
-    cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current_mInstruction (HERE).ptr () ;
+    cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current (HERE).ptr () ;
     macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
     if (p == nullptr) {
       printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
@@ -68,9 +88,9 @@ void cPtr_repeatInstructionForGrammarAnalysis::fixNewNonterminalSymbols (Grammar
                                      true) ;
   ioCount += 1 ;
 
-  UpEnumerator_branchListForGrammarAnalysis currentBranch (mProperty_mRepeatBranchList) ;
+  UpEnumerator__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ currentBranch (mProperty_mRepeatBranchList) ;
   while (currentBranch.hasCurrentObject ()) {
-    fixNewNonterminalSymbolsForList (currentBranch.current_mSyntaxInstructionList (HERE),
+    fixNewNonterminalSymbolsForList (currentBranch.current (HERE),
                                      ioVocabulary,
                                      inSyntaxComponentName,
                                      ioCount) ;
@@ -89,9 +109,9 @@ void cPtr_selectInstructionForGrammarAnalysis::fixNewNonterminalSymbols (Grammar
                                      true) ;
   ioCount += 1 ;
 
-  UpEnumerator_branchListForGrammarAnalysis currentBranch (mProperty_mSelectBranchList) ;
+  UpEnumerator__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ currentBranch (mProperty_mSelectBranchList) ;
   while (currentBranch.hasCurrentObject ()) {
-    fixNewNonterminalSymbolsForList (currentBranch.current_mSyntaxInstructionList (HERE),
+    fixNewNonterminalSymbolsForList (currentBranch.current (HERE),
                                      ioVocabulary,
                                      inSyntaxComponentName,
                                      ioCount) ;
@@ -156,10 +176,10 @@ void cPtr_repeatInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t inTerminalSymbolsCount,
                       const int32_t inOriginalGrammarSymbolCount,
                       GenericUniqueArray <int32_t> & ioInstructionsList) const {
-  UpEnumerator_branchListForGrammarAnalysis firstBranch (mProperty_mRepeatBranchList) ;
-  UpEnumerator_syntaxInstructionListForGrammarAnalysis instruction (firstBranch.current_mSyntaxInstructionList (HERE)) ;
+  UpEnumerator__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ firstBranch (mProperty_mRepeatBranchList) ;
+  UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ instruction (firstBranch.current (HERE)) ;
   while (instruction.hasCurrentObject ()) {
-    cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
+    cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current (HERE).ptr () ;
     macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
     if (p == nullptr) {
       printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
@@ -194,12 +214,12 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
 //          <W> = Z, ...
 //     la production analysee devient : A ; <W> ; B
 
- UpEnumerator_branchListForGrammarAnalysis currentBranch (mProperty_mSelectBranchList) ;
+ UpEnumerator__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ currentBranch (mProperty_mSelectBranchList) ;
   while (currentBranch.hasCurrentObject ()) {
     GenericUniqueArray <int32_t> derivation ;
-    UpEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (HERE)) ;
+    UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ instruction (currentBranch.current (HERE)) ;
     while (instruction.hasCurrentObject ()) {
-      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
+      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current (HERE).ptr () ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
       if (p == nullptr) {
         printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
@@ -222,9 +242,9 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
 //--- Construire les productions issues des instructions choix et repeter
   currentBranch.rewind () ;
   while (currentBranch.hasCurrentObject ()) {
-    UpEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (HERE)) ;
+    UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ instruction (currentBranch.current (HERE)) ;
     while (instruction.hasCurrentObject ()) {
-      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
+      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current (HERE).ptr () ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
       if (p == nullptr) {
         printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
@@ -271,14 +291,14 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
   }
 
 //--- Insert a new production for every 'while' branch
-  UpEnumerator_branchListForGrammarAnalysis currentBranch (mProperty_mRepeatBranchList) ;
+  UpEnumerator__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ currentBranch (mProperty_mRepeatBranchList) ;
   currentBranch.gotoNextObject () ;
   while (currentBranch.hasCurrentObject ()) {
     GenericUniqueArray <int32_t> derivation ;
   //--- insert branch instructions
-    UpEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (HERE)) ;
+    UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ instruction (currentBranch.current (HERE)) ;
     while (instruction.hasCurrentObject ()) {
-      const cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) (instruction.current_mInstruction (HERE).ptr ()) ;
+      const cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) (instruction.current (HERE).ptr ()) ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
       if (p == nullptr) {
         printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
@@ -289,10 +309,10 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
       instruction.gotoNextObject () ;
     }
   //--- insert sequence from X
-    UpEnumerator_branchListForGrammarAnalysis firstBranch (mProperty_mRepeatBranchList) ;
-    UpEnumerator_syntaxInstructionListForGrammarAnalysis firstBranchInstruction (firstBranch.current_mSyntaxInstructionList (HERE)) ;
+    UpEnumerator__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ firstBranch (mProperty_mRepeatBranchList) ;
+    UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ firstBranchInstruction (firstBranch.current (HERE)) ;
     while (firstBranchInstruction.hasCurrentObject ()) {
-      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) firstBranchInstruction.current_mInstruction (HERE).ptr () ;
+      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) firstBranchInstruction.current (HERE).ptr () ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
       if (p == nullptr) {
         printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
@@ -318,9 +338,9 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
 //--- Construire les productions issues des instructions choix et repeter
   currentBranch.rewind () ;
   while (currentBranch.hasCurrentObject ()) {
-    UpEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (HERE)) ;
+    UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ instruction (currentBranch.current (HERE)) ;
     while (instruction.hasCurrentObject ()) {
-      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
+      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current (HERE).ptr () ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
       if (p == nullptr) {
         printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
@@ -370,13 +390,15 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
 //--- Fix new non terminal symbols index and names
   UpEnumerator_syntaxComponentListForGrammarAnalysis currentComponent (inSyntaxComponentsList) ;
   while (currentComponent.hasCurrentObject ()) {
-    UpEnumerator_productionRuleListForGrammarAnalysis currentRule (currentComponent.current_mProductionRulesList (HERE)) ;
+    UpEnumerator__5B_productionRuleForGrammarAnalysis_5D_ currentRule (currentComponent.current_mProductionRulesList (HERE)) ;
     int32_t count = 0 ;
     while (currentRule.hasCurrentObject ()) {
-      fixNewNonterminalSymbolsForList (currentRule.current_mInstructionList (HERE),
-                                       ioVocabulary,
-                                       currentComponent.current_mSyntaxComponentName (HERE).mProperty_string.stringValue (),
-                                       count) ;
+      fixNewNonterminalSymbolsForList (
+        currentRule.current (HERE).mProperty_mInstructionList,
+        ioVocabulary,
+        currentComponent.current_mSyntaxComponentName (HERE).mProperty_string.stringValue (),
+        count
+      ) ;
       currentRule.gotoNextObject () ;
     }
     currentComponent.gotoNextObject () ;
@@ -387,12 +409,12 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
   const int32_t orginalGrammarSymbolCount = ioVocabulary.originalGrammarSymbolsCount () ;
   currentComponent.rewind () ;
   while (currentComponent.hasCurrentObject ()) {
-    UpEnumerator_productionRuleListForGrammarAnalysis currentRule (currentComponent.current_mProductionRulesList (HERE)) ;
+    UpEnumerator__5B_productionRuleForGrammarAnalysis_5D_ currentRule (currentComponent.current_mProductionRulesList (HERE)) ;
     while (currentRule.hasCurrentObject ()) {
       GenericUniqueArray <int32_t> derivation ;
-      UpEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentRule.current_mInstructionList (HERE)) ;
+      UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ instruction (currentRule.current (HERE).mProperty_mInstructionList) ;
       while (instruction.hasCurrentObject ()) {
-        cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
+        cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current (HERE).ptr () ;
         macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
         if (p == nullptr) {
           printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
@@ -403,11 +425,11 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
         instruction.gotoNextObject () ;
       }
       GrammarProduction p (currentComponent.current_mSyntaxComponentName (HERE).mProperty_string.stringValue (),
-                     currentRule.current_mLeftNonterminalSymbol (HERE).mProperty_location.startLocation ().lineNumber (),
-                     currentRule.current_mLeftNonterminalSymbol (HERE).mProperty_location.startLocation ().columnNumber (),
-                     terminalSymbolsCount + (int32_t) currentRule.current_mLeftNonterminalSymbolIndex (HERE).uintValue (),
+                     currentRule.current (HERE).mProperty_mLeftNonterminalSymbol.mProperty_location.startLocation ().lineNumber (),
+                     currentRule.current (HERE).mProperty_mLeftNonterminalSymbol.mProperty_location.startLocation ().columnNumber (),
+                     terminalSymbolsCount + (int32_t) currentRule.current (HERE).mProperty_mLeftNonterminalSymbolIndex.uintValue (),
                      derivation,
-                     currentRule.current_mProductionIndex (HERE).uintValue ()) ;
+                     currentRule.current (HERE).mProperty_mProductionIndex.uintValue ()) ;
       ioProductions.mProductionArray.appendObjectUsingSwap (p) ;
       currentRule.gotoNextObject () ;
     }
@@ -417,11 +439,11 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
 //--- Build pure BNF productions from 'repeat' and 'select' instructions
   currentComponent.rewind () ;
   while (currentComponent.hasCurrentObject ()) {
-    UpEnumerator_productionRuleListForGrammarAnalysis currentRule (currentComponent.current_mProductionRulesList (HERE)) ;
+    UpEnumerator__5B_productionRuleForGrammarAnalysis_5D_ currentRule (currentComponent.current_mProductionRulesList (HERE)) ;
     while (currentRule.hasCurrentObject ()) {
-      UpEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentRule.current_mInstructionList (HERE)) ;
+      UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ instruction (currentRule.current (HERE).mProperty_mInstructionList) ;
       while (instruction.hasCurrentObject ()) {
-        cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
+        cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current (HERE).ptr () ;
         macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
         if (p == nullptr) {
           printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;

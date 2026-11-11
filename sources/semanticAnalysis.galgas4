@@ -641,7 +641,7 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
   var @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap = @()
   var @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis = @()
   var @lstring lexiqueComponentName =  "".nowhere // Empty string means unknown
-  var @syntaxComponentListForGrammarAnalysis syntaxComponentListForGrammarAnalysis = @()
+  var [@syntaxComponentForGrammarAnalysis] syntaxComponentListForGrammarAnalysis = @()
   var [@nonTerminalToAdd] nonTerminalToAddList = @()
   var @uint addedNonTerminalCount = 0
   for syntaxComponentName in self.mSyntaxComponents do

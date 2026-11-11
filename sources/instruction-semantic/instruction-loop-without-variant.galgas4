@@ -61,7 +61,7 @@ syntax extension galgas4InstructionsSyntax {
 final class @loopInstructionWithoutVariantAST : @semanticInstructionAST {
   private let [@semanticInstructionAST] mFirstInstructions
   private let @location mEndOfFirstInstructions
-  private let @CommaSeparatedExpressionList mLoopExpression
+  private let [@CommaSeparatedExpressionElement] mLoopExpression
   private let @location mEndOfLoopExpression
   private let [@semanticInstructionAST] mSecondInstructions
   private let @location mEndOfSecondInstructions

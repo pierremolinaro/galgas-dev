@@ -35,11 +35,11 @@
 //--------------------------------------------------------------------------------------------------
 
 static void
-printInstructionsListForGrammar (const GGS_syntaxInstructionListForGrammarAnalysis & inInstructionsList,
+printInstructionsListForGrammar (const GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ & inInstructionsList,
                                  HTMLString & inHTMLfile) {
-  UpEnumerator_syntaxInstructionListForGrammarAnalysis currentInstruction (inInstructionsList) ;
+  UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ currentInstruction (inInstructionsList) ;
   while (currentInstruction.hasCurrentObject ()) {
-    cPtr_abstractSyntaxInstructionForGrammarAnalysis * instruction = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current_mInstruction (HERE).ptr () ;
+    cPtr_abstractSyntaxInstructionForGrammarAnalysis * instruction = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current (HERE).ptr () ;
     if (instruction == nullptr) {
       printf ("nullptr in '%s', line %d\n", __FILE__, __LINE__) ;
       exit (1) ;
@@ -52,13 +52,12 @@ printInstructionsListForGrammar (const GGS_syntaxInstructionListForGrammarAnalys
 
 //--------------------------------------------------------------------------------------------------
 
-void cPtr_repeatInstructionForGrammarAnalysis::
-printInstructionForGrammar (HTMLString & inHTMLfile) const {
+void cPtr_repeatInstructionForGrammarAnalysis::printInstructionForGrammar (HTMLString & inHTMLfile) const {
   inHTMLfile.addRawData ("<span class=\"galgas_structure\">") ;
   inHTMLfile.addRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile.appendCString ("repeat ") ;
   inHTMLfile.addRawData ("</span>") ;
-  UpEnumerator_branchListForGrammarAnalysis currentBranch (mProperty_mRepeatBranchList) ;
+  UpEnumerator__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ currentBranch (mProperty_mRepeatBranchList) ;
   bool first = true ;
   while (currentBranch.hasCurrentObject ()) {
     if (first) {
@@ -69,7 +68,7 @@ printInstructionForGrammar (HTMLString & inHTMLfile) const {
       inHTMLfile.addRawData ("</span>") ;
     }
     inHTMLfile.addRawData ("<span class=\"within_galgas_structure\">") ;
-    printInstructionsListForGrammar (currentBranch.current_mSyntaxInstructionList (HERE), inHTMLfile) ;
+    printInstructionsListForGrammar (currentBranch.current (HERE), inHTMLfile) ;
     inHTMLfile.addRawData ("</span>") ;
     currentBranch.gotoNextObject () ;
   }
@@ -86,7 +85,7 @@ printInstructionForGrammar (HTMLString & inHTMLfile) const {
   inHTMLfile.addRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile.appendCString ("select ") ;
   inHTMLfile.addRawData ("</span>") ;
-  UpEnumerator_branchListForGrammarAnalysis currentBranch (mProperty_mSelectBranchList) ;
+  UpEnumerator__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ currentBranch (mProperty_mSelectBranchList) ;
   bool first = true ;
   while (currentBranch.hasCurrentObject ()) {
     if (first) {
@@ -97,7 +96,7 @@ printInstructionForGrammar (HTMLString & inHTMLfile) const {
       inHTMLfile.addRawData ("</span>") ;
     }
     inHTMLfile.addRawData ("<span class=\"within_galgas_structure\">") ;
-    printInstructionsListForGrammar (currentBranch.current_mSyntaxInstructionList (HERE), inHTMLfile) ;
+    printInstructionsListForGrammar (currentBranch.current (HERE), inHTMLfile) ;
     inHTMLfile.addRawData ("</span>") ;
     currentBranch.gotoNextObject () ;
   }
@@ -155,14 +154,14 @@ void printOriginalGrammar (HTMLString & inHTMLfile,
     inHTMLfile.appendString (currentSyntaxComponent.current_mSyntaxComponentName (HERE).mProperty_string.stringValue ()) ;
     inHTMLfile.appendCString ("' component") ;
     inHTMLfile.addRawData ("</td></tr>") ;
-    UpEnumerator_productionRuleListForGrammarAnalysis currentRule (currentSyntaxComponent.current_mProductionRulesList (HERE)) ;
+    UpEnumerator__5B_productionRuleForGrammarAnalysis_5D_ currentRule (currentSyntaxComponent.current_mProductionRulesList (HERE)) ;
     while (currentRule.hasCurrentObject ()) {
       inHTMLfile.addRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     //--- Print rule
       inHTMLfile.appendCString ("rule ") ;
       inHTMLfile.addRawData ("<code>") ;
       inHTMLfile.appendCString ("<") ;
-      inHTMLfile.appendString (currentRule.current_mLeftNonterminalSymbol (HERE).mProperty_string.stringValue ()) ;
+      inHTMLfile.appendString (currentRule.current (HERE).mProperty_mLeftNonterminalSymbol.mProperty_string.stringValue ()) ;
       inHTMLfile.appendCString (">") ;
       inHTMLfile.addRawData ("</code><br>") ;
       inHTMLfile.appendCString ("file '")  ;
@@ -170,10 +169,9 @@ void printOriginalGrammar (HTMLString & inHTMLfile,
       inHTMLfile.appendCString ("'") ;
       inHTMLfile.addRawData ("<br>") ;
       inHTMLfile.appendCString ("line ") ;
-      inHTMLfile.appendSigned (currentRule.current_mLeftNonterminalSymbol (HERE).mProperty_location.startLocation ().lineNumber ()) ;
+      inHTMLfile.appendSigned (currentRule.current (HERE).mProperty_mLeftNonterminalSymbol.mProperty_location.startLocation ().lineNumber ()) ;
       inHTMLfile.addRawData ("</td><td><code>") ;
-      printInstructionsListForGrammar (currentRule.current_mInstructionList (HERE),
-                                       inHTMLfile) ;
+      printInstructionsListForGrammar (currentRule.current (HERE).mProperty_mInstructionList, inHTMLfile) ;
       inHTMLfile.addRawData ("</code></td></tr>") ;
     //--- Next rule
       currentRule.gotoNextObject () ;

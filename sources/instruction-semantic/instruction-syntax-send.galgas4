@@ -70,7 +70,7 @@ final class @syntaxSendInstructionAST : @syntaxInstructionAST {
     ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis _ioActuallyUsedTerminalSymbolMap,
     ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis _inNonTerminalSymbolMap,
     ?!addedTerminalIndex:@uint _ioAddedNonTerminalIndex,
-    ?!@syntaxInstructionListForGrammarAnalysis _ioSyntaxInstructionList) {
+    ?![@abstractSyntaxInstructionForGrammarAnalysis] _ioSyntaxInstructionList) {
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

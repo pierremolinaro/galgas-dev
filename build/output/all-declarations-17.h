@@ -672,7 +672,7 @@ void routine_transformInstructionListForGrammarAnalysis_3F__26_usedTerminalMap_3
                                                                                                                                   class GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument1,
                                                                                                                                   const class GGS_nonTerminalSymbolMapForGrammarAnalysis constinArgument2,
                                                                                                                                   class GGS_uint & ioArgument3,
-                                                                                                                                  class GGS_syntaxInstructionListForGrammarAnalysis & ioArgument4,
+                                                                                                                                  class GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ & ioArgument4,
                                                                                                                                   class Compiler * inCompiler
                                                                                                                                   COMMA_LOCATION_ARGS) ;
 
@@ -686,7 +686,7 @@ void routine_buildRuleList_3F__3F__3F__26__26__26_ (const class GGS_nonTerminalS
                                                     const class GGS_lstring constinArgument1,
                                                     const class GGS__5B_syntaxRuleAST_5D_ constinArgument2,
                                                     class GGS_terminalSymbolsMapForGrammarAnalysis & ioArgument3,
-                                                    class GGS_syntaxComponentListForGrammarAnalysis & ioArgument4,
+                                                    class GGS__5B_syntaxComponentForGrammarAnalysis_5D_ & ioArgument4,
                                                     class GGS_uint & ioArgument5,
                                                     class Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
@@ -735,7 +735,7 @@ void routine_grammarAnalysisAndGeneration_3F__3F__3F__3F__3F__3F__3F__3F__3F__3F
                                                                                                const class GGS_uint constinArgument2,
                                                                                                const class GGS_string constinArgument3,
                                                                                                const class GGS_terminalSymbolsMapForGrammarAnalysis constinArgument4,
-                                                                                               const class GGS_syntaxComponentListForGrammarAnalysis constinArgument5,
+                                                                                               const class GGS__5B_syntaxComponentForGrammarAnalysis_5D_ constinArgument5,
                                                                                                const class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis constinArgument6,
                                                                                                const class GGS_string constinArgument7,
                                                                                                const class GGS_nonTerminalSymbolSortedListForGrammarAnalysis constinArgument8,

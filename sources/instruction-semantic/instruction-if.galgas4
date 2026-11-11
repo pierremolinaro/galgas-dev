@@ -74,7 +74,7 @@ syntax extension galgas4InstructionsSyntax {
 //--------------------------------------------------------------------------------------------------
 
 final class @ifInstructionAST : @semanticInstructionAST {
-  public let @CommaSeparatedExpressionList mExpressions
+  public let [@CommaSeparatedExpressionElement] mExpressions
   public let [@semanticInstructionAST] m_then_instructionList
   public let @location mEndOf_then_branch
   public let [@semanticInstructionAST] m_else_instructionList
@@ -141,7 +141,7 @@ final class @ifInstructionAST : @semanticInstructionAST {
       ?let then_instructionList
     )
     var expressions = self.mExpressions
-    !?expressions.popLast (?*)
+    !?expressions.removeLast (?*)
     for * in expressions do
       !?ioVariableMap.closeBranch (self.mEndOf_then_branch)
       !?ioVariableMap.closeOverride (self.mEndOf_then_branch)

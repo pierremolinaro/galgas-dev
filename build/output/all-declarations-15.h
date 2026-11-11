@@ -623,18 +623,6 @@ class GGS_grammarForGeneration_2E_weak : public GGS_semanticDeclarationWithHeade
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@productionRuleListForGrammarAnalysis.element displayRule'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_displayRule (const class GGS_productionRuleListForGrammarAnalysis_2E_element inObject,
-                                  const class GGS_string constin_inSyntaxComponentName,
-                                  class GGS_string & io_ioGeneratedCode,
-                                  class Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
 //  GRAMMAR galgas4Grammar
 //--------------------------------------------------------------------------------------------------
 
@@ -704,7 +692,7 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
 //----------- '' label
   public: virtual void nt_comma_5F_separated_5F_expression_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                             GGS_CommaSeparatedExpressionList & outArgument1,
+                                                             GGS__5B_CommaSeparatedExpressionElement_5D_ & outArgument1,
                                                              Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'declaration' non terminal

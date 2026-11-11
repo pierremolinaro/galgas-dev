@@ -30,7 +30,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
                     !@semanticExpressionAST outExpression)
 
   rule <comma_separated_expression> (?!@galgasDeclarationAST ioDeclarations,
-                                    !@CommaSeparatedExpressionList outExpressionList)
+                                    ![@CommaSeparatedExpressionElement] outExpressionList)
 
   rule <formal_parameter_list> (?!@galgasDeclarationAST ioDeclarations,
                                ![@formalParameterAST] outFormalParameterList)
