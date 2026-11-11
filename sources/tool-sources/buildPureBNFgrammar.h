@@ -25,7 +25,7 @@
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_syntaxComponentListForGrammarAnalysis ;
+class GGS__5B_syntaxComponentForGrammarAnalysis_5D_ ;
 class PureBNFproductionsList ;
 class GrammarVocabulary ;
 class HTMLString ;
@@ -33,7 +33,7 @@ class HTMLString ;
 //--------------------------------------------------------------------------------------------------
 
 void
-buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
+buildPureBNFgrammar (const GGS__5B_syntaxComponentForGrammarAnalysis_5D_ & inSyntaxComponentsList,
                      GrammarVocabulary & ioVocabulary,
                      PureBNFproductionsList & ioProductions) ;
 

@@ -384,19 +384,19 @@ buildSelectAndRepeatProductions (const int32_t /* inTerminalSymbolsCount */,
 //--------------------------------------------------------------------------------------------------
 
 void
-buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
+buildPureBNFgrammar (const GGS__5B_syntaxComponentForGrammarAnalysis_5D_ & inSyntaxComponentsList,
                      GrammarVocabulary & ioVocabulary,
                      PureBNFproductionsList & ioProductions) {
 //--- Fix new non terminal symbols index and names
-  UpEnumerator_syntaxComponentListForGrammarAnalysis currentComponent (inSyntaxComponentsList) ;
+  UpEnumerator__5B_syntaxComponentForGrammarAnalysis_5D_ currentComponent (inSyntaxComponentsList) ;
   while (currentComponent.hasCurrentObject ()) {
-    UpEnumerator__5B_productionRuleForGrammarAnalysis_5D_ currentRule (currentComponent.current_mProductionRulesList (HERE)) ;
+    UpEnumerator__5B_productionRuleForGrammarAnalysis_5D_ currentRule (currentComponent.current (HERE).mProperty_mProductionRulesList) ;
     int32_t count = 0 ;
     while (currentRule.hasCurrentObject ()) {
       fixNewNonterminalSymbolsForList (
         currentRule.current (HERE).mProperty_mInstructionList,
         ioVocabulary,
-        currentComponent.current_mSyntaxComponentName (HERE).mProperty_string.stringValue (),
+        currentComponent.current (HERE).mProperty_mSyntaxComponentName.mProperty_string.stringValue (),
         count
       ) ;
       currentRule.gotoNextObject () ;
@@ -409,7 +409,7 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
   const int32_t orginalGrammarSymbolCount = ioVocabulary.originalGrammarSymbolsCount () ;
   currentComponent.rewind () ;
   while (currentComponent.hasCurrentObject ()) {
-    UpEnumerator__5B_productionRuleForGrammarAnalysis_5D_ currentRule (currentComponent.current_mProductionRulesList (HERE)) ;
+    UpEnumerator__5B_productionRuleForGrammarAnalysis_5D_ currentRule (currentComponent.current (HERE).mProperty_mProductionRulesList) ;
     while (currentRule.hasCurrentObject ()) {
       GenericUniqueArray <int32_t> derivation ;
       UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ instruction (currentRule.current (HERE).mProperty_mInstructionList) ;
@@ -424,7 +424,7 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
         }
         instruction.gotoNextObject () ;
       }
-      GrammarProduction p (currentComponent.current_mSyntaxComponentName (HERE).mProperty_string.stringValue (),
+      GrammarProduction p (currentComponent.current (HERE).mProperty_mSyntaxComponentName.mProperty_string.stringValue (),
                      currentRule.current (HERE).mProperty_mLeftNonterminalSymbol.mProperty_location.startLocation ().lineNumber (),
                      currentRule.current (HERE).mProperty_mLeftNonterminalSymbol.mProperty_location.startLocation ().columnNumber (),
                      terminalSymbolsCount + (int32_t) currentRule.current (HERE).mProperty_mLeftNonterminalSymbolIndex.uintValue (),
@@ -439,7 +439,7 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
 //--- Build pure BNF productions from 'repeat' and 'select' instructions
   currentComponent.rewind () ;
   while (currentComponent.hasCurrentObject ()) {
-    UpEnumerator__5B_productionRuleForGrammarAnalysis_5D_ currentRule (currentComponent.current_mProductionRulesList (HERE)) ;
+    UpEnumerator__5B_productionRuleForGrammarAnalysis_5D_ currentRule (currentComponent.current (HERE).mProperty_mProductionRulesList) ;
     while (currentRule.hasCurrentObject ()) {
       UpEnumerator__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ instruction (currentRule.current (HERE).mProperty_mInstructionList) ;
       while (instruction.hasCurrentObject ()) {
@@ -449,10 +449,12 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
           printf ("NULL pointer in '%s', line %d\n", __FILE__, __LINE__) ;
           exit (1) ;
         }else{
-          p->buildSelectAndRepeatProductions (terminalSymbolsCount,
-                                              orginalGrammarSymbolCount,
-                                              currentComponent.current_mSyntaxComponentName (HERE).mProperty_string.stringValue (),
-                                              ioProductions) ;
+          p->buildSelectAndRepeatProductions (
+            terminalSymbolsCount,
+            orginalGrammarSymbolCount,
+            currentComponent.current (HERE).mProperty_mSyntaxComponentName.mProperty_string.stringValue (),
+            ioProductions
+          ) ;
         }
         instruction.gotoNextObject () ;
       }

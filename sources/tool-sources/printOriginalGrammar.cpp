@@ -130,12 +130,12 @@ printInstructionForGrammar (HTMLString & inHTMLfile) const {
 //--------------------------------------------------------------------------------------------------
 
 void printOriginalGrammar (HTMLString & inHTMLfile,
-                           const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) {
+                           const GGS__5B_syntaxComponentForGrammarAnalysis_5D_ & inSyntaxComponentsList) {
 //--- Print message
   int32_t productionsCount = 0 ;
-  UpEnumerator_syntaxComponentListForGrammarAnalysis currentSyntaxComponent (inSyntaxComponentsList) ;
+  UpEnumerator__5B_syntaxComponentForGrammarAnalysis_5D_ currentSyntaxComponent (inSyntaxComponentsList) ;
   while (currentSyntaxComponent.hasCurrentObject ()) {
-    productionsCount += currentSyntaxComponent.current_mProductionRulesList (HERE).count () ;
+    productionsCount += currentSyntaxComponent.current (HERE).mProperty_mProductionRulesList.count () ;
     currentSyntaxComponent.gotoNextObject () ;
   }
   inHTMLfile.addRawData ("<p>") ;
@@ -151,10 +151,10 @@ void printOriginalGrammar (HTMLString & inHTMLfile,
   while (currentSyntaxComponent.hasCurrentObject ()) {
     inHTMLfile.addRawData ("<tr><td class=\"result_title\" colspan=\"2\">") ;
     inHTMLfile.appendCString ("RULES FROM '") ;
-    inHTMLfile.appendString (currentSyntaxComponent.current_mSyntaxComponentName (HERE).mProperty_string.stringValue ()) ;
+    inHTMLfile.appendString (currentSyntaxComponent.current (HERE).mProperty_mSyntaxComponentName.mProperty_string.stringValue ()) ;
     inHTMLfile.appendCString ("' component") ;
     inHTMLfile.addRawData ("</td></tr>") ;
-    UpEnumerator__5B_productionRuleForGrammarAnalysis_5D_ currentRule (currentSyntaxComponent.current_mProductionRulesList (HERE)) ;
+    UpEnumerator__5B_productionRuleForGrammarAnalysis_5D_ currentRule (currentSyntaxComponent.current (HERE).mProperty_mProductionRulesList) ;
     while (currentRule.hasCurrentObject ()) {
       inHTMLfile.addRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     //--- Print rule
@@ -165,7 +165,7 @@ void printOriginalGrammar (HTMLString & inHTMLfile,
       inHTMLfile.appendCString (">") ;
       inHTMLfile.addRawData ("</code><br>") ;
       inHTMLfile.appendCString ("file '")  ;
-      inHTMLfile.appendString (currentSyntaxComponent.current_mSyntaxComponentName (HERE).mProperty_location.sourceText ().sourceFilePath ()) ;
+      inHTMLfile.appendString (currentSyntaxComponent.current (HERE).mProperty_mSyntaxComponentName.mProperty_location.sourceText ().sourceFilePath ()) ;
       inHTMLfile.appendCString ("'") ;
       inHTMLfile.addRawData ("<br>") ;
       inHTMLfile.appendCString ("line ") ;

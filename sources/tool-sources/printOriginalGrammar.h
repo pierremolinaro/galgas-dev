@@ -28,11 +28,11 @@
 //--------------------------------------------------------------------------------------------------
 
 class HTMLString ;
-class GGS_syntaxComponentListForGrammarAnalysis ;
+class GGS__5B_syntaxComponentForGrammarAnalysis_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
 
 void printOriginalGrammar (HTMLString & inHTMLfile,
-                           const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) ;
+                           const GGS__5B_syntaxComponentForGrammarAnalysis_5D_ & inSyntaxComponentsList) ;
 
 //--------------------------------------------------------------------------------------------------
