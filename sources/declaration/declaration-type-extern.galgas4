@@ -263,7 +263,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
     for initializer in self.externTypeInitializerList do
 //      !?ioTypeMap makeEntry !initializer.mResultTypeName ?let returnedTypeEntry]
     //---
-      var @functionSignature arguments = @()
+      var [@functionSignatureElement] arguments = @()
       for parameter in initializer do
         !?ioTypeMap.makeEntry (parameter.mFormalParameterTypeName, ?let argumentTypeEntry)
         arguments ++= @(parameter.mFormalSelector, argumentTypeEntry, parameter.mFormalParameterName.string, true)
@@ -276,7 +276,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
     for aGetter in self.mExternTypeGetterList do
       !?ioTypeMap.makeEntry (aGetter.mResultTypeName, ?let returnedTypeEntry)
     //---
-      var @functionSignature arguments = @()
+      var [@functionSignatureElement] arguments = @()
       for parameter in aGetter.mParameterList do
         !?ioTypeMap.makeEntry (parameter.mFormalParameterTypeName, ?let argumentTypeEntry)
         arguments ++= @(parameter.mFormalSelector, argumentTypeEntry, parameter.mFormalParameterName.string, true)

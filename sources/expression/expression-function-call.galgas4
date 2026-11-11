@@ -70,7 +70,7 @@ final class @functionCallExpressionAST : @semanticExpressionAST {
   //--- Retrieve function features
     inAnalysisContext.semanticContext.mFunctionMap.searchKey
       (self.mFunctionName,
-      ?let @functionSignature functionSignature,
+      ?let [@functionSignatureElement] functionSignature,
       ?let @unifiedTypeMapEntry resultType,
       ?let @bool isInternal
     )

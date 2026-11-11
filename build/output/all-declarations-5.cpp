@@ -1537,17 +1537,17 @@ GGS_bool callExtensionGetter_supportsCollectionValue (const cPtr_predefinedTypeA
 //--------------------------------------------------------------------------------------------------
 
 void cPtr_predefinedTypeAST::method_getAddAssignArgumentList (GGS_unifiedTypeMap & /* ioArgument__5F_ioUnifiedTypeMap */,
-                                                              GGS_functionSignature & outArgument_outAddAssignArgumentList,
+                                                              GGS__5B_functionSignatureElement_5D_ & outArgument_outAddAssignArgumentList,
                                                               Compiler * inCompiler
                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outAddAssignArgumentList = GGS_functionSignature::init (inCompiler COMMA_HERE) ;
+  outArgument_outAddAssignArgumentList = GGS__5B_functionSignatureElement_5D_::init (inCompiler COMMA_HERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_getAddAssignArgumentList (cPtr_predefinedTypeAST * inObject,
                                                    GGS_unifiedTypeMap & io__5F_ioUnifiedTypeMap,
-                                                   GGS_functionSignature & out_outAddAssignArgumentList,
+                                                   GGS__5B_functionSignatureElement_5D_ & out_outAddAssignArgumentList,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
   out_outAddAssignArgumentList.drop () ;
@@ -5349,19 +5349,19 @@ void callExtensionMethod_analyzeSemanticExpression (cPtr_semanticExpressionAST *
   }
 }
 //--------------------------------------------------------------------------------------------------
-//  Extension Getter '@functionSignature initializerSignature'
+//  Extension Getter '@[functionSignatureElement] initializerSignature'
 //--------------------------------------------------------------------------------------------------
 
-GGS_string extensionGetter_initializerSignature (const GGS_functionSignature & inObject,
+GGS_string extensionGetter_initializerSignature (const GGS__5B_functionSignatureElement_5D_ & inObject,
                                                  Compiler * inCompiler
                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
-  const GGS_functionSignature temp_0 = inObject ;
-  UpEnumerator_functionSignature enumerator_1839 (temp_0) ;
-  while (enumerator_1839.hasCurrentObject ()) {
-    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_1839.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 40)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 40)) ;
-    enumerator_1839.gotoNextObject () ;
+  const GGS__5B_functionSignatureElement_5D_ temp_0 = inObject ;
+  UpEnumerator__5B_functionSignatureElement_5D_ enumerator_1872 (temp_0) ;
+  while (enumerator_1872.hasCurrentObject ()) {
+    result_result.plusAssignOperation(GGS_string ("!").add_operation (enumerator_1872.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 41)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 41)) ;
+    enumerator_1872.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -5371,19 +5371,19 @@ GGS_string extensionGetter_initializerSignature (const GGS_functionSignature & i
 
 
 //--------------------------------------------------------------------------------------------------
-//  Extension Getter '@functionSignature subcriptSignature'
+//  Extension Getter '@[functionSignatureElement] subcriptSignature'
 //--------------------------------------------------------------------------------------------------
 
-GGS_string extensionGetter_subcriptSignature (const GGS_functionSignature & inObject,
+GGS_string extensionGetter_subcriptSignature (const GGS__5B_functionSignatureElement_5D_ & inObject,
                                               Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   result_result = GGS_string::makeEmptyString () ;
-  const GGS_functionSignature temp_0 = inObject ;
-  UpEnumerator_functionSignature enumerator_1986 (temp_0) ;
-  while (enumerator_1986.hasCurrentObject ()) {
-    result_result.plusAssignOperation(GGS_string ("\?").add_operation (enumerator_1986.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 47)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 47)) ;
-    enumerator_1986.gotoNextObject () ;
+  const GGS__5B_functionSignatureElement_5D_ temp_0 = inObject ;
+  UpEnumerator__5B_functionSignatureElement_5D_ enumerator_2035 (temp_0) ;
+  while (enumerator_2035.hasCurrentObject ()) {
+    result_result.plusAssignOperation(GGS_string ("\?").add_operation (enumerator_2035.current (HERE).readProperty_mFormalSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 48)), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 48)) ;
+    enumerator_2035.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -7175,23 +7175,23 @@ GGS_string extensionGetter_initializerSignature (const GGS__5B_typedProperty_5D_
   GGS_string result_result ; // Returned variable
   result_result = GGS_string ("init") ;
   const GGS__5B_typedProperty_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_typedProperty_5D_ enumerator_8399 (temp_0) ;
-  while (enumerator_8399.hasCurrentObject ()) {
+  UpEnumerator__5B_typedProperty_5D_ enumerator_8467 (temp_0) ;
+  while (enumerator_8467.hasCurrentObject ()) {
     GalgasBool test_1 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_1) {
-      test_1 = GGS_bool (ComparisonKind::equal, enumerator_8399.current (HERE).readProperty_initialization ().objectCompare (GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas4", 214)))).boolEnum () ;
+      test_1 = GGS_bool (ComparisonKind::equal, enumerator_8467.current (HERE).readProperty_initialization ().objectCompare (GGS_propertyInCollectionInitializationAST::class_func_none (SOURCE_FILE ("semanticsTypes.galgas4", 214)))).boolEnum () ;
       if (GalgasBool::boolTrue == test_1) {
         result_result.plusAssignOperation(GGS_string ("!"), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 215)) ;
         GalgasBool test_2 = GalgasBool::boolTrue ;
         if (GalgasBool::boolTrue == test_2) {
-          test_2 = enumerator_8399.current (HERE).readProperty_hasSelector ().boolEnum () ;
+          test_2 = enumerator_8467.current (HERE).readProperty_hasSelector ().boolEnum () ;
           if (GalgasBool::boolTrue == test_2) {
-            result_result.plusAssignOperation(enumerator_8399.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 217)) ;
+            result_result.plusAssignOperation(enumerator_8467.current (HERE).readProperty_name ().readProperty_string (), inCompiler  COMMA_SOURCE_FILE ("semanticsTypes.galgas4", 217)) ;
           }
         }
       }
     }
-    enumerator_8399.gotoNextObject () ;
+    enumerator_8467.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -16482,7 +16482,7 @@ GGS_functionMap GGS_functionMap::getter_overriddenMap (Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 void GGS_functionMap::setter_insertKey (GGS_lstring inLKey,
-                                        GGS_functionSignature inArgument0,
+                                        GGS__5B_functionSignatureElement_5D_ inArgument0,
                                         GGS_unifiedTypeMapEntry inArgument1,
                                         GGS_bool inArgument2,
                                         Compiler * inCompiler
@@ -16496,7 +16496,7 @@ void GGS_functionMap::setter_insertKey (GGS_lstring inLKey,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_functionMap::method_searchKey (GGS_lstring inLKey,
-                                        GGS_functionSignature & outArgument0,
+                                        GGS__5B_functionSignatureElement_5D_ & outArgument0,
                                         GGS_unifiedTypeMapEntry & outArgument1,
                                         GGS_bool & outArgument2,
                                         Compiler * inCompiler
@@ -16524,10 +16524,10 @@ void GGS_functionMap::method_searchKey (GGS_lstring inLKey,
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_functionSignature GGS_functionMap::getter_mFunctionSignatureForKey (const GGS_string & inKey,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const {
-  GGS_functionSignature result ;
+GGS__5B_functionSignatureElement_5D_ GGS_functionMap::getter_mFunctionSignatureForKey (const GGS_string & inKey,
+                                                                                       Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) const {
+  GGS__5B_functionSignatureElement_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     const SharedGenericPtrWithValueSemantics <GGS_functionMap_2E_element> info = infoForKey (key) ;
@@ -16584,7 +16584,7 @@ GGS_bool GGS_functionMap::getter_mIsInternalForKey (const GGS_string & inKey,
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_functionMap::setter_setMFunctionSignatureForKey (GGS_functionSignature inValue,
+void GGS_functionMap::setter_setMFunctionSignatureForKey (GGS__5B_functionSignatureElement_5D_ inValue,
                                                           GGS_string inKey,
                                                           Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
@@ -16730,7 +16730,7 @@ GGS_lstring DownEnumerator_functionMap::current_lkey (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_functionSignature DownEnumerator_functionMap::current_mFunctionSignature (LOCATION_ARGS) const {
+GGS__5B_functionSignatureElement_5D_ DownEnumerator_functionMap::current_mFunctionSignature (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mFunctionSignature ;
 }
 
@@ -16769,7 +16769,7 @@ GGS_lstring UpEnumerator_functionMap::current_lkey (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_functionSignature UpEnumerator_functionMap::current_mFunctionSignature (LOCATION_ARGS) const {
+GGS__5B_functionSignatureElement_5D_ UpEnumerator_functionMap::current_mFunctionSignature (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mFunctionSignature ;
 }
 

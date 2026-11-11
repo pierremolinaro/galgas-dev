@@ -113,7 +113,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
     else
       var @uint matchingReaderCount = 0
       if receiverType.definition.typeKind == .structType then
-        var @functionSignature getterFormalArgumentTypeList = @()
+        var [@functionSignatureElement] getterFormalArgumentTypeList = @()
         var hasCompilerArgument = true
         var returnedType = @unifiedTypeMapEntry.null
         var kind = @methodKind.definedAsExtension

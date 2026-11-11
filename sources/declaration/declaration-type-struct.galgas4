@@ -119,7 +119,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
     !?ioTypeMap.makeEntry (self.structTypeName, ?let structTypeIndex)
   //--- Class functions and property map
     var @propertyMap propertyMap = @()
-    var @functionSignature constructorPropertyTypeList = @()
+    var [@functionSignatureElement] constructorPropertyTypeList = @()
     var [@typedProperty] typedPropertyList = @()
 //    var @unifiedTypeMapEntryList typesToIncludeInHeaderCompilation = @()
     for property in self.mStructurePropertyListAST do

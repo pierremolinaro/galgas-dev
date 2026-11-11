@@ -225,7 +225,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
     var @bool hasAssociatedValues = false
     for constant in self.mConstantList do
       var @associatedValueDescriptorList associatedTypeList = @()
-      var @functionSignature argumentTypeList = @()
+      var [@functionSignatureElement] argumentTypeList = @()
       for associatedValue in constant.associatedValueTypeList do
         !?ioTypeMap.makeEntry (associatedValue.typeName, ?let associatedTypeEntry)
         argumentTypeList ++= @(associatedValue.valueName, associatedTypeEntry, associatedValue.typeName.string, true)
@@ -233,8 +233,8 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         hasAssociatedValues = true
       end
       !?constantMap.insertKey (constant.name, constantMap.count, associatedTypeList)
-      !?classFunctionMap.insertOrReplace
-        (constant.name,
+      !?classFunctionMap.insertOrReplace (
+        constant.name,
         argumentTypeList,
         false,
         enumTypeEntry

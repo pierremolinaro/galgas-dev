@@ -347,7 +347,7 @@ void routine_analyzeFunctionBody_3F__26__3F__26__3F__3F__3F__3F__3F__21__21__21_
 void routine_checkGetterSignatures_3F__3F__3F__3F__3F__3F_ (const class GGS__5B_formalInputParameterForGeneration_5D_ constinArgument0,
                                                             const class GGS_unifiedTypeMapEntry constinArgument1,
                                                             const class GGS_location constinArgument2,
-                                                            const class GGS_functionSignature constinArgument3,
+                                                            const class GGS__5B_functionSignatureElement_5D_ constinArgument3,
                                                             const class GGS_unifiedTypeMapEntry constinArgument4,
                                                             const class GGS_location constinArgument5,
                                                             class Compiler * inCompiler

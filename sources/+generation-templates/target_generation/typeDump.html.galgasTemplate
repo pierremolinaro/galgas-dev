@@ -164,9 +164,9 @@ end%
 %
 if [[element definition].addAssignOperatorArguments count] > 0 then
   %<tr class="result_line"><td>+= !... !...</td><td>%
-  for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in [element definition].addAssignOperatorArguments do
-    %<span class="selecteur">?%if mFormalSelector.string != "" then !mFormalSelector.string + ":" end%</span>%
-    !linkForType (![mFormalArgumentType definition].typeName.string)% % !mFormalArgumentName %<br>%
+  for (formal) in [element definition].addAssignOperatorArguments do
+    %<span class="selecteur">?%if formal.mFormalSelector.string != "" then !formal.mFormalSelector.string + ":" end%</span>%
+    !linkForType (![formal.mFormalArgumentType definition].typeName.string)% % !formal.mFormalArgumentName %<br>%
   end
   %</td></tr>%
 end
@@ -185,10 +185,10 @@ if [[element definition].classFunctionMap count] > 0 then
   %<tr class="result_line"><td>Class Functions</td><td>%
   for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in [element definition].classFunctionMap do
     %<b>class function</b> %!lkey.string
-    for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in mArgumentTypeList do
+    for (formal) in mArgumentTypeList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
-      % <span class="selecteur">?%if mFormalSelector.string != "" then !mFormalSelector.string + ":" end !%</span>%
-      linkForType (![mFormalArgumentType definition].typeName.string) % % !mFormalArgumentName
+      % <span class="selecteur">?%if formal.mFormalSelector.string != "" then !formal.mFormalSelector.string + ":" end !%</span>%
+      linkForType (![formal.mFormalArgumentType definition].typeName.string) % % !formal.mFormalArgumentName
     end
     % &rarr; %!linkForType (![mReturnedType definition].typeName.string) %<br><br>%
   end
@@ -211,10 +211,10 @@ if [[element definition].getterMap count] > 0 then
     case isVirtualOverridingAbstract : %<b>abstract override</b> %
     end
     %<b>getter</b> %!lkey.string
-    for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in mArgumentTypeList do
+    for (formal) in mArgumentTypeList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
-      % ?<span class="selecteur">%if mFormalSelector.string != "" then !mFormalSelector.string + ":" end%</span>%
-      !linkForType (![mFormalArgumentType definition].typeName.string) % % !mFormalArgumentName
+      % ?<span class="selecteur">%if formal.mFormalSelector.string != "" then !formal.mFormalSelector.string + ":" end%</span>%
+      !linkForType (![formal.mFormalArgumentType definition].typeName.string) % % !formal.mFormalArgumentName
     end
     % &rarr; %!linkForType (![mReturnedType definition].typeName.string) %<br><br>%
   end

@@ -356,7 +356,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       "".nowhere,
       stringTypeIndex,
       "inKey")
-    var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = @()
+    var [@functionSignatureElement] argumentTypeListForAddAssignWithFieldExpressionList = @()
     argumentTypeListForAddAssignWithFieldExpressionList ++= @(
       "".nowhere,
       lstringTypeIndex,
@@ -473,7 +473,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !?getterMap.insertOrReplace
         (accessorName,
         .definedAsMember,
-        @functionSignature [@("".nowhere, stringTypeIndex, "inKey", true)],
+        [@functionSignatureElement] [@("".nowhere, stringTypeIndex, "inKey", true)],
         .here,
         true,
         attributeTypeIndex,
@@ -517,7 +517,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     end
   //--- Add initializer without argument
     var @initializerMap initializerMap = @()
-    let @functionSignature emptyArgumentList = @()
+    let [@functionSignatureElement] emptyArgumentList = @()
     !?initializerMap.insertKey
       (@(emptyArgumentList.initializerSignature, self.mMapTypeName),
       emptyArgumentList
@@ -559,14 +559,14 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     )
   //--- Read subscripts
     var @subscriptMap readSubscriptMap = @()
-    let @functionSignature argumentTypeList = [@("".nowhere, stringTypeIndex, "inKey", true)]
+    let [@functionSignatureElement] argumentTypeList = [@("".nowhere, stringTypeIndex, "inKey", true)]
     !?readSubscriptMap.insertKey
       (@(argumentTypeList.subcriptSignature, .nowhere),
       argumentTypeList,
       optionalElementTypeEntry
     )
     for searchSubscript in self.mSearchSubscriptList do
-       let @functionSignature subscriptArgumentTypeList = [@(searchSubscript.mName, lstringTypeIndex, "inKey", true)]
+       let [@functionSignatureElement] subscriptArgumentTypeList = [@(searchSubscript.mName, lstringTypeIndex, "inKey", true)]
        !?readSubscriptMap.insertKey
         (@(subscriptArgumentTypeList.subcriptSignature, .nowhere),
         subscriptArgumentTypeList,

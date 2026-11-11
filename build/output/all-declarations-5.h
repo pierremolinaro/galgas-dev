@@ -107,7 +107,7 @@ class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
 
 //--- Extension proc getAddAssignArgumentList
   public: virtual void method_getAddAssignArgumentList (class GGS_unifiedTypeMap & arg__ioUnifiedTypeMap,
-           class GGS_functionSignature & arg_outAddAssignArgumentList,
+           class GGS__5B_functionSignatureElement_5D_ & arg_outAddAssignArgumentList,
            Compiler * COMMA_LOCATION_ARGS) ;
 
 //--- Extension proc getClassFunctionMap
@@ -1239,7 +1239,7 @@ class GGS_bool callExtensionGetter_supportsCollectionValue (const cPtr_predefine
 
 void callExtensionMethod_getAddAssignArgumentList (class cPtr_predefinedTypeAST * inObject,
                                                    class GGS_unifiedTypeMap & io__5F_ioUnifiedTypeMap,
-                                                   class GGS_functionSignature & out_outAddAssignArgumentList,
+                                                   class GGS__5B_functionSignatureElement_5D_ & out_outAddAssignArgumentList,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
@@ -3343,7 +3343,7 @@ class cPtr_stringsetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //--- Extension proc getAddAssignArgumentList
   public: virtual void method_getAddAssignArgumentList (class GGS_unifiedTypeMap & arg__ioUnifiedTypeMap,
-           class GGS_functionSignature & arg_outAddAssignArgumentList,
+           class GGS__5B_functionSignatureElement_5D_ & arg_outAddAssignArgumentList,
            Compiler * COMMA_LOCATION_ARGS) override ;
 
 //--- Extension proc getClassFunctionMap
@@ -4026,21 +4026,21 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_selfAvailability_2E_av
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension func '@functionSignature initializerSignature' (as function)
+//Extension func '@[functionSignatureElement] initializerSignature' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_string extensionGetter_initializerSignature (const class GGS_functionSignature & inObject,
+class GGS_string extensionGetter_initializerSignature (const class GGS__5B_functionSignatureElement_5D_ & inObject,
                                                        class Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension func '@functionSignature subcriptSignature' (as function)
+//Extension func '@[functionSignatureElement] subcriptSignature' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_string extensionGetter_subcriptSignature (const class GGS_functionSignature & inObject,
+class GGS_string extensionGetter_subcriptSignature (const class GGS__5B_functionSignatureElement_5D_ & inObject,
                                                     class Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
@@ -10751,8 +10751,8 @@ class GGS_functionMap_2E_element : public AC_GALGAS_root {
     return mProperty_lkey ;
   }
 
-  public: GGS_functionSignature mProperty_mFunctionSignature ;
-  public: inline GGS_functionSignature readProperty_mFunctionSignature (void) const {
+  public: GGS__5B_functionSignatureElement_5D_ mProperty_mFunctionSignature ;
+  public: inline GGS__5B_functionSignatureElement_5D_ readProperty_mFunctionSignature (void) const {
     return mProperty_mFunctionSignature ;
   }
 
@@ -10778,7 +10778,7 @@ class GGS_functionMap_2E_element : public AC_GALGAS_root {
     mProperty_lkey = inValue ;
   }
 
-  public: inline void setter_setMFunctionSignature (const GGS_functionSignature & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMFunctionSignature (const GGS__5B_functionSignatureElement_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mFunctionSignature = inValue ;
   }
 
@@ -10795,7 +10795,7 @@ class GGS_functionMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public: GGS_functionMap_2E_element (const GGS_lstring & in_lkey,
-                                      const GGS_functionSignature & in_mFunctionSignature,
+                                      const GGS__5B_functionSignatureElement_5D_ & in_mFunctionSignature,
                                       const GGS_unifiedTypeMapEntry & in_mResultType,
                                       const GGS_bool & in_mIsInternal) ;
 
@@ -10809,7 +10809,7 @@ class GGS_functionMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Initializers
   public: static GGS_functionMap_2E_element init_21__21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                  const class GGS_functionSignature & inOperand1,
+                                                                  const class GGS__5B_functionSignatureElement_5D_ & inOperand1,
                                                                   const class GGS_unifiedTypeMapEntry & inOperand2,
                                                                   const class GGS_bool & inOperand3,
                                                                   Compiler * inCompiler

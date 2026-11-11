@@ -44,7 +44,7 @@ struct @unifiedTypeDefinition {
   public let [@enumerationDescriptor] enumerationDescriptorList #initArgLabel // Empty List if cannot be enumerated
   public let @typeFeatures features #initArgLabel
 // addAssignOperatorArguments is empty list if += operator is not supported
-  public let @functionSignature addAssignOperatorArguments #initArgLabel
+  public let [@functionSignatureElement] addAssignOperatorArguments #initArgLabel
   public let @bool generateHeaderInSeparateFile #initArgLabel // Significant only for classes
   public let @unifiedTypeMapEntry typeForEnumeratedElement #initArgLabel
   public let @string headerFileName #initArgLabel // Name of C++ header file that contains type declaration
@@ -156,7 +156,7 @@ boolset @typeFeatures {
 //--------------------------------------------------------------------------------------------------
 
 map @subscriptMap {
-  public let @functionSignature argumentTypeList
+  public let [@functionSignatureElement] argumentTypeList
   public let @unifiedTypeMapEntry valueType
   #insertSetter insertKey #errorMessage "the '%K' subscript has been already defined"
   #searchMethod searchKey #errorMessage "the '%K' subscript is not declared"

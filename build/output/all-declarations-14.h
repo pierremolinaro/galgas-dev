@@ -10,426 +10,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Parser class 'galgas4LexiqueComponentSyntax' declaration
-//
-//--------------------------------------------------------------------------------------------------
-
-class cParser_galgas_34_LexiqueComponentSyntax {
-//--- Virtual destructor
-  public: virtual ~ cParser_galgas_34_LexiqueComponentSyntax (void) { }
-
-//--- Non terminal declarations
-  protected: virtual void nt_declaration_ (class GGS_galgasDeclarationAST & ioArgument0,
-                                           class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_attribute_5F_declaration_ (class GGS__5B_lexicalAttributeAST_5D_ & ioArgument0,
-                                                                   class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_attribute_5F_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_explicit_5F_rule_ (class GGS__5B_abstractLexicalRuleAST_5D_ & ioArgument0,
-                                                           class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_explicit_5F_rule_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_expression_ (class GGS_lexicalExpressionAST & outArgument0,
-                                                     class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_expression_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_factor_ (class GGS_lexicalExpressionAST & outArgument0,
-                                                 class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_factor_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_implicit_5F_rule_ (class GGS__5B_abstractLexicalRuleAST_5D_ & ioArgument0,
-                                                           class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_implicit_5F_rule_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_indexing_5F_declaration_ (class GGS__5B_indexingAST_5D_ & ioArgument0,
-                                                                  class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_indexing_5F_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_instruction_ (class GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
-                                                      class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_instruction_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_list_5F_declaration_ (class GGS__5B_lexicalListDeclarationAST_5D_ & ioArgument0,
-                                                              class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_list_5F_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_list_5F_entry_ (class GGS__5B_lexicalListEntryAST_5D_ & ioArgument0,
-                                                        class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_list_5F_entry_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_message_5F_declaration_ (class GGS__5B_lexicalMessageDeclarationAST_5D_ & ioArgument0,
-                                                                 class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_message_5F_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_output_5F_effective_5F_argument_ (class GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
-                                                                          class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_output_5F_effective_5F_argument_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_send_5F_instruction_ (class GGS_lexicalInstructionAST & outArgument0,
-                                                              class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_send_5F_instruction_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_term_ (class GGS_lexicalExpressionAST & outArgument0,
-                                               class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_lexical_5F_term_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_repeat_5F_while_5F_branch_ (class GGS__5B_lexicalWhileBranchAST_5D_ & ioArgument0,
-                                                         class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_repeat_5F_while_5F_branch_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_style_5F_declaration_ (class GGS__5B_lexicalStyleAST_5D_ & ioArgument0,
-                                                    class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_style_5F_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_template_5F_delimitor_ (class GGS__5B_templateDelimitor_32_AST_5D_ & ioArgument0,
-                                                     class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_template_5F_delimitor_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_template_5F_replacement_ (class GGS__5B_templateReplacementAST_5D_ & ioArgument0,
-                                                       class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_template_5F_replacement_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_terminal_5F_declaration_ (class GGS__5B_terminalDeclarationAST_5D_ & ioArgument0,
-                                                       class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-  protected: virtual void nt_terminal_5F_declaration_indexing (class Lexique_galgasScanner_34_ * inLexique) = 0 ;
-
-
-//--- Rule declarations
-  protected: void rule_galgas_34_LexiqueComponentSyntax_declaration_i0_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                         Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_declaration_i0_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_declaration_i0_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_indexing_5F_declaration_i1_ (GGS__5B_indexingAST_5D_ & ioArgument0,
-                                                                                                Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_indexing_5F_declaration_i1_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_indexing_5F_declaration_i1_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_message_5F_declaration_i2_ (GGS__5B_lexicalMessageDeclarationAST_5D_ & ioArgument0,
-                                                                                               Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_message_5F_declaration_i2_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_message_5F_declaration_i2_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_implicit_5F_rule_i3_ (GGS__5B_abstractLexicalRuleAST_5D_ & ioArgument0,
-                                                                                         Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_implicit_5F_rule_i3_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_implicit_5F_rule_i3_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_explicit_5F_rule_i4_ (GGS__5B_abstractLexicalRuleAST_5D_ & ioArgument0,
-                                                                                         Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_explicit_5F_rule_i4_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_explicit_5F_rule_i4_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i5_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
-                                                                                    Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i5_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i5_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_repeat_5F_while_5F_branch_i6_ (GGS__5B_lexicalWhileBranchAST_5D_ & ioArgument0,
-                                                                                       Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_repeat_5F_while_5F_branch_i6_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_repeat_5F_while_5F_branch_i6_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i7_ (GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
-                                                                                                        Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i7_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i7_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i8_ (GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
-                                                                                                        Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i8_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i8_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i9_ (GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
-                                                                                                        Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i9_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i9_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i10_ (GGS_lexicalRoutineOrFunctionFormalInputArgumentAST & outArgument0,
-                                                                                                         Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i10_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_output_5F_effective_5F_argument_i10_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_expression_i11_ (GGS_lexicalExpressionAST & outArgument0,
-                                                                                    Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_expression_i11_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_expression_i11_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_term_i12_ (GGS_lexicalExpressionAST & outArgument0,
-                                                                              Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_term_i12_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_term_i12_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i13_ (GGS_lexicalExpressionAST & outArgument0,
-                                                                                Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i13_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i13_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i14_ (GGS_lexicalExpressionAST & outArgument0,
-                                                                                Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i14_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i14_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i15_ (GGS_lexicalExpressionAST & outArgument0,
-                                                                                Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i15_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i15_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i16_ (GGS_lexicalExpressionAST & outArgument0,
-                                                                                Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i16_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_factor_i16_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_declaration_i17_ (GGS__5B_lexicalListDeclarationAST_5D_ & ioArgument0,
-                                                                                             Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_declaration_i17_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_declaration_i17_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_entry_i18_ (GGS__5B_lexicalListEntryAST_5D_ & ioArgument0,
-                                                                                       Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_entry_i18_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_list_5F_entry_i18_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_attribute_5F_declaration_i19_ (GGS__5B_lexicalAttributeAST_5D_ & ioArgument0,
-                                                                                                  Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_attribute_5F_declaration_i19_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_attribute_5F_declaration_i19_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_terminal_5F_declaration_i20_ (GGS__5B_terminalDeclarationAST_5D_ & ioArgument0,
-                                                                                      Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_terminal_5F_declaration_i20_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_terminal_5F_declaration_i20_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_style_5F_declaration_i21_ (GGS__5B_lexicalStyleAST_5D_ & ioArgument0,
-                                                                                   Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_style_5F_declaration_i21_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_style_5F_declaration_i21_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i22_ (GGS_lexicalInstructionAST & outArgument0,
-                                                                                             Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i22_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i22_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i23_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
-                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i23_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i23_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i24_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
-                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i24_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i24_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i25_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
-                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i25_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i25_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i26_ (GGS_lexicalInstructionAST & outArgument0,
-                                                                                             Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i26_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_send_5F_instruction_i26_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i27_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
-                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i27_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i27_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i28_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
-                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i28_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i28_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i29_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
-                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i29_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i29_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i30_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
-                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i30_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i30_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i31_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
-                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i31_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i31_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i32_ (GGS__5B_lexicalInstructionAST_5D_ & ioArgument0,
-                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i32_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_lexical_5F_instruction_i32_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_declaration_i33_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                          Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_declaration_i33_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_declaration_i33_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_template_5F_delimitor_i34_ (GGS__5B_templateDelimitor_32_AST_5D_ & ioArgument0,
-                                                                                    Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_template_5F_delimitor_i34_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_template_5F_delimitor_i34_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_template_5F_replacement_i35_ (GGS__5B_templateReplacementAST_5D_ & ioArgument0,
-                                                                                      Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_LexiqueComponentSyntax_template_5F_replacement_i35_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_LexiqueComponentSyntax_template_5F_replacement_i35_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-
-
-//--- Select methods
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_0 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_1 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_2 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_3 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_4 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_5 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_6 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_7 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_8 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_9 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_10 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_11 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_12 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_13 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_14 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_15 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_16 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_17 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_18 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_19 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_20 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_21 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_22 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_23 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_24 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_25 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_LexiqueComponentSyntax_26 (Lexique_galgasScanner_34_ *) = 0 ;
-
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Parser class 'galgas4OptionComponentSyntax' declaration
 //
 //--------------------------------------------------------------------------------------------------
@@ -2065,224 +1645,22 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionComponentForGene
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension mutating proc '@localVarManager insertUsedLocalConstant'
+//Extension proc '@currentVarManager checkSelfObjectIsFullyInitialized'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_insertUsedLocalConstant (class GGS_localVarManager & ioObject,
-                                              const class GGS_lstring constin_inVarName,
-                                              const class GGS_unifiedTypeMapEntry constin_inType,
-                                              const class GGS_string constin_inCppName,
-                                              const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                              class Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertDeclaredLocalConstant'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertDeclaredLocalConstant (class GGS_localVarManager & ioObject,
-                                                  const class GGS_lstring constin_inVarName,
-                                                  const class GGS_unifiedTypeMapEntry constin_inType,
-                                                  const class GGS_string constin_inCppName,
-                                                  const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                  class Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertInputFormalArgumentDeclaredAsUnused'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInputFormalArgumentDeclaredAsUnused (class GGS_localVarManager & ioObject,
-                                                                const class GGS_lstring constin_inVarName,
-                                                                const class GGS_unifiedTypeMapEntry constin_inType,
-                                                                const class GGS_string constin_inCppName,
-                                                                const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                                class Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertInputFormalArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInputFormalArgument (class GGS_localVarManager & ioObject,
-                                                const class GGS_lstring constin_inVarName,
-                                                const class GGS_unifiedTypeMapEntry constin_inType,
-                                                const class GGS_string constin_inCppName,
-                                                const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                class Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertConstantInputFormalArgumentDeclaredAsUnused'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertConstantInputFormalArgumentDeclaredAsUnused (class GGS_localVarManager & ioObject,
-                                                                        const class GGS_lstring constin_inVarName,
-                                                                        const class GGS_unifiedTypeMapEntry constin_inType,
-                                                                        const class GGS_string constin_inCppName,
-                                                                        const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                                        class Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertConstantInputFormalArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertConstantInputFormalArgument (class GGS_localVarManager & ioObject,
-                                                        const class GGS_lstring constin_inVarName,
-                                                        const class GGS_unifiedTypeMapEntry constin_inType,
-                                                        const class GGS_string constin_inCppName,
-                                                        const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                        class Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertOutputFormalArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertOutputFormalArgument (class GGS_localVarManager & ioObject,
-                                                 const class GGS_lstring constin_inVarName,
-                                                 const class GGS_unifiedTypeMapEntry constin_inType,
-                                                 const class GGS_string constin_inCppName,
-                                                 const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                 class Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertInputOutputFormalArgumentDeclaredAsUnused'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInputOutputFormalArgumentDeclaredAsUnused (class GGS_localVarManager & ioObject,
-                                                                      const class GGS_lstring constin_inVarName,
-                                                                      const class GGS_unifiedTypeMapEntry constin_inType,
-                                                                      const class GGS_string constin_inCppName,
-                                                                      const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                                      class Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertInputOutputFormalArgument'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInputOutputFormalArgument (class GGS_localVarManager & ioObject,
-                                                      const class GGS_lstring constin_inVarName,
-                                                      const class GGS_unifiedTypeMapEntry constin_inType,
-                                                      const class GGS_string constin_inCppName,
-                                                      const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                      class Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertNonMutableProperty'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertNonMutableProperty (class GGS_localVarManager & ioObject,
-                                               const class GGS_lstring constin_inVarName,
-                                               const class GGS_unifiedTypeMapEntry constin_inType,
-                                               const class GGS_string constin_inCppName,
-                                               const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                               class Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertMutableProperty'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertMutableProperty (class GGS_localVarManager & ioObject,
-                                            const class GGS_lstring constin_inVarName,
-                                            const class GGS_unifiedTypeMapEntry constin_inType,
-                                            const class GGS_string constin_inCppName,
-                                            const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                            class Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager insertInitializerSelfProperty'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertInitializerSelfProperty (class GGS_localVarManager & ioObject,
-                                                    const class GGS_string constin_inPropertyName,
-                                                    const class GGS_location constin_inErrorLocation,
-                                                    const class GGS_unifiedTypeMapEntry constin_inType,
-                                                    const class GGS_string constin_inCppName,
-                                                    const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                                    const class GGS_bool constin_inInitialized,
-                                                    class Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager openOverrideForRepeatBlock'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_openOverrideForRepeatBlock (class GGS_localVarManager & ioObject,
-                                                 class Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager closeOverride'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_closeOverride (class GGS_localVarManager & ioObject,
-                                    const class GGS_location constin__5F_inEndOfBranchLocation,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarManager closeBranch'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_closeBranch (class GGS_localVarManager & ioObject,
-                                  const class GGS_location constin_inEndOfBranchLocation,
-                                  class Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@localVarManager checkSelfObjectIsFullyInitialized'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_checkSelfObjectIsFullyInitialized (const class GGS_localVarManager inObject,
+void extensionMethod_checkSelfObjectIsFullyInitialized (const class GGS_currentVarManager inObject,
                                                         const class GGS_location constin_inErrorLocation,
                                                         class Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension mutating proc '@localVarManager neutralAccess'
+//Extension mutating proc '@currentVarManager neutralAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_neutralAccess (class GGS_localVarManager & ioObject,
+void extensionSetter_neutralAccess (class GGS_currentVarManager & ioObject,
                                     const class GGS_lstring constin_inVarName,
                                     class GGS_unifiedTypeMapEntry & out_outType,
                                     class GGS_string & out_outCppName,
@@ -2292,22 +1670,22 @@ void extensionSetter_neutralAccess (class GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension mutating proc '@localVarManager searchForDropAccess'
+//Extension mutating proc '@currentVarManager searchForDropAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_searchForDropAccess (class GGS_localVarManager & ioObject,
+void extensionSetter_searchForDropAccess (class GGS_currentVarManager & ioObject,
                                           const class GGS_lstring constin_inVarName,
                                           class Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension mutating proc '@localVarManager searchForWriteAccess'
+//Extension mutating proc '@currentVarManager searchForWriteAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_searchForWriteAccess (class GGS_localVarManager & ioObject,
+void extensionSetter_searchForWriteAccess (class GGS_currentVarManager & ioObject,
                                            const class GGS_lstring constin_inVarName,
                                            class GGS_unifiedTypeMapEntry & out_outType,
                                            class GGS_string & out_outCppName,
@@ -2317,11 +1695,11 @@ void extensionSetter_searchForWriteAccess (class GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension mutating proc '@localVarManager searchForReadAccess'
+//Extension mutating proc '@currentVarManager searchForReadAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_searchForReadAccess (class GGS_localVarManager & ioObject,
+void extensionSetter_searchForReadAccess (class GGS_currentVarManager & ioObject,
                                           const class GGS_lstring constin_inVarName,
                                           class GGS_unifiedTypeMapEntry & out_outType,
                                           class GGS_string & out_outCppName,
@@ -2331,11 +1709,11 @@ void extensionSetter_searchForReadAccess (class GGS_localVarManager & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension mutating proc '@localVarManager searchForReadWriteAccess'
+//Extension mutating proc '@currentVarManager searchForReadWriteAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_searchForReadWriteAccess (class GGS_localVarManager & ioObject,
+void extensionSetter_searchForReadWriteAccess (class GGS_currentVarManager & ioObject,
                                                const class GGS_lstring constin_inVarName,
                                                class GGS_unifiedTypeMapEntry & out_outType,
                                                class GGS_string & out_outCppName,
@@ -2345,14 +1723,63 @@ void extensionSetter_searchForReadWriteAccess (class GGS_localVarManager & ioObj
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension proc '@localVarManager checkAutomatonStates'
+//Extension mutating proc '@currentVarManager openScope'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionMethod_checkAutomatonStates (const class GGS_localVarManager inObject,
+void extensionSetter_openScope (class GGS_currentVarManager & ioObject,
+                                class Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension mutating proc '@currentVarManager closeScope'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_closeScope (class GGS_currentVarManager & ioObject,
+                                 const class GGS_location constin_inErrorLocation,
+                                 class Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension mutating proc '@currentVarManager insertKey'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_insertKey (class GGS_currentVarManager & ioObject,
+                                const class GGS_lstring constin_inVarName,
+                                const class GGS_unifiedTypeMapEntry constin_inType,
+                                const class GGS_string constin_inCppName,
+                                const class GGS_string constin_inNameForCheckingFormalParameterUsing,
+                                const class GGS_localVariableAttributes constin_inAttributes,
+                                const class GGS_localVarValuation constin_inState,
+                                class Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension proc '@currentVarManager checkAutomatonStates'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionMethod_checkAutomatonStates (const class GGS_currentVarManager inObject,
                                            const class GGS_location constin_inErrorLocation,
                                            class Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension mutating proc '@currentVarManager combineManagerWith'
+//
+//--------------------------------------------------------------------------------------------------
+
+void extensionSetter_combineManagerWith (class GGS_currentVarManager & ioObject,
+                                         const class GGS_currentVarManager constin_inOtherManager,
+                                         const class GGS_location constin_inErrorLocation,
+                                         class Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -3649,4 +3076,14 @@ class GGS_classFuncExpressionForGeneration_2E_weak : public GGS_semanticExpressi
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFuncExpressionForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@semanticExpressionForGeneration isTrueExpression'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_bool callExtensionGetter_isTrueExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 

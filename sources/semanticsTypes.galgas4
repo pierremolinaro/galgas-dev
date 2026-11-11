@@ -28,25 +28,25 @@ func #once generateFewHeaderFiles () -> @bool {
 
 //--------------------------------------------------------------------------------------------------
 
-list @functionSignature {
+struct @functionSignatureElement {
   public let @lstring mFormalSelector
   public let @unifiedTypeMapEntry mFormalArgumentType
   public let @string mFormalArgumentName
   public let @bool isConstant
+}
 
-  func initializerSignature () -> @string {
-    result = "init"
-    for parameter in self do
-      result += "!" + parameter.mFormalSelector
-    end
-  }
+func [@functionSignatureElement].initializerSignature () -> @string {
+  result = "init"
+  for parameter in self do
+    result += "!" + parameter.mFormalSelector
+  end
+}
 
-  func subcriptSignature () -> @string {
-    result = ""
-    for parameter in self do
-      result += "?" + parameter.mFormalSelector
-    end
-  }
+func [@functionSignatureElement].subcriptSignature () -> @string {
+  result = ""
+  for parameter in self do
+    result += "?" + parameter.mFormalSelector
+  end
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ list @functionSignature {
 //--------------------------------------------------------------------------------------------------
 
 map @classFunctionMap {
-  public let @functionSignature mArgumentTypeList
+  public let [@functionSignatureElement] mArgumentTypeList
   public let @bool mHasCompilerArgument
   public let @unifiedTypeMapEntry mReturnedType
   #insertOrReplaceSetter
@@ -67,7 +67,7 @@ map @classFunctionMap {
 //--------------------------------------------------------------------------------------------------
 
 map @initializerMap { // Key is argument signature
-  public let @functionSignature mArgumentTypeList
+  public let [@functionSignatureElement] mArgumentTypeList
   #insertSetter insertKey #errorMessage "the '%K' initializer has been already defined"
   #searchMethod searchKey #errorMessage "the '%K' initializer is not declared"
 }
@@ -112,7 +112,7 @@ list @optionalMethodSignature {
 
 map @getterMap {
   public let @methodKind mKind
-  public let @functionSignature mArgumentTypeList
+  public let [@functionSignatureElement] mArgumentTypeList
   public let @location mDeclarationLocation
   public let @bool mHasCompilerArgument
   public let @unifiedTypeMapEntry mReturnedType

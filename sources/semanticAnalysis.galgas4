@@ -73,7 +73,7 @@ proc checkMethodSignatures (let [@formalParameterForGeneration] inTestedSignatur
 proc checkGetterSignatures (let [@formalInputParameterForGeneration] inTestedSignature,
                             let @unifiedTypeMapEntry inReturnType,
                             let @location inErrorLocation,
-                            let @functionSignature inReferenceSignature,
+                            let [@functionSignatureElement] inReferenceSignature,
                             let @unifiedTypeMapEntry inInheritedReturnType,
                             let @location inReferenceLocation) {
   if inReturnType.definition.typeName.string != inInheritedReturnType.definition.typeName.string then

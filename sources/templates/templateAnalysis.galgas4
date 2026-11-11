@@ -92,7 +92,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
   //--- Get func map
     let @getterMap getterMap = receiverType.definition.getterMap
   //--- Search contructor
-    var @functionSignature getterFormalArgumentTypeList
+    var [@functionSignatureElement] getterFormalArgumentTypeList
     var @methodKind kind
     var @bool hasCompilerArgument
     var @unifiedTypeMapEntry returnedType
@@ -215,7 +215,7 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
 //--- Search class function
   let @unifiedTypeMapEntry returnedType
   let @bool hasCompilerArgument
-  let @functionSignature classFuncFormalArgumentTypeList
+  let [@functionSignatureElement] classFuncFormalArgumentTypeList
   if let entry = classFunctionMap [self.mClassFunctionName.string] then
     classFuncFormalArgumentTypeList = entry.mArgumentTypeList
     hasCompilerArgument = entry.mHasCompilerArgument
@@ -712,7 +712,7 @@ override proc @templateFunctionCallAST.templateExpressionAnalysis
 //--- Retrieve function features
   inAnalysisContext.mSemanticContext.mFunctionMap.searchKey
     (self.mFunctionName,
-    ?let @functionSignature functionSignature,
+    ?let [@functionSignatureElement] functionSignature,
     ?let @unifiedTypeMapEntry resultType,
     ?let @bool isInternal
   )

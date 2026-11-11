@@ -5,8 +5,8 @@ if [CLASS_FUNC_MAP count] > 0 then
   %//--------------------------------- GALGAS class getters\n%
   for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in CLASS_FUNC_MAP do
     %  public: static class GGS_%![mReturnedType identifierRepresentation]% class_func_%![lkey.string identifierRepresentation]% (%?^
-    for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in mArgumentTypeList
-      do (IDX) %const class GGS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]
+    for (formal) in mArgumentTypeList
+      do (IDX) %const class GGS_% ![formal.mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]
       between %,\n%!^
     end
     if mHasCompilerArgument & ([mArgumentTypeList count] > 0) then

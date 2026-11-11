@@ -154,7 +154,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     )
   //--- Enumeration description
     var [@enumerationDescriptor] enumerationDescriptor = @()
-    var @functionSignature constructorAttributeTypeList = @()
+    var [@functionSignatureElement] constructorAttributeTypeList = @()
     var @formalParameterSignature setterFormalOutputArgumentList = @()
     var @formalParameterSignature setterFormalInputArgumentList = @()
     var [@typedProperty] typedAttributeList = @()
@@ -233,7 +233,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
     )
   //--- Add initializer without argument
     var @initializerMap initializerMap = @()
-    let @functionSignature emptyArgumentList = @()
+    let [@functionSignatureElement] emptyArgumentList = @()
     !?initializerMap.insertKey
       (@(emptyArgumentList.initializerSignature, self.mSortedListTypeName),
       emptyArgumentList

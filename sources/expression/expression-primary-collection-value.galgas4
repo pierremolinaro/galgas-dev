@@ -111,7 +111,7 @@ final class @collectionValueAST : @semanticExpressionAST {
       + " type does not support collection value" spoil outExpression)
     else
       let initializerMap = targetType.definition.initializerMap
-      let @functionSignature emptyArgumentList = @()
+      let [@functionSignatureElement] emptyArgumentList = @()
       if not initializerMap.contains (emptyArgumentList.initializerSignature) then
         error (self.mTypeName : "the @" + self.mTypeName + " has no @() initializer")
       end

@@ -174,7 +174,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
 //--- Handle properties
   var @formalParameterSignature insertSetterFormalArgumentList = @()
   var [@typedProperty] typedPropertyList = @()
-  var @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = @()
+  var [@functionSignatureElement] argumentTypeListForAddAssignWithFieldExpressionList = @()
   argumentTypeListForAddAssignWithFieldExpressionList ++= @("".nowhere, keyTypeIndex, "key", true)
   insertSetterFormalArgumentList ++= @(
     "".nowhere,
@@ -256,7 +256,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
     !?getterMap.insertOrReplace (
       accessorName,
       .definedAsMember,
-      @functionSignature [@("".nowhere, keyTypeIndex, "inKey", true)],
+      [@functionSignatureElement] [@("".nowhere, keyTypeIndex, "inKey", true)],
       .here,
       true,
       attributeTypeIndex,
@@ -288,7 +288,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
   end
 //--- Add initializer without argument
   var @initializerMap initializerMap = @()
-  let @functionSignature emptyArgumentList = @()
+  let [@functionSignatureElement] emptyArgumentList = @()
   !?initializerMap.insertKey
     (@(emptyArgumentList.initializerSignature, self.mDictTypeName),
     emptyArgumentList
@@ -335,7 +335,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
   )
 //--- Read subscripts
   var @subscriptMap readSubscriptMap = @()
-  let @functionSignature argumentTypeList = [@("".nowhere, keyTypeIndex, "inKey", true)]
+  let [@functionSignatureElement] argumentTypeList = [@("".nowhere, keyTypeIndex, "inKey", true)]
   !?readSubscriptMap.insertKey
     (@(argumentTypeList.subcriptSignature, .nowhere),
     argumentTypeList,

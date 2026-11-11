@@ -3,12 +3,12 @@
 //--------------------------------- Initializers
 % for (lkey formalArgumentList) in INITIALIZER_MAP do
 %  public: static GGS_%!TYPE_IDENTIFIER% %![lkey identifierRepresentation]% (%?^
-    for (mFormalSelector mFormalArgumentType mFormalArgumentName isConstant) in formalArgumentList do (IDX)
-      if isConstant
+    for (formal) in formalArgumentList do (IDX)
+      if formal.isConstant
       then
-        %const class GGS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]%,\n%!^
+        %const class GGS_% ![formal.mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]%,\n%!^
       else
-        %class GGS_% ![mFormalArgumentType identifierRepresentation] % inOperand%![IDX string]%,\n%!^
+        %class GGS_% ![formal.mFormalArgumentType identifierRepresentation] % inOperand%![IDX string]%,\n%!^
       end
     end
     %Compiler * inCompiler
@@ -19,8 +19,8 @@ if [CLASS_FUNC_MAP count] > 0 then
   %//--------------------------------- GALGAS class functions\n%
   for (lkey mArgumentTypeList mHasCompilerArgument mReturnedType) in CLASS_FUNC_MAP do
     %  public: static class GGS_%![mReturnedType identifierRepresentation]% class_func_%![lkey.string identifierRepresentation]% (%?^
-    for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in mArgumentTypeList
-      do (IDX) %const class GGS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]
+    for (formal) in mArgumentTypeList
+      do (IDX) %const class GGS_% ![formal.mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]
       between %,\n%!^
     end
     if mHasCompilerArgument & ([mArgumentTypeList count] > 0) then
@@ -111,8 +111,8 @@ end
 if [ADD_ASSIGN_ARGUMENT_LIST count] > 0 then
 %//--------------------------------- += operator (with list of field expressions)
   public: void addAssignOperation (%?^
-  for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in ADD_ASSIGN_ARGUMENT_LIST
-  do (IDX) %const class GGS_%![mFormalArgumentType identifierRepresentation]% & inOperand%![IDX string]
+  for (formal) in ADD_ASSIGN_ARGUMENT_LIST
+  do (IDX) %const class GGS_%![formal.mFormalArgumentType identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
   if [SUPPORTED_OPERATORS contains ![@typeFeatures plusEqualOperatorWithFieldListNeedsCompilerArg]] then
@@ -368,8 +368,8 @@ for (lkey kind argumentTypeList * hasCompilerArgument returnedType qualifier rep
     case definedAsMember :
       if (qualifier == [@methodQualifier isVirtualAbstract]) | (qualifier == [@methodQualifier isBasic]) | (qualifier == [@methodQualifier isBasicFinal]) then
         %  public: class GGS_% ![returnedType identifierRepresentation] % getter_% ![lkey.string identifierRepresentation] % (%?^
-        for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in argumentTypeList
-          do (IDX) %const class GGS_%![mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]
+        for (formal) in argumentTypeList
+          do (IDX) %const class GGS_%![formal.mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]
           between %,\n% !^
         end
         if [argumentTypeList count] == 0 then
@@ -397,8 +397,8 @@ end
 for (key argumentList resultType) in READ_SUBSCRIPT_MAP do
 %  public: class GGS_%![resultType identifierRepresentation]% readSubscript_%
    ![key identifierRepresentation]% (%?^
-  for (mFormalSelector mFormalArgumentType mFormalArgumentName *) in argumentList do (IDX)
-    %const class GGS_%![mFormalArgumentType identifierRepresentation]% & in% ![IDX string] %,\n% !^
+  for (formal) in argumentList do (IDX)
+    %const class GGS_%![formal.mFormalArgumentType identifierRepresentation]% & in% ![IDX string] %,\n% !^
   end
   %Compiler * inCompiler\n%!^%COMMA_LOCATION_ARGS) const ;\n\n%
 end

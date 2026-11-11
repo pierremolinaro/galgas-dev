@@ -411,7 +411,7 @@ class DownEnumerator_filewrapperTemplateMap final {
 
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
 
-  public: class GGS_functionSignature current_mTemplateSignature (LOCATION_ARGS) const ;
+  public: class GGS__5B_functionSignatureElement_5D_ current_mTemplateSignature (LOCATION_ARGS) const ;
 
   public: class GGS_lstring current_mFilewrapperTemplatePath (LOCATION_ARGS) const ;
 
@@ -438,7 +438,7 @@ class UpEnumerator_filewrapperTemplateMap final {
   public: inline void rewind (void) { mIndex = 0 ; }
 
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
-  public: class GGS_functionSignature current_mTemplateSignature (LOCATION_ARGS) const ;
+  public: class GGS__5B_functionSignatureElement_5D_ current_mTemplateSignature (LOCATION_ARGS) const ;
   public: class GGS_lstring current_mFilewrapperTemplatePath (LOCATION_ARGS) const ;
   public: class GGS_filewrapperTemplateMap_2E_element current (LOCATION_ARGS) const ;
 
@@ -513,7 +513,7 @@ class GGS_filewrapperTemplateMap : public AC_GALGAS_root {
 
 //--------------------------------- Setters
   public: void setter_insertKey (class GGS_lstring constinArgument0,
-                                 class GGS_functionSignature constinArgument1,
+                                 class GGS__5B_functionSignatureElement_5D_ constinArgument1,
                                  class GGS_lstring constinArgument2,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
@@ -523,7 +523,7 @@ class GGS_filewrapperTemplateMap : public AC_GALGAS_root {
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
-  public: void setter_setMTemplateSignatureForKey (class GGS_functionSignature constinArgument0,
+  public: void setter_setMTemplateSignatureForKey (class GGS__5B_functionSignatureElement_5D_ constinArgument0,
                                                    class GGS_string constinArgument1,
                                                    Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
@@ -531,7 +531,7 @@ class GGS_filewrapperTemplateMap : public AC_GALGAS_root {
 
 //--------------------------------- Instance Methods
   public: void method_searchKey (class GGS_lstring constinArgument0,
-                                 class GGS_functionSignature & outArgument1,
+                                 class GGS__5B_functionSignatureElement_5D_ & outArgument1,
                                  class GGS_lstring & outArgument2,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) const ;
@@ -564,9 +564,9 @@ class GGS_filewrapperTemplateMap : public AC_GALGAS_root {
                                                                    Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_functionSignature getter_mTemplateSignatureForKey (const class GGS_string & constinOperand0,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const ;
+  public: class GGS__5B_functionSignatureElement_5D_ getter_mTemplateSignatureForKey (const class GGS_string & constinOperand0,
+                                                                                      Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_filewrapperTemplateMap getter_overriddenMap (Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const ;
@@ -602,8 +602,8 @@ class GGS_filewrapperTemplateMap_2E_element : public AC_GALGAS_root {
     return mProperty_lkey ;
   }
 
-  public: GGS_functionSignature mProperty_mTemplateSignature ;
-  public: inline GGS_functionSignature readProperty_mTemplateSignature (void) const {
+  public: GGS__5B_functionSignatureElement_5D_ mProperty_mTemplateSignature ;
+  public: inline GGS__5B_functionSignatureElement_5D_ readProperty_mTemplateSignature (void) const {
     return mProperty_mTemplateSignature ;
   }
 
@@ -624,7 +624,7 @@ class GGS_filewrapperTemplateMap_2E_element : public AC_GALGAS_root {
     mProperty_lkey = inValue ;
   }
 
-  public: inline void setter_setMTemplateSignature (const GGS_functionSignature & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setMTemplateSignature (const GGS__5B_functionSignatureElement_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_mTemplateSignature = inValue ;
   }
 
@@ -637,7 +637,7 @@ class GGS_filewrapperTemplateMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public: GGS_filewrapperTemplateMap_2E_element (const GGS_lstring & in_lkey,
-                                                 const GGS_functionSignature & in_mTemplateSignature,
+                                                 const GGS__5B_functionSignatureElement_5D_ & in_mTemplateSignature,
                                                  const GGS_lstring & in_mFilewrapperTemplatePath) ;
 
 //--------------------------------- Copy constructor
@@ -650,7 +650,7 @@ class GGS_filewrapperTemplateMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Initializers
   public: static GGS_filewrapperTemplateMap_2E_element init_21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                         const class GGS_functionSignature & inOperand1,
+                                                                         const class GGS__5B_functionSignatureElement_5D_ & inOperand1,
                                                                          const class GGS_lstring & inOperand2,
                                                                          Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
@@ -4951,70 +4951,6 @@ class GGS_scopeLocalVarMap_2E_element_3F_ : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_scopeLocalVarMap_2E_element_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @localVarMapListForLLVM_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_localVarMapListForLLVM_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_scopeLocalVarMap mProperty_mMap ;
-  public: inline GGS_scopeLocalVarMap readProperty_mMap (void) const {
-    return mProperty_mMap ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_localVarMapListForLLVM_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMMap (const GGS_scopeLocalVarMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mMap = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_localVarMapListForLLVM_2E_element (const GGS_scopeLocalVarMap & in_mMap) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_localVarMapListForLLVM_2E_element (const GGS_localVarMapListForLLVM_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_localVarMapListForLLVM_2E_element & operator = (const GGS_localVarMapListForLLVM_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_localVarMapListForLLVM_2E_element init_21_ (const class GGS_scopeLocalVarMap & inOperand0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_localVarMapListForLLVM_2E_element ;
-
-//--------------------------------------------------------------------------------------------------
 //   enum overrideKind
 //--------------------------------------------------------------------------------------------------
 
@@ -5385,36 +5321,11 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_overrideKind_2E_select
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension proc '@currentVarManager checkSelfObjectIsFullyInitialized'
+//Extension mutating proc '@[scopeLocalVarMap] neutralAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionMethod_checkSelfObjectIsFullyInitialized (const class GGS_currentVarManager inObject,
-                                                        const class GGS_location constin_inErrorLocation,
-                                                        class Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@currentVarManager neutralAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_neutralAccess (class GGS_currentVarManager & ioObject,
-                                    const class GGS_lstring constin_inVarName,
-                                    class GGS_unifiedTypeMapEntry & out_outType,
-                                    class GGS_string & out_outCppName,
-                                    class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarMapListForLLVM neutralAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_neutralAccess (class GGS_localVarMapListForLLVM & ioObject,
+void extensionSetter_neutralAccess (class GGS__5B_scopeLocalVarMap_5D_ & ioObject,
                                     const class GGS_lstring constin_inVarName,
                                     const class GGS_uint constin_inIndex,
                                     class GGS_unifiedTypeMapEntry & out_outType,
@@ -5425,48 +5336,11 @@ void extensionSetter_neutralAccess (class GGS_localVarMapListForLLVM & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension mutating proc '@currentVarManager searchForDropAccess'
+//Extension mutating proc '@[scopeLocalVarMap] writeAccessInSubMap'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_searchForDropAccess (class GGS_currentVarManager & ioObject,
-                                          const class GGS_lstring constin_inVarName,
-                                          class Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@localVarValuation checkFinalState'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_checkFinalState (const class GGS_localVarValuation inObject,
-                                      const class GGS_lstring constin_inVarName,
-                                      const class GGS_localVariableAttributes constin_inAttributes,
-                                      class Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@currentVarManager searchForWriteAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_searchForWriteAccess (class GGS_currentVarManager & ioObject,
-                                           const class GGS_lstring constin_inVarName,
-                                           class GGS_unifiedTypeMapEntry & out_outType,
-                                           class GGS_string & out_outCppName,
-                                           class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                           class Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarMapListForLLVM writeAccessInSubMap'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_writeAccessInSubMap (class GGS_localVarMapListForLLVM & ioObject,
+void extensionSetter_writeAccessInSubMap (class GGS__5B_scopeLocalVarMap_5D_ & ioObject,
                                           const class GGS_lstring constin_inVarName,
                                           const class GGS_uint constin_inIndex,
                                           class GGS_unifiedTypeMapEntry & out_outType,
@@ -5490,25 +5364,11 @@ void extensionSetter_writeTransition (class GGS_localVarValuation & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension mutating proc '@currentVarManager searchForReadAccess'
+//Extension mutating proc '@[scopeLocalVarMap] readAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_searchForReadAccess (class GGS_currentVarManager & ioObject,
-                                          const class GGS_lstring constin_inVarName,
-                                          class GGS_unifiedTypeMapEntry & out_outType,
-                                          class GGS_string & out_outCppName,
-                                          class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                          class Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarMapListForLLVM readAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_readAccess (class GGS_localVarMapListForLLVM & ioObject,
+void extensionSetter_readAccess (class GGS__5B_scopeLocalVarMap_5D_ & ioObject,
                                  const class GGS_lstring constin_inVarName,
                                  const class GGS_uint constin_inIndex,
                                  class GGS_unifiedTypeMapEntry & out_outType,
@@ -5531,25 +5391,11 @@ void extensionSetter_readTransition (class GGS_localVarValuation & ioObject,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension mutating proc '@currentVarManager searchForReadWriteAccess'
+//Extension mutating proc '@[scopeLocalVarMap] readWriteAccess'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_searchForReadWriteAccess (class GGS_currentVarManager & ioObject,
-                                               const class GGS_lstring constin_inVarName,
-                                               class GGS_unifiedTypeMapEntry & out_outType,
-                                               class GGS_string & out_outCppName,
-                                               class GGS_string & out_outNameForCheckingFormalParameterUsing,
-                                               class Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@localVarMapListForLLVM readWriteAccess'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_readWriteAccess (class GGS_localVarMapListForLLVM & ioObject,
+void extensionSetter_readWriteAccess (class GGS__5B_scopeLocalVarMap_5D_ & ioObject,
                                       const class GGS_lstring constin_inVarName,
                                       const class GGS_uint constin_inIndex,
                                       class GGS_unifiedTypeMapEntry & out_outType,
@@ -5573,24 +5419,15 @@ void extensionSetter_readWriteTransition (class GGS_localVarValuation & ioObject
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension mutating proc '@currentVarManager openScope'
+//Extension proc '@localVarValuation checkFinalState'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_openScope (class GGS_currentVarManager & ioObject,
-                                class Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@currentVarManager closeScope'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_closeScope (class GGS_currentVarManager & ioObject,
-                                 const class GGS_location constin_inErrorLocation,
-                                 class Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
+void extensionMethod_checkFinalState (const class GGS_localVarValuation inObject,
+                                      const class GGS_lstring constin_inVarName,
+                                      const class GGS_localVariableAttributes constin_inAttributes,
+                                      class Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -5602,33 +5439,6 @@ void extensionMethod_checkFinalStates (const class GGS_scopeLocalVarMap inObject
                                        const class GGS_location constin__5F_inErrorLocation,
                                        class Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@currentVarManager insertKey'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_insertKey (class GGS_currentVarManager & ioObject,
-                                const class GGS_lstring constin_inVarName,
-                                const class GGS_unifiedTypeMapEntry constin_inType,
-                                const class GGS_string constin_inCppName,
-                                const class GGS_string constin_inNameForCheckingFormalParameterUsing,
-                                const class GGS_localVariableAttributes constin_inAttributes,
-                                const class GGS_localVarValuation constin_inState,
-                                class Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension proc '@currentVarManager checkAutomatonStates'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_checkAutomatonStates (const class GGS_currentVarManager inObject,
-                                           const class GGS_location constin_inErrorLocation,
-                                           class Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -5654,18 +5464,6 @@ void extensionSetter_combineMapWith (class GGS_scopeLocalVarMap & ioObject,
                                      class GGS_string & io_ioErrorMessage,
                                      class Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension mutating proc '@currentVarManager combineManagerWith'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_combineManagerWith (class GGS_currentVarManager & ioObject,
-                                         const class GGS_currentVarManager constin_inOtherManager,
-                                         const class GGS_location constin_inErrorLocation,
-                                         class Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @unifiedTypeMap_2E_element struct
@@ -6852,4 +6650,480 @@ class GGS_galgas_33_SyntaxExtensionAST : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxExtensionAST ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@syntaxExtensions listForKey' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ extensionGetter_listForKey (const class GGS_syntaxExtensions & inObject,
+                                                                           const class GGS_string & constinArgument0,
+                                                                           class Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @semanticExpressionAST_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_semanticExpressionAST_2E_weak : public AC_GALGAS_weak_reference {
+//--------------------------------- Default constructor
+  public: GGS_semanticExpressionAST_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_semanticExpressionAST_2E_weak (const class GGS_semanticExpressionAST & inSource) ;
+
+  public: GGS_semanticExpressionAST_2E_weak & operator = (const class GGS_semanticExpressionAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_semanticExpressionAST_2E_weak init_nil (void) {
+    GGS_semanticExpressionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_semanticExpressionAST bang_semanticExpressionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_semanticExpressionAST unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_semanticExpressionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_semanticExpressionAST_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticExpressionAST_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@formalArgumentPassingModeAST string' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_string (const class GGS_formalArgumentPassingModeAST & inObject,
+                                         class Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@formalArgumentPassingModeAST formalArgumentMessage' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_formalArgumentMessage (const class GGS_formalArgumentPassingModeAST & inObject,
+                                                        class Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@[formalParameterAST] keyRepresentation' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_keyRepresentation (const class GGS__5B_formalParameterAST_5D_ & inObject,
+                                                    class Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Extension func '@[formalInputParameterAST] initializerSignature' (as function)
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_string extensionGetter_initializerSignature (const class GGS__5B_formalInputParameterAST_5D_ & inObject,
+                                                       class Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @abstractInputParameter class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_abstractInputParameter : public AbstractStrongPtrClass {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void abstractInputParameter_init (Compiler * inCompiler) ;
+
+
+//--- Extension proc analyzeInputParameter
+  public: virtual void method_analyzeInputParameter (const class GGS_analysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           const class GGS_lexicalTypeEnum arg_inRequiredLexicalType,
+           const class GGS_string arg_inLexicalAttributeName,
+           class GGS__5B_terminalCheckAssignement_5D_ & arg_ioTerminalCheckAssignementList,
+           class GGS_localVarManager & arg_ioVariableMap,
+           Compiler * COMMA_LOCATION_ARGS) = 0 ;
+
+//--- Properties
+
+
+
+//--- Constructor
+  public: cPtr_abstractInputParameter (Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override = 0 ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override = 0 ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @abstractInputParameter_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_abstractInputParameter_2E_weak : public AC_GALGAS_weak_reference {
+//--------------------------------- Default constructor
+  public: GGS_abstractInputParameter_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_abstractInputParameter_2E_weak (const class GGS_abstractInputParameter & inSource) ;
+
+  public: GGS_abstractInputParameter_2E_weak & operator = (const class GGS_abstractInputParameter & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_abstractInputParameter_2E_weak init_nil (void) {
+    GGS_abstractInputParameter_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_abstractInputParameter bang_abstractInputParameter_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_abstractInputParameter unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_abstractInputParameter_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_abstractInputParameter_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_abstractInputParameter_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @inputParameterAnonymousVariable reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_inputParameterAnonymousVariable : public GGS_abstractInputParameter {
+//--------------------------------- Default constructor
+  public: GGS_inputParameterAnonymousVariable (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_inputParameterAnonymousVariable (const class cPtr_inputParameterAnonymousVariable * inSourcePtr) ;
+
+//--------------------------------- Property access
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_inputParameterAnonymousVariable init (Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_inputParameterAnonymousVariable & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputParameterAnonymousVariable ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @inputParameterAnonymousVariable class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_inputParameterAnonymousVariable : public cPtr_abstractInputParameter {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void inputParameterAnonymousVariable_init (Compiler * inCompiler) ;
+
+
+//--- Extension proc analyzeInputParameter
+  public: virtual void method_analyzeInputParameter (const class GGS_analysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           const class GGS_lexicalTypeEnum arg_inRequiredLexicalType,
+           const class GGS_string arg_inLexicalAttributeName,
+           class GGS__5B_terminalCheckAssignement_5D_ & arg_ioTerminalCheckAssignementList,
+           class GGS_localVarManager & arg_ioVariableMap,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+
+
+
+//--- Constructor
+  public: cPtr_inputParameterAnonymousVariable (Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @inputParameterAnonymousVariable_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_inputParameterAnonymousVariable_2E_weak : public GGS_abstractInputParameter_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_inputParameterAnonymousVariable_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_inputParameterAnonymousVariable_2E_weak (const class GGS_inputParameterAnonymousVariable & inSource) ;
+
+  public: GGS_inputParameterAnonymousVariable_2E_weak & operator = (const class GGS_inputParameterAnonymousVariable & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_inputParameterAnonymousVariable_2E_weak init_nil (void) {
+    GGS_inputParameterAnonymousVariable_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_inputParameterAnonymousVariable bang_inputParameterAnonymousVariable_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_inputParameterAnonymousVariable unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_inputParameterAnonymousVariable_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_inputParameterAnonymousVariable_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputParameterAnonymousVariable_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @inputParameterVariable reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_inputParameterVariable : public GGS_abstractInputParameter {
+//--------------------------------- Default constructor
+  public: GGS_inputParameterVariable (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_inputParameterVariable (const class cPtr_inputParameterVariable * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_lstring readProperty_mActualParameterName (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_inputParameterVariable init_21_ (const class GGS_lstring & inOperand0,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_inputParameterVariable & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_inputParameterVariable ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @inputParameterVariable class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_inputParameterVariable : public cPtr_abstractInputParameter {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void inputParameterVariable_init_21_ (const class GGS_lstring & inOperand0,
+                                                Compiler * inCompiler) ;
+
+
+//--- Extension proc analyzeInputParameter
+  public: virtual void method_analyzeInputParameter (const class GGS_analysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           const class GGS_lexicalTypeEnum arg_inRequiredLexicalType,
+           const class GGS_string arg_inLexicalAttributeName,
+           class GGS__5B_terminalCheckAssignement_5D_ & arg_ioTerminalCheckAssignementList,
+           class GGS_localVarManager & arg_ioVariableMap,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_lstring mProperty_mActualParameterName ;
+
+
+//--- Default constructor
+  public: cPtr_inputParameterVariable (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_inputParameterVariable (const GGS_lstring & in_mActualParameterName,
+                                       Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
 

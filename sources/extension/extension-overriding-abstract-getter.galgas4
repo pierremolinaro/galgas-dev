@@ -158,7 +158,7 @@ override proc @overridingAbstractExtensionGetterAST.semanticAnalysis (
 //--- Find base type name
   var @string baseTypeName = ""
   var @unifiedTypeMapEntry superType = selfType.definition.superType
-  var @functionSignature inheritedSignature = @()
+  var [@functionSignatureElement] inheritedSignature = @()
   var @unifiedTypeMapEntry inheritedReturnType = .null
   var @location inheritedDeclarationLocation = @location.here
   loop (ioTypeMap.count + 1)

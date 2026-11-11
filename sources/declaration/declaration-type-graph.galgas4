@@ -419,7 +419,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     )
   //--- Add initializer without argument
     var @initializerMap initializerMap = @()
-    let @functionSignature constructorPropertyTypeList = @()
+    let [@functionSignatureElement] constructorPropertyTypeList = @()
     !?initializerMap.insertKey
       (@(constructorPropertyTypeList.initializerSignature, self.mGraphTypeName),
       constructorPropertyTypeList

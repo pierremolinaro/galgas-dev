@@ -376,12 +376,6 @@ map @scopeLocalVarMap {
 
 //--------------------------------------------------------------------------------------------------
 
-list @localVarMapListForLLVM {
-  public let @scopeLocalVarMap mMap
-}
-
-//--------------------------------------------------------------------------------------------------
-
 enum @overrideKind {
   case selectOverrideFirstBranch (@currentVarManager savedManager)
   case selectOverrideNextBranches (@currentVarManager savedManager, @currentVarManager referenceManager)
@@ -399,7 +393,7 @@ struct @localVarManager {
 
 struct @currentVarManager {
   private var @scopeLocalVarMap mLocalVarMap = @()
-  private var @localVarMapListForLLVM mSubMaps = @()
+  private var [@scopeLocalVarMap] mSubMaps = @()
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -465,7 +459,7 @@ mutating proc @currentVarManager.neutralAccess (let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarMapListForLLVM.neutralAccess (let @lstring inVarName,
+mutating proc [@scopeLocalVarMap].neutralAccess (let @lstring inVarName,
                                              let @uint inIndex,
                                              !@unifiedTypeMapEntry outType,
                                              !@string outCppName,
@@ -474,7 +468,7 @@ mutating proc @localVarMapListForLLVM.neutralAccess (let @lstring inVarName,
     error (inVarName : "'" + inVarName + "' variable is not declared"
     spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
-    let localMap = self.mMapAtIndex (inIndex)
+    let localMap = self [inIndex]
     if let varDescriptor = localMap [inVarName] then
       outType = varDescriptor.mType
       outCppName = varDescriptor.mCppName
@@ -550,7 +544,7 @@ mutating proc @currentVarManager.searchForWriteAccess (let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarMapListForLLVM.writeAccessInSubMap (let @lstring inVarName,
+mutating proc [@scopeLocalVarMap].writeAccessInSubMap (let @lstring inVarName,
                                                    let @uint inIndex,
                                                    !@unifiedTypeMapEntry outType,
                                                    !@string outCppName,
@@ -559,13 +553,13 @@ mutating proc @localVarMapListForLLVM.writeAccessInSubMap (let @lstring inVarNam
     error (inVarName : "'" + inVarName + "' variable is not declared"
     spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
-    var localMap = self.mMapAtIndex (inIndex)
+    var localMap = self [inIndex]
     if let varDescriptor = localMap [inVarName] then
       var newValuation = varDescriptor.mState
       !?newValuation.writeTransition (inVarName, !inOverridenMap: true, varDescriptor.mAttributes)
       if newValuation != varDescriptor.mState then
         !?localMap.setMStateForKey (newValuation, inVarName)
-        !?self.setMMapAtIndex (localMap, inIndex)
+        !?self.set (localMap, !at: inIndex)
       end
       outType = varDescriptor.mType
       outCppName = varDescriptor.mCppName
@@ -642,7 +636,7 @@ mutating proc @currentVarManager.searchForReadAccess (let @lstring inVarName,
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarMapListForLLVM.readAccess (let @lstring inVarName,
+mutating proc [@scopeLocalVarMap].readAccess (let @lstring inVarName,
                                           let @uint inIndex,
                                           !@unifiedTypeMapEntry outType,
                                           !@string outCppName,
@@ -651,7 +645,7 @@ mutating proc @localVarMapListForLLVM.readAccess (let @lstring inVarName,
     error (inVarName : "'" + inVarName + "' variable is not declared"
     spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
-    var localMap = self.mMapAtIndex (inIndex)
+    var localMap = self [inIndex]
     if let varDescriptor = localMap [inVarName] then
       var newValuation = varDescriptor.mState
       !?newValuation.readTransition (inVarName, varDescriptor.mAttributes)
@@ -660,7 +654,7 @@ mutating proc @localVarMapListForLLVM.readAccess (let @lstring inVarName,
       outNameForCheckingFormalParameterUsing = varDescriptor.mNameForCheckingFormalParameterUsing
       if newValuation != varDescriptor.mState then
         !?localMap.setMStateForKey (newValuation, inVarName)
-        !?self.setMMapAtIndex (localMap, inIndex)
+        !?self.set (localMap, !at: inIndex)
       end
     else
       !?self.readAccess (inVarName, inIndex + 1, ?outType, ?outCppName, ?outNameForCheckingFormalParameterUsing)
@@ -733,7 +727,7 @@ mutating proc @currentVarManager.searchForReadWriteAccess (let @lstring inVarNam
 
 //--------------------------------------------------------------------------------------------------
 
-mutating proc @localVarMapListForLLVM.readWriteAccess (let @lstring inVarName,
+mutating proc [@scopeLocalVarMap].readWriteAccess (let @lstring inVarName,
                                                let @uint inIndex,
                                                !@unifiedTypeMapEntry outType,
                                                !@string outCppName,
@@ -742,13 +736,13 @@ mutating proc @localVarMapListForLLVM.readWriteAccess (let @lstring inVarName,
     error (inVarName : "'" + inVarName + "' variable is not declared"
     spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
   else
-    var localMap = self.mMapAtIndex (inIndex)
+    var localMap = self [inIndex]
     if let varDescriptor = localMap [inVarName] then
       var newValuation = varDescriptor.mState
       !?newValuation.readWriteTransition (inVarName, !inOverridenMap: true, varDescriptor.mAttributes)
       if newValuation != varDescriptor.mState then
         !?localMap.setMStateForKey (newValuation, inVarName)
-        !?self.setMMapAtIndex (localMap, inIndex)
+        !?self.set (localMap, !at: inIndex)
       end
       outType = varDescriptor.mType
       outCppName = varDescriptor.mCppName
@@ -773,7 +767,7 @@ mutating proc @localVarValuation.readWriteTransition (let @lstring inVarName,
 //--------------------------------------------------------------------------------------------------
 
 mutating proc @currentVarManager.openScope () {
-  !?self.mSubMaps.insertAtIndex (self.mLocalVarMap, 0)
+  !?self.mSubMaps.insert (self.mLocalVarMap, !at: 0)
   self.mLocalVarMap = @()
 }
 
@@ -785,7 +779,7 @@ mutating proc @currentVarManager.closeScope (let @location inErrorLocation ) {
     error (inErrorLocation : "EMPTY SUBMAPS")
   end
   if self.mSubMaps.count > 0 then
-    !?self.mSubMaps.popFirst (?self.mLocalVarMap)
+    !?self.mSubMaps.removeFirst (?self.mLocalVarMap)
   end
 }
 
@@ -941,21 +935,21 @@ mutating proc @scopeLocalVarMap.combineMapWith (?otherMap: let @scopeLocalVarMap
 mutating proc @currentVarManager.combineManagerWith (?otherManager: let @currentVarManager inOtherManager,
                                              ?errorLocation: let @location inErrorLocation ) {
   var s = ""
-  !?self.mLocalVarMap.combineMapWith
-    (!otherMap: inOtherManager.mLocalVarMap,
+  !?self.mLocalVarMap.combineMapWith (
+    !otherMap: inOtherManager.mLocalVarMap,
     !?s
   )
   if self.mSubMaps.count != inOtherManager.mSubMaps.count then
     s += "Scope deepth error, " + self.mSubMaps.count + " != " + inOtherManager.mSubMaps.count
   else
-    var @localVarMapListForLLVM newSubMapList = @()
+    var [@scopeLocalVarMap] newSubMapList = @()
     for (mMap) in self.mSubMaps, otherSubMap in inOtherManager.mSubMaps do
       var mutableSubMap = mMap
-     !?mutableSubMap.combineMapWith (
-       !otherMap: otherSubMap.mMap,
+      !?mutableSubMap.combineMapWith (
+       !otherMap: otherSubMap,
        !?s
      )
-     newSubMapList ++= @(mutableSubMap)
+     newSubMapList ++= mutableSubMap
     end
     self.mSubMaps = newSubMapList
   end

@@ -133,7 +133,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
   )
 //--- Property description
   var [@enumerationDescriptor] enumerationDescriptor = @()
-  var @functionSignature constructorAttributeTypeList = @()
+  var [@functionSignatureElement] constructorAttributeTypeList = @()
   var @formalParameterSignature setterOutputFormalArgumentList = @()
   var @formalParameterSignature setterInputFormalArgumentList = @()
   for property in typedAttributeList do
@@ -212,7 +212,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
     !?getterMap.insertOrReplace (
       @lstring (property.name.string + "AtIndex", property.name.location),
       @methodKind.definedAsMember,
-      @functionSignature [@("".nowhere, uintType, "inIndex", true)],
+      [@functionSignatureElement] [@("".nowhere, uintType, "inIndex", true)],
       @location.here,
       true,
       property.typeEntry,
@@ -302,7 +302,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
   )
 //--- Add initializer without argument
   var @initializerMap initializerMap = @()
-  let @functionSignature emptyArgumentList = @()
+  let [@functionSignatureElement] emptyArgumentList = @()
   !?initializerMap.insertKey
     (@(emptyArgumentList.initializerSignature, self.mListTypeName),
     emptyArgumentList

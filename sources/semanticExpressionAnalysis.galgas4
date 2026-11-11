@@ -206,7 +206,7 @@ proc checkAssignmentTypeWithImplicitGetterCall (let @unifiedTypeMapEntry inTarge
       inSourceType.definition.getterMap.searchKey
         (targetTypeDef.typeName,
         ?let kind,
-        ?let @functionSignature argumentTypeList,
+        ?let [@functionSignatureElement] argumentTypeList,
         ?*,
         ?let hasCompilerArgument,
         ?let returnedType,
@@ -339,7 +339,7 @@ proc checkDiadicOperator (?operatorIsHandled: let @bool inOperandIsHandled,
       rightType.definition.getterMap.searchKey
         (leftResultType.definition.typeName,
         ?let kind,
-        ?let @functionSignature argumentTypeList,
+        ?let [@functionSignatureElement] argumentTypeList,
         ?*,
         ?let hasCompilerArgument,
         ?let returnedType,

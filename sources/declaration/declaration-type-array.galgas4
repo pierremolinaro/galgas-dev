@@ -171,14 +171,14 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     )
   //--- Add initializer without argument
     var @initializerMap initializerMap = @()
-    let @functionSignature emptyArgumentList = @()
+    let [@functionSignatureElement] emptyArgumentList = @()
     !?initializerMap.insertKey
       (@(emptyArgumentList.initializerSignature, self.arrayTypeName),
       emptyArgumentList
     )
   //--- Read subscripts
     var @subscriptMap readSubscriptMap = @()
-    let @functionSignature argumentTypeList = [@("".nowhere, uintType, "inIndex", true)]
+    let [@functionSignatureElement] argumentTypeList = [@("".nowhere, uintType, "inIndex", true)]
     !?readSubscriptMap.insertKey (
       argumentTypeList.subcriptSignature.nowhere,
       argumentTypeList,

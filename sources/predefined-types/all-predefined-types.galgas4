@@ -112,7 +112,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
     self.getSetterMap (!?ioTypeMap, ?var @setterMap setterMap)
     self.getInstanceMethodMap (!?ioTypeMap, ?var @instanceMethodMap instanceMethodMap)
     self.getClassMethodMap (!?ioTypeMap, ?let @classMethodMap classMethodMap)
-    self.getAddAssignArgumentList (!?ioTypeMap, ?let @functionSignature addAssignArgumentList)
+    self.getAddAssignArgumentList (!?ioTypeMap, ?let [@functionSignatureElement] addAssignArgumentList)
     self.getEnumerationList (
       !?ioTypeMap,
       ?let [@enumerationDescriptor] enumerationList,
@@ -129,7 +129,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
   //--- Add Extensions
     var @initializerMap initializerMap = @()
     for initializer in self.initializers do
-      var @functionSignature formalParameterList = @()
+      var [@functionSignatureElement] formalParameterList = @()
       for argument in initializer do
         formalParameterList ++= @(
           argument.mFormalSelector,
@@ -270,7 +270,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   proc getAddAssignArgumentList (?!@unifiedTypeMap _ioUnifiedTypeMap,
-                                  !@functionSignature outAddAssignArgumentList ) {
+                                  ![@functionSignatureElement] outAddAssignArgumentList ) {
     outAddAssignArgumentList = @()
   }
 

@@ -161,7 +161,7 @@ override proc @filewrapperTemplateInExpressionAST.analyzeSemanticExpression
     end
   end
 //---
-  filewrapperTemplateMap.searchKey (self.mFilewrapperTemplateName, ?let @functionSignature templateSignature, ?*)
+  filewrapperTemplateMap.searchKey (self.mFilewrapperTemplateName, ?let [@functionSignatureElement] templateSignature, ?*)
 //--- Analysis arguments
   var [@semanticExpressionForGeneration] effectiveParameterList
   if self.mExpressions.count != templateSignature.count then

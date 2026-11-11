@@ -138,7 +138,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc getAddAssignArgumentList (?!@unifiedTypeMap ioUnifiedTypeMap,
-                                           !@functionSignature outAddAssignArgumentList ) {
+                                           ![@functionSignatureElement] outAddAssignArgumentList ) {
     !?ioUnifiedTypeMap.makeEntryFromString ("stringset", ?let @unifiedTypeMapEntry stringTypeIndex)
     outAddAssignArgumentList = [@("".nowhere, stringTypeIndex, "inString", true)]
   }

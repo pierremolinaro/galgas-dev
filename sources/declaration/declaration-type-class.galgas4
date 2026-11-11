@@ -232,7 +232,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
   //--- Current class Index
     !?ioTypeMap.makeEntry (self.mClassTypeName, ?let @unifiedTypeMapEntry classType)
   //--- Build attribute Map and constructor argument list
-    var @functionSignature synthetizedInitializerArgumentList = @()
+    var [@functionSignatureElement] synthetizedInitializerArgumentList = @()
     for property in inheritedTypedPropertyList do
       if property.initialization == .none then
         synthetizedInitializerArgumentList ++= @(
@@ -285,7 +285,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
     var @typeFeatures features = .referenceEquatable
     if self.clonable then
       features |= .clonable
-      var @functionSignature cloneInitializerArgumentList = @()
+      var [@functionSignatureElement] cloneInitializerArgumentList = @()
       cloneInitializerArgumentList ++= @(
         "cloned".nowhere,
         classType,
@@ -650,7 +650,7 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 func generateClassGetterDeclaration (?let @lstring inGetterName,
-                                    ?let @functionSignature inArgumentTypeList,
+                                    ?let [@functionSignatureElement] inArgumentTypeList,
                                     ?let @bool inHasCompilerArgument,
                                     ?let @unifiedTypeMapEntry inReturnedType,
                                     ?let @methodQualifier inQualifier ) -> @string {

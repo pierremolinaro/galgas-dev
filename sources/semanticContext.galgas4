@@ -93,7 +93,7 @@ map @grammarMap {
 //--------------------------------------------------------------------------------------------------
 
 map @functionMap {
-  public let @functionSignature mFunctionSignature
+  public let [@functionSignatureElement] mFunctionSignature
   public let @unifiedTypeMapEntry mResultType
   public let @bool mIsInternal
   #insertSetter insertKey #errorMessage "the '%K' function has been already declared in %L"
@@ -128,7 +128,7 @@ map @wrapperDirectoryMap { // Key is directory name
 //--------------------------------------------------------------------------------------------------
 
 map @filewrapperTemplateMap {
-  public let @functionSignature mTemplateSignature
+  public let [@functionSignatureElement] mTemplateSignature
   public let @lstring mFilewrapperTemplatePath
   #insertSetter insertKey #errorMessage "the '%K' filewrapper template has been already declared in %L"
   #searchMethod searchKey #errorMessage "the '%K' filewrapper template is not declared"
@@ -378,7 +378,7 @@ proc addExtensions
   if inExtensionGetterMapForBuildingContext.contains (inTypeName.string) then
     inExtensionGetterMapForBuildingContext.searchKey (inTypeName, ?let extensionGetterMapForType)
     for extensionGetter in extensionGetterMapForType do
-      var @functionSignature formalArgumentList = @()
+      var [@functionSignatureElement] formalArgumentList = @()
       for formalInputArgument in extensionGetter.mInputFormalParameterList do
         !?ioTypeMap.makeEntry (formalInputArgument.mFormalArgumentTypeName, ?let typeIndex)
         formalArgumentList ++= @(
@@ -498,7 +498,7 @@ proc addExtensions
   if inExtensionInitializerMapForBuildingContext.contains (inTypeName.string) then
     inExtensionInitializerMapForBuildingContext.searchKey (inTypeName, ?let initializerMapForType)
     for initializer in initializerMapForType do
-      var @functionSignature formalArgumentList = @()
+      var [@functionSignatureElement] formalArgumentList = @()
       for formal in initializer.mFormalParameterList do
         !?ioTypeMap.makeEntry (formal.mFormalArgumentTypeName, ?let typeIndex)
         formalArgumentList ++= @(formal.mFormalSelector, typeIndex, formal.mFormalArgumentName.string, formal.mIsConstant)
@@ -593,7 +593,7 @@ override proc @filewrapperDeclarationAST.enterDeclarationInSemanticContext
 //--- Templates
   var @filewrapperTemplateMap filewrapperTemplateMap = @()
   for filewrapperTemplate in self.mFilewrapperTemplateList do
-    var @functionSignature templateSignature = @()
+    var [@functionSignatureElement] templateSignature = @()
     for parameter in filewrapperTemplate.mFilewrapperTemplateFormalInputParameters do
       !?ioTypeMap.makeEntry (parameter.mFormalArgumentTypeName, ?let parameterTypeIndex)
       templateSignature ++= @(
@@ -672,7 +672,7 @@ override proc @externFunctionDeclarationAST.enterDeclarationInSemanticContext //
                                 ?!@unifiedTypeMap ioTypeMap,
   ?!@semanticContext ioSemanticContext ) {
 //--- Build signature
-  var functionSignature = @functionSignature ()
+  var functionSignature = [@functionSignatureElement] ()
   for formal in self.mFormalArgumentList do
     !?ioTypeMap.makeEntry (formal.mFormalArgumentTypeName, ?let parameterTypeIndex)
     functionSignature ++= @(formal.mFormalSelector, parameterTypeIndex, formal.mFormalArgumentTypeName.string, formal.mIsConstant)
