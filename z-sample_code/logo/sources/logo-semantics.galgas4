@@ -19,22 +19,14 @@ map @routineMap {
 //--------------------------------------------------------------------------------------------------
 
 abstract class @instruction {
+
+  abstract proc codeDisplay (?!@bool ioPenDown,
+                             ?!@double _ioX,
+                             ?!@double _ioY,
+                             ?!@double _ioAngle,
+                             ?!@string _SVG)
+
 }
-
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @instruction.codeDisplay
-  (?!@bool ioPenDown,
-  ?!@double _ioX,
-  ?!@double _ioY,
-  ?!@double _ioAngle,
-  ?!@string _SVG)
-
-//--------------------------------------------------------------------------------------------------
-
-//list @instructionList {
-//  public let @instruction mInstruction
-//}
 
 //--------------------------------------------------------------------------------------------------
 

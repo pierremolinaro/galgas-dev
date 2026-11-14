@@ -22,6 +22,11 @@
 
 abstract class @abstractLexicalRoutineActualArgumentAST {
   protected let @location mActualPassingModeLocation
+
+  abstract proc checkLexicalRoutineCallArgument (?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext,
+                                                 @lexicalArgumentModeAST _inLexicalRoutineFormalArgumentMode,
+                                                 @lexicalTypeEnum _inLexicalRoutineFormalArgumentType)
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -115,13 +120,6 @@ override func @lexicalFormalInputArgumentAST.generateSwiftCocoaRoutineArgument
   -> @string outGeneratedCode {
   outGeneratedCode = self.mRoutineOrFunctionFormalInputArgument.generateSwiftCocoaRoutineOrFunctionArgument
 }
-
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @abstractLexicalRoutineActualArgumentAST.checkLexicalRoutineCallArgument (
-  ?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext,
-  @lexicalArgumentModeAST _inLexicalRoutineFormalArgumentMode,
-  @lexicalTypeEnum _inLexicalRoutineFormalArgumentType)
 
 //--------------------------------------------------------------------------------------------------
 

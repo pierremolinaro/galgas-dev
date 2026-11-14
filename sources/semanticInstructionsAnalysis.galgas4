@@ -21,20 +21,6 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
-//
-//    I N S T R U C T I O N    A N A L Y S I S
-//
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @semanticInstructionAST.analyzeSemanticInstruction (
-                        let @lstring inUsefulnessCallerEntityName,
-                        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-                        let @analysisContext inAnalysisContext,
-                        ?!@unifiedTypeMap ioTypeMap,
-                        ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
-                        ?!@localVarManager ioVariableMap)
-
-//--------------------------------------------------------------------------------------------------
 
 struct @localConstant {
   public let @unifiedTypeMapEntry mType
@@ -187,16 +173,6 @@ proc checkExpressionIsBoolean
     end
   end
 }
-
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult.analyzeGrammarInstructionSDT
-  (let @analysisContext inAnalysisContext,
-  ?!@unifiedTypeMap ioTypeMap,
-  let @bool inHasTranslateFeature,
-  let @string inSyntaxDirectedTranslationResultVarName,
-  ?![@string] ioAssignementList,
-  ?!@localVarManager ioVariableMap)
 
 //--------------------------------------------------------------------------------------------------
 

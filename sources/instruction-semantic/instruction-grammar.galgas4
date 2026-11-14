@@ -20,6 +20,23 @@
 //--------------------------------------------------------------------------------------------------
 
 abstract class @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+
+  abstract proc generateCode (let @bool inGenerateSyntaxDirectedTranslationString,
+                              let @string inAccessMethodName,
+                              ?!@stringset ioUnusedVariableCppNameSet,
+                              ?!@string ioGeneratedCode)
+
+  abstract proc analyzeSDT (let @analysisContext inAnalysisContext,
+                            ?!@unifiedTypeMap _ioTypeMap,
+                            let @bool inHasTranslateFeature,
+                            ?!@localVarManager ioVariableMap)
+
+  abstract proc analyzeGrammarInstructionSDT (let @analysisContext inAnalysisContext,
+                                              ?!@unifiedTypeMap ioTypeMap,
+                                              let @bool inHasTranslateFeature,
+                                              let @string inSyntaxDirectedTranslationResultVarName,
+                                              ?![@string] ioAssignementList,
+                                              ?!@localVarManager ioVariableMap)
 }
 
 //--------------------------------------------------------------------------------------------------

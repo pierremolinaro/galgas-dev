@@ -24,11 +24,17 @@
 //--------------------------------------------------------------------------------------------------
 
 abstract class @lexicalExpressionAST {
+
+  abstract proc checkLexicalExpression (?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext)
 }
 
 //--------------------------------------------------------------------------------------------------
 
 abstract class @lexicalInstructionAST {
+
+  abstract proc checkLexicalInstruction (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
+                                         ?!@lexicalTagMap _ioTagMap)
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -52,6 +58,9 @@ struct @templateReplacementAST {
 //--------------------------------------------------------------------------------------------------
 
 abstract class @abstractLexicalRuleAST {
+
+  abstract proc checkLexicalRule (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext)
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -183,6 +192,8 @@ struct @lexicalSendSearchAST {
 //--------------------------------------------------------------------------------------------------
 
 abstract class @lexicalSendDefaultActionAST {
+
+  abstract proc checkLexicalDefaultAction (?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -214,6 +225,13 @@ struct @lexicalSelectBranchAST {
 //--------------------------------------------------------------------------------------------------
 
 abstract class @lexicalRoutineOrFunctionFormalInputArgumentAST {
+
+  abstract proc checkLexicalRoutineCallArgument (?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext,
+                                                 @lexicalTypeEnum _inLexicalRoutineFormalArgumentType)
+
+  abstract proc checkLexicalFunctionCallArgument (?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext,
+                                                  @lexicalTypeEnum _inLexicalRoutineFormalArgumentType)
+
 }
 
 //--------------------------------------------------------------------------------------------------

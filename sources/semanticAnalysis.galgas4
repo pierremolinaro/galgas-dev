@@ -988,23 +988,6 @@ proc buildNonterminalDeclarationsMap
 //
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @syntaxInstructionAST.analyzeSyntaxInstruction
-  (let @lstring inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @analysisContext inAnalysisContext,
-                                ?!@unifiedTypeMap ioTypeMap,
-  let @bool inHasTranslateFeature,
-  let @terminalMap inTerminalMap,
-  let @string inLexiqueName,
-  let @nonterminalMap inNonterminalMap,
-  let @string inComponentName,
-  let @stringset inIndexNameSet,
-  ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
-  ?!@localVarManager ioVariableMap,
-  ?!@uint ioSelectMethodCount)
-
-//--------------------------------------------------------------------------------------------------
-
 override proc @semanticInstructionAST.analyzeSyntaxInstruction
   (let @lstring inUsefulnessCallerEntityName,
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
@@ -1029,16 +1012,6 @@ override proc @semanticInstructionAST.analyzeSyntaxInstruction
     !?ioVariableMap
   )
 }
-
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @abstractInputParameter.analyzeInputParameter
-  (let @analysisContext inAnalysisContext,
-  ?!@unifiedTypeMap ioTypeMap,
-  let @lexicalTypeEnum inRequiredLexicalType,
-  let @string inLexicalAttributeName,
-  ?![@terminalCheckAssignement] ioTerminalCheckAssignementList,
-  ?!@localVarManager ioVariableMap)
 
 //--------------------------------------------------------------------------------------------------
 
@@ -1170,14 +1143,6 @@ override proc @inputParameterDeclaredConstant.analyzeInputParameter
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult.analyzeSDT
-  (let @analysisContext inAnalysisContext,
-  ?!@unifiedTypeMap _ioTypeMap,
-  let @bool inHasTranslateFeature,
-  ?!@localVarManager ioVariableMap)
-
-//--------------------------------------------------------------------------------------------------
-
 override proc @grammarInstructionSyntaxDirectedTranslationResultNone.analyzeSDT
   (let @analysisContext _inAnalysisContext,
                                 ?!@unifiedTypeMap _ioTypeMap,
@@ -1263,14 +1228,6 @@ override proc @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.
     + ", bit an '@" + expectedType.identifierRepresentation + "' parameter is required here")
   end
 }
-
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @abstractGrammarInstructionSyntaxDirectedTranslationResult.generateCode
-  (let @bool inGenerateSyntaxDirectedTranslationString,
-  let @string inAccessMethodName,
-  ?!@stringset ioUnusedVariableCppNameSet,
-  ?!@string ioGeneratedCode)
 
 //--------------------------------------------------------------------------------------------------
 

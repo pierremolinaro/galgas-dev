@@ -50,18 +50,14 @@ func #once syntaxDirectedTranslationResultVarName () ->@string {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @semanticInstructionAST.enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap)
+extension [@semanticInstructionAST] {
+ 
+  proc enterInstructionListInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
+    for instruction in self do
+      instruction.enterInstructionInSemanticContext (!?ioTypeMap)
+    end
+  }
 
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @semanticExpressionAST.enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap)
-
-//--------------------------------------------------------------------------------------------------
-
-proc [@semanticInstructionAST].enterInstructionListInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
-  for instruction in self do
-    instruction.enterInstructionInSemanticContext (!?ioTypeMap)
-  end
 }
 
 //--------------------------------------------------------------------------------------------------

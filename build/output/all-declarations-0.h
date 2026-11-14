@@ -13626,6 +13626,36 @@ class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult : public Ab
 } ;
 
 //--------------------------------------------------------------------------------------------------
+//
+//Abstract extension proc '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_analyzeSDT (class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
+                                     const class GGS_analysisContext constin_inAnalysisContext,
+                                     class GGS_unifiedTypeMap & io__5F_ioTypeMap,
+                                     const class GGS_bool constin_inHasTranslateFeature,
+                                     class GGS_localVarManager & io_ioVariableMap,
+                                     class Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension proc '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_analyzeGrammarInstructionSDT (class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
+                                                       const class GGS_analysisContext constin_inAnalysisContext,
+                                                       class GGS_unifiedTypeMap & io_ioTypeMap,
+                                                       const class GGS_bool constin_inHasTranslateFeature,
+                                                       const class GGS_string constin_inSyntaxDirectedTranslationResultVarName,
+                                                       class GGS__5B_string_5D_ & io_ioAssignementList,
+                                                       class GGS_localVarManager & io_ioVariableMap,
+                                                       class Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -16078,6 +16108,296 @@ class cPtr_abstractEnumeratedCollectionAST : public AbstractStrongPtrClass {
 } ;
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: [localConstant] array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_localConstant_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_localConstant_5D_ (const class GGS__5B_localConstant_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_localConstant_5D_ (const DownEnumerator__5B_localConstant_5D_ &) = delete ;
+  private: DownEnumerator__5B_localConstant_5D_ & operator = (const DownEnumerator__5B_localConstant_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_localConstant current (LOCATION_ARGS) const ;
+  public: class GGS_localConstant current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_localConstant> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_localConstant_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_localConstant_5D_ (const class GGS__5B_localConstant_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_localConstant_5D_ (const UpEnumerator__5B_localConstant_5D_ &) = delete ;
+  private: UpEnumerator__5B_localConstant_5D_ & operator = (const UpEnumerator__5B_localConstant_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+
+//---
+  public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_localConstant current (LOCATION_ARGS) const ;
+  public: class GGS_localConstant current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_localConstant> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_localConstant_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_localConstant> mSharedArray ;
+  private: bool mIsValid ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_localConstant_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_localConstant_5D_ (const GGS__5B_localConstant_5D_ & inSource) ;
+  public: GGS__5B_localConstant_5D_ & operator = (const GGS__5B_localConstant_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override { return mIsValid ; }
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_localConstant_5D_ init (Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator
+  public: void plusAssignOperation (const GGS__5B_localConstant_5D_ inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- ++= operator
+  public: void plusPlusAssignOperation (const GGS_localConstant & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_localConstant_5D_ add_operation (const GGS__5B_localConstant_5D_ & inOperand,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_localConstant constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insert (class GGS_localConstant constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_remove (class GGS_localConstant & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeFirst (class GGS_localConstant & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_localConstant & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+  public: void setter_set (class GGS_localConstant constinArgument0,
+                           class GGS_uint constinArgument1,
+                           Compiler * inCompiler
+                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_localConstant getter_first (Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_localConstant getter_last (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_localConstant_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_localConstant_5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                          const class GGS_uint & constinOperand1,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+  public: class GGS_localConstant readSubscript__3F_ (const class GGS_uint & in0,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_localConstant_5D_ ;
+  friend class DownEnumerator__5B_localConstant_5D_ ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_localConstant_5D_ ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @localConstant struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_localConstant : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_unifiedTypeMapEntry mProperty_mType ;
+  public: inline GGS_unifiedTypeMapEntry readProperty_mType (void) const {
+    return mProperty_mType ;
+  }
+
+  public: GGS_lstring mProperty_mName ;
+  public: inline GGS_lstring readProperty_mName (void) const {
+    return mProperty_mName ;
+  }
+
+  public: GGS_bool mProperty_mNoWarningIfUnused ;
+  public: inline GGS_bool readProperty_mNoWarningIfUnused (void) const {
+    return mProperty_mNoWarningIfUnused ;
+  }
+
+  public: GGS_string mProperty_mCppName ;
+  public: inline GGS_string readProperty_mCppName (void) const {
+    return mProperty_mCppName ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_localConstant (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMType (const GGS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mType = inValue ;
+  }
+
+  public: inline void setter_setMName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mName = inValue ;
+  }
+
+  public: inline void setter_setMNoWarningIfUnused (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mNoWarningIfUnused = inValue ;
+  }
+
+  public: inline void setter_setMCppName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mCppName = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_localConstant (const GGS_unifiedTypeMapEntry & in_mType,
+                             const GGS_lstring & in_mName,
+                             const GGS_bool & in_mNoWarningIfUnused,
+                             const GGS_string & in_mCppName) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_localConstant (const GGS_localConstant & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_localConstant & operator = (const GGS_localConstant & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_localConstant init_21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
+                                                         const class GGS_lstring & inOperand1,
+                                                         const class GGS_bool & inOperand2,
+                                                         const class GGS_string & inOperand3,
+                                                         Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_localConstant ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension proc '@abstractEnumeratedCollectionAST analyzeEnumeration'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_analyzeEnumeration (class cPtr_abstractEnumeratedCollectionAST * inObject,
+                                             const class GGS_lstring constin_inUsefulnessCallerEntityName,
+                                             class GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                             const class GGS_analysisContext constin_inAnalysisContext,
+                                             class GGS_unifiedTypeMap & io_ioTypeMap,
+                                             class GGS_localVarManager & io_ioVariableMap,
+                                             class GGS__5B_localConstant_5D_ & io_ioLocalConstantListForDoBranch,
+                                             class GGS_string & out_outEnumeratorCppName,
+                                             class GGS_semanticExpressionForGeneration & out_outEnumerationExpression,
+                                             class Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @abstractEnumeratedCollectionAST_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -16935,307 +17255,6 @@ class GGS__5B_forInstructionEnumeratedObjectAST_5D_ final : public AC_GALGAS_roo
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_forInstructionEnumeratedObjectAST_5D_ ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension proc '@abstractEnumeratedCollectionAST enterInSemanticContext'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_enterInSemanticContext (class cPtr_abstractEnumeratedCollectionAST * inObject,
-                                                 class GGS_unifiedTypeMap & io_ioTypeMap,
-                                                 class Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: [localConstant] array
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator__5B_localConstant_5D_ final {
-//--- Constructor
-  public: DownEnumerator__5B_localConstant_5D_ (const class GGS__5B_localConstant_5D_ & inOperand) ;
-
-//--- No copy
-  private: DownEnumerator__5B_localConstant_5D_ (const DownEnumerator__5B_localConstant_5D_ &) = delete ;
-  private: DownEnumerator__5B_localConstant_5D_ & operator = (const DownEnumerator__5B_localConstant_5D_ &) = delete ;
-
-//---
-  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
-
-//---
-  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
-  public: inline int32_t index (void) { return mCurrent ; }
-
-//--- Current element access
-  public: class GGS_localConstant current (LOCATION_ARGS) const ;
-  public: class GGS_localConstant current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
-
-//---- Properties
-  private: const GenericArray <GGS_localConstant> mSharedArray ;
-  private: int32_t mCurrent ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator__5B_localConstant_5D_ final {
-//--- Constructor
-  public: UpEnumerator__5B_localConstant_5D_ (const class GGS__5B_localConstant_5D_ & inOperand) ;
-
-//--- No copy
-  private: UpEnumerator__5B_localConstant_5D_ (const UpEnumerator__5B_localConstant_5D_ &) = delete ;
-  private: UpEnumerator__5B_localConstant_5D_ & operator = (const UpEnumerator__5B_localConstant_5D_ &) = delete ;
-
-//---
-  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
-
-//---
-  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
-
-//---
-  public: inline void rewind (void) { mCurrent = 0 ; }
-  public: inline int32_t index (void) { return mCurrent ; }
-
-//--- Current element access
-  public: class GGS_localConstant current (LOCATION_ARGS) const ;
-  public: class GGS_localConstant current_entry (LOCATION_ARGS) const ;
-
-//---- Properties
-  private: const GenericArray <GGS_localConstant> mSharedArray ;
-  private: int32_t mCurrent ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class GGS__5B_localConstant_5D_ final : public AC_GALGAS_root {
-//--------------------------------- Private property
-  private: GenericArray <GGS_localConstant> mSharedArray ;
-  private: bool mIsValid ;
-
-//--------------------------------- Default constructor
-  public: GGS__5B_localConstant_5D_ (void) ;
-
-//--------------------------------- Handle copy
-  public: GGS__5B_localConstant_5D_ (const GGS__5B_localConstant_5D_ & inSource) ;
-  public: GGS__5B_localConstant_5D_ & operator = (const GGS__5B_localConstant_5D_ & inSource) ;
-
-//--------------------------------- Direct access
-  public: void removeAll (void) ;
-  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
-
-//--- Methods that every type should implement
-  public: virtual bool isValid (void) const override { return mIsValid ; }
-
-  public: virtual void drop (void) override ;
-
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS__5B_localConstant_5D_ init (Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator
-  public: void plusAssignOperation (const GGS__5B_localConstant_5D_ inOperand,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator
-  public: void plusPlusAssignOperation (const GGS_localConstant & inOperand
-                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: GGS__5B_localConstant_5D_ add_operation (const GGS__5B_localConstant_5D_ & inOperand,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public: void setter_append (class GGS_localConstant constinArgument0,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_insert (class GGS_localConstant constinArgument0,
-                              class GGS_uint constinArgument1,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_remove (class GGS_localConstant & outArgument0,
-                              class GGS_uint constinArgument1,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeAll (Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeFirst (class GGS_localConstant & outArgument0,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeLast (class GGS_localConstant & outArgument0,
-                                  Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
-
-  public: void setter_set (class GGS_localConstant constinArgument0,
-                           class GGS_uint constinArgument1,
-                           Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
-
-  public: class GGS_localConstant getter_first (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_localConstant getter_last (Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__5B_localConstant_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__5B_localConstant_5D_ getter_sublist (const class GGS_uint & constinOperand0,
-                                                          const class GGS_uint & constinOperand1,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-  public: class GGS_localConstant readSubscript__3F_ (const class GGS_uint & in0,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const ;
-
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator__5B_localConstant_5D_ ;
-  friend class DownEnumerator__5B_localConstant_5D_ ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_localConstant_5D_ ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @localConstant struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_localConstant : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_unifiedTypeMapEntry mProperty_mType ;
-  public: inline GGS_unifiedTypeMapEntry readProperty_mType (void) const {
-    return mProperty_mType ;
-  }
-
-  public: GGS_lstring mProperty_mName ;
-  public: inline GGS_lstring readProperty_mName (void) const {
-    return mProperty_mName ;
-  }
-
-  public: GGS_bool mProperty_mNoWarningIfUnused ;
-  public: inline GGS_bool readProperty_mNoWarningIfUnused (void) const {
-    return mProperty_mNoWarningIfUnused ;
-  }
-
-  public: GGS_string mProperty_mCppName ;
-  public: inline GGS_string readProperty_mCppName (void) const {
-    return mProperty_mCppName ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_localConstant (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMType (const GGS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mType = inValue ;
-  }
-
-  public: inline void setter_setMName (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mName = inValue ;
-  }
-
-  public: inline void setter_setMNoWarningIfUnused (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mNoWarningIfUnused = inValue ;
-  }
-
-  public: inline void setter_setMCppName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mCppName = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_localConstant (const GGS_unifiedTypeMapEntry & in_mType,
-                             const GGS_lstring & in_mName,
-                             const GGS_bool & in_mNoWarningIfUnused,
-                             const GGS_string & in_mCppName) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_localConstant (const GGS_localConstant & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_localConstant & operator = (const GGS_localConstant & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_localConstant init_21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                         const class GGS_lstring & inOperand1,
-                                                         const class GGS_bool & inOperand2,
-                                                         const class GGS_string & inOperand3,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_localConstant ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension proc '@abstractEnumeratedCollectionAST analyzeEnumeration'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_analyzeEnumeration (class cPtr_abstractEnumeratedCollectionAST * inObject,
-                                             const class GGS_lstring constin_inUsefulnessCallerEntityName,
-                                             class GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                             const class GGS_analysisContext constin_inAnalysisContext,
-                                             class GGS_unifiedTypeMap & io_ioTypeMap,
-                                             class GGS_localVarManager & io_ioVariableMap,
-                                             class GGS__5B_localConstant_5D_ & io_ioLocalConstantListForDoBranch,
-                                             class GGS_string & out_outEnumeratorCppName,
-                                             class GGS_semanticExpressionForGeneration & out_outEnumerationExpression,
-                                             class Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: [forInstructionEnumeratedObjectForGeneration] array

@@ -25,6 +25,13 @@
 //--------------------------------------------------------------------------------------------------
 
 abstract class @templateInstructionAST {
+
+  abstract proc templateInstructionAnalysis (let @lstring inUsefulnessCallerEntityName,
+                                             ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                             let @templateAnalysisContext inAnalysisContext,
+                                             ?!@unifiedTypeMap ioTypeMap,
+                                             ?![@templateInstructionForGeneration] ioInstructionList)
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -34,6 +41,12 @@ abstract class @templateInstructionAST {
 //--------------------------------------------------------------------------------------------------
 
 abstract class @templateExpressionAST {
+
+  abstract proc templateExpressionAnalysis (let @lstring inUsefulnessCallerEntityName,
+                                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                            let @templateAnalysisContext inAnalysisContext,
+                                            ?!@unifiedTypeMap ioTypeMap,
+                                            !@semanticExpressionForGeneration outExpression)
 }
 
 //--------------------------------------------------------------------------------------------------

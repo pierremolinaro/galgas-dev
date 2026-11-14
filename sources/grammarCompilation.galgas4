@@ -151,14 +151,6 @@ proc handleNonTerminalDeclarationsFromRuleList (
 //                     transformInstructionList
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @syntaxInstructionAST.transformInstructionForGrammarAnalysis
-  (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
-  ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
-  ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
-  ?![@abstractSyntaxInstructionForGrammarAnalysis] ioSyntaxInstructionList)
-
-//--------------------------------------------------------------------------------------------------
-
 override proc @semanticInstructionAST.transformInstructionForGrammarAnalysis
   (?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis _ioActuallyUsedTerminalSymbolMap,
   ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis _inNonTerminalSymbolMap,

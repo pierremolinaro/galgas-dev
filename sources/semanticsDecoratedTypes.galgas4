@@ -48,6 +48,13 @@ proc generateInstructionList
 //--------------------------------------------------------------------------------------------------
 
 abstract class @templateInstructionForGeneration {
+
+  abstract proc templateCodeGeneration (?!@string ioGeneratedCode,
+                                        ?!@stringset ioInclusionSet,
+                                        ?!@uint _ioTemporaryVariableIndex,
+                                        ?!@stringset _ioUnusedVariableCppNameSet,
+                                        ?!@bool _ioUseColumnMarker)
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -55,16 +62,13 @@ abstract class @templateInstructionForGeneration {
 abstract class @semanticExpressionForGeneration {
   public let @unifiedTypeMapEntry mResultType
   public let @location mLocation
+  
+  abstract proc generateExpression (?!@string ioGeneratedCode,
+                                    ?!@stringset ioInclusionSet,
+                                    ?!@uint ioTemporaryVariableIndex,
+                                    ?!@stringset ioUnusedVariableCppNameSet,
+                                    !@string outCppExpression)
 }
-
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @semanticExpressionForGeneration.generateExpression
-  (?!@string ioGeneratedCode,
-  ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
-  ?!@stringset ioUnusedVariableCppNameSet,
-  !@string outCppExpression)
 
 //--------------------------------------------------------------------------------------------------
 
@@ -110,24 +114,18 @@ struct @formalInputParameterForGeneration {
 
 abstract class @actualParameterForGeneration {
   public let @unifiedTypeMapEntry mFormalArgumentType
+  
+  abstract proc generateActualParameter (?!@stringset ioInclusionSet,
+                                         ?!@uint ioTemporaryVariableIndex,
+                                         ?!@string ioImplementation,
+                                         ?![@string] ioJokerParametersToReleaseList,
+                                         ?![@string] ioOutputVariableList,
+                                         ?!@stringset _ioUnusedVariableCppNameSet,
+                                         !@string outCppName)
+
+  abstract proc generatePoisonedVariables (?!@string ioImplementation,
+                                           ?!@stringset ioUnusedVariableCppNameSet)
 }
-
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @actualParameterForGeneration.generateActualParameter (
-  ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
-  ?!@string ioImplementation,
-  ?![@string] ioJokerParametersToReleaseList,
-  ?![@string] ioOutputVariableList,
-  ?!@stringset _ioUnusedVariableCppNameSet,
-  !@string outCppName)
-
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @actualParameterForGeneration.generatePoisonedVariables (
-  ?!@string ioImplementation,
-  ?!@stringset ioUnusedVariableCppNameSet)
 
 //--------------------------------------------------------------------------------------------------
 
@@ -160,16 +158,14 @@ final class @inputJokerParameterForGeneration : @actualParameterForGeneration {
 //--------------------------------------------------------------------------------------------------
 
 abstract class @semanticInstructionForGeneration {
+  
+  abstract proc generateInstruction (?!@stringset ioInclusionSet,
+                                     ?!@uint ioTemporaryVariableIndex,
+                                     ?!@stringset ioUnusedVariableCppNameSet,
+                                     let @bool inGenerateSyntaxDirectedTranslationString,
+                                     ?!@string ioGeneratedCode)
+
 }
-
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @semanticInstructionForGeneration.generateInstruction (
-  ?!@stringset ioInclusionSet,
-  ?!@uint ioTemporaryVariableIndex,
-  ?!@stringset ioUnusedVariableCppNameSet,
-  let @bool inGenerateSyntaxDirectedTranslationString,
-  ?!@string ioGeneratedCode)
 
 //--------------------------------------------------------------------------------------------------
 

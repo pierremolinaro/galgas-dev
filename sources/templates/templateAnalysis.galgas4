@@ -41,17 +41,6 @@ struct @templateAnalysisContext {
 }
 
 //--------------------------------------------------------------------------------------------------
-//   E X P R E S S I O N
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @templateExpressionAST.templateExpressionAnalysis
-  (let @lstring inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @templateAnalysisContext inAnalysisContext,
-  ?!@unifiedTypeMap ioTypeMap,
-  !@semanticExpressionForGeneration outExpression)
-
-//--------------------------------------------------------------------------------------------------
 //   G E T T E R    C A L L    O P E R A N D
 //--------------------------------------------------------------------------------------------------
 
@@ -1445,15 +1434,6 @@ override proc @templateRightShiftOperationAST.templateExpressionAnalysis
 //
 //    I N S T R U C T I O N S
 //
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @templateInstructionAST.templateInstructionAnalysis
-  (let @lstring inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @templateAnalysisContext inAnalysisContext,
-  ?!@unifiedTypeMap ioTypeMap,
-  ?![@templateInstructionForGeneration] ioInstructionList)
-
 //--------------------------------------------------------------------------------------------------
 
 proc templateInstructionListAnalysis

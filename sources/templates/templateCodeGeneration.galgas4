@@ -23,15 +23,6 @@
 //
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @templateInstructionForGeneration.templateCodeGeneration
-  (?!@string ioGeneratedCode,
-  ?!@stringset ioInclusionSet,
-  ?!@uint _ioTemporaryVariableIndex,
-  ?!@stringset _ioUnusedVariableCppNameSet,
-  ?!@bool _ioUseColumnMarker)
-
-//--------------------------------------------------------------------------------------------------
-
 proc templateCodeGenerationForListInstruction (let [@templateInstructionForGeneration] inInstructionList,
                                               ?!@string ioGeneratedCode,
                                               ?!@stringset ioInclusionSet,

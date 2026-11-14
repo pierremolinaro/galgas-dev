@@ -22,10 +22,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //--------------------------------------------------------------------------------------------------
-
-
-
-//--------------------------------------------------------------------------------------------------
 //
 //         Instruction abstract class for grammar component
 //
@@ -33,6 +29,15 @@
 
 abstract class @abstractSyntaxInstructionForGrammarAnalysis #generatedInSeparateFile {
   public let @location mStartLocation
+
+  abstract proc tikzNodeForSyntaxInstruction (?![@row] ioRowList,
+                                              ?fromRow:let @uint inRow,
+                                              ?!column:@uint ioColumn,
+                                              ?!node: @string ioCurrentNode,
+                                              ?!arrowShape: @string ioArrowShape,
+                                              ?!arrows:@string ioArrows,
+                                              ?!@uint ioMaxUsedRowIndex,
+                                              ?debug:let @bool inDebug)
 }
 
 //--------------------------------------------------------------------------------------------------

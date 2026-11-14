@@ -28,6 +28,18 @@ struct @forInstructionEnumeratedObjectElementAST {
 //································································································*
 
 abstract class @abstractEnumeratedCollectionAST {
+
+  abstract proc enterInSemanticContext (?!@unifiedTypeMap ioTypeMap)
+
+  abstract proc analyzeEnumeration (let @lstring inUsefulnessCallerEntityName,
+                                    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                    let @analysisContext inAnalysisContext,
+                                    ?!@unifiedTypeMap ioTypeMap,
+                                    ?!@localVarManager ioVariableMap,
+                                    ?![@localConstant] ioLocalConstantListForDoBranch,
+                                    !@string outEnumeratorCppName,
+                                    !@semanticExpressionForGeneration outEnumerationExpression)
+
 }
 
 //································································································*
@@ -267,10 +279,6 @@ override proc @forInstructionAST.enterInstructionInSemanticContext (?!@unifiedTy
 
 //································································································*
 
-abstract proc @abstractEnumeratedCollectionAST.enterInSemanticContext (?!@unifiedTypeMap ioTypeMap)
-
-//································································································*
-
 override proc @enumeratedCollectionCstListInExpAST.enterInSemanticContext (?!@unifiedTypeMap ioTypeMap) {
   self.mEnumeratedExpression.enterExpressionInSemanticContext (!?ioTypeMap)
 }
@@ -285,18 +293,6 @@ override proc @enumeratedCollectionVarInExpAST.enterInSemanticContext (?!@unifie
 //--------------------------------------------------------------------------------------------------
 //! SEMANTICS
 //--------------------------------------------------------------------------------------------------
-
-abstract proc @abstractEnumeratedCollectionAST.analyzeEnumeration (
-  let @lstring inUsefulnessCallerEntityName,
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-  let @analysisContext inAnalysisContext,
-                                ?!@unifiedTypeMap ioTypeMap,
-  ?!@localVarManager ioVariableMap,
-  ?![@localConstant] ioLocalConstantListForDoBranch,
-  !@string outEnumeratorCppName,
-  !@semanticExpressionForGeneration outEnumerationExpression)
-
-//································································································*
 
 override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
                                 let @lstring inUsefulnessCallerEntityName,

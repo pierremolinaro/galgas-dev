@@ -21,34 +21,6 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
-    $extension$
-    <simple_type_definition> (!?ioDeclarations, ?var typeName)
-    $.$
-    repeat
-    while
-      <simple_type_definition> (!?ioDeclarations, ?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
-      $.$
-    end
-    $init$
-    let initLocation = @location.here
-    <formal_input_parameter_list> (!?ioDeclarations, ?let formalParameterList)
-    ${$
-    <semantic_instruction_list> (!?ioDeclarations, ?let routineInstructionList)
-    $}$
-    let endOfMethodLocation = @location.here
-    ioDeclarations.mDeclarationList ++= @initializerAST (
-      !isPredefined: false,
-      @lstring (typeName, initLocation),
-      formalParameterList,
-      routineInstructionList,
-      endOfMethodLocation
-    )
-  }
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
   rule <method_declaration>  (let @lstring inTypeName,
                               ?!@galgasDeclarationAST ioDeclarations) {
     $init$

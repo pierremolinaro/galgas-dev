@@ -190,11 +190,6 @@ func @lexicalTypeEnum.cocoaReset () -> @string {
 //                     checkLexicalDefaultAction
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @lexicalSendDefaultActionAST.checkLexicalDefaultAction
-  (?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext)
-
-//--------------------------------------------------------------------------------------------------
-
 override proc @lexicalSendTerminalByDefaultAST.checkLexicalDefaultAction
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext ) {
   ioLexiqueAnalysisContext.mTerminalMap.searchKey (self.mDefaultSentTerminal, ?*)
@@ -210,11 +205,6 @@ override proc @lexicalErrorByDefaultAST.checkLexicalDefaultAction
 
 //--------------------------------------------------------------------------------------------------
 //                       checkLexicalExpression
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @lexicalExpressionAST.checkLexicalExpression
-  (?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext)
-
 //--------------------------------------------------------------------------------------------------
 
 override proc @lexicalOrExpressionAST.checkLexicalExpression
@@ -262,12 +252,6 @@ override proc @lexicalStringNotMatchAST.checkLexicalExpression
 
 //--------------------------------------------------------------------------------------------------
 //                       checkLexicalFunctionCallArgument
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @lexicalRoutineOrFunctionFormalInputArgumentAST.checkLexicalFunctionCallArgument
-  (?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext,
-  @lexicalTypeEnum _inLexicalRoutineFormalArgumentType)
-
 //--------------------------------------------------------------------------------------------------
 
 override proc @lexicalAttributeInputArgumentAST.checkLexicalFunctionCallArgument
@@ -381,12 +365,6 @@ override proc @lexicalFunctionInputArgumentAST.checkLexicalFunctionCallArgument
 //                       checkLexicalRoutineCallArgument
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @lexicalRoutineOrFunctionFormalInputArgumentAST.checkLexicalRoutineCallArgument
-  (?!@lexiqueAnalysisContext _ioLexiqueAnalysisContext,
-  @lexicalTypeEnum _inLexicalRoutineFormalArgumentType)
-
-//--------------------------------------------------------------------------------------------------
-
 override proc @lexicalAttributeInputArgumentAST.checkLexicalRoutineCallArgument
   (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
   @lexicalTypeEnum inLexicalRoutineFormalArgumentType ) {
@@ -495,20 +473,7 @@ override proc @lexicalFunctionInputArgumentAST.checkLexicalRoutineCallArgument
 }
 
 //--------------------------------------------------------------------------------------------------
-//                       checkLexicalInstruction
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @lexicalInstructionAST.checkLexicalInstruction (
-                         ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext,
-                         ?!@lexicalTagMap _ioTagMap)
-
-//--------------------------------------------------------------------------------------------------
 //                         compileLexiqueComponent
-//--------------------------------------------------------------------------------------------------
-
-abstract proc @abstractLexicalRuleAST.checkLexicalRule
-  (?!@lexiqueAnalysisContext ioLexiqueAnalysisContext)
-
 //--------------------------------------------------------------------------------------------------
 
 override proc @lexicalImplicitRuleAST.checkLexicalRule

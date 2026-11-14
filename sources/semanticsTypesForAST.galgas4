@@ -63,6 +63,17 @@ struct @syntaxExtensions {
 //--------------------------------------------------------------------------------------------------
 
 abstract class @semanticExpressionAST {
+
+  abstract proc enterExpressionInSemanticContext (?!@unifiedTypeMap ioTypeMap)
+
+  abstract proc analyzeSemanticExpression (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
+                                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                           ?inferenceType: let @unifiedTypeMapEntry inType,
+                                           let @analysisContext inAnalysisContext,
+                                           ?!@unifiedTypeMap ioTypeMap,
+                                           ?!@localVarManager ioVariableMap,
+                                           !@semanticExpressionForGeneration outExpression)
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -162,6 +173,13 @@ func [@formalInputParameterAST].initializerSignature () -> @string {
 //--------------------------------------------------------------------------------------------------
 
 abstract class @abstractInputParameter {
+
+  abstract proc analyzeInputParameter (let @analysisContext inAnalysisContext,
+                                       ?!@unifiedTypeMap ioTypeMap,
+                                       let @lexicalTypeEnum inRequiredLexicalType,
+                                       let @string inLexicalAttributeName,
+                                       ?![@terminalCheckAssignement] ioTerminalCheckAssignementList,
+                                       ?!@localVarManager ioVariableMap)
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -200,11 +218,40 @@ struct @actualInputParameterAST {
 
 abstract class @syntaxInstructionAST {
   public let @location mInstructionLocation
+
+  abstract proc analyzeSyntaxInstruction (let @lstring inUsefulnessCallerEntityName,
+                                          ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                          let @analysisContext inAnalysisContext,
+                                          ?!@unifiedTypeMap ioTypeMap,
+                                          let @bool inHasTranslateFeature,
+                                          let @terminalMap inTerminalMap,
+                                          let @string inLexiqueName,
+                                          let @nonterminalMap inNonterminalMap,
+                                          let @string inComponentName,
+                                          let @stringset inIndexNameSet,
+                                          ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
+                                          ?!@localVarManager ioVariableMap,
+                                          ?!@uint ioSelectMethodCount)
+
+  abstract proc transformInstructionForGrammarAnalysis (?!usedTerminalMap: @terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap,
+                                                        ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap,
+                                                        ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex,
+                                                        ?![@abstractSyntaxInstructionForGrammarAnalysis] ioSyntaxInstructionList)
+
 }
 
 //--------------------------------------------------------------------------------------------------
 
 abstract class @semanticInstructionAST : @syntaxInstructionAST {
+
+  abstract proc enterInstructionInSemanticContext (?!@unifiedTypeMap ioTypeMap)
+
+  abstract proc analyzeSemanticInstruction (let @lstring inUsefulnessCallerEntityName,
+                                            ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                            let @analysisContext inAnalysisContext,
+                                            ?!@unifiedTypeMap ioTypeMap,
+                                            ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
+                                            ?!@localVarManager ioVariableMap)
 }
 
 //--------------------------------------------------------------------------------------------------

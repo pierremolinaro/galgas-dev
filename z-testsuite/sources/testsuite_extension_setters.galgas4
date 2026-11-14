@@ -15,6 +15,9 @@ proc testsuite_extension_setters() {
 
 abstract class @abstractTestExtensionSetter {
   public var @uint mInteger
+
+  abstract proc m ()
+
 }
 
 class @TestExtensionSetter : @abstractTestExtensionSetter {
@@ -41,8 +44,6 @@ proc @TestExtensionSetter.setter2 (?!@uint ioArg, let@string inS) {
   self.setter1 (!?ioArg)
   self.mString += inS
 }
-
-abstract proc @abstractTestExtensionSetter.m()
 
 override proc @TestExtensionSetter.m() { }
 

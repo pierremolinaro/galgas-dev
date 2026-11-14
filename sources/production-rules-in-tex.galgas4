@@ -298,18 +298,6 @@ mutating proc [@row].appendRow (
 
 //--------------------------------------------------------------------------------------------------
 
-abstract proc @abstractSyntaxInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
-  (?![@row] ioRowList,
-  ?fromRow:let @uint inRow,
-  ?!column:@uint ioColumn,
-  ?!node: @string ioCurrentNode,
-  ?!arrowShape: @string ioArrowShape,
-  ?!arrows:@string ioArrows,
-  ?!@uint ioMaxUsedRowIndex,
-  ?debug:let @bool inDebug)
-
-//--------------------------------------------------------------------------------------------------
-
 override proc @nonTerminalInstructionForGrammarAnalysis.tikzNodeForSyntaxInstruction
   (?![@row] ioRowList,
   ?fromRow:let @uint inRow,
