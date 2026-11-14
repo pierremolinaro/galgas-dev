@@ -194,14 +194,14 @@ proc testsuite_bigint_type() {
   println (((-7) / (-2)).string) // 3
   println ((7 / (-2)).string) // -3
   println ("--- mod")
-  println ((9876543210 mod 1234567890).string) // 90
-  println (((-9876543210) mod 1234567890).string) // -90
-  println (((-9876543210) mod (-1234567890)).string)  // -90
-  println ((9876543210 mod (-1234567890)).string)  // 90
-  println ((2000 mod 183).string) // 170
-  println (((-2000) mod 183).string) // -170
-  println (((-2000) mod (-183)).string) // -170
-  println ((2000 mod (-183)).string) // 170
+  println ((9876543210 % 1234567890).string) // 90
+  println (((-9876543210) % 1234567890).string) // -90
+  println (((-9876543210) % (-1234567890)).string)  // -90
+  println ((9876543210 % (-1234567890)).string)  // 90
+  println ((2000 % 183).string) // 170
+  println (((-2000) % 183).string) // -170
+  println (((-2000) % (-183)).string) // -170
+  println ((2000 % (-183)).string) // 170
   println ("--- divideBy")
   var @bigint quotient
   var @bigint remainder
@@ -323,7 +323,7 @@ proc testsuite_bigint_type() {
   var bb = n17plus9
   var continue = true
   loop while continue do
-    let remainder = a mod bb
+    let remainder = a % bb
     if remainder == 0 then
       continue = false
       println ("PGCD = " + bb)

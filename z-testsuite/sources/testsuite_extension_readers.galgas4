@@ -1,10 +1,14 @@
 
 
-abstract class @A_A { }
+abstract class @A_A {
+
+  abstract func aReader( ?var @uint inA, ?let @string inB) -> @string
+
+  abstract func location() -> @location
+
+}
 
 final class @B_B : @A_A { }
-
-abstract func @A_A.aReader( ?var @uint inA, ?let @string inB) -> @string
 
 override func @B_B.aReader( ?var @uint inA, ?let @string inB) -> @string {
   inA += 1
@@ -15,8 +19,6 @@ func @B_B.otherReader( ?var @uint inA, ?let @string inB) -> @string {
   inA += 1
   result = inB + inA + self.aReader (inA, inB) + self.aReader (inA, inB)
 }
-
-abstract func @A_A.location() -> @location
 
 override func @B_B.location() -> @location outLocation { outLocation = .here}
 

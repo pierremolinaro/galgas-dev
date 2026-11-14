@@ -188,6 +188,15 @@ struct @semanticInstructionListForGeneration {
 
 abstract class @semanticDeclarationForGeneration {
   public let @string infoMessage #initArgLabel
+
+  abstract func getImplementationCppFileName () -> @string
+
+  abstract func hasCppHeaderFile () -> @bool
+
+  abstract func isPredefined () -> @bool
+
+  abstract func headerKind () -> @headerKind
+
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -200,22 +209,6 @@ func @semanticDeclarationForGeneration.appendPrimitiveTypeDeclaration () -> @str
 
 proc @semanticDeclarationForGeneration.appendPrimitiveTypePreDeclaration (?!@string _ioHeader) {
 }
-
-//--------------------------------------------------------------------------------------------------
-
-abstract func @semanticDeclarationForGeneration.getImplementationCppFileName () -> @string
-
-//--------------------------------------------------------------------------------------------------
-
-abstract func @semanticDeclarationForGeneration.hasCppHeaderFile () -> @bool
-
-//--------------------------------------------------------------------------------------------------
-
-abstract func @semanticDeclarationForGeneration.isPredefined () -> @bool
-
-//--------------------------------------------------------------------------------------------------
-
-abstract func @semanticDeclarationForGeneration.headerKind () -> @headerKind
 
 //--------------------------------------------------------------------------------------------------
 //

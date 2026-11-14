@@ -31,7 +31,6 @@ syntax extension galgas4DeclarationsSyntax {
     let arrayTypeName = makeArrayTypeLName (elementTypeName)
     if not ioDeclarations.implicitTypeDeclarationSet.contains (arrayTypeName.string) then
       ioDeclarations.implicitTypeDeclarationSet ++= arrayTypeName.string
-      println ("ADDED " + arrayTypeName)
       ioDeclarations.mDeclarationList ++= @arrayTypeDeclarationAST (
         !isPredefined: false,
         !arrayTypeName: arrayTypeName,

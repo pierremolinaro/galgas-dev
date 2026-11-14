@@ -25,9 +25,9 @@
 //   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N (SWIFT)
 //--------------------------------------------------------------------------------------------------
 
-abstract func @lexicalExpressionAST.generateSwiftCocoaConditionCode
-  (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
-  ) -> @string
+extension @lexicalExpressionAST {
+  abstract func generateSwiftCocoaConditionCode (?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -90,8 +90,9 @@ override func @lexicalCharacterSetMatchAST.generateSwiftCocoaConditionCode
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @lexicalRoutineOrFunctionFormalInputArgumentAST.generateSwiftCocoaRoutineOrFunctionArgument
-  () -> @string
+extension @lexicalRoutineOrFunctionFormalInputArgumentAST {
+  abstract func generateSwiftCocoaRoutineOrFunctionArgument () -> @string
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -134,9 +135,9 @@ override func @lexicalFunctionInputArgumentAST.generateSwiftCocoaRoutineOrFuncti
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @lexicalSendDefaultActionAST.generateSwiftCocoaDefaultSendCode
-  (?let @string inScannerClassName
-  ) -> @string
+extension @lexicalSendDefaultActionAST {
+  abstract func generateSwiftCocoaDefaultSendCode(?let @string inScannerClassName) -> @string
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -156,19 +157,20 @@ override func @lexicalErrorByDefaultAST.generateSwiftCocoaDefaultSendCode
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @lexicalInstructionAST.generateSwiftCocoaInstructionCode
-  (?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-  ) -> @string
+extension @lexicalInstructionAST {
+
+  abstract func generateSwiftCocoaInstructionCode (?let @string inScannerClassName,
+                                                   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext) -> @string
+}
 
 //--------------------------------------------------------------------------------------------------
 //        L E X I C A L    R U L E    C O D E    G E N E R A T I O N (SWIFT)
 //--------------------------------------------------------------------------------------------------
 
-abstract func @abstractLexicalRuleAST.generateSwiftCocoaCode
-  (?let @string inScannerClassName,
-  ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext
-  ) -> @string
+extension @abstractLexicalRuleAST {
+  abstract func generateSwiftCocoaCode (?let @string inScannerClassName,
+                                        ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext) -> @string
+}
 
 //--------------------------------------------------------------------------------------------------
 

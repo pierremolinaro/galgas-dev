@@ -95,9 +95,9 @@ syntax extension galgas4LexiqueComponentSyntax {
 //! CHECK LEXICAL INSTRUCTION
 //--------------------------------------------------------------------------------------------------
 
-abstract func @abstractLexicalRoutineActualArgumentAST.generateSwiftCocoaRoutineArgument
-  (?let @lexiqueAnalysisContext inLexiqueAnalysisContext)
-  -> @string
+extension @abstractLexicalRoutineActualArgumentAST {
+  abstract func generateSwiftCocoaRoutineArgument (?let @lexiqueAnalysisContext inLexiqueAnalysisContext) -> @string
+}
 
 //--------------------------------------------------------------------------------------------------
 
@@ -228,8 +228,9 @@ override func @lexicalRoutineCallInstructionAST.generateSwiftCocoaInstructionCod
 //! C++ CODE GENERATION
 //--------------------------------------------------------------------------------------------------
 
-abstract func @abstractLexicalRoutineActualArgumentAST.generateRoutineArgument ()
-  -> @string
+extension @abstractLexicalRoutineActualArgumentAST {
+  abstract func generateRoutineArgument () -> @string
+}
 
 //·································································································
 

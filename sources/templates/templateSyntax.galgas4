@@ -193,7 +193,7 @@ rule <term_tpl>
     outExpression = @templateDivideOperationAST (operatorLocation, leftExpression, rightExpression)
   while
     let @location operatorLocation = @location.here
-    $mod$
+    $%$
     let @templateExpressionAST leftExpression = outExpression
     let @templateExpressionAST rightExpression
     <factor_tpl> (?rightExpression)

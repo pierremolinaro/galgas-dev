@@ -142,7 +142,7 @@ syntax extension galgas4ExpressionSyntax {
       outExpression = @divisionExpressionNoOverflowAST (operatorLocation, leftOperand, rightOperand)
     while
       let operatorLocation = @location.here
-      $mod$
+      $%$
       let leftOperand = outExpression
       <factor> (!?ioDeclarations, ?let rightOperand)
       outExpression = @moduloExpressionAST (operatorLocation, leftOperand, rightOperand)

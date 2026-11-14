@@ -549,25 +549,33 @@ func [@abstractSyntaxInstructionForGrammarAnalysis].displayVertically () -> @boo
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @abstractSyntaxInstructionForGrammarAnalysis.isLinear () -> @bool
+extension @abstractSyntaxInstructionForGrammarAnalysis {
+  abstract func isLinear () -> @bool
+}
 
 //--------------------------------------------------------------------------------------------------
 
-override func @nonTerminalInstructionForGrammarAnalysis.isLinear () -> @bool {
-  result = true
+extension @nonTerminalInstructionForGrammarAnalysis {
+  override func isLinear () -> @bool {
+    result = true
+  }
 }
 
 
 //--------------------------------------------------------------------------------------------------
 
-override func @selectInstructionForGrammarAnalysis.isLinear () -> @bool {
-  result = false
+extension @selectInstructionForGrammarAnalysis {
+  override func isLinear () -> @bool {
+    result = false
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
 
-override func @repeatInstructionForGrammarAnalysis.isLinear () -> @bool {
-  result = false
+extension @repeatInstructionForGrammarAnalysis {
+  override func isLinear () -> @bool {
+    result = false
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

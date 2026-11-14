@@ -2412,7 +2412,6 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
         "the 'log' keyword",
         "the 'loop' keyword",
         "the 'map' keyword",
-        "the 'mod' keyword",
         "the 'mutating' keyword",
         "the 'nil' keyword",
         "the 'not' keyword",
@@ -2508,6 +2507,7 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
         "the '==' delimitor",
         "the '=' delimitor",
         "the '&&' delimitor",
+        "the '%' delimitor",
         "the '[' delimitor",
         "the ']' delimitor",
         "the '++=' delimitor",
@@ -2570,6 +2570,11 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___21_
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___21__5E_ = {
   utf32 ('!'),
   utf32 ('^'),
+} ;
+
+//--- Unicode string for '$%$'
+static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34___25_ = {
+  utf32 ('%'),
 } ;
 
 //--- Unicode string for '$&$'
@@ -3689,13 +3694,6 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__map 
   utf32 ('p'),
 } ;
 
-//--- Unicode string for '$mod$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__mod = {
-  utf32 ('m'),
-  utf32 ('o'),
-  utf32 ('d'),
-} ;
-
 //--- Unicode string for '$mutating$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__mutating = {
   utf32 ('m'),
@@ -4384,9 +4382,10 @@ int32_t Lexique_galgasScanner_34_::search_into_attributeKeyWordList (const Strin
 //             Key words table 'galgasDelimitorsList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_34__galgasDelimitorsList = 47 ;
+static const int32_t ktable_size_galgasScanner_34__galgasDelimitorsList = 48 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasDelimitorsList [ktable_size_galgasScanner_34__galgasDelimitorsList] = {
+  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___25_, Lexique_galgasScanner_34_::kToken__25_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___26_, Lexique_galgasScanner_34_::kToken__26_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___28_, Lexique_galgasScanner_34_::kToken__28_),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34___29_, Lexique_galgasScanner_34_::kToken__29_),
@@ -4444,7 +4443,7 @@ int32_t Lexique_galgasScanner_34_::search_into_galgasDelimitorsList (const Strin
 //             Key words table 'galgasKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_34__galgasKeyWordList = 82 ;
+static const int32_t ktable_size_galgasScanner_34__galgasKeyWordList = 81 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasKeyWordList [ktable_size_galgasScanner_34__galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__as, Lexique_galgasScanner_34_::kToken_as),
@@ -4460,7 +4459,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__let, Lexique_galgasScanner_34_::kToken_let),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__log, Lexique_galgasScanner_34_::kToken_log),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__map, Lexique_galgasScanner_34_::kToken_map),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__mod, Lexique_galgasScanner_34_::kToken_mod),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__nil, Lexique_galgasScanner_34_::kToken_nil),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__not, Lexique_galgasScanner_34_::kToken_not),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__tag, Lexique_galgasScanner_34_::kToken_tag),
@@ -4899,11 +4897,6 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
     case kToken_map:
       s.appendChar (utf32 ('$')) ;
       s.appendCString ("map") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken_mod:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("mod") ;
       s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_mutating:
@@ -5379,6 +5372,11 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
     case kToken__26__26_:
       s.appendChar (utf32 ('$')) ;
       s.appendCString ("&&") ;
+      s.appendChar (utf32 ('$')) ;
+      break ;
+    case kToken__25_:
+      s.appendChar (utf32 ('$')) ;
+      s.appendCString ("%") ;
       s.appendChar (utf32 ('$')) ;
       break ;
     case kToken__5B_:
@@ -5961,6 +5959,9 @@ void Lexique_galgasScanner_34_::internalParseLexicalToken (cTokenFor_galgasScann
     }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___26_, true)) {
       token.mTokenCode = kToken__26_ ;
       enterToken (token) ;
+    }else if (testForInputUTF32String (kUnicodeString_galgasScanner_34___25_, true)) {
+      token.mTokenCode = kToken__25_ ;
+      enterToken (token) ;
     }else if (testForInputUTF32Char (utf32 ('@'))) {
       if (testForInputUTF32CharRange (utf32 ('a'), utf32 ('z')) || testForInputUTF32CharRange (utf32 ('A'), utf32 ('Z')) || testForInputUTF32Char (utf32 ('_')) || testForInputUTF32CharRange (utf32 ('0'), utf32 ('9'))) {
         do {
@@ -6440,7 +6441,6 @@ GGS_luint Lexique_galgasScanner_34_::synthetizedAttribute_uint_33__32_value (voi
   result.plusPlusAssignOperation (GGS_string ("log") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("loop") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("map") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("mod") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("mutating") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("nil") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("not") COMMA_HERE) ;
@@ -6536,6 +6536,7 @@ GGS_luint Lexique_galgasScanner_34_::synthetizedAttribute_uint_33__32_value (voi
   result.plusPlusAssignOperation (GGS_string ("==") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("=") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("&&") COMMA_HERE) ;
+  result.plusPlusAssignOperation (GGS_string ("%") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("[") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("]") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("++=") COMMA_HERE) ;
@@ -6627,6 +6628,7 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
   }
   if (inIdentifier == "galgasScanner4:galgasDelimitorsList") {
     ioFound = true ;
+    ioList.appendObject ("%") ;
     ioList.appendObject ("&") ;
     ioList.appendObject ("(") ;
     ioList.appendObject (")") ;
@@ -6691,7 +6693,6 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("let") ;
     ioList.appendObject ("log") ;
     ioList.appendObject ("map") ;
-    ioList.appendObject ("mod") ;
     ioList.appendObject ("nil") ;
     ioList.appendObject ("not") ;
     ioList.appendObject ("tag") ;
@@ -6841,7 +6842,6 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
     1 /* galgasScanner4_1_log */,
     1 /* galgasScanner4_1_loop */,
     1 /* galgasScanner4_1_map */,
-    1 /* galgasScanner4_1_mod */,
     1 /* galgasScanner4_1_mutating */,
     1 /* galgasScanner4_1_nil */,
     1 /* galgasScanner4_1_not */,
@@ -6937,6 +6937,7 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
     2 /* galgasScanner4_1__3D__3D_ */,
     2 /* galgasScanner4_1__3D_ */,
     2 /* galgasScanner4_1__26__26_ */,
+    2 /* galgasScanner4_1__25_ */,
     2 /* galgasScanner4_1__5B_ */,
     2 /* galgasScanner4_1__5D_ */,
     2 /* galgasScanner4_1__2B__2B__3D_ */,
@@ -17011,100 +17012,5 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateTestDynamicClassAST (
 
 const GALGAS_TypeDescriptor * GGS_templateTestDynamicClassAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateTestDynamicClassAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_templateTestDynamicClassAST_2E_weak::objectCompare (const GGS_templateTestDynamicClassAST_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateTestDynamicClassAST_2E_weak::GGS_templateTestDynamicClassAST_2E_weak (void) :
-GGS_templateExpressionAST_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateTestDynamicClassAST_2E_weak & GGS_templateTestDynamicClassAST_2E_weak::operator = (const GGS_templateTestDynamicClassAST & inSource) {
-  PtrWeakReferenceProxy * proxyPtr = nullptr ;
-  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateTestDynamicClassAST_2E_weak::GGS_templateTestDynamicClassAST_2E_weak (const GGS_templateTestDynamicClassAST & inSource) :
-GGS_templateExpressionAST_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateTestDynamicClassAST_2E_weak GGS_templateTestDynamicClassAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_templateTestDynamicClassAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateTestDynamicClassAST GGS_templateTestDynamicClassAST_2E_weak::unwrappedValue (void) const {
-  GGS_templateTestDynamicClassAST result ;
-  if (isValid ()) {
-    const cPtr_templateTestDynamicClassAST * p = (cPtr_templateTestDynamicClassAST *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_templateTestDynamicClassAST (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_templateTestDynamicClassAST GGS_templateTestDynamicClassAST_2E_weak::bang_templateTestDynamicClassAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_templateTestDynamicClassAST result ;
-  if (mProxyPtr != nullptr) {
-    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_templateTestDynamicClassAST) ;
-      result = GGS_templateTestDynamicClassAST ((cPtr_templateTestDynamicClassAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @templateTestDynamicClassAST.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateTestDynamicClassAST_2E_weak ("templateTestDynamicClassAST.weak",
-                                                                                        & kTypeDescriptor_GALGAS_templateExpressionAST_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_templateTestDynamicClassAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_templateTestDynamicClassAST_2E_weak ;
 }
 

@@ -21,29 +21,30 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
-    $abstract$
-    $func$
-    <simple_type_definition> (!?ioDeclarations, ?var typeName)
-    $.$
-    repeat
-    while
-      <simple_type_definition> (!?ioDeclarations, ?let t)
-      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
-      $.$
-    end
-    $identifier$ (?let mGetterName) indexing (abstractExtensionGetterDefinition)
-    <formal_input_parameter_list> (!?ioDeclarations, ?let [@formalInputParameterAST] mFormalInputParameterList)
-    $->$
-    <type_definition> (!?ioDeclarations, ?let returnedTypeName)
-    ioDeclarations.mDeclarationList ++= @abstractExtensionGetterAST (
-      !isPredefined: false,
-      typeName,
-      mGetterName,
-      mFormalInputParameterList,
-      returnedTypeName
-    )
-  }
+//  rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
+//    $abstract$
+//    $func$
+//    warning .here : "AZERTY"
+//    <simple_type_definition> (!?ioDeclarations, ?var typeName)
+//    $.$
+//    repeat
+//    while
+//      <simple_type_definition> (!?ioDeclarations, ?let t)
+//      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
+//      $.$
+//    end
+//    $identifier$ (?let mGetterName) indexing (abstractExtensionGetterDefinition)
+//    <formal_input_parameter_list> (!?ioDeclarations, ?let [@formalInputParameterAST] mFormalInputParameterList)
+//    $->$
+//    <type_definition> (!?ioDeclarations, ?let returnedTypeName)
+//    ioDeclarations.mDeclarationList ++= @abstractExtensionGetterAST (
+//      !isPredefined: false,
+//      typeName,
+//      mGetterName,
+//      mFormalInputParameterList,
+//      returnedTypeName
+//    )
+//  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

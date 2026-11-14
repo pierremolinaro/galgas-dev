@@ -300,7 +300,9 @@ map @extensionGetterMapForBuildingContext {
 
 //--------------------------------------------------------------------------------------------------
 
-abstract func @semanticDeclarationAST.keyRepresentation () -> @string
+extension @semanticDeclarationAST {
+  abstract func keyRepresentation () -> @string
+}
 
 //--------------------------------------------------------------------------------------------------
 
