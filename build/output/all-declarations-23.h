@@ -305,7 +305,7 @@ class GGS_string function_generateClassGetterDeclaration (const class GGS_lstrin
 //--------------------------------------------------------------------------------------------------
 
 class GGS_string function_generateClassInstanceMethodDeclaration (const class GGS_lstring & constinArgument0,
-                                                                  const class GGS_formalParameterSignature & constinArgument1,
+                                                                  const class GGS__5B_formalParameterSignatureElement_5D_ & constinArgument1,
                                                                   const class GGS_bool & constinArgument2,
                                                                   const class GGS_methodQualifier & constinArgument3,
                                                                   class Compiler * inCompiler

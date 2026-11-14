@@ -297,8 +297,7 @@ private proc appendPredefinedArrayTypeAST (?!@galgasDeclarationAST ioDeclaration
     !isPredefined: true,
     !arrayTypeName: arrayTypeName.nowhere,
     !elementTypeName: inElementTypeName.nowhere,
-    !isUsefull: false,
-    !equatable: false
+    !isUsefull: false
   )
 }
 

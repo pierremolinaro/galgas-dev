@@ -15,6 +15,7 @@ class DownEnumerator_%!TYPE_IDENTIFIER% final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_%!ELEMENT_TYPE_IDENTIFIER% current (LOCATION_ARGS) const ;
@@ -43,6 +44,7 @@ class UpEnumerator_%!TYPE_IDENTIFIER% final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_%!ELEMENT_TYPE_IDENTIFIER% current (LOCATION_ARGS) const ;

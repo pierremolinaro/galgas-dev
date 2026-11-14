@@ -155,8 +155,8 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
   //--- Enumeration description
     var [@enumerationDescriptor] enumerationDescriptor = @()
     var [@functionSignatureElement] constructorAttributeTypeList = @()
-    var @formalParameterSignature setterFormalOutputArgumentList = @()
-    var @formalParameterSignature setterFormalInputArgumentList = @()
+    var [@formalParameterSignatureElement] setterFormalOutputArgumentList = @()
+    var [@formalParameterSignatureElement] setterFormalInputArgumentList = @()
     var [@typedProperty] typedAttributeList = @()
     for property in self.mPropertyList do
       !?ioTypeMap.makeEntry (property.typeName, ?let attributeTypeIndex)

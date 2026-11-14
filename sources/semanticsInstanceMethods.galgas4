@@ -45,7 +45,7 @@ proc enterInstanceMethodWithInputArgument (?!@instanceMethodMap ioInstanceMethod
                                            ?methodName:let @string inInstanceMethodName,
                                            let @bool inHasCompilerArgument) {
   !?ioUnifiedTypeMap.makeEntryFromString (inInputArgumentTypeName, ?let argumentTypeIndex)
-  var @formalParameterSignature argList = @()
+  var [@formalParameterSignatureElement] argList = @()
   argList ++= @("".nowhere, argumentTypeIndex, @formalArgumentPassingModeAST. argumentConstantIn, inInputArgumentName)
   !?ioInstanceMethodMap.insertKey
     (inInstanceMethodName.nowhere,

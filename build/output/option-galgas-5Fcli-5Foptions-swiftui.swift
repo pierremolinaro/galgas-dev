@@ -21,7 +21,6 @@ fileprivate let outputHTMLTypeListFile_PREFKEY = "galgas_cli_options:outputHTMLT
 fileprivate let outputGrammarSwiftDescriptionFile_PREFKEY = "galgas_cli_options:outputGrammarSwiftDescriptionFile"
 fileprivate let printPredefinedLexicalActions_PREFKEY = "galgas_cli_options:printPredefinedLexicalActions"
 fileprivate let check_big_int_PREFKEY = "galgas_cli_options:check_big_int"
-fileprivate let warnsOnEnumerationNameMismatch_PREFKEY = "galgas_cli_options:warnsOnEnumerationNameMismatch"
 fileprivate let warnsOnOldStyleEnumeration_PREFKEY = "galgas_cli_options:warnsOnOldStyleEnumeration"
 fileprivate let create_project_PREFKEY = "galgas_cli_options:create_project"
 fileprivate let extractLIBPMOption_PREFKEY = "galgas_cli_options:extractLIBPMOption"
@@ -54,7 +53,6 @@ struct OptionView : View {
   @AppStorage(outputGrammarSwiftDescriptionFile_PREFKEY) private var outputGrammarSwiftDescriptionFile : Bool = false
   @AppStorage(printPredefinedLexicalActions_PREFKEY) private var printPredefinedLexicalActions : Bool = false
   @AppStorage(check_big_int_PREFKEY) private var check_big_int : Bool = false
-  @AppStorage(warnsOnEnumerationNameMismatch_PREFKEY) private var warnsOnEnumerationNameMismatch : Bool = false
   @AppStorage(warnsOnOldStyleEnumeration_PREFKEY) private var warnsOnOldStyleEnumeration : Bool = false
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -97,7 +95,6 @@ struct OptionView : View {
           Toggle ("Output a Swift description file for every grammar component", isOn: self.$outputGrammarSwiftDescriptionFile)
           Toggle ("Print the list of predefined lexical routines and functions", isOn: self.$printPredefinedLexicalActions)
           Toggle ("Run bit integers checks", isOn: self.$check_big_int)
-          Toggle ("Warns on enumeration name mismatch", isOn: self.$warnsOnEnumerationNameMismatch)
           Toggle ("Warns on old style enumeration", isOn: self.$warnsOnOldStyleEnumeration)
           HStack { Text ("Create a new GALGAS Project") ; TextField ("", text: self.$create_project) }
           HStack { Text ("Extract embedded LIBPM at given path") ; TextField ("", text: self.$extractLIBPMOption) }
@@ -176,9 +173,6 @@ func commandLineToolInvocation () -> CommandLineToolInvocation {
   }
   if ud.bool (forKey: check_big_int_PREFKEY) {
     arguments.append ("--check-big-int")
-  }
-  if ud.bool (forKey: warnsOnEnumerationNameMismatch_PREFKEY) {
-    arguments.append ("--warns-on-enumeration-name-mismatch")
   }
   if ud.bool (forKey: warnsOnOldStyleEnumeration_PREFKEY) {
     arguments.append ("--warns-on-old-style-enumeration")

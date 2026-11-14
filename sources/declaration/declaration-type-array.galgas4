@@ -21,7 +21,6 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   private let @lstring arrayTypeName #initArgLabel
   private let @lstring elementTypeName #initArgLabel
   private let @bool isUsefull #initArgLabel
-  private let @bool equatable #initArgLabel
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -46,14 +45,14 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc enterDeclarationInSemanticContext
-    (?!@equatableExtensionMap ioEquatableExtensionMap,
-    let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
-    let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
-    let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
-    let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
-    ?!@unifiedTypeMap ioTypeMap,
-    ?!@semanticContext ioSemanticContext) {
+  override proc enterDeclarationInSemanticContext (
+      ?!@equatableExtensionMap ioEquatableExtensionMap,
+      let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+      let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+      let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+      let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+      ?!@unifiedTypeMap ioTypeMap,
+      ?!@semanticContext ioSemanticContext) {
   //--- uint type
     !?ioTypeMap.makeEntryFromString ("uint", ?let uintType)
   //--- Element type
@@ -202,9 +201,9 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
     )
   //--- features
     var features = @typeFeatures.infixAddOperator | .plusAssignOperatorWithExpression
-    if self.equatable then
-      features |= .equatable
-    end
+//    if elementType.definition.features.contains (.equatable) then
+//      features |= .equatable
+//    end
     handleEquatableComparableExtension (
       !?ioEquatableExtensionMap,
       self.arrayTypeName,
@@ -341,7 +340,7 @@ final class @arrayTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.typeName.string,
       self.mSelfTypeEntry.identifierRepresentation,
       selfTypeDefinition.typeForEnumeratedElement.identifierRepresentation,
-      selfTypeDefinition.features.generateCppObjectComparison
+      selfTypeDefinition.features.contains (.equatable)
     ]
   }
 

@@ -348,9 +348,9 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !hasCompilerArgument: false
     )
   //--- Handle properties
-    var insertMethodFormalArgumentList = @formalParameterSignature ()
+    var insertMethodFormalArgumentList = [@formalParameterSignatureElement] ()
     var typedPropertyList = [@typedProperty] ()
-    var @optionalMethodSignature optionalMethodSignature = @()
+    var [@optionalMethodSignatureElement] optionalMethodSignature = @()
     optionalMethodSignature ++= @(
       true,
       "".nowhere,
@@ -367,7 +367,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       lstringTypeIndex,
       @formalArgumentPassingModeAST.argumentConstantIn,
       "inLKey")
-    var @formalParameterSignature removeMethodFormalArgumentList = @()
+    var [@formalParameterSignatureElement] removeMethodFormalArgumentList = @()
     removeMethodFormalArgumentList ++= @(
       "".nowhere,
       lstringTypeIndex,
@@ -425,7 +425,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     )
   //--- Handle replace setters
     for entry in self.mReplaceSetterList do
-      let @formalParameterSignature replaceSetterFormalArgumentList = [
+      let [@formalParameterSignatureElement] replaceSetterFormalArgumentList = [
         @("with".nowhere, elementTypeEntry, .argumentConstantIn, "inEntry")
       ]
       !?setterMap.insertOrReplace
@@ -503,7 +503,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
         (property.typeName,
         ?let @unifiedTypeMapEntry attributeTypeIndex
       )
-      var @formalParameterSignature accessorFormalArgumentList = @()
+      var [@formalParameterSignatureElement] accessorFormalArgumentList = @()
       accessorFormalArgumentList ++= @("".nowhere, attributeTypeIndex, .argumentConstantIn, property.name.string)
       accessorFormalArgumentList ++= @("".nowhere, stringTypeIndex, .argumentConstantIn, "key")
       !?setterMap.insertOrReplace
@@ -678,9 +678,9 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       check_K_escapeCharacters (removeSetter.mErrorMessage )
     end
   //--- Warn for duplicated declarations or 'insertOrReplace' mutating proc
-    for (mInsertOrReplaceDeclarationLocation) in self.mInsertOrReplaceDeclarationListAST do(IDX)
+    for insertOrReplaceDeclarationLocation in self.mInsertOrReplaceDeclarationListAST do(IDX)
       if IDX > 0 then
-        warning mInsertOrReplaceDeclarationLocation: "the 'insertOrReplace' mutating proc is already declared"
+        warning insertOrReplaceDeclarationLocation: "the 'insertOrReplace' mutating proc is already declared"
       end
     end
     let @bool hasInsertOrReplaceModifier = self.mInsertOrReplaceDeclarationListAST.count > 0

@@ -44,11 +44,11 @@ proc testsuite_foreach_instruction() {
     println ("  after")
   end
   println ("--- begin of foreach instruction test 4")
-  for (mValue) in strList while mValue != "c"
+  for value in strList while value != "c"
   before
     println ("  before")
   do
-    println ("  do '" + mValue + "'")
+    println ("  do '" + value + "'")
   between
     println ("  between")
   after

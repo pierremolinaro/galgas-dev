@@ -589,6 +589,7 @@ class DownEnumerator__5B_XCodeGroup_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_XCodeGroup current (LOCATION_ARGS) const ;
@@ -617,6 +618,7 @@ class UpEnumerator__5B_XCodeGroup_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_XCodeGroup current (LOCATION_ARGS) const ;
@@ -763,6 +765,7 @@ class DownEnumerator__5B_XCodeToolTarget_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_XCodeToolTarget current (LOCATION_ARGS) const ;
@@ -791,6 +794,7 @@ class UpEnumerator__5B_XCodeToolTarget_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_XCodeToolTarget current (LOCATION_ARGS) const ;
@@ -937,6 +941,7 @@ class DownEnumerator__5B_XCodeAppTarget_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_XCodeAppTarget current (LOCATION_ARGS) const ;
@@ -965,6 +970,7 @@ class UpEnumerator__5B_XCodeAppTarget_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_XCodeAppTarget current (LOCATION_ARGS) const ;
@@ -1111,6 +1117,7 @@ class DownEnumerator__5B_BuildFile_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_BuildFile current (LOCATION_ARGS) const ;
@@ -1139,6 +1146,7 @@ class UpEnumerator__5B_BuildFile_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_BuildFile current (LOCATION_ARGS) const ;
@@ -1281,7 +1289,7 @@ void extensionMethod_analyzeRoutineArguments (const class GGS__5B_actualParamete
                                               class GGS_unifiedTypeMap & io_ioTypeMap,
                                               const class GGS_lstring constin_inRoutineName,
                                               const class GGS_string constin_inInvokedEntityName,
-                                              const class GGS_formalParameterSignature constin_inRoutineSignature,
+                                              const class GGS__5B_formalParameterSignatureElement_5D_ constin_inRoutineSignature,
                                               class GGS_localVarManager & io_ioVariableMap,
                                               class GGS__5B_semanticInstructionForGeneration_5D_ & io_ioInstructionListForGeneration,
                                               class GGS__5B_actualParameterForGeneration_5D_ & out_outActualParameterListForGeneration,
@@ -1308,103 +1316,6 @@ void callExtensionMethod_checkAgainstFormalArgument (class cPtr_actualParameterA
                                                      class GGS__5B_semanticInstructionForGeneration_5D_ & io_ioInstructionListForGeneration,
                                                      class Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @formalParameterSignature_2E_element struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_formalParameterSignature_2E_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_lstring mProperty_mFormalSelector ;
-  public: inline GGS_lstring readProperty_mFormalSelector (void) const {
-    return mProperty_mFormalSelector ;
-  }
-
-  public: GGS_unifiedTypeMapEntry mProperty_mFormalArgumentType ;
-  public: inline GGS_unifiedTypeMapEntry readProperty_mFormalArgumentType (void) const {
-    return mProperty_mFormalArgumentType ;
-  }
-
-  public: GGS_formalArgumentPassingModeAST mProperty_mFormalArgumentPassingMode ;
-  public: inline GGS_formalArgumentPassingModeAST readProperty_mFormalArgumentPassingMode (void) const {
-    return mProperty_mFormalArgumentPassingMode ;
-  }
-
-  public: GGS_string mProperty_mFormalArgumentName ;
-  public: inline GGS_string readProperty_mFormalArgumentName (void) const {
-    return mProperty_mFormalArgumentName ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_formalParameterSignature_2E_element (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMFormalSelector (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mFormalSelector = inValue ;
-  }
-
-  public: inline void setter_setMFormalArgumentType (const GGS_unifiedTypeMapEntry & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mFormalArgumentType = inValue ;
-  }
-
-  public: inline void setter_setMFormalArgumentPassingMode (const GGS_formalArgumentPassingModeAST & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mFormalArgumentPassingMode = inValue ;
-  }
-
-  public: inline void setter_setMFormalArgumentName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mFormalArgumentName = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_formalParameterSignature_2E_element (const GGS_lstring & in_mFormalSelector,
-                                                   const GGS_unifiedTypeMapEntry & in_mFormalArgumentType,
-                                                   const GGS_formalArgumentPassingModeAST & in_mFormalArgumentPassingMode,
-                                                   const GGS_string & in_mFormalArgumentName) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_formalParameterSignature_2E_element (const GGS_formalParameterSignature_2E_element & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_formalParameterSignature_2E_element & operator = (const GGS_formalParameterSignature_2E_element & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_formalParameterSignature_2E_element init_21__21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                               const class GGS_unifiedTypeMapEntry & inOperand1,
-                                                                               const class GGS_formalArgumentPassingModeAST & inOperand2,
-                                                                               const class GGS_string & inOperand3,
-                                                                               Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_formalParameterSignature_2E_element ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -1718,6 +1629,7 @@ class DownEnumerator__5B_unifiedTypeMapEntry_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_unifiedTypeMapEntry current (LOCATION_ARGS) const ;
@@ -1746,6 +1658,7 @@ class UpEnumerator__5B_unifiedTypeMapEntry_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_unifiedTypeMapEntry current (LOCATION_ARGS) const ;
@@ -4026,6 +3939,7 @@ class DownEnumerator__5B_terminalLabelAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_terminalLabelAST current (LOCATION_ARGS) const ;
@@ -4054,6 +3968,7 @@ class UpEnumerator__5B_terminalLabelAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_terminalLabelAST current (LOCATION_ARGS) const ;
@@ -4286,6 +4201,7 @@ class DownEnumerator__5B_guiLabelAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_guiLabelAST current (LOCATION_ARGS) const ;
@@ -4314,6 +4230,7 @@ class UpEnumerator__5B_guiLabelAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_guiLabelAST current (LOCATION_ARGS) const ;
@@ -4460,6 +4377,7 @@ class DownEnumerator__5B_guiSimpleAttributeAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_guiSimpleAttributeAST current (LOCATION_ARGS) const ;
@@ -4488,6 +4406,7 @@ class UpEnumerator__5B_guiSimpleAttributeAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_guiSimpleAttributeAST current (LOCATION_ARGS) const ;
@@ -4634,6 +4553,7 @@ class DownEnumerator__5B_guiCompoundAttributeAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_guiCompoundAttributeAST current (LOCATION_ARGS) const ;
@@ -4662,6 +4582,7 @@ class UpEnumerator__5B_guiCompoundAttributeAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_guiCompoundAttributeAST current (LOCATION_ARGS) const ;
@@ -5330,6 +5251,7 @@ class DownEnumerator__5B_textMacroAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_textMacroAST current (LOCATION_ARGS) const ;
@@ -5358,6 +5280,7 @@ class UpEnumerator__5B_textMacroAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_textMacroAST current (LOCATION_ARGS) const ;
@@ -5709,6 +5632,7 @@ class DownEnumerator__5B_withLexiqueAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_withLexiqueAST current (LOCATION_ARGS) const ;
@@ -5737,6 +5661,7 @@ class UpEnumerator__5B_withLexiqueAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_withLexiqueAST current (LOCATION_ARGS) const ;
@@ -5883,6 +5808,7 @@ class DownEnumerator__5B_projectIndexingDescriptorAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_projectIndexingDescriptorAST current (LOCATION_ARGS) const ;
@@ -5911,6 +5837,7 @@ class UpEnumerator__5B_projectIndexingDescriptorAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_projectIndexingDescriptorAST current (LOCATION_ARGS) const ;
@@ -6165,6 +6092,7 @@ class DownEnumerator__5B_importedLexiqueAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_importedLexiqueAST current (LOCATION_ARGS) const ;
@@ -6193,6 +6121,7 @@ class UpEnumerator__5B_importedLexiqueAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_importedLexiqueAST current (LOCATION_ARGS) const ;
@@ -6778,6 +6707,7 @@ class DownEnumerator__5B_galgasGUIComponentAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_galgasGUIComponentAST current (LOCATION_ARGS) const ;
@@ -6806,6 +6736,7 @@ class UpEnumerator__5B_galgasGUIComponentAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_galgasGUIComponentAST current (LOCATION_ARGS) const ;
@@ -7332,6 +7263,7 @@ class DownEnumerator__5B__32_lstring_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS__32_lstring current (LOCATION_ARGS) const ;
@@ -7360,6 +7292,7 @@ class UpEnumerator__5B__32_lstring_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS__32_lstring current (LOCATION_ARGS) const ;
@@ -7581,6 +7514,7 @@ class DownEnumerator__5B_terminalCheckAssignement_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_terminalCheckAssignement current (LOCATION_ARGS) const ;
@@ -7609,6 +7543,7 @@ class UpEnumerator__5B_terminalCheckAssignement_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_terminalCheckAssignement current (LOCATION_ARGS) const ;
@@ -8363,6 +8298,7 @@ class DownEnumerator__5B_SyntaxInstructionListAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_SyntaxInstructionListAST current (LOCATION_ARGS) const ;
@@ -8391,6 +8327,7 @@ class UpEnumerator__5B_SyntaxInstructionListAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_SyntaxInstructionListAST current (LOCATION_ARGS) const ;
@@ -8796,6 +8733,7 @@ class DownEnumerator__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ current (LOCATION_ARGS) const ;
@@ -8824,6 +8762,7 @@ class UpEnumerator__5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_ f
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ current (LOCATION_ARGS) const ;
@@ -8970,6 +8909,7 @@ class DownEnumerator__5B_semanticInstructionListForGeneration_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_semanticInstructionListForGeneration current (LOCATION_ARGS) const ;
@@ -8998,6 +8938,7 @@ class UpEnumerator__5B_semanticInstructionListForGeneration_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_semanticInstructionListForGeneration current (LOCATION_ARGS) const ;
@@ -10827,6 +10768,7 @@ class DownEnumerator__5B__5B_formalInputParameterAST_5D__5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS__5B_formalInputParameterAST_5D_ current (LOCATION_ARGS) const ;
@@ -10855,6 +10797,7 @@ class UpEnumerator__5B__5B_formalInputParameterAST_5D__5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS__5B_formalInputParameterAST_5D_ current (LOCATION_ARGS) const ;

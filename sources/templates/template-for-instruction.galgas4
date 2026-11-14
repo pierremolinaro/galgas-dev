@@ -222,11 +222,10 @@ override proc @templateInstructionForeachAST.templateInstructionAnalysis
     : enumerationDescriptor.count.string + " variables are required here ("
     + self.mEnumeration.count + " provided)")
   else
-    for entry in enumerationDescriptor,
-        (mValue) in self.mEnumeration do
-      if mValue.string != "" then // Empty string for joker
+    for entry in enumerationDescriptor, value in self.mEnumeration do
+      if value.string != "" then // Empty string for joker
         !?doVariableMap.insertKey (
-          mValue,
+          value,
           entry.mEnumeratedType,
           enumeratorCppName +".current_" + entry.mEnumerationName.identifierRepresentation + " (HERE)"
         )

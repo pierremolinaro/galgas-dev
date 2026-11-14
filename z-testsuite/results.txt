@@ -137,22 +137,14 @@ LOGGING s: <@string:"a">
 LOGGING s: <@string:"b">
 LOGGING s: <@string:"c">
 LOGGING s: <@string:"d">
-LOGGING strList: <list @myList (4 objects):
-|-at 0
-| mValue:<@string:"a">
-|-at 1
-| mValue:<@string:"b">
-|-at 2
-| mValue:<@string:"c">
-|-at 3
-| mValue:<@string:"z">>
+LOGGING strList: <array [@string], 4 objects>
 --- test .= operator on list
 LOGGING s: <@string:"d">
 *************************************** begin of list compare
 LOGGING comp: <@bool:true>
 *************************************** begin of collection value
-LOGGING str: <array @[string], 5 objects>
-LOGGING str2: <array @[string], 5 objects>
+LOGGING str: <array [@string], 5 objects>
+LOGGING str2: <array [@string], 5 objects>
 *************************************** begin of sorted list test
   index 0 : d
   index 1 : c
@@ -260,7 +252,7 @@ LOGGING v: <@uint64:49>
 LOGGING u: <@uint:10>
 LOGGING s: <@string:"Hello !">
 LOGGING ls: <struct @lstring:<@string:"Hello3">, <@location:nowhere:1:1>>
-LOGGING aList: <array @[uint], 5 objects>
+LOGGING aList: <array [@uint], 5 objects>
 *************************************** begin of string test
 LOGGING command: <@string:"echo accentué">
 LOGGING result: <@string:"accentué

@@ -224,7 +224,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
     var @constantIndexMap constantMap = @()
     var @bool hasAssociatedValues = false
     for constant in self.mConstantList do
-      var @associatedValueDescriptorList associatedTypeList = @()
+      var [@associatedValueDescriptor] associatedTypeList = @()
       var [@functionSignatureElement] argumentTypeList = @()
       for associatedValue in constant.associatedValueTypeList do
         !?ioTypeMap.makeEntry (associatedValue.typeName, ?let associatedTypeEntry)
@@ -245,7 +245,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
     for constant in self.mConstantList do
       if constant.associatedValueTypeList.count > 0 then
         var [@unifiedTypeMapEntry] associatedTypeList = @()
-        var @formalParameterSignature argumentTypeList = @()
+        var [@formalParameterSignatureElement] argumentTypeList = @()
         for associatedValue in constant.associatedValueTypeList do
           !?ioTypeMap.makeEntry (associatedValue.typeName, ?let associatedTypeEntry)
           argumentTypeList ++= @(associatedValue.valueName, associatedTypeEntry, .argumentOut, associatedValue.typeName.string)
@@ -384,7 +384,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         !?associatedValuesTypes.append (associatedType)
       end
       constantList ++= constant.name.string
-      var @associatedValueDescriptorList associatedTypeList = @()
+      var [@associatedValueDescriptor] associatedTypeList = @()
       var @stringset associatedValueNameSet = @()
       for associatedValue in constant.associatedValueTypeList do
         let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (associatedValue.typeName)
@@ -435,7 +435,7 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
 
 struct @enumConstantForGeneration {
   public let @string name
-  public let @associatedValueDescriptorList associatedValueTypeList
+  public let [@associatedValueDescriptor] associatedValueTypeList
 }
 
 //--------------------------------------------------------------------------------------------------

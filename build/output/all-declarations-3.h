@@ -160,6 +160,7 @@ class DownEnumerator__5B_row_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_row current (LOCATION_ARGS) const ;
@@ -188,6 +189,7 @@ class UpEnumerator__5B_row_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_row current (LOCATION_ARGS) const ;
@@ -334,6 +336,7 @@ class DownEnumerator__5B__32_string_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS__32_string current (LOCATION_ARGS) const ;
@@ -362,6 +365,7 @@ class UpEnumerator__5B__32_string_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS__32_string current (LOCATION_ARGS) const ;
@@ -751,6 +755,7 @@ class DownEnumerator__5B_lexicalSendSearchAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_lexicalSendSearchAST current (LOCATION_ARGS) const ;
@@ -779,6 +784,7 @@ class UpEnumerator__5B_lexicalSendSearchAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_lexicalSendSearchAST current (LOCATION_ARGS) const ;
@@ -1674,6 +1680,7 @@ class DownEnumerator__5B_abstractLexicalRoutineActualArgumentAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_abstractLexicalRoutineActualArgumentAST current (LOCATION_ARGS) const ;
@@ -1702,6 +1709,7 @@ class UpEnumerator__5B_abstractLexicalRoutineActualArgumentAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_abstractLexicalRoutineActualArgumentAST current (LOCATION_ARGS) const ;
@@ -2304,6 +2312,7 @@ class DownEnumerator__5B_lexicalSelectBranchAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_lexicalSelectBranchAST current (LOCATION_ARGS) const ;
@@ -2332,6 +2341,7 @@ class UpEnumerator__5B_lexicalSelectBranchAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_lexicalSelectBranchAST current (LOCATION_ARGS) const ;
@@ -4279,6 +4289,7 @@ class DownEnumerator__5B_commandLineOptionAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_commandLineOptionAST current (LOCATION_ARGS) const ;
@@ -4307,6 +4318,7 @@ class UpEnumerator__5B_commandLineOptionAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_commandLineOptionAST current (LOCATION_ARGS) const ;
@@ -5656,6 +5668,7 @@ class DownEnumerator__5B_programRuleAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_programRuleAST current (LOCATION_ARGS) const ;
@@ -5684,6 +5697,7 @@ class UpEnumerator__5B_programRuleAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_programRuleAST current (LOCATION_ARGS) const ;
@@ -6918,6 +6932,7 @@ class DownEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_lexicalRoutineFormalArgumentAST current (LOCATION_ARGS) const ;
@@ -6946,6 +6961,7 @@ class UpEnumerator__5B_lexicalRoutineFormalArgumentAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_lexicalRoutineFormalArgumentAST current (LOCATION_ARGS) const ;
@@ -7418,6 +7434,7 @@ class DownEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_lexicalFunctionFormalArgumentAST current (LOCATION_ARGS) const ;
@@ -7446,6 +7463,7 @@ class UpEnumerator__5B_lexicalFunctionFormalArgumentAST_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_lexicalFunctionFormalArgumentAST current (LOCATION_ARGS) const ;

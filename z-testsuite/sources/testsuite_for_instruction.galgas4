@@ -19,12 +19,12 @@ proc testsuite_for_instruction() {
   end
 
   println ("--- begin of for instruction test 2")
-  for (mValue) in strList
+  for value in strList
   while false
   before
     println ("  before")
   do
-    println ("  do '" + mValue + "'")
+    println ("  do '" + value + "'")
   between
     println ("  between")
   after

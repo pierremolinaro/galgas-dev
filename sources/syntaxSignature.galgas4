@@ -39,8 +39,8 @@ func syntaxSignatureOfInstructionList (
   -> [@semanticInstructionForGeneration]
 {
   result = @()
-  for (mInstruction) in inInstructionList do
-    mInstruction.appendSyntaxSignature (inPosfix, !?result)
+  for instruction in inInstructionList do
+    instruction.appendSyntaxSignature (inPosfix, !?result)
   end
 }
 

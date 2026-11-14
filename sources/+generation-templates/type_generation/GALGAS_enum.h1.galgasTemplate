@@ -27,8 +27,8 @@ end
 for (cst) in CONSTANT_LIST do
   if [cst.associatedValueTypeList count] > 0 then
     %  public: VIRTUAL_IN_DEBUG void getAssociatedValuesFor_%![cst.name identifierRepresentation]% (%?^
-    for (mType valueName) in cst.associatedValueTypeList
-    do (idx) %class GGS_%![mType identifierRepresentation]% & out_%!valueName
+    for (associatedValue) in cst.associatedValueTypeList
+    do (idx) %class GGS_%![associatedValue.type identifierRepresentation]% & out_%!associatedValue.name
     between %,\n%!^
     end
     %) const ;\n%

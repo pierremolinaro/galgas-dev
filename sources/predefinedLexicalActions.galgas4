@@ -542,9 +542,9 @@ proc printPredefinedLexicalActions () {
     for formalArg in lexicalRoutine.mLexicalRoutineFormalArgumentList do
       s += " " + formalArg.mLexicalFormalArgumentMode.lexicalFormalModeName + "@" + formalArg.mLexicalFormalArgumentType.lexicalTypeBaseName + " " + formalArg.mArgumentNameForComment
     end
-    for (mValue) in lexicalRoutine.mErrorMessageList
+    for value in lexicalRoutine.mErrorMessageList
     before s += " error"
-    do s += " " + mValue
+    do s += " " + value
     between s += ","
     end
     s += " ;\n\n"

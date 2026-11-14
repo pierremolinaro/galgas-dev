@@ -91,7 +91,7 @@ final class @dataPredefinedTypeAST : @predefinedTypeAST {
       !methodName: "writeToExecutableFile",
       true
     )
-    var @formalParameterSignature argList = @()
+    var [@formalParameterSignatureElement] argList = @()
     !?ioUnifiedTypeMap.makeEntryFromString ("string", ?@unifiedTypeMapEntry t)
     argList ++= @("".nowhere, t, @formalArgumentPassingModeAST. argumentConstantIn, "inFilePath")
     !?ioUnifiedTypeMap.makeEntryFromString ("bool", ?t)

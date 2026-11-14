@@ -252,8 +252,8 @@ final class @classFuncExpressionForGeneration : @semanticExpressionForGeneration
       type.addHeaderFileName (!?ioInclusionSet)
     end
     var [@string] parameterList = @()
-    for (mExpression) in self.mEffectiveParameterList do
-      mExpression.generateExpression
+    for expression in self.mEffectiveParameterList do
+      expression.generateExpression
         (!?ioGeneratedCode,
         !?ioInclusionSet,
         !?ioTemporaryVariableIndex,
@@ -265,8 +265,8 @@ final class @classFuncExpressionForGeneration : @semanticExpressionForGeneration
     outCppExpression =  "GGS_"  + self.classFuncType.identifierRepresentation
     outCppExpression += "::class_func_" + self.classFuncName.identifierRepresentation
     outCppExpression += " ("
-    for (mValue) in parameterList
-      do outCppExpression += mValue
+    for value in parameterList
+      do outCppExpression += value
       between outCppExpression += ", "
     end
     var @bool needsComma = parameterList.count > 0

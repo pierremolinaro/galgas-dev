@@ -702,7 +702,7 @@ func generateClassGetterDeclaration (?let @lstring inGetterName,
 //--------------------------------------------------------------------------------------------------
 
 func generateClassInstanceMethodDeclaration (?let @lstring inMethodName,
-                                            ?let @formalParameterSignature inArgumentTypeList,
+                                            ?let [@formalParameterSignatureElement] inArgumentTypeList,
                                             ?let @bool inHasCompilerArgument,
                                             ?let @methodQualifier inQualifier ) -> @string {
   var generateMethodDeclaration = true

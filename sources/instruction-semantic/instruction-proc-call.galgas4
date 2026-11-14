@@ -43,7 +43,7 @@ final class @procCallInstructionAST : @semanticInstructionAST {
     inAnalysisContext.semanticContext.routineMap.searchKey (
        self.mRoutineName,
        !actualParameters: self.mActualParameterList,
-       ?let @formalParameterSignature routineSignature,
+       ?let [@formalParameterSignatureElement] routineSignature,
        ?isFilePrivate: let @bool isFilePrivate,
        ?routineMangledName: let routineMangledName
      )

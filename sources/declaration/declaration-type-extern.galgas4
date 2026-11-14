@@ -295,7 +295,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
     end
   //--- Modifiers
     for aSetter in self.mExternTypeSetterList do
-      var @formalParameterSignature routineSignature = @()
+      var [@formalParameterSignatureElement] routineSignature = @()
       for parameter in aSetter.mFormalParameterList do
         !?ioTypeMap.makeEntry (
           parameter.mFormalArgumentTypeName,
@@ -315,7 +315,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
     end
   //--- Methods
     for aMethod in self.mExternTypeMethodList do
-      var routineSignature = @formalParameterSignature ()
+      var routineSignature = [@formalParameterSignatureElement] ()
       for parameter in aMethod.mFormalParameterList do
         !?ioTypeMap.makeEntry (
           parameter.mFormalArgumentTypeName,

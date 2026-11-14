@@ -18,8 +18,8 @@ for (cst) in CONSTANT_LIST do
   if [cst.associatedValueTypeList count] == 0 then
     %UNUSED_LOCATION_ARGS%
   else
-    for (mType *) in cst.associatedValueTypeList
-    do (idx) %const GGS_%![mType identifierRepresentation]% & inAssociatedValue%![idx string]
+    for (associatedValue) in cst.associatedValueTypeList
+    do (idx) %const GGS_%![associatedValue.type identifierRepresentation]% & inAssociatedValue%![idx string]
     between %,\n%!^
     end
     %\n%!^%COMMA_UNUSED_LOCATION_ARGS%
@@ -30,7 +30,7 @@ for (cst) in CONSTANT_LIST do
   if [cst.associatedValueTypeList count] > 0 then
     %  AC_GALGAS_root * p = nullptr ;\n%
     %  macroMyNew (p, GGS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: cst.name) identifierRepresentation]% (%
-    for (mType *) in cst.associatedValueTypeList
+    for (*) in cst.associatedValueTypeList
     do (idx) %inAssociatedValue%![idx string]
     between %, %
     end
@@ -48,22 +48,22 @@ for (cst) in CONSTANT_LIST do
   if [cst.associatedValueTypeList count] > 0 then
     %//--------------------------------------------------------------------------------------------------\n\n%
     %void GGS_%!TYPE_IDENTIFIER%::method_extract%![[cst.name capitalizingFirstCharacter] identifierRepresentation]% (%?^
-    for (mType name) in cst.associatedValueTypeList do
-      %GGS_%![mType identifierRepresentation]% & outAssociatedValue_%!name%,\n%!^
+    for (associatedValue) in cst.associatedValueTypeList do
+      %GGS_%![associatedValue.type identifierRepresentation]% & outAssociatedValue_%!associatedValue.name%,\n%!^
     end
     !^%Compiler * inCompiler\n%
     !^%COMMA_LOCATION_ARGS) const {\n%
     %  if (mEnum != Enumeration::enum_%![cst.name identifierRepresentation]%) {\n%
-    for (mType name) in cst.associatedValueTypeList do (idx)
-      %    outAssociatedValue_%!name%.drop () ;\n%
+    for (associatedValue) in cst.associatedValueTypeList do (idx)
+      %    outAssociatedValue_%!associatedValue.name%.drop () ;\n%
     end
     %    String s ;\n%
     %    s.appendCString ("proc @%!TYPE_IDENTIFIER%.%!cst.name% invoked with an invalid enum value") ;\n%
     %    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
     %  }else{\n%
     %    const auto ptr = (GGS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: cst.name) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
-    for (mType name) in cst.associatedValueTypeList do (idx)
-      %    outAssociatedValue_%!name% = ptr->mProperty_%![name identifierRepresentation]% ;\n%
+    for (associatedValue) in cst.associatedValueTypeList do (idx)
+      %    outAssociatedValue_%!associatedValue.name% = ptr->mProperty_%![associatedValue.name identifierRepresentation]% ;\n%
     end
     %  }\n%
     %}\n\n%
@@ -83,14 +83,14 @@ for (cst) in CONSTANT_LIST do
     %}\n\n%
   %//--------------------------------------------------------------------------------------------------\n\n%
     %void GGS_%!TYPE_IDENTIFIER%::getAssociatedValuesFor_%![cst.name identifierRepresentation]% (%?^
-    for (mType valueName) in cst.associatedValueTypeList
-    do (idx) %GGS_%![mType identifierRepresentation]% & out_%!valueName
+    for (associatedValue) in cst.associatedValueTypeList
+    do (idx) %GGS_%![associatedValue.type identifierRepresentation]% & out_%!associatedValue.name
     between %,\n%!^
     end
     %) const {\n%
     %  const auto ptr = (const GGS_%![makeEmbeddedTypeName (!outer:TYPE_NAME !inner: cst.name) identifierRepresentation]% *) mAssociatedValues.associatedValuesPointer () ;\n%
-    for (* value) in cst.associatedValueTypeList do
-       %  out_%!value% = ptr->mProperty_%![value identifierRepresentation]% ;\n%
+    for (associatedValue) in cst.associatedValueTypeList do
+       %  out_%!associatedValue.name% = ptr->mProperty_%![associatedValue.name identifierRepresentation]% ;\n%
     end
     %}\n\n%
   end

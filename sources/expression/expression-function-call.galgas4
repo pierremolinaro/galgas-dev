@@ -155,8 +155,8 @@ final class @functionCallExpressionForGeneration : @semanticExpressionForGenerat
       parameterList ++= parameter
     end
     outCppExpression = "function_" + self.mFunctionName.identifierRepresentation + " ("
-    for (mValue) in parameterList do
-      outCppExpression += mValue + ", "
+    for value in parameterList do
+      outCppExpression += value + ", "
     end
     !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
     outCppExpression += compilerCppName ()

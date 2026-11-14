@@ -37,6 +37,7 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations ) {
     $list$
     $@type$ (?let @lstring listTypeName) indexing (listDefinition, structDefinition ".element")
+    warning listTypeName : "Deprecated list declaration"
     var isUsefull = false
     var isEquatable = false
     repeat
@@ -134,8 +135,8 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
 //--- Property description
   var [@enumerationDescriptor] enumerationDescriptor = @()
   var [@functionSignatureElement] constructorAttributeTypeList = @()
-  var @formalParameterSignature setterOutputFormalArgumentList = @()
-  var @formalParameterSignature setterInputFormalArgumentList = @()
+  var [@formalParameterSignatureElement] setterOutputFormalArgumentList = @()
+  var [@formalParameterSignatureElement] setterInputFormalArgumentList = @()
   for property in typedAttributeList do
     let selector = if property.hasSelector then property.name.string else "" end
     enumerationDescriptor ++= @(property.typeEntry, property.name.string)
@@ -277,7 +278,7 @@ override proc @listDeclarationAST.enterDeclarationInSemanticContext
   )
   for property in typedAttributeList do
     if property.hasSetter then
-      var setterFormalArgumentList = @formalParameterSignature ()
+      var setterFormalArgumentList = [@formalParameterSignatureElement] ()
       setterFormalArgumentList ++= @("".nowhere, property.typeEntry, .argumentConstantIn, property.name.string)
       setterFormalArgumentList ++= @("".nowhere, uintType, .argumentConstantIn, property.name.string)
       !?setterMap.insertOrReplace (

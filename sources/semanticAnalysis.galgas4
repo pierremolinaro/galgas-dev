@@ -26,7 +26,7 @@
 
 proc checkMethodSignatures (let [@formalParameterForGeneration] inTestedSignature,
                             let @location inErrorLocation,
-                            let @formalParameterSignature inReferenceSignature,
+                            let [@formalParameterSignatureElement] inReferenceSignature,
                             let @location inReferenceLocation) {
   if inTestedSignature.count != inReferenceSignature.count then
     error (inErrorLocation:"this proc declares " + inTestedSignature.count.string
@@ -712,9 +712,9 @@ override proc @galgas3GrammarComponentAST.semanticAnalysis
   )
 //--------------------------------------------------------- Unused Non Terminal Symbols
   var @unusedNonTerminalSymbolMapForGrammarAnalysis unusedNonTerminalSymbolsForGrammar = @()
-  for (mValue) in self.mUnusedNonterminalList do
-    nonTerminalMapForGrammarAnalysis.searchKey (mValue, ?let @uint nonterminalIndex, ?*)
-    !?unusedNonTerminalSymbolsForGrammar.insertKey (mValue, nonterminalIndex)
+  for unusedNonterminal in self.mUnusedNonterminalList do
+    nonTerminalMapForGrammarAnalysis.searchKey (unusedNonterminal, ?let @uint nonterminalIndex, ?*)
+    !?unusedNonTerminalSymbolsForGrammar.insertKey (unusedNonterminal, nonterminalIndex)
   end
 //--------------------------------------------------------- Non terminal symbols, sorted by index
   var @nonTerminalSymbolSortedListForGrammarAnalysis nonTerminalSymbolSortedListForGrammarAnalysis = @()
@@ -851,7 +851,7 @@ func buildPredefinedTypes (?let @unifiedTypeMap inTypeMap) -> @predefinedTypes {
 
 map @nonterminalLabelMap {
   public let [@formalParameterForGeneration] mSignatureForGeneration
-  public let @formalParameterSignature mSignature
+  public let [@formalParameterSignatureElement] mSignature
   public let @location mEndOfArgumentLocation
   #insertSetter insertKey #errorMessage "the '%K' nonterminal label has been already declared in %L"
   #searchMethod searchKey #errorMessage "the '%K' nonterminal label is not declared"
@@ -870,7 +870,7 @@ map @nonterminalMap {
 struct @ruleLabelImplementationAST {
   public let @lstring mLabelName
   public let [@formalParameterForGeneration] mSignatureForGeneration
-  public let @formalParameterSignature mSignature
+  public let [@formalParameterSignatureElement] mSignature
   public let @location mEndOfArgumentLocation
   public let [@semanticInstructionForGeneration] mInstructionListForGeneration
 }
@@ -940,7 +940,7 @@ proc enterNonterminalNonTerminalInMapAndCheck
     end
     if (missingLabelSet.count == 0) & (newLabelSet.count == 0) then
       for aLabel in entry.mLabelMap, newLabel in inNonterminalLabelMap do
-        var @formalParameterSignature newSignature = @()
+        var [@formalParameterSignatureElement] newSignature = @()
         for formal in newLabel.mSignature do
           newSignature ++= @(formal.mFormalSelector, formal.mFormalArgumentType, formal.mFormalArgumentPassingMode, formal.mFormalArgumentName)
         end
@@ -970,7 +970,7 @@ proc buildNonterminalDeclarationsMap
     var nonterminalLabelMap = @nonterminalLabelMap ()
     for aLabel in nonterminal.mLabels do
       var signatureForGeneration = [@formalParameterForGeneration] ()
-      var signature = @formalParameterSignature ()
+      var signature = [@formalParameterSignatureElement] ()
       for formal in aLabel.mFormalArgumentList do
         let t = ioTypeMap.typeMapEntryForLKey (formal.mFormalArgumentTypeName)
         signatureForGeneration ++= @(formal.mFormalSelector, formal.mFormalArgumentPassingMode, t, formal.mFormalArgumentName, formal.mFormalArgumentName.string)
@@ -1349,8 +1349,8 @@ proc analyzeSyntaxInstructionList
 //--- Begin branch
   !?ioVariableMap.openBranch ()
 //--- Instruction list
-  for (mInstruction) in inSyntaxInstructionListAST do
-    mInstruction.analyzeSyntaxInstruction
+  for instruction in inSyntaxInstructionListAST do
+    instruction.analyzeSyntaxInstruction
       (inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       inAnalysisContext,
@@ -1392,7 +1392,7 @@ proc semanticAnalysisOfRuleLabel
   let @stringset inIndexNameSet,
   ?!@uint ioSelectMethodCount,
   ![@formalParameterForGeneration] outSignatureForGeneration,
-  !@formalParameterSignature outSignature,
+  ![@formalParameterSignatureElement] outSignature,
   ![@semanticInstructionForGeneration] outInstructionListForGeneration
 ) {
   var variableMap = @localVarManager ()
@@ -1404,15 +1404,15 @@ proc semanticAnalysisOfRuleLabel
     ?outSignatureForGeneration
   )
 //---
-  outSignature = @formalParameterSignature ()
+  outSignature = [@formalParameterSignatureElement] ()
   for formal in outSignatureForGeneration do
     outSignature ++= @(formal.mFormalSelector, formal.mFormalArgumentType, formal.mFormalArgumentPassingMode, formal.mFormalArgumentName.string)
   end
 //--- Semantic analysis of instruction list
   outInstructionListForGeneration = [@semanticInstructionForGeneration] ()
-  for (mInstruction) in inSyntaxInstructionList do
-    mInstruction.analyzeSyntaxInstruction
-      (inUsefulnessCallerEntityName,
+  for instruction in inSyntaxInstructionList do
+    instruction.analyzeSyntaxInstruction (
+      inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       inAnalysisContext,
       !?ioTypeMap,
@@ -1465,7 +1465,7 @@ private proc semanticAnalysisOfSyntaxComponent
     var @nonterminalLabelMap nonterminalLabelMap = @()
     for aLabel in aRule.mLabelList do
       var [@formalParameterForGeneration] signatureForGeneration = @()
-      var @formalParameterSignature signature = @()
+      var [@formalParameterSignatureElement] signature = @()
       for formal in aLabel.mFormalArguments do
         let type = ioTypeMap.typeMapEntryForLKey (formal.mFormalArgumentTypeName)
         signatureForGeneration ++= @(

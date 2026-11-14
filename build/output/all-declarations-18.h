@@ -375,7 +375,7 @@ void routine_buildLocalVariableMapAndSignature_3F__26__3F__26__21_ (const class 
 
 void routine_checkMethodSignatures_3F__3F__3F__3F_ (const class GGS__5B_formalParameterForGeneration_5D_ constinArgument0,
                                                     const class GGS_location constinArgument1,
-                                                    const class GGS_formalParameterSignature constinArgument2,
+                                                    const class GGS__5B_formalParameterSignatureElement_5D_ constinArgument2,
                                                     const class GGS_location constinArgument3,
                                                     class Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
@@ -541,6 +541,57 @@ void routine_checkUsefulEntities_3F__3F__3F_ (const class GGS_usefulEntitiesGrap
                                               const class GGS_string constinArgument2,
                                               class Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//                               Bool options                                                    
+//
+//--------------------------------------------------------------------------------------------------
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitClassGraph ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateOneHeader ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputGrammarSwiftDescriptionFile ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ;
+
+extern BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warnsOnOldStyleEnumeration ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//                               UInt options                                                    
+//
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//
+//                              String options                                                   
+//
+//--------------------------------------------------------------------------------------------------
+
+extern StringCommandLineOption gOption_galgas_5F_cli_5F_options_create_5F_project ;
+
+extern StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOption ;
+
+extern StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ;
+
+//--------------------------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 //

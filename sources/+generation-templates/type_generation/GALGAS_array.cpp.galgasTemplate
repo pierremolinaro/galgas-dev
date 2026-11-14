@@ -336,6 +336,29 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F_ (%?^%c
   return result ;
 }
 
+%if GENERATE_COMPARISON then
+%//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_%!TYPE_IDENTIFIER%::objectCompare (const GGS_%!TYPE_IDENTIFIER% & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      for (uint32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        const GGS_%!ELEMENT_TYPE_IDENTIFIER% left = mSharedArray (int32_t (i) COMMA_HERE) ;
+        const GGS_%!ELEMENT_TYPE_IDENTIFIER% right = inOperand.mSharedArray (int32_t (i) COMMA_HERE) ;
+        result = left.objectCompare (right) ;
+      }
+    }
+  }
+  return result ;
+}
+
+%end%
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @%!TYPE_IDENTIFIER%
 //--------------------------------------------------------------------------------------------------

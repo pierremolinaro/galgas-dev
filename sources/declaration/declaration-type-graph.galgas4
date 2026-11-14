@@ -36,21 +36,18 @@ syntax extension galgas4DeclarationsSyntax {
         !isPredefined: false,
         !arrayTypeName: arrayTypeName,
         !elementTypeName: elementTypeName,
-        !isUsefull: false,
-        !equatable: false
+        !isUsefull: false
       )
     end
   //--- Add [@lstring] type, if needed
     let lstringArrayTypeName = makeArrayTypeName ("lstring")
     if not ioDeclarations.implicitTypeDeclarationSet.contains (lstringArrayTypeName) then
       ioDeclarations.implicitTypeDeclarationSet ++= lstringArrayTypeName
-      println ("ADDED " + lstringArrayTypeName)
       ioDeclarations.mDeclarationList ++= @arrayTypeDeclarationAST (
         !isPredefined: false,
         !arrayTypeName: lstringArrayTypeName.nowhere,
         !elementTypeName: "lstring".nowhere,
-        !isUsefull: false,
-        !equatable: false
+        !isUsefull: false
       )
     end
     ${$
@@ -146,7 +143,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     var @setterMap setterMap = @()
     var @instanceMethodMap instanceMethodMap = @()
   //--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
-    var formalParameterList = @formalParameterSignature ()
+    var formalParameterList = [@formalParameterSignatureElement] ()
     formalParameterList ++= @(
       "".nowhere,
       associatedArrayType,
@@ -380,7 +377,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       "" // No error message
     )
   //--- mutating proc 'removeEdgesToNode'
-    formalParameterList = @formalParameterSignature ()
+    formalParameterList = [@formalParameterSignatureElement] ()
     formalParameterList ++= @("".nowhere, stringTypeEntry, .argumentVarIn, "inNodeName")
     !?setterMap.insertKey (
       @("removeEdgesToNode", .here),
@@ -391,7 +388,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       "" // No error message
     )
   //--- mutating proc 'addEdge'
-    formalParameterList = @formalParameterSignature ()
+    formalParameterList = [@formalParameterSignatureElement] ()
     formalParameterList ++= @("from".nowhere, lstringTypeEntry, .argumentVarIn, "inSourceNodeLKey")
     formalParameterList ++= @("to".nowhere, lstringTypeEntry, .argumentVarIn, "inTargetNodeLKey")
     !?setterMap.insertKey (
@@ -403,7 +400,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       "" // No error message
     )
   //--- mutating proc 'noteNode'
-    formalParameterList = @formalParameterSignature ()
+    formalParameterList = [@formalParameterSignatureElement] ()
     formalParameterList ++= @(
        "".nowhere,
        lstringTypeEntry,

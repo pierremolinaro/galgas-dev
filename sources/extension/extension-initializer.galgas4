@@ -17,60 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3DeclarationsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    $extension$
-//    $@type$ (?var @lstring typeName) indexing (typeReferenceExtensionMethod)
-//    $.$
-//    repeat
-//    while
-//      $@type$ (?let t)
-//      typeName = makeEmbeddedTypeLName (!outer: typeName, !inner: t)
-//      $.$
-//    end
-//    $init$
-//    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-//    ${$
-//    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
-//    $}$
-//    let endOfMethodLocation = @location.here
-//    ioDeclarations.mDeclarationList ++= @(!@initializerAST (
-//      !isPredefined: false,
-//      typeName,
-//      formalParameterList,
-//      routineInstructionList,
-//      endOfMethodLocation
-//    ))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <method_declaration_ggs3> (?let @lstring inClassName,
-//                                  ?!@galgasDeclarationAST ioDeclarations) {
-//    $init$
-//    <formal_input_parameter_list_ggs34> (!?ioDeclarations, ?let formalParameterList)
-//    ${$
-//    <semantic_instruction_list_ggs3> (!?ioDeclarations, ?let routineInstructionList)
-//    $}$
-//    let endOfMethodLocation = @location.here
-//    ioDeclarations.mDeclarationList ++= @(!@initializerAST (
-//      !isPredefined: false,
-//      inClassName,
-//      formalParameterList,
-//      routineInstructionList,
-//      endOfMethodLocation
-//    ))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

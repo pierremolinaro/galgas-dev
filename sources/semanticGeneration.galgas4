@@ -1225,11 +1225,11 @@ proc generateWrapperContents
       if contents.count > 100 then
         var components = contents.componentsSeparatedByString ("\n")
         !?components.removeLast (?let lastLine)
-        for (mValue) in components
+        for value in components
         before
           ioImplementation += "\n  "
         do
-          let s = mValue + "\n"
+          let s = value + "\n"
           ioImplementation += s.utf8RepresentationEscapingQuestionMark + "\n  "
         end
         if lastLine.count > 0 then

@@ -71,7 +71,7 @@ proc [@semanticInstructionAST].enterInstructionListInSemanticContext (?!@unified
 //--------------------------------------------------------------------------------------------------
 
 map @grammarLabelMap {
-  public let @formalParameterSignature mLabelSignature
+  public let [@formalParameterSignatureElement] mLabelSignature
   #insertSetter insertKey #errorMessage "the '%K' grammar label has been already declared in %L"
   #searchMethod searchKey #errorMessage "the '%K' grammar label is not declared"
 }
@@ -425,7 +425,7 @@ proc addExtensions
   if inExtensionMethodMapForBuildingContext.contains (inTypeName.string) then
     inExtensionMethodMapForBuildingContext.searchKey (inTypeName, ?let extensionMethodMapForType)
     for extensionMethod in extensionMethodMapForType do
-      var formalArgumentList = @formalParameterSignature ()
+      var formalArgumentList = [@formalParameterSignatureElement] ()
       for parameter in extensionMethod.mFormalParameterList do
         !?ioTypeMap.makeEntry (
           parameter.mFormalArgumentTypeName,
@@ -472,7 +472,7 @@ proc addExtensions
   if inExtensionSetterMapForBuildingContext.contains (inTypeName.string) then
     inExtensionSetterMapForBuildingContext.searchKey (inTypeName, ?let extensionSetterMapForType)
     for extensionSetter in extensionSetterMapForType do
-      var @formalParameterSignature formalArgumentList = @()
+      var [@formalParameterSignatureElement] formalArgumentList = @()
       for parameter in extensionSetter.mFormalParameterList do
         !?ioTypeMap.makeEntry (parameter.mFormalArgumentTypeName, ?let typeIndex)
         formalArgumentList ++= @(
@@ -532,21 +532,21 @@ proc recursivelyEnumerateDirectories
 //--- Enumerates regular files
   let [@string] files = inAbsoluteSourcePath.regularFiles (false)
   outWrapperFileMap = @()
-  for (mValue) in files do
-    if inTextFileExtensionMap.contains (mValue.pathExtension) then
-      let @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
+  for value in files do
+    if inTextFileExtensionMap.contains (value.pathExtension) then
+      let @string absoluteFilePath = inAbsoluteSourcePath + "/" + value
       !?outWrapperFileMap.insertKey
-        (@lstring (mValue, @location.here),
+        (@lstring (value, @location.here),
         absoluteFilePath,
         true, // Text File
         currentDirectoryIndex,
         ioWrapperFileIndex
       )
       ioWrapperFileIndex += 1
-    elsif inBinaryFileExtensionMap.contains (mValue.pathExtension) then
-      let @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
+    elsif inBinaryFileExtensionMap.contains (value.pathExtension) then
+      let @string absoluteFilePath = inAbsoluteSourcePath + "/" + value
       !?outWrapperFileMap.insertKey
-        (@lstring (mValue, @location.here),
+        (@lstring (value, @location.here),
         absoluteFilePath,
         false, // Binary file
         currentDirectoryIndex,
@@ -558,11 +558,11 @@ proc recursivelyEnumerateDirectories
 //--- Enumerates regular directories
   let [@string] directories = inAbsoluteSourcePath.directories (false)
   outWrapperDirectoryMap = @()
-  for (mValue) in directories do
+  for value in directories do
     let @uint theDirectoryIndex = ioWrapperDirectoryIndex
     recursivelyEnumerateDirectories (
-      inAbsoluteSourcePath + "/" + mValue,
-      inPathInWrapper + mValue + "/",
+      inAbsoluteSourcePath + "/" + value,
+      inPathInWrapper + value + "/",
       inTextFileExtensionMap,
       inBinaryFileExtensionMap,
       ?let internalWrapperFileMap,
@@ -571,7 +571,7 @@ proc recursivelyEnumerateDirectories
       !?ioWrapperDirectoryIndex
     )
     !?outWrapperDirectoryMap.insertKey
-      (@lstring (mValue, @location.here),
+      (@lstring (value, @location.here),
       internalWrapperFileMap,
       internalWrapperDirectoryMap,
       theDirectoryIndex
@@ -610,16 +610,16 @@ override proc @filewrapperDeclarationAST.enterDeclarationInSemanticContext
   end
 //--- Build text file extension map
   var @wrapperExtensionMap textExtensionMap = @()
-  for (mValue) in self.mFilewrapperTextFileExtensionList do
-    !?textExtensionMap.insertKey (mValue)
+  for value in self.mFilewrapperTextFileExtensionList do
+    !?textExtensionMap.insertKey (value)
   end
 //--- Build binary file extension map
   var @wrapperExtensionMap binaryFileExtensionMap = @()
-  for (mValue) in self.mFilewrapperBinaryFileExtensionList do
-    if textExtensionMap.contains (mValue.string) then
-      error (mValue:"the '" + mValue + "' extension is already used for text files")
+  for value in self.mFilewrapperBinaryFileExtensionList do
+    if textExtensionMap.contains (value.string) then
+      error (value:"the '" + value + "' extension is already used for text files")
     else
-    !?binaryFileExtensionMap.insertKey (mValue)
+    !?binaryFileExtensionMap.insertKey (value)
     end
   end
 //--- Enumerate filewrapper files
@@ -739,7 +739,7 @@ override proc @galgas3GrammarComponentAST.enterDeclarationInSemanticContext
   var @grammarLabelMap grammarLabelMap = @()
   for startSymbolLabel in self.mStartSymbolLabelList do
   //--- Analyze signature
-    var @formalParameterSignature formalArgumentList = @()
+    var [@formalParameterSignatureElement] formalArgumentList = @()
     for formal in startSymbolLabel.mFormalArgumentList do
       !?ioTypeMap.makeEntry (formal.mFormalArgumentTypeName, ?let argumentType)
       formalArgumentList ++= @(
@@ -788,8 +788,8 @@ override proc @galgas3GrammarComponentAST.enterDeclarationInGraph (
   ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList ) {
   let key = @lstring ("grammar " + self.mGrammarComponentName, self.mGrammarComponentName.location)
   !?ioSemanticTypePrecedenceGraph.addNode (key, self)
-  for (mValue) in self.mSyntaxComponents do
-    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("syntax " + mValue, mValue.location))
+  for value in self.mSyntaxComponents do
+    !?ioSemanticTypePrecedenceGraph.addEdge (!from: key, !to: @("syntax " + value, value.location))
   end
 }
 

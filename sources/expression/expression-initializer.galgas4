@@ -324,8 +324,8 @@ final class @initializerCallForGeneration : @semanticExpressionForGeneration {
                                     !@string outCppExpression ) {
     self.mResultType.addHeaderFileName (!?ioInclusionSet)
     var [@string] parameterList = @()
-    for (mExpression) in self.mEffectiveParameterList do
-      mExpression.generateExpression
+    for expression in self.mEffectiveParameterList do
+      expression.generateExpression
         (!?ioGeneratedCode,
         !?ioInclusionSet,
         !?ioTemporaryVariableIndex,
@@ -337,8 +337,8 @@ final class @initializerCallForGeneration : @semanticExpressionForGeneration {
     outCppExpression = "GGS_"  + self.mResultType.identifierRepresentation
                      + "::" + self.initializerName.identifierRepresentation
                      + " ("
-    for (mValue) in parameterList do
-      outCppExpression += mValue + ", "
+    for value in parameterList do
+      outCppExpression += value + ", "
     end
     !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
     outCppExpression += compilerCppName ()

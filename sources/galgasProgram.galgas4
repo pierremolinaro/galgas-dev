@@ -79,8 +79,8 @@ grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
     error (inSourceFile : "no project file in parent directory of source file")
   elsif candidateProjectFiles.count > 1 then
     var s = "several project files in source file parent directory:"
-    for (mValue) in candidateProjectFiles do
-      s += "\n  - " + mValue
+    for value in candidateProjectFiles do
+      s += "\n  - " + value
     end
     error (inSourceFile : s)
   else
@@ -164,8 +164,8 @@ private proc compileProject (let @lstring inProjectSourceFile,
   : "GALGAS predefined types"
  //--- Parse source file
   let sourcesDir = inProjectSourceFile.string.deletingLastPathComponent + "/sources"
-  for (mValue) in inProjectComponentAST.mProjectSourceList do
-    let absoluteSourcePath = mValue.absolutePathFromPath (sourcesDir)
+  for value in inProjectComponentAST.mProjectSourceList do
+    let absoluteSourcePath = value.absolutePathFromPath (sourcesDir)
     grammar galgas4Grammar (!?declarationAST) in @lstring (absoluteSourcePath, .nowhere)
   end
 //-------------------------------- Hand coded source files
@@ -421,8 +421,8 @@ private proc projectGeneration
 //--------------------------------- Remove useless files
   if 0 == @uint.errorCount then
     var @stringset allActualFileSet = @() // .setWithStringList {!objcAppProductFileList + swiftAppProductFileList}
-    for (mValue) in productDirectory.regularFiles (false) do
-      allActualFileSet ++= mValue
+    for value in productDirectory.regularFiles (false) do
+      allActualFileSet ++= value
     end
     let uselessFileSet = allActualFileSet - allProductFileSet
     for (key) in uselessFileSet do

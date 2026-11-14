@@ -68,8 +68,8 @@ override proc @literalStringExpressionAST.analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 ) {
   var @string s = ""
-  for (mValue) in self.mStringSequence do
-    s += mValue
+  for value in self.mStringSequence do
+    s += value
   end
   outExpression = @literalStringExpressionForGeneration (inAnalysisContext.predefinedTypes.mStringType, self.mLocation, s)
 }

@@ -11,7 +11,7 @@ filewrapper generationTemplate in "."
 //--------------------------------------------------------------------------------------------------
 
 map @routineMap {
-  public let @instructionList mInstructionList
+  public let [@instruction] mInstructionList
   #insertSetter insertKey #errorMessage "the '%K' routine has been already declared"
   #searchMethod searchKey #errorMessage "the '%K' routine is not declared"
 }
@@ -32,9 +32,9 @@ abstract proc @instruction.codeDisplay
 
 //--------------------------------------------------------------------------------------------------
 
-list @instructionList {
-  public let @instruction mInstruction
-}
+//list @instructionList {
+//  public let @instruction mInstruction
+//}
 
 //--------------------------------------------------------------------------------------------------
 

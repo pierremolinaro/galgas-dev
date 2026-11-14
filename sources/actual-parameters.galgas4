@@ -26,7 +26,7 @@ proc [@actualParameterAST].analyzeRoutineArguments (let @lstring inUsefulnessCal
                                 ?!@unifiedTypeMap ioTypeMap,
                                 let @lstring inRoutineName,
                                 ?invokedEntityNameForErrorSignaling: let @string inInvokedEntityName,
-                                let @formalParameterSignature inRoutineSignature,
+                                let [@formalParameterSignatureElement] inRoutineSignature,
                                 ?!@localVarManager ioVariableMap,
                                 ?![@semanticInstructionForGeneration] ioInstructionListForGeneration,
                                 ![@actualParameterForGeneration] outActualParameterListForGeneration) {
@@ -40,8 +40,8 @@ proc [@actualParameterAST].analyzeRoutineArguments (let @lstring inUsefulnessCal
   else
     outActualParameterListForGeneration = @()
     var @stringset exclusiveVariableSet = @()
-    for formalArgument in inRoutineSignature, (mActualParameter) in self do
-      mActualParameter.checkAgainstFormalArgument (
+    for formalArgument in inRoutineSignature, actualParameter in self do
+      actualParameter.checkAgainstFormalArgument (
         inUsefulnessCallerEntityName,
         !?ioUsefulEntitiesGraph,
         inAnalysisContext,
@@ -239,17 +239,17 @@ final class @outputInputActualParameterAST : @actualParameterAST {
       ?*
     )
     var typeList = [@unifiedTypeMapEntry] [parameterType]
-    for (mValue) in self.mStructAttributeList do
+    for value in self.mStructAttributeList do
       let propertyMap = parameterType.definition.propertyMap
       propertyMap.searchKey (
-        mValue,
+        value,
         ?let accessControl,
         ?let isConstant,
         ?parameterType
       )
-      accessControl.checkSetAccess (inAnalysisContext.selfAvailability, mValue)
+      accessControl.checkSetAccess (inAnalysisContext.selfAvailability, value)
       if isConstant then
-        error (mValue : "a constant property cannot be modified")
+        error (value : "a constant property cannot be modified")
       end
       typeList ++= parameterType
     end

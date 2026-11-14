@@ -202,8 +202,8 @@ override proc @lexicalRoutineCallInstructionAST.checkLexicalInstruction (
     )
   end
 //--- Check error messages are actually defined
-  for (mValue) in self.mErrorMessageList do
-    var entry = ioLexiqueAnalysisContext.mLexicalMessageMap [!searchKey: mValue]
+  for value in self.mErrorMessageList do
+    var entry = ioLexiqueAnalysisContext.mLexicalMessageMap [!searchKey: value]
     entry.mMessageIsUsed = true
     !?ioLexiqueAnalysisContext.mLexicalMessageMap.replaceKey (!with: entry)
   end
@@ -211,19 +211,6 @@ override proc @lexicalRoutineCallInstructionAST.checkLexicalInstruction (
 
 //--------------------------------------------------------------------------------------------------
 //! COCOA GENERATION
-//--------------------------------------------------------------------------------------------------
-
-//override func @lexicalRoutineCallInstructionAST generateObjcCocoaInstructionCode
-//  ?let @string unused inScannerClassName
-//  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
-//  -> @string outGeneratedCode {
-//  outGeneratedCode = "scanner_cocoa_routine_" + self.mRoutineName + " (& scanningOk"
-//  for (mLexicalRoutineActualArgument) in self.mActualArgumentList do
-//    outGeneratedCode += ", " + [mLexicalRoutineActualArgument generateObjcCocoaRoutineArgument !inLexiqueAnalysisContext]
-//  end
-//  outGeneratedCode += ") ;\n"
-//}
-
 //--------------------------------------------------------------------------------------------------
 
 override func @lexicalRoutineCallInstructionAST.generateSwiftCocoaInstructionCode
@@ -271,8 +258,8 @@ override func @lexicalRoutineCallInstructionAST.generateLexicalInstructionCode (
   ?let @lexiqueAnalysisContext _inLexiqueAnalysisContext)
   -> @string {
   result = "::scanner_routine_" + self.mRoutineName + " (*this"
-  for (mLexicalRoutineActualArgument) in self.mActualArgumentList do
-    result += ", " + mLexicalRoutineActualArgument.generateRoutineArgument
+  for lexicalRoutineActualArgument in self.mActualArgumentList do
+    result += ", " + lexicalRoutineActualArgument.generateRoutineArgument
   end
   for entry in self.mErrorMessageList do
     result += ", gLexicalMessage_" + inScannerClassName + "_" + entry

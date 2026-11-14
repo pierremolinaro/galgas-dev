@@ -152,7 +152,7 @@ override proc @templateInstructionSwitchAST.templateInstructionAnalysis
             :"the '" + constantName + "' constant is already named in this switch instruction")
           end
           constantsNamedInSwitchInstruction ++= constantName.string
-          enumType.constantMap.searchKey (constantName, ?*, ?let @associatedValueDescriptorList associatedTypeList)
+          enumType.constantMap.searchKey (constantName, ?*, ?let [@associatedValueDescriptor] associatedTypeList)
           if (associatedTypeList.count > 0) & (templateInstructionSwitchBranch.associatedValuesExtraction.count == 0) then
             error (constantName
               :"the associated values of '" + constantName + "' constant should be extracted")

@@ -218,7 +218,7 @@ override proc @grammarInFileInstructionAST.analyzeSemanticInstruction (
 //--- Search label
   grammarLabelMap.searchKey
     (self.mLabelName,
-    ?let @formalParameterSignature labelSignature
+    ?let [@formalParameterSignatureElement] labelSignature
   )
 //--- Check actual parameters
   self.mActualParameterList.analyzeRoutineArguments
@@ -295,7 +295,7 @@ override proc @grammarInStringInstructionAST.analyzeSemanticInstruction (
 //--- Search label
   grammarLabelMap.searchKey
     (self.mLabelName,
-    ?let @formalParameterSignature labelSignature
+    ?let [@formalParameterSignatureElement] labelSignature
   )
 //--- Check actual parameters
   self.mActualParameterList.analyzeRoutineArguments

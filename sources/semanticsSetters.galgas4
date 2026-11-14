@@ -29,7 +29,7 @@ proc enterModifierWithInputArgument (?!@setterMap ioSetterMap,
   ?setterName:let @string inSetterName,
   ?compilerArg:let @bool inHasCompilerArgument) {
   !?ioUnifiedTypeMap.makeEntryFromString (inInputArgumentTypeName, ?let argumentTypeIndex)
-  var @formalParameterSignature argList = @()
+  var [@formalParameterSignatureElement] argList = @()
   argList ++= @("".nowhere, argumentTypeIndex, .argumentConstantIn, inInputArgumentName)
   !?ioSetterMap.insertOrReplace
     (@lstring (inSetterName, @location.here),
@@ -53,7 +53,7 @@ proc enterModifierWithOutputAndInputArguments (?!@setterMap ioSetterMap,
   ?compilerArg:let @bool inHasCompilerArgument) {
   !?ioUnifiedTypeMap.makeEntryFromString (inOutputArgumentTypeName, ?let outputArgumentTypeIndex)
   !?ioUnifiedTypeMap.makeEntryFromString (inInputArgumentTypeName, ?let inputArgumentTypeIndex)
-  var @formalParameterSignature argList = @()
+  var [@formalParameterSignatureElement] argList = @()
   argList ++= @("".nowhere, outputArgumentTypeIndex, .argumentOut, inOutputArgumentName)
   argList ++= @("".nowhere, inputArgumentTypeIndex, .argumentConstantIn, inInputArgumentName)
   !?ioSetterMap.insertOrReplace
@@ -76,7 +76,7 @@ proc enterModifierWith2InputArguments (?!@setterMap ioSetterMap,
   ?arg2Name:let @string inInputArgument2Name,
   ?setterName:let @string inSetterName,
   ?compilerArg:let @bool inHasCompilerArgument) {
-  var @formalParameterSignature argList = @()
+  var [@formalParameterSignatureElement] argList = @()
   !?ioUnifiedTypeMap.makeEntryFromString (inInputArgument1TypeName, ?@unifiedTypeMapEntry argumentTypeIndex)
   argList ++= @("".nowhere, argumentTypeIndex, .argumentConstantIn, inInputArgument1Name)
   !?ioUnifiedTypeMap.makeEntryFromString (inInputArgument2TypeName, ?argumentTypeIndex)
@@ -99,7 +99,7 @@ proc enterModifierWithoutArgument (?!@setterMap ioSetterMap,
   !?ioSetterMap.insertOrReplace
     (@lstring (inSetterName, @location.here),
     @methodKind. definedAsMember,
-    @formalParameterSignature (),
+    [@formalParameterSignatureElement] (),
     inHasCompilerArgument,
     @methodQualifier. isBasic,
     ""

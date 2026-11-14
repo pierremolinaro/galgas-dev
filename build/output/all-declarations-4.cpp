@@ -941,6 +941,7 @@ GGS_XCodeGroup GGS__5B_XCodeGroup_5D_::readSubscript__3F_ (const GGS_uint & inIn
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_XCodeGroup_5D_
 //--------------------------------------------------------------------------------------------------
@@ -1333,6 +1334,7 @@ GGS_XCodeToolTarget GGS__5B_XCodeToolTarget_5D_::readSubscript__3F_ (const GGS_u
   }
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_XCodeToolTarget_5D_
@@ -1727,6 +1729,7 @@ GGS_XCodeAppTarget GGS__5B_XCodeAppTarget_5D_::readSubscript__3F_ (const GGS_uin
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_XCodeAppTarget_5D_
 //--------------------------------------------------------------------------------------------------
@@ -2120,6 +2123,7 @@ GGS_BuildFile GGS__5B_BuildFile_5D_::readSubscript__3F_ (const GGS_uint & inInde
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_BuildFile_5D_
 //--------------------------------------------------------------------------------------------------
@@ -2188,7 +2192,7 @@ void extensionMethod_analyzeRoutineArguments (const GGS__5B_actualParameterAST_5
                                               GGS_unifiedTypeMap & ioArgument_ioTypeMap,
                                               const GGS_lstring constinArgument_inRoutineName,
                                               const GGS_string constinArgument_inInvokedEntityName,
-                                              const GGS_formalParameterSignature constinArgument_inRoutineSignature,
+                                              const GGS__5B_formalParameterSignatureElement_5D_ constinArgument_inRoutineSignature,
                                               GGS_localVarManager & ioArgument_ioVariableMap,
                                               GGS__5B_semanticInstructionForGeneration_5D_ & ioArgument_ioInstructionListForGeneration,
                                               GGS__5B_actualParameterForGeneration_5D_ & outArgument_outActualParameterListForGeneration,
@@ -2223,14 +2227,14 @@ void extensionMethod_analyzeRoutineArguments (const GGS__5B_actualParameterAST_5
   }
   if (GalgasBool::boolFalse == test_0) {
     outArgument_outActualParameterListForGeneration = GGS__5B_actualParameterForGeneration_5D_::init (inCompiler COMMA_HERE) ;
-    GGS_stringset var_exclusiveVariableSet_2607 = GGS_stringset::init (inCompiler COMMA_HERE) ;
+    GGS_stringset var_exclusiveVariableSet_2616 = GGS_stringset::init (inCompiler COMMA_HERE) ;
     const GGS__5B_actualParameterAST_5D_ temp_9 = inObject ;
-    UpEnumerator_formalParameterSignature enumerator_2660 (constinArgument_inRoutineSignature) ;
-    UpEnumerator__5B_actualParameterAST_5D_ enumerator_2681 (temp_9) ;
-    while (enumerator_2660.hasCurrentObject () && enumerator_2681.hasCurrentObject ()) {
-      callExtensionMethod_checkAgainstFormalArgument ((cPtr_actualParameterAST *) enumerator_2681.current_entry (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, enumerator_2660.current (HERE).readProperty_mFormalSelector (), enumerator_2660.current (HERE).readProperty_mFormalArgumentType (), enumerator_2660.current (HERE).readProperty_mFormalArgumentPassingMode (), ioArgument_ioVariableMap, outArgument_outActualParameterListForGeneration, var_exclusiveVariableSet_2607, ioArgument_ioInstructionListForGeneration, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 44)) ;
-      enumerator_2660.gotoNextObject () ;
-      enumerator_2681.gotoNextObject () ;
+    UpEnumerator__5B_formalParameterSignatureElement_5D_ enumerator_2669 (constinArgument_inRoutineSignature) ;
+    UpEnumerator__5B_actualParameterAST_5D_ enumerator_2708 (temp_9) ;
+    while (enumerator_2669.hasCurrentObject () && enumerator_2708.hasCurrentObject ()) {
+      callExtensionMethod_checkAgainstFormalArgument ((cPtr_actualParameterAST *) enumerator_2708.current (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, enumerator_2669.current (HERE).readProperty_mFormalSelector (), enumerator_2669.current (HERE).readProperty_mFormalArgumentType (), enumerator_2669.current (HERE).readProperty_mFormalArgumentPassingMode (), ioArgument_ioVariableMap, outArgument_outActualParameterListForGeneration, var_exclusiveVariableSet_2616, ioArgument_ioInstructionListForGeneration, inCompiler COMMA_SOURCE_FILE ("actual-parameters.galgas4", 44)) ;
+      enumerator_2669.gotoNextObject () ;
+      enumerator_2708.gotoNextObject () ;
     }
   }
 }
@@ -3015,6 +3019,7 @@ GGS_unifiedTypeMapEntry GGS__5B_unifiedTypeMapEntry_5D_::readSubscript__3F_ (con
   }
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_unifiedTypeMapEntry_5D_
@@ -6322,6 +6327,7 @@ GGS_terminalLabelAST GGS__5B_terminalLabelAST_5D_::readSubscript__3F_ (const GGS
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_terminalLabelAST_5D_
 //--------------------------------------------------------------------------------------------------
@@ -6814,6 +6820,7 @@ GGS_guiLabelAST GGS__5B_guiLabelAST_5D_::readSubscript__3F_ (const GGS_uint & in
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_guiLabelAST_5D_
 //--------------------------------------------------------------------------------------------------
@@ -7207,6 +7214,7 @@ GGS_guiSimpleAttributeAST GGS__5B_guiSimpleAttributeAST_5D_::readSubscript__3F_ 
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_guiSimpleAttributeAST_5D_
 //--------------------------------------------------------------------------------------------------
@@ -7599,6 +7607,7 @@ GGS_guiCompoundAttributeAST GGS__5B_guiCompoundAttributeAST_5D_::readSubscript__
   }
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_guiCompoundAttributeAST_5D_
@@ -8685,6 +8694,7 @@ GGS_textMacroAST GGS__5B_textMacroAST_5D_::readSubscript__3F_ (const GGS_uint & 
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_textMacroAST_5D_
 //--------------------------------------------------------------------------------------------------
@@ -9306,6 +9316,7 @@ GGS_withLexiqueAST GGS__5B_withLexiqueAST_5D_::readSubscript__3F_ (const GGS_uin
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_withLexiqueAST_5D_
 //--------------------------------------------------------------------------------------------------
@@ -9698,6 +9709,7 @@ GGS_projectIndexingDescriptorAST GGS__5B_projectIndexingDescriptorAST_5D_::readS
   }
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_projectIndexingDescriptorAST_5D_
@@ -10210,6 +10222,7 @@ GGS_importedLexiqueAST GGS__5B_importedLexiqueAST_5D_::readSubscript__3F_ (const
   }
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_importedLexiqueAST_5D_
@@ -11162,6 +11175,7 @@ GGS_galgasGUIComponentAST GGS__5B_galgasGUIComponentAST_5D_::readSubscript__3F_ 
   }
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_galgasGUIComponentAST_5D_
@@ -12128,6 +12142,7 @@ GGS__32_lstring GGS__5B__32_lstring_5D_::readSubscript__3F_ (const GGS_uint & in
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B__32_lstring_5D_
 //--------------------------------------------------------------------------------------------------
@@ -12609,6 +12624,7 @@ GGS_terminalCheckAssignement GGS__5B_terminalCheckAssignement_5D_::readSubscript
   }
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_terminalCheckAssignement_5D_
@@ -14015,6 +14031,7 @@ GGS_SyntaxInstructionListAST GGS__5B_SyntaxInstructionListAST_5D_::readSubscript
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_SyntaxInstructionListAST_5D_
 //--------------------------------------------------------------------------------------------------
@@ -14750,6 +14767,7 @@ GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ GGS__5B__5B_abstractSynt
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B__5B_abstractSyntaxInstructionForGrammarAnalysis_5D__5D_
 //--------------------------------------------------------------------------------------------------
@@ -15142,6 +15160,7 @@ GGS_semanticInstructionListForGeneration GGS__5B_semanticInstructionListForGener
   }
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_semanticInstructionListForGeneration_5D_
@@ -16584,6 +16603,7 @@ GGS__5B_formalInputParameterAST_5D_ GGS__5B__5B_formalInputParameterAST_5D__5D_:
   }
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B__5B_formalInputParameterAST_5D__5D_

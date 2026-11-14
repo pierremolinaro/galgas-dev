@@ -36,8 +36,8 @@ func @uint64.square() -> @uint64 {
 
 func [@uint].sum() -> @uint {
   result = 0
-  for (mValue) in self do
-    result = result + mValue
+  for value in self do
+    result = result + value
   end
 }
 
@@ -52,8 +52,8 @@ proc @uint64.square (!@uint64 outResult) {
 
 proc [@uint].sum (!@uint outResult) {
   outResult = 0
-  for (mValue) in self do
-    outResult = outResult + mValue
+  for value in self do
+    outResult = outResult + value
   end
 }
 
@@ -75,8 +75,8 @@ mutating proc [@uint64].prependSquare (let @uint64 inValue) {
 }
 
 mutating proc @string.concatList (let [@string] inList) {
-  for (mValue) in inList do
-    self += mValue
+  for value in inList do
+    self += value
   end
 }
 

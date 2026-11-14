@@ -146,8 +146,8 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
         elsif matchingReaderCount > 1 then
           var @string s = ""
-          for (mValue) in fieldList
-            do s += mValue
+          for value in fieldList
+            do s += value
             between s += ", "
           end
           error (self.mGetterName
@@ -244,8 +244,8 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
     )
   //--- Reader operands
     var [@string] getterArgumentCppNameList = @()
-    for (mExpression) in self.mActualArgumentList do
-      mExpression.generateExpression
+    for expression in self.mActualArgumentList do
+      expression.generateExpression
         (!?ioGeneratedCode,
         !?ioInclusionSet,
         !?ioTemporaryVariableIndex,
@@ -282,14 +282,14 @@ final class @getterCallExpressionForGeneration : @semanticExpressionForGeneratio
       end
     case definedAsMember :
       outCppExpression = receiverCppName
-      for (mValue) in self.mFieldList do
-        outCppExpression += ".readProperty_" + mValue.identifierRepresentation + " ()"
+      for value in self.mFieldList do
+        outCppExpression += ".readProperty_" + value.identifierRepresentation + " ()"
       end
       self.mResultType.addHeaderFileName (!?ioInclusionSet)
       outCppExpression +=  ".getter_" + self.mGetterName.identifierRepresentation + " ("
     end
-    for (mValue) in getterArgumentCppNameList
-      do outCppExpression += mValue
+    for value in getterArgumentCppNameList
+      do outCppExpression += value
       between outCppExpression += ", "
     end
     if getterArgumentCppNameList.count == 0 then

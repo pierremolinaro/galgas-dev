@@ -97,7 +97,7 @@ enum @methodKind #equatable {
 //
 //--------------------------------------------------------------------------------------------------
 
-list @optionalMethodSignature {
+struct @optionalMethodSignatureElement {
   public let @bool mInputArgument // true -> input, false -> output
   public let @lstring mFormalSelector
   public let @unifiedTypeMapEntry mFormalArgumentType
@@ -131,7 +131,7 @@ map @getterMap {
 //
 //--------------------------------------------------------------------------------------------------
 
-list @formalParameterSignature {
+struct @formalParameterSignatureElement {
   public let @lstring mFormalSelector
   public let @unifiedTypeMapEntry mFormalArgumentType
   public let @formalArgumentPassingModeAST mFormalArgumentPassingMode
@@ -142,7 +142,7 @@ list @formalParameterSignature {
 
 map @setterMap {
   public let @methodKind mKind
-  public let @formalParameterSignature mParameterList
+  public let [@formalParameterSignatureElement] mParameterList
   public let @bool mHasCompilerArgument
   public let @methodQualifier mQualifier
   public let @string mErrorMessage // If not empty, calling the mutating proc raises an error ith this message
@@ -159,7 +159,7 @@ map @setterMap {
 
 map @instanceMethodMap {
   public let @methodKind mKind
-  public let @formalParameterSignature mParameterList
+  public let [@formalParameterSignatureElement] mParameterList
   public let @location mDeclarationLocation
   public let @bool mHasCompilerArgument
   public let @methodQualifier mQualifier
@@ -176,7 +176,7 @@ map @instanceMethodMap {
 //--------------------------------------------------------------------------------------------------
 
 map @classMethodMap {
-  public let @formalParameterSignature mParameterList
+  public let [@formalParameterSignatureElement] mParameterList
   public let @bool mHasCompilerArgument
   #insertOrReplaceSetter
   #insertSetter insertKey #errorMessage "the '%K' type proc is already declared"
@@ -240,16 +240,19 @@ enum @headerKind #equatable {
 
 //--------------------------------------------------------------------------------------------------
 
-list @associatedValueDescriptorList #equatable {
-  private let @unifiedTypeMapEntry type
-  private let @string name
+struct @associatedValueDescriptor #equatable {
+  let @unifiedTypeMapEntry type
+  let @string name
+}
+
+extension [@associatedValueDescriptor] : #equatable {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 map @constantIndexMap #equatable {
   public let @uint mIndex
-  public let @associatedValueDescriptorList mAssociatedTypeList
+  public let [@associatedValueDescriptor] mAssociatedTypeList
   #insertSetter insertKey #errorMessage "the '%K' constant is already declared"
   #searchMethod searchKey #errorMessage "the '%K' constant is not declared"
 }

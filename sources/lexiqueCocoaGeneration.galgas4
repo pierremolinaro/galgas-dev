@@ -125,8 +125,8 @@ override func @lexicalCurrentCharacterInputArgumentAST.generateSwiftCocoaRoutine
 override func @lexicalFunctionInputArgumentAST.generateSwiftCocoaRoutineOrFunctionArgument
   () -> @string outGeneratedCode {
   outGeneratedCode = "scanner_cocoa_function_" + self.mFunctionName + " ("
-  for (mLexicalActualInputArgument) in self.mFunctionActualArgumentList
-  do outGeneratedCode += mLexicalActualInputArgument.generateSwiftCocoaRoutineOrFunctionArgument
+  for lexicalActualInputArgument in self.mFunctionActualArgumentList
+  do outGeneratedCode += lexicalActualInputArgument.generateSwiftCocoaRoutineOrFunctionArgument
   between outGeneratedCode += ", "
   end
   outGeneratedCode += ")"
@@ -197,8 +197,8 @@ override func @lexicalExplicitRuleAST.generateSwiftCocoaCode
   outGeneratedCode += self.mLexicalRuleExpression.generateSwiftCocoaConditionCode (inLexiqueAnalysisContext)
   outGeneratedCode += ") {\n"
   !?outGeneratedCode.incIndentation (2)
-  for (mInstruction) in self.mInstructionList do
-    outGeneratedCode += mInstruction.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
+  for instruction in self.mInstructionList do
+    outGeneratedCode += instruction.generateSwiftCocoaInstructionCode (inScannerClassName, inLexiqueAnalysisContext)
   end
   !?outGeneratedCode.decIndentation (2)
   outGeneratedCode += "}else "

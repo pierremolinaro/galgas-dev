@@ -3004,6 +3004,7 @@ class DownEnumerator__5B_uint_36__34__5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_uint_36__34_ current (LOCATION_ARGS) const ;
@@ -3032,6 +3033,7 @@ class UpEnumerator__5B_uint_36__34__5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_uint_36__34_ current (LOCATION_ARGS) const ;
@@ -3178,6 +3180,7 @@ class DownEnumerator__5B_string_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_string current (LOCATION_ARGS) const ;
@@ -3206,6 +3209,7 @@ class UpEnumerator__5B_string_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_string current (LOCATION_ARGS) const ;
@@ -3261,6 +3265,8 @@ class GGS__5B_string_5D_ final : public AC_GALGAS_root {
                                             Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS__5B_string_5D_ & inOperand) const ;
 
 //--------------------------------- Setters
   public: void setter_append (class GGS_string constinArgument0,
@@ -3429,6 +3435,7 @@ class DownEnumerator__5B_lstring_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_lstring current (LOCATION_ARGS) const ;
@@ -3457,6 +3464,7 @@ class UpEnumerator__5B_lstring_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_lstring current (LOCATION_ARGS) const ;
@@ -3603,6 +3611,7 @@ class DownEnumerator__5B_uint_5D_ final {
 
 //---
   public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_uint current (LOCATION_ARGS) const ;
@@ -3631,6 +3640,7 @@ class UpEnumerator__5B_uint_5D_ final {
 
 //---
   public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
 
 //--- Current element access
   public: class GGS_uint current (LOCATION_ARGS) const ;

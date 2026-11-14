@@ -38,8 +38,8 @@ proc templateCodeGenerationForListInstruction (let [@templateInstructionForGener
                                               ?!@uint ioTemporaryVariableIndex,
                                               ?!@stringset ioUnusedVariableCppNameSet,
                                               ?!@bool ioUseColumnMarker ) {
-  for (mInstruction) in inInstructionList do
-    mInstruction.templateCodeGeneration
+  for instruction in inInstructionList do
+    instruction.templateCodeGeneration
       (!?ioGeneratedCode,
       !?ioInclusionSet,
       !?ioTemporaryVariableIndex,

@@ -495,8 +495,8 @@ mutating proc @currentVarManager.searchForDropAccess (let @lstring inVarName ) {
     !?self.mLocalVarMap.removeKey (inVarName, ?5*)
   else
     var found = false
-    for (mMap) in self.mSubMaps while not found do
-      found = mMap.contains (inVarName.string)
+    for aMap in self.mSubMaps while not found do
+      found = aMap.contains (inVarName.string)
     end
     if found then
       error (inVarName : "variable '" + inVarName + "' is not declared in current scope, but in an overrided scope")
@@ -943,8 +943,8 @@ mutating proc @currentVarManager.combineManagerWith (?otherManager: let @current
     s += "Scope deepth error, " + self.mSubMaps.count + " != " + inOtherManager.mSubMaps.count
   else
     var [@scopeLocalVarMap] newSubMapList = @()
-    for (mMap) in self.mSubMaps, otherSubMap in inOtherManager.mSubMaps do
-      var mutableSubMap = mMap
+    for aMap in self.mSubMaps, otherSubMap in inOtherManager.mSubMaps do
+      var mutableSubMap = aMap
       !?mutableSubMap.combineMapWith (
        !otherMap: otherSubMap,
        !?s

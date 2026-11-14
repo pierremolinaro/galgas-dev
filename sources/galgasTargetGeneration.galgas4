@@ -501,15 +501,15 @@ proc updateGalgasTargets (
   end
 //--- Frameworks to link with tool
   var [@string] linkOptionForLinkingFrameworkWithTool = @()
-  for (mValue) in inFrameworkToolFileList do
+  for value in inFrameworkToolFileList do
     linkOptionForLinkingFrameworkWithTool ++= "-framework"
-    linkOptionForLinkingFrameworkWithTool ++= mValue.deletingPathExtension
+    linkOptionForLinkingFrameworkWithTool ++= value.deletingPathExtension
   end
 //--- Update json file list
   var [@string] handCodedSourceToolFileList = @()
-  for (mValue) in inHandCodedSourceToolFileList do
-    if mValue.pathExtension != "h" then
-      handCodedSourceToolFileList ++= mValue.lastPathComponent
+  for value in inHandCodedSourceToolFileList do
+    if value.pathExtension != "h" then
+      handCodedSourceToolFileList ++= value.lastPathComponent
     end
   end
   var handCodedSourceDirectorySet = @stringset ()

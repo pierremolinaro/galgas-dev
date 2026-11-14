@@ -172,7 +172,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
     !hasCompilerArgument:false
   )
 //--- Handle properties
-  var @formalParameterSignature insertSetterFormalArgumentList = @()
+  var [@formalParameterSignatureElement] insertSetterFormalArgumentList = @()
   var [@typedProperty] typedPropertyList = @()
   var [@functionSignatureElement] argumentTypeListForAddAssignWithFieldExpressionList = @()
   argumentTypeListForAddAssignWithFieldExpressionList ++= @("".nowhere, keyTypeIndex, "key", true)
@@ -181,13 +181,13 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
     keyTypeIndex,
     .argumentConstantIn,
     "inKey")
-  var @formalParameterSignature removeMethodFormalArgumentList = @()
+  var [@formalParameterSignatureElement] removeMethodFormalArgumentList = @()
   removeMethodFormalArgumentList ++= @(
     "".nowhere,
     keyTypeIndex,
     .argumentConstantIn,
     "inKey")
-  var @optionalMethodSignature optionalMethodSignature = @()
+  var [@optionalMethodSignatureElement] optionalMethodSignature = @()
   optionalMethodSignature ++= @(
     true,
     "".nowhere,
@@ -274,7 +274,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
       property.typeName,
       ?let @unifiedTypeMapEntry attributeTypeIndex
     )
-    var accessorFormalArgumentList = @formalParameterSignature ()
+    var accessorFormalArgumentList = [@formalParameterSignatureElement] ()
     accessorFormalArgumentList ++= @("".nowhere, attributeTypeIndex, .argumentConstantIn, property.name.string)
     accessorFormalArgumentList ++= @("".nowhere, keyTypeIndex, .argumentConstantIn, "key")
     !?setterMap.insertOrReplace (
@@ -380,9 +380,9 @@ proc check_K_escapeCharacters (let @lstring inString ) {  //--- Check escape seq
   for components in inString.string.componentsSeparatedByString ("%%") do
     var [@string] explodedArray = components.componentsSeparatedByString ("%")
     !?explodedArray.removeFirst (?*)
-    for (mValue) in explodedArray do
-      if mValue.count > 0 then
-        let @char c = mValue.characterAtIndex (0)
+    for value in explodedArray do
+      if value.count > 0 then
+        let @char c = value.characterAtIndex (0)
         if c != 'K' then
           error (inString: "only '%K' and '%%' escape sequences are allowed in this error message ")
         end
@@ -397,9 +397,9 @@ proc check_K_L_escapeCharacters (let @lstring inString ) {  //--- Check escape s
   for components in inString.string.componentsSeparatedByString ("%%") do
     var [@string] explodedArray = components.componentsSeparatedByString ("%")
     !?explodedArray.removeFirst (?*)
-    for (mValue) in explodedArray do
-      if mValue.count > 0 then
-        let @char c = mValue.characterAtIndex (0)
+    for value in explodedArray do
+      if value.count > 0 then
+        let @char c = value.characterAtIndex (0)
         if (c != 'K') & (c != 'L') then
           error (inString: "only '%K', '%L' and '%%' escape sequences are allowed in this error message ")
         end

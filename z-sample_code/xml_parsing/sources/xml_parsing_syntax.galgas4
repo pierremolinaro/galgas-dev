@@ -3,20 +3,20 @@ syntax xml_parsing_syntax (xml_parsing_lexique) {
 //---------------------------------------------------------------------------*
 
 rule <start_symbol>
-  (!@xmlNodeList outRootNodes,
+  (![@xmlNode] outRootNodes,
   let @bool inIncludeComments,
   let @bool inDoNotCondenseWhiteSpaces,
   let @bool inPrintDuringParsing)
 
 rule <element_list>
-  (?!@xmlNodeList ioNodes,
+  (?![@xmlNode] ioNodes,
   let @bool inIncludeComments,
   let @bool inDoNotCondenseWhiteSpaces,
   let @bool inPrintDuringParsing,
   let @string inIndendation)
 
 rule <element>
-  (?!@xmlNodeList ioNodes,
+  (?![@xmlNode] ioNodes,
   let @bool inIncludeComments,
   let @bool inDoNotCondenseWhiteSpaces,
   let @bool inPrintDuringParsing,
@@ -25,7 +25,7 @@ rule <element>
 //---------------------------------------------------------------------------*
 
 rule <start_symbol>
-  (!@xmlNodeList outRootNodes,
+  (![@xmlNode] outRootNodes,
   let @bool inIncludeComments,
   let @bool inDoNotCondenseWhiteSpaces,
   let @bool inPrintDuringParsing ) {
@@ -56,7 +56,7 @@ rule <start_symbol>
 //---------------------------------------------------------------------------*
 
 rule <element_list>
-  (?!@xmlNodeList ioNodes,
+  (?![@xmlNode] ioNodes,
   let @bool inIncludeComments,
   let @bool inDoNotCondenseWhiteSpaces,
   let @bool inPrintDuringParsing,
@@ -81,7 +81,7 @@ rule <element_list>
 //---------------------------------------------------------------------------*
 
 rule <element>
-  (?!@xmlNodeList ioNodes,
+  (?![@xmlNode] ioNodes,
   let @bool inIncludeComments,
   let @bool _inDoNotCondenseWhiteSpaces,
   let @bool inPrintDuringParsing,
@@ -94,8 +94,8 @@ rule <element>
       @(),
       @()
     )
-    ioNodes ++= @(node
-  )end
+    ioNodes ++= node
+  end
   if inPrintDuringParsing then
     let @string discartedMessage
     if inIncludeComments then
@@ -114,7 +114,7 @@ rule <element>
 //---------------------------------------------------------------------------*
 
 rule <element>
-  (?!@xmlNodeList ioNodes,
+  (?![@xmlNode] ioNodes,
   let @bool inIncludeComments,
   let @bool inDoNotCondenseWhiteSpaces,
   let @bool inPrintDuringParsing,
@@ -151,7 +151,7 @@ rule <element>
     print (s)
   end
 
-  var nodeList = @xmlNodeList ()
+  var nodeList = [@xmlNode] ()
   select
     $/>$
   or
@@ -181,8 +181,8 @@ rule <element>
     attributeMap,
     nodeList
   )
-  ioNodes ++= @(node
-)}
+  ioNodes ++= node
+}
 
 //---------------------------------------------------------------------------*
 
@@ -191,7 +191,7 @@ rule <element>
 //---------------------------------------------------------------------------*
 
 proc addText
-  (?!@xmlNodeList ioNodes,
+  (?![@xmlNode] ioNodes,
   let @bool inDoNotCondenseWhiteSpaces,
   let @bool inPrintDuringParsing,
   let @string inIndendation ) {
@@ -210,7 +210,7 @@ proc addText
       @(),
       @()
     )
-    ioNodes ++= @(node)
+    ioNodes ++= node
     if inPrintDuringParsing then
       let @string s = inIndendation + "TEXT " + "'" + ls + "'\n"
       print (s)

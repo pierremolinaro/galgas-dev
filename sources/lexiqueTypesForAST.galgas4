@@ -58,8 +58,8 @@ abstract class @abstractLexicalRuleAST {
 
 func [@abstractLexicalRuleAST].useLoopLocalVar () -> @bool {
   result = false
-  for (mLexicalRule) in self while not result do
-    result = mLexicalRule.lexicalRuleUsesLoopLocalVar
+  for lexicalRule in self while not result do
+    result = lexicalRule.lexicalRuleUsesLoopLocalVar
   end
 }
 

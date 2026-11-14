@@ -85,7 +85,7 @@ final class @nonterminalCallInstruction : @syntaxInstructionAST {
                                             ?!@localVarManager ioVariableMap,
                                             ?!@uint _ioSelectMethodCount ) {
     inNonterminalMap.searchKey (self.mNonterminalName, ?let @nonterminalLabelMap labelMap)
-    let @formalParameterSignature signature
+    let [@formalParameterSignatureElement] signature
     labelMap.searchKey ("".nowhere, ?*, ?signature, ?*)
   //--- call arguments
     self.mActualParameterList.analyzeRoutineArguments
@@ -222,8 +222,8 @@ override proc @nonterminalInstructionForGeneration.generateInstruction (?!@strin
     !?ioGeneratedCode
   )
 //--- Release temporary variables
-  for (mValue) in jokerParametersToReleaseList do
-    ioGeneratedCode += mValue + ".drop () ; // Release temporary input variables (joker in source)\n"
+  for value in jokerParametersToReleaseList do
+    ioGeneratedCode += value + ".drop () ; // Release temporary input variables (joker in source)\n"
   end
 }
 

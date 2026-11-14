@@ -234,8 +234,7 @@ syntax extension galgas4DeclarationsSyntax {
           !isPredefined: false,
           !arrayTypeName: outTypeName,
           !elementTypeName: elementTypeName,
-          !isUsefull: true,
-          !equatable: false
+          !isUsefull: true
         )
       end
     or

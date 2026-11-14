@@ -139,8 +139,8 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
           spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
         elsif matchingReaderCount > 1 then
           var @string s = ""
-          for (mValue) in fieldList
-            do s += mValue
+          for value in fieldList
+            do s += value
             between s += ", "
           end
           error (self.mGetterName
@@ -451,8 +451,8 @@ override proc @templateLiteralStringExpressionAST.templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 ) {
   var @string s = ""
-  for (mValue) in self.mLiteralStringList do
-    s += mValue
+  for value in self.mLiteralStringList do
+    s += value
   end
   outExpression = @literalStringExpressionForGeneration (inAnalysisContext.mPredefinedTypes.mStringType, self.mLocation, s)
 }
@@ -1464,8 +1464,8 @@ proc templateInstructionListAnalysis
   let [@templateInstructionAST] inInstructionList,
   ?![@templateInstructionForGeneration] ioInstructionList
 ) {
-  for (mInstruction) in inInstructionList do
-    mInstruction.templateInstructionAnalysis
+  for instruction in inInstructionList do
+    instruction.templateInstructionAnalysis
       (inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       inAnalysisContext,

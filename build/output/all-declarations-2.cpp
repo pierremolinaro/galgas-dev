@@ -274,7 +274,7 @@ GGS_setterMap GGS_setterMap::getter_overriddenMap (Compiler * inCompiler
 
 void GGS_setterMap::setter_insertKey (GGS_lstring inLKey,
                                       GGS_methodKind inArgument0,
-                                      GGS_formalParameterSignature inArgument1,
+                                      GGS__5B_formalParameterSignatureElement_5D_ inArgument1,
                                       GGS_bool inArgument2,
                                       GGS_methodQualifier inArgument3,
                                       GGS_string inArgument4,
@@ -290,7 +290,7 @@ void GGS_setterMap::setter_insertKey (GGS_lstring inLKey,
 
 void GGS_setterMap::method_searchKey (GGS_lstring inLKey,
                                       GGS_methodKind & outArgument0,
-                                      GGS_formalParameterSignature & outArgument1,
+                                      GGS__5B_formalParameterSignatureElement_5D_ & outArgument1,
                                       GGS_bool & outArgument2,
                                       GGS_methodQualifier & outArgument3,
                                       GGS_string & outArgument4,
@@ -325,7 +325,7 @@ void GGS_setterMap::method_searchKey (GGS_lstring inLKey,
 
 void GGS_setterMap::setter_insertOrReplace (GGS_lstring inLKey,
                                             GGS_methodKind inArgument0,
-                                            GGS_formalParameterSignature inArgument1,
+                                            GGS__5B_formalParameterSignatureElement_5D_ inArgument1,
                                             GGS_bool inArgument2,
                                             GGS_methodQualifier inArgument3,
                                             GGS_string inArgument4
@@ -359,10 +359,10 @@ GGS_methodKind GGS_setterMap::getter_mKindForKey (const GGS_string & inKey,
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_formalParameterSignature GGS_setterMap::getter_mParameterListForKey (const GGS_string & inKey,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const {
-  GGS_formalParameterSignature result ;
+GGS__5B_formalParameterSignatureElement_5D_ GGS_setterMap::getter_mParameterListForKey (const GGS_string & inKey,
+                                                                                        Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GGS__5B_formalParameterSignatureElement_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     const SharedGenericPtrWithValueSemantics <GGS_setterMap_2E_element> info = infoForKey (key) ;
@@ -459,7 +459,7 @@ void GGS_setterMap::setter_setMKindForKey (GGS_methodKind inValue,
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_setterMap::setter_setMParameterListForKey (GGS_formalParameterSignature inValue,
+void GGS_setterMap::setter_setMParameterListForKey (GGS__5B_formalParameterSignatureElement_5D_ inValue,
                                                     GGS_string inKey,
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
@@ -639,7 +639,7 @@ GGS_methodKind DownEnumerator_setterMap::current_mKind (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formalParameterSignature DownEnumerator_setterMap::current_mParameterList (LOCATION_ARGS) const {
+GGS__5B_formalParameterSignatureElement_5D_ DownEnumerator_setterMap::current_mParameterList (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mParameterList ;
 }
 
@@ -690,7 +690,7 @@ GGS_methodKind UpEnumerator_setterMap::current_mKind (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formalParameterSignature UpEnumerator_setterMap::current_mParameterList (LOCATION_ARGS) const {
+GGS__5B_formalParameterSignatureElement_5D_ UpEnumerator_setterMap::current_mParameterList (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mParameterList ;
 }
 
@@ -994,7 +994,7 @@ GGS_instanceMethodMap GGS_instanceMethodMap::getter_overriddenMap (Compiler * in
 
 void GGS_instanceMethodMap::setter_insertKey (GGS_lstring inLKey,
                                               GGS_methodKind inArgument0,
-                                              GGS_formalParameterSignature inArgument1,
+                                              GGS__5B_formalParameterSignatureElement_5D_ inArgument1,
                                               GGS_location inArgument2,
                                               GGS_bool inArgument3,
                                               GGS_methodQualifier inArgument4,
@@ -1011,7 +1011,7 @@ void GGS_instanceMethodMap::setter_insertKey (GGS_lstring inLKey,
 
 void GGS_instanceMethodMap::method_searchKey (GGS_lstring inLKey,
                                               GGS_methodKind & outArgument0,
-                                              GGS_formalParameterSignature & outArgument1,
+                                              GGS__5B_formalParameterSignatureElement_5D_ & outArgument1,
                                               GGS_location & outArgument2,
                                               GGS_bool & outArgument3,
                                               GGS_methodQualifier & outArgument4,
@@ -1049,7 +1049,7 @@ void GGS_instanceMethodMap::method_searchKey (GGS_lstring inLKey,
 
 void GGS_instanceMethodMap::method_searchInheritedKey (GGS_lstring inLKey,
                                                        GGS_methodKind & outArgument0,
-                                                       GGS_formalParameterSignature & outArgument1,
+                                                       GGS__5B_formalParameterSignatureElement_5D_ & outArgument1,
                                                        GGS_location & outArgument2,
                                                        GGS_bool & outArgument3,
                                                        GGS_methodQualifier & outArgument4,
@@ -1105,10 +1105,10 @@ GGS_methodKind GGS_instanceMethodMap::getter_mKindForKey (const GGS_string & inK
 }
 //--------------------------------------------------------------------------------------------------
 
-GGS_formalParameterSignature GGS_instanceMethodMap::getter_mParameterListForKey (const GGS_string & inKey,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const {
-  GGS_formalParameterSignature result ;
+GGS__5B_formalParameterSignatureElement_5D_ GGS_instanceMethodMap::getter_mParameterListForKey (const GGS_string & inKey,
+                                                                                                Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const {
+  GGS__5B_formalParameterSignatureElement_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     const SharedGenericPtrWithValueSemantics <GGS_instanceMethodMap_2E_element> info = infoForKey (key) ;
@@ -1225,7 +1225,7 @@ void GGS_instanceMethodMap::setter_setMKindForKey (GGS_methodKind inValue,
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_instanceMethodMap::setter_setMParameterListForKey (GGS_formalParameterSignature inValue,
+void GGS_instanceMethodMap::setter_setMParameterListForKey (GGS__5B_formalParameterSignatureElement_5D_ inValue,
                                                             GGS_string inKey,
                                                             Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
@@ -1429,7 +1429,7 @@ GGS_methodKind DownEnumerator_instanceMethodMap::current_mKind (LOCATION_ARGS) c
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formalParameterSignature DownEnumerator_instanceMethodMap::current_mParameterList (LOCATION_ARGS) const {
+GGS__5B_formalParameterSignatureElement_5D_ DownEnumerator_instanceMethodMap::current_mParameterList (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mParameterList ;
 }
 
@@ -1486,7 +1486,7 @@ GGS_methodKind UpEnumerator_instanceMethodMap::current_mKind (LOCATION_ARGS) con
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formalParameterSignature UpEnumerator_instanceMethodMap::current_mParameterList (LOCATION_ARGS) const {
+GGS__5B_formalParameterSignatureElement_5D_ UpEnumerator_instanceMethodMap::current_mParameterList (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mParameterList ;
 }
 
@@ -1791,7 +1791,7 @@ GGS_classMethodMap GGS_classMethodMap::getter_overriddenMap (Compiler * inCompil
 //--------------------------------------------------------------------------------------------------
 
 void GGS_classMethodMap::setter_insertKey (GGS_lstring inLKey,
-                                           GGS_formalParameterSignature inArgument0,
+                                           GGS__5B_formalParameterSignatureElement_5D_ inArgument0,
                                            GGS_bool inArgument1,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
@@ -1804,7 +1804,7 @@ void GGS_classMethodMap::setter_insertKey (GGS_lstring inLKey,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_classMethodMap::method_searchKey (GGS_lstring inLKey,
-                                           GGS_formalParameterSignature & outArgument0,
+                                           GGS__5B_formalParameterSignatureElement_5D_ & outArgument0,
                                            GGS_bool & outArgument1,
                                            Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const {
@@ -1830,7 +1830,7 @@ void GGS_classMethodMap::method_searchKey (GGS_lstring inLKey,
 //--------------------------------------------------------------------------------------------------
 
 void GGS_classMethodMap::setter_insertOrReplace (GGS_lstring inLKey,
-                                                 GGS_formalParameterSignature inArgument0,
+                                                 GGS__5B_formalParameterSignatureElement_5D_ inArgument0,
                                                  GGS_bool inArgument1
                                                  COMMA_LOCATION_ARGS) {
   const GGS_classMethodMap_2E_element element (inLKey, inArgument0, inArgument1) ;
@@ -1842,10 +1842,10 @@ void GGS_classMethodMap::setter_insertOrReplace (GGS_lstring inLKey,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formalParameterSignature GGS_classMethodMap::getter_mParameterListForKey (const GGS_string & inKey,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const {
-  GGS_formalParameterSignature result ;
+GGS__5B_formalParameterSignatureElement_5D_ GGS_classMethodMap::getter_mParameterListForKey (const GGS_string & inKey,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) const {
+  GGS__5B_formalParameterSignatureElement_5D_ result ;
   if (isValid () && inKey.isValid ()) {
     const String key = inKey.stringValue () ;
     const SharedGenericPtrWithValueSemantics <GGS_classMethodMap_2E_element> info = infoForKey (key) ;
@@ -1882,7 +1882,7 @@ GGS_bool GGS_classMethodMap::getter_mHasCompilerArgumentForKey (const GGS_string
 }
 //--------------------------------------------------------------------------------------------------
 
-void GGS_classMethodMap::setter_setMParameterListForKey (GGS_formalParameterSignature inValue,
+void GGS_classMethodMap::setter_setMParameterListForKey (GGS__5B_formalParameterSignatureElement_5D_ inValue,
                                                          GGS_string inKey,
                                                          Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
@@ -2004,7 +2004,7 @@ GGS_lstring DownEnumerator_classMethodMap::current_lkey (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formalParameterSignature DownEnumerator_classMethodMap::current_mParameterList (LOCATION_ARGS) const {
+GGS__5B_formalParameterSignatureElement_5D_ DownEnumerator_classMethodMap::current_mParameterList (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mParameterList ;
 }
 
@@ -2037,7 +2037,7 @@ GGS_lstring UpEnumerator_classMethodMap::current_lkey (LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_formalParameterSignature UpEnumerator_classMethodMap::current_mParameterList (LOCATION_ARGS) const {
+GGS__5B_formalParameterSignatureElement_5D_ UpEnumerator_classMethodMap::current_mParameterList (LOCATION_ARGS) const {
   return mInfoArray (mIndex COMMA_THERE)->mProperty_mParameterList ;
 }
 
@@ -3709,6 +3709,7 @@ GGS_nonTerminalLabelAST GGS__5B_nonTerminalLabelAST_5D_::readSubscript__3F_ (con
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_nonTerminalLabelAST_5D_
 //--------------------------------------------------------------------------------------------------
@@ -4201,6 +4202,7 @@ GGS_signatureElementForGrammarAnalysis GGS__5B_signatureElementForGrammarAnalysi
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_signatureElementForGrammarAnalysis_5D_
 //--------------------------------------------------------------------------------------------------
@@ -4593,6 +4595,7 @@ GGS_nonterminalDeclarationAST GGS__5B_nonterminalDeclarationAST_5D_::readSubscri
   }
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_nonterminalDeclarationAST_5D_
@@ -5076,6 +5079,7 @@ GGS_syntaxRuleAST GGS__5B_syntaxRuleAST_5D_::readSubscript__3F_ (const GGS_uint 
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_syntaxRuleAST_5D_
 //--------------------------------------------------------------------------------------------------
@@ -5489,6 +5493,7 @@ GGS_syntaxInstructionAST GGS__5B_syntaxInstructionAST_5D_::readSubscript__3F_ (c
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_syntaxInstructionAST_5D_
 //--------------------------------------------------------------------------------------------------
@@ -5882,6 +5887,7 @@ GGS_syntaxComponentForGrammarAnalysis GGS__5B_syntaxComponentForGrammarAnalysis_
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_syntaxComponentForGrammarAnalysis_5D_
 //--------------------------------------------------------------------------------------------------
@@ -6274,6 +6280,7 @@ GGS_productionRuleForGrammarAnalysis GGS__5B_productionRuleForGrammarAnalysis_5D
   }
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_productionRuleForGrammarAnalysis_5D_
@@ -6776,6 +6783,7 @@ GGS_nonTerminalToAdd GGS__5B_nonTerminalToAdd_5D_::readSubscript__3F_ (const GGS
   }
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_nonTerminalToAdd_5D_
@@ -7895,6 +7903,7 @@ GGS_ruleDeclarationAST GGS__5B_ruleDeclarationAST_5D_::readSubscript__3F_ (const
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_ruleDeclarationAST_5D_
 //--------------------------------------------------------------------------------------------------
@@ -8287,6 +8296,7 @@ GGS_formalParameterForGeneration GGS__5B_formalParameterForGeneration_5D_::readS
   }
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_formalParameterForGeneration_5D_
@@ -9235,6 +9245,7 @@ GGS_formalInputParameterForGeneration GGS__5B_formalInputParameterForGeneration_
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_formalInputParameterForGeneration_5D_
 //--------------------------------------------------------------------------------------------------
@@ -10176,6 +10187,7 @@ GGS_actualInputParameterAST GGS__5B_actualInputParameterAST_5D_::readSubscript__
   }
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_actualInputParameterAST_5D_

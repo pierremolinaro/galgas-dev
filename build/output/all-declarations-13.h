@@ -3584,6 +3584,10 @@ class cParser_galgas_34_DeclarationsSyntax {
 
   protected: virtual int32_t select_galgas_34_DeclarationsSyntax_71 (Lexique_galgasScanner_34_ *) = 0 ;
 
+  protected: virtual int32_t select_galgas_34_DeclarationsSyntax_72 (Lexique_galgasScanner_34_ *) = 0 ;
+
+  protected: virtual int32_t select_galgas_34_DeclarationsSyntax_73 (Lexique_galgasScanner_34_ *) = 0 ;
+
 
 } ;
 

@@ -92,7 +92,7 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
     ?!@unifiedTypeMap ioTypeMap,
     ?!@semanticContext ioSemanticContext) {
   //--- Build signature
-    var routineSignature = @formalParameterSignature ()
+    var routineSignature = [@formalParameterSignatureElement] ()
     for argument in self.mFormalArgumentListAST do
       !?ioTypeMap.makeEntry (argument.mFormalArgumentTypeName, ?let parameterTypeIndex)
       routineSignature ++= @(
@@ -121,7 +121,7 @@ class @externProcedureDeclarationAST : @semanticDeclarationAST {
                                   ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration) {
   //---
     var formalArgumentList = [@formalParameterForGeneration] ()
-    var routineSignature = @formalParameterSignature ()
+    var routineSignature = [@formalParameterSignatureElement] ()
     for argument in self.mFormalArgumentListAST do
       let parameterType = ioTypeMap.typeMapEntryForLKey (argument.mFormalArgumentTypeName)
       formalArgumentList ++= @(

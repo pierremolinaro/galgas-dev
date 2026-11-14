@@ -109,7 +109,7 @@ final class @stringsetPredefinedTypeAST : @predefinedTypeAST {
     !?outSetterMap.insertKey (
       "removeKey".nowhere,
       .definedAsMember,
-      @formalParameterSignature.listWithValue ("".nowhere, stringType, .argumentVarIn, "inKey"),
+      [@formalParameterSignatureElement] [@("".nowhere, stringType, .argumentVarIn, "inKey")],
       false, // No Compiler argument
       @methodQualifier. isBasic,
       ""

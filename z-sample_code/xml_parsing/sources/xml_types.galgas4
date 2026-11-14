@@ -20,22 +20,16 @@ final class @xmlNode {
   public let @xmlNodeType mType
   public let @string name
   public let @xmlAttributeMap attributeMap
-  public let @xmlNodeList nodeList
-}
-
-//-----------------------------------------------------------*
-
-list @xmlNodeList {
-  public let @xmlNode node
+  public let [@xmlNode] nodeList
 }
 
 //-----------------------------------------------------------*
 
 proc internal_logXMLNodes (
-  let @xmlNodeList inNodeList,
+  let [@xmlNode] inNodeList,
   let @string inIndentationString,
   ?!@string ioString) {
-  for (node) in inNodeList do
+  for node in inNodeList do
     ioString += inIndentationString
     switch node.mType
     case element :
@@ -63,7 +57,7 @@ proc internal_logXMLNodes (
 
 //-----------------------------------------------------------*
 
-proc logXMLNodes (let @xmlNodeList inNodeList ) {
+proc logXMLNodes (let [@xmlNode] inNodeList ) {
   var @string s = ""
   internal_logXMLNodes (inNodeList, "", !?s )
   print (s)

@@ -17,35 +17,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3DeclarationsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <declaration_ggs3> (?!@galgasDeclarationAST ioDeclarations) {
-//    $extension$
-//    $@type$ (?let @lstring typeName) indexing (typeReferenceExtensionMethod)
-//    $:$
-//    let @equatableComparableExtension theExtension
-//    select
-//      $%equatable$
-//      theExtension = .equatable
-//    or
-//      $%comparable$
-//      theExtension = .comparable
-//    end
-//    ioDeclarations.mDeclarationList ++= @(!@equatableExtensionAST (
-//      !isPredefined: false,
-//      typeName,
-//      theExtension
-//    ))
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -53,20 +24,31 @@ syntax extension galgas4DeclarationsSyntax {
   rule <declaration> (?!@galgasDeclarationAST ioDeclarations) {
     $extension$
     <simple_type_definition> (!?ioDeclarations, ?let typeName)
-    $:$
-    let @equatableComparableExtension theExtension
     select
-      $#equatable$
-      theExtension = .equatable
     or
-      $#comparable$
-      theExtension = .comparable
+      $:$
+      select
+        $#equatable$
+        ioDeclarations.mDeclarationList ++= @equatableExtensionAST (
+          !isPredefined: false,
+          typeName,
+          .equatable
+        )
+      or
+        $#comparable$
+        ioDeclarations.mDeclarationList ++= @equatableExtensionAST (
+          !isPredefined: false,
+          typeName,
+          .comparable
+        )
+      end
     end
-    ioDeclarations.mDeclarationList ++= @equatableExtensionAST (
-      !isPredefined: false,
-      typeName,
-      theExtension
-    )
+    ${$
+    repeat
+    while
+      <method_declaration> (typeName, !?ioDeclarations)
+    end
+    $}$
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

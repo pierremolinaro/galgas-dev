@@ -1809,7 +1809,7 @@ class GGS_unifiedTypeDefinition callExtensionGetter_definition (const cPtr_unifi
 
 void extensionSetter_insertKey (class GGS_routineMap & ioObject,
                                 const class GGS_lstring constin_inRoutineName,
-                                const class GGS_formalParameterSignature constin_inRoutineSignature,
+                                const class GGS__5B_formalParameterSignatureElement_5D_ constin_inRoutineSignature,
                                 const class GGS_bool constin_inIsFilePrivate,
                                 class Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
@@ -1820,7 +1820,7 @@ void extensionSetter_insertKey (class GGS_routineMap & ioObject,
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_string function_routineArgumentFromFormalParameters (const class GGS_formalParameterSignature & constinArgument0,
+class GGS_string function_routineArgumentFromFormalParameters (const class GGS__5B_formalParameterSignatureElement_5D_ & constinArgument0,
                                                                class Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
@@ -1833,7 +1833,7 @@ class GGS_string function_routineArgumentFromFormalParameters (const class GGS_f
 void extensionMethod_searchKey (const class GGS_routineMap inObject,
                                 const class GGS_lstring constin_inRoutineName,
                                 const class GGS__5B_actualParameterAST_5D_ constin_inActualParameterList,
-                                class GGS_formalParameterSignature & out_outRoutineSignature,
+                                class GGS__5B_formalParameterSignatureElement_5D_ & out_outRoutineSignature,
                                 class GGS_bool & out_outIsFilePrivate,
                                 class GGS_lstring & out_outRoutineMangledName,
                                 class Compiler * inCompiler
@@ -1846,7 +1846,7 @@ void extensionMethod_searchKey (const class GGS_routineMap inObject,
 //--------------------------------------------------------------------------------------------------
 
 class GGS_lstring function_routineMangledName (const class GGS_lstring & constinArgument0,
-                                               const class GGS_formalParameterSignature & constinArgument1,
+                                               const class GGS__5B_formalParameterSignatureElement_5D_ & constinArgument1,
                                                class Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 

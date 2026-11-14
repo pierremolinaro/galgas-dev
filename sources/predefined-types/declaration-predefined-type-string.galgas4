@@ -232,7 +232,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
     !?ioUnifiedTypeMap.makeEntryFromString ("string", ?let @unifiedTypeMapEntry stringType)
     !?ioUnifiedTypeMap.makeEntryFromString ("bool", ?let @unifiedTypeMapEntry boolType)
   //--- Generate file
-    var @formalParameterSignature argList = @()
+    var [@formalParameterSignatureElement] argList = @()
     argList ++= @("".nowhere, stringType, @formalArgumentPassingModeAST. argumentConstantIn, "inStartPath")
     argList ++= @("".nowhere, stringType, @formalArgumentPassingModeAST. argumentConstantIn, "inFileName")
     argList ++= @("".nowhere, stringType, @formalArgumentPassingModeAST. argumentConstantIn, "inContents")
@@ -310,7 +310,7 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       true
     )
   //--- writeToFileWhenDifferentContents, writeToExecutableFileWhenDifferentContents
-    var @formalParameterSignature argList = @()
+    var [@formalParameterSignatureElement] argList = @()
     !?ioUnifiedTypeMap.makeEntryFromString ("string", ?@unifiedTypeMapEntry t)
     argList ++= @("".nowhere, t, @formalArgumentPassingModeAST. argumentConstantIn, "inFilePath")
     !?ioUnifiedTypeMap.makeEntryFromString ("bool", ?t)

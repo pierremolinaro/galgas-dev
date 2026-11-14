@@ -21,7 +21,7 @@
 //--------------------------------------------------------------------------------------------------
 
 func routineMangledName (?let @lstring inRoutineName,
-                        ?let @formalParameterSignature inRoutineFormalParameters ) -> @lstring {
+                        ?let [@formalParameterSignatureElement] inRoutineFormalParameters ) -> @lstring {
   var str = inRoutineName.string
   for parameter in inRoutineFormalParameters do
     switch parameter.mFormalArgumentPassingMode
@@ -39,7 +39,7 @@ func routineMangledName (?let @lstring inRoutineName,
 
 //--------------------------------------------------------------------------------------------------
 
-private func routineArgumentFromFormalParameters (?let @formalParameterSignature inRoutineFormalParameters ) -> @string {
+private func routineArgumentFromFormalParameters (?let [@formalParameterSignatureElement] inRoutineFormalParameters ) -> @string {
   result = "("
   for parameter in inRoutineFormalParameters
   do
@@ -66,7 +66,7 @@ struct @routineMap {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   mutating proc insertKey (let @lstring inRoutineName,
-                    let @formalParameterSignature inRoutineSignature,
+                    let [@formalParameterSignatureElement] inRoutineSignature,
                     ?isFilePrivate: let @bool inIsFilePrivate) {
     var @routineArgumentMap routineArgumentMap
     if self.mInternalRoutineMap.contains (inRoutineName) then
@@ -91,7 +91,7 @@ struct @routineMap {
 
   proc searchKey (let @lstring inRoutineName,
                     ?actualParameters: [@actualParameterAST] inActualParameterList,
-                    !@formalParameterSignature outRoutineSignature,
+                    ![@formalParameterSignatureElement] outRoutineSignature,
                     !isFilePrivate: @bool outIsFilePrivate,
                     !routineMangledName: @lstring outRoutineMangledName) {
     if let routine = self.mInternalRoutineMap [inRoutineName] then
@@ -104,8 +104,8 @@ struct @routineMap {
       var [@acceptableParameter] acceptableParameterList = @()
       for entry in routine.mArgumentMap do
         var accept = inActualParameterList.count == entry.mRoutineSignature.count
-        for formalParameter in entry.mRoutineSignature, (mActualParameter) in inActualParameterList while accept do
-          accept = mActualParameter.isCompatibleWith (
+        for formalParameter in entry.mRoutineSignature, actualParameter in inActualParameterList while accept do
+          accept = actualParameter.isCompatibleWith (
             formalParameter.mFormalArgumentPassingMode,
             formalParameter.mFormalSelector
           )
@@ -162,7 +162,7 @@ map @internalRoutineMap {
 //--------------------------------------------------------------------------------------------------
 
 map @routineArgumentMap {
-  public let @formalParameterSignature mRoutineSignature
+  public let [@formalParameterSignatureElement] mRoutineSignature
   public let @bool mIsFilePrivate
   #insertSetter insertKey #errorMessage "-- internal error --"
   #searchMethod searchKey #errorMessage "-- internal error --"
@@ -171,7 +171,7 @@ map @routineArgumentMap {
 //--------------------------------------------------------------------------------------------------
 
 struct @acceptableParameter {
-  public let @formalParameterSignature mRoutineSignature
+  public let [@formalParameterSignatureElement] mRoutineSignature
   public let @bool mIsFilePrivate
 }
 

@@ -372,6 +372,7 @@ GGS_uint_36__34_ GGS__5B_uint_36__34__5D_::readSubscript__3F_ (const GGS_uint & 
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_uint_36__34__5D_
 //--------------------------------------------------------------------------------------------------
@@ -909,6 +910,28 @@ GGS_string GGS__5B_string_5D_::readSubscript__3F_ (const GGS_uint & inIndex,
 }
 
 //--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS__5B_string_5D_::objectCompare (const GGS__5B_string_5D_ & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (count () < inOperand.count ()) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (count () > inOperand.count ()) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+      for (uint32_t i = 0 ; (i < count ()) && (result == ComparisonResult::operandEqual) ; i++) {
+        const GGS_string left = mSharedArray (int32_t (i) COMMA_HERE) ;
+        const GGS_string right = inOperand.mSharedArray (int32_t (i) COMMA_HERE) ;
+        result = left.objectCompare (right) ;
+      }
+    }
+  }
+  return result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_string_5D_
 //--------------------------------------------------------------------------------------------------
 
@@ -1403,6 +1426,7 @@ GGS_lstring GGS__5B_lstring_5D_::readSubscript__3F_ (const GGS_uint & inIndex,
   return result ;
 }
 
+
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_lstring_5D_
 //--------------------------------------------------------------------------------------------------
@@ -1808,6 +1832,7 @@ GGS_uint GGS__5B_uint_5D_::readSubscript__3F_ (const GGS_uint & inIndex,
   }
   return result ;
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Down Enumerator for @_5B_uint_5D_

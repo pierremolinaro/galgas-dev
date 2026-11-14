@@ -326,8 +326,8 @@ override proc @filewrapperTemplateInExpressionForGeneration.generateExpression
 //---
   ioInclusionSet ++= "filewrapper-" + self.mFilewrapperName
   var parameterList = [@string] ()
-  for (mExpression) in self.mActualOutputParameterList do
-    mExpression.generateExpression
+  for expression in self.mActualOutputParameterList do
+    expression.generateExpression
       (!?ioGeneratedCode,
       !?ioInclusionSet,
       !?ioTemporaryVariableIndex,
@@ -338,8 +338,8 @@ override proc @filewrapperTemplateInExpressionForGeneration.generateExpression
   end
   outCppExpression = "GGS_string (filewrapperTemplate_" + self.mFilewrapperName.identifierRepresentation + "_" + self.mFilewrapperTemplateName.identifierRepresentation
                   + " (" + compilerCppName ()
-  for (mValue) in parameterList do
-    outCppExpression += ", " + mValue
+  for value in parameterList do
+    outCppExpression += ", " + value
   end
   !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
   outCppExpression += self.mLocation.commaSourceFile + "))"
