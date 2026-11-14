@@ -32,7 +32,7 @@
 
 class Compiler ;
 class GGS_uint64 ;
-class GGS_application ;
+class GGS_string ;
 class GGS_bigint ;
 class GGS_binaryset ;
 class GGS_bool ;
@@ -43,10 +43,10 @@ class GGS_filewrapper ;
 class GGS_location ;
 class GGS_sint ;
 class GGS_sint64 ;
-class GGS_string ;
 class GGS_uint ;
 class GGS_stringset ;
 class GGS_timer ;
+class GGS_application ;
 
 //--------------------------------------------------------------------------------------------------
 //  @uint64 type
@@ -256,108 +256,435 @@ class GGS_uint_36__34_ : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_uint_36__34_ ;
 
 //--------------------------------------------------------------------------------------------------
-//@application package
+//   @string type
 //--------------------------------------------------------------------------------------------------
 
-class GGS_application final {
+class GGS_string : public AC_GALGAS_root {
+//--------------------------------- Private data members
+  private: bool mIsValid ;
+  private: String mString ;
 
-//-- Start of package generic part
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+  public: inline String stringValue (void) const { return mString ; }
 
-//--------------------------------- GALGAS class getters
-  public: static class GGS_string class_func_boolOptionCommentString (const class GGS_string & inOperand0,
-                                                                      const class GGS_string & inOperand1
+//--------------------------------- Default constructor
+  public: GGS_string (void) ;
+
+//--------------------------------- Constructor for making an empty string
+  public: static GGS_string makeEmptyString (void) ;
+
+//--------------------------------- Native constructor
+  public: GGS_string (const String & inValue) ;
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (const char * inPropertyName) const override ;
+  #endif
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_string class_func_CppChar (const class GGS_char & inOperand0
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_CppLineComment (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_CppSpaceComment (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_CppString (const class GGS_string & inOperand0
+                                                        COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_CppTitleComment (const class GGS_string & inOperand0
+                                                              COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_componentsJoinedByString (const class GGS__5B_string_5D_ & inOperand0,
+                                                                       const class GGS_string & inOperand1
+                                                                       COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_homeDirectory (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_newWithStdIn (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_retrieveAndResetTemplateString (Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_separatorString (Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_stringByRepeatingString (const class GGS_string & inOperand0,
+                                                                      const class GGS_uint & inOperand1
                                                                       COMMA_LOCATION_ARGS) ;
 
-  public: static class GGS_char class_func_boolOptionInvocationCharacter (const class GGS_string & inOperand0,
-                                                                          const class GGS_string & inOperand1
-                                                                          COMMA_LOCATION_ARGS) ;
+  public: static class GGS_string class_func_stringWithContentsOfFile (const class GGS_string & inOperand0,
+                                                                       class Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
-  public: static class GGS_string class_func_boolOptionInvocationString (const class GGS_string & inOperand0,
-                                                                         const class GGS_string & inOperand1
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static class GGS_string class_func_stringWithCurrentDateTime (LOCATION_ARGS) ;
 
-  public: static class GGS__32_stringlist class_func_boolOptionNameList (LOCATION_ARGS) ;
+  public: static class GGS_string class_func_stringWithCurrentDirectory (LOCATION_ARGS) ;
 
-  public: static class GGS_bool class_func_boolOptionValue (const class GGS_string & inOperand0,
-                                                            const class GGS_string & inOperand1
-                                                            COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_commandLineArgumentAtIndex (const class GGS_uint & inOperand0,
-                                                                         class Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_uint class_func_commandLineArgumentCount (LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_galgasVersionString (LOCATION_ARGS) ;
-
-  public: static class GGS_stringset class_func_keywordIdentifierSet (LOCATION_ARGS) ;
-
-  public: static class GGS__5B_string_5D_ class_func_keywordListForIdentifier (const class GGS_string & inOperand0
-                                                                               COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_projectVersionString (LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_stringOptionCommentString (const class GGS_string & inOperand0,
-                                                                        const class GGS_string & inOperand1
-                                                                        COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_char class_func_stringOptionInvocationCharacter (const class GGS_string & inOperand0,
-                                                                            const class GGS_string & inOperand1
+  public: static class GGS_string class_func_stringWithEnvironmentVariable (const class GGS_string & inOperand0,
+                                                                            class Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
 
-  public: static class GGS_string class_func_stringOptionInvocationString (const class GGS_string & inOperand0,
-                                                                           const class GGS_string & inOperand1
-                                                                           COMMA_LOCATION_ARGS) ;
+  public: static class GGS_string class_func_stringWithEnvironmentVariableOrEmpty (const class GGS_string & inOperand0
+                                                                                   COMMA_LOCATION_ARGS) ;
 
-  public: static class GGS__32_stringlist class_func_stringOptionNameList (LOCATION_ARGS) ;
+  public: static class GGS_string class_func_stringWithSequenceOfCharacters (const class GGS_char & inOperand0,
+                                                                             const class GGS_uint & inOperand1
+                                                                             COMMA_LOCATION_ARGS) ;
 
-  public: static class GGS_string class_func_stringOptionValue (const class GGS_string & inOperand0,
-                                                                const class GGS_string & inOperand1
-                                                                COMMA_LOCATION_ARGS) ;
+  public: static class GGS_string class_func_stringWithSourceFilePath (Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
 
-  public: static class GGS_string class_func_system (LOCATION_ARGS) ;
+  public: static class GGS_string class_func_stringWithSymbolicLinkContents (const class GGS_string & inOperand0,
+                                                                             class Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
-  public: static class GGS_string class_func_uintOptionCommentString (const class GGS_string & inOperand0,
-                                                                      const class GGS_string & inOperand1
-                                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator (with expression)
+  public: void plusAssignOperation (const GGS_string inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
 
-  public: static class GGS_char class_func_uintOptionInvocationCharacter (const class GGS_string & inOperand0,
-                                                                          const class GGS_string & inOperand1
-                                                                          COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS_string add_operation (const GGS_string & inOperand,
+                                    Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) const ;
 
-  public: static class GGS_string class_func_uintOptionInvocationString (const class GGS_string & inOperand0,
-                                                                         const class GGS_string & inOperand1
-                                                                         COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_string & inOperand) const ;
 
-  public: static class GGS__32_stringlist class_func_uintOptionNameList (LOCATION_ARGS) ;
+//--------------------------------- Setters
+  public: void setter_appendSpacesUntilColumn (class GGS_uint constinArgument0,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 
-  public: static class GGS_uint class_func_uintOptionValue (const class GGS_string & inOperand0,
-                                                            const class GGS_string & inOperand1
-                                                            COMMA_LOCATION_ARGS) ;
+  public: void setter_decIndentation (class GGS_uint constinArgument0,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
 
-  public: static class GGS_bool class_func_verboseOutput (LOCATION_ARGS) ;
+  public: void setter_incIndentation (class GGS_uint constinArgument0,
+                                      Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insertCharacterAtIndex (class GGS_char constinArgument0,
+                                              class GGS_uint constinArgument1,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeCharacterAtIndex (class GGS_char & outArgument0,
+                                              class GGS_uint constinArgument1,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setCapacity (class GGS_uint constinArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setCharacterAtIndex (class GGS_char constinArgument0,
+                                           class GGS_uint constinArgument1,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_makeDirectory (Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) const ;
+
+  public: void method_makeDirectoryAndWriteToExecutableFile (class GGS_string constinArgument0,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const ;
+
+  public: void method_makeDirectoryAndWriteToFile (class GGS_string constinArgument0,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
+
+  public: void method_makeSymbolicLinkWithPath (class GGS_string constinArgument0,
+                                                Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const ;
+
+  public: void method_writeToExecutableFile (class GGS_string constinArgument0,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: void method_writeToExecutableFileWhenDifferentContents (class GGS_string constinArgument0,
+                                                                  class GGS_bool & outArgument1,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: void method_writeToFile (class GGS_string constinArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) const ;
+
+  public: void method_writeToFileWhenDifferentContents (class GGS_string constinArgument0,
+                                                        class GGS_bool & outArgument1,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
-  public: static void class_method_exit (class GGS_uint constinArgument0
-                                         COMMA_LOCATION_ARGS) ;
+  public: static void class_method_deleteFile (class GGS_string constinArgument0,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 
-  public: static void class_method_setBoolOptionValue (class GGS_string constinArgument0,
-                                                       class GGS_string constinArgument1,
-                                                       class GGS_bool constinArgument2
+  public: static void class_method_deleteFileIfExists (class GGS_string constinArgument0,
+                                                       Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
-  public: static void class_method_setStringOptionValue (class GGS_string constinArgument0,
-                                                         class GGS_string constinArgument1,
-                                                         class GGS_string constinArgument2
+  public: static void class_method_generateFile (class GGS_string constinArgument0,
+                                                 class GGS_string constinArgument1,
+                                                 class GGS_string constinArgument2,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+  public: static void class_method_generateFileWithPattern (class GGS_string constinArgument0,
+                                                            class GGS_string constinArgument1,
+                                                            class GGS_string constinArgument2,
+                                                            class GGS_string constinArgument3,
+                                                            class GGS_string constinArgument4,
+                                                            class GGS_string constinArgument5,
+                                                            class GGS_string constinArgument6,
+                                                            class GGS_string constinArgument7,
+                                                            class GGS_bool constinArgument8,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public: static void class_method_removeDirectoryRecursively (class GGS_string constinArgument0,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+  public: static void class_method_removeEmptyDirectory (class GGS_string constinArgument0,
+                                                         Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
-  public: static void class_method_setUIntOptionValue (class GGS_string constinArgument0,
-                                                       class GGS_string constinArgument1,
-                                                       class GGS_uint constinArgument2
-                                                       COMMA_LOCATION_ARGS) ;
 
+//--------------------------------- Getters
+  public: class GGS_string getter_HTMLRepresentation (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_absolutePathFromPath (const class GGS_string & constinOperand0
+                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_assemblerRepresentation (LOCATION_ARGS) const ;
+
+  public: class GGS_bigint_3F_ getter_bigint (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_cStringRepresentation (LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_capacity (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_capitalizingFirstCharacter (LOCATION_ARGS) const ;
+
+  public: class GGS_char getter_characterAtIndex (const class GGS_uint & constinOperand0,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_sint getter_commandWithArguments (const class GGS__5B_string_5D_ & constinOperand0,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_string_5D_ getter_componentsSeparatedByString (const class GGS_string & constinOperand0
+                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_containsCharacter (const class GGS_char & constinOperand0
+                                                   COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_containsCharacterInRange (const class GGS_char & constinOperand0,
+                                                          const class GGS_char & constinOperand1
+                                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_currentColumn (LOCATION_ARGS) const ;
+
+  public: class GGS_sint_36__34_ getter_decimalSigned_36__34_Number (Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bigint getter_decimalSignedBigInt (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_sint getter_decimalSignedNumber (Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint_36__34_ getter_decimalUnsigned_36__34_Number (Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_decimalUnsignedNumber (Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_decodedStringFromRepresentation (Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_deletingLastPathComponent (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_deletingPathExtension (LOCATION_ARGS) const ;
+
+  public: class GGS__5B_string_5D_ getter_directories (const class GGS_bool & constinOperand0
+                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_string_5D_ getter_directoriesWithExtensions (const class GGS_bool & constinOperand0,
+                                                                     const class GGS__5B_string_5D_ & constinOperand1
+                                                                     COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_directoryExists (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_doesEnvironmentVariableExist (LOCATION_ARGS) const ;
+
+  public: class GGS_double getter_doubleNumber (Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_fileExists (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_fileNameRepresentation (LOCATION_ARGS) const ;
+
+  public: class GGS_char getter_firstCharacterOrNul (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_hasPrefix (const class GGS_string & constinOperand0
+                                           COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_hasSuffix (const class GGS_string & constinOperand0
+                                           COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_lstring getter_here (Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_hiddenCommandWithArguments (const class GGS__5B_string_5D_ & constinOperand0,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_string_5D_ getter_hiddenFiles (const class GGS_bool & constinOperand0
+                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_identifierRepresentation (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isDecimalSigned_36__34_Number (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isDecimalSignedBigInt (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isDecimalSignedNumber (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isDecimalUnsigned_36__34_Number (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isDecimalUnsignedNumber (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isDoubleNumber (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_isSymbolicLink (LOCATION_ARGS) const ;
+
+  public: class GGS_char getter_lastCharacter (Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_lastPathComponent (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_leftAndRightPadding (const class GGS_uint & constinOperand0,
+                                                       const class GGS_char & constinOperand1
+                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_leftPadding (const class GGS_uint & constinOperand0,
+                                               const class GGS_char & constinOperand1
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_leftSubString (const class GGS_uint & constinOperand0
+                                                 COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_lowercased (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_md_35_ (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_nameRepresentation (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_nativePathWithUnixPath (LOCATION_ARGS) const ;
+
+  public: class GGS_lstring getter_nowhere (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_pathExtension (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_popen (Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_range getter_range (LOCATION_ARGS) const ;
+
+  public: class GGS__5B_string_5D_ getter_regularFiles (const class GGS_bool & constinOperand0
+                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_string_5D_ getter_regularFilesWithExtensions (const class GGS_bool & constinOperand0,
+                                                                      const class GGS__5B_string_5D_ & constinOperand1
+                                                                      COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_relativePathFromPath (const class GGS_string & constinOperand0
+                                                        COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_removingCharacterAtIndex (const class GGS_uint & constinOperand0,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_removingFirst (Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_replacing (const class GGS_string & constinOperand0,
+                                             const class GGS_string & constinOperand1,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_reversed (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_rightPadding (const class GGS_uint & constinOperand0,
+                                                const class GGS_char & constinOperand1
+                                                COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_rightSubString (const class GGS_uint & constinOperand0
+                                                  COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_sha_32__35__36_ (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_standardizedPath (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_subString (const class GGS_uint & constinOperand0,
+                                             const class GGS_uint & constinOperand1
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_subStringFromIndex (const class GGS_uint & constinOperand0
+                                                      COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_sint getter_system (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_trimmingSpaces (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_unixPathWithNativePath (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_uppercased (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_utf_33__32_Representation (const class GGS_bool & constinOperand0
+                                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_utf_38_Length (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_utf_38_Representation (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_utf_38_RepresentationEnclosedWithin (const class GGS_char & constinOperand0
+                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_utf_38_RepresentationEscapingQuestionMark (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_utf_38_RepresentationWithUnicodeEscaping (LOCATION_ARGS) const ;
+
+  public: class GGS_string getter_utf_38_RepresentationWithoutDelimiters (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 
 } ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_string ;
 
 //--------------------------------------------------------------------------------------------------
 //   @bigint type
@@ -2018,437 +2345,6 @@ class GGS_sint_36__34_ : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_sint_36__34_ ;
 
 //--------------------------------------------------------------------------------------------------
-//   @string type
-//--------------------------------------------------------------------------------------------------
-
-class GGS_string : public AC_GALGAS_root {
-//--------------------------------- Private data members
-  private: bool mIsValid ;
-  private: String mString ;
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const override { return mIsValid ; }
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-  public: inline String stringValue (void) const { return mString ; }
-
-//--------------------------------- Default constructor
-  public: GGS_string (void) ;
-
-//--------------------------------- Constructor for making an empty string
-  public: static GGS_string makeEmptyString (void) ;
-
-//--------------------------------- Native constructor
-  public: GGS_string (const String & inValue) ;
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (const char * inPropertyName) const override ;
-  #endif
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_string class_func_CppChar (const class GGS_char & inOperand0
-                                                      COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_CppLineComment (LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_CppSpaceComment (LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_CppString (const class GGS_string & inOperand0
-                                                        COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_CppTitleComment (const class GGS_string & inOperand0
-                                                              COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_componentsJoinedByString (const class GGS__5B_string_5D_ & inOperand0,
-                                                                       const class GGS_string & inOperand1
-                                                                       COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_homeDirectory (LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_newWithStdIn (LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_retrieveAndResetTemplateString (Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_separatorString (Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_stringByRepeatingString (const class GGS_string & inOperand0,
-                                                                      const class GGS_uint & inOperand1
-                                                                      COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_stringWithContentsOfFile (const class GGS_string & inOperand0,
-                                                                       class Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_stringWithCurrentDateTime (LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_stringWithCurrentDirectory (LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_stringWithEnvironmentVariable (const class GGS_string & inOperand0,
-                                                                            class Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_stringWithEnvironmentVariableOrEmpty (const class GGS_string & inOperand0
-                                                                                   COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_stringWithSequenceOfCharacters (const class GGS_char & inOperand0,
-                                                                             const class GGS_uint & inOperand1
-                                                                             COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_stringWithSourceFilePath (Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-  public: static class GGS_string class_func_stringWithSymbolicLinkContents (const class GGS_string & inOperand0,
-                                                                             class Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: void plusAssignOperation (const GGS_string inOperand,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- + operator
-  public: GGS_string add_operation (const GGS_string & inOperand,
-                                    Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_string & inOperand) const ;
-
-//--------------------------------- Setters
-  public: void setter_appendSpacesUntilColumn (class GGS_uint constinArgument0,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-  public: void setter_decIndentation (class GGS_uint constinArgument0,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-  public: void setter_incIndentation (class GGS_uint constinArgument0,
-                                      Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-  public: void setter_insertCharacterAtIndex (class GGS_char constinArgument0,
-                                              class GGS_uint constinArgument1,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeCharacterAtIndex (class GGS_char & outArgument0,
-                                              class GGS_uint constinArgument1,
-                                              Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setCapacity (class GGS_uint constinArgument0,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setCharacterAtIndex (class GGS_char constinArgument0,
-                                           class GGS_uint constinArgument1,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: void method_makeDirectory (Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) const ;
-
-  public: void method_makeDirectoryAndWriteToExecutableFile (class GGS_string constinArgument0,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_makeDirectoryAndWriteToFile (class GGS_string constinArgument0,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const ;
-
-  public: void method_makeSymbolicLinkWithPath (class GGS_string constinArgument0,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
-
-  public: void method_writeToExecutableFile (class GGS_string constinArgument0,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_writeToExecutableFileWhenDifferentContents (class GGS_string constinArgument0,
-                                                                  class GGS_bool & outArgument1,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: void method_writeToFile (class GGS_string constinArgument0,
-                                   Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) const ;
-
-  public: void method_writeToFileWhenDifferentContents (class GGS_string constinArgument0,
-                                                        class GGS_bool & outArgument1,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-  public: static void class_method_deleteFile (class GGS_string constinArgument0,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-  public: static void class_method_deleteFileIfExists (class GGS_string constinArgument0,
-                                                       Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-  public: static void class_method_generateFile (class GGS_string constinArgument0,
-                                                 class GGS_string constinArgument1,
-                                                 class GGS_string constinArgument2,
-                                                 Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-  public: static void class_method_generateFileWithPattern (class GGS_string constinArgument0,
-                                                            class GGS_string constinArgument1,
-                                                            class GGS_string constinArgument2,
-                                                            class GGS_string constinArgument3,
-                                                            class GGS_string constinArgument4,
-                                                            class GGS_string constinArgument5,
-                                                            class GGS_string constinArgument6,
-                                                            class GGS_string constinArgument7,
-                                                            class GGS_bool constinArgument8,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-  public: static void class_method_removeDirectoryRecursively (class GGS_string constinArgument0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
-  public: static void class_method_removeEmptyDirectory (class GGS_string constinArgument0,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Getters
-  public: class GGS_string getter_HTMLRepresentation (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_absolutePathFromPath (const class GGS_string & constinOperand0
-                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_assemblerRepresentation (LOCATION_ARGS) const ;
-
-  public: class GGS_bigint_3F_ getter_bigint (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_cStringRepresentation (LOCATION_ARGS) const ;
-
-  public: class GGS_uint getter_capacity (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_capitalizingFirstCharacter (LOCATION_ARGS) const ;
-
-  public: class GGS_char getter_characterAtIndex (const class GGS_uint & constinOperand0,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_sint getter_commandWithArguments (const class GGS__5B_string_5D_ & constinOperand0,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__5B_string_5D_ getter_componentsSeparatedByString (const class GGS_string & constinOperand0
-                                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_containsCharacter (const class GGS_char & constinOperand0
-                                                   COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_containsCharacterInRange (const class GGS_char & constinOperand0,
-                                                          const class GGS_char & constinOperand1
-                                                          COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
-
-  public: class GGS_uint getter_currentColumn (LOCATION_ARGS) const ;
-
-  public: class GGS_sint_36__34_ getter_decimalSigned_36__34_Number (Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_bigint getter_decimalSignedBigInt (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_sint getter_decimalSignedNumber (Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_uint_36__34_ getter_decimalUnsigned_36__34_Number (Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_uint getter_decimalUnsignedNumber (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_decodedStringFromRepresentation (Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_deletingLastPathComponent (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_deletingPathExtension (LOCATION_ARGS) const ;
-
-  public: class GGS__5B_string_5D_ getter_directories (const class GGS_bool & constinOperand0
-                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__5B_string_5D_ getter_directoriesWithExtensions (const class GGS_bool & constinOperand0,
-                                                                     const class GGS__5B_string_5D_ & constinOperand1
-                                                                     COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_directoryExists (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_doesEnvironmentVariableExist (LOCATION_ARGS) const ;
-
-  public: class GGS_double getter_doubleNumber (Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_fileExists (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_fileNameRepresentation (LOCATION_ARGS) const ;
-
-  public: class GGS_char getter_firstCharacterOrNul (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_hasPrefix (const class GGS_string & constinOperand0
-                                           COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_hasSuffix (const class GGS_string & constinOperand0
-                                           COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_lstring getter_here (Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_hiddenCommandWithArguments (const class GGS__5B_string_5D_ & constinOperand0,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__5B_string_5D_ getter_hiddenFiles (const class GGS_bool & constinOperand0
-                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_identifierRepresentation (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isDecimalSigned_36__34_Number (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isDecimalSignedBigInt (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isDecimalSignedNumber (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isDecimalUnsigned_36__34_Number (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isDecimalUnsignedNumber (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isDoubleNumber (LOCATION_ARGS) const ;
-
-  public: class GGS_bool getter_isSymbolicLink (LOCATION_ARGS) const ;
-
-  public: class GGS_char getter_lastCharacter (Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_lastPathComponent (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_leftAndRightPadding (const class GGS_uint & constinOperand0,
-                                                       const class GGS_char & constinOperand1
-                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_leftPadding (const class GGS_uint & constinOperand0,
-                                               const class GGS_char & constinOperand1
-                                               COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_leftSubString (const class GGS_uint & constinOperand0
-                                                 COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_lowercased (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_md_35_ (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_nameRepresentation (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_nativePathWithUnixPath (LOCATION_ARGS) const ;
-
-  public: class GGS_lstring getter_nowhere (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_pathExtension (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_popen (Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
-
-  public: class GGS__5B_string_5D_ getter_regularFiles (const class GGS_bool & constinOperand0
-                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__5B_string_5D_ getter_regularFilesWithExtensions (const class GGS_bool & constinOperand0,
-                                                                      const class GGS__5B_string_5D_ & constinOperand1
-                                                                      COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_relativePathFromPath (const class GGS_string & constinOperand0
-                                                        COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_removingCharacterAtIndex (const class GGS_uint & constinOperand0,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_removingFirst (Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_replacing (const class GGS_string & constinOperand0,
-                                             const class GGS_string & constinOperand1,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_reversed (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_rightPadding (const class GGS_uint & constinOperand0,
-                                                const class GGS_char & constinOperand1
-                                                COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_rightSubString (const class GGS_uint & constinOperand0
-                                                  COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_sha_32__35__36_ (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_standardizedPath (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_subString (const class GGS_uint & constinOperand0,
-                                             const class GGS_uint & constinOperand1
-                                             COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_subStringFromIndex (const class GGS_uint & constinOperand0
-                                                      COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_sint getter_system (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_trimmingSpaces (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_unixPathWithNativePath (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_uppercased (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_utf_33__32_Representation (const class GGS_bool & constinOperand0
-                                                             COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_uint getter_utf_38_Length (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_utf_38_Representation (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_utf_38_RepresentationEnclosedWithin (const class GGS_char & constinOperand0
-                                                                       COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_utf_38_RepresentationEscapingQuestionMark (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_utf_38_RepresentationWithUnicodeEscaping (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_utf_38_RepresentationWithoutDelimiters (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_string ;
-
-//--------------------------------------------------------------------------------------------------
 //   @uint type
 //--------------------------------------------------------------------------------------------------
 
@@ -2988,6 +2884,110 @@ class GGS_timer : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_timer ;
 
 //--------------------------------------------------------------------------------------------------
+//@application package
+//--------------------------------------------------------------------------------------------------
+
+class GGS_application final {
+
+//-- Start of package generic part
+
+//--------------------------------- GALGAS class getters
+  public: static class GGS_string class_func_boolOptionCommentString (const class GGS_string & inOperand0,
+                                                                      const class GGS_string & inOperand1
+                                                                      COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_char class_func_boolOptionInvocationCharacter (const class GGS_string & inOperand0,
+                                                                          const class GGS_string & inOperand1
+                                                                          COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_boolOptionInvocationString (const class GGS_string & inOperand0,
+                                                                         const class GGS_string & inOperand1
+                                                                         COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS__5B_NameValue_5D_ class_func_boolOptionNameList (LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_boolOptionValue (const class GGS_string & inOperand0,
+                                                            const class GGS_string & inOperand1
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_commandLineArgumentAtIndex (const class GGS_uint & inOperand0,
+                                                                         class Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_uint class_func_commandLineArgumentCount (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_galgasVersionString (LOCATION_ARGS) ;
+
+  public: static class GGS_stringset class_func_keywordIdentifierSet (LOCATION_ARGS) ;
+
+  public: static class GGS__5B_string_5D_ class_func_keywordListForIdentifier (const class GGS_string & inOperand0
+                                                                               COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_projectVersionString (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_stringOptionCommentString (const class GGS_string & inOperand0,
+                                                                        const class GGS_string & inOperand1
+                                                                        COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_char class_func_stringOptionInvocationCharacter (const class GGS_string & inOperand0,
+                                                                            const class GGS_string & inOperand1
+                                                                            COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_stringOptionInvocationString (const class GGS_string & inOperand0,
+                                                                           const class GGS_string & inOperand1
+                                                                           COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS__5B_NameValue_5D_ class_func_stringOptionNameList (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_stringOptionValue (const class GGS_string & inOperand0,
+                                                                const class GGS_string & inOperand1
+                                                                COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_system (LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_uintOptionCommentString (const class GGS_string & inOperand0,
+                                                                      const class GGS_string & inOperand1
+                                                                      COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_char class_func_uintOptionInvocationCharacter (const class GGS_string & inOperand0,
+                                                                          const class GGS_string & inOperand1
+                                                                          COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_string class_func_uintOptionInvocationString (const class GGS_string & inOperand0,
+                                                                         const class GGS_string & inOperand1
+                                                                         COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS__5B_NameValue_5D_ class_func_uintOptionNameList (LOCATION_ARGS) ;
+
+  public: static class GGS_uint class_func_uintOptionValue (const class GGS_string & inOperand0,
+                                                            const class GGS_string & inOperand1
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public: static class GGS_bool class_func_verboseOutput (LOCATION_ARGS) ;
+
+//--------------------------------- Class Methods
+  public: static void class_method_exit (class GGS_uint constinArgument0
+                                         COMMA_LOCATION_ARGS) ;
+
+  public: static void class_method_setBoolOptionValue (class GGS_string constinArgument0,
+                                                       class GGS_string constinArgument1,
+                                                       class GGS_bool constinArgument2
+                                                       COMMA_LOCATION_ARGS) ;
+
+  public: static void class_method_setStringOptionValue (class GGS_string constinArgument0,
+                                                         class GGS_string constinArgument1,
+                                                         class GGS_string constinArgument2
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public: static void class_method_setUIntOptionValue (class GGS_string constinArgument0,
+                                                       class GGS_string constinArgument1,
+                                                       class GGS_uint constinArgument2
+                                                       COMMA_LOCATION_ARGS) ;
+
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: [uint64] array
 //--------------------------------------------------------------------------------------------------
 
@@ -3162,6 +3162,182 @@ class GGS__5B_uint_36__34__5D_ final : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_uint_36__34__5D_ ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: [NameValue] array
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator__5B_NameValue_5D_ final {
+//--- Constructor
+  public: DownEnumerator__5B_NameValue_5D_ (const class GGS__5B_NameValue_5D_ & inOperand) ;
+
+//--- No copy
+  private: DownEnumerator__5B_NameValue_5D_ (const DownEnumerator__5B_NameValue_5D_ &) = delete ;
+  private: DownEnumerator__5B_NameValue_5D_ & operator = (const DownEnumerator__5B_NameValue_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent >= 0 ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent -= 1 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_NameValue current (LOCATION_ARGS) const ;
+  public: class GGS_NameValue current_entry (LOCATION_ARGS) const ; // Pour instruction for dans template
+
+//---- Properties
+  private: const GenericArray <GGS_NameValue> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator__5B_NameValue_5D_ final {
+//--- Constructor
+  public: UpEnumerator__5B_NameValue_5D_ (const class GGS__5B_NameValue_5D_ & inOperand) ;
+
+//--- No copy
+  private: UpEnumerator__5B_NameValue_5D_ (const UpEnumerator__5B_NameValue_5D_ &) = delete ;
+  private: UpEnumerator__5B_NameValue_5D_ & operator = (const UpEnumerator__5B_NameValue_5D_ &) = delete ;
+
+//---
+  public: inline bool hasCurrentObject (void) const { return mCurrent < mSharedArray.count () ; }
+
+//---
+  public: inline void gotoNextObject (void) { mCurrent += 1 ; }
+
+//---
+  public: inline void rewind (void) { mCurrent = 0 ; }
+  public: inline int32_t index (void) { return mCurrent ; }
+
+//--- Current element access
+  public: class GGS_NameValue current (LOCATION_ARGS) const ;
+  public: class GGS_NameValue current_entry (LOCATION_ARGS) const ;
+
+//---- Properties
+  private: const GenericArray <GGS_NameValue> mSharedArray ;
+  private: int32_t mCurrent ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS__5B_NameValue_5D_ final : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GenericArray <GGS_NameValue> mSharedArray ;
+  private: bool mIsValid ;
+
+//--------------------------------- Default constructor
+  public: GGS__5B_NameValue_5D_ (void) ;
+
+//--------------------------------- Handle copy
+  public: GGS__5B_NameValue_5D_ (const GGS__5B_NameValue_5D_ & inSource) ;
+  public: GGS__5B_NameValue_5D_ & operator = (const GGS__5B_NameValue_5D_ & inSource) ;
+
+//--------------------------------- Direct access
+  public: void removeAll (void) ;
+  public: inline uint32_t count (void) const { return uint32_t (mSharedArray.count ()) ; }
+
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override { return mIsValid ; }
+
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS__5B_NameValue_5D_ init (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+//--------------------------------- += operator (with expression)
+  public: void plusAssignOperation (const GGS__5B_NameValue_5D_ inOperand,
+                                    class Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- ++= operator, collection value
+  public: void plusPlusAssignOperation (const GGS_NameValue & inOperand
+                                        COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public: GGS__5B_NameValue_5D_ add_operation (const GGS__5B_NameValue_5D_ & inOperand,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public: void setter_append (class GGS_NameValue constinArgument0,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_insert (class GGS_NameValue constinArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_remove (class GGS_NameValue & outArgument0,
+                              class GGS_uint constinArgument1,
+                              Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeAll (Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeFirst (class GGS_NameValue & outArgument0,
+                                   Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public: void setter_removeLast (class GGS_NameValue & outArgument0,
+                                  Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
+
+  public: void setter_set (class GGS_NameValue constinArgument0,
+                           class GGS_uint constinArgument1,
+                           Compiler * inCompiler
+                           COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_NameValue getter_first (Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_NameValue getter_last (Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_NameValue_5D_ getter_removingFirst (const class GGS_uint & constinOperand0,
+                                                            Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_NameValue_5D_ getter_sublist (const class GGS_uint & constinOperand0,
+                                                      const class GGS_uint & constinOperand1,
+                                                      Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subscripts
+  public: class GGS_NameValue readSubscript__3F_ (const class GGS_uint & in0,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator__5B_NameValue_5D_ ;
+  friend class DownEnumerator__5B_NameValue_5D_ ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_NameValue_5D_ ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: [string] array
@@ -4387,238 +4563,6 @@ class GGS_luint_36__34_ : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_luint_36__34_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @_32_stringlist list enumerator
-//--------------------------------------------------------------------------------------------------
-
-class DownEnumerator__32_stringlist final {
-  public: DownEnumerator__32_stringlist (const class GGS__32_stringlist & inList) ;
-
-  public: ~ DownEnumerator__32_stringlist (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
-
-  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_string current_mValue_30_ (LOCATION_ARGS) const ;
-  public: class GGS_string current_mValue_31_ (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS__32_stringlist_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS__32_stringlist_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: DownEnumerator__32_stringlist (const DownEnumerator__32_stringlist &) = delete ;
-  private: DownEnumerator__32_stringlist & operator = (const DownEnumerator__32_stringlist &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-class UpEnumerator__32_stringlist final {
-  public: UpEnumerator__32_stringlist (const class GGS__32_stringlist & inList)  ;
-
-  public: ~ UpEnumerator__32_stringlist (void) = default ;
-
-  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
-
-  public: inline void gotoNextObject (void) { mIndex += 1 ; }
-
-  public: inline void rewind (void) { mIndex = 0 ; }
-
-  public: inline uint32_t index (void) { return uint32_t (mIndex) ; }
-
-  public: class GGS_string current_mValue_30_ (LOCATION_ARGS) const ;
-  public: class GGS_string current_mValue_31_ (LOCATION_ARGS) const ;
-//--- Current element access
-  public: class GGS__32_stringlist_2E_element current (LOCATION_ARGS) const ;
-
-  private: GenericArray <GGS__32_stringlist_2E_element> mArray ;
-  private: int32_t mIndex ;
-
-  private: UpEnumerator__32_stringlist (const UpEnumerator__32_stringlist &) = delete ;
-  private: UpEnumerator__32_stringlist & operator = (const UpEnumerator__32_stringlist &) = delete ;
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// @2stringlist list
-//--------------------------------------------------------------------------------------------------
-
-class GGS__32_stringlist : public AC_GALGAS_root {
-//--- Private property
-  private: GenericArray <GGS__32_stringlist_2E_element> mArray ;
-
-//--- Default constructor
-  public: GGS__32_stringlist (void) ;
-
-//--- Destructor
-  public: virtual ~ GGS__32_stringlist (void) = default ;
-
-//--- Copy
-  public: GGS__32_stringlist (const GGS__32_stringlist &) = default ;
-  public: GGS__32_stringlist & operator = (const GGS__32_stringlist &) = default ;
-
-//--- Is valid
-  public: inline bool isValid (void) const override { return mArray.isAllocated () ; }
-
-//--- Drop
-  public: inline virtual void drop (void) override { mArray.removeAll () ; }
-
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Count
-  public: inline uint32_t count (void) const { return uint32_t (mArray.count ()) ; }
- 
-//--- sortedElementArray
-  public : inline GenericArray <GGS__32_stringlist_2E_element> sortedElementArray (void) const {
-    return mArray ;
-  }
-
-//--- subList
-  private: GGS__32_stringlist subList (const int32_t inStart,
-                                       const int32_t inLength,
-                                       Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) const ;
-
-
-//--- List constructor for graph
-  public: GGS__32_stringlist (const CollectionElementArray & inSharedArray) ;
-
-//--- Element constructor
-  public: static void makeAttributesFromObjects (CollectionElement & outAttributes,
-                                                 const class GGS_string & in_mValue_30_,
-                                                 const class GGS_string & in_mValue_31_
-                                                 COMMA_LOCATION_ARGS) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS__32_stringlist init (Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-//--------------------------------- GALGAS class functions
-  public: static class GGS__32_stringlist class_func_listWithValue (const class GGS_string & inOperand0,
-                                                                    const class GGS_string & inOperand1
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public: void plusAssignOperation (const GGS__32_stringlist inOperand,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_string & inOperand0,
-                                   const class GGS_string & inOperand1
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator, collection value
-  public: void plusPlusAssignOperation (const GGS__32_stringlist_2E_element & inOperand
-                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public: GGS__32_stringlist add_operation (const GGS__32_stringlist & inOperand,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS__32_stringlist & inOperand) const ;
-
-//--------------------------------- Setters
-  public: void setter_append (class GGS_string constinArgument0,
-                              class GGS_string constinArgument1,
-                              Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
-
-  public: void setter_insertAtIndex (class GGS_string constinArgument0,
-                                     class GGS_string constinArgument1,
-                                     class GGS_uint constinArgument2,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popFirst (class GGS_string & outArgument0,
-                                class GGS_string & outArgument1,
-                                Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
-
-  public: void setter_popLast (class GGS_string & outArgument0,
-                               class GGS_string & outArgument1,
-                               Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
-
-  public: void setter_removeAtIndex (class GGS_string & outArgument0,
-                                     class GGS_string & outArgument1,
-                                     class GGS_uint constinArgument2,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMValue_30_AtIndex (class GGS_string constinArgument0,
-                                            class GGS_uint constinArgument1,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-
-  public: void setter_setMValue_31_AtIndex (class GGS_string constinArgument0,
-                                            class GGS_uint constinArgument1,
-                                            Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public: void method_first (class GGS_string & outArgument0,
-                             class GGS_string & outArgument1,
-                             Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const ;
-
-  public: void method_last (class GGS_string & outArgument0,
-                            class GGS_string & outArgument1,
-                            Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_mValue_30_AtIndex (const class GGS_uint & constinOperand0,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_string getter_mValue_31_AtIndex (const class GGS_uint & constinOperand0,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS_range getter_range (LOCATION_ARGS) const ;
-
-  public: class GGS__32_stringlist getter_subListFromIndex (const class GGS_uint & constinOperand0,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__32_stringlist getter_subListToIndex (const class GGS_uint & constinOperand0,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const ;
-
-  public: class GGS__32_stringlist getter_subListWithRange (const class GGS_range & constinOperand0,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-//--------------------------------- Friend
-  friend class UpEnumerator__32_stringlist ;
-  friend class DownEnumerator__32_stringlist ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__32_stringlist ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @range struct
 //--------------------------------------------------------------------------------------------------
 
@@ -4766,19 +4710,19 @@ class GGS_bigint_3F_ : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_bigint_3F_ ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @_32_stringlist_2E_element struct
+// Phase 1: @NameValue struct
 //--------------------------------------------------------------------------------------------------
 
-class GGS__32_stringlist_2E_element : public AC_GALGAS_root {
+class GGS_NameValue : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public: GGS_string mProperty_mValue_30_ ;
-  public: inline GGS_string readProperty_mValue_30_ (void) const {
-    return mProperty_mValue_30_ ;
+  public: GGS_string mProperty_name ;
+  public: inline GGS_string readProperty_name (void) const {
+    return mProperty_name ;
   }
 
-  public: GGS_string mProperty_mValue_31_ ;
-  public: inline GGS_string readProperty_mValue_31_ (void) const {
-    return mProperty_mValue_31_ ;
+  public: GGS_string mProperty_value ;
+  public: inline GGS_string readProperty_value (void) const {
+    return mProperty_value ;
   }
 
 //--------------------------------- Accessors
@@ -4786,42 +4730,42 @@ class GGS__32_stringlist_2E_element : public AC_GALGAS_root {
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
 
 //--------------------------------- Default constructor
-  public: GGS__32_stringlist_2E_element (void) ;
+  public: GGS_NameValue (void) ;
 
 //--------------------------------- Property setters
-  public: inline void setter_setMValue_30_ (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mValue_30_ = inValue ;
+  public: inline void setter_setName (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_name = inValue ;
   }
 
-  public: inline void setter_setMValue_31_ (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mValue_31_ = inValue ;
+  public: inline void setter_setValue (const GGS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_value = inValue ;
   }
 
 //--------------------------------- Set initialized properties
   private: void setInitializedProperties (Compiler * inCompiler) ;
 
 //--------------------------------- Native constructor
-  public: GGS__32_stringlist_2E_element (const GGS_string & in_mValue_30_,
-                                         const GGS_string & in_mValue_31_) ;
+  public: GGS_NameValue (const GGS_string & in_name,
+                         const GGS_string & in_value) ;
 
 //--------------------------------- Copy constructor
-  public: GGS__32_stringlist_2E_element (const GGS__32_stringlist_2E_element & inSource) ;
+  public: GGS_NameValue (const GGS_NameValue & inSource) ;
 
 //--------------------------------- Assignment operator
-  public: GGS__32_stringlist_2E_element & operator = (const GGS__32_stringlist_2E_element & inSource) ;
+  public: GGS_NameValue & operator = (const GGS_NameValue & inSource) ;
 
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS__32_stringlist_2E_element init_21__21_ (const class GGS_string & inOperand0,
-                                                             const class GGS_string & inOperand1,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
+  public: static GGS_NameValue init_21__21_ (const class GGS_string & inOperand0,
+                                             const class GGS_string & inOperand1,
+                                             Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS__32_stringlist_2E_element & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_NameValue & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -4840,7 +4784,7 @@ class GGS__32_stringlist_2E_element : public AC_GALGAS_root {
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__32_stringlist_2E_element ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_NameValue ;
 
 //--------------------------------------------------------------------------------------------------
 

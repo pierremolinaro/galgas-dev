@@ -33,12 +33,13 @@ GGS_string GGS_application::class_func_system (UNUSED_LOCATION_ARGS) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_stringlist GGS_application::class_func_boolOptionNameList (LOCATION_ARGS) {
-  GGS__32_stringlist result = GGS__32_stringlist::init (nullptr COMMA_THERE) ;
+GGS__5B_NameValue_5D_ GGS_application::class_func_boolOptionNameList (LOCATION_ARGS) {
+  GGS__5B_NameValue_5D_ result = GGS__5B_NameValue_5D_::init (nullptr COMMA_THERE) ;
   GenericUniqueArray <String> array ;
   BoolCommandLineOption::getBoolOptionNameList (array) ;
   for (int32_t i=0 ; i<array.count () ; i+=2) {
-    result.addAssignOperation (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
+    const GGS_NameValue v = GGS_NameValue (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE))) ;
+    result.plusPlusAssignOperation (v COMMA_THERE) ;
   }
   return result ;
 }
@@ -112,12 +113,13 @@ void GGS_application::class_method_setBoolOptionValue (GGS_string inDomainName,
 //   @UINT options                                                                               
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_stringlist GGS_application::class_func_uintOptionNameList (LOCATION_ARGS) {
-  GGS__32_stringlist result = GGS__32_stringlist::init (nullptr COMMA_THERE) ;
+GGS__5B_NameValue_5D_ GGS_application::class_func_uintOptionNameList (LOCATION_ARGS) {
+  GGS__5B_NameValue_5D_ result = GGS__5B_NameValue_5D_::init (nullptr COMMA_THERE) ;
   GenericUniqueArray <String> array ;
   UIntCommandLineOption::getUIntOptionNameList (array) ;
   for (int32_t i=0 ; i<array.count () ; i+=2) {
-    result.addAssignOperation (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
+    const GGS_NameValue v = GGS_NameValue (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE))) ;
+    result.plusPlusAssignOperation (v COMMA_THERE) ;
   }
   return result ;
 }
@@ -203,12 +205,13 @@ void GGS_application::class_method_exit (GGS_uint inValue
 //   STRING OPTION                                                                               
 //--------------------------------------------------------------------------------------------------
 
-GGS__32_stringlist GGS_application::class_func_stringOptionNameList (LOCATION_ARGS) {
-  GGS__32_stringlist result = GGS__32_stringlist::init (nullptr COMMA_THERE) ;
+GGS__5B_NameValue_5D_ GGS_application::class_func_stringOptionNameList (LOCATION_ARGS) {
+  GGS__5B_NameValue_5D_ result = GGS__5B_NameValue_5D_::init (nullptr COMMA_THERE) ;
   GenericUniqueArray <String> array ;
   StringCommandLineOption::getStringOptionNameList (array) ;
   for (int32_t i=0 ; i<array.count () ; i+=2) {
-    result.addAssignOperation (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
+    const GGS_NameValue v = GGS_NameValue (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE))) ;
+    result.plusPlusAssignOperation (v COMMA_THERE) ;
   }
   return result ;
 }

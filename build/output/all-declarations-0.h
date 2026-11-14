@@ -7179,6 +7179,10 @@ class GGS_usefulEntitiesGraph final : public AC_GALGAS_root {
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const ;
 
+  public: GGS_string getter_graphviz (UNUSED_LOCATION_ARGS) const ;
+
+  public: GGS__5B_NameValue_5D_ getter_edges (UNUSED_LOCATION_ARGS) const ;
+
 //--------------------------------- Setters
   public: void setter_addEdge (const class GGS_lstring & inSourceNodeKey,
                                const class GGS_lstring & inTargetNodeKey
@@ -7249,10 +7253,6 @@ class GGS_usefulEntitiesGraph final : public AC_GALGAS_root {
                                                      GGS__5B_lstring_5D_ & outUnsortedNodeKeyList,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) const ;
-
-  public: GGS_string getter_graphviz (UNUSED_LOCATION_ARGS) const ;
-
-  public: class GGS__32_stringlist getter_edges (UNUSED_LOCATION_ARGS) const ;
 
   friend class SharedGraph_usefulEntitiesGraph ;
 

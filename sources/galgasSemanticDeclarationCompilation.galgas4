@@ -35,35 +35,38 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
   var semanticDeclarations = inSemanticDeclarations
 //--- Add predefined option component
   var [@commandLineOptionAST] options = []
-  for name in @application.boolOptionNameList do
+  for anOption in @application.boolOptionNameList do
     options ++= @(
       "bool".nowhere,
-      @(name.mValue1, .here),
-      @(@application.boolOptionInvocationCharacter (name.mValue0, name.mValue1), .nowhere),
-      @application.boolOptionInvocationString (name.mValue0, name.mValue1).nowhere,
-      @application.boolOptionCommentString (name.mValue0, name.mValue1).nowhere,
+      anOption.value.here,
+      @(@application.boolOptionInvocationCharacter (anOption.name, anOption.value), .nowhere),
+      @application.boolOptionInvocationString (anOption.name, anOption.value).nowhere,
+      @application.boolOptionCommentString (anOption.name, anOption.value).nowhere,
       "".nowhere,
-      .noDefaultValue)
+      .noDefaultValue
+    )
   end
-  for name in @application.uintOptionNameList do
+  for anOption in @application.uintOptionNameList do
     options ++= @(
       "uint".nowhere,
-      @(name.mValue1, .here),
-      @lchar (@application.uintOptionInvocationCharacter (name.mValue0, name.mValue1), .nowhere),
-      @application.uintOptionInvocationString (name.mValue0, name.mValue1).nowhere,
-      @application.uintOptionCommentString (name.mValue0, name.mValue1).nowhere,
+      anOption.value.here,
+      @lchar (@application.uintOptionInvocationCharacter (anOption.name, anOption.value), .nowhere),
+      @application.uintOptionInvocationString (anOption.name, anOption.value).nowhere,
+      @application.uintOptionCommentString (anOption.name, anOption.value).nowhere,
       "".nowhere,
-      .noDefaultValue)
+      .noDefaultValue
+    )
   end
-  for name in @application.stringOptionNameList do
+  for anOption in @application.stringOptionNameList do
     options ++= @(
       "string".nowhere,
-      @(name.mValue1, .here),
-      @lchar (@application.stringOptionInvocationCharacter (name.mValue0, name.mValue1), .nowhere),
-      @application.stringOptionInvocationString (name.mValue0, name.mValue1).nowhere,
-      @application.stringOptionCommentString (name.mValue0, name.mValue1).nowhere,
+      anOption.value.here,
+      @lchar (@application.stringOptionInvocationCharacter (anOption.name, anOption.value), .nowhere),
+      @application.stringOptionInvocationString (anOption.name, anOption.value).nowhere,
+      @application.stringOptionCommentString (anOption.name, anOption.value).nowhere,
       "".nowhere,
-      .noDefaultValue)
+      .noDefaultValue
+    )
   end
   semanticDeclarations.mDeclarationList ++= @optionComponentDeclarationAST (
     !isPredefined: true,

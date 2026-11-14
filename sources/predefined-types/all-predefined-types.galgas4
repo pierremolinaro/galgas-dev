@@ -26,7 +26,9 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   ioDeclarations.mDeclarationList ++= @uint64PredefinedTypeAST (!isPredefined: true, "uint64")
   appendPredefinedArrayTypeAST (!?ioDeclarations, "uint64")
 
-  ioDeclarations.mDeclarationList ++= @applicationPredefinedTypeAST (!isPredefined: true, "application")
+  appendNameValueStructAST (!?ioDeclarations.mDeclarationList)
+  appendPredefinedArrayTypeAST (!?ioDeclarations, "NameValue")
+
   ioDeclarations.mDeclarationList ++= @bigintPredefinedTypeAST (!isPredefined: true, "bigint")
   ioDeclarations.mDeclarationList ++= @binarysetPredefinedTypeAST (!isPredefined: true, "binaryset")
   ioDeclarations.mDeclarationList ++= @boolPredefinedTypeAST (!isPredefined: true, "bool")
@@ -46,6 +48,8 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   ioDeclarations.mDeclarationList ++= @stringsetPredefinedTypeAST (!isPredefined: true, "stringset")
   ioDeclarations.mDeclarationList ++= @timerPredefinedTypeAST (!isPredefined: true, "timer")
 
+  ioDeclarations.mDeclarationList ++= @applicationPredefinedTypeAST (!isPredefined: true, "application")
+
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "bool")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "bigint")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "char")
@@ -55,7 +59,7 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "uint")
   appendStructASTForTypeWithLocation (!?ioDeclarations.mDeclarationList, "uint64")
 
-  appendPredefined2StringListTypeAST (!?ioDeclarations.mDeclarationList)
+//  appendPredefined2StringListTypeAST (!?ioDeclarations.mDeclarationList)
 
   appendStructASTForRangeType (!?ioDeclarations.mDeclarationList)
 }
@@ -204,7 +208,7 @@ abstract class @predefinedTypeAST : @semanticDeclarationAST {
   //--- Useful entities graph for initializer without any argument
     for initializer in selfType.definition.initializerMap do
       let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
-        @(self.mPredefinedTypeName, .here),
+        self.mPredefinedTypeName.here,
         initializer.mArgumentTypeList.initializerSignature
       )
       !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
@@ -303,40 +307,40 @@ private proc appendPredefinedArrayTypeAST (?!@galgasDeclarationAST ioDeclaration
 
 //--------------------------------------------------------------------------------------------------
 
-private proc appendPredefined2StringListTypeAST (?![@semanticDeclarationAST] ioDeclarationListASTs) {
-  var attributeList = [@propertyInCollectionAST] ()
-  attributeList ++= @(
-    !mutability: .mutableProperty,
-    "string".nowhere,
-    "mValue0".nowhere,
-    .publicAccess,
-    !hasSelector: false,
-    !initialization: .none
-  )
-  attributeList ++= @(
-    !mutability: .mutableProperty,
-    "string".nowhere,
-    "mValue1".nowhere,
-    .publicAccess,
-    !hasSelector: false,
-    !initialization: .none
-  )
-
-  ioDeclarationListASTs ++= @listDeclarationAST (
-    !isPredefined: true,
-    @lstring ("2stringlist", @location.here),
-    attributeList,
-    !usefullList: true,
-    !equatable: true
-  )
-}
+//private proc appendPredefined2StringListTypeAST (?![@semanticDeclarationAST] ioDeclarationListASTs) {
+//  var propertyList = [@propertyInCollectionAST] ()
+//  propertyList ++= @(
+//    !mutability: .mutableProperty,
+//    "string".nowhere,
+//    "mValue0".nowhere,
+//    .publicAccess,
+//    !hasSelector: false,
+//    !initialization: .none
+//  )
+//  propertyList ++= @(
+//    !mutability: .mutableProperty,
+//    "string".nowhere,
+//    "mValue1".nowhere,
+//    .publicAccess,
+//    !hasSelector: false,
+//    !initialization: .none
+//  )
+//
+//  ioDeclarationListASTs ++= @listDeclarationAST (
+//    !isPredefined: true,
+//    @lstring ("2stringlist", @location.here),
+//    propertyList,
+//    !usefullList: true,
+//    !equatable: true
+//  )
+//}
 
 //--------------------------------------------------------------------------------------------------
 
 private proc appendStructASTForTypeWithLocation (?![@semanticDeclarationAST] ioDeclarationListASTs,
                                                  let @string inElementTypeName) {
-  var attributeList = [@propertyInCollectionAST] ()
-  attributeList ++= @(
+  var propertyList = [@propertyInCollectionAST] ()
+  propertyList ++= @(
     !mutability: .mutableProperty,
     @lstring (inElementTypeName, @location.here),
     @lstring (inElementTypeName, @location.here),
@@ -344,7 +348,7 @@ private proc appendStructASTForTypeWithLocation (?![@semanticDeclarationAST] ioD
     !hasSelector: false,
     !initialization: .none
   )
-  attributeList ++= @(
+  propertyList ++= @(
     !mutability: .mutableProperty,
     @lstring ("location", @location.here),
     @lstring ("location", @location.here),
@@ -355,7 +359,38 @@ private proc appendStructASTForTypeWithLocation (?![@semanticDeclarationAST] ioD
   let type = @structDeclarationAST (
     !isPredefined: true,
     @lstring ("l" + inElementTypeName, @location.here),
-    attributeList,
+    propertyList,
+    !enumeratedElementTypeName: "",
+    !comparison: .equatable,
+    !isUsefullStruct: true
+  )
+  ioDeclarationListASTs ++= type
+}
+
+//--------------------------------------------------------------------------------------------------
+
+private proc appendNameValueStructAST (?![@semanticDeclarationAST] ioDeclarationListASTs) {
+  var propertyList = [@propertyInCollectionAST] ()
+  propertyList ++= @(
+    !mutability: .mutableProperty,
+    "string".here,
+    "name".here,
+    .publicAccess,
+    !hasSelector: false,
+    !initialization: .none
+  )
+  propertyList ++= @(
+    !mutability: .mutableProperty,
+    "string".here,
+    "value".here,
+    .publicAccess,
+    !hasSelector: false,
+    !initialization: .none
+  )
+  let type = @structDeclarationAST (
+    !isPredefined: true,
+    "NameValue".here,
+    propertyList,
     !enumeratedElementTypeName: "",
     !comparison: .equatable,
     !isUsefullStruct: true
@@ -366,8 +401,8 @@ private proc appendStructASTForTypeWithLocation (?![@semanticDeclarationAST] ioD
 //--------------------------------------------------------------------------------------------------
 
 private proc appendStructASTForRangeType (?![@semanticDeclarationAST] ioDeclarationListASTs) {
-  var [@propertyInCollectionAST] attributeList = @()
-  attributeList ++= @(
+  var [@propertyInCollectionAST] propertyList = @()
+  propertyList ++= @(
     !mutability: .mutableProperty,
     @lstring ("uint", @location.here),
     @lstring ("start", @location.here),
@@ -375,7 +410,7 @@ private proc appendStructASTForRangeType (?![@semanticDeclarationAST] ioDeclarat
     !hasSelector: false,
     !initialization: .none
   )
-  attributeList ++= @(
+  propertyList ++= @(
     !mutability: .mutableProperty,
     @lstring ("uint", @location.here),
     @lstring ("length", @location.here),
@@ -386,7 +421,7 @@ private proc appendStructASTForRangeType (?![@semanticDeclarationAST] ioDeclarat
   ioDeclarationListASTs ++= @structDeclarationAST (
     !isPredefined: true,
     @lstring ("range", @location.here),
-    attributeList,
+    propertyList,
     !enumeratedElementTypeName: "uint",
     !comparison: .equatable,
     !isUsefullStruct: true

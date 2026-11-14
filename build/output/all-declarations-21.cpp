@@ -8,6 +8,53 @@
 #include "all-declarations-21.h"
 
 //--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@bangExpressionAST enterExpressionInSemanticContext'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_bangExpressionAST::method_enterExpressionInSemanticContext (GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_bangExpressionAST temp_0 = this ;
+  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 73)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@bangExpressionAST analyzeSemanticExpression'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_bangExpressionAST::method_analyzeSemanticExpression (const GGS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                               GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                               const GGS_unifiedTypeMapEntry /* constinArgument__5F_inType */,
+                                                               const GGS_analysisContext constinArgument_inAnalysisContext,
+                                                               GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                               GGS_localVarManager & ioArgument_ioVariableMap,
+                                                               GGS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                               Compiler * inCompiler
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_semanticExpressionForGeneration var_expression_4141 ;
+  const GGS_bangExpressionAST temp_0 = this ;
+  callExtensionMethod_analyzeSemanticExpression ((cPtr_semanticExpressionAST *) temp_0.readProperty_mExpression ().ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GGS_unifiedTypeMapEntry::class_func_null (SOURCE_FILE ("expression-primary-bang.galgas4", 91)), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, ioArgument_ioVariableMap, var_expression_4141, inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 88)) ;
+  GGS_unifiedTypeMapEntry var_type_4217 = var_expression_4141.readProperty_mResultType () ;
+  GalgasBool test_1 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_1) {
+    const GGS_typeKindEnum_2E_weakReferenceType var_weakRef_4256 = extensionGetter_definition (var_type_4217, inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 99)).readProperty_typeKind ().getter_getWeakReferenceType (SOURCE_FILE ("expression-primary-bang.galgas4", 99)).unwrappedValue () ;
+    if (!extensionGetter_definition (var_type_4217, inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 99)).readProperty_typeKind ().getter_getWeakReferenceType (SOURCE_FILE ("expression-primary-bang.galgas4", 99)).isValuated ()) {
+      test_1 = GalgasBool::boolFalse ;
+    }
+    if (GalgasBool::boolTrue == test_1) {
+      const GGS_bangExpressionAST temp_2 = this ;
+      outArgument_outExpression = GGS_bangExpressionForGeneration::init_21__21__21__21_ (var_weakRef_4256.readProperty_referenceType (), temp_2.readProperty_mOperatorLocation (), var_expression_4141, extensionGetter_definition (var_type_4217, inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 104)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_HERE) ;
+    }
+  }
+  if (GalgasBool::boolFalse == test_1) {
+    const GGS_bangExpressionAST temp_3 = this ;
+    GenericArray <FixItDescription> fixItArray4 ;
+    inCompiler->emitSemanticError (temp_3.readProperty_mOperatorLocation (), GGS_string ("operand type is '@").add_operation (extensionGetter_definition (var_type_4217, inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 108)).readProperty_typeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 108)).add_operation (GGS_string ("' and does not support the 'bang' operator"), inCompiler COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 108)), fixItArray4  COMMA_SOURCE_FILE ("expression-primary-bang.galgas4", 107)) ;
+    outArgument_outExpression.drop () ; // Release error dropped variable
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@bangExpressionForGeneration generateExpression'
 //--------------------------------------------------------------------------------------------------
 
@@ -22973,12 +23020,13 @@ const char * gWrapperFileContent_161_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS__32_stringlist GGS_application::class_func_boolOptionNameList (LOCATION_ARGS) {\n"
-  "  GGS__32_stringlist result = GGS__32_stringlist::init (nullptr COMMA_THERE) ;\n"
+  "GGS__5B_NameValue_5D_ GGS_application::class_func_boolOptionNameList (LOCATION_ARGS) {\n"
+  "  GGS__5B_NameValue_5D_ result = GGS__5B_NameValue_5D_::init (nullptr COMMA_THERE) ;\n"
   "  GenericUniqueArray <String> array ;\n"
   "  BoolCommandLineOption::getBoolOptionNameList (array) ;\n"
   "  for (int32_t i=0 ; i<array.count () ; i+=2) {\n"
-  "    result.addAssignOperation (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;\n"
+  "    const GGS_NameValue v = GGS_NameValue (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE))) ;\n"
+  "    result.plusPlusAssignOperation (v COMMA_THERE) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
@@ -23052,12 +23100,13 @@ const char * gWrapperFileContent_161_libpmFileWrapper =
   "//   @UINT options                                                                               \n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS__32_stringlist GGS_application::class_func_uintOptionNameList (LOCATION_ARGS) {\n"
-  "  GGS__32_stringlist result = GGS__32_stringlist::init (nullptr COMMA_THERE) ;\n"
+  "GGS__5B_NameValue_5D_ GGS_application::class_func_uintOptionNameList (LOCATION_ARGS) {\n"
+  "  GGS__5B_NameValue_5D_ result = GGS__5B_NameValue_5D_::init (nullptr COMMA_THERE) ;\n"
   "  GenericUniqueArray <String> array ;\n"
   "  UIntCommandLineOption::getUIntOptionNameList (array) ;\n"
   "  for (int32_t i=0 ; i<array.count () ; i+=2) {\n"
-  "    result.addAssignOperation (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;\n"
+  "    const GGS_NameValue v = GGS_NameValue (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE))) ;\n"
+  "    result.plusPlusAssignOperation (v COMMA_THERE) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
@@ -23143,12 +23192,13 @@ const char * gWrapperFileContent_161_libpmFileWrapper =
   "//   STRING OPTION                                                                               \n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS__32_stringlist GGS_application::class_func_stringOptionNameList (LOCATION_ARGS) {\n"
-  "  GGS__32_stringlist result = GGS__32_stringlist::init (nullptr COMMA_THERE) ;\n"
+  "GGS__5B_NameValue_5D_ GGS_application::class_func_stringOptionNameList (LOCATION_ARGS) {\n"
+  "  GGS__5B_NameValue_5D_ result = GGS__5B_NameValue_5D_::init (nullptr COMMA_THERE) ;\n"
   "  GenericUniqueArray <String> array ;\n"
   "  StringCommandLineOption::getStringOptionNameList (array) ;\n"
   "  for (int32_t i=0 ; i<array.count () ; i+=2) {\n"
-  "    result.addAssignOperation (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;\n"
+  "    const GGS_NameValue v = GGS_NameValue (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE))) ;\n"
+  "    result.plusPlusAssignOperation (v COMMA_THERE) ;\n"
   "  }\n"
   "  return result ;\n"
   "}\n"
@@ -23298,7 +23348,7 @@ const cRegularFileWrapper gWrapperFile_161_libpmFileWrapper (
   "GGS_application.cpp",
   "cpp",
   true, // Text file
- 17174, // Text length
+ 17360, // Text length
   gWrapperFileContent_161_libpmFileWrapper
 ) ;
 
