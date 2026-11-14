@@ -215,8 +215,6 @@ void routine_checkExtensionGetterDefinitionForClass_3F__3F__3F__3F__3F__3F_ (con
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_arrayTypeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_arrayTypeGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_arrayTypeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -268,8 +266,6 @@ class GGS_stringset function_forbiddenKeysForStruct (class Compiler * inCompiler
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_structureGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_structureGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_structureGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -316,8 +312,6 @@ GGS_string filewrapperTemplate_structureGenerationTemplate_structTypeSpecificImp
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_weakClassGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_weakClassGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_weakClassGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -382,8 +376,6 @@ class GGS_string function_makeOptionalTypeName (const class GGS_string & constin
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_enumGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_enumGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_enumGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -438,8 +430,6 @@ void routine_check_5F_K_5F_L_5F_escapeCharacters_3F_ (const class GGS_lstring co
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_graphGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_graphGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_graphGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -471,4 +461,48 @@ GGS_string filewrapperTemplate_graphGenerationTemplate_graphTypeSpecificImplemen
                                                                                         const class GGS_unifiedTypeMapEntry & in_LSTRING_5F_ARRAY_5F_TYPE,
                                                                                         const class GGS_unifiedTypeMapEntry & in_STRING_5F_ARRAY_5F_TYPE
                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'optionalTypeGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_optionalTypeGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionalTypeGenerationTemplate optionalTypeHeader1'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeHeader_31_ (class Compiler * inCompiler,
+                                                                                      const class GGS_string & in_TYPE_5F_NAME,
+                                                                                      const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                      const class GGS_string & in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER,
+                                                                                      const class GGS_string & in_WEAK_5F_TYPE_5F_IDENTIFIER
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionalTypeGenerationTemplate optionalTypeSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeSpecificImplementation (class Compiler * inCompiler,
+                                                                                                  const class GGS_string & in_TYPE_5F_NAME,
+                                                                                                  const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                                  const class GGS_string & in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER,
+                                                                                                  const class GGS_bool & in_GENERATE_5F_COMPARISON,
+                                                                                                  const class GGS_string & in_WEAK_5F_TYPE_5F_IDENTIFIER
+                                                                                                  COMMA_LOCATION_ARGS) ;
 

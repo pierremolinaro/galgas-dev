@@ -552,7 +552,7 @@ GGS_uint GGS_uint::add_operation_no_ovf (const GGS_uint & inOperand) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::substract_operation (const GGS_uint & inOperand,
+GGS_uint GGS_uint::subtract_operation (const GGS_uint & inOperand,
                                         Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   GGS_uint result ;
@@ -581,7 +581,7 @@ GGS_bool GGS_uint::getter_canSubstract (const GGS_uint & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS_uint::substract_operation_no_ovf (const GGS_uint & inOperand2) const {
+GGS_uint GGS_uint::subtract_operation_no_ovf (const GGS_uint & inOperand2) const {
   GGS_uint result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GGS_uint (mUIntValue - inOperand2.mUIntValue) ;

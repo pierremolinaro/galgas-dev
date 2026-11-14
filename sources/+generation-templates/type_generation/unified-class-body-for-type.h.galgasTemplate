@@ -60,49 +60,49 @@ if [SUPPORTED_OPERATORS contains ![@typeFeatures infixShiftOperator]] then
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures andAssignOperatorWithExpression]] then
-  %//--------------------------------- &= operator (with expression)\n%
+  %//--------------------------------- &= operator\n%
   %  public: void andAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
   %                                   class Compiler * inCompiler\n%
   %                                   COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures orAssignOperatorWithExpression]] then
-  %//--------------------------------- |= operator (with expression)\n%
+  %//--------------------------------- |= operator\n%
   %  public: void orAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
   %                                  class Compiler * inCompiler\n%
   %                                  COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures xorAssignOperatorWithExpression]] then
-  %//--------------------------------- ^= operator (with expression)\n%
+  %//--------------------------------- ^= operator\n%
   %  public: void xorAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
   %                                   class Compiler * inCompiler\n%
   %                                   COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures plusAssignOperatorWithExpression]] then
-  %//--------------------------------- += operator (with expression)\n%
+  %//--------------------------------- += operator\n%
   %  public: void plusAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
   %                                    class Compiler * inCompiler\n%
   %                                    COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures minusAssignOperatorWithExpression]] then
-  %//--------------------------------- -= operator (with expression)\n%
+  %//--------------------------------- -= operator\n%
   %  public: void minusAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
   %                                     class Compiler * inCompiler\n%
   %                                     COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures mulAssignOperatorWithExpression]] then
-  %//--------------------------------- *= operator (with expression)\n%
+  %//--------------------------------- *= operator\n%
   %  public: void mulAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
   %                                   class Compiler * inCompiler\n%
   %                                   COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures divAssignOperatorWithExpression]] then
-  %//--------------------------------- /= operator (with expression)\n%
+  %//--------------------------------- /= operator\n%
   %  public: void divAssignOperation (const GGS_%!TYPE_IDENTIFIER% inOperand,\n%
   %                                   class Compiler * inCompiler\n%
   %                                   COMMA_LOCATION_ARGS) ;\n\n%
@@ -123,8 +123,7 @@ if [ADD_ASSIGN_ARGUMENT_LIST count] > 0 then
 end
 
 if SUPPORT_COLLECTION_VALUE then
-%
-//--------------------------------- ++= operator, collection value
+%//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (%?^%const GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% & inOperand
   %!^%COMMA_LOCATION_ARGS) ;
 %
@@ -172,12 +171,12 @@ end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures infixSubOperatorNoOVF]] then
   %//--------------------------------- &- operator\n%
-  %  public: GGS_%!TYPE_IDENTIFIER% substract_operation_no_ovf (const GGS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
+  %  public: GGS_%!TYPE_IDENTIFIER% subtract_operation_no_ovf (const GGS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS contains ![@typeFeatures infixSubOperator]] then
   %//--------------------------------- - operator\n%
-  %  public: GGS_%!TYPE_IDENTIFIER% substract_operation (%?^%const GGS_%!TYPE_IDENTIFIER% & inOperand,\n%
+  %  public: GGS_%!TYPE_IDENTIFIER% subtract_operation (%?^%const GGS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end

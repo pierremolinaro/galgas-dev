@@ -8592,13 +8592,12 @@ class GGS__5B_galgasQualifiedFeature_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_galgasQualifiedFeature_5D_ init (Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_galgasQualifiedFeature_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_galgasQualifiedFeature & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -9819,13 +9818,12 @@ class GGS__5B_filewrapperTemplateForGeneration_5D_ final : public AC_GALGAS_root
 //--------------------------------- Initializers
   public: static GGS__5B_filewrapperTemplateForGeneration_5D_ init (Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_filewrapperTemplateForGeneration_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_filewrapperTemplateForGeneration & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -10557,8 +10555,7 @@ class GGS_genericExtensionMethodListMapDictionary final : public GenericDictiona
                                    const class GGS__5B_lstring_5D_ & inOperand1,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_genericExtensionMethodListMapDictionary_2E_element & inOperand
                                         COMMA_LOCATION_ARGS) ;
 
@@ -10937,8 +10934,7 @@ class GGS_descendantClassListMapDictionary final : public GenericDictionary <GGS
                                    const class GGS__5B_unifiedTypeMapEntry_5D_ & inOperand1,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_descendantClassListMapDictionary_2E_element & inOperand
                                         COMMA_LOCATION_ARGS) ;
 

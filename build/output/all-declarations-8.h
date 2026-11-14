@@ -4435,7 +4435,7 @@ class GGS_nonTerminalSymbolSortedListForGrammarAnalysis final : public AC_GALGAS
                                                                                                          const class GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inOperand2
                                                                                                          COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
@@ -4445,8 +4445,7 @@ class GGS_nonTerminalSymbolSortedListForGrammarAnalysis final : public AC_GALGAS
                                    const class GGS_uint & inOperand1,
                                    const class GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inOperand2
                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inOperand
                                         COMMA_LOCATION_ARGS) ;
 
@@ -5572,13 +5571,12 @@ class GGS__5B_collectionValueElementAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_collectionValueElementAST_5D_ init (Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_collectionValueElementAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_collectionValueElementAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -5823,13 +5821,12 @@ class GGS__5B_collectionValueElementForGeneration_5D_ final : public AC_GALGAS_r
 //--------------------------------- Initializers
   public: static GGS__5B_collectionValueElementForGeneration_5D_ init (Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_collectionValueElementForGeneration_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_collectionValueElementForGeneration & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator

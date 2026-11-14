@@ -8476,7 +8476,7 @@ void cPtr_enumeratedCollectionCstListInExpAST::method_analyzeEnumeration (const 
           test_15 = GGS_bool (ComparisonKind::greaterThan, var_enumerationDescriptorList_12684.getter_count (SOURCE_FILE ("instruction-for.galgas4", 345)).objectCompare (temp_16.readProperty_mElementList ().getter_count (SOURCE_FILE ("instruction-for.galgas4", 345)))).boolEnum () ;
           if (GalgasBool::boolTrue == test_15) {
             const GGS_enumeratedCollectionCstListInExpAST temp_17 = this ;
-            GGS_uint var_missingArgumentCount_14158 = var_enumerationDescriptorList_12684.getter_count (SOURCE_FILE ("instruction-for.galgas4", 346)).substract_operation (temp_17.readProperty_mElementList ().getter_count (SOURCE_FILE ("instruction-for.galgas4", 346)), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 346)) ;
+            GGS_uint var_missingArgumentCount_14158 = var_enumerationDescriptorList_12684.getter_count (SOURCE_FILE ("instruction-for.galgas4", 346)).subtract_operation (temp_17.readProperty_mElementList ().getter_count (SOURCE_FILE ("instruction-for.galgas4", 346)), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas4", 346)) ;
             const GGS_enumeratedCollectionCstListInExpAST temp_18 = this ;
             GenericArray <FixItDescription> fixItArray19 ;
             GGS_string temp_20 ;
@@ -9143,7 +9143,7 @@ void cPtr_switchInstructionAST::method_analyzeSemanticInstruction (const GGS_lst
       const GGS_switchInstructionAST temp_20 = this ;
       extensionSetter_closeOverride (ioArgument_ioVariableMap, temp_20.readProperty_mEndOf_5F_switch_5F_instruction (), inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas4", 250)) ;
       }
-      GGS_stringset var_forgottenConstants_10772 = var_enumType_6238.readProperty_constantMap ().getter_keySet (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas4", 252)).substract_operation (var_constantsNamedInSwitchInstruction_6364, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas4", 252)) ;
+      GGS_stringset var_forgottenConstants_10772 = var_enumType_6238.readProperty_constantMap ().getter_keySet (inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas4", 252)).subtract_operation (var_constantsNamedInSwitchInstruction_6364, inCompiler COMMA_SOURCE_FILE ("instruction-switch.galgas4", 252)) ;
       GalgasBool test_21 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_21) {
         test_21 = GGS_bool (ComparisonKind::greaterThan, var_forgottenConstants_10772.getter_count (SOURCE_FILE ("instruction-switch.galgas4", 253)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;

@@ -330,7 +330,7 @@ GGS_double GGS_double::add_operation (const GGS_double & inOperand2,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_double GGS_double::substract_operation (const GGS_double & inOperand2,
+GGS_double GGS_double::subtract_operation (const GGS_double & inOperand2,
                                             Compiler * /* inCompiler */
                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_double result ;

@@ -3126,13 +3126,12 @@ class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_galgas_33_SyntaxExtensionAST_5D_ init (Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_galgas_33_SyntaxExtensionAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_galgas_33_SyntaxExtensionAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -3438,8 +3437,7 @@ class GGS_syntaxExtensionsDictionary final : public GenericDictionary <GGS_strin
                                    const class GGS__5B_galgas_33_SyntaxExtensionAST_5D_ & inOperand1,
                                    Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_syntaxExtensionsDictionary_2E_element & inOperand
                                         COMMA_LOCATION_ARGS) ;
 
@@ -3731,22 +3729,22 @@ class GGS_localVariableAttributes : public AC_GALGAS_root {
 
   public: static class GGS_localVariableAttributes class_func_warnsOnAnyAcces (LOCATION_ARGS) ;
 
-//--------------------------------- &= operator (with expression)
+//--------------------------------- &= operator
   public: void andAssignOperation (const GGS_localVariableAttributes inOperand,
                                    class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- |= operator (with expression)
+//--------------------------------- |= operator
   public: void orAssignOperation (const GGS_localVariableAttributes inOperand,
                                   class Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- ^= operator (with expression)
+//--------------------------------- ^= operator
   public: void xorAssignOperation (const GGS_localVariableAttributes inOperand,
                                    class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- -= operator (with expression)
+//--------------------------------- -= operator
   public: void minusAssignOperation (const GGS_localVariableAttributes inOperand,
                                      class Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
@@ -3767,9 +3765,9 @@ class GGS_localVariableAttributes : public AC_GALGAS_root {
   public: GGS_localVariableAttributes operator_tilde (LOCATION_ARGS) const ;
 
 //--------------------------------- - operator
-  public: GGS_localVariableAttributes substract_operation (const GGS_localVariableAttributes & inOperand,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const ;
+  public: GGS_localVariableAttributes subtract_operation (const GGS_localVariableAttributes & inOperand,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
@@ -5170,13 +5168,12 @@ class GGS__5B_acceptableParameter_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_acceptableParameter_5D_ init (Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_acceptableParameter_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_acceptableParameter & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator

@@ -1910,13 +1910,12 @@ class GGS__5B_enumConstant_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_enumConstant_5D_ init (Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_enumConstant_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_enumConstant & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -2086,13 +2085,12 @@ class GGS__5B_associatedValue_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_associatedValue_5D_ init (Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_associatedValue_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_associatedValue & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -2423,13 +2421,12 @@ class GGS__5B_enumConstantForGeneration_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_enumConstantForGeneration_5D_ init (Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_enumConstantForGeneration_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_enumConstantForGeneration & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -3053,13 +3050,12 @@ class GGS__5B_graphInsertModifier_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_graphInsertModifier_5D_ init (Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_graphInsertModifier_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_graphInsertModifier & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -4082,13 +4078,12 @@ class GGS__5B_insertSetterAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_insertSetterAST_5D_ init (Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_insertSetterAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_insertSetterAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -4344,13 +4339,12 @@ class GGS__5B_mapAccessorAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_mapAccessorAST_5D_ init (Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_mapAccessorAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_mapAccessorAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -4595,13 +4589,12 @@ class GGS__5B_location_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_location_5D_ init (Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_location_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_location & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -5375,13 +5368,12 @@ class GGS__5B_optionalMethodSignatureElement_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_optionalMethodSignatureElement_5D_ init (Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_optionalMethodSignatureElement_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_optionalMethodSignatureElement & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -7251,13 +7243,12 @@ class GGS__5B_sortedListSortDescriptorAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_sortedListSortDescriptorAST_5D_ init (Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_sortedListSortDescriptorAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_sortedListSortDescriptorAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -7502,13 +7493,12 @@ class GGS__5B_sortDescriptorForGeneration_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_sortDescriptorForGeneration_5D_ init (Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_sortDescriptorForGeneration_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_sortDescriptorForGeneration & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -8155,13 +8145,12 @@ class GGS__5B_typeNameFormalParameterName_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_typeNameFormalParameterName_5D_ init (Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_typeNameFormalParameterName_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_typeNameFormalParameterName & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -8417,13 +8406,12 @@ class GGS__5B__5B_typeNameFormalParameterName_5D__5D_ final : public AC_GALGAS_r
 //--------------------------------- Initializers
   public: static GGS__5B__5B_typeNameFormalParameterName_5D__5D_ init (Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B__5B_typeNameFormalParameterName_5D__5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS__5B_typeNameFormalParameterName_5D_ & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -8593,13 +8581,12 @@ class GGS__5B_externTypeGetter_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_externTypeGetter_5D_ init (Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_externTypeGetter_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_externTypeGetter & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -8855,13 +8842,12 @@ class GGS__5B_externTypeSetter_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_externTypeSetter_5D_ init (Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_externTypeSetter_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_externTypeSetter & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -9106,13 +9092,12 @@ class GGS__5B_externTypeMethod_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_externTypeMethod_5D_ init (Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_externTypeMethod_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_externTypeMethod & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator

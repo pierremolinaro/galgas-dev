@@ -60,20 +60,6 @@ void GGS_stringset::setter_insert (const GGS_string inKey,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_stringset::addAssignOperation (const GGS_stringset & inOperand
-                                        COMMA_LOCATION_ARGS) {
-  if (isValid () && (inOperand.isValid ())) {
-    const GenericArray <String> array2 = inOperand.mSharedMap.sortedKeyArray () ;
-    int32_t idx2 = 0 ;
-    while (idx2 < array2.count ()) {
-      plusPlusAssignOperation (GGS_string (array2 (idx2 COMMA_THERE)) COMMA_THERE) ;
-      idx2 += 1 ;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GGS_stringset::setter_removeKey (GGS_string inKey
                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
@@ -149,7 +135,7 @@ void GGS_stringset::plusAssignOperation (const GGS_stringset inOperand,
 //    D I F F E R E N C E
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringset GGS_stringset::substract_operation (const GGS_stringset & inOperand,
+GGS_stringset GGS_stringset::subtract_operation (const GGS_stringset & inOperand,
                                                   Compiler * /* inCompiler */
                                                   COMMA_LOCATION_ARGS) const {
   GGS_stringset result ;

@@ -3985,7 +3985,7 @@ GGS_string function_escapeForTex (const GGS_string & constinArgument_inString,
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   result_result = GGS_string::makeEmptyString () ;
-  UpEnumerator_range enumerator_1973 (GGS_range (GGS_uint (uint32_t (0U)), constinArgument_inString.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 40)).substract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 40)))) ;
+  UpEnumerator_range enumerator_1973 (GGS_range (GGS_uint (uint32_t (0U)), constinArgument_inString.getter_count (SOURCE_FILE ("production-rules-in-tex.galgas4", 40)).subtract_operation (GGS_uint (uint32_t (0U)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 40)))) ;
   while (enumerator_1973.hasCurrentObject ()) {
     GGS_char var_c_1990 = constinArgument_inString.getter_characterAtIndex (enumerator_1973.current (HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas4", 41)) ;
     GalgasBool test_0 = GalgasBool::boolTrue ;
@@ -5632,7 +5632,7 @@ void routine_checkUsefulEntities_3F__3F__3F_ (const GGS_usefulEntitiesGraph cons
           GGS__5B_lstring_5D_ var_usefullEntityList_2569 = constinArgument_inUsefulEntitiesGraph.getter_accessibleNodesFrom (constinArgument_inRootEntities, GGS_stringset::init (inCompiler COMMA_HERE), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas4", 53)) ;
           GGS_stringset var_usefullEntitySet_2663 = GGS_stringset::init_21_lstringArray (var_usefullEntityList_2569, inCompiler COMMA_HERE) ;
           GGS_stringset var_allEntitySet_2738 = GGS_stringset::init_21_stringArray (constinArgument_inUsefulEntitiesGraph.getter_keyList (SOURCE_FILE ("useful-entities-computation.galgas4", 55)), inCompiler COMMA_HERE) ;
-          GGS_stringset var_unusedEntities_2820 = var_allEntitySet_2738.substract_operation (var_usefullEntitySet_2663, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas4", 56)) ;
+          GGS_stringset var_unusedEntities_2820 = var_allEntitySet_2738.subtract_operation (var_usefullEntitySet_2663, inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas4", 56)) ;
           GGS_uselessEntityLocationMap var_uselessEntityLocationMap_2905 = GGS_uselessEntityLocationMap::init (inCompiler COMMA_HERE) ;
           UpEnumerator_stringset enumerator_2953 (var_unusedEntities_2820) ;
           while (enumerator_2953.hasCurrentObject ()) {
@@ -6773,7 +6773,7 @@ void routine_generateFewImplementationFilesWithFewHeaders_3F__3F__3F__26__26__26
               temp_13 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
             }else if (GalgasBool::boolFalse == test_14) {
               GGS__5B_string_5D_ temp_15 = GGS__5B_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 639)) ;
-              temp_15.plusPlusAssignOperation (GGS_string ("all-declarations-").add_operation (var_fileIdx_24436.substract_operation (GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 639)), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 639)).getter_string (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 639)), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 639))  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 639)) ;
+              temp_15.plusPlusAssignOperation (GGS_string ("all-declarations-").add_operation (var_fileIdx_24436.subtract_operation (GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 639)), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 639)).getter_string (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 639)), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 639))  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 639)) ;
               temp_13 = temp_15 ;
             }
             GGS_string var_startOfHeader_26356 = GGS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader (inCompiler, var_headerFileName_24546, temp_13 COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 637))) ;
@@ -6818,7 +6818,7 @@ void routine_generateFewImplementationFilesWithFewHeaders_3F__3F__3F__26__26__26
       temp_19 = GGS__5B_string_5D_::init (inCompiler COMMA_HERE) ;
     }else if (GalgasBool::boolFalse == test_20) {
       GGS__5B_string_5D_ temp_21 = GGS__5B_string_5D_::init (inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 675)) ;
-      temp_21.plusPlusAssignOperation (GGS_string ("all-declarations-").add_operation (var_fileIdx_24436.substract_operation (GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 675)), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 675)).getter_string (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 675)), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 675))  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 675)) ;
+      temp_21.plusPlusAssignOperation (GGS_string ("all-declarations-").add_operation (var_fileIdx_24436.subtract_operation (GGS_bigint ("1", inCompiler  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 675)), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 675)).getter_string (SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 675)), inCompiler COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 675))  COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 675)) ;
       temp_19 = temp_21 ;
     }
     GGS_string var_startOfHeader_27492 = GGS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader (inCompiler, var_headerFileName_24546, temp_19 COMMA_SOURCE_FILE ("galgasSemanticDeclarationCompilation.galgas4", 673))) ;
@@ -7393,7 +7393,7 @@ void routine_projectGeneration_3F__3F_absoluteBuildDir_3F_buildDirName_3F__3F__3
         var_allActualFileSet_17801.plusPlusAssignOperation (enumerator_17951.current (HERE)  COMMA_SOURCE_FILE ("galgasProgram.galgas4", 425)) ;
         enumerator_17951.gotoNextObject () ;
       }
-      GGS_stringset var_uselessFileSet_18005 = var_allActualFileSet_17801.substract_operation (var_allProductFileSet_14625, inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 427)) ;
+      GGS_stringset var_uselessFileSet_18005 = var_allActualFileSet_17801.subtract_operation (var_allProductFileSet_14625, inCompiler COMMA_SOURCE_FILE ("galgasProgram.galgas4", 427)) ;
       UpEnumerator_stringset enumerator_18068 (var_uselessFileSet_18005) ;
       while (enumerator_18068.hasCurrentObject ()) {
         {

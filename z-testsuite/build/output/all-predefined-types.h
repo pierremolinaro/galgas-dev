@@ -103,22 +103,22 @@ class GGS_uint_36__34_ : public AC_GALGAS_root {
                                                   class Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS_uint_36__34_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- -= operator (with expression)
+//--------------------------------- -= operator
   public: void minusAssignOperation (const GGS_uint_36__34_ inOperand,
                                      class Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- *= operator (with expression)
+//--------------------------------- *= operator
   public: void mulAssignOperation (const GGS_uint_36__34_ inOperand,
                                    class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- /= operator (with expression)
+//--------------------------------- /= operator
   public: void divAssignOperation (const GGS_uint_36__34_ inOperand,
                                    class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
@@ -147,12 +147,12 @@ class GGS_uint_36__34_ : public AC_GALGAS_root {
   public: GGS_uint_36__34_ add_operation_no_ovf (const GGS_uint_36__34_ & inOperand) const ;
 
 //--------------------------------- &- operator
-  public: GGS_uint_36__34_ substract_operation_no_ovf (const GGS_uint_36__34_ & inOperand) const ;
+  public: GGS_uint_36__34_ subtract_operation_no_ovf (const GGS_uint_36__34_ & inOperand) const ;
 
 //--------------------------------- - operator
-  public: GGS_uint_36__34_ substract_operation (const GGS_uint_36__34_ & inOperand,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: GGS_uint_36__34_ subtract_operation (const GGS_uint_36__34_ & inOperand,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- * operator
   public: GGS_uint_36__34_ multiply_operation (const GGS_uint_36__34_ & inOperand,
@@ -343,7 +343,7 @@ class GGS_string : public AC_GALGAS_root {
                                                                              class Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS_string inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
@@ -733,22 +733,22 @@ class GGS_bigint : public AC_GALGAS_root {
                                             class Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS_bigint inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- -= operator (with expression)
+//--------------------------------- -= operator
   public: void minusAssignOperation (const GGS_bigint inOperand,
                                      class Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- *= operator (with expression)
+//--------------------------------- *= operator
   public: void mulAssignOperation (const GGS_bigint inOperand,
                                    class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- /= operator (with expression)
+//--------------------------------- /= operator
   public: void divAssignOperation (const GGS_bigint inOperand,
                                    class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
@@ -774,9 +774,9 @@ class GGS_bigint : public AC_GALGAS_root {
                                     COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- - operator
-  public: GGS_bigint substract_operation (const GGS_bigint & inOperand,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const ;
+  public: GGS_bigint subtract_operation (const GGS_bigint & inOperand,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- * operator
   public: GGS_bigint multiply_operation (const GGS_bigint & inOperand,
@@ -1581,22 +1581,22 @@ class GGS_double : public AC_GALGAS_root {
 
   public: static class GGS_double class_func_pi (LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS_double inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- -= operator (with expression)
+//--------------------------------- -= operator
   public: void minusAssignOperation (const GGS_double inOperand,
                                      class Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- *= operator (with expression)
+//--------------------------------- *= operator
   public: void mulAssignOperation (const GGS_double inOperand,
                                    class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- /= operator (with expression)
+//--------------------------------- /= operator
   public: void divAssignOperation (const GGS_double inOperand,
                                    class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
@@ -1607,9 +1607,9 @@ class GGS_double : public AC_GALGAS_root {
                                     COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- - operator
-  public: GGS_double substract_operation (const GGS_double & inOperand,
-                                          Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const ;
+  public: GGS_double subtract_operation (const GGS_double & inOperand,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- * operator
   public: GGS_double multiply_operation (const GGS_double & inOperand,
@@ -1996,22 +1996,22 @@ class GGS_sint : public AC_GALGAS_root {
                                           class Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS_sint inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- -= operator (with expression)
+//--------------------------------- -= operator
   public: void minusAssignOperation (const GGS_sint inOperand,
                                      class Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- *= operator (with expression)
+//--------------------------------- *= operator
   public: void mulAssignOperation (const GGS_sint inOperand,
                                    class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- /= operator (with expression)
+//--------------------------------- /= operator
   public: void divAssignOperation (const GGS_sint inOperand,
                                    class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
@@ -2040,12 +2040,12 @@ class GGS_sint : public AC_GALGAS_root {
   public: GGS_sint add_operation_no_ovf (const GGS_sint & inOperand) const ;
 
 //--------------------------------- &- operator
-  public: GGS_sint substract_operation_no_ovf (const GGS_sint & inOperand) const ;
+  public: GGS_sint subtract_operation_no_ovf (const GGS_sint & inOperand) const ;
 
 //--------------------------------- - operator
-  public: GGS_sint substract_operation (const GGS_sint & inOperand,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) const ;
+  public: GGS_sint subtract_operation (const GGS_sint & inOperand,
+                                       Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- * operator
   public: GGS_sint multiply_operation (const GGS_sint & inOperand,
@@ -2192,22 +2192,22 @@ class GGS_sint_36__34_ : public AC_GALGAS_root {
                                                   class Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS_sint_36__34_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- -= operator (with expression)
+//--------------------------------- -= operator
   public: void minusAssignOperation (const GGS_sint_36__34_ inOperand,
                                      class Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- *= operator (with expression)
+//--------------------------------- *= operator
   public: void mulAssignOperation (const GGS_sint_36__34_ inOperand,
                                    class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- /= operator (with expression)
+//--------------------------------- /= operator
   public: void divAssignOperation (const GGS_sint_36__34_ inOperand,
                                    class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
@@ -2236,12 +2236,12 @@ class GGS_sint_36__34_ : public AC_GALGAS_root {
   public: GGS_sint_36__34_ add_operation_no_ovf (const GGS_sint_36__34_ & inOperand) const ;
 
 //--------------------------------- &- operator
-  public: GGS_sint_36__34_ substract_operation_no_ovf (const GGS_sint_36__34_ & inOperand) const ;
+  public: GGS_sint_36__34_ subtract_operation_no_ovf (const GGS_sint_36__34_ & inOperand) const ;
 
 //--------------------------------- - operator
-  public: GGS_sint_36__34_ substract_operation (const GGS_sint_36__34_ & inOperand,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+  public: GGS_sint_36__34_ subtract_operation (const GGS_sint_36__34_ & inOperand,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- * operator
   public: GGS_sint_36__34_ multiply_operation (const GGS_sint_36__34_ & inOperand,
@@ -2402,22 +2402,22 @@ class GGS_uint : public AC_GALGAS_root {
                                           class Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const ;
 
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS_uint inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- -= operator (with expression)
+//--------------------------------- -= operator
   public: void minusAssignOperation (const GGS_uint inOperand,
                                      class Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- *= operator (with expression)
+//--------------------------------- *= operator
   public: void mulAssignOperation (const GGS_uint inOperand,
                                    class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- /= operator (with expression)
+//--------------------------------- /= operator
   public: void divAssignOperation (const GGS_uint inOperand,
                                    class Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
@@ -2446,12 +2446,12 @@ class GGS_uint : public AC_GALGAS_root {
   public: GGS_uint add_operation_no_ovf (const GGS_uint & inOperand) const ;
 
 //--------------------------------- &- operator
-  public: GGS_uint substract_operation_no_ovf (const GGS_uint & inOperand) const ;
+  public: GGS_uint subtract_operation_no_ovf (const GGS_uint & inOperand) const ;
 
 //--------------------------------- - operator
-  public: GGS_uint substract_operation (const GGS_uint & inOperand,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) const ;
+  public: GGS_uint subtract_operation (const GGS_uint & inOperand,
+                                       Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- * operator
   public: GGS_uint multiply_operation (const GGS_uint & inOperand,
@@ -2756,16 +2756,12 @@ class GGS_stringset : public AC_GALGAS_root {
   public: GGS_stringset (const GGS_stringset & inSource) ;
   public: GGS_stringset & operator = (const GGS_stringset & inSource) ;
 
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS_stringset inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with list of field expressions)
-  public: void addAssignOperation (const class GGS_stringset & inOperand0
-                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_string & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- & operator
@@ -2777,9 +2773,9 @@ class GGS_stringset : public AC_GALGAS_root {
                                      COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- - operator
-  public: GGS_stringset substract_operation (const GGS_stringset & inOperand,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const ;
+  public: GGS_stringset subtract_operation (const GGS_stringset & inOperand,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
@@ -3075,13 +3071,12 @@ class GGS__5B_uint_36__34__5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_uint_36__34__5D_ init (Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_uint_36__34__5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_uint_36__34_ & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -3251,13 +3246,12 @@ class GGS__5B_stringString_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_stringString_5D_ init (Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_stringString_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_stringString & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -3427,13 +3421,12 @@ class GGS__5B_string_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_string_5D_ init (Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_string_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_string & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -3682,13 +3675,12 @@ class GGS__5B_lstring_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_lstring_5D_ init (Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_lstring_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_lstring & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -3858,13 +3850,12 @@ class GGS__5B_uint_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_uint_5D_ init (Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_uint_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_uint & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator

@@ -58,7 +58,7 @@ void routine_updateLIBPMatPath_3F_ (const GGS_string constinArgument_inLIBPMPath
     var_allActualFileSet_2459.plusPlusAssignOperation (GGS_string ("/").add_operation (enumerator_2527.current (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 58))  COMMA_SOURCE_FILE ("libpmHandling.galgas4", 58)) ;
     enumerator_2527.gotoNextObject () ;
   }
-  GGS_stringset var_uselessFileSet_2581 = var_allActualFileSet_2459.substract_operation (var_allNeededFileSet_1735, inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 60)) ;
+  GGS_stringset var_uselessFileSet_2581 = var_allActualFileSet_2459.subtract_operation (var_allNeededFileSet_1735, inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas4", 60)) ;
   UpEnumerator_stringset enumerator_2641 (var_uselessFileSet_2581) ;
   while (enumerator_2641.hasCurrentObject ()) {
     {
@@ -1790,9 +1790,9 @@ void cPtr_galgas_33_GrammarComponentAST::method_semanticAnalysis (GGS__5B_lstrin
       uint32_t variant_31031 = var_addedNonTerminalCount_28731.uintValue () ;
       bool loop_31031 = true ;
       while (loop_31031) {
-        loop_31031 = GGS_bool (ComparisonKind::lowerThan, var_i_31021.objectCompare (var_addedNonTerminalCount_28731.substract_operation (var_addedNonTerminalCountRef_29015, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas4", 694)))).isValid () ;
+        loop_31031 = GGS_bool (ComparisonKind::lowerThan, var_i_31021.objectCompare (var_addedNonTerminalCount_28731.subtract_operation (var_addedNonTerminalCountRef_29015, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas4", 694)))).isValid () ;
         if (loop_31031) {
-          loop_31031 = GGS_bool (ComparisonKind::lowerThan, var_i_31021.objectCompare (var_addedNonTerminalCount_28731.substract_operation (var_addedNonTerminalCountRef_29015, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas4", 694)))).boolValue () ;
+          loop_31031 = GGS_bool (ComparisonKind::lowerThan, var_i_31021.objectCompare (var_addedNonTerminalCount_28731.subtract_operation (var_addedNonTerminalCountRef_29015, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas4", 694)))).boolValue () ;
         }
         if (loop_31031 && (0 == variant_31031)) {
           loop_31031 = false ;
@@ -2328,7 +2328,7 @@ void routine_enterNonterminalNonTerminalInMapAndCheck_3F__3F__26_ (const GGS_lst
     if (GalgasBool::boolTrue == test_0) {
       GGS_stringset var_firstDeclarationLabelSet_40834 = var_entry_40747.readProperty_mLabelMap ().getter_keySet (inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas4", 921)) ;
       GGS_stringset var_reDeclarationLabelSet_40903 = constinArgument_inNonterminalLabelMap.getter_keySet (inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas4", 922)) ;
-      GGS_stringset var_missingLabelSet_40975 = var_firstDeclarationLabelSet_40834.substract_operation (var_reDeclarationLabelSet_40903, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas4", 923)) ;
+      GGS_stringset var_missingLabelSet_40975 = var_firstDeclarationLabelSet_40834.subtract_operation (var_reDeclarationLabelSet_40903, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas4", 923)) ;
       GalgasBool test_1 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_1) {
         test_1 = GGS_bool (ComparisonKind::greaterThan, var_missingLabelSet_40975.getter_count (SOURCE_FILE ("semanticAnalysis.galgas4", 924)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
@@ -2343,7 +2343,7 @@ void routine_enterNonterminalNonTerminalInMapAndCheck_3F__3F__26_ (const GGS_lst
           inCompiler->emitSemanticError (constinArgument_inNonTerminalName.readProperty_location (), GGS_string ("the '").add_operation (constinArgument_inNonTerminalName.readProperty_string (), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas4", 930)).add_operation (GGS_string ("' nonterminal is redeclared without the following label(s):"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas4", 930)).add_operation (var_s_41098, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas4", 930)), fixItArray2  COMMA_SOURCE_FILE ("semanticAnalysis.galgas4", 929)) ;
         }
       }
-      GGS_stringset var_newLabelSet_41343 = var_reDeclarationLabelSet_40903.substract_operation (var_firstDeclarationLabelSet_40834, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas4", 932)) ;
+      GGS_stringset var_newLabelSet_41343 = var_reDeclarationLabelSet_40903.subtract_operation (var_firstDeclarationLabelSet_40834, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas4", 932)) ;
       GalgasBool test_3 = GalgasBool::boolTrue ;
       if (GalgasBool::boolTrue == test_3) {
         test_3 = GGS_bool (ComparisonKind::greaterThan, var_newLabelSet_41343.getter_count (SOURCE_FILE ("semanticAnalysis.galgas4", 933)).objectCompare (GGS_uint (uint32_t (0U)))).boolEnum () ;
@@ -4058,51 +4058,6 @@ void cPtr_arrayTypeForGeneration::method_appendSpecificImplementation (const GGS
 //
 //--------------------------------------------------------------------------------------------------
 
-//--- All files of 'helpers' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_arrayTypeGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_arrayTypeGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const cDirectoryWrapper gWrapperDirectory_2_arrayTypeGenerationTemplate (
-  "helpers",
-  0,
-  gWrapperAllFiles_arrayTypeGenerationTemplate_2,
-  0,
-  gWrapperAllDirectories_arrayTypeGenerationTemplate_2
-) ;
-
-//--- All files of 'build' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_arrayTypeGenerationTemplate_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_arrayTypeGenerationTemplate_1 [2] = {
-  & gWrapperDirectory_2_arrayTypeGenerationTemplate,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const cDirectoryWrapper gWrapperDirectory_1_arrayTypeGenerationTemplate (
-  "build",
-  0,
-  gWrapperAllFiles_arrayTypeGenerationTemplate_1,
-  1,
-  gWrapperAllDirectories_arrayTypeGenerationTemplate_1
-) ;
-
 //--- All files of '' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_arrayTypeGenerationTemplate_0 [1] = {
@@ -4111,8 +4066,7 @@ static const cRegularFileWrapper * gWrapperAllFiles_arrayTypeGenerationTemplate_
 
 //--- All sub-directories of '' directory
 
-static const cDirectoryWrapper * gWrapperAllDirectories_arrayTypeGenerationTemplate_0 [2] = {
-  & gWrapperDirectory_1_arrayTypeGenerationTemplate,
+static const cDirectoryWrapper * gWrapperAllDirectories_arrayTypeGenerationTemplate_0 [1] = {
   nullptr
 } ;
 
@@ -4122,7 +4076,7 @@ const cDirectoryWrapper gWrapperDirectory_0_arrayTypeGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_arrayTypeGenerationTemplate_0,
-  1,
+  0,
   gWrapperAllDirectories_arrayTypeGenerationTemplate_0
 ) ;
 
@@ -4932,51 +4886,6 @@ void cPtr_structTypeForGeneration::method_appendSpecificImplementation (const GG
 //
 //--------------------------------------------------------------------------------------------------
 
-//--- All files of 'helpers' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_structureGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_structureGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const cDirectoryWrapper gWrapperDirectory_2_structureGenerationTemplate (
-  "helpers",
-  0,
-  gWrapperAllFiles_structureGenerationTemplate_2,
-  0,
-  gWrapperAllDirectories_structureGenerationTemplate_2
-) ;
-
-//--- All files of 'build' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_structureGenerationTemplate_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_structureGenerationTemplate_1 [2] = {
-  & gWrapperDirectory_2_structureGenerationTemplate,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const cDirectoryWrapper gWrapperDirectory_1_structureGenerationTemplate (
-  "build",
-  0,
-  gWrapperAllFiles_structureGenerationTemplate_1,
-  1,
-  gWrapperAllDirectories_structureGenerationTemplate_1
-) ;
-
 //--- All files of '' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_structureGenerationTemplate_0 [1] = {
@@ -4985,8 +4894,7 @@ static const cRegularFileWrapper * gWrapperAllFiles_structureGenerationTemplate_
 
 //--- All sub-directories of '' directory
 
-static const cDirectoryWrapper * gWrapperAllDirectories_structureGenerationTemplate_0 [2] = {
-  & gWrapperDirectory_1_structureGenerationTemplate,
+static const cDirectoryWrapper * gWrapperAllDirectories_structureGenerationTemplate_0 [1] = {
   nullptr
 } ;
 
@@ -4996,7 +4904,7 @@ const cDirectoryWrapper gWrapperDirectory_0_structureGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_structureGenerationTemplate_0,
-  1,
+  0,
   gWrapperAllDirectories_structureGenerationTemplate_0
 ) ;
 
@@ -5658,51 +5566,6 @@ void cPtr_weakReferenceTypeForGeneration::method_appendSpecificImplementation (c
 //
 //--------------------------------------------------------------------------------------------------
 
-//--- All files of 'helpers' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_weakClassGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_weakClassGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const cDirectoryWrapper gWrapperDirectory_2_weakClassGenerationTemplate (
-  "helpers",
-  0,
-  gWrapperAllFiles_weakClassGenerationTemplate_2,
-  0,
-  gWrapperAllDirectories_weakClassGenerationTemplate_2
-) ;
-
-//--- All files of 'build' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_weakClassGenerationTemplate_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_weakClassGenerationTemplate_1 [2] = {
-  & gWrapperDirectory_2_weakClassGenerationTemplate,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const cDirectoryWrapper gWrapperDirectory_1_weakClassGenerationTemplate (
-  "build",
-  0,
-  gWrapperAllFiles_weakClassGenerationTemplate_1,
-  1,
-  gWrapperAllDirectories_weakClassGenerationTemplate_1
-) ;
-
 //--- All files of '' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_weakClassGenerationTemplate_0 [1] = {
@@ -5711,8 +5574,7 @@ static const cRegularFileWrapper * gWrapperAllFiles_weakClassGenerationTemplate_
 
 //--- All sub-directories of '' directory
 
-static const cDirectoryWrapper * gWrapperAllDirectories_weakClassGenerationTemplate_0 [2] = {
-  & gWrapperDirectory_1_weakClassGenerationTemplate,
+static const cDirectoryWrapper * gWrapperAllDirectories_weakClassGenerationTemplate_0 [1] = {
   nullptr
 } ;
 
@@ -5722,7 +5584,7 @@ const cDirectoryWrapper gWrapperDirectory_0_weakClassGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_weakClassGenerationTemplate_0,
-  1,
+  0,
   gWrapperAllDirectories_weakClassGenerationTemplate_0
 ) ;
 
@@ -6389,51 +6251,6 @@ void cPtr_enumTypeForGeneration::method_appendSpecificImplementation (const GGS_
 //
 //--------------------------------------------------------------------------------------------------
 
-//--- All files of 'helpers' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_enumGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_enumGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const cDirectoryWrapper gWrapperDirectory_2_enumGenerationTemplate (
-  "helpers",
-  0,
-  gWrapperAllFiles_enumGenerationTemplate_2,
-  0,
-  gWrapperAllDirectories_enumGenerationTemplate_2
-) ;
-
-//--- All files of 'build' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_enumGenerationTemplate_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_enumGenerationTemplate_1 [2] = {
-  & gWrapperDirectory_2_enumGenerationTemplate,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const cDirectoryWrapper gWrapperDirectory_1_enumGenerationTemplate (
-  "build",
-  0,
-  gWrapperAllFiles_enumGenerationTemplate_1,
-  1,
-  gWrapperAllDirectories_enumGenerationTemplate_1
-) ;
-
 //--- All files of '' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_enumGenerationTemplate_0 [1] = {
@@ -6442,8 +6259,7 @@ static const cRegularFileWrapper * gWrapperAllFiles_enumGenerationTemplate_0 [1]
 
 //--- All sub-directories of '' directory
 
-static const cDirectoryWrapper * gWrapperAllDirectories_enumGenerationTemplate_0 [2] = {
-  & gWrapperDirectory_1_enumGenerationTemplate,
+static const cDirectoryWrapper * gWrapperAllDirectories_enumGenerationTemplate_0 [1] = {
   nullptr
 } ;
 
@@ -6453,7 +6269,7 @@ const cDirectoryWrapper gWrapperDirectory_0_enumGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_enumGenerationTemplate_0,
-  1,
+  0,
   gWrapperAllDirectories_enumGenerationTemplate_0
 ) ;
 
@@ -7286,51 +7102,6 @@ void cPtr_graphDeclarationForGeneration::method_appendSpecificImplementation (co
 //
 //--------------------------------------------------------------------------------------------------
 
-//--- All files of 'helpers' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_graphGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_graphGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const cDirectoryWrapper gWrapperDirectory_2_graphGenerationTemplate (
-  "helpers",
-  0,
-  gWrapperAllFiles_graphGenerationTemplate_2,
-  0,
-  gWrapperAllDirectories_graphGenerationTemplate_2
-) ;
-
-//--- All files of 'build' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_graphGenerationTemplate_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_graphGenerationTemplate_1 [2] = {
-  & gWrapperDirectory_2_graphGenerationTemplate,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const cDirectoryWrapper gWrapperDirectory_1_graphGenerationTemplate (
-  "build",
-  0,
-  gWrapperAllFiles_graphGenerationTemplate_1,
-  1,
-  gWrapperAllDirectories_graphGenerationTemplate_1
-) ;
-
 //--- All files of '' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_graphGenerationTemplate_0 [1] = {
@@ -7339,8 +7110,7 @@ static const cRegularFileWrapper * gWrapperAllFiles_graphGenerationTemplate_0 [1
 
 //--- All sub-directories of '' directory
 
-static const cDirectoryWrapper * gWrapperAllDirectories_graphGenerationTemplate_0 [2] = {
-  & gWrapperDirectory_1_graphGenerationTemplate,
+static const cDirectoryWrapper * gWrapperAllDirectories_graphGenerationTemplate_0 [1] = {
   nullptr
 } ;
 
@@ -7350,7 +7120,7 @@ const cDirectoryWrapper gWrapperDirectory_0_graphGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_graphGenerationTemplate_0,
-  1,
+  0,
   gWrapperAllDirectories_graphGenerationTemplate_0
 ) ;
 
@@ -8228,5 +7998,83 @@ void cPtr_optionalTypeDeclarationAST::method_enterDeclarationInSemanticContext (
   {
   extensionSetter_insertType (ioArgument_ioTypeMap, var_typeDefinition_4830.readProperty_typeName (), var_typeDefinition_4830, inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 135)) ;
   }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@optionalTypeDeclarationAST addAssociatedElement'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_optionalTypeDeclarationAST::method_addAssociatedElement (GGS_galgasDeclarationAST & /* ioArgument__5F_ioDeclarations */,
+                                                                   Compiler * /* inCompiler */
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@optionalTypeDeclarationAST semanticAnalysis'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_optionalTypeDeclarationAST::method_semanticAnalysis (GGS__5B_lstring_5D_ & ioArgument_ioUsefulnessRootEntities,
+                                                               GGS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                               const GGS_string /* constinArgument__5F_inProductDirectory */,
+                                                               const GGS_semanticContext /* constinArgument__5F_inSemanticContext */,
+                                                               GGS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                               const GGS_predefinedTypes /* constinArgument__5F_inPredefinedTypes */,
+                                                               GGS__5B_semanticDeclarationForGeneration_5D_ & ioArgument_ioSemanticDeclarationListForGeneration,
+                                                               Compiler * inCompiler
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_optionalTypeDeclarationAST temp_0 = this ;
+  GGS_lstring var_nameForUsefulness_6585 = function_typeNameForUsefulEntitiesGraph (temp_0.readProperty_optionalTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 155)) ;
+  {
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_6585, var_nameForUsefulness_6585, inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 156)) ;
+  }
+  const GGS_optionalTypeDeclarationAST temp_1 = this ;
+  GGS_lstring var_unwrappedTypeNameForUsefulness_6743 = function_typeNameForUsefulEntitiesGraph (temp_1.readProperty_unwrappedTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 157)) ;
+  {
+  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_nameForUsefulness_6585, var_unwrappedTypeNameForUsefulness_6743 COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 158)) ;
+  }
+  GalgasBool test_2 = GalgasBool::boolTrue ;
+  if (GalgasBool::boolTrue == test_2) {
+    const GGS_optionalTypeDeclarationAST temp_3 = this ;
+    test_2 = temp_3.readProperty_isUsefull ().boolEnum () ;
+    if (GalgasBool::boolTrue == test_2) {
+      ioArgument_ioUsefulnessRootEntities.plusPlusAssignOperation (var_nameForUsefulness_6585  COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 160)) ;
+    }
+  }
+  const GGS_optionalTypeDeclarationAST temp_4 = this ;
+  GGS_unifiedTypeMapEntry var_optionalType_7036 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_4.readProperty_optionalTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 163)) ;
+  const GGS_optionalTypeDeclarationAST temp_5 = this ;
+  GGS_unifiedTypeMapEntry var_unwrappedType_7113 = extensionGetter_typeMapEntryForLKey (ioArgument_ioTypeMap, temp_5.readProperty_unwrappedTypeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 164)) ;
+  GGS_lstring var_correspondingWeakTypeName_7192 = function_makeWeakTypeLName (extensionGetter_definition (var_unwrappedType_7113, inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 165)).readProperty_typeName (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 165)) ;
+  GGS_unifiedTypeMapEntry var_correspondingWeakTypeOrNull_7282 = extensionGetter_typeMapEntryOrNullForLKey (ioArgument_ioTypeMap, var_correspondingWeakTypeName_7192, inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 166)) ;
+  const GGS_optionalTypeDeclarationAST temp_6 = this ;
+  ioArgument_ioSemanticDeclarationListForGeneration.plusPlusAssignOperation (GGS_optionalTypeForGeneration::init_21_infoMessage_21__21__21_ (GGS_string ("optional type ").add_operation (temp_6.readProperty_optionalTypeName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 168)), var_optionalType_7036, var_unwrappedType_7113, var_correspondingWeakTypeOrNull_7282, inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 167)) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Overriding extension proc '@optionalTypeForGeneration appendDeclaration1'
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_optionalTypeForGeneration::method_appendDeclaration_31_ (GGS_stringset & ioArgument_ioInclusionSet,
+                                                                   GGS_string & outArgument_outHeader,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  const GGS_optionalTypeForGeneration temp_0 = this ;
+  extensionMethod_addHeaderFileName_31_ (temp_0.readProperty_unwrappedType (), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 191)) ;
+  const GGS_optionalTypeForGeneration temp_1 = this ;
+  GGS_unifiedTypeDefinition var_selfTypeDefinition_8416 = extensionGetter_definition (temp_1.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 192)) ;
+  const GGS_optionalTypeForGeneration temp_2 = this ;
+  const GGS_optionalTypeForGeneration temp_3 = this ;
+  const GGS_optionalTypeForGeneration temp_4 = this ;
+  GGS_string temp_5 ;
+  const GalgasBool test_6 = temp_4.readProperty_weakType ().getter_isNull (SOURCE_FILE ("declaration-type-optional.galgas4", 197)).boolEnum () ;
+  if (GalgasBool::boolTrue == test_6) {
+    temp_5 = GGS_string::makeEmptyString () ;
+  }else if (GalgasBool::boolFalse == test_6) {
+    const GGS_optionalTypeForGeneration temp_7 = this ;
+    temp_5 = extensionGetter_identifierRepresentation (temp_7.readProperty_weakType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 197)) ;
+  }
+  outArgument_outHeader = GGS_string (filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeHeader_31_ (inCompiler, var_selfTypeDefinition_8416.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_2.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 195)), extensionGetter_identifierRepresentation (temp_3.readProperty_unwrappedType (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 196)), temp_5 COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 193))) ;
+  const GGS_optionalTypeForGeneration temp_8 = this ;
+  outArgument_outHeader.plusAssignOperation(GGS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, var_selfTypeDefinition_8416.readProperty_typeName ().readProperty_string (), extensionGetter_identifierRepresentation (temp_8.readProperty_mSelfTypeEntry (), inCompiler COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 201)), var_selfTypeDefinition_8416.readProperty_isConcrete (), var_selfTypeDefinition_8416.readProperty_initializerMap (), var_selfTypeDefinition_8416.readProperty_classFunctionMap (), var_selfTypeDefinition_8416.readProperty_getterMap (), var_selfTypeDefinition_8416.readProperty_setterMap (), var_selfTypeDefinition_8416.readProperty_instanceMethodMap (), var_selfTypeDefinition_8416.readProperty_classMethodMap (), var_selfTypeDefinition_8416.readProperty_readSubscriptMap (), var_selfTypeDefinition_8416.readProperty_enumerationDescriptorList (), var_selfTypeDefinition_8416.readProperty_features (), var_selfTypeDefinition_8416.readProperty_addAssignOperatorArguments (), var_selfTypeDefinition_8416.readProperty_typeForEnumeratedElement (), var_selfTypeDefinition_8416.readProperty_supportCollectionValue () COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 199))), inCompiler  COMMA_SOURCE_FILE ("declaration-type-optional.galgas4", 199)) ;
 }
 

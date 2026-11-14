@@ -530,7 +530,7 @@ override proc @closedSliceExpressionForGeneration.generateExpression
 //--- Generate Comparison
   outCppExpression =
    "GGS_range (" + leftTemporaryOperand + ", "
-   +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName () + self.mLocation.commaSourceFile + ").add_operation (GGS_uint (1), " + compilerCppName () + self.mLocation.commaSourceFile + "))"
+   +  rightTemporaryOperand + ".subtract_operation (" + leftTemporaryOperand + ", " + compilerCppName () + self.mLocation.commaSourceFile + ").add_operation (GGS_uint (1), " + compilerCppName () + self.mLocation.commaSourceFile + "))"
 }
 
 //································································································
@@ -563,7 +563,7 @@ override proc @openedSliceExpressionForGeneration.generateExpression
   !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())
   outCppExpression =
    "GGS_range (" + leftTemporaryOperand + ", "
-   +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName ()
+   +  rightTemporaryOperand + ".subtract_operation (" + leftTemporaryOperand + ", " + compilerCppName ()
    + self.mLocation.commaSourceFile + "))"
 }
 

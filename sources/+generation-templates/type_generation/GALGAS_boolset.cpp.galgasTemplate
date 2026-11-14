@@ -137,7 +137,7 @@ GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::operator_xor (%?^%const GGS_%!TYP
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::substract_operation (%?^%const GGS_%!TYPE_IDENTIFIER% & inOperand,
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::subtract_operation (%?^%const GGS_%!TYPE_IDENTIFIER% & inOperand,
                  %!^%Compiler * /* inCompiler */
                  %!^%COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_%!TYPE_IDENTIFIER% result ;

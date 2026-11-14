@@ -457,7 +457,7 @@ GGS_bool GGS_uint_36__34_::getter_canAdd (const GGS_uint_36__34_ & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS_uint_36__34_::substract_operation_no_ovf (const GGS_uint_36__34_ & inOperand2) const {
+GGS_uint_36__34_ GGS_uint_36__34_::subtract_operation_no_ovf (const GGS_uint_36__34_ & inOperand2) const {
   GGS_uint_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GGS_uint_36__34_ (mUInt64Value - inOperand2.mUInt64Value) ;
@@ -477,7 +477,7 @@ GGS_uint_36__34_ GGS_uint_36__34_::multiply_operation_no_ovf (const GGS_uint_36_
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS_uint_36__34_::substract_operation (const GGS_uint_36__34_ & inOperand,
+GGS_uint_36__34_ GGS_uint_36__34_::subtract_operation (const GGS_uint_36__34_ & inOperand,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GGS_uint_36__34_ result ;

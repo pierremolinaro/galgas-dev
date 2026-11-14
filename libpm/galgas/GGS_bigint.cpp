@@ -547,7 +547,7 @@ GGS_bigint GGS_bigint::add_operation (const GGS_bigint & inOperand,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_bigint GGS_bigint::substract_operation (const GGS_bigint & inOperand,
+GGS_bigint GGS_bigint::subtract_operation (const GGS_bigint & inOperand,
                                                   Compiler * /* inCompiler */
                                                   COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_bigint result ;

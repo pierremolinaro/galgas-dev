@@ -5726,51 +5726,6 @@ void routine_appendStructASTForRangeType_26_ (GGS__5B_semanticDeclarationAST_5D_
 //
 //--------------------------------------------------------------------------------------------------
 
-//--- All files of 'helpers' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_predefinedTypeGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'helpers' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_predefinedTypeGenerationTemplate_2 [1] = {
-  nullptr
-} ;
-
-//--- Directory 'helpers'
-
-const cDirectoryWrapper gWrapperDirectory_2_predefinedTypeGenerationTemplate (
-  "helpers",
-  0,
-  gWrapperAllFiles_predefinedTypeGenerationTemplate_2,
-  0,
-  gWrapperAllDirectories_predefinedTypeGenerationTemplate_2
-) ;
-
-//--- All files of 'build' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_predefinedTypeGenerationTemplate_1 [1] = {
-  nullptr
-} ;
-
-//--- All sub-directories of 'build' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_predefinedTypeGenerationTemplate_1 [2] = {
-  & gWrapperDirectory_2_predefinedTypeGenerationTemplate,
-  nullptr
-} ;
-
-//--- Directory 'build'
-
-const cDirectoryWrapper gWrapperDirectory_1_predefinedTypeGenerationTemplate (
-  "build",
-  0,
-  gWrapperAllFiles_predefinedTypeGenerationTemplate_1,
-  1,
-  gWrapperAllDirectories_predefinedTypeGenerationTemplate_1
-) ;
-
 //--- All files of '' directory
 
 static const cRegularFileWrapper * gWrapperAllFiles_predefinedTypeGenerationTemplate_0 [1] = {
@@ -5779,8 +5734,7 @@ static const cRegularFileWrapper * gWrapperAllFiles_predefinedTypeGenerationTemp
 
 //--- All sub-directories of '' directory
 
-static const cDirectoryWrapper * gWrapperAllDirectories_predefinedTypeGenerationTemplate_0 [2] = {
-  & gWrapperDirectory_1_predefinedTypeGenerationTemplate,
+static const cDirectoryWrapper * gWrapperAllDirectories_predefinedTypeGenerationTemplate_0 [1] = {
   nullptr
 } ;
 
@@ -5790,7 +5744,7 @@ const cDirectoryWrapper gWrapperDirectory_0_predefinedTypeGenerationTemplate (
   "",
   0,
   gWrapperAllFiles_predefinedTypeGenerationTemplate_0,
-  1,
+  0,
   gWrapperAllDirectories_predefinedTypeGenerationTemplate_0
 ) ;
 
@@ -7243,23 +7197,6 @@ void cPtr_stringsetPredefinedTypeAST::method_getEnumerationList (GGS_unifiedType
 }
 
 //--------------------------------------------------------------------------------------------------
-//Overriding extension proc '@stringsetPredefinedTypeAST getAddAssignArgumentList'
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_stringsetPredefinedTypeAST::method_getAddAssignArgumentList (GGS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
-                                                                       GGS__5B_functionSignatureElement_5D_ & outArgument_outAddAssignArgumentList,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_unifiedTypeMapEntry var_stringTypeIndex_5813 ;
-  {
-  extensionSetter_makeEntryFromString (ioArgument_ioUnifiedTypeMap, GGS_string ("stringset"), var_stringTypeIndex_5813, inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 142)) ;
-  }
-  GGS__5B_functionSignatureElement_5D_ temp_0 = GGS__5B_functionSignatureElement_5D_::init (inCompiler COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 143)) ;
-  temp_0.plusPlusAssignOperation (GGS_functionSignatureElement::init_21__21__21__21_ (GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 143)), var_stringTypeIndex_5813, GGS_string ("inString"), GGS_bool (true), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("declaration-predefined-type-stringset.galgas4", 143)) ;
-  outArgument_outAddAssignArgumentList = temp_0 ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //Overriding extension proc '@stringsetPredefinedTypeAST getGetterMap'
 //--------------------------------------------------------------------------------------------------
 
@@ -7815,6 +7752,38 @@ GGS_string cPtr_lexicalErrorByDefaultAST::getter_generateDefaultSendCode (const 
   GGS_string result_result ; // Returned variable
   const GGS_lexicalErrorByDefaultAST temp_0 = this ;
   result_result = GGS_string ("lexicalError (gLexicalMessage_").add_operation (constinArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 162)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 162)).add_operation (temp_0.readProperty_mDefaultErrorMessageName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 162)).add_operation (GGS_string (" COMMA_LINE_AND_SOURCE_FILE) ;\n"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 162)) ;
+//---
+  return result_result ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension func '@lexicalImplicitRuleAST generateLexicalRuleCode'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string cPtr_lexicalImplicitRuleAST::getter_generateLexicalRuleCode (const GGS_string constinArgument_inScannerClassName,
+                                                                        const GGS_lexiqueAnalysisContext constinArgument_inLexiqueAnalysisContext,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_string result_result ; // Returned variable
+  GGS_tokenSortedlist var_tokenSortedList_8930 ;
+  const GGS_lexicalImplicitRuleAST temp_0 = this ;
+  GGS_lexicalExplicitTokenListMap joker_8921 ; // Joker input parameter
+  GGS_bool joker_8947 ; // Joker input parameter
+  constinArgument_inLexiqueAnalysisContext.readProperty_mLexicalTokenListMap ().method_searchKey (temp_0.readProperty_mListName (), joker_8921, var_tokenSortedList_8930, joker_8947, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 197)) ;
+  result_result = GGS_string::makeEmptyString () ;
+  DownEnumerator_tokenSortedlist enumerator_8982 (var_tokenSortedList_8930) ;
+  while (enumerator_8982.hasCurrentObject ()) {
+    result_result.plusAssignOperation(GGS_string ("if (testForInputUTF32String (kUnicodeString_").add_operation (constinArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 200)).add_operation (GGS_string ("_"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 200)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 200)) ;
+    result_result.plusAssignOperation(enumerator_8982.current (HERE).readProperty_mName ().getter_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas4", 201)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 201)) ;
+    result_result.plusAssignOperation(GGS_string (", true)) {\n"), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 202)) ;
+    result_result.plusAssignOperation(GGS_string ("  token.mTokenCode = kToken_").add_operation (enumerator_8982.current (HERE).readProperty_mTerminalName ().getter_identifierRepresentation (SOURCE_FILE ("lexiqueGeneration.galgas4", 203)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 203)).add_operation (GGS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 203)), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 203)) ;
+    result_result.plusAssignOperation(GGS_string ("  enterToken (token) ;\n"), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 204)) ;
+    result_result.plusAssignOperation(GGS_string ("}else "), inCompiler  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas4", 205)) ;
+    enumerator_8982.gotoNextObject () ;
+  }
 //---
   return result_result ;
 }

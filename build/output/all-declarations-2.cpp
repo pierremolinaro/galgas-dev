@@ -2911,9 +2911,9 @@ GGS_typeFeatures GGS_typeFeatures::operator_xor (const GGS_typeFeatures & inOper
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_typeFeatures GGS_typeFeatures::substract_operation (const GGS_typeFeatures & inOperand,
-                                                        Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_typeFeatures GGS_typeFeatures::subtract_operation (const GGS_typeFeatures & inOperand,
+                                                       Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_typeFeatures result ;
   if (mIsValid && inOperand.mIsValid) {
     result = GGS_typeFeatures (mFlags & ~ inOperand.mFlags) ;

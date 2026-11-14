@@ -1649,13 +1649,12 @@ class GGS__5B_templateInstructionForGeneration_5D_ final : public AC_GALGAS_root
 //--------------------------------- Initializers
   public: static GGS__5B_templateInstructionForGeneration_5D_ init (Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_templateInstructionForGeneration_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_templateInstructionForGeneration & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -1825,13 +1824,12 @@ class GGS__5B_templateInstructionAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_templateInstructionAST_5D_ init (Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_templateInstructionAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_templateInstructionAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -2299,13 +2297,12 @@ class GGS__5B_templateExpressionElementAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_templateExpressionElementAST_5D_ init (Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_templateExpressionElementAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_templateExpressionElementAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -2561,13 +2558,12 @@ class GGS__5B_templateInstructionIfBranchAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_templateInstructionIfBranchAST_5D_ init (Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_templateInstructionIfBranchAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_templateInstructionIfBranchAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -3608,13 +3604,12 @@ class GGS__5B_templateInstructionIfBranchForGeneration_5D_ final : public AC_GAL
 //--------------------------------- Initializers
   public: static GGS__5B_templateInstructionIfBranchForGeneration_5D_ init (Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_templateInstructionIfBranchForGeneration_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_templateInstructionIfBranchForGeneration & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -4772,13 +4767,12 @@ class GGS__5B_templateInstructionSwitchBranchAST_5D_ final : public AC_GALGAS_ro
 //--------------------------------- Initializers
   public: static GGS__5B_templateInstructionSwitchBranchAST_5D_ init (Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_templateInstructionSwitchBranchAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_templateInstructionSwitchBranchAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -5120,13 +5114,12 @@ class GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ final : public AC
 //--------------------------------- Initializers
   public: static GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ init (Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_templateInstructionSwitchBranchForGeneration & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator

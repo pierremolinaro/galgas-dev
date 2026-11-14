@@ -231,13 +231,12 @@ class GGS__5B_row_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_row_5D_ init (Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_row_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_row & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -407,13 +406,12 @@ class GGS__5B__32_string_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B__32_string_5D_ init (Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B__32_string_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS__32_string & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -826,13 +824,12 @@ class GGS__5B_lexicalSendSearchAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_lexicalSendSearchAST_5D_ init (Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_lexicalSendSearchAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_lexicalSendSearchAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -1751,13 +1748,12 @@ class GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ final : public AC_GALG
 //--------------------------------- Initializers
   public: static GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ init (Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_abstractLexicalRoutineActualArgumentAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_abstractLexicalRoutineActualArgumentAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -2383,13 +2379,12 @@ class GGS__5B_lexicalSelectBranchAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_lexicalSelectBranchAST_5D_ init (Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_lexicalSelectBranchAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_lexicalSelectBranchAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -4360,13 +4355,12 @@ class GGS__5B_commandLineOptionAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_commandLineOptionAST_5D_ init (Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_commandLineOptionAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_commandLineOptionAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -5739,13 +5733,12 @@ class GGS__5B_programRuleAST_5D_ final : public AC_GALGAS_root {
 //--------------------------------- Initializers
   public: static GGS__5B_programRuleAST_5D_ init (Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_programRuleAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_programRuleAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -6441,7 +6434,7 @@ class GGS_tokenSortedlist final : public AC_GALGAS_root {
                                                                            const class GGS_string & inOperand2
                                                                            COMMA_LOCATION_ARGS) ;
 
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS_tokenSortedlist inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
@@ -6451,8 +6444,7 @@ class GGS_tokenSortedlist final : public AC_GALGAS_root {
                                    const class GGS_string & inOperand1,
                                    const class GGS_string & inOperand2
                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_tokenSortedlist_2E_element & inOperand
                                         COMMA_LOCATION_ARGS) ;
 
@@ -7003,13 +6995,12 @@ class GGS__5B_lexicalRoutineFormalArgumentAST_5D_ final : public AC_GALGAS_root 
 //--------------------------------- Initializers
   public: static GGS__5B_lexicalRoutineFormalArgumentAST_5D_ init (Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_lexicalRoutineFormalArgumentAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_lexicalRoutineFormalArgumentAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
@@ -7505,13 +7496,12 @@ class GGS__5B_lexicalFunctionFormalArgumentAST_5D_ final : public AC_GALGAS_root
 //--------------------------------- Initializers
   public: static GGS__5B_lexicalFunctionFormalArgumentAST_5D_ init (Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
-//--------------------------------- += operator (with expression)
+//--------------------------------- += operator
   public: void plusAssignOperation (const GGS__5B_lexicalFunctionFormalArgumentAST_5D_ inOperand,
                                     class Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
 
-
-//--------------------------------- ++= operator, collection value
+//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (const GGS_lexicalFunctionFormalArgumentAST & inOperand
                                         COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator

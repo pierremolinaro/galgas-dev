@@ -8916,9 +8916,9 @@ GGS_localVariableAttributes GGS_localVariableAttributes::operator_xor (const GGS
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_localVariableAttributes GGS_localVariableAttributes::substract_operation (const GGS_localVariableAttributes & inOperand,
-                                                                              Compiler * /* inCompiler */
-                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+GGS_localVariableAttributes GGS_localVariableAttributes::subtract_operation (const GGS_localVariableAttributes & inOperand,
+                                                                             Compiler * /* inCompiler */
+                                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_localVariableAttributes result ;
   if (mIsValid && inOperand.mIsValid) {
     result = GGS_localVariableAttributes (mFlags & ~ inOperand.mFlags) ;

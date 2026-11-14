@@ -356,7 +356,7 @@ GGS_bool GGS_sint_36__34_::getter_canAdd (const GGS_sint_36__34_ & inOperand
 // For signed integers you can check the signs of the arguments and of the result. integers of different signs
 // can't overflow, and integers of same sign overflow only is the result is of different sign
 
-GGS_sint_36__34_ GGS_sint_36__34_::substract_operation (const GGS_sint_36__34_ & inOperand,
+GGS_sint_36__34_ GGS_sint_36__34_::subtract_operation (const GGS_sint_36__34_ & inOperand,
                                                         Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   GGS_sint_36__34_ result ;
@@ -387,7 +387,7 @@ GGS_bool GGS_sint_36__34_::getter_canSubstract (const GGS_sint_36__34_ & inOpera
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint_36__34_ GGS_sint_36__34_::substract_operation_no_ovf (const GGS_sint_36__34_ & inOperand2) const {
+GGS_sint_36__34_ GGS_sint_36__34_::subtract_operation_no_ovf (const GGS_sint_36__34_ & inOperand2) const {
   GGS_sint_36__34_ result ;
   if (isValid () && inOperand2.isValid ()) {
     const int64_t r = mSInt64Value - inOperand2.mSInt64Value ;

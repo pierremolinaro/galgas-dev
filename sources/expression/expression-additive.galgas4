@@ -644,10 +644,10 @@ override proc @binaryOperatorExpressionForGeneration.generateExpression
     operatorString = "add_operation_no_ovf"
     hasCompilerOption = true
   case sub           :
-    operatorString = "substract_operation"
+    operatorString = "subtract_operation"
     hasCompilerOption = true
   case subNoOverflow :
-    operatorString = "substract_operation_no_ovf"
+    operatorString = "subtract_operation_no_ovf"
     hasCompilerOption = true
   case operator_and :
     operatorString = "operator_and"

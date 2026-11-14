@@ -347,7 +347,7 @@ GGS_bool GGS_sint::getter_canAdd (const GGS_sint & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_sint::substract_operation (const GGS_sint & inOperand,
+GGS_sint GGS_sint::subtract_operation (const GGS_sint & inOperand,
                                         Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   GGS_sint result ;
@@ -378,7 +378,7 @@ GGS_bool GGS_sint::getter_canSubstract (const GGS_sint & inOperand
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_sint GGS_sint::substract_operation_no_ovf (const GGS_sint & inOperand2) const {
+GGS_sint GGS_sint::subtract_operation_no_ovf (const GGS_sint & inOperand2) const {
   GGS_sint result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GGS_sint (mSIntValue - inOperand2.mSIntValue) ;
