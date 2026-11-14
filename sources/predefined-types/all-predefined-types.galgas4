@@ -307,36 +307,6 @@ private proc appendPredefinedArrayTypeAST (?!@galgasDeclarationAST ioDeclaration
 
 //--------------------------------------------------------------------------------------------------
 
-//private proc appendPredefined2StringListTypeAST (?![@semanticDeclarationAST] ioDeclarationListASTs) {
-//  var propertyList = [@propertyInCollectionAST] ()
-//  propertyList ++= @(
-//    !mutability: .mutableProperty,
-//    "string".nowhere,
-//    "mValue0".nowhere,
-//    .publicAccess,
-//    !hasSelector: false,
-//    !initialization: .none
-//  )
-//  propertyList ++= @(
-//    !mutability: .mutableProperty,
-//    "string".nowhere,
-//    "mValue1".nowhere,
-//    .publicAccess,
-//    !hasSelector: false,
-//    !initialization: .none
-//  )
-//
-//  ioDeclarationListASTs ++= @listDeclarationAST (
-//    !isPredefined: true,
-//    @lstring ("2stringlist", @location.here),
-//    propertyList,
-//    !usefullList: true,
-//    !equatable: true
-//  )
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 private proc appendStructASTForTypeWithLocation (?![@semanticDeclarationAST] ioDeclarationListASTs,
                                                  let @string inElementTypeName) {
   var propertyList = [@propertyInCollectionAST] ()

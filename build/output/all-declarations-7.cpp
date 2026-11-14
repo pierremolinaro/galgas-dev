@@ -2345,8 +2345,8 @@ static const char * gLexicalMessage_galgasScanner_34__undefinedAttribute = "unde
 
 String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTerminalIndex) const {
   String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 192)) {
-    static const char * syntaxErrorMessageArray [192] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 191)) {
+    static const char * syntaxErrorMessageArray [191] = {kEndOfSourceLexicalErrorMessage,
         "an identifier",
         "a float number",
         "a literal integer",
@@ -2417,7 +2417,6 @@ String Lexique_galgasScanner_34_::getMessageForTerminal (const int32_t inTermina
         "the 'nil' keyword",
         "the 'not' keyword",
         "the 'on' keyword",
-        "the 'operator' keyword",
         "the 'option' keyword",
         "the 'or' keyword",
         "the 'override' keyword",
@@ -3759,18 +3758,6 @@ static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__once
   utf32 ('e'),
 } ;
 
-//--- Unicode string for '$operator$'
-static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__operator = {
-  utf32 ('o'),
-  utf32 ('p'),
-  utf32 ('e'),
-  utf32 ('r'),
-  utf32 ('a'),
-  utf32 ('t'),
-  utf32 ('o'),
-  utf32 ('r'),
-} ;
-
 //--- Unicode string for '$option$'
 static const std::initializer_list <utf32> kUnicodeString_galgasScanner_34__option = {
   utf32 ('o'),
@@ -4457,7 +4444,7 @@ int32_t Lexique_galgasScanner_34_::search_into_galgasDelimitorsList (const Strin
 //             Key words table 'galgasKeyWordList'      
 //--------------------------------------------------------------------------------------------------
 
-static const int32_t ktable_size_galgasScanner_34__galgasKeyWordList = 83 ;
+static const int32_t ktable_size_galgasScanner_34__galgasKeyWordList = 82 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasKeyWordList [ktable_size_galgasScanner_34__galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__as, Lexique_galgasScanner_34_::kToken_as),
@@ -4534,7 +4521,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasScanner_34__galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__abstract, Lexique_galgasScanner_34_::kToken_abstract),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__indexing, Lexique_galgasScanner_34_::kToken_indexing),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__mutating, Lexique_galgasScanner_34_::kToken_mutating),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__operator, Lexique_galgasScanner_34_::kToken_operator),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__override, Lexique_galgasScanner_34_::kToken_override),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__template, Lexique_galgasScanner_34_::kToken_template),
   C_unicode_lexique_table_entry (kUnicodeString_galgasScanner_34__extension, Lexique_galgasScanner_34_::kToken_extension),
@@ -4938,11 +4924,6 @@ String Lexique_galgasScanner_34_::getCurrentTokenString (const cToken * inTokenP
     case kToken_on:
       s.appendChar (utf32 ('$')) ;
       s.appendCString ("on") ;
-      s.appendChar (utf32 ('$')) ;
-      break ;
-    case kToken_operator:
-      s.appendChar (utf32 ('$')) ;
-      s.appendCString ("operator") ;
       s.appendChar (utf32 ('$')) ;
       break ;
     case kToken_option:
@@ -6464,7 +6445,6 @@ GGS_luint Lexique_galgasScanner_34_::synthetizedAttribute_uint_33__32_value (voi
   result.plusPlusAssignOperation (GGS_string ("nil") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("not") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("on") COMMA_HERE) ;
-  result.plusPlusAssignOperation (GGS_string ("operator") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("option") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("or") COMMA_HERE) ;
   result.plusPlusAssignOperation (GGS_string ("override") COMMA_HERE) ;
@@ -6772,7 +6752,6 @@ static void getKeywordsForIdentifier_galgasScanner_34_ (const String & inIdentif
     ioList.appendObject ("abstract") ;
     ioList.appendObject ("indexing") ;
     ioList.appendObject ("mutating") ;
-    ioList.appendObject ("operator") ;
     ioList.appendObject ("override") ;
     ioList.appendObject ("template") ;
     ioList.appendObject ("extension") ;
@@ -6796,7 +6775,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasScanner_34_, getKeywordsForIdent
 //--------------------------------------------------------------------------------------------------
 
 uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [192] = {0,
+  static const uint32_t kTerminalSymbolStyles [191] = {0,
     0 /* galgasScanner4_1_identifier */,
     7 /* galgasScanner4_1_double_2E_xxx */,
     6 /* galgasScanner4_1_literalInt */,
@@ -6867,7 +6846,6 @@ uint32_t Lexique_galgasScanner_34_::styleIndexForTerminal (const int32_t inTermi
     1 /* galgasScanner4_1_nil */,
     1 /* galgasScanner4_1_not */,
     1 /* galgasScanner4_1_on */,
-    1 /* galgasScanner4_1_operator */,
     1 /* galgasScanner4_1_option */,
     1 /* galgasScanner4_1_or */,
     1 /* galgasScanner4_1_override */,
@@ -17033,5 +17011,100 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateTestDynamicClassAST (
 
 const GALGAS_TypeDescriptor * GGS_templateTestDynamicClassAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateTestDynamicClassAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_templateTestDynamicClassAST_2E_weak::objectCompare (const GGS_templateTestDynamicClassAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateTestDynamicClassAST_2E_weak::GGS_templateTestDynamicClassAST_2E_weak (void) :
+GGS_templateExpressionAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateTestDynamicClassAST_2E_weak & GGS_templateTestDynamicClassAST_2E_weak::operator = (const GGS_templateTestDynamicClassAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateTestDynamicClassAST_2E_weak::GGS_templateTestDynamicClassAST_2E_weak (const GGS_templateTestDynamicClassAST & inSource) :
+GGS_templateExpressionAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateTestDynamicClassAST_2E_weak GGS_templateTestDynamicClassAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_templateTestDynamicClassAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateTestDynamicClassAST GGS_templateTestDynamicClassAST_2E_weak::unwrappedValue (void) const {
+  GGS_templateTestDynamicClassAST result ;
+  if (isValid ()) {
+    const cPtr_templateTestDynamicClassAST * p = (cPtr_templateTestDynamicClassAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_templateTestDynamicClassAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_templateTestDynamicClassAST GGS_templateTestDynamicClassAST_2E_weak::bang_templateTestDynamicClassAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_templateTestDynamicClassAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_templateTestDynamicClassAST) ;
+      result = GGS_templateTestDynamicClassAST ((cPtr_templateTestDynamicClassAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @templateTestDynamicClassAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateTestDynamicClassAST_2E_weak ("templateTestDynamicClassAST.weak",
+                                                                                        & kTypeDescriptor_GALGAS_templateExpressionAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_templateTestDynamicClassAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateTestDynamicClassAST_2E_weak ;
 }
 

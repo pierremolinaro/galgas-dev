@@ -98,7 +98,6 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* nil */,
   false /* not */,
   false /* on */,
-  false /* operator */,
   false /* option */,
   false /* or */,
   false /* override */,

@@ -27,7 +27,7 @@ lexique galgasScanner4 {
 indexing classDefinition : "Class Definition"
 indexing enumDefinition : "Enum Definition"
 indexing structDefinition : "Struct Definition"
-indexing listDefinition : "List Definition"
+//indexing listDefinition : "List Definition"
 indexing sortedListDefinition : "Sorted List Definition"
 indexing mapDefinition : "Map Definition"
 indexing dictionaryDefinition : "Dictionary Definition"
@@ -157,7 +157,6 @@ list galgasKeyWordList style keywordsStyle #errorMessage "the '%K' keyword" {
   "nil",
   "not",
   "on",
-  "operator",
   "option",
   "or",
   "override",

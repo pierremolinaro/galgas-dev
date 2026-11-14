@@ -2206,563 +2206,6 @@ const GALGAS_TypeDescriptor * GGS_structTypeForGeneration_2E_weak::staticTypeDes
 }
 
 //--------------------------------------------------------------------------------------------------
-// @listDeclarationAST reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_listDeclarationAST::objectCompare (const GGS_listDeclarationAST & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listDeclarationAST::GGS_listDeclarationAST (void) :
-GGS_semanticDeclarationAST () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_listDeclarationAST GGS_listDeclarationAST::
-init_21_isPredefined_21__21__21_usefullList_21_equatable (const GGS_bool & in_isPredefined,
-                                                          const GGS_lstring & in_mListTypeName,
-                                                          const GGS__5B_propertyInCollectionAST_5D_ & in_mPropertyList,
-                                                          const GGS_bool & in_usefullList,
-                                                          const GGS_bool & in_equatable,
-                                                          Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
-  cPtr_listDeclarationAST * object = nullptr ;
-  macroMyNew (object, cPtr_listDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->listDeclarationAST_init_21_isPredefined_21__21__21_usefullList_21_equatable (in_isPredefined, in_mListTypeName, in_mPropertyList, in_usefullList, in_equatable, inCompiler) ;
-  const GGS_listDeclarationAST result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_listDeclarationAST::
-listDeclarationAST_init_21_isPredefined_21__21__21_usefullList_21_equatable (const GGS_bool & in_isPredefined,
-                                                                             const GGS_lstring & in_mListTypeName,
-                                                                             const GGS__5B_propertyInCollectionAST_5D_ & in_mPropertyList,
-                                                                             const GGS_bool & in_usefullList,
-                                                                             const GGS_bool & in_equatable,
-                                                                             Compiler * /* inCompiler */) {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mListTypeName = in_mListTypeName ;
-  mProperty_mPropertyList = in_mPropertyList ;
-  mProperty_usefullList = in_usefullList ;
-  mProperty_equatable = in_equatable ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listDeclarationAST::GGS_listDeclarationAST (const cPtr_listDeclarationAST * inSourcePtr) :
-GGS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_listDeclarationAST) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_lstring GGS_listDeclarationAST::readProperty_mListTypeName (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
-  }else{
-    cPtr_listDeclarationAST * p = (cPtr_listDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_listDeclarationAST) ;
-    return p->mProperty_mListTypeName ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_propertyInCollectionAST_5D_ GGS_listDeclarationAST::readProperty_mPropertyList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS__5B_propertyInCollectionAST_5D_ () ;
-  }else{
-    cPtr_listDeclarationAST * p = (cPtr_listDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_listDeclarationAST) ;
-    return p->mProperty_mPropertyList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_listDeclarationAST::readProperty_usefullList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_listDeclarationAST * p = (cPtr_listDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_listDeclarationAST) ;
-    return p->mProperty_usefullList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_bool GGS_listDeclarationAST::readProperty_equatable (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_bool () ;
-  }else{
-    cPtr_listDeclarationAST * p = (cPtr_listDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_listDeclarationAST) ;
-    return p->mProperty_equatable ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @listDeclarationAST class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_listDeclarationAST::cPtr_listDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
-mProperty_mListTypeName (),
-mProperty_mPropertyList (),
-mProperty_usefullList (),
-mProperty_equatable () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_listDeclarationAST::cPtr_listDeclarationAST (const GGS_bool & in_isPredefined,
-                                                  const GGS_lstring & in_mListTypeName,
-                                                  const GGS__5B_propertyInCollectionAST_5D_ & in_mPropertyList,
-                                                  const GGS_bool & in_usefullList,
-                                                  const GGS_bool & in_equatable,
-                                                  Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
-mProperty_mListTypeName (),
-mProperty_mPropertyList (),
-mProperty_usefullList (),
-mProperty_equatable () {
-  mProperty_isPredefined = in_isPredefined ;
-  mProperty_mListTypeName = in_mListTypeName ;
-  mProperty_mPropertyList = in_mPropertyList ;
-  mProperty_usefullList = in_usefullList ;
-  mProperty_equatable = in_equatable ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_listDeclarationAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_listDeclarationAST ;
-}
-
-void cPtr_listDeclarationAST::description (String & ioString,
-                                           const int32_t inIndentation) const {
-  ioString.appendCString ("[@listDeclarationAST:") ;
-  mProperty_isPredefined.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mListTypeName.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mPropertyList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_usefullList.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_equatable.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_listDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_listDeclarationAST (mProperty_isPredefined, mProperty_mListTypeName, mProperty_mPropertyList, mProperty_usefullList, mProperty_equatable, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_listDeclarationAST::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
-    mProperty_mListTypeName.printNonNullClassInstanceProperties ("mListTypeName") ;
-    mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
-    mProperty_usefullList.printNonNullClassInstanceProperties ("usefullList") ;
-    mProperty_equatable.printNonNullClassInstanceProperties ("equatable") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @listDeclarationAST generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_listDeclarationAST ("listDeclarationAST",
-                                                                       & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_listDeclarationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_listDeclarationAST ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_listDeclarationAST_2E_weak::objectCompare (const GGS_listDeclarationAST_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listDeclarationAST_2E_weak::GGS_listDeclarationAST_2E_weak (void) :
-GGS_semanticDeclarationAST_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listDeclarationAST_2E_weak & GGS_listDeclarationAST_2E_weak::operator = (const GGS_listDeclarationAST & inSource) {
-  PtrWeakReferenceProxy * proxyPtr = nullptr ;
-  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listDeclarationAST_2E_weak::GGS_listDeclarationAST_2E_weak (const GGS_listDeclarationAST & inSource) :
-GGS_semanticDeclarationAST_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listDeclarationAST_2E_weak GGS_listDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_listDeclarationAST_2E_weak result ;
-  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listDeclarationAST GGS_listDeclarationAST_2E_weak::unwrappedValue (void) const {
-  GGS_listDeclarationAST result ;
-  if (isValid ()) {
-    const cPtr_listDeclarationAST * p = (cPtr_listDeclarationAST *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_listDeclarationAST (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listDeclarationAST GGS_listDeclarationAST_2E_weak::bang_listDeclarationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_listDeclarationAST result ;
-  if (mProxyPtr != nullptr) {
-    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_listDeclarationAST) ;
-      result = GGS_listDeclarationAST ((cPtr_listDeclarationAST *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @listDeclarationAST.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_listDeclarationAST_2E_weak ("listDeclarationAST.weak",
-                                                                               & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_listDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_listDeclarationAST_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
-// @listTypeForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_listTypeForGeneration::objectCompare (const GGS_listTypeForGeneration & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    const size_t myObjectPtr = size_t (mObjectPtr) ;
-    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listTypeForGeneration::GGS_listTypeForGeneration (void) :
-GGS_semanticTypeForGeneration () {
-}
-
-//--- Synthetized initializer ----------------------------------------------------------------------
-
-GGS_listTypeForGeneration GGS_listTypeForGeneration::
-init_21_infoMessage_21__21__21_ (const GGS_string & in_infoMessage,
-                                 const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                 const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                 const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
-                                 Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) {
-  cPtr_listTypeForGeneration * object = nullptr ;
-  macroMyNew (object, cPtr_listTypeForGeneration (inCompiler COMMA_THERE)) ;
-  object->listTypeForGeneration_init_21_infoMessage_21__21__21_ (in_infoMessage, in_mSelfTypeEntry, in_mListElementTypeIndex, in_mTypedAttributeList, inCompiler) ;
-  const GGS_listTypeForGeneration result (object) ;
-  macroDetachSharedObject (object) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_listTypeForGeneration::
-listTypeForGeneration_init_21_infoMessage_21__21__21_ (const GGS_string & in_infoMessage,
-                                                       const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                       const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                                       const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
-                                                       Compiler * /* inCompiler */) {
-  mProperty_infoMessage = in_infoMessage ;
-  mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
-  mProperty_mListElementTypeIndex = in_mListElementTypeIndex ;
-  mProperty_mTypedAttributeList = in_mTypedAttributeList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listTypeForGeneration::GGS_listTypeForGeneration (const cPtr_listTypeForGeneration * inSourcePtr) :
-GGS_semanticTypeForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_listTypeForGeneration) ;
-}
-//--------------------------------------------------------------------------------------------------
-
-GGS_unifiedTypeMapEntry GGS_listTypeForGeneration::readProperty_mListElementTypeIndex (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS_unifiedTypeMapEntry () ;
-  }else{
-    cPtr_listTypeForGeneration * p = (cPtr_listTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_listTypeForGeneration) ;
-    return p->mProperty_mListElementTypeIndex ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS__5B_typedProperty_5D_ GGS_listTypeForGeneration::readProperty_mTypedAttributeList (void) const {
-  if (nullptr == mObjectPtr) {
-    return GGS__5B_typedProperty_5D_ () ;
-  }else{
-    cPtr_listTypeForGeneration * p = (cPtr_listTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_listTypeForGeneration) ;
-    return p->mProperty_mTypedAttributeList ;
-  }
-}
-
-//--------------------------------------------------------------------------------------------------
-//Pointer class for @listTypeForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-cPtr_listTypeForGeneration::cPtr_listTypeForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
-mProperty_mListElementTypeIndex (),
-mProperty_mTypedAttributeList () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-cPtr_listTypeForGeneration::cPtr_listTypeForGeneration (const GGS_string & in_infoMessage,
-                                                        const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
-                                                        const GGS_unifiedTypeMapEntry & in_mListElementTypeIndex,
-                                                        const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) :
-cPtr_semanticTypeForGeneration (in_infoMessage, in_mSelfTypeEntry, inCompiler COMMA_THERE),
-mProperty_mListElementTypeIndex (),
-mProperty_mTypedAttributeList () {
-  mProperty_infoMessage = in_infoMessage ;
-  mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
-  mProperty_mListElementTypeIndex = in_mListElementTypeIndex ;
-  mProperty_mTypedAttributeList = in_mTypedAttributeList ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * cPtr_listTypeForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_listTypeForGeneration ;
-}
-
-void cPtr_listTypeForGeneration::description (String & ioString,
-                                              const int32_t inIndentation) const {
-  ioString.appendCString ("[@listTypeForGeneration:") ;
-  mProperty_infoMessage.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mListElementTypeIndex.description (ioString, inIndentation+1) ;
-  ioString.appendCString (", ") ;
-  mProperty_mTypedAttributeList.description (ioString, inIndentation+1) ;
-  ioString.appendCString ("]") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-AbstractPtrClass * cPtr_listTypeForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_listTypeForGeneration (mProperty_infoMessage, mProperty_mSelfTypeEntry, mProperty_mListElementTypeIndex, mProperty_mTypedAttributeList, inCompiler COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  void cPtr_listTypeForGeneration::printNonNullClassInstanceProperties (void) const {
-    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
-    mProperty_mListElementTypeIndex.printNonNullClassInstanceProperties ("mListElementTypeIndex") ;
-    mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
-  }
-#endif
-
-//--------------------------------------------------------------------------------------------------
-//     @listTypeForGeneration generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_listTypeForGeneration ("listTypeForGeneration",
-                                                                          & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_listTypeForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_listTypeForGeneration ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-ComparisonResult GGS_listTypeForGeneration_2E_weak::objectCompare (const GGS_listTypeForGeneration_2E_weak & inOperand) const {
-  ComparisonResult result = ComparisonResult::invalid ;
-  if (isValid () && inOperand.isValid ()) {
-    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
-    const size_t myObjectPtr = size_t (myPtr) ;
-    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
-    const size_t operandObjectPtr = size_t (operandPtr) ;
-    if (myObjectPtr < operandObjectPtr) {
-      result = ComparisonResult::firstOperandLowerThanSecond ;
-    }else if (myObjectPtr > operandObjectPtr) {
-      result = ComparisonResult::firstOperandGreaterThanSecond ;
-    }else{
-      result = ComparisonResult::operandEqual ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listTypeForGeneration_2E_weak::GGS_listTypeForGeneration_2E_weak (void) :
-GGS_semanticTypeForGeneration_2E_weak () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listTypeForGeneration_2E_weak & GGS_listTypeForGeneration_2E_weak::operator = (const GGS_listTypeForGeneration & inSource) {
-  PtrWeakReferenceProxy * proxyPtr = nullptr ;
-  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
-  if (p != nullptr) {
-    proxyPtr = p->getProxy () ;
-  }
-  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
-  return *this ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listTypeForGeneration_2E_weak::GGS_listTypeForGeneration_2E_weak (const GGS_listTypeForGeneration & inSource) :
-GGS_semanticTypeForGeneration_2E_weak (inSource) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listTypeForGeneration_2E_weak GGS_listTypeForGeneration_2E_weak::class_func_nil (LOCATION_ARGS) {
-  GGS_listTypeForGeneration_2E_weak result ;
-  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listTypeForGeneration GGS_listTypeForGeneration_2E_weak::unwrappedValue (void) const {
-  GGS_listTypeForGeneration result ;
-  if (isValid ()) {
-    const cPtr_listTypeForGeneration * p = (cPtr_listTypeForGeneration *) ptr () ;
-    if (nullptr != p) {
-      result = GGS_listTypeForGeneration (p) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_listTypeForGeneration GGS_listTypeForGeneration_2E_weak::bang_listTypeForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
-  GGS_listTypeForGeneration result ;
-  if (mProxyPtr != nullptr) {
-    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
-    if (strongPtr == nullptr) {
-      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
-    }else{
-      macroValidSharedObject (strongPtr, cPtr_listTypeForGeneration) ;
-      result = GGS_listTypeForGeneration ((cPtr_listTypeForGeneration *) strongPtr) ;
-    }
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @listTypeForGeneration.weak generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_listTypeForGeneration_2E_weak ("listTypeForGeneration.weak",
-                                                                                  & kTypeDescriptor_GALGAS_semanticTypeForGeneration_2E_weak) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_listTypeForGeneration_2E_weak::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_listTypeForGeneration_2E_weak ;
-}
-
-//--------------------------------------------------------------------------------------------------
 //  Enum propertyMutability
 //--------------------------------------------------------------------------------------------------
 
@@ -16328,4 +15771,554 @@ GGS_string extensionGetter_initializerSignature (const GGS__5B_typeNameFormalPar
 
 
 
+
+//--------------------------------------------------------------------------------------------------
+// @externTypeDeclarationAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_externTypeDeclarationAST::objectCompare (const GGS_externTypeDeclarationAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externTypeDeclarationAST::GGS_externTypeDeclarationAST (void) :
+GGS_semanticDeclarationAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_externTypeDeclarationAST GGS_externTypeDeclarationAST::
+init_21_isPredefined_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                  const GGS_lstring & in_mExternTypeName,
+                                                  const GGS_string & in_mCppPreDeclarationCode,
+                                                  const GGS_string & in_mCppClassCode,
+                                                  const GGS__5B__5B_typeNameFormalParameterName_5D__5D_ & in_externTypeInitializerList,
+                                                  const GGS__5B_externTypeGetter_5D_ & in_mExternTypeGetterList,
+                                                  const GGS__5B_externTypeSetter_5D_ & in_mExternTypeSetterList,
+                                                  const GGS__5B_externTypeMethod_5D_ & in_mExternTypeMethodList,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  cPtr_externTypeDeclarationAST * object = nullptr ;
+  macroMyNew (object, cPtr_externTypeDeclarationAST (inCompiler COMMA_THERE)) ;
+  object->externTypeDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (in_isPredefined, in_mExternTypeName, in_mCppPreDeclarationCode, in_mCppClassCode, in_externTypeInitializerList, in_mExternTypeGetterList, in_mExternTypeSetterList, in_mExternTypeMethodList, inCompiler) ;
+  const GGS_externTypeDeclarationAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_externTypeDeclarationAST::
+externTypeDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21_ (const GGS_bool & in_isPredefined,
+                                                                           const GGS_lstring & in_mExternTypeName,
+                                                                           const GGS_string & in_mCppPreDeclarationCode,
+                                                                           const GGS_string & in_mCppClassCode,
+                                                                           const GGS__5B__5B_typeNameFormalParameterName_5D__5D_ & in_externTypeInitializerList,
+                                                                           const GGS__5B_externTypeGetter_5D_ & in_mExternTypeGetterList,
+                                                                           const GGS__5B_externTypeSetter_5D_ & in_mExternTypeSetterList,
+                                                                           const GGS__5B_externTypeMethod_5D_ & in_mExternTypeMethodList,
+                                                                           Compiler * /* inCompiler */) {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mExternTypeName = in_mExternTypeName ;
+  mProperty_mCppPreDeclarationCode = in_mCppPreDeclarationCode ;
+  mProperty_mCppClassCode = in_mCppClassCode ;
+  mProperty_externTypeInitializerList = in_externTypeInitializerList ;
+  mProperty_mExternTypeGetterList = in_mExternTypeGetterList ;
+  mProperty_mExternTypeSetterList = in_mExternTypeSetterList ;
+  mProperty_mExternTypeMethodList = in_mExternTypeMethodList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externTypeDeclarationAST::GGS_externTypeDeclarationAST (const cPtr_externTypeDeclarationAST * inSourcePtr) :
+GGS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_externTypeDeclarationAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_externTypeDeclarationAST::readProperty_mExternTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_externTypeDeclarationAST * p = (cPtr_externTypeDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_externTypeDeclarationAST) ;
+    return p->mProperty_mExternTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_externTypeDeclarationAST::readProperty_mCppPreDeclarationCode (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_externTypeDeclarationAST * p = (cPtr_externTypeDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_externTypeDeclarationAST) ;
+    return p->mProperty_mCppPreDeclarationCode ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_externTypeDeclarationAST::readProperty_mCppClassCode (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_externTypeDeclarationAST * p = (cPtr_externTypeDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_externTypeDeclarationAST) ;
+    return p->mProperty_mCppClassCode ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B__5B_typeNameFormalParameterName_5D__5D_ GGS_externTypeDeclarationAST::readProperty_externTypeInitializerList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B__5B_typeNameFormalParameterName_5D__5D_ () ;
+  }else{
+    cPtr_externTypeDeclarationAST * p = (cPtr_externTypeDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_externTypeDeclarationAST) ;
+    return p->mProperty_externTypeInitializerList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_externTypeGetter_5D_ GGS_externTypeDeclarationAST::readProperty_mExternTypeGetterList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_externTypeGetter_5D_ () ;
+  }else{
+    cPtr_externTypeDeclarationAST * p = (cPtr_externTypeDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_externTypeDeclarationAST) ;
+    return p->mProperty_mExternTypeGetterList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_externTypeSetter_5D_ GGS_externTypeDeclarationAST::readProperty_mExternTypeSetterList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_externTypeSetter_5D_ () ;
+  }else{
+    cPtr_externTypeDeclarationAST * p = (cPtr_externTypeDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_externTypeDeclarationAST) ;
+    return p->mProperty_mExternTypeSetterList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_externTypeMethod_5D_ GGS_externTypeDeclarationAST::readProperty_mExternTypeMethodList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_externTypeMethod_5D_ () ;
+  }else{
+    cPtr_externTypeDeclarationAST * p = (cPtr_externTypeDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_externTypeDeclarationAST) ;
+    return p->mProperty_mExternTypeMethodList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @externTypeDeclarationAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_externTypeDeclarationAST::cPtr_externTypeDeclarationAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (inCompiler COMMA_THERE),
+mProperty_mExternTypeName (),
+mProperty_mCppPreDeclarationCode (),
+mProperty_mCppClassCode (),
+mProperty_externTypeInitializerList (),
+mProperty_mExternTypeGetterList (),
+mProperty_mExternTypeSetterList (),
+mProperty_mExternTypeMethodList () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_externTypeDeclarationAST::cPtr_externTypeDeclarationAST (const GGS_bool & in_isPredefined,
+                                                              const GGS_lstring & in_mExternTypeName,
+                                                              const GGS_string & in_mCppPreDeclarationCode,
+                                                              const GGS_string & in_mCppClassCode,
+                                                              const GGS__5B__5B_typeNameFormalParameterName_5D__5D_ & in_externTypeInitializerList,
+                                                              const GGS__5B_externTypeGetter_5D_ & in_mExternTypeGetterList,
+                                                              const GGS__5B_externTypeSetter_5D_ & in_mExternTypeSetterList,
+                                                              const GGS__5B_externTypeMethod_5D_ & in_mExternTypeMethodList,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_isPredefined, inCompiler COMMA_THERE),
+mProperty_mExternTypeName (),
+mProperty_mCppPreDeclarationCode (),
+mProperty_mCppClassCode (),
+mProperty_externTypeInitializerList (),
+mProperty_mExternTypeGetterList (),
+mProperty_mExternTypeSetterList (),
+mProperty_mExternTypeMethodList () {
+  mProperty_isPredefined = in_isPredefined ;
+  mProperty_mExternTypeName = in_mExternTypeName ;
+  mProperty_mCppPreDeclarationCode = in_mCppPreDeclarationCode ;
+  mProperty_mCppClassCode = in_mCppClassCode ;
+  mProperty_externTypeInitializerList = in_externTypeInitializerList ;
+  mProperty_mExternTypeGetterList = in_mExternTypeGetterList ;
+  mProperty_mExternTypeSetterList = in_mExternTypeSetterList ;
+  mProperty_mExternTypeMethodList = in_mExternTypeMethodList ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_externTypeDeclarationAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_externTypeDeclarationAST ;
+}
+
+void cPtr_externTypeDeclarationAST::description (String & ioString,
+                                                 const int32_t inIndentation) const {
+  ioString.appendCString ("[@externTypeDeclarationAST:") ;
+  mProperty_isPredefined.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExternTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mCppPreDeclarationCode.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mCppClassCode.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_externTypeInitializerList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExternTypeGetterList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExternTypeSetterList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExternTypeMethodList.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_externTypeDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_externTypeDeclarationAST (mProperty_isPredefined, mProperty_mExternTypeName, mProperty_mCppPreDeclarationCode, mProperty_mCppClassCode, mProperty_externTypeInitializerList, mProperty_mExternTypeGetterList, mProperty_mExternTypeSetterList, mProperty_mExternTypeMethodList, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_externTypeDeclarationAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticDeclarationAST::printNonNullClassInstanceProperties () ;
+    mProperty_mExternTypeName.printNonNullClassInstanceProperties ("mExternTypeName") ;
+    mProperty_mCppPreDeclarationCode.printNonNullClassInstanceProperties ("mCppPreDeclarationCode") ;
+    mProperty_mCppClassCode.printNonNullClassInstanceProperties ("mCppClassCode") ;
+    mProperty_externTypeInitializerList.printNonNullClassInstanceProperties ("externTypeInitializerList") ;
+    mProperty_mExternTypeGetterList.printNonNullClassInstanceProperties ("mExternTypeGetterList") ;
+    mProperty_mExternTypeSetterList.printNonNullClassInstanceProperties ("mExternTypeSetterList") ;
+    mProperty_mExternTypeMethodList.printNonNullClassInstanceProperties ("mExternTypeMethodList") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @externTypeDeclarationAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST ("externTypeDeclarationAST",
+                                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_externTypeDeclarationAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_externTypeDeclarationAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_externTypeDeclarationAST_2E_weak::objectCompare (const GGS_externTypeDeclarationAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externTypeDeclarationAST_2E_weak::GGS_externTypeDeclarationAST_2E_weak (void) :
+GGS_semanticDeclarationAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externTypeDeclarationAST_2E_weak & GGS_externTypeDeclarationAST_2E_weak::operator = (const GGS_externTypeDeclarationAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externTypeDeclarationAST_2E_weak::GGS_externTypeDeclarationAST_2E_weak (const GGS_externTypeDeclarationAST & inSource) :
+GGS_semanticDeclarationAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externTypeDeclarationAST_2E_weak GGS_externTypeDeclarationAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_externTypeDeclarationAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externTypeDeclarationAST GGS_externTypeDeclarationAST_2E_weak::unwrappedValue (void) const {
+  GGS_externTypeDeclarationAST result ;
+  if (isValid ()) {
+    const cPtr_externTypeDeclarationAST * p = (cPtr_externTypeDeclarationAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_externTypeDeclarationAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externTypeDeclarationAST GGS_externTypeDeclarationAST_2E_weak::bang_externTypeDeclarationAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_externTypeDeclarationAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_externTypeDeclarationAST) ;
+      result = GGS_externTypeDeclarationAST ((cPtr_externTypeDeclarationAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @externTypeDeclarationAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeDeclarationAST_2E_weak ("externTypeDeclarationAST.weak",
+                                                                                     & kTypeDescriptor_GALGAS_semanticDeclarationAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_externTypeDeclarationAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_externTypeDeclarationAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @externTypeDeclarationForGeneration reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_externTypeDeclarationForGeneration::objectCompare (const GGS_externTypeDeclarationForGeneration & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externTypeDeclarationForGeneration::GGS_externTypeDeclarationForGeneration (void) :
+GGS_semanticTypeForGeneration () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_externTypeDeclarationForGeneration GGS_externTypeDeclarationForGeneration::
+init_21_infoMessage_21__21__21__21_ (const GGS_string & in_infoMessage,
+                                     const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                     const GGS_string & in_mExternTypeName,
+                                     const GGS_string & in_mCppPreDeclarationCode,
+                                     const GGS_string & in_mCppClassCode,
+                                     Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) {
+  cPtr_externTypeDeclarationForGeneration * object = nullptr ;
+  macroMyNew (object, cPtr_externTypeDeclarationForGeneration (inCompiler COMMA_THERE)) ;
+  object->externTypeDeclarationForGeneration_init_21_infoMessage_21__21__21__21_ (in_infoMessage, in_mSelfTypeEntry, in_mExternTypeName, in_mCppPreDeclarationCode, in_mCppClassCode, inCompiler) ;
+  const GGS_externTypeDeclarationForGeneration result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_externTypeDeclarationForGeneration::
+externTypeDeclarationForGeneration_init_21_infoMessage_21__21__21__21_ (const GGS_string & in_infoMessage,
+                                                                        const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                        const GGS_string & in_mExternTypeName,
+                                                                        const GGS_string & in_mCppPreDeclarationCode,
+                                                                        const GGS_string & in_mCppClassCode,
+                                                                        Compiler * /* inCompiler */) {
+  mProperty_infoMessage = in_infoMessage ;
+  mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
+  mProperty_mExternTypeName = in_mExternTypeName ;
+  mProperty_mCppPreDeclarationCode = in_mCppPreDeclarationCode ;
+  mProperty_mCppClassCode = in_mCppClassCode ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_externTypeDeclarationForGeneration::GGS_externTypeDeclarationForGeneration (const cPtr_externTypeDeclarationForGeneration * inSourcePtr) :
+GGS_semanticTypeForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_externTypeDeclarationForGeneration) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_externTypeDeclarationForGeneration::readProperty_mExternTypeName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_externTypeDeclarationForGeneration * p = (cPtr_externTypeDeclarationForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_externTypeDeclarationForGeneration) ;
+    return p->mProperty_mExternTypeName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_externTypeDeclarationForGeneration::readProperty_mCppPreDeclarationCode (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_externTypeDeclarationForGeneration * p = (cPtr_externTypeDeclarationForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_externTypeDeclarationForGeneration) ;
+    return p->mProperty_mCppPreDeclarationCode ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_string GGS_externTypeDeclarationForGeneration::readProperty_mCppClassCode (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_string () ;
+  }else{
+    cPtr_externTypeDeclarationForGeneration * p = (cPtr_externTypeDeclarationForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_externTypeDeclarationForGeneration) ;
+    return p->mProperty_mCppClassCode ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @externTypeDeclarationForGeneration class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_externTypeDeclarationForGeneration::cPtr_externTypeDeclarationForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (inCompiler COMMA_THERE),
+mProperty_mExternTypeName (),
+mProperty_mCppPreDeclarationCode (),
+mProperty_mCppClassCode () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_externTypeDeclarationForGeneration::cPtr_externTypeDeclarationForGeneration (const GGS_string & in_infoMessage,
+                                                                                  const GGS_unifiedTypeMapEntry & in_mSelfTypeEntry,
+                                                                                  const GGS_string & in_mExternTypeName,
+                                                                                  const GGS_string & in_mCppPreDeclarationCode,
+                                                                                  const GGS_string & in_mCppClassCode,
+                                                                                  Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticTypeForGeneration (in_infoMessage, in_mSelfTypeEntry, inCompiler COMMA_THERE),
+mProperty_mExternTypeName (),
+mProperty_mCppPreDeclarationCode (),
+mProperty_mCppClassCode () {
+  mProperty_infoMessage = in_infoMessage ;
+  mProperty_mSelfTypeEntry = in_mSelfTypeEntry ;
+  mProperty_mExternTypeName = in_mExternTypeName ;
+  mProperty_mCppPreDeclarationCode = in_mCppPreDeclarationCode ;
+  mProperty_mCppClassCode = in_mCppClassCode ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_externTypeDeclarationForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration ;
+}
+
+void cPtr_externTypeDeclarationForGeneration::description (String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString.appendCString ("[@externTypeDeclarationForGeneration:") ;
+  mProperty_infoMessage.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mSelfTypeEntry.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mExternTypeName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mCppPreDeclarationCode.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mCppClassCode.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_externTypeDeclarationForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_externTypeDeclarationForGeneration (mProperty_infoMessage, mProperty_mSelfTypeEntry, mProperty_mExternTypeName, mProperty_mCppPreDeclarationCode, mProperty_mCppClassCode, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_externTypeDeclarationForGeneration::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticTypeForGeneration::printNonNullClassInstanceProperties () ;
+    mProperty_mExternTypeName.printNonNullClassInstanceProperties ("mExternTypeName") ;
+    mProperty_mCppPreDeclarationCode.printNonNullClassInstanceProperties ("mCppPreDeclarationCode") ;
+    mProperty_mCppClassCode.printNonNullClassInstanceProperties ("mCppClassCode") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @externTypeDeclarationForGeneration generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration ("externTypeDeclarationForGeneration",
+                                                                                       & kTypeDescriptor_GALGAS_semanticTypeForGeneration) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_externTypeDeclarationForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_externTypeDeclarationForGeneration ;
+}
 

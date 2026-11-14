@@ -9,232 +9,6 @@
 #include "all-declarations-12.h"
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @grammarForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_grammarForGeneration : public GGS_semanticDeclarationWithHeaderForGeneration {
-//--------------------------------- Default constructor
-  public: GGS_grammarForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_grammarForGeneration (const class cPtr_grammarForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_string readProperty_mGrammarName (void) const ;
-
-  public: class GGS_string readProperty_mLexiqueName (void) const ;
-
-  public: class GGS_nonTerminalSymbolMapForGrammarAnalysis readProperty_mNonTerminalMapForGrammarAnalysis (void) const ;
-
-  public: class GGS__5B_nonTerminalToAdd_5D_ readProperty_mNonTerminalToAddList (void) const ;
-
-  public: class GGS__5B_lstring_5D_ readProperty_mSyntaxComponents (void) const ;
-
-  public: class GGS_string readProperty_mStartSymbolName (void) const ;
-
-  public: class GGS_bool readProperty_mHasTranslateFeature (void) const ;
-
-  public: class GGS_string readProperty_mCppFileContents (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_grammarForGeneration init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                                                              const class GGS_bool & inOperand1,
-                                                                                                                                              const class GGS_string & inOperand2,
-                                                                                                                                              const class GGS_string & inOperand3,
-                                                                                                                                              const class GGS_string & inOperand4,
-                                                                                                                                              const class GGS_nonTerminalSymbolMapForGrammarAnalysis & inOperand5,
-                                                                                                                                              const class GGS__5B_nonTerminalToAdd_5D_ & inOperand6,
-                                                                                                                                              const class GGS__5B_lstring_5D_ & inOperand7,
-                                                                                                                                              const class GGS_string & inOperand8,
-                                                                                                                                              const class GGS_bool & inOperand9,
-                                                                                                                                              const class GGS_string & inOperand10,
-                                                                                                                                              Compiler * inCompiler
-                                                                                                                                              COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_grammarForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @grammarForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void grammarForGeneration_init_21_infoMessage_21_generateHeader_21_implementationCppFileName_21__21__21__21__21__21__21__21_ (const class GGS_string & inOperand0,
-                                                                                                                                        const class GGS_bool & inOperand1,
-                                                                                                                                        const class GGS_string & inOperand2,
-                                                                                                                                        const class GGS_string & inOperand3,
-                                                                                                                                        const class GGS_string & inOperand4,
-                                                                                                                                        const class GGS_nonTerminalSymbolMapForGrammarAnalysis & inOperand5,
-                                                                                                                                        const class GGS__5B_nonTerminalToAdd_5D_ & inOperand6,
-                                                                                                                                        const class GGS__5B_lstring_5D_ & inOperand7,
-                                                                                                                                        const class GGS_string & inOperand8,
-                                                                                                                                        const class GGS_bool & inOperand9,
-                                                                                                                                        const class GGS_string & inOperand10,
-                                                                                                                                        Compiler * inCompiler) ;
-
-
-//--- Extension func getImplementationCppFileName
-  public: virtual class GGS_string getter_getImplementationCppFileName (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension func hasCppHeaderFile
-  public: virtual class GGS_bool getter_hasCppHeaderFile (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension func headerKind
-  public: virtual class GGS_headerKind getter_headerKind (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension func isPredefined
-  public: virtual class GGS_bool getter_isPredefined (Compiler * COMMA_LOCATION_ARGS) const override ;
-
-//--- Extension proc appendDeclaration1
-  public: virtual void method_appendDeclaration_31_ (class GGS_stringset & arg__ioInclusionSet,
-           class GGS_string & arg_outHeader,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Extension proc appendSpecificImplementation
-  public: virtual void method_appendSpecificImplementation (const class GGS_unifiedTypeMap arg__inUnifiedTypeMap,
-           class GGS_stringset & arg__ioInclusionSet,
-           class GGS_string & arg_outImplementation,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_string mProperty_mGrammarName ;
-  public: GGS_string mProperty_mLexiqueName ;
-  public: GGS_nonTerminalSymbolMapForGrammarAnalysis mProperty_mNonTerminalMapForGrammarAnalysis ;
-  public: GGS__5B_nonTerminalToAdd_5D_ mProperty_mNonTerminalToAddList ;
-  public: GGS__5B_lstring_5D_ mProperty_mSyntaxComponents ;
-  public: GGS_string mProperty_mStartSymbolName ;
-  public: GGS_bool mProperty_mHasTranslateFeature ;
-  public: GGS_string mProperty_mCppFileContents ;
-
-
-//--- Default constructor
-  public: cPtr_grammarForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_grammarForGeneration (const GGS_string & in_infoMessage,
-                                     const GGS_bool & in_generateHeader,
-                                     const GGS_string & in_implementationCppFileName,
-                                     const GGS_string & in_mGrammarName,
-                                     const GGS_string & in_mLexiqueName,
-                                     const GGS_nonTerminalSymbolMapForGrammarAnalysis & in_mNonTerminalMapForGrammarAnalysis,
-                                     const GGS__5B_nonTerminalToAdd_5D_ & in_mNonTerminalToAddList,
-                                     const GGS__5B_lstring_5D_ & in_mSyntaxComponents,
-                                     const GGS_string & in_mStartSymbolName,
-                                     const GGS_bool & in_mHasTranslateFeature,
-                                     const GGS_string & in_mCppFileContents,
-                                     Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @semanticDeclarationWithHeaderForGeneration_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_semanticDeclarationWithHeaderForGeneration_2E_weak : public GGS_semanticDeclarationForGeneration_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_semanticDeclarationWithHeaderForGeneration_2E_weak (const class GGS_semanticDeclarationWithHeaderForGeneration & inSource) ;
-
-  public: GGS_semanticDeclarationWithHeaderForGeneration_2E_weak & operator = (const class GGS_semanticDeclarationWithHeaderForGeneration & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_semanticDeclarationWithHeaderForGeneration_2E_weak init_nil (void) {
-    GGS_semanticDeclarationWithHeaderForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_semanticDeclarationWithHeaderForGeneration bang_semanticDeclarationWithHeaderForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_semanticDeclarationWithHeaderForGeneration unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_semanticDeclarationWithHeaderForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_semanticDeclarationWithHeaderForGeneration_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
 // Phase 1: @syntaxDeclarationForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -3231,12 +3005,13 @@ class cParser_galgas_34_DeclarationsSyntax {
 
   protected: void rule_galgas_34_DeclarationsSyntax_declaration_i28_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i29_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                      Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_property_5F_declaration_i29_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                  GGS__5B_propertyInCollectionAST_5D_ & ioArgument1,
+                                                                                  Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i29_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_property_5F_declaration_i29_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i29_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_property_5F_declaration_i29_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
   protected: void rule_galgas_34_DeclarationsSyntax_property_5F_declaration_i30_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                   GGS__5B_propertyInCollectionAST_5D_ & ioArgument1,
@@ -3246,13 +3021,12 @@ class cParser_galgas_34_DeclarationsSyntax {
 
   protected: void rule_galgas_34_DeclarationsSyntax_property_5F_declaration_i30_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_property_5F_declaration_i31_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                  GGS__5B_propertyInCollectionAST_5D_ & ioArgument1,
-                                                                                  Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i31_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                      Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_property_5F_declaration_i31_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i31_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_property_5F_declaration_i31_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i31_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
   protected: void rule_galgas_34_DeclarationsSyntax_declaration_i32_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                       Lexique_galgasScanner_34_ * inLexique) ;
@@ -3261,20 +3035,21 @@ class cParser_galgas_34_DeclarationsSyntax {
 
   protected: void rule_galgas_34_DeclarationsSyntax_declaration_i32_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i33_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                      Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i33_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i33_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_DeclarationsSyntax_type_5F_definition_i34_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_type_5F_definition_i33_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                              GGS_lstring & outArgument1,
                                                                              Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_type_5F_definition_i34_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_type_5F_definition_i33_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_type_5F_definition_i34_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_type_5F_definition_i33_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_DeclarationsSyntax_simple_5F_type_5F_definition_i34_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                                       GGS_lstring & outArgument1,
+                                                                                       Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_DeclarationsSyntax_simple_5F_type_5F_definition_i34_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_DeclarationsSyntax_simple_5F_type_5F_definition_i34_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
   protected: void rule_galgas_34_DeclarationsSyntax_simple_5F_type_5F_definition_i35_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                        GGS_lstring & outArgument1,
@@ -3292,62 +3067,61 @@ class cParser_galgas_34_DeclarationsSyntax {
 
   protected: void rule_galgas_34_DeclarationsSyntax_simple_5F_type_5F_definition_i36_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_simple_5F_type_5F_definition_i37_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                                       GGS_lstring & outArgument1,
-                                                                                       Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_DeclarationsSyntax_simple_5F_type_5F_definition_i37_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_DeclarationsSyntax_simple_5F_type_5F_definition_i37_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i38_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i37_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                       Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i38_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i37_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i38_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i37_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_search_5F_method_5F_declaration_i39_ (GGS__5B_mapAccessorAST_5D_ & ioArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_search_5F_method_5F_declaration_i38_ (GGS__5B_mapAccessorAST_5D_ & ioArgument0,
                                                                                           Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_search_5F_method_5F_declaration_i39_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_search_5F_method_5F_declaration_i38_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_search_5F_method_5F_declaration_i39_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_search_5F_method_5F_declaration_i38_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_search_5F_subscript_5F_declaration_i40_ (GGS__5B_mapAccessorAST_5D_ & ioArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_search_5F_subscript_5F_declaration_i39_ (GGS__5B_mapAccessorAST_5D_ & ioArgument0,
                                                                                              Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_search_5F_subscript_5F_declaration_i40_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_search_5F_subscript_5F_declaration_i39_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_search_5F_subscript_5F_declaration_i40_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_search_5F_subscript_5F_declaration_i39_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_remove_5F_setter_5F_declaration_i41_ (GGS__5B_mapAccessorAST_5D_ & ioArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_remove_5F_setter_5F_declaration_i40_ (GGS__5B_mapAccessorAST_5D_ & ioArgument0,
                                                                                           Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_remove_5F_setter_5F_declaration_i41_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_remove_5F_setter_5F_declaration_i40_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_remove_5F_setter_5F_declaration_i41_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_remove_5F_setter_5F_declaration_i40_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_replace_5F_setter_5F_declaration_i42_ (GGS__5B_mapAccessorAST_5D_ & ioArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_replace_5F_setter_5F_declaration_i41_ (GGS__5B_mapAccessorAST_5D_ & ioArgument0,
                                                                                            Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_replace_5F_setter_5F_declaration_i42_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_replace_5F_setter_5F_declaration_i41_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_replace_5F_setter_5F_declaration_i42_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_replace_5F_setter_5F_declaration_i41_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_insert_5F_or_5F_replace_5F_declaration_i43_ (GGS__5B_location_5D_ & ioArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_insert_5F_or_5F_replace_5F_declaration_i42_ (GGS__5B_location_5D_ & ioArgument0,
                                                                                                  Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_insert_5F_or_5F_replace_5F_declaration_i43_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_insert_5F_or_5F_replace_5F_declaration_i42_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_insert_5F_or_5F_replace_5F_declaration_i43_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_insert_5F_or_5F_replace_5F_declaration_i42_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_map_5F_insert_5F_setter_5F_declaration_i44_ (GGS__5B_insertSetterAST_5D_ & ioArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_map_5F_insert_5F_setter_5F_declaration_i43_ (GGS__5B_insertSetterAST_5D_ & ioArgument0,
                                                                                                  Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_map_5F_insert_5F_setter_5F_declaration_i44_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_map_5F_insert_5F_setter_5F_declaration_i43_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_map_5F_insert_5F_setter_5F_declaration_i44_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_map_5F_insert_5F_setter_5F_declaration_i43_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+
+  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i44_ (GGS_galgasDeclarationAST & ioArgument0,
+                                                                      Lexique_galgasScanner_34_ * inLexique) ;
+
+/*  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i44_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+
+  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i44_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
   protected: void rule_galgas_34_DeclarationsSyntax_declaration_i45_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                       Lexique_galgasScanner_34_ * inLexique) ;
@@ -3370,72 +3144,65 @@ class cParser_galgas_34_DeclarationsSyntax {
 
   protected: void rule_galgas_34_DeclarationsSyntax_declaration_i47_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i48_ (GGS_galgasDeclarationAST & ioArgument0,
-                                                                      Lexique_galgasScanner_34_ * inLexique) ;
-
-/*  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i48_parse (Lexique_galgasScanner_34_ * inLexique) ; */
-
-  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i48_indexing (Lexique_galgasScanner_34_ * inLexique) ;
-
-  protected: void rule_galgas_34_DeclarationsSyntax_sortedlist_5F_sort_5F_descriptor_i49_ (GGS__5B_sortedListSortDescriptorAST_5D_ & ioArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_sortedlist_5F_sort_5F_descriptor_i48_ (GGS__5B_sortedListSortDescriptorAST_5D_ & ioArgument0,
                                                                                            Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_sortedlist_5F_sort_5F_descriptor_i49_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_sortedlist_5F_sort_5F_descriptor_i48_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_sortedlist_5F_sort_5F_descriptor_i49_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_sortedlist_5F_sort_5F_descriptor_i48_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i50_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i49_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                       Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i50_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i49_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i50_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_declaration_i49_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_cpp_5F_predeclaration_i51_ (GGS_string & outArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_cpp_5F_predeclaration_i50_ (GGS_string & outArgument0,
                                                                                               Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_cpp_5F_predeclaration_i51_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_cpp_5F_predeclaration_i50_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_cpp_5F_predeclaration_i51_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_cpp_5F_predeclaration_i50_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_cpp_5F_classdeclaration_i52_ (GGS_string & outArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_cpp_5F_classdeclaration_i51_ (GGS_string & outArgument0,
                                                                                                 Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_cpp_5F_classdeclaration_i52_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_cpp_5F_classdeclaration_i51_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_cpp_5F_classdeclaration_i52_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_cpp_5F_classdeclaration_i51_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_constructor_i53_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_constructor_i52_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                     GGS__5B__5B_typeNameFormalParameterName_5D__5D_ & ioArgument1,
                                                                                     Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_constructor_i53_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_constructor_i52_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_constructor_i53_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_constructor_i52_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_getter_i54_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_getter_i53_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                GGS__5B_externTypeGetter_5D_ & ioArgument1,
                                                                                Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_getter_i54_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_getter_i53_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_getter_i54_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_getter_i53_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_setter_i55_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_setter_i54_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                GGS__5B_externTypeSetter_5D_ & ioArgument1,
                                                                                Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_setter_i55_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_setter_i54_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_setter_i55_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_setter_i54_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
-  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_method_i56_ (GGS_galgasDeclarationAST & ioArgument0,
+  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_method_i55_ (GGS_galgasDeclarationAST & ioArgument0,
                                                                                GGS__5B_externTypeMethod_5D_ & ioArgument1,
                                                                                Lexique_galgasScanner_34_ * inLexique) ;
 
-/*  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_method_i56_parse (Lexique_galgasScanner_34_ * inLexique) ; */
+/*  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_method_i55_parse (Lexique_galgasScanner_34_ * inLexique) ; */
 
-  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_method_i56_indexing (Lexique_galgasScanner_34_ * inLexique) ;
+  protected: void rule_galgas_34_DeclarationsSyntax_externtype_5F_method_i55_indexing (Lexique_galgasScanner_34_ * inLexique) ;
 
 
 
@@ -3583,10 +3350,6 @@ class cParser_galgas_34_DeclarationsSyntax {
   protected: virtual int32_t select_galgas_34_DeclarationsSyntax_70 (Lexique_galgasScanner_34_ *) = 0 ;
 
   protected: virtual int32_t select_galgas_34_DeclarationsSyntax_71 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_DeclarationsSyntax_72 (Lexique_galgasScanner_34_ *) = 0 ;
-
-  protected: virtual int32_t select_galgas_34_DeclarationsSyntax_73 (Lexique_galgasScanner_34_ *) = 0 ;
 
 
 } ;

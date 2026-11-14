@@ -66,6 +66,16 @@ class GGS_string function_makeEmbeddedElementTypeName (const class GGS_string & 
 
 //--------------------------------------------------------------------------------------------------
 //
+//Function 'makeEmbeddedElementTypeLName'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_makeEmbeddedElementTypeLName (const class GGS_lstring & constinArgument0,
+                                                         class Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'makeWeakTypeName'
 //
 //--------------------------------------------------------------------------------------------------

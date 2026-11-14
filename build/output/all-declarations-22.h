@@ -302,65 +302,6 @@ GGS_string filewrapperTemplate_structureGenerationTemplate_structTypeSpecificImp
 
 //--------------------------------------------------------------------------------------------------
 //
-//Function 'makeEmbeddedElementTypeLName'
-//
-//--------------------------------------------------------------------------------------------------
-
-class GGS_lstring function_makeEmbeddedElementTypeLName (const class GGS_lstring & constinArgument0,
-                                                         class Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'listGenerationTemplate'
-//
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-//--------------------------------------------------------------------------------------------------
-
-extern const cDirectoryWrapper gWrapperDirectory_0_listGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_1_listGenerationTemplate ;
-extern const cDirectoryWrapper gWrapperDirectory_2_listGenerationTemplate ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'listGenerationTemplate listTypeHeader1'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (class Compiler * inCompiler,
-                                                                          const class GGS_string & in_TYPE_5F_NAME,
-                                                                          const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                          const class GGS__5B_typedProperty_5D_ & in_PROPERTY_5F_LIST,
-                                                                          const class GGS__5B_enumerationDescriptor_5D_ & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
-                                                                          const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
-                                                                          const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
-                                                                          const class GGS_bool & in_GENERATE_5F_COMPARISON
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper template 'listGenerationTemplate listTypeSpecificImplementation'
-//
-//--------------------------------------------------------------------------------------------------
-
-GGS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementation (class Compiler * inCompiler,
-                                                                                      const class GGS_string & in_TYPE_5F_NAME,
-                                                                                      const class GGS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                      const class GGS__5B_typedProperty_5D_ & in_PROPERTY_5F_LIST,
-                                                                                      const class GGS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER,
-                                                                                      const class GGS_bool & in_GENERATE_5F_COMPARISON
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Filewrapper 'weakClassGenerationTemplate'
 //
 //--------------------------------------------------------------------------------------------------
