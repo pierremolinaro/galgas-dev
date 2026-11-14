@@ -437,16 +437,6 @@ void routine_enterModifierWith_32_InputArguments_26__26__3F_arg_31_TypeName_3F_a
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'appendNameValueStructAST&'
-//
-//--------------------------------------------------------------------------------------------------
-
-void routine_appendNameValueStructAST_26_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
-                                           class Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
 //Routine 'appendPredefinedArrayTypeAST&?'
 //
 //--------------------------------------------------------------------------------------------------
@@ -476,6 +466,16 @@ void routine_appendStructASTForTypeWithLocation_26__3F_ (class GGS__5B_semanticD
                                                          const class GGS_string constinArgument1,
                                                          class Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'append_stringString_StructAST&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_append_5F_stringString_5F_StructAST_26_ (class GGS__5B_semanticDeclarationAST_5D_ & ioArgument0,
+                                                      class Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

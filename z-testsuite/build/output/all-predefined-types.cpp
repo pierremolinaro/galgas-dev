@@ -429,23 +429,23 @@ const GALGAS_TypeDescriptor * GGS_string::staticTypeDescriptor (void) const {
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @[NameValue] generic code implementation
+//     @[stringString] generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_NameValue_5D_ ("[NameValue]",
-                                                                      nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS__5B_stringString_5D_ ("[stringString]",
+                                                                         nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS__5B_NameValue_5D_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS__5B_NameValue_5D_ ;
+const GALGAS_TypeDescriptor * GGS__5B_stringString_5D_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS__5B_stringString_5D_ ;
 }
 
 //--------------------------------------------------------------------------------------------------
-//Class for element of '@_5B_NameValue_5D_' array
+//Class for element of '@_5B_stringString_5D_' array
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_NameValue_5D_::GGS__5B_NameValue_5D_ (void) :
+GGS__5B_stringString_5D_::GGS__5B_stringString_5D_ (void) :
 AC_GALGAS_root (),
 mSharedArray (),
 mIsValid (false) {
@@ -453,7 +453,7 @@ mIsValid (false) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_NameValue_5D_::GGS__5B_NameValue_5D_ (const GGS__5B_NameValue_5D_ & inSource) :
+GGS__5B_stringString_5D_::GGS__5B_stringString_5D_ (const GGS__5B_stringString_5D_ & inSource) :
 AC_GALGAS_root (),
 mSharedArray (inSource.mSharedArray),
 mIsValid (inSource.mIsValid) {
@@ -461,7 +461,7 @@ mIsValid (inSource.mIsValid) {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_NameValue_5D_ & GGS__5B_NameValue_5D_::operator = (const GGS__5B_NameValue_5D_ & inSource)  {
+GGS__5B_stringString_5D_ & GGS__5B_stringString_5D_::operator = (const GGS__5B_stringString_5D_ & inSource)  {
   mSharedArray = inSource.mSharedArray ;
   mIsValid = inSource.mIsValid ;
   return *this ;
@@ -469,36 +469,36 @@ GGS__5B_NameValue_5D_ & GGS__5B_NameValue_5D_::operator = (const GGS__5B_NameVal
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_NameValue_5D_ GGS__5B_NameValue_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
-  GGS__5B_NameValue_5D_ result ;
+GGS__5B_stringString_5D_ GGS__5B_stringString_5D_::init (Compiler * COMMA_UNUSED_LOCATION_ARGS) {
+  GGS__5B_stringString_5D_ result ;
   result.mIsValid = true ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_NameValue_5D_::drop (void) {
+void GGS__5B_stringString_5D_::drop (void) {
   mSharedArray.removeAll () ;
   mIsValid = false ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_NameValue_5D_::removeAll (void) {
+void GGS__5B_stringString_5D_::removeAll (void) {
   mSharedArray.removeAll () ;
   mIsValid = true ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_NameValue_5D_::plusPlusAssignOperation (const GGS_NameValue & inValue
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__5B_stringString_5D_::plusPlusAssignOperation (const GGS_stringString & inValue
+                                                        COMMA_UNUSED_LOCATION_ARGS) {
   mSharedArray.appendObject (inValue) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_NameValue_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
+GGS_uint GGS__5B_stringString_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid ()) {
     result = GGS_uint (uint32_t (mSharedArray.count ())) ;
@@ -508,10 +508,10 @@ GGS_uint GGS__5B_NameValue_5D_::getter_count (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_NameValue_5D_ GGS__5B_NameValue_5D_::add_operation (const GGS__5B_NameValue_5D_ & inOperand,
-                                                            Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GGS__5B_NameValue_5D_ result ;
+GGS__5B_stringString_5D_ GGS__5B_stringString_5D_::add_operation (const GGS__5B_stringString_5D_ & inOperand,
+                                                                  Compiler * /* inCompiler */
+                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS__5B_stringString_5D_ result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
     result.mSharedArray.appendDataFromPointer (
@@ -524,9 +524,9 @@ GGS__5B_NameValue_5D_ GGS__5B_NameValue_5D_::add_operation (const GGS__5B_NameVa
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_NameValue_5D_::description (String & ioString,
-                                         const int32_t /* inIndentation */) const {
-  ioString.appendCString ("<array [@NameValue], ") ;
+void GGS__5B_stringString_5D_::description (String & ioString,
+                                            const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<array [@stringString], ") ;
   ioString.appendSigned (mSharedArray.count ()) ;
   ioString.appendCString (" object") ;
   ioString.appendString ((mSharedArray.count () > 1) ? "s" : "") ;
@@ -535,9 +535,9 @@ void GGS__5B_NameValue_5D_::description (String & ioString,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_NameValue_5D_::plusAssignOperation (const GGS__5B_NameValue_5D_ inOperand,
-                                                 Compiler * /* inCompiler */
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__5B_stringString_5D_::plusAssignOperation (const GGS__5B_stringString_5D_ inOperand,
+                                                    Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mSharedArray.appendDataFromPointer (
       inOperand.mSharedArray.unsafeArrayPointer (),
@@ -548,9 +548,9 @@ void GGS__5B_NameValue_5D_::plusAssignOperation (const GGS__5B_NameValue_5D_ inO
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_NameValue_5D_::setter_append (const GGS_NameValue inValue,
-                                           Compiler * /* inCompiler */
-                                           COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__5B_stringString_5D_::setter_append (const GGS_stringString inValue,
+                                              Compiler * /* inCompiler */
+                                              COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     mSharedArray.appendObject (inValue) ;
   }
@@ -558,17 +558,17 @@ void GGS__5B_NameValue_5D_::setter_append (const GGS_NameValue inValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_NameValue_5D_::setter_removeAll (Compiler * /* inCompiler */
-                                               COMMA_UNUSED_LOCATION_ARGS) {
+void GGS__5B_stringString_5D_::setter_removeAll (Compiler * /* inCompiler */
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
   removeAll () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_NameValue_5D_::setter_set (const GGS_NameValue inValue,
-                                        const GGS_uint inIndex,
-                                        Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
+void GGS__5B_stringString_5D_::setter_set (const GGS_stringString inValue,
+                                           const GGS_uint inIndex,
+                                           Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inIndex.isValid ()) {
     const int32_t idx = int32_t (inIndex.uintValue ()) ;
     if (idx >= mSharedArray.count ()) {
@@ -586,10 +586,10 @@ void GGS__5B_NameValue_5D_::setter_set (const GGS_NameValue inValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_NameValue_5D_::setter_insert (const GGS_NameValue inValue,
-                                           const GGS_uint inInsertionIndex,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
+void GGS__5B_stringString_5D_::setter_insert (const GGS_stringString inValue,
+                                              const GGS_uint inInsertionIndex,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid ()) {
     const int32_t idx = int32_t (inInsertionIndex.uintValue ()) ;
     if (idx > mSharedArray.count ()) {
@@ -607,10 +607,10 @@ void GGS__5B_NameValue_5D_::setter_insert (const GGS_NameValue inValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_NameValue_5D_::setter_remove (GGS_NameValue & outValue,
-                                           const GGS_uint inRemoveIndex,
-                                           Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
+void GGS__5B_stringString_5D_::setter_remove (GGS_stringString & outValue,
+                                              const GGS_uint inRemoveIndex,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
   outValue.drop () ;
   if (isValid () && inRemoveIndex.isValid ()) {
     const int32_t idx = int32_t (inRemoveIndex.uintValue ()) ;
@@ -630,9 +630,9 @@ void GGS__5B_NameValue_5D_::setter_remove (GGS_NameValue & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_NameValue_5D_::setter_removeFirst (GGS_NameValue & outValue,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
+void GGS__5B_stringString_5D_::setter_removeFirst (GGS_stringString & outValue,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
   if (!isValid ()) {
     outValue.drop () ;
   }else if (count () == 0) {
@@ -647,9 +647,9 @@ void GGS__5B_NameValue_5D_::setter_removeFirst (GGS_NameValue & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS__5B_NameValue_5D_::setter_removeLast (GGS_NameValue & outValue,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
+void GGS__5B_stringString_5D_::setter_removeLast (GGS_stringString & outValue,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
   if (!isValid ()) {
     outValue.drop () ;
   }else if (count () == 0) {
@@ -664,10 +664,10 @@ void GGS__5B_NameValue_5D_::setter_removeLast (GGS_NameValue & outValue,
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_NameValue_5D_ GGS__5B_NameValue_5D_::getter_removingFirst (const GGS_uint & inIndex,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const {
-  GGS__5B_NameValue_5D_ result ;
+GGS__5B_stringString_5D_ GGS__5B_stringString_5D_::getter_removingFirst (const GGS_uint & inIndex,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const {
+  GGS__5B_stringString_5D_ result ;
   if (isValid () && inIndex.isValid ()) {
     const int32_t startIndex = int32_t (inIndex.uintValue ()) ;
     if (startIndex >= int32_t (count ())) {
@@ -680,7 +680,7 @@ GGS__5B_NameValue_5D_ GGS__5B_NameValue_5D_::getter_removingFirst (const GGS_uin
       inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
       const int32_t lastIndex = int32_t (count ()) - 1 ;
-      result = GGS__5B_NameValue_5D_::init (inCompiler COMMA_THERE) ;
+      result = GGS__5B_stringString_5D_::init (inCompiler COMMA_THERE) ;
       result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
     }
   }
@@ -689,16 +689,16 @@ GGS__5B_NameValue_5D_ GGS__5B_NameValue_5D_::getter_removingFirst (const GGS_uin
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_NameValue_5D_ GGS__5B_NameValue_5D_::getter_sublist (const GGS_uint & inStartIndex,
-                                                             const GGS_uint & inLength,
-                                                             Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const {
-  GGS__5B_NameValue_5D_ result ;
+GGS__5B_stringString_5D_ GGS__5B_stringString_5D_::getter_sublist (const GGS_uint & inStartIndex,
+                                                                   const GGS_uint & inLength,
+                                                                   Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const {
+  GGS__5B_stringString_5D_ result ;
   if (isValid () && inStartIndex.isValid () && inLength.isValid ()) {
     const int32_t startIndex = int32_t (inStartIndex.uintValue ()) ;
     const int32_t length = int32_t (inLength.uintValue ()) ;
     if ((startIndex == 0) && (length == 0) && (count () == 0)) {
-      result = GGS__5B_NameValue_5D_::init (inCompiler COMMA_THERE) ;
+      result = GGS__5B_stringString_5D_::init (inCompiler COMMA_THERE) ;
     }else if (startIndex >= int32_t (count ())) {
       String errorMessage ;
       errorMessage.appendCString ("'sublist' getter call with start index ") ;
@@ -718,7 +718,7 @@ GGS__5B_NameValue_5D_ GGS__5B_NameValue_5D_::getter_sublist (const GGS_uint & in
         errorMessage.appendCString (")") ;
         inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
       }else{
-        result = GGS__5B_NameValue_5D_::init (inCompiler COMMA_THERE) ;
+        result = GGS__5B_stringString_5D_::init (inCompiler COMMA_THERE) ;
         result.mSharedArray = mSharedArray.subList (startIndex, lastIndex) ;
       }
     }
@@ -728,9 +728,9 @@ GGS__5B_NameValue_5D_ GGS__5B_NameValue_5D_::getter_sublist (const GGS_uint & in
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_NameValue GGS__5B_NameValue_5D_::getter_first (Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const {
-  GGS_NameValue result ;
+GGS_stringString GGS__5B_stringString_5D_::getter_first (Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  GGS_stringString result ;
   if (!isValid ()) {
   }else if (mSharedArray.count () == 0) {
     const String errorMessage = "'first' getter call on an empty array'" ;
@@ -743,9 +743,9 @@ GGS_NameValue GGS__5B_NameValue_5D_::getter_first (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_NameValue GGS__5B_NameValue_5D_::getter_last (Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) const {
-  GGS_NameValue result ;
+GGS_stringString GGS__5B_stringString_5D_::getter_last (Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GGS_stringString result ;
   if (!isValid ()) {
   }else if (mSharedArray.count () == 0) {
     const String errorMessage = "'last' getter call on an empty array'" ;
@@ -758,10 +758,10 @@ GGS_NameValue GGS__5B_NameValue_5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_NameValue GGS__5B_NameValue_5D_::readSubscript__3F_ (const GGS_uint & inIndex,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  GGS_NameValue result ;
+GGS_stringString GGS__5B_stringString_5D_::readSubscript__3F_ (const GGS_uint & inIndex,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const {
+  GGS_stringString result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
     if (idx < uint32_t (mSharedArray.count ())) {
@@ -781,44 +781,44 @@ GGS_NameValue GGS__5B_NameValue_5D_::readSubscript__3F_ (const GGS_uint & inInde
 
 
 //--------------------------------------------------------------------------------------------------
-// Down Enumerator for @_5B_NameValue_5D_
+// Down Enumerator for @_5B_stringString_5D_
 //--------------------------------------------------------------------------------------------------
 
-DownEnumerator__5B_NameValue_5D_::DownEnumerator__5B_NameValue_5D_ (const GGS__5B_NameValue_5D_ & inOperand) :
+DownEnumerator__5B_stringString_5D_::DownEnumerator__5B_stringString_5D_ (const GGS__5B_stringString_5D_ & inOperand) :
 mSharedArray (inOperand.mSharedArray),
 mCurrent (inOperand.mSharedArray.count () - 1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_NameValue DownEnumerator__5B_NameValue_5D_::current (LOCATION_ARGS) const {
+GGS_stringString DownEnumerator__5B_stringString_5D_::current (LOCATION_ARGS) const {
   return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_NameValue DownEnumerator__5B_NameValue_5D_::current_entry (LOCATION_ARGS) const {
+GGS_stringString DownEnumerator__5B_stringString_5D_::current_entry (LOCATION_ARGS) const {
   return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
-// Up Enumerator for @_5B_NameValue_5D_
+// Up Enumerator for @_5B_stringString_5D_
 //--------------------------------------------------------------------------------------------------
 
-UpEnumerator__5B_NameValue_5D_::UpEnumerator__5B_NameValue_5D_ (const GGS__5B_NameValue_5D_ & inOperand) :
+UpEnumerator__5B_stringString_5D_::UpEnumerator__5B_stringString_5D_ (const GGS__5B_stringString_5D_ & inOperand) :
 mSharedArray (inOperand.mSharedArray),
 mCurrent (0) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_NameValue UpEnumerator__5B_NameValue_5D_::current (LOCATION_ARGS) const {
+GGS_stringString UpEnumerator__5B_stringString_5D_::current (LOCATION_ARGS) const {
   return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_NameValue UpEnumerator__5B_NameValue_5D_::current_entry (LOCATION_ARGS) const {
+GGS_stringString UpEnumerator__5B_stringString_5D_::current_entry (LOCATION_ARGS) const {
   return mSharedArray (mCurrent COMMA_THERE) ;
 }
 
@@ -3323,103 +3323,103 @@ void GGS_bigint_3F_::description (String & ioString,
 }
 
 //--------------------------------------------------------------------------------------------------
-//     @NameValue generic code implementation
+//     @stringString generic code implementation
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_NameValue ("NameValue",
-                                                              nullptr) ;
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_stringString ("stringString",
+                                                                 nullptr) ;
 
 //--------------------------------------------------------------------------------------------------
 
-const GALGAS_TypeDescriptor * GGS_NameValue::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_NameValue ;
+const GALGAS_TypeDescriptor * GGS_stringString::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_stringString ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_NameValue::GGS_NameValue (void) :
-mProperty_name (),
-mProperty_value () {
+GGS_stringString::GGS_stringString (void) :
+mProperty_left (),
+mProperty_right () {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_NameValue::GGS_NameValue (const GGS_NameValue & inSource) :
-mProperty_name (inSource.mProperty_name),
-mProperty_value (inSource.mProperty_value) {
+GGS_stringString::GGS_stringString (const GGS_stringString & inSource) :
+mProperty_left (inSource.mProperty_left),
+mProperty_right (inSource.mProperty_right) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_NameValue & GGS_NameValue::operator = (const GGS_NameValue & inSource) {
-  mProperty_name = inSource.mProperty_name ;
-  mProperty_value = inSource.mProperty_value ;
+GGS_stringString & GGS_stringString::operator = (const GGS_stringString & inSource) {
+  mProperty_left = inSource.mProperty_left ;
+  mProperty_right = inSource.mProperty_right ;
   return *this ;
 }
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_NameValue GGS_NameValue::init_21__21_ (const GGS_string & in_name,
-                                           const GGS_string & in_value,
-                                           Compiler * inCompiler
-                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_NameValue result ;
+GGS_stringString GGS_stringString::init_21__21_ (const GGS_string & in_left,
+                                                 const GGS_string & in_right,
+                                                 Compiler * inCompiler
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_stringString result ;
   result.setInitializedProperties (inCompiler) ;
-  result.mProperty_name = in_name ;
-  result.mProperty_value = in_value ;
+  result.mProperty_left = in_left ;
+  result.mProperty_right = in_right ;
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_NameValue::setInitializedProperties (Compiler * /* inCompiler */) {
+void GGS_stringString::setInitializedProperties (Compiler * /* inCompiler */) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_NameValue::GGS_NameValue (const GGS_string & inOperand0,
-                              const GGS_string & inOperand1) :
-mProperty_name (inOperand0),
-mProperty_value (inOperand1) {
+GGS_stringString::GGS_stringString (const GGS_string & inOperand0,
+                                    const GGS_string & inOperand1) :
+mProperty_left (inOperand0),
+mProperty_right (inOperand1) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-ComparisonResult GGS_NameValue::objectCompare (const GGS_NameValue & inOperand) const {
+ComparisonResult GGS_stringString::objectCompare (const GGS_stringString & inOperand) const {
    ComparisonResult result = ComparisonResult::operandEqual ;
   if (result == ComparisonResult::operandEqual) {
-    result = mProperty_name.objectCompare (inOperand.mProperty_name) ;
+    result = mProperty_left.objectCompare (inOperand.mProperty_left) ;
   }
   if (result == ComparisonResult::operandEqual) {
-    result = mProperty_value.objectCompare (inOperand.mProperty_value) ;
+    result = mProperty_right.objectCompare (inOperand.mProperty_right) ;
   }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-bool GGS_NameValue::isValid (void) const {
-  return mProperty_name.isValid () && mProperty_value.isValid () ;
+bool GGS_stringString::isValid (void) const {
+  return mProperty_left.isValid () && mProperty_right.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_NameValue::drop (void) {
-  mProperty_name.drop () ;
-  mProperty_value.drop () ;
+void GGS_stringString::drop (void) {
+  mProperty_left.drop () ;
+  mProperty_right.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void GGS_NameValue::description (String & ioString,
-                                 const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @NameValue:") ;
+void GGS_stringString::description (String & ioString,
+                                    const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @stringString:") ;
   if (! isValid ()) {
     ioString.appendCString (" not built") ;
   }else{
-    mProperty_name.description (ioString, inIndentation+1) ;
+    mProperty_left.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_value.description (ioString, inIndentation+1) ;
+    mProperty_right.description (ioString, inIndentation+1) ;
   }
   ioString.appendCString (">") ;
 }

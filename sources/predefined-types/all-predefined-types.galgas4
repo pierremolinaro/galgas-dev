@@ -26,8 +26,8 @@ proc appendPredefinedTypesASTs (?!@galgasDeclarationAST ioDeclarations) {
   ioDeclarations.mDeclarationList ++= @uint64PredefinedTypeAST (!isPredefined: true, "uint64")
   appendPredefinedArrayTypeAST (!?ioDeclarations, "uint64")
 
-  appendNameValueStructAST (!?ioDeclarations.mDeclarationList)
-  appendPredefinedArrayTypeAST (!?ioDeclarations, "NameValue")
+  append_stringString_StructAST (!?ioDeclarations.mDeclarationList)
+  appendPredefinedArrayTypeAST (!?ioDeclarations, "stringString")
 
   ioDeclarations.mDeclarationList ++= @bigintPredefinedTypeAST (!isPredefined: true, "bigint")
   ioDeclarations.mDeclarationList ++= @binarysetPredefinedTypeAST (!isPredefined: true, "binaryset")
@@ -369,12 +369,12 @@ private proc appendStructASTForTypeWithLocation (?![@semanticDeclarationAST] ioD
 
 //--------------------------------------------------------------------------------------------------
 
-private proc appendNameValueStructAST (?![@semanticDeclarationAST] ioDeclarationListASTs) {
+private proc append_stringString_StructAST (?![@semanticDeclarationAST] ioDeclarationListASTs) {
   var propertyList = [@propertyInCollectionAST] ()
   propertyList ++= @(
     !mutability: .mutableProperty,
     "string".here,
-    "name".here,
+    "left".here,
     .publicAccess,
     !hasSelector: false,
     !initialization: .none
@@ -382,14 +382,14 @@ private proc appendNameValueStructAST (?![@semanticDeclarationAST] ioDeclaration
   propertyList ++= @(
     !mutability: .mutableProperty,
     "string".here,
-    "value".here,
+    "right".here,
     .publicAccess,
     !hasSelector: false,
     !initialization: .none
   )
   let type = @structDeclarationAST (
     !isPredefined: true,
-    "NameValue".here,
+    "stringString".here,
     propertyList,
     !enumeratedElementTypeName: "",
     !comparison: .equatable,

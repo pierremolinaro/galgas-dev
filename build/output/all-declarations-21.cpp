@@ -23020,12 +23020,12 @@ const char * gWrapperFileContent_161_libpmFileWrapper =
   "\n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS__5B_NameValue_5D_ GGS_application::class_func_boolOptionNameList (LOCATION_ARGS) {\n"
-  "  GGS__5B_NameValue_5D_ result = GGS__5B_NameValue_5D_::init (nullptr COMMA_THERE) ;\n"
+  "GGS__5B_stringString_5D_ GGS_application::class_func_boolOptionNameList (LOCATION_ARGS) {\n"
+  "  GGS__5B_stringString_5D_ result = GGS__5B_stringString_5D_::init (nullptr COMMA_THERE) ;\n"
   "  GenericUniqueArray <String> array ;\n"
   "  BoolCommandLineOption::getBoolOptionNameList (array) ;\n"
   "  for (int32_t i=0 ; i<array.count () ; i+=2) {\n"
-  "    const GGS_NameValue v = GGS_NameValue (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE))) ;\n"
+  "    const GGS_stringString v = GGS_stringString (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE))) ;\n"
   "    result.plusPlusAssignOperation (v COMMA_THERE) ;\n"
   "  }\n"
   "  return result ;\n"
@@ -23100,12 +23100,12 @@ const char * gWrapperFileContent_161_libpmFileWrapper =
   "//   @UINT options                                                                               \n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS__5B_NameValue_5D_ GGS_application::class_func_uintOptionNameList (LOCATION_ARGS) {\n"
-  "  GGS__5B_NameValue_5D_ result = GGS__5B_NameValue_5D_::init (nullptr COMMA_THERE) ;\n"
+  "GGS__5B_stringString_5D_ GGS_application::class_func_uintOptionNameList (LOCATION_ARGS) {\n"
+  "  GGS__5B_stringString_5D_ result = GGS__5B_stringString_5D_::init (nullptr COMMA_THERE) ;\n"
   "  GenericUniqueArray <String> array ;\n"
   "  UIntCommandLineOption::getUIntOptionNameList (array) ;\n"
   "  for (int32_t i=0 ; i<array.count () ; i+=2) {\n"
-  "    const GGS_NameValue v = GGS_NameValue (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE))) ;\n"
+  "    const GGS_stringString v = GGS_stringString (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE))) ;\n"
   "    result.plusPlusAssignOperation (v COMMA_THERE) ;\n"
   "  }\n"
   "  return result ;\n"
@@ -23192,12 +23192,12 @@ const char * gWrapperFileContent_161_libpmFileWrapper =
   "//   STRING OPTION                                                                               \n"
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
-  "GGS__5B_NameValue_5D_ GGS_application::class_func_stringOptionNameList (LOCATION_ARGS) {\n"
-  "  GGS__5B_NameValue_5D_ result = GGS__5B_NameValue_5D_::init (nullptr COMMA_THERE) ;\n"
+  "GGS__5B_stringString_5D_ GGS_application::class_func_stringOptionNameList (LOCATION_ARGS) {\n"
+  "  GGS__5B_stringString_5D_ result = GGS__5B_stringString_5D_::init (nullptr COMMA_THERE) ;\n"
   "  GenericUniqueArray <String> array ;\n"
   "  StringCommandLineOption::getStringOptionNameList (array) ;\n"
   "  for (int32_t i=0 ; i<array.count () ; i+=2) {\n"
-  "    const GGS_NameValue v = GGS_NameValue (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE))) ;\n"
+  "    const GGS_stringString v = GGS_stringString (GGS_string (array (i COMMA_THERE)), GGS_string (array (i+1 COMMA_THERE))) ;\n"
   "    result.plusPlusAssignOperation (v COMMA_THERE) ;\n"
   "  }\n"
   "  return result ;\n"
@@ -23348,7 +23348,7 @@ const cRegularFileWrapper gWrapperFile_161_libpmFileWrapper (
   "GGS_application.cpp",
   "cpp",
   true, // Text file
- 17360, // Text length
+ 17405, // Text length
   gWrapperFileContent_161_libpmFileWrapper
 ) ;
 

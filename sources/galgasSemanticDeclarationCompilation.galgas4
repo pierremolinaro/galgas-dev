@@ -38,10 +38,10 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
   for anOption in @application.boolOptionNameList do
     options ++= @(
       "bool".nowhere,
-      anOption.value.here,
-      @(@application.boolOptionInvocationCharacter (anOption.name, anOption.value), .nowhere),
-      @application.boolOptionInvocationString (anOption.name, anOption.value).nowhere,
-      @application.boolOptionCommentString (anOption.name, anOption.value).nowhere,
+      anOption.right.here,
+      @(@application.boolOptionInvocationCharacter (anOption.left, anOption.right), .nowhere),
+      @application.boolOptionInvocationString (anOption.left, anOption.right).nowhere,
+      @application.boolOptionCommentString (anOption.left, anOption.right).nowhere,
       "".nowhere,
       .noDefaultValue
     )
@@ -49,10 +49,10 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
   for anOption in @application.uintOptionNameList do
     options ++= @(
       "uint".nowhere,
-      anOption.value.here,
-      @lchar (@application.uintOptionInvocationCharacter (anOption.name, anOption.value), .nowhere),
-      @application.uintOptionInvocationString (anOption.name, anOption.value).nowhere,
-      @application.uintOptionCommentString (anOption.name, anOption.value).nowhere,
+      anOption.right.here,
+      @lchar (@application.uintOptionInvocationCharacter (anOption.left, anOption.right), .nowhere),
+      @application.uintOptionInvocationString (anOption.left, anOption.right).nowhere,
+      @application.uintOptionCommentString (anOption.left, anOption.right).nowhere,
       "".nowhere,
       .noDefaultValue
     )
@@ -60,10 +60,10 @@ proc compileSemanticDeclarationsGalgas (?![@lstring] ioUsefulnessRootEntities,
   for anOption in @application.stringOptionNameList do
     options ++= @(
       "string".nowhere,
-      anOption.value.here,
-      @lchar (@application.stringOptionInvocationCharacter (anOption.name, anOption.value), .nowhere),
-      @application.stringOptionInvocationString (anOption.name, anOption.value).nowhere,
-      @application.stringOptionCommentString (anOption.name, anOption.value).nowhere,
+      anOption.right.here,
+      @lchar (@application.stringOptionInvocationCharacter (anOption.left, anOption.right), .nowhere),
+      @application.stringOptionInvocationString (anOption.left, anOption.right).nowhere,
+      @application.stringOptionCommentString (anOption.left, anOption.right).nowhere,
       "".nowhere,
       .noDefaultValue
     )

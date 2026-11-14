@@ -7343,7 +7343,7 @@ class SharedGraph_semanticTypePrecedenceGraph : public SharedObject {
 
   public: String getter_graphviz (void) const ;
 
-  public: void edges (GGS__5B_NameValue_5D_ & ioList) const ;
+  public: void edges (GGS__5B_stringString_5D_ & ioList) const ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public: void checkGraph (LOCATION_ARGS) const ;
@@ -8167,11 +8167,11 @@ GGS_string GGS_semanticTypePrecedenceGraph::getter_graphviz (UNUSED_LOCATION_ARG
 
 //--------------------------------------------------------------------------------------------------
 
-void SharedGraph_semanticTypePrecedenceGraph::edges (GGS__5B_NameValue_5D_ & ioList) const {
+void SharedGraph_semanticTypePrecedenceGraph::edges (GGS__5B_stringString_5D_ & ioList) const {
   GenericUniqueArray <GraphEdge> edgeArray ; mDirectedGraph.getEdges (edgeArray) ;
   for (int32_t i=0 ; i<edgeArray.count () ; i++) {
     const GraphEdge edge = edgeArray (i COMMA_HERE) ;
-    const GGS_NameValue v = GGS_NameValue (
+    const GGS_stringString v = GGS_stringString (
       mNodeArray ((int32_t) edge.mSource COMMA_HERE)->mKey,
       mNodeArray ((int32_t) edge.mTarget COMMA_HERE)->mKey
     ) ;
@@ -8181,10 +8181,10 @@ void SharedGraph_semanticTypePrecedenceGraph::edges (GGS__5B_NameValue_5D_ & ioL
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_NameValue_5D_ GGS_semanticTypePrecedenceGraph::getter_edges (LOCATION_ARGS) const {
-  GGS__5B_NameValue_5D_ result ;
+GGS__5B_stringString_5D_ GGS_semanticTypePrecedenceGraph::getter_edges (LOCATION_ARGS) const {
+  GGS__5B_stringString_5D_ result ;
   if (isValid ()) {
-    result = GGS__5B_NameValue_5D_::init (nullptr COMMA_THERE) ;
+    result = GGS__5B_stringString_5D_::init (nullptr COMMA_THERE) ;
     mSharedGraph->edges (result) ;
   }
   return result ;

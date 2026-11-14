@@ -7181,7 +7181,7 @@ class GGS_usefulEntitiesGraph final : public AC_GALGAS_root {
 
   public: GGS_string getter_graphviz (UNUSED_LOCATION_ARGS) const ;
 
-  public: GGS__5B_NameValue_5D_ getter_edges (UNUSED_LOCATION_ARGS) const ;
+  public: GGS__5B_stringString_5D_ getter_edges (UNUSED_LOCATION_ARGS) const ;
 
 //--------------------------------- Setters
   public: void setter_addEdge (const class GGS_lstring & inSourceNodeKey,

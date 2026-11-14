@@ -316,7 +316,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "edges",
-      !returnedTypeName: "[NameValue]",
+      !returnedTypeName: "[stringString]",
       !hasCompilerArgument:false // No compiler argument
     )
   //--- Getter 'subgraphFromNodes'

@@ -96,7 +96,7 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"boolOptionNameList",
-      !resultTypeName: "[NameValue]",
+      !resultTypeName: "[stringString]",
       !hasLexiqueArg:false
     )
     enterClassFunctionWith2Arguments (
@@ -148,7 +148,7 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"uintOptionNameList",
-      !resultTypeName:"[NameValue]",
+      !resultTypeName:"[stringString]",
       !hasLexiqueArg:false
     )
     enterClassFunctionWith2Arguments (
@@ -200,7 +200,7 @@ final class @applicationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !name:"stringOptionNameList",
-      !resultTypeName:"[NameValue]",
+      !resultTypeName:"[stringString]",
       !hasLexiqueArg:false
     )
     enterClassFunctionWith2Arguments (
