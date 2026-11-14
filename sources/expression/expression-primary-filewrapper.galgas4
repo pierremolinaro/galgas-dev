@@ -112,7 +112,7 @@ override proc @filewrapperObjectInstanciationInExpressionAST.analyzeSemanticExpr
   if isInternal then
     let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (self.mFilewrapperName.string)
     if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
-      error (self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file")
+      error self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file"
     end
   end
 //---
@@ -157,7 +157,7 @@ override proc @filewrapperTemplateInExpressionAST.analyzeSemanticExpression
   if isInternal then
     let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (self.mFilewrapperName.string)
     if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
-      error (self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file")
+      error self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file"
     end
   end
 //---
@@ -165,17 +165,17 @@ override proc @filewrapperTemplateInExpressionAST.analyzeSemanticExpression
 //--- Analysis arguments
   var [@semanticExpressionForGeneration] effectiveParameterList
   if self.mExpressions.count != templateSignature.count then
-    error (self.mFilewrapperTemplateName
+    error self.mFilewrapperTemplateName
     : "calling the '" + self.mFilewrapperTemplateName + "' template of '" + self.mFilewrapperName + "' filewrapper requires "
     + templateSignature.count.string + " parameter(s), while this call has "
     + self.mExpressions.count.string + " parameter(s)"
-    spoil effectiveParameterList)
+    spoil effectiveParameterList
   else
     effectiveParameterList = @()
     for actual in self.mExpressions, formal in templateSignature do
       if formal.mFormalSelector.string != actual.mActualSelector.string then
         let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
-        error (actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
+        error actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s
       end
       actual.mExpression.analyzeSemanticExpression
         (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
@@ -223,9 +223,9 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   var [@string] directoryList
   let @string fileName
   if self.mFilewrapperPath.count() == 0 then
-    error (self.mFilewrapperPath : "path is empty" spoil directoryList, fileName)
+    error self.mFilewrapperPath : "path is empty" spoil directoryList, fileName
   elsif self.mFilewrapperPath.string.firstCharacterOrNul == '/' then
-    error (self.mFilewrapperPath : "the path should not begin with '/'" spoil directoryList, fileName)
+    error self.mFilewrapperPath : "the path should not begin with '/'" spoil directoryList, fileName
   else
     directoryList = self.mFilewrapperPath.componentsSeparatedByString ("/")
     !?directoryList.removeLast (?fileName)
@@ -244,7 +244,7 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   if isInternal then
     let filewrapperDeclarationLocation = inAnalysisContext.semanticContext.mFilewrapperMap.locationForKey (self.mFilewrapperName.string)
     if self.mFilewrapperName.location.file != filewrapperDeclarationLocation.file then
-      error (self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file")
+      error self.mFilewrapperName : "this filewrapper is internal to '" + filewrapperDeclarationLocation.file + "' file"
     end
   end
 //--- Search for file
@@ -261,7 +261,7 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
         ?*
       )
     else
-      error (self.mFilewrapperPath : "the '" + builtPath + "' path does not exists for the '" + self.mFilewrapperName + "' filewrapper" spoil filewrapperFileMap)
+      error self.mFilewrapperPath : "the '" + builtPath + "' path does not exists for the '" + self.mFilewrapperName + "' filewrapper" spoil filewrapperFileMap
       directoryList = [@string] () // For exiting loop
     end
   end
@@ -270,9 +270,9 @@ override proc @filewrapperInExpressionAST.analyzeSemanticExpression
   if filewrapperFileMap.contains (fileName) then
     filewrapperFileMap.searchKey (@lstring (fileName, @location.here), ?*, ?isTextFile, ?*, ?fileIndex)
   else
-    error (self.mFilewrapperPath
+    error self.mFilewrapperPath
     : "the '" + fileName + "' file does not exist in the '" + builtPath + "' directory of '" + self.mFilewrapperName + "' filewrapper"
-    spoil fileIndex, isTextFile)
+    spoil fileIndex, isTextFile
   end
 //---
   outExpression = @filewrapperStaticPathInExpressionForGeneration (

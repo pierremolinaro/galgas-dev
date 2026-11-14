@@ -15,8 +15,8 @@ extern func externTestFunction (
 proc testsuite_functions() {
   println ("*************************************** begin of function test")
   var @uint r = functionTest (2, 3)
-  log r
+  println (r.description)
   r = externTestFunction (2, 3)
-  log r
+  println (r.description)
 }
 

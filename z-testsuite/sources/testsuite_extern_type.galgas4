@@ -10,8 +10,8 @@ extern @complex {
   "  private : double mImaginary ;\n"
 }{
   init (@double real, @double imaginary)
-  func real -> @double
-  func imaginary -> @double
+  func real () -> @double
+  func imaginary () -> @double
 }
 
 //--------------------------------------------------------------------------*
@@ -19,9 +19,9 @@ extern @complex {
 proc testsuite_extern_type() {
   println ("*************************************** begin of extern type test")
   let complex = @complex (1.0, -1.0)
-  log complex
-  log "real" : complex.real
-  log "imaginary" : complex.imaginary
+  println (complex.description) 
+  print ("real") ; println (complex.real.description) 
+  print ("imaginary") ; println (complex.imaginary.description)
 }
 
 //--------------------------------------------------------------------------*

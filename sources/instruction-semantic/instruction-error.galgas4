@@ -87,7 +87,6 @@ syntax extension galgas4InstructionsSyntax {
                                !@semanticInstructionAST outInstruction) {
     $error$
     let instructionLocation = @location.here
-    $($
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST mReceiverExpression)
     $:$
     <expression> (!?ioDeclarations, ?let @semanticExpressionAST mErrorExpression)
@@ -103,7 +102,6 @@ syntax extension galgas4InstructionsSyntax {
       end
     end
     <issue_fixit> (!?ioDeclarations, ?let [@fixitElementAST] fixitListAST)
-    $)$
     outInstruction = @errorInstructionAST (
       instructionLocation,
       mReceiverExpression,
@@ -216,9 +214,9 @@ proc analyzeErrorOrWarningInstruction (let @lstring inUsefulnessCallerEntityName
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mLStringArrayType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringSetType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringType) then
-        error (errorLocation : "expression type is @" + expression.mResultType.definition.typeName.string
+        error errorLocation : "expression type is @" + expression.mResultType.definition.typeName.string
          + ", it should be an @string, @stringset, [@string] or [@lstring]"
-        )
+        
       end
       outFixitListForGeneration ++= .fixItReplace (!exp:expression)
     case fixItInsertBefore (exp, errorLocation) :
@@ -235,9 +233,9 @@ proc analyzeErrorOrWarningInstruction (let @lstring inUsefulnessCallerEntityName
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mLStringArrayType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringSetType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringType) then
-        error (errorLocation : "expression type is @" + expression.mResultType.definition.typeName.string
+        error errorLocation : "expression type is @" + expression.mResultType.definition.typeName.string
          + ", it should be an @string, @stringset, [@string] or [@lstring]"
-        )
+        
       end
       outFixitListForGeneration ++= .fixItInsertBefore (!exp:expression)
     case fixItInsertAfter (exp, errorLocation) :
@@ -254,19 +252,19 @@ proc analyzeErrorOrWarningInstruction (let @lstring inUsefulnessCallerEntityName
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mLStringArrayType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringSetType)
        && (expression.mResultType != inAnalysisContext.predefinedTypes.mStringType) then
-        error (errorLocation : "expression type is @" + expression.mResultType.definition.typeName.string
+        error errorLocation : "expression type is @" + expression.mResultType.definition.typeName.string
          + ", it should be an @string, @stringset, [@string] or [@lstring]"
-        )
+        
       end
       outFixitListForGeneration ++= .fixItInsertAfter (!exp:expression)
     end
   end
 //--- Check message expression type is @string
   if outMessageExpression.mResultType != inAnalysisContext.predefinedTypes.mStringType then
-    error (inErrorLocation
+    error inErrorLocation
     :"the " + inErrorOrWarningString + " message expression type is '@" + outMessageExpression.mResultType.definition.typeName.string
      + "'; it should be of the '@string' type"
-    )
+    
   end
 }
 

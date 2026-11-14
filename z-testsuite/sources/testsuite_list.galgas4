@@ -13,23 +13,23 @@ proc testsuite_list() {
   !?strList.append ("d")
   println ("*************************************** begin of list direct access")
   var @string s = strList [0]
-  log s
+  println (s.description)
   s = strList [1]
-  log s
+  println (s.description)
   s = strList [2]
-  log s
+  println (s.description)
   s = strList [3]
-  log s
+  println (s.description)
   !?strList.set ("z", !at: 3)
-  log strList
+  println (strList.description)
   println ("--- test .= operator on list")
   strList += strList
-  log s
+  println (s.description)
   println ("*************************************** begin of list compare")
   let aList = [@string] ["az"]
   let bList = [@string] ["az"]
   let @bool comp = aList == bList
-  log comp
+  println (comp.description)
   println ("*************************************** begin of collection value")
   var s1 = [@string] ["a"]
   !?s1.append ("b")
@@ -37,8 +37,8 @@ proc testsuite_list() {
   !?s2.append ("d")
   s2 += ["e"]
   let str = s1 + s2
-  log str
+  println (str.description)
   let str2 = [@string] ["a", "b", "c", "d", "e"]
-  log str2
+  println (str2.description)
 }
 

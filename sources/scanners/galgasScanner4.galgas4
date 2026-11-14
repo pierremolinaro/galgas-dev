@@ -149,7 +149,6 @@ list galgasKeyWordList style keywordsStyle #errorMessage "the '%K' keyword" {
   "let",
   "lexique",
   "list",
-  "log",
   "loop",
   "map",
   "mutating",

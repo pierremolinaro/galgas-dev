@@ -90,7 +90,6 @@ fileprivate let kEndOfScriptInTemplateArray_galgasTemplateScanner : [Bool] = [
   false /* let */,
   false /* lexique */,
   false /* list */,
-  false /* log */,
   false /* loop */,
   false /* map */,
   false /* mutating */,

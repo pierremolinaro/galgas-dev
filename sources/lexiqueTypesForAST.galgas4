@@ -392,7 +392,7 @@ proc buildLexicalAttributeMap
       between
         m += ","
       end
-      error (lexicalAttribute.mTypeName: m)
+      error lexicalAttribute.mTypeName: m
     end
   end
 }

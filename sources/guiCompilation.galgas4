@@ -182,12 +182,12 @@ syntax galgas4GuiComponentSyntax (galgasScanner4) {
           $($
           $literalInt$ (?let leadingStrip)
           if leadingStrip.bigint >= 15 then
-            error (leadingStrip:"leading strip should be < 15")
+            error leadingStrip:"leading strip should be < 15"
           end
           $,$
           $literalInt$ (?let endingStrip)
           if endingStrip.bigint >= 15 then
-            error (endingStrip:"tail strip should be < 15")
+            error endingStrip:"tail strip should be < 15"
           end
           displayFlags = (leadingStrip.bigint << 4) | endingStrip
          $)$
@@ -290,7 +290,7 @@ private proc guiComponentSemanticAnalysis (let @galgasGUIComponentAST inGUICompo
                                           let @semanticContext inSemanticContext,
                                           ?!@optionComponentMapForGeneration ioOptionComponentMapForGeneration ) {
   if inGUIComponentAST.mGUIComponentName.string != "cocoa" then
-    error (inGUIComponentAST.mGUIComponentName : "the gui name should be 'cocoa'")
+    error inGUIComponentAST.mGUIComponentName : "the gui name should be 'cocoa'"
   end
 //---
   var @guiAnalysisContext context = @()
@@ -305,9 +305,9 @@ private proc guiComponentSemanticAnalysis (let @galgasGUIComponentAST inGUICompo
   for entry in inGUIComponentAST.mGlobalSimpleAttributeList do
     if entry.mKey.string == "run" then
       if runOptionDefined then
-        error (entry.mKey : "option already defined")
+        error entry.mKey : "option already defined"
       elsif entry.mValue.string == "" then
-        error (entry.mValue : "run option string should not be empty")
+        error entry.mValue : "run option string should not be empty"
       else
         context.mBuildRunOption = entry.mValue.string
         runOptionDefined = true
@@ -338,12 +338,12 @@ private proc guiComponentSemanticAnalysis (let @galgasGUIComponentAST inGUICompo
     for aLabel in withLexiqueEntry.mLabels do
       for aTerminal in aLabel.mTerminalList do
         if not terminalSymbolSet.contains (aTerminal.mTerminal.string) then
-          error (aTerminal.mTerminal: "the '$"
+          error aTerminal.mTerminal: "the '$"
             + aTerminal.mTerminal
             + "$' terminal symbol is not declared by the '"
             + withLexiqueEntry.mLexiqueFileName
             + "' lexique"
-          )
+          
         end
       end
     end
@@ -351,7 +351,7 @@ private proc guiComponentSemanticAnalysis (let @galgasGUIComponentAST inGUICompo
     var [@textMacroAST] textMacroList = @()
     for compoundAttribute in withLexiqueEntry.mCompoundAttributes do
       if compoundAttribute.mKey.string != "textMacro" then
-        error (compoundAttribute.mKey: "for a compound attribute, only the 'textMacro' key is valid")
+        error compoundAttribute.mKey: "for a compound attribute, only the 'textMacro' key is valid"
       else
         textMacroList ++= @(compoundAttribute.mAttributeName.string, compoundAttribute.mValue.string)
       end
@@ -368,27 +368,27 @@ private proc guiComponentSemanticAnalysis (let @galgasGUIComponentAST inGUICompo
         hasAssociatedExtension = true
       elsif simpleAttr.mKey.string == "title" then
         if hasTabViewTitle then
-          error (simpleAttr.mKey: "the '" + simpleAttr.mKey + "' key should be defined once")
+          error simpleAttr.mKey: "the '" + simpleAttr.mKey + "' key should be defined once"
         end
         hasTabViewTitle = true
         tabViewTitle = simpleAttr.mValue.string
       elsif simpleAttr.mKey.string == "blockComment" then
         if hasBlockComment then
-          error (simpleAttr.mKey: "the '" + simpleAttr.mKey + "' key should be defined once")
+          error simpleAttr.mKey: "the '" + simpleAttr.mKey + "' key should be defined once"
         end
         hasBlockComment = true
         blockComment = simpleAttr.mValue.string
       else
-        error (simpleAttr.mKey: "the '" + simpleAttr.mKey + "' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')")
+        error simpleAttr.mKey: "the '" + simpleAttr.mKey + "' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')"
       end
     end
   //--- has an extension ?
     if not hasAssociatedExtension then
-      error (withLexiqueEntry.mLexiqueFileName:"one or more file extensions should be associated with a lexique (fileExtension : \"...\")")
+      error withLexiqueEntry.mLexiqueFileName:"one or more file extensions should be associated with a lexique (fileExtension : \"...\")"
     end
   //--- has title ?
     if not hasTabViewTitle then
-      error (withLexiqueEntry.mLexiqueFileName:"the 'title' key should be defined once (it is not defined)")
+      error withLexiqueEntry.mLexiqueFileName:"the 'title' key should be defined once (it is not defined)"
     end
   //---
     context.mWithLexiqueList ++= @(

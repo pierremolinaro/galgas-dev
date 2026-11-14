@@ -133,51 +133,54 @@ Delete Test Done
   do '7' (idx: 6)
   do '8' (idx: 7)
 *************************************** begin of list direct access
-LOGGING s: <@string:"a">
-LOGGING s: <@string:"b">
-LOGGING s: <@string:"c">
-LOGGING s: <@string:"d">
-LOGGING strList: <array [@string], 4 objects>
+<@string:"a">
+<@string:"b">
+<@string:"c">
+<@string:"d">
+<array [@string], 4 objects>
 --- test .= operator on list
-LOGGING s: <@string:"d">
+<@string:"d">
 *************************************** begin of list compare
-LOGGING comp: <@bool:true>
+<@bool:true>
 *************************************** begin of collection value
-LOGGING str: <array [@string], 5 objects>
-LOGGING str2: <array [@string], 5 objects>
+<array [@string], 5 objects>
+<array [@string], 5 objects>
 *************************************** begin of sorted list test
   index 0 : d
   index 1 : c
   index 2 : b
   index 3 : a
 *************************************** begin of struct logging
-LOGGING s: <struct @structTest:<@string:"az">, <@uint:34>>
+<struct @structTest:<@string:"az">, <@uint:34>>
 *************************************** begin of map
-LOGGING m: <map @aMap (1 object):
+<map @aMap (1 object):
 |-at 0: key 'g'
 | | value:<@uint:37>>
-LOGGING m: <map @aMap (1 object):
+<map @aMap (1 object):
 |-at 0: key 'g'
 | | value:<@uint:56>>
-LOGGING mm: <map @aMap (0 object):
+<map @aMap (0 object):
 |  override #1 (1 object):
 |-at 0: key 'g'
 | | value:<@uint:56>>
-LOGGING v: <@uint:56>
-LOGGING mm: <map @aMap (1 object):
+<@uint:56>
+<map @aMap (1 object):
 |-at 0: key 'g'
 | | value:<@uint:11>
 |  override #1 (1 object):
 |-at 0: key 'g'
 | | value:<@uint:56>>
-LOGGING v: <@uint:11>
-LOGGING m: <map @aMap (1 object):
+<@uint:11>
+<map @aMap (1 object):
 |-at 0: key 'g'
 | | value:<@uint:56>>
-LOGGING levelCount: <@uint:1>
-LOGGING hasKeyAtLevel: <@bool:true>
-LOGGING hasKeyAtLevel: <@bool:false>
-LOGGING loc: <@location:nowhere:1:1>
+levelCount
+<@uint:1>
+hasKeyAtLevel
+<@bool:true>
+hasKeyAtLevel
+<@bool:false>
+<@location:nowhere:1:1>
   key 'A', value: 1
   key 'B', value: 2
   key 'C', value: 3
@@ -229,41 +232,46 @@ LOGGING loc: <@location:nowhere:1:1>
   key 'y', value: 49
   key 'z', value: 50
 *************************************** begin of function test
-LOGGING r: <@uint:5>
-LOGGING r: <@uint:5>
+<@uint:5>
+<@uint:5>
 *************************************** begin of extension reader test
-LOGGING s: <@string:"-3-4-4">
+<@string:"-3-4-4">
 Carré de 9: 81
 *************************************** begin of extension procs
 2
 *************************************** begin of extension setter test
-LOGGING u: <@uint:3>
-LOGGING v: <@TestExtensionSetter:[@TestExtensionSetter:<@uint:3>, <@string:"Hello World">]>
+<@uint:3>
+<@TestExtensionSetter:[@TestExtensionSetter:<@uint:3>, <@string:"Hello World">]>
 Appel @inheritedClassForTypeCastInSetterCall unSetter
 *************************************** begin of mutating proc test
 v = 179
 v = 183
 v = 752
 *************************************** begin of type extension test
-LOGGING Square of 7: <@uint64:49>
-LOGGING Sum 1 + 2 + 3 + 4: <@uint:10>
-LOGGING Hello !: <@string:"Hello !">
-LOGGING v: <@uint64:49>
-LOGGING u: <@uint:10>
-LOGGING s: <@string:"Hello !">
-LOGGING ls: <struct @lstring:<@string:"Hello3">, <@location:nowhere:1:1>>
-LOGGING aList: <array [@uint], 5 objects>
+Square of 7
+<@uint64:49>
+Sum 1 + 2 + 3 + 4
+<@uint:10>
+Hello !
+<@string:"Hello !">
+<@uint64:49>
+<@uint:10>
+<@string:"Hello !">
+<struct @lstring:<@string:"Hello3">, <@location:nowhere:1:1>>
+<array [@uint], 5 objects>
 *************************************** begin of string test
-LOGGING command: <@string:"echo accentué">
-LOGGING result: <@string:"accentué
+<@string:"echo accentué">
+<@string:"accentué
 ">
 *************************************** begin of range test
-LOGGING s: <@string:"Range [4, 3] enumeration: 4 5 6">
-LOGGING s: <@string:"Range [4, 3] reverse enumeration: 6 5 4">
+<@string:"Range [4, 3] enumeration: 4 5 6">
+<@string:"Range [4, 3] reverse enumeration: 6 5 4">
 *************************************** begin of extern type test
-LOGGING complex: <@complex:1, -1>
-LOGGING real: <@double:1>
-LOGGING imaginary: <@double:-1>
+<@complex:1, -1>
+real
+<@double:1>
+imaginary
+<@double:-1>
 *************************************** begin of @bigint test
 --- construction
 0
@@ -404,7 +412,7 @@ PGCD = 8936582237915716659950962253358945635793453256935559
 7
 5
 *************************************** end of reference classe test
-LOGGING a: <map @myMap (1 object):
+<map @myMap (1 object):
 |-at 0: key 'var'
 | | value:<@string:"Hello">>
 No warning, no error.

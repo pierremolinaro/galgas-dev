@@ -76,7 +76,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
   if receiverType.definition.typeKind.isStructType || receiverType.definition.typeKind.isClassType,
      self.mExpressionList.count == 0,
      receiverType.definition.propertyMap.contains (self.mGetterName) then
-    error (self.mExpressionLocation : "use dot notation, instead of func call" spoil outExpression)
+    error self.mExpressionLocation : "use dot notation, instead of func call" spoil outExpression
   else
   //--- Get func map
     let @getterMap getterMap = receiverType.definition.getterMap
@@ -98,7 +98,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
         ?let actualGetterNameString
       )
       if actualGetterNameString != "" then
-        error (self.mGetterName : "obsolete func" fixit #replaceBy actualGetterName)
+        error self.mGetterName : "obsolete func" fixit #replaceBy actualGetterName
       end
     else
       var @uint matchingReaderCount = 0
@@ -122,43 +122,43 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
           end
         end
         if matchingReaderCount == 0 then
-          error (self.mGetterName
+          error self.mGetterName
           : "the '@" + receiverTypeName + "' struct type does not define the '" + self.mGetterName.string
           + "' func, and none of its fields defines it"
-          spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
+          spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
         elsif matchingReaderCount > 1 then
           var @string s = ""
           for value in fieldList
             do s += value
             between s += ", "
           end
-          error (self.mGetterName
+          error self.mGetterName
           : "the '@"+ receiverTypeName + "' struct type does not define the '" + self.mGetterName.string
           + "' func, and several of its fields defines it:" + s + " (exactly one field should define it)"
-          spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
+          spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
         end
       elsif getterMap.count == 0 then
-        error (self.mGetterName
+        error self.mGetterName
         : "the '@"+ receiverTypeName + "' type does not define any func"
-        spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
+        spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       else
-        error (self.mGetterName
+        error self.mGetterName
         : "the '@"+ receiverTypeName + "' type does not define the '" + self.mGetterName + "' func"
         spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
-        fixit #replaceBy getterMap.keyList)
+        fixit #replaceBy getterMap.keyList
       end
     end
   //--- Analysis arguments
     if self.mExpressionList.count != getterFormalArgumentTypeList.count then
-      error (self.mGetterName: "calling the '" + self.mGetterName + "' func of '@" + receiverTypeName + "' requires "
+      error self.mGetterName: "calling the '" + self.mGetterName + "' func of '@" + receiverTypeName + "' requires "
       + getterFormalArgumentTypeList.count.string + " parameter(s), while this call has "
-      + self.mExpressionList.count.string + " parameter(s)" spoil outExpression)
+      + self.mExpressionList.count.string + " parameter(s)" spoil outExpression
     else
       var [@semanticExpressionForGeneration] constructorEffectiveParameterList = @()
       for actual in self.mExpressionList, formal in getterFormalArgumentTypeList do
         if formal.mFormalSelector.string != actual.mActualSelector.string then
           let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
-          error (actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
+          error actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s
         end
         actual.mExpression.templateExpressionAnalysis (
           inUsefulnessCallerEntityName,
@@ -171,7 +171,7 @@ override proc @templateGetterCallInExpressionAST.templateExpressionAnalysis
         constructorEffectiveParameterList ++= exp
       end
       if actualGetterName != self.mGetterName.string then
-        error (self.mGetterName : "obsolete func" fixit #replaceBy actualGetterName)
+        error self.mGetterName : "obsolete func" fixit #replaceBy actualGetterName
       end
       outExpression = @getterCallExpressionForGeneration (
         returnedType,
@@ -211,32 +211,32 @@ override proc @templateClassFunctionAST.templateExpressionAnalysis
     returnedType = entry.mReturnedType
   else
     if classFunctionMap.count == 0 then
-      error (self.mClassFunctionName
+      error self.mClassFunctionName
       : "the '@"+ self.mTypeName + "' type does not define any constructor"
-      spoil classFuncFormalArgumentTypeList, hasCompilerArgument, returnedType)
+      spoil classFuncFormalArgumentTypeList, hasCompilerArgument, returnedType
     else
-      error (self.mClassFunctionName
+      error self.mClassFunctionName
       : "the '@"+ self.mTypeName + "' type does not define the '" + self.mClassFunctionName + "' constructor"
       spoil classFuncFormalArgumentTypeList, hasCompilerArgument, returnedType
-      fixit #replaceBy classFunctionMap.keyList)
+      fixit #replaceBy classFunctionMap.keyList
     end
   end
 //--- Analysis arguments
   var [@unifiedTypeMapEntry] requiredTypes = @()
   var [@semanticExpressionForGeneration] classFunctionEffectiveParameterList
   if self.mExpressionList.count != classFuncFormalArgumentTypeList.count then
-    error (self.mClassFunctionName
+    error self.mClassFunctionName
     : "calling the '" + self.mClassFunctionName + "' constructor of '@" + constructorType.definition.typeName.string + "' requires "
     + classFuncFormalArgumentTypeList.count.string + " parameter(s), while this call has "
     + self.mExpressionList.count.string + " parameter(s)"
-    spoil classFunctionEffectiveParameterList)
+    spoil classFunctionEffectiveParameterList
   else
     classFunctionEffectiveParameterList = [@semanticExpressionForGeneration] ()
     for actual in self.mExpressionList, formal in classFuncFormalArgumentTypeList do
       !?requiredTypes.append (formal.mFormalArgumentType)
       if formal.mFormalSelector.string != actual.mActualSelector.string then
         let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
-        error (actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
+        error actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s
       end
       actual.mExpression.templateExpressionAnalysis
         (inUsefulnessCallerEntityName,
@@ -272,7 +272,7 @@ override proc @templateFileWrapperTemplateCallAST.templateExpressionAnalysis
   ?!@unifiedTypeMap _ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  error (self.mFileWrapperName:"unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis" spoil outExpression)
+  error self.mFileWrapperName:"unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis" spoil outExpression
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -512,9 +512,9 @@ override proc @templateNotOperatorAST.templateExpressionAnalysis
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if not type.definition.features.contains (.prefixNotOperator) then
-    error (self.mOperatorLocation
+    error self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the 'not' operator"
-    spoil outExpression)
+    spoil outExpression
   else
   //--- Generate expression
     outExpression = @notExpressionForGeneration (
@@ -545,9 +545,9 @@ override proc @templateLogicalNegateAST.templateExpressionAnalysis
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if not type.definition.features.contains (.prefixTildeOperator) then
-    error (self.mOperatorLocation
+    error self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the '~' operator"
-    spoil outExpression)
+    spoil outExpression
   else
   //--- Generate expression
     outExpression = @tildeExpressionForGeneration (
@@ -587,12 +587,12 @@ override proc @templateTestDynamicClassAST.templateExpressionAnalysis
       found = t == expression.mResultType
     end
     if not found then
-      error (self.mTypeName
-      :"the '@" + self.mTypeName + "' is not a descendant of the '@" + expression.mResultType.definition.typeName.string + "' type of the cast expression")
+      error self.mTypeName
+      :"the '@" + self.mTypeName + "' is not a descendant of the '@" + expression.mResultType.definition.typeName.string + "' type of the cast expression"
     end
   else
-    error (expression.mLocation: "expression should be a class instance: it is an @"
-     +  expression.mResultType.definition.typeName.string + " instance")
+    error expression.mLocation: "expression should be a class instance: it is an @"
+     +  expression.mResultType.definition.typeName.string + " instance"
   end
 //--- Generate expression
   outExpression = @testDynamicClassInExpressionForGeneration (
@@ -665,7 +665,7 @@ override proc @templateOptionAccessAST.templateExpressionAnalysis
         self.mOptionName.string
       )
     else
-      error (self.mGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" spoil outExpression)
+      error self.mGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" spoil outExpression
     end
   else
     var @stringset s = @()
@@ -678,10 +678,10 @@ override proc @templateOptionAccessAST.templateExpressionAnalysis
     for entry in stringOptionMap do
       s ++= entry.lkey
     end
-    error (self.mOptionName
+    error self.mOptionName
     : "the '" + self.mOptionComponentName + "' option component does not define the '" + self.mOptionName + "' option"
     spoil outExpression
-    fixit #replaceBy s)
+    fixit #replaceBy s
   end
 }
 
@@ -709,16 +709,16 @@ override proc @templateFunctionCallAST.templateExpressionAnalysis
   if isInternal then
     let procDeclarationLocation = inAnalysisContext.mSemanticContext.mFunctionMap.locationForKey (self.mFunctionName.string)
     if self.mFunctionName.location.file != procDeclarationLocation.file then
-      error (self.mFunctionName : "this proc is internal to '" + procDeclarationLocation.file + "' file")
+      error self.mFunctionName : "this proc is internal to '" + procDeclarationLocation.file + "' file"
     end
   end
 //--- Analyze effective parameters
   if functionSignature.count != self.mExpressionList.count then
-    error (self.mFunctionName
+    error self.mFunctionName
     :"the '" + self.mFunctionName + "' function header declares " + functionSignature.count.string
       + " formal parameter(s), but this function call names " + self.mExpressionList.count.string
       + " effective argument(s)"
-    spoil outExpression)
+    spoil outExpression
   else
     var semanticExpressionListForGeneration = [@semanticExpressionForGeneration] ()
     for formal in functionSignature, actual in self.mExpressionList do
@@ -733,7 +733,7 @@ override proc @templateFunctionCallAST.templateExpressionAnalysis
       semanticExpressionListForGeneration ++= expression
       if formal.mFormalSelector.string != actual.mActualSelector.string then
         let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
-        error (actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
+        error actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s
       end
     end
     outExpression = @functionCallExpressionForGeneration (
@@ -755,9 +755,9 @@ override proc @templateExtensionTemplateCallAST.templateExpressionAnalysis
   ?!@unifiedTypeMap _ioTypeMap,
   !@semanticExpressionForGeneration outExpression
 ) {
-  error (self.mTemplateName
+  error self.mTemplateName
   :"INTERNAL ERROR: @templateExtensionTemplateCallAST templateExpressionAnalysis not implemented yet"
-  spoil outExpression)
+  spoil outExpression
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -1026,9 +1026,9 @@ override proc @templateUnaryMinusOperationAST.templateExpressionAnalysis
 //--- Check operator availability
   let @unifiedTypeMapEntry type = expression.mResultType
   if not type.definition.features.contains (.prefixMinusOperator) then
-    error (self.mOperatorLocation
+    error self.mOperatorLocation
     : "operand type is '@" + type.definition.typeName.string + "' and does not support the prefix minus operator"
-    spoil outExpression)
+    spoil outExpression
   else
   //--- Generate expression
     outExpression = @unaryMinusExpressionForGeneration (
@@ -1060,7 +1060,7 @@ override proc @structFieldAccessTemplateExpressionAST.templateExpressionAnalysis
 //--- Check field access availability
   var @unifiedTypeMapEntry type = expression.mResultType
   if (type.definition.typeKind != .structType) && not type.definition.typeKind.isClassType then
-    error (self.mStructFieldName:"the '.' operator requires the receiver to be a struct ou a class")
+    error self.mStructFieldName:"the '.' operator requires the receiver to be a struct ou a class"
   end
   let propertyMap = type.definition.propertyMap
   propertyMap.searchKey (self.mStructFieldName, ?let accessControl, ?*, ?type)
@@ -1363,13 +1363,13 @@ override proc @templateLeftShiftOperationAST.templateExpressionAnalysis
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
   if not leftType.definition.features.contains (.infixShiftOperator) then
-    error (self.mOperatorLocation
+    error self.mOperatorLocation
     : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
-    spoil outExpression)
+    spoil outExpression
   elsif rightType.definition.typeName.string != "uint" then
-    error (self.mOperatorLocation
+    error self.mOperatorLocation
     : "for a shift operator, right operand type should be '@uint': it is '@" + rightType.definition.typeName.string + "'"
-    spoil outExpression)
+    spoil outExpression
   else
   //--- Generate expression
     outExpression = @binaryOperatorExpressionForGeneration (
@@ -1411,13 +1411,13 @@ override proc @templateRightShiftOperationAST.templateExpressionAnalysis
   let @unifiedTypeMapEntry leftType = leftExpression.mResultType
   let @unifiedTypeMapEntry rightType = rightExpression.mResultType
   if not leftType.definition.features.contains (.infixShiftOperator) then
-    error (self.mOperatorLocation
+    error self.mOperatorLocation
     : "left operand type is '@" + leftType.definition.typeName.string + "' and does not support a shift operator"
-    spoil outExpression)
+    spoil outExpression
   elsif rightType.definition.typeName.string != "uint" then
-    error (self.mOperatorLocation
+    error self.mOperatorLocation
     : "for a shift operator, right operand type should be '@uint': it is '@" + rightType.definition.typeName.string + "'"
-    spoil outExpression)
+    spoil outExpression
   else
   //--- Generate expression
     outExpression = @binaryOperatorExpressionForGeneration (
@@ -1484,7 +1484,7 @@ override proc @templateInstructionExpressionAST.templateInstructionAnalysis
     ?let expression
   )
   if expression.mResultType.definition.typeName.string != "string" then
-    error (self.mLocation:"expression type should be '@string' (it is '@" + expression.mResultType.definition.typeName.string + "')")
+    error self.mLocation:"expression type should be '@string' (it is '@" + expression.mResultType.definition.typeName.string + "')"
   end
   ioInstructionList ++= @templateInstructionExpressionForGeneration (expression)
 }
@@ -1518,7 +1518,7 @@ override proc @templateBlockInstructionAST.templateInstructionAnalysis
     )
     expression = conversionExpression
   elsif expression.mResultType.definition.typeName.string != "uint" then
-    error (self.mLocation:"expression type should be '@uint' (it is '@" + expression.mResultType.definition.typeName.string + "')")
+    error self.mLocation:"expression type should be '@uint' (it is '@" + expression.mResultType.definition.typeName.string + "')"
   end
   var blockInstructionList = [@templateInstructionForGeneration] ()
   templateInstructionListAnalysis (
@@ -1576,7 +1576,7 @@ override proc @templateInstructionIfAST.templateInstructionAnalysis
       ?let expression
     )
     if expression.mResultType.definition.typeName.string != "bool" then
-      error (expression.mLocation : "'if' expression type should be '@bool' (it is '@" + expression.mResultType.definition.typeName.string + "')")
+      error expression.mLocation : "'if' expression type should be '@bool' (it is '@" + expression.mResultType.definition.typeName.string + "')"
     end
     var instructionList = [@templateInstructionForGeneration] ()
     templateInstructionListAnalysis (

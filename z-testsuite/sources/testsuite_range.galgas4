@@ -6,12 +6,12 @@ proc testsuite_range() {
   for i in @range (4, 3) do
     s+= " " + i
   end
-  log s
+  println (s.description)
   s = "Range [4, 3] reverse enumeration:"
   for > i in @range (4,  3) do
     s+= " " + i
   end
-  log s
+  println (s.description)
 }
 
 

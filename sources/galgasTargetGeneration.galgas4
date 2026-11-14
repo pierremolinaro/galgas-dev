@@ -374,7 +374,7 @@ proc updateGalgasTargets (
   let @lstring macCodeSign
   if let entry = inProjectQualifiedFeatureMap ["macCodeSign"] then
     if entry.mFeatureValue.string == "" then
-      error (entry.mFeatureValue:"the %macCodeSign attribute should not be empty" spoil macCodeSign)
+      error entry.mFeatureValue:"the %macCodeSign attribute should not be empty" spoil macCodeSign
     else
       macCodeSign = entry.mFeatureValue
     end
@@ -387,7 +387,7 @@ proc updateGalgasTargets (
   let @string libpmPath
   if let entry = inProjectQualifiedFeatureMap ["libpmAtPath"] then
     if entry.mFeatureValue.string == "" then
-      error (entry.mFeatureValue:"the libpm path should not be empty" spoil libpmPath)
+      error entry.mFeatureValue:"the libpm path should not be empty" spoil libpmPath
     else
       libpmPath = entry.mFeatureValue.string
     end
@@ -416,12 +416,12 @@ proc updateGalgasTargets (
   for feature in inTargetFeatureList do
     if availableGenerationFeatures.contains (feature.string) then
       if generationFeatures.contains (feature.string) then
-        error (feature: "duplicate '" + feature + "' feature")
+        error feature: "duplicate '" + feature + "' feature"
       end
    //--- MacOS
       if feature.string == "MacSwiftApp" then
         if xcodeProject != .none then
-          error (feature: "duplicated XCode setting")
+          error feature: "duplicated XCode setting"
         end
         xcodeProject = .swiftApp
       else
@@ -432,13 +432,13 @@ proc updateGalgasTargets (
       for key in availableGenerationFeatures do
         s ++= "%" + key
       end
-      error (feature: "unknown '" + feature + "' feature" fixit #replaceBy s )
+      error feature: "unknown '" + feature + "' feature" fixit #replaceBy s 
     end
   end
 //--- Codesign without selecting OSX ?
   if (macCodeSign.string != "") && (xcodeProject == .none) then
-    error (macCodeSign
-    : "the %macCodeSign attribute implies the definition of an OS X target system: \"%MacSwiftApp\"")
+    error macCodeSign
+    : "the %macCodeSign attribute implies the definition of an OS X target system: \"%MacSwiftApp\""
   end
 //--- Check Cocoa features
   if xcodeProject != .none, not inProjectQualifiedFeatureMap.contains ("applicationBundleBase") then
@@ -1183,7 +1183,7 @@ proc updateGalgasTargets (
     else
       let components = macCodeSign.string.componentsSeparatedByString (":")
       if components.count != 2 then
-        error (macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\"" spoil codeSigningSettingList)
+        error macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\"" spoil codeSigningSettingList
       elsif components.first == "MacDeveloper" then
         codeSigningSettingList = [
           "CODE_SIGN_IDENTITY = \"Mac Developer\"",
@@ -1192,7 +1192,7 @@ proc updateGalgasTargets (
       elsif components.first == "Certificate" then
         codeSigningSettingList = ["CODE_SIGN_IDENTITY = \"" + components [1] + "\""]
       else
-        error (macCodeSign : "the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'" spoil codeSigningSettingList)
+        error macCodeSign : "the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'" spoil codeSigningSettingList
       end
     end
   //--- Add Mach O release target

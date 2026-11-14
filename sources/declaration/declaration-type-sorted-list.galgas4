@@ -352,11 +352,11 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       attributeMap.searchKey (sortDescriptor.mSortedAttributeName, ?let @unifiedTypeMapEntry type)
       sortDescriptorList ++= @(type, sortDescriptor.mSortedAttributeName.string, sortDescriptor.mAscending)
       if attributesUsedForSorting.contains (sortDescriptor.mSortedAttributeName.string) then
-        error (sortDescriptor.mSortedAttributeName : "the '" + sortDescriptor.mSortedAttributeName + "' is already used for sorting")
+        error sortDescriptor.mSortedAttributeName : "the '" + sortDescriptor.mSortedAttributeName + "' is already used for sorting"
       end
       attributesUsedForSorting ++= sortDescriptor.mSortedAttributeName.string
       if not type.definition.features.contains (.comparable) then
-        error (sortDescriptor.mSortedAttributeName : "the @" + type.definition.typeName + " type is not comparable")
+        error sortDescriptor.mSortedAttributeName : "the @" + type.definition.typeName + " type is not comparable"
       end
     end
   //--- Generate type

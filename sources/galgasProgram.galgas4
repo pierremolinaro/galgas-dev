@@ -76,13 +76,13 @@ grammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
   let parentDirectory = inSourceFile.string.deletingLastPathComponent.deletingLastPathComponent
   let candidateProjectFiles = parentDirectory.regularFilesWithExtensions (!recursive: false, ["galgas4project"])
   if candidateProjectFiles.count == 0 then
-    error (inSourceFile : "no project file in parent directory of source file")
+    error inSourceFile : "no project file in parent directory of source file"
   elsif candidateProjectFiles.count > 1 then
     var s = "several project files in source file parent directory:"
     for value in candidateProjectFiles do
       s += "\n  - " + value
     end
-    error (inSourceFile : s)
+    error inSourceFile : s
   else
     let projectFilePath = parentDirectory + "/" + candidateProjectFiles.first
     parseAndAnalyzeProject (@(projectFilePath, inSourceFile.location), inSourceFile.string)
@@ -140,11 +140,11 @@ private proc parseAndAnalyzeProject (let @lstring inProjectSourceFilePath,
         if buildFile.fileExists then
           let resultCode = ("python " + buildFile).system
           if resultCode != 0 then
-          error ("".nowhere : "Running '" + buildFile + "' returns " + resultCode)
+          error "".nowhere : "Running '" + buildFile + "' returns " + resultCode
           end
         else
-          error ("".nowhere : "Cannot perform C++ compilation of '" + cppCompilationTarget
-              + "' : the '" + buildFile + "' file does not exist")
+          error "".nowhere : "Cannot perform C++ compilation of '" + cppCompilationTarget
+              + "' : the '" + buildFile + "' file does not exist"
         end
       end
     end
@@ -184,7 +184,7 @@ private proc compileProject (let @lstring inProjectSourceFile,
     elsif feature.featureName.string == "applicationBundleBase" then
     elsif feature.featureName.string == "macCodeSign" then
     else
-      error (feature.featureName : "unknown feature")
+      error feature.featureName : "unknown feature"
     end
   end
 //--------------------------------- Display result

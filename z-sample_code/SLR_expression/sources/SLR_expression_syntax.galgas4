@@ -20,7 +20,7 @@ rule <Constant>
 
 rule <StartSymbol> () {
   <Expression> (?let _expressionTree, ?let value)
-  log value
+  println (value)
 }
   
 rule <Constant>

@@ -160,7 +160,7 @@ override proc @overridingExtensionMethodAST.semanticAnalysis (
   let @unifiedTypeMapEntry selfType = ioTypeMap.typeMapEntryForLKey (self.mTypeName)
 //--- Check self type is a class
   if not selfType.definition.typeKind.isClassType then
-    error (self.mOverridingExtensionMethodName: "cannot declare a extension proc: '@" + selfType.definition.typeName.string + "' is not a class")
+    error self.mOverridingExtensionMethodName: "cannot declare a extension proc: '@" + selfType.definition.typeName.string + "' is not a class"
   end
 //--- Find base type name
   var @string baseTypeName = ""
@@ -186,7 +186,7 @@ override proc @overridingExtensionMethodAST.semanticAnalysis (
     superType = superType.definition.superType
   end
   if baseTypeName == "" then
-    error (self.mOverridingExtensionMethodName:"this proc is not declared by a super class")
+    error self.mOverridingExtensionMethodName:"this proc is not declared by a super class"
   end
 //--- Analyze instruction list
   let analysisContext = @analysisContext (

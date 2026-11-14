@@ -514,8 +514,8 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
     let @stringset reservedModifierNames = ["noteNode", "addArc"]
     for insertSetter in self.mInsertModifierList do
       if reservedModifierNames.contains (insertSetter.mInsertModifierName.string) then
-        error (insertSetter.mInsertModifierName
-        : "the '" + insertSetter.mInsertModifierName + "' mutating proc name is reserved for a graph type")
+        error insertSetter.mInsertModifierName
+        : "the '" + insertSetter.mInsertModifierName + "' mutating proc name is reserved for a graph type"
       end
       check_K_L_escapeCharacters (insertSetter.mInsertErrorMessage )
     end

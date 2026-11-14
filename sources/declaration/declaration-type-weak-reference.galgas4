@@ -112,13 +112,13 @@ override proc @weakReferenceDeclarationAST.enterDeclarationInSemanticContext
     !acceptSetters: true
   )
   for aGetter in getterMap do
-    error (aGetter.lkey : "a weak reference does not support extension")
+    error aGetter.lkey : "a weak reference does not support extension"
   end
   for aGetter in setterMap do
-    error (aGetter.lkey : "a weak reference does not support extension")
+    error aGetter.lkey : "a weak reference does not support extension"
   end
   for aGetter in instanceMethodMap do
-    error (aGetter.lkey : "a weak reference does not support extension")
+    error aGetter.lkey : "a weak reference does not support extension"
   end
   var features = @typeFeatures.referenceEquatable
   handleEquatableComparableExtension (

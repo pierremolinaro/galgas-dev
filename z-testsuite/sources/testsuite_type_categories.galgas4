@@ -2,29 +2,29 @@
 
 proc testsuite_type_categories() {
   println ("*************************************** begin of type extension test")
-  log "Square of 7" : 7 .uint64.square
+  print ("Square of 7") ; println (7 .uint64.square.description)
   var aList = [@uint] []
   !?aList.append (1)
   !?aList.append (2)
   !?aList.append (3)
   !?aList.append (4)
-  log "Sum 1 + 2 + 3 + 4" : aList.sum
-  log "Hello !" : @lstring ("Hello", .here).op
+  print ("Sum 1 + 2 + 3 + 4") ; println (aList.sum.description)
+  print ("Hello !") ; println (@lstring ("Hello", .here).op.description)
   let @uint64 v
   let cst = 7
   cst.uint64.square (?v)
-  log v
+  println (v.description)
   let @uint u
   aList.sum (?u)
-  log u
+  println (u.description)
   let @string s
   let strcst = @lstring ("Hello", .here) ; strcst.op (?s)
-  log s
+  println (s.description)
   var ls = @lstring ("Hello", .here)
   !?ls.appendInt (3)
-  log ls
+  println (ls.description)
   !?aList.appendSquare (9)
-  log aList
+  println (aList.description)
   var aList64 = [@uint64] [7]
   !?aList64.prependSquare (5)
 }

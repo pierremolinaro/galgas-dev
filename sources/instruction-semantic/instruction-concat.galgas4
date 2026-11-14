@@ -277,7 +277,7 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
     if self.mPrefixedBySelf then
       if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
         if not selfAvailable.selfMutability.propertiesAreMutable then
-          error (self.mInstructionLocation : "property not mutable in this context")
+          error self.mInstructionLocation : "property not mutable in this context"
         end
         let propertyMap = selfAvailable.type.definition.propertyMap
         propertyMap.searchKey (self.mReceiverName, ?*, ?let isConstant, ?targetType)
@@ -285,14 +285,14 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
         targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
           + "mProperty_"+ self.mReceiverName.string.identifierRepresentation
         if isConstant then
-          error (self.mReceiverName : "a constant property cannot be modified")
+          error self.mReceiverName : "a constant property cannot be modified"
         end
         if not selfAvailable.selfMutability.propertiesAreMutable then
-          error (self.mReceiverName : "the property is not mutable in this context")
+          error self.mReceiverName : "the property is not mutable in this context"
         end
       else
-        error (self.mInstructionLocation : "'self' not available in this context"
-        spoil targetType, targetVariableCppName, nameForCheckingFormalParameterUsing)
+        error self.mInstructionLocation : "'self' not available in this context"
+        spoil targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
       end
     else
       !?ioVariableMap.searchForReadWriteAccess
@@ -308,15 +308,15 @@ final class @opAssignExpressionInstructionAST : @semanticInstructionAST {
       propertyMap.searchKey (property, ?let accessControl, ?let isConstant, ?targetType)
       accessControl.checkSetAccess (inAnalysisContext.selfAvailability, property.location)
       if isConstant then
-        error (self.mReceiverName : "a constant property cannot be modified")
+        error self.mReceiverName : "a constant property cannot be modified"
       end
     end
   //--- Check target variable type support 'X= exp' operator
     if not targetType.definition.features.contains (self.mOperator.features) then
-      error (self.mInstructionLocation
+      error self.mInstructionLocation
       :"the target object has the '@" + targetType.definition.typeName.string
       + "' type, but this type does not support the '" + self.mOperator.string + "' operator"
-      )
+      
     end
   //--- Analyze source expression
     self.mExpression.analyzeSemanticExpression
@@ -381,14 +381,14 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
         targetVariableCppName = inAnalysisContext.selfObjectCppPrefixForAccessingProperty
           + "mProperty_"+ self.mReceiverName.string.identifierRepresentation
         if isConstant then
-          error (self.mReceiverName : "a constant property cannot be modified")
+          error self.mReceiverName : "a constant property cannot be modified"
         end
         if not selfAvailable.selfMutability.propertiesAreMutable then
-          error (self.mReceiverName : "the property cannot be mutated in this context")
+          error self.mReceiverName : "the property cannot be mutated in this context"
         end
       else
-        error (self.mInstructionLocation : "'self' not available in this context"
-        spoil targetType, targetVariableCppName, nameForCheckingFormalParameterUsing)
+        error self.mInstructionLocation : "'self' not available in this context"
+        spoil targetType, targetVariableCppName, nameForCheckingFormalParameterUsing
       end
     else
       !?ioVariableMap.searchForReadWriteAccess
@@ -404,15 +404,15 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
       propertyMap.searchKey (entry, ?let accessControl, ?let isConstant, ?targetType)
       accessControl.checkSetAccess (inAnalysisContext.selfAvailability, entry)
       if isConstant then
-        error (entry : "a constant property cannot be modified")
+        error entry : "a constant property cannot be modified"
       end
     end
   //--- Check target variable type support '++=' operator
     if not targetType.definition.supportCollectionValue then
-      error (self.mInstructionLocation
+      error self.mInstructionLocation
       :"the target object has the '@" + targetType.definition.typeName.string
       + "' type, but this type does not support the '++=' operator"
-      )
+      
     end
     let rightExpressionType = targetType.definition.typeForEnumeratedElement
   //--- Analyze source expression

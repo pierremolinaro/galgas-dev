@@ -11,6 +11,6 @@ proc bugMap() {
   let @myMap b = a
   var @myMap c = @myMap.mapWithMapToOverride(b)
   !?c.setValueForKey ("World", @lstring ("var", .here))
-  log a 
+  println (a.description)
 }
 

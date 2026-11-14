@@ -9,6 +9,146 @@
 #include "all-declarations-14.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @routineImplementationForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_routineImplementationForGeneration_2E_weak : public GGS_routinePrototypeDeclarationForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_routineImplementationForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_routineImplementationForGeneration_2E_weak (const class GGS_routineImplementationForGeneration & inSource) ;
+
+  public: GGS_routineImplementationForGeneration_2E_weak & operator = (const class GGS_routineImplementationForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_routineImplementationForGeneration_2E_weak init_nil (void) {
+    GGS_routineImplementationForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_routineImplementationForGeneration bang_routineImplementationForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_routineImplementationForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_routineImplementationForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_routineImplementationForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_routineImplementationForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @classFuncExpressionForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_classFuncExpressionForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_classFuncExpressionForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_classFuncExpressionForGeneration_2E_weak (const class GGS_classFuncExpressionForGeneration & inSource) ;
+
+  public: GGS_classFuncExpressionForGeneration_2E_weak & operator = (const class GGS_classFuncExpressionForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_classFuncExpressionForGeneration_2E_weak init_nil (void) {
+    GGS_classFuncExpressionForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_classFuncExpressionForGeneration bang_classFuncExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_classFuncExpressionForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_classFuncExpressionForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_classFuncExpressionForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subscripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_classFuncExpressionForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
 //  GRAMMAR galgas4ProjectGrammar
 //--------------------------------------------------------------------------------------------------
 
@@ -473,29 +613,29 @@ class GGS_programComponentForGeneration_2E_weak : public GGS_semanticDeclaration
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_programComponentForGeneration_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @logInstructionAST_2E_weak weak reference class
+// Phase 1: @superMethodCallInstructionAST_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 
-class GGS_logInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
+class GGS_superMethodCallInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak {
 //--------------------------------- Default constructor
-  public: GGS_logInstructionAST_2E_weak (void) ;
+  public: GGS_superMethodCallInstructionAST_2E_weak (void) ;
 
 //--------------------------------- Constructor and assignment from strong reference
-  public: GGS_logInstructionAST_2E_weak (const class GGS_logInstructionAST & inSource) ;
+  public: GGS_superMethodCallInstructionAST_2E_weak (const class GGS_superMethodCallInstructionAST & inSource) ;
 
-  public: GGS_logInstructionAST_2E_weak & operator = (const class GGS_logInstructionAST & inSource) ;
+  public: GGS_superMethodCallInstructionAST_2E_weak & operator = (const class GGS_superMethodCallInstructionAST & inSource) ;
 
 //--------------------------------- Constructor and assignment from optional reference
 
 //--------------------------------- nil initializer
-  public: inline static GGS_logInstructionAST_2E_weak init_nil (void) {
-    GGS_logInstructionAST_2E_weak result ;
+  public: inline static GGS_superMethodCallInstructionAST_2E_weak init_nil (void) {
+    GGS_superMethodCallInstructionAST_2E_weak result ;
     macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
     return result ;
   }
 
 //--------------------------------- Bang operator
-  public: GGS_logInstructionAST bang_logInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+  public: GGS_superMethodCallInstructionAST bang_superMethodCallInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- isValuated
   public: inline bool isValuated (void) const {
@@ -503,7 +643,7 @@ class GGS_logInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak 
   }
 
 //--------------------------------- Unwrapped value
-  public: GGS_logInstructionAST unwrappedValue (void) const ;
+  public: GGS_superMethodCallInstructionAST unwrappedValue (void) const ;
 
 //--------------------------------- GALGAS read only properties
   public: inline GGS_bool readProperty_isNil (void) const {
@@ -518,10 +658,10 @@ class GGS_logInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak 
 
 //--------------------------------- Initializers
 //--------------------------------- GALGAS class functions
-  public: static class GGS_logInstructionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+  public: static class GGS_superMethodCallInstructionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_logInstructionAST_2E_weak & inOperand) const ;
+  public: ComparisonResult objectCompare (const GGS_superMethodCallInstructionAST_2E_weak & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -540,7 +680,7 @@ class GGS_logInstructionAST_2E_weak : public GGS_semanticInstructionAST_2E_weak 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_logInstructionAST_2E_weak ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_superMethodCallInstructionAST_2E_weak ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @grammarForGeneration_2E_weak weak reference class
@@ -1847,10 +1987,6 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
 
   public: virtual int32_t select_galgas_34_InstructionsSyntax_61 (Lexique_galgasScanner_34_ *) ;
 
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_62 (Lexique_galgasScanner_34_ *) ;
-
-  public: virtual int32_t select_galgas_34_InstructionsSyntax_63 (Lexique_galgasScanner_34_ *) ;
-
   public: virtual int32_t select_galgas_34_DeclarationsSyntax_0 (Lexique_galgasScanner_34_ *) ;
 
   public: virtual int32_t select_galgas_34_DeclarationsSyntax_1 (Lexique_galgasScanner_34_ *) ;
@@ -1988,6 +2124,10 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual int32_t select_galgas_34_DeclarationsSyntax_67 (Lexique_galgasScanner_34_ *) ;
 
   public: virtual int32_t select_galgas_34_DeclarationsSyntax_68 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_69 (Lexique_galgasScanner_34_ *) ;
+
+  public: virtual int32_t select_galgas_34_DeclarationsSyntax_70 (Lexique_galgasScanner_34_ *) ;
 
   public: virtual int32_t select_galgas_34_LexiqueComponentSyntax_0 (Lexique_galgasScanner_34_ *) ;
 

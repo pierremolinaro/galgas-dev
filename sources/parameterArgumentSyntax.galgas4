@@ -153,10 +153,10 @@ syntax galgas4ParameterArgumentSyntax (galgasScanner4) {
       $*$
       var n = count.bigint.uint
       if selector.string != "" then
-        error (selector : "the selector should be '?'" fixit #replaceBy "?")
+        error selector : "the selector should be '?'" fixit #replaceBy "?"
       end
       if n == 0 then
-        error (count: "the count value should be > 0")
+        error count: "the count value should be > 0"
       else
         loop (n)
         while n > 0 do

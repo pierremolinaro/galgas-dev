@@ -376,7 +376,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     var [@unifiedTypeMapEntry] typesToIncludeInHeaderCompilation = @()
     for property in self.mPropertyList do
       if property.initialization.isSome then
-        error (property.name : "property initialization is not handled for a map")
+        error property.name : "property initialization is not handled for a map"
       end
       !?ioTypeMap.makeEntry (property.typeName, ?let attributeTypeIndex)
       argumentTypeListForAddAssignWithFieldExpressionList ++= @("".nowhere, attributeTypeIndex, property.name.string, true)
@@ -405,7 +405,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
   //--- Handle insert setters
     for insertSetter in self.mInsertSetterList do
       if setterMap.contains (insertSetter.mInsertMethodName.string) then
-        error (insertSetter.mInsertMethodName:"the '" + insertSetter.mInsertMethodName + "' insert proc is already declared")
+        error insertSetter.mInsertMethodName:"the '" + insertSetter.mInsertMethodName + "' insert proc is already declared"
       else
         !?setterMap.insertOrReplace (
           insertSetter.mInsertMethodName,
@@ -440,9 +440,9 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
   //--- Handle remove setters
     for entry in self.mRemoveSetterList do
       if setterMap.contains (entry.mName.string) then
-        error (entry.mName
+        error entry.mName
         : "the '" + entry.mName
-                  + "' proc is already declared as an insert mutating proc or a remove mutating proc")
+                  + "' proc is already declared as an insert mutating proc or a remove mutating proc"
       else
         !?setterMap.insertOrReplace
           (entry.mName,
@@ -655,7 +655,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
           m += " " + s
         end
         m += "; theses names are reserved"
-        error (property.name: m)
+        error property.name: m
       end
       !?attributeMap.insertKey (property.name, t)
     end
@@ -686,8 +686,8 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
     let @bool hasInsertOrReplaceModifier = self.mInsertOrReplaceDeclarationListAST.count > 0
     if hasInsertOrReplaceModifier & insertMethodMap.contains ("insertOrReplace") then
       let insertOrReplaceDeclarationLocation = self.mInsertOrReplaceDeclarationListAST.first
-      error (insertOrReplaceDeclarationLocation
-      : "the insertOrReplace' mutating proc cannot be declared : an insert mutating proc or a remove mutating proc has been declared with this name")
+      error insertOrReplaceDeclarationLocation
+      : "the insertOrReplace' mutating proc cannot be declared : an insert mutating proc or a remove mutating proc has been declared with this name"
     end
   //--- Optional Element type index
     let elementTypeName = makeEmbeddedElementTypeLName (self.mMapTypeName)

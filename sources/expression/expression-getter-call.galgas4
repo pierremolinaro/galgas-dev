@@ -59,20 +59,20 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
   //-------------------------------------- Search func
     if let aGetter = receiverType.definition.getterMap [self.mGetterName] then
       if aGetter.mGetterNameThatObsoletesInvokationName != "" then
-        error (self.mGetterName : "obsolete func" fixit
+        error self.mGetterName : "obsolete func" fixit
           #replaceBy aGetter.mGetterNameThatObsoletesInvokationName
-        )
+        
       end
       if receiverType.definition.propertyMap.contains (self.mGetterName.string)
         && (self.mActualArgumentList.count == 0) then
-        error (self.mExpressionLocation : "use dot notation, instead of func call")
+        error self.mExpressionLocation : "use dot notation, instead of func call"
       end
     //--- Analysis arguments
       if self.mActualArgumentList.count != aGetter.mArgumentTypeList.count then
-        error (self.mGetterName
+        error self.mGetterName
         : "calling the '" + self.mGetterName + "' func of '@" + receiverType.definition.typeName.string + "' requires "
         + aGetter.mArgumentTypeList.count + " parameter(s), while this call has "
-        + self.mActualArgumentList.count + " parameter(s)" spoil outExpression)
+        + self.mActualArgumentList.count + " parameter(s)" spoil outExpression
       else
         var [@semanticExpressionForGeneration] constructorEffectiveParameterList = @()
         for actual in self.mActualArgumentList, formal in aGetter.mArgumentTypeList do
@@ -87,7 +87,7 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           )
           if formal.mFormalSelector.string != actual.mActualSelector.string then
             let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
-            error (actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
+            error actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s
           end
           checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
           constructorEffectiveParameterList ++= exp
@@ -103,12 +103,12 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           aGetter.mHasCompilerArgument
         )
         if self.mActualArgumentList.count == 0 then
-          error (self.mExpressionLocation : "func with no argument, remove parenthesis" fixit #remove)
+          error self.mExpressionLocation : "func with no argument, remove parenthesis" fixit #remove
         end
       end
   //-------------------------------------- The func does not exist, it is a property ?
     elsif self.mActualArgumentList.count == 0, receiverType.definition.propertyMap.contains (self.mGetterName) then
-      error (self.mExpressionLocation : "use dot notation, instead of func call" spoil outExpression)
+      error self.mExpressionLocation : "use dot notation, instead of func call" spoil outExpression
   //-------------------------------------- not found, old style search
     else
       var @uint matchingReaderCount = 0
@@ -140,27 +140,27 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           end
         end
         if matchingReaderCount == 0 then
-          error (self.mGetterName
+          error self.mGetterName
           : "the '@"+ receiverType.definition.typeName.string + "' struct type does not define the '" + self.mGetterName.string
           + "' func, and none of its fields defines it"
-          spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
+          spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
         elsif matchingReaderCount > 1 then
           var @string s = ""
           for value in fieldList
             do s += value
             between s += ", "
           end
-          error (self.mGetterName
+          error self.mGetterName
           : "the '@"+ receiverType.definition.typeName.string + "' struct type does not define the '" + self.mGetterName.string
           + "' func, and several of its fields defines it:" + s + " (exactly one field should define it)"
-          spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind)
+          spoil getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
         end
       //--- Analysis arguments
         if self.mActualArgumentList.count != getterFormalArgumentTypeList.count then
-          error (self.mGetterName
+          error self.mGetterName
           : "calling the '" + self.mGetterName + "' func of '@" + receiverType.definition.typeName.string + "' requires "
           + getterFormalArgumentTypeList.count.string + " parameter(s), while this call has "
-          + self.mActualArgumentList.count.string + " parameter(s)" spoil outExpression)
+          + self.mActualArgumentList.count.string + " parameter(s)" spoil outExpression
         else
           var [@semanticExpressionForGeneration] constructorEffectiveParameterList = @()
           for actual in self.mActualArgumentList, formal in getterFormalArgumentTypeList do
@@ -175,13 +175,13 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
             )
             if formal.mFormalSelector.string != actual.mActualSelector.string then
               let @string s = "!" + if formal.mFormalSelector.string != "" then formal.mFormalSelector.string + ":" else "" end
-              error (actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s)
+              error actual.mActualSelector : "the selector should be '" + s + "'" fixit #replaceBy s
             end
             checkAssignmentTypeWithImplicitGetterCall (formal.mFormalArgumentType, exp.mResultType, actual.mEndOfExpressionLocation, !?exp)
             constructorEffectiveParameterList ++= exp
           end
           if obsoletedByGetter != "" then
-            error (self.mGetterName : "obsolete func" fixit #replaceBy obsoletedByGetter)
+            error self.mGetterName : "obsolete func" fixit #replaceBy obsoletedByGetter
           end
           outExpression = @getterCallExpressionForGeneration (
             returnedType,
@@ -195,14 +195,14 @@ final class @getterCallExpressionAST : @semanticExpressionAST {
           )
         end
       elsif receiverType.definition.getterMap.count == 0 then
-        error (self.mGetterName
+        error self.mGetterName
         : "the '@"+ receiverType.definition.typeName.string + "' type does not define any func"
-        spoil outExpression)
+        spoil outExpression
       else
-        error (self.mGetterName
+        error self.mGetterName
         : "the '@"+ receiverType.definition.typeName.string + "' type does not define the '" + self.mGetterName + "' func "
         spoil outExpression
-        fixit #replaceBy receiverType.definition.getterMap.keyList)
+        fixit #replaceBy receiverType.definition.getterMap.keyList
       end
     end
   }

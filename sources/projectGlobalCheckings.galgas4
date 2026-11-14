@@ -187,9 +187,9 @@ proc checkextensionSetterDefinitionForClass
           inUnifiedTypeMap
         )
       else
-        error (inAbstractExtensionSetterName: "an abstract extension proc '" + inAbstractExtensionSetterName + "' is defined for abstract class '@"
+        error inAbstractExtensionSetterName: "an abstract extension proc '" + inAbstractExtensionSetterName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
-        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this proc")
+        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this proc"
       end
     end
   end
@@ -224,9 +224,9 @@ proc checkExtensionMethodDefinitionForClass
           inUnifiedTypeMap
         )
       else
-        error (inAbstractExtensionMethodName: "an abstract extension proc '" + inAbstractExtensionMethodName + "' is defined for abstract class '@"
+        error inAbstractExtensionMethodName: "an abstract extension proc '" + inAbstractExtensionMethodName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
-        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this proc")
+        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this proc"
       end
     end
   end
@@ -261,9 +261,9 @@ proc checkExtensionGetterDefinitionForClass
           inUnifiedTypeMap
         )
       else
-        error (inAbstractExtensionGetterName: "an abstract extension func '" + inAbstractExtensionGetterName + "' is defined for abstract class '@"
+        error inAbstractExtensionGetterName: "an abstract extension func '" + inAbstractExtensionGetterName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
-        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this func")
+        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this func"
       end
     end
   end

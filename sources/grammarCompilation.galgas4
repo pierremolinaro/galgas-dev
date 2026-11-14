@@ -49,33 +49,33 @@ proc checkLabelMap
     labelStringSet ++= aLabel.mLabelName.string
     inNonterminalSymbolLabelMapForGrammarAnalysis.searchKey (aLabel.mLabelName, ?let formalParametersList)
     if aLabel.mFormalArgumentList.count != formalParametersList.count then
-      error (aLabel.mLabelName: aLabel.mFormalArgumentList.count.string
+      error aLabel.mLabelName: aLabel.mFormalArgumentList.count.string
         + " formal parameter"
         + if aLabel.mFormalArgumentList.count > 1 then "s" else "" end
         + " declared here, but declaration at "
         + inNonterminalSymbolLabelMapForGrammarAnalysis.locationForKey (aLabel.mLabelName.string).startLocationString
         + " names " + formalParametersList.count.string + " parameter"
         + if formalParametersList.count > 1 then "s" else "" end
-      )
+      
     else
       for labelFormalArg in aLabel.mFormalArgumentList, formalArgForGrammarAnalysis in formalParametersList do
         if formalArgForGrammarAnalysis.mFormalArgumentPassingModeForGrammarAnalysis != labelFormalArg.mFormalArgumentPassingMode then
-          error (formalArgForGrammarAnalysis.mGalgasTypeNameForGrammarAnalysis :
+          error formalArgForGrammarAnalysis.mGalgasTypeNameForGrammarAnalysis :
             " this formal parameter is declared with '"
           + formalArgForGrammarAnalysis.mFormalArgumentPassingModeForGrammarAnalysis
           + "' passing mode, but declaration at "
           + inNonterminalSymbolLabelMapForGrammarAnalysis.locationForKey (aLabel.mLabelName.string).startLocationString
           + " is declared with '" + labelFormalArg.mFormalArgumentPassingMode + "' passing mode"
-          )
+          
         end
         if formalArgForGrammarAnalysis.mGalgasTypeNameForGrammarAnalysis.string != labelFormalArg.mFormalArgumentTypeName.string then
-          error (formalArgForGrammarAnalysis.mGalgasTypeNameForGrammarAnalysis :
+          error formalArgForGrammarAnalysis.mGalgasTypeNameForGrammarAnalysis :
             " this formal parameter is declared of '@"
           + formalArgForGrammarAnalysis.mGalgasTypeNameForGrammarAnalysis
           + "' type, but declaration at "
           + inNonterminalSymbolLabelMapForGrammarAnalysis.locationForKey (aLabel.mLabelName.string).startLocationString
           + " is declared with '@" + labelFormalArg.mFormalArgumentTypeName + "' type"
-          )
+          
         end
       end
     end
@@ -83,11 +83,11 @@ proc checkLabelMap
 //---
   for entry in inNonterminalSymbolLabelMapForGrammarAnalysis do
     if not labelStringSet.contains (entry.lkey.string) then
-      error (inNonTerminalLocation :
+      error inNonTerminalLocation :
         "this non terminal does not declare the '" + entry.lkey + "' label, but declaration at "
           + inOriginalNonTerminalLocation.startLocationString
           + " does"
-      )
+      
     end
   end
 }

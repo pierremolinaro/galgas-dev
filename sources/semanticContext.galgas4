@@ -488,7 +488,7 @@ proc addExtensions
         "" // No Error message
       )
       if not inAcceptSetters then
-        error (extensionSetter.lkey : "a class does not accept any mutating proc; use proc instead")
+        error extensionSetter.lkey : "a class does not accept any mutating proc; use proc instead"
       end
     end
   end
@@ -615,7 +615,7 @@ override proc @filewrapperDeclarationAST.enterDeclarationInSemanticContext
   var @wrapperExtensionMap binaryFileExtensionMap = @()
   for value in self.mFilewrapperBinaryFileExtensionList do
     if textExtensionMap.contains (value.string) then
-      error (value:"the '" + value + "' extension is already used for text files")
+      error value:"the '" + value + "' extension is already used for text files"
     else
     !?binaryFileExtensionMap.insertKey (value)
     end
@@ -630,8 +630,8 @@ override proc @filewrapperDeclarationAST.enterDeclarationInSemanticContext
     absoluteSourcePath = self.mSourceFileAbsolutePath.deletingLastPathComponent + "/" + self.mFilewrapperPath.string
   end
   if not absoluteSourcePath.directoryExists then
-    error (self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
-    spoil regularRootFileMap, wrapperDirectoryMap)
+    error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
+    spoil regularRootFileMap, wrapperDirectoryMap
   else
   //--- Enumerate paths
     var @uint wrapperFileIndex = 0

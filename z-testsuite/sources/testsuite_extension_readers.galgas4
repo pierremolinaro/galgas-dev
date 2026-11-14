@@ -30,9 +30,9 @@ proc testsuite_extension_readers() {
   println ("*************************************** begin of extension reader test")
   let @B_B b = @()
   let @string s = b.otherReader (2, "-")
-  log s
+  println (s.description)
   if false then
-    error (b : "non displayed message")
+    error b : "non displayed message"
   end
   let @uint a = 9
   println ("Carré de 9: " + a.carré + "")

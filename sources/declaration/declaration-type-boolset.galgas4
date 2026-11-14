@@ -45,7 +45,7 @@ syntax extension galgas4DeclarationsSyntax {
     end
     $}$
     if slotList.count == 0 then
-      error (boolsetTypeName : "a boolset type must define at least one case constant")
+      error boolsetTypeName : "a boolset type must define at least one case constant"
     end
     ioDeclarations.mDeclarationList ++= @boolsetDeclarationAST (
       !isPredefined: false,
@@ -110,7 +110,7 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
   var @stringset slotNameSet = @()
   for slotName in self.mFlagList do
     if slotNameSet.contains (slotName) then
-      error (slotName : "duplicated slot name")
+      error slotName : "duplicated slot name"
     end
     slotNameSet ++= slotName
   end
@@ -226,7 +226,7 @@ override proc @boolsetDeclarationAST.semanticAnalysis
 //--- Check flags count
   if self.mFlagList.count > 64 then
     let @location s = self.mFlagList [64]
-    error (s : "max flags count is 64 (here: " + self.mFlagList.count + ")")
+    error s : "max flags count is 64 (here: " + self.mFlagList.count + ")"
   end
 //--- Useful entities graph
   let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (self.mBoolsetTypeName)

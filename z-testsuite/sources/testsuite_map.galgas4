@@ -11,25 +11,25 @@ proc testsuite_map() {
   println ("*************************************** begin of map")
   var @aMap m = ()
   !?m.insertKey (@("g", .here), 37)
-  log m
+  println (m.description)
   !?m.setValueForKey (56, "g")
-  log m
+  println (m.description)
   var mm = @aMap.mapWithMapToOverride (m)
-  log mm
+  println (mm.description)
   var @uint v
   mm.searchKey (@lstring ("g", .here), ?v)
-  log v // Displays 56
+  println (v.description) // Displays 56
   !?mm.insertKey (@("g", .here), 11)
-  log mm
+  println (mm.description)
   mm.searchKey (@lstring ("g", .here), ?v)
-  log v // Displays 11
+  println (v.description) // Displays 11
   m = mm.overriddenMap
-  log m
-  log "levelCount": m.levels
-  log "hasKeyAtLevel": m.hasKeyAtLevel ("g", 0)
-  log "hasKeyAtLevel": m.hasKeyAtLevel ("h", 0)
+  println (m.description)
+  print ("levelCount") ; println (m.levels.description)
+  print ("hasKeyAtLevel") ; println (m.hasKeyAtLevel ("g", 0).description)
+  print ("hasKeyAtLevel") ; println (m.hasKeyAtLevel ("h", 0).description)
   let @location loc = m.locationForKey ("g")
-  log loc
+  println (loc.description)
 //---
   var @aMap otherMap = ()
   !?otherMap.insertKey ("A".nowhere, 1)

@@ -6,7 +6,8 @@ proc testsuite_extension_setters() {
   var @uint u = 2
   let @string s = " World"
   v.setter2 (!?u, s)
-  log u, v
+  println (u.description)
+  println (v.description)
   let w = @overridingTestExtensionSetter (1, "", "", 2)
   w.m ()
 //--- Test type cast in setter call

@@ -297,7 +297,7 @@ mutating proc @XcodeProjectDescriptor.addGroupWithFiles
       childrenRefs ++= swiftFileRef
       ioSwiftFileBuildRefs ++= buildRef
     else
-      error (@location.nowhere : "unhandled extension for file '" + key + "'")
+      error @location.nowhere : "unhandled extension for file '" + key + "'"
     end
   end
   self.mGroupList ++= @(outGroupRef, inGroupName, inGroupPath, childrenRefs)

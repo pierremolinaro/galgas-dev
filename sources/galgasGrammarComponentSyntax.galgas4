@@ -106,7 +106,7 @@ syntax galgas4GrammarComponentSyntax (galgasScanner4) {
       repeat
         <label_formal_parameter> (!?ioDeclarations, ?let argumentName, !?formalParameterList)
         if argumentNameSet.contains (argumentName.string) then
-          error (argumentName: "there is already an argument named '" + argumentName + "'")
+          error argumentName: "there is already an argument named '" + argumentName + "'"
         end
         argumentNameSet ++= argumentName.string
       while

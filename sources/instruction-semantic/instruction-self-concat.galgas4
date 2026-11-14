@@ -184,14 +184,14 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then
-        error (self.mInstructionLocation : "'self' not mutable in this context")
+        error self.mInstructionLocation : "'self' not mutable in this context"
       end
     //--- Check target variable type support '/= exp' operator
       if selfAvailable.type.definition.features.contains (.divAssignOperatorWithExpression) then
-        error (self.mInstructionLocation
+        error self.mInstructionLocation
         :"the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '/=' operator"
-        )
+        
       end
     //--- Analyze source expression
       self.mExpression.analyzeSemanticExpression
@@ -221,7 +221,7 @@ final class @selfDivEqualExpressionInstructionAST : @semanticInstructionAST {
         "divAssignOperation"
       )
     else
-      error (self.mInstructionLocation : "'self' not available in this context")
+      error self.mInstructionLocation : "'self' not available in this context"
     end
   }
 
@@ -254,14 +254,14 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then
-        error (self.mInstructionLocation : "'self' not mutable in this context")
+        error self.mInstructionLocation : "'self' not mutable in this context"
       end
     //--- Check target variable type support '+= exp' operator
       if not selfAvailable.type.definition.features.contains (.plusAssignOperatorWithExpression) then
-        error (self.mInstructionLocation
+        error self.mInstructionLocation
         : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '+=' operator"
-        )
+        
       end
     //--- Analyze source expression
       self.mExpression.analyzeSemanticExpression
@@ -291,7 +291,7 @@ final class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
         "plusAssignOperation"
       )
     else
-      error (self.mInstructionLocation : "'self' not available in this context")
+      error self.mInstructionLocation : "'self' not available in this context"
     end
   }
 
@@ -324,14 +324,14 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then
-        error (self.mInstructionLocation : "'self' not mutable in this context")
+        error self.mInstructionLocation : "'self' not mutable in this context"
       end
     //--- Check target variable type support '-= exp' operator
       if not selfAvailable.type.definition.features.contains (.minusAssignOperatorWithExpression) then
-        error (self.mInstructionLocation
+        error self.mInstructionLocation
         : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '-=' operator"
-        )
+        
       end
     //--- Analyze source expression
       self.mExpression.analyzeSemanticExpression
@@ -361,7 +361,7 @@ final class @selfMinusEqualExpressionInstructionAST : @semanticInstructionAST {
         "minusAssignOperation"
       )
     else
-      error (self.mInstructionLocation : "'self' not available in this context")
+      error self.mInstructionLocation : "'self' not available in this context"
     end
   }
 
@@ -394,14 +394,14 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
   //--- Analyze "self", as receiver expression
     if let selfAvailable = inAnalysisContext.selfAvailability.getAvailable then
       if not selfAvailable.selfMutability.selfIsMutable then
-        error (self.mInstructionLocation : "'self' not mutable in this context")
+        error self.mInstructionLocation : "'self' not mutable in this context"
       end
     //--- Check target variable type support '*= exp' operator
       if selfAvailable.type.definition.features.contains (.mulAssignOperatorWithExpression) then
-        error (self.mInstructionLocation
+        error self.mInstructionLocation
         : "the target object has the '@" + selfAvailable.type.definition.typeName.string
         + "' type, but this type does not support the '*=' operator"
-        )
+        
       end
     //--- Analyze source expression
       self.mExpression.analyzeSemanticExpression
@@ -431,7 +431,7 @@ final class @selfMulEqualExpressionInstructionAST : @semanticInstructionAST {
         "mulAssignOperation"
       )
     else
-      error (self.mInstructionLocation : "'self' not available in this context")
+      error self.mInstructionLocation : "'self' not available in this context"
     end
   }
 

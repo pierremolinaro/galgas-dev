@@ -133,7 +133,7 @@ override proc @optionExpressionAST.analyzeSemanticExpression
         self.mOptionComponentName.string,
         self.mOptionEntryName.string)
     else
-      error (self.mOptionGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" spoil outExpression)
+      error self.mOptionGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" spoil outExpression
     end
   else
     var [@string] s = @()
@@ -146,11 +146,11 @@ override proc @optionExpressionAST.analyzeSemanticExpression
     for entry in stringOptionMap do
       s ++= entry.lkey
     end
-    error (self.mOptionEntryName
+    error self.mOptionEntryName
     : "the '" + self.mOptionComponentName + "' option component does not define the '" + self.mOptionEntryName + "' option"
     spoil outExpression
     fixit #replaceBy s
-    )
+    
   end
 }
 

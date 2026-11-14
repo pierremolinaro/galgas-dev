@@ -123,25 +123,33 @@ syntax extension galgas4DeclarationsSyntax {
                            ?![@externTypeGetter] ioExternTypeGetterList ) {
     $func$
     $identifier$ (?let @lstring getterName)
+    $($
     var [@typeNameFormalParameterName] argumentTypeList = @()
-    repeat
-    while
-      $?selector:$ (?let selector)
-      <type_definition> (!?ioDeclarations, ?let argumentTypeName)
-      $identifier$ (?let @lstring argumentName)
-      argumentTypeList ++= @(selector, argumentTypeName, argumentName)
-//    while // §
-//      $?$
-//      let selector = "".here
-//      <type_definition> (!?ioDeclarations, ?let argumentTypeName)
-//      $identifier$ (?let @lstring argumentName)
-//      argumentTypeList ++= @(selector, argumentTypeName, argumentName)
-    while
-      let selector = "".here
-      <type_definition> (!?ioDeclarations, ?let argumentTypeName)
-      $identifier$ (?let @lstring argumentName)
-      argumentTypeList ++= @(selector, argumentTypeName, argumentName)
+    select
+    or
+      repeat
+        select
+          $?selector:$ (?let selector)
+          <type_definition> (!?ioDeclarations, ?let argumentTypeName)
+          $identifier$ (?let @lstring argumentName)
+          argumentTypeList ++= @(selector, argumentTypeName, argumentName)
+    //    or // §
+    //      $?$
+    //      let selector = "".here
+    //      <type_definition> (!?ioDeclarations, ?let argumentTypeName)
+    //      $identifier$ (?let @lstring argumentName)
+    //      argumentTypeList ++= @(selector, argumentTypeName, argumentName)
+        or
+          let selector = "".here
+          <type_definition> (!?ioDeclarations, ?let argumentTypeName)
+          $identifier$ (?let @lstring argumentName)
+          argumentTypeList ++= @(selector, argumentTypeName, argumentName)
+        end
+      while
+        $,$
+      end
     end
+    $)$
     $->$
     <type_definition> (!?ioDeclarations, ?let resultTypeName)
     ioExternTypeGetterList ++= @(getterName, resultTypeName, argumentTypeList)

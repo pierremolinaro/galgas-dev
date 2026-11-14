@@ -65,7 +65,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
         or
           let separator = @string.separatorString
           if not separator.containsCharacter ('\n') then
-            error (.separator : "instructions on same line should be separated by ';'")
+            error .separator : "instructions on same line should be separated by ';'"
           end
         end
       end
@@ -105,20 +105,20 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     while
       $#once$
       if isOnce then
-        error (.here : "duplicate attribute" fixit #remove)
+        error .here : "duplicate attribute" fixit #remove
       end
       isOnce = true
     while
       $#usefull$
       if isUsefull then
-        error (.here : "duplicate attribute" fixit #remove)
+        error .here : "duplicate attribute" fixit #remove
       end
       isUsefull = true
     end
     $identifier$ (?let functionName) indexing (functionDefinition)
     <formal_input_parameter_list> (!?ioDeclarations, ?let [@formalInputParameterAST] formalInputParameterList)
     if isOnce, (formalInputParameterList.count > 0) then
-      error (functionName: "an 'once' function should has no argument")
+      error functionName: "an 'once' function should has no argument"
     end
     $->$
     <type_definition> (!?ioDeclarations, ?let resultTypeName)
@@ -169,20 +169,20 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     while
       $#once$
       if isOnce then
-        error (.here : "duplicate attribute" fixit #remove)
+        error .here : "duplicate attribute" fixit #remove
       end
       isOnce = true
     while
       $#usefull$
       if isUsefull then
-        error (.here : "duplicate attribute" fixit #remove)
+        error .here : "duplicate attribute" fixit #remove
       end
       isUsefull = true
     end
     $identifier$ (?let functionName) indexing (functionDefinition)
     <formal_input_parameter_list> (!?ioDeclarations, ?let [@formalInputParameterAST] formalInputParameterList)
     if isOnce, (formalInputParameterList.count > 0) then
-      error (functionName: "an 'once' function should has no argument")
+      error functionName: "an 'once' function should has no argument"
     end
     $->$
     <type_definition> (!?ioDeclarations, ?let resultTypeName)
@@ -234,7 +234,7 @@ syntax galgas4InstructionsSyntax (galgasScanner4) {
     while
       $#usefull$
       if isUsefull then
-        error (.here : "duplicate attribute" fixit #remove)
+        error .here : "duplicate attribute" fixit #remove
       end
       isUsefull = true
     end

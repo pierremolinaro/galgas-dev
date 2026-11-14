@@ -415,7 +415,7 @@ proc @currentVarManager.checkSelfObjectIsFullyInitialized (let @location inError
     end
   end
   if not fullyInitialized then
-    error (inErrorLocation : "invalid call, self is not fully initialized")
+    error inErrorLocation : "invalid call, self is not fully initialized"
   end
 }
 
@@ -465,8 +465,8 @@ mutating proc [@scopeLocalVarMap].neutralAccess (let @lstring inVarName,
                                              !@string outCppName,
                                              !@string outNameForCheckingFormalParameterUsing ) {
   if inIndex >= self.count then
-    error (inVarName : "'" + inVarName + "' variable is not declared"
-    spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
+    error inVarName : "'" + inVarName + "' variable is not declared"
+    spoil outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     let localMap = self [inIndex]
     if let varDescriptor = localMap [inVarName] then
@@ -499,9 +499,9 @@ mutating proc @currentVarManager.searchForDropAccess (let @lstring inVarName ) {
       found = aMap.contains (inVarName.string)
     end
     if found then
-      error (inVarName : "variable '" + inVarName + "' is not declared in current scope, but in an overrided scope")
+      error inVarName : "variable '" + inVarName + "' is not declared in current scope, but in an overrided scope"
     else
-      error (inVarName : "variable '" + inVarName + "' is not declared")
+      error inVarName : "variable '" + inVarName + "' is not declared"
     end
   end
 }
@@ -550,8 +550,8 @@ mutating proc [@scopeLocalVarMap].writeAccessInSubMap (let @lstring inVarName,
                                                    !@string outCppName,
                                                    !@string outNameForCheckingFormalParameterUsing ) {
   if inIndex >= self.count then
-    error (inVarName : "'" + inVarName + "' variable is not declared"
-    spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
+    error inVarName : "'" + inVarName + "' variable is not declared"
+    spoil outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = self [inIndex]
     if let varDescriptor = localMap [inVarName] then
@@ -584,7 +584,7 @@ mutating proc @localVarValuation.writeTransition (let @lstring inVarName,
       warning inVarName : "formal parameter has been declared as unused"
     end
     if inAttributes.contains (.rejectWriteInInitializedAndReadStates) then
-      error (inVarName : "constant '" + inVarName + "' cannot be mutated")
+      error inVarName : "constant '" + inVarName + "' cannot be mutated"
       self = .invalid
     elsif not inAttributes.contains (.acceptInitializedStateAsFinalState) && not inOverridenMap then
       warning inVarName : "variable '" + inVarName + "' was written to, but never read"
@@ -593,7 +593,7 @@ mutating proc @localVarValuation.writeTransition (let @lstring inVarName,
     end
   case read : // The variable has been written, and read
     if inAttributes.contains (.rejectWriteInInitializedAndReadStates) then
-      error (inVarName : "constant '" + inVarName + "' cannot be mutated")
+      error inVarName : "constant '" + inVarName + "' cannot be mutated"
       self = .invalid
     else
       self = .mutated
@@ -642,8 +642,8 @@ mutating proc [@scopeLocalVarMap].readAccess (let @lstring inVarName,
                                           !@string outCppName,
                                           !@string outNameForCheckingFormalParameterUsing ) {
   if inIndex >= self.count then
-    error (inVarName : "'" + inVarName + "' variable is not declared"
-    spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
+    error inVarName : "'" + inVarName + "' variable is not declared"
+    spoil outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = self [inIndex]
     if let varDescriptor = localMap [inVarName] then
@@ -669,7 +669,7 @@ mutating proc @localVarValuation.readTransition (let @lstring inVarName,
   switch self
   case invalid :
   case declared (*) : // The variable has no value
-    error (inVarName : "variable '" + inVarName + "' used before being initialized")
+    error inVarName : "variable '" + inVarName + "' used before being initialized"
     self = .invalid
   case initialized: // The variable has been written once
     self = .read
@@ -733,8 +733,8 @@ mutating proc [@scopeLocalVarMap].readWriteAccess (let @lstring inVarName,
                                                !@string outCppName,
                                                !@string outNameForCheckingFormalParameterUsing ) {
   if inIndex >= self.count then
-    error (inVarName : "'" + inVarName + "' variable is not declared"
-    spoil outType, outCppName, outNameForCheckingFormalParameterUsing)
+    error inVarName : "'" + inVarName + "' variable is not declared"
+    spoil outType, outCppName, outNameForCheckingFormalParameterUsing
   else
     var localMap = self [inIndex]
     if let varDescriptor = localMap [inVarName] then
@@ -776,7 +776,7 @@ mutating proc @currentVarManager.openScope () {
 mutating proc @currentVarManager.closeScope (let @location inErrorLocation ) {
   self.mLocalVarMap.checkFinalStates (inErrorLocation)
   if self.mSubMaps.count == 0 then
-    error (inErrorLocation : "EMPTY SUBMAPS")
+    error inErrorLocation : "EMPTY SUBMAPS"
   end
   if self.mSubMaps.count > 0 then
     !?self.mSubMaps.removeFirst (?self.mLocalVarMap)
@@ -812,7 +812,7 @@ proc @localVarValuation.checkFinalState (let @lstring inVarName ,let @localVaria
   case invalid :
   case declared (usedInOtherBlock) : // The variable has no value
     if inAttributes.contains (.rejectDeclaredStateAsFinalState) then
-      error (inVarName : "variable '" + inVarName + "' should be initialized")
+      error inVarName : "variable '" + inVarName + "' should be initialized"
     elsif usedInOtherBlock then
       warning inVarName : "variable '" + inVarName + "' is only used  in sub scope; consider moving it"
     else
@@ -955,7 +955,7 @@ mutating proc @currentVarManager.combineManagerWith (?otherManager: let @current
   end
 
   if s != "" then
-    error (inErrorLocation : "convergence error:" + s)
+    error inErrorLocation : "convergence error:" + s
   end
 }
 
