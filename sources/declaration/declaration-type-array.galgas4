@@ -16,6 +16,20 @@
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //--------------------------------------------------------------------------------------------------
+//   ARRAY TYPE NAME UTILITIES
+//--------------------------------------------------------------------------------------------------
+
+func makeArrayTypeName (?let @string inTypeName) -> @string {
+  result = "[" + inTypeName + "]"
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func makeArrayTypeLName (?let @lstring inTypeName) -> @lstring {
+  result = @(makeArrayTypeName (inTypeName), inTypeName)
+}
+
+//--------------------------------------------------------------------------------------------------
 
 final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
   private let @lstring arrayTypeName #initArgLabel
@@ -24,7 +38,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override func keyRepresentation() ->@string {
+  override func keyRepresentation () ->@string {
     result = "array [@" + self.arrayTypeName + "]"
   }
 
@@ -63,7 +77,6 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "count",
-      !obsoleteName: "",
       !returnedTypeName: "uint",
       !hasCompilerArgument: false
     )
@@ -71,7 +84,6 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "first",
-      !obsoleteName: "",
       !returnedTypeName: self.elementTypeName,
       !hasCompilerArgument: true
     )
@@ -79,7 +91,6 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "last",
-      !obsoleteName: "",
       !returnedTypeName: self.elementTypeName,
       !hasCompilerArgument: true
     )

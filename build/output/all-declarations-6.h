@@ -4833,10 +4833,6 @@ extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_syntaxExtensionsDictio
 // Phase 1: @syntaxExtensionsDictionary dictionary enumerator
 //--------------------------------------------------------------------------------------------------
 
-#include "GALGAS_GenericDictionary.h"
-
-//--------------------------------------------------------------------------------------------------
-
 class DownEnumerator_syntaxExtensionsDictionary final {
   public: DownEnumerator_syntaxExtensionsDictionary (const class GGS_syntaxExtensionsDictionary & inOperand) ;
 

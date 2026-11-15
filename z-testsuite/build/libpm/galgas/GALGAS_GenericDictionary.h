@@ -15,32 +15,32 @@
 //  Predeclarations
 //--------------------------------------------------------------------------------------------------
 
-template <typename KEY, typename INFO> class GenericDictionaryRoot ;
-template <typename KEY, typename INFO> class GenericDictionary ;
+template <typename KEY, typename VALUE> class GenericDictionaryRoot ;
+template <typename KEY, typename VALUE> class GenericDictionary ;
 
 //--------------------------------------------------------------------------------------------------
 //  GenericDictionaryNode
 //--------------------------------------------------------------------------------------------------
 
-template <typename KEY, typename INFO> class GenericDictionaryNode final : public SharedObject {
+template <typename KEY, typename VALUE> class GenericDictionaryNode final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> mInfPtr ;
-  private: OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> mSupPtr ;
-  public:  SharedGenericPtrWithValueSemantics <INFO> mSharedInfo ;
+  private: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> mInfPtr ;
+  private: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> mSupPtr ;
+  public:  SharedGenericPtrWithValueSemantics <VALUE> mSharedInfo ;
   private: int32_t mBalance ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: GenericDictionaryNode (const INFO & inInfo
+  public: GenericDictionaryNode (const VALUE & inInfo
                                 COMMA_LOCATION_ARGS) :
   SharedObject (THERE),
   mInfPtr (),
   mSupPtr (),
   mSharedInfo (),
   mBalance (0) {
-    mSharedInfo = SharedGenericPtrWithValueSemantics <INFO>::make (inInfo COMMA_THERE) ;
+    mSharedInfo = SharedGenericPtrWithValueSemantics <VALUE>::make (inInfo COMMA_THERE) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -49,7 +49,7 @@ template <typename KEY, typename INFO> class GenericDictionaryNode final : publi
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: GenericDictionaryNode (const OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & inNodePtr
+  public: GenericDictionaryNode (const OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & inNodePtr
                                      COMMA_LOCATION_ARGS) :
   SharedObject (THERE),
   mInfPtr (),
@@ -57,10 +57,10 @@ template <typename KEY, typename INFO> class GenericDictionaryNode final : publi
   mSharedInfo (inNodePtr->mSharedInfo),
   mBalance (inNodePtr->mBalance) {
     if (inNodePtr->mInfPtr.isNotNil ()) {
-      mInfPtr = OptionalSharedRef <GenericDictionaryNode <KEY, INFO>>::make (inNodePtr->mInfPtr COMMA_THERE) ;
+      mInfPtr = OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>>::make (inNodePtr->mInfPtr COMMA_THERE) ;
     }
     if (inNodePtr->mSupPtr.isNotNil ()) {
-      mSupPtr = OptionalSharedRef <GenericDictionaryNode <KEY, INFO>>::make (inNodePtr->mSupPtr COMMA_THERE) ;
+      mSupPtr = OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>>::make (inNodePtr->mSupPtr COMMA_THERE) ;
     }
   }
 
@@ -74,7 +74,7 @@ template <typename KEY, typename INFO> class GenericDictionaryNode final : publi
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: static void populateInfoArray (const OptionalSharedRef <GenericDictionaryNode> & inNode,
-                                          GenericArray <SharedGenericPtrWithValueSemantics <INFO>> & ioNodeArray) {
+                                          GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> & ioNodeArray) {
     if (inNode.isNotNil ()) {
       populateInfoArray (inNode->mInfPtr, ioNodeArray) ;
       ioNodeArray.appendObject (inNode->mSharedInfo) ;
@@ -84,7 +84,7 @@ template <typename KEY, typename INFO> class GenericDictionaryNode final : publi
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  friend class GenericDictionaryRoot <KEY, INFO> ;
+  friend class GenericDictionaryRoot <KEY, VALUE> ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -94,14 +94,14 @@ template <typename KEY, typename INFO> class GenericDictionaryNode final : publi
 //MARK:  GenericDictionaryRoot
 //--------------------------------------------------------------------------------------------------
 
-template <typename KEY, typename INFO> class GenericDictionaryRoot final : public SharedObject {
+template <typename KEY, typename VALUE> class GenericDictionaryRoot final : public SharedObject {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Private members
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> mRootNode ;
-  private: GenericArray <SharedGenericPtrWithValueSemantics <INFO>> mCacheSortedArray ;
+  private: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> mRootNode ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> mCacheSortedArray ;
   private: int32_t mCount ;
   private: bool mCacheSortedArrayIsValid ;
 
@@ -132,10 +132,10 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: void duplicateTo (OptionalSharedRef <GenericDictionaryRoot <KEY, INFO>> & outNewRoot
+  private: void duplicateTo (OptionalSharedRef <GenericDictionaryRoot <KEY, VALUE>> & outNewRoot
                             COMMA_UNUSED_LOCATION_ARGS) {
     if (mRootNode.isNotNil ()) { // Do not duplicate mCacheSortedArray
-      outNewRoot->mRootNode = OptionalSharedRef <GenericDictionaryNode <KEY, INFO>>::make (mRootNode COMMA_HERE) ;
+      outNewRoot->mRootNode = OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>>::make (mRootNode COMMA_HERE) ;
       outNewRoot->mCount = mCount ;
     }
   }
@@ -159,12 +159,12 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
   // Get sorted key array
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: GenericArray <SharedGenericPtrWithValueSemantics <INFO>> sortedInfoArray (void) {
+  private: GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> sortedInfoArray (void) {
     if (mCacheSortedArrayIsValid) {
       return mCacheSortedArray ;
     }else{
-      GenericArray <SharedGenericPtrWithValueSemantics <INFO>> array (mCount COMMA_HERE) ;
-      GenericDictionaryNode <KEY, INFO>::populateInfoArray (mRootNode, array) ;
+      GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> array (mCount COMMA_HERE) ;
+      GenericDictionaryNode <KEY, VALUE>::populateInfoArray (mRootNode, array) ;
       mCacheSortedArray = array ;
       mCacheSortedArrayIsValid = true ;
       return array ;
@@ -175,8 +175,8 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
   //   Search
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> searchNode (const KEY & inKey) const {
-    OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> result ;
+  private: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> searchNode (const KEY & inKey) const {
+    OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> result ;
     internalRecursiveSearchNode (inKey, mRootNode, result) ;
     return result ;
   }
@@ -186,7 +186,7 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: void insertOrReplaceInfo (const KEY & inKey,
-                                     const INFO & inInfo
+                                     const VALUE & inInfo
                                      COMMA_LOCATION_ARGS) {
     macroUniqueSharedObjectThere (this) ;
     internalRecursiveInsert (mRootNode, inKey, inInfo) ;
@@ -194,7 +194,7 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void rotateLeft (OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioRootPtr) {
+  private: static void rotateLeft (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRootPtr) {
     if (ioRootPtr->mSupPtr->mBalance >= 0) {
       ioRootPtr->mBalance += 1 ;
     }else{
@@ -212,7 +212,7 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void rotateRight (OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioRootPtr) {
+  private: static void rotateRight (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRootPtr) {
     if (ioRootPtr->mInfPtr->mBalance > 0) {
       ioRootPtr->mBalance -= ioRootPtr->mInfPtr->mBalance + 1 ;
     }else{
@@ -228,12 +228,12 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: bool internalRecursiveInsert (OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioRootPtr,
+  private: bool internalRecursiveInsert (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRootPtr,
                                          const KEY & inKey,
-                                         const INFO & inInfo) {
+                                         const VALUE & inInfo) {
     bool extension = false ;
     if (ioRootPtr.isNil ()) {
-      ioRootPtr = OptionalSharedRef <GenericDictionaryNode <KEY, INFO>>::make (inInfo COMMA_HERE) ;
+      ioRootPtr = OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>>::make (inInfo COMMA_HERE) ;
       mCount += 1 ;
       extension = true ;
     }else{
@@ -271,7 +271,7 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
         break ;
       case ComparisonResult::operandEqual :
         extension = false ;
-        ioRootPtr->mSharedInfo = SharedGenericPtrWithValueSemantics <INFO>::make (inInfo COMMA_HERE) ;
+        ioRootPtr->mSharedInfo = SharedGenericPtrWithValueSemantics <VALUE>::make (inInfo COMMA_HERE) ;
         break ;
       case ComparisonResult::invalid :
         extension = false ;
@@ -285,11 +285,11 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
   // Removing: return removed object, or nullptr
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: SharedGenericPtrWithValueSemantics <INFO> removeAndReturnRemovedInfo (const KEY & inKey) {
+  private: SharedGenericPtrWithValueSemantics <VALUE> removeAndReturnRemovedInfo (const KEY & inKey) {
     macroUniqueSharedObject (this) ;
     bool ioBranchHasBeenRemoved ;
     auto removedEntry = internalRemoveEntry (inKey, mRootNode, ioBranchHasBeenRemoved) ;
-    SharedGenericPtrWithValueSemantics <INFO> result ;
+    SharedGenericPtrWithValueSemantics <VALUE> result ;
     if (removedEntry.isNotNil ()) {
       result = removedEntry->mSharedInfo ;
     }
@@ -298,7 +298,7 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void supBranchDecreased (OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioRoot,
+  private: static void supBranchDecreased (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance += 1 ;
     switch (ioRoot->mBalance) {
@@ -327,7 +327,7 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void infBranchDecreased (OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioRoot,
+  private: static void infBranchDecreased (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRoot,
                                            bool & ioBranchHasBeenRemoved) {
     ioRoot->mBalance -= 1 ;
     switch (ioRoot->mBalance) {
@@ -356,8 +356,8 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: static void getPreviousElement (OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioRoot,
-                                           OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioElement,
+  private: static void getPreviousElement (OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRoot,
+                                           OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioElement,
                                            bool & ioBranchHasBeenRemoved) {
     if (ioRoot->mSupPtr.isNil ()) {
       ioElement = ioRoot ;
@@ -373,10 +373,10 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> internalRemoveEntry (const KEY & inKeyToRemove,
-                                     OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & ioRoot,
+  private: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> internalRemoveEntry (const KEY & inKeyToRemove,
+                                     OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & ioRoot,
                                      bool & ioBranchHasBeenRemoved) {
-    OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> removedNode ;
+    OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> removedNode ;
     if (ioRoot.isNotNil ()) {
       const ComparisonResult comparaison = ioRoot->mSharedInfo->mProperty_key.objectCompare (inKeyToRemove) ;
       switch (comparaison) {
@@ -403,7 +403,7 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
           ioBranchHasBeenRemoved = true ;
         }else{
           removedNode = ioRoot ;
-          OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> p = ioRoot ;
+          OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> p = ioRoot ;
           getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;
           ioRoot->mSupPtr = p->mSupPtr;
           p->mSupPtr.setToNil () ;
@@ -425,7 +425,7 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: bool hasKey (const KEY & inKey) const {
-    OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> result ;
+    OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> result ;
     internalRecursiveSearchNode (inKey, mRootNode, result) ;
     return result.isNotNil () ;
   }
@@ -433,8 +433,8 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   private: static void internalRecursiveSearchNode (const KEY & inKey,
-                            const OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & inNodePtr,
-                            OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> & outInfoPtr) {
+                            const OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & inNodePtr,
+                            OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> & outInfoPtr) {
     if (inNodePtr.isNotNil ()) {
       const ComparisonResult comparaison = inNodePtr->mSharedInfo->mProperty_key.objectCompare (inKey) ;
       switch (comparaison) {
@@ -458,7 +458,7 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  friend class GenericDictionary <KEY, INFO> ;
+  friend class GenericDictionary <KEY, VALUE> ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -468,11 +468,11 @@ template <typename KEY, typename INFO> class GenericDictionaryRoot final : publi
 //  GenericDictionary
 //--------------------------------------------------------------------------------------------------
 
-template <typename KEY, typename INFO> class GenericDictionary : public AC_GALGAS_root {
+template <typename KEY, typename VALUE> class GenericDictionary : public AC_GALGAS_root {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  private: OptionalSharedRef <GenericDictionaryRoot <KEY, INFO> > mSharedRoot ;
+  private: OptionalSharedRef <GenericDictionaryRoot <KEY, VALUE> > mSharedRoot ;
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   //   Default constructor
@@ -493,7 +493,7 @@ template <typename KEY, typename INFO> class GenericDictionary : public AC_GALGA
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: void build (LOCATION_ARGS) {
-    mSharedRoot = OptionalSharedRef <GenericDictionaryRoot <KEY, INFO>>::make (THERE) ;
+    mSharedRoot = OptionalSharedRef <GenericDictionaryRoot <KEY, VALUE>>::make (THERE) ;
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -516,7 +516,7 @@ template <typename KEY, typename INFO> class GenericDictionary : public AC_GALGA
     if (mSharedRoot.isNotNil ()) {
       mSharedRoot->invalidateCacheSortedArray () ;
       if (!mSharedRoot->isUniquelyReferenced ()) {
-        auto p = OptionalSharedRef <GenericDictionaryRoot <KEY, INFO>>::make (THERE) ;
+        auto p = OptionalSharedRef <GenericDictionaryRoot <KEY, VALUE>>::make (THERE) ;
         mSharedRoot->duplicateTo (p COMMA_THERE) ;
         mSharedRoot = p ;
       }
@@ -543,9 +543,9 @@ template <typename KEY, typename INFO> class GenericDictionary : public AC_GALGA
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   public: void insertOrReplace (const KEY & inKey,
-                                const INFO & inInfo
+                                const VALUE & inInfo
                                 COMMA_LOCATION_ARGS) {
-    if (mSharedRoot.isNotNil () && inKey.isValid () && inInfo.isValid ()) {
+    if (mSharedRoot.isNotNil () && inKey.isValid ()) {
       insulate (THERE) ;
       mSharedRoot->insertOrReplaceInfo (inKey, inInfo COMMA_THERE) ;
     }
@@ -555,13 +555,13 @@ template <typename KEY, typename INFO> class GenericDictionary : public AC_GALGA
   //   Remove
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: SharedGenericPtrWithValueSemantics <INFO> removeAndReturnRemovedInfo (const KEY & inKey
+  public: SharedGenericPtrWithValueSemantics <VALUE> removeAndReturnRemovedInfo (const KEY & inKey
                                                                                 COMMA_LOCATION_ARGS) {
     if (mSharedRoot.isNotNil ()) {
       insulate (THERE) ;
       return mSharedRoot->removeAndReturnRemovedInfo (inKey) ;
     }else{
-      return SharedGenericPtrWithValueSemantics <INFO> () ;
+      return SharedGenericPtrWithValueSemantics <VALUE> () ;
     }
   }
 
@@ -581,16 +581,16 @@ template <typename KEY, typename INFO> class GenericDictionary : public AC_GALGA
   //   infoForKey
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: const SharedGenericPtrWithValueSemantics <INFO> infoForKey (const KEY & inKey) const {
+  public: const SharedGenericPtrWithValueSemantics <VALUE> infoForKey (const KEY & inKey) const {
     if (mSharedRoot.isNotNil ()) {
-      const OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> node = mSharedRoot->searchNode (inKey) ;
+      const OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> node = mSharedRoot->searchNode (inKey) ;
       if (node.isNil ()) {
-        return SharedGenericPtrWithValueSemantics <INFO> () ;
+        return SharedGenericPtrWithValueSemantics <VALUE> () ;
       }else{
         return node->mSharedInfo ;
       }
     }else{
-      return SharedGenericPtrWithValueSemantics <INFO> () ;
+      return SharedGenericPtrWithValueSemantics <VALUE> () ;
     }
   }
 
@@ -598,11 +598,11 @@ template <typename KEY, typename INFO> class GenericDictionary : public AC_GALGA
   //   nodeForKey
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> nodeForKey (const KEY & inKey) const {
+  public: OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> nodeForKey (const KEY & inKey) const {
     if (mSharedRoot.isNotNil ()) {
       return mSharedRoot->searchNode (inKey) ;
     }else{
-      return OptionalSharedRef <GenericDictionaryNode <KEY, INFO>> () ;
+      return OptionalSharedRef <GenericDictionaryNode <KEY, VALUE>> () ;
     }
   }
 
@@ -618,11 +618,11 @@ template <typename KEY, typename INFO> class GenericDictionary : public AC_GALGA
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  public: GenericArray <SharedGenericPtrWithValueSemantics <INFO>> sortedInfoArray (void) const {
+  public: GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> sortedInfoArray (void) const {
     if (mSharedRoot.isNotNil ()) {
       return mSharedRoot->sortedInfoArray () ;
     }else{
-      return GenericArray <SharedGenericPtrWithValueSemantics <INFO>> () ;
+      return GenericArray <SharedGenericPtrWithValueSemantics <VALUE>> () ;
     }
   }
 

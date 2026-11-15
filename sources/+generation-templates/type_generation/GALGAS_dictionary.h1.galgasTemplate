@@ -1,0 +1,94 @@
+//--------------------------------------------------------------------------------------------------
+//%!" Phase 1: @" + TYPE_IDENTIFIER + " dictionary"%
+//--------------------------------------------------------------------------------------------------
+
+class Node_%!TYPE_IDENTIFIER% final {
+  public : GGS_%!KEY_TYPE_IDENTIFIER% mProperty_key ;
+  public : GGS_%!ELEMENT_TYPE_IDENTIFIER% mProperty_value ;
+
+  public: Node_%!TYPE_IDENTIFIER% (void) :
+  mProperty_key (),
+  mProperty_value () {
+  }
+
+  public: Node_%!TYPE_IDENTIFIER% (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
+                                       %!^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inValue) :
+  mProperty_key (inKey),
+  mProperty_value (inValue) {
+  }
+
+  public: Node_%!TYPE_IDENTIFIER% (%?^%const Node_%!TYPE_IDENTIFIER% & inSource) :
+  mProperty_key (inSource.mProperty_key),
+  mProperty_value (inSource.mProperty_value) {
+  }
+
+  public: Node_%!TYPE_IDENTIFIER% & operator = (const Node_%!TYPE_IDENTIFIER% & inSource) {
+    mProperty_key = inSource.mProperty_key ;
+    mProperty_value = inSource.mProperty_value ;
+    return *this ;
+  }
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_%!TYPE_IDENTIFIER% final {
+  public: DownEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inOperand) ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+%
+  for (entry) in ENUMERATION_DESCRIPTOR_LIST do
+%  public: class GGS_%![entry.mEnumeratedType identifierRepresentation]% current_%![entry.mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const ;
+
+%
+  end
+%
+//--- Private properties
+  private: GenericArray <SharedGenericPtrWithValueSemantics <Node_%!TYPE_IDENTIFIER%>> mArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: DownEnumerator_%!TYPE_IDENTIFIER% (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
+  private: DownEnumerator_%!TYPE_IDENTIFIER% & operator = (const DownEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_%!TYPE_IDENTIFIER% final {
+  public: UpEnumerator_%!TYPE_IDENTIFIER% (const class GGS_%!TYPE_IDENTIFIER% & inOperand)  ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+%
+  for (entry) in ENUMERATION_DESCRIPTOR_LIST do
+%  public: class GGS_%![entry.mEnumeratedType identifierRepresentation]% current_%![entry.mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const ;
+%
+  end
+%//--- Private properties
+  private: GenericArray <SharedGenericPtrWithValueSemantics <Node_%!TYPE_IDENTIFIER%>> mArray ;
+  private: int32_t mIndex ;
+
+//--- No copy
+  private: UpEnumerator_%!TYPE_IDENTIFIER% (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
+  private: UpEnumerator_%!TYPE_IDENTIFIER% & operator = (const UpEnumerator_%!TYPE_IDENTIFIER% &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_%!TYPE_IDENTIFIER% final : public GenericDictionary <GGS_%!KEY_TYPE_IDENTIFIER%, Node_%!TYPE_IDENTIFIER%> {
+
+//--------------------------------- Virtual destructor
+  public: virtual ~ GGS_%!TYPE_IDENTIFIER% (void) = default ;
+
+//--------------------------------- Build
+  protected: static GGS_%!TYPE_IDENTIFIER% buildEmptyDictionary (LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of reader 'description'
+  public: VIRTUAL_IN_DEBUG void description (String & ioString,
+                                             const int32_t inIndentation) const override ;
+

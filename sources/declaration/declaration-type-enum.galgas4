@@ -273,7 +273,6 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
           !?getterMap,
           !?ioTypeMap,
           !getterName: "get" + constant.name.string.capitalizingFirstCharacter,
-          !obsoleteName: "",
           !returnedTypeName: optionalTypeName,
           !hasCompilerArgument: false
         )
@@ -285,7 +284,6 @@ final class @enumDeclarationAST : @semanticDeclarationAST {
         !?getterMap,
         !?ioTypeMap,
         !getterName: "is" + constant.name.string.capitalizingFirstCharacter,
-        !obsoleteName: "",
         !returnedTypeName: "bool",
         !hasCompilerArgument:false
       )

@@ -1,0 +1,174 @@
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::buildEmptyDictionary (LOCATION_ARGS) {
+  GGS_%!TYPE_IDENTIFIER% result ;
+  result.build (THERE) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::init (Compiler * COMMA_LOCATION_ARGS) {
+  return GGS_%!TYPE_IDENTIFIER%::buildEmptyDictionary (THERE) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::description (String & ioString,
+                                          const int32_t /* inIndentation */) const {
+  ioString.appendCString ("<dict @%!TYPE_IDENTIFIER%: ") ;
+  if (isValid ()) {
+    ioString.appendSigned (count ()) ;
+    ioString.appendCString (" node(s)") ;
+  }else{
+    ioString.appendCString ("not built") ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
+  GGS_uint result ;
+  if (isValid ()) {
+    result = GGS_uint (uint32_t (count ())) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F_ (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
+                    %!^%Compiler * /* inCompiler */
+                    %!^%COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <Node_%!TYPE_IDENTIFIER%> object = infoForKey (inKey) ;
+    if (object.isNotNil ()) {
+      result = GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% (object->mProperty_value) ;
+    }else{
+      result = GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER%::init_nil () ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F__3F_default (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
+                    %!^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inDefaultValue,
+                    %!^%Compiler * /* inCompiler */
+                    %!^%COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <Node_%!TYPE_IDENTIFIER%> object = infoForKey (inKey) ;
+    if (object.isNotNil ()) {
+      result = GGS_%!ELEMENT_TYPE_IDENTIFIER% (object->mProperty_value) ;
+    }else{
+      result = inDefaultValue ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F_unwrap (const %?^%GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
+       %!^%Compiler * inCompiler
+       %!^%COMMA_LOCATION_ARGS) const {
+  GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <Node_%!TYPE_IDENTIFIER%> object = infoForKey (inKey) ;
+    if (object.isNil ()) {
+    //--- Build error message
+     String message = "dictionary does not contains the '" ;
+     message.appendString (inKey.stringValue ()) ;
+     message.appendString ("' key") ;
+    //--- Emit error message
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }else{
+      result = object->mProperty_value ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_set (%?^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% inValue%
+     %,\n%!^%const GGS_%!KEY_TYPE_IDENTIFIER% inKey,
+     %!^%Compiler *
+     %!^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const Node_%!TYPE_IDENTIFIER% object (inKey, inValue) ;
+    insertOrReplace (inKey, object COMMA_THERE) ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_%!TYPE_IDENTIFIER%::getter_contains (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% & inKey
+           %!^%COMMA_UNUSED_LOCATION_ARGS) const {
+  GGS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    result = GGS_bool (hasKey (inKey)) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::setter_remove (%?^%GGS_%!KEY_TYPE_IDENTIFIER% inKey,
+        %!^%Compiler * inCompiler
+        %!^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const SharedGenericPtrWithValueSemantics <Node_%!TYPE_IDENTIFIER%> removedObject
+                    = removeAndReturnRemovedInfo (inKey COMMA_THERE) ;
+    if (removedObject.isNil ()) { // Not found
+    //--- Build error message
+      const String message = "cannot remove in dict: the key does not exist" ;
+    //--- Emit error message
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+// Up Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
+
+UpEnumerator_%!TYPE_IDENTIFIER%::UpEnumerator_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inOperand) :
+mArray (inOperand.sortedInfoArray ()),
+mIndex (0) {
+}
+
+%
+  for (entry) in ENUMERATION_DESCRIPTOR_LIST do
+%//--------------------------------------------------------------------------------------------------
+
+GGS_%![entry.mEnumeratedType identifierRepresentation]% UpEnumerator_%!TYPE_IDENTIFIER%::current_%![entry.mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_HERE)->mProperty_%![entry.mEnumerationName identifierRepresentation]% ;
+}
+
+%
+  end
+%//--------------------------------------------------------------------------------------------------
+// Down Enumerator for @%!TYPE_IDENTIFIER%
+//--------------------------------------------------------------------------------------------------
+
+DownEnumerator_%!TYPE_IDENTIFIER%::DownEnumerator_%!TYPE_IDENTIFIER% (const GGS_%!TYPE_IDENTIFIER% & inOperand) :
+mArray (inOperand.sortedInfoArray ()),
+mIndex () {
+  mIndex = mArray.count () - 1 ;
+}
+
+%  for (entry) in ENUMERATION_DESCRIPTOR_LIST do
+%//--------------------------------------------------------------------------------------------------
+
+GGS_%![entry.mEnumeratedType identifierRepresentation]% DownEnumerator_%!TYPE_IDENTIFIER%::current_%![entry.mEnumerationName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
+  return mArray (mIndex COMMA_HERE)->mProperty_%![entry.mEnumerationName identifierRepresentation]% ;
+}
+
+%
+end
+%

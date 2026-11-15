@@ -413,7 +413,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "lastCharacter",
-      !obsoleteName: "",
       !returnedTypeName: "char",
       !hasCompilerArgument: true
     )
@@ -421,7 +420,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "removingFirst",
-      !obsoleteName: "",
       !returnedTypeName: "string",
       !hasCompilerArgument: true
     )
@@ -429,7 +427,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "nowhere",
-      !obsoleteName: "",
       !returnedTypeName:"lstring",
       !hasCompilerArgument:false
     )
@@ -437,7 +434,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "here",
-      !obsoleteName: "",
       !returnedTypeName:"lstring",
       !hasCompilerArgument:true
     )
@@ -445,7 +441,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "doesEnvironmentVariableExist",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -453,7 +448,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "count",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument: false
     )
@@ -461,7 +455,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "range",
-      !obsoleteName: "",
       !returnedTypeName:"range",
       !hasCompilerArgument:false
     )
@@ -469,7 +462,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "utf8RepresentationWithUnicodeEscaping",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -477,7 +469,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "assemblerRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -485,7 +476,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "fileNameRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -493,7 +483,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "nameRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -501,7 +490,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "cStringRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -509,7 +497,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "identifierRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -517,7 +504,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "decodedStringFromRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
@@ -525,7 +511,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "HTMLRepresentation",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -533,7 +518,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "utf8RepresentationEscapingQuestionMark",
-      !obsoleteName: "",
       !returnedTypeName: "string",
       !hasCompilerArgument:false
     )
@@ -541,7 +525,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "utf8Representation",
-      !obsoleteName: "",
       !returnedTypeName: "string",
       !hasCompilerArgument:false
     )
@@ -549,7 +532,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "utf8RepresentationWithoutDelimiters",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -557,7 +539,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "utf8Length",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
@@ -575,7 +556,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "trimmingSpaces",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -601,7 +581,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "md5",
-      !obsoleteName: "",
       !returnedTypeName: "string",
       !hasCompilerArgument: false
     )
@@ -609,7 +588,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "sha256",
-      !obsoleteName: "",
       !returnedTypeName: "string",
       !hasCompilerArgument: false
     )
@@ -617,7 +595,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "decimalUnsignedNumber",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
@@ -625,7 +602,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "isDecimalUnsignedNumber",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )
@@ -633,7 +609,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "decimalUnsigned64Number",
-      !obsoleteName: "",
       !returnedTypeName: "uint64",
       !hasCompilerArgument:true
     )
@@ -641,7 +616,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "isDecimalUnsigned64Number",
-      !obsoleteName: "",
       !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
@@ -649,7 +623,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "decimalSignedNumber",
-      !obsoleteName: "",
       !returnedTypeName: "sint",
       !hasCompilerArgument:true
     )
@@ -657,7 +630,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "isDecimalSignedNumber",
-      !obsoleteName: "",
       !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
@@ -665,7 +637,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "decimalSigned64Number",
-      !obsoleteName: "",
       !returnedTypeName: "sint64",
       !hasCompilerArgument:true
     )
@@ -673,7 +644,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "isDecimalSigned64Number",
-      !obsoleteName: "",
       !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
@@ -681,7 +651,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "decimalSignedBigInt",
-      !obsoleteName: "",
       !returnedTypeName: "bigint",
       !hasCompilerArgument: true
     )
@@ -689,7 +658,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "bigint",
-      !obsoleteName: "",
       !returnedTypeName: "bigint?",
       !hasCompilerArgument: false
     )
@@ -697,7 +665,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "isDecimalSignedBigInt",
-      !obsoleteName: "",
       !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
@@ -705,7 +672,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "isDoubleNumber",
-      !obsoleteName: "",
       !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
@@ -713,7 +679,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "doubleNumber",
-      !obsoleteName: "",
       !returnedTypeName: "double",
       !hasCompilerArgument:true
     )
@@ -721,7 +686,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "capacity",
-      !obsoleteName: "",
       !returnedTypeName: "uint",
       !hasCompilerArgument:false
     )
@@ -729,7 +693,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "isSymbolicLink",
-      !obsoleteName: "",
       !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
@@ -737,7 +700,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "fileExists",
-      !obsoleteName: "",
       !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
@@ -745,7 +707,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "directoryExists",
-      !obsoleteName: "",
       !returnedTypeName: "bool",
       !hasCompilerArgument:false
     )
@@ -753,7 +714,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "pathExtension",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -761,7 +721,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "nativePathWithUnixPath",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -769,7 +728,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "unixPathWithNativePath",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -777,7 +735,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "lastPathComponent",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -785,7 +742,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "deletingPathExtension",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -793,7 +749,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "capitalizingFirstCharacter",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -801,7 +756,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "firstCharacterOrNul",
-      !obsoleteName: "",
       !returnedTypeName:"char",
       !hasCompilerArgument:false
     )
@@ -809,7 +763,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "deletingLastPathComponent",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -817,7 +770,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "standardizedPath",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -825,7 +777,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "lowercased",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -833,7 +784,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "uppercased",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -841,7 +791,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "reversed",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:false
     )
@@ -849,7 +798,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "currentColumn",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:false
     )
@@ -857,7 +805,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "system",
-      !obsoleteName: "",
       !returnedTypeName:"sint",
       !hasCompilerArgument:false
     )
@@ -865,7 +812,6 @@ final class @stringPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "popen",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:true
     )

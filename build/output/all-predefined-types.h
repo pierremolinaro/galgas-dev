@@ -27,6 +27,7 @@
 #include "StringCommandLineOption.h"
 #include "PrologueEpilogue.h"
 #include "BigSigned.h"
+#include "GALGAS_GenericDictionary.h"
 
 //--------------------------------------------------------------------------------------------------
 

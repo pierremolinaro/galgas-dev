@@ -87,14 +87,13 @@ final class @collectionValueAST : @semanticExpressionAST {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  override proc analyzeSemanticExpression
-        (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
-        ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
-        ?inferenceType: let @unifiedTypeMapEntry inType,
-        let @analysisContext inAnalysisContext,
-        ?!@unifiedTypeMap ioTypeMap,
-        ?!@localVarManager ioVariableMap,
-        !@semanticExpressionForGeneration outExpression ) {
+  override proc analyzeSemanticExpression (?usefulnessCallerEntityName: let @lstring inUsefulnessCallerEntityName,
+                                           ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                                           ?inferenceType: let @unifiedTypeMapEntry inType,
+                                           let @analysisContext inAnalysisContext,
+                                           ?!@unifiedTypeMap ioTypeMap,
+                                           ?!@localVarManager ioVariableMap,
+                                           !@semanticExpressionForGeneration outExpression) {
   //--- Type
     let @unifiedTypeMapEntry targetType
     if self.mTypeName.string == "" then
@@ -106,7 +105,7 @@ final class @collectionValueAST : @semanticExpressionAST {
     if targetType == .null then
       error self.mTypeName : "Cannot infer type" spoil outExpression
     elsif not targetType.definition.supportCollectionValue then
-      error self.mTypeName
+      error self.mEndOfCollectionValue
       : "the @" + targetType.definition.typeName.string
       + " type does not support collection value" spoil outExpression
     else

@@ -74,7 +74,6 @@ final class @locationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "startLocationString",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
@@ -82,7 +81,6 @@ final class @locationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "endLocationString",
-      !obsoleteName: "locationString",
       !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
@@ -90,7 +88,6 @@ final class @locationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "startLocationIndex",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
@@ -98,7 +95,6 @@ final class @locationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "endLocationIndex",
-      !obsoleteName: "locationIndex",
       !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
@@ -106,7 +102,6 @@ final class @locationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "file",
-      !obsoleteName: "",
       !returnedTypeName:"string",
       !hasCompilerArgument:true
     )
@@ -114,7 +109,6 @@ final class @locationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "startLine",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
@@ -122,7 +116,6 @@ final class @locationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "endLine",
-      !obsoleteName: "line",
       !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
@@ -130,7 +123,6 @@ final class @locationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "startColumn",
-      !obsoleteName: "",
       !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
@@ -138,7 +130,6 @@ final class @locationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "endColumn",
-      !obsoleteName: "column",
       !returnedTypeName:"uint",
       !hasCompilerArgument:true
     )
@@ -146,7 +137,6 @@ final class @locationPredefinedTypeAST : @predefinedTypeAST {
       !?outMap,
       !?ioUnifiedTypeMap,
       !getterName: "isNowhere",
-      !obsoleteName: "",
       !returnedTypeName:"bool",
       !hasCompilerArgument:false
     )

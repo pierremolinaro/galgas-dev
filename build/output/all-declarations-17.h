@@ -1072,6 +1072,8 @@ extern const cRegularFileWrapper gWrapperFile_0_typeGenerationTemplate ;
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_typeGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_typeGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_typeGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //

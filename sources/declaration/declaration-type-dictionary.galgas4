@@ -1,0 +1,423 @@
+//
+//  MIT License
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//--------------------------------------------------------------------------------------------------
+//   DICTIONARY TYPE NAME UTILITIES
+//--------------------------------------------------------------------------------------------------
+
+func makeDictionaryTypeName (?let @string inKeyTypeName, ?let @string inValueTypeName) -> @string {
+  result = "[" + inKeyTypeName + ":" + inValueTypeName + "]"
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func makeDictionaryTypeLName (?let @lstring inKeyTypeName, ?let @lstring inValueTypeName) -> @lstring {
+  result = @(
+    makeDictionaryTypeName (inKeyTypeName, inValueTypeName),
+    inKeyTypeName.location.union (inValueTypeName)
+  )
+}
+
+//--------------------------------------------------------------------------------------------------
+//   AST
+//--------------------------------------------------------------------------------------------------
+
+final class @dictionaryDeclarationAST : @semanticDeclarationAST {
+  private let @lstring dictionaryTypeName #initArgLabel
+  private let @lstring keyTypeName #initArgLabel
+  private let @lstring valueTypeName #initArgLabel
+  private let @bool equatable #initArgLabel
+}
+
+//--------------------------------------------------------------------------------------------------
+
+override func @dictionaryDeclarationAST.keyRepresentation () ->@string {
+  result = "dictionary " + self.dictionaryTypeName
+}
+
+//--------------------------------------------------------------------------------------------------
+//   ASSOCIATED ELEMENT
+//--------------------------------------------------------------------------------------------------
+
+override proc @dictionaryDeclarationAST.addAssociatedElement (?!@galgasDeclarationAST ioDeclarations) {
+//--- Add optional element
+  !?ioDeclarations.getOptionalTypeName (?*, !forTypeNamed: self.valueTypeName, !isPredefined: false)
+}
+
+//--------------------------------------------------------------------------------------------------
+//   ENTER IN GRAPH
+//--------------------------------------------------------------------------------------------------
+
+override proc @dictionaryDeclarationAST.enterDeclarationInGraph
+  (?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph,
+  ?!@equatableExtensionMap _ioEquatableExtensionMap,
+  ?!@extensionInitializerForBuildingContext _ioExtensionInitializerForBuildingContext,
+  ?!@extensionMethodMapForBuildingContext _ioExtensionMethodMapForBuildingContext,
+  ?!@extensionGetterMapForBuildingContext _ioExtensionGetterMapForBuildingContext,
+  ?!@extensionSetterMapForBuildingContext _ioExtensionSetterMapForBuildingContext,
+  ?![@semanticDeclarationAST] _ioExtensionOverrideDefinitionList
+ ) {
+  let key = @lstring ("@" + self.dictionaryTypeName, self.dictionaryTypeName.location)
+  !?ioSemanticTypePrecedenceGraph.addNode (key, self)
+  !?ioSemanticTypePrecedenceGraph.noteNode (@lstring ("@" + self.keyTypeName, self.keyTypeName))
+  !?ioSemanticTypePrecedenceGraph.noteNode (@lstring ("@" + self.valueTypeName, self.valueTypeName))
+}
+
+//--------------------------------------------------------------------------------------------------
+//   ENTER IN SEMANTIC CONTEXT
+//--------------------------------------------------------------------------------------------------
+
+override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
+  ?!@equatableExtensionMap ioEquatableExtensionMap,
+  let @extensionInitializerForBuildingContext inExtensionInitializerMapForBuildingContext,
+  let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext,
+  let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext,
+  let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext,
+  ?!@unifiedTypeMap ioTypeMap,
+  ?!@semanticContext ioSemanticContext) {
+//--- key type
+  !?ioTypeMap.makeEntryFromString (self.keyTypeName, ?let keyType)
+//--- value type
+  !?ioTypeMap.makeEntryFromString (self.valueTypeName, ?let valueType)
+//--- Enumeration description
+  let enumerationDescriptor = [@enumerationDescriptor] [@(keyType, "key"), @(valueType, "value")]
+//---
+  commonGetterMapForAllTypes (!?ioTypeMap, ?var @getterMap getterMap )
+  var @setterMap setterMap = @()
+  var @instanceMethodMap instanceMethodMap = @()
+//--- Getters
+  enterBaseGetterWithArgument (
+    !?getterMap,
+    !?ioTypeMap,
+    !getterName: "contains",
+    !argSelector: "", !argType: self.keyTypeName.string, !argName: "inKey",
+    !returnedTypeName:"bool",
+    !hasCompilerArgument:false
+  )
+  enterBaseGetterWithoutArgument (
+    !?getterMap,
+    !?ioTypeMap,
+    !getterName:"count",
+    !returnedTypeName:"uint",
+    !hasCompilerArgument:false
+  )
+//  enterBaseGetterWithArgument (
+//    !?getterMap,
+//    !?ioTypeMap,
+//    !getterName: "get",
+//    !argSelector: "",
+//    !argType: self.keyTypeName.string,
+//    !argName: "inKey",
+//    !returnedTypeName: self.valueTypeName.string,
+//    !hasCompilerArgument: true
+//  )
+//--- Handle insert mutating proc
+  !?setterMap.insertOrReplace (
+    @("set", self.dictionaryTypeName.location),
+    @methodKind.definedAsMember,
+    [ @("".nowhere, valueType, .argumentConstantIn, "inValue"),
+      @("key".nowhere, keyType, .argumentConstantIn, "inKey")
+    ],
+    true,
+    @methodQualifier.isBasic,
+    ""
+  )
+//--- Handle remove mutating proc
+  !?setterMap.insertOrReplace (
+    @("remove", self.dictionaryTypeName.location),
+    @methodKind.definedAsMember,
+    [@("key".nowhere, keyType, .argumentConstantIn, "inKey")],
+    true,
+    @methodQualifier.isBasic,
+    ""
+  )
+//--- Handle search methods
+  !?instanceMethodMap.insertKey (
+    @("search", self.dictionaryTypeName),
+    @methodKind.definedAsMember,
+    [@("key".nowhere, keyType, .argumentConstantIn, "inKey")],
+    self.dictionaryTypeName.location,
+    true,
+    @methodQualifier.isBasic,
+    "" // No error message
+  )
+//--- Add initializer without argument
+  var @initializerMap initializerMap = @()
+  let [@functionSignatureElement] emptyArgumentList = @()
+  !?initializerMap.insertKey (
+    @(emptyArgumentList.initializerSignature, self.dictionaryTypeName),
+    emptyArgumentList
+  )
+//--- Add extensions
+  addExtensions (
+    inExtensionInitializerMapForBuildingContext,
+    inExtensionMethodMapForBuildingContext,
+    inExtensionGetterMapForBuildingContext,
+    inExtensionSetterMapForBuildingContext,
+    !?ioSemanticContext,
+    !?ioTypeMap,
+    self.dictionaryTypeName,
+    !isClass: false,
+    !?initializerMap,
+    !?getterMap,
+    !?setterMap,
+    !?instanceMethodMap,
+    !acceptSetters: true
+  )
+//--- Features
+  var features = @typeFeatures.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
+  if self.equatable then
+    features |= .equatable
+  end
+  handleEquatableComparableExtension (
+    !?ioEquatableExtensionMap,
+    self.dictionaryTypeName,
+    !?features,
+    !acceptEquatable: true,
+    !acceptComparable: false
+  )
+//--- Optional Element type index
+  let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: self.valueTypeName)
+  !?ioTypeMap.makeEntry (optionalElementTypeName, ?let @unifiedTypeMapEntry optionalElementType)
+//--- Read subscripts
+  var @subscriptMap readSubscriptMap = @()
+  let [@functionSignatureElement] firstArgumentTypeList = [@("".nowhere, keyType, "inKey", true)]
+  !?readSubscriptMap.insertKey (
+    firstArgumentTypeList.subcriptSignature.nowhere,
+    firstArgumentTypeList,
+    optionalElementType
+  )
+  let [@functionSignatureElement] secondArgumentTypeList = [
+     @("".nowhere, keyType, "inKey", true),
+     @("default".nowhere, valueType, "inDefaultValue", true)
+  ]
+  !?readSubscriptMap.insertKey (
+    secondArgumentTypeList.subcriptSignature.nowhere,
+    secondArgumentTypeList,
+    valueType
+  )
+  let [@functionSignatureElement] thirdArgumentTypeList = [
+     @("unwrap".nowhere, keyType, "inKey", true)
+  ]
+  !?readSubscriptMap.insertKey (
+    thirdArgumentTypeList.subcriptSignature.nowhere,
+    thirdArgumentTypeList,
+    valueType
+  )
+//--- Enter in type map
+  let typeDefinition = @unifiedTypeDefinition (
+    !typeName: self.dictionaryTypeName,
+    !isPredefined: self.isPredefined,
+    !isConcrete: true,
+    !isFinal: true,
+    !superType: .null,
+    !typeKind: .mapType,
+    !supportCollectionValue: false,
+    !allTypedPropertyList: @(),
+    !propertyMap: @(),
+    !currentTypedPropertyList: [],
+    !initializerMap: initializerMap,
+    !classFunctionMap: @(),
+    !getterMap: getterMap,
+    !setterMap: setterMap,
+    !instanceMethodMap: instanceMethodMap,
+    !classMethodMap: @(),
+    !unwrappedType: .null,
+    !readSubscriptMap: readSubscriptMap,
+    !enumerationDescriptorList: enumerationDescriptor,
+    !features: features,
+    !addAssignOperatorArguments: [],
+    !generateHeaderInSeparateFile: false,
+    !typeForEnumeratedElement: .null,
+    !headerFileName: "dictionary-" + self.dictionaryTypeName.string.fileNameRepresentation,
+    !headerKind: .oneHeader
+  )
+  !?ioTypeMap.insertType (typeDefinition.typeName, typeDefinition)
+}
+
+//--------------------------------------------------------------------------------------------------
+//   SEMANTIC ANALYSIS
+//--------------------------------------------------------------------------------------------------
+
+override proc @dictionaryDeclarationAST.semanticAnalysis
+                (?![@lstring] ioUsefulnessRootEntities,
+                ?!@usefulEntitiesGraph ioUsefulEntitiesGraph,
+                let @string _inProductDirectory,
+                let @semanticContext _inSemanticContext,
+                ?!@unifiedTypeMap ioTypeMap,
+                let @predefinedTypes _inPredefinedTypes,
+                ?![@semanticDeclarationForGeneration] ioSemanticDeclarationListForGeneration
+) {
+//--- Check key is comparable
+  let keyType = ioTypeMap.typeMapEntryForLKey (self.keyTypeName)
+  if not keyType.definition.features.contains (.comparable) then
+    error self.keyTypeName : "the @" + self.keyTypeName + " type is not comparable"
+  end
+//--- Useful entities graph
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (self.dictionaryTypeName)
+  !?ioUsefulEntitiesGraph.addNode (nameForUsefulness, nameForUsefulness)
+  if self.isPredefined then
+    ioUsefulnessRootEntities ++= nameForUsefulness
+  end
+  let keyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.keyTypeName)
+  !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: keyTypeNameForUsefulness)
+  if self.isPredefined then
+    ioUsefulnessRootEntities ++= keyTypeNameForUsefulness
+  end
+  let valueTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (self.valueTypeName)
+  !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: valueTypeNameForUsefulness)
+  if self.isPredefined then
+    ioUsefulnessRootEntities ++= valueTypeNameForUsefulness
+  end
+//--- Useful entities graph for initializer without any argument
+  let initializerNameForUsefulness = initializerNameForUsefulEntitiesGraph (
+    self.dictionaryTypeName,
+    [@formalInputParameterAST] ().initializerSignature
+  )
+  !?ioUsefulEntitiesGraph.addNode (initializerNameForUsefulness, initializerNameForUsefulness)
+  if self.isPredefined then
+    ioUsefulnessRootEntities ++= initializerNameForUsefulness
+  end
+//----- Enter attributes
+//  var [@typedProperty] typedAttributeList = @()
+//  var @propertyIndexMap attributeMap = @()
+//  for property in self.mPropertyList do
+//    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (property.typeName)
+//    !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: propertyTypeNameForUsefulness)
+//    let @unifiedTypeMapEntry t = ioTypeMap.typeMapEntryForLKey (property.typeName)
+//    let hasSetter = true
+//    typedAttributeList ++= @(
+//      t,
+//      property.name,
+//      property.initialization,
+//      !hasSetter: hasSetter,
+//      !hasSelector: property.hasSelector
+//    )
+//    if forbiddenKeysForMapAndDict ().contains (property.name.string) then
+//      var @string m = "a property cannot be named:"
+//      for s in forbiddenKeysForMapAndDict () do
+//        m+= " " + s
+//      end
+//      m += "; theses names are reserved"
+//      error property.name: m
+//    end
+//    !?attributeMap.insertKey (property.name, t)
+//  end
+//--- Optional Element type
+  let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: self.valueTypeName)
+  let optionalElementType = ioTypeMap.typeMapEntryForLKey (optionalElementTypeName)
+//--- Enter map declaration
+  ioSemanticDeclarationListForGeneration ++= @dictionaryTypeForGeneration (
+    !infoMessage: "dictionary " + self.dictionaryTypeName,
+    ioTypeMap.typeMapEntryForLKey (self.dictionaryTypeName),
+    !valueType: ioTypeMap.typeMapEntryForLKey (self.valueTypeName),
+    !keyType: keyType,
+    !optionalValueType: optionalElementType
+  )
+}
+
+//--------------------------------------------------------------------------------------------------
+//   CODE GENERATION
+//--------------------------------------------------------------------------------------------------
+
+final class @dictionaryTypeForGeneration : @semanticTypeForGeneration {
+  private let @unifiedTypeMapEntry valueType #initArgLabel
+  private let @unifiedTypeMapEntry keyType #initArgLabel
+  private let @unifiedTypeMapEntry optionalValueType #initArgLabel
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc appendDeclaration1 (?!@stringset ioInclusionSet,
+                                     !@string outHeader ) {
+    self.valueType.addHeaderFileName1 (!?ioInclusionSet)
+    self.optionalValueType.addHeaderFileName1 (!?ioInclusionSet)
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
+    outHeader = filewrapper [dictionaryGenerationTemplate.dictTypeHeader1 :
+      selfTypeDefinition.typeName.string,
+      self.mSelfTypeEntry.identifierRepresentation,
+      selfTypeDefinition.enumerationDescriptorList,
+      self.keyType.identifierRepresentation,
+      self.valueType.identifierRepresentation
+   ]
+    outHeader += filewrapper [typeGenerationTemplate.unifiedClassBodyForType :
+      selfTypeDefinition.typeName.string,
+      self.mSelfTypeEntry.identifierRepresentation,
+      selfTypeDefinition.isConcrete,
+      selfTypeDefinition.initializerMap,
+      selfTypeDefinition.classFunctionMap,
+      selfTypeDefinition.getterMap,
+      selfTypeDefinition.setterMap,
+      selfTypeDefinition.instanceMethodMap,
+      selfTypeDefinition.classMethodMap,
+      selfTypeDefinition.readSubscriptMap,
+      selfTypeDefinition.enumerationDescriptorList,
+      selfTypeDefinition.features,
+      selfTypeDefinition.addAssignOperatorArguments,
+      selfTypeDefinition.typeForEnumeratedElement,
+      selfTypeDefinition.supportCollectionValue
+    ]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  override proc appendSpecificImplementation (let @unifiedTypeMap _inTypeMap,
+                                              ?!@stringset ioInclusionSet,
+                                              !@string outImplementation ) {
+    self.mSelfTypeEntry.addHeaderFileName (!?ioInclusionSet)
+    let selfTypeDefinition = self.mSelfTypeEntry.definition
+    outImplementation = filewrapper [dictionaryGenerationTemplate.dictTypeSpecificImplementation :
+      self.mSelfTypeEntry.identifierRepresentation,
+      selfTypeDefinition.enumerationDescriptorList,
+      self.keyType.identifierRepresentation,
+      selfTypeDefinition.features.generateCppObjectComparison,
+      self.valueType.identifierRepresentation,
+      self.optionalValueType.identifierRepresentation
+    ]
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+}
+
+//--------------------------------------------------------------------------------------------------
+//! Generation Filewrappers
+//--------------------------------------------------------------------------------------------------
+
+private filewrapper dictionaryGenerationTemplate in "../+generation-templates/type_generation" {
+}{
+}{
+
+//--------- dict
+  template dictTypeHeader1 : "GALGAS_dictionary.h1.galgasTemplate" (
+    ?@string TYPE_NAME,
+    ?@string TYPE_IDENTIFIER,
+    ?[@enumerationDescriptor] ENUMERATION_DESCRIPTOR_LIST,
+    ?@string KEY_TYPE_IDENTIFIER,
+    ?@string ELEMENT_TYPE_IDENTIFIER
+  )
+
+  template dictTypeSpecificImplementation : "GALGAS_dictionary.cpp.galgasTemplate" (
+    ?@string TYPE_IDENTIFIER,
+    ?[@enumerationDescriptor] ENUMERATION_DESCRIPTOR_LIST,
+    ?@string KEY_TYPE_IDENTIFIER,
+    ?@bool GENERATE_COMPARISON,
+    ?@string ELEMENT_TYPE_IDENTIFIER,
+    ?@string OPTIONAL_ELEMENT_TYPE_IDENTIFIER
+  )
+}
+
+//--------------------------------------------------------------------------------------------------

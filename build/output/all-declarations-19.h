@@ -191,18 +191,17 @@ void routine_enterBaseGetterWith_32_Arguments_26__26__3F__3F__3F__3F__3F__3F_ret
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'enterBaseGetterWithoutArgument&&?getterName?obsoleteName?returnedTypeName?hasCompilerArgument'
+//Routine 'enterBaseGetterWithoutArgument&&?getterName?returnedTypeName?hasCompilerArgument'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_enterBaseGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
-                                                                                                                              class GGS_unifiedTypeMap & ioArgument1,
-                                                                                                                              const class GGS_string constinArgument2,
-                                                                                                                              const class GGS_string constinArgument3,
-                                                                                                                              const class GGS_string constinArgument4,
-                                                                                                                              const class GGS_bool constinArgument5,
-                                                                                                                              class Compiler * inCompiler
-                                                                                                                              COMMA_LOCATION_ARGS) ;
+void routine_enterBaseGetterWithoutArgument_26__26__3F_getterName_3F_returnedTypeName_3F_hasCompilerArgument (class GGS_getterMap & ioArgument0,
+                                                                                                              class GGS_unifiedTypeMap & ioArgument1,
+                                                                                                              const class GGS_string constinArgument2,
+                                                                                                              const class GGS_string constinArgument3,
+                                                                                                              const class GGS_bool constinArgument4,
+                                                                                                              class Compiler * inCompiler
+                                                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

@@ -167,7 +167,6 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
     !?getterMap,
     !?ioTypeMap,
     !getterName:"count",
-    !obsoleteName: "",
     !returnedTypeName:"uint",
     !hasCompilerArgument:false
   )

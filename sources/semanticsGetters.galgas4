@@ -162,12 +162,11 @@ proc enterBaseGetterWith2Arguments ( // §§
 proc enterBaseGetterWithoutArgument (?!@getterMap ioGetterMap,
                                     ?!@unifiedTypeMap ioUnifiedTypeMap,
                                     ?getterName: let @string inGetterName,
-                                    ?obsoleteName: let @string inObsoleteGetterName,
                                     ?returnedTypeName:let @string inReturnedTypeName,
                                     ?hasCompilerArgument:let @bool inHasCompilerArgument ) {
   !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
-  !?ioGetterMap.insertOrReplace
-    (@lstring (inGetterName, @location.here),
+  !?ioGetterMap.insertOrReplace (
+    @lstring (inGetterName, @location.here),
     @methodKind.definedAsMember,
     [@functionSignatureElement] (),
     @location.here,
@@ -176,32 +175,18 @@ proc enterBaseGetterWithoutArgument (?!@getterMap ioGetterMap,
     @methodQualifier. isBasic,
     "" // func name is not obsolete, no replacement func
   )
-  if inObsoleteGetterName != "" then
-    !?ioGetterMap.insertOrReplace
-      (@lstring (inObsoleteGetterName, .here),
-      @methodKind.definedAsMember,
-      [@functionSignatureElement] (),
-      @location.here,
-      inHasCompilerArgument,
-      returnedTypeIndex,
-      @methodQualifier.isBasicFinal,
-      inGetterName // func name is obsolete, replacement func
-    )
-  end
 }
 
 //--------------------------------------------------------------------------------------------------
 
-proc enterBaseGetterWithArgument
-  (?!@getterMap ioGetterMap,
-  ?!@unifiedTypeMap ioUnifiedTypeMap,
-  ?getterName: let @string inGetterName,
-  ?argSelector: let @string inArgument1Selector,
-  ?argType: let @string inArgument1TypeName,
-  ?argName: let @string inArgument1Name,
-  ?returnedTypeName:let @string inReturnedTypeName,
-  ?hasCompilerArgument:let @bool inHasCompilerArgument
-) {
+proc enterBaseGetterWithArgument (?!@getterMap ioGetterMap,
+                                 ?!@unifiedTypeMap ioUnifiedTypeMap,
+                                 ?getterName: let @string inGetterName,
+                                 ?argSelector: let @string inArgument1Selector,
+                                 ?argType: let @string inArgument1TypeName,
+                                 ?argName: let @string inArgument1Name,
+                                 ?returnedTypeName:let @string inReturnedTypeName,
+                                 ?hasCompilerArgument:let @bool inHasCompilerArgument) {
   !?ioUnifiedTypeMap.makeEntryFromString (inReturnedTypeName, ?let returnedTypeIndex)
   var [@functionSignatureElement] argList = @()
   !?ioUnifiedTypeMap.makeEntryFromString (inArgument1TypeName, ?let t)

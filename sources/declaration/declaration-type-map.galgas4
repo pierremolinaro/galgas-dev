@@ -282,7 +282,6 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "levels",
-      !obsoleteName: "",
       !returnedTypeName: "uint",
       !hasCompilerArgument: false
     )
@@ -301,7 +300,6 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName:"keySet",
-      !obsoleteName: "",
       !returnedTypeName: "stringset",
       !hasCompilerArgument: true
     )
@@ -309,7 +307,6 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "keyList",
-      !obsoleteName: "",
       !returnedTypeName: "[lstring]",
       !hasCompilerArgument: true
     )
@@ -335,7 +332,6 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "overriddenMap",
-      !obsoleteName: "",
       !returnedTypeName:self.mMapTypeName.string,
       !hasCompilerArgument:true
     )
@@ -343,7 +339,6 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !?getterMap,
       !?ioTypeMap,
       !getterName: "count",
-      !obsoleteName: "",
       !returnedTypeName: "uint",
       !hasCompilerArgument: false
     )

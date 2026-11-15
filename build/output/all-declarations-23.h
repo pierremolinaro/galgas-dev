@@ -10,6 +10,52 @@
 
 //--------------------------------------------------------------------------------------------------
 //
+//Filewrapper 'optionalTypeGenerationTemplate'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_optionalTypeGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_optionalTypeGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_optionalTypeGenerationTemplate ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionalTypeGenerationTemplate optionalTypeHeader1'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeHeader_31_ (class Compiler * inCompiler,
+                                                                                      const class GGS_string & in_TYPE_5F_NAME,
+                                                                                      const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                      const class GGS_string & in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER,
+                                                                                      const class GGS_string & in_WEAK_5F_TYPE_5F_IDENTIFIER
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionalTypeGenerationTemplate optionalTypeSpecificImplementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GGS_string filewrapperTemplate_optionalTypeGenerationTemplate_optionalTypeSpecificImplementation (class Compiler * inCompiler,
+                                                                                                  const class GGS_string & in_TYPE_5F_NAME,
+                                                                                                  const class GGS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                                  const class GGS_string & in_UNWRAPPED_5F_TYPE_5F_IDENTIFIER,
+                                                                                                  const class GGS_bool & in_GENERATE_5F_COMPARISON,
+                                                                                                  const class GGS_string & in_WEAK_5F_TYPE_5F_IDENTIFIER
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'makeEmbeddedElementTypeName'
 //
 //--------------------------------------------------------------------------------------------------
@@ -73,6 +119,8 @@ void routine_check_5F_K_5F_escapeCharacters_3F_ (const class GGS_lstring constin
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_mapGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_mapGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_mapGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -127,6 +175,8 @@ GGS_string filewrapperTemplate_mapGenerationTemplate_mapTypeSpecificImplementati
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_structGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_structGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -170,6 +220,8 @@ GGS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificImple
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_classGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_classGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_classGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -285,6 +337,8 @@ class GGS_string function_generateClassInstanceMethodDeclaration (const class GG
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_dictGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_dictGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_dictGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //
@@ -335,6 +389,8 @@ GGS_string filewrapperTemplate_dictGenerationTemplate_dictTypeSpecificImplementa
 //--------------------------------------------------------------------------------------------------
 
 extern const cDirectoryWrapper gWrapperDirectory_0_sortedListGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_1_sortedListGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_2_sortedListGenerationTemplate ;
 
 //--------------------------------------------------------------------------------------------------
 //

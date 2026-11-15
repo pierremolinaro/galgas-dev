@@ -348,9 +348,9 @@ override proc @enumeratedCollectionCstListInExpAST.analyzeEnumeration (
       for element in self.mElementList, descriptor in enumerationDescriptorList do
         if element.mOptionalConstantName.string != "" then // Empty string if joker
 //          if option galgas_cli_options[warnsOnEnumerationNameMismatch.value], element.mOptionalConstantName.string != descriptor.mEnumerationName then
-          if element.mOptionalConstantName.string != descriptor.mEnumerationName then
-            warning element.mOptionalConstantName : "rename constant as '" + descriptor.mEnumerationName + "'"
-          end
+//          if element.mOptionalConstantName.string != descriptor.mEnumerationName then
+//            warning element.mOptionalConstantName : "rename constant as '" + descriptor.mEnumerationName + "'"
+//          end
           if element.mOptionalTypeName.string != "" then
             let foundType = ioTypeMap.typeMapEntryForLKey (element.mOptionalTypeName)
             if foundType != descriptor.mEnumeratedType then

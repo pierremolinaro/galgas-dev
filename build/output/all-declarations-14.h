@@ -731,6 +731,17 @@ class GGS_string function_makeArrayTypeName (const class GGS_string & constinArg
 
 //--------------------------------------------------------------------------------------------------
 //
+//Function 'makeDictionaryTypeLName'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GGS_lstring function_makeDictionaryTypeLName (const class GGS_lstring & constinArgument0,
+                                                    const class GGS_lstring & constinArgument1,
+                                                    class Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
 //Function 'makeWeakTypeLName'
 //
 //--------------------------------------------------------------------------------------------------
