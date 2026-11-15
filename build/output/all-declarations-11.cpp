@@ -433,7 +433,7 @@ GGS_enumConstantForGeneration GGS__5B_enumConstantForGeneration_5D_::readSubcrip
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -1451,7 +1451,7 @@ GGS_graphInsertModifier GGS__5B_graphInsertModifier_5D_::readSubcript__3F_ (cons
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -3092,7 +3092,7 @@ GGS_insertSetterAST GGS__5B_insertSetterAST_5D_::readSubcript__3F_ (const GGS_ui
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -3585,7 +3585,7 @@ GGS_mapAccessorAST GGS__5B_mapAccessorAST_5D_::readSubcript__3F_ (const GGS_uint
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -4068,7 +4068,7 @@ GGS_location GGS__5B_location_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -5218,7 +5218,7 @@ GGS_optionalMethodSignatureElement GGS__5B_optionalMethodSignatureElement_5D_::r
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -5319,7 +5319,7 @@ init_21_isPredefined_21__21__21__21__21__21__21__21__21_equatable (const GGS_boo
                                                                    const GGS__5B_propertyInCollectionAST_5D_ & in_mPropertyList,
                                                                    const GGS__5B_insertSetterAST_5D_ & in_mInsertSetterList,
                                                                    const GGS__5B_mapAccessorAST_5D_ & in_mSearchMethodList,
-                                                                   const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubscriptList,
+                                                                   const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubcriptList,
                                                                    const GGS__5B_mapAccessorAST_5D_ & in_mRemoveSetterList,
                                                                    const GGS__5B_mapAccessorAST_5D_ & in_mReplaceSetterList,
                                                                    const GGS__5B_location_5D_ & in_mInsertOrReplaceDeclarationListAST,
@@ -5328,7 +5328,7 @@ init_21_isPredefined_21__21__21__21__21__21__21__21__21_equatable (const GGS_boo
                                                                    COMMA_LOCATION_ARGS) {
   cPtr_mapDeclarationAST * object = nullptr ;
   macroMyNew (object, cPtr_mapDeclarationAST (inCompiler COMMA_THERE)) ;
-  object->mapDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21_equatable (in_isPredefined, in_mMapTypeName, in_mPropertyList, in_mInsertSetterList, in_mSearchMethodList, in_mSearchSubscriptList, in_mRemoveSetterList, in_mReplaceSetterList, in_mInsertOrReplaceDeclarationListAST, in_equatable, inCompiler) ;
+  object->mapDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21_equatable (in_isPredefined, in_mMapTypeName, in_mPropertyList, in_mInsertSetterList, in_mSearchMethodList, in_mSearchSubcriptList, in_mRemoveSetterList, in_mReplaceSetterList, in_mInsertOrReplaceDeclarationListAST, in_equatable, inCompiler) ;
   const GGS_mapDeclarationAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -5342,7 +5342,7 @@ mapDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21_equata
                                                                                      const GGS__5B_propertyInCollectionAST_5D_ & in_mPropertyList,
                                                                                      const GGS__5B_insertSetterAST_5D_ & in_mInsertSetterList,
                                                                                      const GGS__5B_mapAccessorAST_5D_ & in_mSearchMethodList,
-                                                                                     const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubscriptList,
+                                                                                     const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubcriptList,
                                                                                      const GGS__5B_mapAccessorAST_5D_ & in_mRemoveSetterList,
                                                                                      const GGS__5B_mapAccessorAST_5D_ & in_mReplaceSetterList,
                                                                                      const GGS__5B_location_5D_ & in_mInsertOrReplaceDeclarationListAST,
@@ -5353,7 +5353,7 @@ mapDeclarationAST_init_21_isPredefined_21__21__21__21__21__21__21__21__21_equata
   mProperty_mPropertyList = in_mPropertyList ;
   mProperty_mInsertSetterList = in_mInsertSetterList ;
   mProperty_mSearchMethodList = in_mSearchMethodList ;
-  mProperty_mSearchSubscriptList = in_mSearchSubscriptList ;
+  mProperty_mSearchSubcriptList = in_mSearchSubcriptList ;
   mProperty_mRemoveSetterList = in_mRemoveSetterList ;
   mProperty_mReplaceSetterList = in_mReplaceSetterList ;
   mProperty_mInsertOrReplaceDeclarationListAST = in_mInsertOrReplaceDeclarationListAST ;
@@ -5416,13 +5416,13 @@ GGS__5B_mapAccessorAST_5D_ GGS_mapDeclarationAST::readProperty_mSearchMethodList
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_mapAccessorAST_5D_ GGS_mapDeclarationAST::readProperty_mSearchSubscriptList (void) const {
+GGS__5B_mapAccessorAST_5D_ GGS_mapDeclarationAST::readProperty_mSearchSubcriptList (void) const {
   if (nullptr == mObjectPtr) {
     return GGS__5B_mapAccessorAST_5D_ () ;
   }else{
     cPtr_mapDeclarationAST * p = (cPtr_mapDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapDeclarationAST) ;
-    return p->mProperty_mSearchSubscriptList ;
+    return p->mProperty_mSearchSubcriptList ;
   }
 }
 
@@ -5484,7 +5484,7 @@ mProperty_mMapTypeName (),
 mProperty_mPropertyList (),
 mProperty_mInsertSetterList (),
 mProperty_mSearchMethodList (),
-mProperty_mSearchSubscriptList (),
+mProperty_mSearchSubcriptList (),
 mProperty_mRemoveSetterList (),
 mProperty_mReplaceSetterList (),
 mProperty_mInsertOrReplaceDeclarationListAST (),
@@ -5498,7 +5498,7 @@ cPtr_mapDeclarationAST::cPtr_mapDeclarationAST (const GGS_bool & in_isPredefined
                                                 const GGS__5B_propertyInCollectionAST_5D_ & in_mPropertyList,
                                                 const GGS__5B_insertSetterAST_5D_ & in_mInsertSetterList,
                                                 const GGS__5B_mapAccessorAST_5D_ & in_mSearchMethodList,
-                                                const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubscriptList,
+                                                const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubcriptList,
                                                 const GGS__5B_mapAccessorAST_5D_ & in_mRemoveSetterList,
                                                 const GGS__5B_mapAccessorAST_5D_ & in_mReplaceSetterList,
                                                 const GGS__5B_location_5D_ & in_mInsertOrReplaceDeclarationListAST,
@@ -5510,7 +5510,7 @@ mProperty_mMapTypeName (),
 mProperty_mPropertyList (),
 mProperty_mInsertSetterList (),
 mProperty_mSearchMethodList (),
-mProperty_mSearchSubscriptList (),
+mProperty_mSearchSubcriptList (),
 mProperty_mRemoveSetterList (),
 mProperty_mReplaceSetterList (),
 mProperty_mInsertOrReplaceDeclarationListAST (),
@@ -5520,7 +5520,7 @@ mProperty_equatable () {
   mProperty_mPropertyList = in_mPropertyList ;
   mProperty_mInsertSetterList = in_mInsertSetterList ;
   mProperty_mSearchMethodList = in_mSearchMethodList ;
-  mProperty_mSearchSubscriptList = in_mSearchSubscriptList ;
+  mProperty_mSearchSubcriptList = in_mSearchSubcriptList ;
   mProperty_mRemoveSetterList = in_mRemoveSetterList ;
   mProperty_mReplaceSetterList = in_mReplaceSetterList ;
   mProperty_mInsertOrReplaceDeclarationListAST = in_mInsertOrReplaceDeclarationListAST ;
@@ -5546,7 +5546,7 @@ void cPtr_mapDeclarationAST::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mSearchMethodList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mSearchSubscriptList.description (ioString, inIndentation+1) ;
+  mProperty_mSearchSubcriptList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mRemoveSetterList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
@@ -5562,7 +5562,7 @@ void cPtr_mapDeclarationAST::description (String & ioString,
 
 AbstractPtrClass * cPtr_mapDeclarationAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_mapDeclarationAST (mProperty_isPredefined, mProperty_mMapTypeName, mProperty_mPropertyList, mProperty_mInsertSetterList, mProperty_mSearchMethodList, mProperty_mSearchSubscriptList, mProperty_mRemoveSetterList, mProperty_mReplaceSetterList, mProperty_mInsertOrReplaceDeclarationListAST, mProperty_equatable, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_mapDeclarationAST (mProperty_isPredefined, mProperty_mMapTypeName, mProperty_mPropertyList, mProperty_mInsertSetterList, mProperty_mSearchMethodList, mProperty_mSearchSubcriptList, mProperty_mRemoveSetterList, mProperty_mReplaceSetterList, mProperty_mInsertOrReplaceDeclarationListAST, mProperty_equatable, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -5576,7 +5576,7 @@ AbstractPtrClass * cPtr_mapDeclarationAST::duplicate (Compiler * inCompiler COMM
     mProperty_mPropertyList.printNonNullClassInstanceProperties ("mPropertyList") ;
     mProperty_mInsertSetterList.printNonNullClassInstanceProperties ("mInsertSetterList") ;
     mProperty_mSearchMethodList.printNonNullClassInstanceProperties ("mSearchMethodList") ;
-    mProperty_mSearchSubscriptList.printNonNullClassInstanceProperties ("mSearchSubscriptList") ;
+    mProperty_mSearchSubcriptList.printNonNullClassInstanceProperties ("mSearchSubcriptList") ;
     mProperty_mRemoveSetterList.printNonNullClassInstanceProperties ("mRemoveSetterList") ;
     mProperty_mReplaceSetterList.printNonNullClassInstanceProperties ("mReplaceSetterList") ;
     mProperty_mInsertOrReplaceDeclarationListAST.printNonNullClassInstanceProperties ("mInsertOrReplaceDeclarationListAST") ;
@@ -5728,7 +5728,7 @@ init_21_infoMessage_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_strin
                                                                  const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                  const GGS__5B_insertSetterAST_5D_ & in_mInsertSetterList,
                                                                  const GGS__5B_mapAccessorAST_5D_ & in_mSearchMethodList,
-                                                                 const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubscriptList,
+                                                                 const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubcriptList,
                                                                  const GGS__5B_mapAccessorAST_5D_ & in_mRemoveSetterList,
                                                                  const GGS__5B_mapAccessorAST_5D_ & in_mReplaceSetterList,
                                                                  const GGS_bool & in_mHasInsertOrReplaceModifier,
@@ -5737,7 +5737,7 @@ init_21_infoMessage_21__21__21__21__21__21__21__21__21__21__21_ (const GGS_strin
                                                                  COMMA_LOCATION_ARGS) {
   cPtr_mapTypeForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_mapTypeForGeneration (inCompiler COMMA_THERE)) ;
-  object->mapTypeForGeneration_init_21_infoMessage_21__21__21__21__21__21__21__21__21__21__21_ (in_infoMessage, in_mSelfTypeEntry, in_mElementTypeEntry, in_mMapTypeName, in_mTypedAttributeList, in_mInsertSetterList, in_mSearchMethodList, in_mSearchSubscriptList, in_mRemoveSetterList, in_mReplaceSetterList, in_mHasInsertOrReplaceModifier, in_mOptionalElementTypeEntry, inCompiler) ;
+  object->mapTypeForGeneration_init_21_infoMessage_21__21__21__21__21__21__21__21__21__21__21_ (in_infoMessage, in_mSelfTypeEntry, in_mElementTypeEntry, in_mMapTypeName, in_mTypedAttributeList, in_mInsertSetterList, in_mSearchMethodList, in_mSearchSubcriptList, in_mRemoveSetterList, in_mReplaceSetterList, in_mHasInsertOrReplaceModifier, in_mOptionalElementTypeEntry, inCompiler) ;
   const GGS_mapTypeForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -5753,7 +5753,7 @@ mapTypeForGeneration_init_21_infoMessage_21__21__21__21__21__21__21__21__21__21_
                                                                                       const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                                                       const GGS__5B_insertSetterAST_5D_ & in_mInsertSetterList,
                                                                                       const GGS__5B_mapAccessorAST_5D_ & in_mSearchMethodList,
-                                                                                      const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubscriptList,
+                                                                                      const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubcriptList,
                                                                                       const GGS__5B_mapAccessorAST_5D_ & in_mRemoveSetterList,
                                                                                       const GGS__5B_mapAccessorAST_5D_ & in_mReplaceSetterList,
                                                                                       const GGS_bool & in_mHasInsertOrReplaceModifier,
@@ -5766,7 +5766,7 @@ mapTypeForGeneration_init_21_infoMessage_21__21__21__21__21__21__21__21__21__21_
   mProperty_mTypedAttributeList = in_mTypedAttributeList ;
   mProperty_mInsertSetterList = in_mInsertSetterList ;
   mProperty_mSearchMethodList = in_mSearchMethodList ;
-  mProperty_mSearchSubscriptList = in_mSearchSubscriptList ;
+  mProperty_mSearchSubcriptList = in_mSearchSubcriptList ;
   mProperty_mRemoveSetterList = in_mRemoveSetterList ;
   mProperty_mReplaceSetterList = in_mReplaceSetterList ;
   mProperty_mHasInsertOrReplaceModifier = in_mHasInsertOrReplaceModifier ;
@@ -5841,13 +5841,13 @@ GGS__5B_mapAccessorAST_5D_ GGS_mapTypeForGeneration::readProperty_mSearchMethodL
 
 //--------------------------------------------------------------------------------------------------
 
-GGS__5B_mapAccessorAST_5D_ GGS_mapTypeForGeneration::readProperty_mSearchSubscriptList (void) const {
+GGS__5B_mapAccessorAST_5D_ GGS_mapTypeForGeneration::readProperty_mSearchSubcriptList (void) const {
   if (nullptr == mObjectPtr) {
     return GGS__5B_mapAccessorAST_5D_ () ;
   }else{
     cPtr_mapTypeForGeneration * p = (cPtr_mapTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapTypeForGeneration) ;
-    return p->mProperty_mSearchSubscriptList ;
+    return p->mProperty_mSearchSubcriptList ;
   }
 }
 
@@ -5910,7 +5910,7 @@ mProperty_mMapTypeName (),
 mProperty_mTypedAttributeList (),
 mProperty_mInsertSetterList (),
 mProperty_mSearchMethodList (),
-mProperty_mSearchSubscriptList (),
+mProperty_mSearchSubcriptList (),
 mProperty_mRemoveSetterList (),
 mProperty_mReplaceSetterList (),
 mProperty_mHasInsertOrReplaceModifier (),
@@ -5926,7 +5926,7 @@ cPtr_mapTypeForGeneration::cPtr_mapTypeForGeneration (const GGS_string & in_info
                                                       const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                                       const GGS__5B_insertSetterAST_5D_ & in_mInsertSetterList,
                                                       const GGS__5B_mapAccessorAST_5D_ & in_mSearchMethodList,
-                                                      const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubscriptList,
+                                                      const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubcriptList,
                                                       const GGS__5B_mapAccessorAST_5D_ & in_mRemoveSetterList,
                                                       const GGS__5B_mapAccessorAST_5D_ & in_mReplaceSetterList,
                                                       const GGS_bool & in_mHasInsertOrReplaceModifier,
@@ -5939,7 +5939,7 @@ mProperty_mMapTypeName (),
 mProperty_mTypedAttributeList (),
 mProperty_mInsertSetterList (),
 mProperty_mSearchMethodList (),
-mProperty_mSearchSubscriptList (),
+mProperty_mSearchSubcriptList (),
 mProperty_mRemoveSetterList (),
 mProperty_mReplaceSetterList (),
 mProperty_mHasInsertOrReplaceModifier (),
@@ -5951,7 +5951,7 @@ mProperty_mOptionalElementTypeEntry () {
   mProperty_mTypedAttributeList = in_mTypedAttributeList ;
   mProperty_mInsertSetterList = in_mInsertSetterList ;
   mProperty_mSearchMethodList = in_mSearchMethodList ;
-  mProperty_mSearchSubscriptList = in_mSearchSubscriptList ;
+  mProperty_mSearchSubcriptList = in_mSearchSubcriptList ;
   mProperty_mRemoveSetterList = in_mRemoveSetterList ;
   mProperty_mReplaceSetterList = in_mReplaceSetterList ;
   mProperty_mHasInsertOrReplaceModifier = in_mHasInsertOrReplaceModifier ;
@@ -5981,7 +5981,7 @@ void cPtr_mapTypeForGeneration::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mSearchMethodList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mSearchSubscriptList.description (ioString, inIndentation+1) ;
+  mProperty_mSearchSubcriptList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mRemoveSetterList.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
@@ -5997,7 +5997,7 @@ void cPtr_mapTypeForGeneration::description (String & ioString,
 
 AbstractPtrClass * cPtr_mapTypeForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_mapTypeForGeneration (mProperty_infoMessage, mProperty_mSelfTypeEntry, mProperty_mElementTypeEntry, mProperty_mMapTypeName, mProperty_mTypedAttributeList, mProperty_mInsertSetterList, mProperty_mSearchMethodList, mProperty_mSearchSubscriptList, mProperty_mRemoveSetterList, mProperty_mReplaceSetterList, mProperty_mHasInsertOrReplaceModifier, mProperty_mOptionalElementTypeEntry, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_mapTypeForGeneration (mProperty_infoMessage, mProperty_mSelfTypeEntry, mProperty_mElementTypeEntry, mProperty_mMapTypeName, mProperty_mTypedAttributeList, mProperty_mInsertSetterList, mProperty_mSearchMethodList, mProperty_mSearchSubcriptList, mProperty_mRemoveSetterList, mProperty_mReplaceSetterList, mProperty_mHasInsertOrReplaceModifier, mProperty_mOptionalElementTypeEntry, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6012,7 +6012,7 @@ AbstractPtrClass * cPtr_mapTypeForGeneration::duplicate (Compiler * inCompiler C
     mProperty_mTypedAttributeList.printNonNullClassInstanceProperties ("mTypedAttributeList") ;
     mProperty_mInsertSetterList.printNonNullClassInstanceProperties ("mInsertSetterList") ;
     mProperty_mSearchMethodList.printNonNullClassInstanceProperties ("mSearchMethodList") ;
-    mProperty_mSearchSubscriptList.printNonNullClassInstanceProperties ("mSearchSubscriptList") ;
+    mProperty_mSearchSubcriptList.printNonNullClassInstanceProperties ("mSearchSubcriptList") ;
     mProperty_mRemoveSetterList.printNonNullClassInstanceProperties ("mRemoveSetterList") ;
     mProperty_mReplaceSetterList.printNonNullClassInstanceProperties ("mReplaceSetterList") ;
     mProperty_mHasInsertOrReplaceModifier.printNonNullClassInstanceProperties ("mHasInsertOrReplaceModifier") ;
@@ -8434,7 +8434,7 @@ GGS_sortedListSortDescriptorAST GGS__5B_sortedListSortDescriptorAST_5D_::readSub
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -8917,7 +8917,7 @@ GGS_sortDescriptorForGeneration GGS__5B_sortDescriptorForGeneration_5D_::readSub
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -9989,7 +9989,7 @@ GGS_typeNameFormalParameterName GGS__5B_typeNameFormalParameterName_5D_::readSub
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -10482,7 +10482,7 @@ GGS__5B_typeNameFormalParameterName_5D_ GGS__5B__5B_typeNameFormalParameterName_
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -10876,7 +10876,7 @@ GGS_externTypeGetter GGS__5B_externTypeGetter_5D_::readSubcript__3F_ (const GGS_
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -11369,7 +11369,7 @@ GGS_externTypeSetter GGS__5B_externTypeSetter_5D_::readSubcript__3F_ (const GGS_
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -11852,7 +11852,7 @@ GGS_externTypeMethod GGS__5B_externTypeMethod_5D_::readSubcript__3F_ (const GGS_
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -14697,6 +14697,176 @@ const GALGAS_TypeDescriptor * GGS_ifTestForGeneration_2E_optionalExp_3F_::static
 
 //--------------------------------------------------------------------------------------------------
 
+GGS_assignmentSupplement_2E_property::GGS_assignmentSupplement_2E_property (void) :
+mProperty_name () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplement_2E_property::GGS_assignmentSupplement_2E_property (const GGS_assignmentSupplement_2E_property & inSource) :
+mProperty_name (inSource.mProperty_name) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplement_2E_property & GGS_assignmentSupplement_2E_property::operator = (const GGS_assignmentSupplement_2E_property & inSource) {
+  mProperty_name = inSource.mProperty_name ;
+  return *this ;
+}
+
+//---Synthetized initializer -----------------------------------------------------------------------
+
+GGS_assignmentSupplement_2E_property GGS_assignmentSupplement_2E_property::init_21_ (const GGS_lstring & in_name,
+                                                                                     Compiler * inCompiler
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_assignmentSupplement_2E_property result ;
+  result.setInitializedProperties (inCompiler) ;
+  result.mProperty_name = in_name ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplement_2E_property::setInitializedProperties (Compiler * /* inCompiler */) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplement_2E_property::GGS_assignmentSupplement_2E_property (const GGS_lstring & inOperand0) :
+mProperty_name (inOperand0) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_assignmentSupplement_2E_property::isValid (void) const {
+  return mProperty_name.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplement_2E_property::drop (void) {
+  mProperty_name.drop () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplement_2E_property::description (String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString.appendCString ("<struct @assignmentSupplement.property:") ;
+  if (! isValid ()) {
+    ioString.appendCString (" not built") ;
+  }else{
+    mProperty_name.description (ioString, inIndentation+1) ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @assignmentSupplement.property generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentSupplement_2E_property ("assignmentSupplement.property",
+                                                                                     nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_assignmentSupplement_2E_property::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_assignmentSupplement_2E_property ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//Optional @assignmentSupplement_2E_property_3F_
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplement_2E_property_3F_::GGS_assignmentSupplement_2E_property_3F_ (void) :
+AC_GALGAS_root (),
+mValue (),
+mState (OptionalState::invalid) {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplement_2E_property_3F_::GGS_assignmentSupplement_2E_property_3F_ (const GGS_assignmentSupplement_2E_property & inSource) :
+AC_GALGAS_root (),
+mValue (inSource),
+mState (OptionalState::valuated) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplement_2E_property_3F_ GGS_assignmentSupplement_2E_property_3F_::init_nil (void) {
+  GGS_assignmentSupplement_2E_property_3F_ result ;
+  result.mState = OptionalState::isNil ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_assignmentSupplement_2E_property_3F_::isValid (void) const {
+  bool result = false ;
+  switch (mState) {
+  case OptionalState::invalid :
+    break ;
+  case OptionalState::isNil :
+    result = true ;
+    break ;
+  case OptionalState::valuated :
+    result = mValue.isValid () ;
+    break ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+bool GGS_assignmentSupplement_2E_property_3F_::isValuated (void) const {
+  return (mState == OptionalState::valuated) && mValue.isValid () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplement_2E_property_3F_::drop (void) {
+  mState = OptionalState::invalid ;
+  mValue = GGS_assignmentSupplement_2E_property () ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplement_2E_property_3F_::description (String & ioString,
+                                                            const int32_t inIndentation) const {
+  ioString.appendCString ("<optional @") ;
+  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
+  ioString.appendCString (": ") ;
+  switch (mState) {
+  case OptionalState::invalid :
+    ioString.appendCString ("invalid") ;
+    break ;
+  case OptionalState::isNil :
+    ioString.appendCString ("nil") ;
+    break ;
+  case OptionalState::valuated :
+    mValue.description (ioString, inIndentation) ;
+    break ;
+  }
+  ioString.appendCString (">") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @assignmentSupplement.property? generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentSupplement_2E_property_3F_ ("assignmentSupplement.property?",
+                                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_assignmentSupplement_2E_property_3F_::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_assignmentSupplement_2E_property_3F_ ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 GGS_typeKindEnum_2E_weakReferenceType::GGS_typeKindEnum_2E_weakReferenceType (void) :
 mProperty_referenceType () {
 }
@@ -16805,205 +16975,5 @@ const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalMessageMap_2E_element 
 
 const GALGAS_TypeDescriptor * GGS_lexicalMessageMap_2E_element::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalMessageMap_2E_element ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//Optional @lexicalMessageMap_2E_element_3F_
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalMessageMap_2E_element_3F_::GGS_lexicalMessageMap_2E_element_3F_ (void) :
-AC_GALGAS_root (),
-mValue (),
-mState (OptionalState::invalid) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalMessageMap_2E_element_3F_::GGS_lexicalMessageMap_2E_element_3F_ (const GGS_lexicalMessageMap_2E_element & inSource) :
-AC_GALGAS_root (),
-mValue (inSource),
-mState (OptionalState::valuated) {
-}
-
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalMessageMap_2E_element_3F_ GGS_lexicalMessageMap_2E_element_3F_::init_nil (void) {
-  GGS_lexicalMessageMap_2E_element_3F_ result ;
-  result.mState = OptionalState::isNil ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_lexicalMessageMap_2E_element_3F_::isValid (void) const {
-  bool result = false ;
-  switch (mState) {
-  case OptionalState::invalid :
-    break ;
-  case OptionalState::isNil :
-    result = true ;
-    break ;
-  case OptionalState::valuated :
-    result = mValue.isValid () ;
-    break ;
-  }
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_lexicalMessageMap_2E_element_3F_::isValuated (void) const {
-  return (mState == OptionalState::valuated) && mValue.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalMessageMap_2E_element_3F_::drop (void) {
-  mState = OptionalState::invalid ;
-  mValue = GGS_lexicalMessageMap_2E_element () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalMessageMap_2E_element_3F_::description (String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString.appendCString ("<optional @") ;
-  ioString.appendString (staticTypeDescriptor ()->mGalgasTypeName) ;
-  ioString.appendCString (": ") ;
-  switch (mState) {
-  case OptionalState::invalid :
-    ioString.appendCString ("invalid") ;
-    break ;
-  case OptionalState::isNil :
-    ioString.appendCString ("nil") ;
-    break ;
-  case OptionalState::valuated :
-    mValue.description (ioString, inIndentation) ;
-    break ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalMessageMap.element? generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalMessageMap_2E_element_3F_ ("lexicalMessageMap.element?",
-                                                                                     nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalMessageMap_2E_element_3F_::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalMessageMap_2E_element_3F_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineMap_2E_element::GGS_lexicalRoutineMap_2E_element (void) :
-mProperty_lkey (),
-mProperty_mLexicalRoutineFormalArgumentList (),
-mProperty_mErrorMessageList (),
-mProperty_mIsExtern () {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineMap_2E_element::GGS_lexicalRoutineMap_2E_element (const GGS_lexicalRoutineMap_2E_element & inSource) :
-mProperty_lkey (inSource.mProperty_lkey),
-mProperty_mLexicalRoutineFormalArgumentList (inSource.mProperty_mLexicalRoutineFormalArgumentList),
-mProperty_mErrorMessageList (inSource.mProperty_mErrorMessageList),
-mProperty_mIsExtern (inSource.mProperty_mIsExtern) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineMap_2E_element & GGS_lexicalRoutineMap_2E_element::operator = (const GGS_lexicalRoutineMap_2E_element & inSource) {
-  mProperty_lkey = inSource.mProperty_lkey ;
-  mProperty_mLexicalRoutineFormalArgumentList = inSource.mProperty_mLexicalRoutineFormalArgumentList ;
-  mProperty_mErrorMessageList = inSource.mProperty_mErrorMessageList ;
-  mProperty_mIsExtern = inSource.mProperty_mIsExtern ;
-  return *this ;
-}
-
-//---Synthetized initializer -----------------------------------------------------------------------
-
-GGS_lexicalRoutineMap_2E_element GGS_lexicalRoutineMap_2E_element::init_21__21__21__21_ (const GGS_lstring & in_lkey,
-                                                                                         const GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & in_mLexicalRoutineFormalArgumentList,
-                                                                                         const GGS__5B_string_5D_ & in_mErrorMessageList,
-                                                                                         const GGS_bool & in_mIsExtern,
-                                                                                         Compiler * inCompiler
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GGS_lexicalRoutineMap_2E_element result ;
-  result.setInitializedProperties (inCompiler) ;
-  result.mProperty_lkey = in_lkey ;
-  result.mProperty_mLexicalRoutineFormalArgumentList = in_mLexicalRoutineFormalArgumentList ;
-  result.mProperty_mErrorMessageList = in_mErrorMessageList ;
-  result.mProperty_mIsExtern = in_mIsExtern ;
-  return result ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineMap_2E_element::setInitializedProperties (Compiler * /* inCompiler */) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-GGS_lexicalRoutineMap_2E_element::GGS_lexicalRoutineMap_2E_element (const GGS_lstring & inOperand0,
-                                                                    const GGS__5B_lexicalRoutineFormalArgumentAST_5D_ & inOperand1,
-                                                                    const GGS__5B_string_5D_ & inOperand2,
-                                                                    const GGS_bool & inOperand3) :
-mProperty_lkey (inOperand0),
-mProperty_mLexicalRoutineFormalArgumentList (inOperand1),
-mProperty_mErrorMessageList (inOperand2),
-mProperty_mIsExtern (inOperand3) {
-}
-
-//--------------------------------------------------------------------------------------------------
-
-bool GGS_lexicalRoutineMap_2E_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mLexicalRoutineFormalArgumentList.isValid () && mProperty_mErrorMessageList.isValid () && mProperty_mIsExtern.isValid () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineMap_2E_element::drop (void) {
-  mProperty_lkey.drop () ;
-  mProperty_mLexicalRoutineFormalArgumentList.drop () ;
-  mProperty_mErrorMessageList.drop () ;
-  mProperty_mIsExtern.drop () ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-void GGS_lexicalRoutineMap_2E_element::description (String & ioString,
-                                                    const int32_t inIndentation) const {
-  ioString.appendCString ("<struct @lexicalRoutineMap.element:") ;
-  if (! isValid ()) {
-    ioString.appendCString (" not built") ;
-  }else{
-    mProperty_lkey.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mLexicalRoutineFormalArgumentList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mErrorMessageList.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_mIsExtern.description (ioString, inIndentation+1) ;
-  }
-  ioString.appendCString (">") ;
-}
-
-//--------------------------------------------------------------------------------------------------
-//     @lexicalRoutineMap.element generic code implementation
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_lexicalRoutineMap_2E_element ("lexicalRoutineMap.element",
-                                                                                 nullptr) ;
-
-//--------------------------------------------------------------------------------------------------
-
-const GALGAS_TypeDescriptor * GGS_lexicalRoutineMap_2E_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalRoutineMap_2E_element ;
 }
 

@@ -33,7 +33,7 @@ syntax extension galgas4ExpressionSyntax {
         !?ioDeclarations,
         ?let [@actualOutputArgumentAST] expressionList
       )
-      outExpression = @subscriptReadAccessExpressionAST (
+      outExpression = @subcriptReadAccessExpressionAST (
         outExpression,
         expressionList,
         .here
@@ -198,7 +198,7 @@ final class @propertyAccessExpressionForGeneration : @semanticExpressionForGener
 //!   Subscript read Access
 //--------------------------------------------------------------------------------------------------
 
-final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
+final class @subcriptReadAccessExpressionAST : @semanticExpressionAST {
   private let @semanticExpressionAST mExpression
   private let [@actualOutputArgumentAST] actualArgumentList
   private let @location endOfArgsLocation
@@ -232,11 +232,11 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
       ?let @semanticExpressionForGeneration expression
     )
     let @unifiedTypeMapEntry expressionType = expression.mResultType
-  //--- subscript invocation signature
-    let invocationSignature = self.actualArgumentList.subscriptSignature
-  //--- Check subscript availability
-    let subscriptMap = expressionType.definition.readSubscriptMap
-    if let aSubscript = subscriptMap [invocationSignature] then
+  //--- subcript invocation signature
+    let invocationSignature = self.actualArgumentList.subcriptSignature
+  //--- Check subcript availability
+    let subcriptMap = expressionType.definition.readSubscriptMap
+    if let aSubscript = subcriptMap [invocationSignature] then
     //--- Check effective argument list
       var semanticExpressionListForGeneration = [@semanticExpressionForGeneration] ()
       for formalArg in aSubscript.argumentTypeList, actualArg in self.actualArgumentList do
@@ -266,15 +266,15 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
         semanticExpressionListForGeneration ++= expression
       end
     //--- Generate expression
-      outExpression = @subscriptReadAccessExpressionForGeneration (
+      outExpression = @subcriptReadAccessExpressionForGeneration (
         aSubscript.valueType,
         self.endOfArgsLocation,
         expression,
         invocationSignature,
         semanticExpressionListForGeneration
       )
-    else // Unknown subscript signature
-      error self.endOfArgsLocation : "unknown subscript signature" spoil outExpression
+    else // Unknown subcript signature
+      error self.endOfArgsLocation : "unknown subcript signature" spoil outExpression
     end
   }
 
@@ -284,9 +284,9 @@ final class @subscriptReadAccessExpressionAST : @semanticExpressionAST {
 
 //--------------------------------------------------------------------------------------------------
 
-final class @subscriptReadAccessExpressionForGeneration : @semanticExpressionForGeneration {
+final class @subcriptReadAccessExpressionForGeneration : @semanticExpressionForGeneration {
   private let @semanticExpressionForGeneration expression
-  private let @string subscriptInvocationName
+  private let @string subcriptInvocationName
   private let [@semanticExpressionForGeneration] actualExpressionList
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -305,8 +305,8 @@ final class @subscriptReadAccessExpressionForGeneration : @semanticExpressionFor
       !?ioUnusedVariableCppNameSet,
       ?let @string operand
     )
-  //--- subscript arments
-    var [@string] subscriptArgumentList = @()
+  //--- subcript arments
+    var [@string] subcriptArgumentList = @()
     for actualArg in self.actualExpressionList do
       actualArg.generateExpression (
         !?ioGeneratedCode,
@@ -315,13 +315,13 @@ final class @subscriptReadAccessExpressionForGeneration : @semanticExpressionFor
         !?ioUnusedVariableCppNameSet,
         ?let @string actualArgOperand
       )
-      !?subscriptArgumentList.append (actualArgOperand)
+      !?subcriptArgumentList.append (actualArgOperand)
     end
   //--- Generate
     outCppExpression = operand + ".readSubcript_"
-    outCppExpression += self.subscriptInvocationName.identifierRepresentation
+    outCppExpression += self.subcriptInvocationName.identifierRepresentation
     outCppExpression += " ("
-    for operand in subscriptArgumentList do
+    for operand in subcriptArgumentList do
       outCppExpression += operand + ", "
     end
     !?ioUnusedVariableCppNameSet.removeKey (compilerCppName ())

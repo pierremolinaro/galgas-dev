@@ -334,7 +334,7 @@ GGS_extractedAssociatedValueForGeneration GGS__5B_extractedAssociatedValueForGen
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -2923,7 +2923,7 @@ GGS_actualOutputArgumentAST GGS__5B_actualOutputArgumentAST_5D_::readSubcript__3
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -3416,7 +3416,7 @@ GGS_semanticExpressionForGeneration GGS__5B_semanticExpressionForGeneration_5D_:
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -4064,6 +4064,119 @@ const GALGAS_TypeDescriptor * GGS_typeMethodCallInstructionForGeneration_2E_weak
 }
 
 //--------------------------------------------------------------------------------------------------
+//  Enum assignmentSupplement
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplement::GGS_assignmentSupplement (void) :
+mAssociatedValues (),
+mEnum (Enumeration::invalid) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplement GGS_assignmentSupplement::class_func_none (UNUSED_LOCATION_ARGS) {
+  GGS_assignmentSupplement result ;
+  result.mEnum = Enumeration::enum_none ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplement GGS_assignmentSupplement::class_func_property (const GGS_lstring & inAssociatedValue0
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  GGS_assignmentSupplement result ;
+  result.mEnum = Enumeration::enum_property ;
+  AC_GALGAS_root * p = nullptr ;
+  macroMyNew (p, GGS_assignmentSupplement_2E_property (inAssociatedValue0)) ;
+  EnumerationAssociatedValues * eav = nullptr ;
+  macroMyNew (eav, EnumerationAssociatedValues (p COMMA_HERE)) ;
+  result.mAssociatedValues.assignPointer (eav) ; // Ownership is transfered to mAssociatedValues
+  macroDetachSharedObject (eav) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplement::method_extractProperty (GGS_lstring & outAssociatedValue_name,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  if (mEnum != Enumeration::enum_property) {
+    outAssociatedValue_name.drop () ;
+    String s ;
+    s.appendCString ("proc @assignmentSupplement.property invoked with an invalid enum value") ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const auto ptr = (GGS_assignmentSupplement_2E_property *) mAssociatedValues.associatedValuesPointer () ;
+    outAssociatedValue_name = ptr->mProperty_name ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_assignmentSupplement_2E_property_3F_ GGS_assignmentSupplement::getter_getProperty (UNUSED_LOCATION_ARGS) const {
+  GGS_assignmentSupplement_2E_property_3F_ result ;
+  if (mEnum == Enumeration::enum_property) {
+    const auto ptr = (const GGS_assignmentSupplement_2E_property *) mAssociatedValues.associatedValuesPointer () ;
+    result = GGS_assignmentSupplement_2E_property (*ptr) ;
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplement::getAssociatedValuesFor_property (GGS_lstring & out_name) const {
+  const auto ptr = (const GGS_assignmentSupplement_2E_property *) mAssociatedValues.associatedValuesPointer () ;
+  out_name = ptr->mProperty_name ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+static const char * gEnumNameArrayFor_assignmentSupplement [3] = {
+  "(not built)",
+  "none",
+  "property"
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_assignmentSupplement::getter_isNone (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_none == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_bool GGS_assignmentSupplement::getter_isProperty (UNUSED_LOCATION_ARGS) const {
+  return GGS_bool (Enumeration::invalid != mEnum, Enumeration::enum_property == mEnum) ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_assignmentSupplement::description (String & ioString,
+                                            const int32_t inIndentation) const {
+  ioString.appendCString ("<enum @assignmentSupplement: ") ;
+  ioString.appendCString (gEnumNameArrayFor_assignmentSupplement [size_t (mEnum)]) ;
+  mAssociatedValues.description (ioString, inIndentation) ;
+  ioString.appendCString (">") ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+//     @assignmentSupplement generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_assignmentSupplement ("assignmentSupplement",
+                                                                         nullptr) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_assignmentSupplement::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_assignmentSupplement ;
+}
+
+//--------------------------------------------------------------------------------------------------
 // @assignmentInstructionForGeneration reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -4096,14 +4209,14 @@ init_21__21__21__21__21__21__21_ (const GGS_unifiedTypeMapEntry & in_mReceiverTy
                                   const GGS_unifiedTypeMapEntry & in_mTargetType,
                                   const GGS_string & in_mTargetCppName,
                                   const GGS_string & in_mNameForCheckingFormalParameterUsing,
-                                  const GGS_string & in_mOptionalProperty,
+                                  const GGS_assignmentSupplement & in_mSupplement,
                                   const GGS_semanticExpressionForGeneration & in_mSourceExpression,
                                   const GGS_location & in_mSourceLocation,
                                   Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) {
   cPtr_assignmentInstructionForGeneration * object = nullptr ;
   macroMyNew (object, cPtr_assignmentInstructionForGeneration (inCompiler COMMA_THERE)) ;
-  object->assignmentInstructionForGeneration_init_21__21__21__21__21__21__21_ (in_mReceiverType, in_mTargetType, in_mTargetCppName, in_mNameForCheckingFormalParameterUsing, in_mOptionalProperty, in_mSourceExpression, in_mSourceLocation, inCompiler) ;
+  object->assignmentInstructionForGeneration_init_21__21__21__21__21__21__21_ (in_mReceiverType, in_mTargetType, in_mTargetCppName, in_mNameForCheckingFormalParameterUsing, in_mSupplement, in_mSourceExpression, in_mSourceLocation, inCompiler) ;
   const GGS_assignmentInstructionForGeneration result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -4116,7 +4229,7 @@ assignmentInstructionForGeneration_init_21__21__21__21__21__21__21_ (const GGS_u
                                                                      const GGS_unifiedTypeMapEntry & in_mTargetType,
                                                                      const GGS_string & in_mTargetCppName,
                                                                      const GGS_string & in_mNameForCheckingFormalParameterUsing,
-                                                                     const GGS_string & in_mOptionalProperty,
+                                                                     const GGS_assignmentSupplement & in_mSupplement,
                                                                      const GGS_semanticExpressionForGeneration & in_mSourceExpression,
                                                                      const GGS_location & in_mSourceLocation,
                                                                      Compiler * /* inCompiler */) {
@@ -4124,7 +4237,7 @@ assignmentInstructionForGeneration_init_21__21__21__21__21__21__21_ (const GGS_u
   mProperty_mTargetType = in_mTargetType ;
   mProperty_mTargetCppName = in_mTargetCppName ;
   mProperty_mNameForCheckingFormalParameterUsing = in_mNameForCheckingFormalParameterUsing ;
-  mProperty_mOptionalProperty = in_mOptionalProperty ;
+  mProperty_mSupplement = in_mSupplement ;
   mProperty_mSourceExpression = in_mSourceExpression ;
   mProperty_mSourceLocation = in_mSourceLocation ;
 }
@@ -4185,13 +4298,13 @@ GGS_string GGS_assignmentInstructionForGeneration::readProperty_mNameForChecking
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS_assignmentInstructionForGeneration::readProperty_mOptionalProperty (void) const {
+GGS_assignmentSupplement GGS_assignmentInstructionForGeneration::readProperty_mSupplement (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_string () ;
+    return GGS_assignmentSupplement () ;
   }else{
     cPtr_assignmentInstructionForGeneration * p = (cPtr_assignmentInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_assignmentInstructionForGeneration) ;
-    return p->mProperty_mOptionalProperty ;
+    return p->mProperty_mSupplement ;
   }
 }
 
@@ -4229,7 +4342,7 @@ mProperty_mReceiverType (),
 mProperty_mTargetType (),
 mProperty_mTargetCppName (),
 mProperty_mNameForCheckingFormalParameterUsing (),
-mProperty_mOptionalProperty (),
+mProperty_mSupplement (),
 mProperty_mSourceExpression (),
 mProperty_mSourceLocation () {
 }
@@ -4240,7 +4353,7 @@ cPtr_assignmentInstructionForGeneration::cPtr_assignmentInstructionForGeneration
                                                                                   const GGS_unifiedTypeMapEntry & in_mTargetType,
                                                                                   const GGS_string & in_mTargetCppName,
                                                                                   const GGS_string & in_mNameForCheckingFormalParameterUsing,
-                                                                                  const GGS_string & in_mOptionalProperty,
+                                                                                  const GGS_assignmentSupplement & in_mSupplement,
                                                                                   const GGS_semanticExpressionForGeneration & in_mSourceExpression,
                                                                                   const GGS_location & in_mSourceLocation,
                                                                                   Compiler * inCompiler
@@ -4250,14 +4363,14 @@ mProperty_mReceiverType (),
 mProperty_mTargetType (),
 mProperty_mTargetCppName (),
 mProperty_mNameForCheckingFormalParameterUsing (),
-mProperty_mOptionalProperty (),
+mProperty_mSupplement (),
 mProperty_mSourceExpression (),
 mProperty_mSourceLocation () {
   mProperty_mReceiverType = in_mReceiverType ;
   mProperty_mTargetType = in_mTargetType ;
   mProperty_mTargetCppName = in_mTargetCppName ;
   mProperty_mNameForCheckingFormalParameterUsing = in_mNameForCheckingFormalParameterUsing ;
-  mProperty_mOptionalProperty = in_mOptionalProperty ;
+  mProperty_mSupplement = in_mSupplement ;
   mProperty_mSourceExpression = in_mSourceExpression ;
   mProperty_mSourceLocation = in_mSourceLocation ;
 }
@@ -4279,7 +4392,7 @@ void cPtr_assignmentInstructionForGeneration::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mNameForCheckingFormalParameterUsing.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mOptionalProperty.description (ioString, inIndentation+1) ;
+  mProperty_mSupplement.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mSourceExpression.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
@@ -4291,7 +4404,7 @@ void cPtr_assignmentInstructionForGeneration::description (String & ioString,
 
 AbstractPtrClass * cPtr_assignmentInstructionForGeneration::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_assignmentInstructionForGeneration (mProperty_mReceiverType, mProperty_mTargetType, mProperty_mTargetCppName, mProperty_mNameForCheckingFormalParameterUsing, mProperty_mOptionalProperty, mProperty_mSourceExpression, mProperty_mSourceLocation, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_assignmentInstructionForGeneration (mProperty_mReceiverType, mProperty_mTargetType, mProperty_mTargetCppName, mProperty_mNameForCheckingFormalParameterUsing, mProperty_mSupplement, mProperty_mSourceExpression, mProperty_mSourceLocation, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -4305,7 +4418,7 @@ AbstractPtrClass * cPtr_assignmentInstructionForGeneration::duplicate (Compiler 
     mProperty_mTargetType.printNonNullClassInstanceProperties ("mTargetType") ;
     mProperty_mTargetCppName.printNonNullClassInstanceProperties ("mTargetCppName") ;
     mProperty_mNameForCheckingFormalParameterUsing.printNonNullClassInstanceProperties ("mNameForCheckingFormalParameterUsing") ;
-    mProperty_mOptionalProperty.printNonNullClassInstanceProperties ("mOptionalProperty") ;
+    mProperty_mSupplement.printNonNullClassInstanceProperties ("mSupplement") ;
     mProperty_mSourceExpression.printNonNullClassInstanceProperties ("mSourceExpression") ;
     mProperty_mSourceLocation.printNonNullClassInstanceProperties ("mSourceLocation") ;
   }
@@ -4746,7 +4859,7 @@ GGS_templateDelimitor_32_AST GGS__5B_templateDelimitor_32_AST_5D_::readSubcript_
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -5259,7 +5372,7 @@ GGS_templateReplacementAST GGS__5B_templateReplacementAST_5D_::readSubcript__3F_
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -5752,7 +5865,7 @@ GGS_lexicalAttributeAST GGS__5B_lexicalAttributeAST_5D_::readSubcript__3F_ (cons
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -6235,7 +6348,7 @@ GGS_lexicalStyleAST GGS__5B_lexicalStyleAST_5D_::readSubcript__3F_ (const GGS_ui
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -6718,7 +6831,7 @@ GGS_terminalDeclarationAST GGS__5B_terminalDeclarationAST_5D_::readSubcript__3F_
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -7112,7 +7225,7 @@ GGS_lexicalMessageDeclarationAST GGS__5B_lexicalMessageDeclarationAST_5D_::readS
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -7595,7 +7708,7 @@ GGS_lexicalListDeclarationAST GGS__5B_lexicalListDeclarationAST_5D_::readSubcrip
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -7989,7 +8102,7 @@ GGS_abstractLexicalRuleAST GGS__5B_abstractLexicalRuleAST_5D_::readSubcript__3F_
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -8454,7 +8567,7 @@ GGS_indexingAST GGS__5B_indexingAST_5D_::readSubcript__3F_ (const GGS_uint & inI
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -9125,7 +9238,7 @@ GGS_lexicalInstructionAST GGS__5B_lexicalInstructionAST_5D_::readSubcript__3F_ (
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -9590,7 +9703,7 @@ GGS_lexicalWhileBranchAST GGS__5B_lexicalWhileBranchAST_5D_::readSubcript__3F_ (
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -9984,7 +10097,7 @@ GGS_lexicalRoutineOrFunctionFormalInputArgumentAST GGS__5B_lexicalRoutineOrFunct
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -10449,7 +10562,7 @@ GGS_sentLexicalAttributeAST GGS__5B_sentLexicalAttributeAST_5D_::readSubcript__3
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -10932,7 +11045,7 @@ GGS_lexicalListEntryAST GGS__5B_lexicalListEntryAST_5D_::readSubcript__3F_ (cons
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -11435,7 +11548,7 @@ GGS_semanticDeclarationAST GGS__5B_semanticDeclarationAST_5D_::readSubcript__3F_
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -11829,7 +11942,7 @@ GGS_lexicalSentValue GGS__5B_lexicalSentValue_5D_::readSubcript__3F_ (const GGS_
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -12223,7 +12336,7 @@ GGS_semanticDeclarationForGeneration GGS__5B_semanticDeclarationForGeneration_5D
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -12710,7 +12823,7 @@ GGS_terminalAST GGS__5B_terminalAST_5D_::readSubcript__3F_ (const GGS_uint & inI
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -13233,7 +13346,7 @@ GGS_templateDelimitorAST GGS__5B_templateDelimitorAST_5D_::readSubcript__3F_ (co
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -14515,7 +14628,7 @@ GGS_formalParameterAST GGS__5B_formalParameterAST_5D_::readSubcript__3F_ (const 
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -14909,7 +15022,7 @@ GGS_formalInputParameterAST GGS__5B_formalInputParameterAST_5D_::readSubcript__3
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -15422,7 +15535,7 @@ GGS_filewrapperTemplateAST GGS__5B_filewrapperTemplateAST_5D_::readSubcript__3F_
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -15816,7 +15929,7 @@ GGS_formalTemplateInputParameterAST GGS__5B_formalTemplateInputParameterAST_5D_:
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -16319,7 +16432,7 @@ GGS_typedProperty GGS__5B_typedProperty_5D_::readSubcript__3F_ (const GGS_uint &
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -16713,7 +16826,7 @@ GGS_enumerationDescriptor GGS__5B_enumerationDescriptor_5D_::readSubcript__3F_ (
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;

@@ -234,7 +234,7 @@ GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
   return result ;
 }
 
-%for (entry) in SEARCH_SUBSCRIPT_LIST do
+%for (entry) in SEARCH_SUBCRIPT_LIST do
 %//--------------------------------------------------------------------------------------------------
 
 GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%

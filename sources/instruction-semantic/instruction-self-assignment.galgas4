@@ -27,28 +27,6 @@ final class @selfAssignmentInstructionAST : @semanticInstructionAST {
 //! SYNTAX
 //--------------------------------------------------------------------------------------------------
 
-//syntax extension galgas3InstructionsSyntax {
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//  rule <semantic_instruction_ggs3>  (?!@galgasDeclarationAST ioDeclarations,
-//                                     !@semanticInstructionAST outInstruction) {
-//    $self$
-//    let instructionLocation = @location.here
-//    $=$
-//    <expression_ggs3> (!?ioDeclarations, ?let @semanticExpressionAST sourceExpression)
-//    outInstruction = @selfAssignmentInstructionAST (
-//      !instructionLocation,
-//      sourceExpression
-//    )
-//  }
-//
-//  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-//}
-
-//--------------------------------------------------------------------------------------------------
-
 syntax extension galgas4InstructionsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -93,8 +71,8 @@ override proc @selfAssignmentInstructionAST.analyzeSemanticInstruction (
       error self.mInstructionLocation : "'self' not mutable in this context"
     end
   //--- Analyze source expression
-    self.mSourceExpression.analyzeSemanticExpression
-      (!usefulnessCallerEntityName: inUsefulnessCallerEntityName,
+    self.mSourceExpression.analyzeSemanticExpression (
+      !usefulnessCallerEntityName: inUsefulnessCallerEntityName,
       !?ioUsefulEntitiesGraph,
       !inferenceType: selfAvailable.type,
       inAnalysisContext,
@@ -110,7 +88,7 @@ override proc @selfAssignmentInstructionAST.analyzeSemanticInstruction (
       selfAvailable.type,
       inAnalysisContext.selfObjectCppName,
       inAnalysisContext.selfObjectCppName,
-      "".nowhere,
+      .none,
       expression,
       self.mInstructionLocation
     )

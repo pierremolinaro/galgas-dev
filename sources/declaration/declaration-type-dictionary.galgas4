@@ -183,7 +183,7 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
 //--- Optional Element type index
   let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: self.valueTypeName)
   !?ioTypeMap.makeEntry (optionalElementTypeName, ?let @unifiedTypeMapEntry optionalElementType)
-//--- Read subscripts
+//--- Read subcripts
   var @readSubcriptMap readSubscriptMap = @()
   let [@functionSignatureElement] firstArgumentTypeList = [@("".nowhere, keyType, "inKey", true)]
   !?readSubscriptMap.insertKey (

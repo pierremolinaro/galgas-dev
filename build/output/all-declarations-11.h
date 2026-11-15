@@ -3234,7 +3234,7 @@ class GGS_mapDeclarationAST : public GGS_semanticDeclarationAST {
 
   public: class GGS__5B_mapAccessorAST_5D_ readProperty_mSearchMethodList (void) const ;
 
-  public: class GGS__5B_mapAccessorAST_5D_ readProperty_mSearchSubscriptList (void) const ;
+  public: class GGS__5B_mapAccessorAST_5D_ readProperty_mSearchSubcriptList (void) const ;
 
   public: class GGS__5B_mapAccessorAST_5D_ readProperty_mRemoveSetterList (void) const ;
 
@@ -3350,7 +3350,7 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
   public: GGS__5B_propertyInCollectionAST_5D_ mProperty_mPropertyList ;
   public: GGS__5B_insertSetterAST_5D_ mProperty_mInsertSetterList ;
   public: GGS__5B_mapAccessorAST_5D_ mProperty_mSearchMethodList ;
-  public: GGS__5B_mapAccessorAST_5D_ mProperty_mSearchSubscriptList ;
+  public: GGS__5B_mapAccessorAST_5D_ mProperty_mSearchSubcriptList ;
   public: GGS__5B_mapAccessorAST_5D_ mProperty_mRemoveSetterList ;
   public: GGS__5B_mapAccessorAST_5D_ mProperty_mReplaceSetterList ;
   public: GGS__5B_location_5D_ mProperty_mInsertOrReplaceDeclarationListAST ;
@@ -3366,7 +3366,7 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
                                   const GGS__5B_propertyInCollectionAST_5D_ & in_mPropertyList,
                                   const GGS__5B_insertSetterAST_5D_ & in_mInsertSetterList,
                                   const GGS__5B_mapAccessorAST_5D_ & in_mSearchMethodList,
-                                  const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubscriptList,
+                                  const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubcriptList,
                                   const GGS__5B_mapAccessorAST_5D_ & in_mRemoveSetterList,
                                   const GGS__5B_mapAccessorAST_5D_ & in_mReplaceSetterList,
                                   const GGS__5B_location_5D_ & in_mInsertOrReplaceDeclarationListAST,
@@ -3482,7 +3482,7 @@ class GGS_mapTypeForGeneration : public GGS_semanticTypeForGeneration {
 
   public: class GGS__5B_mapAccessorAST_5D_ readProperty_mSearchMethodList (void) const ;
 
-  public: class GGS__5B_mapAccessorAST_5D_ readProperty_mSearchSubscriptList (void) const ;
+  public: class GGS__5B_mapAccessorAST_5D_ readProperty_mSearchSubcriptList (void) const ;
 
   public: class GGS__5B_mapAccessorAST_5D_ readProperty_mRemoveSetterList (void) const ;
 
@@ -3577,7 +3577,7 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public: GGS__5B_typedProperty_5D_ mProperty_mTypedAttributeList ;
   public: GGS__5B_insertSetterAST_5D_ mProperty_mInsertSetterList ;
   public: GGS__5B_mapAccessorAST_5D_ mProperty_mSearchMethodList ;
-  public: GGS__5B_mapAccessorAST_5D_ mProperty_mSearchSubscriptList ;
+  public: GGS__5B_mapAccessorAST_5D_ mProperty_mSearchSubcriptList ;
   public: GGS__5B_mapAccessorAST_5D_ mProperty_mRemoveSetterList ;
   public: GGS__5B_mapAccessorAST_5D_ mProperty_mReplaceSetterList ;
   public: GGS_bool mProperty_mHasInsertOrReplaceModifier ;
@@ -3595,7 +3595,7 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                      const GGS__5B_typedProperty_5D_ & in_mTypedAttributeList,
                                      const GGS__5B_insertSetterAST_5D_ & in_mInsertSetterList,
                                      const GGS__5B_mapAccessorAST_5D_ & in_mSearchMethodList,
-                                     const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubscriptList,
+                                     const GGS__5B_mapAccessorAST_5D_ & in_mSearchSubcriptList,
                                      const GGS__5B_mapAccessorAST_5D_ & in_mRemoveSetterList,
                                      const GGS__5B_mapAccessorAST_5D_ & in_mReplaceSetterList,
                                      const GGS_bool & in_mHasInsertOrReplaceModifier,

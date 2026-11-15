@@ -10171,13 +10171,13 @@ class GGS_string extensionGetter_initializerSignature (const class GGS__5B_actua
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension func '@[actualOutputArgumentAST] subscriptSignature' (as function)
+//Extension func '@[actualOutputArgumentAST] subcriptSignature' (as function)
 //
 //--------------------------------------------------------------------------------------------------
 
-class GGS_string extensionGetter_subscriptSignature (const class GGS__5B_actualOutputArgumentAST_5D_ & inObject,
-                                                     class Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+class GGS_string extensionGetter_subcriptSignature (const class GGS__5B_actualOutputArgumentAST_5D_ & inObject,
+                                                    class Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //

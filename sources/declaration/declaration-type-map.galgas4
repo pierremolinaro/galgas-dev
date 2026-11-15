@@ -40,7 +40,7 @@ syntax extension galgas4DeclarationsSyntax {
     var [@mapAccessorAST] mRemoveSetterList = @()
     var [@mapAccessorAST] replaceMethodList = @()
     var [@location] insertOrReplaceDeclarationListAST = @()
-    var [@mapAccessorAST] searchSubscriptListAST = @()
+    var [@mapAccessorAST] searchSubcriptListAST = @()
     repeat
     while
       <property_declaration> (!?ioDeclarations, !? propertyList)
@@ -49,7 +49,7 @@ syntax extension galgas4DeclarationsSyntax {
     while
       <search_method_declaration> (!?mSearchMethodList)
     while
-      <search_subscript_declaration> (!?searchSubscriptListAST)
+      <search_subcript_declaration> (!?searchSubcriptListAST)
     while
       <remove_setter_declaration> (!?mRemoveSetterList)
     while
@@ -66,7 +66,7 @@ syntax extension galgas4DeclarationsSyntax {
       propertyList,
       mInsertSetterList,
       mSearchMethodList,
-      searchSubscriptListAST,
+      searchSubcriptListAST,
       mRemoveSetterList,
       replaceMethodList,
       insertOrReplaceDeclarationListAST,
@@ -86,12 +86,12 @@ syntax extension galgas4DeclarationsSyntax {
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  rule <search_subscript_declaration> (?![@mapAccessorAST] ioMapSearchSubscriptListAST ) {
+  rule <search_subcript_declaration> (?![@mapAccessorAST] ioMapSearchSubcriptListAST ) {
     $#searchSubscript$
     $identifier$ (?let @lstring methodName)
     $#errorMessage$
     $"string"$ (?let @lstring errorMessage)
-    ioMapSearchSubscriptListAST ++= @(methodName, errorMessage)
+    ioMapSearchSubcriptListAST ++= @(methodName, errorMessage)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -181,7 +181,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
   private let [@propertyInCollectionAST] mPropertyList
   private let [@insertSetterAST] mInsertSetterList
   private let [@mapAccessorAST] mSearchMethodList
-  private let [@mapAccessorAST] mSearchSubscriptList
+  private let [@mapAccessorAST] mSearchSubcriptList
   private let [@mapAccessorAST] mRemoveSetterList
   private let [@mapAccessorAST] mReplaceSetterList
   private let [@location] mInsertOrReplaceDeclarationListAST
@@ -552,19 +552,19 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       (optionalElementTypeName,
       ?let @unifiedTypeMapEntry optionalElementTypeEntry
     )
-  //--- Read subscripts
-    var @readSubcriptMap readSubscriptMap = @()
+  //--- Read subcripts
+    var @readSubcriptMap readSubcriptMap = @()
     let [@functionSignatureElement] argumentTypeList = [@("".nowhere, stringTypeIndex, "inKey", true)]
-    !?readSubscriptMap.insertKey
+    !?readSubcriptMap.insertKey
       (@(argumentTypeList.subcriptSignature, .nowhere),
       argumentTypeList,
       optionalElementTypeEntry
     )
-    for searchSubscript in self.mSearchSubscriptList do
-       let [@functionSignatureElement] subscriptArgumentTypeList = [@(searchSubscript.mName, lstringTypeIndex, "inKey", true)]
-       !?readSubscriptMap.insertKey
-        (@(subscriptArgumentTypeList.subcriptSignature, .nowhere),
-        subscriptArgumentTypeList,
+    for searchSubcript in self.mSearchSubcriptList do
+       let [@functionSignatureElement] subcriptArgumentTypeList = [@(searchSubcript.mName, lstringTypeIndex, "inKey", true)]
+       !?readSubcriptMap.insertKey
+        (@(subcriptArgumentTypeList.subcriptSignature, .nowhere),
+        subcriptArgumentTypeList,
         elementTypeEntry
       )
     end
@@ -587,7 +587,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !instanceMethodMap: instanceMethodMap,
       !classMethodMap: @(),
       !unwrappedType: .null,
-      !readSubscriptMap: readSubscriptMap,
+      !readSubscriptMap: readSubcriptMap,
       !writeSubscriptMap: @(),
       !enumerationDescriptorList: enumerationDescriptor,
       !features: features,
@@ -699,7 +699,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       typedAttributeList,
       self.mInsertSetterList,
       self.mSearchMethodList,
-      self.mSearchSubscriptList,
+      self.mSearchSubcriptList,
       self.mRemoveSetterList,
       self.mReplaceSetterList,
       hasInsertOrReplaceModifier,
@@ -721,7 +721,7 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
   private let [@typedProperty] mTypedAttributeList
   private let [@insertSetterAST] mInsertSetterList
   private let [@mapAccessorAST] mSearchMethodList
-  private let [@mapAccessorAST] mSearchSubscriptList
+  private let [@mapAccessorAST] mSearchSubcriptList
   private let [@mapAccessorAST] mRemoveSetterList
   private let [@mapAccessorAST] mReplaceSetterList
   private let @bool mHasInsertOrReplaceModifier
@@ -730,7 +730,7 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   override proc appendDeclaration1 (?!@stringset _ioInclusionSet,
-                                      !@string outHeader ) {
+                                    !@string outHeader ) {
     let selfTypeDefinition = self.mSelfTypeEntry.definition
     outHeader = filewrapper [mapGenerationTemplate.mapTypeHeader1 :
       selfTypeDefinition.typeName.string,
@@ -778,7 +778,7 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
       !insertSetters: self.mInsertSetterList,
       !optionalElementTypeIdentifier: self.mOptionalElementTypeEntry.identifierRepresentation,
       !searchMethods: self.mSearchMethodList,
-      !searchSubscripts: self.mSearchSubscriptList,
+      !searchSubscripts: self.mSearchSubcriptList,
       !removeSetters: self.mRemoveSetterList,
       !replaceSetters: self.mReplaceSetterList,
       self.mHasInsertOrReplaceModifier,
@@ -815,7 +815,7 @@ private filewrapper mapGenerationTemplate in "../+generation-templates/type_gene
     ?insertSetters: [@insertSetterAST] INSERT_SETTER_LIST,
     ?optionalElementTypeIdentifier: @string OPTIONAL_ELEMENT_TYPE_IDENTIFIER,
     ?searchMethods: [@mapAccessorAST] SEARCH_METHOD_LIST,
-    ?searchSubscripts: [@mapAccessorAST] SEARCH_SUBSCRIPT_LIST,
+    ?searchSubscripts: [@mapAccessorAST] SEARCH_SUBCRIPT_LIST,
     ?removeSetters: [@mapAccessorAST] REMOVE_SETTER_LIST,
     ?replaceSetters: [@mapAccessorAST] REPLACE_SETTER_LIST,
     ?@bool HAS_INSERT_OR_REPLACE,

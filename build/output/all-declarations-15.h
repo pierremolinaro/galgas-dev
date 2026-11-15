@@ -1516,16 +1516,16 @@ class cGrammar_galgas_34_Grammar : public cParser_galgas_34_ExpressionSyntax,
   public: virtual void nt_search_5F_method_5F_declaration_ (GGS__5B_mapAccessorAST_5D_ & ioArgument0,
                                                             Lexique_galgasScanner_34_ * inCompiler) ;
 
-//------------------------------------- 'search_subscript_declaration' non terminal
+//------------------------------------- 'search_subcript_declaration' non terminal
 //--- 'parse' label
- /*  public: virtual void nt_search_5F_subscript_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ; */
+ /*  public: virtual void nt_search_5F_subcript_5F_declaration_parse (Lexique_galgasScanner_34_ * inCompiler) ; */
 
 //--- indexing
-  public: virtual void nt_search_5F_subscript_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
+  public: virtual void nt_search_5F_subcript_5F_declaration_indexing (Lexique_galgasScanner_34_ * inCompiler) ;
 
 //----------- '' label
-  public: virtual void nt_search_5F_subscript_5F_declaration_ (GGS__5B_mapAccessorAST_5D_ & ioArgument0,
-                                                               Lexique_galgasScanner_34_ * inCompiler) ;
+  public: virtual void nt_search_5F_subcript_5F_declaration_ (GGS__5B_mapAccessorAST_5D_ & ioArgument0,
+                                                              Lexique_galgasScanner_34_ * inCompiler) ;
 
 //------------------------------------- 'semantic_instruction' non terminal
 //--- 'parse' label

@@ -3026,7 +3026,7 @@ static const char * gNonTerminalNames_galgas4Grammar [326] = {
   "<acces_control>",// Index 39
   "<property_declaration>",// Index 40
   "<search_method_declaration>",// Index 41
-  "<search_subscript_declaration>",// Index 42
+  "<search_subcript_declaration>",// Index 42
   "<remove_setter_declaration>",// Index 43
   "<replace_setter_declaration>",// Index 44
   "<insert_or_replace_declaration>",// Index 45
@@ -36040,22 +36040,22 @@ void cGrammar_galgas_34_Grammar::nt_search_5F_method_5F_declaration_ (GGS__5B_ma
 
 //--------------------------------------------------------------------------------------------------
 //
-//                   'search_subscript_declaration' non terminal implementation                     
+//                   'search_subcript_declaration' non terminal implementation                      
 //
 //--------------------------------------------------------------------------------------------------
 
-void cGrammar_galgas_34_Grammar::nt_search_5F_subscript_5F_declaration_indexing (Lexique_galgasScanner_34_ * inLexique) {
+void cGrammar_galgas_34_Grammar::nt_search_5F_subcript_5F_declaration_indexing (Lexique_galgasScanner_34_ * inLexique) {
   if (inLexique->nextProductionIndex () == 130) {
-  rule_galgas_34_DeclarationsSyntax_search_5F_subscript_5F_declaration_i36_indexing(inLexique) ;
+  rule_galgas_34_DeclarationsSyntax_search_5F_subcript_5F_declaration_i36_indexing(inLexique) ;
   }else{
     inLexique->internalBottomUpParserError (HERE) ;
   }
 }
 
-void cGrammar_galgas_34_Grammar::nt_search_5F_subscript_5F_declaration_ (GGS__5B_mapAccessorAST_5D_ &  parameter_1,
+void cGrammar_galgas_34_Grammar::nt_search_5F_subcript_5F_declaration_ (GGS__5B_mapAccessorAST_5D_ &  parameter_1,
                                 Lexique_galgasScanner_34_ * inLexique) {
   if (inLexique->nextProductionIndex () == 130) {
-  rule_galgas_34_DeclarationsSyntax_search_5F_subscript_5F_declaration_i36_(parameter_1, inLexique) ;
+  rule_galgas_34_DeclarationsSyntax_search_5F_subcript_5F_declaration_i36_(parameter_1, inLexique) ;
   }else{
     inLexique->internalBottomUpParserError (HERE) ;
   }

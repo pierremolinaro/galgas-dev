@@ -3574,7 +3574,7 @@ class GGS_assignmentInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Property access
   public: class GGS_lstring readProperty_mTargetVariableName (void) const ;
 
-  public: class GGS_lstring readProperty_mOptionalProperty (void) const ;
+  public: class GGS_assignmentSupplement readProperty_mSupplement (void) const ;
 
   public: class GGS_semanticExpressionAST readProperty_mSourceExpression (void) const ;
 
@@ -3583,7 +3583,7 @@ class GGS_assignmentInstructionAST : public GGS_semanticInstructionAST {
 //--------------------------------- Initializers
   public: static GGS_assignmentInstructionAST init_21__21__21__21_ (const class GGS_location & inOperand0,
                                                                     const class GGS_lstring & inOperand1,
-                                                                    const class GGS_lstring & inOperand2,
+                                                                    const class GGS_assignmentSupplement & inOperand2,
                                                                     const class GGS_semanticExpressionAST & inOperand3,
                                                                     Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
@@ -3625,7 +3625,7 @@ class cPtr_assignmentInstructionAST : public cPtr_semanticInstructionAST {
 //--------------------------------- Initializers
   public: void assignmentInstructionAST_init_21__21__21__21_ (const class GGS_location & inOperand0,
                                                               const class GGS_lstring & inOperand1,
-                                                              const class GGS_lstring & inOperand2,
+                                                              const class GGS_assignmentSupplement & inOperand2,
                                                               const class GGS_semanticExpressionAST & inOperand3,
                                                               Compiler * inCompiler) ;
 
@@ -3645,7 +3645,7 @@ class cPtr_assignmentInstructionAST : public cPtr_semanticInstructionAST {
 
 //--- Properties
   public: GGS_lstring mProperty_mTargetVariableName ;
-  public: GGS_lstring mProperty_mOptionalProperty ;
+  public: GGS_assignmentSupplement mProperty_mSupplement ;
   public: GGS_semanticExpressionAST mProperty_mSourceExpression ;
 
 
@@ -3655,7 +3655,7 @@ class cPtr_assignmentInstructionAST : public cPtr_semanticInstructionAST {
 //--- Constructor
   public: cPtr_assignmentInstructionAST (const GGS_location & in_mInstructionLocation,
                                          const GGS_lstring & in_mTargetVariableName,
-                                         const GGS_lstring & in_mOptionalProperty,
+                                         const GGS_assignmentSupplement & in_mSupplement,
                                          const GGS_semanticExpressionAST & in_mSourceExpression,
                                          Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
@@ -3760,7 +3760,7 @@ class GGS_selfPropertyAssignmentInstructionAST : public GGS_semanticInstructionA
 //--------------------------------- Property access
   public: class GGS_lstring readProperty_mTargetSelfPropertyName (void) const ;
 
-  public: class GGS_lstring readProperty_mOptionalProperty (void) const ;
+  public: class GGS_assignmentSupplement readProperty_mSupplement (void) const ;
 
   public: class GGS_semanticExpressionAST readProperty_mSourceExpression (void) const ;
 
@@ -3769,7 +3769,7 @@ class GGS_selfPropertyAssignmentInstructionAST : public GGS_semanticInstructionA
 //--------------------------------- Initializers
   public: static GGS_selfPropertyAssignmentInstructionAST init_21__21__21__21_ (const class GGS_location & inOperand0,
                                                                                 const class GGS_lstring & inOperand1,
-                                                                                const class GGS_lstring & inOperand2,
+                                                                                const class GGS_assignmentSupplement & inOperand2,
                                                                                 const class GGS_semanticExpressionAST & inOperand3,
                                                                                 Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) ;
@@ -3811,7 +3811,7 @@ class cPtr_selfPropertyAssignmentInstructionAST : public cPtr_semanticInstructio
 //--------------------------------- Initializers
   public: void selfPropertyAssignmentInstructionAST_init_21__21__21__21_ (const class GGS_location & inOperand0,
                                                                           const class GGS_lstring & inOperand1,
-                                                                          const class GGS_lstring & inOperand2,
+                                                                          const class GGS_assignmentSupplement & inOperand2,
                                                                           const class GGS_semanticExpressionAST & inOperand3,
                                                                           Compiler * inCompiler) ;
 
@@ -3831,7 +3831,7 @@ class cPtr_selfPropertyAssignmentInstructionAST : public cPtr_semanticInstructio
 
 //--- Properties
   public: GGS_lstring mProperty_mTargetSelfPropertyName ;
-  public: GGS_lstring mProperty_mOptionalProperty ;
+  public: GGS_assignmentSupplement mProperty_mSupplement ;
   public: GGS_semanticExpressionAST mProperty_mSourceExpression ;
 
 
@@ -3841,7 +3841,7 @@ class cPtr_selfPropertyAssignmentInstructionAST : public cPtr_semanticInstructio
 //--- Constructor
   public: cPtr_selfPropertyAssignmentInstructionAST (const GGS_location & in_mInstructionLocation,
                                                      const GGS_lstring & in_mTargetSelfPropertyName,
-                                                     const GGS_lstring & in_mOptionalProperty,
+                                                     const GGS_assignmentSupplement & in_mSupplement,
                                                      const GGS_semanticExpressionAST & in_mSourceExpression,
                                                      Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;

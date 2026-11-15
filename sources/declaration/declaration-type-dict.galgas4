@@ -332,7 +332,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
     (optionalElementTypeName,
     ?let @unifiedTypeMapEntry optionalElementTypeEntry
   )
-//--- Read subscripts
+//--- Read subcripts
   var @readSubcriptMap readSubscriptMap = @()
   let [@functionSignatureElement] argumentTypeList = [@("".nowhere, keyTypeIndex, "inKey", true)]
   !?readSubscriptMap.insertKey

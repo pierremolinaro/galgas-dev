@@ -36,7 +36,7 @@ func [@actualOutputArgumentAST].initializerSignature () -> @string {
 
 //--------------------------------------------------------------------------------------------------
 
-func [@actualOutputArgumentAST].subscriptSignature () -> @string {
+func [@actualOutputArgumentAST].subcriptSignature () -> @string {
   result = ""
   for effectiveParameter in self do
     result += "?" + effectiveParameter.mActualSelector

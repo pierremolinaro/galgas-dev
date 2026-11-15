@@ -6041,13 +6041,13 @@ GGS_semanticInstructionAST () {
 GGS_assignmentInstructionAST GGS_assignmentInstructionAST::
 init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                       const GGS_lstring & in_mTargetVariableName,
-                      const GGS_lstring & in_mOptionalProperty,
+                      const GGS_assignmentSupplement & in_mSupplement,
                       const GGS_semanticExpressionAST & in_mSourceExpression,
                       Compiler * inCompiler
                       COMMA_LOCATION_ARGS) {
   cPtr_assignmentInstructionAST * object = nullptr ;
   macroMyNew (object, cPtr_assignmentInstructionAST (inCompiler COMMA_THERE)) ;
-  object->assignmentInstructionAST_init_21__21__21__21_ (in_mInstructionLocation, in_mTargetVariableName, in_mOptionalProperty, in_mSourceExpression, inCompiler) ;
+  object->assignmentInstructionAST_init_21__21__21__21_ (in_mInstructionLocation, in_mTargetVariableName, in_mSupplement, in_mSourceExpression, inCompiler) ;
   const GGS_assignmentInstructionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -6058,12 +6058,12 @@ init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
 void cPtr_assignmentInstructionAST::
 assignmentInstructionAST_init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                                                const GGS_lstring & in_mTargetVariableName,
-                                               const GGS_lstring & in_mOptionalProperty,
+                                               const GGS_assignmentSupplement & in_mSupplement,
                                                const GGS_semanticExpressionAST & in_mSourceExpression,
                                                Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mTargetVariableName = in_mTargetVariableName ;
-  mProperty_mOptionalProperty = in_mOptionalProperty ;
+  mProperty_mSupplement = in_mSupplement ;
   mProperty_mSourceExpression = in_mSourceExpression ;
 }
 
@@ -6087,13 +6087,13 @@ GGS_lstring GGS_assignmentInstructionAST::readProperty_mTargetVariableName (void
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring GGS_assignmentInstructionAST::readProperty_mOptionalProperty (void) const {
+GGS_assignmentSupplement GGS_assignmentInstructionAST::readProperty_mSupplement (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
+    return GGS_assignmentSupplement () ;
   }else{
     cPtr_assignmentInstructionAST * p = (cPtr_assignmentInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_assignmentInstructionAST) ;
-    return p->mProperty_mOptionalProperty ;
+    return p->mProperty_mSupplement ;
   }
 }
 
@@ -6116,7 +6116,7 @@ GGS_semanticExpressionAST GGS_assignmentInstructionAST::readProperty_mSourceExpr
 cPtr_assignmentInstructionAST::cPtr_assignmentInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
 mProperty_mTargetVariableName (),
-mProperty_mOptionalProperty (),
+mProperty_mSupplement (),
 mProperty_mSourceExpression () {
 }
 
@@ -6124,17 +6124,17 @@ mProperty_mSourceExpression () {
 
 cPtr_assignmentInstructionAST::cPtr_assignmentInstructionAST (const GGS_location & in_mInstructionLocation,
                                                               const GGS_lstring & in_mTargetVariableName,
-                                                              const GGS_lstring & in_mOptionalProperty,
+                                                              const GGS_assignmentSupplement & in_mSupplement,
                                                               const GGS_semanticExpressionAST & in_mSourceExpression,
                                                               Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
 mProperty_mTargetVariableName (),
-mProperty_mOptionalProperty (),
+mProperty_mSupplement (),
 mProperty_mSourceExpression () {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mTargetVariableName = in_mTargetVariableName ;
-  mProperty_mOptionalProperty = in_mOptionalProperty ;
+  mProperty_mSupplement = in_mSupplement ;
   mProperty_mSourceExpression = in_mSourceExpression ;
 }
 
@@ -6151,7 +6151,7 @@ void cPtr_assignmentInstructionAST::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mTargetVariableName.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mOptionalProperty.description (ioString, inIndentation+1) ;
+  mProperty_mSupplement.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mSourceExpression.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
@@ -6161,7 +6161,7 @@ void cPtr_assignmentInstructionAST::description (String & ioString,
 
 AbstractPtrClass * cPtr_assignmentInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_assignmentInstructionAST (mProperty_mInstructionLocation, mProperty_mTargetVariableName, mProperty_mOptionalProperty, mProperty_mSourceExpression, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_assignmentInstructionAST (mProperty_mInstructionLocation, mProperty_mTargetVariableName, mProperty_mSupplement, mProperty_mSourceExpression, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6172,7 +6172,7 @@ AbstractPtrClass * cPtr_assignmentInstructionAST::duplicate (Compiler * inCompil
   void cPtr_assignmentInstructionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
     mProperty_mTargetVariableName.printNonNullClassInstanceProperties ("mTargetVariableName") ;
-    mProperty_mOptionalProperty.printNonNullClassInstanceProperties ("mOptionalProperty") ;
+    mProperty_mSupplement.printNonNullClassInstanceProperties ("mSupplement") ;
     mProperty_mSourceExpression.printNonNullClassInstanceProperties ("mSourceExpression") ;
   }
 #endif
@@ -6316,13 +6316,13 @@ GGS_semanticInstructionAST () {
 GGS_selfPropertyAssignmentInstructionAST GGS_selfPropertyAssignmentInstructionAST::
 init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                       const GGS_lstring & in_mTargetSelfPropertyName,
-                      const GGS_lstring & in_mOptionalProperty,
+                      const GGS_assignmentSupplement & in_mSupplement,
                       const GGS_semanticExpressionAST & in_mSourceExpression,
                       Compiler * inCompiler
                       COMMA_LOCATION_ARGS) {
   cPtr_selfPropertyAssignmentInstructionAST * object = nullptr ;
   macroMyNew (object, cPtr_selfPropertyAssignmentInstructionAST (inCompiler COMMA_THERE)) ;
-  object->selfPropertyAssignmentInstructionAST_init_21__21__21__21_ (in_mInstructionLocation, in_mTargetSelfPropertyName, in_mOptionalProperty, in_mSourceExpression, inCompiler) ;
+  object->selfPropertyAssignmentInstructionAST_init_21__21__21__21_ (in_mInstructionLocation, in_mTargetSelfPropertyName, in_mSupplement, in_mSourceExpression, inCompiler) ;
   const GGS_selfPropertyAssignmentInstructionAST result (object) ;
   macroDetachSharedObject (object) ;
   return result ;
@@ -6333,12 +6333,12 @@ init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
 void cPtr_selfPropertyAssignmentInstructionAST::
 selfPropertyAssignmentInstructionAST_init_21__21__21__21_ (const GGS_location & in_mInstructionLocation,
                                                            const GGS_lstring & in_mTargetSelfPropertyName,
-                                                           const GGS_lstring & in_mOptionalProperty,
+                                                           const GGS_assignmentSupplement & in_mSupplement,
                                                            const GGS_semanticExpressionAST & in_mSourceExpression,
                                                            Compiler * /* inCompiler */) {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mTargetSelfPropertyName = in_mTargetSelfPropertyName ;
-  mProperty_mOptionalProperty = in_mOptionalProperty ;
+  mProperty_mSupplement = in_mSupplement ;
   mProperty_mSourceExpression = in_mSourceExpression ;
 }
 
@@ -6362,13 +6362,13 @@ GGS_lstring GGS_selfPropertyAssignmentInstructionAST::readProperty_mTargetSelfPr
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring GGS_selfPropertyAssignmentInstructionAST::readProperty_mOptionalProperty (void) const {
+GGS_assignmentSupplement GGS_selfPropertyAssignmentInstructionAST::readProperty_mSupplement (void) const {
   if (nullptr == mObjectPtr) {
-    return GGS_lstring () ;
+    return GGS_assignmentSupplement () ;
   }else{
     cPtr_selfPropertyAssignmentInstructionAST * p = (cPtr_selfPropertyAssignmentInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_selfPropertyAssignmentInstructionAST) ;
-    return p->mProperty_mOptionalProperty ;
+    return p->mProperty_mSupplement ;
   }
 }
 
@@ -6391,7 +6391,7 @@ GGS_semanticExpressionAST GGS_selfPropertyAssignmentInstructionAST::readProperty
 cPtr_selfPropertyAssignmentInstructionAST::cPtr_selfPropertyAssignmentInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
 mProperty_mTargetSelfPropertyName (),
-mProperty_mOptionalProperty (),
+mProperty_mSupplement (),
 mProperty_mSourceExpression () {
 }
 
@@ -6399,17 +6399,17 @@ mProperty_mSourceExpression () {
 
 cPtr_selfPropertyAssignmentInstructionAST::cPtr_selfPropertyAssignmentInstructionAST (const GGS_location & in_mInstructionLocation,
                                                                                       const GGS_lstring & in_mTargetSelfPropertyName,
-                                                                                      const GGS_lstring & in_mOptionalProperty,
+                                                                                      const GGS_assignmentSupplement & in_mSupplement,
                                                                                       const GGS_semanticExpressionAST & in_mSourceExpression,
                                                                                       Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
 mProperty_mTargetSelfPropertyName (),
-mProperty_mOptionalProperty (),
+mProperty_mSupplement (),
 mProperty_mSourceExpression () {
   mProperty_mInstructionLocation = in_mInstructionLocation ;
   mProperty_mTargetSelfPropertyName = in_mTargetSelfPropertyName ;
-  mProperty_mOptionalProperty = in_mOptionalProperty ;
+  mProperty_mSupplement = in_mSupplement ;
   mProperty_mSourceExpression = in_mSourceExpression ;
 }
 
@@ -6426,7 +6426,7 @@ void cPtr_selfPropertyAssignmentInstructionAST::description (String & ioString,
   ioString.appendCString (", ") ;
   mProperty_mTargetSelfPropertyName.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
-  mProperty_mOptionalProperty.description (ioString, inIndentation+1) ;
+  mProperty_mSupplement.description (ioString, inIndentation+1) ;
   ioString.appendCString (", ") ;
   mProperty_mSourceExpression.description (ioString, inIndentation+1) ;
   ioString.appendCString ("]") ;
@@ -6436,7 +6436,7 @@ void cPtr_selfPropertyAssignmentInstructionAST::description (String & ioString,
 
 AbstractPtrClass * cPtr_selfPropertyAssignmentInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
   AbstractPtrClass * ptr = nullptr ;
-  macroMyNew (ptr, cPtr_selfPropertyAssignmentInstructionAST (mProperty_mInstructionLocation, mProperty_mTargetSelfPropertyName, mProperty_mOptionalProperty, mProperty_mSourceExpression, inCompiler COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_selfPropertyAssignmentInstructionAST (mProperty_mInstructionLocation, mProperty_mTargetSelfPropertyName, mProperty_mSupplement, mProperty_mSourceExpression, inCompiler COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6447,7 +6447,7 @@ AbstractPtrClass * cPtr_selfPropertyAssignmentInstructionAST::duplicate (Compile
   void cPtr_selfPropertyAssignmentInstructionAST::printNonNullClassInstanceProperties (void) const {
     cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
     mProperty_mTargetSelfPropertyName.printNonNullClassInstanceProperties ("mTargetSelfPropertyName") ;
-    mProperty_mOptionalProperty.printNonNullClassInstanceProperties ("mOptionalProperty") ;
+    mProperty_mSupplement.printNonNullClassInstanceProperties ("mSupplement") ;
     mProperty_mSourceExpression.printNonNullClassInstanceProperties ("mSourceExpression") ;
   }
 #endif
@@ -11599,21 +11599,21 @@ void cParser_galgas_34_ExpressionSyntax::rule_galgas_34_ExpressionSyntax_output_
   case 1: {
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
-      GGS_lstring var_selector_2917 ;
+      GGS_lstring var_selector_2916 ;
       switch (select_galgas_34_ExpressionSyntax_8 (inCompiler)) {
       case 1: {
-        var_selector_2917 = inCompiler->synthetizedAttribute_tokenString () ;
+        var_selector_2916 = inCompiler->synthetizedAttribute_tokenString () ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 69)) ;
       } break ;
       case 2: {
-        var_selector_2917 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 74)) ;
+        var_selector_2916 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 74)) ;
       } break ;
       default:
         break ;
       }
-      GGS_semanticExpressionAST var_expression_3159 ;
-      nt_expression_ (ioArgument_ioDeclarations, var_expression_3159, inCompiler) ;
-      outArgument_outExpressionList.plusPlusAssignOperation (GGS_actualOutputArgumentAST::init_21__21__21_ (var_selector_2917, var_expression_3159, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 77)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 77)) ;
+      GGS_semanticExpressionAST var_expression_3158 ;
+      nt_expression_ (ioArgument_ioDeclarations, var_expression_3158, inCompiler) ;
+      outArgument_outExpressionList.plusPlusAssignOperation (GGS_actualOutputArgumentAST::init_21__21__21_ (var_selector_2916, var_expression_3158, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 77)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 77)) ;
       if (select_galgas_34_ExpressionSyntax_7 (inCompiler) == 2) {
         inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 79)) ;
       }else{
@@ -11668,21 +11668,21 @@ void cParser_galgas_34_ExpressionSyntax::rule_galgas_34_ExpressionSyntax_non_5F_
   outArgument_outExpressionList = GGS__5B_actualOutputArgumentAST_5D_::init (inCompiler COMMA_HERE) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    GGS_lstring var_selector_3621 ;
+    GGS_lstring var_selector_3620 ;
     switch (select_galgas_34_ExpressionSyntax_10 (inCompiler)) {
     case 1: {
-      var_selector_3621 = inCompiler->synthetizedAttribute_tokenString () ;
+      var_selector_3620 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__21_selector_3A_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 93)) ;
     } break ;
     case 2: {
-      var_selector_3621 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 98)) ;
+      var_selector_3620 = GGS_string::makeEmptyString ().getter_here (inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 98)) ;
     } break ;
     default:
       break ;
     }
-    GGS_semanticExpressionAST var_expression_3845 ;
-    nt_expression_ (ioArgument_ioDeclarations, var_expression_3845, inCompiler) ;
-    outArgument_outExpressionList.plusPlusAssignOperation (GGS_actualOutputArgumentAST::init_21__21__21_ (var_selector_3621, var_expression_3845, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 101)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 101)) ;
+    GGS_semanticExpressionAST var_expression_3844 ;
+    nt_expression_ (ioArgument_ioDeclarations, var_expression_3844, inCompiler) ;
+    outArgument_outExpressionList.plusPlusAssignOperation (GGS_actualOutputArgumentAST::init_21__21__21_ (var_selector_3620, var_expression_3844, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 101)), inCompiler COMMA_HERE)  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 101)) ;
     if (select_galgas_34_ExpressionSyntax_9 (inCompiler) == 2) {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2C_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 103)) ;
     }else{
@@ -12607,26 +12607,26 @@ void cParser_galgas_34_ExpressionSyntax::rule_galgas_34_ExpressionSyntax_factor_
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__5B_ COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 31)) ;
       GGS__5B_actualOutputArgumentAST_5D_ var_expressionList_1749 ;
       nt_non_5F_empty_5F_output_5F_expression_5F_list_ (ioArgument_ioDeclarations, var_expressionList_1749, inCompiler) ;
-      outArgument_outExpression = GGS_subscriptReadAccessExpressionAST::init_21__21__21_ (outArgument_outExpression, var_expressionList_1749, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 39)), inCompiler COMMA_HERE) ;
+      outArgument_outExpression = GGS_subcriptReadAccessExpressionAST::init_21__21__21_ (outArgument_outExpression, var_expressionList_1749, GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 39)), inCompiler COMMA_HERE) ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__5D_ COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 41)) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E_ COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 43)) ;
-      GGS_lstring var_structFieldName_1954 = inCompiler->synthetizedAttribute_tokenString () ;
+      GGS_lstring var_structFieldName_1953 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 44)) ;
       switch (select_galgas_34_ExpressionSyntax_23 (inCompiler)) {
       case 1: {
-        outArgument_outExpression = GGS_structPropertyAccessExpressionAST::init_21__21__21_ (var_structFieldName_1954.readProperty_location (), outArgument_outExpression, var_structFieldName_1954, inCompiler COMMA_HERE) ;
+        outArgument_outExpression = GGS_structPropertyAccessExpressionAST::init_21__21__21_ (var_structFieldName_1953.readProperty_location (), outArgument_outExpression, var_structFieldName_1953, inCompiler COMMA_HERE) ;
       } break ;
       case 2: {
-        GGS_lstring var_getterName_2183 = var_structFieldName_1954 ;
-        GGS_location var_startLocation_2224 = GGS_location::class_func_next (inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 53)) ;
+        GGS_lstring var_getterName_2182 = var_structFieldName_1953 ;
+        GGS_location var_startLocation_2223 = GGS_location::class_func_next (inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 53)) ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__28_ COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 54)) ;
-        GGS__5B_actualOutputArgumentAST_5D_ var_expressionList_2351 ;
-        nt_output_5F_expression_5F_list_ (ioArgument_ioDeclarations, var_expressionList_2351, inCompiler) ;
-        GGS_location var_endLocation_2379 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 56)) ;
+        GGS__5B_actualOutputArgumentAST_5D_ var_expressionList_2350 ;
+        nt_output_5F_expression_5F_list_ (ioArgument_ioDeclarations, var_expressionList_2350, inCompiler) ;
+        GGS_location var_endLocation_2378 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 56)) ;
         inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__29_ COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 57)) ;
-        outArgument_outExpression = GGS_getterCallExpressionAST::init_21__21__21__21_ (outArgument_outExpression, var_getterName_2183, var_expressionList_2351, var_startLocation_2224.getter_union (var_endLocation_2379, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 62)), inCompiler COMMA_HERE) ;
+        outArgument_outExpression = GGS_getterCallExpressionAST::init_21__21__21__21_ (outArgument_outExpression, var_getterName_2182, var_expressionList_2350, var_startLocation_2223.getter_union (var_endLocation_2378, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 62)), inCompiler COMMA_HERE) ;
       } break ;
       default:
         break ;
@@ -16230,19 +16230,19 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_sem
                                                                                                            GGS_semanticInstructionAST & outArgument_outInstruction,
                                                                                                            Lexique_galgasScanner_34_ * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_self COMMA_SOURCE_FILE ("instruction-self-assignment.galgas4", 58)) ;
-  GGS_location var_instructionLocation_2766 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-self-assignment.galgas4", 59)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3D_ COMMA_SOURCE_FILE ("instruction-self-assignment.galgas4", 60)) ;
-  GGS_semanticExpressionAST var_sourceExpression_2875 ;
-  nt_expression_ (ioArgument_ioDeclarations, var_sourceExpression_2875, inCompiler) ;
-  outArgument_outInstruction = GGS_selfAssignmentInstructionAST::init_21__21_ (var_instructionLocation_2766, var_sourceExpression_2875, inCompiler COMMA_HERE) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_self COMMA_SOURCE_FILE ("instruction-self-assignment.galgas4", 36)) ;
+  GGS_location var_instructionLocation_1950 = GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-self-assignment.galgas4", 37)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3D_ COMMA_SOURCE_FILE ("instruction-self-assignment.galgas4", 38)) ;
+  GGS_semanticExpressionAST var_sourceExpression_2059 ;
+  nt_expression_ (ioArgument_ioDeclarations, var_sourceExpression_2059, inCompiler) ;
+  outArgument_outInstruction = GGS_selfAssignmentInstructionAST::init_21__21_ (var_instructionLocation_1950, var_sourceExpression_2059, inCompiler COMMA_HERE) ;
 }
 
 //------------------------------------------------------------------------------------------------
 
 void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_semantic_5F_instruction_i38_indexing (Lexique_galgasScanner_34_ * inCompiler) {
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_self COMMA_SOURCE_FILE ("instruction-self-assignment.galgas4", 58)) ;
-  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3D_ COMMA_SOURCE_FILE ("instruction-self-assignment.galgas4", 60)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_self COMMA_SOURCE_FILE ("instruction-self-assignment.galgas4", 36)) ;
+  inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3D_ COMMA_SOURCE_FILE ("instruction-self-assignment.galgas4", 38)) ;
   nt_expression_indexing (inCompiler) ;
 }
 
@@ -16310,33 +16310,33 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_sem
   outArgument_outInstruction.drop () ; // Release 'out' argument
   GGS_lstring var_mTargetVariableName_1618 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 29)) ;
-  GGS_lstring var_optionalProperty_1656 ;
+  GGS_assignmentSupplement var_supplement_1669 ;
   switch (select_galgas_34_InstructionsSyntax_57 (inCompiler)) {
   case 1: {
-    var_optionalProperty_1656 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("instruction-assignment.galgas4", 32)) ;
+    var_supplement_1669 = GGS_assignmentSupplement::class_func_none (SOURCE_FILE ("instruction-assignment.galgas4", 32)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__5B_ COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 34)) ;
-    GGS__5B_actualOutputArgumentAST_5D_ var__5F_outExpressionList_1846 ;
-    nt_non_5F_empty_5F_output_5F_expression_5F_list_ (ioArgument_ioDeclarations, var__5F_outExpressionList_1846, inCompiler) ;
+    GGS__5B_actualOutputArgumentAST_5D_ var__5F_outExpressionList_1842 ;
+    nt_non_5F_empty_5F_output_5F_expression_5F_list_ (ioArgument_ioDeclarations, var__5F_outExpressionList_1842, inCompiler) ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__5D_ COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 39)) ;
     GenericArray <FixItDescription> fixItArray0 ;
     inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 40)), GGS_string ("not handled yet"), fixItArray0  COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 40)) ;
-    var_optionalProperty_1656.drop () ; // Release error dropped variable
+    var_supplement_1669.drop () ; // Release error dropped variable
   } break ;
   case 3: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 42)) ;
-    GGS_lstring var_attributeName_1986 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_lstring var_propertyName_1976 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 43)) ;
-    var_optionalProperty_1656 = var_attributeName_1986 ;
+    var_supplement_1669 = GGS_assignmentSupplement::class_func_property (var_propertyName_1976  COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 44)) ;
   } break ;
   default:
     break ;
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3D_ COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 46)) ;
-  GGS_semanticExpressionAST var_mSourceExpression_2120 ;
-  nt_expression_ (ioArgument_ioDeclarations, var_mSourceExpression_2120, inCompiler) ;
-  outArgument_outInstruction = GGS_assignmentInstructionAST::init_21__21__21__21_ (var_mTargetVariableName_1618.readProperty_location (), var_mTargetVariableName_1618, var_optionalProperty_1656, var_mSourceExpression_2120, inCompiler COMMA_HERE) ;
+  GGS_semanticExpressionAST var_mSourceExpression_2121 ;
+  nt_expression_ (ioArgument_ioDeclarations, var_mSourceExpression_2121, inCompiler) ;
+  outArgument_outInstruction = GGS_assignmentInstructionAST::init_21__21__21__21_ (var_mTargetVariableName_1618.readProperty_location (), var_mTargetVariableName_1618, var_supplement_1669, var_mSourceExpression_2121, inCompiler COMMA_HERE) ;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -16370,35 +16370,35 @@ void cParser_galgas_34_InstructionsSyntax::rule_galgas_34_InstructionsSyntax_sem
   outArgument_outInstruction.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_self COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 60)) ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 61)) ;
-  GGS_lstring var_mTargetVariableName_2600 = inCompiler->synthetizedAttribute_tokenString () ;
+  GGS_lstring var_mTargetVariableName_2595 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 62)) ;
-  GGS_lstring var_optionalProperty_2638 ;
+  GGS_assignmentSupplement var_supplement_2646 ;
   switch (select_galgas_34_InstructionsSyntax_58 (inCompiler)) {
   case 1: {
-    var_optionalProperty_2638 = GGS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("instruction-assignment.galgas4", 65)) ;
+    var_supplement_2646 = GGS_assignmentSupplement::class_func_none (SOURCE_FILE ("instruction-assignment.galgas4", 65)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__5B_ COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 67)) ;
-    GGS__5B_actualOutputArgumentAST_5D_ var__5F_outExpressionList_2830 ;
-    nt_non_5F_empty_5F_output_5F_expression_5F_list_ (ioArgument_ioDeclarations, var__5F_outExpressionList_2830, inCompiler) ;
+    GGS__5B_actualOutputArgumentAST_5D_ var__5F_outExpressionList_2819 ;
+    nt_non_5F_empty_5F_output_5F_expression_5F_list_ (ioArgument_ioDeclarations, var__5F_outExpressionList_2819, inCompiler) ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__5D_ COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 72)) ;
     GenericArray <FixItDescription> fixItArray0 ;
     inCompiler->emitSemanticError (GGS_location::class_func_here (inCompiler  COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 73)), GGS_string ("not handled yet"), fixItArray0  COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 73)) ;
-    var_optionalProperty_2638.drop () ; // Release error dropped variable
+    var_supplement_2646.drop () ; // Release error dropped variable
   } break ;
   case 3: {
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__2E_ COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 75)) ;
-    GGS_lstring var_attributeName_2970 = inCompiler->synthetizedAttribute_tokenString () ;
+    GGS_lstring var_propertyName_2953 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken_identifier COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 76)) ;
-    var_optionalProperty_2638 = var_attributeName_2970 ;
+    var_supplement_2646 = GGS_assignmentSupplement::class_func_property (var_propertyName_2953  COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 77)) ;
   } break ;
   default:
     break ;
   }
   inCompiler->acceptTerminal (Lexique_galgasScanner_34_::kToken__3D_ COMMA_SOURCE_FILE ("instruction-assignment.galgas4", 79)) ;
-  GGS_semanticExpressionAST var_mSourceExpression_3104 ;
-  nt_expression_ (ioArgument_ioDeclarations, var_mSourceExpression_3104, inCompiler) ;
-  outArgument_outInstruction = GGS_selfPropertyAssignmentInstructionAST::init_21__21__21__21_ (var_mTargetVariableName_2600.readProperty_location (), var_mTargetVariableName_2600, var_optionalProperty_2638, var_mSourceExpression_3104, inCompiler COMMA_HERE) ;
+  GGS_semanticExpressionAST var_mSourceExpression_3098 ;
+  nt_expression_ (ioArgument_ioDeclarations, var_mSourceExpression_3098, inCompiler) ;
+  outArgument_outInstruction = GGS_selfPropertyAssignmentInstructionAST::init_21__21__21__21_ (var_mTargetVariableName_2595.readProperty_location (), var_mTargetVariableName_2595, var_supplement_2646, var_mSourceExpression_3098, inCompiler COMMA_HERE) ;
 }
 
 //------------------------------------------------------------------------------------------------

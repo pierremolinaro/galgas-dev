@@ -186,7 +186,7 @@ final class @arrayTypeDeclarationAST : @semanticDeclarationAST {
       (@(emptyArgumentList.initializerSignature, self.arrayTypeName),
       emptyArgumentList
     )
-  //--- Read subscripts
+  //--- Read subcripts
     var @readSubcriptMap readSubscriptMap = @()
     let [@functionSignatureElement] argumentTypeList = [@("".nowhere, uintType, "inIndex", true)]
     !?readSubscriptMap.insertKey (

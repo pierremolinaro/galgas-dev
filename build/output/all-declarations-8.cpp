@@ -13833,7 +13833,7 @@ GGS_collectionValueElementAST GGS__5B_collectionValueElementAST_5D_::readSubcrip
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -14316,7 +14316,7 @@ GGS_collectionValueElementForGeneration GGS__5B_collectionValueElementForGenerat
       result = mSharedArray (int32_t (idx) COMMA_HERE) ;
     }else{
       String errorMessage ;
-      errorMessage.appendCString ("subscript value (") ;
+      errorMessage.appendCString ("subcript value (") ;
       errorMessage.appendUnsigned (idx) ;
       errorMessage.appendCString (") too large (array size is") ;
       errorMessage.appendSigned (mSharedArray.count ()) ;
@@ -15485,19 +15485,19 @@ GGS_string extensionGetter_initializerSignature (const GGS__5B_actualOutputArgum
 
 
 //--------------------------------------------------------------------------------------------------
-//  Extension Getter '@[actualOutputArgumentAST] subscriptSignature'
+//  Extension Getter '@[actualOutputArgumentAST] subcriptSignature'
 //--------------------------------------------------------------------------------------------------
 
-GGS_string extensionGetter_subscriptSignature (const GGS__5B_actualOutputArgumentAST_5D_ & inObject,
-                                               Compiler * inCompiler
-                                               COMMA_UNUSED_LOCATION_ARGS) {
+GGS_string extensionGetter_subcriptSignature (const GGS__5B_actualOutputArgumentAST_5D_ & inObject,
+                                              Compiler * inCompiler
+                                              COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string result_result ; // Returned variable
   result_result = GGS_string::makeEmptyString () ;
   const GGS__5B_actualOutputArgumentAST_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_actualOutputArgumentAST_5D_ enumerator_1969 (temp_0) ;
-  while (enumerator_1969.hasCurrentObject ()) {
-    result_result.plusAssignOperation(GGS_string ("\?").add_operation (enumerator_1969.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 42)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 42)) ;
-    enumerator_1969.gotoNextObject () ;
+  UpEnumerator__5B_actualOutputArgumentAST_5D_ enumerator_1968 (temp_0) ;
+  while (enumerator_1968.hasCurrentObject ()) {
+    result_result.plusAssignOperation(GGS_string ("\?").add_operation (enumerator_1968.current (HERE).readProperty_mActualSelector ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 42)), inCompiler  COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 42)) ;
+    enumerator_1968.gotoNextObject () ;
   }
 //---
   return result_result ;
@@ -15517,10 +15517,10 @@ void extensionMethod_enterInSemanticContext (const GGS__5B_actualOutputArgumentA
                                              Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GGS__5B_actualOutputArgumentAST_5D_ temp_0 = inObject ;
-  UpEnumerator__5B_actualOutputArgumentAST_5D_ enumerator_2244 (temp_0) ;
-  while (enumerator_2244.hasCurrentObject ()) {
-    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_2244.current (HERE).readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 50)) ;
-    enumerator_2244.gotoNextObject () ;
+  UpEnumerator__5B_actualOutputArgumentAST_5D_ enumerator_2243 (temp_0) ;
+  while (enumerator_2243.hasCurrentObject ()) {
+    callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) enumerator_2243.current (HERE).readProperty_mExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-output-expression-list.galgas4", 50)) ;
+    enumerator_2243.gotoNextObject () ;
   }
 }
 
