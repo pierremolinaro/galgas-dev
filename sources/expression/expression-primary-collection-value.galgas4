@@ -104,10 +104,10 @@ final class @collectionValueAST : @semanticExpressionAST {
   //---
     if targetType == .null then
       error self.mTypeName : "Cannot infer type" spoil outExpression
-    elsif not targetType.definition.supportCollectionValue then
+    elsif not targetType.definition.supportArrayLiteral then
       error self.mEndOfCollectionValue
       : "the @" + targetType.definition.typeName.string
-      + " type does not support collection value" spoil outExpression
+      + " type does not array literal value" spoil outExpression
     else
       let initializerMap = targetType.definition.initializerMap
       let [@functionSignatureElement] emptyArgumentList = @()

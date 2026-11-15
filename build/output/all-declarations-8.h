@@ -9,6 +9,481 @@
 #include "all-declarations-7.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @templateInstructionSwitchForGeneration_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_templateInstructionSwitchForGeneration_2E_weak : public GGS_templateInstructionForGeneration_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_templateInstructionSwitchForGeneration_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_templateInstructionSwitchForGeneration_2E_weak (const class GGS_templateInstructionSwitchForGeneration & inSource) ;
+
+  public: GGS_templateInstructionSwitchForGeneration_2E_weak & operator = (const class GGS_templateInstructionSwitchForGeneration & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_templateInstructionSwitchForGeneration_2E_weak init_nil (void) {
+    GGS_templateInstructionSwitchForGeneration_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_templateInstructionSwitchForGeneration bang_templateInstructionSwitchForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_templateInstructionSwitchForGeneration unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_templateInstructionSwitchForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_templateInstructionSwitchForGeneration_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension proc '@templateInstructionAST templateInstructionAnalysis'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_templateInstructionAnalysis (class cPtr_templateInstructionAST * inObject,
+                                                      const class GGS_lstring constin_inUsefulnessCallerEntityName,
+                                                      class GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                      const class GGS_templateAnalysisContext constin_inAnalysisContext,
+                                                      class GGS_unifiedTypeMap & io_ioTypeMap,
+                                                      class GGS__5B_templateInstructionForGeneration_5D_ & io_ioInstructionList,
+                                                      class Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @templateAnalysisContext struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_templateAnalysisContext : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_semanticContext mProperty_mSemanticContext ;
+  public: inline GGS_semanticContext readProperty_mSemanticContext (void) const {
+    return mProperty_mSemanticContext ;
+  }
+
+  public: GGS_predefinedTypes mProperty_mPredefinedTypes ;
+  public: inline GGS_predefinedTypes readProperty_mPredefinedTypes (void) const {
+    return mProperty_mPredefinedTypes ;
+  }
+
+  public: GGS_templateVariableMap mProperty_mTemplateVariableMap ;
+  public: inline GGS_templateVariableMap readProperty_mTemplateVariableMap (void) const {
+    return mProperty_mTemplateVariableMap ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_templateAnalysisContext (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setMSemanticContext (const GGS_semanticContext & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mSemanticContext = inValue ;
+  }
+
+  public: inline void setter_setMPredefinedTypes (const GGS_predefinedTypes & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mPredefinedTypes = inValue ;
+  }
+
+  public: inline void setter_setMTemplateVariableMap (const GGS_templateVariableMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mTemplateVariableMap = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_templateAnalysisContext (const GGS_semanticContext & in_mSemanticContext,
+                                       const GGS_predefinedTypes & in_mPredefinedTypes,
+                                       const GGS_templateVariableMap & in_mTemplateVariableMap) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_templateAnalysisContext (const GGS_templateAnalysisContext & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_templateAnalysisContext & operator = (const GGS_templateAnalysisContext & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_templateAnalysisContext init_21__21__21_ (const class GGS_semanticContext & inOperand0,
+                                                               const class GGS_predefinedTypes & inOperand1,
+                                                               const class GGS_templateVariableMap & inOperand2,
+                                                               Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateAnalysisContext ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Abstract extension proc '@templateExpressionAST templateExpressionAnalysis'
+//
+//--------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_templateExpressionAnalysis (class cPtr_templateExpressionAST * inObject,
+                                                     const class GGS_lstring constin_inUsefulnessCallerEntityName,
+                                                     class GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                     const class GGS_templateAnalysisContext constin_inAnalysisContext,
+                                                     class GGS_unifiedTypeMap & io_ioTypeMap,
+                                                     class GGS_semanticExpressionForGeneration & out_outExpression,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @templateClassFunctionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_templateClassFunctionAST : public GGS_templateExpressionAST {
+//--------------------------------- Default constructor
+  public: GGS_templateClassFunctionAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_templateClassFunctionAST (const class cPtr_templateClassFunctionAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_lstring readProperty_mTypeName (void) const ;
+
+  public: class GGS_lstring readProperty_mClassFunctionName (void) const ;
+
+  public: class GGS__5B_templateExpressionElementAST_5D_ readProperty_mExpressionList (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_templateClassFunctionAST init_21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                const class GGS_lstring & inOperand1,
+                                                                const class GGS__5B_templateExpressionElementAST_5D_ & inOperand2,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_templateClassFunctionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateClassFunctionAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @templateClassFunctionAST class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_templateClassFunctionAST : public cPtr_templateExpressionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void templateClassFunctionAST_init_21__21__21_ (const class GGS_lstring & inOperand0,
+                                                          const class GGS_lstring & inOperand1,
+                                                          const class GGS__5B_templateExpressionElementAST_5D_ & inOperand2,
+                                                          Compiler * inCompiler) ;
+
+
+//--- Extension proc templateExpressionAnalysis
+  public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_templateAnalysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS_semanticExpressionForGeneration & arg_outExpression,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_lstring mProperty_mTypeName ;
+  public: GGS_lstring mProperty_mClassFunctionName ;
+  public: GGS__5B_templateExpressionElementAST_5D_ mProperty_mExpressionList ;
+
+
+//--- Default constructor
+  public: cPtr_templateClassFunctionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_templateClassFunctionAST (const GGS_lstring & in_mTypeName,
+                                         const GGS_lstring & in_mClassFunctionName,
+                                         const GGS__5B_templateExpressionElementAST_5D_ & in_mExpressionList,
+                                         Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @templateClassFunctionAST_2E_weak weak reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_templateClassFunctionAST_2E_weak : public GGS_templateExpressionAST_2E_weak {
+//--------------------------------- Default constructor
+  public: GGS_templateClassFunctionAST_2E_weak (void) ;
+
+//--------------------------------- Constructor and assignment from strong reference
+  public: GGS_templateClassFunctionAST_2E_weak (const class GGS_templateClassFunctionAST & inSource) ;
+
+  public: GGS_templateClassFunctionAST_2E_weak & operator = (const class GGS_templateClassFunctionAST & inSource) ;
+
+//--------------------------------- Constructor and assignment from optional reference
+
+//--------------------------------- nil initializer
+  public: inline static GGS_templateClassFunctionAST_2E_weak init_nil (void) {
+    GGS_templateClassFunctionAST_2E_weak result ;
+    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
+    return result ;
+  }
+
+//--------------------------------- Bang operator
+  public: GGS_templateClassFunctionAST bang_templateClassFunctionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- isValuated
+  public: inline bool isValuated (void) const {
+    return isValid () && (ptr () != nullptr) ;
+  }
+
+//--------------------------------- Unwrapped value
+  public: GGS_templateClassFunctionAST unwrappedValue (void) const ;
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (isValid (), ptr () == nullptr) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (isValid (), ptr () != nullptr) ;
+  }
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+//--------------------------------- GALGAS class functions
+  public: static class GGS_templateClassFunctionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_templateClassFunctionAST_2E_weak & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateClassFunctionAST_2E_weak ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @templateFileWrapperTemplateCallAST reference class
+//--------------------------------------------------------------------------------------------------
+
+class GGS_templateFileWrapperTemplateCallAST : public GGS_templateExpressionAST {
+//--------------------------------- Default constructor
+  public: GGS_templateFileWrapperTemplateCallAST (void) ;
+
+//--------------------------------- Constructor from pointer
+  public: GGS_templateFileWrapperTemplateCallAST (const class cPtr_templateFileWrapperTemplateCallAST * inSourcePtr) ;
+
+//--------------------------------- Property access
+  public: class GGS_lstring readProperty_mFileWrapperName (void) const ;
+
+  public: class GGS_lstring readProperty_mTemplateName (void) const ;
+
+  public: class GGS__5B_templateExpressionElementAST_5D_ readProperty_mOutExpressionList (void) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_templateFileWrapperTemplateCallAST init_21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                          const class GGS_lstring & inOperand1,
+                                                                          const class GGS__5B_templateExpressionElementAST_5D_ & inOperand2,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+//--------------------------------- Comparison
+  public: ComparisonResult objectCompare (const GGS_templateFileWrapperTemplateCallAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 2: pointer class for @templateFileWrapperTemplateCallAST class
+//--------------------------------------------------------------------------------------------------
+
+class cPtr_templateFileWrapperTemplateCallAST : public cPtr_templateExpressionAST {
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    public: virtual void printNonNullClassInstanceProperties (void) const override ;
+  #endif
+
+//--------------------------------- Initializers
+  public: void templateFileWrapperTemplateCallAST_init_21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                    const class GGS_lstring & inOperand1,
+                                                                    const class GGS__5B_templateExpressionElementAST_5D_ & inOperand2,
+                                                                    Compiler * inCompiler) ;
+
+
+//--- Extension proc templateExpressionAnalysis
+  public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
+           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
+           const class GGS_templateAnalysisContext arg_inAnalysisContext,
+           class GGS_unifiedTypeMap & arg_ioTypeMap,
+           class GGS_semanticExpressionForGeneration & arg_outExpression,
+           Compiler * COMMA_LOCATION_ARGS) override ;
+
+//--- Properties
+  public: GGS_lstring mProperty_mFileWrapperName ;
+  public: GGS_lstring mProperty_mTemplateName ;
+  public: GGS__5B_templateExpressionElementAST_5D_ mProperty_mOutExpressionList ;
+
+
+//--- Default constructor
+  public: cPtr_templateFileWrapperTemplateCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+
+//--- Constructor
+  public: cPtr_templateFileWrapperTemplateCallAST (const GGS_lstring & in_mFileWrapperName,
+                                                   const GGS_lstring & in_mTemplateName,
+                                                   const GGS__5B_templateExpressionElementAST_5D_ & in_mOutExpressionList,
+                                                   Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
+
+//--- Attribute accessors
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//--- Class descriptor
+  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @templateFileWrapperTemplateCallAST_2E_weak weak reference class
 //--------------------------------------------------------------------------------------------------
 
@@ -66,7 +541,10 @@ class GGS_templateFileWrapperTemplateCallAST_2E_weak : public GGS_templateExpres
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -114,7 +592,10 @@ class GGS_templateExtensionTemplateCallAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -238,7 +719,10 @@ class GGS_templateExtensionTemplateCallAST_2E_weak : public GGS_templateExpressi
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -286,7 +770,10 @@ class GGS_templateAndOperationAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -410,7 +897,10 @@ class GGS_templateAndOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -458,7 +948,10 @@ class GGS_templateOrOperationAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -582,7 +1075,10 @@ class GGS_templateOrOperationAST_2E_weak : public GGS_templateExpressionAST_2E_w
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -630,7 +1126,10 @@ class GGS_templateXorOperationAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -754,7 +1253,10 @@ class GGS_templateXorOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -796,7 +1298,10 @@ class GGS_templateTrueBoolAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -914,7 +1419,10 @@ class GGS_templateTrueBoolAST_2E_weak : public GGS_templateExpressionAST_2E_weak
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -956,7 +1464,10 @@ class GGS_templateFalseBoolAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1074,7 +1585,10 @@ class GGS_templateFalseBoolAST_2E_weak : public GGS_templateExpressionAST_2E_wea
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1119,7 +1633,10 @@ class GGS_templateLiteralStringExpressionAST : public GGS_templateExpressionAST 
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1240,7 +1757,10 @@ class GGS_templateLiteralStringExpressionAST_2E_weak : public GGS_templateExpres
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1282,7 +1802,10 @@ class GGS_templateLiteralUIntExpressionAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1400,7 +1923,10 @@ class GGS_templateLiteralUIntExpressionAST_2E_weak : public GGS_templateExpressi
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1442,7 +1968,10 @@ class GGS_templateLiteralCharExpressionAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1560,7 +2089,10 @@ class GGS_templateLiteralCharExpressionAST_2E_weak : public GGS_templateExpressi
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1602,7 +2134,10 @@ class GGS_templateLiteralDoubleExpressionAST : public GGS_templateExpressionAST 
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1720,7 +2255,10 @@ class GGS_templateLiteralDoubleExpressionAST_2E_weak : public GGS_templateExpres
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1768,7 +2306,10 @@ class GGS_structFieldAccessTemplateExpressionAST : public GGS_templateExpression
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1892,7 +2433,10 @@ class GGS_structFieldAccessTemplateExpressionAST_2E_weak : public GGS_templateEx
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1937,7 +2481,10 @@ class GGS_templateNotOperatorAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2058,7 +2605,10 @@ class GGS_templateNotOperatorAST_2E_weak : public GGS_templateExpressionAST_2E_w
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2103,7 +2653,10 @@ class GGS_templateLogicalNegateAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2224,7 +2777,10 @@ class GGS_templateLogicalNegateAST_2E_weak : public GGS_templateExpressionAST_2E
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2272,7 +2828,10 @@ class GGS_templateOptionAccessAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2396,7 +2955,10 @@ class GGS_templateOptionAccessAST_2E_weak : public GGS_templateExpressionAST_2E_
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2444,7 +3006,10 @@ class GGS_templateTestDynamicClassAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2568,7 +3133,10 @@ class GGS_templateTestDynamicClassAST_2E_weak : public GGS_templateExpressionAST
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2613,7 +3181,10 @@ class GGS_templateFunctionCallAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2734,7 +3305,10 @@ class GGS_templateFunctionCallAST_2E_weak : public GGS_templateExpressionAST_2E_
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2776,7 +3350,10 @@ class GGS_templateVarInExpressionAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2894,7 +3471,10 @@ class GGS_templateVarInExpressionAST_2E_weak : public GGS_templateExpressionAST_
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2942,7 +3522,10 @@ class GGS_templateAddOperationAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3066,7 +3649,10 @@ class GGS_templateAddOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3114,7 +3700,10 @@ class GGS_templateSubOperationAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3238,7 +3827,10 @@ class GGS_templateSubOperationAST_2E_weak : public GGS_templateExpressionAST_2E_
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3286,7 +3878,10 @@ class GGS_templateMultiplyOperationAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3410,7 +4005,10 @@ class GGS_templateMultiplyOperationAST_2E_weak : public GGS_templateExpressionAS
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3458,7 +4056,10 @@ class GGS_templateDivideOperationAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3582,7 +4183,10 @@ class GGS_templateDivideOperationAST_2E_weak : public GGS_templateExpressionAST_
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3630,7 +4234,10 @@ class GGS_templateModuloOperationAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3754,7 +4361,10 @@ class GGS_templateModuloOperationAST_2E_weak : public GGS_templateExpressionAST_
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3799,7 +4409,10 @@ class GGS_templateUnaryMinusOperationAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3920,7 +4533,10 @@ class GGS_templateUnaryMinusOperationAST_2E_weak : public GGS_templateExpression
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3968,7 +4584,10 @@ class GGS_templateEqualTestAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4092,7 +4711,10 @@ class GGS_templateEqualTestAST_2E_weak : public GGS_templateExpressionAST_2E_wea
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4140,7 +4762,10 @@ class GGS_templateNonEqualTestAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4264,7 +4889,10 @@ class GGS_templateNonEqualTestAST_2E_weak : public GGS_templateExpressionAST_2E_
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4312,7 +4940,10 @@ class GGS_templateStrictInfTestAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4436,7 +5067,10 @@ class GGS_templateStrictInfTestAST_2E_weak : public GGS_templateExpressionAST_2E
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4484,7 +5118,10 @@ class GGS_templateInfOrEqualTestAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4608,7 +5245,10 @@ class GGS_templateInfOrEqualTestAST_2E_weak : public GGS_templateExpressionAST_2
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4656,7 +5296,10 @@ class GGS_templateStrictSupTestAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4780,7 +5423,10 @@ class GGS_templateStrictSupTestAST_2E_weak : public GGS_templateExpressionAST_2E
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4828,7 +5474,10 @@ class GGS_templateSupOrEqualTestAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4952,7 +5601,10 @@ class GGS_templateSupOrEqualTestAST_2E_weak : public GGS_templateExpressionAST_2
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5000,7 +5652,10 @@ class GGS_templateLeftShiftOperationAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5124,7 +5779,10 @@ class GGS_templateLeftShiftOperationAST_2E_weak : public GGS_templateExpressionA
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5172,7 +5830,10 @@ class GGS_templateRightShiftOperationAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5296,7 +5957,10 @@ class GGS_templateRightShiftOperationAST_2E_weak : public GGS_templateExpression
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5338,7 +6002,10 @@ class GGS_templateInstructionStringAST : public GGS_templateInstructionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5456,7 +6123,10 @@ class GGS_templateInstructionStringAST_2E_weak : public GGS_templateInstructionA
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5501,7 +6171,10 @@ class GGS_templateInstructionExpressionAST : public GGS_templateInstructionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5622,7 +6295,10 @@ class GGS_templateInstructionExpressionAST_2E_weak : public GGS_templateInstruct
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5670,7 +6346,10 @@ class GGS_templateBlockInstructionAST : public GGS_templateInstructionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5794,7 +6473,10 @@ class GGS_templateBlockInstructionAST_2E_weak : public GGS_templateInstructionAS
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5833,7 +6515,10 @@ class GGS_templateInstructionGetColumnLocationAST : public GGS_templateInstructi
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5946,7 +6631,10 @@ class GGS_templateInstructionGetColumnLocationAST_2E_weak : public GGS_templateI
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5985,7 +6673,10 @@ class GGS_templateInstructionGotoColumnLocationAST : public GGS_templateInstruct
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6098,7 +6789,10 @@ class GGS_templateInstructionGotoColumnLocationAST_2E_weak : public GGS_template
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6143,7 +6837,10 @@ class GGS_templateInstructionIfAST : public GGS_templateInstructionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6264,7 +6961,10 @@ class GGS_templateInstructionIfAST_2E_weak : public GGS_templateInstructionAST_2
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6314,7 +7014,10 @@ class GGS_procDeclarationAST : public GGS_externProcedureDeclarationAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6457,7 +7160,10 @@ class GGS_procDeclarationAST_2E_weak : public GGS_externProcedureDeclarationAST_
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6507,7 +7213,10 @@ class GGS_routineImplementationForGeneration : public GGS_routinePrototypeDeclar
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6742,11 +7451,14 @@ class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_root {
                                                                                        COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                                                    Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                                                   Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6824,7 +7536,10 @@ class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element : public AC_GA
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6892,7 +7607,10 @@ class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element_3F_ : public A
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7060,7 +7778,10 @@ class GGS_nonTerminalSymbolSortedListForGrammarAnalysis final : public AC_GALGAS
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7149,7 +7870,10 @@ class GGS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element : public AC_G
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7224,7 +7948,10 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element : public AC_GAL
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7292,7 +8019,10 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element_3F_ : public AC
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7338,7 +8068,10 @@ class GGS_nonTerminalInstructionForGrammarAnalysis : public GGS_abstractSyntaxIn
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7410,7 +8143,10 @@ class GGS_nonTerminalInstructionForGrammarAnalysis_2E_weak : public GGS_abstract
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7456,7 +8192,10 @@ class GGS_selectInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstruc
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7528,7 +8267,10 @@ class GGS_selectInstructionForGrammarAnalysis_2E_weak : public GGS_abstractSynta
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7574,7 +8316,10 @@ class GGS_repeatInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstruc
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7646,7 +8391,10 @@ class GGS_repeatInstructionForGrammarAnalysis_2E_weak : public GGS_abstractSynta
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7721,7 +8469,10 @@ class GGS_terminalSymbolsMapForGrammarAnalysis_2E_element : public AC_GALGAS_roo
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7789,7 +8540,10 @@ class GGS_terminalSymbolsMapForGrammarAnalysis_2E_element_3F_ : public AC_GALGAS
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7840,7 +8594,10 @@ class GGS_classFuncExpressionAST : public GGS_semanticExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7973,7 +8730,10 @@ class GGS_classFuncExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_w
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -8029,7 +8789,10 @@ class GGS_classFuncExpressionForGeneration : public GGS_semanticExpressionForGen
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -8163,7 +8926,10 @@ class GGS_semanticExpressionForGeneration_2E_weak : public AC_GALGAS_weak_refere
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -8331,11 +9097,14 @@ class GGS__5B_collectionValueElementAST_5D_ final : public AC_GALGAS_root {
                                                                       COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_collectionValueElementAST readSubscript__3F_ (const class GGS_uint & in0,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_collectionValueElementAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -8413,7 +9182,10 @@ class GGS_collectionValueElementAST : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -8581,11 +9353,14 @@ class GGS__5B_collectionValueElementForGeneration_5D_ final : public AC_GALGAS_r
                                                                                 COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_collectionValueElementForGeneration readSubscript__3F_ (const class GGS_uint & in0,
-                                                                            Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_collectionValueElementForGeneration readSubcript__3F_ (const class GGS_uint & in0,
+                                                                           Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -8663,7 +9438,10 @@ class GGS_collectionValueElementForGeneration : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -8711,7 +9489,10 @@ class GGS_collectionValueAST : public GGS_semanticExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -8841,7 +9622,10 @@ class GGS_collectionValueAST_2E_weak : public GGS_semanticExpressionAST_2E_weak 
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -8885,7 +9669,10 @@ class GGS_expressionCollectionForGeneration : public GGS_semanticExpressionForGe
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9007,7 +9794,10 @@ class GGS_expressionCollectionForGeneration_2E_weak : public GGS_semanticExpress
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9049,7 +9839,10 @@ class GGS_varInExpressionAST : public GGS_semanticExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9173,7 +9966,10 @@ class GGS_varInExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak 
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9220,7 +10016,10 @@ class GGS_varInExpressionForGeneration : public GGS_semanticExpressionForGenerat
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9345,7 +10144,10 @@ class GGS_varInExpressionForGeneration_2E_weak : public GGS_semanticExpressionFo
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9424,7 +10226,10 @@ class GGS_optionExpressionAST : public GGS_semanticExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9554,7 +10359,10 @@ class GGS_optionExpressionAST_2E_weak : public GGS_semanticExpressionAST_2E_weak
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9604,7 +10412,10 @@ class GGS_optionValueExpressionForGeneration : public GGS_semanticExpressionForG
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9732,7 +10543,10 @@ class GGS_optionValueExpressionForGeneration_2E_weak : public GGS_semanticExpres
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9782,7 +10596,10 @@ class GGS_optionCharExpressionForGeneration : public GGS_semanticExpressionForGe
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9838,362 +10655,6 @@ class cPtr_optionCharExpressionForGeneration : public cPtr_semanticExpressionFor
                                                   const GGS_string & in_mOptionEntryName,
                                                   Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @optionCharExpressionForGeneration_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_optionCharExpressionForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_optionCharExpressionForGeneration_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_optionCharExpressionForGeneration_2E_weak (const class GGS_optionCharExpressionForGeneration & inSource) ;
-
-  public: GGS_optionCharExpressionForGeneration_2E_weak & operator = (const class GGS_optionCharExpressionForGeneration & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_optionCharExpressionForGeneration_2E_weak init_nil (void) {
-    GGS_optionCharExpressionForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_optionCharExpressionForGeneration bang_optionCharExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_optionCharExpressionForGeneration unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_optionCharExpressionForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_optionCharExpressionForGeneration_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionCharExpressionForGeneration_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @optionStringExpressionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_optionStringExpressionForGeneration : public GGS_semanticExpressionForGeneration {
-//--------------------------------- Default constructor
-  public: GGS_optionStringExpressionForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_optionStringExpressionForGeneration (const class cPtr_optionStringExpressionForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_bool readProperty_mOptionComponentIsPredefined (void) const ;
-
-  public: class GGS_string readProperty_mOptionComponentName (void) const ;
-
-  public: class GGS_string readProperty_mOptionEntryName (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_optionStringExpressionForGeneration init_21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                                   const class GGS_location & inOperand1,
-                                                                                   const class GGS_bool & inOperand2,
-                                                                                   const class GGS_string & inOperand3,
-                                                                                   const class GGS_string & inOperand4,
-                                                                                   Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_optionStringExpressionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionStringExpressionForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @optionStringExpressionForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_optionStringExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void optionStringExpressionForGeneration_init_21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                             const class GGS_location & inOperand1,
-                                                                             const class GGS_bool & inOperand2,
-                                                                             const class GGS_string & inOperand3,
-                                                                             const class GGS_string & inOperand4,
-                                                                             Compiler * inCompiler) ;
-
-
-//--- Extension proc generateExpression
-  public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
-           class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
-           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
-           class GGS_string & arg_outCppExpression,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_bool mProperty_mOptionComponentIsPredefined ;
-  public: GGS_string mProperty_mOptionComponentName ;
-  public: GGS_string mProperty_mOptionEntryName ;
-
-
-//--- Default constructor
-  public: cPtr_optionStringExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_optionStringExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                    const GGS_location & in_mLocation,
-                                                    const GGS_bool & in_mOptionComponentIsPredefined,
-                                                    const GGS_string & in_mOptionComponentName,
-                                                    const GGS_string & in_mOptionEntryName,
-                                                    Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @optionStringExpressionForGeneration_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_optionStringExpressionForGeneration_2E_weak : public GGS_semanticExpressionForGeneration_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_optionStringExpressionForGeneration_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_optionStringExpressionForGeneration_2E_weak (const class GGS_optionStringExpressionForGeneration & inSource) ;
-
-  public: GGS_optionStringExpressionForGeneration_2E_weak & operator = (const class GGS_optionStringExpressionForGeneration & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_optionStringExpressionForGeneration_2E_weak init_nil (void) {
-    GGS_optionStringExpressionForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_optionStringExpressionForGeneration bang_optionStringExpressionForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_optionStringExpressionForGeneration unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_optionStringExpressionForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_optionStringExpressionForGeneration_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionStringExpressionForGeneration_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @optionCommentExpressionForGeneration reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_optionCommentExpressionForGeneration : public GGS_semanticExpressionForGeneration {
-//--------------------------------- Default constructor
-  public: GGS_optionCommentExpressionForGeneration (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_optionCommentExpressionForGeneration (const class cPtr_optionCommentExpressionForGeneration * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_bool readProperty_mOptionComponentIsPredefined (void) const ;
-
-  public: class GGS_string readProperty_mOptionComponentName (void) const ;
-
-  public: class GGS_string readProperty_mOptionEntryName (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_optionCommentExpressionForGeneration init_21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                                    const class GGS_location & inOperand1,
-                                                                                    const class GGS_bool & inOperand2,
-                                                                                    const class GGS_string & inOperand3,
-                                                                                    const class GGS_string & inOperand4,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_optionCommentExpressionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_optionCommentExpressionForGeneration ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @optionCommentExpressionForGeneration class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_optionCommentExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void optionCommentExpressionForGeneration_init_21__21__21__21__21_ (const class GGS_unifiedTypeMapEntry & inOperand0,
-                                                                              const class GGS_location & inOperand1,
-                                                                              const class GGS_bool & inOperand2,
-                                                                              const class GGS_string & inOperand3,
-                                                                              const class GGS_string & inOperand4,
-                                                                              Compiler * inCompiler) ;
-
-
-//--- Extension proc generateExpression
-  public: virtual void method_generateExpression (class GGS_string & arg_ioGeneratedCode,
-           class GGS_stringset & arg_ioInclusionSet,
-           class GGS_uint & arg_ioTemporaryVariableIndex,
-           class GGS_stringset & arg_ioUnusedVariableCppNameSet,
-           class GGS_string & arg_outCppExpression,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_bool mProperty_mOptionComponentIsPredefined ;
-  public: GGS_string mProperty_mOptionComponentName ;
-  public: GGS_string mProperty_mOptionEntryName ;
-
-
-//--- Default constructor
-  public: cPtr_optionCommentExpressionForGeneration (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_optionCommentExpressionForGeneration (const GGS_unifiedTypeMapEntry & in_mResultType,
-                                                     const GGS_location & in_mLocation,
-                                                     const GGS_bool & in_mOptionComponentIsPredefined,
-                                                     const GGS_string & in_mOptionComponentName,
-                                                     const GGS_string & in_mOptionEntryName,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;

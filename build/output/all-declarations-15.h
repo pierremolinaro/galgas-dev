@@ -66,7 +66,10 @@ class GGS_routineImplementationForGeneration_2E_weak : public GGS_routinePrototy
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -136,7 +139,10 @@ class GGS_classFuncExpressionForGeneration_2E_weak : public GGS_semanticExpressi
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -320,7 +326,10 @@ class GGS_functionPrototypeDeclarationForGeneration_2E_weak : public GGS_semanti
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -390,7 +399,10 @@ class GGS_functionImplementationForGeneration_2E_weak : public GGS_functionProto
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -460,7 +472,10 @@ class GGS_onceFunctionDeclarationForGeneration_2E_weak : public GGS_semanticDecl
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -530,7 +545,10 @@ class GGS_filewrapperDeclarationForGeneration_2E_weak : public GGS_semanticDecla
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -600,7 +618,10 @@ class GGS_programComponentForGeneration_2E_weak : public GGS_semanticDeclaration
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -670,7 +691,10 @@ class GGS_superMethodCallInstructionAST_2E_weak : public GGS_semanticInstruction
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -740,7 +764,10 @@ class GGS_grammarForGeneration_2E_weak : public GGS_semanticDeclarationWithHeade
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection

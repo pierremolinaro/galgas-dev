@@ -122,7 +122,7 @@ if [ADD_ASSIGN_ARGUMENT_LIST count] > 0 then
 %
 end
 
-if SUPPORT_COLLECTION_VALUE then
+if SUPPORT_ARRAY_LITERAL_VALUE then
 %//--------------------------------- ++= operator
   public: void plusPlusAssignOperation (%?^%const GGS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% & inOperand
   %!^%COMMA_LOCATION_ARGS) ;
@@ -391,15 +391,28 @@ for (lkey kind argumentTypeList * hasCompilerArgument returnedType qualifier rep
 end
 
 %
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
 %
-for (key argumentList resultType) in READ_SUBSCRIPT_MAP do
-%  public: class GGS_%![resultType identifierRepresentation]% readSubscript_%
+for (key argumentList resultType) in READ_SUBCRIPT_MAP do
+%  public: class GGS_%![resultType identifierRepresentation]% readSubcript_%
    ![key identifierRepresentation]% (%?^
   for (formal) in argumentList do (IDX)
     %const class GGS_%![formal.mFormalArgumentType identifierRepresentation]% & in% ![IDX string] %,\n% !^
   end
   %Compiler * inCompiler\n%!^%COMMA_LOCATION_ARGS) const ;\n\n%
+end
+%
+
+//--------------------------------- Write subcripts
+%
+for (key argumentList resultType) in WRITE_SUBCRIPT_MAP do
+%  public: void writeSubcript_%
+   ![key identifierRepresentation]% (%?^
+  for (formal) in argumentList do (IDX)
+    %const class GGS_%![formal.mFormalArgumentType identifierRepresentation]% in% ![IDX string] %,\n% !^
+  end
+  %const class GGS_%![resultType identifierRepresentation]% inValue,\n% !^
+  %Compiler * inCompiler\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
 end
 %
 

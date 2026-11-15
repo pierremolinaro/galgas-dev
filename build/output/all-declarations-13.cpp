@@ -9,6 +9,798 @@
 
 //--------------------------------------------------------------------------------------------------
 
+ComparisonResult GGS_grammarInFileInstructionAST_2E_weak::objectCompare (const GGS_grammarInFileInstructionAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarInFileInstructionAST_2E_weak::GGS_grammarInFileInstructionAST_2E_weak (void) :
+GGS_semanticInstructionAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarInFileInstructionAST_2E_weak & GGS_grammarInFileInstructionAST_2E_weak::operator = (const GGS_grammarInFileInstructionAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarInFileInstructionAST_2E_weak::GGS_grammarInFileInstructionAST_2E_weak (const GGS_grammarInFileInstructionAST & inSource) :
+GGS_semanticInstructionAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarInFileInstructionAST_2E_weak GGS_grammarInFileInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_grammarInFileInstructionAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarInFileInstructionAST GGS_grammarInFileInstructionAST_2E_weak::unwrappedValue (void) const {
+  GGS_grammarInFileInstructionAST result ;
+  if (isValid ()) {
+    const cPtr_grammarInFileInstructionAST * p = (cPtr_grammarInFileInstructionAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_grammarInFileInstructionAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarInFileInstructionAST GGS_grammarInFileInstructionAST_2E_weak::bang_grammarInFileInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_grammarInFileInstructionAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_grammarInFileInstructionAST) ;
+      result = GGS_grammarInFileInstructionAST ((cPtr_grammarInFileInstructionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @grammarInFileInstructionAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarInFileInstructionAST_2E_weak ("grammarInFileInstructionAST.weak",
+                                                                                        & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_grammarInFileInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_grammarInFileInstructionAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @grammarInStringInstructionAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_grammarInStringInstructionAST::objectCompare (const GGS_grammarInStringInstructionAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarInStringInstructionAST::GGS_grammarInStringInstructionAST (void) :
+GGS_semanticInstructionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_grammarInStringInstructionAST GGS_grammarInStringInstructionAST::
+init_21__21__21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
+                                          const GGS_lstring & in_mGrammarComponentName,
+                                          const GGS_lstring & in_mLabelName,
+                                          const GGS_semanticExpressionAST & in_mSourceExpression,
+                                          const GGS_location & in_mEndOfSourceExpression,
+                                          const GGS_semanticExpressionAST & in_mNameExpression,
+                                          const GGS_location & in_mEndOfNameExpression,
+                                          const GGS__5B_actualParameterAST_5D_ & in_mActualParameterList,
+                                          const GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mAbstractGrammarInstructionSyntaxDirectedTranslationResult,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
+  cPtr_grammarInStringInstructionAST * object = nullptr ;
+  macroMyNew (object, cPtr_grammarInStringInstructionAST (inCompiler COMMA_THERE)) ;
+  object->grammarInStringInstructionAST_init_21__21__21__21__21__21__21__21__21_ (in_mInstructionLocation, in_mGrammarComponentName, in_mLabelName, in_mSourceExpression, in_mEndOfSourceExpression, in_mNameExpression, in_mEndOfNameExpression, in_mActualParameterList, in_mAbstractGrammarInstructionSyntaxDirectedTranslationResult, inCompiler) ;
+  const GGS_grammarInStringInstructionAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_grammarInStringInstructionAST::
+grammarInStringInstructionAST_init_21__21__21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
+                                                                        const GGS_lstring & in_mGrammarComponentName,
+                                                                        const GGS_lstring & in_mLabelName,
+                                                                        const GGS_semanticExpressionAST & in_mSourceExpression,
+                                                                        const GGS_location & in_mEndOfSourceExpression,
+                                                                        const GGS_semanticExpressionAST & in_mNameExpression,
+                                                                        const GGS_location & in_mEndOfNameExpression,
+                                                                        const GGS__5B_actualParameterAST_5D_ & in_mActualParameterList,
+                                                                        const GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mAbstractGrammarInstructionSyntaxDirectedTranslationResult,
+                                                                        Compiler * /* inCompiler */) {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mGrammarComponentName = in_mGrammarComponentName ;
+  mProperty_mLabelName = in_mLabelName ;
+  mProperty_mSourceExpression = in_mSourceExpression ;
+  mProperty_mEndOfSourceExpression = in_mEndOfSourceExpression ;
+  mProperty_mNameExpression = in_mNameExpression ;
+  mProperty_mEndOfNameExpression = in_mEndOfNameExpression ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
+  mProperty_mAbstractGrammarInstructionSyntaxDirectedTranslationResult = in_mAbstractGrammarInstructionSyntaxDirectedTranslationResult ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarInStringInstructionAST::GGS_grammarInStringInstructionAST (const cPtr_grammarInStringInstructionAST * inSourcePtr) :
+GGS_semanticInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_grammarInStringInstructionAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_grammarInStringInstructionAST::readProperty_mGrammarComponentName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_grammarInStringInstructionAST * p = (cPtr_grammarInStringInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_grammarInStringInstructionAST) ;
+    return p->mProperty_mGrammarComponentName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_lstring GGS_grammarInStringInstructionAST::readProperty_mLabelName (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_lstring () ;
+  }else{
+    cPtr_grammarInStringInstructionAST * p = (cPtr_grammarInStringInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_grammarInStringInstructionAST) ;
+    return p->mProperty_mLabelName ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionAST GGS_grammarInStringInstructionAST::readProperty_mSourceExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionAST () ;
+  }else{
+    cPtr_grammarInStringInstructionAST * p = (cPtr_grammarInStringInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_grammarInStringInstructionAST) ;
+    return p->mProperty_mSourceExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_grammarInStringInstructionAST::readProperty_mEndOfSourceExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_grammarInStringInstructionAST * p = (cPtr_grammarInStringInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_grammarInStringInstructionAST) ;
+    return p->mProperty_mEndOfSourceExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionAST GGS_grammarInStringInstructionAST::readProperty_mNameExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionAST () ;
+  }else{
+    cPtr_grammarInStringInstructionAST * p = (cPtr_grammarInStringInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_grammarInStringInstructionAST) ;
+    return p->mProperty_mNameExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_grammarInStringInstructionAST::readProperty_mEndOfNameExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_grammarInStringInstructionAST * p = (cPtr_grammarInStringInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_grammarInStringInstructionAST) ;
+    return p->mProperty_mEndOfNameExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_actualParameterAST_5D_ GGS_grammarInStringInstructionAST::readProperty_mActualParameterList (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_actualParameterAST_5D_ () ;
+  }else{
+    cPtr_grammarInStringInstructionAST * p = (cPtr_grammarInStringInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_grammarInStringInstructionAST) ;
+    return p->mProperty_mActualParameterList ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult GGS_grammarInStringInstructionAST::readProperty_mAbstractGrammarInstructionSyntaxDirectedTranslationResult (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult () ;
+  }else{
+    cPtr_grammarInStringInstructionAST * p = (cPtr_grammarInStringInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_grammarInStringInstructionAST) ;
+    return p->mProperty_mAbstractGrammarInstructionSyntaxDirectedTranslationResult ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @grammarInStringInstructionAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_grammarInStringInstructionAST::cPtr_grammarInStringInstructionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
+mProperty_mGrammarComponentName (),
+mProperty_mLabelName (),
+mProperty_mSourceExpression (),
+mProperty_mEndOfSourceExpression (),
+mProperty_mNameExpression (),
+mProperty_mEndOfNameExpression (),
+mProperty_mActualParameterList (),
+mProperty_mAbstractGrammarInstructionSyntaxDirectedTranslationResult () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_grammarInStringInstructionAST::cPtr_grammarInStringInstructionAST (const GGS_location & in_mInstructionLocation,
+                                                                        const GGS_lstring & in_mGrammarComponentName,
+                                                                        const GGS_lstring & in_mLabelName,
+                                                                        const GGS_semanticExpressionAST & in_mSourceExpression,
+                                                                        const GGS_location & in_mEndOfSourceExpression,
+                                                                        const GGS_semanticExpressionAST & in_mNameExpression,
+                                                                        const GGS_location & in_mEndOfNameExpression,
+                                                                        const GGS__5B_actualParameterAST_5D_ & in_mActualParameterList,
+                                                                        const GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mAbstractGrammarInstructionSyntaxDirectedTranslationResult,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
+mProperty_mGrammarComponentName (),
+mProperty_mLabelName (),
+mProperty_mSourceExpression (),
+mProperty_mEndOfSourceExpression (),
+mProperty_mNameExpression (),
+mProperty_mEndOfNameExpression (),
+mProperty_mActualParameterList (),
+mProperty_mAbstractGrammarInstructionSyntaxDirectedTranslationResult () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mGrammarComponentName = in_mGrammarComponentName ;
+  mProperty_mLabelName = in_mLabelName ;
+  mProperty_mSourceExpression = in_mSourceExpression ;
+  mProperty_mEndOfSourceExpression = in_mEndOfSourceExpression ;
+  mProperty_mNameExpression = in_mNameExpression ;
+  mProperty_mEndOfNameExpression = in_mEndOfNameExpression ;
+  mProperty_mActualParameterList = in_mActualParameterList ;
+  mProperty_mAbstractGrammarInstructionSyntaxDirectedTranslationResult = in_mAbstractGrammarInstructionSyntaxDirectedTranslationResult ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_grammarInStringInstructionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_grammarInStringInstructionAST ;
+}
+
+void cPtr_grammarInStringInstructionAST::description (String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString.appendCString ("[@grammarInStringInstructionAST:") ;
+  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mGrammarComponentName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLabelName.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mSourceExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfSourceExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mNameExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfNameExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mActualParameterList.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mAbstractGrammarInstructionSyntaxDirectedTranslationResult.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_grammarInStringInstructionAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_grammarInStringInstructionAST (mProperty_mInstructionLocation, mProperty_mGrammarComponentName, mProperty_mLabelName, mProperty_mSourceExpression, mProperty_mEndOfSourceExpression, mProperty_mNameExpression, mProperty_mEndOfNameExpression, mProperty_mActualParameterList, mProperty_mAbstractGrammarInstructionSyntaxDirectedTranslationResult, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_grammarInStringInstructionAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mGrammarComponentName.printNonNullClassInstanceProperties ("mGrammarComponentName") ;
+    mProperty_mLabelName.printNonNullClassInstanceProperties ("mLabelName") ;
+    mProperty_mSourceExpression.printNonNullClassInstanceProperties ("mSourceExpression") ;
+    mProperty_mEndOfSourceExpression.printNonNullClassInstanceProperties ("mEndOfSourceExpression") ;
+    mProperty_mNameExpression.printNonNullClassInstanceProperties ("mNameExpression") ;
+    mProperty_mEndOfNameExpression.printNonNullClassInstanceProperties ("mEndOfNameExpression") ;
+    mProperty_mActualParameterList.printNonNullClassInstanceProperties ("mActualParameterList") ;
+    mProperty_mAbstractGrammarInstructionSyntaxDirectedTranslationResult.printNonNullClassInstanceProperties ("mAbstractGrammarInstructionSyntaxDirectedTranslationResult") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @grammarInStringInstructionAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarInStringInstructionAST ("grammarInStringInstructionAST",
+                                                                                  & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_grammarInStringInstructionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_grammarInStringInstructionAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_grammarInStringInstructionAST_2E_weak::objectCompare (const GGS_grammarInStringInstructionAST_2E_weak & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    PtrWeakReferenceProxy * myPtr = mProxyPtr ;
+    const size_t myObjectPtr = size_t (myPtr) ;
+    PtrWeakReferenceProxy * operandPtr = inOperand.mProxyPtr ;
+    const size_t operandObjectPtr = size_t (operandPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarInStringInstructionAST_2E_weak::GGS_grammarInStringInstructionAST_2E_weak (void) :
+GGS_semanticInstructionAST_2E_weak () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarInStringInstructionAST_2E_weak & GGS_grammarInStringInstructionAST_2E_weak::operator = (const GGS_grammarInStringInstructionAST & inSource) {
+  PtrWeakReferenceProxy * proxyPtr = nullptr ;
+  AbstractStrongPtrClass * p = (AbstractStrongPtrClass *) inSource.ptr () ;
+  if (p != nullptr) {
+    proxyPtr = p->getProxy () ;
+  }
+  macroAssignSharedObject (mProxyPtr, proxyPtr) ;
+  return *this ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarInStringInstructionAST_2E_weak::GGS_grammarInStringInstructionAST_2E_weak (const GGS_grammarInStringInstructionAST & inSource) :
+GGS_semanticInstructionAST_2E_weak (inSource) {
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarInStringInstructionAST_2E_weak GGS_grammarInStringInstructionAST_2E_weak::class_func_nil (LOCATION_ARGS) {
+  GGS_grammarInStringInstructionAST_2E_weak result ;
+  macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (THERE)) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarInStringInstructionAST GGS_grammarInStringInstructionAST_2E_weak::unwrappedValue (void) const {
+  GGS_grammarInStringInstructionAST result ;
+  if (isValid ()) {
+    const cPtr_grammarInStringInstructionAST * p = (cPtr_grammarInStringInstructionAST *) ptr () ;
+    if (nullptr != p) {
+      result = GGS_grammarInStringInstructionAST (p) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_grammarInStringInstructionAST GGS_grammarInStringInstructionAST_2E_weak::bang_grammarInStringInstructionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  GGS_grammarInStringInstructionAST result ;
+  if (mProxyPtr != nullptr) {
+    AbstractStrongPtrClass * strongPtr = mProxyPtr->strongObject () ;
+    if (strongPtr == nullptr) {
+      inCompiler->onTheFlySemanticError ("weak reference is nil" COMMA_THERE) ;
+    }else{
+      macroValidSharedObject (strongPtr, cPtr_grammarInStringInstructionAST) ;
+      result = GGS_grammarInStringInstructionAST ((cPtr_grammarInStringInstructionAST *) strongPtr) ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+//     @grammarInStringInstructionAST.weak generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_grammarInStringInstructionAST_2E_weak ("grammarInStringInstructionAST.weak",
+                                                                                          & kTypeDescriptor_GALGAS_semanticInstructionAST_2E_weak) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_grammarInStringInstructionAST_2E_weak::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_grammarInStringInstructionAST_2E_weak ;
+}
+
+//--------------------------------------------------------------------------------------------------
+// @loopInstructionWithVariantAST reference class
+//--------------------------------------------------------------------------------------------------
+
+ComparisonResult GGS_loopInstructionWithVariantAST::objectCompare (const GGS_loopInstructionWithVariantAST & inOperand) const {
+  ComparisonResult result = ComparisonResult::invalid ;
+  if (isValid () && inOperand.isValid ()) {
+    const size_t myObjectPtr = size_t (mObjectPtr) ;
+    const size_t operandObjectPtr = size_t (inOperand.mObjectPtr) ;
+    if (myObjectPtr < operandObjectPtr) {
+      result = ComparisonResult::firstOperandLowerThanSecond ;
+    }else if (myObjectPtr > operandObjectPtr) {
+      result = ComparisonResult::firstOperandGreaterThanSecond ;
+    }else{
+      result = ComparisonResult::operandEqual ;
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_loopInstructionWithVariantAST::GGS_loopInstructionWithVariantAST (void) :
+GGS_semanticInstructionAST () {
+}
+
+//--- Synthetized initializer ----------------------------------------------------------------------
+
+GGS_loopInstructionWithVariantAST GGS_loopInstructionWithVariantAST::
+init_21__21__21__21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
+                                              const GGS_semanticExpressionAST & in_mVariantExpression,
+                                              const GGS_location & in_mEndOfVariantExpression,
+                                              const GGS__5B_semanticInstructionAST_5D_ & in_mFirstInstructions,
+                                              const GGS_location & in_mEndOfFirstInstructions,
+                                              const GGS_semanticExpressionAST & in_mLoopExpression,
+                                              const GGS_location & in_mEndOfLoopExpression,
+                                              const GGS__5B_semanticInstructionAST_5D_ & in_mSecondInstructions,
+                                              const GGS_location & in_mEndOfSecondInstructions,
+                                              const GGS_location & in_mEndOfLoopInstruction,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
+  cPtr_loopInstructionWithVariantAST * object = nullptr ;
+  macroMyNew (object, cPtr_loopInstructionWithVariantAST (inCompiler COMMA_THERE)) ;
+  object->loopInstructionWithVariantAST_init_21__21__21__21__21__21__21__21__21__21_ (in_mInstructionLocation, in_mVariantExpression, in_mEndOfVariantExpression, in_mFirstInstructions, in_mEndOfFirstInstructions, in_mLoopExpression, in_mEndOfLoopExpression, in_mSecondInstructions, in_mEndOfSecondInstructions, in_mEndOfLoopInstruction, inCompiler) ;
+  const GGS_loopInstructionWithVariantAST result (object) ;
+  macroDetachSharedObject (object) ;
+  return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_loopInstructionWithVariantAST::
+loopInstructionWithVariantAST_init_21__21__21__21__21__21__21__21__21__21_ (const GGS_location & in_mInstructionLocation,
+                                                                            const GGS_semanticExpressionAST & in_mVariantExpression,
+                                                                            const GGS_location & in_mEndOfVariantExpression,
+                                                                            const GGS__5B_semanticInstructionAST_5D_ & in_mFirstInstructions,
+                                                                            const GGS_location & in_mEndOfFirstInstructions,
+                                                                            const GGS_semanticExpressionAST & in_mLoopExpression,
+                                                                            const GGS_location & in_mEndOfLoopExpression,
+                                                                            const GGS__5B_semanticInstructionAST_5D_ & in_mSecondInstructions,
+                                                                            const GGS_location & in_mEndOfSecondInstructions,
+                                                                            const GGS_location & in_mEndOfLoopInstruction,
+                                                                            Compiler * /* inCompiler */) {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mVariantExpression = in_mVariantExpression ;
+  mProperty_mEndOfVariantExpression = in_mEndOfVariantExpression ;
+  mProperty_mFirstInstructions = in_mFirstInstructions ;
+  mProperty_mEndOfFirstInstructions = in_mEndOfFirstInstructions ;
+  mProperty_mLoopExpression = in_mLoopExpression ;
+  mProperty_mEndOfLoopExpression = in_mEndOfLoopExpression ;
+  mProperty_mSecondInstructions = in_mSecondInstructions ;
+  mProperty_mEndOfSecondInstructions = in_mEndOfSecondInstructions ;
+  mProperty_mEndOfLoopInstruction = in_mEndOfLoopInstruction ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_loopInstructionWithVariantAST::GGS_loopInstructionWithVariantAST (const cPtr_loopInstructionWithVariantAST * inSourcePtr) :
+GGS_semanticInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_loopInstructionWithVariantAST) ;
+}
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionAST GGS_loopInstructionWithVariantAST::readProperty_mVariantExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionAST () ;
+  }else{
+    cPtr_loopInstructionWithVariantAST * p = (cPtr_loopInstructionWithVariantAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_loopInstructionWithVariantAST) ;
+    return p->mProperty_mVariantExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_loopInstructionWithVariantAST::readProperty_mEndOfVariantExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_loopInstructionWithVariantAST * p = (cPtr_loopInstructionWithVariantAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_loopInstructionWithVariantAST) ;
+    return p->mProperty_mEndOfVariantExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_semanticInstructionAST_5D_ GGS_loopInstructionWithVariantAST::readProperty_mFirstInstructions (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_semanticInstructionAST_5D_ () ;
+  }else{
+    cPtr_loopInstructionWithVariantAST * p = (cPtr_loopInstructionWithVariantAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_loopInstructionWithVariantAST) ;
+    return p->mProperty_mFirstInstructions ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_loopInstructionWithVariantAST::readProperty_mEndOfFirstInstructions (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_loopInstructionWithVariantAST * p = (cPtr_loopInstructionWithVariantAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_loopInstructionWithVariantAST) ;
+    return p->mProperty_mEndOfFirstInstructions ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_semanticExpressionAST GGS_loopInstructionWithVariantAST::readProperty_mLoopExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_semanticExpressionAST () ;
+  }else{
+    cPtr_loopInstructionWithVariantAST * p = (cPtr_loopInstructionWithVariantAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_loopInstructionWithVariantAST) ;
+    return p->mProperty_mLoopExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_loopInstructionWithVariantAST::readProperty_mEndOfLoopExpression (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_loopInstructionWithVariantAST * p = (cPtr_loopInstructionWithVariantAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_loopInstructionWithVariantAST) ;
+    return p->mProperty_mEndOfLoopExpression ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS__5B_semanticInstructionAST_5D_ GGS_loopInstructionWithVariantAST::readProperty_mSecondInstructions (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS__5B_semanticInstructionAST_5D_ () ;
+  }else{
+    cPtr_loopInstructionWithVariantAST * p = (cPtr_loopInstructionWithVariantAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_loopInstructionWithVariantAST) ;
+    return p->mProperty_mSecondInstructions ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_loopInstructionWithVariantAST::readProperty_mEndOfSecondInstructions (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_loopInstructionWithVariantAST * p = (cPtr_loopInstructionWithVariantAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_loopInstructionWithVariantAST) ;
+    return p->mProperty_mEndOfSecondInstructions ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+
+GGS_location GGS_loopInstructionWithVariantAST::readProperty_mEndOfLoopInstruction (void) const {
+  if (nullptr == mObjectPtr) {
+    return GGS_location () ;
+  }else{
+    cPtr_loopInstructionWithVariantAST * p = (cPtr_loopInstructionWithVariantAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_loopInstructionWithVariantAST) ;
+    return p->mProperty_mEndOfLoopInstruction ;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------
+//Pointer class for @loopInstructionWithVariantAST class
+//--------------------------------------------------------------------------------------------------
+
+cPtr_loopInstructionWithVariantAST::cPtr_loopInstructionWithVariantAST (Compiler * inCompiler COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionAST (inCompiler COMMA_THERE),
+mProperty_mVariantExpression (),
+mProperty_mEndOfVariantExpression (),
+mProperty_mFirstInstructions (),
+mProperty_mEndOfFirstInstructions (),
+mProperty_mLoopExpression (),
+mProperty_mEndOfLoopExpression (),
+mProperty_mSecondInstructions (),
+mProperty_mEndOfSecondInstructions (),
+mProperty_mEndOfLoopInstruction () {
+}
+
+//--------------------------------------------------------------------------------------------------
+
+cPtr_loopInstructionWithVariantAST::cPtr_loopInstructionWithVariantAST (const GGS_location & in_mInstructionLocation,
+                                                                        const GGS_semanticExpressionAST & in_mVariantExpression,
+                                                                        const GGS_location & in_mEndOfVariantExpression,
+                                                                        const GGS__5B_semanticInstructionAST_5D_ & in_mFirstInstructions,
+                                                                        const GGS_location & in_mEndOfFirstInstructions,
+                                                                        const GGS_semanticExpressionAST & in_mLoopExpression,
+                                                                        const GGS_location & in_mEndOfLoopExpression,
+                                                                        const GGS__5B_semanticInstructionAST_5D_ & in_mSecondInstructions,
+                                                                        const GGS_location & in_mEndOfSecondInstructions,
+                                                                        const GGS_location & in_mEndOfLoopInstruction,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionAST (in_mInstructionLocation, inCompiler COMMA_THERE),
+mProperty_mVariantExpression (),
+mProperty_mEndOfVariantExpression (),
+mProperty_mFirstInstructions (),
+mProperty_mEndOfFirstInstructions (),
+mProperty_mLoopExpression (),
+mProperty_mEndOfLoopExpression (),
+mProperty_mSecondInstructions (),
+mProperty_mEndOfSecondInstructions (),
+mProperty_mEndOfLoopInstruction () {
+  mProperty_mInstructionLocation = in_mInstructionLocation ;
+  mProperty_mVariantExpression = in_mVariantExpression ;
+  mProperty_mEndOfVariantExpression = in_mEndOfVariantExpression ;
+  mProperty_mFirstInstructions = in_mFirstInstructions ;
+  mProperty_mEndOfFirstInstructions = in_mEndOfFirstInstructions ;
+  mProperty_mLoopExpression = in_mLoopExpression ;
+  mProperty_mEndOfLoopExpression = in_mEndOfLoopExpression ;
+  mProperty_mSecondInstructions = in_mSecondInstructions ;
+  mProperty_mEndOfSecondInstructions = in_mEndOfSecondInstructions ;
+  mProperty_mEndOfLoopInstruction = in_mEndOfLoopInstruction ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * cPtr_loopInstructionWithVariantAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_loopInstructionWithVariantAST ;
+}
+
+void cPtr_loopInstructionWithVariantAST::description (String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString.appendCString ("[@loopInstructionWithVariantAST:") ;
+  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mVariantExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfVariantExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mFirstInstructions.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfFirstInstructions.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mLoopExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfLoopExpression.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mSecondInstructions.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfSecondInstructions.description (ioString, inIndentation+1) ;
+  ioString.appendCString (", ") ;
+  mProperty_mEndOfLoopInstruction.description (ioString, inIndentation+1) ;
+  ioString.appendCString ("]") ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+AbstractPtrClass * cPtr_loopInstructionWithVariantAST::duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const {
+  AbstractPtrClass * ptr = nullptr ;
+  macroMyNew (ptr, cPtr_loopInstructionWithVariantAST (mProperty_mInstructionLocation, mProperty_mVariantExpression, mProperty_mEndOfVariantExpression, mProperty_mFirstInstructions, mProperty_mEndOfFirstInstructions, mProperty_mLoopExpression, mProperty_mEndOfLoopExpression, mProperty_mSecondInstructions, mProperty_mEndOfSecondInstructions, mProperty_mEndOfLoopInstruction, inCompiler COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//--------------------------------------------------------------------------------------------------
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cPtr_loopInstructionWithVariantAST::printNonNullClassInstanceProperties (void) const {
+    cPtr_semanticInstructionAST::printNonNullClassInstanceProperties () ;
+    mProperty_mVariantExpression.printNonNullClassInstanceProperties ("mVariantExpression") ;
+    mProperty_mEndOfVariantExpression.printNonNullClassInstanceProperties ("mEndOfVariantExpression") ;
+    mProperty_mFirstInstructions.printNonNullClassInstanceProperties ("mFirstInstructions") ;
+    mProperty_mEndOfFirstInstructions.printNonNullClassInstanceProperties ("mEndOfFirstInstructions") ;
+    mProperty_mLoopExpression.printNonNullClassInstanceProperties ("mLoopExpression") ;
+    mProperty_mEndOfLoopExpression.printNonNullClassInstanceProperties ("mEndOfLoopExpression") ;
+    mProperty_mSecondInstructions.printNonNullClassInstanceProperties ("mSecondInstructions") ;
+    mProperty_mEndOfSecondInstructions.printNonNullClassInstanceProperties ("mEndOfSecondInstructions") ;
+    mProperty_mEndOfLoopInstruction.printNonNullClassInstanceProperties ("mEndOfLoopInstruction") ;
+  }
+#endif
+
+//--------------------------------------------------------------------------------------------------
+//     @loopInstructionWithVariantAST generic code implementation
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_loopInstructionWithVariantAST ("loopInstructionWithVariantAST",
+                                                                                  & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
+
+//--------------------------------------------------------------------------------------------------
+
+const GALGAS_TypeDescriptor * GGS_loopInstructionWithVariantAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_loopInstructionWithVariantAST ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 ComparisonResult GGS_loopInstructionWithVariantAST_2E_weak::objectCompare (const GGS_loopInstructionWithVariantAST_2E_weak & inOperand) const {
   ComparisonResult result = ComparisonResult::invalid ;
   if (isValid () && inOperand.isValid ()) {
@@ -7061,7 +7853,7 @@ mProperty_isConcrete (),
 mProperty_isFinal (),
 mProperty_superType (),
 mProperty_typeKind (),
-mProperty_supportCollectionValue (),
+mProperty_supportArrayLiteral (),
 mProperty_allTypedPropertyList (),
 mProperty_propertyMap (),
 mProperty_currentTypedPropertyList (),
@@ -7073,6 +7865,7 @@ mProperty_instanceMethodMap (),
 mProperty_classMethodMap (),
 mProperty_unwrappedType (),
 mProperty_readSubscriptMap (),
+mProperty_writeSubscriptMap (),
 mProperty_enumerationDescriptorList (),
 mProperty_features (),
 mProperty_addAssignOperatorArguments (),
@@ -7091,7 +7884,7 @@ mProperty_isConcrete (inSource.mProperty_isConcrete),
 mProperty_isFinal (inSource.mProperty_isFinal),
 mProperty_superType (inSource.mProperty_superType),
 mProperty_typeKind (inSource.mProperty_typeKind),
-mProperty_supportCollectionValue (inSource.mProperty_supportCollectionValue),
+mProperty_supportArrayLiteral (inSource.mProperty_supportArrayLiteral),
 mProperty_allTypedPropertyList (inSource.mProperty_allTypedPropertyList),
 mProperty_propertyMap (inSource.mProperty_propertyMap),
 mProperty_currentTypedPropertyList (inSource.mProperty_currentTypedPropertyList),
@@ -7103,6 +7896,7 @@ mProperty_instanceMethodMap (inSource.mProperty_instanceMethodMap),
 mProperty_classMethodMap (inSource.mProperty_classMethodMap),
 mProperty_unwrappedType (inSource.mProperty_unwrappedType),
 mProperty_readSubscriptMap (inSource.mProperty_readSubscriptMap),
+mProperty_writeSubscriptMap (inSource.mProperty_writeSubscriptMap),
 mProperty_enumerationDescriptorList (inSource.mProperty_enumerationDescriptorList),
 mProperty_features (inSource.mProperty_features),
 mProperty_addAssignOperatorArguments (inSource.mProperty_addAssignOperatorArguments),
@@ -7121,7 +7915,7 @@ GGS_unifiedTypeDefinition & GGS_unifiedTypeDefinition::operator = (const GGS_uni
   mProperty_isFinal = inSource.mProperty_isFinal ;
   mProperty_superType = inSource.mProperty_superType ;
   mProperty_typeKind = inSource.mProperty_typeKind ;
-  mProperty_supportCollectionValue = inSource.mProperty_supportCollectionValue ;
+  mProperty_supportArrayLiteral = inSource.mProperty_supportArrayLiteral ;
   mProperty_allTypedPropertyList = inSource.mProperty_allTypedPropertyList ;
   mProperty_propertyMap = inSource.mProperty_propertyMap ;
   mProperty_currentTypedPropertyList = inSource.mProperty_currentTypedPropertyList ;
@@ -7133,6 +7927,7 @@ GGS_unifiedTypeDefinition & GGS_unifiedTypeDefinition::operator = (const GGS_uni
   mProperty_classMethodMap = inSource.mProperty_classMethodMap ;
   mProperty_unwrappedType = inSource.mProperty_unwrappedType ;
   mProperty_readSubscriptMap = inSource.mProperty_readSubscriptMap ;
+  mProperty_writeSubscriptMap = inSource.mProperty_writeSubscriptMap ;
   mProperty_enumerationDescriptorList = inSource.mProperty_enumerationDescriptorList ;
   mProperty_features = inSource.mProperty_features ;
   mProperty_addAssignOperatorArguments = inSource.mProperty_addAssignOperatorArguments ;
@@ -7145,33 +7940,34 @@ GGS_unifiedTypeDefinition & GGS_unifiedTypeDefinition::operator = (const GGS_uni
 
 //---Synthetized initializer -----------------------------------------------------------------------
 
-GGS_unifiedTypeDefinition GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (const GGS_lstring & in_typeName,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_bool & in_isPredefined,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_bool & in_isConcrete,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_bool & in_isFinal,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_unifiedTypeMapEntry & in_superType,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_typeKindEnum & in_typeKind,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_bool & in_supportCollectionValue,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS__5B_typedProperty_5D_ & in_allTypedPropertyList,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_propertyMap & in_propertyMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS__5B_typedProperty_5D_ & in_currentTypedPropertyList,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_initializerMap & in_initializerMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_classFunctionMap & in_classFunctionMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_getterMap & in_getterMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_setterMap & in_setterMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_instanceMethodMap & in_instanceMethodMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_classMethodMap & in_classMethodMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_unifiedTypeMapEntry & in_unwrappedType,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_subscriptMap & in_readSubscriptMap,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS__5B_enumerationDescriptor_5D_ & in_enumerationDescriptorList,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_typeFeatures & in_features,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS__5B_functionSignatureElement_5D_ & in_addAssignOperatorArguments,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_bool & in_generateHeaderInSeparateFile,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_unifiedTypeMapEntry & in_typeForEnumeratedElement,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_string & in_headerFileName,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     const GGS_headerKind & in_headerKind,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     Compiler * inCompiler
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+GGS_unifiedTypeDefinition GGS_unifiedTypeDefinition::init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportArrayLiteral_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_writeSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (const GGS_lstring & in_typeName,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_bool & in_isPredefined,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_bool & in_isConcrete,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_bool & in_isFinal,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_unifiedTypeMapEntry & in_superType,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_typeKindEnum & in_typeKind,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_bool & in_supportArrayLiteral,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS__5B_typedProperty_5D_ & in_allTypedPropertyList,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_propertyMap & in_propertyMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS__5B_typedProperty_5D_ & in_currentTypedPropertyList,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_initializerMap & in_initializerMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_classFunctionMap & in_classFunctionMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_getterMap & in_getterMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_setterMap & in_setterMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_instanceMethodMap & in_instanceMethodMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_classMethodMap & in_classMethodMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_unifiedTypeMapEntry & in_unwrappedType,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_readSubcriptMap & in_readSubscriptMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_writeSubcriptMap & in_writeSubscriptMap,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS__5B_enumerationDescriptor_5D_ & in_enumerationDescriptorList,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_typeFeatures & in_features,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS__5B_functionSignatureElement_5D_ & in_addAssignOperatorArguments,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_bool & in_generateHeaderInSeparateFile,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_unifiedTypeMapEntry & in_typeForEnumeratedElement,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_string & in_headerFileName,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       const GGS_headerKind & in_headerKind,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       Compiler * inCompiler
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GGS_unifiedTypeDefinition result ;
   result.setInitializedProperties (inCompiler) ;
   result.mProperty_typeName = in_typeName ;
@@ -7180,7 +7976,7 @@ GGS_unifiedTypeDefinition GGS_unifiedTypeDefinition::init_21_typeName_21_isPrede
   result.mProperty_isFinal = in_isFinal ;
   result.mProperty_superType = in_superType ;
   result.mProperty_typeKind = in_typeKind ;
-  result.mProperty_supportCollectionValue = in_supportCollectionValue ;
+  result.mProperty_supportArrayLiteral = in_supportArrayLiteral ;
   result.mProperty_allTypedPropertyList = in_allTypedPropertyList ;
   result.mProperty_propertyMap = in_propertyMap ;
   result.mProperty_currentTypedPropertyList = in_currentTypedPropertyList ;
@@ -7192,6 +7988,7 @@ GGS_unifiedTypeDefinition GGS_unifiedTypeDefinition::init_21_typeName_21_isPrede
   result.mProperty_classMethodMap = in_classMethodMap ;
   result.mProperty_unwrappedType = in_unwrappedType ;
   result.mProperty_readSubscriptMap = in_readSubscriptMap ;
+  result.mProperty_writeSubscriptMap = in_writeSubscriptMap ;
   result.mProperty_enumerationDescriptorList = in_enumerationDescriptorList ;
   result.mProperty_features = in_features ;
   result.mProperty_addAssignOperatorArguments = in_addAssignOperatorArguments ;
@@ -7226,21 +8023,22 @@ GGS_unifiedTypeDefinition::GGS_unifiedTypeDefinition (const GGS_lstring & inOper
                                                       const GGS_instanceMethodMap & inOperand14,
                                                       const GGS_classMethodMap & inOperand15,
                                                       const GGS_unifiedTypeMapEntry & inOperand16,
-                                                      const GGS_subscriptMap & inOperand17,
-                                                      const GGS__5B_enumerationDescriptor_5D_ & inOperand18,
-                                                      const GGS_typeFeatures & inOperand19,
-                                                      const GGS__5B_functionSignatureElement_5D_ & inOperand20,
-                                                      const GGS_bool & inOperand21,
-                                                      const GGS_unifiedTypeMapEntry & inOperand22,
-                                                      const GGS_string & inOperand23,
-                                                      const GGS_headerKind & inOperand24) :
+                                                      const GGS_readSubcriptMap & inOperand17,
+                                                      const GGS_writeSubcriptMap & inOperand18,
+                                                      const GGS__5B_enumerationDescriptor_5D_ & inOperand19,
+                                                      const GGS_typeFeatures & inOperand20,
+                                                      const GGS__5B_functionSignatureElement_5D_ & inOperand21,
+                                                      const GGS_bool & inOperand22,
+                                                      const GGS_unifiedTypeMapEntry & inOperand23,
+                                                      const GGS_string & inOperand24,
+                                                      const GGS_headerKind & inOperand25) :
 mProperty_typeName (inOperand0),
 mProperty_isPredefined (inOperand1),
 mProperty_isConcrete (inOperand2),
 mProperty_isFinal (inOperand3),
 mProperty_superType (inOperand4),
 mProperty_typeKind (inOperand5),
-mProperty_supportCollectionValue (inOperand6),
+mProperty_supportArrayLiteral (inOperand6),
 mProperty_allTypedPropertyList (inOperand7),
 mProperty_propertyMap (inOperand8),
 mProperty_currentTypedPropertyList (inOperand9),
@@ -7252,19 +8050,20 @@ mProperty_instanceMethodMap (inOperand14),
 mProperty_classMethodMap (inOperand15),
 mProperty_unwrappedType (inOperand16),
 mProperty_readSubscriptMap (inOperand17),
-mProperty_enumerationDescriptorList (inOperand18),
-mProperty_features (inOperand19),
-mProperty_addAssignOperatorArguments (inOperand20),
-mProperty_generateHeaderInSeparateFile (inOperand21),
-mProperty_typeForEnumeratedElement (inOperand22),
-mProperty_headerFileName (inOperand23),
-mProperty_headerKind (inOperand24) {
+mProperty_writeSubscriptMap (inOperand18),
+mProperty_enumerationDescriptorList (inOperand19),
+mProperty_features (inOperand20),
+mProperty_addAssignOperatorArguments (inOperand21),
+mProperty_generateHeaderInSeparateFile (inOperand22),
+mProperty_typeForEnumeratedElement (inOperand23),
+mProperty_headerFileName (inOperand24),
+mProperty_headerKind (inOperand25) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GGS_unifiedTypeDefinition::isValid (void) const {
-  return mProperty_typeName.isValid () && mProperty_isPredefined.isValid () && mProperty_isConcrete.isValid () && mProperty_isFinal.isValid () && mProperty_superType.isValid () && mProperty_typeKind.isValid () && mProperty_supportCollectionValue.isValid () && mProperty_allTypedPropertyList.isValid () && mProperty_propertyMap.isValid () && mProperty_currentTypedPropertyList.isValid () && mProperty_initializerMap.isValid () && mProperty_classFunctionMap.isValid () && mProperty_getterMap.isValid () && mProperty_setterMap.isValid () && mProperty_instanceMethodMap.isValid () && mProperty_classMethodMap.isValid () && mProperty_unwrappedType.isValid () && mProperty_readSubscriptMap.isValid () && mProperty_enumerationDescriptorList.isValid () && mProperty_features.isValid () && mProperty_addAssignOperatorArguments.isValid () && mProperty_generateHeaderInSeparateFile.isValid () && mProperty_typeForEnumeratedElement.isValid () && mProperty_headerFileName.isValid () && mProperty_headerKind.isValid () ;
+  return mProperty_typeName.isValid () && mProperty_isPredefined.isValid () && mProperty_isConcrete.isValid () && mProperty_isFinal.isValid () && mProperty_superType.isValid () && mProperty_typeKind.isValid () && mProperty_supportArrayLiteral.isValid () && mProperty_allTypedPropertyList.isValid () && mProperty_propertyMap.isValid () && mProperty_currentTypedPropertyList.isValid () && mProperty_initializerMap.isValid () && mProperty_classFunctionMap.isValid () && mProperty_getterMap.isValid () && mProperty_setterMap.isValid () && mProperty_instanceMethodMap.isValid () && mProperty_classMethodMap.isValid () && mProperty_unwrappedType.isValid () && mProperty_readSubscriptMap.isValid () && mProperty_writeSubscriptMap.isValid () && mProperty_enumerationDescriptorList.isValid () && mProperty_features.isValid () && mProperty_addAssignOperatorArguments.isValid () && mProperty_generateHeaderInSeparateFile.isValid () && mProperty_typeForEnumeratedElement.isValid () && mProperty_headerFileName.isValid () && mProperty_headerKind.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -7276,7 +8075,7 @@ void GGS_unifiedTypeDefinition::drop (void) {
   mProperty_isFinal.drop () ;
   mProperty_superType.drop () ;
   mProperty_typeKind.drop () ;
-  mProperty_supportCollectionValue.drop () ;
+  mProperty_supportArrayLiteral.drop () ;
   mProperty_allTypedPropertyList.drop () ;
   mProperty_propertyMap.drop () ;
   mProperty_currentTypedPropertyList.drop () ;
@@ -7288,6 +8087,7 @@ void GGS_unifiedTypeDefinition::drop (void) {
   mProperty_classMethodMap.drop () ;
   mProperty_unwrappedType.drop () ;
   mProperty_readSubscriptMap.drop () ;
+  mProperty_writeSubscriptMap.drop () ;
   mProperty_enumerationDescriptorList.drop () ;
   mProperty_features.drop () ;
   mProperty_addAssignOperatorArguments.drop () ;
@@ -7317,7 +8117,7 @@ void GGS_unifiedTypeDefinition::description (String & ioString,
     ioString.appendCString (", ") ;
     mProperty_typeKind.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
-    mProperty_supportCollectionValue.description (ioString, inIndentation+1) ;
+    mProperty_supportArrayLiteral.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_allTypedPropertyList.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
@@ -7340,6 +8140,8 @@ void GGS_unifiedTypeDefinition::description (String & ioString,
     mProperty_unwrappedType.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_readSubscriptMap.description (ioString, inIndentation+1) ;
+    ioString.appendCString (", ") ;
+    mProperty_writeSubscriptMap.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_enumerationDescriptorList.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;

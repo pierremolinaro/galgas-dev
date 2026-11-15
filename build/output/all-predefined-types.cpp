@@ -351,9 +351,9 @@ GGS_uint_36__34_ GGS__5B_uint_36__34__5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint_36__34_ GGS__5B_uint_36__34__5D_::readSubscript__3F_ (const GGS_uint & inIndex,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const {
+GGS_uint_36__34_ GGS__5B_uint_36__34__5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const {
   GGS_uint_36__34_ result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
@@ -758,9 +758,9 @@ GGS_stringString GGS__5B_stringString_5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_stringString GGS__5B_stringString_5D_::readSubscript__3F_ (const GGS_uint & inIndex,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const {
+GGS_stringString GGS__5B_stringString_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const {
   GGS_stringString result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
@@ -1282,9 +1282,9 @@ GGS_string GGS__5B_string_5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_string GGS__5B_string_5D_::readSubscript__3F_ (const GGS_uint & inIndex,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const {
+GGS_string GGS__5B_string_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+                                                  Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
@@ -1778,9 +1778,9 @@ GGS_lstring GGS__5B_lstring_5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_lstring GGS__5B_lstring_5D_::readSubscript__3F_ (const GGS_uint & inIndex,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const {
+GGS_lstring GGS__5B_lstring_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const {
   GGS_lstring result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;
@@ -2185,9 +2185,9 @@ GGS_uint GGS__5B_uint_5D_::getter_last (Compiler * inCompiler
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_uint GGS__5B_uint_5D_::readSubscript__3F_ (const GGS_uint & inIndex,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const {
+GGS_uint GGS__5B_uint_5D_::readSubcript__3F_ (const GGS_uint & inIndex,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const {
   GGS_uint result ;
   if (isValid () && inIndex.isValid ()) {
     const uint32_t idx = inIndex.uintValue () ;

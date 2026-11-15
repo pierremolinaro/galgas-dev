@@ -408,7 +408,7 @@ final class @plusPlusEqualElementInstructionAST : @semanticInstructionAST {
       end
     end
   //--- Check target variable type support '++=' operator
-    if not targetType.definition.supportCollectionValue then
+    if not targetType.definition.supportArrayLiteral then
       error self.mInstructionLocation
       :"the target object has the '@" + targetType.definition.typeName.string
       + "' type, but this type does not support the '++=' operator"

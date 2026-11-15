@@ -333,7 +333,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
     ?let @unifiedTypeMapEntry optionalElementTypeEntry
   )
 //--- Read subscripts
-  var @subscriptMap readSubscriptMap = @()
+  var @readSubcriptMap readSubscriptMap = @()
   let [@functionSignatureElement] argumentTypeList = [@("".nowhere, keyTypeIndex, "inKey", true)]
   !?readSubscriptMap.insertKey
     (@(argumentTypeList.subcriptSignature, .nowhere),
@@ -348,7 +348,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
     !isFinal: true,
     !superType: .null,
     !typeKind: .mapType,
-    !supportCollectionValue: true,
+    !supportArrayLiteral: true,
     !allTypedPropertyList: @(),
     !propertyMap: @(),
     !currentTypedPropertyList: typedPropertyList,
@@ -360,6 +360,7 @@ override proc @dictDeclarationAST.enterDeclarationInSemanticContext
     !classMethodMap: @(),
     !unwrappedType: .null,
     !readSubscriptMap: readSubscriptMap,
+    !writeSubscriptMap: @(),
     !enumerationDescriptorList: enumerationDescriptor,
     !features: features,
     !addAssignOperatorArguments: argumentTypeListForAddAssignWithFieldExpressionList,
@@ -530,11 +531,12 @@ final class @dictTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.instanceMethodMap,
       selfTypeDefinition.classMethodMap,
       selfTypeDefinition.readSubscriptMap,
+      selfTypeDefinition.writeSubscriptMap,
       selfTypeDefinition.enumerationDescriptorList,
       selfTypeDefinition.features,
       selfTypeDefinition.addAssignOperatorArguments,
       selfTypeDefinition.typeForEnumeratedElement,
-      selfTypeDefinition.supportCollectionValue
+      selfTypeDefinition.supportArrayLiteral
     ]
   }
 

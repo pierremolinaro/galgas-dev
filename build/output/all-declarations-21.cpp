@@ -1088,8 +1088,8 @@ void cPtr_structPropertyAccessExpressionAST::method_analyzeSemanticExpression (c
   GalgasBool test_1 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_1) {
     const GGS_structPropertyAccessExpressionAST temp_2 = this ;
-    const GGS_propertyMap_2E_element var_prop_4491 = var_propertyMap_4428.readSubscript__3F_ (temp_2.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-    if (!var_propertyMap_4428.readSubscript__3F_ (temp_2.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+    const GGS_propertyMap_2E_element var_prop_4491 = var_propertyMap_4428.readSubcript__3F_ (temp_2.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+    if (!var_propertyMap_4428.readSubcript__3F_ (temp_2.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
       test_1 = GalgasBool::boolFalse ;
     }
     if (GalgasBool::boolTrue == test_1) {
@@ -1119,8 +1119,8 @@ void cPtr_structPropertyAccessExpressionAST::method_analyzeSemanticExpression (c
     GalgasBool test_9 = GalgasBool::boolTrue ;
     if (GalgasBool::boolTrue == test_9) {
       const GGS_structPropertyAccessExpressionAST temp_10 = this ;
-      const GGS_getterMap_2E_element var_theGetter_5142 = var_getterMap_5081.readSubscript__3F_ (temp_10.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-      if (!var_getterMap_5081.readSubscript__3F_ (temp_10.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+      const GGS_getterMap_2E_element var_theGetter_5142 = var_getterMap_5081.readSubcript__3F_ (temp_10.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+      if (!var_getterMap_5081.readSubcript__3F_ (temp_10.readProperty_propertyName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
         test_9 = GalgasBool::boolFalse ;
       }
       if (GalgasBool::boolTrue == test_9) {
@@ -1229,11 +1229,11 @@ void cPtr_subscriptReadAccessExpressionAST::method_analyzeSemanticExpression (co
   GGS_unifiedTypeMapEntry var_expressionType_9610 = var_expression_9564.readProperty_mResultType () ;
   const GGS_subscriptReadAccessExpressionAST temp_1 = this ;
   GGS_string var_invocationSignature_9697 = extensionGetter_subscriptSignature (temp_1.readProperty_actualArgumentList (), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 236)) ;
-  GGS_subscriptMap var_subscriptMap_9807 = extensionGetter_definition (var_expressionType_9610, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 238)).readProperty_readSubscriptMap () ;
+  GGS_readSubcriptMap var_subscriptMap_9807 = extensionGetter_definition (var_expressionType_9610, inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 238)).readProperty_readSubscriptMap () ;
   GalgasBool test_2 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_2) {
-    const GGS_subscriptMap_2E_element var_aSubscript_9876 = var_subscriptMap_9807.readSubscript__3F_ (var_invocationSignature_9697, inCompiler COMMA_HERE).unwrappedValue () ;
-    if (!var_subscriptMap_9807.readSubscript__3F_ (var_invocationSignature_9697, inCompiler COMMA_HERE).isValuated ()) {
+    const GGS_readSubcriptMap_2E_element var_aSubscript_9876 = var_subscriptMap_9807.readSubcript__3F_ (var_invocationSignature_9697, inCompiler COMMA_HERE).unwrappedValue () ;
+    if (!var_subscriptMap_9807.readSubcript__3F_ (var_invocationSignature_9697, inCompiler COMMA_HERE).isValuated ()) {
       test_2 = GalgasBool::boolFalse ;
     }
     if (GalgasBool::boolTrue == test_2) {
@@ -1307,14 +1307,14 @@ void cPtr_subscriptReadAccessExpressionForGeneration::method_generateExpression 
     }
     enumerator_12846.gotoNextObject () ;
   }
-  outArgument_outCppExpression = var_operand_12734.add_operation (GGS_string (".readSubscript_"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 321)) ;
+  outArgument_outCppExpression = var_operand_12734.add_operation (GGS_string (".readSubcript_"), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 321)) ;
   const GGS_subscriptReadAccessExpressionForGeneration temp_3 = this ;
   outArgument_outCppExpression.plusAssignOperation(temp_3.readProperty_subscriptInvocationName ().getter_identifierRepresentation (SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 322)), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 322)) ;
   outArgument_outCppExpression.plusAssignOperation(GGS_string (" ("), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 323)) ;
-  UpEnumerator__5B_string_5D_ enumerator_13338 (var_subscriptArgumentList_12792) ;
-  while (enumerator_13338.hasCurrentObject ()) {
-    outArgument_outCppExpression.plusAssignOperation(enumerator_13338.current (HERE).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 325)), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 325)) ;
-    enumerator_13338.gotoNextObject () ;
+  UpEnumerator__5B_string_5D_ enumerator_13337 (var_subscriptArgumentList_12792) ;
+  while (enumerator_13337.hasCurrentObject ()) {
+    outArgument_outCppExpression.plusAssignOperation(enumerator_13337.current (HERE).add_operation (GGS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 325)), inCompiler  COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 325)) ;
+    enumerator_13337.gotoNextObject () ;
   }
   {
   ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 327)) COMMA_SOURCE_FILE ("expression-factor-property-subscript-access.galgas4", 327)) ;
@@ -2078,8 +2078,8 @@ void cPtr_getterCallExpressionAST::method_analyzeSemanticExpression (const GGS_l
   GalgasBool test_4 = GalgasBool::boolTrue ;
   if (GalgasBool::boolTrue == test_4) {
     const GGS_getterCallExpressionAST temp_5 = this ;
-    const GGS_getterMap_2E_element var_aGetter_3138 = extensionGetter_definition (var_receiverType_3026, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas4", 60)).readProperty_getterMap ().readSubscript__3F_ (temp_5.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-    if (!extensionGetter_definition (var_receiverType_3026, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas4", 60)).readProperty_getterMap ().readSubscript__3F_ (temp_5.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+    const GGS_getterMap_2E_element var_aGetter_3138 = extensionGetter_definition (var_receiverType_3026, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas4", 60)).readProperty_getterMap ().readSubcript__3F_ (temp_5.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+    if (!extensionGetter_definition (var_receiverType_3026, inCompiler COMMA_SOURCE_FILE ("expression-getter-call.galgas4", 60)).readProperty_getterMap ().readSubcript__3F_ (temp_5.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
       test_4 = GalgasBool::boolFalse ;
     }
     if (GalgasBool::boolTrue == test_4) {
@@ -2212,8 +2212,8 @@ void cPtr_getterCallExpressionAST::method_analyzeSemanticExpression (const GGS_l
             GalgasBool test_40 = GalgasBool::boolTrue ;
             if (GalgasBool::boolTrue == test_40) {
               const GGS_getterCallExpressionAST temp_41 = this ;
-              const GGS_getterMap_2E_element var_entry_6799 = var_aMap_6741.readSubscript__3F_ (temp_41.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
-              if (!var_aMap_6741.readSubscript__3F_ (temp_41.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
+              const GGS_getterMap_2E_element var_entry_6799 = var_aMap_6741.readSubcript__3F_ (temp_41.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).unwrappedValue () ;
+              if (!var_aMap_6741.readSubcript__3F_ (temp_41.readProperty_mGetterName ().readProperty_string (), inCompiler COMMA_HERE).isValuated ()) {
                 test_40 = GalgasBool::boolFalse ;
               }
               if (GalgasBool::boolTrue == test_40) {
@@ -24132,8 +24132,8 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::class_func_binarySetWithBit (const GGS_uint & inBitIndex,\n"
-  "                                                                 Compiler * /* inCompiler */\n"
-  "                                                                 COMMA_UNUSED_LOCATION_ARGS) {\n"
+  "                                                          Compiler * /* inCompiler */\n"
+  "                                                          COMMA_UNUSED_LOCATION_ARGS) {\n"
   "  GGS_binaryset result ;\n"
   "  if (inBitIndex.isValid ()) {\n"
   "    const uint32_t bitIndex = inBitIndex.uintValue () ;\n"
@@ -24146,8 +24146,8 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::class_func_binarySetWithPredicateString (const GGS_string & inBitString,\n"
-  "                                                                             Compiler * inCompiler\n"
-  "                                                                             COMMA_LOCATION_ARGS) {\n"
+  "                                                                      Compiler * inCompiler\n"
+  "                                                                      COMMA_LOCATION_ARGS) {\n"
   "  GGS_binaryset result ;\n"
   "  if (inBitString.isValid ()) {\n"
   "    const String bitString = inBitString.stringValue () ;\n"
@@ -24201,11 +24201,11 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "static GGS_binaryset binarySetWithComparison (Compiler * inCompiler,\n"
-  "                                                 const GGS_uint & inLeftFirstIndex,\n"
-  "                                                 const GGS_uint & inBitCount,\n"
-  "                                                 const BinaryDecisionDiagram::compareEnum inComparison,\n"
-  "                                                 const GGS_uint & inRightFirstIndex\n"
-  "                                                 COMMA_LOCATION_ARGS) {\n"
+  "                                              const GGS_uint & inLeftFirstIndex,\n"
+  "                                              const GGS_uint & inBitCount,\n"
+  "                                              const BinaryDecisionDiagram::compareEnum inComparison,\n"
+  "                                              const GGS_uint & inRightFirstIndex\n"
+  "                                              COMMA_LOCATION_ARGS) {\n"
   "  GGS_binaryset result ;\n"
   "  if ((inLeftFirstIndex.isValid ()) && inBitCount.isValid () && (inRightFirstIndex.isValid ())) {\n"
   "    const uint64_t maxLeft = ((uint64_t) inLeftFirstIndex.uintValue ()) + inBitCount.uintValue () ;\n"
@@ -24227,10 +24227,10 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::class_func_binarySetWithEqualComparison (const GGS_uint & inLeftFirstIndex,\n"
-  "                                                                             const GGS_uint & inBitCount,\n"
-  "                                                                             const GGS_uint & inRightFirstIndex,\n"
-  "                                                                             Compiler * inCompiler\n"
-  "                                                                             COMMA_LOCATION_ARGS) {\n"
+  "                                                                      const GGS_uint & inBitCount,\n"
+  "                                                                      const GGS_uint & inRightFirstIndex,\n"
+  "                                                                      Compiler * inCompiler\n"
+  "                                                                      COMMA_LOCATION_ARGS) {\n"
   "  return binarySetWithComparison (inCompiler,\n"
   "                                  inLeftFirstIndex,\n"
   "                                  inBitCount,\n"
@@ -24242,10 +24242,10 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::class_func_binarySetWithNotEqualComparison (const GGS_uint & inLeftFirstIndex,\n"
-  "                                                                                const GGS_uint & inBitCount,\n"
-  "                                                                                const GGS_uint & inRightFirstIndex,\n"
-  "                                                                                Compiler * inCompiler\n"
-  "                                                                                COMMA_LOCATION_ARGS) {\n"
+  "                                                                         const GGS_uint & inBitCount,\n"
+  "                                                                         const GGS_uint & inRightFirstIndex,\n"
+  "                                                                         Compiler * inCompiler\n"
+  "                                                                         COMMA_LOCATION_ARGS) {\n"
   "  return binarySetWithComparison (inCompiler,\n"
   "                                  inLeftFirstIndex,\n"
   "                                  inBitCount,\n"
@@ -24257,10 +24257,10 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::class_func_binarySetWithLowerOrEqualComparison (const GGS_uint & inLeftFirstIndex,\n"
-  "                                                                                    const GGS_uint & inBitCount,\n"
-  "                                                                                    const GGS_uint & inRightFirstIndex,\n"
-  "                                                                                    Compiler * inCompiler\n"
-  "                                                                                    COMMA_LOCATION_ARGS) {\n"
+  "                                                                             const GGS_uint & inBitCount,\n"
+  "                                                                             const GGS_uint & inRightFirstIndex,\n"
+  "                                                                             Compiler * inCompiler\n"
+  "                                                                             COMMA_LOCATION_ARGS) {\n"
   "  return binarySetWithComparison (inCompiler,\n"
   "                                  inLeftFirstIndex,\n"
   "                                  inBitCount,\n"
@@ -24272,10 +24272,10 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::class_func_binarySetWithGreaterOrEqualComparison (const GGS_uint & inLeftFirstIndex,\n"
-  "                                                                                      const GGS_uint & inBitCount,\n"
-  "                                                                                      const GGS_uint & inRightFirstIndex,\n"
-  "                                                                                      Compiler * inCompiler\n"
-  "                                                                                      COMMA_LOCATION_ARGS) {\n"
+  "                                                                               const GGS_uint & inBitCount,\n"
+  "                                                                               const GGS_uint & inRightFirstIndex,\n"
+  "                                                                               Compiler * inCompiler\n"
+  "                                                                               COMMA_LOCATION_ARGS) {\n"
   "  return binarySetWithComparison (inCompiler,\n"
   "                                  inLeftFirstIndex,\n"
   "                                  inBitCount,\n"
@@ -24287,10 +24287,10 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::class_func_binarySetWithStrictLowerComparison (const GGS_uint & inLeftFirstIndex,\n"
-  "                                                                                   const GGS_uint & inBitCount,\n"
-  "                                                                                   const GGS_uint & inRightFirstIndex,\n"
-  "                                                                                   Compiler * inCompiler\n"
-  "                                                                                   COMMA_LOCATION_ARGS) {\n"
+  "                                                                            const GGS_uint & inBitCount,\n"
+  "                                                                            const GGS_uint & inRightFirstIndex,\n"
+  "                                                                            Compiler * inCompiler\n"
+  "                                                                            COMMA_LOCATION_ARGS) {\n"
   "  return binarySetWithComparison (inCompiler,\n"
   "                                  inLeftFirstIndex,\n"
   "                                  inBitCount,\n"
@@ -24302,10 +24302,10 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::class_func_binarySetWithStrictGreaterComparison (const GGS_uint & inLeftFirstIndex,\n"
-  "                                                                                     const GGS_uint & inBitCount,\n"
-  "                                                                                     const GGS_uint & inRightFirstIndex,\n"
-  "                                                                                     Compiler * inCompiler\n"
-  "                                                                                     COMMA_LOCATION_ARGS) {\n"
+  "                                                                              const GGS_uint & inBitCount,\n"
+  "                                                                              const GGS_uint & inRightFirstIndex,\n"
+  "                                                                              Compiler * inCompiler\n"
+  "                                                                              COMMA_LOCATION_ARGS) {\n"
   "  return binarySetWithComparison (inCompiler,\n"
   "                                  inLeftFirstIndex,\n"
   "                                  inBitCount,\n"
@@ -24317,11 +24317,11 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "static GGS_binaryset binarySetWithComparisonWithConstant (Compiler * inCompiler,\n"
-  "                                                             const GGS_uint & inBitIndex,\n"
-  "                                                             const GGS_uint & inBitCount,\n"
-  "                                                             const BinaryDecisionDiagram::compareEnum inComparison,\n"
-  "                                                             const GGS_uint_36__34_ & inConstant\n"
-  "                                                             COMMA_LOCATION_ARGS) {\n"
+  "                                                          const GGS_uint & inBitIndex,\n"
+  "                                                          const GGS_uint & inBitCount,\n"
+  "                                                          const BinaryDecisionDiagram::compareEnum inComparison,\n"
+  "                                                          const GGS_uint_36__34_ & inConstant\n"
+  "                                                          COMMA_LOCATION_ARGS) {\n"
   "  GGS_binaryset result ;\n"
   "  if ((inBitIndex.isValid ()) && inBitCount.isValid () && (inConstant.isValid ())) {\n"
   "    const uint64_t maxLeft = ((uint64_t) inBitIndex.uintValue ()) + inBitCount.uintValue () ;\n"
@@ -24340,10 +24340,10 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::class_func_binarySetWithEqualToConstant (const GGS_uint & inBitIndex,\n"
-  "                                                                             const GGS_uint & inBitCount,\n"
-  "                                                                             const GGS_uint_36__34_ & inConstant,\n"
-  "                                                                             Compiler * inCompiler\n"
-  "                                                                             COMMA_LOCATION_ARGS) {\n"
+  "                                                                      const GGS_uint & inBitCount,\n"
+  "                                                                      const GGS_uint_36__34_ & inConstant,\n"
+  "                                                                      Compiler * inCompiler\n"
+  "                                                                      COMMA_LOCATION_ARGS) {\n"
   "  return binarySetWithComparisonWithConstant (inCompiler,\n"
   "                                              inBitIndex,\n"
   "                                              inBitCount,\n"
@@ -24355,10 +24355,10 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::class_func_binarySetWithNotEqualToConstant (const GGS_uint & inBitIndex,\n"
-  "                                                                                const GGS_uint & inBitCount,\n"
-  "                                                                                const GGS_uint_36__34_ & inConstant,\n"
-  "                                                                                Compiler * inCompiler\n"
-  "                                                                                COMMA_LOCATION_ARGS) {\n"
+  "                                                                         const GGS_uint & inBitCount,\n"
+  "                                                                         const GGS_uint_36__34_ & inConstant,\n"
+  "                                                                         Compiler * inCompiler\n"
+  "                                                                         COMMA_LOCATION_ARGS) {\n"
   "  return binarySetWithComparisonWithConstant (inCompiler,\n"
   "                                              inBitIndex,\n"
   "                                              inBitCount,\n"
@@ -24370,10 +24370,10 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::class_func_binarySetWithLowerOrEqualToConstant (const GGS_uint & inBitIndex,\n"
-  "                                                                                    const GGS_uint & inBitCount,\n"
-  "                                                                                    const GGS_uint_36__34_ & inConstant,\n"
-  "                                                                                    Compiler * inCompiler\n"
-  "                                                                                    COMMA_LOCATION_ARGS) {\n"
+  "                                                                             const GGS_uint & inBitCount,\n"
+  "                                                                             const GGS_uint_36__34_ & inConstant,\n"
+  "                                                                             Compiler * inCompiler\n"
+  "                                                                             COMMA_LOCATION_ARGS) {\n"
   "  return binarySetWithComparisonWithConstant (inCompiler,\n"
   "                                              inBitIndex,\n"
   "                                              inBitCount,\n"
@@ -24385,10 +24385,10 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::class_func_binarySetWithStrictLowerThanConstant (const GGS_uint & inBitIndex,\n"
-  "                                                                                     const GGS_uint & inBitCount,\n"
-  "                                                                                     const GGS_uint_36__34_ & inConstant,\n"
-  "                                                                                     Compiler * inCompiler\n"
-  "                                                                                     COMMA_LOCATION_ARGS) {\n"
+  "                                                                              const GGS_uint & inBitCount,\n"
+  "                                                                              const GGS_uint_36__34_ & inConstant,\n"
+  "                                                                              Compiler * inCompiler\n"
+  "                                                                              COMMA_LOCATION_ARGS) {\n"
   "  return binarySetWithComparisonWithConstant (inCompiler,\n"
   "                                              inBitIndex,\n"
   "                                              inBitCount,\n"
@@ -24400,10 +24400,10 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::class_func_binarySetWithGreaterOrEqualToConstant (const GGS_uint & inBitIndex,\n"
-  "                                                                                      const GGS_uint & inBitCount,\n"
-  "                                                                                      const GGS_uint_36__34_ & inConstant,\n"
-  "                                                                                      Compiler * inCompiler\n"
-  "                                                                                      COMMA_LOCATION_ARGS) {\n"
+  "                                                                               const GGS_uint & inBitCount,\n"
+  "                                                                               const GGS_uint_36__34_ & inConstant,\n"
+  "                                                                               Compiler * inCompiler\n"
+  "                                                                               COMMA_LOCATION_ARGS) {\n"
   "  return binarySetWithComparisonWithConstant (inCompiler,\n"
   "                                              inBitIndex,\n"
   "                                              inBitCount,\n"
@@ -24415,10 +24415,10 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::class_func_binarySetWithStrictGreaterThanConstant (const GGS_uint & inBitIndex,\n"
-  "                                                                                       const GGS_uint & inBitCount,\n"
-  "                                                                                       const GGS_uint_36__34_ & inConstant,\n"
-  "                                                                                       Compiler * inCompiler\n"
-  "                                                                                       COMMA_LOCATION_ARGS) {\n"
+  "                                                                                const GGS_uint & inBitCount,\n"
+  "                                                                                const GGS_uint_36__34_ & inConstant,\n"
+  "                                                                                Compiler * inCompiler\n"
+  "                                                                                COMMA_LOCATION_ARGS) {\n"
   "  return binarySetWithComparisonWithConstant (inCompiler,\n"
   "                                              inBitIndex,\n"
   "                                              inBitCount,\n"
@@ -24436,7 +24436,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::operator_xor (const GGS_binaryset & inOperand2\n"
-  "                                                 COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                           COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inOperand2.isValid ()) {\n"
   "    result = GGS_binaryset (mBDD.notEqualTo (inOperand2.mBDD)) ;\n"
@@ -24447,7 +24447,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::operator_and (const GGS_binaryset & inOperand2\n"
-  "                                                 COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                           COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inOperand2.isValid ()) {\n"
   "    result = GGS_binaryset (mBDD & inOperand2.mBDD) ;\n"
@@ -24458,7 +24458,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::operator_or (const GGS_binaryset & inOperand2\n"
-  "                                                COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                          COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inOperand2.isValid ()) {\n"
   "    result = GGS_binaryset (mBDD | inOperand2.mBDD) ;\n"
@@ -24479,7 +24479,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "void GGS_binaryset::description (String & ioString,\n"
-  "                                    const int32_t /* inIndentation */) const {\n"
+  "                                 const int32_t /* inIndentation */) const {\n"
   "  ioString.appendCString (\"<@binaryset: \") ;\n"
   "  if (isValid ()) {\n"
   "    if (mBDD.isFalse ()){\n"
@@ -24505,9 +24505,9 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_bool GGS_binaryset::getter_containsValue (const GGS_uint_36__34_ & inValue,\n"
-  "                                                    const GGS_uint & inFirstBit,\n"
-  "                                                    const GGS_uint & inBitCount\n"
-  "                                                    COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                              const GGS_uint & inFirstBit,\n"
+  "                                              const GGS_uint & inBitCount\n"
+  "                                              COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_bool result ;\n"
   "  if (isValid () && inValue.isValid () && inFirstBit.isValid () && inBitCount.isValid ()) {\n"
   "     const uint64_t value = inValue.uint64Value () ;\n"
@@ -24521,8 +24521,8 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_ITE (const GGS_binaryset & inTHENoperand,\n"
-  "                                               const GGS_binaryset & inELSEoperand\n"
-  "                                               COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                         const GGS_binaryset & inELSEoperand\n"
+  "                                         COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inTHENoperand.isValid () && inELSEoperand.isValid ()) {\n"
   "    result = GGS_binaryset (BinaryDecisionDiagram::ite (mBDD, inTHENoperand.mBDD, inELSEoperand.mBDD)) ;\n"
@@ -24533,7 +24533,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_implies (const GGS_binaryset & inOperand\n"
-  "                                                   COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                             COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inOperand.isValid ()) {\n"
   "    result = GGS_binaryset ((~ mBDD) | inOperand.mBDD) ;\n"
@@ -24544,7 +24544,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_equalTo (const GGS_binaryset & inOperand\n"
-  "                                                   COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                             COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inOperand.isValid ()) {\n"
   "    result = GGS_binaryset (mBDD.equalTo (inOperand.mBDD)) ;\n"
@@ -24555,7 +24555,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_notEqualTo (const GGS_binaryset & inOperand\n"
-  "                                                      COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inOperand.isValid ()) {\n"
   "    result = GGS_binaryset (mBDD.notEqualTo (inOperand.mBDD)) ;\n"
@@ -24566,7 +24566,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_lowerOrEqualTo (const GGS_binaryset & inOperand\n"
-  "                                                          COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                    COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inOperand.isValid ()) {\n"
   "    result = GGS_binaryset (mBDD.lowerOrEqual (inOperand.mBDD)) ;\n"
@@ -24577,7 +24577,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_greaterOrEqualTo (const GGS_binaryset & inOperand\n"
-  "                                                            COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                      COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inOperand.isValid ()) {\n"
   "    result = GGS_binaryset (mBDD.greaterOrEqual (inOperand.mBDD)) ;\n"
@@ -24588,7 +24588,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_strictLowerThan (const GGS_binaryset & inOperand\n"
-  "                                                           COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                     COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inOperand.isValid ()) {\n"
   "    result = GGS_binaryset (mBDD.lowerThan (inOperand.mBDD)) ;\n"
@@ -24599,7 +24599,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_strictGreaterThan (const GGS_binaryset & inOperand\n"
-  "                                                             COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                       COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inOperand.isValid ()) {\n"
   "    result = GGS_binaryset (mBDD.greaterThan (inOperand.mBDD)) ;\n"
@@ -24640,8 +24640,8 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_uint_36__34_ GGS_binaryset::getter_valueCount (const GGS_uint & inVariableCount,\n"
-  "                                                         Compiler * inCompiler\n"
-  "                                                         COMMA_LOCATION_ARGS) const {\n"
+  "                                                   Compiler * inCompiler\n"
+  "                                                   COMMA_LOCATION_ARGS) const {\n"
   "  GGS_uint_36__34_ result ;\n"
   "  if (isValid () && inVariableCount.isValid ()) {\n"
   "    if (mBDD.significantVariableCount () > inVariableCount.uintValue ()) {\n"
@@ -24656,8 +24656,8 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_bigint GGS_binaryset::getter_bigValueCount (const GGS_uint & inVariableCount,\n"
-  "                                                      Compiler * inCompiler\n"
-  "                                                      COMMA_LOCATION_ARGS) const {\n"
+  "                                                Compiler * inCompiler\n"
+  "                                                COMMA_LOCATION_ARGS) const {\n"
   "  GGS_bigint result ;\n"
   "  if (isValid () && inVariableCount.isValid ()) {\n"
   "    if (mBDD.significantVariableCount () > inVariableCount.uintValue ()) {\n"
@@ -24710,7 +24710,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "    for (int32_t i=0 ; i<valuesArray.count () ; i++) {\n"
   "      const uint32_t v = (uint32_t) (valuesArray (i COMMA_HERE) & UINT32_MAX) ;\n"
   "      GGS_uint object = GGS_uint (v) ;\n"
-  "      result.plusPlusAssignOperation (inStringList.readSubscript__3F_ (object, inCompiler COMMA_HERE) COMMA_HERE) ;\n"
+  "      result.plusPlusAssignOperation (inStringList.readSubcript__3F_ (object, inCompiler COMMA_HERE) COMMA_HERE) ;\n"
   "    }\n"
   "  }\n"
   "  return result ;\n"
@@ -24772,7 +24772,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_forAllOnBitIndex (const GGS_uint & inVariableIndex\n"
-  "                                                            COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                      COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid()) {\n"
   "    result = GGS_binaryset (mBDD.forallOnBitNumber (inVariableIndex.uintValue ())) ;\n"
@@ -24783,7 +24783,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_forAllOnBitIndexAndBeyond (const GGS_uint & inVariableIndex\n"
-  "                                                                     COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                               COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid ()) {\n"
   "    result = GGS_binaryset (mBDD.forallOnBitsAfterNumber (inVariableIndex.uintValue ())) ;\n"
@@ -24794,7 +24794,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_existOnBitIndex (const GGS_uint & inVariableIndex\n"
-  "                                                           COMMA_UNUSED_LOCATION_ARGS)const  {\n"
+  "                                                     COMMA_UNUSED_LOCATION_ARGS)const  {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid ()) {\n"
   "    result = GGS_binaryset (mBDD.existsOnBitNumber (inVariableIndex.uintValue ())) ;\n"
@@ -24805,7 +24805,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_existOnBitIndexAndBeyond (const GGS_uint & inVariableIndex\n"
-  "                                                                    COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                              COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inVariableIndex.isValid ()) {\n"
   "    result = GGS_binaryset (mBDD.existsOnBitsAfterNumber (inVariableIndex.uintValue ())) ;\n"
@@ -24902,8 +24902,8 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_swap_31__30_ (const GGS_uint & inBitCount1,\n"
-  "                                                        const GGS_uint & inBitCount2\n"
-  "                                                        COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                  const GGS_uint & inBitCount2\n"
+  "                                                  COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inBitCount1.isValid () && inBitCount2.isValid ()) {\n"
   "    const uint32_t bitSize1 = inBitCount1.uintValue () ;\n"
@@ -24916,9 +24916,9 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_swap_30__32__31_ (const GGS_uint & inBitCount1,\n"
-  "                                                            const GGS_uint & inBitCount2,\n"
-  "                                                            const GGS_uint & inBitCount3\n"
-  "                                                            COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                      const GGS_uint & inBitCount2,\n"
+  "                                                      const GGS_uint & inBitCount3\n"
+  "                                                      COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inBitCount1.isValid () && inBitCount2.isValid () && inBitCount3.isValid ()) {\n"
   "    const uint32_t bitSize1 = inBitCount1.uintValue () ;\n"
@@ -24932,9 +24932,9 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_swap_31__30__32_ (const GGS_uint & inBitCount1,\n"
-  "                                                            const GGS_uint & inBitCount2,\n"
-  "                                                            const GGS_uint & inBitCount3\n"
-  "                                                            COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                      const GGS_uint & inBitCount2,\n"
+  "                                                      const GGS_uint & inBitCount3\n"
+  "                                                      COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inBitCount1.isValid () && inBitCount2.isValid () && inBitCount3.isValid ()) {\n"
   "    const uint32_t bitSize1 = inBitCount1.uintValue () ;\n"
@@ -24948,9 +24948,9 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_swap_31__32__30_ (const GGS_uint & inBitCount1,\n"
-  "                                                            const GGS_uint & inBitCount2,\n"
-  "                                                            const GGS_uint & inBitCount3\n"
-  "                                                            COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                      const GGS_uint & inBitCount2,\n"
+  "                                                      const GGS_uint & inBitCount3\n"
+  "                                                      COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inBitCount1.isValid () && inBitCount2.isValid () && inBitCount3.isValid ()) {\n"
   "    const uint32_t bitSize1 = inBitCount1.uintValue () ;\n"
@@ -24964,9 +24964,9 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_swap_32__30__31_ (const GGS_uint & inBitCount1,\n"
-  "                                                            const GGS_uint & inBitCount2,\n"
-  "                                                            const GGS_uint & inBitCount3\n"
-  "                                                            COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                      const GGS_uint & inBitCount2,\n"
+  "                                                      const GGS_uint & inBitCount3\n"
+  "                                                      COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inBitCount1.isValid () && inBitCount2.isValid () && inBitCount3.isValid ()) {\n"
   "    const uint32_t bitSize1 = inBitCount1.uintValue () ;\n"
@@ -24980,9 +24980,9 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_swap_32__31__30_ (const GGS_uint & inBitCount1,\n"
-  "                                                            const GGS_uint & inBitCount2,\n"
-  "                                                            const GGS_uint & inBitCount3\n"
-  "                                                            COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                      const GGS_uint & inBitCount2,\n"
+  "                                                      const GGS_uint & inBitCount3\n"
+  "                                                      COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inBitCount1.isValid () && inBitCount2.isValid () && inBitCount3.isValid ()) {\n"
   "    const uint32_t bitSize1 = inBitCount1.uintValue () ;\n"
@@ -24996,7 +24996,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_transitiveClosure (const GGS_uint & inBitCount\n"
-  "                                                             COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                       COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inBitCount.isValid ()) {\n"
   "    const uint32_t bitCount = inBitCount.uintValue () ;\n"
@@ -25008,8 +25008,8 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_accessibleStates (const GGS_binaryset & inInitialStateSet,\n"
-  "                                                            const GGS_uint & inBitCount\n"
-  "                                                            COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                      const GGS_uint & inBitCount\n"
+  "                                                      COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "//--- Current object is edge [x, y].\n"
   "//    Accessible states set is computed by:\n"
   "// accessible [x] += initial [x] | exists y (accessible [y] & edge [y, x]) ;\n"
@@ -25025,8 +25025,8 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_binarySetByTranslatingFromIndex (const GGS_uint & inFirstIndexToTranslate,\n"
-  "                                                                           const GGS_uint & inTranslation\n"
-  "                                                                           COMMA_LOCATION_ARGS) const {\n"
+  "                                                                     const GGS_uint & inTranslation\n"
+  "                                                                     COMMA_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inFirstIndexToTranslate.isValid () && (inTranslation.isValid ())) {\n"
   "    const uint32_t varCount = mBDD.significantVariableCount () ;\n"
@@ -25053,8 +25053,8 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::getter_existsOnBitRange (const GGS_uint & inFirstIndex,\n"
-  "                                                            const GGS_uint & inCount\n"
-  "                                                            COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                      const GGS_uint & inCount\n"
+  "                                                      COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inFirstIndex.isValid () && inCount.isValid ()) {\n"
   "    const uint32_t varCount = mBDD.significantVariableCount () ;\n"
@@ -25080,7 +25080,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "    uint32_t * substitionArray = nullptr ;\n"
   "    macroMyNewArray (substitionArray, uint32_t, varCount) ;\n"
   "    for (uint32_t i=0 ; i<varCount ; i++) {\n"
-  "      const GGS_uint v = inVector.readSubscript__3F_ (GGS_uint (i), inCompiler COMMA_THERE) ;\n"
+  "      const GGS_uint v = inVector.readSubcript__3F_ (GGS_uint (i), inCompiler COMMA_THERE) ;\n"
   "      substitionArray [i] = v.uintValue () ;\n"
   "    }\n"
   "    result = GGS_binaryset (mBDD.substitution (substitionArray, varCount COMMA_THERE)) ;\n"
@@ -25092,8 +25092,8 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::left_shift_operation (const GGS_uint inLeftShiftCount,\n"
-  "                                                         class Compiler * /* inCompiler */\n"
-  "                                                         COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                   class Compiler * /* inCompiler */\n"
+  "                                                   COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inLeftShiftCount.isValid ()) {\n"
   "    result = GGS_binaryset (mBDD.bddByLeftShifting (inLeftShiftCount.uintValue ())) ;\n"
@@ -25104,8 +25104,8 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::left_shift_operation (const GGS_bigint inLeftShiftCount,\n"
-  "                                                         class Compiler * inCompiler\n"
-  "                                                         COMMA_LOCATION_ARGS) const {\n"
+  "                                                   class Compiler * inCompiler\n"
+  "                                                   COMMA_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inLeftShiftCount.isValid ()) {\n"
   "    if (inLeftShiftCount.bigintValue().isStrictlyNegative ()) {\n"
@@ -25120,8 +25120,8 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::right_shift_operation (const GGS_uint inRightShiftCount,\n"
-  "                                                          class Compiler * /* inCompiler*/\n"
-  "                                                          COMMA_UNUSED_LOCATION_ARGS) const {\n"
+  "                                                    class Compiler * /* inCompiler*/\n"
+  "                                                    COMMA_UNUSED_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inRightShiftCount.isValid ()) {\n"
   "    result = GGS_binaryset (mBDD.bddByRightShifting (inRightShiftCount.uintValue ())) ;\n"
@@ -25132,8 +25132,8 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "GGS_binaryset GGS_binaryset::right_shift_operation (const GGS_bigint inRightShiftCount,\n"
-  "                                                          class Compiler * inCompiler\n"
-  "                                                          COMMA_LOCATION_ARGS) const {\n"
+  "                                                    class Compiler * inCompiler\n"
+  "                                                    COMMA_LOCATION_ARGS) const {\n"
   "  GGS_binaryset result ;\n"
   "  if (isValid () && inRightShiftCount.isValid ()) {\n"
   "    if (inRightShiftCount.bigintValue().isStrictlyNegative ()) {\n"
@@ -25164,7 +25164,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "void GGS_binaryset::class_method_setNodeTableSize (class GGS_uint inTableSize\n"
-  "                                                      COMMA_UNUSED_LOCATION_ARGS) {\n"
+  "                                                   COMMA_UNUSED_LOCATION_ARGS) {\n"
   "  if (inTableSize.isValid ()) {\n"
   "    BinaryDecisionDiagram::setHashMapMaxSize (inTableSize.uintValue ()) ;\n"
   "  }\n"
@@ -25173,7 +25173,7 @@ const char * gWrapperFileContent_139_libpmFileWrapper =
   "//--------------------------------------------------------------------------------------------------\n"
   "\n"
   "void GGS_binaryset::class_method_setAndTableSize (class GGS_uint inTableSize\n"
-  "                                                     COMMA_UNUSED_LOCATION_ARGS) {\n"
+  "                                                  COMMA_UNUSED_LOCATION_ARGS) {\n"
   "  if (inTableSize.isValid ()) {\n"
   "    BinaryDecisionDiagram::setANDOperationCacheMaxSize (inTableSize.uintValue ()) ;\n"
   "  }\n"
@@ -25186,7 +25186,7 @@ const cRegularFileWrapper gWrapperFile_139_libpmFileWrapper (
   "GGS_binaryset.cpp",
   "cpp",
   true, // Text file
- 52060, // Text length
+ 51325, // Text length
   gWrapperFileContent_139_libpmFileWrapper
 ) ;
 
@@ -29747,7 +29747,7 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "    String command = String (\"'\") + mString + \"'\" ;\n"
   "    for (uint32_t i=0 ; i<inArguments.count () ; i++) {\n"
   "      command.appendCString (\" '\") ;\n"
-  "      command.appendString (inArguments.readSubscript__3F_ (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;\n"
+  "      command.appendString (inArguments.readSubcript__3F_ (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;\n"
   "      command.appendCString (\"'\") ;\n"
   "    }\n"
   "    result = GGS_sint (::system (command.cString ())) ;\n"
@@ -29765,7 +29765,7 @@ const char * gWrapperFileContent_179_libpmFileWrapper =
   "    String command = String (\"'\") + mString + \"'\" ;\n"
   "    for (uint32_t i=0 ; i<inArguments.count () ; i++) {\n"
   "      command.appendCString (\" '\") ;\n"
-  "      command.appendString (inArguments.readSubscript__3F_ (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;\n"
+  "      command.appendString (inArguments.readSubcript__3F_ (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;\n"
   "      command.appendCString (\"'\") ;\n"
   "    }\n"
   "    result = GGS_string (command).getter_popen (inCompiler COMMA_THERE) ;\n"
@@ -30447,7 +30447,7 @@ const cRegularFileWrapper gWrapperFile_179_libpmFileWrapper (
   "GGS_string-getters.cpp",
   "cpp",
   true, // Text file
- 51998, // Text length
+ 51996, // Text length
   gWrapperFileContent_179_libpmFileWrapper
 ) ;
 

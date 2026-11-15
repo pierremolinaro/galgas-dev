@@ -273,7 +273,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       !isFinal: true,
       !superType: .null,
       !typeKind: .sortedListType,
-      !supportCollectionValue: true,
+      !supportArrayLiteral: true,
       !allTypedPropertyList: typedAttributeList,
       !propertyMap: @(),
       !currentTypedPropertyList: @(),
@@ -285,6 +285,7 @@ final class @sortedListDeclarationAST : @semanticDeclarationAST {
       !classMethodMap: @(),
       !unwrappedType: .null,
       !readSubscriptMap: @(),
+      !writeSubscriptMap: @(),
       !enumerationDescriptorList: enumerationDescriptor,
       !features: features,
       !addAssignOperatorArguments: constructorAttributeTypeList,
@@ -416,11 +417,12 @@ override proc @sortedListTypeForGeneration.appendDeclaration1
     selfTypeDefinition.instanceMethodMap,
     selfTypeDefinition.classMethodMap,
     selfTypeDefinition.readSubscriptMap,
+    selfTypeDefinition.writeSubscriptMap,
     selfTypeDefinition.enumerationDescriptorList,
     selfTypeDefinition.features,
     selfTypeDefinition.addAssignOperatorArguments,
     selfTypeDefinition.typeForEnumeratedElement,
-    selfTypeDefinition.supportCollectionValue
+    selfTypeDefinition.supportArrayLiteral
   ]
 }
 

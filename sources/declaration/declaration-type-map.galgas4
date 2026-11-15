@@ -553,7 +553,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       ?let @unifiedTypeMapEntry optionalElementTypeEntry
     )
   //--- Read subscripts
-    var @subscriptMap readSubscriptMap = @()
+    var @readSubcriptMap readSubscriptMap = @()
     let [@functionSignatureElement] argumentTypeList = [@("".nowhere, stringTypeIndex, "inKey", true)]
     !?readSubscriptMap.insertKey
       (@(argumentTypeList.subcriptSignature, .nowhere),
@@ -576,7 +576,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !isFinal: true,
       !superType: .null,
       !typeKind: .mapType,
-      !supportCollectionValue: false,
+      !supportArrayLiteral: false,
       !allTypedPropertyList: @(),
       !propertyMap: @(),
       !currentTypedPropertyList: typedPropertyList,
@@ -588,6 +588,7 @@ final class @mapDeclarationAST : @semanticDeclarationAST {
       !classMethodMap: @(),
       !unwrappedType: .null,
       !readSubscriptMap: readSubscriptMap,
+      !writeSubscriptMap: @(),
       !enumerationDescriptorList: enumerationDescriptor,
       !features: features,
       !addAssignOperatorArguments: @(),
@@ -752,11 +753,12 @@ final class @mapTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.instanceMethodMap,
       selfTypeDefinition.classMethodMap,
       selfTypeDefinition.readSubscriptMap,
+      selfTypeDefinition.writeSubscriptMap,
       selfTypeDefinition.enumerationDescriptorList,
       selfTypeDefinition.features,
       selfTypeDefinition.addAssignOperatorArguments,
       selfTypeDefinition.typeForEnumeratedElement,
-      selfTypeDefinition.supportCollectionValue
+      selfTypeDefinition.supportArrayLiteral
     ]
   }
 

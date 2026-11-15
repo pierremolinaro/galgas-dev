@@ -186,7 +186,7 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
     !isFinal: true,
     !superType: .null,
     !typeKind: .boolsetType,
-    !supportCollectionValue: false,
+    !supportArrayLiteral: false,
     !allTypedPropertyList: @(),
     !propertyMap: @(),
     !currentTypedPropertyList: @(),
@@ -198,6 +198,7 @@ override proc @boolsetDeclarationAST.enterDeclarationInSemanticContext
     !classMethodMap: @(),
     !unwrappedType: .null,
     !readSubscriptMap: @(),
+    !writeSubscriptMap: @(),
     !enumerationDescriptorList: @(),
     !features: features,
     !addAssignOperatorArguments: @(),
@@ -304,11 +305,12 @@ override proc @boolsetTypeForGeneration.appendDeclaration1
     selfTypeDefinition.instanceMethodMap,
     selfTypeDefinition.classMethodMap,
     selfTypeDefinition.readSubscriptMap,
+    selfTypeDefinition.writeSubscriptMap,
     selfTypeDefinition.enumerationDescriptorList,
     selfTypeDefinition.features,
     selfTypeDefinition.addAssignOperatorArguments,
     selfTypeDefinition.typeForEnumeratedElement,
-    selfTypeDefinition.supportCollectionValue
+    selfTypeDefinition.supportArrayLiteral
   ]
  }
 

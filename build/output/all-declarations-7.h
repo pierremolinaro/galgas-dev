@@ -9,6 +9,166 @@
 #include "all-declarations-6.h"
 
 //--------------------------------------------------------------------------------------------------
+// Phase 1: @routineArgumentMap_2E_element struct
+//--------------------------------------------------------------------------------------------------
+
+class GGS_routineArgumentMap_2E_element : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public: GGS_lstring mProperty_lkey ;
+  public: inline GGS_lstring readProperty_lkey (void) const {
+    return mProperty_lkey ;
+  }
+
+  public: GGS__5B_formalParameterSignatureElement_5D_ mProperty_mRoutineSignature ;
+  public: inline GGS__5B_formalParameterSignatureElement_5D_ readProperty_mRoutineSignature (void) const {
+    return mProperty_mRoutineSignature ;
+  }
+
+  public: GGS_bool mProperty_mIsFilePrivate ;
+  public: inline GGS_bool readProperty_mIsFilePrivate (void) const {
+    return mProperty_mIsFilePrivate ;
+  }
+
+//--------------------------------- Accessors
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
+  public: VIRTUAL_IN_DEBUG void drop (void) override ;
+
+//--------------------------------- Default constructor
+  public: GGS_routineArgumentMap_2E_element (void) ;
+
+//--------------------------------- Property setters
+  public: inline void setter_setLkey (const GGS_lstring & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_lkey = inValue ;
+  }
+
+  public: inline void setter_setMRoutineSignature (const GGS__5B_formalParameterSignatureElement_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mRoutineSignature = inValue ;
+  }
+
+  public: inline void setter_setMIsFilePrivate (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_mIsFilePrivate = inValue ;
+  }
+
+//--------------------------------- Set initialized properties
+  private: void setInitializedProperties (Compiler * inCompiler) ;
+
+//--------------------------------- Native constructor
+  public: GGS_routineArgumentMap_2E_element (const GGS_lstring & in_lkey,
+                                             const GGS__5B_formalParameterSignatureElement_5D_ & in_mRoutineSignature,
+                                             const GGS_bool & in_mIsFilePrivate) ;
+
+//--------------------------------- Copy constructor
+  public: GGS_routineArgumentMap_2E_element (const GGS_routineArgumentMap_2E_element & inSource) ;
+
+//--------------------------------- Assignment operator
+  public: GGS_routineArgumentMap_2E_element & operator = (const GGS_routineArgumentMap_2E_element & inSource) ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_routineArgumentMap_2E_element init_21__21__21_ (const class GGS_lstring & inOperand0,
+                                                                     const class GGS__5B_formalParameterSignatureElement_5D_ & inOperand1,
+                                                                     const class GGS_bool & inOperand2,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+//--------------------------------- Implementation of func 'description'
+  public: void description (String & ioString,
+                            const int32_t inIndentation) const override ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_routineArgumentMap_2E_element ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: routineArgumentMap.element? optional
+//--------------------------------------------------------------------------------------------------
+
+class GGS_routineArgumentMap_2E_element_3F_ : public AC_GALGAS_root {
+//--------------------------------- Private property
+  private: GGS_routineArgumentMap_2E_element mValue ;
+  private: OptionalState mState ;
+
+//--------------------------------- Default constructor
+  public: GGS_routineArgumentMap_2E_element_3F_ (void) ;
+
+//--------------------------------- Constructor from unwrapped type
+  public: GGS_routineArgumentMap_2E_element_3F_ (const GGS_routineArgumentMap_2E_element & inSource) ;
+
+//--------------------------------- Constructor from weak type
+
+//--------------------------------- nil initializer
+  public: static GGS_routineArgumentMap_2E_element_3F_ init_nil (void) ;
+
+  public: inline bool isNil (void) const { return mState == OptionalState::isNil ; }
+
+  public: bool isValuated (void) const ;
+  public: inline GGS_routineArgumentMap_2E_element unwrappedValue (void) const {
+    return mValue ;
+  }
+
+//--------------------------------- GALGAS read only properties
+  public: inline GGS_bool readProperty_isNil (void) const {
+    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::isNil) ;
+  }
+
+  public: inline GGS_bool readProperty_isSome (void) const {
+    return GGS_bool (mState != OptionalState::invalid, mState == OptionalState::valuated) ;
+  }
+
+  
+//--- Methods that every type should implement
+  public: virtual bool isValid (void) const override ;
+  
+  public: virtual void drop (void) override ;
+
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_routineArgumentMap_2E_element_3F_ ;
+
+//--------------------------------------------------------------------------------------------------
 // Phase 1: @galgas_33_SyntaxExtensionAST struct
 //--------------------------------------------------------------------------------------------------
 
@@ -82,7 +242,10 @@ class GGS_galgas_33_SyntaxExtensionAST : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -163,7 +326,10 @@ class GGS_semanticExpressionAST_2E_weak : public AC_GALGAS_weak_reference {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -314,7 +480,10 @@ class GGS_abstractInputParameter_2E_weak : public AC_GALGAS_weak_reference {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -353,7 +522,10 @@ class GGS_inputParameterAnonymousVariable : public GGS_abstractInputParameter {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -467,7 +639,10 @@ class GGS_inputParameterAnonymousVariable_2E_weak : public GGS_abstractInputPara
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -509,7 +684,10 @@ class GGS_inputParameterVariable : public GGS_abstractInputParameter {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -628,7 +806,10 @@ class GGS_inputParameterVariable_2E_weak : public GGS_abstractInputParameter_2E_
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -673,7 +854,10 @@ class GGS_inputParameterDeclaredVariable : public GGS_abstractInputParameter {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -795,7 +979,10 @@ class GGS_inputParameterDeclaredVariable_2E_weak : public GGS_abstractInputParam
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -840,7 +1027,10 @@ class GGS_inputParameterDeclaredConstant : public GGS_abstractInputParameter {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -962,7 +1152,10 @@ class GGS_inputParameterDeclaredConstant_2E_weak : public GGS_abstractInputParam
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1180,11 +1373,14 @@ class GGS_terminalSymbolsMapForGrammarAnalysis : public AC_GALGAS_root {
                                                                                COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_terminalSymbolsMapForGrammarAnalysis_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                                            Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_terminalSymbolsMapForGrammarAnalysis_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                                           Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1239,7 +1435,10 @@ class GGS_externFunctionDeclarationAST : public GGS_semanticDeclarationAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1393,7 +1592,10 @@ class GGS_externFunctionDeclarationAST_2E_weak : public GGS_semanticDeclarationA
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1449,7 +1651,10 @@ class GGS_functionDeclarationAST : public GGS_externFunctionDeclarationAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1588,7 +1793,10 @@ class GGS_functionDeclarationAST_2E_weak : public GGS_externFunctionDeclarationA
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1649,7 +1857,10 @@ class GGS_onceFunctionDeclarationAST : public GGS_semanticDeclarationAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1812,7 +2023,10 @@ class GGS_onceFunctionDeclarationAST_2E_weak : public GGS_semanticDeclarationAST
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1873,7 +2087,10 @@ class GGS_filewrapperDeclarationAST : public GGS_semanticDeclarationAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2036,7 +2253,10 @@ class GGS_filewrapperDeclarationAST_2E_weak : public GGS_semanticDeclarationAST_
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2144,7 +2364,10 @@ class GGS_syntaxRuleLabelAST : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2199,7 +2422,10 @@ class GGS_galgas_33_SyntaxComponentAST : public GGS_semanticDeclarationAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2356,7 +2582,10 @@ class GGS_galgas_33_SyntaxComponentAST_2E_weak : public GGS_semanticDeclarationA
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2420,7 +2649,10 @@ class GGS_galgas_33_GrammarComponentAST : public GGS_semanticDeclarationAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2586,7 +2818,10 @@ class GGS_galgas_33_GrammarComponentAST_2E_weak : public GGS_semanticDeclaration
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3159,11 +3394,14 @@ class GGS__5B_templateInstructionForGeneration_5D_ final : public AC_GALGAS_root
                                                                              COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_templateInstructionForGeneration readSubscript__3F_ (const class GGS_uint & in0,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_templateInstructionForGeneration readSubcript__3F_ (const class GGS_uint & in0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3205,7 +3443,10 @@ class GGS_templateInstructionForGeneration : public AC_GALGAS_reference_class {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3413,11 +3654,14 @@ class GGS__5B_templateInstructionAST_5D_ final : public AC_GALGAS_root {
                                                                    COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_templateInstructionAST readSubscript__3F_ (const class GGS_uint & in0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_templateInstructionAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3459,7 +3703,10 @@ class GGS_templateInstructionAST : public AC_GALGAS_reference_class {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3538,7 +3785,10 @@ class GGS_templateExpressionAST : public AC_GALGAS_reference_class {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3648,7 +3898,10 @@ class GGS_templateInstructionAST_2E_weak : public AC_GALGAS_weak_reference {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3711,7 +3964,10 @@ class GGS_templateInstructionForeachForGeneration : public GGS_templateInstructi
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3850,7 +4106,10 @@ class GGS_templateInstructionForGeneration_2E_weak : public AC_GALGAS_weak_refer
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4018,11 +4277,14 @@ class GGS__5B_templateExpressionElementAST_5D_ final : public AC_GALGAS_root {
                                                                          COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_templateExpressionElementAST readSubscript__3F_ (const class GGS_uint & in0,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_templateExpressionElementAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4111,7 +4373,10 @@ class GGS_templateExpressionElementAST : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4279,11 +4544,14 @@ class GGS__5B_templateInstructionIfBranchAST_5D_ final : public AC_GALGAS_root {
                                                                            COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_templateInstructionIfBranchAST readSubscript__3F_ (const class GGS_uint & in0,
-                                                                       Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_templateInstructionIfBranchAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4361,7 +4629,10 @@ class GGS_templateInstructionIfBranchAST : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4403,7 +4674,10 @@ class GGS_templateInstructionStringForGeneration : public GGS_templateInstructio
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4521,7 +4795,10 @@ class GGS_templateInstructionStringForGeneration_2E_weak : public GGS_templateIn
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4563,7 +4840,10 @@ class GGS_templateInstructionExpressionForGeneration : public GGS_templateInstru
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4681,7 +4961,10 @@ class GGS_templateInstructionExpressionForGeneration_2E_weak : public GGS_templa
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4729,7 +5012,10 @@ class GGS_templateBlockInstructionForGeneration : public GGS_templateInstruction
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4853,7 +5139,10 @@ class GGS_templateBlockInstructionForGeneration_2E_weak : public GGS_templateIns
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4892,7 +5181,10 @@ class GGS_templateInstructionGetColumnLocationForGeneration : public GGS_templat
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5005,7 +5297,10 @@ class GGS_templateInstructionGetColumnLocationForGeneration_2E_weak : public GGS
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5044,7 +5339,10 @@ class GGS_templateInstructionGotoColumnLocationForGeneration : public GGS_templa
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5157,7 +5455,10 @@ class GGS_templateInstructionGotoColumnLocationForGeneration_2E_weak : public GG
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5232,7 +5533,10 @@ class GGS_templateInstructionIfBranchForGeneration : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5400,11 +5704,14 @@ class GGS__5B_templateInstructionIfBranchForGeneration_5D_ final : public AC_GAL
                                                                                      COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_templateInstructionIfBranchForGeneration readSubscript__3F_ (const class GGS_uint & in0,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_templateInstructionIfBranchForGeneration readSubcript__3F_ (const class GGS_uint & in0,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5452,7 +5759,10 @@ class GGS_templateInstructionIfForGeneration : public GGS_templateInstructionFor
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5573,7 +5883,10 @@ class GGS_templateInstructionIfForGeneration_2E_weak : public GGS_templateInstru
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5768,11 +6081,14 @@ class GGS_templateVariableMap : public AC_GALGAS_root {
                                                               COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_templateVariableMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_templateVariableMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5861,7 +6177,10 @@ class GGS_templateVariableMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5929,7 +6248,10 @@ class GGS_templateVariableMap_2E_element_3F_ : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5980,7 +6302,10 @@ class GGS_templateGetterCallInExpressionAST : public GGS_templateExpressionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6107,7 +6432,10 @@ class GGS_templateExpressionAST_2E_weak : public AC_GALGAS_weak_reference {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6204,7 +6532,10 @@ class GGS_templateInstructionSwitchBranchAST : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6372,11 +6703,14 @@ class GGS__5B_templateInstructionSwitchBranchAST_5D_ final : public AC_GALGAS_ro
                                                                                COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_templateInstructionSwitchBranchAST readSubscript__3F_ (const class GGS_uint & in0,
-                                                                           Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_templateInstructionSwitchBranchAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                                          Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6427,7 +6761,10 @@ class GGS_templateInstructionSwitchAST : public GGS_templateInstructionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6551,7 +6888,10 @@ class GGS_templateInstructionSwitchAST_2E_weak : public GGS_templateInstructionA
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6719,11 +7059,14 @@ class GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ final : public AC
                                                                                          COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_templateInstructionSwitchBranchForGeneration readSubscript__3F_ (const class GGS_uint & in0,
-                                                                                     Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_templateInstructionSwitchBranchForGeneration readSubcript__3F_ (const class GGS_uint & in0,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6823,7 +7166,10 @@ class GGS_templateInstructionSwitchBranchForGeneration : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6871,7 +7217,10 @@ class GGS_templateInstructionSwitchForGeneration : public GGS_templateInstructio
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6923,466 +7272,6 @@ class cPtr_templateInstructionSwitchForGeneration : public cPtr_templateInstruct
                                                        const GGS__5B_templateInstructionSwitchBranchForGeneration_5D_ & in_templateInstructionSwitchBranchList,
                                                        Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @templateInstructionSwitchForGeneration_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateInstructionSwitchForGeneration_2E_weak : public GGS_templateInstructionForGeneration_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_templateInstructionSwitchForGeneration_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_templateInstructionSwitchForGeneration_2E_weak (const class GGS_templateInstructionSwitchForGeneration & inSource) ;
-
-  public: GGS_templateInstructionSwitchForGeneration_2E_weak & operator = (const class GGS_templateInstructionSwitchForGeneration & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_templateInstructionSwitchForGeneration_2E_weak init_nil (void) {
-    GGS_templateInstructionSwitchForGeneration_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_templateInstructionSwitchForGeneration bang_templateInstructionSwitchForGeneration_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_templateInstructionSwitchForGeneration unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_templateInstructionSwitchForGeneration_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_templateInstructionSwitchForGeneration_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension proc '@templateInstructionAST templateInstructionAnalysis'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_templateInstructionAnalysis (class cPtr_templateInstructionAST * inObject,
-                                                      const class GGS_lstring constin_inUsefulnessCallerEntityName,
-                                                      class GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                      const class GGS_templateAnalysisContext constin_inAnalysisContext,
-                                                      class GGS_unifiedTypeMap & io_ioTypeMap,
-                                                      class GGS__5B_templateInstructionForGeneration_5D_ & io_ioInstructionList,
-                                                      class Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @templateAnalysisContext struct
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateAnalysisContext : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GGS_semanticContext mProperty_mSemanticContext ;
-  public: inline GGS_semanticContext readProperty_mSemanticContext (void) const {
-    return mProperty_mSemanticContext ;
-  }
-
-  public: GGS_predefinedTypes mProperty_mPredefinedTypes ;
-  public: inline GGS_predefinedTypes readProperty_mPredefinedTypes (void) const {
-    return mProperty_mPredefinedTypes ;
-  }
-
-  public: GGS_templateVariableMap mProperty_mTemplateVariableMap ;
-  public: inline GGS_templateVariableMap readProperty_mTemplateVariableMap (void) const {
-    return mProperty_mTemplateVariableMap ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GGS_templateAnalysisContext (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMSemanticContext (const GGS_semanticContext & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSemanticContext = inValue ;
-  }
-
-  public: inline void setter_setMPredefinedTypes (const GGS_predefinedTypes & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mPredefinedTypes = inValue ;
-  }
-
-  public: inline void setter_setMTemplateVariableMap (const GGS_templateVariableMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mTemplateVariableMap = inValue ;
-  }
-
-//--------------------------------- Set initialized properties
-  private: void setInitializedProperties (Compiler * inCompiler) ;
-
-//--------------------------------- Native constructor
-  public: GGS_templateAnalysisContext (const GGS_semanticContext & in_mSemanticContext,
-                                       const GGS_predefinedTypes & in_mPredefinedTypes,
-                                       const GGS_templateVariableMap & in_mTemplateVariableMap) ;
-
-//--------------------------------- Copy constructor
-  public: GGS_templateAnalysisContext (const GGS_templateAnalysisContext & inSource) ;
-
-//--------------------------------- Assignment operator
-  public: GGS_templateAnalysisContext & operator = (const GGS_templateAnalysisContext & inSource) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_templateAnalysisContext init_21__21__21_ (const class GGS_semanticContext & inOperand0,
-                                                               const class GGS_predefinedTypes & inOperand1,
-                                                               const class GGS_templateVariableMap & inOperand2,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-//--------------------------------- Implementation of func 'description'
-  public: void description (String & ioString,
-                            const int32_t inIndentation) const override ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateAnalysisContext ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Abstract extension proc '@templateExpressionAST templateExpressionAnalysis'
-//
-//--------------------------------------------------------------------------------------------------
-
-void callExtensionMethod_templateExpressionAnalysis (class cPtr_templateExpressionAST * inObject,
-                                                     const class GGS_lstring constin_inUsefulnessCallerEntityName,
-                                                     class GGS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                     const class GGS_templateAnalysisContext constin_inAnalysisContext,
-                                                     class GGS_unifiedTypeMap & io_ioTypeMap,
-                                                     class GGS_semanticExpressionForGeneration & out_outExpression,
-                                                     class Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @templateClassFunctionAST reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateClassFunctionAST : public GGS_templateExpressionAST {
-//--------------------------------- Default constructor
-  public: GGS_templateClassFunctionAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_templateClassFunctionAST (const class cPtr_templateClassFunctionAST * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_lstring readProperty_mTypeName (void) const ;
-
-  public: class GGS_lstring readProperty_mClassFunctionName (void) const ;
-
-  public: class GGS__5B_templateExpressionElementAST_5D_ readProperty_mExpressionList (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_templateClassFunctionAST init_21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                const class GGS_lstring & inOperand1,
-                                                                const class GGS__5B_templateExpressionElementAST_5D_ & inOperand2,
-                                                                Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_templateClassFunctionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateClassFunctionAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @templateClassFunctionAST class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_templateClassFunctionAST : public cPtr_templateExpressionAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void templateClassFunctionAST_init_21__21__21_ (const class GGS_lstring & inOperand0,
-                                                          const class GGS_lstring & inOperand1,
-                                                          const class GGS__5B_templateExpressionElementAST_5D_ & inOperand2,
-                                                          Compiler * inCompiler) ;
-
-
-//--- Extension proc templateExpressionAnalysis
-  public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
-           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
-           const class GGS_templateAnalysisContext arg_inAnalysisContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticExpressionForGeneration & arg_outExpression,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_lstring mProperty_mTypeName ;
-  public: GGS_lstring mProperty_mClassFunctionName ;
-  public: GGS__5B_templateExpressionElementAST_5D_ mProperty_mExpressionList ;
-
-
-//--- Default constructor
-  public: cPtr_templateClassFunctionAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_templateClassFunctionAST (const GGS_lstring & in_mTypeName,
-                                         const GGS_lstring & in_mClassFunctionName,
-                                         const GGS__5B_templateExpressionElementAST_5D_ & in_mExpressionList,
-                                         Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;
-
-//--- Attribute accessors
-//--- Description
-  public: virtual void description (String & ioString,
-                                    const int32_t inIndentation) const override ;
-
-//--- Class descriptor
-  public: virtual const GALGAS_TypeDescriptor * classDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @templateClassFunctionAST_2E_weak weak reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateClassFunctionAST_2E_weak : public GGS_templateExpressionAST_2E_weak {
-//--------------------------------- Default constructor
-  public: GGS_templateClassFunctionAST_2E_weak (void) ;
-
-//--------------------------------- Constructor and assignment from strong reference
-  public: GGS_templateClassFunctionAST_2E_weak (const class GGS_templateClassFunctionAST & inSource) ;
-
-  public: GGS_templateClassFunctionAST_2E_weak & operator = (const class GGS_templateClassFunctionAST & inSource) ;
-
-//--------------------------------- Constructor and assignment from optional reference
-
-//--------------------------------- nil initializer
-  public: inline static GGS_templateClassFunctionAST_2E_weak init_nil (void) {
-    GGS_templateClassFunctionAST_2E_weak result ;
-    macroMyNew (result.mProxyPtr, PtrWeakReferenceProxy (HERE)) ;
-    return result ;
-  }
-
-//--------------------------------- Bang operator
-  public: GGS_templateClassFunctionAST bang_templateClassFunctionAST_2E_weak (Compiler * inCompiler COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- isValuated
-  public: inline bool isValuated (void) const {
-    return isValid () && (ptr () != nullptr) ;
-  }
-
-//--------------------------------- Unwrapped value
-  public: GGS_templateClassFunctionAST unwrappedValue (void) const ;
-
-//--------------------------------- GALGAS read only properties
-  public: inline GGS_bool readProperty_isNil (void) const {
-    return GGS_bool (isValid (), ptr () == nullptr) ;
-  }
-
-  public: inline GGS_bool readProperty_isSome (void) const {
-    return GGS_bool (isValid (), ptr () != nullptr) ;
-  }
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-//--------------------------------- GALGAS class functions
-  public: static class GGS_templateClassFunctionAST_2E_weak class_func_nil (LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_templateClassFunctionAST_2E_weak & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateClassFunctionAST_2E_weak ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 1: @templateFileWrapperTemplateCallAST reference class
-//--------------------------------------------------------------------------------------------------
-
-class GGS_templateFileWrapperTemplateCallAST : public GGS_templateExpressionAST {
-//--------------------------------- Default constructor
-  public: GGS_templateFileWrapperTemplateCallAST (void) ;
-
-//--------------------------------- Constructor from pointer
-  public: GGS_templateFileWrapperTemplateCallAST (const class cPtr_templateFileWrapperTemplateCallAST * inSourcePtr) ;
-
-//--------------------------------- Property access
-  public: class GGS_lstring readProperty_mFileWrapperName (void) const ;
-
-  public: class GGS_lstring readProperty_mTemplateName (void) const ;
-
-  public: class GGS__5B_templateExpressionElementAST_5D_ readProperty_mOutExpressionList (void) const ;
-
-//-- Start of type generic part
-
-//--------------------------------- Initializers
-  public: static GGS_templateFileWrapperTemplateCallAST init_21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                          const class GGS_lstring & inOperand1,
-                                                                          const class GGS__5B_templateExpressionElementAST_5D_ & inOperand2,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-//--------------------------------- Comparison
-  public: ComparisonResult objectCompare (const GGS_templateFileWrapperTemplateCallAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Read subscripts
-
-
-//--------------------------------- Introspection
-  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
-
-} ;
-
-//--------------------------------------------------------------------------------------------------
-
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_templateFileWrapperTemplateCallAST ;
-
-//--------------------------------------------------------------------------------------------------
-// Phase 2: pointer class for @templateFileWrapperTemplateCallAST class
-//--------------------------------------------------------------------------------------------------
-
-class cPtr_templateFileWrapperTemplateCallAST : public cPtr_templateExpressionAST {
-
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public: virtual void printNonNullClassInstanceProperties (void) const override ;
-  #endif
-
-//--------------------------------- Initializers
-  public: void templateFileWrapperTemplateCallAST_init_21__21__21_ (const class GGS_lstring & inOperand0,
-                                                                    const class GGS_lstring & inOperand1,
-                                                                    const class GGS__5B_templateExpressionElementAST_5D_ & inOperand2,
-                                                                    Compiler * inCompiler) ;
-
-
-//--- Extension proc templateExpressionAnalysis
-  public: virtual void method_templateExpressionAnalysis (const class GGS_lstring arg_inUsefulnessCallerEntityName,
-           class GGS_usefulEntitiesGraph & arg_ioUsefulEntitiesGraph,
-           const class GGS_templateAnalysisContext arg_inAnalysisContext,
-           class GGS_unifiedTypeMap & arg_ioTypeMap,
-           class GGS_semanticExpressionForGeneration & arg_outExpression,
-           Compiler * COMMA_LOCATION_ARGS) override ;
-
-//--- Properties
-  public: GGS_lstring mProperty_mFileWrapperName ;
-  public: GGS_lstring mProperty_mTemplateName ;
-  public: GGS__5B_templateExpressionElementAST_5D_ mProperty_mOutExpressionList ;
-
-
-//--- Default constructor
-  public: cPtr_templateFileWrapperTemplateCallAST (Compiler * inCompiler COMMA_LOCATION_ARGS) ;
-
-//--- Constructor
-  public: cPtr_templateFileWrapperTemplateCallAST (const GGS_lstring & in_mFileWrapperName,
-                                                   const GGS_lstring & in_mTemplateName,
-                                                   const GGS__5B_templateExpressionElementAST_5D_ & in_mOutExpressionList,
-                                                   Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public: virtual AbstractPtrClass * duplicate (Compiler * inCompiler COMMA_LOCATION_ARGS) const override ;

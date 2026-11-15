@@ -38,7 +38,7 @@ GGS_uint GGS_%!TYPE_IDENTIFIER%::getter_count (UNUSED_LOCATION_ARGS) const {
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F_ (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
+GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubcript__3F_ (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
                     %!^%Compiler * /* inCompiler */
                     %!^%COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% result ;
@@ -55,7 +55,7 @@ GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F__3F_default (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubcript__3F__3F_default (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
                     %!^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% & inDefaultValue,
                     %!^%Compiler * /* inCompiler */
                     %!^%COMMA_UNUSED_LOCATION_ARGS) const {
@@ -73,7 +73,7 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F__3F_def
 
 //--------------------------------------------------------------------------------------------------
 
-GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F_unwrap (const %?^%GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
+GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubcript__3F_unwrap (const %?^%GGS_%!KEY_TYPE_IDENTIFIER% & inKey,
        %!^%Compiler * inCompiler
        %!^%COMMA_LOCATION_ARGS) const {
   GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;
@@ -91,6 +91,18 @@ GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%::readSubscript__3F_unwrap 
     }
   }
   return result ;
+}
+
+//--------------------------------------------------------------------------------------------------
+
+void GGS_%!TYPE_IDENTIFIER%::writeSubcript__3F_ (%?^%const GGS_%!KEY_TYPE_IDENTIFIER% inKey%
+     %,\n%!^%const GGS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
+     %!^%Compiler *
+     %!^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inKey.isValid ()) {
+    const Node_%!TYPE_IDENTIFIER% object (inKey, inValue) ;
+    insertOrReplace (inKey, object COMMA_THERE) ;
+  }
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -203,7 +203,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       !isFinal: true,
       !superType: .null,
       !typeKind: .structType,
-      !supportCollectionValue: false,
+      !supportArrayLiteral: false,
       !allTypedPropertyList: typedPropertyList,
       !propertyMap: propertyMap,
       !currentTypedPropertyList: typedPropertyList,
@@ -215,6 +215,7 @@ final class @structDeclarationAST : @semanticDeclarationAST {
       !classMethodMap: @(),
       !unwrappedType: .null,
       !readSubscriptMap: @(),
+      !writeSubscriptMap: @(),
       !enumerationDescriptorList: @(),
       !features: features,
       !addAssignOperatorArguments: @(),
@@ -382,11 +383,12 @@ final class @structTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.instanceMethodMap,
       selfTypeDefinition.classMethodMap,
       selfTypeDefinition.readSubscriptMap,
+      selfTypeDefinition.writeSubscriptMap,
       selfTypeDefinition.enumerationDescriptorList,
       selfTypeDefinition.features,
       selfTypeDefinition.addAssignOperatorArguments,
       selfTypeDefinition.typeForEnumeratedElement,
-      selfTypeDefinition.supportCollectionValue
+      selfTypeDefinition.supportArrayLiteral
     ]
   }
 

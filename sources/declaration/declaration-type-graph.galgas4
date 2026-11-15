@@ -452,7 +452,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !isFinal: true,
       !superType: .null,
       !typeKind: .graphType,
-      !supportCollectionValue: false,
+      !supportArrayLiteral: false,
       !allTypedPropertyList: @(),
       !propertyMap: @(),
       !currentTypedPropertyList: @(),
@@ -464,6 +464,7 @@ final class @graphDeclarationAST : @semanticDeclarationAST {
       !classMethodMap: @(),
       !unwrappedType: .null,
       !readSubscriptMap: @(),
+      !writeSubscriptMap: @(),
       !enumerationDescriptorList: @(),
       !features: features,
       !addAssignOperatorArguments: @(),
@@ -573,11 +574,12 @@ final class @graphDeclarationForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.instanceMethodMap,
       selfTypeDefinition.classMethodMap,
       selfTypeDefinition.readSubscriptMap,
+      selfTypeDefinition.writeSubscriptMap,
       selfTypeDefinition.enumerationDescriptorList,
       selfTypeDefinition.features,
       selfTypeDefinition.addAssignOperatorArguments,
       selfTypeDefinition.typeForEnumeratedElement,
-      selfTypeDefinition.supportCollectionValue
+      selfTypeDefinition.supportArrayLiteral
     ]
   }
 

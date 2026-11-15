@@ -1091,12 +1091,13 @@ GGS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (c
                                                                                const class GGS_setterMap & in_MODIFIER_5F_MAP,
                                                                                const class GGS_instanceMethodMap & in_INSTANCE_5F_METHOD_5F_MAP,
                                                                                const class GGS_classMethodMap & in_CLASS_5F_METHOD_5F_MAP,
-                                                                               const class GGS_subscriptMap & in_READ_5F_SUBSCRIPT_5F_MAP,
+                                                                               const class GGS_readSubcriptMap & in_READ_5F_SUBCRIPT_5F_MAP,
+                                                                               const class GGS_writeSubcriptMap & in_WRITE_5F_SUBCRIPT_5F_MAP,
                                                                                const class GGS__5B_enumerationDescriptor_5D_ & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                                const class GGS_typeFeatures & in_SUPPORTED_5F_OPERATORS,
                                                                                const class GGS__5B_functionSignatureElement_5D_ & in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST,
                                                                                const class GGS_unifiedTypeMapEntry & in_ENUMERATED_5F_OBJECT_5F_TYPE,
-                                                                               const class GGS_bool & in_SUPPORT_5F_COLLECTION_5F_VALUE
+                                                                               const class GGS_bool & in_SUPPORT_5F_ARRAY_5F_LITERAL_5F_VALUE
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------

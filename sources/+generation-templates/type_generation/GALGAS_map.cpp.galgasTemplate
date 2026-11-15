@@ -214,7 +214,7 @@ void GGS_%!TYPE_IDENTIFIER%::findNearestKey (const String & inKey,
 //--------------------------------------------------------------------------------------------------
 
 GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
-::readSubscript__3F_ (const class GGS_string & inKey,
+::readSubcript__3F_ (const class GGS_string & inKey,
                       Compiler * /* inCompiler */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% result ;
@@ -238,7 +238,7 @@ GGS_%!OPTIONAL_ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
 %//--------------------------------------------------------------------------------------------------
 
 GGS_%!ELEMENT_TYPE_IDENTIFIER% GGS_%!TYPE_IDENTIFIER%
-::readSubscript__3F_%![entry.mName identifierRepresentation]% (%?^%const GGS_lstring & inLKey,
+::readSubcript__3F_%![entry.mName identifierRepresentation]% (%?^%const GGS_lstring & inLKey,
     %!^%Compiler * inCompiler
     %!^%COMMA_LOCATION_ARGS) const {
   GGS_%!ELEMENT_TYPE_IDENTIFIER% result ;

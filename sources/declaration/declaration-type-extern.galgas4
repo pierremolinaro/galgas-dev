@@ -358,7 +358,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
       !isFinal: true,
       !superType: .null,
       !typeKind: .externType,
-      !supportCollectionValue: false,
+      !supportArrayLiteral: false,
       !allTypedPropertyList: @(),
       !propertyMap: @(),
       !currentTypedPropertyList: @(),
@@ -370,6 +370,7 @@ final class @externTypeDeclarationAST : @semanticDeclarationAST {
       !classMethodMap: @(),
       !unwrappedType: .null,
       !readSubscriptMap: @(),
+      !writeSubscriptMap: @(),
       !enumerationDescriptorList: @(),
       !features: features,
       !addAssignOperatorArguments: @(),
@@ -456,11 +457,12 @@ override proc @externTypeDeclarationForGeneration.appendDeclaration1
     selfTypeDefinition.instanceMethodMap,
     selfTypeDefinition.classMethodMap,
     selfTypeDefinition.readSubscriptMap,
+    selfTypeDefinition.writeSubscriptMap,
     selfTypeDefinition.enumerationDescriptorList,
     selfTypeDefinition.features,
     selfTypeDefinition.addAssignOperatorArguments,
     selfTypeDefinition.typeForEnumeratedElement,
-    selfTypeDefinition.supportCollectionValue
+    selfTypeDefinition.supportArrayLiteral
   ]
 }
 

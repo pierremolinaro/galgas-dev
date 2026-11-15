@@ -112,7 +112,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
       !isFinal: true,
       !superType: .null,
       !typeKind: .listType,
-      !supportCollectionValue: false,
+      !supportArrayLiteral: false,
       !allTypedPropertyList: @(),
       !propertyMap: propertyMap,
       !currentTypedPropertyList: @(),
@@ -124,6 +124,7 @@ final class @optionalTypeDeclarationAST : @semanticDeclarationAST {
       !classMethodMap: @(),
       !unwrappedType: unwrappedType,
       !readSubscriptMap: @(),
+      !writeSubscriptMap: @(),
       !enumerationDescriptorList: @(),
       !features: features,
       !addAssignOperatorArguments: @(),
@@ -207,11 +208,12 @@ final class @optionalTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.instanceMethodMap,
       selfTypeDefinition.classMethodMap,
       selfTypeDefinition.readSubscriptMap,
+      selfTypeDefinition.writeSubscriptMap,
       selfTypeDefinition.enumerationDescriptorList,
       selfTypeDefinition.features,
       selfTypeDefinition.addAssignOperatorArguments,
       selfTypeDefinition.typeForEnumeratedElement,
-      selfTypeDefinition.supportCollectionValue
+      selfTypeDefinition.supportArrayLiteral
     ]
   }
 

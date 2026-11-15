@@ -244,7 +244,10 @@ class GGS_uint_36__34_ : public AC_GALGAS_root {
   public: class GGS_string getter_xString (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -675,7 +678,10 @@ class GGS_string : public AC_GALGAS_root {
   public: class GGS_string getter_utf_38_RepresentationWithoutDelimiters (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -890,7 +896,10 @@ class GGS_bigint : public AC_GALGAS_root {
   public: class GGS_string getter_xString (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1204,7 +1213,10 @@ class GGS_binaryset : public AC_GALGAS_root {
                                                     COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1294,7 +1306,10 @@ class GGS_bool : public AC_GALGAS_root {
   public: class GGS_uint_36__34_ getter_uint_36__34_ (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1393,7 +1408,10 @@ class GGS_char : public AC_GALGAS_root {
   public: class GGS_uint getter_utf_38_Length (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1538,7 +1556,10 @@ class GGS_data : public AC_GALGAS_root {
   public: class GGS_uint getter_count (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1693,7 +1714,10 @@ class GGS_double : public AC_GALGAS_root {
                                                       COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1831,7 +1855,10 @@ class GGS_filewrapper : public AC_GALGAS_root {
                                                            COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1940,7 +1967,10 @@ class GGS_location : public AC_GALGAS_root {
                                            COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2136,7 +2166,10 @@ class GGS_sint : public AC_GALGAS_root {
   public: class GGS_string getter_xString (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2333,7 +2366,10 @@ class GGS_sint_36__34_ : public AC_GALGAS_root {
   public: class GGS_string getter_xString (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2551,7 +2587,10 @@ class GGS_uint : public AC_GALGAS_root {
   public: class GGS_string getter_xString (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2808,7 +2847,10 @@ class GGS_stringset : public AC_GALGAS_root {
   public: class GGS__5B_string_5D_ getter_stringArray (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2868,7 +2910,10 @@ class GGS_timer : public AC_GALGAS_root {
   public: class GGS_string getter_string (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3140,11 +3185,14 @@ class GGS__5B_uint_36__34__5D_ final : public AC_GALGAS_root {
                                                          COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_uint_36__34_ readSubscript__3F_ (const class GGS_uint & in0,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_uint_36__34_ readSubcript__3F_ (const class GGS_uint & in0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3315,11 +3363,14 @@ class GGS__5B_stringString_5D_ final : public AC_GALGAS_root {
                                                          COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_stringString readSubscript__3F_ (const class GGS_uint & in0,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_stringString readSubcript__3F_ (const class GGS_uint & in0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3492,11 +3543,14 @@ class GGS__5B_string_5D_ final : public AC_GALGAS_root {
                                                    COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_string readSubscript__3F_ (const class GGS_uint & in0,
-                                               Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_string readSubcript__3F_ (const class GGS_uint & in0,
+                                              Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3576,7 +3630,10 @@ class GGS_lstring : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3744,11 +3801,14 @@ class GGS__5B_lstring_5D_ final : public AC_GALGAS_root {
                                                     COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_lstring readSubscript__3F_ (const class GGS_uint & in0,
-                                                Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_lstring readSubcript__3F_ (const class GGS_uint & in0,
+                                               Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3919,11 +3979,14 @@ class GGS__5B_uint_5D_ final : public AC_GALGAS_root {
                                                  COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_uint readSubscript__3F_ (const class GGS_uint & in0,
-                                             Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_uint readSubcript__3F_ (const class GGS_uint & in0,
+                                            Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4003,7 +4066,10 @@ class GGS_lbool : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4080,7 +4146,10 @@ class GGS_lbigint : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4157,7 +4226,10 @@ class GGS_lchar : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4234,7 +4306,10 @@ class GGS_ldouble : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4311,7 +4386,10 @@ class GGS_lsint : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4388,7 +4466,10 @@ class GGS_lsint_36__34_ : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4465,7 +4546,10 @@ class GGS_luint : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4542,7 +4626,10 @@ class GGS_luint_36__34_ : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4619,7 +4706,10 @@ class GGS_range : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4689,7 +4779,10 @@ class GGS_bigint_3F_ : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4766,7 +4859,10 @@ class GGS_stringString : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection

@@ -115,16 +115,6 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
     !returnedTypeName:"uint",
     !hasCompilerArgument:false
   )
-//  enterBaseGetterWithArgument (
-//    !?getterMap,
-//    !?ioTypeMap,
-//    !getterName: "get",
-//    !argSelector: "",
-//    !argType: self.keyTypeName.string,
-//    !argName: "inKey",
-//    !returnedTypeName: self.valueTypeName.string,
-//    !hasCompilerArgument: true
-//  )
 //--- Handle insert mutating proc
   !?setterMap.insertOrReplace (
     @("set", self.dictionaryTypeName.location),
@@ -194,7 +184,7 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
   let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: self.valueTypeName)
   !?ioTypeMap.makeEntry (optionalElementTypeName, ?let @unifiedTypeMapEntry optionalElementType)
 //--- Read subscripts
-  var @subscriptMap readSubscriptMap = @()
+  var @readSubcriptMap readSubscriptMap = @()
   let [@functionSignatureElement] firstArgumentTypeList = [@("".nowhere, keyType, "inKey", true)]
   !?readSubscriptMap.insertKey (
     firstArgumentTypeList.subcriptSignature.nowhere,
@@ -218,6 +208,13 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
     thirdArgumentTypeList,
     valueType
   )
+//--- Write subcript
+  var @writeSubcriptMap writeSubcriptMap = @()
+  !?writeSubcriptMap.insertKey (
+    firstArgumentTypeList.subcriptSignature.nowhere,
+    firstArgumentTypeList,
+    valueType
+  )
 //--- Enter in type map
   let typeDefinition = @unifiedTypeDefinition (
     !typeName: self.dictionaryTypeName,
@@ -226,7 +223,7 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
     !isFinal: true,
     !superType: .null,
     !typeKind: .mapType,
-    !supportCollectionValue: false,
+    !supportArrayLiteral: false,
     !allTypedPropertyList: @(),
     !propertyMap: @(),
     !currentTypedPropertyList: [],
@@ -238,6 +235,7 @@ override proc @dictionaryDeclarationAST.enterDeclarationInSemanticContext (
     !classMethodMap: @(),
     !unwrappedType: .null,
     !readSubscriptMap: readSubscriptMap,
+    !writeSubscriptMap: writeSubcriptMap,
     !enumerationDescriptorList: enumerationDescriptor,
     !features: features,
     !addAssignOperatorArguments: [],
@@ -292,31 +290,6 @@ override proc @dictionaryDeclarationAST.semanticAnalysis
   if self.isPredefined then
     ioUsefulnessRootEntities ++= initializerNameForUsefulness
   end
-//----- Enter attributes
-//  var [@typedProperty] typedAttributeList = @()
-//  var @propertyIndexMap attributeMap = @()
-//  for property in self.mPropertyList do
-//    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (property.typeName)
-//    !?ioUsefulEntitiesGraph.addEdge (!from: nameForUsefulness, !to: propertyTypeNameForUsefulness)
-//    let @unifiedTypeMapEntry t = ioTypeMap.typeMapEntryForLKey (property.typeName)
-//    let hasSetter = true
-//    typedAttributeList ++= @(
-//      t,
-//      property.name,
-//      property.initialization,
-//      !hasSetter: hasSetter,
-//      !hasSelector: property.hasSelector
-//    )
-//    if forbiddenKeysForMapAndDict ().contains (property.name.string) then
-//      var @string m = "a property cannot be named:"
-//      for s in forbiddenKeysForMapAndDict () do
-//        m+= " " + s
-//      end
-//      m += "; theses names are reserved"
-//      error property.name: m
-//    end
-//    !?attributeMap.insertKey (property.name, t)
-//  end
 //--- Optional Element type
   let optionalElementTypeName = makeOptionalTypeLName (!forTypeNamed: self.valueTypeName)
   let optionalElementType = ioTypeMap.typeMapEntryForLKey (optionalElementTypeName)
@@ -364,11 +337,12 @@ final class @dictionaryTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.instanceMethodMap,
       selfTypeDefinition.classMethodMap,
       selfTypeDefinition.readSubscriptMap,
+      selfTypeDefinition.writeSubscriptMap,
       selfTypeDefinition.enumerationDescriptorList,
       selfTypeDefinition.features,
       selfTypeDefinition.addAssignOperatorArguments,
       selfTypeDefinition.typeForEnumeratedElement,
-      selfTypeDefinition.supportCollectionValue
+      selfTypeDefinition.supportArrayLiteral
     ]
   }
 

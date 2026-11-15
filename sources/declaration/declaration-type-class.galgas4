@@ -335,7 +335,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       !isFinal: self.mIsFinal,
       !superType: superClassType,
       !typeKind: .classType,
-      !supportCollectionValue: false,
+      !supportArrayLiteral: false,
       !allTypedPropertyList: allTypedAttributeList,
       !propertyMap: attributeMap,
       !currentTypedPropertyList: currentClassTypedPropertyList,
@@ -347,6 +347,7 @@ final class @classDeclarationAST : @semanticDeclarationAST {
       !classMethodMap: @(),
       !unwrappedType: .null,
       !readSubscriptMap: @(),
+      !writeSubscriptMap: @(),
       !enumerationDescriptorList: @(),
       !features: features,
       !addAssignOperatorArguments: @(),
@@ -536,11 +537,12 @@ final class @classTypeForGeneration : @semanticTypeForGeneration {
       selfTypeDefinition.instanceMethodMap,
       selfTypeDefinition.classMethodMap,
       selfTypeDefinition.readSubscriptMap,
+      selfTypeDefinition.writeSubscriptMap,
       selfTypeDefinition.enumerationDescriptorList,
       selfTypeDefinition.features,
       selfTypeDefinition.addAssignOperatorArguments,
       selfTypeDefinition.typeForEnumeratedElement,
-      selfTypeDefinition.supportCollectionValue
+      selfTypeDefinition.supportArrayLiteral
     ]
   }
 

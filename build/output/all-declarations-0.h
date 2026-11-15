@@ -163,11 +163,14 @@ class GGS__5B_actualParameterAST_5D_ final : public AC_GALGAS_root {
                                                                COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_actualParameterAST readSubscript__3F_ (const class GGS_uint & in0,
-                                                           Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_actualParameterAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                          Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -209,7 +212,10 @@ class GGS_actualParameterAST : public AC_GALGAS_reference_class {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -436,11 +442,14 @@ class GGS__5B_semanticInstructionForGeneration_5D_ final : public AC_GALGAS_root
                                                                              COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_semanticInstructionForGeneration readSubscript__3F_ (const class GGS_uint & in0,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_semanticInstructionForGeneration readSubcript__3F_ (const class GGS_uint & in0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -482,7 +491,10 @@ class GGS_semanticInstructionForGeneration : public AC_GALGAS_reference_class {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -699,11 +711,14 @@ class GGS__5B_actualParameterForGeneration_5D_ final : public AC_GALGAS_root {
                                                                          COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_actualParameterForGeneration readSubscript__3F_ (const class GGS_uint & in0,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_actualParameterForGeneration readSubcript__3F_ (const class GGS_uint & in0,
+                                                                    Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -748,7 +763,10 @@ class GGS_actualParameterForGeneration : public AC_GALGAS_reference_class {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -828,7 +846,10 @@ class GGS_unifiedTypeMapEntry : public AC_GALGAS_root {
   public: class GGS_bool getter_isNull (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -923,7 +944,10 @@ class GGS_unifiedTypeMapElementClass : public AC_GALGAS_reference_class {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1001,7 +1025,10 @@ class GGS_typeDefinition : public AC_GALGAS_root {
   public: class GGS_bool getter_isUnsolved (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1114,7 +1141,10 @@ class GGS_unifiedTypeMapElementClass_2E_weak : public AC_GALGAS_weak_reference {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1180,7 +1210,10 @@ class GGS_unifiedTypeMapEntry_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1250,7 +1283,10 @@ class GGS_unifiedTypeMapEntry_2E_element_3F_ : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1320,7 +1356,10 @@ class GGS_semanticInstructionForGeneration_2E_weak : public AC_GALGAS_weak_refer
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1488,11 +1527,14 @@ class GGS__5B_abstractSyntaxInstructionForGrammarAnalysis_5D_ final : public AC_
                                                                                         COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_abstractSyntaxInstructionForGrammarAnalysis readSubscript__3F_ (const class GGS_uint & in0,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_abstractSyntaxInstructionForGrammarAnalysis readSubcript__3F_ (const class GGS_uint & in0,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1537,7 +1579,10 @@ class GGS_abstractSyntaxInstructionForGrammarAnalysis : public AC_GALGAS_referen
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1581,7 +1626,10 @@ class GGS_syntaxInstructionAST : public AC_GALGAS_reference_class {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1680,7 +1728,10 @@ class GGS_semanticExpressionAST : public AC_GALGAS_reference_class {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1796,7 +1847,10 @@ class GGS_syntaxInstructionAST_2E_weak : public AC_GALGAS_weak_reference {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1838,7 +1892,10 @@ class GGS_syntaxInstructionForGeneration : public GGS_semanticInstructionForGene
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -1920,7 +1977,10 @@ class GGS_semanticExpressionForGeneration : public AC_GALGAS_reference_class {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2041,7 +2101,10 @@ class GGS_syntaxInstructionForGeneration_2E_weak : public GGS_semanticInstructio
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2154,7 +2217,10 @@ class GGS_fixitElementAST : public AC_GALGAS_root {
   public: class GGS_bool getter_isFixItReplace (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2229,7 +2295,10 @@ class GGS_fixitElementAST_2E_fixItInsertAfter : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2297,7 +2366,10 @@ class GGS_fixitElementAST_2E_fixItInsertAfter_3F_ : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2372,7 +2444,10 @@ class GGS_fixitElementAST_2E_fixItInsertBefore : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2440,7 +2515,10 @@ class GGS_fixitElementAST_2E_fixItInsertBefore_3F_ : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2515,7 +2593,10 @@ class GGS_fixitElementAST_2E_fixItReplace : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2583,7 +2664,10 @@ class GGS_fixitElementAST_2E_fixItReplace_3F_ : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2751,11 +2835,14 @@ class GGS__5B_fixitElementAST_5D_ final : public AC_GALGAS_root {
                                                             COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_fixitElementAST readSubscript__3F_ (const class GGS_uint & in0,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_fixitElementAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2945,11 +3032,14 @@ class GGS_unifiedTypeMap : public AC_GALGAS_root {
                                                          COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_unifiedTypeMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_unifiedTypeMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3067,7 +3157,10 @@ class GGS_fixitElementForGeneration : public AC_GALGAS_root {
   public: class GGS_bool getter_isFixItReplace (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3131,7 +3224,10 @@ class GGS_fixitElementForGeneration_2E_fixItInsertAfter : public AC_GALGAS_root 
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3199,7 +3295,10 @@ class GGS_fixitElementForGeneration_2E_fixItInsertAfter_3F_ : public AC_GALGAS_r
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3263,7 +3362,10 @@ class GGS_fixitElementForGeneration_2E_fixItInsertBefore : public AC_GALGAS_root
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3331,7 +3433,10 @@ class GGS_fixitElementForGeneration_2E_fixItInsertBefore_3F_ : public AC_GALGAS_
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3395,7 +3500,10 @@ class GGS_fixitElementForGeneration_2E_fixItReplace : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3463,7 +3571,10 @@ class GGS_fixitElementForGeneration_2E_fixItReplace_3F_ : public AC_GALGAS_root 
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3631,11 +3742,14 @@ class GGS__5B_fixitElementForGeneration_5D_ final : public AC_GALGAS_root {
                                                                       COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_fixitElementForGeneration readSubscript__3F_ (const class GGS_uint & in0,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_fixitElementForGeneration readSubcript__3F_ (const class GGS_uint & in0,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3723,7 +3837,10 @@ class GGS_errorInstructionForGeneration : public GGS_semanticInstructionForGener
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3853,7 +3970,10 @@ class GGS_errorInstructionForGeneration_2E_weak : public GGS_semanticInstruction
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4021,11 +4141,14 @@ class GGS__5B_formalParameterSignatureElement_5D_ final : public AC_GALGAS_root 
                                                                             COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_formalParameterSignatureElement readSubscript__3F_ (const class GGS_uint & in0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_formalParameterSignatureElement readSubcript__3F_ (const class GGS_uint & in0,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4108,7 +4231,10 @@ class GGS_formalArgumentPassingModeAST : public AC_GALGAS_root {
   public: class GGS_bool getter_isArgumentVarIn (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4205,7 +4331,10 @@ class GGS_formalParameterSignatureElement : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4250,7 +4379,10 @@ class GGS_procCallInstructionForGeneration : public GGS_semanticInstructionForGe
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4371,7 +4503,10 @@ class GGS_procCallInstructionForGeneration_2E_weak : public GGS_semanticInstruct
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4464,7 +4599,10 @@ class GGS_opAssignmentOperator : public AC_GALGAS_root {
   public: class GGS_bool getter_isXorAssign (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4544,7 +4682,10 @@ class GGS_opAssignInstructionForGeneration : public GGS_semanticInstructionForGe
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4680,7 +4821,10 @@ class GGS_opAssignInstructionForGeneration_2E_weak : public GGS_semanticInstruct
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4737,7 +4881,10 @@ class GGS_plusPlusAssignInstructionForGeneration : public GGS_semanticInstructio
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4870,7 +5017,10 @@ class GGS_plusPlusAssignInstructionForGeneration_2E_weak : public GGS_semanticIn
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -4921,7 +5071,10 @@ class GGS_warningInstructionForGeneration : public GGS_semanticInstructionForGen
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5048,7 +5201,10 @@ class GGS_warningInstructionForGeneration_2E_weak : public GGS_semanticInstructi
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5216,11 +5372,14 @@ class GGS__5B_CommaSeparatedExpressionElement_5D_ final : public AC_GALGAS_root 
                                                                             COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_CommaSeparatedExpressionElement readSubscript__3F_ (const class GGS_uint & in0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_CommaSeparatedExpressionElement readSubcript__3F_ (const class GGS_uint & in0,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5324,7 +5483,10 @@ class GGS_ifExpressionKind : public AC_GALGAS_root {
   public: class GGS_bool getter_isRegularExp (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5388,7 +5550,10 @@ class GGS_CommaSeparatedExpressionElement : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5496,7 +5661,10 @@ class GGS_ifExpressionKind_2E_letVarExp : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5564,7 +5732,10 @@ class GGS_ifExpressionKind_2E_letVarExp_3F_ : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5639,7 +5810,10 @@ class GGS_ifExpressionKind_2E_regularExp : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5707,7 +5881,10 @@ class GGS_ifExpressionKind_2E_regularExp_3F_ : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -5898,11 +6075,14 @@ class GGS__5B_ifTestForGeneration_5D_ final : public AC_GALGAS_root {
                                                                 COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_ifTestForGeneration readSubscript__3F_ (const class GGS_uint & in0,
-                                                            Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_ifTestForGeneration readSubcript__3F_ (const class GGS_uint & in0,
+                                                           Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6022,7 +6202,10 @@ class GGS_ifTestForGeneration : public AC_GALGAS_root {
   public: class GGS_bool getter_isRegular (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6119,7 +6302,10 @@ class GGS_ifTestForGeneration_2E_letVarExp : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6187,7 +6373,10 @@ class GGS_ifTestForGeneration_2E_letVarExp_3F_ : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6284,7 +6473,10 @@ class GGS_ifTestForGeneration_2E_optionalExp : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6352,7 +6544,10 @@ class GGS_ifTestForGeneration_2E_optionalExp_3F_ : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6416,7 +6611,10 @@ class GGS_ifTestForGeneration_2E_regular : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6484,7 +6682,10 @@ class GGS_ifTestForGeneration_2E_regular_3F_ : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6653,7 +6854,10 @@ class GGS_typeKindEnum : public AC_GALGAS_root {
   public: class GGS_bool getter_isWeakReferenceType (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6871,7 +7075,10 @@ class GGS_usefulEntitiesGraph final : public AC_GALGAS_root {
                                                                   COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -6986,7 +7193,10 @@ class GGS_typeKindEnum_2E_weakReferenceType : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7056,7 +7266,10 @@ class GGS_typeKindEnum_2E_weakReferenceType_3F_ : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7169,7 +7382,10 @@ class GGS_selfAvailability : public AC_GALGAS_root {
   public: class GGS_bool getter_isNone (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7464,7 +7680,10 @@ class GGS_predefinedTypes : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7715,11 +7934,14 @@ class GGS_filewrapperMap : public AC_GALGAS_root {
                                                          COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_filewrapperMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_filewrapperMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -7931,11 +8153,14 @@ class GGS_functionMap : public AC_GALGAS_root {
                                                       COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_functionMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_functionMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -8147,11 +8372,14 @@ class GGS_grammarMap : public AC_GALGAS_root {
                                                      COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_grammarMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_grammarMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -8419,11 +8647,14 @@ class GGS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_root {
                                                                                  COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                                              Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_lexiqueComponentMapForSemanticAnalysis_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                                             Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -8649,11 +8880,14 @@ class GGS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_root {
                                                                                 COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_optionComponentMapForSemanticAnalysis_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                                             Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_optionComponentMapForSemanticAnalysis_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                                            Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -8879,11 +9113,14 @@ class GGS_syntaxComponentMap : public AC_GALGAS_root {
                                                              COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_syntaxComponentMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_syntaxComponentMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9071,11 +9308,14 @@ class GGS_internalRoutineMap : public AC_GALGAS_root {
                                                              COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_internalRoutineMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_internalRoutineMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9141,7 +9381,10 @@ class GGS_routineMap : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9264,7 +9507,10 @@ class GGS_semanticContext : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9372,7 +9618,10 @@ class GGS_analysisContext : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9540,11 +9789,14 @@ class GGS__5B_overrideKind_5D_ final : public AC_GALGAS_root {
                                                          COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_overrideKind readSubscript__3F_ (const class GGS_uint & in0,
-                                                     Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_overrideKind readSubcript__3F_ (const class GGS_uint & in0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9715,11 +9967,14 @@ class GGS__5B_scopeLocalVarMap_5D_ final : public AC_GALGAS_root {
                                                              COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_scopeLocalVarMap readSubscript__3F_ (const class GGS_uint & in0,
-                                                         Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_scopeLocalVarMap readSubcript__3F_ (const class GGS_uint & in0,
+                                                        Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -9968,11 +10223,14 @@ class GGS_scopeLocalVarMap : public AC_GALGAS_root {
                                                            COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_scopeLocalVarMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_scopeLocalVarMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -10048,7 +10306,10 @@ class GGS_currentVarManager : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -10121,7 +10382,10 @@ class GGS_localVarManager : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -10289,11 +10553,14 @@ class GGS__5B_enumerationDescriptor_5D_ final : public AC_GALGAS_root {
                                                                   COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_enumerationDescriptor readSubscript__3F_ (const class GGS_uint & in0,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_enumerationDescriptor readSubcript__3F_ (const class GGS_uint & in0,
+                                                             Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -10464,11 +10731,14 @@ class GGS__5B_functionSignatureElement_5D_ final : public AC_GALGAS_root {
                                                                      COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_functionSignatureElement readSubscript__3F_ (const class GGS_uint & in0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_functionSignatureElement readSubcript__3F_ (const class GGS_uint & in0,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -10639,11 +10909,14 @@ class GGS__5B_typedProperty_5D_ final : public AC_GALGAS_root {
                                                           COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_typedProperty readSubscript__3F_ (const class GGS_uint & in0,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_typedProperty readSubcript__3F_ (const class GGS_uint & in0,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -10809,7 +11082,10 @@ class GGS_typeFeatures : public AC_GALGAS_root {
                                           COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -10884,7 +11160,10 @@ class GGS_headerKind : public AC_GALGAS_root {
   public: class GGS_bool getter_isTwoHeaders (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -11099,11 +11378,14 @@ class GGS_classFunctionMap : public AC_GALGAS_root {
                                                            COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_classFunctionMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                        Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_classFunctionMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -11306,11 +11588,14 @@ class GGS_classMethodMap : public AC_GALGAS_root {
                                                          COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_classMethodMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_classMethodMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -11588,11 +11873,14 @@ class GGS_getterMap : public AC_GALGAS_root {
                                                     COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_getterMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_getterMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -11776,11 +12064,14 @@ class GGS_initializerMap : public AC_GALGAS_root {
                                                          COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_initializerMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                      Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_initializerMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                     Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -12044,11 +12335,14 @@ class GGS_instanceMethodMap : public AC_GALGAS_root {
                                                             COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_instanceMethodMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                         Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_instanceMethodMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                        Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -12260,11 +12554,14 @@ class GGS_propertyMap : public AC_GALGAS_root {
                                                       COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_propertyMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                   Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_propertyMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                  Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -12278,6 +12575,211 @@ class GGS_propertyMap : public AC_GALGAS_root {
 //--------------------------------------------------------------------------------------------------
 
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_propertyMap ;
+
+//--------------------------------------------------------------------------------------------------
+// Phase 1: @readSubcriptMap map
+//--------------------------------------------------------------------------------------------------
+
+#include "SharedGenericPtrWithValueSemantics.h"
+
+template <typename INFO> class GenericMapRoot ;
+
+//--------------------------------------------------------------------------------------------------
+
+class DownEnumerator_readSubcriptMap final {
+
+  public: DownEnumerator_readSubcriptMap (const class GGS_readSubcriptMap & inMap) ;
+
+  public: ~ DownEnumerator_readSubcriptMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
+
+  public: inline void gotoNextObject (void) { mIndex -= 1 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+
+  public: class GGS__5B_functionSignatureElement_5D_ current_argumentTypeList (LOCATION_ARGS) const ;
+
+  public: class GGS_unifiedTypeMapEntry current_valueType (LOCATION_ARGS) const ;
+
+  public: class GGS_readSubcriptMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_readSubcriptMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: DownEnumerator_readSubcriptMap (const DownEnumerator_readSubcriptMap &) = delete ;
+  private: DownEnumerator_readSubcriptMap & operator = (const DownEnumerator_readSubcriptMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class UpEnumerator_readSubcriptMap final {
+  public: UpEnumerator_readSubcriptMap (const class GGS_readSubcriptMap & inMap)  ;
+
+  public: ~ UpEnumerator_readSubcriptMap (void) = default ;
+
+  public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
+
+  public: inline void gotoNextObject (void) { mIndex += 1 ; }
+
+  public: inline void rewind (void) { mIndex = 0 ; }
+
+  public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
+  public: class GGS__5B_functionSignatureElement_5D_ current_argumentTypeList (LOCATION_ARGS) const ;
+  public: class GGS_unifiedTypeMapEntry current_valueType (LOCATION_ARGS) const ;
+  public: class GGS_readSubcriptMap_2E_element current (LOCATION_ARGS) const ;
+
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_readSubcriptMap_2E_element>> mInfoArray ;
+  private: int32_t mIndex ;
+
+  private: UpEnumerator_readSubcriptMap (const UpEnumerator_readSubcriptMap &) = delete ;
+  private: UpEnumerator_readSubcriptMap & operator = (const UpEnumerator_readSubcriptMap &) = delete ;
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+class GGS_readSubcriptMap : public AC_GALGAS_root {
+
+//--- Private property
+  private: OptionalSharedRef <GenericMapRoot <GGS_readSubcriptMap_2E_element>> mSharedRoot ;
+
+//--- Default constructor
+  public: GGS_readSubcriptMap (void) ;
+
+//--- Virtual destructor
+  public: virtual ~ GGS_readSubcriptMap (void) ;
+
+//--- Handle copy
+  public: GGS_readSubcriptMap (const GGS_readSubcriptMap & inSource) ;
+  public: GGS_readSubcriptMap & operator = (const GGS_readSubcriptMap & inSource) ;
+
+//--- Build
+  protected: void build (LOCATION_ARGS) ;
+
+//--- isValid
+  public: bool isValid (void) const override ;
+
+//--- Drop
+  public: void drop (void) override ;
+
+//--- Description
+  public: virtual void description (String & ioString,
+                                    const int32_t inIndentation) const override ;
+
+
+
+//--- performInsert
+  protected: void performInsert (const class GGS_readSubcriptMap_2E_element & inElement,
+                                 const char * inInsertErrorMessage,
+                                 const char * inShadowErrorMessage,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+ 
+//--- infoForKey
+  protected: const SharedGenericPtrWithValueSemantics <GGS_readSubcriptMap_2E_element> infoForKey (const String & inKey) const ;
+ 
+//--- Count
+  public: int32_t count (void) const ;
+ 
+//--- sortedInfoArray
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_readSubcriptMap_2E_element>> sortedInfoArray (void) const ;
+
+//--- findNearestKey
+  protected: void findNearestKey (const String & inKey,
+                                  GenericUniqueArray <String> & outNearestKeyArray) const ;
+
+//-- Start of type generic part
+
+//--------------------------------- Initializers
+  public: static GGS_readSubcriptMap init (Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
+//--------------------------------- GALGAS class functions
+  public: static class GGS_readSubcriptMap class_func_mapWithMapToOverride (const class GGS_readSubcriptMap & inOperand0
+                                                                            COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+  public: void setter_insertKey (class GGS_lstring constinArgument0,
+                                 class GGS__5B_functionSignatureElement_5D_ constinArgument1,
+                                 class GGS_unifiedTypeMapEntry constinArgument2,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setArgumentTypeListForKey (class GGS__5B_functionSignatureElement_5D_ constinArgument0,
+                                                 class GGS_string constinArgument1,
+                                                 Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+  public: void setter_setValueTypeForKey (class GGS_unifiedTypeMapEntry constinArgument0,
+                                          class GGS_string constinArgument1,
+                                          Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public: void method_searchKey (class GGS_lstring constinArgument0,
+                                 class GGS__5B_functionSignatureElement_5D_ & outArgument1,
+                                 class GGS_unifiedTypeMapEntry & outArgument2,
+                                 Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public: class GGS__5B_functionSignatureElement_5D_ getter_argumentTypeListForKey (const class GGS_string & constinOperand0,
+                                                                                    Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_contains (const class GGS_string & constinOperand0
+                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_count (LOCATION_ARGS) const ;
+
+  public: class GGS_bool getter_hasKeyAtLevel (const class GGS_string & constinOperand0,
+                                               const class GGS_uint & constinOperand1
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS__5B_lstring_5D_ getter_keyList (Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_stringset getter_keySet (Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_uint getter_levels (LOCATION_ARGS) const ;
+
+  public: class GGS_location getter_locationForKey (const class GGS_string & constinOperand0,
+                                                    Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_readSubcriptMap getter_overriddenMap (Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const ;
+
+  public: class GGS_unifiedTypeMapEntry getter_valueTypeForKey (const class GGS_string & constinOperand0,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Read subcripts
+  public: class GGS_readSubcriptMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                      Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const ;
+
+
+
+//--------------------------------- Write subcripts
+
+
+//--------------------------------- Introspection
+  public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
+//--------------------------------- Friend
+  friend class UpEnumerator_readSubcriptMap ;
+  friend class DownEnumerator_readSubcriptMap ;
+
+} ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_readSubcriptMap ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @setterMap map
@@ -12512,11 +13014,14 @@ class GGS_setterMap : public AC_GALGAS_root {
                                                     COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_setterMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_setterMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -12532,7 +13037,7 @@ class GGS_setterMap : public AC_GALGAS_root {
 extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_setterMap ;
 
 //--------------------------------------------------------------------------------------------------
-// Phase 1: @subscriptMap map
+// Phase 1: @writeSubcriptMap map
 //--------------------------------------------------------------------------------------------------
 
 #include "SharedGenericPtrWithValueSemantics.h"
@@ -12541,11 +13046,11 @@ template <typename INFO> class GenericMapRoot ;
 
 //--------------------------------------------------------------------------------------------------
 
-class DownEnumerator_subscriptMap final {
+class DownEnumerator_writeSubcriptMap final {
 
-  public: DownEnumerator_subscriptMap (const class GGS_subscriptMap & inMap) ;
+  public: DownEnumerator_writeSubcriptMap (const class GGS_writeSubcriptMap & inMap) ;
 
-  public: ~ DownEnumerator_subscriptMap (void) = default ;
+  public: ~ DownEnumerator_writeSubcriptMap (void) = default ;
 
   public: inline bool hasCurrentObject (void) const { return mIndex >= 0 ; }
 
@@ -12557,21 +13062,21 @@ class DownEnumerator_subscriptMap final {
 
   public: class GGS_unifiedTypeMapEntry current_valueType (LOCATION_ARGS) const ;
 
-  public: class GGS_subscriptMap_2E_element current (LOCATION_ARGS) const ;
+  public: class GGS_writeSubcriptMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_writeSubcriptMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-  private: DownEnumerator_subscriptMap (const DownEnumerator_subscriptMap &) = delete ;
-  private: DownEnumerator_subscriptMap & operator = (const DownEnumerator_subscriptMap &) = delete ;
+  private: DownEnumerator_writeSubcriptMap (const DownEnumerator_writeSubcriptMap &) = delete ;
+  private: DownEnumerator_writeSubcriptMap & operator = (const DownEnumerator_writeSubcriptMap &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class UpEnumerator_subscriptMap final {
-  public: UpEnumerator_subscriptMap (const class GGS_subscriptMap & inMap)  ;
+class UpEnumerator_writeSubcriptMap final {
+  public: UpEnumerator_writeSubcriptMap (const class GGS_writeSubcriptMap & inMap)  ;
 
-  public: ~ UpEnumerator_subscriptMap (void) = default ;
+  public: ~ UpEnumerator_writeSubcriptMap (void) = default ;
 
   public: inline bool hasCurrentObject (void) const { return mIndex < mInfoArray.count () ; }
 
@@ -12582,31 +13087,31 @@ class UpEnumerator_subscriptMap final {
   public: class GGS_lstring current_lkey (LOCATION_ARGS) const ;
   public: class GGS__5B_functionSignatureElement_5D_ current_argumentTypeList (LOCATION_ARGS) const ;
   public: class GGS_unifiedTypeMapEntry current_valueType (LOCATION_ARGS) const ;
-  public: class GGS_subscriptMap_2E_element current (LOCATION_ARGS) const ;
+  public: class GGS_writeSubcriptMap_2E_element current (LOCATION_ARGS) const ;
 
-  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element>> mInfoArray ;
+  private: GenericArray <SharedGenericPtrWithValueSemantics <GGS_writeSubcriptMap_2E_element>> mInfoArray ;
   private: int32_t mIndex ;
 
-  private: UpEnumerator_subscriptMap (const UpEnumerator_subscriptMap &) = delete ;
-  private: UpEnumerator_subscriptMap & operator = (const UpEnumerator_subscriptMap &) = delete ;
+  private: UpEnumerator_writeSubcriptMap (const UpEnumerator_writeSubcriptMap &) = delete ;
+  private: UpEnumerator_writeSubcriptMap & operator = (const UpEnumerator_writeSubcriptMap &) = delete ;
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-class GGS_subscriptMap : public AC_GALGAS_root {
+class GGS_writeSubcriptMap : public AC_GALGAS_root {
 
 //--- Private property
-  private: OptionalSharedRef <GenericMapRoot <GGS_subscriptMap_2E_element>> mSharedRoot ;
+  private: OptionalSharedRef <GenericMapRoot <GGS_writeSubcriptMap_2E_element>> mSharedRoot ;
 
 //--- Default constructor
-  public: GGS_subscriptMap (void) ;
+  public: GGS_writeSubcriptMap (void) ;
 
 //--- Virtual destructor
-  public: virtual ~ GGS_subscriptMap (void) ;
+  public: virtual ~ GGS_writeSubcriptMap (void) ;
 
 //--- Handle copy
-  public: GGS_subscriptMap (const GGS_subscriptMap & inSource) ;
-  public: GGS_subscriptMap & operator = (const GGS_subscriptMap & inSource) ;
+  public: GGS_writeSubcriptMap (const GGS_writeSubcriptMap & inSource) ;
+  public: GGS_writeSubcriptMap & operator = (const GGS_writeSubcriptMap & inSource) ;
 
 //--- Build
   protected: void build (LOCATION_ARGS) ;
@@ -12624,20 +13129,20 @@ class GGS_subscriptMap : public AC_GALGAS_root {
 
 
 //--- performInsert
-  protected: void performInsert (const class GGS_subscriptMap_2E_element & inElement,
+  protected: void performInsert (const class GGS_writeSubcriptMap_2E_element & inElement,
                                  const char * inInsertErrorMessage,
                                  const char * inShadowErrorMessage,
                                  Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
  
 //--- infoForKey
-  protected: const SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element> infoForKey (const String & inKey) const ;
+  protected: const SharedGenericPtrWithValueSemantics <GGS_writeSubcriptMap_2E_element> infoForKey (const String & inKey) const ;
  
 //--- Count
   public: int32_t count (void) const ;
  
 //--- sortedInfoArray
-  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_subscriptMap_2E_element>> sortedInfoArray (void) const ;
+  protected: GenericArray <SharedGenericPtrWithValueSemantics <GGS_writeSubcriptMap_2E_element>> sortedInfoArray (void) const ;
 
 //--- findNearestKey
   protected: void findNearestKey (const String & inKey,
@@ -12646,11 +13151,11 @@ class GGS_subscriptMap : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_subscriptMap init (Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
+  public: static GGS_writeSubcriptMap init (Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
 //--------------------------------- GALGAS class functions
-  public: static class GGS_subscriptMap class_func_mapWithMapToOverride (const class GGS_subscriptMap & inOperand0
-                                                                         COMMA_LOCATION_ARGS) ;
+  public: static class GGS_writeSubcriptMap class_func_mapWithMapToOverride (const class GGS_writeSubcriptMap & inOperand0
+                                                                             COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Setters
@@ -12706,32 +13211,35 @@ class GGS_subscriptMap : public AC_GALGAS_root {
                                                     Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const ;
 
-  public: class GGS_subscriptMap getter_overriddenMap (Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const ;
+  public: class GGS_writeSubcriptMap getter_overriddenMap (Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const ;
 
   public: class GGS_unifiedTypeMapEntry getter_valueTypeForKey (const class GGS_string & constinOperand0,
                                                                 Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_subscriptMap_2E_element_3F_ readSubscript__3F_ (const class GGS_string & in0,
-                                                                    Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_writeSubcriptMap_2E_element_3F_ readSubcript__3F_ (const class GGS_string & in0,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
   public: const GALGAS_TypeDescriptor * staticTypeDescriptor (void) const override ;
 //--------------------------------- Friend
-  friend class UpEnumerator_subscriptMap ;
-  friend class DownEnumerator_subscriptMap ;
+  friend class UpEnumerator_writeSubcriptMap ;
+  friend class DownEnumerator_writeSubcriptMap ;
 
 } ;
 
 //--------------------------------------------------------------------------------------------------
 
-extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_subscriptMap ;
+extern const GALGAS_TypeDescriptor kTypeDescriptor_GALGAS_writeSubcriptMap ;
 
 //--------------------------------------------------------------------------------------------------
 // Phase 1: @unifiedTypeDefinition struct
@@ -12769,9 +13277,9 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
     return mProperty_typeKind ;
   }
 
-  public: GGS_bool mProperty_supportCollectionValue ;
-  public: inline GGS_bool readProperty_supportCollectionValue (void) const {
-    return mProperty_supportCollectionValue ;
+  public: GGS_bool mProperty_supportArrayLiteral ;
+  public: inline GGS_bool readProperty_supportArrayLiteral (void) const {
+    return mProperty_supportArrayLiteral ;
   }
 
   public: GGS__5B_typedProperty_5D_ mProperty_allTypedPropertyList ;
@@ -12824,9 +13332,14 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
     return mProperty_unwrappedType ;
   }
 
-  public: GGS_subscriptMap mProperty_readSubscriptMap ;
-  public: inline GGS_subscriptMap readProperty_readSubscriptMap (void) const {
+  public: GGS_readSubcriptMap mProperty_readSubscriptMap ;
+  public: inline GGS_readSubcriptMap readProperty_readSubscriptMap (void) const {
     return mProperty_readSubscriptMap ;
+  }
+
+  public: GGS_writeSubcriptMap mProperty_writeSubscriptMap ;
+  public: inline GGS_writeSubcriptMap readProperty_writeSubscriptMap (void) const {
+    return mProperty_writeSubscriptMap ;
   }
 
   public: GGS__5B_enumerationDescriptor_5D_ mProperty_enumerationDescriptorList ;
@@ -12896,8 +13409,8 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
     mProperty_typeKind = inValue ;
   }
 
-  public: inline void setter_setSupportCollectionValue (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_supportCollectionValue = inValue ;
+  public: inline void setter_setSupportArrayLiteral (const GGS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_supportArrayLiteral = inValue ;
   }
 
   public: inline void setter_setAllTypedPropertyList (const GGS__5B_typedProperty_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -12940,8 +13453,12 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
     mProperty_unwrappedType = inValue ;
   }
 
-  public: inline void setter_setReadSubscriptMap (const GGS_subscriptMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+  public: inline void setter_setReadSubscriptMap (const GGS_readSubcriptMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
     mProperty_readSubscriptMap = inValue ;
+  }
+
+  public: inline void setter_setWriteSubscriptMap (const GGS_writeSubcriptMap & inValue COMMA_UNUSED_LOCATION_ARGS) {
+    mProperty_writeSubscriptMap = inValue ;
   }
 
   public: inline void setter_setEnumerationDescriptorList (const GGS__5B_enumerationDescriptor_5D_ & inValue COMMA_UNUSED_LOCATION_ARGS) {
@@ -12982,7 +13499,7 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
                                      const GGS_bool & in_isFinal,
                                      const GGS_unifiedTypeMapEntry & in_superType,
                                      const GGS_typeKindEnum & in_typeKind,
-                                     const GGS_bool & in_supportCollectionValue,
+                                     const GGS_bool & in_supportArrayLiteral,
                                      const GGS__5B_typedProperty_5D_ & in_allTypedPropertyList,
                                      const GGS_propertyMap & in_propertyMap,
                                      const GGS__5B_typedProperty_5D_ & in_currentTypedPropertyList,
@@ -12993,7 +13510,8 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
                                      const GGS_instanceMethodMap & in_instanceMethodMap,
                                      const GGS_classMethodMap & in_classMethodMap,
                                      const GGS_unifiedTypeMapEntry & in_unwrappedType,
-                                     const GGS_subscriptMap & in_readSubscriptMap,
+                                     const GGS_readSubcriptMap & in_readSubscriptMap,
+                                     const GGS_writeSubcriptMap & in_writeSubscriptMap,
                                      const GGS__5B_enumerationDescriptor_5D_ & in_enumerationDescriptorList,
                                      const GGS_typeFeatures & in_features,
                                      const GGS__5B_functionSignatureElement_5D_ & in_addAssignOperatorArguments,
@@ -13011,33 +13529,34 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
 //-- Start of type generic part
 
 //--------------------------------- Initializers
-  public: static GGS_unifiedTypeDefinition init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportCollectionValue_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (const class GGS_lstring & inOperand0,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_bool & inOperand1,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_bool & inOperand2,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_bool & inOperand3,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand4,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_typeKindEnum & inOperand5,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_bool & inOperand6,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS__5B_typedProperty_5D_ & inOperand7,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_propertyMap & inOperand8,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS__5B_typedProperty_5D_ & inOperand9,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_initializerMap & inOperand10,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_classFunctionMap & inOperand11,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_getterMap & inOperand12,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_setterMap & inOperand13,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_instanceMethodMap & inOperand14,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_classMethodMap & inOperand15,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand16,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_subscriptMap & inOperand17,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS__5B_enumerationDescriptor_5D_ & inOperand18,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_typeFeatures & inOperand19,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS__5B_functionSignatureElement_5D_ & inOperand20,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_bool & inOperand21,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_unifiedTypeMapEntry & inOperand22,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_string & inOperand23,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           const class GGS_headerKind & inOperand24,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           Compiler * inCompiler
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           COMMA_LOCATION_ARGS) ;
+  public: static GGS_unifiedTypeDefinition init_21_typeName_21_isPredefined_21_isConcrete_21_isFinal_21_superType_21_typeKind_21_supportArrayLiteral_21_allTypedPropertyList_21_propertyMap_21_currentTypedPropertyList_21_initializerMap_21_classFunctionMap_21_getterMap_21_setterMap_21_instanceMethodMap_21_classMethodMap_21_unwrappedType_21_readSubscriptMap_21_writeSubscriptMap_21_enumerationDescriptorList_21_features_21_addAssignOperatorArguments_21_generateHeaderInSeparateFile_21_typeForEnumeratedElement_21_headerFileName_21_headerKind (const class GGS_lstring & inOperand0,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_bool & inOperand1,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_bool & inOperand2,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_bool & inOperand3,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_unifiedTypeMapEntry & inOperand4,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_typeKindEnum & inOperand5,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_bool & inOperand6,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS__5B_typedProperty_5D_ & inOperand7,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_propertyMap & inOperand8,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS__5B_typedProperty_5D_ & inOperand9,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_initializerMap & inOperand10,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_classFunctionMap & inOperand11,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_getterMap & inOperand12,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_setterMap & inOperand13,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_instanceMethodMap & inOperand14,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_classMethodMap & inOperand15,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_unifiedTypeMapEntry & inOperand16,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_readSubcriptMap & inOperand17,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_writeSubcriptMap & inOperand18,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS__5B_enumerationDescriptor_5D_ & inOperand19,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_typeFeatures & inOperand20,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS__5B_functionSignatureElement_5D_ & inOperand21,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_bool & inOperand22,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_unifiedTypeMapEntry & inOperand23,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_string & inOperand24,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             const class GGS_headerKind & inOperand25,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             Compiler * inCompiler
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             COMMA_LOCATION_ARGS) ;
 //--------------------------------- Implementation of func 'description'
   public: void description (String & ioString,
                             const int32_t inIndentation) const override ;
@@ -13049,7 +13568,10 @@ class GGS_unifiedTypeDefinition : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -13124,7 +13646,10 @@ class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult : public AC_
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -13279,7 +13804,10 @@ class GGS_abstractGrammarInstructionSyntaxDirectedTranslationResult_2E_weak : pu
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -13318,7 +13846,10 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultNone : public GGS_abs
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -13446,7 +13977,10 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultNone_2E_weak : public
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -13488,7 +14022,10 @@ class GGS_grammarInstructionSyntaxDirectedTranslationDropResult : public GGS_abs
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -13621,7 +14158,10 @@ class GGS_grammarInstructionSyntaxDirectedTranslationDropResult_2E_weak : public
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -13663,7 +14203,10 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInVar : public GGS_ab
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -13796,7 +14339,10 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInVar_2E_weak : publi
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -13841,7 +14387,10 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : publi
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -13977,7 +14526,10 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar_2E_weak
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -14022,7 +14574,10 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : pub
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -14158,7 +14713,10 @@ class GGS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst_2E_we
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -14221,7 +14779,10 @@ class GGS_grammarInstructionWithSourceFileForGeneration : public GGS_semanticIns
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -14360,7 +14921,10 @@ class GGS_grammarInstructionWithSourceFileForGeneration_2E_weak : public GGS_sem
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -14426,7 +14990,10 @@ class GGS_grammarInstructionWithSourceExpressionForGeneration : public GGS_seman
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -14568,7 +15135,10 @@ class GGS_grammarInstructionWithSourceExpressionForGeneration_2E_weak : public G
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -14736,11 +15306,14 @@ class GGS__5B_semanticInstructionAST_5D_ final : public AC_GALGAS_root {
                                                                    COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_semanticInstructionAST readSubscript__3F_ (const class GGS_uint & in0,
-                                                               Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_semanticInstructionAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                              Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -14783,7 +15356,10 @@ class GGS_semanticInstructionAST : public GGS_syntaxInstructionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -14909,7 +15485,10 @@ class GGS_loopInstructionWithVariantForGeneration : public GGS_semanticInstructi
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -15039,7 +15618,10 @@ class GGS_loopInstructionWithVariantForGeneration_2E_weak : public GGS_semanticI
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -15109,7 +15691,10 @@ class GGS_methodKind : public AC_GALGAS_root {
   public: class GGS_bool getter_isDefinedAsMember (LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -15172,7 +15757,10 @@ class GGS_methodCallInstructionForGeneration : public GGS_semanticInstructionFor
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -15311,7 +15899,10 @@ class GGS_methodCallInstructionForGeneration_2E_weak : public GGS_semanticInstru
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -15362,7 +15953,10 @@ class GGS_ifInstructionForGeneration : public GGS_semanticInstructionForGenerati
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -15489,7 +16083,10 @@ class GGS_ifInstructionForGeneration_2E_weak : public GGS_semanticInstructionFor
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -15575,7 +16172,10 @@ class GGS_forInstructionEnumeratedObjectElementAST : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -15614,7 +16214,10 @@ class GGS_abstractEnumeratedCollectionAST : public AC_GALGAS_reference_class {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -15829,11 +16432,14 @@ class GGS__5B_localConstant_5D_ final : public AC_GALGAS_root {
                                                           COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_localConstant readSubscript__3F_ (const class GGS_uint & in0,
-                                                      Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_localConstant readSubcript__3F_ (const class GGS_uint & in0,
+                                                     Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -15933,7 +16539,10 @@ class GGS_localConstant : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -16021,7 +16630,10 @@ class GGS_abstractEnumeratedCollectionAST_2E_weak : public AC_GALGAS_weak_refere
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -16072,7 +16684,10 @@ class GGS_enumeratedCollectionVarInExpAST : public GGS_abstractEnumeratedCollect
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -16206,7 +16821,10 @@ class GGS_enumeratedCollectionVarInExpAST_2E_weak : public GGS_abstractEnumerate
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -16374,11 +16992,14 @@ class GGS__5B_forInstructionEnumeratedObjectElementAST_5D_ final : public AC_GAL
                                                                                      COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_forInstructionEnumeratedObjectElementAST readSubscript__3F_ (const class GGS_uint & in0,
-                                                                                 Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_forInstructionEnumeratedObjectElementAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                                                Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -16429,7 +17050,10 @@ class GGS_enumeratedCollectionCstListInExpAST : public GGS_abstractEnumeratedCol
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -16560,7 +17184,10 @@ class GGS_enumeratedCollectionCstListInExpAST_2E_weak : public GGS_abstractEnume
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -16635,7 +17262,10 @@ class GGS_forInstructionEnumeratedObjectAST : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -16803,11 +17433,14 @@ class GGS__5B_forInstructionEnumeratedObjectAST_5D_ final : public AC_GALGAS_roo
                                                                               COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_forInstructionEnumeratedObjectAST readSubscript__3F_ (const class GGS_uint & in0,
-                                                                          Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_forInstructionEnumeratedObjectAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                                         Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -16978,11 +17611,14 @@ class GGS__5B_forInstructionEnumeratedObjectForGeneration_5D_ final : public AC_
                                                                                         COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_forInstructionEnumeratedObjectForGeneration readSubscript__3F_ (const class GGS_uint & in0,
-                                                                                    Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_forInstructionEnumeratedObjectForGeneration readSubcript__3F_ (const class GGS_uint & in0,
+                                                                                   Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -17071,7 +17707,10 @@ class GGS_forInstructionEnumeratedObjectForGeneration : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -17134,7 +17773,10 @@ class GGS_forInstructionForGeneration : public GGS_semanticInstructionForGenerat
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -17273,7 +17915,10 @@ class GGS_forInstructionForGeneration_2E_weak : public GGS_semanticInstructionFo
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -17441,11 +18086,14 @@ class GGS__5B_switchBranchAST_5D_ final : public AC_GALGAS_root {
                                                             COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_switchBranchAST readSubscript__3F_ (const class GGS_uint & in0,
-                                                        Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_switchBranchAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                       Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -17616,11 +18264,14 @@ class GGS__5B_switchExtractedValuesAST_5D_ final : public AC_GALGAS_root {
                                                                      COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_switchExtractedValuesAST readSubscript__3F_ (const class GGS_uint & in0,
-                                                                 Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_switchExtractedValuesAST readSubcript__3F_ (const class GGS_uint & in0,
+                                                                Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -17720,7 +18371,10 @@ class GGS_switchBranchAST : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -17806,7 +18460,10 @@ class GGS_switchExtractedValuesAST : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -17974,11 +18631,14 @@ class GGS__5B_switchBranchForGeneration_5D_ final : public AC_GALGAS_root {
                                                                       COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_switchBranchForGeneration readSubscript__3F_ (const class GGS_uint & in0,
-                                                                  Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_switchBranchForGeneration readSubcript__3F_ (const class GGS_uint & in0,
+                                                                 Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -18149,11 +18809,14 @@ class GGS__5B_extractedAssociatedValueForGeneration_5D_ final : public AC_GALGAS
                                                                                   COMMA_LOCATION_ARGS) const ;
 
 
-//--------------------------------- Read subscripts
-  public: class GGS_extractedAssociatedValueForGeneration readSubscript__3F_ (const class GGS_uint & in0,
-                                                                              Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const ;
+//--------------------------------- Read subcripts
+  public: class GGS_extractedAssociatedValueForGeneration readSubcript__3F_ (const class GGS_uint & in0,
+                                                                             Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const ;
 
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -18253,7 +18916,10 @@ class GGS_switchBranchForGeneration : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection

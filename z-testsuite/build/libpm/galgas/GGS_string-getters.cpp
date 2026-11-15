@@ -721,7 +721,7 @@ GGS_sint GGS_string::getter_commandWithArguments (const GGS__5B_string_5D_ & inA
     String command = String ("'") + mString + "'" ;
     for (uint32_t i=0 ; i<inArguments.count () ; i++) {
       command.appendCString (" '") ;
-      command.appendString (inArguments.readSubscript__3F_ (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
+      command.appendString (inArguments.readSubcript__3F_ (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
       command.appendCString ("'") ;
     }
     result = GGS_sint (::system (command.cString ())) ;
@@ -739,7 +739,7 @@ GGS_string GGS_string::getter_hiddenCommandWithArguments (const GGS__5B_string_5
     String command = String ("'") + mString + "'" ;
     for (uint32_t i=0 ; i<inArguments.count () ; i++) {
       command.appendCString (" '") ;
-      command.appendString (inArguments.readSubscript__3F_ (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
+      command.appendString (inArguments.readSubcript__3F_ (GGS_uint (i), inCompiler COMMA_THERE).stringValue ()) ;
       command.appendCString ("'") ;
     }
     result = GGS_string (command).getter_popen (inCompiler COMMA_THERE) ;

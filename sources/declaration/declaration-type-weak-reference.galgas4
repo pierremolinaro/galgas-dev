@@ -137,7 +137,7 @@ override proc @weakReferenceDeclarationAST.enterDeclarationInSemanticContext
     !isFinal: true,
     !superType: superClassIndex,
     !typeKind: .weakReferenceType (!referenceType: classIndex),
-    !supportCollectionValue: false,
+    !supportArrayLiteral: false,
     !allTypedPropertyList: @(),
     !propertyMap: @(),
     !currentTypedPropertyList: @(),
@@ -149,6 +149,7 @@ override proc @weakReferenceDeclarationAST.enterDeclarationInSemanticContext
     !classMethodMap: @(),
     !unwrappedType: classIndex,
     !readSubscriptMap: @(),
+    !writeSubscriptMap: @(),
     !enumerationDescriptorList: @(),
     !features: features,
     !addAssignOperatorArguments: @(),
@@ -249,11 +250,12 @@ override proc @weakReferenceTypeForGeneration.appendDeclaration1 (?!@stringset i
     typeDefinition.instanceMethodMap,
     typeDefinition.classMethodMap,
     typeDefinition.readSubscriptMap,
+    typeDefinition.writeSubscriptMap,
     typeDefinition.enumerationDescriptorList,
     typeDefinition.features,
     typeDefinition.addAssignOperatorArguments,
     typeDefinition.typeForEnumeratedElement,
-    typeDefinition.supportCollectionValue
+    typeDefinition.supportArrayLiteral
   ]
  }
 

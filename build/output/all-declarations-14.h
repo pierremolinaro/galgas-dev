@@ -2037,7 +2037,10 @@ class GGS_XcodeProjectDescriptor : public AC_GALGAS_root {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2416,7 +2419,10 @@ class GGS_terminalInstructionForGrammarAnalysis_2E_weak : public GGS_abstractSyn
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2457,7 +2463,10 @@ class GGS_binarysetPredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2592,7 +2601,10 @@ class GGS_binarysetPredefinedTypeAST_2E_weak : public GGS_predefinedTypeAST_2E_w
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2670,7 +2682,10 @@ class GGS_optionComponentForGeneration : public GGS_semanticDeclarationWithHeade
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -2821,7 +2836,10 @@ class GGS_optionComponentForGeneration_2E_weak : public GGS_semanticDeclarationW
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3192,7 +3210,10 @@ class GGS_templateInstructionForeachAST : public GGS_templateInstructionAST {
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3334,7 +3355,10 @@ class GGS_templateInstructionForeachAST_2E_weak : public GGS_templateInstruction
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3404,7 +3428,10 @@ class GGS_templateInstructionForeachForGeneration_2E_weak : public GGS_templateI
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
@@ -3474,7 +3501,10 @@ class GGS_templateGetterCallInExpressionAST_2E_weak : public GGS_templateExpress
 
 //--------------------------------- Getters
 
-//--------------------------------- Read subscripts
+//--------------------------------- Read subcripts
+
+
+//--------------------------------- Write subcripts
 
 
 //--------------------------------- Introspection
